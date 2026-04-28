@@ -1,0 +1,370 @@
+{
+  "book_id": "pack",
+  "language": "en",
+  "timestamp": "2026-04-21T16:00:03.291128+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 574,
+  "segments_converged_by_retry": 38,
+  "segments_plateau_stopped": 1,
+  "total_retries": 92,
+  "error_distribution": {
+    "trailing_silence": 42,
+    "tail_energy": 10,
+    "tail_spike": 5,
+    "hard_ending": 2,
+    "first_word_weak": 2
+  },
+  "worst_segments": [
+    {
+      "id": "ch06-472",
+      "attempts": 26,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Your team follows your lead."
+    },
+    {
+      "id": "ch06-423",
+      "attempts": 13,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Your defenders trust your calls."
+    },
+    {
+      "id": "ch04-309",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "The driven through ball that splits the defense."
+    },
+    {
+      "id": "ch06-398",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "The defenders watch the ball."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 5,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7495602464207055,
+            "exaggeration": 0.2782806911294033,
+            "temperature": 0.31274338155509634,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4863222993972165,
+            "exaggeration": 0.12190240296313154,
+            "temperature": 0.4172777722968297,
+            "top_p": 0.6317833087914272,
+            "min_p": 0.17726769399274492,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5590829067600254,
+            "exaggeration": 0.748250829168789,
+            "temperature": 0.7799817850668608,
+            "top_p": 0.9366387848753899,
+            "min_p": 0.06150753774843995,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.09328004894552949,
+            "temperature": 0.19815435300032008,
+            "top_p": 1.0,
+            "min_p": 0.262208443811077,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Trust"
+    },
+    {
+      "id": "ch01-045",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Picture the formation."
+    },
+    {
+      "id": "ch04-264",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "You see a gap between two defenders."
+    },
+    {
+      "id": "ch02-133",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2946225230928143,
+            "temperature": 0.2907358731818694,
+            "top_p": 0.7193182983772364,
+            "min_p": 0.031005836577043894,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6336416784802787,
+            "exaggeration": 0.13894718520151467,
+            "temperature": 0.2851490563622666,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6539018511893407,
+            "exaggeration": 0.5376055151916199,
+            "temperature": 0.8293745701410562,
+            "top_p": 0.6562708799972115,
+            "min_p": 0.27970957465957635,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Positioning"
+    },
+    {
+      "id": "ch01-076",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Own the position."
+    },
+    {
+      "id": "ch07-503",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Check your surroundings before the ball arrives."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "The defenders face the ball."
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "The three attackers form the top."
+    },
+    {
+      "id": "ch01-059",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Your coach trusts you with the hardest job on the field."
+    },
+    {
+      "id": "ch01-067",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "That trust is earned every time you win the ball and pick the right pass."
+    },
+    {
+      "id": "ch01-071",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "You are not just a passer."
+    },
+    {
+      "id": "ch01-080",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "You are the sweeper."
+    },
+    {
+      "id": "ch02-097",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Look at the ball."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "A big open space in the center of the field is an invitation for the other team "
+    },
+    {
+      "id": "ch02-107",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Turn your body so that you are halfway between facing the ball and facing the fi"
+    },
+    {
+      "id": "ch02-144",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "You protect the heart of the defense."
+    }
+  ]
+}

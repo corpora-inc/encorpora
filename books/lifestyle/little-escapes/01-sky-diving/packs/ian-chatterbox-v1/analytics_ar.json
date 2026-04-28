@@ -1,0 +1,1373 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "ar",
+  "timestamp": "2026-04-27T10:26:31.251426+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 327,
+  "segments_converged_by_retry": 37,
+  "segments_plateau_stopped": 4,
+  "total_retries": 71,
+  "error_distribution": {
+    "trailing_silence": 124,
+    "first_word_weak": 52,
+    "transcription_mismatch": 24,
+    "tail_energy": 16,
+    "final_word_weak": 7,
+    "hard_ending": 3,
+    "post_speech_pop": 3,
+    "pre_speech_spike": 2,
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1,
+    "truncated_last_word": 1,
+    "min_trailing_silence": 1,
+    "too_long": 1,
+    "mid_phrase_gap": 1
+  },
+  "phase_timings": {
+    "tts": 6541.443023920059,
+    "align": 1017.0729868412018,
+    "validate": 1521.4472801685333,
+    "trim": 3.3451642990112305,
+    "master": 105.8455069065094
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 178,
+      "passed": 168,
+      "rate": 0.9438202247191011
+    },
+    "medium_30_80": {
+      "total": 181,
+      "passed": 152,
+      "rate": 0.8397790055248618
+    },
+    "long_80_plus": {
+      "total": 9,
+      "passed": 7,
+      "rate": 0.7777777777777778
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-115",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5838465174806727,
+            "exaggeration": 0.20707428724119104,
+            "temperature": 0.3801768273018003,
+            "top_p": 0.7976924863912542,
+            "min_p": 0.0024627426712261757,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.45967982387230466,
+            "exaggeration": 0.0,
+            "temperature": 0.216705110896021,
+            "top_p": 0.8198160514319448,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3543933955738506,
+            "exaggeration": 0.7611697956905831,
+            "temperature": 0.5916984924380613,
+            "top_p": 0.6023388132947727,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22019997208964942,
+            "temperature": 0.2848760998819654,
+            "top_p": 0.720396986512611,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3327139792427094,
+            "exaggeration": 0.37264505710872725,
+            "temperature": 0.5362519025219782,
+            "top_p": 0.8781640987730269,
+            "min_p": 0.1477730658445219,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8194934585738198,
+            "exaggeration": 0.0,
+            "temperature": 0.22852090941404143,
+            "top_p": 0.9068690541076763,
+            "min_p": 0.07786887004675827,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "لا تستطيع الإجابة للحظة، لأنك تبكي، أو تضحك، أو الاثنين معًا.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-151",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5886724179770142,
+            "exaggeration": 0.5406380813577418,
+            "temperature": 0.6798487246862491,
+            "top_p": 0.7047313172395488,
+            "min_p": 0.013659528217923794,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.3811352857639725,
+            "exaggeration": 0.0,
+            "temperature": 0.166513537621109,
+            "top_p": 0.8580414749705498,
+            "min_p": 0.09744622799115346,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.40259155698848414,
+            "exaggeration": 0.8114953267082405,
+            "temperature": 0.6157901762942023,
+            "top_p": 1.0,
+            "min_p": 0.10246717087728627,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.20666975686552264,
+            "temperature": 0.23513333155040372,
+            "top_p": 0.623246143857761,
+            "min_p": 0.06964467323369519,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.37920482358180957,
+            "exaggeration": 0.450297333966395,
+            "temperature": 0.3689017885547099,
+            "top_p": 0.9187420109010914,
+            "min_p": 0.16257041896417743,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 43,
+      "text_preview": "يطلقانك في السقوط الحر فور أن تكون مستقرًا.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-040",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7317517502065418,
+            "exaggeration": 0.5396825710163795,
+            "temperature": 0.46908681021606,
+            "top_p": 0.7429261599346086,
+            "min_p": 0.12899665984698075,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 320.0,
+          "params": {
+            "cfg_weight": 0.4040350706051382,
+            "exaggeration": 0.11361518268704157,
+            "temperature": 0.08605173635889324,
+            "top_p": 0.6836389044806005,
+            "min_p": 0.0,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "too_long",
+            "mid_phrase_gap",
+            "tail_energy"
+          ],
+          "score": 52.0,
+          "params": {
+            "cfg_weight": 0.535725179362706,
+            "exaggeration": 0.4062204297070748,
+            "temperature": 0.8117592753981584,
+            "top_p": 1.0,
+            "min_p": 0.22010405727682666,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7532593714925402,
+            "exaggeration": 0.06352963424228064,
+            "temperature": 0.3559672682586527,
+            "top_p": 1.0,
+            "min_p": 0.03146537444032152,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "بدأت تقفز لأنه، أول مرة جربت، قال شيء في داخلك، آه، ها أنت.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-026",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.7328251477960066,
+            "exaggeration": 0.3573751066672239,
+            "temperature": 0.6049085359831381,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5232145039864735,
+            "exaggeration": 0.42448699333883394,
+            "temperature": 0.5302116610174584,
+            "top_p": 0.6691877795654497,
+            "min_p": 0.3260871540330459,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4182591682393095,
+            "exaggeration": 0.5847761789405987,
+            "temperature": 0.5090022527991963,
+            "top_p": 0.9118355248346435,
+            "min_p": 0.015990492770047632,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "رجل بالغ، معلق في السماء تحت قطعة قماش ناعمة، يبكي لسبب لا يستطيع شرحه.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-091",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7416460842148148,
+            "exaggeration": 0.17435949324893085,
+            "temperature": 0.4875351719546327,
+            "top_p": 0.8848830143543612,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.6480977424958226,
+            "exaggeration": 0.2586203653426631,
+            "temperature": 0.5077636239894021,
+            "top_p": 0.8846049629549526,
+            "min_p": 0.2892935416307828,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7273728902969853,
+            "exaggeration": 0.7277989768510198,
+            "temperature": 0.944138981442605,
+            "top_p": 1.0,
+            "min_p": 0.03172666912053404,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "يبدو وجهك كأنه يُشدّ في اتجاهات كثيرة في وقت واحد.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-102",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "post_speech_pop"
+          ],
+          "score": 63.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.818623067913749,
+            "exaggeration": 0.48669191090213887,
+            "temperature": 0.5322380140991763,
+            "top_p": 0.8919311804789056,
+            "min_p": 0.028611193023473563,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5347936515049452,
+            "exaggeration": 0.07071846840552859,
+            "temperature": 0.19253496722557306,
+            "top_p": 0.7999890245754999,
+            "min_p": 0.16267004176902047,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5966382251013518,
+            "exaggeration": 0.8058502340174192,
+            "temperature": 0.6177810368419436,
+            "top_p": 0.7700807873195303,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "يربّت مدربك على كتفك.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-202",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.79
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6165662027277093,
+            "exaggeration": 0.4305736994679751,
+            "temperature": 0.6692962405211518,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.79
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.28057446771577255,
+            "exaggeration": 0.3820587301431683,
+            "temperature": 0.06309008487013729,
+            "top_p": 0.9764834932874358,
+            "min_p": 0.13553551170371572,
+            "repetition_penalty": 1.79
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7420106307340464,
+            "exaggeration": 0.7288681413904861,
+            "temperature": 0.6027581304099261,
+            "top_p": 0.7940988694028555,
+            "min_p": 0.038916037717276,
+            "repetition_penalty": 1.79
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "ما زال القافزون القدامى يتحدثون عن القوس كما يتحدث العداؤون القدامى عن خطوتهم.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-257",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.6971008150109554,
+            "exaggeration": 0.31973376984523044,
+            "temperature": 0.5074440008312678,
+            "top_p": 0.9286224183587388,
+            "min_p": 0.2892323007467519,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.36588074155230654,
+            "exaggeration": 0.0,
+            "temperature": 0.25449371841467017,
+            "top_p": 0.6616552570757054,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.495869058210566,
+            "exaggeration": 0.6260782384751133,
+            "temperature": 0.8601964390774909,
+            "top_p": 1.0,
+            "min_p": 0.24801090767190762,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "هدأت الريح حتى أصبحت معدومة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-073",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9712473911479608,
+            "exaggeration": 0.5185623602480185,
+            "temperature": 0.6524560729870382,
+            "top_p": 0.6153916590805408,
+            "min_p": 0.3323860328904926,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3130050194238904,
+            "exaggeration": 0.39315693265609464,
+            "temperature": 0.296702179921984,
+            "top_p": 0.7259388333956447,
+            "min_p": 0.0,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "تنظر إلى الأسفل، والأرض بعيدة جدًا حتى أنها لم تعد تبدو أرضًا.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-075",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.6752863540555928,
+            "exaggeration": 0.05444683401731809,
+            "temperature": 0.6407706974580318,
+            "top_p": 0.710306940400935,
+            "min_p": 0.14374143943381748,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7462996122174664,
+            "exaggeration": 0.0,
+            "temperature": 0.5330095036482061,
+            "top_p": 0.6988004489759561,
+            "min_p": 0.0459787273479256,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "طرق رفيعة كالخيط.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-157",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.9182435612161821,
+            "exaggeration": 0.07328671137869941,
+            "temperature": 0.3750184205266328,
+            "top_p": 0.943612240276879,
+            "min_p": 0.06776640234263356,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.26890376551200296,
+            "exaggeration": 0.04907187728980472,
+            "temperature": 0.3153575574993816,
+            "top_p": 1.0,
+            "min_p": 0.07047583418385475,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "من هناك، عادة ما يكمل القافزون بالمظلات قفزاتهم المئة الأولى خلال السنة التالية.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-216",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6463939773188973,
+            "exaggeration": 0.3579659823047007,
+            "temperature": 0.46031714825502884,
+            "top_p": 0.9483095497378425,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6503742736811718,
+            "exaggeration": 0.33931200594402583,
+            "temperature": 0.0588621966799156,
+            "top_p": 0.7518131025526367,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "كل ذلك هو طيران قبة المظلة، وهو تخصص قائم بذاته.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-223",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.630658518962717,
+            "exaggeration": 0.45472036714082015,
+            "temperature": 0.5272879258439986,
+            "top_p": 1.0,
+            "min_p": 0.28576713569700396,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5890324640901177,
+            "exaggeration": 0.012675831542200144,
+            "temperature": 0.3474798843696227,
+            "top_p": 0.9200123571605245,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "تلفّ القماش، تدخله بهدوء في الكيس، تمرر اللجام، تغلق الحاوية.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-270",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.5901622075004207,
+            "exaggeration": 0.5059621893234256,
+            "temperature": 0.5576723426510092,
+            "top_p": 0.6469891068003034,
+            "min_p": 0.2777960038142103,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5711184006507041,
+            "exaggeration": 0.3823958100590154,
+            "temperature": 0.43052013591297766,
+            "top_p": 1.0,
+            "min_p": 0.3047254786996735,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "تتلاكمون بقبضاتكم، تفحصون معدات بعضكم بعضًا، تضحكون بتوتر.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-278",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7252010410824336,
+            "exaggeration": 0.11862022633758229,
+            "temperature": 0.33669775932887436,
+            "top_p": 0.6620979706288321,
+            "min_p": 0.2970002288440684,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5784434373458915,
+            "exaggeration": 0.4369479901744873,
+            "temperature": 0.46973378790301584,
+            "top_p": 0.8219405781548078,
+            "min_p": 0.24153366083460628,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "لبضع ثوان مثالية، يمسك ثمانية بشر ببعضهم في السماء.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-303",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7738545804070658,
+            "exaggeration": 0.45753624561390444,
+            "temperature": 0.6676385465331659,
+            "top_p": 0.616649975102814,
+            "min_p": 0.0,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6253395858587316,
+            "exaggeration": 0.18290158647479898,
+            "temperature": 0.18169757467718184,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.68
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "تتعلق في الحزام، وتنتحب، وتضحك، وتنتحب من جديد.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-039",
+      "attempts": 2,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5570557320523811,
+            "exaggeration": 0.47484553941773056,
+            "temperature": 0.44494216725930963,
+            "top_p": 0.6613723219919432,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "لم تبدأ بالقفز كي تشرحه.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-046",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7654370861211612,
+            "exaggeration": 0.24624921332589533,
+            "temperature": 0.3389944105175967,
+            "top_p": 0.840044325419868,
+            "min_p": 0.06565806123629761,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "ثم تتعلم بسرعة كبيرة أن الأرض لم تكن قط حيث الخوف.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5504020080666023,
+            "exaggeration": 0.3287689244303402,
+            "temperature": 0.33728550737283847,
+            "top_p": 0.7438451531476937,
+            "min_p": 0.26702314778478353,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "هذا ما كنت سأقوله لك، لو سألتني في نزهة طويلة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-055",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7999773300469828,
+            "exaggeration": 0.24549550599676,
+            "temperature": 0.6244745963652205,
+            "top_p": 0.8763550754374365,
+            "min_p": 0.22370836023914234,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "لماذا يستمر شخص هادئ ومعقول في القفز من طائرات سليمة تمامًا؟",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "tail_energy": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.133,
+        "temperature": 0.021,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 18,
+      "avg_delta": {
+        "cfg_weight": -0.094,
+        "temperature": 0.122,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.102,
+        "temperature": 0.102,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.034,
+        "temperature": 0.284,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "book_id": "pack",
+  "language": "de",
+  "timestamp": "2026-04-21T14:25:27.517638+00:00",
+  "segments_total": 614,
+  "segments_first_pass": 571,
+  "segments_converged_by_retry": 42,
+  "segments_plateau_stopped": 1,
+  "total_retries": 133,
+  "error_distribution": {
+    "trailing_silence": 49,
+    "tail_energy": 15,
+    "hard_ending": 12,
+    "tail_spike": 9,
+    "first_word_weak": 2
+  },
+  "worst_segments": [
+    {
+      "id": "ch06-434",
+      "attempts": 37,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Frühe Rufe verhindern Tore."
+    },
+    {
+      "id": "ch07-492",
+      "attempts": 12,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Lies die Flugbahn des Balls."
+    },
+    {
+      "id": "ch06-467",
+      "attempts": 9,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Gib niemals eine Aktion auf."
+    },
+    {
+      "id": "ch07-497",
+      "attempts": 7,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Wenn dein Torwart einen Abstoß macht, bist du die nächste sichere Passoption."
+    },
+    {
+      "id": "ch07-498",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Steh in einer Position, wo der Torwart einen kurzen Pass direkt zu deinen Füßen "
+    },
+    {
+      "id": "ch08-621",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Geh und spiel dein Spiel."
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 6,
+      "best_quality_score": 10.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9833714532849883,
+            "exaggeration": 0.46808976556356674,
+            "temperature": 0.33407318993677726,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.5022945161474623,
+            "exaggeration": 0.13708282006337252,
+            "temperature": 0.40916902367363395,
+            "top_p": 0.6952978815444897,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6819435142753609,
+            "exaggeration": 0.7249450132002523,
+            "temperature": 0.45215948767188124,
+            "top_p": 1.0,
+            "min_p": 0.34563653669907246,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22551102382171528,
+            "temperature": 0.2904871601537837,
+            "top_p": 0.9035991441229967,
+            "min_p": 0.33235139368494326,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.2749120926079471,
+            "exaggeration": 0.47459947558582016,
+            "temperature": 0.25451765869212317,
+            "top_p": 0.7853091286458431,
+            "min_p": 0.0638194901458137,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Antizipation"
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7509211409307555,
+            "exaggeration": 0.12181123034546915,
+            "temperature": 0.42649871300471814,
+            "top_p": 0.9395055921536285,
+            "min_p": 0.2685587798911365,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.2570996321089009,
+            "exaggeration": 0.3247934682121037,
+            "temperature": 0.5141771567534728,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4136050842436661,
+            "exaggeration": 0.37599814785668034,
+            "temperature": 0.9090217470565056,
+            "top_p": 0.7931897289403453,
+            "min_p": 0.05197188681521134,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8163134704569899,
+            "exaggeration": 0.05269194637958635,
+            "temperature": 0.20662632188272284,
+            "top_p": 0.8470428280875004,
+            "min_p": 0.34550614629235565,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5185985448351744,
+            "exaggeration": 0.6834420445637746,
+            "temperature": 0.6097274923212721,
+            "top_p": 0.8870261352978537,
+            "min_p": 0.06553285672814066,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Vertrauen"
+    },
+    {
+      "id": "ch07-473",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Standardsituationen"
+    },
+    {
+      "id": "ch01-072",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Du bist der Spieler, der das Spiel kontrolliert."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Schau hinter den Ball."
+    },
+    {
+      "id": "ch03-166",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Herausrücken erfordert Mut."
+    },
+    {
+      "id": "ch05-325",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Vorrücken hält das Team kompakt."
+    },
+    {
+      "id": "ch05-335",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Fordere den Ball."
+    },
+    {
+      "id": "ch03-219",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.84239439717247,
+            "exaggeration": 0.10635416792068941,
+            "temperature": 0.49709481874074174,
+            "top_p": 0.699688163850561,
+            "min_p": 0.2634037990921343,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.5927826304109276,
+            "exaggeration": 0.09545755763856117,
+            "temperature": 0.17107212690865248,
+            "top_p": 0.6873127389753501,
+            "min_p": 0.03011278759865163,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6280941902226075,
+            "exaggeration": 0.533276947330555,
+            "temperature": 0.46939650572541425,
+            "top_p": 0.9732039538274444,
+            "min_p": 0.023556214844321993,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Die Mauer Sein"
+    },
+    {
+      "id": "ch06-401",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.727192912562042,
+            "exaggeration": 0.4966282901449909,
+            "temperature": 0.5130923458214507,
+            "top_p": 0.7937093556465724,
+            "min_p": 0.19389381648680334,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.6533710380445759,
+            "exaggeration": 0.14332174574568202,
+            "temperature": 0.12541304602452535,
+            "top_p": 0.9943415120434975,
+            "min_p": 0.17112050001791954,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7273790109238649,
+            "exaggeration": 0.4296227419649105,
+            "temperature": 0.5478742789849629,
+            "top_p": 0.7345598941507152,
+            "min_p": 0.07287842322711166,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Reden auf dem Platz"
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Du liest das Spiel, bevor es jemand anderes liest."
+    },
+    {
+      "id": "ch01-049",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Drei Stürmer verteilen sich auf der Angriffslinie."
+    },
+    {
+      "id": "ch01-065",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Du hältst das ganze System zusammen."
+    },
+    {
+      "id": "ch02-117",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Beobachte, wohin die Augen dieses Spielers schauen."
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "es",
+  "timestamp": "2026-04-21T02:37:45.261478+00:00",
+  "segments_total": 292,
+  "segments_first_pass": 175,
+  "segments_converged_by_retry": 68,
+  "segments_plateau_stopped": 49,
+  "total_retries": 332,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch03-088",
+      "attempts": 38,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "El hidrógeno es H. El oxígeno es O. El carbono es C. El hierro es Fe."
+    },
+    {
+      "id": "ch04-142",
+      "attempts": 11,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "El helio, el neón, el argón, el criptón, el xenón y el radón son gases nobles."
+    },
+    {
+      "id": "ch04-146",
+      "attempts": 9,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Un científico ruso llamado Dmitri Mendeléyev creó la primera tabla periódica en "
+    },
+    {
+      "id": "ch06-212",
+      "attempts": 8,
+      "best_quality_score": 20.0,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "La temperatura es una medida de qué tan rápido se mueven los átomos."
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "No puedes ver un solo átomo con tus ojos."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "El universo está hecho de átomos."
+    },
+    {
+      "id": "ch03-103",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "El oxígeno es el elemento que respiras."
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Un solo grano de arena contiene alrededor de cincuenta trillones de átomos."
+    },
+    {
+      "id": "ch02-045",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "El núcleo es diminuto comparado con todo el átomo."
+    },
+    {
+      "id": "ch02-046",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Si el átomo fuera del tamaño de un estadio de fútbol, el núcleo sería del tamaño"
+    },
+    {
+      "id": "ch03-078",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Un elemento es una sustancia hecha de un solo tipo de átomo."
+    },
+    {
+      "id": "ch05-181",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Los científicos lo escriben como H2O."
+    },
+    {
+      "id": "ch08-268",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "El número de protones determina el elemento."
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Todo lo que puedes ver está hecho de átomos."
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "El aire que respiras está hecho de átomos."
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "El agua que bebes está hecha de átomos."
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 4,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tu cuerpo está hecho de átomos."
+    },
+    {
+      "id": "ch01-024",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Los átomos son increíblemente resistentes."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Los átomos en tu cuerpo tienen miles de millones de años."
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Se reorganizan en humo, ceniza y gas."
+    }
+  ]
+}

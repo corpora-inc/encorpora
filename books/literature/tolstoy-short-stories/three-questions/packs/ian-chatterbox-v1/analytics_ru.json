@@ -1,0 +1,917 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "ru",
+  "timestamp": "2026-04-23T01:32:46.323780+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 71,
+  "segments_converged_by_retry": 7,
+  "segments_plateau_stopped": 3,
+  "total_retries": 17,
+  "error_distribution": {
+    "first_word_weak": 14,
+    "trailing_silence": 10,
+    "transcription_mismatch": 4,
+    "final_word_weak": 3,
+    "tail_energy": 2,
+    "pre_speech_spike": 2,
+    "stacked_words": 2,
+    "min_trailing_silence": 2,
+    "hard_ending": 2,
+    "short_words": 2
+  },
+  "phase_timings": {
+    "tts": 69.3229112625122,
+    "align": 18.074989557266235,
+    "validate": 0.6348543167114258,
+    "trim": 0.006143093109130859,
+    "master": 0.8056056499481201
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 15,
+      "passed": 14,
+      "rate": 0.9333333333333333
+    },
+    "medium_30_80": {
+      "total": 39,
+      "passed": 35,
+      "rate": 0.8974358974358975
+    },
+    "long_80_plus": {
+      "total": 27,
+      "passed": 22,
+      "rate": 0.8148148148148148
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-003",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9221469088237627,
+            "exaggeration": 0.4116008052540876,
+            "temperature": 0.49638756979110016,
+            "top_p": 0.9763656534099221,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4176010870639738,
+            "exaggeration": 0.1153162013397025,
+            "temperature": 0.4301560234444902,
+            "top_p": 0.8929090357556659,
+            "min_p": 0.09746770351868217,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5016077835176258,
+            "exaggeration": 0.4593774496086007,
+            "temperature": 0.6716341247680828,
+            "top_p": 0.8568216126753891,
+            "min_p": 0.19707073893157828,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8115971348873988,
+            "exaggeration": 0.35428091596898015,
+            "temperature": 0.5738465194056624,
+            "top_p": 0.7804209830696086,
+            "min_p": 0.08617992015581263,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.46457839896233566,
+            "exaggeration": 0.3154542474680755,
+            "temperature": 0.17431154398997992,
+            "top_p": 0.8669997032618254,
+            "min_p": 0.029270281917730193,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5254448636695934,
+            "exaggeration": 0.46015962785817033,
+            "temperature": 0.631396295885065,
+            "top_p": 0.8111421996627615,
+            "min_p": 0.1038685589087647,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 236,
+      "text_preview": "И, подумав это, царь объявил по своему царству, что он даст великую награду тому",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-080",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.690487159572789,
+            "exaggeration": 0.29055125265679205,
+            "temperature": 0.42935516918837996,
+            "top_p": 0.8244516153873461,
+            "min_p": 0.012886884235827414,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "short_words",
+            "hard_ending",
+            "first_word_weak"
+          ],
+          "score": 95.0,
+          "params": {
+            "cfg_weight": 0.5785590495002445,
+            "exaggeration": 0.19139144707226421,
+            "temperature": 0.3336714993561648,
+            "top_p": 0.9001147095458921,
+            "min_p": 0.08190504211902694,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5534009057946192,
+            "exaggeration": 0.7173261977375419,
+            "temperature": 0.6488545552409943,
+            "top_p": 0.9983059694241632,
+            "min_p": 0.015765199549237496,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 165,
+      "text_preview": "А потом, когда прибежал тот человек, самое важное время было то, когда ты ходил ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-082",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6970612901219355,
+            "exaggeration": 0.22989538466576165,
+            "temperature": 0.4489017322560931,
+            "top_p": 0.9403632453319601,
+            "min_p": 0.09578803449574086,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4944193043276835,
+            "exaggeration": 0.15750748880791213,
+            "temperature": 0.17772188337472594,
+            "top_p": 0.9328165544764194,
+            "min_p": 0.14518101967643635,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5453554892751883,
+            "exaggeration": 0.5042984476596648,
+            "temperature": 0.6222428742920517,
+            "top_p": 0.8523449425435379,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 378,
+      "text_preview": "— Так помни же, — сказал отшельник, — что самое важное время одно: сейчас, — и о",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.9317994535264947,
+            "exaggeration": 0.21050041691100846,
+            "temperature": 0.6380514869243225,
+            "top_p": 0.8225729908428886,
+            "min_p": 0.21930107043768987,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3580635127443441,
+            "exaggeration": 0.1277622590853561,
+            "temperature": 0.16499453495068025,
+            "top_p": 0.9429501073360685,
+            "min_p": 0.14811450938630344,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "— Ты устал, — сказал царь.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "pre_speech_spike"
+          ],
+          "score": 37.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6651182148344931,
+            "exaggeration": 0.40877387341172877,
+            "temperature": 0.47042321276152266,
+            "top_p": 0.9649951600910276,
+            "min_p": 0.21794060393009435,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Отшельник опять не ответил, а встал и протянул руку к лопате:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-041",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7048433638549624,
+            "exaggeration": 0.22707094043965437,
+            "temperature": 0.5034495334344619,
+            "top_p": 0.9865093690923247,
+            "min_p": 0.20933468836280028,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Царь обернулся и увидал — из леса бежал бородатый человек.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-046",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7447423692492656,
+            "exaggeration": 0.38242824970606326,
+            "temperature": 0.6480409494727561,
+            "top_p": 0.9614052976606683,
+            "min_p": 0.19366470106157666,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "Царь, как умел, промыл рану и перевязал её своим платком и полотенцем отшельника",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-051",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8740162364426011,
+            "exaggeration": 0.35266685217619986,
+            "temperature": 0.3705190344200364,
+            "top_p": 0.9530607157760431,
+            "min_p": 0.24675686161234517,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Между тем солнце совсем зашло, и стало холодно.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-070",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8714989288684403,
+            "exaggeration": 0.16025402903500044,
+            "temperature": 0.5309886059942915,
+            "top_p": 0.7086627088303654,
+            "min_p": 0.17218109296085693,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 94,
+      "text_preview": "Отшельник был на дворе и, стоя на коленях, сажал семена в грядки, которые были в",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6793007049635413,
+            "exaggeration": 0.327530152730389,
+            "temperature": 0.4491281795013755,
+            "top_p": 0.8188995854993251,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "— А как же? — сказал отшельник.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 225,
+      "text_preview": "Один царь подумал, что если бы он всегда знал, какое время для всякого дела само",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Стали приходить к царю учёные люди и отвечали на его вопросы различно.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 170,
+      "text_preview": "На первый вопрос одни говорили, что для того, чтобы знать настоящее время для вс",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 68,
+      "text_preview": "Только тогда, говорили они, всякое дело будет делаться в своё время.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 214,
+      "text_preview": "Другие говорили, что нельзя вперёд решить, какое время для какого дела будет нас",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 229,
+      "text_preview": "Третьи говорили, что как бы ни был внимателен царь ко всему, что делается, один ",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 178,
+      "text_preview": "Четвёртые говорили, что бывают такие дела, которые надо решать сейчас же, не дож",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "А знать это могут только волшебники.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 84,
+      "text_preview": "И потому, чтобы знать настоящее время для каждого дела, надо спрашивать волшебни",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "На второй вопрос тоже отвечали по-разному.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.232,
+        "temperature": -0.066,
+        "repetition_penalty": 0.0
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.082,
+        "temperature": 0.201,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

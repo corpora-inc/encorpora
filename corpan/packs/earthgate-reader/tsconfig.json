@@ -20,7 +20,8 @@
       "@shared/data": ["../shared/data/index.ts"],
       "@shared/audio": ["../shared/audio/index.ts"],
       "@shared/state": ["../shared/state/index.ts"],
-      "@shared/ui": ["../shared/ui/index.ts"]
+      "@shared/ui": ["../shared/ui/index.ts"],
+      "@shared/analytics": ["../shared/analytics/index.ts"]
     }
   },
   "include": ["src", "../shared"]

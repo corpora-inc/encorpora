@@ -1,0 +1,1113 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "en",
+  "timestamp": "2026-04-23T01:42:35.790672+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 63,
+  "segments_converged_by_retry": 15,
+  "segments_plateau_stopped": 3,
+  "total_retries": 32,
+  "error_distribution": {
+    "hard_ending": 13,
+    "trailing_silence": 10,
+    "first_word_weak": 8,
+    "tail_energy": 8,
+    "transcription_mismatch": 5,
+    "stacked_words": 4,
+    "min_trailing_silence": 4,
+    "final_word_weak": 3,
+    "short_words": 1
+  },
+  "phase_timings": {
+    "tts": 407.18197679519653,
+    "align": 55.01612186431885,
+    "validate": 59.035910844802856,
+    "trim": 0.16733527183532715,
+    "master": 23.526091814041138
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 6,
+      "passed": 2,
+      "rate": 0.3333333333333333
+    },
+    "medium_30_80": {
+      "total": 39,
+      "passed": 34,
+      "rate": 0.8717948717948718
+    },
+    "long_80_plus": {
+      "total": 36,
+      "passed": 27,
+      "rate": 0.75
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-004",
+      "attempts": 4,
+      "best_quality_score": 40.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.7052690720478209,
+            "exaggeration": 0.39346967003047384,
+            "temperature": 0.36448509319323097,
+            "top_p": 0.7067682914223796,
+            "min_p": 0.23778351068719028,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.5421925679657442,
+            "exaggeration": 0.34602499547426835,
+            "temperature": 0.4027786087211507,
+            "top_p": 0.8574390090920463,
+            "min_p": 0.20132301461671137,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.4890521443539213,
+            "exaggeration": 0.6596005884536617,
+            "temperature": 0.6159075446599093,
+            "top_p": 0.8764495758163039,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Learned men began to come to the king and answered his questions variously.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8023302007344943,
+            "exaggeration": 0.2854861727381461,
+            "temperature": 0.5692296842157789,
+            "top_p": 0.7859701623184875,
+            "min_p": 0.04048235591702237,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5735752463595942,
+            "exaggeration": 0.24068062749331234,
+            "temperature": 0.17122446380605638,
+            "top_p": 0.8900234587200093,
+            "min_p": 0.03329930419891261,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6809324684619046,
+            "exaggeration": 0.5432114371540284,
+            "temperature": 0.5511071275607974,
+            "top_p": 0.8065361533861914,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 209,
+      "text_preview": "A fourth group said that there are such affairs which must be decided at once, w",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.799343683048689,
+            "exaggeration": 0.19879677240087285,
+            "temperature": 0.44329419478684046,
+            "top_p": 0.8366611176089271,
+            "min_p": 0.03952327722121994,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.48336533490724415,
+            "exaggeration": 0.34315613987242344,
+            "temperature": 0.23391157871780938,
+            "top_p": 0.7603611873489056,
+            "min_p": 0.10444892802263875,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5132910189741339,
+            "exaggeration": 0.6531893712554546,
+            "temperature": 0.6276898158739957,
+            "top_p": 0.8144371942148831,
+            "min_p": 0.09041199011976442,
+            "repetition_penalty": 1.71
+          }
+        }
+      ],
+      "text_len": 177,
+      "text_preview": "To the third question—which affair is the most important?—some said that the mos",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-032",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.8302581282436066,
+            "exaggeration": 0.3331766033102552,
+            "temperature": 0.5134119849158678,
+            "top_p": 0.808335235897824,
+            "min_p": 0.0701131133397987,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.43206909965345486,
+            "exaggeration": 0.30290644109801923,
+            "temperature": 0.1736788936916297,
+            "top_p": 0.7374965638957656,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7165567309024701,
+            "exaggeration": 0.4594641520091448,
+            "temperature": 0.5610243512952051,
+            "top_p": 0.8721444601042303,
+            "min_p": 0.02700231746196642,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "\"Now you rest, let me,\" he said.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-078",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.9431901967317119,
+            "exaggeration": 0.3044692569588152,
+            "temperature": 0.3932573082877243,
+            "top_p": 0.8219208506356038,
+            "min_p": 0.13574507047937703,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.5953445530852495,
+            "exaggeration": 0.33792247082960825,
+            "temperature": 0.2766784845308356,
+            "top_p": 0.8069018188513991,
+            "min_p": 0.03413768245675472,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.704146161856176,
+            "exaggeration": 0.46100949566118266,
+            "temperature": 0.6137059351288571,
+            "top_p": 0.7972844491534903,
+            "min_p": 0.24398312616412987,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "And the most necessary person was I.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.8197226907383242,
+            "exaggeration": 0.4485938459035974,
+            "temperature": 0.4430633122034492,
+            "top_p": 0.7159442156688711,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3802968316806891,
+            "exaggeration": 0.2806170770722108,
+            "temperature": 0.25489383252926456,
+            "top_p": 0.9835930356850441,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 146,
+      "text_preview": "Some said that the most necessary people for the king are his councillors, other",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-035",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.850790531812,
+            "exaggeration": 0.29309269627430945,
+            "temperature": 0.5515744805623786,
+            "top_p": 0.7926115186168619,
+            "min_p": 0.23634150843464996,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5157801166566721,
+            "exaggeration": 0.32932058236940176,
+            "temperature": 0.3106556020590683,
+            "top_p": 0.8846599998449758,
+            "min_p": 0.07390539050839018,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "The sun went down behind the trees.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.8056418892104722,
+            "exaggeration": 0.4030780364261587,
+            "temperature": 0.5772039185242839,
+            "top_p": 0.9398055916461069,
+            "min_p": 0.22690505939135153,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5033676576390629,
+            "exaggeration": 0.34054428290059124,
+            "temperature": 0.19372341154024378,
+            "top_p": 0.9992523722772303,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "The king several times removed the bandage and again washed and rebandaged the w",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.752022447945997,
+            "exaggeration": 0.30040238131744523,
+            "temperature": 0.6002792724359738,
+            "top_p": 0.8385017009410826,
+            "min_p": 0.2116294832737935,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.46629660511836046,
+            "exaggeration": 0.1463259561985042,
+            "temperature": 0.43240058898361056,
+            "top_p": 0.8321872230503038,
+            "min_p": 0.23804849517578275,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "\"How indeed?\" said the hermit.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7698331167239174,
+            "exaggeration": 0.3973110113711209,
+            "temperature": 0.4622856442386668,
+            "top_p": 0.7062027602025776,
+            "min_p": 0.24372605034098882,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 303,
+      "text_preview": "And, having thought this, the king proclaimed throughout his kingdom that he wou",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8828984834759541,
+            "exaggeration": 0.31348929042169216,
+            "temperature": 0.47888527286762883,
+            "top_p": 0.9836937819644377,
+            "min_p": 0.038159073547679334,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 176,
+      "text_preview": "To the first question, some said that in order to know the right time for every ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8134310739386412,
+            "exaggeration": 0.338085169691423,
+            "temperature": 0.36751659124688163,
+            "top_p": 0.9815743057661286,
+            "min_p": 0.2158296546432144,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 132,
+      "text_preview": "In order to better learn the answers to his questions, he decided to ask a hermi",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-028",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9133666453617483,
+            "exaggeration": 0.20187756672589316,
+            "temperature": 0.5910779928671118,
+            "top_p": 0.9432605529622788,
+            "min_p": 0.011941761673231743,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 18,
+      "text_preview": "\"Let me help you.\"",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9301765731838748,
+            "exaggeration": 0.40064014637230017,
+            "temperature": 0.45788677210860707,
+            "top_p": 0.7515086457557865,
+            "min_p": 0.12516212483131506,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "An hour passed, then another.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-067",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7919052255757686,
+            "exaggeration": 0.3220822405045843,
+            "temperature": 0.3536274456180565,
+            "top_p": 0.8028018308120287,
+            "min_p": 0.06592843880642014,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 204,
+      "text_preview": "The king was very glad that he had so easily managed to make peace with his enem",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-071",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7404747060366472,
+            "exaggeration": 0.28862389383721776,
+            "temperature": 0.5097743082989596,
+            "top_p": 0.9885180937994779,
+            "min_p": 0.11870265269741187,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "The king approached him.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-074",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7040947123329644,
+            "exaggeration": 0.33579899096487553,
+            "temperature": 0.5324294196513963,
+            "top_p": 0.9479956749450728,
+            "min_p": 0.06720573674824043,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "\"How have I received an answer?\" asked the king.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-080",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9324505108557801,
+            "exaggeration": 0.3876448205089482,
+            "temperature": 0.5735894682737124,
+            "top_p": 0.9251001047509176,
+            "min_p": 0.16459488880842205,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 186,
+      "text_preview": "And then, when that man came running, the most important time was when you were ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 230,
+      "text_preview": "A certain king thought that if he always knew the right time for every affair, a",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 68,
+      "text_preview": "Only then, they said, would every affair be done at its proper time.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.026,
+        "temperature": 0.174,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.079,
+        "temperature": 0.089,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.362,
+        "temperature": -0.178,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.073,
+        "temperature": 0.259,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.308,
+        "temperature": -0.264,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

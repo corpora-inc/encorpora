@@ -1,0 +1,1035 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "ms",
+  "timestamp": "2026-04-23T08:38:46.460652+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 67,
+  "segments_converged_by_retry": 14,
+  "segments_plateau_stopped": 0,
+  "total_retries": 23,
+  "error_distribution": {
+    "final_word_weak": 12,
+    "min_trailing_silence": 7,
+    "transcription_mismatch": 6,
+    "first_word_weak": 5,
+    "stacked_words": 5,
+    "trailing_silence": 5,
+    "truncated_last_word": 4,
+    "hard_ending": 3
+  },
+  "phase_timings": {
+    "tts": 34.22249746322632,
+    "align": 13.771244525909424,
+    "validate": 3.7858381271362305,
+    "trim": 0.015416145324707031,
+    "master": 0.41325807571411133
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 6,
+      "passed": 6,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 33,
+      "passed": 26,
+      "rate": 0.7878787878787878
+    },
+    "long_80_plus": {
+      "total": 42,
+      "passed": 35,
+      "rate": 0.8333333333333334
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-014",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.9117954445615222,
+            "exaggeration": 0.37097035945012335,
+            "temperature": 0.6072144732332718,
+            "top_p": 0.8707729556015112,
+            "min_p": 0.1865545733317861,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.38797219373691816,
+            "exaggeration": 0.17826008543412514,
+            "temperature": 0.2533932165416104,
+            "top_p": 0.8284443730246375,
+            "min_p": 0.0,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6607594019282866,
+            "exaggeration": 0.6523763680749832,
+            "temperature": 0.7334099809739703,
+            "top_p": 0.8107598356609724,
+            "min_p": 0.0,
+            "repetition_penalty": 1.71
+          }
+        }
+      ],
+      "text_len": 195,
+      "text_preview": "Pada soalan ketiga — pekerjaan apa yang paling penting? — ada yang berkata bahaw",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8702112775783369,
+            "exaggeration": 0.44876072055890115,
+            "temperature": 0.36187124143624994,
+            "top_p": 0.8783025611122277,
+            "min_p": 0.05074698700052872,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4454453658211702,
+            "exaggeration": 0.17148818763756285,
+            "temperature": 0.28718610447266235,
+            "top_p": 0.7822089135730805,
+            "min_p": 0.17927664625110823,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.48540133282468306,
+            "exaggeration": 0.5174125184602109,
+            "temperature": 0.672270287359395,
+            "top_p": 0.7605234995876293,
+            "min_p": 0.05942304236785326,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "Raja beberapa kali membuka balutan dan sekali lagi membasuh dan membalut luka it",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9211798299135099,
+            "exaggeration": 0.42770784650490745,
+            "temperature": 0.5691724451104313,
+            "top_p": 0.8951635664208322,
+            "min_p": 0.22454788344415733,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.45166989962480236,
+            "exaggeration": 0.2335101898975558,
+            "temperature": 0.1897198586610744,
+            "top_p": 0.770100349567837,
+            "min_p": 0.2481529965658113,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 350,
+      "text_preview": "Dan, setelah memikirkan ini, raja mengumumkan di seluruh kerajaannya bahawa dia ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.8742285947351256,
+            "exaggeration": 0.4486968336704975,
+            "temperature": 0.4287241958532613,
+            "top_p": 0.9637917704792321,
+            "min_p": 0.12184094983737981,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.3949137488996594,
+            "exaggeration": 0.307554141009703,
+            "temperature": 0.25933033549507134,
+            "top_p": 0.8657198482760005,
+            "min_p": 0.029002089988138857,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.6538256327692872,
+            "exaggeration": 0.5349643800519811,
+            "temperature": 0.7123889968211248,
+            "top_p": 0.7197616660165145,
+            "min_p": 0.20746606968837777,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.8847430898644151,
+            "exaggeration": 0.37450942487765937,
+            "temperature": 0.5762881281549328,
+            "top_p": 0.9448294833153377,
+            "min_p": 0.03602425005573694,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4406146376160226,
+            "exaggeration": 0.12477597522268495,
+            "temperature": 0.346636789688449,
+            "top_p": 0.8128799954302329,
+            "min_p": 0.024552250597183536,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "Melihat raja, pertapa itu mengangguk kepadanya dan terus menggali.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-029",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8824597735083465,
+            "exaggeration": 0.27134460688661766,
+            "temperature": 0.35326199585813367,
+            "top_p": 0.9822823396342445,
+            "min_p": 0.17928657069068793,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.47229699371179046,
+            "exaggeration": 0.3159717438162839,
+            "temperature": 0.2740562816474773,
+            "top_p": 0.7059155907478729,
+            "min_p": 0.1620491337217072,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "— Terima kasih, — kata pertapa itu dan, memberikan penyodok kepada raja, duduk d",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-039",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8444500380718589,
+            "exaggeration": 0.38614925385551946,
+            "temperature": 0.540102463402632,
+            "top_p": 0.9797780592759744,
+            "min_p": 0.036964433040421366,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.49302156972001376,
+            "exaggeration": 0.172148620231051,
+            "temperature": 0.411009094490175,
+            "top_p": 0.9542913904520767,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "— Nah, ada seseorang berlari, — kata pertapa itu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-074",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7380527418384564,
+            "exaggeration": 0.18938435677509954,
+            "temperature": 0.5137039535260938,
+            "top_p": 0.9141414677898239,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6034587914165611,
+            "exaggeration": 0.2264796919575531,
+            "temperature": 0.398015910080157,
+            "top_p": 0.9026674139782187,
+            "min_p": 0.016156040391826443,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "— Bagaimana saya mendapat jawapan? — tanya raja.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8585930248866711,
+            "exaggeration": 0.18857635479400672,
+            "temperature": 0.43323026944897397,
+            "top_p": 0.9489220550787008,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 200,
+      "text_preview": "Pada soalan pertama, ada yang berkata bahawa untuk mengetahui masa yang betul ba",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6955621089051163,
+            "exaggeration": 0.32370873973866354,
+            "temperature": 0.36413314950589815,
+            "top_p": 0.8850696216003415,
+            "min_p": 0.07956224156303704,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Dan hanya ahli sihir yang boleh mengetahui ini.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-023",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6643255058284014,
+            "exaggeration": 0.3946461171182316,
+            "temperature": 0.6204249562787422,
+            "top_p": 0.7146112734443397,
+            "min_p": 0.08346436123883141,
+            "repetition_penalty": 1.97
+          }
+        }
+      ],
+      "text_len": 169,
+      "text_preview": "— Aku datang kepadamu, pertapa yang bijak, untuk meminta engkau menjawab tiga so",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-041",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.755221156511959,
+            "exaggeration": 0.28814596992585984,
+            "temperature": 0.6482297317236215,
+            "top_p": 0.9403708318071572,
+            "min_p": 0.23427313929906307,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Raja menoleh dan melihat — seorang lelaki berjanggut berlari keluar dari hutan.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-051",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7019561110742429,
+            "exaggeration": 0.3275631934254262,
+            "temperature": 0.5582805204628906,
+            "top_p": 0.9992842137389486,
+            "min_p": 0.040723251905586455,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Sementara itu matahari telah terbenam sepenuhnya, dan cuaca menjadi sejuk.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.673325737977529,
+            "exaggeration": 0.36818346539316116,
+            "temperature": 0.5035582006740783,
+            "top_p": 0.7936365228357438,
+            "min_p": 0.09281681240606929,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Tetapi sepanjang hari telah berlalu, dan kamu masih tidak ada.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-065",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9189670340851878,
+            "exaggeration": 0.32449778123764406,
+            "temperature": 0.3567497117372891,
+            "top_p": 0.7773568707215153,
+            "min_p": 0.1220687754841705,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 184,
+      "text_preview": "Sekarang, jika aku kekal hidup dan kamu menghendakinya, aku akan melayani kamu, ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 268,
+      "text_preview": "Seorang raja terfikir, jika dia sentiasa tahu masa yang paling penting untuk set",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 91,
+      "text_preview": "Orang-orang terpelajar mula datang kepada raja dan menjawab soalannya dengan pel",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Hanya dengan begitu, kata mereka, setiap pekerjaan akan dilakukan pada masanya.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 290,
+      "text_preview": "Yang lain berkata bahawa seseorang tidak boleh memutuskan terlebih dahulu masa m",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 294,
+      "text_preview": "Yang ketiga berkata bahawa tidak kira bagaimana perhatiannya raja kepada semua y",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 197,
+      "text_preview": "Yang keempat berkata bahawa ada pekerjaan yang perlu diputuskan sekarang juga, t",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.251,
+        "temperature": -0.15,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.092,
+        "temperature": 0.222,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.085,
+        "temperature": 0.17,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.02,
+        "temperature": 0.353,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.02,
+        "temperature": 0.353,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.248,
+        "temperature": 0.166,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

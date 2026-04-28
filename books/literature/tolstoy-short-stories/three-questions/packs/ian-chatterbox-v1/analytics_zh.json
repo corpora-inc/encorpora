@@ -1,0 +1,2992 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "zh",
+  "timestamp": "2026-04-23T07:43:53.716713+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 48,
+  "segments_converged_by_retry": 23,
+  "segments_plateau_stopped": 10,
+  "total_retries": 136,
+  "error_distribution": {
+    "final_word_weak": 180,
+    "first_word_weak": 23,
+    "min_trailing_silence": 21,
+    "trailing_silence": 13,
+    "transcription_mismatch": 7,
+    "stacked_words": 3,
+    "tail_energy": 2,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 285.4076027870178,
+    "align": 96.86430788040161,
+    "validate": 7.009154796600342,
+    "trim": 0.05898571014404297,
+    "master": 2.274775743484497
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 59,
+      "passed": 36,
+      "rate": 0.6101694915254238
+    },
+    "medium_30_80": {
+      "total": 19,
+      "passed": 10,
+      "rate": 0.5263157894736842
+    },
+    "long_80_plus": {
+      "total": 3,
+      "passed": 2,
+      "rate": 0.6666666666666666
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-033",
+      "attempts": 21,
+      "best_quality_score": 0.0,
+      "best_attempt": 20,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7283384973572035,
+            "exaggeration": 0.36682700903697324,
+            "temperature": 0.5876356670310212,
+            "top_p": 0.8048621862057861,
+            "min_p": 0.12976847746455528,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5111022693236877,
+            "exaggeration": 0.2990450599964056,
+            "temperature": 0.19338194813103476,
+            "top_p": 0.8265344597184455,
+            "min_p": 0.08035303541219857,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.726877880346639,
+            "exaggeration": 0.7364264297448008,
+            "temperature": 0.6113297972194699,
+            "top_p": 0.8824929977405592,
+            "min_p": 0.11537901122407784,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9579720077527185,
+            "exaggeration": 0.33033510754684303,
+            "temperature": 0.16043092655349261,
+            "top_p": 0.9247135523855544,
+            "min_p": 0.08409627270161787,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4561063088140721,
+            "exaggeration": 0.536121041019543,
+            "temperature": 0.3908099485070038,
+            "top_p": 0.9678793770959226,
+            "min_p": 0.060474846556362566,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7040296258829142,
+            "exaggeration": 0.23055936593532383,
+            "temperature": 0.05,
+            "top_p": 0.7322583866200104,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37710478150961363,
+            "exaggeration": 0.3012407117702224,
+            "temperature": 0.4614328851233245,
+            "top_p": 0.8080336765875243,
+            "min_p": 0.09134713557351018,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9118982309345914,
+            "exaggeration": 0.2665724395019111,
+            "temperature": 0.2791484657106805,
+            "top_p": 0.7071231094467552,
+            "min_p": 0.09876415272166728,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.06705961075362185,
+            "exaggeration": 0.6923040264105856,
+            "temperature": 0.823892195902014,
+            "top_p": 0.9829611624258894,
+            "min_p": 0.22203627037546075,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9083374158705771,
+            "exaggeration": 0.2108871955306835,
+            "temperature": 0.47157390910587826,
+            "top_p": 0.7313312587409229,
+            "min_p": 0.1944984758308173,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6017961686569038,
+            "exaggeration": 0.3331708439405212,
+            "temperature": 0.3384002391852304,
+            "top_p": 0.7037169953443597,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7482015843443495,
+            "exaggeration": 0.4916095262590322,
+            "temperature": 0.7171726638564024,
+            "top_p": 0.7034647631294014,
+            "min_p": 0.07853209222383231,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.34639582784682127,
+            "temperature": 0.09955960857742957,
+            "top_p": 0.7318968579870735,
+            "min_p": 0.15939521673924845,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.35985100067370684,
+            "exaggeration": 0.4282036565029257,
+            "temperature": 0.4095469918983124,
+            "top_p": 0.9727091415294395,
+            "min_p": 0.04024237216434841,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6777715937539281,
+            "exaggeration": 0.0,
+            "temperature": 0.05896366492881862,
+            "top_p": 0.9127802976765251,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.19718764842037437,
+            "exaggeration": 0.16876113638842297,
+            "temperature": 0.5088014180487707,
+            "top_p": 0.8756184766151826,
+            "min_p": 0.0752822219176362,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9360072035961493,
+            "exaggeration": 0.47120569900918974,
+            "temperature": 0.3371798053024065,
+            "top_p": 0.8177488959899828,
+            "min_p": 0.11319954934641854,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2716522084480424,
+            "exaggeration": 0.6074198561570124,
+            "temperature": 0.8590445470822368,
+            "top_p": 0.7462679142284036,
+            "min_p": 0.23832553554294367,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.10319219500911372,
+            "exaggeration": 0.568669478917919,
+            "temperature": 0.7173957762601385,
+            "top_p": 0.8353948422397904,
+            "min_p": 0.20415767137350482,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06293451770563685,
+            "exaggeration": 0.5767916823306902,
+            "temperature": 0.9087357857445945,
+            "top_p": 0.9293686750019523,
+            "min_p": 0.14403858814274528,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.1342544348023753,
+            "exaggeration": 0.5843868411428232,
+            "temperature": 0.9005050500353835,
+            "top_p": 0.9835074037898222,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.25954078071283393,
+            "exaggeration": 0.6674607508930682,
+            "temperature": 0.685164544076674,
+            "top_p": 0.786644221027311,
+            "min_p": 0.18300737538873596,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.07369640311212297,
+            "exaggeration": 0.7813479163115945,
+            "temperature": 0.7644800818022764,
+            "top_p": 0.873093508227871,
+            "min_p": 0.08450173004372277,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20921269479350618,
+            "exaggeration": 0.722713492461819,
+            "temperature": 0.9240075100002882,
+            "top_p": 0.8215863508283535,
+            "min_p": 0.01523380362485989,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20320088220012367,
+            "exaggeration": 0.7463217897684158,
+            "temperature": 0.7117036139696913,
+            "top_p": 0.7191796361664301,
+            "min_p": 0.21775342953034427,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.27180187587508664,
+            "exaggeration": 0.8192039817274978,
+            "temperature": 0.9225057559111333,
+            "top_p": 0.8288500701112379,
+            "min_p": 0.19373056305724107,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13879930256905665,
+            "exaggeration": 0.5570947263299456,
+            "temperature": 0.7222901875188386,
+            "top_p": 0.9856274405206644,
+            "min_p": 0.18853530725797835,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.14392633482687917,
+            "exaggeration": 0.655020408643965,
+            "temperature": 0.7545708542545397,
+            "top_p": 0.9312115349170147,
+            "min_p": 0.03167567805929489,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.13516831961003012,
+            "exaggeration": 0.7983243789486958,
+            "temperature": 0.8078223686239888,
+            "top_p": 0.763315811638066,
+            "min_p": 0.15063467601338015,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "但国王没有给他铁锹，继续挖土。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 15,
+      "best_quality_score": 0.0,
+      "best_attempt": 14,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8946399143945827,
+            "exaggeration": 0.1876550528723132,
+            "temperature": 0.39810179236122556,
+            "top_p": 0.9045486686561597,
+            "min_p": 0.2241263489538729,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4757230343047251,
+            "exaggeration": 0.21109632686097382,
+            "temperature": 0.3398934276919868,
+            "top_p": 0.9366056514610852,
+            "min_p": 0.036811160771068274,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5568819261375471,
+            "exaggeration": 0.5890527900382954,
+            "temperature": 0.7196909826508232,
+            "top_p": 0.7289730685119657,
+            "min_p": 0.04078284922761198,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2381740621388576,
+            "temperature": 0.2493817971604784,
+            "top_p": 0.7829686456481483,
+            "min_p": 0.141101258173116,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3087250827689433,
+            "exaggeration": 0.46338435792754507,
+            "temperature": 0.4190402078199796,
+            "top_p": 0.8997506011572002,
+            "min_p": 0.1253298430599828,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8083824165029654,
+            "exaggeration": 0.1653676445217122,
+            "temperature": 0.05,
+            "top_p": 0.98958532930817,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.36591470702197026,
+            "exaggeration": 0.18033620649265092,
+            "temperature": 0.5362391868792373,
+            "top_p": 0.8497039977623154,
+            "min_p": 0.03352169347029793,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8277676895133714,
+            "exaggeration": 0.4625347501836983,
+            "temperature": 0.2696437900261347,
+            "top_p": 0.8041652289753355,
+            "min_p": 0.18583354494620796,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3266006408705976,
+            "exaggeration": 0.8179142438928497,
+            "temperature": 0.8927927856698039,
+            "top_p": 0.9145474569084,
+            "min_p": 0.20545680422170692,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2454593369101719,
+            "exaggeration": 0.7398200917859217,
+            "temperature": 0.7838509820948878,
+            "top_p": 0.7264997039519401,
+            "min_p": 0.13327421717224938,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.21944163736367728,
+            "exaggeration": 0.6252935063782797,
+            "temperature": 0.8196954476743701,
+            "top_p": 0.9730208108989065,
+            "min_p": 0.23057755234407212,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.23791121415088554,
+            "exaggeration": 0.797469106505281,
+            "temperature": 0.8004601617278035,
+            "top_p": 0.8635597945790414,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.17661753318334297,
+            "exaggeration": 0.6352037601071381,
+            "temperature": 0.8809570695663276,
+            "top_p": 0.7584157622546426,
+            "min_p": 0.22230089324284386,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.11422757216577172,
+            "exaggeration": 0.6620647775733483,
+            "temperature": 0.940791402668417,
+            "top_p": 0.7134177904471981,
+            "min_p": 0.1850689928987387,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "隐士住在森林里，从不离开那里。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-023",
+      "attempts": 11,
+      "best_quality_score": 0.0,
+      "best_attempt": 10,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9444295840287246,
+            "exaggeration": 0.3115293212200395,
+            "temperature": 0.4914540073889533,
+            "top_p": 0.7651882857427993,
+            "min_p": 0.16660014510158222,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3933781242746942,
+            "exaggeration": 0.11697898649806796,
+            "temperature": 0.3677223285790282,
+            "top_p": 0.8295550495948707,
+            "min_p": 0.12744710518894134,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6063753893812669,
+            "exaggeration": 0.5304747526830405,
+            "temperature": 0.7859090675605619,
+            "top_p": 0.9199152132418449,
+            "min_p": 0.23821360506834033,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9233247415910614,
+            "exaggeration": 0.15312793459234242,
+            "temperature": 0.19787814184469962,
+            "top_p": 0.9465566240868513,
+            "min_p": 0.0,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.36621982272657244,
+            "exaggeration": 0.5742979685578599,
+            "temperature": 0.5642485988855844,
+            "top_p": 0.7121334261049399,
+            "min_p": 0.14239979021574442,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7343668804145749,
+            "exaggeration": 0.14114822283137002,
+            "temperature": 0.14873537812041313,
+            "top_p": 0.9055330815085796,
+            "min_p": 0.0,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1625145758617827,
+            "exaggeration": 0.20873614167505958,
+            "temperature": 0.5748426026618045,
+            "top_p": 0.7223519317218209,
+            "min_p": 0.03543801100876094,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.866779356963071,
+            "exaggeration": 0.3875179332857428,
+            "temperature": 0.45457429241931624,
+            "top_p": 0.8291273992083055,
+            "min_p": 0.0572672227814809,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.09794972379524426,
+            "exaggeration": 0.6416962818179083,
+            "temperature": 0.8549159000643445,
+            "top_p": 0.9180713638129796,
+            "min_p": 0.021663796838254645,
+            "repetition_penalty": 1.97
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.1382280685497819,
+            "exaggeration": 0.5650679513952482,
+            "temperature": 0.891593379565975,
+            "top_p": 0.8823874307644151,
+            "min_p": 0.0455519422075505,
+            "repetition_penalty": 1.97
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "——我来找你，智慧的隐士，请你回答我三个问题：应该记住什么时候并且不能错过，以免以后后悔？",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 10,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 9,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7512234021045747,
+            "exaggeration": 0.439031745894242,
+            "temperature": 0.42522414337310127,
+            "top_p": 0.8142809871092699,
+            "min_p": 0.07083536939553285,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4691778170281674,
+            "exaggeration": 0.22300596335255968,
+            "temperature": 0.1847976689042407,
+            "top_p": 0.9828721850298102,
+            "min_p": 0.21100423918634786,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7114679740315755,
+            "exaggeration": 0.5775019084195006,
+            "temperature": 0.7364635172776692,
+            "top_p": 0.8571900739180833,
+            "min_p": 0.22257339932678227,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9690611001122477,
+            "exaggeration": 0.2628288584684051,
+            "temperature": 0.24023274615955437,
+            "top_p": 0.8727691673407423,
+            "min_p": 0.13302440810248356,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2945311303140462,
+            "exaggeration": 0.6261601500973552,
+            "temperature": 0.4494393965092439,
+            "top_p": 0.9737639988649571,
+            "min_p": 0.18081780762620175,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7084448839851265,
+            "exaggeration": 0.21396727483280192,
+            "temperature": 0.11271170767377306,
+            "top_p": 0.9045801660327281,
+            "min_p": 0.07078522060840334,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34022272786449265,
+            "exaggeration": 0.31783004020330874,
+            "temperature": 0.6999886158930467,
+            "top_p": 0.9317629357266456,
+            "min_p": 0.16626000442149746,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9235213319949791,
+            "exaggeration": 0.3974177541432822,
+            "temperature": 0.38289006113469076,
+            "top_p": 0.9826516867429124,
+            "min_p": 0.03775679616080363,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.21021049592287555,
+            "exaggeration": 0.6149692970975188,
+            "temperature": 0.8711135005982605,
+            "top_p": 0.8440398628343682,
+            "min_p": 0.2288235397315358,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "有些人说，国王最需要的人是统治者，另一些人说是祭司，第三种人说是医生，第四种人说是战士。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-063",
+      "attempts": 9,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 8,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7327931284442415,
+            "exaggeration": 0.4124737314035375,
+            "temperature": 0.3624261660877658,
+            "top_p": 0.9429180617416193,
+            "min_p": 0.1468741924855389,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.36897834353043324,
+            "exaggeration": 0.08991449312793223,
+            "temperature": 0.2961366893039927,
+            "top_p": 0.8347629731365452,
+            "min_p": 0.10084144069502973,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7215211019438265,
+            "exaggeration": 0.7250793535952931,
+            "temperature": 0.6786019584059528,
+            "top_p": 0.7583940842083418,
+            "min_p": 0.18055715106606607,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3625399805313877,
+            "temperature": 0.3004294203599964,
+            "top_p": 0.773851733541271,
+            "min_p": 0.0017680909247317078,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.35377157236820356,
+            "exaggeration": 0.44142641346945244,
+            "temperature": 0.4708390645161886,
+            "top_p": 0.9104468251568205,
+            "min_p": 0.1942178610635824,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.711227053785983,
+            "exaggeration": 0.2354813185704948,
+            "temperature": 0.0708530137436361,
+            "top_p": 0.8383982842609294,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.39964534094311743,
+            "exaggeration": 0.19951718775176427,
+            "temperature": 0.6943179390154008,
+            "top_p": 0.7274528230595801,
+            "min_p": 0.10449617220025181,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.8470161190132868,
+            "exaggeration": 0.5349800140742051,
+            "temperature": 0.417813977910906,
+            "top_p": 0.9882124555637982,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "我从他们那里逃脱了，但如果你没有给我包扎伤口，我就会死。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-046",
+      "attempts": 8,
+      "best_quality_score": 20.0,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6770520668051883,
+            "exaggeration": 0.4297399483791047,
+            "temperature": 0.436014333840965,
+            "top_p": 0.9532978238149421,
+            "min_p": 0.11296809481251416,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3536548647476504,
+            "exaggeration": 0.26653576011334285,
+            "temperature": 0.4466489581958365,
+            "top_p": 0.8763041057505043,
+            "min_p": 0.23150521739083652,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6565647442732621,
+            "exaggeration": 0.6708134477031237,
+            "temperature": 0.8138613745594762,
+            "top_p": 0.8174881501518502,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.8928681998794884,
+            "exaggeration": 0.2086305615746226,
+            "temperature": 0.059699346683323745,
+            "top_p": 0.9461193712956896,
+            "min_p": 0.0024398095211933257,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6678308232024077,
+            "exaggeration": 0.20461275677675908,
+            "temperature": 0.3791650741301941,
+            "top_p": 0.8100105842633502,
+            "min_p": 0.075441358102178,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4829528136313396,
+            "exaggeration": 0.11549584673519656,
+            "temperature": 0.3609676942627142,
+            "top_p": 0.7073148628492896,
+            "min_p": 0.032709998182926234,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4501917682984825,
+            "exaggeration": 0.539440113801326,
+            "temperature": 0.6775490179016092,
+            "top_p": 0.7338268999790322,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2682315931118163,
+            "temperature": 0.22843911461904465,
+            "top_p": 0.8408070176218483,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3274567302775038,
+            "exaggeration": 0.4858786792026254,
+            "temperature": 0.5091166090699507,
+            "top_p": 0.7707432850673012,
+            "min_p": 0.14582293841923502,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7306342608566347,
+            "exaggeration": 0.0,
+            "temperature": 0.23133249874142198,
+            "top_p": 0.8885304221519957,
+            "min_p": 0.12207751037290523,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.4492600886525244,
+            "exaggeration": 0.16061778074001515,
+            "temperature": 0.5649716936212912,
+            "top_p": 0.7320874059786429,
+            "min_p": 0.19223096556747177,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "国王尽其所能地清洗了伤口，用自己的手帕和隐士的毛巾包扎起来。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-026",
+      "attempts": 7,
+      "best_quality_score": 20.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8074875736351838,
+            "exaggeration": 0.2485250902992921,
+            "temperature": 0.6283856603079111,
+            "top_p": 0.9063164421352201,
+            "min_p": 0.24694672986357502,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.40724868965900884,
+            "exaggeration": 0.33123979374846535,
+            "temperature": 0.4217008090483628,
+            "top_p": 0.9524287523370134,
+            "min_p": 0.11318451608838101,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6735628674280574,
+            "exaggeration": 0.5485300687005987,
+            "temperature": 0.7016912055334388,
+            "top_p": 0.9589146980646533,
+            "min_p": 0.001181879943695091,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8991441567520473,
+            "exaggeration": 0.24271037819086122,
+            "temperature": 0.2667277063125133,
+            "top_p": 0.7767122024552909,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9108064110331349,
+            "exaggeration": 0.4146943389727883,
+            "temperature": 0.5192813712789617,
+            "top_p": 0.9256080879216437,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6240310764580979,
+            "exaggeration": 0.1688277040827712,
+            "temperature": 0.43179085240490134,
+            "top_p": 0.7559240030020082,
+            "min_p": 0.14812642574834442,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6921999039650741,
+            "exaggeration": 0.5059941495140741,
+            "temperature": 0.5820126481103589,
+            "top_p": 0.7899048453539177,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3440403291117671,
+            "temperature": 0.3210801879386118,
+            "top_p": 0.8443276757065464,
+            "min_p": 0.03199246878301605,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4334825523802281,
+            "exaggeration": 0.6100291010309443,
+            "temperature": 0.6204767435222746,
+            "top_p": 0.8174887254136967,
+            "min_p": 0.00818101946127836,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5853043356988101,
+            "exaggeration": 0.01797806822548599,
+            "temperature": 0.05,
+            "top_p": 0.753338791413619,
+            "min_p": 0.047283333956559676,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "隐士听了国王的话，但什么也没回答，而是往手上吐了口唾沫，又开始挖土。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-053",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8395317027252102,
+            "exaggeration": 0.38553177447462317,
+            "temperature": 0.4132832270386178,
+            "top_p": 0.852841466537096,
+            "min_p": 0.1814129533662475,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5929905205913504,
+            "exaggeration": 0.3233379348720147,
+            "temperature": 0.31002065866639467,
+            "top_p": 0.7437728667154903,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.46132917138459734,
+            "exaggeration": 0.4566264523963489,
+            "temperature": 0.5675930329795371,
+            "top_p": 0.9479025975914883,
+            "min_p": 0.12263914981345084,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8672845246066463,
+            "exaggeration": 0.2443580010943449,
+            "temperature": 0.5596896368776013,
+            "top_p": 0.9033112238913378,
+            "min_p": 0.19170653702689294,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6412041868495109,
+            "exaggeration": 0.05967831295777318,
+            "temperature": 0.36167060533879997,
+            "top_p": 0.9220083426741797,
+            "min_p": 0.04232937828717584,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5999830480050146,
+            "exaggeration": 0.5597645428458261,
+            "temperature": 0.840214677208827,
+            "top_p": 0.7623545697764296,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22197950135575717,
+            "temperature": 0.25551380280936686,
+            "top_p": 0.701590840787695,
+            "min_p": 0.057072508017161655,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.46617657086788805,
+            "exaggeration": 0.5379329050271366,
+            "temperature": 0.449332424780445,
+            "top_p": 0.9150816062412732,
+            "min_p": 0.18893104023427842,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "伤者闭上眼睛，安静下来。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-082",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "final_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7370736613594545,
+            "exaggeration": 0.3028089541225701,
+            "temperature": 0.35091084936723216,
+            "top_p": 0.9398101912326398,
+            "min_p": 0.09859764901650611,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6034228370938197,
+            "exaggeration": 0.20666966671375317,
+            "temperature": 0.38861022233717235,
+            "top_p": 0.7230735692792821,
+            "min_p": 0.12832694099721034,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "final_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.5357140671607863,
+            "exaggeration": 0.7204501307980912,
+            "temperature": 0.7515802522615854,
+            "top_p": 0.9605831203208943,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.968947921106239,
+            "exaggeration": 0.31913789756335953,
+            "temperature": 0.20415392548610786,
+            "top_p": 0.9035232746487765,
+            "min_p": 0.22095548376457574,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "stacked_words",
+            "word_cluster"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.48582394830188225,
+            "exaggeration": 0.594173678950313,
+            "temperature": 0.6346910356287132,
+            "top_p": 0.9472174442906052,
+            "min_p": 0.20272891722089637,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 138,
+      "text_preview": "——那么请记住，——隐士说，——最重要的时间只有一个：现在，——它之所以最重要，是因为只有在现在这个时刻我们才能主宰自己；最需要的人就是你现在正在与之打交道的人",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6879761848378959,
+            "exaggeration": 0.2763391959283521,
+            "temperature": 0.43212363950214405,
+            "top_p": 0.9364852033869093,
+            "min_p": 0.1150748826676852,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5419833935141913,
+            "exaggeration": 0.10322183077574626,
+            "temperature": 0.401446881718708,
+            "top_p": 0.7134946552881631,
+            "min_p": 0.18711228930680995,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6520612707810979,
+            "exaggeration": 0.6500767537954968,
+            "temperature": 0.7301153685599933,
+            "top_p": 0.8914097102211289,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8606597993501448,
+            "exaggeration": 0.19511548201010484,
+            "temperature": 0.25045888755172424,
+            "top_p": 0.7797327211392406,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "想到这里，国王在他的王国里宣布，谁能教会他如何知道做每件事的正确时机，如何知道哪些人最需要，以及如何不在判断哪件事最重要时犯错，他就给谁巨大的奖赏。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-028",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8705834448715806,
+            "exaggeration": 0.16003713240002634,
+            "temperature": 0.444374206735079,
+            "top_p": 0.7695609099607272,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.6208505581799167,
+            "exaggeration": 0.33322107622131414,
+            "temperature": 0.20751835373958086,
+            "top_p": 0.9341987768311085,
+            "min_p": 0.23129564705838068,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9145764663832672,
+            "exaggeration": 0.32630977354983404,
+            "temperature": 0.5537424766909783,
+            "top_p": 0.95061328530677,
+            "min_p": 0.031234225743031085,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37091045681421975,
+            "exaggeration": 0.25794296126077854,
+            "temperature": 0.3720768459650731,
+            "top_p": 0.743641463289866,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5640861201279143,
+            "exaggeration": 0.4814743579113571,
+            "temperature": 0.8077996316326298,
+            "top_p": 0.9946556228966805,
+            "min_p": 0.2074752469818174,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.9287447356523759,
+            "exaggeration": 0.22784059825769507,
+            "temperature": 0.17406303537052073,
+            "top_p": 0.7389675701585073,
+            "min_p": 0.10680309439435473,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "——让我来帮你吧。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6925021230479163,
+            "exaggeration": 0.3227260331342926,
+            "temperature": 0.4372425034837554,
+            "top_p": 0.7582359102023211,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4302137766620403,
+            "exaggeration": 0.3476493903635649,
+            "temperature": 0.26154078086115895,
+            "top_p": 0.7566565714777171,
+            "min_p": 0.21195356313371927,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5882357662846158,
+            "exaggeration": 0.4954118450622112,
+            "temperature": 0.6903642389486575,
+            "top_p": 0.9459423619812095,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.16814453422665426,
+            "temperature": 0.07673755710029734,
+            "top_p": 0.8735759414156354,
+            "min_p": 0.10457214195757755,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "过了一个小时，又过了一个小时。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7086333409695492,
+            "exaggeration": 0.3069219266534389,
+            "temperature": 0.5053752491368051,
+            "top_p": 0.8044392049893311,
+            "min_p": 0.1252389822838989,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5171151331669736,
+            "exaggeration": 0.08110458726945141,
+            "temperature": 0.3700689159629803,
+            "top_p": 0.9313638872285744,
+            "min_p": 0.0,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4695216548724547,
+            "exaggeration": 0.5770331721701352,
+            "temperature": 0.7010183054945782,
+            "top_p": 0.707379673022834,
+            "min_p": 0.19007981949743294,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "隐士又瘦又弱，把铁锹插进土里，翻起小块泥土时，喘得很厉害。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 4,
+      "best_quality_score": 4.48,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.8820442178219334,
+            "exaggeration": 0.1776169277707388,
+            "temperature": 0.5538412338173728,
+            "top_p": 0.9437932013970673,
+            "min_p": 0.16918853506979334,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.5419386521530546,
+            "exaggeration": 0.17993940381285894,
+            "temperature": 0.22484692585556781,
+            "top_p": 0.9984384514799344,
+            "min_p": 0.07640814477595079,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.5836561199377737,
+            "exaggeration": 0.6239462655671524,
+            "temperature": 0.6211386513928541,
+            "top_p": 0.8382823187115799,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "——你累了，——国王说。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-037",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8041545490806552,
+            "exaggeration": 0.4429092008211465,
+            "temperature": 0.589450166619522,
+            "top_p": 0.7259382554811826,
+            "min_p": 0.06021487727701126,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4382061482262105,
+            "exaggeration": 0.21201959894221356,
+            "temperature": 0.20921878335163696,
+            "top_p": 0.9457496599747824,
+            "min_p": 0.09583173209207471,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6206145659213913,
+            "exaggeration": 0.5438919689361348,
+            "temperature": 0.5674736342682363,
+            "top_p": 0.9242804511995482,
+            "min_p": 0.12499063416089387,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "——我来找你，智者，是为了得到我问题的答案。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-045",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.779177481620221,
+            "exaggeration": 0.40261798314562647,
+            "temperature": 0.5776330832883878,
+            "top_p": 0.8512611757975962,
+            "min_p": 0.10958287308380396,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4688499615941717,
+            "exaggeration": 0.30887289757770453,
+            "temperature": 0.4454157258197545,
+            "top_p": 0.7756559306502375,
+            "min_p": 0.2281110134492646,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 55.0,
+          "params": {
+            "cfg_weight": 0.5359703460678126,
+            "exaggeration": 0.7481915850975359,
+            "temperature": 0.5515805432253365,
+            "top_p": 0.8913503048306576,
+            "min_p": 0.17974635255172816,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6954989592429963,
+            "exaggeration": 0.37108251343322707,
+            "temperature": 0.43730045688604124,
+            "top_p": 0.9980438010586132,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3947392441323732,
+            "exaggeration": 0.09090196956554863,
+            "temperature": 0.29514772230827313,
+            "top_p": 0.9406724447985931,
+            "min_p": 0.01584087619610826,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.6695003860178743,
+            "exaggeration": 0.6895923249267636,
+            "temperature": 0.8460369868484365,
+            "top_p": 0.7526422757052587,
+            "min_p": 0.002456946220005446,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 11,
+      "text_preview": "腹部有一个很大的伤口。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-058",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8734706354402448,
+            "exaggeration": 0.3592150331036863,
+            "temperature": 0.42177348347576876,
+            "top_p": 0.7865544219405615,
+            "min_p": 0.2047310358627069,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6030153615340914,
+            "exaggeration": 0.1365396741832779,
+            "temperature": 0.17437696044829878,
+            "top_p": 0.8071472080980678,
+            "min_p": 0.02098351224487985,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4855121031259798,
+            "exaggeration": 0.5504624397382885,
+            "temperature": 0.6443188887601682,
+            "top_p": 0.8908880426097218,
+            "min_p": 0.0905623503281506,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "我是你的敌人，就是那个发誓要报复你的人，因为你处死了我的兄弟，夺走了我的财产。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-070",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7123360887627015,
+            "exaggeration": 0.24784418905881683,
+            "temperature": 0.567725712827549,
+            "top_p": 0.8003701419705535,
+            "min_p": 0.19445812996738238,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5014876746735979,
+            "exaggeration": 0.1839385595205167,
+            "temperature": 0.24050881483728012,
+            "top_p": 0.8245011764089581,
+            "min_p": 0.06170559927031696,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5139986774771472,
+            "exaggeration": 0.722758393935224,
+            "temperature": 0.7823365034119356,
+            "top_p": 0.9924245152560568,
+            "min_p": 0.0,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "隐士在院子里，跪着在昨天挖好的畦垄里播种。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-081",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8457957831266885,
+            "exaggeration": 0.31778207885211407,
+            "temperature": 0.41853833322838035,
+            "top_p": 0.9070724527569134,
+            "min_p": 0.21734171644535127,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6330497021498898,
+            "exaggeration": 0.2621805464860179,
+            "temperature": 0.19548340644350395,
+            "top_p": 0.8143508727833423,
+            "min_p": 0.08482982722858298,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7036873450604619,
+            "exaggeration": 0.6990784417393974,
+            "temperature": 0.5847790477651544,
+            "top_p": 0.782226432446596,
+            "min_p": 0.2419409581425404,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "因此，最需要的人就是他，最重要的事就是你为他做的事。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.7355899033190929,
+            "exaggeration": 0.22494494898145556,
+            "temperature": 0.46440263080282873,
+            "top_p": 0.9708869152195545,
+            "min_p": 0.17248645341718824,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5985043503846101,
+            "exaggeration": 0.24014495307097505,
+            "temperature": 0.3452985018793431,
+            "top_p": 0.8859078161418245,
+            "min_p": 0.12952418800438534,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5541275942809937,
+            "exaggeration": 0.6419128477599599,
+            "temperature": 0.5648692671548589,
+            "top_p": 0.7091650012750493,
+            "min_p": 0.1374157174181942,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2285153879687663,
+            "temperature": 0.34971084300628064,
+            "top_p": 0.8280143053086035,
+            "min_p": 0.07755929944254564,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4301385797074233,
+            "exaggeration": 0.6241502627434163,
+            "temperature": 0.38740676627415793,
+            "top_p": 0.7093986480357758,
+            "min_p": 0.11699529123317995,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.7966112365946596,
+            "exaggeration": 0.341763752295041,
+            "temperature": 0.4979265568196123,
+            "top_p": 0.7089477065662624,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5123058835526872,
+            "exaggeration": 0.3146166811831109,
+            "temperature": 0.18894396119386953,
+            "top_p": 0.7337130613119469,
+            "min_p": 0.04369035955418854,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "学者们开始来到国王面前，对他的问题给出了不同的回答。",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 19,
+      "avg_delta": {
+        "cfg_weight": -0.044,
+        "temperature": 0.136,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.109,
+        "temperature": 0.105,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.051,
+        "temperature": 0.37,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

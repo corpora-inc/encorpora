@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "nl",
+  "timestamp": "2026-04-20T11:04:12.421571+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 266,
+  "segments_converged_by_retry": 29,
+  "segments_plateau_stopped": 8,
+  "total_retries": 73,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch02-105",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Toen, in november 1807, stierf Zheng Yi."
+    },
+    {
+      "id": "ch03-143",
+      "attempts": 6,
+      "best_quality_score": 3.52,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "De piraat die de goederen buitmaakte, ontving 20 procent."
+    },
+    {
+      "id": "ch05-241",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Het machtsevenwicht was drastisch verschoven."
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Chinese jonken vervoerden zijde, porselein en thee naar havens in heel Zuidoost-"
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "De Qing-keizers waren Mantsjoe, geen Han-Chinezen."
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "De vrouw die Zheng Yi Sao zou worden, werd geboren rond 1775."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ze domineerde de hele Zuid-Chinese Zee."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao zette haar voordeel meedogenloos door."
+    },
+    {
+      "id": "ch03-160",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ze vestigde bases op eilanden en in verborgen riviermondingen."
+    },
+    {
+      "id": "ch05-267",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ze vestigde zich in Canton met Zhang Bao."
+    },
+    {
+      "id": "ch05-275",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ze stierf in 1844, op ongeveer 69-jarige leeftijd."
+    },
+    {
+      "id": "ch01-053",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Een wereld van enorme rijkdom en schrijnende armoede, gescheiden door een smalle"
+    },
+    {
+      "id": "ch02-064",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ze wordt in Chinese bronnen meestal Shi Xianggu genoemd."
+    },
+    {
+      "id": "ch03-122",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao sloot een alliantie met Zhang Bao die zowel persoonlijk als strateg"
+    },
+    {
+      "id": "ch03-159",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Haar vloot breidde haar territorium uit langs de hele kust van Guangdong."
+    },
+    {
+      "id": "ch04-198",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao's inlichtingennetwerk was een van haar grootste wapens."
+    },
+    {
+      "id": "ch05-226",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tegen 1810 begonnen er scheuren te ontstaan in de confederatie."
+    },
+    {
+      "id": "ch05-261",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zhang Bao werd benoemd tot luitenant in de Qing-marine met het bevel over 20 sch"
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ze werden op het water geboren, werkten op het water en stierven op het water."
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 2,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "text_preview": "Dit was de wereld die Zheng Yi Sao voortbracht."
+    }
+  ]
+}

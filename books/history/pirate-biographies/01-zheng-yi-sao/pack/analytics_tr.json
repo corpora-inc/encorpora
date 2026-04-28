@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "tr",
+  "timestamp": "2026-04-20T18:49:29.964277+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 245,
+  "segments_converged_by_retry": 22,
+  "segments_plateau_stopped": 36,
+  "total_retries": 156,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch02-105",
+      "attempts": 7,
+      "best_quality_score": 4.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sonra bin sekiz yüz yedinin Kasım ayında Zheng Yi öldü."
+    },
+    {
+      "id": "ch03-170",
+      "attempts": 7,
+      "best_quality_score": 4.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bin sekiz yüz dokuza gelindiğinde Qing-Portekiz ittifakı onu yenmeyi başaramamış"
+    },
+    {
+      "id": "ch04-194",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Filonun savaş gemileri müthiş savaş makineleriydi."
+    },
+    {
+      "id": "ch02-065",
+      "attempts": 6,
+      "best_quality_score": 3.2,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao ismi basitçe Zheng Yi'nin karısı anlamına gelir."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 6,
+      "best_quality_score": 3.2,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tüm Güney Çin Denizi'ne hâkimdi."
+    },
+    {
+      "id": "ch05-232",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zhang Bao'dan ve dolayısıyla Zheng Yi Sao'dan emir almaktan rahatsızdı."
+    },
+    {
+      "id": "ch05-272",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ölümü tam askerî törenlerle anıldı."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing imparatorları Han Çinlisi değil, Mançu'ydu."
+    },
+    {
+      "id": "ch04-221",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao bu toplumu mutlak bir otoriteyle yönetiyordu."
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 4,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "On sekizinci yüzyılın sonlarında güney Çin'de yoksulluk içinde doğdu."
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ancak bin yedi yüzlü yılların sonlarında Qing hanedanı zayıflamaya başlamıştı."
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 4,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "İlerinde Zheng Yi Sao olarak tanınacak kadın bin yedi yüz yetmiş beş civarında d"
+    },
+    {
+      "id": "ch02-064",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Çin kaynaklarında en yaygın olarak Shi Xianggu olarak anılır."
+    },
+    {
+      "id": "ch02-086",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi onun şartlarını kabul etti."
+    },
+    {
+      "id": "ch02-094",
+      "attempts": 4,
+      "best_quality_score": 4.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bin yedi yüz doksan sekiz ile bin sekiz yüz beş yılları arasında Zheng Yi ittifa"
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bin sekiz yüz beşe gelindiğinde konfederasyon tamamlanmıştı."
+    },
+    {
+      "id": "ch03-134",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Yasa katı ve ayrıntılıydı."
+    },
+    {
+      "id": "ch03-144",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kalan yüzde sekseni ortak fona giderdi."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao üstünlüğünü acımasızca kullandı."
+    },
+    {
+      "id": "ch03-162",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing hükûmeti yeni bir strateji denedi."
+    }
+  ]
+}

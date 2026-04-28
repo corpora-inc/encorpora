@@ -1,0 +1,389 @@
+{
+  "book_id": "pack",
+  "language": "ar",
+  "timestamp": "2026-04-21T17:37:25.186734+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 502,
+  "segments_converged_by_retry": 86,
+  "segments_plateau_stopped": 25,
+  "total_retries": 207,
+  "error_distribution": {
+    "trailing_silence": 50,
+    "tail_energy": 9,
+    "transcription_mismatch": 8,
+    "tail_spike": 6,
+    "first_word_weak": 2,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 47.17012166976929,
+    "align": 18.24195098876953,
+    "validate": 6.929211139678955,
+    "trim": 0.04106712341308594,
+    "master": 0.8560512065887451
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-287",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "لاعبو الخصم عالقون في مواقع متقدمة."
+    },
+    {
+      "id": "ch01-030",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "أنتَ تمنع الفريق الآخر من التسجيل."
+    },
+    {
+      "id": "ch01-074",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "كل فريق عظيم يحتاج كنّاساً عظيماً."
+    },
+    {
+      "id": "ch03-162",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.688746821501865,
+            "exaggeration": 0.3565514178644024,
+            "temperature": 0.4063624075786333,
+            "top_p": 0.7328150760449157,
+            "min_p": 0.2048743865246442,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.7268031443186105,
+            "exaggeration": 0.0041760823540331615,
+            "temperature": 0.3361176553823448,
+            "top_p": 0.894795355974147,
+            "min_p": 0.3022777691050469,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7844771143634037,
+            "exaggeration": 0.6288262193282974,
+            "temperature": 0.7807584494789591,
+            "top_p": 0.9093321411505444,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4646491834577129,
+            "temperature": 0.0967260375569326,
+            "top_p": 0.8520079964146459,
+            "min_p": 0.14888323348131202,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.4331992939921191,
+            "exaggeration": 0.32905025101062885,
+            "temperature": 0.6893486169970713,
+            "top_p": 1.0,
+            "min_p": 0.2081276628041638,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "التقدّم"
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "مركز الكنّاس يتطلّب أذكى لاعب."
+    },
+    {
+      "id": "ch02-124",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "تستطيع أن تتحرك وتقطع التمريرة."
+    },
+    {
+      "id": "ch04-243",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "الفريق الآخر في غير موقعه."
+    },
+    {
+      "id": "ch06-446",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "عندما يرتكب زميل خطأً، ابقَ إيجابياً."
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "تلعب خلف المدافعَيْن، أمام حارس المرمى."
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "أنتَ خط الدفاع الأخير قبل المرمى."
+    },
+    {
+      "id": "ch02-099",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.6473779429026922,
+            "exaggeration": 0.16130425654331032,
+            "temperature": 0.39045550857819383,
+            "top_p": 0.9068792211342326,
+            "min_p": 0.03891108888945341,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.26292446577578044,
+            "exaggeration": 0.07646915537904453,
+            "temperature": 0.22713284036006165,
+            "top_p": 0.6285888219661797,
+            "min_p": 0.2793442931174239,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5312436337070952,
+            "exaggeration": 0.36786062266560793,
+            "temperature": 0.4749373197529835,
+            "top_p": 0.7900806965469547,
+            "min_p": 0.12192315550828134,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "كل بضع ثوانٍ، امسح الملعب كله مرة أخرى."
+    },
+    {
+      "id": "ch02-117",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "راقب أين تنظر عينا ذلك اللاعب."
+    },
+    {
+      "id": "ch02-140",
+      "attempts": 4,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "ابقَ في الوسط وعدّل موقعك."
+    },
+    {
+      "id": "ch02-143",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "مدافعوك يتعاملون مع المناطق الجانبية."
+    },
+    {
+      "id": "ch03-164",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "لا تنتظر المهاجم ليستلم الكرة ويلتفت."
+    },
+    {
+      "id": "ch03-173",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "أفضل طريقة للفوز بالكرة هي قطع التمريرة."
+    },
+    {
+      "id": "ch03-220",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "مدافعوك يعرفون أنك خلفهم."
+    },
+    {
+      "id": "ch04-246",
+      "attempts": 4,
+      "best_quality_score": 6.4,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "مهاجموك بدأوا بالالتفات والجري للأمام."
+    },
+    {
+      "id": "ch04-264",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "ترى فجوة بين مدافعَيْن."
+    },
+    {
+      "id": "ch04-277",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "ليست كل تمريرة قاتلة طويلة."
+    }
+  ]
+}

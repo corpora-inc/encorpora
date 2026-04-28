@@ -1,0 +1,353 @@
+{
+  "book_id": "pack",
+  "language": "ar",
+  "timestamp": "2026-04-23T00:32:35.676503+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 499,
+  "segments_converged_by_retry": 101,
+  "segments_plateau_stopped": 33,
+  "total_retries": 240,
+  "error_distribution": {
+    "transcription_mismatch": 11,
+    "trailing_silence": 10,
+    "tail_energy": 3,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 95.94802403450012,
+    "align": 26.05280303955078,
+    "validate": 22.053842544555664,
+    "trim": 0.15771937370300293,
+    "master": 3.817451238632202
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 304,
+      "passed": 228,
+      "rate": 0.75
+    },
+    "medium_30_80": {
+      "total": 320,
+      "passed": 263,
+      "rate": 0.821875
+    },
+    "long_80_plus": {
+      "total": 9,
+      "passed": 8,
+      "rate": 0.8888888888888888
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch08-639",
+      "attempts": 9,
+      "best_quality_score": 1.6,
+      "best_attempt": 5,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 25,
+      "text_preview": "فوز أو خسارة، قمت بمهمتك.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-536",
+      "attempts": 7,
+      "best_quality_score": 5.36,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 21,
+      "text_preview": "كلتا الخطتين ناجحتان.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-339",
+      "attempts": 6,
+      "best_quality_score": 4.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 22,
+      "text_preview": "افرد أصابعك على اتساع.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-348",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "الأيدي الناعمة تمتص قوة التسديدة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-439",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 49,
+      "text_preview": "استخدم الرمية عندما ترى لاعب جناح في مساحة فارغة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-538",
+      "attempts": 5,
+      "best_quality_score": 4.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "ابقَ على خطك حتى تُركل الكرة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-611",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "قد تسقط كرة كان عليك إمساكها.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-616",
+      "attempts": 5,
+      "best_quality_score": 5.68,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 39,
+      "text_preview": "التقط الكرة، أعد ضبط نفسك، وامضِ قدمًا.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 31,
+      "text_preview": "أنت آخر لاعب بين الكرة والشبكة.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-038",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "أنت تحذرهم عندما يكون لاعب خلفهم.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-043",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 40,
+      "text_preview": "عندما تكون هادئًا، يشعر مدافعوك بالهدوء.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "ابقَ على أطراف أصابع قدميك.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-073",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 30,
+      "text_preview": "أفضل حراس المرمى يحبون مركزهم.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-087",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 21,
+      "text_preview": "ارتدِ قفازاتك مبكرًا.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-110",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.6526048364932042,
+            "exaggeration": 0.36849102427005803,
+            "temperature": 0.3862596577518853,
+            "top_p": 0.941649685275908,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.6572588759635536,
+            "exaggeration": 0.3180885165053982,
+            "temperature": 0.20208672427326252,
+            "top_p": 0.8665370096379623,
+            "min_p": 0.3090798108526741,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.3714875444957845,
+            "exaggeration": 0.6802388977922487,
+            "temperature": 0.5734999821881683,
+            "top_p": 0.7252950902050934,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "تحرك جانبيًا عبر المرمى.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-117",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 11,
+      "text_preview": "اكتشف مداك.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-155",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 45,
+      "text_preview": "قف في وسط المرمى، تمامًا على ذلك الخط الوهمي.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-185",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 22,
+      "text_preview": "أنت الكاسح خلف الكاسح.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-208",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 51,
+      "text_preview": "قل \"كتف شمال\" لتحذير مدافع من لاعب خلفه على اليسار.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-231",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 40,
+      "text_preview": "راقب أين يركل حارس المرمى المنافس الكرة.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.051,
+        "temperature": 0.107,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

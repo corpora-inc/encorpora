@@ -1,0 +1,653 @@
+{
+  "book_id": "pack",
+  "language": "da",
+  "timestamp": "2026-04-22T18:56:26.148530+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 513,
+  "segments_converged_by_retry": 85,
+  "segments_plateau_stopped": 35,
+  "total_retries": 240,
+  "error_distribution": {
+    "final_word_weak": 30,
+    "trailing_silence": 26,
+    "transcription_mismatch": 12,
+    "tail_spike": 7,
+    "tail_energy": 7,
+    "hard_ending": 3
+  },
+  "phase_timings": {
+    "tts": 24.040748596191406,
+    "align": 10.377537727355957,
+    "validate": 0.36009716987609863,
+    "trim": 0.04081106185913086,
+    "master": 0.6009533405303955
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 196,
+      "passed": 154,
+      "rate": 0.7857142857142857
+    },
+    "medium_30_80": {
+      "total": 401,
+      "passed": 325,
+      "rate": 0.8104738154613467
+    },
+    "long_80_plus": {
+      "total": 36,
+      "passed": 34,
+      "rate": 0.9444444444444444
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-385",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Spring hurtigt op på benene igen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-563",
+      "attempts": 6,
+      "best_quality_score": 3.52,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 49,
+      "text_preview": "Dit sind holder dig skarp, når kampen er langsom.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7982584848628906,
+            "exaggeration": 0.4564221227339438,
+            "temperature": 0.6298406691058331,
+            "top_p": 0.8129720192911314,
+            "min_p": 0.051433019222879045,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.6095191710492713,
+            "exaggeration": 0.26607283727419623,
+            "temperature": 0.4995708250558428,
+            "top_p": 0.947170276679955,
+            "min_p": 0.2308698092988737,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.5046660148636023,
+            "exaggeration": 0.5840523358523046,
+            "temperature": 0.6570078247118336,
+            "top_p": 0.787317357865644,
+            "min_p": 0.3030420273442156,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.9790295762389185,
+            "exaggeration": 0.12322145450829397,
+            "temperature": 0.05,
+            "top_p": 0.9139809537484036,
+            "min_p": 0.05060462719646883,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "Åbn og luk dine knytnæver.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-118",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Vid, hvor dine spark lander.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-201",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 39,
+      "text_preview": "Dine forsvarsspillere kigger på bolden.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-218",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7009782740043691,
+            "exaggeration": 0.29694395222861414,
+            "temperature": 0.46834296833645805,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4351951902370695,
+            "exaggeration": 0.09026934581564333,
+            "temperature": 0.5121306613056602,
+            "top_p": 1.0,
+            "min_p": 0.1252263717785542,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.440785025495561,
+            "exaggeration": 0.8281059953037544,
+            "temperature": 0.9408123421266115,
+            "top_p": 1.0,
+            "min_p": 0.225754040088555,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.05229438918633594,
+            "temperature": 0.07500226199843735,
+            "top_p": 0.6099235571055208,
+            "min_p": 0.2548289901922841,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Hold dine fødder i bevægelse, selv når bolden er langt væk.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-310",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8626282000917327,
+            "exaggeration": 0.0881678479429871,
+            "temperature": 0.588528945083562,
+            "top_p": 1.0,
+            "min_p": 0.16856303531103264,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.633503809806643,
+            "exaggeration": 0.35984847684900234,
+            "temperature": 0.20128046264318156,
+            "top_p": 0.7486549027894319,
+            "min_p": 0.13738205226344333,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6496575744715477,
+            "exaggeration": 0.8117154396240381,
+            "temperature": 0.8400754478893868,
+            "top_p": 0.6823249084712559,
+            "min_p": 0.07705450461630178,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4524893359298194,
+            "temperature": 0.3903987764596602,
+            "top_p": 0.916770722207322,
+            "min_p": 0.17419274509168045,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "Hvis angriberen er langt fra mål, behøver du ikke storme ud.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-322",
+      "attempts": 5,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 72,
+      "text_preview": "Sig til dine forsvarsspillere, at de skal dække afleveringsmulighederne.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-350",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9653502951749278,
+            "exaggeration": 0.1449694461820436,
+            "temperature": 0.5992182081249955,
+            "top_p": 0.9454440747441093,
+            "min_p": 0.0375431090527866,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3104874691755466,
+            "exaggeration": 0.4059842205131928,
+            "temperature": 0.3431423365459662,
+            "top_p": 0.9183507504296213,
+            "min_p": 0.20992338031614302,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5269254301670562,
+            "exaggeration": 0.6839016637162191,
+            "temperature": 0.46143031865064377,
+            "top_p": 0.8082800547763009,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9890774241868537,
+            "exaggeration": 0.2844540938767071,
+            "temperature": 0.08663168643226488,
+            "top_p": 0.6514145197162982,
+            "min_p": 0.053272998673663224,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Når skuddet er lavt og til siden, så kast dig.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-453",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 30,
+      "text_preview": "Spark bolden rent med vristen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-580",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 52,
+      "text_preview": "De bedste målmænd har kort hukommelse under en kamp.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 35,
+      "text_preview": "Du skubber bolden rundt om stolpen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-026",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 17,
+      "text_preview": "Du skal stå fast.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-042",
+      "attempts": 4,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Dine forsvarsspillere kigger på dig for at få retning.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 18,
+      "text_preview": "Du står på tæerne.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-062",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 37,
+      "text_preview": "Nogle børn vil gerne spille angriber.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Gå videre til sværere greb.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-115",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.5549807981277465,
+            "exaggeration": 0.1446043511691762,
+            "temperature": 0.7348439110324259,
+            "top_p": 0.658659410710503,
+            "min_p": 0.21632533468096085,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.38630520844199495,
+            "exaggeration": 0.0,
+            "temperature": 0.2424330878597823,
+            "top_p": 0.8575905868907236,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.4286870632461761,
+            "exaggeration": 0.5044732520421964,
+            "temperature": 0.6449786589256128,
+            "top_p": 0.8412856276962489,
+            "min_p": 0.1281547736846296,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Tag nogle målspark under opvarmningen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-117",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 20,
+      "text_preview": "Find din rækkevidde.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-129",
+      "attempts": 4,
+      "best_quality_score": 22.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 55,
+      "text_preview": "Forestil dig, at du står rank i en en-mod-en-situation.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": 0.081,
+        "temperature": -0.315,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

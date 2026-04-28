@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "fi",
+  "timestamp": "2026-04-20T03:00:15.672662+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 219,
+  "segments_converged_by_retry": 46,
+  "segments_plateau_stopped": 38,
+  "total_retries": 190,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch03-173",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Saon konfederaatio oli valtansa huipulla."
+    },
+    {
+      "id": "ch03-118",
+      "attempts": 6,
+      "best_quality_score": 3.2,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Miehensä kuoleman jälkeisinä päivinä Zheng Yi Sao toimi harkitulla nopeudella."
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 5,
+      "best_quality_score": 3.04,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kanton oli yksi maailman rikkaimmista kaupungeista 1700-luvulla."
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 5,
+      "best_quality_score": 3.52,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kuitenkin 1700-luvun loppuun mennessä Qing-dynastia alkoi heikentyä."
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 5,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Nainen, josta tulisi Zheng Yi Sao, syntyi noin 1775."
+    },
+    {
+      "id": "ch02-084",
+      "attempts": 5,
+      "best_quality_score": 40.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Vaimon odotettiin tottelevan miestään kyseenalaistamatta."
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 5,
+      "best_quality_score": 6.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sitten, marraskuussa 1807, Zheng Yi kuoli."
+    },
+    {
+      "id": "ch03-146",
+      "attempts": 5,
+      "best_quality_score": 3.44,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao rakensi myös hienostuneen verotusjärjestelmän."
+    },
+    {
+      "id": "ch03-148",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Rannikon kalastajakylät maksoivat veroa vastineeksi suojelusta."
+    },
+    {
+      "id": "ch03-151",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Vuonna 1808 massiivinen keisarillinen laivasto purjehti Etelä-Kiinan merelle."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao hyödynsi etuaan hellittämättä."
+    },
+    {
+      "id": "ch03-161",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hänen tiedusteluverkostonsa ulottui Kantonista Vietnamiin."
+    },
+    {
+      "id": "ch04-175",
+      "attempts": 5,
+      "best_quality_score": 3.04,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Valtansa huipulla merirosvokonfederaatio hallitsi noin 1 800 alusta."
+    },
+    {
+      "id": "ch04-198",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Saon tiedusteluverkosto oli yksi hänen suurimmista aseistaan."
+    },
+    {
+      "id": "ch05-228",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing-hallituksen saarrot häiritsivät toimitusketjuja rannikolla."
+    },
+    {
+      "id": "ch05-252",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hän vaati, että Zhang Baolle annetaan virka keisarillisessa laivastossa."
+    },
+    {
+      "id": "ch05-275",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hän kuoli vuonna 1844, noin 69-vuotiaana."
+    },
+    {
+      "id": "ch06-307",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hän rakensi historian suurimman merirosvolaivaston."
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hän syntyi köyhyyteen Etelä-Kiinassa, myöhään 1700-luvulla."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing-keisarit olivat mantšuja, eivät han-kiinalaisia."
+    }
+  ]
+}

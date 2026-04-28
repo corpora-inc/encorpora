@@ -1,0 +1,912 @@
+{
+  "book_id": "pack",
+  "language": "pt",
+  "timestamp": "2026-04-24T09:11:07.250269+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 530,
+  "segments_converged_by_retry": 27,
+  "segments_plateau_stopped": 0,
+  "total_retries": 76,
+  "error_distribution": {
+    "final_word_weak": 43,
+    "trailing_silence": 22,
+    "first_word_weak": 3
+  },
+  "phase_timings": {
+    "tts": 403.39539313316345,
+    "align": 168.1356143951416,
+    "validate": 16.069717168807983,
+    "trim": 0.23014569282531738,
+    "master": 4.342018127441406
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 123,
+      "passed": 119,
+      "rate": 0.967479674796748
+    },
+    "medium_30_80": {
+      "total": 367,
+      "passed": 351,
+      "rate": 0.9564032697547684
+    },
+    "long_80_plus": {
+      "total": 67,
+      "passed": 60,
+      "rate": 0.8955223880597015
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-355",
+      "attempts": 39,
+      "best_quality_score": 0.0,
+      "best_attempt": 38,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3,
+            "temperature": 0.4,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.19552925144578076,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.032658543695005926,
+            "temperature": 0.4,
+            "top_p": 0.7901747491271525,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.510014644393723,
+            "temperature": 0.4,
+            "top_p": 0.9984577180866492,
+            "min_p": 0.3080620116170908,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5275045321519224,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.04147428710786741,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.33115736356541353,
+            "temperature": 0.4,
+            "top_p": 0.6664323333741397,
+            "min_p": 0.22146906886461296,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.0,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.2552909974483989,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.37461079702112626,
+            "temperature": 0.4,
+            "top_p": 0.6216460699577572,
+            "min_p": 0.29001393336383363,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.429344173007842,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.550013014333361,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.28095957167279206,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.9160338971267235,
+            "temperature": 0.4,
+            "top_p": 0.9174392057931062,
+            "min_p": 0.30328669942125797,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5709603889790925,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.040519701550503745,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7811950993664487,
+            "temperature": 0.4,
+            "top_p": 0.7836294575004294,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8404560956104896,
+            "temperature": 0.4,
+            "top_p": 0.8134656850070863,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.9147758201442844,
+            "temperature": 0.4,
+            "top_p": 0.8835944730358292,
+            "min_p": 0.24476353129513087,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5372377978161385,
+            "temperature": 0.4,
+            "top_p": 0.7535230573537581,
+            "min_p": 0.1395036440135692,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.6129247755614986,
+            "temperature": 0.4,
+            "top_p": 0.6250953342202802,
+            "min_p": 0.08705491132128093,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7939618101033645,
+            "temperature": 0.4,
+            "top_p": 0.6067596564740363,
+            "min_p": 0.009529474569570456,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8859046936654645,
+            "temperature": 0.4,
+            "top_p": 0.838113169687811,
+            "min_p": 0.2743256721264933,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.4557435054467473,
+            "temperature": 0.4,
+            "top_p": 0.9219066964210129,
+            "min_p": 0.27138376611288617,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8059651061191524,
+            "temperature": 0.4,
+            "top_p": 0.7811562293852363,
+            "min_p": 0.1000898864661385,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 21,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.615802293811625,
+            "temperature": 0.4,
+            "top_p": 0.6452568122344022,
+            "min_p": 0.12366815628472841,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 22,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.9450321018765704,
+            "temperature": 0.4,
+            "top_p": 0.9957085011835746,
+            "min_p": 0.13552911951714677,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 23,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.892929822183008,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 24,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.9147988254706952,
+            "temperature": 0.4,
+            "top_p": 0.8223607533620636,
+            "min_p": 0.2852029513799862,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 25,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7807105303836266,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.02130610110488687,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 26,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.87809754345811,
+            "temperature": 0.4,
+            "top_p": 0.6713558523600432,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 27,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7323576473650116,
+            "temperature": 0.4,
+            "top_p": 0.6363096316229511,
+            "min_p": 0.3389753135558693,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 28,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8686508670361504,
+            "temperature": 0.4,
+            "top_p": 0.8788225050204366,
+            "min_p": 0.19103252707412807,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 29,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8763222294117814,
+            "temperature": 0.4,
+            "top_p": 0.6586897613272877,
+            "min_p": 0.14916670088822823,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 30,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5773401402117262,
+            "temperature": 0.4,
+            "top_p": 0.718607952575302,
+            "min_p": 0.24342476655315146,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 31,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.726187411742468,
+            "temperature": 0.4,
+            "top_p": 0.8672108886315109,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 32,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.8183327707201837,
+            "temperature": 0.4,
+            "top_p": 0.8258944481739927,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 33,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7940557733821787,
+            "temperature": 0.4,
+            "top_p": 0.8912793462671327,
+            "min_p": 0.30122955807668406,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 34,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7558883657544071,
+            "temperature": 0.4,
+            "top_p": 0.6140459660090898,
+            "min_p": 0.25969871211538054,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 35,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.6884025494720376,
+            "temperature": 0.4,
+            "top_p": 0.9087327449934725,
+            "min_p": 0.09107247374337693,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 36,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5453840189493926,
+            "temperature": 0.4,
+            "top_p": 0.7407028201480604,
+            "min_p": 0.24316816135025374,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 37,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.9378626034106561,
+            "temperature": 0.4,
+            "top_p": 0.7865540294567244,
+            "min_p": 0.1580695097333785,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 38,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.7282029395215572,
+            "temperature": 0.4,
+            "top_p": 0.9148559476161342,
+            "min_p": 0.18661033060630258,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "O líbero geralmente está em ótima posição para receber um passe.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-418",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 48,
+      "text_preview": "Se o líbero disser \"volta,\" volte imediatamente.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-391",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 94,
+      "text_preview": "Agora o ponta tem duas opções: driblar para dentro ou passar a bola para você na",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-489",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 78,
+      "text_preview": "Se o outro time afastar a bola, corra de volta para sua posição imediatamente.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-505",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 31,
+      "text_preview": "Celebre os jogos sem levar gol.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-057",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Sem você, o time desmorona.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-132",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Você é uma peça de um quebra-cabeça de três jogadores.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-509",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.5760756307987764,
+            "exaggeration": 0.23672054582319646,
+            "temperature": 0.5806971410202011,
+            "top_p": 0.917158253355821,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.47491979912646126,
+            "exaggeration": 0.08678630014671412,
+            "temperature": 0.45837005883539317,
+            "top_p": 0.6627169479679536,
+            "min_p": 0.01648521424775992,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "O Trabalho que Ninguém Vê",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-028",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Você vê os olhos do atacante e sabe para onde vai o passe.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-036",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 91,
+      "text_preview": "Quando o jogo fica apertado e cada jogada importa, você é o jogador em quem todo",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-043",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 95,
+      "text_preview": "Toda vez que você impede o outro time de marcar, você dá ao seu time mais uma ch",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-097",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 84,
+      "text_preview": "Mantenha o buraco pequeno ficando a distância de passe do seu parceiro o tempo t",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-151",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 76,
+      "text_preview": "Quanto menos tempo o atacante tem, mais difícil a decisão se torna para ele.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-155",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 79,
+      "text_preview": "Você quer chegar equilibrado e de pé, não se lançando para frente sem controle.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-246",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 61,
+      "text_preview": "Enquanto a bola está no outro lado, verifique seus arredores.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-270",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 80,
+      "text_preview": "Você pode gritar \"estou cobrindo\" para seu parceiro saber que você tem o centro.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-276",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 43,
+      "text_preview": "Não recue demais e fique em cima do líbero.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-301",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 64,
+      "text_preview": "Mantenha o peso do corpo para frente, sem se inclinar para trás.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-357",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 89,
+      "text_preview": "Um passe para um ponta no lado oposto pode pegar o outro time completamente desp",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-370",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 78,
+      "text_preview": "Se você ficar para trás, um buraco enorme se abre entre você e seus atacantes.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}

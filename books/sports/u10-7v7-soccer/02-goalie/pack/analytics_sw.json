@@ -1,13 +1,48 @@
 {
   "book_id": "pack",
   "language": "sw",
-  "timestamp": "2026-04-19T19:17:43.358186+00:00",
-  "segments_total": 629,
-  "segments_first_pass": 263,
-  "segments_converged_by_retry": 198,
-  "segments_plateau_stopped": 168,
-  "total_retries": 1005,
-  "error_distribution": {},
+  "timestamp": "2026-04-22T19:59:07.569059+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 265,
+  "segments_converged_by_retry": 210,
+  "segments_plateau_stopped": 158,
+  "total_retries": 998,
+  "error_distribution": {
+    "transcription_mismatch": 155,
+    "trailing_silence": 46,
+    "final_word_weak": 34,
+    "first_word_weak": 22,
+    "pre_speech_spike": 11,
+    "tail_energy": 7,
+    "min_trailing_silence": 7,
+    "hard_ending": 6,
+    "stacked_words": 4,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 711.0557770729065,
+    "align": 123.80873703956604,
+    "validate": 224.45665502548218,
+    "trim": 0.7770256996154785,
+    "master": 18.602534294128418
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 195,
+      "passed": 123,
+      "rate": 0.6307692307692307
+    },
+    "medium_30_80": {
+      "total": 402,
+      "passed": 124,
+      "rate": 0.30845771144278605
+    },
+    "long_80_plus": {
+      "total": 36,
+      "passed": 18,
+      "rate": 0.5
+    }
+  },
   "worst_segments": [
     {
       "id": "ch01-012",
@@ -16,16 +51,10 @@
       "best_attempt": 5,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Hakuna mchezaji mwingine kwenye timu yako anayeweza kufanya unachofanya wewe."
-    },
-    {
-      "id": "ch07-494",
-      "attempts": 9,
-      "best_quality_score": 3.44,
-      "best_attempt": 5,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "Panga wabeki wako kabla ya kona kiki."
+      "retry_history": [],
+      "text_len": 77,
+      "text_preview": "Hakuna mchezaji mwingine kwenye timu yako anayeweza kufanya unachofanya wewe.",
+      "passed_first": false
     },
     {
       "id": "ch08-601",
@@ -34,7 +63,10 @@
       "best_attempt": 5,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Ukishafanya mazoezi ya kudaivu, unahisi ujasiri kudaivu mchezo unapoendelea."
+      "retry_history": [],
+      "text_len": 76,
+      "text_preview": "Ukishafanya mazoezi ya kudaivu, unahisi ujasiri kudaivu mchezo unapoendelea.",
+      "passed_first": false
     },
     {
       "id": "ch01-044",
@@ -43,7 +75,143 @@
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Unapokuwa na mpangilio, wabeki wako wanabaki na mpangilio."
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Unapokuwa na mpangilio, wabeki wako wanabaki na mpangilio.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-107",
+      "attempts": 8,
+      "best_quality_score": 4.0,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21759345930734497,
+            "temperature": 0.6496413922838746,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.4187096384161522,
+            "exaggeration": 0.06033992617798761,
+            "temperature": 0.08610642535593166,
+            "top_p": 0.8259239995017827,
+            "min_p": 0.009965623439944643,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.5657153045204364,
+            "exaggeration": 0.5529017073230407,
+            "temperature": 0.6930680363067033,
+            "top_p": 0.600566478745621,
+            "min_p": 0.1649005658931426,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.9178123309146667,
+            "exaggeration": 0.14054490151873256,
+            "temperature": 0.20362025112442816,
+            "top_p": 0.7423408384420227,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.3396056532266253,
+            "exaggeration": 0.5947196466577485,
+            "temperature": 0.5663633510472357,
+            "top_p": 0.9583691930461142,
+            "min_p": 0.06087026770582862,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.542465013655943,
+            "exaggeration": 0.07602700994948416,
+            "temperature": 0.12080911807182768,
+            "top_p": 0.907727419110033,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.15283989938637066,
+            "exaggeration": 0.540719900883803,
+            "temperature": 0.775247709771977,
+            "top_p": 0.6280419372375314,
+            "min_p": 0.10736678485041709,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Ardhi inapaswa kukuzoea kabla shuti ya kwanza haijafika.",
+      "passed_first": false
     },
     {
       "id": "ch04-253",
@@ -52,7 +220,10 @@
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Umbo la mwili ulio wazi kwa kawaida linamaanisha pasi."
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Umbo la mwili ulio wazi kwa kawaida linamaanisha pasi.",
+      "passed_first": false
     },
     {
       "id": "ch05-392",
@@ -61,7 +232,10 @@
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Mshambuliaji anaweza kuwa anasubiri mpira ulio huru."
+      "retry_history": [],
+      "text_len": 52,
+      "text_preview": "Mshambuliaji anaweza kuwa anasubiri mpira ulio huru.",
+      "passed_first": false
     },
     {
       "id": "ch07-511",
@@ -70,25 +244,276 @@
       "best_attempt": 7,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Piga kwa ngumi kuelekea pembeni za uwanja, si katikati tena."
+      "retry_history": [],
+      "text_len": 60,
+      "text_preview": "Piga kwa ngumi kuelekea pembeni za uwanja, si katikati tena.",
+      "passed_first": false
     },
     {
       "id": "ch08-597",
       "attempts": 8,
-      "best_quality_score": 2.64,
+      "best_quality_score": 3.52,
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Kila kunapokuwa na kusimama kwa mchezo, angalia glavu zako."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.6559053506735524,
+            "exaggeration": 0.25589512046127966,
+            "temperature": 0.39802893056552796,
+            "top_p": 0.6635178933974855,
+            "min_p": 0.02412617550725346,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6876363466648492,
+            "exaggeration": 0.08006474014358483,
+            "temperature": 0.14352931690155202,
+            "top_p": 1.0,
+            "min_p": 0.17531243009356343,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.3695479508653006,
+            "exaggeration": 0.8040162984116012,
+            "temperature": 0.4551244126033747,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.8024546346090069,
+            "exaggeration": 0.08093644469803957,
+            "temperature": 0.4256579774534232,
+            "top_p": 0.7317504416089533,
+            "min_p": 0.001682690691887062,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.22578709202517194,
+            "exaggeration": 0.3439313616832474,
+            "temperature": 0.43393304197798727,
+            "top_p": 1.0,
+            "min_p": 0.2184797143937066,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.9443942101009939,
+            "exaggeration": 0.1578205223930851,
+            "temperature": 0.05,
+            "top_p": 0.7602111495438277,
+            "min_p": 0.31946818054048076,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.4613693298175182,
+            "exaggeration": 0.48272388668452354,
+            "temperature": 0.5921329619259748,
+            "top_p": 0.8461449601746485,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Kila kunapokuwa na kusimama kwa mchezo, angalia glavu zako.",
+      "passed_first": false
     },
     {
-      "id": "ch08-602",
+      "id": "ch08-616",
       "attempts": 8,
-      "best_quality_score": 2.64,
+      "best_quality_score": 3.44,
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Ukishafanya mazoezi ya kushika, unahisi ujasiri kushika mchezo unapoendelea."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.6730496408155451,
+            "exaggeration": 0.2075201058643168,
+            "temperature": 0.5108001334578278,
+            "top_p": 0.9746849459518045,
+            "min_p": 0.34980148542803524,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.4391778407967567,
+            "exaggeration": 0.4341739294281004,
+            "temperature": 0.10984253064076166,
+            "top_p": 1.0,
+            "min_p": 0.043365146850092934,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.88,
+          "params": {
+            "cfg_weight": 0.8351262084521994,
+            "exaggeration": 0.43979786043628133,
+            "temperature": 0.5994986385212677,
+            "top_p": 0.6434787036740803,
+            "min_p": 0.21581740337936137,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.7840719533679594,
+            "exaggeration": 0.30568734215063936,
+            "temperature": 0.12430800334665287,
+            "top_p": 0.7683419267302999,
+            "min_p": 0.048997394856906934,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.88,
+          "params": {
+            "cfg_weight": 0.5766486741995034,
+            "exaggeration": 0.437755605884385,
+            "temperature": 0.629849647599064,
+            "top_p": 0.9870983443903542,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.88,
+          "params": {
+            "cfg_weight": 0.4787017219065212,
+            "exaggeration": 0.0,
+            "temperature": 0.1578341938242088,
+            "top_p": 0.9575696483989353,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.88,
+          "params": {
+            "cfg_weight": 0.2569435883745474,
+            "exaggeration": 0.3697338861118025,
+            "temperature": 0.8247371610247145,
+            "top_p": 0.8863961256599298,
+            "min_p": 0.24376532174749485,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Okota mpira, weka upya, na sogea mbele.",
+      "passed_first": false
     },
     {
       "id": "ch01-075",
@@ -97,7 +522,128 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Magolikipa bora wanasherehekea seivu kubwa kama mshambuliaji anavyosherehekea ba"
+      "retry_history": [],
+      "text_len": 82,
+      "text_preview": "Magolikipa bora wanasherehekea seivu kubwa kama mshambuliaji anavyosherehekea ba",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-113",
+      "attempts": 7,
+      "best_quality_score": 4.4,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.5740751888420628,
+            "exaggeration": 0.23632789678031368,
+            "temperature": 0.30487685834656736,
+            "top_p": 0.8907179260498241,
+            "min_p": 0.3073515289045874,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.44331358232864665,
+            "exaggeration": 0.17219434488333152,
+            "temperature": 0.21493070122560365,
+            "top_p": 0.9498635169326695,
+            "min_p": 0.08849760615224386,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.4779862068515655,
+            "exaggeration": 0.49357523557998745,
+            "temperature": 0.8226901487640701,
+            "top_p": 1.0,
+            "min_p": 0.12230059510757227,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.31267836206221294,
+            "temperature": 0.3519171776921442,
+            "top_p": 0.7069358154929439,
+            "min_p": 0.17058461234202846,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.16207179540548222,
+            "exaggeration": 0.267969998701328,
+            "temperature": 0.3032943869994169,
+            "top_p": 0.9865381035155002,
+            "min_p": 0.20664485327190815,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.8786419292877616,
+            "exaggeration": 0.1653637735065899,
+            "temperature": 0.12265011197285783,
+            "top_p": 0.6228124100693719,
+            "min_p": 0.032809167541335144,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Miguu ya haraka inakusaidia kufikia shuti ambazo miguu ya polepole haiwezi.",
+      "passed_first": false
     },
     {
       "id": "ch02-149",
@@ -106,7 +652,10 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Hakikisha wabeki wako wanajua uko nyuma yao."
+      "retry_history": [],
+      "text_len": 44,
+      "text_preview": "Hakikisha wabeki wako wanajua uko nyuma yao.",
+      "passed_first": false
     },
     {
       "id": "ch02-156",
@@ -115,7 +664,10 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Sasa mwambie mchezaji mwenzako asogeze mpira upande wa kushoto."
+      "retry_history": [],
+      "text_len": 63,
+      "text_preview": "Sasa mwambie mchezaji mwenzako asogeze mpira upande wa kushoto.",
+      "passed_first": false
     },
     {
       "id": "ch04-247",
@@ -124,25 +676,10 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Sasa mazoezi yako yanachukua udhibiti."
-    },
-    {
-      "id": "ch04-268",
-      "attempts": 7,
-      "best_quality_score": 12.0,
-      "best_attempt": 3,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "Hatua mbili mbele zinaweza kuondoa nusu ya anachokiona mpigaji."
-    },
-    {
-      "id": "ch06-452",
-      "attempts": 7,
-      "best_quality_score": 2.64,
-      "best_attempt": 3,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "Chagua lengo lako kabla hujafikia mpira."
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "Sasa mazoezi yako yanachukua udhibiti.",
+      "passed_first": false
     },
     {
       "id": "ch08-563",
@@ -151,7 +688,10 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Akili yako inakuweka makini mchezo unapokuwa polepole."
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Akili yako inakuweka makini mchezo unapokuwa polepole.",
+      "passed_first": false
     },
     {
       "id": "ch08-567",
@@ -160,7 +700,10 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Bao dhidi yako haimaanishi umefanya kosa."
+      "retry_history": [],
+      "text_len": 41,
+      "text_preview": "Bao dhidi yako haimaanishi umefanya kosa.",
+      "passed_first": false
     },
     {
       "id": "ch08-624",
@@ -169,16 +712,217 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Utakuwa na michezo ambapo unafanya seivu kumi."
+      "retry_history": [],
+      "text_len": 46,
+      "text_preview": "Utakuwa na michezo ambapo unafanya seivu kumi.",
+      "passed_first": false
     },
     {
-      "id": "ch01-029",
+      "id": "ch01-021",
       "attempts": 6,
-      "best_quality_score": 2.64,
+      "best_quality_score": 3.04,
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Unaona uwanja wote kutoka nafasi yako."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3,
+            "temperature": 0.4,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.09724177619370344,
+            "temperature": 0.4,
+            "top_p": 0.9925746197447609,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.18707506420405035,
+            "temperature": 0.4,
+            "top_p": 0.652519459782262,
+            "min_p": 0.2079895454574189,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.42236901688989525,
+            "temperature": 0.4,
+            "top_p": 0.9310198613154002,
+            "min_p": 0.29800632784584036,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.4249970582944147,
+            "temperature": 0.4,
+            "top_p": 0.6888762485441232,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3700137816030571,
+            "temperature": 0.4,
+            "top_p": 0.9210944289197078,
+            "min_p": 0.3133165594553792,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Wewe ndiye unayeamua kinachotokea ndani ya eneo lako.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-032",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 4,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.9489766103190991,
+            "exaggeration": 0.21351483245072989,
+            "temperature": 0.6960584639695819,
+            "top_p": 1.0,
+            "min_p": 0.2942173337199715,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.2649797789876784,
+            "exaggeration": 0.2913025295455204,
+            "temperature": 0.20406012080650887,
+            "top_p": 0.8603095454901217,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.5031852568504851,
+            "exaggeration": 0.8166632702702079,
+            "temperature": 0.7101682069316511,
+            "top_p": 1.0,
+            "min_p": 0.2230432244426628,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.10076889793744548,
+            "temperature": 0.2004037991250367,
+            "top_p": 0.954544051749662,
+            "min_p": 0.3000686442690693,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.35270568805938307,
+            "exaggeration": 0.6185006602834612,
+            "temperature": 0.4653122942821301,
+            "top_p": 0.6301982100497083,
+            "min_p": 0.13137974256581927,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Unaona mchezaji mwenzako aliye wazi.",
+      "passed_first": false
     },
     {
       "id": "ch01-034",
@@ -187,7 +931,28 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Mtazamo wako wa uwanja ndio bora zaidi kwenye timu."
+      "retry_history": [],
+      "text_len": 51,
+      "text_preview": "Mtazamo wako wa uwanja ndio bora zaidi kwenye timu.",
+      "passed_first": false
     }
-  ]
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.12,
+        "temperature": 0.337,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.04,
+        "temperature": -0.077,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
 }

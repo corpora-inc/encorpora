@@ -4729,7 +4729,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Tackling",
-      "text_markdown": "Tackling"
+      "text_markdown": "Tackling",
+      "tts": {
+        "text": "Tackling",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-298",
@@ -4965,7 +4970,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Intercepting Passes",
-      "text_markdown": "Intercepting Passes"
+      "text_markdown": "Intercepting Passes",
+      "tts": {
+        "text": "Intercepting Passes",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-313",
@@ -5169,7 +5179,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Heading",
-      "text_markdown": "Heading"
+      "text_markdown": "Heading",
+      "tts": {
+        "text": "Heading",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-326",
@@ -5325,7 +5340,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Clearing the Ball",
-      "text_markdown": "Clearing the Ball"
+      "text_markdown": "Clearing the Ball",
+      "tts": {
+        "text": "Clearing the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-336",
@@ -5513,7 +5533,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Turning Defense into Attack",
-      "text_markdown": "Turning Defense into Attack"
+      "text_markdown": "Turning Defense into Attack",
+      "tts": {
+        "text": "Turning Defense into Attack",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-348",
@@ -5825,7 +5850,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Push Up the Field",
-      "text_markdown": "Push Up the Field"
+      "text_markdown": "Push Up the Field",
+      "tts": {
+        "text": "Push Up the Field",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-368",
@@ -5981,7 +6011,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Be a Passing Option",
-      "text_markdown": "Be a Passing Option"
+      "text_markdown": "Be a Passing Option",
+      "tts": {
+        "text": "Be a Passing Option",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-378",
@@ -6121,7 +6156,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Overlapping Runs",
-      "text_markdown": "Overlapping Runs"
+      "text_markdown": "Overlapping Runs",
+      "tts": {
+        "text": "Overlapping Runs",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-387",
@@ -6341,7 +6381,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Know When to Get Back",
-      "text_markdown": "Know When to Get Back"
+      "text_markdown": "Know When to Get Back",
+      "tts": {
+        "text": "Know When to Get Back",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-401",
@@ -6513,7 +6558,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Communicate with the Sweeper",
-      "text_markdown": "Communicate with the Sweeper"
+      "text_markdown": "Communicate with the Sweeper",
+      "tts": {
+        "text": "Communicate with the Sweeper",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-412",
@@ -6653,7 +6703,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Balance",
-      "text_markdown": "The Balance"
+      "text_markdown": "The Balance",
+      "tts": {
+        "text": "The Balance",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-421",
@@ -6885,7 +6940,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Defending Corners",
-      "text_markdown": "Defending Corners"
+      "text_markdown": "Defending Corners",
+      "tts": {
+        "text": "Defending Corners",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-436",
@@ -7185,7 +7245,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Defending Free Kicks",
-      "text_markdown": "Defending Free Kicks"
+      "text_markdown": "Defending Free Kicks",
+      "tts": {
+        "text": "Defending Free Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-455",
@@ -7309,7 +7374,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Throw-Ins on Your Side",
-      "text_markdown": "Throw-Ins on Your Side"
+      "text_markdown": "Throw-Ins on Your Side",
+      "tts": {
+        "text": "Throw-Ins on Your Side",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-463",
@@ -7449,7 +7519,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Goal Kicks",
-      "text_markdown": "Goal Kicks"
+      "text_markdown": "Goal Kicks",
+      "tts": {
+        "text": "Goal Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-472",
@@ -7557,7 +7632,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Attacking Set Pieces",
-      "text_markdown": "Attacking Set Pieces"
+      "text_markdown": "Attacking Set Pieces",
+      "tts": {
+        "text": "Attacking Set Pieces",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-479",
@@ -7901,7 +7981,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Pride of a Clean Sheet",
-      "text_markdown": "The Pride of a Clean Sheet"
+      "text_markdown": "The Pride of a Clean Sheet",
+      "tts": {
+        "text": "The Pride of a Clean Sheet",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-501",
@@ -8041,7 +8126,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Work That Nobody Sees",
-      "text_markdown": "The Work That Nobody Sees"
+      "text_markdown": "The Work That Nobody Sees",
+      "tts": {
+        "text": "The Work That Nobody Sees",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-510",
@@ -8213,7 +8303,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Staying Focused When the Ball Is Far Away",
-      "text_markdown": "Staying Focused When the Ball Is Far Away"
+      "text_markdown": "Staying Focused When the Ball Is Far Away",
+      "tts": {
+        "text": "Staying Focused When the Ball Is Far Away",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-521",
@@ -8465,7 +8560,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Concentration for the Full Game",
-      "text_markdown": "Concentration for the Full Game"
+      "text_markdown": "Concentration for the Full Game",
+      "tts": {
+        "text": "Concentration for the Full Game",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-537",
@@ -8621,7 +8721,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Tackle That Saves the Game",
-      "text_markdown": "The Tackle That Saves the Game"
+      "text_markdown": "The Tackle That Saves the Game",
+      "tts": {
+        "text": "The Tackle That Saves the Game",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-547",
@@ -8809,7 +8914,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "You Are the Defender",
-      "text_markdown": "You Are the Defender"
+      "text_markdown": "You Are the Defender",
+      "tts": {
+        "text": "You Are the Defender",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-559",

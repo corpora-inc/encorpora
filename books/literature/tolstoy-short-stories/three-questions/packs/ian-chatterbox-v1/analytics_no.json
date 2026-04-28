@@ -1,0 +1,1482 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "no",
+  "timestamp": "2026-04-23T09:38:01.880514+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 61,
+  "segments_converged_by_retry": 13,
+  "segments_plateau_stopped": 7,
+  "total_retries": 45,
+  "error_distribution": {
+    "tail_energy": 22,
+    "hard_ending": 21,
+    "trailing_silence": 21,
+    "stacked_words": 20,
+    "truncated_last_word": 16,
+    "min_trailing_silence": 16,
+    "transcription_mismatch": 13,
+    "final_word_weak": 9,
+    "word_cluster": 4,
+    "first_word_weak": 4,
+    "pre_speech_spike": 2,
+    "short_words": 2
+  },
+  "phase_timings": {
+    "tts": 43.401861906051636,
+    "align": 17.810603618621826,
+    "validate": 0.614497184753418,
+    "trim": 0.006699800491333008,
+    "master": 0.4767756462097168
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 9,
+      "passed": 6,
+      "rate": 0.6666666666666666
+    },
+    "medium_30_80": {
+      "total": 39,
+      "passed": 31,
+      "rate": 0.7948717948717948
+    },
+    "long_80_plus": {
+      "total": 33,
+      "passed": 24,
+      "rate": 0.7272727272727273
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-027",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "pre_speech_spike"
+          ],
+          "score": 37.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7335331473567932,
+            "exaggeration": 0.42818597440117634,
+            "temperature": 0.6491656074884654,
+            "top_p": 0.9961342620919316,
+            "min_p": 0.13810099259271988,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.3555062663409715,
+            "exaggeration": 0.3212567480800459,
+            "temperature": 0.2509424832796421,
+            "top_p": 0.9088680381181958,
+            "min_p": 0.07600952416497433,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.7269590943603542,
+            "exaggeration": 0.5362332944306286,
+            "temperature": 0.8447736442939074,
+            "top_p": 0.9469233612186634,
+            "min_p": 0.09326142030368359,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.9843075765455732,
+            "exaggeration": 0.21157095056535394,
+            "temperature": 0.14425765892021866,
+            "top_p": 0.8941592962368217,
+            "min_p": 0.03169724607651775,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.415795734288066,
+            "exaggeration": 0.3888614123160578,
+            "temperature": 0.46757605454805684,
+            "top_p": 0.8328830007700923,
+            "min_p": 0.0656359422936871,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "stacked_words"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5542935758273089,
+            "exaggeration": 0.0005510066249524714,
+            "temperature": 0.1505051879086219,
+            "top_p": 0.8855307628845357,
+            "min_p": 0.216928559655914,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "— Du er trøtt, — sa kongen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-032",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9179972204418668,
+            "exaggeration": 0.2608408483809226,
+            "temperature": 0.3592366808008409,
+            "top_p": 0.7647578739502775,
+            "min_p": 0.1866848001914867,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.3864064943258658,
+            "exaggeration": 0.33004827630035194,
+            "temperature": 0.4184285346838118,
+            "top_p": 0.8901873742476779,
+            "min_p": 0.1782592781775047,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.5519384098730239,
+            "exaggeration": 0.6574288708730456,
+            "temperature": 0.5734111530278374,
+            "top_p": 0.9305824108764209,
+            "min_p": 0.1637611505323434,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.8806810167358152,
+            "exaggeration": 0.3817775036042411,
+            "temperature": 0.16039031495392692,
+            "top_p": 0.796199229673499,
+            "min_p": 0.15962017336049653,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4771195772282366,
+            "exaggeration": 0.5006567899588918,
+            "temperature": 0.5141651819685444,
+            "top_p": 0.9312399091674262,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "stacked_words"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8054605356468868,
+            "exaggeration": 0.2269808857324982,
+            "temperature": 0.05,
+            "top_p": 0.7049088572946619,
+            "min_p": 0.039623239715490005,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "— Hvil deg nå, la meg, — sa han.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-080",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7147006100295481,
+            "exaggeration": 0.4125870694913186,
+            "temperature": 0.6288177410193719,
+            "top_p": 0.7445202158716544,
+            "min_p": 0.07000973625024504,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.5159533304023154,
+            "exaggeration": 0.32515926970888676,
+            "temperature": 0.311113061677763,
+            "top_p": 0.9297903680892623,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6924597165795691,
+            "exaggeration": 0.4552926124926252,
+            "temperature": 0.6690682299180718,
+            "top_p": 0.9179717942339867,
+            "min_p": 0.07525349394748651,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.8978437428571657,
+            "exaggeration": 0.27427213784236004,
+            "temperature": 0.24456969610262752,
+            "top_p": 0.7402597117133654,
+            "min_p": 0.0017516880898809095,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.528224155264607,
+            "exaggeration": 0.35960077274862134,
+            "temperature": 0.4803083424692004,
+            "top_p": 0.781462538845974,
+            "min_p": 0.01488267800471721,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 166,
+      "text_preview": "Og så da den mannen kom løpende, var den viktigste tiden da du tok deg av ham, f",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-039",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.9013238728183691,
+            "exaggeration": 0.37358535159162376,
+            "temperature": 0.44390725857424695,
+            "top_p": 0.891057216051249,
+            "min_p": 0.14618957176453715,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.43770256061333973,
+            "exaggeration": 0.34921480742633026,
+            "temperature": 0.4106310085182452,
+            "top_p": 0.8789041227182928,
+            "min_p": 0.1048175177874339,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.5051473653565993,
+            "exaggeration": 0.5429223483241555,
+            "temperature": 0.6974672347198647,
+            "top_p": 0.9719404911849011,
+            "min_p": 0.24677620256782035,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.9552485416558228,
+            "exaggeration": 0.26171195206427417,
+            "temperature": 0.1866308345226527,
+            "top_p": 0.9416899691037952,
+            "min_p": 0.08044555200042117,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "— Se, der kommer noen løpende, — sa eremitten.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.9067900898828147,
+            "exaggeration": 0.34579428784828214,
+            "temperature": 0.4954484993474888,
+            "top_p": 0.9900157755872682,
+            "min_p": 0.027547065891669623,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.47042768451711886,
+            "exaggeration": 0.08373467707941519,
+            "temperature": 0.38102725194225345,
+            "top_p": 0.8340584772883836,
+            "min_p": 0.024905033079025543,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6517643224329501,
+            "exaggeration": 0.46827506594746426,
+            "temperature": 0.7613701639822614,
+            "top_p": 0.855182999945714,
+            "min_p": 0.09424360744875307,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 185,
+      "text_preview": "En fjerde gruppe sa at det var slike oppgaver som måtte løses med en gang, uten ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-074",
+      "attempts": 4,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.9301525758439995,
+            "exaggeration": 0.42634099049771557,
+            "temperature": 0.599408153837619,
+            "top_p": 0.9145609964598371,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.3992426612758314,
+            "exaggeration": 0.2623313520016768,
+            "temperature": 0.2764600229777969,
+            "top_p": 0.8304705903964851,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.6553062925401996,
+            "exaggeration": 0.7089390871717514,
+            "temperature": 0.6286751210004915,
+            "top_p": 0.8102099223718857,
+            "min_p": 0.07541903049519705,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "— Hvordan har jeg fått svar? — spurte tsaren.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.9327403534237831,
+            "exaggeration": 0.25804169972945856,
+            "temperature": 0.4017695412783942,
+            "top_p": 0.8898233137721411,
+            "min_p": 0.014691569081953015,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.6475533712227761,
+            "exaggeration": 0.07912796631088057,
+            "temperature": 0.24749440084478247,
+            "top_p": 0.8089618190951626,
+            "min_p": 0.07439664352107972,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.6278039863943891,
+            "exaggeration": 0.6245054356093107,
+            "temperature": 0.6227688326689491,
+            "top_p": 0.8653033084555206,
+            "min_p": 0.12294816409035131,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "short_words",
+            "tail_energy"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.8890030558044979,
+            "exaggeration": 0.32928814926837746,
+            "temperature": 0.4386035644022064,
+            "top_p": 0.9569079500379766,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.5305133203706458,
+            "exaggeration": 0.2545501149258217,
+            "temperature": 0.25107216420411216,
+            "top_p": 0.9263509718686564,
+            "min_p": 0.017812122856588883,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.46369285427958423,
+            "exaggeration": 0.49319666710411075,
+            "temperature": 0.577868199558732,
+            "top_p": 0.8419283423461008,
+            "min_p": 0.12012758583973696,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "— Hvordan da? — sa eneboeren.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7457468712258674,
+            "exaggeration": 0.32433542288181394,
+            "temperature": 0.5035858990781237,
+            "top_p": 0.9833783868500284,
+            "min_p": 0.2345869926823565,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5014014053137857,
+            "exaggeration": 0.09933478530476342,
+            "temperature": 0.17555472900737146,
+            "top_p": 0.9735990711602645,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 302,
+      "text_preview": "Og etter å ha tenkt dette, kunngjorde kongen i hele sitt rike at han ville gi en",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-082",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7300767543330209,
+            "exaggeration": 0.20643113706468236,
+            "temperature": 0.49731741279779296,
+            "top_p": 0.8625478111591731,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5431672113762249,
+            "exaggeration": 0.23553821961275653,
+            "temperature": 0.34249912700682245,
+            "top_p": 0.745138476407212,
+            "min_p": 0.02988500236351216,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 364,
+      "text_preview": "— Så husk da, — sa eremittene, — at den viktigste tiden er én: nå, — og den er d",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8898951576450211,
+            "exaggeration": 0.31942128976703954,
+            "temperature": 0.5275252731815245,
+            "top_p": 0.7561492910339155,
+            "min_p": 0.1016005616382302,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 256,
+      "text_preview": "Andre sa at man ikke kunne bestemme på forhånd hvilken tid som ville være den re",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7367062808021584,
+            "exaggeration": 0.28959355988384394,
+            "temperature": 0.35294698058430957,
+            "top_p": 0.7881286517697521,
+            "min_p": 0.1919276279902291,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 128,
+      "text_preview": "For bedre å få vite svarene på sine spørsmål, bestemte han seg for å spørre en e",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8698093610845249,
+            "exaggeration": 0.21682012862036137,
+            "temperature": 0.45849507774009923,
+            "top_p": 0.9157086363008019,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 142,
+      "text_preview": "Han tok bare imot enkle folk, og derfor kledde kongen seg enkelt og, før han nåd",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9006013987499553,
+            "exaggeration": 0.34559191503130854,
+            "temperature": 0.45879281957630635,
+            "top_p": 0.7298251824540534,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Kongen gikk bort til ham og sa:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-030",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7543511211402396,
+            "exaggeration": 0.36138563100499765,
+            "temperature": 0.4615156169948682,
+            "top_p": 0.8891132905168118,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Etter å ha gravd to åkerlapper, stanset kongen og gjentok sine spørsmål.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-044",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.753909682858681,
+            "exaggeration": 0.26846306636966155,
+            "temperature": 0.6301198931100935,
+            "top_p": 0.8757571814992329,
+            "min_p": 0.14303597658263742,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Tsaren og eneboeren kneppet opp og tok av mannen klærne.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-047",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7660463596977669,
+            "exaggeration": 0.2637969628938217,
+            "temperature": 0.381779288736868,
+            "top_p": 0.8414054240112563,
+            "min_p": 0.16865949446553516,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "Men blødningen stanset ikke.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8407802187851048,
+            "exaggeration": 0.3594768518073188,
+            "temperature": 0.4531777005318083,
+            "top_p": 0.9806003382058144,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.47207335135134515,
+            "exaggeration": 0.11784977110362997,
+            "temperature": 0.35402263023056774,
+            "top_p": 0.9824705998429246,
+            "min_p": 0.152633797442168,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.5447774012156318,
+            "exaggeration": 0.5924399665118995,
+            "temperature": 0.6239990774965245,
+            "top_p": 0.8425916599439403,
+            "min_p": 0.05881391754635952,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7058877438377668,
+            "exaggeration": 0.38254770989244025,
+            "temperature": 0.5763794724361084,
+            "top_p": 0.8840134183731436,
+            "min_p": 0.1028924107658079,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Tsaren tok av bandasjen flere ganger og vasket og forbant såret på nytt.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8648897783064543,
+            "exaggeration": 0.240110329608766,
+            "temperature": 0.510514408001512,
+            "top_p": 0.8726553275704414,
+            "min_p": 0.01434908668863022,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 328,
+      "text_preview": "Tsaren var så sliten etter gangen og arbeidet at han der på dørterskelen la seg ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8575954161262709,
+            "exaggeration": 0.3303587789652372,
+            "temperature": 0.47278723086286295,
+            "top_p": 0.966289103942703,
+            "min_p": 0.13242570005380264,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Men det gikk en hel dag, og du kom ikke.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-073",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8357390472973255,
+            "exaggeration": 0.3699762373154526,
+            "temperature": 0.552309878739096,
+            "top_p": 0.9165580937436478,
+            "min_p": 0.13251183515090145,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 122,
+      "text_preview": "— Men du har jo allerede fått svar, — sa eneboeren og satt på huk på sine tynne ",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": -0.046,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": -0.046,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": -0.046,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.108,
+        "temperature": 0.101,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": 0.014,
+        "temperature": 0.164,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.053,
+        "temperature": 0.125,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.003,
+        "temperature": 0.212,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

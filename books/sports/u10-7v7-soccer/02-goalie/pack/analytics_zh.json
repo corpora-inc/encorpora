@@ -1,0 +1,280 @@
+{
+  "book_id": "pack",
+  "language": "zh",
+  "timestamp": "2026-04-23T00:36:09.098623+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 633,
+  "segments_converged_by_retry": 0,
+  "segments_plateau_stopped": 0,
+  "total_retries": 0,
+  "error_distribution": {
+    "trailing_silence": 4
+  },
+  "phase_timings": {
+    "tts": 16.492684841156006,
+    "align": 6.171673774719238,
+    "validate": 0.1898808479309082,
+    "trim": 0.036791324615478516,
+    "master": 0.6050238609313965
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 626,
+      "passed": 626,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 7,
+      "passed": 7,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 0,
+      "passed": 0,
+      "rate": 0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 7,
+      "text_preview": "你就是守门员。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 16,
+      "text_preview": "你是球和球网之间的最后一名球员。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 18,
+      "text_preview": "场上的每一位队友都信任你来守护球门。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 17,
+      "text_preview": "这份信任是你在每一场比赛中赢得的。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 16,
+      "text_preview": "你是场上唯一可以用手触球的球员。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 13,
+      "text_preview": "你的双手是你最强大的武器。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 5,
+      "text_preview": "你接住球。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 5,
+      "text_preview": "你击打球。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 7,
+      "text_preview": "你把球扔出去。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 8,
+      "text_preview": "你把球拨出门柱。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 17,
+      "text_preview": "队里没有其他球员能做你所做的事情。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 10,
+      "text_preview": "你戴着不一样的手套。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 11,
+      "text_preview": "你穿着不同颜色的球衣。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 9,
+      "text_preview": "你遵守不同的规则。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 12,
+      "text_preview": "你是一种与众不同的球员。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 13,
+      "text_preview": "这种与众不同是值得骄傲的。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 8,
+      "text_preview": "球门就是你的家。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 13,
+      "text_preview": "球门前面的区域是你的领地。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 8,
+      "text_preview": "你拥有那片空间。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 13,
+      "text_preview": "你来决定禁区里发生的一切。",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

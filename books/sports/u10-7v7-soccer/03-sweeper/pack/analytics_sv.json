@@ -1,13 +1,28 @@
 {
   "book_id": "pack",
   "language": "sv",
-  "timestamp": "2026-04-19T21:47:17.125994+00:00",
-  "segments_total": 565,
-  "segments_first_pass": 501,
-  "segments_converged_by_retry": 46,
-  "segments_plateau_stopped": 18,
-  "total_retries": 111,
-  "error_distribution": {},
+  "timestamp": "2026-04-21T17:00:27.504000+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 536,
+  "segments_converged_by_retry": 54,
+  "segments_plateau_stopped": 23,
+  "total_retries": 138,
+  "error_distribution": {
+    "trailing_silence": 52,
+    "tail_energy": 21,
+    "tail_spike": 12,
+    "transcription_mismatch": 5,
+    "final_word_weak": 4,
+    "first_word_weak": 3,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 143.5618155002594,
+    "align": 41.41255283355713,
+    "validate": 21.022608995437622,
+    "trim": 0.41728901863098145,
+    "master": 7.972544431686401
+  },
   "worst_segments": [
     {
       "id": "ch05-364",
@@ -16,6 +31,7 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Men kom ihåg att ditt primära värde är att kontrollera spelet från baksidan."
     },
     {
@@ -25,6 +41,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Fantastiska liberon slutar aldrig skanna."
     },
     {
@@ -34,6 +51,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "När en lagkamrat tar emot bollen under press vet du redan vem som är fri för näs"
     },
     {
@@ -43,6 +61,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du hittar den frie anfallaren."
     },
     {
@@ -52,6 +71,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "När din målvakt tar en målspark, är du det närmaste säkra passningsalternativet."
     },
     {
@@ -61,6 +81,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du läser passningslinjen, kliver in i bollens väg och tar emot bollen med en ren"
     },
     {
@@ -70,6 +91,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Vinn bollen med insidan av din fot."
     },
     {
@@ -79,6 +101,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "En chans."
     },
     {
@@ -88,6 +111,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Den långa diagonala bollen som hittar yttern i fritt läge."
     },
     {
@@ -97,6 +121,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Anfallarna vetter mot motståndarens mål."
     },
     {
@@ -106,6 +131,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Men du kan se löparen tydligt från din position."
     },
     {
@@ -115,6 +141,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Säg \"inget att oroa sig för, nästa gång\" och fokusera på nästa spelsituation."
     },
     {
@@ -124,6 +151,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Ge aldrig upp en spelsituation."
     },
     {
@@ -133,6 +161,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Ditt lag följer ditt ledarskap."
     },
     {
@@ -142,6 +171,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Bollen studsar omkring i din box."
     },
     {
@@ -151,6 +181,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du saktar ner ditt sinne."
     },
     {
@@ -160,6 +191,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "När du tar emot bollen under press och spelar en ren passning, andas hela laget "
     },
     {
@@ -169,25 +201,166 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Om valet inte fungerar, återhämta dig omedelbart och försvara nästa spelsituatio"
     },
     {
-      "id": "ch04-269",
-      "attempts": 3,
-      "best_quality_score": 0.0,
-      "best_attempt": 2,
-      "plateau_count": 0,
+      "id": "ch01-054",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "För mjukt och försvararen skär av bollen."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4473625232840832,
+            "temperature": 0.392776922496041,
+            "top_p": 0.7922157694037317,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.3086855154567072,
+            "exaggeration": 0.38879754835123326,
+            "temperature": 0.22180937183496796,
+            "top_p": 0.6881486151070841,
+            "min_p": 0.030758954128717292,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7443719355337264,
+            "exaggeration": 0.4131604125950149,
+            "temperature": 0.6722690222098386,
+            "top_p": 0.9866990312789324,
+            "min_p": 0.04215936650043137,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Förtroende"
     },
     {
-      "id": "ch04-301",
-      "attempts": 3,
-      "best_quality_score": 2.64,
+      "id": "ch02-133",
+      "attempts": 4,
+      "best_quality_score": 30.0,
       "best_attempt": 0,
-      "plateau_count": 2,
+      "plateau_count": 3,
       "final_errors": [],
-      "text_preview": "Anfallaren avslutar mål."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8492186817205154,
+            "exaggeration": 0.46808437477501996,
+            "temperature": 0.6140206964466748,
+            "top_p": 0.9213967936092387,
+            "min_p": 0.08326235605100582,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5765814681129464,
+            "exaggeration": 0.34031963961023476,
+            "temperature": 0.10327559651343982,
+            "top_p": 0.9192434538349434,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8125177567525941,
+            "exaggeration": 0.5469455978591506,
+            "temperature": 0.6264654577888562,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Positionering"
     }
   ]
 }

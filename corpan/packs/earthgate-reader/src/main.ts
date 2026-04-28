@@ -3,6 +3,7 @@ import type { GameModule, HostApi } from "@shared/sdk"
 import { createMockHostApi } from "@shared/sdk"
 import { createEarthgateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
+import manifest from "../manifest.json"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -49,6 +50,7 @@ const registerGame = () => {
 
       const shell = createAppShell(container, {
         readerId: "earthgate",
+        readerVersion: manifest.version,
         createReader: readerFactory,
         hostApi,
         initialState: state,

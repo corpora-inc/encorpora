@@ -1,0 +1,583 @@
+{
+  "book_id": "pack",
+  "language": "es",
+  "timestamp": "2026-04-21T16:07:27.732500+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 587,
+  "segments_converged_by_retry": 23,
+  "segments_plateau_stopped": 3,
+  "total_retries": 65,
+  "error_distribution": {
+    "trailing_silence": 62,
+    "final_word_weak": 12,
+    "tail_spike": 8,
+    "tail_energy": 8,
+    "first_word_weak": 2,
+    "hard_ending": 1
+  },
+  "worst_segments": [
+    {
+      "id": "ch08-563",
+      "attempts": 16,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Comprométete con la decisión completamente."
+    },
+    {
+      "id": "ch05-341",
+      "attempts": 8,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Con la experiencia, aprenderás a hacer desdoblamientos."
+    },
+    {
+      "id": "ch08-594",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Los mejores líberos juegan con una quietud que parece sin esfuerzo."
+    },
+    {
+      "id": "ch05-340",
+      "attempts": 5,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.613682651336084,
+            "exaggeration": 0.2305209142121573,
+            "temperature": 0.644475524113847,
+            "top_p": 0.8323727243631085,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.3595053502435392,
+            "exaggeration": 0.1947223150519926,
+            "temperature": 0.2293283556563237,
+            "top_p": 0.6787500909154933,
+            "min_p": 0.3407458595890275,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.47714166469371727,
+            "exaggeration": 0.7040223423840719,
+            "temperature": 0.465621681740845,
+            "top_p": 0.9944586288410094,
+            "min_p": 0.3222414929492502,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5142073645583118,
+            "temperature": 0.2859446730834528,
+            "top_p": 0.7418183463507633,
+            "min_p": 0.047587155705391265,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Desdoblamientos"
+    },
+    {
+      "id": "ch06-442",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Di \"gran trabajo\" o \"buena entrada\". Cuando un delantero retrocede para ayudar e"
+    },
+    {
+      "id": "ch04-251",
+      "attempts": 4,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.5883572262640184,
+            "exaggeration": 0.21097674115551024,
+            "temperature": 0.6966992678077255,
+            "top_p": 0.7577887214126131,
+            "min_p": 0.15853622765050865,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.6064888978507301,
+            "exaggeration": 0.3111331852414815,
+            "temperature": 0.24560026179559347,
+            "top_p": 1.0,
+            "min_p": 0.0735413252755027,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.7757683755246196,
+            "exaggeration": 0.4071129919223907,
+            "temperature": 0.9068025055478848,
+            "top_p": 0.9079005094792781,
+            "min_p": 0.2341042212502615,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "El Balón Largo a la Banda"
+    },
+    {
+      "id": "ch05-329",
+      "attempts": 4,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 43.0,
+          "params": {
+            "cfg_weight": 0.668875287693862,
+            "exaggeration": 0.14566943388221842,
+            "temperature": 0.43964084702832606,
+            "top_p": 0.8788688846558523,
+            "min_p": 0.22985390420950672,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.6267917461156538,
+            "exaggeration": 0.041869855296147784,
+            "temperature": 0.5280580191132265,
+            "top_p": 1.0,
+            "min_p": 0.19383695709936857,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.4605247160537438,
+            "exaggeration": 0.7965206870638668,
+            "temperature": 0.4962912411553555,
+            "top_p": 0.9995981936691245,
+            "min_p": 0.32203640152035284,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Ser una Opción de Pase"
+    },
+    {
+      "id": "ch05-379",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Para cuando el otro equipo gana el balón, ya te estás moviendo hacia tu posición"
+    },
+    {
+      "id": "ch05-388",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "El líbero vive en equilibrio."
+    },
+    {
+      "id": "ch07-497",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Cuando tu portero cobra un saque de meta, eres la opción de pase segura más cerc"
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9509181166342047,
+            "exaggeration": 0.30770648196060585,
+            "temperature": 0.5202552679136826,
+            "top_p": 0.8427141276101862,
+            "min_p": 0.2314144509842063,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6172199328660704,
+            "exaggeration": 0.0,
+            "temperature": 0.31074836324366084,
+            "top_p": 0.7489261587004992,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Anticipación"
+    },
+    {
+      "id": "ch07-496",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.45219012676955794,
+            "temperature": 0.3781277587107984,
+            "top_p": 0.6346961618976461,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6830322613094137,
+            "exaggeration": 0.05241172622805457,
+            "temperature": 0.23114371571046438,
+            "top_p": 0.8290665241868054,
+            "min_p": 0.2978018536212743,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Saques de Meta de Tu Equipo"
+    },
+    {
+      "id": "ch08-602",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.5862868611748331,
+            "exaggeration": 0.22903477631626562,
+            "temperature": 0.6391309557094164,
+            "top_p": 0.6394052001371315,
+            "min_p": 0.25878171708409825,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.46278245241146043,
+            "exaggeration": 0.3444725121492489,
+            "temperature": 0.5305654749576683,
+            "top_p": 0.9518479991304744,
+            "min_p": 0.0706853588801927,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "La Alegría de Ver"
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Puedes ver los espacios entre los jugadores."
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "La defensa siempre es primero."
+    },
+    {
+      "id": "ch01-066",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Esa confianza se gana cada vez que tomas una decisión tranquila bajo presión."
+    },
+    {
+      "id": "ch04-275",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Un gol."
+    },
+    {
+      "id": "ch04-282",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Usa el balón corto cuando el otro equipo presiona alto y deja espacio detrás de "
+    },
+    {
+      "id": "ch05-325",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Avanzar mantiene al equipo compacto."
+    },
+    {
+      "id": "ch05-374",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Esprintar."
+    }
+  ]
+}

@@ -1,13 +1,27 @@
 {
   "book_id": "pack",
   "language": "nl",
-  "timestamp": "2026-04-19T21:09:36.675559+00:00",
-  "segments_total": 565,
-  "segments_first_pass": 519,
-  "segments_converged_by_retry": 35,
+  "timestamp": "2026-04-21T16:53:55.103592+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 558,
+  "segments_converged_by_retry": 44,
   "segments_plateau_stopped": 11,
-  "total_retries": 84,
-  "error_distribution": {},
+  "total_retries": 95,
+  "error_distribution": {
+    "trailing_silence": 45,
+    "transcription_mismatch": 5,
+    "tail_energy": 3,
+    "tail_spike": 2,
+    "first_word_weak": 2,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 121.0116024017334,
+    "align": 36.24645280838013,
+    "validate": 12.816431283950806,
+    "trim": 0.4116203784942627,
+    "master": 7.988508939743042
+  },
   "worst_segments": [
     {
       "id": "ch08-552",
@@ -16,6 +30,7 @@
       "best_attempt": 6,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Een aanvaller rent naar links."
     },
     {
@@ -25,6 +40,7 @@
       "best_attempt": 4,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Wanneer je goed anticipeert, kom je bij de bal aan voordat de aanvaller er is."
     },
     {
@@ -34,6 +50,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Passes onderscheppen is veiliger dan tacklen."
     },
     {
@@ -43,6 +60,7 @@
       "best_attempt": 4,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Gebruik de overlappende loopactie spaarzaam."
     },
     {
@@ -52,6 +70,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Die speler ben jij."
     },
     {
@@ -61,6 +80,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Als jij de bal als eerste kunt bereiken, stap naar voren met vertrouwen en ga."
     },
     {
@@ -70,6 +90,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Trap de bal naar de zijlijn."
     },
     {
@@ -79,6 +100,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Daarom heet de positie sweeper."
     },
     {
@@ -88,6 +110,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Neem geen extra balcontacten."
     },
     {
@@ -97,6 +120,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "De steekbal splitst de verdediging van de tegenstander."
     },
     {
@@ -106,6 +130,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Jouw superkracht is de killpass."
     },
     {
@@ -115,6 +140,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "De verwarring creeert ruimte en tijd voor een voorzet of een schot."
     },
     {
@@ -124,7 +150,79 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Jij valt aan met visie."
+    },
+    {
+      "id": "ch06-451",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.5734927637749585,
+            "exaggeration": 0.4627091218631529,
+            "temperature": 0.5814772247105208,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.2868311717247734,
+            "exaggeration": 0.002785634491458522,
+            "temperature": 0.26181133092854125,
+            "top_p": 0.6654969173584551,
+            "min_p": 0.3274486118050449,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.4269930813220637,
+            "exaggeration": 0.7661262605802537,
+            "temperature": 0.8044551610371162,
+            "top_p": 0.8016399609512024,
+            "min_p": 0.23386027269614515,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Kalm Leiderschap"
     },
     {
       "id": "ch04-268",
@@ -133,6 +231,7 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Te hard en de bal rolt naar de keeper."
     },
     {
@@ -142,6 +241,7 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Gebruik de korte bal wanneer geen aanvaller vrij staat voor een lange pass."
     },
     {
@@ -151,6 +251,7 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Deze passes komen van jou."
     },
     {
@@ -160,6 +261,7 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Je twee verdedigers zijn je nauwste partners."
     },
     {
@@ -169,6 +271,7 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Je zult een pass verkeerd lezen."
     },
     {
@@ -178,16 +281,8 @@
       "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Jij beheerst het tempo."
-    },
-    {
-      "id": "ch01-020",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Je kunt de ruimtes tussen spelers zien."
     }
   ]
 }

@@ -1,0 +1,31 @@
+series:
+  title: "Tolstoy Short Stories"
+  tagline: "Classic Russian moral tales, narrated in 23 languages."
+  planned_volumes: open
+  primary_language: ru
+
+  philosophy: |
+    Each volume is a single complete short story by Leo Tolstoy, presented
+    as a narrated audiobook in 23 languages. The Russian original is the
+    primary text. Translations preserve Tolstoy's directness and moral clarity.
+    Every sentence stands alone as a language-learning utterance.
+
+    Books are unordered. Any volume can be experienced independently.
+    We start with the shortest stories and work toward longer ones as
+    the pipeline matures.
+
+  audience: |
+    Language learners at intermediate level and above. Adults who want to
+    read classic literature in a new language with audio support. Native
+    Russian speakers learning other languages. Anyone who wants to hear
+    Tolstoy read aloud in their language.
+
+  voice: |
+    Tolstoy's own voice, faithfully rendered. Translations aim for natural
+    phrasing in each target language while preserving the narrative tone.
+    No modernization of story content.
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: ru

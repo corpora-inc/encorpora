@@ -89,7 +89,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Tip of the Spear",
-      "text_markdown": "The Tip of the Spear"
+      "text_markdown": "The Tip of the Spear",
+      "tts": {
+        "text": "The Tip of the Spear",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-007",
@@ -357,7 +362,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Goal Scorer",
-      "text_markdown": "The Goal Scorer"
+      "text_markdown": "The Goal Scorer",
+      "tts": {
+        "text": "The Goal Scorer",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-024",
@@ -593,7 +603,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Three Positions, One Job",
-      "text_markdown": "Three Positions, One Job"
+      "text_markdown": "Three Positions, One Job",
+      "tts": {
+        "text": "Three Positions, One Job",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-039",
@@ -781,7 +796,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "What Makes a Striker",
-      "text_markdown": "What Makes a Striker"
+      "text_markdown": "What Makes a Striker",
+      "tts": {
+        "text": "What Makes a Striker",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-051",
@@ -953,7 +973,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Your Teammates Need You",
-      "text_markdown": "Your Teammates Need You"
+      "text_markdown": "Your Teammates Need You",
+      "tts": {
+        "text": "Your Teammates Need You",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-062",
@@ -1077,7 +1102,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Pride in Your Position",
-      "text_markdown": "Pride in Your Position"
+      "text_markdown": "Pride in Your Position",
+      "tts": {
+        "text": "Pride in Your Position",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-070",
@@ -1293,7 +1323,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Check Your Shoulder",
-      "text_markdown": "Check Your Shoulder"
+      "text_markdown": "Check Your Shoulder",
+      "tts": {
+        "text": "Check Your Shoulder",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-084",
@@ -1449,7 +1484,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Move Into the Gaps",
-      "text_markdown": "Move Into the Gaps"
+      "text_markdown": "Move Into the Gaps",
+      "tts": {
+        "text": "Move Into the Gaps",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-094",
@@ -1605,7 +1645,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Time Your Run",
-      "text_markdown": "Time Your Run"
+      "text_markdown": "Time Your Run",
+      "tts": {
+        "text": "Time Your Run",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-104",
@@ -1793,7 +1838,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Stay Wide to Stretch the Defense",
-      "text_markdown": "Stay Wide to Stretch the Defense"
+      "text_markdown": "Stay Wide to Stretch the Defense",
+      "tts": {
+        "text": "Stay Wide to Stretch the Defense",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-116",
@@ -1917,7 +1967,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Check Back Toward the Ball",
-      "text_markdown": "Check Back Toward the Ball"
+      "text_markdown": "Check Back Toward the Ball",
+      "tts": {
+        "text": "Check Back Toward the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-124",
@@ -2041,7 +2096,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Create Space for Others",
-      "text_markdown": "Create Space for Others"
+      "text_markdown": "Create Space for Others",
+      "tts": {
+        "text": "Create Space for Others",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-132",
@@ -2181,7 +2241,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Always Be Moving",
-      "text_markdown": "Always Be Moving"
+      "text_markdown": "Always Be Moving",
+      "tts": {
+        "text": "Always Be Moving",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-141",
@@ -2525,7 +2590,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Know Your Plan Before the Ball Arrives",
-      "text_markdown": "Know Your Plan Before the Ball Arrives"
+      "text_markdown": "Know Your Plan Before the Ball Arrives",
+      "tts": {
+        "text": "Know Your Plan Before the Ball Arrives",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-163",
@@ -2665,7 +2735,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Open Your Body",
-      "text_markdown": "Open Your Body"
+      "text_markdown": "Open Your Body",
+      "tts": {
+        "text": "Open Your Body",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-172",
@@ -2789,7 +2864,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Control the Ball Into Space",
-      "text_markdown": "Control the Ball Into Space"
+      "text_markdown": "Control the Ball Into Space",
+      "tts": {
+        "text": "Control the Ball Into Space",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-180",
@@ -2897,7 +2977,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Turn With the Ball",
-      "text_markdown": "Turn With the Ball"
+      "text_markdown": "Turn With the Ball",
+      "tts": {
+        "text": "Turn With the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-187",
@@ -3069,7 +3154,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Shield the Ball",
-      "text_markdown": "Shield the Ball"
+      "text_markdown": "Shield the Ball",
+      "tts": {
+        "text": "Shield the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-198",
@@ -3257,7 +3347,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Receiving in the Air",
-      "text_markdown": "Receiving in the Air"
+      "text_markdown": "Receiving in the Air",
+      "tts": {
+        "text": "Receiving in the Air",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-210",
@@ -3381,7 +3476,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Under Pressure",
-      "text_markdown": "Under Pressure"
+      "text_markdown": "Under Pressure",
+      "tts": {
+        "text": "Under Pressure",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-218",
@@ -3661,7 +3761,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Pick Your Spot",
-      "text_markdown": "Pick Your Spot"
+      "text_markdown": "Pick Your Spot",
+      "tts": {
+        "text": "Pick Your Spot",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-236",
@@ -3833,7 +3938,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Placement or Power",
-      "text_markdown": "Placement or Power"
+      "text_markdown": "Placement or Power",
+      "tts": {
+        "text": "Placement or Power",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-247",
@@ -4037,7 +4147,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Near Post and Far Post",
-      "text_markdown": "Near Post and Far Post"
+      "text_markdown": "Near Post and Far Post",
+      "tts": {
+        "text": "Near Post and Far Post",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-260",
@@ -4257,7 +4372,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "One on One",
-      "text_markdown": "One on One"
+      "text_markdown": "One on One",
+      "tts": {
+        "text": "One on One",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-274",
@@ -4413,7 +4533,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Follow Every Shot",
-      "text_markdown": "Follow Every Shot"
+      "text_markdown": "Follow Every Shot",
+      "tts": {
+        "text": "Follow Every Shot",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-284",
@@ -4553,7 +4678,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Shoot When the Chance Comes",
-      "text_markdown": "Shoot When the Chance Comes"
+      "text_markdown": "Shoot When the Chance Comes",
+      "tts": {
+        "text": "Shoot When the Chance Comes",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-293",
@@ -4773,7 +4903,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Both Feet",
-      "text_markdown": "Both Feet"
+      "text_markdown": "Both Feet",
+      "tts": {
+        "text": "Both Feet",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-307",
@@ -4973,7 +5108,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Front Three",
-      "text_markdown": "The Front Three"
+      "text_markdown": "The Front Three",
+      "tts": {
+        "text": "The Front Three",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-320",
@@ -5113,7 +5253,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Give and Go",
-      "text_markdown": "Give and Go"
+      "text_markdown": "Give and Go",
+      "tts": {
+        "text": "Give and Go",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-329",
@@ -5301,7 +5446,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Crossing the Ball",
-      "text_markdown": "Crossing the Ball"
+      "text_markdown": "Crossing the Ball",
+      "tts": {
+        "text": "Crossing the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-341",
@@ -5489,7 +5639,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Movement Off the Ball",
-      "text_markdown": "Movement Off the Ball"
+      "text_markdown": "Movement Off the Ball",
+      "tts": {
+        "text": "Movement Off the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-353",
@@ -5645,7 +5800,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Talk to Each Other",
-      "text_markdown": "Talk to Each Other"
+      "text_markdown": "Talk to Each Other",
+      "tts": {
+        "text": "Talk to Each Other",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-363",
@@ -5769,7 +5929,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Celebrate Together",
-      "text_markdown": "Celebrate Together"
+      "text_markdown": "Celebrate Together",
+      "tts": {
+        "text": "Celebrate Together",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-371",
@@ -6033,7 +6198,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Press When They Have the Ball",
-      "text_markdown": "Press When They Have the Ball"
+      "text_markdown": "Press When They Have the Ball",
+      "tts": {
+        "text": "Press When They Have the Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-388",
@@ -6205,7 +6375,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Close Down Passing Lanes",
-      "text_markdown": "Close Down Passing Lanes"
+      "text_markdown": "Close Down Passing Lanes",
+      "tts": {
+        "text": "Close Down Passing Lanes",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-399",
@@ -6425,7 +6600,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Chase Back",
-      "text_markdown": "Chase Back"
+      "text_markdown": "Chase Back",
+      "tts": {
+        "text": "Chase Back",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-413",
@@ -6613,7 +6793,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Win the Ball High",
-      "text_markdown": "Win the Ball High"
+      "text_markdown": "Win the Ball High",
+      "tts": {
+        "text": "Win the Ball High",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-425",
@@ -6817,7 +7002,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Track Back to Help",
-      "text_markdown": "Track Back to Help"
+      "text_markdown": "Track Back to Help",
+      "tts": {
+        "text": "Track Back to Help",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-438",
@@ -6989,7 +7179,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Energy and Effort",
-      "text_markdown": "Energy and Effort"
+      "text_markdown": "Energy and Effort",
+      "tts": {
+        "text": "Energy and Effort",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-449",
@@ -7253,7 +7448,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Attacking Corners",
-      "text_markdown": "Attacking Corners"
+      "text_markdown": "Attacking Corners",
+      "tts": {
+        "text": "Attacking Corners",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-466",
@@ -7521,7 +7721,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Free Kicks Near the Goal",
-      "text_markdown": "Free Kicks Near the Goal"
+      "text_markdown": "Free Kicks Near the Goal",
+      "tts": {
+        "text": "Free Kicks Near the Goal",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-483",
@@ -7709,7 +7914,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Penalties",
-      "text_markdown": "Penalties"
+      "text_markdown": "Penalties",
+      "tts": {
+        "text": "Penalties",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-495",
@@ -7977,7 +8187,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Throw-Ins Near the Goal",
-      "text_markdown": "Throw-Ins Near the Goal"
+      "text_markdown": "Throw-Ins Near the Goal",
+      "tts": {
+        "text": "Throw-Ins Near the Goal",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-512",
@@ -8053,7 +8268,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Always Be in the Box",
-      "text_markdown": "Always Be in the Box"
+      "text_markdown": "Always Be in the Box",
+      "tts": {
+        "text": "Always Be in the Box",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-517",
@@ -8317,7 +8537,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Missing Happens",
-      "text_markdown": "Missing Happens"
+      "text_markdown": "Missing Happens",
+      "tts": {
+        "text": "Missing Happens",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-534",
@@ -8585,7 +8810,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Stay Hungry",
-      "text_markdown": "Stay Hungry"
+      "text_markdown": "Stay Hungry",
+      "tts": {
+        "text": "Stay Hungry",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-551",
@@ -8773,7 +9003,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Confidence",
-      "text_markdown": "Confidence"
+      "text_markdown": "Confidence",
+      "tts": {
+        "text": "Confidence",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-563",
@@ -9041,7 +9276,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Patience",
-      "text_markdown": "Patience"
+      "text_markdown": "Patience",
+      "tts": {
+        "text": "Patience",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-580",
@@ -9261,7 +9501,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Team Goal",
-      "text_markdown": "The Team Goal"
+      "text_markdown": "The Team Goal",
+      "tts": {
+        "text": "The Team Goal",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-594",
@@ -9433,7 +9678,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Joy of Striking",
-      "text_markdown": "The Joy of Striking"
+      "text_markdown": "The Joy of Striking",
+      "tts": {
+        "text": "The Joy of Striking",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-605",

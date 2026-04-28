@@ -1,0 +1,1672 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "el",
+  "timestamp": "2026-04-23T10:03:44.619857+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 64,
+  "segments_converged_by_retry": 13,
+  "segments_plateau_stopped": 4,
+  "total_retries": 55,
+  "error_distribution": {
+    "final_word_weak": 45,
+    "min_trailing_silence": 12,
+    "trailing_silence": 12,
+    "stacked_words": 10,
+    "truncated_last_word": 10,
+    "hard_ending": 10,
+    "transcription_mismatch": 9,
+    "pre_speech_spike": 8,
+    "first_word_weak": 3,
+    "tail_energy": 2,
+    "word_cluster": 2,
+    "post_speech_pop": 1
+  },
+  "phase_timings": {
+    "tts": 159.7830514907837,
+    "align": 59.17481446266174,
+    "validate": 4.0868470668792725,
+    "trim": 0.007639646530151367,
+    "master": 0.7196426391601562
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 5,
+      "passed": 4,
+      "rate": 0.8
+    },
+    "medium_30_80": {
+      "total": 39,
+      "passed": 29,
+      "rate": 0.7435897435897436
+    },
+    "long_80_plus": {
+      "total": 37,
+      "passed": 31,
+      "rate": 0.8378378378378378
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-071",
+      "attempts": 14,
+      "best_quality_score": 3.0,
+      "best_attempt": 13,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "post_speech_pop",
+            "final_word_weak"
+          ],
+          "score": 80.0,
+          "params": {
+            "cfg_weight": 0.9327575268431296,
+            "exaggeration": 0.1902293673892218,
+            "temperature": 0.6225742536638448,
+            "top_p": 0.9895301989354119,
+            "min_p": 0.24346786555712668,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.6073953379453058,
+            "exaggeration": 0.1024952536851334,
+            "temperature": 0.3962962449113514,
+            "top_p": 0.9436160091215294,
+            "min_p": 0.1785778331308232,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7043826172463354,
+            "exaggeration": 0.703033423333805,
+            "temperature": 0.842745134977267,
+            "top_p": 0.9163891708760277,
+            "min_p": 0.046933110699691485,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2536233717309714,
+            "temperature": 0.18794293917533908,
+            "top_p": 0.7612174937334781,
+            "min_p": 0.09173068417692645,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.690596756188982,
+            "exaggeration": 0.41137605951201694,
+            "temperature": 0.6188725289063312,
+            "top_p": 0.9613357860069902,
+            "min_p": 0.007672451680224152,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4693311849887378,
+            "exaggeration": 0.1290323650118969,
+            "temperature": 0.16824303699084678,
+            "top_p": 0.8968271774338357,
+            "min_p": 0.1792739552271097,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.544264821501482,
+            "exaggeration": 0.6629117926767915,
+            "temperature": 0.683511034938715,
+            "top_p": 0.8773750104952249,
+            "min_p": 0.0457079259686011,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.38935252798773445,
+            "temperature": 0.06866194330803002,
+            "top_p": 0.8735453505694796,
+            "min_p": 0.2380785781044586,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4303378903363715,
+            "exaggeration": 0.4564470164988967,
+            "temperature": 0.4385017174112867,
+            "top_p": 0.7605353532894445,
+            "min_p": 0.10744053893317307,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6969161442354452,
+            "exaggeration": 0.11742543508637601,
+            "temperature": 0.18478858767849124,
+            "top_p": 0.7732135247042057,
+            "min_p": 0.038935126819992075,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20544202553234225,
+            "exaggeration": 0.32991764591037,
+            "temperature": 0.5126684867420739,
+            "top_p": 0.8359601888025245,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9678815748837009,
+            "exaggeration": 0.502331434495189,
+            "temperature": 0.4045005551372478,
+            "top_p": 0.9938449284804646,
+            "min_p": 0.13156439351475008,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3076581050630933,
+            "exaggeration": 0.7243206097775174,
+            "temperature": 0.9075123029313705,
+            "top_p": 0.8967685897755329,
+            "min_p": 0.17662613162911436,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13063751297123555,
+            "exaggeration": 0.8289103205727836,
+            "temperature": 0.739016880384626,
+            "top_p": 0.977054582229382,
+            "min_p": 0.19798436898526695,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2840609389448834,
+            "exaggeration": 0.554977998268088,
+            "temperature": 0.9248519266496272,
+            "top_p": 0.7855557167640735,
+            "min_p": 0.19195579756013897,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.22877542839369133,
+            "exaggeration": 0.7918268827536379,
+            "temperature": 0.7941442878345727,
+            "top_p": 0.8802515180448816,
+            "min_p": 0.22199971877964358,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.18770667210553812,
+            "exaggeration": 0.7063409463115942,
+            "temperature": 0.9394733634879239,
+            "top_p": 0.8538178231621721,
+            "min_p": 0.03454057964604572,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Ο βασιλιάς πλησίασε κοντά του.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-069",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6723226305403217,
+            "exaggeration": 0.1824086990796931,
+            "temperature": 0.4196212797570485,
+            "top_p": 0.7138365843348128,
+            "min_p": 0.06952899415988051,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.597183516103371,
+            "exaggeration": 0.32727187352433107,
+            "temperature": 0.29060785951503726,
+            "top_p": 0.8310733600633784,
+            "min_p": 0.007211613839141484,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5752067636397596,
+            "exaggeration": 0.562244958935427,
+            "temperature": 0.5831604107882917,
+            "top_p": 0.9585279654356663,
+            "min_p": 0.02180598084509884,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8940732483796838,
+            "exaggeration": 0.44367994876190253,
+            "temperature": 0.24123803845499503,
+            "top_p": 0.8965167056919463,
+            "min_p": 0.1765547001422124,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5010500935803253,
+            "exaggeration": 0.6136325645292801,
+            "temperature": 0.40186699881293464,
+            "top_p": 0.9678300374618533,
+            "min_p": 0.12582090091900233,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8091329613445388,
+            "exaggeration": 0.2194131839930915,
+            "temperature": 0.2171014770420276,
+            "top_p": 0.9591331034076127,
+            "min_p": 0.036298323739405364,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Πριν φύγει, ήθελε να του ζητήσει άλλη μια φορά απάντηση στις ερωτήσεις του.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-080",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.706313209124307,
+            "exaggeration": 0.4105263581910852,
+            "temperature": 0.5839127481641915,
+            "top_p": 0.8143152427714723,
+            "min_p": 0.04143456829541295,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5741224579774359,
+            "exaggeration": 0.23124024634293006,
+            "temperature": 0.19888052662438344,
+            "top_p": 0.9164792816667737,
+            "min_p": 0.13469396594900826,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5102686019602276,
+            "exaggeration": 0.6366441802104164,
+            "temperature": 0.7686753455715949,
+            "top_p": 0.7068746626215938,
+            "min_p": 0.08979788904541466,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3343081444766268,
+            "temperature": 0.3198688571563195,
+            "top_p": 0.7484969363186246,
+            "min_p": 0.041735619077993405,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.4009227718040546,
+            "exaggeration": 0.5139850332672066,
+            "temperature": 0.6074136029786902,
+            "top_p": 0.92239671051941,
+            "min_p": 0.1752572149506763,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7905362152794284,
+            "exaggeration": 0.2353363715506696,
+            "temperature": 0.46573772531815294,
+            "top_p": 0.7674944598327593,
+            "min_p": 0.011245392342425636,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5808544247584716,
+            "exaggeration": 0.2268206902695624,
+            "temperature": 0.42970587869914734,
+            "top_p": 0.8536236505230017,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5761152668445038,
+            "exaggeration": 0.4664302722883308,
+            "temperature": 0.8399897944258974,
+            "top_p": 0.8457954253946518,
+            "min_p": 0.0923721232855467,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9295510151551688,
+            "exaggeration": 0.2243296605697362,
+            "temperature": 0.223578273782845,
+            "top_p": 0.9202950413034077,
+            "min_p": 0.19102495755675397,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.40907672726363126,
+            "exaggeration": 0.4674114686614418,
+            "temperature": 0.6073280419008501,
+            "top_p": 0.8265406552366772,
+            "min_p": 0.2417834149640466,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6298682920075951,
+            "exaggeration": 0.0,
+            "temperature": 0.06210228878798872,
+            "top_p": 0.8276048168262464,
+            "min_p": 0.16075765189431104,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 176,
+      "text_preview": "Και μετά, όταν έτρεξε αυτός ο άνθρωπος, η πιο σημαντική στιγμή ήταν όταν τον φρό",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-030",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7778581835414591,
+            "exaggeration": 0.44276340151214333,
+            "temperature": 0.555098562087303,
+            "top_p": 0.7438301825535407,
+            "min_p": 0.20073862519627506,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.611414911236718,
+            "exaggeration": 0.279826404171113,
+            "temperature": 0.3492351018341099,
+            "top_p": 0.7622001414065573,
+            "min_p": 0.2123310992890176,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5116221730448849,
+            "exaggeration": 0.5415430172777703,
+            "temperature": 0.7938617604742074,
+            "top_p": 0.9001976613154137,
+            "min_p": 0.21349328858061084,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3716425875468893,
+            "temperature": 0.1434588416725021,
+            "top_p": 0.7529939508651693,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.39906543214134366,
+            "exaggeration": 0.4499967381150337,
+            "temperature": 0.3506942722644131,
+            "top_p": 0.8518590770149502,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 77,
+      "text_preview": "Σκάβοντας δύο παρτέρια, ο βασιλιάς σταμάτησε και επανέλαβε τις ερωτήσεις του.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 6,
+      "best_quality_score": 4.56,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "pre_speech_spike"
+          ],
+          "score": 28.0,
+          "params": {
+            "cfg_weight": 0.8650234785324551,
+            "exaggeration": 0.4499962115735211,
+            "temperature": 0.5020436040596012,
+            "top_p": 0.904671584829442,
+            "min_p": 0.13396604209124072,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.5560609031945073,
+            "exaggeration": 0.1710928603731153,
+            "temperature": 0.3566181009727738,
+            "top_p": 0.7175481672590398,
+            "min_p": 0.1736811345452378,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "pre_speech_spike"
+          ],
+          "score": 28.0,
+          "params": {
+            "cfg_weight": 0.49074715660078383,
+            "exaggeration": 0.6858860792682495,
+            "temperature": 0.5664984659269093,
+            "top_p": 0.7428966482797574,
+            "min_p": 0.046948479832781845,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.9198512644123659,
+            "exaggeration": 0.4036485849487841,
+            "temperature": 0.12660205901236948,
+            "top_p": 0.9906227355682097,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.4656669501731197,
+            "exaggeration": 0.4130768822552987,
+            "temperature": 0.5870886368537083,
+            "top_p": 0.7953673230293229,
+            "min_p": 0.1868137245254456,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "— Πώς δηλαδή; — είπε ο ερημίτης.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9032945887663067,
+            "exaggeration": 0.1878396017024645,
+            "temperature": 0.4471131866185089,
+            "top_p": 0.9968063987196716,
+            "min_p": 0.2415533804206798,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37588890178120676,
+            "exaggeration": 0.1618931677237449,
+            "temperature": 0.2064521433844352,
+            "top_p": 0.7209842714782749,
+            "min_p": 0.1851741821748833,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.4615999140662209,
+            "exaggeration": 0.7100158648908069,
+            "temperature": 0.611646221500853,
+            "top_p": 0.8271772321351699,
+            "min_p": 0.05582675702664859,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9072033301653706,
+            "exaggeration": 0.16843639005800592,
+            "temperature": 0.31208276549996683,
+            "top_p": 0.8618897682336211,
+            "min_p": 0.013796966721042733,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 57,
+      "text_preview": "Μόνο τότε, έλεγαν, κάθε πράγμα θα γίνεται στον καιρό του.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-036",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.8721843220516958,
+            "exaggeration": 0.37203771452401924,
+            "temperature": 0.4616967043234968,
+            "top_p": 0.882670706832111,
+            "min_p": 0.053104402339420584,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.5575117797272239,
+            "exaggeration": 0.07732204342196218,
+            "temperature": 0.4061395910194959,
+            "top_p": 0.7955704342922936,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7102748602854873,
+            "exaggeration": 0.7014439680912814,
+            "temperature": 0.6611570431274479,
+            "top_p": 0.8362541747847398,
+            "min_p": 0.09657020688480403,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "Ο βασιλιάς καρφωσε το φτυάρι στη γη και είπε:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.8228667510704817,
+            "exaggeration": 0.44962072819306986,
+            "temperature": 0.5816407389253722,
+            "top_p": 0.7126129372070122,
+            "min_p": 0.15837742779109934,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4270232954132863,
+            "exaggeration": 0.2736322438302073,
+            "temperature": 0.2903330865993408,
+            "top_p": 0.7390969511050616,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "— Κουράστηκες, — είπε ο βασιλιάς.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-062",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.7027981478388233,
+            "exaggeration": 0.2946483001990151,
+            "temperature": 0.4881245353887601,
+            "top_p": 0.8132932416078604,
+            "min_p": 0.07667399452878265,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.509390099160635,
+            "exaggeration": 0.3211089238750925,
+            "temperature": 0.28939328843529316,
+            "top_p": 0.8119250192587866,
+            "min_p": 0.07318627642219414,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Με αναγνώρισαν και με τραυμάτισαν.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-065",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9102426238327569,
+            "exaggeration": 0.3589868501898347,
+            "temperature": 0.3710055219815707,
+            "top_p": 0.9312282179621363,
+            "min_p": 0.0436541882646299,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4947484186589273,
+            "exaggeration": 0.06154811081689893,
+            "temperature": 0.17215044688131936,
+            "top_p": 0.7749135169181554,
+            "min_p": 0.15687572857524243,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 134,
+      "text_preview": "Τώρα, αν μείνω ζωντανός και το θέλεις, θα σου υπηρετήσω, σαν τον πιο πιστό δούλο",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8304849169964925,
+            "exaggeration": 0.28040847369804467,
+            "temperature": 0.6383914077874211,
+            "top_p": 0.9519514411931083,
+            "min_p": 0.023532215679404556,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 304,
+      "text_preview": "Και, σκεφτόμενος αυτό, ο βασιλιάς ανακήρυξε σε όλο του το βασίλειο ότι θα δώσει ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7716804626021271,
+            "exaggeration": 0.43413555558320205,
+            "temperature": 0.3898299250970508,
+            "top_p": 0.8631359906206711,
+            "min_p": 0.23739116476492256,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "Και επομένως, για να γνωρίζει κανείς τον κατάλληλο καιρό για κάθε πράξη, πρέπει ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.785836722864039,
+            "exaggeration": 0.2891242727393425,
+            "temperature": 0.6493951863025649,
+            "top_p": 0.8987465644349165,
+            "min_p": 0.10283848225473144,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 143,
+      "text_preview": "Για να μάθει όμως καλύτερα τις απαντήσεις στις ερωτήσεις του, αποφάσισε να ρωτήσ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7905881553194423,
+            "exaggeration": 0.41699757789838954,
+            "temperature": 0.43049998866833794,
+            "top_p": 0.7091959485923807,
+            "min_p": 0.1653738062325059,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 37,
+      "text_preview": "Και ποια πράξη είναι η πιο σημαντική;",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8924830193925932,
+            "exaggeration": 0.34626232993238915,
+            "temperature": 0.640225256796022,
+            "top_p": 0.8776670059462248,
+            "min_p": 0.13658649048105906,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Ο ερημίτης πάλι δεν απάντησε, αλλά σηκώθηκε και άπλωσε το χέρι προς το φτυάρι:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8422124695151811,
+            "exaggeration": 0.24874809441027843,
+            "temperature": 0.5125258586651682,
+            "top_p": 0.863016009314019,
+            "min_p": 0.07675011368359708,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "Πέρασε μία ώρα, πέρασε άλλη μία.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-058",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7691680255214303,
+            "exaggeration": 0.23721840975959857,
+            "temperature": 0.38750404152238516,
+            "top_p": 0.9430441292555825,
+            "min_p": 0.18606392551195297,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 117,
+      "text_preview": "Είμαι ο εχθρός σου, αυτός που ορκίστηκε να σε εκδικηθεί επειδή εκτέλεσες τον αδε",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 249,
+      "text_preview": "Ένας βασιλιάς σκέφτηκε ότι αν ήξερε πάντα ποιος καιρός είναι ο πιο σημαντικός γι",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 98,
+      "text_preview": "Άρχισαν να έρχονται στον βασιλιά μάθημένοι άνθρωποι και απαντούσαν στις ερωτήσει",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 193,
+      "text_preview": "Στην πρώτη ερώτηση κάποιοι έλεγαν ότι για να γνωρίζει κανείς τον κατάλληλο καιρό",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.04,
+        "temperature": 0.234,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.049,
+        "temperature": 0.214,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.244,
+        "temperature": 0.02,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.244,
+        "temperature": 0.02,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.244,
+        "temperature": 0.02,
+        "repetition_penalty": 0.0
+      }
+    },
+    "word_cluster": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.244,
+        "temperature": 0.02,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.244,
+        "temperature": 0.02,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.202,
+        "temperature": -0.039,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.008,
+        "temperature": -0.21,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

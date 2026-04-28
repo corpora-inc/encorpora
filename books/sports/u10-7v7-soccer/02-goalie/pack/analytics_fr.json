@@ -1,13 +1,49 @@
 {
   "book_id": "pack",
   "language": "fr",
-  "timestamp": "2026-04-19T20:08:19.150715+00:00",
-  "segments_total": 631,
+  "timestamp": "2026-04-23T00:26:23.849310+00:00",
+  "segments_total": 634,
   "segments_first_pass": 512,
   "segments_converged_by_retry": 101,
-  "segments_plateau_stopped": 18,
-  "total_retries": 809,
-  "error_distribution": {},
+  "segments_plateau_stopped": 21,
+  "total_retries": 789,
+  "error_distribution": {
+    "hard_ending": 13,
+    "final_word_weak": 9,
+    "trailing_silence": 6,
+    "stacked_words": 4,
+    "too_short": 4,
+    "word_cluster": 4,
+    "first_word_weak": 3,
+    "min_trailing_silence": 3,
+    "tail_energy": 3,
+    "transcription_mismatch": 3,
+    "pre_speech_spike": 2
+  },
+  "phase_timings": {
+    "tts": 124.10461068153381,
+    "align": 39.4789400100708,
+    "validate": 13.033384084701538,
+    "trim": 0.20988798141479492,
+    "master": 4.576355457305908
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 167,
+      "passed": 126,
+      "rate": 0.7544910179640718
+    },
+    "medium_30_80": {
+      "total": 412,
+      "passed": 338,
+      "rate": 0.8203883495145631
+    },
+    "long_80_plus": {
+      "total": 55,
+      "passed": 48,
+      "rate": 0.8727272727272727
+    }
+  },
   "worst_segments": [
     {
       "id": "ch08-604",
@@ -16,7 +52,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Parle-toi de facon positive."
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Parle-toi de facon positive.",
+      "passed_first": false
     },
     {
       "id": "ch03-184",
@@ -25,7 +64,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Considere-toi comme un defenseur supplementaire."
+      "retry_history": [],
+      "text_len": 48,
+      "text_preview": "Considere-toi comme un defenseur supplementaire.",
+      "passed_first": false
     },
     {
       "id": "ch03-223",
@@ -34,7 +76,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Lis le jeu depuis l'arriere."
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Lis le jeu depuis l'arriere.",
+      "passed_first": false
     },
     {
       "id": "ch08-605",
@@ -43,7 +88,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Dis-toi que tu es pret."
+      "retry_history": [],
+      "text_len": 23,
+      "text_preview": "Dis-toi que tu es pret.",
+      "passed_first": false
     },
     {
       "id": "ch03-188",
@@ -52,7 +100,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Ta position avancee rend ca possible."
+      "retry_history": [],
+      "text_len": 37,
+      "text_preview": "Ta position avancee rend ca possible.",
+      "passed_first": false
     },
     {
       "id": "ch08-624",
@@ -61,7 +112,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Tu auras des matchs ou tu feras dix arrets."
+      "retry_history": [],
+      "text_len": 43,
+      "text_preview": "Tu auras des matchs ou tu feras dix arrets.",
+      "passed_first": false
     },
     {
       "id": "ch05-407",
@@ -70,16 +124,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Fais un signe de tete."
-    },
-    {
-      "id": "ch02-149",
-      "attempts": 28,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Assure-toi que tes defenseurs savent que tu es la."
+      "retry_history": [],
+      "text_len": 22,
+      "text_preview": "Fais un signe de tete.",
+      "passed_first": false
     },
     {
       "id": "ch08-615",
@@ -88,7 +136,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "C'est ta reaction a ces moments qui te definit."
+      "retry_history": [],
+      "text_len": 47,
+      "text_preview": "C'est ta reaction a ces moments qui te definit.",
+      "passed_first": false
     },
     {
       "id": "ch04-300",
@@ -97,7 +148,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Force l'attaquant a prendre une decision."
+      "retry_history": [],
+      "text_len": 41,
+      "text_preview": "Force l'attaquant a prendre une decision.",
+      "passed_first": false
     },
     {
       "id": "ch02-122",
@@ -106,7 +160,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Lance un ballon par-dessus a un coequipier plus loin."
+      "retry_history": [],
+      "text_len": 53,
+      "text_preview": "Lance un ballon par-dessus a un coequipier plus loin.",
+      "passed_first": false
     },
     {
       "id": "ch06-441",
@@ -115,7 +172,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "L'autre equipe n'est peut-etre pas encore replacee defensivement."
+      "retry_history": [],
+      "text_len": 65,
+      "text_preview": "L'autre equipe n'est peut-etre pas encore replacee defensivement.",
+      "passed_first": false
     },
     {
       "id": "ch04-246",
@@ -124,7 +184,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Maintenant ta concentration s'aiguise."
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "Maintenant ta concentration s'aiguise.",
+      "passed_first": false
     },
     {
       "id": "ch05-347",
@@ -133,7 +196,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Pense a amortir le ballon plutot qu'a taper dessus."
+      "retry_history": [],
+      "text_len": 51,
+      "text_preview": "Pense a amortir le ballon plutot qu'a taper dessus.",
+      "passed_first": false
     },
     {
       "id": "ch03-211",
@@ -142,7 +208,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Dis \"monte\" pour dire a tes defenseurs d'avancer avec l'equipe."
+      "retry_history": [],
+      "text_len": 63,
+      "text_preview": "Dis \"monte\" pour dire a tes defenseurs d'avancer avec l'equipe.",
+      "passed_first": false
     },
     {
       "id": "ch07-548",
@@ -151,7 +220,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Assure-toi que chacun connait son role."
+      "retry_history": [],
+      "text_len": 39,
+      "text_preview": "Assure-toi que chacun connait son role.",
+      "passed_first": false
     },
     {
       "id": "ch08-591",
@@ -160,7 +232,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Balaie le terrain du regard."
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Balaie le terrain du regard.",
+      "passed_first": false
     },
     {
       "id": "ch03-200",
@@ -169,7 +244,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Parle a tes defenseurs en permanence."
+      "retry_history": [],
+      "text_len": 37,
+      "text_preview": "Parle a tes defenseurs en permanence.",
+      "passed_first": false
     },
     {
       "id": "ch05-354",
@@ -178,7 +256,10 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Atterris sur le cote, pas sur le ventre."
+      "retry_history": [],
+      "text_len": 40,
+      "text_preview": "Atterris sur le cote, pas sur le ventre.",
+      "passed_first": false
     },
     {
       "id": "ch08-592",
@@ -187,7 +268,32 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Compte les joueurs adverses."
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Compte les joueurs adverses.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-413",
+      "attempts": 16,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 20,
+      "text_preview": "Le danger est passe.",
+      "passed_first": false
     }
-  ]
+  ],
+  "param_effectiveness": {
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.049,
+        "temperature": 0.192,
+        "repetition_penalty": 0.389
+      }
+    }
+  }
 }

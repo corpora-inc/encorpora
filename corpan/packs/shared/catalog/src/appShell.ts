@@ -43,6 +43,7 @@ import { showToast } from "../../ui/toast"
 import type { InstallResult } from "./installManager"
 import { drawerStore } from "../../state/drawerStore"
 import { recordNarrationUse } from "../../state/narrationHistoryStore"
+import * as analytics from "@shared/analytics"
 
 /**
  * Translate via the main app's i18next instance, exposed as
@@ -77,6 +78,12 @@ function tt(key: string, defaultValue: string, params?: Record<string, unknown>)
 const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json"
 const FALLBACK_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog.json"
 
+// Anonymous analytics endpoint — CloudFront in front of API Gateway in front
+// of the analytics ingest Lambda. CloudFront enriches the request with the
+// viewer's country header before it reaches the Lambda. The IP itself is
+// never persisted. See `~/encorpora/corpan/infra/PUBLISHING.md` § Analytics.
+const ANALYTICS_ENDPOINT = "https://d1xp3xghrx3jfa.cloudfront.net/v1/events"
+
 export type ReaderFactory = (
   container: HTMLElement,
   hostApi: unknown,
@@ -86,6 +93,8 @@ export type ReaderFactory = (
 export type AppShellOptions = {
   /** Unique ID for this reader (e.g. "earthgate", "stargate"). Scopes persisted state so readers don't share narration selection. */
   readerId: string
+  /** Reader bundle version — passed through to anonymous analytics. Read from manifest.json. */
+  readerVersion?: string
   cdnUrl?: string
   createReader: ReaderFactory
   hostApi: unknown
@@ -107,6 +116,16 @@ export function createAppShell(
   opts: AppShellOptions
 ): AppShell {
   const cdnUrl = opts.cdnUrl || DEFAULT_CDN_URL
+
+  // Initialize analytics. Disabled in dev (no endpoint configured) and in
+  // any build without an endpoint — analytics.init is idempotent so this
+  // is safe across remounts.
+  analytics.init({
+    readerId: opts.readerId,
+    readerVersion: opts.readerVersion || "",
+    endpoint: ANALYTICS_ENDPOINT,
+    enabled: ANALYTICS_ENDPOINT.length > 0,
+  })
 
   // Force synchronous hydration — zustand/persist hydrates in a microtask,
   // but we need the persisted data NOW during synchronous construction.
@@ -373,6 +392,12 @@ export function createAppShell(
       title: "Browse",
       priority: 30,
       render: (container) => renderBrowseSection(container),
+    },
+    {
+      id: "privacy",
+      title: "Privacy",
+      priority: 90,
+      render: (container) => renderPrivacySection(container),
     },
   ]
 
@@ -661,6 +686,14 @@ export function createAppShell(
     if (closeDrawer) drawer.close()
     mountReader(newState)
     refreshSwitchers()
+
+    // Anonymous analytics — bookOpened auto-closes any prior open book.
+    analytics.bookOpened({
+      bookId: info.bookId,
+      narrationPackId: narrationId,
+      language: info.language,
+      voiceId: info.voiceId,
+    })
   }
 
   // --- Now Playing section rendering ---
@@ -1966,10 +1999,39 @@ export function createAppShell(
     setTimeout(() => search.focus(), 50)
   }
 
+  // --- Privacy section: anonymous analytics opt-out ---
+  function renderPrivacySection(container: HTMLElement): void {
+    container.innerHTML = ""
+
+    const blurb = document.createElement("div")
+    blurb.className = "command-drawer-privacy-blurb"
+    blurb.textContent =
+      "We collect anonymous, aggregate signal — which book is opened and for how long — to cultivate the catalog. No accounts, no IPs, no device IDs."
+    container.appendChild(blurb)
+
+    const row = document.createElement("label")
+    row.className = "command-drawer-privacy-row"
+
+    const text = document.createElement("span")
+    text.textContent = "Anonymous usage analytics"
+    row.appendChild(text)
+
+    const toggle = document.createElement("input")
+    toggle.type = "checkbox"
+    toggle.checked = !analytics.getOptOut()
+    toggle.addEventListener("change", () => {
+      analytics.setOptOut(!toggle.checked)
+    })
+    row.appendChild(toggle)
+
+    container.appendChild(row)
+  }
+
   // --- Dispose ---
   function dispose(): void {
     if (disposed) return
     disposed = true
+    analytics.bookClosed()
     storeUnsub()
     narrUnsub()
     persistUnsub()

@@ -1,0 +1,385 @@
+{
+  "book_id": "pack",
+  "language": "de",
+  "timestamp": "2026-04-24T08:24:38.736145+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 488,
+  "segments_converged_by_retry": 68,
+  "segments_plateau_stopped": 1,
+  "total_retries": 188,
+  "error_distribution": {
+    "trailing_silence": 21,
+    "tail_energy": 8,
+    "hard_ending": 7,
+    "final_word_weak": 3,
+    "transcription_mismatch": 2,
+    "pre_speech_spike": 1
+  },
+  "phase_timings": {
+    "tts": 118.07086849212646,
+    "align": 37.696406841278076,
+    "validate": 15.098835706710815,
+    "trim": 0.2207043170928955,
+    "master": 5.718440532684326
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 92,
+      "passed": 82,
+      "rate": 0.8913043478260869
+    },
+    "medium_30_80": {
+      "total": 370,
+      "passed": 322,
+      "rate": 0.8702702702702703
+    },
+    "long_80_plus": {
+      "total": 95,
+      "passed": 84,
+      "rate": 0.8842105263157894
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch07-478",
+      "attempts": 20,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "Offensive Standardsituationen",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-162",
+      "attempts": 16,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Bleib aufrecht, bleib im Gleichgewicht und bleib im Kampf.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-432",
+      "attempts": 12,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 75,
+      "text_preview": "Ecken, Freistöße, Einwürfe und Abstoße zählen alle als Standardsituationen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-197",
+      "attempts": 10,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 99,
+      "text_preview": "Wenn der Stürmer nicht an dir vorbeikommt und den Ball nicht nach vorn passen ka",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-354",
+      "attempts": 10,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 34,
+      "text_preview": "Sieh, welcher Mitspieler frei ist.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-129",
+      "attempts": 9,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 64,
+      "text_preview": "Wenn du alle drei sehen kannst, bist du in einer guten Position.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-512",
+      "attempts": 8,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 93,
+      "text_preview": "Eine clevere Balleroberung in der Mitte des Feldes wird es nicht auf die Titelse",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 7,
+      "best_quality_score": 22.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.8601219921897028,
+            "exaggeration": 0.08640085884273757,
+            "temperature": 0.3015675179084311,
+            "top_p": 0.708826187175073,
+            "min_p": 0.017862286721512716,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.290563600696837,
+            "exaggeration": 0.24322202693299738,
+            "temperature": 0.4720199404882059,
+            "top_p": 0.6779934131900348,
+            "min_p": 0.3434943952808803,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.6331215646115506,
+            "exaggeration": 0.6907134353693754,
+            "temperature": 0.45508759335633214,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.9048026843167025,
+            "exaggeration": 0.06510996044311795,
+            "temperature": 0.0745231987503367,
+            "top_p": 1.0,
+            "min_p": 0.05230489532845764,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.6323068793367761,
+            "exaggeration": 0.4431153350227336,
+            "temperature": 0.31665975571117544,
+            "top_p": 0.7508914636508948,
+            "min_p": 0.3473960320707944,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.5318108207269754,
+            "exaggeration": 0.1091095640934979,
+            "temperature": 0.14438016181416183,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Dein Team spielt eine eins-zwei-drei-Formation.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-076",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 41,
+      "text_preview": "Einer von euch deckt die rechte Seite ab.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-160",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 57,
+      "text_preview": "Wenn du deine Füße verlässt, bist du aus der Aktion raus.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-388",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 100,
+      "text_preview": "Ein überlappender Lauf ist, wenn du an deinem eigenen Mitspieler auf der Außense",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-114",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 146,
+      "text_preview": "Der Libero könnte sagen „Läufer hinter dir\" oder „schieb nach links\" oder „rück ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-042",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 50,
+      "text_preview": "Deine Mitspieler spüren die Arbeit, die du machst.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 47,
+      "text_preview": "Diese Verteidiger sind stolz auf ihre Position.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-216",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 40,
+      "text_preview": "Der Libero ist oft die sicherste Option.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-250",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Decke den Stürmer in deiner Zone.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-372",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 31,
+      "text_preview": "Rücke über die Mittellinie vor.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-389",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 69,
+      "text_preview": "Stell dir deinen Flügelspieler mit dem Ball nahe der Seitenlinie vor.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-496",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "Deine Beine tragen dich über das Feld.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-525",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 25,
+      "text_preview": "Überprüfe deine Position.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}

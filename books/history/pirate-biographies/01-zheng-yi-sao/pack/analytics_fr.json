@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "fr",
+  "timestamp": "2026-04-20T03:58:55.879570+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 251,
+  "segments_converged_by_retry": 34,
+  "segments_plateau_stopped": 18,
+  "total_retries": 123,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch05-226",
+      "attempts": 8,
+      "best_quality_score": 10.0,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En mille huit cent dix, des fissures commençaient à apparaître dans la confédéra"
+    },
+    {
+      "id": "ch06-280",
+      "attempts": 8,
+      "best_quality_score": 0.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Aucun autre pirate n'a bâti un système de lois et de gouvernance aussi sophistiq"
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 7,
+      "best_quality_score": 4.8,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Puis, en novembre mille huit cent sept, Zheng Yi mourut."
+    },
+    {
+      "id": "ch03-146",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao mit également en place un système de taxation sophistiqué."
+    },
+    {
+      "id": "ch02-095",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Il persuada les capitaines rivaux de rejoindre sa confédération par un mélange d"
+    },
+    {
+      "id": "ch03-127",
+      "attempts": 6,
+      "best_quality_score": 10.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Lors de cette réunion, elle plaida sa cause pour prendre la tête de la confédéra"
+    },
+    {
+      "id": "ch03-153",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Les forces de Zheng Yi Sao coulèrent ou capturèrent des dizaines de navires de g"
+    },
+    {
+      "id": "ch04-224",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Aucune action majeure n'était entreprise sans son approbation."
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 4,
+      "best_quality_score": 4.4,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ils naissaient sur l'eau, travaillaient sur l'eau et mouraient sur l'eau."
+    },
+    {
+      "id": "ch01-045",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Des milliers d'îles, de criques et d'embouchures de fleuves offraient des cachet"
+    },
+    {
+      "id": "ch02-073",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Elle a appris les langues du commerce et de la négociation."
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi avait une vision audacieuse."
+    },
+    {
+      "id": "ch02-091",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Il voulait unir les flottes de pirates dispersées de la mer de Chine méridionale"
+    },
+    {
+      "id": "ch02-093",
+      "attempts": 4,
+      "best_quality_score": 5.12,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi était convaincu qu'ils seraient bien plus puissants s'ils coopéraient."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En mille huit cent cinq, la confédération était achevée."
+    },
+    {
+      "id": "ch02-109",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sa mort créa une crise pour l'ensemble de la confédération."
+    },
+    {
+      "id": "ch03-144",
+      "attempts": 4,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Les quatre-vingts pour cent restants allaient au fonds commun."
+    },
+    {
+      "id": "ch03-159",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sa flotte étendit son territoire le long de toute la côte du Guangdong."
+    },
+    {
+      "id": "ch05-231",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Guo Podai commandait la Flotte du Pavillon Noir, la deuxième plus grande de la c"
+    },
+    {
+      "id": "ch05-237",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En échange, il se retournerait contre ses anciens alliés."
+    }
+  ]
+}

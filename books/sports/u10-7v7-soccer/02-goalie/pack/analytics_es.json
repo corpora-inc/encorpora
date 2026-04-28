@@ -1,14 +1,933 @@
 {
   "book_id": "pack",
   "language": "es",
-  "timestamp": "2026-04-19T20:01:19.024405+00:00",
-  "segments_total": 630,
-  "segments_first_pass": 623,
-  "segments_converged_by_retry": 7,
-  "segments_plateau_stopped": 0,
-  "total_retries": 8,
-  "error_distribution": {},
+  "timestamp": "2026-04-23T01:00:31.681383+00:00",
+  "segments_total": 634,
+  "segments_first_pass": 608,
+  "segments_converged_by_retry": 18,
+  "segments_plateau_stopped": 8,
+  "total_retries": 57,
+  "error_distribution": {
+    "final_word_weak": 53,
+    "trailing_silence": 19,
+    "first_word_weak": 14,
+    "stacked_words": 4,
+    "min_trailing_silence": 4,
+    "word_cluster": 4,
+    "hard_ending": 4,
+    "too_short": 1
+  },
+  "phase_timings": {
+    "tts": 246.2534306049347,
+    "align": 69.17914700508118,
+    "validate": 10.424646377563477,
+    "trim": 0.35713791847229004,
+    "master": 7.678106784820557
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 166,
+      "passed": 162,
+      "rate": 0.9759036144578314
+    },
+    "medium_30_80": {
+      "total": 414,
+      "passed": 395,
+      "rate": 0.9541062801932367
+    },
+    "long_80_plus": {
+      "total": 54,
+      "passed": 51,
+      "rate": 0.9444444444444444
+    }
+  },
   "worst_segments": [
+    {
+      "id": "ch01-045",
+      "attempts": 10,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 9,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6769533756498948,
+            "exaggeration": 0.15397685075053597,
+            "temperature": 0.5061863751902416,
+            "top_p": 0.7334363334973666,
+            "min_p": 0.17780160392119546,
+            "repetition_penalty": 1.4916778968245126
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.564430435118326,
+            "exaggeration": 0.044119726365519696,
+            "temperature": 0.12131601753231597,
+            "top_p": 1.0,
+            "min_p": 0.02312416175983731,
+            "repetition_penalty": 2.4744098680787627
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.35218427894081683,
+            "exaggeration": 0.49305468439817896,
+            "temperature": 0.4909110926407015,
+            "top_p": 0.9561299315793718,
+            "min_p": 0.16559112733134776,
+            "repetition_penalty": 2.567235256528331
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8241276519410103,
+            "exaggeration": 0.49272942506945433,
+            "temperature": 0.11706893107326521,
+            "top_p": 0.806948418690246,
+            "min_p": 0.16711344446998247,
+            "repetition_penalty": 1.2542375328535578
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3157253312042753,
+            "exaggeration": 0.5206785167841482,
+            "temperature": 0.29677634985895707,
+            "top_p": 1.0,
+            "min_p": 0.16586242010242117,
+            "repetition_penalty": 2.606167655130303
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5152979166553151,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.8315689417933096,
+            "min_p": 0.3480580054316055,
+            "repetition_penalty": 1.6473321330796813
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3240768548170413,
+            "exaggeration": 0.08282926212142461,
+            "temperature": 0.6817812210875378,
+            "top_p": 0.6399042542625042,
+            "min_p": 0.07076706025827698,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5251271576143708,
+            "temperature": 0.44019567579123964,
+            "top_p": 0.7531807267459386,
+            "min_p": 0.0,
+            "repetition_penalty": 2.9001931500767006
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "too_short",
+            "word_cluster"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.0038541152753813757,
+            "exaggeration": 0.6634964133184427,
+            "temperature": 0.7517873226197478,
+            "top_p": 0.8758668644598755,
+            "min_p": 0.0,
+            "repetition_penalty": 1.0174939136225885
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Tu confianza se extiende a cada jugador que está delante de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-111",
+      "attempts": 6,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 43.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.9787910391257033,
+            "exaggeration": 0.09132649422572564,
+            "temperature": 0.25668591893316073,
+            "top_p": 0.6279156882953623,
+            "min_p": 0.2034434108588665,
+            "repetition_penalty": 1.0413210609272452
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6178522471648471,
+            "exaggeration": 0.0,
+            "temperature": 0.19049631050950183,
+            "top_p": 1.0,
+            "min_p": 0.3111804766006314,
+            "repetition_penalty": 1.181020856473723
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.7419222338207618,
+            "exaggeration": 0.39331602851566544,
+            "temperature": 0.8356216878400711,
+            "top_p": 0.7785141680234751,
+            "min_p": 0.28755828783125614,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2891083319130622,
+            "temperature": 0.2155282742588036,
+            "top_p": 1.0,
+            "min_p": 0.05101889818513358,
+            "repetition_penalty": 2.6388125637949837
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.3237049633276605,
+            "exaggeration": 0.533861028376216,
+            "temperature": 0.31816972158376683,
+            "top_p": 0.6719409583607254,
+            "min_p": 0.0,
+            "repetition_penalty": 2.473483054065633
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Mantente en la punta de los pies.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-322",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5370262002275519,
+            "temperature": 0.5789892034860462,
+            "top_p": 0.6252913781129839,
+            "min_p": 0.16851035216901591,
+            "repetition_penalty": 1.7012720909739363
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.2787451377435909,
+            "exaggeration": 0.34574792166509566,
+            "temperature": 0.20032602206057848,
+            "top_p": 0.8863039963238932,
+            "min_p": 0.0,
+            "repetition_penalty": 3.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4635720193503613,
+            "exaggeration": 0.6204701087215494,
+            "temperature": 0.45020944997102935,
+            "top_p": 0.6684724013367321,
+            "min_p": 0.22903116325882153,
+            "repetition_penalty": 2.7977471904664495
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.1615029301512006,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.03747366353191142,
+            "repetition_penalty": 2.147186565873042
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "Dile a tus defensas que cubran las líneas de pase.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-613",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9313421383623068,
+            "exaggeration": 0.3370399235689782,
+            "temperature": 0.6864423051307522,
+            "top_p": 0.8310876722482304,
+            "min_p": 0.0,
+            "repetition_penalty": 2.144216173035158
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6314576113911454,
+            "exaggeration": 0.0,
+            "temperature": 0.5443941420851153,
+            "top_p": 0.7543412620539125,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9812657420142954
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5902017271090912,
+            "exaggeration": 0.6249516478343374,
+            "temperature": 0.889571057616537,
+            "top_p": 0.749498334600444,
+            "min_p": 0.0,
+            "repetition_penalty": 3.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 70.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2598163360620657,
+            "temperature": 0.4081988189292205,
+            "top_p": 0.6038239586634724,
+            "min_p": 0.13889830313333437,
+            "repetition_penalty": 1.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Puede que patees un saque de meta fuera de la cancha.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-172",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8002771281017955,
+            "exaggeration": 0.1214938127506246,
+            "temperature": 0.5976224277816611,
+            "top_p": 0.6424206998722911,
+            "min_p": 0.0,
+            "repetition_penalty": 2.6248378278724136
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.7422576729342695,
+            "exaggeration": 0.0,
+            "temperature": 0.4888689485241192,
+            "top_p": 0.956074452598054,
+            "min_p": 0.14252183408945082,
+            "repetition_penalty": 1.0222637644963943
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 43.0,
+          "params": {
+            "cfg_weight": 0.40176368996269923,
+            "exaggeration": 0.7569337272656962,
+            "temperature": 0.7013488874294997,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.174317809894636
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "La jugada está pasando en el otro lado de la cancha.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-264",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9312606142600568,
+            "exaggeration": 0.41897828660314934,
+            "temperature": 0.4606455232687736,
+            "top_p": 0.6455182751438272,
+            "min_p": 0.30449922691115283,
+            "repetition_penalty": 2.2763331329734227
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 70.0,
+          "params": {
+            "cfg_weight": 0.5252751837341498,
+            "exaggeration": 0.08825058434643462,
+            "temperature": 0.18867521024218342,
+            "top_p": 0.7232514708709401,
+            "min_p": 0.3115068092531367,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "word_cluster"
+          ],
+          "score": 60.0,
+          "params": {
+            "cfg_weight": 0.5350043549394119,
+            "exaggeration": 0.77788653935377,
+            "temperature": 0.9032589847936465,
+            "top_p": 0.692778742106398,
+            "min_p": 0.3263133824249078,
+            "repetition_penalty": 1.0
+          }
+        }
+      ],
+      "text_len": 87,
+      "text_preview": "Cuando te paras en tu línea de meta, el tirador ve un arco abierto a ambos lados",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-382",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6562323685092738,
+            "exaggeration": 0.4163880491842803,
+            "temperature": 0.6576986798193794,
+            "top_p": 0.8830303001519724,
+            "min_p": 0.11713530117957735,
+            "repetition_penalty": 2.736671211918457
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7039661180026834,
+            "exaggeration": 0.1607099028972368,
+            "temperature": 0.2139006348775464,
+            "top_p": 1.0,
+            "min_p": 0.1430223274780619,
+            "repetition_penalty": 2.683153062168501
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.7899431583175285,
+            "exaggeration": 0.5721587803346759,
+            "temperature": 0.8413014022181753,
+            "top_p": 0.7022992455264943,
+            "min_p": 0.18034214811712454,
+            "repetition_penalty": 2.0330851027987533
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Protege el balón con cada parte de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-434",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5996958830773466,
+            "exaggeration": 0.26704409614823105,
+            "temperature": 0.5247763779647516,
+            "top_p": 0.9543242608800454,
+            "min_p": 0.04897360910899076,
+            "repetition_penalty": 3.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7280413387329652,
+            "exaggeration": 0.32668401498972516,
+            "temperature": 0.5209792809642748,
+            "top_p": 1.0,
+            "min_p": 0.3003168757518251,
+            "repetition_penalty": 2.892638880038886
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8146772413600785,
+            "exaggeration": 0.8393541549039214,
+            "temperature": 0.6760768889238151,
+            "top_p": 0.7351543762400212,
+            "min_p": 0.1237841602710035,
+            "repetition_penalty": 1.5106697856368119
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "Lanza el balón por arriba a un compañero más adelante en la cancha.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-583",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7941502323009402,
+            "exaggeration": 0.27722037280931294,
+            "temperature": 0.653658718831363,
+            "top_p": 0.7198813283337517,
+            "min_p": 0.15899637600183678,
+            "repetition_penalty": 2.69785118847166
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6226259544040331,
+            "exaggeration": 0.3406972877639573,
+            "temperature": 0.2899295895710663,
+            "top_p": 0.8837534665571343,
+            "min_p": 0.10004901705004862,
+            "repetition_penalty": 2.8962232507255843
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.3998630922411307,
+            "exaggeration": 0.5137366992516906,
+            "temperature": 0.4587327485837489,
+            "top_p": 0.9375050101721663,
+            "min_p": 0.019347146392351328,
+            "repetition_penalty": 3.0
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "El balón puede no acercarse a ti por largos ratos.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-444",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9277062930264852,
+            "exaggeration": 0.1636547988421555,
+            "temperature": 0.2751856776843917,
+            "top_p": 0.9590693334392275,
+            "min_p": 0.001313139797943258,
+            "repetition_penalty": 2.070143315095497
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6656411489456862,
+            "exaggeration": 0.30590902068844883,
+            "temperature": 0.2244530817604326,
+            "top_p": 0.6417116767532073,
+            "min_p": 0.3021485139850859,
+            "repetition_penalty": 2.9927485172303725
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "Sostén el balón frente a ti.",
+      "passed_first": false
+    },
     {
       "id": "ch07-487",
       "attempts": 3,
@@ -16,7 +935,66 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Tu área es tu territorio."
+      "retry_history": [],
+      "text_len": 25,
+      "text_preview": "Tu área es tu territorio.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-520",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7729153031373426,
+            "exaggeration": 0.4441571690060612,
+            "temperature": 0.4944173590367135,
+            "top_p": 0.9197376063295657,
+            "min_p": 0.0,
+            "repetition_penalty": 1.7332339181901915
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.41946510393881653,
+            "exaggeration": 0.4354011033016933,
+            "temperature": 0.16583803563188426,
+            "top_p": 0.8618088229008215,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8861395243574643
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Dile a tu barrera que se quede quieta y firme.",
+      "passed_first": false
     },
     {
       "id": "ch01-060",
@@ -25,7 +1003,137 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Te mantienes en puntitas."
+      "retry_history": [],
+      "text_len": 25,
+      "text_preview": "Te mantienes en puntitas.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-148",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 43.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.807412694419454,
+            "exaggeration": 0.14986113210008623,
+            "temperature": 0.562940179527137,
+            "top_p": 0.626141297594416,
+            "min_p": 0.0,
+            "repetition_penalty": 1.4922320268154512
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Dile a tus laterales dónde los quieres.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-150",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9148416306955773,
+            "exaggeration": 0.44580725991634595,
+            "temperature": 0.2644302160692571,
+            "top_p": 1.0,
+            "min_p": 0.21311287892883604,
+            "repetition_penalty": 2.5088367353331984
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "Una palabra rápida antes del partido crea la conexión que vas a necesitar durant",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-181",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6691328310959029,
+            "exaggeration": 0.5168296571163904,
+            "temperature": 0.6342800000041706,
+            "top_p": 1.0,
+            "min_p": 0.3482764268179819,
+            "repetition_penalty": 3.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Da un paso hacia adelante en la cancha.",
+      "passed_first": false
     },
     {
       "id": "ch03-185",
@@ -34,160 +1142,155 @@
       "best_attempt": null,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Eres el líbero detrás del líbero."
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Eres el líbero detrás del líbero.",
+      "passed_first": false
     },
     {
-      "id": "ch07-506",
+      "id": "ch03-219",
       "attempts": 2,
-      "best_quality_score": null,
-      "best_attempt": null,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Una atrapada limpia en un tiro de esquina es una de las mejores jugadas que pued"
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7393298506871897,
+            "exaggeration": 0.26564626094868476,
+            "temperature": 0.4652996315567628,
+            "top_p": 0.898679870544459,
+            "min_p": 0.16630340155421333,
+            "repetition_penalty": 1.8823347150075527
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Mantente en la punta de los pies.",
+      "passed_first": false
     },
     {
-      "id": "ch08-562",
+      "id": "ch05-364",
       "attempts": 2,
-      "best_quality_score": null,
-      "best_attempt": null,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Tu cuerpo hace la atajada, pero tu mente te pone en posición para hacerla."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9717846095566975,
+            "exaggeration": 0.490813435164671,
+            "temperature": 0.4665005420440693,
+            "top_p": 0.6735652210826566,
+            "min_p": 0.06281968944859492,
+            "repetition_penalty": 3.0
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Usa las puntas de los dedos para desviar el balón por fuera del poste.",
+      "passed_first": false
     },
     {
-      "id": "ch08-639",
+      "id": "ch05-384",
       "attempts": 2,
-      "best_quality_score": null,
-      "best_attempt": null,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "Ganes o pierdas, hiciste tu trabajo."
-    },
-    {
-      "id": "ch06-410",
-      "attempts": 2,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Distribución"
-    },
-    {
-      "id": "ch01-002",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Tú eres el portero."
-    },
-    {
-      "id": "ch01-003",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Eres el último jugador entre el balón y el arco."
-    },
-    {
-      "id": "ch01-004",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Cada compañero en la cancha confía en ti para proteger el arco."
-    },
-    {
-      "id": "ch01-005",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Esa confianza es algo que te ganas en cada partido."
-    },
-    {
-      "id": "ch01-006",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Eres el único jugador en la cancha que puede usar las manos."
-    },
-    {
-      "id": "ch01-007",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Tus manos son tu mejor herramienta."
-    },
-    {
-      "id": "ch01-008",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Atrapas el balón."
-    },
-    {
-      "id": "ch01-009",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Golpeas el balón con los puños."
-    },
-    {
-      "id": "ch01-010",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Lanzas el balón."
-    },
-    {
-      "id": "ch01-011",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Desvías el balón por fuera del poste."
-    },
-    {
-      "id": "ch01-012",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Ningún otro jugador de tu equipo puede hacer lo que tú haces."
-    },
-    {
-      "id": "ch01-013",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Usas guantes diferentes."
-    },
-    {
-      "id": "ch01-014",
-      "attempts": 1,
-      "best_quality_score": null,
-      "best_attempt": null,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "Usas una camiseta de otro color."
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6093582959282857,
+            "exaggeration": 0.3744253668274608,
+            "temperature": 0.7449598382962788,
+            "top_p": 0.9104622607791653,
+            "min_p": 0.17251386828675766,
+            "repetition_penalty": 2.5287865410130497
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "La jugada no para porque te tiraste al suelo.",
+      "passed_first": false
     }
-  ]
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.076,
+        "temperature": 0.149,
+        "repetition_penalty": 0.238
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.212,
+        "temperature": 0.126,
+        "repetition_penalty": 0.058
+      }
+    }
+  }
 }

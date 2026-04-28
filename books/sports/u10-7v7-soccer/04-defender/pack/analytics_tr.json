@@ -1,0 +1,1845 @@
+{
+  "book_id": "pack",
+  "language": "tr",
+  "timestamp": "2026-04-24T08:05:55.824631+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 432,
+  "segments_converged_by_retry": 105,
+  "segments_plateau_stopped": 20,
+  "total_retries": 264,
+  "error_distribution": {
+    "final_word_weak": 92,
+    "trailing_silence": 41,
+    "tail_energy": 16,
+    "pre_speech_spike": 13,
+    "tail_spike": 13,
+    "first_word_weak": 9,
+    "hard_ending": 4,
+    "post_speech_pop": 2,
+    "min_trailing_silence": 1,
+    "transcription_mismatch": 1
+  },
+  "phase_timings": {
+    "tts": 521.3725049495697,
+    "align": 122.13422751426697,
+    "validate": 34.20866656303406,
+    "trim": 0.5862197875976562,
+    "master": 15.398948669433594
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 141,
+      "passed": 108,
+      "rate": 0.7659574468085106
+    },
+    "medium_30_80": {
+      "total": 355,
+      "passed": 273,
+      "rate": 0.7690140845070422
+    },
+    "long_80_plus": {
+      "total": 61,
+      "passed": 51,
+      "rate": 0.8360655737704918
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch07-488",
+      "attempts": 16,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 15,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5645841988554727,
+            "exaggeration": 0.35246277495714584,
+            "temperature": 0.49940043525146294,
+            "top_p": 0.6516673042328814,
+            "min_p": 0.01050060636702796,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5347073403504132,
+            "exaggeration": 0.0,
+            "temperature": 0.19978939482876584,
+            "top_p": 1.0,
+            "min_p": 0.04420995512265549,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6552365861732934,
+            "exaggeration": 0.4935822595196501,
+            "temperature": 0.7395462585730471,
+            "top_p": 0.9503038306145719,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3018577911120569,
+            "temperature": 0.09539494406573579,
+            "top_p": 0.6803270970670532,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.42212628013186926,
+            "exaggeration": 0.7119542389968607,
+            "temperature": 0.6812594094204336,
+            "top_p": 0.7023860877341708,
+            "min_p": 0.2883550263799878,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6468158523084242,
+            "exaggeration": 0.3291842406644683,
+            "temperature": 0.17637900754814004,
+            "top_p": 0.868476436602001,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.05468961386535781,
+            "exaggeration": 0.15364847364068307,
+            "temperature": 0.571849556490881,
+            "top_p": 0.8822295395687971,
+            "min_p": 0.0025030221230806504,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9114424696550256,
+            "exaggeration": 0.2190635335890352,
+            "temperature": 0.3257307792681498,
+            "top_p": 0.8106726210887155,
+            "min_p": 0.06693618967086443,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4234791012092759,
+            "exaggeration": 0.7400178841332217,
+            "temperature": 0.8852817029061841,
+            "top_p": 0.6557446276839214,
+            "min_p": 0.21726894749947642,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1047375219573945,
+            "exaggeration": 0.7597198705409046,
+            "temperature": 0.6704957958550846,
+            "top_p": 0.8469474831422477,
+            "min_p": 0.18794174337425448,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.016582085847668127,
+            "exaggeration": 0.6739832150098847,
+            "temperature": 0.5717779467303612,
+            "top_p": 0.7930797219036531,
+            "min_p": 0.15220677992169993,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2875353914699726,
+            "exaggeration": 0.885314715323585,
+            "temperature": 0.6318558458611601,
+            "top_p": 0.9736723893863074,
+            "min_p": 0.2511509050450338,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3310931397643387,
+            "exaggeration": 0.7255433315899996,
+            "temperature": 0.9505865006625934,
+            "top_p": 0.737194584715789,
+            "min_p": 0.23448419467247703,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1431692815649805,
+            "exaggeration": 0.8953840172930169,
+            "temperature": 0.8396715924355708,
+            "top_p": 0.8744019165089192,
+            "min_p": 0.06751053579655261,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "trailing_silence",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 33.0,
+          "params": {
+            "cfg_weight": 0.109724257946824,
+            "exaggeration": 0.5950997227263153,
+            "temperature": 1.0066327720229384,
+            "top_p": 0.8155451684149243,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "Her hücum duran topundan sonra, karşı atağa dikkat et.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-246",
+      "attempts": 15,
+      "best_quality_score": 3.0,
+      "best_attempt": 14,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8476168048985395,
+            "exaggeration": 0.1271565218249851,
+            "temperature": 0.6647568358213514,
+            "top_p": 0.8406997703914042,
+            "min_p": 0.10458058089896663,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7215142271598722,
+            "exaggeration": 0.12049168182968256,
+            "temperature": 0.3976013159418013,
+            "top_p": 0.9284652693152915,
+            "min_p": 0.08731837620826913,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6239593028874421,
+            "exaggeration": 0.6383347671316802,
+            "temperature": 0.687427651074914,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7826578571473379,
+            "exaggeration": 0.2356312572130047,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.0811859826218159,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34475516684022567,
+            "exaggeration": 0.2636461303004,
+            "temperature": 0.730153987523948,
+            "top_p": 1.0,
+            "min_p": 0.32501633851016143,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8964835981173164,
+            "exaggeration": 0.24915864171908306,
+            "temperature": 0.05,
+            "top_p": 0.8756170939533174,
+            "min_p": 0.19862575299188803,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5314218443164336,
+            "exaggeration": 0.19704771292073614,
+            "temperature": 0.4736270854660677,
+            "top_p": 0.701469933189463,
+            "min_p": 0.09958608093169977,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9293625714676896,
+            "exaggeration": 0.16545225760199267,
+            "temperature": 0.35012558708053587,
+            "top_p": 1.0,
+            "min_p": 0.08307324622029097,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06753574193239087,
+            "exaggeration": 0.621592930506949,
+            "temperature": 0.8224010831884511,
+            "top_p": 0.8357495507719803,
+            "min_p": 0.2150818833863445,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.43343424966236316,
+            "exaggeration": 0.9043089784698388,
+            "temperature": 0.5847028058976529,
+            "top_p": 0.898762697239389,
+            "min_p": 0.12241216933530161,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4328625905727712,
+            "exaggeration": 0.4974202749834603,
+            "temperature": 0.7962232368976188,
+            "top_p": 0.8751076989957953,
+            "min_p": 0.1642179834702829,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.05728388460549516,
+            "exaggeration": 0.5246778394541796,
+            "temperature": 0.573998874387344,
+            "top_p": 0.7324882372149883,
+            "min_p": 0.0069420716562992035,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37947999041499936,
+            "exaggeration": 0.6832076918932999,
+            "temperature": 0.9567968674382583,
+            "top_p": 0.6444474486679936,
+            "min_p": 0.09720710567603683,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.23111359692948374,
+            "exaggeration": 0.5668259579117341,
+            "temperature": 1.0140371489961315,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Top diğer taraftayken, çevrenizi kontrol edin.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-149",
+      "attempts": 14,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 13,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.563186465062087,
+            "exaggeration": 0.06217961077918521,
+            "temperature": 0.6038398295807801,
+            "top_p": 0.9822810452315204,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6536501565842074,
+            "exaggeration": 0.3591846860851188,
+            "temperature": 0.3667120277277215,
+            "top_p": 0.7711222375362696,
+            "min_p": 0.16810840489048376,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.570049244984053,
+            "exaggeration": 0.523565197790332,
+            "temperature": 0.7429512520692894,
+            "top_p": 0.6210657066232127,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4195589965673422,
+            "temperature": 0.06668463854594664,
+            "top_p": 1.0,
+            "min_p": 0.1268258511629032,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3082205994032504,
+            "exaggeration": 0.47630510348621363,
+            "temperature": 0.3390452078078688,
+            "top_p": 0.8959202163120993,
+            "min_p": 0.15857602485412084,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6696821676685647,
+            "exaggeration": 0.007951409618467215,
+            "temperature": 0.05,
+            "top_p": 0.7732434279592946,
+            "min_p": 0.15970654267916726,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.43204750968889555,
+            "exaggeration": 0.5324476953847246,
+            "temperature": 0.6777504154275187,
+            "top_p": 0.7544552631544799,
+            "min_p": 0.3380771545331135,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9679460366986319,
+            "exaggeration": 0.4393750991216297,
+            "temperature": 0.6495429232587739,
+            "top_p": 0.9851907278307916,
+            "min_p": 0.011884491700633243,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.09860749422712661,
+            "exaggeration": 0.7857432347806178,
+            "temperature": 0.7129645303081122,
+            "top_p": 0.6001744615358442,
+            "min_p": 0.30122792028760137,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2429800725500248,
+            "exaggeration": 0.9118742620651461,
+            "temperature": 0.5982496381165623,
+            "top_p": 0.8483023808740856,
+            "min_p": 0.2301625900480069,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3146742784696031,
+            "exaggeration": 0.8656562742726821,
+            "temperature": 0.9294125889293122,
+            "top_p": 0.806286699377585,
+            "min_p": 0.31308240142125265,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8557853985918549,
+            "temperature": 0.7965853709258919,
+            "top_p": 0.6895643356726671,
+            "min_p": 0.28612764563222526,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.009089351204838725,
+            "exaggeration": 0.7876700690964198,
+            "temperature": 0.6710934970466678,
+            "top_p": 0.6022084410016447,
+            "min_p": 0.04819731173755584,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "Hücum oyuncusunu karşılamak için ileri hareket et.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-172",
+      "attempts": 10,
+      "best_quality_score": 0.0,
+      "best_attempt": 9,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7550115378077911,
+            "exaggeration": 0.5284313802713356,
+            "temperature": 0.6520905044251295,
+            "top_p": 0.8331370496845389,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7271364900325825,
+            "exaggeration": 0.2457214322492029,
+            "temperature": 0.367198804623508,
+            "top_p": 0.7146471431809969,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6879794214359847,
+            "exaggeration": 0.38813200489294686,
+            "temperature": 0.8880835580424062,
+            "top_p": 0.6762015104333718,
+            "min_p": 0.11622193773703668,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8322931273792343,
+            "exaggeration": 0.15734493236533903,
+            "temperature": 0.3691564897565335,
+            "top_p": 0.9553183195657431,
+            "min_p": 0.2844498420857654,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41247825233368346,
+            "exaggeration": 0.40880860401953734,
+            "temperature": 0.38496808207115696,
+            "top_p": 0.8516390041526021,
+            "min_p": 0.05454500603554177,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9481573332776649,
+            "exaggeration": 0.01565265402872737,
+            "temperature": 0.05,
+            "top_p": 0.988730810807265,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2476391366562924,
+            "exaggeration": 0.15055661190812553,
+            "temperature": 0.6478908251073364,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9311890917681283,
+            "exaggeration": 0.5068918890890923,
+            "temperature": 0.21448891426969702,
+            "top_p": 0.6184374322313804,
+            "min_p": 0.031756943761579864,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.001931013414342042,
+            "exaggeration": 0.48111245869001446,
+            "temperature": 0.5831602110487575,
+            "top_p": 0.8232453498748948,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Vücut açın, hücum oyuncusunun nereye gidebileceğine karar verir.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-467",
+      "attempts": 8,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 7,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.702721101766659,
+            "exaggeration": 0.30342030349940174,
+            "temperature": 0.7387557923498455,
+            "top_p": 0.6196325297134098,
+            "min_p": 0.28071494686772347,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.38729962213465297,
+            "exaggeration": 0.20460812988668436,
+            "temperature": 0.35239059354440194,
+            "top_p": 0.6012784286378352,
+            "min_p": 0.12516561604138524,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6737509797360759,
+            "exaggeration": 0.7307078239809366,
+            "temperature": 0.7808541607706838,
+            "top_p": 0.6597929345615883,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8328570106605196,
+            "exaggeration": 0.3962021361033241,
+            "temperature": 0.38204166249330485,
+            "top_p": 0.6920690905449397,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.32441750726830476,
+            "exaggeration": 0.6175212216154728,
+            "temperature": 0.6963320373236961,
+            "top_p": 0.6513198708464151,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5469557098985821,
+            "exaggeration": 0.01985224240038949,
+            "temperature": 0.24291524745126172,
+            "top_p": 1.0,
+            "min_p": 0.16529953733522015,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.1277117798953772,
+            "exaggeration": 0.36365363060156175,
+            "temperature": 0.645005560588244,
+            "top_p": 0.8001178062970297,
+            "min_p": 0.34287523896455574,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "Diğer takım senin tarafında taç atışı kullandığında, en yakın hücum oyuncusunu m",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-386",
+      "attempts": 7,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "post_speech_pop",
+            "tail_energy"
+          ],
+          "score": 90.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6521385218208562,
+            "exaggeration": 0.1692541092895538,
+            "temperature": 0.6466808870686223,
+            "top_p": 0.9835558372386969,
+            "min_p": 0.21447715533343545,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6506669490527097,
+            "exaggeration": 0.3239590844016726,
+            "temperature": 0.23421812424773736,
+            "top_p": 1.0,
+            "min_p": 0.023744121382424627,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8174673031200783,
+            "exaggeration": 0.4166718150200531,
+            "temperature": 0.6735762266502698,
+            "top_p": 0.7071534906204324,
+            "min_p": 0.06846251079785623,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4353986467101986,
+            "temperature": 0.09172721248490162,
+            "top_p": 0.7710113495868225,
+            "min_p": 0.052431827325378405,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.48191888537271477,
+            "exaggeration": 0.4217567456748568,
+            "temperature": 0.30553501502769,
+            "top_p": 0.7861125361626444,
+            "min_p": 0.20037157057495944,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "post_speech_pop",
+            "tail_energy"
+          ],
+          "score": 90.0,
+          "params": {
+            "cfg_weight": 0.6921285308407512,
+            "exaggeration": 0.05957824681448756,
+            "temperature": 0.06301770032131129,
+            "top_p": 0.9547966513459185,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 11,
+      "text_preview": "Bindirmeler",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-035",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6253589198887746,
+            "exaggeration": 0.3927437170441846,
+            "temperature": 0.5356372486616219,
+            "top_p": 0.8435616943280031,
+            "min_p": 0.035862997452684925,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6345468548570994,
+            "exaggeration": 0.3972778420246453,
+            "temperature": 0.15533628920249098,
+            "top_p": 0.7857527956131276,
+            "min_p": 0.06892404992560466,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.44502634804349966,
+            "exaggeration": 0.8423854371082946,
+            "temperature": 0.5623575614790896,
+            "top_p": 0.7978630466803995,
+            "min_p": 0.04848860984837969,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4152520217946113,
+            "temperature": 0.05,
+            "top_p": 0.7906403317641246,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2208696453868963,
+            "exaggeration": 0.46925869317115837,
+            "temperature": 0.3010535569283863,
+            "top_p": 0.9783114778909012,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "Forvetler, gol atmaları için topu kazanacağına güvenir.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-250",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8883724717595114,
+            "exaggeration": 0.3854708422876979,
+            "temperature": 0.46788219244572415,
+            "top_p": 0.9398399525626389,
+            "min_p": 0.09286810444285551,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5740802809026669,
+            "exaggeration": 0.44097159684388654,
+            "temperature": 0.2035902669365684,
+            "top_p": 0.7463635140854845,
+            "min_p": 0.06163392478538596,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5197552554311582,
+            "exaggeration": 0.6503809315411029,
+            "temperature": 0.5636611910129208,
+            "top_p": 0.6160444955559687,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9608136946283509,
+            "exaggeration": 0.4715321604739713,
+            "temperature": 0.05,
+            "top_p": 0.8401595995774527,
+            "min_p": 0.27543460940813236,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 43.0,
+          "params": {
+            "cfg_weight": 0.2466774982262016,
+            "exaggeration": 0.30876245009874564,
+            "temperature": 0.717819363374653,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "Bölgenizdeki hücum oyuncusunu marke edin.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-499",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4765522021365202,
+            "temperature": 0.5362002789349415,
+            "top_p": 0.8878110829770982,
+            "min_p": 0.01683423572261669,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.658482979292496,
+            "exaggeration": 0.12988339581095737,
+            "temperature": 0.199595574968564,
+            "top_p": 1.0,
+            "min_p": 0.07411596891767538,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7695463885324745,
+            "exaggeration": 0.6094462097912201,
+            "temperature": 0.628311228198753,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7701256298314323,
+            "exaggeration": 0.2138165518953995,
+            "temperature": 0.3627634665685357,
+            "top_p": 1.0,
+            "min_p": 0.27504339083581464,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.4136030096173148,
+            "exaggeration": 0.5765620985235826,
+            "temperature": 0.3134054312422663,
+            "top_p": 0.6245157990875602,
+            "min_p": 0.1731829296680821,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "Zihnin seni odaklanmış, sakin ve her şeye hazır tutar.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-420",
+      "attempts": 6,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.08172018237444101,
+            "temperature": 0.4755747431577695,
+            "top_p": 0.8250949926181081,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.58670250395822,
+            "exaggeration": 0.37666626472993,
+            "temperature": 0.06726813801690906,
+            "top_p": 0.8858455754813609,
+            "min_p": 0.14737108262992796,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4279892833869808,
+            "exaggeration": 0.3676257137383157,
+            "temperature": 0.9112921675477093,
+            "top_p": 0.9254860415406632,
+            "min_p": 0.20146832949859347,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.12181091859593313,
+            "temperature": 0.05,
+            "top_p": 0.615946221151656,
+            "min_p": 0.1709940266187985,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.44009701110808963,
+            "exaggeration": 0.5308724779089632,
+            "temperature": 0.39460936473966757,
+            "top_p": 0.8890124496581306,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 5,
+      "text_preview": "Denge",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-167",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 16,
+      "text_preview": "Doğru anı bekle.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-457",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.670626453990155,
+            "exaggeration": 0.11430631265045227,
+            "temperature": 0.3394934994746613,
+            "top_p": 0.972509244658679,
+            "min_p": 0.27412624572073474,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.3683120245447622,
+            "exaggeration": 0.20440378739001985,
+            "temperature": 0.0728656463597554,
+            "top_p": 0.8986232435735998,
+            "min_p": 0.16020007001088551,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7367768364082302,
+            "exaggeration": 0.7463406358019414,
+            "temperature": 0.5321353376130942,
+            "top_p": 0.8350781836479013,
+            "min_p": 0.31659072972501734,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.19387713559853276,
+            "temperature": 0.0715201151209261,
+            "top_p": 0.9052157296224502,
+            "min_p": 0.05412313129094529,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Eğer barajda değilsen, yakındaki bir hücum oyuncusunu marke et.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-529",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 71,
+      "text_preview": "Sahayı tara ve herkesin nerede durduğunun zihinsel bir resmini oluştur.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-076",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 21,
+      "text_preview": "Biriniz sağı kapatır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-080",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Şekli yukarıdan hayal edin.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-102",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 77,
+      "text_preview": "Kendi tarafını kapatacak kadar geniş, ancak ortayı koruyacak kadar yakın dur.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-107",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 59,
+      "text_preview": "Senin görevin, top liberoya ulaşmadan önce atağı durdurmak.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-119",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 71,
+      "text_preview": "Top kendi kalene doğru geri geldiğinde, savunma pozisyonuna geri çekil.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-159",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 67,
+      "text_preview": "Topu kesinlikle kazanacağından emin değilsen kayarak müdahale etme.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-175",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 154,
+      "text_preview": "Ancak sahanın biraz içine doğru durup vücudunu taç çizgisine çevirirsen, merkeze",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "pre_speech_spike": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.135,
+        "temperature": 0.053,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.141,
+        "temperature": 0.292,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.002,
+        "temperature": 0.326,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

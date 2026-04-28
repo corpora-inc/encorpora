@@ -1,0 +1,381 @@
+{
+  "book_id": "pack",
+  "language": "ru",
+  "timestamp": "2026-04-23T00:04:06.822771+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 561,
+  "segments_converged_by_retry": 50,
+  "segments_plateau_stopped": 22,
+  "total_retries": 118,
+  "error_distribution": {
+    "trailing_silence": 9,
+    "transcription_mismatch": 5,
+    "first_word_weak": 4,
+    "pre_speech_spike": 3,
+    "hard_ending": 2,
+    "final_word_weak": 2,
+    "stacked_words": 1,
+    "min_trailing_silence": 1
+  },
+  "phase_timings": {
+    "tts": 115.73076367378235,
+    "align": 29.586103200912476,
+    "validate": 16.8344087600708,
+    "trim": 0.22380709648132324,
+    "master": 5.841465473175049
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 208,
+      "passed": 184,
+      "rate": 0.8846153846153846
+    },
+    "medium_30_80": {
+      "total": 402,
+      "passed": 354,
+      "rate": 0.8805970149253731
+    },
+    "long_80_plus": {
+      "total": 23,
+      "passed": 23,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-185",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Ты — чистильщик за чистильщиком.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-317",
+      "attempts": 5,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 6,
+      "text_preview": "Замри.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-376",
+      "attempts": 5,
+      "best_quality_score": 50.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 78,
+      "text_preview": "Накрывание мяча в ногах у нападающего — один из самых смелых сейвов в футболе.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-544",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Каждый отбитый удар — это бонус.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Переходи к более сложным приёмам.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-102",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Лови мячи у самых щиколоток.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Падай на землю на левый бок.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-106",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "Падай на землю на правый бок.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-200",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 37,
+      "text_preview": "Постоянно разговаривай с защитниками.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-201",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 31,
+      "text_preview": "Твои защитники следят за мячом.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-300",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 36,
+      "text_preview": "Заставь нападающего принять решение.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 21,
+      "text_preview": "Завладей мячом чисто.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-337",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.05992994750235062,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.1084255910897313,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7925631707405694,
+            "min_p": 0.3119864880003841,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Лучший сейв — это чистая ловля.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-407",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 6,
+      "text_preview": "Кивни.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-479",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 61,
+      "text_preview": "Угловые, штрафные и пенальти — всё это стандартные положения.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-494",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 34,
+      "text_preview": "Расставь защитников перед угловым.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-564",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 35,
+      "text_preview": "Каждому вратарю в истории забивали.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-590",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 24,
+      "text_preview": "Подправляй свою позицию.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-217",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 80,
+      "text_preview": "Когда мяч у тебя в руках, вы в безопасности, и команда может перегруппироваться.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-237",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 14,
+      "text_preview": "Ты двигаешься.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "hard_ending": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.041,
+        "temperature": 0.154,
+        "repetition_penalty": 0.0
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.128,
+        "temperature": 0.058,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.247,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.005,
+        "temperature": 0.158,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

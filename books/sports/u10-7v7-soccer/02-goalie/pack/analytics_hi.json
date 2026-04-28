@@ -1,0 +1,4741 @@
+{
+  "book_id": "pack",
+  "language": "hi",
+  "timestamp": "2026-04-22T23:56:20.531576+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 300,
+  "segments_converged_by_retry": 143,
+  "segments_plateau_stopped": 190,
+  "total_retries": 1379,
+  "error_distribution": {
+    "final_word_weak": 1150,
+    "trailing_silence": 172,
+    "transcription_mismatch": 113,
+    "first_word_weak": 107,
+    "tail_energy": 73,
+    "hard_ending": 56,
+    "min_trailing_silence": 46,
+    "stacked_words": 29,
+    "word_cluster": 18,
+    "tail_spike": 13,
+    "pre_speech_spike": 6,
+    "mid_phrase_gap": 4
+  },
+  "phase_timings": {
+    "tts": 3788.026197910309,
+    "align": 635.548045873642,
+    "validate": 303.9218969345093,
+    "trim": 4.834566116333008,
+    "master": 75.36872220039368
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 203,
+      "passed": 136,
+      "rate": 0.6699507389162561
+    },
+    "medium_30_80": {
+      "total": 406,
+      "passed": 161,
+      "rate": 0.39655172413793105
+    },
+    "long_80_plus": {
+      "total": 24,
+      "passed": 3,
+      "rate": 0.125
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-190",
+      "attempts": 21,
+      "best_quality_score": 0.0,
+      "best_attempt": 20,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8664334376874512,
+            "exaggeration": 0.06184847350799366,
+            "temperature": 0.35207806918388745,
+            "top_p": 0.6483293863203488,
+            "min_p": 0.23497070564601666,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6404689340408142,
+            "exaggeration": 0.4181075155390734,
+            "temperature": 0.28959910080475915,
+            "top_p": 0.7911412658418103,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5592647399443582,
+            "exaggeration": 0.8446819639539234,
+            "temperature": 0.867200873609961,
+            "top_p": 0.9313344074091946,
+            "min_p": 0.1331121894638048,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22743560228324872,
+            "temperature": 0.3550658078169307,
+            "top_p": 0.6013734904379189,
+            "min_p": 0.13856267173466744,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4813067057102647,
+            "exaggeration": 0.7190990893733384,
+            "temperature": 0.5206864843844679,
+            "top_p": 0.8521823758194207,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8871281952037253,
+            "exaggeration": 0.25293609236682124,
+            "temperature": 0.16671863841539583,
+            "top_p": 0.7941540049952457,
+            "min_p": 0.2989892630432902,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.29617366073498785,
+            "exaggeration": 0.17681849705018987,
+            "temperature": 0.5930746512154172,
+            "top_p": 0.8876976766687383,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9466408601021621,
+            "exaggeration": 0.41192906523038186,
+            "temperature": 0.6491562853476939,
+            "top_p": 1.0,
+            "min_p": 0.03013770488728648,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06783632211872859,
+            "exaggeration": 0.7292474435853755,
+            "temperature": 1.020661915974494,
+            "top_p": 0.7051702738410341,
+            "min_p": 0.27964856323944565,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8797972434351187,
+            "temperature": 0.6825441519936628,
+            "top_p": 1.0,
+            "min_p": 0.08008157710612926,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34679879778565303,
+            "exaggeration": 0.8756538240224947,
+            "temperature": 0.6460645689114717,
+            "top_p": 0.6002739660412904,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.013933777568090056,
+            "exaggeration": 0.5918790050031476,
+            "temperature": 0.6846320811587083,
+            "top_p": 1.0,
+            "min_p": 0.23948811125566796,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.45084105971171123,
+            "temperature": 0.6443016980563414,
+            "top_p": 0.8323204337307325,
+            "min_p": 0.012555012794503467,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3378604481739859,
+            "exaggeration": 0.7909889579208753,
+            "temperature": 0.9782895176698441,
+            "top_p": 0.6636485644144066,
+            "min_p": 0.18438485354936787,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.5528324996448035,
+            "temperature": 0.9745594938241959,
+            "top_p": 0.8377830307670904,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4324959064608738,
+            "exaggeration": 0.8361670518317401,
+            "temperature": 0.6380945965826454,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.09343176561767735,
+            "exaggeration": 0.9052198420617291,
+            "temperature": 0.9858388710037926,
+            "top_p": 1.0,
+            "min_p": 0.0669089657884244,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.09056393303516769,
+            "exaggeration": 0.7810299900729701,
+            "temperature": 0.5624337836566604,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.19612582010110569,
+            "exaggeration": 0.6947411345190136,
+            "temperature": 0.7293026064984105,
+            "top_p": 0.9887127174220778,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.759025123099357,
+            "temperature": 0.7518210274480481,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "जब गेंद मैदान की दाईं ओर जाए, एक कदम दाएँ लो।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 19,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 18,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.893001099220083,
+            "exaggeration": 0.08934634380488166,
+            "temperature": 0.7484166518065621,
+            "top_p": 0.6856591456485999,
+            "min_p": 0.2319882251069145,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.732234529940718,
+            "exaggeration": 0.41891554632660843,
+            "temperature": 0.1431962088117235,
+            "top_p": 0.7869537569420892,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6224026375668014,
+            "exaggeration": 0.6130256217382304,
+            "temperature": 0.8505543694481208,
+            "top_p": 0.6651731725438612,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.34604906736337376,
+            "temperature": 0.26170870221963116,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2976018673292964,
+            "exaggeration": 0.5689734750992441,
+            "temperature": 0.4229492999923691,
+            "top_p": 0.6226923541414654,
+            "min_p": 0.28857976739915414,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8926025995418045,
+            "exaggeration": 0.3325986596983391,
+            "temperature": 0.3327092101456892,
+            "top_p": 0.8545656903533334,
+            "min_p": 0.32794619597592134,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.15805169853690676,
+            "exaggeration": 0.2334543398408342,
+            "temperature": 0.4872987507827968,
+            "top_p": 0.6583057556515519,
+            "min_p": 0.12425861492761106,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6891778271812377,
+            "exaggeration": 0.4554623795094256,
+            "temperature": 0.4547837579440385,
+            "top_p": 1.0,
+            "min_p": 0.24926218241169132,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3195214679960599,
+            "exaggeration": 0.4555264508587074,
+            "temperature": 0.937911794579223,
+            "top_p": 0.6079170107851177,
+            "min_p": 0.2771746800726961,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4149317080232747,
+            "exaggeration": 0.6414458657773494,
+            "temperature": 0.7205068108501895,
+            "top_p": 0.6627388073580733,
+            "min_p": 0.22793885675281547,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.015918311568364873,
+            "exaggeration": 0.499777163101939,
+            "temperature": 0.6550941041524826,
+            "top_p": 0.6367325548676261,
+            "min_p": 0.2981205396919967,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20549383302595936,
+            "exaggeration": 0.7277163474156878,
+            "temperature": 0.8642345648978014,
+            "top_p": 0.6006434932435991,
+            "min_p": 0.019132046739661596,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1594222360675066,
+            "exaggeration": 0.9398189264369488,
+            "temperature": 0.6587835085648217,
+            "top_p": 0.8468871744598224,
+            "min_p": 0.06382261722950186,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1073644734953535,
+            "exaggeration": 0.716542217731416,
+            "temperature": 0.6580895796843897,
+            "top_p": 0.6761596001179095,
+            "min_p": 0.15552346065011344,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.207447505382163,
+            "exaggeration": 0.5680486289729961,
+            "temperature": 0.6675156158277626,
+            "top_p": 0.766581417152179,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.806469397260464,
+            "temperature": 0.9770120929070027,
+            "top_p": 0.7141082671995543,
+            "min_p": 0.21469290026430995,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0961591693485992,
+            "exaggeration": 0.48267917552329853,
+            "temperature": 0.737367310532592,
+            "top_p": 0.83263324494531,
+            "min_p": 0.30464462912873336,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.3237109786029343,
+            "exaggeration": 0.9181005625624646,
+            "temperature": 0.9906818487893432,
+            "top_p": 1.0,
+            "min_p": 0.04198407731455053,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "उन सेव की कल्पना करो जो तुम करने वाले हो।",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-388",
+      "attempts": 18,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 17,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9511043125175699,
+            "exaggeration": 0.3243952469927343,
+            "temperature": 0.44717526852387374,
+            "top_p": 1.0,
+            "min_p": 0.00735060494371223,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4897030529415864,
+            "exaggeration": 0.08411828403426014,
+            "temperature": 0.06559296991251734,
+            "top_p": 0.83591038684988,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7623301665701283,
+            "exaggeration": 0.8195666485651798,
+            "temperature": 0.5904218526149084,
+            "top_p": 0.6617344097184648,
+            "min_p": 0.2684570472173704,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.782386275134954,
+            "exaggeration": 0.21675044331341548,
+            "temperature": 0.3028050949363922,
+            "top_p": 0.684715299066857,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3461842780511611,
+            "exaggeration": 0.6034232501428622,
+            "temperature": 0.7161837478427862,
+            "top_p": 0.9835266042729347,
+            "min_p": 0.22743712721023948,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6573714781083376,
+            "exaggeration": 0.06510842582111251,
+            "temperature": 0.05,
+            "top_p": 0.7201292627864333,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3903978503064285,
+            "exaggeration": 0.10326589425203209,
+            "temperature": 0.7301644669428801,
+            "top_p": 0.6365313546054737,
+            "min_p": 0.1621921277760209,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5751831074334167,
+            "temperature": 0.4512766871778571,
+            "top_p": 0.6999337983153373,
+            "min_p": 0.1619864227351386,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1022596207496822,
+            "exaggeration": 0.8900842512285577,
+            "temperature": 0.6342425894979727,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.21108118396204917,
+            "exaggeration": 0.6263425791867272,
+            "temperature": 0.6182751979579822,
+            "top_p": 0.7764038921838523,
+            "min_p": 0.07957554487648646,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.25034875758949626,
+            "exaggeration": 0.9202687695154672,
+            "temperature": 0.9909287446157803,
+            "top_p": 1.0,
+            "min_p": 0.269130066279494,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.33344394229507496,
+            "exaggeration": 0.6845229664080295,
+            "temperature": 0.8608559571513512,
+            "top_p": 0.7145360333329392,
+            "min_p": 0.2654280542589066,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.12251218907716,
+            "exaggeration": 0.5725844346027469,
+            "temperature": 0.7889129230277088,
+            "top_p": 0.948718651349451,
+            "min_p": 0.009781804212051354,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.10976431119395746,
+            "exaggeration": 0.9355077551633532,
+            "temperature": 0.8998624761081332,
+            "top_p": 0.803244503613399,
+            "min_p": 0.054060584009573726,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.031244859848509554,
+            "exaggeration": 0.7552796519600682,
+            "temperature": 0.6816849262679558,
+            "top_p": 0.9892542521668806,
+            "min_p": 0.3142818147197688,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4063934900123275,
+            "exaggeration": 0.9350960215940591,
+            "temperature": 0.9195330333225469,
+            "top_p": 0.8494784260474489,
+            "min_p": 0.32356678691767937,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.33859085938836786,
+            "exaggeration": 0.9398899717671967,
+            "temperature": 0.9917218806063068,
+            "top_p": 0.8428921359753021,
+            "min_p": 0.0671425909278153,
+            "repetition_penalty": 1.83
+          }
+        }
+      ],
+      "text_len": 114,
+      "text_preview": "सबसे तेज़ गोलकीपर एक सेव को दो सेव में बदल लेते हैं क्योंकि सबसे तेज़ गोलकीपर हम",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-455",
+      "attempts": 18,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 17,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9243471906451179,
+            "exaggeration": 0.16072630589930342,
+            "temperature": 0.5801438119363564,
+            "top_p": 1.0,
+            "min_p": 0.2381235799407246,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.591812669963595,
+            "exaggeration": 0.1897361700696154,
+            "temperature": 0.13769605541640634,
+            "top_p": 0.6319978117760088,
+            "min_p": 0.041067762390595924,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7573788833315529,
+            "exaggeration": 0.35782538407300235,
+            "temperature": 0.7689476709213925,
+            "top_p": 0.9245505707456818,
+            "min_p": 0.3027523239786034,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.914082726373572,
+            "exaggeration": 0.5202128149939828,
+            "temperature": 0.28119950291301543,
+            "top_p": 1.0,
+            "min_p": 0.01842264228727894,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.18983927929885358,
+            "exaggeration": 0.44243597732935996,
+            "temperature": 0.5178289023017949,
+            "top_p": 1.0,
+            "min_p": 0.0033759748448981275,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7719298736230269,
+            "exaggeration": 0.015479381610695758,
+            "temperature": 0.10517886342391694,
+            "top_p": 1.0,
+            "min_p": 0.31298887603156633,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.46968856811780224,
+            "exaggeration": 0.4541645407728789,
+            "temperature": 0.7798681330123849,
+            "top_p": 0.9251239000212121,
+            "min_p": 0.006155563255415525,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6590137334642925,
+            "exaggeration": 0.23372551181738788,
+            "temperature": 0.52198621030191,
+            "top_p": 0.7103380825492804,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0014960666622579888,
+            "exaggeration": 0.46879638294867104,
+            "temperature": 0.6543639379062467,
+            "top_p": 0.6713516397972379,
+            "min_p": 0.3063763834975517,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41156138367984957,
+            "exaggeration": 0.5467062874339118,
+            "temperature": 0.6439922313471347,
+            "top_p": 1.0,
+            "min_p": 0.3155016975693752,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.03579868431177702,
+            "exaggeration": 0.7984415623053669,
+            "temperature": 0.9968596073860638,
+            "top_p": 0.8022882574767449,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0682641163832709,
+            "exaggeration": 0.5794107924117383,
+            "temperature": 0.8014174003218054,
+            "top_p": 0.9249757060147592,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3166837787764801,
+            "exaggeration": 0.9365546661362432,
+            "temperature": 0.7177313906690399,
+            "top_p": 0.6188331262581512,
+            "min_p": 0.006021915388544602,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.27564910482533345,
+            "exaggeration": 0.9115574366637882,
+            "temperature": 0.7068812948195896,
+            "top_p": 0.6174490307360834,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13950583982901005,
+            "exaggeration": 0.7091252512909108,
+            "temperature": 0.8324723244255237,
+            "top_p": 1.0,
+            "min_p": 0.05015039975223792,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.037765043882526717,
+            "exaggeration": 0.48974559866568046,
+            "temperature": 0.8073952691438744,
+            "top_p": 0.6612221114390098,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.06199572461334185,
+            "exaggeration": 0.45377598430090155,
+            "temperature": 0.7142325865386248,
+            "top_p": 1.0,
+            "min_p": 0.14509033882681713,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 91,
+      "text_preview": "एक अच्छी गोल किक तुम्हारे स्वीपर या मिडफ़ील्ड क्षेत्र में तुम्हारे डिफेंडरों तक ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-026",
+      "attempts": 17,
+      "best_quality_score": 12.0,
+      "best_attempt": 13,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6482765840310323,
+            "exaggeration": 0.44301871760188094,
+            "temperature": 0.3201621130619952,
+            "top_p": 0.6915293443866029,
+            "min_p": 0.00808569315932059,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.5917952552671806,
+            "exaggeration": 0.24401249822118343,
+            "temperature": 0.5050590510115749,
+            "top_p": 1.0,
+            "min_p": 0.23896656452619217,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8142197314408535,
+            "exaggeration": 0.42651879982419477,
+            "temperature": 0.9368873410997316,
+            "top_p": 0.6947052407678652,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.35820352438484043,
+            "temperature": 0.43128859554236604,
+            "top_p": 0.9080472626108138,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.42431828593543547,
+            "exaggeration": 0.34478071128249127,
+            "temperature": 0.47680254886357454,
+            "top_p": 0.7822099640247582,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5812492824216864,
+            "exaggeration": 0.0,
+            "temperature": 0.17266305391653144,
+            "top_p": 1.0,
+            "min_p": 0.0679540314437059,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.46152376294532543,
+            "exaggeration": 0.4284690615284784,
+            "temperature": 0.7382883046866201,
+            "top_p": 0.9577769057479003,
+            "min_p": 0.2777886849801794,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.41182357395841335,
+            "temperature": 0.3939141500342826,
+            "top_p": 0.7814540789403888,
+            "min_p": 0.14449007050996862,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2989968459124639,
+            "exaggeration": 0.5262468450392204,
+            "temperature": 0.8090242973911694,
+            "top_p": 0.9119095303638536,
+            "min_p": 0.20652252280697211,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0050461255953551665,
+            "exaggeration": 0.9257138822027211,
+            "temperature": 0.9827919606893165,
+            "top_p": 0.6383987976168046,
+            "min_p": 0.19343991305014194,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.08396296232420158,
+            "exaggeration": 0.9478900506694601,
+            "temperature": 0.9942297965509528,
+            "top_p": 0.8834621637262201,
+            "min_p": 0.320161757814833,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8471625757917065,
+            "temperature": 0.5923949807597022,
+            "top_p": 0.9025961504610573,
+            "min_p": 0.06581157906390697,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.08331840668733814,
+            "exaggeration": 0.8844961560731529,
+            "temperature": 0.7738846578483924,
+            "top_p": 0.6142902699381154,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.029678629710581717,
+            "exaggeration": 0.7974719134517669,
+            "temperature": 0.589686438248056,
+            "top_p": 1.0,
+            "min_p": 0.22925870402658435,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6244737144710857,
+            "temperature": 0.7723463188508275,
+            "top_p": 0.8581573055330334,
+            "min_p": 0.10515557763957226,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.19527125508425325,
+            "exaggeration": 0.6047990231016453,
+            "temperature": 0.8122831582612466,
+            "top_p": 0.8520601330961053,
+            "min_p": 0.2370685976801318,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 37,
+      "text_preview": "तुम्हें अपनी जगह पर डटे रहना होता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-216",
+      "attempts": 16,
+      "best_quality_score": 4.64,
+      "best_attempt": 7,
+      "plateau_count": 8,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.80166360050253,
+            "exaggeration": 0.2794296079019669,
+            "temperature": 0.40341986693683934,
+            "top_p": 0.6493945646570377,
+            "min_p": 0.34862583485018717,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6710833204149962,
+            "exaggeration": 0.0,
+            "temperature": 0.10970610960751564,
+            "top_p": 1.0,
+            "min_p": 0.31924145534672,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7633414979580497,
+            "exaggeration": 0.3529728775502899,
+            "temperature": 0.5334386904433153,
+            "top_p": 0.6860192869264845,
+            "min_p": 0.267739677422262,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7505865325071959,
+            "exaggeration": 0.4117516161338401,
+            "temperature": 0.2500087283212142,
+            "top_p": 0.84450406064173,
+            "min_p": 0.27238392227795016,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.28110827842298514,
+            "exaggeration": 0.545542541827789,
+            "temperature": 0.5234113436949002,
+            "top_p": 0.7189110908325265,
+            "min_p": 0.0,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.47335344610026453,
+            "exaggeration": 0.09654564309393346,
+            "temperature": 0.24172284338998143,
+            "top_p": 0.7137811071107527,
+            "min_p": 0.22864008436882857,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.64,
+          "params": {
+            "cfg_weight": 0.31621223039858487,
+            "exaggeration": 0.19080449498392005,
+            "temperature": 0.45219797786786914,
+            "top_p": 0.6098131316286928,
+            "min_p": 0.0,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7155785855778425,
+            "exaggeration": 0.4504120093124061,
+            "temperature": 0.4134331770380542,
+            "top_p": 0.7177913557044961,
+            "min_p": 0.13027268738205808,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2800550932450661,
+            "exaggeration": 0.6328240056833372,
+            "temperature": 0.9261074307935167,
+            "top_p": 0.9149967413192654,
+            "min_p": 0.04035081294661716,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.415336039659266,
+            "exaggeration": 0.631098005448481,
+            "temperature": 0.925139750719665,
+            "top_p": 1.0,
+            "min_p": 0.21038222420479843,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.11811266003591075,
+            "exaggeration": 0.5552315911258972,
+            "temperature": 0.6502511412844001,
+            "top_p": 0.9852177351259932,
+            "min_p": 0.3280892138244288,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41714791355829595,
+            "exaggeration": 0.6348604968928553,
+            "temperature": 0.9814260710612821,
+            "top_p": 0.7796282217412659,
+            "min_p": 0.17577054403525152,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3231458719603883,
+            "exaggeration": 0.6596864171676696,
+            "temperature": 0.6858091451981936,
+            "top_p": 0.8645773230251539,
+            "min_p": 0.0,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3467491215218231,
+            "exaggeration": 0.5338210449177523,
+            "temperature": 0.5932281964499193,
+            "top_p": 0.9902600147525393,
+            "min_p": 0.07963641602753621,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.16938737515276714,
+            "exaggeration": 0.68191884391372,
+            "temperature": 0.8419913935210174,
+            "top_p": 1.0,
+            "min_p": 0.20489039339502482,
+            "repetition_penalty": 1.88
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "अगर किसी साथी ने जानबूझकर तुम्हें गेंद नहीं दी है तो गेंद हाथों से उठाने के लिए ",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-234",
+      "attempts": 16,
+      "best_quality_score": 12.0,
+      "best_attempt": 10,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8815874770405784,
+            "exaggeration": 0.2672526400022108,
+            "temperature": 0.6735255520897971,
+            "top_p": 0.7081459042540363,
+            "min_p": 0.33761095794314855,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.589146141732895,
+            "exaggeration": 0.2524912482054992,
+            "temperature": 0.3919155002940565,
+            "top_p": 1.0,
+            "min_p": 0.3423121075753862,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6137340960098013,
+            "exaggeration": 0.7892405417184314,
+            "temperature": 0.5124028293983767,
+            "top_p": 0.871730612203752,
+            "min_p": 0.20342375922342462,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2698381544564472,
+            "temperature": 0.10977990817335337,
+            "top_p": 0.6784792475957229,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5815769868923518,
+            "exaggeration": 0.524608601364578,
+            "temperature": 0.4436966435531245,
+            "top_p": 0.9464000461630078,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6661008398937535,
+            "exaggeration": 0.02472757802717171,
+            "temperature": 0.05,
+            "top_p": 0.9451779472007942,
+            "min_p": 0.2786939329727923,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.09571437960487911,
+            "exaggeration": 0.0759474049127436,
+            "temperature": 0.4154457365863737,
+            "top_p": 0.6758528885938437,
+            "min_p": 0.26230583220985393,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7063862413735453,
+            "exaggeration": 0.5540953327515439,
+            "temperature": 0.4064965093610397,
+            "top_p": 0.946346370083937,
+            "min_p": 0.08338839392356953,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13084460063989944,
+            "exaggeration": 0.6237016566218392,
+            "temperature": 0.8461437302354711,
+            "top_p": 1.0,
+            "min_p": 0.03182061422693974,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7224557087927388,
+            "temperature": 0.7375602509830324,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.17757181655706472,
+            "exaggeration": 0.7907705062009822,
+            "temperature": 0.716211715160614,
+            "top_p": 1.0,
+            "min_p": 0.0730940785759839,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.11005163308927235,
+            "exaggeration": 0.5221599442869518,
+            "temperature": 0.9783636845204684,
+            "top_p": 0.926042516262252,
+            "min_p": 0.16797540407574682,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6403062782599646,
+            "temperature": 0.978813960579379,
+            "top_p": 0.7166825302426113,
+            "min_p": 0.01314447637669261,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7004217828049009,
+            "temperature": 0.8839017312775149,
+            "top_p": 0.7646320535676057,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.32133424230973784,
+            "exaggeration": 0.5734771342892114,
+            "temperature": 0.7284146327826686,
+            "top_p": 0.8738183380558058,
+            "min_p": 0.3474645618142653,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "यह जानकारी तुम्हें काउंटर-अटैक के लिए तैयार करती है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-040",
+      "attempts": 14,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 13,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6079126078620918,
+            "exaggeration": 0.5477866985562729,
+            "temperature": 0.4306634372497445,
+            "top_p": 0.9761265925992595,
+            "min_p": 0.028267924269796213,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6569446567333161,
+            "exaggeration": 0.04159106048727412,
+            "temperature": 0.4156481086018197,
+            "top_p": 0.7838331630909252,
+            "min_p": 0.02868349159257491,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37093769152899264,
+            "exaggeration": 0.4220645849222161,
+            "temperature": 0.902442723622358,
+            "top_p": 0.9564813954188934,
+            "min_p": 0.04708648388718581,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2437185182846508,
+            "temperature": 0.35051247915785294,
+            "top_p": 0.6421036260064672,
+            "min_p": 0.001217016444917035,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4175093588027517,
+            "exaggeration": 0.302095532152148,
+            "temperature": 0.53660762190171,
+            "top_p": 1.0,
+            "min_p": 0.17152710155979353,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.60484149525128,
+            "exaggeration": 0.0079269625841,
+            "temperature": 0.05,
+            "top_p": 0.9498219758711963,
+            "min_p": 0.0829944239331801,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.24745781239451403,
+            "exaggeration": 0.30435100299894596,
+            "temperature": 0.36032051969335965,
+            "top_p": 0.7781207878807004,
+            "min_p": 0.1344501921996372,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6999672716266534,
+            "exaggeration": 0.19962964123483157,
+            "temperature": 0.20242547656604398,
+            "top_p": 0.6017831899798363,
+            "min_p": 0.012941879995998634,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3047806992564882,
+            "exaggeration": 0.4794540156303421,
+            "temperature": 0.8554647657384472,
+            "top_p": 0.6685505255801036,
+            "min_p": 0.1552209599904508,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.03617636644834221,
+            "exaggeration": 0.6272862319070065,
+            "temperature": 0.9764186746324954,
+            "top_p": 1.0,
+            "min_p": 0.14879306356540054,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.33027875739509527,
+            "exaggeration": 0.4621765425048262,
+            "temperature": 0.7094527705663835,
+            "top_p": 0.9780390345179553,
+            "min_p": 0.14288681178900817,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2677963351554865,
+            "exaggeration": 0.7103208480078063,
+            "temperature": 0.8968846507393606,
+            "top_p": 0.7022197427058738,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.21015813844170234,
+            "exaggeration": 0.850113687446703,
+            "temperature": 0.9057272426797671,
+            "top_p": 0.8612975153772584,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "बात करने वाला गोलकीपर पूरी रक्षा पंक्ति को मज़बूत बनाता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-246",
+      "attempts": 14,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 13,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6363072002639054,
+            "min_p": 0.010176877285292457,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.877838160748258,
+            "min_p": 0.034523410211454914,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.8317361304708871,
+            "min_p": 0.1843877528688803,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.727647463419852,
+            "min_p": 0.19451022859850484,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6700060864849631,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.9367871608429327,
+            "min_p": 0.15247913780472008,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.9220884389132565,
+            "min_p": 0.09040004524244741,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7073868770051142,
+            "min_p": 0.26358032031612055,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7770693648739143,
+            "min_p": 0.12379604356335763,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7387766807602768,
+            "min_p": 0.3132578200135776,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7565734130642079,
+            "min_p": 0.09762015943312383,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 37,
+      "text_preview": "अब तुम्हारा ध्यान और तेज़ हो जाता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-267",
+      "attempts": 14,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 13,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.39319226514441197,
+            "temperature": 0.4171597492971059,
+            "top_p": 0.6874671094888408,
+            "min_p": 0.2687524491611084,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6913460632315785,
+            "exaggeration": 0.431606269017923,
+            "temperature": 0.11391822383084482,
+            "top_p": 0.6718817573230221,
+            "min_p": 0.15353322486253304,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6118929825113413,
+            "exaggeration": 0.4136168503147676,
+            "temperature": 0.6667501917312316,
+            "top_p": 0.8758019278740861,
+            "min_p": 0.19976584638976932,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9680223829025336,
+            "exaggeration": 0.32774854953879035,
+            "temperature": 0.26865155136270713,
+            "top_p": 0.8408414834923468,
+            "min_p": 0.08052779930877288,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.248940168960257,
+            "exaggeration": 0.46738812741329727,
+            "temperature": 0.38529948811075365,
+            "top_p": 1.0,
+            "min_p": 0.18160325431443144,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8324693275313828,
+            "exaggeration": 0.08765744934146122,
+            "temperature": 0.05,
+            "top_p": 0.9179625647018803,
+            "min_p": 0.20612709860479403,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.12917348361576714,
+            "exaggeration": 0.36493466252014894,
+            "temperature": 0.5834026205315945,
+            "top_p": 0.8353134074168809,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5047295404120178,
+            "temperature": 0.2527403573113689,
+            "top_p": 0.6816467494219552,
+            "min_p": 0.3398080072534453,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3536826162452881,
+            "exaggeration": 0.5188164152284906,
+            "temperature": 0.6500246513433445,
+            "top_p": 0.6694170173611069,
+            "min_p": 0.05649345291767713,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34254844089038694,
+            "exaggeration": 0.6388110925581474,
+            "temperature": 0.7504555060785002,
+            "top_p": 0.6721496634693584,
+            "min_p": 0.04400436181643677,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.048894078595074386,
+            "exaggeration": 0.8524130653566647,
+            "temperature": 0.7110445700754867,
+            "top_p": 1.0,
+            "min_p": 0.2543204344300144,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.159200095862166,
+            "exaggeration": 0.8245643606878943,
+            "temperature": 0.6064959828775941,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 33.0,
+          "params": {
+            "cfg_weight": 0.34665519887448254,
+            "exaggeration": 0.5578392728928292,
+            "temperature": 0.8669026343107431,
+            "top_p": 1.0,
+            "min_p": 0.018312540646910652,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "शूटर के पास निशाना लगाने के लिए कम खुला जाल बचता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-424",
+      "attempts": 14,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 13,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5501035230914391,
+            "exaggeration": 0.10732216185878901,
+            "temperature": 0.5306586497717929,
+            "top_p": 0.6349311769387977,
+            "min_p": 0.09612383373084868,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.375618475315258,
+            "exaggeration": 0.28340739453084124,
+            "temperature": 0.2982694768062716,
+            "top_p": 0.984132135967044,
+            "min_p": 0.1672426430157186,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7389709903680932,
+            "exaggeration": 0.6578582084520028,
+            "temperature": 0.6195376520698429,
+            "top_p": 0.778618909781948,
+            "min_p": 0.3496016951472767,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.11173844079855272,
+            "temperature": 0.07660791204083478,
+            "top_p": 0.858078426146951,
+            "min_p": 0.12603791661006433,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5634170079434517,
+            "exaggeration": 0.36650442598963573,
+            "temperature": 0.5158119509081802,
+            "top_p": 0.7814211297469464,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8484309175736238,
+            "exaggeration": 0.2254549392394576,
+            "temperature": 0.05,
+            "top_p": 0.7295139466231311,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.30110503440336983,
+            "exaggeration": 0.5125975739663731,
+            "temperature": 0.6802747271557579,
+            "top_p": 1.0,
+            "min_p": 0.21705383967910288,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9092674379905145,
+            "exaggeration": 0.48411418436400894,
+            "temperature": 0.5823116442685203,
+            "top_p": 0.9007123031901909,
+            "min_p": 0.2891648749882637,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6667632670806245,
+            "temperature": 0.9505942669247776,
+            "top_p": 0.6661892808787901,
+            "min_p": 0.28260750876585417,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2770704495555433,
+            "exaggeration": 0.755712360246209,
+            "temperature": 0.6396389938749161,
+            "top_p": 0.8781349252424615,
+            "min_p": 0.029417297042873686,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.256869185894642,
+            "exaggeration": 0.8439815513161193,
+            "temperature": 0.8025724693920833,
+            "top_p": 0.7619437827497061,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.28260987764295187,
+            "exaggeration": 0.5108807230883978,
+            "temperature": 0.8119548856828249,
+            "top_p": 0.9557354347203442,
+            "min_p": 0.04428342989668646,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.40064697038911745,
+            "exaggeration": 0.8370275573670334,
+            "temperature": 0.8339942902679848,
+            "top_p": 0.9394540197622812,
+            "min_p": 0.23049024007333382,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "तेज़ी मायने रखती है क्योंकि दूसरी टीम अभी अपने छूटे मौके से उबर रही है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-620",
+      "attempts": 14,
+      "best_quality_score": 3.0,
+      "best_attempt": 13,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9699372989051855,
+            "exaggeration": 0.5038560267081988,
+            "temperature": 0.691913538184274,
+            "top_p": 0.6634809257609324,
+            "min_p": 0.06740977560913522,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.41796569154056235,
+            "exaggeration": 0.12634049719176949,
+            "temperature": 0.3943749420523909,
+            "top_p": 0.9318537255793848,
+            "min_p": 0.1388079632327687,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5936392192065764,
+            "exaggeration": 0.46862333314012383,
+            "temperature": 0.6859172515273768,
+            "top_p": 1.0,
+            "min_p": 0.13920051335810643,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22690111973392457,
+            "temperature": 0.1469591081730512,
+            "top_p": 0.9357465555261288,
+            "min_p": 0.16758376557267038,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4604410834932661,
+            "exaggeration": 0.4982651318939751,
+            "temperature": 0.3350741837765644,
+            "top_p": 0.7855582818763978,
+            "min_p": 0.2259727865125404,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5706478516623366,
+            "exaggeration": 0.29598981671278235,
+            "temperature": 0.1821817690691702,
+            "top_p": 1.0,
+            "min_p": 0.28987090563501805,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41832894038810114,
+            "exaggeration": 0.45281818129555673,
+            "temperature": 0.658919488779786,
+            "top_p": 0.6226460750486238,
+            "min_p": 0.19902171250276376,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.6419335943822834,
+            "temperature": 0.1814929486315882,
+            "top_p": 0.8600420216446938,
+            "min_p": 0.3442200182248084,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.360640121656498,
+            "exaggeration": 0.8911242686169323,
+            "temperature": 0.8074202675185567,
+            "top_p": 0.6126763948873435,
+            "min_p": 0.3326046359130792,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3862889061745389,
+            "exaggeration": 0.7405042071648996,
+            "temperature": 0.9600412459782293,
+            "top_p": 0.6463877846309083,
+            "min_p": 0.19992906287960335,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6032851607585905,
+            "temperature": 0.768212529760825,
+            "top_p": 0.7462590000256244,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.011176524348890049,
+            "exaggeration": 0.5986041211090513,
+            "temperature": 0.6798434469465424,
+            "top_p": 0.9070528523511443,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.2637211573821067,
+            "exaggeration": 0.9300482802737313,
+            "temperature": 0.6993721420429972,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "दूसरी टीम ज़ोरदार दबाव बना रही है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-286",
+      "attempts": 13,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 11,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.769838363726785,
+            "exaggeration": 0.44569303848724035,
+            "temperature": 0.6158094775457603,
+            "top_p": 0.8554447746691128,
+            "min_p": 0.10783493552262782,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34368669895204035,
+            "exaggeration": 0.20092088876223707,
+            "temperature": 0.12298002075552861,
+            "top_p": 1.0,
+            "min_p": 0.2862937988130687,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5760045948916257,
+            "exaggeration": 0.8457058733224407,
+            "temperature": 0.7592541879789665,
+            "top_p": 0.9048755780767073,
+            "min_p": 0.01473741015401478,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7524340032971724,
+            "exaggeration": 0.10927385511764481,
+            "temperature": 0.2563937814319463,
+            "top_p": 0.9270843432585938,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6312665322244562,
+            "exaggeration": 0.5964623262565154,
+            "temperature": 0.5653009979837273,
+            "top_p": 0.7072144776402864,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6169117145846044,
+            "exaggeration": 0.0,
+            "temperature": 0.1243632996731667,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.38380148529308167,
+            "exaggeration": 0.33244864799753004,
+            "temperature": 0.774807160668429,
+            "top_p": 0.86090000659699,
+            "min_p": 0.0024350052184836934,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.24776049066112515,
+            "temperature": 0.18122216672532715,
+            "top_p": 0.6727463485847525,
+            "min_p": 0.04429958663854763,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3265303659464039,
+            "exaggeration": 0.7958507782899558,
+            "temperature": 0.889915940427624,
+            "top_p": 1.0,
+            "min_p": 0.21867765986827833,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41473323848939114,
+            "exaggeration": 0.7046904894445485,
+            "temperature": 0.6862541854163955,
+            "top_p": 0.7451096419128295,
+            "min_p": 0.04478993731128786,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7924004155845576,
+            "temperature": 0.6174163229453982,
+            "top_p": 0.8272138627307377,
+            "min_p": 0.06184455577148287,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.395988737705217,
+            "exaggeration": 0.4607015433107986,
+            "temperature": 0.6370745251924338,
+            "top_p": 0.6863905816109512,
+            "min_p": 0.1670081692290822,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "हमलावर उस गोलकीपर के इर्द-गिर्द जा सकता है जिसने बहुत जल्दी कमिट किया है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-556",
+      "attempts": 13,
+      "best_quality_score": 0.0,
+      "best_attempt": 12,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.16928558203033445,
+            "temperature": 0.26270865539261007,
+            "top_p": 0.6416735993927802,
+            "min_p": 0.2889359816527678,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2577288101276252,
+            "exaggeration": 0.16492625596664795,
+            "temperature": 0.4719603933633234,
+            "top_p": 0.7161016484354685,
+            "min_p": 0.28909741342072925,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6963616035900331,
+            "exaggeration": 0.4338790169035587,
+            "temperature": 0.5334144098883651,
+            "top_p": 0.977873145864703,
+            "min_p": 0.20806858841673756,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21749865271153634,
+            "temperature": 0.05,
+            "top_p": 0.6688804621674018,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3383534550128391,
+            "exaggeration": 0.5186342054759867,
+            "temperature": 0.46327261827004024,
+            "top_p": 1.0,
+            "min_p": 0.001630259583324939,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7101517568134319,
+            "exaggeration": 0.11945907445057277,
+            "temperature": 0.33637414431666857,
+            "top_p": 0.975465617178511,
+            "min_p": 0.23390425259917566,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5105052841942948,
+            "exaggeration": 0.5087325435825881,
+            "temperature": 0.6137769732318917,
+            "top_p": 0.7289619556870923,
+            "min_p": 0.2876033873863295,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.930590787563922,
+            "exaggeration": 0.42974869198918125,
+            "temperature": 0.4971280708061327,
+            "top_p": 0.9250668919156275,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.017745874965888975,
+            "exaggeration": 0.8141473619994304,
+            "temperature": 0.6186076243854741,
+            "top_p": 0.824258541498522,
+            "min_p": 0.06122641803885767,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4403325789816519,
+            "exaggeration": 0.7942255410893885,
+            "temperature": 0.739440079869405,
+            "top_p": 0.6715315410817193,
+            "min_p": 0.01472955280156199,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.15729843930999438,
+            "exaggeration": 0.8210969709365302,
+            "temperature": 0.8097397523557539,
+            "top_p": 0.9411199455198083,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.44081368017208233,
+            "exaggeration": 0.4554856837002484,
+            "temperature": 0.9719156778605891,
+            "top_p": 0.6853387282148458,
+            "min_p": 0.11104994104943464,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "सेट पीस वे पल हैं जब गोलकीपर खेल पर नियंत्रण लेता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-608",
+      "attempts": 13,
+      "best_quality_score": 2.64,
+      "best_attempt": 7,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.45434531048419896,
+            "temperature": 0.5345089540136158,
+            "top_p": 0.7862298785251902,
+            "min_p": 0.09877835697018808,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.5424093388755824,
+            "exaggeration": 0.0559569313286129,
+            "temperature": 0.1880698470271182,
+            "top_p": 0.6672813645460483,
+            "min_p": 0.03202686130736945,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.6995966895414535,
+            "exaggeration": 0.657933460622803,
+            "temperature": 0.6826899140820615,
+            "top_p": 0.7044651602977064,
+            "min_p": 0.030564884710604173,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.10035093258762795,
+            "temperature": 0.127281487156233,
+            "top_p": 0.9116910237121046,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.2839941558128781,
+            "exaggeration": 0.6575087855059158,
+            "temperature": 0.6744076879445164,
+            "top_p": 0.7399295969968693,
+            "min_p": 0.05790122043787668,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5937312583254717,
+            "exaggeration": 0.2967592938125,
+            "temperature": 0.2500312024994338,
+            "top_p": 0.8068658255947287,
+            "min_p": 0.2505722927165619,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.2543894316702228,
+            "exaggeration": 0.14629029029818968,
+            "temperature": 0.848393475927564,
+            "top_p": 0.6263388907969207,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21865747114727585,
+            "temperature": 0.36060587600283617,
+            "top_p": 0.6392819640228631,
+            "min_p": 0.17213747289900397,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_spike",
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 47.0,
+          "params": {
+            "cfg_weight": 0.00522294046362376,
+            "exaggeration": 0.5939950549975725,
+            "temperature": 0.67973539342913,
+            "top_p": 0.719993534933878,
+            "min_p": 0.13994007730569316,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.19874724945252376,
+            "exaggeration": 0.5270711729397846,
+            "temperature": 1.0326714998076931,
+            "top_p": 0.6041700333339829,
+            "min_p": 0.05814219982794869,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4420549446262189,
+            "exaggeration": 0.5816273058010923,
+            "temperature": 0.7544133002862031,
+            "top_p": 0.9253476935500144,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.24881547545905475,
+            "exaggeration": 0.8643438545637931,
+            "temperature": 0.9775088573836976,
+            "top_p": 0.817353644508017,
+            "min_p": 0.19094833063977731,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "तुम्हारे सिर के अंदर की आवाज़ मायने रखती है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-264",
+      "attempts": 12,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 11,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9468842975355265,
+            "exaggeration": 0.34029092274124045,
+            "temperature": 0.6789673547212633,
+            "top_p": 0.8907999095986221,
+            "min_p": 0.3288661194330813,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4478665926716846,
+            "exaggeration": 0.14622031413256587,
+            "temperature": 0.36905983608209175,
+            "top_p": 0.7997003110441279,
+            "min_p": 0.019562140284650503,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5321688679434058,
+            "exaggeration": 0.4037274975799127,
+            "temperature": 0.6429753769502302,
+            "top_p": 0.8876049977875533,
+            "min_p": 0.22274833457770485,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3119387751468868,
+            "temperature": 0.4253924621877107,
+            "top_p": 0.7726298182937199,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4431041828176699,
+            "exaggeration": 0.3683897735573653,
+            "temperature": 0.28463809914497196,
+            "top_p": 0.6103001165074968,
+            "min_p": 0.05966406476728267,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.576693999274449,
+            "exaggeration": 0.16230478747144936,
+            "temperature": 0.14303531274083872,
+            "top_p": 0.8807165358954419,
+            "min_p": 0.11408572184740232,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.18874393337069978,
+            "exaggeration": 0.2362063702638002,
+            "temperature": 0.476396588813592,
+            "top_p": 1.0,
+            "min_p": 0.14918768920207862,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8406507904643759,
+            "exaggeration": 0.23956123297426923,
+            "temperature": 0.5305542155516911,
+            "top_p": 0.798843803701488,
+            "min_p": 0.30482158209723553,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13620512912067795,
+            "exaggeration": 0.7739976001688682,
+            "temperature": 0.9454281830479714,
+            "top_p": 0.8620299021234931,
+            "min_p": 0.23252861137338524,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2310419157597019,
+            "exaggeration": 0.7560096596763577,
+            "temperature": 0.6944626407199859,
+            "top_p": 0.690743505865034,
+            "min_p": 0.23806084748901105,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.5973950920146893,
+            "temperature": 0.624873366017896,
+            "top_p": 0.6324932439320881,
+            "min_p": 0.07916615735977164,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "जब तुम गोल लाइन पर खड़े होते हो, शूटर को दोनों तरफ़ खुला गोल दिखता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 11,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 10,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 62.0,
+          "params": {
+            "cfg_weight": 0.5638336031964819,
+            "exaggeration": 0.23582395249939597,
+            "temperature": 0.7302408408186062,
+            "top_p": 0.6873055936875614,
+            "min_p": 0.21983961114457215,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4521898856656095,
+            "exaggeration": 0.02518414117934703,
+            "temperature": 0.24419897043209,
+            "top_p": 0.6093604936491778,
+            "min_p": 0.1594759002972764,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7751645819404429,
+            "exaggeration": 0.8271343382374514,
+            "temperature": 0.8804879629098357,
+            "top_p": 0.9341699449617173,
+            "min_p": 0.14369612356616604,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.07800300215975209,
+            "temperature": 0.11522434911412965,
+            "top_p": 0.6199660948547514,
+            "min_p": 0.15475471542906052,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5035857684674101,
+            "exaggeration": 0.543358521161095,
+            "temperature": 0.5266770735699264,
+            "top_p": 0.6711702551549719,
+            "min_p": 0.29433211025186534,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8715239514620405,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.3454768802286272,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5063525602264287,
+            "exaggeration": 0.1382356734409657,
+            "temperature": 0.5108581818279088,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.28887177557902766,
+            "temperature": 0.4462998517344075,
+            "top_p": 0.7354534422066701,
+            "min_p": 0.1915358031377721,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.361282177787521,
+            "exaggeration": 0.7671963821524909,
+            "temperature": 0.8855883938042398,
+            "top_p": 0.9844391553788738,
+            "min_p": 0.1454161149832118,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.25874869570391484,
+            "exaggeration": 0.7638797822191115,
+            "temperature": 0.8682722652973318,
+            "top_p": 0.958242881056544,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "मैदान पर हर साथी खिलाड़ी गोल की रक्षा के लिए तुम पर भरोसा करता है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-114",
+      "attempts": 11,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 9,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.6536700717924055,
+            "exaggeration": 0.45711159091119397,
+            "temperature": 0.43628203365714224,
+            "top_p": 0.7134641740228738,
+            "min_p": 0.05619701583853701,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.35755883558344254,
+            "exaggeration": 0.14267539213632185,
+            "temperature": 0.2956835649455259,
+            "top_p": 0.6238969495742204,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.75941269895205,
+            "exaggeration": 0.4424664408916913,
+            "temperature": 0.6357002484350232,
+            "top_p": 0.7943418176515041,
+            "min_p": 0.047892309429805685,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8091300431621292,
+            "exaggeration": 0.37267092176130323,
+            "temperature": 0.0651794206081509,
+            "top_p": 0.8113581835979293,
+            "min_p": 0.2571424656933994,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2574086790040544,
+            "exaggeration": 0.5576374628069665,
+            "temperature": 0.6471538184143705,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.868171447019537,
+            "exaggeration": 0.28243276275941165,
+            "temperature": 0.14171666524555696,
+            "top_p": 0.6595245594744342,
+            "min_p": 0.07063135236582166,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.10359559953887326,
+            "exaggeration": 0.20679601303187078,
+            "temperature": 0.46239791472845393,
+            "top_p": 0.7303728637357088,
+            "min_p": 0.20602945098527445,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5241317756477766,
+            "temperature": 0.2730637455846506,
+            "top_p": 0.6003756230822518,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.03866740978112232,
+            "exaggeration": 0.8919606909125639,
+            "temperature": 0.6189024703923323,
+            "top_p": 0.9314708035984557,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.30335459600464443,
+            "exaggeration": 0.5737146929868786,
+            "temperature": 1.0195749701055667,
+            "top_p": 0.8250016461729841,
+            "min_p": 0.16684288263357414,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "तुम्हारे पैर तुम्हारे हाथों जितने ही ज़रूरी हैं।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-144",
+      "attempts": 11,
+      "best_quality_score": 0.0,
+      "best_attempt": 10,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6849595015251886,
+            "exaggeration": 0.13792732810625108,
+            "temperature": 0.672981460001629,
+            "top_p": 0.958635056579008,
+            "min_p": 0.1754512805689197,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4998406013062809,
+            "exaggeration": 0.1324293116335425,
+            "temperature": 0.1698100066452205,
+            "top_p": 1.0,
+            "min_p": 0.34342407557881804,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5042516597216586,
+            "exaggeration": 0.7215531765137031,
+            "temperature": 0.5542930466152529,
+            "top_p": 0.6310233862566886,
+            "min_p": 0.18247648657868046,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7950587903350714,
+            "exaggeration": 0.299744075455279,
+            "temperature": 0.3310381794523781,
+            "top_p": 0.7942144760114925,
+            "min_p": 0.30000705697397767,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.40883359746892234,
+            "exaggeration": 0.31072614778880486,
+            "temperature": 0.5027449201117222,
+            "top_p": 0.6509796469002198,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8960368491318189,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.8630525836757368,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.46837705955935105,
+            "exaggeration": 0.15004766170210437,
+            "temperature": 0.46172896210642117,
+            "top_p": 0.9122745658942242,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6586922050893096,
+            "exaggeration": 0.43193113597929267,
+            "temperature": 0.32556089144379596,
+            "top_p": 0.6169234491454927,
+            "min_p": 0.09901601972894578,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.08183624025794772,
+            "exaggeration": 0.675867456304174,
+            "temperature": 0.7319355239395446,
+            "top_p": 0.7320546485773491,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.37967983653467463,
+            "exaggeration": 0.5383297307534782,
+            "temperature": 0.5529371841635706,
+            "top_p": 0.8938647345554349,
+            "min_p": 0.14904095038276374,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "बिना पीछे देखे महसूस करो कि गोल का बीच कहाँ है।",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-191",
+      "attempts": 11,
+      "best_quality_score": 5.84,
+      "best_attempt": 9,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.803654153436701,
+            "exaggeration": 0.3300288187787086,
+            "temperature": 0.3005915038428521,
+            "top_p": 0.8942095441962539,
+            "min_p": 0.03331288548938707,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5066064855476153,
+            "exaggeration": 0.26290790022404037,
+            "temperature": 0.12163547236769495,
+            "top_p": 1.0,
+            "min_p": 0.004257489239166273,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5433739444307268,
+            "exaggeration": 0.6577219235223918,
+            "temperature": 0.7809375813430668,
+            "top_p": 0.60599107296105,
+            "min_p": 0.17922072663991326,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9299462026389964,
+            "exaggeration": 0.13500646975808883,
+            "temperature": 0.32579290406991923,
+            "top_p": 0.8658739687335559,
+            "min_p": 0.19592066625270624,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1785426611119625,
+            "exaggeration": 0.6658819436823045,
+            "temperature": 0.700220621132448,
+            "top_p": 0.7254324064639208,
+            "min_p": 0.2800715079275067,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7513393097828536,
+            "exaggeration": 0.0,
+            "temperature": 0.2081014159371747,
+            "top_p": 0.8934123128361562,
+            "min_p": 0.27969929658039716,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.47011183575221194,
+            "exaggeration": 0.3042580006746996,
+            "temperature": 0.4570499267733226,
+            "top_p": 0.6668810444003199,
+            "min_p": 0.17902492946140916,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21249250986052343,
+            "temperature": 0.22539607819249852,
+            "top_p": 0.8723483229500668,
+            "min_p": 0.31118131594862264,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.09581632279112706,
+            "exaggeration": 0.545908537010928,
+            "temperature": 0.9234599571363367,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.2885906659855965,
+            "exaggeration": 0.6291872103366908,
+            "temperature": 1.0277926083202051,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "जब गेंद मैदान की बाईं ओर जाए, एक कदम बाएँ लो।",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 46,
+      "avg_delta": {
+        "cfg_weight": -0.047,
+        "temperature": 0.087,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.202,
+        "temperature": 0.112,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.326,
+        "temperature": -0.076,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.099,
+        "temperature": 0.005,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.027,
+        "temperature": 0.172,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.13,
+        "temperature": 0.129,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

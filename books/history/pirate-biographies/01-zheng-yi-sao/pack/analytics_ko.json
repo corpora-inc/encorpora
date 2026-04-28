@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "ko",
+  "timestamp": "2026-04-20T09:08:14.077370+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 292,
+  "segments_converged_by_retry": 10,
+  "segments_plateau_stopped": 1,
+  "total_retries": 16,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch02-079",
+      "attempts": 5,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "대부분의 기록에 따르면, 그녀는 단순히 수락하지 않았습니다."
+    },
+    {
+      "id": "ch02-085",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그러나 이곳은 해적의 세계였고, 해적의 세계에는 자체 규칙이 있었습니다."
+    },
+    {
+      "id": "ch03-170",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "천팔백구년까지 청나라와 포르투갈의 동맹은 그녀를 물리치는 데 실패했습니다."
+    },
+    {
+      "id": "ch01-023",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "영국, 프랑스, 포르투갈, 네덜란드의 상인들이 시장 접근을 놓고 경쟁했습니다."
+    },
+    {
+      "id": "ch03-121",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "정이가 그를 양자로 삼아 훈련시키고 군사 지휘관으로 길러냈습니다."
+    },
+    {
+      "id": "ch04-184",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "남쪽 베트남 국경에서 북쪽 푸젠 해안까지, 해적의 허가 없이 안전한 배는 없었습니다."
+    },
+    {
+      "id": "ch04-201",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "이 정보 덕분에 우연에 의존하지 않고 정밀하게 공격할 수 있었습니다."
+    },
+    {
+      "id": "ch05-257",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "협상만이 남은 선택지였습니다."
+    },
+    {
+      "id": "ch05-272",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그의 죽음은 군 최고 예우로 추모되었습니다."
+    },
+    {
+      "id": "ch06-292",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그녀는 역사의 올바른 순간에 나타난 올바른 인물이었습니다."
+    },
+    {
+      "id": "ch06-304",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "많은 공식 기록은 그녀의 역할을 축소하거나 성공을 장보자이에게 돌립니다."
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "이것은 기록된 역사상 가장 성공한 해적에 관한 실화입니다."
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그녀의 이름은 정이사오이며, 세계 역사상 가장 거대한 해적 함대를 지휘했습니다."
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "전성기에 그녀는 대부분의 국가보다 많은 배를 지배했습니다."
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그녀는 부유하거나 특권 있는 집안에서 태어나지 않았습니다."
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "십팔세기 후반, 중국 남부의 가난 속에서 태어났습니다."
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "그녀가 이룬 모든 것은 지성, 냉혹함, 그리고 사람을 조직하는 뛰어난 능력으로 이루어졌습니다."
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "이 책은 아무것도 가지지 못한 한 여성이 어떻게 남중국해의 절대적 지배자가 되었는지를 이야기합니다."
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "이것은 전쟁, 교역, 법, 그리고 생존에 관한 이야기입니다."
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "또한 유럽 열강이 아시아 깊숙이 진출하면서 급변하던 세계에 대한 이야기이기도 합니다."
+    }
+  ]
+}

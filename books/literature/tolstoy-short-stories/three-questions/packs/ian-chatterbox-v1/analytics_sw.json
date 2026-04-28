@@ -1,0 +1,2430 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "sw",
+  "timestamp": "2026-04-23T07:20:04.533375+00:00",
+  "segments_total": 81,
+  "segments_first_pass": 26,
+  "segments_converged_by_retry": 24,
+  "segments_plateau_stopped": 31,
+  "total_retries": 199,
+  "error_distribution": {
+    "transcription_mismatch": 189,
+    "first_word_weak": 37,
+    "trailing_silence": 15,
+    "hard_ending": 11,
+    "min_trailing_silence": 8,
+    "final_word_weak": 8,
+    "tail_energy": 6,
+    "stacked_words": 4,
+    "truncated_last_word": 4,
+    "pre_speech_spike": 3,
+    "word_cluster": 2
+  },
+  "phase_timings": {
+    "tts": 199.1400535106659,
+    "align": 43.25639057159424,
+    "validate": 58.48733735084534,
+    "trim": 0.021936893463134766,
+    "master": 1.9511346817016602
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 10,
+      "passed": 3,
+      "rate": 0.3
+    },
+    "medium_30_80": {
+      "total": 37,
+      "passed": 10,
+      "rate": 0.2702702702702703
+    },
+    "long_80_plus": {
+      "total": 34,
+      "passed": 13,
+      "rate": 0.38235294117647056
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-016",
+      "attempts": 10,
+      "best_quality_score": 4.4,
+      "best_attempt": 6,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8327219495669098,
+            "exaggeration": 0.36861016345179265,
+            "temperature": 0.5144796005622202,
+            "top_p": 0.8000305178696848,
+            "min_p": 0.12210066332029562,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.5733657875087382,
+            "exaggeration": 0.2895976696580223,
+            "temperature": 0.38771695260916283,
+            "top_p": 0.954360642176751,
+            "min_p": 0.055085291793381785,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.6,
+          "params": {
+            "cfg_weight": 0.6695093773788658,
+            "exaggeration": 0.476715857569807,
+            "temperature": 0.6804526917558954,
+            "top_p": 0.8447970661046604,
+            "min_p": 0.1429523766854735,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.20985633747877588,
+            "temperature": 0.15782653774412914,
+            "top_p": 0.737570141119552,
+            "min_p": 0.09820618876746315,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.6,
+          "params": {
+            "cfg_weight": 0.4475042641372339,
+            "exaggeration": 0.5824986615039119,
+            "temperature": 0.6360585234755226,
+            "top_p": 0.9058631986871748,
+            "min_p": 0.10904375582807568,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.8174940179280925,
+            "exaggeration": 0.24389353228074306,
+            "temperature": 0.2143640722601634,
+            "top_p": 0.8119435233153225,
+            "min_p": 0.20920302440661942,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.2620014315942105,
+            "exaggeration": 0.365741808769541,
+            "temperature": 0.5816793631456398,
+            "top_p": 0.9916255192889882,
+            "min_p": 0.00755392895892637,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.26680205066541546,
+            "temperature": 0.27020821326890243,
+            "top_p": 0.8368224754423097,
+            "min_p": 0.22959446661733846,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.29448528372436455,
+            "exaggeration": 0.7161531988204783,
+            "temperature": 0.8591671817044719,
+            "top_p": 0.7557381422696043,
+            "min_p": 0.06639780314568201,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 122,
+      "text_preview": "Ili ajue vyema zaidi majibu ya maswali yake, aliamua kumuuliza mkimbizi, ambaye ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 8,
+      "best_quality_score": 4.24,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.8175737240971377,
+            "exaggeration": 0.4463909969181309,
+            "temperature": 0.5819156030485853,
+            "top_p": 0.9497217757197928,
+            "min_p": 0.23476064105997346,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.4127290960806469,
+            "exaggeration": 0.11925572910439061,
+            "temperature": 0.29032294215650906,
+            "top_p": 0.747464818639433,
+            "min_p": 0.008719072176846462,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.646136183425117,
+            "exaggeration": 0.5303255523385515,
+            "temperature": 0.7464219721571719,
+            "top_p": 0.8891856757872643,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3125733329321374,
+            "temperature": 0.16593492793402612,
+            "top_p": 0.8348454744001856,
+            "min_p": 0.20991032117470482,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.662740632668602,
+            "exaggeration": 0.1798213175084381,
+            "temperature": 0.4736173118292217,
+            "top_p": 0.9645858117112409,
+            "min_p": 0.0602645858332774,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.542983238714545,
+            "exaggeration": 0.3045889380945157,
+            "temperature": 0.4226203881481705,
+            "top_p": 0.8930412099926479,
+            "min_p": 0.24448899190039086,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.5144872771640582,
+            "exaggeration": 0.49344297738681886,
+            "temperature": 0.8176836536608426,
+            "top_p": 0.9006933629893136,
+            "min_p": 0.20338680283274102,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.24,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3666307256940362,
+            "temperature": 0.0821123435034409,
+            "top_p": 0.8475739855314237,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.3247360381681339,
+            "exaggeration": 0.5824583724831875,
+            "temperature": 0.6112276808156365,
+            "top_p": 0.7720520725845659,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.7408062406616713,
+            "exaggeration": 0.2272983455811366,
+            "temperature": 0.07264387532712473,
+            "top_p": 0.7087447902380933,
+            "min_p": 0.12372429446909416,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.2965466909241872,
+            "exaggeration": 0.4311016365912195,
+            "temperature": 0.7041234426856952,
+            "top_p": 0.7474284328120242,
+            "min_p": 0.02875897005714166,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 280,
+      "text_preview": "Watu wa tatu walisema kwamba haijalishi jinsi mfalme alivyo makini kwa kila kina",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 8,
+      "best_quality_score": 0.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.7532208752926043,
+            "exaggeration": 0.36655948724310544,
+            "temperature": 0.3825759020034465,
+            "top_p": 0.9901554919834898,
+            "min_p": 0.056647600236755205,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.6178605337763037,
+            "exaggeration": 0.1692311081030487,
+            "temperature": 0.2134702260151031,
+            "top_p": 0.8936141127222312,
+            "min_p": 0.12418833292062012,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.6835596398130075,
+            "exaggeration": 0.4685240538188367,
+            "temperature": 0.6964350644775126,
+            "top_p": 0.7492849897049927,
+            "min_p": 0.00122564033124678,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21750738803007608,
+            "temperature": 0.25171409111269605,
+            "top_p": 0.8167620272542837,
+            "min_p": 0.12747021076791057,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2915404308994321,
+            "exaggeration": 0.64445766727314,
+            "temperature": 0.5320049439501848,
+            "top_p": 0.775970745984764,
+            "min_p": 0.22588904311526337,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.8254145544278212,
+            "exaggeration": 0.029273853512405107,
+            "temperature": 0.14444643988914696,
+            "top_p": 0.8650849577419388,
+            "min_p": 0.012709862665570767,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.2519518637840143,
+            "exaggeration": 0.2896434733559081,
+            "temperature": 0.6495249697136973,
+            "top_p": 0.8046766836702067,
+            "min_p": 0.06741148706806512,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "— Vipi? — alisema yule mzee wa kienyeji.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 7,
+      "best_quality_score": 3.2,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7062470119718466,
+            "exaggeration": 0.38735538081375076,
+            "temperature": 0.36037237608112016,
+            "top_p": 0.8738243018535212,
+            "min_p": 0.13069091822234058,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5247184104929425,
+            "exaggeration": 0.23130142333951553,
+            "temperature": 0.27485898662729735,
+            "top_p": 0.9316503545729643,
+            "min_p": 0.2260960181392846,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.5949069957011631,
+            "exaggeration": 0.5283942205223995,
+            "temperature": 0.5725214778454036,
+            "top_p": 0.9367862769289985,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.9902365842002296,
+            "exaggeration": 0.3955564401227559,
+            "temperature": 0.28059185315889057,
+            "top_p": 0.8169529173818803,
+            "min_p": 0.048632064205031036,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.4757186673183984,
+            "exaggeration": 0.5845384573564966,
+            "temperature": 0.46789223340852154,
+            "top_p": 0.7506063904397723,
+            "min_p": 0.04445578030348166,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.8008903669693772,
+            "exaggeration": 0.09417809507385688,
+            "temperature": 0.11688286834041625,
+            "top_p": 0.7891171162258693,
+            "min_p": 0.06028918356991998,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Tu hapo, walisema, kila kazi itafanywa katika wakati wake sahihi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 7,
+      "best_quality_score": 4.4,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.9322473818641044,
+            "exaggeration": 0.293308750154931,
+            "temperature": 0.5158818229073576,
+            "top_p": 0.9303522883114188,
+            "min_p": 0.12322170789194181,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.49109267649791,
+            "exaggeration": 0.22962146538117417,
+            "temperature": 0.37638283646345494,
+            "top_p": 0.9074993405168099,
+            "min_p": 0.0326282331999975,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.4558620972016559,
+            "exaggeration": 0.7440458662560449,
+            "temperature": 0.7230914577341917,
+            "top_p": 0.7239241673569281,
+            "min_p": 0.242758016129285,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.897401374713233,
+            "exaggeration": 0.40558805610646964,
+            "temperature": 0.2589325510969802,
+            "top_p": 0.9994899315579556,
+            "min_p": 0.15780184376885295,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.56,
+          "params": {
+            "cfg_weight": 0.2799742445334115,
+            "exaggeration": 0.410001918761682,
+            "temperature": 0.545490908647301,
+            "top_p": 0.7898589503316195,
+            "min_p": 0.08224196202241976,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7808458562700046,
+            "exaggeration": 0.0,
+            "temperature": 0.13285027199074145,
+            "top_p": 0.9966190421227252,
+            "min_p": 0.05958968450281768,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Mkimbizi hakujibu tena, bali akasimama na kunyoosha mkono wake kuelekea jembe:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-050",
+      "attempts": 7,
+      "best_quality_score": 4.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.9033655231196627,
+            "exaggeration": 0.2070863802905702,
+            "temperature": 0.6422427651073089,
+            "top_p": 0.8527728598695224,
+            "min_p": 0.12094101123014347,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.44201600483224945,
+            "exaggeration": 0.08266356157707788,
+            "temperature": 0.3716519435127823,
+            "top_p": 0.7088493345539103,
+            "min_p": 0.042433537077552,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.6681899945906666,
+            "exaggeration": 0.6227529953666917,
+            "temperature": 0.7308830462923005,
+            "top_p": 0.7901586138392136,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2944245262930878,
+            "temperature": 0.17063513793875992,
+            "top_p": 0.7734795791964069,
+            "min_p": 0.11899023103323034,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5365083678579979,
+            "exaggeration": 0.5142496623809889,
+            "temperature": 0.5544616068392031,
+            "top_p": 0.8702371644900497,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.6669947772309256,
+            "exaggeration": 0.08169484269467928,
+            "temperature": 0.05,
+            "top_p": 0.8526617823764386,
+            "min_p": 0.15564909876102095,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "Mfalme akamletea maji safi na akamnywesha.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-064",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.7096982328826483,
+            "exaggeration": 0.2686098710875538,
+            "temperature": 0.538314709292016,
+            "top_p": 0.9069212488749755,
+            "min_p": 0.01164647991294221,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.4220989046019627,
+            "exaggeration": 0.3054914847822927,
+            "temperature": 0.40098554584020774,
+            "top_p": 0.8619622406986007,
+            "min_p": 0.12204423875352666,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.6491656513420523,
+            "exaggeration": 0.5245831083919285,
+            "temperature": 0.6878141220114553,
+            "top_p": 0.9636450044488752,
+            "min_p": 0.20891427048179667,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2431694347419232,
+            "temperature": 0.21175673845047027,
+            "top_p": 0.9691692904671786,
+            "min_p": 0.17624689932061985,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.3783888354159398,
+            "exaggeration": 0.3514328915348206,
+            "temperature": 0.39986499134025855,
+            "top_p": 0.7683963896565096,
+            "min_p": 0.12031864772659479,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.8410914026933107,
+            "exaggeration": 0.0,
+            "temperature": 0.2410118801163953,
+            "top_p": 0.8668467215628735,
+            "min_p": 0.012070644049684484,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Nilitaka kukuua, na wewe uliokoa maisha yangu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-077",
+      "attempts": 7,
+      "best_quality_score": 5.12,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.8423703049665159,
+            "exaggeration": 0.29843321048297033,
+            "temperature": 0.3623615166779006,
+            "top_p": 0.7924858190748129,
+            "min_p": 0.05908180784704012,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.4344593055553079,
+            "exaggeration": 0.17471694581463243,
+            "temperature": 0.34714749533131845,
+            "top_p": 0.9653801576488377,
+            "min_p": 0.11269613271188908,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.6329941950988184,
+            "exaggeration": 0.6264624058589692,
+            "temperature": 0.6827245978480153,
+            "top_p": 0.9115195348360488,
+            "min_p": 0.017904788279985873,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3691341784325607,
+            "temperature": 0.2979954645942752,
+            "top_p": 0.8502237042520164,
+            "min_p": 0.21230214813048126,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.5349007229562103,
+            "exaggeration": 0.35233417134790074,
+            "temperature": 0.3725080597381153,
+            "top_p": 0.9703215655910006,
+            "min_p": 0.010834121604756858,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.7353282223662639,
+            "exaggeration": 0.0,
+            "temperature": 0.1943061642130341,
+            "top_p": 0.7054698938532655,
+            "min_p": 0.23873328435464058,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Na kwa hiyo wakati muhimu zaidi ulikuwa wakati ulipokuwa ukichimba mabonde.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-078",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8974045804833876,
+            "exaggeration": 0.3831949645629489,
+            "temperature": 0.42123919271858346,
+            "top_p": 0.7659919903455671,
+            "min_p": 0.2377129772233657,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5668860751535981,
+            "exaggeration": 0.056010040123413984,
+            "temperature": 0.31213176085008715,
+            "top_p": 0.8397508201969682,
+            "min_p": 0.17996248723502678,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.6190642250014886,
+            "exaggeration": 0.6420953059584726,
+            "temperature": 0.7159119333262197,
+            "top_p": 0.7864554399495574,
+            "min_p": 0.03883991053965885,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7363465785492004,
+            "exaggeration": 0.20176961203515936,
+            "temperature": 0.35509189286854703,
+            "top_p": 0.7779914548973482,
+            "min_p": 0.23286931790900112,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.380574855836318,
+            "exaggeration": 0.154397412059606,
+            "temperature": 0.24856245195840188,
+            "top_p": 0.8666967432663418,
+            "min_p": 0.21403137549475043,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.48054903500134855,
+            "exaggeration": 0.6099499107714794,
+            "temperature": 0.5937473569168441,
+            "top_p": 0.7400152337438065,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.8792727006228013,
+            "exaggeration": 0.24067315748540435,
+            "temperature": 0.059702730385468805,
+            "top_p": 0.7823333437823364,
+            "min_p": 0.2398229439797837,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.44660574710968076,
+            "exaggeration": 0.5133706359305125,
+            "temperature": 0.40911585440442627,
+            "top_p": 0.8769764876951779,
+            "min_p": 0.16342555656184785,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7276432126771563,
+            "exaggeration": 0.02432357843489502,
+            "temperature": 0.16734588920079335,
+            "top_p": 0.7775342219258479,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Na mtu muhimu zaidi nilikuwa mimi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 6,
+      "best_quality_score": 4.4,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.44,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.8725372394766369,
+            "exaggeration": 0.1881535913551116,
+            "temperature": 0.6060871633910865,
+            "top_p": 0.8032776981420209,
+            "min_p": 0.21613752860888535,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.4562487535990629,
+            "exaggeration": 0.3121195075841371,
+            "temperature": 0.18865620464137645,
+            "top_p": 0.9046384109843606,
+            "min_p": 0.20508823385202013,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.72,
+          "params": {
+            "cfg_weight": 0.6575439248070792,
+            "exaggeration": 0.7087751930680841,
+            "temperature": 0.7802401342956173,
+            "top_p": 0.9498796304770367,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.9749595177813503,
+            "exaggeration": 0.21968692958140862,
+            "temperature": 0.30613731727663607,
+            "top_p": 0.9157013358834257,
+            "min_p": 0.1442616986135473,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.3065071326782448,
+            "exaggeration": 0.6440073601764332,
+            "temperature": 0.6378672980135656,
+            "top_p": 0.7797736798396574,
+            "min_p": 0.14897896026068994,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 145,
+      "text_preview": "Baadhi yao walisema kwamba watu walio muhimu zaidi kwa mfalme ni watawala, wengi",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 6,
+      "best_quality_score": 4.16,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.88,
+          "params": {
+            "cfg_weight": 0.6977523712022016,
+            "exaggeration": 0.25504334669404827,
+            "temperature": 0.6193776603609621,
+            "top_p": 0.8365012839658834,
+            "min_p": 0.11722371894037625,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.16,
+          "params": {
+            "cfg_weight": 0.593529950145133,
+            "exaggeration": 0.18000083457236873,
+            "temperature": 0.33576693261367885,
+            "top_p": 0.7575676053109778,
+            "min_p": 0.0,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.2,
+          "params": {
+            "cfg_weight": 0.7243764157409023,
+            "exaggeration": 0.7230156336545221,
+            "temperature": 0.7503408608684309,
+            "top_p": 0.7140111275873923,
+            "min_p": 0.0,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.2,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.37269000463667457,
+            "temperature": 0.29550651391693583,
+            "top_p": 0.7176468933555455,
+            "min_p": 0.08426245982348393,
+            "repetition_penalty": 1.71
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.4592472149246265,
+            "exaggeration": 0.5041377355378419,
+            "temperature": 0.5400948016681681,
+            "top_p": 0.9069041143881118,
+            "min_p": 0.2181876894953173,
+            "repetition_penalty": 1.71
+          }
+        }
+      ],
+      "text_len": 173,
+      "text_preview": "Kwa swali la tatu — ni kazi gani muhimu zaidi? — baadhi yao walisema kwamba kitu",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 6,
+      "best_quality_score": 4.32,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.8721649572755898,
+            "exaggeration": 0.35170146415894,
+            "temperature": 0.41497425946808647,
+            "top_p": 0.7840834803869154,
+            "min_p": 0.17888807767569118,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.32,
+          "params": {
+            "cfg_weight": 0.609604383774379,
+            "exaggeration": 0.2973677155370411,
+            "temperature": 0.15905315877786733,
+            "top_p": 0.7445625262900212,
+            "min_p": 0.01890408854186551,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.698563439666904,
+            "exaggeration": 0.6321253071949738,
+            "temperature": 0.5879912136301297,
+            "top_p": 0.9032796887740919,
+            "min_p": 0.23525418564269335,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.8770342854913741,
+            "exaggeration": 0.41933311991572064,
+            "temperature": 0.23785711460019027,
+            "top_p": 0.7667446947808624,
+            "min_p": 0.16062241397450902,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.88,
+          "params": {
+            "cfg_weight": 0.4278237217304873,
+            "exaggeration": 0.40053165302695604,
+            "temperature": 0.3524750488940879,
+            "top_p": 0.928507982285881,
+            "min_p": 0.039823207407138586,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 161,
+      "text_preview": "Alikuwa akipokea watu wa kawaida tu, na kwa hiyo mfalme alivaa nguo za kawaida n",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 6,
+      "best_quality_score": 6.4,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.9415624676776844,
+            "exaggeration": 0.16208377990865863,
+            "temperature": 0.604243706795408,
+            "top_p": 0.7185528006882816,
+            "min_p": 0.12395415593280623,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.6396959526418737,
+            "exaggeration": 0.14209659845132133,
+            "temperature": 0.29903743050493403,
+            "top_p": 0.7554671268387331,
+            "min_p": 0.13358296303364647,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.5227182821424703,
+            "exaggeration": 0.7043178766932621,
+            "temperature": 0.7204123369910951,
+            "top_p": 0.790941622301984,
+            "min_p": 0.09642809777493447,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.404580396800979,
+            "temperature": 0.28838927902452755,
+            "top_p": 0.7478949708828,
+            "min_p": 0.024294121589091305,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.31255583800509307,
+            "exaggeration": 0.46151080198458067,
+            "temperature": 0.47085500422584103,
+            "top_p": 0.8660949504515367,
+            "min_p": 0.16466755950782655,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "— Umechoka, — akasema mfalme.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-067",
+      "attempts": 6,
+      "best_quality_score": 5.04,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7634863653133847,
+            "exaggeration": 0.26021790967742814,
+            "temperature": 0.6048574860948521,
+            "top_p": 0.7945170003667414,
+            "min_p": 0.10656577704142803,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.04,
+          "params": {
+            "cfg_weight": 0.5506445715219054,
+            "exaggeration": 0.23924507011476953,
+            "temperature": 0.36984071193897694,
+            "top_p": 0.7231197698577497,
+            "min_p": 0.1984941028294828,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.49808762745361174,
+            "exaggeration": 0.6210456651547056,
+            "temperature": 0.5873740723841151,
+            "top_p": 0.9614296300314228,
+            "min_p": 0.027250326783889903,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3673344880711579,
+            "temperature": 0.2178115857521014,
+            "top_p": 0.9076059297277894,
+            "min_p": 0.10088603642049557,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.3026418143498022,
+            "exaggeration": 0.6339739819431767,
+            "temperature": 0.6174587840002114,
+            "top_p": 0.9499441751874309,
+            "min_p": 0.24208565740011334,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 195,
+      "text_preview": "Mfalme alifurahi sana kwamba aliweza kwa urahisi kupatana na adui yake na kupata",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-072",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.8616336780105692,
+            "exaggeration": 0.44697757018934736,
+            "temperature": 0.3567267255375829,
+            "top_p": 0.8620000686716421,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.41778839312623706,
+            "exaggeration": 0.09999317182587228,
+            "temperature": 0.36050908327488485,
+            "top_p": 0.7341058150564217,
+            "min_p": 0.07574624161384991,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.5700328131288713,
+            "exaggeration": 0.6037994564508902,
+            "temperature": 0.6468324959878042,
+            "top_p": 0.8528539786951603,
+            "min_p": 0.1386040583070015,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3748506715158464,
+            "temperature": 0.25023608849219425,
+            "top_p": 0.769937128883478,
+            "min_p": 0.03335798912515338,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3012664858665818,
+            "exaggeration": 0.549118989851721,
+            "temperature": 0.5140266071893984,
+            "top_p": 0.7701880313765683,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "— Mtu mwenye hekima, mara ya mwisho nakuomba: nijibu maswali yangu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-073",
+      "attempts": 6,
+      "best_quality_score": 4.16,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.88,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6694927804631223,
+            "exaggeration": 0.1522782864778451,
+            "temperature": 0.4457984351267857,
+            "top_p": 0.8276917451791701,
+            "min_p": 0.1230143845589742,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.16,
+          "params": {
+            "cfg_weight": 0.5506739184612873,
+            "exaggeration": 0.1784546343250664,
+            "temperature": 0.2639394033354388,
+            "top_p": 0.8748392806414281,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.7400023331196822,
+            "exaggeration": 0.6783846987507528,
+            "temperature": 0.5658494387712096,
+            "top_p": 0.9029048216933513,
+            "min_p": 0.12088472226664873,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.20956353745854409,
+            "temperature": 0.27669859638863636,
+            "top_p": 0.8049102862681664,
+            "min_p": 0.06691450309782215,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.26159793124601266,
+            "exaggeration": 0.48801126379678705,
+            "temperature": 0.4869438333298148,
+            "top_p": 0.9599331220048678,
+            "min_p": 0.009587783221310237,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 146,
+      "text_preview": "— Lakini wewe umeshapata jibu, — alisema yule mzee wa kienyeji, akiketi juu ya m",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 5,
+      "best_quality_score": 4.4,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.8186652180525879,
+            "exaggeration": 0.32146894172909285,
+            "temperature": 0.622978769057268,
+            "top_p": 0.7080919267036546,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.4492548464246967,
+            "exaggeration": 0.3426918092388189,
+            "temperature": 0.44474110606896866,
+            "top_p": 0.7662879795142201,
+            "min_p": 0.0036661044387004543,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.541964062492922,
+            "exaggeration": 0.6652549194005934,
+            "temperature": 0.7033799699725952,
+            "top_p": 0.927185517047143,
+            "min_p": 0.14791782187405722,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.27218601384765034,
+            "temperature": 0.24890614488675303,
+            "top_p": 0.9683505108830508,
+            "min_p": 0.21536810559984865,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 279,
+      "text_preview": "Na baada ya kufikiria hayo, mfalme alitangaza katika ufalme wake kwamba atampa t",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 5,
+      "best_quality_score": 4.48,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.8474211386083075,
+            "exaggeration": 0.26453747845344966,
+            "temperature": 0.4840842779542568,
+            "top_p": 0.7905686037843002,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.5099512631913458,
+            "exaggeration": 0.07391317952328338,
+            "temperature": 0.4375568734120959,
+            "top_p": 0.7027648317836114,
+            "min_p": 0.20592138658585857,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.7390496232997933,
+            "exaggeration": 0.7209716926821549,
+            "temperature": 0.622778042005769,
+            "top_p": 0.8771054309969757,
+            "min_p": 0.061065509657402914,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3334442358904529,
+            "temperature": 0.34660904624123967,
+            "top_p": 0.9865198359239907,
+            "min_p": 0.004044279832570885,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "Kwa swali la pili pia walijibu kwa njia tofauti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.8283471177106609,
+            "exaggeration": 0.3652701085329527,
+            "temperature": 0.49969758021468635,
+            "top_p": 0.836026539376341,
+            "min_p": 0.06519556769805297,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5659364014367406,
+            "exaggeration": 0.24342458511822562,
+            "temperature": 0.22412298811094689,
+            "top_p": 0.8825506942211566,
+            "min_p": 0.1267355635456722,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.456822521993683,
+            "exaggeration": 0.6534872803156625,
+            "temperature": 0.6460882691657265,
+            "top_p": 0.7283424821743172,
+            "min_p": 0.20081950683511984,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8793011009260709,
+            "exaggeration": 0.359253655299546,
+            "temperature": 0.05941816113799955,
+            "top_p": 0.7773888513427275,
+            "min_p": 0.16823275432429485,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Mfalme akamkaribia na akasema:",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-029",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.56,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.8251724107807241,
+            "exaggeration": 0.4102016359891447,
+            "temperature": 0.49474412734697937,
+            "top_p": 0.9022560627765543,
+            "min_p": 0.1739611994195692,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3802231046954798,
+            "exaggeration": 0.2929580368162209,
+            "temperature": 0.26171062299048653,
+            "top_p": 0.7329852827045298,
+            "min_p": 0.101634091828958,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.5511079897745423,
+            "exaggeration": 0.5700014218806709,
+            "temperature": 0.6337588251220194,
+            "top_p": 0.8622223665889577,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.21071376427235516,
+            "temperature": 0.2854219411999827,
+            "top_p": 0.9065210589080854,
+            "min_p": 0.014027409446537478,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "— Asante, — akasema mkimbizi na, akimpa mfalme jembe, akaketi ardhini.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 13,
+      "avg_delta": {
+        "cfg_weight": -0.085,
+        "temperature": 0.042,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.213,
+        "temperature": 0.01,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.054,
+        "temperature": -0.281,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.042,
+        "temperature": -0.053,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

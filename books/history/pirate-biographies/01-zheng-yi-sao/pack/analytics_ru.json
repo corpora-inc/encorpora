@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "ru",
+  "timestamp": "2026-04-20T14:45:41.602271+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 265,
+  "segments_converged_by_retry": 29,
+  "segments_plateau_stopped": 9,
+  "total_retries": 66,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch06-281",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "И ни один другой пират не выторговал себе столь благоприятные условия отставки."
+    },
+    {
+      "id": "ch02-065",
+      "attempts": 5,
+      "best_quality_score": 5.36,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Имя Чжэн И Сао попросту означает «жена Чжэн И»."
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Затем, в ноябре тысяча восемьсот седьмого года Чжэн И погиб."
+    },
+    {
+      "id": "ch02-086",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Чжэн И согласился на её условия."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "К тысяча восемьсот пятому году конфедерация была сформирована."
+    },
+    {
+      "id": "ch03-143",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Пират, захвативший добычу, получал двадцать процентов."
+    },
+    {
+      "id": "ch03-154",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Побеждённый адмирал был так унижен, что покончил с собой."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Чжэн И Сао неустанно развивала своё преимущество."
+    },
+    {
+      "id": "ch05-258",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "В апреле тысяча восемьсот десятого года сделка была заключена."
+    },
+    {
+      "id": "ch06-299",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "И всё же многое в её жизни остаётся неизвестным."
+    },
+    {
+      "id": "ch02-071",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Это была тяжёлая и опасная работа, но она дала ей знание мира, недоступное для б"
+    },
+    {
+      "id": "ch03-122",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Чжэн И Сао заключила с Чжан Бао личный и стратегический союз."
+    },
+    {
+      "id": "ch04-206",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Вся система документировалась и проводилась в жизнь с бюрократической точностью."
+    },
+    {
+      "id": "ch06-290",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Без условий её талант не имел бы сцены."
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "На пике своего могущества она контролировала больше кораблей, чем имело большинс"
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Однако к концу тысяча семисотых годов династия Цин начала слабеть."
+    },
+    {
+      "id": "ch01-037",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Они не могли сдавать императорские экзамены, открывавшие путь к государственной "
+    },
+    {
+      "id": "ch02-076",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Он происходил из долгой династии пиратов, уходящей в глубь поколений."
+    },
+    {
+      "id": "ch02-106",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Обстоятельства его гибели остаются предметом споров среди историков."
+    },
+    {
+      "id": "ch02-115",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Но они не учли амбиций и способностей вдовы Чжэн И."
+    }
+  ]
+}

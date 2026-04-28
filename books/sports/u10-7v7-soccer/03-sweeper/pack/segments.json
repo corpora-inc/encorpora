@@ -169,7 +169,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Field General",
-      "text_markdown": "The Field General"
+      "text_markdown": "The Field General",
+      "tts": {
+        "text": "The Field General",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-012",
@@ -437,7 +442,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Your Two Jobs",
-      "text_markdown": "Your Two Jobs"
+      "text_markdown": "Your Two Jobs",
+      "tts": {
+        "text": "Your Two Jobs",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-029",
@@ -689,7 +699,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Shape Around You",
-      "text_markdown": "The Shape Around You"
+      "text_markdown": "The Shape Around You",
+      "tts": {
+        "text": "The Shape Around You",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-045",
@@ -845,7 +860,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Trust",
-      "text_markdown": "Trust"
+      "text_markdown": "Trust",
+      "tts": {
+        "text": "Trust",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-055",
@@ -1081,7 +1101,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "This Is Your Position",
-      "text_markdown": "This Is Your Position"
+      "text_markdown": "This Is Your Position",
+      "tts": {
+        "text": "This Is Your Position",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch01-070",
@@ -1345,7 +1370,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "See the Whole Field",
-      "text_markdown": "See the Whole Field"
+      "text_markdown": "See the Whole Field",
+      "tts": {
+        "text": "See the Whole Field",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-087",
@@ -1581,7 +1611,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Watch the Spaces",
-      "text_markdown": "Watch the Spaces"
+      "text_markdown": "Watch the Spaces",
+      "tts": {
+        "text": "Watch the Spaces",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-102",
@@ -1801,7 +1836,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Read the Opponent",
-      "text_markdown": "Read the Opponent"
+      "text_markdown": "Read the Opponent",
+      "tts": {
+        "text": "Read the Opponent",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-116",
@@ -1957,7 +1997,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Anticipation",
-      "text_markdown": "Anticipation"
+      "text_markdown": "Anticipation",
+      "tts": {
+        "text": "Anticipation",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-126",
@@ -2081,7 +2126,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Positioning",
-      "text_markdown": "Positioning"
+      "text_markdown": "Positioning",
+      "tts": {
+        "text": "Positioning",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-134",
@@ -2269,7 +2319,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Picture in Your Head",
-      "text_markdown": "The Picture in Your Head"
+      "text_markdown": "The Picture in Your Head",
+      "tts": {
+        "text": "The Picture in Your Head",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch02-146",
@@ -2533,7 +2588,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Stepping Up",
-      "text_markdown": "Stepping Up"
+      "text_markdown": "Stepping Up",
+      "tts": {
+        "text": "Stepping Up",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-163",
@@ -2689,7 +2749,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Intercepting Passes",
-      "text_markdown": "Intercepting Passes"
+      "text_markdown": "Intercepting Passes",
+      "tts": {
+        "text": "Intercepting Passes",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-173",
@@ -2893,7 +2958,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Tackling Clean",
-      "text_markdown": "Tackling Clean"
+      "text_markdown": "Tackling Clean",
+      "tts": {
+        "text": "Tackling Clean",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-186",
@@ -3081,7 +3151,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Clearing Danger",
-      "text_markdown": "Clearing Danger"
+      "text_markdown": "Clearing Danger",
+      "tts": {
+        "text": "Clearing Danger",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-198",
@@ -3237,7 +3312,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Stay Calm",
-      "text_markdown": "Stay Calm"
+      "text_markdown": "Stay Calm",
+      "tts": {
+        "text": "Stay Calm",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-208",
@@ -3425,7 +3505,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Being the Wall",
-      "text_markdown": "Being the Wall"
+      "text_markdown": "Being the Wall",
+      "tts": {
+        "text": "Being the Wall",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-220",
@@ -3721,7 +3806,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Look Up Immediately",
-      "text_markdown": "Look Up Immediately"
+      "text_markdown": "Look Up Immediately",
+      "tts": {
+        "text": "Look Up Immediately",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-239",
@@ -3925,7 +4015,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Long Ball to the Wing",
-      "text_markdown": "The Long Ball to the Wing"
+      "text_markdown": "The Long Ball to the Wing",
+      "tts": {
+        "text": "The Long Ball to the Wing",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-252",
@@ -4097,7 +4192,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Through Ball",
-      "text_markdown": "The Through Ball"
+      "text_markdown": "The Through Ball",
+      "tts": {
+        "text": "The Through Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-263",
@@ -4317,7 +4417,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Short Ball",
-      "text_markdown": "The Short Ball"
+      "text_markdown": "The Short Ball",
+      "tts": {
+        "text": "The Short Ball",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-277",
@@ -4425,7 +4530,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Reading the Counter-Attack",
-      "text_markdown": "Reading the Counter-Attack"
+      "text_markdown": "Reading the Counter-Attack",
+      "tts": {
+        "text": "Reading the Counter-Attack",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-284",
@@ -4677,7 +4787,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Your Superpower",
-      "text_markdown": "Your Superpower"
+      "text_markdown": "Your Superpower",
+      "tts": {
+        "text": "Your Superpower",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-300",
@@ -5005,7 +5120,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Moving With the Team",
-      "text_markdown": "Moving With the Team"
+      "text_markdown": "Moving With the Team",
+      "tts": {
+        "text": "Moving With the Team",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-321",
@@ -5145,7 +5265,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Be a Passing Option",
-      "text_markdown": "Be a Passing Option"
+      "text_markdown": "Be a Passing Option",
+      "tts": {
+        "text": "Be a Passing Option",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-330",
@@ -5317,7 +5442,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Overlapping Runs",
-      "text_markdown": "Overlapping Runs"
+      "text_markdown": "Overlapping Runs",
+      "tts": {
+        "text": "Overlapping Runs",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-341",
@@ -5521,7 +5651,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Scoring Goals",
-      "text_markdown": "Scoring Goals"
+      "text_markdown": "Scoring Goals",
+      "tts": {
+        "text": "Scoring Goals",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-354",
@@ -5709,7 +5844,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Sprint Back",
-      "text_markdown": "The Sprint Back"
+      "text_markdown": "The Sprint Back",
+      "tts": {
+        "text": "The Sprint Back",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-366",
@@ -5945,7 +6085,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Knowing When to Stay",
-      "text_markdown": "Knowing When to Stay"
+      "text_markdown": "Knowing When to Stay",
+      "tts": {
+        "text": "Knowing When to Stay",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-381",
@@ -6053,7 +6198,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Balance",
-      "text_markdown": "The Balance"
+      "text_markdown": "The Balance",
+      "tts": {
+        "text": "The Balance",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch05-388",
@@ -6269,7 +6419,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Talking on the Field",
-      "text_markdown": "Talking on the Field"
+      "text_markdown": "Talking on the Field",
+      "tts": {
+        "text": "Talking on the Field",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-402",
@@ -6489,7 +6644,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Positioning Your Defenders",
-      "text_markdown": "Positioning Your Defenders"
+      "text_markdown": "Positioning Your Defenders",
+      "tts": {
+        "text": "Positioning Your Defenders",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-416",
@@ -6661,7 +6821,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Warning About Runners",
-      "text_markdown": "Warning About Runners"
+      "text_markdown": "Warning About Runners",
+      "tts": {
+        "text": "Warning About Runners",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-427",
@@ -6849,7 +7014,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Encouraging Your Teammates",
-      "text_markdown": "Encouraging Your Teammates"
+      "text_markdown": "Encouraging Your Teammates",
+      "tts": {
+        "text": "Encouraging Your Teammates",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-439",
@@ -7053,7 +7223,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Calm Leadership",
-      "text_markdown": "Calm Leadership"
+      "text_markdown": "Calm Leadership",
+      "tts": {
+        "text": "Calm Leadership",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-452",
@@ -7209,7 +7384,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Leading by Example",
-      "text_markdown": "Leading by Example"
+      "text_markdown": "Leading by Example",
+      "tts": {
+        "text": "Leading by Example",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-462",
@@ -7457,7 +7637,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Defending Corner Kicks",
-      "text_markdown": "Defending Corner Kicks"
+      "text_markdown": "Defending Corner Kicks",
+      "tts": {
+        "text": "Defending Corner Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-478",
@@ -7645,7 +7830,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Defending Free Kicks",
-      "text_markdown": "Defending Free Kicks"
+      "text_markdown": "Defending Free Kicks",
+      "tts": {
+        "text": "Defending Free Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-490",
@@ -7753,7 +7943,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Goal Kicks for Your Team",
-      "text_markdown": "Goal Kicks for Your Team"
+      "text_markdown": "Goal Kicks for Your Team",
+      "tts": {
+        "text": "Goal Kicks for Your Team",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-497",
@@ -7941,7 +8136,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Attacking Corner Kicks",
-      "text_markdown": "Attacking Corner Kicks"
+      "text_markdown": "Attacking Corner Kicks",
+      "tts": {
+        "text": "Attacking Corner Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-509",
@@ -8097,7 +8297,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Attacking Free Kicks",
-      "text_markdown": "Attacking Free Kicks"
+      "text_markdown": "Attacking Free Kicks",
+      "tts": {
+        "text": "Attacking Free Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-519",
@@ -8205,7 +8410,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Restarts Are Opportunities",
-      "text_markdown": "Restarts Are Opportunities"
+      "text_markdown": "Restarts Are Opportunities",
+      "tts": {
+        "text": "Restarts Are Opportunities",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-526",
@@ -8341,7 +8551,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Staying Calm Under Pressure",
-      "text_markdown": "Staying Calm Under Pressure"
+      "text_markdown": "Staying Calm Under Pressure",
+      "tts": {
+        "text": "Staying Calm Under Pressure",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-535",
@@ -8593,7 +8808,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Making Decisions",
-      "text_markdown": "Making Decisions"
+      "text_markdown": "Making Decisions",
+      "tts": {
+        "text": "Making Decisions",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-551",
@@ -8893,7 +9113,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Owning Mistakes",
-      "text_markdown": "Owning Mistakes"
+      "text_markdown": "Owning Mistakes",
+      "tts": {
+        "text": "Owning Mistakes",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-570",
@@ -9161,7 +9386,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Confidence Without Arrogance",
-      "text_markdown": "Confidence Without Arrogance"
+      "text_markdown": "Confidence Without Arrogance",
+      "tts": {
+        "text": "Confidence Without Arrogance",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-587",
@@ -9413,7 +9643,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "The Joy of Seeing",
-      "text_markdown": "The Joy of Seeing"
+      "text_markdown": "The Joy of Seeing",
+      "tts": {
+        "text": "The Joy of Seeing",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-603",
@@ -9505,7 +9740,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "You Are the Sweeper",
-      "text_markdown": "You Are the Sweeper"
+      "text_markdown": "You Are the Sweeper",
+      "tts": {
+        "text": "You Are the Sweeper",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-609",

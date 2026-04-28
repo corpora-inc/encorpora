@@ -1,13 +1,27 @@
 {
   "book_id": "pack",
   "language": "da",
-  "timestamp": "2026-04-19T23:04:29.071996+00:00",
-  "segments_total": 565,
-  "segments_first_pass": 446,
-  "segments_converged_by_retry": 79,
-  "segments_plateau_stopped": 40,
-  "total_retries": 249,
-  "error_distribution": {},
+  "timestamp": "2026-04-21T17:07:18.803295+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 476,
+  "segments_converged_by_retry": 86,
+  "segments_plateau_stopped": 51,
+  "total_retries": 286,
+  "error_distribution": {
+    "trailing_silence": 58,
+    "tail_energy": 28,
+    "tail_spike": 17,
+    "transcription_mismatch": 14,
+    "hard_ending": 6,
+    "first_word_weak": 3
+  },
+  "phase_timings": {
+    "tts": 154.7844169139862,
+    "align": 48.22718858718872,
+    "validate": 24.69919466972351,
+    "trim": 0.4234046936035156,
+    "master": 7.457958936691284
+  },
   "worst_segments": [
     {
       "id": "ch04-287",
@@ -16,6 +30,7 @@
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Modstandernes spillere er fanget højt oppe på banen."
     },
     {
@@ -25,6 +40,7 @@
       "best_attempt": 6,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Dine holdkammerater stoler på dig."
     },
     {
@@ -34,6 +50,7 @@
       "best_attempt": 3,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du forudser afleveringens retning."
     },
     {
@@ -43,6 +60,7 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Forsvarsspillerne rykker op i angrebshalvdelen."
     },
     {
@@ -52,6 +70,7 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du advarer dine holdkammerater om løbere."
     },
     {
@@ -61,6 +80,7 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Mange mål i ungdomsfodbold kommer fra dødboldssituationer."
     },
     {
@@ -70,6 +90,7 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Bolden hopper rundt i dit felt."
     },
     {
@@ -79,6 +100,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Angriberne vender ryggen til dig."
     },
     {
@@ -88,6 +110,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Forestil dig formationen."
     },
     {
@@ -97,6 +120,7 @@
       "best_attempt": 4,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Når en ricochet springer løs, samler du bolden op."
     },
     {
@@ -106,6 +130,7 @@
       "best_attempt": 4,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Brug den korte bold, når det andet hold presser højt og efterlader rum bag deres"
     },
     {
@@ -115,6 +140,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Angriberne ser mod modstanderens mål."
     },
     {
@@ -124,6 +150,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Sene råb efterlader forsvarsspillere i panik."
     },
     {
@@ -133,7 +160,103 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Når en forsvarsspiller mister bolden, dæk rummet."
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 5,
+      "best_quality_score": 8.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.7579886996534035,
+            "exaggeration": 0.46147024914345336,
+            "temperature": 0.6266007848786089,
+            "top_p": 1.0,
+            "min_p": 0.14144149445266455,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.49052764066081966,
+            "exaggeration": 0.0,
+            "temperature": 0.32561291017433647,
+            "top_p": 0.7640910301888095,
+            "min_p": 0.18059731717340546,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4239296812837088,
+            "exaggeration": 0.4147452296649514,
+            "temperature": 0.5372200004032976,
+            "top_p": 0.7286729057973345,
+            "min_p": 0.19621652325374025,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5442489914425906,
+            "temperature": 0.12358065581222205,
+            "top_p": 0.7597861897488807,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Antecipation"
     },
     {
       "id": "ch01-025",
@@ -142,6 +265,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Forsvarsspillerne har øjnene på bolden."
     },
     {
@@ -151,6 +275,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du opsnapper afleveringer gennem midten."
     },
     {
@@ -160,6 +285,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Din anden opgave er angreb."
     },
     {
@@ -169,6 +295,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Du læser modstanderens kropssprog."
     },
     {
@@ -178,16 +305,8 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Når du forudser korrekt, når du bolden før angriberen."
-    },
-    {
-      "id": "ch03-177",
-      "attempts": 4,
-      "best_quality_score": 2.0,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "Du ser modstanderens kropsform."
     }
   ]
 }

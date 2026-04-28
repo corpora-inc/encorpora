@@ -1,0 +1,2511 @@
+{
+  "book_id": "pack",
+  "language": "ru",
+  "timestamp": "2026-04-26T04:49:15.271574+00:00",
+  "segments_total": 611,
+  "segments_first_pass": 506,
+  "segments_converged_by_retry": 79,
+  "segments_plateau_stopped": 26,
+  "total_retries": 238,
+  "error_distribution": {
+    "trailing_silence": 193,
+    "first_word_weak": 185,
+    "tail_energy": 94,
+    "transcription_mismatch": 34,
+    "hard_ending": 24,
+    "min_trailing_silence": 18,
+    "pre_speech_spike": 17,
+    "stacked_words": 17,
+    "truncated_last_word": 17,
+    "final_word_weak": 9,
+    "post_speech_pop": 2,
+    "tail_spike": 2
+  },
+  "phase_timings": {
+    "tts": 2236.9134159088135,
+    "align": 578.9450433254242,
+    "validate": 424.43042635917664,
+    "trim": 8.360480070114136,
+    "master": 150.00406432151794
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 180,
+      "passed": 167,
+      "rate": 0.9277777777777778
+    },
+    "medium_30_80": {
+      "total": 370,
+      "passed": 295,
+      "rate": 0.7972972972972973
+    },
+    "long_80_plus": {
+      "total": 61,
+      "passed": 44,
+      "rate": 0.7213114754098361
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-333",
+      "attempts": 16,
+      "best_quality_score": 12.0,
+      "best_attempt": 10,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7453309087900921,
+            "exaggeration": 0.15708566536940327,
+            "temperature": 0.5111043602296732,
+            "top_p": 0.7424416077571714,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.5274183891060087,
+            "exaggeration": 0.2789214349796485,
+            "temperature": 0.19870549927978193,
+            "top_p": 0.726103980263819,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7885940058572254,
+            "exaggeration": 0.5762586327720478,
+            "temperature": 0.626262378509768,
+            "top_p": 0.9840553693808236,
+            "min_p": 0.1528700217194294,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4823747777229864,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.01677290796263728,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.17560704654478632,
+            "exaggeration": 0.6455796657321096,
+            "temperature": 0.7337672121781902,
+            "top_p": 0.8329777303279335,
+            "min_p": 0.2925004329265086,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7035451149324707,
+            "exaggeration": 0.0,
+            "temperature": 0.2673513622392655,
+            "top_p": 0.8038440790725205,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.3518627014252148,
+            "exaggeration": 0.17735242306365434,
+            "temperature": 0.38616597405333203,
+            "top_p": 0.8229152539801426,
+            "min_p": 0.17592799848538096,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.619439433542199,
+            "temperature": 0.6178389137972973,
+            "top_p": 0.8507861490690762,
+            "min_p": 0.23567545189833275,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.4183158019457083,
+            "exaggeration": 0.820133324759013,
+            "temperature": 0.5655208675780111,
+            "top_p": 0.9537510830721848,
+            "min_p": 0.07920275609787772,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6003373315767073,
+            "temperature": 0.9850963229178662,
+            "top_p": 0.7609893954863491,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.032866110651047775,
+            "exaggeration": 0.8967261903816759,
+            "temperature": 0.9588513263848398,
+            "top_p": 1.0,
+            "min_p": 0.04177245122313408,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.4152178106910956,
+            "exaggeration": 0.48584428377458777,
+            "temperature": 0.9118810198562655,
+            "top_p": 0.835688188489593,
+            "min_p": 0.15759222555870658,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.5642301957877307,
+            "temperature": 0.7382675278439372,
+            "top_p": 0.9420636249644332,
+            "min_p": 0.20511743284585857,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.19675026491745806,
+            "exaggeration": 0.540123689335867,
+            "temperature": 0.6239479992233342,
+            "top_p": 0.8698169389809374,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.38071312350686276,
+            "exaggeration": 0.6582900146132107,
+            "temperature": 0.9791802737399975,
+            "top_p": 1.0,
+            "min_p": 0.3230617741719858,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Ты получаешь мяч в лучшей позиции, чем та, с которой начинал.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-535",
+      "attempts": 9,
+      "best_quality_score": 120.0,
+      "best_attempt": 3,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.5952213934357264,
+            "exaggeration": 0.4987716964796799,
+            "temperature": 0.7336497485213334,
+            "top_p": 0.9160157514506747,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "pre_speech_spike"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.33104497585995873,
+            "exaggeration": 0.41693667220594166,
+            "temperature": 0.1505799853899109,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.7604585507273816,
+            "exaggeration": 0.35082994380682625,
+            "temperature": 0.9484188386178838,
+            "top_p": 0.8663440952615467,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.8991379486972122,
+            "exaggeration": 0.08098434765767593,
+            "temperature": 0.1576505444586122,
+            "top_p": 1.0,
+            "min_p": 0.03465076487191279,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.544910766242092,
+            "exaggeration": 0.679771977133842,
+            "temperature": 0.2564987959619742,
+            "top_p": 0.9722647279198806,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "pre_speech_spike"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.5557856569153924,
+            "exaggeration": 0.2805913468545491,
+            "temperature": 0.05,
+            "top_p": 0.9936332878127029,
+            "min_p": 0.1739877224150764,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.1969086484227383,
+            "exaggeration": 0.22929400698232966,
+            "temperature": 0.6789702850004515,
+            "top_p": 0.6577512249400712,
+            "min_p": 0.12368900841811839,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7700944538319614,
+            "exaggeration": 0.3249731819589929,
+            "temperature": 0.4837567773258469,
+            "top_p": 0.7376332963715823,
+            "min_p": 0.11008448038413052,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 123,
+      "text_preview": "Каждый нападающий в истории футбола пробивал мимо ворот, попадал в перекладину и",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-321",
+      "attempts": 8,
+      "best_quality_score": 12.0,
+      "best_attempt": 2,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7877085768369197,
+            "exaggeration": 0.16167809055945198,
+            "temperature": 0.5935679294419409,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.3083951179384945,
+            "exaggeration": 0.16186204188490633,
+            "temperature": 0.4403773216737143,
+            "top_p": 1.0,
+            "min_p": 0.237418608025508,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6950827388507261,
+            "exaggeration": 0.49821325264852195,
+            "temperature": 0.4686950085114576,
+            "top_p": 0.7427169634496842,
+            "min_p": 0.16528461372269168,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9951126214988484,
+            "exaggeration": 0.09853633437544174,
+            "temperature": 0.17160343944502054,
+            "top_p": 0.8084759489993403,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5360558568806338,
+            "exaggeration": 0.33059873983640115,
+            "temperature": 0.5555886635147194,
+            "top_p": 0.9711376027805126,
+            "min_p": 0.07984656522786385,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5227611229990341,
+            "exaggeration": 0.02257930273963185,
+            "temperature": 0.09203865822049581,
+            "top_p": 0.896287694198312,
+            "min_p": 0.2907472320639837,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.4172683955279709,
+            "exaggeration": 0.2448655915613091,
+            "temperature": 0.5468504304168791,
+            "top_p": 0.9413479484990868,
+            "min_p": 0.34461054265799174,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "У каждого нападающего есть зона, но все три зоны перекрываются.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-379",
+      "attempts": 8,
+      "best_quality_score": 10.0,
+      "best_attempt": 2,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.9888983766058769,
+            "min_p": 0.30996202684635354,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.7089200005226444,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6806354110239499,
+            "min_p": 0.25829515417455573,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.9615281740577668,
+            "min_p": 0.16193401031121477,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.23650834867586953,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6806644711916052,
+            "min_p": 0.28812657507544526,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.634796716853456,
+            "min_p": 0.16010975644620443,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Ты празднуешь гол партнера так же громко, как и свой собственный.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-148",
+      "attempts": 7,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9570007588690572,
+            "exaggeration": 0.4550650413144415,
+            "temperature": 0.611418505093252,
+            "top_p": 0.7963234610833111,
+            "min_p": 0.10872937628202647,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4316512855855529,
+            "exaggeration": 0.08825281835269688,
+            "temperature": 0.16602107600545146,
+            "top_p": 0.8064627659592855,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4932761077578678,
+            "exaggeration": 0.8050779504334831,
+            "temperature": 0.855422310643356,
+            "top_p": 0.776391917723309,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8394142842309157,
+            "exaggeration": 0.4527136551368153,
+            "temperature": 0.05,
+            "top_p": 0.9753921558840275,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3321826986689159,
+            "exaggeration": 0.30040409934323775,
+            "temperature": 0.2557160325383358,
+            "top_p": 0.7002262548902713,
+            "min_p": 0.24387340690191814,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.540541941263103,
+            "exaggeration": 0.2869649184988434,
+            "temperature": 0.28717817571514115,
+            "top_p": 0.6981073606972157,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Защитник, который постоянно гонится за вами, в конце концов потеряет вас.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-174",
+      "attempts": 7,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7515810933543174,
+            "exaggeration": 0.3752532816478271,
+            "temperature": 0.48970147079477994,
+            "top_p": 0.8812521153074413,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.642215621501611,
+            "exaggeration": 0.13554938262588767,
+            "temperature": 0.26642503659184746,
+            "top_p": 0.8514242471569011,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.4780066480233521,
+            "exaggeration": 0.3752991830254177,
+            "temperature": 0.8015235697276033,
+            "top_p": 0.8260504574195957,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.7536281248598318,
+            "exaggeration": 0.22705644186495832,
+            "temperature": 0.05,
+            "top_p": 0.689926739887294,
+            "min_p": 0.12399549162676246,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.621266641478389,
+            "exaggeration": 0.7170912990516309,
+            "temperature": 0.4619741140903285,
+            "top_p": 1.0,
+            "min_p": 0.02156580131459271,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7004185825323886,
+            "exaggeration": 0.0,
+            "temperature": 0.12467370054437435,
+            "top_p": 0.909618194975861,
+            "min_p": 0.24721735911872142,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 119,
+      "text_preview": "Нападающий, который принимает мяч с открытым корпусом, может видеть ворота, защи",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-327",
+      "attempts": 7,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9312018758383791,
+            "exaggeration": 0.28326633563560816,
+            "temperature": 0.3509168624873832,
+            "top_p": 0.7692798843327942,
+            "min_p": 0.046019102247401716,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.47630162609470034,
+            "exaggeration": 0.11466216952774244,
+            "temperature": 0.4248849353608202,
+            "top_p": 0.9019273511819061,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7445327795112372,
+            "exaggeration": 0.46987528493244585,
+            "temperature": 0.5775786876843797,
+            "top_p": 0.8956258342334497,
+            "min_p": 0.0005262933107420265,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.8847110867145886,
+            "exaggeration": 0.41983613554481836,
+            "temperature": 0.18638188378603265,
+            "top_p": 0.9451977989630647,
+            "min_p": 0.296058744508355,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5181854639385672,
+            "exaggeration": 0.7334746940563455,
+            "temperature": 0.2762699694657514,
+            "top_p": 0.7229208577237978,
+            "min_p": 0.03618925430627015,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.911005847717865,
+            "exaggeration": 0.0,
+            "temperature": 0.22056271034182676,
+            "top_p": 0.9895871679254179,
+            "min_p": 0.32814916227478197,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Ты можешь удерживать позицию, чтобы растянуть защиту по ширине.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-056",
+      "attempts": 6,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.6386406905721171,
+            "exaggeration": 0.23549155753942164,
+            "temperature": 0.5060789726377529,
+            "top_p": 0.6455276297020758,
+            "min_p": 0.047663784992755615,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.4880466139683251,
+            "exaggeration": 0.42075345798888625,
+            "temperature": 0.20456487165864684,
+            "top_p": 0.6696560403973972,
+            "min_p": 0.02977786923237488,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 57.0,
+          "params": {
+            "cfg_weight": 0.8041673506149515,
+            "exaggeration": 0.35157048919683936,
+            "temperature": 0.531227084557208,
+            "top_p": 0.7376284665450347,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7859900167310188,
+            "exaggeration": 0.12286829736585092,
+            "temperature": 0.2332340114759846,
+            "top_p": 0.6119030071058379,
+            "min_p": 0.17652973278915943,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.5667437755067647,
+            "exaggeration": 0.4013887555634956,
+            "temperature": 0.42687338751664217,
+            "top_p": 0.682887380823737,
+            "min_p": 0.24906920179434291,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "Отличный нападающий знает, когда бить по воротам, а когда пасовать.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-091",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8364624580799294,
+            "exaggeration": 0.15914758971769827,
+            "temperature": 0.740885292025061,
+            "top_p": 0.6285467775719069,
+            "min_p": 0.07943542034130516,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7409300584931692,
+            "exaggeration": 0.24026409149167616,
+            "temperature": 0.36310751260165497,
+            "top_p": 0.9165975493928799,
+            "min_p": 0.09382633183563391,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6661983926774333,
+            "exaggeration": 0.37751064942778245,
+            "temperature": 0.8406850067554774,
+            "top_p": 0.7896699765985268,
+            "min_p": 0.13382771731395718,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4900060371067039,
+            "temperature": 0.28429720592268426,
+            "top_p": 0.9233064616947608,
+            "min_p": 0.0,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6424013416994521,
+            "exaggeration": 0.4615708534277942,
+            "temperature": 0.5286337128071527,
+            "top_p": 0.6381605969408765,
+            "min_p": 0.2801904689684219,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 86,
+      "text_preview": "Защитник, который был слева от тебя пять секунд назад, возможно, уже сместился в",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-296",
+      "attempts": 6,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.7288841245057316,
+            "exaggeration": 0.45422155300944644,
+            "temperature": 0.2999550775345257,
+            "top_p": 0.791165936194755,
+            "min_p": 0.3194588009931444,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.6881135810720325,
+            "exaggeration": 0.0,
+            "temperature": 0.21100262373838613,
+            "top_p": 0.796033950513321,
+            "min_p": 0.3360945872015282,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.3776033527527283,
+            "exaggeration": 0.8288415649576595,
+            "temperature": 0.6878824400851284,
+            "top_p": 0.9493370692832493,
+            "min_p": 0.055327634696856726,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.7588458853492408,
+            "exaggeration": 0.2242949744528206,
+            "temperature": 0.173808209463525,
+            "top_p": 0.7910726831664324,
+            "min_p": 0.16727445606920463,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.38443894341870494,
+            "exaggeration": 0.34578761098167626,
+            "temperature": 0.6254222911682353,
+            "top_p": 0.8711219338244179,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Вратарю приходится делать сейв.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-350",
+      "attempts": 6,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.6068935090879016,
+            "exaggeration": 0.44892711892858433,
+            "temperature": 0.5989140833312842,
+            "top_p": 0.6763529483626163,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.32599895220248615,
+            "exaggeration": 0.23070279192226123,
+            "temperature": 0.3231592758244879,
+            "top_p": 0.6728309891152269,
+            "min_p": 0.1539755764469177,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.5474973779252081,
+            "exaggeration": 0.5363968144802147,
+            "temperature": 0.6411727325112448,
+            "top_p": 0.9640341355226596,
+            "min_p": 0.3328182211112093,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.7697241842392784,
+            "exaggeration": 0.3176179112319771,
+            "temperature": 0.05048126182070034,
+            "top_p": 0.6574856374262497,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.3350731721967625,
+            "exaggeration": 0.41882471206926447,
+            "temperature": 0.6427186275889383,
+            "top_p": 0.6526712870874323,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "Приходи одновременно с мячом.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-361",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6550222795261551,
+            "exaggeration": 0.5278580980358524,
+            "temperature": 0.29240401450210873,
+            "top_p": 0.8671647995107876,
+            "min_p": 0.15135118860459332,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6102593055369085,
+            "exaggeration": 0.3420064534742725,
+            "temperature": 0.2519573186860478,
+            "top_p": 1.0,
+            "min_p": 0.30572233437561713,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6214709392400667,
+            "exaggeration": 0.6908980317414188,
+            "temperature": 0.8511638550645437,
+            "top_p": 1.0,
+            "min_p": 0.29752390625934866,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2362815574094106,
+            "temperature": 0.10894998849412674,
+            "top_p": 0.6207997113854524,
+            "min_p": 0.1415928174394723,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20435199321874387,
+            "exaggeration": 0.5971805694357868,
+            "temperature": 0.6560784279605096,
+            "top_p": 0.7640330555170987,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 77,
+      "text_preview": "Верь, что твое движение имеет значение, даже когда мяч уходит в другое место.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-394",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6516227861320779,
+            "exaggeration": 0.08733471339408594,
+            "temperature": 0.30282038290266683,
+            "top_p": 0.6843057338744258,
+            "min_p": 0.16858992314852425,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5368925993787346,
+            "exaggeration": 0.24852719803278156,
+            "temperature": 0.4652837032637553,
+            "top_p": 0.6839573407348687,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6911385035414912,
+            "exaggeration": 0.38821114411995267,
+            "temperature": 0.642838621334673,
+            "top_p": 0.68836601631819,
+            "min_p": 0.034282734109605834,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9742857642630703,
+            "exaggeration": 0.22239680110010385,
+            "temperature": 0.3755141943450699,
+            "top_p": 0.660584761914151,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.23664982788138927,
+            "exaggeration": 0.6371292560266931,
+            "temperature": 0.6401205273979891,
+            "top_p": 0.7912740573007784,
+            "min_p": 0.13616495335532927,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Вратарь, который чувствует приближение форварда, будет торопиться с ударом.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-418",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8634638520636362,
+            "exaggeration": 0.31345061978921523,
+            "temperature": 0.5093726516285093,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.500391422871044,
+            "exaggeration": 0.44578135547715875,
+            "temperature": 0.22403038919778362,
+            "top_p": 0.8192459352866237,
+            "min_p": 0.08291724385342411,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3713262094903276,
+            "exaggeration": 0.7689522646331073,
+            "temperature": 0.7228650829516776,
+            "top_p": 0.8984615610703772,
+            "min_p": 0.07321003035450144,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8509251881393132,
+            "exaggeration": 0.1168834265009906,
+            "temperature": 0.11165625040935634,
+            "top_p": 0.9311221842444992,
+            "min_p": 0.34347812569075564,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.48059720012811835,
+            "exaggeration": 0.6766142140405139,
+            "temperature": 0.26836976255149975,
+            "top_p": 0.9754767513590321,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 101,
+      "text_preview": "Нападающий, который возвращается в оборону, показывает всей команде, что каждый ",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-481",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5847561172519745,
+            "exaggeration": 0.07596526792247282,
+            "temperature": 0.563994211308507,
+            "top_p": 0.8732851978143872,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6683538909825949,
+            "exaggeration": 0.09565466438519021,
+            "temperature": 0.4009009062337977,
+            "top_p": 0.8229392527371604,
+            "min_p": 0.2592844425410955,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7953984924872406,
+            "exaggeration": 0.6897081639235653,
+            "temperature": 0.8748459094173979,
+            "top_p": 1.0,
+            "min_p": 0.24156129427748793,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3678406917571998,
+            "temperature": 0.39201582224442544,
+            "top_p": 0.718913115884276,
+            "min_p": 0.043941380629092336,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.29713133869935565,
+            "exaggeration": 0.3168835527516656,
+            "temperature": 0.2653748503079144,
+            "top_p": 1.0,
+            "min_p": 0.2022973600049103,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 119,
+      "text_preview": "Навес, который пролетит над всеми игроками в центре, может застать вас ожидающим",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-526",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.69
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.9215729642147654,
+            "min_p": 0.06904644834481835,
+            "repetition_penalty": 1.69
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.8989494436566454,
+            "min_p": 0.0,
+            "repetition_penalty": 1.69
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6272689518429957,
+            "min_p": 0.025668016914907638,
+            "repetition_penalty": 1.69
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.8331526742288938,
+            "min_p": 0.07337244895520526,
+            "repetition_penalty": 1.69
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.6642014838879617,
+            "min_p": 0.06706132742304641,
+            "repetition_penalty": 1.69
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "Игрок, который больше всех хочет мяч — это игрок, который забивает.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-555",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.13962863362110506,
+            "temperature": 0.6078659654721141,
+            "top_p": 1.0,
+            "min_p": 0.10197808529147076,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6285600572331542,
+            "exaggeration": 0.3209709123702396,
+            "temperature": 0.08017114195507635,
+            "top_p": 1.0,
+            "min_p": 0.14269787381007773,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6658977228237122,
+            "exaggeration": 0.4301816169444933,
+            "temperature": 0.8089675896448683,
+            "top_p": 0.6540934187308615,
+            "min_p": 0.11080987174073745,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2907066140454757,
+            "temperature": 0.05,
+            "top_p": 0.6403677186590782,
+            "min_p": 0.18412475026055522,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.48629564275194226,
+            "exaggeration": 0.3491666081314022,
+            "temperature": 0.6575782249848924,
+            "top_p": 0.7325865953085827,
+            "min_p": 0.05664535790234712,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 101,
+      "text_preview": "Нападающий, который теряет концентрацию во втором тайме, упускает шанс, который ",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-596",
+      "attempts": 6,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.8220949267880415,
+            "exaggeration": 0.4272014071727513,
+            "temperature": 0.3214713890594824,
+            "top_p": 0.6289010199867396,
+            "min_p": 0.10455354338422415,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.6532197820044571,
+            "exaggeration": 0.1470223609341666,
+            "temperature": 0.28634970737952997,
+            "top_p": 0.6720955970039681,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.739476878117221,
+            "exaggeration": 0.7037289780130012,
+            "temperature": 0.84162863350167,
+            "top_p": 1.0,
+            "min_p": 0.3218638152073696,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.8630040630472731,
+            "exaggeration": 0.2190292500320114,
+            "temperature": 0.3056356120307732,
+            "top_p": 0.9967364968443926,
+            "min_p": 0.14438449745638451,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.37216350935976555,
+            "exaggeration": 0.3365158819434279,
+            "temperature": 0.38336303427251767,
+            "top_p": 0.6113815910489327,
+            "min_p": 0.10515484502065323,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Свипер послал идеальный мяч вперёд.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3,
+            "temperature": 0.4,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.37102615487517876,
+            "temperature": 0.4,
+            "top_p": 0.6427084731830142,
+            "min_p": 0.04513412469606712,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.22300334444963948,
+            "temperature": 0.4,
+            "top_p": 0.6723282880863343,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.6980663823257476,
+            "temperature": 0.4,
+            "top_p": 0.8162328341160608,
+            "min_p": 0.2841600553584386,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.28900251498333535,
+            "temperature": 0.4,
+            "top_p": 0.7910320893307137,
+            "min_p": 0.301454231188651,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Нападающий, который может бить только одной ногой, предсказуем.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-452",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.06659278575141109,
+            "temperature": 0.5255344753252843,
+            "top_p": 0.8293436494527997,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.30237877511123823,
+            "exaggeration": 0.3786243887474728,
+            "temperature": 0.4168001576705006,
+            "top_p": 1.0,
+            "min_p": 0.2279659778509829,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.469198311529292,
+            "exaggeration": 0.8320628677350113,
+            "temperature": 0.5498715274161151,
+            "top_p": 0.668161742647722,
+            "min_p": 0.2396404808257114,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9204447592975478,
+            "exaggeration": 0.44460011024597684,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.21020049553016043,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Ты снова бежишь в спринте, когда команда отбивает мяч и атакует.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "tail_energy": {
+      "sample_size": 14,
+      "avg_delta": {
+        "cfg_weight": -0.126,
+        "temperature": 0.069,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 34,
+      "avg_delta": {
+        "cfg_weight": -0.076,
+        "temperature": 0.139,
+        "repetition_penalty": 0.0
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": 0.01,
+        "temperature": -0.001,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.054,
+        "temperature": 0.228,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.073,
+        "temperature": 0.223,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.073,
+        "temperature": 0.223,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.073,
+        "temperature": 0.223,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.146,
+        "temperature": 0.071,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": 0.025,
+        "temperature": 0.21,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

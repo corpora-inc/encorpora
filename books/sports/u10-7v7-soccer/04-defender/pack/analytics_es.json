@@ -1,0 +1,1716 @@
+{
+  "book_id": "pack",
+  "language": "es",
+  "timestamp": "2026-04-24T08:43:53.493574+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 527,
+  "segments_converged_by_retry": 27,
+  "segments_plateau_stopped": 3,
+  "total_retries": 163,
+  "error_distribution": {
+    "final_word_weak": 93,
+    "trailing_silence": 16,
+    "first_word_weak": 4,
+    "min_trailing_silence": 1
+  },
+  "phase_timings": {
+    "tts": 460.45435857772827,
+    "align": 151.9456751346588,
+    "validate": 18.570563316345215,
+    "trim": 0.2979438304901123,
+    "master": 6.329765319824219
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 113,
+      "passed": 109,
+      "rate": 0.9646017699115044
+    },
+    "medium_30_80": {
+      "total": 360,
+      "passed": 344,
+      "rate": 0.9555555555555556
+    },
+    "long_80_plus": {
+      "total": 84,
+      "passed": 74,
+      "rate": 0.8809523809523809
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-071",
+      "attempts": 29,
+      "best_quality_score": 0.0,
+      "best_attempt": 28,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8985350544858008,
+            "exaggeration": 0.5192630005333883,
+            "temperature": 0.7177739840258119,
+            "top_p": 0.6858795310083494,
+            "min_p": 0.32073350513592513,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.51747454249709,
+            "exaggeration": 0.030089892762421966,
+            "temperature": 0.08745807419071183,
+            "top_p": 0.9975104374280737,
+            "min_p": 0.19653041022011816,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6765430732265851,
+            "exaggeration": 0.3696258727014202,
+            "temperature": 0.6275709267747698,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.8060033150890678,
+            "exaggeration": 0.10273141027059801,
+            "temperature": 0.33407272404157323,
+            "top_p": 1.0,
+            "min_p": 0.16731360796051423,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.16570387591844438,
+            "exaggeration": 0.4888484165505242,
+            "temperature": 0.530371516991053,
+            "top_p": 0.6603587115062344,
+            "min_p": 0.33671812841475013,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5973188032078567,
+            "exaggeration": 0.10363312601111688,
+            "temperature": 0.1721396213194036,
+            "top_p": 0.6910107847944333,
+            "min_p": 0.05653614390441944,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.46633813372586713,
+            "exaggeration": 0.4980335193765355,
+            "temperature": 0.7525164375300293,
+            "top_p": 0.6074309866686749,
+            "min_p": 0.34180751663259235,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7200608842674099,
+            "exaggeration": 0.29270512754280104,
+            "temperature": 0.3583980988665232,
+            "top_p": 0.6819907013770166,
+            "min_p": 0.10412538114151801,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06760349769205543,
+            "exaggeration": 0.7879791738476285,
+            "temperature": 0.5500790012195134,
+            "top_p": 0.6015111678845217,
+            "min_p": 0.01885412574314113,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7175256339560081,
+            "temperature": 0.6172050171778409,
+            "top_p": 0.9435421080565649,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.37145471880671765,
+            "exaggeration": 0.49762314673338554,
+            "temperature": 0.8791642217544413,
+            "top_p": 0.6773122844220065,
+            "min_p": 0.21463151746074308,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34961556356752627,
+            "exaggeration": 0.684872401010179,
+            "temperature": 0.8301414793091837,
+            "top_p": 0.7917394984633694,
+            "min_p": 0.13956133342949642,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06271537466856025,
+            "exaggeration": 0.532637836307142,
+            "temperature": 0.8935815350000214,
+            "top_p": 1.0,
+            "min_p": 0.1891220559397234,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.042930966775029,
+            "exaggeration": 0.6532257858493578,
+            "temperature": 0.763295614695944,
+            "top_p": 0.8733412597854653,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20518348549768267,
+            "exaggeration": 0.9333937478014913,
+            "temperature": 0.5624941465663903,
+            "top_p": 1.0,
+            "min_p": 0.05401254850652651,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.36991775769982504,
+            "exaggeration": 0.6653604498378336,
+            "temperature": 0.940507124736667,
+            "top_p": 0.7854598354445872,
+            "min_p": 0.08845217138111602,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.06529084737730428,
+            "exaggeration": 0.7439049685028882,
+            "temperature": 0.6882080815153679,
+            "top_p": 0.6222469403406418,
+            "min_p": 0.11393405942757259,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8463532388364012,
+            "temperature": 0.6182419215774206,
+            "top_p": 0.9566760564381586,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7331424030225568,
+            "temperature": 0.8251024789614136,
+            "top_p": 0.8693441814438021,
+            "min_p": 0.21998650292410835,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.9055289481859188,
+            "temperature": 0.8421395295111656,
+            "top_p": 0.9187485711387275,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 21,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.44416328177989406,
+            "exaggeration": 0.6619871713150816,
+            "temperature": 0.7555866878018691,
+            "top_p": 0.829029510148044,
+            "min_p": 0.07599224271987756,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 22,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.42151352786895824,
+            "exaggeration": 0.880629152631824,
+            "temperature": 0.7365417310624531,
+            "top_p": 0.6388970275355128,
+            "min_p": 0.2851553893144336,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 23,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3324350197762054,
+            "exaggeration": 0.5649971418230781,
+            "temperature": 0.5625560030455243,
+            "top_p": 0.7181341611635743,
+            "min_p": 0.31828177141147374,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 24,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.22425398059667762,
+            "exaggeration": 0.7321034540337058,
+            "temperature": 0.613101785723654,
+            "top_p": 0.8991119852943352,
+            "min_p": 0.16213579600715913,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 25,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.04404830113185815,
+            "exaggeration": 0.9137213152354504,
+            "temperature": 1.0248249910115355,
+            "top_p": 0.6266364911753466,
+            "min_p": 0.1420310355046289,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 26,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.16484871111498522,
+            "exaggeration": 0.6054718133904896,
+            "temperature": 0.6671773579172207,
+            "top_p": 0.8738107962791067,
+            "min_p": 0.15937466522642066,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 27,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2754126507152981,
+            "exaggeration": 0.8840475846983175,
+            "temperature": 0.5913898178518711,
+            "top_p": 1.0,
+            "min_p": 0.04862869725441829,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 28,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.03214837302723417,
+            "exaggeration": 0.842574533576524,
+            "temperature": 0.8140725016044448,
+            "top_p": 0.8125700326689551,
+            "min_p": 0.24435788780702603,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Y tu equipo es mejor gracias a ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-248",
+      "attempts": 23,
+      "best_quality_score": 0.0,
+      "best_attempt": 22,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.814996760140652,
+            "exaggeration": 0.41093770403247937,
+            "temperature": 0.5748802524995702,
+            "top_p": 0.6680785475790707,
+            "min_p": 0.2677983215019514,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41357356106829857,
+            "exaggeration": 0.3605799696753977,
+            "temperature": 0.2666214718137555,
+            "top_p": 0.9395036285444782,
+            "min_p": 0.05226442755255342,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5147769665683923,
+            "exaggeration": 0.4578801087659902,
+            "temperature": 0.5676951327567117,
+            "top_p": 0.8167393027064835,
+            "min_p": 0.1736554538821082,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.31295180988031607,
+            "temperature": 0.44852062728199554,
+            "top_p": 0.8018966212620837,
+            "min_p": 0.13444120324594835,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.22413211870984223,
+            "exaggeration": 0.3020807164352223,
+            "temperature": 0.7258770760620543,
+            "top_p": 0.9169209162298224,
+            "min_p": 0.3244856836864213,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8096230437913343,
+            "exaggeration": 0.0,
+            "temperature": 0.10207543165315794,
+            "top_p": 0.8243988346089858,
+            "min_p": 0.10920136999869676,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.41810048196485194,
+            "exaggeration": 0.3320847732034962,
+            "temperature": 0.7603486006838132,
+            "top_p": 0.6978006093556507,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8539958455605424,
+            "exaggeration": 0.2812829917816165,
+            "temperature": 0.4182371157409099,
+            "top_p": 0.9194460235905684,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.13357063359038035,
+            "exaggeration": 0.8384725993765201,
+            "temperature": 0.5815757235919324,
+            "top_p": 1.0,
+            "min_p": 0.2227836693120813,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.38326351703214007,
+            "exaggeration": 0.6482992797540037,
+            "temperature": 0.8579756322080214,
+            "top_p": 0.7700836775079234,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3110144839065492,
+            "exaggeration": 0.5849777796458162,
+            "temperature": 0.7319410026378321,
+            "top_p": 0.6532534643470076,
+            "min_p": 0.08937869149055314,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.05310725299600061,
+            "exaggeration": 0.7902960680536757,
+            "temperature": 0.5855391558286636,
+            "top_p": 0.7564514237593838,
+            "min_p": 0.18381271746668873,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4013873317726477,
+            "exaggeration": 0.8498264778525728,
+            "temperature": 0.9238409060119372,
+            "top_p": 0.8108823961455607,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.20778348662370266,
+            "exaggeration": 0.7117382681936815,
+            "temperature": 0.9023403133149608,
+            "top_p": 0.6333273276515043,
+            "min_p": 0.27758186877408964,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.318300522396445,
+            "exaggeration": 0.6382321690157555,
+            "temperature": 0.8854273458746666,
+            "top_p": 0.9480047858181081,
+            "min_p": 0.13291241703699255,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.07914345042469467,
+            "exaggeration": 0.5040983921954991,
+            "temperature": 0.7137694940655579,
+            "top_p": 1.0,
+            "min_p": 0.17674819910977088,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.17085781540291378,
+            "exaggeration": 0.7417430711615981,
+            "temperature": 0.7972738763161981,
+            "top_p": 0.6100665165255181,
+            "min_p": 0.20354143375315117,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.42542142480829076,
+            "exaggeration": 0.9203973897699702,
+            "temperature": 0.6775858103724732,
+            "top_p": 1.0,
+            "min_p": 0.2782602484274781,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.017849447930288642,
+            "exaggeration": 0.8738989875780345,
+            "temperature": 0.567104425081992,
+            "top_p": 0.7406125507113135,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.28650359087104593,
+            "exaggeration": 0.67546555249272,
+            "temperature": 0.7323179868830829,
+            "top_p": 0.6684118764504365,
+            "min_p": 0.16208908491609866,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 21,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.012396964158714774,
+            "exaggeration": 0.4980412495852787,
+            "temperature": 0.6719835594010779,
+            "top_p": 0.8433771498427758,
+            "min_p": 0.27899028982885776,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 22,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.046258033616003946,
+            "exaggeration": 0.6612510603837175,
+            "temperature": 0.8928750431365922,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "Fíjate si algún delantero se escabulle detrás de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-111",
+      "attempts": 19,
+      "best_quality_score": 0.0,
+      "best_attempt": 18,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.590703369813413,
+            "exaggeration": 0.05688006869446538,
+            "temperature": 0.7470465271902658,
+            "top_p": 0.6606298280426373,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.46738290770497665,
+            "exaggeration": 0.43999597388755635,
+            "temperature": 0.2682366194322719,
+            "top_p": 0.8424954706930032,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6328998084054432,
+            "exaggeration": 0.6892712064176345,
+            "temperature": 0.544729665144592,
+            "top_p": 0.7814126521217366,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5419103674493673,
+            "temperature": 0.15302166274900325,
+            "top_p": 0.6002457049856623,
+            "min_p": 0.1286660980317195,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.49637790864022885,
+            "exaggeration": 0.3169863956298158,
+            "temperature": 0.6370387674529676,
+            "top_p": 1.0,
+            "min_p": 0.14438788242639186,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5662198403488412,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.7071618422822861,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2915969041594664,
+            "exaggeration": 0.26628199986851964,
+            "temperature": 0.7383878798482193,
+            "top_p": 0.7044072701646507,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3975325986081173,
+            "temperature": 0.4858636096687777,
+            "top_p": 0.7491074795026715,
+            "min_p": 0.32328693829797706,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.08258738268441584,
+            "exaggeration": 0.8929820392518196,
+            "temperature": 0.7122442932009039,
+            "top_p": 0.7048364144083679,
+            "min_p": 0.14608918488130065,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.24884121189729552,
+            "exaggeration": 0.5353301302488768,
+            "temperature": 0.9040113493736078,
+            "top_p": 0.6739152561388038,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.21455158824200377,
+            "exaggeration": 0.8053215802147178,
+            "temperature": 0.8044142372744918,
+            "top_p": 0.8213410535739245,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2430957815730626,
+            "exaggeration": 0.7849328780472797,
+            "temperature": 0.8187399246666496,
+            "top_p": 1.0,
+            "min_p": 0.08747400189422358,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7046348556697422,
+            "temperature": 0.7113337566535034,
+            "top_p": 1.0,
+            "min_p": 0.08251488265267756,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.04619142821827249,
+            "exaggeration": 0.6040079419619641,
+            "temperature": 1.0499323939553311,
+            "top_p": 0.75954629777623,
+            "min_p": 0.33515716114759175,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.36424822741975516,
+            "exaggeration": 0.8967163227512952,
+            "temperature": 0.6259590409940862,
+            "top_p": 0.9902076154768983,
+            "min_p": 0.24330708525796177,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.22364554514715268,
+            "exaggeration": 0.7160937214231041,
+            "temperature": 0.6664436933382221,
+            "top_p": 0.8288775969558507,
+            "min_p": 0.16602317036180217,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7420584023320442,
+            "temperature": 0.796570823854936,
+            "top_p": 0.9950630326513972,
+            "min_p": 0.31585529239165355,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.02951374054567346,
+            "exaggeration": 0.6332759549305718,
+            "temperature": 0.8591720244615912,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "El líbero puede ver a los jugadores que se escabullen detrás de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-119",
+      "attempts": 16,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 84,
+      "text_preview": "Cuando el balón regresa hacia tu propia portería, retrocede a tu posición defens",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-418",
+      "attempts": 14,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 52,
+      "text_preview": "Si el líbero dice \"regresa,\" regresa inmediatamente.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 13,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 47,
+      "text_preview": "Un equipo que no puede defender no puede ganar.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-526",
+      "attempts": 9,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 8,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6079567785781832,
+            "exaggeration": 0.3212770177746398,
+            "temperature": 0.3572791598584083,
+            "top_p": 0.9332843297962597,
+            "min_p": 0.2521434420711056,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.508799075925574,
+            "exaggeration": 0.010977643073633636,
+            "temperature": 0.1490226046299324,
+            "top_p": 0.7988690400377565,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8434396243686946,
+            "exaggeration": 0.5955889219845841,
+            "temperature": 0.8770168400297151,
+            "top_p": 0.8112299889992688,
+            "min_p": 0.23652704340968753,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.10611712155179343,
+            "temperature": 0.05,
+            "top_p": 0.9948243501626485,
+            "min_p": 0.056632851034141035,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4215051447226325,
+            "exaggeration": 0.367292427112472,
+            "temperature": 0.6284390913874569,
+            "top_p": 0.630706313538552,
+            "min_p": 0.11417016112766235,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.608819050153701,
+            "exaggeration": 0.3182624962547761,
+            "temperature": 0.05,
+            "top_p": 0.8134378706618456,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.140895344882144,
+            "exaggeration": 0.11951655761470048,
+            "temperature": 0.7775086183858116,
+            "top_p": 0.6729975339963126,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.9789997634669643,
+            "exaggeration": 0.5159252588582954,
+            "temperature": 0.46095082157739725,
+            "top_p": 1.0,
+            "min_p": 0.23582898630541685,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Mira al delantero cerca de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-155",
+      "attempts": 7,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 78,
+      "text_preview": "Quieres llegar equilibrado y de pie, no lanzándote hacia adelante sin control.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-387",
+      "attempts": 6,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 82,
+      "text_preview": "A medida que crezcas como jugador, aprenderás a hacer desmarques en superposició",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-521",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5199156713079749,
+            "temperature": 0.4057538020069853,
+            "top_p": 0.6015556351520608,
+            "min_p": 0.334397687792662,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.263873930076241,
+            "exaggeration": 0.0,
+            "temperature": 0.1883980949284405,
+            "top_p": 0.7097592207250109,
+            "min_p": 0.33071554026992367,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7900409097366607,
+            "exaggeration": 0.7854494842396926,
+            "temperature": 0.535068883685847,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.40489499550037467,
+            "temperature": 0.34531262419535547,
+            "top_p": 0.8511181426673048,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.16146148761333184,
+            "exaggeration": 0.36815276630222493,
+            "temperature": 0.7498667126418512,
+            "top_p": 0.6485613356615866,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 95,
+      "text_preview": "La parte más difícil de defender es mantener la concentración cuando el balón es",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-231",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 85,
+      "text_preview": "Cuando el balón está en el lado de tu compañero, deslízate hacia el centro del c",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-161",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6979325469408135,
+            "exaggeration": 0.2081086135524921,
+            "temperature": 0.6884667256597965,
+            "top_p": 0.8025118639767654,
+            "min_p": 0.3063258277526353,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6736386776231484,
+            "exaggeration": 0.07180278751815028,
+            "temperature": 0.2549854946991185,
+            "top_p": 0.7976527168223004,
+            "min_p": 0.23309715156653096,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7969037352800721,
+            "exaggeration": 0.7180951159316222,
+            "temperature": 0.8992531756217629,
+            "top_p": 0.6102057851675036,
+            "min_p": 0.0,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Si el delantero esquiva tu barrida, tú estás en el suelo y el delantero se fue.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 47,
+      "text_preview": "Tu equipo juega con una formación uno-dos-tres.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-114",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 132,
+      "text_preview": "El líbero puede decir \"corredor detrás de ti\" o \"muévete a la izquierda\" o \"sube",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-148",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8717485636753373,
+            "exaggeration": 0.20865002639408115,
+            "temperature": 0.34081208767471344,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7422233024987986,
+            "exaggeration": 0.054320524712485774,
+            "temperature": 0.15449012989459227,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "No te quedes quieto esperando a que el delantero venga a ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-151",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 74,
+      "text_preview": "Cuanto menos tiempo tiene el delantero, más difícil se vuelve su decisión.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-352",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 59,
+      "text_preview": "El otro equipo todavía piensa en su ataque, no en defender.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-489",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 81,
+      "text_preview": "Si el otro equipo despeja el balón, corre de vuelta a tu posición inmediatamente",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6103184840027323,
+            "exaggeration": 0.33406566189319903,
+            "temperature": 0.35181048244758817,
+            "top_p": 0.7148498929455347,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Juntos forman una barrera a lo ancho del campo.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-045",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 85,
+      "text_preview": "Cuando tu equipo logra una portería imbatida, las defensas merecen el reconocimi",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.076,
+        "temperature": 0.145,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

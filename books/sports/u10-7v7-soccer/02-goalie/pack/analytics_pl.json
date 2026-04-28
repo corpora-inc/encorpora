@@ -1,0 +1,443 @@
+{
+  "book_id": "pack",
+  "language": "pl",
+  "timestamp": "2026-04-22T19:10:03.340766+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 597,
+  "segments_converged_by_retry": 28,
+  "segments_plateau_stopped": 8,
+  "total_retries": 61,
+  "error_distribution": {
+    "trailing_silence": 11,
+    "final_word_weak": 7,
+    "transcription_mismatch": 3,
+    "first_word_weak": 2,
+    "hard_ending": 2,
+    "tail_energy": 1,
+    "stacked_words": 1,
+    "min_trailing_silence": 1
+  },
+  "phase_timings": {
+    "tts": 12.915417194366455,
+    "align": 5.224693059921265,
+    "validate": 0.9002461433410645,
+    "trim": 0.0106964111328125,
+    "master": 0.1997358798980713
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 191,
+      "passed": 177,
+      "rate": 0.9267015706806283
+    },
+    "medium_30_80": {
+      "total": 410,
+      "passed": 388,
+      "rate": 0.9463414634146341
+    },
+    "long_80_plus": {
+      "total": 32,
+      "passed": 32,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-060",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 23,
+      "text_preview": "Stoisz na palcach stóp.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-390",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 63,
+      "text_preview": "Obrona, po której piłka wraca do gry, nadal jest niebezpieczna.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-485",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Drużyna przeciwna ma rzut rożny.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-185",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 35,
+      "text_preview": "Jesteś obrońcą za ostatnim obrońcą.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-238",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 11,
+      "text_preview": "Rozmawiasz.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-263",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Wyobraź sobie, co widzi strzelec.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-453",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "Uderz piłkę czysto podbiciem.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-542",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9340597788650312,
+            "exaggeration": 0.1513505276200891,
+            "temperature": 0.6920398841088937,
+            "top_p": 0.6271377676393013,
+            "min_p": 0.15631714450028658,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6048418404787758,
+            "exaggeration": 0.11207716229253017,
+            "temperature": 0.06367999593805651,
+            "top_p": 0.7317772133325671,
+            "min_p": 0.0753536260160391,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 62.0,
+          "params": {
+            "cfg_weight": 0.6869525837062065,
+            "exaggeration": 0.7352121604109481,
+            "temperature": 0.8989543721867232,
+            "top_p": 0.9812465214180748,
+            "min_p": 0.12235060472769374,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Nawet dotknięcie piłki koniuszkiem palca może wypchnąć karnego na bok.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-549",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 43,
+      "text_preview": "Wskaż zawodników, którzy potrzebują krycia.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-383",
+      "attempts": 3,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7367808614779361,
+            "exaggeration": 0.3215807285222996,
+            "temperature": 0.6504735673073208,
+            "top_p": 0.8392136976965869,
+            "min_p": 0.19205890788601862,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.37437143188651567,
+            "exaggeration": 0.21568060729926442,
+            "temperature": 0.39839812946590536,
+            "top_p": 0.9322084123358806,
+            "min_p": 0.12229504137735372,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Wstań szybko po każdej obronie.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-545",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.5771300619112281,
+            "exaggeration": 0.2611043645301727,
+            "temperature": 0.6643504108482121,
+            "top_p": 0.8901258611094748,
+            "min_p": 0.047840879772546446,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.29060924031345564,
+            "exaggeration": 0.312991173211218,
+            "temperature": 0.08667556929553621,
+            "top_p": 0.6460985475668967,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "Stój wysoko, wyczuj moment i rzuć się na piłkę z całych sił.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-576",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Analizę zostaw na po meczu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-577",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Możesz pomyśleć o bramce później.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 14,
+      "text_preview": "Łapiesz piłkę.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 62,
+      "text_preview": "Żaden inny zawodnik w twojej drużynie nie potrafi tego, co ty.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 34,
+      "text_preview": "Widzisz, gdzie narasta zagrożenie.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-104",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Ćwicz rzucanie się przed meczem.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 34,
+      "text_preview": "Rzuć się na ziemię na lewą stronę.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-194",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 43,
+      "text_preview": "Obserwuj boisko, gdy twoja drużyna atakuje.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-205",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 59,
+      "text_preview": "Powiedz środkowemu obrońcy, żeby cofnął się trochę głębiej.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}

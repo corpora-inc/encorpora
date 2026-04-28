@@ -4,6 +4,7 @@ import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
 import type { DrawerSectionDef } from "@shared/ui"
+import manifest from "../manifest.json"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -79,6 +80,7 @@ const registerGame = () => {
 
       const shell = createAppShell(container, {
         readerId: "stargate",
+        readerVersion: manifest.version,
         createReader: readerFactory,
         hostApi,
         initialState: state,

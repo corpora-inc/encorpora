@@ -1,0 +1,433 @@
+{
+  "book_id": "pack",
+  "language": "tr",
+  "timestamp": "2026-04-21T17:33:17.446085+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 545,
+  "segments_converged_by_retry": 46,
+  "segments_plateau_stopped": 22,
+  "total_retries": 116,
+  "error_distribution": {
+    "trailing_silence": 50,
+    "tail_spike": 13,
+    "tail_energy": 13,
+    "final_word_weak": 2,
+    "transcription_mismatch": 1
+  },
+  "phase_timings": {
+    "tts": 117.64988780021667,
+    "align": 35.89920711517334,
+    "validate": 10.773597478866577,
+    "trim": 0.40766334533691406,
+    "master": 7.6433799266815186
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-391",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Aynı maçta hücum et ve savun, bazen aynı dakikada."
+    },
+    {
+      "id": "ch06-412",
+      "attempts": 5,
+      "best_quality_score": 4.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Takım arkadaşının dönecek alanı olduğunda \"zamanın var\" de."
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Ortadan gelen pasları kesiyorsun."
+    },
+    {
+      "id": "ch02-096",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Sağa bak."
+    },
+    {
+      "id": "ch02-104",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "İki savunmacının arasındaki boşluk, ara pas için bir koridordur."
+    },
+    {
+      "id": "ch02-106",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kendini topla kendi kalen arasına konumlandır."
+    },
+    {
+      "id": "ch02-122",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Savunmacılarının arkasına koşan bir koşucu, ara pas arıyordur."
+    },
+    {
+      "id": "ch02-139",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Asla tamamen bir tarafa çekilmezsin."
+    },
+    {
+      "id": "ch03-159",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kaleciden önceki son saha oyuncususun."
+    },
+    {
+      "id": "ch03-217",
+      "attempts": 4,
+      "best_quality_score": 5.36,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Doğru hareketi seç."
+    },
+    {
+      "id": "ch04-248",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Ölümcül pas penceresi küçüktür."
+    },
+    {
+      "id": "ch04-273",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Tek pas."
+    },
+    {
+      "id": "ch04-309",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Savunmayı ikiye bölen güçlü ara pas."
+    },
+    {
+      "id": "ch04-314",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Ölümcül pas takıma senin hediyendir."
+    },
+    {
+      "id": "ch06-402",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Büyük liberolar maç boyunca sürekli konuşur."
+    },
+    {
+      "id": "ch06-465",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Savunmaya geri sprint at."
+    },
+    {
+      "id": "ch08-603",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Diğer oyuncuların göremediği oyunu görmekte özel bir sevinç var."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7013115941649523,
+            "exaggeration": 0.35006740174408013,
+            "temperature": 0.32385169377714323,
+            "top_p": 0.9644306075938143,
+            "min_p": 0.3395915434990202,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6065743863223105,
+            "exaggeration": 0.10062786662494821,
+            "temperature": 0.36031353720525067,
+            "top_p": 0.8088815125034906,
+            "min_p": 0.23648215748777127,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.503084477742447,
+            "exaggeration": 0.4128092378180346,
+            "temperature": 0.5341293440526773,
+            "top_p": 1.0,
+            "min_p": 0.1067792279304535,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Güven"
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6581481225319474,
+            "exaggeration": 0.11304367208970312,
+            "temperature": 0.7010497159087935,
+            "top_p": 1.0,
+            "min_p": 0.28635053382512854,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6282313988596432,
+            "exaggeration": 0.10313873473709612,
+            "temperature": 0.2665387535289286,
+            "top_p": 0.9344784557722219,
+            "min_p": 0.21005739450291774,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5109252191577592,
+            "exaggeration": 0.5821022944550347,
+            "temperature": 0.5455551344726186,
+            "top_p": 0.992589324995829,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Önsezi"
+    },
+    {
+      "id": "ch05-387",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5571258111727067,
+            "exaggeration": 0.10617106949109079,
+            "temperature": 0.607012773876504,
+            "top_p": 0.9823734037418361,
+            "min_p": 0.05121985418328931,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5168841072364643,
+            "exaggeration": 0.10962610608506523,
+            "temperature": 0.14855611639053679,
+            "top_p": 1.0,
+            "min_p": 0.14474525663500962,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.3718581246778384,
+            "exaggeration": 0.7822976757590269,
+            "temperature": 0.618890662640068,
+            "top_p": 0.7736918448432977,
+            "min_p": 0.04040285968419824,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Denge"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "it",
+  "timestamp": "2026-04-20T08:26:56.269043+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 268,
+  "segments_converged_by_retry": 24,
+  "segments_plateau_stopped": 11,
+  "total_retries": 74,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch03-142",
+      "attempts": 7,
+      "best_quality_score": 40.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tutto il bottino veniva registrato e diviso secondo un sistema fisso."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Un mondo dove gli imperi competevano, e la legge del mare apparteneva a chi era "
+    },
+    {
+      "id": "ch02-077",
+      "attempts": 5,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "La sua famiglia aveva sostenuto i resti della dinastia Ming contro i conquistato"
+    },
+    {
+      "id": "ch01-036",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Alle famiglie Tanka era vietato vivere sulla terraferma in molte zone."
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "La donna che sarebbe diventata Zheng Yi Sao nacque intorno al millesettecentoset"
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi aveva una visione audace."
+    },
+    {
+      "id": "ch03-144",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Il restante ottanta per cento andava al fondo comune."
+    },
+    {
+      "id": "ch03-159",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "La sua flotta estese il suo territorio lungo l'intera costa del Guangdong."
+    },
+    {
+      "id": "ch04-214",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Una ribellione combinata per terra e per mare avrebbe potuto minacciare la stess"
+    },
+    {
+      "id": "ch05-234",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "All'inizio del milleottocentodieci, Guo Podai prese una decisione fatale."
+    },
+    {
+      "id": "ch05-240",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Peggio ancora, Guo Podai ora serviva come comandante governativo, usando la sua "
+    },
+    {
+      "id": "ch05-244",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Comandava ancora la Flotta della Bandiera Rossa e diverse flotte alleate."
+    },
+    {
+      "id": "ch05-248",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Aprì trattative con il governo Qing attraverso intermediari."
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Questo libro racconta la storia di come una donna che non aveva nulla divenne la"
+    },
+    {
+      "id": "ch02-069",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Da giovane donna, lavorava su un bordello galleggiante nel porto di Canton."
+    },
+    {
+      "id": "ch02-086",
+      "attempts": 3,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "text_preview": "Zheng Yi accettò le sue condizioni."
+    },
+    {
+      "id": "ch03-127",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "In quell'incontro, presentò le sue ragioni per la guida della confederazione."
+    },
+    {
+      "id": "ch04-182",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Le altre cinque flotte operavano in modo semi-indipendente ma seguivano la sua d"
+    },
+    {
+      "id": "ch04-195",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Una grande giunca poteva trasportare trenta o più cannoni."
+    },
+    {
+      "id": "ch06-284",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Comandava decine di migliaia di uomini in un mondo che considerava le donne infe"
+    }
+  ]
+}

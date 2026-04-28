@@ -40,68 +40,157 @@ mastering:
   target_lufs: -22.0
   target_tp: -3.0
 overrides:
-  ch01-007:
+  ch01-010:
     tts:
       cfg_weight: 0.7
       exaggeration: 0.4
       temperature: 0.2
-  ch01-031:
+  ch01-026:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch03-174:
+  ch01-027:
     tts:
       cfg_weight: 0.7
       exaggeration: 0.4
       temperature: 0.2
-  ch04-237:
+  ch01-075:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch02-138:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch02-140:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch02-143:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch03-171:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch04-287:
+  ch03-204:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch03-216:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch03-217:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch03-221:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-239:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-249:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-275:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-288:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-306:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-308:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-313:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
   ch05-331:
     tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-337:
+    tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch05-336:
+  ch05-346:
     tts:
       cfg_weight: 0.7
       exaggeration: 0.4
       temperature: 0.2
-  ch05-339:
-    tts:
-      cfg_weight: 0.7
-      exaggeration: 0.4
-      temperature: 0.2
-  ch05-344:
+  ch05-355:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch05-351:
+  ch05-357:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
   ch05-367:
     tts:
-      cfg_weight: 0.5
-      temperature: 0.4
-  ch05-368:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-379:
     tts:
       cfg_weight: 0.7
       exaggeration: 0.4
       temperature: 0.2
-  ch07-466:
+  ch06-413:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch06-449:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch07-511:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch07-476:
+  ch07-513:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
-  ch07-518:
+  ch07-515:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-520:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-526:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-537:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
@@ -109,6 +198,30 @@ overrides:
     tts:
       cfg_weight: 0.5
       temperature: 0.4
+  ch08-560:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-568:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-576:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-582:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch08-594:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
 retry:
   jitter: 0.25
   max_retries: 40
@@ -171,36 +284,104 @@ tts:
   top_p: 0.85
 validation:
   base_buffer_sec:
-    de: 5.0
     en: 5.0
     es: 5.0
     fr: 5.0
-    it: 5.0
+    de: 5.0
     pt: 5.0
+    it: 5.0
+    nl: 5.0
+    sv: 5.0
+    da: 5.0
+    "no": 5.0
+    fi: 5.0
+    pl: 5.0
+    tr: 5.0
+    ar: 5.0
+    he: 5.0
+    hi: 5.0
+    ru: 5.0
+    zh: 5.0
+    ja: 5.0
+    ko: 5.0
+    ms: 5.0
+    el: 5.0
+    sw: 5.0
   max_inter_word_gap_ms: 3000
   max_sec_per_char:
-    de: 0.12
     en: 0.12
     es: 0.12
     fr: 0.12
-    it: 0.12
+    de: 0.12
     pt: 0.12
+    it: 0.12
+    nl: 0.12
+    sv: 0.12
+    da: 0.12
+    "no": 0.12
+    fi: 0.12
+    pl: 0.12
+    tr: 0.12
+    ru: 0.12
+    el: 0.12
+    ms: 0.12
+    sw: 0.12
+    ar: 0.15
+    he: 0.15
+    hi: 0.15
+    zh: 0.25
+    ja: 0.25
+    ko: 0.20
   max_stacked_words: 3
   max_trailing_silence_ratio: 0.25
   min_sec_per_char:
-    de: 0.02
     en: 0.02
     es: 0.02
     fr: 0.02
-    it: 0.02
+    de: 0.02
     pt: 0.02
+    it: 0.02
+    nl: 0.02
+    sv: 0.02
+    da: 0.02
+    "no": 0.02
+    fi: 0.02
+    pl: 0.02
+    tr: 0.02
+    ru: 0.02
+    el: 0.02
+    ms: 0.02
+    sw: 0.02
+    ar: 0.02
+    he: 0.02
+    hi: 0.02
+    zh: 0.03
+    ja: 0.03
+    ko: 0.03
   min_trailing_silence_ms: 75
   min_word_ratio: 0.8
 version: 1
 voices:
-  de: ian-new-narration-try-more-chill-clear.wav
   en: ian-new-narration-try-more-chill-clear.wav
   es: ian-new-narration-spanish-loud.wav
   fr: ian-new-narration-try-more-chill-clear.wav
-  it: ian-new-narration-try-more-chill-clear.wav
+  de: ian-new-narration-try-more-chill-clear.wav
   pt: ian-new-narration-spanish-loud.wav
+  it: ian-new-narration-try-more-chill-clear.wav
+  nl: ian-new-narration-try-more-chill-clear.wav
+  sv: ian-new-narration-try-more-chill-clear.wav
+  da: ian-new-narration-try-more-chill-clear.wav
+  "no": ian-new-narration-try-more-chill-clear.wav
+  fi: ian-new-narration-try-more-chill-clear.wav
+  pl: ian-new-narration-try-more-chill-clear.wav
+  tr: ian-new-narration-try-more-chill-clear.wav
+  ar: ian-new-narration-try-more-chill-clear.wav
+  he: ian-new-narration-try-more-chill-clear.wav
+  hi: ian-new-narration-try-more-chill-clear.wav
+  ru: ian-new-narration-try-more-chill-clear.wav
+  zh: ian-new-narration-try-more-chill-clear.wav
+  ja: ian-new-narration-try-more-chill-clear.wav
+  ko: ian-new-narration-try-more-chill-clear.wav
+  ms: ian-new-narration-try-more-chill-clear.wav
+  el: ian-new-narration-try-more-chill-clear.wav
+  sw: ian-new-narration-try-more-chill-clear.wav

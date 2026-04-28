@@ -1,0 +1,331 @@
+{
+  "book_id": "pack",
+  "language": "hi",
+  "timestamp": "2026-04-21T17:52:41.534131+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 411,
+  "segments_converged_by_retry": 129,
+  "segments_plateau_stopped": 73,
+  "total_retries": 497,
+  "error_distribution": {
+    "trailing_silence": 67,
+    "tail_energy": 19,
+    "tail_spike": 16,
+    "first_word_weak": 9,
+    "transcription_mismatch": 7,
+    "hard_ending": 6,
+    "final_word_weak": 1
+  },
+  "phase_timings": {
+    "tts": 168.16456651687622,
+    "align": 50.802165508270264,
+    "validate": 14.551454067230225,
+    "trim": 0.426393985748291,
+    "master": 7.600107669830322
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-052",
+      "attempts": 8,
+      "best_quality_score": 0.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तीन हमलावर ऊपर का हिस्सा बनाते हैं।"
+    },
+    {
+      "id": "ch06-441",
+      "attempts": 8,
+      "best_quality_score": 2.64,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "जब कोई डिफ़ेंडर शानदार टैकल करे, तो उसे बताओ।"
+    },
+    {
+      "id": "ch03-170",
+      "attempts": 7,
+      "best_quality_score": 3.2,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "गेंद की रफ़्तार और हमलावर की रफ़्तार का अंदाज़ा लगाओ।"
+    },
+    {
+      "id": "ch06-416",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम्हारे दो डिफ़ेंडर तुम्हारे सबसे क़रीबी साथी हैं।"
+    },
+    {
+      "id": "ch06-446",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "जब कोई साथी ग़लती करे, सकारात्मक रहो।"
+    },
+    {
+      "id": "ch07-513",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "नियर पोस्ट पर भीड़ से गुज़रने वाली कॉर्नर किक अक्सर बैक पोस्ट पर जगह के साथ पहुँ"
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम फ़ील्ड जनरल हो।"
+    },
+    {
+      "id": "ch01-047",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम मैदान के बीच में खड़े हो, सबसे पीछे।"
+    },
+    {
+      "id": "ch03-201",
+      "attempts": 6,
+      "best_quality_score": 4.56,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "गेंद को साइडलाइन की तरफ़ साफ़ करो।"
+    },
+    {
+      "id": "ch03-221",
+      "attempts": 6,
+      "best_quality_score": 4.56,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम्हारे डिफ़ेंडर ज़्यादा भरोसे से खेलते हैं क्योंकि तुम सफ़ाई के लिए वहाँ हो।"
+    },
+    {
+      "id": "ch04-261",
+      "attempts": 6,
+      "best_quality_score": 3.44,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "हमलावर को दौड़कर गेंद पर पहुँचने दो।"
+    },
+    {
+      "id": "ch05-317",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "लेकिन तुम मैदान के पीछे बँधे नहीं हो।"
+    },
+    {
+      "id": "ch05-362",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "गोल करना एक बोनस है, तुम्हारा मुख्य काम नहीं।"
+    },
+    {
+      "id": "ch06-460",
+      "attempts": 6,
+      "best_quality_score": 4.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम्हारी शांत ऊर्जा पूरी टीम में बहती है।"
+    },
+    {
+      "id": "ch05-387",
+      "attempts": 6,
+      "best_quality_score": 25.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9297648417122057,
+            "exaggeration": 0.116598975203618,
+            "temperature": 0.32906144424093636,
+            "top_p": 0.8094516024592974,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.38506932125267984,
+            "exaggeration": 0.425059626768525,
+            "temperature": 0.46405448500877194,
+            "top_p": 0.8432471032449909,
+            "min_p": 0.3395500447745289,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4190755013440482,
+            "exaggeration": 0.5182620596683372,
+            "temperature": 0.531243196508901,
+            "top_p": 0.8489380670014003,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8563248650562807,
+            "exaggeration": 0.07371901853890789,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.47495870381755734,
+            "exaggeration": 0.37355780953931716,
+            "temperature": 0.5417329743609614,
+            "top_p": 0.8571111634866202,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "संतुलन"
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 5,
+      "best_quality_score": 3.04,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "पूरा खेल तुम्हारी आँखों के सामने खुलता है।"
+    },
+    {
+      "id": "ch01-053",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "पूरी टीम तुम्हारी पोज़ीशन से बाहर की ओर बनती है।"
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 5,
+      "best_quality_score": 4.96,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "स्वीपर की पोज़ीशन सबसे ज़्यादा ज़िम्मेदारी वाली है।"
+    },
+    {
+      "id": "ch01-062",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम टीम को संगठित करते हो।"
+    },
+    {
+      "id": "ch02-127",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "तुम प्रतिद्वंद्वी की बॉडी लैंग्वेज पढ़ते हो।"
+    }
+  ]
+}

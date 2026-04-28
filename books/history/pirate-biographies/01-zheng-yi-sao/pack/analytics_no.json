@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "no",
+  "timestamp": "2026-04-20T12:08:59.960668+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 237,
+  "segments_converged_by_retry": 38,
+  "segments_plateau_stopped": 28,
+  "total_retries": 159,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch03-136",
+      "attempts": 7,
+      "best_quality_score": 1.6,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Desertion ble straffet med døden."
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 6,
+      "best_quality_score": 3.52,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "På slutten av 1700-tallet begynte imidlertid Qing-dynastiet å svekkes."
+    },
+    {
+      "id": "ch02-078",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi fridde til den unge kvinnen."
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 6,
+      "best_quality_score": 4.48,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Så, i november 1807, døde Zheng Yi."
+    },
+    {
+      "id": "ch04-175",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "På sitt høydepunkt kommanderte piratkonføderasjonen omtrent 1 800 fartøy."
+    },
+    {
+      "id": "ch06-293",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hennes lovkodeks påvirket piratstyret i tiår etter hennes pensjonering."
+    },
+    {
+      "id": "ch01-044",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sørkinahavets farvann var ideelle for piratvirksomhet."
+    },
+    {
+      "id": "ch02-065",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Navnet Zheng Yi Sao betyr ganske enkelt Zheng Yis kone."
+    },
+    {
+      "id": "ch03-139",
+      "attempts": 5,
+      "best_quality_score": 3.04,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Pirater som overfalt fanger, sto overfor streng straff."
+    },
+    {
+      "id": "ch03-153",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Saos styrker senket eller erobret dusinvis av keiserlige krigsskip."
+    },
+    {
+      "id": "ch04-204",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Silkehandlere betalte mer enn rishandlere."
+    },
+    {
+      "id": "ch04-221",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao styrte dette samfunnet med absolutt autoritet."
+    },
+    {
+      "id": "ch05-231",
+      "attempts": 5,
+      "best_quality_score": 3.52,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Guo Podai kommanderte Svartflaggflåten, den nest største i konføderasjonen."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing-keiserne var mandsjuer, ikke hankinesere."
+    },
+    {
+      "id": "ch01-056",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing-regjeringen så europeerne som barbarer som måtte håndteres."
+    },
+    {
+      "id": "ch01-058",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Innen 1790 telte piratflåtene i Sørkinahavet hundrevis av skip."
+    },
+    {
+      "id": "ch02-066",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hun ble født inn i Tanka-samfunnet av båtboere i Guangdong-provinsen."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "I 1805 var konføderasjonen fullført."
+    },
+    {
+      "id": "ch02-102",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Konføderasjonen kontrollerte hundrevis av skip og titusenvis av pirater."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Den dominerte hele Sørkinahavet."
+    }
+  ]
+}

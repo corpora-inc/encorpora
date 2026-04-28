@@ -1,0 +1,680 @@
+{
+  "book_id": "pack",
+  "language": "nl",
+  "timestamp": "2026-04-24T07:51:38.333784+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 452,
+  "segments_converged_by_retry": 89,
+  "segments_plateau_stopped": 16,
+  "total_retries": 195,
+  "error_distribution": {
+    "final_word_weak": 22,
+    "trailing_silence": 17,
+    "pre_speech_spike": 3,
+    "first_word_weak": 3,
+    "tail_energy": 2,
+    "hard_ending": 1,
+    "transcription_mismatch": 1
+  },
+  "phase_timings": {
+    "tts": 189.149671792984,
+    "align": 64.59095859527588,
+    "validate": 14.397468328475952,
+    "trim": 0.23168277740478516,
+    "master": 5.038822412490845
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 117,
+      "passed": 93,
+      "rate": 0.7948717948717948
+    },
+    "medium_30_80": {
+      "total": 341,
+      "passed": 274,
+      "rate": 0.8035190615835777
+    },
+    "long_80_plus": {
+      "total": 99,
+      "passed": 85,
+      "rate": 0.8585858585858586
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-281",
+      "attempts": 12,
+      "best_quality_score": 0.0,
+      "best_attempt": 11,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9392613033123596,
+            "exaggeration": 0.3097283358574247,
+            "temperature": 0.3175102724253949,
+            "top_p": 0.908541903823787,
+            "min_p": 0.25059573015230896,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.28797985969577705,
+            "exaggeration": 0.31411542762624384,
+            "temperature": 0.30862992177955234,
+            "top_p": 0.6856318300152593,
+            "min_p": 0.05181672136492502,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.839243035087571,
+            "exaggeration": 0.3684627873096248,
+            "temperature": 0.6316615071507778,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7874868582112617,
+            "exaggeration": 0.11505064717514074,
+            "temperature": 0.4048248850191384,
+            "top_p": 0.6040286449047574,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4603147120453574,
+            "exaggeration": 0.354632523067968,
+            "temperature": 0.7289090057616772,
+            "top_p": 1.0,
+            "min_p": 0.15816673989321597,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4675862268267197,
+            "exaggeration": 0.30256891088848137,
+            "temperature": 0.33303192274778215,
+            "top_p": 0.7345715353054438,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4957149063857863,
+            "exaggeration": 0.09200389332700537,
+            "temperature": 0.7222951953393377,
+            "top_p": 0.9137561573623435,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.40243413400146893,
+            "temperature": 0.23011038754834962,
+            "top_p": 0.8473069097577604,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.11658489497947172,
+            "exaggeration": 0.6695798615629097,
+            "temperature": 0.7725911815106223,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.5820148037935451,
+            "temperature": 0.8518068899150689,
+            "top_p": 1.0,
+            "min_p": 0.08011351315297552,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.04380113772154248,
+            "exaggeration": 0.7471308728532007,
+            "temperature": 0.9612610582375198,
+            "top_p": 0.8185497887741866,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "Eén pass, één tikje, en de bal is aan jouw kant.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-519",
+      "attempts": 10,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 9,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8876720987442419,
+            "exaggeration": 0.4508196274770049,
+            "temperature": 0.7050645643597264,
+            "top_p": 0.8221752084440871,
+            "min_p": 0.06220304061723217,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3298345486340738,
+            "exaggeration": 0.1694773976225692,
+            "temperature": 0.46757682849064375,
+            "top_p": 0.7194105518119447,
+            "min_p": 0.31026278341418,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.6360507825018735,
+            "exaggeration": 0.5278896064029143,
+            "temperature": 0.7424715839485992,
+            "top_p": 0.9665112224204999,
+            "min_p": 0.06889909310476969,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.12420498590449153,
+            "temperature": 0.170117721522825,
+            "top_p": 0.6058254409062009,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6400051530403105,
+            "exaggeration": 0.7034442181858717,
+            "temperature": 0.6963244245177334,
+            "top_p": 0.975046647408792,
+            "min_p": 0.18123309036598992,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.912512258031069,
+            "exaggeration": 0.03688527155456481,
+            "temperature": 0.2967226730773569,
+            "top_p": 0.8127778776432081,
+            "min_p": 0.2426436014115886,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2604262763869925,
+            "exaggeration": 0.5017045280576474,
+            "temperature": 0.5550187946247547,
+            "top_p": 0.9129394455260017,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5060931589959131,
+            "temperature": 0.2913287408332156,
+            "top_p": 0.9327258205169158,
+            "min_p": 0.3069785171098932,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6768342671510388,
+            "temperature": 0.8637084163080722,
+            "top_p": 0.6373672253783844,
+            "min_p": 0.21992900951057529,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Jouw teamgenoten voelen jouw werk.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-482",
+      "attempts": 6,
+      "best_quality_score": 6.4,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 25,
+      "text_preview": "Zoek ruimte bij het doel.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 41,
+      "text_preview": "Jij bent de muur waar ze doorheen moeten.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-203",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "De aanvaller neemt een te harde touch.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-204",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 31,
+      "text_preview": "De aanvaller kijkt naar de bal.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-271",
+      "attempts": 5,
+      "best_quality_score": 60.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 56,
+      "text_preview": "Je kunt roepen \"loper rechts\" als je iemand ziet rennen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-381",
+      "attempts": 5,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 70,
+      "text_preview": "Een korte pass terug naar jou verlicht de druk en houdt de bal veilig.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-534",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 76,
+      "text_preview": "Het moment zal komen dat de bal zonder waarschuwing bij je voeten arriveert.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-556",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 34,
+      "text_preview": "Je coach weet dat je er zult zijn.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 52,
+      "text_preview": "De laatste man vertrouwt erop dat jij je lijn houdt.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Jij houdt alles bij elkaar.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-064",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Je coach ziet doorzettingsvermogen, intelligentie en hart.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-078",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "De keeper staat achter de laatste man.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-087",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 79,
+      "text_preview": "Jij beheert de ruimte van het midden van het veld tot de zijlijn aan jouw kant.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 69,
+      "text_preview": "Wanneer de bal aan jouw kant is, ben jij de eerste verdedigingslinie.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-100",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.8166198081865345,
+            "exaggeration": 0.2675986435003347,
+            "temperature": 0.47422898188138723,
+            "top_p": 0.9272375524078373,
+            "min_p": 0.2901673907180352,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.6050316807395075,
+            "exaggeration": 0.12154399465675153,
+            "temperature": 0.43367384941150255,
+            "top_p": 0.6354081233266506,
+            "min_p": 0.054711664244756236,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.48349014881155067,
+            "exaggeration": 0.5672758497392172,
+            "temperature": 0.5639629195179778,
+            "top_p": 0.6325930918177984,
+            "min_p": 0.29120612251987366,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Aanvallers zullen langs de zijlijn rennen zonder dat iemand ze stopt.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-171",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 35,
+      "text_preview": "Dwing de aanvaller naar de zijlijn.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-211",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "Een zuivere tackle is iets moois.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-269",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 46,
+      "text_preview": "Vertel je partner wat je vanaf jouw kant ziet.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}

@@ -1,0 +1,969 @@
+{
+  "book_id": "pack",
+  "language": "ko",
+  "timestamp": "2026-04-26T03:51:45.816381+00:00",
+  "segments_total": 611,
+  "segments_first_pass": 599,
+  "segments_converged_by_retry": 12,
+  "segments_plateau_stopped": 0,
+  "total_retries": 20,
+  "error_distribution": {
+    "trailing_silence": 190,
+    "first_word_weak": 41,
+    "hard_ending": 17,
+    "tail_energy": 16,
+    "stacked_words": 16,
+    "truncated_last_word": 16,
+    "min_trailing_silence": 16,
+    "raw_digits": 4,
+    "tail_spike": 4,
+    "final_word_weak": 2,
+    "pre_speech_spike": 1,
+    "post_speech_pop": 1,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 1370.5390412807465,
+    "align": 391.60751080513,
+    "validate": 347.0598328113556,
+    "trim": 7.984307050704956,
+    "master": 135.46211791038513
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 433,
+      "passed": 430,
+      "rate": 0.9930715935334873
+    },
+    "medium_30_80": {
+      "total": 178,
+      "passed": 169,
+      "rate": 0.949438202247191
+    },
+    "long_80_plus": {
+      "total": 0,
+      "passed": 0,
+      "rate": 0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-348",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.8274454027409675,
+            "exaggeration": 0.2443464861342401,
+            "temperature": 0.30517219705587006,
+            "top_p": 0.7927614988759,
+            "min_p": 0.13555284000555698,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.2732248393389258,
+            "exaggeration": 0.0,
+            "temperature": 0.3135243153166,
+            "top_p": 0.8116423596742282,
+            "min_p": 0.03542259933311123,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.4645226975613539,
+            "exaggeration": 0.8226723199417754,
+            "temperature": 0.7515775105896545,
+            "top_p": 0.9546616617285584,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5100194793846535,
+            "temperature": 0.05,
+            "top_p": 0.7896580381016252,
+            "min_p": 0.2985580322239323,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.31337804697327526,
+            "exaggeration": 0.6781202637732753,
+            "temperature": 0.5018321405238837,
+            "top_p": 0.7880759134567351,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "윙에 있는 팀동료가 볼을 가지고 있을 때는, 페널티 박스에 들어가서 크로스에 준비하세요.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-406",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7631502317306438,
+            "exaggeration": 0.34202657052301316,
+            "temperature": 0.6203893422045772,
+            "top_p": 0.7265521259181087,
+            "min_p": 0.25678684351707115,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.29690639751233966,
+            "exaggeration": 0.0,
+            "temperature": 0.0620306093073012,
+            "top_p": 0.7074647945582924,
+            "min_p": 0.1887890930820171,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8346142709074269,
+            "exaggeration": 0.5537439124879466,
+            "temperature": 0.494703651853774,
+            "top_p": 0.9100678841835518,
+            "min_p": 0.16955463865477735,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 43,
+      "text_preview": "하나의 똑똑한 프레싱 각도가 필드에서 가장 위험한 패스를 차단할 수 있습니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-459",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.5681090653572289,
+            "exaggeration": 0.29993906007249005,
+            "temperature": 0.715288220348695,
+            "top_p": 0.6827827304165972,
+            "min_p": 0.2976359327639563,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6966992599579416,
+            "exaggeration": 0.23479929883407435,
+            "temperature": 0.10945481098840093,
+            "top_p": 1.0,
+            "min_p": 0.21760784709155992,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "동료들은 너의 수비적 노력에 보답하여 위험한 위치에서 볼을 전달해준다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-491",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.659073738027104,
+            "exaggeration": 0.12440082318912538,
+            "temperature": 0.3138858564493534,
+            "top_p": 0.6570613652092263,
+            "min_p": 0.036067896130549976,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.72323091727282,
+            "exaggeration": 0.22735550953621986,
+            "temperature": 0.41818571318817943,
+            "top_p": 0.9776513958061378,
+            "min_p": 0.2689060951591069,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "프리킥으로부터의 리바운드는 많은 골을 만들어냅니다. 왜냐하면 수비수들이 처음 킥 이후에 집중력을 잃기 때문입니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-135",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9811504718032638,
+            "exaggeration": 0.47153416855776387,
+            "temperature": 0.5451093198332668,
+            "top_p": 0.7609317698041519,
+            "min_p": 0.3475430111362112,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "다른 공격수는 당신의 달리기가 만들어낸 공간에서 공을 받습니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-212",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.642788851412283,
+            "exaggeration": 0.11379260964115245,
+            "temperature": 0.7111143406028115,
+            "top_p": 0.6569575498952169,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "측면의 팀동료가 공중으로 크로스를 올릴 수도 있습니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-224",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9177257176301672,
+            "exaggeration": 0.22360739268905394,
+            "temperature": 0.3677784631313059,
+            "top_p": 0.8565936767261324,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "빠르게 생각하는 스트라이커가 빠르게 플레이합니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-310",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending"
+          ],
+          "score": 10.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7774251409663514,
+            "exaggeration": 0.25504524219984154,
+            "temperature": 0.6578757498360851,
+            "top_p": 0.9147410568572543,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "만약 당신의 약한 발도 깔끔한 슛을 만들 수 있다면, 수비수가 당신을 몰아갈 안전한 쪽은 없다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-322",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9674178690843738,
+            "exaggeration": 0.05267268820228371,
+            "temperature": 0.5001907200424266,
+            "top_p": 0.75814651150223,
+            "min_p": 0.22020131003342489,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "연계 플레이를 위해 팀동료의 구역으로 이동할 수 있습니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-326",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6282611657533084,
+            "exaggeration": 0.5049148763967111,
+            "temperature": 0.6538402918078585,
+            "top_p": 0.7885124892078028,
+            "min_p": 0.2638349440601968,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "수비수를 끌어내어 공간을 열기 위해 움직일 수도 있습니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-420",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.933686296320295,
+            "exaggeration": 0.20216129447724746,
+            "temperature": 0.4086046189479027,
+            "top_p": 0.9687898054776214,
+            "min_p": 0.1694601731992574,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "필드 위에 높은 위치를 유지하며 다음 공격 기회를 기다리고 싶을 것입니다.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-482",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "post_speech_pop"
+          ],
+          "score": 63.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9286138292759584,
+            "exaggeration": 0.1568910730861527,
+            "temperature": 0.5749218366685505,
+            "top_p": 0.6178654179048255,
+            "min_p": 0.013290123454659492,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 11,
+      "text_preview": "골 근처에서의 프리킥",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 13,
+      "text_preview": "당신은 스트라이커입니다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "당신이 골을 넣습니다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "당신은 필드에서 가장 위험한 선수입니다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "골 근처에서 공을 터치할 때마다, 무엇이든 일어날 수 있습니다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 4,
+      "text_preview": "창의 끝",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "당신의 팀은 1-2-3 포메이션을 플레이합니다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 13.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "hard_ending"
+          ],
+          "score": 13.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "한 명의 스위퍼.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "두 명의 수비수.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "stacked_words": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.2,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.2,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.2,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.038,
+        "temperature": 0.22,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

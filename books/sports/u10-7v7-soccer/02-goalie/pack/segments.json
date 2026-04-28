@@ -7713,7 +7713,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Corner Kicks",
-      "text_markdown": "Corner Kicks"
+      "text_markdown": "Corner Kicks",
+      "tts": {
+        "text": "Corner Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-485",
@@ -8157,7 +8162,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Free Kicks",
-      "text_markdown": "Free Kicks"
+      "text_markdown": "Free Kicks",
+      "tts": {
+        "text": "Free Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-513",
@@ -8361,7 +8371,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Penalty Kicks",
-      "text_markdown": "Penalty Kicks"
+      "text_markdown": "Penalty Kicks",
+      "tts": {
+        "text": "Penalty Kicks",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-526",
@@ -8693,7 +8708,12 @@
       "block_type": "heading",
       "heading_level": 2,
       "text": "Before Every Set Piece",
-      "text_markdown": "Before Every Set Piece"
+      "text_markdown": "Before Every Set Piece",
+      "tts": {
+        "text": "Before Every Set Piece",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-547",

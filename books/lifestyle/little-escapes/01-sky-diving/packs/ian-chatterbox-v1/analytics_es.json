@@ -1,0 +1,2039 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "es",
+  "timestamp": "2026-04-27T05:35:05.087505+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 330,
+  "segments_converged_by_retry": 38,
+  "segments_plateau_stopped": 0,
+  "total_retries": 101,
+  "error_distribution": {
+    "trailing_silence": 125,
+    "first_word_weak": 81,
+    "tail_energy": 47,
+    "min_trailing_silence": 41,
+    "hard_ending": 41,
+    "stacked_words": 39,
+    "tail_zero_duration_run": 38,
+    "truncated_last_word": 38,
+    "word_cluster": 12,
+    "final_word_weak": 4
+  },
+  "phase_timings": {
+    "tts": 1292.197182893753,
+    "align": 386.665251493454,
+    "validate": 191.73542046546936,
+    "trim": 3.0156943798065186,
+    "master": 84.33947157859802
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 109,
+      "passed": 109,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 190,
+      "passed": 170,
+      "rate": 0.8947368421052632
+    },
+    "long_80_plus": {
+      "total": 69,
+      "passed": 51,
+      "rate": 0.7391304347826086
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-031",
+      "attempts": 18,
+      "best_quality_score": 0.0,
+      "best_attempt": 17,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.317440716295468,
+            "temperature": 0.5981540277799728,
+            "top_p": 0.9636441128953368,
+            "min_p": 0.26557126638837414,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6197779842667617,
+            "exaggeration": 0.07285035231403542,
+            "temperature": 0.26787816300853606,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.6210001542303593,
+            "exaggeration": 0.837153010804282,
+            "temperature": 0.8539243380062802,
+            "top_p": 0.7468455805319918,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.18531132929713706,
+            "temperature": 0.4074921677347806,
+            "top_p": 0.7322553963058067,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.4685363513909866,
+            "exaggeration": 0.6514987415660594,
+            "temperature": 0.4660206128884391,
+            "top_p": 0.7426986190106677,
+            "min_p": 0.1236088988461331,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.8701689921295817,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.9562606273803509,
+            "min_p": 0.26632798400282776,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.40521076802294037,
+            "exaggeration": 0.2980588567895649,
+            "temperature": 0.3630761441570747,
+            "top_p": 0.9992274466452638,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22018178702207974,
+            "temperature": 0.24260954788967704,
+            "top_p": 0.810801657864066,
+            "min_p": 0.19421055114693656,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "first_word_weak"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8265085089504752,
+            "temperature": 1.0006964276067247,
+            "top_p": 0.9653373819091021,
+            "min_p": 0.010009823548060043,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8790685385011563,
+            "temperature": 1.030350577140151,
+            "top_p": 0.8050486940339938,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.19858836202489433,
+            "exaggeration": 0.879645183021645,
+            "temperature": 0.9888836103983223,
+            "top_p": 0.974212704224743,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.40499444587095157,
+            "exaggeration": 0.5573010469831021,
+            "temperature": 0.9488469638045787,
+            "top_p": 0.7326733957543943,
+            "min_p": 0.09193276570258654,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.4497670718101531,
+            "exaggeration": 0.576874881580069,
+            "temperature": 0.7138829294221043,
+            "top_p": 0.7953314637188209,
+            "min_p": 0.21193461318298126,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.34102106989619757,
+            "exaggeration": 0.7523867874906499,
+            "temperature": 0.8658387178257374,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.2843430015547789,
+            "exaggeration": 0.8090077998391739,
+            "temperature": 0.6338741874215816,
+            "top_p": 0.7364848472187712,
+            "min_p": 0.20292918887766662,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.28052391159030665,
+            "exaggeration": 0.47721896244381595,
+            "temperature": 1.0213602471186076,
+            "top_p": 0.8928818224408612,
+            "min_p": 0.17084047165672953,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.25785001084123355,
+            "exaggeration": 0.809663830881942,
+            "temperature": 0.5695924290969179,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Se trata de encontrar el único lugar donde tu mente se queda en silencio.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-364",
+      "attempts": 11,
+      "best_quality_score": 0.0,
+      "best_attempt": 10,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.765866239668789,
+            "exaggeration": 0.4494770934559717,
+            "temperature": 0.5238045690217631,
+            "top_p": 0.8679550502366593,
+            "min_p": 0.1552334130044051,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.3706166292764473,
+            "exaggeration": 0.129547832879278,
+            "temperature": 0.13133094801214135,
+            "top_p": 0.8124715185139713,
+            "min_p": 0.3025295266385333,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.8348419050813625,
+            "exaggeration": 0.40072636241275345,
+            "temperature": 0.6367556577494364,
+            "top_p": 0.9432874984336227,
+            "min_p": 0.1919058435416747,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.05480709753139301,
+            "temperature": 0.10484791996738119,
+            "top_p": 0.9855075776644495,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster"
+          ],
+          "score": 340.0,
+          "params": {
+            "cfg_weight": 0.3754286113403984,
+            "exaggeration": 0.58247405940797,
+            "temperature": 0.5564395203037682,
+            "top_p": 0.6998373651602154,
+            "min_p": 0.33349977075208126,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.8152491250159635,
+            "exaggeration": 0.306262494460807,
+            "temperature": 0.3406950488699698,
+            "top_p": 0.8580262868902413,
+            "min_p": 0.0033726255386293535,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster"
+          ],
+          "score": 340.0,
+          "params": {
+            "cfg_weight": 0.15963110247262036,
+            "exaggeration": 0.3723495536001047,
+            "temperature": 0.7397191989259029,
+            "top_p": 1.0,
+            "min_p": 0.3174946634246839,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.18008684740350417,
+            "temperature": 0.5414201991393808,
+            "top_p": 1.0,
+            "min_p": 0.25644151630921086,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending"
+          ],
+          "score": 350.0,
+          "params": {
+            "cfg_weight": 0.4149903837101779,
+            "exaggeration": 0.8802807362300183,
+            "temperature": 0.9811507040526708,
+            "top_p": 0.6402206351768649,
+            "min_p": 0.11051369159609045,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.016135447007161297,
+            "exaggeration": 0.8560577943383931,
+            "temperature": 0.5823173756010152,
+            "top_p": 0.914549482109797,
+            "min_p": 0.0425109687666452,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 123,
+      "text_preview": "En algún lugar del mundo, en este momento, un pequeño grupo de personas tranquil",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-157",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7564381514997973,
+            "exaggeration": 0.16945410710748915,
+            "temperature": 0.28420765639871176,
+            "top_p": 1.0,
+            "min_p": 0.34034832243039503,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5126011830535024,
+            "exaggeration": 0.014858713039789917,
+            "temperature": 0.08762337428010064,
+            "top_p": 0.7425425662882341,
+            "min_p": 0.10499762918644986,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5630577266310751,
+            "exaggeration": 0.7567766619077456,
+            "temperature": 0.7353289616661476,
+            "top_p": 0.6849208076043594,
+            "min_p": 0.0368174343295348,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2940605629504418,
+            "temperature": 0.07170497080190719,
+            "top_p": 1.0,
+            "min_p": 0.12738769030577732,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.4727507483756305,
+            "exaggeration": 0.2850658951537091,
+            "temperature": 0.7464017898146977,
+            "top_p": 0.7987590924616037,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5748795407410832,
+            "exaggeration": 0.08539113877421203,
+            "temperature": 0.05,
+            "top_p": 0.9130973533921137,
+            "min_p": 0.30056682903094234,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "A partir de ahí, los paracaidistas suelen completar sus primeros cien saltos dur",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-192",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8298993205516445,
+            "exaggeration": 0.268702081206181,
+            "temperature": 0.454447029723837,
+            "top_p": 0.6080430968966783,
+            "min_p": 0.09379569885977804,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "first_word_weak"
+          ],
+          "score": 360.0,
+          "params": {
+            "cfg_weight": 0.5179661635924657,
+            "exaggeration": 0.3150806587224665,
+            "temperature": 0.2563137875270167,
+            "top_p": 0.8251413002510698,
+            "min_p": 0.32151350684715474,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence"
+          ],
+          "score": 320.0,
+          "params": {
+            "cfg_weight": 0.4024083385341091,
+            "exaggeration": 0.5716261837355952,
+            "temperature": 0.4962232175207518,
+            "top_p": 0.848424935036699,
+            "min_p": 0.3127402608794495,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7902149776972094,
+            "exaggeration": 0.48542565448278824,
+            "temperature": 0.2547157459180459,
+            "top_p": 0.8474925633605511,
+            "min_p": 0.3439420366056183,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1723599021564805,
+            "exaggeration": 0.3672433766214889,
+            "temperature": 0.6669625359198079,
+            "top_p": 0.9748472341159992,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6952082933179831,
+            "exaggeration": 0.007546744832923141,
+            "temperature": 0.05,
+            "top_p": 0.9275319324056895,
+            "min_p": 0.07843009583313845,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Giran lentamente, a propósito, con las puntas de los dedos.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-267",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.8803500192877054,
+            "exaggeration": 0.26330884585209924,
+            "temperature": 0.7054225593908339,
+            "top_p": 1.0,
+            "min_p": 0.04877817856028374,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.32348269244552075,
+            "exaggeration": 0.43320697158279126,
+            "temperature": 0.3863093095215171,
+            "top_p": 1.0,
+            "min_p": 0.12027963511025744,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.4664701930968181,
+            "exaggeration": 0.7084500226865246,
+            "temperature": 0.6289696591389692,
+            "top_p": 0.843956785902797,
+            "min_p": 0.00880450059645263,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.8998583421894508,
+            "exaggeration": 0.46643605815541134,
+            "temperature": 0.26169760479091786,
+            "top_p": 1.0,
+            "min_p": 0.3206129622089685,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5465101027267426,
+            "exaggeration": 0.32865927904025066,
+            "temperature": 0.4677782434982735,
+            "top_p": 0.8196471302009698,
+            "min_p": 0.011750490038018618,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.545508769253287,
+            "exaggeration": 0.31571686851557734,
+            "temperature": 0.05,
+            "top_p": 0.7516369941038261,
+            "min_p": 0.2907168691248473,
+            "repetition_penalty": 1.88
+          }
+        }
+      ],
+      "text_len": 112,
+      "text_preview": "Se sientan en la banca, los cascos en el regazo, y el saltador líder dibuja la f",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-040",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.6578744010566869,
+            "exaggeration": 0.07168076577864518,
+            "temperature": 0.5232805757345294,
+            "top_p": 0.7008907657433636,
+            "min_p": 0.20723865981799408,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2633996404750995,
+            "exaggeration": 0.155292874981093,
+            "temperature": 0.12805682195936957,
+            "top_p": 1.0,
+            "min_p": 0.126671193217934,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8421690808806173,
+            "exaggeration": 0.5160931428686183,
+            "temperature": 0.7603834227222537,
+            "top_p": 0.7023461034755994,
+            "min_p": 0.0,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.509075004769215,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.13091699557126948,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "Empezaste a saltar porque, la primera vez que lo intentaste, algo dentro de ti d",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-041",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7904458586572496,
+            "exaggeration": 0.43651872733909947,
+            "temperature": 0.66934714735574,
+            "top_p": 0.9814977840418533,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.27845246713540545,
+            "exaggeration": 0.003926985180631837,
+            "temperature": 0.47186793007677913,
+            "top_p": 0.6267103665014728,
+            "min_p": 0.1565231784359782,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5555375878427269,
+            "exaggeration": 0.6062699389679499,
+            "temperature": 0.5394733181370273,
+            "top_p": 0.6339589396561218,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9128453843762959,
+            "exaggeration": 0.5498794406459133,
+            "temperature": 0.3315899248666036,
+            "top_p": 0.6535444771725788,
+            "min_p": 0.2889748588986796,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 113,
+      "text_preview": "¿Alguna vez has estado parado al borde de algo alto y has sentido que tu cuerpo ",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-128",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.6108885590282649,
+            "exaggeration": 0.1611981603980503,
+            "temperature": 0.5228435576188053,
+            "top_p": 0.7488365442862451,
+            "min_p": 0.23322684166162552,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6585994899717071,
+            "exaggeration": 0.4303286812460135,
+            "temperature": 0.17018688228248163,
+            "top_p": 0.6135574143565898,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.39483218125569447,
+            "exaggeration": 0.42127978225873,
+            "temperature": 0.5329755568673531,
+            "top_p": 1.0,
+            "min_p": 0.3465682662477302,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5236512623660885,
+            "temperature": 0.2842210313353445,
+            "top_p": 0.9508709099882529,
+            "min_p": 0.1851817072086366,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Llegas, firmas los papeles, ves un video corto, y conoces a tu instructor.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-229",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.7592260594963308,
+            "exaggeration": 0.5474449110620827,
+            "temperature": 0.5442989473029373,
+            "top_p": 0.641844458602407,
+            "min_p": 0.19099463863148095,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.3471276291778002,
+            "exaggeration": 0.2151483683346272,
+            "temperature": 0.4342015662652837,
+            "top_p": 0.8740155434954799,
+            "min_p": 0.251360432166884,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.6043413536649566,
+            "exaggeration": 0.5568913609653945,
+            "temperature": 0.6263412689229155,
+            "top_p": 0.8418679412941051,
+            "min_p": 0.07029975083215648,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8181806161812077,
+            "exaggeration": 0.5005389708068857,
+            "temperature": 0.12083693900532977,
+            "top_p": 0.6751060897441438,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "El radio en la esquina tocando una canción que has oído demasiadas veces.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.9356559914131326,
+            "exaggeration": 0.10710239650574072,
+            "temperature": 0.3626022470665064,
+            "top_p": 0.9421736631092781,
+            "min_p": 0.13290550535848208,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.4825550117997188,
+            "exaggeration": 0.108817264015238,
+            "temperature": 0.5135187239360419,
+            "top_p": 0.8523487761544358,
+            "min_p": 0.26716732864738146,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.682140920644022,
+            "exaggeration": 0.7829977553889287,
+            "temperature": 0.8600325007984819,
+            "top_p": 0.622145722100554,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "Para algunos, es un sedal de pesca, o un piano, o una cocina a las seis de la ma",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-175",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.6322628301171218,
+            "exaggeration": 0.19578842116324152,
+            "temperature": 0.36696698209398027,
+            "top_p": 0.9275331390318693,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.5381824949173537,
+            "exaggeration": 0.2207054748585225,
+            "temperature": 0.3278802222145949,
+            "top_p": 0.6348800476879742,
+            "min_p": 0.32116204131779047,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3590705763525454,
+            "exaggeration": 0.7901344089236377,
+            "temperature": 0.8623159521218471,
+            "top_p": 0.9712975111706683,
+            "min_p": 0.017116830273069844,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "El programa de entrenamiento cuesta lo mismo que unas vacaciones cortas.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-200",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "hard_ending",
+            "final_word_weak"
+          ],
+          "score": 60.0,
+          "params": {
+            "cfg_weight": 0.8347916090881733,
+            "exaggeration": 0.0748465901617209,
+            "temperature": 0.29871163704876835,
+            "top_p": 0.8456281581305323,
+            "min_p": 0.16392994390806545,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.27445780802450254,
+            "exaggeration": 0.3585108109901036,
+            "temperature": 0.522446836662132,
+            "top_p": 0.608776201293324,
+            "min_p": 0.016365523306941937,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5279012221960425,
+            "exaggeration": 0.7904442079195858,
+            "temperature": 0.5354949915335463,
+            "top_p": 1.0,
+            "min_p": 0.20774223942291478,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "El arco es lo que te mantiene boca abajo hacia la tierra sin que tengas que pens",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7028392279358511,
+            "exaggeration": 0.43273193604534593,
+            "temperature": 0.5226204341260883,
+            "top_p": 0.9908550576270553,
+            "min_p": 0.07330890227766132,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5626351764332045,
+            "exaggeration": 0.3926326167820107,
+            "temperature": 0.25381051115075565,
+            "top_p": 0.8590550181985319,
+            "min_p": 0.3492920199095584,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Solo el viento, tu respiración, y la curva lenta de la tierra debajo de ti.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-275",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 330.0,
+          "params": {
+            "cfg_weight": 0.6558840918469149,
+            "exaggeration": 0.4165257541974499,
+            "temperature": 0.4494204415951814,
+            "top_p": 0.6390195897382622,
+            "min_p": 0.12122175144086042,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.46565230395377605,
+            "exaggeration": 0.027825752999354247,
+            "temperature": 0.36141999794835405,
+            "top_p": 0.8571138274237724,
+            "min_p": 0.24009164905213418,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "En caída libre, se encuentran unos a otros casi sin pensarlo.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-295",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5788109095504617,
+            "exaggeration": 0.22623092022185615,
+            "temperature": 0.6676849239480305,
+            "top_p": 0.9386408162281179,
+            "min_p": 0.14315893615771982,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.731986412035997,
+            "exaggeration": 0.06553453601935583,
+            "temperature": 0.09399530216174012,
+            "top_p": 1.0,
+            "min_p": 0.09199296069540988,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 94,
+      "text_preview": "Y en esos primeros tres segundos, antes de que el viento te atrape, algo dentro ",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-335",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.18840451353204607,
+            "temperature": 0.36728235982899504,
+            "top_p": 0.7540103275853591,
+            "min_p": 0.07497881776897605,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.48749605448107736,
+            "exaggeration": 0.27691367123993793,
+            "temperature": 0.2868801723755583,
+            "top_p": 0.7607569646735517,
+            "min_p": 0.10092648797821954,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Cada paracaidista recuerda su primer salto con todo detalle, y estará feliz de c",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-348",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.9458933163305265,
+            "exaggeration": 0.24040940527085397,
+            "temperature": 0.7460486780556899,
+            "top_p": 1.0,
+            "min_p": 0.22058430086419065,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4343303806433762,
+            "exaggeration": 0.18435225152927803,
+            "temperature": 0.11700741366764666,
+            "top_p": 1.0,
+            "min_p": 0.21098907462595265,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 122,
+      "text_preview": "Si quieres hacer que a un paracaidista se le ilumine la cara, pídele que describ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7765999534532524,
+            "exaggeration": 0.28355181744346547,
+            "temperature": 0.45805917326460205,
+            "top_p": 0.6518071974569508,
+            "min_p": 0.18150988983486235,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 97,
+      "text_preview": "Y durante los primeros segundos, tu mente no termina de alcanzar lo que tu cuerp",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8088611370174421,
+            "exaggeration": 0.307028183870049,
+            "temperature": 0.5825558389072147,
+            "top_p": 0.9095385738170949,
+            "min_p": 0.10088538543004658,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Durante sesenta segundos en caída libre, tu mente no tiene nada más que hacer.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8473648393176543,
+            "exaggeration": 0.30723556441278266,
+            "temperature": 0.4869598917516646,
+            "top_p": 0.6392882442488864,
+            "min_p": 0.15707528120510908,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 97,
+      "text_preview": "La mayoría somos personas tranquilas que encontramos una manera de sentirnos en ",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "first_word_weak": {
+      "sample_size": 19,
+      "avg_delta": {
+        "cfg_weight": 0.015,
+        "temperature": -0.034,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 10,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.019,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.11,
+        "temperature": -0.089,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.11,
+        "temperature": -0.089,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.11,
+        "temperature": -0.089,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.064,
+        "temperature": -0.076,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 9,
+      "avg_delta": {
+        "cfg_weight": -0.087,
+        "temperature": -0.057,
+        "repetition_penalty": 0.0
+      }
+    },
+    "word_cluster": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.281,
+        "temperature": -0.057,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

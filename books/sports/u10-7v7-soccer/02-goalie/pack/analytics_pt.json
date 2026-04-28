@@ -1,0 +1,396 @@
+{
+  "book_id": "pack",
+  "language": "pt",
+  "timestamp": "2026-04-23T00:15:07.112910+00:00",
+  "segments_total": 633,
+  "segments_first_pass": 619,
+  "segments_converged_by_retry": 13,
+  "segments_plateau_stopped": 1,
+  "total_retries": 21,
+  "error_distribution": {
+    "trailing_silence": 9,
+    "final_word_weak": 4,
+    "tail_spike": 4,
+    "tail_energy": 4
+  },
+  "phase_timings": {
+    "tts": 53.76505517959595,
+    "align": 21.09933376312256,
+    "validate": 3.610368251800537,
+    "trim": 0.0905148983001709,
+    "master": 1.5764222145080566
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 173,
+      "passed": 168,
+      "rate": 0.9710982658959537
+    },
+    "medium_30_80": {
+      "total": 420,
+      "passed": 412,
+      "rate": 0.9809523809523809
+    },
+    "long_80_plus": {
+      "total": 40,
+      "passed": 39,
+      "rate": 0.975
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch08-593",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 24,
+      "text_preview": "Quique na ponta dos pés.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-525",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.1571293280235943,
+            "temperature": 0.3847220067450225,
+            "top_p": 1.0,
+            "min_p": 0.16522342838534596,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.28882384666176353,
+            "exaggeration": 0.06734730177352849,
+            "temperature": 0.15136620790373234,
+            "top_p": 1.0,
+            "min_p": 0.27900053912819034,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.3533243287603417,
+            "exaggeration": 0.43390324912746847,
+            "temperature": 0.6367814050394051,
+            "top_p": 0.7453458911036177,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 8,
+      "text_preview": "Pênaltis",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-148",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.821755432228729,
+            "exaggeration": 0.2749491446792032,
+            "temperature": 0.3288290018343347,
+            "top_p": 0.8552628231609432,
+            "min_p": 0.0,
+            "repetition_penalty": 2.164357589584932
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4201398971823124,
+            "exaggeration": 0.29264235693633517,
+            "temperature": 0.5447470689293439,
+            "top_p": 0.7424735469537633,
+            "min_p": 0.03692626624733311,
+            "repetition_penalty": 1.232907692689066
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "Diga aos seus laterais onde você os quer.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-270",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 79,
+      "text_preview": "Fechar o ângulo é como goleiros param chutes antes mesmo de eles serem batidos.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-465",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 76,
+      "text_preview": "Quando você vir um companheiro livre logo após fazer uma defesa, não espere.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-057",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Seu time vai estar atacando.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-084",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 76,
+      "text_preview": "O trabalho que você faz antes do início define o tom de tudo que vem depois.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-089",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 10,
+      "text_preview": "Aperte-as.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-253",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Uma postura aberta do corpo geralmente significa um passe.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-401",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 62,
+      "text_preview": "A primeira grande defesa no jogo faz você se sentir imbatível.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-441",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 60,
+      "text_preview": "O outro time pode ainda não estar organizado defensivamente.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-462",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 92,
+      "text_preview": "Uma bola para o líbero dá ao seu time uma forma calma e controlada de construir ",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-540",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Empurre com força com as pernas.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-571",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 8,
+      "text_preview": "Respire.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 17,
+      "text_preview": "Você é o goleiro.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 46,
+      "text_preview": "Você é o último jogador entre a bola e a rede.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 69,
+      "text_preview": "Cada companheiro de time em campo confia em você para proteger o gol.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 53,
+      "text_preview": "Essa confiança é algo que você conquista a cada jogo.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Você é o único jogador em campo que pode usar as mãos.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 35,
+      "text_preview": "Suas mãos são sua maior ferramenta.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

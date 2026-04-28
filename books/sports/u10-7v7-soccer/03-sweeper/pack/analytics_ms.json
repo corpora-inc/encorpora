@@ -1,0 +1,354 @@
+{
+  "book_id": "pack",
+  "language": "ms",
+  "timestamp": "2026-04-21T18:24:12.472905+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 539,
+  "segments_converged_by_retry": 68,
+  "segments_plateau_stopped": 6,
+  "total_retries": 112,
+  "error_distribution": {
+    "trailing_silence": 39,
+    "transcription_mismatch": 11,
+    "tail_energy": 6,
+    "tail_spike": 5,
+    "first_word_weak": 3
+  },
+  "phase_timings": {
+    "tts": 133.13843178749084,
+    "align": 38.81428647041321,
+    "validate": 31.81230330467224,
+    "trim": 0.4175879955291748,
+    "master": 8.0099196434021
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-061",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu membaca permainan."
+    },
+    {
+      "id": "ch03-215",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Tarik nafas."
+    },
+    {
+      "id": "ch05-381",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Tidak setiap serangan memerlukan kamu mara ke hadapan."
+    },
+    {
+      "id": "ch06-449",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Katakan \"jangan risau, yang seterusnya\" dan fokus pada permainan seterusnya."
+    },
+    {
+      "id": "ch08-547",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Apabila kamu mengambil bola di bawah tekanan dan membuat hantaran bersih, seluru"
+    },
+    {
+      "id": "ch08-589",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu mengawal tempo."
+    },
+    {
+      "id": "ch08-596",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Pemain lain tergesa-gesa."
+    },
+    {
+      "id": "ch08-601",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu bernafas."
+    },
+    {
+      "id": "ch02-125",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6977052736580422,
+            "exaggeration": 0.10389066571308048,
+            "temperature": 0.39143841230749243,
+            "top_p": 0.6863027269978064,
+            "min_p": 0.0016494367378610264,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5855930927145215,
+            "exaggeration": 0.31268156109410333,
+            "temperature": 0.377932135751091,
+            "top_p": 0.6302313509079069,
+            "min_p": 0.16801340865165995,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5848283412143669,
+            "exaggeration": 0.691746645757444,
+            "temperature": 0.8674685361653462,
+            "top_p": 0.6377886461962456,
+            "min_p": 0.10722190361759101,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Jangkaan"
+    },
+    {
+      "id": "ch05-380",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.6639605380156084,
+            "exaggeration": 0.281540811177835,
+            "temperature": 0.28982312627585244,
+            "top_p": 1.0,
+            "min_p": 0.3156495356921284,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5434096785969269,
+            "exaggeration": 0.0,
+            "temperature": 0.3875692718307664,
+            "top_p": 0.6274743626688422,
+            "min_p": 0.15694756751971414,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.49280051913748124,
+            "exaggeration": 0.7306104846406682,
+            "temperature": 0.7406129599082076,
+            "top_p": 0.7259861952249079,
+            "min_p": 0.010226127343408525,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Tahu Bila Untuk Kekal"
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu memintas hantaran melalui tengah."
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Dua pemain pertahanan bermain di hadapan kamu, seorang di kiri dan seorang di ka"
+    },
+    {
+      "id": "ch01-076",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Miliki posisi ini."
+    },
+    {
+      "id": "ch02-089",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Mata kamu mengimbas padang tanpa henti."
+    },
+    {
+      "id": "ch03-178",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu meramal arah hantaran."
+    },
+    {
+      "id": "ch04-236",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Kamu menghantar hantaran maut."
+    },
+    {
+      "id": "ch04-309",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Hantaran terus yang kuat yang membelah pertahanan."
+    },
+    {
+      "id": "ch05-333",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Cari ruang kosong di tengah."
+    },
+    {
+      "id": "ch06-396",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Rakan sepasukan kamu tidak."
+    },
+    {
+      "id": "ch06-413",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "Katakan \"hantarkan pada aku\" apabila kamu terbuka untuk hantaran."
+    }
+  ]
+}

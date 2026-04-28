@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "pl",
+  "timestamp": "2026-04-20T13:02:14.023906+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 275,
+  "segments_converged_by_retry": 17,
+  "segments_plateau_stopped": 11,
+  "total_retries": 61,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch02-065",
+      "attempts": 6,
+      "best_quality_score": 3.2,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Imię Zheng Yi Sao oznacza po prostu żona Zheng Yi."
+    },
+    {
+      "id": "ch02-094",
+      "attempts": 5,
+      "best_quality_score": 4.24,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Między tysiąc siedemset dziewięćdziesiątym ósmym a tysiąc osiemset piątym rokiem"
+    },
+    {
+      "id": "ch02-078",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi oświadczył się młodej kobiecie."
+    },
+    {
+      "id": "ch02-093",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi wierzył, że współpracując, będą znacznie potężniejsi."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Do tysiąc osiemset piątego roku konfederacja była kompletna."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Panowała nad całym Morzem Południowochińskim."
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 4,
+      "best_quality_score": 4.48,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "W listopadzie tysiąc osiemset siódmego roku Zheng Yi zmarł."
+    },
+    {
+      "id": "ch03-155",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Dwór cesarski był wstrząśnięty skalą strat."
+    },
+    {
+      "id": "ch03-166",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ale Zheng Yi Sao szybko się przystosowała."
+    },
+    {
+      "id": "ch04-184",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Od granicy Wietnamu na południu po wybrzeże Fujian na północy żaden statek nie b"
+    },
+    {
+      "id": "ch05-242",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao oceniła nową sytuację z charakterystyczną jasnością."
+    },
+    {
+      "id": "ch05-258",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "W kwietniu tysiąc osiemset dziesiątego roku umowa została sfinalizowana."
+    },
+    {
+      "id": "ch06-296",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Współcześnie Zheng Yi Sao stała się ikoną kultury."
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi miał śmiałą wizję."
+    },
+    {
+      "id": "ch03-128",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Twierdziła, że była równorzędną partnerką męża w budowaniu tego sojuszu."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao bezlitośnie wykorzystywała swoją przewagę."
+    },
+    {
+      "id": "ch04-214",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Połączone powstanie lądowe i morskie mogło zagrozić samej dynastii."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Świat, w którym imperia rywalizowały, a prawo morza należało do tego, kto był do"
+    },
+    {
+      "id": "ch02-086",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi przyjął jej warunki."
+    },
+    {
+      "id": "ch03-122",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao nawiązała z Zhang Bao sojusz zarówno osobisty, jak i strategiczny."
+    }
+  ]
+}

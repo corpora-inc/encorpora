@@ -1,13 +1,25 @@
 {
   "book_id": "pack",
   "language": "fi",
-  "timestamp": "2026-04-20T00:44:10.051258+00:00",
-  "segments_total": 565,
-  "segments_first_pass": 396,
-  "segments_converged_by_retry": 102,
+  "timestamp": "2026-04-21T17:21:17.953364+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 434,
+  "segments_converged_by_retry": 112,
   "segments_plateau_stopped": 67,
-  "total_retries": 350,
-  "error_distribution": {},
+  "total_retries": 368,
+  "error_distribution": {
+    "trailing_silence": 50,
+    "tail_energy": 13,
+    "tail_spike": 9,
+    "transcription_mismatch": 5
+  },
+  "phase_timings": {
+    "tts": 153.29454922676086,
+    "align": 45.561809062957764,
+    "validate": 23.865304708480835,
+    "trim": 0.4188065528869629,
+    "master": 8.270018339157104
+  },
   "worst_segments": [
     {
       "id": "ch07-528",
@@ -16,6 +28,7 @@
       "best_attempt": 4,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Tieda tarkalleen, minne asettua jokaisessa aloitustyypissa."
     },
     {
@@ -25,7 +38,118 @@
       "best_attempt": 2,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Joukkuetoverisi eivat nae."
+    },
+    {
+      "id": "ch04-299",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5619066571908689,
+            "exaggeration": 0.3848720747057664,
+            "temperature": 0.6323937010354126,
+            "top_p": 0.800517632149258,
+            "min_p": 0.04639077676198264,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.48070543008224403,
+            "exaggeration": 0.37081079649738574,
+            "temperature": 0.4291032233233443,
+            "top_p": 0.6765290383098694,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.4127994639250506,
+            "exaggeration": 0.48634176515966604,
+            "temperature": 0.8384066990039835,
+            "top_p": 0.7194344183168881,
+            "min_p": 0.13784793875516319,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.816518187518054,
+            "exaggeration": 0.39769581142504945,
+            "temperature": 0.2321497093235591,
+            "top_p": 1.0,
+            "min_p": 0.2996404766460442,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.18429500694911477,
+            "exaggeration": 0.5743908662480025,
+            "temperature": 0.565267601745352,
+            "top_p": 0.8834885538837483,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "Supervoimasi"
     },
     {
       "id": "ch01-021",
@@ -34,6 +158,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Naet, minne vaara on rakentumassa."
     },
     {
@@ -43,6 +168,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Pitka vinottainen syotto, joka loytaa laitapelaajan tilasta."
     },
     {
@@ -52,6 +178,7 @@
       "best_attempt": 4,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Kun joukkueellasi on pallonhallinta, koko muodostelma siirtyy ylospain kentalla."
     },
     {
@@ -61,6 +188,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Limittaisjuoksu yllattaa vastustajan."
     },
     {
@@ -70,6 +198,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Luota vaistoihisi ja jatka oppimista."
     },
     {
@@ -79,6 +208,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Mita aikaisemmin huudat, sita enemman aikaa joukkuetoverillasi on reagoida."
     },
     {
@@ -88,6 +218,7 @@
       "best_attempt": 1,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Syvemmalta tulleissa vapaapotluissa kasittele vapaapotku kuin pitkaa syottoa."
     },
     {
@@ -97,6 +228,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Sina olet joukkueen tarkein kenttapelaaja."
     },
     {
@@ -106,6 +238,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Liberon paikka vaatii alykkaimman pelaajan."
     },
     {
@@ -115,6 +248,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Naet joukkuetoverisi."
     },
     {
@@ -124,6 +258,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Naet, minne mahdollisuus on avautumassa."
     },
     {
@@ -133,6 +268,7 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Aloitat vastahyokkauksen yhdella loistavalla syotolla."
     },
     {
@@ -142,6 +278,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Muutat puolustuksen hyokkaykseksi yhdessa hetkessa."
     },
     {
@@ -151,6 +288,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Puolustat."
     },
     {
@@ -160,6 +298,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Hyokkaat."
     },
     {
@@ -169,6 +308,7 @@
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Kolme hyokkaajaa levittaytyy etulinjaan."
     },
     {
@@ -178,16 +318,8 @@
       "best_attempt": 0,
       "plateau_count": 3,
       "final_errors": [],
+      "retry_history": [],
       "text_preview": "Puolustajasi luottavat siihen, etta kattelet tilan heiden takanaan."
-    },
-    {
-      "id": "ch01-059",
-      "attempts": 4,
-      "best_quality_score": 3.44,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "Valmentajasi luottaa sinuun kentan vaikeimman tyon kanssa."
     }
   ]
 }

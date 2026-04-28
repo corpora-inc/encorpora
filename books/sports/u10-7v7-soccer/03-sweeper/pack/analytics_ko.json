@@ -1,0 +1,571 @@
+{
+  "book_id": "pack",
+  "language": "ko",
+  "timestamp": "2026-04-21T18:17:49.204556+00:00",
+  "segments_total": 613,
+  "segments_first_pass": 588,
+  "segments_converged_by_retry": 21,
+  "segments_plateau_stopped": 4,
+  "total_retries": 46,
+  "error_distribution": {
+    "trailing_silence": 57,
+    "tail_energy": 12,
+    "tail_spike": 11,
+    "final_word_weak": 10,
+    "first_word_weak": 2,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 128.59506559371948,
+    "align": 42.32365441322327,
+    "validate": 3.6213085651397705,
+    "trim": 0.40003323554992676,
+    "master": 7.26261568069458
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-283",
+      "attempts": 5,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8433663016597095,
+            "exaggeration": 0.339327443828128,
+            "temperature": 0.6889732313668706,
+            "top_p": 0.9068283565136658,
+            "min_p": 0.2982946642113019,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5083417436327553,
+            "exaggeration": 0.0,
+            "temperature": 0.47395165426996066,
+            "top_p": 0.8191999917763525,
+            "min_p": 0.3242438388089327,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6079554022590874,
+            "exaggeration": 0.3851280380683078,
+            "temperature": 0.6562998714452533,
+            "top_p": 0.9166594273914199,
+            "min_p": 0.03282748894764617,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.42394029456490534,
+            "temperature": 0.3866750829217065,
+            "top_p": 0.8849349081814342,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "역습 상황 읽기"
+    },
+    {
+      "id": "ch04-279",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신의 수비수가 볼을 받고, 고개를 들고, 공격수에게 전진 패스를 한다."
+    },
+    {
+      "id": "ch05-338",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신의 존재가 수비수를 포지션에서 끌어냅니다."
+    },
+    {
+      "id": "ch06-422",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "공이 오른쪽으로 넘어가면 왼쪽 수비수에게 모이라고 지시하세요."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7955973008009631,
+            "exaggeration": 0.5141484232929566,
+            "temperature": 0.2528705736818026,
+            "top_p": 1.0,
+            "min_p": 0.12888898437898702,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.3577059373930481,
+            "exaggeration": 0.28249613602529994,
+            "temperature": 0.35409559421170567,
+            "top_p": 0.9685183247306408,
+            "min_p": 0.28273821162159507,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5347731050908078,
+            "exaggeration": 0.521617471729883,
+            "temperature": 0.47933191234827444,
+            "top_p": 0.7437956626350345,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "신뢰"
+    },
+    {
+      "id": "ch02-133",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6068932740518935,
+            "exaggeration": 0.4074765902459735,
+            "temperature": 0.3002884183068826,
+            "top_p": 0.9837402417905503,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.36535781335849415,
+            "exaggeration": 0.04603717210835406,
+            "temperature": 0.4013647230985876,
+            "top_p": 0.6357796112251236,
+            "min_p": 0.20375441551701115,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.37612660464500147,
+            "exaggeration": 0.6097908400363597,
+            "temperature": 0.5572551735111353,
+            "top_p": 0.9988636498471103,
+            "min_p": 0.10861630805807695,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "포지셔닝"
+    },
+    {
+      "id": "ch05-380",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7094812603429916,
+            "exaggeration": 0.09812751290316868,
+            "temperature": 0.563290200462732,
+            "top_p": 0.6422894619904039,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6720799814182733,
+            "exaggeration": 0.37016422921507297,
+            "temperature": 0.25869197895535506,
+            "top_p": 0.9922824912200495,
+            "min_p": 0.01773625007599236,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5460642587018797,
+            "exaggeration": 0.3589703965035611,
+            "temperature": 0.569113960069288,
+            "top_p": 0.9058180726487639,
+            "min_p": 0.2452263499062803,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "언제 머물러야 할지 아는 것"
+    },
+    {
+      "id": "ch05-387",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6761007628411082,
+            "exaggeration": 0.19239695651816263,
+            "temperature": 0.3553733192493795,
+            "top_p": 1.0,
+            "min_p": 0.3056675122274921,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7411453591956627,
+            "exaggeration": 0.04692575460575338,
+            "temperature": 0.146894866611815,
+            "top_p": 0.8716180230181814,
+            "min_p": 0.14557337712917032,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.8320804024212813,
+            "exaggeration": 0.41475051923360495,
+            "temperature": 0.7280676930958431,
+            "top_p": 0.8730067928025547,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_preview": "균형"
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신은 전체 필드를 보며 뒤에서 팀을 이끕니다."
+    },
+    {
+      "id": "ch02-112",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "공을 정면으로 바라보는 스위퍼는 플레이 뒤쪽의 달리는 선수들을 놓치게 됩니다."
+    },
+    {
+      "id": "ch05-332",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신은 공을 받아서, 고개를 들고, 필드 반대편으로 볼 소유권을 재순환시킵니다."
+    },
+    {
+      "id": "ch06-444",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "지지받는다고 느끼는 팀동료는 더욱 자신감 있게 플레이합니다."
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신은 두 수비수 뒤에서, 골키퍼 앞에서 플레이합니다."
+    },
+    {
+      "id": "ch01-047",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "당신은 필드 중앙에서 다른 누구보다도 깊숙한 곳에 서 있습니다."
+    },
+    {
+      "id": "ch02-099",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "몇 초마다 경기장 전체를 다시 한 번 훑어봅니다."
+    },
+    {
+      "id": "ch02-111",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "오픈 바디 앵글은 공과 주변의 선수들을 동시에 볼 수 있게 해줍니다."
+    },
+    {
+      "id": "ch03-168",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "하지만 일찍 앞으로 나가면 깔끔하게 볼을 따내고 역습을 시작할 수 있습니다."
+    },
+    {
+      "id": "ch04-273",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "한 번의 패스."
+    },
+    {
+      "id": "ch06-442",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "\"잘했어\" 또는 \"좋은 태클이야\"라고 말하세요. 공격수가 수비를 돕기 위해 뒤로 돌아올 때, 그 노력을 인정해주세요."
+    },
+    {
+      "id": "ch06-459",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_preview": "압박이 커질 때 모든 사람을 안정적으로 유지하는 선수가 되세요."
+    }
+  ]
+}

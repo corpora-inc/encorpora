@@ -1,0 +1,1601 @@
+{
+  "book_id": "pack",
+  "language": "tr",
+  "timestamp": "2026-04-26T06:37:08.066954+00:00",
+  "segments_total": 611,
+  "segments_first_pass": 532,
+  "segments_converged_by_retry": 71,
+  "segments_plateau_stopped": 8,
+  "total_retries": 120,
+  "error_distribution": {
+    "trailing_silence": 201,
+    "first_word_weak": 67,
+    "pre_speech_spike": 50,
+    "tail_energy": 35,
+    "transcription_mismatch": 17,
+    "hard_ending": 16,
+    "final_word_weak": 11,
+    "tail_spike": 9,
+    "post_speech_pop": 8,
+    "stacked_words": 6,
+    "truncated_last_word": 6,
+    "min_trailing_silence": 6
+  },
+  "phase_timings": {
+    "tts": 1596.7233107089996,
+    "align": 450.7325270175934,
+    "validate": 370.01816153526306,
+    "trim": 8.148513555526733,
+    "master": 137.954585313797
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 207,
+      "passed": 192,
+      "rate": 0.927536231884058
+    },
+    "medium_30_80": {
+      "total": 374,
+      "passed": 316,
+      "rate": 0.8449197860962567
+    },
+    "long_80_plus": {
+      "total": 30,
+      "passed": 24,
+      "rate": 0.8
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-076",
+      "attempts": 7,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6569500322474173,
+            "exaggeration": 0.16500327625247474,
+            "temperature": 0.42995422832385843,
+            "top_p": 0.8274300375144967,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.2666697515639644,
+            "exaggeration": 0.0,
+            "temperature": 0.35627327865011876,
+            "top_p": 0.8311392536860549,
+            "min_p": 0.0,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.45079257576927634,
+            "exaggeration": 0.7005119213354675,
+            "temperature": 0.7427669717964502,
+            "top_p": 0.9317841685588577,
+            "min_p": 0.069749898490756,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3776693335046174,
+            "temperature": 0.3218569680459456,
+            "top_p": 0.6095678279342035,
+            "min_p": 0.16545650722476266,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.17473515453308686,
+            "exaggeration": 0.4547865455378937,
+            "temperature": 0.3610788200985408,
+            "top_p": 1.0,
+            "min_p": 0.31394896136524186,
+            "repetition_penalty": 1.83
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7041806444311935,
+            "exaggeration": 0.18839299447618116,
+            "temperature": 0.05,
+            "top_p": 0.9791383660052209,
+            "min_p": 0.3218744900299375,
+            "repetition_penalty": 1.83
+          }
+        }
+      ],
+      "text_len": 86,
+      "text_preview": "Forvet, kaleciyİ yenmenin ve kutlamaya koşan takım arkadaşlarının heyecanı için ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.23685248498062317,
+            "temperature": 0.5931026433274826,
+            "top_p": 1.0,
+            "min_p": 0.1247409442772873,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.2829130317544309,
+            "exaggeration": 0.36659843967927425,
+            "temperature": 0.3492277389063564,
+            "top_p": 0.7049855035334094,
+            "min_p": 0.2928384409909074,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.4741505679176171,
+            "exaggeration": 0.367226927505792,
+            "temperature": 0.5892554792294531,
+            "top_p": 0.8655867880233685,
+            "min_p": 0.30575948855293955,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.8108861568195675,
+            "exaggeration": 0.1467815614072292,
+            "temperature": 0.15289647301452114,
+            "top_p": 0.910962953973844,
+            "min_p": 0.14649939696136668,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "hard_ending"
+          ],
+          "score": 13.0,
+          "params": {
+            "cfg_weight": 0.5753236689599619,
+            "exaggeration": 0.3035745654797367,
+            "temperature": 0.27110913582706536,
+            "top_p": 0.941188160640559,
+            "min_p": 0.2663228801076791,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Santrfor ortayı bitirir.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-161",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6363552667317398,
+            "exaggeration": 0.10686993128720518,
+            "temperature": 0.5170189214622289,
+            "top_p": 1.0,
+            "min_p": 0.2284461759935094,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6280420101674855,
+            "exaggeration": 0.25013801691388643,
+            "temperature": 0.2785534075523788,
+            "top_p": 0.8613626362337836,
+            "min_p": 0.01291177382692435,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.5953786454252568,
+            "exaggeration": 0.4984435680823193,
+            "temperature": 0.832340659818204,
+            "top_p": 0.9991964963658122,
+            "min_p": 0.0,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.33361963060259403,
+            "temperature": 0.05,
+            "top_p": 0.6689029159022908,
+            "min_p": 0.0,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.3367760229562041,
+            "exaggeration": 0.29741123761078203,
+            "temperature": 0.48195283241272846,
+            "top_p": 0.8677986630699807,
+            "min_p": 0.05272363801098742,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "O fazladan saniye kaleye şut ile kaybedilen top arasındaki farktır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-384",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8326382076887271,
+            "exaggeration": 0.23801191455271153,
+            "temperature": 0.2620444039814696,
+            "top_p": 0.6406093367004034,
+            "min_p": 0.13568446517653174,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6176696240374934,
+            "exaggeration": 0.13973729285984005,
+            "temperature": 0.10102727933617167,
+            "top_p": 0.8163914720406036,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6975015596849161,
+            "exaggeration": 0.4744796201826579,
+            "temperature": 0.5985914954737441,
+            "top_p": 0.6332878583681906,
+            "min_p": 0.2036400118546344,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.43582341275781644,
+            "temperature": 0.1400454549444421,
+            "top_p": 0.8512578893238136,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.25235382015191066,
+            "exaggeration": 0.38030169523081203,
+            "temperature": 0.6406266289017338,
+            "top_p": 1.0,
+            "min_p": 0.22674289299487535,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "En iyi forvetler baskı yapar, kovalara ve topu geri kazanmak için savaşır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-572",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8788388728486483,
+            "exaggeration": 0.4183344132041457,
+            "temperature": 0.506168394592743,
+            "top_p": 0.6441087031377073,
+            "min_p": 0.0026165664450227555,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.6846996370525413,
+            "exaggeration": 0.052004196357091914,
+            "temperature": 0.19924091377934944,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.7758737587369762,
+            "exaggeration": 0.6506826904173193,
+            "temperature": 0.8074222460953663,
+            "top_p": 1.0,
+            "min_p": 0.2894402545576755,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9788000654958042,
+            "exaggeration": 0.1352069069419078,
+            "temperature": 0.05,
+            "top_p": 0.6139463957811857,
+            "min_p": 0.28773543923087364,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Ne kadar güvenli hissedersen fırsat geldiğinde o kadar sakin olursun.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-074",
+      "attempts": 4,
+      "best_quality_score": 23.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "pre_speech_spike"
+          ],
+          "score": 28.0,
+          "params": {
+            "cfg_weight": 0.9931328173832963,
+            "exaggeration": 0.25464240266313515,
+            "temperature": 0.49364952546185986,
+            "top_p": 1.0,
+            "min_p": 0.2491673190611481,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.459766712495782,
+            "exaggeration": 0.32885667233537397,
+            "temperature": 0.20352103799574717,
+            "top_p": 1.0,
+            "min_p": 0.12428853273745663,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.7964869135363757,
+            "exaggeration": 0.3758064230983225,
+            "temperature": 0.9074748441552742,
+            "top_p": 0.7754550044343159,
+            "min_p": 0.3015431059502426,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "Pozisyonuna sahip çık.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-219",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.8692790789941885,
+            "exaggeration": 0.20253816553998305,
+            "temperature": 0.606435738231138,
+            "top_p": 1.0,
+            "min_p": 0.23855733898828926,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.5178211208254119,
+            "exaggeration": 0.10207562126369496,
+            "temperature": 0.4886566693452331,
+            "top_p": 0.6765871647889001,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6269418533754569,
+            "exaggeration": 0.723942295941405,
+            "temperature": 0.6152754501833089,
+            "top_p": 0.9177922417607558,
+            "min_p": 0.2100147766596017,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Baskı harika bir forveti sarsmaz.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3,
+            "temperature": 0.4,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.30589195300046756,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.10066940774142738,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.20259216152312604,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.6476870043087826,
+            "temperature": 0.4,
+            "top_p": 0.9372553886244148,
+            "min_p": 0.0014786557002625378,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Sadece bir ayağıyla şut atabilen bir forvet tahmin edilebilirdir.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-373",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6763317734700967,
+            "exaggeration": 0.16719400245955868,
+            "temperature": 0.6490905416996764,
+            "top_p": 1.0,
+            "min_p": 0.12970497094539687,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7120111201051289,
+            "exaggeration": 0.2393150009452788,
+            "temperature": 0.3441413638091851,
+            "top_p": 0.6253492212196319,
+            "min_p": 0.1408925418454828,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5405577645562036,
+            "exaggeration": 0.36689096351568784,
+            "temperature": 0.5903310730564526,
+            "top_p": 0.9495784206968925,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Golü yaratmaya yardım eden takım arkadaşları sevinci paylaşır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-380",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7101215170901174,
+            "exaggeration": 0.2537927770171856,
+            "temperature": 0.3997843905507058,
+            "top_p": 0.6713240859040847,
+            "min_p": 0.06655443913100004,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.34878714437030756,
+            "exaggeration": 0.3504006668395471,
+            "temperature": 0.2725306172943627,
+            "top_p": 0.7081867126530497,
+            "min_p": 0.0,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3758945405040171,
+            "exaggeration": 0.49017210328447197,
+            "temperature": 0.9404422098742605,
+            "top_p": 0.7970494120295533,
+            "min_p": 0.1234327358525372,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 108,
+      "text_preview": "En iyi hücum birimleri birbirini yükselten ve maçın her dakikası birbirleri için",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak",
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 80.0,
+          "params": {
+            "cfg_weight": 0.7454771696811267,
+            "exaggeration": 0.0735155170738111,
+            "temperature": 0.27836002292681095,
+            "top_p": 0.9424303848509135,
+            "min_p": 0.09274181629790959,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6032281871045914,
+            "exaggeration": 0.1373655629802668,
+            "temperature": 0.42805309700999783,
+            "top_p": 0.793926555295182,
+            "min_p": 0.05421425766624435,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Bir hücumcu sağ kanatta oynar.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-035",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "post_speech_pop",
+            "tail_energy"
+          ],
+          "score": 90.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4903045415057741,
+            "temperature": 0.4667588023744148,
+            "top_p": 0.8859600574908562,
+            "min_p": 0.02828091807639818,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6286534287129865,
+            "exaggeration": 0.22030740598474535,
+            "temperature": 0.1399226503686143,
+            "top_p": 0.8900414667728483,
+            "min_p": 0.22221170807215126,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "Ağ dalgalanır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-101",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.26053766571130615,
+            "temperature": 0.4090314252763374,
+            "top_p": 0.672555992963735,
+            "min_p": 0.07067742060036739,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5094020936956993,
+            "exaggeration": 0.32760311065468223,
+            "temperature": 0.49424601456788736,
+            "top_p": 0.8246276530266914,
+            "min_p": 0.3113868997151241,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Topla olan takım arkadaşın seni açık koridorda durur halde görebilir.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-115",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.894384467914668,
+            "exaggeration": 0.36098755133252075,
+            "temperature": 0.40175815986219576,
+            "top_p": 1.0,
+            "min_p": 0.1799795691166883,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.29577214436883426,
+            "exaggeration": 0.007518075402835167,
+            "temperature": 0.29899677953410836,
+            "top_p": 0.8281800439705691,
+            "min_p": 0.3462895971758425,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Savunmayı Germek İçin Geniş Dur",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-118",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.6974031930177698,
+            "exaggeration": 0.4036207246075403,
+            "temperature": 0.4265664532939225,
+            "top_p": 0.7931294321758766,
+            "min_p": 0.12250426747083801,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6235700472631791,
+            "exaggeration": 0.23159346236443845,
+            "temperature": 0.44324803907027677,
+            "top_p": 0.929044401577656,
+            "min_p": 0.2528507909273494,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Açılan bir savunmanın ortada daha büyük boşlukları olur.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-204",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.3,
+            "temperature": 0.4,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.5358665164736555,
+            "temperature": 0.4,
+            "top_p": 0.8603845388431743,
+            "min_p": 0.2596967611222665,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5,
+            "exaggeration": 0.10157274251423154,
+            "temperature": 0.4,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 108,
+      "text_preview": "Bir takım arkadaşı yardıma gelene veya defans oyuncusu geri çekilip sana dönecek",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-247",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.8852592570916583,
+            "exaggeration": 0.12072202007216315,
+            "temperature": 0.6019414670555581,
+            "top_p": 0.8855503413902208,
+            "min_p": 0.018264971188052842,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3069452526575112,
+            "exaggeration": 0.12082666399213254,
+            "temperature": 0.131397479244718,
+            "top_p": 1.0,
+            "min_p": 0.08640697378610626,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "Bazen yerleştirilmiş bir şut kaleciyİ yener.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-338",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "post_speech_pop",
+            "pre_speech_spike"
+          ],
+          "score": 88.0,
+          "params": {
+            "cfg_weight": 0.6670902074714354,
+            "exaggeration": 0.2097722026535857,
+            "temperature": 0.3197960331738086,
+            "top_p": 0.7216428281794324,
+            "min_p": 0.15017813088091173,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7315707419450295,
+            "exaggeration": 0.018951280281142013,
+            "temperature": 0.2617763742567538,
+            "top_p": 0.8110563868793347,
+            "min_p": 0.1181641184806709,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "Ver kaçı iki yanındaki hücumcularla çalış.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-342",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7719146178376246,
+            "exaggeration": 0.16198488636161124,
+            "temperature": 0.6048860131905274,
+            "top_p": 0.9267814934528116,
+            "min_p": 0.0,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5320336582505417,
+            "exaggeration": 0.3528196112420793,
+            "temperature": 0.190734052246868,
+            "top_p": 0.8011964177489391,
+            "min_p": 0.19003015613144172,
+            "repetition_penalty": 1.81
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Orta, kanattan sahanın ortasına, kalenin yakınına yapılan bir pastır.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-392",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.7272283850868342,
+            "exaggeration": 0.2326339179873952,
+            "temperature": 0.4935047188361553,
+            "top_p": 0.9455073130230082,
+            "min_p": 0.19124058183142448,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4175927564783138,
+            "exaggeration": 0.32938006447556206,
+            "temperature": 0.20869960904806795,
+            "top_p": 0.8556211065481142,
+            "min_p": 0.34029796661767253,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Baskı yaptığın her seferde topu kazanmak zorunda değilsin.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "trailing_silence": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.024,
+        "temperature": 0.017,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.052,
+        "temperature": 0.1,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.122,
+        "temperature": 0.101,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.033,
+        "temperature": 0.204,
+        "repetition_penalty": 0.0
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 28,
+      "avg_delta": {
+        "cfg_weight": -0.018,
+        "temperature": 0.161,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.061,
+        "temperature": 0.338,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.05,
+        "temperature": 0.306,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.05,
+        "temperature": 0.306,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.05,
+        "temperature": 0.306,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.303,
+        "temperature": 0.065,
+        "repetition_penalty": 0.0
+      }
+    },
+    "post_speech_pop": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.107,
+        "temperature": -0.05,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

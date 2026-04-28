@@ -352,3 +352,100 @@ To test in the Corpan app:
    ```
 5. Invalidate CDN cache if updating existing packs
 6. Verify catalog.json has correct entries
+
+---
+
+# Anonymous Reader Analytics
+
+A privacy-first telemetry pipeline lets us see which books are opened, for how
+long, in which language, and roughly where — without identifying users.
+
+## Architecture
+
+```
+Reader (web/Tauri) → CloudFront → Lambda Function URL
+                                       ↓
+                     Kinesis Data Firehose (JSON → Parquet)
+                                       ↓
+                     S3: corpan-analytics-prod/events/dt=…/hour=…/
+                                       ↓
+                     Glue Data Catalog → Athena workgroup `corpan-analytics`
+```
+
+- **Region**: `us-east-2` (matches `corpan-prod`).
+- **Endpoint**: see Terraform output `analytics_endpoint`.
+- **Schema**: see `aws_glue_catalog_table.events` in `analytics.tf`.
+
+## Privacy contract (locked in code)
+
+- No accounts, no IPs, no device IDs, no install IDs persisted in queryable storage.
+- `session_id` is per-app-launch (`crypto.randomUUID()`), in memory only.
+- Country comes from CloudFront's `CloudFront-Viewer-Country` header — IP
+  arrives at the Lambda but is never written to Firehose and never logged.
+- Lambda CloudWatch retention 7 days, only counts/errors logged (never bodies).
+- Each reader exposes a Settings → Privacy toggle that flips
+  `localStorage["corpan-analytics-disabled"]="1"`. When set, no network ever happens.
+
+## Cost & capacity
+
+Linear and trivial. At 1M MAU × 30 events/user/month → ~$40/month.
+At 100M events/month → ~$135/month. Capacity ceilings start at hundreds of
+millions of MAU and every limit is a support ticket away.
+
+## Deploy
+
+```bash
+cd ~/encorpora/corpan/infra/terraform
+export $(grep -v '^#' ~/.env | xargs)   # admin creds
+terraform plan
+terraform apply
+terraform output analytics_endpoint     # paste into ANALYTICS_ENDPOINT in appShell.ts
+```
+
+After applying, paste the endpoint URL into
+`packs/shared/catalog/src/appShell.ts` const `ANALYTICS_ENDPOINT`,
+rebuild both readers, and ship.
+
+## Operate
+
+The agent answers ad-hoc questions via boto3 + Athena using the
+`corpan-analyst` IAM user (read-only). Add a `[corpan-analyst]` profile to
+`~/.aws/credentials` with the analyst access keys after `terraform apply`.
+
+```bash
+corpan-analytics today              # quick volume sanity
+corpan-analytics top-books --since 7d
+corpan-analytics duration-by-book --since 30d --limit 100
+corpan-analytics countries --since 1d
+corpan-analytics languages --since 7d
+corpan-analytics readers --since 7d
+corpan-analytics raw "SELECT book_id, count(*) FROM events
+                      WHERE dt = current_date AND event = 'book_open'
+                      GROUP BY 1 ORDER BY 2 DESC"
+```
+
+## Schema
+
+```
+schema             int     -- always 1 today
+ts                 string  -- client wall-clock ISO8601
+session_id         string  -- per-app-launch UUID (NEVER cross-session)
+event              string  -- book_open | book_close | book_heartbeat | language_switch | session_start
+reader_id          string  -- stargate | earthgate
+reader_version     string
+app_version        string
+platform           string  -- ios | android | web | macos | windows | linux | unknown
+locale             string  -- e.g. en-US (Intl, NOT IP geo)
+tz_offset_minutes  int
+book_id            string  -- e.g. book_monte_alban
+narration_pack_id  string  -- e.g. monte-alban-ian-en
+language           string
+voice_id           string
+duration_ms        int     -- present on book_close
+country            string  -- ISO 3166-1 alpha-2 from CloudFront edge
+country_region     string  -- subdivision code (US-CA, GB-ENG, …)
+ingest_ts          string  -- server-side, when Lambda received it
+```
+
+Partitions: `dt=YYYY-MM-DD/hour=HH/` (Hive-style projection, no
+`MSCK REPAIR TABLE` needed).

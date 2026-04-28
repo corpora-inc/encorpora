@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "pt",
+  "timestamp": "2026-04-20T13:52:52.803756+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 269,
+  "segments_converged_by_retry": 22,
+  "segments_plateau_stopped": 12,
+  "total_retries": 67,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch05-275",
+      "attempts": 5,
+      "best_quality_score": 4.48,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Morreu em mil oitocentos e quarenta e quatro, com aproximadamente sessenta e nov"
+    },
+    {
+      "id": "ch01-024",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "A dinastia Qing governava a China durante este período."
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Este era o mundo que produziu Zheng Yi Sao."
+    },
+    {
+      "id": "ch01-054",
+      "attempts": 4,
+      "best_quality_score": 70.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Um mundo onde impérios competiam e a lei do mar pertencia a quem fosse forte o b"
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "A mulher que viria a ser Zheng Yi Sao nasceu por volta de mil setecentos e seten"
+    },
+    {
+      "id": "ch02-066",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Nasceu na comunidade náutica Tanka, na província de Guangdong."
+    },
+    {
+      "id": "ch02-086",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi concordou com suas condições."
+    },
+    {
+      "id": "ch02-094",
+      "attempts": 4,
+      "best_quality_score": 5.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Entre mil setecentos e noventa e oito e mil oitocentos e cinco, Zheng Yi trabalh"
+    },
+    {
+      "id": "ch04-194",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Os juncos de guerra da frota eram formidáveis máquinas de combate."
+    },
+    {
+      "id": "ch04-219",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Um pirata recebia comida regular, uma parte do saque e um senso de pertencimento"
+    },
+    {
+      "id": "ch04-221",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao governava esta sociedade com autoridade absoluta."
+    },
+    {
+      "id": "ch05-247",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Em vez de lutar até a morte, escolheu negociar de uma posição de força remanesce"
+    },
+    {
+      "id": "ch05-271",
+      "attempts": 4,
+      "best_quality_score": 4.32,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Morreu em mil oitocentos e vinte e dois, ainda em serviço do governo."
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "A cidade de Cantão, hoje chamada Guangzhou, ficava no centro desse comércio."
+    },
+    {
+      "id": "ch02-071",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Era um trabalho difícil e perigoso, mas lhe deu um conhecimento do mundo que pou"
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 3,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "text_preview": "Zheng Yi tinha uma visão ousada."
+    },
+    {
+      "id": "ch02-111",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Sem um líder forte, ela se fragmentaria de volta em facções rivais."
+    },
+    {
+      "id": "ch03-144",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Os restantes oitenta por cento iam para o fundo comum."
+    },
+    {
+      "id": "ch04-223",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Resolvia disputas entre capitães e fazia cumprir o código de leis."
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "No final dos mil e setecentos, no entanto, a dinastia Qing começava a enfraquece"
+    }
+  ]
+}

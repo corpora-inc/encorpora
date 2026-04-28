@@ -1,0 +1,795 @@
+{
+  "book_id": "pack",
+  "language": "pl",
+  "timestamp": "2026-04-24T07:44:11.738966+00:00",
+  "segments_total": 557,
+  "segments_first_pass": 469,
+  "segments_converged_by_retry": 76,
+  "segments_plateau_stopped": 12,
+  "total_retries": 149,
+  "error_distribution": {
+    "trailing_silence": 26,
+    "first_word_weak": 11,
+    "tail_energy": 11,
+    "tail_spike": 10,
+    "final_word_weak": 5,
+    "transcription_mismatch": 5,
+    "hard_ending": 2,
+    "pre_speech_spike": 1
+  },
+  "phase_timings": {
+    "tts": 148.2863507270813,
+    "align": 43.47338819503784,
+    "validate": 19.35012650489807,
+    "trim": 0.2395462989807129,
+    "master": 5.459269762039185
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 126,
+      "passed": 101,
+      "rate": 0.8015873015873016
+    },
+    "medium_30_80": {
+      "total": 354,
+      "passed": 303,
+      "rate": 0.8559322033898306
+    },
+    "long_80_plus": {
+      "total": 77,
+      "passed": 65,
+      "rate": 0.8441558441558441
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-113",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6863484944390658,
+            "exaggeration": 0.2805269253978682,
+            "temperature": 0.3625491376485472,
+            "top_p": 0.6809729309479795,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6318742695118897,
+            "exaggeration": 0.1758084112734778,
+            "temperature": 0.06625327871037029,
+            "top_p": 0.7276850606437358,
+            "min_p": 0.1066238880689642,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6148808681378992,
+            "exaggeration": 0.6838159831315416,
+            "temperature": 0.7429695033828173,
+            "top_p": 0.7817290574245719,
+            "min_p": 0.09939682016427467,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5224617545756938,
+            "temperature": 0.31200063921535925,
+            "top_p": 1.0,
+            "min_p": 0.04670576635341536,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5036772042134023,
+            "exaggeration": 0.5371168532167951,
+            "temperature": 0.36404284881443183,
+            "top_p": 0.6211687398728419,
+            "min_p": 0.2704234191645326,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "Słuchaj, kiedy libero mówi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-114",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 136,
+      "text_preview": "Libero może powiedzieć „zawodnik za tobą” lub „przesuń się w lewo” albo „idź do ",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-273",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 36,
+      "text_preview": "Rozmawiająca obrona to silna obrona.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-297",
+      "attempts": 6,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9023506927475735,
+            "exaggeration": 0.11225022539599422,
+            "temperature": 0.2757775380174396,
+            "top_p": 1.0,
+            "min_p": 0.22148533244156568,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.549865674499636,
+            "exaggeration": 0.05539700821857779,
+            "temperature": 0.37000877680056155,
+            "top_p": 0.7190316206212031,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8072857245504734,
+            "exaggeration": 0.589961172691317,
+            "temperature": 0.5780431079962731,
+            "top_p": 0.6585956204294903,
+            "min_p": 0.25988769935848666,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.957182299626226,
+            "exaggeration": 0.2786452129977908,
+            "temperature": 0.39900109054552807,
+            "top_p": 0.9503537346184017,
+            "min_p": 0.08312407186581713,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.3371173957349475,
+            "exaggeration": 0.43217007972837723,
+            "temperature": 0.36082457688480113,
+            "top_p": 0.8299109444654156,
+            "min_p": 0.24309120573460882,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 6,
+      "text_preview": "Odbiór",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-546",
+      "attempts": 6,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4568535136128541,
+            "temperature": 0.3373520721189162,
+            "top_p": 0.814113224983226,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.540951209968304,
+            "exaggeration": 0.2801654460437334,
+            "temperature": 0.28133636266067574,
+            "top_p": 0.6045383883560017,
+            "min_p": 0.12798022101915688,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5201788255856676,
+            "exaggeration": 0.5324084060147625,
+            "temperature": 0.5489847044782364,
+            "top_p": 0.6314311530989858,
+            "min_p": 0.20701174148491416,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4889435078562318,
+            "temperature": 0.05,
+            "top_p": 0.7809631327642499,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.1646714999312504,
+            "exaggeration": 0.3651242705309455,
+            "temperature": 0.6982581848236691,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "Wślizg, który ratuje mecz",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-366",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3166161238710363,
+            "temperature": 0.4094041784401636,
+            "top_p": 0.8935820460409705,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.380836967673304,
+            "exaggeration": 0.16348371975822606,
+            "temperature": 0.2911230348265841,
+            "top_p": 0.6146887353947232,
+            "min_p": 0.22854264363160068,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.47371192535395473,
+            "exaggeration": 0.7977593466814658,
+            "temperature": 0.7212227741006798,
+            "top_p": 1.0,
+            "min_p": 0.10355051333028123,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8931287194027515,
+            "exaggeration": 0.5048781461335894,
+            "temperature": 0.2628641503290867,
+            "top_p": 1.0,
+            "min_p": 0.066122365779166,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 87,
+      "text_preview": "Pchasz się do przodu, oferujesz opcje podań i pomagasz drużynie utrzymać piłkę w",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-420",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.48896601061699985,
+            "temperature": 0.4368945757461569,
+            "top_p": 0.8204926887087028,
+            "min_p": 0.09741672757264849,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.4983153705760789,
+            "exaggeration": 0.4499399763106386,
+            "temperature": 0.06250401603556055,
+            "top_p": 0.698977745269644,
+            "min_p": 0.1051865317878313,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7239593800317906,
+            "exaggeration": 0.4334915924112091,
+            "temperature": 0.600932412269974,
+            "top_p": 0.8778275772254028,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.32349067762999095,
+            "temperature": 0.16758702200321213,
+            "top_p": 0.7825713732235784,
+            "min_p": 0.04435410017874905,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "Równowaga",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 23,
+      "text_preview": "Jesteś tym fundamentem.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-079",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 46,
+      "text_preview": "Razem, we czwórkę tworzycie jednostkę obronną.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-126",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 32,
+      "text_preview": "Małe korekty robią dużą różnicę.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-134",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 53,
+      "text_preview": "Kiedy twój partner się porusza, ty się dostosowujesz.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-191",
+      "attempts": 4,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 23,
+      "text_preview": "Utrzymuj stopy w ruchu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-263",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 30,
+      "text_preview": "Zauważ, gdzie stoją atakujący.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-384",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 39,
+      "text_preview": "Proste podania utrzymują piłkę w ruchu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-424",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 58,
+      "text_preview": "Czujesz, kiedy moment wymaga pozostania na swojej pozycji.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-483",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 39,
+      "text_preview": "Atakuj piłkę, gdy nadchodzi rzut rożny.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-504",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 109,
+      "text_preview": "Ty, twój partner, twój libero i twój bramkarz zbudowaliście mur, którego drużyna",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-549",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 38,
+      "text_preview": "Bez tego wślizgu mecz byłby przegrany.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-400",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.693357584643819,
+            "exaggeration": 0.20665633586880783,
+            "temperature": 0.31645498572929,
+            "top_p": 0.720130610965434,
+            "min_p": 0.12017543078825801,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.5455683156459528,
+            "exaggeration": 0.31194439391247397,
+            "temperature": 0.402372403606683,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.44136163941682743,
+            "exaggeration": 0.6971937071427818,
+            "temperature": 0.5335334285450571,
+            "top_p": 0.91938502277337,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 19,
+      "text_preview": "Wiedz, Kiedy Wrócić",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-032",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 54,
+      "text_preview": "Twoi koledzy z drużyny liczą na ciebie w każdym meczu.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}

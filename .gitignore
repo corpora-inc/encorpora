@@ -46,3 +46,13 @@ voices/samples/
 **/packs/*/pipeline_state.json
 **/packs/*/.packstore.json
 
+# Backup snapshots from in-place pipeline migrations (e.g. .pre-nikkud.bak,
+# .pre-clear-fp.bak, .pre-cjk-clear.bak). Useful for one-shot rollback,
+# never useful in git history.
+*.bak
+
+# Pronunciation test scratch — risky_words.json, generated WAVs, results.json.
+# Used to manually QA voice pronunciations before generation; not history-of-record.
+**/pack/pronunciation_tests/
+**/packs/*/pronunciation_tests/
+

@@ -1,0 +1,491 @@
+{
+  "book_id": "pack",
+  "language": "en",
+  "timestamp": "2026-04-23T01:06:31.019125+00:00",
+  "segments_total": 634,
+  "segments_first_pass": 613,
+  "segments_converged_by_retry": 19,
+  "segments_plateau_stopped": 2,
+  "total_retries": 90,
+  "error_distribution": {
+    "final_word_weak": 9,
+    "trailing_silence": 7,
+    "tail_energy": 5,
+    "min_trailing_silence": 3,
+    "transcription_mismatch": 1,
+    "hard_ending": 1
+  },
+  "phase_timings": {
+    "tts": 81.43557667732239,
+    "align": 28.383950233459473,
+    "validate": 2.3640058040618896,
+    "trim": 0.0651559829711914,
+    "master": 1.3668107986450195
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 186,
+      "passed": 173,
+      "rate": 0.9301075268817204
+    },
+    "medium_30_80": {
+      "total": 415,
+      "passed": 409,
+      "rate": 0.9855421686746988
+    },
+    "long_80_plus": {
+      "total": 33,
+      "passed": 31,
+      "rate": 0.9393939393939394
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-241",
+      "attempts": 26,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 42,
+      "text_preview": "A great goalkeeper never takes a play off.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-120",
+      "attempts": 17,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 24,
+      "text_preview": "Warm up your throws too.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 14,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 33,
+      "text_preview": "The goalkeeper is the foundation.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-635",
+      "attempts": 9,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 29,
+      "text_preview": "You talked to your defenders.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-264",
+      "attempts": 6,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.824310309166667,
+            "exaggeration": 0.07272010728920308,
+            "temperature": 0.5327184206429612,
+            "top_p": 1.0,
+            "min_p": 0.04618778213213978,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7424013679214236,
+            "exaggeration": 0.3006354619859647,
+            "temperature": 0.19240897208385344,
+            "top_p": 1.0,
+            "min_p": 0.09336431200281683,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.7845901401348649,
+            "exaggeration": 0.39409227605252106,
+            "temperature": 0.6241820225580266,
+            "top_p": 0.7318606852732977,
+            "min_p": 0.28653417099175627,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.13576010482018608,
+            "temperature": 0.19530874751902683,
+            "top_p": 0.6145821727046903,
+            "min_p": 0.14226326134490738,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.43145716288673236,
+            "exaggeration": 0.3633041082889569,
+            "temperature": 0.7270192791685623,
+            "top_p": 0.7130879224620441,
+            "min_p": 0.014250570976633598,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "When you stand on your goal line, the shooter sees a wide open goal on both side",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.8201171925986896,
+            "min_p": 0.09818045198652883,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 1.0,
+            "min_p": 0.03285392462079503,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.4,
+            "temperature": 0.2,
+            "top_p": 0.694305177897443,
+            "min_p": 0.06709518532731748,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "You stay on your toes.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-487",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 27,
+      "text_preview": "Your box is your territory.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-554",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Short sharp words work best.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-546",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.899304713523479,
+            "exaggeration": 0.08799473341387531,
+            "temperature": 0.6606293598832669,
+            "top_p": 0.9566772933956648,
+            "min_p": 0.3222903968814762,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4840987133812984,
+            "exaggeration": 0.2319054698037188,
+            "temperature": 0.2592583431904999,
+            "top_p": 0.787414301198391,
+            "min_p": 0.06730546252082822,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "Before Every Set Piece",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-131",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 24,
+      "text_preview": "Take a few deep breaths.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-228",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 18,
+      "text_preview": "Tell your sweeper.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 21,
+      "text_preview": "Win the ball cleanly.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-340",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 66,
+      "text_preview": "Let the ball land in your hands and pull the ball into your chest.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-361",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 44,
+      "text_preview": "Sometimes the shot is too powerful to catch.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-370",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 71,
+      "text_preview": "Make sure the ball goes over the bar and not back into the danger area.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-418",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 89,
+      "text_preview": "The way you give the ball to your team matters just as much as the way you stop ",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-457",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 48,
+      "text_preview": "Kick toward the sides where there is more space.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-471",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "Mix in punts down the field.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-504",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 30,
+      "text_preview": "Pull the ball into your chest.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-633",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [],
+      "text_len": 28,
+      "text_preview": "You gave everything you had.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {}
+}
