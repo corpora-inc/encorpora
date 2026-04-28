@@ -1,17 +1,25 @@
-// Anonymous reader analytics — privacy-first, fire-and-forget.
+// Anonymous reader analytics — privacy-first, fire-and-forget, scales by design.
 //
-// Contract (any caller can rely on these without checking):
+// Contract every caller can rely on:
 //   - No method throws. Every public entry is wrapped in try/catch and
 //     swallows everything. Failure is invisible to the reader.
 //   - No persistent identifier. session_id is generated on init() and lives
 //     in memory only — gone when the page goes away.
-//   - Opt-out is one localStorage flag away. When set, no network ever happens.
+//   - Opt-out is one localStorage flag away. When set, no network ever
+//     happens and an in-flight flush aborts before sending.
 //   - Offline-first. Events accumulate in memory + a small localStorage
 //     spillover queue. Flushes happen on a timer, on pagehide via sendBeacon,
-//     and opportunistically when new events arrive over a threshold.
+//     and opportunistically when new events accumulate over a threshold.
+//   - Tauri WKWebView compatible. Cross-origin POST from a custom URI scheme
+//     (`corpan-pack://localhost/...`) sends `Origin: null`; the backend
+//     handles that. We don't include credentials, don't ask for cookies.
 //
-// To wire a new reader: call init({ readerId, readerVersion, endpoint }) once
-// at mount time, then call bookOpened/bookClosed/etc. at the natural moments.
+// Ergonomics for new code:
+//   - Want a one-off event? `analytics.track("chapter_completed", {chapter: 7})`.
+//   - Want lifecycle for books? Use `bookOpened` / `bookClosed` — they manage
+//     duration tracking + a heartbeat for you and call track() under the hood.
+//   - Want to add a new built-in lifecycle? Define a wrapper that calls track().
+//     No envelope-builder edits, no schema gates, no Lambda redeploy.
 
 const OPT_OUT_KEY = "corpan-analytics-disabled"
 const SPILLOVER_KEY = "corpan-analytics-queue"
@@ -22,29 +30,39 @@ const MAX_QUEUE = 500
 const HEARTBEAT_MS = 30_000
 
 type Platform = "ios" | "android" | "web" | "macos" | "windows" | "linux" | "unknown"
-type EventName =
+
+export type EventValue = string | number | boolean
+export type EventProps = Record<string, EventValue>
+
+// Built-in event names — wrappers below populate the well-known typed columns
+// (book_id, language, duration_ms, etc.) on the Glue table directly. Anything
+// else flows through `track()` and lands in `props_json` for ad-hoc analysis.
+type BuiltinEventName =
+  | "session_start"
   | "book_open"
   | "book_close"
   | "book_heartbeat"
   | "language_switch"
-  | "session_start"
 
 type AnalyticsEvent = {
   schema: number
   ts: string
   session_id: string
-  event: EventName
+  event: string
   reader_id: string
   reader_version: string
   app_version: string
   platform: Platform
   locale: string
   tz_offset_minutes: number
+  // Optional well-known columns — populated from props if present.
   book_id?: string
   narration_pack_id?: string
   language?: string
   voice_id?: string
   duration_ms?: number
+  // Anything else from `track()` lives here, serialized server-side to props_json.
+  props?: EventProps
 }
 
 type Config = {
@@ -61,9 +79,8 @@ type State = {
   queue: AnalyticsEvent[]
   flushTimer: ReturnType<typeof setInterval> | null
   heartbeatTimer: ReturnType<typeof setInterval> | null
-  heartbeatCtx: { bookId: string; narrationPackId: string; language: string; voiceId: string } | null
   bookOpenAt: number | null
-  bookOpenCtx: { bookId: string; narrationPackId: string; language: string; voiceId: string } | null
+  bookOpenCtx: BookContext | null
   flushing: boolean
 }
 
@@ -73,11 +90,20 @@ const state: State = {
   queue: [],
   flushTimer: null,
   heartbeatTimer: null,
-  heartbeatCtx: null,
   bookOpenAt: null,
   bookOpenCtx: null,
   flushing: false,
 }
+
+// Top-level columns on the Glue table — anything here gets pulled out of props
+// and promoted onto the event envelope. Everything else stays in props.
+const TYPED_COLUMNS = new Set<string>([
+  "book_id",
+  "narration_pack_id",
+  "language",
+  "voice_id",
+  "duration_ms",
+])
 
 function safe<T>(fn: () => T): T | undefined {
   try {
@@ -155,13 +181,35 @@ function envelope(): Pick<
   }
 }
 
-function enqueue(event: EventName, body: Partial<AnalyticsEvent>): void {
+// Sanitize a free-form props bag from `track()`: drop unsupported types,
+// promote well-known columns onto the event, leave the rest in props.
+function applyProps(ev: AnalyticsEvent, props: EventProps): void {
+  for (const key of Object.keys(props)) {
+    const v = props[key]
+    if (typeof v !== "string" && typeof v !== "number" && typeof v !== "boolean") continue
+    if (TYPED_COLUMNS.has(key)) {
+      // Type-promote into the well-known column. The backend's sanitize() also
+      // clamps these to size, so we can be permissive here.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(ev as any)[key] = v
+    } else {
+      if (!ev.props) ev.props = {}
+      ev.props[key] = v
+    }
+  }
+}
+
+function enqueue(eventName: string, props: EventProps): void {
   const cfg = state.config
   if (!cfg || !cfg.enabled) return
   if (isOptedOut()) return
   const env = envelope()
   if (!env) return
-  state.queue.push({ ...env, ...body, event } as AnalyticsEvent)
+
+  const ev: AnalyticsEvent = { ...env, event: eventName }
+  applyProps(ev, props)
+
+  state.queue.push(ev)
   if (state.queue.length > MAX_QUEUE) {
     state.queue.splice(0, state.queue.length - MAX_QUEUE)
   }
@@ -225,6 +273,13 @@ async function flush(useBeacon = false): Promise<void> {
   const batch = all.slice(0, FLUSH_BATCH_SIZE)
   const remaining = all.slice(FLUSH_BATCH_SIZE)
 
+  // Race-guard: the user might have flipped opt-out between the queue snapshot
+  // and the network call. Re-check now and bail without sending.
+  if (isOptedOut()) {
+    state.flushing = false
+    return
+  }
+
   const payload = buildPayload(batch)
   const ok = useBeacon ? sendBeacon(payload) : await sendFetch(payload)
 
@@ -279,8 +334,26 @@ export function init(opts: AnalyticsInitOptions): void {
 
     state.flushTimer = setInterval(() => void flush(false), FLUSH_INTERVAL_MS)
 
-    enqueue("session_start", {})
+    track("session_start")
   })
+}
+
+/**
+ * Generic event tracker — the building block. Use this to add new event types
+ * without modifying the analytics module.
+ *
+ *   analytics.track("chapter_completed", { chapter: 7, scroll_pct: 100 })
+ *   analytics.track("download_failed", { reason: "network", retries: 3 })
+ *
+ * Constraints:
+ *  - eventName must match `^[a-z][a-z0-9_]{0,63}$` (validated server-side).
+ *  - prop values must be string | number | boolean (anything else is silently dropped).
+ *  - Well-known prop keys (book_id, narration_pack_id, language, voice_id,
+ *    duration_ms) are auto-promoted to typed Glue columns.
+ *  - All other props are serialized to a single `props_json` Athena column.
+ */
+export function track(eventName: BuiltinEventName | string, props: EventProps = {}): void {
+  safe(() => enqueue(eventName, props))
 }
 
 export type BookContext = {
@@ -290,23 +363,31 @@ export type BookContext = {
   voiceId: string
 }
 
+function bookContextProps(ctx: BookContext): EventProps {
+  return {
+    book_id: ctx.bookId,
+    narration_pack_id: ctx.narrationPackId,
+    language: ctx.language,
+    voice_id: ctx.voiceId,
+  }
+}
+
 export function bookOpened(ctx: BookContext): void {
   safe(() => {
     // If a previous book is still open (rare, but possible if caller forgets),
     // close it first so durations are never lost.
     if (state.bookOpenAt && state.bookOpenCtx) {
       const dur = Date.now() - state.bookOpenAt
-      enqueue("book_close", { ...state.bookOpenCtx, duration_ms: dur })
+      track("book_close", { ...bookContextProps(state.bookOpenCtx), duration_ms: dur })
     }
     state.bookOpenAt = Date.now()
     state.bookOpenCtx = { ...ctx }
-    state.heartbeatCtx = { ...ctx }
-    enqueue("book_open", { ...ctx })
+    track("book_open", bookContextProps(ctx))
 
     if (state.heartbeatTimer) clearInterval(state.heartbeatTimer)
     state.heartbeatTimer = setInterval(() => {
-      if (!state.heartbeatCtx) return
-      enqueue("book_heartbeat", { ...state.heartbeatCtx })
+      if (!state.bookOpenCtx) return
+      track("book_heartbeat", bookContextProps(state.bookOpenCtx))
     }, HEARTBEAT_MS)
   })
 }
@@ -315,10 +396,9 @@ export function bookClosed(): void {
   safe(() => {
     if (!state.bookOpenAt || !state.bookOpenCtx) return
     const dur = Date.now() - state.bookOpenAt
-    enqueue("book_close", { ...state.bookOpenCtx, duration_ms: dur })
+    track("book_close", { ...bookContextProps(state.bookOpenCtx), duration_ms: dur })
     state.bookOpenAt = null
     state.bookOpenCtx = null
-    state.heartbeatCtx = null
     if (state.heartbeatTimer) {
       clearInterval(state.heartbeatTimer)
       state.heartbeatTimer = null
@@ -326,13 +406,14 @@ export function bookClosed(): void {
   })
 }
 
-export function languageSwitched(ctx: BookContext & { from: string; to: string }): void {
+export function languageSwitched(args: BookContext & { from: string }): void {
   safe(() => {
-    enqueue("language_switch", {
-      book_id: ctx.bookId,
-      narration_pack_id: ctx.narrationPackId,
-      language: ctx.to,
-      voice_id: ctx.voiceId,
+    track("language_switch", {
+      book_id: args.bookId,
+      narration_pack_id: args.narrationPackId,
+      language: args.language,
+      voice_id: args.voiceId,
+      previous_language: args.from,
     })
   })
 }
@@ -342,7 +423,7 @@ export function shutdown(): void {
   safe(() => {
     if (state.bookOpenAt && state.bookOpenCtx) {
       const dur = Date.now() - state.bookOpenAt
-      enqueue("book_close", { ...state.bookOpenCtx, duration_ms: dur })
+      track("book_close", { ...bookContextProps(state.bookOpenCtx), duration_ms: dur })
       state.bookOpenAt = null
       state.bookOpenCtx = null
     }

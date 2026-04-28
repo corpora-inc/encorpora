@@ -9,7 +9,11 @@
 //   3. Unknown / oversize / malformed events are dropped silently with a
 //      counter increment. Clients always get 204 — never tell a probing
 //      adversary which fields are required.
-//   4. Schema is allowlist: any field not in ALLOWED_FIELDS is stripped.
+//   4. Schema is allowlist on TOP-LEVEL fields (the Glue table columns).
+//      Arbitrary additional client props are stuffed into one `props_json`
+//      column; they never grow the table schema and never escape sanitization.
+//   5. Subdivision-level geo (CloudFront-Viewer-Country-Region) is intentionally
+//      NOT read here — country alone is the policy line.
 
 const { FirehoseClient, PutRecordBatchCommand } = require("@aws-sdk/client-firehose");
 
@@ -18,8 +22,12 @@ const STREAM = process.env.FIREHOSE_NAME;
 
 const MAX_BODY_BYTES = 32 * 1024;
 const MAX_EVENTS_PER_REQUEST = 100;
+const MAX_PROPS = 32;
+const MAX_PROP_STRING = 256;
 const SCHEMA_VERSION = 1;
 
+// Top-level fields → mapped 1:1 to Glue columns. Anything else gets serialized
+// into `props_json` for forward-compat without DDL.
 const ALLOWED_FIELDS = new Set([
   "schema",
   "ts",
@@ -38,13 +46,11 @@ const ALLOWED_FIELDS = new Set([
   "duration_ms",
 ]);
 
-const ALLOWED_EVENTS = new Set([
-  "book_open",
-  "book_close",
-  "book_heartbeat",
-  "language_switch",
-  "session_start",
-]);
+// Event-name shape — any new client event works without redeploying the Lambda.
+// Keeps "garbage" out (random unicode, scripts, etc.) but doesn't gatekeep new
+// product events. Adding a column to Glue still requires DDL, but `props_json`
+// makes that optional for ad-hoc analyses.
+const EVENT_NAME = /^[a-z][a-z0-9_]{0,63}$/;
 
 const ALLOWED_PLATFORMS = new Set([
   "ios", "android", "web", "macos", "windows", "linux", "unknown",
@@ -52,14 +58,24 @@ const ALLOWED_PLATFORMS = new Set([
 
 const ALLOWED_READERS = new Set(["stargate", "earthgate"]);
 
-const CORS = {
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "POST, OPTIONS",
-  "access-control-allow-headers": "content-type",
-  "vary": "Origin",
+// CORS — must echo Origin (not "*") to satisfy WebKit when the request comes
+// from a custom URI scheme (Tauri WKWebView with `corpan-pack://localhost/...`
+// sends `Origin: null`, and WebKit refuses to match `null` against `*`).
+// Mirrors the verify_purchase Lambda's pattern.
+let _requestOrigin = "*";
+const setRequestOrigin = (event) => {
+  _requestOrigin = event.headers?.origin ?? event.headers?.Origin ?? "*";
 };
 
-const noContent = () => ({ statusCode: 204, headers: CORS, body: "" });
+const corsHeaders = () => ({
+  "access-control-allow-origin": _requestOrigin,
+  "access-control-allow-methods": "POST, OPTIONS",
+  "access-control-allow-headers": "content-type",
+  "access-control-max-age": "86400",
+  "vary": "Origin",
+});
+
+const noContent = () => ({ statusCode: 204, headers: corsHeaders(), body: "" });
 
 const getHeader = (event, key) => {
   const headers = event.headers || {};
@@ -82,6 +98,31 @@ function clampInt(v, min, max) {
   return n;
 }
 
+// Sanitize the `props` bag. Keys must match EVENT_NAME (snake_case) and values
+// must be string|number|boolean. Caps total entries + per-string length so a
+// rogue client can't inflate Firehose payload.
+function sanitizeProps(raw) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+  const out = {};
+  let count = 0;
+  for (const k of Object.keys(raw)) {
+    if (count >= MAX_PROPS) break;
+    if (!EVENT_NAME.test(k)) continue;
+    const v = raw[k];
+    if (typeof v === "string") {
+      out[k] = clampString(v, MAX_PROP_STRING);
+      count++;
+    } else if (typeof v === "number" && Number.isFinite(v)) {
+      out[k] = v;
+      count++;
+    } else if (typeof v === "boolean") {
+      out[k] = v;
+      count++;
+    }
+  }
+  return Object.keys(out).length > 0 ? out : null;
+}
+
 function sanitize(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
 
@@ -91,7 +132,7 @@ function sanitize(raw) {
   }
 
   if (out.schema !== SCHEMA_VERSION) return null;
-  if (!ALLOWED_EVENTS.has(out.event)) return null;
+  if (typeof out.event !== "string" || !EVENT_NAME.test(out.event)) return null;
   if (!ALLOWED_READERS.has(out.reader_id)) return null;
 
   out.ts = clampString(out.ts, 32);
@@ -114,16 +155,22 @@ function sanitize(raw) {
   out.voice_id = clampString(out.voice_id, 64);
   out.duration_ms = clampInt(out.duration_ms, 0, 24 * 60 * 60 * 1000);
 
+  // Stuff arbitrary extras into props_json — forward-compat for new event types.
+  const props = sanitizeProps(raw.props);
+  out.props_json = props ? JSON.stringify(props) : "";
+
   return out;
 }
 
 exports.handler = async (event) => {
-  // CORS preflight (Lambda Function URL forwards OPTIONS as a normal invocation)
+  setRequestOrigin(event);
+
+  // CORS preflight — Lambda Function URL / API Gateway both forward OPTIONS here.
   if (event.requestContext?.http?.method === "OPTIONS") return noContent();
   if (event.requestContext?.http?.method !== "POST") return noContent();
 
+  // Country only — region (subdivision) intentionally NOT read or persisted.
   const country = clampString(getHeader(event, "cloudfront-viewer-country"), 4) || "";
-  const region  = clampString(getHeader(event, "cloudfront-viewer-country-region"), 8) || "";
   const ingestTs = new Date().toISOString();
 
   const rawBody = event.body || "";
@@ -149,7 +196,6 @@ exports.handler = async (event) => {
     const ev = sanitize(raw);
     if (!ev) continue;
     ev.country = country;
-    ev.country_region = region;
     ev.ingest_ts = ingestTs;
     records.push({ Data: Buffer.from(JSON.stringify(ev) + "\n", "utf-8") });
   }
@@ -157,12 +203,15 @@ exports.handler = async (event) => {
   if (records.length === 0) return noContent();
 
   try {
-    await firehose.send(new PutRecordBatchCommand({
+    const response = await firehose.send(new PutRecordBatchCommand({
       DeliveryStreamName: STREAM,
       Records: records,
     }));
-    console.log(`ingest ok=${records.length} dropped=${incoming.length - records.length}`);
+    const failed = response?.FailedPutCount || 0;
+    const dropped = incoming.length - records.length;
+    console.log(`ingest accepted=${records.length - failed} sanitized_dropped=${dropped} firehose_failed=${failed}`);
   } catch (err) {
+    // Errors are an infra problem (throttling, IAM, bad stream), not user data.
     console.error(`firehose error: ${err.name} ${err.message}`);
   }
   return noContent();

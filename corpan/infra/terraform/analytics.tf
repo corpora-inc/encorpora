@@ -7,8 +7,9 @@
 #   - No identifiers persisted in queryable storage. The Glue table has NO
 #     ip / user_agent / x_forwarded_for columns. The ingest Lambda strips
 #     anything not in its allowlist before writing.
-#   - CloudFront-Viewer-Country / -Country-Region are the ONLY headers we
-#     forward to origin. The IP arrives at the Lambda but is never written.
+#   - CloudFront-Viewer-Country is the only geo header forwarded to origin.
+#     The IP arrives at the Lambda but is never written. Subdivision-level
+#     geo (Country-Region) is intentionally not forwarded.
 #   - CloudWatch retention 7d (cheap) and only counts/errors are logged —
 #     never request bodies.
 #   - Athena workgroup encrypts query results and writes them to a separate
@@ -191,11 +192,14 @@ resource "aws_glue_catalog_table" "events" {
       type = "string"
     }
     columns {
-      name = "country_region"
+      name = "ingest_ts"
       type = "string"
     }
+    # Forward-compat: arbitrary client `props` (any JSON) land here as a string.
+    # Athena queries pull individual fields with json_extract(props_json, '$.x').
+    # Lets us add new event types client-side without a Glue/Lambda redeploy.
     columns {
-      name = "ingest_ts"
+      name = "props_json"
       type = "string"
     }
   }
@@ -448,9 +452,16 @@ resource "aws_cloudfront_origin_request_policy" "analytics" {
     header_behavior = "whitelist"
     headers {
       items = [
+        # Server-enriched geo (country only — subdivision intentionally NOT forwarded
+        # to keep us aligned with the "very crude geo" privacy line).
         "CloudFront-Viewer-Country",
-        "CloudFront-Viewer-Country-Region",
         "Content-Type",
+        # CORS — without these, WebKit's preflight from a Tauri WKWebView
+        # (custom URI scheme → Origin: null) can't be satisfied by the Lambda's
+        # echo-Origin pattern, because CloudFront strips Origin before origin sees it.
+        "Origin",
+        "Access-Control-Request-Method",
+        "Access-Control-Request-Headers",
       ]
     }
   }

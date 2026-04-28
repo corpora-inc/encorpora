@@ -663,6 +663,9 @@ export function createAppShell(
     // Capture play state before disposing old reader
     const wasPlaying = readerInstance?.isPlaying?.() ?? false
 
+    // Capture previous language for analytics (before mutating the store).
+    const previousLanguage = drawerStore.getState().currentLanguage
+
     // Set the canonical store FIRST, inside the guard
     switching = true
     drawerStore.setState({ currentNarrationId: narrationId, currentLanguage: info.language })
@@ -694,6 +697,18 @@ export function createAppShell(
       language: info.language,
       voiceId: info.voiceId,
     })
+
+    // Distinct event when the user is staying in the same book but switching
+    // language — a common comparison flow worth surfacing in analytics.
+    if (previousLanguage && previousLanguage !== info.language) {
+      analytics.languageSwitched({
+        bookId: info.bookId,
+        narrationPackId: narrationId,
+        language: info.language,
+        voiceId: info.voiceId,
+        from: previousLanguage,
+      })
+    }
   }
 
   // --- Now Playing section rendering ---
@@ -2006,7 +2021,7 @@ export function createAppShell(
     const blurb = document.createElement("div")
     blurb.className = "command-drawer-privacy-blurb"
     blurb.textContent =
-      "We collect anonymous, aggregate signal — which book is opened and for how long — to cultivate the catalog. No accounts, no IPs, no device IDs."
+      "When you open a book we send an anonymous event: book and language, how long you stayed, plus app version, platform, locale, and country. No accounts, no IPs, no device IDs, no advertising trackers. Toggle off any time."
     container.appendChild(blurb)
 
     const row = document.createElement("label")
