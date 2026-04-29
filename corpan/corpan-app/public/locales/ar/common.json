@@ -115,7 +115,55 @@
     "sendAppleFeedback": "إرسال ملاحظات إلى Apple",
     "ttsGoogleInstalled": "Google TTS مثبت",
     "ttsGoogleMissing": "Google TTS غير مثبت",
-    "ttsSetDefault": "تعيين كافتراضي"
+    "ttsSetDefault": "تعيين كافتراضي",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech معطّل",
+        "detail": "سننقلك مباشرةً إلى صفحة النظام لإعادة تفعيله. لمسة واحدة وانتهيت.",
+        "button": "تفعيل Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "تثبيت Google Text-to-Speech",
+        "detail": "محرك الصوت من Google يقدّم أفضل جودة في جميع اللغات التي يدعمها Corpán. مجاني.",
+        "button": "التثبيت من Play Store"
+      },
+      "noEngine": {
+        "heading": "لم يُعثر على محرك صوت",
+        "detail": "جهازك لا يحتوي على أي محرك TTS مثبت. ثبّت Google Text-to-Speech للمتابعة.",
+        "button": "تثبيت Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "بيانات الصوت بحاجة إلى تنزيل",
+        "detail": "محركك جاهز، لكن بيانات الصوت للغاتك لم تُنزَّل بعد.",
+        "button": "تنزيل الأصوات"
+      },
+      "engineHung": {
+        "heading": "محرك الصوت لا يستجيب",
+        "detail": "أحيانًا تتعطّل خدمة TTS في النظام. اضغط أدناه لإعادة المحاولة — عادةً ما يُحلّ.",
+        "button": "إعادة المحاولة"
+      },
+      "probing": "إعداد الأصوات…",
+      "working": "جاري المعالجة…",
+      "skipForNow": "تخطّي — اضبطها لاحقًا في الإعدادات",
+      "openTtsSettings": "فتح إعدادات TTS",
+      "readyHeading": "الأصوات جاهزة",
+      "readyEngine": "استخدام {{engine}}",
+      "installVoicesForLang": "تنزيل أصوات {{lang}}",
+      "diagnostics": {
+        "toggle": "تشخيص",
+        "copyButton": "نسخ",
+        "copied": "تم النسخ"
+      },
+      "currentState": "الحالة الحالية: {{state}}",
+      "state": {
+        "enabled": "مُفعَّل",
+        "default": "مُفعَّل (افتراضي للنظام)",
+        "disabled": "مُعطَّل",
+        "disabledUser": "مُعطَّل بواسطة المستخدم (أو بواسطة Samsung Device Care)",
+        "disabledUntilUsed": "مُعطَّل حتى الاستخدام",
+        "notInstalled": "غير مثبَّت"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "تدرّب فوري بعدة لغات",
     "cancel": "إلغاء",
     "delete": "حذف",
-    "create": "إنشاء"
+    "create": "إنشاء",
+    "dismiss": "تجاهل"
   },
   "dialects": {
     "en": "الإنجليزية",
@@ -348,5 +397,10 @@
     "pendingHeading": "في انتظار الموافقة",
     "pendingDetail": "عملية الشراء في انتظار الموافقة (Ask to Buy أو تحقق بنكي). سيتم التفعيل تلقائيًا بعد الموافقة.",
     "noProductsError": "لم يُرجع App Store أي منتجات. عادة ما يحل خلال ثوانٍ — حاول مرة أخرى."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "فشل تشغيل الصوت",
+    "playbackFailedDetail": "افتح إعدادات TTS في جهازك لإصلاحه.",
+    "openSettingsAction": "فتح إعدادات TTS"
   }
 }

@@ -9,6 +9,7 @@ import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
 import { Button } from "./components/ui/button";
 import { ContentPackOverlay } from "./components/ContentPackOverlay";
+import { TTSFailureBanner } from "./components/TTSFailureBanner";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
@@ -251,6 +252,8 @@ export default function App() {
           manifestUrl={activeGame.manifestUrl}
         />
       ) : null}
+
+      <TTSFailureBanner />
     </>
   );
 }

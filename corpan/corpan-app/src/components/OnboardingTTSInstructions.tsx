@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { invoke } from "@tauri-apps/api/core";
+import { AnimatePresence, motion } from "framer-motion";
 
 import {
     detectOSFromUA,
@@ -10,8 +11,15 @@ import {
     sortVoicesWithLangBias,
     deepLinkToVoiceInstall,
     openTtsSettings,
+    openTtsEngineStore,
+    openTtsEngineAppDetails,
+    probeTtsHealth,
+    tryAutoRecover,
+    installVoiceData,
     type VoiceInfo,
     type TtsEngineStatus,
+    type TtsHealthProbe,
+    type TtsDiagnosis,
 } from "@/util/tts-voices";
 
 import { createVoiceTTS } from "@/util/speak";
@@ -21,6 +29,13 @@ import { useSettingsStore } from "@/store/settings";
 import { OnboardingTTSInstructionsHeaderActions } from "./OnboardingTTSInstructionsHeaderActions";
 import { OnboardingTTSInstructionsLanguageSection } from "./OnboardingTTSInstructionsLanguageSection";
 import { OnboardingHeader, STEPS } from "./OnboardingHeader";
+import { OnboardingTTSRescueCard } from "./OnboardingTTSRescueCard";
+import {
+    OnboardingTTSProbing,
+    OnboardingTTSReadyConfirm,
+} from "./OnboardingTTSPhaseStates";
+
+const GOOGLE_TTS_PACKAGE = "com.google.android.tts";
 
 /* -------------------------------- Samples (not UI text) -------------------------------- */
 const SAMPLES: Record<string, string> = {
@@ -55,7 +70,6 @@ const SAMPLES: Record<string, string> = {
 };
 
 type ExtendedVoiceInfo = VoiceInfo & {
-    /** True if this voice is online-only according to the engine (or our heuristic). */
     networkRequired?: boolean;
 };
 
@@ -81,12 +95,37 @@ function sampleFor(lang: string) {
     return SAMPLES[lang] || SAMPLES[baseLang(lang)] || SAMPLES["en"];
 }
 
-/* -------------------------------- Component -------------------------------- */
+/* -------------------------------- Phase machine types -------------------------------- */
 
-const CURRENT_STEP_IDX = 1; // learning=0, TTS=1, levels=2, domains=3, socials=4
+type Phase =
+    | { kind: "loading" }                                    // probe + auto-recover in flight
+    | { kind: "ready"; engine?: string | null }              // Phase B
+    | { kind: "rescue"; probe: TtsHealthProbe; busy: boolean }; // diagnosis card
+
+const CURRENT_STEP_IDX = 1;
+
+function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
+    return {
+        supported: true,
+        initState: "failed",
+        currentEngine: null,
+        voiceCount: 0,
+        voicesEmpty: true,
+        defaultEngine: null,
+        engines: [],
+        googleInstalled: false,
+        googleEnabled: false,
+        googleDefault: false,
+        diagnosis,
+        ready: false,
+    };
+}
+
+/* -------------------------------- Component -------------------------------- */
 
 export function OnboardingTTSInstructions() {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
+    const setPreferredEngine = useSettingsStore((s) => s.setPreferredEngine);
     const languages = useSettingsStore((s) => s.languages);
     const dir = useSettingsStore((s) => s.dir);
 
@@ -95,57 +134,244 @@ export function OnboardingTTSInstructions() {
 
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
+
+    const [phase, setPhase] = useState<Phase>(
+        os === "android" ? { kind: "loading" } : { kind: "ready" },
+    );
+    // Brief "✓ Voices ready!" flash after a successful auto-recovery.
+    const [recoveryFlash, setRecoveryFlash] = useState(false);
+
     const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
     const [engineStatus, setEngineStatus] = useState<TtsEngineStatus | null>(null);
     const [engineStatusReady, setEngineStatusReady] = useState(os !== "android");
 
-    // By default we only show offline voices; user can opt in to online-only voices (Android only).
-    // const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
+    // Refs: read-only snapshots that don't trigger effect re-runs.
+    const phaseRef = useRef<Phase>(phase);
+    phaseRef.current = phase;
+    const inFlightRef = useRef(false);
+    const pendingRunRef = useRef(false);
 
-    const visibleRef = useRef(true);
-    const pollTimer = useRef<number | null>(null);
-
-    // Refresh voices (hot updates while user installs/enables packs)
-    async function refresh() {
-        const raw = await getVoices({});
-        const cast = raw as ExtendedVoiceInfo[];
-        const list = uniqBy(cast, (v) => `${v.id}|${v.language}`);
-        setVoices(list);
-
+    /** Refresh voices + engine status (Phase B operation). Errors are non-fatal. */
+    async function refreshVoices() {
+        try {
+            const raw = await getVoices({});
+            const list = uniqBy(raw as ExtendedVoiceInfo[], (v) => `${v.id}|${v.language}`);
+            setVoices(list);
+        } catch (e) {
+            console.warn("[onboardingTTS] refreshVoices: getVoices failed", e);
+        }
         if (os === "android") {
-            const status = await getTtsEngineStatus();
-            setEngineStatus(status);
-            setEngineStatusReady(true);
+            try {
+                const status = await getTtsEngineStatus();
+                setEngineStatus(status);
+            } catch (e) {
+                console.warn("[onboardingTTS] refreshVoices: engine status failed", e);
+            } finally {
+                setEngineStatusReady(true);
+            }
         }
     }
 
-    useEffect(() => {
-        refresh();
-        function onVisibility() {
-            visibleRef.current = document.visibilityState !== "hidden";
-            if (visibleRef.current) refresh();
+    /**
+     * Run a full health probe + one auto-recovery attempt, then update phase.
+     * Errors at any stage land us on a rescue card rather than a stuck loader.
+     * Concurrent calls are deferred (one re-run is queued).
+     */
+    async function runDiagnose() {
+        if (inFlightRef.current) {
+            pendingRunRef.current = true;
+            return;
         }
-        document.addEventListener("visibilitychange", onVisibility);
-        pollTimer.current = window.setInterval(() => {
-            if (visibleRef.current) refresh();
-        }, 5000);
-        return () => {
-            document.removeEventListener("visibilitychange", onVisibility);
-            if (pollTimer.current) window.clearInterval(pollTimer.current);
-        };
+        inFlightRef.current = true;
+        try {
+            // Non-Android: TTS is reliable; skip the diagnose machinery.
+            if (os !== "android") {
+                await refreshVoices();
+                setPhase({ kind: "ready" });
+                return;
+            }
+
+            const wasRescue = phaseRef.current.kind === "rescue";
+            // Avoid skeleton flicker when re-probing from "ready".
+            setPhase((p) => (p.kind === "ready" ? p : { kind: "loading" }));
+
+            // 1. Initial probe.
+            let probe: TtsHealthProbe;
+            try {
+                probe = await probeTtsHealth();
+            } catch (e) {
+                console.warn("[onboardingTTS] probe failed", e);
+                setPhase({ kind: "rescue", probe: fallbackProbe("engine_hung"), busy: false });
+                return;
+            }
+
+            if (probe.diagnosis === "ready" && !probe.voicesEmpty) {
+                await refreshVoices();
+                setPhase({ kind: "ready", engine: probe.currentEngine });
+                if (wasRescue) setRecoveryFlash(true);
+                return;
+            }
+
+            // 2. Try one silent auto-recovery.
+            let recovered = false;
+            let recoveredEngine: string | null = null;
+            try {
+                const recover = await tryAutoRecover();
+                recovered = recover.recovered;
+                recoveredEngine = recover.engine ?? null;
+            } catch (e) {
+                console.warn("[onboardingTTS] auto-recover failed", e);
+            }
+
+            if (recovered) {
+                if (recoveredEngine && recoveredEngine !== probe.defaultEngine) {
+                    setPreferredEngine(recoveredEngine);
+                }
+                await refreshVoices();
+                setPhase({ kind: "ready", engine: recoveredEngine });
+                setRecoveryFlash(true);
+                return;
+            }
+
+            // 3. Re-probe to get the freshest post-recovery diagnosis.
+            let probe2 = probe;
+            try {
+                probe2 = await probeTtsHealth();
+            } catch (e) {
+                console.warn("[onboardingTTS] re-probe failed", e);
+            }
+
+            if (probe2.diagnosis === "ready" && !probe2.voicesEmpty) {
+                await refreshVoices();
+                setPhase({ kind: "ready", engine: probe2.currentEngine });
+                setRecoveryFlash(true);
+                return;
+            }
+
+            setPhase({ kind: "rescue", probe: probe2, busy: false });
+        } finally {
+            inFlightRef.current = false;
+            // If a visibility/foreground event arrived while we were in flight,
+            // honor it now with one queued re-run.
+            if (pendingRunRef.current) {
+                pendingRunRef.current = false;
+                void runDiagnose();
+            }
+        }
+    }
+
+    // Initial probe + auto-recover on mount.
+    useEffect(() => {
+        void runDiagnose();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Actions
-    async function openInstaller() {
-        await deepLinkToVoiceInstall({ preferGoogle: true, engineStatus });
+    // Re-probe when the user returns from system Settings. Always run the full
+    // diagnose: a "refresh voices" optimization misses catastrophic state
+    // changes (engine uninstalled / disabled while we were on a different
+    // step). runDiagnose self-short-circuits cheaply when state is unchanged.
+    useEffect(() => {
+        function onVisibility() {
+            if (document.visibilityState === "hidden") return;
+            void runDiagnose();
+        }
+        document.addEventListener("visibilitychange", onVisibility);
+        return () => document.removeEventListener("visibilitychange", onVisibility);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Auto-clear the brief "Voices ready!" celebration after 800ms.
+    useEffect(() => {
+        if (!recoveryFlash) return;
+        const timer = window.setTimeout(() => setRecoveryFlash(false), 800);
+        return () => window.clearTimeout(timer);
+    }, [recoveryFlash]);
+
+    /* ---------- Rescue actions ---------- */
+
+    function setBusy(busy: boolean) {
+        setPhase((p) => (p.kind === "rescue" ? { ...p, busy } : p));
     }
-    async function openSettings() {
-        await openTtsSettings();
+
+    async function handleEnableGoogleTts() {
+        setBusy(true);
+        try {
+            await openTtsEngineAppDetails(GOOGLE_TTS_PACKAGE);
+        } finally {
+            setBusy(false);
+        }
     }
+
+    async function handleInstallGoogleTts() {
+        setBusy(true);
+        try {
+            await openTtsEngineStore(GOOGLE_TTS_PACKAGE);
+        } finally {
+            setBusy(false);
+        }
+    }
+
+    async function handleInstallVoices() {
+        setBusy(true);
+        try {
+            // Install voice data for the first language with no available voice.
+            // The engine's UI will surface a language picker / progress.
+            for (const code of langs) {
+                // Best-effort: try any of the user's languages. The engine's UI
+                // typically lets the user pick which one to download.
+                const status = await installVoiceData(code);
+                if (status === "launched_install_flow") break;
+            }
+        } finally {
+            setBusy(false);
+        }
+    }
+
+    async function handleEngineHungRetry() {
+        setBusy(true);
+        try {
+            await runDiagnose();
+        } finally {
+            setBusy(false);
+        }
+    }
+
+    function handleSkip() {
+        setStep(4);
+    }
+
+    function primaryActionFor(diagnosis: TtsDiagnosis): {
+        action: () => Promise<void> | void;
+        secondary?: { label: string; onClick: () => void };
+    } {
+        switch (diagnosis) {
+            case "engine_disabled_user":
+                return { action: handleEnableGoogleTts };
+            case "engine_not_installed":
+                return { action: handleInstallGoogleTts };
+            case "no_engine":
+                return {
+                    action: handleInstallGoogleTts,
+                    secondary: {
+                        label: t("onboarding.ttsRescue.openTtsSettings", {
+                            defaultValue: "Open TTS settings",
+                        }),
+                        onClick: () => void openTtsSettings(),
+                    },
+                };
+            case "no_voice_data":
+                return { action: handleInstallVoices };
+            case "engine_hung":
+                return { action: handleEngineHungRetry };
+            default:
+                return { action: handleEngineHungRetry };
+        }
+    }
+
+    /* ---------- Phase B (voice selection) helpers — preserved from previous impl ---------- */
 
     async function speakExact(voice: VoiceInfo, text: string, rate = 0.9) {
         try {
-            // Prefer native TTS via plugin (Android/iOS), fallback to Web Speech
             await invoke("plugin:tts|speak", {
                 args: {
                     text,
@@ -168,15 +394,12 @@ export function OnboardingTTSInstructions() {
             STEPS.map((s, i) =>
                 i === CURRENT_STEP_IDX
                     ? t("onboarding.ttsStepTitle", { defaultValue: s.label })
-                    : t(`onboarding.${s.key}`, { defaultValue: s.label })
+                    : t(`onboarding.${s.key}`, { defaultValue: s.label }),
             ),
-        [t]
+        [t],
     );
 
     const langs = languages;
-    if (!langs || !langs.length) {
-        return null;
-    }
 
     function voicesForLang(code: string): ExtendedVoiceInfo[] | null {
         if (!voices) return null;
@@ -185,47 +408,77 @@ export function OnboardingTTSInstructions() {
             const c = code.toLowerCase();
             const langMatches =
                 L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
-
-            if (!langMatches) return false;
-
-            // // On Android, optionally hide voices that we know/guess are online-only.
-            // if (os === "android" && !includeNetworkVoices && v.networkRequired === true) {
-            //     return false;
-            // }
-
-            return true;
+            return langMatches;
         });
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
         return sortVoicesWithLangBias(unique, code);
     }
 
-    // --- Smart Select: enabled only if each language has >= 1 installed voice (after filtering).
     const canSmartSelect = useMemo(
         () => langs.every((code) => (voicesForLang(code) || []).length > 0),
-        [langs, voices, os]
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [langs, voices, os],
     );
 
     function setSelectionForLang(code: string, desiredIds: string[]) {
         const current = new Set((voicePrefs[code]?.ids ?? []).slice());
         const desired = new Set(desiredIds);
-        // deselect anything not desired
         for (const id of current) {
             if (!desired.has(id)) toggleVoiceSelection(code, id);
         }
-        // select anything missing
         for (const id of desired) {
             if (!current.has(id)) toggleVoiceSelection(code, id);
         }
     }
 
-    // Respect the same filter: this will select all offline voices by default,
-    // or offline + online voices if the toggle is enabled.
     function smartSelectAll() {
         for (const code of langs) {
             const allIds = (voicesForLang(code) || []).map((v) => v.id);
             setSelectionForLang(code, allIds);
         }
     }
+
+    async function openInstaller() {
+        await deepLinkToVoiceInstall({ preferGoogle: true, engineStatus });
+    }
+    async function openSettings() {
+        await openTtsSettings();
+    }
+
+    async function handleInstallForLang(code: string) {
+        await installVoiceData(code);
+    }
+
+    if (!langs || !langs.length) {
+        return null;
+    }
+
+    /* ---------- Render ---------- */
+
+    const renderRescueOrPhaseA = () => {
+        if (phase.kind === "loading") {
+            return <OnboardingTTSProbing />;
+        }
+        if (phase.kind === "ready" && recoveryFlash) {
+            return <OnboardingTTSReadyConfirm engine={phase.engine ?? null} />;
+        }
+        if (phase.kind === "rescue") {
+            const spec = primaryActionFor(phase.probe.diagnosis);
+            return (
+                <OnboardingTTSRescueCard
+                    diagnosis={phase.probe.diagnosis}
+                    probe={phase.probe}
+                    onPrimary={() => void spec.action()}
+                    onSkip={handleSkip}
+                    busy={phase.busy}
+                    secondary={spec.secondary}
+                />
+            );
+        }
+        return null;
+    };
+
+    const showPhaseB = phase.kind === "ready" && !recoveryFlash;
 
     return (
         <section
@@ -246,45 +499,67 @@ export function OnboardingTTSInstructions() {
                 onNext={() => setStep(4)}
                 canNext={true}
             >
-                <OnboardingTTSInstructionsHeaderActions
-                    os={os}
-                    onOpenInstaller={openInstaller}
-                    onOpenSettings={openSettings}
-                    onSmartSelect={smartSelectAll}
-                    canSmartSelect={canSmartSelect}
-                    engineStatus={engineStatus}
-                    engineStatusReady={engineStatusReady}
-                />
+                {showPhaseB ? (
+                    <OnboardingTTSInstructionsHeaderActions
+                        os={os}
+                        onOpenInstaller={openInstaller}
+                        onOpenSettings={openSettings}
+                        onSmartSelect={smartSelectAll}
+                        canSmartSelect={canSmartSelect}
+                        engineStatus={engineStatus}
+                        engineStatusReady={engineStatusReady}
+                    />
+                ) : null}
             </OnboardingHeader>
 
-            {/* Content below header */}
             <main
                 className="flex-1 min-h-0"
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
-                <div className="mx-auto w-full max-w-5xl px-3">
+                <div className="mx-auto w-full max-w-5xl px-3 pt-4">
+                    <AnimatePresence mode="wait">
+                        {!showPhaseB ? (
+                            <motion.div
+                                key={phase.kind + (phase.kind === "ready" && recoveryFlash ? "-flash" : "")}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.18 }}
+                            >
+                                {renderRescueOrPhaseA()}
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="phaseB"
+                                initial={{ opacity: 0, y: 6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                            >
+                                {langs.map((code) => {
+                                    const list = voicesForLang(code);
+                                    const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
+                                    const sample = sampleFor(code);
+                                    if (list === null) return null;
 
-                    {langs.map((code) => {
-                        const list = voicesForLang(code);
-                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
-                        const sample = sampleFor(code);
-                        if (list === null) {
-                            return null;
-                        }
-
-                        return (
-                            <OnboardingTTSInstructionsLanguageSection
-                                key={code}
-                                code={code}
-                                voices={list}
-                                selectedIds={pref.ids}
-                                onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
-                                onPreviewAny={(voice) => speakExact(voice, sample, 0.9)}
-                                previewSampleText={sample}
-                                isRTL={isRTL(code)}
-                            />
-                        );
-                    })}
+                                    return (
+                                        <OnboardingTTSInstructionsLanguageSection
+                                            key={code}
+                                            code={code}
+                                            voices={list}
+                                            selectedIds={pref.ids}
+                                            onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
+                                            onPreviewAny={(voice) => speakExact(voice, sample, 0.9)}
+                                            previewSampleText={sample}
+                                            isRTL={isRTL(code)}
+                                            onInstallVoiceData={
+                                                os === "android" ? () => void handleInstallForLang(code) : undefined
+                                            }
+                                        />
+                                    );
+                                })}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
                 <div
                     className="h-8"

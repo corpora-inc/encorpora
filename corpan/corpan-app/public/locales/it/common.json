@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Invia feedback ad Apple",
     "ttsGoogleInstalled": "Google TTS installato",
     "ttsGoogleMissing": "Google TTS non installato",
-    "ttsSetDefault": "Imposta come predefinito"
+    "ttsSetDefault": "Imposta come predefinito",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech è disattivato",
+        "detail": "Ti portiamo direttamente alla pagina di sistema per riattivarlo. Un tocco e hai finito.",
+        "button": "Attiva Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Installa Google Text-to-Speech",
+        "detail": "Il motore vocale di Google offre la migliore qualità in tutte le lingue supportate da Corpán. È gratuito.",
+        "button": "Installa dal Play Store"
+      },
+      "noEngine": {
+        "heading": "Nessun motore vocale trovato",
+        "detail": "Il tuo dispositivo non ha alcun motore TTS installato. Installa Google Text-to-Speech per continuare.",
+        "button": "Installa Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Servono dati vocali da scaricare",
+        "detail": "Il tuo motore è pronto, ma i dati vocali per le tue lingue non sono ancora stati scaricati.",
+        "button": "Scarica voci"
+      },
+      "engineHung": {
+        "heading": "Il motore vocale non risponde",
+        "detail": "A volte il servizio TTS di sistema si blocca. Tocca sotto per riprovare — di solito si risolve.",
+        "button": "Riprova"
+      },
+      "probing": "Configurazione voci…",
+      "working": "In corso…",
+      "skipForNow": "Salta — configura più tardi nelle Impostazioni",
+      "openTtsSettings": "Apri impostazioni TTS",
+      "readyHeading": "Voci pronte",
+      "readyEngine": "Sta usando {{engine}}",
+      "installVoicesForLang": "Scarica voci per {{lang}}",
+      "diagnostics": {
+        "toggle": "Diagnostica",
+        "copyButton": "Copia",
+        "copied": "Copiato"
+      },
+      "currentState": "Stato attuale: {{state}}",
+      "state": {
+        "enabled": "Attivato",
+        "default": "Attivato (predefinito di sistema)",
+        "disabled": "Disattivato",
+        "disabledUser": "Disattivato dall'utente (o da Samsung Device Care)",
+        "disabledUntilUsed": "Disattivato fino all'uso",
+        "notInstalled": "Non installato"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Pratica poliglotta istantanea",
     "cancel": "Annulla",
     "delete": "Elimina",
-    "create": "Crea"
+    "create": "Crea",
+    "dismiss": "Ignora"
   },
   "dialects": {
     "en": "Inglese",
@@ -348,5 +397,10 @@
     "pendingHeading": "In attesa di approvazione",
     "pendingDetail": "Il tuo acquisto è in attesa di approvazione (Ask to Buy o verifica bancaria). Si attiverà automaticamente una volta approvato.",
     "noProductsError": "L'App Store non ha restituito prodotti. Di solito si risolve in pochi secondi — riprova."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Riproduzione vocale fallita",
+    "playbackFailedDetail": "Apri le impostazioni TTS del dispositivo per risolverlo.",
+    "openSettingsAction": "Apri impostazioni TTS"
   }
 }

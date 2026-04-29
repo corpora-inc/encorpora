@@ -10,4 +10,9 @@ permissions = [
     "allow-list-voices",
     "allow-get-tts-engine-status",
     "allow-open-tts-engine-store",
+    "allow-probe-tts-health",
+    "allow-try-auto-recover",
+    "allow-bind-engine",
+    "allow-open-app-details",
+    "allow-install-voice-data-for-language",
 ]

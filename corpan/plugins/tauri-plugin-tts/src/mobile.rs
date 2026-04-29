@@ -1,5 +1,8 @@
 // src/mobile.rs
-use crate::models::{SpeakArgs, SpeakConcurrentArgs, SpeakResult, TtsEngineStatus, VoiceInfo};
+use crate::models::{
+    BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakArgs, SpeakConcurrentArgs,
+    SpeakResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
+};
 use serde::de::DeserializeOwned;
 use tauri::{
     plugin::{PluginApi, PluginHandle},
@@ -176,6 +179,144 @@ impl<R: Runtime> Tts<R> {
         #[cfg(not(target_os = "android"))]
         {
             Ok(false)
+        }
+    }
+
+    /// Comprehensive engine + voice + state probe (Android only).
+    pub fn probe_tts_health(&self) -> crate::Result<TtsHealthProbe> {
+        #[cfg(target_os = "android")]
+        {
+            self.0
+                .run_mobile_plugin::<TtsHealthProbe>("probeTtsHealth", Some(()))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] probe_tts_health error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            Ok(TtsHealthProbe {
+                supported: false,
+                init_state: "ready".to_string(),
+                current_engine: None,
+                voice_count: 0,
+                voices_empty: false,
+                default_engine: None,
+                engines: Vec::new(),
+                google_installed: false,
+                google_enabled: false,
+                google_default: false,
+                diagnosis: "ready".to_string(),
+                ready: true,
+            })
+        }
+    }
+
+    /// Try to bind to a working engine — Google TTS first, then any usable alternative.
+    pub fn try_auto_recover(&self) -> crate::Result<RecoverResult> {
+        #[cfg(target_os = "android")]
+        {
+            self.0
+                .run_mobile_plugin::<RecoverResult>("tryAutoRecover", Some(()))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] try_auto_recover error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            Ok(RecoverResult {
+                recovered: true,
+                engine: None,
+                diagnosis: None,
+                voice_count: None,
+                already_healthy: Some(true),
+            })
+        }
+    }
+
+    /// Bind to a specific engine package (Android only).
+    pub fn bind_engine(&self, package_name: String) -> crate::Result<BindEngineResult> {
+        #[cfg(target_os = "android")]
+        {
+            #[derive(serde::Serialize)]
+            #[serde(rename_all = "camelCase")]
+            struct Args {
+                package_name: String,
+            }
+            let args = Args { package_name };
+            self.0
+                .run_mobile_plugin::<BindEngineResult>("bindEngine", Some(args))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] bind_engine error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = package_name;
+            Ok(BindEngineResult {
+                ok: false,
+                reason: Some("not_supported".to_string()),
+                engine: None,
+                voice_count: None,
+            })
+        }
+    }
+
+    /// Open the system "App info" page for a package (Android only). Returns true on launch.
+    pub fn open_app_details(&self, package_name: String) -> crate::Result<bool> {
+        #[cfg(target_os = "android")]
+        {
+            #[derive(serde::Serialize)]
+            #[serde(rename_all = "camelCase")]
+            struct Args {
+                package_name: String,
+            }
+            let args = Args { package_name };
+            self.0
+                .run_mobile_plugin::<bool>("openAppDetails", Some(args))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] open_app_details error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = package_name;
+            Ok(false)
+        }
+    }
+
+    /// Per-language voice data installation (Android only).
+    pub fn install_voice_data_for_language(
+        &self,
+        language: String,
+    ) -> crate::Result<InstallVoiceDataResult> {
+        #[cfg(target_os = "android")]
+        {
+            #[derive(serde::Serialize)]
+            #[serde(rename_all = "camelCase")]
+            struct Args {
+                language: String,
+            }
+            let args = Args { language };
+            self.0
+                .run_mobile_plugin::<InstallVoiceDataResult>(
+                    "installVoiceDataForLanguage",
+                    Some(args),
+                )
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] install_voice_data_for_language error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = language;
+            Ok(InstallVoiceDataResult {
+                status: "not_supported".to_string(),
+            })
         }
     }
 }

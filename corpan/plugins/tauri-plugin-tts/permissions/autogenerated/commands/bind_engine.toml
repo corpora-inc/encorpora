@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-bind-engine"
+description = "Enables the bind_engine command without any pre-configured scope."
+commands.allow = ["bind_engine"]
+
+[[permission]]
+identifier = "deny-bind-engine"
+description = "Denies the bind_engine command without any pre-configured scope."
+commands.deny = ["bind_engine"]

@@ -158,29 +158,53 @@ export function createVoiceTTS(langPrefix: string) {
     }
 
     return async function speak(text: string, rate: number = 0.7, voiceId?: string) {
+        let nativeErr: unknown = null;
+        let browserErr: unknown = null;
+
         // 1) Prefer native on macOS/iOS/Android when in Tauri (UA-based).
         try {
             if (await preferNativeTTS()) {
-                // eslint-disable-next-line no-console
-                // console.log(`[TTS:${langPrefix}] Using native TTS plugin`, voiceId ? `(voiceId=${voiceId})` : "");
                 await speakNative(text, langPrefix, rate, voiceId);
-                // console.log("spoken")
                 return;
             }
         } catch (err) {
+            nativeErr = err;
             // eslint-disable-next-line no-console
-            // console.warn(`[TTS:${langPrefix}] Native-preference check failed; will try browser`, err);
+            console.warn(`[TTS:${langPrefix}] Native TTS failed; falling back to browser`, err);
         }
 
         // 2) Otherwise, try browser Web Speech.
         try {
-            // eslint-disable-next-line no-console
-            // console.log(`[TTS:${langPrefix}] Using browser Web Speech API`, voiceId ? `(voiceId=${voiceId})` : "");
             await speakBrowser(text, langPrefix, rate, voiceId);
             return;
         } catch (err) {
+            browserErr = err;
             // eslint-disable-next-line no-console
-            // console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
+            console.warn(`[TTS:${langPrefix}] Browser Web Speech failed`, err);
+        }
+
+        // Both paths failed — surface a noisy signal so the UI layer can react.
+        // eslint-disable-next-line no-console
+        console.error(
+            `[TTS:${langPrefix}] All speech paths failed`,
+            { nativeErr, browserErr, voiceId },
+        );
+        if (typeof window !== "undefined") {
+            try {
+                window.dispatchEvent(
+                    new CustomEvent("corpan:tts-failure", {
+                        detail: {
+                            lang: langPrefix,
+                            voiceId,
+                            nativeErr: String(nativeErr ?? ""),
+                            browserErr: String(browserErr ?? ""),
+                            at: Date.now(),
+                        },
+                    }),
+                );
+            } catch {
+                /* dispatchEvent may throw in unusual environments; ignore */
+            }
         }
     };
 }

@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Отправить отзыв Apple",
     "ttsGoogleInstalled": "Google TTS установлен",
     "ttsGoogleMissing": "Google TTS не установлен",
-    "ttsSetDefault": "Установить по умолчанию"
+    "ttsSetDefault": "Установить по умолчанию",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech отключён",
+        "detail": "Мы перенесём вас прямо на системную страницу, чтобы включить его. Одно касание — готово.",
+        "button": "Включить Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Установите Google Text-to-Speech",
+        "detail": "Голосовой движок Google обеспечивает лучшее качество во всех языках Corpán. Бесплатно.",
+        "button": "Установить из Play Store"
+      },
+      "noEngine": {
+        "heading": "Голосовой движок не найден",
+        "detail": "На вашем устройстве не установлен ни один TTS-движок. Установите Google Text-to-Speech.",
+        "button": "Установить Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Нужно загрузить голосовые данные",
+        "detail": "Движок готов, но голосовые данные для ваших языков ещё не загружены.",
+        "button": "Загрузить голоса"
+      },
+      "engineHung": {
+        "heading": "Голосовой движок не отвечает",
+        "detail": "Иногда системная служба TTS зависает. Нажмите ниже, чтобы повторить — обычно помогает.",
+        "button": "Повторить"
+      },
+      "probing": "Настройка голосов…",
+      "working": "Выполняется…",
+      "skipForNow": "Пропустить — настроить позже в Настройках",
+      "openTtsSettings": "Открыть настройки TTS",
+      "readyHeading": "Голоса готовы",
+      "readyEngine": "Используется {{engine}}",
+      "installVoicesForLang": "Загрузить голоса для {{lang}}",
+      "diagnostics": {
+        "toggle": "Диагностика",
+        "copyButton": "Копировать",
+        "copied": "Скопировано"
+      },
+      "currentState": "Текущее состояние: {{state}}",
+      "state": {
+        "enabled": "Включено",
+        "default": "Включено (по умолчанию)",
+        "disabled": "Отключено",
+        "disabledUser": "Отключено пользователем (или Samsung Device Care)",
+        "disabledUntilUsed": "Отключено до использования",
+        "notInstalled": "Не установлено"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Мгновенная многоязычная практика",
     "cancel": "Отмена",
     "delete": "Удалить",
-    "create": "Создать"
+    "create": "Создать",
+    "dismiss": "Закрыть"
   },
   "dialects": {
     "en": "Английский",
@@ -348,5 +397,10 @@
     "pendingHeading": "Ожидание одобрения",
     "pendingDetail": "Покупка ожидает одобрения (Ask to Buy или проверка банка). Активируется автоматически после одобрения.",
     "noProductsError": "App Store не вернул товары. Обычно решается за несколько секунд — попробуйте снова."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Воспроизведение голоса не удалось",
+    "playbackFailedDetail": "Откройте настройки TTS, чтобы исправить.",
+    "openSettingsAction": "Открыть настройки TTS"
   }
 }

@@ -1,6 +1,6 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructionsLanguageSection.tsx
 import { useState, useMemo, useEffect } from "react";
-import { CheckCircle2, Circle, Volume2, Venus, Mars, User, ChevronDown, ChevronRight } from "lucide-react";
+import { CheckCircle2, Circle, Volume2, Venus, Mars, User, ChevronDown, ChevronRight, Download } from "lucide-react";
 import type { VoiceInfo } from "@/util/tts-voices";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +14,8 @@ type Props = {
     onPreviewAny: (voice: VoiceInfo) => void | Promise<void>;
     previewSampleText: string; // kept for API compatibility (not used here)
     isRTL: boolean;
+    /** Android-only: when set, the empty-state shows a "Download voices" button. */
+    onInstallVoiceData?: () => void;
 };
 
 /* ----------------------------- Helpers ----------------------------- */
@@ -226,6 +228,7 @@ export function OnboardingTTSInstructionsLanguageSection({
     onPreviewAny,
     previewSampleText: _previewSampleText, // intentionally unused here
     isRTL,
+    onInstallVoiceData,
 }: Props) {
     const { t } = useTranslation();
 
@@ -437,8 +440,25 @@ export function OnboardingTTSInstructionsLanguageSection({
                     </div>
                 ) : (
                     <div className="p-4">
-                        <div className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-amber-200 text-amber-700 sm:h-24 text-xs">
-                            {t("onboarding.noVoicesHint", { defaultValue: "Install voices to enable this language." })}
+                        <div className="flex flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-amber-200 px-4 py-5 text-amber-700 sm:py-6">
+                            <span className="text-xs sm:text-sm text-center">
+                                {t("onboarding.noVoicesHint", { defaultValue: "Install voices to enable this language." })}
+                            </span>
+                            {onInstallVoiceData ? (
+                                <button
+                                    type="button"
+                                    onClick={onInstallVoiceData}
+                                    className="inline-flex h-10 items-center gap-2 rounded-md border border-amber-400 bg-amber-100 px-4 text-sm font-medium text-amber-900 shadow-sm transition hover:bg-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-[0.99] hover:cursor-pointer"
+                                >
+                                    <Download size={16} />
+                                    <span>
+                                        {t("onboarding.ttsRescue.installVoicesForLang", {
+                                            defaultValue: "Download voices for {{lang}}",
+                                            lang: sectionLabel,
+                                        })}
+                                    </span>
+                                </button>
+                            ) : null}
                         </div>
                     </div>
                 )}

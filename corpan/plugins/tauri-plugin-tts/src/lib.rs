@@ -49,7 +49,12 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::install_tts_data_if_supported,
             commands::list_voices,
             commands::get_tts_engine_status,
-            commands::open_tts_engine_store
+            commands::open_tts_engine_store,
+            commands::probe_tts_health,
+            commands::try_auto_recover,
+            commands::bind_engine,
+            commands::open_app_details,
+            commands::install_voice_data_for_language,
         ])
         .setup(|app, api| {
             // --- Mobile (Android/iOS) ---

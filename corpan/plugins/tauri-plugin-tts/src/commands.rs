@@ -1,5 +1,8 @@
 use crate::{
-    models::{SpeakArgs, SpeakConcurrentArgs, SpeakResult, TtsEngineStatus, VoiceInfo},
+    models::{
+        BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakArgs, SpeakConcurrentArgs,
+        SpeakResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
+    },
     Result, TtsExt,
 };
 use tauri::{command, AppHandle, Runtime};
@@ -118,4 +121,75 @@ pub(crate) async fn list_voices<R: Runtime>(app: AppHandle<R>) -> Result<Vec<Voi
     }
 
     r
+}
+
+/// Comprehensive engine + voice + state probe used by onboarding rescue UX.
+#[command]
+pub(crate) async fn probe_tts_health<R: Runtime>(app: AppHandle<R>) -> Result<TtsHealthProbe> {
+    println!("[NATIVE_TTS:DEBUG] probe_tts_health invoked");
+    app.tts().probe_tts_health()
+}
+
+/// Try to bind to a working engine — Google TTS first, then any usable alternative.
+#[command]
+pub(crate) async fn try_auto_recover<R: Runtime>(app: AppHandle<R>) -> Result<RecoverResult> {
+    println!("[NATIVE_TTS:DEBUG] try_auto_recover invoked");
+    app.tts().try_auto_recover()
+}
+
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct BindEngineCmdArgs {
+    package_name: String,
+}
+
+/// Bind to a specific engine package (Android only).
+#[command]
+pub(crate) async fn bind_engine<R: Runtime>(
+    app: AppHandle<R>,
+    args: BindEngineCmdArgs,
+) -> Result<BindEngineResult> {
+    println!(
+        "[NATIVE_TTS:DEBUG] bind_engine invoked: package={}",
+        args.package_name
+    );
+    app.tts().bind_engine(args.package_name)
+}
+
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct OpenAppDetailsArgs {
+    package_name: String,
+}
+
+/// Deep-link to the system "App info" page for a package.
+#[command]
+pub(crate) async fn open_app_details<R: Runtime>(
+    app: AppHandle<R>,
+    args: OpenAppDetailsArgs,
+) -> Result<bool> {
+    println!(
+        "[NATIVE_TTS:DEBUG] open_app_details invoked: package={}",
+        args.package_name
+    );
+    app.tts().open_app_details(args.package_name)
+}
+
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct InstallVoiceDataCmdArgs {
+    language: String,
+}
+
+/// Per-language voice data installation request (Android only).
+#[command]
+pub(crate) async fn install_voice_data_for_language<R: Runtime>(
+    app: AppHandle<R>,
+    args: InstallVoiceDataCmdArgs,
+) -> Result<InstallVoiceDataResult> {
+    println!(
+        "[NATIVE_TTS:DEBUG] install_voice_data_for_language invoked: language={}",
+        args.language
+    );
+    app.tts().install_voice_data_for_language(args.language)
 }
