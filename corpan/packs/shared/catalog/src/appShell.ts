@@ -663,9 +663,6 @@ export function createAppShell(
     // Capture play state before disposing old reader
     const wasPlaying = readerInstance?.isPlaying?.() ?? false
 
-    // Capture previous language for analytics (before mutating the store).
-    const previousLanguage = drawerStore.getState().currentLanguage
-
     // Set the canonical store FIRST, inside the guard
     switching = true
     drawerStore.setState({ currentNarrationId: narrationId, currentLanguage: info.language })
@@ -690,25 +687,15 @@ export function createAppShell(
     mountReader(newState)
     refreshSwitchers()
 
-    // Anonymous analytics — bookOpened auto-closes any prior open book.
+    // Anonymous analytics — bookOpened auto-closes any prior open book and
+    // emits a language_switch event when this book was previously seen in a
+    // different language (within-session OR across sessions).
     analytics.bookOpened({
       bookId: info.bookId,
       narrationPackId: narrationId,
       language: info.language,
       voiceId: info.voiceId,
     })
-
-    // Distinct event when the user is staying in the same book but switching
-    // language — a common comparison flow worth surfacing in analytics.
-    if (previousLanguage && previousLanguage !== info.language) {
-      analytics.languageSwitched({
-        bookId: info.bookId,
-        narrationPackId: narrationId,
-        language: info.language,
-        voiceId: info.voiceId,
-        from: previousLanguage,
-      })
-    }
   }
 
   // --- Now Playing section rendering ---
