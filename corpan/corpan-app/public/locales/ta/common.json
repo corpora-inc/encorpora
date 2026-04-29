@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple கருத்தை அனுப்பவும்",
     "ttsGoogleInstalled": "Google TTS நிறுவப்பட்டது",
     "ttsGoogleMissing": "Google TTS நிறுவப்படவில்லை",
-    "ttsSetDefault": "இயல்புநிலையாக அமை"
+    "ttsSetDefault": "இயல்புநிலையாக அமை",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech முடக்கப்பட்டது",
+        "detail": "மீண்டும் இயக்க நாங்கள் உங்களை நேரடியாக கணினி பக்கத்திற்கு அழைத்துச் செல்வோம். ஒரே தட்டலில் முடிந்துவிடும்.",
+        "button": "Google TTS-ஐ இயக்கு"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech-ஐ நிறுவவும்",
+        "detail": "Google-இன் குரல் இயந்திரம் Corpán ஆதரிக்கும் ஒவ்வொரு மொழியிலும் சிறந்த தரத்தை வழங்குகிறது. இலவசம்.",
+        "button": "Play Store-இல் இருந்து நிறுவு"
+      },
+      "noEngine": {
+        "heading": "குரல் இயந்திரம் இல்லை",
+        "detail": "உங்கள் சாதனத்தில் எந்த TTS இயந்திரமும் நிறுவப்படவில்லை. தொடர Google Text-to-Speech-ஐ நிறுவுக.",
+        "button": "Google TTS-ஐ நிறுவு"
+      },
+      "noVoiceData": {
+        "heading": "குரல் தரவு பதிவிறக்க வேண்டும்",
+        "detail": "உங்கள் இயந்திரம் தயாராக உள்ளது, ஆனால் உங்கள் மொழிகளுக்கான குரல் தரவு இன்னும் பதிவிறக்கப்படவில்லை.",
+        "button": "குரல்கள் பதிவிறக்கு"
+      },
+      "engineHung": {
+        "heading": "குரல் இயந்திரம் பதில் இல்லை",
+        "detail": "சில நேரங்களில் கணினி TTS சேவை சிக்கிக் கொள்கிறது. மீண்டும் முயற்சிக்க கீழே தட்டவும் — பொதுவாக சரியாகும்.",
+        "button": "மீண்டும் முயற்சிக்கவும்"
+      },
+      "probing": "குரல்கள் அமைக்கப்படுகின்றன…",
+      "working": "நடைபெறுகிறது…",
+      "skipForNow": "தவிர் — பின்னர் அமைப்புகளில் அமைக்க",
+      "openTtsSettings": "TTS அமைப்புகளைத் திற",
+      "readyHeading": "குரல்கள் தயார்",
+      "readyEngine": "{{engine}} பயன்படுத்துகிறது",
+      "installVoicesForLang": "{{lang}} க்கான குரல்கள் பதிவிறக்கு",
+      "diagnostics": {
+        "toggle": "நோய்க்கணிப்பு",
+        "copyButton": "நகலெடு",
+        "copied": "நகலெடுக்கப்பட்டது"
+      },
+      "currentState": "தற்போதைய நிலை: {{state}}",
+      "state": {
+        "enabled": "இயக்கப்பட்டது",
+        "default": "இயக்கப்பட்டது (கணினி இயல்புநிலை)",
+        "disabled": "முடக்கப்பட்டது",
+        "disabledUser": "பயனர் முடக்கினார் (அல்லது Samsung Device Care)",
+        "disabledUntilUsed": "பயன்படுத்தும் வரை முடக்கப்பட்டது",
+        "notInstalled": "நிறுவப்படவில்லை"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "உடனடி பல்மொழி பயிற்சி",
     "cancel": "ரத்து செய்",
     "delete": "நீக்கு",
-    "create": "உருவாக்கு"
+    "create": "உருவாக்கு",
+    "dismiss": "நிராகரி"
   },
   "dialects": {
     "en": "ஆங்கிலம்",
@@ -348,5 +397,10 @@
     "pendingHeading": "ஒப்புதலுக்காக காத்திருக்கிறது",
     "pendingDetail": "உங்கள் வாங்குதல் ஒப்புதலுக்காக காத்திருக்கிறது (Ask to Buy அல்லது வங்கி சரிபார்ப்பு). ஒப்புதல் கிடைத்தவுடன் தானாகவே செயல்படுத்தப்படும்.",
     "noProductsError": "App Store எந்த தயாரிப்புகளையும் திருப்பவில்லை. பொதுவாக சில வினாடிகளில் சரியாகிவிடும் — மீண்டும் முயற்சிக்கவும்."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "குரல் இயக்கம் தோல்வி",
+    "playbackFailedDetail": "சரிசெய்ய உங்கள் சாதனத்தின் TTS அமைப்புகளை திறக்கவும்.",
+    "openSettingsAction": "TTS அமைப்புகளைத் திற"
   }
 }

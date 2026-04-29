@@ -80,3 +80,71 @@ pub struct SpeakResult {
     /// Unique identifier for this utterance, used to track completion events.
     pub utterance_id: String,
 }
+
+/// Engine entry inside a TtsHealthProbe.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ProbeEngineInfo {
+    pub package_name: String,
+    pub label: Option<String>,
+    /// "enabled" | "disabled_user" | "disabled" | "default" | "disabled_until_used" | "not_installed"
+    pub enabled_state: String,
+    pub manifest_enabled: bool,
+    pub is_installed: bool,
+    /// Has TTS_SERVICE intent that 3rd-party apps can bind to (Samsung's SMT is "private" → false).
+    #[serde(default)]
+    pub is_bindable: bool,
+    pub is_usable: bool,
+}
+
+/// Comprehensive engine + voice + state probe used for the onboarding rescue UX.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TtsHealthProbe {
+    pub supported: bool,
+    /// "ready" | "pending" | "failed"
+    pub init_state: String,
+    pub current_engine: Option<String>,
+    pub voice_count: u32,
+    pub voices_empty: bool,
+    pub default_engine: Option<String>,
+    pub engines: Vec<ProbeEngineInfo>,
+    pub google_installed: bool,
+    pub google_enabled: bool,
+    pub google_default: bool,
+    /// "ready" | "engine_disabled_user" | "engine_disabled" | "engine_not_installed"
+    /// | "no_voice_data" | "no_engine" | "engine_hung"
+    pub diagnosis: String,
+    /// Convenience boolean: equivalent to (initState == "ready" && !voicesEmpty).
+    pub ready: bool,
+}
+
+/// Result of a recovery attempt.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RecoverResult {
+    pub recovered: bool,
+    pub engine: Option<String>,
+    pub diagnosis: Option<String>,
+    pub voice_count: Option<u32>,
+    pub already_healthy: Option<bool>,
+}
+
+/// Result of an explicit engine bind attempt.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct BindEngineResult {
+    pub ok: bool,
+    /// "not_installed" | "disabled_user" | "disabled" | "bind_timeout" | unset on success
+    pub reason: Option<String>,
+    pub engine: Option<String>,
+    pub voice_count: Option<u32>,
+}
+
+/// Result of a per-language voice data installation request.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct InstallVoiceDataResult {
+    /// "already_installed" | "launched_install_flow" | "not_supported" | "engine_not_ready"
+    pub status: String,
+}

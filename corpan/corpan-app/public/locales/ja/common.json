@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Appleにフィードバックを送る",
     "ttsGoogleInstalled": "Google TTSインストール済み",
     "ttsGoogleMissing": "Google TTS未インストール",
-    "ttsSetDefault": "デフォルトに設定"
+    "ttsSetDefault": "デフォルトに設定",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech が無効です",
+        "detail": "システム設定ページに直接移動して再度有効にできます。タップするだけです。",
+        "button": "Google TTS を有効にする"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech をインストール",
+        "detail": "Google の音声エンジンは、Corpán がサポートするすべての言語で最高品質を提供します。無料です。",
+        "button": "Play ストアからインストール"
+      },
+      "noEngine": {
+        "heading": "音声エンジンが見つかりません",
+        "detail": "デバイスに TTS エンジンがインストールされていません。続行するには Google Text-to-Speech をインストールしてください。",
+        "button": "Google TTS をインストール"
+      },
+      "noVoiceData": {
+        "heading": "音声データのダウンロードが必要",
+        "detail": "エンジンは準備できていますが、言語の音声データがまだダウンロードされていません。",
+        "button": "音声をダウンロード"
+      },
+      "engineHung": {
+        "heading": "音声エンジンが応答しません",
+        "detail": "システム TTS サービスが固まることがあります。下をタップして再試行 — 通常は解消します。",
+        "button": "再試行"
+      },
+      "probing": "音声を準備中…",
+      "working": "処理中…",
+      "skipForNow": "スキップ — 後で設定で構成",
+      "openTtsSettings": "TTS 設定を開く",
+      "readyHeading": "音声の準備完了",
+      "readyEngine": "{{engine}} を使用",
+      "installVoicesForLang": "{{lang}} の音声をダウンロード",
+      "diagnostics": {
+        "toggle": "診断",
+        "copyButton": "コピー",
+        "copied": "コピー済み"
+      },
+      "currentState": "現在の状態: {{state}}",
+      "state": {
+        "enabled": "有効",
+        "default": "有効(システム標準)",
+        "disabled": "無効",
+        "disabledUser": "ユーザーにより無効化(またはSamsung Device Care)",
+        "disabledUntilUsed": "使用するまで無効",
+        "notInstalled": "未インストール"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "すぐに多言語練習",
     "cancel": "キャンセル",
     "delete": "削除",
-    "create": "作成"
+    "create": "作成",
+    "dismiss": "閉じる"
   },
   "dialects": {
     "en": "英語",
@@ -348,5 +397,10 @@
     "pendingHeading": "承認待ち",
     "pendingDetail": "購入は承認待ちです (Ask to Buy または銀行確認)。承認されると自動的に有効になります。",
     "noProductsError": "App Store から商品が返されませんでした。通常は数秒で解消します — 再試行してください。"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "音声再生に失敗しました",
+    "playbackFailedDetail": "デバイスの TTS 設定を開いて修正してください。",
+    "openSettingsAction": "TTS 設定を開く"
   }
 }

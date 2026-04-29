@@ -115,7 +115,55 @@
     "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple",
     "ttsGoogleInstalled": "ติดตั้ง Google TTS แล้ว",
     "ttsGoogleMissing": "ยังไม่ได้ติดตั้ง Google TTS",
-    "ttsSetDefault": "ตั้งเป็นค่าเริ่มต้น"
+    "ttsSetDefault": "ตั้งเป็นค่าเริ่มต้น",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech ถูกปิดใช้งาน",
+        "detail": "เราจะพาคุณไปยังหน้าตั้งค่าระบบเพื่อเปิดใช้งานอีกครั้ง แตะครั้งเดียวก็เรียบร้อย",
+        "button": "เปิดใช้ Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "ติดตั้ง Google Text-to-Speech",
+        "detail": "เครื่องยนต์เสียงของ Google ให้คุณภาพดีที่สุดในทุกภาษาที่ Corpán รองรับ ฟรี",
+        "button": "ติดตั้งจาก Play Store"
+      },
+      "noEngine": {
+        "heading": "ไม่พบเครื่องยนต์เสียง",
+        "detail": "อุปกรณ์ของคุณยังไม่ได้ติดตั้งเครื่องยนต์ TTS เลย ติดตั้ง Google Text-to-Speech เพื่อดำเนินการต่อ",
+        "button": "ติดตั้ง Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "ต้องดาวน์โหลดข้อมูลเสียง",
+        "detail": "เครื่องยนต์ของคุณพร้อมแล้ว แต่ข้อมูลเสียงสำหรับภาษาของคุณยังไม่ถูกดาวน์โหลด",
+        "button": "ดาวน์โหลดเสียง"
+      },
+      "engineHung": {
+        "heading": "เครื่องยนต์เสียงไม่ตอบสนอง",
+        "detail": "บางครั้งบริการ TTS ของระบบติดขัด แตะด้านล่างเพื่อลองอีกครั้ง — มักจะหายเอง",
+        "button": "ลองอีกครั้ง"
+      },
+      "probing": "กำลังตั้งค่าเสียง…",
+      "working": "กำลังทำงาน…",
+      "skipForNow": "ข้าม — ตั้งค่าภายหลังในการตั้งค่า",
+      "openTtsSettings": "เปิดการตั้งค่า TTS",
+      "readyHeading": "เสียงพร้อมแล้ว",
+      "readyEngine": "กำลังใช้ {{engine}}",
+      "installVoicesForLang": "ดาวน์โหลดเสียงสำหรับ {{lang}}",
+      "diagnostics": {
+        "toggle": "การวินิจฉัย",
+        "copyButton": "คัดลอก",
+        "copied": "คัดลอกแล้ว"
+      },
+      "currentState": "สถานะปัจจุบัน: {{state}}",
+      "state": {
+        "enabled": "เปิดใช้งาน",
+        "default": "เปิดใช้งาน (ค่าเริ่มต้นระบบ)",
+        "disabled": "ปิดใช้งาน",
+        "disabledUser": "ผู้ใช้ปิด (หรือ Samsung Device Care)",
+        "disabledUntilUsed": "ปิดจนกว่าจะใช้",
+        "notInstalled": "ยังไม่ได้ติดตั้ง"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "ฝึกหลายภาษาได้ทันที",
     "cancel": "ยกเลิก",
     "delete": "ลบ",
-    "create": "สร้าง"
+    "create": "สร้าง",
+    "dismiss": "ปิด"
   },
   "dialects": {
     "en": "อังกฤษ",
@@ -348,5 +397,10 @@
     "pendingHeading": "รออนุมัติ",
     "pendingDetail": "การซื้อของคุณกำลังรออนุมัติ (Ask to Buy หรือตรวจสอบจากธนาคาร) จะเปิดใช้งานอัตโนมัติเมื่อได้รับอนุมัติ",
     "noProductsError": "App Store ไม่ส่งสินค้ากลับมา โดยปกติจะแก้ไขได้ในไม่กี่วินาที — โปรดลองอีกครั้ง"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "การเล่นเสียงล้มเหลว",
+    "playbackFailedDetail": "เปิดการตั้งค่า TTS ของอุปกรณ์เพื่อแก้ไข",
+    "openSettingsAction": "เปิดการตั้งค่า TTS"
   }
 }

@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple-visszajelzés küldése",
     "ttsGoogleInstalled": "Google TTS telepítve",
     "ttsGoogleMissing": "Google TTS nincs telepítve",
-    "ttsSetDefault": "Beállítás alapértelmezettként"
+    "ttsSetDefault": "Beállítás alapértelmezettként",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "A Google Text-to-Speech le van tiltva",
+        "detail": "Egyenesen a rendszerlapra visszük, hogy újra bekapcsolhasd. Egy érintés és kész.",
+        "button": "Google TTS engedélyezése"
+      },
+      "engineNotInstalled": {
+        "heading": "Telepítsd a Google Text-to-Speech-et",
+        "detail": "A Google hangmotorja minden Corpán által támogatott nyelven a legjobb minőséget nyújtja. Ingyenes.",
+        "button": "Telepítés a Play Áruházból"
+      },
+      "noEngine": {
+        "heading": "Nem található hangmotor",
+        "detail": "Az eszközödre nincs TTS motor telepítve. A folytatáshoz telepítsd a Google Text-to-Speech-et.",
+        "button": "Google TTS telepítése"
+      },
+      "noVoiceData": {
+        "heading": "A hangadatokat le kell tölteni",
+        "detail": "A motor készen áll, de a nyelveid hangadatai még nincsenek letöltve.",
+        "button": "Hangok letöltése"
+      },
+      "engineHung": {
+        "heading": "A hangmotor nem válaszol",
+        "detail": "Néha a rendszer TTS szolgáltatása beragad. Érintsd meg lent az újrapróbálkozáshoz — általában megoldódik.",
+        "button": "Újra"
+      },
+      "probing": "Hangok beállítása…",
+      "working": "Folyamatban…",
+      "skipForNow": "Kihagyás — később a Beállításokban",
+      "openTtsSettings": "TTS beállítások",
+      "readyHeading": "A hangok készen állnak",
+      "readyEngine": "{{engine}} használata",
+      "installVoicesForLang": "Hangok letöltése: {{lang}}",
+      "diagnostics": {
+        "toggle": "Diagnosztika",
+        "copyButton": "Másolás",
+        "copied": "Másolva"
+      },
+      "currentState": "Jelenlegi állapot: {{state}}",
+      "state": {
+        "enabled": "Engedélyezve",
+        "default": "Engedélyezve (rendszer alapértelmezett)",
+        "disabled": "Letiltva",
+        "disabledUser": "Felhasználó által letiltva (vagy Samsung Device Care)",
+        "disabledUntilUsed": "Letiltva használatig",
+        "notInstalled": "Nincs telepítve"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Azonnali többnyelvű gyakorlás",
     "cancel": "Mégse",
     "delete": "Törlés",
-    "create": "Létrehozás"
+    "create": "Létrehozás",
+    "dismiss": "Bezár"
   },
   "dialects": {
     "en": "Angol",
@@ -348,5 +397,10 @@
     "pendingHeading": "Jóváhagyásra vár",
     "pendingDetail": "A vásárlás jóváhagyásra vár (Ask to Buy vagy banki ellenőrzés). Jóváhagyás után automatikusan aktiválódik.",
     "noProductsError": "Az App Store nem adott vissza terméket. Általában néhány másodpercen belül megoldódik — próbáld újra."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "A hanglejátszás sikertelen",
+    "playbackFailedDetail": "Nyisd meg az eszközöd TTS beállításait a javításhoz.",
+    "openSettingsAction": "TTS beállítások"
   }
 }

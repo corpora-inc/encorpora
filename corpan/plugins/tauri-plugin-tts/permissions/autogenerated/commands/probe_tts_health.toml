@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-probe-tts-health"
+description = "Enables the probe_tts_health command without any pre-configured scope."
+commands.allow = ["probe_tts_health"]
+
+[[permission]]
+identifier = "deny-probe-tts-health"
+description = "Denies the probe_tts_health command without any pre-configured scope."
+commands.deny = ["probe_tts_health"]

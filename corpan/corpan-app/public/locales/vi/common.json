@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Gửi phản hồi cho Apple",
     "ttsGoogleInstalled": "Google TTS đã cài",
     "ttsGoogleMissing": "Google TTS chưa cài",
-    "ttsSetDefault": "Đặt làm mặc định"
+    "ttsSetDefault": "Đặt làm mặc định",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech bị tắt",
+        "detail": "Chúng tôi sẽ đưa bạn thẳng đến trang hệ thống để bật lại. Chỉ một thao tác chạm.",
+        "button": "Bật Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Cài đặt Google Text-to-Speech",
+        "detail": "Bộ máy giọng nói của Google cho chất lượng tốt nhất ở mọi ngôn ngữ Corpán hỗ trợ. Miễn phí.",
+        "button": "Cài đặt từ Play Store"
+      },
+      "noEngine": {
+        "heading": "Không tìm thấy bộ máy giọng nói",
+        "detail": "Thiết bị của bạn chưa cài đặt bộ máy TTS nào. Cài đặt Google Text-to-Speech để tiếp tục.",
+        "button": "Cài đặt Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Cần tải xuống dữ liệu giọng nói",
+        "detail": "Bộ máy của bạn đã sẵn sàng, nhưng dữ liệu giọng nói cho ngôn ngữ chưa được tải xuống.",
+        "button": "Tải xuống giọng nói"
+      },
+      "engineHung": {
+        "heading": "Bộ máy giọng nói không phản hồi",
+        "detail": "Đôi khi dịch vụ TTS hệ thống bị kẹt. Chạm vào dưới để thử lại — thường sẽ ổn.",
+        "button": "Thử lại"
+      },
+      "probing": "Đang thiết lập giọng nói…",
+      "working": "Đang xử lý…",
+      "skipForNow": "Bỏ qua — thiết lập sau trong Cài đặt",
+      "openTtsSettings": "Mở cài đặt TTS",
+      "readyHeading": "Giọng nói sẵn sàng",
+      "readyEngine": "Đang dùng {{engine}}",
+      "installVoicesForLang": "Tải xuống giọng nói cho {{lang}}",
+      "diagnostics": {
+        "toggle": "Chẩn đoán",
+        "copyButton": "Sao chép",
+        "copied": "Đã sao chép"
+      },
+      "currentState": "Trạng thái hiện tại: {{state}}",
+      "state": {
+        "enabled": "Đã bật",
+        "default": "Đã bật (mặc định hệ thống)",
+        "disabled": "Đã tắt",
+        "disabledUser": "Đã tắt bởi người dùng (hoặc Samsung Device Care)",
+        "disabledUntilUsed": "Tắt cho đến khi dùng",
+        "notInstalled": "Chưa cài đặt"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Luyện tập đa ngôn ngữ tức thì",
     "cancel": "Hủy",
     "delete": "Xóa",
-    "create": "Tạo"
+    "create": "Tạo",
+    "dismiss": "Bỏ qua"
   },
   "dialects": {
     "en": "Tiếng Anh",
@@ -348,5 +397,10 @@
     "pendingHeading": "Đang chờ phê duyệt",
     "pendingDetail": "Giao dịch của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Sẽ tự động kích hoạt khi được phê duyệt.",
     "noProductsError": "App Store không trả về sản phẩm nào. Thường giải quyết trong vài giây — vui lòng thử lại."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Phát giọng nói thất bại",
+    "playbackFailedDetail": "Mở cài đặt TTS của thiết bị để khắc phục.",
+    "openSettingsAction": "Mở cài đặt TTS"
   }
 }

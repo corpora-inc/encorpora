@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple-কে ফিডব্যাক পাঠান",
     "ttsGoogleInstalled": "Google TTS ইনস্টল করা আছে",
     "ttsGoogleMissing": "Google TTS ইনস্টল নেই",
-    "ttsSetDefault": "ডিফল্ট হিসাবে সেট করুন"
+    "ttsSetDefault": "ডিফল্ট হিসাবে সেট করুন",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech নিষ্ক্রিয়",
+        "detail": "আমরা সরাসরি সিস্টেম পেজে নিয়ে যাব যাতে এটি আবার চালু করা যায়। এক ট্যাপ-এই হয়ে যাবে।",
+        "button": "Google TTS সক্ষম করুন"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech ইনস্টল করুন",
+        "detail": "Google-এর ভয়েস ইঞ্জিন Corpán সমর্থিত প্রতিটি ভাষায় সেরা মানের ভয়েস দেয়। বিনামূল্যে।",
+        "button": "Play Store থেকে ইনস্টল করুন"
+      },
+      "noEngine": {
+        "heading": "কোনো ভয়েস ইঞ্জিন পাওয়া যায়নি",
+        "detail": "আপনার ডিভাইসে কোনো TTS ইঞ্জিন ইনস্টল করা নেই। চালিয়ে যেতে Google Text-to-Speech ইনস্টল করুন।",
+        "button": "Google TTS ইনস্টল করুন"
+      },
+      "noVoiceData": {
+        "heading": "ভয়েস ডেটা ডাউনলোড প্রয়োজন",
+        "detail": "আপনার ইঞ্জিন প্রস্তুত, কিন্তু আপনার ভাষার ভয়েস ডেটা এখনও ডাউনলোড হয়নি।",
+        "button": "ভয়েস ডাউনলোড"
+      },
+      "engineHung": {
+        "heading": "ভয়েস ইঞ্জিন সাড়া দিচ্ছে না",
+        "detail": "মাঝে মাঝে সিস্টেম TTS সার্ভিস আটকে যায়। নিচে ট্যাপ করে আবার চেষ্টা করুন — সাধারণত ঠিক হয়ে যায়।",
+        "button": "আবার চেষ্টা করুন"
+      },
+      "probing": "ভয়েস সেট আপ করা হচ্ছে…",
+      "working": "চলছে…",
+      "skipForNow": "এড়িয়ে যান — পরে সেটিংসে সেট আপ করুন",
+      "openTtsSettings": "TTS সেটিংস খুলুন",
+      "readyHeading": "ভয়েস প্রস্তুত",
+      "readyEngine": "{{engine}} ব্যবহার করছে",
+      "installVoicesForLang": "{{lang}} এর জন্য ভয়েস ডাউনলোড করুন",
+      "diagnostics": {
+        "toggle": "ডায়াগনস্টিকস",
+        "copyButton": "কপি",
+        "copied": "কপি হয়েছে"
+      },
+      "currentState": "বর্তমান অবস্থা: {{state}}",
+      "state": {
+        "enabled": "সক্রিয়",
+        "default": "সক্রিয় (সিস্টেম ডিফল্ট)",
+        "disabled": "নিষ্ক্রিয়",
+        "disabledUser": "ব্যবহারকারী দ্বারা নিষ্ক্রিয় (বা Samsung Device Care দ্বারা)",
+        "disabledUntilUsed": "ব্যবহার পর্যন্ত নিষ্ক্রিয়",
+        "notInstalled": "ইনস্টল নেই"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "তাৎক্ষণিক বহুভাষা অনুশীলন",
     "cancel": "বাতিল",
     "delete": "মুছে ফেলুন",
-    "create": "তৈরি করুন"
+    "create": "তৈরি করুন",
+    "dismiss": "বাতিল"
   },
   "dialects": {
     "en": "ইংরেজি",
@@ -348,5 +397,10 @@
     "pendingHeading": "অনুমোদনের অপেক্ষায়",
     "pendingDetail": "আপনার ক্রয় অনুমোদনের অপেক্ষায় রয়েছে (Ask to Buy বা ব্যাংক যাচাই)। অনুমোদিত হলে স্বয়ংক্রিয়ভাবে সক্রিয় হবে।",
     "noProductsError": "App Store কোনো পণ্য ফেরত দেয়নি। সাধারণত কয়েক সেকেন্ডে সমাধান হয় — আবার চেষ্টা করুন।"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "ভয়েস প্লেব্যাক ব্যর্থ",
+    "playbackFailedDetail": "ঠিক করতে আপনার ডিভাইসের TTS সেটিংস খুলুন।",
+    "openSettingsAction": "TTS সেটিংস খুলুন"
   }
 }

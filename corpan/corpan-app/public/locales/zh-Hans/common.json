@@ -115,7 +115,55 @@
     "sendAppleFeedback": "发送 Apple 反馈",
     "ttsGoogleInstalled": "Google TTS已安装",
     "ttsGoogleMissing": "Google TTS未安装",
-    "ttsSetDefault": "设为默认"
+    "ttsSetDefault": "设为默认",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech 已被禁用",
+        "detail": "我们直接带您到系统页面重新启用它。一键搞定。",
+        "button": "启用 Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "安装 Google Text-to-Speech",
+        "detail": "Google 的语音引擎在 Corpán 支持的所有语言中提供最佳质量。免费。",
+        "button": "从 Play 商店安装"
+      },
+      "noEngine": {
+        "heading": "未找到语音引擎",
+        "detail": "您的设备未安装任何 TTS 引擎。请安装 Google Text-to-Speech 以继续。",
+        "button": "安装 Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "需要下载语音数据",
+        "detail": "您的引擎已就绪,但您语言的语音数据尚未下载。",
+        "button": "下载语音"
+      },
+      "engineHung": {
+        "heading": "语音引擎无响应",
+        "detail": "有时系统 TTS 服务会卡住。点击下方重试 — 通常会恢复。",
+        "button": "重试"
+      },
+      "probing": "正在配置语音…",
+      "working": "处理中…",
+      "skipForNow": "跳过 — 稍后在设置中配置",
+      "openTtsSettings": "打开 TTS 设置",
+      "readyHeading": "语音就绪",
+      "readyEngine": "正在使用 {{engine}}",
+      "installVoicesForLang": "下载 {{lang}} 语音",
+      "diagnostics": {
+        "toggle": "诊断",
+        "copyButton": "复制",
+        "copied": "已复制"
+      },
+      "currentState": "当前状态:{{state}}",
+      "state": {
+        "enabled": "已启用",
+        "default": "已启用(系统默认)",
+        "disabled": "已停用",
+        "disabledUser": "已被用户停用(或被 Samsung Device Care 停用)",
+        "disabledUntilUsed": "使用前已停用",
+        "notInstalled": "未安装"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "即时多语言练习",
     "cancel": "取消",
     "delete": "删除",
-    "create": "创建"
+    "create": "创建",
+    "dismiss": "关闭"
   },
   "dialects": {
     "en": "英语",
@@ -348,5 +397,10 @@
     "pendingHeading": "等待批准",
     "pendingDetail": "您的购买正在等待批准 (Ask to Buy 或银行验证)。批准后将自动激活。",
     "noProductsError": "App Store 未返回任何商品。通常几秒后解决 — 请重试。"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "语音播放失败",
+    "playbackFailedDetail": "打开设备的 TTS 设置来修复。",
+    "openSettingsAction": "打开 TTS 设置"
   }
 }

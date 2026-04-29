@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Kirim masukan Apple",
     "ttsGoogleInstalled": "Google TTS terpasang",
     "ttsGoogleMissing": "Google TTS belum terpasang",
-    "ttsSetDefault": "Atur sebagai default"
+    "ttsSetDefault": "Atur sebagai default",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech dinonaktifkan",
+        "detail": "Kami membawa Anda langsung ke halaman sistem untuk mengaktifkannya kembali. Cukup satu ketukan.",
+        "button": "Aktifkan Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Pasang Google Text-to-Speech",
+        "detail": "Mesin suara Google memberikan kualitas terbaik di setiap bahasa yang didukung Corpán. Gratis.",
+        "button": "Pasang dari Play Store"
+      },
+      "noEngine": {
+        "heading": "Mesin suara tidak ditemukan",
+        "detail": "Perangkat Anda belum memiliki mesin TTS terpasang. Pasang Google Text-to-Speech untuk melanjutkan.",
+        "button": "Pasang Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Data suara perlu diunduh",
+        "detail": "Mesin Anda siap, tetapi data suara untuk bahasa Anda belum diunduh.",
+        "button": "Unduh suara"
+      },
+      "engineHung": {
+        "heading": "Mesin suara tidak merespons",
+        "detail": "Kadang layanan TTS sistem macet. Ketuk di bawah untuk mencoba lagi — biasanya beres.",
+        "button": "Coba lagi"
+      },
+      "probing": "Mengatur suara…",
+      "working": "Sedang berjalan…",
+      "skipForNow": "Lewati — atur nanti di Pengaturan",
+      "openTtsSettings": "Buka pengaturan TTS",
+      "readyHeading": "Suara siap",
+      "readyEngine": "Memakai {{engine}}",
+      "installVoicesForLang": "Unduh suara untuk {{lang}}",
+      "diagnostics": {
+        "toggle": "Diagnostik",
+        "copyButton": "Salin",
+        "copied": "Tersalin"
+      },
+      "currentState": "Status saat ini: {{state}}",
+      "state": {
+        "enabled": "Aktif",
+        "default": "Aktif (default sistem)",
+        "disabled": "Nonaktif",
+        "disabledUser": "Dinonaktifkan pengguna (atau Samsung Device Care)",
+        "disabledUntilUsed": "Nonaktif sampai digunakan",
+        "notInstalled": "Tidak terpasang"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Latihan poliglot instan",
     "cancel": "Batal",
     "delete": "Hapus",
-    "create": "Buat"
+    "create": "Buat",
+    "dismiss": "Tutup"
   },
   "dialects": {
     "en": "Inggris",
@@ -348,5 +397,10 @@
     "pendingHeading": "Menunggu persetujuan",
     "pendingDetail": "Pembelianmu menunggu persetujuan (Ask to Buy atau verifikasi bank). Akan aktif otomatis setelah disetujui.",
     "noProductsError": "App Store tidak mengembalikan produk apa pun. Biasanya teratasi dalam beberapa detik — coba lagi."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Pemutaran suara gagal",
+    "playbackFailedDetail": "Buka pengaturan TTS perangkat Anda untuk memperbaikinya.",
+    "openSettingsAction": "Buka pengaturan TTS"
   }
 }

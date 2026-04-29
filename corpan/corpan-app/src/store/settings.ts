@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { isRTL } from "@/util/convert";
+import { bindEngine, detectOSFromUA, probeTtsHealth } from "@/util/tts-voices";
 
 export const ALL_LANGUAGES = [
     "en",
@@ -107,6 +108,14 @@ type MultiStackState = {
     activeStackId: StackId;
     theme: Theme;
 
+    /**
+     * Android-only: package name of the user's preferred TTS engine.
+     * When set, the app rebinds to this engine on boot — so a broken
+     * `tts_default_synth` setting in Android Secure settings can't break us.
+     * `null` = use whatever the OS default is.
+     */
+    preferredEngine: string | null;
+
     // Mirrors of active (not persisted)
     languages: string[];
     domains: string[];
@@ -152,6 +161,9 @@ type MultiStackState = {
     setOnboarded: (b: boolean) => void;
     resetOnboarding: () => void;
     setOnboardingStep: (n: number) => void;
+
+    /** Android-only: set or clear the preferred TTS engine package. */
+    setPreferredEngine: (pkg: string | null) => void;
 
     // Stacks mgmt
     getStacks: () => Array<{ id: string; name: string }>;
@@ -343,6 +355,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 stacks: boot.stacks,
                 activeStackId: boot.activeStackId,
                 theme: "system" as Theme,
+                preferredEngine: null,
 
                 // Mirrors (initialized from the boot active)
                 ...derived,
@@ -445,6 +458,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 setOnboarded: (b) => set({ onboarded: b }),
                 resetOnboarding: () => set({ onboarded: false }),
                 setOnboardingStep: (n) => set({ onboardingStep: n }),
+                setPreferredEngine: (pkg) => set({ preferredEngine: pkg && pkg.length ? pkg : null }),
 
                 // Stacks mgmt
                 getStacks: () => Object.values(get().stacks).map(({ id, name }) => ({ id, name })),
@@ -523,6 +537,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 onboarded: state.onboarded,
                 onboardingStep: state.onboardingStep,
                 theme: state.theme,
+                preferredEngine: state.preferredEngine,
             }),
         }
     )
@@ -531,12 +546,42 @@ export const useSettingsStore = create<MultiStackState>()(
 // After hydration, re-derive mirrors from whatever canonical was loaded.
 // Also skip onboarding if any stack exists (covers first-run after a manual data import, etc.)
 useSettingsStore.persist.onFinishHydration(() => {
-    const { stacks, activeStackId, onboarded } = useSettingsStore.getState();
+    const { stacks, activeStackId, onboarded, preferredEngine } = useSettingsStore.getState();
     const active = stacks[activeStackId] ?? Object.values(stacks)[0];
     if (active) {
         useSettingsStore.setState({ ...deriveFrom(active), _voiceCycleIndex: {} }, false);
     }
     if (!onboarded && Object.keys(stacks).length > 0) {
         useSettingsStore.setState({ onboarded: true }, false);
+    }
+
+    // Android-only: `preferredEngine` is a fallback hint persisted from a
+    // previous onboarding rescue. On boot we let the plugin's default-engine
+    // init settle first, then probe — if the SYSTEM default is now healthy
+    // we defer to it (clearing the stale preference, so a user changing
+    // Android's default TTS in system settings is honored). If the system
+    // default is broken, we re-bind our cached preference; if THAT fails,
+    // clear it too so we don't loop forever.
+    if (preferredEngine) {
+        setTimeout(async () => {
+            if (detectOSFromUA() !== "android") return;
+            try {
+                // Allow the plugin's default-engine init time to settle.
+                await new Promise((r) => setTimeout(r, 1500));
+                const probe = await probeTtsHealth();
+                if (probe.diagnosis === "ready" && !probe.voicesEmpty) {
+                    // System default works — drop the override.
+                    useSettingsStore.setState({ preferredEngine: null }, false);
+                    return;
+                }
+                // System default is broken — try the cached preference.
+                const res = await bindEngine(preferredEngine);
+                if (!res.ok) {
+                    useSettingsStore.setState({ preferredEngine: null }, false);
+                }
+            } catch {
+                useSettingsStore.setState({ preferredEngine: null }, false);
+            }
+        }, 0);
     }
 });
