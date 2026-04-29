@@ -3,7 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { isRTL } from "@/util/convert";
-import { bindEngine, detectOSFromUA } from "@/util/tts-voices";
+import { bindEngine, detectOSFromUA, probeTtsHealth } from "@/util/tts-voices";
 
 export const ALL_LANGUAGES = [
     "en",
@@ -555,14 +555,26 @@ useSettingsStore.persist.onFinishHydration(() => {
         useSettingsStore.setState({ onboarded: true }, false);
     }
 
-    // Android-only: rebind to preferred engine on boot if the user picked one
-    // during onboarding rescue. Defer to next tick so plugin `load()` runs first.
-    // If the bind fails (engine uninstalled, disabled, no longer bindable), clear
-    // the stale preference so the system default takes over again.
+    // Android-only: `preferredEngine` is a fallback hint persisted from a
+    // previous onboarding rescue. On boot we let the plugin's default-engine
+    // init settle first, then probe — if the SYSTEM default is now healthy
+    // we defer to it (clearing the stale preference, so a user changing
+    // Android's default TTS in system settings is honored). If the system
+    // default is broken, we re-bind our cached preference; if THAT fails,
+    // clear it too so we don't loop forever.
     if (preferredEngine) {
         setTimeout(async () => {
             if (detectOSFromUA() !== "android") return;
             try {
+                // Allow the plugin's default-engine init time to settle.
+                await new Promise((r) => setTimeout(r, 1500));
+                const probe = await probeTtsHealth();
+                if (probe.diagnosis === "ready" && !probe.voicesEmpty) {
+                    // System default works — drop the override.
+                    useSettingsStore.setState({ preferredEngine: null }, false);
+                    return;
+                }
+                // System default is broken — try the cached preference.
                 const res = await bindEngine(preferredEngine);
                 if (!res.ok) {
                     useSettingsStore.setState({ preferredEngine: null }, false);

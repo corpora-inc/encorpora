@@ -151,12 +151,18 @@ export function OnboardingTTSInstructions() {
     const inFlightRef = useRef(false);
     const pendingRunRef = useRef(false);
 
-    /** Refresh voices + engine status (Phase B operation). Errors are non-fatal. */
-    async function refreshVoices() {
+    /**
+     * Refresh voices + engine status. Returns whether the voices list was
+     * successfully populated — caller can use this to detect "engine reports
+     * ready but list_voices threw/timed out" and react accordingly.
+     */
+    async function refreshVoices(): Promise<boolean> {
+        let voicesOk = false;
         try {
             const raw = await getVoices({});
             const list = uniqBy(raw as ExtendedVoiceInfo[], (v) => `${v.id}|${v.language}`);
             setVoices(list);
+            voicesOk = true;
         } catch (e) {
             console.warn("[onboardingTTS] refreshVoices: getVoices failed", e);
         }
@@ -170,6 +176,7 @@ export function OnboardingTTSInstructions() {
                 setEngineStatusReady(true);
             }
         }
+        return voicesOk;
     }
 
     /**
@@ -286,6 +293,27 @@ export function OnboardingTTSInstructions() {
         const timer = window.setTimeout(() => setRecoveryFlash(false), 800);
         return () => window.clearTimeout(timer);
     }, [recoveryFlash]);
+
+    // If the engine reports ready but we haven't been able to populate the
+    // voice list (list_voices threw / timed out), keep retrying — and after a
+    // bounded number of attempts fall back to a rescue card. Without this the
+    // user would see Phase B with no language sections (empty page).
+    const voicesRetryRef = useRef(0);
+    useEffect(() => {
+        if (phase.kind !== "ready" || voices !== null) {
+            voicesRetryRef.current = 0;
+            return;
+        }
+        if (voicesRetryRef.current >= 3) {
+            setPhase({ kind: "rescue", probe: fallbackProbe("engine_hung"), busy: false });
+            return;
+        }
+        voicesRetryRef.current += 1;
+        const delay = 500 * voicesRetryRef.current;
+        const timer = window.setTimeout(() => void refreshVoices(), delay);
+        return () => window.clearTimeout(timer);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phase.kind, voices]);
 
     /* ---------- Rescue actions ---------- */
 
@@ -459,6 +487,11 @@ export function OnboardingTTSInstructions() {
         if (phase.kind === "loading") {
             return <OnboardingTTSProbing />;
         }
+        // Engine ready but voices not yet populated (list_voices is retrying).
+        // Show the loading skeleton rather than an empty page.
+        if (phase.kind === "ready" && voices === null && !recoveryFlash) {
+            return <OnboardingTTSProbing />;
+        }
         if (phase.kind === "ready" && recoveryFlash) {
             return <OnboardingTTSReadyConfirm engine={phase.engine ?? null} />;
         }
@@ -478,7 +511,7 @@ export function OnboardingTTSInstructions() {
         return null;
     };
 
-    const showPhaseB = phase.kind === "ready" && !recoveryFlash;
+    const showPhaseB = phase.kind === "ready" && !recoveryFlash && voices !== null;
 
     return (
         <section
