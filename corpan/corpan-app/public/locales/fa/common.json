@@ -115,7 +115,55 @@
     "sendAppleFeedback": "ارسال بازخورد به Apple",
     "ttsGoogleInstalled": "Google TTS نصب شده",
     "ttsGoogleMissing": "Google TTS نصب نشده",
-    "ttsSetDefault": "تنظیم به‌عنوان پیش‌فرض"
+    "ttsSetDefault": "تنظیم به‌عنوان پیش‌فرض",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech غیرفعال است",
+        "detail": "شما را مستقیماً به صفحه سیستم می‌بریم تا دوباره فعال کنید. با یک ضربه انجام می‌شود.",
+        "button": "Google TTS را فعال کنید"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech را نصب کنید",
+        "detail": "موتور صدای Google در همه زبان‌هایی که Corpán پشتیبانی می‌کند بهترین کیفیت را ارائه می‌دهد. رایگان است.",
+        "button": "نصب از Play Store"
+      },
+      "noEngine": {
+        "heading": "موتور صدا یافت نشد",
+        "detail": "در دستگاه شما هیچ موتور TTS نصب نیست. برای ادامه، Google Text-to-Speech را نصب کنید.",
+        "button": "نصب Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "داده صدا باید دانلود شود",
+        "detail": "موتور شما آماده است، اما داده صدای زبان‌های شما هنوز دانلود نشده.",
+        "button": "دانلود صداها"
+      },
+      "engineHung": {
+        "heading": "موتور صدا پاسخ نمی‌دهد",
+        "detail": "گاهی سرویس TTS سیستم گیر می‌کند. پایین را بزنید و دوباره امتحان کنید — معمولاً برطرف می‌شود.",
+        "button": "تلاش مجدد"
+      },
+      "probing": "در حال راه‌اندازی صداها…",
+      "working": "در حال پردازش…",
+      "skipForNow": "رد شو — بعداً در تنظیمات تنظیم کنید",
+      "openTtsSettings": "تنظیمات TTS را باز کنید",
+      "readyHeading": "صداها آماده‌اند",
+      "readyEngine": "در حال استفاده از {{engine}}",
+      "installVoicesForLang": "دانلود صداها برای {{lang}}",
+      "diagnostics": {
+        "toggle": "تشخیص",
+        "copyButton": "کپی",
+        "copied": "کپی شد"
+      },
+      "currentState": "وضعیت کنونی: {{state}}",
+      "state": {
+        "enabled": "فعال",
+        "default": "فعال (پیش‌فرض سیستم)",
+        "disabled": "غیرفعال",
+        "disabledUser": "توسط کاربر غیرفعال شده (یا توسط Samsung Device Care)",
+        "disabledUntilUsed": "غیرفعال تا استفاده",
+        "notInstalled": "نصب نشده"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "تمرین چندزبانهٔ فوری",
     "cancel": "لغو",
     "delete": "حذف",
-    "create": "ایجاد"
+    "create": "ایجاد",
+    "dismiss": "بستن"
   },
   "dialects": {
     "en": "انگلیسی",
@@ -348,5 +397,10 @@
     "pendingHeading": "در انتظار تأیید",
     "pendingDetail": "خرید شما در انتظار تأیید است (Ask to Buy یا تأیید بانکی). پس از تأیید، به‌طور خودکار فعال می‌شود.",
     "noProductsError": "App Store هیچ محصولی برنگرداند. معمولاً ظرف چند ثانیه حل می‌شود — دوباره تلاش کنید."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "پخش صدا ناموفق بود",
+    "playbackFailedDetail": "برای رفع آن، تنظیمات TTS دستگاه خود را باز کنید.",
+    "openSettingsAction": "باز کردن تنظیمات TTS"
   }
 }

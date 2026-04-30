@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple ਫੀਡਬੈਕ ਭੇਜੋ",
     "ttsGoogleInstalled": "Google TTS ਇੰਸਟਾਲ ਹੈ",
     "ttsGoogleMissing": "Google TTS ਇੰਸਟਾਲ ਨਹੀਂ",
-    "ttsSetDefault": "ਡਿਫਾਲਟ ਵਜੋਂ ਸੈੱਟ ਕਰੋ"
+    "ttsSetDefault": "ਡਿਫਾਲਟ ਵਜੋਂ ਸੈੱਟ ਕਰੋ",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech ਅਸਮਰੱਥ ਹੈ",
+        "detail": "ਮੁੜ ਚਾਲੂ ਕਰਨ ਲਈ ਅਸੀਂ ਤੁਹਾਨੂੰ ਸਿੱਧੇ ਸਿਸਟਮ ਪੰਨੇ 'ਤੇ ਲੈ ਜਾਵਾਂਗੇ। ਇੱਕ ਟੈਪ ਨਾਲ ਹੋ ਜਾਵੇਗਾ।",
+        "button": "Google TTS ਚਾਲੂ ਕਰੋ"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech ਇੰਸਟਾਲ ਕਰੋ",
+        "detail": "Google ਦਾ ਵੌਇਸ ਇੰਜਣ Corpán ਦੁਆਰਾ ਸਮਰਥਿਤ ਹਰ ਭਾਸ਼ਾ ਵਿੱਚ ਵਧੀਆ ਗੁਣਵੱਤਾ ਦਿੰਦਾ ਹੈ। ਮੁਫ਼ਤ।",
+        "button": "Play Store ਤੋਂ ਇੰਸਟਾਲ"
+      },
+      "noEngine": {
+        "heading": "ਕੋਈ ਵੌਇਸ ਇੰਜਣ ਨਹੀਂ ਮਿਲਿਆ",
+        "detail": "ਤੁਹਾਡੇ ਡਿਵਾਈਸ 'ਤੇ ਕੋਈ TTS ਇੰਜਣ ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ Google Text-to-Speech ਇੰਸਟਾਲ ਕਰੋ।",
+        "button": "Google TTS ਇੰਸਟਾਲ"
+      },
+      "noVoiceData": {
+        "heading": "ਵੌਇਸ ਡਾਟਾ ਡਾਊਨਲੋਡ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+        "detail": "ਤੁਹਾਡਾ ਇੰਜਣ ਤਿਆਰ ਹੈ, ਪਰ ਤੁਹਾਡੀਆਂ ਭਾਸ਼ਾਵਾਂ ਦਾ ਵੌਇਸ ਡਾਟਾ ਅਜੇ ਡਾਊਨਲੋਡ ਨਹੀਂ ਹੋਇਆ।",
+        "button": "ਆਵਾਜ਼ਾਂ ਡਾਊਨਲੋਡ ਕਰੋ"
+      },
+      "engineHung": {
+        "heading": "ਵੌਇਸ ਇੰਜਣ ਜਵਾਬ ਨਹੀਂ ਦੇ ਰਿਹਾ",
+        "detail": "ਕਦੇ-ਕਦੇ ਸਿਸਟਮ TTS ਸੇਵਾ ਅਟਕ ਜਾਂਦੀ ਹੈ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਹੇਠਾਂ ਟੈਪ ਕਰੋ — ਆਮ ਤੌਰ 'ਤੇ ਠੀਕ ਹੋ ਜਾਂਦੀ ਹੈ।",
+        "button": "ਮੁੜ ਕੋਸ਼ਿਸ਼"
+      },
+      "probing": "ਆਵਾਜ਼ਾਂ ਸੈੱਟਅੱਪ ਹੋ ਰਹੀਆਂ ਹਨ…",
+      "working": "ਚੱਲ ਰਿਹਾ ਹੈ…",
+      "skipForNow": "ਛੱਡੋ — ਬਾਅਦ ਵਿੱਚ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਸੈੱਟ ਕਰੋ",
+      "openTtsSettings": "TTS ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
+      "readyHeading": "ਆਵਾਜ਼ਾਂ ਤਿਆਰ",
+      "readyEngine": "{{engine}} ਵਰਤ ਰਿਹਾ ਹੈ",
+      "installVoicesForLang": "{{lang}} ਲਈ ਆਵਾਜ਼ਾਂ ਡਾਊਨਲੋਡ ਕਰੋ",
+      "diagnostics": {
+        "toggle": "ਡਾਇਗਨੌਸਟਿਕਸ",
+        "copyButton": "ਕਾਪੀ",
+        "copied": "ਕਾਪੀ ਹੋ ਗਿਆ"
+      },
+      "currentState": "ਮੌਜੂਦਾ ਸਥਿਤੀ: {{state}}",
+      "state": {
+        "enabled": "ਯੋਗ",
+        "default": "ਯੋਗ (ਸਿਸਟਮ ਡਿਫੌਲਟ)",
+        "disabled": "ਅਯੋਗ",
+        "disabledUser": "ਉਪਭੋਗਤਾ ਨੇ ਅਯੋਗ ਕੀਤਾ (ਜਾਂ Samsung Device Care ਨੇ)",
+        "disabledUntilUsed": "ਵਰਤਣ ਤੱਕ ਅਯੋਗ",
+        "notInstalled": "ਇੰਸਟਾਲ ਨਹੀਂ"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "ਤੁਰੰਤ ਬਹੁਭਾਸ਼ੀ ਅਭਿਆਸ",
     "cancel": "ਰੱਦ ਕਰੋ",
     "delete": "ਹਟਾਓ",
-    "create": "ਬਣਾਓ"
+    "create": "ਬਣਾਓ",
+    "dismiss": "ਖਾਰਜ ਕਰੋ"
   },
   "dialects": {
     "pa": "ਪੰਜਾਬੀ",
@@ -348,5 +397,10 @@
     "pendingHeading": "ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ",
     "pendingDetail": "ਤੁਹਾਡੀ ਖਰੀਦ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਕਰ ਰਹੀ ਹੈ (Ask to Buy ਜਾਂ ਬੈਂਕ ਪੁਸ਼ਟੀ)। ਮਨਜ਼ੂਰੀ ਮਿਲਣ 'ਤੇ ਆਟੋਮੈਟਿਕ ਚਾਲੂ ਹੋ ਜਾਵੇਗੀ।",
     "noProductsError": "App Store ਨੇ ਕੋਈ ਉਤਪਾਦ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ। ਆਮ ਤੌਰ 'ਤੇ ਕੁਝ ਸਕਿੰਟਾਂ ਵਿੱਚ ਹੱਲ — ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "ਆਵਾਜ਼ ਪਲੇਬੈਕ ਅਸਫਲ",
+    "playbackFailedDetail": "ਠੀਕ ਕਰਨ ਲਈ ਆਪਣੇ ਡਿਵਾਈਸ ਦੀਆਂ TTS ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ।",
+    "openSettingsAction": "TTS ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ"
   }
 }

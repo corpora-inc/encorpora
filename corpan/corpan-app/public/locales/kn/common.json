@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple ಪ್ರತಿಕ್ರಿಯೆ ಕಳುಹಿಸಿ",
     "ttsGoogleInstalled": "Google TTS ಸ್ಥಾಪಿಸಲಾಗಿದೆ",
     "ttsGoogleMissing": "Google TTS ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ",
-    "ttsSetDefault": "ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ"
+    "ttsSetDefault": "ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+        "detail": "ಮತ್ತೆ ಆನ್ ಮಾಡಲು ನಿಮ್ಮನ್ನು ನೇರವಾಗಿ ಸಿಸ್ಟಮ್ ಪುಟಕ್ಕೆ ಕರೆದೊಯ್ಯುತ್ತೇವೆ. ಒಂದೇ ಟ್ಯಾಪ್‌ನಲ್ಲಿ ಮುಗಿಯುತ್ತದೆ.",
+        "button": "Google TTS ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech ಸ್ಥಾಪಿಸಿ",
+        "detail": "Google ಧ್ವನಿ ಎಂಜಿನ್ Corpán ಬೆಂಬಲಿಸುವ ಎಲ್ಲಾ ಭಾಷೆಗಳಲ್ಲಿ ಅತ್ಯುತ್ತಮ ಗುಣಮಟ್ಟವನ್ನು ನೀಡುತ್ತದೆ. ಉಚಿತ.",
+        "button": "Play Store ನಿಂದ ಸ್ಥಾಪಿಸಿ"
+      },
+      "noEngine": {
+        "heading": "ಧ್ವನಿ ಎಂಜಿನ್ ಸಿಗಲಿಲ್ಲ",
+        "detail": "ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಯಾವುದೇ TTS ಎಂಜಿನ್ ಸ್ಥಾಪಿಸಿಲ್ಲ. ಮುಂದುವರಿಯಲು Google Text-to-Speech ಸ್ಥಾಪಿಸಿ.",
+        "button": "Google TTS ಸ್ಥಾಪಿಸಿ"
+      },
+      "noVoiceData": {
+        "heading": "ಧ್ವನಿ ಡೇಟಾ ಡೌನ್‌ಲೋಡ್ ಮಾಡಬೇಕಿದೆ",
+        "detail": "ನಿಮ್ಮ ಎಂಜಿನ್ ಸಿದ್ಧವಾಗಿದೆ, ಆದರೆ ನಿಮ್ಮ ಭಾಷೆಗಳ ಧ್ವನಿ ಡೇಟಾ ಇನ್ನೂ ಡೌನ್‌ಲೋಡ್ ಆಗಿಲ್ಲ.",
+        "button": "ಧ್ವನಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+      },
+      "engineHung": {
+        "heading": "ಧ್ವನಿ ಎಂಜಿನ್ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತಿಲ್ಲ",
+        "detail": "ಕೆಲವೊಮ್ಮೆ ಸಿಸ್ಟಂ TTS ಸೇವೆ ತೊಡಕುತ್ತದೆ. ಕೆಳಗೆ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ — ಸಾಮಾನ್ಯವಾಗಿ ಸರಿಹೋಗುತ್ತದೆ.",
+        "button": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
+      },
+      "probing": "ಧ್ವನಿಗಳನ್ನು ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…",
+      "working": "ಕೆಲಸ ಮಾಡುತ್ತಿದೆ…",
+      "skipForNow": "ಬಿಟ್ಟುಬಿಡಿ — ನಂತರ ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಸೆಟ್ ಮಾಡಿ",
+      "openTtsSettings": "TTS ಸೆಟ್ಟಿಂಗ್ಸ್ ತೆರೆಯಿರಿ",
+      "readyHeading": "ಧ್ವನಿಗಳು ಸಿದ್ಧ",
+      "readyEngine": "{{engine}} ಬಳಸುತ್ತಿದೆ",
+      "installVoicesForLang": "{{lang}} ಗಾಗಿ ಧ್ವನಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+      "diagnostics": {
+        "toggle": "ಡಯಾಗ್ನೋಸ್ಟಿಕ್ಸ್",
+        "copyButton": "ನಕಲಿಸಿ",
+        "copied": "ನಕಲಿಸಲಾಗಿದೆ"
+      },
+      "currentState": "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ: {{state}}",
+      "state": {
+        "enabled": "ಸಕ್ರಿಯಗೊಂಡಿದೆ",
+        "default": "ಸಕ್ರಿಯಗೊಂಡಿದೆ (ಸಿಸ್ಟಮ್ ಡಿಫಾಲ್ಟ್)",
+        "disabled": "ನಿಷ್ಕ್ರಿಯಗೊಂಡಿದೆ",
+        "disabledUser": "ಬಳಕೆದಾರರಿಂದ ನಿಷ್ಕ್ರಿಯಗೊಂಡಿದೆ (ಅಥವಾ Samsung Device Care)",
+        "disabledUntilUsed": "ಬಳಸುವವರೆಗೆ ನಿಷ್ಕ್ರಿಯ",
+        "notInstalled": "ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "ತತ್ಕ್ಷಣ ಬಹುಭಾಷಾ ಅಭ್ಯಾಸ",
     "cancel": "ರದ್ದುಮಾಡಿ",
     "delete": "ಅಳಿಸಿ",
-    "create": "ರಚಿಸಿ"
+    "create": "ರಚಿಸಿ",
+    "dismiss": "ಮುಚ್ಚಿ"
   },
   "dialects": {
     "kn": "ಕನ್ನಡ",
@@ -348,5 +397,10 @@
     "pendingHeading": "ಅನುಮೋದನೆಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ",
     "pendingDetail": "ನಿಮ್ಮ ಖರೀದಿ ಅನುಮೋದನೆಗಾಗಿ ಕಾಯುತ್ತಿದೆ (Ask to Buy ಅಥವಾ ಬ್ಯಾಂಕ್ ಪರಿಶೀಲನೆ). ಅನುಮೋದಿಸಿದ ತಕ್ಷಣ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಕ್ರಿಯಗೊಳ್ಳುತ್ತದೆ.",
     "noProductsError": "App Store ಯಾವುದೇ ಉತ್ಪನ್ನಗಳನ್ನು ಹಿಂದಿರುಗಿಸಲಿಲ್ಲ. ಸಾಮಾನ್ಯವಾಗಿ ಕೆಲವು ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಸರಿಪಡಿಸುತ್ತದೆ — ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "ಧ್ವನಿ ಪ್ಲೇಬ್ಯಾಕ್ ವಿಫಲ",
+    "playbackFailedDetail": "ಸರಿಪಡಿಸಲು ನಿಮ್ಮ ಸಾಧನದ TTS ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ.",
+    "openSettingsAction": "TTS ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ"
   }
 }

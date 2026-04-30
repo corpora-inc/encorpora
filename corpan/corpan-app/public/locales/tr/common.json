@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple geri bildirimi gönder",
     "ttsGoogleInstalled": "Google TTS yüklü",
     "ttsGoogleMissing": "Google TTS yüklü değil",
-    "ttsSetDefault": "Varsayılan olarak ayarla"
+    "ttsSetDefault": "Varsayılan olarak ayarla",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech devre dışı",
+        "detail": "Yeniden açmak için sizi doğrudan sistem sayfasına götüreceğiz. Tek dokunuşla halledilir.",
+        "button": "Google TTS'yi etkinleştir"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech'i yükle",
+        "detail": "Google'ın ses motoru, Corpán'ın desteklediği her dilde en iyi kaliteyi sunar. Ücretsiz.",
+        "button": "Play Store'dan yükle"
+      },
+      "noEngine": {
+        "heading": "Ses motoru bulunamadı",
+        "detail": "Cihazınızda hiçbir TTS motoru yüklü değil. Devam etmek için Google Text-to-Speech yükleyin.",
+        "button": "Google TTS yükle"
+      },
+      "noVoiceData": {
+        "heading": "Ses verisinin indirilmesi gerekiyor",
+        "detail": "Motorunuz hazır, ancak dilleriniz için ses verisi henüz indirilmedi.",
+        "button": "Sesleri indir"
+      },
+      "engineHung": {
+        "heading": "Ses motoru yanıt vermiyor",
+        "detail": "Bazen sistem TTS hizmeti takılır. Tekrar denemek için aşağıya dokunun — genellikle düzelir.",
+        "button": "Tekrar dene"
+      },
+      "probing": "Sesler ayarlanıyor…",
+      "working": "Çalışıyor…",
+      "skipForNow": "Atla — daha sonra Ayarlar'da yapılandır",
+      "openTtsSettings": "TTS ayarlarını aç",
+      "readyHeading": "Sesler hazır",
+      "readyEngine": "{{engine}} kullanılıyor",
+      "installVoicesForLang": "{{lang}} için sesleri indir",
+      "diagnostics": {
+        "toggle": "Tanılama",
+        "copyButton": "Kopyala",
+        "copied": "Kopyalandı"
+      },
+      "currentState": "Şu anki durum: {{state}}",
+      "state": {
+        "enabled": "Etkin",
+        "default": "Etkin (sistem varsayılanı)",
+        "disabled": "Devre dışı",
+        "disabledUser": "Kullanıcı tarafından devre dışı (veya Samsung Device Care)",
+        "disabledUntilUsed": "Kullanılana kadar devre dışı",
+        "notInstalled": "Yüklü değil"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Anında çok dilli pratik",
     "cancel": "İptal",
     "delete": "Sil",
-    "create": "Oluştur"
+    "create": "Oluştur",
+    "dismiss": "Kapat"
   },
   "dialects": {
     "en": "İngilizce",
@@ -348,5 +397,10 @@
     "pendingHeading": "Onay bekleniyor",
     "pendingDetail": "Satın almanız onay bekliyor (Ask to Buy veya banka doğrulaması). Onaylandığında otomatik olarak etkinleşir.",
     "noProductsError": "App Store hiçbir ürün döndürmedi. Genellikle birkaç saniye içinde çözülür — tekrar deneyin."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Ses oynatma başarısız",
+    "playbackFailedDetail": "Düzeltmek için cihazınızın TTS ayarlarını açın.",
+    "openSettingsAction": "TTS ayarlarını aç"
   }
 }

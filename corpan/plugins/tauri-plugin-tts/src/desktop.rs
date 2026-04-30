@@ -3,7 +3,10 @@
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
-use crate::models::{SpeakResult, TtsEngineStatus, VoiceInfo};
+use crate::models::{
+    BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakResult, TtsEngineStatus,
+    TtsHealthProbe, VoiceInfo,
+};
 
 // Initialize desktop TTS handle
 pub fn init<R: Runtime, C: DeserializeOwned>(
@@ -114,6 +117,60 @@ impl<R: Runtime> Tts<R> {
     /// Open a store listing for a given engine package (Android only).
     pub fn open_tts_engine_store(&self, _package_name: String) -> crate::Result<bool> {
         Ok(false)
+    }
+
+    /// Probe is Android-only; desktop returns a synthetic ready state.
+    pub fn probe_tts_health(&self) -> crate::Result<TtsHealthProbe> {
+        Ok(TtsHealthProbe {
+            supported: false,
+            init_state: "ready".to_string(),
+            current_engine: None,
+            voice_count: 0,
+            voices_empty: false,
+            default_engine: None,
+            engines: Vec::new(),
+            google_installed: false,
+            google_enabled: false,
+            google_default: false,
+            diagnosis: "ready".to_string(),
+            ready: true,
+        })
+    }
+
+    /// Auto-recover is Android-only.
+    pub fn try_auto_recover(&self) -> crate::Result<RecoverResult> {
+        Ok(RecoverResult {
+            recovered: true,
+            engine: None,
+            diagnosis: None,
+            voice_count: None,
+            already_healthy: Some(true),
+        })
+    }
+
+    /// Explicit engine bind is Android-only.
+    pub fn bind_engine(&self, _package_name: String) -> crate::Result<BindEngineResult> {
+        Ok(BindEngineResult {
+            ok: false,
+            reason: Some("not_supported".to_string()),
+            engine: None,
+            voice_count: None,
+        })
+    }
+
+    /// App-details deep-link is Android-only.
+    pub fn open_app_details(&self, _package_name: String) -> crate::Result<bool> {
+        Ok(false)
+    }
+
+    /// Per-language voice data install is Android-only.
+    pub fn install_voice_data_for_language(
+        &self,
+        _language: String,
+    ) -> crate::Result<InstallVoiceDataResult> {
+        Ok(InstallVoiceDataResult {
+            status: "not_supported".to_string(),
+        })
     }
 }
 

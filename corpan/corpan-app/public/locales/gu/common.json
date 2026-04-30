@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple ફીડબેક મોકલો",
     "ttsGoogleInstalled": "Google TTS ઇન્સ્ટૉલ થયેલ",
     "ttsGoogleMissing": "Google TTS ઇન્સ્ટૉલ નથી",
-    "ttsSetDefault": "ડિફૉલ્ટ તરીકે સેટ કરો"
+    "ttsSetDefault": "ડિફૉલ્ટ તરીકે સેટ કરો",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech અક્ષમ છે",
+        "detail": "ફરી ચાલુ કરવા માટે અમે તમને સીધા સિસ્ટમ પૃષ્ઠ પર લઈ જઈશું. એક ટેપમાં થઈ જશે.",
+        "button": "Google TTS સક્ષમ કરો"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech ઇન્સ્ટોલ કરો",
+        "detail": "Google નું વૉઇસ એન્જિન Corpán દ્વારા સપોર્ટેડ દરેક ભાષામાં શ્રેષ્ઠ ગુણવત્તા આપે છે. મફત.",
+        "button": "Play Store માંથી ઇન્સ્ટોલ"
+      },
+      "noEngine": {
+        "heading": "વૉઇસ એન્જિન મળ્યું નથી",
+        "detail": "તમારા ડિવાઇસ પર કોઈ TTS એન્જિન ઇન્સ્ટોલ કરેલ નથી. ચાલુ રાખવા માટે Google Text-to-Speech ઇન્સ્ટોલ કરો.",
+        "button": "Google TTS ઇન્સ્ટોલ કરો"
+      },
+      "noVoiceData": {
+        "heading": "વૉઇસ ડેટા ડાઉનલોડ કરવો જરૂરી છે",
+        "detail": "તમારું એન્જિન તૈયાર છે, પરંતુ તમારી ભાષાઓ માટે વૉઇસ ડેટા હજી ડાઉનલોડ થયો નથી.",
+        "button": "વૉઇસ ડાઉનલોડ"
+      },
+      "engineHung": {
+        "heading": "વૉઇસ એન્જિન પ્રતિસાદ આપતું નથી",
+        "detail": "ક્યારેક સિસ્ટમ TTS સેવા અટકી જાય છે. ફરી પ્રયાસ કરવા માટે નીચે ટેપ કરો — સામાન્ય રીતે ઠીક થાય છે.",
+        "button": "ફરી પ્રયાસ"
+      },
+      "probing": "વૉઇસ સેટઅપ થઈ રહ્યું છે…",
+      "working": "ચાલી રહ્યું છે…",
+      "skipForNow": "છોડો — પછી સેટિંગ્સમાં સેટ કરો",
+      "openTtsSettings": "TTS સેટિંગ્સ ખોલો",
+      "readyHeading": "વૉઇસ તૈયાર",
+      "readyEngine": "{{engine}} વાપરી રહ્યાં છે",
+      "installVoicesForLang": "{{lang}} માટે વૉઇસ ડાઉનલોડ કરો",
+      "diagnostics": {
+        "toggle": "ડાયગ્નોસ્ટિક્સ",
+        "copyButton": "કોપી",
+        "copied": "કોપી થયું"
+      },
+      "currentState": "વર્તમાન સ્થિતિ: {{state}}",
+      "state": {
+        "enabled": "સક્ષમ",
+        "default": "સક્ષમ (સિસ્ટમ ડિફોલ્ટ)",
+        "disabled": "અક્ષમ",
+        "disabledUser": "વપરાશકર્તા દ્વારા અક્ષમ (અથવા Samsung Device Care દ્વારા)",
+        "disabledUntilUsed": "ઉપયોગ સુધી અક્ષમ",
+        "notInstalled": "સ્થાપિત નથી"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "તત્કાલ બહુભાષી અભ્યાસ",
     "cancel": "રદ કરો",
     "delete": "કાઢી નાખો",
-    "create": "બનાવો"
+    "create": "બનાવો",
+    "dismiss": "બંધ કરો"
   },
   "dialects": {
     "gu": "ગુજરાતી",
@@ -348,5 +397,10 @@
     "pendingHeading": "મંજૂરીની રાહ",
     "pendingDetail": "તમારી ખરીદી મંજૂરીની રાહ જોઈ રહી છે (Ask to Buy અથવા બેંક ચકાસણી). મંજૂર થયા પછી આપમેળે સક્રિય થશે.",
     "noProductsError": "App Store એ કોઈ ઉત્પાદનો પાછા આપ્યા નથી. સામાન્ય રીતે થોડી સેકંડમાં ઉકેલાય છે — ફરી પ્રયાસ કરો."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "વૉઇસ પ્લેબેક નિષ્ફળ",
+    "playbackFailedDetail": "ઠીક કરવા માટે તમારા ડિવાઇસનું TTS સેટિંગ ખોલો.",
+    "openSettingsAction": "TTS સેટિંગ ખોલો"
   }
 }

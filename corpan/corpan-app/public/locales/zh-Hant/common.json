@@ -115,7 +115,55 @@
     "sendAppleFeedback": "送出 Apple 意見回饋",
     "ttsGoogleInstalled": "Google TTS已安裝",
     "ttsGoogleMissing": "Google TTS未安裝",
-    "ttsSetDefault": "設為預設"
+    "ttsSetDefault": "設為預設",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech 已停用",
+        "detail": "我們直接帶您到系統頁面重新啟用它。一鍵搞定。",
+        "button": "啟用 Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "安裝 Google Text-to-Speech",
+        "detail": "Google 的語音引擎在 Corpán 支援的所有語言中提供最佳品質。免費。",
+        "button": "從 Play 商店安裝"
+      },
+      "noEngine": {
+        "heading": "找不到語音引擎",
+        "detail": "您的裝置未安裝任何 TTS 引擎。請安裝 Google Text-to-Speech 以繼續。",
+        "button": "安裝 Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "需要下載語音資料",
+        "detail": "您的引擎已就緒,但您語言的語音資料尚未下載。",
+        "button": "下載語音"
+      },
+      "engineHung": {
+        "heading": "語音引擎無回應",
+        "detail": "有時系統 TTS 服務會卡住。點擊下方重試 — 通常會恢復。",
+        "button": "重試"
+      },
+      "probing": "正在設定語音…",
+      "working": "處理中…",
+      "skipForNow": "跳過 — 稍後在設定中配置",
+      "openTtsSettings": "開啟 TTS 設定",
+      "readyHeading": "語音就緒",
+      "readyEngine": "正在使用 {{engine}}",
+      "installVoicesForLang": "下載 {{lang}} 語音",
+      "diagnostics": {
+        "toggle": "診斷",
+        "copyButton": "複製",
+        "copied": "已複製"
+      },
+      "currentState": "目前狀態:{{state}}",
+      "state": {
+        "enabled": "已啟用",
+        "default": "已啟用(系統預設)",
+        "disabled": "已停用",
+        "disabledUser": "已被使用者停用(或被 Samsung Device Care 停用)",
+        "disabledUntilUsed": "使用前已停用",
+        "notInstalled": "未安裝"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "即時多語練習",
     "cancel": "取消",
     "delete": "刪除",
-    "create": "建立"
+    "create": "建立",
+    "dismiss": "關閉"
   },
   "dialects": {
     "en": "英語",
@@ -348,5 +397,10 @@
     "pendingHeading": "等待批准",
     "pendingDetail": "您的購買正在等待批准 (Ask to Buy 或銀行驗證)。批准後將自動啟用。",
     "noProductsError": "App Store 未返回任何商品。通常幾秒後解決 — 請重試。"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "語音播放失敗",
+    "playbackFailedDetail": "開啟裝置的 TTS 設定來修復。",
+    "openSettingsAction": "開啟 TTS 設定"
   }
 }

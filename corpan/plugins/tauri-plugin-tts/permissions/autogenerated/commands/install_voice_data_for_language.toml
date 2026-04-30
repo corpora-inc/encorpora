@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-install-voice-data-for-language"
+description = "Enables the install_voice_data_for_language command without any pre-configured scope."
+commands.allow = ["install_voice_data_for_language"]
+
+[[permission]]
+identifier = "deny-install-voice-data-for-language"
+description = "Denies the install_voice_data_for_language command without any pre-configured scope."
+commands.deny = ["install_voice_data_for_language"]

@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple 피드백 보내기",
     "ttsGoogleInstalled": "Google TTS 설치됨",
     "ttsGoogleMissing": "Google TTS 미설치",
-    "ttsSetDefault": "기본값으로 설정"
+    "ttsSetDefault": "기본값으로 설정",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech가 비활성화됨",
+        "detail": "시스템 페이지로 바로 이동해서 다시 활성화할 수 있어요. 한 번만 탭하면 끝입니다.",
+        "button": "Google TTS 활성화"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech 설치",
+        "detail": "Google 음성 엔진은 Corpán이 지원하는 모든 언어에서 최고의 품질을 제공합니다. 무료입니다.",
+        "button": "Play 스토어에서 설치"
+      },
+      "noEngine": {
+        "heading": "음성 엔진을 찾을 수 없습니다",
+        "detail": "기기에 TTS 엔진이 설치되어 있지 않습니다. 계속하려면 Google Text-to-Speech를 설치하세요.",
+        "button": "Google TTS 설치"
+      },
+      "noVoiceData": {
+        "heading": "음성 데이터 다운로드가 필요합니다",
+        "detail": "엔진은 준비되었지만, 언어 음성 데이터가 아직 다운로드되지 않았습니다.",
+        "button": "음성 다운로드"
+      },
+      "engineHung": {
+        "heading": "음성 엔진이 응답하지 않습니다",
+        "detail": "시스템 TTS 서비스가 가끔 멈춥니다. 아래를 탭해서 다시 시도하세요 — 보통 해결됩니다.",
+        "button": "다시 시도"
+      },
+      "probing": "음성 설정 중…",
+      "working": "처리 중…",
+      "skipForNow": "건너뛰기 — 나중에 설정에서 구성",
+      "openTtsSettings": "TTS 설정 열기",
+      "readyHeading": "음성 준비 완료",
+      "readyEngine": "{{engine}} 사용 중",
+      "installVoicesForLang": "{{lang}} 음성 다운로드",
+      "diagnostics": {
+        "toggle": "진단",
+        "copyButton": "복사",
+        "copied": "복사됨"
+      },
+      "currentState": "현재 상태: {{state}}",
+      "state": {
+        "enabled": "사용 중",
+        "default": "사용 중(시스템 기본값)",
+        "disabled": "사용 안 함",
+        "disabledUser": "사용자가 사용 중지(또는 Samsung 디바이스 케어)",
+        "disabledUntilUsed": "사용 시까지 사용 안 함",
+        "notInstalled": "설치되지 않음"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "즉석 다국어 연습",
     "cancel": "취소",
     "delete": "삭제",
-    "create": "생성"
+    "create": "생성",
+    "dismiss": "닫기"
   },
   "dialects": {
     "en": "영어",
@@ -348,5 +397,10 @@
     "pendingHeading": "승인 대기 중",
     "pendingDetail": "구매가 승인 대기 중입니다 (Ask to Buy 또는 은행 확인). 승인되면 자동으로 활성화됩니다.",
     "noProductsError": "App Store에서 상품을 반환하지 않았습니다. 보통 몇 초 안에 해결됩니다 — 다시 시도해 주세요."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "음성 재생 실패",
+    "playbackFailedDetail": "기기의 TTS 설정을 열어 수정하세요.",
+    "openSettingsAction": "TTS 설정 열기"
   }
 }

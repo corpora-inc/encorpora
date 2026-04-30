@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Apple فیڈبیک بھیجو",
     "ttsGoogleInstalled": "Google TTS انسٹال اے",
     "ttsGoogleMissing": "Google TTS انسٹال نئیں",
-    "ttsSetDefault": "ڈیفالٹ مقرر کرو"
+    "ttsSetDefault": "ڈیفالٹ مقرر کرو",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech بند اے",
+        "detail": "دوبارہ چلاون لئی اسی تہانوں سدھے سسٹم پیج تے لے جانگے۔ اک ٹیپ نال ہو جائے گا۔",
+        "button": "Google TTS چلاؤ"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech انسٹال کرو",
+        "detail": "گوگل دا واج انجن Corpán دیاں ساریاں بولیاں وچ بہترین معیار دیندا اے۔ مفت۔",
+        "button": "Play Store توں انسٹال کرو"
+      },
+      "noEngine": {
+        "heading": "کوئی واج انجن نہیں ملیا",
+        "detail": "تہاڈے ڈیوائس تے کوئی TTS انجن انسٹال نئیں۔ اگے ودھن لئی Google Text-to-Speech انسٹال کرو۔",
+        "button": "Google TTS انسٹال"
+      },
+      "noVoiceData": {
+        "heading": "واج ڈیٹا ڈاؤن لوڈ کرنا چاہیدا اے",
+        "detail": "تہاڈا انجن تیار اے، پر تہاڈیاں بولیاں دا واج ڈیٹا ابھی ڈاؤن لوڈ نہیں ہویا۔",
+        "button": "آوازاں ڈاؤن لوڈ کرو"
+      },
+      "engineHung": {
+        "heading": "واج انجن جواب نئیں دے رہا",
+        "detail": "کدی کدی سسٹم TTS سروس اٹکی جاندی اے۔ ہیٹھاں ٹیپ کرکے دوبارہ کوشش کرو — عام طور تے ٹھیک ہو جاندی اے۔",
+        "button": "دوبارہ کوشش"
+      },
+      "probing": "آوازاں سیٹ ہو رہیاں نیں…",
+      "working": "چل رہا اے…",
+      "skipForNow": "چھڈو — بعد وچ ترتیباں وچ سیٹ کرو",
+      "openTtsSettings": "TTS ترتیباں کھولو",
+      "readyHeading": "آوازاں تیار",
+      "readyEngine": "{{engine}} ورت ریا اے",
+      "installVoicesForLang": "{{lang}} لئی آوازاں ڈاؤن لوڈ کرو",
+      "diagnostics": {
+        "toggle": "تشخیص",
+        "copyButton": "کاپی",
+        "copied": "کاپی ہو گیا"
+      },
+      "currentState": "موجودہ حالت: {{state}}",
+      "state": {
+        "enabled": "فعال",
+        "default": "فعال (سسٹم ڈیفالٹ)",
+        "disabled": "غیر فعال",
+        "disabledUser": "ورتنوالے نے غیر فعال کیتا (یا Samsung Device Care نے)",
+        "disabledUntilUsed": "ورتن تک غیر فعال",
+        "notInstalled": "انسٹال نہیں"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "فوری کثیر لسانی مشق",
     "cancel": "منسوخ",
     "delete": "حذف کرو",
-    "create": "بناؤ"
+    "create": "بناؤ",
+    "dismiss": "بند کرو"
   },
   "dialects": {
     "en": "انگریزی",
@@ -348,5 +397,10 @@
     "pendingHeading": "منظوری دی اڈیک",
     "pendingDetail": "تہاڈی خریداری منظوری دی اڈیک کر رہی اے (Ask to Buy یا بینک تصدیق)۔ منظور ہون تے خود کار چالو ہو جائے گی۔",
     "noProductsError": "App Store کوئی پروڈکٹ نئیں موڑیا۔ عام طور تے کجھ سکنٹاں وچ حل — دوبارہ کوشش کرو۔"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "آواز پلے بیک ناکام",
+    "playbackFailedDetail": "ٹھیک کرن لئی اپنے ڈیوائس دی TTS ترتیباں کھولو۔",
+    "openSettingsAction": "TTS ترتیباں کھولو"
   }
 }

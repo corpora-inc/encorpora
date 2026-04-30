@@ -115,7 +115,55 @@
     "sendAppleFeedback": "Send Apple Feedback",
     "ttsGoogleInstalled": "Google TTS installed",
     "ttsGoogleMissing": "Google TTS not installed",
-    "ttsSetDefault": "Set as default"
+    "ttsSetDefault": "Set as default",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech is disabled",
+        "detail": "We'll take you straight to the system page to turn it back on. One tap and you're done.",
+        "button": "Enable Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Install Google Text-to-Speech",
+        "detail": "Google's voice engine gives you the best quality across every language Corpán supports. It's free.",
+        "button": "Install from Play Store"
+      },
+      "noEngine": {
+        "heading": "No voice engine found",
+        "detail": "Your device has no text-to-speech engine installed. Install Google Text-to-Speech to continue.",
+        "button": "Install Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Voice data needs downloading",
+        "detail": "Your engine is ready, but the voice data for your languages hasn't been downloaded yet.",
+        "button": "Download voices"
+      },
+      "engineHung": {
+        "heading": "The voice engine isn't responding",
+        "detail": "Sometimes the system TTS service gets stuck. Tap below to try again — it usually clears up.",
+        "button": "Try again"
+      },
+      "probing": "Setting up voices…",
+      "working": "Working…",
+      "skipForNow": "Skip — set up later in Settings",
+      "openTtsSettings": "Open TTS settings",
+      "readyHeading": "Voices ready",
+      "readyEngine": "Using {{engine}}",
+      "installVoicesForLang": "Download voices for {{lang}}",
+      "diagnostics": {
+        "toggle": "Diagnostics",
+        "copyButton": "Copy",
+        "copied": "Copied"
+      },
+      "currentState": "Currently: {{state}}",
+      "state": {
+        "enabled": "Enabled",
+        "default": "Enabled (system default)",
+        "disabled": "Disabled",
+        "disabledUser": "Disabled by user (or by Samsung Device Care)",
+        "disabledUntilUsed": "Disabled until used",
+        "notInstalled": "Not installed"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -144,7 +192,8 @@
     "instantPolyglotPractice": "Instant polyglot practice",
     "cancel": "Cancel",
     "delete": "Delete",
-    "create": "Create"
+    "create": "Create",
+    "dismiss": "Dismiss"
   },
   "dialects": {
     "en": "English",
@@ -348,5 +397,10 @@
     "pendingHeading": "Waiting for approval",
     "pendingDetail": "Your purchase is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
     "noProductsError": "App Store didn't return any products. This usually clears in a few seconds — please try again."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Voice playback failed",
+    "playbackFailedDetail": "Open your device's TTS settings to fix it.",
+    "openSettingsAction": "Open TTS settings"
   }
 }

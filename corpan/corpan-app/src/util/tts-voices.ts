@@ -43,6 +43,100 @@ export type TtsEngineStatus = {
     googleDefault: boolean;
 };
 
+/* -------------------- Health probe types (Android rescue UX) -------------------- */
+
+/** Stable mirror of Android `PackageManager.COMPONENT_ENABLED_STATE_*`. */
+export type EnabledStateName =
+    | "enabled"
+    | "default"
+    | "disabled"
+    | "disabled_user"
+    | "disabled_until_used"
+    | "not_installed"
+    | string; // forward-compatible
+
+export type ProbeEngineInfo = {
+    packageName: string;
+    label?: string | null;
+    enabledState: EnabledStateName;
+    manifestEnabled: boolean;
+    isInstalled: boolean;
+    /** Has TTS_SERVICE intent that 3rd-party apps can bind to (Samsung's SMT is "private" → false). */
+    isBindable?: boolean;
+    /** True iff package is enabled AND bindable. */
+    isUsable: boolean;
+};
+
+/** High-level diagnosis used by onboarding to pick a rescue card. */
+export type TtsDiagnosis =
+    | "ready"
+    | "engine_disabled_user"
+    | "engine_disabled"
+    | "engine_not_installed"
+    | "no_voice_data"
+    | "no_engine"
+    | "engine_hung"
+    | string;
+
+export type TtsHealthProbe = {
+    supported: boolean;
+    initState: "ready" | "pending" | "failed" | string;
+    currentEngine?: string | null;
+    voiceCount: number;
+    voicesEmpty: boolean;
+    defaultEngine?: string | null;
+    engines: ProbeEngineInfo[];
+    googleInstalled: boolean;
+    googleEnabled: boolean;
+    googleDefault: boolean;
+    diagnosis: TtsDiagnosis;
+    ready: boolean;
+};
+
+export type RecoverResult = {
+    recovered: boolean;
+    engine?: string | null;
+    diagnosis?: TtsDiagnosis;
+    voiceCount?: number;
+    alreadyHealthy?: boolean;
+};
+
+export type BindEngineResult = {
+    ok: boolean;
+    reason?: "not_installed" | "disabled_user" | "disabled" | "bind_timeout" | "not_supported" | string;
+    engine?: string | null;
+    voiceCount?: number;
+};
+
+export type InstallVoiceDataStatus =
+    | "already_installed"
+    | "launched_install_flow"
+    | "not_supported"
+    | "engine_not_ready";
+
+export class TtsTimeoutError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "TtsTimeoutError";
+    }
+}
+
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+    return new Promise<T>((resolve, reject) => {
+        const timer = setTimeout(() => reject(new TtsTimeoutError(`${label} timed out after ${ms}ms`)), ms);
+        promise.then(
+            (v) => {
+                clearTimeout(timer);
+                resolve(v);
+            },
+            (e) => {
+                clearTimeout(timer);
+                reject(e);
+            }
+        );
+    });
+}
+
 type VoiceCacheKey = "nativeFirst" | "browserFirst";
 
 const DEFAULT_VOICES_CACHE_MS = 30_000;
@@ -175,15 +269,178 @@ export async function listVoicesBrowser(): Promise<VoiceInfo[]> {
 export async function listVoicesNative(): Promise<VoiceInfo[]> {
     try {
         // Rust normalizes iOS (object envelope) vs Android/mac (array) to an array,
-        // so we can request an array directly here.
-        const res = await invoke<VoiceInfo[]>("plugin:tts|list_voices");
+        // so we can request an array directly here. 8s timeout protects against a
+        // wedged engine that never resolves (the original Android bug).
+        const res = await withTimeout(
+            invoke<VoiceInfo[]>("plugin:tts|list_voices"),
+            8000,
+            "list_voices",
+        );
         if (Array.isArray(res)) return res;
         // Safety net in case of an older iOS build returning { voices: [...] }
         const maybe = (res as unknown as { voices?: VoiceInfo[] })?.voices;
         return Array.isArray(maybe) ? maybe : [];
     } catch (e) {
+        if (e instanceof TtsTimeoutError) {
+            console.warn("[TTS] list_voices timed out", e);
+        }
         // console.warn("[TTS] list_voices failed; returning []", e);
         return [];
+    }
+}
+
+/* -------------------- Health probe / rescue helpers (Android) -------------------- */
+
+const SYNTHETIC_READY_PROBE: TtsHealthProbe = {
+    supported: false,
+    initState: "ready",
+    currentEngine: null,
+    voiceCount: 0,
+    voicesEmpty: false,
+    defaultEngine: null,
+    engines: [],
+    googleInstalled: false,
+    googleEnabled: false,
+    googleDefault: false,
+    diagnosis: "ready",
+    ready: true,
+};
+
+/**
+ * Diagnose engine health, install state, voice availability. Used by the
+ * onboarding rescue UX to pick a single recovery card. On non-Android this
+ * always resolves to a synthetic `ready` probe.
+ */
+export async function probeTtsHealth(): Promise<TtsHealthProbe> {
+    if (detectOSFromUA() !== "android") return SYNTHETIC_READY_PROBE;
+    try {
+        const res = await withTimeout(
+            invoke<TtsHealthProbe>("plugin:tts|probe_tts_health"),
+            8000,
+            "probe_tts_health",
+        );
+        return res ? correctDiagnosis(res) : SYNTHETIC_READY_PROBE;
+    } catch (e) {
+        console.warn("[TTS] probe_tts_health failed", e);
+        return {
+            ...SYNTHETIC_READY_PROBE,
+            supported: true,
+            initState: "failed",
+            diagnosis: "engine_hung",
+            ready: false,
+        };
+    }
+}
+
+/**
+ * JS-side diagnosis re-derivation, anchored on Google's state. The Kotlin
+ * probe used to trust "anyOtherUsable" which is misleading on Samsung — SMT
+ * advertises TTS_SERVICE but blocks 3rd-party binding ("private engine"). If
+ * Google is uninstalled, SMT existing doesn't actually help us, so the right
+ * call is "engine_not_installed", not "engine_hung".
+ *
+ * Safe to apply whether the Kotlin side is up-to-date or not.
+ */
+function correctDiagnosis(probe: TtsHealthProbe): TtsHealthProbe {
+    const initOk = probe.initState === "ready";
+    const voicesOk = !probe.voicesEmpty;
+    const googleInstalled = probe.googleInstalled;
+    const googleUsable = probe.googleEnabled;
+
+    let diagnosis: TtsDiagnosis;
+    if (initOk && voicesOk) {
+        diagnosis = "ready";
+    } else if (googleInstalled && !googleUsable) {
+        diagnosis = "engine_disabled_user";
+    } else if (!googleInstalled) {
+        diagnosis = "engine_not_installed";
+    } else if (initOk && !voicesOk) {
+        diagnosis = "no_voice_data";
+    } else {
+        diagnosis = "engine_hung";
+    }
+
+    return diagnosis === probe.diagnosis ? probe : { ...probe, diagnosis };
+}
+
+/**
+ * Try, in order, to bind to: current engine (if usable), Google TTS, any other
+ * usable engine. Returns the outcome.
+ */
+export async function tryAutoRecover(): Promise<RecoverResult> {
+    if (detectOSFromUA() !== "android") {
+        return { recovered: true, alreadyHealthy: true };
+    }
+    try {
+        const res = await withTimeout(
+            invoke<RecoverResult>("plugin:tts|try_auto_recover"),
+            10_000,
+            "try_auto_recover",
+        );
+        return res ?? { recovered: false };
+    } catch (e) {
+        console.warn("[TTS] try_auto_recover failed", e);
+        return { recovered: false, diagnosis: "engine_hung" };
+    }
+}
+
+/**
+ * Bind to a specific engine package (Android only). Returns success or a typed reason.
+ */
+export async function bindEngine(packageName: string): Promise<BindEngineResult> {
+    if (detectOSFromUA() !== "android") {
+        return { ok: false, reason: "not_supported" };
+    }
+    if (!packageName) return { ok: false, reason: "not_supported" };
+    try {
+        // Tauri 2 expects struct-arg commands to be wrapped in `{ args: ... }`.
+        const res = await withTimeout(
+            invoke<BindEngineResult>("plugin:tts|bind_engine", {
+                args: { packageName },
+            }),
+            10_000,
+            "bind_engine",
+        );
+        return res ?? { ok: false, reason: "bind_timeout" };
+    } catch (e) {
+        console.warn("[TTS] bind_engine failed", e);
+        return { ok: false, reason: "bind_timeout" };
+    }
+}
+
+/**
+ * Open the system "App info" page for a TTS engine package. The user lands one
+ * tap away from the **Enable** button — primary recovery for `engine_disabled_user`.
+ */
+export async function openTtsEngineAppDetails(packageName: string): Promise<boolean> {
+    if (!packageName) return false;
+    try {
+        const ok = await invoke<boolean>("plugin:tts|open_app_details", {
+            args: { packageName },
+        });
+        return !!ok;
+    } catch (e) {
+        console.warn("[TTS] open_app_details rejected:", e);
+        return false;
+    }
+}
+
+/**
+ * Per-language voice data installation. On Android, calls setLanguage; if data
+ * is missing, fires the engine's own `INSTALL_TTS_DATA` activity.
+ */
+export async function installVoiceData(language: string): Promise<InstallVoiceDataStatus> {
+    if (detectOSFromUA() !== "android") return "not_supported";
+    if (!language) return "not_supported";
+    try {
+        const res = await invoke<{ status: InstallVoiceDataStatus }>(
+            "plugin:tts|install_voice_data_for_language",
+            { args: { language } },
+        );
+        return res?.status ?? "not_supported";
+    } catch (e) {
+        console.warn("[TTS] install_voice_data_for_language failed", e);
+        return "not_supported";
     }
 }
 
@@ -243,9 +500,12 @@ export async function getTtsEngineStatus(): Promise<TtsEngineStatus | null> {
 export async function openTtsEngineStore(packageName: string): Promise<boolean> {
     if (!packageName) return false;
     try {
-        const ok = await invoke<boolean>("plugin:tts|open_tts_engine_store", { packageName });
+        const ok = await invoke<boolean>("plugin:tts|open_tts_engine_store", {
+            args: { packageName },
+        });
         return !!ok;
-    } catch {
+    } catch (e) {
+        console.warn("[TTS] open_tts_engine_store failed", e);
         return false;
     }
 }
