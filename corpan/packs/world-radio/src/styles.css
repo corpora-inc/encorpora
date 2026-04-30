@@ -634,15 +634,33 @@
   min-width: 0;
 }
 
-/* Narrow viewports: sort gets its own row above the tag strip. The strip
-   alone is wide enough to scroll meaningfully; sharing 320px-ish with the
-   sort pill leaves only a sliver for chips. */
+/* Narrow viewports: sort gets its own row above the tag strip + clear.
+   Grid (not flex-wrap) so the row layout is unambiguous: row 1 is the sort
+   pill, row 2 has the scrolling tag strip and the persistent × clear button
+   side-by-side. Flex-wrap kept letting the × spill to a third row when the
+   tag strip's intrinsic content width pushed it past the row's track. */
 @media (max-width: 480px) {
   .wr-filter-row {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "sort sort"
+      "tags clear";
+    column-gap: var(--wr-sp-2);
+    row-gap: var(--wr-sp-2);
+    align-items: center;
   }
   .wr-sort {
-    flex-basis: 100%;
+    grid-area: sort;
+    justify-self: start;
+  }
+  .wr-tags {
+    grid-area: tags;
+    /* Grid track is `minmax(0, 1fr)` so the strip can shrink below its
+       intrinsic content width and scroll horizontally inside. */
+  }
+  .wr-tag-clear {
+    grid-area: clear;
   }
 }
 
