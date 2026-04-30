@@ -29,7 +29,16 @@
     "gu": "Gujaratí",
     "ur": "Urdu",
     "pa-Guru": "Punyabí (Gurmukhī)",
-    "pa-Arab": "Punyabí (Shahmukhi)"
+    "pa-Arab": "Punyabí (Shahmukhi)",
+    "he": "Hebreo",
+    "sv": "Sueco",
+    "fi": "Finlandés",
+    "nl": "Neerlandés",
+    "sw": "Suajili",
+    "no": "Noruego",
+    "da": "Danés",
+    "el": "Griego",
+    "ms": "Malayo"
   },
   "categories": {
     "travel": "Viaje",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Aprender",
     "tts": "Texto a voz",
     "languageOrderTipTitle": "Consejo",
-    "languageOrderTipBody": "El idioma de abajo se vuelve el idioma de la interfaz. Arrástralo para cambiarlo cuando quieras.",
+    "languageOrderTipBody": "El idioma de abajo en la lista es el idioma de la interfaz de la aplicación. Para cambiar el idioma de la interfaz, arrastra otro idioma hasta abajo.",
     "ttsOsTipTitle": "Consejo",
     "ttsOsTipAndroid": "Mejor resultado: usa el TTS de Google. Samsung TTS no funciona en Corpán.",
     "ttsOsTipIOS": "En Ajustes → Accesibilidad, busca Contenido Hablado y descarga voces. Nota: Apple no proporciona voces para todos los idiomas. Si actualizar no ayuda, solicita soporte a través de la app de Comentarios de Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urdu (Pakistán)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Canarés"
+    "kn": "Canarés",
+    "sv": "Sueco",
+    "no": "Noruego",
+    "da": "Danés",
+    "nl": "Neerlandés",
+    "ms": "Malayo",
+    "fi": "Finlandés",
+    "sw": "Suajili",
+    "el": "Griego",
+    "he": "Hebreo"
   },
   "footer": {
     "appVersion": "Versión de la app",
@@ -313,7 +331,9 @@
     "rename": "Renombrar",
     "renameLabel": "Nuevo nombre para pila",
     "selectAria": "Seleccionar perfil",
-    "selectPlaceholder": "Elegir…"
+    "selectPlaceholder": "Elegir…",
+    "introTipTitle": "Pilas",
+    "introTipBody": "Las pilas guardan distintas configuraciones de aprendizaje — una para viajar, otra para el trabajo. Toca + para crear una nueva pila."
   },
   "rating": {
     "title": "¿Disfrutas de Corpán?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "La reproducción de voz falló",
     "playbackFailedDetail": "Abre los ajustes de TTS de tu dispositivo para arreglarlo.",
     "openSettingsAction": "Abrir ajustes de TTS"
+  },
+  "discoverPacks": {
+    "title": "Hazlo tuyo",
+    "subtitle": "Añade lectores inmersivos, juegos y herramientas — integrados en Corpán para profundizar tu práctica.",
+    "maybeLater": "Quizás más tarde",
+    "empty": "Más paquetes están en camino — explora Corpán mientras tanto.",
+    "offlineEmpty": "Conéctate a internet para descubrir paquetes — o sáltalo por ahora."
   }
 }

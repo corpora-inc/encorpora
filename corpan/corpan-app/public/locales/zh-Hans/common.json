@@ -29,7 +29,16 @@
     "gu": "古吉拉特语",
     "ur": "乌尔都语",
     "pa-Guru": "旁遮普语（果鲁穆奇文）",
-    "pa-Arab": "旁遮普语（沙希穆基文）"
+    "pa-Arab": "旁遮普语（沙希穆基文）",
+    "he": "希伯来语",
+    "sv": "瑞典语",
+    "fi": "芬兰语",
+    "nl": "荷兰语",
+    "sw": "斯瓦希里语",
+    "no": "挪威语",
+    "da": "丹麦语",
+    "el": "希腊语",
+    "ms": "马来语"
   },
   "categories": {
     "travel": "旅行",
@@ -98,7 +107,7 @@
     "learningStepTitle": "学习",
     "tts": "文本转语音",
     "languageOrderTipTitle": "提示",
-    "languageOrderTipBody": "最底部的语言会成为应用界面语言。拖动即可随时更改。",
+    "languageOrderTipBody": "列表最下方的语言就是应用的界面语言。要更改界面语言，请将其他语言拖到最下方。",
     "ttsOsTipTitle": "提示",
     "ttsOsTipAndroid": "最佳效果：使用 Google 语音。Samsung TTS 在 Corpán 中无法使用。",
     "ttsOsTipIOS": "在“设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
@@ -291,7 +300,16 @@
     "ur-PK": "乌尔都语（巴基斯坦）",
     "ta": "泰米尔语",
     "te": "泰卢固语",
-    "kn": "卡纳达语"
+    "kn": "卡纳达语",
+    "sv": "瑞典语",
+    "no": "挪威语",
+    "da": "丹麦语",
+    "nl": "荷兰语",
+    "ms": "马来语",
+    "fi": "芬兰语",
+    "sw": "斯瓦希里语",
+    "el": "希腊语",
+    "he": "希伯来语"
   },
   "footer": {
     "appVersion": "应用版本",
@@ -313,7 +331,9 @@
     "rename": "重命名",
     "renameLabel": "堆栈的新名称",
     "selectAria": "选择档案",
-    "selectPlaceholder": "选择…"
+    "selectPlaceholder": "选择…",
+    "introTipTitle": "Stack",
+    "introTipBody": "Stack 保存不同的学习配置——一个用于旅行，另一个用于工作。点击 + 创建新的 stack。"
   },
   "rating": {
     "title": "喜欢 Corpán 吗？",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "语音播放失败",
     "playbackFailedDetail": "打开设备的 TTS 设置来修复。",
     "openSettingsAction": "打开 TTS 设置"
+  },
+  "discoverPacks": {
+    "title": "让 Corpán 成为你的",
+    "subtitle": "添加沉浸式阅读器、游戏和工具——内置于 Corpán，深化你的练习。",
+    "maybeLater": "稍后再说",
+    "empty": "更多包正在路上——同时探索 Corpán 吧。",
+    "offlineEmpty": "连接互联网以发现包——或暂时跳过。"
   }
 }

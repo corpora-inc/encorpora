@@ -50,10 +50,12 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     return (
         <header
             ref={headerRef}
-            // One blurred surface for the entire header (title/stepper + actions)
-            className="sticky top-0 z-500 isolate bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+            // Header bg matches the section bg (bg-background → md:bg-muted) so
+            // the page color flows seamlessly up under the nav. Translucent
+            // with backdrop-blur so content scrolling underneath stays
+            // readable but feels recessed.
+            className="sticky top-0 z-500 isolate bg-background/80 md:bg-muted/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 supports-[backdrop-filter]:md:bg-muted/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
-        // dir={dir()}
         >
             {/* Top row */}
             <div className="relative mx-auto w-full max-w-xl px-4 py-3">

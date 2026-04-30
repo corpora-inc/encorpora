@@ -29,7 +29,16 @@
     "gu": "Gudżarati",
     "ur": "Urdu",
     "pa-Guru": "Pendżabski (Gurmukhi)",
-    "pa-Arab": "Pendżabski (Shahmukhi)"
+    "pa-Arab": "Pendżabski (Shahmukhi)",
+    "he": "Hebrajski",
+    "sv": "Szwedzki",
+    "fi": "Fiński",
+    "nl": "Niderlandzki",
+    "sw": "Suahili",
+    "no": "Norweski",
+    "da": "Duński",
+    "el": "Grecki",
+    "ms": "Malajski"
   },
   "categories": {
     "travel": "Podróże",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Nauka",
     "tts": "Zamiana tekstu na mowę",
     "languageOrderTipTitle": "Wskazówka",
-    "languageOrderTipBody": "Język na dole staje się językiem interfejsu. Przeciągnij, aby zmienić w dowolnym momencie.",
+    "languageOrderTipBody": "Język na dole listy to język interfejsu aplikacji. Aby zmienić język interfejsu, przeciągnij inny język na dół.",
     "ttsOsTipTitle": "Wskazówka",
     "ttsOsTipAndroid": "Najlepiej działa Google TTS. Samsung TTS nie działa w Corpán.",
     "ttsOsTipIOS": "W Settings → Accessibility znajdź Spoken Content i pobierz głosy. Uwaga: Apple nie udostępnia głosów dla każdego języka. Jeśli aktualizacja nie pomaga, poproś o wsparcie przez aplikację Feedback Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urdu (Pakistan)",
     "ta": "Tamilski",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Szwedzki",
+    "no": "Norweski",
+    "da": "Duński",
+    "nl": "Niderlandzki",
+    "ms": "Malajski",
+    "fi": "Fiński",
+    "sw": "Suahili",
+    "el": "Grecki",
+    "he": "Hebrajski"
   },
   "footer": {
     "appVersion": "Wersja aplikacji",
@@ -313,7 +331,9 @@
     "rename": "Zmień nazwę",
     "renameLabel": "Nowa nazwa stosu",
     "selectAria": "Wybierz profil",
-    "selectPlaceholder": "Wybierz…"
+    "selectPlaceholder": "Wybierz…",
+    "introTipTitle": "Stacki",
+    "introTipBody": "Stacki zapisują różne ustawienia nauki — jeden do podróży, inny do pracy. Dotknij +, aby utworzyć nowy stack."
   },
   "rating": {
     "title": "Podoba Ci się Corpán?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Odtwarzanie głosu nie powiodło się",
     "playbackFailedDetail": "Otwórz ustawienia TTS urządzenia, aby to naprawić.",
     "openSettingsAction": "Otwórz ustawienia TTS"
+  },
+  "discoverPacks": {
+    "title": "Spersonalizuj Corpán",
+    "subtitle": "Dodaj wciągających czytników, gry i narzędzia — wbudowane w Corpán, by pogłębić twoją praktykę.",
+    "maybeLater": "Może później",
+    "empty": "Kolejne paczki są w drodze — w międzyczasie odkrywaj Corpán.",
+    "offlineEmpty": "Połącz się z internetem, aby odkrywać paczki — lub pomiń to na razie."
   }
 }

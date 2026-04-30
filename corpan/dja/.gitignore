@@ -1,2 +1,11 @@
 data/
 venv/
+
+# Prune backups and intermediate artifacts (kept locally)
+db.sqlite3.pre-prune-*
+audit/pruned_archive_*.json
+audit/subagent_chunks/
+audit/pass2_errors.jsonl
+audit/run.log
+translate/missing/
+translate/*.log
