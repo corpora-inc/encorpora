@@ -64,6 +64,15 @@
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Make the inset-0 box include padding inside the viewport. Without this,
+     the safe-area padding below would expand the box past the screen edges. */
+  box-sizing: border-box;
+  /* Push everything (sticky header, scrollable content, close-pack X) below
+     the device status bar / camera notch on Android and iOS. The player bar
+     is `position: absolute; bottom: 0` and handles its own
+     `padding-bottom: env(safe-area-inset-bottom)`, so it stays anchored to
+     the actual screen bottom either way. */
+  padding-top: env(safe-area-inset-top);
 }
 
 @media (prefers-color-scheme: light) {
@@ -1003,17 +1012,23 @@
 .wr-map-wrap {
   position: relative;
   /* 280px accounts for the sticky region: header (~80) + search (~50) +
-     filter row (~40) + subtitle (~24) + padding/safe-area (~80). The filter
-     rail is sticky in both list and map mode (in map mode the sort pill is
-     hidden but search + tags remain useful for narrowing markers). */
-  height: calc(100dvh - 280px);
+     filter row (~40) + subtitle (~24) + padding (~80). The filter rail is
+     sticky in both list and map mode (in map mode the sort pill is hidden
+     but search + tags remain useful for narrowing markers). We also subtract
+     the top safe area because `.wr-root` adds it as padding, which reduces
+     the area `100dvh` represents inside this element. */
+  height: calc(100dvh - 280px - env(safe-area-inset-top));
   min-height: 320px;
   margin: 0;
   border-radius: 0;
   overflow: hidden;
 }
 .wr-root.has-player .wr-map-wrap {
-  height: calc(100dvh - 280px - var(--wr-player-h) - env(safe-area-inset-bottom));
+  height: calc(
+    100dvh - 280px - var(--wr-player-h)
+            - env(safe-area-inset-top)
+            - env(safe-area-inset-bottom)
+  );
 }
 .wr-map {
   width: 100%;
@@ -1183,7 +1198,12 @@
 
 .wr-close-pack {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + var(--wr-sp-2));
+  /* `.wr-root` already has `padding-top: env(safe-area-inset-top)` so the
+     padding edge that this absolute element is positioned against is already
+     below the status bar — just nudge a little further down for breathing
+     room. (Adding env() again here would double-count and push the button
+     too far into the content.) */
+  top: var(--wr-sp-2);
   right: var(--wr-sp-3);
   z-index: 10;
   width: 36px;
