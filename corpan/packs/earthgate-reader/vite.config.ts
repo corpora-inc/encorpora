@@ -5,6 +5,15 @@ import type { ViteDevServer } from "vite"
 
 const BOOKS_DIR = path.resolve(__dirname, "../../../books/fascinating-curiosities")
 
+// Read manifest.json at config-load time so the version becomes a build-time
+// constant (`__EARTHGATE_READER_VERSION__`) injected via `define` below — and
+// `src/main.ts` no longer needs `import manifest from "../manifest.json"`,
+// which would put the manifest in vite's watch graph and cause an infinite
+// rebuild loop with dev-corpan.mjs's devRevision bumper.
+const earthgateManifest = JSON.parse(
+  readFileSync(path.resolve(__dirname, "manifest.json"), "utf8"),
+) as { version: string }
+
 const updateManifestPlugin = () => {
   let isProduction = false
 
@@ -168,6 +177,7 @@ export default defineConfig({
   publicDir: false,
   define: {
     "process.env": {},
+    __EARTHGATE_READER_VERSION__: JSON.stringify(earthgateManifest.version),
   },
   resolve: {
     alias: {

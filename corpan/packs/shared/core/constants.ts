@@ -148,14 +148,27 @@ export const LANGUAGE_NAMES: Record<string, string> = {
   zh: "中文", ar: "العربية", ru: "Русский", hi: "हिन्दी",
 }
 
+/**
+ * @deprecated Legacy hardcoded voice display names. Prefer the catalog's
+ * `voiceProfiles[*].displayName` (hydrated via `buildCatalogIndex`) — this
+ * map is only consulted as a fallback when the catalog hasn't published the
+ * narrator-first fields yet, or when no catalog is loaded at all.
+ */
 export const VOICE_NAMES: Record<string, string> = {
   "ian-narration": "Ian",
   "ian-fish-v1": "Ian Fish",
   "ian-chatterbox-v1": "Ian CB",
 }
 
-/** Resolve a voice ID to a display name.
- *  Tries exact match first, then prefix match, then extracts the first word. */
+/**
+ * @deprecated Legacy resolver. Use the catalog index helpers instead:
+ *   `index.getVoiceDisplayName(narration)` / `index.getVoiceProfile(voiceId)`.
+ * This function remains as a synchronous fallback for code paths that don't
+ * have a catalog index handy (e.g., parsing a raw catalog row before the
+ * index is built).
+ *
+ * Tries exact match first, then prefix match, then extracts the first word.
+ */
 export function resolveVoiceName(voiceId: string): string {
   if (VOICE_NAMES[voiceId]) return VOICE_NAMES[voiceId]
   // Prefix match: "ian-new-narration-spanish-loud" starts with "ian-narration"? No.

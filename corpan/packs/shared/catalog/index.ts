@@ -10,9 +10,37 @@ export type {
   DownloadState,
   BookGroup,
   SeriesGroup,
+  // ── Narrator-first model ──
+  Character,
+  VoiceProfile,
+  VoiceProvider,
+  VoiceSource,
+  BookEntry,
+  CharacterGroup,
+  NarrationKey,
 } from "./src/types"
 
+export { narrationKey, narrationKeyEquals } from "./src/types"
+
 export { fetchCatalog, clearCatalogCache } from "./src/catalogFetch"
+
+export { buildCatalogIndex, type CatalogIndex } from "./src/catalogIndex"
+
+export {
+  playPreview,
+  stopPreview,
+  isPreviewing,
+  subscribePreview,
+  getPreviewState,
+  type VoicePreviewState,
+  type VoicePreviewListener,
+} from "./src/voicePreview"
+
+export {
+  createNarratorDetail,
+  type NarratorDetail,
+  type NarratorDetailOptions,
+} from "./src/narratorDetail"
 
 export {
   addInstalled,
@@ -27,8 +55,11 @@ export {
 export {
   groupByBook,
   groupBySeries,
+  groupByCharacter,
   filterByLanguage,
+  filterByCharacter,
   searchByTitle,
+  searchCharacters,
   getAvailableLanguages,
   getLanguageName,
 } from "./src/searchFilter"

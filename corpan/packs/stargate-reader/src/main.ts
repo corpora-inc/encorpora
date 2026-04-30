@@ -4,7 +4,12 @@ import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
 import type { DrawerSectionDef } from "@shared/ui"
-import manifest from "../manifest.json"
+
+// Injected at build time via vite `define` — see vite.config.ts. We do NOT
+// `import manifest from "../manifest.json"` because that puts the manifest
+// in vite's watch graph and `dev-corpan.mjs` mutates it (devRevision bump),
+// triggering infinite rebuild loops in dev mode.
+declare const __STARGATE_READER_VERSION__: string
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -80,7 +85,7 @@ const registerGame = () => {
 
       const shell = createAppShell(container, {
         readerId: "stargate",
-        readerVersion: manifest.version,
+        readerVersion: __STARGATE_READER_VERSION__,
         createReader: readerFactory,
         hostApi,
         initialState: state,

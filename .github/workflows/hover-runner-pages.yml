@@ -115,6 +115,18 @@ jobs:
         working-directory: corpan/packs/earthgate-reader
         run: node scripts/pack.mjs
 
+      - name: Install World Radio Dependencies
+        working-directory: corpan/packs/world-radio
+        run: npm install --legacy-peer-deps
+
+      - name: Build World Radio
+        working-directory: corpan/packs/world-radio
+        run: npm run build
+
+      - name: Package World Radio
+        working-directory: corpan/packs/world-radio
+        run: node scripts/pack.mjs
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -150,6 +162,13 @@ jobs:
           cp corpan/packs/earthgate-reader/manifest.json "web/io/out/corpan/packs/earthgate-reader/"
           cp -R corpan/packs/earthgate-reader/dist "web/io/out/corpan/packs/earthgate-reader/"
           cp corpan/packs/earthgate-reader/earthgate-reader.zip "web/io/out/corpan/packs/earthgate-reader.zip"
+
+      - name: Copy World Radio into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/world-radio"
+          cp corpan/packs/world-radio/manifest.json "web/io/out/corpan/packs/world-radio/"
+          cp -R corpan/packs/world-radio/dist "web/io/out/corpan/packs/world-radio/"
+          cp corpan/packs/world-radio/world-radio.zip "web/io/out/corpan/packs/world-radio.zip"
 
       - name: Show Final Structure
         run: |
