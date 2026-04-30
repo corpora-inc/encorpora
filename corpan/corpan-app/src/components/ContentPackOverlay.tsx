@@ -21,7 +21,7 @@ export function ContentPackOverlay({
   }, [])
 
   return (
-    <div className="fixed inset-0 z-[100]">
+    <div className="fixed inset-0 z-[1100]">
       <ContentPackHost id={id} manifestUrl={manifestUrl} />
     </div>
   )

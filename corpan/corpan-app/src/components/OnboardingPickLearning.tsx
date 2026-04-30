@@ -9,11 +9,8 @@ const CURRENT_STEP_IDX = 0;
 
 export function OnboardingPickLearning() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
-  const languages = useSettingsStore((s) => s.languages);
   const dir = useSettingsStore((s) => s.dir);
   const { t } = useTranslation();
-
-  const canProceed = (languages?.length || 0) > 1;
 
   const stepLabels = useMemo(
     () =>
@@ -45,8 +42,8 @@ export function OnboardingPickLearning() {
         steps={stepLabels}
         currentIndex={CURRENT_STEP_IDX}
         onBack={() => setStep(1)}
-        onNext={() => canProceed && setStep(3)}
-        canNext={canProceed}
+        onNext={() => setStep(3)}
+        canNext={true}
       />
 
       <main
@@ -62,7 +59,7 @@ export function OnboardingPickLearning() {
           title={t("onboarding.languageOrderTipTitle", { defaultValue: "Tip" })}
           body={t("onboarding.languageOrderTipBody", {
             defaultValue:
-              "The bottom language becomes the app's UI language. Drag to change it anytime.",
+              "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
           })}
         />
         <LanguageSelectOrder />

@@ -107,7 +107,7 @@
     "learningStepTitle": "Tanulás",
     "tts": "Szövegfelolvasás",
     "languageOrderTipTitle": "Tipp",
-    "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod.",
+    "languageOrderTipBody": "A lista alján lévő nyelv az alkalmazás felületének nyelve. A felület nyelvének megváltoztatásához húzz egy másik nyelvet legalulra.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Legjobb: Google TTS. A Samsung TTS nem működik a Corpánban.",
     "ttsOsTipIOS": "A Settings → Accessibility menüben keresd meg a Spoken Content részt, és töltsd le a hangokat. Megjegyzés: az Apple nem biztosít hangokat minden nyelvhez. Ha a frissítés nem segít, kérj támogatást az Apple Feedback appon keresztül.",
@@ -300,7 +300,16 @@
     "ur-PK": "Urdu (Pakisztán)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Svéd",
+    "no": "Norvég",
+    "da": "Dán",
+    "nl": "Holland",
+    "ms": "Maláj",
+    "fi": "Finn",
+    "sw": "Szuahéli",
+    "el": "Görög",
+    "he": "Héber"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",
@@ -322,7 +331,9 @@
     "rename": "Átnevezés",
     "renameLabel": "Új név a veremhez",
     "selectAria": "Profil kiválasztása",
-    "selectPlaceholder": "Válassz…"
+    "selectPlaceholder": "Válassz…",
+    "introTipTitle": "Stack-ek",
+    "introTipBody": "A stack-ek különböző tanulási beállításokat mentenek — egyet utazáshoz, egy másikat munkához. Koppints a +-ra új stack létrehozásához."
   },
   "rating": {
     "title": "Tetszik a Corpán?",
@@ -411,5 +422,12 @@
     "playbackFailedHeading": "A hanglejátszás sikertelen",
     "playbackFailedDetail": "Nyisd meg az eszközöd TTS beállításait a javításhoz.",
     "openSettingsAction": "TTS beállítások"
+  },
+  "discoverPacks": {
+    "title": "Tedd a Corpán-t a sajátoddá",
+    "subtitle": "Adj hozzá magával ragadó olvasókat, játékokat és eszközöket — a Corpán-ba építve, hogy elmélyítsd a gyakorlásod.",
+    "maybeLater": "Talán később",
+    "empty": "Még több csomag úton van — addig is fedezd fel a Corpán-t.",
+    "offlineEmpty": "Csatlakozz az internethez, hogy felfedezz csomagokat — vagy hagyd ki most."
   }
 }

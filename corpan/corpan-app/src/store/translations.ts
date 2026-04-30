@@ -98,8 +98,29 @@ export const AUTONYM_BY_LANG = {
     ur: "اردو",
 
     // Coming soon languages
+    // Slavic / Balkan / Eastern Europe
+    uk: "Українська",
+    ro: "Română",
+    cs: "Čeština",
+    sk: "Slovenčina",
+    sr: "Српски",
+    hr: "Hrvatski",
+    bg: "Български",
+    // Indian subcontinent
+    ml: "മലയാളം",
+    ne: "नेपाली",
+    si: "සිංහල",
+    // SE Asian
+    fil: "Filipino",
     my: "မြန်မာဘာသာ",
     km: "ខ្មែរ",
+    // Africa
+    af: "Afrikaans",
+    ha: "Hausa",
+    // Caucasus
+    hy: "Հայերեն",
+    ka: "ქართული",
+    // Sinitic
     "yue-Hant-HK": "粵語",
 } as const;
 export type LanguageCode = keyof typeof AUTONYM_BY_LANG;
@@ -155,8 +176,29 @@ export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
  * The autonym is rendered separately as the headline.
  */
 export const COMING_SOON_BY_LANG = {
+    // Slavic / Balkan / Eastern Europe
+    uk: "Скоро з'явиться",
+    ro: "În curând",
+    cs: "Již brzy",
+    sk: "Už čoskoro",
+    sr: "Ускоро",
+    hr: "Uskoro",
+    bg: "Очаквайте скоро",
+    // Indian subcontinent
+    ml: "ഉടൻ വരുന്നു",
+    ne: "चाँडै आउँदै",
+    si: "ඉක්මනින් එනවා",
+    // SE Asian
+    fil: "Malapit na",
     my: "မကြာမီလာပါမည်",
     km: "មកដល់ឆាប់ៗនេះ",
+    // Africa
+    af: "Binnekort beskikbaar",
+    ha: "Ba da daɗewa ba",
+    // Caucasus
+    hy: "Շուտով",
+    ka: "მალე",
+    // Sinitic
     "yue-Hant-HK": "即將推出",
 } as const;
 export type ComingSoonCode = keyof typeof COMING_SOON_BY_LANG;

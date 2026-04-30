@@ -24,6 +24,7 @@ import {
 } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { DiscoverPacksPanel } from "./DiscoverPacksPanel";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -203,6 +204,7 @@ export function MainExperience() {
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
+    const hasSeenPacksDiscover = useSettingsStore((s) => s.hasSeenPacksDiscover);
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
 
@@ -361,6 +363,7 @@ export function MainExperience() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
+            {!hasSeenPacksDiscover && <DiscoverPacksPanel />}
             {currEntry ? <MetaChips entry={currEntry} /> : null}
 
             <div

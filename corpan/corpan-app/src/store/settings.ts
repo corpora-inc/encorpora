@@ -5,28 +5,47 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { isRTL } from "@/util/convert";
 import { bindEngine, detectOSFromUA, probeTtsHealth } from "@/util/tts-voices";
 
+// Order is curated as a geographic+cultural journey from England to Japan.
+// Treated as art, not science: small adjacencies tell stories.
+//   - de↔nl: West Germanic neighbors
+//   - no/sv/da: Scandinavian fan
+//   - fi↔hu: Uralic interlude (Finland in the Baltic, Hungary akin)
+//   - pl↔ru: Slavic kin
+//   - ru↔el: Cyrillic was derived from Greek; Orthodox sister cultures
+//   - el↔tr: Greece and Turkey neighbors across the Aegean
+//   - he→ar→fa→ur→pa-Arab: Levant descent through Iranian world
+//   - pa-Arab→pa-Guru: Punjabi script bridge
+//   - pa-Guru…ta: India north→south sweep ending in the Tamil south
+//   - sw: Indian-Ocean detour before the East Asian arrival
 export const ALL_LANGUAGES = [
+    // Western / Romance
     "en",
     "es",
     "fr",
     "it",
     "pt-BR",
+    // West Germanic
     "de",
-    "sv",
-    "no",
-    "da",
     "nl",
+    // North Germanic / Scandinavia
+    "no",
+    "sv",
+    "da",
+    // Uralic interlude
+    "fi",
+    "hu",
+    // Slavic + Cyrillic / Greek + Anatolia
     "pl",
     "ru",
-    "hu",
-    "fi",
-    "tr",
     "el",
+    "tr",
+    // Levant + Iranian world
     "he",
     "ar",
     "fa",
     "ur",
     "pa-Arab",
+    // South Asia (north → south)
     "pa-Guru",
     "hi",
     "bn",
@@ -35,11 +54,14 @@ export const ALL_LANGUAGES = [
     "kn",
     "te",
     "ta",
+    // South-East Asia
     "th",
     "vi",
     "id",
     "ms",
+    // Indian-Ocean detour
     "sw",
+    // East Asia
     "zh-Hans",
     "zh-Hant",
     "ko-polite",
@@ -47,8 +69,29 @@ export const ALL_LANGUAGES = [
 ];
 
 export const COMING_SOON_LANGUAGES = [
+    // Slavic / Balkan / Eastern Europe
+    "uk",
+    "ro",
+    "cs",
+    "sk",
+    "sr",
+    "hr",
+    "bg",
+    // Indian subcontinent gaps
+    "ml",
+    "ne",
+    "si",
+    // SE Asian
+    "fil",
     "my",
     "km",
+    // Africa
+    "af",
+    "ha",
+    // Caucasus
+    "hy",
+    "ka",
+    // Sinitic
     "yue-Hant-HK",
 ] as const;
 
@@ -139,6 +182,8 @@ type MultiStackState = {
     // Onboarding (persisted)
     onboarded: boolean;
     onboardingStep: number;
+    /** Persisted: has the user seen the post-onboarding pack-discover panel? */
+    hasSeenPacksDiscover: boolean;
 
     // Updaters (write canonical + mirrors)
     setLanguages: (codes: string[]) => void;
@@ -167,6 +212,7 @@ type MultiStackState = {
     setOnboarded: (b: boolean) => void;
     resetOnboarding: () => void;
     setOnboardingStep: (n: number) => void;
+    setHasSeenPacksDiscover: (b: boolean) => void;
 
     /** Android-only: set or clear the preferred TTS engine package. */
     setPreferredEngine: (pkg: string | null) => void;
@@ -248,7 +294,13 @@ function deriveFrom(stack: Stack) {
 
 /** Read current persisted “corpan-stacks-v1” synchronously to avoid a default flash. */
 function readPersistedBoot():
-    | { stacks: Record<string, Stack>; activeStackId: string; onboarded?: boolean; onboardingStep?: number }
+    | {
+        stacks: Record<string, Stack>;
+        activeStackId: string;
+        onboarded?: boolean;
+        onboardingStep?: number;
+        hasSeenPacksDiscover?: boolean;
+    }
     | null {
     try {
         const raw = localStorage.getItem("corpan-stacks-v1");
@@ -259,6 +311,7 @@ function readPersistedBoot():
         const activeStackId = state?.activeStackId;
         const onboarded = !!state?.onboarded;
         const onboardingStep = typeof state?.onboardingStep === "number" ? state.onboardingStep : 0;
+        const hasSeenPacksDiscover = !!state?.hasSeenPacksDiscover;
 
         // Backfill voicePrefs if older persisted shape
         if (stacks && typeof activeStackId === "string") {
@@ -268,7 +321,7 @@ function readPersistedBoot():
                 }
                 if (!s.settings.voicePrefs) s.settings.voicePrefs = {};
             }
-            return { stacks, activeStackId, onboarded, onboardingStep };
+            return { stacks, activeStackId, onboarded, onboardingStep, hasSeenPacksDiscover };
         }
         return null;
     } catch {
@@ -372,6 +425,10 @@ export const useSettingsStore = create<MultiStackState>()(
                 // Onboarding: if we had any prior state (pre or legacy), skip onboarding
                 onboarded: !!(pre || imported),
                 onboardingStep: pre?.onboardingStep ?? 0,
+                // Pack-discover panel: false by default. Legacy users who
+                // imported from an old single-stack persist (`imported`) get
+                // it set true so the panel doesn't surprise them post-update.
+                hasSeenPacksDiscover: pre?.hasSeenPacksDiscover ?? !!imported,
 
                 // Updaters
                 setLanguages: (codes) => writeActiveSettings((s) => { s.languages = codes; }),
@@ -462,8 +519,9 @@ export const useSettingsStore = create<MultiStackState>()(
                 },
 
                 setOnboarded: (b) => set({ onboarded: b }),
-                resetOnboarding: () => set({ onboarded: false }),
+                resetOnboarding: () => set({ onboarded: false, hasSeenPacksDiscover: false }),
                 setOnboardingStep: (n) => set({ onboardingStep: n }),
+                setHasSeenPacksDiscover: (b) => set({ hasSeenPacksDiscover: b }),
                 setPreferredEngine: (pkg) => set({ preferredEngine: pkg && pkg.length ? pkg : null }),
 
                 // Stacks mgmt
@@ -542,6 +600,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 activeStackId: state.activeStackId,
                 onboarded: state.onboarded,
                 onboardingStep: state.onboardingStep,
+                hasSeenPacksDiscover: state.hasSeenPacksDiscover,
                 theme: state.theme,
                 preferredEngine: state.preferredEngine,
             }),

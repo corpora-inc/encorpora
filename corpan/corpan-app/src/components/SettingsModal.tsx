@@ -25,9 +25,9 @@ import { useSettingsStore } from "@/store/settings";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
+import { DismissableTip } from "./DismissableTip";
 import { JumpToTTSButton } from "./JumpToTTSButton";
 import { PacksListing } from "./packs/PacksListing";
-import { InstallProvider } from "@/contentPacks/InstallContext";
 import type { InstalledGame } from "@/store/games";
 import { useGamesStore } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
@@ -183,6 +183,17 @@ export function SettingsModal({
             {/* Theme toggle (global) */}
             <ThemeToggle />
 
+            {/* First-visit explainer for the Stacks concept. Persisted via
+                localStorage; second visit and beyond it stays dismissed. */}
+            <DismissableTip
+              storageKey="tip:stacks-intro"
+              title={t("stacks.introTipTitle", { defaultValue: "Stacks" })}
+              body={t("stacks.introTipBody", {
+                defaultValue:
+                  "Stacks save different learning setups — one for travel, another for work. Tap + to make a new stack.",
+              })}
+            />
+
             {/* Stacks (profiles) manager */}
             <StacksManager />
 
@@ -228,12 +239,6 @@ export function SettingsModal({
           </TabsContent>
 
           <TabsContent value="packs" className="space-y-4 mt-8 pb-16">
-            <InstallProvider
-              onLaunchGame={(game) => {
-                onClose();
-                onLaunchGame?.(game);
-              }}
-            >
             <PacksListing
               showDevInstall={devModeEnabled}
               onLaunchGame={(game) => {
@@ -262,7 +267,6 @@ export function SettingsModal({
                 </Button>
               </div>
             )}
-            </InstallProvider>
           </TabsContent>
         </Tabs>
 

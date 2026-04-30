@@ -107,7 +107,7 @@
     "learningStepTitle": "Lernen",
     "tts": "Text-zu-Sprache",
     "languageOrderTipTitle": "Tipp",
-    "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern.",
+    "languageOrderTipBody": "Die unterste Sprache in der Liste ist die Sprache der Benutzeroberfläche. Um die Sprache der Benutzeroberfläche zu ändern, ziehe eine andere Sprache nach ganz unten.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Beste Ergebnisse: Google-Sprachausgabe verwenden. Samsung TTS funktioniert in Corpán nicht.",
     "ttsOsTipIOS": "In Einstellungen → Bedienungshilfen, finde Gesprochene Inhalte und lade Stimmen herunter. Hinweis: Apple bietet nicht für jede Sprache Stimmen an. Wenn ein Upgrade nicht hilft, fordere Unterstützung über Apples Feedback-App an.",
@@ -300,7 +300,16 @@
     "ur-PK": "Urdu (Pakistan)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Schwedisch",
+    "no": "Norwegisch",
+    "da": "Dänisch",
+    "nl": "Niederländisch",
+    "ms": "Malaiisch",
+    "fi": "Finnisch",
+    "sw": "Suaheli",
+    "el": "Griechisch",
+    "he": "Hebräisch"
   },
   "footer": {
     "appVersion": "App-Version",
@@ -322,7 +331,9 @@
     "rename": "Umbenennen",
     "renameLabel": "Neuer Name für Stapel",
     "selectAria": "Profil auswählen",
-    "selectPlaceholder": "Auswählen…"
+    "selectPlaceholder": "Auswählen…",
+    "introTipTitle": "Stacks",
+    "introTipBody": "Stacks speichern verschiedene Lern-Setups — eines für die Reise, ein anderes für die Arbeit. Tippe auf +, um einen neuen Stack zu erstellen."
   },
   "rating": {
     "title": "Gefällt dir Corpán?",
@@ -411,5 +422,12 @@
     "playbackFailedHeading": "Sprachausgabe fehlgeschlagen",
     "playbackFailedDetail": "Öffne die TTS-Einstellungen deines Geräts, um es zu beheben.",
     "openSettingsAction": "TTS-Einstellungen öffnen"
+  },
+  "discoverPacks": {
+    "title": "Mach Corpán zu deinem",
+    "subtitle": "Füge immersive Reader, Spiele und Tools hinzu — direkt in Corpán integriert, um deine Praxis zu vertiefen.",
+    "maybeLater": "Vielleicht später",
+    "empty": "Weitere Packs sind unterwegs — erkunde Corpán in der Zwischenzeit.",
+    "offlineEmpty": "Verbinde dich mit dem Internet, um Packs zu entdecken — oder überspringe es vorerst."
   }
 }

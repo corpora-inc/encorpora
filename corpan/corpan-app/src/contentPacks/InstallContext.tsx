@@ -10,6 +10,13 @@ type InstallContextValue = {
   installCatalogPack: (pack: CatalogGame) => Promise<void>
   installDevPack: (manifestUrl: string) => Promise<void>
   isInstalling: boolean
+  /**
+   * Launch an already-installed pack. Mirrors the `onLaunchGame` prop
+   * given to `<InstallProvider>` so any descendant (Settings, the
+   * first-run discover panel, etc.) can route a "tap Open" through the
+   * same handler the install dialog uses on completion.
+   */
+  launchGame?: (game: InstalledGame) => void
 }
 
 const InstallContext = createContext<InstallContextValue | null>(null)
@@ -179,7 +186,12 @@ export function InstallProvider({
 
   return (
     <InstallContext.Provider
-      value={{ installCatalogPack, installDevPack, isInstalling: installing }}
+      value={{
+        installCatalogPack,
+        installDevPack,
+        isInstalling: installing,
+        launchGame: onLaunchGame,
+      }}
     >
       {children}
       <InstallProgressDialog

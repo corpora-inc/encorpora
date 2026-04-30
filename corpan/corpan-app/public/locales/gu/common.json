@@ -107,7 +107,7 @@
     "learningStepTitle": "શીખવું",
     "tts": "ટેક્સ્ટ-ટુ-સ્પીચ",
     "languageOrderTipTitle": "ટિપ",
-    "languageOrderTipBody": "નીચેની ભાષા એપની UI ભાષા બની જાય છે. ક્યારે પણ બદલવા માટે ડ્રેગ કરો.",
+    "languageOrderTipBody": "યાદીમાં સૌથી નીચેની ભાષા એ એપની UI ભાષા છે. UI ભાષા બદલવા માટે, બીજી ભાષાને સૌથી નીચે ખેંચો.",
     "ttsOsTipTitle": "ટિપ",
     "ttsOsTipAndroid": "શ્રેષ્ઠ પરિણામ: Google text-to-speech નો ઉપયોગ કરો. Samsung TTS Corpán માં કામ કરતું નથી.",
     "ttsOsTipIOS": "Settings → Accessibility માં Spoken Content શોધો અને અવાજો ડાઉનલોડ કરો. નોંધ: Apple દરેક ભાષા માટે અવાજો આપતું નથી. જો અપગ્રેડથી મદદ ન મળે, તો Apple Feedback એપ દ્વારા સપોર્ટ માટે વિનંતી કરો.",
@@ -300,7 +300,16 @@
     "tr": "ટર્કિશ",
     "ta": "તમિલ",
     "te": "તેલુગુ",
-    "kn": "કન્નડ"
+    "kn": "કન્નડ",
+    "sv": "સ્વીડિશ",
+    "no": "નોર્વેજિયન",
+    "da": "ડેનિશ",
+    "nl": "ડચ",
+    "ms": "મલય",
+    "fi": "ફિનિશ",
+    "sw": "સ્વાહિલી",
+    "el": "ગ્રીક",
+    "he": "હિબ્રૂ"
   },
   "footer": {
     "appVersion": "એપ આવૃત્તિ",
@@ -322,7 +331,9 @@
     "rename": "નામ બદલો",
     "renameLabel": "સ્ટેક માટે નવું નામ",
     "selectAria": "સ્ટેક પસંદ કરો",
-    "selectPlaceholder": "પસંદ કરો…"
+    "selectPlaceholder": "પસંદ કરો…",
+    "introTipTitle": "સ્ટૅક્સ",
+    "introTipBody": "સ્ટૅક્સ વિવિધ શીખવાના સેટઅપ સાચવે છે — એક પ્રવાસ માટે, બીજો કામ માટે. નવો સ્ટૅક બનાવવા માટે + પર ટૅપ કરો."
   },
   "rating": {
     "title": "Corpán નો આનંદ લઈ રહ્યા છો?",
@@ -411,5 +422,12 @@
     "playbackFailedHeading": "વૉઇસ પ્લેબેક નિષ્ફળ",
     "playbackFailedDetail": "ઠીક કરવા માટે તમારા ડિવાઇસનું TTS સેટિંગ ખોલો.",
     "openSettingsAction": "TTS સેટિંગ ખોલો"
+  },
+  "discoverPacks": {
+    "title": "Corpán ને તમારું બનાવો",
+    "subtitle": "ઇમર્સિવ રીડર્સ, ગેમ્સ અને ટૂલ્સ ઉમેરો — તમારી પ્રેક્ટિસને ઊંડી બનાવવા માટે Corpán માં બનાવેલા.",
+    "maybeLater": "કદાચ પછી",
+    "empty": "વધુ પૅક્સ આવી રહ્યા છે — તે દરમિયાન Corpán ની શોધ કરો.",
+    "offlineEmpty": "પૅક્સ શોધવા માટે ઇન્ટરનેટ સાથે કનેક્ટ કરો — અથવા હમણાં છોડી દો."
   }
 }

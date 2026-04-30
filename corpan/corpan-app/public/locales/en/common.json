@@ -86,7 +86,8 @@
     "theme": "Theme",
     "themeLight": "Light",
     "themeSystem": "System",
-    "themeDark": "Dark"
+    "themeDark": "Dark",
+    "primaryLanguage": "Primary (UI) language"
   },
   "onboarding": {
     "welcome": "Welcome",
@@ -113,7 +114,7 @@
     "noVoices": "No voices",
     "noVoicesHint": "Install voices to enable this language.",
     "languageOrderTipTitle": "Tip",
-    "languageOrderTipBody": "The bottom language becomes the app's UI language. Drag to change it anytime.",
+    "languageOrderTipBody": "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Best results: use Google text-to-speech. Samsung TTS does not work in Corpán.",
     "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
@@ -300,7 +301,16 @@
     "pa-Arab": "Punjabi (Shahmukhi)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "ur-PK": "Urdu (Pakistan)",
+    "sv": "Swedish",
+    "no": "Norwegian",
+    "da": "Danish",
+    "nl": "Dutch",
+    "ms": "Malay",
+    "fi": "Finnish",
+    "sw": "Swahili",
+    "el": "Greek",
+    "he": "Hebrew"
   },
   "footer": {
     "appVersion": "App version",
@@ -322,7 +332,9 @@
     "rename": "Rename",
     "renameLabel": "New name for stack",
     "selectAria": "Select a stack",
-    "selectPlaceholder": "Choose…"
+    "selectPlaceholder": "Choose…",
+    "introTipTitle": "Stacks",
+    "introTipBody": "Stacks save different learning setups — one for travel, another for work. Tap + to make a new stack."
   },
   "rating": {
     "title": "Enjoying Corpán?",
@@ -411,5 +423,12 @@
     "playbackFailedHeading": "Voice playback failed",
     "playbackFailedDetail": "Open your device's TTS settings to fix it.",
     "openSettingsAction": "Open TTS settings"
+  },
+  "discoverPacks": {
+    "title": "Make Corpán yours",
+    "subtitle": "Add immersive readers, games, and tools — built into Corpán to deepen your practice.",
+    "maybeLater": "Maybe later",
+    "empty": "More packs are on the way — explore Corpán in the meantime.",
+    "offlineEmpty": "Connect to the internet to discover packs — or skip this for now."
   }
 }

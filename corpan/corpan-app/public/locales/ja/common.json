@@ -107,7 +107,7 @@
     "learningStepTitle": "学習",
     "tts": "テキスト読み上げ",
     "languageOrderTipTitle": "ヒント",
-    "languageOrderTipBody": "一番下の言語がアプリの表示言語になります。ドラッグしていつでも変更できます。",
+    "languageOrderTipBody": "リストの一番下にある言語がアプリの表示言語になります。表示言語を変更するには、別の言語を一番下までドラッグしてください。",
     "ttsOsTipTitle": "ヒント",
     "ttsOsTipAndroid": "最適: Google の読み上げを使用。Samsung TTS は Corpán では動作しません。",
     "ttsOsTipIOS": "設定 → アクセシビリティから「読み上げコンテンツ」を探して音声をダウンロードしてください。注：Appleはすべての言語に音声を提供していません。アップグレードしても改善しない場合は、AppleのフィードバックAppからサポートをリクエストしてください。",
@@ -300,7 +300,16 @@
     "ur-PK": "ウルドゥー語（パキスタン）",
     "ta": "タミル語",
     "te": "テルグ語",
-    "kn": "カンナダ語"
+    "kn": "カンナダ語",
+    "sv": "スウェーデン語",
+    "no": "ノルウェー語",
+    "da": "デンマーク語",
+    "nl": "オランダ語",
+    "ms": "マレー語",
+    "fi": "フィンランド語",
+    "sw": "スワヒリ語",
+    "el": "ギリシャ語",
+    "he": "ヘブライ語"
   },
   "footer": {
     "appVersion": "アプリのバージョン",
@@ -322,7 +331,9 @@
     "rename": "名前を変更",
     "renameLabel": "スタックの新しい名前",
     "selectAria": "プロフィールを選択",
-    "selectPlaceholder": "選択…"
+    "selectPlaceholder": "選択…",
+    "introTipTitle": "スタック",
+    "introTipBody": "スタックは異なる学習設定を保存します — 1つは旅行用、もう1つは仕事用。＋をタップして新しいスタックを作成。"
   },
   "rating": {
     "title": "Corpánを楽しんでいますか？",
@@ -411,5 +422,12 @@
     "playbackFailedHeading": "音声再生に失敗しました",
     "playbackFailedDetail": "デバイスの TTS 設定を開いて修正してください。",
     "openSettingsAction": "TTS 設定を開く"
+  },
+  "discoverPacks": {
+    "title": "Corpán を自分のものに",
+    "subtitle": "没入感のあるリーダー、ゲーム、ツールを追加 — Corpán に組み込まれ、練習をさらに深めます。",
+    "maybeLater": "後で",
+    "empty": "さらに多くのパックがやってきます — その間 Corpán を探検してください。",
+    "offlineEmpty": "インターネットに接続してパックを見つけよう — または今はスキップ。"
   }
 }
