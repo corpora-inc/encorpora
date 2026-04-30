@@ -1,5 +1,10 @@
 # Stargate Reader — Agent Knowledge Base
 
+## Release notes
+
+Update `CHANGELOG.md` (in this directory) on every user-visible change.
+Format and rationale: `corpan/CHANGELOGS.md`.
+
 ## What Is It
 
 Audiobook reader Corpan pack for the "Fascinating Curiosities" book series (12 volumes). Babylon.js 3D visualization synced to word-level timestamps from forced alignment. Words flow toward the camera in a Star Wars crawl, passing through an oscilloscope at the "now" plane.
