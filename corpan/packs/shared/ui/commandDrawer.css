@@ -99,10 +99,19 @@
 .command-drawer-handle {
   flex-shrink: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 12px 0 8px;
+  /* Generous drag-to-dismiss zone (~36px tall) while the visible bar stays
+     subtle. Matches iOS bottom-sheet behaviour: grab anywhere in this band,
+     not just on the 4px bar. The catalog tab strip below also gets drag
+     listeners (button-guarded) so the gaps and underline are draggable too. */
+  height: 36px;
   cursor: grab;
   touch-action: none;
+}
+
+.command-drawer-handle:active {
+  cursor: grabbing;
 }
 
 .command-drawer-handle-bar {
@@ -784,7 +793,7 @@
   }
 
   .command-drawer-handle {
-    padding: 8px 0 4px;
+    height: 32px;
   }
 
   .command-drawer-sticky {

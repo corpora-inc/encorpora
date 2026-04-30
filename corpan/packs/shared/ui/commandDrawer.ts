@@ -303,6 +303,10 @@ export function createCommandDrawer(
   }
 
   attachDragListeners(handle, false)
+  // The screen-nav (Now Playing / Library / Browse tabs) doubles as a generous
+  // drag-to-dismiss surface. `guardButtons: true` skips the drag when the user
+  // taps directly on a tab button, so tab navigation still works normally.
+  attachDragListeners(screenNav, true)
 
   // --- Open / Close ---
   function open() {

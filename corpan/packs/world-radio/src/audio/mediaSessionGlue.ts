@@ -10,6 +10,15 @@
  * audio-keepalive plugin about the current station so the lock-screen "now
  * playing" card shows artwork + name, and we listen for remote play/pause
  * commands forwarded by the native MediaSession.
+ *
+ * Two delivery paths from native → JS on Android:
+ *   1. `window.__readerCmd('pause')` via WebView.evaluateJavascript — the
+ *      direct, reliable path the readers use.
+ *   2. Tauri channel events via `listenForRemoteCommands` — the structured
+ *      path. On iOS the plugin only fires interruption/route events here;
+ *      lock-screen play/pause is handled by WebKit's `navigator.mediaSession`.
+ *
+ * We wire both. A small dedupe prevents the dual paths from double-firing.
  */
 
 import {
@@ -21,6 +30,12 @@ import {
 } from "@shared/audio"
 import type { PlayerState, RadioPlayer } from "./radioPlayer"
 
+declare global {
+  interface Window {
+    __readerCmd?: (cmd: string) => void
+  }
+}
+
 export type MediaSessionGlue = {
   apply: (state: PlayerState) => void
   dispose: () => void
@@ -29,22 +44,38 @@ export type MediaSessionGlue = {
 export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
   const ms = typeof navigator !== "undefined" ? navigator.mediaSession : undefined
 
-  if (ms) {
-    ms.setActionHandler("play", () => {
+  // Dedupe play/pause that arrive on both delivery paths within a small window.
+  const REMOTE_DEDUPE_MS = 250
+  let lastRemoteCmd: "play" | "pause" | null = null
+  let lastRemoteAt = 0
+  function dispatchRemote(cmd: "play" | "pause") {
+    const now = performance.now()
+    if (lastRemoteCmd === cmd && now - lastRemoteAt < REMOTE_DEDUPE_MS) return
+    lastRemoteCmd = cmd
+    lastRemoteAt = now
+    if (cmd === "play") {
       const s = player.getState()
       if (s.kind === "paused") void player.resume()
-    })
-    ms.setActionHandler("pause", () => player.pause())
+    } else {
+      player.pause()
+    }
+  }
+
+  if (ms) {
+    ms.setActionHandler("play", () => dispatchRemote("play"))
+    ms.setActionHandler("pause", () => dispatchRemote("pause"))
     ms.setActionHandler("stop", () => player.stop())
     // No seek/skip handlers — radio is live.
   }
 
+  const previousReaderCmd = window.__readerCmd
+  window.__readerCmd = (cmd: string) => {
+    if (cmd === "play" || cmd === "pause") dispatchRemote(cmd)
+  }
+
   const removeRemoteListener = listenForRemoteCommands({
-    onPlay: () => {
-      const s = player.getState()
-      if (s.kind === "paused") void player.resume()
-    },
-    onPause: () => player.pause(),
+    onPlay: () => dispatchRemote("play"),
+    onPause: () => dispatchRemote("pause"),
     onInterruptionBegan: () => player.pause(),
     onInterruptionEnded: (shouldResume) => {
       if (shouldResume) void player.resume()
@@ -60,12 +91,16 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
         void startNativeKeepAlive(s.name, s.country || "", s.language || "")
         nativeStarted = true
       }
+      // Treat "loading" as playing on the native card. The user pressed play;
+      // showing a play icon mid-buffer is wrong, and on Android the service
+      // guards `handlePauseCommand` on `isPlaying=true` — telling it false
+      // here would silently swallow a lock-screen pause tap during buffering.
       void updateNativeNowPlaying(
         s.name,
         s.country || s.language || "",
         0,
         0,
-        state.kind === "playing"
+        true
       )
     } else if (state.kind === "paused") {
       void pauseNativeKeepAlive("user-pause")
@@ -105,6 +140,11 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
     dispose() {
       unsub()
       removeRemoteListener?.()
+      if (previousReaderCmd) {
+        window.__readerCmd = previousReaderCmd
+      } else {
+        delete window.__readerCmd
+      }
       if (ms) {
         ms.setActionHandler("play", null)
         ms.setActionHandler("pause", null)
