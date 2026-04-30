@@ -26,6 +26,7 @@ import {
   stopNativeKeepAlive,
   updateNativeNowPlaying,
   pauseNativeKeepAlive,
+  resumeNativeKeepAlive,
   listenForRemoteCommands,
 } from "@shared/audio"
 import type { PlayerState, RadioPlayer } from "./radioPlayer"
@@ -83,6 +84,7 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
   })
 
   let nativeStarted = false
+  let lastStateKind: PlayerState["kind"] = "idle"
 
   function applyNative(state: PlayerState) {
     if (state.kind === "playing" || state.kind === "loading") {
@@ -90,6 +92,11 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
       if (!nativeStarted) {
         void startNativeKeepAlive(s.name, s.country || "", s.language || "")
         nativeStarted = true
+      } else if (lastStateKind === "paused") {
+        // Revive the native session on play-after-pause. Without this the
+        // lock-screen card shows the right metadata but the native side may
+        // still think it's paused (or have let its audio session expire).
+        void resumeNativeKeepAlive("play-after-pause")
       }
       // Treat "loading" as playing on the native card. The user pressed play;
       // showing a play icon mid-buffer is wrong, and on Android the service
@@ -110,7 +117,39 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
         nativeStarted = false
       }
     }
+    lastStateKind = state.kind
   }
+
+  // Background pulse — ping the native now-playing every ~5 s while the page
+  // is hidden and the radio is supposed to be playing. Without this, iOS
+  // silently deactivates AVAudioSession after a few minutes of no NowPlayingInfo
+  // updates, and the WKWebView <audio> element can't restart without a user
+  // gesture. Stream "dies" lock-screen-locked. The readers do the same dance
+  // (earthgate-reader/src/game.ts startBackgroundTimers) — radio-specific
+  // version is simpler since there's no position to advance.
+  let bgTimer: number | null = null
+  function startBackgroundPulse() {
+    if (bgTimer !== null) return
+    bgTimer = window.setInterval(() => {
+      const s = player.getState()
+      if (s.kind !== "playing") return
+      // No need to ping while the user is actively in the app.
+      if (typeof document !== "undefined" && document.visibilityState !== "hidden") return
+      void updateNativeNowPlaying(
+        s.station.name,
+        s.station.country || s.station.language || "",
+        0,
+        0,
+        true
+      )
+    }, 5000)
+  }
+  function stopBackgroundPulse() {
+    if (bgTimer === null) return
+    window.clearInterval(bgTimer)
+    bgTimer = null
+  }
+  startBackgroundPulse()
 
   function apply(state: PlayerState) {
     if (ms) {
@@ -140,6 +179,7 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
     dispose() {
       unsub()
       removeRemoteListener?.()
+      stopBackgroundPulse()
       if (previousReaderCmd) {
         window.__readerCmd = previousReaderCmd
       } else {
