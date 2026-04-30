@@ -1,0 +1,1037 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "ru",
+  "timestamp": "2026-04-29T01:59:04.731062+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 354,
+  "segments_converged_by_retry": 10,
+  "segments_plateau_stopped": 4,
+  "total_retries": 22,
+  "error_distribution": {
+    "trailing_silence": 110,
+    "first_word_weak": 95,
+    "tail_energy": 33,
+    "pre_speech_spike": 19,
+    "hard_ending": 13,
+    "tts_audio_truncated": 12,
+    "tail_zero_duration_run": 11,
+    "stacked_words": 11,
+    "truncated_last_word": 11,
+    "min_trailing_silence": 11,
+    "transcription_mismatch": 10,
+    "post_speech_pop": 5,
+    "tail_spike": 4,
+    "final_word_weak": 2
+  },
+  "phase_timings": {
+    "tts": 402.66246366500854,
+    "align": 778.2108161449432,
+    "validate": 565.0145924091339,
+    "trim": 3.5641562938690186,
+    "master": 106.17793583869934
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 122,
+      "passed": 118,
+      "rate": 0.9672131147540983
+    },
+    "medium_30_80": {
+      "total": 182,
+      "passed": 172,
+      "rate": 0.945054945054945
+    },
+    "long_80_plus": {
+      "total": 64,
+      "passed": 64,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-155",
+      "attempts": 8,
+      "best_quality_score": 0.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7292653964680236,
+            "exaggeration": 0.5373817615566098,
+            "temperature": 0.6634947378277739,
+            "top_p": 0.7703509234386385,
+            "min_p": 0.3280454510534818,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6857565359536507,
+            "exaggeration": 0.12652870129280258,
+            "temperature": 0.052859045198666466,
+            "top_p": 1.0,
+            "min_p": 0.13884818753103015,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.6990838335716889,
+            "exaggeration": 0.399510838731887,
+            "temperature": 0.5587304530480364,
+            "top_p": 0.8797272393790063,
+            "min_p": 0.0464739990130921,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4147053349668802,
+            "temperature": 0.3412318408913069,
+            "top_p": 0.7900731603544437,
+            "min_p": 0.239099204558098,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.17217878267664238,
+            "exaggeration": 0.3574421844955035,
+            "temperature": 0.37825681783618403,
+            "top_p": 0.6789485745550454,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.5230722382783483,
+            "exaggeration": 0.27804468854104647,
+            "temperature": 0.2994051406859991,
+            "top_p": 0.7471612807077358,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.20743859146005966,
+            "exaggeration": 0.167249350208809,
+            "temperature": 0.41477631435966456,
+            "top_p": 0.8112661992314103,
+            "min_p": 0.1661880016186297,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Полная программа проведёт тебя через примерно семь прыжков.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-156",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.8915781690736662,
+            "exaggeration": 0.3131326401100958,
+            "temperature": 0.3818636539894812,
+            "top_p": 0.8523895933395111,
+            "min_p": 0.09849125755510121,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.39682276028011015,
+            "exaggeration": 0.014545686528566082,
+            "temperature": 0.07548723840989957,
+            "top_p": 0.6832408016240143,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "К концу ты прыгаешь сам.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-228",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.9121958582377686,
+            "exaggeration": 0.07499585607988174,
+            "temperature": 0.635620482941688,
+            "top_p": 0.6125944962727354,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7344661126073879,
+            "exaggeration": 0.4170480815800202,
+            "temperature": 0.5481973219036591,
+            "top_p": 1.0,
+            "min_p": 0.2689122306542697,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Плечо друга, который укладывается рядом.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-062",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6240960678482552,
+            "exaggeration": 0.1167218961313422,
+            "temperature": 0.5803145942971267,
+            "top_p": 0.8451236752271716,
+            "min_p": 0.15765519006666803,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Маленькое квадратное окно рядом с тобой становится всё синее.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-096",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9705285487142348,
+            "exaggeration": 0.24046225070133515,
+            "temperature": 0.3963817854145575,
+            "top_p": 0.8290640821180184,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Машины на шоссе, медленные, как муравьи.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 2,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.5573377680344394,
+            "exaggeration": 0.4398165291782653,
+            "temperature": 0.2719163611721597,
+            "top_p": 0.7038275198856199,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "Тень от облака скользит по лесу.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-122",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 450.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8032476271177466,
+            "exaggeration": 0.344139087945287,
+            "temperature": 0.5288856513273033,
+            "top_p": 0.6394431189489655,
+            "min_p": 0.09230578820567323,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "И ты впервые понимаешь, что твой друг пытался сказать тебе все эти годы.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-147",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7259272511371377,
+            "exaggeration": 0.4623989108677348,
+            "temperature": 0.522623132256257,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "День в классе занимает около шести или семи часов.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-161",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.630221007018303,
+            "exaggeration": 0.3728926088577093,
+            "temperature": 0.2787593558511847,
+            "top_p": 0.7303972848591074,
+            "min_p": 0.15071829102308917,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Сообщество маленькое, дружелюбное и терпеливое.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-229",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7742925620570732,
+            "exaggeration": 0.1608348482818885,
+            "temperature": 0.731131172505161,
+            "top_p": 1.0,
+            "min_p": 0.06958462189890782,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Радио в углу играет песню, которую ты слышал слишком много раз.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-279",
+      "attempts": 2,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9988663111189819,
+            "exaggeration": 0.29698874864882624,
+            "temperature": 0.6803048735366197,
+            "top_p": 0.6426062668821194,
+            "min_p": 0.2167722874825014,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Падают с одинаковой скоростью.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-280",
+      "attempts": 2,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6721569934702909,
+            "exaggeration": 0.051592951218291716,
+            "temperature": 0.40222450490935335,
+            "top_p": 0.8414106199236917,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "Смотрят друг другу в глаза.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-287",
+      "attempts": 2,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6884650810744295,
+            "exaggeration": 0.44245111629816425,
+            "temperature": 0.37179173951622274,
+            "top_p": 0.9232040588203551,
+            "min_p": 0.11206709316126098,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Плохой период на работе.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-342",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8121913874377407,
+            "exaggeration": 0.0731280109278018,
+            "temperature": 0.7151721366069714,
+            "top_p": 0.677968375019975,
+            "min_p": 0.026108953425849263,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Ты можешь спросить, было ли ему страшно в первый раз.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 109,
+      "text_preview": "Есть мгновение, сразу после того, как ты покидаешь самолёт, которое мне хотелось",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Мир перестаёт быть тем, в чём ты живёшь.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "Он становится тем, сквозь что ты падаешь.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 91,
+      "text_preview": "И первые несколько секунд твой разум не может догнать то, что только что сделало",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Люди спрашивают меня, почему я прыгаю.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Они всегда ждут, что я скажу, мол, дело в адреналине.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tail_zero_duration_run": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.185,
+        "temperature": 0.262,
+        "repetition_penalty": 0.0
+      }
+    },
+    "transcription_mismatch": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.193,
+        "temperature": -0.08,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

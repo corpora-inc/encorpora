@@ -1,0 +1,793 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "ms",
+  "timestamp": "2026-04-29T01:53:40.380322+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 358,
+  "segments_converged_by_retry": 8,
+  "segments_plateau_stopped": 2,
+  "total_retries": 11,
+  "error_distribution": {
+    "trailing_silence": 73,
+    "pre_speech_spike": 31,
+    "first_word_weak": 30,
+    "tail_energy": 20,
+    "hard_ending": 7,
+    "transcription_mismatch": 6,
+    "tts_audio_truncated": 5,
+    "final_word_weak": 3,
+    "post_speech_pop": 3,
+    "tail_zero_duration_run": 3,
+    "stacked_words": 3,
+    "truncated_last_word": 3,
+    "min_trailing_silence": 3,
+    "tail_spike": 1,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 415.92650055885315,
+    "align": 668.0099909305573,
+    "validate": 818.3424866199493,
+    "trim": 3.9552719593048096,
+    "master": 108.56464338302612
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 85,
+      "passed": 83,
+      "rate": 0.9764705882352941
+    },
+    "medium_30_80": {
+      "total": 186,
+      "passed": 181,
+      "rate": 0.9731182795698925
+    },
+    "long_80_plus": {
+      "total": 97,
+      "passed": 94,
+      "rate": 0.9690721649484536
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-199",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.8889197524959769,
+            "exaggeration": 0.11581291249163889,
+            "temperature": 0.265038869455816,
+            "top_p": 1.0,
+            "min_p": 0.013702455108817374,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6928312309168888,
+            "exaggeration": 0.1320535835171393,
+            "temperature": 0.2774659192605145,
+            "top_p": 0.8252360728713939,
+            "min_p": 0.30213581020277425,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 106,
+      "text_preview": "Awak menolak pinggul awak ke depan dan biarkan tangan dan kaki awak terhanyut di",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8245955404037499,
+            "exaggeration": 0.051545547663954416,
+            "temperature": 0.6977389427008045,
+            "top_p": 0.8649132374529958,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Saya tidak menjangka akan begitu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-064",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8880330853292301,
+            "exaggeration": 0.26564325317579024,
+            "temperature": 0.7146893070790745,
+            "top_p": 0.6429967319660812,
+            "min_p": 0.203440932261273,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Awak cuma sangat, sangat segar dan jaga.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-085",
+      "attempts": 2,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.8467488556937821,
+            "exaggeration": 0.1389371470003663,
+            "temperature": 0.7442594070377307,
+            "top_p": 0.8274731573196793,
+            "min_p": 0.3307287992139286,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Semua orang mengeluarkan bunyi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-169",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6131932713929044,
+            "exaggeration": 0.0798343055984258,
+            "temperature": 0.5378886678939554,
+            "top_p": 0.6503325362014392,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "Peralatannya cemerlang.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-196",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9991254952509436,
+            "exaggeration": 0.23977615595877938,
+            "temperature": 0.3367674530674154,
+            "top_p": 0.8219723042803154,
+            "min_p": 0.06332984296300484,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Itulah rahsia pertama seni ini.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-208",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 450.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.7036709410335198,
+            "exaggeration": 0.3230424359155241,
+            "temperature": 0.5961017287477095,
+            "top_p": 0.8515468335841574,
+            "min_p": 0.2732396583172081,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 107,
+      "text_preview": "Tangan dilipat ke belakang, badan dimiringkan, bergerak seperti pesawat kertas y",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-223",
+      "attempts": 2,
+      "best_quality_score": 37.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 135.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "pre_speech_spike"
+          ],
+          "score": 37.0,
+          "params": {
+            "cfg_weight": 0.9296886700777351,
+            "exaggeration": 0.4414187171755174,
+            "temperature": 0.6552964752644705,
+            "top_p": 0.6213737843392015,
+            "min_p": 0.0,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Awak membungkus kainnya, melurutkannya ke dalam beg, melalukan tali bridle, menu",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-233",
+      "attempts": 2,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6445843687472324,
+            "exaggeration": 0.08788697409349977,
+            "temperature": 0.58536987812124,
+            "top_p": 0.7948585093547739,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "Ia adalah kerendahan hati.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-320",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.97837275210032,
+            "exaggeration": 0.13062846739864642,
+            "temperature": 0.5149806090802777,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "Orang yang kekal bukanlah orang yang melarikan diri.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 119,
+      "text_preview": "Ada satu detik, sebaik sahaja awak meninggalkan pesawat, yang saya harap dapat s",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Dunia berhenti menjadi sesuatu yang awak diami.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Ia bertukar menjadi sesuatu yang awak terjuni.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 115,
+      "text_preview": "Dan untuk beberapa saat pertama, fikiran awak tidak sempat mengejar apa yang bar",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Orang sering bertanya kepada saya kenapa saya terjun.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Mereka selalu menjangka saya akan jawab kerana keterujaan.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "Ia bukan kerana keterujaan.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Keterujaan itu adalah apa yang awak rasa pada lima terjunan pertama awak.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Selepas itu, sesuatu yang lebih tenang mengambil tempat.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 25.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "Apa yang saya kejar ialah ketenangan jernih itu.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.004,
+        "temperature": 0.222,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.079,
+        "temperature": 0.213,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

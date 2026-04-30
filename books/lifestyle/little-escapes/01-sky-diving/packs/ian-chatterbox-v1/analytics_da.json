@@ -1,0 +1,1509 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "da",
+  "timestamp": "2026-04-29T01:17:41.985035+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 343,
+  "segments_converged_by_retry": 15,
+  "segments_plateau_stopped": 10,
+  "total_retries": 60,
+  "error_distribution": {
+    "trailing_silence": 131,
+    "first_word_weak": 74,
+    "transcription_mismatch": 52,
+    "tail_energy": 48,
+    "hard_ending": 11,
+    "tts_audio_truncated": 8,
+    "tail_zero_duration_run": 6,
+    "stacked_words": 6,
+    "truncated_last_word": 6,
+    "min_trailing_silence": 6,
+    "final_word_weak": 1,
+    "tail_spike": 1,
+    "pre_speech_spike": 1,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 805.3862111568451,
+    "align": 874.5410287380219,
+    "validate": 709.4848883152008,
+    "trim": 3.7958524227142334,
+    "master": 95.7635657787323
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 122,
+      "passed": 115,
+      "rate": 0.9426229508196722
+    },
+    "medium_30_80": {
+      "total": 180,
+      "passed": 165,
+      "rate": 0.9166666666666666
+    },
+    "long_80_plus": {
+      "total": 66,
+      "passed": 63,
+      "rate": 0.9545454545454546
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch06-358",
+      "attempts": 27,
+      "best_quality_score": 2.0,
+      "best_attempt": 1,
+      "plateau_count": 25,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.582111256048257,
+            "exaggeration": 0.07243933892904403,
+            "temperature": 0.6986516710867079,
+            "top_p": 1.0,
+            "min_p": 0.052320070087552656,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.5423929759295076,
+            "exaggeration": 0.1749769641640897,
+            "temperature": 0.3279952776538071,
+            "top_p": 0.6332077758250346,
+            "min_p": 0.19659230148366993,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.82984257505788,
+            "exaggeration": 0.5104956797737962,
+            "temperature": 0.8495220937711434,
+            "top_p": 0.8023261663923016,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.44662697926402684,
+            "temperature": 0.2238131951584592,
+            "top_p": 0.9557822805388603,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.289649185801727,
+            "exaggeration": 0.6456646008911492,
+            "temperature": 0.5063794255824249,
+            "top_p": 0.8804364720596962,
+            "min_p": 0.3091891159756074,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.8244256072241404,
+            "exaggeration": 0.0,
+            "temperature": 0.19821318145411118,
+            "top_p": 1.0,
+            "min_p": 0.015806816939914342,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.10162655583983748,
+            "exaggeration": 0.20570426117636148,
+            "temperature": 0.5270774904285769,
+            "top_p": 0.9330796669132942,
+            "min_p": 0.041438212102070465,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.9062912303517776,
+            "exaggeration": 0.5671119055009262,
+            "temperature": 0.5148663337494703,
+            "top_p": 0.9345313831341185,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.37809287009911163,
+            "exaggeration": 0.911104169785967,
+            "temperature": 0.6479439153652662,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.3497336996450341,
+            "exaggeration": 0.5258506846409328,
+            "temperature": 0.7722505102096027,
+            "top_p": 0.6031217544840102,
+            "min_p": 0.2706493858997763,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.37910971724822484,
+            "exaggeration": 0.9036233735505568,
+            "temperature": 1.0286483702922147,
+            "top_p": 0.8138903925059955,
+            "min_p": 0.15281732192704492,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.33096726862906034,
+            "exaggeration": 0.4612992294109238,
+            "temperature": 0.7497230078337246,
+            "top_p": 0.9475989672824625,
+            "min_p": 0.1729643080843202,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.047711320280085845,
+            "exaggeration": 0.5744865234488455,
+            "temperature": 0.6623091446202723,
+            "top_p": 0.9739897756635003,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.05277689258148466,
+            "exaggeration": 0.8468562141960055,
+            "temperature": 0.5875669698546642,
+            "top_p": 0.763913783105153,
+            "min_p": 0.13403825961550078,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.20693222117794213,
+            "exaggeration": 0.5031109459092705,
+            "temperature": 0.7593079984418931,
+            "top_p": 0.7719103795130642,
+            "min_p": 0.15552040233089973,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.31882881471777325,
+            "exaggeration": 0.5074585616271179,
+            "temperature": 0.5958588992343534,
+            "top_p": 0.8840906876149786,
+            "min_p": 0.07809048333123556,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.2719409927542597,
+            "exaggeration": 0.5810205145067859,
+            "temperature": 0.7780157818022551,
+            "top_p": 0.7233555047010796,
+            "min_p": 0.08178666814331206,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.07455187743522529,
+            "exaggeration": 0.8804899365051874,
+            "temperature": 0.9570450785234055,
+            "top_p": 0.663302202415591,
+            "min_p": 0.16433172156019302,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.4326666293794654,
+            "exaggeration": 0.9164706250231156,
+            "temperature": 0.8776816068593556,
+            "top_p": 0.8379160894494584,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 20,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.7499907037707669,
+            "temperature": 0.5940261972199001,
+            "top_p": 0.8726210995282557,
+            "min_p": 0.29706391255449205,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 21,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.29972297055864766,
+            "exaggeration": 0.49150144574671906,
+            "temperature": 0.8773902628598513,
+            "top_p": 0.7443386664432989,
+            "min_p": 0.26049094082505353,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 22,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.2638047908221564,
+            "exaggeration": 0.8695156112671512,
+            "temperature": 0.9269945945646587,
+            "top_p": 0.7187769442407648,
+            "min_p": 0.02597204429080971,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 23,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.01525436204040459,
+            "exaggeration": 0.9204338661983986,
+            "temperature": 0.9089594595122116,
+            "top_p": 0.678799439597665,
+            "min_p": 0.10113738457879387,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 24,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.41930751920094106,
+            "exaggeration": 0.9143087898177986,
+            "temperature": 0.6479685968403208,
+            "top_p": 1.0,
+            "min_p": 0.22757864991692703,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 25,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.2497376896988876,
+            "exaggeration": 0.5668235267707311,
+            "temperature": 1.0049186255603832,
+            "top_p": 1.0,
+            "min_p": 0.18027864401105384,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 26,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.37635593919808813,
+            "exaggeration": 0.881994445799658,
+            "temperature": 1.0054468667511767,
+            "top_p": 0.9062370844254466,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 43,
+      "text_preview": "Faldskærmsudspringere elsker det spørgsmål.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-171",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3862709137433525,
+            "temperature": 0.5550490934395877,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7266896786897024,
+            "exaggeration": 0.0,
+            "temperature": 0.1156792569529379,
+            "top_p": 0.8848155406466559,
+            "min_p": 0.11427139840367992,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7182946986954091,
+            "exaggeration": 0.7837835488688965,
+            "temperature": 0.5506938928398543,
+            "top_p": 0.8710067313492227,
+            "min_p": 0.03792948760682577,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 27.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3822834763397823,
+            "temperature": 0.21012775421928864,
+            "top_p": 1.0,
+            "min_p": 0.3024598591715566,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "Udspringszoner drives af fagfolk, der tager sig af dig.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-205",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.8568092439643462,
+            "exaggeration": 0.23764502949424499,
+            "temperature": 0.6270392766787479,
+            "top_p": 0.911442539832459,
+            "min_p": 0.10726885551220575,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 450.0,
+          "params": {
+            "cfg_weight": 0.5539008617469243,
+            "exaggeration": 0.39457269326120836,
+            "temperature": 0.5090292692132075,
+            "top_p": 0.6098249325145069,
+            "min_p": 0.06821761285049929,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.36303753496245916,
+            "exaggeration": 0.6832037602654059,
+            "temperature": 0.6774095096155534,
+            "top_p": 0.6685860210211696,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5063834215463712,
+            "temperature": 0.1882505367705402,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "Du lærer at falde hurtigt ved at gøre dig lille og forvandle dig selv til en ste",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-129",
+      "attempts": 3,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.5968519529077243,
+            "exaggeration": 0.4972918605733438,
+            "temperature": 0.5308039198869676,
+            "top_p": 0.9897847767857224,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6200821603463126,
+            "exaggeration": 0.2868808359842728,
+            "temperature": 0.08031962995325626,
+            "top_p": 0.9191090736991149,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Du tager en springdragt og en sele på.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-167",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7816689550781797,
+            "exaggeration": 0.07489992649105559,
+            "temperature": 0.25132388832066804,
+            "top_p": 0.7057431459695303,
+            "min_p": 0.0336890747018426,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.46139618372023034,
+            "exaggeration": 0.15186817392709828,
+            "temperature": 0.5256734513160557,
+            "top_p": 1.0,
+            "min_p": 0.031598350551623605,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "Faldskærmsudspring er faktisk meget sikkert.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-192",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.35538795415260793,
+            "temperature": 0.3731157711146948,
+            "top_p": 0.8963086014667592,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6072547181025599,
+            "exaggeration": 0.0,
+            "temperature": 0.24624671256207625,
+            "top_p": 0.9486020921442027,
+            "min_p": 0.336052508830456,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "De drejer langsomt, med vilje, med fingerspidserne.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-227",
+      "attempts": 3,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.9861152606812903,
+            "exaggeration": 0.24069406574295782,
+            "temperature": 0.567631921422468,
+            "top_p": 0.9082364583694116,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.33696947800195687,
+            "exaggeration": 0.17627565064798395,
+            "temperature": 0.10663737239055743,
+            "top_p": 0.8205433275007836,
+            "min_p": 0.313919954656108,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Måtten, linerne, den langsomme foldning.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9109551448168224,
+            "exaggeration": 0.22687312753149946,
+            "temperature": 0.6516782458234454,
+            "top_p": 0.6313441030767579,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Faldskærmsudspringere er ikke skøre.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-048",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5391490119716467,
+            "temperature": 0.2902991777934123,
+            "top_p": 0.8171397432810936,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "Når du først springer, forsvinder frygten.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-061",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6415923475089576,
+            "exaggeration": 0.5487142060012133,
+            "temperature": 0.5957835641744986,
+            "top_p": 0.8950931967506606,
+            "min_p": 0.34834891063495355,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Flyet stiger i langsomme, dovne cirkler.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-075",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.84
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5509239272157787,
+            "exaggeration": 0.30457899584106396,
+            "temperature": 0.3988050511590861,
+            "top_p": 1.0,
+            "min_p": 0.18550930377638716,
+            "repetition_penalty": 1.84
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Veje så tynde som tråde.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-085",
+      "attempts": 2,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.6641497870616524,
+            "exaggeration": 0.19570357800411792,
+            "temperature": 0.4353884058238562,
+            "top_p": 0.7251318307227972,
+            "min_p": 0.30196928572601756,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "Alle udstøder en lyd.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-102",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4944646032979341,
+            "temperature": 0.6460341302972972,
+            "top_p": 0.8937842080985418,
+            "min_p": 0.21289938008165435,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Din instruktør banker dig på skulderen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-153",
+      "attempts": 2,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9341673297837249,
+            "exaggeration": 0.10370020236044275,
+            "temperature": 0.3414403300948941,
+            "top_p": 0.7140923498544594,
+            "min_p": 0.17428622463330398,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "Du flyver din egen kalot ned til jorden.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-174",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8170077431915774,
+            "exaggeration": 0.44496012587132583,
+            "temperature": 0.6495114309269626,
+            "top_p": 0.95518854265468,
+            "min_p": 0.326081322129149,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Et tandemspring koster det samme som en god middag for to.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-202",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.79
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.5789647186738944,
+            "exaggeration": 0.2995464693456158,
+            "temperature": 0.3479717057068293,
+            "top_p": 0.8097029888810237,
+            "min_p": 0.21154842465732868,
+            "repetition_penalty": 1.79
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "Gamle udspringere taler stadig om buen, sådan som gamle løbere taler om deres sk",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-230",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7596922437482754,
+            "exaggeration": 0.1690778989003507,
+            "temperature": 0.4670245409273287,
+            "top_p": 0.8750373944588468,
+            "min_p": 0.32175005253652933,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Pakningen kan ikke jages igennem.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-232",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5963401225861654,
+            "exaggeration": 0.23521226841463616,
+            "temperature": 0.3432168427748203,
+            "top_p": 0.861615686007768,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Håndværkets sindelag er tålmodighed.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-236",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.687155796047668,
+            "exaggeration": 0.5305190876564434,
+            "temperature": 0.3956114527530276,
+            "top_p": 0.8716594070042691,
+            "min_p": 0.27858012804661036,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "De sætter sig ved et picnicbord og går igennem hvert sekund, kropsstilling for k",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-257",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6099359616741006,
+            "exaggeration": 0.22036997800466057,
+            "temperature": 0.4444546512699907,
+            "top_p": 1.0,
+            "min_p": 0.18288338063603107,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Vinden er lagt sig helt.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.139,
+        "temperature": 0.159,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.147,
+        "temperature": -0.014,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.237,
+        "temperature": -0.197,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.237,
+        "temperature": -0.197,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.237,
+        "temperature": -0.197,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.237,
+        "temperature": -0.197,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.237,
+        "temperature": -0.197,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

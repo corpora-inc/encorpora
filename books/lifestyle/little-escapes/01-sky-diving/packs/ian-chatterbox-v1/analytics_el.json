@@ -1,7 +1,7 @@
 {
   "book_id": "ian-chatterbox-v1",
   "language": "el",
-  "timestamp": "2026-04-27T10:56:56.804699+00:00",
+  "timestamp": "2026-04-28T18:25:04.237178+00:00",
   "segments_total": 368,
   "segments_first_pass": 320,
   "segments_converged_by_retry": 42,
@@ -11,11 +11,11 @@
     "trailing_silence": 116,
     "first_word_weak": 110,
     "tail_energy": 51,
-    "hard_ending": 24,
     "tail_zero_duration_run": 23,
     "stacked_words": 23,
     "truncated_last_word": 23,
     "min_trailing_silence": 23,
+    "hard_ending": 23,
     "transcription_mismatch": 11,
     "final_word_weak": 9,
     "post_speech_pop": 6,
@@ -24,11 +24,11 @@
     "word_cluster": 2
   },
   "phase_timings": {
-    "tts": 26.177810192108154,
-    "align": 19.672818899154663,
-    "validate": 12.187976121902466,
-    "trim": 0.012243032455444336,
-    "master": 0.4353201389312744
+    "tts": 32.99418091773987,
+    "align": 17.29264760017395,
+    "validate": 4.804724454879761,
+    "trim": 0.014883279800415039,
+    "master": 0.27373671531677246
   },
   "length_analysis": {
     "short_0_30": {

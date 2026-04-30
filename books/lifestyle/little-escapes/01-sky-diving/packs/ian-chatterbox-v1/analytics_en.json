@@ -1,17 +1,17 @@
 {
   "book_id": "ian-chatterbox-v1",
   "language": "en",
-  "timestamp": "2026-04-27T04:36:23.249283+00:00",
+  "timestamp": "2026-04-29T02:07:32.562522+00:00",
   "segments_total": 368,
-  "segments_first_pass": 319,
-  "segments_converged_by_retry": -16,
-  "segments_plateau_stopped": 65,
-  "total_retries": 146,
+  "segments_first_pass": 318,
+  "segments_converged_by_retry": -13,
+  "segments_plateau_stopped": 63,
+  "total_retries": 147,
   "error_distribution": {
-    "first_word_weak": 345,
-    "tail_energy": 220,
+    "first_word_weak": 342,
+    "tail_energy": 213,
     "trailing_silence": 179,
-    "hard_ending": 72,
+    "hard_ending": 68,
     "stacked_words": 25,
     "truncated_last_word": 25,
     "min_trailing_silence": 25,
@@ -19,14 +19,15 @@
     "word_cluster": 7,
     "post_speech_pop": 4,
     "final_word_weak": 4,
-    "tail_spike": 3
+    "tail_spike": 3,
+    "tts_audio_truncated": 1
   },
   "phase_timings": {
-    "tts": 63.98792290687561,
-    "align": 23.72049379348755,
-    "validate": 6.901082277297974,
-    "trim": 0.06341075897216797,
-    "master": 1.756714105606079
+    "tts": 67.26066946983337,
+    "align": 50.64480900764465,
+    "validate": 7.843401670455933,
+    "trim": 0.03087759017944336,
+    "master": 0.6104133129119873
   },
   "length_analysis": {
     "short_0_30": {
@@ -41,8 +42,8 @@
     },
     "long_80_plus": {
       "total": 58,
-      "passed": 32,
-      "rate": 0.5517241379310345
+      "passed": 31,
+      "rate": 0.5344827586206896
     }
   },
   "worst_segments": [
@@ -3150,10 +3151,10 @@
       }
     },
     "tail_energy": {
-      "sample_size": 26,
+      "sample_size": 25,
       "avg_delta": {
-        "cfg_weight": 0.072,
-        "temperature": 0.059,
+        "cfg_weight": 0.058,
+        "temperature": 0.07,
         "repetition_penalty": 0.0
       }
     },
@@ -3198,10 +3199,10 @@
       }
     },
     "hard_ending": {
-      "sample_size": 7,
+      "sample_size": 6,
       "avg_delta": {
-        "cfg_weight": 0.111,
-        "temperature": -0.135,
+        "cfg_weight": 0.06,
+        "temperature": -0.125,
         "repetition_penalty": 0.0
       }
     },

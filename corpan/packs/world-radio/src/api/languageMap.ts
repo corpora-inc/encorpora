@@ -1,0 +1,109 @@
+/**
+ * Map Corpan BCP-47-ish language codes to Radio Browser API language names.
+ *
+ * Radio Browser indexes stations by free-text language strings (lowercase English
+ * names from ISO 639-2). Corpan codes are tighter (script + variant aware), so we
+ * pick the broadest matching name and the radio API filters down via station counts.
+ *
+ * Notes:
+ * - `ko-polite` collapses to "korean" (politeness is Corpan-specific, irrelevant for radio).
+ * - Both Punjabi scripts collapse to "punjabi".
+ * - `zh-Hans` → "chinese" is the most-indexed string in Radio Browser; "mandarin"
+ *   alone returns far fewer results because operators tag inconsistently.
+ * - `pt-BR` → "portuguese" — Brazilian/European are not consistently tagged.
+ */
+
+export type CorpanLanguageCode =
+  | "en" | "es" | "fr" | "it" | "pt-BR" | "de" | "pl" | "ru" | "hu" | "tr"
+  | "ar" | "fa" | "ur" | "pa-Arab" | "pa-Guru"
+  | "hi" | "bn" | "mr" | "gu" | "kn" | "te" | "ta"
+  | "th" | "vi" | "id"
+  | "zh-Hans" | "zh-Hant" | "yue-Hant-HK"
+  | "ko-polite" | "ja"
+  | "sw" | "he" | "el" | "my" | "km"
+
+export const LANGUAGE_DISPLAY: Record<string, string> = {
+  en: "English",
+  es: "Spanish",
+  fr: "French",
+  it: "Italian",
+  "pt-BR": "Portuguese",
+  de: "German",
+  pl: "Polish",
+  ru: "Russian",
+  hu: "Hungarian",
+  tr: "Turkish",
+  ar: "Arabic",
+  fa: "Persian",
+  ur: "Urdu",
+  "pa-Arab": "Punjabi (Shahmukhi)",
+  "pa-Guru": "Punjabi (Gurmukhi)",
+  hi: "Hindi",
+  bn: "Bengali",
+  mr: "Marathi",
+  gu: "Gujarati",
+  kn: "Kannada",
+  te: "Telugu",
+  ta: "Tamil",
+  th: "Thai",
+  vi: "Vietnamese",
+  id: "Indonesian",
+  "zh-Hans": "Mandarin",
+  "zh-Hant": "Mandarin (Trad.)",
+  "yue-Hant-HK": "Cantonese",
+  "ko-polite": "Korean",
+  ja: "Japanese",
+  sw: "Swahili",
+  he: "Hebrew",
+  el: "Greek",
+  my: "Burmese",
+  km: "Khmer",
+}
+
+const TO_RADIO: Record<string, string> = {
+  en: "english",
+  es: "spanish",
+  fr: "french",
+  it: "italian",
+  "pt-BR": "portuguese",
+  de: "german",
+  pl: "polish",
+  ru: "russian",
+  hu: "hungarian",
+  tr: "turkish",
+  ar: "arabic",
+  fa: "persian",
+  ur: "urdu",
+  "pa-Arab": "punjabi",
+  "pa-Guru": "punjabi",
+  hi: "hindi",
+  bn: "bengali",
+  mr: "marathi",
+  gu: "gujarati",
+  kn: "kannada",
+  te: "telugu",
+  ta: "tamil",
+  th: "thai",
+  vi: "vietnamese",
+  id: "indonesian",
+  "zh-Hans": "chinese",
+  "zh-Hant": "chinese",
+  "yue-Hant-HK": "cantonese",
+  "ko-polite": "korean",
+  ja: "japanese",
+  sw: "swahili",
+  he: "hebrew",
+  el: "greek",
+  my: "burmese",
+  km: "khmer",
+}
+
+export function corpanToRadioLanguage(code: string): string | null {
+  return TO_RADIO[code] ?? null
+}
+
+export function displayName(code: string): string {
+  return LANGUAGE_DISPLAY[code] ?? code
+}
+
+export const ALL_CORPAN_LANGUAGES: string[] = Object.keys(LANGUAGE_DISPLAY)

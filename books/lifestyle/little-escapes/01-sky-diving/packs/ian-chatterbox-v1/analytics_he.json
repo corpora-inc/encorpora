@@ -1,0 +1,830 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "he",
+  "timestamp": "2026-04-29T00:54:59.213716+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 360,
+  "segments_converged_by_retry": 8,
+  "segments_plateau_stopped": 0,
+  "total_retries": 10,
+  "error_distribution": {
+    "trailing_silence": 133,
+    "first_word_weak": 35,
+    "transcription_mismatch": 24,
+    "final_word_weak": 16,
+    "tail_energy": 10,
+    "stacked_words": 10,
+    "tts_audio_truncated": 10,
+    "tail_zero_duration_run": 8,
+    "truncated_last_word": 8,
+    "min_trailing_silence": 8,
+    "hard_ending": 5,
+    "word_cluster": 4,
+    "pre_speech_spike": 3,
+    "tail_spike": 1,
+    "post_speech_pop": 1
+  },
+  "phase_timings": {
+    "tts": 89.4249198436737,
+    "align": 217.68385553359985,
+    "validate": 726.971878528595,
+    "trim": 3.667125701904297,
+    "master": 88.61812734603882
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 93,
+      "passed": 93,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 173,
+      "passed": 172,
+      "rate": 0.9942196531791907
+    },
+    "long_80_plus": {
+      "total": 102,
+      "passed": 95,
+      "rate": 0.9313725490196079
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-206",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "word_cluster",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 160.0,
+          "params": {
+            "cfg_weight": 0.9589539243979353,
+            "exaggeration": 0.5333508499993482,
+            "temperature": 0.7372027700762207,
+            "top_p": 0.8322209057574644,
+            "min_p": 0.23068471093930695,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.6667410208150824,
+            "exaggeration": 0.27970978207377073,
+            "temperature": 0.23153545031986555,
+            "top_p": 1.0,
+            "min_p": 0.3056550327778461,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4755181496263241,
+            "exaggeration": 0.6832821215978422,
+            "temperature": 0.6820577012349012,
+            "top_p": 0.949004718309911,
+            "min_p": 0.013945111980164487,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 104,
+      "text_preview": "אַתָּה לוֹמֵד לַעֲקֹב, וְזֶה הַדָּבָר הַקָּרוֹב בְּיוֹתֵר לַטִּיסָה שֶׁגּוּף אֱנ",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-026",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8955928109808904,
+            "exaggeration": 0.22202030830852154,
+            "temperature": 0.7220339312938433,
+            "top_p": 0.6879850294641321,
+            "min_p": 0.12642882933738178,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 117,
+      "text_preview": "מְבוּגָר, תָּלוּי בַּשָּׁמַיִם מִתַּחַת לִרְבוּעַ שֶׁל בַּד רַךְ, בּוֹכֶה בְּלִי",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-068",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.40898808592616887,
+            "temperature": 0.2590260358300384,
+            "top_p": 0.8145348053915612,
+            "min_p": 0.07010167587685304,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 113,
+      "text_preview": "כְּבָר הִנְהַנְתָּ כָּל כָּךְ הַרְבֵּה פְּעָמִים בַּשָּׁעָה הָאַחֲרוֹנָה שֶׁהַצַ",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-168",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7343031394393083,
+            "exaggeration": 0.2585611967201541,
+            "temperature": 0.6167786618303888,
+            "top_p": 0.8086683422915826,
+            "min_p": 0.18918817003829627,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 96,
+      "text_preview": "לֹא בְטוּחָה כְּמוֹ לָלֶכֶת בְּרַגְלַיִם, אֲבָל בְטוּחָה יוֹתֵר מִנְהִיגָה לְאֵז",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-201",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.78
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6572992017363423,
+            "exaggeration": 0.4714578537895071,
+            "temperature": 0.46816852668466225,
+            "top_p": 0.9666504745464803,
+            "min_p": 0.024124662471319586,
+            "repetition_penalty": 1.78
+          }
+        }
+      ],
+      "text_len": 115,
+      "text_preview": "קוֹפְצִים חֲדָשִׁים לוֹמְדִים אֶת הַקֶּשֶׁת בְּבוֹר קֶצֶף, אַחַר כָּךְ בִּמְנוּר",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-250",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9574000791827799,
+            "exaggeration": 0.21388635560331243,
+            "temperature": 0.4670376552329025,
+            "top_p": 0.9738757827801303,
+            "min_p": 0.021665990010859254,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 98,
+      "text_preview": "אַתָּה מְטַפֵּס דֶּרֶךְ שִׁכְבוֹת שֶׁל אוֹר כָּתוֹם, הַתָּא חַמִּים, הַחֲבֵרִים ",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-274",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9667610404039122,
+            "exaggeration": 0.44562725785781837,
+            "temperature": 0.5250763235849896,
+            "top_p": 0.9075035155347835,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 106,
+      "text_preview": "הַמּוֹבִיל שֶׁלְּכֶם צוֹעֵד הַחוּצָה, וּשְׁאָר הַקְּבוּצָה אַחֲרָיו, פְּעִימַת ל",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-303",
+      "attempts": 2,
+      "best_quality_score": 3.44,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 450.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.8176100326810297,
+            "exaggeration": 0.10224497239949742,
+            "temperature": 0.5832932358034565,
+            "top_p": 0.8154467686457855,
+            "min_p": 0.005144980906471114,
+            "repetition_penalty": 1.68
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "אַתָּה תָּלוּי בִּרְתִימָה, וּבוֹכֶה, וְצוֹחֵק, וּבוֹכֶה שׁוּב.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 106,
+      "text_preview": "יֵשׁ רֶגַע, מִיָּד אַחֲרֵי שֶׁאַתָּה עוֹזֵב אֶת הַמָּטוֹס, שֶׁאֲנִי הָיִיתִי רוֹ",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 57,
+      "text_preview": "הָעוֹלָם מַפְסִיק לִהְיוֹת דָּבָר שֶׁאַתָּה חַי בְתוֹכוֹ.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "הוּא הוֹפֵךְ לְדָבָר שֶׁאַתָּה נוֹפֵל דְרָכוֹ.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 127,
+      "text_preview": "וּבְמֶשֶׁךְ הַשְּׁנִיּוֹת הָרִאשׁוֹנוֹת, הַשֵּׂכֶל שֶׁלְּךָ לֹא מַמָּשׁ מַסְפִּי",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "אֲנָשִׁים שׁוֹאֲלִים אוֹתִי לָמָּה אֲנִי קוֹפֵץ.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "הֵם תָּמִיד מְצַפִּים שֶׁאֲנִי אֹמַר שֶׁזֶּה הָאַדְרֵנָלִין.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "זֶה לֹא הָאַדְרֵנָלִין.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 91,
+      "text_preview": "הָאַדְרֵנָלִין הוּא מָה שֶׁאַתָּה מַרְגִּישׁ בַּחֲמֵשׁ הַקְּפִיצוֹת הָרִאשׁוֹנוֹ",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "אַחֲרֵי זֶה, מִשְׁהוּ שָׁקֵט יוֹתֵר מִשְׁתַּלֵּט.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "מַה שְׁאֲנִי רוֹדֵף אַחֲרָיו זוֹאת הַצְּלִילוּת.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "בְּמִשְׁךְ שִׁשִּׁים שְׁנִיּוֹת בִּנְפִילָה חוּפְשִׁית, לְשִׂכְלְךָ אֵין שׁוּם ד",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "אֵין טֵלֵפוֹן.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tail_zero_duration_run": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.008,
+        "temperature": 0.26,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.008,
+        "temperature": 0.26,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.008,
+        "temperature": 0.26,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.008,
+        "temperature": 0.26,
+        "repetition_penalty": 0.0
+      }
+    },
+    "word_cluster": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.074,
+        "temperature": 0.295,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.038,
+        "temperature": 0.292,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

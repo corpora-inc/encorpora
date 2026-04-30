@@ -1,21 +1,22 @@
 {
   "book_id": "ian-chatterbox-v1",
   "language": "de",
-  "timestamp": "2026-04-27T07:41:30.112321+00:00",
+  "timestamp": "2026-04-28T18:36:26.125139+00:00",
   "segments_total": 368,
   "segments_first_pass": 305,
   "segments_converged_by_retry": 62,
   "segments_plateau_stopped": 1,
-  "total_retries": 229,
+  "total_retries": 238,
   "error_distribution": {
-    "first_word_weak": 188,
+    "first_word_weak": 191,
     "tail_energy": 172,
     "trailing_silence": 110,
-    "hard_ending": 63,
+    "hard_ending": 69,
     "tail_zero_duration_run": 23,
     "stacked_words": 23,
     "truncated_last_word": 23,
     "min_trailing_silence": 23,
+    "tts_audio_truncated": 11,
     "word_cluster": 9,
     "final_word_weak": 9,
     "tail_spike": 2,
@@ -23,22 +24,22 @@
     "transcription_mismatch": 1
   },
   "phase_timings": {
-    "tts": 43.75258183479309,
-    "align": 59.148011445999146,
-    "validate": 6.45039701461792,
-    "trim": 0.013154745101928711,
-    "master": 0.34790825843811035
+    "tts": 429.70649337768555,
+    "align": 285.22833132743835,
+    "validate": 21.487077474594116,
+    "trim": 0.03796243667602539,
+    "master": 0.589940071105957
   },
   "length_analysis": {
     "short_0_30": {
       "total": 101,
-      "passed": 99,
-      "rate": 0.9801980198019802
+      "passed": 98,
+      "rate": 0.9702970297029703
     },
     "medium_30_80": {
       "total": 177,
-      "passed": 158,
-      "rate": 0.8926553672316384
+      "passed": 159,
+      "rate": 0.8983050847457628
     },
     "long_80_plus": {
       "total": 90,
@@ -1933,6 +1934,223 @@
       "passed_first": false
     },
     {
+      "id": "ch02-064",
+      "attempts": 13,
+      "best_quality_score": 0.0,
+      "best_attempt": 12,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.8985869727843263,
+            "exaggeration": 0.48741930421130186,
+            "temperature": 0.40509147828403536,
+            "top_p": 0.7596918529968693,
+            "min_p": 0.2843536807076792,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.3468459836482544,
+            "exaggeration": 0.0,
+            "temperature": 0.5430750642620282,
+            "top_p": 0.7382211908063938,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.4202980605781111,
+            "exaggeration": 0.6554350964475693,
+            "temperature": 0.5746836572045508,
+            "top_p": 0.7188719360525084,
+            "min_p": 0.2724091588776971,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.8508768495519612,
+            "exaggeration": 0.5062119531670062,
+            "temperature": 0.38162437495797025,
+            "top_p": 0.8721694915638898,
+            "min_p": 0.21621676484454957,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.2128497373947955,
+            "exaggeration": 0.5474512713543884,
+            "temperature": 0.36048382359461006,
+            "top_p": 0.954224434128515,
+            "min_p": 0.10323691707902341,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.7727672081044896,
+            "exaggeration": 0.2563559131056291,
+            "temperature": 0.25845297057447303,
+            "top_p": 0.6051584778434962,
+            "min_p": 0.015540861008092238,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.461152372550837,
+            "exaggeration": 0.16753527170659965,
+            "temperature": 0.5248759781215188,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.7471301815667089,
+            "exaggeration": 0.22548098725142302,
+            "temperature": 0.4592165880323991,
+            "top_p": 1.0,
+            "min_p": 0.30451637644779195,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.39133214016540074,
+            "exaggeration": 0.8657245374446441,
+            "temperature": 0.6530098172780092,
+            "top_p": 0.6451238066510079,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.11164136711286571,
+            "exaggeration": 0.6706030423948479,
+            "temperature": 0.6760873155324851,
+            "top_p": 0.9374494893783828,
+            "min_p": 0.3285641849546752,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.032751661203129334,
+            "exaggeration": 0.748455905767245,
+            "temperature": 1.0409482733375643,
+            "top_p": 0.91587616823557,
+            "min_p": 0.267343605789196,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.0017369234710091774,
+            "exaggeration": 0.7595627485002419,
+            "temperature": 0.8971687563937412,
+            "top_p": 0.7009877403101268,
+            "min_p": 0.0,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "Du bist nur sehr, sehr wach.",
+      "passed_first": false
+    },
+    {
       "id": "ch05-300",
       "attempts": 11,
       "best_quality_score": 0.0,
@@ -3310,93 +3528,30 @@
       "text_len": 121,
       "text_preview": "Sie gleiten fast einen Kilometer durch den Himmel nach vorne, indem sie ihre Sch",
       "passed_first": false
-    },
-    {
-      "id": "ch05-289",
-      "attempts": 4,
-      "best_quality_score": 0.0,
-      "best_attempt": 3,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "tail_energy"
-          ],
-          "score": 12.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "tail_energy"
-          ],
-          "score": 12.0,
-          "params": {
-            "cfg_weight": 0.5758475430390069,
-            "exaggeration": 0.25434625299099023,
-            "temperature": 0.3127436590283245,
-            "top_p": 1.0,
-            "min_p": 0.0,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 2,
-          "errors": [
-            "tail_energy"
-          ],
-          "score": 12.0,
-          "params": {
-            "cfg_weight": 0.3613351317997403,
-            "exaggeration": 0.04231649667703513,
-            "temperature": 0.4277380629771507,
-            "top_p": 0.704963434878343,
-            "min_p": 0.0,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 3,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.43004549347823706,
-            "exaggeration": 0.7673727450175556,
-            "temperature": 0.8073159934139649,
-            "top_p": 0.9938726266466535,
-            "min_p": 0.012513316004137937,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 64,
-      "text_preview": "Ein Verlust, der die normale Welt dünn und weit weg fühlen ließ.",
-      "passed_first": false
     }
   ],
   "param_effectiveness": {
     "first_word_weak": {
-      "sample_size": 40,
+      "sample_size": 41,
       "avg_delta": {
-        "cfg_weight": -0.059,
-        "temperature": 0.117,
+        "cfg_weight": -0.058,
+        "temperature": 0.11,
         "repetition_penalty": 0.0
       }
     },
     "tail_energy": {
-      "sample_size": 21,
+      "sample_size": 20,
       "avg_delta": {
-        "cfg_weight": -0.011,
-        "temperature": 0.127,
+        "cfg_weight": -0.015,
+        "temperature": 0.114,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.026,
+        "temperature": -0.074,
         "repetition_penalty": 0.0
       }
     },
@@ -3429,14 +3584,6 @@
       "avg_delta": {
         "cfg_weight": -0.037,
         "temperature": 0.059,
-        "repetition_penalty": 0.0
-      }
-    },
-    "hard_ending": {
-      "sample_size": 4,
-      "avg_delta": {
-        "cfg_weight": -0.025,
-        "temperature": -0.057,
         "repetition_penalty": 0.0
       }
     },

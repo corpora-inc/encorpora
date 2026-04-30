@@ -94,5 +94,24 @@
       "shorts": [],
       "demos": []
     }
+  },
+  {
+    "id": "world_radio",
+    "name": "World Radio",
+    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/world-radio/manifest.json",
+    "zipUrl": "/corpan/packs/world-radio.zip",
+    "landingUrl": "/corpan/packs/world-radio/",
+    "avatarSource": "corpan/packs/world-radio/world-radio-avatar.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/world-radio",
+    "minAppVersion": "0.10.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
   }
 ]

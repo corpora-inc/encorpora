@@ -1,32 +1,33 @@
 {
   "book_id": "ian-chatterbox-v1",
   "language": "nl",
-  "timestamp": "2026-04-27T10:57:10.055287+00:00",
+  "timestamp": "2026-04-28T19:39:18.245063+00:00",
   "segments_total": 368,
-  "segments_first_pass": 316,
-  "segments_converged_by_retry": 48,
+  "segments_first_pass": 314,
+  "segments_converged_by_retry": 50,
   "segments_plateau_stopped": 4,
-  "total_retries": 135,
+  "total_retries": 162,
   "error_distribution": {
-    "first_word_weak": 143,
+    "first_word_weak": 154,
     "trailing_silence": 122,
-    "tail_energy": 57,
-    "hard_ending": 12,
-    "tail_zero_duration_run": 12,
-    "stacked_words": 12,
-    "truncated_last_word": 12,
-    "min_trailing_silence": 12,
+    "tail_energy": 73,
+    "hard_ending": 24,
+    "tts_audio_truncated": 22,
+    "tail_zero_duration_run": 13,
+    "stacked_words": 13,
+    "truncated_last_word": 13,
+    "min_trailing_silence": 13,
+    "final_word_weak": 9,
     "transcription_mismatch": 9,
-    "final_word_weak": 8,
-    "word_cluster": 6,
+    "word_cluster": 7,
     "post_speech_pop": 1
   },
   "phase_timings": {
-    "tts": 31.401212692260742,
-    "align": 25.153117418289185,
-    "validate": 14.564298152923584,
-    "trim": 0.02329874038696289,
-    "master": 0.6978797912597656
+    "tts": 965.1497092247009,
+    "align": 285.9103579521179,
+    "validate": 15.31095576286316,
+    "trim": 0.014650821685791016,
+    "master": 0.28177714347839355
   },
   "length_analysis": {
     "short_0_30": {
@@ -36,13 +37,13 @@
     },
     "medium_30_80": {
       "total": 190,
-      "passed": 167,
-      "rate": 0.8789473684210526
+      "passed": 166,
+      "rate": 0.8736842105263158
     },
     "long_80_plus": {
       "total": 72,
-      "passed": 45,
-      "rate": 0.625
+      "passed": 44,
+      "rate": 0.6111111111111112
     }
   },
   "worst_segments": [
@@ -444,6 +445,506 @@
       ],
       "text_len": 88,
       "text_preview": "Je stapt eruit, en zestig seconden lang val je door de binnenkant van een zonson",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-337",
+      "attempts": 20,
+      "best_quality_score": 0.0,
+      "best_attempt": 19,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.6432800327024477,
+            "exaggeration": 0.25050644232978286,
+            "temperature": 0.25571652789838606,
+            "top_p": 0.9300533459833564,
+            "min_p": 0.3344083007601305,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6141598601175056,
+            "exaggeration": 0.14494220461658303,
+            "temperature": 0.23795534548522135,
+            "top_p": 0.9965259352850626,
+            "min_p": 0.0903543382268461,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8079441071261038,
+            "exaggeration": 0.5244480581859284,
+            "temperature": 0.6614754935480261,
+            "top_p": 0.9265162677768863,
+            "min_p": 0.3286735015727912,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.8717612154638735,
+            "exaggeration": 0.11846047211944372,
+            "temperature": 0.09805516038189149,
+            "top_p": 0.8432245839154366,
+            "min_p": 0.23439350073306273,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.25366760599286375,
+            "exaggeration": 0.45445312692872447,
+            "temperature": 0.3114087935955172,
+            "top_p": 1.0,
+            "min_p": 0.07953799800543412,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 132.0,
+          "params": {
+            "cfg_weight": 0.8353058566600122,
+            "exaggeration": 0.29166645330369423,
+            "temperature": 0.14252188061958757,
+            "top_p": 0.8398417261876581,
+            "min_p": 0.06775657219463485,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.10900606417250358,
+            "exaggeration": 0.07506203207332857,
+            "temperature": 0.46952414141482207,
+            "top_p": 0.6940056119818871,
+            "min_p": 0.12866919025520093,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6900179138444567,
+            "exaggeration": 0.2085308772613899,
+            "temperature": 0.20117617735059562,
+            "top_p": 1.0,
+            "min_p": 0.33117894426928896,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.2326173213334669,
+            "exaggeration": 0.9128074930035469,
+            "temperature": 0.9692049005989769,
+            "top_p": 0.9471840618562453,
+            "min_p": 0.09950258273679477,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.04734663053415855,
+            "exaggeration": 0.6104167645893939,
+            "temperature": 1.0171659235010455,
+            "top_p": 0.7423303125827739,
+            "min_p": 0.1456511586484007,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 132.0,
+          "params": {
+            "cfg_weight": 0.2004819409141857,
+            "exaggeration": 0.8328519627184306,
+            "temperature": 1.0042826591955114,
+            "top_p": 1.0,
+            "min_p": 0.2725144872075972,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.07189615079957051,
+            "exaggeration": 0.5542925287286176,
+            "temperature": 0.7159537288736674,
+            "top_p": 0.9095709034488996,
+            "min_p": 0.25209566832258634,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 0.17475349754480157,
+            "exaggeration": 0.9467783395212774,
+            "temperature": 0.5799415249276936,
+            "top_p": 0.8636892785942198,
+            "min_p": 0.3144606589620218,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.17965132037215115,
+            "exaggeration": 0.6891381826332221,
+            "temperature": 0.8001475946779171,
+            "top_p": 1.0,
+            "min_p": 0.19132809808646464,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.4000604546752384,
+            "exaggeration": 0.6883261683825976,
+            "temperature": 0.6378662103401296,
+            "top_p": 0.7855260071012733,
+            "min_p": 0.18896461079776297,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 470.0,
+          "params": {
+            "cfg_weight": 0.06226099222965781,
+            "exaggeration": 0.7126998943680751,
+            "temperature": 0.6144442848594718,
+            "top_p": 0.7109796293657725,
+            "min_p": 0.18299157807911784,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 17,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6742842643993661,
+            "temperature": 0.7878343362978715,
+            "top_p": 0.6580915072165635,
+            "min_p": 0.2714278931334274,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 18,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 0.4040594810372398,
+            "exaggeration": 0.6876163372577965,
+            "temperature": 0.988921593611267,
+            "top_p": 0.975619431529709,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 19,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.35584504501440445,
+            "exaggeration": 0.5797200900400814,
+            "temperature": 0.8901120343117694,
+            "top_p": 0.938773786094836,
+            "min_p": 0.30881563103788423,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "Ze kennen het getal, op een paar na, en ze zullen niet doen alsof het meer is da",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 9,
+      "best_quality_score": 22.0,
+      "best_attempt": 8,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.9895930522262655,
+            "exaggeration": 0.4242394868350592,
+            "temperature": 0.5109711837486176,
+            "top_p": 0.83005942502889,
+            "min_p": 0.18832339612135715,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 142.0,
+          "params": {
+            "cfg_weight": 0.6878523460341908,
+            "exaggeration": 0.37995093884661096,
+            "temperature": 0.39681997409956676,
+            "top_p": 0.7766588092456133,
+            "min_p": 0.034756820323783716,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 142.0,
+          "params": {
+            "cfg_weight": 0.846156451941843,
+            "exaggeration": 0.4576776144374194,
+            "temperature": 0.6833055815231563,
+            "top_p": 0.6668220967501752,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.903658322224796,
+            "exaggeration": 0.21003275677141997,
+            "temperature": 0.36337641065006143,
+            "top_p": 0.7542113204828604,
+            "min_p": 0.24889044735919344,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.2665147285871746,
+            "exaggeration": 0.4093416194756529,
+            "temperature": 0.3667285853516236,
+            "top_p": 0.8504092299413708,
+            "min_p": 0.04593323251777234,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 0.5410569929675363,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.7588822943714928,
+            "min_p": 0.16188884290189917,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.18266970518913084,
+            "exaggeration": 0.35966235990876794,
+            "temperature": 0.7998268870911375,
+            "top_p": 0.8720750432735321,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.847642726480511,
+            "exaggeration": 0.641213962287542,
+            "temperature": 0.5193132475910458,
+            "top_p": 0.9571721712602667,
+            "min_p": 0.22508650721253634,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Daarna neemt iets stillers het over.",
       "passed_first": false
     },
     {
@@ -1904,119 +2405,6 @@
       "text_len": 75,
       "text_preview": "Je zit op een lage metalen bank, vastgegespt aan een instructeur achter je.",
       "passed_first": false
-    },
-    {
-      "id": "ch02-068",
-      "attempts": 3,
-      "best_quality_score": 0.0,
-      "best_attempt": 2,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "tail_energy"
-          ],
-          "score": 12.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.5986147592129272,
-            "exaggeration": 0.5225419895787892,
-            "temperature": 0.5013592971054787,
-            "top_p": 0.9447958066297306,
-            "min_p": 0.204682322316421,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 2,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.5753534954354895,
-            "exaggeration": 0.20459526241839848,
-            "temperature": 0.4106475310590295,
-            "top_p": 0.9887376566277761,
-            "min_p": 0.0,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 73,
-      "text_preview": "Je hebt het afgelopen uur zo vaak geknikt dat je nek pijn begint te doen.",
-      "passed_first": false
-    },
-    {
-      "id": "ch02-122",
-      "attempts": 3,
-      "best_quality_score": 0.0,
-      "best_attempt": 2,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "tail_energy"
-          ],
-          "score": 12.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.96
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "tail_energy",
-            "first_word_weak"
-          ],
-          "score": 32.0,
-          "params": {
-            "cfg_weight": 0.7787526504907664,
-            "exaggeration": 0.5349721935907853,
-            "temperature": 0.4062619867592416,
-            "top_p": 0.6066907342146182,
-            "min_p": 0.26044044477433104,
-            "repetition_penalty": 1.96
-          }
-        },
-        {
-          "attempt": 2,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.4423894821842839,
-            "exaggeration": 0.2965748286362176,
-            "temperature": 0.2604494644288393,
-            "top_p": 0.8486003381401719,
-            "min_p": 0.0802581570895188,
-            "repetition_penalty": 1.96
-          }
-        }
-      ],
-      "text_len": 84,
-      "text_preview": "En je begrijpt, voor het eerst, wat je vriend je al die jaren probeert te vertel",
-      "passed_first": false
     }
   ],
   "param_effectiveness": {
@@ -2029,10 +2417,10 @@
       }
     },
     "tail_energy": {
-      "sample_size": 5,
+      "sample_size": 6,
       "avg_delta": {
-        "cfg_weight": -0.146,
-        "temperature": 0.015,
+        "cfg_weight": -0.13,
+        "temperature": -0.004,
         "repetition_penalty": 0.0
       }
     },
