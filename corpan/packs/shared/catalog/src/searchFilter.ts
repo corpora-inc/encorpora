@@ -1,4 +1,10 @@
-import type { CatalogNarrationEntry, BookGroup, SeriesGroup } from "./types"
+import type {
+  CatalogNarrationEntry,
+  BookGroup,
+  SeriesGroup,
+  Character,
+} from "./types"
+import type { CatalogIndex } from "./catalogIndex"
 
 /** Group narrations by book, collecting all language/voice variants */
 export function groupByBook(narrations: CatalogNarrationEntry[]): BookGroup[] {
@@ -71,6 +77,37 @@ export function searchByTitle(
       n.bookTitle.toLowerCase().includes(q) ||
       (n.series?.toLowerCase().includes(q) ?? false)
   )
+}
+
+/** Filter narrations to those owned by a given character (joins via the catalog index). */
+export function filterByCharacter(
+  narrations: CatalogNarrationEntry[],
+  characterId: string,
+  index: CatalogIndex,
+): CatalogNarrationEntry[] {
+  if (!characterId) return narrations
+  return narrations.filter((n) => index.getCharacterForNarration(n)?.id === characterId)
+}
+
+/** Search characters by displayName / tagline / bio / id (case-insensitive substring). */
+export function searchCharacters(characters: Character[], query: string): Character[] {
+  if (!query.trim()) return characters
+  const q = query.trim().toLowerCase()
+  return characters.filter(
+    (c) =>
+      c.displayName.toLowerCase().includes(q) ||
+      c.id.toLowerCase().includes(q) ||
+      (c.tagline?.toLowerCase().includes(q) ?? false) ||
+      (c.bio?.toLowerCase().includes(q) ?? false),
+  )
+}
+
+/** Re-export of the index method for symmetry with other groupers in this file. */
+export function groupByCharacter(
+  narrations: CatalogNarrationEntry[],
+  index: CatalogIndex,
+) {
+  return index.groupByCharacter(narrations)
 }
 
 /** Get unique languages from narrations list */

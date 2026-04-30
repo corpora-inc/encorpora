@@ -1449,3 +1449,507 @@
   cursor: pointer;
   accent-color: var(--catalog-accent, #4a90e2);
 }
+
+/* ============================================================
+   Browse mode tabs (Books / Narrators)
+   ============================================================ */
+
+.catalog-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 0 0 12px 0;
+  border-bottom: 1px solid var(--catalog-border);
+  margin-bottom: 12px;
+}
+
+.catalog-tab {
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.catalog-tab:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-tab--active {
+  color: var(--catalog-text);
+  background: var(--catalog-surface);
+  border-color: var(--catalog-border);
+}
+
+/* ============================================================
+   Cover thumbnails on book cards
+   ============================================================ */
+
+.catalog-cover-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border-radius: calc(var(--catalog-radius) - 2px);
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-cover-thumb--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.catalog-cover-thumb-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 8px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   Character chip — used in book detail rows and on cover overlays
+   ============================================================ */
+
+.catalog-character-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.catalog-character-chip:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-character-chip--on-cover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.catalog-character-chip-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  flex-shrink: 0;
+}
+
+.catalog-character-chip-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+  background: var(--catalog-bg);
+}
+
+.catalog-character-chip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================
+   Narrator grid card (Narrators tab)
+   ============================================================ */
+
+.catalog-narrator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.catalog-narrator-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 10px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.catalog-narrator-card:hover {
+  border-color: var(--catalog-accent);
+  transform: translateY(-1px);
+}
+
+.catalog-narrator-card-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  margin-bottom: 10px;
+  border: 2px solid var(--catalog-border);
+}
+
+.catalog-narrator-card-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-narrator-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  margin-bottom: 2px;
+}
+
+.catalog-narrator-card-meta {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Narrator profile screen
+   ============================================================ */
+
+.catalog-narrator-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.catalog-narrator-detail-hero {
+  position: relative;
+  border-radius: var(--catalog-radius);
+  overflow: hidden;
+  background: var(--catalog-surface);
+}
+
+.catalog-narrator-detail-banner {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+}
+
+.catalog-narrator-detail-banner--placeholder {
+  background:
+    radial-gradient(circle at 30% 50%, color-mix(in srgb, var(--catalog-accent) 35%, transparent), transparent 60%),
+    linear-gradient(135deg, var(--catalog-surface), var(--catalog-bg));
+}
+
+.catalog-narrator-detail-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  border: 4px solid var(--catalog-bg);
+  position: absolute;
+  left: 24px;
+  bottom: -56px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.catalog-narrator-detail-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+  background: var(--catalog-surface);
+}
+
+.catalog-narrator-detail-identity {
+  padding: 64px 8px 0 8px;
+}
+
+.catalog-narrator-detail-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  margin: 0 0 4px;
+}
+
+.catalog-narrator-detail-tagline {
+  font-size: 14px;
+  color: var(--catalog-text-dim);
+  margin: 0 0 12px;
+}
+
+.catalog-narrator-detail-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.catalog-narrator-detail-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.catalog-narrator-detail-bio {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--catalog-text);
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.catalog-narrator-detail-bio--collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.catalog-narrator-detail-bio-toggle {
+  margin-top: 6px;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-accent);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ============================================================
+   Voice variant cards (inside narrator profile)
+   ============================================================ */
+
+.catalog-voice-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-voice-variant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+}
+
+.catalog-voice-variant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.catalog-voice-variant-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.catalog-voice-variant-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-voice-variant-provider {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--catalog-accent) 18%, transparent);
+  color: var(--catalog-accent);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.catalog-voice-variant-status {
+  display: inline-flex;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--catalog-bg);
+  color: var(--catalog-text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.catalog-voice-variant-meta {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  line-height: 1.4;
+}
+
+.catalog-voice-preview-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.catalog-voice-preview-btn:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-voice-preview-btn--playing {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 18%, transparent);
+}
+
+.catalog-voice-preview-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   Section titles + book grids inside narrator detail
+   ============================================================ */
+
+.catalog-narrator-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.catalog-narrator-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-narrator-detail-series {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--catalog-text-dim);
+  margin: 6px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Book detail hero (cover + metadata side-by-side)
+   ============================================================ */
+
+.command-drawer-book-hero {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.command-drawer-book-hero-cover {
+  flex-shrink: 0;
+  width: 96px;
+  aspect-ratio: 3 / 4;
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border-radius: calc(var(--catalog-radius) - 2px);
+  border: 1px solid var(--catalog-border);
+}
+
+.command-drawer-book-hero-cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.command-drawer-book-hero-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.command-drawer-book-hero-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  line-height: 1.3;
+}
+
+.command-drawer-book-hero-author {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-book-hero-series {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-book-hero-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--catalog-text);
+  margin-bottom: 16px;
+}
+
+.command-drawer-book-hero-description--collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

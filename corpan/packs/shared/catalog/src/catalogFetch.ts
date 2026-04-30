@@ -1,4 +1,13 @@
-import type { CatalogV2, CatalogNarrationEntry, PurchaseInfo } from "./types"
+import type {
+  CatalogV2,
+  CatalogNarrationEntry,
+  PurchaseInfo,
+  Character,
+  VoiceProfile,
+  VoiceProvider,
+  VoiceSource,
+  BookEntry,
+} from "./types"
 import { resolveVoiceName } from "../../core/constants"
 
 const CACHE_KEY = "reader-catalog-cache"
@@ -73,6 +82,124 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     tier: tierRaw === "premium" ? "premium" : "public",
     purchase: parsePurchase(r.purchase),
     minAppVersion: toOptString(r.minAppVersion),
+    characterId: toOptString(r.characterId),
+    coverImageUrl: toOptString(r.coverImageUrl),
+  }
+}
+
+const VALID_PROVIDERS: VoiceProvider[] = [
+  "chatterbox",
+  "gemini",
+  "vertex-tts",
+  "elevenlabs",
+  "openai",
+  "platform",
+]
+
+function parseVoiceProvider(v: unknown): VoiceProvider {
+  const s = toString(v)
+  return (VALID_PROVIDERS as string[]).includes(s) ? (s as VoiceProvider) : "chatterbox"
+}
+
+function parseVoiceSource(v: unknown): VoiceSource {
+  if (!v || typeof v !== "object") return { kind: "native" }
+  const r = v as Record<string, unknown>
+  if (toString(r.kind) === "cloned") {
+    return {
+      kind: "cloned",
+      sourceWaveUrl: toString(r.sourceWaveUrl),
+      sourceWaveSha256: toString(r.sourceWaveSha256),
+      lengthSeconds: toNumber(r.lengthSeconds) ?? 0,
+      recordedAt: toOptString(r.recordedAt),
+    }
+  }
+  return { kind: "native" }
+}
+
+function parseStringArray(v: unknown): string[] {
+  if (!Array.isArray(v)) return []
+  return v.filter((x): x is string => typeof x === "string")
+}
+
+function parseVoiceProfile(item: unknown): VoiceProfile | null {
+  if (!item || typeof item !== "object") return null
+  const r = item as Record<string, unknown>
+  const id = toString(r.id)
+  const characterId = toString(r.characterId)
+  if (!id || !characterId) return null
+  const statusRaw = toString(r.status)
+  const status: VoiceProfile["status"] =
+    statusRaw === "deprecated" ? "deprecated"
+    : statusRaw === "experimental" ? "experimental"
+    : "active"
+  return {
+    id,
+    characterId,
+    displayName: toString(r.displayName) || resolveVoiceName(id),
+    provider: parseVoiceProvider(r.provider),
+    providerVoiceId: toOptString(r.providerVoiceId),
+    source: parseVoiceSource(r.source),
+    supportedLanguages: parseStringArray(r.supportedLanguages),
+    traits: Array.isArray(r.traits) ? parseStringArray(r.traits) : undefined,
+    previewClipUrl: toOptString(r.previewClipUrl),
+    status,
+    order: toNumber(r.order),
+  }
+}
+
+function parseCharacterLinks(v: unknown): { label: string; url: string }[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out: { label: string; url: string }[] = []
+  for (const raw of v) {
+    if (!raw || typeof raw !== "object") continue
+    const r = raw as Record<string, unknown>
+    const label = toString(r.label)
+    const url = toString(r.url)
+    if (label && url) out.push({ label, url })
+  }
+  return out.length > 0 ? out : undefined
+}
+
+function parseCharacter(item: unknown): Character | null {
+  if (!item || typeof item !== "object") return null
+  const r = item as Record<string, unknown>
+  const id = toString(r.id)
+  if (!id) return null
+  const status: Character["status"] = toString(r.status) === "deprecated" ? "deprecated" : "active"
+  return {
+    id,
+    displayName: toString(r.displayName) || id,
+    tagline: toOptString(r.tagline),
+    bio: toOptString(r.bio),
+    pronouns: toOptString(r.pronouns),
+    avatarUrl: toString(r.avatarUrl),
+    bannerUrl: toOptString(r.bannerUrl),
+    accentColor: toOptString(r.accentColor),
+    links: parseCharacterLinks(r.links),
+    supportedLanguages: Array.isArray(r.supportedLanguages)
+      ? parseStringArray(r.supportedLanguages)
+      : undefined,
+    status,
+    order: toNumber(r.order),
+  }
+}
+
+function parseBookEntry(item: unknown): BookEntry | null {
+  if (!item || typeof item !== "object") return null
+  const r = item as Record<string, unknown>
+  const bookId = toString(r.bookId)
+  if (!bookId) return null
+  return {
+    bookId,
+    title: toString(r.title) || bookId,
+    description: toOptString(r.description),
+    author: toOptString(r.author),
+    coverImageUrl: toString(r.coverImageUrl),
+    bannerUrl: toOptString(r.bannerUrl),
+    series: toOptString(r.series),
+    volume: toNumber(r.volume),
+    primaryLanguage: toString(r.primaryLanguage) || "en",
+    tags: Array.isArray(r.tags) ? parseStringArray(r.tags) : undefined,
   }
 }
 
@@ -88,11 +215,41 @@ function parseCatalogV2(data: unknown): CatalogV2 | null {
     }
   }
 
+  let characters: Character[] | undefined
+  if (Array.isArray(record.characters)) {
+    characters = []
+    for (const item of record.characters) {
+      const parsed = parseCharacter(item)
+      if (parsed) characters.push(parsed)
+    }
+  }
+
+  let voiceProfiles: VoiceProfile[] | undefined
+  if (Array.isArray(record.voiceProfiles)) {
+    voiceProfiles = []
+    for (const item of record.voiceProfiles) {
+      const parsed = parseVoiceProfile(item)
+      if (parsed) voiceProfiles.push(parsed)
+    }
+  }
+
+  let books: BookEntry[] | undefined
+  if (Array.isArray(record.books)) {
+    books = []
+    for (const item of record.books) {
+      const parsed = parseBookEntry(item)
+      if (parsed) books.push(parsed)
+    }
+  }
+
   return {
     version: 2,
     generatedAt: toString(record.generatedAt) || new Date().toISOString(),
     narrations,
     gamePacks: [], // reader-catalog only cares about narrations
+    characters,
+    voiceProfiles,
+    books,
   }
 }
 

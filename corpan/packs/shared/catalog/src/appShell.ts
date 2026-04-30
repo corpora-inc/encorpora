@@ -10,8 +10,11 @@
  */
 
 import "./catalog.css"
-import type { CatalogNarrationEntry } from "./types"
+import type { CatalogNarrationEntry, Character, BookEntry } from "./types"
 import { fetchCatalog } from "./catalogFetch"
+import { buildCatalogIndex, type CatalogIndex } from "./catalogIndex"
+import { createNarratorDetail, type NarratorDetail } from "./narratorDetail"
+import { stopPreview } from "./voicePreview"
 import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration } from "./installManager"
 import {
@@ -357,6 +360,9 @@ export function createAppShell(
 
   // All narrations from the last catalog fetch
   let allNarrations: CatalogNarrationEntry[] = []
+  // Hydrated lookup tables (characters, voiceProfiles, books). Synthesized for
+  // legacy catalogs so every UI surface can assume hydrated rows exist.
+  let catalogIndex: CatalogIndex | null = null
 
   // --- State for section renderers (must be before createCommandDrawer,
   //     which calls render() immediately during construction) ---
@@ -365,6 +371,8 @@ export function createAppShell(
   let browseActiveLang = ""
   let browseSearchQuery = ""
   let browseShowingDetail = false
+  /** Which dimension the browse list is showing. */
+  let browseMode: "books" | "narrators" = "books"
 
   // --- Now-playing section state ---
   let nowPlayingSectionEl: HTMLElement | null = null
@@ -372,6 +380,13 @@ export function createAppShell(
 
   // --- Detail section state ---
   let detailBookId = ""       // track displayed book in detail screen
+  /** What kind of detail view is currently mounted in the "detail" screen. */
+  let detailMode: "book" | "narrator" = "book"
+  /** Active narrator profile id when detailMode === "narrator". */
+  let detailNarratorId = ""
+  let narratorDetailInstance: NarratorDetail | null = null
+  /** When set, the next book detail will pre-select this voice in language pills. */
+  let preferredVoiceIdForBookDetail: string | undefined
 
   // --- Build drawer sections ---
   const builtinSections: DrawerSectionDef[] = [
@@ -956,6 +971,7 @@ export function createAppShell(
     // Kick off catalog fetch
     void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL }).then((catalog) => {
       allNarrations = catalog.narrations
+      catalogIndex = buildCatalogIndex(catalog)
       refreshBrowseSection()
       refreshLibrarySection()
     })
@@ -986,6 +1002,44 @@ export function createAppShell(
       return
     }
 
+    // Books / Narrators tab strip — only when we have more than one character
+    // worth showing. Single-narrator catalogs don't benefit from a tab.
+    const showTabs = (catalogIndex?.characters.length ?? 0) > 1
+    if (showTabs) {
+      const tabs = document.createElement("div")
+      tabs.className = "catalog-tabs"
+
+      const booksTab = document.createElement("button")
+      booksTab.type = "button"
+      booksTab.className =
+        "catalog-tab" + (browseMode === "books" ? " catalog-tab--active" : "")
+      booksTab.textContent = tt("catalog.tab.books", "Books")
+      booksTab.onclick = () => {
+        if (browseMode === "books") return
+        browseMode = "books"
+        refreshBrowseSection()
+      }
+      tabs.appendChild(booksTab)
+
+      const narratorsTab = document.createElement("button")
+      narratorsTab.type = "button"
+      narratorsTab.className =
+        "catalog-tab" + (browseMode === "narrators" ? " catalog-tab--active" : "")
+      narratorsTab.textContent = tt("catalog.tab.narrators", "Narrators")
+      narratorsTab.onclick = () => {
+        if (browseMode === "narrators") return
+        browseMode = "narrators"
+        refreshBrowseSection()
+      }
+      tabs.appendChild(narratorsTab)
+
+      browseSectionEl.appendChild(tabs)
+    } else {
+      // Catalog only knows one narrator — keep the books view; flip the flag in
+      // case it had been set by a prior catalog with more characters.
+      browseMode = "books"
+    }
+
     // Search input
     const header = document.createElement("div")
     header.className = "command-drawer-browse-header"
@@ -993,7 +1047,10 @@ export function createAppShell(
     const searchInput = document.createElement("input")
     searchInput.className = "command-drawer-browse-search"
     searchInput.type = "text"
-    searchInput.placeholder = "Search books..."
+    searchInput.placeholder =
+      browseMode === "narrators"
+        ? tt("catalog.search.narrators", "Search narrators...")
+        : tt("catalog.search.books", "Search books...")
     searchInput.value = browseSearchQuery
     searchInput.addEventListener("input", () => {
       browseSearchQuery = searchInput.value
@@ -1002,9 +1059,11 @@ export function createAppShell(
     header.appendChild(searchInput)
     browseSectionEl.appendChild(header)
 
-    // Language filter — single chooser button; bottom-sheet for scale
+    // Language filter — single chooser button; bottom-sheet for scale.
+    // Narrators view doesn't filter by language at the top level (the per-narrator
+    // language pills do that on the profile screen).
     const availLangs = getAvailableLanguages(allNarrations)
-    if (availLangs.length > 1) {
+    if (browseMode === "books" && availLangs.length > 1) {
       const chooser = document.createElement("button")
       chooser.type = "button"
       chooser.className = "catalog-lang-chooser"
@@ -1045,6 +1104,11 @@ export function createAppShell(
     if (!results) return
     results.innerHTML = ""
 
+    if (browseMode === "narrators") {
+      renderNarratorsResults(results)
+      return
+    }
+
     let filtered = allNarrations
     if (browseActiveLang) filtered = filterByLanguage(filtered, browseActiveLang)
     if (browseSearchQuery) filtered = searchByTitle(filtered, browseSearchQuery)
@@ -1081,6 +1145,31 @@ export function createAppShell(
           const bookNarrations = allNarrations.filter(n => n.bookId === book.bookId)
           showInlineBookDetail(bookNarrations)
         })
+
+        // Cover thumbnail with optional character chip overlay
+        const bookEntry = catalogIndex?.getBook(book.bookId)
+        const coverUrl =
+          catalogIndex?.getCoverUrl(book.bookId, book.narrations[0]) ?? ""
+        if (coverUrl || bookEntry) {
+          const thumb = document.createElement("div")
+          if (coverUrl) {
+            thumb.className = "catalog-cover-thumb"
+            thumb.style.backgroundImage = `url(${cssUrl(coverUrl)})`
+          } else {
+            thumb.className = "catalog-cover-thumb catalog-cover-thumb--placeholder"
+            thumb.textContent = initials(book.bookTitle)
+          }
+
+          // Narrator chip on the cover — distinct characters for this book
+          const chips = makeNarratorChipsForBook(book.narrations, "on-cover")
+          if (chips) {
+            const overlay = document.createElement("div")
+            overlay.className = "catalog-cover-thumb-overlay"
+            overlay.appendChild(chips)
+            thumb.appendChild(overlay)
+          }
+          card.appendChild(thumb)
+        }
 
         const title = document.createElement("div")
         title.className = "catalog-card-title"
