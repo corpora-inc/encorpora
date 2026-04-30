@@ -634,6 +634,18 @@
   min-width: 0;
 }
 
+/* Narrow viewports: sort gets its own row above the tag strip. The strip
+   alone is wide enough to scroll meaningfully; sharing 320px-ish with the
+   sort pill leaves only a sliver for chips. */
+@media (max-width: 480px) {
+  .wr-filter-row {
+    flex-wrap: wrap;
+  }
+  .wr-sort {
+    flex-basis: 100%;
+  }
+}
+
 .wr-sort {
   position: relative;
   flex: 0 0 auto;
@@ -1198,12 +1210,11 @@
 
 .wr-close-pack {
   position: absolute;
-  /* `.wr-root` already has `padding-top: env(safe-area-inset-top)` so the
-     padding edge that this absolute element is positioned against is already
-     below the status bar — just nudge a little further down for breathing
-     room. (Adding env() again here would double-count and push the button
-     too far into the content.) */
-  top: var(--wr-sp-2);
+  /* Absolutely positioned children are placed against the *outer* padding
+     edge of the containing block, which on `.wr-root` is the viewport top —
+     not below its `padding-top`. So the inset from `.wr-root` doesn't push
+     this button down; it has to add the safe-area inset itself. */
+  top: calc(env(safe-area-inset-top) + var(--wr-sp-2));
   right: var(--wr-sp-3);
   z-index: 10;
   width: 36px;
