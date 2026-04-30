@@ -60,3 +60,9 @@ voices/samples/
 **/pack/pronunciation_tests/
 **/packs/*/pronunciation_tests/
 
+# Catalog asset bootstrap artifacts — regenerable from
+# corpan/infra/generate-catalog-assets.py and patch-catalog.py. Stale within
+# a day; not history-of-record. Same rationale as audio_manifest_*.json above.
+corpan/infra/catalog-v2.patched.json
+corpan/infra/asset-urls.json
+
