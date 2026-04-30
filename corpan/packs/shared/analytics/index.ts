@@ -23,6 +23,11 @@
 
 const OPT_OUT_KEY = "corpan-analytics-disabled"
 const SPILLOVER_KEY = "corpan-analytics-queue"
+// Persists the last language seen per book, so we can emit `language_switch`
+// when the user comes back in a new session and opens the same book in a
+// different language (the most common comparison flow). Living next to the
+// other analytics localStorage keys keeps cleanup obvious.
+const LAST_LANG_BY_BOOK_KEY = "corpan-analytics-last-lang-by-book"
 const SCHEMA_VERSION = 1
 const FLUSH_INTERVAL_MS = 30_000
 const FLUSH_BATCH_SIZE = 50
@@ -159,6 +164,33 @@ function writeSpillover(events: AnalyticsEvent[]): void {
     } else {
       localStorage.setItem(SPILLOVER_KEY, JSON.stringify(events.slice(-MAX_QUEUE)))
     }
+  })
+}
+
+function readLastLangByBook(): Record<string, string> {
+  return (
+    safe(() => {
+      const raw = localStorage.getItem(LAST_LANG_BY_BOOK_KEY)
+      if (!raw) return {}
+      const parsed = JSON.parse(raw)
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {}
+      const out: Record<string, string> = {}
+      for (const k of Object.keys(parsed)) {
+        const v = (parsed as Record<string, unknown>)[k]
+        if (typeof v === "string" && v.length > 0) out[k] = v
+      }
+      return out
+    }) ?? {}
+  )
+}
+
+function writeLastLangByBook(bookId: string, language: string): void {
+  safe(() => {
+    if (!bookId || !language) return
+    const map = readLastLangByBook()
+    if (map[bookId] === language) return
+    map[bookId] = language
+    localStorage.setItem(LAST_LANG_BY_BOOK_KEY, JSON.stringify(map))
   })
 }
 
@@ -302,6 +334,27 @@ export type AnalyticsInitOptions = {
   enabled?: boolean
 }
 
+// In a Tauri webview, the host app's version isn't passed into the reader pack
+// (the reader is loaded as a downloadable script bundle, not part of the host
+// React tree). Instead of plumbing it through the host shell — which would
+// require a host rebuild — we self-fetch via the Tauri `app` plugin invoke.
+// Web/dev builds (no Tauri internals) silently fall back to the empty string.
+async function fetchAppVersionFromTauri(): Promise<string | null> {
+  return (
+    (await safe(async () => {
+      const w = globalThis as {
+        __TAURI_INTERNALS__?: {
+          invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown>
+        }
+      }
+      const invoke = w.__TAURI_INTERNALS__?.invoke
+      if (!invoke) return null
+      const v = await invoke("plugin:app|version")
+      return typeof v === "string" ? v : null
+    })) ?? null
+  )
+}
+
 export function init(opts: AnalyticsInitOptions): void {
   safe(() => {
     if (state.config) return // idempotent
@@ -313,6 +366,15 @@ export function init(opts: AnalyticsInitOptions): void {
       enabled: opts.enabled !== false,
     }
     state.sessionId = uuid()
+
+    // Backfill app_version from the Tauri host app if the caller didn't provide
+    // one. Fire-and-forget — events emitted before this resolves will go out
+    // with an empty app_version, which is fine.
+    if (!state.config.appVersion) {
+      void fetchAppVersionFromTauri().then((v) => {
+        if (state.config && v) state.config.appVersion = v
+      })
+    }
 
     if (typeof window !== "undefined") {
       // Ship in-flight events on page hide. sendBeacon survives unload.
@@ -380,6 +442,23 @@ export function bookOpened(ctx: BookContext): void {
       const dur = Date.now() - state.bookOpenAt
       track("book_close", { ...bookContextProps(state.bookOpenCtx), duration_ms: dur })
     }
+
+    // Detect a language switch on the same book — both within-session (the
+    // user just had this book open in another language) and across-session
+    // (last time we saw this book, it was in another language). Emit the
+    // `language_switch` event BEFORE `book_open` so the order in the table
+    // reflects causality. We deliberately don't fire when the book is
+    // different — that's a normal book_open, not a language switch.
+    const lastLangMap = readLastLangByBook()
+    const lastLang = lastLangMap[ctx.bookId]
+    if (lastLang && lastLang !== ctx.language) {
+      track("language_switch", {
+        ...bookContextProps(ctx),
+        previous_language: lastLang,
+      })
+    }
+    writeLastLangByBook(ctx.bookId, ctx.language)
+
     state.bookOpenAt = Date.now()
     state.bookOpenCtx = { ...ctx }
     track("book_open", bookContextProps(ctx))
@@ -403,18 +482,6 @@ export function bookClosed(): void {
       clearInterval(state.heartbeatTimer)
       state.heartbeatTimer = null
     }
-  })
-}
-
-export function languageSwitched(args: BookContext & { from: string }): void {
-  safe(() => {
-    track("language_switch", {
-      book_id: args.bookId,
-      narration_pack_id: args.narrationPackId,
-      language: args.language,
-      voice_id: args.voiceId,
-      previous_language: args.from,
-    })
   })
 }
 

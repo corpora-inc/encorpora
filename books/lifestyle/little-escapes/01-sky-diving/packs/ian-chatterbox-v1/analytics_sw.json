@@ -1,0 +1,2191 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "sw",
+  "timestamp": "2026-04-29T04:03:49.563446+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 315,
+  "segments_converged_by_retry": 27,
+  "segments_plateau_stopped": 26,
+  "total_retries": 146,
+  "error_distribution": {
+    "trailing_silence": 127,
+    "transcription_mismatch": 119,
+    "first_word_weak": 53,
+    "tail_energy": 30,
+    "hard_ending": 30,
+    "tts_audio_truncated": 27,
+    "min_trailing_silence": 16,
+    "tail_zero_duration_run": 15,
+    "stacked_words": 15,
+    "truncated_last_word": 15,
+    "pre_speech_spike": 13,
+    "post_speech_pop": 7,
+    "tail_spike": 3,
+    "word_cluster": 2
+  },
+  "phase_timings": {
+    "tts": 513.9629487991333,
+    "align": 200.40679383277893,
+    "validate": 300.23931336402893,
+    "trim": 3.5146617889404297,
+    "master": 86.18224859237671
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 126,
+      "passed": 114,
+      "rate": 0.9047619047619048
+    },
+    "medium_30_80": {
+      "total": 173,
+      "passed": 134,
+      "rate": 0.7745664739884393
+    },
+    "long_80_plus": {
+      "total": 69,
+      "passed": 67,
+      "rate": 0.9710144927536232
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-270",
+      "attempts": 12,
+      "best_quality_score": 3.44,
+      "best_attempt": 5,
+      "plateau_count": 6,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.9136885113720761,
+            "exaggeration": 0.05695498996130954,
+            "temperature": 0.6637948959742795,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.2850732528308678,
+            "exaggeration": 0.3531295028220579,
+            "temperature": 0.12357980716772171,
+            "top_p": 1.0,
+            "min_p": 0.08782695497068874,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7349191580787823,
+            "exaggeration": 0.6148063060798941,
+            "temperature": 0.9466203045218293,
+            "top_p": 0.8963472832856278,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.8011281170537612,
+            "exaggeration": 0.4376161592030295,
+            "temperature": 0.05,
+            "top_p": 0.7710428409630536,
+            "min_p": 0.06447596364201949,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.45298496537403116,
+            "exaggeration": 0.6326888849427537,
+            "temperature": 0.7089258992033893,
+            "top_p": 1.0,
+            "min_p": 0.09977878764558165,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.46332798730049446,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.6703863759702298,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.33215478073595645,
+            "exaggeration": 0.3230972423995584,
+            "temperature": 0.5974616575801777,
+            "top_p": 0.7899850255734338,
+            "min_p": 0.2635814925600132,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.76151317721326,
+            "exaggeration": 0.5532090425283935,
+            "temperature": 0.5592711833865978,
+            "top_p": 0.8821639067112684,
+            "min_p": 0.2020719284997556,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.5306271334648364,
+            "temperature": 0.7061808324888046,
+            "top_p": 1.0,
+            "min_p": 0.06056858174748056,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.21633307423001363,
+            "exaggeration": 0.7216444330586034,
+            "temperature": 0.9792085149270386,
+            "top_p": 0.7917512084030205,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.8320825390360977,
+            "temperature": 0.7804213372733798,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Mnagonganisha ngumi, mnakaguliana vifaa, mnacheka kwa wasiwasi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 10,
+      "best_quality_score": 4.0,
+      "best_attempt": 4,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.6299275700300061,
+            "exaggeration": 0.15265766019718996,
+            "temperature": 0.5883154395062311,
+            "top_p": 1.0,
+            "min_p": 0.000330412305763611,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.4682933261605194,
+            "exaggeration": 0.31840343566978657,
+            "temperature": 0.18142312656987758,
+            "top_p": 0.7337727376086469,
+            "min_p": 0.05584914943883271,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.5439171873292261,
+            "exaggeration": 0.38720926045589343,
+            "temperature": 0.9324153991989117,
+            "top_p": 0.8773013419577862,
+            "min_p": 0.11040665160174692,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.05752581972148191,
+            "temperature": 0.2737576331243415,
+            "top_p": 0.8034649133863493,
+            "min_p": 0.007308093822040701,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.2889054777415604,
+            "exaggeration": 0.36618758061903084,
+            "temperature": 0.4509781295092669,
+            "top_p": 1.0,
+            "min_p": 0.08466210448801756,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.6566378654904512,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.3454102491971167,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.38745710367253317,
+            "exaggeration": 0.39837268729849856,
+            "temperature": 0.3841829779788846,
+            "top_p": 0.6915631623481999,
+            "min_p": 0.09191171742801604,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.9917438049158969,
+            "exaggeration": 0.22309983784811194,
+            "temperature": 0.5067576916771936,
+            "top_p": 0.6090964544796693,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.26238123222767884,
+            "exaggeration": 0.6357529476987323,
+            "temperature": 0.7859917305829982,
+            "top_p": 0.6979410353739401,
+            "min_p": 0.1555677356952688,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "Maisha mengi yana kelele.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-260",
+      "attempts": 9,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 6,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.8274726975356326,
+            "exaggeration": 0.17128593201740122,
+            "temperature": 0.5966452531072335,
+            "top_p": 0.7496038655530222,
+            "min_p": 0.27434734642433267,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.6987482417267714,
+            "exaggeration": 0.14931068236563755,
+            "temperature": 0.3292312755955716,
+            "top_p": 0.9703403993649857,
+            "min_p": 0.11233440587433166,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.5415031095982997,
+            "exaggeration": 0.7262018243573447,
+            "temperature": 0.5391291168685253,
+            "top_p": 0.7724039500637643,
+            "min_p": 0.21431739481694792,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.7506398237238963,
+            "exaggeration": 0.18288874168697916,
+            "temperature": 0.05,
+            "top_p": 0.7110824059473729,
+            "min_p": 0.3047138371132755,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.2418757820762839,
+            "exaggeration": 0.46761641030999745,
+            "temperature": 0.3042064170316169,
+            "top_p": 1.0,
+            "min_p": 0.32546576519131376,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.7432114476055343,
+            "exaggeration": 0.2686868413672522,
+            "temperature": 0.06964449048892982,
+            "top_p": 0.7794107634178205,
+            "min_p": 0.0701569502582772,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.43825446038372384,
+            "exaggeration": 0.4322235279934403,
+            "temperature": 0.45664110102008737,
+            "top_p": 0.984195835422702,
+            "min_p": 0.26629660561097024,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.6171985466173535,
+            "temperature": 0.1580505420190011,
+            "top_p": 0.8773646418559842,
+            "min_p": 0.055994496331431914,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "Wakati miguu yako inapogusa nyasi, anga ni la zambarau.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-325",
+      "attempts": 9,
+      "best_quality_score": 3.04,
+      "best_attempt": 2,
+      "plateau_count": 6,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.8225336315032101,
+            "exaggeration": 0.25686362208027225,
+            "temperature": 0.6446671579390555,
+            "top_p": 0.8607790878316668,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.5414249241274729,
+            "exaggeration": 0.040369438883469,
+            "temperature": 0.16084505037301328,
+            "top_p": 0.7360979624102721,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.513898509578316,
+            "exaggeration": 0.518942753487629,
+            "temperature": 0.5043249525440178,
+            "top_p": 0.6284246772474427,
+            "min_p": 0.10988204791963876,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.23649238170121306,
+            "temperature": 0.14358218517818594,
+            "top_p": 1.0,
+            "min_p": 0.2507957078366362,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.32891460942084205,
+            "exaggeration": 0.2857417913942556,
+            "temperature": 0.35969842405369085,
+            "top_p": 0.7098490563522268,
+            "min_p": 0.27765312672893205,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.9106948617169165,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.8798688649373743,
+            "min_p": 0.2074525128613199,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.46160709544803213,
+            "exaggeration": 0.49707630620419596,
+            "temperature": 0.5114819879141066,
+            "top_p": 0.9077031395046303,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5941527146656911,
+            "temperature": 0.5570584952057906,
+            "top_p": 0.8521226237046238,
+            "min_p": 0.2362129562322979,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Wanaenda nyumbani machweoni, wakiwa wamechoka kwa njia nzuri.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 5,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7106091388911966,
+            "exaggeration": 0.2951238430213307,
+            "temperature": 0.6036552992573919,
+            "top_p": 0.6091508571907576,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.3587218834504993,
+            "exaggeration": 0.03729889601383918,
+            "temperature": 0.11354123652051923,
+            "top_p": 0.8968188993969546,
+            "min_p": 0.07385571655815029,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.6453538193036509,
+            "exaggeration": 0.6090430294155589,
+            "temperature": 0.6587614242849306,
+            "top_p": 0.6056294344610496,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.8291930459444059,
+            "exaggeration": 0.5088552426412873,
+            "temperature": 0.05,
+            "top_p": 0.8953986569007355,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_energy",
+            "hard_ending"
+          ],
+          "score": 22.0,
+          "params": {
+            "cfg_weight": 0.3611774057542533,
+            "exaggeration": 0.5728317679631407,
+            "temperature": 0.4176040805079131,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Baada ya hapo, kitu kingine cha kimya kinachukua nafasi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-076",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2770347202913732,
+            "temperature": 0.6081136010741546,
+            "top_p": 0.8045887658514763,
+            "min_p": 0.19314818478336818,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.64,
+          "params": {
+            "cfg_weight": 0.5706449561862406,
+            "exaggeration": 0.14466753466363774,
+            "temperature": 0.4044643317342968,
+            "top_p": 0.6572766152888911,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.5815398790665387,
+            "exaggeration": 0.5236811398126708,
+            "temperature": 0.8836597665482051,
+            "top_p": 0.9369525456090891,
+            "min_p": 0.0574888650932531,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.64,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.19561942141081512,
+            "temperature": 0.05,
+            "top_p": 0.6445460099785253,
+            "min_p": 0.07185050380455218,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.15884665510067952,
+            "exaggeration": 0.6787649441877196,
+            "temperature": 0.5528851544779583,
+            "top_p": 0.7246176393775425,
+            "min_p": 0.10936820991436333,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Mto wa rangi ya fedha iliyofifia.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-182",
+      "attempts": 6,
+      "best_quality_score": 3.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 0.6961850791659342,
+            "exaggeration": 0.40287411126506006,
+            "temperature": 0.30983291803961654,
+            "top_p": 0.8710685911359481,
+            "min_p": 0.23198058214965359,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tts_audio_truncated"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.584880819006534,
+            "exaggeration": 0.11846098790684517,
+            "temperature": 0.5092126352801943,
+            "top_p": 0.7525892225642106,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 122.0,
+          "params": {
+            "cfg_weight": 0.5691461386505619,
+            "exaggeration": 0.8286126665331204,
+            "temperature": 0.7567322807007164,
+            "top_p": 0.7824882977990234,
+            "min_p": 0.05219739046038166,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 112.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2262859425844646,
+            "temperature": 0.18809698088331672,
+            "top_p": 1.0,
+            "min_p": 0.008016975489289951,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.2020781546596434,
+            "exaggeration": 0.4545138998408055,
+            "temperature": 0.5688839156682145,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "Chagua tarehe.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-289",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.6621213013228922,
+            "exaggeration": 0.36857830591531554,
+            "temperature": 0.3208738887982459,
+            "top_p": 0.8719128232920635,
+            "min_p": 0.33635663128833926,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.552772322584413,
+            "exaggeration": 0.05234076108712965,
+            "temperature": 0.14785009932208582,
+            "top_p": 1.0,
+            "min_p": 0.129300546529954,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.6494114951593718,
+            "exaggeration": 0.6954211103780445,
+            "temperature": 0.4927105350489241,
+            "top_p": 0.6027059384558868,
+            "min_p": 0.043698068104618265,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.8350533747676316,
+            "exaggeration": 0.41586944362679057,
+            "temperature": 0.33559096133972216,
+            "top_p": 0.7425023052603363,
+            "min_p": 0.08560386742745654,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.42332439658533005,
+            "exaggeration": 0.2682948354895053,
+            "temperature": 0.5743846417190688,
+            "top_p": 1.0,
+            "min_p": 0.019390799117860152,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Hasara iliyofanya dunia ya kawaida ihisi nyembamba na ya mbali.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-035",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.24,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7447855475525716,
+            "exaggeration": 0.3897831772787543,
+            "temperature": 0.25184879267036875,
+            "top_p": 0.7127288970783783,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.24,
+          "params": {
+            "cfg_weight": 0.5844305978228989,
+            "exaggeration": 0.36081727142126646,
+            "temperature": 0.4911958517419219,
+            "top_p": 1.0,
+            "min_p": 0.034393164727722775,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.2,
+          "params": {
+            "cfg_weight": 0.3726987525265776,
+            "exaggeration": 0.7545213271251917,
+            "temperature": 0.810645893290717,
+            "top_p": 0.8098362360061024,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5206003665438672,
+            "temperature": 0.13386532406966184,
+            "top_p": 0.7829265491190018,
+            "min_p": 0.14565192953573444,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 97,
+      "text_preview": "Kwangu mimi, ni futi elfu kumi na tatu juu ya ardhi, bila chochote cha kufanya i",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-121",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.8893825887030784,
+            "exaggeration": 0.5215912479889901,
+            "temperature": 0.6628060843591552,
+            "top_p": 0.8992394814539088,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.6300292663617741,
+            "exaggeration": 0.38979333897872576,
+            "temperature": 0.463645927202701,
+            "top_p": 0.849514500154542,
+            "min_p": 0.3191297693763291,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.6565546535445503,
+            "exaggeration": 0.6804961478658536,
+            "temperature": 0.5871237897394513,
+            "top_p": 1.0,
+            "min_p": 0.3046189357488862,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.1509603044794947,
+            "temperature": 0.12020797585927856,
+            "top_p": 0.6181441185833345,
+            "min_p": 0.14694533823665037,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Unageuka na kutazama juu mbinguni.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-250",
+      "attempts": 5,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.9463900085489562,
+            "exaggeration": 0.45191851862311927,
+            "temperature": 0.39795949025175864,
+            "top_p": 1.0,
+            "min_p": 0.12225054046536968,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.29250815233536054,
+            "exaggeration": 0.14934543858634347,
+            "temperature": 0.37047849252742177,
+            "top_p": 0.7674122612559093,
+            "min_p": 0.26754522795548685,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.8483634202628718,
+            "exaggeration": 0.47910430101001666,
+            "temperature": 0.7783026849285398,
+            "top_p": 0.8871657815369509,
+            "min_p": 0.19440645906457768,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8491616658355206,
+            "exaggeration": 0.31205830570436843,
+            "temperature": 0.37988776293075766,
+            "top_p": 1.0,
+            "min_p": 0.30540938982280597,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 96,
+      "text_preview": "Unapanda kupitia tabaka za nuru ya machungwa, kabati likiwa la joto, marafiki za",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-251",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2824694798646187,
+            "temperature": 0.27339496443590455,
+            "top_p": 1.0,
+            "min_p": 0.1907490564690085,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.46398588179796124,
+            "exaggeration": 0.15965003066735367,
+            "temperature": 0.23270306376891098,
+            "top_p": 0.687738349757235,
+            "min_p": 0.017156126334225225,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.5017146578558962,
+            "exaggeration": 0.35046457233014894,
+            "temperature": 0.5584136223749799,
+            "top_p": 0.7648471583664982,
+            "min_p": 0.277556536025072,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7797692145284979,
+            "exaggeration": 0.3315030406059687,
+            "temperature": 0.05,
+            "top_p": 0.6577478349854156,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Mlango unapofunguka mara hii, hewa ni ya rangi ya pinki.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-303",
+      "attempts": 5,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 4,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.703610548889667,
+            "exaggeration": 0.07947128905514395,
+            "temperature": 0.715403656683108,
+            "top_p": 1.0,
+            "min_p": 0.24779261794195087,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.46663563295828236,
+            "exaggeration": 0.38216513681724346,
+            "temperature": 0.32954416259469654,
+            "top_p": 0.6138182380042065,
+            "min_p": 0.14969343268783106,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.6,
+          "params": {
+            "cfg_weight": 0.4448971141419944,
+            "exaggeration": 0.48863974999437226,
+            "temperature": 0.5726136465746348,
+            "top_p": 1.0,
+            "min_p": 0.06171092956110183,
+            "repetition_penalty": 1.68
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9444759874385156,
+            "exaggeration": 0.3233665666629023,
+            "temperature": 0.05,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.68
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "Unaning'inia kwenye mkanda, na unalia, na unacheka, na unalia tena.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.9732882478521886,
+            "exaggeration": 0.0975615359039741,
+            "temperature": 0.4333324784361781,
+            "top_p": 0.7854791701327839,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.45748013718391967,
+            "exaggeration": 0.28222204224599684,
+            "temperature": 0.3305071502620658,
+            "top_p": 0.9298396585949782,
+            "min_p": 0.1706324494388812,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.48449073278562116,
+            "exaggeration": 0.5085821235998933,
+            "temperature": 0.7793212095624753,
+            "top_p": 0.8623197553204358,
+            "min_p": 0.15136691976305497,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Inakuwa kitu unachoanguka kupitia.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-036",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 450.0,
+          "params": {
+            "cfg_weight": 0.5619391131597385,
+            "exaggeration": 0.5463784285082622,
+            "temperature": 0.7377608193951389,
+            "top_p": 0.8751131460969535,
+            "min_p": 0.0,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 470.0,
+          "params": {
+            "cfg_weight": 0.5425308071764844,
+            "exaggeration": 0.1413512878484528,
+            "temperature": 0.5218334025443964,
+            "top_p": 0.7456016960006948,
+            "min_p": 0.09549625183495256,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6996847461864798,
+            "exaggeration": 0.400374812686196,
+            "temperature": 0.8346476743254199,
+            "top_p": 1.0,
+            "min_p": 0.18837982457814004,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Mvuto, mara unapouhisi, ni mgumu kuueleza kwa rafiki kwenye chakula cha jioni.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-057",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.9567360474144528,
+            "exaggeration": 0.31004181593555774,
+            "temperature": 0.7074600269529194,
+            "top_p": 0.7457078573762324,
+            "min_p": 0.3218781927931036,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.6945338658504319,
+            "exaggeration": 0.15958645688831335,
+            "temperature": 0.25893282126642636,
+            "top_p": 0.8211008104875734,
+            "min_p": 0.2018190674466702,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.4184199831380413,
+            "exaggeration": 0.5624747964395866,
+            "temperature": 0.8581591327330735,
+            "top_p": 0.7306818109868126,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "Na ningekusudia hivyo.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-071",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.1342905322966001,
+            "temperature": 0.4654335148810961,
+            "top_p": 0.6057546848609512,
+            "min_p": 0.29483468654181344,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.30283534936183026,
+            "exaggeration": 0.2779919484379591,
+            "temperature": 0.31621035249770296,
+            "top_p": 0.7501715146264223,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6551390390677205,
+            "exaggeration": 0.5155251736291804,
+            "temperature": 0.8699371281116687,
+            "top_p": 0.666764502662748,
+            "min_p": 0.052679931092344784,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Unajisukuma kuelekea ukingoni.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-088",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7227291124143175,
+            "exaggeration": 0.32050047961438266,
+            "temperature": 0.6885242613530483,
+            "top_p": 0.8801460137239913,
+            "min_p": 0.25209201906793244,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.710801567261208,
+            "exaggeration": 0.29557401042339115,
+            "temperature": 0.5041644250903936,
+            "top_p": 0.9699386829277419,
+            "min_p": 0.1918844019669992,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5297225289602434,
+            "exaggeration": 0.5075392231413653,
+            "temperature": 0.6651192627008815,
+            "top_p": 1.0,
+            "min_p": 0.0002585316633830492,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Kuanguka kunakoma kuhisi kama kuanguka.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-281",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.9955899733150404,
+            "exaggeration": 0.47966588413606087,
+            "temperature": 0.7136874602921335,
+            "top_p": 1.0,
+            "min_p": 0.10679725308914409,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.609929322766436,
+            "exaggeration": 0.09381081082481446,
+            "temperature": 0.1853171580413025,
+            "top_p": 0.8454714410743189,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8177903237043205,
+            "exaggeration": 0.7539497776996376,
+            "temperature": 0.5431607505456209,
+            "top_p": 1.0,
+            "min_p": 0.11928254127272434,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 43,
+      "text_preview": "Kisha kipima-kimo chako kinasema ni wakati.",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-306",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.7099374039722655,
+            "exaggeration": 0.1512111237161261,
+            "temperature": 0.42092187811241016,
+            "top_p": 0.6999808395239654,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 8.0,
+          "params": {
+            "cfg_weight": 0.7330054476638187,
+            "exaggeration": 0.30311804906888856,
+            "temperature": 0.051152462589399705,
+            "top_p": 0.7487313685747679,
+            "min_p": 0.32390368836342776,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.45936740169744456,
+            "exaggeration": 0.6422704618938313,
+            "temperature": 0.5606321429260389,
+            "top_p": 0.7892760876082722,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "Unapotua, hujaponywa.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 15,
+      "avg_delta": {
+        "cfg_weight": -0.062,
+        "temperature": -0.011,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.041,
+        "temperature": 0.094,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}
