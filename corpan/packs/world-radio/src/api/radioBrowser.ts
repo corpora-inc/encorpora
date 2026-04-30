@@ -200,9 +200,12 @@ export async function getStationsByLanguage(
 
 /**
  * Trim a station to only the fields the UI reads. Cuts the cache footprint by
- * roughly 50–60% (drops `homepage`, `state`, `languagecodes`, `votes`, `hls`,
+ * roughly 50–60% (drops `homepage`, `state`, `languagecodes`, `votes`,
  * `lastcheckok`, `clicktrend`, `changeuuid`). Keeps the API surface stable —
  * unused fields are just absent, no consumer breakage.
+ *
+ * Preserves `hls`: the player keys off it to route through hls.js on Android,
+ * since Chromium WebView has no native HLS decoder.
  */
 function stripStation(s: RadioStation): RadioStation {
   return {
@@ -222,7 +225,7 @@ function stripStation(s: RadioStation): RadioStation {
     votes: 0,
     codec: s.codec,
     bitrate: s.bitrate,
-    hls: 0,
+    hls: s.hls ? 1 : 0,
     lastcheckok: 1,
     clickcount: s.clickcount,
     clicktrend: 0,

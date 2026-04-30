@@ -418,7 +418,7 @@
 
 .command-drawer-screen-tab {
   flex: 1;
-  padding: 10px 0;
+  padding: 8px 0 9px;
   border: none;
   border-bottom: 2px solid transparent;
   background: transparent;
@@ -451,7 +451,10 @@
 
 .command-drawer-screen {
   display: none;
-  padding: 16px 20px calc(env(safe-area-inset-bottom, 0px));
+  /* Top: 12px lets the screen-nav's bottom border be the visual separator,
+     not extra empty space. Bottom: real 20px so content doesn't crash into
+     the safe area on phones. Horizontal: 20px gutter. */
+  padding: 12px 20px calc(20px + env(safe-area-inset-bottom, 0px));
   min-height: 100%;
 }
 
@@ -459,8 +462,12 @@
   display: block;
 }
 
+/* Inner wrapper inserted by some screen renderers (browse, now-playing).
+   The parent `.command-drawer-screen` already provides the gutter — zero
+   this out so the two padding boxes don't compound to 32px of dead space
+   below the screen-nav. */
 .command-drawer-screen-content {
-  padding: 16px 0;
+  padding: 0;
 }
 
 /* --- Scrollable body (legacy, kept for compat) --- */
