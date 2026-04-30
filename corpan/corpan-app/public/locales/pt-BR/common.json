@@ -29,7 +29,16 @@
     "gu": "Guzerate",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmuqui)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "he": "Hebraico",
+    "sv": "Sueco",
+    "fi": "Finlandês",
+    "nl": "Holandês",
+    "sw": "Suaíli",
+    "no": "Norueguês",
+    "da": "Dinamarquês",
+    "el": "Grego",
+    "ms": "Malaio"
   },
   "categories": {
     "travel": "Viagem",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Aprender",
     "tts": "Texto para fala",
     "languageOrderTipTitle": "Dica",
-    "languageOrderTipBody": "O idioma de baixo vira o idioma do app. Arraste para mudar quando quiser.",
+    "languageOrderTipBody": "O idioma no fim da lista é o idioma da interface do app. Para mudar o idioma da interface, arraste outro idioma para o fim.",
     "ttsOsTipTitle": "Dica",
     "ttsOsTipAndroid": "Para melhores resultados, use o TTS do Google. O Samsung TTS não funciona no Corpán.",
     "ttsOsTipIOS": "Em Ajustes → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urdu (Paquistão)",
     "ta": "Tâmil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Sueco",
+    "no": "Norueguês",
+    "da": "Dinamarquês",
+    "nl": "Holandês",
+    "ms": "Malaio",
+    "fi": "Finlandês",
+    "sw": "Suaíli",
+    "el": "Grego",
+    "he": "Hebraico"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",
@@ -313,7 +331,9 @@
     "rename": "Renomear",
     "renameLabel": "Novo nome para pilha",
     "selectAria": "Selecionar um perfil",
-    "selectPlaceholder": "Escolher…"
+    "selectPlaceholder": "Escolher…",
+    "introTipTitle": "Pilhas",
+    "introTipBody": "As pilhas guardam diferentes configurações de aprendizado — uma para viagem, outra para trabalho. Toque em + para criar uma nova pilha."
   },
   "rating": {
     "title": "Curtindo o Corpán?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Falha na reprodução de voz",
     "playbackFailedDetail": "Abra os ajustes de TTS do seu dispositivo para corrigir.",
     "openSettingsAction": "Abrir ajustes de TTS"
+  },
+  "discoverPacks": {
+    "title": "Deixe o Corpán com a sua cara",
+    "subtitle": "Adicione leitores imersivos, jogos e ferramentas — integrados ao Corpán para aprofundar sua prática.",
+    "maybeLater": "Talvez mais tarde",
+    "empty": "Mais pacotes estão a caminho — explore o Corpán enquanto isso.",
+    "offlineEmpty": "Conecte-se à internet para descobrir pacotes — ou pule por enquanto."
   }
 }

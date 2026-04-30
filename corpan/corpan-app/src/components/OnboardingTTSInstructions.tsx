@@ -549,7 +549,7 @@ export function OnboardingTTSInstructions() {
                 className="flex-1 min-h-0"
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
-                <div className="mx-auto w-full max-w-5xl px-3 pt-4">
+                <div className="mx-auto w-full max-w-5xl px-3">
                     <AnimatePresence mode="wait">
                         {!showPhaseB ? (
                             <motion.div

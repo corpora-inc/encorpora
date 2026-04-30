@@ -20,6 +20,7 @@ import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
+import { InstallProvider } from "@/contentPacks/InstallContext";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -185,6 +186,20 @@ export default function App() {
     []
   );
 
+  const handleLaunchGame = useCallback(
+    (game: InstalledGame) => {
+      setShowSettings(false);
+      setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
+      updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
+      // Any path that lands the user inside a pack counts as
+      // "discovered" — if they came in via the first-run panel, dismiss
+      // it so exiting the reader returns to MainExperience, not back
+      // to the panel. No-op for users who've already dismissed.
+      useSettingsStore.getState().setHasSeenPacksDiscover(true);
+    },
+    [updateGameParam]
+  );
+
   useEffect(() => {
     const onExit = () => {
       setActiveGame(null);
@@ -202,7 +217,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <InstallProvider onLaunchGame={handleLaunchGame}>
       <div className="flex flex-col min-h-0 h-screen w-full relative">
         <MainExperience />
         <div
@@ -236,11 +251,7 @@ export default function App() {
           setShowSettings(false);
           setSettingsTab(undefined);
         }}
-        onLaunchGame={(game: InstalledGame) => {
-          setShowSettings(false);
-          setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
-          updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
-        }}
+        onLaunchGame={handleLaunchGame}
         initialTab={settingsTab}
       />
 
@@ -254,6 +265,6 @@ export default function App() {
       ) : null}
 
       <TTSFailureBanner />
-    </>
+    </InstallProvider>
   );
 }

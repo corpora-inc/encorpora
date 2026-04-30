@@ -24,6 +24,7 @@ import {
 } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { DiscoverPacksPanel } from "./DiscoverPacksPanel";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -203,6 +204,7 @@ export function MainExperience() {
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
+    const hasSeenPacksDiscover = useSettingsStore((s) => s.hasSeenPacksDiscover);
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
 
@@ -213,6 +215,7 @@ export function MainExperience() {
 
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
+    const replaceCurrent = useHistoryStore((s) => s.replaceCurrent);
 
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
 
@@ -227,9 +230,25 @@ export function MainExperience() {
 
     const resolveCurrent = useCallback(async (entry_id: number) => {
         const mySeq = ++fetchSeqRef.current;
-        const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id });
-        if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
-    }, []);
+        try {
+            const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id });
+            if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
+        } catch (err) {
+            // Gaslight: history references an entry that's been pruned from the bundled corpus.
+            // Substitute a same-filter random entry and rewrite the history slot in place.
+            const msg = typeof err === "string" ? err : (err as Error)?.message || "";
+            if (!/Entry not found/i.test(msg)) throw err;
+            console.warn(`history entry ${entry_id} missing; substituting`);
+            const sub = await invoke<EntryOut>("get_random_entry_with_translations", {
+                levels,
+                domains,
+            });
+            if (sub && mySeq === fetchSeqRef.current) {
+                replaceCurrent(sub.entry_id);
+                setCurrEntry(sub);
+            }
+        }
+    }, [levels, domains, replaceCurrent]);
 
     const fetchRandomEntry = useCallback(async () => {
         const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
@@ -344,6 +363,7 @@ export function MainExperience() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
+            {!hasSeenPacksDiscover && <DiscoverPacksPanel />}
             {currEntry ? <MetaChips entry={currEntry} /> : null}
 
             <div

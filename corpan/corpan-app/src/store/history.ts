@@ -19,6 +19,13 @@ type HistoryState = {
     setHistory: (ids: number[], index?: number) => void;
     pushEntry: (entryId: number) => void;
     setIndex: (index: number) => void;
+    /**
+     * Gaslight: replace the entry id at the current index with a new id.
+     * Used when a history entry references a row that has since been pruned
+     * from the bundled corpus — we silently swap in a same-level entry the
+     * caller has already fetched, and the user never sees the missing row.
+     */
+    replaceCurrent: (entryId: number) => void;
     clear: () => void;
 };
 
@@ -113,6 +120,35 @@ export const useHistoryStore = create<HistoryState>()(
                     };
 
                     set({ byStack: { ...byStack, [aId]: next } });
+                },
+
+                replaceCurrent: (entryId: number) => {
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+
+                    set((state) => {
+                        const curr = state.byStack[aId];
+                        if (!curr || curr.index < 0 || curr.index >= curr.ids.length) {
+                            // Nothing to replace — fall back to push so we don't drop the entry.
+                            const ids = curr ? [...curr.ids, entryId] : [entryId];
+                            return {
+                                byStack: {
+                                    ...state.byStack,
+                                    [aId]: { ids, index: ids.length - 1 },
+                                },
+                            };
+                        }
+                        const ids = [...curr.ids];
+                        ids[curr.index] = entryId;
+                        return {
+                            byStack: {
+                                ...state.byStack,
+                                [aId]: { ids, index: curr.index },
+                            },
+                        };
+                    });
                 },
 
                 clear: () => {

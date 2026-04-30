@@ -29,7 +29,16 @@
     "gu": "Goudjarati",
     "ur": "Ourdou",
     "pa-Guru": "Pendjabi (Gurmukhi)",
-    "pa-Arab": "Pendjabi (Shahmukhi)"
+    "pa-Arab": "Pendjabi (Shahmukhi)",
+    "he": "Hébreu",
+    "sv": "Suédois",
+    "fi": "Finnois",
+    "nl": "Néerlandais",
+    "sw": "Swahili",
+    "no": "Norvégien",
+    "da": "Danois",
+    "el": "Grec",
+    "ms": "Malais"
   },
   "categories": {
     "travel": "Voyage",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Apprendre",
     "tts": "Synthèse vocale",
     "languageOrderTipTitle": "Astuce",
-    "languageOrderTipBody": "La langue tout en bas devient la langue de l’interface. Faites-la glisser pour la changer à tout moment.",
+    "languageOrderTipBody": "La langue tout en bas de la liste est la langue de l'interface de l'application. Pour changer la langue de l'interface, faites glisser une autre langue tout en bas.",
     "ttsOsTipTitle": "Astuce",
     "ttsOsTipAndroid": "Pour de meilleurs résultats, utilisez le TTS de Google. Samsung TTS ne fonctionne pas dans Corpán.",
     "ttsOsTipIOS": "Dans Réglages → Accessibilité, trouvez Contenu énoncé et téléchargez des voix. Note : Apple ne fournit pas de voix pour toutes les langues. Si la mise à niveau n'aide pas, demandez de l'aide via l'app Commentaires d'Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Ourdou (Pakistan)",
     "ta": "Tamoul",
     "te": "Télougou",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Suédois",
+    "no": "Norvégien",
+    "da": "Danois",
+    "nl": "Néerlandais",
+    "ms": "Malais",
+    "fi": "Finnois",
+    "sw": "Swahili",
+    "el": "Grec",
+    "he": "Hébreu"
   },
   "footer": {
     "appVersion": "Version de l’application",
@@ -313,7 +331,9 @@
     "rename": "Renommer",
     "renameLabel": "Nouveau nom pour la pile",
     "selectAria": "Sélectionner un profil",
-    "selectPlaceholder": "Choisir…"
+    "selectPlaceholder": "Choisir…",
+    "introTipTitle": "Stacks",
+    "introTipBody": "Les stacks enregistrent différentes configurations d'apprentissage — une pour le voyage, une autre pour le travail. Appuyez sur + pour en créer une nouvelle."
   },
   "rating": {
     "title": "Vous aimez Corpán ?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Échec de la lecture vocale",
     "playbackFailedDetail": "Ouvrez les paramètres TTS de votre appareil pour le corriger.",
     "openSettingsAction": "Ouvrir les paramètres TTS"
+  },
+  "discoverPacks": {
+    "title": "Faites de Corpán le vôtre",
+    "subtitle": "Ajoutez des lecteurs immersifs, des jeux et des outils — intégrés à Corpán pour approfondir votre pratique.",
+    "maybeLater": "Peut-être plus tard",
+    "empty": "D'autres packs arrivent — explorez Corpán en attendant.",
+    "offlineEmpty": "Connectez-vous à internet pour découvrir des packs — ou passez pour l'instant."
   }
 }

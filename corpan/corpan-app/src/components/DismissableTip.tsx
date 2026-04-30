@@ -78,42 +78,53 @@ export function DismissableTip({ title, body, storageKey, action, className }: P
             aria-labelledby={`${noteId}-title`}
             aria-describedby={`${noteId}-body`}
             className={[
-                "mb-5 rounded-2xl border border-amber-200 bg-amber-50 shadow-sm",
-                "px-4 py-3",
-                "origin-top transition-all duration-500 ease-out",
+                "relative mb-4 rounded-xl",
+                "border border-purple-200/70 dark:border-purple-800/50",
+                "bg-purple-50/40 dark:bg-purple-950/20",
+                "shadow-sm",
+                "px-3.5 py-3",
+                "origin-top transition-all duration-300 ease-out",
                 closing
-                    ? "opacity-0 scale-95 -translate-y-1 max-h-0 py-0 mb-0"
-                    : "opacity-100 scale-100", // removed max-h-40 to let tip box grow naturally
+                    ? "opacity-0 -translate-y-1 max-h-0 py-0 mb-0 border-0 shadow-none"
+                    : "opacity-100",
                 className ?? "",
             ].join(" ")}
         >
-            <div className="flex items-start gap-3">
-                <div className="mt-0.5 shrink-0 rounded-xl bg-amber-100 p-2">
-                    <Lightbulb className="h-5 w-5" />
-                </div>
+            <button
+                type="button"
+                onClick={close}
+                className="
+                    absolute end-1.5 top-1.5 z-10
+                    rounded-md p-1
+                    text-muted-foreground/60
+                    transition-colors
+                    hover:bg-purple-100/70 hover:text-foreground
+                    dark:hover:bg-purple-900/40
+                    focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-400
+                    cursor-pointer
+                "
+                aria-label="Close"
+            >
+                <X className="h-3.5 w-3.5" />
+            </button>
+
+            <div className="flex items-start gap-2.5 pe-6">
+                <Lightbulb
+                    className="mt-0.5 h-4 w-4 shrink-0 text-purple-500 dark:text-purple-300"
+                    aria-hidden="true"
+                />
 
                 <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-2">
-                        <div
-                            id={`${noteId}-title`}
-                            className="text-sm font-semibold text-amber-950"
-                        >
-                            {title}
-                        </div>
-
-                        <button
-                            type="button"
-                            onClick={close}
-                            className="shrink-0 rounded-md p-1 text-amber-900/70 hover:bg-amber-100 hover:text-amber-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 cursor-pointer"
-                            aria-label="Close"
-                        >
-                            <X className="h-5 w-5" />
-                        </button>
+                    <div
+                        id={`${noteId}-title`}
+                        className="text-xs font-semibold tracking-wide text-foreground"
+                    >
+                        {title}
                     </div>
 
                     <div
                         id={`${noteId}-body`}
-                        className="mt-0.5 text-sm leading-snug text-amber-900"
+                        className="mt-0.5 text-xs leading-relaxed text-muted-foreground"
                     >
                         {body}
                     </div>
@@ -122,7 +133,16 @@ export function DismissableTip({ title, body, storageKey, action, className }: P
                         <button
                             type="button"
                             onClick={action.onClick}
-                            className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-blue-300 bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-900 shadow-sm transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+                            className="
+                                mt-2 inline-flex items-center gap-1.5
+                                rounded-md border border-border bg-background
+                                px-2.5 py-1
+                                text-xs font-medium text-foreground
+                                transition-[background,border-color]
+                                hover:border-purple-300 hover:bg-accent
+                                focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
+                                cursor-pointer
+                            "
                             aria-label={action.label}
                         >
                             {action.icon}

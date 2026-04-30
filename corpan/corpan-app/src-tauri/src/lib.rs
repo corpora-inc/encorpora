@@ -14,7 +14,6 @@ use serde_json::Value as JsonValue;
 use std::collections::HashSet;
 use std::collections::HashMap;
 use tauri::{command, AppHandle, Manager, State};
-use std::time::{SystemTime, UNIX_EPOCH};
 use tauri_plugin_opener;
 use crate::content_packs::{
     download_and_install, get_manifest_url, list_installed, ContentPackInfo,
@@ -261,52 +260,30 @@ fn get_random_entry_with_translations(
         format!("WHERE {}", where_clauses.join(" AND "))
     };
 
-    let count_sql = format!(
-        "SELECT COUNT(DISTINCT e.id)
-         FROM cor_entry e
-         {domain_join}
-         {where}",
-        domain_join = domain_join,
-        where = where_str
-    );
-
-    let total: i64 = conn
-        .query_row(
-            &count_sql,
-            params_from_iter(params.iter().map(|p| &**p)),
-            |row| row.get(0),
-        )
-        .map_err(|e| e.to_string())?;
-
-    if total <= 0 {
-        return Err("No entries found for these criteria".to_string());
-    }
-
     let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
-    let nanos = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .map_err(|e| e.to_string())?
-        .subsec_nanos() as i64;
-    let offset = (nanos % total).abs();
 
+    // Use SQLite's RANDOM() — properly seeded PRNG, uniform across the
+    // *current* row set (so post-prune deletions are naturally invisible
+    // and we never offset into a stale 27k count). The previous
+    // implementation used `subsec_nanos() % total` which is clock-derived,
+    // not random: rapid taps cluster within the same nanosecond range and
+    // collide on identical offsets, producing the same handful of phrases
+    // over and over.
     let sql = format!(
         "SELECT e.id
          FROM cor_entry e
          {domain_join}
          {where}
          GROUP BY e.id
-         ORDER BY e.id
-         LIMIT 1 OFFSET ?",
+         ORDER BY RANDOM()
+         LIMIT 1",
         domain_join = domain_join,
         where = where_str
     );
 
-    let mut params_with_offset = params;
-    params_with_offset.push(Box::new(offset));
-
     let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
     let mut rows = stmt
-        .query(params_from_iter(params_with_offset.iter().map(|p| &**p)))
+        .query(params_from_iter(params.iter().map(|p| &**p)))
         .map_err(|e| e.to_string())?;
 
     let row = rows
@@ -376,77 +353,41 @@ fn get_random_entries_with_translations(
         format!("WHERE {}", where_clauses.join(" AND "))
     };
 
-    let count_sql = format!(
-        "SELECT COUNT(DISTINCT e.id)
-         FROM cor_entry e
-         {domain_join}
-         {where}",
-        domain_join = domain_join,
-        where = where_str
-    );
-
-    let total: i64 = conn
-        .query_row(
-            &count_sql,
-            params_from_iter(params.iter().map(|p| &**p)),
-            |row| row.get(0),
-        )
-        .map_err(|e| e.to_string())?;
-
-    if total <= 0 {
-        return Err("No entries found for these criteria".to_string());
-    }
-
-    let take = std::cmp::min(count, total) as usize;
-    let mut offsets = HashSet::new();
-    let mut seed =
-        SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .map_err(|e| e.to_string())?
-            .subsec_nanos() as u64;
-    let max_attempts = (take * 6).max(take + 4);
-    let mut attempts = 0;
-    while offsets.len() < take && attempts < max_attempts {
-        seed = seed.wrapping_mul(1664525).wrapping_add(1013904223);
-        let offset = (seed % total as u64) as i64;
-        offsets.insert(offset);
-        attempts += 1;
-    }
-    if offsets.len() < take {
-        for i in 0..total {
-            if offsets.len() >= take {
-                break;
-            }
-            offsets.insert(i);
-        }
-    }
-
+    // Use SQLite's RANDOM() — see singular variant above for rationale.
+    // ORDER BY RANDOM() LIMIT N draws N distinct rows in one query; no
+    // self-rolled PRNG, no offset arithmetic over a stale total.
     let sql = format!(
         "SELECT e.id
          FROM cor_entry e
          {domain_join}
          {where}
          GROUP BY e.id
-         ORDER BY e.id
-         LIMIT 1 OFFSET ?",
+         ORDER BY RANDOM()
+         LIMIT ?",
         domain_join = domain_join,
         where = where_str
     );
 
+    let mut params_with_limit = params;
+    params_with_limit.push(Box::new(count));
+
     let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
     let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
-    let mut entries = Vec::with_capacity(offsets.len());
-    for offset in offsets {
-        let mut params_ref: Vec<&dyn ToSql> = params.iter().map(|p| &**p).collect();
-        params_ref.push(&offset);
-        let mut rows = stmt
-            .query(params_from_iter(params_ref))
-            .map_err(|e| e.to_string())?;
-        let row = rows
-            .next()
-            .map_err(|e| e.to_string())?
-            .ok_or("No entries found for these criteria")?;
-        let entry_id: i64 = row.get(0).map_err(|e| e.to_string())?;
+    let mut id_rows = stmt
+        .query(params_from_iter(params_with_limit.iter().map(|p| &**p)))
+        .map_err(|e| e.to_string())?;
+
+    let mut ids: Vec<i64> = Vec::new();
+    while let Some(row) = id_rows.next().map_err(|e| e.to_string())? {
+        ids.push(row.get(0).map_err(|e| e.to_string())?);
+    }
+
+    if ids.is_empty() {
+        return Err("No entries found for these criteria".to_string());
+    }
+
+    let mut entries = Vec::with_capacity(ids.len());
+    for entry_id in ids {
         let entry = fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())?;
         entries.push(entry);
     }

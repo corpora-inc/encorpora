@@ -29,7 +29,16 @@
     "gu": "Gujarati",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "he": "Ebraico",
+    "sv": "Svedese",
+    "fi": "Finlandese",
+    "nl": "Olandese",
+    "sw": "Swahili",
+    "no": "Norvegese",
+    "da": "Danese",
+    "el": "Greco",
+    "ms": "Malese"
   },
   "categories": {
     "travel": "Viaggio",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Impara",
     "tts": "Sintesi vocale",
     "languageOrderTipTitle": "Suggerimento",
-    "languageOrderTipBody": "La lingua in fondo diventa la lingua dell’app. Trascina per cambiarla quando vuoi.",
+    "languageOrderTipBody": "La lingua in fondo all'elenco è la lingua dell'interfaccia dell'app. Per cambiare la lingua dell'interfaccia, trascina un'altra lingua in fondo.",
     "ttsOsTipTitle": "Suggerimento",
     "ttsOsTipAndroid": "Per risultati migliori, usa il TTS di Google. Samsung TTS non funziona in Corpán.",
     "ttsOsTipIOS": "In Impostazioni → Accessibilità, trova Contenuti letti e scarica le voci. Nota: Apple non fornisce voci per tutte le lingue. Se l’aggiornamento non aiuta, richiedi supporto tramite l’app Feedback di Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urdu (Pakistan)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Svedese",
+    "no": "Norvegese",
+    "da": "Danese",
+    "nl": "Olandese",
+    "ms": "Malese",
+    "fi": "Finlandese",
+    "sw": "Swahili",
+    "el": "Greco",
+    "he": "Ebraico"
   },
   "footer": {
     "appVersion": "Versione dell’app",
@@ -313,7 +331,9 @@
     "rename": "Rinomina",
     "renameLabel": "Nuovo nome per stack",
     "selectAria": "Seleziona un profilo",
-    "selectPlaceholder": "Scegli…"
+    "selectPlaceholder": "Scegli…",
+    "introTipTitle": "Stack",
+    "introTipBody": "Gli stack salvano diverse configurazioni di apprendimento — uno per il viaggio, un altro per il lavoro. Tocca + per crearne uno nuovo."
   },
   "rating": {
     "title": "Ti piace Corpán?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Riproduzione vocale fallita",
     "playbackFailedDetail": "Apri le impostazioni TTS del dispositivo per risolverlo.",
     "openSettingsAction": "Apri impostazioni TTS"
+  },
+  "discoverPacks": {
+    "title": "Rendi Corpán tuo",
+    "subtitle": "Aggiungi lettori immersivi, giochi e strumenti — integrati in Corpán per approfondire la tua pratica.",
+    "maybeLater": "Forse più tardi",
+    "empty": "Altri pack stanno arrivando — esplora Corpán nel frattempo.",
+    "offlineEmpty": "Connettiti a internet per scoprire i pack — oppure salta per ora."
   }
 }

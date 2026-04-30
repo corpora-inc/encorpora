@@ -29,7 +29,16 @@
     "gu": "Tiếng Gujarati",
     "ur": "Tiếng Urdu",
     "pa-Guru": "Tiếng Punjab (Gurmukhi)",
-    "pa-Arab": "Tiếng Punjab (Shahmukhi)"
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)",
+    "he": "Tiếng Hebrew",
+    "sv": "Tiếng Thụy Điển",
+    "fi": "Tiếng Phần Lan",
+    "nl": "Tiếng Hà Lan",
+    "sw": "Tiếng Swahili",
+    "no": "Tiếng Na Uy",
+    "da": "Tiếng Đan Mạch",
+    "el": "Tiếng Hy Lạp",
+    "ms": "Tiếng Mã Lai"
   },
   "categories": {
     "travel": "Du lịch",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Học",
     "tts": "Chuyển văn bản thành giọng nói",
     "languageOrderTipTitle": "Mẹo",
-    "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
+    "languageOrderTipBody": "Ngôn ngữ ở cuối danh sách là ngôn ngữ giao diện của ứng dụng. Để đổi ngôn ngữ giao diện, hãy kéo một ngôn ngữ khác xuống cuối.",
     "ttsOsTipTitle": "Mẹo",
     "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
     "ttsOsTipIOS": "Trong Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Tiếng Urdu (Pakistan)",
     "ta": "Tiếng Tamil",
     "te": "Tiếng Telugu",
-    "kn": "Tiếng Kannada"
+    "kn": "Tiếng Kannada",
+    "sv": "Tiếng Thụy Điển",
+    "no": "Tiếng Na Uy",
+    "da": "Tiếng Đan Mạch",
+    "nl": "Tiếng Hà Lan",
+    "ms": "Tiếng Mã Lai",
+    "fi": "Tiếng Phần Lan",
+    "sw": "Tiếng Swahili",
+    "el": "Tiếng Hy Lạp",
+    "he": "Tiếng Hebrew"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",
@@ -313,7 +331,9 @@
     "rename": "Đổi tên",
     "renameLabel": "Tên mới cho ngăn xếp",
     "selectAria": "Chọn hồ sơ",
-    "selectPlaceholder": "Chọn…"
+    "selectPlaceholder": "Chọn…",
+    "introTipTitle": "Stacks",
+    "introTipBody": "Stacks lưu các thiết lập học tập khác nhau — một cho du lịch, một cho công việc. Nhấn + để tạo stack mới."
   },
   "rating": {
     "title": "Bạn có thích Corpán không?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Phát giọng nói thất bại",
     "playbackFailedDetail": "Mở cài đặt TTS của thiết bị để khắc phục.",
     "openSettingsAction": "Mở cài đặt TTS"
+  },
+  "discoverPacks": {
+    "title": "Biến Corpán thành của bạn",
+    "subtitle": "Thêm trình đọc đắm chìm, trò chơi và công cụ — được tích hợp vào Corpán để đào sâu thực hành của bạn.",
+    "maybeLater": "Có lẽ để sau",
+    "empty": "Nhiều gói nữa đang trên đường tới — trong lúc đó hãy khám phá Corpán.",
+    "offlineEmpty": "Kết nối internet để khám phá các gói — hoặc bỏ qua ngay bây giờ."
   }
 }

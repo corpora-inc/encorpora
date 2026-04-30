@@ -29,7 +29,16 @@
     "gu": "Güceratça",
     "ur": "Urduca",
     "pa-Guru": "Pencapça (Gurmukhi)",
-    "pa-Arab": "Pencapça (Şahmukhi)"
+    "pa-Arab": "Pencapça (Şahmukhi)",
+    "he": "İbranice",
+    "sv": "İsveççe",
+    "fi": "Fince",
+    "nl": "Felemenkçe",
+    "sw": "Svahili",
+    "no": "Norveççe",
+    "da": "Danca",
+    "el": "Yunanca",
+    "ms": "Malayca"
   },
   "categories": {
     "travel": "Seyahat",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Öğrenme",
     "tts": "Metinden konuşmaya",
     "languageOrderTipTitle": "İpucu",
-    "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin.",
+    "languageOrderTipBody": "Listenin en altındaki dil, uygulamanın arayüz dilidir. Arayüz dilini değiştirmek için başka bir dili en alta sürükleyin.",
     "ttsOsTipTitle": "İpucu",
     "ttsOsTipAndroid": "En iyi sonuç: Google TTS kullanın. Samsung TTS Corpán’da çalışmaz.",
     "ttsOsTipIOS": "Settings → Accessibility içinde Spoken Content öğesini bulun ve sesleri indirin. Not: Apple her dil için ses sağlamaz. Güncelleme işe yaramazsa Apple Feedback uygulamasıyla destek isteyin.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urduca (Pakistan)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "İsveççe",
+    "no": "Norveççe",
+    "da": "Danca",
+    "nl": "Felemenkçe",
+    "ms": "Malayca",
+    "fi": "Fince",
+    "sw": "Svahili",
+    "el": "Yunanca",
+    "he": "İbranice"
   },
   "footer": {
     "appVersion": "Uygulama sürümü",
@@ -313,7 +331,9 @@
     "rename": "Yeniden adlandır",
     "renameLabel": "Yığın için yeni ad",
     "selectAria": "Bir yığın seçin",
-    "selectPlaceholder": "Seçin…"
+    "selectPlaceholder": "Seçin…",
+    "introTipTitle": "Stack'ler",
+    "introTipBody": "Stack'ler farklı öğrenme kurulumlarını kaydeder — biri seyahat için, diğeri iş için. Yeni bir stack oluşturmak için +'ya dokun."
   },
   "rating": {
     "title": "Corpán hoşunuza gidiyor mu?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Ses oynatma başarısız",
     "playbackFailedDetail": "Düzeltmek için cihazınızın TTS ayarlarını açın.",
     "openSettingsAction": "TTS ayarlarını aç"
+  },
+  "discoverPacks": {
+    "title": "Corpán'ı kendine göre uyarla",
+    "subtitle": "Sürükleyici okuyucular, oyunlar ve araçlar ekle — pratiğini derinleştirmek için Corpán'a entegre.",
+    "maybeLater": "Belki sonra",
+    "empty": "Daha fazla paket yolda — bu arada Corpán'ı keşfet.",
+    "offlineEmpty": "Paketleri keşfetmek için internete bağlan — ya da şimdilik atla."
   }
 }

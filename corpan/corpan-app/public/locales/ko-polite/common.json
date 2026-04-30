@@ -29,7 +29,16 @@
     "gu": "구자라트어",
     "ur": "우르두어",
     "pa-Guru": "펀자브어 (구르무키)",
-    "pa-Arab": "펀자브어 (샤무키)"
+    "pa-Arab": "펀자브어 (샤무키)",
+    "he": "히브리어",
+    "sv": "스웨덴어",
+    "fi": "핀란드어",
+    "nl": "네덜란드어",
+    "sw": "스와힐리어",
+    "no": "노르웨이어",
+    "da": "덴마크어",
+    "el": "그리스어",
+    "ms": "말레이어"
   },
   "categories": {
     "travel": "여행",
@@ -98,7 +107,7 @@
     "learningStepTitle": "학습",
     "tts": "텍스트 음성 변환",
     "languageOrderTipTitle": "팁",
-    "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요.",
+    "languageOrderTipBody": "목록 맨 아래의 언어가 앱의 UI 언어입니다. UI 언어를 바꾸려면 다른 언어를 맨 아래로 끌어다 놓으세요.",
     "ttsOsTipTitle": "팁",
     "ttsOsTipAndroid": "가장 잘 됩니다: Google TTS 사용. Samsung TTS는 Corpán에서 동작하지 않습니다.",
     "ttsOsTipIOS": "설정 → 접근성에서 Spoken Content를 찾아 음성을 다운로드하세요. 참고: Apple은 모든 언어에 음성을 제공하지 않습니다. 업그레이드로 해결되지 않으면 Apple의 Feedback 앱으로 지원을 요청하세요.",
@@ -291,7 +300,16 @@
     "ur-PK": "우르두어 (파키스탄)",
     "ta": "타밀어",
     "te": "텔루구어",
-    "kn": "칸나다어"
+    "kn": "칸나다어",
+    "sv": "스웨덴어",
+    "no": "노르웨이어",
+    "da": "덴마크어",
+    "nl": "네덜란드어",
+    "ms": "말레이어",
+    "fi": "핀란드어",
+    "sw": "스와힐리어",
+    "el": "그리스어",
+    "he": "히브리어"
   },
   "footer": {
     "appVersion": "앱 버전",
@@ -313,7 +331,9 @@
     "rename": "이름 변경",
     "renameLabel": "스택의 새 이름",
     "selectAria": "프로필 선택",
-    "selectPlaceholder": "선택…"
+    "selectPlaceholder": "선택…",
+    "introTipTitle": "스택",
+    "introTipBody": "스택은 서로 다른 학습 설정을 저장합니다 — 하나는 여행용, 다른 하나는 업무용으로요. + 를 눌러 새 스택을 만드세요."
   },
   "rating": {
     "title": "Corpán이 마음에 드시나요?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "음성 재생 실패",
     "playbackFailedDetail": "기기의 TTS 설정을 열어 수정하세요.",
     "openSettingsAction": "TTS 설정 열기"
+  },
+  "discoverPacks": {
+    "title": "Corpán을 나만의 것으로",
+    "subtitle": "몰입감 있는 리더, 게임, 도구를 추가해 보세요 — Corpán에 내장되어 연습을 더 깊게 만듭니다.",
+    "maybeLater": "나중에",
+    "empty": "더 많은 팩이 곧 출시됩니다 — 그동안 Corpán을 둘러보세요.",
+    "offlineEmpty": "인터넷에 연결하여 팩을 찾아보세요 — 아니면 지금은 건너뛰세요."
   }
 }

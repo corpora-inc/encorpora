@@ -74,6 +74,25 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────────────
+   Onboarding typography is independent of the user's text-size setting.
+   `.text-*` classes inside the wizard resolve to absolute px so that
+   small/medium/large/extra-large changes to root font-size never reach
+   the onboarding flow.
+   ------------------------------------------------------------------ */
+.wizard-shell {
+    font-size: 16px;
+}
+.wizard-shell .text-xs   { font-size: 12px; line-height: 16px; }
+.wizard-shell .text-sm   { font-size: 14px; line-height: 20px; }
+.wizard-shell .text-base { font-size: 16px; line-height: 24px; }
+.wizard-shell .text-lg   { font-size: 18px; line-height: 28px; }
+.wizard-shell .text-xl   { font-size: 20px; line-height: 28px; }
+.wizard-shell .text-2xl  { font-size: 24px; line-height: 32px; }
+.wizard-shell .text-3xl  { font-size: 30px; line-height: 36px; }
+.wizard-shell .text-4xl  { font-size: 36px; line-height: 40px; }
+.wizard-shell .text-5xl  { font-size: 48px; line-height: 1; }
+
+/* ──────────────────────────────────────────────────────────────────
    3) Theme tokens (kept from your file)
    ------------------------------------------------------------------ */
 @theme inline {

@@ -29,7 +29,16 @@
     "gu": "Gujarat",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "he": "Ibrani",
+    "sv": "Swedia",
+    "fi": "Finlandia",
+    "nl": "Belanda",
+    "sw": "Swahili",
+    "no": "Norwegia",
+    "da": "Denmark",
+    "el": "Yunani",
+    "ms": "Melayu"
   },
   "categories": {
     "travel": "Perjalanan",
@@ -98,7 +107,7 @@
     "learningStepTitle": "Belajar",
     "tts": "Teks-ke-ucapan",
     "languageOrderTipTitle": "Tips",
-    "languageOrderTipBody": "Bahasa paling bawah menjadi bahasa antarmuka aplikasi. Seret untuk mengubah kapan saja.",
+    "languageOrderTipBody": "Bahasa paling bawah dalam daftar adalah bahasa antarmuka aplikasi. Untuk mengubah bahasa antarmuka, seret bahasa lain ke paling bawah.",
     "ttsOsTipTitle": "Tips",
     "ttsOsTipAndroid": "Paling cocok: gunakan Google TTS. Samsung TTS tidak berfungsi di Corpán.",
     "ttsOsTipIOS": "Di Settings → Accessibility, cari Spoken Content dan unduh suara. Catatan: Apple tidak menyediakan suara untuk semua bahasa. Jika pembaruan tidak membantu, minta dukungan melalui aplikasi Feedback Apple.",
@@ -291,7 +300,16 @@
     "ur-PK": "Urdu (Pakistan)",
     "ta": "Tamil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Swedia",
+    "no": "Norwegia",
+    "da": "Denmark",
+    "nl": "Belanda",
+    "ms": "Melayu",
+    "fi": "Finlandia",
+    "sw": "Swahili",
+    "el": "Yunani",
+    "he": "Ibrani"
   },
   "footer": {
     "appVersion": "Versi aplikasi",
@@ -313,7 +331,9 @@
     "rename": "Ganti nama",
     "renameLabel": "Nama baru untuk tumpukan",
     "selectAria": "Pilih sebuah stack",
-    "selectPlaceholder": "Pilih…"
+    "selectPlaceholder": "Pilih…",
+    "introTipTitle": "Stack",
+    "introTipBody": "Stack menyimpan berbagai pengaturan belajar — satu untuk perjalanan, lainnya untuk pekerjaan. Ketuk + untuk membuat stack baru."
   },
   "rating": {
     "title": "Suka dengan Corpán?",
@@ -402,5 +422,12 @@
     "playbackFailedHeading": "Pemutaran suara gagal",
     "playbackFailedDetail": "Buka pengaturan TTS perangkat Anda untuk memperbaikinya.",
     "openSettingsAction": "Buka pengaturan TTS"
+  },
+  "discoverPacks": {
+    "title": "Jadikan Corpán milikmu",
+    "subtitle": "Tambahkan pembaca yang memikat, permainan, dan alat — terintegrasi di Corpán untuk memperdalam latihanmu.",
+    "maybeLater": "Mungkin nanti",
+    "empty": "Lebih banyak pak akan datang — sementara itu jelajahi Corpán.",
+    "offlineEmpty": "Sambungkan ke internet untuk menemukan pak — atau lewati untuk sekarang."
   }
 }

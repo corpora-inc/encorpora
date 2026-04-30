@@ -16,10 +16,17 @@ export const WELCOME_BY_LANG = {
     it: "Benvenuto",
     "pt-BR": "Bem-vindo",
     de: "Willkommen",
+    sv: "Välkommen",
+    no: "Velkommen",
+    da: "Velkommen",
+    nl: "Welkom",
     pl: "Witamy",
     ru: "Добро пожаловать",
     hu: "Üdvözöljük",
+    fi: "Tervetuloa",
     tr: "Hoş geldiniz",
+    el: "Καλώς ορίσατε",
+    he: "בְּרוּכִים הַבָּאִים",
     ar: "أهلاً وسهلاً",
     fa: "خوش آمدید",
     hi: "स्वागत है",
@@ -27,6 +34,8 @@ export const WELCOME_BY_LANG = {
     th: "ยินดีต้อนรับ",
     vi: "Chào mừng",
     id: "Selamat datang",
+    ms: "Selamat datang",
+    sw: "Karibu",
     "zh-Hans": "欢迎",
     "zh-Hant": "歡迎",
     "ko-polite": "환영합니다",
@@ -41,9 +50,6 @@ export const WELCOME_BY_LANG = {
     ur: "خوش آمديد",
 
     // Coming soon languages
-    sw: "Karibu",
-    he: "ברוך הבא",
-    el: "Καλώς ήρθατε",
     my: "ကြိုဆိုပါတယ်",
     km: "សូមស្វាគមន៍",
     "yue-Hant-HK": "歡迎",
@@ -58,10 +64,17 @@ export const AUTONYM_BY_LANG = {
     it: "Italiano",
     "pt-BR": "Português (Brasil)",
     de: "Deutsch",
+    sv: "Svenska",
+    no: "Norsk",
+    da: "Dansk",
+    nl: "Nederlands",
     pl: "Polski",
     ru: "Русский",
     hu: "Magyar",
+    fi: "Suomi",
     tr: "Türkçe",
+    el: "Ελληνικά",
+    he: "עִבְרִית",
     ar: "العربية",
     fa: "فارسی",
     hi: "हिन्दी",
@@ -69,6 +82,8 @@ export const AUTONYM_BY_LANG = {
     th: "ไทย",
     vi: "Tiếng Việt",
     id: "Bahasa Indonesia",
+    ms: "Bahasa Melayu",
+    sw: "Kiswahili",
     "zh-Hans": "中文（简体）",
     "zh-Hant": "中文（繁體）",
     "ko-polite": "한국어 (존댓말)",
@@ -83,11 +98,29 @@ export const AUTONYM_BY_LANG = {
     ur: "اردو",
 
     // Coming soon languages
-    sw: "Kiswahili",
-    he: "עברית",
-    el: "Ελληνικά",
+    // Slavic / Balkan / Eastern Europe
+    uk: "Українська",
+    ro: "Română",
+    cs: "Čeština",
+    sk: "Slovenčina",
+    sr: "Српски",
+    hr: "Hrvatski",
+    bg: "Български",
+    // Indian subcontinent
+    ml: "മലയാളം",
+    ne: "नेपाली",
+    si: "සිංහල",
+    // SE Asian
+    fil: "Filipino",
     my: "မြန်မာဘာသာ",
     km: "ខ្មែរ",
+    // Africa
+    af: "Afrikaans",
+    ha: "Hausa",
+    // Caucasus
+    hy: "Հայերեն",
+    ka: "ქართული",
+    // Sinitic
     "yue-Hant-HK": "粵語",
 } as const;
 export type LanguageCode = keyof typeof AUTONYM_BY_LANG;
@@ -103,10 +136,17 @@ export const MAKE_PRIMARY_BY_LANG = {
     it: "Imposta l'italiano come lingua principale",
     "pt-BR": "Tornar o português meu idioma principal",
     de: "Deutsch als meine Hauptsprache festlegen",
+    sv: "Gör svenska till mitt primära språk",
+    no: "Gjør norsk til hovedspråket mitt",
+    da: "Gør dansk til mit primære sprog",
+    nl: "Maak Nederlands mijn primaire taal",
     pl: "Ustaw polski jako mój język główny",
     ru: "Сделать русский основным языком",
     hu: "A magyart állítsa be elsődleges nyelvnek",
+    fi: "Tee suomesta pääkieleni",
     tr: "Türkçeyi birincil dilim olarak ayarla",
+    el: "Κάνε τα ελληνικά την κύρια γλώσσα μου",
+    he: "הַגְדֵּר עִבְרִית כִּשְׂפָתִי הָרָאשִׁית",
     ar: "اجعل العربية لغتي الرئيسية",
     fa: "فارسی را زبان اصلی من کن",
     hi: "हिंदी को मेरी मुख्य भाषा बनाएं",
@@ -114,6 +154,8 @@ export const MAKE_PRIMARY_BY_LANG = {
     th: "ตั้งค่าไทยเป็นภาษาหลักของฉัน",
     vi: "Đặt tiếng Việt làm ngôn ngữ chính của tôi",
     id: "Jadikan Bahasa Indonesia bahasa utama saya",
+    ms: "Jadikan Bahasa Melayu sebagai bahasa utama saya",
+    sw: "Fanya Kiswahili kuwa lugha yangu kuu",
     "zh-Hans": "将简体中文设为我的主要语言",
     "zh-Hant": "將繁體中文設為我的主要語言",
     "ko-polite": "한국어를 기본 언어로 설정하기",
@@ -134,11 +176,29 @@ export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
  * The autonym is rendered separately as the headline.
  */
 export const COMING_SOON_BY_LANG = {
-    sw: "Inakuja hivi karibuni",
-    he: "מגיע בקרוב",
-    el: "Έρχεται σύντομα",
+    // Slavic / Balkan / Eastern Europe
+    uk: "Скоро з'явиться",
+    ro: "În curând",
+    cs: "Již brzy",
+    sk: "Už čoskoro",
+    sr: "Ускоро",
+    hr: "Uskoro",
+    bg: "Очаквайте скоро",
+    // Indian subcontinent
+    ml: "ഉടൻ വരുന്നു",
+    ne: "चाँडै आउँदै",
+    si: "ඉක්මනින් එනවා",
+    // SE Asian
+    fil: "Malapit na",
     my: "မကြာမီလာပါမည်",
     km: "មកដល់ឆាប់ៗនេះ",
+    // Africa
+    af: "Binnekort beskikbaar",
+    ha: "Ba da daɗewa ba",
+    // Caucasus
+    hy: "Շուտով",
+    ka: "მალე",
+    // Sinitic
     "yue-Hant-HK": "即將推出",
 } as const;
 export type ComingSoonCode = keyof typeof COMING_SOON_BY_LANG;
