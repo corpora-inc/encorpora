@@ -1456,20 +1456,20 @@
 
 .catalog-tabs {
   display: flex;
-  gap: 6px;
-  padding: 0 0 12px 0;
-  border-bottom: 1px solid var(--catalog-border);
-  margin-bottom: 12px;
+  gap: 4px;
+  /* No bottom border — the screen-nav above already provides a section
+     break, and the active-tab pill is its own visual anchor. */
+  margin: 0 0 10px 0;
 }
 
 .catalog-tab {
-  padding: 8px 14px;
+  padding: 5px 11px;
   border: 1px solid transparent;
-  border-radius: var(--catalog-radius);
+  border-radius: 999px;
   background: transparent;
   color: var(--catalog-text-dim);
   font-family: var(--catalog-font);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
