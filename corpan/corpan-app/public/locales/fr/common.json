@@ -29,7 +29,16 @@
     "gu": "Goudjarati",
     "ur": "Ourdou",
     "pa-Guru": "Pendjabi (Gurmukhi)",
-    "pa-Arab": "Pendjabi (Shahmukhi)"
+    "pa-Arab": "Pendjabi (Shahmukhi)",
+    "he": "Hébreu",
+    "sv": "Suédois",
+    "fi": "Finnois",
+    "nl": "Néerlandais",
+    "sw": "Swahili",
+    "no": "Norvégien",
+    "da": "Danois",
+    "el": "Grec",
+    "ms": "Malais"
   },
   "categories": {
     "travel": "Voyage",

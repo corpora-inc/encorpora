@@ -29,7 +29,16 @@
     "gu": "Gujarati",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "he": "Hebrew",
+    "sv": "Swedish",
+    "fi": "Finnish",
+    "nl": "Dutch",
+    "sw": "Swahili",
+    "no": "Norwegian",
+    "da": "Danish",
+    "el": "Greek",
+    "ms": "Malay"
   },
   "categories": {
     "travel": "Travel",

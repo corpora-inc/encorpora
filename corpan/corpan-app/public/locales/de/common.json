@@ -29,7 +29,16 @@
     "gu": "Gujarati",
     "ur": "Urdu",
     "pa-Guru": "Panjabi (Gurmukhi)",
-    "pa-Arab": "Panjabi (Shahmukhi)"
+    "pa-Arab": "Panjabi (Shahmukhi)",
+    "he": "Hebräisch",
+    "sv": "Schwedisch",
+    "fi": "Finnisch",
+    "nl": "Niederländisch",
+    "sw": "Suaheli",
+    "no": "Norwegisch",
+    "da": "Dänisch",
+    "el": "Griechisch",
+    "ms": "Malaiisch"
   },
   "categories": {
     "travel": "Reise",

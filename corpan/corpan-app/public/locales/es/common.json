@@ -29,7 +29,16 @@
     "gu": "Gujaratí",
     "ur": "Urdu",
     "pa-Guru": "Punyabí (Gurmukhī)",
-    "pa-Arab": "Punyabí (Shahmukhi)"
+    "pa-Arab": "Punyabí (Shahmukhi)",
+    "he": "Hebreo",
+    "sv": "Sueco",
+    "fi": "Finlandés",
+    "nl": "Neerlandés",
+    "sw": "Suajili",
+    "no": "Noruego",
+    "da": "Danés",
+    "el": "Griego",
+    "ms": "Malayo"
   },
   "categories": {
     "travel": "Viaje",

@@ -73,7 +73,7 @@ export function OnboardingWelcome() {
                 className="flex flex-col items-center justify-center w-full"
                 style={{
                     maxWidth: 600,
-                    minHeight: 60,
+                    minHeight: 80,
                     position: "relative",
                 }}
             >
@@ -85,6 +85,7 @@ export function OnboardingWelcome() {
                         opacity: fading ? 0 : 1,
                         transition: `opacity ${FADE_DURATION}ms`,
                         letterSpacing: 1,
+                        lineHeight: 1.4,
                         textShadow: `0 2px 24px ${shadowColor}88, 0 0px 2px #3336`,
                         willChange: "opacity",
                     }}
@@ -97,17 +98,18 @@ export function OnboardingWelcome() {
 
             {/* Inline faded welcomes */}
             <div
-                className="flex flex-wrap gap-3 justify-center items-center"
-                style={{ maxWidth: 600 }}
+                className="flex flex-wrap gap-2 justify-center items-center"
+                style={{ maxWidth: "min(680px, 92vw)" }}
             >
                 {welcomes.map((w, i) => {
                     const isActive = i === idx;
                     return (
                         <span
                             key={w.code}
-                            className="text-md"
                             style={{
-                                margin: "0 0.2em",
+                                margin: "0 0.15em",
+                                fontSize: "clamp(0.65rem, 2.4vw, 0.85rem)",
+                                lineHeight: 1.5,
                                 opacity: isActive ? (fading ? 0.2 : 1) : 0.35,
                                 fontWeight: 500,
                                 color: isActive ? "var(--foreground)" : "var(--muted-foreground)",

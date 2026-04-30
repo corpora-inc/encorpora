@@ -29,7 +29,16 @@
     "gu": "Gudzsaráti",
     "ur": "Urdu",
     "pa-Guru": "Pandzsábi (Gurmukhi)",
-    "pa-Arab": "Pandzsábi (Shahmukhi)"
+    "pa-Arab": "Pandzsábi (Shahmukhi)",
+    "he": "Héber",
+    "sv": "Svéd",
+    "fi": "Finn",
+    "nl": "Holland",
+    "sw": "Szuahéli",
+    "no": "Norvég",
+    "da": "Dán",
+    "el": "Görög",
+    "ms": "Maláj"
   },
   "categories": {
     "travel": "Utazás",
