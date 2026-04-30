@@ -2,6 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Release notes — read this before shipping
+
+We track release notes per shippable unit. Conventions are in
+`corpan/CHANGELOGS.md`. Summary:
+
+- Every shippable unit (core app, each pack, each plugin, each
+  narration series) keeps its own `CHANGELOG.md` next to its manifest.
+- Format is [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+- **When you make a user-visible change to a unit, add a line to its
+  `[Unreleased]` section before opening a PR.** No batching.
+- When the version in the manifest changes, promote `[Unreleased]` to a
+  dated, versioned entry and start a fresh `[Unreleased]` block.
+
+If a change crosses units (e.g. a Corpán app feature that needs a
+plugin bump), add the entry to *each* affected unit's changelog.
+
 ## Project Overview
 
 Corpan is a cross-platform language learning application built with:
