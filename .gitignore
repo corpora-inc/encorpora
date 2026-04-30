@@ -48,8 +48,11 @@ voices/samples/
 
 # Backup snapshots from in-place pipeline migrations (e.g. .pre-nikkud.bak,
 # .pre-clear-fp.bak, .pre-cjk-clear.bak). Useful for one-shot rollback,
-# never useful in git history.
+# never useful in git history. The .bak.<timestamp> shape comes from ad-hoc
+# `cp file file.bak.$(date +...)` snapshots taken by agents during pipeline
+# work — also rollback-only, also not history-of-record.
 *.bak
+*.bak.*
 
 # Pronunciation test scratch — risky_words.json, generated WAVs, results.json.
 # Used to manually QA voice pronunciations before generation; not history-of-record.

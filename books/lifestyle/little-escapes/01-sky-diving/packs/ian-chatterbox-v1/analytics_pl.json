@@ -1,0 +1,855 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "pl",
+  "timestamp": "2026-04-29T01:19:29.777856+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 362,
+  "segments_converged_by_retry": 6,
+  "segments_plateau_stopped": 0,
+  "total_retries": 15,
+  "error_distribution": {
+    "trailing_silence": 117,
+    "first_word_weak": 48,
+    "tail_energy": 25,
+    "tts_audio_truncated": 10,
+    "hard_ending": 9,
+    "transcription_mismatch": 5,
+    "tail_spike": 2,
+    "pre_speech_spike": 2,
+    "final_word_weak": 2,
+    "post_speech_pop": 1,
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1,
+    "truncated_last_word": 1,
+    "min_trailing_silence": 1
+  },
+  "phase_timings": {
+    "tts": 221.13699650764465,
+    "align": 573.4119429588318,
+    "validate": 538.8267781734467,
+    "trim": 3.866063356399536,
+    "master": 93.95281982421875
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 124,
+      "passed": 121,
+      "rate": 0.9758064516129032
+    },
+    "medium_30_80": {
+      "total": 175,
+      "passed": 172,
+      "rate": 0.9828571428571429
+    },
+    "long_80_plus": {
+      "total": 69,
+      "passed": 69,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-097",
+      "attempts": 10,
+      "best_quality_score": 0.0,
+      "best_attempt": 9,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 142.0,
+          "params": {
+            "cfg_weight": 0.7939090993438186,
+            "exaggeration": 0.29114687409408363,
+            "temperature": 0.2577760589089986,
+            "top_p": 0.6764813576099514,
+            "min_p": 0.2674019470811021,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.4921279797027365,
+            "exaggeration": 0.03415574094917634,
+            "temperature": 0.4982247277508814,
+            "top_p": 0.6660341373020018,
+            "min_p": 0.3336485995400471,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 132.0,
+          "params": {
+            "cfg_weight": 0.8278519895871488,
+            "exaggeration": 0.5148430377988356,
+            "temperature": 0.5070204470721452,
+            "top_p": 0.7669028062507786,
+            "min_p": 0.2395958763699699,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 132.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.26975405022604176,
+            "temperature": 0.05,
+            "top_p": 0.7463279444273827,
+            "min_p": 0.07869591694041542,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.4640869700574721,
+            "exaggeration": 0.7225048837005441,
+            "temperature": 0.5489201718697319,
+            "top_p": 0.6374148203295255,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_energy",
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 142.0,
+          "params": {
+            "cfg_weight": 0.5391602708881051,
+            "exaggeration": 0.291646042369722,
+            "temperature": 0.26038596384239054,
+            "top_p": 0.9256226394314885,
+            "min_p": 0.1868502372596305,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "hard_ending",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.2865847583150328,
+            "exaggeration": 0.3633562958497006,
+            "temperature": 0.8155809333073316,
+            "top_p": 0.8605283618513406,
+            "min_p": 0.13961317308652968,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 132.0,
+          "params": {
+            "cfg_weight": 0.8123137357755774,
+            "exaggeration": 0.5554155558971532,
+            "temperature": 0.3556495661569731,
+            "top_p": 0.6988290135666574,
+            "min_p": 0.32272717151586783,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.44478432502021276,
+            "exaggeration": 0.8845154614276929,
+            "temperature": 0.8068433939745929,
+            "top_p": 0.8240897531439588,
+            "min_p": 0.06726205984589081,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "Jezioro, idealnie nieruchome.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-129",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.8096207058280891,
+            "exaggeration": 0.42407355675367636,
+            "temperature": 0.4821690469760382,
+            "top_p": 0.6500410627538432,
+            "min_p": 0.04579116356777449,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5539555864177177,
+            "exaggeration": 0.0,
+            "temperature": 0.35556357263980953,
+            "top_p": 0.7140003736142222,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Zakładasz kombinezon i uprząż.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8910885407338994,
+            "exaggeration": 0.4146356550558541,
+            "temperature": 0.6590054298142303,
+            "top_p": 0.6662842644114573,
+            "min_p": 0.31823581550678126,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Ludzie pytają mnie, dlaczego skaczę.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-101",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5709055804006964,
+            "exaggeration": 0.0973297987870484,
+            "temperature": 0.4705972764685359,
+            "top_p": 0.7543953585315519,
+            "min_p": 0.03047262968290812,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Ty, twoje ciało, lecisz.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-341",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8527960973548008,
+            "exaggeration": 0.18871848544935277,
+            "temperature": 0.35079112453762323,
+            "top_p": 0.7013693090901489,
+            "min_p": 0.26026871337704904,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Niektórzy powiedzą, że spokojny solo skok w cichy wieczór.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-367",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6345974449632223,
+            "exaggeration": 0.07638691524695596,
+            "temperature": 0.2822922394772547,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Sprawdzają sobie nawzajem sprzęt.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 94,
+      "text_preview": "Jest taka chwila, tuż po tym, jak wychodzisz z samolotu, którą najchętniej dałby",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "Świat przestaje być czymś, w czym żyjesz.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Staje się czymś, przez co spadasz.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "I przez pierwszych kilka sekund twój umysł nie nadąża za tym, co właśnie zrobiło",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Zawsze spodziewają się, że powiem, że chodzi o adrenalinę.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "Nie chodzi o adrenalinę.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "Adrenalinę czujesz na pierwszych pięciu skokach.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Potem przejmuje stery coś cichszego.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "To, czego szukam, to klarowność.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "Przez sześćdziesiąt sekund w wolnym spadku twój umysł nie ma nic innego do robot",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "Żadnego telefonu.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 18,
+      "text_preview": "Żadnych rachunków.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Żadnego małego zmartwienia o jutro.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Tylko wiatr, twój oddech i powolne zaokrąglenie ziemi pod tobą.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.177,
+        "temperature": 0.096,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.182,
+        "temperature": 0.251,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,1870 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "fi",
+  "timestamp": "2026-04-29T03:44:51.641678+00:00",
+  "segments_total": 368,
+  "segments_first_pass": 341,
+  "segments_converged_by_retry": 25,
+  "segments_plateau_stopped": 2,
+  "total_retries": 77,
+  "error_distribution": {
+    "trailing_silence": 108,
+    "tts_audio_truncated": 45,
+    "hard_ending": 40,
+    "tail_zero_duration_run": 39,
+    "stacked_words": 39,
+    "truncated_last_word": 39,
+    "min_trailing_silence": 39,
+    "first_word_weak": 35,
+    "transcription_mismatch": 32,
+    "tail_energy": 18,
+    "post_speech_pop": 8,
+    "pre_speech_spike": 4,
+    "tail_spike": 3,
+    "final_word_weak": 2
+  },
+  "phase_timings": {
+    "tts": 36.020057678222656,
+    "align": 26.621617794036865,
+    "validate": 3.3027796745300293,
+    "trim": 0.04479837417602539,
+    "master": 0.600409984588623
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 123,
+      "passed": 120,
+      "rate": 0.975609756097561
+    },
+    "medium_30_80": {
+      "total": 171,
+      "passed": 154,
+      "rate": 0.9005847953216374
+    },
+    "long_80_plus": {
+      "total": 74,
+      "passed": 67,
+      "rate": 0.9054054054054054
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch06-364",
+      "attempts": 17,
+      "best_quality_score": 0.0,
+      "best_attempt": 16,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.1586271278863131,
+            "temperature": 0.3585420656834629,
+            "top_p": 0.9815799733297639,
+            "min_p": 0.24172338893629983,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.4334285728898427,
+            "exaggeration": 0.02229393369436411,
+            "temperature": 0.19422005047787955,
+            "top_p": 0.7543992583697932,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.3908865107244773,
+            "exaggeration": 0.6853426264431284,
+            "temperature": 0.4740103904876447,
+            "top_p": 0.7850924665292833,
+            "min_p": 0.06026462595130169,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.10910411670526704,
+            "temperature": 0.07896105265397102,
+            "top_p": 0.9415996919797657,
+            "min_p": 0.26050534571714745,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.15519269742368214,
+            "exaggeration": 0.42936196884713024,
+            "temperature": 0.7253944078337762,
+            "top_p": 0.9477301910694116,
+            "min_p": 0.32153349657226427,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7116313098261716,
+            "exaggeration": 0.312110499357502,
+            "temperature": 0.05,
+            "top_p": 0.6702792131222848,
+            "min_p": 0.2283772694250523,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.2925225100191651,
+            "exaggeration": 0.2857969780286093,
+            "temperature": 0.48533170904174877,
+            "top_p": 0.7451390779267655,
+            "min_p": 0.10939176562292793,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.8154221709523563,
+            "exaggeration": 0.19380995376028598,
+            "temperature": 0.21287255466715388,
+            "top_p": 0.6821641081359774,
+            "min_p": 0.13285490911583267,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.42375989508617,
+            "exaggeration": 0.638564737234409,
+            "temperature": 0.6055252700525874,
+            "top_p": 0.9795443360998118,
+            "min_p": 0.0309829585110801,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.3001262913384101,
+            "exaggeration": 0.7984340803207528,
+            "temperature": 1.0149607957645046,
+            "top_p": 0.9545502311070746,
+            "min_p": 0.20772068202326163,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.01960474882504859,
+            "exaggeration": 0.7914213643842303,
+            "temperature": 0.7564066215753715,
+            "top_p": 0.7022419710867549,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.20458434763254357,
+            "exaggeration": 0.9006295591270941,
+            "temperature": 0.8473439642928433,
+            "top_p": 0.8637480963006923,
+            "min_p": 0.26274416733928063,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.09697274628702196,
+            "exaggeration": 0.5098025427121305,
+            "temperature": 0.5547802744095636,
+            "top_p": 0.6568913406925536,
+            "min_p": 0.10145223231345665,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 14,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.0,
+            "exaggeration": 0.6356482769550291,
+            "temperature": 0.5993365928039469,
+            "top_p": 1.0,
+            "min_p": 0.11027676166592928,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 15,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.3277355154863076,
+            "exaggeration": 0.9308319207374062,
+            "temperature": 0.5945778733930629,
+            "top_p": 0.7195239674829085,
+            "min_p": 0.0,
+            "repetition_penalty": 1.96
+          }
+        },
+        {
+          "attempt": 16,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.09882030224922628,
+            "exaggeration": 0.8600858079278689,
+            "temperature": 0.7009502037275739,
+            "top_p": 1.0,
+            "min_p": 0.061826879867781376,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "Jossain päin maailmaa juuri nyt pieni joukko rauhallisia ja kärsivällisiä ihmisi",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-218",
+      "attempts": 14,
+      "best_quality_score": 0.0,
+      "best_attempt": 13,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.8289743594645538,
+            "exaggeration": 0.2300085710426999,
+            "temperature": 0.6396199299760261,
+            "top_p": 0.727653700904147,
+            "min_p": 0.06052986307554667,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7239075936169472,
+            "exaggeration": 0.023996557785692485,
+            "temperature": 0.05866108102425377,
+            "top_p": 0.7748469076235018,
+            "min_p": 0.3334812626684929,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7850314666285403,
+            "exaggeration": 0.38808967684641477,
+            "temperature": 0.5761547893549939,
+            "top_p": 1.0,
+            "min_p": 0.21566629998337392,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.296209881621427,
+            "temperature": 0.30661565719533385,
+            "top_p": 0.7120622179489824,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.4556094670047256,
+            "exaggeration": 0.5080670054693949,
+            "temperature": 0.41474978546782787,
+            "top_p": 0.9112477955454544,
+            "min_p": 0.23071287816782807,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.47020393591861565,
+            "exaggeration": 0.0,
+            "temperature": 0.05,
+            "top_p": 0.876983078863753,
+            "min_p": 0.04556043392791512,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.10610595405151946,
+            "exaggeration": 0.21935375256812267,
+            "temperature": 0.5717985212659005,
+            "top_p": 0.6122194106520906,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2725094951245899,
+            "temperature": 0.3673647076705388,
+            "top_p": 0.8766037827555022,
+            "min_p": 0.18209696737678308,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.16034567151363843,
+            "exaggeration": 0.741333257987933,
+            "temperature": 1.0187043688076711,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.3513943791728789,
+            "exaggeration": 0.7754195208071961,
+            "temperature": 0.9071302985343648,
+            "top_p": 0.6314447618913857,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.021480798730124373,
+            "exaggeration": 0.8328959891101531,
+            "temperature": 0.8325328773001954,
+            "top_p": 0.9427409009515169,
+            "min_p": 0.025034742997017106,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 12,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.062037575931539024,
+            "exaggeration": 0.8526492874831831,
+            "temperature": 0.7441077762035134,
+            "top_p": 0.6532796086633003,
+            "min_p": 0.30875073107385576,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 13,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.2688083109393557,
+            "exaggeration": 0.8695364507491776,
+            "temperature": 1.0321951316145475,
+            "top_p": 1.0,
+            "min_p": 0.229153241149987,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "Jokainen laskuvarjohyppääjä pakkaa oman laskuvarjonsa.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-207",
+      "attempts": 9,
+      "best_quality_score": 0.0,
+      "best_attempt": 8,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7033096601615705,
+            "exaggeration": 0.45600951223960956,
+            "temperature": 0.6603140969267103,
+            "top_p": 0.7362643655335508,
+            "min_p": 0.3034676308451316,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.5009099474141838,
+            "exaggeration": 0.005214948990218127,
+            "temperature": 0.4007576053761549,
+            "top_p": 0.8385691560656401,
+            "min_p": 0.1627418738823521,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7604045439434306,
+            "exaggeration": 0.5505783825503238,
+            "temperature": 0.5678487269218939,
+            "top_p": 1.0,
+            "min_p": 0.29197840636147665,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4910326295354554,
+            "temperature": 0.3861685326481972,
+            "top_p": 0.9226280423768121,
+            "min_p": 0.24106946090882872,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.3640417526152328,
+            "exaggeration": 0.5264259454799455,
+            "temperature": 0.4669257475054805,
+            "top_p": 0.6756987945689559,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.6392665480400752,
+            "exaggeration": 0.14214120987920406,
+            "temperature": 0.05,
+            "top_p": 0.7388277998221171,
+            "min_p": 0.2952770827209521,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.2998691698798681,
+            "exaggeration": 0.4704682808712722,
+            "temperature": 0.7558815073330576,
+            "top_p": 1.0,
+            "min_p": 0.2546271007227582,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7832739480831699,
+            "exaggeration": 0.5012978369747265,
+            "temperature": 0.44830900825199915,
+            "top_p": 1.0,
+            "min_p": 0.18645506176130902,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Hyvä lentäjä voi peittää neljäsosakilometrin taivaan poikki kahdessakymmenessä s",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-170",
+      "attempts": 8,
+      "best_quality_score": 0.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.8836673206906573,
+            "exaggeration": 0.5143750122044723,
+            "temperature": 0.3193517492040113,
+            "top_p": 0.6511312331904042,
+            "min_p": 0.2607028416094651,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.5096854339696308,
+            "exaggeration": 0.3804368156752117,
+            "temperature": 0.20745555777339408,
+            "top_p": 0.9705548234771815,
+            "min_p": 0.05725704062850298,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.5372434757899515,
+            "exaggeration": 0.8020981077161902,
+            "temperature": 0.49888840321190797,
+            "top_p": 0.7579985362675037,
+            "min_p": 0.0,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.8390276125356144,
+            "exaggeration": 0.09255115390191043,
+            "temperature": 0.21968660607404017,
+            "top_p": 1.0,
+            "min_p": 0.019941365830213748,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.35082698060024065,
+            "exaggeration": 0.25709746365014113,
+            "temperature": 0.7002378318566811,
+            "top_p": 1.0,
+            "min_p": 0.11639235462085765,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.7569329228691054,
+            "exaggeration": 0.15541272180508983,
+            "temperature": 0.05,
+            "top_p": 0.8627995062789118,
+            "min_p": 0.3192895036812017,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4967188764745031,
+            "exaggeration": 0.42745659524913776,
+            "temperature": 0.7183385631624477,
+            "top_p": 0.6046834711870164,
+            "min_p": 0.08153002598187278,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 105,
+      "text_preview": "On olemassa pääkupu ja varakupu, sekä automaattinen laite, joka avaa varakuvun, ",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-358",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.8685116206889774,
+            "exaggeration": 0.3111711528051096,
+            "temperature": 0.6438994665262694,
+            "top_p": 0.6482120171114927,
+            "min_p": 0.04207096297178706,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.6300026621573336,
+            "exaggeration": 0.0,
+            "temperature": 0.3906687410096459,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.7193531968989733,
+            "exaggeration": 0.6173209979944736,
+            "temperature": 0.8090291413954448,
+            "top_p": 0.9232425875228552,
+            "min_p": 0.03666170703782809,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.530935554062739,
+            "temperature": 0.05,
+            "top_p": 0.9383478648837844,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.5236665226874011,
+            "exaggeration": 0.6106517075908282,
+            "temperature": 0.49506212325305443,
+            "top_p": 1.0,
+            "min_p": 0.09585398975464235,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.63658079044784,
+            "exaggeration": 0.034430328714904784,
+            "temperature": 0.05,
+            "top_p": 0.7349579979653262,
+            "min_p": 0.02658023138028856,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "Laskuvarjohyppääjät rakastavat tuota kysymystä.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-235",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.6091902047060289,
+            "exaggeration": 0.4122866243555588,
+            "temperature": 0.43231412423001686,
+            "top_p": 0.9863429699963575,
+            "min_p": 0.31248690375979793,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.49122296643229196,
+            "exaggeration": 0.1916178836773601,
+            "temperature": 0.404197054099916,
+            "top_p": 0.80223216714045,
+            "min_p": 0.10920606289188903,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.7660176927598822,
+            "exaggeration": 0.7095931732680512,
+            "temperature": 0.5076781785038172,
+            "top_p": 0.7863679470445846,
+            "min_p": 0.33711914043661373,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9962575031006875,
+            "exaggeration": 0.11035999812081687,
+            "temperature": 0.21131606588054264,
+            "top_p": 1.0,
+            "min_p": 0.18359320957764522,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "Laskuvarjohyppääjät rakastavat puhumista hypyn jälkeen.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-023",
+      "attempts": 3,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.32900816600502314,
+            "temperature": 0.35553260324964986,
+            "top_p": 0.7692054527389731,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5612414699647446,
+            "exaggeration": 0.1499154705953396,
+            "temperature": 0.0885315328722599,
+            "top_p": 0.7381410860882309,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "Ja sitten, joka viikonloppu, se puhdistaa sen taas.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-062",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.9060946792140365,
+            "exaggeration": 0.27173941652547523,
+            "temperature": 0.5373829000008687,
+            "top_p": 0.9068139314791093,
+            "min_p": 0.0,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.31464211871671055,
+            "exaggeration": 0.2758449865811843,
+            "temperature": 0.4115132358900336,
+            "top_p": 0.988648692040922,
+            "min_p": 0.2374922578434814,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Pieni nelikulmainen ikkuna vieressäsi muuttuu yhä sinisemmäksi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-030",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5583315775711943,
+            "exaggeration": 0.27265942147225997,
+            "temperature": 0.657700651034062,
+            "top_p": 0.8507144757568205,
+            "min_p": 0.03972602783032533,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Laskuvarjohyppy ei ole rohkeudesta.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-089",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.81
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6018503108602904,
+            "exaggeration": 0.4699093849179986,
+            "temperature": 0.46279301091835867,
+            "top_p": 1.0,
+            "min_p": 0.32771414225964,
+            "repetition_penalty": 1.81
+          }
+        }
+      ],
+      "text_len": 98,
+      "text_preview": "Tuuli nousee vastaan ja kannattelee sinua, niin kuin vesi kannattelee sinua, kun",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-096",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.31449257037753403,
+            "temperature": 0.49003712667579513,
+            "top_p": 1.0,
+            "min_p": 0.07977365570759073,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "Autoja moottoritiellä, hitaita kuin muurahaisia.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-127",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 110.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9365944746326633,
+            "exaggeration": 0.35080748174155585,
+            "temperature": 0.6859459504276649,
+            "top_p": 1.0,
+            "min_p": 0.017402487282591556,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "He vievät sinut taivaalle tandemhypyllä, ohjaaja selässäsi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-128",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5928249431792573,
+            "exaggeration": 0.06786828951299417,
+            "temperature": 0.5667529909322374,
+            "top_p": 0.8028673803473222,
+            "min_p": 0.042282697275143694,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "Saavut paikalle, allekirjoitat paperit, katsot lyhyen videon ja tapaat ohjaajasi",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-129",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 1.6,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.15705880742869616,
+            "temperature": 0.7078636940691201,
+            "top_p": 0.7402332598364146,
+            "min_p": 0.15622295255544896,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "Päälläsi on hyppyhaalari ja valjaat.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-171",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8328880188230776,
+            "exaggeration": 0.26337686937314253,
+            "temperature": 0.5245309649029924,
+            "top_p": 0.9600743419205195,
+            "min_p": 0.11018951955313469,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Hyppyalueita pyörittävät ammattilaiset, jotka välittävät sinusta.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-172",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7770115932349715,
+            "exaggeration": 0.47314526600335466,
+            "temperature": 0.36947128140851304,
+            "top_p": 0.6599554687426303,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "Ohjaajat välittävät, syvästi, jokaisesta hypystä.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-182",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.32044355067637764,
+            "temperature": 0.5852022433365947,
+            "top_p": 0.9110687169260359,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 19,
+      "text_preview": "Valitse päivämäärä.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-221",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6507314767078611,
+            "exaggeration": 0.30415084970843004,
+            "temperature": 0.294652745495088,
+            "top_p": 1.0,
+            "min_p": 0.02242509895632125,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "Silität narut.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-232",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7431660133240158,
+            "exaggeration": 0.2378144513616332,
+            "temperature": 0.36169892886083477,
+            "top_p": 0.7535318431601791,
+            "min_p": 0.06191513293697984,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Taidon mielenlaatu on kärsivällisyyttä.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-234",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "hard_ending",
+            "tts_audio_truncated"
+          ],
+          "score": 430.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9455745504374665,
+            "exaggeration": 0.3576721808000312,
+            "temperature": 0.7358845985205344,
+            "top_p": 0.7911810220978629,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 57,
+      "text_preview": "Se on halua käydä läpi jokainen ainoa hyppy, myös tylsät.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.028,
+        "temperature": 0.123,
+        "repetition_penalty": 0.0
+      }
+    },
+    "hard_ending": {
+      "sample_size": 12,
+      "avg_delta": {
+        "cfg_weight": -0.029,
+        "temperature": 0.208,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 12,
+      "avg_delta": {
+        "cfg_weight": -0.029,
+        "temperature": 0.208,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 9,
+      "avg_delta": {
+        "cfg_weight": -0.006,
+        "temperature": 0.216,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 9,
+      "avg_delta": {
+        "cfg_weight": -0.006,
+        "temperature": 0.216,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 9,
+      "avg_delta": {
+        "cfg_weight": -0.006,
+        "temperature": 0.216,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 9,
+      "avg_delta": {
+        "cfg_weight": -0.006,
+        "temperature": 0.216,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}
