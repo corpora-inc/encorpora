@@ -1,10 +1,14 @@
 /**
  * Live radio player wrapped around a single HTMLAudioElement.
  *
- * Critical detail: we deliberately do NOT set `crossOrigin`. Most Icecast/Shoutcast
- * stations don't send CORS headers, but plain `<audio>` playback works in no-cors
- * mode. Setting crossOrigin would break ~80% of stations for no benefit (we don't
- * read audio data via Web Audio API).
+ * Deliberately does NOT use Web Audio. Most radio Icecast/Shoutcast streams
+ * don't send CORS headers, and routing the element through a Web Audio graph
+ * requires CORS to access audio data — without it the stream is silenced by
+ * spec. The previous attempts at "play with crossOrigin, fall back without"
+ * dual-element analyser bridges, and silent-data detection all introduced
+ * more glitch than they removed. Plain `<audio>` plays every station
+ * reliably; the EQ glyph uses canned CSS animation, which is honest about
+ * "audio is flowing" without lying about "we can read its frequencies".
  */
 
 import type { RadioStation } from "../api/radioBrowser"
@@ -31,12 +35,11 @@ export type RadioPlayer = {
   dispose: () => void
 }
 
-export function createRadioPlayer(initialVolume: number = 0.85): RadioPlayer {
+export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
   const audio = document.createElement("audio")
   audio.preload = "none"
-  audio.volume = clamp01(initialVolume)
-  // Do NOT set audio.crossOrigin — see file header.
-  // Hide it; we only need it for playback, not for layout.
+  // Run at unity gain — user controls level via hardware volume keys.
+  audio.volume = 1
   audio.style.display = "none"
   document.body.appendChild(audio)
 
@@ -61,7 +64,6 @@ export function createRadioPlayer(initialVolume: number = 0.85): RadioPlayer {
       setState({ kind: "playing", station })
       if (lastPlayedUuid !== station.stationuuid) {
         lastPlayedUuid = station.stationuuid
-        // Fire and forget. Failure is logged inside registerClick.
         void registerClick(station.stationuuid)
       }
     }
@@ -76,15 +78,20 @@ export function createRadioPlayer(initialVolume: number = 0.85): RadioPlayer {
   audio.addEventListener("error", () => {
     const message = describeMediaError(audio.error)
     if (state.kind !== "idle") {
-      const station = state.kind === "error" ? state.station : state.station
-      console.error(`[world-radio] stream error for ${station.name}: ${message}`)
-      setState({ kind: "error", station, message })
+      const station = "station" in state ? state.station : null
+      if (station) {
+        console.error(`[world-radio] stream error for ${station.name}: ${message}`)
+        setState({ kind: "error", station, message })
+      }
     }
   })
 
   audio.addEventListener("stalled", () => {
     console.error("[world-radio] stream stalled")
   })
+
+  // Token guards against an out-of-order play() landing after a newer one.
+  let playToken = 0
 
   return {
     async play(station: RadioStation) {
@@ -95,14 +102,15 @@ export function createRadioPlayer(initialVolume: number = 0.85): RadioPlayer {
         setState({ kind: "error", station, message: msg })
         return
       }
+      const myToken = ++playToken
       setState({ kind: "loading", station })
       try {
-        // Pause before changing src, otherwise some browsers throw.
         if (!audio.paused) audio.pause()
         audio.src = url
         audio.load()
         await audio.play()
       } catch (err) {
+        if (myToken !== playToken) return
         const message = err instanceof Error ? err.message : String(err)
         console.error("[world-radio] play() rejected:", message)
         setState({ kind: "error", station, message })

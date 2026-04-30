@@ -1,16 +1,56 @@
-/* World Radio — minimal, type-driven. Calm Corpan-tone palette. */
+/* World Radio — type-driven, calm, Corpan-tone. */
+
+/* ============================================================
+   Tokens
+   ============================================================ */
 
 .wr-root {
+  /* Color */
   --wr-bg: #0e1116;
   --wr-bg-elev: #161b22;
+  --wr-bg-frost: rgba(14, 17, 22, 0.86);
   --wr-fg: #e8ecf1;
-  --wr-fg-dim: #8b95a3;
-  --wr-fg-faint: #4f5867;
+  --wr-fg-dim: #9aa3b0;
+  --wr-fg-faint: #5a6370;
   --wr-accent: #e8c468;
-  --wr-rule: rgba(255, 255, 255, 0.06);
+  --wr-accent-strong: #f3d181;
+  --wr-rule: rgba(255, 255, 255, 0.07);
   --wr-row-hover: rgba(255, 255, 255, 0.04);
-  --wr-row-active: rgba(232, 196, 104, 0.08);
-  --wr-error: #f0a89e;
+  --wr-error: #f17a6e;
+  --wr-error-bg: rgba(241, 122, 110, 0.12);
+  --wr-chip-bg: rgba(255, 255, 255, 0.08);
+  --wr-chip-hover: rgba(255, 255, 255, 0.14);
+  --wr-chip-active-bg: var(--wr-accent);
+  --wr-chip-active-fg: #1c1206;
+
+  /* Type scale — grows fluidly with viewport so big screens feel roomier
+     instead of looking like a phone layout shoved into the middle. The
+     min/max keep things readable on the smallest phones and from getting
+     comically large on giant monitors. */
+  --wr-text-xs:   clamp(0.72rem, 0.66rem + 0.20vw, 0.84rem);
+  --wr-text-sm:   clamp(0.82rem, 0.74rem + 0.28vw, 0.98rem);
+  --wr-text-base: clamp(0.95rem, 0.84rem + 0.36vw, 1.18rem);
+  --wr-text-lg:   clamp(1.1rem,  0.95rem + 0.52vw, 1.45rem);
+  --wr-text-xl:   clamp(1.5rem,  1.20rem + 1.00vw, 2.20rem);
+  --wr-track-tight: -0.012em;
+  --wr-track-loose: 0.08em;
+
+  /* Spacing — strict 4-step grid */
+  --wr-sp-1: 4px;
+  --wr-sp-2: 8px;
+  --wr-sp-3: 12px;
+  --wr-sp-4: 16px;
+  --wr-sp-6: 24px;
+  --wr-sp-8: 32px;
+
+  /* Motion */
+  --wr-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --wr-dur-fast: 120ms;
+  --wr-dur: 200ms;
+  --wr-dur-slow: 320ms;
+
+  /* Layout */
+  --wr-player-h: 80px;
 
   position: fixed;
   inset: 0;
@@ -21,24 +61,35 @@
   font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "Inter",
     "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 @media (prefers-color-scheme: light) {
   .wr-root {
     --wr-bg: #fafaf7;
     --wr-bg-elev: #ffffff;
+    --wr-bg-frost: rgba(250, 250, 247, 0.86);
     --wr-fg: #1c1f24;
     --wr-fg-dim: #5b6571;
     --wr-fg-faint: #a3acb8;
     --wr-accent: #b08a2c;
-    --wr-rule: rgba(0, 0, 0, 0.07);
+    --wr-accent-strong: #8d6c1d;
+    --wr-rule: rgba(0, 0, 0, 0.08);
     --wr-row-hover: rgba(0, 0, 0, 0.03);
-    --wr-row-active: rgba(176, 138, 44, 0.08);
     --wr-error: #b14d3a;
+    --wr-error-bg: rgba(177, 77, 58, 0.08);
+    --wr-chip-bg: rgba(0, 0, 0, 0.06);
+    --wr-chip-hover: rgba(0, 0, 0, 0.1);
+    --wr-chip-active-bg: var(--wr-accent);
+    --wr-chip-active-fg: #ffffff;
   }
 }
+
+/* ============================================================
+   Resets / primitives
+   ============================================================ */
 
 .wr-root *,
 .wr-root *::before,
@@ -46,158 +97,362 @@
   box-sizing: border-box;
 }
 
-.wr-root button {
+.wr-root button,
+.wr-root input,
+.wr-root select {
   font: inherit;
   color: inherit;
   background: transparent;
   border: 0;
-  padding: 0;
+}
+
+.wr-root button {
   cursor: pointer;
+  /* Note: do NOT set `padding: 0` here. It would beat class-based padding
+     via higher specificity (`.wr-root button` is 0,1,1 vs `.wr-tag` 0,1,0)
+     and silently flatten every chip in the pack. Components set their own
+     padding. */
+}
+
+.wr-root button:focus-visible,
+.wr-root input:focus-visible,
+.wr-root [tabindex]:focus-visible {
+  outline: 2px solid var(--wr-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .wr-root svg {
   width: 1em;
   height: 1em;
   display: block;
+  fill: currentColor;
 }
+
+/* ============================================================
+   Main scroll area + has-player inset
+   ============================================================ */
 
 .wr-main {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: clamp(16px, 4vw, 32px) clamp(16px, 5vw, 40px) 96px;
+  padding: 0;
   scrollbar-color: var(--wr-fg-faint) transparent;
 }
 
-/* Headings */
-.wr-section-h {
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--wr-fg-dim);
-  margin: 28px 0 8px;
+.wr-root.has-player .wr-main {
+  padding-bottom: calc(var(--wr-player-h) + var(--wr-sp-4) + env(safe-area-inset-bottom));
 }
 
+/* Layout: full-bleed at every viewport. Content goes edge-to-edge; the
+   gutter (`--wr-edge`) is what scales — small on phones, generous on
+   desktop — so a wide window feels deliberately roomy instead of being
+   capped to a phone-shaped column floating in space. */
+.wr-root {
+  --wr-edge: clamp(12px, 5.5vw, 96px);
+  --wr-art-size: clamp(36px, 3.5vw, 56px);
+}
+
+/* ============================================================
+   Section headings (browse view)
+   ============================================================ */
+
+.wr-langlist {
+  padding: var(--wr-sp-3) 0;
+}
+
+.wr-section-h {
+  font-size: var(--wr-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--wr-track-loose);
+  color: var(--wr-fg-dim);
+  margin: var(--wr-sp-6) 0 var(--wr-sp-2);
+  padding: 0 var(--wr-edge);
+}
 .wr-section-h:first-child {
-  margin-top: 4px;
+  margin-top: var(--wr-sp-2);
 }
 
 .wr-status {
   color: var(--wr-fg-dim);
-  font-size: 0.92rem;
-  margin: 8px 0;
+  font-size: var(--wr-text-sm);
+  margin: var(--wr-sp-2) 0;
+  padding: 0 var(--wr-edge);
 }
 
-/* Header (station list view) */
-.wr-header {
+.wr-langlist-alert {
+  padding: 0 var(--wr-edge);
+}
+
+/* ============================================================
+   Sticky region (language detail)
+
+   Wraps the header (back, title, subtitle, list/map toggle) AND the filter
+   rail (search, sort, tag chips) so they pin together. Modern audio/discovery
+   apps (Apple Music, Spotify, YouTube Music) all keep the filter rail sticky
+   so iterative narrowing — search, then chip, then chip again — doesn't
+   require scrolling back to the top each time.
+   ============================================================ */
+
+.wr-sticky {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 4;
+  background: var(--wr-bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--wr-dur) var(--wr-ease),
+              box-shadow var(--wr-dur) var(--wr-ease);
+}
+.wr-root.is-scrolled .wr-sticky {
+  border-bottom-color: var(--wr-rule);
+  box-shadow: 0 4px 12px -8px rgba(0, 0, 0, 0.18);
+}
+
+.wr-header {
+  /* Vertical padding shrinks on phones (less wasted space in the sticky
+     region), opens up on desktop where there's more room to breathe. */
+  padding: clamp(8px, 1.4vw, 16px) var(--wr-edge) clamp(4px, 0.6vw, 12px);
+}
+
+.wr-header-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: linear-gradient(to bottom, var(--wr-bg) 70%, rgba(0, 0, 0, 0));
-  padding: 8px 0 16px;
-  margin-bottom: 8px;
+  gap: var(--wr-sp-3);
 }
 
 .wr-back {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--wr-fg-dim);
-  padding: 6px;
-  margin-left: -6px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  margin-left: -10px;
+  border-radius: 999px;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
 }
 .wr-back:hover {
   color: var(--wr-fg);
   background: var(--wr-row-hover);
 }
-
-.wr-title {
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin: 0;
+.wr-back:active {
+  transform: scale(0.94);
 }
 
-/* Lists */
+.wr-title {
+  font-size: var(--wr-text-xl);
+  font-weight: 600;
+  letter-spacing: var(--wr-track-tight);
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wr-subtitle {
+  font-size: var(--wr-text-sm);
+  color: var(--wr-fg-dim);
+  margin: 2px 0 0 calc(36px + var(--wr-sp-3));
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Lists (browse view + station list) — full bleed
+   ============================================================ */
+
 .wr-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--wr-rule);
 }
 
 .wr-row {
+  position: relative;
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid var(--wr-rule);
+  box-shadow: inset 0 -1px var(--wr-rule);
 }
 
-.wr-row.is-active {
-  background: var(--wr-row-active);
-}
-
-.wr-row-btn,
-.wr-station-btn {
+/* Browse-row button (language list) */
+.wr-row-btn {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px 4px;
+  gap: var(--wr-sp-4);
+  padding: var(--wr-sp-3) var(--wr-edge);
   text-align: left;
-  border-radius: 4px;
-  transition: background 0.15s;
+  transition: background var(--wr-dur-fast) var(--wr-ease);
 }
-.wr-row-btn:hover,
-.wr-station-btn:hover {
+.wr-row-btn:hover {
   background: var(--wr-row-hover);
+}
+.wr-row-btn:active {
+  transform: scale(0.997);
 }
 
 .wr-row-name {
-  font-size: 1rem;
-  letter-spacing: -0.005em;
+  font-size: var(--wr-text-base);
+  letter-spacing: var(--wr-track-tight);
 }
-
 .wr-row-count {
   color: var(--wr-fg-dim);
-  font-size: 0.85rem;
+  font-size: var(--wr-text-sm);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-/* Station rows */
+/* ============================================================
+   Station rows (rich layout) — full bleed
+   ============================================================ */
+
+.wr-station-row {
+  align-items: center;
+  padding: var(--wr-sp-3) var(--wr-edge);
+  gap: var(--wr-sp-3);
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-station-row:hover {
+  background: var(--wr-row-hover);
+}
+.wr-station-row.is-active {
+  background: color-mix(in srgb, var(--wr-accent) 8%, transparent);
+}
+.wr-station-row.is-active:hover {
+  background: color-mix(in srgb, var(--wr-accent) 12%, transparent);
+}
+
 .wr-station-row .wr-station-btn {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  padding-right: 12px;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  grid-column-gap: var(--wr-sp-3);
+  grid-row-gap: 2px;
+  align-items: center;
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+}
+
+.wr-station-art {
+  grid-row: 1 / span 3;
+  grid-column: 1;
 }
 
 .wr-station-name {
-  font-size: 1rem;
+  grid-column: 2;
+  grid-row: 1;
+  font-size: var(--wr-text-base);
+  font-weight: 500;
+  letter-spacing: var(--wr-track-tight);
   color: var(--wr-fg);
+  display: flex;
+  align-items: center;
+  gap: var(--wr-sp-2);
+  min-width: 0;
+}
+/* Inner text span owns the ellipsis. Without this layer the popular badge
+   (a sibling flex child) gets cut off because text-overflow:ellipsis doesn't
+   apply to a flex container — only to a single inline-flow text element. */
+.wr-station-name-text {
+  flex: 1 1 0;
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+}
+.wr-row.is-active .wr-station-name {
+  font-weight: 700;
+  color: var(--wr-fg);
 }
 
 .wr-station-meta {
-  font-size: 0.8rem;
+  grid-column: 2;
+  grid-row: 2;
+  font-size: var(--wr-text-sm);
   color: var(--wr-fg-dim);
   font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: var(--wr-sp-2);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.wr-station-meta-flag {
+  font-size: 1em;
+  line-height: 1;
+}
+.wr-station-meta-sep {
+  color: var(--wr-fg-faint);
+}
+
+.wr-station-tags {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: 2px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.wr-station-tag {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 12px;
+  font-size: var(--wr-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg-dim);
+  white-space: nowrap;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-station-tag:hover {
+  background: var(--wr-chip-hover);
+  color: var(--wr-fg);
+}
+
+.wr-popular {
+  /* Never shrink — the inner name text ellipsizes instead, so the badge
+     always shows in full. */
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--wr-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--wr-track-loose);
+  color: var(--wr-accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--wr-accent) 18%, transparent);
+  white-space: nowrap;
 }
 
 .wr-star {
   flex: 0 0 auto;
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--wr-fg-faint);
-  padding: 12px;
-  margin-right: -8px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
   border-radius: 999px;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
 }
 .wr-star[aria-pressed="true"] {
   color: var(--wr-accent);
@@ -206,24 +461,475 @@
   background: var(--wr-row-hover);
   color: var(--wr-accent);
 }
+.wr-star:active {
+  transform: scale(0.9);
+}
 
-/* Player bar */
-.wr-player {
+/* ============================================================
+   Artwork
+   ============================================================ */
+
+.wr-art {
+  position: relative;
   flex: 0 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--wr-bg-elev);
+}
+.wr-art-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  user-select: none;
+}
+.wr-art-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--wr-dur) var(--wr-ease);
+  background: var(--wr-bg-elev);
+}
+.wr-art-img.is-loaded {
+  opacity: 1;
+}
+
+/* ============================================================
+   EQ glyph
+   ============================================================ */
+
+.wr-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  width: 14px;
+  flex: 0 0 auto;
+}
+.wr-eq span {
+  display: block;
+  width: 3px;
+  height: 14px;
+  background: var(--wr-accent);
+  border-radius: 1px;
+  transform-origin: bottom;
+  /* Default state ("playing"): independent per-bar bounce. */
+  animation: wr-eq-bar 0.9s var(--wr-ease) infinite alternate;
+}
+.wr-eq span:nth-child(1) { animation-delay: -0.42s; }
+.wr-eq span:nth-child(2) { animation-delay: -0.71s; }
+.wr-eq span:nth-child(3) { animation-delay: -0.13s; }
+
+/* Idle: hidden — no station active. */
+.wr-eq.is-idle {
+  visibility: hidden;
+}
+
+/* Connecting: synchronized "breathing" pulse — all three bars together, with
+   opacity dimming, so it reads as "loading" instead of "playing". */
+.wr-eq.is-connecting span,
+.wr-eq.is-connecting span:nth-child(1),
+.wr-eq.is-connecting span:nth-child(2),
+.wr-eq.is-connecting span:nth-child(3) {
+  animation: wr-eq-pulse 1.4s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+@keyframes wr-eq-bar {
+  0%   { transform: scaleY(0.18); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes wr-eq-pulse {
+  0%, 100% { transform: scaleY(0.25); opacity: 0.55; }
+  50%      { transform: scaleY(0.65); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-eq span { animation: none; transform: scaleY(0.55); }
+  .wr-eq.is-connecting span { animation: none; transform: scaleY(0.4); opacity: 0.7; }
+}
+
+/* ============================================================
+   Filter rail (search / sort / tags)
+   ============================================================ */
+
+.wr-filters {
+  display: flex;
+  flex-direction: column;
+  /* Same scaling logic as .wr-header — tight on phones, roomy on desktop. */
+  gap: clamp(4px, 0.8vw, 8px);
+  padding: clamp(4px, 0.6vw, 12px) var(--wr-edge) clamp(6px, 0.8vw, 12px);
+}
+
+.wr-search-wrap {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px clamp(16px, 5vw, 40px) 14px;
-  background: var(--wr-bg-elev);
-  border-top: 1px solid var(--wr-rule);
-  transform: translateY(100%);
-  transition: transform 0.25s ease-out;
-  padding-bottom: max(14px, env(safe-area-inset-bottom));
+}
+.wr-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--wr-fg-faint);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wr-search-icon svg {
+  width: 16px;
+  height: 16px;
+}
+.wr-search {
+  flex: 1 1 auto;
+  height: 40px;
+  padding: 0 12px 0 38px;
+  font-size: var(--wr-text-base);
+  border-radius: 10px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg);
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.wr-search::placeholder {
+  color: var(--wr-fg-faint);
+}
+.wr-search:hover {
+  background: var(--wr-row-hover);
+}
+.wr-search::-webkit-search-decoration,
+.wr-search::-webkit-search-cancel-button,
+.wr-search::-webkit-search-results-button,
+.wr-search::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }
 
+.wr-filter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--wr-sp-2);
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.wr-sort {
+  position: relative;
+  flex: 0 0 auto;
+}
+.wr-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 16px;
+  font-size: var(--wr-text-sm);
+  font-weight: 500;
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg);
+  white-space: nowrap;
+  letter-spacing: 0.005em;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-sort-btn:hover {
+  background: var(--wr-chip-hover);
+}
+.wr-sort-btn[aria-expanded="true"] {
+  background: var(--wr-chip-hover);
+}
+
+.wr-sort-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 6;
+  min-width: 160px;
+  padding: var(--wr-sp-1);
+  background: var(--wr-bg-elev);
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--wr-rule);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wr-sort-menu[hidden] { display: none; }
+.wr-sort-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--wr-sp-2) var(--wr-sp-3);
+  border-radius: 6px;
+  font-size: var(--wr-text-sm);
+  text-align: left;
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-sort-option:hover {
+  background: var(--wr-row-hover);
+}
+.wr-sort-option[aria-checked="true"] {
+  color: var(--wr-accent);
+}
+
+/* Tag chips (filter rail) */
+.wr-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* Right padding gives the last chip breathing room before it meets the
+     fade mask, so it isn't visually clipped when scrolled to the end. */
+  padding: 4px 28px 4px 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Soft fade on the right edge to hint at horizontal scroll. */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+.wr-tags::-webkit-scrollbar { display: none; }
+
+.wr-tag {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 16px;
+  font-size: var(--wr-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg);
+  white-space: nowrap;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-tag:hover {
+  background: var(--wr-chip-hover);
+}
+.wr-tag:active {
+  transform: scale(0.96);
+}
+.wr-tag[aria-pressed="true"] {
+  background: var(--wr-chip-active-bg);
+  color: var(--wr-chip-active-fg);
+}
+.wr-tag[aria-pressed="true"]:hover {
+  filter: brightness(1.04);
+}
+/* Persistent clear button — sibling of .wr-tags, never scrolls away.
+   Compact circular icon to save horizontal space on phones where the chip
+   strip is already cramped. Always reachable on the left while chips scroll. */
+.wr-tag-clear {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg-dim);
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-tag-clear:hover {
+  background: var(--wr-chip-hover);
+  color: var(--wr-fg);
+}
+.wr-tag-clear:active {
+  transform: scale(0.94);
+}
+
+/* ============================================================
+   Segmented toggle (list/map)
+   ============================================================ */
+
+.wr-segmented {
+  display: inline-flex;
+  background: var(--wr-chip-bg);
+  border-radius: 8px;
+  padding: 2px;
+  flex: 0 0 auto;
+}
+.wr-segmented-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 40px;
+  font-size: 1rem;
+  color: var(--wr-fg-dim);
+  border-radius: 6px;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-segmented-btn[aria-pressed="true"] {
+  background: var(--wr-bg-elev);
+  color: var(--wr-fg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.wr-segmented-btn:hover:not([aria-pressed="true"]) {
+  color: var(--wr-fg);
+}
+
+/* ============================================================
+   Alerts (error UX)
+   ============================================================ */
+
+.wr-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--wr-sp-3);
+  padding: var(--wr-sp-3) var(--wr-sp-4);
+  margin: var(--wr-sp-3) 0;
+  border-left: 3px solid var(--wr-error);
+  background: var(--wr-error-bg);
+  border-radius: 8px;
+}
+.wr-alert-icon {
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+  color: var(--wr-error);
+  margin-top: 1px;
+}
+.wr-alert-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.wr-alert-title {
+  font-size: var(--wr-text-base);
+  font-weight: 600;
+  color: var(--wr-fg);
+}
+.wr-alert-text {
+  font-size: var(--wr-text-sm);
+  color: var(--wr-fg-dim);
+}
+.wr-alert-action {
+  flex: 0 0 auto;
+  margin-top: var(--wr-sp-1);
+  padding: 6px 12px;
+  font-size: var(--wr-text-sm);
+  font-weight: 500;
+  color: var(--wr-error);
+  background: transparent;
+  border-radius: 6px;
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-alert-action:hover {
+  background: var(--wr-row-hover);
+}
+
+/* ============================================================
+   Empty / loading
+   ============================================================ */
+
+.wr-empty {
+  text-align: center;
+  padding: var(--wr-sp-8) var(--wr-sp-4);
+  color: var(--wr-fg-dim);
+  font-size: var(--wr-text-sm);
+}
+.wr-empty-action {
+  margin-top: var(--wr-sp-3);
+  padding: 6px 14px;
+  font-size: var(--wr-text-sm);
+  color: var(--wr-accent);
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+}
+
+.wr-skeleton-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--wr-sp-3);
+  padding: var(--wr-sp-3) 0;
+  box-shadow: inset 0 -1px var(--wr-rule);
+}
+.wr-skeleton-art {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--wr-chip-bg);
+  animation: wr-shimmer 1.4s var(--wr-ease) infinite;
+}
+.wr-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+.wr-skeleton-line {
+  height: 10px;
+  border-radius: 4px;
+  background: var(--wr-chip-bg);
+  animation: wr-shimmer 1.4s var(--wr-ease) infinite;
+}
+.wr-skeleton-line.short { width: 50%; }
+.wr-skeleton-line.medium { width: 70%; }
+
+@keyframes wr-shimmer {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-skeleton-art, .wr-skeleton-line { animation: none; opacity: 0.7; }
+}
+
+/* ============================================================
+   Player bar
+   ============================================================ */
+
+.wr-player {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--wr-sp-3);
+  padding: var(--wr-sp-3) clamp(var(--wr-sp-4), 5vw, var(--wr-sp-8));
+  padding-bottom: max(var(--wr-sp-3), env(safe-area-inset-bottom));
+  background: var(--wr-bg-elev);
+  border-top: 1px solid var(--wr-rule);
+  transform: translateY(110%);
+  transition: transform var(--wr-dur-slow) var(--wr-ease);
+  z-index: 10;
+}
 .wr-player.is-active {
   transform: translateY(0);
+}
+
+.wr-player-art {
+  flex: 0 0 auto;
 }
 
 .wr-player-btn {
@@ -235,54 +941,311 @@
   border-radius: 999px;
   background: var(--wr-accent);
   color: #1c1206;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  transition: filter var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
 }
 .wr-player-btn:hover {
   filter: brightness(1.05);
 }
 .wr-player-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.94);
 }
 
 .wr-player-meta {
   flex: 1 1 auto;
   min-width: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--wr-sp-1) 0;
+  border-radius: 6px;
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-player-meta:hover {
+  background: var(--wr-row-hover);
 }
 
 .wr-player-title {
-  font-size: 0.95rem;
+  font-size: var(--wr-text-base);
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: var(--wr-sp-2);
+  min-width: 0;
+}
+.wr-player-title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .wr-player-sub {
-  font-size: 0.78rem;
+  font-size: var(--wr-text-xs);
   color: var(--wr-fg-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .wr-player-sub--error {
   color: var(--wr-error);
 }
 
-.wr-volume {
-  flex: 0 0 auto;
-  width: 90px;
-  accent-color: var(--wr-accent);
+/* ============================================================
+   Map view
+   ============================================================ */
+
+.wr-map-wrap {
+  position: relative;
+  /* 280px accounts for the sticky region: header (~80) + search (~50) +
+     filter row (~40) + subtitle (~24) + padding/safe-area (~80). The filter
+     rail is sticky in both list and map mode (in map mode the sort pill is
+     hidden but search + tags remain useful for narrowing markers). */
+  height: calc(100dvh - 280px);
+  min-height: 320px;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.wr-root.has-player .wr-map-wrap {
+  height: calc(100dvh - 280px - var(--wr-player-h) - env(safe-area-inset-bottom));
+}
+.wr-map {
+  width: 100%;
+  height: 100%;
+  background: var(--wr-bg-elev);
 }
 
-@media (max-width: 380px) {
-  .wr-volume { display: none; }
+/* Marker (44×44 tap area with a 16px accent dot centered) */
+.wr-marker-wrap {
+  display: grid !important;
+  place-items: center;
+  background: transparent !important;
+  border: 0 !important;
 }
+.wr-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--wr-accent);
+  box-shadow: 0 0 0 3px rgba(232, 196, 104, 0.22),
+              0 1px 4px rgba(0, 0, 0, 0.32);
+  border: 2px solid var(--wr-bg);
+  transition: transform var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-marker.is-active {
+  background: var(--wr-accent-strong);
+  animation: wr-pulse 1.4s var(--wr-ease) infinite;
+}
+@keyframes wr-pulse {
+  0%   { box-shadow: 0 0 0 3px rgba(232,196,104,0.22), 0 0 0 0 rgba(232,196,104,0.5); }
+  100% { box-shadow: 0 0 0 3px rgba(232,196,104,0.22), 0 0 0 14px rgba(232,196,104,0); }
+}
+
+/* Cluster bubble (48×48 — same accessibility requirement as markers) */
+.wr-cluster-wrap {
+  display: grid !important;
+  place-items: center;
+  background: transparent !important;
+  border: 0 !important;
+}
+.wr-cluster {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--wr-bg-elev);
+  color: var(--wr-fg);
+  font-size: var(--wr-text-sm);
+  font-weight: 600;
+  border: 1px solid var(--wr-rule);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popover */
+.wr-pop {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: var(--wr-sp-3);
+  align-items: center;
+  min-width: 220px;
+  max-width: 260px;
+}
+.wr-pop-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.wr-pop-name {
+  font-size: var(--wr-text-base);
+  font-weight: 600;
+  color: var(--wr-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wr-pop-meta {
+  font-size: var(--wr-text-xs);
+  color: var(--wr-fg-dim);
+}
+.wr-pop-actions {
+  grid-column: 1 / span 2;
+  display: flex;
+  gap: var(--wr-sp-2);
+  margin-top: var(--wr-sp-2);
+}
+.wr-pop-play,
+.wr-pop-list {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: var(--wr-text-sm);
+  font-weight: 500;
+  border-radius: 8px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-pop-play {
+  background: var(--wr-accent);
+  color: #1c1206;
+  font-weight: 600;
+}
+.wr-pop-play:hover {
+  filter: brightness(1.05);
+}
+.wr-pop-list {
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg-dim);
+}
+.wr-pop-list:hover {
+  background: var(--wr-row-hover);
+  color: var(--wr-fg);
+}
+
+/* Override Leaflet popup chrome to match our palette */
+.leaflet-popup-content-wrapper {
+  background: var(--wr-bg-elev) !important;
+  color: var(--wr-fg) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28) !important;
+  border: 1px solid var(--wr-rule) !important;
+  padding: 4px !important;
+}
+.leaflet-popup-content {
+  margin: var(--wr-sp-3) var(--wr-sp-4) !important;
+  font-family: inherit !important;
+  font-size: var(--wr-text-base) !important;
+}
+/* Bigger close X for accessibility */
+.leaflet-popup-close-button {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 22px !important;
+  line-height: 28px !important;
+  color: var(--wr-fg-dim) !important;
+  padding: 0 !important;
+}
+.leaflet-popup-tip {
+  background: var(--wr-bg-elev) !important;
+  border: 1px solid var(--wr-rule) !important;
+}
+.leaflet-container {
+  font-family: inherit !important;
+  background: var(--wr-bg-elev) !important;
+}
+.leaflet-control-attribution {
+  background: var(--wr-bg-frost) !important;
+  color: var(--wr-fg-dim) !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a {
+  color: var(--wr-fg-dim) !important;
+}
+.leaflet-control-zoom a {
+  background: var(--wr-bg-elev) !important;
+  color: var(--wr-fg) !important;
+  border-color: var(--wr-rule) !important;
+}
+
+/* ============================================================
+   Close-pack button — top-right floating
+   ============================================================ */
+
+.wr-close-pack {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + var(--wr-sp-2));
+  right: var(--wr-sp-3);
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--wr-fg-dim);
+  background: color-mix(in srgb, var(--wr-bg) 60%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 999px;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-close-pack:hover {
+  background: var(--wr-chip-hover);
+  color: var(--wr-fg);
+}
+.wr-close-pack:active {
+  transform: scale(0.94);
+}
+
+/* ============================================================
+   Hint toast
+   ============================================================ */
+
+.wr-hint {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--wr-player-h) + var(--wr-sp-4) + env(safe-area-inset-bottom));
+  transform: translateX(-50%) translateY(20px);
+  background: var(--wr-bg-elev);
+  color: var(--wr-fg);
+  padding: var(--wr-sp-2) var(--wr-sp-4);
+  border-radius: 999px;
+  font-size: var(--wr-text-sm);
+  border: 1px solid var(--wr-rule);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--wr-dur-slow) var(--wr-ease),
+              opacity var(--wr-dur-slow) var(--wr-ease);
+  z-index: 11;
+  max-width: 90vw;
+  text-align: center;
+}
+.wr-hint.is-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================
+   Misc
+   ============================================================ */
 
 .spin {
   animation: wr-spin 0.9s linear infinite;
 }
 @keyframes wr-spin {
   from { transform: rotate(0); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }

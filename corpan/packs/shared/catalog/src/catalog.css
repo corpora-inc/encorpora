@@ -1491,7 +1491,7 @@
 
 .catalog-cover-thumb {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   background: var(--catalog-surface);
   background-size: cover;
   background-position: center;
@@ -1896,8 +1896,8 @@
 
 .command-drawer-book-hero-cover {
   flex-shrink: 0;
-  width: 96px;
-  aspect-ratio: 3 / 4;
+  width: 112px;
+  aspect-ratio: 1 / 1;
   background: var(--catalog-surface);
   background-size: cover;
   background-position: center;

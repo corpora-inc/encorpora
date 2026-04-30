@@ -2,6 +2,12 @@ import { defineConfig } from "vite"
 import path from "node:path"
 import { readFileSync, writeFileSync } from "node:fs"
 
+const manifestPath = path.resolve(__dirname, "manifest.json")
+// Read at config-load time so the version is injected as a build-time constant
+// rather than imported into source — that would put manifest.json in the watch
+// graph and conflict with dev-corpan.mjs's devRevision bumper.
+const packManifest = JSON.parse(readFileSync(manifestPath, "utf8")) as { version: string }
+
 const updateManifestPlugin = () => {
   let isProduction = false
 
@@ -14,7 +20,6 @@ const updateManifestPlugin = () => {
       if (!isProduction) return
 
       try {
-        const manifestPath = path.resolve(__dirname, "manifest.json")
         const manifest = JSON.parse(readFileSync(manifestPath, "utf8"))
         manifest.devRevision = new Date().toISOString()
         writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
@@ -30,6 +35,7 @@ export default defineConfig({
   publicDir: false,
   define: {
     "process.env": {},
+    __WORLD_RADIO_VERSION__: JSON.stringify(packManifest.version),
   },
   resolve: {
     alias: {

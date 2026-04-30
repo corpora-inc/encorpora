@@ -104,7 +104,7 @@
     "manifestUrl": "/corpan/packs/world-radio/manifest.json",
     "zipUrl": "/corpan/packs/world-radio.zip",
     "landingUrl": "/corpan/packs/world-radio/",
-    "avatarSource": "corpan/packs/world-radio/world-radio-avatar.svg",
+    "avatarSource": "corpan/packs/world-radio/world-radio-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/world-radio",
     "minAppVersion": "0.10.0",
     "channel": "stable",

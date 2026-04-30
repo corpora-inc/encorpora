@@ -11,6 +11,7 @@
 import { ALL_CORPAN_LANGUAGES, corpanToRadioLanguage, displayName } from "../api/languageMap"
 import { getLanguages } from "../api/radioBrowser"
 import { el, clear } from "../ui/dom"
+import { createAlert } from "../ui/alert"
 
 export type LanguageListView = {
   root: HTMLElement
@@ -24,13 +25,13 @@ export function createLanguageListView(opts: {
   onSelect: (corpanCode: string) => void
 }): LanguageListView {
   const root = el("section", { class: "wr-langlist" })
+  const alertSlot = el("div", { class: "wr-langlist-alert" })
   const stackHeading = el("h2", { class: "wr-section-h" }, ["Your stack"])
   const stackList = el("ul", { class: "wr-list" })
   const allHeading = el("h2", { class: "wr-section-h" }, ["All languages"])
   const allList = el("ul", { class: "wr-list" })
-  const status = el("p", { class: "wr-status" }, ["Loading languages…"])
 
-  root.appendChild(status)
+  root.appendChild(alertSlot)
   root.appendChild(stackHeading)
   root.appendChild(stackList)
   root.appendChild(allHeading)
@@ -84,12 +85,11 @@ export function createLanguageListView(opts: {
     for (const { code, count } of rest) {
       allList.appendChild(row(code, count))
     }
-
-    status.style.display = counts.size === 0 ? "" : "none"
   }
 
   async function refresh() {
     try {
+      clear(alertSlot)
       const languages = await getLanguages()
       const byName = new Map<string, number>()
       for (const l of languages) byName.set(l.name.toLowerCase(), l.stationcount)
@@ -104,7 +104,17 @@ export function createLanguageListView(opts: {
       render()
     } catch (err) {
       console.error("[world-radio] language list refresh failed:", err)
-      status.textContent = "Couldn't reach the radio directory. Check your connection."
+      clear(alertSlot)
+      alertSlot.appendChild(
+        createAlert({
+          title: "Couldn't reach the radio directory",
+          body: "Check your connection and try again.",
+          actionLabel: "Try again",
+          onAction: () => {
+            void refresh()
+          },
+        })
+      )
     }
   }
 

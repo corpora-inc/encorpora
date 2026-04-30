@@ -11,8 +11,9 @@
  */
 
 import * as analytics from "@shared/analytics"
-import manifest from "../manifest.json"
 import type { RadioStation } from "./api/radioBrowser"
+
+declare const __WORLD_RADIO_VERSION__: string
 
 const ANALYTICS_ENDPOINT = "https://d1xp3xghrx3jfa.cloudfront.net/v1/events"
 const READER_ID = "world_radio"
@@ -24,7 +25,7 @@ export function initAnalytics(): void {
   initialized = true
   analytics.init({
     readerId: READER_ID,
-    readerVersion: manifest.version,
+    readerVersion: __WORLD_RADIO_VERSION__,
     endpoint: ANALYTICS_ENDPOINT,
     enabled: ANALYTICS_ENDPOINT.length > 0,
   })
@@ -86,6 +87,48 @@ export function trackFavoriteToggled(corpanCode: string, station: RadioStation, 
     language: corpanCode,
     station_uuid: station.stationuuid,
     added,
+  })
+}
+
+/** User typed in the search box (debounced; fired with the final result count). */
+export function trackSearchPerformed(corpanCode: string, query: string, resultCount: number): void {
+  analytics.track("radio_search_performed", {
+    language: corpanCode,
+    query_length: query.length,
+    result_count: resultCount,
+  })
+}
+
+/** User changed sort order. */
+export function trackSortChanged(corpanCode: string, sortKey: string): void {
+  analytics.track("radio_sort_changed", {
+    language: corpanCode,
+    sort_key: sortKey,
+  })
+}
+
+/** User toggled a tag chip. applied=true → narrowed; false → removed. */
+export function trackTagFilter(corpanCode: string, tag: string, applied: boolean): void {
+  analytics.track("radio_tag_filter", {
+    language: corpanCode,
+    tag: truncate(tag, 40),
+    applied,
+  })
+}
+
+/** User flipped to map view. marker_count = stations with valid geo coords. */
+export function trackMapViewOpened(corpanCode: string, markerCount: number): void {
+  analytics.track("radio_map_view_opened", {
+    language: corpanCode,
+    marker_count: markerCount,
+  })
+}
+
+/** User pressed Play on a map popover (vs a list row). */
+export function trackMarkerPlay(corpanCode: string, station: RadioStation): void {
+  analytics.track("radio_marker_play", {
+    language: corpanCode,
+    station_uuid: station.stationuuid,
   })
 }
 

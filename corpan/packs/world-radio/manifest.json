@@ -1,7 +1,7 @@
 {
   "id": "world_radio",
   "name": "World Radio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
   "entry": "dist/app.js",
   "styles": [
@@ -9,5 +9,5 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-04-30T06:03:57.853Z"
+  "devRevision": "2026-04-30T17:56:27.764Z"
 }
