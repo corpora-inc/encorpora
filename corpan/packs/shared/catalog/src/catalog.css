@@ -1654,9 +1654,12 @@
 
 .catalog-narrator-detail-hero {
   position: relative;
-  border-radius: var(--catalog-radius);
-  overflow: hidden;
-  background: var(--catalog-surface);
+  background: transparent;
+  /* Reserve room below the banner for the avatar to bleed into. The avatar
+     is positioned bottom:-56px so this padding keeps the layout stable
+     instead of having the avatar collide with the identity block below. */
+  padding-bottom: 56px;
+  margin-bottom: 8px;
 }
 
 .catalog-narrator-detail-banner {
@@ -1665,6 +1668,8 @@
   background-size: cover;
   background-position: center;
   background-color: var(--catalog-bg);
+  border-radius: var(--catalog-radius);
+  overflow: hidden;
 }
 
 .catalog-narrator-detail-banner--placeholder {

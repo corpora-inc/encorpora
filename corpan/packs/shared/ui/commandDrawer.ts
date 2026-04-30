@@ -26,12 +26,6 @@ export type CommandDrawerOptions = {
   onSelectBook?: (bookId: string) => void
   onExit?: () => void
   onOpen?: () => void
-  /**
-   * Optional element mounted in the drawer header where the legacy language-pill
-   * grid used to live. Pass the element from `createNarrationSwitcher({ mode:
-   * "drawer" })` to keep the language switcher in 1 row at any installed-count.
-   */
-  languageSwitcher?: HTMLElement
 }
 
 export type CommandDrawer = {
@@ -74,40 +68,10 @@ export function createCommandDrawer(
   handle.appendChild(handleBar)
   sheet.appendChild(handle)
 
-  // --- Sticky header: Now Playing + Language ---
-  const sticky = document.createElement("div")
-  sticky.className = "command-drawer-sticky"
-
-  const nowPlayingEl = document.createElement("div")
-  nowPlayingEl.className = "command-drawer-now-playing"
-
-  const npTitle = document.createElement("div")
-  npTitle.className = "command-drawer-now-playing-title"
-
-  // Only show now-playing block when there's a book title
-  function updateNowPlayingVisibility() {
-    const { nowPlaying } = drawerStore.getState()
-    if (nowPlaying.bookTitle) {
-      nowPlayingEl.style.display = ""
-      npTitle.textContent = nowPlaying.bookTitle
-    } else {
-      nowPlayingEl.style.display = "none"
-    }
-  }
-
-  nowPlayingEl.append(npTitle)
-  updateNowPlayingVisibility()
-
-  const langContainer = document.createElement("div")
-  langContainer.className = "command-drawer-languages"
-  if (opts.languageSwitcher) {
-    langContainer.appendChild(opts.languageSwitcher)
-  }
-
-  // No explicit close button — backdrop tap and swipe-down on the handle
-  // are sufficient (and the X never quite fit the top-right anyway).
-  sticky.append(nowPlayingEl, langContainer)
-  sheet.appendChild(sticky)
+  // (Book title + language switcher used to live in a sticky drawer header
+  // here. They moved to the main-view transport bar so the catalog has more
+  // breathing room when the drawer is open. See `appShell.ts` —
+  // `transportNowPlaying`.)
 
   // --- Screen nav tabs ---
   const screenNav = document.createElement("div")
@@ -278,20 +242,14 @@ export function createCommandDrawer(
   // Append to parent
   parent.append(trigger, backdrop, sheet)
 
-  // Language pills now come from the narrationSwitcher component (passed in via
-  // opts.languageSwitcher). The drawer just hosts its element in `langContainer`.
-
   // Subscribe to store changes
   const storeUnsub = drawerStore.subscribe((state, prev) => {
-    if (state.nowPlaying !== prev.nowPlaying) {
-      updateNowPlayingVisibility()
-    }
     if (state.activeScreen !== prev.activeScreen) {
       updateActiveScreen()
     }
   })
 
-  // --- Gesture dismiss (swipe down on handle + sticky header) ---
+  // --- Gesture dismiss (swipe down on the handle) ---
   let dragStartY = 0
   let dragStartTime = 0
   let isDragging = false
@@ -345,7 +303,6 @@ export function createCommandDrawer(
   }
 
   attachDragListeners(handle, false)
-  attachDragListeners(sticky, true)
 
   // --- Open / Close ---
   function open() {
