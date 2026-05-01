@@ -8,6 +8,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-04-30
+### Fixed
+- Drop stations the current platform can't decode before they reach the list:
+  AAC+/AACP on Android Chromium WebView, OGG/Vorbis on Apple, and plain-HTTP
+  streams on iOS / iPadOS (ATS).
+
+## [0.3.0] - 2026-04-30
+### Changed
+- Radio next follow-up (#235): version bump for the post-Narrators polish.
+
 ## [0.2.2] - 2026-04
 ### Changed
 - Bundled with the readers + radio polish pass.
