@@ -55,6 +55,18 @@ targets:
           - UIInterfaceOrientationLandscapeRight
         UIBackgroundModes:
           - audio
+        # ATS exception for media playback. The World Radio pack streams
+        # public Icecast/Shoutcast radio, which is overwhelmingly delivered
+        # over plain HTTP — WKWebView's `<audio>` element refuses HTTP under
+        # default ATS. `NSAllowsArbitraryLoadsForMedia` is Apple's blessed
+        # opt-out for streaming-media apps; `NSAllowsArbitraryLoadsInWebContent`
+        # belt-and-braces for `<audio>` HLS playlists fetched through web
+        # content. We do NOT enable the global `NSAllowsArbitraryLoads`
+        # because no other corpan code path needs cleartext HTTP — keeping
+        # it scoped to media is friendlier to App Review.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoadsForMedia: true
+          NSAllowsArbitraryLoadsInWebContent: true
         # CFBundleShortVersionString + CFBundleVersion are auto-injected by
         # Tauri from tauri.conf.json's `version` field. Don't hardcode them
         # here or they'll drift.

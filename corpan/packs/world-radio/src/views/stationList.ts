@@ -14,6 +14,7 @@
 import { displayName } from "../api/languageMap"
 import {
   getStationsByLanguage,
+  isPlayableOnPlatform,
   parseTags,
   type RadioStation,
 } from "../api/radioBrowser"
@@ -446,8 +447,13 @@ export function createStationListView(opts: {
   function loadStations() {
     void (async () => {
       try {
-        const stations = await getStationsByLanguage(opts.radioName)
+        const raw = await getStationsByLanguage(opts.radioName)
         if (disposed) return
+        // Drop stations whose codec is known-broken on the current platform
+        // (e.g., AAC+/AACP on Android Chromium WebView). Filter at display
+        // time, not cache time, so the same localStorage cache works across
+        // devices.
+        const stations = raw.filter(isPlayableOnPlatform)
         allStations = stations
 
         // Compute popular threshold (top-decile clickcount) for the badge.
