@@ -244,60 +244,16 @@ function isPlayable(s: RadioStation): boolean {
 }
 
 /**
- * Per-platform playability filter, applied at display time (not cache time)
- * so the same cache works across devices. Returns false for stations whose
- * codec or URL scheme is known-broken on the current platform.
+ * Per-platform playability filter, applied at display time. With the native
+ * `tauri-plugin-radio-stream` plugin in 0.11.8+ (ExoPlayer / AVPlayer), every
+ * codec we care about decodes natively, so this is now a pass-through. We
+ * keep the function for the call site in stationList — if a future codec
+ * gap shows up we drop the filter back in here without touching the UI.
  *
- * Today's known gaps:
- *   - **Android Chromium WebView** fails to decode HE-AAC v2 / `audio/aacp`
- *     (raw AAC v1 still works). Codec strings to drop: "AAC+", "AACP".
- *   - **iOS / iPadOS WKWebView** enforces App Transport Security: plain
- *     HTTP streams fail unless the host app declares an ATS exception.
- *     Many Icecast/Shoutcast servers run over HTTP; until the host's
- *     `NSAllowsArbitraryLoadsForMedia` ships in a new app version, drop
- *     stations whose only URL is HTTP. Once the host change ships, this
- *     filter line is a no-op for HTTPS-only stations and only the codec
- *     filter remains.
- *   - **iOS / Safari** doesn't decode Vorbis (commonly labelled "OGG" in
- *     the Radio Browser codec field). iOS 17.4+ added Opus-in-WebM but
- *     not Vorbis-in-Ogg. Drop "OGG"/"VORBIS" on Apple platforms.
- *
- * Once the native streaming plugin (PR 2 — ExoPlayer/AVPlayer) lands, this
- * filter narrows further or goes away entirely.
+ * If a station fails to play despite the filter, the native plugin surfaces
+ * a play-time error and the user can pick something else.
  */
-const ANDROID_UNPLAYABLE_CODECS = new Set(["AAC+", "AACP"])
-const APPLE_UNPLAYABLE_CODECS = new Set(["OGG", "VORBIS"])
-
-function isHttpOnly(s: RadioStation): boolean {
-  const a = (s.url_resolved || "").toLowerCase()
-  const b = (s.url || "").toLowerCase()
-  // True only if every URL we know is plain HTTP (not https, not file, etc.).
-  // If either URL is HTTPS we'll happily try that one.
-  if (a && a.startsWith("https://")) return false
-  if (b && b.startsWith("https://")) return false
-  return Boolean(a || b)
-}
-
-export function isPlayableOnPlatform(s: RadioStation): boolean {
-  if (typeof navigator === "undefined") return true
-  const ua = navigator.userAgent
-  const codec = s.codec.toUpperCase()
-
-  if (/Android/i.test(ua)) {
-    if (ANDROID_UNPLAYABLE_CODECS.has(codec)) return false
-  }
-
-  // Apple: covers iPhone, iPad, iPod (WKWebView in the app) and macOS Safari
-  // when running in the bundled app shell. Browser-dev mode on macOS also
-  // matches; that's fine — Mac Safari has the same Vorbis gap, and HTTP
-  // streams work in dev mode anyway since browsers don't enforce ATS.
-  if (/iPhone|iPad|iPod|Macintosh/i.test(ua)) {
-    if (APPLE_UNPLAYABLE_CODECS.has(codec)) return false
-    // ATS gate — only block on iOS-family devices. macOS's bundled Safari
-    // permits HTTP for legacy reasons; iOS WKWebView blocks it by default.
-    if (/iPhone|iPad|iPod/i.test(ua) && isHttpOnly(s)) return false
-  }
-
+export function isPlayableOnPlatform(_s: RadioStation): boolean {
   return true
 }
 

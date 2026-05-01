@@ -40,11 +40,11 @@ export type App = {
   dispose: () => void
 }
 
-export function mountApp(
+export async function mountApp(
   container: HTMLElement,
   hostApi: HostApi,
   initialState?: { stackConfig?: StackConfig }
-): App {
+): Promise<App> {
   initAnalytics()
 
   container.classList.add("wr-root")
@@ -68,7 +68,10 @@ export function mountApp(
   container.appendChild(closeBtn)
 
   const prefs = prefsStore.load()
-  const player = createRadioPlayer(prefs.volume)
+  // Async: probes the host for the native `radio-stream` plugin and picks
+  // the native or WebView player accordingly. ~50 ms round-trip on Tauri,
+  // immediate (resolved promise) in browser dev.
+  const player = await createRadioPlayer(prefs.volume)
   const mediaGlue = attachMediaSession(player)
   void mediaGlue
 
@@ -337,8 +340,17 @@ export function mountApp(
       shutdownAnalytics()
       if (hintEl) hintEl.remove()
       if (hintTimer) window.clearTimeout(hintTimer)
-      container.classList.remove("wr-root", "has-player", "is-scrolled")
-      clear(container)
+      // Remove only the nodes *this* instance added, not `clear(container)`.
+      // Otherwise an aborted in-flight mount can wipe a freshly-mounted
+      // successor's DOM during its dispose, leaving a black screen.
+      main.remove()
+      closeBtn.remove()
+      playerBar.root.remove()
+      // Only strip our root classes if container still has them — a successor
+      // may have re-added them.
+      if (container.children.length === 0) {
+        container.classList.remove("wr-root", "has-player", "is-scrolled", "is-mapview")
+      }
     },
   }
 }

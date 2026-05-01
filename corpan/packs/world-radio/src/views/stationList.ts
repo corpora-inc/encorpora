@@ -78,6 +78,13 @@ export function createStationListView(opts: {
   // initialView is a one-time override (e.g. from "tap player meta" smart
   // navigation). We don't persist it — that's still up to the user toggling.
   let viewMode: ViewMode = opts.initialView ?? prefs.view
+  // Mirror viewMode onto a data attribute. The .wr-root flex column is the
+  // single source of layout truth (header → main → player), so styles
+  // branch off `[data-view]` here without needing any class on .wr-root.
+  const syncViewModeAttr = () => {
+    root.setAttribute("data-view", viewMode)
+  }
+  syncViewModeAttr()
   // Player state for the active row's glyph. Drives the EQ mode mapping:
   // loading → connecting, playing → playing, paused/error/idle → idle.
   type RowEqState = "idle" | "loading" | "playing" | "paused"
@@ -120,6 +127,7 @@ export function createStationListView(opts: {
     value: viewMode,
     onChange: (next) => {
       viewMode = next
+      syncViewModeAttr()
       saveLanguagePrefs(opts.corpanCode, { ...currentPrefsSnapshot(), view: next })
       filterRail.setSortVisible(next === "list")
       void renderViewMode()
@@ -385,6 +393,7 @@ export function createStationListView(opts: {
         onShowInList: (station) => {
           // Switch to list view, marking the station active.
           viewMode = "list"
+          syncViewModeAttr()
           toggle.setValue("list")
           saveLanguagePrefs(opts.corpanCode, {
             ...currentPrefsSnapshot(),
@@ -449,10 +458,6 @@ export function createStationListView(opts: {
       try {
         const raw = await getStationsByLanguage(opts.radioName)
         if (disposed) return
-        // Drop stations whose codec is known-broken on the current platform
-        // (e.g., AAC+/AACP on Android Chromium WebView). Filter at display
-        // time, not cache time, so the same localStorage cache works across
-        // devices.
         const stations = raw.filter(isPlayableOnPlatform)
         allStations = stations
 

@@ -7,7 +7,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-05-01
+
 ### Added
+- **World Radio: native streaming** via `tauri-plugin-radio-stream` —
+  ExoPlayer (Android) / AVPlayer (iOS) running outside the WebView.
+  Lock-screen / Control Center transport, ICY metadata, background-resilient
+  playback, audio-focus surfacing on Android, lock-screen widget hardened
+  on iOS through pause/resume cycles. Pack rebuilt for the new architecture
+  ships as World Radio 0.5.0; older app versions stay on World Radio 0.3.x.
+- Catalog filter now honors `maxAppVersion` on V3 entries, letting a single
+  pack id ship different versions to old vs. new apps (e.g. World Radio
+  0.3.x for ≤ 0.11.x, 0.5.x for ≥ 0.12.0).
 - First-run **Discover Packs** panel after onboarding — shows curated
   packs (Earthgate Reader, Stargate Reader, Hover Runner, Hanzipan)
   with one-tap install. Persisted dismiss flag (`hasSeenPacksDiscover`)

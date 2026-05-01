@@ -1,41 +1,21 @@
 /**
- * MediaSession + native lock-screen wiring.
+ * MediaSession glue — webview-only.
  *
- * Why no silent anchor: our `<audio>` element is the actively-playing media
- * element, which is exactly what WebKit MediaSession needs. The shared
- * `mediaSessionAnchor` is meant for Web-Audio-only readers that have no
- * HTMLMediaElement; we don't need it here.
+ * On Tauri (iOS/Android), the `tauri-plugin-radio-stream` plugin owns the
+ * lock-screen card, ICY metadata, MediaSession integration, audio focus,
+ * and remote commands directly via `MPNowPlayingInfoCenter` /
+ * `MPRemoteCommandCenter` (iOS) and Media3 `MediaSessionService` (Android).
+ * This file is a no-op there.
  *
- * Native side: when running inside Tauri (iOS/Android), we tell the native
- * audio-keepalive plugin about the current station so the lock-screen "now
- * playing" card shows artwork + name, and we listen for remote play/pause
- * commands forwarded by the native MediaSession.
- *
- * Two delivery paths from native → JS on Android:
- *   1. `window.__readerCmd('pause')` via WebView.evaluateJavascript — the
- *      direct, reliable path the readers use.
- *   2. Tauri channel events via `listenForRemoteCommands` — the structured
- *      path. On iOS the plugin only fires interruption/route events here;
- *      lock-screen play/pause is handled by WebKit's `navigator.mediaSession`.
- *
- * We wire both. A small dedupe prevents the dual paths from double-firing.
+ * In a plain browser (`npm run dev`), this wires WebKit's
+ * `navigator.mediaSession` action handlers to our player so the macOS
+ * touch-bar / Now Playing card and Linux/Windows browser media keys still
+ * drive playback during design iteration. Nothing more — no native plugin
+ * commands fire on this path.
  */
 
-import {
-  startNativeKeepAlive,
-  stopNativeKeepAlive,
-  updateNativeNowPlaying,
-  pauseNativeKeepAlive,
-  resumeNativeKeepAlive,
-  listenForRemoteCommands,
-} from "@shared/audio"
+import { hasNativeRadio } from "@shared/audio"
 import type { PlayerState, RadioPlayer } from "./radioPlayer"
-
-declare global {
-  interface Window {
-    __readerCmd?: (cmd: string) => void
-  }
-}
 
 export type MediaSessionGlue = {
   apply: (state: PlayerState) => void
@@ -43,9 +23,19 @@ export type MediaSessionGlue = {
 }
 
 export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
-  const ms = typeof navigator !== "undefined" ? navigator.mediaSession : undefined
+  // Native path: the plugin already drives every lock-screen / remote-command
+  // surface end-to-end. Returning an inert glue keeps the call sites simple.
+  if (hasNativeRadio()) {
+    return { apply: () => {}, dispose: () => {} }
+  }
 
-  // Dedupe play/pause that arrive on both delivery paths within a small window.
+  const ms = typeof navigator !== "undefined" ? navigator.mediaSession : undefined
+  if (!ms) {
+    return { apply: () => {}, dispose: () => {} }
+  }
+
+  // Dedupe play/pause taps that arrive in quick succession (shouldn't really
+  // happen on the webview path, but cheap insurance).
   const REMOTE_DEDUPE_MS = 250
   let lastRemoteCmd: "play" | "pause" | null = null
   let lastRemoteAt = 0
@@ -62,114 +52,28 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
     }
   }
 
-  if (ms) {
-    ms.setActionHandler("play", () => dispatchRemote("play"))
-    ms.setActionHandler("pause", () => dispatchRemote("pause"))
-    ms.setActionHandler("stop", () => player.stop())
-    // No seek/skip handlers — radio is live.
-  }
-
-  const previousReaderCmd = window.__readerCmd
-  window.__readerCmd = (cmd: string) => {
-    if (cmd === "play" || cmd === "pause") dispatchRemote(cmd)
-  }
-
-  const removeRemoteListener = listenForRemoteCommands({
-    onPlay: () => dispatchRemote("play"),
-    onPause: () => dispatchRemote("pause"),
-    onInterruptionBegan: () => player.pause(),
-    onInterruptionEnded: (shouldResume) => {
-      if (shouldResume) void player.resume()
-    },
-  })
-
-  let nativeStarted = false
-  let lastStateKind: PlayerState["kind"] = "idle"
-
-  function applyNative(state: PlayerState) {
-    if (state.kind === "playing" || state.kind === "loading") {
-      const s = state.station
-      if (!nativeStarted) {
-        void startNativeKeepAlive(s.name, s.country || "", s.language || "")
-        nativeStarted = true
-      } else if (lastStateKind === "paused") {
-        // Revive the native session on play-after-pause. Without this the
-        // lock-screen card shows the right metadata but the native side may
-        // still think it's paused (or have let its audio session expire).
-        void resumeNativeKeepAlive("play-after-pause")
-      }
-      // Treat "loading" as playing on the native card. The user pressed play;
-      // showing a play icon mid-buffer is wrong, and on Android the service
-      // guards `handlePauseCommand` on `isPlaying=true` — telling it false
-      // here would silently swallow a lock-screen pause tap during buffering.
-      void updateNativeNowPlaying(
-        s.name,
-        s.country || s.language || "",
-        0,
-        0,
-        true
-      )
-    } else if (state.kind === "paused") {
-      void pauseNativeKeepAlive("user-pause")
-    } else if (state.kind === "idle") {
-      if (nativeStarted) {
-        void stopNativeKeepAlive()
-        nativeStarted = false
-      }
-    }
-    lastStateKind = state.kind
-  }
-
-  // Background pulse — ping the native now-playing every ~5 s while the page
-  // is hidden and the radio is supposed to be playing. Without this, iOS
-  // silently deactivates AVAudioSession after a few minutes of no NowPlayingInfo
-  // updates, and the WKWebView <audio> element can't restart without a user
-  // gesture. Stream "dies" lock-screen-locked. The readers do the same dance
-  // (earthgate-reader/src/game.ts startBackgroundTimers) — radio-specific
-  // version is simpler since there's no position to advance.
-  let bgTimer: number | null = null
-  function startBackgroundPulse() {
-    if (bgTimer !== null) return
-    bgTimer = window.setInterval(() => {
-      const s = player.getState()
-      if (s.kind !== "playing") return
-      // No need to ping while the user is actively in the app.
-      if (typeof document !== "undefined" && document.visibilityState !== "hidden") return
-      void updateNativeNowPlaying(
-        s.station.name,
-        s.station.country || s.station.language || "",
-        0,
-        0,
-        true
-      )
-    }, 5000)
-  }
-  function stopBackgroundPulse() {
-    if (bgTimer === null) return
-    window.clearInterval(bgTimer)
-    bgTimer = null
-  }
-  startBackgroundPulse()
+  ms.setActionHandler("play", () => dispatchRemote("play"))
+  ms.setActionHandler("pause", () => dispatchRemote("pause"))
+  ms.setActionHandler("stop", () => player.stop())
+  // No seek/skip handlers — radio is live.
 
   function apply(state: PlayerState) {
-    if (ms) {
-      if (state.kind === "playing" || state.kind === "loading" || state.kind === "paused") {
-        const station = state.station
-        ms.metadata = new MediaMetadata({
-          title: station.name || "Unknown station",
-          artist: station.country || "",
-          album: station.language || "",
-          artwork: station.favicon
-            ? [{ src: station.favicon, sizes: "256x256", type: "image/png" }]
-            : [],
-        })
-        ms.playbackState = state.kind === "playing" ? "playing" : "paused"
-      } else {
-        ms.metadata = null
-        ms.playbackState = "none"
-      }
+    if (!ms) return
+    if (state.kind === "playing" || state.kind === "loading" || state.kind === "paused") {
+      const station = state.station
+      ms.metadata = new MediaMetadata({
+        title: station.name || "Unknown station",
+        artist: station.country || "",
+        album: station.language || "",
+        artwork: station.favicon
+          ? [{ src: station.favicon, sizes: "256x256", type: "image/png" }]
+          : [],
+      })
+      ms.playbackState = state.kind === "playing" ? "playing" : "paused"
+    } else {
+      ms.metadata = null
+      ms.playbackState = "none"
     }
-    applyNative(state)
   }
 
   const unsub = player.subscribe(apply)
@@ -178,23 +82,10 @@ export function attachMediaSession(player: RadioPlayer): MediaSessionGlue {
     apply,
     dispose() {
       unsub()
-      removeRemoteListener?.()
-      stopBackgroundPulse()
-      if (previousReaderCmd) {
-        window.__readerCmd = previousReaderCmd
-      } else {
-        delete window.__readerCmd
-      }
-      if (ms) {
-        ms.setActionHandler("play", null)
-        ms.setActionHandler("pause", null)
-        ms.setActionHandler("stop", null)
-        ms.metadata = null
-      }
-      if (nativeStarted) {
-        void stopNativeKeepAlive()
-        nativeStarted = false
-      }
+      ms.setActionHandler("play", null)
+      ms.setActionHandler("pause", null)
+      ms.setActionHandler("stop", null)
+      ms.metadata = null
     },
   }
 }

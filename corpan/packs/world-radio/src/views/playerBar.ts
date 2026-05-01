@@ -4,6 +4,11 @@
  * 56px station artwork on the left, then play button, meta column, volume.
  * EQ glyph next to the title when playing. Tap meta column → onMetaTap so
  * the parent can navigate to that station's language detail.
+ *
+ * When the native streaming plugin is active (iOS/Android), the player also
+ * surfaces ICY/Shoutcast `StreamTitle` updates as a subtle marquee strip
+ * under the station name. Browser-dev mode never has this metadata, so the
+ * strip is hidden there.
  */
 
 import { el, clear } from "../ui/dom"
@@ -11,7 +16,7 @@ import { ICON_PAUSE, ICON_PLAY, ICON_SPINNER } from "../ui/icons"
 import { createStationArt } from "../ui/stationArt"
 import { createEqGlyph } from "../ui/eqGlyph"
 import { countryCodeToFlag } from "../ui/flagEmoji"
-import type { PlayerState, RadioPlayer } from "../audio/radioPlayer"
+import type { IcyInfo, PlayerState, RadioPlayer } from "../audio/radioPlayer"
 import type { RadioStation } from "../api/radioBrowser"
 
 export type PlayerBarView = {
@@ -50,8 +55,16 @@ export function createPlayerBar(player: RadioPlayer, opts: {
   titleRow.appendChild(eq.root)
   const titleText = el("span", { class: "wr-player-title-text", dir: "ltr" }, ["—"])
   titleRow.appendChild(titleText)
+  // ICY now-playing strip — hidden until the native plugin surfaces a
+  // StreamTitle. Inside is a single moving span so we can fade-replace its
+  // text on track changes (CSS handles the marquee on overflow).
+  const icyStrip = el("div", { class: "wr-player-icy", "aria-live": "polite" })
+  icyStrip.style.display = "none"
+  const icyText = el("span", { class: "wr-player-icy-text" })
+  icyStrip.appendChild(icyText)
   const sub = el("div", { class: "wr-player-sub" }, [""])
   meta.appendChild(titleRow)
+  meta.appendChild(icyStrip)
   meta.appendChild(sub)
 
   let lastStation: RadioStation | null = null
@@ -135,10 +148,33 @@ export function createPlayerBar(player: RadioPlayer, opts: {
 
   const unsub = player.subscribe(render)
 
+  let lastIcyTitle: string | null = null
+  function renderIcy(info: IcyInfo) {
+    const title = info.title?.trim() || ""
+    if (!title) {
+      icyStrip.style.display = "none"
+      icyText.textContent = ""
+      lastIcyTitle = null
+      return
+    }
+    if (title === lastIcyTitle) return
+    lastIcyTitle = title
+    icyStrip.style.display = ""
+    // Brief fade so the text change feels intentional, not jittery. CSS
+    // handles the actual transition; we just toggle a class.
+    icyStrip.classList.remove("is-fresh")
+    // Force a layout flush so the animation restarts on every change.
+    void icyStrip.offsetWidth
+    icyText.textContent = title
+    icyStrip.classList.add("is-fresh")
+  }
+  const unsubIcy = player.subscribeIcy(renderIcy)
+
   return {
     root,
     dispose() {
       unsub()
+      unsubIcy()
       eq.dispose()
       root.remove()
     },

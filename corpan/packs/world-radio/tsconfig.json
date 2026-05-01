@@ -14,9 +14,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@shared/audio": ["../shared/audio/nativeKeepAlive.ts"],
+      "@shared/audio": ["../shared/audio/index.ts"],
       "@shared/analytics": ["../shared/analytics/index.ts"]
     }
   },
-  "include": ["src", "../shared/audio/nativeKeepAlive.ts", "../shared/analytics/index.ts"]
+  "include": [
+    "src",
+    "../shared/audio/index.ts",
+    "../shared/audio/nativeKeepAlive.ts",
+    "../shared/audio/nativeRadio.ts",
+    "../shared/analytics/index.ts"
+  ]
 }
