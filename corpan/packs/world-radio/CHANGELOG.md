@@ -8,6 +8,47 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-05-01
+
+Skipped 0.4.x for tetraphobia. This is the native-streaming generation —
+ships alongside Corpan 0.12.0 (gated via `minAppVersion` in the catalog;
+also probes at runtime and falls back to HTML5 audio on older hosts).
+
+### Added
+- Native streaming via `tauri-plugin-radio-stream` (ExoPlayer on Android,
+  AVPlayer on iOS) — replaces the WebView `<audio>` element on Tauri hosts
+  for true background playback.
+- Lock-screen / Control Center transport: play, pause, stop, station name,
+  country, artwork; tap notification body returns to the app.
+- ICY / Shoutcast `StreamTitle` capture → live now-playing strip in the
+  player bar and lock-screen subtitle that update with each track change.
+- Audio-focus suppression visibility on Android: clear in-app message
+  ("Audio is in use by another app — will resume when it's free") instead
+  of silent failure during a phone call or other media interruption.
+- Auto fallback to HTML5 player on hosts without the native plugin (browser
+  dev + Corpan ≤ 0.11.x). Pack probes the host once at init and picks the
+  WebView player if `radio-stream` isn't registered.
+
+### Changed
+- Map view layout reworked as a three-row flex column (`HEADER / MAP /
+  CONTROLS`) on `.wr-root`. Map fills edge-to-edge between the sticky
+  header and the player bar with no gap. Player bar is a flex sibling
+  (not an absolute overlay) — content is centered above the safe-area
+  inset, with an Android floor of 12 px so the bar clears the gesture
+  handle even when `env(safe-area-inset-bottom)` reports 0.
+- Subtitle ("N stations · M with location") hidden in map mode; the
+  markers themselves convey density.
+
+### Fixed
+- iOS pause-then-resume on the lock-screen widget. Live HTTP streams
+  (Shoutcast/Icecast) can't resume from a stalled `AVPlayerItem`; we now
+  rebuild the item from the saved URL on every resume. `AVAudioSession`
+  uses `routeSharingPolicy: .longForm` so iOS keeps the now-playing
+  widget attached through pause/resume cycles.
+- Removed `MPNowPlayingInfoPropertyIsLiveStream` — the IsLiveStream +
+  `PlaybackRate=0` combination caused iOS to interpret pause as
+  "stream ended" and show "Not Playing" with an unreachable play button.
+
 ## [0.3.1] - 2026-04-30
 ### Fixed
 - Drop stations the current platform can't decode before they reach the list:

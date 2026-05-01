@@ -666,6 +666,7 @@ dependencies = [
  "tauri-plugin-iap",
  "tauri-plugin-opener",
  "tauri-plugin-os",
+ "tauri-plugin-radio-stream",
  "tauri-plugin-safe-area-insets-css",
  "tauri-plugin-subscriptions",
  "tauri-plugin-tts",
@@ -4414,6 +4415,18 @@ dependencies = [
  "serialize-to-javascript",
  "sys-locale",
  "tauri",
+ "tauri-plugin",
+ "thiserror 2.0.18",
+]
+
+[[package]]
+name = "tauri-plugin-radio-stream"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
  "tauri-plugin",
  "thiserror 2.0.18",
 ]

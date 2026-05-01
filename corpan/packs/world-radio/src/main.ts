@@ -22,15 +22,31 @@ const registerGame = () => {
         scope.__worldRadio.dispose()
         scope.__worldRadio = undefined
       }
-      const app = mountApp(
+      // `mountApp` is async: it probes the host for the native radio plugin
+      // before deciding native vs WebView player. The host's `mount()`
+      // contract is sync, so we kick off the mount and hand back an
+      // unmount() that races the still-mounting app.
+      let disposed = false
+      let mounted: App | null = null
+      void mountApp(
         container,
         hostApi,
         initialState as { stackConfig?: StackConfig } | undefined
-      )
-      scope.__worldRadio = app
+      ).then((app) => {
+        if (disposed) {
+          app.dispose()
+          return
+        }
+        mounted = app
+        scope.__worldRadio = app
+      }).catch((err) => {
+        console.error("[world-radio] mountApp failed:", err)
+      })
       return {
         unmount: () => {
-          app.dispose()
+          disposed = true
+          mounted?.dispose()
+          mounted = null
           scope.__worldRadio = undefined
         },
       }

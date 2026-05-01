@@ -39,7 +39,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@shared/audio": path.resolve(__dirname, "../shared/audio/nativeKeepAlive.ts"),
+      "@shared/audio": path.resolve(__dirname, "../shared/audio/index.ts"),
       "@shared/analytics": path.resolve(__dirname, "../shared/analytics/index.ts"),
     },
   },

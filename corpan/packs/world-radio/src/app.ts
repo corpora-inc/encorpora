@@ -40,11 +40,11 @@ export type App = {
   dispose: () => void
 }
 
-export function mountApp(
+export async function mountApp(
   container: HTMLElement,
   hostApi: HostApi,
   initialState?: { stackConfig?: StackConfig }
-): App {
+): Promise<App> {
   initAnalytics()
 
   container.classList.add("wr-root")
@@ -68,7 +68,10 @@ export function mountApp(
   container.appendChild(closeBtn)
 
   const prefs = prefsStore.load()
-  const player = createRadioPlayer(prefs.volume)
+  // Async: probes the host for the native `radio-stream` plugin and picks
+  // the native or WebView player accordingly. ~50 ms round-trip on Tauri,
+  // immediate (resolved promise) in browser dev.
+  const player = await createRadioPlayer(prefs.volume)
   const mediaGlue = attachMediaSession(player)
   void mediaGlue
 
