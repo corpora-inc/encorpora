@@ -18,22 +18,45 @@ const registerGame = () => {
   registry[GAME_ID] = {
     mount: (container, hostApi, initialState) => {
       const scope = globalThis as GlobalScope
-      if (scope.__worldRadio) {
-        scope.__worldRadio.dispose()
-        scope.__worldRadio = undefined
-      }
+
+      // Synchronously cancel any prior instance attached to this container,
+      // even if its mountApp() is still in flight. We track the cancel
+      // function on the container itself so a second mount() call (before
+      // the first one resolved) can find it — `scope.__worldRadio` only
+      // gets set after the promise resolves, so it can't be relied on here
+      // to detect an in-flight predecessor. Without this guard, two
+      // mountApp() calls append two copies of the entire UI to the same
+      // container, producing a duplicated "Your stack / All languages"
+      // and other ghost UI.
+      type PackContainer = HTMLElement & { __wrAbort?: () => void }
+      const c = container as PackContainer
+      c.__wrAbort?.()
+      container.replaceChildren()
+      container.classList.remove("wr-root", "has-player", "is-scrolled", "is-mapview")
+
       // `mountApp` is async: it probes the host for the native radio plugin
       // before deciding native vs WebView player. The host's `mount()`
       // contract is sync, so we kick off the mount and hand back an
       // unmount() that races the still-mounting app.
-      let disposed = false
+      let aborted = false
       let mounted: App | null = null
+
+      const abort = () => {
+        aborted = true
+        mounted?.dispose()
+        mounted = null
+        if (c.__wrAbort === abort) {
+          delete c.__wrAbort
+        }
+      }
+      c.__wrAbort = abort
+
       void mountApp(
         container,
         hostApi,
         initialState as { stackConfig?: StackConfig } | undefined
       ).then((app) => {
-        if (disposed) {
+        if (aborted) {
           app.dispose()
           return
         }
@@ -42,12 +65,13 @@ const registerGame = () => {
       }).catch((err) => {
         console.error("[world-radio] mountApp failed:", err)
       })
+
       return {
         unmount: () => {
-          disposed = true
-          mounted?.dispose()
-          mounted = null
-          scope.__worldRadio = undefined
+          abort()
+          if (scope.__worldRadio === mounted) {
+            scope.__worldRadio = undefined
+          }
         },
       }
     },

@@ -292,6 +292,7 @@ function buildPages(outputDir) {
       imageUrl: imageUrl,
       purchase: { type: "free", priceLabel: "Free" },
       minAppVersion: pack.minAppVersion || "0.9.0",
+      ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
       packType: pack.packType || "game",
     };

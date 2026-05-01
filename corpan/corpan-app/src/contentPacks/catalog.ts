@@ -63,6 +63,11 @@ export type CatalogV3Entry = {
   imageUrl?: string
   purchase?: PurchaseInfo
   minAppVersion: string
+  /** Optional upper bound. Catalog may carry multiple entries with the
+   *  same `id` but disjoint `[minAppVersion, maxAppVersion]` ranges, so a
+   *  pack can ship a different version of itself to old vs. new apps
+   *  (e.g. World Radio 0.3.x for ≤ 0.11.x hosts, 0.5.x for ≥ 0.12.0). */
+  maxAppVersion?: string
   channel: PackChannel
   packType?: string
 }
@@ -325,6 +330,7 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     imageUrl: toOptionalString(r.imageUrl),
     purchase: parsePurchase(r.purchase),
     minAppVersion,
+    maxAppVersion: toOptionalString(r.maxAppVersion),
     channel,
     packType: toOptionalString(r.packType),
   }
@@ -356,6 +362,12 @@ export const filterCatalogForApp = (
   return v3.packs
     .filter((entry) => {
       if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
+      if (
+        entry.maxAppVersion &&
+        compareVersions(appVersion, entry.maxAppVersion) > 0
+      ) {
+        return false
+      }
       if (!devMode && entry.channel === "preview") return false
       return true
     })

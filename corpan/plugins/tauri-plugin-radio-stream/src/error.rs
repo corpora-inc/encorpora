@@ -9,6 +9,10 @@ pub enum Error {
     #[cfg(mobile)]
     #[error(transparent)]
     PluginInvoke(#[from] tauri::plugin::mobile::PluginInvokeError),
+    /// Returned by every desktop command so the JS-side probe falls back to
+    /// the WebView player. Native streaming is mobile-only for this plugin.
+    #[error("native radio stream is not available on this platform")]
+    NotImplemented,
 }
 
 impl Serialize for Error {

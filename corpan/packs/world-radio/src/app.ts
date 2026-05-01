@@ -340,8 +340,17 @@ export async function mountApp(
       shutdownAnalytics()
       if (hintEl) hintEl.remove()
       if (hintTimer) window.clearTimeout(hintTimer)
-      container.classList.remove("wr-root", "has-player", "is-scrolled")
-      clear(container)
+      // Remove only the nodes *this* instance added, not `clear(container)`.
+      // Otherwise an aborted in-flight mount can wipe a freshly-mounted
+      // successor's DOM during its dispose, leaving a black screen.
+      main.remove()
+      closeBtn.remove()
+      playerBar.root.remove()
+      // Only strip our root classes if container still has them — a successor
+      // may have re-added them.
+      if (container.children.length === 0) {
+        container.classList.remove("wr-root", "has-player", "is-scrolled", "is-mapview")
+      }
     },
   }
 }
