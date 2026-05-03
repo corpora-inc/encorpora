@@ -7,6 +7,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.1] - 2026-05-01
+
+### Fixed
+- **Android release builds**: World Radio HTTP stations (~75% of catalog)
+  failing with `ERROR_CODE_IO_NETWORK_CONNECTION_FAILED`. Fix lives in
+  `tauri-plugin-radio-stream` 0.1.1, which now contributes a
+  `network_security_config.xml` to the merged manifest. Mirrors the iOS
+  ATS exception we already shipped in `src-tauri/ios/project.yml`. No
+  changes to `gen/android/`.
+- **World Radio error UX (Android)**: player bar no longer flashes-and-hides
+  when a station fails. The native plugin now holds the error visible
+  through ExoPlayer's post-error `STATE_IDLE` transition, and the message
+  is "Couldn't connect to the station" instead of the cryptic "Source error".
+
+iOS code unchanged from 0.12.0 — this release is Android-only in substance.
+Ship iOS at 0.12.1 only if you want App Store / Play Store version parity.
+
 ## [0.12.0] - 2026-05-01
 
 ### Added

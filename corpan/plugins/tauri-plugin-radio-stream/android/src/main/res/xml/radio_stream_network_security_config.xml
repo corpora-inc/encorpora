@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  World Radio plays public Icecast/Shoutcast streams, the majority of which
+  are delivered over plain HTTP. This file is the Android equivalent of the
+  iOS NSAllowsArbitraryLoadsForMedia exception (see corpan-app/src-tauri/ios/
+  project.yml). Without it, ExoPlayer raises ERROR_CODE_IO_NETWORK_CONNECTION_FAILED
+  for every http:// station on release builds, where Android defaults
+  android:usesCleartextTraffic to false.
+
+  On API 24+ (the plugin requires minSdk=26), networkSecurityConfig fully
+  supersedes android:usesCleartextTraffic, so the host app's existing
+  usesCleartextTraffic="false" placeholder becomes a no-op while this
+  config is in effect.
+
+  Scope is "all domains" because radio-browser.info aggregates tens of
+  thousands of station hostnames — per-domain whitelisting isn't tractable.
+  This matches the iOS scoping (also app-wide). The only network path that
+  actually reaches cleartext at runtime is ExoPlayer's DefaultHttpDataSource
+  in PlaybackService.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

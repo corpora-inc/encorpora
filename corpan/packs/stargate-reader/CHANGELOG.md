@@ -10,6 +10,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-05-02
+### Changed
+- Catalog drawer is a bottom sheet on iPad too (was a right side panel
+  ≥ 1024px). Same overlay pattern at every size, capped at 880px tall
+  so a portrait iPad doesn't get a 2000px sheet. Fixes status-bar
+  overlap on the screen-nav tabs in iPad landscape and gives the
+  image-heavy catalog the 3-column grid it needs.
+- Catalog browse now orders books by narration count, descending —
+  most-narrated books float to the top within each series, and the
+  series containing the most-narrated book floats up too. Replaces
+  the previous alphabetical-by-series, volume-asc ordering.
+
 ## [0.5.18] - 2026-04
 ### Changed
 - Bundled with the readers + radio polish pass.

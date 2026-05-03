@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-radio-stream"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Corpora Inc"]
 description = "Native streaming radio player (ExoPlayer / AVPlayer) for the World Radio pack"
 edition = "2021"
