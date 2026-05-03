@@ -1,0 +1,924 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "bn",
+  "timestamp": "2026-05-02T23:14:43.526328+00:00",
+  "segments_total": 292,
+  "segments_first_pass": 270,
+  "segments_converged_by_retry": 2,
+  "segments_plateau_stopped": 20,
+  "total_retries": 22,
+  "error_distribution": {
+    "transcription_mismatch": 125,
+    "no_words": 88,
+    "tail_energy": 43,
+    "tts_audio_truncated": 41,
+    "trailing_silence": 38,
+    "min_trailing_silence": 35,
+    "final_word_weak": 34,
+    "stacked_words": 30,
+    "tail_zero_duration_run": 24,
+    "truncated_last_word": 24,
+    "first_word_weak": 10,
+    "word_cluster": 9,
+    "pre_speech_spike": 2,
+    "mid_phrase_gap": 1
+  },
+  "phase_timings": {
+    "tts": 10.365702867507935,
+    "align": 23.403552532196045,
+    "validate": 0.6836109161376953,
+    "trim": 0.027147293090820312,
+    "master": 1.1564207077026367
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 64,
+      "passed": 49,
+      "rate": 0.765625
+    },
+    "medium_30_80": {
+      "total": 188,
+      "passed": 181,
+      "rate": 0.9627659574468085
+    },
+    "long_80_plus": {
+      "total": 40,
+      "passed": 40,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-011",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "পরমাণু এতই ছোট।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "মহাবিশ্ব পরমাণু দিয়ে তৈরি।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "‘অ্যাটম’ শব্দটি প্রাচীন গ্রিক থেকে এসেছে।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-029",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "তারা পুনর্বিন্যস্ত হয়।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "তারা ধোঁয়া, ছাই এবং গ্যাসে পুনর্বিন্যাসিত হয়।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-039",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 7,
+      "text_preview": "প্রোটন।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-041",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "ইলেকট্রন।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-048",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "প্রতিটি প্রোটনের একই পরিমাণ ধনাত্মক আধান থাকে।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-050",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "এক প্রোটন মানে হাইড্রোজেন।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-051",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "ছয় প্রোটন মানে কার্বন।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-055",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "নিউট্রন নিরপেক্ষ।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-056",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.91
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "নিউট্রন প্রোটনের পাশে নিউক্লিয়াসে থাকে।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-071",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "একটি পরমাণুর বেশিরভাগই খালি জায়গা।",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-075",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 18,
+      "text_preview": "আপনার ভর একই থাকত।",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-079",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "বিশুদ্ধ সোনা একটি মৌল।",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-093",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "হাইড্রোজে্ন হলো সবচেয়ে সরল মৌল।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-130",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 20,
+      "text_preview": "ধাতু তাপ পরিবহন করে।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-131",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "লোহা, তামা, সোনা এবং অ্যালুমিনিয়াম সবই ধাতু।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-138",
+      "attempts": 2,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "সিলিকন একটি মেটালয়েড।",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-157",
+      "attempts": 2,
+      "best_quality_score": 35.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "final_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "জল একটি অণু।",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "no_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

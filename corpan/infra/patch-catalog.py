@@ -71,6 +71,15 @@ CHARACTERS_META = {
     },
 }
 
+# voiceId → CDN URL of a short mastered preview clip (~15-25s).
+# Sources are concatenated chapter-opening segments from real published packs;
+# see /home/skyl/tmp/voice-previews/cut.sh on the build machine.
+VOICE_PREVIEW_URLS = {
+    "ian-narration":   f"{CDN_BASE}/voice-previews/ian-narration.m4a",
+    "ian-chill-clear": f"{CDN_BASE}/voice-previews/ian-chill-clear.m4a",
+    "aoede-gemini":    f"{CDN_BASE}/voice-previews/aoede-gemini.m4a",
+}
+
 # voiceId → (characterId, displayName, provider, source kind, supportedLanguages)
 VOICE_PROFILES = [
     {
@@ -310,6 +319,9 @@ def build_voice_profiles(narrations: list[dict]) -> list[dict]:
     for v in VOICE_PROFILES:
         v2 = dict(v)
         v2["supportedLanguages"] = voice_supported_languages(narrations, v["id"])
+        preview = VOICE_PREVIEW_URLS.get(v["id"])
+        if preview:
+            v2["previewClipUrl"] = preview
         out.append(v2)
     return out
 

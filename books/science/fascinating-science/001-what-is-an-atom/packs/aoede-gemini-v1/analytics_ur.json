@@ -1,0 +1,615 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "ur",
+  "timestamp": "2026-05-02T23:41:22.459979+00:00",
+  "segments_total": 292,
+  "segments_first_pass": 292,
+  "segments_converged_by_retry": 0,
+  "segments_plateau_stopped": 0,
+  "total_retries": 0,
+  "error_distribution": {
+    "no_words": 65,
+    "tail_energy": 47,
+    "trailing_silence": 46,
+    "final_word_weak": 20,
+    "stacked_words": 18,
+    "transcription_mismatch": 18,
+    "first_word_weak": 16,
+    "tts_audio_truncated": 11,
+    "min_trailing_silence": 7,
+    "pre_speech_spike": 7,
+    "word_cluster": 5,
+    "tail_zero_duration_run": 3,
+    "truncated_last_word": 3,
+    "front_clip": 1,
+    "tail_spike": 1,
+    "post_speech_pop": 1,
+    "short_words": 1
+  },
+  "phase_timings": {
+    "tts": 3.075599670410156e-05,
+    "align": 1.4066696166992188e-05,
+    "validate": 1.1682510375976562e-05,
+    "trim": 1.0967254638671875e-05,
+    "master": 1.0967254638671875e-05
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 64,
+      "passed": 64,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 190,
+      "passed": 190,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 38,
+      "passed": 38,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 20,
+      "text_preview": "اپنے ارد گرد دیکھیں۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "ہر وہ چیز جو آپ دیکھ سکتے ہیں، ایٹموں سے بنی ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "جو ہوا آپ سانس لیتے ہیں وہ ایٹموں سے بنی ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 40,
+      "text_preview": "جو پانی آپ پیتے ہیں وہ ایٹموں سے بنا ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "آپ کا جسم ایٹموں سے بنا ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "آپ کے قدموں تلے کی زمین ایٹموں سے بنی ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "ایٹم مادے کا سب سے چھوٹا ٹکڑا ہے جو اب بھی اپنی کیمیائی شناخت رکھتا ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "آپ اپنی آنکھوں سے ایک ایٹم بھی نہیں دیکھ سکتے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "آپ ایک عام خوردبین سے بھی ایک ایٹم نہیں دیکھ سکتے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "ایٹم اتنے چھوٹے ہوتے ہیں۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 57,
+      "text_preview": "ریت کے ایک دانے میں تقریباً پچاس کوئنٹیلین ایٹم ہوتے ہیں۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "یہ تعداد پچاس کے بعد اٹھارہ صفر ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "ریت کے ایک دانے میں اتنے ایٹم ہوتے ہیں جتنے ایک ساحل پر ریت کے دانے نہیں ہوتے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 120.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "ایٹم طبعی دنیا میں ہر چیز کے بنیادی اجزاء ہیں۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "ایک دیوار اینٹوں سے بنی ہوتی ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "ایک جملہ الفاظ سے بنتا ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "کائنات ایٹموں سے بنی ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "لفظ ایٹم قدیم یونانی زبان سے آیا ہے۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "یونانی لفظ \"ایٹوموس\" کا مطلب ہے \"ناقابل تقسیم\"۔",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 100.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "no_words"
+          ],
+          "score": 100.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "قدیم یونانی فلسفیوں کا خیال تھا کہ ایٹم مادے کے سب سے چھوٹے ممکنہ ٹکڑے ہیں۔",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

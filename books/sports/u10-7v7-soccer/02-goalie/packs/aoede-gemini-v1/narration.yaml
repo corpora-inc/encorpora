@@ -1,0 +1,82 @@
+version: 1
+engine: gemini
+voices:
+  bn: Aoede
+tts: {}
+retry:
+  # Gemini is deterministic: identical prompt → byte-identical audio.
+  # Empirical (2026-04-30 goalkeeper bn run): 50/50 retried segments produced
+  # identical PCM. Each "retry" wastes ~6s + tokens for zero new information.
+  # Cap at 2 attempts. After that, segments stay FAILED → catastrophic ones
+  # trigger auto_rewrite (which CAN help by changing the text); non-catastrophic
+  # ones (transcription_mismatch, etc.) need calibration / per-voice override.
+  max_retries: 2
+  jitter: 0.0
+  schedules:
+    - {}
+mastering:
+  target_lufs: -22.0
+  target_tp: -3.0
+  audio_bitrate: '64000'
+  audio_codec: aac
+  output_ext: .m4a
+filter_chain:
+  highpass:
+    enabled: true
+    frequency: 80
+    width_type: q
+    width: 0.7
+  adeclick:
+    enabled: true
+    window: 55
+    overlap: 75
+    threshold: 1.5
+  afftdn:
+    enabled: true
+    nr: 15
+    nf: -35
+    tn: 1
+  agate:
+    enabled: true
+    threshold: 0.018
+    range: 0.01
+    attack: 5
+    release: 50
+  acompressor:
+    enabled: true
+    threshold: 0.1
+    ratio: 2
+    attack: 10
+    release: 100
+    makeup: 1
+  alimiter:
+    enabled: true
+    limit: 0.708
+    level: false
+denoise:
+  enabled: false
+trimming:
+  zcr_window_ms: 500
+  zcr_multiplier: 2.5
+  consecutive_windows: 3
+  scan_start_ratio: 0.6
+  buffer_sec: 0.3
+  tail_ms: 500
+  fade_ms: 50
+  fade_sec: 0.05
+  max_sec_per_char:
+    bn: 0.15
+  base_buffer_sec:
+    bn: 5.0
+validation:
+  min_word_ratio: 0.8
+  max_trailing_silence_ratio: 0.25
+  max_stacked_words: 3
+  min_trailing_silence_ms: 75
+  max_inter_word_gap_ms: 3000
+  max_sec_per_char:
+    bn: 0.15
+  min_sec_per_char:
+    bn: 0.02
+  base_buffer_sec:
+    bn: 5.0

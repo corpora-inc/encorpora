@@ -1,0 +1,646 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "te",
+  "timestamp": "2026-05-01T22:55:58.309098+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 302,
+  "segments_converged_by_retry": 1,
+  "segments_plateau_stopped": 0,
+  "total_retries": 2,
+  "error_distribution": {
+    "transcription_mismatch": 201,
+    "first_word_weak": 38,
+    "tail_energy": 11,
+    "pre_speech_spike": 5,
+    "trailing_silence": 2,
+    "tail_zero_duration_run": 2,
+    "stacked_words": 2,
+    "truncated_last_word": 2,
+    "min_trailing_silence": 2,
+    "word_cluster": 2,
+    "tts_audio_truncated": 2
+  },
+  "phase_timings": {
+    "tts": 4.457375764846802,
+    "align": 11.81402850151062,
+    "validate": 7.094221115112305,
+    "trim": 0.008935213088989258,
+    "master": 0.366868257522583
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 2,
+      "passed": 2,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 218,
+      "passed": 218,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 83,
+      "passed": 82,
+      "rate": 0.9879518072289156
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch06-288",
+      "attempts": 3,
+      "best_quality_score": 6.48,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.48,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 165,
+      "text_preview": "మరికొందరు ఆమె ఎదుగుదలకు కారణమైన నిర్మాణ పరిస్థితులను సూచిస్తారు: క్వింగ్ రాజ్యం ",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "ఇది చరిత్రలో నమోదైన అత్యంత విజయవంతమైన సముద్రపు దొంగ గురించి ఒక నిజమైన కథ.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 5.12,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "ఆమె పేరు జెంగ్ యి సావో, మరియు ఆమె ప్రపంచం చూసిన అతిపెద్ద సముద్రపు దొంగల నౌకాదళాన",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 6.4,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "ఆమె అధికార పరాకాష్టలో, చాలా దేశాల కంటే ఎక్కువ నౌకలను ఆమె నియంత్రించింది.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "ఆమె సంపదలో లేదా విశేషాధికారంలో పుట్టలేదు.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 7.04,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "ఆమె పద్దెనిమిదవ శతాబ్దం చివరలో దక్షిణ చైనాలో పేదరికంలో జన్మించింది.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 111,
+      "text_preview": "ఆమె సాధించిన ప్రతిదీ, తెలివితేటలు, క్రూరత్వం మరియు ప్రజలను నిర్వహించడంలో అసాధారణ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 96,
+      "text_preview": "ఏమీ లేని ఒక మహిళ ఎలా దక్షిణ చైనా సముద్రానికి తిరుగులేని పాలకురాలిగా మారిందో ఈ పు",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "ఇది యుద్ధం, వాణిజ్యం, చట్టం మరియు మనుగడ గురించిన కథ.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 5.52,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.52,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 108,
+      "text_preview": "యూరోపియన్ శక్తులు ఆసియాలోకి మరింత లోతుగా చొచ్చుకుపోతున్నందున, వేగంగా మారుతున్న ప",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "ఈ పుస్తకంలోని ప్రతి వాస్తవం చారిత్రక రికార్డుల నుండి వచ్చింది.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "రికార్డు అస్పష్టంగా ఉన్న చోట, మేము అలా చెబుతాము.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 4.48,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "చరిత్రకారులు విభేదించిన చోట, అందుబాటులో ఉన్న బలమైన సాక్ష్యాలను మేము అందిస్తాము.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 4.48,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.48,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "దక్షిణ చైనా సముద్రం భూమిపై అత్యంత రద్దీగా ఉండే జలమార్గాలలో ఒకటి.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 77,
+      "text_preview": "ఇది పడమరలో వియత్నాం తీరం నుంచి తూర్పున ఫిలిప్పీన్స్ దాకా విస్తరించిన ప్రాంతం.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "ఉత్తరాన చైనా తీరం, దక్షిణాన బోర్నియో మరియు సుమత్రా దీవులు ఉన్నాయి.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 5.36,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "వేల సంవత్సరాలుగా, వ్యాపారులు ఈ జలాల్లో ప్రయాణించారు.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 6.24,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 77,
+      "text_preview": "చైనీస్ జంక్‌లు పట్టు, పింగాణీ మరియు టీని ఆగ్నేయాసియాలోని ఓడరేవులకు చేరవేశాయి.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "బదులుగా, సుగంధ ద్రవ్యాలు, ఉష్ణమండల కలప మరియు అన్యదేశ వస్తువులు చైనాకు తిరిగి ప్ర",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "క్యాంటన్ నగరం, ఇప్పుడు గ్వాంగ్‌జౌ అని పిలుస్తారు, ఈ వాణిజ్యానికి కేంద్రంగా ఉంది.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

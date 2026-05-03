@@ -1,0 +1,748 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "mr",
+  "timestamp": "2026-05-02T06:54:44.363314+00:00",
+  "segments_total": 414,
+  "segments_first_pass": 408,
+  "segments_converged_by_retry": 6,
+  "segments_plateau_stopped": 0,
+  "total_retries": 7,
+  "error_distribution": {
+    "transcription_mismatch": 182,
+    "trailing_silence": 107,
+    "tail_energy": 101,
+    "first_word_weak": 57,
+    "final_word_weak": 36,
+    "tts_audio_truncated": 22,
+    "min_trailing_silence": 15,
+    "stacked_words": 12,
+    "pre_speech_spike": 10,
+    "tail_zero_duration_run": 5,
+    "truncated_last_word": 5,
+    "short_words": 5,
+    "word_cluster": 4,
+    "first_word_mismatch": 1,
+    "mid_phrase_gap": 1
+  },
+  "phase_timings": {
+    "tts": 6.752119302749634,
+    "align": 13.680864572525024,
+    "validate": 19.551542282104492,
+    "trim": 0.0381159782409668,
+    "master": 1.2935748100280762
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 61,
+      "passed": 61,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 307,
+      "passed": 302,
+      "rate": 0.9837133550488599
+    },
+    "long_80_plus": {
+      "total": 46,
+      "passed": 45,
+      "rate": 0.9782608695652174
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch07-356",
+      "attempts": 3,
+      "best_quality_score": 35.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "It was the second largest eruption of the twentieth century.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 2,
+      "best_quality_score": 4.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "प्राचीन संस्कृतीने ज्वालामुखीच्या उतारावर शहरे बांधली.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-312",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "ते नवीन जमीन, नवीन माती आणि नवीन वातावरणाचे कच्चे घटक देखील आहेत.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-392",
+      "attempts": 2,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "mid_phrase_gap",
+            "tts_audio_truncated"
+          ],
+          "score": 455.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "मोठे उद्रेक सल्फर डायऑक्साइडला स्ट्रॅटोस्फियरमध्ये ढकलतात.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-396",
+      "attempts": 2,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.86
+          }
+        }
+      ],
+      "text_len": 119,
+      "text_preview": "इंडोनेशियातील माउंट टंबोराचा 1815 मधील उद्रेक 1816 मध्ये \"उन्हाळ्याविना वर्ष\" (Y",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-421",
+      "attempts": 2,
+      "best_quality_score": 5.68,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "ते ग्रहाच्या स्वतःच्या नूतनीकरणाचा एक मार्ग आहेत.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": 5.68,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 98,
+      "text_preview": "ज्वालामुखी म्हणजे पृथ्वीच्या पृष्ठभागावरील एक छिद्र, जिथून वितळलेले खडक, वायू आण",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": 5.6,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.6,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "ज्वालामुखी हा शब्द रोमन अग्नीदेवता व्हल्कन याच्या नावावरून आला आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "ज्वालामुखी दुर्मिळ नाहीत.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": 5.68,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "जमिनीवर सुमारे १,५०० संभाव्य सक्रिय ज्वालामुखी आहेत.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "समुद्राखाली असे आणखी बरेच आहेत.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": 3.52,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.52,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 68,
+      "text_preview": "ज्वालामुखीचा उद्रेक ही पृथ्वीवरील सर्वात शक्तिशाली घटनांपैकी एक आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "उद्रेक म्हणजे ज्वालामुखीच्या आतून पदार्थांचे बाहेर पडणे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "काही उद्रेक सौम्य असतात.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 36,
+      "text_preview": "लाव्हा हळू हळू उतारावरून खाली वाहतो.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "लाव्हा म्हणजे पृष्ठभागावर पोहोचलेला वितळलेला खडक.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 35.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "इतर उद्रेक हिंसक असतात.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 35.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "ते खडक, राख आणि वायू आकाशात उंच फेकतात.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 47,
+      "text_preview": "सर्वात मोठे उद्रेक संपूर्ण भूभागाला आकार देतात.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 6.88,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.88,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "पृथ्वी आतून गरम असल्यामुळे ज्वालामुखी अस्तित्वात आहेत.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tts_audio_truncated": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}
