@@ -27,7 +27,16 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <application>
+    <!--
+      networkSecurityConfig is contributed by this plugin (not the host app)
+      so World Radio's cleartext exception travels with the radio code path,
+      mirroring how iOS scopes NSAllowsArbitraryLoadsForMedia in
+      corpan-app/src-tauri/ios/project.yml. The Android Manifest Merger
+      adds this attribute to the host app's <application> element; on
+      API 24+ it fully supersedes android:usesCleartextTraffic.
+    -->
+    <application
+        android:networkSecurityConfig="@xml/radio_stream_network_security_config">
         <service
             android:name="com.corpora.radio_stream.PlaybackService"
             android:exported="true"

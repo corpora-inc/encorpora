@@ -8,6 +8,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- HTTP-only stations no longer fail on Android release builds. Cleartext is
+  now permitted via a `network_security_config.xml` shipped inside
+  `tauri-plugin-radio-stream` (mirrors the iOS `NSAllowsArbitraryLoadsForMedia`
+  exception). Without this, ≈75% of stations on the Samsung S938U
+  internal-testing build hit `ERROR_CODE_IO_NETWORK_CONNECTION_FAILED`.
+  Requires `tauri-plugin-radio-stream ≥ 0.1.1`.
+- Player bar no longer flashes-and-hides when a station fails. The native
+  plugin now holds the error state visible until the user picks another
+  station or hits stop, and the user-visible message is "Couldn't connect
+  to the station" instead of the cryptic "Source error".
+
 ## [0.5.0] - 2026-05-01
 
 Skipped 0.4.x for tetraphobia. This is the native-streaming generation —

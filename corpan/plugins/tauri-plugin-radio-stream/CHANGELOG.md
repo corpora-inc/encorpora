@@ -8,6 +8,32 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-01
+
+### Fixed
+- **Android release/store builds**: HTTP-only Icecast/Shoutcast stations now
+  play. Previously, the host app's `android:usesCleartextTraffic="false"`
+  default for release variants caused ExoPlayer to fail every `http://` URL
+  with `ERROR_CODE_IO_NETWORK_CONNECTION_FAILED` (≈75% of stations on the
+  Samsung S938U internal-testing build). The plugin now ships a
+  `network_security_config.xml` that Android's Manifest Merger contributes
+  to the host app — a parallel to the iOS `NSAllowsArbitraryLoadsForMedia`
+  exception, scoped to media playback by virtue of living next to the
+  ExoPlayer-backed `PlaybackService`. On API 24+ (we require minSdk=26) this
+  fully supersedes `android:usesCleartextTraffic`, so no host-app changes
+  are needed.
+- **Sticky error state**: ExoPlayer transitions to `STATE_IDLE` within ~1 ms
+  of an error, which previously caused the JS-side player bar to receive a
+  trailing `kind="idle"` and hide the bar before the user could read the
+  error. The plugin now suppresses post-error idle/buffering emissions
+  until the next explicit `play()` or `stop()` command.
+
+### Changed
+- ExoPlayer error codes are mapped to user-readable strings before they
+  reach JS — `ERROR_CODE_IO_*` becomes "Couldn't connect to the station",
+  `ERROR_CODE_PARSING_*` becomes "Stream format not supported". The raw
+  error code and message are still logged via `Log.e` for diagnostics.
+
 ## [0.1.0] - 2026-05-01
 
 Initial release. Wraps platform-native streaming players for live HTTP /

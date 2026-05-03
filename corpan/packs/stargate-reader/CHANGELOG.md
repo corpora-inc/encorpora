@@ -9,6 +9,12 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Catalog drawer is a bottom sheet on iPad too (was a right side panel
+  ≥ 1024px). Same overlay pattern at every size, capped at 880px tall
+  so a portrait iPad doesn't get a 2000px sheet. Fixes status-bar
+  overlap on the screen-nav tabs in iPad landscape and gives the
+  image-heavy catalog the 3-column grid it needs.
 
 ## [0.5.18] - 2026-04
 ### Changed

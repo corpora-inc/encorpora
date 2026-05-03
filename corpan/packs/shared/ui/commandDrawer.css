@@ -1,5 +1,5 @@
 /* ============================================================
-   Command Drawer — unified bottom sheet (mobile) / side panel (desktop)
+   Command Drawer — bottom sheet at all sizes
    Themed via var(--catalog-*) custom properties
    ============================================================ */
 
@@ -70,8 +70,9 @@
   z-index: 50;
   /* Fixed height instead of max-height so the drawer doesn't jump around
      when navigating between sections of different content lengths
-     (e.g. an empty Library vs a long Browse list). */
-  height: 85vh;
+     (e.g. an empty Library vs a long Browse list). The catalog is image-
+     heavy — give it most of the viewport. */
+  height: 92vh;
   background: var(--catalog-bg);
   font-family: var(--catalog-font);
   color: var(--catalog-text);
@@ -685,44 +686,6 @@
 
 .command-drawer-exit:hover {
   background: color-mix(in srgb, var(--catalog-error) 10%, transparent);
-}
-
-/* ============================================================
-   Desktop: side panel (>=1024px)
-   ============================================================ */
-
-@media (min-width: 1024px) {
-  .command-drawer-sheet {
-    left: auto;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: min(560px, 45vw);
-    /* Override the base `height: 85vh` — on desktop the drawer is a side
-       panel that uses top+bottom for full viewport height. */
-    height: auto;
-    max-height: none;
-    border-radius: 0;
-    transform: translateX(100%);
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Inside the drawer panel, cap at 2 columns */
-  .command-drawer-screen-container .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .command-drawer-sheet--open {
-    transform: translateX(0);
-  }
-
-  .command-drawer-handle {
-    display: none;
-  }
-
-  .command-drawer-close {
-    display: none;
-  }
 }
 
 /* ============================================================

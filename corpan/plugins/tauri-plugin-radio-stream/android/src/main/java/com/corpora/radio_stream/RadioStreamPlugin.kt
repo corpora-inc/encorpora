@@ -72,6 +72,17 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
     @Volatile
     private var hasReachedPlaying: Boolean = false
 
+    /**
+     * When ExoPlayer raises an error it immediately transitions to STATE_IDLE,
+     * which would normally cause emitStateForCurrent() to emit kind="idle"
+     * milliseconds after kind="error". On the JS side that idle event hides
+     * the player bar via the `is-active` class, so the user never gets to
+     * read the error message. Hold the error visible until the next explicit
+     * play()/stop() command.
+     */
+    @Volatile
+    private var stickyError: Boolean = false
+
     private val playerListener = object : Player.Listener {
         override fun onPlaybackStateChanged(playbackState: Int) {
             Log.d(PlaybackService.TAG, "Listener.onPlaybackStateChanged state=${stateName(playbackState)}")
@@ -85,8 +96,13 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
         }
 
         override fun onPlayerError(error: PlaybackException) {
-            val msg = error.message ?: error.errorCodeName
-            Log.e(PlaybackService.TAG, "Listener.onPlayerError code=${error.errorCode} ($msg)", error)
+            val msg = friendlyErrorMessage(error)
+            Log.e(
+                PlaybackService.TAG,
+                "Listener.onPlayerError code=${error.errorCode} (${error.errorCodeName}) message=${error.message}",
+                error
+            )
+            stickyError = true
             emitState("error", msg)
         }
 
@@ -224,6 +240,7 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
         // instead of waiting for ExoPlayer's first BUFFERING tick to proxy
         // through the controller listener.
         hasReachedPlaying = false
+        stickyError = false
         emitState("loading", null)
 
         withController { ctrl ->
@@ -286,6 +303,7 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
     @Command
     fun stop(invoke: Invoke) {
         Log.d(PlaybackService.TAG, "@Command stop")
+        stickyError = false
         withController { ctrl ->
             try {
                 ctrl.stop()
@@ -357,6 +375,11 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
     // ── Player.Listener → JS event bridge ────────────────────────────────
 
     private fun emitStateForCurrent() {
+        // Hold the error visible until the user's next play()/stop() command.
+        // ExoPlayer fires STATE_IDLE within ~1 ms of an error, which would
+        // otherwise overwrite the visible error message and hide the player
+        // bar before the user can read it.
+        if (stickyError) return
         val ctrl = controller ?: return
         val kind: String = when (ctrl.playbackState) {
             Player.STATE_IDLE -> "idle"
@@ -366,6 +389,31 @@ class RadioStreamPlugin(private val activity: Activity) : Plugin(activity) {
             else -> "idle"
         }
         emitState(kind, null)
+    }
+
+    /**
+     * Map ExoPlayer's PlaybackException codes to user-readable strings.
+     * The raw error.message is usually the cryptic "Source error" that we
+     * saw flooding logcat in 0.12.0 testing — surfacing it verbatim doesn't
+     * help the user. The set of codes mapped here covers every failure mode
+     * we've actually observed from radio-browser.info streams.
+     */
+    private fun friendlyErrorMessage(error: PlaybackException): String = when (error.errorCode) {
+        // ERROR_CODE_IO_DNS_FAILED was added in Media3 1.5+; we're on 1.4.1,
+        // so DNS resolution failures surface as ERROR_CODE_IO_NETWORK_CONNECTION_FAILED
+        // through the underlying UnknownHostException.
+        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT,
+        PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
+        PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE,
+        PlaybackException.ERROR_CODE_IO_NO_PERMISSION,
+        PlaybackException.ERROR_CODE_IO_CLEARTEXT_NOT_PERMITTED,
+        PlaybackException.ERROR_CODE_IO_FILE_NOT_FOUND -> "Couldn't connect to the station"
+        PlaybackException.ERROR_CODE_PARSING_CONTAINER_MALFORMED,
+        PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED,
+        PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED,
+        PlaybackException.ERROR_CODE_PARSING_MANIFEST_UNSUPPORTED -> "Stream format not supported"
+        else -> error.message ?: error.errorCodeName
     }
 
     private fun emitState(kind: String, message: String?) {

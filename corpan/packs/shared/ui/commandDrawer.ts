@@ -254,12 +254,9 @@ export function createCommandDrawer(
   let dragStartTime = 0
   let isDragging = false
 
-  const desktopMq = window.matchMedia("(min-width: 1024px)")
-
   function attachDragListeners(el: HTMLElement, guardButtons: boolean) {
     el.addEventListener("pointerdown", (e: PointerEvent) => {
       if (guardButtons && (e.target as HTMLElement).closest("button")) return
-      if (guardButtons && desktopMq.matches) return
       isDragging = true
       dragStartY = e.clientY
       dragStartTime = Date.now()
