@@ -38,7 +38,20 @@
     "no": "Norska",
     "da": "Danska",
     "el": "Grekiska",
-    "ms": "Malajiska"
+    "ms": "Malajiska",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "Resor",
@@ -309,7 +322,19 @@
     "fi": "Finska",
     "sw": "Swahili",
     "el": "Grekiska",
-    "he": "Hebreiska"
+    "he": "Hebreiska",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "Appversion",

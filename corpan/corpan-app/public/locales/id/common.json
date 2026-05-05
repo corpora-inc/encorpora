@@ -38,7 +38,20 @@
     "no": "Norwegia",
     "da": "Denmark",
     "el": "Yunani",
-    "ms": "Melayu"
+    "ms": "Melayu",
+    "ne": "bahasa Nepal",
+    "pt-PT": "Portugis (Eropa)",
+    "hr": "bahasa Kroasia",
+    "sr": "bahasa Serbia",
+    "uk": "bahasa Ukraina",
+    "bg": "bahasa Bulgaria",
+    "ro": "bahasa Rumania",
+    "ca": "bahasa Katalan",
+    "yue-Hant-HK": "Kanton (Tradisional)",
+    "cs": "bahasa Ceska",
+    "lt": "bahasa Lituania",
+    "sk": "bahasa Slovakia",
+    "sl": "bahasa Slovenia"
   },
   "categories": {
     "travel": "Perjalanan",
@@ -309,7 +322,19 @@
     "fi": "Finlandia",
     "sw": "Swahili",
     "el": "Yunani",
-    "he": "Ibrani"
+    "he": "Ibrani",
+    "ne": "bahasa Nepal",
+    "hr": "bahasa Kroasia",
+    "sr": "bahasa Serbia",
+    "uk": "bahasa Ukraina",
+    "bg": "bahasa Bulgaria",
+    "ro": "bahasa Rumania",
+    "ca": "bahasa Katalan",
+    "yue-Hant-HK": "Kanton (Tradisional)",
+    "cs": "bahasa Ceska",
+    "lt": "bahasa Lituania",
+    "sk": "bahasa Slovakia",
+    "sl": "bahasa Slovenia"
   },
   "footer": {
     "appVersion": "Versi aplikasi",

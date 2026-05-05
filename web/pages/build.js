@@ -295,6 +295,10 @@ function buildPages(outputDir) {
       ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
       packType: pack.packType || "game",
+      ...(Array.isArray(pack.platforms) && pack.platforms.length > 0
+        ? { platforms: pack.platforms }
+        : {}),
+      ...(pack.minOSVersion ? { minOSVersion: pack.minOSVersion } : {}),
     };
   });
   const catalogV3 = {

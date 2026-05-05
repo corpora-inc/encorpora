@@ -14,6 +14,7 @@
     "radio-stream:default",
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",
+    "stt:default",
     "os:default"
   ]
 }

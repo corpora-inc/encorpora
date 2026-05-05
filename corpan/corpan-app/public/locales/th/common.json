@@ -38,7 +38,20 @@
     "no": "นอร์เวย์",
     "da": "เดนมาร์ก",
     "el": "กรีก",
-    "ms": "มาเลย์"
+    "ms": "มาเลย์",
+    "ne": "ภาษาเนปาล",
+    "pt-PT": "ภาษาโปรตุเกส (ยุโรป)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -309,7 +322,19 @@
     "fi": "ฟินแลนด์",
     "sw": "สวาฮีลี",
     "el": "กรีก",
-    "he": "ฮีบรู"
+    "he": "ฮีบรู",
+    "ne": "ภาษาเนปาล",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "เวอร์ชันแอป",

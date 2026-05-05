@@ -7,22 +7,32 @@ import { bindEngine, detectOSFromUA, probeTtsHealth } from "@/util/tts-voices";
 
 // Order is curated as a geographic+cultural journey from England to Japan.
 // Treated as art, not science: small adjacencies tell stories.
+//   - es↔ca: Iberian neighbors (Catalonia within Spain)
+//   - pt-PT↔pt-BR: same language, two continents
+//   - it↔ro: Romance bookends (ro is Eastern Romance, joins via the Romance run)
 //   - de↔nl: West Germanic neighbors
 //   - no/sv/da: Scandinavian fan
 //   - fi↔hu: Uralic interlude (Finland in the Baltic, Hungary akin)
-//   - pl↔ru: Slavic kin
+//   - lt↔pl: Baltic-Slavic adjacency
+//   - pl↔cs↔sk↔sl↔hr↔sr: Slavic block, west to south
+//   - sr↔bg↔uk↔ru: Cyrillic transition through the Balkans into the East Slavic
 //   - ru↔el: Cyrillic was derived from Greek; Orthodox sister cultures
 //   - el↔tr: Greece and Turkey neighbors across the Aegean
 //   - he→ar→fa→ur→pa-Arab: Levant descent through Iranian world
 //   - pa-Arab→pa-Guru: Punjabi script bridge
 //   - pa-Guru…ta: India north→south sweep ending in the Tamil south
+//   - hi→ne: Devanagari neighbors across the open border
 //   - sw: Indian-Ocean detour before the East Asian arrival
+//   - zh-Hans↔zh-Hant↔yue-Hant-HK: Sinitic cluster (Mandarin → Cantonese)
 export const ALL_LANGUAGES = [
     // Western / Romance
     "en",
     "es",
+    "ca",
     "fr",
     "it",
+    "ro",
+    "pt-PT",
     "pt-BR",
     // West Germanic
     "de",
@@ -34,9 +44,20 @@ export const ALL_LANGUAGES = [
     // Uralic interlude
     "fi",
     "hu",
-    // Slavic + Cyrillic / Greek + Anatolia
+    // Baltic
+    "lt",
+    // Slavic block (west → south)
     "pl",
+    "cs",
+    "sk",
+    "sl",
+    "hr",
+    "sr",
+    // Cyrillic transition (Balkans → East Slavic)
+    "bg",
+    "uk",
     "ru",
+    // Greek + Anatolia
     "el",
     "tr",
     // Levant + Iranian world
@@ -48,6 +69,7 @@ export const ALL_LANGUAGES = [
     // South Asia (north → south)
     "pa-Guru",
     "hi",
+    "ne",
     "bn",
     "mr",
     "gu",
@@ -61,25 +83,17 @@ export const ALL_LANGUAGES = [
     "ms",
     // Indian-Ocean detour
     "sw",
-    // East Asia
+    // East Asia (Sinitic cluster → Korean → Japanese)
     "zh-Hans",
     "zh-Hant",
+    "yue-Hant-HK",
     "ko-polite",
     "ja",
 ];
 
 export const COMING_SOON_LANGUAGES = [
-    // Slavic / Balkan / Eastern Europe
-    "uk",
-    "ro",
-    "cs",
-    "sk",
-    "sr",
-    "hr",
-    "bg",
     // Indian subcontinent gaps
     "ml",
-    "ne",
     "si",
     // SE Asian
     "fil",
@@ -91,8 +105,6 @@ export const COMING_SOON_LANGUAGES = [
     // Caucasus
     "hy",
     "ka",
-    // Sinitic
-    "yue-Hant-HK",
 ] as const;
 
 export type ComingSoonLanguageCode = (typeof COMING_SOON_LANGUAGES)[number];

@@ -38,7 +38,20 @@
     "no": "Noors",
     "da": "Deens",
     "el": "Grieks",
-    "ms": "Maleis"
+    "ms": "Maleis",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "Reizen",
@@ -309,7 +322,19 @@
     "fi": "Fins",
     "sw": "Swahili",
     "el": "Grieks",
-    "he": "Hebreeuws"
+    "he": "Hebreeuws",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "App-versie",

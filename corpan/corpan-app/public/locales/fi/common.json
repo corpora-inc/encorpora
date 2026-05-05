@@ -38,7 +38,20 @@
     "no": "Norja",
     "da": "Tanska",
     "el": "Kreikka",
-    "ms": "Malaiji"
+    "ms": "Malaiji",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "Matkailu",
@@ -309,7 +322,19 @@
     "fi": "Suomi",
     "sw": "Swahili",
     "el": "Kreikka",
-    "he": "Heprea"
+    "he": "Heprea",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "Sovelluksen versio",

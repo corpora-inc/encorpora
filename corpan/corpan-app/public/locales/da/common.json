@@ -38,7 +38,20 @@
     "no": "Norsk",
     "da": "Dansk",
     "el": "Græsk",
-    "ms": "Malajisk"
+    "ms": "Malajisk",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "Rejse",
@@ -309,7 +322,19 @@
     "fi": "Finsk",
     "sw": "Swahili",
     "el": "Græsk",
-    "he": "Hebraisk"
+    "he": "Hebraisk",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "Appversion",

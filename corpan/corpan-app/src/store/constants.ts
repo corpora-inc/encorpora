@@ -37,6 +37,19 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     "pa-Guru": "Punjabi (Gurmukhi)",
     "pa-Arab": "Punjabi (Shahmukhi)",
     ur: "Urdu",
+    ne: "Nepali",
+    "pt-PT": "Portuguese (PT)",
+    hr: "Croatian",
+    sr: "Serbian",
+    uk: "Ukrainian",
+    bg: "Bulgarian",
+    ro: "Romanian",
+    ca: "Catalan",
+    "yue-Hant-HK": "Cantonese",
+    cs: "Czech",
+    lt: "Lithuanian",
+    sk: "Slovak",
+    sl: "Slovenian",
 };
 
 

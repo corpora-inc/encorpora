@@ -1,8 +1,17 @@
-import { invoke } from "@tauri-apps/api/core"
+import { addPluginListener, invoke } from "@tauri-apps/api/core"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useSettingsStore } from "@/store/settings"
-import type { HostApi, PackDbQuery } from "./types"
+import type {
+  HostApi,
+  PackDbQuery,
+  SttApi,
+  SttInstallProgress,
+  SttPrepareResult,
+  SttStartSessionResult,
+  SttStatus,
+  SttTranscriptionResult,
+} from "./types"
 
 const getStackSnapshot = () => {
   const {
@@ -103,6 +112,133 @@ export const createHostApi = (packId?: string): HostApi => {
     return query.packId ?? packId
   }
 
+  const stt: SttApi = {
+    isAvailable: async () => {
+      try {
+        return await invoke<boolean>("plugin:stt|is_available")
+      } catch (error) {
+        console.error("[stt] is_available error:", error)
+        return false
+      }
+    },
+    getStatus: async () => {
+      try {
+        return await invoke<SttStatus>("plugin:stt|get_status")
+      } catch (error) {
+        console.error("[stt] get_status error:", error)
+        return {
+          available: false,
+          prepared: false,
+          model: null,
+          recording: false,
+          message: String(error),
+        }
+      }
+    },
+    prepare: async (opts) => {
+      try {
+        return await invoke<SttPrepareResult>("plugin:stt|prepare", {
+          args: { model: opts?.model },
+        })
+      } catch (error) {
+        console.error("[stt] prepare error:", error)
+        return {
+          ready: false,
+          model: opts?.model ?? "",
+          message: String(error),
+        }
+      }
+    },
+    startSession: async (opts) => {
+      const result = await invoke<SttStartSessionResult>(
+        "plugin:stt|start_session",
+        { args: opts },
+      )
+      return result
+    },
+    stopSession: async (opts) => {
+      const result = await invoke<SttTranscriptionResult>(
+        "plugin:stt|stop_session",
+        { args: opts },
+      )
+      return result
+    },
+    cancelSession: async (opts) => {
+      try {
+        await invoke<void>("plugin:stt|cancel_session", { args: opts })
+      } catch (error) {
+        console.error("[stt] cancel_session error:", error)
+      }
+    },
+    wipeModel: async (opts) => {
+      try {
+        await invoke<{ wiped: boolean; model: string }>(
+          "plugin:stt|wipe_model",
+          { args: { model: opts?.model } },
+        )
+        return { wiped: true }
+      } catch (error) {
+        console.error("[stt] wipe_model error:", error)
+        return { wiped: false, message: String(error) }
+      }
+    },
+    validateModel: async (opts) => {
+      try {
+        return await invoke<{
+          model: string
+          valid: boolean
+          problems: string[]
+        }>("plugin:stt|validate_model", { args: { model: opts?.model } })
+      } catch (error) {
+        console.error("[stt] validate_model error:", error)
+        return {
+          model: opts?.model ?? "",
+          valid: false,
+          problems: [String(error)],
+        }
+      }
+    },
+    installModel: async (opts, onProgress) => {
+      // Subscribe to install_progress events for the duration of the
+      // install. The plugin emits one for every fractionCompleted tick
+      // plus phase transitions (downloading → verifying → verified | failed).
+      let unlisten: (() => void) | null = null
+      if (onProgress) {
+        try {
+          const handle = await addPluginListener<SttInstallProgress>(
+            "stt",
+            "install_progress",
+            (event) => {
+              try {
+                onProgress(event)
+              } catch (error) {
+                console.error("[stt] install_progress handler threw:", error)
+              }
+            },
+          )
+          unlisten = () => handle.unregister()
+        } catch (error) {
+          console.error("[stt] addPluginListener install_progress failed:", error)
+        }
+      }
+      try {
+        return await invoke<{
+          installed: boolean
+          model: string
+          alreadyInstalled: boolean
+        }>("plugin:stt|install_model", { args: { model: opts.model } })
+      } finally {
+        if (unlisten) {
+          try {
+            unlisten()
+          } catch (error) {
+            console.error("[stt] unlisten install_progress failed:", error)
+          }
+        }
+      }
+    },
+  }
+
   return {
     speak: async (uiCode, text) => {
       await speakImmediate(uiCode, text)
@@ -179,5 +315,6 @@ export const createHostApi = (packId?: string): HostApi => {
         maxRows: query.maxRows,
       })
     },
+    stt,
   }
 }

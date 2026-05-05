@@ -195,13 +195,39 @@ export function baseLang(tag: string | null | undefined): string {
     return i === -1 ? t : t.slice(0, i);
 }
 
-function langMatchScore(voiceLang: string | undefined, want: string): number {
+/**
+ * Cross-tag aliases used when a learner-language code doesn't match what
+ * platforms publish for voices. Score 1 (lower than base match) so a real
+ * direct match always wins.
+ *
+ *   yue-Hant-HK  → also accept Apple/Google `zh-HK` and `yue-HK` voices
+ *   sr           → fall back to Croatian (`hr`) when no Serbian voice exists
+ *                  (mutually intelligible; better than English fallback)
+ *   no  ↔ nb     → Apple ships Norwegian as `nb-NO` (Bokmål); learners
+ *                  pick the generic ISO 639-1 `no`. Two-way alias so the
+ *                  voice section lights up regardless of which side users
+ *                  configure.
+ */
+const LANG_ALIASES: Record<string, string[]> = {
+    "yue-hant-hk": ["yue", "yue-hk", "zh-hk"],
+    sr: ["hr"],
+    no: ["nb"],
+    nb: ["no"],
+};
+
+export function langMatchScore(voiceLang: string | undefined, want: string): number {
     if (!voiceLang || !want) return 0;
     const v = voiceLang.toLowerCase();
     const w = want.toLowerCase();
     if (v === w) return 3;
     const b = baseLang(w);
     if (v === b || v.startsWith(b + "-")) return 2;
+    const aliases = LANG_ALIASES[w] ?? LANG_ALIASES[b];
+    if (aliases) {
+        for (const a of aliases) {
+            if (v === a || v.startsWith(a + "-")) return 1;
+        }
+    }
     return 0;
 }
 

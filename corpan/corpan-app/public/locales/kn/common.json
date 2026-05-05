@@ -38,7 +38,20 @@
     "no": "ನಾರ್ವೇಜಿಯನ್",
     "da": "ಡ್ಯಾನಿಶ್",
     "el": "ಗ್ರೀಕ್",
-    "ms": "ಮಲಯ್"
+    "ms": "ಮಲಯ್",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "ಪ್ರಯಾಣ",
@@ -309,7 +322,19 @@
     "fi": "ಫಿನ್ನಿಶ್",
     "sw": "ಸ್ವಾಹಿಲಿ",
     "el": "ಗ್ರೀಕ್",
-    "he": "ಹೀಬ್ರೂ"
+    "he": "ಹೀಬ್ರೂ",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "ಅಪ್ಲಿಕೇಶನ್ ಆವೃತ್ತಿ",

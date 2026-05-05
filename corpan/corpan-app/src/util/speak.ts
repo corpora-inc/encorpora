@@ -9,6 +9,9 @@
 
 import { invoke } from "@tauri-apps/api/core";
 
+import { getVoicesCached } from "@/util/tts-voices";
+import { maybeApplySerbianFallback } from "@/util/serbianFallback";
+
 type UAOS = "macos" | "ios" | "android" | "other";
 
 function detectOSFromUA(): UAOS {
@@ -161,26 +164,32 @@ export function createVoiceTTS(langPrefix: string) {
         let nativeErr: unknown = null;
         let browserErr: unknown = null;
 
+        // Apply per-language fallback shims (currently: Serbian Cyrillic →
+        // Croatian voice on platforms without a Serbian voice). Self-disables
+        // when the OS exposes a native voice for the source language.
+        const { text: outText, langPrefix: outLang } =
+            await applyFallbackShims(text, langPrefix, voiceId);
+
         // 1) Prefer native on macOS/iOS/Android when in Tauri (UA-based).
         try {
             if (await preferNativeTTS()) {
-                await speakNative(text, langPrefix, rate, voiceId);
+                await speakNative(outText, outLang, rate, voiceId);
                 return;
             }
         } catch (err) {
             nativeErr = err;
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Native TTS failed; falling back to browser`, err);
+            console.warn(`[TTS:${outLang}] Native TTS failed; falling back to browser`, err);
         }
 
         // 2) Otherwise, try browser Web Speech.
         try {
-            await speakBrowser(text, langPrefix, rate, voiceId);
+            await speakBrowser(outText, outLang, rate, voiceId);
             return;
         } catch (err) {
             browserErr = err;
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Browser Web Speech failed`, err);
+            console.warn(`[TTS:${outLang}] Browser Web Speech failed`, err);
         }
 
         // Both paths failed — surface a noisy signal so the UI layer can react.
@@ -218,24 +227,64 @@ export function createVoiceTTS(langPrefix: string) {
  */
 export function createVoiceTTSConcurrent(langPrefix: string) {
     return async function speakConcurrent(text: string, rate: number = 0.7, voiceId?: string): Promise<string> {
+        const { text: outText, langPrefix: outLang } =
+            await applyFallbackShims(text, langPrefix, voiceId);
+
         // 1) Prefer native concurrent on macOS/iOS/Android when in Tauri.
         try {
             if (await preferNativeTTS()) {
-                return await speakNativeConcurrent(text, langPrefix, rate, voiceId);
+                return await speakNativeConcurrent(outText, outLang, rate, voiceId);
             }
         } catch (err) {
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Native concurrent failed; falling back to browser`, err);
+            console.warn(`[TTS:${outLang}] Native concurrent failed; falling back to browser`, err);
         }
 
         // 2) Fallback to browser (sequential - browser doesn't support concurrent easily).
         try {
-            await speakBrowser(text, langPrefix, rate, voiceId);
+            await speakBrowser(outText, outLang, rate, voiceId);
             return `browser_${Date.now()}`;
         } catch (err) {
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
+            console.warn(`[TTS:${outLang}] Browser TTS failed`, err);
             return `error_${Date.now()}`;
         }
     };
+}
+
+/**
+ * Apply any per-language text/lang fallback shims at the bottom of the
+ * speak path. Each shim is self-gated by runtime voice availability, so
+ * adding/removing one is local to its module — no surface-area changes
+ * up-stack.
+ *
+ * Currently applied:
+ *   - Serbian Cyrillic → Latin + langPrefix → "hr" when no `sr-*` voice
+ *     is in the OS voice list (Apple iOS today; auto-disables when Apple
+ *     ships a Serbian voice or on Android where Milena is preinstalled).
+ *
+ * The shim runs even when an explicit `voiceId` is set. The alias-aware
+ * voice matcher will list Croatian voices under the Serbian section, so
+ * users can (and will) pick one — at which point the Croatian voice
+ * still needs Latin text, not Cyrillic. The shim's gate is voice
+ * availability, not whether the caller specified an id.
+ */
+async function applyFallbackShims(
+    text: string,
+    langPrefix: string,
+    _voiceId: string | undefined,
+): Promise<{ text: string; langPrefix: string }> {
+    let voices;
+    try {
+        voices = await getVoicesCached({ maxAgeMs: 30_000 });
+    } catch {
+        // If we can't enumerate voices, skip shims rather than risk
+        // a worse outcome.
+        return { text, langPrefix };
+    }
+
+    const sr = maybeApplySerbianFallback(text, langPrefix, voices);
+    if (sr.applied) return { text: sr.text, langPrefix: sr.langPrefix };
+
+    return { text, langPrefix };
 }

@@ -38,7 +38,20 @@
     "no": "נוֹרְוֶוגִית",
     "da": "דָּנִית",
     "el": "יְוָנִית",
-    "ms": "מָלָאִית"
+    "ms": "מָלָאִית",
+    "ne": "נפאלית",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "תַּיָּרוּת",
@@ -309,7 +322,19 @@
     "fi": "פִינִית",
     "sw": "סְוָוהִילִי",
     "el": "יְוָנִית",
-    "he": "עִבְרִית"
+    "he": "עִבְרִית",
+    "ne": "נפאלית",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "גִּרְסַת הָאַפְּלִיקַצְיָה",

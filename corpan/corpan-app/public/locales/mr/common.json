@@ -38,7 +38,20 @@
     "no": "नॉर्वेजियन",
     "da": "डॅनिश",
     "el": "ग्रीक",
-    "ms": "मलय"
+    "ms": "मलय",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "प्रवास",
@@ -309,7 +322,19 @@
     "fi": "फिनिश",
     "sw": "स्वाहिली",
     "el": "ग्रीक",
-    "he": "हिब्रू"
+    "he": "हिब्रू",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "अॅप आवृत्ती",

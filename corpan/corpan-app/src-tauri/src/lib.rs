@@ -693,6 +693,7 @@ pub fn run() {
         .plugin(tauri_plugin_radio_stream::init())
         .plugin(tauri_plugin_iap::init())
         .plugin(tauri_plugin_subscriptions::init())
+        .plugin(tauri_plugin_stt::init())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let data_dir = app

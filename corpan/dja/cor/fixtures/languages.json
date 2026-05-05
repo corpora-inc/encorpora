@@ -117,5 +117,96 @@
             "code": "hi",
             "name": "Hindi"
         }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ne",
+            "name": "Nepali"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "pt-PT",
+            "name": "Portuguese (European)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "hr",
+            "name": "Croatian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "sr",
+            "name": "Serbian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "uk",
+            "name": "Ukrainian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "bg",
+            "name": "Bulgarian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ro",
+            "name": "Romanian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ca",
+            "name": "Catalan"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "yue-Hant-HK",
+            "name": "Cantonese (Traditional)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "cs",
+            "name": "Czech"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "lt",
+            "name": "Lithuanian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "sk",
+            "name": "Slovak"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "sl",
+            "name": "Slovenian"
+        }
     }
 ]

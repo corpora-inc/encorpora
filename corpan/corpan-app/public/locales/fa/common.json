@@ -38,7 +38,20 @@
     "no": "نروژی",
     "da": "دانمارکی",
     "el": "یونانی",
-    "ms": "مالایی"
+    "ms": "مالایی",
+    "ne": "نپالی",
+    "pt-PT": "پرتغالی (اروپایی)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "سفر",
@@ -309,7 +322,19 @@
     "fi": "فنلاندی",
     "sw": "سواحیلی",
     "el": "یونانی",
-    "he": "عبری"
+    "he": "عبری",
+    "ne": "نپالی",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "نسخهٔ برنامه",

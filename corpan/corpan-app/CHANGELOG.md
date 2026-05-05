@@ -7,6 +7,38 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.2] - 2026-05-05
+
+### Added
+- **Pronunciation Coach 0.1.0** ships as the first iOS-only pack —
+  on-device speech-to-text via the new `tauri-plugin-stt` (WhisperKit
+  + ANE/GPU compute units, dual decode for honest scoring, per-language
+  acoustic ramps, calibration-ready signal mining). Catalog gate is
+  `platforms: ["ios"]` + `minOSVersion: "17.0"` + `minAppVersion:
+  "0.12.2"` so it never lists for Android, web, or older iPads where
+  WhisperKit can't load.
+- **Catalog v3 platform / OS gating**: entries now accept
+  `platforms?: HostPlatform[]` (one of `ios | android | macos | windows
+  | linux`) and `minOSVersion?: string`. `filterCatalogForApp` skips
+  packs whose declared platforms don't include the host or whose
+  `minOSVersion` exceeds the host's iOS / Android / macOS version.
+  Host detection runs through `@tauri-apps/plugin-os` — outside Tauri
+  the gates become no-ops so the dev catalog still loads everywhere.
+- **13 new languages** added to the bundled experience (now 51 total):
+  Nepali (ne), European Portuguese (pt-PT), Croatian (hr), Serbian (sr,
+  Cyrillic + Latin romanization), Ukrainian (uk), Bulgarian (bg),
+  Romanian (ro), Catalan (ca), Cantonese (yue-Hant-HK, Traditional +
+  Jyutping), Czech (cs), Lithuanian (lt), Slovak (sk), Slovenian (sl).
+  Each ships with full LLM-translated 10k-phrase corpus, native UI
+  i18n in `public/locales/<code>/common.json`, and platform-aware TTS
+  voice resolution (e.g. `yue-Hant-HK` → Apple `zh-HK` voices,
+  `sr` → Croatian voice fallback when no Serbian voice is installed).
+  Nepali ships without Apple TTS support — onboarding's existing
+  generic "Send Apple Feedback" path covers it.
+- **iOS deployment target raised to 16.0** (WhisperKit requirement).
+  Also added `NSMicrophoneUsageDescription` to `ios/project.yml` so it
+  survives Xcode project regeneration.
+
 ## [0.12.1] - 2026-05-01
 
 ### Fixed

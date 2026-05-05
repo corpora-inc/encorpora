@@ -38,6 +38,7 @@ tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepal
 tauri-plugin-radio-stream = { path = "../../plugins/tauri-plugin-radio-stream" }
 tauri-plugin-subscriptions = { path = "../../plugins/tauri-plugin-subscriptions" }
 tauri-plugin-iap = { path = "../../plugins/tauri-plugin-iap" }
+tauri-plugin-stt = { path = "../../plugins/tauri-plugin-stt" }
 futures-util = "0.3"
 
 # Production optimizations for release builds

@@ -4,6 +4,15 @@ import random
 import multiprocessing
 from typing import List, Tuple, Iterable
 
+# macOS Pool() defaults to 'spawn' since Python 3.8 — workers re-import this
+# module without Django bootstrapping. Bootstrap before touching cor.models.
+import os
+import django
+from django.apps import apps as _django_apps
+if not _django_apps.ready:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "proj.settings")
+    django.setup()
+
 from django.core.management.base import BaseCommand
 from django.db import close_old_connections
 

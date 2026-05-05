@@ -38,7 +38,20 @@
     "no": "নরওয়েজিয়ান",
     "da": "ডেনিশ",
     "el": "গ্রিক",
-    "ms": "মালয়"
+    "ms": "মালয়",
+    "ne": "নেপালি",
+    "pt-PT": "পর্তুগিজ (ইউরোপীয়)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "ভ্রমণ",
@@ -309,7 +322,19 @@
     "fi": "ফিনিশ",
     "sw": "সোয়াহিলি",
     "el": "গ্রিক",
-    "he": "হিব্রু"
+    "he": "হিব্রু",
+    "ne": "নেপালি",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "অ্যাপ সংস্করণ",

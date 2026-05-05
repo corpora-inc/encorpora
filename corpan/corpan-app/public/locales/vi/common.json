@@ -38,7 +38,20 @@
     "no": "Tiếng Na Uy",
     "da": "Tiếng Đan Mạch",
     "el": "Tiếng Hy Lạp",
-    "ms": "Tiếng Mã Lai"
+    "ms": "Tiếng Mã Lai",
+    "ne": "Tiếng Nepal",
+    "pt-PT": "Tiếng Bồ Đào Nha (Châu Âu)",
+    "hr": "Tiếng Croatia",
+    "sr": "Tiếng Serbia",
+    "uk": "Tiếng Ukraina",
+    "bg": "Tiếng Bulgaria",
+    "ro": "Tiếng Romania",
+    "ca": "Tiếng Catalan",
+    "yue-Hant-HK": "Tiếng Quảng Đông (Phồn thể)",
+    "cs": "Tiếng Séc",
+    "lt": "Tiếng Litva",
+    "sk": "Tiếng Slovakia",
+    "sl": "Tiếng Slovenia"
   },
   "categories": {
     "travel": "Du lịch",
@@ -309,7 +322,19 @@
     "fi": "Tiếng Phần Lan",
     "sw": "Tiếng Swahili",
     "el": "Tiếng Hy Lạp",
-    "he": "Tiếng Hebrew"
+    "he": "Tiếng Hebrew",
+    "ne": "Tiếng Nepal",
+    "hr": "Tiếng Croatia",
+    "sr": "Tiếng Serbia",
+    "uk": "Tiếng Ukraina",
+    "bg": "Tiếng Bulgaria",
+    "ro": "Tiếng Romania",
+    "ca": "Tiếng Catalan",
+    "yue-Hant-HK": "Tiếng Quảng Đông (Phồn thể)",
+    "cs": "Tiếng Séc",
+    "lt": "Tiếng Litva",
+    "sk": "Tiếng Slovakia",
+    "sl": "Tiếng Slovenia"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",

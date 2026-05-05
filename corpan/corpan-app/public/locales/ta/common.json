@@ -38,7 +38,20 @@
     "no": "நார்வீஜியன்",
     "da": "டேனிஷ்",
     "el": "கிரேக்கம்",
-    "ms": "மலாய்"
+    "ms": "மலாய்",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "பயணம்",
@@ -309,7 +322,19 @@
     "fi": "பின்னிஷ்",
     "sw": "சுவாஹிலி",
     "el": "கிரேக்கம்",
-    "he": "எபிரேயம்"
+    "he": "எபிரேயம்",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "பயன்பாட்டு பதிப்பு",

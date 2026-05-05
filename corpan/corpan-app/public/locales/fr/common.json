@@ -38,7 +38,20 @@
     "no": "Norvégien",
     "da": "Danois",
     "el": "Grec",
-    "ms": "Malais"
+    "ms": "Malais",
+    "ne": "népalais",
+    "pt-PT": "portugais (européen)",
+    "hr": "croate",
+    "sr": "serbe",
+    "uk": "ukrainien",
+    "bg": "bulgare",
+    "ro": "roumain",
+    "ca": "catalan",
+    "yue-Hant-HK": "cantonais (traditionnel)",
+    "cs": "tchèque",
+    "lt": "lituanien",
+    "sk": "slovaque",
+    "sl": "slovène"
   },
   "categories": {
     "travel": "Voyage",
@@ -309,7 +322,19 @@
     "fi": "Finnois",
     "sw": "Swahili",
     "el": "Grec",
-    "he": "Hébreu"
+    "he": "Hébreu",
+    "ne": "népalais",
+    "hr": "croate",
+    "sr": "serbe",
+    "uk": "ukrainien",
+    "bg": "bulgare",
+    "ro": "roumain",
+    "ca": "catalan",
+    "yue-Hant-HK": "cantonais (traditionnel)",
+    "cs": "tchèque",
+    "lt": "lituanien",
+    "sk": "slovaque",
+    "sl": "slovène"
   },
   "footer": {
     "appVersion": "Version de l’application",

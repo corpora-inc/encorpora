@@ -1,0 +1,14 @@
+{
+  "name": "corpan-pronunciation-coach",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "dev:corpan": "node scripts/dev-corpan.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^6.0.3"
+  }
+}

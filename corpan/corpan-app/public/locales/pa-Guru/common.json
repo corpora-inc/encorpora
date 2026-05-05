@@ -38,7 +38,20 @@
     "no": "ਨਾਰਵੇਜੀਅਨ",
     "da": "ਡੈਨਿਸ਼",
     "el": "ਯੂਨਾਨੀ",
-    "ms": "ਮਲੇ"
+    "ms": "ਮਲੇ",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "ਯਾਤਰਾ",
@@ -309,7 +322,19 @@
     "fi": "ਫਿਨਿਸ਼",
     "sw": "ਸਵਾਹਿਲੀ",
     "el": "ਯੂਨਾਨੀ",
-    "he": "ਇਬਰਾਨੀ"
+    "he": "ਇਬਰਾਨੀ",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "ਐਪ ਵਰਜਨ",

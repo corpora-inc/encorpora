@@ -38,7 +38,20 @@
     "no": "నార్వేజియన్",
     "da": "డానిష్",
     "el": "గ్రీక్",
-    "ms": "మలయ్"
+    "ms": "మలయ్",
+    "ne": "Nepali",
+    "pt-PT": "Portuguese (European)",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "categories": {
     "travel": "ప్రయాణం",
@@ -309,7 +322,19 @@
     "fi": "ఫిన్నిష్",
     "sw": "స్వాహిలీ",
     "el": "గ్రీక్",
-    "he": "హీబ్రూ"
+    "he": "హీబ్రూ",
+    "ne": "Nepali",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "ro": "Romanian",
+    "ca": "Catalan",
+    "yue-Hant-HK": "Cantonese (Traditional)",
+    "cs": "Czech",
+    "lt": "Lithuanian",
+    "sk": "Slovak",
+    "sl": "Slovenian"
   },
   "footer": {
     "appVersion": "యాప్ వెర్షన్",
