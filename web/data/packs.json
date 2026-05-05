@@ -133,5 +133,26 @@
       "shorts": [],
       "demos": []
     }
+  },
+  {
+    "id": "pronunciation_coach",
+    "name": "Pronunciation Coach",
+    "description": "On-device pronunciation practice — Whisper-powered scoring with per-word feedback and TTS playback",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/pronunciation-coach/manifest.json",
+    "zipUrl": "/corpan/packs/pronunciation-coach.zip",
+    "landingUrl": "/corpan/packs/pronunciation-coach/",
+    "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
+    "minAppVersion": "0.12.2",
+    "platforms": ["ios"],
+    "minOSVersion": "17.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
   }
 ]

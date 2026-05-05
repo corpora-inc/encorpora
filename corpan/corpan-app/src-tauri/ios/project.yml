@@ -2,7 +2,7 @@ name: corpan
 options:
   bundleIdPrefix: com.corpora.corpan
   deploymentTarget:
-    iOS: 15.0
+    iOS: 16.0
 fileGroups: [../../src]
 configs:
   debug: debug
@@ -67,6 +67,7 @@ targets:
         NSAppTransportSecurity:
           NSAllowsArbitraryLoadsForMedia: true
           NSAllowsArbitraryLoadsInWebContent: true
+        NSMicrophoneUsageDescription: Corpán uses your microphone for on-device pronunciation practice with the Pronunciation Coach pack. Audio is processed locally on your device.
         # CFBundleShortVersionString + CFBundleVersion are auto-injected by
         # Tauri from tauri.conf.json's `version` field. Don't hardcode them
         # here or they'll drift.

@@ -127,6 +127,20 @@ jobs:
         working-directory: corpan/packs/world-radio
         run: node scripts/pack.mjs
 
+      - name: Install Pronunciation Coach Dependencies
+        working-directory: corpan/packs/pronunciation-coach
+        run: npm install --legacy-peer-deps
+
+      - name: Build Pronunciation Coach
+        working-directory: corpan/packs/pronunciation-coach
+        run: npm run build
+
+      - name: Package Pronunciation Coach as ZIP
+        run: |
+          cd corpan/packs/pronunciation-coach
+          zip -r pronunciation-coach.zip manifest.json dist/
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -169,6 +183,13 @@ jobs:
           cp corpan/packs/world-radio/manifest.json "web/io/out/corpan/packs/world-radio/"
           cp -R corpan/packs/world-radio/dist "web/io/out/corpan/packs/world-radio/"
           cp corpan/packs/world-radio/world-radio.zip "web/io/out/corpan/packs/world-radio.zip"
+
+      - name: Copy Pronunciation Coach into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/pronunciation-coach"
+          cp corpan/packs/pronunciation-coach/manifest.json "web/io/out/corpan/packs/pronunciation-coach/"
+          cp -R corpan/packs/pronunciation-coach/dist "web/io/out/corpan/packs/pronunciation-coach/"
+          cp corpan/packs/pronunciation-coach/pronunciation-coach.zip "web/io/out/corpan/packs/pronunciation-coach.zip"
 
       - name: Show Final Structure
         run: |

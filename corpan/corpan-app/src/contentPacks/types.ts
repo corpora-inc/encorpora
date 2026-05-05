@@ -34,6 +34,112 @@ export type PackDbQueryResult = {
   rows: Record<string, unknown>[]
 }
 
+export type SttPrepareResult = {
+  ready: boolean
+  model: string
+  message?: string
+}
+
+export type SttStartSessionResult = {
+  started: boolean
+  sessionId: string
+}
+
+export type SttStatus = {
+  available: boolean
+  prepared: boolean
+  model: string | null
+  recording: boolean
+  message: string | null
+}
+
+export type SttWordTiming = {
+  word: string
+  startMs: number
+  endMs: number
+  probability: number
+}
+
+export type SttTranscriptionResult = {
+  sessionId: string
+  text: string
+  expectedText: string
+  /** Full code the pack passed in (e.g. "pa-Arab", "zh-Hans"). */
+  language: string
+  /** Two-letter code actually sent to Whisper (e.g. "pa", "zh"). */
+  whisperLanguage: string
+  durationMs: number
+  overallScore: number
+  transcriptScore: number
+  likelihoodScore: number
+  /** Per-word posterior + per-language ramp + penalty stack. 0..1. */
+  acousticScore: number
+  avgLogprob: number
+  /** Whisper's no-speech posterior (max across segments). > 0.5 → mic was silent. */
+  noSpeechProb: number
+  /** Repetition / gibberish detector (max). > 2.4 → caps overall ≤ 0.4. */
+  compressionRatio: number
+  /** Sampling temperature (max). > 0 → decoder fell back. */
+  temperature: number
+  /** Min chosen-token logprob (worst single decoded token). */
+  minTokenLogprob: number
+  /** Stdev of chosen-token logprobs (high = patchy confidence). */
+  tokenLogprobStdev: number
+  /** Levenshtein(free-decode, expected). 1.0 if dual-decode disabled. */
+  freeVsConstrainedSimilarity: number
+  /** Free-decode transcript (no prompt/prefix bias). Empty if disabled. */
+  freeText: string
+  words: SttWordTiming[]
+}
+
+export type SttApi = {
+  isAvailable: () => Promise<boolean>
+  getStatus: () => Promise<SttStatus>
+  prepare: (opts?: { model?: string }) => Promise<SttPrepareResult>
+  startSession: (opts: {
+    sessionId: string
+    language: string
+    expectedText: string
+  }) => Promise<SttStartSessionResult>
+  stopSession: (opts: { sessionId: string }) => Promise<SttTranscriptionResult>
+  cancelSession: (opts: { sessionId: string }) => Promise<void>
+  /**
+   * Wipes the on-disk model dir + download cache for the given model name
+   * (or default if omitted). Used as an explicit reset.
+   */
+  wipeModel?: (opts?: { model?: string }) => Promise<{
+    wiped: boolean
+    message?: string
+  }>
+  /**
+   * Inspects on-disk model files. Returns `valid: true` when every
+   * required `.mlmodelc/weights/weight.bin` is present and ≥ 1 KB.
+   */
+  validateModel?: (opts?: { model?: string }) => Promise<{
+    model: string
+    valid: boolean
+    problems: string[]
+  }>
+  /**
+   * Downloads a model from Hugging Face into the app's data dir, then
+   * verifies file integrity. Calls `onProgress` with `phase` ∈
+   * `downloading | verifying | verified | failed`. Throws on failure.
+   */
+  installModel?: (
+    opts: { model: string },
+    onProgress?: (event: SttInstallProgress) => void,
+  ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+}
+
+export type SttInstallProgress = {
+  model: string
+  phase: "downloading" | "verifying" | "verified" | "failed"
+  fraction?: number
+  completed?: number
+  total?: number
+  error?: string
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
@@ -56,6 +162,7 @@ export type HostApi = {
     languageCodes?: string[]
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  stt?: SttApi
   isMock?: boolean
 }
 

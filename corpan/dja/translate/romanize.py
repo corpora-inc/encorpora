@@ -54,6 +54,52 @@ SYSTEM_PROMPTS = {
         "ευ=ev/ef. Mark stress with an acute on stressed vowel (á, é, í, ó, ú). "
         "Output JSON only: {\"items\":[{\"id\":int,\"roman\":\"<latin>\"}]}"
     ),
+    "ne": (
+        "You produce learner-friendly Latin transliterations of Nepali (Devanagari) text. "
+        "Use a simple, intuitive system that reflects how the word is actually pronounced in modern standard Nepali (Khas Kura), not strict IAST. "
+        "Vowels: अ=a, आ=aa, इ=i, ई=ii, उ=u, ऊ=uu, ऋ=ri, ए=e, ऐ=ai, ओ=o, औ=au; "
+        "matras follow the same mapping. Anusvara (ं) → m/n based on following consonant; "
+        "candrabindu (ँ) → nasalize preceding vowel (e.g., ã, ẽ); visarga (ः) → h. "
+        "Consonants: क=k, ख=kh, ग=g, घ=gh, ङ=ng; च=ch, छ=chh, ज=j, झ=jh, ञ=ny; "
+        "ट=t, ठ=th, ड=d, ढ=dh, ण=n; त=t, थ=th, द=d, ध=dh, न=n; "
+        "प=p, फ=ph, ब=b, भ=bh, म=m; य=y, र=r, ल=l, व=w/v, श=sh, ष=sh, स=s, ह=h. "
+        "Halant (्) suppresses the inherent 'a'. Drop the implicit final 'a' where it is silent in Nepali (e.g., घर = ghar, not ghara; काम = kaam, not kaama). "
+        "Use double letters for long vowels (aa, ii, uu) and word-final consonants without trailing 'a' unless required. "
+        "Conjunct consonants: render naturally (kshatriya, jnan, etc.). Numbers: keep as numerals if present. "
+        "Output JSON only: {\"items\":[{\"id\":int,\"roman\":\"<latin>\"}]}"
+    ),
+    "uk": (
+        "You produce learner-friendly Latin transliterations of Ukrainian (Cyrillic) text. "
+        "Use a system close to the Ukrainian National 2010 standard with mild readability tweaks. "
+        "а=a, б=b, в=v, г=h, ґ=g, д=d, е=e, є=ie (ye- at word start), ж=zh, з=z, и=y, і=i, "
+        "ї=i (yi- at word start), й=i (y- at word start, -i word-finally after vowel), "
+        "к=k, л=l, м=m, н=n, о=o, п=p, р=r, с=s, т=t, у=u, ф=f, х=kh, ц=ts, ч=ch, ш=sh, "
+        "щ=shch, ь = (omit, mark palatalization with following 'i' if helpful), "
+        "ю=iu (yu- at word start), я=ia (ya- at word start). "
+        "Apostrophe (') after consonant before я/ю/є/ї → insert 'y' (e.g., п'ять = piat / pyat). "
+        "Preserve word boundaries; lowercase except proper nouns. Numbers: keep as numerals. "
+        "Output JSON only: {\"items\":[{\"id\":int,\"roman\":\"<latin>\"}]}"
+    ),
+    "bg": (
+        "You produce learner-friendly Latin transliterations of Bulgarian (Cyrillic) text. "
+        "Use the Bulgarian Streamlined System (official since 2009). "
+        "а=a, б=b, в=v, г=g, д=d, е=e, ж=zh, з=z, и=i, й=y, к=k, л=l, м=m, н=n, о=o, "
+        "п=p, р=r, с=s, т=t, у=u, ф=f, х=h, ц=ts, ч=ch, ш=sh, щ=sht, ъ=a, ь=y, ю=yu, я=ya. "
+        "Word-final '-ия' = '-ia' (e.g., 'България' = 'Bulgaria'). "
+        "Preserve word boundaries; lowercase except proper nouns. Numbers: keep as numerals. "
+        "Output JSON only: {\"items\":[{\"id\":int,\"roman\":\"<latin>\"}]}"
+    ),
+    "yue-Hant-HK": (
+        "You produce Jyutping (粵拼) transliterations of Hong Kong Cantonese (Traditional Han) text. "
+        "Use the Linguistic Society of Hong Kong (LSHK) Jyutping standard, with tone numbers (1-6) attached to each syllable. "
+        "Separate syllables with a single space (no hyphens). Lowercase. "
+        "Examples: 你好 = nei5 hou2; 我係香港人 = ngo5 hai6 hoeng1 gong2 jan4; 唔該 = m4 goi1; 多謝 = do1 ze6; "
+        "食飯 = sik6 faan6; 點解 = dim2 gaai2; 嘅 = ge3; 咗 = zo2; 嗰 = go2; 喺 = hai2; 啲 = di1. "
+        "For vernacular characters, use the conventional Jyutping reading. "
+        "Punctuation: keep Western punctuation as-is; convert full-width 。, ，, ？, ！ to ., comma, ?, !. "
+        "Numbers: keep as numerals if present. Do NOT use Mandarin Pinyin. "
+        "Output JSON only: {\"items\":[{\"id\":int,\"roman\":\"<latin>\"}]}"
+    ),
 }
 
 

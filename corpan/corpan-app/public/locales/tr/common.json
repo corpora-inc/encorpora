@@ -38,7 +38,20 @@
     "no": "Norveççe",
     "da": "Danca",
     "el": "Yunanca",
-    "ms": "Malayca"
+    "ms": "Malayca",
+    "ne": "Nepalce",
+    "pt-PT": "Portekizce (Avrupa)",
+    "hr": "Hırvatça",
+    "sr": "Sırpça",
+    "uk": "Ukraynaca",
+    "bg": "Bulgarca",
+    "ro": "Rumence",
+    "ca": "Katalanca",
+    "yue-Hant-HK": "Kantonca (Geleneksel)",
+    "cs": "Çekçe",
+    "lt": "Litvanca",
+    "sk": "Slovakça",
+    "sl": "Slovence"
   },
   "categories": {
     "travel": "Seyahat",
@@ -309,7 +322,19 @@
     "fi": "Fince",
     "sw": "Svahili",
     "el": "Yunanca",
-    "he": "İbranice"
+    "he": "İbranice",
+    "ne": "Nepalce",
+    "hr": "Hırvatça",
+    "sr": "Sırpça",
+    "uk": "Ukraynaca",
+    "bg": "Bulgarca",
+    "ro": "Rumence",
+    "ca": "Katalanca",
+    "yue-Hant-HK": "Kantonca (Geleneksel)",
+    "cs": "Çekçe",
+    "lt": "Litvanca",
+    "sk": "Slovakça",
+    "sl": "Slovence"
   },
   "footer": {
     "appVersion": "Uygulama sürümü",

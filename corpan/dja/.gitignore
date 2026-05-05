@@ -1,5 +1,6 @@
 data/
 venv/
+.venv/
 
 # Prune backups and intermediate artifacts (kept locally)
 db.sqlite3.pre-prune-*

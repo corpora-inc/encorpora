@@ -1,6 +1,6 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructionsLanguageSection.tsx
 import { useState, useMemo, useEffect } from "react";
-import { CheckCircle2, Circle, Volume2, Venus, Mars, User, ChevronDown, ChevronRight, Download } from "lucide-react";
+import { CheckCircle2, Circle, Volume2, Venus, Mars, User, ChevronDown, ChevronRight, Download, MessageSquare } from "lucide-react";
 import type { VoiceInfo } from "@/util/tts-voices";
 import { useTranslation } from "react-i18next";
 
@@ -16,6 +16,13 @@ type Props = {
     isRTL: boolean;
     /** Android-only: when set, the empty-state shows a "Download voices" button. */
     onInstallVoiceData?: () => void;
+    /**
+     * iOS/macOS-only: when set, the empty-state shows the Apple-gap copy
+     * (no voice will help — Apple doesn't ship one) plus a "Send Apple
+     * Feedback" CTA. Mutually exclusive with `onInstallVoiceData`; the
+     * parent decides which applies based on platform + lang.
+     */
+    onSendAppleFeedback?: () => void;
 };
 
 /* ----------------------------- Helpers ----------------------------- */
@@ -229,6 +236,7 @@ export function OnboardingTTSInstructionsLanguageSection({
     previewSampleText: _previewSampleText, // intentionally unused here
     isRTL,
     onInstallVoiceData,
+    onSendAppleFeedback,
 }: Props) {
     const { t } = useTranslation();
 
@@ -331,12 +339,20 @@ export function OnboardingTTSInstructionsLanguageSection({
 
     const sectionId = `tts-lang-${code.replace(/[^a-z0-9]/gi, "_")}`;
     const hasVoices = voicesWithPretty.length > 0;
+    // Distinguish "Apple iOS doesn't ship a voice" (informational, not a
+    // user error) from "Android: voices missing, install them" (actionable
+    // warning). Visual tone reflects each accordingly.
+    const isAppleGap = !hasVoices && !!onSendAppleFeedback;
 
     return (
         <div
             className={[
                 "mt-3 overflow-hidden rounded-xl border bg-card shadow-sm",
-                hasVoices ? "border-border" : "border-amber-300",
+                hasVoices
+                    ? "border-border"
+                    : isAppleGap
+                        ? "border-purple-200"
+                        : "border-amber-300",
             ].join(" ")}
         >
             {/* Header: toggle + label + counts + preview (one row) */}
@@ -357,7 +373,11 @@ export function OnboardingTTSInstructionsLanguageSection({
                 <div
                     className={[
                         "flex items-center justify-between gap-2 px-3 py-2 sm:px-4 border-b",
-                        hasVoices ? "bg-muted border-border" : "bg-amber-50/70 border-amber-200",
+                        hasVoices
+                            ? "bg-muted border-border"
+                            : isAppleGap
+                                ? "bg-purple-50/70 border-purple-200"
+                                : "bg-amber-50/70 border-amber-200",
                     ].join(" ")}
                 >
                     {/* Left: chevron + label */}
@@ -366,16 +386,27 @@ export function OnboardingTTSInstructionsLanguageSection({
                         <span
                             className={[
                                 "truncate text-sm font-semibold tracking-wide sm:text-base",
-                                hasVoices ? "text-foreground" : "text-amber-900",
+                                hasVoices
+                                    ? "text-foreground"
+                                    : isAppleGap
+                                        ? "text-purple-900"
+                                        : "text-amber-900",
                             ].join(" ")}
                         >
                             {sectionLabel}
                         </span>
                         {!hasVoices && (
-                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-100 px-2 py-[1px] text-[11px] font-medium text-amber-900">
-                                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden />
-                                {t("onboarding.noVoices", { defaultValue: "No voices" })}
-                            </span>
+                            isAppleGap ? (
+                                <span className="inline-flex items-center gap-1 rounded-full border border-purple-200 bg-white px-2 py-[1px] text-[11px] font-medium text-purple-900">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-purple-500" aria-hidden />
+                                    {t("onboarding.notOnAppleIOS", { defaultValue: "Not on iOS" })}
+                                </span>
+                            ) : (
+                                <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-100 px-2 py-[1px] text-[11px] font-medium text-amber-900">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden />
+                                    {t("onboarding.noVoices", { defaultValue: "No voices" })}
+                                </span>
+                            )
                         )}
                     </div>
 
@@ -386,7 +417,9 @@ export function OnboardingTTSInstructionsLanguageSection({
                                 "rounded-full px-2 py-[2px] text-xs font-semibold",
                                 hasVoices
                                     ? "border border-foreground bg-foreground text-background"
-                                    : "border border-amber-600 bg-amber-600 text-white",
+                                    : isAppleGap
+                                        ? "border border-purple-300 bg-white text-purple-900"
+                                        : "border border-amber-600 bg-amber-600 text-white",
                             ].join(" ")}
                         >
                             {selectedCount}/{voicesWithPretty.length}
@@ -437,6 +470,39 @@ export function OnboardingTTSInstructionsLanguageSection({
                                 />
                             );
                         })}
+                    </div>
+                ) : onSendAppleFeedback ? (
+                    /* iOS/macOS: Apple doesn't ship a voice for this language.
+                       Don't tease users with a non-existent install path —
+                       explain the gap honestly and route them to feedback. */
+                    <div className="p-4">
+                        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-purple-200 bg-gradient-to-b from-purple-50 to-white px-4 py-6 text-center shadow-inner sm:py-7">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-semibold text-purple-900 sm:text-base">
+                                    {t("onboarding.appleNoVoiceTitle", {
+                                        defaultValue: "Apple doesn't ship a {{lang}} voice yet",
+                                        lang: sectionLabel,
+                                    })}
+                                </span>
+                                <span className="text-xs leading-relaxed text-purple-800/80 sm:text-sm">
+                                    {t("onboarding.appleNoVoiceBody", {
+                                        defaultValue: "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime.",
+                                        lang: sectionLabel,
+                                    })}
+                                </span>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={onSendAppleFeedback}
+                                className="inline-flex h-10 items-center gap-2 rounded-md border border-purple-400 bg-purple-600 px-4 text-sm font-medium text-white shadow-sm transition hover:bg-purple-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 active:scale-[0.99] hover:cursor-pointer"
+                                dir={isRTL ? "rtl" : "ltr"}
+                            >
+                                <MessageSquare size={16} />
+                                <span>
+                                    {t("onboarding.sendAppleFeedback", { defaultValue: "Send Apple Feedback" })}
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div className="p-4">
