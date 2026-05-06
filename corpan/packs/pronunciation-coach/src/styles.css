@@ -98,57 +98,81 @@ body,
   padding:
     calc(12px + var(--pc-safe-top))
     calc(20px + var(--pc-safe-right))
-    calc(20px + var(--pc-safe-bottom))
+    calc(16px + var(--pc-safe-bottom))
     calc(20px + var(--pc-safe-left));
-  gap: 14px;
+  gap: 12px;
 }
 
-/* ---- Header (subtitle + skip + close) ---- */
+/* Phone-class layout — most iPhones in portrait. Everything scales
+   down proportionally so the deck has breathing room and the mic
+   stays comfortably above the home indicator. The big purple mic
+   that feels right on iPad becomes a too-much chunk of the screen
+   on a 6.1" phone, so it shrinks; the phrase typography clamp
+   bottoms out smaller; the per-word pills and bar grid tighten
+   their grids; and the header chiclets lose a few px of padding.
+   Tested-in-mind dimensions: iPhone SE 3rd gen (375×667),
+   iPhone 13/14 (390×844), iPhone 14 Plus (428×926). */
+/* Responsive overrides moved to the bottom of this file — placing
+   them above the base rules made every override lose the cascade
+   tie to the later, equally-specific base rules (the unconditional
+   `.pc-mic { width: 124px }` was beating `@media (max-width: 480px)
+   .pc-mic { width: 60px }` because it appeared later). */
+
+/* ---- Header — minimal: streak (left) + mode + close (right) ---- */
 .pc-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   flex: 0 0 auto;
+  /* min-height matches the 36px chiclets so the deck below sits
+     at a predictable y-offset regardless of header content. */
+  min-height: 36px;
 }
 
-.pc-subtitle {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pc-muted);
+/* iPad Stage Manager / Designed-for-iPad-on-Mac windows draw the
+   red/yellow/green window controls over the top-left of the WebView,
+   which collides with the streak chip. Reserve room for them on
+   iPad-class window sizes (and only there — iPhone landscape stays
+   tight against the edge). Height filter excludes phone landscape. */
+@media (min-width: 600px) and (min-height: 540px) {
+  .pc-header-left {
+    padding-left: max(0px, 78px);
+  }
 }
-
+.pc-header-left,
 .pc-header-right {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+.pc-header-left {
+  /* Reserve space for streak so the right cluster doesn't shift
+     when the streak appears/disappears. */
+  min-height: 36px;
+}
 
-.pc-skip,
+/* The "Pronunciation Coach" subtitle is gone from the header (the
+   user's screen is the brand — no need to label it twice). The
+   .pc-subtitle class survives because the setup overlay still uses
+   it as a section label ("Speech Models"). */
+.pc-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pc-fg);
+  opacity: 0.72;
+}
+
+/* Close X — matches the mode chip dimensions for visual rhythm. */
 .pc-close {
   appearance: none;
   border: 1px solid var(--pc-border);
   background: var(--pc-card);
   color: var(--pc-fg);
-  cursor: pointer;
-  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
-  font-family: inherit;
-}
-
-.pc-skip {
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.pc-skip:hover { background: var(--pc-accent-soft); }
-.pc-skip:active { transform: scale(0.97); }
-
-.pc-close {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -156,41 +180,59 @@ body,
   font-size: 20px;
   line-height: 1;
   font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
 }
 .pc-close:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); }
 .pc-close:active { transform: scale(0.92); }
 
-/* ---- Mode toggle (Standard ↔ Advanced) ---- */
+/* ---- Mode chip — icon-only, communicates state via fill ----
+   Standard: outlined neutral (the default speech model is the
+     baseline — no fanfare).
+   Advanced: filled-accent with a glowing ✦ (you've turned on the
+     fancy one — feel it). */
 .pc-mode {
   appearance: none;
   border: 1px solid var(--pc-border);
   background: var(--pc-card);
   color: var(--pc-fg);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
-  font-family: inherit;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 160ms ease, border-color 160ms ease,
+              transform 120ms ease, box-shadow 200ms ease,
+              color 160ms ease;
+  /* Standard glyph: faint sparkle, just enough to signal "model
+     selector" without claiming visual weight. */
+  color: var(--pc-fg);
+  opacity: 0.78;
 }
-.pc-mode:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); }
-.pc-mode:active { transform: scale(0.97); }
-.pc-mode[disabled] { opacity: 0.5; cursor: not-allowed; }
+.pc-mode:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); opacity: 1; }
+.pc-mode:active { transform: scale(0.94); }
+.pc-mode[disabled] { opacity: 0.4; cursor: not-allowed; }
+.pc-mode-glyph {
+  font-size: 14px;
+  line-height: 1;
+}
 .pc-mode.advanced {
   background: var(--pc-accent);
   border-color: var(--pc-accent);
-  color: white;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  color: #fff;
+  opacity: 1;
+  box-shadow:
+    0 0 0 4px var(--pc-accent-soft),
+    0 4px 14px rgba(124, 58, 237, 0.45);
 }
-.pc-mode.advanced:hover { background: var(--pc-accent-hover); }
-.pc-mode.advanced::before {
-  content: "✦";
-  font-size: 13px;
-  line-height: 1;
+.pc-mode.advanced:hover { background: var(--pc-accent-hover); border-color: var(--pc-accent-hover); }
+.pc-mode.advanced .pc-mode-glyph {
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* ---- Streak indicator ---- */
@@ -209,13 +251,16 @@ body,
 
 /* ---- Swipe area: wraps deck + result so the whole middle of the
    screen is a swipe target. Touch-action: none so iOS doesn't capture
-   horizontal drags as page scroll. ---- */
+   horizontal drags as page scroll. The result overlay is a child of
+   this container (`position: absolute`) so it never pushes the mic
+   stage downward — small phones keep the mic anchored, big iPads see
+   the result floating elegantly over the (faded) phrase. ---- */
 .pc-swipe-area {
+  position: relative;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 14px;
   min-height: 0;
   touch-action: none;
 }
@@ -223,32 +268,105 @@ body,
 /* ---- Phrase deck (sized for the card) ---- */
 .pc-deck {
   position: relative;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: flex-start;
+  justify-content: center;
   overflow: hidden;
-  min-height: 220px;
-  height: 32vh;
-  max-height: 380px;
+  min-height: 240px;
 }
 
+/* The card uses a 3-row grid so the phrase sits at a FIXED vertical
+   slot, no matter what decorations live above or below it. Without
+   this, adding the banner row pushed the phrase up and adding
+   detail rows pushed it again — the user observed the phrase
+   "moving abruptly" between idle and scored states. With grid:
+   - row 1 (1fr): banner sits at its bottom, gravity toward phrase
+   - row 2 (auto): phrase + romanization + native. Always centered
+                   vertically because the two 1fr rows split the
+                   remaining space evenly.
+   - row 3 (1fr): detail sits at its top, gravity toward phrase
+   The phrase never moves. Decorations grow into the surrounding
+   slack. */
 .pc-card {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 16px 8px 0;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  padding: 16px 8px;
   text-align: center;
-  gap: 14px;
   will-change: transform, opacity;
   transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
               opacity 220ms ease;
   touch-action: pan-y;
+  /* Safety net: if a long phrase + heavy result decorations
+     genuinely overflow the deck on a tiny phone, scroll the card
+     internally rather than pushing the mic off-screen. */
+  overflow-y: auto;
+  /* Hard horizontal clamp: NOTHING in the card may protrude past
+     the deck's right/left edge. A long Whisper transcript, a long
+     romanization, a wide pill row — all clipped to the card width. */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* Soft edge fade so the card content doesn't visibly hard-clip
+     against the deck boundary (especially the mic stage below).
+     Content gracefully dissolves into adjacent regions for a more
+     premium feel. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
 }
+.pc-card-above {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;        /* gravity DOWN, toward phrase */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-bottom: 14px;
+  min-height: 0;
+}
+.pc-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.pc-card-below {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;      /* gravity UP, toward phrase */
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-top: 14px;
+  min-height: 0;
+}
+/* The phrase is the visual hero throughout. Result decorations
+   appear around it (banner above, detail below) but the phrase
+   itself never fades or moves — content stability is the whole
+   point of the elite-design pass. The previous `.behind-result`
+   class faded the phrase to 18% to make a result OVERLAY feel like
+   foreground; we removed the overlay, so we removed the fade. */
 .pc-card.dragging {
   transition: none;
 }
@@ -317,12 +435,18 @@ body,
 .pc-mic {
   appearance: none;
   border: none;
-  width: 124px;
-  height: 124px;
+  /* Fluid mic: scales smoothly with the SHORTER viewport edge so
+     it tracks both phone width and reduced iPad window height.
+     Small screen → small button, big screen → big button, no
+     stepwise jumps. Bounded so it never gets absurd at extremes. */
+  width: clamp(48px, 14vmin, 124px);
+  height: clamp(48px, 14vmin, 124px);
   border-radius: 50%;
-  background: var(--pc-accent);
+  background: color-mix(in oklab, var(--pc-accent) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
   color: white;
-  font-size: 52px;
+  font-size: clamp(20px, 6vmin, 52px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,15 +455,15 @@ body,
   transition: background 120ms ease, transform 120ms ease;
   font-family: inherit;
 }
-.pc-mic:hover { background: var(--pc-accent-hover); }
+.pc-mic:hover { background: color-mix(in oklab, var(--pc-accent-hover) 92%, transparent); }
 .pc-mic:active { transform: scale(0.96); }
 .pc-mic[disabled] {
-  background: var(--pc-muted);
+  background: color-mix(in oklab, var(--pc-muted) 80%, transparent);
   opacity: 0.55;
   cursor: not-allowed;
   box-shadow: none;
 }
-.pc-mic[disabled]:hover { background: var(--pc-muted); }
+.pc-mic[disabled]:hover { background: color-mix(in oklab, var(--pc-muted) 80%, transparent); }
 
 .pc-mic.recording {
   background: var(--pc-bad);
@@ -356,9 +480,9 @@ body,
 }
 
 .pc-spinner {
-  width: 44px;
-  height: 44px;
-  border: 5px solid rgba(255, 255, 255, 0.35);
+  width: clamp(20px, 5vmin, 44px);
+  height: clamp(20px, 5vmin, 44px);
+  border: 3px solid rgba(255, 255, 255, 0.35);
   border-top-color: white;
   border-radius: 50%;
   animation: pc-spin 0.9s linear infinite;
@@ -383,35 +507,124 @@ body,
   opacity: 0.7;
 }
 
-/* ---- Inline result reveal — sits in the swipe area below the phrase
-   card. Plain layout, no card chrome, no shadow, no border, no modal
-   feel. Just stacked content centered on the page. ---- */
-.pc-result {
-  position: relative;
+/* ---- Result decorations — live INSIDE .pc-card, not as a separate
+   overlay. Banner above the phrase, detail below. The phrase is
+   never fragmented from its decorations, so the slide animation
+   carries everything off as one unit on swipe.
+
+   No card chrome on the decorations: no border, no shadow, no
+   separate background. Same surface as the phrase. The decorations
+   are part of the same composition as the phrase, not a popover. ---- */
+
+.pc-result-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--pc-accent-soft);
+  color: var(--pc-fg);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  /* Compact and subordinate to the phrase. The phrase is the verb
+     of this screen; the banner is the adverb. */
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  animation: pc-banner-in 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.pc-result-banner[hidden] { display: none; }
+.pc-result-banner.good {
+  background: rgba(22, 163, 74, 0.16);
+  color: var(--pc-good);
+}
+.pc-result-banner.okay {
+  background: rgba(217, 119, 6, 0.16);
+  color: var(--pc-okay);
+}
+.pc-result-banner.bad {
+  background: rgba(220, 38, 38, 0.16);
+  color: var(--pc-bad);
+}
+.pc-result-banner-score {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.pc-result-banner-sep {
+  opacity: 0.5;
+}
+.pc-result-banner-text {
+  font-weight: 600;
+}
+@keyframes pc-banner-in {
+  from { transform: translateY(-6px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.pc-result-banner.leaving {
+  animation: pc-banner-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes pc-banner-out {
+  to { transform: translateY(-4px); opacity: 0; }
+}
+
+.pc-result-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px 0;
-  background: transparent;
-  color: var(--pc-fg);
-  max-width: 720px;
   width: 100%;
+  max-width: 640px;
   margin: 0 auto;
-  flex: 0 0 auto;
-  animation: pc-result-in 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation: pc-detail-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
 }
-@keyframes pc-result-in {
+.pc-result-detail[hidden] { display: none; }
+@keyframes pc-detail-in {
   from { transform: translateY(6px); opacity: 0; }
   to   { transform: translateY(0);   opacity: 1; }
 }
-.pc-result[hidden] { display: none; }
+.pc-result-detail.leaving {
+  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes pc-detail-out {
+  to { transform: translateY(4px); opacity: 0; }
+}
 
-/* The result reveal no longer has a manual dismiss button — it auto-
-   clears whenever the user swipes, taps the mic, or hits skip — but if
-   we keep the button id around the styles must not bring back any
-   modal-like chrome. */
-.pc-result-close { display: none; }
+/* "Heard you say" slot — sits between the score banner and the
+   phrase. Hosts a single .pc-transcript-row, scoped to the same
+   width as the row's normal container. Reveals in concert with
+   the banner so the above-phrase composition feels like one
+   gesture, not three separate elements. */
+.pc-result-transcript-up {
+  width: 100%;
+  max-width: 600px;
+  margin: 8px auto 0;
+  animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 40ms backwards;
+}
+.pc-result-transcript-up[hidden] { display: none; }
+.pc-result-transcript-up.leaving {
+  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Bars-above slot — the green/yellow/red Words+Sounds bars sit
+   between the score banner and the phrase, using the empty space
+   above the phrase rather than crowding the detail row below it.
+   Inherits its own gentle fade-in from .pc-result-bars-up so it
+   reveals in concert with the banner. */
+.pc-result-bars-up {
+  width: 100%;
+  max-width: 360px;
+  margin: 8px auto 0;
+  animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
+}
+.pc-result-bars-up[hidden] { display: none; }
+.pc-result-bars-up.leaving {
+  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
 
 .pc-headline {
   font-size: clamp(20px, 3.6vw, 30px);
@@ -522,14 +735,29 @@ body,
 .pc-transcript-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 12px 6px 6px;
-  border-radius: 12px;
+  gap: 12px;
+  /* Tappable height comfortable for thumbs (Apple recommends ≥44pt
+     min hit-target). The whole row is tap-to-play, not just the
+     small ▶ button — the bigger area makes a phrase that says
+     "tap me to hear it" feel right. */
+  min-height: 48px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 14px;
   background: var(--pc-card);
   border: 1px solid var(--pc-border);
-  font-size: 13px;
+  font-size: 14px;
   text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+  /* Width clamp: row never exceeds its parent. Without this a long
+     Whisper transcript could push the row past the card edge. */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
+.pc-transcript-row:hover { background: var(--pc-accent-soft); }
+.pc-transcript-row:active { transform: scale(0.99); }
 .pc-transcript-row.free {
   background: transparent;
   border-style: dashed;
@@ -539,11 +767,11 @@ body,
   border: none;
   background: var(--pc-accent-soft);
   color: var(--pc-fg);
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -551,7 +779,7 @@ body,
   font-family: inherit;
   transition: background 120ms ease, transform 120ms ease;
 }
-.pc-transcript-play:hover { background: var(--pc-accent); color: var(--pc-card); }
+.pc-transcript-row:hover .pc-transcript-play { background: var(--pc-accent); color: var(--pc-card); }
 .pc-transcript-play:active { transform: scale(0.92); }
 .pc-transcript-label {
   font-size: 11px;
@@ -562,7 +790,12 @@ body,
   flex: 0 0 auto;
 }
 .pc-transcript-text {
-  flex: 1 1 auto;
+  /* `min-width: 0` is mandatory: flex items default to
+     min-width:auto, which equals their content width. Combined
+     with `white-space: nowrap`, that lets long transcripts blow
+     past the row width. The min-width:0 lets ellipsis kick in. */
+  flex: 1 1 0;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -661,7 +894,14 @@ body,
   white-space: pre-line;
   z-index: 50;
   backdrop-filter: blur(6px);
-  padding: 24px;
+  /* Padding includes safe insets so the spinner/text never crowd
+     the notch / Dynamic Island / home indicator if the overlay
+     content runs long enough to reach the edges. */
+  padding:
+    calc(24px + var(--pc-safe-top))
+    calc(24px + var(--pc-safe-right))
+    calc(24px + var(--pc-safe-bottom))
+    calc(24px + var(--pc-safe-left));
   line-height: 1.4;
 }
 .pc-overlay .pc-spinner {
@@ -911,4 +1151,62 @@ body,
   color: var(--pc-muted);
   text-align: center;
   line-height: 1.5;
+}
+
+/* ============================================================
+   Responsive overrides — MUST appear after base rules so they
+   win the CSS cascade. Earlier placement caused base rules
+   defined later in the file to override these silently. The
+   mic itself is now a fluid clamp(); these blocks tighten the
+   surrounding chrome on phones and tiny screens.
+   ============================================================ */
+@media (max-width: 480px), (max-height: 760px) {
+  .pc-root {
+    padding:
+      calc(8px + var(--pc-safe-top))
+      calc(14px + var(--pc-safe-right))
+      calc(10px + var(--pc-safe-bottom))
+      calc(14px + var(--pc-safe-left));
+    gap: 8px;
+  }
+  .pc-mic.recording { transform: none; }
+  .pc-mic-label { font-size: 11px; }
+  .pc-swipe-hint { display: none; }
+  .pc-footer { display: none; }
+
+  .pc-header { min-height: 32px; }
+  .pc-header-left { min-height: 32px; }
+  .pc-subtitle { font-size: 11px; letter-spacing: 0.06em; }
+  .pc-mode { width: 32px; height: 32px; }
+  .pc-mode-glyph { font-size: 12px; }
+  .pc-mode.advanced .pc-mode-glyph { font-size: 14px; }
+  .pc-close { width: 32px; height: 32px; font-size: 18px; }
+  .pc-streak { font-size: 12px; padding: 5px 10px; }
+
+  .pc-target { font-size: clamp(24px, 7vw, 38px); }
+  .pc-romanization { font-size: 14px; }
+  .pc-native { font-size: 14px; }
+
+  .pc-result-banner { font-size: 12px; padding: 5px 12px; gap: 8px; }
+  .pc-result-detail { gap: 8px; }
+  .pc-words { gap: 5px; }
+  .pc-word { font-size: 13px; padding: 5px 10px; }
+  .pc-bars { gap: 5px; }
+  .pc-bar { grid-template-columns: 64px 1fr 36px; font-size: 11px; gap: 8px; }
+  .pc-bar-track { height: 6px; }
+  .pc-transcript-row { min-height: 44px; padding: 6px 14px 6px 6px; font-size: 13px; }
+  .pc-transcript-play { width: 32px; height: 32px; font-size: 12px; }
+  .pc-card-above { padding-bottom: 10px; }
+  .pc-card-below { padding-top: 10px; }
+}
+
+/* Tiny phones — iPhone SE 3rd gen and earlier (<=667pt tall). */
+@media (max-height: 680px) {
+  .pc-target { font-size: clamp(22px, 6.5vw, 34px); }
+  .pc-result-banner { font-size: 11px; padding: 4px 10px; }
+  .pc-result-detail { gap: 6px; }
+  .pc-card-above { padding-bottom: 8px; }
+  .pc-card-below { padding-top: 8px; }
+  .pc-bars { display: none; }
+  .pc-result-bars-up { display: none; }
 }

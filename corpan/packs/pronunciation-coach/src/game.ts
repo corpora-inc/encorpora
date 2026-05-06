@@ -642,7 +642,7 @@ export const mountGame = (
     container.innerHTML = `
       <div class="pc-root">
         <div class="pc-header">
-          <div class="pc-subtitle">Pronunciation Coach</div>
+          <div class="pc-header-left"></div>
           <div class="pc-header-right">
             <button class="pc-close" id="pc-close" type="button" aria-label="Close">×</button>
           </div>
@@ -676,13 +676,16 @@ export const mountGame = (
 
     <div class="pc-root" id="pc-root">
       <div class="pc-header">
-        <div class="pc-subtitle">Pronunciation Coach</div>
-        <div class="pc-header-right">
+        <div class="pc-header-left">
           <span class="pc-streak" id="pc-streak" hidden>🔥 <span id="pc-streak-n">0</span></span>
-          <button class="pc-mode" id="pc-mode" type="button" aria-pressed="false">
-            <span id="pc-mode-label">Standard</span>
+        </div>
+        <div class="pc-header-right">
+          <button class="pc-mode" id="pc-mode" type="button"
+                  aria-pressed="false"
+                  aria-label="Switch speech model"
+                  title="Speech model">
+            <span class="pc-mode-glyph" aria-hidden="true">✦</span>
           </button>
-          <button class="pc-skip" id="pc-skip" type="button">Skip</button>
           <button class="pc-close" id="pc-close" type="button" aria-label="Close">×</button>
         </div>
       </div>
@@ -690,13 +693,21 @@ export const mountGame = (
       <div class="pc-swipe-area" id="pc-swipe-area">
         <div class="pc-deck" id="pc-deck">
           <div class="pc-card" id="pc-card">
-            <h1 class="pc-target" id="pc-target">Loading…</h1>
-            <p class="pc-romanization" id="pc-romanization" hidden></p>
-            <p class="pc-native" id="pc-native"></p>
+            <div class="pc-card-above">
+              <div class="pc-result-banner" data-pc-result-banner hidden></div>
+              <div class="pc-result-transcript-up" data-pc-result-transcript-up hidden></div>
+              <div class="pc-result-bars-up" data-pc-result-bars-up hidden></div>
+            </div>
+            <div class="pc-card-center">
+              <h1 class="pc-target" id="pc-target">Loading…</h1>
+              <p class="pc-romanization" id="pc-romanization" hidden></p>
+              <p class="pc-native" id="pc-native"></p>
+            </div>
+            <div class="pc-card-below">
+              <div class="pc-result-detail" data-pc-result-detail hidden></div>
+            </div>
           </div>
         </div>
-
-        <div class="pc-result" id="pc-result" hidden></div>
       </div>
 
       <div class="pc-stage">
@@ -716,19 +727,29 @@ export const mountGame = (
     </div>
   `
 
-  const skipBtn = container.querySelector<HTMLButtonElement>("#pc-skip")!
   const closeBtn = container.querySelector<HTMLButtonElement>("#pc-close")!
   const streakEl = container.querySelector<HTMLSpanElement>("#pc-streak")!
   const streakN = container.querySelector<HTMLSpanElement>("#pc-streak-n")!
   const modeBtn = container.querySelector<HTMLButtonElement>("#pc-mode")!
-  const modeLabel = container.querySelector<HTMLSpanElement>("#pc-mode-label")!
   const swipeAreaEl = container.querySelector<HTMLDivElement>("#pc-swipe-area")!
   const deckEl = container.querySelector<HTMLDivElement>("#pc-deck")!
   let cardEl = container.querySelector<HTMLDivElement>("#pc-card")!
   const micBtn = container.querySelector<HTMLButtonElement>("#pc-mic")!
   const micIcon = container.querySelector<HTMLSpanElement>("#pc-mic-icon")!
   const micLabel = container.querySelector<HTMLDivElement>("#pc-mic-label")!
-  const resultEl = container.querySelector<HTMLDivElement>("#pc-result")!
+  // Result decorations live INSIDE the card (selector via the
+  // current `cardEl` so a card-swap mid-result targets the live
+  // card, never a stale one). Selectors via `data-` attribute
+  // because the same id can't repeat across multiple cards in the
+  // deck during a slide animation transition.
+  const resultBannerOf = (card: HTMLElement) =>
+    card.querySelector<HTMLDivElement>("[data-pc-result-banner]")
+  const resultTranscriptUpOf = (card: HTMLElement) =>
+    card.querySelector<HTMLDivElement>("[data-pc-result-transcript-up]")
+  const resultBarsUpOf = (card: HTMLElement) =>
+    card.querySelector<HTMLDivElement>("[data-pc-result-bars-up]")
+  const resultDetailOf = (card: HTMLElement) =>
+    card.querySelector<HTMLDivElement>("[data-pc-result-detail]")
   const errorEl = container.querySelector<HTMLDivElement>("#pc-error")!
 
   // ---- Loading overlay ----
@@ -794,13 +815,22 @@ export const mountGame = (
 
   const renderModeButton = () => {
     const m = modelById(modelMode)
-    modeLabel.textContent = labelForMode(modelMode)
-    modeBtn.setAttribute("aria-pressed", modelMode === "advanced" ? "true" : "false")
+    // Icon-only mode chip. Standard = outlined / neutral; Advanced
+    // = filled-accent with the ✦ glyph. The label is communicated
+    // entirely through visual state — no text, just a sexy little
+    // pill. Tooltip + aria-label still expose the readable name
+    // for accessibility / power users.
+    modeBtn.setAttribute(
+      "aria-pressed",
+      modelMode === "advanced" ? "true" : "false"
+    )
     modeBtn.classList.toggle("advanced", modelMode === "advanced")
     modeBtn.disabled = modelSwitching
-    modeBtn.title = m
-      ? `${m.label} model (~${m.approxSizeMB} MB)`
-      : `${labelForMode(modelMode)} model`
+    const tip = m
+      ? `${m.label} model (~${m.approxSizeMB} MB) · tap to switch`
+      : `${labelForMode(modelMode)} model · tap to switch`
+    modeBtn.title = tip
+    modeBtn.setAttribute("aria-label", `Speech model: ${labelForMode(modelMode)}`)
     const footerModel = container.querySelector<HTMLSpanElement>("#pc-footer-model")
     if (footerModel) footerModel.textContent = labelForMode(modelMode)
   }
@@ -835,6 +865,31 @@ export const mountGame = (
   }
 
   // ---- Phrase rendering ----
+  // Each card uses a 3-row grid so the phrase sits at a fixed
+  // vertical slot. The banner above and detail below are added by
+  // renderResult INTO the same card (rather than into a separate
+  // overlay), so the slide animation takes the card and its
+  // decorations off as one unit on swipe.
+  const cardSkeleton = (
+    targetHtml: string,
+    romanHtml: string,
+    nativeHtml: string
+  ): string => `
+    <div class="pc-card-above">
+      <div class="pc-result-banner" data-pc-result-banner hidden></div>
+      <div class="pc-result-transcript-up" data-pc-result-transcript-up hidden></div>
+      <div class="pc-result-bars-up" data-pc-result-bars-up hidden></div>
+    </div>
+    <div class="pc-card-center">
+      ${targetHtml}
+      ${romanHtml}
+      ${nativeHtml}
+    </div>
+    <div class="pc-card-below">
+      <div class="pc-result-detail" data-pc-result-detail hidden></div>
+    </div>
+  `
+
   const fillCard = (card: HTMLDivElement, phrase: LoadedPhrase) => {
     const cfg = hostApi.getStackConfig()
     const showRoman = !!cfg.showRomanization
@@ -846,11 +901,11 @@ export const mountGame = (
     const nativeHtml = phrase.native?.text
       ? `<p class="pc-native">${escapeHtml(phrase.native.text)}</p>`
       : ""
-    card.innerHTML = `
-      <h1 class="pc-target">${escapeHtml(phrase.target.text || "—")}</h1>
-      ${romanHtml}
-      ${nativeHtml}
-    `
+    card.innerHTML = cardSkeleton(
+      `<h1 class="pc-target">${escapeHtml(phrase.target.text || "—")}</h1>`,
+      romanHtml,
+      nativeHtml
+    )
   }
 
   const renderEmptyCard = (
@@ -858,10 +913,11 @@ export const mountGame = (
     headline: string,
     sub?: string
   ) => {
-    card.innerHTML = `
-      <h1 class="pc-target">${escapeHtml(headline)}</h1>
-      ${sub ? `<p class="pc-native">${escapeHtml(sub)}</p>` : ""}
-    `
+    card.innerHTML = cardSkeleton(
+      `<h1 class="pc-target">${escapeHtml(headline)}</h1>`,
+      "",
+      sub ? `<p class="pc-native">${escapeHtml(sub)}</p>` : ""
+    )
   }
 
   const renderCurrentPhrase = () => {
@@ -929,7 +985,13 @@ export const mountGame = (
     if (uiState === "scoring") return
     cancelActiveSession()
     clearError()
-    clearResult()
+    // Do NOT clearResult() here. The result decorations live inside
+    // the card; the slide animation takes them off-screen as one
+    // unit with the phrase. Calling clearResult before the slide
+    // would visually snap the decorations off, briefly show the
+    // bare phrase, THEN run the slide — three motions where the
+    // user should observe one. The new card is rendered fresh by
+    // fillCard via cardSkeleton, with empty (hidden) result slots.
 
     const cfg = hostApi.getStackConfig()
     if (!cfg.languages || cfg.languages.length < 2) {
@@ -987,7 +1049,7 @@ export const mountGame = (
     if (historyIdx <= 0) return // nothing before
     cancelActiveSession()
     clearError()
-    clearResult()
+    // See goNext: do not clearResult before the slide.
 
     const prev = history[historyIdx - 1]
     historyIdx -= 1
@@ -998,10 +1060,62 @@ export const mountGame = (
   }
 
   // ---- Result rendering ----
-  const clearResult = () => {
-    resultEl.innerHTML = ""
-    resultEl.hidden = true
+  // Clear result decorations from a specific card. We pass the card
+  // explicitly so callers can clear the LIVE card during a same-card
+  // retry (mic tap) without accidentally clearing a sibling card
+  // mid-slide. Navigation paths (swipe / skip / mode change) don't
+  // call this — they slide the whole card off, which carries the
+  // decorations with it as one motion.
+  //
+  // Decorations animate out (leaving class triggers a 220ms fade)
+  // before the DOM nodes are emptied. Without the leaving class,
+  // re-recording on the same card would snap the colored word
+  // pills off instantly, which felt abrupt — gentle fade-out
+  // matches the gentle fade-in.
+  const clearResultOnCard = (card: HTMLDivElement) => {
+    const banner = resultBannerOf(card)
+    const transUp = resultTranscriptUpOf(card)
+    const barsUp = resultBarsUpOf(card)
+    const detail = resultDetailOf(card)
+    const finalize = () => {
+      if (banner) {
+        banner.innerHTML = ""
+        banner.hidden = true
+        banner.className = "pc-result-banner"
+      }
+      if (transUp) {
+        transUp.innerHTML = ""
+        transUp.hidden = true
+        transUp.className = "pc-result-transcript-up"
+      }
+      if (barsUp) {
+        barsUp.innerHTML = ""
+        barsUp.hidden = true
+        barsUp.className = "pc-result-bars-up"
+      }
+      if (detail) {
+        detail.innerHTML = ""
+        detail.hidden = true
+        detail.className = "pc-result-detail"
+      }
+    }
+    const wasShowing =
+      (banner && !banner.hidden) ||
+      (transUp && !transUp.hidden) ||
+      (barsUp && !barsUp.hidden) ||
+      (detail && !detail.hidden)
+    if (!wasShowing) {
+      finalize()
+      return
+    }
+    if (banner && !banner.hidden) banner.classList.add("leaving")
+    if (transUp && !transUp.hidden) transUp.classList.add("leaving")
+    if (barsUp && !barsUp.hidden) barsUp.classList.add("leaving")
+    if (detail && !detail.hidden) detail.classList.add("leaving")
+    // Match the 220ms `pc-banner-out` / `pc-detail-out` keyframes.
+    window.setTimeout(finalize, 220)
   }
+  const clearResult = () => clearResultOnCard(cardEl)
 
   const renderResult = (result: SttTranscriptionResult) => {
     const overall = Math.max(0, Math.min(1, result.overallScore))
@@ -1214,10 +1328,14 @@ export const mountGame = (
     // (Whisper couldn't make it out), show a friendly placeholder
     // instead of hiding the row — silent failure is exactly what we
     // don't want.
+    // Whole row is the tap target (data-pc-speak on the row itself);
+    // the ▶ button is purely a visual affordance. Larger hit area
+    // on mobile, no fiddly small-icon mistapping.
     const heardRow = freeText.length
-      ? `<div class="pc-transcript-row heard">
-           <button class="pc-transcript-play" type="button" data-pc-speak="heard"
-             aria-label="Play what Whisper heard">▶</button>
+      ? `<div class="pc-transcript-row heard" role="button" tabindex="0"
+             data-pc-speak="heard" data-no-swipe
+             aria-label="Play what Whisper heard">
+           <span class="pc-transcript-play" aria-hidden="true">▶</span>
            <span class="pc-transcript-label">Heard you say</span>
            <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
          </div>`
@@ -1283,29 +1401,77 @@ export const mountGame = (
       ? `<div class="pc-chips pc-diagnostics">${diagChips.join("")}</div>`
       : ""
 
+    // Render banner + detail INTO the live card's slots. The phrase
+    // stays where it is (visual hero); the banner appears just above
+    // it as a compact pill, the detail appears below.
+    //
+    // Per-word pills go FIRST in the detail (directly below the
+    // phrase) because that's where the user's eye is anchored —
+    // immediate visual connection between phrase and per-word
+    // feedback. Transcripts, bars, diagnostics, and Hear-it follow.
+    const bannerEl = resultBannerOf(cardEl)
+    const transUpEl = resultTranscriptUpOf(cardEl)
+    const barsUpEl = resultBarsUpOf(cardEl)
+    const detailEl = resultDetailOf(cardEl)
+    if (!bannerEl || !detailEl) {
+      // The current card lacks the result slots (shouldn't happen
+      // with the cardSkeleton template but guard so we don't throw).
+      console.error(
+        "[pronunciation-coach] renderResult: card missing result slots"
+      )
+      return
+    }
     if (silent) {
-      // Quiet failure path — don't render the chip noise, just the
-      // mic hint and a Hear-it for re-listening to the target phrase.
-      resultEl.innerHTML = `
-        <h2 class="pc-headline ${headlineClass}">${headlineText}</h2>
-        <div class="pc-score-big">—</div>
+      // Quiet failure path — score is "—", show a friendly chip and
+      // a Hear-it. Banner uses the okay tint (warning, not failure).
+      bannerEl.className = `pc-result-banner ${headlineClass}`
+      bannerEl.innerHTML = `
+        <span class="pc-result-banner-score">—</span>
+        <span class="pc-result-banner-sep">·</span>
+        <span class="pc-result-banner-text">${headlineText}</span>
+      `
+      bannerEl.hidden = false
+      detailEl.innerHTML = `
         <div class="pc-chips">
           <div class="pc-chip">Move the iPad closer or speak louder.</div>
         </div>
-        <button class="pc-hear" id="pc-hear" type="button">▶ Hear it</button>
       `
+      detailEl.hidden = false
     } else {
-      resultEl.innerHTML = `
-        <h2 class="pc-headline ${headlineClass}">${headlineText}</h2>
-        <div class="pc-score-big">${pct(overall)}</div>
-        ${barsHtml}
-        ${wordsHtml ? `<div class="pc-words">${wordsHtml}</div>` : ""}
-        ${transcriptsHtml}
-        ${diagHtml}
-        <button class="pc-hear" id="pc-hear" type="button">▶ Hear it</button>
+      bannerEl.className = `pc-result-banner ${headlineClass}`
+      bannerEl.innerHTML = `
+        <span class="pc-result-banner-score">${pct(overall)}</span>
+        <span class="pc-result-banner-sep">·</span>
+        <span class="pc-result-banner-text">${headlineText}</span>
       `
+      bannerEl.hidden = false
+      // Composition above the phrase, in order:
+      //   banner (% + headline) → "Heard you say" → bars
+      // Composition below the phrase:
+      //   per-word pills → diagnostics
+      // Putting the transcript and bars above the phrase balances
+      // the visual weight against the pills+diagnostics below, so
+      // the phrase sits as the centerpiece of the composition
+      // rather than crowded at the top of a stack.
+      if (transUpEl) {
+        transUpEl.innerHTML = transcriptsHtml
+        transUpEl.hidden = !transcriptsHtml
+      }
+      if (barsUpEl) {
+        barsUpEl.innerHTML = barsHtml
+        barsUpEl.hidden = false
+      }
+      // No "Hear it" button — the per-word pills are already
+      // tap-to-hear, which covers re-listening more usefully (you
+      // can hear an individual word, not just the whole phrase).
+      // The phrase header itself is also tap-to-hear (existing
+      // .pc-target click binding).
+      detailEl.innerHTML = `
+        ${wordsHtml ? `<div class="pc-words">${wordsHtml}</div>` : ""}
+        ${diagHtml}
+      `
+      detailEl.hidden = false
     }
-    resultEl.hidden = false
 
     const speakInTarget = (text: string, label: string) => {
       const lang = currentPhrase?.targetLang || result.language || "en"
@@ -1324,8 +1490,10 @@ export const mountGame = (
       }
     }
 
-    // Per-word TTS: tap a pill to hear that word in the target language.
-    const wordPills = resultEl.querySelectorAll<HTMLButtonElement>(
+    // Per-word TTS: tap a pill to hear that word in the target
+    // language. Scope all button queries to the live card so a
+    // mid-render slide can never bind handlers to a stale card.
+    const wordPills = detailEl.querySelectorAll<HTMLButtonElement>(
       "button.pc-word[data-pc-word-idx]"
     )
     wordPills.forEach((pill) => {
@@ -1339,25 +1507,32 @@ export const mountGame = (
       })
     })
 
-    // Tap the ▶ next to "Heard you say" → speak the free transcript
-    // (what Whisper actually heard) in the target-language voice.
-    const transcriptPlayBtns = resultEl.querySelectorAll<HTMLButtonElement>(
-      "button.pc-transcript-play[data-pc-speak]"
+    // Tap anywhere on the "Heard you say" row → speak the free
+    // transcript in the target-language voice. The whole row is
+    // the tap target, not just the small ▶ icon (better hit area
+    // for thumbs). Scope to the whole card because the row now
+    // lives ABOVE the phrase (in the transcript-up slot), not
+    // inside detailEl.
+    const transcriptRows = cardEl.querySelectorAll<HTMLElement>(
+      ".pc-transcript-row[data-pc-speak]"
     )
-    transcriptPlayBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
+    transcriptRows.forEach((row) => {
+      const speak = () => {
         if (!freeText) return
         speakInTarget(freeText, "heard")
+      }
+      row.addEventListener("click", speak)
+      row.addEventListener("keydown", (e: Event) => {
+        const k = (e as KeyboardEvent).key
+        if (k === "Enter" || k === " ") {
+          e.preventDefault()
+          speak()
+        }
       })
     })
 
-    const hearBtn = resultEl.querySelector<HTMLButtonElement>("#pc-hear")
-    if (hearBtn) {
-      hearBtn.addEventListener("click", () => {
-        if (!currentPhrase) return
-        speakInTarget(currentPhrase.target.text, "target")
-      })
-    }
+    // (No #pc-hear button — per-word pills cover re-listen, and
+    //  tapping the .pc-target header still speaks the whole phrase.)
   }
 
   // ---- Mic flow ----
@@ -1491,14 +1666,10 @@ export const mountGame = (
     }
   })
 
-  skipBtn.addEventListener("click", () => {
-    streak = 0
-    updateStreak()
-    persist()
-    goNext().catch((err) => {
-      console.error("[pronunciation-coach] goNext threw:", err)
-    })
-  })
+  // Skip button removed from the header — swipe ←/→ already covers
+  // skip-to-next, and removing the redundant button cleans up the
+  // top of the screen significantly (especially on phones where
+  // every chiclet competes for the safe-area-top strip).
 
   closeBtn.addEventListener("click", () => {
     cancelActiveSession()
@@ -1983,7 +2154,7 @@ export const mountGame = (
         <div class="pc-backdrop"></div>
         <div class="pc-setup">
           <div class="pc-setup-header">
-            <div class="pc-subtitle">Pronunciation Coach</div>
+            <div class="pc-subtitle">Speech Models</div>
             <button class="pc-close" id="pc-setup-close" type="button" aria-label="Close">×</button>
           </div>
           <div class="pc-setup-body">
