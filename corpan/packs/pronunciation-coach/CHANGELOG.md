@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-06
+
 ### Changed
 - **Model lifecycle rebuilt — installs survive reliably.** Reported
   failures: "Model not installed" appearing right after a successful
