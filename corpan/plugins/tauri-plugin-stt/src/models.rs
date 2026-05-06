@@ -12,6 +12,16 @@ pub struct PrepareResult {
     pub ready: bool,
     pub model: String,
     pub message: Option<String>,
+    /// Structured error code when `ready == false`. Populated by the
+    /// iOS plugin (`MODEL_NOT_INSTALLED`, `NETWORK`, `LOAD_FAILED`,
+    /// etc.). Critical: every field returned by the iOS plugin that
+    /// JS needs to read MUST be declared on this Rust struct, because
+    /// `run_mobile_plugin::<PrepareResult>` deserializes the iOS JSON
+    /// against this shape and SILENTLY DROPS unknown fields. If you
+    /// add a new field to the Swift `PreparePayload`, also add it here
+    /// or the JS side will never see it.
+    #[serde(default)]
+    pub code: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

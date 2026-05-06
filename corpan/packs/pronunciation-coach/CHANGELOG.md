@@ -11,6 +11,34 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Changed
+- **Model lifecycle rebuilt — installs survive reliably.** Reported
+  failures: "Model not installed" appearing right after a successful
+  install, and Standard disappearing after leaving and re-entering the
+  pack. Root cause was the JS `looksCorrupt` substring predicate
+  triggering `wipeModel` on transient errors (any "timed out" message
+  ⇒ delete model files). Removed entirely. Now:
+  - **No JS auto-wipe paths.** The recording-failure block no longer
+    calls `wipeModel`. The boot-catch handler no longer calls
+    `wipeModel`. Wipe is exclusively user-initiated via Remove or
+    Reinstall buttons in the setup overlay.
+  - **Routes on structured error codes** (`MODEL_NOT_INSTALLED`,
+    `NETWORK`, `LOAD_FAILED`, etc.) from the plugin instead of
+    matching message substrings. `LOAD_FAILED` shows a Reinstall
+    prompt; `NETWORK` shows a "check your connection" banner; the
+    user — not a heuristic — decides whether to delete files.
+  - **`listInstalled` round-trip on boot.** Single plugin call returns
+    disk-truth state for every registered model variant; replaces the
+    per-mode `validateModel` loops.
+  - **Model registry** in `src/modelRegistry.ts` is now the single
+    source of truth for variants. Adding a model = one entry; the
+    setup overlay's `renderActions` and the boot snapshot iterate the
+    registry. The hardcoded `"standard" | "advanced"` literal type and
+    `MODEL_BY_MODE` / `MODEL_LABEL` / `PREPARE_TIMEOUT_MS` constants
+    are gone.
+  - localStorage `mode` field continues to hold the registry id
+    ("standard" / "advanced" today) — migration is a no-op for
+    existing users.
+
 - **Per-character pills for CJK phrases.** Chinese / Japanese /
   Korean phrases have no whitespace, so the previous whitespace
   tokenizer rendered the entire phrase as one giant pill. Mandarin
@@ -57,6 +85,40 @@ Conventions: `corpan/CHANGELOGS.md`.
   blur, larger text, larger spinner, two-line message naming the
   model and the rough wait. Mic button also gets a clearly-inactive
   gray treatment when disabled (was just opacity 0.5).
+### Fixed
+- **Plugin errors no longer surface as `[object Object]`.** Tauri
+  plugin errors arrive across the JS bridge as plain objects (e.g.
+  `{message: "...", code: 31, domain: "STT"}`), not `Error`
+  instances, so the previous `err instanceof Error ? err.message :
+  String(err)` pattern collapsed every install / record / score
+  failure to "[object Object]". Replaced with a `formatErr` helper
+  that walks the common error shapes (Error, plugin-shape with
+  `message`/`localizedDescription`/`error`/`description`, plain
+  string, plain object → JSON) so the user sees the real message.
+- **Race condition in boot wiped the wrong model after a failed
+  `prepare`.** `boot()` ran `prepareWithRecovery(modelMode)` and
+  `loadFirstPhrase()` in `Promise.all`. `loadFirstPhrase` invoked
+  `restoreFromStorage()` which mutated `modelMode = saved.mode` —
+  even though `boot()` had already loaded the saved mode at the top
+  via `savedEarly` and may have replaced it with the user's
+  just-completed setup choice. With the in-flight prepare reading
+  the captured arg but the catch handler reading the live `modelMode`,
+  a failed prepare for one model wiped the OTHER model's files and
+  re-prepared the OTHER model. Symptom on TestFlight: install
+  Standard, score 0% with "Could not load Advanced mode: Model not
+  installed (`<model dir missing>`)".
+  Fix: removed the `modelMode = saved.mode` mutation from
+  `restoreFromStorage` (boot is the single source of truth for
+  `modelMode`). Also captured `bootTargetMode` / `targetMode` before
+  the awaits in `boot()` and `openModelSetup()` so the catch always
+  references the model that was actually being prepared.
+- **Boot catch no longer wipes on "model not installed".** The wipe
+  was meant for truncated-download / CoreML-load corruption — a
+  missing model dir doesn't have anything to wipe, and trying could
+  have hit the wrong target if `modelMode` had been mutated. Now
+  the wipe runs only on real on-disk corruption errors.
+
+### Changed
 - **Friendlier result-panel language.** Removed jargon ("Prior
   rescue", "Decoder fallback", "Compression 2.6 (gibberish)",
   "Whisper lang: pa") in favor of plain English a kid can act on:

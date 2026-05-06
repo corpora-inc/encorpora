@@ -11,6 +11,8 @@ permissions = [
     "allow-wipe-model",
     "allow-install-model",
     "allow-validate-model",
+    "allow-list-installed",
+    "allow-unload",
     "allow-register-listener",
     "allow-remove-listener",
 ]

@@ -48,6 +48,7 @@ impl<R: Runtime> Stt<R> {
                 ready: false,
                 model: model.unwrap_or_default(),
                 message: Some(unsupported_msg().to_string()),
+                code: Some("UNKNOWN".to_string()),
             });
         };
         let args = PrepareArgs { model };

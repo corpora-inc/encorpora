@@ -8,6 +8,8 @@ const COMMANDS: &[&str] = &[
     "wipe_model",
     "install_model",
     "validate_model",
+    "list_installed",
+    "unload",
     "register_listener",
     "remove_listener",
 ];

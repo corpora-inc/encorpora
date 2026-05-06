@@ -200,12 +200,16 @@ export async function getStationsByLanguage(
 
 /**
  * Trim a station to only the fields the UI reads. Cuts the cache footprint by
- * roughly 50–60% (drops `homepage`, `state`, `languagecodes`, `votes`,
- * `lastcheckok`, `clicktrend`, `changeuuid`). Keeps the API surface stable —
- * unused fields are just absent, no consumer breakage.
+ * roughly 50–60% (drops `homepage`, `state`, `votes`, `lastcheckok`,
+ * `clicktrend`, `changeuuid`). Keeps the API surface stable — unused fields
+ * are just absent, no consumer breakage.
  *
  * Preserves `hls`: the player keys off it to route through hls.js on Android,
  * since Chromium WebView has no native HLS decoder.
+ *
+ * Preserves `languagecodes` (typically 5–15 chars): the global map's
+ * language filter matches against it for accuracy, since `language` is a
+ * free-text English name with inconsistent operator tagging.
  */
 function stripStation(s: RadioStation): RadioStation {
   return {
@@ -221,7 +225,7 @@ function stripStation(s: RadioStation): RadioStation {
     countrycode: s.countrycode,
     state: "",
     language: s.language,
-    languagecodes: "",
+    languagecodes: s.languagecodes ?? "",
     votes: 0,
     codec: s.codec,
     bitrate: s.bitrate,
@@ -241,6 +245,56 @@ function isPlayable(s: RadioStation): boolean {
   if (UNPLAYABLE_CODECS.has(s.codec.toUpperCase())) return false
   if (!s.url_resolved && !s.url) return false
   return true
+}
+
+/**
+ * Fetch up to `limit` of the world's most-clicked playable stations, across
+ * every language. Powers the global map view.
+ *
+ * Storage strategy: in-memory ONLY for the lifetime of the pack mount.
+ * The global payload (10k stations × ~250 B serialized ≈ 2.5 MB) is the
+ * single biggest thing this pack would write to localStorage, and the
+ * Corpán host shares one localStorage origin across every pack — so even
+ * a successful write would crowd out other packs' caches. Re-fetching on
+ * every fresh pack open is a one-shot ~2 s network cost; keeping the
+ * full set in memory while the pack is open delivers instant filter
+ * re-renders and instant tab switches without touching disk.
+ *
+ * If the pack is closed and reopened, the in-memory cache is discarded
+ * along with the rest of the pack module — the next open re-fetches
+ * from Radio Browser. That's the right tradeoff: shared-origin storage
+ * is a precious resource, and global-station data isn't worth the
+ * persistence given how lightweight the network round-trip is.
+ */
+let memGlobalStations: { fetchedAt: number; limit: number; value: RadioStation[] } | null = null
+
+export async function getAllStations(limit: number = 10000): Promise<RadioStation[]> {
+  // In-memory hit — instant. Reuse if same limit and within the TTL window
+  // (avoids re-fetching when the user toggles between tabs in one session).
+  if (
+    memGlobalStations &&
+    memGlobalStations.limit === limit &&
+    Date.now() - memGlobalStations.fetchedAt < TTL_STATIONS_MS
+  ) {
+    return memGlobalStations.value
+  }
+
+  const path =
+    `/json/stations` +
+    `?hidebroken=true&order=clickcount&reverse=true&limit=${limit}`
+  try {
+    const stations = await fetchJson<RadioStation[]>(path)
+    const filtered = stations.filter(isPlayable).map(stripStation)
+    memGlobalStations = { fetchedAt: Date.now(), limit, value: filtered }
+    return filtered
+  } catch (err) {
+    console.error(`[world-radio] getAllStations(${limit}) failed:`, err)
+    // Stale-better-than-nothing: if we have any prior in-memory copy
+    // (e.g., a stale TTL fetch that succeeded earlier this session), use
+    // it before propagating the error.
+    if (memGlobalStations) return memGlobalStations.value
+    throw err
+  }
 }
 
 /**
