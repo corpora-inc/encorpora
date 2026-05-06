@@ -1485,21 +1485,6 @@
   overflow: hidden;
 }
 
-.wr-globalmap-header {
-  padding: var(--wr-sp-2) var(--wr-edge) var(--wr-sp-2);
-}
-.wr-globalmap-title {
-  font-size: var(--wr-text-lg);
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.wr-globalmap-sub {
-  margin: 2px 0 0;
-  font-size: var(--wr-text-sm);
-  color: var(--wr-fg-dim);
-}
-
 .wr-globalmap-body {
   flex: 1 1 auto;
   min-height: 0;

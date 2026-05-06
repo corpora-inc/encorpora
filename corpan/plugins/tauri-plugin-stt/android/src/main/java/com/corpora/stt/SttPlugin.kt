@@ -97,13 +97,10 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         invoke.resolve(ret)
     }
 
-    @Command
-    fun registerListener(invoke: Invoke) {
-        invoke.reject(NOT_SUPPORTED)
-    }
-
-    @Command
-    fun removeListener(invoke: Invoke) {
-        invoke.reject(NOT_SUPPORTED)
-    }
+    // registerListener / removeListener intentionally NOT defined here:
+    // the Tauri `Plugin` superclass already provides them as part of
+    // the generic event-channel infrastructure. Redefining them in a
+    // subclass without `override` is a Kotlin compile error
+    // ("hides member of supertype Plugin"). We don't have anything to
+    // emit on Android anyway, so we just inherit the base behavior.
 }

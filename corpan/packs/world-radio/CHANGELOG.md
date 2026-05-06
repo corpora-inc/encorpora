@@ -8,6 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-05-06
+
+### Changed
+- World map screen drops the "World map" title and station-count subtitle.
+  The tab label and the markers themselves convey what's on screen, and
+  reclaiming that vertical space gives the map (and the language chip
+  strip below the filter rail) noticeably more room on phones.
+
 ## [0.6.0] - 2026-05-06
 
 ### Added
