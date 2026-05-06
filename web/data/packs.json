@@ -145,7 +145,7 @@
     "landingUrl": "/corpan/packs/pronunciation-coach/",
     "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
-    "minAppVersion": "0.12.2",
+    "minAppVersion": "0.12.3",
     "platforms": ["ios"],
     "minOSVersion": "17.0",
     "channel": "stable",

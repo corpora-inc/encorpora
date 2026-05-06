@@ -239,6 +239,30 @@ struct SttFailure: Error {
 ///   • LOAD_FAILED — files are there but won't load (truncated weights,
 ///     CoreML compile failure, error -14, etc.). Surface a Reinstall
 ///     banner; let the user decide whether to delete.
+/// Detect CoreML compile / execution-plan failures (error code -14
+/// family) so we can retry with progressively conservative compute
+/// units. These are device-specific MLProgram backend failures — not
+/// corruption — so wiping the model files won't help. The right
+/// recovery is to ask CoreML to run on a different backend (CPU only),
+/// not to redownload bytes that are already correct.
+///
+/// Patterns observed in the wild on `large-v3-turbo` on certain iPad
+/// chips even with `.cpuAndGPU`:
+///   • "Failed to build the model execution plan using a model
+///      architecture file '...AudioEncoder.mlmodelc/model.mil' with
+///      error code: -14"
+///   • "Failed to build the model execution plan using a model
+///      architecture file '...TextDecoder.mlmodelc/model.mil' with
+///      error code: -14"
+private func isComputeBackendError(_ error: Error) -> Bool {
+    let desc = (error as NSError).localizedDescription.lowercased()
+    return desc.contains("execution plan")
+        || desc.contains("could not build the model")
+        || desc.contains("failed to build the model")
+        || desc.contains("error code: -14")
+        || desc.contains("error code -14")
+}
+
 private func classifyLoadError(_ error: Error) -> SttErrorCode {
     let nsErr = error as NSError
     let desc = nsErr.localizedDescription.lowercased()
@@ -298,20 +322,74 @@ private final class WhisperManager {
     private static let defaultModel = "openai_whisper-base"
     private static let targetSampleRate: Double = 16000.0
 
-    /// CPU+GPU compute units for both audio encoder and text decoder.
+    /// Default compute units: CPU+GPU for both audio encoder and text
+    /// decoder.
     ///
     /// WhisperKit's default is `.cpuAndNeuralEngine` for the text decoder,
     /// which on certain Apple silicon (some M-series iPad chips in
     /// particular) fails to compile a CoreML execution plan for the
     /// `large-v3-turbo` text decoder graph and surfaces as error code -14.
-    /// CPU+GPU is still hardware-accelerated, works for every model on
-    /// every device we ship to, and is what argmax's own example app uses
-    /// for cross-device safety.
+    /// CPU+GPU is still hardware-accelerated, works for most devices we
+    /// ship to, and is what argmax's own example app uses for cross-
+    /// device safety. When even CPU+GPU fails (rare device-specific
+    /// MLProgram backend bug), `loadKitWithComputeFallback` retries with
+    /// CPU-only.
     private static func makeComputeOptions() -> ModelComputeOptions {
         return ModelComputeOptions(
             audioEncoderCompute: .cpuAndGPU,
             textDecoderCompute: .cpuAndGPU
         )
+    }
+
+    /// Pure-CPU fallback when CPU+GPU fails to build a CoreML execution
+    /// plan. Slower than CPU+GPU but works on every iPad we ship to.
+    /// Tried automatically on compute-backend errors so the user sees
+    /// a working model instead of a "Reinstall" prompt for what's
+    /// actually a backend bug.
+    private static func makeCpuOnlyComputeOptions() -> ModelComputeOptions {
+        return ModelComputeOptions(
+            audioEncoderCompute: .cpuOnly,
+            textDecoderCompute: .cpuOnly
+        )
+    }
+
+    /// Load a WhisperKit instance with a single compute-backend retry
+    /// fallback: try CPU+GPU first, and if that fails specifically with
+    /// a CoreML execution-plan error (code -14), retry with CPU-only.
+    /// Errors that aren't compute-backend failures (network, missing
+    /// files, etc.) bubble up immediately without a fallback attempt.
+    private func loadKitWithComputeFallback(
+        modelName: String,
+        modelFolder: String,
+        prewarm: Bool
+    ) async throws -> WhisperKit {
+        let primaryConfig = WhisperKitConfig(
+            model: modelName,
+            modelFolder: modelFolder,
+            computeOptions: Self.makeComputeOptions(),
+            prewarm: prewarm,
+            download: false)
+        do {
+            return try await WhisperKit(primaryConfig)
+        } catch {
+            guard isComputeBackendError(error) else {
+                throw error
+            }
+            sttLog(
+                "Whisper | CPU+GPU load failed with compute-backend error → retrying CPU-only:",
+                modelName,
+                "—",
+                (error as NSError).localizedDescription)
+            let cpuOnlyConfig = WhisperKitConfig(
+                model: modelName,
+                modelFolder: modelFolder,
+                computeOptions: Self.makeCpuOnlyComputeOptions(),
+                prewarm: prewarm,
+                download: false)
+            let kit = try await WhisperKit(cpuOnlyConfig)
+            sttLog("Whisper | CPU-only fallback load succeeded:", modelName)
+            return kit
+        }
     }
 
     // ---------------------------------------------------------------------
@@ -751,18 +829,20 @@ private final class WhisperManager {
                 // "Check your connection — the model files are fine".
                 sttLog("Whisper | running CoreML load test:", modelName)
                 let loadFolder = self.modelDir(modelName).path
-                let config = WhisperKitConfig(
-                    model: modelName,
-                    modelFolder: loadFolder,
-                    computeOptions: Self.makeComputeOptions(),
-                    prewarm: true,  // force CoreML specialization once at install
-                    download: false)
 
                 var loadError: Error?
                 let maxAttempts = 3
                 for attempt in 1...maxAttempts {
                     do {
-                        let kit = try await WhisperKit(config)
+                        // Same compute-fallback path as prepare(): the
+                        // load test mirrors what the user will hit when
+                        // they actually use the model, so retrying with
+                        // CPU-only here means a successful install
+                        // implies a working device.
+                        let kit = try await self.loadKitWithComputeFallback(
+                            modelName: modelName,
+                            modelFolder: loadFolder,
+                            prewarm: true)
                         self.queue.sync {
                             self.whisperKit = kit
                             self.loadedModel = modelName
@@ -801,13 +881,10 @@ private final class WhisperManager {
                         prev)
                     do {
                         let folder = self.modelDir(prev).path
-                        let cfg = WhisperKitConfig(
-                            model: prev,
+                        let kit = try await self.loadKitWithComputeFallback(
+                            modelName: prev,
                             modelFolder: folder,
-                            computeOptions: Self.makeComputeOptions(),
-                            prewarm: true,
-                            download: false)
-                        let kit = try await WhisperKit(cfg)
+                            prewarm: true)
                         self.queue.sync {
                             self.whisperKit = kit
                             self.loadedModel = prev
@@ -892,13 +969,10 @@ private final class WhisperManager {
                         prev)
                     do {
                         let folder = self.modelDir(prev).path
-                        let cfg = WhisperKitConfig(
-                            model: prev,
+                        let kit = try await self.loadKitWithComputeFallback(
+                            modelName: prev,
                             modelFolder: folder,
-                            computeOptions: Self.makeComputeOptions(),
-                            prewarm: true,
-                            download: false)
-                        let kit = try await WhisperKit(cfg)
+                            prewarm: true)
                         self.queue.sync {
                             self.whisperKit = kit
                             self.loadedModel = prev
@@ -983,14 +1057,15 @@ private final class WhisperManager {
                 // download: false plus an explicit modelFolder tells
                 // WhisperKit "the model is already there, just load it"
                 // and forecloses any sneaky network call.
+                // loadKitWithComputeFallback transparently retries with
+                // CPU-only if CPU+GPU hits a CoreML execution-plan error
+                // (code -14) — affected devices keep working without a
+                // user-visible Reinstall loop.
                 let folder = self.modelDir(modelName).path
-                let config = WhisperKitConfig(
-                    model: modelName,
+                let kit = try await self.loadKitWithComputeFallback(
+                    modelName: modelName,
                     modelFolder: folder,
-                    computeOptions: Self.makeComputeOptions(),
-                    prewarm: true,
-                    download: false)
-                let kit = try await WhisperKit(config)
+                    prewarm: true)
 
                 self.queue.sync {
                     self.whisperKit = kit

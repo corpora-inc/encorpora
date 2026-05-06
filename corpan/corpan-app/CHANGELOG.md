@@ -7,6 +7,38 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.3] - 2026-05-06
+
+### Changed
+- **STT plugin upgraded to 0.2.0** — substantial robustness pass on
+  the on-device WhisperKit pipeline. The host-app side picks up the
+  matching bridge changes:
+  - **Structured error codes** (`MODEL_NOT_INSTALLED`, `LOAD_FAILED`,
+    `NETWORK`, `IO_FAILED`, `BUSY`, `CANCELLED`,
+    `MIC_PERMISSION_DENIED`, etc.) flow through `hostApi.ts` —
+    incoming plugin errors now carry `error.code` parsed from the
+    `"CODE: description"` string convention. Packs route on code,
+    never on message substring.
+  - **`stt.listInstalled({ models: [...] })`** — single round-trip
+    that returns disk-truth validation state for every requested
+    variant. Pronunciation Coach 0.2.0 calls it once on boot
+    instead of N×`validateModel`.
+  - **`stt.unload()`** — drops the in-memory WhisperKit instance
+    without touching disk; available for memory-warning hooks.
+  - **CoreML compute-backend fallback to CPU-only on error -14**.
+    Affected iPad chips that couldn't compile `large-v3-turbo`
+    even with `.cpuAndGPU` now transparently retry with
+    `.cpuOnly`. Slower but works on every device we ship to;
+    eliminates the Reinstall loop that was a backend bug, not a
+    corruption signal.
+  - **Atomic install with rollback.** `installModel` stages any
+    existing on-disk install aside before WhisperKit downloads new
+    files; commits on validation success or rolls back on failure.
+    A failed install never corrupts the previously working install.
+- **Pronunciation Coach catalog gate raised** to `minAppVersion
+  "0.12.3"` — pc 0.2.0 calls `listInstalled` and routes on
+  structured error codes, both unavailable in 0.12.2 binaries.
+
 ## [0.12.2] - 2026-05-05
 
 ### Added

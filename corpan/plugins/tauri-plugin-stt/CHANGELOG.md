@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-06
+
+### Changed
+- **CoreML compute-backend fallback to CPU-only on error -14.**
+  Even with `.cpuAndGPU` for both encoder and decoder, certain iPad
+  chips still fail to compile a CoreML execution plan for
+  `large-v3-turbo` and surface as `"Failed to build the model
+  execution plan ... error code: -14"`. Reinstalling didn't help
+  (the bytes were fine — it's an MLProgram backend bug). The plugin
+  now wraps all WhisperKit loads in `loadKitWithComputeFallback`,
+  which on a compute-backend error specifically (matched on
+  "execution plan" / "could not build the model" / "error code: -14"
+  patterns) automatically retries with `.cpuOnly`. Pure-CPU is
+  noticeably slower but works on every iPad we ship to. Affected
+  devices keep working without ever surfacing the Reinstall loop
+  caused by what was actually a backend bug. Network and
+  file-not-found errors bubble up immediately without a fallback
+  attempt.
+
 ### Changed
 - **Model lifecycle rebuilt — no more error-driven auto-wipe.** Two
   reproducible failures motivated the rewrite: (1) "Could not load
