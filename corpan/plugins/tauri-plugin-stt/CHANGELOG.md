@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2026-05-06
 
+### Added
+- **Android stub module** (`android/build.gradle.kts` + `SttPlugin.kt`)
+  so `gradlew :app:assembleRelease` can resolve the
+  `:tauri-plugin-stt` project dependency. The plugin is iOS-only at
+  runtime; every command on Android either rejects with "STT not
+  supported on Android" or returns a feature-detection no
+  (`isAvailable: false`, `listInstalled: []`). Pronunciation-coach
+  is gated to `platforms: ["ios"]` in the catalog, so these stubs
+  are never invoked at runtime — they only exist so the Android
+  release variant resolves and the Android APK build can complete.
+
 ### Changed
 - **CoreML compute-backend fallback to CPU-only on error -14.**
   Even with `.cpuAndGPU` for both encoder and decoder, certain iPad
