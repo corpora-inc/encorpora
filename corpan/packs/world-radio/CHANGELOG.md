@@ -8,6 +8,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-05-06
+
 ### Added
 - Global, top-level world map (Browse → World map tab). Shows the top
   ~10k stations across every language; stations without precise coordinates
