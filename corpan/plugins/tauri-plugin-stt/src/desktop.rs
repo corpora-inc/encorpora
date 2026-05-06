@@ -23,6 +23,7 @@ impl<R: Runtime> Stt<R> {
             ready: false,
             model: String::new(),
             message: Some("STT not supported on desktop in this build".to_string()),
+            code: Some("UNKNOWN".to_string()),
         })
     }
 

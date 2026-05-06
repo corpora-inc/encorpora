@@ -15,6 +15,8 @@ const RECENTS_CAP = 20
 export type Prefs = {
   volume: number
   lastStationUuid: string | null
+  /** Last-used tab on the browse screen — sticky across reopens. */
+  browseTab?: "languages" | "map"
 }
 
 export type StationLite = {

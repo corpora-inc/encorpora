@@ -9,7 +9,11 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "tailwind:init": "tailwindcss init -p",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "ios:redeploy": "npm run tauri ios dev",
+    "dev:console-server": "node ../scripts/dev/console-server.js",
+    "dev:tail": "bash ../scripts/dev/tail-device-log.sh",
+    "dev:loop": "echo 'See corpan/DEV_LOOP.md. Run these in separate terminals: dev:console-server, dev:tail, ios:redeploy.'"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

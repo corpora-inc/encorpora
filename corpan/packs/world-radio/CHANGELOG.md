@@ -8,6 +8,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- Global, top-level world map (Browse → World map tab). Shows the top
+  ~10k stations across every language; stations without precise coordinates
+  are placed at their country's centroid with a small deterministic jitter
+  so they fan out instead of stacking. Search, language multi-select, and
+  tag filters narrow the map without losing pan/zoom. Marker clustering
+  uses chunked loading to stay responsive at world zoom. The global
+  station list is held in memory for the lifetime of the pack mount —
+  no localStorage write — so it can't crowd out the shared per-origin
+  storage budget that other Corpán packs depend on.
+
 ### Fixed
 - HTTP-only stations no longer fail on Android release builds. Cleartext is
   now permitted via a `network_security_config.xml` shipped inside

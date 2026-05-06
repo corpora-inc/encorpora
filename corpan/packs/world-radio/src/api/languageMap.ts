@@ -107,3 +107,48 @@ export function displayName(code: string): string {
 }
 
 export const ALL_CORPAN_LANGUAGES: string[] = Object.keys(LANGUAGE_DISPLAY)
+
+/**
+ * Reverse lookup: given a Radio Browser station's `language` (free-text,
+ * comma-separated English names) and `languagecodes` (comma-separated ISO 639
+ * codes), pick the most appropriate Corpan language code to navigate to.
+ *
+ * If `stack` is provided, prefer codes the user is currently learning so
+ * "Show in list" lands on a familiar entry instead of a random match.
+ *
+ * Returns null if no Corpan language matches — caller falls back to staying
+ * on the global map.
+ */
+export function resolveCorpanCodeForStation(
+  station: { language?: string; languagecodes?: string },
+  stack: string[] = []
+): string | null {
+  const names = (station.language ?? "")
+    .toLowerCase()
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+  const isos = (station.languagecodes ?? "")
+    .toLowerCase()
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+
+  const candidates: string[] = []
+  for (const code of ALL_CORPAN_LANGUAGES) {
+    const radioName = TO_RADIO[code]
+    if (!radioName) continue
+    if (names.includes(radioName)) {
+      candidates.push(code)
+      continue
+    }
+    const iso = code.toLowerCase().split("-")[0]
+    if (iso && isos.includes(iso)) candidates.push(code)
+  }
+  if (candidates.length === 0) return null
+
+  for (const s of stack) {
+    if (candidates.includes(s)) return s
+  }
+  return candidates[0]
+}
