@@ -95,12 +95,18 @@ body,
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* Top padding sits OUTSIDE the safe-area inset rather than next
+     to it: env(safe-area-inset-top) already accounts for the
+     status bar / Stage Manager title bar, so we only need a
+     tasteful 14px on top of that for visual breathing room.
+     Side paddings are large enough that the chiclets never feel
+     cramped against the screen edge on any iPhone. */
   padding:
-    calc(12px + var(--pc-safe-top))
-    calc(20px + var(--pc-safe-right))
-    calc(16px + var(--pc-safe-bottom))
-    calc(20px + var(--pc-safe-left));
-  gap: 12px;
+    calc(14px + var(--pc-safe-top))
+    calc(22px + var(--pc-safe-right))
+    calc(18px + var(--pc-safe-bottom))
+    calc(22px + var(--pc-safe-left));
+  gap: 14px;
 }
 
 /* Phone-class layout — most iPhones in portrait. Everything scales
@@ -118,37 +124,24 @@ body,
    `.pc-mic { width: 124px }` was beating `@media (max-width: 480px)
    .pc-mic { width: 60px }` because it appeared later). */
 
-/* ---- Header — minimal: streak (left) + mode + close (right) ---- */
+/* ---- Header — streak (left) · mode + close (right). Three
+   chiclets sized as a single visual rhythm: 36px height, equal
+   border treatment, equal hover behavior. The header reserves
+   the chiclet height so the deck below has a stable y-offset
+   whether or not the streak is visible. ---- */
 .pc-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   flex: 0 0 auto;
-  /* min-height matches the 36px chiclets so the deck below sits
-     at a predictable y-offset regardless of header content. */
   min-height: 36px;
-}
-
-/* iPad Stage Manager / Designed-for-iPad-on-Mac windows draw the
-   red/yellow/green window controls over the top-left of the WebView,
-   which collides with the streak chip. Reserve room for them on
-   iPad-class window sizes (and only there — iPhone landscape stays
-   tight against the edge). Height filter excludes phone landscape. */
-@media (min-width: 600px) and (min-height: 540px) {
-  .pc-header-left {
-    padding-left: max(0px, 78px);
-  }
 }
 .pc-header-left,
 .pc-header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-.pc-header-left {
-  /* Reserve space for streak so the right cluster doesn't shift
-     when the streak appears/disappears. */
+  gap: 10px;
   min-height: 36px;
 }
 
@@ -235,17 +228,24 @@ body,
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* ---- Streak indicator ---- */
+/* ---- Streak indicator — 36px tall pill, rhythmically matches
+   the .pc-mode and .pc-close chiclets to the right. The fire
+   emoji and number sit on a single visual baseline with the
+   icons in the right cluster. ---- */
 .pc-streak {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
   border-radius: 999px;
   background: var(--pc-accent-soft);
+  border: 1px solid transparent;
   color: var(--pc-fg);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1;
 }
 .pc-streak[hidden] { display: none; }
 
@@ -1162,26 +1162,33 @@ body,
    ============================================================ */
 @media (max-width: 480px), (max-height: 760px) {
   .pc-root {
+    /* Phones get a hair less padding than iPad — but still leave
+       enough breathing room above the chiclets that the header
+       doesn't feel jammed against the status-bar edge. */
     padding:
-      calc(8px + var(--pc-safe-top))
-      calc(14px + var(--pc-safe-right))
-      calc(10px + var(--pc-safe-bottom))
-      calc(14px + var(--pc-safe-left));
-    gap: 8px;
+      calc(10px + var(--pc-safe-top))
+      calc(16px + var(--pc-safe-right))
+      calc(12px + var(--pc-safe-bottom))
+      calc(16px + var(--pc-safe-left));
+    gap: 10px;
   }
   .pc-mic.recording { transform: none; }
   .pc-mic-label { font-size: 11px; }
   .pc-swipe-hint { display: none; }
   .pc-footer { display: none; }
 
-  .pc-header { min-height: 32px; }
-  .pc-header-left { min-height: 32px; }
+  /* Header chiclets shrink in lockstep — streak pill height
+     follows the mode/close circle diameter so all three pieces
+     sit on the same baseline. */
+  .pc-header { min-height: 32px; gap: 10px; }
+  .pc-header-left,
+  .pc-header-right { min-height: 32px; gap: 8px; }
   .pc-subtitle { font-size: 11px; letter-spacing: 0.06em; }
   .pc-mode { width: 32px; height: 32px; }
   .pc-mode-glyph { font-size: 12px; }
   .pc-mode.advanced .pc-mode-glyph { font-size: 14px; }
   .pc-close { width: 32px; height: 32px; font-size: 18px; }
-  .pc-streak { font-size: 12px; padding: 5px 10px; }
+  .pc-streak { height: 32px; padding: 0 12px; font-size: 13px; gap: 5px; }
 
   .pc-target { font-size: clamp(24px, 7vw, 38px); }
   .pc-romanization { font-size: 14px; }
