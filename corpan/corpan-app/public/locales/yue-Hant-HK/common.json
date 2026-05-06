@@ -104,7 +104,7 @@
     },
     "onboarding": {
         "welcome": "歡迎",
-        "makePrimaryLanguage": "將英文設為我的主要語言",
+        "makePrimaryLanguage": "將英文設為我嘅主要語言",
         "canChangeLater": "你可以隨時更改這個。",
         "pickLanguagesToLearn": "選擇要學習的語言",
         "textToSpeechSetup": "文字轉語音設置",

@@ -34,10 +34,37 @@ export type PackDbQueryResult = {
   rows: Record<string, unknown>[]
 }
 
+export type SttErrorCode =
+  | "MODEL_NOT_INSTALLED"
+  | "MODEL_NOT_LOADED"
+  | "NETWORK"
+  | "LOAD_FAILED"
+  | "IO_FAILED"
+  | "BUSY"
+  | "CANCELLED"
+  | "MIC_PERMISSION_DENIED"
+  | "NO_ACTIVE_SESSION"
+  | "AUDIO_FAILED"
+  | "UNKNOWN"
+
 export type SttPrepareResult = {
   ready: boolean
   model: string
   message?: string
+  /** Structured error code when ready === false. Undefined on success. */
+  code?: SttErrorCode
+}
+
+export type SttInstalledModel = {
+  model: string
+  valid: boolean
+  problems: string[]
+  sizeBytes: number
+  isLoaded: boolean
+}
+
+export type SttListInstalledResult = {
+  models: SttInstalledModel[]
 }
 
 export type SttStartSessionResult = {
@@ -129,6 +156,20 @@ export type SttApi = {
     opts: { model: string },
     onProgress?: (event: SttInstallProgress) => void,
   ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+  /**
+   * Reports the disk-truth install state for every requested variant in a
+   * single round-trip. Use this on boot and when opening the setup overlay
+   * — the pack should not cache install booleans in localStorage.
+   */
+  listInstalled?: (opts: {
+    models: string[]
+  }) => Promise<SttListInstalledResult>
+  /**
+   * Drops the in-memory WhisperKit instance without touching disk. Safe
+   * to call on memory warnings or when the pack closes; the next
+   * `prepare()` is a load, not a download.
+   */
+  unload?: () => Promise<{ unloaded: boolean }>
 }
 
 export type SttInstallProgress = {
@@ -138,6 +179,8 @@ export type SttInstallProgress = {
   completed?: number
   total?: number
   error?: string
+  /** Structured error code on `phase === "failed"`. Undefined otherwise. */
+  code?: SttErrorCode
 }
 
 export type HostApi = {

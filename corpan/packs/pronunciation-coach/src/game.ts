@@ -1,9 +1,35 @@
 import type { EntryOut, HostApi, TranslationOut } from "./sdk/types"
+import { MODELS, modelById, defaultModel } from "./modelRegistry"
 
 // Local STT API contract — host owns the canonical type, we only declare
-// what we need to call.
-type SttPrepareResult = { ready: boolean; model: string; message?: string }
+// what we need to call. Codes mirror the host's SttErrorCode union.
+type SttErrorCode =
+  | "MODEL_NOT_INSTALLED"
+  | "MODEL_NOT_LOADED"
+  | "NETWORK"
+  | "LOAD_FAILED"
+  | "IO_FAILED"
+  | "BUSY"
+  | "CANCELLED"
+  | "MIC_PERMISSION_DENIED"
+  | "NO_ACTIVE_SESSION"
+  | "AUDIO_FAILED"
+  | "UNKNOWN"
+type SttPrepareResult = {
+  ready: boolean
+  model: string
+  message?: string
+  code?: SttErrorCode
+}
 type SttStartResult = { started: boolean; sessionId: string }
+type SttInstalledModel = {
+  model: string
+  valid: boolean
+  problems: string[]
+  sizeBytes: number
+  isLoaded: boolean
+}
+type SttListInstalledResult = { models: SttInstalledModel[] }
 type SttStatus = {
   available: boolean
   prepared: boolean
@@ -51,9 +77,74 @@ type SttApi = {
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
   wipeModel?(opts?: { model?: string }): Promise<{ wiped: boolean; message?: string }>
+  validateModel?(opts?: { model?: string }): Promise<{
+    model: string
+    valid: boolean
+    problems: string[]
+  }>
+  installModel?(
+    opts: { model: string },
+    onProgress?: (event: SttInstallProgress) => void
+  ): Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+  listInstalled?(opts: { models: string[] }): Promise<SttListInstalledResult>
+  unload?(): Promise<{ unloaded: boolean }>
+}
+
+type SttInstallProgress = {
+  model: string
+  phase: "downloading" | "verifying" | "verified" | "failed"
+  fraction?: number
+  completed?: number
+  total?: number
+  error?: string
+  code?: SttErrorCode
+}
+
+// Read a code attached by hostApi.ts (`sttRejectionToError`) onto thrown
+// errors. Plain string/Error fallback returns undefined so callers can
+// route only when the code is genuinely available.
+const errCode = (err: unknown): SttErrorCode | undefined => {
+  if (err && typeof err === "object") {
+    const c = (err as { code?: unknown }).code
+    if (typeof c === "string") return c as SttErrorCode
+  }
+  return undefined
 }
 
 type UiState = "idle" | "recording" | "scoring"
+
+// Robust error → string. Tauri plugin errors come across the JS bridge
+// as plain objects (e.g. `{ message: "...", code: ..., domain: "STT" }`),
+// not `Error` instances, so the common `err instanceof Error ? msg :
+// String(err)` pattern collapses them to `"[object Object]"` — useless
+// for diagnosis. Walk the common shapes (Error, plugin shape, string,
+// object with description fields) and only fall back to JSON.stringify
+// + final `[object Object]` if everything else failed.
+const formatErr = (err: unknown): string => {
+  if (err == null) return "(unknown error)"
+  if (typeof err === "string") return err
+  if (err instanceof Error) return err.message || err.name || String(err)
+  if (typeof err === "object") {
+    const o = err as Record<string, unknown>
+    const candidates = [
+      o.message,
+      o.localizedDescription,
+      o.error,
+      o.description,
+      o.detail,
+    ]
+    for (const c of candidates) {
+      if (typeof c === "string" && c.length > 0) return c
+    }
+    try {
+      const json = JSON.stringify(err)
+      if (json && json !== "{}") return json
+    } catch {
+      // fall through
+    }
+  }
+  return String(err)
+}
 
 type LoadedPhrase = {
   entry: EntryOut
@@ -68,44 +159,39 @@ const STORAGE_KEY = "corpan-pronunciation-coach:v2"
 const STORAGE_KEY_LEGACY = "corpan-pronunciation-coach:v1"
 const HISTORY_CAP = 50
 
-type ModelMode = "standard" | "advanced"
-const MODEL_BY_MODE: Record<ModelMode, string> = {
-  standard: "openai_whisper-base",
-  // The argmaxinc/whisperkit-coreml HF repo's `large-v3_turbo` variant.
-  // ~1.6 GB on disk. CoreML used to fail to ANE-compile the text decoder
-  // (error -14); we now pass `.cpuAndGPU` compute units in the plugin so
-  // it loads cleanly.
-  advanced: "openai_whisper-large-v3_turbo",
-}
-const MODEL_LABEL: Record<ModelMode, string> = {
-  standard: "Standard",
-  advanced: "Advanced",
-}
+// NOTE: there is no localStorage cache for "is X installed". We
+// deliberately avoid a hint cache because it caused a class of bugs
+// where stale hints across iOS app-container UUID changes (every
+// sideload can rotate the container, orphaning Documents) made the
+// setup overlay show "Use this" on a model that wasn't actually
+// installed in the new container. The user then tapped Use this,
+// `prepare()` failed, and it looked like models were corrupting each
+// other. The plugin (disk via marker + heuristic) is the single
+// source of truth. The UI shows "Checking…" briefly while
+// `validateModel` returns instead of guessing from cached data.
 
-// prepare() is local-only after the install rework — never downloads.
-// First-load on a fresh device is dominated by CoreML compiling each
-// .mlmodelc into an Apple Neural Engine execution plan; on M-series iPad
-// large-v3-turbo this is typically 30–90 s the very first time, ~3–5 s
-// after the ANE cache is warm. We pick deadlines well past the realistic
-// first-load ceiling so we don't false-positive on an honest compile.
-const PREPARE_TIMEOUT_MS: Record<ModelMode, number> = {
-  standard: 60_000,
-  advanced: 180_000,
+// `ModelMode` is the registry id (canonical identifier persisted in
+// localStorage). Only "standard" and "advanced" exist today — adding a
+// third = one entry in modelRegistry.ts.
+type ModelMode = string
+
+const folderForMode = (mode: ModelMode): string => {
+  return modelById(mode)?.folder ?? mode
+}
+const labelForMode = (mode: ModelMode): string => {
+  return modelById(mode)?.label ?? mode
+}
+// prepare() is local-only — never downloads. First load on a fresh
+// device is dominated by CoreML compiling each .mlmodelc into an ANE
+// execution plan: on M-series iPad large-v3-turbo this is typically
+// 30–90 s the first time, 3–5 s after the ANE cache is warm. Bigger
+// models get a longer deadline; default 60 s for sub-300 MB variants.
+const prepareTimeoutMs = (mode: ModelMode): number => {
+  const m = modelById(mode)
+  if (m && m.approxSizeMB >= 1000) return 180_000
+  return 60_000
 }
 const TRANSCRIBE_TIMEOUT_MS = 90_000
-
-const looksCorrupt = (msg: string): boolean => {
-  const m = msg.toLowerCase()
-  return (
-    m.includes("weight.bin") ||
-    m.includes("model.mil") ||
-    m.includes("execution plan") ||
-    m.includes("could not open") ||
-    m.includes("error code : -14") ||
-    m.includes("timed out") ||
-    m.includes("posix")
-  )
-}
 
 const withTimeout = async <T>(
   p: Promise<T>,
@@ -682,7 +768,7 @@ export const mountGame = (
   let historyIdx = -1 // index of currentPhrase inside history
   let prefetched: LoadedPhrase | null = null
   let streak = 0
-  let modelMode: ModelMode = "standard"
+  let modelMode: ModelMode = defaultModel().id
   let modelSwitching = false
 
   const storage = safeStorage()
@@ -707,16 +793,16 @@ export const mountGame = (
   }
 
   const renderModeButton = () => {
-    modeLabel.textContent = MODEL_LABEL[modelMode]
+    const m = modelById(modelMode)
+    modeLabel.textContent = labelForMode(modelMode)
     modeBtn.setAttribute("aria-pressed", modelMode === "advanced" ? "true" : "false")
     modeBtn.classList.toggle("advanced", modelMode === "advanced")
     modeBtn.disabled = modelSwitching
-    modeBtn.title =
-      modelMode === "advanced"
-        ? "Whisper large-v3-turbo (~1.6 GB, M-series Apple Silicon)"
-        : "Whisper base (~140 MB)"
+    modeBtn.title = m
+      ? `${m.label} model (~${m.approxSizeMB} MB)`
+      : `${labelForMode(modelMode)} model`
     const footerModel = container.querySelector<HTMLSpanElement>("#pc-footer-model")
-    if (footerModel) footerModel.textContent = MODEL_LABEL[modelMode]
+    if (footerModel) footerModel.textContent = labelForMode(modelMode)
   }
 
   const updateStreak = () => {
@@ -877,7 +963,7 @@ export const mountGame = (
       } catch (err) {
         console.error("[pronunciation-coach] fetch next failed:", err)
         showError(
-          `Could not load a phrase: ${err instanceof Error ? err.message : String(err)}`
+          `Could not load a phrase: ${formatErr(err)}`
         )
         return
       }
@@ -926,7 +1012,6 @@ export const mountGame = (
     )
     const noSpeech = Math.max(0, Math.min(1, result.noSpeechProb ?? 0))
     const compression = result.compressionRatio ?? 0
-    const temp = result.temperature ?? 0
     const freeVsConstrained = Math.max(
       0,
       Math.min(1, result.freeVsConstrainedSimilarity ?? 1)
@@ -1308,27 +1393,36 @@ export const mountGame = (
       console.error("[pronunciation-coach] startSession failed:", err)
       activeSessionId = null
       showError(
-        `Could not start recording: ${err instanceof Error ? err.message : String(err)}`
+        `Could not start recording: ${formatErr(err)}`
       )
       setUiState("idle")
     }
   }
 
-  const tryPrepareOnce = async (mode: ModelMode) => {
+  const tryPrepareOnce = async (mode: ModelMode): Promise<SttPrepareResult> => {
     if (!stt) throw new Error("STT unavailable")
-    const model = MODEL_BY_MODE[mode]
+    const model = folderForMode(mode)
     const r = await withTimeout(
       stt.prepare({ model }),
-      PREPARE_TIMEOUT_MS[mode],
-      `Loading ${MODEL_LABEL[mode]} model`
+      prepareTimeoutMs(mode),
+      `Loading ${labelForMode(mode)} model`
     )
-    if (!r.ready) throw new Error(r.message || "Model not ready")
+    if (!r.ready) {
+      // Throw with `code` attached so callers can route on err.code
+      // instead of substring-matching the message.
+      const e = new Error(r.message || "Model not ready") as Error & {
+        code?: SttErrorCode
+      }
+      e.code = r.code
+      throw e
+    }
     return r
   }
 
-  // prepare() is local-only after the install rework — it never downloads.
-  // If it fails, the install is broken and the user has to go through setup
-  // again, not silently retry.
+  // prepare() is local-only — never downloads. On failure we route on
+  // the structured code; we NEVER auto-wipe model files. The "model on
+  // disk is bad" case opens a banner with a Reinstall action; the user
+  // — not a substring heuristic — decides whether to delete files.
   const prepareWithRecovery = tryPrepareOnce
 
   const stopRecording = async () => {
@@ -1349,31 +1443,36 @@ export const mountGame = (
       renderResult(result)
       setUiState("idle")
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error("[pronunciation-coach] stopSession failed:", msg)
+      const msg = formatErr(err)
+      const code = errCode(err)
+      console.error(
+        `[pronunciation-coach] stopSession failed (code=${code ?? "—"}):`,
+        msg
+      )
       setUiState("idle")
-      if (looksCorrupt(msg)) {
-        // Model on disk failed at runtime. Wipe it, invalidate the
-        // prepared state, and kick the user back into the setup flow so
-        // they explicitly reinstall — no silent retries during recording.
+      if (code === "LOAD_FAILED") {
+        // The on-disk model bytes failed at runtime. We do NOT wipe —
+        // the user decides via the setup overlay whether to reinstall.
+        // No silent destructive action; that was the bug class we just
+        // ripped out.
         modelReady = false
         micBtn.disabled = true
         micLabel.textContent = "Model needs reinstall"
-        const broken = MODEL_BY_MODE[modelMode]
-        try {
-          if (stt.wipeModel) await stt.wipeModel({ model: broken })
-        } catch (wipeErr) {
-          console.error("[pronunciation-coach] wipeModel failed:", wipeErr)
-        }
         showError(
-          `${MODEL_LABEL[modelMode]} model failed at runtime — opening setup so you can reinstall.`
+          `${labelForMode(modelMode)} model failed to load — opening setup so you can reinstall.`
         )
         openModelSetup().catch((err) => {
           console.error(
-            "[pronunciation-coach] openModelSetup after corrupt failed:",
+            "[pronunciation-coach] openModelSetup after LOAD_FAILED:",
             err
           )
         })
+        return
+      }
+      if (code === "NETWORK") {
+        showError(
+          "Network hiccup while scoring. Try again — your model is fine."
+        )
         return
       }
       showError(`Scoring failed: ${msg}`)
@@ -1406,6 +1505,30 @@ export const mountGame = (
     dispatchExit()
   })
 
+  // Re-prepare the saved-mode kit if it isn't currently loaded.
+  // Idempotent: if Swift's prepare hits its in-memory cache, returns
+  // immediately. The plugin's install path drops the previously-loaded
+  // kit before running its load test for a different model; if that
+  // install fails (or the user cancels mid-flight), the previous
+  // model's kit ends up nil'd in memory while its files and marker
+  // are still on disk. Calling this after any setup interaction
+  // restores the working state without requiring a JS-side guess
+  // about what the plugin did internally.
+  const ensureLoaded = async (mode: ModelMode): Promise<boolean> => {
+    if (!stt?.prepare) return false
+    try {
+      const r = await stt.prepare({ model: folderForMode(mode) })
+      if (r.ready) return true
+      console.error(
+        `[pronunciation-coach] ensureLoaded(${mode}) failed: code=${r.code ?? "—"} msg=${r.message ?? ""}`
+      )
+      return false
+    } catch (err) {
+      console.error(`[pronunciation-coach] ensureLoaded(${mode}) threw:`, err)
+      return false
+    }
+  }
+
   // Mode button reopens the setup screen so the user explicitly picks a
   // model and watches the install — no more silent inline downloads.
   const openModelSetup = async () => {
@@ -1414,10 +1537,22 @@ export const mountGame = (
     cancelActiveSession()
     setUiState("idle")
     const previous: ModelMode = modelMode
+    // Treat modelMode as active if either (a) it's currently loaded,
+    // OR (b) its install hint says it's installed. The latter
+    // guards the failed-switch case where a load attempt for the
+    // currentActive only counts the in-memory kit (true session
+    // state, not a cache). If modelReady is false the overlay will
+    // render every card as "Checking…" until validateModel returns,
+    // and only then will buttons appear. No risk of stale buttons
+    // on a model that isn't actually installed in this container.
+    const activeForOverlay: ModelMode | null = modelReady ? modelMode : null
+    console.log(
+      `[pronunciation-coach] openModelSetup: modelMode=${modelMode} modelReady=${modelReady} activeForOverlay=${activeForOverlay ?? "null"}`
+    )
     let outcome: SetupOutcome
     try {
       outcome = await runSetup({
-        currentActive: modelReady ? modelMode : null,
+        currentActive: activeForOverlay,
         headline: "Pronunciation Coach · Models",
         sub: "Install, switch, or remove on-device speech models. The active one is what gets used to score your phrase.",
       })
@@ -1426,38 +1561,117 @@ export const mountGame = (
       renderModeButton()
     }
     if (disposed) return
-    if (outcome.kind === "exit") return
+    if (outcome.kind === "exit") {
+      // The plugin's install path may have dropped our previously
+      // loaded kit before failing or being cancelled. Re-prepare the
+      // saved mode so we don't leave the user with a nil kit.
+      if (!modelReady && previous && (await ensureLoaded(previous))) {
+        modelReady = true
+      }
+      return
+    }
     if (outcome.kind === "cancelled") {
       setUiState("idle")
+      // Same as above: install may have dropped the previous kit
+      // before being cancelled. Restore.
+      if (!modelReady && previous && (await ensureLoaded(previous))) {
+        modelReady = true
+      }
       return
     }
     if (outcome.mode === previous && modelReady) {
       setUiState("idle")
       return
     }
-    modelMode = outcome.mode
+    // Capture target locally; do NOT mutate modelMode or persist yet.
+    // Persisting before a successful prepare() poisons localStorage:
+    // if install reported success but prepare then fails (e.g.,
+    // partial download where MelSpectrogram never landed), the saved
+    // mode points at a broken install and every subsequent boot
+    // re-enters this failure loop. Only persist after prepare wins.
+    const targetMode: ModelMode = outcome.mode
     modelReady = false
-    persist()
-    renderModeButton()
     micBtn.disabled = true
-    micLabel.textContent = `Loading ${MODEL_LABEL[modelMode]} model…`
+    const targetLabel = labelForMode(targetMode)
+    micLabel.textContent = `Loading ${targetLabel} model…`
     showOverlay(
-      `Loading ${MODEL_LABEL[modelMode]} model…\nThis can take 10–30s on first launch.`
+      `Loading ${targetLabel} model…\nThis can take 10–30s on first launch.`
     )
     try {
-      const r = await prepareWithRecovery(modelMode)
+      const r = await prepareWithRecovery(targetMode)
       modelReady = true
+      // Prepare succeeded — NOW commit the choice to persistent state.
+      modelMode = targetMode
+      persist()
+      renderModeButton()
       console.log(
-        `[pronunciation-coach] WhisperKit prepared: ${r.model} (${MODEL_LABEL[modelMode]})`
+        `[pronunciation-coach] WhisperKit prepared: ${r.model} (${targetLabel})`
       )
       hideOverlay()
       micBtn.disabled = false
       setUiState("idle")
     } catch (err) {
+      const msg = formatErr(err)
+      const code = errCode(err)
+      console.error(
+        `[pronunciation-coach] post-setup load failed (code=${code ?? "—"}):`,
+        msg
+      )
+      // Don't persist targetMode (we already gated persist behind
+      // success). Plugin's validateModel will clear its own stale
+      // marker on next call; no JS-side cache to invalidate.
+      // Try to restore the previous model rather than leaving the
+      // user with a broken "Model unavailable" state. Standard was
+      // working fine before the user attempted to switch; we should
+      // get them back to that working state automatically rather
+      // than dumping them into setup with destructive buttons next
+      // to a model they didn't ask to remove.
+      if (previous && previous !== targetMode) {
+        try {
+          const r = await prepareWithRecovery(previous)
+          modelReady = true
+          modelMode = previous
+          renderModeButton()
+          hideOverlay()
+          micBtn.disabled = false
+          setUiState("idle")
+          if (code === "MODEL_NOT_INSTALLED") {
+            showError(
+              `${targetLabel} isn't installed yet. Staying on ${labelForMode(previous)}.`
+            )
+          } else if (code === "NETWORK") {
+            showError(
+              `${targetLabel} needs the tokenizer — check your connection. Staying on ${labelForMode(previous)}.`
+            )
+          } else {
+            showError(
+              `Couldn't switch to ${targetLabel}: ${msg}. Staying on ${labelForMode(previous)}.`
+            )
+          }
+          console.log(
+            `[pronunciation-coach] reverted to ${r.model} (${labelForMode(previous)}) after switch failure`
+          )
+          return
+        } catch (revertErr) {
+          console.error(
+            "[pronunciation-coach] revert to previous model also failed:",
+            revertErr
+          )
+          // fall through to the unavailable state below
+        }
+      }
       hideOverlay()
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error("[pronunciation-coach] post-setup load failed:", msg)
-      showError(`Could not load ${MODEL_LABEL[modelMode]} model: ${msg}`)
+      if (code === "MODEL_NOT_INSTALLED") {
+        showError(
+          `${targetLabel} model isn't fully installed (likely a partial download). Tap the model badge to reinstall.`
+        )
+      } else if (code === "NETWORK") {
+        showError(
+          `${targetLabel} model needs the tokenizer — check your connection and try again.`
+        )
+      } else {
+        showError(`Could not load ${targetLabel} model: ${msg}`)
+      }
       micLabel.textContent = "Model unavailable"
     }
   }
@@ -1663,9 +1877,15 @@ export const mountGame = (
   const restoreFromStorage = (): boolean => {
     const saved = loadSavedState(storage)
     if (!saved) return false
-    if (saved.mode === "advanced" || saved.mode === "standard") {
-      modelMode = saved.mode
-    }
+    // NOTE: do NOT mutate `modelMode` here. `boot()` already loaded the
+    // saved mode via `savedEarly` at the top of the boot pipeline and
+    // may have replaced it with the user's just-completed setup choice
+    // (e.g. "advanced" → "standard" after the user installs a different
+    // model in the setup overlay). Re-reading saved.mode here races with
+    // the in-flight `prepareWithRecovery(modelMode)` from boot's
+    // `Promise.all`, and clobbers the live mode with a stale persisted
+    // value — which then makes the boot catch handler wipe the WRONG
+    // model and re-prepare the WRONG model.
     if (!saved.phrases || saved.phrases.length === 0) return false
     streak = Math.max(0, Math.floor(saved.streak))
     history.length = 0
@@ -1722,7 +1942,7 @@ export const mountGame = (
       console.error("[pronunciation-coach] loadFirstPhrase failed:", err)
       currentPhrase = null
       showError(
-        `Could not load a phrase: ${err instanceof Error ? err.message : String(err)}`
+        `Could not load a phrase: ${formatErr(err)}`
       )
       micBtn.disabled = true
       micLabel.textContent = "—"
@@ -1742,13 +1962,6 @@ export const mountGame = (
     | { kind: "selected"; mode: ModelMode } // user picked or installed a model
     | { kind: "cancelled" } // user closed setup with no change (an active model still exists)
     | { kind: "exit" } // user closed setup with no model installed (kicks back to host)
-
-  const formatMB = (bytes: number) => {
-    const mb = bytes / (1024 * 1024)
-    if (mb >= 1024) return `${(mb / 1024).toFixed(2)} GB`
-    if (mb >= 100) return `${Math.round(mb)} MB`
-    return `${mb.toFixed(1)} MB`
-  }
 
   /**
    * Setup / settings overlay. Doubles as:
@@ -1817,10 +2030,17 @@ export const mountGame = (
       container.appendChild(setupRoot)
 
       const errorEl = setupRoot.querySelector<HTMLDivElement>("#pc-setup-error")!
-      const installed: Record<ModelMode, boolean> = {
-        standard: false,
-        advanced: false,
-      }
+      // Two-tier install state. Source-of-truth precedence:
+      //   1. Active model in this session: true (kit is in memory —
+      //      live truth, not a cache).
+      //   2. Otherwise null = unknown → "Checking…" skeleton until
+      //      refreshInstallState() resolves it via plugin validateModel.
+      // We deliberately do NOT seed from a localStorage hint cache.
+      // A wrong hint led to phantom "Use this" buttons that bypassed
+      // the install path entirely.
+      const installed: Record<string, boolean | null> = Object.fromEntries(
+        MODELS.map((m) => [m.id, m.id === currentActive ? true : null])
+      )
       let installing: ModelMode | null = null
 
       const setProgressVisible = (mode: ModelMode, visible: boolean) => {
@@ -1853,7 +2073,8 @@ export const mountGame = (
       }
 
       const renderActions = () => {
-        for (const mode of ["standard", "advanced"] as const) {
+        for (const m of MODELS) {
+          const mode = m.id
           const status = setupRoot.querySelector<HTMLSpanElement>(
             `[data-status="${mode}"]`
           )
@@ -1861,27 +2082,40 @@ export const mountGame = (
             `[data-actions="${mode}"]`
           )
           if (!status || !actions) continue
-          const isInstalled = installed[mode]
           const isActive = currentActive === mode
           const isInstalling = installing === mode
+          // Active model is installed by definition (WhisperKit has it
+          // loaded). Trust that over any disk-probe answer, including
+          // a `null` initial state — the active card never renders as
+          // "Checking…" or "Install".
+          const isInstalled = isActive ? true : installed[mode]
+          const isUnknown = isInstalled === null && !isActive && !isInstalling
 
           status.textContent = isInstalling
             ? "Installing…"
             : isActive
               ? "Active"
-              : isInstalled
-                ? "Installed"
-                : "Not installed"
+              : isUnknown
+                ? "Checking…"
+                : isInstalled
+                  ? "Installed"
+                  : "Not installed"
           status.dataset.state = isInstalling
             ? "installing"
             : isActive
               ? "active"
-              : isInstalled
-                ? "installed"
-                : "absent"
+              : isUnknown
+                ? "checking"
+                : isInstalled
+                  ? "installed"
+                  : "absent"
 
           actions.innerHTML = ""
           if (isInstalling) continue
+          // Don't render any action buttons until validateModel has
+          // returned — that's the source of the "flash of Install"
+          // bug. Skeleton state shows "Checking…" with no buttons.
+          if (isUnknown) continue
 
           const mkBtn = (
             label: string,
@@ -1897,29 +2131,62 @@ export const mountGame = (
           }
 
           if (!isInstalled) {
-            mkBtn("Install", "primary", () => startInstall(mode))
+            mkBtn("Install", "primary", () => {
+              console.log(`[pronunciation-coach] CLICK Install mode=${mode}`)
+              startInstall(mode)
+            })
           } else if (isActive) {
-            mkBtn("Reinstall", "ghost", () => startInstall(mode, true))
+            // Active and installed — no buttons. The model is loaded;
+            // there's nothing for the user to do here.
           } else {
-            mkBtn("Use this", "primary", () => useInstalled(mode))
-            mkBtn("Reinstall", "ghost", () => startInstall(mode, true))
-            mkBtn("Remove", "danger", () => removeModel(mode))
+            mkBtn("Use this", "primary", () => {
+              console.log(`[pronunciation-coach] CLICK Use-this mode=${mode}`)
+              useInstalled(mode)
+            })
+            mkBtn("Reinstall", "ghost", () => {
+              console.log(`[pronunciation-coach] CLICK Reinstall mode=${mode}`)
+              startInstall(mode, true)
+            })
+            mkBtn("Remove", "danger", () => {
+              console.log(`[pronunciation-coach] CLICK Remove mode=${mode}`)
+              removeModel(mode)
+            })
           }
         }
       }
 
       const refreshInstallState = async () => {
+        // We deliberately do NOT use listInstalled here. validateModel
+        // is reliable on every shipped host bridge; listInstalled may
+        // not be wired and an older host binary can fail-open with
+        // synthetic "all invalid" responses that hide working
+        // installs (the bug that surfaced in 0.1.0 dev where Standard
+        // was loaded and active but the overlay showed an "Install"
+        // button). Two validateModel calls is cheap; truth wins over
+        // round-trip count.
         if (!stt?.validateModel) return
-        for (const mode of ["standard", "advanced"] as const) {
+        for (const m of MODELS) {
+          // The currently-active model is installed by definition —
+          // WhisperKit has it loaded. Skip validateModel for it; the
+          // heuristic has been observed reporting "<model dir missing>"
+          // for models that prepare() then loads successfully (the
+          // fundamental bug that motivated this whole rebuild). We trust
+          // the in-session ground truth ("currentActive") over a disk
+          // probe that may use a different path resolution than
+          // WhisperKit itself does.
+          if (currentActive === m.id) {
+            installed[m.id] = true
+            continue
+          }
           try {
-            const v = await stt.validateModel({ model: MODEL_BY_MODE[mode] })
-            installed[mode] = v.valid
+            const v = await stt.validateModel({ model: m.folder })
+            installed[m.id] = v.valid
           } catch (err) {
             console.error(
-              `[pronunciation-coach] validate ${mode} failed:`,
+              `[pronunciation-coach] validate ${m.id} failed:`,
               err
             )
-            installed[mode] = false
+            installed[m.id] = false
           }
         }
         renderActions()
@@ -1932,17 +2199,20 @@ export const mountGame = (
 
       const removeModel = async (mode: ModelMode) => {
         if (installing || !stt?.wipeModel) return
+        console.log(
+          `[pronunciation-coach] removeModel: mode=${mode} folder=${folderForMode(mode)} currentActive=${currentActive ?? "null"} installed[${mode}]=${installed[mode]}`
+        )
         const before = installed[mode]
         installing = mode
         renderActions()
         errorEl.hidden = true
         try {
-          await stt.wipeModel({ model: MODEL_BY_MODE[mode] })
+          await stt.wipeModel({ model: folderForMode(mode) })
           installed[mode] = false
           if (currentActive === mode) currentActive = null
         } catch (err) {
           installed[mode] = before
-          const msg = err instanceof Error ? err.message : String(err)
+          const msg = formatErr(err)
           errorEl.textContent = `Remove failed: ${msg}`
           errorEl.hidden = false
         } finally {
@@ -1953,17 +2223,18 @@ export const mountGame = (
 
       const startInstall = async (mode: ModelMode, isReinstall = false) => {
         if (installing || disposed || !stt?.installModel) return
-        if (isReinstall && stt.wipeModel) {
-          try {
-            await stt.wipeModel({ model: MODEL_BY_MODE[mode] })
-            installed[mode] = false
-          } catch (err) {
-            console.error(
-              `[pronunciation-coach] pre-reinstall wipe failed:`,
-              err
-            )
-          }
-        }
+        // No pre-reinstall wipe. The atomic-staging install in the
+        // plugin already moves the existing directory aside as a
+        // rollback target before downloading; on success it drops
+        // the staging copy, on failure it restores it. The previous
+        // pre-wipe was both destructive (wiped Standard 3 seconds
+        // after a successful prepare in real device traces) and
+        // redundant. We rely on the plugin's atomic install for
+        // correctness; clicking "Reinstall" just calls installModel
+        // and lets the staging dance handle the swap.
+        // NOTE: `isReinstall` is now informational only, kept on the
+        // signature so callers don't need to change.
+        void isReinstall
         installing = mode
         errorEl.hidden = true
         errorEl.textContent = ""
@@ -1973,14 +2244,20 @@ export const mountGame = (
 
         try {
           await stt.installModel(
-            { model: MODEL_BY_MODE[mode] },
+            { model: folderForMode(mode) },
             (event) => {
-              if (event.model !== MODEL_BY_MODE[mode]) return
+              if (event.model !== folderForMode(mode)) return
               if (event.phase === "downloading") {
                 const pct = Math.round((event.fraction ?? 0) * 100)
                 let label = `Downloading ${pct}%`
-                if (event.completed && event.total) {
-                  label += ` · ${formatMB(event.completed)} / ${formatMB(event.total)}`
+                // swift-transformers' HubApi reports progress in *files*,
+                // not bytes — `completedUnitCount` / `totalUnitCount` are
+                // file counts (e.g. 3 / 5). Don't pretend they're bytes;
+                // show "file X of Y" instead. (Big-byte progress would
+                // require summing per-file bytes which the Swift side
+                // doesn't expose today.)
+                if (event.completed != null && event.total && event.total > 0) {
+                  label += ` · file ${event.completed} of ${event.total}`
                 }
                 setProgress(mode, event.fraction ?? 0, label)
               } else if (event.phase === "verifying") {
@@ -2003,13 +2280,37 @@ export const mountGame = (
         } catch (err) {
           installing = null
           setProgressVisible(mode, false)
-          const msg = err instanceof Error ? err.message : String(err)
+          const msg = formatErr(err)
           console.error(
             `[pronunciation-coach] install ${mode} failed:`,
             msg
           )
           errorEl.textContent = `Install failed: ${msg}`
           errorEl.hidden = false
+          // Critical: the plugin's install path drops the previously
+          // loaded kit before its load test. If install fails here,
+          // the previously-active model's kit is nil'd in memory
+          // even though its files and marker are intact on disk.
+          // Re-prepare the previously-active model so the user can
+          // keep using it. Without this, the user records, taps stop,
+          // and stopSession reports "WhisperKit not prepared".
+          if (currentActive && currentActive !== mode && stt?.prepare) {
+            try {
+              const r = await stt.prepare({
+                model: folderForMode(currentActive),
+              })
+              if (r.ready) {
+                console.log(
+                  `[pronunciation-coach] restored ${currentActive} kit after ${mode} install failed`
+                )
+              }
+            } catch (restoreErr) {
+              console.error(
+                `[pronunciation-coach] kit restore after ${mode} install failure threw:`,
+                restoreErr
+              )
+            }
+          }
           renderActions()
         }
       }
@@ -2058,106 +2359,120 @@ export const mountGame = (
       return
     }
 
-    // Pick the saved mode if any, then validate its on-disk install.
+    // Pick the saved mode if any. localStorage holds preference; disk
+    // truth is decided by whether prepare() can load the model. We do
+    // NOT pre-check via validateModel — it's a heuristic on a
+    // directory layout we don't fully control, and we've seen it
+    // report "missing" on models that prepare() then loads
+    // successfully. The only definition of "installed" that matters
+    // is "WhisperKit can load it right now".
     const savedEarly = loadSavedState(storage)
-    if (savedEarly?.mode === "advanced" || savedEarly?.mode === "standard") {
+    if (savedEarly?.mode && modelById(savedEarly.mode)) {
       modelMode = savedEarly.mode
     }
 
-    let needSetup = true
-    if (stt.validateModel) {
-      try {
-        const v = await stt.validateModel({ model: MODEL_BY_MODE[modelMode] })
-        if (v.valid) {
-          needSetup = false
-        } else {
-          console.log(
-            `[pronunciation-coach] saved model ${MODEL_BY_MODE[modelMode]} not valid:`,
-            v.problems.join(", ") || "(unknown)"
-          )
-        }
-      } catch (err) {
-        console.error("[pronunciation-coach] validateModel failed:", err)
-      }
-    }
-
-    if (needSetup) {
-      hideOverlay()
-      const outcome = await runSetup({
-        currentActive: null,
-        headline: "Choose a speech model",
-        sub: "Pronunciation Coach runs an on-device speech model to score what you say. Pick the one that fits your device and storage. You can always change or remove it later from this screen.",
-      })
-      if (disposed) return
-      if (outcome.kind === "exit") return
-      if (outcome.kind === "cancelled") {
-        // Shouldn't happen — `cancelled` requires an installed active model.
-        // Fail safe by exiting.
-        dispatchExit()
-        return
-      }
-      modelMode = outcome.mode
-      persist()
-      showOverlay(
-        modelMode === "advanced"
-          ? "Loading Advanced model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant."
-          : "Loading model…"
-      )
-    }
-
     renderModeButton()
+    showOverlay(
+      modelMode === "advanced"
+        ? "Loading Advanced model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant."
+        : `Loading ${labelForMode(modelMode)} model…`
+    )
     micLabel.textContent =
       modelMode === "advanced"
         ? "Loading Advanced model… (first time can take ~1 minute)"
-        : `Loading ${MODEL_LABEL[modelMode]} model…`
+        : `Loading ${labelForMode(modelMode)} model…`
 
+    const bootTargetMode: ModelMode = modelMode
+
+    // Try the saved model directly. prepare() is the source of truth:
+    //   ready=true                          → loaded; we're done.
+    //   code=MODEL_NOT_INSTALLED            → genuinely not on disk; open setup.
+    //   code=NETWORK                        → tokenizer fetch failed; the
+    //                                         model bytes are fine, surface
+    //                                         a banner and let the user
+    //                                         retry without losing files.
+    //   code=LOAD_FAILED / other            → bytes failed to load; open
+    //                                         setup so user can reinstall.
+    let prepareErr: unknown = null
+    let prepareCode: SttErrorCode | undefined
     try {
       await Promise.all([
-        prepareWithRecovery(modelMode).then((r) => {
+        prepareWithRecovery(bootTargetMode).then((r) => {
           modelReady = true
           console.log(
-            `[pronunciation-coach] WhisperKit prepared: ${r.model} (${MODEL_LABEL[modelMode]})`
+            `[pronunciation-coach] WhisperKit prepared: ${r.model} (${labelForMode(bootTargetMode)})`
           )
         }),
         loadFirstPhrase(),
       ])
     } catch (err) {
-      console.error("[pronunciation-coach] boot failed:", err)
-      modelReady = false
-      hideOverlay()
-      const msg = err instanceof Error ? err.message : String(err)
-      // Wipe the broken install and route the user back into setup
-      // instead of stranding them on a "Model unavailable" wall. This
-      // catches the swift-transformers truncated-download case where
-      // file checks pass but CoreML refuses to compile (error -14).
-      const broken = MODEL_BY_MODE[modelMode]
-      if (stt.wipeModel) {
-        try {
-          await stt.wipeModel({ model: broken })
-        } catch (wipeErr) {
-          console.error(
-            "[pronunciation-coach] wipeModel after boot failure failed:",
-            wipeErr
-          )
-        }
-      }
-      showError(
-        `Model failed to load: ${msg}. Cleaned up the bad install — opening setup so you can reinstall.`
+      prepareErr = err
+      prepareCode = errCode(err)
+      console.error(
+        `[pronunciation-coach] boot prepare failed (code=${prepareCode ?? "—"}):`,
+        formatErr(err)
       )
-      micBtn.disabled = true
-      micLabel.textContent = "Model needs reinstall"
-      openModelSetup().catch((e) => {
-        console.error(
-          "[pronunciation-coach] openModelSetup after boot failure threw:",
-          e
+      // Stale-plugin detection: the new plugin always emits a structured
+      // `code` on prepare failures. If we got a failure with no code AND
+      // the message looks like the heuristic-validateModel false-negative
+      // pattern, the iOS app is running an old plugin binary that lies
+      // about disk state and destroys installs on every Install click.
+      // Surface a loud, actionable warning so it doesn't get lost in the
+      // log noise — this is the difference between "rebuild needed" and
+      // "real bug".
+      const msg = formatErr(err)
+      if (!prepareCode && /<model dir missing>|Run install first/i.test(msg)) {
+        console.warn(
+          "%c[pronunciation-coach] STALE PLUGIN DETECTED",
+          "background:#9333ea;color:#fff;padding:2px 6px;border-radius:4px;font-weight:600",
+          "\nThe iOS app is running an old tauri-plugin-stt binary (no `code` field on errors, no marker file).",
+          "\nValidateModel false-negatives in that build trigger destructive wipes on every Install click.",
+          "\nFix: rebuild and resideload the iOS app (cargo tauri ios dev) to pick up the marker-file fix.",
         )
-      })
-      return
+      }
     }
 
     if (disposed) return
+
+    if (modelReady && !prepareErr) {
+      hideOverlay()
+      setUiState("idle")
+      return
+    }
+
+    // Prepare failed. Route on structured code; never auto-wipe.
     hideOverlay()
-    setUiState("idle")
+    const targetLabel = labelForMode(bootTargetMode)
+    if (prepareCode === "NETWORK") {
+      showError(
+        `${targetLabel} model needs the tokenizer — check your connection. Your model files are intact.`
+      )
+      micBtn.disabled = true
+      micLabel.textContent = "Network needed"
+      return
+    }
+    if (prepareCode && prepareCode !== "MODEL_NOT_INSTALLED" && prepareCode !== "LOAD_FAILED") {
+      showError(`Model failed to load: ${formatErr(prepareErr)}`)
+      micBtn.disabled = true
+      micLabel.textContent = "Model unavailable"
+      return
+    }
+    // MODEL_NOT_INSTALLED → open setup silently. LOAD_FAILED → also
+    // route to setup with a banner so the user can pick Reinstall.
+    if (prepareCode === "LOAD_FAILED") {
+      showError(
+        `${targetLabel} model failed to load. Use Reinstall in setup if it keeps happening.`
+      )
+    }
+    // Open the setup overlay; on selection it triggers a fresh prepare.
+    micBtn.disabled = true
+    micLabel.textContent = `Loading ${targetLabel} model…`
+    openModelSetup().catch((e) => {
+      console.error(
+        "[pronunciation-coach] openModelSetup after boot prepare failure threw:",
+        e
+      )
+    })
   }
 
   boot().catch((err) => {

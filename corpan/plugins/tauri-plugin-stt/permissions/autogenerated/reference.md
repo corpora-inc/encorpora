@@ -13,6 +13,8 @@ Default permissions for the STT plugin
 - `allow-wipe-model`
 - `allow-install-model`
 - `allow-validate-model`
+- `allow-list-installed`
+- `allow-unload`
 - `allow-register-listener`
 - `allow-remove-listener`
 
@@ -125,6 +127,32 @@ Enables the is_available command without any pre-configured scope.
 <td>
 
 Denies the is_available command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:allow-list-installed`
+
+</td>
+<td>
+
+Enables the list_installed command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:deny-list-installed`
+
+</td>
+<td>
+
+Denies the list_installed command without any pre-configured scope.
 
 </td>
 </tr>
@@ -255,6 +283,32 @@ Enables the stop_session command without any pre-configured scope.
 <td>
 
 Denies the stop_session command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:allow-unload`
+
+</td>
+<td>
+
+Enables the unload command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:deny-unload`
+
+</td>
+<td>
+
+Denies the unload command without any pre-configured scope.
 
 </td>
 </tr>

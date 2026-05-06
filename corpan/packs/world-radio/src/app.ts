@@ -8,12 +8,16 @@
  */
 
 import type { HostApi, StackConfig } from "./sdk/types"
-import { corpanToRadioLanguage, displayName } from "./api/languageMap"
+import {
+  corpanToRadioLanguage,
+  displayName,
+  resolveCorpanCodeForStation,
+} from "./api/languageMap"
 import type { RadioStation } from "./api/radioBrowser"
 import { createRadioPlayer } from "./audio/radioPlayer"
 import type { PlayerState } from "./audio/radioPlayer"
 import { attachMediaSession } from "./audio/mediaSessionGlue"
-import { createLanguageListView } from "./views/languageList"
+import { createBrowseShellView, type BrowseShellView } from "./views/browseShell"
 import { createStationListView, type StationListView } from "./views/stationList"
 import { createPlayerBar } from "./views/playerBar"
 import { prefsStore, recentsStore, toLite } from "./state/stores"
@@ -23,6 +27,9 @@ import {
   shutdownAnalytics,
   trackBrowseOpened,
   trackFavoriteToggled,
+  trackGlobalMapLanguageFilter,
+  trackGlobalMapOpened,
+  trackGlobalMapTagFilter,
   trackLanguageBrowsed,
   trackMapViewOpened,
   trackSearchPerformed,
@@ -125,11 +132,25 @@ export async function mountApp(
   })
 
   // --- Active station + EQ glyph propagation to the station list view ---
+  // `browseView` is created later in this function but `player.subscribe`
+  // emits synchronously with the current state, so we must reference it via
+  // the let binding (initialized below) rather than capture it directly —
+  // otherwise this fires in the TDZ on the very first emit.
+  let browseView: BrowseShellView | null = null
   const stationListSyncUnsub = player.subscribe((state) => {
+    const activeUuid =
+      state.kind === "playing" || state.kind === "paused" || state.kind === "loading"
+        ? state.station.stationuuid
+        : null
+    // Always update the browse shell so the global map's active marker
+    // tracks the player even when the user is in the per-language list.
+    browseView?.setActiveStation(activeUuid)
     if (!currentStationListView) return
-    if (state.kind === "playing" || state.kind === "paused" || state.kind === "loading") {
-      currentStationListView.setActiveStation(state.station.stationuuid)
-      currentStationListView.setPlayerKind(state.kind)
+    if (activeUuid) {
+      currentStationListView.setActiveStation(activeUuid)
+      currentStationListView.setPlayerKind(
+        state.kind as "loading" | "playing" | "paused"
+      )
     } else {
       currentStationListView.setActiveStation(null)
       currentStationListView.setPlayerKind("idle")
@@ -177,18 +198,60 @@ export async function mountApp(
   let currentStack: string[] = initialState?.stackConfig?.languages ?? hostApi.getStackConfig().languages
   let activeStationListDispose: (() => void) | null = null
 
-  const browseView = createLanguageListView({
+  browseView = createBrowseShellView({
     initialStack: currentStack,
-    onSelect: (corpanCode) => openStationList(corpanCode),
+    onSelectLanguage: (corpanCode) => openStationList(corpanCode),
+    onPlay: (station) => {
+      // From the global map: kick the player directly. The player bar's
+      // metadata-tap still routes to per-language detail (existing logic).
+      void playStation(station)
+    },
+    onShowInList: (station) => {
+      const corpanCode = resolveCorpanCodeForStation(station, currentStack)
+      if (!corpanCode) {
+        console.warn(
+          "[world-radio] no Corpan language for station",
+          station.stationuuid,
+          station.language,
+          station.languagecodes
+        )
+        return
+      }
+      const hasGeo =
+        typeof station.geo_lat === "number" &&
+        typeof station.geo_long === "number" &&
+        Number.isFinite(station.geo_lat as number) &&
+        Number.isFinite(station.geo_long as number)
+      openStationList(corpanCode, {
+        focusUuid: station.stationuuid,
+        initialView: hasGeo ? "map" : "list",
+      })
+    },
+    onMapTabActivated: () => {
+      trackGlobalMapOpened()
+    },
+    onLanguageFilter: (codes) => {
+      trackGlobalMapLanguageFilter(codes)
+    },
+    onTagFilter: (tag, applied) => {
+      trackGlobalMapTagFilter(tag, applied)
+    },
+    onSearch: (_query, _count) => {
+      // No global-search analytics yet — falls back to general telemetry
+      // through the existing radio_search_performed event family if needed.
+    },
   })
 
   function showBrowse() {
+    // Guaranteed assigned by the time showBrowse can be invoked (mountApp
+    // calls it at the bottom; back-nav from station list happens later).
+    const view = browseView!
     closeBtn.style.display = ""
     activeCorpanCode = null
     currentStationListView = null
     clear(main)
-    main.appendChild(browseView.root)
-    void browseView.refresh()
+    main.appendChild(view.root)
+    void view.refresh()
     trackBrowseOpened()
     container.classList.remove("is-scrolled")
   }

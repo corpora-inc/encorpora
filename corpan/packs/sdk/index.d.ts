@@ -34,10 +34,37 @@ export type PackDbQueryResult = {
   rows: Record<string, unknown>[]
 }
 
+export type SttErrorCode =
+  | "MODEL_NOT_INSTALLED"
+  | "MODEL_NOT_LOADED"
+  | "NETWORK"
+  | "LOAD_FAILED"
+  | "IO_FAILED"
+  | "BUSY"
+  | "CANCELLED"
+  | "MIC_PERMISSION_DENIED"
+  | "NO_ACTIVE_SESSION"
+  | "AUDIO_FAILED"
+  | "UNKNOWN"
+
 export type SttPrepareResult = {
   ready: boolean
   model: string
   message?: string
+  /** Structured error code when ready === false. Undefined on success. */
+  code?: SttErrorCode
+}
+
+export type SttInstalledModel = {
+  model: string
+  valid: boolean
+  problems: string[]
+  sizeBytes: number
+  isLoaded: boolean
+}
+
+export type SttListInstalledResult = {
+  models: SttInstalledModel[]
 }
 
 export type SttStartSessionResult = {
@@ -106,6 +133,10 @@ export type SttApi = {
     opts: { model: string },
     onProgress?: (event: SttInstallProgress) => void,
   ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+  listInstalled?: (opts: {
+    models: string[]
+  }) => Promise<SttListInstalledResult>
+  unload?: () => Promise<{ unloaded: boolean }>
 }
 
 export type SttInstallProgress = {
@@ -115,6 +146,7 @@ export type SttInstallProgress = {
   completed?: number
   total?: number
   error?: string
+  code?: SttErrorCode
 }
 
 export type HostApi = {

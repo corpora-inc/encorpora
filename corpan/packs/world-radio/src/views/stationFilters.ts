@@ -9,11 +9,18 @@
 import { el, clear } from "../ui/dom"
 import { ICON_CHECK, ICON_CHEVRON_DOWN, ICON_SEARCH } from "../ui/icons"
 import type { SortKey } from "../state/listPrefs"
+import { corpanToRadioLanguage } from "../api/languageMap"
 
 export type FilterState = {
   query: string
   sort: SortKey
   tags: string[]
+  /**
+   * Optional language filter, used by the global map only. Each entry is a
+   * Corpan language code (the per-language view never sets this). Resolved
+   * to Radio Browser language names + ISO 639 codes inside applyFilters.
+   */
+  languageCodes?: string[]
 }
 
 export type FilterChange = {
@@ -54,7 +61,13 @@ export function createFilterRail(opts: {
   initial: FilterState
   onChange: (change: FilterChange) => void
 }): FilterRail {
-  let state: FilterState = { ...opts.initial, tags: [...opts.initial.tags] }
+  let state: FilterState = {
+    ...opts.initial,
+    tags: [...opts.initial.tags],
+    languageCodes: opts.initial.languageCodes
+      ? [...opts.initial.languageCodes]
+      : undefined,
+  }
   let availableTags: string[] = []
 
   const root = el("div", { class: "wr-filters" })
@@ -219,12 +232,20 @@ export function createFilterRail(opts: {
       renderTags()
     },
     setState(next: FilterState) {
-      state = { ...next, tags: [...next.tags] }
+      state = {
+        ...next,
+        tags: [...next.tags],
+        languageCodes: next.languageCodes ? [...next.languageCodes] : undefined,
+      }
       search.value = state.query
       sortBtnText.textContent = `Sort: ${SORT_LABEL[state.sort]}`
       renderTags()
     },
-    getState: () => ({ ...state, tags: [...state.tags] }),
+    getState: () => ({
+      ...state,
+      tags: [...state.tags],
+      languageCodes: state.languageCodes ? [...state.languageCodes] : undefined,
+    }),
     setSortVisible(visible: boolean) {
       sortWrap.style.display = visible ? "" : "none"
       if (!visible) closeMenu()
@@ -265,21 +286,61 @@ export function applyFilters<T extends {
   clickcount: number
   bitrate: number
   country: string
+  language?: string
+  languagecodes?: string
 }>(stations: T[], state: FilterState): T[] {
   const q = state.query.trim().toLowerCase()
   const tagSet = new Set(state.tags)
+  // Pre-resolve language filter into a set of Radio Browser language names
+  // (lowercase, e.g. "spanish") plus a set of ISO 639 codes (lowercase, e.g.
+  // "es"). A station passes if either set matches.
+  let langNameSet: Set<string> | null = null
+  let langIsoSet: Set<string> | null = null
+  if (state.languageCodes && state.languageCodes.length > 0) {
+    langNameSet = new Set()
+    langIsoSet = new Set()
+    for (const code of state.languageCodes) {
+      const radioName = corpanToRadioLanguage(code)
+      if (radioName) langNameSet.add(radioName.toLowerCase())
+      const iso = code.toLowerCase().split("-")[0]
+      if (iso) langIsoSet.add(iso)
+    }
+  }
 
   const matched = stations.filter((s) => {
     if (q) {
       const inName = s.name.toLowerCase().includes(q)
       const inTags = s.tags.toLowerCase().includes(q)
-      if (!inName && !inTags) return false
+      const inCountry = s.country.toLowerCase().includes(q)
+      if (!inName && !inTags && !inCountry) return false
     }
     if (tagSet.size > 0) {
       const stationTags = new Set(s.tags.toLowerCase().split(",").map((t) => t.trim()))
       for (const t of tagSet) {
         if (!stationTags.has(t)) return false
       }
+    }
+    if (langNameSet && langIsoSet) {
+      const stationNames = (s.language ?? "")
+        .toLowerCase()
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean)
+      const stationIsos = (s.languagecodes ?? "")
+        .toLowerCase()
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean)
+      let hit = false
+      for (const n of stationNames) {
+        if (langNameSet.has(n)) { hit = true; break }
+      }
+      if (!hit) {
+        for (const i of stationIsos) {
+          if (langIsoSet.has(i)) { hit = true; break }
+        }
+      }
+      if (!hit) return false
     }
     return true
   })

@@ -8,6 +8,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Model lifecycle rebuilt — no more error-driven auto-wipe.** Two
+  reproducible failures motivated the rewrite: (1) "Could not load
+  Advanced model: Model not installed" appearing right after a
+  successful install, and (2) leaving the pack and returning leaving
+  Standard no longer installed. Root cause was the JS `looksCorrupt`
+  substring predicate matching `"timed out"` and triggering `wipeModel`
+  on any transient timeout — CoreML slow first-compile, app suspended
+  mid-transcribe, tokenizer fetch hiccup during prepare(). The fix:
+  - **Structured error codes.** Every plugin failure carries a stable
+    code (`MODEL_NOT_INSTALLED`, `NETWORK`, `LOAD_FAILED`, `IO_FAILED`,
+    `BUSY`, `CANCELLED`, `MIC_PERMISSION_DENIED`, etc.) emitted as
+    `"CODE: human-readable description"` (matching the convention used
+    by tauri-plugin-iap). The host-app bridge parses the prefix and
+    attaches `error.code` to thrown errors. Packs route on code, never
+    on message substring.
+  - **`listInstalled({ models: [...] })` command.** Single round-trip
+    that returns disk-truth validation state for every requested
+    variant. Boot calls it once instead of N×`validateModel`.
+  - **Atomic install.** `installModel` now stages the existing on-disk
+    install aside before WhisperKit.download writes new files, then
+    validates and either commits (drop the rollback target) or rolls
+    back (restore the previous install, remove the partial download).
+    A failed install never corrupts the previous working install.
+  - **`unload()` command.** Drops the in-memory WhisperKit instance
+    without touching disk — for memory-warning hooks. Next prepare()
+    is a load, not a download.
+  - **No more `looksCorrupt` heuristic on transcribe error.** The
+    in-memory kit is no longer dropped on substring matches like
+    "timed out" or "weight.bin". If on-disk bytes are genuinely bad,
+    the next prepare() returns LOAD_FAILED and the pack surfaces a
+    Reinstall prompt — the user, not a substring match, decides
+    whether to delete files.
+
 - **Phase 1 of pronunciation-scoring rethink: mine WhisperKit properly.**
   Single-pass Whisper scoring was leaning entirely on `avgLogprob` and
   per-word `probability`, which let `large-v3-turbo`'s LM prior recover
@@ -54,6 +87,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   1.0 → ×1.0, 0.85 → ×0.90, 0.70 → ×0.70, 0.60 → ×0.55, 0.40 →
   ×0.35, 0.0 → ×0.20 floor. Penalty now bites in the 0.7–0.85 range
   where the old cliff was silently letting prior rescue through.
+- **CoreML load test is resilient to flaky-network tokenizer fetches.**
+  WhisperKit's `loadTokenizerIfNeeded` falls back to fetching the
+  tokenizer from the openai/<variant> repo on Hugging Face when no
+  local `tokenizer.json` is present (the argmaxinc/whisperkit-coreml
+  repo we download from doesn't include one). On a slow / flaky
+  connection that fetch times out and the install path was wiping the
+  whole model — forcing the user to re-download 150 MB / 1.6 GB even
+  though the model bytes were perfectly fine. Now the post-download
+  load test retries up to 3 times with 2s/4s backoff on network errors,
+  and on final failure the network case surfaces a friendly "couldn't
+  fetch the tokenizer" message and DOES NOT wipe the model. CoreML
+  errors still trigger a wipe (those mean the download was actually
+  truncated).
 - **Word-level similarity now drives transcript scoring alongside
   character-level.** The Spanish complaint case: user mispronounced
   "Si comes bien, te sentirás más saludable" → free decode
