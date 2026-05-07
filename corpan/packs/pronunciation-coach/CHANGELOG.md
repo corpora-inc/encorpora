@@ -10,6 +10,69 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.5] - 2026-05-07
+
+### Fixed
+- **Pinch-zoom disabled** for the duration of the pack's mount.
+  The host's viewport meta allows user-scalable, and a pinch on
+  the models page was leaving the WebView in a zoomed-in state
+  that persisted when navigating back to the main coach screen.
+  Pack now overrides the document's viewport meta to
+  `maximum-scale=1, user-scalable=no` on mount and restores the
+  prior content on unmount. Pure declarative — no JS event
+  listeners. (An earlier draft installed non-passive
+  `gesturestart`/`gesturechange`/`gestureend` document-level
+  listeners as belt-and-suspenders, but those degraded touch
+  perf globally on iOS WebKit; removed in favor of the viewport
+  meta alone.)
+- **Swipe area now reaches the screen edges.** The card no longer
+  appears to disappear "under" a strip of L/R padding during
+  swipe-out. Implementation is pure CSS: `--pc-root-pad-x` is the
+  canonical L/R chrome inset (22 px on iPad, 16 px on phones),
+  used by both `.pc-root`'s padding and `.pc-swipe-area`'s
+  matching negative margin. The deck breaks out of the chrome to
+  full screen width; the header chiclets and mic stage stay
+  comfortably inside the chrome (they're sibling flex children of
+  `.pc-root`, unaffected by the swipe-area's negative margin).
+  Inner card padding inherits the same var so content remains at
+  the same visual position it had before — only the card
+  *boundary* moved outward to the screen edge.
+
+### Changed
+- **Result panel pass.** Removed the Words and Sounds score bars.
+  The headline already carries the percentage and verdict, and the
+  per-word pills carry richer per-word truth than the bars ever
+  did. The Sounds bar in particular was effectively pinned at 100%
+  because its underlying acoustic score is computed from the
+  *constrained* decode's per-word probabilities — and the
+  constrained decode runs with `prefixTokens` forcing the expected
+  text, so Whisper reports near-1.0 confidence on tokens it was
+  forced to emit. Dropping the bar removes a misleading number from
+  the UI; the underlying scoring fix lives in a future plugin
+  release.
+- **"Heard you say" restructured** as a centered, stacked block:
+  small muted label on its own line, then ▶ + transcript inline
+  below it. Replaces the old left-aligned label-text-button row
+  that visually fought the centered banner above it and the
+  centered per-word pills below. Both the success and the empty
+  ("couldn't make out the words") branches share the same shape so
+  the layout doesn't shift between attempts.
+- **Result column normalized** to a single canonical width
+  (`--pc-result-col: 600px`) used by the banner area, the
+  transcript block, the per-word pill cluster, and the diagnostic
+  chip row. Previously these used 600px / 640px / 720px caps that
+  didn't agree visually.
+- **Per-word pills** get a touch more padding and a smoother hover
+  transition. They're now the primary score breakdown component
+  with the bars gone, so they earn slightly more visual weight.
+- **Banner percentage** font-size bumped a notch — it carries the
+  quantitative load that the bars used to.
+
+### Removed
+- `.pc-bars`, `.pc-bar`, `.pc-bar-label`, `.pc-bar-track`,
+  `.pc-bar-fill`, `.pc-bar-pct` styles. The bars-up slot is kept
+  in the card grid for layout stability but is hidden via CSS.
+
 ## [0.3.3] - 2026-05-07
 
 ### Added

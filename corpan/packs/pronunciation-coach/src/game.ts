@@ -652,6 +652,34 @@ export const mountGame = (
   let disposed = false
   let activeSessionId: string | null = null
 
+  // ---- Zoom block — disable pinch-zoom for the duration of the
+  // pack's mount via viewport-meta override. The host's viewport
+  // meta allows user-scalable, which lets a pinch gesture on the
+  // models page leave the WebView zoomed-in. We override on mount
+  // and restore on unmount. iOS WebKit honors `maximum-scale=1,
+  // user-scalable=no` natively — no JS event listeners required.
+  // (An earlier draft also installed `gesturestart`/`gesturechange`/
+  // `gestureend` non-passive document-level listeners as belt-and-
+  // suspenders. Removed: non-passive document-level gesture
+  // listeners can make iOS WebKit pessimistic about touch
+  // optimization globally and degrade swipe/scroll perf even when
+  // the listeners are dormant.)
+  const viewportMeta = document.querySelector<HTMLMetaElement>(
+    'meta[name="viewport"]'
+  )
+  const priorViewportContent = viewportMeta?.getAttribute("content") ?? null
+  if (viewportMeta) {
+    viewportMeta.setAttribute(
+      "content",
+      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    )
+  }
+  const teardownZoomBlock = () => {
+    if (viewportMeta && priorViewportContent !== null) {
+      viewportMeta.setAttribute("content", priorViewportContent)
+    }
+  }
+
   const renderUnavailable = (
     title = "Pronunciation Coach is iOS-only for now",
     body = "On-device speech recognition is iOS-only for now. Coming to other platforms later."
@@ -679,6 +707,7 @@ export const mountGame = (
     renderUnavailable()
     return {
       unmount: () => {
+        teardownZoomBlock()
         container.innerHTML = ""
       },
     }
@@ -1136,11 +1165,6 @@ export const mountGame = (
 
   const renderResult = (result: SttTranscriptionResult) => {
     const overall = Math.max(0, Math.min(1, result.overallScore))
-    const transcript = Math.max(0, Math.min(1, result.transcriptScore))
-    const acoustic = Math.max(
-      0,
-      Math.min(1, result.acousticScore ?? 0)
-    )
     const noSpeech = Math.max(0, Math.min(1, result.noSpeechProb ?? 0))
     const compression = result.compressionRatio ?? 0
     const freeVsConstrained = Math.max(
@@ -1309,57 +1333,28 @@ export const mountGame = (
       })
       .join("")
 
-    // Score bars — fixed three-row column so layout doesn't shift
-    // around between phrases. Color by threshold (matches headline
-    // and per-word rules).
-    const barClass = (n: number): string => {
-      if (n >= 0.7) return "good"
-      if (n >= 0.4) return "okay"
-      return "bad"
-    }
-    const renderBar = (label: string, value: number) => {
-      const v = Math.max(0, Math.min(1, value))
-      const cls = barClass(v)
-      return `
-        <div class="pc-bar">
-          <span class="pc-bar-label">${escapeHtml(label)}</span>
-          <div class="pc-bar-track">
-            <div class="pc-bar-fill ${cls}" style="width: ${(v * 100).toFixed(1)}%"></div>
-          </div>
-          <span class="pc-bar-pct">${pct(v)}</span>
-        </div>`
-    }
-    const barsHtml = `
-      <div class="pc-bars">
-        ${renderBar("Words", transcript)}
-        ${renderBar("Sounds", acoustic)}
-      </div>`
-
-    // "Heard you say:" row — shows the FREE decode (the honest signal,
-    // no prefix bias). The constrained transcript is hidden from
-    // normal UI: with `prefixTokens` forcing the expected text it's
-    // essentially the target phrase echoed back, which is already
-    // visible at the top of the page. The play button speaks this
-    // text in the target language so the user can audition what
-    // Whisper actually heard. When the free decode came back empty
-    // (Whisper couldn't make it out), show a friendly placeholder
-    // instead of hiding the row — silent failure is exactly what we
-    // don't want.
-    // Whole row is the tap target (data-pc-speak on the row itself);
-    // the ▶ button is purely a visual affordance. Larger hit area
-    // on mobile, no fiddly small-icon mistapping.
+    // "Heard you say" — the FREE decode (honest signal, no prefix
+    // bias). Stacked, centered block: small muted label on its own
+    // line, then ▶ + transcript inline below. The whole block is
+    // the tap target (the ▶ is a visual affordance, not the hit
+    // area). Empty branch keeps the same shape so the layout
+    // doesn't shift between success and failure.
     const heardRow = freeText.length
       ? `<div class="pc-transcript-row heard" role="button" tabindex="0"
              data-pc-speak="heard" data-no-swipe
              aria-label="Play what Whisper heard">
-           <span class="pc-transcript-play" aria-hidden="true">▶</span>
            <span class="pc-transcript-label">Heard you say</span>
-           <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
+           <span class="pc-transcript-line">
+             <span class="pc-transcript-play" aria-hidden="true">▶</span>
+             <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
+           </span>
          </div>`
       : freeDecodeFailed
         ? `<div class="pc-transcript-row heard empty">
              <span class="pc-transcript-label">Heard you say</span>
-             <span class="pc-transcript-text empty">(couldn't make out the words)</span>
+             <span class="pc-transcript-line">
+               <span class="pc-transcript-text empty">(couldn't make out the words)</span>
+             </span>
            </div>`
         : ""
     const transcriptsHtml = heardRow
@@ -1462,21 +1457,18 @@ export const mountGame = (
         <span class="pc-result-banner-text">${headlineText}</span>
       `
       bannerEl.hidden = false
-      // Composition above the phrase, in order:
-      //   banner (% + headline) → "Heard you say" → bars
-      // Composition below the phrase:
-      //   per-word pills → diagnostics
-      // Putting the transcript and bars above the phrase balances
-      // the visual weight against the pills+diagnostics below, so
-      // the phrase sits as the centerpiece of the composition
-      // rather than crowded at the top of a stack.
+      // Composition above the phrase: banner (% + headline) →
+      // "Heard you say". Composition below: per-word pills →
+      // diagnostics. The bars-up slot is intentionally left empty
+      // — the headline number and per-word pills together carry
+      // the score story without redundant 0–100% bars.
       if (transUpEl) {
         transUpEl.innerHTML = transcriptsHtml
         transUpEl.hidden = !transcriptsHtml
       }
       if (barsUpEl) {
-        barsUpEl.innerHTML = barsHtml
-        barsUpEl.hidden = false
+        barsUpEl.innerHTML = ""
+        barsUpEl.hidden = true
       }
       // No "Hear it" button — the per-word pills are already
       // tap-to-hear, which covers re-listening more usefully (you
@@ -2768,6 +2760,7 @@ export const mountGame = (
       cancelActiveSession()
       window.removeEventListener("keydown", onKeyDown)
       hideOverlay()
+      teardownZoomBlock()
       container.innerHTML = ""
     },
   }

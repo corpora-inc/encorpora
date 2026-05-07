@@ -12,6 +12,13 @@
   --pc-okay: #d97706;
   --pc-bad: #dc2626;
   --pc-shadow: 0 6px 20px rgba(20, 20, 40, 0.08);
+  --pc-result-col: 600px;
+  /* Horizontal chrome inset of .pc-root (the outer app shell).
+     Exposed as a var so the swipe area can break OUT of this
+     padding via negative margin — cards slide cleanly to the
+     screen edge, while the header chiclets and mic stage stay
+     comfortably inset. Phone media query overrides this to 16px. */
+  --pc-root-pad-x: 22px;
   --pc-safe-top: env(safe-area-inset-top, 0px);
   --pc-safe-bottom: env(safe-area-inset-bottom, 0px);
   --pc-safe-left: env(safe-area-inset-left, 0px);
@@ -99,13 +106,13 @@ body,
      to it: env(safe-area-inset-top) already accounts for the
      status bar / Stage Manager title bar, so we only need a
      tasteful 14px on top of that for visual breathing room.
-     Side paddings are large enough that the chiclets never feel
-     cramped against the screen edge on any iPhone. */
+     L/R use --pc-root-pad-x so the swipe area can break out of
+     the chrome via matching negative margins below. */
   padding:
     calc(14px + var(--pc-safe-top))
-    calc(22px + var(--pc-safe-right))
+    calc(var(--pc-root-pad-x) + var(--pc-safe-right))
     calc(18px + var(--pc-safe-bottom))
-    calc(22px + var(--pc-safe-left));
+    calc(var(--pc-root-pad-x) + var(--pc-safe-left));
   gap: 14px;
 }
 
@@ -263,6 +270,14 @@ body,
   align-items: stretch;
   min-height: 0;
   touch-action: none;
+  /* Break out of .pc-root's L/R chrome so the deck reaches the
+     actual screen edges. Cards can then slide cleanly off-screen
+     without visible "padding strip" lingering at the trailing
+     edge of the swipe-out animation. The header (above) and mic
+     stage (below) stay inside the chrome — they're separate flex
+     children of .pc-root and aren't affected by this margin. */
+  margin-left: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-left)));
+  margin-right: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-right)));
 }
 
 /* ---- Phrase deck (sized for the card) ---- */
@@ -295,7 +310,14 @@ body,
   display: grid;
   grid-template-rows: 1fr auto 1fr;
   justify-items: center;
-  padding: 16px 8px;
+  /* L/R padding matches the chrome inset (--pc-root-pad-x) so
+     content sits at the same visual position it would inside
+     .pc-root's normal padding. The card itself spans full screen
+     width (because .pc-swipe-area breaks out of .pc-root's
+     L/R chrome via negative margin), so the card slides cleanly
+     off-screen on swipe — but content stays inset from the
+     screen edge by --pc-root-pad-x for visual breathing room. */
+  padding: 16px var(--pc-root-pad-x);
   text-align: center;
   will-change: transform, opacity;
   transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
@@ -552,6 +574,7 @@ body,
   font-weight: 800;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
+  font-size: 15px;
 }
 .pc-result-banner-sep {
   opacity: 0.5;
@@ -577,7 +600,7 @@ body,
   align-items: center;
   gap: 10px;
   width: 100%;
-  max-width: 640px;
+  max-width: var(--pc-result-col);
   margin: 0 auto;
   animation: pc-detail-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
 }
@@ -601,7 +624,7 @@ body,
    gesture, not three separate elements. */
 .pc-result-transcript-up {
   width: 100%;
-  max-width: 600px;
+  max-width: var(--pc-result-col);
   margin: 8px auto 0;
   animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 40ms backwards;
 }
@@ -610,21 +633,12 @@ body,
   animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
-/* Bars-above slot — the green/yellow/red Words+Sounds bars sit
-   between the score banner and the phrase, using the empty space
-   above the phrase rather than crowding the detail row below it.
-   Inherits its own gentle fade-in from .pc-result-bars-up so it
-   reveals in concert with the banner. */
-.pc-result-bars-up {
-  width: 100%;
-  max-width: 360px;
-  margin: 8px auto 0;
-  animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
-}
-.pc-result-bars-up[hidden] { display: none; }
-.pc-result-bars-up.leaving {
-  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
-}
+/* Bars-above slot — kept as an empty slot in the card grid for
+   layout stability; renderResult() leaves it hidden. The Words /
+   Sounds bars that used to live here were removed in 0.3.5: the
+   headline already shows the overall percentage and the per-word
+   pills carry richer per-word truth than the bars ever did. */
+.pc-result-bars-up { display: none; }
 
 .pc-headline {
   font-size: clamp(20px, 3.6vw, 30px);
@@ -659,6 +673,9 @@ body,
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
+  max-width: var(--pc-result-col);
+  margin: 0 auto;
 }
 .pc-chip {
   font-size: 12px;
@@ -677,101 +694,73 @@ body,
   opacity: 0.85;
 }
 
-/* Subscore bars — fixed three-column grid (label · track · pct) so
-   the layout doesn't reflow between phrases. */
-.pc-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-  max-width: 360px;
-  margin: 4px auto 0;
-}
-.pc-bar {
-  display: grid;
-  grid-template-columns: 92px 1fr 44px;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-}
-.pc-bar-label {
-  font-weight: 500;
-  text-align: left;
-  opacity: 0.85;
-}
-.pc-bar-track {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--pc-accent-soft);
-  overflow: hidden;
-}
-.pc-bar-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 400ms ease, background 200ms ease;
-  min-width: 2px;
-}
-.pc-bar-fill.good { background: var(--pc-good); }
-.pc-bar-fill.okay { background: var(--pc-okay); }
-.pc-bar-fill.bad  { background: var(--pc-bad); }
-.pc-bar-pct {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-}
-
-/* Heard / Free transcript rows — text-with-play-button rows that let
-   the user audition what Whisper actually decoded (constrained vs
-   free) in the target-language TTS. Distinct visual treatment from
-   chips so the eye can find them quickly. */
+/* "Heard you say" — stacked, centered block. Small muted label
+   on its own line, then ▶ + transcript inline below. The whole
+   block is the tap target; the ▶ is a visual affordance. Both
+   the success and empty branches share this shape so layout
+   stays steady between attempts. */
 .pc-transcripts {
   display: flex;
   flex-direction: column;
   gap: 6px;
   width: 100%;
-  max-width: 600px;
+  max-width: var(--pc-result-col);
   margin: 4px auto 0;
 }
 .pc-transcript-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  /* Tappable height comfortable for thumbs (Apple recommends ≥44pt
-     min hit-target). The whole row is tap-to-play, not just the
-     small ▶ button — the bigger area makes a phrase that says
-     "tap me to hear it" feel right. */
-  min-height: 48px;
-  padding: 8px 16px 8px 8px;
+  gap: 4px;
+  /* Tappable height comfortable for thumbs (Apple ≥44pt). The whole
+     block is tap-to-play, not just the ▶ button. */
+  min-height: 56px;
+  padding: 10px 16px;
   border-radius: 14px;
   background: var(--pc-card);
   border: 1px solid var(--pc-border);
-  font-size: 14px;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   transition: background 120ms ease, border-color 120ms ease;
-  /* Width clamp: row never exceeds its parent. Without this a long
-     Whisper transcript could push the row past the card edge. */
   width: 100%;
-  max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 .pc-transcript-row:hover { background: var(--pc-accent-soft); }
 .pc-transcript-row:active { transform: scale(0.99); }
-.pc-transcript-row.free {
-  background: transparent;
-  border-style: dashed;
+.pc-transcript-row.empty {
+  /* Failure branch keeps the same shape; just non-interactive. */
+  cursor: default;
+}
+.pc-transcript-row.empty:hover { background: var(--pc-card); }
+.pc-transcript-row.empty:active { transform: none; }
+.pc-transcript-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  font-weight: 600;
+}
+.pc-transcript-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* Cap the inline row to the column so a long transcript
+     ellipsizes within the block instead of pushing it wider. */
+  max-width: 100%;
+  min-width: 0;
 }
 .pc-transcript-play {
   appearance: none;
   border: none;
   background: var(--pc-accent-soft);
   color: var(--pc-fg);
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -781,49 +770,39 @@ body,
 }
 .pc-transcript-row:hover .pc-transcript-play { background: var(--pc-accent); color: var(--pc-card); }
 .pc-transcript-play:active { transform: scale(0.92); }
-.pc-transcript-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.6;
-  font-weight: 600;
-  flex: 0 0 auto;
-}
 .pc-transcript-text {
-  /* `min-width: 0` is mandatory: flex items default to
-     min-width:auto, which equals their content width. Combined
-     with `white-space: nowrap`, that lets long transcripts blow
-     past the row width. The min-width:0 lets ellipsis kick in. */
-  flex: 1 1 0;
+  /* min-width:0 lets ellipsis kick in inside the flex line. */
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-style: italic;
+  font-size: 15px;
 }
 .pc-transcript-text.empty {
   opacity: 0.6;
   font-style: normal;
-}
-.pc-transcript-row.empty {
-  /* Inline label-only row when free decode came back empty —
-     keep the layout footprint so adjacent rows don't jump. */
-  padding-left: 12px;
+  font-size: 14px;
 }
 
 .pc-words {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 720px;
+  width: 100%;
+  /* No inner cap; parent .pc-result-detail already constrains
+     to var(--pc-result-col). */
 }
-/* Per-word pills double as TTS buttons — tap one to hear it spoken. */
+/* Per-word pills double as TTS buttons — tap one to hear it
+   spoken. The bars used to share the score story; now the pills
+   carry it alone, so they get a bit more weight and breathing
+   room than before. */
 .pc-word {
   appearance: none;
   display: inline-flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 7px 14px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
@@ -832,7 +811,7 @@ body,
   color: inherit;
   cursor: pointer;
   font-family: inherit;
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 .pc-word:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18); }
 .pc-word:active { transform: scale(0.96); }
@@ -1169,15 +1148,16 @@ body,
    surrounding chrome on phones and tiny screens.
    ============================================================ */
 @media (max-width: 480px), (max-height: 760px) {
+  :root { --pc-root-pad-x: 16px; }
   .pc-root {
     /* Phones get a hair less padding than iPad — but still leave
        enough breathing room above the chiclets that the header
        doesn't feel jammed against the status-bar edge. */
     padding:
       calc(10px + var(--pc-safe-top))
-      calc(16px + var(--pc-safe-right))
+      calc(var(--pc-root-pad-x) + var(--pc-safe-right))
       calc(12px + var(--pc-safe-bottom))
-      calc(16px + var(--pc-safe-left));
+      calc(var(--pc-root-pad-x) + var(--pc-safe-left));
     gap: 10px;
   }
   .pc-mic.recording { transform: none; }
@@ -1203,14 +1183,13 @@ body,
   .pc-native { font-size: 14px; }
 
   .pc-result-banner { font-size: 12px; padding: 5px 12px; gap: 8px; }
+  .pc-result-banner-score { font-size: 14px; }
   .pc-result-detail { gap: 8px; }
-  .pc-words { gap: 5px; }
-  .pc-word { font-size: 13px; padding: 5px 10px; }
-  .pc-bars { gap: 5px; }
-  .pc-bar { grid-template-columns: 64px 1fr 36px; font-size: 11px; gap: 8px; }
-  .pc-bar-track { height: 6px; }
-  .pc-transcript-row { min-height: 44px; padding: 6px 14px 6px 6px; font-size: 13px; }
-  .pc-transcript-play { width: 32px; height: 32px; font-size: 12px; }
+  .pc-words { gap: 6px; }
+  .pc-word { font-size: 13px; padding: 6px 12px; }
+  .pc-transcript-row { min-height: 50px; padding: 8px 14px; }
+  .pc-transcript-play { width: 30px; height: 30px; font-size: 11px; }
+  .pc-transcript-text { font-size: 14px; }
   .pc-card-above { padding-bottom: 10px; }
   .pc-card-below { padding-top: 10px; }
 }
@@ -1219,9 +1198,10 @@ body,
 @media (max-height: 680px) {
   .pc-target { font-size: clamp(22px, 6.5vw, 34px); }
   .pc-result-banner { font-size: 11px; padding: 4px 10px; }
+  .pc-result-banner-score { font-size: 13px; }
   .pc-result-detail { gap: 6px; }
+  .pc-transcript-row { min-height: 44px; padding: 6px 12px; gap: 2px; }
+  .pc-transcript-text { font-size: 13px; }
   .pc-card-above { padding-bottom: 8px; }
   .pc-card-below { padding-top: 8px; }
-  .pc-bars { display: none; }
-  .pc-result-bars-up { display: none; }
 }
