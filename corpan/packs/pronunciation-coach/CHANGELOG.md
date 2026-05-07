@@ -10,59 +10,69 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-05-07
+
+### Added
+- **Large tier** (`openai_whisper-large-v3_turbo_954MB`) — QLoRA-
+  quantized large-v3 turbo. Same architecture as Advanced but ~half
+  the disk size. Sits between Medium and Advanced. Verified live
+  through repeated transcribes on iPhone 17 Pro Max.
+
 ### Changed
-- **Advanced (full 1.6 GB) un-gated.** Trace evidence proved the
-  earlier "Advanced is iPhone-incompatible" theory wrong: the same
-  device that crashes on the v20240930 quantized variants
-  (626 / 632 MB) runs Advanced cleanly with multiple successful
-  transcribes back-to-back. Surprisingly, Advanced uses LESS
-  resident memory (~1120 MB) than Large Turbo (~1467 MB) on the
-  same device — the full model mmap-loads, the palettized variants
-  apparently don't. The crash is specific to the quantized
-  inference path, not a memory budget issue. Advanced now shows
-  on all devices.
-- **v20240930 quantized variants (626 / 632 MB) keep their
-  `requiresIpad: true` flag** as a precaution, since their
-  transcribe-time crashes are confirmed and not yet root-caused.
-  Once the inference path is fixed (likely an Argmax-side or a
-  CoreML / compute-units interaction), the gate can drop. Until
-  then, hiding them from iPhone-class budgets prevents the crash.
-
-- **Large variants gated by actual memory budget, not UA string.**
-  Live trace evidence revealed `navigator.userAgent` is unreliable:
-  a device reporting "iPad" had a 5 GB per-app jetsam budget
-  (iPhone-class) and crashed during transcribe on the 632 MB Large
-  Turbo model. Older iPads, iPads in Stage Manager / split-screen,
-  and some other devices report "iPad" but can't actually fit the
-  Large variants' first-transcribe spike (3–4 GB on top of the
-  resident model).
-
-  Boot now reads `stt.getStatus().availableMemoryMB` (powered by
-  `os_proc_available_memory()` in the plugin, returning the actual
-  per-app jetsam budget) and gates Large / Large Turbo / Advanced
-  on `>= 6500 MB`. Devices below that threshold see only Small
-  (216 MB) + Medium (547 MB), which the same trace verified work
-  with comfortable headroom. iPads with real iPad memory budgets
-  (typically 7–10 GB) see the full lineup as before.
-
-  The conservative default — when budget can't be read for any
-  reason — is to hide Large variants. Defensive: a missing memory
-  signal means we don't know if the device can survive, so we
-  don't risk it.
-- **Boot-time demotion safety net.** If a user's
-  `modelMode` from localStorage resolves to a `requiresIpad`
-  variant on an iPhone (stale entry from a previous install /
-  upgrade path that allowed those picks), boot replaces it with
-  the visible default before any prepare runs. Logs:
-  `[pronunciation-coach] saved model "<id>" requires iPad;
-  demoting to "<id>" on this device`. Prevents the OOM crash
-  loop where a stale saved model would keep killing the app on
+- **Final 4-tier lineup**: Small (216 MB) / Medium (547 MB) /
+  Large (954 MB) / Advanced (1.6 GB). All four verified working
+  on iPhone Pro Max + iPad through dozens of model swaps and
+  transcribes in real-device testing.
+- **Card copy rewritten** to drop jargon and set honest expectations.
+  Each card now describes what users actually experience ("often
+  wrong", "having a moment", "every model has That One Phrase").
+  Setup overlay sub-headline reframes the experience as cutting-edge
+  AI running on-device that's frequently wrong — "have fun, don't
+  take the scoring too seriously".
+- **Reinstall actually wipes and redownloads** instead of short-
+  circuiting at validateModel. Previously the plugin's
+  `installModel` would bail at the validateModel check ("already
+  installed") because validateModel only inspects file presence +
+  size > 1 KB, not actual on-disk integrity — so a corrupt
+  `.mlmodelc/weights/weight.bin` that mmap-failed at runtime would
+  still pass validation and Reinstall would do nothing. Now the
+  Reinstall click explicitly wipes the model dir before installing,
+  guaranteeing fresh bytes from the network. Verified live: a corrupt
+  install recovered cleanly via Reinstall.
+- **Boot-time demotion** when a localStorage-saved model id no
+  longer resolves in the registry — falls through to the fresh-
+  install default (Small) before any prepare runs. Prevents the
+  crash loop where a stale saved model id would keep failing on
   every launch.
-- Labels updated: `Large (Mobile)` → `Large (iPad)`,
-  `Large Turbo (Mobile)` → `Large Turbo (iPad)`. Card
-  descriptions now state explicitly that they exceed iPhone
-  memory budget. iPad users see honest device-class labels;
-  iPhone users don't see these cards at all.
+- **Memory-budget gating infrastructure** wired up: pack reads
+  `stt.getStatus().availableMemoryMB` at boot, caches it, and
+  exposes `hasLargeMemoryBudget()` / `variantExceedsBudget()` for
+  per-model gating. Currently no models in the shipping lineup
+  carry the `requiresIpad: true` flag, so the gate is a no-op — but
+  the wiring is in place for future use if a problematic variant
+  needs to be hidden from low-memory devices.
+
+### Removed
+- **v20240930 palettized large variants (626 / 632 MB)**. Confirmed
+  broken on every device tested in 100+ live attempts: install +
+  load test pass, then transcribe consistently kills the app during
+  the constrained-pass decode. Fresh-download from Hugging Face
+  doesn't fix it; not a memory issue (Advanced 1.6 GB uses LESS
+  resident memory and runs cleanly on the same device). CoreML
+  inference-path bug specific to the v20240930 4-bit outlier-
+  decomposition quantization. Argmax has shipped no fix; we drop
+  these variants entirely until upstream resolves it.
+- **Distil-whisper turbo (600 MB)** experiment. Installs and runs
+  without crashing, but produces empty decodes on basic non-English
+  phrases — distil-large-v3's architecture is distilled with English-
+  heavy training data and the multilingual fidelity is degraded.
+  Not honest to ship as a multilingual tier.
+
+### Fixed
+- **Light mode contrast on setup overlay**: `.pc-setup-root` was
+  missing an explicit `color`, so descendant text inherited white
+  from the host's modal chrome. Set `color: var(--pc-fg)` so every
+  child picks up scheme-aware foreground.
 
 ## [0.3.2] - 2026-05-07
 

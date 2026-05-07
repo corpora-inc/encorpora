@@ -7,6 +7,94 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-05-07
+
+This release is the consolidated state of an intense same-day
+iteration cycle (0.2.0 → 0.2.3) tested live against iPhone 17 Pro
+Max + iPad over many hours. The intermediate version bumps were
+mostly cache-busts to force Cargo to re-pick up Swift edits;
+0.2.3 is the actual shippable plugin behind Corpán 0.12.5.
+
+### Fixed
+- **Model-switch OOM via `prepare()` chain serialization.** Two
+  concurrent `prepare()` calls (e.g., boot's prepare + a
+  setup-overlay switch landing while the boot load is still in
+  flight) used to spawn parallel `Task { try await
+  WhisperKit(...) }` allocations and stack model memory, OOM-
+  killing the app even when each model fit individually. Every
+  `prepare()` now appends to a `prepareChain: Task<Void, Never>`
+  and awaits the previous tail before doing any work. After the
+  await it re-checks state and either short-circuits ("already
+  loaded") or runs its load. At most one WhisperKit allocation in
+  flight at a time. New trace line: `Whisper | prepare queueing
+  behind in-flight load: <model> (requested: <other-model>)`.
+- **Transient `Unable to mmap` failures on consecutive loads of
+  the same model.** A successful install-time load test followed
+  ~30 ms later by a runtime prepare for the same file can fail
+  with an mmap error because CoreML/kernel hasn't released the
+  prior mapping. `loadKitWithComputeFallback` now retries on the
+  "Unable to mmap" / "Error parsing MIL model" pattern with
+  250 ms / 750 ms exponential backoff (up to 3 total tries),
+  bounded so genuine corruption still fails fast.
+- **CPU-only compute fallback for CoreML error -14.** Some Apple
+  Silicon chips fail to compile a CoreML execution plan for
+  `large-v3-turbo`'s decoder graph on `.cpuAndGPU` and surface
+  as `error code: -14`. `loadKitWithComputeFallback` detects the
+  pattern (`"execution plan"`, `"could not build the model"`,
+  `"error code: -14"`) and retries with `.cpuOnly`. Slower but
+  works on every iPad we ship to. Network and missing-file errors
+  bubble up immediately without a fallback attempt.
+- **`unload()` wraps the kit drop in `autoreleasepool`** so CoreML's
+  MLModel weight buffers release immediately rather than at some
+  deferred ARC moment.
+
+### Added
+- **Memory snapshot logging at every load/transcribe boundary.**
+  New helper `sttMemSnapshot(tag:)` logs resident memory and
+  `os_proc_available_memory()` at: prepare entry, prepare loaded,
+  after unload, transcribe entry, transcribe done. Format:
+  `Whisper | mem [<tag>] resident=NMB available=NMB`. Lets us
+  diagnose future memory issues by reading numbers off the log.
+- **`getStatus()` exposes `availableMemoryMB` and `physicalMemoryMB`**
+  on the response payload (iOS 13+, from
+  `os_proc_available_memory()` and `ProcessInfo.physicalMemory`).
+  Returns a plain `[String: Any]` Dictionary rather than the
+  Encodable `StatusPayload` struct because Tauri's iOS
+  `Invoke.resolve` was observed silently dropping newly-added
+  Optional fields when serializing structs. Dictionary path goes
+  through `JSONSerialization` directly with no reflection
+  ambiguity.
+- **Android stub module** (`android/build.gradle.kts` +
+  `SttPlugin.kt`) so `gradlew :app:assembleRelease` can resolve
+  the `:tauri-plugin-stt` project dependency. The plugin is
+  iOS-only at runtime; every Android command rejects with
+  "STT not supported on Android" or returns a feature-detection
+  no (`isAvailable: false`, `listInstalled: []`).
+
+### Changed
+- **`build.rs` declares `cargo:rerun-if-changed=ios` and
+  `=android/src`** so Cargo detects Swift / Kotlin source edits
+  and re-runs the plugin build script. Without this, Cargo
+  previously skipped recompiling the plugin even when the Swift
+  changed, which manifested as "I rebuilt 100 times and nothing
+  changed" — fixed permanently.
+
+### Reverted (within the same iteration)
+- Tried `prewarm: false` on runtime prepare to defer CoreML
+  compile from load-time to first-transcribe time. Reshaped
+  runtime behavior in ways that regressed models that previously
+  worked. Reverted to `prewarm: true`.
+- Tried serializing the dual decode (constrained then free) to
+  halve peak memory. Changed CoreML scheduling in ways that
+  interacted poorly with quantized variants. Reverted to the
+  original concurrent `withThrowingTaskGroup` form with shared
+  timeout race.
+
+The structural fixes (chain serializer, mmap retry, autoreleasepool,
+memory snapshots, compute fallback, `getStatus` payload, Android
+stub, build-script directives) all stay. Only the runtime-shape
+experiments (prewarm and serial decode) were reverted.
+
 ## [0.2.2] - 2026-05-07
 
 ### Reverted
