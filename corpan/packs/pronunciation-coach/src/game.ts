@@ -1,5 +1,13 @@
 import type { EntryOut, HostApi, TranslationOut } from "./sdk/types"
-import { MODELS, modelById, defaultModel } from "./modelRegistry"
+import {
+  MODELS,
+  modelById,
+  defaultModel,
+  visibleModels,
+  visibleDefaultModel,
+  setDeviceMemoryBudget,
+  variantExceedsBudget,
+} from "./modelRegistry"
 
 // Local STT API contract — host owns the canonical type, we only declare
 // what we need to call. Codes mirror the host's SttErrorCode union.
@@ -36,6 +44,10 @@ type SttStatus = {
   model: string | null
   recording: boolean
   message: string | null
+  /** Per-app jetsam budget in MB. iOS 13+; null on older. */
+  availableMemoryMB?: number | null
+  /** Total physical RAM on the device in MB. */
+  physicalMemoryMB?: number | null
 }
 type SttWordTiming = {
   word: string
@@ -171,8 +183,13 @@ const HISTORY_CAP = 50
 // `validateModel` returns instead of guessing from cached data.
 
 // `ModelMode` is the registry id (canonical identifier persisted in
-// localStorage). Only "standard" and "advanced" exist today — adding a
-// third = one entry in modelRegistry.ts.
+// localStorage). The current set is in `modelRegistry.ts` (Small,
+// Medium, Large Mobile, Large Turbo Mobile, Advanced as of 0.3.2).
+// Adding a tier = one entry there. Removed ids ("standard" from the
+// pre-0.3.2 lineup) become unrecognized; the boot path's
+// `modelById(savedMode)` check filters them out and falls back to
+// `defaultModel().id` so existing users who saved a now-removed id
+// land at the new default.
 type ModelMode = string
 
 const folderForMode = (mode: ModelMode): string => {
@@ -1725,7 +1742,7 @@ export const mountGame = (
       outcome = await runSetup({
         currentActive: activeForOverlay,
         headline: "Pronunciation Coach · Models",
-        sub: "Install, switch, or remove on-device speech models. The active one is what gets used to score your phrase.",
+        sub: "These are cutting-edge AI speech models running entirely on your device. They get things wrong all the time, the bigger ones can be memory-hungry, and any of them might surprise you in either direction. Have fun — don't take the scoring too seriously.",
       })
     } finally {
       modelSwitching = false
@@ -1764,6 +1781,33 @@ export const mountGame = (
     modelReady = false
     micBtn.disabled = true
     const targetLabel = labelForMode(targetMode)
+    // Defense in depth: explicitly unload the previously-loaded model
+    // before asking for the new one. The Swift plugin already chains
+    // prepare() calls so two loads can't run concurrently, but
+    // dropping the previous kit on the JS side first means the user
+    // sees a clear "Unloading… → Loading…" progression instead of an
+    // opaque pause, AND if any future Swift change reintroduces a
+    // race, the old model is already evicted before the request.
+    if (
+      stt?.unload &&
+      previous &&
+      previous !== targetMode
+    ) {
+      micLabel.textContent = `Unloading ${labelForMode(previous)}…`
+      showOverlay(
+        `Unloading ${labelForMode(previous)} model to free memory…`
+      )
+      try {
+        await stt.unload()
+      } catch (err) {
+        // Non-fatal: the Swift side will drop the previous kit
+        // anyway when prepare() runs. Log and continue.
+        console.warn(
+          "[pronunciation-coach] explicit unload before switch failed:",
+          err
+        )
+      }
+    }
     micLabel.textContent = `Loading ${targetLabel} model…`
     showOverlay(
       `Loading ${targetLabel} model…\nThis can take 10–30s on first launch.`
@@ -2161,35 +2205,46 @@ export const mountGame = (
             <h1 class="pc-setup-headline">${escapeHtml(opts.headline)}</h1>
             <p class="pc-setup-sub">${escapeHtml(opts.sub)}</p>
 
-            <div class="pc-setup-card" data-mode="standard">
+            ${visibleModels().map((m) => {
+              // visibleModels() filters out variants flagged
+              // `requiresIpad: true` on iPhone-class devices. Hard
+              // data: 626 / 632 / 1600 MB Whisper variants OOM-kill
+              // the app during transcribe on iPhone Pro Max
+              // (~5 GB per-app jetsam ceiling) even though each
+              // model loads cleanly. Hiding the card means the user
+              // can't pick a model that will crash their device.
+              // iPad shows the full lineup.
+              //
+              // Format size label: under 1000 MB → "~NNN MB"; 1000+ →
+              // "~N.N GB" so the lineup reads cleanly across two
+              // orders of magnitude.
+              const sizeLabel =
+                m.approxSizeMB >= 1000
+                  ? `~${(m.approxSizeMB / 1000).toFixed(1)} GB`
+                  : `~${m.approxSizeMB} MB`
+              // Keep the fancy accented styling on the full-fat
+              // Advanced card so it visually reads as the premium
+              // (but caveated) tier. Other tiers use the default
+              // card chrome.
+              const fancyClass =
+                m.id === "advanced" ? " pc-setup-card-advanced" : ""
+              const sparkle = m.id === "advanced" ? " ✦" : ""
+              return `
+            <div class="pc-setup-card${fancyClass}" data-mode="${m.id}">
               <div class="pc-setup-card-head">
                 <div>
-                  <div class="pc-setup-card-name">Standard <span class="pc-setup-card-status" data-status="standard"></span></div>
-                  <div class="pc-setup-card-meta">~145 MB · works on any iPhone/iPad</div>
+                  <div class="pc-setup-card-name">${escapeHtml(m.label)}${sparkle} <span class="pc-setup-card-status" data-status="${m.id}"></span></div>
+                  <div class="pc-setup-card-meta">${sizeLabel}</div>
                 </div>
-                <div class="pc-setup-card-actions" data-actions="standard"></div>
+                <div class="pc-setup-card-actions" data-actions="${m.id}"></div>
               </div>
-              <div class="pc-setup-card-desc">Whisper base. Fast, good for the major languages, light on storage.</div>
-              <div class="pc-setup-progress" data-progress="standard" hidden>
+              <div class="pc-setup-card-desc">${escapeHtml(m.shortDesc)}</div>
+              <div class="pc-setup-progress" data-progress="${m.id}" hidden>
                 <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
                 <div class="pc-setup-progress-label">Preparing…</div>
               </div>
-            </div>
-
-            <div class="pc-setup-card pc-setup-card-advanced" data-mode="advanced">
-              <div class="pc-setup-card-head">
-                <div>
-                  <div class="pc-setup-card-name">Advanced ✦ <span class="pc-setup-card-status" data-status="advanced"></span></div>
-                  <div class="pc-setup-card-meta">~1.6 GB · M-series iPad / A17 iPhone recommended</div>
-                </div>
-                <div class="pc-setup-card-actions" data-actions="advanced"></div>
-              </div>
-              <div class="pc-setup-card-desc">Whisper large-v3-turbo. Best accuracy across all 27 languages, especially low-resource ones. First download can take a few minutes on Wi-Fi.</div>
-              <div class="pc-setup-progress" data-progress="advanced" hidden>
-                <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
-                <div class="pc-setup-progress-label">Preparing…</div>
-              </div>
-            </div>
+            </div>`
+            }).join("")}
 
             <div class="pc-setup-error" id="pc-setup-error" hidden></div>
             <div class="pc-setup-note">
@@ -2210,7 +2265,7 @@ export const mountGame = (
       // A wrong hint led to phantom "Use this" buttons that bypassed
       // the install path entirely.
       const installed: Record<string, boolean | null> = Object.fromEntries(
-        MODELS.map((m) => [m.id, m.id === currentActive ? true : null])
+        visibleModels().map((m) => [m.id, m.id === currentActive ? true : null])
       )
       let installing: ModelMode | null = null
 
@@ -2394,23 +2449,34 @@ export const mountGame = (
 
       const startInstall = async (mode: ModelMode, isReinstall = false) => {
         if (installing || disposed || !stt?.installModel) return
-        // No pre-reinstall wipe. The atomic-staging install in the
-        // plugin already moves the existing directory aside as a
-        // rollback target before downloading; on success it drops
-        // the staging copy, on failure it restores it. The previous
-        // pre-wipe was both destructive (wiped Standard 3 seconds
-        // after a successful prepare in real device traces) and
-        // redundant. We rely on the plugin's atomic install for
-        // correctness; clicking "Reinstall" just calls installModel
-        // and lets the staging dance handle the swap.
-        // NOTE: `isReinstall` is now informational only, kept on the
-        // signature so callers don't need to change.
-        void isReinstall
         installing = mode
         errorEl.hidden = true
         errorEl.textContent = ""
         renderActions()
         setProgressVisible(mode, true)
+
+        // Reinstall = explicit wipe + fresh download. Without the
+        // wipe, the plugin's `installModel` short-circuits at its
+        // validateModel check ("already installed (validateModel
+        // ok)") because validateModel only inspects file presence +
+        // size > 1 KB, not actual on-disk integrity — so a corrupt
+        // `.mlmodelc/weights/weight.bin` that mmap-fails at runtime
+        // would still pass validation and Reinstall would do
+        // nothing. Wiping first guarantees fresh bytes from the
+        // network, which is what the user clicked Reinstall for.
+        // First-time installs (`isReinstall` false) skip the wipe
+        // since there's nothing to wipe.
+        if (isReinstall && stt?.wipeModel) {
+          setProgress(mode, 0, "Wiping previous install…")
+          try {
+            await stt.wipeModel({ model: folderForMode(mode) })
+          } catch (err) {
+            console.warn(
+              `[pronunciation-coach] pre-reinstall wipe failed (continuing):`,
+              err
+            )
+          }
+        }
         setProgress(mode, 0, "Starting…")
 
         try {
@@ -2530,6 +2596,27 @@ export const mountGame = (
       return
     }
 
+    // Read this device's per-app memory budget BEFORE anything else
+    // touches modelMode or the setup overlay. The budget gates which
+    // model variants are safe to offer — Large / Advanced get hidden
+    // on iPhone-class budgets (~5 GB) where their first-transcribe
+    // spike OOM-kills the app. `navigator.userAgent` reports "iPad"
+    // on devices that can't actually run those models (Stage Manager
+    // iPads, older iPads), so we use the actual jetsam budget from
+    // `os_proc_available_memory()` exposed via `stt.getStatus()`.
+    try {
+      const status = await stt.getStatus()
+      setDeviceMemoryBudget(status.availableMemoryMB ?? null)
+      console.log(
+        `[pronunciation-coach] device memory budget: available=${status.availableMemoryMB ?? "?"}MB physical=${status.physicalMemoryMB ?? "?"}MB raw=${JSON.stringify(status)}`
+      )
+    } catch (err) {
+      console.warn(
+        "[pronunciation-coach] getStatus failed; using conservative budget (Large variants hidden):",
+        err
+      )
+    }
+
     // Pick the saved mode if any. localStorage holds preference; disk
     // truth is decided by whether prepare() can load the model. We do
     // NOT pre-check via validateModel — it's a heuristic on a
@@ -2541,17 +2628,42 @@ export const mountGame = (
     if (savedEarly?.mode && modelById(savedEarly.mode)) {
       modelMode = savedEarly.mode
     }
+    // Boot-time demotion: if the user's saved mode is an iPad-only
+    // variant (Large / Large Turbo / Advanced) and we're running on
+    // iPhone, replace it with the visible default (Small) before
+    // anything else touches modelMode. Without this, the boot path
+    // would prepare an iPad-only model on iPhone and OOM-kill the
+    // app on first transcribe — exactly the failure mode the
+    // requiresIpad gate is designed to prevent. The card was
+    // already hidden from the setup overlay, but a stale
+    // localStorage entry from a previous install (or a user who
+    // upgraded from a build that allowed iPhone to pick those
+    // models) would otherwise sneak through. Only triggers on
+    // actual mismatch — iPad users keep their saved mode.
+    const savedModelEntry = modelById(modelMode)
+    if (savedModelEntry && variantExceedsBudget(savedModelEntry)) {
+      const safe = visibleDefaultModel().id
+      console.warn(
+        `[pronunciation-coach] saved model "${modelMode}" exceeds this device's memory budget; demoting to "${safe}"`
+      )
+      modelMode = safe
+    }
 
     renderModeButton()
+    // Larger models pay a one-time CoreML compile cost on first
+    // launch. Surface the wait honestly so users don't think the
+    // app froze. Threshold (~300 MB) chosen so Standard / Small
+    // skip the warning but Medium / Large / Advanced get it.
+    const bootModelLabel = labelForMode(modelMode)
+    const bootIsLargeModel = (modelById(modelMode)?.approxSizeMB ?? 0) >= 300
     showOverlay(
-      modelMode === "advanced"
-        ? "Loading Advanced model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant."
-        : `Loading ${labelForMode(modelMode)} model…`
+      bootIsLargeModel
+        ? `Loading ${bootModelLabel} model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant.`
+        : `Loading ${bootModelLabel} model…`
     )
-    micLabel.textContent =
-      modelMode === "advanced"
-        ? "Loading Advanced model… (first time can take ~1 minute)"
-        : `Loading ${labelForMode(modelMode)} model…`
+    micLabel.textContent = bootIsLargeModel
+      ? `Loading ${bootModelLabel} model… (first time can take ~1 minute)`
+      : `Loading ${bootModelLabel} model…`
 
     const bootTargetMode: ModelMode = modelMode
 

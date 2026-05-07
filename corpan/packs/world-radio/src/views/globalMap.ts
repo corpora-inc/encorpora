@@ -47,15 +47,9 @@ export function createGlobalMapView(opts: {
 }): GlobalMapView {
   const root = el("section", { class: "wr-globalmap" })
 
-  // ---- Sticky region (header + filter rail + language chips) ----
+  // ---- Sticky region (filter rail + language chips) ----
   const sticky = el("div", { class: "wr-sticky" })
   root.appendChild(sticky)
-
-  const header = el("header", { class: "wr-globalmap-header" })
-  header.appendChild(el("h2", { class: "wr-globalmap-title" }, ["World map"]))
-  const subtitle = el("p", { class: "wr-globalmap-sub" }, ["Loading stations…"])
-  header.appendChild(subtitle)
-  sticky.appendChild(header)
 
   // Filter rail (search + tag chips). Sort is irrelevant on a map — hide it.
   let allStations: PlacedStation[] = []
@@ -154,26 +148,8 @@ export function createGlobalMapView(opts: {
     return applyFilters(allStations, stateWithLang)
   }
 
-  function updateSubtitle(filteredCount: number) {
-    const total = allStations.length
-    if (!loaded) {
-      subtitle.textContent = "Loading stations…"
-      return
-    }
-    const filterActive =
-      filterRail.getState().query !== "" ||
-      filterRail.getState().tags.length > 0 ||
-      activeLanguageCodes.length > 0
-    if (!filterActive) {
-      subtitle.textContent = `${total.toLocaleString()} stations worldwide · pan and zoom to explore`
-      return
-    }
-    subtitle.textContent = `${filteredCount.toLocaleString()} of ${total.toLocaleString()} stations`
-  }
-
   function applyToMap(precomputed?: PlacedStation[]) {
     const filtered = precomputed ?? computeFiltered()
-    updateSubtitle(filtered.length)
     if (mapView) {
       mapView.setStations(filtered)
     }
@@ -210,7 +186,6 @@ export function createGlobalMapView(opts: {
       loaded = true
       renderLanguageChips()
       await mountMap()
-      updateSubtitle(allStations.length)
     } catch (err) {
       console.error("[world-radio] global map load failed:", err)
       if (disposed) return

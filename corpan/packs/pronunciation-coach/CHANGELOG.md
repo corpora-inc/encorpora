@@ -10,6 +10,151 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-05-07
+
+### Added
+- **Large tier** (`openai_whisper-large-v3_turbo_954MB`) — QLoRA-
+  quantized large-v3 turbo. Same architecture as Advanced but ~half
+  the disk size. Sits between Medium and Advanced. Verified live
+  through repeated transcribes on iPhone 17 Pro Max.
+
+### Changed
+- **Final 4-tier lineup**: Small (216 MB) / Medium (547 MB) /
+  Large (954 MB) / Advanced (1.6 GB). All four verified working
+  on iPhone Pro Max + iPad through dozens of model swaps and
+  transcribes in real-device testing.
+- **Card copy rewritten** to drop jargon and set honest expectations.
+  Each card now describes what users actually experience ("often
+  wrong", "having a moment", "every model has That One Phrase").
+  Setup overlay sub-headline reframes the experience as cutting-edge
+  AI running on-device that's frequently wrong — "have fun, don't
+  take the scoring too seriously".
+- **Reinstall actually wipes and redownloads** instead of short-
+  circuiting at validateModel. Previously the plugin's
+  `installModel` would bail at the validateModel check ("already
+  installed") because validateModel only inspects file presence +
+  size > 1 KB, not actual on-disk integrity — so a corrupt
+  `.mlmodelc/weights/weight.bin` that mmap-failed at runtime would
+  still pass validation and Reinstall would do nothing. Now the
+  Reinstall click explicitly wipes the model dir before installing,
+  guaranteeing fresh bytes from the network. Verified live: a corrupt
+  install recovered cleanly via Reinstall.
+- **Boot-time demotion** when a localStorage-saved model id no
+  longer resolves in the registry — falls through to the fresh-
+  install default (Small) before any prepare runs. Prevents the
+  crash loop where a stale saved model id would keep failing on
+  every launch.
+- **Memory-budget gating infrastructure** wired up: pack reads
+  `stt.getStatus().availableMemoryMB` at boot, caches it, and
+  exposes `hasLargeMemoryBudget()` / `variantExceedsBudget()` for
+  per-model gating. Currently no models in the shipping lineup
+  carry the `requiresIpad: true` flag, so the gate is a no-op — but
+  the wiring is in place for future use if a problematic variant
+  needs to be hidden from low-memory devices.
+
+### Removed
+- **v20240930 palettized large variants (626 / 632 MB)**. Confirmed
+  broken on every device tested in 100+ live attempts: install +
+  load test pass, then transcribe consistently kills the app during
+  the constrained-pass decode. Fresh-download from Hugging Face
+  doesn't fix it; not a memory issue (Advanced 1.6 GB uses LESS
+  resident memory and runs cleanly on the same device). CoreML
+  inference-path bug specific to the v20240930 4-bit outlier-
+  decomposition quantization. Argmax has shipped no fix; we drop
+  these variants entirely until upstream resolves it.
+- **Distil-whisper turbo (600 MB)** experiment. Installs and runs
+  without crashing, but produces empty decodes on basic non-English
+  phrases — distil-large-v3's architecture is distilled with English-
+  heavy training data and the multilingual fidelity is degraded.
+  Not honest to ship as a multilingual tier.
+
+### Fixed
+- **Light mode contrast on setup overlay**: `.pc-setup-root` was
+  missing an explicit `color`, so descendant text inherited white
+  from the host's modal chrome. Set `color: var(--pc-fg)` so every
+  child picks up scheme-aware foreground.
+
+## [0.3.2] - 2026-05-07
+
+### Removed
+- **Standard tier (`openai_whisper-base`, ~145 MB)** dropped from the
+  registry. Small (`openai_whisper-small_216MB`, ~216 MB) replaces
+  it as the new fresh-install default — meaningfully better across
+  most languages and only ~70 MB larger. Existing users who saved
+  `mode: "standard"` in localStorage fall through
+  `modelById("standard") === undefined` on boot and land at the new
+  default (Small). On-disk `openai_whisper-base/` files become
+  orphans (the setup overlay no longer shows a card for them);
+  cleaning those up is left to a future cleanup sweep — they don't
+  affect functionality.
+
+### Changed
+- **Lineup is now 5 tiers** (was 6): Small / Medium / Large (Mobile)
+  / Large Turbo (Mobile) / Advanced (iPad).
+
+## [0.3.1] - 2026-05-07
+
+### Changed
+- **Explicit `stt.unload()` before switching models** in the setup
+  overlay's switch flow. Defense in depth: the plugin's 0.2.1
+  serialization is what actually prevents the model-switch OOM,
+  but evicting the previous model from JS first means the user
+  sees a clear "Unloading current… → Loading new…" UX progression
+  instead of an opaque pause, AND the previous kit is guaranteed
+  evicted before the new one is requested. Skipped when no
+  previous model is loaded (boot path) or when the requested
+  model is already active.
+- **`minAppVersion` raised to `"0.12.4"`** because pc 0.3.1 needs
+  the host-app's STT plugin 0.2.1 (with the prepare-chain
+  serialization) to actually prevent the OOM crash. On a 0.12.3
+  binary the pack would still partially work but switches could
+  still crash.
+
+## [0.3.0] - 2026-05-07
+
+### Added
+- **Four new model tiers** between Standard (145 MB) and Advanced
+  (1.6 GB), so iPhones get a real upgrade path that fits within
+  iOS's per-app memory limit. Lineup is now:
+  - **Standard** — `openai_whisper-base` (145 MB) — unchanged
+  - **Small** — `openai_whisper-small_216MB` (216 MB) — quantized small
+  - **Medium** — `openai_whisper-large-v3-v20240930_547MB` (547 MB) —
+    large-quality at medium size
+  - **Large (Mobile)** — `openai_whisper-large-v3-v20240930_626MB`
+    (626 MB) — Argmax's officially-recommended pick for "maximum
+    multilingual accuracy" per their README. Should run on modern
+    iPhones.
+  - **Large Turbo (Mobile)** —
+    `openai_whisper-large-v3-v20240930_turbo_632MB` (632 MB) — same
+    accuracy class with a faster decoder.
+  - **Advanced (iPad)** — `openai_whisper-large-v3_turbo` (1600 MB)
+    — unchanged folder, retitled and re-described to flag that it
+    is iPad / M-series only and may crash iPhones via OOM jetsam.
+- The four middle tiers are all from Argmax's `v20240930` quantized
+  generation, specifically tuned to preserve multilingual quality.
+  Shipping multiple variants so real-device A/B testing can decide
+  which one wins per language and device.
+
+### Fixed
+- **Light mode contrast on the setup overlay.** `.pc-setup-root`
+  was missing an explicit `color: var(--pc-fg)`, so when the host
+  wrapped the pack in a container with `color: white` (its dark
+  modal chrome), the setup headline and card-name text inherited
+  white. In dark mode this looked fine; in light mode it rendered
+  white-on-light. Setting an explicit foreground on the setup root
+  makes every descendant pick up the scheme-aware color. Main
+  `.pc-root` already had this; the bug only affected the setup
+  / model-management overlay.
+
+### Changed
+- **Setup overlay templates from `MODELS`** instead of hardcoding
+  two `data-mode="standard"` / `data-mode="advanced"` cards. Adding
+  a model is now a single registry entry; the overlay scales
+  automatically.
+- **First-load wait message generalized** from "Loading Advanced
+  model…" to a size-driven check: any model ≥ 300 MB shows the
+  CoreML-compile warning; smaller models skip it.
+
 ## [0.2.0] - 2026-05-06
 
 ### Changed

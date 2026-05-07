@@ -7,6 +7,67 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.5] - 2026-05-07
+
+### Fixed
+- **STT plugin upgraded to 0.2.2**, multiple memory-hygiene fixes
+  for the model-switch / transcribe path on iPhone. Most impactful
+  change: the dual-decode (constrained + free passes) now runs
+  **in series** instead of in a concurrent TaskGroup, halving peak
+  memory during transcribe with no wall-clock cost (the parallel
+  form never gave a real speedup on a shared GPU). Also: runtime
+  prepare uses `prewarm: false` (defers CoreML compile to first
+  transcribe), and consecutive loads of the same model retry on
+  transient mmap failures (sub-second resource race that was
+  surfacing as LOAD_FAILED). New memory snapshot logs at every
+  load/transcribe boundary make future diagnoses readable. See
+  the plugin's own changelog for the full story.
+
+## [0.12.4] - 2026-05-07
+
+### Fixed
+- **STT plugin upgraded to 0.2.1**, which fixes a model-switch OOM
+  crash on iPhone caused by concurrent WhisperKit allocations. The
+  plugin now serializes `prepare()` calls through a chain so two
+  loads can never run in parallel; peak memory during a switch is
+  bounded by the larger of the two models, not their sum. See the
+  plugin's own changelog for the full story. The host-app side
+  pulls in the new plugin code automatically — no `hostApi.ts`
+  changes — but the iOS bundle has to be rebuilt to ship the Swift
+  fix, hence the 0.12.4 bump.
+
+## [0.12.3] - 2026-05-06
+
+### Changed
+- **STT plugin upgraded to 0.2.0** — substantial robustness pass on
+  the on-device WhisperKit pipeline. The host-app side picks up the
+  matching bridge changes:
+  - **Structured error codes** (`MODEL_NOT_INSTALLED`, `LOAD_FAILED`,
+    `NETWORK`, `IO_FAILED`, `BUSY`, `CANCELLED`,
+    `MIC_PERMISSION_DENIED`, etc.) flow through `hostApi.ts` —
+    incoming plugin errors now carry `error.code` parsed from the
+    `"CODE: description"` string convention. Packs route on code,
+    never on message substring.
+  - **`stt.listInstalled({ models: [...] })`** — single round-trip
+    that returns disk-truth validation state for every requested
+    variant. Pronunciation Coach 0.2.0 calls it once on boot
+    instead of N×`validateModel`.
+  - **`stt.unload()`** — drops the in-memory WhisperKit instance
+    without touching disk; available for memory-warning hooks.
+  - **CoreML compute-backend fallback to CPU-only on error -14**.
+    Affected iPad chips that couldn't compile `large-v3-turbo`
+    even with `.cpuAndGPU` now transparently retry with
+    `.cpuOnly`. Slower but works on every device we ship to;
+    eliminates the Reinstall loop that was a backend bug, not a
+    corruption signal.
+  - **Atomic install with rollback.** `installModel` stages any
+    existing on-disk install aside before WhisperKit downloads new
+    files; commits on validation success or rolls back on failure.
+    A failed install never corrupts the previously working install.
+- **Pronunciation Coach catalog gate raised** to `minAppVersion
+  "0.12.3"` — pc 0.2.0 calls `listInstalled` and routes on
+  structured error codes, both unavailable in 0.12.2 binaries.
+
 ## [0.12.2] - 2026-05-05
 
 ### Added

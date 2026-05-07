@@ -78,6 +78,10 @@ export type SttStatus = {
   model: string | null
   recording: boolean
   message: string | null
+  /** Per-app jetsam budget in MB. iOS 13+; null on older. */
+  availableMemoryMB?: number | null
+  /** Total physical RAM on the device in MB. */
+  physicalMemoryMB?: number | null
 }
 
 export type SttWordTiming = {
