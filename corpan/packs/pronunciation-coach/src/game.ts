@@ -1,5 +1,13 @@
 import type { EntryOut, HostApi, TranslationOut } from "./sdk/types"
-import { MODELS, modelById, defaultModel } from "./modelRegistry"
+import {
+  MODELS,
+  modelById,
+  defaultModel,
+  visibleModels,
+  visibleDefaultModel,
+  setDeviceMemoryBudget,
+  variantExceedsBudget,
+} from "./modelRegistry"
 
 // Local STT API contract — host owns the canonical type, we only declare
 // what we need to call. Codes mirror the host's SttErrorCode union.
@@ -36,6 +44,10 @@ type SttStatus = {
   model: string | null
   recording: boolean
   message: string | null
+  /** Per-app jetsam budget in MB. iOS 13+; null on older. */
+  availableMemoryMB?: number | null
+  /** Total physical RAM on the device in MB. */
+  physicalMemoryMB?: number | null
 }
 type SttWordTiming = {
   word: string
@@ -171,8 +183,13 @@ const HISTORY_CAP = 50
 // `validateModel` returns instead of guessing from cached data.
 
 // `ModelMode` is the registry id (canonical identifier persisted in
-// localStorage). Only "standard" and "advanced" exist today — adding a
-// third = one entry in modelRegistry.ts.
+// localStorage). The current set is in `modelRegistry.ts` (Small,
+// Medium, Large Mobile, Large Turbo Mobile, Advanced as of 0.3.2).
+// Adding a tier = one entry there. Removed ids ("standard" from the
+// pre-0.3.2 lineup) become unrecognized; the boot path's
+// `modelById(savedMode)` check filters them out and falls back to
+// `defaultModel().id` so existing users who saved a now-removed id
+// land at the new default.
 type ModelMode = string
 
 const folderForMode = (mode: ModelMode): string => {
@@ -1764,6 +1781,33 @@ export const mountGame = (
     modelReady = false
     micBtn.disabled = true
     const targetLabel = labelForMode(targetMode)
+    // Defense in depth: explicitly unload the previously-loaded model
+    // before asking for the new one. The Swift plugin already chains
+    // prepare() calls so two loads can't run concurrently, but
+    // dropping the previous kit on the JS side first means the user
+    // sees a clear "Unloading… → Loading…" progression instead of an
+    // opaque pause, AND if any future Swift change reintroduces a
+    // race, the old model is already evicted before the request.
+    if (
+      stt?.unload &&
+      previous &&
+      previous !== targetMode
+    ) {
+      micLabel.textContent = `Unloading ${labelForMode(previous)}…`
+      showOverlay(
+        `Unloading ${labelForMode(previous)} model to free memory…`
+      )
+      try {
+        await stt.unload()
+      } catch (err) {
+        // Non-fatal: the Swift side will drop the previous kit
+        // anyway when prepare() runs. Log and continue.
+        console.warn(
+          "[pronunciation-coach] explicit unload before switch failed:",
+          err
+        )
+      }
+    }
     micLabel.textContent = `Loading ${targetLabel} model…`
     showOverlay(
       `Loading ${targetLabel} model…\nThis can take 10–30s on first launch.`
@@ -2161,7 +2205,16 @@ export const mountGame = (
             <h1 class="pc-setup-headline">${escapeHtml(opts.headline)}</h1>
             <p class="pc-setup-sub">${escapeHtml(opts.sub)}</p>
 
-            ${MODELS.map((m) => {
+            ${visibleModels().map((m) => {
+              // visibleModels() filters out variants flagged
+              // `requiresIpad: true` on iPhone-class devices. Hard
+              // data: 626 / 632 / 1600 MB Whisper variants OOM-kill
+              // the app during transcribe on iPhone Pro Max
+              // (~5 GB per-app jetsam ceiling) even though each
+              // model loads cleanly. Hiding the card means the user
+              // can't pick a model that will crash their device.
+              // iPad shows the full lineup.
+              //
               // Format size label: under 1000 MB → "~NNN MB"; 1000+ →
               // "~N.N GB" so the lineup reads cleanly across two
               // orders of magnitude.
@@ -2212,7 +2265,7 @@ export const mountGame = (
       // A wrong hint led to phantom "Use this" buttons that bypassed
       // the install path entirely.
       const installed: Record<string, boolean | null> = Object.fromEntries(
-        MODELS.map((m) => [m.id, m.id === currentActive ? true : null])
+        visibleModels().map((m) => [m.id, m.id === currentActive ? true : null])
       )
       let installing: ModelMode | null = null
 
@@ -2396,23 +2449,34 @@ export const mountGame = (
 
       const startInstall = async (mode: ModelMode, isReinstall = false) => {
         if (installing || disposed || !stt?.installModel) return
-        // No pre-reinstall wipe. The atomic-staging install in the
-        // plugin already moves the existing directory aside as a
-        // rollback target before downloading; on success it drops
-        // the staging copy, on failure it restores it. The previous
-        // pre-wipe was both destructive (wiped Standard 3 seconds
-        // after a successful prepare in real device traces) and
-        // redundant. We rely on the plugin's atomic install for
-        // correctness; clicking "Reinstall" just calls installModel
-        // and lets the staging dance handle the swap.
-        // NOTE: `isReinstall` is now informational only, kept on the
-        // signature so callers don't need to change.
-        void isReinstall
         installing = mode
         errorEl.hidden = true
         errorEl.textContent = ""
         renderActions()
         setProgressVisible(mode, true)
+
+        // Reinstall = explicit wipe + fresh download. Without the
+        // wipe, the plugin's `installModel` short-circuits at its
+        // validateModel check ("already installed (validateModel
+        // ok)") because validateModel only inspects file presence +
+        // size > 1 KB, not actual on-disk integrity — so a corrupt
+        // `.mlmodelc/weights/weight.bin` that mmap-fails at runtime
+        // would still pass validation and Reinstall would do
+        // nothing. Wiping first guarantees fresh bytes from the
+        // network, which is what the user clicked Reinstall for.
+        // First-time installs (`isReinstall` false) skip the wipe
+        // since there's nothing to wipe.
+        if (isReinstall && stt?.wipeModel) {
+          setProgress(mode, 0, "Wiping previous install…")
+          try {
+            await stt.wipeModel({ model: folderForMode(mode) })
+          } catch (err) {
+            console.warn(
+              `[pronunciation-coach] pre-reinstall wipe failed (continuing):`,
+              err
+            )
+          }
+        }
         setProgress(mode, 0, "Starting…")
 
         try {
@@ -2532,6 +2596,27 @@ export const mountGame = (
       return
     }
 
+    // Read this device's per-app memory budget BEFORE anything else
+    // touches modelMode or the setup overlay. The budget gates which
+    // model variants are safe to offer — Large / Advanced get hidden
+    // on iPhone-class budgets (~5 GB) where their first-transcribe
+    // spike OOM-kills the app. `navigator.userAgent` reports "iPad"
+    // on devices that can't actually run those models (Stage Manager
+    // iPads, older iPads), so we use the actual jetsam budget from
+    // `os_proc_available_memory()` exposed via `stt.getStatus()`.
+    try {
+      const status = await stt.getStatus()
+      setDeviceMemoryBudget(status.availableMemoryMB ?? null)
+      console.log(
+        `[pronunciation-coach] device memory budget: available=${status.availableMemoryMB ?? "?"}MB physical=${status.physicalMemoryMB ?? "?"}MB raw=${JSON.stringify(status)}`
+      )
+    } catch (err) {
+      console.warn(
+        "[pronunciation-coach] getStatus failed; using conservative budget (Large variants hidden):",
+        err
+      )
+    }
+
     // Pick the saved mode if any. localStorage holds preference; disk
     // truth is decided by whether prepare() can load the model. We do
     // NOT pre-check via validateModel — it's a heuristic on a
@@ -2542,6 +2627,26 @@ export const mountGame = (
     const savedEarly = loadSavedState(storage)
     if (savedEarly?.mode && modelById(savedEarly.mode)) {
       modelMode = savedEarly.mode
+    }
+    // Boot-time demotion: if the user's saved mode is an iPad-only
+    // variant (Large / Large Turbo / Advanced) and we're running on
+    // iPhone, replace it with the visible default (Small) before
+    // anything else touches modelMode. Without this, the boot path
+    // would prepare an iPad-only model on iPhone and OOM-kill the
+    // app on first transcribe — exactly the failure mode the
+    // requiresIpad gate is designed to prevent. The card was
+    // already hidden from the setup overlay, but a stale
+    // localStorage entry from a previous install (or a user who
+    // upgraded from a build that allowed iPhone to pick those
+    // models) would otherwise sneak through. Only triggers on
+    // actual mismatch — iPad users keep their saved mode.
+    const savedModelEntry = modelById(modelMode)
+    if (savedModelEntry && variantExceedsBudget(savedModelEntry)) {
+      const safe = visibleDefaultModel().id
+      console.warn(
+        `[pronunciation-coach] saved model "${modelMode}" exceeds this device's memory budget; demoting to "${safe}"`
+      )
+      modelMode = safe
     }
 
     renderModeButton()

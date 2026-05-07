@@ -28,6 +28,37 @@ private let sttLogObj = OSLog(subsystem: STT_SUBSYSTEM, category: STT_CATEGORY)
         items.map { "\($0)" }.joined(separator: " "))
 }
 
+/// Snapshot resident memory + estimated headroom for diagnostic logs.
+/// Cheap (a few syscalls) — call at any boundary where we want to see
+/// "what was the memory state when X happened?" without a debugger.
+///
+/// `os_proc_available_memory()` returns the bytes still available to
+/// this app before iOS will jetsam it (iOS 13+; documented public API).
+/// `mach_task_basic_info` gives the current resident size.
+private func sttMemSnapshot(_ tag: String) {
+    var info = mach_task_basic_info()
+    var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size / MemoryLayout<integer_t>.size)
+    let kerr: kern_return_t = withUnsafeMutablePointer(to: &info) { ptr in
+        ptr.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
+            task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+        }
+    }
+    let residentMB: String
+    if kerr == KERN_SUCCESS {
+        residentMB = String(format: "%.0f", Double(info.resident_size) / 1_048_576.0)
+    } else {
+        residentMB = "?"
+    }
+    let availableMB: String
+    if #available(iOS 13.0, *) {
+        availableMB = String(format: "%.0f", Double(os_proc_available_memory()) / 1_048_576.0)
+    } else {
+        availableMB = "?"
+    }
+    sttLog(
+        "Whisper | mem [\(tag)] resident=\(residentMB)MB available=\(availableMB)MB")
+}
+
 // -----------------------------------------------------------------------------
 // Args / Results
 // -----------------------------------------------------------------------------
@@ -150,6 +181,19 @@ struct StatusPayload: Encodable {
     let model: String?
     let recording: Bool
     let message: String?
+    /// Available memory the OS will let this process grow into before
+    /// jetsam, in MB. Surfaced from `os_proc_available_memory()`. The
+    /// pack uses this to decide which model variants are safe to offer
+    /// on this device — `navigator.userAgent` reports "iPad" on
+    /// devices whose actual memory budget is iPhone-class (e.g.,
+    /// older iPads, iPads in Stage Manager / split-screen). Available
+    /// memory is the only honest signal.
+    let availableMemoryMB: Int?
+    /// Total physical RAM on the device, in MB. Set on iOS 13+.
+    /// Pairs with `availableMemoryMB` for a fuller picture (some
+    /// devices have a high physical-ram total but a much smaller
+    /// per-app jetsam budget — Stage Manager iPads, for example).
+    let physicalMemoryMB: Int?
 }
 
 struct InstallProgressPayload: Encodable {
@@ -263,6 +307,25 @@ private func isComputeBackendError(_ error: Error) -> Bool {
         || desc.contains("error code -14")
 }
 
+/// Detect transient mmap failures from CoreML's MIL parser. These
+/// surface as:
+///   "Error parsing MIL model: ... cannot be read: Unable to mmap file
+///    ...mlmodelc/weights/weight.bin"
+/// Observed in the wild: a successful install-time load test followed
+/// immediately by a JS-side unload+prepare for the same model fails
+/// with this error, even though there's plenty of memory headroom.
+/// The same load succeeds on a retry 10 s later. Hypothesis: the
+/// previous load left CoreML / kernel state mapping the file that
+/// hasn't fully released by the time we issue the next mmap. A short
+/// delay + retry covers it cleanly without changing semantics for
+/// genuine corruption (which would fail on every retry).
+private func isTransientMmapError(_ error: Error) -> Bool {
+    let desc = (error as NSError).localizedDescription.lowercased()
+    return desc.contains("unable to mmap")
+        || (desc.contains("error parsing mil model")
+            && desc.contains("cannot be read"))
+}
+
 private func classifyLoadError(_ error: Error) -> SttErrorCode {
     let nsErr = error as NSError
     let desc = nsErr.localizedDescription.lowercased()
@@ -306,7 +369,23 @@ private final class WhisperManager {
     private let queue = DispatchQueue(label: "com.corpora.stt.manager")
     private var whisperKit: WhisperKit?
     private var loadedModel: String?
-    private var loadingTask: Task<Void, Error>?
+
+    /// Tail of the prepare() chain. Every prepare() call appends to this
+    /// chain so loads happen one at a time — previously, two prepare()
+    /// calls could spawn concurrent WhisperKit allocations and peak
+    /// memory at (old + new), OOMing iPhones even when each model fits
+    /// individually. Each new prepare awaits this Task before doing any
+    /// work, then assigns itself as the new tail. Task type is
+    /// `<Void, Never>` because the prepare body always invokes its
+    /// completion callback with success or failure — never throws past
+    /// the chain.
+    private var prepareChain: Task<Void, Never> = Task {}
+
+    /// True while a load is actively running (between dropping the old
+    /// kit and finishing the new allocation). Used purely for log
+    /// observability so we can see when a new prepare queues behind a
+    /// running one.
+    private var loadInFlightFor: String?
 
     // Audio capture
     private var audioEngine: AVAudioEngine?
@@ -363,14 +442,48 @@ private final class WhisperManager {
         modelFolder: String,
         prewarm: Bool
     ) async throws -> WhisperKit {
-        let primaryConfig = WhisperKitConfig(
-            model: modelName,
-            modelFolder: modelFolder,
-            computeOptions: Self.makeComputeOptions(),
-            prewarm: prewarm,
-            download: false)
+        // Single attempt with the supplied compute options, plus a
+        // bounded retry on transient mmap failures. Returns the kit
+        // on success; throws the last error on final failure.
+        func attempt(_ computeOptions: ModelComputeOptions) async throws -> WhisperKit {
+            let cfg = WhisperKitConfig(
+                model: modelName,
+                modelFolder: modelFolder,
+                computeOptions: computeOptions,
+                prewarm: prewarm,
+                download: false)
+            // Up to 3 tries on mmap errors with exponential backoff.
+            // The mmap window observed in the wild is sub-second; 250 ms
+            // / 750 ms between tries is enough to clear it on every
+            // case we've seen, while keeping total worst-case latency
+            // bounded to ~1 s if the file is genuinely unreadable.
+            let mmapBackoffsNs: [UInt64] = [
+                250_000_000,   // 0.25 s
+                750_000_000,   // 0.75 s
+            ]
+            var attempt = 0
+            while true {
+                do {
+                    return try await WhisperKit(cfg)
+                } catch {
+                    if isTransientMmapError(error) && attempt < mmapBackoffsNs.count {
+                        sttLog(
+                            "Whisper | transient mmap error on load — retrying after",
+                            "\(Double(mmapBackoffsNs[attempt]) / 1_000_000_000.0)s:",
+                            modelName, "—",
+                            (error as NSError).localizedDescription)
+                        try? await Task.sleep(nanoseconds: mmapBackoffsNs[attempt])
+                        attempt += 1
+                        continue
+                    }
+                    throw error
+                }
+            }
+        }
+
         do {
-            return try await WhisperKit(primaryConfig)
+            let kit = try await attempt(Self.makeComputeOptions())
+            return kit
         } catch {
             guard isComputeBackendError(error) else {
                 throw error
@@ -380,13 +493,7 @@ private final class WhisperManager {
                 modelName,
                 "—",
                 (error as NSError).localizedDescription)
-            let cpuOnlyConfig = WhisperKitConfig(
-                model: modelName,
-                modelFolder: modelFolder,
-                computeOptions: Self.makeCpuOnlyComputeOptions(),
-                prewarm: prewarm,
-                download: false)
-            let kit = try await WhisperKit(cpuOnlyConfig)
+            let kit = try await attempt(Self.makeCpuOnlyComputeOptions())
             sttLog("Whisper | CPU-only fallback load succeeded:", modelName)
             return kit
         }
@@ -598,13 +705,24 @@ private final class WhisperManager {
     // Status
     // ---------------------------------------------------------------------
     func status() -> StatusPayload {
+        let availMB: Int?
+        if #available(iOS 13.0, *) {
+            availMB = Int(os_proc_available_memory() / 1_048_576)
+        } else {
+            availMB = nil
+        }
+        let physMB: Int = Int(ProcessInfo.processInfo.physicalMemory / 1_048_576)
+        sttLog(
+            "Whisper | status() returning availableMemoryMB=\(availMB.map { String($0) } ?? "nil") physicalMemoryMB=\(physMB)")
         return queue.sync {
             StatusPayload(
                 available: true,
                 prepared: whisperKit != nil,
                 model: loadedModel,
                 recording: isRecording,
-                message: nil
+                message: nil,
+                availableMemoryMB: availMB,
+                physicalMemoryMB: physMB
             )
         }
     }
@@ -881,6 +999,11 @@ private final class WhisperManager {
                         prev)
                     do {
                         let folder = self.modelDir(prev).path
+                        // Match the runtime prepare path: prewarm at
+                        // load so the first subsequent transcribe is
+                        // cheap. The previous prewarm:false here was
+                        // a memory micro-optimization that hurt more
+                        // than it helped.
                         let kit = try await self.loadKitWithComputeFallback(
                             modelName: prev,
                             modelFolder: folder,
@@ -969,6 +1092,9 @@ private final class WhisperManager {
                         prev)
                     do {
                         let folder = self.modelDir(prev).path
+                        // Match the runtime prepare path: prewarm at
+                        // load — see comment on the post-load-test
+                        // restore path above.
                         let kit = try await self.loadKitWithComputeFallback(
                             modelName: prev,
                             modelFolder: folder,
@@ -1005,62 +1131,103 @@ private final class WhisperManager {
     func prepare(model requested: String?, completion: @escaping (PreparePayload) -> Void) {
         let modelName = requested ?? Self.defaultModel
         sttLog("Whisper | prepare requested (local-only):", modelName)
+        sttMemSnapshot("prepare-entry: \(modelName)")
 
-        if let current = self.whisperKit, self.loadedModel == modelName {
-            sttLog("Whisper | already loaded:", modelName)
-            _ = current
-            // The kit is in memory — by definition the model is
-            // installed. Backfill the marker if missing.
-            if !self.installMarkerExists(modelName) {
-                self.writeInstallMarker(modelName)
-            }
-            completion(
-                PreparePayload(ready: true, model: modelName, message: nil, code: nil))
-            return
-        }
-
-        // No pre-flight heuristic. We used to call `validateModel` here
-        // and refuse if the .mlmodelc tree didn't look right — but the
-        // heuristic was returning false negatives (e.g., "<model dir
-        // missing>" on installs WhisperKit then loaded successfully).
-        // That false negative was the load-bearing bug: it caused the
-        // setup overlay to flash "Install" on a working model, and
-        // — far worse — it caused the install path to wipe a working
-        // install on every Install click.
+        // Capture the prior chain tail BEFORE we spawn our task and
+        // BEFORE we update the tail to point at our task. This is the
+        // serialization gate: every prepare() awaits the previous
+        // prepare()'s full completion before doing any work of its
+        // own. Two prepares for different models can no longer have
+        // their CoreML allocations overlap.
         //
-        // Truth source: WhisperKit's own loader. We try to load. If it
-        // succeeds, the model is installed (and we write the marker
-        // for fast subsequent paths). If it fails, we classify the
-        // error: `MODEL_NOT_INSTALLED` for "files not found" cases,
-        // `NETWORK` for tokenizer-fetch hiccups, `LOAD_FAILED` for
-        // genuine corruption. The marker file remains the cross-pack
-        // truth for "is X installed?" (consulted by validateModel and
-        // listInstalled), but it is no longer a *gate* on prepare.
-
-        // Unload the previously-loaded model BEFORE allocating the new
-        // one. Without this, switching from Standard (~150 MB) → Advanced
-        // (~640 MB) peaks at the sum of both models in resident memory
-        // plus their CoreML/ANE/GPU weight buffers, which can blow past
-        // iOS's per-app limit and crash the app. Drop the reference, then
-        // queue.sync on a noop to flush deallocation before the new load.
-        if let prev = self.loadedModel, prev != modelName {
-            sttLog("Whisper | unloading previous model before swap:", prev)
-            self.queue.sync {
-                self.whisperKit = nil
-                self.loadedModel = nil
-            }
+        // If the prior chain has nothing in flight (true on first
+        // call after launch, or after the chain has fully drained),
+        // `prevTail.value` returns immediately and we proceed without
+        // any wait. Cost is one task allocation per prepare —
+        // negligible compared to model loading.
+        let prevTail = self.queue.sync { self.prepareChain }
+        let inFlightModel = self.queue.sync { self.loadInFlightFor }
+        if let inFlightModel {
+            sttLog(
+                "Whisper | prepare queueing behind in-flight load:",
+                inFlightModel,
+                "(requested:", modelName, ")")
         }
 
-        Task {
+        let myTask = Task<Void, Never> { [weak self] in
+            // 1. Wait for any prior prepare to finish.
+            _ = await prevTail.value
+            guard let self else {
+                completion(
+                    PreparePayload(
+                        ready: false, model: modelName,
+                        message: "Plugin released", code: "LOAD_FAILED"))
+                return
+            }
+
+            // 2. Now we have exclusive access. Re-check whether the
+            //    requested model is already loaded — a previous chain
+            //    entry may have just loaded it for us.
+            let alreadyLoaded = self.queue.sync {
+                self.whisperKit != nil && self.loadedModel == modelName
+            }
+            if alreadyLoaded {
+                sttLog("Whisper | already loaded:", modelName)
+                if !self.installMarkerExists(modelName) {
+                    self.writeInstallMarker(modelName)
+                }
+                completion(
+                    PreparePayload(
+                        ready: true, model: modelName,
+                        message: nil, code: nil))
+                return
+            }
+
+            // 3. If a different model is currently loaded, drop it
+            //    BEFORE allocating the new one. autoreleasepool gives
+            //    the Obj-C autorelease drain a chance to fire so
+            //    CoreML's MLModel can release its memory-mapped
+            //    weight buffers before we begin the next allocation.
+            //    Without this drain, peak memory is roughly
+            //    (old + new) for a window long enough to trip iOS
+            //    jetsam on iPhones.
+            let prev = self.queue.sync { self.loadedModel }
+            if let prev, prev != modelName {
+                sttLog(
+                    "Whisper | unloading previous model before swap:",
+                    prev)
+                autoreleasepool {
+                    self.queue.sync {
+                        self.whisperKit = nil
+                        self.loadedModel = nil
+                    }
+                }
+            }
+
+            // 4. Mark the load as in-flight (for log observability)
+            //    and run the actual load.
+            self.queue.sync { self.loadInFlightFor = modelName }
+            defer { self.queue.sync { self.loadInFlightFor = nil } }
+
             do {
                 sttLog("Whisper | loading model from disk:", modelName)
                 // download: false plus an explicit modelFolder tells
-                // WhisperKit "the model is already there, just load it"
-                // and forecloses any sneaky network call.
-                // loadKitWithComputeFallback transparently retries with
-                // CPU-only if CPU+GPU hits a CoreML execution-plan error
-                // (code -14) — affected devices keep working without a
-                // user-visible Reinstall loop.
+                // WhisperKit "the model is already there, just load
+                // it" and forecloses any sneaky network call.
+                // loadKitWithComputeFallback transparently retries
+                // with CPU-only if CPU+GPU hits a CoreML execution-
+                // plan error (code -14) — affected devices keep
+                // working without a user-visible Reinstall loop.
+                //
+                // prewarm: true on runtime prepare. WhisperKit's
+                // CoreML graph needs device-specific specialization
+                // before first inference — prewarm pays that cost up
+                // front so the first transcribe is cheap. Briefly
+                // tried `prewarm: false` to dodge a perceived
+                // memory-spike issue at load; that reshaped runtime
+                // behavior in ways that made things worse on the
+                // models that previously worked. Reverted: keep the
+                // original prewarm-at-load behavior.
                 let folder = self.modelDir(modelName).path
                 let kit = try await self.loadKitWithComputeFallback(
                     modelName: modelName,
@@ -1072,29 +1239,24 @@ private final class WhisperManager {
                     self.loadedModel = modelName
                 }
                 // WhisperKit successfully loaded the model from disk
-                // → it's installed by definition. Write the marker if
-                // it isn't already there. This recovers from a few
-                // scenarios:
-                //   • User upgraded from a plugin that didn't write
-                //     markers — first prepare() backfills it.
-                //   • Marker was somehow removed but the bytes survived.
-                //   • Fresh install on a binary that races install
-                //     marker write vs. immediate prepare.
+                // → it's installed by definition. Write the marker
+                // if it isn't already there.
                 if !self.installMarkerExists(modelName) {
                     self.writeInstallMarker(modelName)
                 }
                 sttLog("Whisper | loaded ok:", modelName)
+                sttMemSnapshot("prepare-loaded: \(modelName)")
                 completion(
-                    PreparePayload(ready: true, model: modelName, message: nil, code: nil))
+                    PreparePayload(
+                        ready: true, model: modelName,
+                        message: nil, code: nil))
             } catch {
                 let kind = classifyLoadError(error)
                 sttErr(
                     "Whisper | load failed (\(kind.rawValue)):",
                     error.localizedDescription)
-                // Diagnostic dump: what's actually on disk at the path
-                // we asked WhisperKit to load from? This is how we'll
-                // catch any future "files mysteriously missing" bug
-                // without guessing.
+                // Diagnostic dump: what's actually on disk at the
+                // path we asked WhisperKit to load from?
                 let probeDir = self.modelDir(modelName)
                 let fm = FileManager.default
                 if let entries = try? fm.contentsOfDirectory(atPath: probeDir.path) {
@@ -1122,9 +1284,9 @@ private final class WhisperManager {
                 } else {
                     humanMsg = "Load failed: \(error.localizedDescription)"
                 }
-                // prepare() never wipes. If the bytes are truly bad, JS
-                // surfaces a "Model has issues — Reinstall?" banner and
-                // the user decides — we do NOT silently delete files.
+                // prepare() never wipes. If the bytes are truly bad,
+                // JS surfaces a "Model has issues — Reinstall?"
+                // banner and the user decides.
                 completion(
                     PreparePayload(
                         ready: false, model: modelName,
@@ -1132,6 +1294,10 @@ private final class WhisperManager {
                         code: kind.rawValue))
             }
         }
+
+        // 5. Atomically install ourselves as the new chain tail so
+        //    any prepare() arriving after us awaits us in turn.
+        self.queue.sync { self.prepareChain = myTask }
     }
 
     // ---------------------------------------------------------------------
@@ -1162,13 +1328,22 @@ private final class WhisperManager {
     // is a load, not a download.
     // ---------------------------------------------------------------------
     func unload() {
-        queue.sync {
-            if self.loadedModel != nil {
-                sttLog("Whisper | unload — dropping in-memory kit:", self.loadedModel ?? "?")
+        // autoreleasepool around the drop forces an Obj-C autorelease
+        // drain at the end of the block, which gives CoreML's MLModel
+        // a chance to release its memory-mapped weight buffers
+        // immediately rather than at some deferred ARC moment. Without
+        // this drain, the kit's memory can linger long enough that a
+        // subsequent prepare() would see (old + new) peak resident.
+        autoreleasepool {
+            queue.sync {
+                if self.loadedModel != nil {
+                    sttLog("Whisper | unload — dropping in-memory kit:", self.loadedModel ?? "?")
+                }
+                self.whisperKit = nil
+                self.loadedModel = nil
             }
-            self.whisperKit = nil
-            self.loadedModel = nil
         }
+        sttMemSnapshot("after-unload")
     }
 
     // ---------------------------------------------------------------------
@@ -1286,6 +1461,7 @@ private final class WhisperManager {
         let durationMs = startedAt.map { Int(Date().timeIntervalSince($0) * 1000) } ?? 0
         sttLog(
             "Whisper | transcribing samples:", captured.count, "duration_ms:", durationMs)
+        sttMemSnapshot("transcribe-entry: \(self.loadedModel ?? "?")")
 
         let transcribeTimeoutNs: UInt64 = 60 * 1_000_000_000  // 60s — generous; corrupt models hang here
 
@@ -1385,6 +1561,13 @@ private final class WhisperManager {
                 freeOptions.temperatureFallbackCount = 0
                 // No prefixTokens, no promptTokens — pure unconditioned decode.
 
+                // Run the constrained and free decodes concurrently in
+                // a TaskGroup, with a shared timeout race so a CoreML
+                // hang can't lock the UI. Briefly tried serializing
+                // these to reduce peak memory; reshaping runtime
+                // behavior in that way made things worse on the
+                // models that previously worked here. Reverted to the
+                // original parallel form.
                 let dualResults: (
                     constrained: [TranscriptionResult], free: [TranscriptionResult]
                 ) = try await withThrowingTaskGroup(
@@ -1484,6 +1667,7 @@ private final class WhisperManager {
                 let minWordProb = merged.words.map { $0.probability }.min() ?? 0
                 let normHeard = self.normalize(merged.text, lang: baseLang)
                 let normExp = self.normalize(expected, lang: baseLang)
+                sttMemSnapshot("transcribe-done: \(self.loadedModel ?? "?")")
                 sttLog(
                     "Whisper | [stt-cal] lang(pack):", language,
                     "| lang(whisper):", baseLang,
@@ -2240,7 +2424,41 @@ final class STTPlugin: Plugin {
     }
 
     @objc public func getStatus(_ invoke: Invoke) {
-        invoke.resolve(Self.manager.status())
+        // Return a Dictionary, NOT the Encodable StatusPayload struct.
+        // Tauri's iOS Invoke.resolve appears to NOT honor newly-added
+        // Optional fields on Encodable structs — observed in the wild:
+        // adding `availableMemoryMB: Int?` and `physicalMemoryMB: Int`
+        // to StatusPayload produced JSON to the JS side that contained
+        // only the *original* five fields, completely omitting the
+        // two new ones. A literal Dictionary sidesteps whatever
+        // reflection / encoder issue is involved — JSONSerialization
+        // handles dictionaries straightforwardly.
+        let s = Self.manager.status()
+        let availMB: Int?
+        if #available(iOS 13.0, *) {
+            availMB = Int(os_proc_available_memory() / 1_048_576)
+        } else {
+            availMB = nil
+        }
+        let physMB: Int = Int(ProcessInfo.processInfo.physicalMemory / 1_048_576)
+        var dict: [String: Any] = [
+            "available": s.available,
+            "prepared": s.prepared,
+            "recording": s.recording,
+            "physicalMemoryMB": physMB,
+            // UNAMBIGUOUS marker so we can verify in JS whether this
+            // Dictionary path is even being executed. If the JS log
+            // shows raw=...,"_diag":"dict-v1"... then this code is
+            // running. If not, the binary has stale code OR Tauri
+            // isn't honoring our Dictionary resolve.
+            "_diag": "dict-v1",
+        ]
+        // Optional values can't go into [String: Any] as nil; omit
+        // when nil (matches JSONEncoder's default Optional behavior).
+        if let model = s.model { dict["model"] = model }
+        if let message = s.message { dict["message"] = message }
+        if let availMB { dict["availableMemoryMB"] = availMB }
+        invoke.resolve(dict)
     }
 
     @objc public func wipeModel(_ invoke: Invoke) throws {

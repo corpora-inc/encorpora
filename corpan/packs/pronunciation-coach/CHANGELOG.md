@@ -10,6 +10,96 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Advanced (full 1.6 GB) un-gated.** Trace evidence proved the
+  earlier "Advanced is iPhone-incompatible" theory wrong: the same
+  device that crashes on the v20240930 quantized variants
+  (626 / 632 MB) runs Advanced cleanly with multiple successful
+  transcribes back-to-back. Surprisingly, Advanced uses LESS
+  resident memory (~1120 MB) than Large Turbo (~1467 MB) on the
+  same device — the full model mmap-loads, the palettized variants
+  apparently don't. The crash is specific to the quantized
+  inference path, not a memory budget issue. Advanced now shows
+  on all devices.
+- **v20240930 quantized variants (626 / 632 MB) keep their
+  `requiresIpad: true` flag** as a precaution, since their
+  transcribe-time crashes are confirmed and not yet root-caused.
+  Once the inference path is fixed (likely an Argmax-side or a
+  CoreML / compute-units interaction), the gate can drop. Until
+  then, hiding them from iPhone-class budgets prevents the crash.
+
+- **Large variants gated by actual memory budget, not UA string.**
+  Live trace evidence revealed `navigator.userAgent` is unreliable:
+  a device reporting "iPad" had a 5 GB per-app jetsam budget
+  (iPhone-class) and crashed during transcribe on the 632 MB Large
+  Turbo model. Older iPads, iPads in Stage Manager / split-screen,
+  and some other devices report "iPad" but can't actually fit the
+  Large variants' first-transcribe spike (3–4 GB on top of the
+  resident model).
+
+  Boot now reads `stt.getStatus().availableMemoryMB` (powered by
+  `os_proc_available_memory()` in the plugin, returning the actual
+  per-app jetsam budget) and gates Large / Large Turbo / Advanced
+  on `>= 6500 MB`. Devices below that threshold see only Small
+  (216 MB) + Medium (547 MB), which the same trace verified work
+  with comfortable headroom. iPads with real iPad memory budgets
+  (typically 7–10 GB) see the full lineup as before.
+
+  The conservative default — when budget can't be read for any
+  reason — is to hide Large variants. Defensive: a missing memory
+  signal means we don't know if the device can survive, so we
+  don't risk it.
+- **Boot-time demotion safety net.** If a user's
+  `modelMode` from localStorage resolves to a `requiresIpad`
+  variant on an iPhone (stale entry from a previous install /
+  upgrade path that allowed those picks), boot replaces it with
+  the visible default before any prepare runs. Logs:
+  `[pronunciation-coach] saved model "<id>" requires iPad;
+  demoting to "<id>" on this device`. Prevents the OOM crash
+  loop where a stale saved model would keep killing the app on
+  every launch.
+- Labels updated: `Large (Mobile)` → `Large (iPad)`,
+  `Large Turbo (Mobile)` → `Large Turbo (iPad)`. Card
+  descriptions now state explicitly that they exceed iPhone
+  memory budget. iPad users see honest device-class labels;
+  iPhone users don't see these cards at all.
+
+## [0.3.2] - 2026-05-07
+
+### Removed
+- **Standard tier (`openai_whisper-base`, ~145 MB)** dropped from the
+  registry. Small (`openai_whisper-small_216MB`, ~216 MB) replaces
+  it as the new fresh-install default — meaningfully better across
+  most languages and only ~70 MB larger. Existing users who saved
+  `mode: "standard"` in localStorage fall through
+  `modelById("standard") === undefined` on boot and land at the new
+  default (Small). On-disk `openai_whisper-base/` files become
+  orphans (the setup overlay no longer shows a card for them);
+  cleaning those up is left to a future cleanup sweep — they don't
+  affect functionality.
+
+### Changed
+- **Lineup is now 5 tiers** (was 6): Small / Medium / Large (Mobile)
+  / Large Turbo (Mobile) / Advanced (iPad).
+
+## [0.3.1] - 2026-05-07
+
+### Changed
+- **Explicit `stt.unload()` before switching models** in the setup
+  overlay's switch flow. Defense in depth: the plugin's 0.2.1
+  serialization is what actually prevents the model-switch OOM,
+  but evicting the previous model from JS first means the user
+  sees a clear "Unloading current… → Loading new…" UX progression
+  instead of an opaque pause, AND the previous kit is guaranteed
+  evicted before the new one is requested. Skipped when no
+  previous model is loaded (boot path) or when the requested
+  model is already active.
+- **`minAppVersion` raised to `"0.12.4"`** because pc 0.3.1 needs
+  the host-app's STT plugin 0.2.1 (with the prepare-chain
+  serialization) to actually prevent the OOM crash. On a 0.12.3
+  binary the pack would still partially work but switches could
+  still crash.
+
 ## [0.3.0] - 2026-05-07
 
 ### Added

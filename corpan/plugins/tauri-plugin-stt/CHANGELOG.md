@@ -7,6 +7,139 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-05-07
+
+### Reverted
+- **`prewarm: false` on runtime prepare → reverted to `prewarm: true`.**
+  Briefly tried this as a memory micro-optimization (defer CoreML
+  compile from load-time to first-transcribe time). It reshaped
+  runtime behavior in ways that hurt on models that previously
+  worked. Restored the original prewarm-at-load behavior across
+  the runtime prepare path and both install-failure restore paths.
+  First transcribe is cheap again.
+- **Serial dual-decode → reverted to parallel TaskGroup.** The
+  original concurrent form was what worked before. Forcing
+  constrained-then-free serial may have changed CoreML scheduling
+  in ways that interacted poorly with quantized variants. Restored
+  the parallel form with shared timeout race.
+
+The chain serializer (preventing two concurrent `prepare()` calls
+from stacking model allocations), `autoreleasepool` around kit
+drops, mmap retry, and memory snapshot logging all stay — those
+are structural fixes, not runtime-shape changes.
+
+### Added
+- **`getStatus()` returns memory budget data.** Two new fields on
+  `StatusPayload`: `availableMemoryMB` (per-app jetsam budget from
+  `os_proc_available_memory()`, iOS 13+) and `physicalMemoryMB`
+  (total device RAM from `ProcessInfo.processInfo.physicalMemory`).
+  Used by the pack to gate memory-hungry models on devices with
+  iPhone-class budgets, regardless of what `navigator.userAgent`
+  claims about iPad-vs-iPhone.
+
+### Fixed
+- **Transcribe-time OOM crash on iPhone with quantized large
+  models, take 2 — serial dual-decode.** The previous theory
+  (prewarm on prepare being responsible) was wrong on its own. With
+  `prewarm: false` on prepare, the same crash reproduced
+  immediately on the 632 MB Large Turbo (Mobile) variant during
+  the very first transcribe. Live trace showed the app dying
+  mid-transcribe with 4386 MB available at entry — confirming the
+  burst exceeded 4 GB even with no prewarm.
+
+  Real root cause: the dual decode (constrained + free passes,
+  used for honest scoring) ran both passes **concurrently** in a
+  `withThrowingTaskGroup`. On a large model that put TWO decoder
+  activation tensor sets live in GPU/ANE memory at the same time —
+  roughly 2× peak memory of a single decode. The original code
+  even noted "we pay ~2× transcribe latency for this," meaning the
+  parallel form wasn't even giving a wall-clock speedup (the GPU
+  is shared, both passes serialize on it under the hood). Cost of
+  the concurrency was pure: doubled peak memory for no
+  throughput win.
+
+  Decodes now run **in series** — constrained first, then free —
+  with the same per-pass timeout race. Peak memory during
+  transcribe approximately halves; wall-clock cost is unchanged.
+  Two new memory snapshots (`transcribe-constrained-start`,
+  `transcribe-free-start`) make the new shape visible in trace.
+
+- **Transient `Unable to mmap` failures on consecutive loads of
+  the same model.** Live trace showed `LOAD_FAILED` (mmap
+  error on `weights/weight.bin`) on a prepare that ran ~30 ms
+  after a successful install-time load test of the same file.
+  Same model loaded fine ~10 s later. The mmap failure is a
+  short-lived resource issue (CoreML / kernel hasn't released
+  the prior mapping yet); it's not corruption. `loadKitWithComputeFallback`
+  now retries on the "Unable to mmap" pattern with 250 ms / 750 ms
+  exponential backoff (up to 3 total tries), bounded so a genuinely
+  unreadable file still fails fast. Genuine corruption fails on
+  every retry and surfaces LOAD_FAILED as before.
+
+- **Prewarm: false on the runtime prepare path** (kept from the
+  earlier theory — still a memory win even though it wasn't the
+  full story). Install-time load test still uses `prewarm: true`
+  so we verify the model compiles end-to-end on the device before
+  declaring the install successful. The two install-failure
+  restore paths also use `prewarm: false` since by the time we
+  reach those, the device is already memory-pressured.
+
+### Added
+- **Memory snapshot logging at every load/transcribe boundary.**
+  New helper `sttMemSnapshot(tag:)` logs resident memory and
+  `os_proc_available_memory()` (iOS's "headroom before jetsam"
+  estimate) at: prepare entry, prepare loaded, after unload,
+  transcribe entry, transcribe done. Format:
+  `Whisper | mem [<tag>] resident=NMB available=NMB`. Lets us
+  diagnose future OOM crashes by reading numbers off the log
+  instead of guessing from process death.
+
+## [0.2.1] - 2026-05-07
+
+### Fixed
+- **Model-switch OOM crash on iPhone.** `prepare()` had no in-flight
+  serialization — every call unconditionally spawned a fresh
+  `Task { try await loadKitWithComputeFallback(...) }`. When two
+  prepares arrived close together (e.g., boot's prepare still
+  loading when a setup-overlay switch fired), both Tasks ran their
+  CoreML allocations in parallel, peaking at `(old + new)` resident
+  memory and tripping iOS jetsam on iPhones even when each model
+  fit individually. Live trace evidence:
+
+  ```
+  12:35:19  prepare requested: large-v3_turbo
+  12:35:19  loading model from disk: large-v3_turbo
+  12:35:28  prepare requested: base       ← second prepare 9s later
+  12:35:28  loading model from disk: base ← runs concurrently
+  12:35:34  loaded ok: base
+  12:35:35  loaded ok: large-v3_turbo     ← both kits resident
+  ```
+
+  Two `loading model from disk` lines back-to-back with no
+  intervening unload.
+
+  Fix: every `prepare()` now appends to a `prepareChain: Task<Void,
+  Never>` and awaits the previous tail before doing any work. After
+  the await, it re-checks whether the requested model is now loaded
+  (a previous chain entry may have just loaded it for us) and
+  short-circuits if so. Otherwise it drops the previous kit
+  (in `autoreleasepool` so CoreML's MLModel can release its
+  memory-mapped weight buffers immediately) and runs its own load.
+  Net effect: at most ONE WhisperKit allocation in flight at a
+  time. Concurrent prepares queue cleanly. Switch-during-load adds
+  a few seconds of latency but never crashes.
+
+  Also: a new log line — `Whisper | prepare queueing behind
+  in-flight load: <model> (requested: <other-model>)` — makes the
+  serialization visible in trace.
+
+### Changed
+- **`unload()` wraps the kit drop in `autoreleasepool`** so the
+  Obj-C autorelease drain fires immediately, not at some deferred
+  ARC moment. Without this, a subsequent `prepare()` could begin
+  allocating a new kit before CoreML had actually released the
+  previous one's memory.
+
 ## [0.2.0] - 2026-05-06
 
 ### Added
