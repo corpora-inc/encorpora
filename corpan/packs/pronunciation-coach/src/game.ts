@@ -2161,35 +2161,37 @@ export const mountGame = (
             <h1 class="pc-setup-headline">${escapeHtml(opts.headline)}</h1>
             <p class="pc-setup-sub">${escapeHtml(opts.sub)}</p>
 
-            <div class="pc-setup-card" data-mode="standard">
+            ${MODELS.map((m) => {
+              // Format size label: under 1000 MB → "~NNN MB"; 1000+ →
+              // "~N.N GB" so the lineup reads cleanly across two
+              // orders of magnitude.
+              const sizeLabel =
+                m.approxSizeMB >= 1000
+                  ? `~${(m.approxSizeMB / 1000).toFixed(1)} GB`
+                  : `~${m.approxSizeMB} MB`
+              // Keep the fancy accented styling on the full-fat
+              // Advanced card so it visually reads as the premium
+              // (but caveated) tier. Other tiers use the default
+              // card chrome.
+              const fancyClass =
+                m.id === "advanced" ? " pc-setup-card-advanced" : ""
+              const sparkle = m.id === "advanced" ? " ✦" : ""
+              return `
+            <div class="pc-setup-card${fancyClass}" data-mode="${m.id}">
               <div class="pc-setup-card-head">
                 <div>
-                  <div class="pc-setup-card-name">Standard <span class="pc-setup-card-status" data-status="standard"></span></div>
-                  <div class="pc-setup-card-meta">~145 MB · works on any iPhone/iPad</div>
+                  <div class="pc-setup-card-name">${escapeHtml(m.label)}${sparkle} <span class="pc-setup-card-status" data-status="${m.id}"></span></div>
+                  <div class="pc-setup-card-meta">${sizeLabel}</div>
                 </div>
-                <div class="pc-setup-card-actions" data-actions="standard"></div>
+                <div class="pc-setup-card-actions" data-actions="${m.id}"></div>
               </div>
-              <div class="pc-setup-card-desc">Whisper base. Fast, good for the major languages, light on storage.</div>
-              <div class="pc-setup-progress" data-progress="standard" hidden>
+              <div class="pc-setup-card-desc">${escapeHtml(m.shortDesc)}</div>
+              <div class="pc-setup-progress" data-progress="${m.id}" hidden>
                 <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
                 <div class="pc-setup-progress-label">Preparing…</div>
               </div>
-            </div>
-
-            <div class="pc-setup-card pc-setup-card-advanced" data-mode="advanced">
-              <div class="pc-setup-card-head">
-                <div>
-                  <div class="pc-setup-card-name">Advanced ✦ <span class="pc-setup-card-status" data-status="advanced"></span></div>
-                  <div class="pc-setup-card-meta">~1.6 GB · M-series iPad / A17 iPhone recommended</div>
-                </div>
-                <div class="pc-setup-card-actions" data-actions="advanced"></div>
-              </div>
-              <div class="pc-setup-card-desc">Whisper large-v3-turbo. Best accuracy across all 27 languages, especially low-resource ones. First download can take a few minutes on Wi-Fi.</div>
-              <div class="pc-setup-progress" data-progress="advanced" hidden>
-                <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
-                <div class="pc-setup-progress-label">Preparing…</div>
-              </div>
-            </div>
+            </div>`
+            }).join("")}
 
             <div class="pc-setup-error" id="pc-setup-error" hidden></div>
             <div class="pc-setup-note">
@@ -2543,15 +2545,20 @@ export const mountGame = (
     }
 
     renderModeButton()
+    // Larger models pay a one-time CoreML compile cost on first
+    // launch. Surface the wait honestly so users don't think the
+    // app froze. Threshold (~300 MB) chosen so Standard / Small
+    // skip the warning but Medium / Large / Advanced get it.
+    const bootModelLabel = labelForMode(modelMode)
+    const bootIsLargeModel = (modelById(modelMode)?.approxSizeMB ?? 0) >= 300
     showOverlay(
-      modelMode === "advanced"
-        ? "Loading Advanced model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant."
-        : `Loading ${labelForMode(modelMode)} model…`
+      bootIsLargeModel
+        ? `Loading ${bootModelLabel} model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant.`
+        : `Loading ${bootModelLabel} model…`
     )
-    micLabel.textContent =
-      modelMode === "advanced"
-        ? "Loading Advanced model… (first time can take ~1 minute)"
-        : `Loading ${labelForMode(modelMode)} model…`
+    micLabel.textContent = bootIsLargeModel
+      ? `Loading ${bootModelLabel} model… (first time can take ~1 minute)`
+      : `Loading ${bootModelLabel} model…`
 
     const bootTargetMode: ModelMode = modelMode
 

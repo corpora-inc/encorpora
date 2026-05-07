@@ -967,6 +967,14 @@ body,
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   background: var(--pc-bg);
+  /* Explicit color is mandatory: the host wraps the pack in a
+     container with `color: white` (its dark modal chrome), so any
+     descendant that doesn't set its own color inherits white. In
+     dark mode the page bg is dark and that reads fine, but in
+     light mode the headline / card-name text becomes white-on-
+     light and disappears. Setting color here makes every setup
+     descendant inherit the right scheme-aware foreground. */
+  color: var(--pc-fg);
 }
 .pc-setup-root .pc-backdrop {
   z-index: 0;

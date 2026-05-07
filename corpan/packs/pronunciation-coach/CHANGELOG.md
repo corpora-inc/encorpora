@@ -10,6 +10,51 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-07
+
+### Added
+- **Four new model tiers** between Standard (145 MB) and Advanced
+  (1.6 GB), so iPhones get a real upgrade path that fits within
+  iOS's per-app memory limit. Lineup is now:
+  - **Standard** — `openai_whisper-base` (145 MB) — unchanged
+  - **Small** — `openai_whisper-small_216MB` (216 MB) — quantized small
+  - **Medium** — `openai_whisper-large-v3-v20240930_547MB` (547 MB) —
+    large-quality at medium size
+  - **Large (Mobile)** — `openai_whisper-large-v3-v20240930_626MB`
+    (626 MB) — Argmax's officially-recommended pick for "maximum
+    multilingual accuracy" per their README. Should run on modern
+    iPhones.
+  - **Large Turbo (Mobile)** —
+    `openai_whisper-large-v3-v20240930_turbo_632MB` (632 MB) — same
+    accuracy class with a faster decoder.
+  - **Advanced (iPad)** — `openai_whisper-large-v3_turbo` (1600 MB)
+    — unchanged folder, retitled and re-described to flag that it
+    is iPad / M-series only and may crash iPhones via OOM jetsam.
+- The four middle tiers are all from Argmax's `v20240930` quantized
+  generation, specifically tuned to preserve multilingual quality.
+  Shipping multiple variants so real-device A/B testing can decide
+  which one wins per language and device.
+
+### Fixed
+- **Light mode contrast on the setup overlay.** `.pc-setup-root`
+  was missing an explicit `color: var(--pc-fg)`, so when the host
+  wrapped the pack in a container with `color: white` (its dark
+  modal chrome), the setup headline and card-name text inherited
+  white. In dark mode this looked fine; in light mode it rendered
+  white-on-light. Setting an explicit foreground on the setup root
+  makes every descendant pick up the scheme-aware color. Main
+  `.pc-root` already had this; the bug only affected the setup
+  / model-management overlay.
+
+### Changed
+- **Setup overlay templates from `MODELS`** instead of hardcoding
+  two `data-mode="standard"` / `data-mode="advanced"` cards. Adding
+  a model is now a single registry entry; the overlay scales
+  automatically.
+- **First-load wait message generalized** from "Loading Advanced
+  model…" to a size-driven check: any model ≥ 300 MB shows the
+  CoreML-compile warning; smaller models skip it.
+
 ## [0.2.0] - 2026-05-06
 
 ### Changed

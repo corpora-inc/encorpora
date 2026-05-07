@@ -22,22 +22,74 @@ export type ModelVariant = {
   defaultForFreshInstall: boolean
 }
 
+// Six tiers spanning ~145 MB → ~1600 MB. The four middle entries are
+// new in 0.3.0 to give iPhones a real upgrade path without crashing
+// (the full-fat 1.6 GB Advanced model peaks well above iOS's per-app
+// memory limit on iPhone 14 / 17 Pro Max).
+//
+// The 547 / 626 / 632 MB variants are from Argmax's `v20240930`
+// generation, specifically tuned to preserve multilingual quality
+// despite quantization. Argmax's own README recommends
+// `large-v3-v20240930_626MB` for "maximum multilingual accuracy",
+// so we're not gambling on quality across 50+ languages — we're
+// using the variant they officially endorse.
+//
+// Folder-name conventions (from WhisperKit upstream):
+//   _turbo            optimized smaller text decoder, ~similar accuracy
+//   _v20240930        release date with improved multilingual quant
+//   _NNNMB            palettized variant, N ≈ disk MB (lower = more aggressive)
 export const MODELS: ReadonlyArray<ModelVariant> = [
   {
     id: "standard",
     folder: "openai_whisper-base",
     label: "Standard",
     shortDesc:
-      "Fast and light. Good for English and major Latin-script languages.",
+      "Fast and light. Good for English and major Latin-script languages. Runs anywhere.",
     approxSizeMB: 145,
     defaultForFreshInstall: true,
   },
   {
+    id: "small",
+    folder: "openai_whisper-small_216MB",
+    label: "Small",
+    shortDesc:
+      "Better than Standard across most languages. Quantized small. Runs anywhere.",
+    approxSizeMB: 216,
+    defaultForFreshInstall: false,
+  },
+  {
+    id: "medium",
+    folder: "openai_whisper-large-v3-v20240930_547MB",
+    label: "Medium",
+    shortDesc:
+      "Large-class quality at medium size. Strongly multilingual. Fits iPhone and iPad.",
+    approxSizeMB: 547,
+    defaultForFreshInstall: false,
+  },
+  {
+    id: "large_mobile",
+    folder: "openai_whisper-large-v3-v20240930_626MB",
+    label: "Large (Mobile)",
+    shortDesc:
+      "Argmax's recommended pick for multilingual accuracy. Runs on modern iPhones.",
+    approxSizeMB: 626,
+    defaultForFreshInstall: false,
+  },
+  {
+    id: "large_turbo_mobile",
+    folder: "openai_whisper-large-v3-v20240930_turbo_632MB",
+    label: "Large Turbo (Mobile)",
+    shortDesc:
+      "Same accuracy class as Large (Mobile) with a faster decoder. Runs on modern iPhones.",
+    approxSizeMB: 632,
+    defaultForFreshInstall: false,
+  },
+  {
     id: "advanced",
     folder: "openai_whisper-large-v3_turbo",
-    label: "Advanced",
+    label: "Advanced (iPad)",
     shortDesc:
-      "Larger and more accurate. Better on tonal and Indic-script languages.",
+      "Highest quality. Best on iPad Pro / M-series — not recommended on iPhone (may crash).",
     approxSizeMB: 1600,
     defaultForFreshInstall: false,
   },
