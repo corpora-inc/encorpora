@@ -120,8 +120,9 @@ export const hasLargeMemoryBudget = (): boolean => {
 // generation, specifically tuned to preserve multilingual quality
 // despite quantization. Argmax's own README recommends
 // `large-v3-v20240930_626MB` for "maximum multilingual accuracy",
-// so we're not gambling on quality across 50+ languages — we're
-// using the variant they officially endorse.
+// so we're not gambling on quality across the broad set of
+// languages Corpán covers — we're using the variant they
+// officially endorse.
 //
 // Folder-name conventions (from WhisperKit upstream):
 //   _turbo            optimized smaller text decoder, ~similar accuracy
