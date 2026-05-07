@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.11.8"
+version = "0.12.6"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"
@@ -46,5 +46,6 @@ futures-util = "0.3"
 opt-level = "z"   # Optimize for size (important for mobile apps)
 lto = true        # Link-time optimization for better performance and smaller binary
 codegen-units = 1 # Better optimization at cost of compile time
-strip = true      # Strip symbols from binary (smaller size)
+debug = 1         # Line tables — Gradle's debugSymbolLevel="FULL" uploads these to Play
+strip = false     # Let Gradle strip the .so for the APK and bundle symbols into the AAB
 panic = "abort"   # Smaller binary, no unwinding

@@ -7,6 +7,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.12.6] - 2026-05-07
+
+### Changed
+- Release build now ships native debug symbols to Play Console.
+  `Cargo.toml` release profile no longer strips the Rust `.so`
+  (`strip = false`, `debug = 1`); Gradle's `debugSymbolLevel = "FULL"`
+  embeds them in the AAB metadata. APK size on-device is unchanged
+  (Gradle still strips before packaging). Future Android native
+  crashes will arrive in Play Console pre-symbolicated instead of as
+  raw hex offsets.
+
 ## [0.12.5] - 2026-05-07
 
 ### Fixed
