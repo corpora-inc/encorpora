@@ -1742,7 +1742,7 @@ export const mountGame = (
       outcome = await runSetup({
         currentActive: activeForOverlay,
         headline: "Pronunciation Coach · Models",
-        sub: "Install, switch, or remove on-device speech models. The active one is what gets used to score your phrase.",
+        sub: "These are cutting-edge AI speech models running entirely on your device. They get things wrong all the time, the bigger ones can be memory-hungry, and any of them might surprise you in either direction. Have fun — don't take the scoring too seriously.",
       })
     } finally {
       modelSwitching = false

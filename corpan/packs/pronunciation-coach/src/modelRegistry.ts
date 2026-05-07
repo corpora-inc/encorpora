@@ -133,7 +133,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "openai_whisper-small_216MB",
     label: "Small",
     shortDesc:
-      "Fast and small. Good baseline across all languages. Runs anywhere.",
+      "Tiny and quick. Often wrong. May barely understand the language you actually want. Lower your expectations and have fun.",
     approxSizeMB: 216,
     defaultForFreshInstall: true,
   },
@@ -142,21 +142,20 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "openai_whisper-large-v3-v20240930_547MB",
     label: "Medium",
     shortDesc:
-      "Large-class quality at medium size. Strongly multilingual. Fits iPhone and iPad.",
+      "Sometimes shockingly good, sometimes wildly off. Don't take a single bad score personally — the model is just having a moment.",
     approxSizeMB: 547,
     defaultForFreshInstall: false,
   },
-  // Large tier — QLoRA-quantized large-v3 turbo, 954 MB.
-  // Different (older) quantization scheme than the broken v20240930
-  // palettized variants. Same large-v3 turbo architecture as
-  // Advanced. Roughly half the disk size of full Advanced.
-  // Currently under evaluation on real devices.
+  // Internal: this is QLoRA-quantized large-v3 turbo (954 MB).
+  // Different older quant scheme than the broken v20240930
+  // palettized variants. Same architecture as Advanced. Label
+  // shown to users is just "Large" — no jargon.
   {
     id: "large_qlora",
     folder: "openai_whisper-large-v3_turbo_954MB",
-    label: "Large (QLoRA)",
+    label: "Large",
     shortDesc:
-      "QLoRA-compressed large-v3 turbo. Older quant scheme — same accuracy class as Advanced.",
+      "Solid across most languages, but every model has That One Phrase it can't hear. Take a deep breath when it happens.",
     approxSizeMB: 954,
     defaultForFreshInstall: false,
   },
@@ -165,7 +164,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "openai_whisper-large-v3_turbo",
     label: "Advanced",
     shortDesc:
-      "Highest quality. Full Whisper large-v3-turbo. Recommended on capable devices.",
+      "Best open-source on-device speech-to-text we've got. Wants a recent iPad, eats a lot of memory, may crash on iPhones. When it works, it's the closest thing to magic without a server.",
     approxSizeMB: 1600,
     defaultForFreshInstall: false,
   },
