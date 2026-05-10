@@ -1,47 +1,46 @@
 {
   "book_id": "aoede-gemini-v1",
   "language": "id",
-  "timestamp": "2026-05-02T10:49:42.611052+00:00",
+  "timestamp": "2026-05-03T03:50:56.724672+00:00",
   "segments_total": 292,
-  "segments_first_pass": 285,
-  "segments_converged_by_retry": 2,
-  "segments_plateau_stopped": 5,
-  "total_retries": 7,
+  "segments_first_pass": 289,
+  "segments_converged_by_retry": 3,
+  "segments_plateau_stopped": 0,
+  "total_retries": 3,
   "error_distribution": {
-    "tail_energy": 85,
-    "trailing_silence": 80,
-    "first_word_weak": 23,
-    "final_word_weak": 17,
-    "transcription_mismatch": 13,
-    "first_word_mismatch": 13,
-    "tts_audio_truncated": 11,
-    "pre_speech_spike": 9,
-    "min_trailing_silence": 6,
+    "tail_energy": 78,
+    "trailing_silence": 68,
+    "first_word_weak": 19,
+    "final_word_weak": 15,
+    "tts_audio_truncated": 12,
+    "min_trailing_silence": 7,
+    "pre_speech_spike": 6,
     "tail_zero_duration_run": 2,
     "stacked_words": 2,
-    "truncated_last_word": 2
+    "truncated_last_word": 2,
+    "first_word_mismatch": 1
   },
   "phase_timings": {
-    "tts": 19.935388326644897,
-    "align": 43.1129674911499,
-    "validate": 17.089614391326904,
-    "trim": 0.09525108337402344,
-    "master": 3.4100191593170166
+    "tts": 41.725308895111084,
+    "align": 90.26522326469421,
+    "validate": 67.94406270980835,
+    "trim": 0.22703123092651367,
+    "master": 8.795117139816284
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 49,
-      "passed": 48,
-      "rate": 0.9795918367346939
+      "total": 48,
+      "passed": 47,
+      "rate": 0.9791666666666666
     },
     "medium_30_80": {
-      "total": 200,
-      "passed": 194,
-      "rate": 0.97
+      "total": 198,
+      "passed": 196,
+      "rate": 0.98989898989899
     },
     "long_80_plus": {
-      "total": 43,
-      "passed": 43,
+      "total": 46,
+      "passed": 46,
       "rate": 1.0
     }
   },
@@ -180,201 +179,6 @@
       ],
       "text_len": 77,
       "text_preview": "Elektron hampir tidak memiliki massa dibandingkan dengan proton atau neutron.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-104",
-      "attempts": 2,
-      "best_quality_score": 23.0,
-      "best_attempt": 0,
-      "plateau_count": 2,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch",
-            "first_word_mismatch"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.94
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch",
-            "first_word_mismatch"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.94
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "trailing_silence",
-            "tail_energy",
-            "first_word_weak"
-          ],
-          "score": 35.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.94
-          }
-        }
-      ],
-      "text_len": 66,
-      "text_preview": "Your lungs pull oxygen out of the air and send it into your blood.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-108",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch"
-          ],
-          "score": 6.88,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 37,
-      "text_preview": "Iron is the main ingredient in steel.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-109",
-      "attempts": 2,
-      "best_quality_score": 23.0,
-      "best_attempt": 0,
-      "plateau_count": 1,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch",
-            "first_word_mismatch"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "trailing_silence",
-            "tail_energy",
-            "final_word_weak",
-            "first_word_weak"
-          ],
-          "score": 55.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 37,
-      "text_preview": "The core of the Earth is mostly iron.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-110",
-      "attempts": 2,
-      "best_quality_score": 15.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch",
-            "first_word_mismatch"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.84
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "trailing_silence",
-            "tail_energy"
-          ],
-          "score": 15.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.84
-          }
-        }
-      ],
-      "text_len": 58,
-      "text_preview": "The lightest elements are the most common in the universe.",
       "passed_first": false
     },
     {
@@ -734,6 +538,110 @@
       ],
       "text_len": 78,
       "text_preview": "Ada lebih banyak atom dalam satu butir pasir daripada butiran pasir di pantai.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Atom adalah blok bangunan dari segala sesuatu di dunia fisik.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Dinding terbuat dari batu bata.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Sebuah kalimat terbuat dari kata-kata.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Alam semesta terbuat dari atom.",
       "passed_first": true
     }
   ],

@@ -1,45 +1,45 @@
 {
   "book_id": "aoede-gemini-v1",
   "language": "mr",
-  "timestamp": "2026-05-02T23:21:38.555602+00:00",
+  "timestamp": "2026-05-03T04:01:43.120738+00:00",
   "segments_total": 292,
   "segments_first_pass": 280,
   "segments_converged_by_retry": 10,
   "segments_plateau_stopped": 2,
   "total_retries": 12,
   "error_distribution": {
-    "transcription_mismatch": 148,
-    "trailing_silence": 78,
-    "tail_energy": 60,
-    "no_words": 49,
+    "transcription_mismatch": 159,
+    "trailing_silence": 66,
+    "tail_energy": 49,
+    "no_words": 46,
     "first_word_weak": 22,
-    "stacked_words": 20,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 15,
+    "final_word_weak": 16,
+    "tts_audio_truncated": 16,
+    "stacked_words": 13,
     "min_trailing_silence": 10,
     "tail_zero_duration_run": 8,
     "truncated_last_word": 8,
-    "word_cluster": 7,
+    "word_cluster": 4,
     "pre_speech_spike": 3,
     "short_words": 1
   },
   "phase_timings": {
-    "tts": 7.414817810058594e-05,
-    "align": 3.528594970703125e-05,
-    "validate": 7.414817810058594e-05,
-    "trim": 4.410743713378906e-05,
-    "master": 3.933906555175781e-05
+    "tts": 31.5358567237854,
+    "align": 47.45963501930237,
+    "validate": 77.1313681602478,
+    "trim": 0.12216353416442871,
+    "master": 3.996188163757324
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 65,
-      "passed": 63,
-      "rate": 0.9692307692307692
+      "total": 66,
+      "passed": 64,
+      "rate": 0.9696969696969697
     },
     "medium_30_80": {
-      "total": 193,
-      "passed": 183,
-      "rate": 0.9481865284974094
+      "total": 192,
+      "passed": 182,
+      "rate": 0.9479166666666666
     },
     "long_80_plus": {
       "total": 34,
@@ -344,8 +344,8 @@
           }
         }
       ],
-      "text_len": 40,
-      "text_preview": "When ice melts, the atoms stay the same.",
+      "text_len": 43,
+      "text_preview": "जेव्हा बर्फ वितळतो, तेव्हा अणू तसेच राहतात.",
       "passed_first": false
     },
     {
@@ -387,8 +387,8 @@
           }
         }
       ],
-      "text_len": 21,
-      "text_preview": "Neutrons are neutral.",
+      "text_len": 23,
+      "text_preview": "न्यूट्रॉन उदासीन असतात.",
       "passed_first": false
     },
     {

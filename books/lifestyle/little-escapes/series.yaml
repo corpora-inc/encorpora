@@ -74,4 +74,10 @@ series:
       slug: "02-gardening"
       directory: "02-gardening"
       tier: premium
-      price_usd: 0.99
+      price_usd: 1.99
+    - number: 3
+      title: "Sailing"
+      slug: "03-sailing"
+      directory: "03-sailing"
+      tier: premium
+      price_usd: 1.99

@@ -69,6 +69,48 @@ CHARACTERS_META = {
         "status": "active",
         "order": 2,
     },
+    "august": {
+        "displayName": "August",
+        "tagline": "A boy's voice for young readers learning a new language.",
+        "bio": (
+            "August is a young narrator with a clear, friendly voice. He reads "
+            "the way an unusually thoughtful nine-year-old does — short, plain "
+            "sentences, simple words, room to breathe. August narrates the "
+            "Motorcycles series and other books written for boys learning a "
+            "second language."
+        ),
+        "accentColor": "#d4a14a",
+        "status": "active",
+        "order": 3,
+    },
+    "kym": {
+        "displayName": "Kym",
+        "tagline": "A friend's voice from the American South.",
+        "bio": (
+            "Kym is a warm, direct narrator from the Southern United States. "
+            "She reads the way a friend tells you about the food she grew up "
+            "with — short sentences, real names, no fuss. Kym narrates the "
+            "Food of the World series, beginning with soul food, the "
+            "everyday cooking of Black families in the American South."
+        ),
+        "accentColor": "#c66a3d",
+        "status": "active",
+        "order": 4,
+    },
+    "sky": {
+        "displayName": "Skylar",
+        "tagline": "A reader's voice for stories worth slowing down for.",
+        "bio": (
+            "Skylar narrates the Musical Instruments of the World series. He "
+            "reads the way a thoughtful host on late-night radio does — slow, "
+            "even, a little curious, always making room for the music. Skylar "
+            "is at home across the catalog's languages and is the host of the "
+            "world music series."
+        ),
+        "accentColor": "#5a7d8c",
+        "status": "active",
+        "order": 5,
+    },
 }
 
 # voiceId → CDN URL of a short mastered preview clip (~15-25s).
@@ -78,6 +120,9 @@ VOICE_PREVIEW_URLS = {
     "ian-narration":   f"{CDN_BASE}/voice-previews/ian-narration.m4a",
     "ian-chill-clear": f"{CDN_BASE}/voice-previews/ian-chill-clear.m4a",
     "aoede-gemini":    f"{CDN_BASE}/voice-previews/aoede-gemini.m4a",
+    "august":          f"{CDN_BASE}/voice-previews/august.m4a",
+    "kym":             f"{CDN_BASE}/voice-previews/kym.m4a",
+    "sky":             f"{CDN_BASE}/voice-previews/sky.m4a",
 }
 
 # voiceId → (characterId, displayName, provider, source kind, supportedLanguages)
@@ -120,6 +165,51 @@ VOICE_PROFILES = [
         "providerVoiceId": "aoede",
         "source": {"kind": "native"},
         "traits": ["native", "provider-voice"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "august",
+        "characterId": "august",
+        "displayName": "August",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 21,
+        },
+        "traits": ["narrator", "boy", "young", "kids", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "kym",
+        "characterId": "kym",
+        "displayName": "Kym",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 38,
+        },
+        "traits": ["narrator", "warm", "friend", "southern-american", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "sky",
+        "characterId": "sky",
+        "displayName": "Skylar",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 21,
+        },
+        "traits": ["narrator", "calm", "world-music", "language-learning"],
         "status": "active",
         "order": 1,
     },
@@ -221,6 +311,62 @@ BOOK_META = {
             "out of an airplane and fall."
         ),
         "tags": ["adventure", "first-person"],
+    },
+    "book_gardening": {
+        "description": (
+            "A small escape into soil, seeds, and the slow craft of growing "
+            "things. For everyone who has ever pressed a finger into damp "
+            "earth and felt the year start over."
+        ),
+        "tags": ["adventure", "first-person", "nature", "craft"],
+    },
+    "book_sailing": {
+        "description": (
+            "A small escape onto the water — wind on the cheek, lines in the "
+            "hand, the long quiet between tacks. For everyone who has ever "
+            "leaned into a heel and stopped thinking about anything else."
+        ),
+        "tags": ["adventure", "first-person", "water", "craft"],
+    },
+    "book_motorcycles_history": {
+        "description": (
+            "Volume one of the Motorcycles series. The big story of the "
+            "motorcycle, from the first sputtering steam contraption in 1885 "
+            "to the electric superbikes of today. Read aloud in twenty-three "
+            "languages by August, for boys six to fifteen learning a new "
+            "language."
+        ),
+        "tags": ["kids", "vehicles", "motorcycles", "history", "language-learning"],
+    },
+    "book_oud_history": {
+        "description": (
+            "Volume one of the Musical Instruments of the World series. The "
+            "story of the oud — the pear-shaped wooden lute of the Arab "
+            "world, great-grandfather of the European lute and the modern "
+            "guitar. Its makers, its great players, and the maqam, the older "
+            "system of music it speaks in."
+        ),
+        "tags": ["all-ages", "music", "instruments", "oud", "arabic", "history", "language-learning"],
+    },
+    "book_persian_food": {
+        "description": (
+            "Volume two of the Food of the World series. A short tour of one "
+            "of the oldest cuisines on earth. Saffron from Khorasan, "
+            "pomegranate orchards, the sacred crisp of tahdig at the bottom "
+            "of the rice pot, sangak baked on hot pebbles, a stew written on "
+            "cuneiform tablets, and the table set for Nowruz. Read aloud by "
+            "Kym."
+        ),
+        "tags": ["all-ages", "food", "persia", "iran", "cuisine", "history", "language-learning"],
+    },
+    "book_train_history": {
+        "description": (
+            "Volume one of the Vehicles of the World series. The big arc of "
+            "rail — Stephenson's Rocket, the Transcontinental, the "
+            "Trans-Siberian, the Shinkansen, the maglev. From the first "
+            "steam locomotive to the floating trains of today."
+        ),
+        "tags": ["all-ages", "vehicles", "trains", "history", "language-learning"],
     },
 }
 

@@ -1,51 +1,50 @@
 {
   "book_id": "aoede-gemini-v1",
   "language": "th",
-  "timestamp": "2026-05-02T23:41:11.708496+00:00",
+  "timestamp": "2026-05-03T04:10:25.544778+00:00",
   "segments_total": 292,
-  "segments_first_pass": 283,
-  "segments_converged_by_retry": 8,
+  "segments_first_pass": 285,
+  "segments_converged_by_retry": 6,
   "segments_plateau_stopped": 1,
-  "total_retries": 9,
+  "total_retries": 7,
   "error_distribution": {
-    "word_count_high": 287,
-    "short_words": 171,
-    "first_word_weak": 167,
-    "tail_energy": 147,
-    "trailing_silence": 80,
-    "final_word_weak": 31,
+    "word_count_high": 298,
+    "short_words": 176,
+    "first_word_weak": 170,
+    "tail_energy": 148,
+    "trailing_silence": 77,
+    "final_word_weak": 33,
     "word_cluster": 28,
-    "no_words": 25,
     "stacked_words": 24,
+    "no_words": 23,
     "tts_audio_truncated": 11,
     "truncated_last_word": 9,
     "min_trailing_silence": 8,
     "tail_zero_duration_run": 7,
-    "pre_speech_spike": 3,
-    "transcription_mismatch": 2
+    "pre_speech_spike": 3
   },
   "phase_timings": {
-    "tts": 10.761381149291992,
-    "align": 20.682085037231445,
-    "validate": 0.6763749122619629,
-    "trim": 0.02911376953125,
-    "master": 0.9420013427734375
+    "tts": 21.609657526016235,
+    "align": 33.55403470993042,
+    "validate": 1.2822086811065674,
+    "trim": 0.10070085525512695,
+    "master": 2.9305171966552734
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 85,
-      "passed": 83,
-      "rate": 0.9764705882352941
+      "total": 83,
+      "passed": 81,
+      "rate": 0.9759036144578314
     },
     "medium_30_80": {
-      "total": 188,
-      "passed": 182,
-      "rate": 0.9680851063829787
+      "total": 190,
+      "passed": 185,
+      "rate": 0.9736842105263158
     },
     "long_80_plus": {
       "total": 19,
-      "passed": 18,
-      "rate": 0.9473684210526315
+      "passed": 19,
+      "rate": 1.0
     }
   },
   "worst_segments": [
@@ -371,92 +370,6 @@
       ],
       "text_len": 66,
       "text_preview": "อะตอมไฮโดรเจนแต่ละอะตอมจะใช้อิเล็กตรอนหนึ่งตัวร่วมกับอะตอมออกซิเจน",
-      "passed_first": false
-    },
-    {
-      "id": "ch05-190",
-      "attempts": 2,
-      "best_quality_score": 8.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "no_words"
-          ],
-          "score": 100.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "transcription_mismatch"
-          ],
-          "score": 8.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 36,
-      "text_preview": "When bonds form, energy is absorbed.",
-      "passed_first": false
-    },
-    {
-      "id": "ch05-191",
-      "attempts": 2,
-      "best_quality_score": 8.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "no_words"
-          ],
-          "score": 100.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "transcription_mismatch"
-          ],
-          "score": 8.0,
-          "params": {
-            "cfg_weight": 0.7,
-            "exaggeration": 0.3,
-            "temperature": 0.6,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 89,
-      "text_preview": "Every chemical reaction in the universe involves breaking old bonds and forming ",
       "passed_first": false
     },
     {
@@ -836,6 +749,67 @@
       ],
       "text_len": 40,
       "text_preview": "ตัวเลขนั้นคือห้าสิบตามด้วยศูนย์สิบแปดตัว",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 80.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "word_count_high",
+            "short_words",
+            "word_cluster",
+            "first_word_weak"
+          ],
+          "score": 80.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "มีอะตอมในทรายหนึ่งเม็ดมากกว่าจำนวนเม็ดทรายทั้งหมดบนชายหาดเสียอีก",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 60.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "word_count_high",
+            "short_words",
+            "first_word_weak"
+          ],
+          "score": 60.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "อะตอมคือหน่วยพื้นฐานของทุกสิ่งในโลกทางกายภาพ",
       "passed_first": true
     }
   ],

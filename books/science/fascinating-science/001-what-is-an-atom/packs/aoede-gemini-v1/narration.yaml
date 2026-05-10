@@ -13,20 +13,15 @@ voices:
   kn: Aoede
   fa: Aoede
   hu: Aoede
-  'pa-Arab': Aoede
-  'zh-Hant': Aoede
+  pa-Arab: Aoede
+  zh-Hant: Aoede
+  ko: Aoede
 tts: {}
 retry:
-  # Gemini is deterministic: identical prompt → byte-identical audio.
-  # Empirical (2026-04-30 goalkeeper bn run): 50/50 retried segments produced
-  # identical PCM. Each "retry" wastes ~6s + tokens for zero new information.
-  # Cap at 2 attempts. After that, segments stay FAILED → catastrophic ones
-  # trigger auto_rewrite (which CAN help by changing the text); non-catastrophic
-  # ones (transcription_mismatch, etc.) need calibration / per-voice override.
   max_retries: 2
   jitter: 0.0
   schedules:
-    - {}
+  - {}
 mastering:
   target_lufs: -22.0
   target_tp: -3.0
@@ -90,8 +85,9 @@ trimming:
     kn: 0.15
     fa: 0.15
     hu: 0.15
-    'pa-Arab': 0.15
-    'zh-Hant': 0.15
+    pa-Arab: 0.15
+    zh-Hant: 0.15
+    ko: 0.2
   base_buffer_sec:
     bn: 5.0
     id: 5.0
@@ -105,8 +101,9 @@ trimming:
     kn: 5.0
     fa: 5.0
     hu: 5.0
-    'pa-Arab': 5.0
-    'zh-Hant': 5.0
+    pa-Arab: 5.0
+    zh-Hant: 5.0
+    ko: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -126,8 +123,9 @@ validation:
     kn: 0.15
     fa: 0.15
     hu: 0.15
-    'pa-Arab': 0.15
-    'zh-Hant': 0.15
+    pa-Arab: 0.15
+    zh-Hant: 0.15
+    ko: 0.2
   min_sec_per_char:
     bn: 0.02
     id: 0.02
@@ -141,8 +139,9 @@ validation:
     kn: 0.02
     fa: 0.02
     hu: 0.02
-    'pa-Arab': 0.02
-    'zh-Hant': 0.02
+    pa-Arab: 0.02
+    zh-Hant: 0.02
+    ko: 0.05
   base_buffer_sec:
     bn: 5.0
     id: 5.0
@@ -156,5 +155,6 @@ validation:
     kn: 5.0
     fa: 5.0
     hu: 5.0
-    'pa-Arab': 5.0
-    'zh-Hant': 5.0
+    pa-Arab: 5.0
+    zh-Hant: 5.0
+    ko: 5.0

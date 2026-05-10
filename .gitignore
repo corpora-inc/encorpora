@@ -47,6 +47,16 @@ voices/samples/
 **/packs/*/pipeline_state.json
 **/packs/*/.packstore.json
 
+# Pipeline run locks — per-language scratch files held during ttsctl runs.
+# Process-local; never history-of-record.
+**/pack/.pipeline_*.lock
+**/packs/*/.pipeline_*.lock
+
+# Transcription audit results — auto-generated quality reports, regenerable
+# from current audio. Useful as local working notes; not history-of-record.
+**/pack/audits/
+**/packs/*/audits/
+
 # Backup snapshots from in-place pipeline migrations (e.g. .pre-nikkud.bak,
 # .pre-clear-fp.bak, .pre-cjk-clear.bak). Useful for one-shot rollback,
 # never useful in git history. The .bak.<timestamp> shape comes from ad-hoc

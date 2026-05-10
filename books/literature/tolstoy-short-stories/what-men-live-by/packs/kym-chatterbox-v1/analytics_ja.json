@@ -1,0 +1,1785 @@
+{
+  "book_id": "kym-chatterbox-v1",
+  "language": "ja",
+  "timestamp": "2026-05-10T12:56:10.591537+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 604,
+  "segments_converged_by_retry": 13,
+  "segments_plateau_stopped": 0,
+  "total_retries": 28,
+  "error_distribution": {
+    "trailing_silence": 247,
+    "first_word_weak": 171,
+    "final_word_weak": 156,
+    "tail_energy": 94,
+    "tts_audio_truncated": 76,
+    "min_trailing_silence": 57,
+    "short_words": 51,
+    "truncated_last_word": 28,
+    "stacked_words": 21,
+    "tail_zero_duration_run": 18,
+    "tail_spike": 12,
+    "word_cluster": 3,
+    "too_long": 2,
+    "pre_speech_spike": 2
+  },
+  "phase_timings": {
+    "tts": 614.1858294010162,
+    "align": 159.12154173851013,
+    "validate": 50.54548764228821,
+    "trim": 1.2908856868743896,
+    "master": 18.83959674835205
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 387,
+      "passed": 381,
+      "rate": 0.9844961240310077
+    },
+    "medium_30_80": {
+      "total": 214,
+      "passed": 207,
+      "rate": 0.9672897196261683
+    },
+    "long_80_plus": {
+      "total": 16,
+      "passed": 16,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-012",
+      "attempts": 11,
+      "best_quality_score": 37.0,
+      "best_attempt": 10,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.6498364023506291,
+            "exaggeration": 0.09801746259639099,
+            "temperature": 0.5954837646958195,
+            "top_p": 0.8176751257577015,
+            "min_p": 0.3472557904753134,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 165.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.9894219261359334,
+            "exaggeration": 0.0824488061130817,
+            "temperature": 0.286693373107056,
+            "top_p": 0.7536558899227837,
+            "min_p": 0.3329529005789208,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.29564102489206207,
+            "exaggeration": 0.4082004390636432,
+            "temperature": 0.12207471342720594,
+            "top_p": 1.0,
+            "min_p": 0.29548639315299075,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.5751495187180188,
+            "exaggeration": 0.7351560172905864,
+            "temperature": 0.6976840867460053,
+            "top_p": 0.8855517084412721,
+            "min_p": 0.12389704870288462,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.90580981222493,
+            "exaggeration": 0.5243133697673159,
+            "temperature": 0.05,
+            "top_p": 0.8173676087869652,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "min_trailing_silence",
+            "too_long",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.17846493200537894,
+            "exaggeration": 0.42168931186615666,
+            "temperature": 0.49098171575415084,
+            "top_p": 0.8173748591021917,
+            "min_p": 0.15842419499008323,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.5962015463426741,
+            "exaggeration": 0.008530953890404674,
+            "temperature": 0.05,
+            "top_p": 0.779642808167816,
+            "min_p": 0.2241250176293089,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "min_trailing_silence",
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.272713343023299,
+            "exaggeration": 0.3500880519328413,
+            "temperature": 0.6863342107826311,
+            "top_p": 0.9587190608276284,
+            "min_p": 0.1596554610051699,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 165.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3875620058746548,
+            "temperature": 0.2902175407831157,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.3045088605130723,
+            "exaggeration": 0.7637926285389183,
+            "temperature": 0.573359302504594,
+            "top_p": 0.6789951149554923,
+            "min_p": 0.0,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "too_long",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 37.0,
+          "params": {
+            "cfg_weight": 0.22200418126481314,
+            "exaggeration": 0.7419302117537627,
+            "temperature": 1.0014049102733487,
+            "top_p": 1.0,
+            "min_p": 0.02921586949428548,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "我は神を愛すと言いながら兄弟を憎む者は偽り者なり、見ゆる兄弟を愛さぬ者、いかにして見えざる神を愛し得べけんや。（四章二十節） (IV, 20)",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 6,
+      "best_quality_score": 25.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.841647694839344,
+            "exaggeration": 0.20052706065049536,
+            "temperature": 0.5814721407888103,
+            "top_p": 0.8418368643307379,
+            "min_p": 0.17007548671283493,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.921001714657097,
+            "exaggeration": 0.21738528098997567,
+            "temperature": 0.5765862691253167,
+            "top_p": 1.0,
+            "min_p": 0.17844679653282988,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "short_words",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.5890783304031952,
+            "exaggeration": 0.15041563944751507,
+            "temperature": 0.2622337189013383,
+            "top_p": 0.8242918131686895,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.26852819958628543,
+            "exaggeration": 0.1992765236014462,
+            "temperature": 0.4143152039621684,
+            "top_p": 0.7638841621298151,
+            "min_p": 0.299883211919577,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.826854490276294,
+            "exaggeration": 0.7172541150557646,
+            "temperature": 0.7784147047576039,
+            "top_p": 0.8760850269568851,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.7530980143294652,
+            "exaggeration": 0.12758809193428144,
+            "temperature": 0.34818040294612856,
+            "top_p": 0.7468907215177372,
+            "min_p": 0.1456637804883236,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.20231285820634276,
+            "exaggeration": 0.38178778221562376,
+            "temperature": 0.34074465635463597,
+            "top_p": 0.8979514768048089,
+            "min_p": 0.01564328123627637,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "神は愛なり、愛のうちにとどまる者は神のうちにとどまり、神もその人のうちにとどまりたもう。（四章十六節） (IV, 16)",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-014",
+      "attempts": 3,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4072279660417463,
+            "temperature": 0.2557809410063198,
+            "top_p": 0.9190073175286295,
+            "min_p": 0.31717968084227255,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.31864509500097227,
+            "exaggeration": 0.20512714269008225,
+            "temperature": 0.25062194847233576,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "靴屋は妻子とともに、百姓の家に間借りして暮らしていた。",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-056",
+      "attempts": 3,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.8392558953154605,
+            "exaggeration": 0.5404803736757178,
+            "temperature": 0.4326515257005807,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.39682000090800135,
+            "exaggeration": 0.0,
+            "temperature": 0.2216275796258138,
+            "top_p": 0.9271853502870524,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "人間だとしたら、こんな所に何の用があるのだろう？』",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 2,
+      "best_quality_score": 40.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7165726285140583,
+            "exaggeration": 0.4638690034737833,
+            "temperature": 0.48312931697730926,
+            "top_p": 0.9009721538763551,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.8559288184644869,
+            "exaggeration": 0.23109519568417725,
+            "temperature": 0.6137984905245825,
+            "top_p": 0.8810268060638891,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.7599049356774448,
+            "exaggeration": 0.4040667871289842,
+            "temperature": 0.3456103535722849,
+            "top_p": 0.9001193734159321,
+            "min_p": 0.13014270232263472,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "愛さぬ者は神を知らず、神は愛なればなり。（四章八節） (IV, 8)",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9397303680569455,
+            "exaggeration": 0.15835718232571477,
+            "temperature": 0.7203164559555655,
+            "top_p": 0.8666745027609061,
+            "min_p": 0.22685186721126163,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "神をいまだかつて見し者なし。 もしわれら互いに愛し合うならば、神はわれらのうちにとどまりたもう。（四章十二節） (IV, 12)",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-050",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9677886514224293,
+            "exaggeration": 0.07606519039557502,
+            "temperature": 0.28062955627821656,
+            "top_p": 0.6201117758699516,
+            "min_p": 0.294579717530852,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 13,
+      "text_preview": "もう薄暗くなりかけていた。",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-283",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9153181134917378,
+            "exaggeration": 0.19828017521964586,
+            "temperature": 0.4549192892898509,
+            "top_p": 0.8990658142989976,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "言い付けた仕事をするなら、食わせてやる」。",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-296",
+      "attempts": 2,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.8413591759523461,
+            "exaggeration": 0.09265020281941794,
+            "temperature": 0.4914182131314701,
+            "top_p": 0.8694474615695572,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.5806412229149095,
+            "exaggeration": 0.39385889331768154,
+            "temperature": 0.4716688582612634,
+            "top_p": 0.8271755163418595,
+            "min_p": 0.009815734196927689,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "VI",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-303",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6952020486394341,
+            "exaggeration": 0.07371396391572083,
+            "temperature": 0.277727820417156,
+            "top_p": 0.7023177168336378,
+            "min_p": 0.3229247546838264,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "馬車を降り、セミョーンの家に向かい、階段を上がった。",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-583",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.807310189463964,
+            "exaggeration": 0.15569433416708822,
+            "temperature": 0.4670866142415473,
+            "top_p": 0.6457920844302019,
+            "min_p": 0.24288046754570367,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 37,
+      "text_preview": "人に与えられていないものは何か、人は何で生きるか、まだ分かりませんでした。",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-585",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.5934711252641577,
+            "exaggeration": 0.2191090754212484,
+            "temperature": 0.7171174783135335,
+            "top_p": 0.9129411724548342,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "するとある人がやってきて、一年もつ、ほつれも型崩れもしない靴を注文しました。",
+      "passed_first": false
+    },
+    {
+      "id": "ch14-605",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6411910249935447,
+            "exaggeration": 0.5406811339138393,
+            "temperature": 0.706957054662334,
+            "top_p": 0.8522101202221788,
+            "min_p": 0.3325100731348315,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "「私は知りました。すべての人は、自分への心配ではなく、愛によって生きているのだと。",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "題辞",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 32.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "われらが死より命に移りしを知る、兄弟を愛すればなり。愛さぬ者は死のうちにとどまる。(ヨハネ一 3:14)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 65.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 155.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "short_words",
+            "final_word_weak"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.30668724185617097,
+            "temperature": 0.6961644417918005,
+            "top_p": 0.6185602941088796,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 65.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "世の富を持ちながら、兄弟の乏しきを見て、その心を閉ざす者、いかにして神の愛がその人のうちにとどまるべけんや。（三章十七節） (III, 17)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "子どもたちよ、言葉や口先ではなく、行いと真実をもって愛し合おうではないか。（三章十八節） (III, 18)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 180.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6256921364306904,
+            "exaggeration": 0.23826480560438446,
+            "temperature": 0.3355796325253881,
+            "top_p": 0.9936755333746097,
+            "min_p": 0.11246424176059708,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6316069021698889,
+            "exaggeration": 0.3645784467933725,
+            "temperature": 0.6946495179553098,
+            "top_p": 0.6936631019999258,
+            "min_p": 0.1414510911040265,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.5010254410811041,
+            "exaggeration": 0.006294769424852853,
+            "temperature": 0.39667593545686,
+            "top_p": 0.7199210717971726,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "愛は神より出づ、すべて愛する者は神より生まれ、神を知る。（四章七節） (IV, 7)",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-013",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 1,
+      "text_preview": "I",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "自分の家も土地もなく、一家は靴直しの稼ぎで食いつないでいた。",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 23,
+      "avg_delta": {
+        "cfg_weight": -0.004,
+        "temperature": 0.006,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.052,
+        "temperature": -0.007,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.063,
+        "temperature": 0.143,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": -0.049,
+        "temperature": 0.101,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.126,
+        "temperature": 0.287,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.126,
+        "temperature": 0.287,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.126,
+        "temperature": 0.287,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

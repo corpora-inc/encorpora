@@ -1,0 +1,54 @@
+book:
+  volume: 2
+  title: "Persian Food"
+  subtitle: "A short tour of one of the oldest cuisines in the world."
+  target_segments: 180
+
+  audience: "Adults learning a new language. Anyone curious about Iranian and Persian food."
+  primary_language: en
+  pack_id: book_persian_food
+
+  core_subjects:
+    - The Iranian Plateau and the birthplace of agriculture next door
+    - Plants native to Persia — pomegranate, walnut, peach, apricot, spinach, sour cherry, melon, quince
+    - Saffron — Iran's ninety percent of the world supply, the harvest in Khorasan
+    - Rice and bread — chelo, polo, the sacred crust called tahdig, sangak baked on hot pebbles
+    - The kebab — the Persian word kabab, the long flat skewer, the surprisingly modern koobideh
+    - The patient stew (khoresh) — fesenjan with walnut and pomegranate, the cuneiform recipe
+    - Yogurt, tea, and the world's oldest frozen dessert (faloodeh)
+    - Persian words English borrowed — paradise, candy, sugar, lilac, jasmine, tulip, kiosk, sherbet, checkmate
+    - Nowruz, the Persian New Year — the haft-sin table, sabzi polo with mahi
+    - The qahveh-khaneh teahouse, Avicenna's hot-and-cold theory of foods
+
+  core_themes:
+    - Real history — what each ingredient means and where it came from
+    - Real geography — the plateau, the gulf, the Caspian, the bazaars of Esfahan and Tabriz and Khorasan
+    - Real technique — slow stewing, charcoal grilling, baking on hot pebbles, the steamed crust
+    - Real names — tahdig, fesenjan, koobideh, sangak, doogh, faloodeh, ash reshteh, Nowruz
+
+  vocabulary_targets:
+    - food, plate, fork, fire, pot, pan, oven, salt, sugar, butter
+    - rice, bread, lamb, chicken, fish, walnut, pomegranate, saffron, tea, yogurt
+    - Persia, Iran, plateau, mountain, sea, garden, market, kitchen, table
+    - cook, bake, grill, stew, slow, hot, sweet, sour, soft, crisp
+
+  pacing:
+    - 7 chapters + frontmatter + backmatter
+    - 5–15 word sentences, one idea each
+    - All numbers spelled out in tts.text (no Arabic numerals)
+    - Repeat key vocabulary across chapters
+
+  content_rules:
+    - "Narrator is Kym. She speaks in the FIRST PERSON in the frontmatter and backmatter ('Hi. I'm Kym.' / 'I'm Kym. Goodbye.'). Body chapters never refer to Kym by name and have no narrator self-reference — narrator-agnostic so future re-narrations stay clean."
+    - "Concrete topical content only. No pop-psychology, no self-help, no breathwork."
+    - "No personal-life references (bills, divorce, troubles)."
+    - "Stay in the kitchen, the bazaar, the orchard, the table, and the long view of history."
+
+  outline:
+    - chapter_1: "The Land Where Farming Began — geography, agriculture's birth, the etymology hook (peach, spinach, paradise)"
+    - chapter_2: "The Native Pantry — saffron, pomegranate, pistachio, walnut, sumac, sour cherry, dates"
+    - chapter_3: "Rice, Bread, and the Sacred Crust — chelo, polo, tahdig, sangak on hot pebbles"
+    - chapter_4: "The Kebab and the Patient Stew — kabab koobideh, joojeh, barg; fesenjan, ghormeh sabzi"
+    - chapter_5: "Yogurt, Tea, and the Oldest Sweets — mast, doogh, the sugar-cube ritual, faloodeh, baklava, halva"
+    - chapter_6: "What Persia Gave, What Persia Took — words, biryani, pilaf, Mongol meat, sugarcane, Herodotus"
+    - chapter_7: "At the Persian Table — Nowruz, haft-sin, sabzi polo with mahi, ash reshteh, qahveh-khaneh, Avicenna"

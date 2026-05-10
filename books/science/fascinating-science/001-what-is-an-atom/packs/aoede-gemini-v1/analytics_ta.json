@@ -1,47 +1,45 @@
 {
   "book_id": "aoede-gemini-v1",
   "language": "ta",
-  "timestamp": "2026-05-02T23:32:59.046384+00:00",
+  "timestamp": "2026-05-03T04:06:08.760986+00:00",
   "segments_total": 292,
   "segments_first_pass": 292,
   "segments_converged_by_retry": 0,
   "segments_plateau_stopped": 0,
   "total_retries": 0,
   "error_distribution": {
-    "tail_energy": 83,
     "transcription_mismatch": 78,
-    "trailing_silence": 52,
-    "first_word_weak": 19,
-    "final_word_weak": 13,
-    "tts_audio_truncated": 10,
-    "min_trailing_silence": 7,
+    "tail_energy": 77,
+    "trailing_silence": 39,
+    "first_word_weak": 17,
+    "final_word_weak": 15,
+    "tts_audio_truncated": 13,
+    "min_trailing_silence": 9,
     "stacked_words": 3,
-    "tail_zero_duration_run": 1,
-    "truncated_last_word": 1,
-    "pre_speech_spike": 1,
-    "short_words": 1
+    "tail_zero_duration_run": 2,
+    "truncated_last_word": 2
   },
   "phase_timings": {
-    "tts": 3.123283386230469e-05,
-    "align": 1.4543533325195312e-05,
-    "validate": 1.2159347534179688e-05,
-    "trim": 1.1682510375976562e-05,
-    "master": 1.1205673217773438e-05
+    "tts": 32.79961133003235,
+    "align": 51.41640019416809,
+    "validate": 76.4838228225708,
+    "trim": 0.17195868492126465,
+    "master": 5.981650114059448
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 40,
-      "passed": 40,
+      "total": 37,
+      "passed": 37,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 190,
-      "passed": 190,
+      "total": 191,
+      "passed": 191,
       "rate": 1.0
     },
     "long_80_plus": {
-      "total": 62,
-      "passed": 62,
+      "total": 64,
+      "passed": 64,
       "rate": 1.0
     }
   },

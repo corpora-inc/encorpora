@@ -1,0 +1,22 @@
+{
+  "id": "book_motorcycles_history",
+  "name": "The Story of the Motorcycle",
+  "version": "0.1.7",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Motorcycles",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Boys 6-15 learning a second language",
+    "estimatedReadTime": "10-15 minutes",
+    "estimatedListenTime": "15-20 minutes"
+  }
+}

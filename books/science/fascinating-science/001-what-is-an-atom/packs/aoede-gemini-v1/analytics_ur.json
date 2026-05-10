@@ -1,7 +1,7 @@
 {
   "book_id": "aoede-gemini-v1",
   "language": "ur",
-  "timestamp": "2026-05-02T23:41:22.459979+00:00",
+  "timestamp": "2026-05-03T04:12:26.012777+00:00",
   "segments_total": 292,
   "segments_first_pass": 292,
   "segments_converged_by_retry": 0,
@@ -9,11 +9,11 @@
   "total_retries": 0,
   "error_distribution": {
     "no_words": 65,
-    "tail_energy": 47,
-    "trailing_silence": 46,
+    "tail_energy": 45,
+    "trailing_silence": 44,
     "final_word_weak": 20,
-    "stacked_words": 18,
-    "transcription_mismatch": 18,
+    "transcription_mismatch": 19,
+    "stacked_words": 17,
     "first_word_weak": 16,
     "tts_audio_truncated": 11,
     "min_trailing_silence": 7,
@@ -27,11 +27,11 @@
     "short_words": 1
   },
   "phase_timings": {
-    "tts": 3.075599670410156e-05,
-    "align": 1.4066696166992188e-05,
-    "validate": 1.1682510375976562e-05,
-    "trim": 1.0967254638671875e-05,
-    "master": 1.0967254638671875e-05
+    "tts": 3.2286741733551025,
+    "align": 11.143986225128174,
+    "validate": 5.699052333831787,
+    "trim": 0.01834583282470703,
+    "master": 0.5386905670166016
   },
   "length_analysis": {
     "short_0_30": {

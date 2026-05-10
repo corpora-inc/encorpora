@@ -1,0 +1,77 @@
+series:
+  title: "Musical Instruments of the World"
+  tagline: "One instrument at a time, one country at a time, one short book at a time."
+  primary_language: en
+
+  philosophy: |
+    A short series for curious listeners and language learners. Each book
+    explores one musical instrument — its sound, its makers, the places
+    it is played, and the people who shaped its story. Volume 1 takes us
+    to the Arab world for the oud, the rounded wooden cousin of the lute
+    and the great-grandparent of the guitar.
+
+    Each book is roughly one hundred sentences and ten minutes of audio.
+    Every translation matches the English sentence-for-sentence so a learner
+    can read along, hear the same idea in a new language, and build vocabulary
+    one instrument at a time.
+
+  audience: |
+    Curious listeners of any age — and language students who want short,
+    clear, beautifully spoken books that teach something real. The vocabulary
+    is concrete: instrument, string, wood, music, sound, song. The pace is
+    calm. The heroes are the makers, the players, and the songs themselves.
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en
+
+  volumes:
+    - number: 1
+      title: "The Oud"
+      slug: 01-oud
+      angle: "The pear-shaped lute of the Arab world. Sets the series tone."
+    - number: 2
+      title: "The Sitar"
+      slug: 02-sitar
+      angle: "Indian classical music, drone strings, raga, Ravi Shankar."
+    - number: 3
+      title: "The Kora"
+      slug: 03-kora
+      angle: "West African harp-lute. Mande griots. Twenty-one strings."
+    - number: 4
+      title: "The Shakuhachi"
+      slug: 04-shakuhachi
+      angle: "Japanese bamboo flute. Zen, breath, simplicity."
+    - number: 5
+      title: "The Didgeridoo"
+      slug: 05-didgeridoo
+      angle: "Australian Aboriginal drone. Termite-hollowed eucalyptus."
+    - number: 6
+      title: "The Balalaika"
+      slug: 06-balalaika
+      angle: "Russian three-stringed triangle. Folk to philharmonic."
+    - number: 7
+      title: "The Charango"
+      slug: 07-charango
+      angle: "Andean ten-string. Armadillo shells, then wood. Bolivia, Peru."
+    - number: 8
+      title: "The Mbira"
+      slug: 08-mbira
+      angle: "Zimbabwean thumb piano. Metal tines on wooden board. Shona spirit music."
+    - number: 9
+      title: "The Bagpipes"
+      slug: 09-bagpipes
+      angle: "Scottish, Irish, Galician, Bulgarian — many bags, many songs."
+    - number: 10
+      title: "The Gamelan"
+      slug: 10-gamelan
+      angle: "Indonesian bronze ensemble. Bali, Java. Many players, one body."
+    - number: 11
+      title: "The Pipa"
+      slug: 11-pipa
+      angle: "Chinese pear-shaped lute. Two thousand years on the Silk Road."
+    - number: 12
+      title: "The Koto"
+      slug: 12-koto
+      angle: "Japanese long zither. Thirteen silk strings. Court to concert hall."

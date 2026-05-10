@@ -2,12 +2,13 @@ version: 1
 engine: gemini
 voices:
   fr: Aoede
+  ko: Aoede
 tts: {}
 retry:
   max_retries: 3
   jitter: 0.0
   schedules:
-    - {}
+  - {}
 mastering:
   target_lufs: -22.0
   target_tp: -3.0
@@ -60,8 +61,10 @@ trimming:
   fade_sec: 0.05
   max_sec_per_char:
     fr: 0.12
+    ko: 0.2
   base_buffer_sec:
     fr: 5.0
+    ko: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -70,7 +73,10 @@ validation:
   max_inter_word_gap_ms: 3000
   max_sec_per_char:
     fr: 0.12
+    ko: 0.2
   min_sec_per_char:
     fr: 0.02
+    ko: 0.05
   base_buffer_sec:
     fr: 5.0
+    ko: 5.0
