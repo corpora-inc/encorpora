@@ -10,6 +10,80 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.6] - 2026-05-10
+
+### Removed
+- **Large and Advanced tiers temporarily removed** while every
+  WhisperKit large-v3 variant on argmax's
+  `argmaxinc/whisperkit-coreml` HF repo is broken on iPadOS 26.4.x.
+  Verified live 2026-05-10 on iPad Pro M2 (`iPad17,3`,
+  build `23E261`). Two distinct Apple bugs hit different variants:
+
+  | Variant | Status on iPadOS 26.4.2 |
+  |---|---|
+  | `large-v3-v20240930_547MB` (Medium, kept) | Works |
+  | `large-v3-v20240930_626MB` | Won't load. Error -14 on AudioEncoder both CPU+GPU and CPU-only. Failure path also wipes the install dir. |
+  | `large-v3-v20240930` (full unquantized) | Won't load. Same error -14 on AudioEncoder. |
+  | `large-v3` (full canonical OpenAI) | Won't load. Error -14 on TextDecoder both CPU+GPU and CPU-only. |
+  | `large-v3_947MB` (canonical OpenAI palettized) | Loads cleanly (install + load test pass), then SIGABRT on first inference inside `MPSGraphTensorData initWithMTLBuffer` on `DefaultAsyncPredictionQueue`, ~5 GB free at crash. |
+  | `large-v3_turbo_954MB` (prior Large) | Same SIGABRT as `_947MB`, reproducible 4× in one session. |
+  | `large-v3_turbo` (prior Advanced) | Same as `_954MB`. |
+
+  All failures live inside Apple frameworks (MPSGraph, Espresso,
+  kernel mmap), not in WhisperKit, and cannot be caught from
+  Swift try/catch. The same iPad ran the same models cleanly on
+  iPadOS 26.3.x days before the OS update — the regression shipped
+  with 26.4. iPadOS 26.4.2 is the latest publicly available build
+  as of 2026-05-10, so no OS patch is available to wait for short-
+  term.
+
+  Medium (`large-v3-v20240930_547MB`) is the largest variant that
+  survives both compile *and* inference on 26.4.2. Removing the
+  upper tiers entirely is the only honest user experience until
+  one of: an OS patch, a runtime swap (argmax-oss-swift 1.0.0
+  bump, or sherpa-onnx, or non-on-device fallback), or argmax
+  republishes the .mlmodelc bundles with different MIL ops.
+
+  Existing users with `mode: "large_qlora"` or `mode: "advanced"`
+  saved in localStorage fall through `modelById(...) === undefined`
+  and boot at the fresh-install default (Small) — same graceful
+  fallthrough that the 0.3.2 `openai_whisper-base` removal relies
+  on. On-disk `_turbo*` / `_v20240930*` / `large-v3*` folders become
+  orphans; cleanup is deferred to a future sweep.
+
+### Known issues
+- **Medium occasionally crashes on first transcribe right after
+  a model switch** (e.g., Small → Medium). Transcribe-entry mem
+  shows multi-GB free, no transcribe-done line, process dies, no
+  jetsam. Same `MPSGraphTensorData`-class abort. Frequency: roughly
+  1-in-10 post-switch attempts in this session's repro. Doesn't
+  affect fresh-boot Medium use. Apple-side state pollution between
+  WhisperKit unload and the next load that the existing
+  `autoreleasepool` on unload doesn't fully clear. Workaround for
+  affected users: force-quit + relaunch instead of switching tiers
+  in-session.
+
+### Investigation log (for future sessions)
+- See `memory/feedback_whisper_ipados26_mps_crash.md` for the full
+  diagnostic trail.
+- Untested next moves, in rough order of effort:
+  1. **Bump WhisperKit pin** from `0.18.0` → `argmax-oss-swift 1.0.0`
+     (released 2026-05-01). Release notes claim "rebrand + Swift 6,
+     no iOS-specific fixes" but the rebrand may have re-spun parts
+     of the CoreML interaction inadvertently. Low-effort test.
+  2. **Wait for iPadOS 26.4.3+**, re-test the same variants. Apple
+     may quietly fix the MPSGraph regression in a point update.
+  3. **Try a non-WhisperKit STT runtime** — sherpa-onnx (uses ONNX
+     Runtime, sidesteps CoreML entirely) or whisper.cpp (Metal
+     compute via custom shaders, not via MPSGraph).
+  4. **Server-based STT fallback** for Large/Advanced tiers — host
+     a Whisper-large server, ship "Server-Powered Large" as a tier
+     that needs network. Sidesteps Apple entirely.
+  5. **CrisperWhisper** — not on argmax's `whisperkit-coreml` HF
+     repo, would need separate CoreML conversion via argmax's CLI
+     or coremltools, then test whether its MIL ops dodge the
+     regression.
+
 ## [0.3.5] - 2026-05-07
 
 ### Fixed

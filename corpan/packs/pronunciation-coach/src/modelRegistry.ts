@@ -107,27 +107,52 @@ export const hasLargeMemoryBudget = (): boolean => {
   return looksIpadByUA()
 }
 
-// Five tiers spanning ~216 MB → ~1600 MB. Removed `openai_whisper-base`
-// (Standard, 145 MB) in 0.3.2 — Small is meaningfully better across
-// most languages and only ~70 MB larger, so the floor moves up.
-// Existing users who saved `mode: "standard"` in localStorage will fall
-// through `modelById("standard") === undefined` and boot at the new
-// fresh-install default (Small). Their on-disk `openai_whisper-base/`
-// files become orphans (the setup overlay no longer shows a card to
-// remove them); cleaning those up is left to a future cleanup sweep.
+// Two tiers: Small + Medium. The Large + Advanced tiers were yanked
+// in 0.3.6 after exhausting every WhisperKit large-v3 variant on
+// argmax's HF repo and finding all of them broken on iPadOS 26.4.x:
 //
-// The 547 / 626 / 632 MB variants are from Argmax's `v20240930`
-// generation, specifically tuned to preserve multilingual quality
-// despite quantization. Argmax's own README recommends
-// `large-v3-v20240930_626MB` for "maximum multilingual accuracy",
-// so we're not gambling on quality across the broad set of
-// languages Corpán covers — we're using the variant they
-// officially endorse.
+//   Compile-time error -14 (won't load):
+//     • `large-v3-v20240930_626MB` (AudioEncoder)
+//     • `large-v3-v20240930` (AudioEncoder)
+//     • `large-v3` full canonical (TextDecoder)
+//
+//   Loads, then SIGABRT on first inference inside
+//   `MPSGraphTensorData initWithMTLBuffer`:
+//     • `large-v3_turbo`
+//     • `large-v3_turbo_954MB`
+//     • `large-v3_947MB` canonical palettized
+//
+// Two distinct Apple bugs, both inside MPSGraph / Espresso /
+// kernel-mmap, uncatchable from Swift. Medium
+// (`large-v3-v20240930_547MB`) is the largest variant that survives
+// both compile and inference on this OS. Same iPad ran the broken
+// variants cleanly on iPadOS 26.3.x days before the OS update —
+// the regression shipped with 26.4. Removing the tiers is the only
+// honest user experience until either Apple ships a 26.4.x patch
+// or we move off WhisperKit 0.18 (next: try argmax-oss-swift 1.0.0,
+// then sherpa-onnx, then a non-on-device fallback).
+//
+// Existing users with `mode: "large_qlora"` or `mode: "advanced"`
+// saved in localStorage fall through `modelById(...) === undefined`
+// and boot at the fresh-install default (Small) — same graceful
+// fallthrough that the 0.3.2 `openai_whisper-base` removal relies
+// on. Their on-disk `_turbo*` / `_v20240930*` / `large-v3*` folders
+// become orphans; cleanup is deferred to a future sweep.
+//
+// See `memory/feedback_whisper_ipados26_mps_crash.md` and the
+// CHANGELOG 0.3.6 entry for the full failure matrix and the
+// untested next moves (argmax-oss-swift 1.0.0 dep bump,
+// CrisperWhisper, Whisper-medium proper, OS patch wait).
+//
+// Removed `openai_whisper-base` (Standard, 145 MB) in 0.3.2 — Small
+// is meaningfully better across most languages and only ~70 MB
+// larger, so the floor moves up. Existing users who saved
+// `mode: "standard"` fall through the same way.
 //
 // Folder-name conventions (from WhisperKit upstream):
-//   _turbo            optimized smaller text decoder, ~similar accuracy
-//   _v20240930        release date with improved multilingual quant
+//   _v20240930        argmax retrained, multilingual-aware quant
 //   _NNNMB            palettized variant, N ≈ disk MB (lower = more aggressive)
+//   no suffix         full unquantized weights from the upstream checkpoint
 export const MODELS: ReadonlyArray<ModelVariant> = [
   {
     id: "small",
@@ -145,28 +170,6 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     shortDesc:
       "Sometimes shockingly good, sometimes wildly off. Don't take a single bad score personally — the model is just having a moment.",
     approxSizeMB: 547,
-    defaultForFreshInstall: false,
-  },
-  // Internal: this is QLoRA-quantized large-v3 turbo (954 MB).
-  // Different older quant scheme than the broken v20240930
-  // palettized variants. Same architecture as Advanced. Label
-  // shown to users is just "Large" — no jargon.
-  {
-    id: "large_qlora",
-    folder: "openai_whisper-large-v3_turbo_954MB",
-    label: "Large",
-    shortDesc:
-      "Solid across most languages, but every model has That One Phrase it can't hear. Take a deep breath when it happens.",
-    approxSizeMB: 954,
-    defaultForFreshInstall: false,
-  },
-  {
-    id: "advanced",
-    folder: "openai_whisper-large-v3_turbo",
-    label: "Advanced",
-    shortDesc:
-      "Best open-source on-device speech-to-text we've got. Wants a recent iPad, eats a lot of memory, may crash on iPhones. When it works, it's the closest thing to magic without a server.",
-    approxSizeMB: 1600,
     defaultForFreshInstall: false,
   },
 ]
