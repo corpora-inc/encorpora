@@ -10,6 +10,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-05-10
+### Changed
+- Transport bar typography refreshed: book title (italic cyan, 13 px)
+  stacks above a dainty chapter title (italic muted, 10 px,
+  letter-spaced). Each line ellipses on its own, so the chapter can no
+  longer collide with the time on the right.
+- Compact language switcher pulled out of a wrapper and inserted
+  directly above the chapter / scrub / controls inside the transport
+  bar — the standalone book-title row above the pills is gone.
+
+### Added
+- `transportBar.setBookTitle()` on the shared transport API; the
+  reader calls it after creating the transport so the book prefix
+  renders next to the chapter span.
+
 ## [0.6.1] - 2026-05-02
 ### Changed
 - Catalog drawer is a bottom sheet on iPad too (was a right side panel

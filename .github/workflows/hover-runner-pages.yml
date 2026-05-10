@@ -66,16 +66,17 @@ jobs:
           zip -r hover-runner.zip manifest.json dist/
           cd ../../..
 
-      - name: Package Hanzi Atelier as ZIP
-        run: |
-          cd corpan/packs/hanzipan
-          mkdir -p dist
-          cat hanziwriter.min.js > dist/app.js
-          printf '\n;' >> dist/app.js
-          cat index.js >> dist/app.js
-          cp styles.css dist/app.css
-          zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/
-          cd ../../..
+      - name: Install Hanzipan Dependencies
+        working-directory: corpan/packs/hanzipan
+        run: npm install --legacy-peer-deps
+
+      - name: Build Hanzipan
+        working-directory: corpan/packs/hanzipan
+        run: npm run build
+
+      - name: Package Hanzipan
+        working-directory: corpan/packs/hanzipan
+        run: node scripts/pack.mjs
 
       - name: Install Juice Squeeze Dependencies
         working-directory: corpan/packs/juice-squeeze

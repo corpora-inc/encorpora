@@ -48,6 +48,20 @@ Add:
 Required for Stargate Reader background audio playback. Also added to
 `ios/project.yml` template so it survives Xcode project regeneration.
 
+### SKAdNetworkItems (Google Ads install attribution)
+
+**Lives in the template at `src-tauri/ios/project.yml`** under
+`info.properties.SKAdNetworkItems`, not in any `gen/` file. xcodegen
+regenerates `gen/apple/corpan_iOS/Info.plist` from the template's
+`info.properties` block, so the entry round-trips automatically. No
+manual gen patch needed — this section is here for visibility, not
+as a recipe.
+
+Currently declared: `cstr6suwn9.skadnetwork` (Google Ads). Append
+additional dicts to the same `SKAdNetworkItems` list in the template
+to add Meta (`v9wttpbfk9`), TikTok (`238da6jt44`), etc. Metadata only;
+no SDK integration.
+
 ### gen/android/app/src/main/AndroidManifest.xml (background audio)
 
 Add permissions:

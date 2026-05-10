@@ -55,6 +55,11 @@ targets:
           - UIInterfaceOrientationLandscapeRight
         UIBackgroundModes:
           - audio
+        # SKAdNetwork identifiers Apple may send install postbacks to.
+        # cstr6suwn9 = Google Ads. Append additional dicts (one per
+        # network) for Meta, TikTok, etc. Metadata only — no SDK.
+        SKAdNetworkItems:
+          - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
         # ATS exception for media playback. The World Radio pack streams
         # public Icecast/Shoutcast radio, which is overwhelmingly delivered
         # over plain HTTP — WKWebView's `<audio>` element refuses HTTP under

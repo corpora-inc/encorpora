@@ -789,6 +789,7 @@ export function createStargateReader(
 
   // --- Transport bar ---
   const transport = createTransportBar(ui, "stargate")
+  transport.setBookTitle(bookDisplayName)
 
   transport.onPlay(() => {
     void doPlay()

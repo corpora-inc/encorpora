@@ -207,17 +207,20 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
 
         // Continuous easing scroll. On every new line we recompute the
         // target scrollTop that would place the active word at the reading
-        // anchor (~40% down the clean area); the rAF easing loop glides
+        // anchor (~2/3 down the clean area); the rAF easing loop glides
         // toward it over several frames. Word-by-word the target shifts
         // by one line-height, so the scroll drifts smoothly under the text
         // without ever snapping. Clamped to the scroll container's range
         // so the word naturally sits higher before scroll catches up and
-        // lower at the end of a segment once the scroll maxes out.
+        // lower at the end of a segment once the scroll maxes out. The
+        // 0.67 anchor (vs. a 0.5 midline) keeps the recently-read text
+        // visible above the active word — feels less like the segment is
+        // being yanked upward as you read.
         if (span.offsetTop !== lastActiveLineOffset) {
           lastActiveLineOffset = span.offsetTop
           const cleanTop = getCleanTop()
           const cleanBottom = getCleanBottom()
-          const anchor = cleanTop + (cleanBottom - cleanTop) * 0.4
+          const anchor = cleanTop + (cleanBottom - cleanTop) * 0.67
           const spanRect = span.getBoundingClientRect()
           const wordCenter = spanRect.top + spanRect.height / 2
           const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight

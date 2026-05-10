@@ -69,9 +69,10 @@ export function createCommandDrawer(
   sheet.appendChild(handle)
 
   // (Book title + language switcher used to live in a sticky drawer header
-  // here. They moved to the main-view transport bar so the catalog has more
-  // breathing room when the drawer is open. See `appShell.ts` —
-  // `transportNowPlaying`.)
+  // here. The book title now sits inline in the chapter row of the
+  // transport bar — set via `transport.setBookTitle()` from each reader.
+  // The compact language switcher sits above the chapter / scrub /
+  // controls, inserted by `appShell.ts`.)
 
   // --- Screen nav tabs ---
   const screenNav = document.createElement("div")

@@ -430,7 +430,6 @@ export function createAppShell(
 
   function refreshSwitchers(): void {
     compactSwitcher.refresh()
-    updateTransportTitle()
   }
 
   function reportInstallFailure(result: Extract<InstallResult, { ok: false }>): void {
@@ -466,29 +465,12 @@ export function createAppShell(
     ...switcherCallbacks,
   })
 
-  // --- Transport "now playing" wrapper: book title + language switcher ---
-  // Used to live in a sticky drawer header. Moved here so the catalog UI has
-  // breathing room when the drawer is open, and so the title is always
-  // visible while reading without opening the drawer.
-  const transportNowPlaying = document.createElement("div")
-  transportNowPlaying.className = "transport-now-playing"
-
-  const transportNowPlayingTitle = document.createElement("div")
-  transportNowPlayingTitle.className = "transport-now-playing-title"
-  transportNowPlaying.appendChild(transportNowPlayingTitle)
-  transportNowPlaying.appendChild(compactSwitcher.element)
-
-  function updateTransportTitle(): void {
-    const { nowPlaying } = drawerStore.getState()
-    const title = nowPlaying.bookTitle || ""
-    if (title) {
-      transportNowPlayingTitle.textContent = title
-      transportNowPlayingTitle.style.display = ""
-    } else {
-      transportNowPlayingTitle.style.display = "none"
-    }
-  }
-  updateTransportTitle()
+  // --- Compact narration switcher placement ---
+  // The book title used to render in its own row above this switcher; it now
+  // lives inline next to the chapter label inside the transport bar (set by
+  // each reader via `transport.setBookTitle`), so this slot only carries the
+  // language pills. Inserted as the first child of the transport bar so the
+  // pills sit right above the chapter / scrub / controls.
 
   // --- Command Drawer ---
   const drawer = createCommandDrawer(container, {
@@ -580,9 +562,6 @@ export function createAppShell(
       state.currentNarrationId
     ) {
       switchToNarration(state.currentNarrationId, false)
-    }
-    if (state.nowPlaying !== prev.nowPlaying) {
-      updateTransportTitle()
     }
   })
 
@@ -680,12 +659,11 @@ export function createAppShell(
       ".earthgate-transport, .stargate-transport"
     ) as HTMLElement | null
     if (transportEl) {
-      transportEl.insertBefore(transportNowPlaying, transportEl.firstChild)
+      transportEl.insertBefore(compactSwitcher.element, transportEl.firstChild)
     } else if (uiOverlay) {
-      uiOverlay.append(transportNowPlaying)
+      uiOverlay.append(compactSwitcher.element)
     }
     compactSwitcher.refresh()
-    updateTransportTitle()
   }
 
   /** THE one function for activating a narration. Sets the canonical store,
