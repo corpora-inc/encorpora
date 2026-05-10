@@ -156,29 +156,6 @@
   stroke-linecap: round;
 }
 
-/* --- Transport "now playing" wrapper (book title + compact language switcher).
-   Lives in the reader's transport bar above the chapter/scrub/controls.
-   Replaces the legacy drawer sticky header — see appShell `transportNowPlaying`. */
-
-.transport-now-playing {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: stretch;
-  min-width: 0;
-}
-
-.transport-now-playing-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--catalog-text, currentColor);
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 0.9;
-}
-
 /* ============================================================
    Narration Switcher — used in two placements via `--mode`:
      `--compact` : on the reader surface, top-left, mirror of hamburger

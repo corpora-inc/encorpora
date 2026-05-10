@@ -9,6 +9,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [0.12.6] - 2026-05-07
 
+### Added
+- `SKAdNetworkItems` entry for Google Ads (`cstr6suwn9.skadnetwork`)
+  in iOS `info.properties` (template at `src-tauri/ios/project.yml`),
+  authorizing Apple to deliver SKAdNetwork conversion postbacks to
+  Google for paid acquisition campaigns. Metadata only; no SDK
+  integration. xcodegen regenerates `Info.plist` from the template,
+  so the entry round-trips through any future Xcode project rebuild.
+
 ### Changed
 - Release build now ships native debug symbols to Play Console.
   `Cargo.toml` release profile no longer strips the Rust `.so`

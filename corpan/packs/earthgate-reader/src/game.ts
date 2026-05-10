@@ -458,6 +458,7 @@ export function createEarthgateReader(
 
   // Transport bar
   const transport = createTransportBar(ui, "earthgate")
+  transport.setBookTitle(bookDisplayName)
 
   // --- Swipe navigation ---
   paragraphView.onNext(() => {

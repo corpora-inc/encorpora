@@ -1,4 +1,6 @@
-(() => {
+import "./styles.css"
+
+;(() => {
   const GAME_ID = "hanzipan";
 
   const template = `
@@ -1055,9 +1057,9 @@
       ctx.lineJoin = "round";
       this.medians.forEach((median, index) => {
         const color = highlightIndex === index ? accent : ghostColor;
-        ctx.strokeStyle = color.trim() || "rgba(11,107,111,0.22)";
+        ctx.strokeStyle = color.trim() || "rgba(107,76,42,0.22)";
         ctx.lineWidth = highlightIndex === index ? this.highlightWidth : this.ghostWidth;
-        ctx.shadowColor = color.trim() || "rgba(11,107,111,0.22)";
+        ctx.shadowColor = color.trim() || "rgba(107,76,42,0.22)";
         ctx.shadowBlur = highlightIndex === index ? this.highlightWidth * 0.18 : this.ghostWidth * 0.16;
         drawSmoothStroke(ctx, median, (pt) => this.toCanvas(pt));
       });
@@ -1067,7 +1069,7 @@
           if (index !== 0 && highlightIndex !== index) return;
           const [sx, sy] = this.toCanvas(median[0]);
           const color = highlightIndex === index ? accent : ghostColor;
-          ctx.fillStyle = color.trim() || "rgba(11,107,111,0.22)";
+          ctx.fillStyle = color.trim() || "rgba(107,76,42,0.22)";
           ctx.font = "12px 'Avenir Next', 'Futura', sans-serif";
           ctx.fillText(String(index + 1), sx + 6, sy - 6);
         });
@@ -1396,7 +1398,7 @@
         let t = 0;
         const step = () => {
           ctx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
-          const color = accent.trim() || "#0b6b6f";
+          const color = accent.trim() || "#8b6914";
           if (median && median.length >= 2) {
             ctx.strokeStyle = color;
             ctx.lineCap = "round";
@@ -2020,9 +2022,9 @@
       ? new HanziWriterLayer(writerLayerEl, () => {
         const styles = getComputedStyle(root);
         return {
-          ghost: styles.getPropertyValue("--stroke-ghost").trim() || "rgba(11,107,111,0.22)",
-          accent: styles.getPropertyValue("--accent").trim() || "#0b6b6f",
-          user: styles.getPropertyValue("--stroke-user").trim() || "rgba(15,139,141,0.9)",
+          ghost: styles.getPropertyValue("--stroke-ghost").trim() || "rgba(107,76,42,0.22)",
+          accent: styles.getPropertyValue("--accent").trim() || "#8b6914",
+          user: styles.getPropertyValue("--stroke-user").trim() || "#1a1410",
         };
       })
       : null;
@@ -2618,7 +2620,7 @@
           if (!brushWidget) {
             brushWidget = createBrushWidget(root, brushStore, () => {
               const styles = getComputedStyle(root);
-              return { stroke: styles.getPropertyValue("--stroke-user").trim() || "#0f8b8d" };
+              return { stroke: styles.getPropertyValue("--stroke-user").trim() || "#1a1410" };
             });
           }
           brushWidget.toggle();

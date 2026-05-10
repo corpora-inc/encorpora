@@ -1,7 +1,7 @@
 {
   "id": "hanzipan",
   "name": "Hanzipan",
-  "version": "0.3.3",
+  "version": "0.5.0",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
@@ -10,5 +10,6 @@
   "sdkVersion": "0.1.0",
   "databases": {
     "main": "data/hanzi.sqlite3"
-  }
+  },
+  "devRevision": "2026-05-10T05:13:44.653Z"
 }
