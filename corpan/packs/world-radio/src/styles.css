@@ -144,13 +144,10 @@
 
 .wr-main {
   flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   padding: 0;
   scrollbar-color: var(--wr-fg-faint) transparent;
-}
-
-.wr-root.has-player .wr-main {
-  padding-bottom: calc(var(--wr-player-h) + var(--wr-sp-4) + env(safe-area-inset-bottom));
 }
 
 /* Layout: full-bleed at every viewport. Content goes edge-to-edge; the
@@ -268,6 +265,13 @@
   color: var(--wr-fg-dim);
   margin: 2px 0 0 calc(36px + var(--wr-sp-3));
   font-variant-numeric: tabular-nums;
+}
+
+/* In map mode the subtitle ("189 stations · 66 with location") is wasted
+   vertical real estate — the map markers themselves communicate density
+   visually. Hide it so the map gets that room back. */
+.wr-stationlist[data-view="map"] .wr-subtitle {
+  display: none;
 }
 
 /* ============================================================
@@ -943,28 +947,118 @@
   .wr-skeleton-art, .wr-skeleton-line { animation: none; opacity: 0.7; }
 }
 
+/* Map-specific skeleton — full-bleed panel with a slowly-rotating globe and
+   a soft shimmer, sized to fill the map slot rather than show "fake rows". */
+.wr-map-skeleton {
+  flex: 1 1 auto;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wr-sp-4);
+  margin: var(--wr-sp-3) var(--wr-edge);
+  background: var(--wr-chip-bg);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+/* Diagonal sheen sweeping across the panel — masked to stay inside the
+   border-radius. Subtle: opacity tops out at ~14%. */
+.wr-map-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 65%
+  );
+  transform: translateX(-60%);
+  animation: wr-map-sheen 2.4s var(--wr-ease) infinite;
+}
+.wr-map-skeleton-globe {
+  width: 96px;
+  height: 96px;
+  color: var(--wr-fg-dim);
+  animation: wr-globe-spin 8s linear infinite;
+}
+.wr-map-skeleton-globe svg {
+  width: 100%;
+  height: 100%;
+}
+.wr-globe-disc {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+.wr-globe-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.45;
+}
+.wr-map-skeleton-label {
+  color: var(--wr-fg-dim);
+  font-size: var(--wr-text-sm);
+  letter-spacing: 0.01em;
+  /* Sit above the sheen sweep so the text stays legible. */
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes wr-map-sheen {
+  0%   { transform: translateX(-60%); }
+  100% { transform: translateX(60%); }
+}
+@keyframes wr-globe-spin {
+  from { transform: rotate(0); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-map-skeleton::after { animation: none; opacity: 0; }
+  .wr-map-skeleton-globe { animation: none; }
+}
+
 /* ============================================================
    Player bar
    ============================================================ */
 
+/* Player bar is the third row of the .wr-root flex column (HEADER/MAP/CONTROLS
+   for map view, header-in-main / list-in-main / controls for list view). It's
+   *not* an absolute overlay — it takes its own row, so the map / list never
+   has to reserve padding for it and there's no z-index dance. When idle the
+   row collapses to zero height; when active it expands to its content slab
+   plus the safe-area inset. */
 .wr-player {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: var(--wr-sp-3);
-  padding: var(--wr-sp-3) clamp(var(--wr-sp-4), 5vw, var(--wr-sp-8));
-  padding-bottom: max(var(--wr-sp-3), env(safe-area-inset-bottom));
+  height: 0;
+  overflow: hidden;
+  padding: 0 clamp(var(--wr-sp-4), 5vw, var(--wr-sp-8));
   background: var(--wr-bg-elev);
-  border-top: 1px solid var(--wr-rule);
-  transform: translateY(110%);
-  transition: transform var(--wr-dur-slow) var(--wr-ease);
-  z-index: 10;
+  border-top: 1px solid transparent;
+  transition: height var(--wr-dur-slow) var(--wr-ease);
+  /* Sit above any sibling stacking context (notably the leaflet map) so
+     transient transformed children of leaflet can't bleed over the bar. */
+  position: relative;
+  z-index: 8;
 }
 .wr-player.is-active {
-  transform: translateY(0);
+  /* Total height = content slab (--wr-player-h) + safe-area below the home
+     indicator, or on Android (where env(safe-area-inset-bottom) is often 0
+     even with gesture nav) a guaranteed minimum gutter so the player isn't
+     kissing the system gesture handle. With align-items: center and only a
+     padding-bottom of safe-area, items center within the slab above the
+     inset — what the user reads as "the bar". */
+  height: calc(var(--wr-player-h) + max(env(safe-area-inset-bottom), 12px));
+  padding-bottom: max(env(safe-area-inset-bottom), 12px);
+  border-top-color: var(--wr-rule);
 }
 
 .wr-player-art {
@@ -1035,34 +1129,72 @@
   color: var(--wr-error);
 }
 
+/* ICY now-playing strip — fed by the native plugin's `icy-metadata` events.
+   Sits between the station name and the meta line. Soft accent color so it
+   doesn't compete with the station title; gentle fade-in when the
+   StreamTitle changes. The text overflow-clips with ellipsis; we don't
+   marquee because moving text in a persistent player bar reads as restless. */
+.wr-player-icy {
+  font-size: var(--wr-text-xs);
+  font-weight: 500;
+  color: var(--wr-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.005em;
+}
+.wr-player-icy.is-fresh .wr-player-icy-text {
+  animation: wr-icy-fresh var(--wr-dur-slow) var(--wr-ease);
+}
+@keyframes wr-icy-fresh {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ============================================================
    Map view
    ============================================================ */
 
-.wr-map-wrap {
+/*
+   Layout (.wr-root is a flex column): HEADER / MAIN / CONTROLS.
+   - .wr-main holds either the list view or the map view.
+   - In map view, .wr-stationlist becomes its own flex column inside main:
+       sticky-header / body. Body fills the rest, .wr-map fills body.
+   - The player bar is a flex sibling of .wr-main, not an overlay. It either
+     occupies its row (active) or collapses to 0 height (idle). No padding
+     hacks, no z-index, no `:has()`.
+*/
+.wr-stationlist {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.wr-stationlist[data-view="map"] {
+  /* Fill .wr-main exactly so the body row has a bounded height to flex
+     against. */
+  height: 100%;
+  overflow: hidden;
+}
+.wr-stationlist[data-view="map"] .wr-body {
+  flex: 1 1 auto;
+  min-height: 0;
   position: relative;
-  /* 280px accounts for the sticky region: header (~80) + search (~50) +
-     filter row (~40) + subtitle (~24) + padding (~80). The filter rail is
-     sticky in both list and map mode (in map mode the sort pill is hidden
-     but search + tags remain useful for narrowing markers). We also subtract
-     the top safe area because `.wr-root` adds it as padding, which reduces
-     the area `100dvh` represents inside this element. */
-  height: calc(100dvh - 280px - env(safe-area-inset-top));
-  min-height: 320px;
+}
+.wr-map-wrap {
+  position: absolute;
+  inset: 0;
   margin: 0;
   border-radius: 0;
   overflow: hidden;
-}
-.wr-root.has-player .wr-map-wrap {
-  height: calc(
-    100dvh - 280px - var(--wr-player-h)
-            - env(safe-area-inset-top)
-            - env(safe-area-inset-bottom)
-  );
+  /* Leaflet's internal panes use z-index: 200 / 400 / 700 / 1000. Without
+     a containing stacking context those values leak into the parent and
+     beat the player bar + close button. `isolation: isolate` opens a fresh
+     stacking context here so leaflet's z-indexes stay scoped to the map. */
+  isolation: isolate;
 }
 .wr-map {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   background: var(--wr-bg-elev);
 }
 
@@ -1297,4 +1429,116 @@
 @keyframes wr-spin {
   from { transform: rotate(0); }
   to   { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Browse shell (tabs: Languages | World map)
+
+   The browse screen wraps the existing language list and the new global
+   map view in a tabbed shell. Tabs reuse `.wr-segmented` for visual
+   parity with the per-language list/map toggle inside station detail.
+   ============================================================ */
+
+.wr-browseshell {
+  display: flex;
+  flex-direction: column;
+}
+/* Languages tab: let the page grow naturally and scroll inside .wr-main.
+   Map tab: pin the shell to its parent's bounds so the map can claim a
+   bounded slot and clip cleanly — otherwise the body collapses to zero
+   height and the leaflet container sinks behind sibling chrome. */
+.wr-browseshell[data-active-tab="map"] {
+  height: 100%;
+  overflow: hidden;
+}
+
+.wr-browse-tabs {
+  display: flex;
+  justify-content: center;
+  padding: clamp(14px, 2.2vw, 22px) var(--wr-edge) clamp(10px, 1.6vw, 16px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--wr-bg);
+}
+/* Icon-only tabs — the icons (list / globe-map) carry the meaning, no need
+   for English labels that wouldn't suit a multilingual product anyway. */
+
+.wr-tabpanel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ============================================================
+   Global map view
+   ============================================================ */
+
+.wr-globalmap {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  /* Hard-clip — the absolutely-positioned .wr-map-wrap inside body must
+     not bleed above the sticky header into the host's safe-area inset. */
+  overflow: hidden;
+}
+
+.wr-globalmap-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  /* The map inside is `position: absolute; inset: 0` — without an explicit
+     positioning context here, it would resolve `inset: 0` against an
+     ancestor that includes the safe-area inset and the sticky header,
+     so the tile layer + zoom controls would render up in the system bar.
+     Anchoring the absolute child to *this* box keeps it pinned to the
+     visible map slot only. */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Language chip strip — sits beneath the search/tags rail in the global
+   map's sticky region. Horizontal scroller, same fade pattern as wr-tags. */
+.wr-langstrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--wr-sp-2) 28px var(--wr-sp-3) var(--wr-edge);
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+.wr-langstrip::-webkit-scrollbar { display: none; }
+
+.wr-langchip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 14px;
+  font-size: var(--wr-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  border-radius: 999px;
+  background: var(--wr-chip-bg);
+  color: var(--wr-fg);
+  white-space: nowrap;
+  transition: background var(--wr-dur-fast) var(--wr-ease),
+              color var(--wr-dur-fast) var(--wr-ease),
+              transform var(--wr-dur-fast) var(--wr-ease);
+}
+.wr-langchip:hover {
+  background: var(--wr-chip-hover);
+}
+.wr-langchip:active {
+  transform: scale(0.96);
+}
+.wr-langchip[aria-pressed="true"] {
+  background: var(--wr-chip-active-bg);
+  color: var(--wr-chip-active-fg);
 }

@@ -11,8 +11,10 @@
     "tts:allow-speak",
     "tts:default",
     "audio-keepalive:default",
+    "radio-stream:default",
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",
+    "stt:default",
     "os:default"
   ]
 }

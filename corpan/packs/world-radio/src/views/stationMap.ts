@@ -15,10 +15,44 @@ import "leaflet/dist/leaflet.css"
 import "leaflet.markercluster"
 import "leaflet.markercluster/dist/MarkerCluster.css"
 import type { RadioStation } from "../api/radioBrowser"
+import type { PlacedStation } from "../api/stationGeo"
 import { el, clear } from "../ui/dom"
 import { createStationArt } from "../ui/stationArt"
 import { countryCodeToFlag } from "../ui/flagEmoji"
 import { ICON_PLAY } from "../ui/icons"
+
+/**
+ * A station the map can render. Either a raw `RadioStation` (which must
+ * have `geo_lat`/`geo_long`) or a `PlacedStation` whose resolved coords
+ * already live on `_lat`/`_lon`.
+ */
+type MapStation = RadioStation | PlacedStation
+
+function coordsFor(s: MapStation): [number, number] | null {
+  const placed = s as PlacedStation
+  if (
+    typeof placed._lat === "number" &&
+    typeof placed._lon === "number" &&
+    Number.isFinite(placed._lat) &&
+    Number.isFinite(placed._lon) &&
+    Math.abs(placed._lat) <= 90 &&
+    Math.abs(placed._lon) <= 180
+  ) {
+    return [placed._lat, placed._lon]
+  }
+  if (
+    typeof s.geo_lat === "number" &&
+    typeof s.geo_long === "number" &&
+    Number.isFinite(s.geo_lat) &&
+    Number.isFinite(s.geo_long) &&
+    Math.abs(s.geo_lat) <= 90 &&
+    Math.abs(s.geo_long) <= 180 &&
+    !(s.geo_lat === 0 && s.geo_long === 0)
+  ) {
+    return [s.geo_lat, s.geo_long]
+  }
+  return null
+}
 
 const TILE_LIGHT = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
 const TILE_DARK = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -29,43 +63,41 @@ export type StationMap = {
   setActiveUuid: (uuid: string | null) => void
   /** Pan/zoom to the station's coordinates and open its popup. */
   focusStation: (uuid: string) => void
+  /**
+   * Replace the rendered marker set without tearing down the map / tile
+   * layer. Used by the global map when filters change so the user keeps
+   * their current pan/zoom.
+   */
+  setStations: (stations: MapStation[]) => void
   dispose: () => void
 }
 
 export function createStationMap(opts: {
   container: HTMLElement
-  stations: RadioStation[]
+  stations: MapStation[]
   activeUuid: string | null
   onPlay: (station: RadioStation) => void
   onShowInList: (station: RadioStation) => void
+  /**
+   * Cluster radius — defaults to 36 (per-language). Global map bumps this
+   * to 60 so the world view doesn't render a wall of overlapping clusters.
+   */
+  maxClusterRadius?: number
+  /**
+   * Stream marker insertion in chunks instead of inserting all at once.
+   * markercluster's recommended switch for >5k markers — keeps the UI
+   * responsive while building the cluster index.
+   */
+  chunkedLoading?: boolean
+  /**
+   * If "world", start at zoom 2 centered on [20, 0] without auto-fitting.
+   * Default "fit" zooms to bounds (good for one country / one language).
+   */
+  initialView?: "fit" | "world"
 }): StationMap {
   clear(opts.container)
   const mapEl = el("div", { class: "wr-map" })
   opts.container.appendChild(mapEl)
-
-  // Filter to stations with valid geo coords.
-  const placed = opts.stations.filter(
-    (s) =>
-      typeof s.geo_lat === "number" &&
-      typeof s.geo_long === "number" &&
-      Number.isFinite(s.geo_lat) &&
-      Number.isFinite(s.geo_long) &&
-      Math.abs(s.geo_lat as number) <= 90 &&
-      Math.abs(s.geo_long as number) <= 180
-  )
-
-  if (placed.length === 0) {
-    clear(opts.container)
-    const empty = el("div", { class: "wr-empty" }, [
-      "None of these stations have map locations yet.",
-    ])
-    opts.container.appendChild(empty)
-    return {
-      setActiveUuid: () => {},
-      focusStation: () => {},
-      dispose: () => {},
-    }
-  }
 
   const isDark = matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
   const tileUrl = isDark ? TILE_DARK : TILE_LIGHT
@@ -88,9 +120,10 @@ export function createStationMap(opts: {
   const cluster = (L as unknown as {
     markerClusterGroup: (opts: Record<string, unknown>) => L.LayerGroup
   }).markerClusterGroup({
-    maxClusterRadius: 36,
+    maxClusterRadius: opts.maxClusterRadius ?? 36,
     showCoverageOnHover: false,
     spiderfyOnMaxZoom: true,
+    chunkedLoading: opts.chunkedLoading ?? false,
     iconCreateFunction: (c: { getChildCount: () => number }) =>
       L.divIcon({
         html: `<div class="wr-cluster">${c.getChildCount()}</div>`,
@@ -99,11 +132,16 @@ export function createStationMap(opts: {
       }),
   }) as L.LayerGroup & {
     addLayers: (markers: L.Marker[]) => void
+    removeLayers: (markers: L.Marker[]) => void
     clearLayers: () => void
   }
+  cluster.addTo(map)
 
   const markersByUuid = new Map<string, L.Marker>()
   let activeUuid = opts.activeUuid
+  // Only fit to bounds on the *first* mount in "fit" mode. Re-renders via
+  // setStations should not throw away the user's pan/zoom.
+  let firstFit = opts.initialView !== "world"
 
   function buildIcon(active: boolean): L.DivIcon {
     // 44x44 hit area with a 16px visible dot centered inside.
@@ -117,33 +155,43 @@ export function createStationMap(opts: {
     })
   }
 
-  const markers: L.Marker[] = []
-  const bounds = L.latLngBounds([])
-  for (const station of placed) {
-    const lat = station.geo_lat as number
-    const lng = station.geo_long as number
-    const isActive = activeUuid === station.stationuuid
-    const marker = L.marker([lat, lng], {
-      icon: buildIcon(isActive),
-      title: station.name,
-    })
-    marker.bindPopup(() => buildPopover(station, opts.onPlay, opts.onShowInList), {
-      closeButton: false,
-      maxWidth: 280,
-      autoPan: true,
-      offset: [0, -4],
-    })
-    markersByUuid.set(station.stationuuid, marker)
-    markers.push(marker)
-    bounds.extend([lat, lng])
+  function loadStations(stations: MapStation[]) {
+    cluster.clearLayers()
+    markersByUuid.clear()
+
+    const bounds = L.latLngBounds([])
+    const markers: L.Marker[] = []
+    for (const station of stations) {
+      const c = coordsFor(station)
+      if (!c) continue
+      const [lat, lng] = c
+      const isActive = activeUuid === station.stationuuid
+      const marker = L.marker([lat, lng], {
+        icon: buildIcon(isActive),
+        title: station.name,
+      })
+      marker.bindPopup(
+        () => buildPopover(station, opts.onPlay, opts.onShowInList),
+        {
+          closeButton: false,
+          maxWidth: 280,
+          autoPan: true,
+          offset: [0, -4],
+        }
+      )
+      markersByUuid.set(station.stationuuid, marker)
+      markers.push(marker)
+      bounds.extend([lat, lng])
+    }
+    cluster.addLayers(markers)
+
+    if (firstFit && bounds.isValid()) {
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 8 })
+      firstFit = false
+    }
   }
 
-  cluster.addLayers(markers)
-  cluster.addTo(map)
-
-  if (bounds.isValid()) {
-    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 8 })
-  }
+  loadStations(opts.stations)
 
   return {
     setActiveUuid(uuid: string | null) {
@@ -165,6 +213,9 @@ export function createStationMap(opts: {
       map.setView(ll, Math.max(map.getZoom(), 8), { animate: true })
       // Defer popup until after fly so the popup positions correctly.
       requestAnimationFrame(() => marker.openPopup())
+    },
+    setStations(next) {
+      loadStations(next)
     },
     dispose() {
       map.remove()

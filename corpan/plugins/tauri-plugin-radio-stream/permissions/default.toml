@@ -1,0 +1,11 @@
+[default]
+description = "Default permissions for the radio-stream plugin"
+permissions = [
+    "allow-play",
+    "allow-pause",
+    "allow-resume",
+    "allow-stop",
+    "allow-set-volume",
+    "allow-register-listener",
+    "allow-remove-listener",
+]

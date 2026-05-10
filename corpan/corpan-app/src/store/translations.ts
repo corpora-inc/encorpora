@@ -49,10 +49,24 @@ export const WELCOME_BY_LANG = {
     "pa-Arab": "خوش آمدید",
     ur: "خوش آمديد",
 
+    // Languages added in 0.12.2 (now shipping)
+    ne: "स्वागत छ",
+    "pt-PT": "Bem-vindo",
+    hr: "Dobrodošli",
+    sr: "Добродошли",
+    uk: "Ласкаво просимо",
+    bg: "Добре дошли",
+    ro: "Bun venit",
+    ca: "Benvingut",
+    cs: "Vítejte",
+    lt: "Sveiki atvykę",
+    sk: "Vitajte",
+    sl: "Dobrodošli",
+    "yue-Hant-HK": "歡迎",
+
     // Coming soon languages
     my: "ကြိုဆိုပါတယ်",
     km: "សូមស្វាគមន៍",
-    "yue-Hant-HK": "歡迎",
 } as const;
 export type WelcomeCode = keyof typeof WELCOME_BY_LANG;
 
@@ -97,18 +111,23 @@ export const AUTONYM_BY_LANG = {
     "pa-Arab": "پنجابی",
     ur: "اردو",
 
-    // Coming soon languages
-    // Slavic / Balkan / Eastern Europe
+    // Languages added in 0.12.2 (now shipping) — Slavic / Balkan / Eastern Europe / Romance / Sinitic / Nepali
     uk: "Українська",
     ro: "Română",
     cs: "Čeština",
     sk: "Slovenčina",
+    sl: "Slovenščina",
     sr: "Српски",
     hr: "Hrvatski",
     bg: "Български",
+    lt: "Lietuvių",
+    "pt-PT": "Português (Europa)",
+    ca: "Català",
+    ne: "नेपाली",
+
+    // Coming soon languages
     // Indian subcontinent
     ml: "മലയാളം",
-    ne: "नेपाली",
     si: "සිංහල",
     // SE Asian
     fil: "Filipino",
@@ -168,6 +187,21 @@ export const MAKE_PRIMARY_BY_LANG = {
     "pa-Guru": "ਪੰਜਾਬੀ ਨੂੰ ਮੇਰੀ ਮੁੱਖ ਭਾਸ਼ਾ ਬਣਾਓ",
     "pa-Arab": "پنجابی کو میری بنیادی زبان بنائیں",
     ur: "اردو کو میری بنیادی زبان بنائیں",
+
+    // Languages added in 0.12.2
+    ne: "नेपालीलाई मेरो प्राथमिक भाषा बनाउनुहोस्",
+    "pt-PT": "Definir o português (europeu) como a minha língua principal",
+    hr: "Postavi hrvatski kao moj primarni jezik",
+    sr: "Постави српски као мој основни језик",
+    uk: "Зробити українську моєю основною мовою",
+    bg: "Направи българския мой основен език",
+    ro: "Setează româna ca limba mea principală",
+    ca: "Defineix el català com a llengua principal",
+    "yue-Hant-HK": "將粵語設為我嘅主要語言",
+    cs: "Nastavit češtinu jako můj hlavní jazyk",
+    lt: "Padaryti lietuvių mano pagrindine kalba",
+    sk: "Nastaviť slovenčinu ako môj hlavný jazyk",
+    sl: "Nastavi slovenščino kot moj glavni jezik",
 } as const;
 export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
 

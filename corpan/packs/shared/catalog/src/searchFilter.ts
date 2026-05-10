@@ -29,16 +29,19 @@ export function groupByBook(narrations: CatalogNarrationEntry[]): BookGroup[] {
     }
   }
 
-  // Sort books by series then volume
+  // Sort books by narration count (desc), then volume, then title
   return [...map.values()].sort((a, b) => {
-    const sa = a.series || ""
-    const sb = b.series || ""
-    if (sa !== sb) return sa.localeCompare(sb)
-    return (a.volume ?? 0) - (b.volume ?? 0)
+    if (a.narrations.length !== b.narrations.length) {
+      return b.narrations.length - a.narrations.length
+    }
+    if ((a.volume ?? 0) !== (b.volume ?? 0)) {
+      return (a.volume ?? 0) - (b.volume ?? 0)
+    }
+    return a.bookTitle.localeCompare(b.bookTitle)
   })
 }
 
-/** Group books by series */
+/** Group books by series, ordered so the series with the most-narrated book floats up */
 export function groupBySeries(narrations: CatalogNarrationEntry[]): SeriesGroup[] {
   const books = groupByBook(narrations)
   const map = new Map<string, SeriesGroup>()
@@ -53,7 +56,12 @@ export function groupBySeries(narrations: CatalogNarrationEntry[]): SeriesGroup[
     group.books.push(book)
   }
 
-  return [...map.values()]
+  return [...map.values()].sort((a, b) => {
+    const ma = Math.max(...a.books.map((b) => b.narrations.length))
+    const mb = Math.max(...b.books.map((b) => b.narrations.length))
+    if (ma !== mb) return mb - ma
+    return a.series.localeCompare(b.series)
+  })
 }
 
 /** Filter narrations by language (empty string = all) */

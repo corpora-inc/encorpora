@@ -132,6 +132,27 @@ export function trackMarkerPlay(corpanCode: string, station: RadioStation): void
   })
 }
 
+/** User opened the global (top-level) world map. */
+export function trackGlobalMapOpened(): void {
+  analytics.track("radio_global_map_opened")
+}
+
+/** User changed the language filter on the global map. */
+export function trackGlobalMapLanguageFilter(codes: string[]): void {
+  analytics.track("radio_global_map_lang_filter", {
+    languages: codes.slice(0, 12).join(","),
+    count: codes.length,
+  })
+}
+
+/** User toggled a tag chip on the global map. */
+export function trackGlobalMapTagFilter(tag: string, applied: boolean): void {
+  analytics.track("radio_global_map_tag_filter", {
+    tag: truncate(tag, 40),
+    applied,
+  })
+}
+
 function truncate(s: string, max: number): string {
   if (!s) return ""
   return s.length > max ? s.slice(0, max) : s

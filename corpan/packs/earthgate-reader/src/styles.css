@@ -14,9 +14,13 @@
   --eg-muted: #a89279;
 
   /* Keeps the paragraph's centered short content and auto-scrolled current
-     word above the transport's SOLID controls zone. Less than the transport's
-     full height so text can flow behind the translucent top gradient. */
-  --eg-transport-clearance: 130px;
+     word above the transport's solid zone. Bumped from the original 130px
+     to account for the compact language switcher band the appShell inserts
+     as the first child of the transport bar (`narration-switcher--compact`,
+     ~50px). The book title sits inline next to the chapter, so it adds no
+     extra height. Slightly less than the transport's full height so text
+     can still flow behind the translucent top gradient. */
+  --eg-transport-clearance: 140px;
 
   /* Symmetric fade band at the top of the reading area: tall enough to mask
      text behind the hamburger (48px at top:15+safe → bottom at safe+63) and
@@ -381,14 +385,46 @@ body {
   text-overflow: ellipsis;
 }
 
-/* --- Chapter label --- */
+/* --- Chapter label ---
+   Two stacked rows on the left: book title (italic gold, small) above
+   the chapter title (semibold brown, regular). Each row truncates its
+   own text with an ellipsis so a long chapter title can never collide
+   with the time on the right. When the book title is empty the row
+   collapses to zero height and the chapter title sits alone vertically
+   centered against the time. */
 
 .earthgate-chapter {
   padding: 0;
-  color: var(--eg-brown);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 12px;
+  letter-spacing: 0.005em;
+  line-height: 1.25;
+}
+
+.earthgate-book-prefix {
   font-size: 13px;
+  color: var(--eg-accent);
+  font-style: italic;
   font-weight: 500;
-  max-width: 60vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.earthgate-book-prefix:empty {
+  display: none;
+}
+
+.earthgate-chapter-title {
+  font-size: 10px;
+  color: var(--eg-muted);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -430,7 +466,6 @@ body {
 
   .earthgate-chapter {
     font-size: 11px;
-    max-width: 50vw;
   }
 
   .earthgate-time {
@@ -463,7 +498,7 @@ body {
 
 @media (max-height: 520px) {
   :root {
-    --eg-transport-clearance: 90px;
+    --eg-transport-clearance: 100px;
     --eg-top-clearance: 68px;
   }
 
@@ -503,7 +538,6 @@ body {
 
   .earthgate-chapter {
     font-size: 11px;
-    max-width: 50vw;
   }
 
   .earthgate-time {
@@ -524,7 +558,7 @@ body {
 /* Very short viewports (tiny resized windows, small landscape phones). */
 @media (max-height: 380px) {
   :root {
-    --eg-transport-clearance: 70px;
+    --eg-transport-clearance: 80px;
     --eg-top-clearance: 58px;
   }
 

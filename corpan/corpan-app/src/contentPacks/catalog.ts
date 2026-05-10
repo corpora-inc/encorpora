@@ -5,6 +5,10 @@ export type PurchaseInfo = {
   platformPackId?: string
 }
 
+/** Host platforms a pack can declare support for. Mirrors the values
+ *  returned by `@tauri-apps/plugin-os` `type()`. */
+export type HostPlatform = "ios" | "android" | "macos" | "windows" | "linux"
+
 export type CatalogGame = {
   id: string
   name: string
@@ -63,8 +67,22 @@ export type CatalogV3Entry = {
   imageUrl?: string
   purchase?: PurchaseInfo
   minAppVersion: string
+  /** Optional upper bound. Catalog may carry multiple entries with the
+   *  same `id` but disjoint `[minAppVersion, maxAppVersion]` ranges, so a
+   *  pack can ship a different version of itself to old vs. new apps
+   *  (e.g. World Radio 0.3.x for ≤ 0.11.x hosts, 0.5.x for ≥ 0.12.0). */
+  maxAppVersion?: string
   channel: PackChannel
   packType?: string
+  /** Restrict the pack to specific host platforms. Absent = available
+   *  everywhere. e.g. ["ios"] for packs that depend on native iOS-only
+   *  plugins (Pronunciation Coach → WhisperKit / Apple Neural Engine). */
+  platforms?: HostPlatform[]
+  /** Minimum OS version (string from `@tauri-apps/plugin-os` `version()`).
+   *  Compared via semantic version ordering — major.minor only is fine,
+   *  trailing zeros are tolerated. Used to gate packs that need APIs from
+   *  a specific iOS / Android / macOS release. */
+  minOSVersion?: string
 }
 
 export type CatalogV3 = {
@@ -315,6 +333,17 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
   if (!id || !version || !minAppVersion) return null
   const channel: PackChannel =
     channelRaw === "preview" ? "preview" : "stable"
+  const allowedPlatforms: HostPlatform[] = [
+    "ios", "android", "macos", "windows", "linux",
+  ]
+  let platforms: HostPlatform[] | undefined
+  if (Array.isArray(r.platforms)) {
+    const filtered = r.platforms
+      .filter((p): p is HostPlatform =>
+        typeof p === "string" &&
+        (allowedPlatforms as readonly string[]).includes(p))
+    platforms = filtered.length ? filtered : undefined
+  }
   return {
     id,
     name: name || id,
@@ -325,8 +354,11 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     imageUrl: toOptionalString(r.imageUrl),
     purchase: parsePurchase(r.purchase),
     minAppVersion,
+    maxAppVersion: toOptionalString(r.maxAppVersion),
     channel,
     packType: toOptionalString(r.packType),
+    platforms,
+    minOSVersion: toOptionalString(r.minOSVersion),
   }
 }
 
@@ -352,11 +384,36 @@ export const filterCatalogForApp = (
   v3: CatalogV3,
   appVersion: string,
   devMode: boolean,
+  host?: { platform?: HostPlatform; osVersion?: string },
 ): CatalogGame[] => {
+  const hostPlatform = host?.platform
+  const hostOsVersion = host?.osVersion
   return v3.packs
     .filter((entry) => {
       if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
+      if (
+        entry.maxAppVersion &&
+        compareVersions(appVersion, entry.maxAppVersion) > 0
+      ) {
+        return false
+      }
       if (!devMode && entry.channel === "preview") return false
+      // Platform restriction. If a pack declares `platforms`, the host's
+      // platform must be in the list (e.g. Pronunciation Coach is iOS-
+      // only because it depends on WhisperKit / ANE). When the host
+      // platform is unknown (older app, web preview), be permissive
+      // rather than hide everything.
+      if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
+        if (!entry.platforms.includes(hostPlatform)) return false
+      }
+      // OS version gate — keeps users on too-old iOS / Android from
+      // installing packs that won't run. Skipped when host OS version
+      // isn't known.
+      if (entry.minOSVersion && hostOsVersion) {
+        if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) {
+          return false
+        }
+      }
       return true
     })
     .map((entry) => ({
@@ -381,6 +438,31 @@ const fetchCatalogV3Raw = async (): Promise<CatalogV3 | null> => {
   }
 }
 
+/** Best-effort host detection via @tauri-apps/plugin-os. Outside Tauri
+ *  (e.g. web preview) returns an empty object so platform / minOSVersion
+ *  filters become no-ops rather than excluding everything. */
+const detectHost = async (): Promise<{
+  platform?: HostPlatform
+  osVersion?: string
+}> => {
+  if (typeof window === "undefined") return {}
+  if (!isTauriRuntime()) return {}
+  try {
+    const { type, version } = await import("@tauri-apps/plugin-os")
+    const t = type()
+    const v = version()
+    const allowed: HostPlatform[] = [
+      "ios", "android", "macos", "windows", "linux",
+    ]
+    const platform = (allowed as readonly string[]).includes(t)
+      ? (t as HostPlatform)
+      : undefined
+    return { platform, osVersion: v || undefined }
+  } catch {
+    return {}
+  }
+}
+
 export const fetchGameCatalog = async (
   appVersion?: string,
   devMode?: boolean,
@@ -391,8 +473,13 @@ export const fetchGameCatalog = async (
       console.log("[catalog] App version", appVersion, ">= 0.10.0, trying V3 catalog")
       const v3 = await fetchCatalogV3Raw()
       if (v3) {
-        const filtered = filterCatalogForApp(v3, appVersion, devMode ?? false)
-        console.log("[catalog] V3 catalog:", v3.packs.length, "total,", filtered.length, "after filtering")
+        const host = await detectHost()
+        const filtered = filterCatalogForApp(
+          v3, appVersion, devMode ?? false, host)
+        console.log(
+          "[catalog] V3 catalog:", v3.packs.length, "total,",
+          filtered.length, "after filtering",
+          "(host:", host.platform ?? "?", host.osVersion ?? "?", ")")
         if (filtered.length > 0) return filtered
       }
     } catch (error) {

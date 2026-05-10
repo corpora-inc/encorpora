@@ -1,32 +1,39 @@
 /**
- * Live radio player wrapped around a single HTMLAudioElement.
+ * Live radio player — native-or-webview façade.
  *
- * Deliberately does NOT use Web Audio. Most radio Icecast/Shoutcast streams
- * don't send CORS headers, and routing the element through a Web Audio graph
- * requires CORS to access audio data — without it the stream is silenced by
- * spec. The previous attempts at "play with crossOrigin, fall back without"
- * dual-element analyser bridges, and silent-data detection all introduced
- * more glitch than they removed. Plain `<audio>` plays every station
- * reliably; the EQ glyph uses canned CSS animation, which is honest about
- * "audio is flowing" without lying about "we can read its frequencies".
+ * On Tauri (iOS/Android), all playback is routed through
+ * `tauri-plugin-radio-stream` (ExoPlayer / AVPlayer). The plugin owns the
+ * lock-screen card, ICY/Shoutcast metadata, audio focus, headphone-disconnect,
+ * and background reliability — none of which a WebView `<audio>` element
+ * can deliver dependably for hours of screen-locked listening.
  *
- * HLS + URL fallback (Android-compat fix):
+ * In a plain browser (`npm run dev` for design iteration), playback falls
+ * back to a single HTMLAudioElement with hls.js for HLS on Android-class
+ * WebViews, plus a `url_resolved → url` retry on `MediaError` 3/4.
  *
- *   - Android Chromium WebView has no native HLS — `canPlayType('application/
- *     vnd.apple.mpegurl')` returns "". Stations whose URL is HLS (`.m3u8` or
- *     `station.hls === 1`) are routed through hls.js (lazy-imported) on
- *     those platforms. Safari / WKWebView (macOS + iOS) plays HLS natively
- *     in `<audio>`, so we keep that path there.
- *   - When `url_resolved` is set and differs from `url`, we keep `url` as
- *     a fallback. If the primary 404s / decode-fails / stream-not-supports,
- *     we transparently try the fallback once before surfacing the error.
- *     A common failure mode is a stale `url_resolved` (DNS/CDN flake) while
- *     the original `url` still works.
+ * Both paths expose the same `RadioPlayer` API; UI code does not branch.
+ *
+ * Why no Web Audio anywhere: most radio Icecast/Shoutcast streams omit CORS
+ * headers, and routing the element through a Web Audio graph requires CORS
+ * to read the bytes — without it the stream is silenced by spec. We accept
+ * that the EQ glyph is canned animation in browser-dev; the native path
+ * could later expose a level meter, but that's deferred.
  */
 
 import type { RadioStation } from "../api/radioBrowser"
 import { registerClick } from "../api/radioBrowser"
 import { attachHls, needsHlsJs, isLikelyHls, type HlsAttachment } from "./hlsLoader"
+import {
+  listenForRadioEvents,
+  probeNativeRadio,
+  radioPause,
+  radioPlay,
+  radioResume,
+  radioSetVolume,
+  radioStop,
+  type RadioIcyMetadata,
+  type RadioStateChange,
+} from "@shared/audio"
 
 export type PlayerState =
   | { kind: "idle" }
@@ -37,6 +44,19 @@ export type PlayerState =
 
 export type PlayerListener = (state: PlayerState) => void
 
+/** Now-playing metadata from ICY/Shoutcast. Empty object once between
+ *  stations and any time the source has no metadata. */
+export type IcyInfo = {
+  /** Track / show title from `Icy-Title` (Shoutcast `StreamTitle`). */
+  title?: string
+  /** Optional URL the broadcaster wants the player to display. */
+  url?: string
+  /** Genre tag from the headers. */
+  genre?: string
+}
+
+export type IcyListener = (info: IcyInfo) => void
+
 export type RadioPlayer = {
   play: (station: RadioStation) => Promise<void>
   pause: () => void
@@ -45,14 +65,217 @@ export type RadioPlayer = {
   setVolume: (v: number) => void
   getVolume: () => number
   getState: () => PlayerState
+  /** Returns the most recent ICY metadata seen for the current station, or
+   *  an empty object if none / not supported on this platform. */
+  getIcy: () => IcyInfo
   subscribe: (listener: PlayerListener) => () => void
+  /** Subscribe to ICY metadata changes. Browser-dev returns an empty info
+   *  immediately and never fires again; native path fires on every
+   *  StreamTitle update. */
+  subscribeIcy: (listener: IcyListener) => () => void
   dispose: () => void
 }
 
-export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
+export async function createRadioPlayer(
+  _initialVolume: number = 1,
+): Promise<RadioPlayer> {
+  // Probe asks the host whether `tauri-plugin-radio-stream` is registered.
+  // True on Corpan ≥ 0.12.0, false in browser dev and on older Corpan
+  // builds that ship Tauri but no plugin (where every native invoke would
+  // otherwise reject with "command not found"). Defense-in-depth alongside
+  // the catalog-side `minAppVersion` gate.
+  const useNative = await probeNativeRadio()
+  return useNative ? createNativeRadioPlayer() : createWebViewRadioPlayer()
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Native path — Tauri plugin owns the player.
+
+function createNativeRadioPlayer(): RadioPlayer {
+  let state: PlayerState = { kind: "idle" }
+  let icy: IcyInfo = {}
+  let currentStation: RadioStation | null = null
+  let lastClickedUuid: string | null = null
+  let volume = 1
+  const listeners = new Set<PlayerListener>()
+  const icyListeners = new Set<IcyListener>()
+
+  function setState(next: PlayerState) {
+    state = next
+    for (const l of listeners) {
+      try {
+        l(state)
+      } catch (err) {
+        console.error("[world-radio] player listener threw:", err)
+      }
+    }
+  }
+
+  function setIcy(next: IcyInfo) {
+    icy = next
+    for (const l of icyListeners) {
+      try {
+        l(icy)
+      } catch (err) {
+        console.error("[world-radio] icy listener threw:", err)
+      }
+    }
+  }
+
+  const removeEventListeners = listenForRadioEvents({
+    onState: (s: RadioStateChange) => {
+      const station = currentStation
+      if (!station) {
+        if (s.kind === "idle") setState({ kind: "idle" })
+        return
+      }
+      switch (s.kind) {
+        case "idle":
+          setState({ kind: "idle" })
+          currentStation = null
+          break
+        case "loading":
+        case "buffering":
+          // Both surface as "loading" in the UI — we don't have a separate
+          // visual state for mid-stream rebuffering and don't need one.
+          setState({ kind: "loading", station })
+          break
+        case "playing":
+          setState({ kind: "playing", station })
+          if (lastClickedUuid !== station.stationuuid) {
+            lastClickedUuid = station.stationuuid
+            void registerClick(station.stationuuid)
+          }
+          break
+        case "paused":
+          setState({ kind: "paused", station })
+          break
+        case "error":
+          setState({
+            kind: "error",
+            station,
+            message: s.message ?? "Stream error",
+          })
+          break
+      }
+    },
+    onIcyMetadata: (m: RadioIcyMetadata) => {
+      const next: IcyInfo = {}
+      if (m.streamTitle) next.title = m.streamTitle
+      if (m.streamUrl) next.url = m.streamUrl
+      if (m.genre) next.genre = m.genre
+      setIcy(next)
+    },
+    onRemoteCommand: (cmd) => {
+      // Native plugin already mutates its player; we only need to keep our
+      // local PlayerState in sync if the plugin doesn't fire a state-changed
+      // for the remote command (it generally does, so this is belt-and-braces).
+      if (cmd === "headphones-noisy" && state.kind === "playing") {
+        // The native side has already paused; our state-changed listener
+        // will pick it up. No-op here.
+      }
+    },
+    onInterruption: (info) => {
+      // Plugin pauses on .began and resumes (if shouldResume) on .ended.
+      // Our state-changed listener picks up the resulting transitions.
+      if (info.began) {
+        // No-op — the native side handles pause.
+      }
+    },
+  })
+
+  return {
+    async play(station: RadioStation) {
+      const primary = station.url_resolved || station.url
+      if (!primary) {
+        const msg = "Station has no playable URL"
+        console.error("[world-radio]", msg, station)
+        setState({ kind: "error", station, message: msg })
+        return
+      }
+      currentStation = station
+      // Reset ICY for the new station so stale metadata doesn't linger.
+      setIcy({})
+      setState({ kind: "loading", station })
+      try {
+        await radioPlay({
+          url: primary,
+          stationName: station.name,
+          country: station.country || undefined,
+          language: station.language || undefined,
+          faviconUrl: station.favicon || undefined,
+        })
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err)
+        console.error("[world-radio] native play rejected:", message)
+        setState({ kind: "error", station, message })
+      }
+    },
+    pause() {
+      if (state.kind === "playing" || state.kind === "loading") {
+        void radioPause()
+      }
+    },
+    async resume() {
+      if (state.kind === "paused") {
+        try {
+          await radioResume()
+        } catch (err) {
+          const message = err instanceof Error ? err.message : String(err)
+          if (currentStation) {
+            setState({ kind: "error", station: currentStation, message })
+          }
+        }
+      }
+    },
+    stop() {
+      void radioStop()
+      currentStation = null
+      lastClickedUuid = null
+      setIcy({})
+      setState({ kind: "idle" })
+    },
+    setVolume(v: number) {
+      volume = clamp01(v)
+      void radioSetVolume(volume)
+    },
+    getVolume() {
+      return volume
+    },
+    getState() {
+      return state
+    },
+    getIcy() {
+      return icy
+    },
+    subscribe(listener: PlayerListener) {
+      listeners.add(listener)
+      listener(state)
+      return () => listeners.delete(listener)
+    },
+    subscribeIcy(listener: IcyListener) {
+      icyListeners.add(listener)
+      listener(icy)
+      return () => icyListeners.delete(listener)
+    },
+    dispose() {
+      removeEventListeners?.()
+      void radioStop()
+      listeners.clear()
+      icyListeners.clear()
+    },
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// WebView path — HTMLAudioElement + hls.js + url_resolved/url fallback.
+// Used in `npm run dev` for browser-based design iteration. The HLS gap on
+// Android-class Chromium and the HE-AAC v2 / `audio/aacp` gap remain in this
+// path (both are why we have the native plugin in the first place).
+
+function createWebViewRadioPlayer(): RadioPlayer {
   const audio = document.createElement("audio")
   audio.preload = "none"
-  // Run at unity gain — user controls level via hardware volume keys.
   audio.volume = 1
   audio.style.display = "none"
   document.body.appendChild(audio)
@@ -60,15 +283,9 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
   let state: PlayerState = { kind: "idle" }
   let lastPlayedUuid: string | null = null
   const listeners = new Set<PlayerListener>()
+  const icyListeners = new Set<IcyListener>()
 
-  // Active hls.js attachment (when current source is HLS routed through MSE).
-  // Cleared whenever we change source so the previous attachment can free its
-  // buffers.
   let hlsAttachment: HlsAttachment | null = null
-
-  // Pending fallback URL for the currently-loading station. Set when we start
-  // playing the primary URL; cleared once we either succeed (`playing` event)
-  // or exhaust the fallback. `null` means "no fallback to try".
   let pendingFallbackUrl: string | null = null
 
   function disposeHls() {
@@ -92,7 +309,6 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
   audio.addEventListener("playing", () => {
     if (state.kind === "loading" || state.kind === "paused") {
       const station = state.station
-      // Successful playback consumes the fallback option.
       pendingFallbackUrl = null
       setState({ kind: "playing", station })
       if (lastPlayedUuid !== station.stationuuid) {
@@ -115,10 +331,6 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
     const station = "station" in state ? state.station : null
     if (!station) return
 
-    // On decode / source-not-supported errors, try the fallback URL once
-    // before surfacing the error. Common case on Android: `url_resolved`
-    // points at a CDN edge that's stale or returns a Content-Type the
-    // WebView refuses, while the original `url` still works.
     const isFallbackEligible = (code === 3 || code === 4) && pendingFallbackUrl !== null
     if (isFallbackEligible) {
       const fallback = pendingFallbackUrl!
@@ -126,7 +338,7 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
       console.warn(
         `[world-radio] primary failed (code ${code}: ${message}), trying fallback URL`
       )
-      void loadSource(station, fallback, /* isFallback */ true)
+      void loadSource(station, fallback, true)
       return
     }
 
@@ -138,14 +350,8 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
     console.error("[world-radio] stream stalled")
   })
 
-  // Token guards against an out-of-order play() landing after a newer one,
-  // and against a stale fallback retry firing after the user changed station.
   let playToken = 0
 
-  /**
-   * Load `url` into the audio element. Routes HLS through hls.js on platforms
-   * that need it. Caller is responsible for setting state to `loading` first.
-   */
   async function loadSource(
     station: RadioStation,
     url: string,
@@ -158,14 +364,9 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
     const hls = isLikelyHls(station, url)
     try {
       if (hls && needsHlsJs(audio)) {
-        // Android / Chromium WebView path. attachHls handles audio.src + load
-        // via MSE. We still call audio.play() to start playback once the
-        // manifest is attached.
         hlsAttachment = await attachHls(audio, url, {
           onFatalError: (msg) => {
             if (myToken !== playToken) return
-            // Synthesize a MediaError-style flow: fallback if available,
-            // else surface to UI.
             if (state.kind !== "loading" && state.kind !== "playing") return
             const stationNow = "station" in state ? state.station : station
             if (pendingFallbackUrl) {
@@ -193,8 +394,6 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
     } catch (err) {
       if (myToken !== playToken) return
       const message = err instanceof Error ? err.message : String(err)
-      // Mirror the error-listener logic for fallback eligibility on rejected
-      // play() promises (e.g., NotSupportedError that the error event missed).
       if (!isFallback && pendingFallbackUrl) {
         const fallback = pendingFallbackUrl
         pendingFallbackUrl = null
@@ -218,14 +417,11 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
         setState({ kind: "error", station, message: msg })
         return
       }
-      // Set up the fallback before the play attempt so the error listener
-      // can find it. If both URLs are the same, no fallback is meaningful.
       const fallback = station.url && station.url !== primary ? station.url : null
       pendingFallbackUrl = fallback
-
       ++playToken
       setState({ kind: "loading", station })
-      await loadSource(station, primary, /* isFallback */ false)
+      await loadSource(station, primary, false)
     },
     pause() {
       if (state.kind === "playing" || state.kind === "loading") {
@@ -262,16 +458,28 @@ export function createRadioPlayer(_initialVolume: number = 1): RadioPlayer {
     getState() {
       return state
     },
+    getIcy() {
+      // Browser path can't read ICY metadata — `<audio>` doesn't expose it
+      // and the streams aren't CORS-friendly enough to fetch via Web Audio.
+      return {}
+    },
     subscribe(listener: PlayerListener) {
       listeners.add(listener)
       listener(state)
       return () => listeners.delete(listener)
+    },
+    subscribeIcy(listener: IcyListener) {
+      // Track the listener for symmetry with the native path, but never fire.
+      icyListeners.add(listener)
+      listener({})
+      return () => icyListeners.delete(listener)
     },
     dispose() {
       ++playToken
       pendingFallbackUrl = null
       disposeHls()
       listeners.clear()
+      icyListeners.clear()
       audio.pause()
       audio.removeAttribute("src")
       audio.load()

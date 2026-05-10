@@ -292,8 +292,13 @@ function buildPages(outputDir) {
       imageUrl: imageUrl,
       purchase: { type: "free", priceLabel: "Free" },
       minAppVersion: pack.minAppVersion || "0.9.0",
+      ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
       packType: pack.packType || "game",
+      ...(Array.isArray(pack.platforms) && pack.platforms.length > 0
+        ? { platforms: pack.platforms }
+        : {}),
+      ...(pack.minOSVersion ? { minOSVersion: pack.minOSVersion } : {}),
     };
   });
   const catalogV3 = {

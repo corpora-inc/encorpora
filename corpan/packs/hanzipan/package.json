@@ -1,0 +1,17 @@
+{
+  "name": "corpan-hanzipan",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "dev:watch": "vite build --watch",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && node scripts/pack.mjs"
+  },
+  "devDependencies": {
+    "vite": "^6.0.3"
+  }
+}

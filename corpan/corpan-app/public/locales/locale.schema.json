@@ -93,6 +93,45 @@
         },
         "ur": {
           "type": "string"
+        },
+        "ne": {
+          "type": "string"
+        },
+        "pt-PT": {
+          "type": "string"
+        },
+        "hr": {
+          "type": "string"
+        },
+        "sr": {
+          "type": "string"
+        },
+        "uk": {
+          "type": "string"
+        },
+        "bg": {
+          "type": "string"
+        },
+        "ro": {
+          "type": "string"
+        },
+        "ca": {
+          "type": "string"
+        },
+        "yue-Hant-HK": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
+        },
+        "lt": {
+          "type": "string"
+        },
+        "sk": {
+          "type": "string"
+        },
+        "sl": {
+          "type": "string"
         }
       },
       "required": [
@@ -124,7 +163,20 @@
         "gu",
         "pa-Guru",
         "pa-Arab",
-        "ur"
+        "ur",
+        "ne",
+        "pt-PT",
+        "hr",
+        "sr",
+        "uk",
+        "bg",
+        "ro",
+        "ca",
+        "yue-Hant-HK",
+        "cs",
+        "lt",
+        "sk",
+        "sl"
       ],
       "additionalProperties": false
     },

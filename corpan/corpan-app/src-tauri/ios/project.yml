@@ -2,7 +2,7 @@ name: corpan
 options:
   bundleIdPrefix: com.corpora.corpan
   deploymentTarget:
-    iOS: 15.0
+    iOS: 16.0
 fileGroups: [../../src]
 configs:
   debug: debug
@@ -55,6 +55,11 @@ targets:
           - UIInterfaceOrientationLandscapeRight
         UIBackgroundModes:
           - audio
+        # SKAdNetwork identifiers Apple may send install postbacks to.
+        # cstr6suwn9 = Google Ads. Append additional dicts (one per
+        # network) for Meta, TikTok, etc. Metadata only — no SDK.
+        SKAdNetworkItems:
+          - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
         # ATS exception for media playback. The World Radio pack streams
         # public Icecast/Shoutcast radio, which is overwhelmingly delivered
         # over plain HTTP — WKWebView's `<audio>` element refuses HTTP under
@@ -67,6 +72,7 @@ targets:
         NSAppTransportSecurity:
           NSAllowsArbitraryLoadsForMedia: true
           NSAllowsArbitraryLoadsInWebContent: true
+        NSMicrophoneUsageDescription: Corpán uses your microphone for on-device pronunciation practice with the Pronunciation Coach pack. Audio is processed locally on your device.
         # CFBundleShortVersionString + CFBundleVersion are auto-injected by
         # Tauri from tauri.conf.json's `version` field. Don't hardcode them
         # here or they'll drift.

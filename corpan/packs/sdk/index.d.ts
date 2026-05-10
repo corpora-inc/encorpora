@@ -34,6 +34,121 @@ export type PackDbQueryResult = {
   rows: Record<string, unknown>[]
 }
 
+export type SttErrorCode =
+  | "MODEL_NOT_INSTALLED"
+  | "MODEL_NOT_LOADED"
+  | "NETWORK"
+  | "LOAD_FAILED"
+  | "IO_FAILED"
+  | "BUSY"
+  | "CANCELLED"
+  | "MIC_PERMISSION_DENIED"
+  | "NO_ACTIVE_SESSION"
+  | "AUDIO_FAILED"
+  | "UNKNOWN"
+
+export type SttPrepareResult = {
+  ready: boolean
+  model: string
+  message?: string
+  /** Structured error code when ready === false. Undefined on success. */
+  code?: SttErrorCode
+}
+
+export type SttInstalledModel = {
+  model: string
+  valid: boolean
+  problems: string[]
+  sizeBytes: number
+  isLoaded: boolean
+}
+
+export type SttListInstalledResult = {
+  models: SttInstalledModel[]
+}
+
+export type SttStartSessionResult = {
+  started: boolean
+  sessionId: string
+}
+
+export type SttStatus = {
+  available: boolean
+  prepared: boolean
+  model: string | null
+  recording: boolean
+  message: string | null
+}
+
+export type SttWordTiming = {
+  word: string
+  startMs: number
+  endMs: number
+  probability: number
+}
+
+export type SttTranscriptionResult = {
+  sessionId: string
+  text: string
+  expectedText: string
+  language: string
+  whisperLanguage: string
+  durationMs: number
+  overallScore: number
+  transcriptScore: number
+  likelihoodScore: number
+  acousticScore: number
+  avgLogprob: number
+  noSpeechProb: number
+  compressionRatio: number
+  temperature: number
+  minTokenLogprob: number
+  tokenLogprobStdev: number
+  freeVsConstrainedSimilarity: number
+  freeText: string
+  words: SttWordTiming[]
+}
+
+export type SttApi = {
+  isAvailable: () => Promise<boolean>
+  getStatus: () => Promise<SttStatus>
+  prepare: (opts?: { model?: string }) => Promise<SttPrepareResult>
+  startSession: (opts: {
+    sessionId: string
+    language: string
+    expectedText: string
+  }) => Promise<SttStartSessionResult>
+  stopSession: (opts: { sessionId: string }) => Promise<SttTranscriptionResult>
+  cancelSession: (opts: { sessionId: string }) => Promise<void>
+  wipeModel?: (opts?: { model?: string }) => Promise<{
+    wiped: boolean
+    message?: string
+  }>
+  validateModel?: (opts?: { model?: string }) => Promise<{
+    model: string
+    valid: boolean
+    problems: string[]
+  }>
+  installModel?: (
+    opts: { model: string },
+    onProgress?: (event: SttInstallProgress) => void,
+  ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+  listInstalled?: (opts: {
+    models: string[]
+  }) => Promise<SttListInstalledResult>
+  unload?: () => Promise<{ unloaded: boolean }>
+}
+
+export type SttInstallProgress = {
+  model: string
+  phase: "downloading" | "verifying" | "verified" | "failed"
+  fraction?: number
+  completed?: number
+  total?: number
+  error?: string
+  code?: SttErrorCode
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   getStackConfig: () => StackConfig
@@ -52,6 +167,7 @@ export type HostApi = {
     languageCodes?: string[]
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  stt?: SttApi
   isMock?: boolean
 }
 

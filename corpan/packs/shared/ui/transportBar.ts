@@ -1,5 +1,6 @@
 export type TransportBar = {
   setPlaying: (playing: boolean) => void
+  setBookTitle: (title: string) => void
   setChapter: (title: string) => void
   setTime: (currentMs: number, totalMs: number) => void
   setProgress: (fraction: number) => void
@@ -28,9 +29,17 @@ function formatTime(ms: number): string {
  * ±30s skip, and scrub bar.
  *
  * Layout:
- *   Top row:  [chapter title]              [elapsed / total]
+ *   Top row:    book title
+ *               chapter title           [elapsed / total]
  *   Scrub:    [═══════════●═══════════════════════════════════]
  *   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]
+ *
+ * The book prefix and chapter sit in separate spans inside one flex column
+ * so they stack vertically on the left; each truncates its own text with
+ * its own ellipsis. The time label hangs unattached on the right and can
+ * never overrun the chapter. When `setBookTitle("")` is called the prefix
+ * span collapses (`:empty { display: none }`) and the chapter title sits
+ * alone, vertically centered against the time.
  *
  * @param classPrefix - CSS class prefix (e.g. "stargate" or "earthgate")
  */
@@ -60,7 +69,16 @@ export function createTransportBar(parent: HTMLElement, classPrefix: string): Tr
 
   const chapterLabel = document.createElement("div")
   chapterLabel.className = `${classPrefix}-chapter`
-  chapterLabel.textContent = "Loading\u2026"
+
+  const bookPrefix = document.createElement("span")
+  bookPrefix.className = `${classPrefix}-book-prefix`
+  chapterLabel.appendChild(bookPrefix)
+
+  const chapterTitle = document.createElement("span")
+  chapterTitle.className = `${classPrefix}-chapter-title`
+  chapterTitle.textContent = "Loading\u2026"
+  chapterLabel.appendChild(chapterTitle)
+
   topRow.appendChild(chapterLabel)
 
   const timeLabel = document.createElement("div")
@@ -196,8 +214,12 @@ export function createTransportBar(parent: HTMLElement, classPrefix: string): Tr
         : '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><polygon points="6,4 20,12 6,20"/></svg>'
     },
 
+    setBookTitle(title: string) {
+      bookPrefix.textContent = title
+    },
+
     setChapter(title: string) {
-      chapterLabel.textContent = title
+      chapterTitle.textContent = title
     },
 
     setTime(currentMs: number, totalMs: number) {

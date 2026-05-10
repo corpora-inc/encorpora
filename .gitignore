@@ -27,6 +27,7 @@ corpan/games/
 # Audio files — served from CloudFront, hydrate locally with corpan/infra/hydrate-audio.sh
 **/pack/audio/
 **/packs/*/audio/
+!**/packs/shared/audio/
 
 # Voice reference wavs — backed up to S3, not tracked in git
 voices/data/*.wav

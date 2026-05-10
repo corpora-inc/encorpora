@@ -200,12 +200,16 @@ export async function getStationsByLanguage(
 
 /**
  * Trim a station to only the fields the UI reads. Cuts the cache footprint by
- * roughly 50–60% (drops `homepage`, `state`, `languagecodes`, `votes`,
- * `lastcheckok`, `clicktrend`, `changeuuid`). Keeps the API surface stable —
- * unused fields are just absent, no consumer breakage.
+ * roughly 50–60% (drops `homepage`, `state`, `votes`, `lastcheckok`,
+ * `clicktrend`, `changeuuid`). Keeps the API surface stable — unused fields
+ * are just absent, no consumer breakage.
  *
  * Preserves `hls`: the player keys off it to route through hls.js on Android,
  * since Chromium WebView has no native HLS decoder.
+ *
+ * Preserves `languagecodes` (typically 5–15 chars): the global map's
+ * language filter matches against it for accuracy, since `language` is a
+ * free-text English name with inconsistent operator tagging.
  */
 function stripStation(s: RadioStation): RadioStation {
   return {
@@ -221,7 +225,7 @@ function stripStation(s: RadioStation): RadioStation {
     countrycode: s.countrycode,
     state: "",
     language: s.language,
-    languagecodes: "",
+    languagecodes: s.languagecodes ?? "",
     votes: 0,
     codec: s.codec,
     bitrate: s.bitrate,
@@ -244,60 +248,66 @@ function isPlayable(s: RadioStation): boolean {
 }
 
 /**
- * Per-platform playability filter, applied at display time (not cache time)
- * so the same cache works across devices. Returns false for stations whose
- * codec or URL scheme is known-broken on the current platform.
+ * Fetch up to `limit` of the world's most-clicked playable stations, across
+ * every language. Powers the global map view.
  *
- * Today's known gaps:
- *   - **Android Chromium WebView** fails to decode HE-AAC v2 / `audio/aacp`
- *     (raw AAC v1 still works). Codec strings to drop: "AAC+", "AACP".
- *   - **iOS / iPadOS WKWebView** enforces App Transport Security: plain
- *     HTTP streams fail unless the host app declares an ATS exception.
- *     Many Icecast/Shoutcast servers run over HTTP; until the host's
- *     `NSAllowsArbitraryLoadsForMedia` ships in a new app version, drop
- *     stations whose only URL is HTTP. Once the host change ships, this
- *     filter line is a no-op for HTTPS-only stations and only the codec
- *     filter remains.
- *   - **iOS / Safari** doesn't decode Vorbis (commonly labelled "OGG" in
- *     the Radio Browser codec field). iOS 17.4+ added Opus-in-WebM but
- *     not Vorbis-in-Ogg. Drop "OGG"/"VORBIS" on Apple platforms.
+ * Storage strategy: in-memory ONLY for the lifetime of the pack mount.
+ * The global payload (10k stations × ~250 B serialized ≈ 2.5 MB) is the
+ * single biggest thing this pack would write to localStorage, and the
+ * Corpán host shares one localStorage origin across every pack — so even
+ * a successful write would crowd out other packs' caches. Re-fetching on
+ * every fresh pack open is a one-shot ~2 s network cost; keeping the
+ * full set in memory while the pack is open delivers instant filter
+ * re-renders and instant tab switches without touching disk.
  *
- * Once the native streaming plugin (PR 2 — ExoPlayer/AVPlayer) lands, this
- * filter narrows further or goes away entirely.
+ * If the pack is closed and reopened, the in-memory cache is discarded
+ * along with the rest of the pack module — the next open re-fetches
+ * from Radio Browser. That's the right tradeoff: shared-origin storage
+ * is a precious resource, and global-station data isn't worth the
+ * persistence given how lightweight the network round-trip is.
  */
-const ANDROID_UNPLAYABLE_CODECS = new Set(["AAC+", "AACP"])
-const APPLE_UNPLAYABLE_CODECS = new Set(["OGG", "VORBIS"])
+let memGlobalStations: { fetchedAt: number; limit: number; value: RadioStation[] } | null = null
 
-function isHttpOnly(s: RadioStation): boolean {
-  const a = (s.url_resolved || "").toLowerCase()
-  const b = (s.url || "").toLowerCase()
-  // True only if every URL we know is plain HTTP (not https, not file, etc.).
-  // If either URL is HTTPS we'll happily try that one.
-  if (a && a.startsWith("https://")) return false
-  if (b && b.startsWith("https://")) return false
-  return Boolean(a || b)
+export async function getAllStations(limit: number = 10000): Promise<RadioStation[]> {
+  // In-memory hit — instant. Reuse if same limit and within the TTL window
+  // (avoids re-fetching when the user toggles between tabs in one session).
+  if (
+    memGlobalStations &&
+    memGlobalStations.limit === limit &&
+    Date.now() - memGlobalStations.fetchedAt < TTL_STATIONS_MS
+  ) {
+    return memGlobalStations.value
+  }
+
+  const path =
+    `/json/stations` +
+    `?hidebroken=true&order=clickcount&reverse=true&limit=${limit}`
+  try {
+    const stations = await fetchJson<RadioStation[]>(path)
+    const filtered = stations.filter(isPlayable).map(stripStation)
+    memGlobalStations = { fetchedAt: Date.now(), limit, value: filtered }
+    return filtered
+  } catch (err) {
+    console.error(`[world-radio] getAllStations(${limit}) failed:`, err)
+    // Stale-better-than-nothing: if we have any prior in-memory copy
+    // (e.g., a stale TTL fetch that succeeded earlier this session), use
+    // it before propagating the error.
+    if (memGlobalStations) return memGlobalStations.value
+    throw err
+  }
 }
 
-export function isPlayableOnPlatform(s: RadioStation): boolean {
-  if (typeof navigator === "undefined") return true
-  const ua = navigator.userAgent
-  const codec = s.codec.toUpperCase()
-
-  if (/Android/i.test(ua)) {
-    if (ANDROID_UNPLAYABLE_CODECS.has(codec)) return false
-  }
-
-  // Apple: covers iPhone, iPad, iPod (WKWebView in the app) and macOS Safari
-  // when running in the bundled app shell. Browser-dev mode on macOS also
-  // matches; that's fine — Mac Safari has the same Vorbis gap, and HTTP
-  // streams work in dev mode anyway since browsers don't enforce ATS.
-  if (/iPhone|iPad|iPod|Macintosh/i.test(ua)) {
-    if (APPLE_UNPLAYABLE_CODECS.has(codec)) return false
-    // ATS gate — only block on iOS-family devices. macOS's bundled Safari
-    // permits HTTP for legacy reasons; iOS WKWebView blocks it by default.
-    if (/iPhone|iPad|iPod/i.test(ua) && isHttpOnly(s)) return false
-  }
-
+/**
+ * Per-platform playability filter, applied at display time. With the native
+ * `tauri-plugin-radio-stream` plugin in 0.11.8+ (ExoPlayer / AVPlayer), every
+ * codec we care about decodes natively, so this is now a pass-through. We
+ * keep the function for the call site in stationList — if a future codec
+ * gap shows up we drop the filter back in here without touching the UI.
+ *
+ * If a station fails to play despite the filter, the native plugin surfaces
+ * a play-time error and the user can pick something else.
+ */
+export function isPlayableOnPlatform(_s: RadioStation): boolean {
   return true
 }
 

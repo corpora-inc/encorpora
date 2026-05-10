@@ -388,14 +388,46 @@ body {
   text-overflow: ellipsis;
 }
 
-/* --- Chapter label --- */
+/* --- Chapter label ---
+   Two stacked rows on the left: book title (italic cyan, small) above
+   the chapter title (semibold primary, regular). Each row truncates its
+   own text with an ellipsis so a long chapter title can never collide
+   with the time on the right. When the book title is empty the row
+   collapses to zero height and the chapter title sits alone vertically
+   centered against the time. */
 
 .stargate-chapter {
   padding: 0;
-  color: #c0d0e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 12px;
+  letter-spacing: 0.005em;
+  line-height: 1.25;
+}
+
+.stargate-book-prefix {
   font-size: 13px;
+  color: #7fd6ff;
+  font-style: italic;
   font-weight: 500;
-  max-width: 60vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stargate-book-prefix:empty {
+  display: none;
+}
+
+.stargate-chapter-title {
+  font-size: 10px;
+  color: rgba(192, 208, 232, 0.55);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -467,7 +499,6 @@ body {
 
   .stargate-chapter {
     font-size: 11px;
-    max-width: 50vw;
   }
 
   .stargate-time {

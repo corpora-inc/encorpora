@@ -13,14 +13,17 @@ import {
     openTtsSettings,
     openTtsEngineStore,
     openTtsEngineAppDetails,
+    openAppleFeedback,
     probeTtsHealth,
     tryAutoRecover,
     installVoiceData,
+    langMatchScore,
     type VoiceInfo,
     type TtsEngineStatus,
     type TtsHealthProbe,
     type TtsDiagnosis,
 } from "@/util/tts-voices";
+import { isAppleIOSVoiceGap } from "@/util/appleVoiceGaps";
 
 import { createVoiceTTS } from "@/util/speak";
 import { isRTL } from "@/util/convert";
@@ -67,6 +70,19 @@ const SAMPLES: Record<string, string> = {
     "pa-Guru": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਸਿੱਖਣ ਲਈ ਉਤਸੁਕ ਹਾਂ.",
     "pa-Arab": "میں تہاڈے نال سکھن لئی اتسک ہاں.",
     ur: "میں آپ کے ساتھ سیکھنے کا منتظر ہوں۔",
+    ne: "म तपाईंसँग सिक्न उत्सुक छु।",
+    "pt-PT": "Estou ansioso por aprender consigo.",
+    hr: "Veselim se učenju s tobom.",
+    sr: "Радујем се учењу са тобом.",
+    uk: "Я з нетерпінням чекаю, щоб вчитися з тобою.",
+    bg: "С нетърпение очаквам да уча с теб.",
+    ro: "Abia aștept să învăț cu tine.",
+    ca: "Tinc moltes ganes d'aprendre amb tu.",
+    "yue-Hant-HK": "我好期待同你一齊學習。",
+    cs: "Těším se, až se s tebou budu učit.",
+    lt: "Su nekantrumu laukiu, kada galėsiu mokytis su tavimi.",
+    sk: "Teším sa, že sa budem s tebou učiť.",
+    sl: "Veselim se, da se bom učil s teboj.",
 };
 
 type ExtendedVoiceInfo = VoiceInfo & {
@@ -431,13 +447,10 @@ export function OnboardingTTSInstructions() {
 
     function voicesForLang(code: string): ExtendedVoiceInfo[] | null {
         if (!voices) return null;
-        const compatible = voices.filter((v) => {
-            const L = (v.language || "").toLowerCase();
-            const c = code.toLowerCase();
-            const langMatches =
-                L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
-            return langMatches;
-        });
+        // Use the alias-aware matcher: handles `no` ↔ `nb-NO`, `yue-Hant-HK`
+        // ↔ `yue-HK`/`zh-HK`, etc. — keeps all per-language matching going
+        // through one rule rather than re-implementing it in each caller.
+        const compatible = voices.filter((v) => langMatchScore(v.language, code) > 0);
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
         return sortVoicesWithLangBias(unique, code);
     }
@@ -574,6 +587,12 @@ export function OnboardingTTSInstructions() {
                                     const sample = sampleFor(code);
                                     if (list === null) return null;
 
+                                    // Empty-voice CTA: pick install (Android) vs Apple-feedback
+                                    // (iOS-gap langs) vs nothing. Mutually exclusive — the
+                                    // section component branches on whichever is set.
+                                    const isIOS = os === "ios" || os === "macos";
+                                    const isGap = isIOS && isAppleIOSVoiceGap(code);
+
                                     return (
                                         <OnboardingTTSInstructionsLanguageSection
                                             key={code}
@@ -586,6 +605,9 @@ export function OnboardingTTSInstructions() {
                                             isRTL={isRTL(code)}
                                             onInstallVoiceData={
                                                 os === "android" ? () => void handleInstallForLang(code) : undefined
+                                            }
+                                            onSendAppleFeedback={
+                                                isGap ? () => void openAppleFeedback() : undefined
                                             }
                                         />
                                     );

@@ -19,3 +19,24 @@ export {
   traceNativeEvent,
   listenForRemoteCommands,
 } from "./nativeKeepAlive"
+
+// World Radio — native streaming via tauri-plugin-radio-stream
+export type {
+  RadioPlayMeta,
+  RadioStateKind,
+  RadioStateChange,
+  RadioIcyMetadata,
+  RadioRemoteCommand,
+  RadioInterruption,
+  RadioListeners,
+} from "./nativeRadio"
+export {
+  hasNativeRadio,
+  probeNativeRadio,
+  radioPlay,
+  radioPause,
+  radioResume,
+  radioStop,
+  radioSetVolume,
+  listenForRadioEvents,
+} from "./nativeRadio"
