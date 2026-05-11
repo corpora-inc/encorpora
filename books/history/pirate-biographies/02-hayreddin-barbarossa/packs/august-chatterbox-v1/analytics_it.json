@@ -1,0 +1,773 @@
+{
+  "book_id": "august-chatterbox-v1",
+  "language": "it",
+  "timestamp": "2026-05-11T16:15:54.479117+00:00",
+  "segments_total": 285,
+  "segments_first_pass": 279,
+  "segments_converged_by_retry": 6,
+  "segments_plateau_stopped": 0,
+  "total_retries": 6,
+  "error_distribution": {
+    "trailing_silence": 93,
+    "first_word_weak": 60,
+    "tail_energy": 56,
+    "pre_speech_spike": 16,
+    "post_speech_pop": 15,
+    "final_word_weak": 13,
+    "tts_audio_truncated": 6,
+    "first_word_mismatch": 6,
+    "tail_zero_duration_run": 3,
+    "stacked_words": 3,
+    "truncated_last_word": 3,
+    "tail_spike": 3,
+    "min_trailing_silence": 2
+  },
+  "phase_timings": {
+    "tts": 104.34281373023987,
+    "align": 44.670496463775635,
+    "validate": 36.94403123855591,
+    "trim": 0.08683967590332031,
+    "master": 3.087766647338867
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 1,
+      "passed": 1,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 138,
+      "passed": 134,
+      "rate": 0.9710144927536232
+    },
+    "long_80_plus": {
+      "total": 146,
+      "passed": 144,
+      "rate": 0.9863013698630136
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-038",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9106798603012902,
+            "exaggeration": 0.4629199516898339,
+            "temperature": 0.6372106553642629,
+            "top_p": 0.8767616371359019,
+            "min_p": 0.0,
+            "repetition_penalty": 2.881540844090033
+          }
+        }
+      ],
+      "text_len": 127,
+      "text_preview": "I Cavalieri di San Giovanni, con base prima a Rodi e poi a Malta, erano corsari ",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-089",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7656440211514992,
+            "exaggeration": 0.27712172139136976,
+            "temperature": 0.25749977105653704,
+            "top_p": 0.9984408124928248,
+            "min_p": 0.34355507229575155,
+            "repetition_penalty": 1.273108565861814
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Aruj, il più aggressivo dei fratelli, fu catturato e ridotto in schiavitù.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-107",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "trailing_silence"
+          ],
+          "score": 313.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9557062282624733,
+            "exaggeration": 0.17660691388147265,
+            "temperature": 0.7002905456147648,
+            "top_p": 1.0,
+            "min_p": 0.18441015716632772,
+            "repetition_penalty": 2.946474509301039
+          }
+        }
+      ],
+      "text_len": 103,
+      "text_preview": "Mentre Aruj guidava le incursioni di persona, Hizir assicurava che l'impresa fun",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-139",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9380406152738465,
+            "exaggeration": 0.25968955525310256,
+            "temperature": 0.39714910644915985,
+            "top_p": 0.8096445477406755,
+            "min_p": 0.3387709405600472,
+            "repetition_penalty": 1.6954932437150574
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Era un governatore ottomano, che governava Algeri in nome del Sultano.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-169",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.75302802748594,
+            "exaggeration": 0.27150836568801384,
+            "temperature": 0.3930923355553536,
+            "top_p": 0.9461537991054187,
+            "min_p": 0.30088028422706103,
+            "repetition_penalty": 2.0345983522212565
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5822797951814543,
+            "exaggeration": 0.42546222788802845,
+            "temperature": 0.3106936623601443,
+            "top_p": 0.9789012549832019,
+            "min_p": 0.04971133654094753,
+            "repetition_penalty": 2.54598377291303
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Aveva ragione, e nel giro di pochi mesi l'alleanza iniziò a dissolversi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-176",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6915986645483032,
+            "exaggeration": 0.2822811223224948,
+            "temperature": 0.5833578555541116,
+            "top_p": 0.6137087461203194,
+            "min_p": 0.315182299752931,
+            "repetition_penalty": 1.848632168505866
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Fu lo scontro navale decisivo del Mediterraneo del sedicesimo secolo.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 115,
+      "text_preview": "Questa è la vera storia di Hayreddin Barbarossa, l'uomo che trasformò l'Impero O",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Iniziò la sua vita come figlio di un vasaio su un'isola greca.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "La concluse come Grande Ammiraglio della marina più potente del Mar Mediterraneo",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "La sua storia abbraccia un secolo di conflitti tra l'Impero Ottomano e l'Europa ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 83,
+      "text_preview": "È una storia di fratelli, corsari, sultani e della lotta per il controllo del ma",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "Ogni battaglia, alleanza e tradimento descritto in questo libro è tratto dalla d",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 35.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "La carriera di Barbarossa cambiò la mappa del mondo mediterraneo.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 35.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "La marina che costruì dominò il mare per generazioni dopo la sua morte.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "La sua eredità plasma ancora oggi le coste e le culture del Nord Africa.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Dove la documentazione storica è incompleta, lo dichiariamo chiaramente.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 106,
+      "text_preview": "Dove gli storici sono in disaccordo su date o dettagli, presentiamo il resoconto",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Questa è storia, non leggenda, e la trattiamo con la cura che merita.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Il Mar Mediterraneo si trova al crocevia di tre continenti.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "L'Europa si trova a nord, l'Africa a sud e l'Asia a est.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 6,
+      "avg_delta": {
+        "cfg_weight": -0.056,
+        "temperature": 0.065,
+        "repetition_penalty": 0.015
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.044,
+        "temperature": 0.049,
+        "repetition_penalty": -0.152
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.113,
+        "temperature": 0.13,
+        "repetition_penalty": 0.03
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.134,
+        "temperature": 0.005,
+        "repetition_penalty": 0.273
+      }
+    }
+  }
+}

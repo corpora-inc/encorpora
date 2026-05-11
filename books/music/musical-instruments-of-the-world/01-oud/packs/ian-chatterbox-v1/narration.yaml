@@ -1,0 +1,84 @@
+denoise:
+  enabled: false
+tts:
+  cfg_weight: 0.85
+  exaggeration: 0.3
+  temperature: 0.3
+  repetition_penalty: 2.0
+  top_p: 0.85
+  min_p: 0.1
+retry:
+  # Plateau auto-rewrite test (2026-05-10): tight per-version retry budget
+  # plus 3 codex rewrite escalations before human verdict. See
+  # ttsctl/changelog/decisions/2026-05-10_plateau_auto_rewrite_wired.md
+  max_retries: 5
+  max_rewrites: 3
+  jitter: 0.25
+  schedules:
+    - {}
+    - cfg_weight: 0.8
+      temperature: 0.5
+    - cfg_weight: 0.5
+      exaggeration: 0.2
+      temperature: 0.3
+    - cfg_weight: 0.6
+      exaggeration: 0.6
+      temperature: 0.7
+    - cfg_weight: 1.0
+      temperature: 0.2
+mastering:
+  audio_bitrate: '64000'
+  audio_codec: aac
+  output_ext: .m4a
+  target_lufs: -22.0
+  target_tp: -3.0
+validation:
+  wer_per_lang:
+    ar: 0.85
+    da: 0.70
+    de: 0.70
+    el: 1.10
+    en: 0.50
+    es: 0.60
+    fi: 0.75
+    fr: 0.70
+    hi: 0.80
+    it: 0.60
+    ko: 0.85
+    ms: 0.85
+    nl: 0.85
+    "no": 0.85
+    pl: 0.70
+    pt: 0.60
+    ru: 0.60
+    sv: 0.70
+    sw: 1.10
+    tr: 0.85
+  cer_per_lang:
+    he: 0.85
+    ja: 0.45
+    zh: 0.45
+voices:
+  ar: ian-new-narration-try-more-chill-clear.wav
+  da: ian-new-narration-try-more-chill-clear.wav
+  de: ian-new-narration-try-more-chill-clear.wav
+  el: ian-new-narration-try-more-chill-clear.wav
+  en: ian-new-narration-try-more-chill-clear.wav
+  es: ian-new-narration-try-more-chill-clear.wav
+  fi: ian-new-narration-try-more-chill-clear.wav
+  fr: ian-new-narration-try-more-chill-clear.wav
+  he: ian-new-narration-try-more-chill-clear.wav
+  hi: ian-new-narration-try-more-chill-clear.wav
+  it: ian-new-narration-try-more-chill-clear.wav
+  ja: ian-new-narration-try-more-chill-clear.wav
+  ko: ian-new-narration-try-more-chill-clear.wav
+  ms: ian-new-narration-try-more-chill-clear.wav
+  nl: ian-new-narration-try-more-chill-clear.wav
+  "no": ian-new-narration-try-more-chill-clear.wav
+  pl: ian-new-narration-try-more-chill-clear.wav
+  pt: ian-new-narration-try-more-chill-clear.wav
+  ru: ian-new-narration-try-more-chill-clear.wav
+  sv: ian-new-narration-try-more-chill-clear.wav
+  sw: ian-new-narration-try-more-chill-clear.wav
+  tr: ian-new-narration-try-more-chill-clear.wav
+  zh: ian-new-narration-try-more-chill-clear.wav

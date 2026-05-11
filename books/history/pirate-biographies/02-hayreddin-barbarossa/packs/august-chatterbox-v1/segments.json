@@ -230,10 +230,10 @@
       "paragraph_id": "p7",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "Europe lies to the north, Africa to the south, and Asia to the east.",
-      "text_markdown": "Europe lies to the north, Africa to the south, and Asia to the east.",
+      "text": "To the north lies Europe, to the south Africa, and to the east lies Asia.",
+      "text_markdown": "To the north lies Europe, to the south Africa, and to the east lies Asia.",
       "tts": {
-        "text": "Europe lies to the north, Africa to the south, and Asia to the east.",
+        "text": "To the north lies Europe, to the south Africa, and to the east lies Asia.",
         "pause_after_ms": 500
       }
     },
@@ -1112,10 +1112,10 @@
       "paragraph_id": "p23",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "Hizir was the boy who would become Hayreddin Barbarossa.",
-      "text_markdown": "Hizir was the boy who would become Hayreddin Barbarossa.",
+      "text": "The boy who would become Hayreddin Barbarossa was Hizir.",
+      "text_markdown": "The boy who would become Hayreddin Barbarossa was Hizir.",
       "tts": {
-        "text": "Hizir was the boy who would become Hayreddin Barbarossa.",
+        "text": "The boy who would become Hayreddin Barbarossa was Hizir.",
         "pause_after_ms": 500
       }
     },
@@ -1622,10 +1622,10 @@
       "paragraph_id": "p32",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The brothers' raids served a purpose beyond personal enrichment.",
-      "text_markdown": "The brothers' raids served a purpose beyond personal enrichment.",
+      "text": "The brothers' raids served a purpose beyond personal gain.",
+      "text_markdown": "The brothers' raids served a purpose beyond personal gain.",
       "tts": {
-        "text": "The brothers' raids served a purpose beyond personal enrichment.",
+        "text": "The brothers' raids served a purpose beyond personal gain.",
         "pause_after_ms": 500
       }
     },
@@ -1934,10 +1934,10 @@
       "paragraph_id": "p38",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Hizir, now in his early forties, faced an impossible situation.",
-      "text_markdown": "Hizir, now in his early forties, faced an impossible situation.",
+      "text": "Hizir, now in his early forties, found himself in an impossible predicament.",
+      "text_markdown": "Hizir, now in his early forties, found himself in an impossible predicament.",
       "tts": {
-        "text": "Hizir, now in his early forties, faced an impossible situation.",
+        "text": "Hizir, now in his early forties, found himself in an impossible predicament.",
         "pause_after_ms": 500
       }
     },
@@ -2474,10 +2474,10 @@
       "paragraph_id": "p47",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The loss of Tunis was a setback, but not a defeat.",
-      "text_markdown": "The loss of Tunis was a setback, but not a defeat.",
+      "text": "Losing Tunis was a setback, but it was not the end.",
+      "text_markdown": "Losing Tunis was a setback, but it was not the end.",
       "tts": {
-        "text": "The loss of Tunis was a setback, but not a defeat.",
+        "text": "Losing Tunis was a setback, but it was not the end.",
         "pause_after_ms": 500
       }
     },

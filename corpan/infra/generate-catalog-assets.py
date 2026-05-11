@@ -209,6 +209,45 @@ CHARACTERS: list[CharacterSpec] = [
         accent_color="#5a7d8c",
     ),
     CharacterSpec(
+        id="victor",
+        display_name="Victor",
+        tagline="Markets, models, and the moving picture.",
+        bio=(
+            "Victor is the business voice on Corpora's tech-news desk. He "
+            "tracks the LLM market the way an old hand at a trading floor "
+            "tracks the tape — quietly, accurately, with one eye on the "
+            "leaderboard and the other on the long arc. Victor pairs with "
+            "Skylar (host) and Aoede (the AI muse) on the AI This Week "
+            "dialog series."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a composed business-news anchor in his "
+            "mid-forties, clean-shaven or with a closely trimmed mustache, "
+            "short dark hair with a hint of grey at the temples, a crisp "
+            "charcoal suit jacket over a pale blue dress shirt, no tie or a "
+            "subtle dark tie, calm professional gaze with eyes off-camera "
+            "as if reading from a teleprompter, faint half-smile. Soft "
+            "natural daylight, warm but understated palette of slate "
+            "greys, deep navy, and pale neutral. Painterly digital "
+            "illustration, low saturation, very high craftsmanship, no "
+            "photorealism. Centered square portrait, head and shoulders. "
+            + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: a quiet professional office at "
+            "early evening — a polished wooden desk in soft warm lamp "
+            "light, a closed laptop, a folded copy of a financial paper, "
+            "a small cup of black coffee. A wall of glass behind it shows "
+            "a vast skyline of distant office towers with their windows "
+            "starting to glow against a deep indigo dusk sky. Restrained "
+            "palette of slate grey, deep navy, warm amber lamp light, and "
+            "the faintest reflection of city lights on glass. Painterly "
+            "editorial illustration, contemplative mood, no people in "
+            "frame. " + COMMON_TAIL
+        ),
+        accent_color="#3b5468",
+    ),
+    CharacterSpec(
         id="aoede",
         display_name="Aoede",
         tagline="A native voice of the Muses.",
@@ -397,6 +436,29 @@ BOOKS: list[BookSpec] = [
             "silhouette of a woman captain on the bow looking out. Painterly "
             "editorial illustration, deep teal and crimson palette, cinematic. "
             "No text, no logos. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_hayreddin_barbarossa",
+        title="Hayreddin Barbarossa",
+        description=(
+            "The Ottoman corsair who became admiral of the Mediterranean — "
+            "built Algiers into a power, sailed against the Habsburg fleets, "
+            "and died in his bed in Istanbul."
+        ),
+        cover_prompt=(
+            "A sixteenth-century Ottoman war fleet at dawn off the coast of "
+            "the Maghreb. The lead ship is a long, low oared galley with a "
+            "single tall mast amidships carrying a large triangular lateen "
+            "sail on a long diagonal yard, oars projecting from each side, "
+            "a long horizontal spur extending forward from the prow at "
+            "waterline level, low freeboard, no high castles, a forward bow "
+            "cannon. Two more galleys recede behind in echelon formation. A "
+            "solid red banner with a single white crescent moon (no star) "
+            "snaps at the masthead. The eastern sky is rose-gold over a "
+            "slate-blue calm sea, a faint silhouette of a sandstone "
+            "fortified city on the far horizon. Cinematic, low angle, "
+            "painterly. " + COMMON_TAIL
         ),
     ),
     BookSpec(

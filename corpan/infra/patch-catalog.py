@@ -97,20 +97,14 @@ CHARACTERS_META = {
         "status": "active",
         "order": 4,
     },
-    "sky": {
-        "displayName": "Skylar",
-        "tagline": "A reader's voice for stories worth slowing down for.",
-        "bio": (
-            "Skylar narrates the Musical Instruments of the World series. He "
-            "reads the way a thoughtful host on late-night radio does — slow, "
-            "even, a little curious, always making room for the music. Skylar "
-            "is at home across the catalog's languages and is the host of the "
-            "world music series."
-        ),
-        "accentColor": "#5a7d8c",
-        "status": "active",
-        "order": 5,
-    },
+    # Skylar (sky-21.wav) and Victor (victor-business.wav) have avatars +
+    # banners on S3 from the 2026-05-10 generate-catalog-assets.py pass, but
+    # no narrations are using them yet. Hold them out of the catalog until
+    # there's a real shipping pack. To restore: add a CHARACTERS_META entry +
+    # matching VOICE_PROFILES entry + VOICE_PREVIEW_URLS entry. Avatar/banner
+    # JPGs are already live at:
+    #   /characters/sky/{avatar,banner}.jpg
+    #   /characters/victor/{avatar,banner}.jpg
 }
 
 # voiceId → CDN URL of a short mastered preview clip (~15-25s).
@@ -122,7 +116,6 @@ VOICE_PREVIEW_URLS = {
     "aoede-gemini":    f"{CDN_BASE}/voice-previews/aoede-gemini.m4a",
     "august":          f"{CDN_BASE}/voice-previews/august.m4a",
     "kym":             f"{CDN_BASE}/voice-previews/kym.m4a",
-    "sky":             f"{CDN_BASE}/voice-previews/sky.m4a",
 }
 
 # voiceId → (characterId, displayName, provider, source kind, supportedLanguages)
@@ -198,21 +191,8 @@ VOICE_PROFILES = [
         "status": "active",
         "order": 1,
     },
-    {
-        "id": "sky",
-        "characterId": "sky",
-        "displayName": "Skylar",
-        "provider": "chatterbox",
-        "source": {
-            "kind": "cloned",
-            "sourceWaveUrl": "",
-            "sourceWaveSha256": "",
-            "lengthSeconds": 21,
-        },
-        "traits": ["narrator", "calm", "world-music", "language-learning"],
-        "status": "active",
-        "order": 1,
-    },
+    # Skylar + Victor voice profiles withheld until a real narration ships
+    # under either voiceId (see CHARACTERS_META comment above).
 ]
 
 # Book descriptions — matches generate-catalog-assets.py
@@ -278,6 +258,14 @@ BOOK_META = {
         "description": (
             "The pirate queen who commanded eighty thousand sailors across the "
             "South China Sea — and walked away from it alive."
+        ),
+        "tags": ["history", "biography", "maritime"],
+    },
+    "book_hayreddin_barbarossa": {
+        "description": (
+            "The Ottoman corsair who became admiral of the Mediterranean — "
+            "built Algiers into a power, sailed against the Habsburg fleets, "
+            "and died in his bed in Istanbul."
         ),
         "tags": ["history", "biography", "maritime"],
     },

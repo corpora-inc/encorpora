@@ -19,7 +19,8 @@ Backed up to `s3://corpan-prod/artifacts/voices/`.
 | `kym-raw-cookin.wav` | (source) | Raw 88s take, kept for re-trimming. |
 | `kym-raw-dating.wav` | (source) | Raw 96s take, kept for re-trimming. |
 | `kym-20-clicked-archive.wav` | (do-not-use) | Original kym-20 with leading saturation click; archived for reference only. |
-| `sky-21.wav` | V9-sky | **Canonical Skylar reference.** Male voice, 21.875s @ 48k/2ch/24-bit. Calm, even, late-night-radio cadence. Narrates the Musical Instruments of the World series, beginning with the Oud (Volume 1). |
+| `sky-21.wav` | V9-sky | **Canonical Skylar reference.** Male voice, 21.875s @ 48k/2ch/24-bit. Fast news-anchor cadence. Pairs with Victor + Aoede in dialog packs. |
+| `victor-business.wav` | V10-victor | **Canonical Victor reference.** Male voice, 22.5s @ 48k/2ch/24-bit. Business / news analyst cadence. Pairs with Skylar (host) and Aoede (Gemini muse) in the AI This Week dialog packs. |
 
 ## Retired / DO NOT USE
 
