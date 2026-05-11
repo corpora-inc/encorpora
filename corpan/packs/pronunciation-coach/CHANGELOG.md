@@ -10,6 +10,68 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **`tiny_proof` model variant** for validating the host plugin's
+  whisper.cpp runtime swap. Folder = `ggml-tiny.bin` (~75 MB), a
+  single `.bin` file the new plugin downloads from
+  `https://huggingface.co/ggerganov/whisper.cpp/`. See
+  `tauri-plugin-stt` Unreleased entry for context.
+- **Small + Medium repointed to whisper.cpp ggml format**:
+  `ggml-small.bin` (~465 MB) and `ggml-medium.bin` (~1463 MB).
+  Canonical OpenAI multilingual checkpoints, no quantization or
+  bespoke distillation. The "rough edges" we hit with WhisperKit's
+  argmax variants don't apply here — these are straight conversions
+  of OpenAI's released weights.
+- **Four Large tiers**:
+  - **`large_turbo`** → `ggml-large-v3-turbo-q5_0.bin` (547 MB).
+    Whisper's distilled large-v3 with smaller decoder, q5_0
+    quantized. Large-class accuracy at roughly Medium download
+    size; usually the best speed/quality tradeoff.
+  - **`large_q8`** → `ggml-large-v3-turbo-q8_0.bin` (834 MB).
+    Distilled large-v3 with the lighter q8_0 quantization. Quality
+    bump over Large Turbo at modest size. (ggerganov never
+    published a q8 of the full-decoder large-v3, only of the
+    turbo distillation — and the full-fp16 .bin SIGSEGVs in
+    ggml-metal anyway.)
+  - **`large_qlora`** → `ggml-large-v3-q5_0.bin` (1031 MB). The
+    standard Apple Silicon "Large" ship. Id stays `large_qlora`
+    for localStorage compat with users from the WhisperKit-era
+    Large slot.
+  - **`large_max`** → `ggml-large-v3-turbo.bin` (1549 MB).
+    Distilled large-v3 at full fp16 precision, no quantization.
+    Biggest viable on-device Whisper.
+
+### Changed
+- **Download progress label shows MB** instead of raw byte counts.
+  The whisper.cpp swap moved progress reporting from
+  swift-transformers' file-count counters to URLSession byte
+  counters; the label needed updating to match.
+- **Model card labels now expose the tech tier** (Turbo / q5 / q8 /
+  Full Weight). Users learn the lineage from naming + experience
+  rather than abstracted t-shirt sizes.
+- **Card descriptions rewritten** for the user, not the developer.
+  Quirky, expectation-lowering, honest about what each tier can
+  and can't do.
+- **Tech-ID line added** under each card description, showing the
+  underlying ggml file name in small monospace. Barely there for
+  most users; scratching post for the curious.
+- **Lineup reordered ascending by file size**, so the cards read
+  cleanly from cheapest-to-fattest. Notable consequence: Full
+  Weight Medium (1463 MB) sits between Large q5 (1031 MB) and
+  Full Weight Large Turbo (1549 MB), because that's where it
+  actually falls on the size scale.
+
+### Removed
+- **Full-fp16 `ggml-large-v3.bin` (~3.0 GB)** — never made it into
+  a shipped tier. Verified live 2026-05-10 on iPad Pro
+  (`iPad17,3`, iPadOS 26.4.2): SIGSEGV inside ggml-metal during
+  load (`ggml_metal_buffer_is_shared` deref of nil — Metal's
+  `MTLDevice.maxBufferLength` cap, ~3.5 GB even on 16 GB iPads,
+  refused the single-tensor allocation). The quantized q5_0 /
+  q8_0 / turbo-q5_0 variants are the standard whisper.cpp
+  Apple Silicon ship and load cleanly. Crash report:
+  `EXC_BAD_ACCESS` at `0x10`, `bug_type:309` — not jetsam.
+
 ## [0.3.6] - 2026-05-10
 
 ### Removed

@@ -1,0 +1,88 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"whisper.cpp/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 182,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 202,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 210,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"whisper.cpp/src/libwhisper.a"
+			],
+			"targetId" : "whisper::@a8a66f5e841e94d32cb3",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"whisper.cpp/include/whisper.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/whisper",
+			"paths" : 
+			[
+				"/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/whisper-config.cmake",
+				"/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/whisper-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/whisper.pc"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "whisper.cpp",
+		"source" : "whisper.cpp"
+	}
+}

@@ -1061,6 +1061,15 @@ body,
   color: var(--pc-fg);
   opacity: 0.85;
 }
+.pc-setup-card-techid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--pc-muted);
+  opacity: 0.65;
+  word-break: break-all;
+  margin-top: 2px;
+}
 .pc-setup-card-actions {
   display: flex;
   flex-wrap: wrap;

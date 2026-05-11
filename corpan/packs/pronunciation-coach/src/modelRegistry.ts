@@ -107,69 +107,136 @@ export const hasLargeMemoryBudget = (): boolean => {
   return looksIpadByUA()
 }
 
-// Two tiers: Small + Medium. The Large + Advanced tiers were yanked
-// in 0.3.6 after exhausting every WhisperKit large-v3 variant on
-// argmax's HF repo and finding all of them broken on iPadOS 26.4.x:
+// Seven tiers: Tiny → Small → Medium → (Large family).
+// Large family in ascending size:
+//   Large Turbo (547 MB, turbo-q5_0)
+//   Large HQ    (834 MB, turbo-q8_0)
+//   Large       (1031 MB, q5_0)
+//   Large Max   (1549 MB, turbo, no quant)
 //
-//   Compile-time error -14 (won't load):
-//     • `large-v3-v20240930_626MB` (AudioEncoder)
-//     • `large-v3-v20240930` (AudioEncoder)
-//     • `large-v3` full canonical (TextDecoder)
+// Why no full-FP16 ggml-large-v3.bin (3.0 GB)?
+// Verified live 2026-05-10 on iPad Pro / iPadOS 26.4.2: the full-
+// precision file SIGSEGVs inside ggml-metal during model load, in
+// `ggml_metal_buffer_is_shared` — `MTLDevice newBufferWithLength:`
+// returned nil because a single tensor allocation exceeds Metal's
+// `maxBufferLength` cap (~3.5 GB even on 16 GB iPads). This is a
+// Metal architecture limit, not a per-app memory budget. Crash
+// stack and full analysis: see CHANGELOG 0.3.7.
 //
-//   Loads, then SIGABRT on first inference inside
-//   `MPSGraphTensorData initWithMTLBuffer`:
-//     • `large-v3_turbo`
-//     • `large-v3_turbo_954MB`
-//     • `large-v3_947MB` canonical palettized
+// The standard whisper.cpp distribution of Large for Apple Silicon
+// is the quantized variants below (q5_0 / q8_0 / turbo-q5_0). They
+// are the upstream ggerganov-maintained quants — *not* WhisperKit
+// "qlora" / argmax palettized variants, which were unrelated and
+// broken under MPSGraph on iPadOS 26.4.x.
 //
-// Two distinct Apple bugs, both inside MPSGraph / Espresso /
-// kernel-mmap, uncatchable from Swift. Medium
-// (`large-v3-v20240930_547MB`) is the largest variant that survives
-// both compile and inference on this OS. Same iPad ran the broken
-// variants cleanly on iPadOS 26.3.x days before the OS update —
-// the regression shipped with 26.4. Removing the tiers is the only
-// honest user experience until either Apple ships a 26.4.x patch
-// or we move off WhisperKit 0.18 (next: try argmax-oss-swift 1.0.0,
-// then sherpa-onnx, then a non-on-device fallback).
+// Existing users on saved `mode: "large_qlora"` from the broken
+// 0.3.6 entry: same id is repointed at `ggml-large-v3-q5_0.bin`
+// (the working "Large"). On next prepare, validateModel sees the
+// new file is missing and the install flow runs to download the
+// q5_0. Their on-disk 3 GB `ggml-large-v3.bin` becomes orphan;
+// cleanup is deferred to a future sweep.
 //
-// Existing users with `mode: "large_qlora"` or `mode: "advanced"`
-// saved in localStorage fall through `modelById(...) === undefined`
-// and boot at the fresh-install default (Small) — same graceful
-// fallthrough that the 0.3.2 `openai_whisper-base` removal relies
-// on. Their on-disk `_turbo*` / `_v20240930*` / `large-v3*` folders
-// become orphans; cleanup is deferred to a future sweep.
-//
-// See `memory/feedback_whisper_ipados26_mps_crash.md` and the
-// CHANGELOG 0.3.6 entry for the full failure matrix and the
-// untested next moves (argmax-oss-swift 1.0.0 dep bump,
-// CrisperWhisper, Whisper-medium proper, OS patch wait).
+// Older orphan folders from the WhisperKit era (`_turbo*`,
+// `_v20240930*`, original `large-v3*` mlmodelc bundles) are also
+// still on disk for upgraders; same deferred cleanup.
 //
 // Removed `openai_whisper-base` (Standard, 145 MB) in 0.3.2 — Small
 // is meaningfully better across most languages and only ~70 MB
 // larger, so the floor moves up. Existing users who saved
 // `mode: "standard"` fall through the same way.
 //
-// Folder-name conventions (from WhisperKit upstream):
-//   _v20240930        argmax retrained, multilingual-aware quant
-//   _NNNMB            palettized variant, N ≈ disk MB (lower = more aggressive)
-//   no suffix         full unquantized weights from the upstream checkpoint
+// Folder-name conventions (whisper.cpp / ggerganov HF repo):
+//   no suffix         full unquantized fp16 weights (multi-GB; broken on Metal for large-v3)
+//   -q5_0             5-bit quantization (most common Apple Silicon ship)
+//   -q8_0             8-bit quantization (closer to fp16 quality, larger)
+//   -turbo            distilled large-v3 with smaller decoder (Whisper "turbo")
 export const MODELS: ReadonlyArray<ModelVariant> = [
+  // Tiny — the canonical OpenAI Whisper-tiny via whisper.cpp's
+  // ggml-tiny.bin. Surprisingly capable on simple Spanish/French/etc.
+  // but per-token confidence is intrinsically lower than larger
+  // models, so the acoustic ramp is calibrated softer for this tier
+  // (see STTPlugin.swift `pickAcousticRamp`).
   {
-    id: "small",
-    folder: "openai_whisper-small_216MB",
-    label: "Small",
+    id: "tiny_proof",
+    folder: "ggml-tiny.bin",
+    label: "Tiny",
     shortDesc:
-      "Tiny and quick. Often wrong. May barely understand the language you actually want. Lower your expectations and have fun.",
-    approxSizeMB: 216,
+      "Quick to answer and often wrong. Knows enough for simple phrases in popular languages and gives up gracefully on the rest. Practically free to download.",
+    approxSizeMB: 75,
     defaultForFreshInstall: true,
   },
+  // Small — canonical OpenAI multilingual Whisper-small via the
+  // whisper.cpp ggml conversion. Straight from OpenAI's released
+  // weights, no quantization, no decoder shrink.
+  {
+    id: "small",
+    folder: "ggml-small.bin",
+    label: "Small",
+    shortDesc:
+      "Real step up from Tiny — handles fluent speech across most languages without thinking too hard. Still small enough not to think about.",
+    approxSizeMB: 465,
+    defaultForFreshInstall: false,
+  },
+  // Large Turbo q5 — distilled large-v3 with smaller decoder,
+  // 5-bit quantization. Smallest of the Large family.
+  {
+    id: "large_turbo",
+    folder: "ggml-large-v3-turbo-q5_0.bin",
+    label: "Large Turbo q5",
+    shortDesc:
+      "Whisper's largest model, distilled to a faster decoder and squeezed to 5-bit weights. Often the best balance of speed, size, and quality.",
+    approxSizeMB: 547,
+    defaultForFreshInstall: false,
+  },
+  // Large Turbo q8 — same distillation, lighter quantization.
+  // (ggerganov never published a q8 of the full-decoder large-v3,
+  // only of the turbo distillation — the header comment explains
+  // why we don't ship the full-fp16 .bin.)
+  {
+    id: "large_q8",
+    folder: "ggml-large-v3-turbo-q8_0.bin",
+    label: "Large Turbo q8",
+    shortDesc:
+      "Same fast distillation as Turbo q5, but with lighter compression — a few percent more of the original brain survives. Modest size bump, modest quality bump.",
+    approxSizeMB: 834,
+    defaultForFreshInstall: false,
+  },
+  // Large q5 — full-decoder large-v3 with 5-bit quantization. The
+  // standard Apple Silicon Large ship. Id stays `large_qlora` for
+  // localStorage compat with users from the broken-Large-FP16 era.
+  {
+    id: "large_qlora",
+    folder: "ggml-large-v3-q5_0.bin",
+    label: "Large q5",
+    shortDesc:
+      "Whisper's full large model with the original (slower) decoder, weights compressed to 5 bits. Slower than the Turbo variants but the full decoder catches some nuance Turbo misses.",
+    approxSizeMB: 1031,
+    defaultForFreshInstall: false,
+  },
+  // Full Weight Medium — canonical OpenAI Whisper-medium, no
+  // quantization. Smaller architecture (769M params) than the
+  // Large family (1.55B), but unquantized. Kept in the lineup
+  // because the Large turbo distillation skewed English-heavy in
+  // training; some users' languages may land better here.
   {
     id: "medium",
-    folder: "openai_whisper-large-v3-v20240930_547MB",
-    label: "Medium",
+    folder: "ggml-medium.bin",
+    label: "Full Weight Medium",
     shortDesc:
-      "Sometimes shockingly good, sometimes wildly off. Don't take a single bad score personally — the model is just having a moment.",
-    approxSizeMB: 547,
+      "Older, smaller architecture, but no quantization tricks — every weight at its original 16-bit precision. The quantized Larges are probably better for most languages, but if yours is one Whisper's distillation lost track of, this might be your best shot.",
+    approxSizeMB: 1463,
+    defaultForFreshInstall: false,
+  },
+  // Full Weight Large Turbo — distilled large-v3, no quantization.
+  // Top of the on-device line. The full-decoder fp16 large-v3
+  // (~3 GB) crashes ggml-metal on Apple Silicon — see header.
+  {
+    id: "large_max",
+    folder: "ggml-large-v3-turbo.bin",
+    label: "Full Weight Large Turbo",
+    shortDesc:
+      "Top of the line for on-device Whisper. Distilled Large with all weights at full 16-bit precision — no compression. Big download, big appetite, best transcription you can get without sending your voice to a server.",
+    approxSizeMB: 1549,
     defaultForFreshInstall: false,
   },
 ]

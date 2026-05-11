@@ -7,6 +7,94 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Android: Phase 0 of the whisper.cpp port** — model load + download,
+  no audio capture yet.
+
+  - `src/main/cpp/whisper_jni.cpp` — JNI shim wrapping
+    `whisper_init_from_file_with_params` / `whisper_free` /
+    a version smoke test.
+  - `src/main/cpp/CMakeLists.txt` — externalNativeBuild config that
+    compiles whisper.cpp v1.8.4 (vendored under
+    `src/main/cpp/whisper.cpp/`, gitignored) plus the JNI shim into
+    a single `libwhisper-jni.so`. CPU-only for now (Metal off, OpenCL
+    off, Vulkan off, OpenMP off, BLAS off). arm64-v8a only.
+  - `WhisperContext.kt` — Kotlin wrapper that mirrors the Swift
+    `WhisperCppContext` actor. Holds the opaque `whisper_context*` as
+    a `Long`, exposes `load()` / `release()`, smoke-tests the JNI link
+    via `nativeVersion()`.
+  - `SttPlugin.kt` — rewritten from the all-rejecting stub to a
+    Phase 0 surface: `isAvailable` → true, `getStatus` returns device
+    memory + loaded-model state, `installModel` does single-file
+    OkHttp download from the same HF base URL the iOS side uses
+    (`huggingface.co/ggerganov/whisper.cpp/resolve/main/<file>`),
+    `prepare` calls into `WhisperContext.load`, `validateModel` /
+    `listInstalled` / `wipeModel` / `unload` round out the
+    file-management commands. `startSession` / `stopSession` /
+    `cancelSession` still reject with a clear "Phase 1" message.
+  - `AndroidManifest.xml` — INTERNET (model downloads) + RECORD_AUDIO
+    (Phase 1) permissions added.
+  - `build.gradle.kts` — externalNativeBuild + OkHttp + coroutines
+    deps; abiFilters = arm64-v8a only.
+
+  Phase 1 (next): AudioRecord pipeline → 16 kHz f32 mono, full
+  transcribe + per-token timing, scoring math mirrored 1:1 from the
+  Swift side.
+
+### Changed
+- **Runtime swapped from WhisperKit to whisper.cpp.** `STTPlugin.swift`
+  rewritten end-to-end against the `whisper` C module from the official
+  `whisper-v1.8.4-xcframework.zip` release asset on
+  `ggml-org/whisper.cpp`. New `WhisperCppContext` actor wraps
+  `whisper_init_from_file_with_params` + `whisper_full`. `Package.swift`
+  drops the `argmaxinc/WhisperKit` SPM dep in favor of a `binaryTarget`
+  pointing at the XCFramework (sha256
+  `1c7a93bd20fe4e57e0af12051ddb34b7a434dfc9acc02c8313393150b6d1821f`).
+
+  Why: every WhisperKit large-v3 variant is broken on iPadOS 26.4.x in
+  one of two distinct Apple compiler bugs (compile-time error -14 or
+  predict-time `MPSGraphTensorData initWithMTLBuffer` SIGABRT). See
+  `memory/feedback_whisper_ipados26_mps_crash.md` for the full failure
+  matrix. whisper.cpp ships its own Metal compute shaders and does NOT
+  route through MPSGraph — same Metal hardware, different code path
+  that the regression doesn't touch.
+
+  JS API contract preserved: every plugin command name + arg shape
+  + payload field is unchanged, so pronunciation-coach 0.3.x JS works
+  without modification.
+
+  Phase 1 (this entry) is a proof-of-concept. Several scoring inputs
+  WhisperKit surfaced as first-class (`noSpeechProb`,
+  `compressionRatio`, `temperature`, per-word timings) get sane
+  defaults until Phase 2 wires them through whisper.cpp's per-token
+  data + token timestamps. Single decode pass instead of dual
+  constrained+free; `freeVsConstrainedSimilarity` collapses to 1.0.
+
+- **Model storage layout:** moved from
+  `Documents/huggingface/models/argmaxinc/whisperkit-coreml/<name>/`
+  (multi-file `.mlmodelc` bundle) to `Documents/whisper-cpp/models/<name>`
+  (single `.bin` file). Old WhisperKit installs become orphans on disk;
+  cleanup is deferred. Install marker file pattern under
+  `Documents/.pronunciation-coach/installed/<name>.marker` is unchanged.
+
+- **Install:** `WhisperKit.download(variant:)` replaced with a single
+  `URLSession` download from `https://huggingface.co/ggml-org/whisper.cpp/resolve/main/<filename>`.
+  `URLSessionDownloadDelegate` reports byte-level progress mapped onto
+  the existing `InstallProgressPayload` shape.
+
+### Removed
+- `loadKitWithComputeFallback` and the CPU+GPU → CPU-only fallback
+  path. whisper.cpp doesn't have CoreML's error -14 problem, and
+  flash_attn / use_gpu are simple struct fields rather than typed
+  enums. The decision tree collapses to a single `WhisperCppContext.load(path:)`.
+- `isComputeBackendError`, `isTransientMmapError` — both were
+  WhisperKit / CoreML specific symptoms.
+- The `.mlmodelc` directory tree validation in `validateModel` —
+  replaced with a single-file existence + size check.
+- The atomic-staging install pattern (move-aside / rollback). Single
+  `.bin` files are atomic by construction; on failure we just remove
+  the partial file.
+
 ## [0.2.3] - 2026-05-07
 
 This release is the consolidated state of an intense same-day

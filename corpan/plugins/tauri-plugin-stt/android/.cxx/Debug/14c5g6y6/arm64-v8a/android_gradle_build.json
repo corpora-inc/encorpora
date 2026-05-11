@@ -1,0 +1,73 @@
+{
+  "buildFiles": [
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/CMakeLists.txt",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/CMakeLists.txt",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/cmake/build-info.cmake",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/cmake/whisper-config.cmake.in",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/ggml/CMakeLists.txt",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/ggml/cmake/common.cmake",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/ggml/cmake/ggml-config.cmake.in",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/ggml/src/CMakeLists.txt",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/ggml/src/ggml-cpu/CMakeLists.txt",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/src/main/cpp/whisper.cpp/src/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/skyl/Android/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/skyl/Android/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "ggml::@74253485f3a7ec30fb13": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ggml",
+      "output": "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/ggml/src/libggml.a"
+    },
+    "ggml-base::@74253485f3a7ec30fb13": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ggml-base",
+      "output": "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/ggml/src/libggml-base.a"
+    },
+    "ggml-cpu::@74253485f3a7ec30fb13": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ggml-cpu",
+      "output": "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/ggml/src/libggml-cpu.a"
+    },
+    "whisper::@a8a66f5e841e94d32cb3": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "whisper",
+      "output": "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/.cxx/Debug/14c5g6y6/arm64-v8a/whisper.cpp/src/libwhisper.a"
+    },
+    "whisper-jni::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "whisper-jni",
+      "output": "/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/build/intermediates/cxx/Debug/14c5g6y6/obj/arm64-v8a/libwhisper-jni.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/skyl/Android/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/skyl/Android/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
