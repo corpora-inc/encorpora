@@ -131,6 +131,33 @@ object Scoring {
         ),
     )
 
+    /**
+     * True if a transcribed word is pure-digit OR is a known number
+     * word in the language's number-word dict. Such words have
+     * unreliable per-word probabilities under the constrained decode
+     * — Whisper might emit either form (digit or spelled), and
+     * `prefixTokens` forces whichever the expected text uses, so the
+     * per-word probability reflects "did the audio match this
+     * specific surface form?" rather than "did the user say the
+     * right number?"
+     *
+     * Used to filter `wordProbs` before computing the acoustic score.
+     * Transcript scoring still catches numerals via the existing
+     * `diez` ↔ `10` normalization — this only opts the acoustic
+     * layer out of the digit/word ambiguity.
+     *
+     * Implementation: reuse `normalize()`, which already maps
+     * number-words to digits per language. If the result is pure
+     * digits, the word was either a digit already or a number word
+     * that normalized to one — either way, uncertain.
+     */
+    fun isUncertainNumeralWord(word: String, lang: String?): Boolean {
+        if (word.isEmpty()) return false
+        val normalized = normalize(word, lang).replace(" ", "")
+        if (normalized.isEmpty()) return false
+        return normalized.all { it.isDigit() }
+    }
+
     fun levenshteinSimilarity(a: String, b: String): Float {
         if (a.isEmpty() && b.isEmpty()) return 1f
         val n = a.length

@@ -38,13 +38,26 @@ set(GGML_BLAS              OFF CACHE BOOL "" FORCE)
 set(GGML_CCACHE            OFF CACHE BOOL "" FORCE)
 
 # Match whisper.cpp's own `examples/whisper.android/lib/src/main/jni/whisper/CMakeLists.txt`
-# config for arm64-v8a: target ARMv8.2-A with the FP16 extension. Without
-# this flag the compiler defaults to armv8-a (no FP16), and ggml's
-# fp16 vec_dot path emits NEON intrinsics that don't have a real
-# instruction on the target — which is the actual root cause of the
-# SIGSEGV in `ggml_vec_dot_f16` we saw on Snapdragon 8 Elite. With
-# `+fp16` the kernels compile to the real fp16 NEON ops and run fast +
-# stable across all cores.
+# config for arm64-v8a: target ARMv8.2-A with two optional extensions:
+#
+#   +fp16     — hardware fp16 NEON ops. Without this the compiler
+#               defaults to armv8-a (no FP16) and ggml's fp16 vec_dot
+#               path emits NEON intrinsics that don't have a real
+#               instruction on the target — the root cause of the
+#               SIGSEGV in `ggml_vec_dot_f16` we saw on Snapdragon 8
+#               Elite during early Phase 1. With `+fp16` the kernels
+#               compile to the real fp16 NEON ops and run fast + stable
+#               across all cores.
+#
+#   +dotprod  — int8 dot-product (UDOT/SDOT) NEON ops. Gates the
+#               dotprod-accelerated `vec_dot_q4_0_q8_0`,
+#               `vec_dot_q5_0_q8_0`, `vec_dot_q8_0_q8_0` kernels in
+#               `ggml-cpu/arch/arm/quants.c` behind
+#               `__ARM_FEATURE_DOTPROD`. Without the flag those
+#               kernels #ifdef out and the scalar fallback runs ~2-4×
+#               slower per matmul. ARMv8.2-A extension, supported on
+#               every phone our `+fp16` target already covers
+#               (Cortex-A75+, all Snapdragon 8-series, etc. — ~2018+).
 #
 # Pair this with reading the high-performance CPU count on the Kotlin
 # side (see `WhisperCpuConfig.kt`) and passing it as `n_threads` so
@@ -52,9 +65,15 @@ set(GGML_CCACHE            OFF CACHE BOOL "" FORCE)
 # efficiency cores are the *other* part of the same crash family —
 # torn reads from memory that's been updated by a different cluster's
 # cache.
+#
+# Not enabled here: `+i8mm` (ARMv8.6-A int8 matrix multiply). Bigger
+# perf win for quantized models but only on Snapdragon 8 Gen 1+
+# (~2022 phones); enabling it in a single-variant build would SIGILL
+# on older devices. Defer until we either bump minSdk or wire ggml's
+# multi-variant runtime selection.
 if(ANDROID_ABI STREQUAL "arm64-v8a")
     add_definitions(-DGGML_USE_CPU_AARCH64)
-    add_compile_options(-march=armv8.2-a+fp16)
+    add_compile_options(-march=armv8.2-a+fp16+dotprod)
 endif()
 
 # Pull in whisper.cpp source. Vendored under whisper.cpp/, gitignored.

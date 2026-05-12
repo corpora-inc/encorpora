@@ -1,12 +1,12 @@
 {
   "id": "pronunciation_coach",
   "name": "Pronunciation Coach",
-  "version": "0.3.6",
+  "version": "0.5.0",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-05-11T04:52:43.759Z"
+  "devRevision": "2026-05-12T05:18:15.994Z"
 }

@@ -514,8 +514,18 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             val normHeard = Scoring.normalize(merged.text, baseLang)
             val normExp = Scoring.normalize(expected, baseLang)
 
+            // Filter pure-digit / number-word entries out of the
+            // acoustic-score input. Their per-word probabilities are
+            // unreliable under the constrained decode (digit-vs-spelled
+            // ambiguity — see `Scoring.isUncertainNumeralWord`).
+            // Transcript scoring still catches them via normalize's
+            // diez ↔ 10 mapping.
+            val acousticWordProbs = merged.words
+                .filter { !Scoring.isUncertainNumeralWord(it.word, baseLang) }
+                .map { it.probability }
+
             val scores = Scoring.computeScores(
-                wordProbs = merged.words.map { it.probability },
+                wordProbs = acousticWordProbs,
                 avgLogprob = merged.avgLogprob,
                 normalizedTranscript = normHeard,
                 normalizedExpected = normExp,
@@ -648,7 +658,17 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 val plog = data[1]
                 val t0_10ms = data[2].toInt()
                 val t1_10ms = data[3].toInt()
-                allLogprobs.add(plog)
+                // Only count tokens with at least one letter/digit toward
+                // the per-token logprob stats. Pure-punctuation tokens
+                // (".", ",", "!", "?") have widely-varying logprobs that
+                // inflate `tokenLogprobStdev` and falsely trigger the
+                // `acoustic *= 0.5` penalty in `Scoring.computeScores`.
+                // We already skip pure-punctuation chunks at the per-word
+                // level in `flushWord()`; this brings the stdev calc in
+                // line with that.
+                if (txt.any { it.isLetterOrDigit() }) {
+                    allLogprobs.add(plog)
+                }
 
                 // Whisper marks word boundaries with a leading ASCII
                 // space on the new word's first token. The very first
@@ -659,7 +679,18 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                     curStartMs = t0_10ms * 10
                 }
                 curWordText.append(txt)
-                curWordProbs.add(p)
+                // Only count letter/digit tokens toward the per-word
+                // probability average. Whisper often appends a
+                // punctuation token (".", "!", "?") onto the previous
+                // word with widely-varying prob (e.g. "gusto!" =
+                // ["gusto" 0.97, "!" 0.38] gave avg 0.68); the
+                // punctuation prob has no pronunciation meaning and
+                // was dragging the per-word avg down on clean speech.
+                // The text still gets appended so the displayed word
+                // keeps its punctuation; only the score input changes.
+                if (txt.any { it.isLetterOrDigit() }) {
+                    curWordProbs.add(p)
+                }
                 curEndMs = t1_10ms * 10
             }
         }

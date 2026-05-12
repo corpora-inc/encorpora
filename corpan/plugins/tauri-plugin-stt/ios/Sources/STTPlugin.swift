@@ -473,9 +473,25 @@ actor WhisperCppContext {
                     if tokText.isEmpty { continue }
 
                     // Per-token logprobs for the per-word stats —
-                    // collected only for real text tokens.
-                    logprobs.append(td.plog)
-                    sumLogprob += td.plog
+                    // collected only for real text tokens. Skip pure-
+                    // punctuation tokens too: their logprobs sit in a
+                    // wildly different range than word tokens, which
+                    // inflates `tokenLogprobStdev` and falsely triggers
+                    // the `acoustic *= 0.5` penalty downstream even on
+                    // clean pronunciation. Per-word probability rollup
+                    // already skips these at flush time (see
+                    // `isPureSymbol` check); extending the same logic
+                    // here keeps the token-level stats consistent.
+                    let isPunctOnlyToken = !tokText.isEmpty
+                        && tokText.unicodeScalars.allSatisfy {
+                            CharacterSet.punctuationCharacters.contains($0)
+                                || CharacterSet.symbols.contains($0)
+                                || CharacterSet.whitespaces.contains($0)
+                        }
+                    if !isPunctOnlyToken {
+                        logprobs.append(td.plog)
+                        sumLogprob += td.plog
+                    }
 
                     // New word boundary: token starts with a space
                     // AND we already have an in-progress word.
@@ -491,7 +507,20 @@ actor WhisperCppContext {
                     }
                     curEnd = td.t1
                     curText += tokText
-                    curProbs.append(td.p)
+                    // Only count letter/digit tokens toward the
+                    // per-word probability average. Whisper often
+                    // appends a punctuation token (".", "!", "?")
+                    // onto the previous word with widely-varying
+                    // prob; that prob has no pronunciation meaning
+                    // and was dragging per-word avg down on clean
+                    // speech (e.g. live-observed "gusto!" =
+                    // ["gusto" 0.97, "!" 0.38] gave avg 0.68). The
+                    // text still gets appended so the displayed
+                    // word keeps its punctuation; only the score
+                    // input changes.
+                    if !isPunctOnlyToken {
+                        curProbs.append(td.p)
+                    }
                 }
                 // Flush the final word in this segment.
                 if !curText.isEmpty { flushWord() }
@@ -1676,6 +1705,34 @@ private final class WhisperManager {
         return mapped.joined(separator: " ")
     }
 
+    /// True if a transcribed word is pure-digit OR is a known number
+    /// word in the language's number-word dict. Such words have
+    /// unreliable per-word probabilities under the constrained decode
+    /// — Whisper might emit either form (digit or spelled), and
+    /// `prefixTokens` forces whichever the expected text uses, so the
+    /// per-word probability reflects "did the audio match this
+    /// specific surface form?" rather than "did the user say the
+    /// right number?"
+    ///
+    /// Used to filter `wordProbs` before computing the acoustic
+    /// score. Transcript scoring still catches numerals via the
+    /// existing `diez` ↔ `10` normalization — this only opts the
+    /// acoustic layer out of the digit/word ambiguity.
+    ///
+    /// Implementation: reuse `normalize()`, which already maps
+    /// number-words to digits per language. If the result is pure
+    /// digits, the word was either a digit already or a number word
+    /// that normalized to one — either way, uncertain.
+    private func isUncertainNumeralWord(_ word: String, lang: String?) -> Bool {
+        if word.isEmpty { return false }
+        let normalized = normalize(word, lang: lang).replacingOccurrences(
+            of: " ", with: "")
+        if normalized.isEmpty { return false }
+        return normalized.unicodeScalars.allSatisfy {
+            CharacterSet.decimalDigits.contains($0)
+        }
+    }
+
     private func levenshteinSimilarity(_ a: String, _ b: String) -> Float {
         if a.isEmpty && b.isEmpty { return 1 }
         let aChars = Array(a)
@@ -1826,7 +1883,15 @@ private final class WhisperManager {
         // in Phase 2.
         let transcriptScore = transcriptScoreConstrained
 
-        let probs = merged.words.map { $0.probability }
+        // Filter pure-digit / number-word entries out of the
+        // acoustic-score input. Their per-word probabilities are
+        // unreliable under the constrained decode (digit-vs-spelled
+        // ambiguity — see `isUncertainNumeralWord`). Transcript
+        // scoring still catches them via normalize's diez ↔ 10
+        // mapping.
+        let probs = merged.words
+            .filter { !self.isUncertainNumeralWord($0.word, lang: baseLangNormHint) }
+            .map { $0.probability }
         let avgWordProb: Float =
             probs.isEmpty ? 0 : probs.reduce(0, +) / Float(probs.count)
         let minWordProb: Float = probs.min() ?? 0

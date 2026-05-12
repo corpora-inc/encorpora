@@ -161,7 +161,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-tiny.bin",
     label: "Tiny",
     shortDesc:
-      "Quick to answer and often wrong. Knows enough for simple phrases in popular languages and gives up gracefully on the rest. Practically free to download.",
+      "Tiny is, honestly, kind of terrible. You say 'good morning' and Tiny writes down 'good warning'. Some languages it technically supports, in the sense that it returns words. Whether those words match the ones you said is between you and Tiny. Free, fast, occasionally hilarious. Maybe start here so you have something to compare the bigger ones to.",
     approxSizeMB: 75,
     defaultForFreshInstall: true,
   },
@@ -173,7 +173,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-small.bin",
     label: "Small",
     shortDesc:
-      "Real step up from Tiny — handles fluent speech across most languages without thinking too hard. Still small enough not to think about.",
+      "The first one that mostly works. Sometimes it spectacularly doesn't and we have no idea why — it's a 244M-parameter neural network, you'd have to ask it. The boring, reasonable choice: roughly the smallest thing that holds its own across all 51 languages without sounding drunk.",
     approxSizeMB: 465,
     defaultForFreshInstall: false,
   },
@@ -184,7 +184,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo-q5_0.bin",
     label: "Large Turbo q5",
     shortDesc:
-      "Whisper's largest model, distilled to a faster decoder and squeezed to 5-bit weights. Often the best balance of speed, size, and quality.",
+      "The smallest 'Large' — same Large brain as the bigger ones, weights crushed down to 5 bits to fit in 547 MB. Sometimes the crush works fine; sometimes Whisper invents pronunciations no human has ever produced. Quick on iOS. Surprisingly slow on Android, for unloveable reasons involving CPU instruction sets and 5-bit math. If you're on Android and want a Large, the q8 below is probably the one you want instead.",
     approxSizeMB: 547,
     defaultForFreshInstall: false,
   },
@@ -197,7 +197,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo-q8_0.bin",
     label: "Large Turbo q8",
     shortDesc:
-      "Same fast distillation as Turbo q5, but with lighter compression — a few percent more of the original brain survives. Modest size bump, modest quality bump.",
+      "Same Large brain, slightly less aggressive crush — 8 bits instead of 5, which is what your phone's CPU likes. About 290 MB bigger than Turbo q5; on Android, also about 2.5× faster. Currently the sweet-spot Large for Android, and a solid pick on iOS too. The one to grab if you don't want to think about it.",
     approxSizeMB: 834,
     defaultForFreshInstall: false,
   },
@@ -209,7 +209,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-q5_0.bin",
     label: "Large q5",
     shortDesc:
-      "Whisper's full large model with the original (slower) decoder, weights compressed to 5 bits. Slower than the Turbo variants but the full decoder catches some nuance Turbo misses.",
+      "The full-decoder Large, weights compressed to 5 bits. The Turbo variants got their decoder trimmed for speed; this one keeps the original. Sometimes catches nuance the Turbo distillation lost — especially on languages Whisper's bigger-is-better training quietly got worse at. Costs you ~1 GB of disk, plus all the Android q5-slowness drama. iOS users, go nuts. Android users: probably skip in favour of Turbo q8 unless you specifically know your language is one that needs the full decoder.",
     approxSizeMB: 1031,
     defaultForFreshInstall: false,
   },
@@ -223,7 +223,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-medium.bin",
     label: "Full Weight Medium",
     shortDesc:
-      "Older, smaller architecture, but no quantization tricks — every weight at its original 16-bit precision. The quantized Larges are probably better for most languages, but if yours is one Whisper's distillation lost track of, this might be your best shot.",
+      "An older, smaller Whisper architecture (769M params, vs ~1.55B for Large), but with zero compression — every weight at native 16-bit precision. 1.46 GB download for a model that's not the biggest. The Larges are usually better. BUT: Whisper's later generations were tuned more aggressively on English-heavy data, and if your target language is one Whisper-large quietly got worse at, Medium can pleasantly surprise you. Or not. We're all learning here.",
     approxSizeMB: 1463,
     defaultForFreshInstall: false,
   },
@@ -235,7 +235,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo.bin",
     label: "Full Weight Large Turbo",
     shortDesc:
-      "Top of the line for on-device Whisper. Distilled Large with all weights at full 16-bit precision — no compression. Big download, big appetite, best transcription you can get without sending your voice to a server.",
+      "The whole brain, uncompressed. Distilled Large with every weight at full 16-bit precision — no quantization, no shortcuts. The transcription quality you actually came for, if your phone has the 1.5 GB of disk and the patience to download it. Hits both CPU and Metal's fp16 fast paths, so it's not even the slow option. This might be the coolest thing your phone runs all year. Or it might transcribe 'goldfish moon' three times in a row and you'll uninstall in disgust. On-device AI in 2026, in one card. 🤷",
     approxSizeMB: 1549,
     defaultForFreshInstall: false,
   },

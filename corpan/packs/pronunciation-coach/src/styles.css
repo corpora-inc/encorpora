@@ -964,10 +964,16 @@ body,
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
+  /* Bottom padding floor is 48px (was 24px) so there's visual
+     breathing room above the Android gesture nav bar even when
+     `env(safe-area-inset-bottom)` resolves to 0px — Android WebViews
+     don't always populate it, especially under Tauri's WindowInsets
+     configuration. iOS keeps stacking on top of its actual inset on
+     top of the floor, which is fine. */
   padding:
     calc(20px + var(--pc-safe-top))
     calc(24px + var(--pc-safe-right))
-    calc(24px + var(--pc-safe-bottom))
+    calc(48px + var(--pc-safe-bottom))
     calc(24px + var(--pc-safe-left));
   display: flex;
   flex-direction: column;

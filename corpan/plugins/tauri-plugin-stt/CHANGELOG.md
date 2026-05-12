@@ -7,6 +7,100 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Scoring: pure-punctuation tokens no longer poison
+  `tokenLogprobStdev` OR the per-word probability average.** Two
+  related leaks on both platforms:
+  - The per-token logprob list (used for the stdev calculation) was
+    unconditionally accumulating every token, including ".", ",",
+    "!", "?", and the inline punctuation Whisper emits. Their
+    logprobs sit in a wildly different range from word tokens,
+    inflating stdev and falsely triggering the `acoustic *= 0.5`
+    penalty in `computeScores`.
+  - The per-word probability rollup skipped *pure-punctuation
+    words* at flush time, but Whisper often appends a punctuation
+    token onto the previous word (no leading space) — e.g. "gusto!"
+    came through as one word grouping tokens `[gusto 0.97, ! 0.38]`,
+    averaging to 0.68 instead of 0.97. The punctuation prob inside
+    the word was real, measurable damage on clean speech
+    (live-observed dragging `acoustic` from 1.00 down to ~0.68 on
+    "Mucho gusto!").
+  Both leaks fixed by gating the `.append`s on a letter/digit
+  presence check at the token loop. The displayed word string still
+  includes punctuation (used in "Heard you say" UI); only the
+  numeric score inputs ignore it. Fixed on iOS (`STTPlugin.swift`
+  token loop) and Android (`SttPlugin.kt` `collectResult`).
+- **Scoring: numeral words excluded from the acoustic-score
+  per-word probs.** Per-word probabilities under the constrained
+  decode are unreliable for numerals: if the corpus says "Tengo 10
+  años" and the user says "diez", `prefixTokens` forces the "10"
+  token at decode and its probability reflects "audio match for the
+  literal token '10'" rather than "did the user say the right
+  number?" Transcript scoring already handles `diez` ↔ `10` via
+  `normalize`'s number-word dict; the acoustic layer now opts out of
+  the digit/word ambiguity via a new
+  `isUncertainNumeralWord(word, lang)` helper that returns true when
+  the word normalizes to pure digits (catches both "10" and
+  number-word forms like "diez", "noventa", "neunzig" in one shot).
+  Helper is in `Scoring.kt` on Android and `STTPlugin.swift` on iOS,
+  with the filter applied at the `wordProbs` build site.
+
+### Changed
+- **Android: `+dotprod` added to the arm64-v8a `-march` flag.** Was
+  `-march=armv8.2-a+fp16`, now `-march=armv8.2-a+fp16+dotprod`. Unlocks
+  the dotprod-accelerated `vec_dot_q*_q8_0` kernels in
+  `ggml-cpu/arch/arm/quants.c` (gated behind `__ARM_FEATURE_DOTPROD`).
+  Verified via `.cxx` `compile_commands.json` that `quants.c` and
+  `ggml-quants.c` both compile with the new flag. The `+dotprod` ARM
+  extension is ARMv8.2-A and is supported on every device our `+fp16`
+  target already covers (Cortex-A75+, Snapdragon 8-series, ~2018+
+  phones), so no minSdk impact.
+
+### Added
+- **Android: `whisper_print_timings()` log after every transcribe.**
+  Prints per-phase ggml compute time (load / mel / sample / encode /
+  decode / batchd / total) to stderr after each `whisper_full` returns.
+  Routes through `RustStdoutStderr` into logcat — grep for
+  `whisper_print_timings:` to capture. One line of JNI, no behavioral
+  change, makes future CPU tuning measurable.
+
+### Performance notes (Snapdragon 8 Elite, S25 Ultra, post-`+dotprod`)
+
+Live-measured wall time per `whisper_full` encoder pass, single-greedy
+decode, perf-core threading:
+
+| Model | encode/pass | decode/token |
+|---|---|---|
+| `ggml-small.bin` (fp16) | ~6.0 s | ~7 ms |
+| `ggml-large-v3-turbo-q5_0.bin` | ~14.8 s | ~7 ms |
+| `ggml-large-v3-turbo-q8_0.bin` | **~6.0 s** | ~19 ms |
+
+**Headline finding**: Large Turbo q8 encoder lands in the same wall-time
+envelope as Small fp16 on this hardware, despite being ~2× the model
+size. Reason: with `+dotprod`, q8_0 × q8_0 vec_dot runs as a direct
+UDOT/SDOT chain — no unpacking. q5_0 has to unpack 5-bit nibbles into
+int8 before the same UDOT, and that overhead lives inside every
+encoder matmul. The 287 MB download premium over q5_0 turbo buys you
+~2.5× faster encoder and a noticeably better model.
+
+For Pronunciation Coach scoring (which calls `whisper_full` twice per
+mic tap — constrained + free decode), Large q8 turbo total wall time
+≈ 2 × 6 s ≈ 12 s — comparable to Small but with Large-class
+multilingual quality.
+
+Encoder remains the wall on CPU; dotprod's biggest impact is on the
+per-token decode path, where it makes q8 specifically much cheaper.
+No regression on fp16 models (Tiny / Small / Medium / Full Weight
+Large Turbo) — those don't use the dotprod kernels.
+
+`+i8mm` (ARMv8.6-A int8 matrix multiply) is NOT enabled. Bigger
+potential win for q4/q5/q8 but only on Snapdragon 8 Gen 1+ (2022+
+phones); enabling in a single-variant build would SIGILL on older
+hardware. Defer until we either bump minSdk or wire ggml's
+multi-variant runtime selection. Encoder dominance suggests the
+incremental gain would be modest anyway — future investigation if
+needed.
+
 ### Added
 - **Android: Phase 0 of the whisper.cpp port** — model load + download,
   no audio capture yet.

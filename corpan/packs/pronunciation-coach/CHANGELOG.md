@@ -12,6 +12,64 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-05-12
+
+Version-skipped from 0.3.6 → 0.5.0 to signal a substantial release:
+whisper.cpp runtime swap (iOS + Android), Android CPU perf via the
+host plugin's `+dotprod` flag, full tonal pass on the model
+catalog copy, and an Android safe-area fix on the setup overlay.
+
+### Changed
+- **Tone pass on all seven model descriptions** in
+  `modelRegistry.ts`. Funny, honest, lower-expectations. The model is
+  the failure surface, not the user or the app. Each card now sets
+  expectations honestly — Tiny is candidly described as kind of
+  terrible; Small is "the first one that mostly works"; Large q5
+  carries the Android-specific slowness warning; Large Turbo q8 is
+  flagged as the Android sweet spot; Full Weight Large Turbo gets
+  the "might be the coolest thing your phone runs all year, or you
+  might uninstall in disgust" framing. Cutting-edge / experimental
+  framing throughout.
+- **Setup overlay sub-headline** rewritten in the same tone. Sets
+  the experimental-cutting-edge expectation up front, names the
+  failure modes ("might crash your phone", "might transcribe
+  'good morning' as 'goldfish moon'"), and frames the whole
+  experience as on-device AI in 2026. Don't take the scoring too
+  seriously.
+
+### Fixed
+- **Setup overlay respects Android bottom safe-area / gesture-bar
+  inset.** `.pc-setup` bottom padding floor bumped from 24 px to
+  48 px so there's visual breathing room above the gesture nav bar
+  on Android — `env(safe-area-inset-bottom)` doesn't always resolve
+  to a useful value under Tauri's Android WindowInsets configuration.
+  iOS continues to stack the actual inset on top of the floor;
+  visible change on iOS is minimal (24 px more breathing room).
+
+### Scoring (via host plugin)
+- **Punctuation and numeral words deprioritized in scoring.** The
+  host plugin (`tauri-plugin-stt`, both iOS and Android) now (1)
+  excludes pure-punctuation tokens from `tokenLogprobStdev` so
+  comma/period-heavy phrases stop falsely triggering the acoustic
+  half-penalty, and (2) excludes numeral words (pure digits OR
+  language-specific number words like "diez", "noventa") from the
+  acoustic per-word probabilities, because the constrained decode's
+  per-word probability is unreliable for numerals (digit-vs-spelled
+  ambiguity). Transcript scoring still catches numeral correctness
+  via the existing `diez` ↔ `10` normalization. Net effect: phrases
+  with punctuation or numerals score more honestly. Details in the
+  plugin changelog.
+
+### Performance
+- **Android: Large Turbo q8 is now in the same wall-time envelope as
+  Small.** Driven by the `+dotprod` ARM compile flag added to the
+  host's `tauri-plugin-stt` (see that pack's changelog). Encoder per
+  pass on Snapdragon 8 Elite: Small fp16 ≈ 6.0 s, Large Turbo q8 ≈
+  6.0 s, Large Turbo q5 ≈ 14.8 s. q8 turbo is now the recommended
+  Large default on Android; q5 turbo keeps the smallest-download
+  slot. (No registry surgery required — card copy now describes
+  this honestly so users self-select.)
+
 ### Added
 - **`tiny_proof` model variant** for validating the host plugin's
   whisper.cpp runtime swap. Folder = `ggml-tiny.bin` (~75 MB), a

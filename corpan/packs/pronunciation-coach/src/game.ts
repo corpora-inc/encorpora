@@ -1445,7 +1445,7 @@ export const mountGame = (
       bannerEl.hidden = false
       detailEl.innerHTML = `
         <div class="pc-chips">
-          <div class="pc-chip">Move the iPad closer or speak louder.</div>
+          <div class="pc-chip">Move the device closer or speak louder.</div>
         </div>
       `
       detailEl.hidden = false
@@ -1734,7 +1734,7 @@ export const mountGame = (
       outcome = await runSetup({
         currentActive: activeForOverlay,
         headline: "Pronunciation Coach · Models",
-        sub: "These are cutting-edge AI speech models running entirely on your device. They get things wrong all the time, the bigger ones can be memory-hungry, and any of them might surprise you in either direction. Have fun — don't take the scoring too seriously.",
+        sub: "These are large, experimental, cutting-edge AI speech models running entirely on your device — no servers, no internet, no privacy compromises. They are also, frankly, not as reliable as you might hope. The bigger ones might crash your phone. The smaller ones might transcribe 'good morning' as 'goldfish moon'. Any of them might surprise you in either direction. Welcome to on-device AI in 2026. Don't take the scoring too seriously. 🤷",
       })
     } finally {
       modelSwitching = false
@@ -2234,7 +2234,7 @@ export const mountGame = (
 
             <div class="pc-setup-error" id="pc-setup-error" hidden></div>
             <div class="pc-setup-note">
-              Models live on your device under the app's data folder. They never leave your iPad. You can switch or remove them anytime from this screen.
+              Models live on your device under the app's data folder. They never leave your device. You can switch or remove them anytime from this screen.
             </div>
           </div>
         </div>

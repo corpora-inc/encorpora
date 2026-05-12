@@ -139,6 +139,13 @@ Java_com_corpora_stt_WhisperContext_nativeFullTranscribe(
          (int) n, lang ? lang : "(null)", (int) translate);
     int rc = whisper_full(ctx, params, samples, (int) n);
 
+    // whisper.cpp's built-in per-phase profile (load / mel / sample /
+    // encode / decode / batchd / total). Goes to stderr, which our
+    // Rust stderr forwarder routes into logcat as `RustStdoutStderr`
+    // — searchable as `whisper_print_timings:` in `adb logcat`.
+    // Tells us encoder-vs-decoder split per transcribe.
+    whisper_print_timings(ctx);
+
     if (lang) env->ReleaseStringUTFChars(jlanguage, lang);
     env->ReleaseFloatArrayElements(jsamples, samples, JNI_ABORT);
 
