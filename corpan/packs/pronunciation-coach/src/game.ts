@@ -2653,7 +2653,7 @@ export const mountGame = (
     const bootIsLargeModel = (modelById(modelMode)?.approxSizeMB ?? 0) >= 300
     showOverlay(
       bootIsLargeModel
-        ? `Loading ${bootModelLabel} model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant.`
+        ? `Loading ${bootModelLabel} model… first load can take ~1 minute for large models. Subsequent launches are faster.`
         : `Loading ${bootModelLabel} model…`
     )
     micLabel.textContent = bootIsLargeModel
