@@ -23,10 +23,10 @@
       "paragraph_id": "p2",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "This is a book about the oud, a wooden musical instrument with strings.",
-      "text_markdown": "This is a book about the oud, a wooden musical instrument with strings.",
+      "text": "This is a book about the Ood, a wooden stringed instrument.",
+      "text_markdown": "This is a book about the Ood, a wooden stringed instrument.",
       "tts": {
-        "text": "This is a book about the oud, a wooden musical instrument with strings.",
+        "text": "This is a book about the Ood, a wooden stringed instrument.",
         "pause_after_ms": 2000,
         "repetition_penalty": 1.9
       }
@@ -58,7 +58,7 @@
       "text": "You can hear the oud in cities by the sea and in villages in the mountains.",
       "text_markdown": "You can hear the oud in cities by the sea and in villages in the mountains.",
       "tts": {
-        "text": "You can hear the oud in cities by the sea and in villages in the mountains.",
+        "text": "You can hear the Ood in cities by the sea and in villages in the mountains.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -90,7 +90,7 @@
       "text": "In this book, we will learn what the oud looks like, how it is built, and the names of the people who shaped its story.",
       "text_markdown": "In this book, we will learn what the oud looks like, how it is built, and the names of the people who shaped its story.",
       "tts": {
-        "text": "In this book, we will learn what the oud looks like, how it is built, and the names of the people who shaped its story.",
+        "text": "In this book, we will learn what the Ood looks like, how it is built, and the names of the people who shaped its story.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -106,7 +106,7 @@
       "text": "By the end, you will know why the oud is sometimes called the king of all the strings.",
       "text_markdown": "By the end, you will know why the oud is sometimes called the king of all the strings.",
       "tts": {
-        "text": "By the end, you will know why the oud is sometimes called the king of all the strings.",
+        "text": "By the end, you will know why the Ood is sometimes called the king of all the strings.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -134,7 +134,7 @@
       "text": "An oud is a string instrument.",
       "text_markdown": "An oud is a string instrument.",
       "tts": {
-        "text": "An oud is a string instrument.",
+        "text": "An Ood is a string instrument.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -166,7 +166,7 @@
       "text": "The back of the oud is round and deep, like a wooden bowl.",
       "text_markdown": "The back of the oud is round and deep, like a wooden bowl.",
       "tts": {
-        "text": "The back of the oud is round and deep, like a wooden bowl.",
+        "text": "The back of the Ood is round and deep, like a wooden bowl.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -214,7 +214,7 @@
       "text": "The oud has a short neck and a fretless fingerboard.",
       "text_markdown": "The oud has a short neck and a fretless fingerboard.",
       "tts": {
-        "text": "The oud has a short neck and a fretless fingerboard.",
+        "text": "The Ood has a short neck and a fretless fingerboard.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -262,7 +262,7 @@
       "text": "Most ouds have eleven strings, grouped into six pairs.",
       "text_markdown": "Most ouds have eleven strings, grouped into six pairs.",
       "tts": {
-        "text": "Most ouds have eleven strings, grouped into six pairs.",
+        "text": "Most Oods have eleven strings, grouped into six pairs.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -342,7 +342,7 @@
       "text": "The player holds the oud across the lap.",
       "text_markdown": "The player holds the oud across the lap.",
       "tts": {
-        "text": "The player holds the oud across the lap.",
+        "text": "The player holds the Ood across the lap.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -434,7 +434,7 @@
       "text": "The name oud is an Arabic word that means wood.",
       "text_markdown": "The name oud is an Arabic word that means wood.",
       "tts": {
-        "text": "The name oud is an Arabic word that means wood.",
+        "text": "The name Ood is an Arabic word that means wood.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -466,7 +466,7 @@
       "text": "Long before the oud, there was an older cousin called the barbat.",
       "text_markdown": "Long before the oud, there was an older cousin called the barbat.",
       "tts": {
-        "text": "Long before the oud, there was an older cousin called the barbat.",
+        "text": "Long before the Ood, there was an older cousin called the barbat.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -578,7 +578,7 @@
       "text": "By about the year 700, people in the Arab world were playing what we now call the oud.",
       "text_markdown": "By about the year 700, people in the Arab world were playing what we now call the oud.",
       "tts": {
-        "text": "By about the year seven hundred, people in the Arab world were playing what we now call the oud.",
+        "text": "By about the year seven hundred, people in the Arab world were playing what we now call the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -594,7 +594,7 @@
       "text": "From there, the oud traveled.",
       "text_markdown": "From there, the oud traveled.",
       "tts": {
-        "text": "From there, the oud traveled.",
+        "text": "From there, the Ood traveled.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -658,7 +658,7 @@
       "text": "Each place gave the oud a little of its own voice.",
       "text_markdown": "Each place gave the oud a little of its own voice.",
       "tts": {
-        "text": "Each place gave the oud a little of its own voice.",
+        "text": "Each place gave the Ood a little of its own voice.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -690,7 +690,7 @@
       "text": "Wherever it went, the wooden instrument was still the oud.",
       "text_markdown": "Wherever it went, the wooden instrument was still the oud.",
       "tts": {
-        "text": "Wherever it went, the wooden instrument was still the oud.",
+        "text": "Wherever it went, the wooden instrument was still the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -718,7 +718,7 @@
       "text": "Building an oud takes a long time.",
       "text_markdown": "Building an oud takes a long time.",
       "tts": {
-        "text": "Building an oud takes a long time.",
+        "text": "Building an Ood takes a long time.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -782,7 +782,7 @@
       "text": "Together they make the deep, round back of the oud.",
       "text_markdown": "Together they make the deep, round back of the oud.",
       "tts": {
-        "text": "Together they make the deep, round back of the oud.",
+        "text": "Together they make the deep, round back of the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -1050,7 +1050,7 @@
       "text": "The oud is played all across the Arab world.",
       "text_markdown": "The oud is played all across the Arab world.",
       "tts": {
-        "text": "The oud is played all across the Arab world.",
+        "text": "The Ood is played all across the Arab world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1098,7 +1098,7 @@
       "text": "The Turks have their own oud.",
       "text_markdown": "The Turks have their own oud.",
       "tts": {
-        "text": "The Turks have their own oud.",
+        "text": "The Turks have their own Ood.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1114,7 +1114,7 @@
       "text": "The Greeks have their own oud.",
       "text_markdown": "The Greeks have their own oud.",
       "tts": {
-        "text": "The Greeks have their own oud.",
+        "text": "The Greeks have their own Ood.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1162,7 +1162,7 @@
       "text": "There are three main types of oud today.",
       "text_markdown": "There are three main types of oud today.",
       "tts": {
-        "text": "There are three main types of oud today.",
+        "text": "There are three main types of Ood today.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1178,7 +1178,7 @@
       "text": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
       "text_markdown": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
       "tts": {
-        "text": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
+        "text": "The Arabian Ood is large and deep, with a sound that is full, slow, and resonant.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1194,7 +1194,7 @@
       "text": "It is the oud of Egypt and the Levant.",
       "text_markdown": "It is the oud of Egypt and the Levant.",
       "tts": {
-        "text": "It is the oud of Egypt and the Levant.",
+        "text": "It is the Ood of Egypt and the Levant.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -1210,7 +1210,7 @@
       "text": "The Turkish oud is smaller and brighter, tuned a little higher than the Arabian oud.",
       "text_markdown": "The Turkish oud is smaller and brighter, tuned a little higher than the Arabian oud.",
       "tts": {
-        "text": "The Turkish oud is smaller and brighter, tuned a little higher than the Arabian oud.",
+        "text": "The Turkish Ood is smaller and brighter, tuned a little higher than the Arabian Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -1258,7 +1258,7 @@
       "text": "The oud is the heart of classical Arab music and of Turkish makam music.",
       "text_markdown": "The oud is the heart of classical Arab music and of Turkish makam music.",
       "tts": {
-        "text": "The oud is the heart of classical Arab music and of Turkish makam music.",
+        "text": "The Ood is the heart of classical Arab music and of Turkish makam music.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1290,7 +1290,7 @@
       "text": "Wherever people gather and want music with a soul, someone may bring out an oud.",
       "text_markdown": "Wherever people gather and want music with a soul, someone may bring out an oud.",
       "tts": {
-        "text": "Wherever people gather and want music with a soul, someone may bring out an oud.",
+        "text": "Wherever people gather and want music with a soul, someone may bring out an Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1315,10 +1315,10 @@
       "paragraph_id": "p36",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When you play a piano, you press white keys and black keys.",
-      "text_markdown": "When you play a piano, you press white keys and black keys.",
+      "text": "When you play a piano, you press both the white keys and the black keys on the keyboard.",
+      "text_markdown": "When you play a piano, you press both the white keys and the black keys on the keyboard.",
       "tts": {
-        "text": "When you play a piano, you press white keys and black keys.",
+        "text": "When you play a piano, you press both the white keys and the black keys on the keyboard.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1366,7 +1366,7 @@
       "text": "The oud does not work that way.",
       "text_markdown": "The oud does not work that way.",
       "tts": {
-        "text": "The oud does not work that way.",
+        "text": "The Ood does not work that way.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1382,7 +1382,7 @@
       "text": "The oud uses a much older system, called maqam.",
       "text_markdown": "The oud uses a much older system, called maqam.",
       "tts": {
-        "text": "The oud uses a much older system, called maqam.",
+        "text": "The Ood uses a much older system, called maqam.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1526,7 +1526,7 @@
       "text": "On an oud, you slide your finger to find it.",
       "text_markdown": "On an oud, you slide your finger to find it.",
       "tts": {
-        "text": "On an oud, you slide your finger to find it.",
+        "text": "On an Ood, you slide your finger to find it.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1638,7 +1638,7 @@
       "text": "When an oud plays a slow, winding solo, the player is moving inside a maqam.",
       "text_markdown": "When an oud plays a slow, winding solo, the player is moving inside a maqam.",
       "tts": {
-        "text": "When an oud plays a slow, winding solo, the player is moving inside a maqam.",
+        "text": "When an Ood plays a slow, winding solo, the player is moving inside a maqam.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1718,7 +1718,7 @@
       "text": "It is the oud at its most beautiful.",
       "text_markdown": "It is the oud at its most beautiful.",
       "tts": {
-        "text": "It is the oud at its most beautiful.",
+        "text": "It is the Ood at its most beautiful.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1746,7 +1746,7 @@
       "text": "The oud has been played for over a thousand years.",
       "text_markdown": "The oud has been played for over a thousand years.",
       "tts": {
-        "text": "The oud has been played for over a thousand years.",
+        "text": "The Ood has been played for over a thousand years.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1890,7 +1890,7 @@
       "text": "The second great oud man was a singer named Ziryab, born in Iraq around the year 789.",
       "text_markdown": "The second great oud man was a singer named Ziryab, born in Iraq around the year 789.",
       "tts": {
-        "text": "The second great oud man was a singer named Ziryab, born in Iraq around the year seven hundred eighty nine.",
+        "text": "The second great Ood man was a singer named Ziryab, born in Iraq around the year seven hundred eighty nine.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2002,7 +2002,7 @@
       "text": "He added a fifth course of strings to the oud, and he changed how plectrums were made.",
       "text_markdown": "He added a fifth course of strings to the oud, and he changed how plectrums were made.",
       "tts": {
-        "text": "He added a fifth course of strings to the oud, and he changed how plectrums were made.",
+        "text": "He added a fifth course of strings to the Ood, and he changed how plectrums were made.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2018,7 +2018,7 @@
       "text": "Long after Ziryab, in our own time, a player from Iraq lifted the oud to a new place.",
       "text_markdown": "Long after Ziryab, in our own time, a player from Iraq lifted the oud to a new place.",
       "tts": {
-        "text": "Long after Ziryab, in our own time, a player from Iraq lifted the oud to a new place.",
+        "text": "Long after Ziryab, in our own time, a player from Iraq lifted the Ood to a new place.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2034,7 +2034,7 @@
       "text": "His name was Munir Bashir, and people called him the king of the oud.",
       "text_markdown": "His name was Munir Bashir, and people called him the king of the oud.",
       "tts": {
-        "text": "His name was Munir Bashir, and people called him the king of the oud.",
+        "text": "His name was Munir Bashir, and people called him the king of the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2050,7 +2050,7 @@
       "text": "Before Bashir, the oud usually played with other instruments.",
       "text_markdown": "Before Bashir, the oud usually played with other instruments.",
       "tts": {
-        "text": "Before Bashir, the oud usually played with other instruments.",
+        "text": "Before Bashir, the Ood usually played with other instruments.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2082,7 +2082,7 @@
       "text": "People around the world heard him and fell in love with the oud all over again.",
       "text_markdown": "People around the world heard him and fell in love with the oud all over again.",
       "tts": {
-        "text": "People around the world heard him and fell in love with the oud all over again.",
+        "text": "People around the world heard him and fell in love with the Ood all over again.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2114,7 +2114,7 @@
       "text": "Farid al-Atrash made the oud the voice of Egyptian films.",
       "text_markdown": "Farid al-Atrash made the oud the voice of Egyptian films.",
       "tts": {
-        "text": "Farid al Atrash made the oud the voice of Egyptian films.",
+        "text": "Farid al Atrash made the Ood the voice of Egyptian films.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2130,7 +2130,7 @@
       "text": "Anouar Brahem from Tunisia plays oud with jazz musicians from Europe and America.",
       "text_markdown": "Anouar Brahem from Tunisia plays oud with jazz musicians from Europe and America.",
       "tts": {
-        "text": "Anouar Brahem from Tunisia plays oud with jazz musicians from Europe and America.",
+        "text": "Anouar Brahem from Tunisia plays Ood with jazz musicians from Europe and America.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2146,7 +2146,7 @@
       "text": "The oud is still alive.",
       "text_markdown": "The oud is still alive.",
       "tts": {
-        "text": "The oud is still alive.",
+        "text": "The Ood is still alive.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2190,7 +2190,7 @@
       "text": "The oud did not stay in the Arab world.",
       "text_markdown": "The oud did not stay in the Arab world.",
       "tts": {
-        "text": "The oud did not stay in the Arab world.",
+        "text": "The Ood did not stay in the Arab world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2222,7 +2222,7 @@
       "text": "When the oud reached medieval Spain, European players liked the wooden bowl and the deep sound.",
       "text_markdown": "When the oud reached medieval Spain, European players liked the wooden bowl and the deep sound.",
       "tts": {
-        "text": "When the oud reached medieval Spain, European players liked the wooden bowl and the deep sound.",
+        "text": "When the Ood reached medieval Spain, European players liked the wooden bowl and the deep sound.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2315,10 +2315,10 @@
       "paragraph_id": "p59",
       "sentence_index": 3,
       "block_type": "text",
-      "text": "The greatest composers wrote pieces for it.",
-      "text_markdown": "The greatest composers wrote pieces for it.",
+      "text": "The greatest composers wrote pieces for the oud.",
+      "text_markdown": "The greatest composers wrote pieces for the oud.",
       "tts": {
-        "text": "The greatest composers wrote pieces for it.",
+        "text": "The greatest composers wrote pieces for the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2398,7 +2398,7 @@
       "text": "So the oud, the lute, and the guitar are all members of the same family.",
       "text_markdown": "So the oud, the lute, and the guitar are all members of the same family.",
       "tts": {
-        "text": "So the oud, the lute, and the guitar are all members of the same family.",
+        "text": "So the Ood, the lute, and the guitar are all members of the same family.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -2430,7 +2430,7 @@
       "text": "That grandfather is the oud.",
       "text_markdown": "That grandfather is the oud.",
       "tts": {
-        "text": "That grandfather is the oud.",
+        "text": "That grandfather is the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2446,7 +2446,7 @@
       "text": "Today, the oud and the guitar play together.",
       "text_markdown": "Today, the oud and the guitar play together.",
       "tts": {
-        "text": "Today, the oud and the guitar play together.",
+        "text": "Today, the Ood and the guitar play together.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2459,10 +2459,10 @@
       "paragraph_id": "p62",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "Anouar Brahem plays the oud with jazz guitarists.",
-      "text_markdown": "Anouar Brahem plays the oud with jazz guitarists.",
+      "text": "Anouar Brahem plays the oud with guitarists from the jazz world.",
+      "text_markdown": "Anouar Brahem plays the oud with guitarists from the jazz world.",
       "tts": {
-        "text": "Anouar Brahem plays the oud with jazz guitarists.",
+        "text": "Anouar Brahem plays the Ood with guitarists from the jazz world.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2494,7 +2494,7 @@
       "text": "Young players in Beirut, Istanbul, Paris, and New York are mixing oud with rock, with hip hop, and with film scores.",
       "text_markdown": "Young players in Beirut, Istanbul, Paris, and New York are mixing oud with rock, with hip hop, and with film scores.",
       "tts": {
-        "text": "Young players in Beirut, Istanbul, Paris, and New York are mixing oud with rock, with hip hop, and with film scores.",
+        "text": "Young players in Beirut, Istanbul, Paris, and New York are mixing Ood with rock, with hip hop, and with film scores.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2510,7 +2510,7 @@
       "text": "The oud is more than an instrument.",
       "text_markdown": "The oud is more than an instrument.",
       "tts": {
-        "text": "The oud is more than an instrument.",
+        "text": "The Ood is more than an instrument.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2558,7 +2558,7 @@
       "text": "Whenever you hear a guitar, somewhere far underneath, you can hear the soft, deep voice of the oud.",
       "text_markdown": "Whenever you hear a guitar, somewhere far underneath, you can hear the soft, deep voice of the oud.",
       "tts": {
-        "text": "Whenever you hear a guitar, somewhere far underneath, you can hear the soft, deep voice of the oud.",
+        "text": "Whenever you hear a guitar, somewhere far underneath, you can hear the soft, deep voice of the Ood.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2682,7 +2682,7 @@
       "text": "Go find an oud, online or in your city, and let it play for you.",
       "text_markdown": "Go find an oud, online or in your city, and let it play for you.",
       "tts": {
-        "text": "Go find an oud, online or in your city, and let it play for you.",
+        "text": "Go find an Ood, online or in your city, and let it play for you.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
