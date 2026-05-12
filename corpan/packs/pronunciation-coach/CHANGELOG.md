@@ -2,7 +2,9 @@
 
 On-device pronunciation practice. Reads a target-language phrase aloud
 from the host TTS, then scores the user's repetition via the host's
-WhisperKit-backed STT bridge.
+whisper.cpp-backed STT bridge (iOS XCFramework + Android JNI; same
+`ggml-*.bin` model files on both platforms, downloaded at runtime from
+`https://huggingface.co/ggerganov/whisper.cpp/`).
 
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).

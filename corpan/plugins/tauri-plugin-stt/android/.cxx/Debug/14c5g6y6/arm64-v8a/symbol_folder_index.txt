@@ -1,1 +1,0 @@
-/Users/skyl/Code/corpora/encorpora/corpan/plugins/tauri-plugin-stt/android/build/intermediates/cxx/Debug/14c5g6y6/obj/arm64-v8a

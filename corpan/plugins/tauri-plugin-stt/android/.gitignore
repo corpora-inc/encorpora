@@ -2,6 +2,7 @@
 /.tauri
 /.gradle
 /.kotlin
+/.cxx
 /local.properties
 
 # Vendored whisper.cpp source for the Android JNI build. Same pattern
