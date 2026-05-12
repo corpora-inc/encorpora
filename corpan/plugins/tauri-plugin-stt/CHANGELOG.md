@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-12
+
+Substantial release: Android STT plugin debut (full whisper.cpp JNI
+port), iOS runtime swap from WhisperKit to whisper.cpp, Android CPU
+perf flags, and a pass of scoring fixes informed by live testing.
+
 ### Fixed
 - **Scoring: pure-punctuation tokens no longer poison
   `tokenLogprobStdev` OR the per-word probability average.** Two
