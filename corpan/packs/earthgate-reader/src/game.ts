@@ -7,6 +7,7 @@ import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type Med
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
 import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
+import * as analytics from "@shared/analytics"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -493,6 +494,7 @@ export function createEarthgateReader(
     if (!seg) return
     const mseg = manifest.segments[seg.id]
     if (!mseg) return
+    analytics.track("segment_play_one", { segment_index: segIdx })
     const starts = audioEngine.getSegmentAbsoluteStartMs()
     const endMs = starts[segIdx] + mseg.duration_ms
     // Position at segment start without touching external state.
@@ -876,6 +878,9 @@ export function createEarthgateReader(
             syncNativeNowPlaying()
             // Update paragraph view when segment changes
             updateParagraphForSegment(index)
+            if (audioEngine?.isPlaying()) {
+              analytics.track("segment_play", { segment_index: index })
+            }
           }
         },
         () => {

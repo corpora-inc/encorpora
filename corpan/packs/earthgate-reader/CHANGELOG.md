@@ -9,6 +9,13 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Added
+- Anonymous analytics: `segment_play` (auto-advance + active playback)
+  and `segment_play_one` (tap-to-replay) events with `segment_index`.
+  Replaces wall-clock `duration_ms` as the engagement metric — counts
+  what's actually being listened to, survives lock-screen background
+  audio, and the `segment_play_one : segment_play` ratio per session
+  is the language-learning vs. audiobook signal.
 
 ## [0.6.2] - 2026-05-10
 ### Changed

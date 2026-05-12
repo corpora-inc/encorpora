@@ -113,12 +113,15 @@ CHARACTERS: list[CharacterSpec] = [
         ),
         avatar_prompt=(
             "Editorial portrait of a thoughtful blond-haired boy who looks "
-            "about nine years old, full round cherubic cheeks, calm steady "
-            "gaze with eyes off-camera as if looking at something he is "
-            "reading. Soft natural daylight, warm but understated palette of "
-            "honey gold and pale blue. He carries a quiet, knowing maturity "
-            "that is unusual for his age. Painterly digital illustration, "
-            "low saturation, very high craftsmanship, no photorealism. "
+            "about nine years old, full round cherubic cheeks. His "
+            "expression is a warm gentle closed-mouth smile, genuine, the "
+            "corners of his eyes crinkling softly. He is looking straight "
+            "at the viewer with calm, kind eyes — the smile is small but "
+            "unmistakable, like he is quietly happy to see you. Soft "
+            "natural daylight, warm but understated palette of honey gold "
+            "and pale blue. He carries a quiet, knowing maturity that is "
+            "unusual for his age. Painterly digital illustration, low "
+            "saturation, very high craftsmanship, no photorealism. "
             "Centered square portrait, head and shoulders. " + COMMON_TAIL
         ),
         banner_prompt=(

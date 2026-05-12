@@ -211,10 +211,10 @@
       "paragraph_id": "p8",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The neck of the oud is short, and it has no frets.",
-      "text_markdown": "The neck of the oud is short, and it has no frets.",
+      "text": "The oud has a short neck and a fretless fingerboard.",
+      "text_markdown": "The oud has a short neck and a fretless fingerboard.",
       "tts": {
-        "text": "The neck of the oud is short, and it has no frets.",
+        "text": "The oud has a short neck and a fretless fingerboard.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1175,10 +1175,10 @@
       "paragraph_id": "p30",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The Arabian oud is large and deep, with a full and slow sound.",
-      "text_markdown": "The Arabian oud is large and deep, with a full and slow sound.",
+      "text": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
+      "text_markdown": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
       "tts": {
-        "text": "The Arabian oud is large and deep, with a full and slow sound.",
+        "text": "The Arabian oud is large and deep, with a sound that is full, slow, and resonant.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1331,10 +1331,10 @@
       "paragraph_id": "p36",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "There are twelve notes in every octave, and each step is the same size.",
-      "text_markdown": "There are twelve notes in every octave, and each step is the same size.",
+      "text": "There are twelve notes in every octave, and each step covers the same interval.",
+      "text_markdown": "There are twelve notes in every octave, and each step covers the same interval.",
       "tts": {
-        "text": "There are twelve notes in every octave, and each step is the same size.",
+        "text": "There are twelve notes in every octave, and each step covers the same interval.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1475,10 +1475,10 @@
       "paragraph_id": "p40",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A quarter tone is half of a half step.",
-      "text_markdown": "A quarter tone is half of a half step.",
+      "text": "A quarter tone is half the size of a semitone.",
+      "text_markdown": "A quarter tone is half the size of a semitone.",
       "tts": {
-        "text": "A quarter tone is half of a half step.",
+        "text": "A quarter tone is half the size of a semitone.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
