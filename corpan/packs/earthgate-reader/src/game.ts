@@ -896,7 +896,13 @@ export function createEarthgateReader(
         }
       )
 
-      transport.setChapter(segments[0]?.title || "Ready")
+      // Empty string for chapterless books — the `:empty { display: none }`
+      // rule on `.earthgate-chapter-title` collapses the row, keeping the
+      // book title vertically centered against the time on the right.
+      // Don't fall back to a status string like "Ready" — it would vanish
+      // on first play (when the audio engine fires the segment callback
+      // with the real empty title) and visibly shrink the transport bar.
+      transport.setChapter(segments[0]?.title || "")
 
       // Set chapter markers
       if (audioEngine && chapters.length > 0) {
