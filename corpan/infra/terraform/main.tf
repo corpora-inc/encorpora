@@ -36,7 +36,7 @@ resource "aws_secretsmanager_secret" "verify" {
 }
 
 resource "aws_secretsmanager_secret_version" "verify" {
-  secret_id     = aws_secretsmanager_secret.verify.id
+  secret_id = aws_secretsmanager_secret.verify.id
   secret_string = jsonencode({
     apple = {
       key_id     = "",
@@ -60,9 +60,9 @@ resource "aws_iam_role" "verify_lambda" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect = "Allow"
+        Effect    = "Allow"
         Principal = { Service = "lambda.amazonaws.com" }
-        Action = "sts:AssumeRole"
+        Action    = "sts:AssumeRole"
       }
     ]
   })
@@ -84,18 +84,18 @@ resource "aws_iam_role_policy" "verify_lambda" {
         Resource = "*"
       },
       {
-        Effect = "Allow"
-        Action = ["secretsmanager:GetSecretValue"]
+        Effect   = "Allow"
+        Action   = ["secretsmanager:GetSecretValue"]
         Resource = aws_secretsmanager_secret.verify.arn
       },
       {
-        Effect = "Allow"
-        Action = ["s3:GetObject"]
+        Effect   = "Allow"
+        Action   = ["s3:GetObject"]
         Resource = "${aws_s3_bucket.packs.arn}/*"
       },
       {
-        Effect = "Allow"
-        Action = ["s3:ListBucket"]
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
         Resource = aws_s3_bucket.packs.arn
         Condition = {
           StringLike = {
@@ -114,22 +114,22 @@ data "archive_file" "verify_zip" {
 }
 
 resource "aws_lambda_function" "verify" {
-  function_name = local.verify_lambda_name
-  role          = aws_iam_role.verify_lambda.arn
-  handler       = "verify_purchase.handler"
-  runtime       = "nodejs20.x"
+  function_name    = local.verify_lambda_name
+  role             = aws_iam_role.verify_lambda.arn
+  handler          = "verify_purchase.handler"
+  runtime          = "nodejs20.x"
   filename         = data.archive_file.verify_zip.output_path
   source_code_hash = data.archive_file.verify_zip.output_base64sha256
   timeout          = 10
-  memory_size   = 256
+  memory_size      = 256
   environment {
     variables = {
-      PACK_BUCKET              = aws_s3_bucket.packs.bucket
-      SECRETS_ARN              = aws_secretsmanager_secret.verify.arn
-      DEV_BYPASS_TOKEN         = var.dev_bypass_token
-      CLOUDFRONT_DOMAIN        = var.enable_cdn ? (var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name) : ""
-      CLOUDFRONT_KEY_PAIR_ID   = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
-      CATALOG_URL              = var.enable_cdn ? "https://${var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name}/catalog.json" : ""
+      PACK_BUCKET            = aws_s3_bucket.packs.bucket
+      SECRETS_ARN            = aws_secretsmanager_secret.verify.arn
+      DEV_BYPASS_TOKEN       = var.dev_bypass_token
+      CLOUDFRONT_DOMAIN      = var.enable_cdn ? (var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name) : ""
+      CLOUDFRONT_KEY_PAIR_ID = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
+      CATALOG_URL            = var.enable_cdn ? "https://${var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name}/catalog.json" : ""
     }
   }
 }
@@ -228,7 +228,7 @@ resource "aws_acm_certificate" "verify" {
 }
 
 resource "aws_apigatewayv2_domain_name" "verify" {
-  count = var.enable_custom_domain ? 1 : 0
+  count       = var.enable_custom_domain ? 1 : 0
   domain_name = var.custom_domain_name
   domain_name_configuration {
     certificate_arn = aws_acm_certificate.verify[0].arn

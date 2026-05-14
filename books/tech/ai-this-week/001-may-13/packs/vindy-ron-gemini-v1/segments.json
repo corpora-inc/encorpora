@@ -490,10 +490,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Ron, the word of the week is mixture of experts. Why is it the word this week?",
-      "text_markdown": "Ron, the word of the week is mixture of experts. Why is it the word this week?",
+      "text": "Ron, this week's word is mixture of experts. Why has it become this week's big topic?",
+      "text_markdown": "Ron, this week's word is mixture of experts. Why has it become this week's big topic?",
       "tts": {
-        "text": "Ron, the word of the week is mixture of experts. Why is it the word this week?",
+        "text": "Ron, this week's word is mixture of experts. Why has it become this week's big topic?",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -595,10 +595,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to extremes.",
-      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to extremes.",
+      "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
+      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
       "tts": {
-        "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to extremes.",
+        "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
         "pause_after_ms": 600,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -805,10 +805,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "So the new chair has to decide whether AI is the answer to inflation, or the cause of it.",
-      "text_markdown": "So the new chair has to decide whether AI is the answer to inflation, or the cause of it.",
+      "text": "So the new chair has to decide whether AI is the answer to inflation, or whether AI is the cause of inflation.",
+      "text_markdown": "So the new chair has to decide whether AI is the answer to inflation, or whether AI is the cause of inflation.",
       "tts": {
-        "text": "So the new chair has to decide whether AI is the answer to inflation, or the cause of it.",
+        "text": "So the new chair has to decide whether AI is the answer to inflation, or whether AI is the cause of inflation.",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0

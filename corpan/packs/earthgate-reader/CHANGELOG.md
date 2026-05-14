@@ -9,6 +9,8 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.3] - 2026-05-13
 ### Added
 - Anonymous analytics: `segment_play` (auto-advance + active playback)
   and `segment_play_one` (tap-to-replay) events with `segment_index`.

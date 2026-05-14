@@ -94,18 +94,18 @@ resource "aws_glue_catalog_table" "events" {
   table_type    = "EXTERNAL_TABLE"
 
   parameters = {
-    "classification"          = "parquet"
-    "parquet.compression"     = "SNAPPY"
-    "projection.enabled"      = "true"
-    "projection.dt.type"      = "date"
-    "projection.dt.format"    = "yyyy-MM-dd"
-    "projection.dt.range"     = "2026-04-01,NOW"
-    "projection.dt.interval"  = "1"
+    "classification"              = "parquet"
+    "parquet.compression"         = "SNAPPY"
+    "projection.enabled"          = "true"
+    "projection.dt.type"          = "date"
+    "projection.dt.format"        = "yyyy-MM-dd"
+    "projection.dt.range"         = "2026-04-01,NOW"
+    "projection.dt.interval"      = "1"
     "projection.dt.interval.unit" = "DAYS"
-    "projection.hour.type"    = "integer"
-    "projection.hour.range"   = "0,23"
-    "projection.hour.digits"  = "2"
-    "storage.location.template" = "s3://${aws_s3_bucket.analytics.bucket}/events/dt=$${dt}/hour=$${hour}/"
+    "projection.hour.type"        = "integer"
+    "projection.hour.range"       = "0,23"
+    "projection.hour.digits"      = "2"
+    "storage.location.template"   = "s3://${aws_s3_bucket.analytics.bucket}/events/dt=$${dt}/hour=$${hour}/"
   }
 
   partition_keys {
@@ -214,9 +214,9 @@ resource "aws_iam_role" "firehose" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
+      Effect    = "Allow"
       Principal = { Service = "firehose.amazonaws.com" }
-      Action = "sts:AssumeRole"
+      Action    = "sts:AssumeRole"
     }]
   })
 }
@@ -332,9 +332,9 @@ resource "aws_iam_role" "analytics_lambda" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
+      Effect    = "Allow"
       Principal = { Service = "lambda.amazonaws.com" }
-      Action = "sts:AssumeRole"
+      Action    = "sts:AssumeRole"
     }]
   })
 }

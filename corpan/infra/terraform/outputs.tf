@@ -4,7 +4,7 @@ output "verify_api_url" {
 }
 
 output "verify_custom_domain_validation" {
-  value = var.enable_custom_domain ? aws_acm_certificate.verify[0].domain_validation_options : []
+  value       = var.enable_custom_domain ? aws_acm_certificate.verify[0].domain_validation_options : []
   description = "DNS validation records for custom domain (Namecheap)."
 }
 
@@ -31,7 +31,7 @@ output "dgx_publisher_user" {
 }
 
 output "cdn_certificate_validation" {
-  value = var.enable_cdn && var.cdn_domain_name != "" ? aws_acm_certificate.cdn[0].domain_validation_options : []
+  value       = var.enable_cdn && var.cdn_domain_name != "" ? aws_acm_certificate.cdn[0].domain_validation_options : []
   description = "DNS validation records for CDN ACM certificate."
 }
 
