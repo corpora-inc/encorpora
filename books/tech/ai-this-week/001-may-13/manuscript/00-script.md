@@ -24,7 +24,7 @@ notes: |
 
 **HOST:** Ron, what is the biggest model news this week?
 
-**ANALYST:** The default brain inside ChatGPT changed. OpenAI quietly rolled out a new model called GPT five point five Instant to the free tier on Monday. If a free ChatGPT response feels shorter or less full of emojis this week, that is why.
+**ANALYST:** The default brain inside ChatGPT changed. OpenAI rolled out a new model called GPT five point five Instant to the free tier last week, on Tuesday, May fifth. If a free ChatGPT response has been feeling shorter or less full of emojis, that is why.
 
 **HOST:** Shorter how?
 
@@ -36,15 +36,15 @@ notes: |
 
 **HOST:** And on the open weights side?
 
-**ANALYST:** Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars this week at a twenty billion dollar valuation. Their latest model, Kimi K two point six, is now the second most used model on OpenRouter.
+**ANALYST:** Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars last week, on May seventh, at a twenty billion dollar valuation. And their latest model, Kimi K two point six, just took the top spot on OpenRouter for token volume.
 
-**HOST:** Second most used overall?
+**HOST:** The top spot? Overall?
 
-**ANALYST:** Overall. That is a Chinese open weights model sitting one notch below the top of a major commercial router. Six months ago, that would have been unthinkable.
+**ANALYST:** Overall. That is a Chinese open weights model at number one on a major commercial router. Six months ago, that would have been unthinkable.
 
 **HOST:** Anything else worth flagging?
 
-**ANALYST:** Mistral, the French lab, shipped Medium three point five. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.
+**ANALYST:** Mistral, the French lab, shipped Medium three point five back in late April. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.
 
 **HOST:** And what is coming next?
 
@@ -56,7 +56,7 @@ notes: |
 
 **ANALYST:** The real story this week is not the scores. It is the scores you should stop trusting.
 
-**HOST:** Say more.
+**HOST:** Tell us a little bit more about that, Ron.
 
 **ANALYST:** A group at Berkeley published a paper. They built an automated scanner that scored near perfect on every major AI agent benchmark. Without actually solving a single task. They exploited the way the benchmarks check their own answers.
 
@@ -70,7 +70,7 @@ notes: |
 
 **HOST:** Is anything actually moving up cleanly?
 
-**ANALYST:** Two things, on cleaner boards. On the coding leaderboard at LM Arena, Anthropic's Claude Opus four point six Thinking is the first model to ever pass an Elo score of fifteen hundred. And Anthropic has a separate model called Mythos in a private partner preview that is leading every agent benchmark we can see.
+**ANALYST:** Two things, on cleaner boards. Back in mid-April, Anthropic's Claude Opus four point seven became the first model to push cleanly past an Elo of fifteen hundred on the LM Arena coding leaderboard. Opus four point six had touched fifteen hundred a couple weeks earlier. As of this week, Opus four point seven is still on top, around fifteen sixty nine. Anthropic also has a separate model called Mythos in a private partner preview that is leading seventeen of the eighteen agent benchmarks Anthropic measured.
 
 **HOST:** A model the public cannot use is on top of the boards.
 
@@ -82,7 +82,7 @@ notes: |
 
 **ANALYST:** Because the open weights model we just talked about, Kimi K two point six, has one trillion parameters total. But only thirty two billion of those parameters run at any given moment. That is mixture of experts.
 
-**HOST:** Plain language version, please.
+**HOST:** Walk us through it for the folks tuning in.
 
 **ANALYST:** A regular AI model is like one giant brain. Every word it generates uses every part of the brain. A mixture of experts model is more like a building full of specialists. With a receptionist at the door. For each word, the receptionist picks two or three specialists to consult, and the rest of the building stays quiet.
 
@@ -136,4 +136,4 @@ notes: |
 
 **ANALYST:** Anytime, Vindy.
 
-**HOST:** That was AI This Week for the week ending May thirteenth, twenty twenty six. New issue next week. Until then, take care.
+**HOST:** That was AI This Week for May thirteenth, twenty twenty six. New issue next Wednesday. Until then, take care.

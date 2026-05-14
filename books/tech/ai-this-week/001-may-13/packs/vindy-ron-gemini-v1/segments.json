@@ -55,8 +55,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.",
-      "text_markdown": "Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.",
+      "text": "Today is Wednesday, May 13, 2026. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.",
+      "text_markdown": "Today is Wednesday, May 13, 2026. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.",
       "tts": {
         "text": "Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.",
         "pause_after_ms": 287,
@@ -85,10 +85,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "The default brain inside ChatGPT changed. OpenAI quietly rolled out a new model called GPT five point five Instant to the free tier on Monday. If a free ChatGPT response feels shorter or less full of emojis this week, that is why.",
-      "text_markdown": "The default brain inside ChatGPT changed. OpenAI quietly rolled out a new model called GPT five point five Instant to the free tier on Monday. If a free ChatGPT response feels shorter or less full of emojis this week, that is why.",
+      "text": "The default brain inside ChatGPT changed. OpenAI rolled out a new model called GPT-5.5 Instant to the free tier last week, on Tuesday, May 5. If a free ChatGPT response has been feeling shorter or less full of emojis, that is why.",
+      "text_markdown": "The default brain inside ChatGPT changed. OpenAI rolled out a new model called GPT-5.5 Instant to the free tier last week, on Tuesday, May 5. If a free ChatGPT response has been feeling shorter or less full of emojis, that is why.",
       "tts": {
-        "text": "The default brain inside ChatGPT changed. OpenAI quietly rolled out a new model called GPT five point five Instant to the free tier on Monday. If a free ChatGPT response feels shorter or less full of emojis this week, that is why.",
+        "text": "The default brain inside ChatGPT changed. OpenAI rolled out a new model called GPT five point five Instant to the free tier last week, on Tuesday, May fifth. If a free ChatGPT response has been feeling shorter or less full of emojis, that is why.",
         "pause_after_ms": 583,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -115,8 +115,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "OpenAI says the new default writes roughly thirty percent fewer words and thirty percent fewer lines than the model it replaced. They also claim a fifty percent drop in hallucinated claims on the hardest prompts. Things like medical questions, legal questions, and financial questions.",
-      "text_markdown": "OpenAI says the new default writes roughly thirty percent fewer words and thirty percent fewer lines than the model it replaced. They also claim a fifty percent drop in hallucinated claims on the hardest prompts. Things like medical questions, legal questions, and financial questions.",
+      "text": "OpenAI says the new default writes roughly 30% fewer words and 30% fewer lines than the model it replaced. They also claim a 50% drop in hallucinated claims on the hardest prompts. Things like medical questions, legal questions, and financial questions.",
+      "text_markdown": "OpenAI says the new default writes roughly 30% fewer words and 30% fewer lines than the model it replaced. They also claim a 50% drop in hallucinated claims on the hardest prompts. Things like medical questions, legal questions, and financial questions.",
       "tts": {
         "text": "OpenAI says the new default writes roughly thirty percent fewer words and thirty percent fewer lines than the model it replaced. They also claim a fifty percent drop in hallucinated claims on the hardest prompts. Things like medical questions, legal questions, and financial questions.",
         "pause_after_ms": 585,
@@ -175,10 +175,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars this week at a twenty billion dollar valuation. Their latest model, Kimi K two point six, is now the second most used model on OpenRouter.",
-      "text_markdown": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars this week at a twenty billion dollar valuation. Their latest model, Kimi K two point six, is now the second most used model on OpenRouter.",
+      "text": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised $2 billion last week, on May 7, at a $20 billion valuation. And their latest model, Kimi K 2.6, just took the top spot on OpenRouter for token volume.",
+      "text_markdown": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised $2 billion last week, on May 7, at a $20 billion valuation. And their latest model, Kimi K 2.6, just took the top spot on OpenRouter for token volume.",
       "tts": {
-        "text": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars this week at a twenty billion dollar valuation. Their latest model, Kimi K two point six, is now the second most used model on OpenRouter.",
+        "text": "Two big things. Moonshot, the Chinese lab behind the Kimi model, raised two billion dollars last week, on May seventh, at a twenty billion dollar valuation. And their latest model, Kimi K two point six, just took the top spot on OpenRouter for token volume.",
         "pause_after_ms": 593,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -190,10 +190,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Second most used overall?",
-      "text_markdown": "Second most used overall?",
+      "text": "The top spot? Overall?",
+      "text_markdown": "The top spot? Overall?",
       "tts": {
-        "text": "Second most used overall?",
+        "text": "The top spot? Overall?",
         "pause_after_ms": 323,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -205,10 +205,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Overall. That is a Chinese open weights model sitting one notch below the top of a major commercial router. Six months ago, that would have been unthinkable.",
-      "text_markdown": "Overall. That is a Chinese open weights model sitting one notch below the top of a major commercial router. Six months ago, that would have been unthinkable.",
+      "text": "Overall. That is a Chinese open weights model at number one on a major commercial router. Six months ago, that would have been unthinkable.",
+      "text_markdown": "Overall. That is a Chinese open weights model at number one on a major commercial router. Six months ago, that would have been unthinkable.",
       "tts": {
-        "text": "Overall. That is a Chinese open weights model sitting one notch below the top of a major commercial router. Six months ago, that would have been unthinkable.",
+        "text": "Overall. That is a Chinese open weights model at number one on a major commercial router. Six months ago, that would have been unthinkable.",
         "pause_after_ms": 516,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -235,10 +235,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Mistral, the French lab, shipped Medium three point five. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.",
-      "text_markdown": "Mistral, the French lab, shipped Medium three point five. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.",
+      "text": "Mistral, the French lab, shipped Medium 3.5 back in late April. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT-5 family. The whole industry is moving that direction.",
+      "text_markdown": "Mistral, the French lab, shipped Medium 3.5 back in late April. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT-5 family. The whole industry is moving that direction.",
       "tts": {
-        "text": "Mistral, the French lab, shipped Medium three point five. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.",
+        "text": "Mistral, the French lab, shipped Medium three point five back in late April. They are collapsing the old split between a chat model, a reasoning model, and a coding model into one product. Same trend OpenAI started with the GPT five family. The whole industry is moving that direction.",
         "pause_after_ms": 568,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -265,8 +265,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Google I O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT five point six in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.",
-      "text_markdown": "Google I O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT five point six in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.",
+      "text": "Google I/O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT-5.6 in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.",
+      "text_markdown": "Google I/O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT-5.6 in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.",
       "tts": {
         "text": "Google I O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT five point six in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.",
         "pause_after_ms": 595,
@@ -325,11 +325,11 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Say more.",
-      "text_markdown": "Say more.",
+      "text": "Tell us a little bit more about that, Ron.",
+      "text_markdown": "Tell us a little bit more about that, Ron.",
       "tts": {
-        "text": "Say more.",
-        "pause_after_ms": 466,
+        "text": "Tell us a little bit more about that, Ron.",
+        "pause_after_ms": 516,
         "speaker_id": "host",
         "repetition_penalty": 2.0
       }
@@ -400,8 +400,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "At least partly inflated. Not every model. Not every benchmark. But the field is rebuilding its measuring tape in public. Newer evaluations like SWE bench Pro and a project called SWE rebench are trying to fix this by keeping the test code private.",
-      "text_markdown": "At least partly inflated. Not every model. Not every benchmark. But the field is rebuilding its measuring tape in public. Newer evaluations like SWE bench Pro and a project called SWE rebench are trying to fix this by keeping the test code private.",
+      "text": "At least partly inflated. Not every model. Not every benchmark. But the field is rebuilding its measuring tape in public. Newer evaluations like SWE-bench Pro and a project called SWE-rebench are trying to fix this by keeping the test code private.",
+      "text_markdown": "At least partly inflated. Not every model. Not every benchmark. But the field is rebuilding its measuring tape in public. Newer evaluations like SWE-bench Pro and a project called SWE-rebench are trying to fix this by keeping the test code private.",
       "tts": {
         "text": "At least partly inflated. Not every model. Not every benchmark. But the field is rebuilding its measuring tape in public. Newer evaluations like SWE bench Pro and a project called SWE rebench are trying to fix this by keeping the test code private.",
         "pause_after_ms": 518,
@@ -430,10 +430,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Two things, on cleaner boards. On the coding leaderboard at LM Arena, Anthropic's Claude Opus four point six Thinking is the first model to ever pass an Elo score of fifteen hundred. And Anthropic has a separate model called Mythos in a private partner preview that is leading every agent benchmark we can see.",
-      "text_markdown": "Two things, on cleaner boards. On the coding leaderboard at LM Arena, Anthropic's Claude Opus four point six Thinking is the first model to ever pass an Elo score of fifteen hundred. And Anthropic has a separate model called Mythos in a private partner preview that is leading every agent benchmark we can see.",
+      "text": "Two things, on cleaner boards. Back in mid-April, Anthropic's Claude Opus 4.7 became the first model to push cleanly past an Elo of 1500 on the LM Arena coding leaderboard. Opus 4.6 had touched 1500 a couple weeks earlier. As of this week, Opus 4.7 is still on top, around 1569. Anthropic also has a separate model called Mythos in a private partner preview that is leading 17 of the 18 agent benchmarks Anthropic measured.",
+      "text_markdown": "Two things, on cleaner boards. Back in mid-April, Anthropic's Claude Opus 4.7 became the first model to push cleanly past an Elo of 1500 on the LM Arena coding leaderboard. Opus 4.6 had touched 1500 a couple weeks earlier. As of this week, Opus 4.7 is still on top, around 1569. Anthropic also has a separate model called Mythos in a private partner preview that is leading 17 of the 18 agent benchmarks Anthropic measured.",
       "tts": {
-        "text": "Two things, on cleaner boards. On the coding leaderboard at LM Arena, Anthropic's Claude Opus four point six Thinking is the first model to ever pass an Elo score of fifteen hundred. And Anthropic has a separate model called Mythos in a private partner preview that is leading every agent benchmark we can see.",
+        "text": "Two things, on cleaner boards. Back in mid-April, Anthropic's Claude Opus four point seven became the first model to push cleanly past an Elo of fifteen hundred on the LM Arena coding leaderboard. Opus four point six had touched fifteen hundred a couple weeks earlier. As of this week, Opus four point seven is still on top, around fifteen sixty nine. Anthropic also has a separate model called Mythos in a private partner preview that is leading seventeen of the eighteen agent benchmarks Anthropic measured.",
         "pause_after_ms": 533,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -460,8 +460,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V four Pro and Kimi K two point six are within striking distance of GPT five point five on the cross evaluation intelligence index. That gap used to be huge. It is now small.",
-      "text_markdown": "That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V four Pro and Kimi K two point six are within striking distance of GPT five point five on the cross evaluation intelligence index. That gap used to be huge. It is now small.",
+      "text": "That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V4 Pro and Kimi K 2.6 are within striking distance of GPT-5.5 on the cross evaluation intelligence index. That gap used to be huge. It is now small.",
+      "text_markdown": "That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V4 Pro and Kimi K 2.6 are within striking distance of GPT-5.5 on the cross evaluation intelligence index. That gap used to be huge. It is now small.",
       "tts": {
         "text": "That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V four Pro and Kimi K two point six are within striking distance of GPT five point five on the cross evaluation intelligence index. That gap used to be huge. It is now small.",
         "pause_after_ms": 595,
@@ -490,10 +490,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Ron, the concept of the week is mixture of experts. Why is that this week's focus?",
-      "text_markdown": "Ron, the concept of the week is mixture of experts. Why is that this week's focus?",
+      "text": "Ron, this week's concept is mixture of experts. Why are we focusing on mixture of experts?",
+      "text_markdown": "Ron, this week's concept is mixture of experts. Why are we focusing on mixture of experts?",
       "tts": {
-        "text": "Ron, the concept of the week is mixture of experts. Why is that this week's focus?",
+        "text": "Ron, this week's concept is mixture of experts. Why are we focusing on mixture of experts?",
         "pause_after_ms": 317,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -505,8 +505,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Because the open weights model we just talked about, Kimi K two point six, has one trillion parameters total. But only thirty two billion of those parameters run at any given moment. That is mixture of experts.",
-      "text_markdown": "Because the open weights model we just talked about, Kimi K two point six, has one trillion parameters total. But only thirty two billion of those parameters run at any given moment. That is mixture of experts.",
+      "text": "Because the open weights model we just talked about, Kimi K 2.6, has 1 trillion parameters total. But only 32 billion of those parameters run at any given moment. That is mixture of experts.",
+      "text_markdown": "Because the open weights model we just talked about, Kimi K 2.6, has 1 trillion parameters total. But only 32 billion of those parameters run at any given moment. That is mixture of experts.",
       "tts": {
         "text": "Because the open weights model we just talked about, Kimi K two point six, has one trillion parameters total. But only thirty two billion of those parameters run at any given moment. That is mixture of experts.",
         "pause_after_ms": 532,
@@ -520,10 +520,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Please give me the plain language version.",
-      "text_markdown": "Please give me the plain language version.",
+      "text": "Walk us through it for the folks tuning in.",
+      "text_markdown": "Walk us through it for the folks tuning in.",
       "tts": {
-        "text": "Please give me the plain language version.",
+        "text": "Walk us through it for the folks tuning in.",
         "pause_after_ms": 545,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -565,8 +565,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Exactly. One trillion parameters of capacity. But only thirty two billion parameters of compute per word. That is the trick. The receptionist is a tiny piece of code called a router. The specialists are sub networks called experts. The model trains the router and the experts together, end to end.",
-      "text_markdown": "Exactly. One trillion parameters of capacity. But only thirty two billion parameters of compute per word. That is the trick. The receptionist is a tiny piece of code called a router. The specialists are sub networks called experts. The model trains the router and the experts together, end to end.",
+      "text": "Exactly. 1 trillion parameters of capacity. But only 32 billion parameters of compute per word. That is the trick. The receptionist is a tiny piece of code called a router. The specialists are sub networks called experts. The model trains the router and the experts together, end to end.",
+      "text_markdown": "Exactly. 1 trillion parameters of capacity. But only 32 billion parameters of compute per word. That is the trick. The receptionist is a tiny piece of code called a router. The specialists are sub networks called experts. The model trains the router and the experts together, end to end.",
       "tts": {
         "text": "Exactly. One trillion parameters of capacity. But only thirty two billion parameters of compute per word. That is the trick. The receptionist is a tiny piece of code called a router. The specialists are sub networks called experts. The model trains the router and the experts together, end to end.",
         "pause_after_ms": 596,
@@ -595,8 +595,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
-      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
+      "text": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to extremes.",
+      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to extremes.",
       "tts": {
         "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
         "pause_after_ms": 572,
@@ -670,8 +670,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Today, the U.S. Senate confirmed Kevin Warsh as the next chair of the Federal Reserve. The vote was fifty four to forty five. The narrowest vote for a Fed chair in modern American history. Only one Democrat crossed the aisle.",
-      "text_markdown": "Today, the U.S. Senate confirmed Kevin Warsh as the next chair of the Federal Reserve. The vote was fifty four to forty five. The narrowest vote for a Fed chair in modern American history. Only one Democrat crossed the aisle.",
+      "text": "Today, the U.S. Senate confirmed Kevin Warsh as the next chair of the Federal Reserve. The vote was 54 to 45. The narrowest vote for a Fed chair in modern American history. Only one Democrat crossed the aisle.",
+      "text_markdown": "Today, the U.S. Senate confirmed Kevin Warsh as the next chair of the Federal Reserve. The vote was 54 to 45. The narrowest vote for a Fed chair in modern American history. Only one Democrat crossed the aisle.",
       "tts": {
         "text": "Today, the U.S. Senate confirmed Kevin Warsh as the next chair of the Federal Reserve. The vote was fifty four to forty five. The narrowest vote for a Fed chair in modern American history. Only one Democrat crossed the aisle.",
         "pause_after_ms": 581,
@@ -730,8 +730,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Yes. The hyperscalers — Microsoft, Google, Amazon, Meta — are on track to spend roughly seven hundred billion dollars on capital expenditure this year. Most of that is GPUs and data centers. A lower discount rate makes those multi year buildouts pencil out at higher valuations.",
-      "text_markdown": "Yes. The hyperscalers — Microsoft, Google, Amazon, Meta — are on track to spend roughly seven hundred billion dollars on capital expenditure this year. Most of that is GPUs and data centers. A lower discount rate makes those multi year buildouts pencil out at higher valuations.",
+      "text": "Yes. The hyperscalers — Microsoft, Google, Amazon, Meta — are on track to spend roughly $700 billion on capital expenditure this year. Most of that is GPUs and data centers. A lower discount rate makes those multi year buildouts pencil out at higher valuations.",
+      "text_markdown": "Yes. The hyperscalers — Microsoft, Google, Amazon, Meta — are on track to spend roughly $700 billion on capital expenditure this year. Most of that is GPUs and data centers. A lower discount rate makes those multi year buildouts pencil out at higher valuations.",
       "tts": {
         "text": "Yes. The hyperscalers — Microsoft, Google, Amazon, Meta — are on track to spend roughly seven hundred billion dollars on capital expenditure this year. Most of that is GPUs and data centers. A lower discount rate makes those multi year buildouts pencil out at higher valuations.",
         "pause_after_ms": 544,
@@ -835,8 +835,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Microsoft has eighty billion dollars of unfulfilled cloud orders because of power. Is that the right number?",
-      "text_markdown": "Microsoft has eighty billion dollars of unfulfilled cloud orders because of power. Is that the right number?",
+      "text": "Microsoft has $80 billion of unfulfilled cloud orders because of power. Is that the right number?",
+      "text_markdown": "Microsoft has $80 billion of unfulfilled cloud orders because of power. Is that the right number?",
       "tts": {
         "text": "Microsoft has eighty billion dollars of unfulfilled cloud orders because of power. Is that the right number?",
         "pause_after_ms": 378,
@@ -880,8 +880,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "The sixteenth and seventeenth of June. We will know a lot more about the rate path after that.",
-      "text_markdown": "The sixteenth and seventeenth of June. We will know a lot more about the rate path after that.",
+      "text": "The 16th and 17th of June. We will know a lot more about the rate path after that.",
+      "text_markdown": "The 16th and 17th of June. We will know a lot more about the rate path after that.",
       "tts": {
         "text": "The sixteenth and seventeenth of June. We will know a lot more about the rate path after that.",
         "pause_after_ms": 556,
@@ -925,10 +925,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "That was AI This Week for the week ending May thirteenth, twenty twenty six. New issue next week. Until then, take care.",
-      "text_markdown": "That was AI This Week for the week ending May thirteenth, twenty twenty six. New issue next week. Until then, take care.",
+      "text": "That was AI This Week for May 13, 2026. New issue next Wednesday. Until then, take care.",
+      "text_markdown": "That was AI This Week for May 13, 2026. New issue next Wednesday. Until then, take care.",
       "tts": {
-        "text": "That was AI This Week for the week ending May thirteenth, twenty twenty six. New issue next week. Until then, take care.",
+        "text": "That was AI This Week for May thirteenth, twenty twenty six. New issue next Wednesday. Until then, take care.",
         "pause_after_ms": 1206,
         "speaker_id": "host",
         "repetition_penalty": 2.0

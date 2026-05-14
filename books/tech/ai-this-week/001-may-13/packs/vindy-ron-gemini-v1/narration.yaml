@@ -61,6 +61,20 @@ trimming:
   tail_grace_ms: 50
   tail_fade_ms: 100
 
+# Dialog-pack validator overrides (added 2026-05-14).
+# - Tighten first_word_weak from 0.20 -> 0.30: catches Vindy/Ron weak
+#   onsets ("Exactly", "Anyone", "OpenAI says...") that slipped the default.
+# - Tail-truncation free-transcribe check gates on vad_whisper_gap_ms > 600.
+#   See ttsctl/changelog/decisions/2026-05-14_dialog_validators.md.
+validation:
+  first_word_weak_threshold: 0.30
+  tail_free_transcribe_gate_ms: 600
+  tail_free_transcribe_fail_wer: 0.5
+  # Dialog packs keep first_word_weak blocking even on Gemini (the default
+  # Gemini-voice downgrade is too lenient for hosted dialog).
+  no_gemini_downgrade_checks:
+    - first_word_weak
+
 denoise:
   enabled: false
 

@@ -1,0 +1,77 @@
+{
+  "issue_date": "2026-05-13",
+  "ran_at": "2026-05-14",
+  "must_fix_applied": [
+    {
+      "claim": "GPT-5.5 Instant launch on Monday",
+      "correction": "Tuesday May 5 (last week)",
+      "segments": [
+        "ch00-006"
+      ]
+    },
+    {
+      "claim": "Moonshot raised $2B this week",
+      "correction": "last week, May 7",
+      "segments": [
+        "ch00-012"
+      ]
+    },
+    {
+      "claim": "Kimi K 2.6 is second most used on OpenRouter",
+      "correction": "top spot on OpenRouter (token volume)",
+      "segments": [
+        "ch00-012",
+        "ch00-013",
+        "ch00-014"
+      ]
+    },
+    {
+      "claim": "Mistral Medium 3.5 shipped this week",
+      "correction": "shipped back in late April",
+      "segments": [
+        "ch00-016"
+      ]
+    },
+    {
+      "claim": "Opus 4.7 first model ever past Elo 1500",
+      "correction": "first to push cleanly past 1500; Opus 4.6 had touched it earlier",
+      "segments": [
+        "ch00-029"
+      ]
+    },
+    {
+      "claim": "Mythos leading every agent benchmark",
+      "correction": "leading 17 of the 18 agent benchmarks Anthropic measured",
+      "segments": [
+        "ch00-029"
+      ]
+    }
+  ],
+  "hedged_or_kept": [
+    {
+      "claim": "DeepSeek V4 Pro + Kimi K 2.6 within striking distance of GPT 5.5",
+      "note": "UNVERIFIED on Artificial Analysis index specifically; manuscript kept the looser framing for now"
+    },
+    {
+      "claim": "'Today' for Warsh confirmation",
+      "note": "kept as-is \u2014 issue date is May 13 (day of confirmation); show says 'Today is Wednesday May 13' up top so 'today' parses correctly relative to that anchor"
+    }
+  ],
+  "all_verified": [
+    "GPT-5.5 Instant 30% fewer words/lines, 50% fewer hallucinations on hard prompts",
+    "Artificial Analysis index #1 for GPT-5.5",
+    "Google I/O on Tuesday May 19",
+    "Gemini Omni rumor (May 11 leak)",
+    "GPT-5.6 in testing",
+    "Mythos private preview",
+    "Berkeley RDI benchmark-scanner paper",
+    "OpenAI retired SWE-bench Verified (59% of hard tasks had flawed tests)",
+    "Warsh confirmation 54-45",
+    "Narrowest Fed chair vote in modern history",
+    "Only Fetterman (D) crossed aisle",
+    "Hyperscaler capex ~$700B in 2026",
+    "AI ~2/3 of Q1 2026 GDP growth",
+    "Microsoft $80B Azure backlog",
+    "Warsh first FOMC June 16-17"
+  ]
+}

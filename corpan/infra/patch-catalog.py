@@ -97,6 +97,36 @@ CHARACTERS_META = {
         "status": "active",
         "order": 4,
     },
+    "vindy": {
+        "displayName": "Vindy",
+        "tagline": "Host of AI This Week.",
+        "bio": (
+            "Vindy is the host of AI This Week, the weekly conversation "
+            "about what actually happened in artificial intelligence over "
+            "the past seven days. She reads the way an NPR host does — "
+            "warm, relaxed, friendly, with a quiet gleam of wonder. "
+            "Polished and intelligent, conversational not theatrical. The "
+            "Vindy voice is rendered by Google's Gemini speech synthesis."
+        ),
+        "accentColor": "#7a5cb0",
+        "status": "active",
+        "order": 5,
+    },
+    "ron": {
+        "displayName": "Ron",
+        "tagline": "Resident analyst on AI This Week.",
+        "bio": (
+            "Ron is the resident analyst on AI This Week. He brings the "
+            "numbers and the context — the patient explainer beside Vindy's "
+            "host chair. He reads with academic-business polish, clear and "
+            "unhurried, the way a thoughtful colleague walks you through "
+            "a paper at lunch. The Ron voice is rendered by Google's "
+            "Gemini speech synthesis."
+        ),
+        "accentColor": "#3a6d7a",
+        "status": "active",
+        "order": 6,
+    },
     # Skylar (sky-21.wav) and Victor (victor-business.wav) have avatars +
     # banners on S3 from the 2026-05-10 generate-catalog-assets.py pass, but
     # no narrations are using them yet. Hold them out of the catalog until
@@ -193,6 +223,28 @@ VOICE_PROFILES = [
     },
     # Skylar + Victor voice profiles withheld until a real narration ships
     # under either voiceId (see CHARACTERS_META comment above).
+    {
+        "id": "gemini-vindy",
+        "characterId": "vindy",
+        "displayName": "Vindy",
+        "provider": "gemini",
+        "providerVoiceId": "Vindemiatrix",
+        "source": {"kind": "native"},
+        "traits": ["narrator", "host", "warm", "npr-style", "dialog"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "gemini-ron",
+        "characterId": "ron",
+        "displayName": "Ron",
+        "provider": "gemini",
+        "providerVoiceId": "Charon",
+        "source": {"kind": "native"},
+        "traits": ["narrator", "analyst", "academic", "business", "dialog"],
+        "status": "active",
+        "order": 1,
+    },
 ]
 
 # Book descriptions — matches generate-catalog-assets.py
