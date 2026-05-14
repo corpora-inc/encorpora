@@ -159,9 +159,13 @@ body {
 /* Applied by paragraphView.ts when the first word would otherwise render
    inside the top fade band. Pushes the inner down so the first word lands
    in the clean reading area. Short segments don't get this class, so their
-   centering is preserved. */
+   centering is preserved.
+   The +24px is the buffer below `--eg-top-clearance` (the fade-band
+   height). It pairs with the +20px breathing room inside getCleanTop()
+   so the first word lands just inside the clean zone rather than well
+   below it. */
 .earthgate-paragraph-inner--pad-top {
-  padding-top: calc(var(--eg-top-clearance) + 40px);
+  padding-top: calc(var(--eg-top-clearance) + 24px);
 }
 
 /* Applied by paragraphView.ts when the content overflows the scroll

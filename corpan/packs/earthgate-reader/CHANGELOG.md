@@ -10,6 +10,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-05-14
+### Changed
+- Auto-scroll reading anchor 0.67 → 0.60 of the clean reading area —
+  active word lands a touch closer to mid-frame, so the next line is
+  visible sooner without losing the read-text trail above.
+- Long-segment first-word start position lifted ~16px:
+  `--pad-top` buffer 40 → 24 below `--eg-top-clearance`. The first
+  line now sits just inside the clean zone rather than well below
+  the fade band, giving the eye a touch more room to read forward
+  before the auto-scroll pulls the word down to its anchor.
+
 ## [0.6.2] - 2026-05-10
 ### Changed
 - Transport bar typography refreshed: book title (italic gold, 13 px)
