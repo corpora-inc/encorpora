@@ -1,37 +1,36 @@
 {
   "book_id": "ian-chatterbox-v1",
   "language": "da",
-  "timestamp": "2026-05-12T05:25:58.104982+00:00",
+  "timestamp": "2026-05-12T07:05:04.250665+00:00",
   "segments_total": 161,
-  "segments_first_pass": 160,
-  "segments_converged_by_retry": 1,
+  "segments_first_pass": 161,
+  "segments_converged_by_retry": 0,
   "segments_plateau_stopped": 0,
-  "total_retries": 1,
+  "total_retries": 0,
   "error_distribution": {
-    "trailing_silence": 83,
-    "tail_energy": 33,
-    "first_word_weak": 28,
-    "first_word_mismatch": 4,
-    "final_word_weak": 2,
-    "transcription_mismatch": 1
+    "trailing_silence": 87,
+    "tail_energy": 34,
+    "first_word_weak": 27,
+    "final_word_weak": 3,
+    "first_word_mismatch": 3
   },
   "phase_timings": {
-    "tts": 13.657721042633057,
-    "align": 9.67175030708313,
-    "validate": 0.33783888816833496,
-    "trim": 0.015035390853881836,
-    "master": 0.2692558765411377
+    "tts": 16.600772857666016,
+    "align": 9.366129636764526,
+    "validate": 24.230384588241577,
+    "trim": 0.01580524444580078,
+    "master": 0.49887824058532715
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 25,
-      "passed": 25,
+      "total": 24,
+      "passed": 24,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 116,
-      "passed": 115,
-      "rate": 0.9913793103448276
+      "total": 117,
+      "passed": 117,
+      "rate": 1.0
     },
     "long_80_plus": {
       "total": 20,
@@ -41,62 +40,17 @@
   },
   "worst_segments": [
     {
-      "id": "ch07-156",
-      "attempts": 2,
-      "best_quality_score": 3.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "transcription_mismatch"
-          ],
-          "score": 8.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "trailing_silence"
-          ],
-          "score": 3.0,
-          "params": {
-            "cfg_weight": 0.7279809444444065,
-            "exaggeration": 0.45288286521389887,
-            "temperature": 0.4385684227620654,
-            "top_p": 0.8730243697457982,
-            "min_p": 0.08900192527253495,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 46,
-      "text_preview": "Anouar Brahem spiller oud med jazzguitarister.",
-      "passed_first": false
-    },
-    {
       "id": "ch00-002",
       "attempts": 1,
-      "best_quality_score": 15.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_mismatch"
-          ],
-          "score": 15.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -198,17 +152,15 @@
     {
       "id": "ch00-006",
       "attempts": 1,
-      "best_quality_score": 20.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -219,14 +171,14 @@
           }
         }
       ],
-      "text_len": 93,
-      "text_preview": "I denne bog lærer vi, hvordan ouden ser ud, bliver bygget, og hvem der formede d",
+      "text_len": 125,
+      "text_preview": "I denne bog lærer vi, hvordan Ooden ser ud, hvordan den bliver bygget og hvem de",
       "passed_first": true
     },
     {
       "id": "ch00-007",
       "attempts": 1,
-      "best_quality_score": 20.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -234,9 +186,10 @@
         {
           "attempt": 0,
           "errors": [
-            "first_word_weak"
+            "trailing_silence",
+            "tail_energy"
           ],
-          "score": 20.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -394,15 +347,18 @@
     {
       "id": "ch01-014",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -474,15 +430,18 @@
     {
       "id": "ch01-017",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -608,6 +567,34 @@
       ],
       "text_len": 28,
       "text_preview": "Sådan bliver det til elleve.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Spilleren holder ouden på skødet.",
       "passed_first": true
     }
   ],

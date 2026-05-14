@@ -7,7 +7,7 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.12.6] - 2026-05-07
+## [0.12.6] - 2026-05-13
 
 ### Added
 - `SKAdNetworkItems` entry for Google Ads (`cstr6suwn9.skadnetwork`)
@@ -16,6 +16,20 @@ Conventions: `corpan/CHANGELOGS.md`.
   Google for paid acquisition campaigns. Metadata only; no SDK
   integration. xcodegen regenerates `Info.plist` from the template,
   so the entry round-trips through any future Xcode project rebuild.
+- Anonymous, session-scoped main-app analytics. Same privacy
+  posture as the existing reader-pack analytics (ephemeral session
+  UUID, no persistent identifiers, no IP storage, country-only
+  geo via the CDN edge). Events: `session_start`,
+  `app_pack_entered`, `app_pack_heartbeat` (30s while a pack is
+  open), `app_pack_exited`, `app_language_switched`,
+  `app_onboarding_completed`, `app_paid_unlock_viewed`,
+  `app_session_summary` (on pagehide). Reuses
+  `packs/shared/analytics`; backend Lambda allowlist updated to
+  accept `reader_id="corpan-app"`. Build-time kill switch via
+  `VITE_ANALYTICS_ENABLED=false`.
+- **Settings → Send anonymous usage data** toggle. Default on
+  (matching the reader-pack opt-out model). Off disables all
+  main-app analytics immediately and clears the local queue.
 
 ### Changed
 - Release build now ships native debug symbols to Play Console.
@@ -25,6 +39,11 @@ Conventions: `corpan/CHANGELOGS.md`.
   (Gradle still strips before packaging). Future Android native
   crashes will arrive in Play Console pre-symbolicated instead of as
   raw hex offsets.
+- Privacy Promise (web/io/app/privacy/page.tsx) rewritten to
+  reflect the anonymous usage analytics, the new in-app opt-out,
+  and the network paths the app uses (IAP verification, pack
+  downloads, optional live-radio streaming). The previous "no
+  telemetry, ever" wording was no longer accurate.
 
 ## [0.12.5] - 2026-05-07
 

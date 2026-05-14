@@ -5,6 +5,7 @@ import { OnboardingHeader, STEPS } from "./OnboardingHeader";
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Github, Youtube, Newspaper, Globe, ExternalLink } from "lucide-react";
+import { trackOnboardingCompleted } from "@/util/analytics";
 
 /** Fill these with your actual profiles */
 const LINKS = [
@@ -80,7 +81,10 @@ export function OnboardingFinish() {
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
                 onBack={() => setStep(3)}
-                onNext={() => setOnboarded(true)}
+                onNext={() => {
+                    trackOnboardingCompleted();
+                    setOnboarded(true);
+                }}
                 canNext={true}
 
             />

@@ -1,56 +1,50 @@
 {
   "book_id": "ian-chatterbox-v1",
-  "language": "en",
-  "timestamp": "2026-05-12T07:10:05.328052+00:00",
+  "language": "nl",
+  "timestamp": "2026-05-12T14:19:45.636658+00:00",
   "segments_total": 161,
-  "segments_first_pass": 158,
-  "segments_converged_by_retry": 3,
+  "segments_first_pass": 160,
+  "segments_converged_by_retry": 1,
   "segments_plateau_stopped": 0,
-  "total_retries": 3,
+  "total_retries": 1,
   "error_distribution": {
-    "trailing_silence": 63,
-    "first_word_weak": 51,
-    "tail_energy": 26,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 5,
-    "pre_speech_spike": 3,
-    "tail_zero_duration_run": 2,
-    "stacked_words": 2,
-    "truncated_last_word": 2,
-    "min_trailing_silence": 2,
-    "first_word_mismatch": 2,
-    "short_words": 1,
-    "post_speech_pop": 1
+    "trailing_silence": 78,
+    "tail_energy": 35,
+    "first_word_weak": 34,
+    "final_word_weak": 6,
+    "pre_speech_spike": 4,
+    "tts_audio_truncated": 1,
+    "first_word_mismatch": 1
   },
   "phase_timings": {
-    "tts": 55.234965801239014,
-    "align": 33.56084752082825,
-    "validate": 26.00394344329834,
-    "trim": 0.023279666900634766,
-    "master": 0.9251353740692139
+    "tts": 42.04878902435303,
+    "align": 26.205528497695923,
+    "validate": 26.033828735351562,
+    "trim": 0.035269737243652344,
+    "master": 1.0099964141845703
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 27,
-      "passed": 27,
+      "total": 20,
+      "passed": 20,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 108,
-      "passed": 106,
-      "rate": 0.9814814814814815
+      "total": 114,
+      "passed": 113,
+      "rate": 0.9912280701754386
     },
     "long_80_plus": {
-      "total": 26,
-      "passed": 25,
-      "rate": 0.9615384615384616
+      "total": 27,
+      "passed": 27,
+      "rate": 1.0
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-007",
+      "id": "ch03-053",
       "attempts": 2,
-      "best_quality_score": 25.0,
+      "best_quality_score": 0.0,
       "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
@@ -58,50 +52,18 @@
         {
           "attempt": 0,
           "errors": [
-            "tail_zero_duration_run",
-            "stacked_words",
-            "truncated_last_word",
-            "min_trailing_silence",
-            "tts_audio_truncated"
+            "final_word_weak"
           ],
-          "score": 420.0,
+          "score": 20.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 1.9
+            "repetition_penalty": 1.8
           }
         },
-        {
-          "attempt": 1,
-          "errors": [
-            "pre_speech_spike"
-          ],
-          "score": 25.0,
-          "params": {
-            "cfg_weight": 1.0,
-            "exaggeration": 0.23371446254754275,
-            "temperature": 0.27487333102358447,
-            "top_p": 0.825466727390926,
-            "min_p": 0.16020981575578405,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 86,
-      "text_preview": "By the end, you will know why the oud is sometimes called the king of all the st",
-      "passed_first": false
-    },
-    {
-      "id": "ch01-022",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
         {
           "attempt": 0,
           "errors": [
@@ -123,65 +85,23 @@
           "errors": [],
           "score": 0.0,
           "params": {
-            "cfg_weight": 0.8909406007718568,
-            "exaggeration": 0.20836507558562528,
-            "temperature": 0.39851474875405557,
-            "top_p": 0.9985143014461318,
-            "min_p": 0.0,
+            "cfg_weight": 0.6982636466785295,
+            "exaggeration": 0.3561240149459445,
+            "temperature": 0.6030287326676969,
+            "top_p": 0.6570396720007217,
+            "min_p": 0.27286785525765167,
             "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 40,
-      "text_preview": "The player holds the oud across the lap.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-050",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.5963686511538459,
-            "exaggeration": 0.43750243666577543,
-            "temperature": 0.3950344395835232,
-            "top_p": 1.0,
-            "min_p": 0.042807641995928264,
-            "repetition_penalty": 1.9
           }
         }
       ],
       "text_len": 51,
-      "text_preview": "Together they make the deep, round back of the oud.",
+      "text_preview": "De bouwer kiest het hout voor de klank die hij wil.",
       "passed_first": false
     },
     {
       "id": "ch00-002",
       "attempts": 1,
-      "best_quality_score": 28.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -190,9 +110,9 @@
           "attempt": 0,
           "errors": [
             "trailing_silence",
-            "short_words"
+            "tail_energy"
           ],
-          "score": 28.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -203,8 +123,8 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "This is a book about the Ood, a wooden stringed instrument.",
+      "text_len": 56,
+      "text_preview": "Dit is een boek over de oud, een houten snaarinstrument.",
       "passed_first": true
     },
     {
@@ -231,12 +151,40 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "People have been playing it for more than a thousand years.",
+      "text_len": 43,
+      "text_preview": "Mensen spelen het al meer dan duizend jaar.",
       "passed_first": true
     },
     {
       "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "Je hoort de oud in steden aan zee en in bergdorpen.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
       "attempts": 1,
       "best_quality_score": 15.0,
       "best_attempt": 0,
@@ -256,40 +204,12 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 75,
-      "text_preview": "You can hear the oud in cities by the sea and in villages in the mountains.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-005",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
             "repetition_penalty": 2.0
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "You can hear it in old palaces and on small wooden stages.",
+      "text_len": 56,
+      "text_preview": "Je hoort hem in oude paleizen en op kleine houten podia.",
       "passed_first": true
     },
     {
@@ -300,21 +220,6 @@
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
         {
           "attempt": 0,
           "errors": [],
@@ -329,53 +234,22 @@
           }
         }
       ],
-      "text_len": 119,
-      "text_preview": "In this book, we will learn what the oud looks like, how it is built, and the na",
+      "text_len": 95,
+      "text_preview": "In dit boek leren we hoe de oud eruitziet, hoe hij wordt gebouwd en wie zijn ver",
       "passed_first": true
     },
     {
-      "id": "ch01-009",
+      "id": "ch00-007",
       "attempts": 1,
-      "best_quality_score": 28.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "pre_speech_spike"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "An oud is a string instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-010",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -386,8 +260,62 @@
           }
         }
       ],
-      "text_len": 65,
-      "text_preview": "It is a kind of lute, with a body shaped like a pear cut in half.",
+      "text_len": 80,
+      "text_preview": "Aan het eind weet je waarom de oud soms de koning van de snaarinstrumenten heet.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Een oud is een snaarinstrument.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Het is een soort luit, met een klankkast als een doormidden gesneden peer.",
       "passed_first": true
     },
     {
@@ -414,8 +342,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "The back of the oud is round and deep, like a wooden bowl.",
+      "text_len": 61,
+      "text_preview": "De achterkant van de oud is rond en diep, als een houten kom.",
       "passed_first": true
     },
     {
@@ -442,41 +370,12 @@
           }
         }
       ],
-      "text_len": 18,
-      "text_preview": "The front is flat.",
+      "text_len": 20,
+      "text_preview": "De voorkant is vlak.",
       "passed_first": true
     },
     {
       "id": "ch01-013",
-      "attempts": 1,
-      "best_quality_score": 23.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "first_word_weak"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 38,
-      "text_preview": "We call the flat front the soundboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-014",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -499,8 +398,37 @@
           }
         }
       ],
-      "text_len": 52,
-      "text_preview": "The oud has a short neck and a fretless fingerboard.",
+      "text_len": 39,
+      "text_preview": "Die vlakke voorkant heet het klankbord.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "De hals van de oud is kort en heeft geen fretten.",
       "passed_first": true
     },
     {
@@ -513,21 +441,6 @@
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
           "errors": [],
           "score": 0.0,
           "params": {
@@ -540,14 +453,14 @@
           }
         }
       ],
-      "text_len": 53,
-      "text_preview": "Frets are the little metal lines you see on a guitar.",
+      "text_len": 67,
+      "text_preview": "Fretten zijn de kleine metalen streepjes die je op een gitaar ziet.",
       "passed_first": true
     },
     {
       "id": "ch01-016",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 23.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -555,22 +468,10 @@
         {
           "attempt": 0,
           "errors": [
-            "final_word_weak"
+            "trailing_silence",
+            "first_word_weak"
           ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "score": 23.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -581,22 +482,25 @@
           }
         }
       ],
-      "text_len": 63,
-      "text_preview": "Without them, the player can slide between notes very smoothly.",
+      "text_len": 64,
+      "text_preview": "Zonder fretten kan de speler heel vloeiend tussen tonen glijden.",
       "passed_first": true
     },
     {
       "id": "ch01-017",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -607,22 +511,24 @@
           }
         }
       ],
-      "text_len": 54,
-      "text_preview": "Most ouds have eleven strings, grouped into six pairs.",
+      "text_len": 58,
+      "text_preview": "De meeste ouds hebben elf snaren, verdeeld over zes paren.",
       "passed_first": true
     },
     {
       "id": "ch01-018",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 3.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -633,8 +539,8 @@
           }
         }
       ],
-      "text_len": 27,
-      "text_preview": "We call each pair a course.",
+      "text_len": 24,
+      "text_preview": "Zo'n paar heet een koor.",
       "passed_first": true
     },
     {
@@ -659,8 +565,8 @@
           }
         }
       ],
-      "text_len": 52,
-      "text_preview": "Five of the courses have two strings tuned the same.",
+      "text_len": 58,
+      "text_preview": "Vijf koren hebben elk twee snaren die gelijk zijn gestemd.",
       "passed_first": true
     },
     {
@@ -687,27 +593,38 @@
           }
         }
       ],
-      "text_len": 37,
-      "text_preview": "The sixth course has only one string.",
+      "text_len": 36,
+      "text_preview": "Het zesde koor heeft maar één snaar.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "Zo kom je uit op elf.",
       "passed_first": true
     }
   ],
-  "param_effectiveness": {
-    "final_word_weak": {
-      "sample_size": 8,
-      "avg_delta": {
-        "cfg_weight": -0.027,
-        "temperature": 0.024,
-        "repetition_penalty": 0.0
-      }
-    },
-    "tts_audio_truncated": {
-      "sample_size": 2,
-      "avg_delta": {
-        "cfg_weight": -0.106,
-        "temperature": 0.097,
-        "repetition_penalty": 0.0
-      }
-    }
-  }
+  "param_effectiveness": {}
 }

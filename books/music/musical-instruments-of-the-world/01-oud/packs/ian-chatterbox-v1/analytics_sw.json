@@ -1,284 +1,234 @@
 {
   "book_id": "ian-chatterbox-v1",
-  "language": "en",
-  "timestamp": "2026-05-12T07:10:05.328052+00:00",
+  "language": "sw",
+  "timestamp": "2026-05-12T17:32:23.310824+00:00",
   "segments_total": 161,
   "segments_first_pass": 158,
   "segments_converged_by_retry": 3,
   "segments_plateau_stopped": 0,
-  "total_retries": 3,
+  "total_retries": 4,
   "error_distribution": {
-    "trailing_silence": 63,
-    "first_word_weak": 51,
-    "tail_energy": 26,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 5,
-    "pre_speech_spike": 3,
-    "tail_zero_duration_run": 2,
-    "stacked_words": 2,
-    "truncated_last_word": 2,
-    "min_trailing_silence": 2,
-    "first_word_mismatch": 2,
-    "short_words": 1,
-    "post_speech_pop": 1
+    "trailing_silence": 56,
+    "first_word_weak": 24,
+    "final_word_weak": 14,
+    "tail_energy": 13,
+    "first_word_mismatch": 11,
+    "pre_speech_spike": 6,
+    "tts_audio_truncated": 4,
+    "min_trailing_silence": 1
   },
   "phase_timings": {
-    "tts": 55.234965801239014,
-    "align": 33.56084752082825,
-    "validate": 26.00394344329834,
-    "trim": 0.023279666900634766,
-    "master": 0.9251353740692139
+    "tts": 66.98103737831116,
+    "align": 30.10458254814148,
+    "validate": 32.17112064361572,
+    "trim": 0.06301546096801758,
+    "master": 2.357114553451538
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 27,
-      "passed": 27,
+      "total": 29,
+      "passed": 29,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 108,
-      "passed": 106,
-      "rate": 0.9814814814814815
+      "total": 107,
+      "passed": 104,
+      "rate": 0.9719626168224299
     },
     "long_80_plus": {
-      "total": 26,
+      "total": 25,
       "passed": 25,
-      "rate": 0.9615384615384616
+      "rate": 1.0
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-007",
-      "attempts": 2,
-      "best_quality_score": 25.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "tail_zero_duration_run",
-            "stacked_words",
-            "truncated_last_word",
-            "min_trailing_silence",
-            "tts_audio_truncated"
-          ],
-          "score": 420.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "pre_speech_spike"
-          ],
-          "score": 25.0,
-          "params": {
-            "cfg_weight": 1.0,
-            "exaggeration": 0.23371446254754275,
-            "temperature": 0.27487333102358447,
-            "top_p": 0.825466727390926,
-            "min_p": 0.16020981575578405,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 86,
-      "text_preview": "By the end, you will know why the oud is sometimes called the king of all the st",
-      "passed_first": false
-    },
-    {
-      "id": "ch01-022",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.8909406007718568,
-            "exaggeration": 0.20836507558562528,
-            "temperature": 0.39851474875405557,
-            "top_p": 0.9985143014461318,
-            "min_p": 0.0,
-            "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 40,
-      "text_preview": "The player holds the oud across the lap.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-050",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.5963686511538459,
-            "exaggeration": 0.43750243666577543,
-            "temperature": 0.3950344395835232,
-            "top_p": 1.0,
-            "min_p": 0.042807641995928264,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 51,
-      "text_preview": "Together they make the deep, round back of the oud.",
-      "passed_first": false
-    },
-    {
-      "id": "ch00-002",
-      "attempts": 1,
-      "best_quality_score": 28.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "short_words"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 59,
-      "text_preview": "This is a book about the Ood, a wooden stringed instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-003",
-      "attempts": 1,
-      "best_quality_score": 3.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence"
-          ],
-          "score": 3.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 59,
-      "text_preview": "People have been playing it for more than a thousand years.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-004",
-      "attempts": 1,
-      "best_quality_score": 15.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "tail_energy"
-          ],
-          "score": 15.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 75,
-      "text_preview": "You can hear the oud in cities by the sea and in villages in the mountains.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-005",
-      "attempts": 1,
+      "id": "ch07-166",
+      "attempts": 3,
       "best_quality_score": 20.0,
-      "best_attempt": 0,
+      "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.7030901997956311,
+            "exaggeration": 0.1719917865748351,
+            "temperature": 0.4632164945614111,
+            "top_p": 0.8951822625011441,
+            "min_p": 0.0,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 2,
           "errors": [
             "first_word_weak"
           ],
           "score": 20.0,
           "params": {
+            "cfg_weight": 0.3149439589213376,
+            "exaggeration": 0.28878097530805785,
+            "temperature": 0.1949509287394806,
+            "top_p": 0.8050890751828932,
+            "min_p": 0.2852793905006187,
+            "repetition_penalty": 1.7
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "Kila kitabu ni kifupi, na kila kimoja ni cha kweli.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-044",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.700023535505718,
+            "exaggeration": 0.09040224511497985,
+            "temperature": 0.29730053983111815,
+            "top_p": 0.7349716334294776,
+            "min_p": 0.0,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Popote ulipoenda, ala hiyo ya mbao iliendelea kuitwa udi bila kubadilika.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-139",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.8871150044338967,
+            "exaggeration": 0.13326877752972494,
+            "temperature": 0.6856419879120339,
+            "top_p": 0.7119561612416141,
+            "min_p": 0.20245888318546998,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "Udi haukubaki katika ulimwengu wa Kiarabu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Hiki ni kitabu kuhusu udi, ala ya muziki ya mbao yenye nyuzi.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
             "temperature": 0.3,
@@ -288,12 +238,90 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "You can hear it in old palaces and on small wooden stages.",
+      "text_len": 53,
+      "text_preview": "Watu wamekuwa wakiupiga kwa zaidi ya miaka elfu moja.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Unaweza kuusikia udi katika miji ya pwani na vijiji vya milimani.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Unaweza kuusikia katika majumba ya kale na kwenye majukwaa madogo ya mbao.",
       "passed_first": true
     },
     {
       "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 100,
+      "text_preview": "Katika kitabu hiki, tutajifunza umbo la udi, jinsi ilivyojengwa, na watu walioip",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
       "attempts": 1,
       "best_quality_score": 0.0,
       "best_attempt": 0,
@@ -329,97 +357,12 @@
           }
         }
       ],
-      "text_len": 119,
-      "text_preview": "In this book, we will learn what the oud looks like, how it is built, and the na",
+      "text_len": 66,
+      "text_preview": "Mwisho wa kitabu, utajua kwa nini udi huitwa mfalme wa nyuzi zote.",
       "passed_first": true
     },
     {
       "id": "ch01-009",
-      "attempts": 1,
-      "best_quality_score": 28.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "pre_speech_spike"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "An oud is a string instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-010",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 65,
-      "text_preview": "It is a kind of lute, with a body shaped like a pear cut in half.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-011",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 58,
-      "text_preview": "The back of the oud is round and deep, like a wooden bowl.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-012",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -442,8 +385,86 @@
           }
         }
       ],
-      "text_len": 18,
-      "text_preview": "The front is flat.",
+      "text_len": 20,
+      "text_preview": "Udi ni ala ya nyuzi.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "Ni aina ya luti, yenye mwili kama pea iliyokatwa nusu.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Sehemu ya nyuma ya udi ni ya mviringo na yenye kina, kama bakuli la mbao.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 29,
+      "text_preview": "Sehemu ya mbele ni tambarare.",
       "passed_first": true
     },
     {
@@ -471,14 +492,14 @@
           }
         }
       ],
-      "text_len": 38,
-      "text_preview": "We call the flat front the soundboard.",
+      "text_len": 42,
+      "text_preview": "Tunaita upande huo wa mbele ubao wa sauti.",
       "passed_first": true
     },
     {
       "id": "ch01-014",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -486,9 +507,9 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "first_word_mismatch"
           ],
-          "score": 3.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -499,14 +520,14 @@
           }
         }
       ],
-      "text_len": 52,
-      "text_preview": "The oud has a short neck and a fretless fingerboard.",
+      "text_len": 38,
+      "text_preview": "Shingo ya udi ni fupi, na haina freti.",
       "passed_first": true
     },
     {
       "id": "ch01-015",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -514,22 +535,9 @@
         {
           "attempt": 0,
           "errors": [
-            "final_word_weak"
+            "first_word_mismatch"
           ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -540,8 +548,8 @@
           }
         }
       ],
-      "text_len": 53,
-      "text_preview": "Frets are the little metal lines you see on a guitar.",
+      "text_len": 57,
+      "text_preview": "Freti ni mistari midogo ya metali unayoiona kwenye gitaa.",
       "passed_first": true
     },
     {
@@ -554,21 +562,6 @@
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
           "errors": [],
           "score": 0.0,
           "params": {
@@ -581,8 +574,8 @@
           }
         }
       ],
-      "text_len": 63,
-      "text_preview": "Without them, the player can slide between notes very smoothly.",
+      "text_len": 66,
+      "text_preview": "Bila freti, mpigaji anaweza kuteleza kati ya noti kwa ulaini sana.",
       "passed_first": true
     },
     {
@@ -607,22 +600,25 @@
           }
         }
       ],
-      "text_len": 54,
-      "text_preview": "Most ouds have eleven strings, grouped into six pairs.",
+      "text_len": 65,
+      "text_preview": "Udi nyingi zina nyuzi kumi na moja, zilizowekwa katika jozi sita.",
       "passed_first": true
     },
     {
       "id": "ch01-018",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 23.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -633,38 +629,12 @@
           }
         }
       ],
-      "text_len": 27,
-      "text_preview": "We call each pair a course.",
+      "text_len": 23,
+      "text_preview": "Tunaita kila jozi kozi.",
       "passed_first": true
     },
     {
       "id": "ch01-019",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 52,
-      "text_preview": "Five of the courses have two strings tuned the same.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-020",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -683,29 +653,21 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 2.0
+            "repetition_penalty": 1.9
           }
         }
       ],
-      "text_len": 37,
-      "text_preview": "The sixth course has only one string.",
+      "text_len": 51,
+      "text_preview": "Kozi tano zina nyuzi mbili zilizopangwa sauti moja.",
       "passed_first": true
     }
   ],
   "param_effectiveness": {
     "final_word_weak": {
-      "sample_size": 8,
+      "sample_size": 5,
       "avg_delta": {
-        "cfg_weight": -0.027,
-        "temperature": 0.024,
-        "repetition_penalty": 0.0
-      }
-    },
-    "tts_audio_truncated": {
-      "sample_size": 2,
-      "avg_delta": {
-        "cfg_weight": -0.106,
-        "temperature": 0.097,
+        "cfg_weight": -0.03,
+        "temperature": -0.001,
         "repetition_penalty": 0.0
       }
     }

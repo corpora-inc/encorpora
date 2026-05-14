@@ -4,6 +4,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { isRTL } from "@/util/convert";
 import { bindEngine, detectOSFromUA, probeTtsHealth } from "@/util/tts-voices";
+import { trackLanguageSwitched } from "@/util/analytics";
 
 // Order is curated as a geographic+cultural journey from England to Japan.
 // Treated as art, not science: small adjacencies tell stories.
@@ -443,7 +444,14 @@ export const useSettingsStore = create<MultiStackState>()(
                 hasSeenPacksDiscover: pre?.hasSeenPacksDiscover ?? !!imported,
 
                 // Updaters
-                setLanguages: (codes) => writeActiveSettings((s) => { s.languages = codes; }),
+                setLanguages: (codes) => {
+                    const oldPrimary = get().languages[0] || "";
+                    writeActiveSettings((s) => { s.languages = codes; });
+                    const newPrimary = codes[0] || "";
+                    if (oldPrimary !== newPrimary) {
+                        trackLanguageSwitched(oldPrimary, newPrimary, "ui");
+                    }
+                },
                 setDomains: (domains) => writeActiveSettings((s) => { s.domains = domains; }),
                 setLevels: (levels) => writeActiveSettings((s) => { s.levels = levels; }),
                 setRate: (rate) => writeActiveSettings((s) => { s.rate = rate; }),

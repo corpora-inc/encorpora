@@ -1,56 +1,55 @@
 {
   "book_id": "ian-chatterbox-v1",
-  "language": "en",
-  "timestamp": "2026-05-12T07:10:05.328052+00:00",
+  "language": "it",
+  "timestamp": "2026-05-12T12:03:40.722826+00:00",
   "segments_total": 161,
-  "segments_first_pass": 158,
-  "segments_converged_by_retry": 3,
+  "segments_first_pass": 160,
+  "segments_converged_by_retry": 1,
   "segments_plateau_stopped": 0,
-  "total_retries": 3,
+  "total_retries": 1,
   "error_distribution": {
-    "trailing_silence": 63,
-    "first_word_weak": 51,
+    "trailing_silence": 70,
+    "first_word_weak": 43,
     "tail_energy": 26,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 5,
-    "pre_speech_spike": 3,
-    "tail_zero_duration_run": 2,
-    "stacked_words": 2,
-    "truncated_last_word": 2,
-    "min_trailing_silence": 2,
-    "first_word_mismatch": 2,
-    "short_words": 1,
-    "post_speech_pop": 1
+    "final_word_weak": 13,
+    "pre_speech_spike": 6,
+    "tts_audio_truncated": 3,
+    "first_word_mismatch": 1,
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1,
+    "truncated_last_word": 1,
+    "min_trailing_silence": 1,
+    "tail_spike": 1
   },
   "phase_timings": {
-    "tts": 55.234965801239014,
-    "align": 33.56084752082825,
-    "validate": 26.00394344329834,
-    "trim": 0.023279666900634766,
-    "master": 0.9251353740692139
+    "tts": 64.11608529090881,
+    "align": 29.642645120620728,
+    "validate": 26.775063037872314,
+    "trim": 0.06260800361633301,
+    "master": 2.294969320297241
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 27,
-      "passed": 27,
+      "total": 23,
+      "passed": 23,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 108,
-      "passed": 106,
-      "rate": 0.9814814814814815
+      "total": 110,
+      "passed": 109,
+      "rate": 0.990909090909091
     },
     "long_80_plus": {
-      "total": 26,
-      "passed": 25,
-      "rate": 0.9615384615384616
+      "total": 28,
+      "passed": 28,
+      "rate": 1.0
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-007",
+      "id": "ch06-118",
       "attempts": 2,
-      "best_quality_score": 25.0,
+      "best_quality_score": 0.0,
       "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
@@ -71,51 +70,7 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "pre_speech_spike"
-          ],
-          "score": 25.0,
-          "params": {
-            "cfg_weight": 1.0,
-            "exaggeration": 0.23371446254754275,
-            "temperature": 0.27487333102358447,
-            "top_p": 0.825466727390926,
-            "min_p": 0.16020981575578405,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 86,
-      "text_preview": "By the end, you will know why the oud is sometimes called the king of all the st",
-      "passed_first": false
-    },
-    {
-      "id": "ch01-022",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
+            "repetition_penalty": 2.0
           }
         },
         {
@@ -123,65 +78,23 @@
           "errors": [],
           "score": 0.0,
           "params": {
-            "cfg_weight": 0.8909406007718568,
-            "exaggeration": 0.20836507558562528,
-            "temperature": 0.39851474875405557,
-            "top_p": 0.9985143014461318,
+            "cfg_weight": 0.8844352982449255,
+            "exaggeration": 0.40700194178259685,
+            "temperature": 0.47030815797922576,
+            "top_p": 0.8459498659986848,
             "min_p": 0.0,
-            "repetition_penalty": 1.8
+            "repetition_penalty": 2.0
           }
         }
       ],
-      "text_len": 40,
-      "text_preview": "The player holds the oud across the lap.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-050",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.5963686511538459,
-            "exaggeration": 0.43750243666577543,
-            "temperature": 0.3950344395835232,
-            "top_p": 1.0,
-            "min_p": 0.042807641995928264,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 51,
-      "text_preview": "Together they make the deep, round back of the oud.",
+      "text_len": 63,
+      "text_preview": "Spiegò perché la musica può cambiare come si sente una persona.",
       "passed_first": false
     },
     {
       "id": "ch00-002",
       "attempts": 1,
-      "best_quality_score": 28.0,
+      "best_quality_score": 35.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -190,9 +103,10 @@
           "attempt": 0,
           "errors": [
             "trailing_silence",
-            "short_words"
+            "tail_energy",
+            "first_word_weak"
           ],
-          "score": 28.0,
+          "score": 35.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -203,14 +117,14 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "This is a book about the Ood, a wooden stringed instrument.",
+      "text_len": 70,
+      "text_preview": "Questo è un libro sull'oud, uno strumento musicale di legno con corde.",
       "passed_first": true
     },
     {
       "id": "ch00-003",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 23.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -218,9 +132,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "first_word_weak"
           ],
-          "score": 3.0,
+          "score": 23.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -231,25 +146,22 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "People have been playing it for more than a thousand years.",
+      "text_len": 39,
+      "text_preview": "La gente lo suona da più di mille anni.",
       "passed_first": true
     },
     {
       "id": "ch00-004",
       "attempts": 1,
-      "best_quality_score": 15.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "tail_energy"
-          ],
-          "score": 15.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -260,24 +172,22 @@
           }
         }
       ],
-      "text_len": 75,
-      "text_preview": "You can hear the oud in cities by the sea and in villages in the mountains.",
+      "text_len": 67,
+      "text_preview": "Puoi sentire l'oud nelle città sul mare e nei villaggi di montagna.",
       "passed_first": true
     },
     {
       "id": "ch00-005",
       "attempts": 1,
-      "best_quality_score": 20.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -288,8 +198,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "You can hear it in old palaces and on small wooden stages.",
+      "text_len": 62,
+      "text_preview": "Puoi sentirlo in antichi palazzi e su piccoli palchi di legno.",
       "passed_first": true
     },
     {
@@ -302,10 +212,36 @@
       "retry_history": [
         {
           "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 101,
+      "text_preview": "In questo libro scopriremo com'è fatto l'oud, come si costruisce e chi ha dato f",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
           "errors": [
-            "final_word_weak"
+            "pre_speech_spike"
           ],
-          "score": 20.0,
+          "score": 25.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -329,25 +265,22 @@
           }
         }
       ],
-      "text_len": 119,
-      "text_preview": "In this book, we will learn what the oud looks like, how it is built, and the na",
+      "text_len": 74,
+      "text_preview": "Alla fine saprai perché l'oud è talvolta chiamato il re di tutte le corde.",
       "passed_first": true
     },
     {
       "id": "ch01-009",
       "attempts": 1,
-      "best_quality_score": 28.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "pre_speech_spike"
-          ],
-          "score": 28.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -358,24 +291,22 @@
           }
         }
       ],
-      "text_len": 30,
-      "text_preview": "An oud is a string instrument.",
+      "text_len": 31,
+      "text_preview": "Un oud è uno strumento a corde.",
       "passed_first": true
     },
     {
       "id": "ch01-010",
       "attempts": 1,
-      "best_quality_score": 20.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -387,7 +318,7 @@
         }
       ],
       "text_len": 65,
-      "text_preview": "It is a kind of lute, with a body shaped like a pear cut in half.",
+      "text_preview": "È un tipo di liuto, con un corpo a forma di pera tagliata a metà.",
       "passed_first": true
     },
     {
@@ -414,8 +345,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "The back of the oud is round and deep, like a wooden bowl.",
+      "text_len": 66,
+      "text_preview": "Il retro dell'oud è rotondo e profondo, come una ciotola di legno.",
       "passed_first": true
     },
     {
@@ -442,12 +373,40 @@
           }
         }
       ],
-      "text_len": 18,
-      "text_preview": "The front is flat.",
+      "text_len": 26,
+      "text_preview": "La parte davanti è piatta.",
       "passed_first": true
     },
     {
       "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "Chiamiamo la parte piatta la tavola armonica.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
       "attempts": 1,
       "best_quality_score": 23.0,
       "best_attempt": 0,
@@ -471,12 +430,81 @@
           }
         }
       ],
-      "text_len": 38,
-      "text_preview": "We call the flat front the soundboard.",
+      "text_len": 42,
+      "text_preview": "Il manico dell'oud è corto e non ha tasti.",
       "passed_first": true
     },
     {
-      "id": "ch01-014",
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "I tasti sono le piccole linee di metallo che vedi su una chitarra.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Senza tasti, il musicista può scivolare tra le note con grande dolcezza.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -495,134 +523,28 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 52,
-      "text_preview": "The oud has a short neck and a fretless fingerboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-015",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
             "repetition_penalty": 2.0
           }
         }
       ],
-      "text_len": 53,
-      "text_preview": "Frets are the little metal lines you see on a guitar.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-016",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 63,
-      "text_preview": "Without them, the player can slide between notes very smoothly.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-017",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 54,
-      "text_preview": "Most ouds have eleven strings, grouped into six pairs.",
+      "text_len": 64,
+      "text_preview": "La maggior parte degli oud ha undici corde, riunite in sei cori.",
       "passed_first": true
     },
     {
       "id": "ch01-018",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 3.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -633,8 +555,8 @@
           }
         }
       ],
-      "text_len": 27,
-      "text_preview": "We call each pair a course.",
+      "text_len": 30,
+      "text_preview": "Chiamiamo ogni coppia un coro.",
       "passed_first": true
     },
     {
@@ -659,14 +581,14 @@
           }
         }
       ],
-      "text_len": 52,
-      "text_preview": "Five of the courses have two strings tuned the same.",
+      "text_len": 55,
+      "text_preview": "Cinque cori hanno due corde accordate allo stesso modo.",
       "passed_first": true
     },
     {
       "id": "ch01-020",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 23.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -674,9 +596,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "first_word_weak"
           ],
-          "score": 3.0,
+          "score": 23.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -687,27 +610,73 @@
           }
         }
       ],
-      "text_len": 37,
-      "text_preview": "The sixth course has only one string.",
+      "text_len": 32,
+      "text_preview": "Il sesto coro ha una sola corda.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 60.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8267123600408293,
+            "exaggeration": 0.416090241533594,
+            "temperature": 0.629737127299276,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 60.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "Ecco come si arriva a undici in tutto.",
       "passed_first": true
     }
   ],
-  "param_effectiveness": {
-    "final_word_weak": {
-      "sample_size": 8,
-      "avg_delta": {
-        "cfg_weight": -0.027,
-        "temperature": 0.024,
-        "repetition_penalty": 0.0
-      }
-    },
-    "tts_audio_truncated": {
-      "sample_size": 2,
-      "avg_delta": {
-        "cfg_weight": -0.106,
-        "temperature": 0.097,
-        "repetition_penalty": 0.0
-      }
-    }
-  }
+  "param_effectiveness": {}
 }

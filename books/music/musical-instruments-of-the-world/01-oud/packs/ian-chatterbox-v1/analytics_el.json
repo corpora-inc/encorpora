@@ -1,62 +1,77 @@
 {
   "book_id": "ian-chatterbox-v1",
-  "language": "en",
-  "timestamp": "2026-05-12T07:10:05.328052+00:00",
+  "language": "el",
+  "timestamp": "2026-05-12T09:04:04.085415+00:00",
   "segments_total": 161,
-  "segments_first_pass": 158,
-  "segments_converged_by_retry": 3,
+  "segments_first_pass": 159,
+  "segments_converged_by_retry": 2,
   "segments_plateau_stopped": 0,
   "total_retries": 3,
   "error_distribution": {
-    "trailing_silence": 63,
-    "first_word_weak": 51,
-    "tail_energy": 26,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 5,
-    "pre_speech_spike": 3,
-    "tail_zero_duration_run": 2,
-    "stacked_words": 2,
-    "truncated_last_word": 2,
+    "trailing_silence": 56,
+    "first_word_weak": 27,
+    "tail_energy": 23,
+    "final_word_weak": 11,
+    "pre_speech_spike": 4,
+    "tts_audio_truncated": 3,
     "min_trailing_silence": 2,
-    "first_word_mismatch": 2,
+    "post_speech_pop": 1,
     "short_words": 1,
-    "post_speech_pop": 1
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1,
+    "truncated_last_word": 1
   },
   "phase_timings": {
-    "tts": 55.234965801239014,
-    "align": 33.56084752082825,
-    "validate": 26.00394344329834,
-    "trim": 0.023279666900634766,
-    "master": 0.9251353740692139
+    "tts": 96.43788719177246,
+    "align": 46.45246958732605,
+    "validate": 32.08487319946289,
+    "trim": 0.05769491195678711,
+    "master": 2.160254716873169
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 27,
-      "passed": 27,
+      "total": 20,
+      "passed": 20,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 108,
-      "passed": 106,
-      "rate": 0.9814814814814815
+      "total": 114,
+      "passed": 112,
+      "rate": 0.9824561403508771
     },
     "long_80_plus": {
-      "total": 26,
-      "passed": 25,
-      "rate": 0.9615384615384616
+      "total": 27,
+      "passed": 27,
+      "rate": 1.0
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-007",
-      "attempts": 2,
-      "best_quality_score": 25.0,
-      "best_attempt": 1,
+      "id": "ch07-153",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
           "errors": [
             "tail_zero_duration_run",
             "stacked_words",
@@ -66,78 +81,34 @@
           ],
           "score": 420.0,
           "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
+            "cfg_weight": 0.7705414380122083,
+            "exaggeration": 0.28908094199354073,
+            "temperature": 0.33626325998159484,
+            "top_p": 0.6782773930435799,
+            "min_p": 0.2398389232125628,
             "repetition_penalty": 1.9
           }
         },
         {
-          "attempt": 1,
-          "errors": [
-            "pre_speech_spike"
-          ],
-          "score": 25.0,
-          "params": {
-            "cfg_weight": 1.0,
-            "exaggeration": 0.23371446254754275,
-            "temperature": 0.27487333102358447,
-            "top_p": 0.825466727390926,
-            "min_p": 0.16020981575578405,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 86,
-      "text_preview": "By the end, you will know why the oud is sometimes called the king of all the st",
-      "passed_first": false
-    },
-    {
-      "id": "ch01-022",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        },
-        {
-          "attempt": 1,
+          "attempt": 2,
           "errors": [],
           "score": 0.0,
           "params": {
-            "cfg_weight": 0.8909406007718568,
-            "exaggeration": 0.20836507558562528,
-            "temperature": 0.39851474875405557,
-            "top_p": 0.9985143014461318,
-            "min_p": 0.0,
-            "repetition_penalty": 1.8
+            "cfg_weight": 0.5097262862767034,
+            "exaggeration": 0.42270447107755993,
+            "temperature": 0.30409716360549205,
+            "top_p": 0.8226690170494249,
+            "min_p": 0.21418383318974418,
+            "repetition_penalty": 1.9
           }
         }
       ],
-      "text_len": 40,
-      "text_preview": "The player holds the oud across the lap.",
+      "text_len": 41,
+      "text_preview": "Είναι ξαδέρφια και έχουν τον ίδιο παππού.",
       "passed_first": false
     },
     {
-      "id": "ch03-050",
+      "id": "ch01-010",
       "attempts": 2,
       "best_quality_score": 0.0,
       "best_attempt": 1,
@@ -147,10 +118,27 @@
         {
           "attempt": 0,
           "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
             "final_word_weak",
             "tts_audio_truncated"
           ],
-          "score": 120.0,
+          "score": 130.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -165,23 +153,155 @@
           "errors": [],
           "score": 0.0,
           "params": {
-            "cfg_weight": 0.5963686511538459,
-            "exaggeration": 0.43750243666577543,
-            "temperature": 0.3950344395835232,
-            "top_p": 1.0,
-            "min_p": 0.042807641995928264,
+            "cfg_weight": 0.9531050853594174,
+            "exaggeration": 0.427426660687858,
+            "temperature": 0.6294792062159449,
+            "top_p": 0.8673366887186736,
+            "min_p": 0.03254797017213559,
             "repetition_penalty": 1.9
           }
         }
       ],
-      "text_len": 51,
-      "text_preview": "Together they make the deep, round back of the oud.",
+      "text_len": 61,
+      "text_preview": "Είναι ένα είδος λαούτου, με σώμα σαν αχλάδι κομμένο στη μέση.",
       "passed_first": false
     },
     {
       "id": "ch00-002",
       "attempts": 1,
-      "best_quality_score": 28.0,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "Αυτό είναι ένα βιβλίο για το ούτι, ένα ξύλινο μουσικό όργανο με χορδές.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 53,
+      "text_preview": "Οι άνθρωποι το παίζουν εδώ και πάνω από χίλια χρόνια.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Μπορείς να ακούσεις το ούτι σε πόλεις πλάι στη θάλασσα και σε χωριά των βουνών.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Μπορείς να το ακούσεις σε παλιά παλάτια και σε μικρές ξύλινες σκηνές.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 111,
+      "text_preview": "Σε αυτό το βιβλίο, θα μάθουμε πώς είναι το ούτι, πώς φτιάχνεται και ποιοι άνθρωπ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -190,9 +310,23 @@
           "attempt": 0,
           "errors": [
             "trailing_silence",
-            "short_words"
+            "tail_energy",
+            "final_word_weak"
           ],
-          "score": 28.0,
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -203,12 +337,12 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "This is a book about the Ood, a wooden stringed instrument.",
+      "text_len": 86,
+      "text_preview": "Στο τέλος, θα ξέρεις γιατί το ούτι λέγεται μερικές φορές ο βασιλιάς όλων των έγχ",
       "passed_first": true
     },
     {
-      "id": "ch00-003",
+      "id": "ch01-009",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -231,163 +365,8 @@
           }
         }
       ],
-      "text_len": 59,
-      "text_preview": "People have been playing it for more than a thousand years.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-004",
-      "attempts": 1,
-      "best_quality_score": 15.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "tail_energy"
-          ],
-          "score": 15.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 75,
-      "text_preview": "You can hear the oud in cities by the sea and in villages in the mountains.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-005",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 58,
-      "text_preview": "You can hear it in old palaces and on small wooden stages.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-006",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 119,
-      "text_preview": "In this book, we will learn what the oud looks like, how it is built, and the na",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-009",
-      "attempts": 1,
-      "best_quality_score": 28.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "pre_speech_spike"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "An oud is a string instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-010",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 65,
-      "text_preview": "It is a kind of lute, with a body shaped like a pear cut in half.",
+      "text_len": 33,
+      "text_preview": "Το ούτι είναι ένα έγχορδο όργανο.",
       "passed_first": true
     },
     {
@@ -414,8 +393,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "The back of the oud is round and deep, like a wooden bowl.",
+      "text_len": 62,
+      "text_preview": "Η πλάτη του ουτιού είναι στρογγυλή και βαθιά, σαν ξύλινο μπολ.",
       "passed_first": true
     },
     {
@@ -442,90 +421,18 @@
           }
         }
       ],
-      "text_len": 18,
-      "text_preview": "The front is flat.",
+      "text_len": 33,
+      "text_preview": "Το μπροστινό μέρος είναι επίπεδο.",
       "passed_first": true
     },
     {
       "id": "ch01-013",
-      "attempts": 1,
-      "best_quality_score": 23.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "first_word_weak"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 38,
-      "text_preview": "We call the flat front the soundboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-014",
-      "attempts": 1,
-      "best_quality_score": 3.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence"
-          ],
-          "score": 3.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 52,
-      "text_preview": "The oud has a short neck and a fretless fingerboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-015",
       "attempts": 1,
       "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
         {
           "attempt": 0,
           "errors": [],
@@ -536,12 +443,66 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 2.0
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "Το επίπεδο μπροστινό μέρος το λέμε καπάκι.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
           }
         }
       ],
       "text_len": 53,
-      "text_preview": "Frets are the little metal lines you see on a guitar.",
+      "text_preview": "Το μπράτσο του ουτιού είναι κοντό και δεν έχει τάστα.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Τα τάστα είναι οι μικρές μεταλλικές γραμμές που βλέπεις σε μια κιθάρα.",
       "passed_first": true
     },
     {
@@ -554,8 +515,34 @@
       "retry_history": [
         {
           "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "Χωρίς αυτά, ο μουσικός μπορεί να γλιστρά ανάμεσα στις νότες πολύ ομαλά.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
           "errors": [
-            "final_word_weak"
+            "first_word_weak"
           ],
           "score": 20.0,
           "params": {
@@ -566,105 +553,14 @@
             "min_p": 0.1,
             "repetition_penalty": 2.0
           }
-        },
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
         }
       ],
-      "text_len": 63,
-      "text_preview": "Without them, the player can slide between notes very smoothly.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-017",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 54,
-      "text_preview": "Most ouds have eleven strings, grouped into six pairs.",
+      "text_len": 69,
+      "text_preview": "Τα περισσότερα ούτια έχουν έντεκα χορδές, χωρισμένες σε έξι ζευγάρια.",
       "passed_first": true
     },
     {
       "id": "ch01-018",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 27,
-      "text_preview": "We call each pair a course.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-019",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 52,
-      "text_preview": "Five of the courses have two strings tuned the same.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-020",
       "attempts": 1,
       "best_quality_score": 3.0,
       "best_attempt": 0,
@@ -687,25 +583,115 @@
           }
         }
       ],
-      "text_len": 37,
-      "text_preview": "The sixth course has only one string.",
+      "text_len": 35,
+      "text_preview": "Κάθε τέτοιο ζευγάρι λέγεται κούρσο.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "Στα πέντε από αυτά τα ζευγάρια, οι δύο χορδές είναι κουρδισμένες το ίδιο.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Το έκτο κούρσο έχει μόνο μία χορδή.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "Έτσι φτάνεις στις έντεκα.",
       "passed_first": true
     }
   ],
   "param_effectiveness": {
     "final_word_weak": {
-      "sample_size": 8,
+      "sample_size": 3,
       "avg_delta": {
-        "cfg_weight": -0.027,
-        "temperature": 0.024,
+        "cfg_weight": 0.034,
+        "temperature": 0.11,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.079,
+        "temperature": 0.149,
         "repetition_penalty": 0.0
       }
     },
     "tts_audio_truncated": {
       "sample_size": 2,
       "avg_delta": {
-        "cfg_weight": -0.106,
-        "temperature": 0.097,
+        "cfg_weight": -0.079,
+        "temperature": 0.149,
         "repetition_penalty": 0.0
       }
     }

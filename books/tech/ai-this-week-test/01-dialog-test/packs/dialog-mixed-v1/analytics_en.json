@@ -1,27 +1,23 @@
 {
-  "book_id": "",
+  "book_id": "dialog-mixed-v1",
   "language": "en",
-  "timestamp": "2026-05-10T22:58:02.856295+00:00",
+  "timestamp": "2026-05-14T01:04:49.651620+00:00",
   "segments_total": 12,
   "segments_first_pass": 12,
   "segments_converged_by_retry": 0,
   "segments_plateau_stopped": 0,
   "total_retries": 0,
   "error_distribution": {
-    "tail_energy": 5,
-    "first_word_weak": 5,
-    "final_word_weak": 3,
     "trailing_silence": 3,
-    "tts_audio_truncated": 1,
-    "pre_speech_spike": 1,
-    "first_word_mismatch": 1
+    "first_word_weak": 2,
+    "tail_energy": 2
   },
   "phase_timings": {
-    "tts": 152.50742316246033,
-    "align": 64.64337730407715,
-    "validate": 47.505637884140015,
-    "trim": 0.016126394271850586,
-    "master": 3.955134630203247
+    "tts": 189.97282671928406,
+    "align": 57.96055793762207,
+    "validate": 36.60289454460144,
+    "trim": 0.02575087547302246,
+    "master": 3.400995969772339
   },
   "length_analysis": {
     "short_0_30": {
@@ -44,6 +40,114 @@
     {
       "id": "ch00-001",
       "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "Welcome to AI This Week. I am your host, Vindemiatrix.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "With me, as always, is Charon.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Good to be here, Vindemiatrix.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Charon, what is the biggest thing that happened in AI this week?",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
       "best_quality_score": 12.0,
       "best_attempt": 0,
       "plateau_count": 0,
@@ -65,138 +169,8 @@
           }
         }
       ],
-      "text_len": 57,
-      "text_preview": "Welcome to Aye I This Week. I am your host, Vindemiatrix.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-002",
-      "attempts": 1,
-      "best_quality_score": 20.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "With me, as always, is Charon.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-003",
-      "attempts": 1,
-      "best_quality_score": 60.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "tail_energy",
-            "first_word_weak",
-            "pre_speech_spike"
-          ],
-          "score": 60.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "Good to be here, Vindemiatrix.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-004",
-      "attempts": 1,
-      "best_quality_score": 40.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "first_word_weak"
-          ],
-          "score": 40.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 67,
-      "text_preview": "Charon, what is the biggest thing that happened in Aye I this week?",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-005",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 99,
-      "text_preview": "The biggest story is a new open weights model from a small lab. It is good at ma",
+      "text_len": 104,
+      "text_preview": "The biggest story is a new open weights model from a small lab that is good at m",
       "passed_first": true
     },
     {
@@ -230,17 +204,15 @@
     {
       "id": "ch00-007",
       "attempts": 1,
-      "best_quality_score": 15.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_mismatch"
-          ],
-          "score": 15.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -258,7 +230,7 @@
     {
       "id": "ch00-008",
       "attempts": 1,
-      "best_quality_score": 35.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -267,10 +239,9 @@
           "attempt": 0,
           "errors": [
             "trailing_silence",
-            "tail_energy",
-            "first_word_weak"
+            "tail_energy"
           ],
-          "score": 35.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -288,18 +259,15 @@
     {
       "id": "ch00-009",
       "attempts": 1,
-      "best_quality_score": 32.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "tail_energy",
-            "first_word_weak"
-          ],
-          "score": 32.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -369,7 +337,7 @@
     {
       "id": "ch00-012",
       "attempts": 1,
-      "best_quality_score": 15.0,
+      "best_quality_score": 3.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -377,10 +345,9 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence",
-            "tail_energy"
+            "trailing_silence"
           ],
-          "score": 15.0,
+          "score": 3.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,

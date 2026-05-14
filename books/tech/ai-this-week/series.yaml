@@ -1,0 +1,44 @@
+series:
+  title: "AI This Week"
+  tagline: "Real tech news. Two hosts. Ten minutes."
+  primary_language: en
+
+  philosophy: |
+    A weekly conversation about what actually happened in artificial
+    intelligence over the past seven days. Two hosts. One short show.
+    Each issue follows the same shape — model releases, leaderboard
+    movement, a vocabulary deep dive, and one bigger-picture story
+    from the wider world and how it touches AI in both directions.
+
+    No hype. No marketing reread. Hosts say when a claim is
+    unverified, when a benchmark is contaminated, when something
+    is rumor instead of fact. Listeners who follow along weekly
+    leave with a real working vocabulary for the field.
+
+  audience: |
+    Curious listeners who want to understand the AI industry without
+    reading sixty newsletters a week. Engineers, founders, policy
+    people, students. Anyone who would rather hear a calm conversation
+    than a feed of dunks and screenshots.
+
+  format:
+    sections:
+      - "Model releases — what shipped and what is coming"
+      - "Leaderboard movement — what the benchmarks did this week"
+      - "Vocabulary deep dive — one concept, plain language to a little deeper"
+      - "The Bigger Picture — one outside-AI story, and the AI angle in both directions"
+    cast:
+      - id: vindy
+        role: host
+        archetype: "Curious, calm, asks the questions a listener would ask."
+      - id: ron
+        role: analyst
+        archetype: "Patient explainer. Brings the numbers and the context."
+    cadence: weekly
+    target_runtime_min: 12
+    primary_language: en
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en

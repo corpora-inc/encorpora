@@ -1,56 +1,51 @@
 {
   "book_id": "ian-chatterbox-v1",
-  "language": "en",
-  "timestamp": "2026-05-12T07:10:05.328052+00:00",
+  "language": "pl",
+  "timestamp": "2026-05-12T15:18:09.600379+00:00",
   "segments_total": 161,
-  "segments_first_pass": 158,
-  "segments_converged_by_retry": 3,
+  "segments_first_pass": 160,
+  "segments_converged_by_retry": 1,
   "segments_plateau_stopped": 0,
-  "total_retries": 3,
+  "total_retries": 1,
   "error_distribution": {
-    "trailing_silence": 63,
-    "first_word_weak": 51,
-    "tail_energy": 26,
-    "final_word_weak": 15,
-    "tts_audio_truncated": 5,
+    "trailing_silence": 72,
+    "tail_energy": 23,
+    "first_word_weak": 20,
+    "final_word_weak": 9,
+    "first_word_mismatch": 3,
     "pre_speech_spike": 3,
-    "tail_zero_duration_run": 2,
-    "stacked_words": 2,
-    "truncated_last_word": 2,
-    "min_trailing_silence": 2,
-    "first_word_mismatch": 2,
-    "short_words": 1,
-    "post_speech_pop": 1
+    "min_trailing_silence": 1,
+    "tts_audio_truncated": 1
   },
   "phase_timings": {
-    "tts": 55.234965801239014,
-    "align": 33.56084752082825,
-    "validate": 26.00394344329834,
-    "trim": 0.023279666900634766,
-    "master": 0.9251353740692139
+    "tts": 62.915050983428955,
+    "align": 30.353931427001953,
+    "validate": 32.29692602157593,
+    "trim": 0.05888009071350098,
+    "master": 2.1235313415527344
   },
   "length_analysis": {
     "short_0_30": {
-      "total": 27,
-      "passed": 27,
+      "total": 28,
+      "passed": 28,
       "rate": 1.0
     },
     "medium_30_80": {
-      "total": 108,
-      "passed": 106,
-      "rate": 0.9814814814814815
+      "total": 113,
+      "passed": 113,
+      "rate": 1.0
     },
     "long_80_plus": {
-      "total": 26,
-      "passed": 25,
-      "rate": 0.9615384615384616
+      "total": 20,
+      "passed": 19,
+      "rate": 0.95
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-007",
+      "id": "ch05-101",
       "attempts": 2,
-      "best_quality_score": 25.0,
+      "best_quality_score": 0.0,
       "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
@@ -58,99 +53,11 @@
         {
           "attempt": 0,
           "errors": [
-            "tail_zero_duration_run",
-            "stacked_words",
-            "truncated_last_word",
             "min_trailing_silence",
-            "tts_audio_truncated"
-          ],
-          "score": 420.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [
-            "pre_speech_spike"
-          ],
-          "score": 25.0,
-          "params": {
-            "cfg_weight": 1.0,
-            "exaggeration": 0.23371446254754275,
-            "temperature": 0.27487333102358447,
-            "top_p": 0.825466727390926,
-            "min_p": 0.16020981575578405,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 86,
-      "text_preview": "By the end, you will know why the oud is sometimes called the king of all the st",
-      "passed_first": false
-    },
-    {
-      "id": "ch01-022",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
             "final_word_weak",
             "tts_audio_truncated"
           ],
-          "score": 120.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.8
-          }
-        },
-        {
-          "attempt": 1,
-          "errors": [],
-          "score": 0.0,
-          "params": {
-            "cfg_weight": 0.8909406007718568,
-            "exaggeration": 0.20836507558562528,
-            "temperature": 0.39851474875405557,
-            "top_p": 0.9985143014461318,
-            "min_p": 0.0,
-            "repetition_penalty": 1.8
-          }
-        }
-      ],
-      "text_len": 40,
-      "text_preview": "The player holds the oud across the lap.",
-      "passed_first": false
-    },
-    {
-      "id": "ch03-050",
-      "attempts": 2,
-      "best_quality_score": 0.0,
-      "best_attempt": 1,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak",
-            "tts_audio_truncated"
-          ],
-          "score": 120.0,
+          "score": 130.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -165,78 +72,21 @@
           "errors": [],
           "score": 0.0,
           "params": {
-            "cfg_weight": 0.5963686511538459,
-            "exaggeration": 0.43750243666577543,
-            "temperature": 0.3950344395835232,
+            "cfg_weight": 0.9783309141403623,
+            "exaggeration": 0.4314115440992806,
+            "temperature": 0.38133108683198313,
             "top_p": 1.0,
-            "min_p": 0.042807641995928264,
+            "min_p": 0.3206638538592791,
             "repetition_penalty": 1.9
           }
         }
       ],
-      "text_len": 51,
-      "text_preview": "Together they make the deep, round back of the oud.",
+      "text_len": 95,
+      "text_preview": "Pomyśl o dżinsie jak o małym klocku Lego zrobionym z muzyki, a z takich klocków ",
       "passed_first": false
     },
     {
       "id": "ch00-002",
-      "attempts": 1,
-      "best_quality_score": 28.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "short_words"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 59,
-      "text_preview": "This is a book about the Ood, a wooden stringed instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-003",
-      "attempts": 1,
-      "best_quality_score": 3.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence"
-          ],
-          "score": 3.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 59,
-      "text_preview": "People have been playing it for more than a thousand years.",
-      "passed_first": true
-    },
-    {
-      "id": "ch00-004",
       "attempts": 1,
       "best_quality_score": 15.0,
       "best_attempt": 0,
@@ -256,12 +106,64 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "To książka o udzie, drewnianym instrumencie strunowym.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "Ludzie grają na nim od ponad tysiąca lat.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
             "repetition_penalty": 1.8
           }
         }
       ],
-      "text_len": 75,
-      "text_preview": "You can hear the oud in cities by the sea and in villages in the mountains.",
+      "text_len": 53,
+      "text_preview": "Ud słychać w miastach nad morzem i w górskich wsiach.",
       "passed_first": true
     },
     {
@@ -288,8 +190,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "You can hear it in old palaces and on small wooden stages.",
+      "text_len": 62,
+      "text_preview": "Słychać go w starych pałacach i na małych drewnianych scenach.",
       "passed_first": true
     },
     {
@@ -300,21 +202,6 @@
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        },
         {
           "attempt": 0,
           "errors": [],
@@ -329,41 +216,12 @@
           }
         }
       ],
-      "text_len": 119,
-      "text_preview": "In this book, we will learn what the oud looks like, how it is built, and the na",
+      "text_len": 85,
+      "text_preview": "W tej książce poznamy wygląd udu, jego budowę i ludzi, którzy tworzyli jego hist",
       "passed_first": true
     },
     {
-      "id": "ch01-009",
-      "attempts": 1,
-      "best_quality_score": 28.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "pre_speech_spike"
-          ],
-          "score": 28.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        }
-      ],
-      "text_len": 30,
-      "text_preview": "An oud is a string instrument.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-010",
+      "id": "ch00-007",
       "attempts": 1,
       "best_quality_score": 20.0,
       "best_attempt": 0,
@@ -386,8 +244,64 @@
           }
         }
       ],
-      "text_len": 65,
-      "text_preview": "It is a kind of lute, with a body shaped like a pear cut in half.",
+      "text_len": 68,
+      "text_preview": "Na końcu zrozumiesz, czemu ud bywa nazywany królem wszystkich strun.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "Ud jest instrumentem strunowym.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "To rodzaj lutni z korpusem jak przekrojona gruszka.",
       "passed_first": true
     },
     {
@@ -414,8 +328,8 @@
           }
         }
       ],
-      "text_len": 58,
-      "text_preview": "The back of the oud is round and deep, like a wooden bowl.",
+      "text_len": 51,
+      "text_preview": "Tył udu jest okrągły i głęboki, jak drewniana misa.",
       "passed_first": true
     },
     {
@@ -443,13 +357,13 @@
         }
       ],
       "text_len": 18,
-      "text_preview": "The front is flat.",
+      "text_preview": "Przód jest płaski.",
       "passed_first": true
     },
     {
       "id": "ch01-013",
       "attempts": 1,
-      "best_quality_score": 23.0,
+      "best_quality_score": 20.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -457,64 +371,7 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence",
             "first_word_weak"
-          ],
-          "score": 23.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 38,
-      "text_preview": "We call the flat front the soundboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-014",
-      "attempts": 1,
-      "best_quality_score": 3.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "trailing_silence"
-          ],
-          "score": 3.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 1.9
-          }
-        }
-      ],
-      "text_len": 52,
-      "text_preview": "The oud has a short neck and a fretless fingerboard.",
-      "passed_first": true
-    },
-    {
-      "id": "ch01-015",
-      "attempts": 1,
-      "best_quality_score": 0.0,
-      "best_attempt": 0,
-      "plateau_count": 0,
-      "final_errors": [],
-      "retry_history": [
-        {
-          "attempt": 0,
-          "errors": [
-            "final_word_weak"
           ],
           "score": 20.0,
           "params": {
@@ -523,9 +380,22 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
-            "repetition_penalty": 2.0
+            "repetition_penalty": 1.9
           }
-        },
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "Ten płaski przód nazywamy płytą rezonansową.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
         {
           "attempt": 0,
           "errors": [],
@@ -536,12 +406,41 @@
             "temperature": 0.3,
             "top_p": 0.85,
             "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Szyjka udu jest krótka i nie ma progów.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
             "repetition_penalty": 2.0
           }
         }
       ],
-      "text_len": 53,
-      "text_preview": "Frets are the little metal lines you see on a guitar.",
+      "text_len": 55,
+      "text_preview": "Progi to małe metalowe linie, które widzisz na gitarze.",
       "passed_first": true
     },
     {
@@ -554,21 +453,6 @@
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "final_word_weak"
-          ],
-          "score": 20.0,
-          "params": {
-            "cfg_weight": 0.85,
-            "exaggeration": 0.3,
-            "temperature": 0.3,
-            "top_p": 0.85,
-            "min_p": 0.1,
-            "repetition_penalty": 2.0
-          }
-        },
-        {
-          "attempt": 0,
           "errors": [],
           "score": 0.0,
           "params": {
@@ -581,8 +465,8 @@
           }
         }
       ],
-      "text_len": 63,
-      "text_preview": "Without them, the player can slide between notes very smoothly.",
+      "text_len": 64,
+      "text_preview": "Bez nich muzyk może bardzo płynnie ślizgać się między dźwiękami.",
       "passed_first": true
     },
     {
@@ -607,22 +491,39 @@
           }
         }
       ],
-      "text_len": 54,
-      "text_preview": "Most ouds have eleven strings, grouped into six pairs.",
+      "text_len": 58,
+      "text_preview": "Większość udów ma jedenaście strun, zebranych w sześć par.",
       "passed_first": true
     },
     {
       "id": "ch01-018",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 3.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -633,8 +534,8 @@
           }
         }
       ],
-      "text_len": 27,
-      "text_preview": "We call each pair a course.",
+      "text_len": 38,
+      "text_preview": "Każdą taką parę nazywamy chórem strun.",
       "passed_first": true
     },
     {
@@ -659,8 +560,8 @@
           }
         }
       ],
-      "text_len": 52,
-      "text_preview": "Five of the courses have two strings tuned the same.",
+      "text_len": 48,
+      "text_preview": "Pięć chórów ma po dwie struny strojone tak samo.",
       "passed_first": true
     },
     {
@@ -687,25 +588,45 @@
           }
         }
       ],
-      "text_len": 37,
-      "text_preview": "The sixth course has only one string.",
+      "text_len": 34,
+      "text_preview": "Szósty chór ma tylko jedną strunę.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "Właśnie tak wychodzi jedenaście.",
       "passed_first": true
     }
   ],
   "param_effectiveness": {
     "final_word_weak": {
-      "sample_size": 8,
+      "sample_size": 4,
       "avg_delta": {
-        "cfg_weight": -0.027,
-        "temperature": 0.024,
-        "repetition_penalty": 0.0
-      }
-    },
-    "tts_audio_truncated": {
-      "sample_size": 2,
-      "avg_delta": {
-        "cfg_weight": -0.106,
-        "temperature": 0.097,
+        "cfg_weight": 0.032,
+        "temperature": 0.02,
         "repetition_penalty": 0.0
       }
     }

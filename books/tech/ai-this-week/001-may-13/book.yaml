@@ -1,0 +1,55 @@
+book:
+  issue: 1
+  title: "AI This Week — May 13, 2026"
+  subtitle: "Rate Cuts and Routers"
+  date: 2026-05-13
+  target_segments: 60
+
+  audience: "Curious listeners who want a calm conversation about real AI news."
+  primary_language: en
+  pack_id: ai_this_week_2026_05_13
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  topics:
+    model_releases:
+      - "OpenAI GPT-5.5 Instant rolled out as the new default in ChatGPT"
+      - "Moonshot Kimi K2.6 takes #2 on OpenRouter, raises $2B at $20B valuation"
+      - "Mistral Medium 3.5 collapses chat/reason/code into one model"
+      - "Upcoming: Google I/O May 19-20, GPT-5.6 in testing, Anthropic Mythos in private preview"
+
+    leaderboards:
+      - "The story of the week is the scores you should stop trusting"
+      - "Berkeley RDI: automated scanner near-perfect on 8 agent benchmarks without solving a single task"
+      - "OpenAI retires SWE-bench Verified — 59% of hard tasks had flawed tests"
+      - "Claude Opus 4.6-thinking first model past Elo 1500 on coding"
+      - "Claude Mythos Preview leads agent boards — but the public cannot use it"
+      - "Open vs closed: narrowest gap ever — DeepSeek V4 and Kimi K2.6 within striking distance"
+
+    vocab_deep_dive:
+      term: "Mixture of Experts"
+      angle: |
+        Why a one-trillion-parameter Kimi model is cheap to run. Router +
+        experts. Sparse activation. The reason inference prices keep falling
+        while quality keeps rising.
+
+    bigger_picture:
+      headline: "Kevin Warsh confirmed as Federal Reserve chair, 54-45"
+      ai_angle_inbound: |
+        Rate path drives the cost of capital for the AI buildout.
+        Hyperscalers are spending roughly $700B/yr on capex. Faster
+        cuts make multi-year GPU and data-center investments pencil
+        out at higher valuations.
+      ai_angle_outbound: |
+        AI capex is now most of US GDP growth. The new Fed chair
+        has to decide whether AI is a deflationary productivity
+        tailwind or a near-term inflationary demand shock on power,
+        copper, water, and skilled labor.
+
+  pacing:
+    - 4 thematic sections, dialog format
+    - ~60 segments, ~12 minutes
+    - Numbers spelled as words in tts.text where ambiguous
+    - Bare dialog text, no Style: prefix (director_prompt layer reserved)

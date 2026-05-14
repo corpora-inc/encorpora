@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "book_id": "book_dialog_test",
+  "book_id": "dialog-test",
   "format": "dialog",
   "total_segments": 12,
   "segments": [
@@ -10,10 +10,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Welcome to Aye I This Week. I am your host, Vindemiatrix.",
-      "text_markdown": "Welcome to Aye I This Week. I am your host, Vindemiatrix.",
+      "text": "Welcome to AI This Week. I am your host, Vindemiatrix.",
+      "text_markdown": "Welcome to AI This Week. I am your host, Vindemiatrix.",
       "tts": {
-        "text": "[warmly, like welcoming a guest into your home] Welcome to Aye I This Week. I am your host, Vindemiatrix.",
+        "text": "Welcome to AI This Week. I am your host, Vindemiatrix.",
         "pause_after_ms": 2000,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -55,10 +55,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "host",
-      "text": "Charon, what is the biggest thing that happened in Aye I this week?",
-      "text_markdown": "Charon, what is the biggest thing that happened in Aye I this week?",
+      "text": "Charon, what is the biggest thing that happened in AI this week?",
+      "text_markdown": "Charon, what is the biggest thing that happened in AI this week?",
       "tts": {
-        "text": "[curious, leaning in] Charon, what is the biggest thing that happened in Aye I this week?",
+        "text": "Charon, what is the biggest thing that happened in AI this week?",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -70,10 +70,10 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "The biggest story is a new open weights model from a small lab. It is good at math, and it is fast.",
-      "text_markdown": "The biggest story is a new open weights model from a small lab. It is good at math, and it is fast.",
+      "text": "The biggest story is a new open weights model from a small lab that is good at math and built for speed.",
+      "text_markdown": "The biggest story is a new open weights model from a small lab that is good at math and built for speed.",
       "tts": {
-        "text": "The biggest story is a new open weights model from a small lab. [excited] It is good at math, and it is fast.",
+        "text": "The biggest story is a new open weights model from a small lab that is good at math and built for speed.",
         "pause_after_ms": 600,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -88,7 +88,7 @@
       "text": "A new word our listeners might hear is embedding. What is an embedding, in plain language?",
       "text_markdown": "A new word our listeners might hear is embedding. What is an embedding, in plain language?",
       "tts": {
-        "text": "[curious] A new word our listeners might hear is embedding. What is an embedding, in plain language?",
+        "text": "A new word our listeners might hear is embedding. What is an embedding, in plain language?",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -103,7 +103,7 @@
       "text": "An embedding is a list of numbers that captures the meaning of a word or a sentence. Two ideas that mean similar things get embeddings that point in similar directions.",
       "text_markdown": "An embedding is a list of numbers that captures the meaning of a word or a sentence. Two ideas that mean similar things get embeddings that point in similar directions.",
       "tts": {
-        "text": "[serious, explaining carefully] An embedding is a list of numbers that captures the meaning of a word or a sentence. Two ideas that mean similar things get embeddings that point in similar directions.",
+        "text": "An embedding is a list of numbers that captures the meaning of a word or a sentence. Two ideas that mean similar things get embeddings that point in similar directions.",
         "pause_after_ms": 600,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -118,7 +118,7 @@
       "text": "So the computer can compare ideas, not just letters.",
       "text_markdown": "So the computer can compare ideas, not just letters.",
       "tts": {
-        "text": "[amazed] So the computer can compare ideas, not just letters.",
+        "text": "So the computer can compare ideas, not just letters.",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0
@@ -133,7 +133,7 @@
       "text": "Exactly. That is why search and chat have gotten so much better in the last few years.",
       "text_markdown": "Exactly. That is why search and chat have gotten so much better in the last few years.",
       "tts": {
-        "text": "[excitedly] Exactly. That is why search and chat have gotten so much better in the last few years.",
+        "text": "Exactly. That is why search and chat have gotten so much better in the last few years.",
         "pause_after_ms": 600,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -163,7 +163,7 @@
       "text": "The top of the open weights chart shifted again. Smaller teams, bigger numbers. We will dig in after the break.",
       "text_markdown": "The top of the open weights chart shifted again. Smaller teams, bigger numbers. We will dig in after the break.",
       "tts": {
-        "text": "The top of the open weights chart shifted again. [excited] Smaller teams, bigger numbers. We will dig in after the break.",
+        "text": "The top of the open weights chart shifted again. Smaller teams, bigger numbers. We will dig in after the break.",
         "pause_after_ms": 600,
         "speaker_id": "analyst",
         "repetition_penalty": 2.0
@@ -178,7 +178,7 @@
       "text": "Stay with us.",
       "text_markdown": "Stay with us.",
       "tts": {
-        "text": "[warmly] Stay with us.",
+        "text": "Stay with us.",
         "pause_after_ms": 600,
         "speaker_id": "host",
         "repetition_penalty": 2.0
