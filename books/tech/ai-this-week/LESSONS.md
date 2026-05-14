@@ -216,6 +216,97 @@ for an hour. User got frustrated.
 Per memory `narration_pipeline`: M4As live on disk + S3 only. Don't
 restore them from git or you'll lose recent regens.
 
+### 15. Pre-translating before EN is locked
+
+**Mistake:** I mass-dispatched translation cohorts (de, es, fr, it,
+zh + 33 more in flight) BEFORE the EN manuscript was finalized.
+Then EN got polished — fact-corrections, phrasing tweaks, "week
+ending May 13" → "for May 13, 2026, next Wednesday", auto-rewrites,
+NPR-informal phrasing changes — and NONE of those edits propagated
+to the already-translated languages.
+
+Concrete damage: ES segment `ch00-062` shipped as `"para la semana
+que terminó el trece de mayo"` (stale "week ending" framing) while
+EN said `"for May 13, 2026. New issue next Wednesday."` ES got
+re-translated, but every other speculatively-translated language
+had the same defect. Cohorts 2+3 (33 langs) had to be cancelled
+mid-flight to avoid burning more codex spend on a stale source.
+
+**Right way: JIT translation only.**
+1. Lock EN: drafted → fact-checked → polished → audited → audio
+   verified
+2. ONLY THEN translate ONE language
+3. Audit the translation segment-by-segment (parity + speaker_id +
+   numeric/spelled-out divergence)
+4. Generate audio for that language
+5. Ear-test that language's concat
+6. Publish that language
+7. Move to next language
+
+**Why:** This is a language-learning app. Display text and audio
+must be word-aligned for the reader's highlight to sync. Stale
+translation = display says one thing, audio (eventually) says
+another, sync breaks. Plus codex/Gemini-translate spend on stale
+EN is pure waste.
+
+**Stop sign:** If you find yourself running `ttsctl translate` on
+more than one language before the first audio is published and
+ear-approved, STOP.
+
+### 16. Translator dropped `speaker_id` (FIXED — but the class of bug matters)
+
+**Mistake:** `ttsctl/translate/engine.py` `STRUCTURAL_FIELDS` set
+did NOT include `speaker_id`, and the `tts` field rebuilder did
+NOT copy `speaker_id` from `source.tts.speaker_id`. So every
+translated segment came out with `speaker_id = None`.
+
+In the pipeline, `_compute_seg_tts_args` only enters the
+dialog-routing branch if `seg.tts.speaker_id` resolves to a known
+speaker. With no speaker_id, the code fell through to
+`seg_voice = voice_path` + `backend_name = self.config.engine`
+— i.e., the pack's `default_voices[lang]` voice via the pack's
+top-level `engine` (Chatterbox). **Every Spanish segment got
+rendered with Ian's Spanish voice clone via Chatterbox** —
+completely sidestepping Gemini Vindemiatrix/Charon. The whole
+multilingual-dialog promise was silently broken.
+
+**Fix shipped 2026-05-14:** `STRUCTURAL_FIELDS` now contains
+`speaker_id`; the `tts` rebuilder explicitly copies
+`source.tts.speaker_id` into the translated segment's `tts`
+block. See `ttsctl/translate/engine.py` lines 18-22 + 175-187.
+
+**The class lesson:** the translator's job is to translate
+`text` and `tts.text`. EVERY OTHER FIELD is structural and must
+pass through verbatim. If you add a new field to segments.json
+(speaker_id, gemini_direction, repetition_penalty, anything),
+audit the translator to make sure it survives. Better: assert
+field-set parity between source and translated segments at the
+end of `ttsctl translate`.
+
+### 17. Hand-patch scripts that hardcode display values stomp auto_rewrite
+
+**Mistake:** I wrote `/tmp/normalize_display.py` with a hand-typed
+dict of 17 segment display strings to "normalize numerals". I ran
+it AFTER `codex auto_rewrite` had already fixed `ch00-040`
+(`tts_audio_truncated` → "extremes" → "the limit", with both
+`text` and `tts.text` correctly synced). The hand-patch script
+contained the PRE-rewrite "extremes" value for ch00-040, so it
+silently reverted the display back to a value that no longer
+matched the audio. v0.1.2 shipped with display ≠ audio. Required
+a v0.1.3 ship to fix.
+
+**Right way (memory:
+`feedback_no_stale_handpatch_after_rewrite`):**
+- If you must transform display, READ current state, transform
+  programmatically (digit↔words, punctuation), WRITE back. Never
+  freeze literal display strings in a script.
+- Better: encode the display↔tts.text divergence at
+  manuscript-generation time, not as a post-hoc patch.
+- After ANY `codex auto_rewrite` event in pipeline_state (visible
+  via `rewrite_count > 0`), treat that segment's `text` and
+  `tts.text` as paired-and-recent. Any later script that touches
+  one must update the other identically.
+
 ---
 
 ## What's already working (don't rebuild)
@@ -230,6 +321,7 @@ restore them from git or you'll lose recent regens.
 | Multi-variant avatar generation | `infra/generate-narrator-variants.py` | shipped 2026-05-14 |
 | Pacing pass (rule-based) | `scripts/apply_pacing.py` | shipped 2026-05-13 |
 | Concat with reader-style pauses | `/tmp/concat_with_pauses.py` | shipped 2026-05-13 |
+| Translator preserves `speaker_id` | `ttsctl/translate/engine.py STRUCTURAL_FIELDS` | shipped 2026-05-14 |
 
 ## What still needs building (FUTURE work)
 
@@ -261,6 +353,22 @@ restore them from git or you'll lose recent regens.
    and `tts.text`. We need it to (a) keep display numerals in `text`
    and (b) spell them out in `tts.text` via a phonetics-map pass.
 
+6. **Translator structural-field parity assert.** After every
+   `ttsctl translate` run, assert that for every segment the
+   translated field-set ⊇ source structural fields (id, speaker_id,
+   chapter, block_type, tts.speaker_id, tts.pause_after_ms,
+   tts.repetition_penalty, ...). Catches the next "translator
+   drops field X" regression before it ships to audio. See
+   rake #16.
+
+7. **`ttsctl translate` should refuse mass-translation when EN
+   pipeline_state shows recent edits.** Right now it just refuses
+   to overwrite an existing `segments_<lang>.json` — does not check
+   that EN is "locked". A `--require-en-locked` flag would refuse
+   to translate when `segments.json` mtime is newer than the most
+   recent EN publish event. Forces JIT discipline at the tool
+   level instead of by memo.
+
 ## Issue-2 readiness checklist
 
 Run these in order before touching keyboard:
@@ -272,21 +380,53 @@ Run these in order before touching keyboard:
 - [ ] Check `~/encorpora/books/tech/ai-this-week/001-may-13/fact_check.json`
   as a sample fact-check output structure
 
-Then:
+Then, in order, **one phase at a time, ZERO speculation**:
 
-1. Pick an issue date (e.g., next Wednesday)
+### Phase A — EN content lock
+
+1. Pick an issue date (e.g., next Wednesday).
 2. Dispatch 3 research agents in parallel using
-   `scripts/research_prompts.md` templates
-3. Draft manuscript respecting display-text-vs-tts.text divergence
-   FROM THE START (do not bake spelled-out forms into display)
-4. Run fact-check pass; apply corrections
-5. Run speaker-assignment audit (hand or future subagent)
-6. `ttsctl generate` (dialog packs now batch via cohort 1 fix)
-7. Audit free-transcribe vs display (catches truncations)
-8. `apply_pacing.py`
-9. Verify catalog entries exist for any new characters
-10. `ttsctl publish --version <next>`
-11. `patch-catalog.py`
-12. Verify on CDN
+   `scripts/research_prompts.md` templates. Require dated facts +
+   verifying URLs.
+3. Draft manuscript per `CONVENTIONS.md`. Respect
+   display-text-vs-`tts.text` divergence FROM THE START (do not
+   bake spelled-out forms into display).
+4. Run fact-check pass; apply corrections.
+5. Run speaker-assignment audit (hand or future subagent).
+6. `ttsctl generate` EN with `--device cuda`. Includes auto_rewrite
+   on plateau; expect `text` and `tts.text` to stay paired on any
+   rewritten segment.
+7. Audit free-transcribe vs display (catches Gemini truncations).
+8. `apply_pacing.py` + listen-test EN concat.
+9. Loop fixes until user verdict on EN is A+.
+10. `ttsctl publish --lang en --version <next>`.
+11. `patch-catalog.py`.
+12. Verify EN on CDN.
+
+**EN is now LOCKED. Do not edit segments.json after this point
+unless you are willing to re-translate every shipped language.**
+
+### Phase B — JIT translation, one language at a time
+
+For EACH target language, top-down by speaker count:
+
+1. Confirm EN is locked (segments.json unchanged since EN publish).
+2. `ttsctl translate <pack> --langs <lang>` — fresh from current EN.
+3. **Translation audit:**
+   - 62/62 segments translated (no missing IDs)
+   - speaker_id parity vs EN on every segment (every dialog turn
+     routes to the right voice)
+   - tts.text divergence audit: numerals/dates/names spelled out
+     correctly for the target language
+   - Zero segments byte-equal to EN (no untranslated leftovers)
+4. `ttsctl generate <pack> --lang <lang> --device cuda`.
+5. Listen-test concat for that language. User verdict: A+ or fix.
+6. `ttsctl publish --lang <lang> --voice-id gemini-vindy
+   --version <next>`.
+7. `patch-catalog.py`.
+
+**Do NOT batch-translate multiple languages up front.** Pre-
+translation guarantees stale content the moment any EN edit lands.
+See rake #15.
 
 If you hit a rake not on the list above, add it.

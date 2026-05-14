@@ -146,6 +146,8 @@ VOICE_PREVIEW_URLS = {
     "aoede-gemini":    f"{CDN_BASE}/voice-previews/aoede-gemini.m4a",
     "august":          f"{CDN_BASE}/voice-previews/august.m4a",
     "kym":             f"{CDN_BASE}/voice-previews/kym.m4a",
+    "gemini-vindy":    f"{CDN_BASE}/voice-previews/gemini-vindy.m4a",
+    "gemini-ron":      f"{CDN_BASE}/voice-previews/gemini-ron.m4a",
 }
 
 # voiceId → (characterId, displayName, provider, source kind, supportedLanguages)
@@ -407,6 +409,16 @@ BOOK_META = {
             "steam locomotive to the floating trains of today."
         ),
         "tags": ["all-ages", "vehicles", "trains", "history", "language-learning"],
+    },
+    "book_ai_this_week_2026_05_13": {
+        "description": (
+            "AI This Week for May 13, 2026 — Rate Cuts and Routers. A two-host "
+            "dialog show on what actually happened in artificial intelligence "
+            "this week. Vindy hosts, Ron analyzes. Four sections: model "
+            "releases, leaderboard movement, the concept of the week, and the "
+            "bigger picture. About ten minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly"],
     },
 }
 

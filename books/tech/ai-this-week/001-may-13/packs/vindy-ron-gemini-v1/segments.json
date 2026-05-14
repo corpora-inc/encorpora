@@ -595,8 +595,8 @@
       "title": "",
       "block_type": "text",
       "speaker_id": "analyst",
-      "text": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to extremes.",
-      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is mixture of experts. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to extremes.",
+      "text": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to the limit.",
+      "text_markdown": "Most of them, yes. Though the labs do not always confirm it. GPT-4 was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since 2023. The new wave from China has pushed this design to the limit.",
       "tts": {
         "text": "Most of them, yes. Though the labs do not always confirm it. GPT four was a mixture of experts model. The flagship from DeepSeek is a mixture of experts model. Mistral has been shipping mixture of experts models since twenty twenty three. The new wave from China has pushed this design to the limit.",
         "pause_after_ms": 572,
