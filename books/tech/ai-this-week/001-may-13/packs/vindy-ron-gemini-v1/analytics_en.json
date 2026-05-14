@@ -1,27 +1,28 @@
 {
   "book_id": "vindy-ron-gemini-v1",
   "language": "en",
-  "timestamp": "2026-05-14T02:50:39.613028+00:00",
+  "timestamp": "2026-05-14T04:24:28.916511+00:00",
   "segments_total": 62,
   "segments_first_pass": 61,
   "segments_converged_by_retry": 1,
   "segments_plateau_stopped": 0,
   "total_retries": 1,
   "error_distribution": {
-    "trailing_silence": 19,
-    "tail_energy": 14,
-    "first_word_weak": 14,
-    "final_word_weak": 3,
-    "pre_speech_spike": 1,
-    "min_trailing_silence": 1,
+    "first_word_weak": 17,
+    "trailing_silence": 15,
+    "tail_energy": 13,
+    "pre_speech_spike": 2,
+    "final_word_weak": 2,
+    "stacked_words": 1,
+    "word_cluster": 1,
     "tts_audio_truncated": 1
   },
   "phase_timings": {
-    "tts": 1209.1093425750732,
-    "align": 129.91974592208862,
-    "validate": 120.17522096633911,
-    "trim": 0.15456867218017578,
-    "master": 28.36229634284973
+    "tts": 31.557544946670532,
+    "align": 10.25783634185791,
+    "validate": 26.272870302200317,
+    "trim": 0.037392616271972656,
+    "master": 1.5237233638763428
   },
   "length_analysis": {
     "short_0_30": {
@@ -31,20 +32,20 @@
     },
     "medium_30_80": {
       "total": 18,
-      "passed": 18,
-      "rate": 1.0
+      "passed": 17,
+      "rate": 0.9444444444444444
     },
     "long_80_plus": {
       "total": 32,
-      "passed": 31,
-      "rate": 0.96875
+      "passed": 32,
+      "rate": 1.0
     }
   },
   "worst_segments": [
     {
-      "id": "ch00-051",
+      "id": "ch00-050",
       "attempts": 2,
-      "best_quality_score": 12.0,
+      "best_quality_score": 25.0,
       "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
@@ -52,11 +53,12 @@
         {
           "attempt": 0,
           "errors": [
-            "min_trailing_silence",
+            "stacked_words",
+            "word_cluster",
             "final_word_weak",
             "tts_audio_truncated"
           ],
-          "score": 130.0,
+          "score": 170.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -69,38 +71,35 @@
         {
           "attempt": 1,
           "errors": [
-            "tail_energy"
+            "pre_speech_spike"
           ],
-          "score": 12.0,
+          "score": 25.0,
           "params": {
-            "cfg_weight": 0.6664388384667649,
-            "exaggeration": 0.1688123346262695,
-            "temperature": 0.4882426781744309,
-            "top_p": 0.8472031216478165,
-            "min_p": 0.0,
+            "cfg_weight": 0.7604345379827758,
+            "exaggeration": 0.2067491192209665,
+            "temperature": 0.6736624657492187,
+            "top_p": 0.6950542249836137,
+            "min_p": 0.2530573833054246,
             "repetition_penalty": 2.0
           }
         }
       ],
-      "text_len": 263,
-      "text_preview": "This is the interesting part. AI capital spending is now big enough that it is a",
+      "text_len": 71,
+      "text_preview": "And the other direction. How does AI affect what the Fed has to decide?",
       "passed_first": false
     },
     {
       "id": "ch00-001",
       "attempts": 1,
-      "best_quality_score": 15.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "trailing_silence",
-            "tail_energy"
-          ],
-          "score": 15.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -118,15 +117,18 @@
     {
       "id": "ch00-002",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -194,14 +196,14 @@
           }
         }
       ],
-      "text_len": 308,
+      "text_len": 311,
       "text_preview": "Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models tha",
       "passed_first": true
     },
     {
       "id": "ch00-005",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 23.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -209,9 +211,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "first_word_weak"
           ],
-          "score": 3.0,
+          "score": 23.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -255,7 +258,7 @@
     {
       "id": "ch00-007",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -263,9 +266,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "tail_energy"
           ],
-          "score": 3.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -283,15 +287,17 @@
     {
       "id": "ch00-008",
       "attempts": 1,
-      "best_quality_score": 0.0,
+      "best_quality_score": 12.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [],
-          "score": 0.0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -309,17 +315,15 @@
     {
       "id": "ch00-009",
       "attempts": 1,
-      "best_quality_score": 20.0,
+      "best_quality_score": 0.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
       "retry_history": [
         {
           "attempt": 0,
-          "errors": [
-            "first_word_weak"
-          ],
-          "score": 20.0,
+          "errors": [],
+          "score": 0.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -475,7 +479,7 @@
     {
       "id": "ch00-015",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -483,9 +487,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "tail_energy"
           ],
-          "score": 3.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -529,7 +534,7 @@
     {
       "id": "ch00-017",
       "attempts": 1,
-      "best_quality_score": 3.0,
+      "best_quality_score": 15.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -537,9 +542,10 @@
         {
           "attempt": 0,
           "errors": [
-            "trailing_silence"
+            "trailing_silence",
+            "tail_energy"
           ],
-          "score": 3.0,
+          "score": 15.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -583,7 +589,7 @@
     {
       "id": "ch00-019",
       "attempts": 1,
-      "best_quality_score": 32.0,
+      "best_quality_score": 35.0,
       "best_attempt": 0,
       "plateau_count": 0,
       "final_errors": [],
@@ -591,10 +597,11 @@
         {
           "attempt": 0,
           "errors": [
+            "trailing_silence",
             "tail_energy",
             "first_word_weak"
           ],
-          "score": 32.0,
+          "score": 35.0,
           "params": {
             "cfg_weight": 0.85,
             "exaggeration": 0.3,
@@ -605,8 +612,8 @@
           }
         }
       ],
-      "text_len": 47,
-      "text_preview": "Good place to pause. Up next, the leaderboards.",
+      "text_len": 36,
+      "text_preview": "Okay, let's get to the leaderboards.",
       "passed_first": true
     }
   ],

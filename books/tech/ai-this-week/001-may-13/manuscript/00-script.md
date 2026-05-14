@@ -20,7 +20,7 @@ notes: |
 
 **ANALYST:** Good to be here.
 
-**HOST:** Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our word of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.
+**HOST:** Today is Wednesday, May thirteenth, twenty twenty six. Coming up: the models that shipped this week. The leaderboards, and why some of them you should stop trusting. Our concept of the week. And the bigger picture — the U.S. just got a new Federal Reserve chair, and it matters more for AI than you might think.
 
 **HOST:** Ron, what is the biggest model news this week?
 
@@ -50,7 +50,7 @@ notes: |
 
 **ANALYST:** Google I O is on Tuesday. Everyone expects a new Gemini, and there is credible chatter about a video generation model called Gemini Omni. OpenAI has GPT five point six in testing. Anthropic has a model called Mythos in a private preview. We will know a lot more next week.
 
-**HOST:** Good place to pause. Up next, the leaderboards.
+**HOST:** Okay, let's get to the leaderboards.
 
 **HOST:** Ron, what is moving on the boards this week?
 
@@ -76,9 +76,9 @@ notes: |
 
 **ANALYST:** That is where we are. The other big trend is the open versus closed gap. It is the narrowest it has ever been. DeepSeek V four Pro and Kimi K two point six are within striking distance of GPT five point five on the cross evaluation intelligence index. That gap used to be huge. It is now small.
 
-**HOST:** Good place to land for this section. After this, our word of the week.
+**HOST:** Okay, let's get into the concept of the week.
 
-**HOST:** Ron, the word of the week is mixture of experts. Why is it the word this week?
+**HOST:** Ron, the concept of the week is mixture of experts. Why is it the concept this week?
 
 **ANALYST:** Because the open weights model we just talked about, Kimi K two point six, has one trillion parameters total. But only thirty two billion of those parameters run at any given moment. That is mixture of experts.
 
@@ -98,7 +98,7 @@ notes: |
 
 **ANALYST:** Two reasons. One. It is the main reason an open weights lab in China can run at frontier class quality on a fraction of the budget. Two. It is the main reason a single API call costs cents, not dollars. When you see prices drop and quality stay high, mixture of experts is usually why.
 
-**HOST:** Mixture of experts. Router. Experts. Sparse activation. Three words to take with you. After this, the bigger picture.
+**HOST:** Mixture of experts. Router. Experts. Sparse activation. Three words to take with you. Now let's pull back to the bigger picture.
 
 **HOST:** Ron, the big story outside our world this week is the Fed.
 

@@ -9,6 +9,10 @@ speakers:
     character_id: vindy
     display_name: Vindy
     role: host
+    # Per-speaker Director's Notes. Sits between pack-level and per-segment
+    # in the resolution order. Goal: chill conversational tech-podcast host,
+    # not theatrical, not every question rising — varied prosody.
+    director_prompt: "Style: Mature, likeable NPR-style news presenter — warm, relaxed, and friendly, with a little gleam of wonder showing through. Polished and intelligent, conversational not theatrical. Vary your inflection naturally — questions don't all rise the same way; some end almost as statements. Light, dry, sometimes a touch of humor. Read this: "
   analyst:
     backend: gemini
     provider_voice_id: Charon
@@ -48,6 +52,14 @@ mastering:
   output_ext: .m4a
   target_lufs: -22.0
   target_tp: -3.0
+
+# Dialog packs: trim every segment to ~150ms trailing silence regardless of
+# validator flags. The reader inserts inter-segment silence from
+# audio_manifest_en.json's per-segment pause_after_ms (set by the pacing pass).
+trimming:
+  always_trim: true
+  tail_grace_ms: 50
+  tail_fade_ms: 100
 
 denoise:
   enabled: false
