@@ -107,66 +107,136 @@ export const hasLargeMemoryBudget = (): boolean => {
   return looksIpadByUA()
 }
 
-// Five tiers spanning ~216 MB → ~1600 MB. Removed `openai_whisper-base`
-// (Standard, 145 MB) in 0.3.2 — Small is meaningfully better across
-// most languages and only ~70 MB larger, so the floor moves up.
-// Existing users who saved `mode: "standard"` in localStorage will fall
-// through `modelById("standard") === undefined` and boot at the new
-// fresh-install default (Small). Their on-disk `openai_whisper-base/`
-// files become orphans (the setup overlay no longer shows a card to
-// remove them); cleaning those up is left to a future cleanup sweep.
+// Seven tiers: Tiny → Small → Medium → (Large family).
+// Large family in ascending size:
+//   Large Turbo (547 MB, turbo-q5_0)
+//   Large HQ    (834 MB, turbo-q8_0)
+//   Large       (1031 MB, q5_0)
+//   Large Max   (1549 MB, turbo, no quant)
 //
-// The 547 / 626 / 632 MB variants are from Argmax's `v20240930`
-// generation, specifically tuned to preserve multilingual quality
-// despite quantization. Argmax's own README recommends
-// `large-v3-v20240930_626MB` for "maximum multilingual accuracy",
-// so we're not gambling on quality across the broad set of
-// languages Corpán covers — we're using the variant they
-// officially endorse.
+// Why no full-FP16 ggml-large-v3.bin (3.0 GB)?
+// Verified live 2026-05-10 on iPad Pro / iPadOS 26.4.2: the full-
+// precision file SIGSEGVs inside ggml-metal during model load, in
+// `ggml_metal_buffer_is_shared` — `MTLDevice newBufferWithLength:`
+// returned nil because a single tensor allocation exceeds Metal's
+// `maxBufferLength` cap (~3.5 GB even on 16 GB iPads). This is a
+// Metal architecture limit, not a per-app memory budget. Crash
+// stack and full analysis: see CHANGELOG 0.3.7.
 //
-// Folder-name conventions (from WhisperKit upstream):
-//   _turbo            optimized smaller text decoder, ~similar accuracy
-//   _v20240930        release date with improved multilingual quant
-//   _NNNMB            palettized variant, N ≈ disk MB (lower = more aggressive)
+// The standard whisper.cpp distribution of Large for Apple Silicon
+// is the quantized variants below (q5_0 / q8_0 / turbo-q5_0). They
+// are the upstream ggerganov-maintained quants — *not* WhisperKit
+// "qlora" / argmax palettized variants, which were unrelated and
+// broken under MPSGraph on iPadOS 26.4.x.
+//
+// Existing users on saved `mode: "large_qlora"` from the broken
+// 0.3.6 entry: same id is repointed at `ggml-large-v3-q5_0.bin`
+// (the working "Large"). On next prepare, validateModel sees the
+// new file is missing and the install flow runs to download the
+// q5_0. Their on-disk 3 GB `ggml-large-v3.bin` becomes orphan;
+// cleanup is deferred to a future sweep.
+//
+// Older orphan folders from the WhisperKit era (`_turbo*`,
+// `_v20240930*`, original `large-v3*` mlmodelc bundles) are also
+// still on disk for upgraders; same deferred cleanup.
+//
+// Removed `openai_whisper-base` (Standard, 145 MB) in 0.3.2 — Small
+// is meaningfully better across most languages and only ~70 MB
+// larger, so the floor moves up. Existing users who saved
+// `mode: "standard"` fall through the same way.
+//
+// Folder-name conventions (whisper.cpp / ggerganov HF repo):
+//   no suffix         full unquantized fp16 weights (multi-GB; broken on Metal for large-v3)
+//   -q5_0             5-bit quantization (most common Apple Silicon ship)
+//   -q8_0             8-bit quantization (closer to fp16 quality, larger)
+//   -turbo            distilled large-v3 with smaller decoder (Whisper "turbo")
 export const MODELS: ReadonlyArray<ModelVariant> = [
+  // Tiny — the canonical OpenAI Whisper-tiny via whisper.cpp's
+  // ggml-tiny.bin. Surprisingly capable on simple Spanish/French/etc.
+  // but per-token confidence is intrinsically lower than larger
+  // models, so the acoustic ramp is calibrated softer for this tier
+  // (see STTPlugin.swift `pickAcousticRamp`).
   {
-    id: "small",
-    folder: "openai_whisper-small_216MB",
-    label: "Small",
+    id: "tiny_proof",
+    folder: "ggml-tiny.bin",
+    label: "Tiny",
     shortDesc:
-      "Tiny and quick. Often wrong. May barely understand the language you actually want. Lower your expectations and have fun.",
-    approxSizeMB: 216,
+      "Tiny is, honestly, kind of terrible. You say 'good morning' and Tiny writes down 'good warning'. Some languages it technically supports, in the sense that it returns words. Whether those words match the ones you said is between you and Tiny. Free, fast, occasionally hilarious. Maybe start here so you have something to compare the bigger ones to.",
+    approxSizeMB: 75,
     defaultForFreshInstall: true,
   },
+  // Small — canonical OpenAI multilingual Whisper-small via the
+  // whisper.cpp ggml conversion. Straight from OpenAI's released
+  // weights, no quantization, no decoder shrink.
   {
-    id: "medium",
-    folder: "openai_whisper-large-v3-v20240930_547MB",
-    label: "Medium",
+    id: "small",
+    folder: "ggml-small.bin",
+    label: "Small",
     shortDesc:
-      "Sometimes shockingly good, sometimes wildly off. Don't take a single bad score personally — the model is just having a moment.",
+      "The first one that mostly works. Sometimes it spectacularly doesn't and we have no idea why — it's a 244M-parameter neural network, you'd have to ask it. The boring, reasonable choice: roughly the smallest thing that holds its own across all 51 languages without sounding drunk.",
+    approxSizeMB: 465,
+    defaultForFreshInstall: false,
+  },
+  // Large Turbo q5 — distilled large-v3 with smaller decoder,
+  // 5-bit quantization. Smallest of the Large family.
+  {
+    id: "large_turbo",
+    folder: "ggml-large-v3-turbo-q5_0.bin",
+    label: "Large Turbo q5",
+    shortDesc:
+      "The smallest 'Large' — same Large brain as the bigger ones, weights crushed down to 5 bits to fit in 547 MB. Sometimes the crush works fine; sometimes Whisper invents pronunciations no human has ever produced. Quick on iOS. Surprisingly slow on Android, for unloveable reasons involving CPU instruction sets and 5-bit math. If you're on Android and want a Large, the q8 below is probably the one you want instead.",
     approxSizeMB: 547,
     defaultForFreshInstall: false,
   },
-  // Internal: this is QLoRA-quantized large-v3 turbo (954 MB).
-  // Different older quant scheme than the broken v20240930
-  // palettized variants. Same architecture as Advanced. Label
-  // shown to users is just "Large" — no jargon.
+  // Large Turbo q8 — same distillation, lighter quantization.
+  // (ggerganov never published a q8 of the full-decoder large-v3,
+  // only of the turbo distillation — the header comment explains
+  // why we don't ship the full-fp16 .bin.)
   {
-    id: "large_qlora",
-    folder: "openai_whisper-large-v3_turbo_954MB",
-    label: "Large",
+    id: "large_q8",
+    folder: "ggml-large-v3-turbo-q8_0.bin",
+    label: "Large Turbo q8",
     shortDesc:
-      "Solid across most languages, but every model has That One Phrase it can't hear. Take a deep breath when it happens.",
-    approxSizeMB: 954,
+      "Same Large brain, slightly less aggressive crush — 8 bits instead of 5, which is what your phone's CPU likes. About 290 MB bigger than Turbo q5; on Android, also about 2.5× faster. Currently the sweet-spot Large for Android, and a solid pick on iOS too. The one to grab if you don't want to think about it.",
+    approxSizeMB: 834,
     defaultForFreshInstall: false,
   },
+  // Large q5 — full-decoder large-v3 with 5-bit quantization. The
+  // standard Apple Silicon Large ship. Id stays `large_qlora` for
+  // localStorage compat with users from the broken-Large-FP16 era.
   {
-    id: "advanced",
-    folder: "openai_whisper-large-v3_turbo",
-    label: "Advanced",
+    id: "large_qlora",
+    folder: "ggml-large-v3-q5_0.bin",
+    label: "Large q5",
     shortDesc:
-      "Best open-source on-device speech-to-text we've got. Wants a recent iPad, eats a lot of memory, may crash on iPhones. When it works, it's the closest thing to magic without a server.",
-    approxSizeMB: 1600,
+      "The full-decoder Large, weights compressed to 5 bits. The Turbo variants got their decoder trimmed for speed; this one keeps the original. Sometimes catches nuance the Turbo distillation lost — especially on languages Whisper's bigger-is-better training quietly got worse at. Costs you ~1 GB of disk, plus all the Android q5-slowness drama. iOS users, go nuts. Android users: probably skip in favour of Turbo q8 unless you specifically know your language is one that needs the full decoder.",
+    approxSizeMB: 1031,
+    defaultForFreshInstall: false,
+  },
+  // Full Weight Medium — canonical OpenAI Whisper-medium, no
+  // quantization. Smaller architecture (769M params) than the
+  // Large family (1.55B), but unquantized. Kept in the lineup
+  // because the Large turbo distillation skewed English-heavy in
+  // training; some users' languages may land better here.
+  {
+    id: "medium",
+    folder: "ggml-medium.bin",
+    label: "Full Weight Medium",
+    shortDesc:
+      "An older, smaller Whisper architecture (769M params, vs ~1.55B for Large), but with zero compression — every weight at native 16-bit precision. 1.46 GB download for a model that's not the biggest. The Larges are usually better. BUT: Whisper's later generations were tuned more aggressively on English-heavy data, and if your target language is one Whisper-large quietly got worse at, Medium can pleasantly surprise you. Or not. We're all learning here.",
+    approxSizeMB: 1463,
+    defaultForFreshInstall: false,
+  },
+  // Full Weight Large Turbo — distilled large-v3, no quantization.
+  // Top of the on-device line. The full-decoder fp16 large-v3
+  // (~3 GB) crashes ggml-metal on Apple Silicon — see header.
+  {
+    id: "large_max",
+    folder: "ggml-large-v3-turbo.bin",
+    label: "Full Weight Large Turbo",
+    shortDesc:
+      "The whole brain, uncompressed. Distilled Large with every weight at full 16-bit precision — no quantization, no shortcuts. The transcription quality you actually came for, if your phone has the 1.5 GB of disk and the patience to download it. Hits both CPU and Metal's fp16 fast paths, so it's not even the slow option. This might be the coolest thing your phone runs all year. Or it might transcribe 'goldfish moon' three times in a row and you'll uninstall in disgust. On-device AI in 2026, in one card. 🤷",
+    approxSizeMB: 1549,
     defaultForFreshInstall: false,
   },
 ]

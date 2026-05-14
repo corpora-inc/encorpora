@@ -1,0 +1,14 @@
+# whisper.xcframework is built locally from
+# https://github.com/ggml-org/whisper.cpp via:
+#
+#   git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git
+#   cd whisper.cpp
+#   BUILD_STATIC_XCFRAMEWORK=ON ./build-xcframework.sh
+#   mv build-apple/whisper.xcframework <repo>/corpan/plugins/tauri-plugin-stt/ios/
+#
+# 184 MB across all Apple slices (iOS device + sim + macOS + tvOS + visionOS).
+# We don't commit it because of size; SPM consumes it as a local
+# binaryTarget (see Package.swift) so it just has to exist on disk
+# at build time. CI / clean checkouts will need to run the build
+# script before `cargo tauri ios dev`.
+whisper.xcframework/

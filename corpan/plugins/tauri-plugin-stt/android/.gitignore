@@ -2,4 +2,16 @@
 /.tauri
 /.gradle
 /.kotlin
+/.cxx
 /local.properties
+
+# Vendored whisper.cpp source for the Android JNI build. Same pattern
+# as the iOS xcframework: the plugin's externalNativeBuild compiles it
+# alongside the JNI shim. Regenerate via:
+#
+#   git clone --depth 1 --branch v1.8.4 \
+#     https://github.com/ggml-org/whisper.cpp.git \
+#     src/main/cpp/whisper.cpp
+#
+# Pinned to v1.8.4 to match the iOS XCFramework.
+/src/main/cpp/whisper.cpp/

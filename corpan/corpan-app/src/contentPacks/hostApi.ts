@@ -156,12 +156,12 @@ export const createHostApi = (packId?: string): HostApi => {
 
   const stt: SttApi = {
     isAvailable: async () => {
-      try {
-        return await invoke<boolean>("plugin:stt|is_available")
-      } catch (error) {
-        console.error("[stt] is_available error:", error)
-        return false
-      }
+      // No try/catch: if the bridge fails (deserialization mismatch,
+      // missing native binding, etc.) we want the pack to SEE that
+      // failure, not a synthetic `false` that renders an
+      // "unavailable" screen with no explanation. The caller decides
+      // how to surface bridge errors.
+      return await invoke<boolean>("plugin:stt|is_available")
     },
     getStatus: async () => {
       try {

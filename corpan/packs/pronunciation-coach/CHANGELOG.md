@@ -2,13 +2,209 @@
 
 On-device pronunciation practice. Reads a target-language phrase aloud
 from the host TTS, then scores the user's repetition via the host's
-WhisperKit-backed STT bridge.
+whisper.cpp-backed STT bridge (iOS XCFramework + Android JNI; same
+`ggml-*.bin` model files on both platforms, downloaded at runtime from
+`https://huggingface.co/ggerganov/whisper.cpp/`).
 
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.5.0] - 2026-05-12
+
+Version-skipped from 0.3.6 → 0.5.0 to signal a substantial release:
+whisper.cpp runtime swap (iOS + Android), Android CPU perf via the
+host plugin's `+dotprod` flag, full tonal pass on the model
+catalog copy, and an Android safe-area fix on the setup overlay.
+
+### Changed
+- **Tone pass on all seven model descriptions** in
+  `modelRegistry.ts`. Funny, honest, lower-expectations. The model is
+  the failure surface, not the user or the app. Each card now sets
+  expectations honestly — Tiny is candidly described as kind of
+  terrible; Small is "the first one that mostly works"; Large q5
+  carries the Android-specific slowness warning; Large Turbo q8 is
+  flagged as the Android sweet spot; Full Weight Large Turbo gets
+  the "might be the coolest thing your phone runs all year, or you
+  might uninstall in disgust" framing. Cutting-edge / experimental
+  framing throughout.
+- **Setup overlay sub-headline** rewritten in the same tone. Sets
+  the experimental-cutting-edge expectation up front, names the
+  failure modes ("might crash your phone", "might transcribe
+  'good morning' as 'goldfish moon'"), and frames the whole
+  experience as on-device AI in 2026. Don't take the scoring too
+  seriously.
+
+### Fixed
+- **Setup overlay respects Android bottom safe-area / gesture-bar
+  inset.** `.pc-setup` bottom padding floor bumped from 24 px to
+  48 px so there's visual breathing room above the gesture nav bar
+  on Android — `env(safe-area-inset-bottom)` doesn't always resolve
+  to a useful value under Tauri's Android WindowInsets configuration.
+  iOS continues to stack the actual inset on top of the floor;
+  visible change on iOS is minimal (24 px more breathing room).
+
+### Scoring (via host plugin)
+- **Punctuation and numeral words deprioritized in scoring.** The
+  host plugin (`tauri-plugin-stt`, both iOS and Android) now (1)
+  excludes pure-punctuation tokens from `tokenLogprobStdev` so
+  comma/period-heavy phrases stop falsely triggering the acoustic
+  half-penalty, and (2) excludes numeral words (pure digits OR
+  language-specific number words like "diez", "noventa") from the
+  acoustic per-word probabilities, because the constrained decode's
+  per-word probability is unreliable for numerals (digit-vs-spelled
+  ambiguity). Transcript scoring still catches numeral correctness
+  via the existing `diez` ↔ `10` normalization. Net effect: phrases
+  with punctuation or numerals score more honestly. Details in the
+  plugin changelog.
+
+### Performance
+- **Android: Large Turbo q8 is now in the same wall-time envelope as
+  Small.** Driven by the `+dotprod` ARM compile flag added to the
+  host's `tauri-plugin-stt` (see that pack's changelog). Encoder per
+  pass on Snapdragon 8 Elite: Small fp16 ≈ 6.0 s, Large Turbo q8 ≈
+  6.0 s, Large Turbo q5 ≈ 14.8 s. q8 turbo is now the recommended
+  Large default on Android; q5 turbo keeps the smallest-download
+  slot. (No registry surgery required — card copy now describes
+  this honestly so users self-select.)
+
+### Added
+- **`tiny_proof` model variant** for validating the host plugin's
+  whisper.cpp runtime swap. Folder = `ggml-tiny.bin` (~75 MB), a
+  single `.bin` file the new plugin downloads from
+  `https://huggingface.co/ggerganov/whisper.cpp/`. See
+  `tauri-plugin-stt` Unreleased entry for context.
+- **Small + Medium repointed to whisper.cpp ggml format**:
+  `ggml-small.bin` (~465 MB) and `ggml-medium.bin` (~1463 MB).
+  Canonical OpenAI multilingual checkpoints, no quantization or
+  bespoke distillation. The "rough edges" we hit with WhisperKit's
+  argmax variants don't apply here — these are straight conversions
+  of OpenAI's released weights.
+- **Four Large tiers**:
+  - **`large_turbo`** → `ggml-large-v3-turbo-q5_0.bin` (547 MB).
+    Whisper's distilled large-v3 with smaller decoder, q5_0
+    quantized. Large-class accuracy at roughly Medium download
+    size; usually the best speed/quality tradeoff.
+  - **`large_q8`** → `ggml-large-v3-turbo-q8_0.bin` (834 MB).
+    Distilled large-v3 with the lighter q8_0 quantization. Quality
+    bump over Large Turbo at modest size. (ggerganov never
+    published a q8 of the full-decoder large-v3, only of the
+    turbo distillation — and the full-fp16 .bin SIGSEGVs in
+    ggml-metal anyway.)
+  - **`large_qlora`** → `ggml-large-v3-q5_0.bin` (1031 MB). The
+    standard Apple Silicon "Large" ship. Id stays `large_qlora`
+    for localStorage compat with users from the WhisperKit-era
+    Large slot.
+  - **`large_max`** → `ggml-large-v3-turbo.bin` (1549 MB).
+    Distilled large-v3 at full fp16 precision, no quantization.
+    Biggest viable on-device Whisper.
+
+### Changed
+- **Download progress label shows MB** instead of raw byte counts.
+  The whisper.cpp swap moved progress reporting from
+  swift-transformers' file-count counters to URLSession byte
+  counters; the label needed updating to match.
+- **Model card labels now expose the tech tier** (Turbo / q5 / q8 /
+  Full Weight). Users learn the lineage from naming + experience
+  rather than abstracted t-shirt sizes.
+- **Card descriptions rewritten** for the user, not the developer.
+  Quirky, expectation-lowering, honest about what each tier can
+  and can't do.
+- **Tech-ID line added** under each card description, showing the
+  underlying ggml file name in small monospace. Barely there for
+  most users; scratching post for the curious.
+- **Lineup reordered ascending by file size**, so the cards read
+  cleanly from cheapest-to-fattest. Notable consequence: Full
+  Weight Medium (1463 MB) sits between Large q5 (1031 MB) and
+  Full Weight Large Turbo (1549 MB), because that's where it
+  actually falls on the size scale.
+
+### Removed
+- **Full-fp16 `ggml-large-v3.bin` (~3.0 GB)** — never made it into
+  a shipped tier. Verified live 2026-05-10 on iPad Pro
+  (`iPad17,3`, iPadOS 26.4.2): SIGSEGV inside ggml-metal during
+  load (`ggml_metal_buffer_is_shared` deref of nil — Metal's
+  `MTLDevice.maxBufferLength` cap, ~3.5 GB even on 16 GB iPads,
+  refused the single-tensor allocation). The quantized q5_0 /
+  q8_0 / turbo-q5_0 variants are the standard whisper.cpp
+  Apple Silicon ship and load cleanly. Crash report:
+  `EXC_BAD_ACCESS` at `0x10`, `bug_type:309` — not jetsam.
+
+## [0.3.6] - 2026-05-10
+
+### Removed
+- **Large and Advanced tiers temporarily removed** while every
+  WhisperKit large-v3 variant on argmax's
+  `argmaxinc/whisperkit-coreml` HF repo is broken on iPadOS 26.4.x.
+  Verified live 2026-05-10 on iPad Pro M2 (`iPad17,3`,
+  build `23E261`). Two distinct Apple bugs hit different variants:
+
+  | Variant | Status on iPadOS 26.4.2 |
+  |---|---|
+  | `large-v3-v20240930_547MB` (Medium, kept) | Works |
+  | `large-v3-v20240930_626MB` | Won't load. Error -14 on AudioEncoder both CPU+GPU and CPU-only. Failure path also wipes the install dir. |
+  | `large-v3-v20240930` (full unquantized) | Won't load. Same error -14 on AudioEncoder. |
+  | `large-v3` (full canonical OpenAI) | Won't load. Error -14 on TextDecoder both CPU+GPU and CPU-only. |
+  | `large-v3_947MB` (canonical OpenAI palettized) | Loads cleanly (install + load test pass), then SIGABRT on first inference inside `MPSGraphTensorData initWithMTLBuffer` on `DefaultAsyncPredictionQueue`, ~5 GB free at crash. |
+  | `large-v3_turbo_954MB` (prior Large) | Same SIGABRT as `_947MB`, reproducible 4× in one session. |
+  | `large-v3_turbo` (prior Advanced) | Same as `_954MB`. |
+
+  All failures live inside Apple frameworks (MPSGraph, Espresso,
+  kernel mmap), not in WhisperKit, and cannot be caught from
+  Swift try/catch. The same iPad ran the same models cleanly on
+  iPadOS 26.3.x days before the OS update — the regression shipped
+  with 26.4. iPadOS 26.4.2 is the latest publicly available build
+  as of 2026-05-10, so no OS patch is available to wait for short-
+  term.
+
+  Medium (`large-v3-v20240930_547MB`) is the largest variant that
+  survives both compile *and* inference on 26.4.2. Removing the
+  upper tiers entirely is the only honest user experience until
+  one of: an OS patch, a runtime swap (argmax-oss-swift 1.0.0
+  bump, or sherpa-onnx, or non-on-device fallback), or argmax
+  republishes the .mlmodelc bundles with different MIL ops.
+
+  Existing users with `mode: "large_qlora"` or `mode: "advanced"`
+  saved in localStorage fall through `modelById(...) === undefined`
+  and boot at the fresh-install default (Small) — same graceful
+  fallthrough that the 0.3.2 `openai_whisper-base` removal relies
+  on. On-disk `_turbo*` / `_v20240930*` / `large-v3*` folders become
+  orphans; cleanup is deferred to a future sweep.
+
+### Known issues
+- **Medium occasionally crashes on first transcribe right after
+  a model switch** (e.g., Small → Medium). Transcribe-entry mem
+  shows multi-GB free, no transcribe-done line, process dies, no
+  jetsam. Same `MPSGraphTensorData`-class abort. Frequency: roughly
+  1-in-10 post-switch attempts in this session's repro. Doesn't
+  affect fresh-boot Medium use. Apple-side state pollution between
+  WhisperKit unload and the next load that the existing
+  `autoreleasepool` on unload doesn't fully clear. Workaround for
+  affected users: force-quit + relaunch instead of switching tiers
+  in-session.
+
+### Investigation log (for future sessions)
+- See `memory/feedback_whisper_ipados26_mps_crash.md` for the full
+  diagnostic trail.
+- Untested next moves, in rough order of effort:
+  1. **Bump WhisperKit pin** from `0.18.0` → `argmax-oss-swift 1.0.0`
+     (released 2026-05-01). Release notes claim "rebrand + Swift 6,
+     no iOS-specific fixes" but the rebrand may have re-spun parts
+     of the CoreML interaction inadvertently. Low-effort test.
+  2. **Wait for iPadOS 26.4.3+**, re-test the same variants. Apple
+     may quietly fix the MPSGraph regression in a point update.
+  3. **Try a non-WhisperKit STT runtime** — sherpa-onnx (uses ONNX
+     Runtime, sidesteps CoreML entirely) or whisper.cpp (Metal
+     compute via custom shaders, not via MPSGraph).
+  4. **Server-based STT fallback** for Large/Advanced tiers — host
+     a Whisper-large server, ship "Server-Powered Large" as a tier
+     that needs network. Sidesteps Apple entirely.
+  5. **CrisperWhisper** — not on argmax's `whisperkit-coreml` HF
+     repo, would need separate CoreML conversion via argmax's CLI
+     or coremltools, then test whether its MIL ops dodge the
+     regression.
 
 ## [0.3.5] - 2026-05-07
 

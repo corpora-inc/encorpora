@@ -1,8 +1,8 @@
 [package]
 name = "tauri-plugin-stt"
-version = "0.2.3"
+version = "0.3.0"
 authors = ["Corpora Inc"]
-description = "On-device speech-to-text via WhisperKit (iOS)."
+description = "On-device speech-to-text via whisper.cpp (iOS XCFramework + Android JNI)."
 edition = "2021"
 exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-stt"
