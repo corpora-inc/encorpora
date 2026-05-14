@@ -7,6 +7,194 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-12
+
+Substantial release: Android STT plugin debut (full whisper.cpp JNI
+port), iOS runtime swap from WhisperKit to whisper.cpp, Android CPU
+perf flags, and a pass of scoring fixes informed by live testing.
+
+### Fixed
+- **Scoring: pure-punctuation tokens no longer poison
+  `tokenLogprobStdev` OR the per-word probability average.** Two
+  related leaks on both platforms:
+  - The per-token logprob list (used for the stdev calculation) was
+    unconditionally accumulating every token, including ".", ",",
+    "!", "?", and the inline punctuation Whisper emits. Their
+    logprobs sit in a wildly different range from word tokens,
+    inflating stdev and falsely triggering the `acoustic *= 0.5`
+    penalty in `computeScores`.
+  - The per-word probability rollup skipped *pure-punctuation
+    words* at flush time, but Whisper often appends a punctuation
+    token onto the previous word (no leading space) — e.g. "gusto!"
+    came through as one word grouping tokens `[gusto 0.97, ! 0.38]`,
+    averaging to 0.68 instead of 0.97. The punctuation prob inside
+    the word was real, measurable damage on clean speech
+    (live-observed dragging `acoustic` from 1.00 down to ~0.68 on
+    "Mucho gusto!").
+  Both leaks fixed by gating the `.append`s on a letter/digit
+  presence check at the token loop. The displayed word string still
+  includes punctuation (used in "Heard you say" UI); only the
+  numeric score inputs ignore it. Fixed on iOS (`STTPlugin.swift`
+  token loop) and Android (`SttPlugin.kt` `collectResult`).
+- **Scoring: numeral words excluded from the acoustic-score
+  per-word probs.** Per-word probabilities under the constrained
+  decode are unreliable for numerals: if the corpus says "Tengo 10
+  años" and the user says "diez", `prefixTokens` forces the "10"
+  token at decode and its probability reflects "audio match for the
+  literal token '10'" rather than "did the user say the right
+  number?" Transcript scoring already handles `diez` ↔ `10` via
+  `normalize`'s number-word dict; the acoustic layer now opts out of
+  the digit/word ambiguity via a new
+  `isUncertainNumeralWord(word, lang)` helper that returns true when
+  the word normalizes to pure digits (catches both "10" and
+  number-word forms like "diez", "noventa", "neunzig" in one shot).
+  Helper is in `Scoring.kt` on Android and `STTPlugin.swift` on iOS,
+  with the filter applied at the `wordProbs` build site.
+
+### Changed
+- **Android: `+dotprod` added to the arm64-v8a `-march` flag.** Was
+  `-march=armv8.2-a+fp16`, now `-march=armv8.2-a+fp16+dotprod`. Unlocks
+  the dotprod-accelerated `vec_dot_q*_q8_0` kernels in
+  `ggml-cpu/arch/arm/quants.c` (gated behind `__ARM_FEATURE_DOTPROD`).
+  Verified via `.cxx` `compile_commands.json` that `quants.c` and
+  `ggml-quants.c` both compile with the new flag. The `+dotprod` ARM
+  extension is ARMv8.2-A and is supported on every device our `+fp16`
+  target already covers (Cortex-A75+, Snapdragon 8-series, ~2018+
+  phones), so no minSdk impact.
+
+### Added
+- **Android: `whisper_print_timings()` log after every transcribe.**
+  Prints per-phase ggml compute time (load / mel / sample / encode /
+  decode / batchd / total) to stderr after each `whisper_full` returns.
+  Routes through `RustStdoutStderr` into logcat — grep for
+  `whisper_print_timings:` to capture. One line of JNI, no behavioral
+  change, makes future CPU tuning measurable.
+
+### Performance notes (Snapdragon 8 Elite, S25 Ultra, post-`+dotprod`)
+
+Live-measured wall time per `whisper_full` encoder pass, single-greedy
+decode, perf-core threading:
+
+| Model | encode/pass | decode/token |
+|---|---|---|
+| `ggml-small.bin` (fp16) | ~6.0 s | ~7 ms |
+| `ggml-large-v3-turbo-q5_0.bin` | ~14.8 s | ~7 ms |
+| `ggml-large-v3-turbo-q8_0.bin` | **~6.0 s** | ~19 ms |
+
+**Headline finding**: Large Turbo q8 encoder lands in the same wall-time
+envelope as Small fp16 on this hardware, despite being ~2× the model
+size. Reason: with `+dotprod`, q8_0 × q8_0 vec_dot runs as a direct
+UDOT/SDOT chain — no unpacking. q5_0 has to unpack 5-bit nibbles into
+int8 before the same UDOT, and that overhead lives inside every
+encoder matmul. The 287 MB download premium over q5_0 turbo buys you
+~2.5× faster encoder and a noticeably better model.
+
+For Pronunciation Coach scoring (which calls `whisper_full` twice per
+mic tap — constrained + free decode), Large q8 turbo total wall time
+≈ 2 × 6 s ≈ 12 s — comparable to Small but with Large-class
+multilingual quality.
+
+Encoder remains the wall on CPU; dotprod's biggest impact is on the
+per-token decode path, where it makes q8 specifically much cheaper.
+No regression on fp16 models (Tiny / Small / Medium / Full Weight
+Large Turbo) — those don't use the dotprod kernels.
+
+`+i8mm` (ARMv8.6-A int8 matrix multiply) is NOT enabled. Bigger
+potential win for q4/q5/q8 but only on Snapdragon 8 Gen 1+ (2022+
+phones); enabling in a single-variant build would SIGILL on older
+hardware. Defer until we either bump minSdk or wire ggml's
+multi-variant runtime selection. Encoder dominance suggests the
+incremental gain would be modest anyway — future investigation if
+needed.
+
+### Added
+- **Android: Phase 0 of the whisper.cpp port** — model load + download,
+  no audio capture yet.
+
+  - `src/main/cpp/whisper_jni.cpp` — JNI shim wrapping
+    `whisper_init_from_file_with_params` / `whisper_free` /
+    a version smoke test.
+  - `src/main/cpp/CMakeLists.txt` — externalNativeBuild config that
+    compiles whisper.cpp v1.8.4 (vendored under
+    `src/main/cpp/whisper.cpp/`, gitignored) plus the JNI shim into
+    a single `libwhisper-jni.so`. CPU-only for now (Metal off, OpenCL
+    off, Vulkan off, OpenMP off, BLAS off). arm64-v8a only.
+  - `WhisperContext.kt` — Kotlin wrapper that mirrors the Swift
+    `WhisperCppContext` actor. Holds the opaque `whisper_context*` as
+    a `Long`, exposes `load()` / `release()`, smoke-tests the JNI link
+    via `nativeVersion()`.
+  - `SttPlugin.kt` — rewritten from the all-rejecting stub to a
+    Phase 0 surface: `isAvailable` → true, `getStatus` returns device
+    memory + loaded-model state, `installModel` does single-file
+    OkHttp download from the same HF base URL the iOS side uses
+    (`huggingface.co/ggerganov/whisper.cpp/resolve/main/<file>`),
+    `prepare` calls into `WhisperContext.load`, `validateModel` /
+    `listInstalled` / `wipeModel` / `unload` round out the
+    file-management commands. `startSession` / `stopSession` /
+    `cancelSession` still reject with a clear "Phase 1" message.
+  - `AndroidManifest.xml` — INTERNET (model downloads) + RECORD_AUDIO
+    (Phase 1) permissions added.
+  - `build.gradle.kts` — externalNativeBuild + OkHttp + coroutines
+    deps; abiFilters = arm64-v8a only.
+
+  Phase 1 (next): AudioRecord pipeline → 16 kHz f32 mono, full
+  transcribe + per-token timing, scoring math mirrored 1:1 from the
+  Swift side.
+
+### Changed
+- **Runtime swapped from WhisperKit to whisper.cpp.** `STTPlugin.swift`
+  rewritten end-to-end against the `whisper` C module from the official
+  `whisper-v1.8.4-xcframework.zip` release asset on
+  `ggml-org/whisper.cpp`. New `WhisperCppContext` actor wraps
+  `whisper_init_from_file_with_params` + `whisper_full`. `Package.swift`
+  drops the `argmaxinc/WhisperKit` SPM dep in favor of a `binaryTarget`
+  pointing at the XCFramework (sha256
+  `1c7a93bd20fe4e57e0af12051ddb34b7a434dfc9acc02c8313393150b6d1821f`).
+
+  Why: every WhisperKit large-v3 variant is broken on iPadOS 26.4.x in
+  one of two distinct Apple compiler bugs (compile-time error -14 or
+  predict-time `MPSGraphTensorData initWithMTLBuffer` SIGABRT). See
+  `memory/feedback_whisper_ipados26_mps_crash.md` for the full failure
+  matrix. whisper.cpp ships its own Metal compute shaders and does NOT
+  route through MPSGraph — same Metal hardware, different code path
+  that the regression doesn't touch.
+
+  JS API contract preserved: every plugin command name + arg shape
+  + payload field is unchanged, so pronunciation-coach 0.3.x JS works
+  without modification.
+
+  Phase 1 (this entry) is a proof-of-concept. Several scoring inputs
+  WhisperKit surfaced as first-class (`noSpeechProb`,
+  `compressionRatio`, `temperature`, per-word timings) get sane
+  defaults until Phase 2 wires them through whisper.cpp's per-token
+  data + token timestamps. Single decode pass instead of dual
+  constrained+free; `freeVsConstrainedSimilarity` collapses to 1.0.
+
+- **Model storage layout:** moved from
+  `Documents/huggingface/models/argmaxinc/whisperkit-coreml/<name>/`
+  (multi-file `.mlmodelc` bundle) to `Documents/whisper-cpp/models/<name>`
+  (single `.bin` file). Old WhisperKit installs become orphans on disk;
+  cleanup is deferred. Install marker file pattern under
+  `Documents/.pronunciation-coach/installed/<name>.marker` is unchanged.
+
+- **Install:** `WhisperKit.download(variant:)` replaced with a single
+  `URLSession` download from `https://huggingface.co/ggml-org/whisper.cpp/resolve/main/<filename>`.
+  `URLSessionDownloadDelegate` reports byte-level progress mapped onto
+  the existing `InstallProgressPayload` shape.
+
+### Removed
+- `loadKitWithComputeFallback` and the CPU+GPU → CPU-only fallback
+  path. whisper.cpp doesn't have CoreML's error -14 problem, and
+  flash_attn / use_gpu are simple struct fields rather than typed
+  enums. The decision tree collapses to a single `WhisperCppContext.load(path:)`.
+- `isComputeBackendError`, `isTransientMmapError` — both were
+  WhisperKit / CoreML specific symptoms.
+- The `.mlmodelc` directory tree validation in `validateModel` —
+  replaced with a single-file existence + size check.
+- The atomic-staging install pattern (move-aside / rollback). Single
+  `.bin` files are atomic by construction; on failure we just remove
+  the partial file.
+
 ## [0.2.3] - 2026-05-07
 
 This release is the consolidated state of an intense same-day

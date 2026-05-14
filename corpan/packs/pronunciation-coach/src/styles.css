@@ -964,10 +964,24 @@ body,
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
+  /* Bottom padding floor is 120px (was 24px) because Tauri's
+     Android WebView renders edge-to-edge under the system nav bar
+     and does NOT populate `env(safe-area-inset-bottom)` — meaning
+     `var(--pc-safe-bottom)` resolves to 0px on Android. The
+     Samsung gesture / 3-button nav bar can be up to ~120 device
+     pixels on high-density displays (S25 Ultra class), so the
+     floor has to cover that worst case to keep content from
+     sitting on top of the system buttons.
+
+     iOS continues to stack its actual safe-area inset on top of
+     the floor. Net effect on iOS: about 120px of bottom padding
+     in the model chooser even on devices that don't need it. That
+     looks fine — this is a one-time picker screen, not a
+     space-constrained main UI. */
   padding:
     calc(20px + var(--pc-safe-top))
     calc(24px + var(--pc-safe-right))
-    calc(24px + var(--pc-safe-bottom))
+    calc(120px + var(--pc-safe-bottom))
     calc(24px + var(--pc-safe-left));
   display: flex;
   flex-direction: column;
@@ -1061,6 +1075,15 @@ body,
   color: var(--pc-fg);
   opacity: 0.85;
 }
+.pc-setup-card-techid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--pc-muted);
+  opacity: 0.65;
+  word-break: break-all;
+  margin-top: 2px;
+}
 .pc-setup-card-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1138,6 +1161,14 @@ body,
   color: var(--pc-muted);
   text-align: center;
   line-height: 1.5;
+  /* The last element in the scrollable setup body — own its
+     bottom clearance directly so the text never sits under the
+     Android system nav bar. Parent `.pc-setup` padding-bottom
+     can get squashed by `.pc-setup-root`'s flex
+     `align-items: stretch` on Android WebView. Margin on the
+     element itself is in the scroll content directly and
+     cannot be eaten. */
+  margin-bottom: calc(20px + var(--pc-safe-bottom));
 }
 
 /* ============================================================

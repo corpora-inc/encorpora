@@ -681,8 +681,8 @@ export const mountGame = (
   }
 
   const renderUnavailable = (
-    title = "Pronunciation Coach is iOS-only for now",
-    body = "On-device speech recognition is iOS-only for now. Coming to other platforms later."
+    title = "Speech recognition isn't available on this device",
+    body = "Pronunciation Coach needs the on-device Whisper plugin and didn't find a working one here. Try updating the app, or this platform may not be supported yet."
   ) => {
     container.innerHTML = `
       <div class="pc-root">
@@ -1445,7 +1445,7 @@ export const mountGame = (
       bannerEl.hidden = false
       detailEl.innerHTML = `
         <div class="pc-chips">
-          <div class="pc-chip">Move the iPad closer or speak louder.</div>
+          <div class="pc-chip">Move the device closer or speak louder.</div>
         </div>
       `
       detailEl.hidden = false
@@ -1734,7 +1734,7 @@ export const mountGame = (
       outcome = await runSetup({
         currentActive: activeForOverlay,
         headline: "Pronunciation Coach · Models",
-        sub: "These are cutting-edge AI speech models running entirely on your device. They get things wrong all the time, the bigger ones can be memory-hungry, and any of them might surprise you in either direction. Have fun — don't take the scoring too seriously.",
+        sub: "These are large, experimental, cutting-edge AI speech models running entirely on your device — no servers, no internet, no privacy compromises. They are also, frankly, not as reliable as you might hope. The bigger ones might crash your phone. The smaller ones might transcribe 'good morning' as 'goldfish moon'. Any of them might surprise you in either direction. Welcome to on-device AI in 2026. Don't take the scoring too seriously. 🤷",
       })
     } finally {
       modelSwitching = false
@@ -2214,23 +2214,17 @@ export const mountGame = (
                 m.approxSizeMB >= 1000
                   ? `~${(m.approxSizeMB / 1000).toFixed(1)} GB`
                   : `~${m.approxSizeMB} MB`
-              // Keep the fancy accented styling on the full-fat
-              // Advanced card so it visually reads as the premium
-              // (but caveated) tier. Other tiers use the default
-              // card chrome.
-              const fancyClass =
-                m.id === "advanced" ? " pc-setup-card-advanced" : ""
-              const sparkle = m.id === "advanced" ? " ✦" : ""
               return `
-            <div class="pc-setup-card${fancyClass}" data-mode="${m.id}">
+            <div class="pc-setup-card" data-mode="${m.id}">
               <div class="pc-setup-card-head">
                 <div>
-                  <div class="pc-setup-card-name">${escapeHtml(m.label)}${sparkle} <span class="pc-setup-card-status" data-status="${m.id}"></span></div>
+                  <div class="pc-setup-card-name">${escapeHtml(m.label)} <span class="pc-setup-card-status" data-status="${m.id}"></span></div>
                   <div class="pc-setup-card-meta">${sizeLabel}</div>
                 </div>
                 <div class="pc-setup-card-actions" data-actions="${m.id}"></div>
               </div>
               <div class="pc-setup-card-desc">${escapeHtml(m.shortDesc)}</div>
+              <div class="pc-setup-card-techid" title="Underlying model file (whisper.cpp ggml format)">${escapeHtml(m.folder)}</div>
               <div class="pc-setup-progress" data-progress="${m.id}" hidden>
                 <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
                 <div class="pc-setup-progress-label">Preparing…</div>
@@ -2240,7 +2234,7 @@ export const mountGame = (
 
             <div class="pc-setup-error" id="pc-setup-error" hidden></div>
             <div class="pc-setup-note">
-              Models live on your device under the app's data folder. They never leave your iPad. You can switch or remove them anytime from this screen.
+              Models live on your device under the app's data folder. They never leave your device. You can switch or remove them anytime from this screen.
             </div>
           </div>
         </div>
@@ -2479,14 +2473,13 @@ export const mountGame = (
               if (event.phase === "downloading") {
                 const pct = Math.round((event.fraction ?? 0) * 100)
                 let label = `Downloading ${pct}%`
-                // swift-transformers' HubApi reports progress in *files*,
-                // not bytes — `completedUnitCount` / `totalUnitCount` are
-                // file counts (e.g. 3 / 5). Don't pretend they're bytes;
-                // show "file X of Y" instead. (Big-byte progress would
-                // require summing per-file bytes which the Swift side
-                // doesn't expose today.)
+                // whisper.cpp era: single-file ggml-*.bin downloads
+                // via URLSession, so `completed` / `total` are bytes.
+                // Show MB; raw byte counts are unreadable (a Medium
+                // download is ~1.5 billion bytes).
                 if (event.completed != null && event.total && event.total > 0) {
-                  label += ` · file ${event.completed} of ${event.total}`
+                  const mb = (n: number) => (n / (1024 * 1024)).toFixed(0)
+                  label += ` · ${mb(event.completed)} / ${mb(event.total)} MB`
                 }
                 setProgress(mode, event.fraction ?? 0, label)
               } else if (event.phase === "verifying") {
@@ -2575,11 +2568,21 @@ export const mountGame = (
 
   const boot = async () => {
     showOverlay("Checking models…")
-    let available = false
+    let available: boolean
     try {
       available = await stt.isAvailable()
     } catch (err) {
-      console.error("[pronunciation-coach] isAvailable failed:", err)
+      // The bridge call itself failed — this is qualitatively different
+      // from "the plugin says no". Show the user the real error so the
+      // failure mode isn't a flat "unavailable" screen with no clue.
+      console.error("[pronunciation-coach] stt.isAvailable bridge call threw:", err)
+      if (disposed) return
+      hideOverlay()
+      renderUnavailable(
+        "Speech recognition bridge failed",
+        `The native speech-recognition plugin returned an error: ${String(err)}`
+      )
+      return
     }
     if (disposed) return
     if (!available) {
@@ -2650,7 +2653,7 @@ export const mountGame = (
     const bootIsLargeModel = (modelById(modelMode)?.approxSizeMB ?? 0) >= 300
     showOverlay(
       bootIsLargeModel
-        ? `Loading ${bootModelLabel} model… first load can take ~1 minute while iOS compiles it for the Neural Engine. Subsequent launches are instant.`
+        ? `Loading ${bootModelLabel} model… first load can take ~1 minute for large models. Subsequent launches are faster.`
         : `Loading ${bootModelLabel} model…`
     )
     micLabel.textContent = bootIsLargeModel
