@@ -10,6 +10,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-05-14
+### Changed
+- Auto-scroll reading anchor 0.67 → 0.60 of the clean reading area —
+  active word lands a touch closer to mid-frame, so the next line is
+  visible sooner without losing the read-text trail above.
+- Long-segment first-word start position lifted ~8px:
+  `--pad-top` buffer 40 → 32 below `--eg-top-clearance`. The first
+  line now sits a touch higher in the clean zone, giving the eye a
+  little more room to read forward before the auto-scroll pulls
+  the word down to its anchor.
+
+### Fixed
+- Transport bar no longer shrinks on first play for chapterless
+  books. Root cause was two bugs compounding: the chapter title
+  initialized to `"Ready"` as a status placeholder, then was
+  cleared on first play when the audio engine's segment-change
+  callback fired `setChapter("")`. Fix: never use `"Ready"` as a
+  fallback (no fake chapter), and `.earthgate-chapter-title:empty`
+  collapses cleanly (`display: none`) so the book title stays
+  vertically centered against the time on the right.
+
 ## [0.6.2] - 2026-05-10
 ### Changed
 - Transport bar typography refreshed: book title (italic gold, 13 px)
