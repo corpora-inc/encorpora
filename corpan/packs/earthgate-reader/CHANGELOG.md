@@ -10,7 +10,7 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.6.3] - 2026-05-13
+## [0.6.3] - 2026-05-14
 ### Added
 - Anonymous analytics: `segment_play` (auto-advance + active playback)
   and `segment_play_one` (tap-to-replay) events with `segment_index`.
@@ -18,6 +18,26 @@ Conventions: `corpan/CHANGELOGS.md`.
   what's actually being listened to, survives lock-screen background
   audio, and the `segment_play_one : segment_play` ratio per session
   is the language-learning vs. audiobook signal.
+
+### Changed
+- Auto-scroll reading anchor 0.67 → 0.60 of the clean reading area —
+  active word lands a touch closer to mid-frame, so the next line is
+  visible sooner without losing the read-text trail above.
+- Long-segment first-word start position lifted ~8px:
+  `--pad-top` buffer 40 → 32 below `--eg-top-clearance`. The first
+  line now sits a touch higher in the clean zone, giving the eye a
+  little more room to read forward before the auto-scroll pulls
+  the word down to its anchor.
+
+### Fixed
+- Transport bar no longer shrinks on first play for chapterless
+  books. Root cause was two bugs compounding: the chapter title
+  initialized to `"Ready"` as a status placeholder, then was
+  cleared on first play when the audio engine's segment-change
+  callback fired `setChapter("")`. Fix: never use `"Ready"` as a
+  fallback (no fake chapter), and `.earthgate-chapter-title:empty`
+  collapses cleanly (`display: none`) so the book title stays
+  vertically centered against the time on the right.
 
 ## [0.6.2] - 2026-05-10
 ### Changed
