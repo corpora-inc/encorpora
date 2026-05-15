@@ -129,6 +129,42 @@ verified by a fact-check subagent:
 
 ## Per-segment text discipline
 
+### Segment sizing — one sentence per segment (Ep 2+)
+
+**One sentence per segment.** Issue 1 shipped with some multi-sentence
+segments and the listen sounds good (Gemini Flash 3.1 reads paragraphs
+with great intra-segment cadence), but at scale the multi-sentence
+shape has three concrete downsides for a language-learning catalog:
+
+1. **Blast radius.** A Gemini truncation on a 3-sentence segment ruins
+   3 sentences of audio. Single-sentence segments contain the damage
+   to one sentence. Issue 1 JA had 5 of 6 stuck segments in long
+   multi-sentence ones; the short-segment JA in the same pack went
+   clean.
+2. **Drill loop.** The reader's tap-to-replay UX is the language-
+   learning atom. A 3-sentence segment makes tap-to-replay span ~12s
+   instead of ~3s. Single is the natural drill unit.
+3. **Auto-rewrite risk surface.** Codex rewrites a multi-sentence
+   segment as one unit; preserving meaning across all sentences while
+   addressing a truncation defect is harder than rewriting one
+   sentence. One sentence in, one sentence out is bounded.
+
+The intra-paragraph cadence we'd lose by splitting is rebuildable in
+the reader via per-segment `pause_after_ms` chosen with intent:
+
+- Within a thought (clause continuing): 250–400ms
+- New sentence within same idea: 500–700ms
+- Topic shift / paragraph break: 1000–1500ms
+- Section break (heading): 1500–2000ms
+
+**Trim aggressively** so the trailing silence in the audio is ~50ms
+and the reader-side pause dominates. `narration.yaml` has
+`trimming.always_trim: true` for this pack and that should stay.
+
+Result: the listen sounds nearly identical to a multi-sentence
+recording, the drill loop is preserved, and the Gemini failure
+surface shrinks.
+
 ### Speaker correctness
 Every `**HOST:**` line is a question, a framing, a quick reaction, or a
 confirmation. Every `**ANALYST:**` line is fact-delivery, an explanation,
@@ -144,6 +180,9 @@ back". The show is uninterrupted.
   — they trip `tail_zero_duration_run` on Gemini
 - Don't repeat a phrase verbatim in adjacent segments — Gemini sometimes
   loses its place
+- Keep each segment under ~120 chars in the source language (longer
+  segments hit Gemini truncation limits, especially in JA/KO/AR/HE).
+  This naturally follows from one-sentence-per-segment.
 
 ---
 

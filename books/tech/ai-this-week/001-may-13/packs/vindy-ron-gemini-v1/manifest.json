@@ -1,7 +1,7 @@
 {
   "id": "book_ai_this_week_2026_05_13",
   "name": "AI This Week — May 13, 2026 — Rate Cuts and Routers",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

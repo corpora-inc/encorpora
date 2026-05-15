@@ -283,6 +283,37 @@ audit the translator to make sure it survives. Better: assert
 field-set parity between source and translated segments at the
 end of `ttsctl translate`.
 
+### 18. Whisper forced alignment is not thread-safe — disguised as "language bug"
+
+**Mistake:** `PipelineConfig.align_workers` defaulted to 4. The pipeline
+ran 4 `stable_whisper.model.align()` calls in parallel on the same Whisper
+model instance. On the ES regen, 28 of 62 segments crashed in alignment
+with errors like `"Expected size 18 but got size 106 for tensor 7"` and
+`"index 9 is out of bounds for axis 0 with size 9"`. I initially blamed
+Gemini truncation, then "Whisper can't do Spanish."
+
+**Root cause:** stable-whisper's `model.align()` shares model state
+(token cache, attention masks, encoder cache) across calls. Two threads
+hitting the same model simultaneously stomp each other's tensors. The
+crashes only happen with N>1 workers; sequential alignment of the EXACT
+same files succeeds every time. Verified with a direct
+`stable_whisper.load_model("large-v3").align(...)` test on ch00-001,
+ch00-008, ch00-023 — all aligned cleanly.
+
+**Cost amplifier:** crashed alignment → segment FAILED → cycle reset
+to RETRY → paid Gemini regen → same crash. Infinite spend loop on a
+concurrency bug.
+
+**Fix shipped 2026-05-14:**
+- `PipelineConfig.align_workers = 1` (was 4)
+- pipeline.py fallback default lowered to 1
+- Memory: `feedback_whisper_align_not_thread_safe`
+
+**Stop sign:** if a Whisper alignment error mentions `tensor`,
+`size`, `axis`, or `out of bounds` — that's a thread-safety crash,
+NOT a language / audio defect. Drop align_workers to 1 BEFORE
+regenerating audio.
+
 ### 17. Hand-patch scripts that hardcode display values stomp auto_rewrite
 
 **Mistake:** I wrote `/tmp/normalize_display.py` with a hand-typed
