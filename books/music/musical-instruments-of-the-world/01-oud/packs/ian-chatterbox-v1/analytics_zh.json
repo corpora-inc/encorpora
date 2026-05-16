@@ -1,0 +1,829 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "zh",
+  "timestamp": "2026-05-12T18:07:41.029605+00:00",
+  "segments_total": 161,
+  "segments_first_pass": 155,
+  "segments_converged_by_retry": 6,
+  "segments_plateau_stopped": 0,
+  "total_retries": 10,
+  "error_distribution": {
+    "trailing_silence": 58,
+    "first_word_weak": 45,
+    "tail_energy": 30,
+    "final_word_weak": 19,
+    "stacked_words": 18,
+    "tts_audio_truncated": 9,
+    "min_trailing_silence": 7,
+    "truncated_last_word": 7,
+    "tail_zero_duration_run": 6,
+    "pre_speech_spike": 4,
+    "post_speech_pop": 2,
+    "word_cluster": 1,
+    "short_words": 1
+  },
+  "phase_timings": {
+    "tts": 171.24333572387695,
+    "align": 72.24352812767029,
+    "validate": 30.75468349456787,
+    "trim": 0.09470367431640625,
+    "master": 3.507819175720215
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 139,
+      "passed": 134,
+      "rate": 0.9640287769784173
+    },
+    "medium_30_80": {
+      "total": 22,
+      "passed": 21,
+      "rate": 0.9545454545454546
+    },
+    "long_80_plus": {
+      "total": 0,
+      "passed": 0,
+      "rate": 0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch07-140",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.6245054836398749,
+            "exaggeration": 0.1365787837441902,
+            "temperature": 0.5878292438735244,
+            "top_p": 1.0,
+            "min_p": 0.34346885891163603,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.36543080539116374,
+            "exaggeration": 0.4431225206553068,
+            "temperature": 0.4576666331731537,
+            "top_p": 0.6656175373140456,
+            "min_p": 0.33494536295860644,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.5545536164049754,
+            "exaggeration": 0.6613489024125906,
+            "temperature": 0.7247621510276587,
+            "top_p": 0.7550423573789491,
+            "min_p": 0.0776274997252078,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.2752113962453788,
+            "temperature": 0.05,
+            "top_p": 0.7957691815366277,
+            "min_p": 0.2830570172032706,
+            "repetition_penalty": 1.7
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8449074362354125,
+            "exaggeration": 0.45435578446586683,
+            "temperature": 0.17591572157448487,
+            "top_p": 0.6762461061084647,
+            "min_p": 0.30872959396106237,
+            "repetition_penalty": 1.7
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "它一路旅行，也一路改变了形状、名字和曲子。",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 2,
+      "best_quality_score": 35.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.7505205964028318,
+            "exaggeration": 0.3284943451271589,
+            "temperature": 0.539806718935087,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "这样加起来，就是十一根。",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-038",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3528493203266571,
+            "temperature": 0.4624642920199845,
+            "top_p": 1.0,
+            "min_p": 0.15554770715734842,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "从那里开始，乌德琴继续旅行。",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-063",
+      "attempts": 2,
+      "best_quality_score": 65.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "trailing_silence"
+          ],
+          "score": 83.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 65.0,
+          "params": {
+            "cfg_weight": 0.6920303091339779,
+            "exaggeration": 0.2231280170052155,
+            "temperature": 0.3569734634227799,
+            "top_p": 0.768286431000538,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "里沙这个词，原来的意思是羽毛。",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-084",
+      "attempts": 2,
+      "best_quality_score": 90.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 90.0,
+          "params": {
+            "cfg_weight": 0.9064894025839196,
+            "exaggeration": 0.25532154409137336,
+            "temperature": 0.4575546690585127,
+            "top_p": 0.7615835838018199,
+            "min_p": 0.20602905629348547,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "弹钢琴时，你会按下白键和黑键。",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-150",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "final_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7760907522396308,
+            "exaggeration": 0.3905236026481588,
+            "temperature": 0.3633413343057571,
+            "top_p": 0.7142391267359787,
+            "min_p": 0.007020904497080677,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "大约到公元一八零零年，在西班牙，这件新乐器有了一个我们都熟悉的名字。",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 18,
+      "text_preview": "这是一本讲乌德琴这种木制弦乐器的书。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "人们演奏它，已经超过一千年了。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "在海边的城市和山里的村庄，你都能听见乌德琴。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 24,
+      "text_preview": "在古老的宫殿里，也在小小的木台上，你都能听见它。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 31,
+      "text_preview": "在这本书里，我们会认识乌德琴的样子、做法，还有塑造它故事的人。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "读到最后，你会知道乌德琴为什么有时被叫作弦中之王。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 10,
+      "text_preview": "乌德琴是一种弦乐器。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 19,
+      "text_preview": "它属于鲁特琴一类，琴身像一个切开的梨。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "乌德琴的背面又圆又深，像一个木碗。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 8,
+      "text_preview": "它的正面是平的。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 15,
+      "text_preview": "我们把这块平平的正面叫作音板。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.9
+          }
+        }
+      ],
+      "text_len": 16,
+      "text_preview": "乌德琴的琴颈很短，而且没有品丝。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 45.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 20,
+      "text_preview": "品丝就是你在吉他上看到的那些细细金属线。",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "没有品丝，演奏者就能很顺地在音与音之间滑动。",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

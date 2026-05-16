@@ -1,0 +1,676 @@
+{
+  "book_id": "august-chatterbox-v1",
+  "language": "pt",
+  "timestamp": "2026-05-11T20:44:58.328573+00:00",
+  "segments_total": 285,
+  "segments_first_pass": 282,
+  "segments_converged_by_retry": 3,
+  "segments_plateau_stopped": 0,
+  "total_retries": 3,
+  "error_distribution": {
+    "trailing_silence": 61,
+    "tail_energy": 58,
+    "first_word_weak": 33,
+    "pre_speech_spike": 26,
+    "final_word_weak": 22,
+    "post_speech_pop": 15,
+    "first_word_mismatch": 9,
+    "tts_audio_truncated": 4,
+    "tail_spike": 4,
+    "min_trailing_silence": 3,
+    "tail_zero_duration_run": 2,
+    "stacked_words": 2,
+    "truncated_last_word": 2
+  },
+  "phase_timings": {
+    "tts": 166.45651054382324,
+    "align": 54.146888732910156,
+    "validate": 40.67931342124939,
+    "trim": 0.16888737678527832,
+    "master": 5.760223627090454
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 1,
+      "passed": 1,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 157,
+      "passed": 155,
+      "rate": 0.9872611464968153
+    },
+    "long_80_plus": {
+      "total": 127,
+      "passed": 126,
+      "rate": 0.9921259842519685
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch01-016",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9690385388183486,
+            "exaggeration": 0.30564842318381624,
+            "temperature": 0.40323201370214035,
+            "top_p": 0.8063916989425655,
+            "min_p": 0.07298167784920748,
+            "repetition_penalty": 3.0
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "Ao norte fica a Europa, ao sul a África e, a leste, o continente asiático.",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-029",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.5202934007625655,
+            "temperature": 0.6176421721129066,
+            "top_p": 0.7630157361669607,
+            "min_p": 0.0,
+            "repetition_penalty": 2.7325746124501933
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "A costa norte-africana, conhecida como Costa da Barbária, tornou-se um refúgio p",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-120",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.915088501326961,
+            "exaggeration": 0.3720535305707638,
+            "temperature": 0.7088980907297036,
+            "top_p": 0.9517380855281141,
+            "min_p": 0.22511576038827094,
+            "repetition_penalty": 2.274635093237404
+          }
+        }
+      ],
+      "text_len": 65,
+      "text_preview": "Foi uma jogada ousada e audaciosa que alarmou o Império Espanhol.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 123,
+      "text_preview": "Esta é a verdadeira história de Hayreddin Barbarossa, o homem que transformou o ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 60.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "post_speech_pop"
+          ],
+          "score": 60.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Ele começou a vida como filho de um oleiro em uma ilha grega.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Terminou-a como Grande Almirante da mais poderosa marinha do Mar Mediterrâneo.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "Sua história abrange um século de conflito entre o Império Otomano e a Europa cr",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 76,
+      "text_preview": "É uma história de irmãos, corsários, sultões e da luta pelo controle do mar.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "Cada batalha, aliança e traição descrita neste livro é extraída dos registros hi",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 25.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "A carreira de Barbarossa mudou o mapa do mundo mediterrâneo.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "A marinha que ele construiu dominou o mar por gerações após sua morte.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "Seu legado ainda molda as costas e culturas do Norte da África nos dias de hoje.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Onde o registro histórico é incompleto, dizemos isso claramente.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "Onde os historiadores discordam sobre datas ou detalhes, apresentamos o relato m",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "Isto é história, não lenda, e a tratamos com o cuidado que merece.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "O Mar Mediterrâneo situa-se na encruzilhada de três continentes.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 84,
+      "text_preview": "Por milhares de anos, toda grande civilização em suas costas lutou para controlá",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 95,
+      "text_preview": "No final do século quinze, o Mediterrâneo era um campo de batalha entre duas gra",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 87,
+      "text_preview": "A leste, o Império Otomano expandia-se rapidamente sob uma série de sultões ambi",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 86,
+      "text_preview": "A oeste, os reinos da Espanha e o Sacro Império Romano sob Carlos V tentavam res",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": 0.017,
+        "temperature": 0.069,
+        "repetition_penalty": 0.16
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.092,
+        "temperature": 0.256,
+        "repetition_penalty": 0.637
+      }
+    },
+    "tail_energy": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ output "verify_api_url" {
 }
 
 output "verify_custom_domain_validation" {
-  value = var.enable_custom_domain ? aws_acm_certificate.verify[0].domain_validation_options : []
+  value       = var.enable_custom_domain ? aws_acm_certificate.verify[0].domain_validation_options : []
   description = "DNS validation records for custom domain (Namecheap)."
 }
 
@@ -31,7 +31,7 @@ output "dgx_publisher_user" {
 }
 
 output "cdn_certificate_validation" {
-  value = var.enable_cdn && var.cdn_domain_name != "" ? aws_acm_certificate.cdn[0].domain_validation_options : []
+  value       = var.enable_cdn && var.cdn_domain_name != "" ? aws_acm_certificate.cdn[0].domain_validation_options : []
   description = "DNS validation records for CDN ACM certificate."
 }
 
@@ -73,4 +73,25 @@ output "analytics_database" {
 output "analyst_user" {
   value       = aws_iam_user.analyst.name
   description = "IAM user for read-only analytics queries from the DGX agent."
+}
+
+output "assets_bucket" {
+  value       = aws_s3_bucket.assets.bucket
+  description = "Private S3 bucket for shared misc assets (videos, storefront materials). Not a production dependency."
+}
+
+output "s3_admin_user" {
+  value       = aws_iam_user.s3_admin.name
+  description = "IAM user with full S3 admin (create buckets, manage prod, etc)."
+}
+
+output "s3_admin_access_key_id" {
+  value       = aws_iam_access_key.s3_admin.id
+  description = "Access key ID for the S3 admin IAM user."
+}
+
+output "s3_admin_secret_access_key" {
+  value       = aws_iam_access_key.s3_admin.secret
+  description = "Secret access key for the S3 admin IAM user. Retrieve with: terraform output -raw s3_admin_secret_access_key"
+  sensitive   = true
 }

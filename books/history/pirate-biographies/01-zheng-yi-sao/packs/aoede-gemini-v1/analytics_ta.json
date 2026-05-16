@@ -1,0 +1,611 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "ta",
+  "timestamp": "2026-05-01T17:28:00.469322+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 302,
+  "segments_converged_by_retry": 1,
+  "segments_plateau_stopped": 0,
+  "total_retries": 1,
+  "error_distribution": {
+    "transcription_mismatch": 107,
+    "tail_energy": 28,
+    "first_word_weak": 9,
+    "pre_speech_spike": 9,
+    "trailing_silence": 2,
+    "final_word_weak": 2,
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1,
+    "truncated_last_word": 1,
+    "min_trailing_silence": 1,
+    "tts_audio_truncated": 1
+  },
+  "phase_timings": {
+    "tts": 5.0210490226745605,
+    "align": 10.840375423431396,
+    "validate": 5.2186009883880615,
+    "trim": 0.00867462158203125,
+    "master": 0.3162503242492676
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 0,
+      "passed": 0,
+      "rate": 0
+    },
+    "medium_30_80": {
+      "total": 158,
+      "passed": 158,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 145,
+      "passed": 144,
+      "rate": 0.993103448275862
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-119",
+      "attempts": 2,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 109,
+      "text_preview": "அவரது முதல் நடவடிக்கை, அவரது கணவரின் மிகவும் நம்பகமான லெப்டினன்ட் ஆன சாங் பாவோவி",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 92,
+      "text_preview": "இது, பதிவுசெய்யப்பட்ட வரலாற்றிலேயே மிகவும் வெற்றிகரமான கடற்கொள்ளையரைப் பற்றிய ஒர",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 4.32,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.32,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "அவரது பெயர் செங் யி சாவ், மேலும் அவர் உலகம் கண்டிராத மிகப்பெரிய கடற்கொள்ளையர் கட",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 119,
+      "text_preview": "அவரது அதிகாரத்தின் உச்சத்தில், பெரும்பாலான நாடுகள் வைத்திருந்த கப்பல்களை விட அதி",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "அவர் செல்வம் அல்லது சலுகைகளில் பிறக்கவில்லை.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "அவர் பதினெட்டாம் நூற்றாண்டின் பிற்பகுதியில் தெற்கு சீனாவில் வறுமையில் பிறந்தார்.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 123,
+      "text_preview": "அவர் அடைந்த அனைத்தையும், புத்திசாலித்தனம், இரக்கமற்ற தன்மை மற்றும் மக்களை ஒழுங்க",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 113,
+      "text_preview": "எதுவுமற்ற ஒரு பெண் எப்படி தென் சீனக் கடலின் மறுக்க முடியாத ஆட்சியாளராக மாறினார் ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "இது போர், வர்த்தகம், சட்டம் மற்றும் உயிர்வாழ்வு பற்றிய கதை.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 109,
+      "text_preview": "ஐரோப்பிய சக்திகள் ஆசியாவிற்குள் ஆழமாக நுழைந்ததால், வேகமாக மாறிக்கொண்டிருந்த ஒரு ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 83,
+      "text_preview": "இந்த புத்தகத்தில் உள்ள ஒவ்வொரு உண்மையும் வரலாற்றுப் பதிவில் இருந்து எடுக்கப்பட்ட",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "பதிவு நிச்சயமற்றதாக இருக்கும் இடங்களில், நாங்கள் அதைக் குறிப்பிடுகிறோம்.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 103,
+      "text_preview": "வரலாற்றாசிரியர்கள் கருத்து வேறுபடும் இடங்களில், கிடைக்கக்கூடிய வலுவான ஆதாரங்களை ",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "தென் சீனக் கடல் பூமியின் மிகவும் பரபரப்பான நீர்வழிகளில் ஒன்றாகும்.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "இது மேற்கில் வியட்நாம் கடற்கரையிலிருந்து கிழக்கில் பிலிப்பைன்ஸ் வரை பரவியுள்ளது.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "வடக்கில் சீனக் கடற்கரையும், தெற்கில் போர்னியோ மற்றும் சுமாத்ரா தீவுகளும் அமைந்து",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.44,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "ஆயிரக்கணக்கான ஆண்டுகளாக, வர்த்தகர்கள் இந்த நீரில் பயணம் செய்துள்ளனர்.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 110,
+      "text_preview": "சீன ஜங்குகள் பட்டு, பீங்கான் மற்றும் தேயிலையை தென்கிழக்கு ஆசியா முழுவதும் உள்ள த",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "பதிலுக்கு, மசாலாப் பொருட்கள், வெப்பமண்டல மரங்கள் மற்றும் கவர்ச்சியான பொருட்கள் ச",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "இப்போது குவாங்சோ என்று அழைக்கப்படும் கேண்டன் நகரம் இந்த வர்த்தகத்தின் மையத்தில் ",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

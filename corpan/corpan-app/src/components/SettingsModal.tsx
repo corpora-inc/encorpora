@@ -20,6 +20,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 import About from "./About";
+import { AnonymousAnalyticsToggle } from "./AnonymousAnalyticsToggle";
 import { ThemeToggle } from "./ThemeToggle";
 import { useSettingsStore } from "@/store/settings";
 import { useEffect, useRef, useState } from "react";
@@ -225,6 +226,11 @@ export function SettingsModal({
             </Button>
 
             <Separator className="mt-5" />
+
+            {/* Global (not stack-scoped) — anonymous usage analytics opt-out. */}
+            <AnonymousAnalyticsToggle />
+
+            <Separator />
 
             <div className="space-y-1 my-5">
               <h4 className="text-2xl leading-none font-medium text-center">

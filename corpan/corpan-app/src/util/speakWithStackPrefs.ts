@@ -5,6 +5,7 @@
 import { createVoiceTTS, createVoiceTTSConcurrent } from "@/util/speak";
 import { useSettingsStore } from "@/store/settings";
 import { getVoicesCached } from "@/util/tts-voices";
+import { incrementSegmentCounter } from "@/util/analytics";
 
 /**
  * Helper to get the voice ID to use based on stack preferences.
@@ -43,6 +44,7 @@ async function getPreferredVoiceId(uiCode: string): Promise<string | undefined> 
 }
 
 export async function speakWithStackPrefs(uiCode: string, text: string, rate: number) {
+    incrementSegmentCounter(uiCode);
     const chosenId = await getPreferredVoiceId(uiCode);
     await createVoiceTTS(uiCode)(text, rate, chosenId);
 }
@@ -53,6 +55,7 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
  * Returns an utterance ID for tracking completion.
  */
 export async function speakConcurrentWithStackPrefs(uiCode: string, text: string, rate: number): Promise<string> {
+    incrementSegmentCounter(uiCode);
     const chosenId = await getPreferredVoiceId(uiCode);
     return await createVoiceTTSConcurrent(uiCode)(text, rate, chosenId);
 }

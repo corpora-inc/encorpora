@@ -11,6 +11,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ## [0.6.3] - 2026-05-14
+### Added
+- Anonymous analytics: `segment_play` (auto-advance + active playback)
+  and `segment_play_one` (tap-to-replay) events with `segment_index`.
+  Replaces wall-clock `duration_ms` as the engagement metric — counts
+  what's actually being listened to, survives lock-screen background
+  audio, and the `segment_play_one : segment_play` ratio per session
+  is the language-learning vs. audiobook signal.
+
 ### Changed
 - Auto-scroll reading anchor 0.67 → 0.60 of the clean reading area —
   active word lands a touch closer to mid-frame, so the next line is

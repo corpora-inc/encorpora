@@ -25,11 +25,15 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@shared/*": [
+        "../packs/shared/*"
       ]
     }
   },
   "include": [
-    "src"
+    "src",
+    "../packs/shared/analytics"
   ],
   "references": [
     {

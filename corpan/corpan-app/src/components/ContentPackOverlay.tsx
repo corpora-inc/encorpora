@@ -1,5 +1,12 @@
 import { useEffect } from "react"
 import ContentPackHost from "@/contentPacks/ContentPackHost"
+import { useSettingsStore } from "@/store/settings"
+import {
+  trackPackEntered,
+  trackPackHeartbeat,
+  trackPackExited,
+  getSessionSegmentCount,
+} from "@/util/analytics"
 
 export function ContentPackOverlay({
   id,
@@ -19,6 +26,35 @@ export function ContentPackOverlay({
     })
     return () => cancelAnimationFrame(timer)
   }, [])
+
+  // Pack lifecycle analytics: entered → heartbeat (30s) → exited.
+  // `language` is sampled at mount and each heartbeat tick from the primary
+  // language in the active stack — not subscribed, so a mid-session language
+  // change does not restart the interval.
+  useEffect(() => {
+    const mountedAt = Date.now()
+    const initialSegments = getSessionSegmentCount()
+    let lastHeartbeatSegments = initialSegments
+    const enterLang = useSettingsStore.getState().languages[0] || ""
+
+    trackPackEntered(id, enterLang)
+
+    const interval = window.setInterval(() => {
+      const currentSegments = getSessionSegmentCount()
+      const segmentsDelta = currentSegments - lastHeartbeatSegments
+      const currentLang = useSettingsStore.getState().languages[0] || ""
+      trackPackHeartbeat(id, currentLang, segmentsDelta)
+      lastHeartbeatSegments = currentSegments
+    }, 30_000)
+
+    return () => {
+      window.clearInterval(interval)
+      const durationMs = Date.now() - mountedAt
+      const segmentsInPack = getSessionSegmentCount() - initialSegments
+      const exitLang = useSettingsStore.getState().languages[0] || ""
+      trackPackExited(id, exitLang, durationMs, segmentsInPack)
+    }
+  }, [id])
 
   return (
     <div className="fixed inset-0 z-[1100]">

@@ -1,0 +1,815 @@
+{
+  "book_id": "vindy-ron-gemini-v1",
+  "language": "ms",
+  "timestamp": "2026-05-14T18:29:29.852693+00:00",
+  "segments_total": 62,
+  "segments_first_pass": 54,
+  "segments_converged_by_retry": 8,
+  "segments_plateau_stopped": 0,
+  "total_retries": 10,
+  "error_distribution": {
+    "first_word_weak": 15,
+    "trailing_silence": 7,
+    "tail_zero_duration_run": 5,
+    "stacked_words": 5,
+    "truncated_last_word": 5,
+    "min_trailing_silence": 5,
+    "tts_audio_truncated": 5,
+    "language_leak": 5,
+    "word_cluster": 4,
+    "pre_speech_spike": 4,
+    "tail_energy": 3,
+    "final_word_weak": 2,
+    "first_word_mismatch": 1
+  },
+  "phase_timings": {
+    "tts": 12.78062129020691,
+    "align": 9.22968864440918,
+    "validate": 1.4624526500701904,
+    "trim": 0.016869783401489258,
+    "master": 0.11592531204223633
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 5,
+      "passed": 4,
+      "rate": 0.8
+    },
+    "medium_30_80": {
+      "total": 23,
+      "passed": 20,
+      "rate": 0.8695652173913043
+    },
+    "long_80_plus": {
+      "total": 34,
+      "passed": 30,
+      "rate": 0.8823529411764706
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch00-004",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 460.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 460.0,
+          "params": {
+            "cfg_weight": 0.9448178642026047,
+            "exaggeration": 0.15933289310399762,
+            "temperature": 0.31214877696889637,
+            "top_p": 0.7863135949635811,
+            "min_p": 0.2878871496229116,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3277822741127113,
+            "exaggeration": 0.13509469569475852,
+            "temperature": 0.21353706475783707,
+            "top_p": 0.881608194715426,
+            "min_p": 0.26566823243328874,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 340,
+      "text_preview": "Hari ini hari Rabu, 13 Mei 2026. Akan datang: model-model yang dikeluarkan mingg",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-052",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "language_leak"
+          ],
+          "score": 203.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "language_leak"
+          ],
+          "score": 203.0,
+          "params": {
+            "cfg_weight": 0.8843765808576353,
+            "exaggeration": 0.5261239286122723,
+            "temperature": 0.6203391133793108,
+            "top_p": 0.6442229063111575,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5735979097933399,
+            "exaggeration": 0.09316250867785814,
+            "temperature": 0.5313360976728667,
+            "top_p": 0.9659158000388834,
+            "min_p": 0.01881930663449735,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 21,
+      "text_preview": "Majoriti pertumbuhan.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.830655037100843,
+            "exaggeration": 0.3981520010419226,
+            "temperature": 0.5783449179539322,
+            "top_p": 0.6518250462554938,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 263,
+      "text_preview": "Otak lalai di dalam ChatGPT telah berubah. OpenAI melancarkan model baharu yang ",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "language_leak"
+          ],
+          "score": 200.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9767089523498872,
+            "exaggeration": 0.42237953801126127,
+            "temperature": 0.7223973334819769,
+            "top_p": 0.8241609444451619,
+            "min_p": 0.028637149355673047,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Tempat teratas? Secara keseluruhan?",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-029",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5506858830030722,
+            "exaggeration": 0.12074397048375529,
+            "temperature": 0.3528051162732918,
+            "top_p": 0.921526500578143,
+            "min_p": 0.30592291489960144,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 488,
+      "text_preview": "Dua perkara, pada papan yang lebih bersih. Pada pertengahan April, Claude Opus 4",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-045",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "language_leak"
+          ],
+          "score": 220.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9831583305682303,
+            "exaggeration": 0.38572566211331805,
+            "temperature": 0.25093408397424494,
+            "top_p": 1.0,
+            "min_p": 0.24778816801210765,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 238,
+      "text_preview": "Hari ini, Senat A.S. mengesahkan Kevin Warsh sebagai pengerusi Federal Reserve s",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-048",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "language_leak"
+          ],
+          "score": 200.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5953367668185514,
+            "exaggeration": 0.3094838431305764,
+            "temperature": 0.6559704197746575,
+            "top_p": 0.9415678253159128,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Pemotongan kadar yang lebih cepat menjadikan pelaburan AI lebih murah.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-060",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.5563726341299015,
+            "exaggeration": 0.4252046903762987,
+            "temperature": 0.6668552158727908,
+            "top_p": 0.6000997394105991,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "Tempat yang baik untuk mendarat. Ron, terima kasih.",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-001",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "Selamat datang ke AI Minggu Ini. Saya Vindy.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Bersama saya, seperti biasa, Ron.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "Saya memang seronok berada di sini.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "Ron, apakah berita model terbesar minggu ini?",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 23,
+      "text_preview": "Lebih pendek bagaimana?",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 311,
+      "text_preview": "OpenAI mengatakan lalai baharu itu menulis kira-kira 30% perkataan lebih sedikit",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "Adakah sesiapa di luar OpenAI telah mengesahkan nombor-nombor itu?",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 347,
+      "text_preview": "Setakat ini, bukan pada skala besar. Penanda aras bebas seperti Artificial Analy",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "Dan di pihak pemberat terbuka?",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 247,
+      "text_preview": "Dua perkara besar. Moonshot, makmal China di sebalik model Kimi, mengumpul $2 bi",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 156,
+      "text_preview": "Secara keseluruhan. Itu adalah model pemberat terbuka China di nombor satu pada ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-015",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 39,
+      "text_preview": "Ada apa-apa lagi yang patut ditandakan?",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tail_zero_duration_run": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": 0.15,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": 0.15,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": 0.15,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": 0.15,
+        "repetition_penalty": 0.0
+      }
+    },
+    "word_cluster": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.312,
+        "temperature": 0.077,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.307,
+        "temperature": 0.15,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

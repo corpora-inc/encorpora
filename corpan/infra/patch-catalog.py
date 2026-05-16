@@ -69,6 +69,85 @@ CHARACTERS_META = {
         "status": "active",
         "order": 2,
     },
+    "august": {
+        "displayName": "August",
+        "tagline": "A boy's voice for young readers learning a new language.",
+        "bio": (
+            "August is a young narrator with a clear, friendly voice. He reads "
+            "the way an unusually thoughtful nine-year-old does — short, plain "
+            "sentences, simple words, room to breathe. August narrates the "
+            "Motorcycles series and other books written for boys learning a "
+            "second language."
+        ),
+        "accentColor": "#d4a14a",
+        "status": "active",
+        "order": 3,
+    },
+    "kym": {
+        "displayName": "Kym",
+        "tagline": "A friend's voice from the American South.",
+        "bio": (
+            "Kym is a warm, direct narrator from the Southern United States. "
+            "She reads the way a friend tells you about the food she grew up "
+            "with — short sentences, real names, no fuss. Kym narrates the "
+            "Food of the World series, beginning with soul food, the "
+            "everyday cooking of Black families in the American South."
+        ),
+        "accentColor": "#c66a3d",
+        "status": "active",
+        "order": 4,
+    },
+    "vindy": {
+        "displayName": "Vindy",
+        "tagline": "Host of AI This Week.",
+        "bio": (
+            "Vindy is the host of AI This Week, the weekly conversation "
+            "about what actually happened in artificial intelligence over "
+            "the past seven days. She reads the way an NPR host does — "
+            "warm, relaxed, friendly, with a quiet gleam of wonder. "
+            "Polished and intelligent, conversational not theatrical. The "
+            "Vindy voice is rendered by Google's Gemini speech synthesis."
+        ),
+        "accentColor": "#7a5cb0",
+        "status": "active",
+        "order": 5,
+    },
+    "ron": {
+        "displayName": "Ron",
+        "tagline": "Resident analyst on AI This Week.",
+        "bio": (
+            "Ron is the resident analyst on AI This Week. He brings the "
+            "numbers and the context — the patient explainer beside Vindy's "
+            "host chair. He reads with academic-business polish, clear and "
+            "unhurried, the way a thoughtful colleague walks you through "
+            "a paper at lunch. The Ron voice is rendered by Google's "
+            "Gemini speech synthesis."
+        ),
+        "accentColor": "#3a6d7a",
+        "status": "active",
+        "order": 6,
+    },
+    # Skylar (sky-21.wav) and Victor (victor-business.wav) have avatars +
+    # banners on S3 from the 2026-05-10 generate-catalog-assets.py pass, but
+    # no narrations are using them yet. Hold them out of the catalog until
+    # there's a real shipping pack. To restore: add a CHARACTERS_META entry +
+    # matching VOICE_PROFILES entry + VOICE_PREVIEW_URLS entry. Avatar/banner
+    # JPGs are already live at:
+    #   /characters/sky/{avatar,banner}.jpg
+    #   /characters/victor/{avatar,banner}.jpg
+}
+
+# voiceId → CDN URL of a short mastered preview clip (~15-25s).
+# Sources are concatenated chapter-opening segments from real published packs;
+# see /home/skyl/tmp/voice-previews/cut.sh on the build machine.
+VOICE_PREVIEW_URLS = {
+    "ian-narration":   f"{CDN_BASE}/voice-previews/ian-narration.m4a",
+    "ian-chill-clear": f"{CDN_BASE}/voice-previews/ian-chill-clear.m4a",
+    "aoede-gemini":    f"{CDN_BASE}/voice-previews/aoede-gemini.m4a",
+    "august":          f"{CDN_BASE}/voice-previews/august.m4a",
+    "kym":             f"{CDN_BASE}/voice-previews/kym.m4a",
+    "gemini-vindy":    f"{CDN_BASE}/voice-previews/gemini-vindy.m4a",
+    "gemini-ron":      f"{CDN_BASE}/voice-previews/gemini-ron.m4a",
 }
 
 # voiceId → (characterId, displayName, provider, source kind, supportedLanguages)
@@ -111,6 +190,60 @@ VOICE_PROFILES = [
         "providerVoiceId": "aoede",
         "source": {"kind": "native"},
         "traits": ["native", "provider-voice"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "august",
+        "characterId": "august",
+        "displayName": "August",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 21,
+        },
+        "traits": ["narrator", "boy", "young", "kids", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "kym",
+        "characterId": "kym",
+        "displayName": "Kym",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 38,
+        },
+        "traits": ["narrator", "warm", "friend", "southern-american", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    # Skylar + Victor voice profiles withheld until a real narration ships
+    # under either voiceId (see CHARACTERS_META comment above).
+    {
+        "id": "gemini-vindy",
+        "characterId": "vindy",
+        "displayName": "Vindy",
+        "provider": "gemini",
+        "providerVoiceId": "Vindemiatrix",
+        "source": {"kind": "native"},
+        "traits": ["narrator", "host", "warm", "npr-style", "dialog"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "gemini-ron",
+        "characterId": "ron",
+        "displayName": "Ron",
+        "provider": "gemini",
+        "providerVoiceId": "Charon",
+        "source": {"kind": "native"},
+        "traits": ["narrator", "analyst", "academic", "business", "dialog"],
         "status": "active",
         "order": 1,
     },
@@ -182,6 +315,14 @@ BOOK_META = {
         ),
         "tags": ["history", "biography", "maritime"],
     },
+    "book_hayreddin_barbarossa": {
+        "description": (
+            "The Ottoman corsair who became admiral of the Mediterranean — "
+            "built Algiers into a power, sailed against the Habsburg fleets, "
+            "and died in his bed in Istanbul."
+        ),
+        "tags": ["history", "biography", "maritime"],
+    },
     "book_science_volcanoes": {
         "description": (
             "A friendly first walk through volcanoes — magma, eruptions, "
@@ -212,6 +353,72 @@ BOOK_META = {
             "out of an airplane and fall."
         ),
         "tags": ["adventure", "first-person"],
+    },
+    "book_gardening": {
+        "description": (
+            "A small escape into soil, seeds, and the slow craft of growing "
+            "things. For everyone who has ever pressed a finger into damp "
+            "earth and felt the year start over."
+        ),
+        "tags": ["adventure", "first-person", "nature", "craft"],
+    },
+    "book_sailing": {
+        "description": (
+            "A small escape onto the water — wind on the cheek, lines in the "
+            "hand, the long quiet between tacks. For everyone who has ever "
+            "leaned into a heel and stopped thinking about anything else."
+        ),
+        "tags": ["adventure", "first-person", "water", "craft"],
+    },
+    "book_motorcycles_history": {
+        "description": (
+            "Volume one of the Motorcycles series. The big story of the "
+            "motorcycle, from the first sputtering steam contraption in 1885 "
+            "to the electric superbikes of today. Read aloud in twenty-three "
+            "languages by August, for boys six to fifteen learning a new "
+            "language."
+        ),
+        "tags": ["kids", "vehicles", "motorcycles", "history", "language-learning"],
+    },
+    "book_oud_history": {
+        "description": (
+            "Volume one of the Musical Instruments of the World series. The "
+            "story of the oud — the pear-shaped wooden lute of the Arab "
+            "world, great-grandfather of the European lute and the modern "
+            "guitar. Its makers, its great players, and the maqam, the older "
+            "system of music it speaks in."
+        ),
+        "tags": ["all-ages", "music", "instruments", "oud", "arabic", "history", "language-learning"],
+    },
+    "book_persian_food": {
+        "description": (
+            "Volume two of the Food of the World series. A short tour of one "
+            "of the oldest cuisines on earth. Saffron from Khorasan, "
+            "pomegranate orchards, the sacred crisp of tahdig at the bottom "
+            "of the rice pot, sangak baked on hot pebbles, a stew written on "
+            "cuneiform tablets, and the table set for Nowruz. Read aloud by "
+            "Kym."
+        ),
+        "tags": ["all-ages", "food", "persia", "iran", "cuisine", "history", "language-learning"],
+    },
+    "book_train_history": {
+        "description": (
+            "Volume one of the Vehicles of the World series. The big arc of "
+            "rail — Stephenson's Rocket, the Transcontinental, the "
+            "Trans-Siberian, the Shinkansen, the maglev. From the first "
+            "steam locomotive to the floating trains of today."
+        ),
+        "tags": ["all-ages", "vehicles", "trains", "history", "language-learning"],
+    },
+    "book_ai_this_week_2026_05_13": {
+        "description": (
+            "AI This Week for May 13, 2026 — Rate Cuts and Routers. A two-host "
+            "dialog show on what actually happened in artificial intelligence "
+            "this week. Vindy hosts, Ron analyzes. Four sections: model "
+            "releases, leaderboard movement, the concept of the week, and the "
+            "bigger picture. About ten minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly"],
     },
 }
 
@@ -310,6 +517,9 @@ def build_voice_profiles(narrations: list[dict]) -> list[dict]:
     for v in VOICE_PROFILES:
         v2 = dict(v)
         v2["supportedLanguages"] = voice_supported_languages(narrations, v["id"])
+        preview = VOICE_PREVIEW_URLS.get(v["id"])
+        if preview:
+            v2["previewClipUrl"] = preview
         out.append(v2)
     return out
 

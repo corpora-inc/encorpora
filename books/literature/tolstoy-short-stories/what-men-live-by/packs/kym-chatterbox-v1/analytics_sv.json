@@ -1,0 +1,734 @@
+{
+  "book_id": "kym-chatterbox-v1",
+  "language": "sv",
+  "timestamp": "2026-05-11T00:50:28.919046+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 613,
+  "segments_converged_by_retry": 4,
+  "segments_plateau_stopped": 0,
+  "total_retries": 4,
+  "error_distribution": {
+    "trailing_silence": 327,
+    "tail_energy": 146,
+    "first_word_weak": 111,
+    "final_word_weak": 51,
+    "tts_audio_truncated": 16,
+    "min_trailing_silence": 12,
+    "first_word_mismatch": 10,
+    "tail_spike": 6,
+    "short_words": 3,
+    "truncated_last_word": 2,
+    "pre_speech_spike": 2,
+    "tail_zero_duration_run": 1,
+    "stacked_words": 1
+  },
+  "phase_timings": {
+    "tts": 264.9528396129608,
+    "align": 90.55807137489319,
+    "validate": 55.98341917991638,
+    "trim": 0.550025463104248,
+    "master": 7.994088888168335
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 185,
+      "passed": 185,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 257,
+      "passed": 255,
+      "rate": 0.9922178988326849
+    },
+    "long_80_plus": {
+      "total": 175,
+      "passed": 173,
+      "rate": 0.9885714285714285
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-042",
+      "attempts": 2,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7372497267699998,
+            "exaggeration": 0.3033040955911749,
+            "temperature": 0.29975395910659564,
+            "top_p": 1.0,
+            "min_p": 0.3269803057414772,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 33,
+      "text_preview": "Vad kan man göra med tjugo kopek?",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-149",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.12132745355636038,
+            "temperature": 0.6838815944904728,
+            "top_p": 0.7965241012898991,
+            "min_p": 0.327433509544119,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Och nu när han gick hemifrån, tog han allting på sig, och jag har ingenting att ",
+      "passed_first": false
+    },
+    {
+      "id": "ch12-538",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9164395247142927,
+            "exaggeration": 0.29831659743985495,
+            "temperature": 0.6043785447164121,
+            "top_p": 0.7983475257537518,
+            "min_p": 0.021015951104970315,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 94,
+      "text_preview": "Jag flög ner till jorden och ser: en kvinna ligger sjuk, hon har fött tvillingar",
+      "passed_first": false
+    },
+    {
+      "id": "ch14-616",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8205715167576946,
+            "exaggeration": 0.347350918409627,
+            "temperature": 0.3567508510486888,
+            "top_p": 0.8042919679575097,
+            "min_p": 0.0,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "Och ängeln sjöng Guds lov, och av hans röst skälvde stugan.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 7,
+      "text_preview": "Epigraf",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 136,
+      "text_preview": "Vi vet att vi har övergått från döden till livet, ty vi älskar bröderna: den som",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 146,
+      "text_preview": "Men den som har överflöd i världen och ser sin broder lida nöd och tillsluter si",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Mina barn! Låt oss inte älska med ord eller tunga, utan med gärning och sanning.",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 84,
+      "text_preview": "Kärleken är av Gud, och var och en som älskar är född av Gud och känner Gud. (IV",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 70,
+      "text_preview": "Den som inte älskar har inte lärt känna Gud, ty Gud är kärlek. (IV, 8)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Gud har ingen någonsin sett. Om vi älskar varandra, förblir Gud i oss. (IV, 12)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 86,
+      "text_preview": "Gud är kärlek, och den som förblir i kärleken förblir i Gud, och Gud i honom. (I",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-012",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 169,
+      "text_preview": "Den som säger: jag älskar Gud, men hatar sin broder, han är en lögnare, ty den s",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-013",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 1,
+      "text_preview": "I",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-014",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Det levde en skomakare med hustru och barn hos en bonde, i hyreskvarter.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Varken eget hus eller jord hade han, och han livnärde sig med familjen på skomak",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-016",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 68,
+      "text_preview": "Brödet var dyrt och arbetet billigt, och vad han tjänade åt han upp.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-017",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.97
+          }
+        }
+      ],
+      "text_len": 180,
+      "text_preview": "Skomakaren hade en enda pälsrock som han delade med hustrun, och den med var uts",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-018",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 174,
+      "text_preview": "Mot hösten hade skomakaren samlat ihop lite pengar: en trerubelsedel låg hos hus",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-019",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "Och skomakaren gav sig på morgonen iväg till byn efter pälsrocken.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 16,
+      "avg_delta": {
+        "cfg_weight": 0.002,
+        "temperature": 0.023,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.017,
+        "temperature": 0.076,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": 0.027,
+        "temperature": 0.106,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": 0.027,
+        "temperature": 0.106,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

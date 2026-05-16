@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-05-13
+### Added
+- Anonymous analytics: `segment_play` event with `segment_index` fires
+  on auto-advance during active playback. Replaces wall-clock
+  `duration_ms` as the engagement metric — counts segments actually
+  listened to, survives lock-screen background audio. (No
+  `segment_play_one` here — Stargate has no tap-to-replay gesture.)
+
 ## [0.6.2] - 2026-05-10
 ### Changed
 - Transport bar typography refreshed: book title (italic cyan, 13 px)

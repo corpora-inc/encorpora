@@ -1,0 +1,5471 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 343,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Hook",
+      "text_markdown": "The Hook"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a moment, just after the sail fills, when the boat leans and the world tilts with it.",
+      "text_markdown": "There is a moment, just after the sail fills, when the boat leans and the world tilts with it.",
+      "tts": {
+        "text": "There is a moment, just after the sail fills, when the boat leans and the world tilts with it.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The hull, which a second ago was just sitting there, suddenly comes alive under your feet.",
+      "text_markdown": "The hull, which a second ago was just sitting there, suddenly comes alive under your feet.",
+      "tts": {
+        "text": "The hull, which a second ago was just sitting there, suddenly comes alive under your feet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is not loud.",
+      "text_markdown": "It is not loud.",
+      "tts": {
+        "text": "It is not loud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It is not dramatic.",
+      "text_markdown": "It is not dramatic.",
+      "tts": {
+        "text": "It is not dramatic.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "It is just a small, quiet shove from something invisible.",
+      "text_markdown": "It is just a small, quiet shove from something invisible.",
+      "tts": {
+        "text": "It is just a small, quiet shove from something invisible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "And once you feel it, you spend the rest of your life looking for it again.",
+      "text_markdown": "And once you feel it, you spend the rest of your life looking for it again.",
+      "tts": {
+        "text": "And once you feel it, you spend the rest of your life looking for it again.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People ask me why I sail.",
+      "text_markdown": "People ask me why I sail.",
+      "tts": {
+        "text": "People ask me why I sail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They expect me to say it is the speed.",
+      "text_markdown": "They expect me to say it is the speed.",
+      "tts": {
+        "text": "They expect me to say it is the speed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is not the speed.",
+      "text_markdown": "It is not the speed.",
+      "tts": {
+        "text": "It is not the speed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sailing is not fast.",
+      "text_markdown": "Sailing is not fast.",
+      "tts": {
+        "text": "Sailing is not fast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A car is faster.",
+      "text_markdown": "A car is faster.",
+      "tts": {
+        "text": "A car is faster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "A bicycle on a hill is faster.",
+      "text_markdown": "A bicycle on a hill is faster.",
+      "tts": {
+        "text": "A bicycle on a hill is faster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sailing has never been about getting somewhere quickly.",
+      "text_markdown": "Sailing has never been about getting somewhere quickly.",
+      "tts": {
+        "text": "Sailing has never been about getting somewhere quickly.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "It has been about being inside the wind.",
+      "text_markdown": "It has been about being inside the wind.",
+      "tts": {
+        "text": "It has been about being inside the wind.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "What I am chasing, I think, is the conversation.",
+      "text_markdown": "What I am chasing, I think, is the conversation.",
+      "tts": {
+        "text": "What I am chasing, I think, is the conversation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There is a conversation happening, all the time, between the wind and the water, and most people on land never get to hear it.",
+      "text_markdown": "There is a conversation happening, all the time, between the wind and the water, and most people on land never get to hear it.",
+      "tts": {
+        "text": "There is a conversation happening, all the time, between the wind and the water, and most people on land never get to hear it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "When you are out on a small boat, you are the third person in that conversation.",
+      "text_markdown": "When you are out on a small boat, you are the third person in that conversation.",
+      "tts": {
+        "text": "When you are out on a small boat, you are the third person in that conversation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You hold the lines.",
+      "text_markdown": "You hold the lines.",
+      "tts": {
+        "text": "You hold the lines.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You feel the boat lean.",
+      "text_markdown": "You feel the boat lean.",
+      "tts": {
+        "text": "You feel the boat lean.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You make tiny adjustments.",
+      "text_markdown": "You make tiny adjustments.",
+      "tts": {
+        "text": "You make tiny adjustments.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The wind answers.",
+      "text_markdown": "The wind answers.",
+      "tts": {
+        "text": "The wind answers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "The water answers.",
+      "text_markdown": "The water answers.",
+      "tts": {
+        "text": "The water answers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "You answer back.",
+      "text_markdown": "You answer back.",
+      "tts": {
+        "text": "You answer back.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sailors are not adventurers.",
+      "text_markdown": "Sailors are not adventurers.",
+      "tts": {
+        "text": "Sailors are not adventurers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most of us are quiet people who found a way to sit still inside something moving.",
+      "text_markdown": "Most of us are quiet people who found a way to sit still inside something moving.",
+      "tts": {
+        "text": "Most of us are quiet people who found a way to sit still inside something moving.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "We go out for the same reason others walk in the woods.",
+      "text_markdown": "We go out for the same reason others walk in the woods.",
+      "tts": {
+        "text": "We go out for the same reason others walk in the woods.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It empties the head.",
+      "text_markdown": "It empties the head.",
+      "tts": {
+        "text": "It empties the head.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "And then, the next weekend, we go out and empty it again.",
+      "text_markdown": "And then, the next weekend, we go out and empty it again.",
+      "tts": {
+        "text": "And then, the next weekend, we go out and empty it again.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first time I felt a small boat heel, I laughed out loud.",
+      "text_markdown": "The first time I felt a small boat heel, I laughed out loud.",
+      "tts": {
+        "text": "The first time I felt a small boat heel, I laughed out loud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A grown adult, sitting on a wooden bench, grinning into the wind for no reason he could explain.",
+      "text_markdown": "A grown adult, sitting on a wooden bench, grinning into the wind for no reason he could explain.",
+      "tts": {
+        "text": "A grown adult, sitting on a wooden bench, grinning into the wind for no reason he could explain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "My friend at the tiller laughed back.",
+      "text_markdown": "My friend at the tiller laughed back.",
+      "tts": {
+        "text": "My friend at the tiller laughed back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He had seen it many times.",
+      "text_markdown": "He had seen it many times.",
+      "tts": {
+        "text": "He had seen it many times.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That was the moment I knew I would be back.",
+      "text_markdown": "That was the moment I knew I would be back.",
+      "tts": {
+        "text": "That was the moment I knew I would be back.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sailing is not about being bold.",
+      "text_markdown": "Sailing is not about being bold.",
+      "tts": {
+        "text": "Sailing is not about being bold.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is about finding the one place where your shoulders drop.",
+      "text_markdown": "It is about finding the one place where your shoulders drop.",
+      "tts": {
+        "text": "It is about finding the one place where your shoulders drop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For some people, that place is a kitchen at sunrise.",
+      "text_markdown": "For some people, that place is a kitchen at sunrise.",
+      "tts": {
+        "text": "For some people, that place is a kitchen at sunrise.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For some, it is a long road on a bicycle.",
+      "text_markdown": "For some, it is a long road on a bicycle.",
+      "tts": {
+        "text": "For some, it is a long road on a bicycle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "For some, it is a brush, a bow, a garden bed.",
+      "text_markdown": "For some, it is a brush, a bow, a garden bed.",
+      "tts": {
+        "text": "For some, it is a brush, a bow, a garden bed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "For me, it is a small boat with one sail and a tiller in my hand, an hour from shore, with nothing to do but listen.",
+      "text_markdown": "For me, it is a small boat with one sail and a tiller in my hand, an hour from shore, with nothing to do but listen.",
+      "tts": {
+        "text": "For me, it is a small boat with one sail and a tiller in my hand, an hour from shore, with nothing to do but listen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pull, once you feel it, is hard to describe to a friend at dinner.",
+      "text_markdown": "The pull, once you feel it, is hard to describe to a friend at dinner.",
+      "tts": {
+        "text": "The pull, once you feel it, is hard to describe to a friend at dinner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You will try to explain how the boat seems to think.",
+      "text_markdown": "You will try to explain how the boat seems to think.",
+      "tts": {
+        "text": "You will try to explain how the boat seems to think.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You will try to describe the silence between gusts.",
+      "text_markdown": "You will try to describe the silence between gusts.",
+      "tts": {
+        "text": "You will try to describe the silence between gusts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They will smile, and you will give up.",
+      "text_markdown": "They will smile, and you will give up.",
+      "tts": {
+        "text": "They will smile, and you will give up.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is fine.",
+      "text_markdown": "That is fine.",
+      "tts": {
+        "text": "That is fine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You did not start sailing to explain it.",
+      "text_markdown": "You did not start sailing to explain it.",
+      "tts": {
+        "text": "You did not start sailing to explain it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Have you ever stood near open water and felt the wind move your hair, and felt, somewhere under your ribs, that you wanted to follow it?",
+      "text_markdown": "Have you ever stood near open water and felt the wind move your hair, and felt, somewhere under your ribs, that you wanted to follow it?",
+      "tts": {
+        "text": "Have you ever stood near open water and felt the wind move your hair, and felt, somewhere under your ribs, that you wanted to follow it?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Just for a second.",
+      "text_markdown": "Just for a second.",
+      "tts": {
+        "text": "Just for a second.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "If you have, you already know.",
+      "text_markdown": "If you have, you already know.",
+      "tts": {
+        "text": "If you have, you already know.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sailing is what happens when you stop ignoring that small pull.",
+      "text_markdown": "Sailing is what happens when you stop ignoring that small pull.",
+      "tts": {
+        "text": "Sailing is what happens when you stop ignoring that small pull.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You step into the boat, on purpose, and let the wind take you somewhere you do not need to name.",
+      "text_markdown": "You step into the boat, on purpose, and let the wind take you somewhere you do not need to name.",
+      "tts": {
+        "text": "You step into the boat, on purpose, and let the wind take you somewhere you do not need to name.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And very quickly, you learn that the boat was never the point.",
+      "text_markdown": "And very quickly, you learn that the boat was never the point.",
+      "tts": {
+        "text": "And very quickly, you learn that the boat was never the point.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The point was the leaning.",
+      "text_markdown": "The point was the leaning.",
+      "tts": {
+        "text": "The point was the leaning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The point was the listening.",
+      "text_markdown": "The point was the listening.",
+      "tts": {
+        "text": "The point was the listening.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The point was being held by something old and patient and bigger than you.",
+      "text_markdown": "The point was being held by something old and patient and bigger than you.",
+      "tts": {
+        "text": "The point was being held by something old and patient and bigger than you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is what I would tell you, if you asked.",
+      "text_markdown": "That is what I would tell you, if you asked.",
+      "tts": {
+        "text": "That is what I would tell you, if you asked.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Why does a calm and reasonable person spend every Saturday on the water?",
+      "text_markdown": "Why does a calm and reasonable person spend every Saturday on the water?",
+      "tts": {
+        "text": "Why does a calm and reasonable person spend every Saturday on the water?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "I would tell you it is the quietest thing I do.",
+      "text_markdown": "I would tell you it is the quietest thing I do.",
+      "tts": {
+        "text": "I would tell you it is the quietest thing I do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "And I would mean it.",
+      "text_markdown": "And I would mean it.",
+      "tts": {
+        "text": "And I would mean it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "First Time",
+      "text_markdown": "First Time"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me put you in the boat.",
+      "text_markdown": "Let me put you in the boat.",
+      "tts": {
+        "text": "Let me put you in the boat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You are sitting on a low wooden bench, your hand on a smooth tiller behind you.",
+      "text_markdown": "You are sitting on a low wooden bench, your hand on a smooth tiller behind you.",
+      "tts": {
+        "text": "You are sitting on a low wooden bench, your hand on a smooth tiller behind you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The boat rocks gently against the dock.",
+      "text_markdown": "The boat rocks gently against the dock.",
+      "tts": {
+        "text": "The boat rocks gently against the dock.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The mast taps a soft, hollow note above your head.",
+      "text_markdown": "The mast taps a soft, hollow note above your head.",
+      "tts": {
+        "text": "The mast taps a soft, hollow note above your head.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You can smell wet rope and warm wood and a little salt.",
+      "text_markdown": "You can smell wet rope and warm wood and a little salt.",
+      "tts": {
+        "text": "You can smell wet rope and warm wood and a little salt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Your friend is at the bow, untying the last line.",
+      "text_markdown": "Your friend is at the bow, untying the last line.",
+      "tts": {
+        "text": "Your friend is at the bow, untying the last line.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The friend tells you, calmly, that everything you need to do, they will tell you when.",
+      "text_markdown": "The friend tells you, calmly, that everything you need to do, they will tell you when.",
+      "tts": {
+        "text": "The friend tells you, calmly, that everything you need to do, they will tell you when.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You nod.",
+      "text_markdown": "You nod.",
+      "tts": {
+        "text": "You nod.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+      "text_markdown": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+      "tts": {
+        "text": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the line drops.",
+      "text_markdown": "Then the line drops.",
+      "tts": {
+        "text": "Then the line drops.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boat slides away from the dock so quietly you almost miss it.",
+      "text_markdown": "The boat slides away from the dock so quietly you almost miss it.",
+      "tts": {
+        "text": "The boat slides away from the dock so quietly you almost miss it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There is no engine sound.",
+      "text_markdown": "There is no engine sound.",
+      "tts": {
+        "text": "There is no engine sound.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "There is no rush.",
+      "text_markdown": "There is no rush.",
+      "tts": {
+        "text": "There is no rush.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "There is just a soft slap of water under the hull, and the dock getting smaller, and the wind on one side of your face.",
+      "text_markdown": "There is just a soft slap of water under the hull, and the dock getting smaller, and the wind on one side of your face.",
+      "tts": {
+        "text": "There is just a soft slap of water under the hull, and the dock getting smaller, and the wind on one side of your face.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You did not press a button.",
+      "text_markdown": "You did not press a button.",
+      "tts": {
+        "text": "You did not press a button.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You did not pull a cord.",
+      "text_markdown": "You did not pull a cord.",
+      "tts": {
+        "text": "You did not pull a cord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You are simply moving, because the air decided to push you.",
+      "text_markdown": "You are simply moving, because the air decided to push you.",
+      "tts": {
+        "text": "You are simply moving, because the air decided to push you.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your friend pulls in the sail.",
+      "text_markdown": "Your friend pulls in the sail.",
+      "tts": {
+        "text": "Your friend pulls in the sail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The cloth goes from loose and flapping to tight and shaped, and the boat leans, and your stomach leans with it.",
+      "text_markdown": "The cloth goes from loose and flapping to tight and shaped, and the boat leans, and your stomach leans with it.",
+      "tts": {
+        "text": "The cloth goes from loose and flapping to tight and shaped, and the boat leans, and your stomach leans with it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You make a small sound.",
+      "text_markdown": "You make a small sound.",
+      "tts": {
+        "text": "You make a small sound.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Everyone makes a small sound.",
+      "text_markdown": "Everyone makes a small sound.",
+      "tts": {
+        "text": "Everyone makes a small sound.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "There is no need to be embarrassed.",
+      "text_markdown": "There is no need to be embarrassed.",
+      "tts": {
+        "text": "There is no need to be embarrassed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then something extraordinary happens.",
+      "text_markdown": "Then something extraordinary happens.",
+      "tts": {
+        "text": "Then something extraordinary happens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The lean stops feeling scary.",
+      "text_markdown": "The lean stops feeling scary.",
+      "tts": {
+        "text": "The lean stops feeling scary.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The boat finds an angle and holds it, and you realize the wind is doing the work, and the water is doing the work, and all you have to do is sit and not fall off.",
+      "text_markdown": "The boat finds an angle and holds it, and you realize the wind is doing the work, and the water is doing the work, and all you have to do is sit and not fall off.",
+      "tts": {
+        "text": "The boat finds an angle and holds it, and you realize the wind is doing the work, and the water is doing the work, and all you have to do is sit and not fall off.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Your shoulders drop.",
+      "text_markdown": "Your shoulders drop.",
+      "tts": {
+        "text": "Your shoulders drop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Your jaw, which you did not know you were clenching, lets go.",
+      "text_markdown": "Your jaw, which you did not know you were clenching, lets go.",
+      "tts": {
+        "text": "Your jaw, which you did not know you were clenching, lets go.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You look around.",
+      "text_markdown": "You look around.",
+      "tts": {
+        "text": "You look around.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The shore is still close, but it is changing shape.",
+      "text_markdown": "The shore is still close, but it is changing shape.",
+      "tts": {
+        "text": "The shore is still close, but it is changing shape.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Houses you have walked past for years look different from the water.",
+      "text_markdown": "Houses you have walked past for years look different from the water.",
+      "tts": {
+        "text": "Houses you have walked past for years look different from the water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Trees lean in the same wind that is pushing you.",
+      "text_markdown": "Trees lean in the same wind that is pushing you.",
+      "tts": {
+        "text": "Trees lean in the same wind that is pushing you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A bird, low and slow, is going almost exactly your speed.",
+      "text_markdown": "A bird, low and slow, is going almost exactly your speed.",
+      "tts": {
+        "text": "A bird, low and slow, is going almost exactly your speed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You are sailing.",
+      "text_markdown": "You are sailing.",
+      "tts": {
+        "text": "You are sailing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not in a movie.",
+      "text_markdown": "Not in a movie.",
+      "tts": {
+        "text": "Not in a movie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You, your hand on the tiller, are sailing.",
+      "text_markdown": "You, your hand on the tiller, are sailing.",
+      "tts": {
+        "text": "You, your hand on the tiller, are sailing.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your friend points up at a small ribbon at the top of the mast.",
+      "text_markdown": "Your friend points up at a small ribbon at the top of the mast.",
+      "tts": {
+        "text": "Your friend points up at a small ribbon at the top of the mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They tell you that ribbon is your eyes.",
+      "text_markdown": "They tell you that ribbon is your eyes.",
+      "tts": {
+        "text": "They tell you that ribbon is your eyes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They tell you the wind is over your left shoulder, and if it moves to your right shoulder, the sail will need to come across.",
+      "text_markdown": "They tell you the wind is over your left shoulder, and if it moves to your right shoulder, the sail will need to come across.",
+      "tts": {
+        "text": "They tell you the wind is over your left shoulder, and if it moves to your right shoulder, the sail will need to come across.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You nod, but you only half understand.",
+      "text_markdown": "You nod, but you only half understand.",
+      "tts": {
+        "text": "You nod, but you only half understand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That is fine.",
+      "text_markdown": "That is fine.",
+      "tts": {
+        "text": "That is fine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The boat is teaching you faster than your friend can.",
+      "text_markdown": "The boat is teaching you faster than your friend can.",
+      "tts": {
+        "text": "The boat is teaching you faster than your friend can.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wind drops for a moment.",
+      "text_markdown": "The wind drops for a moment.",
+      "tts": {
+        "text": "The wind drops for a moment.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sail goes soft.",
+      "text_markdown": "The sail goes soft.",
+      "tts": {
+        "text": "The sail goes soft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The boat slows.",
+      "text_markdown": "The boat slows.",
+      "tts": {
+        "text": "The boat slows.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The world goes very quiet.",
+      "text_markdown": "The world goes very quiet.",
+      "tts": {
+        "text": "The world goes very quiet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You can hear the water against the hull, a long, low whisper.",
+      "text_markdown": "You can hear the water against the hull, a long, low whisper.",
+      "tts": {
+        "text": "You can hear the water against the hull, a long, low whisper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You can hear yourself breathing.",
+      "text_markdown": "You can hear yourself breathing.",
+      "tts": {
+        "text": "You can hear yourself breathing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Your friend smiles and does not say anything.",
+      "text_markdown": "Your friend smiles and does not say anything.",
+      "tts": {
+        "text": "Your friend smiles and does not say anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "They know this part.",
+      "text_markdown": "They know this part.",
+      "tts": {
+        "text": "They know this part.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "They are letting the silence work on you.",
+      "text_markdown": "They are letting the silence work on you.",
+      "tts": {
+        "text": "They are letting the silence work on you.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the wind comes back.",
+      "text_markdown": "Then the wind comes back.",
+      "tts": {
+        "text": "Then the wind comes back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sail fills.",
+      "text_markdown": "The sail fills.",
+      "tts": {
+        "text": "The sail fills.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The boat leans again.",
+      "text_markdown": "The boat leans again.",
+      "tts": {
+        "text": "The boat leans again.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "And you laugh, out loud, because you did not know a thing made of wood and cloth could feel this alive.",
+      "text_markdown": "And you laugh, out loud, because you did not know a thing made of wood and cloth could feel this alive.",
+      "tts": {
+        "text": "And you laugh, out loud, because you did not know a thing made of wood and cloth could feel this alive.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first sail takes about an hour.",
+      "text_markdown": "The first sail takes about an hour.",
+      "tts": {
+        "text": "The first sail takes about an hour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is one of the most peaceful hours of your life.",
+      "text_markdown": "It is one of the most peaceful hours of your life.",
+      "tts": {
+        "text": "It is one of the most peaceful hours of your life.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the boat slides back to the dock and your feet touch the boards, your legs feel funny, as if the ground is the thing that moves now.",
+      "text_markdown": "When the boat slides back to the dock and your feet touch the boards, your legs feel funny, as if the ground is the thing that moves now.",
+      "tts": {
+        "text": "When the boat slides back to the dock and your feet touch the boards, your legs feel funny, as if the ground is the thing that moves now.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You turn around and look out at the water.",
+      "text_markdown": "You turn around and look out at the water.",
+      "tts": {
+        "text": "You turn around and look out at the water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+      "text_markdown": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+      "tts": {
+        "text": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Getting Started",
+      "text_markdown": "Getting Started"
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People think sailing is expensive.",
+      "text_markdown": "People think sailing is expensive.",
+      "tts": {
+        "text": "People think sailing is expensive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It can be.",
+      "text_markdown": "It can be.",
+      "tts": {
+        "text": "It can be.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It does not have to be.",
+      "text_markdown": "It does not have to be.",
+      "tts": {
+        "text": "It does not have to be.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The most generous secret of this whole world is that small boats, the kind you actually learn on, are cheap and patient and everywhere.",
+      "text_markdown": "The most generous secret of this whole world is that small boats, the kind you actually learn on, are cheap and patient and everywhere.",
+      "tts": {
+        "text": "The most generous secret of this whole world is that small boats, the kind you actually learn on, are cheap and patient and everywhere.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You do not need to buy a boat.",
+      "text_markdown": "You do not need to buy a boat.",
+      "tts": {
+        "text": "You do not need to buy a boat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not for a long time.",
+      "text_markdown": "Not for a long time.",
+      "tts": {
+        "text": "Not for a long time.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maybe not ever.",
+      "text_markdown": "Maybe not ever.",
+      "tts": {
+        "text": "Maybe not ever.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The first thing to do is find a sailing club, or a community boathouse, or a friend who already owns a small dinghy.",
+      "text_markdown": "The first thing to do is find a sailing club, or a community boathouse, or a friend who already owns a small dinghy.",
+      "tts": {
+        "text": "The first thing to do is find a sailing club, or a community boathouse, or a friend who already owns a small dinghy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Almost every body of water big enough to hold a sailboat has a quiet little group of people who would love nothing more than to take a beginner out.",
+      "text_markdown": "Almost every body of water big enough to hold a sailboat has a quiet little group of people who would love nothing more than to take a beginner out.",
+      "tts": {
+        "text": "Almost every body of water big enough to hold a sailboat has a quiet little group of people who would love nothing more than to take a beginner out.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sailors are like that.",
+      "text_markdown": "Sailors are like that.",
+      "tts": {
+        "text": "Sailors are like that.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p28",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The hobby is generous because the wind is free.",
+      "text_markdown": "The hobby is generous because the wind is free.",
+      "tts": {
+        "text": "The hobby is generous because the wind is free.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A first lesson is usually a few hours on a small, forgiving boat.",
+      "text_markdown": "A first lesson is usually a few hours on a small, forgiving boat.",
+      "tts": {
+        "text": "A first lesson is usually a few hours on a small, forgiving boat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "One sail.",
+      "text_markdown": "One sail.",
+      "tts": {
+        "text": "One sail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "One tiller.",
+      "text_markdown": "One tiller.",
+      "tts": {
+        "text": "One tiller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "One instructor who has done this many times.",
+      "text_markdown": "One instructor who has done this many times.",
+      "tts": {
+        "text": "One instructor who has done this many times.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "They will teach you to feel which way the wind is coming from, before anything else.",
+      "text_markdown": "They will teach you to feel which way the wind is coming from, before anything else.",
+      "tts": {
+        "text": "They will teach you to feel which way the wind is coming from, before anything else.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That single skill is the whole foundation.",
+      "text_markdown": "That single skill is the whole foundation.",
+      "tts": {
+        "text": "That single skill is the whole foundation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The rest is detail.",
+      "text_markdown": "The rest is detail.",
+      "tts": {
+        "text": "The rest is detail.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Be ready to be a little wet.",
+      "text_markdown": "Be ready to be a little wet.",
+      "tts": {
+        "text": "Be ready to be a little wet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Be ready to be a little cold, even on a warm day.",
+      "text_markdown": "Be ready to be a little cold, even on a warm day.",
+      "tts": {
+        "text": "Be ready to be a little cold, even on a warm day.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wear clothes you do not love.",
+      "text_markdown": "Wear clothes you do not love.",
+      "tts": {
+        "text": "Wear clothes you do not love.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bring a hat that will not blow away.",
+      "text_markdown": "Bring a hat that will not blow away.",
+      "tts": {
+        "text": "Bring a hat that will not blow away.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bring water.",
+      "text_markdown": "Bring water.",
+      "tts": {
+        "text": "Bring water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Bring a snack.",
+      "text_markdown": "Bring a snack.",
+      "tts": {
+        "text": "Bring a snack.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sailors snack constantly, and you will understand why about an hour in.",
+      "text_markdown": "Sailors snack constantly, and you will understand why about an hour in.",
+      "tts": {
+        "text": "Sailors snack constantly, and you will understand why about an hour in.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will fall over your own feet.",
+      "text_markdown": "You will fall over your own feet.",
+      "tts": {
+        "text": "You will fall over your own feet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You will pull the wrong rope.",
+      "text_markdown": "You will pull the wrong rope.",
+      "tts": {
+        "text": "You will pull the wrong rope.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You will let the sail flap when you meant to fill it, and fill it when you meant to let it flap.",
+      "text_markdown": "You will let the sail flap when you meant to fill it, and fill it when you meant to let it flap.",
+      "tts": {
+        "text": "You will let the sail flap when you meant to fill it, and fill it when you meant to let it flap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The boat will turn the wrong way and the instructor will laugh kindly and reach across and fix it.",
+      "text_markdown": "The boat will turn the wrong way and the instructor will laugh kindly and reach across and fix it.",
+      "tts": {
+        "text": "The boat will turn the wrong way and the instructor will laugh kindly and reach across and fix it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "None of this matters.",
+      "text_markdown": "None of this matters.",
+      "tts": {
+        "text": "None of this matters.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You are not being graded.",
+      "text_markdown": "You are not being graded.",
+      "tts": {
+        "text": "You are not being graded.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You are learning a language, and the first hour of any language is mostly mumbling.",
+      "text_markdown": "You are learning a language, and the first hour of any language is mostly mumbling.",
+      "tts": {
+        "text": "You are learning a language, and the first hour of any language is mostly mumbling.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The honest entry barrier is time, more than money.",
+      "text_markdown": "The honest entry barrier is time, more than money.",
+      "tts": {
+        "text": "The honest entry barrier is time, more than money.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sailing rewards you for showing up many times in a row.",
+      "text_markdown": "Sailing rewards you for showing up many times in a row.",
+      "tts": {
+        "text": "Sailing rewards you for showing up many times in a row.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The first few outings, you will feel clumsy, and the boat will feel like a stranger.",
+      "text_markdown": "The first few outings, you will feel clumsy, and the boat will feel like a stranger.",
+      "tts": {
+        "text": "The first few outings, you will feel clumsy, and the boat will feel like a stranger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "By the fifth or sixth time, something shifts.",
+      "text_markdown": "By the fifth or sixth time, something shifts.",
+      "tts": {
+        "text": "By the fifth or sixth time, something shifts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The lines start to make sense.",
+      "text_markdown": "The lines start to make sense.",
+      "tts": {
+        "text": "The lines start to make sense.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Your hands start to know which one to pull.",
+      "text_markdown": "Your hands start to know which one to pull.",
+      "tts": {
+        "text": "Your hands start to know which one to pull.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You stop staring at the sail and start feeling it.",
+      "text_markdown": "You stop staring at the sail and start feeling it.",
+      "tts": {
+        "text": "You stop staring at the sail and start feeling it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you live far from water, this is harder, and I will not pretend it is not.",
+      "text_markdown": "If you live far from water, this is harder, and I will not pretend it is not.",
+      "tts": {
+        "text": "If you live far from water, this is harder, and I will not pretend it is not.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But there are inland lakes, slow rivers, even reservoirs with sailing clubs nobody talks about.",
+      "text_markdown": "But there are inland lakes, slow rivers, even reservoirs with sailing clubs nobody talks about.",
+      "tts": {
+        "text": "But there are inland lakes, slow rivers, even reservoirs with sailing clubs nobody talks about.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A weekend trip a few times a year is enough to keep the love alive.",
+      "text_markdown": "A weekend trip a few times a year is enough to keep the love alive.",
+      "tts": {
+        "text": "A weekend trip a few times a year is enough to keep the love alive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You do not need to live by the water to be a sailor.",
+      "text_markdown": "You do not need to live by the water to be a sailor.",
+      "tts": {
+        "text": "You do not need to live by the water to be a sailor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You only need to keep going back.",
+      "text_markdown": "You only need to keep going back.",
+      "tts": {
+        "text": "You only need to keep going back.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cost, when it does come, is gentler than you fear.",
+      "text_markdown": "Cost, when it does come, is gentler than you fear.",
+      "tts": {
+        "text": "Cost, when it does come, is gentler than you fear.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A used dinghy, the kind that has taught dozens of people already, costs less than a decent bicycle.",
+      "text_markdown": "A used dinghy, the kind that has taught dozens of people already, costs less than a decent bicycle.",
+      "tts": {
+        "text": "A used dinghy, the kind that has taught dozens of people already, costs less than a decent bicycle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A life jacket and a pair of grippy shoes, and you are essentially equipped.",
+      "text_markdown": "A life jacket and a pair of grippy shoes, and you are essentially equipped.",
+      "tts": {
+        "text": "A life jacket and a pair of grippy shoes, and you are essentially equipped.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The fancy stuff comes later, if it ever comes.",
+      "text_markdown": "The fancy stuff comes later, if it ever comes.",
+      "tts": {
+        "text": "The fancy stuff comes later, if it ever comes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Most weekend sailors I know own almost nothing.",
+      "text_markdown": "Most weekend sailors I know own almost nothing.",
+      "tts": {
+        "text": "Most weekend sailors I know own almost nothing.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Take the lesson.",
+      "text_markdown": "Take the lesson.",
+      "tts": {
+        "text": "Take the lesson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Take the second lesson.",
+      "text_markdown": "Take the second lesson.",
+      "tts": {
+        "text": "Take the second lesson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Take the third.",
+      "text_markdown": "Take the third.",
+      "tts": {
+        "text": "Take the third.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "After a month, you will know whether this thing has hooked you.",
+      "text_markdown": "After a month, you will know whether this thing has hooked you.",
+      "tts": {
+        "text": "After a month, you will know whether this thing has hooked you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "If it has, you will already be reading about boats at night, and watching little videos of people gliding across calm water, and wondering whether next Saturday is going to be windy.",
+      "text_markdown": "If it has, you will already be reading about boats at night, and watching little videos of people gliding across calm water, and wondering whether next Saturday is going to be windy.",
+      "tts": {
+        "text": "If it has, you will already be reading about boats at night, and watching little videos of people gliding across calm water, and wondering whether next Saturday is going to be windy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That is how it begins.",
+      "text_markdown": "That is how it begins.",
+      "tts": {
+        "text": "That is how it begins.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Quietly.",
+      "text_markdown": "Quietly.",
+      "tts": {
+        "text": "Quietly.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "One small boat at a time.",
+      "text_markdown": "One small boat at a time.",
+      "tts": {
+        "text": "One small boat at a time.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Craft",
+      "text_markdown": "The Craft"
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After a year or so, sailing stops being about the boat and starts being about the wind.",
+      "text_markdown": "After a year or so, sailing stops being about the boat and starts being about the wind.",
+      "tts": {
+        "text": "After a year or so, sailing stops being about the boat and starts being about the wind.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This is the shift every sailor talks about, in their own quiet way.",
+      "text_markdown": "This is the shift every sailor talks about, in their own quiet way.",
+      "tts": {
+        "text": "This is the shift every sailor talks about, in their own quiet way.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In the beginning, you stare at the sail.",
+      "text_markdown": "In the beginning, you stare at the sail.",
+      "tts": {
+        "text": "In the beginning, you stare at the sail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You stare at the lines.",
+      "text_markdown": "You stare at the lines.",
+      "tts": {
+        "text": "You stare at the lines.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You stare at your own hands.",
+      "text_markdown": "You stare at your own hands.",
+      "tts": {
+        "text": "You stare at your own hands.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "After enough hours, your eyes lift.",
+      "text_markdown": "After enough hours, your eyes lift.",
+      "tts": {
+        "text": "After enough hours, your eyes lift.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You start watching the water itself.",
+      "text_markdown": "You start watching the water itself.",
+      "tts": {
+        "text": "You start watching the water itself.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is the first secret insiders notice.",
+      "text_markdown": "This is the first secret insiders notice.",
+      "tts": {
+        "text": "This is the first secret insiders notice.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The wind shows up on the water before it reaches you.",
+      "text_markdown": "The wind shows up on the water before it reaches you.",
+      "tts": {
+        "text": "The wind shows up on the water before it reaches you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A darker patch, moving across the surface, is a gust on its way.",
+      "text_markdown": "A darker patch, moving across the surface, is a gust on its way.",
+      "tts": {
+        "text": "A darker patch, moving across the surface, is a gust on its way.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A glassy patch is a hole, a place where the wind has stopped.",
+      "text_markdown": "A glassy patch is a hole, a place where the wind has stopped.",
+      "tts": {
+        "text": "A glassy patch is a hole, a place where the wind has stopped.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A good sailor is reading the water the way a good driver is reading the road, two seconds ahead, all the time.",
+      "text_markdown": "A good sailor is reading the water the way a good driver is reading the road, two seconds ahead, all the time.",
+      "tts": {
+        "text": "A good sailor is reading the water the way a good driver is reading the road, two seconds ahead, all the time.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You stop being surprised by gusts.",
+      "text_markdown": "You stop being surprised by gusts.",
+      "tts": {
+        "text": "You stop being surprised by gusts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You see them coming and you are ready.",
+      "text_markdown": "You see them coming and you are ready.",
+      "tts": {
+        "text": "You see them coming and you are ready.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second secret is that the boat wants to sail.",
+      "text_markdown": "The second secret is that the boat wants to sail.",
+      "tts": {
+        "text": "The second secret is that the boat wants to sail.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You are not forcing it.",
+      "text_markdown": "You are not forcing it.",
+      "tts": {
+        "text": "You are not forcing it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You are not steering it the way you steer a car.",
+      "text_markdown": "You are not steering it the way you steer a car.",
+      "tts": {
+        "text": "You are not steering it the way you steer a car.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You are negotiating.",
+      "text_markdown": "You are negotiating.",
+      "tts": {
+        "text": "You are negotiating.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The boat has opinions.",
+      "text_markdown": "The boat has opinions.",
+      "tts": {
+        "text": "The boat has opinions.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The wind has opinions.",
+      "text_markdown": "The wind has opinions.",
+      "tts": {
+        "text": "The wind has opinions.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Your job is to find the angle where everyone is happy.",
+      "text_markdown": "Your job is to find the angle where everyone is happy.",
+      "tts": {
+        "text": "Your job is to find the angle where everyone is happy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "When you find it, the tiller goes light in your hand.",
+      "text_markdown": "When you find it, the tiller goes light in your hand.",
+      "tts": {
+        "text": "When you find it, the tiller goes light in your hand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "The boat almost steers itself.",
+      "text_markdown": "The boat almost steers itself.",
+      "tts": {
+        "text": "The boat almost steers itself.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "You feel like you are barely doing anything.",
+      "text_markdown": "You feel like you are barely doing anything.",
+      "tts": {
+        "text": "You feel like you are barely doing anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p39",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "That is when you know you are doing it right.",
+      "text_markdown": "That is when you know you are doing it right.",
+      "tts": {
+        "text": "That is when you know you are doing it right.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The third secret is the long quiet between tacks.",
+      "text_markdown": "The third secret is the long quiet between tacks.",
+      "tts": {
+        "text": "The third secret is the long quiet between tacks.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A tack is when you turn the boat across the wind and the sail comes over to the other side.",
+      "text_markdown": "A tack is when you turn the boat across the wind and the sail comes over to the other side.",
+      "tts": {
+        "text": "A tack is when you turn the boat across the wind and the sail comes over to the other side.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Beginners think sailing is the tack.",
+      "text_markdown": "Beginners think sailing is the tack.",
+      "tts": {
+        "text": "Beginners think sailing is the tack.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The tack is loud and busy and a little exciting.",
+      "text_markdown": "The tack is loud and busy and a little exciting.",
+      "tts": {
+        "text": "The tack is loud and busy and a little exciting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "But the real sailing is the long, slow leg between tacks, when the boat has settled into its angle and there is nothing to do for ten or fifteen minutes.",
+      "text_markdown": "But the real sailing is the long, slow leg between tacks, when the boat has settled into its angle and there is nothing to do for ten or fifteen minutes.",
+      "tts": {
+        "text": "But the real sailing is the long, slow leg between tacks, when the boat has settled into its angle and there is nothing to do for ten or fifteen minutes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That quiet is the gift.",
+      "text_markdown": "That quiet is the gift.",
+      "tts": {
+        "text": "That quiet is the gift.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p40",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "That quiet is the whole reason.",
+      "text_markdown": "That quiet is the whole reason.",
+      "tts": {
+        "text": "That quiet is the whole reason.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Good sailors talk less than you would think.",
+      "text_markdown": "Good sailors talk less than you would think.",
+      "tts": {
+        "text": "Good sailors talk less than you would think.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They do not narrate.",
+      "text_markdown": "They do not narrate.",
+      "tts": {
+        "text": "They do not narrate.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They make small adjustments and watch the ribbon at the top of the mast and feel the boat through the seat of their pants.",
+      "text_markdown": "They make small adjustments and watch the ribbon at the top of the mast and feel the boat through the seat of their pants.",
+      "tts": {
+        "text": "They make small adjustments and watch the ribbon at the top of the mast and feel the boat through the seat of their pants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The seat of the pants is not a joke.",
+      "text_markdown": "The seat of the pants is not a joke.",
+      "tts": {
+        "text": "The seat of the pants is not a joke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Your body learns to read the lean of the hull better than your eyes do.",
+      "text_markdown": "Your body learns to read the lean of the hull better than your eyes do.",
+      "tts": {
+        "text": "Your body learns to read the lean of the hull better than your eyes do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Eventually, you will know the boat is overpowered before your brain has worked it out, because your hip felt it first.",
+      "text_markdown": "Eventually, you will know the boat is overpowered before your brain has worked it out, because your hip felt it first.",
+      "tts": {
+        "text": "Eventually, you will know the boat is overpowered before your brain has worked it out, because your hip felt it first.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mindset matters as much as technique.",
+      "text_markdown": "Mindset matters as much as technique.",
+      "tts": {
+        "text": "Mindset matters as much as technique.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The wind is not your opponent.",
+      "text_markdown": "The wind is not your opponent.",
+      "tts": {
+        "text": "The wind is not your opponent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The wind is the other half of the conversation.",
+      "text_markdown": "The wind is the other half of the conversation.",
+      "tts": {
+        "text": "The wind is the other half of the conversation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "If the wind drops, you wait.",
+      "text_markdown": "If the wind drops, you wait.",
+      "tts": {
+        "text": "If the wind drops, you wait.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "If the wind shifts, you adjust.",
+      "text_markdown": "If the wind shifts, you adjust.",
+      "tts": {
+        "text": "If the wind shifts, you adjust.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "If the wind dies completely, you sit in the silence and you accept it.",
+      "text_markdown": "If the wind dies completely, you sit in the silence and you accept it.",
+      "tts": {
+        "text": "If the wind dies completely, you sit in the silence and you accept it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Fighting the wind is the surest way to look like a beginner forever.",
+      "text_markdown": "Fighting the wind is the surest way to look like a beginner forever.",
+      "tts": {
+        "text": "Fighting the wind is the surest way to look like a beginner forever.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Listening to the wind is the surest way to grow.",
+      "text_markdown": "Listening to the wind is the surest way to grow.",
+      "tts": {
+        "text": "Listening to the wind is the surest way to grow.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a kind of patience that sailing builds, slowly, that is hard to find anywhere else.",
+      "text_markdown": "There is a kind of patience that sailing builds, slowly, that is hard to find anywhere else.",
+      "tts": {
+        "text": "There is a kind of patience that sailing builds, slowly, that is hard to find anywhere else.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You cannot rush a sailboat.",
+      "text_markdown": "You cannot rush a sailboat.",
+      "tts": {
+        "text": "You cannot rush a sailboat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You cannot bully it.",
+      "text_markdown": "You cannot bully it.",
+      "tts": {
+        "text": "You cannot bully it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You can only set it up correctly and then let the air do what air does.",
+      "text_markdown": "You can only set it up correctly and then let the air do what air does.",
+      "tts": {
+        "text": "You can only set it up correctly and then let the air do what air does.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "People who sail for many years carry that patience back onto land.",
+      "text_markdown": "People who sail for many years carry that patience back onto land.",
+      "tts": {
+        "text": "People who sail for many years carry that patience back onto land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "They wait better.",
+      "text_markdown": "They wait better.",
+      "tts": {
+        "text": "They wait better.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "They listen better.",
+      "text_markdown": "They listen better.",
+      "tts": {
+        "text": "They listen better.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The craft, in the end, is mostly about getting out of the way.",
+      "text_markdown": "The craft, in the end, is mostly about getting out of the way.",
+      "tts": {
+        "text": "The craft, in the end, is mostly about getting out of the way.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The wind knows what it is doing.",
+      "text_markdown": "The wind knows what it is doing.",
+      "tts": {
+        "text": "The wind knows what it is doing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The water knows what it is doing.",
+      "text_markdown": "The water knows what it is doing.",
+      "tts": {
+        "text": "The water knows what it is doing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The boat, given a chance, knows what it is doing.",
+      "text_markdown": "The boat, given a chance, knows what it is doing.",
+      "tts": {
+        "text": "The boat, given a chance, knows what it is doing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Your job is to be quiet enough to notice.",
+      "text_markdown": "Your job is to be quiet enough to notice.",
+      "tts": {
+        "text": "Your job is to be quiet enough to notice.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Moments",
+      "text_markdown": "Moments"
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I want to tell you about three small days, because they are the days I keep coming back to when someone asks me why I still go out.",
+      "text_markdown": "I want to tell you about three small days, because they are the days I keep coming back to when someone asks me why I still go out.",
+      "tts": {
+        "text": "I want to tell you about three small days, because they are the days I keep coming back to when someone asks me why I still go out.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first was a morning so calm that the water looked like a mirror.",
+      "text_markdown": "The first was a morning so calm that the water looked like a mirror.",
+      "tts": {
+        "text": "The first was a morning so calm that the water looked like a mirror.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There was almost no wind.",
+      "text_markdown": "There was almost no wind.",
+      "tts": {
+        "text": "There was almost no wind.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "We launched anyway, because we had brought sandwiches and we are stubborn.",
+      "text_markdown": "We launched anyway, because we had brought sandwiches and we are stubborn.",
+      "tts": {
+        "text": "We launched anyway, because we had brought sandwiches and we are stubborn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For the first hour, we drifted.",
+      "text_markdown": "For the first hour, we drifted.",
+      "tts": {
+        "text": "For the first hour, we drifted.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The sail hung loose.",
+      "text_markdown": "The sail hung loose.",
+      "tts": {
+        "text": "The sail hung loose.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The boat barely moved.",
+      "text_markdown": "The boat barely moved.",
+      "tts": {
+        "text": "The boat barely moved.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "We did not talk.",
+      "text_markdown": "We did not talk.",
+      "tts": {
+        "text": "We did not talk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "We just sat, and watched the sky, and ate slowly.",
+      "text_markdown": "We just sat, and watched the sky, and ate slowly.",
+      "tts": {
+        "text": "We just sat, and watched the sky, and ate slowly.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "My friend lay back across the bow and closed his eyes.",
+      "text_markdown": "My friend lay back across the bow and closed his eyes.",
+      "tts": {
+        "text": "My friend lay back across the bow and closed his eyes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "I trailed my fingers in the water.",
+      "text_markdown": "I trailed my fingers in the water.",
+      "tts": {
+        "text": "I trailed my fingers in the water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "A small fish came up and looked at my hand and went away again.",
+      "text_markdown": "A small fish came up and looked at my hand and went away again.",
+      "tts": {
+        "text": "A small fish came up and looked at my hand and went away again.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Then, very softly, the wind came back.",
+      "text_markdown": "Then, very softly, the wind came back.",
+      "tts": {
+        "text": "Then, very softly, the wind came back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "The sail filled.",
+      "text_markdown": "The sail filled.",
+      "tts": {
+        "text": "The sail filled.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "The boat began to move.",
+      "text_markdown": "The boat began to move.",
+      "tts": {
+        "text": "The boat began to move.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 14,
+      "block_type": "text",
+      "text": "We had not done anything.",
+      "text_markdown": "We had not done anything.",
+      "tts": {
+        "text": "We had not done anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 15,
+      "block_type": "text",
+      "text": "The wind had simply arrived, and decided we were ready, and taken us home.",
+      "text_markdown": "The wind had simply arrived, and decided we were ready, and taken us home.",
+      "tts": {
+        "text": "The wind had simply arrived, and decided we were ready, and taken us home.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p47",
+      "sentence_index": 16,
+      "block_type": "text",
+      "text": "I think about that morning more than any other day on the water.",
+      "text_markdown": "I think about that morning more than any other day on the water.",
+      "tts": {
+        "text": "I think about that morning more than any other day on the water.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second was the opposite.",
+      "text_markdown": "The second was the opposite.",
+      "tts": {
+        "text": "The second was the opposite.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was a windy afternoon, the kind where the water is already showing little white tops before you leave the dock.",
+      "text_markdown": "It was a windy afternoon, the kind where the water is already showing little white tops before you leave the dock.",
+      "tts": {
+        "text": "It was a windy afternoon, the kind where the water is already showing little white tops before you leave the dock.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I went out alone, which I should not have done quite that early in my sailing life, but I did.",
+      "text_markdown": "I went out alone, which I should not have done quite that early in my sailing life, but I did.",
+      "tts": {
+        "text": "I went out alone, which I should not have done quite that early in my sailing life, but I did.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The boat heeled hard, almost too hard, and for an hour I was completely focused, hand tight on the tiller, eyes on the sail, body leaned out over the side to keep the boat flat.",
+      "text_markdown": "The boat heeled hard, almost too hard, and for an hour I was completely focused, hand tight on the tiller, eyes on the sail, body leaned out over the side to keep the boat flat.",
+      "tts": {
+        "text": "The boat heeled hard, almost too hard, and for an hour I was completely focused, hand tight on the tiller, eyes on the sail, body leaned out over the side to keep the boat flat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I was a little scared.",
+      "text_markdown": "I was a little scared.",
+      "tts": {
+        "text": "I was a little scared.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "I was very alive.",
+      "text_markdown": "I was very alive.",
+      "tts": {
+        "text": "I was very alive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "When I finally turned for shore, my arms were shaking, and I was grinning so widely my cheeks hurt.",
+      "text_markdown": "When I finally turned for shore, my arms were shaking, and I was grinning so widely my cheeks hurt.",
+      "tts": {
+        "text": "When I finally turned for shore, my arms were shaking, and I was grinning so widely my cheeks hurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "I sat on the dock afterward and could not stop laughing.",
+      "text_markdown": "I sat on the dock afterward and could not stop laughing.",
+      "tts": {
+        "text": "I sat on the dock afterward and could not stop laughing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "I had not spoken to anyone in three hours.",
+      "text_markdown": "I had not spoken to anyone in three hours.",
+      "tts": {
+        "text": "I had not spoken to anyone in three hours.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p48",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "I had spoken to the wind the entire time.",
+      "text_markdown": "I had spoken to the wind the entire time.",
+      "tts": {
+        "text": "I had spoken to the wind the entire time.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The third was an evening sail with my father.",
+      "text_markdown": "The third was an evening sail with my father.",
+      "tts": {
+        "text": "The third was an evening sail with my father.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had not been on a boat since he was a young man.",
+      "text_markdown": "He had not been on a boat since he was a young man.",
+      "tts": {
+        "text": "He had not been on a boat since he was a young man.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He sat on the bench, hands folded, watching everything.",
+      "text_markdown": "He sat on the bench, hands folded, watching everything.",
+      "tts": {
+        "text": "He sat on the bench, hands folded, watching everything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He did not say much.",
+      "text_markdown": "He did not say much.",
+      "tts": {
+        "text": "He did not say much.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I worked the tiller and the sail and tried not to make a fuss.",
+      "text_markdown": "I worked the tiller and the sail and tried not to make a fuss.",
+      "tts": {
+        "text": "I worked the tiller and the sail and tried not to make a fuss.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The light got long and gold across the water.",
+      "text_markdown": "The light got long and gold across the water.",
+      "tts": {
+        "text": "The light got long and gold across the water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "A bird flew low across our path.",
+      "text_markdown": "A bird flew low across our path.",
+      "tts": {
+        "text": "A bird flew low across our path.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "My father turned to me and said, very quietly, that he had forgotten this.",
+      "text_markdown": "My father turned to me and said, very quietly, that he had forgotten this.",
+      "tts": {
+        "text": "My father turned to me and said, very quietly, that he had forgotten this.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "He had forgotten that the world could be this quiet.",
+      "text_markdown": "He had forgotten that the world could be this quiet.",
+      "tts": {
+        "text": "He had forgotten that the world could be this quiet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "We sailed back in the soft last light, and he kept one hand on the side of the boat the whole way, the way you keep a hand on a sleeping child.",
+      "text_markdown": "We sailed back in the soft last light, and he kept one hand on the side of the boat the whole way, the way you keep a hand on a sleeping child.",
+      "tts": {
+        "text": "We sailed back in the soft last light, and he kept one hand on the side of the boat the whole way, the way you keep a hand on a sleeping child.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "He died a few years later.",
+      "text_markdown": "He died a few years later.",
+      "tts": {
+        "text": "He died a few years later.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p49",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "I have that hour with me forever.",
+      "text_markdown": "I have that hour with me forever.",
+      "tts": {
+        "text": "I have that hour with me forever.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These are the moments I mean.",
+      "text_markdown": "These are the moments I mean.",
+      "tts": {
+        "text": "These are the moments I mean.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "None of them are big.",
+      "text_markdown": "None of them are big.",
+      "tts": {
+        "text": "None of them are big.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "None of them would make a good story at a loud dinner.",
+      "text_markdown": "None of them would make a good story at a loud dinner.",
+      "tts": {
+        "text": "None of them would make a good story at a loud dinner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The first time someone asks me about sailing at a party, I do not tell these stories.",
+      "text_markdown": "The first time someone asks me about sailing at a party, I do not tell these stories.",
+      "tts": {
+        "text": "The first time someone asks me about sailing at a party, I do not tell these stories.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "They sound too quiet.",
+      "text_markdown": "They sound too quiet.",
+      "tts": {
+        "text": "They sound too quiet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "They sound like nothing happened.",
+      "text_markdown": "They sound like nothing happened.",
+      "tts": {
+        "text": "They sound like nothing happened.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But everything happened.",
+      "text_markdown": "But everything happened.",
+      "tts": {
+        "text": "But everything happened.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The wind happened.",
+      "text_markdown": "The wind happened.",
+      "tts": {
+        "text": "The wind happened.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The water happened.",
+      "text_markdown": "The water happened.",
+      "tts": {
+        "text": "The water happened.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The hour happened, and it happened with someone I loved, or alone, or in a silence I will never get back.",
+      "text_markdown": "The hour happened, and it happened with someone I loved, or alone, or in a silence I will never get back.",
+      "tts": {
+        "text": "The hour happened, and it happened with someone I loved, or alone, or in a silence I will never get back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sailing collects these hours and gives them to you, one at a time, and you do not always notice while they are happening.",
+      "text_markdown": "Sailing collects these hours and gives them to you, one at a time, and you do not always notice while they are happening.",
+      "tts": {
+        "text": "Sailing collects these hours and gives them to you, one at a time, and you do not always notice while they are happening.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You only notice later, when you find yourself missing the boat on a Tuesday afternoon, for no reason you can name.",
+      "text_markdown": "You only notice later, when you find yourself missing the boat on a Tuesday afternoon, for no reason you can name.",
+      "tts": {
+        "text": "You only notice later, when you find yourself missing the boat on a Tuesday afternoon, for no reason you can name.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Why It Stays",
+      "text_markdown": "Why It Stays"
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People try a lot of hobbies in a life.",
+      "text_markdown": "People try a lot of hobbies in a life.",
+      "tts": {
+        "text": "People try a lot of hobbies in a life.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most of them do not stick.",
+      "text_markdown": "Most of them do not stick.",
+      "tts": {
+        "text": "Most of them do not stick.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You buy the gear, you go a few times, you put the gear in a closet, and one day you give it away.",
+      "text_markdown": "You buy the gear, you go a few times, you put the gear in a closet, and one day you give it away.",
+      "tts": {
+        "text": "You buy the gear, you go a few times, you put the gear in a closet, and one day you give it away.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "That is normal.",
+      "text_markdown": "That is normal.",
+      "tts": {
+        "text": "That is normal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Most things are passing interests.",
+      "text_markdown": "Most things are passing interests.",
+      "tts": {
+        "text": "Most things are passing interests.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Most things are fine.",
+      "text_markdown": "Most things are fine.",
+      "tts": {
+        "text": "Most things are fine.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sailing is different, and I have thought a long time about why.",
+      "text_markdown": "Sailing is different, and I have thought a long time about why.",
+      "tts": {
+        "text": "Sailing is different, and I have thought a long time about why.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Part of it is that sailing never finishes teaching you.",
+      "text_markdown": "Part of it is that sailing never finishes teaching you.",
+      "tts": {
+        "text": "Part of it is that sailing never finishes teaching you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You can sail for forty years and still meet a wind condition you have never seen.",
+      "text_markdown": "You can sail for forty years and still meet a wind condition you have never seen.",
+      "tts": {
+        "text": "You can sail for forty years and still meet a wind condition you have never seen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Old sailors tell you this with soft pride.",
+      "text_markdown": "Old sailors tell you this with soft pride.",
+      "tts": {
+        "text": "Old sailors tell you this with soft pride.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They are still learning.",
+      "text_markdown": "They are still learning.",
+      "tts": {
+        "text": "They are still learning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hobbies that keep teaching you, your whole life, are rare, and they are the ones that stay.",
+      "text_markdown": "Hobbies that keep teaching you, your whole life, are rare, and they are the ones that stay.",
+      "tts": {
+        "text": "Hobbies that keep teaching you, your whole life, are rare, and they are the ones that stay.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Part of it is the company.",
+      "text_markdown": "Part of it is the company.",
+      "tts": {
+        "text": "Part of it is the company.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sailors, almost without exception, are kind to beginners.",
+      "text_markdown": "Sailors, almost without exception, are kind to beginners.",
+      "tts": {
+        "text": "Sailors, almost without exception, are kind to beginners.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "There is something about being humbled by the wind, over and over, that takes the edge off a person.",
+      "text_markdown": "There is something about being humbled by the wind, over and over, that takes the edge off a person.",
+      "tts": {
+        "text": "There is something about being humbled by the wind, over and over, that takes the edge off a person.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You will not meet many arrogant sailors.",
+      "text_markdown": "You will not meet many arrogant sailors.",
+      "tts": {
+        "text": "You will not meet many arrogant sailors.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You will meet a lot of patient ones, who remember being clumsy themselves, and who will hand you a rope and say, here, try this, with a small smile.",
+      "text_markdown": "You will meet a lot of patient ones, who remember being clumsy themselves, and who will hand you a rope and say, here, try this, with a small smile.",
+      "tts": {
+        "text": "You will meet a lot of patient ones, who remember being clumsy themselves, and who will hand you a rope and say, here, try this, with a small smile.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The community is gentle in a way that not many communities are anymore.",
+      "text_markdown": "The community is gentle in a way that not many communities are anymore.",
+      "tts": {
+        "text": "The community is gentle in a way that not many communities are anymore.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Part of it is the silence.",
+      "text_markdown": "Part of it is the silence.",
+      "tts": {
+        "text": "Part of it is the silence.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modern life is loud.",
+      "text_markdown": "Modern life is loud.",
+      "tts": {
+        "text": "Modern life is loud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "There are very few places left where nothing is buzzing, nothing is pinging, nothing is asking for your attention.",
+      "text_markdown": "There are very few places left where nothing is buzzing, nothing is pinging, nothing is asking for your attention.",
+      "tts": {
+        "text": "There are very few places left where nothing is buzzing, nothing is pinging, nothing is asking for your attention.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A small boat, an hour from shore, with the engine off and the sail full, is one of those places.",
+      "text_markdown": "A small boat, an hour from shore, with the engine off and the sail full, is one of those places.",
+      "tts": {
+        "text": "A small boat, an hour from shore, with the engine off and the sail full, is one of those places.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The wind is not a notification.",
+      "text_markdown": "The wind is not a notification.",
+      "tts": {
+        "text": "The wind is not a notification.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The water is not asking you to do anything.",
+      "text_markdown": "The water is not asking you to do anything.",
+      "tts": {
+        "text": "The water is not asking you to do anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You can simply be a person, sitting, listening, breathing.",
+      "text_markdown": "You can simply be a person, sitting, listening, breathing.",
+      "tts": {
+        "text": "You can simply be a person, sitting, listening, breathing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p58",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "That hour is medicine, and you can feel it working.",
+      "text_markdown": "That hour is medicine, and you can feel it working.",
+      "tts": {
+        "text": "That hour is medicine, and you can feel it working.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Part of it is the way sailing makes you small in a good way.",
+      "text_markdown": "Part of it is the way sailing makes you small in a good way.",
+      "tts": {
+        "text": "Part of it is the way sailing makes you small in a good way.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You are not in charge out there.",
+      "text_markdown": "You are not in charge out there.",
+      "tts": {
+        "text": "You are not in charge out there.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The wind is in charge.",
+      "text_markdown": "The wind is in charge.",
+      "tts": {
+        "text": "The wind is in charge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The water is in charge.",
+      "text_markdown": "The water is in charge.",
+      "tts": {
+        "text": "The water is in charge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The weather is in charge.",
+      "text_markdown": "The weather is in charge.",
+      "tts": {
+        "text": "The weather is in charge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You are a small visitor on a very old surface, and the surface is patient with you, and the air is patient with you, and you remember that you are a creature inside a much bigger thing.",
+      "text_markdown": "You are a small visitor on a very old surface, and the surface is patient with you, and the air is patient with you, and you remember that you are a creature inside a much bigger thing.",
+      "tts": {
+        "text": "You are a small visitor on a very old surface, and the surface is patient with you, and the air is patient with you, and you remember that you are a creature inside a much bigger thing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "People who sail for many years tend to be less anxious about being important.",
+      "text_markdown": "People who sail for many years tend to be less anxious about being important.",
+      "tts": {
+        "text": "People who sail for many years tend to be less anxious about being important.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "They have spent enough time being small.",
+      "text_markdown": "They have spent enough time being small.",
+      "tts": {
+        "text": "They have spent enough time being small.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And part of it, honestly, is the way it changes the rest of your week.",
+      "text_markdown": "And part of it, honestly, is the way it changes the rest of your week.",
+      "tts": {
+        "text": "And part of it, honestly, is the way it changes the rest of your week.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Monday is easier when you sailed on Saturday.",
+      "text_markdown": "Monday is easier when you sailed on Saturday.",
+      "tts": {
+        "text": "Monday is easier when you sailed on Saturday.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The boat is sitting there, waiting.",
+      "text_markdown": "The boat is sitting there, waiting.",
+      "tts": {
+        "text": "The boat is sitting there, waiting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The wind is somewhere, gathering.",
+      "text_markdown": "The wind is somewhere, gathering.",
+      "tts": {
+        "text": "The wind is somewhere, gathering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The hour is coming.",
+      "text_markdown": "The hour is coming.",
+      "tts": {
+        "text": "The hour is coming.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That knowledge, even on the busiest day, is a kind of warmth in your chest.",
+      "text_markdown": "That knowledge, even on the busiest day, is a kind of warmth in your chest.",
+      "tts": {
+        "text": "That knowledge, even on the busiest day, is a kind of warmth in your chest.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When sailors talk about sailing, they do not talk about boats much, in the end.",
+      "text_markdown": "When sailors talk about sailing, they do not talk about boats much, in the end.",
+      "tts": {
+        "text": "When sailors talk about sailing, they do not talk about boats much, in the end.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They talk about a particular sky they remember.",
+      "text_markdown": "They talk about a particular sky they remember.",
+      "tts": {
+        "text": "They talk about a particular sky they remember.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They talk about a quiet between two friends.",
+      "text_markdown": "They talk about a quiet between two friends.",
+      "tts": {
+        "text": "They talk about a quiet between two friends.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They talk about the smell of the rope and the warmth of the wood and the moment the sail filled and they could not stop smiling.",
+      "text_markdown": "They talk about the smell of the rope and the warmth of the wood and the moment the sail filled and they could not stop smiling.",
+      "tts": {
+        "text": "They talk about the smell of the rope and the warmth of the wood and the moment the sail filled and they could not stop smiling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "They talk about it the way people talk about a place they grew up in.",
+      "text_markdown": "They talk about it the way people talk about a place they grew up in.",
+      "tts": {
+        "text": "They talk about it the way people talk about a place they grew up in.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is why it stays.",
+      "text_markdown": "That is why it stays.",
+      "tts": {
+        "text": "That is why it stays.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sailing is not a sport.",
+      "text_markdown": "Sailing is not a sport.",
+      "tts": {
+        "text": "Sailing is not a sport.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is not really a hobby.",
+      "text_markdown": "It is not really a hobby.",
+      "tts": {
+        "text": "It is not really a hobby.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It is a place.",
+      "text_markdown": "It is a place.",
+      "tts": {
+        "text": "It is a place.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A quiet, blue, moving place, and once you have been there a few times, you do not want to live too far from it.",
+      "text_markdown": "A quiet, blue, moving place, and once you have been there a few times, you do not want to live too far from it.",
+      "tts": {
+        "text": "A quiet, blue, moving place, and once you have been there a few times, you do not want to live too far from it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You arrange your life so you can keep going back.",
+      "text_markdown": "You arrange your life so you can keep going back.",
+      "tts": {
+        "text": "You arrange your life so you can keep going back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "And you do.",
+      "text_markdown": "And you do.",
+      "tts": {
+        "text": "And you do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "For the rest of your life, you do.",
+      "text_markdown": "For the rest of your life, you do.",
+      "tts": {
+        "text": "For the rest of your life, you do.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

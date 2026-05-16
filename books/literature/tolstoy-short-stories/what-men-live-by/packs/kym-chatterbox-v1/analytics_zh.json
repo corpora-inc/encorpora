@@ -1,0 +1,981 @@
+{
+  "book_id": "kym-chatterbox-v1",
+  "language": "zh",
+  "timestamp": "2026-05-11T07:33:49.953853+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 605,
+  "segments_converged_by_retry": 12,
+  "segments_plateau_stopped": 0,
+  "total_retries": 14,
+  "error_distribution": {
+    "trailing_silence": 282,
+    "first_word_weak": 155,
+    "tail_energy": 131,
+    "final_word_weak": 70,
+    "stacked_words": 60,
+    "tts_audio_truncated": 13,
+    "truncated_last_word": 12,
+    "min_trailing_silence": 12,
+    "tail_spike": 10,
+    "short_words": 6,
+    "word_cluster": 5,
+    "pre_speech_spike": 5,
+    "tail_zero_duration_run": 5,
+    "too_long": 3,
+    "post_speech_pop": 3
+  },
+  "phase_timings": {
+    "tts": 437.6911702156067,
+    "align": 112.52686762809753,
+    "validate": 36.577980518341064,
+    "trim": 0.8482780456542969,
+    "master": 12.513447523117065
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 503,
+      "passed": 494,
+      "rate": 0.9821073558648111
+    },
+    "medium_30_80": {
+      "total": 113,
+      "passed": 110,
+      "rate": 0.9734513274336283
+    },
+    "long_80_plus": {
+      "total": 1,
+      "passed": 1,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch05-131",
+      "attempts": 3,
+      "best_quality_score": 30.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.8871157349298666,
+            "exaggeration": 0.5302997291208612,
+            "temperature": 0.6780099274985802,
+            "top_p": 0.7037499533545986,
+            "min_p": 0.3385718699862218,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6395828362312015,
+            "exaggeration": 0.07766650419766336,
+            "temperature": 0.45888147557377035,
+            "top_p": 0.7773061552928738,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 3,
+      "text_preview": "III",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-296",
+      "attempts": 3,
+      "best_quality_score": 30.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.699666877431335,
+            "exaggeration": 0.4942386829747755,
+            "temperature": 0.6774347208081968,
+            "top_p": 0.7289852561275186,
+            "min_p": 0.06905508718487027,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.2988346574071008,
+            "exaggeration": 0.2634832108655401,
+            "temperature": 0.10394407543973833,
+            "top_p": 0.7216837765284347,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "VI",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-018",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "short_words",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.893954277041723,
+            "exaggeration": 0.3088900553880293,
+            "temperature": 0.6668790257606659,
+            "top_p": 0.6334429116509179,
+            "min_p": 0.056473444985672666,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "到了秋天，鞋匠攒了一点钱：一张三卢布的纸币放在妻子的箱子里，村里的农民还欠着五卢布二十戈比。",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-080",
+      "attempts": 2,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9132504130398498,
+            "exaggeration": 0.40226833932706674,
+            "temperature": 0.3390057892278945,
+            "top_p": 0.7034069877030582,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "II",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-202",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.11308419463101238,
+            "temperature": 0.4105874380984655,
+            "top_p": 0.7700760970824311,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 11,
+      "text_preview": "玛特廖娜站住了，说道：",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-413",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6667280217621013,
+            "exaggeration": 0.25398334895506464,
+            "temperature": 0.27304208997144547,
+            "top_p": 0.9534663594381947,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 13,
+      "text_preview": "等做好了，把便鞋带回来。\"",
+      "passed_first": false
+    },
+    {
+      "id": "ch11-470",
+      "attempts": 2,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.9837580504547584,
+            "exaggeration": 0.24124092414388593,
+            "temperature": 0.4574707347879424,
+            "top_p": 0.7874633100518083,
+            "min_p": 0.2173646411560182,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "IX",
+      "passed_first": false
+    },
+    {
+      "id": "ch12-516",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 180.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7942098550539847,
+            "exaggeration": 0.14783271593367658,
+            "temperature": 0.41744391575997425,
+            "top_p": 0.7365609891691792,
+            "min_p": 0.33260836614696465,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "米哈伊尔从长凳上站起来，放下活计，解下围裙，向东家夫妇鞠了个躬，说：",
+      "passed_first": false
+    },
+    {
+      "id": "ch12-553",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9755141315089529,
+            "exaggeration": 0.4625357662396759,
+            "temperature": 0.6829524885930798,
+            "top_p": 0.6692734015485208,
+            "min_p": 0.0,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "我飞到村庄上空，想把灵魂送到上帝那里，一阵风刮来，翅膀耷拉下来，掉落了，灵魂独自飞向上帝，而我摔落在路旁的地上。",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-557",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8338439365644464,
+            "exaggeration": 0.3397824233538258,
+            "temperature": 0.7409421951624496,
+            "top_p": 0.7963485988208274,
+            "min_p": 0.030539377974824228,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "\"我独自一人留在田野里，赤身裸体。",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-570",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 95.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9214162864900024,
+            "exaggeration": 0.05078374287008741,
+            "temperature": 0.2896083116482301,
+            "top_p": 0.8672100269672676,
+            "min_p": 0.19086054556668572,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 5,
+      "text_preview": "我绝望了。",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-576",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9892050931148916,
+            "exaggeration": 0.1424506351109544,
+            "temperature": 0.39188638548383664,
+            "top_p": 0.8911469989059028,
+            "min_p": 0.026362586976399677,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "她要把我赶到寒冷中去，而我知道，如果她把我赶出去，她就会死。",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "题词",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 44,
+      "text_preview": "我们知道我们已经出死入生了，因为我们爱弟兄：不爱弟兄的就住在死中。(约翰一书 3:14)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 115.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "trailing_silence",
+            "too_long",
+            "short_words",
+            "word_cluster",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 115.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "凡有世上财物的，看见弟兄穷乏，却塞住怜恤的心：上帝的爱怎能住在他里面呢？（第三章，第十七节） (III, 17)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 40.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "short_words",
+            "final_word_weak"
+          ],
+          "score": 75.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "short_words",
+            "tail_energy"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 45,
+      "text_preview": "我的孩子们，我们相爱，不要只在言语和舌头上，总要在行为和诚实上，这是第三章第十八节的教导。",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 57.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 57.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 42,
+      "text_preview": "爱是从上帝来的，凡有爱心的人，都是由上帝而生，并且认识上帝，这句经文出自第四章第七节",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 1,
+      "best_quality_score": 32.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "第四章第八节里说，没有爱心的人，就不认识上帝，因为上帝就是爱",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 1,
+      "best_quality_score": 42.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "tail_energy"
+          ],
+          "score": 42.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "从来没有人见过上帝。 我们若彼此相爱，上帝就住在我们里面。（第四章，第十二节） (IV, 12)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "上帝就是爱，住在爱里面的，就住在上帝里面，上帝也住在他里面。（第四章，第十六节） (IV, 16)",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": -0.007,
+        "temperature": 0.015,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": -0.019,
+        "temperature": 0.039,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.056,
+        "temperature": 0.3,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 8,
+      "avg_delta": {
+        "cfg_weight": 0.014,
+        "temperature": 0.127,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.056,
+        "temperature": 0.3,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.028,
+        "temperature": 0.254,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.028,
+        "temperature": 0.254,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

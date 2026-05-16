@@ -56,7 +56,7 @@ const ALLOWED_PLATFORMS = new Set([
   "ios", "android", "web", "macos", "windows", "linux", "unknown",
 ]);
 
-const ALLOWED_READERS = new Set(["stargate", "earthgate"]);
+const ALLOWED_READERS = new Set(["stargate", "earthgate", "corpan-app"]);
 
 // CORS — must echo Origin (not "*") to satisfy WebKit when the request comes
 // from a custom URI scheme (Tauri WKWebView with `corpan-pack://localhost/...`

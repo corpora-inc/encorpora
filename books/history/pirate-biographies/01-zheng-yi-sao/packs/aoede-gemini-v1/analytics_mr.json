@@ -1,0 +1,597 @@
+{
+  "book_id": "aoede-gemini-v1",
+  "language": "mr",
+  "timestamp": "2026-05-02T08:41:31.715990+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 303,
+  "segments_converged_by_retry": 0,
+  "segments_plateau_stopped": 0,
+  "total_retries": 0,
+  "error_distribution": {
+    "transcription_mismatch": 223,
+    "tail_energy": 17,
+    "first_word_weak": 16,
+    "trailing_silence": 2,
+    "final_word_weak": 2,
+    "stacked_words": 2,
+    "pre_speech_spike": 1,
+    "mid_phrase_gap": 1
+  },
+  "phase_timings": {
+    "tts": 6.059809446334839,
+    "align": 17.37519860267639,
+    "validate": 0.7299840450286865,
+    "trim": 0.01030278205871582,
+    "master": 0.42839550971984863
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 4,
+      "passed": 4,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 226,
+      "passed": 226,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 73,
+      "passed": 73,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 4.96,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "हा इतिहासातील सर्वात यशस्वी चाच्याबद्दलची खरी कहाणी आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 96,
+      "text_preview": "तिचे नाव झेंग यी साओ होते, आणि तिने जगातील सर्वात मोठ्या चाच्यांच्या आरमाराचे ने",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 112,
+      "text_preview": "तिच्या सत्तेच्या शिखरावर असताना, तिने बहुतेक राष्ट्रांकडे असलेल्या जहाजांपेक्षा ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 5.68,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.68,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 52,
+      "text_preview": "तिचा जन्म श्रीमंतीत किंवा विशेषाधिकारात झाला नव्हता.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 6.4,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.4,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "तिचा जन्म अठराव्या शतकाच्या उत्तरार्धात दक्षिण चीनमधील गरिबीत झाला होता.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 5.52,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.52,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 107,
+      "text_preview": "तिने जे काही साध्य केले, ते तिने बुद्धिमत्ता, क्रूरता आणि लोकांना संघटित करण्याच",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "हे पुस्तक सांगते की, काहीही नसलेली एक स्त्री दक्षिण चीन समुद्राची निर्विवाद शासक",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 4.96,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "ही युद्ध, व्यापार, कायदा आणि जगण्याची कहाणी आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "युरोपीय सत्ता आशियामध्ये अधिक खोलवर शिरत असताना, वेगाने बदलणाऱ्या जगाची ही एक कह",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 6.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "या पुस्तकातील प्रत्येक सत्य ऐतिहासिक नोंदीतून आले आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 5.36,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.36,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "जिथे नोंद अनिश्चित आहे, तिथे आम्ही तसे नमूद करतो.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "जिथे इतिहासकारांमध्ये मतभेद आहेत, तिथे आम्ही उपलब्ध असलेले सर्वात मजबूत पुरावे स",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "दक्षिण चीन समुद्र हा पृथ्वीवरील सर्वात व्यस्त जलमार्गांपैकी एक आहे.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 7.04,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 7.04,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "तो पश्चिमेकडील व्हिएतनामच्या किनाऱ्यापासून पूर्वेकडील फिलिपिन्सपर्यंत पसरलेला आह",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 4.4,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.4,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "उत्तरेला चीनचा किनारा आहे, आणि दक्षिणेला बोर्नियो आणि सुमात्रा बेटे आहेत.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "हजारो वर्षांपासून व्यापारी या पाण्यातून प्रवास करत आहेत.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-019",
+      "attempts": 1,
+      "best_quality_score": 5.84,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.84,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 77,
+      "text_preview": "चिनी जंक जहाजांनी रेशीम, पोर्सिलेन आणि चहा आग्नेय आशियातील बंदरांपर्यंत नेला.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "त्या बदल्यात, मसाले, उष्णकटिबंधीय लाकूड आणि विदेशी वस्तू चीनमध्ये परत येत होत्या",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 1,
+      "best_quality_score": 5.6,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.6,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 73,
+      "text_preview": "कँटन शहर, ज्याला आता ग्वांगझो म्हणतात, या व्यापाराच्या केंद्रस्थानी होते.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7,
+            "exaggeration": 0.3,
+            "temperature": 0.6,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.5
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "अठराव्या शतकात कँटन हे जगातील सर्वात श्रीमंत शहरांपैकी एक होते.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {}
+}

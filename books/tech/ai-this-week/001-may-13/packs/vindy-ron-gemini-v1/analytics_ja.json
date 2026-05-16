@@ -1,0 +1,901 @@
+{
+  "book_id": "vindy-ron-gemini-v1",
+  "language": "ja",
+  "timestamp": "2026-05-14T18:30:46.838607+00:00",
+  "segments_total": 62,
+  "segments_first_pass": 52,
+  "segments_converged_by_retry": 10,
+  "segments_plateau_stopped": 0,
+  "total_retries": 14,
+  "error_distribution": {
+    "first_word_weak": 35,
+    "too_long": 29,
+    "tts_audio_truncated": 14,
+    "stacked_words": 12,
+    "final_word_weak": 11,
+    "min_trailing_silence": 10,
+    "trailing_silence": 9,
+    "tail_zero_duration_run": 9,
+    "word_cluster": 9,
+    "truncated_last_word": 8,
+    "tail_energy": 7,
+    "short_words": 3,
+    "pre_speech_spike": 2,
+    "alignment_overshoot": 1
+  },
+  "phase_timings": {
+    "tts": 15.689013242721558,
+    "align": 9.278552770614624,
+    "validate": 2.4819962978363037,
+    "trim": 0.019717693328857422,
+    "master": 0.36545705795288086
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 27,
+      "passed": 23,
+      "rate": 0.8518518518518519
+    },
+    "medium_30_80": {
+      "total": 12,
+      "passed": 12,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 23,
+      "passed": 17,
+      "rate": 0.7391304347826086
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch00-004",
+      "attempts": 3,
+      "best_quality_score": 5.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_long",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "stacked_words",
+            "min_trailing_silence",
+            "too_long",
+            "word_cluster",
+            "final_word_weak",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 210.0,
+          "params": {
+            "cfg_weight": 0.6856344498165687,
+            "exaggeration": 0.3001430523177057,
+            "temperature": 0.5755208783704584,
+            "top_p": 0.8763032677129863,
+            "min_p": 0.20047846762454838,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "too_long"
+          ],
+          "score": 5.0,
+          "params": {
+            "cfg_weight": 0.5348732560218945,
+            "exaggeration": 0.0,
+            "temperature": 0.06439039786098205,
+            "top_p": 1.0,
+            "min_p": 0.34777934453745196,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 96,
+      "text_preview": "今日は二千二十六年五月十三日、水曜日です。今週出たモデルやリーダーボード、今週のコンセプト、それから大きな話題として、アメリカで連邦準備制度理事会の新しい議長が",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.6959463398298436,
+            "exaggeration": 0.3129005540557603,
+            "temperature": 0.703166989342229,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.3424204500233948,
+            "exaggeration": 0.31289356294740805,
+            "temperature": 0.26051780064552127,
+            "top_p": 0.6420936824332274,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 25,
+      "text_preview": "OpenAI以外の誰かがその数字を検証しましたか？",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-036",
+      "attempts": 3,
+      "best_quality_score": 5.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_long",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 465.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_long",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 445.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.3669880244221502,
+            "temperature": 0.6959144240241624,
+            "top_p": 0.8060066061699236,
+            "min_p": 0.10248817181934441,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "too_long"
+          ],
+          "score": 5.0,
+          "params": {
+            "cfg_weight": 0.4266044868095789,
+            "exaggeration": 0.0574174632557109,
+            "temperature": 0.48959775909158654,
+            "top_p": 0.9394076459471814,
+            "min_p": 0.027603741965131462,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 92,
+      "text_preview": "ふつうのエーアイモデルは、一つの大きな脳のようなものです。言葉ごとに脳全体が働きます。専門家混合モデルは、案内役と専門家がいる建物のようなものです。案内役が言葉",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-060",
+      "attempts": 3,
+      "best_quality_score": 15.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "tts_audio_truncated"
+          ],
+          "score": 115.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 135.0,
+          "params": {
+            "cfg_weight": 0.5661973434347458,
+            "exaggeration": 0.4794924667115928,
+            "temperature": 0.3162864438518034,
+            "top_p": 1.0,
+            "min_p": 0.02350842881993978,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.5429412413843476,
+            "exaggeration": 0.13038965695573362,
+            "temperature": 0.1582144190030822,
+            "top_p": 0.7807966777458302,
+            "min_p": 0.1535687085281274,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 26,
+      "text_preview": "良い締めくくりですね。ロン、ありがとうございました。",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 135.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6248702368266297,
+            "exaggeration": 0.13348610140415829,
+            "temperature": 0.38640117179710093,
+            "top_p": 1.0,
+            "min_p": 0.07541788090234128,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "いつものように、Ronと一緒にお送りします。",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 2,
+      "best_quality_score": 45.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "alignment_overshoot",
+            "too_long",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 395.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "too_long",
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.38464425782551387,
+            "temperature": 0.5668016375952227,
+            "top_p": 0.9756947881587431,
+            "min_p": 0.04927428039002338,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 126,
+      "text_preview": "大きなことが2つあります。Kimiモデルの背後にある中国の研究所Moonshotが先週5月7日に、200億ドルの評価額で20億ドルを調達しました。そして彼らの最",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-016",
+      "attempts": 2,
+      "best_quality_score": 50.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_long",
+            "short_words",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 470.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "too_long",
+            "short_words",
+            "first_word_weak"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.7121885480962289,
+            "exaggeration": 0.476463544313966,
+            "temperature": 0.43255159313899705,
+            "top_p": 0.7489554564632004,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 139,
+      "text_preview": "フランスの研究所Mistralが4月下旬にMedium 3.5をリリースしました。彼らは、チャットモデル、推論モデル、コーディングモデルの従来の分離を一つの製品",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-029",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_long",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 465.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "too_long",
+            "first_word_weak"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.8633455933505063,
+            "exaggeration": 0.5275455674653244,
+            "temperature": 0.38589996842498936,
+            "top_p": 0.7880749521891846,
+            "min_p": 0.12981188025353538,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 264,
+      "text_preview": "よりクリーンなボードで2つあります。4月中旬に、AnthropicのClaude Opus 4.7が、LM Arenaコーディングリーダーボードで初めてElo ",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-037",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7214910961341077,
+            "exaggeration": 0.5309644643905304,
+            "temperature": 0.2867923143466723,
+            "top_p": 0.7547058572140067,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 27,
+      "text_preview": "つまり、モデルは紙の上では巨大だが、実行するのは安い。",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-045",
+      "attempts": 2,
+      "best_quality_score": 25.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "too_long",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 135.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "too_long",
+            "first_word_weak"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.7835777319644407,
+            "exaggeration": 0.3647972640026328,
+            "temperature": 0.4037595323478196,
+            "top_p": 1.0,
+            "min_p": 0.06429522523830081,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "米国上院は今日、ケビン・ワーシュを次の連邦準備制度理事会議長に承認しました。賛成は五十四、反対は四十五。現代のアメリカ史で最も僅差です。民主党からの賛成は一人だ",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-001",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 28,
+      "text_preview": "AI This Weekへようこそ。私はVindyです。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 11,
+      "text_preview": "よろしくお願いします。",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "Ron、今週最大のモデルニュースは何ですか？",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 25.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "too_long",
+            "first_word_weak"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 142,
+      "text_preview": "ChatGPTの内部にあるデフォルトの頭脳が変わりました。OpenAIは先週、5月5日火曜日に、GPT-5.5 Instantという新しいモデルを無料層にロール",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 12,
+      "text_preview": "どう短くなったのですか？",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 5.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "too_long"
+          ],
+          "score": 5.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 118,
+      "text_preview": "OpenAIによると、新しいデフォルトは、交代したモデルより約30%少ない語数と30%少ない行数で書くそうです。また、最も困難なプロンプトでの幻覚的な主張が50",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 5.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "too_long"
+          ],
+          "score": 5.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 140,
+      "text_preview": "大規模にはまだです。Artificial Analysisのような独立したベンチマーク団体では、新しいモデルが総合知能指数のトップに位置しています。しかし幻覚の",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 17,
+      "text_preview": "オープンウェイトの方はどうですか？",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 9,
+      "text_preview": "トップに？全体で？",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "全体でです。主要な商用ルーターで中国のオープンウェイトモデルが一位になるなんて、六か月前なら考えられないことでした。",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tts_audio_truncated": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.289,
+        "temperature": -0.178,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

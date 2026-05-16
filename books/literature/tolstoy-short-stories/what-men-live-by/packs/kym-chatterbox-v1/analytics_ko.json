@@ -1,0 +1,702 @@
+{
+  "book_id": "kym-chatterbox-v1",
+  "language": "ko",
+  "timestamp": "2026-05-10T14:49:05.669350+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 614,
+  "segments_converged_by_retry": 3,
+  "segments_plateau_stopped": 0,
+  "total_retries": 3,
+  "error_distribution": {
+    "trailing_silence": 285,
+    "tail_energy": 129,
+    "first_word_weak": 45,
+    "final_word_weak": 27,
+    "tts_audio_truncated": 17,
+    "tail_spike": 12,
+    "min_trailing_silence": 7,
+    "stacked_words": 6,
+    "truncated_last_word": 5,
+    "pre_speech_spike": 5,
+    "tail_zero_duration_run": 3,
+    "word_cluster": 2
+  },
+  "phase_timings": {
+    "tts": 123.34183931350708,
+    "align": 52.44769263267517,
+    "validate": 34.77244734764099,
+    "trim": 0.23880887031555176,
+    "master": 3.2597250938415527
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 350,
+      "passed": 347,
+      "rate": 0.9914285714285714
+    },
+    "medium_30_80": {
+      "total": 232,
+      "passed": 232,
+      "rate": 1.0
+    },
+    "long_80_plus": {
+      "total": 35,
+      "passed": 35,
+      "rate": 1.0
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch04-098",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9949558486127899,
+            "exaggeration": 0.28407241064632344,
+            "temperature": 0.38920767718723365,
+            "top_p": 0.7047355977628635,
+            "min_p": 0.3319333484261101,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 14,
+      "text_preview": "— 자, 이보시오, 형제.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-266",
+      "attempts": 2,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.6039283823961041,
+            "exaggeration": 0.49407832704983434,
+            "temperature": 0.3440082405972735,
+            "top_p": 1.0,
+            "min_p": 0.10929059870818333,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 1,
+      "text_preview": "V",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-405",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "pre_speech_spike",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9750723767678195,
+            "exaggeration": 0.18166224657276792,
+            "temperature": 0.5795448727543128,
+            "top_p": 0.9403590668531949,
+            "min_p": 0.18671154040746737,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 18,
+      "text_preview": "— 마님이 장화 건으로 보내셨소.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 2,
+      "text_preview": "서시",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "word_cluster"
+          ],
+          "score": 50.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "우리가 사망에서 생명으로 옮겨진 줄을 아나니, 이는 형제를 사랑하기 때문이라. 사랑하지 않는 자는 사망에 머물러 있느니라. (요한일서 3:14)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 76,
+      "text_preview": "세상의 재물을 가지고도 형제가 궁핍한 것을 보면서 마음을 닫아 버린다면, 어찌 그 사람 안에 하나님의 사랑이 있겠는가? (III, 17)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 32.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 32.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "자녀들아! 우리가 말과 혀로만 사랑하지 말고, 행함과 진실함으로 사랑하자. (III, 18)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 65.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "stacked_words",
+            "trailing_silence",
+            "word_cluster",
+            "tail_energy"
+          ],
+          "score": 65.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "사랑은 하나님께로부터 나옴이라. 사랑하는 자마다 하나님으로부터 나서 하나님을 아느니라. (IV, 7)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 48,
+      "text_preview": "사랑하지 않는 자는 하나님을 알지 못하나니, 이는 하나님이 사랑이심이라. (IV, 8)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 60,
+      "text_preview": "하나님을 본 사람은 아무도 없느니라. 우리가 서로 사랑하면 하나님이 우리 안에 거하시느니라. (IV, 12)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "하나님은 사랑이시라. 사랑 안에 거하는 자는 하나님 안에 거하고, 하나님도 그 안에 거하시느니라. (IV, 16)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "누구든지 하나님을 사랑한다 하면서 그 형제를 미워하면 거짓말쟁이라. 보이는 형제를 사랑하지 않는 자가 보이지 않는 하나님을 어찌 사랑하겠는가? ",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-013",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 1,
+      "text_preview": "I",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-014",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 38,
+      "text_preview": "한 구두장이가 아내와 아이들과 함께 남의 집에 세 들어 살고 있었다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "자기 집도 없고 땅도 없어서, 가족을 데리고 구두 만드는 일로 먹고살았다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-016",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 30,
+      "text_preview": "빵은 비싸고 일삯은 싸서, 버는 대로 다 먹어 치웠다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-017",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.97
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "구두장이에게는 아내와 함께 쓰는 털외투가 하나 있었는데, 그마저도 너덜너덜 해져 버렸다. 그래서 이미 이 년째 새 털외투를 만들 양가죽을 사려고",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-018",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 89,
+      "text_preview": "가을이 되자 구두장이에게 약간의 돈이 모였다. 아내의 궤 안에 삼 루블짜리 지폐가 한 장 있었고, 마을 농부들에게 받을 돈이 또 오 루블 이십 ",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-019",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "그래서 아침 일찍 구두장이는 마을로 털외투를 사러 나섰다.",
+      "passed_first": true
+    },
+    {
+      "id": "ch03-020",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.96
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "셔츠 위에 솜을 넣은 아내의 나난 자켓을 입고, 그 위에 모직 카프탄을 걸치고, 삼 루블짜리 지폐를 주머니에 넣고, 지팡이를 꺾어 들고 아침밥을",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 14,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

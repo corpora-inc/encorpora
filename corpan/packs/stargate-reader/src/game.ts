@@ -19,6 +19,7 @@ import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
 import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
 import { createPrefsStore } from "@shared/state"
+import * as analytics from "@shared/analytics"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -1248,6 +1249,9 @@ export function createStargateReader(
             transport.setChapter(seg.title)
             // Avoid native bridge work on every segment boundary; it can hitch playback.
             // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
+            if (audioEngine?.isPlaying()) {
+              analytics.track("segment_play", { segment_index: index })
+            }
           }
         },
         () => {

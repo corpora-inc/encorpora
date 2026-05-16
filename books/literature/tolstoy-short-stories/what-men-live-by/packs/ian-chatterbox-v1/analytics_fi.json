@@ -1,0 +1,1432 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "fi",
+  "timestamp": "2026-05-04T08:02:00.918823+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 595,
+  "segments_converged_by_retry": 16,
+  "segments_plateau_stopped": 6,
+  "total_retries": 28,
+  "error_distribution": {
+    "trailing_silence": 298,
+    "final_word_weak": 83,
+    "first_word_weak": 79,
+    "tail_energy": 76,
+    "tts_audio_truncated": 49,
+    "min_trailing_silence": 39,
+    "transcription_mismatch": 28,
+    "tail_spike": 17,
+    "post_speech_pop": 17,
+    "truncated_last_word": 14,
+    "tail_zero_duration_run": 12,
+    "stacked_words": 12,
+    "pre_speech_spike": 8,
+    "first_word_mismatch": 3
+  },
+  "phase_timings": {
+    "tts": 30.044057846069336,
+    "align": 17.382636308670044,
+    "validate": 3.3392674922943115,
+    "trim": 0.0364072322845459,
+    "master": 0.703819990158081
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 186,
+      "passed": 185,
+      "rate": 0.9946236559139785
+    },
+    "medium_30_80": {
+      "total": 269,
+      "passed": 254,
+      "rate": 0.9442379182156134
+    },
+    "long_80_plus": {
+      "total": 162,
+      "passed": 156,
+      "rate": 0.9629629629629629
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-007",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.8271050236019997,
+            "exaggeration": 0.3546304550668325,
+            "temperature": 0.44320678119385687,
+            "top_p": 0.8737287377399148,
+            "min_p": 0.24890741799156302,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.7908359064101462,
+            "exaggeration": 0.39446385081220936,
+            "temperature": 0.5001670406750762,
+            "top_p": 0.8797674971764681,
+            "min_p": 0.18801168031668036,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.7787513614863388,
+            "exaggeration": 0.15694999997276057,
+            "temperature": 0.6225541309112541,
+            "top_p": 0.9389943971772867,
+            "min_p": 0.19456554797239617,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6144389858327473,
+            "exaggeration": 0.23113180174204834,
+            "temperature": 0.17211891778298463,
+            "top_p": 0.8815076349441944,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.7802166751615831,
+            "exaggeration": 0.24646140081319373,
+            "temperature": 0.4893789470755028,
+            "top_p": 0.8483669769411499,
+            "min_p": 0.0,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.4341739355681045,
+            "exaggeration": 0.21746986967684415,
+            "temperature": 0.2409017845510279,
+            "top_p": 0.8877434275812551,
+            "min_p": 0.21784648350861335,
+            "repetition_penalty": 1.77
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.5362541839013637,
+            "exaggeration": 0.7266827432238829,
+            "temperature": 0.6262418027717985,
+            "top_p": 0.8212660140460777,
+            "min_p": 0.1169532804858214,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 97,
+      "text_preview": "Rakkaus on Jumalasta, ja jokainen joka rakastaa, on Jumalasta syntynyt ja tuntee",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-124",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 150.0,
+          "params": {
+            "cfg_weight": 0.66741723909163,
+            "exaggeration": 0.2362932698653114,
+            "temperature": 0.3502061498830208,
+            "top_p": 0.8396628078397479,
+            "min_p": 0.05373142433904225,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.5785821147651158,
+            "exaggeration": 0.05645399917627664,
+            "temperature": 0.19039968922517617,
+            "top_p": 0.8092333152668836,
+            "min_p": 0.12808611458308747,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6024353676861967,
+            "exaggeration": 0.7054272805291529,
+            "temperature": 0.5654626451917802,
+            "top_p": 0.9537003343943514,
+            "min_p": 0.02104647305336639,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Ja Semjon ajattelee: «Kaikkea sitä sattuu», — ja sanoo miehelle:",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-170",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.6598081690169849,
+            "exaggeration": 0.1889938165816205,
+            "temperature": 0.4799565205924996,
+            "top_p": 0.8291584715489869,
+            "min_p": 0.08488780118179992,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.3828792315003965,
+            "exaggeration": 0.3338306935772364,
+            "temperature": 0.2378268665555246,
+            "top_p": 0.7274040669702955,
+            "min_p": 0.0,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.96,
+          "params": {
+            "cfg_weight": 0.6766082737684381,
+            "exaggeration": 0.3578409148477664,
+            "temperature": 0.5660851065569856,
+            "top_p": 0.9327247871434519,
+            "min_p": 0.23871620472707988,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.5889924555614909,
+            "exaggeration": 0.30960442923362064,
+            "temperature": 0.1584152178588452,
+            "top_p": 0.9048617483504888,
+            "min_p": 0.07110788775690333,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "— Istu, — sanoo, — veli, rupeamme illastamaan.",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-221",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.6937795059416874,
+            "exaggeration": 0.19166936514242178,
+            "temperature": 0.4643110266225003,
+            "top_p": 0.9809729340236535,
+            "min_p": 0.10534456686318494,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6273306089128088,
+            "exaggeration": 0.34412743754056985,
+            "temperature": 0.3154451954769974,
+            "top_p": 0.8435326526051647,
+            "min_p": 0.14118138737861838,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 64,
+      "text_preview": "Meni hän ovelta, astui uuninurkkaukseen, otti illallisen esille.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7106661898021679,
+            "exaggeration": 0.30614822618494086,
+            "temperature": 0.43535201560601505,
+            "top_p": 0.9589257779723093,
+            "min_p": 0.13159566505287082,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 142,
+      "text_preview": "Mutta jolla on maailman tavaraa ja joka näkee veljensä puutteessa ja sulkee sydä",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-016",
+      "attempts": 2,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.8276905857818133,
+            "exaggeration": 0.21321989378459735,
+            "temperature": 0.6387829197352383,
+            "top_p": 0.8759628899813557,
+            "min_p": 0.20474556146134587,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Leipä oli kallista ja työ halpaa, ja mitä ansaitsi, sen söikin.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-023",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6853225835679388,
+            "exaggeration": 0.4220620653849093,
+            "temperature": 0.540006951272649,
+            "top_p": 0.8123542471821394,
+            "min_p": 0.2152927781034627,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "Ajatteli suutari ottaa lammasnahkoja velaksi — ei luonut lammasnahkakauppias luo",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-042",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.938319166308783,
+            "exaggeration": 0.43183005746361636,
+            "temperature": 0.5913200381533896,
+            "top_p": 0.7685625336863956,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "Mitäs kahdellakymmenellä kopeekalla tekeekään?",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-166",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.78
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 6.24,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.78
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7816549527823988,
+            "exaggeration": 0.3809164305584778,
+            "temperature": 0.4058163165954517,
+            "top_p": 0.7120479105276084,
+            "min_p": 0.22519308593452136,
+            "repetition_penalty": 1.78
+          }
+        }
+      ],
+      "text_len": 54,
+      "text_preview": "— Mitäs, — sanoo, — Matrjona, kokoa illallista taikka!",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-295",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6884832910707119,
+            "exaggeration": 0.15567590200255407,
+            "temperature": 0.44963617712877496,
+            "top_p": 0.9021591948786047,
+            "min_p": 0.09671653426112234,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 103,
+      "text_preview": "Ainoastaan kerran he näkivät hänen hymyilevän ensimmäisenä iltana, kun akka lait",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-309",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.04,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.82390360720118,
+            "exaggeration": 0.35498696204937386,
+            "temperature": 0.39982056459281756,
+            "top_p": 0.7244625761513672,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "Henkäisi herra, riisui turkin, istui penkille ja sanoo:",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-314",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9292965850622262,
+            "exaggeration": 0.2771388611927331,
+            "temperature": 0.5268154197065943,
+            "top_p": 0.9977411964108611,
+            "min_p": 0.007236240732446858,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 32,
+      "text_preview": "— Hei, Fedjka, tuo tänne tavara.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-316",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.8,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.9198072452518468,
+            "exaggeration": 0.2424872134141963,
+            "temperature": 0.4439465810416185,
+            "top_p": 0.9513680052742666,
+            "min_p": 0.11976251224443826,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 34,
+      "text_preview": "Otti herra käärön, laski pöydälle.",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-375",
+      "attempts": 2,
+      "best_quality_score": 30.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.8353975222053023,
+            "exaggeration": 0.2223911895444971,
+            "temperature": 0.4007176054937476,
+            "top_p": 0.7246924779446199,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 3,
+      "text_preview": "VII",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-389",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8702610324243281,
+            "exaggeration": 0.29058677949517386,
+            "temperature": 0.4872445499000493,
+            "top_p": 0.8740405434749053,
+            "min_p": 0.15345596230087724,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "Alkoi olla puolenpäivän aika, Semjon nousi, katsoo — Mihail on ommellut herran t",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-396",
+      "attempts": 2,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.7845479439668289,
+            "exaggeration": 0.39952125491244006,
+            "temperature": 0.5460414091060728,
+            "top_p": 0.9546096179168492,
+            "min_p": 0.03996105359132364,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "— Mitä sinä oikein teit, — hän sanoo, — kultaseni?",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-410",
+      "attempts": 2,
+      "best_quality_score": 4.56,
+      "best_attempt": 0,
+      "plateau_count": 1,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9205688658797512,
+            "exaggeration": 0.4108839854381454,
+            "temperature": 0.5138769669731919,
+            "top_p": 0.8050515829573012,
+            "min_p": 0.012964055619597056,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 41,
+      "text_preview": "— Ei ehtinyt teiltä kotiin, kuoli reessä.",
+      "passed_first": false
+    },
+    {
+      "id": "ch10-427",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 2.64,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8829259452326058,
+            "exaggeration": 0.39660182992084725,
+            "temperature": 0.4587215926253838,
+            "top_p": 0.813689226641489,
+            "min_p": 0.20422035713477105,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 68,
+      "text_preview": "Semjon ompellee yhdellä ikkunalla, ja Mihail takoo korkkoa toisella.",
+      "passed_first": false
+    },
+    {
+      "id": "ch11-477",
+      "attempts": 2,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.7678624170462445,
+            "exaggeration": 0.33716943757495155,
+            "temperature": 0.60867685896992,
+            "top_p": 0.917961301836997,
+            "min_p": 0.08798397662944865,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "Puu kaatui jotenkin hänen päälleen, se murskasi hänet poikittain, kaikki sisukse",
+      "passed_first": false
+    },
+    {
+      "id": "ch11-503",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.845759468234373,
+            "exaggeration": 0.3623772375934975,
+            "temperature": 0.5147985477820539,
+            "top_p": 0.7619284776017581,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 51,
+      "text_preview": "Nyt elämme täällä myllyssä kauppiaan palveluksessa.",
+      "passed_first": false
+    }
+  ],
+  "param_effectiveness": {
+    "transcription_mismatch": {
+      "sample_size": 10,
+      "avg_delta": {
+        "cfg_weight": -0.015,
+        "temperature": 0.083,
+        "repetition_penalty": 0.0
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 20,
+      "avg_delta": {
+        "cfg_weight": -0.013,
+        "temperature": 0.021,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": -0.039,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": -0.039,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": -0.039,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 11,
+      "avg_delta": {
+        "cfg_weight": -0.023,
+        "temperature": 0.023,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 12,
+      "avg_delta": {
+        "cfg_weight": -0.022,
+        "temperature": 0.021,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

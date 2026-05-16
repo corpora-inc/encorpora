@@ -1,0 +1,15 @@
+{
+  "id": "book_tolstoy_what_men_live_by",
+  "name": "What Men Live By (Чем люди живы)",
+  "version": "0.1.0",
+  "type": "book",
+  "primary_language": "ru",
+  "metadata": {
+    "series": "Tolstoy Short Stories",
+    "author": "Leo Tolstoy",
+    "year": 1881,
+    "tts": true,
+    "estimatedReadTime": "25-35 minutes",
+    "estimatedListenTime": "20-30 minutes"
+  }
+}

@@ -1,0 +1,51 @@
+book:
+  volume: 1
+  title: "The Story of the Train"
+  subtitle: "From the first steam engine to the bullet trains of today."
+  target_segments: 170
+
+  audience: "Children and adults learning a new language."
+  primary_language: en
+  pack_id: book_train_history
+
+  core_machines:
+    - The Stephenson Rocket — the first famous steam locomotive, eighteen twenty-nine
+    - The American 4-4-0 — the workhorse of the Trans-Continental Railroad
+    - The Big Boy — the largest steam locomotive ever built
+    - The Trans-Siberian Express — the longest railway in the world
+    - The Shinkansen — the first bullet train, nineteen sixty-four
+    - The TGV — the French high-speed train
+    - The maglev — the floating train of the future
+
+  core_themes:
+    - Engineering wonder — boilers, pistons, rails, switches
+    - Real heroes — George Stephenson, Robert Stephenson, the railway pioneers
+    - World stories — Britain, America, Russia, Japan, France, China
+    - Speed — from twelve miles per hour in eighteen twenty-nine to over two hundred miles per hour today
+    - Today's many shapes — passenger, freight, subway, light rail, bullet, maglev
+
+  vocabulary_targets:
+    - train, locomotive, engine, wheel, track, rail, station
+    - steam, coal, diesel, electric, magnet, motor
+    - line, route, journey, passenger, freight, cargo
+    - fast, slow, long, heavy, smooth, sharp
+
+  pacing:
+    - 7 chapters + frontmatter + backmatter
+    - 5–15 word sentences, one idea each
+    - All numbers spelled out in tts.text (no Arabic numerals)
+    - Repeat key vocabulary across chapters
+
+  content_rules:
+    - "Narrator is August — a friend telling the story."
+    - "Concrete topical content only. No pop-psychology, no self-help."
+    - "All-ages register: simple sentences a child can follow, real history an adult can learn from."
+
+  outline:
+    - chapter_1: "The First Steam Train — Stephenson's Rocket and the start of the railway age"
+    - chapter_2: "The Iron Road Spreads — early railways across Britain, America, and Europe"
+    - chapter_3: "The Great Lines — the Trans-Continental and the Trans-Siberian"
+    - chapter_4: "Steam, Diesel, Electric — how the engines changed"
+    - chapter_5: "Bullet Trains and the Race for Speed — Shinkansen, TGV, and beyond"
+    - chapter_6: "Many Kinds of Trains — passenger, freight, subway, light rail, mountain"
+    - chapter_7: "The Future on the Rails — maglev, hydrogen, and what comes next"

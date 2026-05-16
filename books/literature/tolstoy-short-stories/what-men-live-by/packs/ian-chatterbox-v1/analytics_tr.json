@@ -1,0 +1,1143 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "tr",
+  "timestamp": "2026-05-05T01:26:27.247735+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 605,
+  "segments_converged_by_retry": 10,
+  "segments_plateau_stopped": 2,
+  "total_retries": 14,
+  "error_distribution": {
+    "trailing_silence": 337,
+    "tail_energy": 114,
+    "first_word_weak": 91,
+    "final_word_weak": 75,
+    "tts_audio_truncated": 40,
+    "pre_speech_spike": 36,
+    "min_trailing_silence": 21,
+    "tail_spike": 19,
+    "transcription_mismatch": 9,
+    "truncated_last_word": 9,
+    "stacked_words": 8,
+    "tail_zero_duration_run": 7,
+    "post_speech_pop": 5,
+    "short_words": 3,
+    "word_cluster": 1
+  },
+  "phase_timings": {
+    "tts": 118.12943840026855,
+    "align": 43.86928677558899,
+    "validate": 17.447343826293945,
+    "trim": 0.08840751647949219,
+    "master": 1.9737293720245361
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 201,
+      "passed": 199,
+      "rate": 0.9900497512437811
+    },
+    "medium_30_80": {
+      "total": 275,
+      "passed": 266,
+      "rate": 0.9672727272727273
+    },
+    "long_80_plus": {
+      "total": 141,
+      "passed": 140,
+      "rate": 0.9929078014184397
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch08-347",
+      "attempts": 3,
+      "best_quality_score": 3.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.6780446157986131,
+            "exaggeration": 0.3642237304514291,
+            "temperature": 0.4556222067778013,
+            "top_p": 0.8412077691603909,
+            "min_p": 0.1463334644890997,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6092677310147935,
+            "exaggeration": 0.08380958166738431,
+            "temperature": 0.21865386989534152,
+            "top_p": 0.8924091552538755,
+            "min_p": 0.18436676477551325,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 10,
+      "text_preview": "— Ölçü al!",
+      "passed_first": false
+    },
+    {
+      "id": "ch14-617",
+      "attempts": 3,
+      "best_quality_score": 20.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 140.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.6717848468867753,
+            "exaggeration": 0.21977626952108953,
+            "temperature": 0.6082856169241863,
+            "top_p": 0.8143214871519213,
+            "min_p": 0.2096731140697412,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.35445863400693545,
+            "exaggeration": 0.2751620389465058,
+            "temperature": 0.19096148498617097,
+            "top_p": 0.7437976017923086,
+            "min_p": 0.09372993996035736,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "Ve tavan yarıldı, ve yerden göğe kadar ateşten bir sütun yükseldi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-016",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8450773586625604,
+            "exaggeration": 0.272244779484184,
+            "temperature": 0.47914038716321783,
+            "top_p": 0.8112401893582701,
+            "min_p": 0.12155793895693698,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 56,
+      "text_preview": "Ekmek pahalıydı, iş ucuzdu ve ne kazanırsa onu da yerdi.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-029",
+      "attempts": 2,
+      "best_quality_score": 45.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak",
+            "pre_speech_spike"
+          ],
+          "score": 45.0,
+          "params": {
+            "cfg_weight": 0.8216121042610888,
+            "exaggeration": 0.18361937482123467,
+            "temperature": 0.3883389649601994,
+            "top_p": 0.80602972770142,
+            "min_p": 0.015922761444089967,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 37,
+      "text_preview": "— Ben, — diyor, — kürksüz de sıcağım.",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-075",
+      "attempts": 2,
+      "best_quality_score": 5.12,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 5.12,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.87
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "short_words",
+            "tail_energy"
+          ],
+          "score": 40.0,
+          "params": {
+            "cfg_weight": 0.6590699743636934,
+            "exaggeration": 0.3324869701632654,
+            "temperature": 0.4996618798703125,
+            "top_p": 0.77742205820141,
+            "min_p": 0.21534687220787746,
+            "repetition_penalty": 1.87
+          }
+        }
+      ],
+      "text_len": 59,
+      "text_preview": "— Sen ne yapıyorsun böyle, — diyor kendi kendine, — Semyon?",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-111",
+      "attempts": 2,
+      "best_quality_score": 23.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "final_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.9464052808802427,
+            "exaggeration": 0.2171718494863681,
+            "temperature": 0.37397599215771304,
+            "top_p": 0.8523822244662158,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 22,
+      "text_preview": "— Kimin oğlusun, yani?",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-200",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "short_words",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 465.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.92
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6667224725682503,
+            "exaggeration": 0.19247169804225775,
+            "temperature": 0.4110597370059939,
+            "top_p": 0.9349313292196478,
+            "min_p": 0.13745259989075426,
+            "repetition_penalty": 1.92
+          }
+        }
+      ],
+      "text_len": 123,
+      "text_preview": "Gitmek istedi, ama durdu: kalbi de çarpıyordu — öfkesini boşaltmak istiyor ve na",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-231",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9296349589889752,
+            "exaggeration": 0.16663613503686756,
+            "temperature": 0.38223361833460145,
+            "top_p": 0.98994623774552,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 69,
+      "text_preview": "Akşam yemeğini yediler; kadın toparladı ve yabancıya sormaya başladı:",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-268",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.8776989592226876,
+            "exaggeration": 0.2210699920409562,
+            "temperature": 0.5130920836868128,
+            "top_p": 0.9733093975965874,
+            "min_p": 0.03538843553492567,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Çocuklar uyuyor, karısı komşulardan ekmek ödünç almaya gitmiş.",
+      "passed_first": false
+    },
+    {
+      "id": "ch07-294",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.78
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.884287988021095,
+            "exaggeration": 0.3445110967468118,
+            "temperature": 0.5678012702833558,
+            "top_p": 0.9429378147850673,
+            "min_p": 0.0,
+            "repetition_penalty": 1.78
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Sokağa çıkmıyor, gereksiz konuşmuyor, şaka yapmıyor, gülmüyor.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-303",
+      "attempts": 2,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.7154203595761169,
+            "exaggeration": 0.4313869632235956,
+            "temperature": 0.4943729052382184,
+            "top_p": 0.9950121110530736,
+            "min_p": 0.021497484208041998,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "Kızaktan çıktı, Semyon'un evine doğru yürüdü, merdivene çıktı.",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-594",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.749335670729911,
+            "exaggeration": 0.1632380630518994,
+            "temperature": 0.46142138331820914,
+            "top_p": 0.9362497334257396,
+            "min_p": 0.04005379688609635,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.883005762062042,
+            "exaggeration": 0.2796209254201546,
+            "temperature": 0.49976273338530675,
+            "top_p": 0.9130491803350862,
+            "min_p": 0.007323601607616165,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "Melek arkadaşımı gördüğüme ve Tanrı'nın bana diğer sözünü açıkladığına sevindim.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 7,
+      "text_preview": "Epigraf",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 118,
+      "text_preview": "Ölümden yaşama geçtiğimizi biliyoruz, çünkü kardeşleri seviyoruz: kardeşini sevm",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 35.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "tail_energy",
+            "first_word_weak"
+          ],
+          "score": 35.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 135,
+      "text_preview": "Kim dünyada varlığa sahipse ama kardeşinin ihtiyacını görüp de kalbini ondan kap",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Çocuklarım! Sözle ya da dille değil, eylemle ve gerçekle sevelim. (III, 18)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "Sevgi Tanrı'dandır ve seven herkes Tanrı'dan doğmuştur ve Tanrı'yı tanır. (IV, 7",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Sevmeyen Tanrı'yı tanımamıştır, çünkü Tanrı sevgidir. (IV, 8)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 1,
+      "best_quality_score": 25.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "pre_speech_spike"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "Tanrı'yı hiç kimse hiçbir zaman görmemiştir. Eğer birbirimizi seversek, Tanrı bi",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Tanrı sevgidir ve sevgide kalan Tanrı'da kalır ve Tanrı da onda kalır. (IV, 16)",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 22,
+      "avg_delta": {
+        "cfg_weight": 0.004,
+        "temperature": 0.012,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 14,
+      "avg_delta": {
+        "cfg_weight": -0.003,
+        "temperature": 0.06,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 10,
+      "avg_delta": {
+        "cfg_weight": -0.012,
+        "temperature": 0.058,
+        "repetition_penalty": 0.0
+      }
+    },
+    "pre_speech_spike": {
+      "sample_size": 7,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.006,
+        "temperature": -0.055,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.075,
+        "temperature": 0.155,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.075,
+        "temperature": 0.155,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": -0.075,
+        "temperature": 0.155,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

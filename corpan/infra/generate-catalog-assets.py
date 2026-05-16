@@ -101,6 +101,156 @@ CHARACTERS: list[CharacterSpec] = [
         accent_color="#6db3a8",
     ),
     CharacterSpec(
+        id="august",
+        display_name="August",
+        tagline="A boy's voice for young readers learning a new language.",
+        bio=(
+            "August is a young narrator with a clear, friendly voice. He reads "
+            "the way an unusually thoughtful nine-year-old does — short, plain "
+            "sentences, simple words, room to breathe. August narrates the "
+            "Motorcycles series and other books written for boys learning a "
+            "second language."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a thoughtful blond-haired boy who looks "
+            "about nine years old, full round cherubic cheeks. His "
+            "expression is a warm gentle closed-mouth smile, genuine, the "
+            "corners of his eyes crinkling softly. He is looking straight "
+            "at the viewer with calm, kind eyes — the smile is small but "
+            "unmistakable, like he is quietly happy to see you. Soft "
+            "natural daylight, warm but understated palette of honey gold "
+            "and pale blue. He carries a quiet, knowing maturity that is "
+            "unusual for his age. Painterly digital illustration, low "
+            "saturation, very high craftsmanship, no photorealism. "
+            "Centered square portrait, head and shoulders. " + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: a young blond-haired boy of about "
+            "nine standing alone on a high overlook in golden afternoon "
+            "light, seen from behind and slightly to the side, looking out "
+            "across a vast green valley folded with low hills, a glinting "
+            "river winding through it far below. Soft warm gold sky near "
+            "the horizon shifting to deep blue overhead. Painterly editorial "
+            "illustration, restrained palette of greens, golds and warm "
+            "blues, contemplative mood, no other people in frame. "
+            + COMMON_TAIL
+        ),
+        accent_color="#d4a14a",
+    ),
+    CharacterSpec(
+        id="kym",
+        display_name="Kym",
+        tagline="A friend's voice from the American South.",
+        bio=(
+            "Kym is a warm, direct narrator from the Southern United States. "
+            "She reads the way a friend tells you about the food she grew up "
+            "with — short sentences, real names, no fuss. Kym narrates the "
+            "Food of the World series, beginning with soul food, the "
+            "everyday cooking of Black families in the American South."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a stylish dark-skinned Black woman in her "
+            "late forties from the American South. Her hair is dressed in a "
+            "fancy cornrow pattern braided close to her scalp — not "
+            "dreadlocks, not loose hanging braids, but elegant geometric "
+            "cornrows forming a beautiful sculptural pattern across her "
+            "head. She wears stylish sunglasses that catch a warm afternoon "
+            "light. Calm, confident, the faintest hint of a knowing smile. "
+            "Soft natural daylight, warm understated palette of warm browns, "
+            "deep amber, copper, and cream tones. Painterly digital "
+            "illustration, low saturation, very high craftsmanship, no "
+            "photorealism. Centered square portrait, head and shoulders. "
+            + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: a quiet wooden porch of a Southern "
+            "home in late golden afternoon light. A heavy black cast-iron "
+            "skillet rests on a sturdy weathered wooden table beside a "
+            "folded linen cloth and a tall glass jar of sweet tea sweating "
+            "with condensation. Beyond the porch railing, a vast green "
+            "field stretches to a distant tree line, with a soft gold sky "
+            "shifting to warm rose at the horizon. Painterly editorial "
+            "illustration, restrained warm palette of warm browns, ambers, "
+            "deep greens, and gold, contemplative mood, no people in frame. "
+            + COMMON_TAIL
+        ),
+        accent_color="#c66a3d",
+    ),
+    CharacterSpec(
+        id="sky",
+        display_name="Skylar",
+        tagline="A reader's voice for stories worth slowing down for.",
+        bio=(
+            "Skylar narrates the Musical Instruments of the World series. He "
+            "reads the way a thoughtful host on late-night radio does — slow, "
+            "even, a little curious, always making room for the music. Skylar "
+            "is at home in nine of the catalog's languages today, with more "
+            "coming as the series grows."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a calm Scandinavian man in his late "
+            "thirties to early forties, neat trimmed sandy-blond beard, short "
+            "tidy hair, plain dark soft-cotton t-shirt, gentle steady gaze "
+            "with a faint, knowing smile. He carries the quiet confidence of "
+            "someone who reads more than he speaks. Soft natural daylight, "
+            "warm but understated palette of weathered teak, slate blue, and "
+            "pale linen. Painterly digital illustration, low saturation, very "
+            "high craftsmanship, no photorealism. Centered square portrait, "
+            "head and shoulders. " + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: an interior of a quiet Nordic-modern "
+            "wood-paneled listening room in late afternoon light, a single "
+            "warm shaft of sun falling across a low wooden bench. On the "
+            "bench rests a single pear-shaped oud, its rounded back catching "
+            "the light. A small turntable sits silent on a side shelf, and a "
+            "few stringed instruments hang on the wall in soft shadow. "
+            "Restrained palette of pale linen, weathered teak, slate blue, "
+            "and warm gold. Painterly editorial illustration, contemplative "
+            "mood, no people in frame. " + COMMON_TAIL
+        ),
+        accent_color="#5a7d8c",
+    ),
+    CharacterSpec(
+        id="victor",
+        display_name="Victor",
+        tagline="Markets, models, and the moving picture.",
+        bio=(
+            "Victor is the business voice on Corpora's tech-news desk. He "
+            "tracks the LLM market the way an old hand at a trading floor "
+            "tracks the tape — quietly, accurately, with one eye on the "
+            "leaderboard and the other on the long arc. Victor pairs with "
+            "Skylar (host) and Aoede (the AI muse) on the AI This Week "
+            "dialog series."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a composed business-news anchor in his "
+            "mid-forties, clean-shaven or with a closely trimmed mustache, "
+            "short dark hair with a hint of grey at the temples, a crisp "
+            "charcoal suit jacket over a pale blue dress shirt, no tie or a "
+            "subtle dark tie, calm professional gaze with eyes off-camera "
+            "as if reading from a teleprompter, faint half-smile. Soft "
+            "natural daylight, warm but understated palette of slate "
+            "greys, deep navy, and pale neutral. Painterly digital "
+            "illustration, low saturation, very high craftsmanship, no "
+            "photorealism. Centered square portrait, head and shoulders. "
+            + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: a quiet professional office at "
+            "early evening — a polished wooden desk in soft warm lamp "
+            "light, a closed laptop, a folded copy of a financial paper, "
+            "a small cup of black coffee. A wall of glass behind it shows "
+            "a vast skyline of distant office towers with their windows "
+            "starting to glow against a deep indigo dusk sky. Restrained "
+            "palette of slate grey, deep navy, warm amber lamp light, and "
+            "the faintest reflection of city lights on glass. Painterly "
+            "editorial illustration, contemplative mood, no people in "
+            "frame. " + COMMON_TAIL
+        ),
+        accent_color="#3b5468",
+    ),
+    CharacterSpec(
         id="aoede",
         display_name="Aoede",
         tagline="A native voice of the Muses.",
@@ -147,6 +297,27 @@ BOOKS: list[BookSpec] = [
             "mountains of Oaxaca in haze. Painterly editorial illustration, "
             "ochre and burnt sienna palette, deliberate composition, contemplative "
             "mystery, no people, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_motorcycles_history",
+        title="The Story of the Motorcycle",
+        description=(
+            "Volume one of the Motorcycles series. The big story of the "
+            "motorcycle, from the first sputtering steam contraption in 1885 "
+            "to the electric superbikes of today. Read aloud in twenty-three "
+            "languages by August, for boys six to fifteen learning a new "
+            "language."
+        ),
+        cover_prompt=(
+            "Picture-book illustration of a single classic vintage motorcycle "
+            "parked on a sunlit empty road that curves toward distant low "
+            "mountains, warm late afternoon light, a faint dust haze in the "
+            "air, long shadow on the road. Friendly storybook style with "
+            "clean shapes and bold but unsaturated color, a sense of "
+            "adventure and the long open story of the road. Approachable "
+            "for boys six to fifteen. No riders, no team logos, no text "
+            "anywhere on the bike. " + COMMON_TAIL
         ),
     ),
     BookSpec(
@@ -271,6 +442,29 @@ BOOKS: list[BookSpec] = [
         ),
     ),
     BookSpec(
+        book_id="book_hayreddin_barbarossa",
+        title="Hayreddin Barbarossa",
+        description=(
+            "The Ottoman corsair who became admiral of the Mediterranean — "
+            "built Algiers into a power, sailed against the Habsburg fleets, "
+            "and died in his bed in Istanbul."
+        ),
+        cover_prompt=(
+            "A sixteenth-century Ottoman war fleet at dawn off the coast of "
+            "the Maghreb. The lead ship is a long, low oared galley with a "
+            "single tall mast amidships carrying a large triangular lateen "
+            "sail on a long diagonal yard, oars projecting from each side, "
+            "a long horizontal spur extending forward from the prow at "
+            "waterline level, low freeboard, no high castles, a forward bow "
+            "cannon. Two more galleys recede behind in echelon formation. A "
+            "solid red banner with a single white crescent moon (no star) "
+            "snaps at the masthead. The eastern sky is rose-gold over a "
+            "slate-blue calm sea, a faint silhouette of a sandstone "
+            "fortified city on the far horizon. Cinematic, low angle, "
+            "painterly. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
         book_id="book_science_volcanoes",
         title="Volcanoes",
         description=(
@@ -331,6 +525,132 @@ BOOKS: list[BookSpec] = [
             "wind rippling the jumpsuit. Painterly editorial illustration, "
             "high altitude blue palette with warm gold sunlight, exhilarating "
             "but calm, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_gardening",
+        title="Gardening",
+        description=(
+            "A small escape into soil, seeds, and the slow craft of growing "
+            "things. For everyone who has ever pressed a finger into damp "
+            "earth and felt the year start over."
+        ),
+        cover_prompt=(
+            "Editorial illustration of two hands working in dark loamy soil "
+            "around a row of small green seedlings in a wooden flat, soft "
+            "morning light raking across the bed, restrained palette of moss "
+            "greens, terracotta, and pale ochre. Painterly digital art, "
+            "high craftsmanship, contemplative, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_sailing",
+        title="Sailing",
+        description=(
+            "A small escape onto the water — wind on the cheek, lines in the "
+            "hand, the long quiet between tacks. For everyone who has ever "
+            "leaned into a heel and stopped thinking about anything else."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a small single-mast sloop heeled gently "
+            "against a low afternoon sun on open water, the line of the "
+            "horizon clean, soft cool palette of slate blues, weathered teak, "
+            "and pale sail canvas, faint warm light at the edge. Painterly "
+            "digital art, high craftsmanship, reflective mood, no people in "
+            "frame, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_soul_food_southern_us",
+        title="Soul Food of the Southern United States",
+        description=(
+            "Volume one of the Food of the World series. A short tour of an "
+            "American cuisine with deep roots — West African and Indigenous "
+            "ingredients, the cast-iron skillet, the regional barbecue map, "
+            "the Sunday plate."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a heavy black cast-iron skillet on a "
+            "weathered wooden table in late golden afternoon light, a piece "
+            "of golden cornbread resting on a folded linen cloth beside the "
+            "skillet, a small sprig of dark collard greens just visible at "
+            "the edge of the frame, soft warm shadow falling across the "
+            "wood. Restrained warm palette of deep browns, burnt umber, "
+            "honey gold, cream, and the deep green of the leaves. Painterly "
+            "digital art, low saturation, very high craftsmanship, no "
+            "photorealism, dignified and homey, no people in frame, no text "
+            "anywhere. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_persian_food",
+        title="Persian Food",
+        description=(
+            "Volume two of the Food of the World series. A short tour of one "
+            "of the oldest cuisines on earth — saffron from Khorasan, the "
+            "pomegranate orchard, tahdig at the bottom of the rice pot, "
+            "sangak baked on hot pebbles, a stew written on cuneiform "
+            "tablets, and the table set for Nowruz."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a Persian table at golden afternoon "
+            "light, a heavy copper pot tipped to show a perfect golden disk "
+            "of crisp saffron rice tahdig, a small bowl of fresh pomegranate "
+            "seeds beside it, a few pistachio shells and a sprig of fresh "
+            "herbs, all resting on a richly patterned Persian kilim rug. "
+            "Restrained warm palette of saffron gold, deep pomegranate red, "
+            "burnished copper, cream, and the dusty teal and rose of the "
+            "kilim. Painterly digital art, low saturation, very high "
+            "craftsmanship, no photorealism, dignified and inviting, no "
+            "people in frame, no text anywhere. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_oud_history",
+        title="The Oud",
+        description=(
+            "Volume one of the Musical Instruments of the World series. The "
+            "story of the oud — the pear-shaped wooden lute of the Arab "
+            "world, great-grandfather of the European lute and the modern "
+            "guitar. Its makers, its great players, and the maqam, the older "
+            "system of music it speaks in."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a single beautifully crafted "
+            "pear-shaped Arabic oud lying flat in warm afternoon light on a "
+            "weathered wooden surface, its deep rounded back catching the "
+            "sun, an ornately carved rosette in the soundboard, eleven "
+            "strings catching faint highlights. In the soft background, a "
+            "blurred suggestion of a Levantine or Andalusian courtyard with "
+            "an arched stone window opening onto distant pale hills at dusk. "
+            "Restrained warm palette of weathered teak, deep amber, dusty "
+            "rose, and slate blue. Painterly digital art, low saturation, "
+            "very high craftsmanship, no photorealism, no people in frame, "
+            "no text anywhere. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_train_history",
+        title="The Story of the Train",
+        description=(
+            "Volume one of the Vehicles of the World series. The big arc of "
+            "rail — Stephenson's Rocket, the Transcontinental, the "
+            "Trans-Siberian, the Shinkansen, the maglev. From the first "
+            "steam locomotive to the floating trains of today."
+        ),
+        cover_prompt=(
+            "Picture-book illustration of a sleek modern white-and-blue "
+            "Japanese-style bullet train cresting a long elevated viaduct at "
+            "golden hour. The train's long aerodynamic nose dominates the "
+            "frame, low and pointed, headlights catching the sun. A single "
+            "clean elevated track curves gently to the right, with rolling "
+            "green countryside and distant blue mountains beyond. Soft "
+            "contrails of motion blur behind the train. Friendly storybook "
+            "style with clean modern shapes, restrained palette of pearl "
+            "white, sky blue, soft warm gold, and deep mountain blue. A "
+            "sense of speed and the future. No riders visible inside, no "
+            "team logos, no text on the train. Single track only. "
+            + COMMON_TAIL
         ),
     ),
 ]
@@ -462,7 +782,19 @@ def main() -> None:
         s3, f"{S3_PREFIX}/characters/"
     )
 
+    # Load existing asset-urls.json so a partial run (--only books or
+    # --only characters) doesn't blank the half it isn't touching. Without
+    # this, `--only books` rewrites the file with empty `characters: {}`
+    # and patch-catalog drops every narrator's avatar/banner from the
+    # catalog. Has happened. Will not happen again.
     out: dict[str, dict[str, str]] = {"books": {}, "characters": {}}
+    if args.out.exists():
+        try:
+            existing_map = json.loads(args.out.read_text())
+            out["books"] = existing_map.get("books") or {}
+            out["characters"] = existing_map.get("characters") or {}
+        except Exception:
+            pass
 
     def needs_upload(key: str) -> bool:
         full = f"{S3_PREFIX}/{key}"

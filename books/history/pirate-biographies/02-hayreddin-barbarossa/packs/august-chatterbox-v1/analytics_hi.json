@@ -1,0 +1,817 @@
+{
+  "book_id": "august-chatterbox-v1",
+  "language": "hi",
+  "timestamp": "2026-05-11T15:10:39.361856+00:00",
+  "segments_total": 285,
+  "segments_first_pass": 279,
+  "segments_converged_by_retry": 6,
+  "segments_plateau_stopped": 0,
+  "total_retries": 8,
+  "error_distribution": {
+    "final_word_weak": 66,
+    "trailing_silence": 48,
+    "first_word_weak": 42,
+    "tail_energy": 26,
+    "tts_audio_truncated": 9,
+    "min_trailing_silence": 7,
+    "tail_zero_duration_run": 5,
+    "stacked_words": 5,
+    "truncated_last_word": 5,
+    "word_cluster": 3,
+    "short_words": 1
+  },
+  "phase_timings": {
+    "tts": 623.535810470581,
+    "align": 163.2035846710205,
+    "validate": 117.54994225502014,
+    "trim": 0.39151978492736816,
+    "master": 13.498562574386597
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 2,
+      "passed": 2,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 169,
+      "passed": 166,
+      "rate": 0.9822485207100592
+    },
+    "long_80_plus": {
+      "total": 114,
+      "passed": 111,
+      "rate": 0.9736842105263158
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-143",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.58170692807038,
+            "exaggeration": 0.28685230601628087,
+            "temperature": 0.6412976975931193,
+            "top_p": 1.0,
+            "min_p": 0.30428719329133425,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.6360813393164233,
+            "exaggeration": 0.0869126682168126,
+            "temperature": 0.49429358396960715,
+            "top_p": 1.0,
+            "min_p": 0.26021054192905513,
+            "repetition_penalty": 1.1543057229771017
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7604578128123914,
+            "exaggeration": 0.45743689129984977,
+            "temperature": 0.7867088382215766,
+            "top_p": 0.971801491537407,
+            "min_p": 0.009414923935788105,
+            "repetition_penalty": 1.2208341795006696
+          }
+        }
+      ],
+      "text_len": 107,
+      "text_preview": "उसने ट्यूनिस पर कब्जा किया, बड़े किलों से स्पेनी फौजियों को खदेड़ा और कोर्सेयर ब",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-043",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.6631770170464214,
+            "exaggeration": 0.35836075504173187,
+            "temperature": 0.5357886649452351,
+            "top_p": 0.9711832727772702,
+            "min_p": 0.20203269594084997,
+            "repetition_penalty": 1.5327362056495204
+          }
+        }
+      ],
+      "text_len": 50,
+      "text_preview": "इन व्यापार मार्गों पर नियंत्रण का अर्थ था अपार धन।",
+      "passed_first": false
+    },
+    {
+      "id": "ch01-051",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8162359805704364,
+            "exaggeration": 0.18828904869043833,
+            "temperature": 0.30958248476473393,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 2.3581232720200878
+          }
+        }
+      ],
+      "text_len": 85,
+      "text_preview": "प्रत्येक गैली में सैकड़ों चप्पू चलाने वाले होते थे, जिनमें से कई दास या युद्धबंद",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-081",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8539982162443724,
+            "exaggeration": 0.28365331985222775,
+            "temperature": 0.42965503418021117,
+            "top_p": 0.6381263156059904,
+            "min_p": 0.0,
+            "repetition_penalty": 1.7372970865129376
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "युवावस्था में, भाइयों ने नाविकों और व्यापारियों के रूप में काम करना शुरू किया।",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-216",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 145.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6592212340433194,
+            "exaggeration": 0.19773356278130194,
+            "temperature": 0.5743736158063639,
+            "top_p": 0.9420090710842142,
+            "min_p": 0.2882819833867373,
+            "repetition_penalty": 2.2288717938123757
+          }
+        }
+      ],
+      "text_len": 67,
+      "text_preview": "कई महीनों तक, उस्मानी युद्धपोत एक फ्रांसीसी बंदरगाह से संचालित हुए।",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-250",
+      "attempts": 2,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.9205791042825737,
+            "exaggeration": 0.5325873106609609,
+            "temperature": 0.6776868674888737,
+            "top_p": 0.8477457496228815,
+            "min_p": 0.15097353897546203,
+            "repetition_penalty": 2.1331067559513075
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "वे सुरक्षित मार्ग और महान एडमिरल की आत्मा से मार्गदर्शन के लिए प्रार्थना करते थे",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 112,
+      "text_preview": "यह हैरेद्दीन बारबारोसा की सच्ची कहानी है, उस व्यक्ति की जिसने उस्मानी साम्राज्य ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "उसने अपना जीवन एक यूनानी द्वीप पर एक कुम्हार के बेटे के रूप में शुरू किया।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 84,
+      "text_preview": "उसने इसे भूमध्य सागर की सबसे शक्तिशाली नौसेना के महान एडमिरल के रूप में समाप्त क",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 87,
+      "text_preview": "उसकी कहानी उस्मानी साम्राज्य और ईसाई यूरोप के बीच एक शताब्दी के संघर्ष को समेटे ",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "यह भाइयों, कोर्सेयरों, सुलतानों और समुद्र के नियंत्रण के लिए संघर्ष की कहानी है।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 91,
+      "text_preview": "इस पुस्तक में वर्णित प्रत्येक युद्ध, गठबंधन और विश्वासघात ऐतिहासिक अभिलेखों से ल",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 62,
+      "text_preview": "बारबारोसा के करियर ने भूमध्य सागर की दुनिया का नक्शा बदल दिया।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 74,
+      "text_preview": "उसने जो नौसेना बनाई, वह उसकी मृत्यु के बाद पीढ़ियों तक समुद्र पर हावी रही।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "उसकी विरासत आज भी उत्तरी अफ्रीका की तटरेखाओं और संस्कृतियों को आकार दे रही है।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "जहाँ ऐतिहासिक अभिलेख अधूरे हैं, हम इसे स्पष्ट रूप से बताते हैं।",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 102,
+      "text_preview": "जहाँ इतिहासकार तिथियों या विवरणों पर असहमत हैं, हम सबसे व्यापक रूप से स्वीकृत वि",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 76,
+      "text_preview": "यह इतिहास है, किंवदंती नहीं, और हम इसे उचित सम्मान के साथ प्रस्तुत करते हैं।",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 49,
+      "text_preview": "भूमध्य सागर तीन महाद्वीपों के चौराहे पर स्थित है।",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "उत्तर में यूरोप, दक्षिण में अफ्रीका और पूर्व में एशिया है।",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 18,
+      "avg_delta": {
+        "cfg_weight": -0.013,
+        "temperature": 0.0,
+        "repetition_penalty": 0.065
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.031,
+        "temperature": 0.144,
+        "repetition_penalty": 0.054
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 4,
+      "avg_delta": {
+        "cfg_weight": -0.024,
+        "temperature": 0.176,
+        "repetition_penalty": 0.098
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

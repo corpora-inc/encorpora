@@ -4,6 +4,7 @@ import App from "./App";
 import "./i18n";
 import LanguageSynchronizer from "./components/LanguageSynchronizer";
 import { getVoices, getVoicesCached } from "@/util/tts-voices";
+import { initAnalytics } from "@/util/analytics";
 
 // Ad-hoc debug surface — reachable from the Safari Web Inspector console
 // even on builds where `window.__TAURI__` isn't exposed. Examples:
@@ -51,3 +52,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </LanguageSynchronizer>
   </React.StrictMode>
 );
+
+// Init analytics AFTER render so the app is interactive first (plan §7 C6).
+// Idempotent; safe if HMR re-runs this module in dev.
+initAnalytics();

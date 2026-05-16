@@ -1,0 +1,21 @@
+{
+  "id": "book_hayreddin_barbarossa",
+  "name": "Hayreddin Barbarossa: The King of the Mediterranean",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Pirate Biographies: Lives That Changed the Sea",
+    "volume": 2,
+    "author": "Corpora",
+    "tts": true,
+    "estimatedReadTime": "~30 minutes",
+    "estimatedListenTime": "~30 minutes"
+  }
+}

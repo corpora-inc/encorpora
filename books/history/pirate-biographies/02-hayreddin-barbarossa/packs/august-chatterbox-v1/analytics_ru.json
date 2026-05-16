@@ -1,0 +1,953 @@
+{
+  "book_id": "august-chatterbox-v1",
+  "language": "ru",
+  "timestamp": "2026-05-11T22:00:36.310385+00:00",
+  "segments_total": 285,
+  "segments_first_pass": 280,
+  "segments_converged_by_retry": 5,
+  "segments_plateau_stopped": 0,
+  "total_retries": 15,
+  "error_distribution": {
+    "trailing_silence": 88,
+    "tail_energy": 82,
+    "first_word_weak": 50,
+    "post_speech_pop": 20,
+    "min_trailing_silence": 15,
+    "tts_audio_truncated": 15,
+    "tail_zero_duration_run": 12,
+    "stacked_words": 12,
+    "truncated_last_word": 12,
+    "final_word_weak": 11,
+    "word_cluster": 4,
+    "tail_spike": 3,
+    "too_short": 3,
+    "pre_speech_spike": 3
+  },
+  "phase_timings": {
+    "tts": 108.73453497886658,
+    "align": 40.98628091812134,
+    "validate": 36.5932080745697,
+    "trim": 0.09324073791503906,
+    "master": 3.0278704166412354
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 1,
+      "passed": 1,
+      "rate": 1.0
+    },
+    "medium_30_80": {
+      "total": 174,
+      "passed": 172,
+      "rate": 0.9885057471264368
+    },
+    "long_80_plus": {
+      "total": 110,
+      "passed": 107,
+      "rate": 0.9727272727272728
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch02-094",
+      "attempts": 12,
+      "best_quality_score": 0.0,
+      "best_attempt": 11,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.5963683961981827,
+            "exaggeration": 0.39613544866155925,
+            "temperature": 0.6160997028453515,
+            "top_p": 0.994719032116099,
+            "min_p": 0.0084691499763703,
+            "repetition_penalty": 2.095570860680671
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.3605198841702103,
+            "exaggeration": 0.2997025877876565,
+            "temperature": 0.5272440618517809,
+            "top_p": 0.7597555708690347,
+            "min_p": 0.10457851844967744,
+            "repetition_penalty": 2.4375845676950076
+          }
+        },
+        {
+          "attempt": 3,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_short",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 480.0,
+          "params": {
+            "cfg_weight": 0.5891230705157363,
+            "exaggeration": 0.8202445224254266,
+            "temperature": 0.8754680918621128,
+            "top_p": 1.0,
+            "min_p": 0.0,
+            "repetition_penalty": 1.1103577704887393
+          }
+        },
+        {
+          "attempt": 4,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.4528595586625419,
+            "temperature": 0.17485279932535164,
+            "top_p": 0.8920765846178791,
+            "min_p": 0.06701784098063215,
+            "repetition_penalty": 1.8769871214362792
+          }
+        },
+        {
+          "attempt": 5,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_short",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 480.0,
+          "params": {
+            "cfg_weight": 0.17042692864953796,
+            "exaggeration": 0.4610216424365913,
+            "temperature": 0.2640789732202043,
+            "top_p": 0.9487515765681725,
+            "min_p": 0.0,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "attempt": 6,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "too_short",
+            "word_cluster",
+            "first_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 500.0,
+          "params": {
+            "cfg_weight": 0.7549824360938915,
+            "exaggeration": 0.18790003569591587,
+            "temperature": 0.05,
+            "top_p": 0.7483511035951804,
+            "min_p": 0.26196400343874326,
+            "repetition_penalty": 1.0191027520968605
+          }
+        },
+        {
+          "attempt": 7,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.09966448051960836,
+            "exaggeration": 0.12787446505012973,
+            "temperature": 0.5098783297935064,
+            "top_p": 0.9215324241909613,
+            "min_p": 0.2275801516326448,
+            "repetition_penalty": 2.762488681828784
+          }
+        },
+        {
+          "attempt": 8,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 1.0,
+            "exaggeration": 0.22698048340837462,
+            "temperature": 0.21279915641492386,
+            "top_p": 0.7446795940602121,
+            "min_p": 0.32631702554915987,
+            "repetition_penalty": 1.1280527955207156
+          }
+        },
+        {
+          "attempt": 9,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.26465271087880443,
+            "exaggeration": 0.5811228426928438,
+            "temperature": 0.8176799944797821,
+            "top_p": 0.9988042824353327,
+            "min_p": 0.0,
+            "repetition_penalty": 3.0
+          }
+        },
+        {
+          "attempt": 10,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.16658339417884555,
+            "exaggeration": 0.9190088816631758,
+            "temperature": 0.9963557255869248,
+            "top_p": 0.8989328305390658,
+            "min_p": 0.2063344153885784,
+            "repetition_penalty": 1.8793980187627857
+          }
+        },
+        {
+          "attempt": 11,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4448754835217425,
+            "exaggeration": 0.8569652953020901,
+            "temperature": 0.9388687733638434,
+            "top_p": 1.0,
+            "min_p": 0.021321311307400864,
+            "repetition_penalty": 1.9832510624446567
+          }
+        }
+      ],
+      "text_len": 117,
+      "text_preview": "Он раздобыл корабль, набрал команду и начал нападать на христианское судоходство",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.894796978326705,
+            "exaggeration": 0.4600995411882506,
+            "temperature": 0.6926296133526624,
+            "top_p": 0.7905412232854733,
+            "min_p": 0.27924139683125304,
+            "repetition_penalty": 3.0
+          }
+        }
+      ],
+      "text_len": 57,
+      "text_preview": "Свою жизнь он начал как сын гончара на греческом острове.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-084",
+      "attempts": 2,
+      "best_quality_score": 20.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.9318142855631579,
+            "exaggeration": 0.08111550597917139,
+            "temperature": 0.31941307388888657,
+            "top_p": 1.0,
+            "min_p": 0.18002356737842226,
+            "repetition_penalty": 2.1665653086290697
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "В одном из первых плаваний братья подверглись нападению рыцарей Святого Иоанна.",
+      "passed_first": false
+    },
+    {
+      "id": "ch04-215",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6993794570141176,
+            "exaggeration": 0.4359331107124708,
+            "temperature": 0.7314493759195945,
+            "top_p": 0.9406122623160913,
+            "min_p": 0.0,
+            "repetition_penalty": 2.8347671921081186
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "Французский король предложил порт как базу для совместных операций против Испани",
+      "passed_first": false
+    },
+    {
+      "id": "ch06-268",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8310609596412402,
+            "exaggeration": 0.35337836397241296,
+            "temperature": 0.5136926661030572,
+            "top_p": 0.8607560205192031,
+            "min_p": 0.2154085860282958,
+            "repetition_penalty": 1.980988287991327
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "Его победа при Превезе изучается в военно-морских академиях по всему миру и по с",
+      "passed_first": false
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 115,
+      "text_preview": "Это подлинная история Хайреддина Барбароссы — человека, который превратил Османс",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Завершил её как Великий адмирал самого могущественного флота Средиземного моря.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 90,
+      "text_preview": "Его история охватывает столетие конфликта между Османской империей и христианско",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 72.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "post_speech_pop",
+            "tail_energy"
+          ],
+          "score": 72.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 75,
+      "text_preview": "Это рассказ о братьях, корсарах, султанах и о борьбе за морское господство.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 99,
+      "text_preview": "Каждое сражение, союз и предательство, описанные в этой книге, основаны на истор",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 58,
+      "text_preview": "Карьера Барбароссы изменила карту средиземноморского мира.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "Флот, который он создал, господствовал на море на протяжении поколений после его",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 72,
+      "text_preview": "Его наследие по сей день формирует побережья и культуры Северной Африки.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 63,
+      "text_preview": "Там, где исторические данные неполны, мы прямо об этом говорим.",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "first_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 111,
+      "text_preview": "Там, где историки расходятся во мнениях относительно дат или деталей, мы приводи",
+      "passed_first": true
+    },
+    {
+      "id": "ch00-013",
+      "attempts": 1,
+      "best_quality_score": 23.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence",
+            "first_word_weak"
+          ],
+          "score": 23.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 71,
+      "text_preview": "Это история, а не легенда, и мы относимся к ней с подобающим вниманием.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-015",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Средиземное море расположено на перекрёстке трёх континентов.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-016",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 55,
+      "text_preview": "На севере — Европа, на юге — Африка, на востоке — Азия.",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-017",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 98,
+      "text_preview": "На протяжении тысячелетий каждая великая цивилизация на его берегах сражалась за",
+      "passed_first": true
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 1,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_energy"
+          ],
+          "score": 12.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 80,
+      "text_preview": "К концу пятнадцатого века Средиземноморье стало полем битвы двух великих держав.",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "tail_zero_duration_run": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.064,
+        "temperature": 0.187,
+        "repetition_penalty": 0.469
+      }
+    },
+    "stacked_words": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.064,
+        "temperature": 0.187,
+        "repetition_penalty": 0.469
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.064,
+        "temperature": 0.187,
+        "repetition_penalty": 0.469
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.036,
+        "temperature": 0.196,
+        "repetition_penalty": 0.307
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 3,
+      "avg_delta": {
+        "cfg_weight": 0.036,
+        "temperature": 0.196,
+        "repetition_penalty": 0.307
+      }
+    },
+    "final_word_weak": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.004,
+        "temperature": 0.043,
+        "repetition_penalty": -0.004
+      }
+    },
+    "trailing_silence": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_energy": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.0,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

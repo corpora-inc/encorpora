@@ -1,0 +1,986 @@
+{
+  "book_id": "ian-chatterbox-v1",
+  "language": "pt",
+  "timestamp": "2026-05-04T22:29:15.965734+00:00",
+  "segments_total": 617,
+  "segments_first_pass": 606,
+  "segments_converged_by_retry": 10,
+  "segments_plateau_stopped": 1,
+  "total_retries": 14,
+  "error_distribution": {
+    "trailing_silence": 329,
+    "tail_energy": 109,
+    "final_word_weak": 62,
+    "first_word_weak": 58,
+    "tts_audio_truncated": 46,
+    "min_trailing_silence": 32,
+    "truncated_last_word": 24,
+    "stacked_words": 18,
+    "tail_zero_duration_run": 17,
+    "first_word_mismatch": 17,
+    "short_words": 8,
+    "tail_spike": 8,
+    "word_cluster": 8,
+    "transcription_mismatch": 5,
+    "pre_speech_spike": 2
+  },
+  "phase_timings": {
+    "tts": 72.07202482223511,
+    "align": 33.995201587677,
+    "validate": 8.037987470626831,
+    "trim": 0.07544231414794922,
+    "master": 1.2739739418029785
+  },
+  "length_analysis": {
+    "short_0_30": {
+      "total": 181,
+      "passed": 180,
+      "rate": 0.994475138121547
+    },
+    "medium_30_80": {
+      "total": 285,
+      "passed": 281,
+      "rate": 0.9859649122807017
+    },
+    "long_80_plus": {
+      "total": 151,
+      "passed": 145,
+      "rate": 0.9602649006622517
+    }
+  },
+  "worst_segments": [
+    {
+      "id": "ch03-013",
+      "attempts": 3,
+      "best_quality_score": 30.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 190.0,
+          "params": {
+            "cfg_weight": 0.715508793166683,
+            "exaggeration": 0.24447411692471294,
+            "temperature": 0.43797479182093707,
+            "top_p": 0.9663622441668174,
+            "min_p": 0.20254247677715947,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_spike",
+            "tail_energy"
+          ],
+          "score": 30.0,
+          "params": {
+            "cfg_weight": 0.4447196840859331,
+            "exaggeration": 0.12147348856280567,
+            "temperature": 0.16277584730011535,
+            "top_p": 0.7876891918100378,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 1,
+      "text_preview": "I",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-163",
+      "attempts": 3,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 3.2,
+          "params": {
+            "cfg_weight": 0.764757169097247,
+            "exaggeration": 0.2034976938090245,
+            "temperature": 0.519900865298363,
+            "top_p": 0.9596808867857779,
+            "min_p": 0.0,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [
+            "trailing_silence",
+            "tail_energy"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.3999511702429738,
+            "exaggeration": 0.13196318819996142,
+            "temperature": 0.3158379255473207,
+            "top_p": 0.8324168418919113,
+            "min_p": 0.0055990363955850525,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 46,
+      "text_preview": "E pensa Matriona: não é boa pessoa — tem medo.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-368",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "transcription_mismatch"
+          ],
+          "score": 4.56,
+          "params": {
+            "cfg_weight": 0.9455575568068716,
+            "exaggeration": 0.4399961723567538,
+            "temperature": 0.5918571021478714,
+            "top_p": 0.9438592525375037,
+            "min_p": 0.025139860058139854,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 2,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.4258623428957164,
+            "exaggeration": 0.1584163539926007,
+            "temperature": 0.1696071100978062,
+            "top_p": 0.8832295721752981,
+            "min_p": 0.08323801565523709,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 35,
+      "text_preview": "O fidalgo se afastou, e Semion diz:",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-058",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7846833737616402,
+            "exaggeration": 0.2871025707506545,
+            "temperature": 0.4032056472375839,
+            "top_p": 0.8591979767250641,
+            "min_p": 0.18673716229078183,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 105,
+      "text_preview": "Que coisa estranha: de fato era uma pessoa, viva ou morta, sentada nua encostada",
+      "passed_first": false
+    },
+    {
+      "id": "ch03-063",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "word_cluster",
+            "tts_audio_truncated"
+          ],
+          "score": 440.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.7543529353627363,
+            "exaggeration": 0.4026885689587013,
+            "temperature": 0.5120708641074476,
+            "top_p": 0.8890592301155071,
+            "min_p": 0.09879634827532346,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 128,
+      "text_preview": "Passou a capela, olhou para trás, e viu — a pessoa se afastou da parede da capel",
+      "passed_first": false
+    },
+    {
+      "id": "ch05-159",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.6647913865496857,
+            "exaggeration": 0.17752792867600892,
+            "temperature": 0.5179439738654646,
+            "top_p": 0.768525781086257,
+            "min_p": 0.0,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 81,
+      "text_preview": "«Bebeu o dinheiro, pensou, andou com algum vagabundo e ainda o trouxe para casa.",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-308",
+      "attempts": 2,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.88
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "first_word_mismatch"
+          ],
+          "score": 15.0,
+          "params": {
+            "cfg_weight": 0.9206631045225576,
+            "exaggeration": 0.15262749351500252,
+            "temperature": 0.5928515513462367,
+            "top_p": 0.7857634062738856,
+            "min_p": 0.0914084374747402,
+            "repetition_penalty": 1.88
+          }
+        }
+      ],
+      "text_len": 187,
+      "text_preview": "Semion era magro, Mikhail, esguio, e Matriona, seca como graveto; mas aquele hom",
+      "passed_first": false
+    },
+    {
+      "id": "ch08-357",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 120.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.89
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8542686572003246,
+            "exaggeration": 0.3873870055203319,
+            "temperature": 0.4730011798890456,
+            "top_p": 0.8849054407587924,
+            "min_p": 0.12530692952426212,
+            "repetition_penalty": 1.89
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "— Olha bem — diz o fidalgo para Mikhail — lembra, costure de modo que dure um an",
+      "passed_first": false
+    },
+    {
+      "id": "ch09-383",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.8270917470795993,
+            "exaggeration": 0.23811628303148294,
+            "temperature": 0.4394751957813688,
+            "top_p": 0.8443543465788371,
+            "min_p": 0.05665198381011034,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 79,
+      "text_preview": "Matriona chegou perto, olha como Mikhail corta, e se espanta com o que ele faz.",
+      "passed_first": false
+    },
+    {
+      "id": "ch13-560",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "tail_zero_duration_run",
+            "stacked_words",
+            "truncated_last_word",
+            "min_trailing_silence",
+            "tts_audio_truncated"
+          ],
+          "score": 420.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.95
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.9096305696029442,
+            "exaggeration": 0.3239699178569822,
+            "temperature": 0.5139284079878153,
+            "top_p": 0.7351515485924887,
+            "min_p": 0.15902396401073252,
+            "repetition_penalty": 1.95
+          }
+        }
+      ],
+      "text_len": 93,
+      "text_preview": "Vi no campo uma capela feita para Deus, aproximei-me da capela de Deus, quis me ",
+      "passed_first": false
+    },
+    {
+      "id": "ch14-617",
+      "attempts": 2,
+      "best_quality_score": 3.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "min_trailing_silence",
+            "final_word_weak",
+            "tts_audio_truncated"
+          ],
+          "score": 130.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.93
+          }
+        },
+        {
+          "attempt": 1,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.6621435729192332,
+            "exaggeration": 0.20449731145026157,
+            "temperature": 0.4169785905480773,
+            "top_p": 0.9677410095124334,
+            "min_p": 0.13556731854383183,
+            "repetition_penalty": 1.93
+          }
+        }
+      ],
+      "text_len": 66,
+      "text_preview": "E o teto se abriu, e ergueu-se uma coluna de fogo da terra ao céu.",
+      "passed_first": false
+    },
+    {
+      "id": "ch02-002",
+      "attempts": 1,
+      "best_quality_score": 3.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "trailing_silence"
+          ],
+          "score": 3.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 8,
+      "text_preview": "Epígrafe",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.85
+          }
+        }
+      ],
+      "text_len": 129,
+      "text_preview": "Nós sabemos que passamos da morte para a vida, porque amamos os irmãos: quem não",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 141,
+      "text_preview": "E quem tem os bens deste mundo, mas, vendo o seu irmão em necessidade, fecha-lhe",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 87,
+      "text_preview": "Filhos meus! Amemos não de palavra nem de língua, mas por obras e em verdade. (I",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.77
+          }
+        }
+      ],
+      "text_len": 82,
+      "text_preview": "O amor vem de Deus, e todo aquele que ama nasceu de Deus e conhece a Deus. (IV, ",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.94
+          }
+        }
+      ],
+      "text_len": 61,
+      "text_preview": "Quem não ama não conheceu a Deus, porque Deus é amor. (IV, 8)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 2.0
+          }
+        }
+      ],
+      "text_len": 88,
+      "text_preview": "Ninguém jamais viu a Deus. Se nos amamos uns aos outros, Deus permanece em nós. ",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "final_word_weak"
+          ],
+          "score": 20.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        },
+        {
+          "attempt": 0,
+          "errors": [],
+          "score": 0.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.8
+          }
+        }
+      ],
+      "text_len": 78,
+      "text_preview": "Deus é amor, e quem permanece no amor permanece em Deus, e Deus nele. (IV, 16)",
+      "passed_first": true
+    },
+    {
+      "id": "ch02-012",
+      "attempts": 1,
+      "best_quality_score": 25.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "retry_history": [
+        {
+          "attempt": 0,
+          "errors": [
+            "short_words"
+          ],
+          "score": 25.0,
+          "params": {
+            "cfg_weight": 0.85,
+            "exaggeration": 0.3,
+            "temperature": 0.3,
+            "top_p": 0.85,
+            "min_p": 0.1,
+            "repetition_penalty": 1.82
+          }
+        }
+      ],
+      "text_len": 149,
+      "text_preview": "Quem diz: eu amo a Deus, mas odeia o seu irmão, é mentiroso, pois quem não ama o",
+      "passed_first": true
+    }
+  ],
+  "param_effectiveness": {
+    "final_word_weak": {
+      "sample_size": 17,
+      "avg_delta": {
+        "cfg_weight": 0.0,
+        "temperature": 0.036,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tail_zero_duration_run": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.019,
+        "temperature": 0.042,
+        "repetition_penalty": 0.0
+      }
+    },
+    "stacked_words": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.019,
+        "temperature": 0.042,
+        "repetition_penalty": 0.0
+      }
+    },
+    "truncated_last_word": {
+      "sample_size": 5,
+      "avg_delta": {
+        "cfg_weight": -0.019,
+        "temperature": 0.042,
+        "repetition_penalty": 0.0
+      }
+    },
+    "min_trailing_silence": {
+      "sample_size": 10,
+      "avg_delta": {
+        "cfg_weight": -0.005,
+        "temperature": 0.055,
+        "repetition_penalty": 0.0
+      }
+    },
+    "tts_audio_truncated": {
+      "sample_size": 14,
+      "avg_delta": {
+        "cfg_weight": -0.017,
+        "temperature": 0.067,
+        "repetition_penalty": 0.0
+      }
+    },
+    "first_word_weak": {
+      "sample_size": 2,
+      "avg_delta": {
+        "cfg_weight": 0.07,
+        "temperature": -0.058,
+        "repetition_penalty": 0.0
+      }
+    }
+  }
+}

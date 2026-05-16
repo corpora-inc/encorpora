@@ -4,6 +4,7 @@ import { CheckCircle2 } from "lucide-react"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { Button } from "@/components/ui/button"
 import { useEntitlementStore } from "@/store/entitlements"
+import { trackPaidUnlockViewed } from "@/util/analytics"
 import {
   fetchProducts,
   purchaseAndVerify,
@@ -88,6 +89,14 @@ export function SubscriptionOffer() {
   useEffect(() => {
     void refresh()
   }, [refresh])
+
+  // Anonymous analytics: paywall surface viewed. Skipped when IAP isn't
+  // available (component returns null), so this only fires when the user
+  // could actually see the paywall.
+  useEffect(() => {
+    if (!iapAvailable) return
+    trackPaidUnlockViewed("subscription_offer")
+  }, [iapAvailable])
 
   const handleSubscribe = async () => {
     if (state.kind !== "ready") return
