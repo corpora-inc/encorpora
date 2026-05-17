@@ -223,6 +223,13 @@ export function MainExperience() {
     const fetchSeqRef = useRef(0);
 
     const scrollRef = useRef<HTMLDivElement>(null);
+    const navRef = useRef<HTMLDivElement>(null);
+    // Measured at runtime so the scroll container's padding-bottom always
+    // exceeds the floating Nav's actual rendered height. Otherwise a
+    // language stack that is *just* tall enough to extend under the Nav
+    // but not tall enough to overflow the scroll container hides its last
+    // row with no way to scroll to it.
+    const [navHeight, setNavHeight] = useState<number>(getPlatformBottomPadding());
 
     const lookup = useMemo(() => buildLookup(currEntry), [currEntry]);
 
@@ -291,6 +298,17 @@ export function MainExperience() {
             el.scrollTo({ top: 0, behavior: "smooth" });
         }, 33);
     }, [currEntry?.entry_id]);
+
+    useLayoutEffect(() => {
+        const el = navRef.current;
+        if (!el) return;
+        const update = () => setNavHeight(el.offsetHeight);
+        update();
+        if (typeof ResizeObserver === "undefined") return;
+        const ro = new ResizeObserver(update);
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
 
     // --- Nav handlers ----------------------------------------------------------
 
@@ -367,40 +385,57 @@ export function MainExperience() {
             {currEntry ? <MetaChips entry={currEntry} /> : null}
 
             <div
-                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
+                className="flex-1 w-full overflow-y-auto min-h-0 [&::-webkit-scrollbar]:hidden"
                 ref={scrollRef}
-                style={{
-                    paddingBottom: `${getPlatformBottomPadding()}px`,
-                    paddingTop: `${getPlatformTopPaddingTranslations()}px`,
-                }}
+                style={{ scrollbarWidth: "none" }}
             >
+                {/* Wrapper with `min-h-full` and padding-on-wrapper: when
+                    content fits, wrapper == scroll container height and
+                    `justify-center` centers the stack inside the (pt, pb)
+                    safe area. When content doesn't fit, wrapper grows to
+                    `pt + content + pb` natural height which overflows the
+                    scroll container so scroll activates. The scroll
+                    container is a plain block (NOT `flex flex-col`) —
+                    otherwise the wrapper becomes a flex item with default
+                    `flex-shrink: 1` and gets clamped to container height
+                    instead of growing, breaking both the centering and the
+                    scroll. */}
                 <div
-                    key={index}
-                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
+                    className="min-h-full w-full flex flex-col items-center justify-center px-2"
+                    style={{
+                        paddingTop: `${getPlatformTopPaddingTranslations()}px`,
+                        paddingBottom: `${Math.max(navHeight + 96, getPlatformBottomPadding())}px`,
+                    }}
                 >
-                    {displayedLanguages.map((uiCode, idx) => {
-                        const txt = pickText(lookup.textByDbCode, uiCode);
-                        const rom = pickRom(lookup.romByDbCode, uiCode);
+                    <div
+                        key={index}
+                        className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9"
+                    >
+                        {displayedLanguages.map((uiCode, idx) => {
+                            const txt = pickText(lookup.textByDbCode, uiCode);
+                            const rom = pickRom(lookup.romByDbCode, uiCode);
 
-                        return (
-                            <TranslationBlock
-                                key={uiCode}
-                                uiCode={uiCode}
-                                label={labelFor(uiCode)}
-                                text={txt}
-                                romanization={rom}
-                                showRomanization={showRomanization}
-                                onSpeak={() => speak(uiCode, txt)}
-                                reduceMotion={!!reduceMotion}
-                                delay={idx * 0.035}
-                            />
-                        );
-                    })}
+                            return (
+                                <TranslationBlock
+                                    key={uiCode}
+                                    uiCode={uiCode}
+                                    label={labelFor(uiCode)}
+                                    text={txt}
+                                    romanization={rom}
+                                    showRomanization={showRomanization}
+                                    onSpeak={() => speak(uiCode, txt)}
+                                    reduceMotion={!!reduceMotion}
+                                    delay={idx * 0.035}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
 
             {/* Floating Nav */}
             <div
+                ref={navRef}
                 className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
                 style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 3 }}
             >

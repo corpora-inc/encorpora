@@ -24,12 +24,55 @@ pub struct PrepareResult {
     pub code: Option<String>,
 }
 
+/// Per-call overrides on top of `whisper_full_default_params` (iOS) /
+/// the equivalent JNI defaults (Android). Every field is optional;
+/// missing fields fall through to the library default. Field names
+/// match whisper.h's `whisper_full_params` exactly (snake_case) so
+/// the same JSON shape works on every layer of the stack.
+///
+/// Critical: this struct is the wire-format gatekeeper. Any field not
+/// declared here is silently dropped before reaching the native
+/// plugin — see the note on `PrepareResult` above for the symmetric
+/// problem on the response side.
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct WhisperParams {
+    #[serde(default)]
+    pub temperature: Option<f32>,
+    #[serde(default)]
+    pub temperature_inc: Option<f32>,
+    #[serde(default)]
+    pub entropy_thold: Option<f32>,
+    #[serde(default)]
+    pub logprob_thold: Option<f32>,
+    #[serde(default)]
+    pub no_speech_thold: Option<f32>,
+    #[serde(default)]
+    pub suppress_blank: Option<bool>,
+    #[serde(default)]
+    pub suppress_nst: Option<bool>,
+    #[serde(default)]
+    pub n_threads: Option<i32>,
+    /// Initial text-context primer for the decoder. Whisper prepends
+    /// this (up to ~224 tokens) before generating, biasing toward
+    /// the prompt's script, vocabulary, and style. Most useful for
+    /// low-resource non-Latin-script languages where the model's
+    /// greedy decode otherwise collapses to a wrong-script attractor.
+    /// Empty string = no priming (library default).
+    #[serde(default)]
+    pub initial_prompt: Option<String>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StartSessionArgs {
     pub session_id: String,
     pub language: String,
     pub expected_text: String,
+    /// Per-call whisper.cpp param overrides from the pack. Optional;
+    /// when absent the native plugin uses its own defaults. See
+    /// `WhisperParams` for the full field list and semantics.
+    #[serde(default)]
+    pub whisper_params: Option<WhisperParams>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]

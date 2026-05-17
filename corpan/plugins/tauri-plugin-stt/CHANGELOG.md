@@ -7,6 +7,132 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Release audio between sessions.** `stopSession` and
+  `cancelSession` now tear down the audio engine + deactivate
+  the AVAudioSession (iOS) / release the AudioRecord (Android)
+  immediately after snapshotting the captured samples. We
+  previously kept the engine warm across sessions to dodge the
+  ~1 s AVAudioEngine startup cost on back-to-back recordings,
+  but that left the iOS mic indicator on during scoring and
+  result viewing, and held the session in `.playAndRecord +
+  .duckOthers` so TTS played softer. Releasing between
+  sessions trades the back-to-back latency for indicator-off
+  and full TTS volume between mic tries — the user-facing
+  correctness wins. If first-word clipping becomes a problem
+  again, address it with a background pre-warm tied to
+  phrase-load events on the pack side, not by re-introducing
+  the always-warm native engine.
+
+### Added
+- **`audio_level` event stream.** While a session is recording, the
+  native plugin emits a per-buffer `audio_level` event (`{ rms: number,
+  t: number }`) at the platform's natural cadence — ~11 Hz on iOS
+  (4096-frame tap @ ~48 kHz native), ~8 Hz on Android (2048-frame
+  read @ 16 kHz). RMS is computed inside the existing audio tap
+  (~5–10 µs/buffer), so there is no additional thread or audio
+  session. Subscribe from JS via `addPluginListener('stt',
+  'audio_level', ...)`. First consumer is the pronunciation-coach
+  pack's silence detector — same pattern can drive future live
+  transcription / waveform-viz features. iOS: closure on
+  `WhisperManager.audioLevelEmitter`, wired in `STTPlugin.init()`.
+  Android: `AudioRecorder.onLevel` callback, wired in `SttPlugin`
+  when the recorder is first started.
+- **`release_audio` command** — tear down AVAudioEngine /
+  AVAudioSession on iOS and AudioRecord on Android. Distinct from
+  `cancel_session` (which deliberately keeps the engine warm for
+  back-to-back recordings inside one pack session). Packs should
+  call `stt.releaseAudio()` from their `unmount` path; without it,
+  on iOS the orange mic indicator stays on and `.duckOthers` keeps
+  ambient audio softer until the next process kill. Wired through
+  `build.rs` COMMANDS allowlist, `permissions/default.toml`,
+  iOS `STTPlugin.swift` (`releaseAudio` @objc + `WhisperManager`
+  method), and Android `SttPlugin.kt` (`@Command fun releaseAudio`).
+- **Custom `downloadUrl` for `installModel`.** iOS `PrepareArgs` and
+  Android `InstallArgs` now accept an optional `downloadUrl` field;
+  when set, `installModel` downloads from that URL instead of the
+  hardcoded `huggingface.co/ggerganov/whisper.cpp/resolve/main/<file>`
+  base. Lets the pack ship community / self-quantized model
+  variants from our own CDN — first use case is the `large_q8_full`
+  variant (full Whisper Large v3 at 8-bit precision, quantized
+  ourselves because upstream doesn't publish it).
+- **Android mirror of the `whisperParams` plumbing.** Kotlin
+  `SttPlugin.kt` gains a `WhisperParamsArg` data class and a
+  `whisperParams` property on `StartSessionArgs` — same Gson-drops-
+  unknown-fields trap that bit us on the Rust side applies here too,
+  so this property has to exist or the override never reaches JNI.
+  `WhisperContext.kt`'s `transcribe()` accepts overrides and unboxes
+  them to NaN-float / `-1` Int / empty-String sentinels before
+  passing into JNI; `nativeFullTranscribe` in `whisper_jni.cpp`
+  gains eight new params, applies each via `std::isnan` / tri-state
+  checks, and pins the `initial_prompt` UTF chars for the
+  `whisper_full` lifetime. End-to-end JS → Rust → Kotlin → JNI →
+  whisper.cpp parity with iOS.
+- **`initial_prompt` is now part of the wire format on every layer.**
+  Rust `WhisperParams.initial_prompt: Option<String>`, Swift
+  `WhisperParamsArg.initial_prompt: String?`, Kotlin
+  `WhisperParamsArg.initial_prompt: String?`. Applied to
+  `params.initial_prompt` in both `WhisperCppContext.transcribe`
+  (iOS, with nested `withCString` for C-pointer lifetime) and
+  `nativeFullTranscribe` (Android JNI, with `GetStringUTFChars` /
+  `ReleaseStringUTFChars` pinning). Most powerful single lever for
+  Indic / low-resource languages — biases the decoder's first
+  generated tokens toward the prompt's script and vocabulary,
+  killing the wrong-script greedy-attractor failure mode (Telugu
+  audio decoded as Bengali ৃ-loop on Medium).
+
+### Fixed
+- `whisperParams` on `startSession` now actually reaches the native
+  plugin. Previous Unreleased entry only added the field on the Swift
+  side; the Rust-side `StartSessionArgs` in `src/models.rs` didn't
+  declare a `whisper_params` field, and serde silently drops unknown
+  fields when deserializing JS args, so the override object never
+  made it past the Rust boundary. Added `WhisperParams` mirror struct
+  to `models.rs`, threaded it through `commands.rs` and `mobile.rs`,
+  added the matching `_whisper_params` arg on `desktop.rs` stub. The
+  same gotcha that `PrepareResult`'s docstring warns about for
+  response payloads, in the inbound direction.
+
+### Added (initial iOS Swift-side work that this entry supersedes)
+- iOS `startSession` now accepts an optional `whisperParams` field
+  (camelCase or `whisper_params` snake_case). Each non-null field
+  overrides the matching `whisper_full_params` member on top of
+  `whisper_full_default_params(GREEDY)`, applied per call inside
+  `WhisperCppContext.transcribe()`. Fields exposed: `temperature`,
+  `temperature_inc`, `entropy_thold`, `logprob_thold`,
+  `no_speech_thold`, `suppress_blank`, `suppress_nst`, `n_threads`.
+  Lets the pack disable whisper.cpp's internal temperature-fallback
+  loop per language (set `temperature_inc = 0`) — fixes salad output
+  on Indic / low-resource languages where the default compression-
+  ratio gate trips every call.
+- Log line `Whisper | params lang=... temp=... temp_inc=...` emitted
+  before each transcribe so the effective params land in the device
+  trace alongside the existing sample-count / language lines.
+
+## [0.3.1] - 2026-05-15
+
+### Fixed
+- Android `libwhisper-jni.so` is now 16 KB page-aligned. CMake build
+  was producing 4 KB segments by NDK 28 default while every other
+  native lib in the AAB was correctly 16 KB-aligned (Rust via
+  `src-tauri/.cargo/config.toml` rustflags from 0.7.8, libc++_shared
+  via NDK). Added `target_link_options(whisper-jni PRIVATE
+  -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384)` to
+  `android/src/main/cpp/CMakeLists.txt`. Resolves Play Console's
+  "your app does not support 16 KB memory page sizes" warning that
+  hit on 0.12.7 (and would have become a hard upload rejection
+  per Google's May 1 2026 enforcement deadline).
+- Native debug symbols actually flow to Play Console. Two-part fix:
+  CMake `-g -fno-omit-frame-pointer` (added in 0.3.0 but never
+  reached the AAB), plus the main app's release `build.gradle.kts`
+  switched from `debugSymbolLevel = "FULL"` to `"SYMBOL_TABLE"` —
+  FULL appeared to interact poorly with AGP 8.11 + NDK 28 + the
+  universal flavor, leaving `BUNDLE-METADATA/com.android.tools.
+  build.debugsymbols/` empty in the produced AAB. SYMBOL_TABLE is
+  the format Play actually uses for crash symbolication. Future
+  ANRs and native crashes in whisper.cpp / ggml territory will
+  come through pre-symbolicated.
+
 ## [0.3.0] - 2026-05-12
 
 Substantial release: Android STT plugin debut (full whisper.cpp JNI

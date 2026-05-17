@@ -12,6 +12,7 @@
 #include <jni.h>
 #include <string>
 #include <vector>
+#include <cmath>     // std::isnan — pack-override sentinel test
 #include <android/log.h>
 #include "whisper.h"
 
@@ -89,7 +90,20 @@ Java_com_corpora_stt_WhisperContext_nativeFullTranscribe(
         jfloatArray jsamples,
         jstring jlanguage,
         jboolean translate,
-        jint nThreads) {
+        jint nThreads,
+        // Pack-side overrides for whisper_full_params. Sentinel
+        // encoding from the Kotlin caller: NaN floats mean "no
+        // override", suppress_* ints use -1 for "unset" / 0|1 for
+        // explicit false|true, initial_prompt empty string means
+        // "no override." See WhisperContext.transcribe().
+        jfloat oTemperature,
+        jfloat oTemperatureInc,
+        jfloat oEntropyThold,
+        jfloat oLogprobThold,
+        jfloat oNoSpeechThold,
+        jint oSuppressBlank,
+        jint oSuppressNst,
+        jstring jInitialPrompt) {
     if (ctxPtr == 0) {
         LOGE("nativeFullTranscribe: ctxPtr is null");
         return -1;
@@ -108,6 +122,17 @@ Java_com_corpora_stt_WhisperContext_nativeFullTranscribe(
     }
 
     const char *lang = env->GetStringUTFChars(jlanguage, nullptr);
+
+    // initial_prompt: pin the UTF chars for the duration of
+    // whisper_full() since whisper.cpp keeps the const char *
+    // pointer. Empty string → leave params.initial_prompt at its
+    // library default (NULL, no priming).
+    const char *promptUtf = nullptr;
+    jboolean promptIsCopy = JNI_FALSE;
+    if (jInitialPrompt) {
+        promptUtf = env->GetStringUTFChars(jInitialPrompt, &promptIsCopy);
+    }
+    const bool hasPrompt = (promptUtf != nullptr && promptUtf[0] != '\0');
 
     struct whisper_full_params params =
             whisper_full_default_params(WHISPER_SAMPLING_GREEDY);
@@ -135,8 +160,25 @@ Java_com_corpora_stt_WhisperContext_nativeFullTranscribe(
         params.n_threads = nThreads;
     }
 
-    LOGI("whisper_full: samples=%d language=%s translate=%d",
-         (int) n, lang ? lang : "(null)", (int) translate);
+    // Pack-side overrides — applied last so they win over the
+    // defaults set above. NaN / -1 / "" sentinels = "keep current."
+    if (!std::isnan(oTemperature))     params.temperature       = oTemperature;
+    if (!std::isnan(oTemperatureInc))  params.temperature_inc   = oTemperatureInc;
+    if (!std::isnan(oEntropyThold))    params.entropy_thold     = oEntropyThold;
+    if (!std::isnan(oLogprobThold))    params.logprob_thold     = oLogprobThold;
+    if (!std::isnan(oNoSpeechThold))   params.no_speech_thold   = oNoSpeechThold;
+    if (oSuppressBlank >= 0)           params.suppress_blank    = (oSuppressBlank != 0);
+    if (oSuppressNst >= 0)             params.suppress_nst      = (oSuppressNst != 0);
+    if (hasPrompt)                     params.initial_prompt    = promptUtf;
+
+    LOGI("whisper_full: samples=%d language=%s translate=%d "
+         "temp=%.3f temp_inc=%.3f entropy=%.3f logprob=%.3f no_speech=%.3f "
+         "suppress_blank=%d suppress_nst=%d prompt=%s",
+         (int) n, lang ? lang : "(null)", (int) translate,
+         params.temperature, params.temperature_inc, params.entropy_thold,
+         params.logprob_thold, params.no_speech_thold,
+         (int) params.suppress_blank, (int) params.suppress_nst,
+         hasPrompt ? "yes" : "(none)");
     int rc = whisper_full(ctx, params, samples, (int) n);
 
     // whisper.cpp's built-in per-phase profile (load / mel / sample /
@@ -147,6 +189,7 @@ Java_com_corpora_stt_WhisperContext_nativeFullTranscribe(
     whisper_print_timings(ctx);
 
     if (lang) env->ReleaseStringUTFChars(jlanguage, lang);
+    if (promptUtf) env->ReleaseStringUTFChars(jInitialPrompt, promptUtf);
     env->ReleaseFloatArrayElements(jsamples, samples, JNI_ABORT);
 
     if (rc != 0) {

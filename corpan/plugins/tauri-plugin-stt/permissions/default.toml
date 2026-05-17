@@ -13,6 +13,7 @@ permissions = [
     "allow-validate-model",
     "allow-list-installed",
     "allow-unload",
+    "allow-release-audio",
     "allow-register-listener",
     "allow-remove-listener",
 ]

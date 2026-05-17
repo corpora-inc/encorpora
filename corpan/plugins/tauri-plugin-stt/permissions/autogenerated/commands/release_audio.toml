@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-release-audio"
+description = "Enables the release_audio command without any pre-configured scope."
+commands.allow = ["release_audio"]
+
+[[permission]]
+identifier = "deny-release-audio"
+description = "Denies the release_audio command without any pre-configured scope."
+commands.deny = ["release_audio"]

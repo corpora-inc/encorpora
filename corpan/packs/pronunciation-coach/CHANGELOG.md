@@ -1,16 +1,149 @@
-# Changelog — Pronunciation Coach pack
+# Changelog — Parlometron (formerly Pronunciation Coach)
 
-On-device pronunciation practice. Reads a target-language phrase aloud
-from the host TTS, then scores the user's repetition via the host's
-whisper.cpp-backed STT bridge (iOS XCFramework + Android JNI; same
-`ggml-*.bin` model files on both platforms, downloaded at runtime from
-`https://huggingface.co/ggerganov/whisper.cpp/`).
+On-device pronunciation practice and pass-the-device party game.
+Reads a target-language phrase aloud from the host TTS, then scores
+the user's repetition via the host's whisper.cpp-backed STT bridge
+(iOS XCFramework + Android JNI; same `ggml-*.bin` model files on
+both platforms). Pack was originally shipped as "Pronunciation Coach"
+through 0.5.x; the catalog ID `pronunciation_coach` is preserved
+for back-compat — only the user-facing brand changed.
 
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+### Changed
+- **Multiplayer rounds now shuffle the target language.** Previously
+  `pickTargetTranslation` deterministically grabbed the first
+  non-native slot from the stack, so a 9-language stack kept landing
+  on the same target every round. The picker now collects every
+  non-native target the entry actually has a translation for and
+  picks one at random per round. The eyebrow gains the language
+  code (e.g. `Round 3 · KO · First to 5`) so everyone can see which
+  language the round is being scored in.
+
+### Added
+- **Auto-stop on silence.** The native plugin now emits per-buffer
+  RMS as `audio_level` events while recording (~11 Hz iOS, ~8 Hz
+  Android). A new `silenceWatcher.ts` state machine subscribes to
+  the stream and calls `stopSession()` after ~1.5 s of continuous
+  quiet following detected speech. All thresholds (`rmsThreshold`,
+  `speechStartMs`, `silenceMs`, `leadInMs`) live in JS so we can
+  ship new per-language defaults via pack updates without touching
+  native. Per-language overrides live in `whisperTuning.ts ::
+  SILENCE_POLICY_BY_LANG`. Wired into both solo Practice and
+  Parlometron multiplayer flows. The watcher feature-detects
+  `stt.subscribeAudioLevel` — older host builds quietly skip it
+  and the manual stop button still works.
+
+### Fixed
+- **Audio session no longer leaks past pack close.** Added a new
+  `releaseAudio()` method on the host SttApi (wired through
+  `tauri-plugin-stt`'s new `release_audio` command) and called from
+  `parlometron.ts`'s `unmount`. Tears down AVAudioEngine +
+  AVAudioSession on iOS (and AudioRecord on Android) when the pack
+  closes — fixes the stuck orange mic indicator and the
+  `.duckOthers` ambient-audio softening that previously persisted
+  until the next process kill. `cancelSession` is unchanged so
+  back-to-back recordings inside one pack session still get the
+  pre-warm-engine latency win.
+
+### Changed
+- **Mode picker is a vertical stack** instead of side-by-side cards.
+  The grid layout was producing super-tall cards mostly filled
+  with empty space on iPad. Cards are now natural-height, stacked
+  with a small gap, and vertically centered in the available body
+  region. Max-width capped at 520 px so they don't span the full
+  iPad-landscape width.
+- **"Pass the iPad" → "Pass the device"** across all multiplayer
+  copy. Parlometron runs on Android too; the wording shouldn't
+  pretend otherwise.
+
+## [0.6.0] - 2026-05-16
+
+The **Parlometron** release. Rebrand + new multiplayer party game
+alongside the existing solo practice flow.
+
+### Changed
+- **Pack rebranded to "Parlometron"** in user-facing copy. Catalog
+  ID `pronunciation_coach` stays unchanged for back-compat with old
+  Corpán installs (which keep seeing the previous 0.5.x version
+  under its old name via catalog `maxAppVersion` gating). Manifest
+  `name` field updated; two visible strings in `game.ts` updated;
+  CHANGELOG title and prose refer to the new brand. The on-disk
+  directory `packs/pronunciation-coach/` and the localStorage key
+  `corpan-pronunciation-coach:v2` are kept stable — renaming would
+  break user progress / dev tooling for no functional gain.
+
+### Added
+- **Mode picker** as the first screen on pack entry. Two equal-weight
+  cards: **Practice** (solo, the flow you've had since 0.3.x) and
+  **Play with Friends** (the new multiplayer mode). State machine +
+  router lives in `src/parlometron.ts`.
+- **Multiplayer mode (Play with Friends).** Pass-the-device party game.
+  - Lobby: roster up to 8 players (2-player minimum, hard cap), each
+    can be renamed; pick "first to 3 / 5 / 7 round wins."
+  - Round: phrase is shown to every player in turn; each player has 3
+    attempts; best % across attempts is their round score. Player
+    order reshuffled at the start of every round so the same person
+    isn't always first.
+  - Between rounds: scoreboard for the round just finished (heard-vs-
+    expected per player, round winner highlighted) plus cumulative
+    round-win totals.
+  - Game over: winner crown, final scoreboard with average %.
+    "Play again" carries over the same roster + target; "Done"
+    returns to the mode picker.
+  - State persists to `localStorage` under `pc:parlometron:game-state`
+    so a backgrounded / killed app doesn't lose mid-game progress.
+    (Resume UX is not exposed in v1 — game is cleared on each new
+    lobby entry.)
+- **New `Large q8 ★` model entry** — full Whisper Large v3 at 8-bit
+  precision (1.58 GB), self-quantized from the fp16 source because
+  upstream doesn't publish it. Hosted on our own CloudFront/S3 and
+  fetched via the new `downloadUrl` install field. Expected to be
+  the new top pick for Telugu, Tamil, Bengali, and other non-Latin
+  scripts where the Turbo distillation flounders. Runbook for the
+  quantization step lives at `corpan/RUNBOOK_QUANTIZE_LARGE_Q8.md`.
+- **Restructured model cards.** Each `ModelVariant` now declares
+  `pros: string[]` and `cons: string[]` alongside the existing
+  voice-tagline `shortDesc`. Setup-overlay cards render the
+  pros/cons as a two-column ✓ / − bullet list under the tagline —
+  scannable for parents and Whisper experts alike. The cards
+  themselves have been reordered to be strictly ascending by size
+  and the technical jargon stripped out of the prose taglines into
+  the cons list where it belongs.
+- **`initial_prompt` in the tuner.** Text-area row exposed in the
+  Whisper-tuning panel. Set a one-sentence native-script primer per
+  language; whisper.cpp prepends it (up to ~224 tokens) before
+  generating, biasing the very first output tokens away from
+  wrong-script greedy attractors. Built-in defaults for 13 Indic /
+  Persian / Urdu languages ship a context-setting prompt — "I'm
+  learning {language}. I'm going to try a phrase — tell me honestly
+  what you hear." — translated into each target language. Machine-
+  translated; refine per-language via the tuner.
+- **Language badge moved to the header.** The uppercase base-lang
+  code now lives in the header bar (between the streak and the mode
+  chiclet) instead of above the phrase inside the card. Always-on
+  context for polyglots; still doubles as the long-press anchor for
+  the tuner.
+- **Hidden Whisper-tuning panel** for power-user polyglots. Long-press
+  the small uppercase language code in the header to open a
+  bottom-sheet exposing whisper.cpp's decoder params per-language:
+  `temperature_inc`, `temperature`, `entropy_thold`,
+  `logprob_thold`, `no_speech_thold`, `suppress_blank`, `suppress_nst`,
+  `n_threads`, `initial_prompt`. Values persist to `localStorage`
+  under `pc:whisper-tuning` and apply on the next recording.
+  Includes "Copy as JSON" to export discovered profiles for shipping
+  as built-in defaults.
+- **Built-in tuning profiles for Indic / low-resource languages**
+  (te, ta, ml, bn, mr, gu, pa, or, as, ne, si, fa, ur). Default
+  `temperature_inc = 0` for these, which disables whisper.cpp's
+  internal temperature-fallback loop — replaces the chaotic mixed-
+  script salad output (Ge'ez / Hiragana / Latin / Cyrillic from the
+  high-T sampling path) with consistent imperfect greedy output.
+  Requires the matching `tauri-plugin-stt` Unreleased entry.
 
 ## [0.5.0] - 2026-05-12
 

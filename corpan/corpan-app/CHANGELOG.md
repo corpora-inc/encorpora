@@ -7,6 +7,87 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- Main experience: language stack could hide its last row under the
+  floating Nav with no way to scroll to it. The inner content used
+  `my-auto` to vertically center, which in WebKit's flex
+  implementation can absorb layout space in a way that suppresses
+  scroll activation at the boundary where content is just barely
+  taller than the visible area. Replaced with
+  `justify-content: safe center` on the scroll container itself —
+  modern CSS that centers when content fits and falls back to
+  `flex-start` when it overflows, so scrolling reliably reaches
+  the last row. Also measured the Nav at runtime via
+  `ResizeObserver` so the scroll container's bottom padding always
+  exceeds the Nav's actual rendered height.
+
+## [0.13.0] - 2026-05-16
+
+The "Parlometron" release. The pronunciation-coach pack is rebranded
+to **Parlometron** and gains a multiplayer mode alongside the
+existing solo practice flow. The catalog ID `pronunciation_coach` is
+stable so older Corpán builds still see the 0.5.x pack; only this
+version (and newer) sees the 0.6.0 pack under its new brand.
+
+### Added
+- **Per-call `downloadUrl` plumbing on `installModel`**. The host's
+  `installModel` wrapper at `corpan-app/src/contentPacks/hostApi.ts`
+  + the matching opts type in `types.ts` now forwards an optional
+  `downloadUrl` to the native plugin. Lets packs ship community /
+  self-quantized model variants from our own CDN — first use case is
+  the Parlometron pack's new `Large q8 ★` entry (full Whisper Large
+  v3 at 8-bit precision, ~1.58 GB, quantized from fp16 ourselves
+  because upstream `ggerganov/whisper.cpp` doesn't publish one).
+
+### Fixed
+- Wire-format gap on `installModel`. The host JS wrapper had been
+  silently stripping any field other than `model` from the opts
+  payload before invoking the native command — same kind of trap
+  the `whisperParams` plumbing hit on the Rust side earlier in
+  0.12.x. With this fix the field flows all the way through to
+  Swift / Kotlin and on to the actual HTTP download.
+
+### Changed
+- App version unified to `0.13.0` across `package.json`,
+  `src-tauri/Cargo.toml`, and `src-tauri/tauri.conf.json` (these
+  had drifted across 0.12.6/0.12.8 during the Android-only patch
+  releases — now back in sync).
+
+## [0.12.8] - 2026-05-15
+
+Android-only rebuild on top of 0.12.6/0.12.7's content. Fixes two
+Play Console warnings that surfaced when the new whisper.cpp JNI lib
+landed: a 16 KB page-size compatibility gap, and missing native
+debug symbols metadata in the AAB.
+
+### Fixed
+- 16 KB page size compatibility for `libwhisper-jni.so`. The CMake
+  build (NDK 28 + AGP 8.11) was producing 4 KB-aligned segments
+  while every other native lib in the AAB (Rust `libcorpan_lib.so`
+  across all four ABIs, NDK `libc++_shared.so`) was correctly
+  16 KB-aligned via the rustflags block in
+  `src-tauri/.cargo/config.toml` from 0.7.8. Added matching
+  linker flags to the plugin's CMakeLists.txt
+  (`target_link_options ... -Wl,-z,max-page-size=16384`,
+  `-Wl,-z,common-page-size=16384`). On Pixel 9 / Android 15+
+  16 KB hardware this avoids the bionic 4 KB-emulation shim
+  (15-30% slower startup, ~5% more power).
+- Native debug symbols actually reach Play Console. AGP release
+  config in `gen/android/app/build.gradle.kts` switched from
+  `debugSymbolLevel = "FULL"` to `"SYMBOL_TABLE"` after observing
+  on 0.12.6 and 0.12.7 that FULL left the AAB's
+  `BUNDLE-METADATA/com.android.tools.build.debugsymbols/`
+  directory empty under AGP 8.11 + NDK 28 + the universal flavor.
+  SYMBOL_TABLE is the format Play actually uses for crash
+  symbolication; both formats clear the "you've not uploaded
+  debug symbols" warning. Also added a defensive
+  `packaging { jniLibs { keepDebugSymbols.clear() } }` to the
+  release block so AGP's strip task can actually strip.
+
+### Changed
+- Plugin `tauri-plugin-stt` 0.3.0 → 0.3.1 (16 KB fix + carries
+  the symbols work from 0.3.0's incomplete release notes).
+
 ## [0.12.6] - 2026-05-13
 
 ### Added

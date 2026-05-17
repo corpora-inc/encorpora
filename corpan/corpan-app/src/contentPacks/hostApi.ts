@@ -6,6 +6,7 @@ import type {
   HostApi,
   PackDbQuery,
   SttApi,
+  SttAudioLevelEvent,
   SttErrorCode,
   SttInstallProgress,
   SttListInstalledResult,
@@ -285,7 +286,10 @@ export const createHostApi = (packId?: string): HostApi => {
           installed: boolean
           model: string
           alreadyInstalled: boolean
-        }>("plugin:stt|install_model", { model: opts.model })
+        }>("plugin:stt|install_model", {
+          model: opts.model,
+          downloadUrl: opts.downloadUrl,
+        })
       } catch (error) {
         throw sttRejectionToError(error)
       } finally {
@@ -318,6 +322,37 @@ export const createHostApi = (packId?: string): HostApi => {
       } catch (error) {
         console.error("[stt] unload error:", error)
         throw sttRejectionToError(error)
+      }
+    },
+    releaseAudio: async () => {
+      // Best-effort — pack-close is the only caller and there's no
+      // useful recovery if the bridge fails. Swallow errors and log;
+      // the worst case (mic indicator stuck on) is still better than
+      // crashing the dispose path.
+      try {
+        await invoke("plugin:stt|release_audio")
+      } catch (error) {
+        console.error("[stt] releaseAudio error:", error)
+      }
+    },
+    subscribeAudioLevel: async (callback) => {
+      const handle = await addPluginListener<SttAudioLevelEvent>(
+        "stt",
+        "audio_level",
+        (event) => {
+          try {
+            callback(event)
+          } catch (error) {
+            console.error("[stt] audio_level handler threw:", error)
+          }
+        },
+      )
+      return () => {
+        try {
+          handle.unregister()
+        } catch (error) {
+          console.error("[stt] unregister audio_level failed:", error)
+        }
       }
     },
   }

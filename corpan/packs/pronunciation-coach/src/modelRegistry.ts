@@ -15,7 +15,26 @@ export type ModelVariant = {
   id: string
   folder: string
   label: string
+  /**
+   * One- or two-sentence voice tagline: punchy, honest, no jargon.
+   * The "what is this, in plain English" line that goes above the
+   * pros/cons. Keep specific technical detail (quantization names,
+   * layer counts) OUT of here — those belong in `pros`/`cons` or
+   * the rendered tech-id footer.
+   */
   shortDesc: string
+  /**
+   * At-a-glance positive points. 2–4 short bullets. Plain language
+   * a parent picking up the app can parse without context, but
+   * still concrete enough that a Whisper expert can confirm.
+   */
+  pros: string[]
+  /**
+   * At-a-glance trade-offs. Same shape and length rules as `pros`.
+   * Honest. If a model is meaningfully worse for some use case,
+   * say so; that's how the user picks the right one.
+   */
+  cons: string[]
   approxSizeMB: number
   /**
    * If no install exists yet, this entry is suggested as the default
@@ -35,6 +54,14 @@ export type ModelVariant = {
    * Medium (547 MB) fits; Large variants (626/632/1600 MB) do not.
    */
   requiresIpad?: boolean
+  /**
+   * Optional explicit download URL. When set, overrides the default
+   * `https://huggingface.co/ggerganov/whisper.cpp/...` derivation.
+   * Used for community / self-quantized models hosted in our own
+   * S3 — e.g. the Large v3 q8 we quantize from fp16 ourselves
+   * because ggerganov never published one.
+   */
+  downloadUrl?: string
 }
 
 /// Cached per-app jetsam budget in MB, populated once at boot via
@@ -151,17 +178,25 @@ export const hasLargeMemoryBudget = (): boolean => {
 //   -q8_0             8-bit quantization (closer to fp16 quality, larger)
 //   -turbo            distilled large-v3 with smaller decoder (Whisper "turbo")
 export const MODELS: ReadonlyArray<ModelVariant> = [
-  // Tiny — the canonical OpenAI Whisper-tiny via whisper.cpp's
-  // ggml-tiny.bin. Surprisingly capable on simple Spanish/French/etc.
-  // but per-token confidence is intrinsically lower than larger
-  // models, so the acoustic ramp is calibrated softer for this tier
-  // (see STTPlugin.swift `pickAcousticRamp`).
+  // Tiny — canonical OpenAI Whisper-tiny via whisper.cpp's
+  // ggml-tiny.bin. Per-token confidence is intrinsically lower than
+  // the bigger models, so the acoustic ramp is calibrated softer
+  // for this tier (see STTPlugin.swift `pickAcousticRamp`).
   {
     id: "tiny_proof",
     folder: "ggml-tiny.bin",
     label: "Tiny",
     shortDesc:
-      "Tiny is, honestly, kind of terrible. You say 'good morning' and Tiny writes down 'good warning'. Some languages it technically supports, in the sense that it returns words. Whether those words match the ones you said is between you and Tiny. Free, fast, occasionally hilarious. Maybe start here so you have something to compare the bigger ones to.",
+      "Tiny is, honestly, kind of terrible. You say 'good morning,' Tiny writes 'good warning.' Mostly useful as the baseline you compare bigger models against.",
+    pros: [
+      "Tiniest download",
+      "Fast on every device",
+      "Works offline like everything here",
+    ],
+    cons: [
+      "Frequently wrong on real sentences",
+      "Especially weak on non-Latin scripts",
+    ],
     approxSizeMB: 75,
     defaultForFreshInstall: true,
   },
@@ -173,7 +208,15 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-small.bin",
     label: "Small",
     shortDesc:
-      "The first one that mostly works. Sometimes it spectacularly doesn't and we have no idea why — it's a 244M-parameter neural network, you'd have to ask it. The boring, reasonable choice: roughly the smallest thing that holds its own across all 51 languages without sounding drunk.",
+      "First model that genuinely works for everyday Spanish, French, German, and friends. Boring, reasonable choice for Latin-script languages.",
+    pros: [
+      "Solid for most European languages",
+      "Modest size and RAM use",
+    ],
+    cons: [
+      "Less reliable than the Larges",
+      "Drifts on harder or longer sentences",
+    ],
     approxSizeMB: 465,
     defaultForFreshInstall: false,
   },
@@ -184,60 +227,135 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo-q5_0.bin",
     label: "Large Turbo q5",
     shortDesc:
-      "The smallest 'Large' — same Large brain as the bigger ones, weights crushed down to 5 bits to fit in 547 MB. Sometimes the crush works fine; sometimes Whisper invents pronunciations no human has ever produced. Quick on iOS. Surprisingly slow on Android, for unloveable reasons involving CPU instruction sets and 5-bit math. If you're on Android and want a Large, the q8 below is probably the one you want instead.",
+      "The smallest 'Large.' Whisper's speedy distilled decoder, weights crushed to 5 bits. Snappy on iPhone.",
+    pros: [
+      "Smallest of the Large family",
+      "Fast on iOS",
+    ],
+    cons: [
+      "Slow on Android",
+      "Distilled decoder is weaker on Telugu / Tamil / other non-Latin scripts",
+    ],
     approxSizeMB: 547,
     defaultForFreshInstall: false,
   },
   // Large Turbo q8 — same distillation, lighter quantization.
-  // (ggerganov never published a q8 of the full-decoder large-v3,
-  // only of the turbo distillation — the header comment explains
-  // why we don't ship the full-fp16 .bin.)
   {
     id: "large_q8",
     folder: "ggml-large-v3-turbo-q8_0.bin",
     label: "Large Turbo q8",
     shortDesc:
-      "Same Large brain, slightly less aggressive crush — 8 bits instead of 5, which is what your phone's CPU likes. About 290 MB bigger than Turbo q5; on Android, also about 2.5× faster. Currently the sweet-spot Large for Android, and a solid pick on iOS too. The one to grab if you don't want to think about it.",
+      "Same Turbo distillation as q5, but at 8-bit precision — math your phone's CPU prefers. Sweet spot for Android.",
+    pros: [
+      "~2.5× faster than q5 on Android",
+      "Better quality than q5",
+      "Solid pick on iOS too",
+    ],
+    cons: [
+      "Bigger download than q5",
+      "Same Turbo weakness on non-Latin scripts",
+    ],
     approxSizeMB: 834,
     defaultForFreshInstall: false,
   },
   // Large q5 — full-decoder large-v3 with 5-bit quantization. The
   // standard Apple Silicon Large ship. Id stays `large_qlora` for
   // localStorage compat with users from the broken-Large-FP16 era.
+  // STAR PICK for Indic / non-Latin-script languages — confirmed
+  // live 2026-05-16 on iPad Telugu testing: keeps the script picker
+  // honest where Turbo wanders into Bengali / Latin / Amharic.
   {
     id: "large_qlora",
     folder: "ggml-large-v3-q5_0.bin",
     label: "Large q5",
     shortDesc:
-      "The full-decoder Large, weights compressed to 5 bits. The Turbo variants got their decoder trimmed for speed; this one keeps the original. Sometimes catches nuance the Turbo distillation lost — especially on languages Whisper's bigger-is-better training quietly got worse at. Costs you ~1 GB of disk, plus all the Android q5-slowness drama. iOS users, go nuts. Android users: probably skip in favour of Turbo q8 unless you specifically know your language is one that needs the full decoder.",
+      "Full Whisper Large brain — no Turbo distillation — compressed to 5 bits. Best in our testing for Telugu, Tamil, Bengali, and other non-Latin-script languages.",
+    pros: [
+      "Best for Indic and other non-Latin-script languages",
+      "Keeps the full 32-layer text decoder",
+      "Honest output in the right script",
+    ],
+    cons: [
+      "~1 GB download",
+      "Slower than Turbo on both platforms",
+    ],
     approxSizeMB: 1031,
     defaultForFreshInstall: false,
   },
   // Full Weight Medium — canonical OpenAI Whisper-medium, no
   // quantization. Smaller architecture (769M params) than the
-  // Large family (1.55B), but unquantized. Kept in the lineup
-  // because the Large turbo distillation skewed English-heavy in
-  // training; some users' languages may land better here.
+  // Large family (1.55B), but unquantized.
   {
     id: "medium",
     folder: "ggml-medium.bin",
     label: "Full Weight Medium",
     shortDesc:
-      "An older, smaller Whisper architecture (769M params, vs ~1.55B for Large), but with zero compression — every weight at native 16-bit precision. 1.46 GB download for a model that's not the biggest. The Larges are usually better. BUT: Whisper's later generations were tuned more aggressively on English-heavy data, and if your target language is one Whisper-large quietly got worse at, Medium can pleasantly surprise you. Or not. We're all learning here.",
+      "Older Whisper architecture at full precision (no compression). Wins occasionally on languages later models quietly got worse at. Usually outdone by Large q5.",
+    pros: [
+      "Every weight at native fp16 precision",
+      "Occasionally surprises on niche languages",
+    ],
+    cons: [
+      "Bigger download than Large q5 for usually less quality",
+      "Older architecture",
+    ],
     approxSizeMB: 1463,
     defaultForFreshInstall: false,
   },
   // Full Weight Large Turbo — distilled large-v3, no quantization.
-  // Top of the on-device line. The full-decoder fp16 large-v3
-  // (~3 GB) crashes ggml-metal on Apple Silicon — see header.
+  // The full-decoder fp16 large-v3 (~3 GB) crashes ggml-metal on
+  // Apple Silicon — see header.
   {
     id: "large_max",
     folder: "ggml-large-v3-turbo.bin",
     label: "Full Weight Large Turbo",
     shortDesc:
-      "The whole brain, uncompressed. Distilled Large with every weight at full 16-bit precision — no quantization, no shortcuts. The transcription quality you actually came for, if your phone has the 1.5 GB of disk and the patience to download it. Hits both CPU and Metal's fp16 fast paths, so it's not even the slow option. This might be the coolest thing your phone runs all year. Or it might transcribe 'goldfish moon' three times in a row and you'll uninstall in disgust. On-device AI in 2026, in one card. 🤷",
+      "Whisper's speedy Turbo distillation at full 16-bit precision. Hits Metal's fp16 fast path on iPad, so it's quick despite the size.",
+    pros: [
+      "Fastest 'Large' on iPad (Metal fp16 fast path)",
+      "Top quality for Latin-script languages",
+    ],
+    cons: [
+      "1.5 GB download",
+      "Same Turbo weakness on Indic — Large q5 or q8 is better for those",
+    ],
     approxSizeMB: 1549,
     defaultForFreshInstall: false,
+  },
+  // Large q8 (self-quantized) — full-decoder large-v3 at 8-bit
+  // precision. ggerganov never published this one, so we generate
+  // it ourselves from the fp16 source via whisper.cpp's `quantize`
+  // tool and host it on our own CDN. Runbook:
+  // `corpan/RUNBOOK_QUANTIZE_LARGE_Q8.md`.
+  //
+  // BIGGEST entry in the list (1580 MB). Kept last so the ordering
+  // remains size-ascending. Star-marked because in our testing it's
+  // expected to be the new top pick for Indic / non-Latin-script
+  // languages where the Turbo variants flounder.
+  //
+  // SHA256 of the file at the URL below:
+  //   24bc434f372355688ab9a623077a63e5361a1c41f4d8d648977e39f9b060f09e
+  // Size: 1,656,538,283 bytes.
+  {
+    id: "large_q8_full",
+    folder: "ggml-large-v3-q8_0.bin",
+    label: "Large q8 ★",
+    shortDesc:
+      "The biggest, baddest model that still fits on iPad — full Whisper Large at 8-bit precision (we quantize this one ourselves from the original fp16, since upstream doesn't ship it). Should be the new best for Indic and other non-Latin-script languages.",
+    pros: [
+      "Higher precision than Large q5, same full 32-layer decoder",
+      "Expected best quality for Telugu, Tamil, Bengali, etc.",
+    ],
+    cons: [
+      "~1.6 GB download",
+      "Slower than Turbo and a bit slower than Large q5",
+      "Needs ~3 GB RAM headroom during first transcribe (iPad-class only)",
+    ],
+    approxSizeMB: 1580,
+    defaultForFreshInstall: false,
+    requiresIpad: true,
+    downloadUrl:
+      "https://d38iwc9748jekz.cloudfront.net/whisper-models/ggml-large-v3-q8_0.bin",
   },
 ]
 

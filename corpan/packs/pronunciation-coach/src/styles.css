@@ -150,7 +150,17 @@ body,
   align-items: center;
   gap: 10px;
   min-height: 36px;
+  /* Equal-weight side slots so the centered .pc-lang-badge sits at
+     true horizontal center regardless of streak/mode-button width
+     differences. flex: 1 1 0 makes the two slots take equal share
+     of the row's remaining width; the badge in the middle is then
+     mathematically centered by `justify-content: space-between`
+     on .pc-header. */
+  flex: 1 1 0;
+  min-width: 0;
 }
+.pc-header-left  { justify-content: flex-start; }
+.pc-header-right { justify-content: flex-end; }
 
 /* The "Pronunciation Coach" subtitle is gone from the header (the
    user's screen is the brand — no need to label it twice). The
@@ -165,8 +175,12 @@ body,
   opacity: 0.72;
 }
 
-/* Close X — matches the mode chip dimensions for visual rhythm. */
-.pc-close {
+/* Close X / Back ‹ — both match the mode chip dimensions (36×36)
+   for visual rhythm so left/center/right header items align on a
+   single baseline. `.pc-close` is kept for the renderUnavailable
+   error screen; `.pc-back` is the normal practice header. */
+.pc-close,
+.pc-back {
   appearance: none;
   border: 1px solid var(--pc-border);
   background: var(--pc-card);
@@ -177,15 +191,21 @@ body,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
-  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+  /* Optical-center the chevron glyph — the `‹` character has its
+     visible bounds biased to the right because of its kerning. */
+  padding-right: 2px;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease, color 120ms ease;
 }
-.pc-close:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); }
-.pc-close:active { transform: scale(0.92); }
+.pc-close { font-size: 20px; padding-right: 0; }
+.pc-close:hover,
+.pc-back:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-close:active,
+.pc-back:active { transform: scale(0.92); }
 
 /* ---- Mode chip — icon-only, communicates state via fill ----
    Standard: outlined neutral (the default speech model is the
@@ -517,6 +537,18 @@ body,
   font-size: 13px;
   color: var(--pc-muted);
   font-weight: 500;
+  /* Lock the label to a single line so changing the text (Loading…,
+     Tap to speak, Recording…, Scoring…, Network needed…) can never
+     wrap and push the mic up the screen. The user explicitly
+     called this out: the mic must not move regardless of label
+     content or surrounding state. */
+  min-height: 18px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(420px, 90vw);
+  text-align: center;
 }
 
 /* ---- Swipe hint ---- */
@@ -846,8 +878,23 @@ body,
   font-size: 14px;
   text-align: center;
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0;
+  /* Float above the mic stage instead of contributing to layout —
+     showing/hiding an error message must NOT shift the mic. The
+     parent `.pc-stage` gets `position: relative` for this anchor. */
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  background: var(--pc-bg);
+  border: 1px solid rgba(220, 38, 38, 0.30);
+  border-radius: 10px;
+  pointer-events: auto;
+  z-index: 5;
 }
+.pc-error[hidden] { display: none; }
+.pc-stage { position: relative; }
 
 .pc-footer {
   font-size: 11px;
@@ -1075,6 +1122,56 @@ body,
   color: var(--pc-fg);
   opacity: 0.85;
 }
+
+/* Pros / Cons block — two columns on wider screens, stacked on phones.
+   At-a-glance bullets so both a parent and a Whisper expert can scan
+   the trade-offs without parsing the prose tagline above. */
+.pc-setup-card-procon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-top: 4px;
+}
+.pc-setup-card-pros,
+.pc-setup-card-cons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pc-setup-card-pros li,
+.pc-setup-card-cons li {
+  font-size: 13px;
+  line-height: 1.4;
+  padding-left: 18px;
+  position: relative;
+  color: var(--pc-fg);
+}
+.pc-setup-card-pros li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--pc-good);
+  font-weight: 700;
+}
+.pc-setup-card-cons li::before {
+  content: "−";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--pc-bad);
+  font-weight: 700;
+}
+@media (max-width: 480px) {
+  .pc-setup-card-procon {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
 .pc-setup-card-techid {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 11px;
@@ -1236,3 +1333,1196 @@ body,
   .pc-card-above { padding-bottom: 8px; }
   .pc-card-below { padding-top: 8px; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   Language badge — small uppercase code rendered above the target
+   phrase inside the card. Doubles as the long-press anchor for the
+   Whisper tuner (see whisperTunerUI.ts).
+   ════════════════════════════════════════════════════════════════════ */
+.pc-lang-badge {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--pc-muted);
+  border: 1px solid var(--pc-border);
+  border-radius: 999px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  padding: 6px 18px;
+  margin: 0;
+  min-height: 32px;
+  min-width: 56px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease, transform 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+  flex: 0 0 auto;
+}
+.pc-lang-badge[hidden] { display: none; }
+.pc-lang-badge:hover {
+  color: var(--pc-fg);
+  border-color: var(--pc-fg);
+}
+.pc-lang-badge:active {
+  transform: scale(0.94);
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Whisper tuner — bottom-sheet developer surface.
+   Reachable via long-press on .pc-lang-badge. Live-applies to
+   localStorage; the next startSession reads fresh params via
+   `mergeForLang(lang)`. Owned by whisperTunerUI.ts.
+   ════════════════════════════════════════════════════════════════════ */
+
+.pc-tuner-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* above host overlay (~1100) and pc-overlay (>1000) */
+  pointer-events: none;
+}
+
+.pc-tuner-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 16, 0);
+  transition: background 220ms ease;
+  pointer-events: auto;
+}
+.pc-tuner-root.open .pc-tuner-backdrop {
+  background: rgba(8, 8, 16, 0.55);
+}
+
+.pc-tuner-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 88vh;
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  pointer-events: auto;
+  overflow: hidden;
+}
+.pc-tuner-root.open .pc-tuner-sheet {
+  transform: translateY(0);
+}
+
+/* Outer hit area — generous 44 px tall band that catches taps and
+   future drag gestures even when the user doesn't land precisely on
+   the visible 4 px pill. Mirrors `packs/shared/ui/commandDrawer.css`'s
+   `.command-drawer-handle` (36 px there; ours is bumped to 44 px for
+   thumb-friendliness on iPad). Visible bar lives inside as a child
+   so the band can stay roomy without the pill looking heavy. */
+.pc-tuner-handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 44px;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.pc-tuner-handle:active { cursor: grabbing; }
+.pc-tuner-handle-bar {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--pc-border);
+  transition: background 140ms ease;
+}
+.pc-tuner-handle:hover .pc-tuner-handle-bar,
+.pc-tuner-handle:active .pc-tuner-handle-bar {
+  background: var(--pc-muted);
+}
+
+.pc-tuner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 18px 14px;
+  border-bottom: 1px solid var(--pc-border);
+  flex: 0 0 auto;
+}
+
+.pc-tuner-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.pc-tuner-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+.pc-tuner-lang {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pc-accent);
+  letter-spacing: 0.04em;
+}
+
+.pc-tuner-close {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.pc-tuner-close:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-tuner-close:active { transform: scale(0.94); }
+
+.pc-tuner-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 14px 18px 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pc-tuner-section + .pc-tuner-section {
+  margin-top: 18px;
+}
+.pc-tuner-section-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.pc-tuner-row {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--pc-border);
+}
+.pc-tuner-row:last-child { border-bottom: 0; }
+
+.pc-tuner-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.pc-tuner-row-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pc-fg);
+}
+
+.pc-tuner-num {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 84px;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pc-fg);
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.pc-tuner-num:focus {
+  outline: none;
+  border-color: var(--pc-accent);
+  box-shadow: 0 0 0 3px var(--pc-accent-soft);
+}
+
+.pc-tuner-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 26px;
+  background: transparent;
+  margin: 4px 0 2px;
+  cursor: pointer;
+}
+.pc-tuner-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--pc-border);
+}
+.pc-tuner-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--pc-border);
+}
+.pc-tuner-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pc-accent);
+  border: 3px solid var(--pc-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  margin-top: -9px;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+.pc-tuner-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pc-accent);
+  border: 3px solid var(--pc-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.pc-tuner-slider:active::-webkit-slider-thumb { transform: scale(1.1); }
+
+.pc-tuner-row-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--pc-muted);
+  margin-top: 6px;
+}
+.pc-tuner-row-trail b { color: var(--pc-fg); font-weight: 600; }
+.pc-tuner-sep { opacity: 0.5; }
+.pc-tuner-modified {
+  color: var(--pc-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--pc-accent-soft);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.pc-tuner-help {
+  font-size: 12px;
+  color: var(--pc-muted);
+  line-height: 1.42;
+  margin: 6px 0 0;
+}
+
+.pc-tuner-row-bool .pc-tuner-row-head { margin-bottom: 0; }
+
+/* Text rows (initial_prompt). Textarea sits below the label, full
+   width of the sheet body, monospace-leaning to honour the
+   developer-tool aesthetic while still rendering Indic script
+   glyphs at a readable size. */
+.pc-tuner-text {
+  width: 100%;
+  min-height: 56px;
+  resize: vertical;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--pc-fg);
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-top: 4px;
+  /* Keep textarea readable in dark mode; placeholder color follows
+     the muted token. */
+}
+.pc-tuner-text::placeholder { color: var(--pc-muted); opacity: 0.7; }
+.pc-tuner-text:focus {
+  outline: none;
+  border-color: var(--pc-accent);
+  box-shadow: 0 0 0 3px var(--pc-accent-soft);
+}
+
+.pc-tuner-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  cursor: pointer;
+}
+.pc-tuner-switch input { display: none; }
+.pc-tuner-switch-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--pc-border);
+  border-radius: 999px;
+  transition: background 180ms ease;
+}
+.pc-tuner-switch-slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--pc-card);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.pc-tuner-switch input:checked + .pc-tuner-switch-slider {
+  background: var(--pc-accent);
+}
+.pc-tuner-switch input:checked + .pc-tuner-switch-slider::after {
+  transform: translateX(20px);
+}
+
+.pc-tuner-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 18px 6px;
+  border-top: 1px solid var(--pc-border);
+  flex: 0 0 auto;
+  align-items: center;
+  position: relative;
+}
+.pc-tuner-btn {
+  appearance: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+}
+.pc-tuner-btn:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-tuner-btn:active { transform: scale(0.96); }
+.pc-tuner-btn.primary {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+  color: var(--pc-card);
+  margin-left: auto;
+}
+.pc-tuner-btn.primary:hover {
+  background: var(--pc-accent-hover);
+  border-color: var(--pc-accent-hover);
+  color: var(--pc-card);
+}
+.pc-tuner-btn.danger {
+  color: var(--pc-bad);
+  border-color: rgba(220, 38, 38, 0.30);
+}
+.pc-tuner-btn.danger:hover {
+  background: rgba(220, 38, 38, 0.12);
+  border-color: var(--pc-bad);
+  color: var(--pc-bad);
+}
+
+.pc-tuner-flash {
+  position: absolute;
+  left: 18px;
+  bottom: calc(100% + 4px);
+  background: var(--pc-fg);
+  color: var(--pc-bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  pointer-events: none;
+  animation: pc-tuner-flash-in 200ms ease both;
+}
+@keyframes pc-tuner-flash-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .pc-tuner-head { padding: 4px 14px 12px; }
+  .pc-tuner-body { padding: 12px 14px 4px; }
+  .pc-tuner-foot { padding: 12px 14px 4px; }
+  .pc-tuner-lang { font-size: 18px; }
+  .pc-tuner-row-label { font-size: 12px; }
+  .pc-tuner-help { font-size: 11px; }
+  .pc-tuner-btn { font-size: 12px; padding: 8px 12px; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Parlometron — the rebranded pack's mode picker, multiplayer lobby /
+   round / results screens. The .pc-pm-* namespace is reserved for the
+   new flow; the existing .pc-* practice-mode classes are untouched.
+   Visual language matches: same accent color, same border radii,
+   same monospaced eyebrows; multi mode adds a touch of theatre via
+   bigger phrase typography and table-based scoreboards.
+   ════════════════════════════════════════════════════════════════════ */
+
+.pc-pm-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 14px)
+    calc(env(safe-area-inset-right, 0px) + 18px)
+    calc(env(safe-area-inset-bottom, 0px) + 14px)
+    calc(env(safe-area-inset-left, 0px) + 18px);
+  background: var(--pc-bg);
+  color: var(--pc-fg);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Header band shared by lobby / round / results / game-over.
+   Two stacked rows so the X / headline / pagination all live on a
+   single visual line (everything single-line, naturally vertically
+   centered) while the eyebrow sits cleanly above. Previous flat
+   layout had the X (36×36 round button) flanking a two-line title
+   block whose optical centerline was biased toward the bolded
+   headline — that's why the X looked "too high." */
+.pc-pm-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
+}
+.pc-pm-head-eyebrow-row {
+  text-align: center;
+  /* Match the action row's horizontal inset so the eyebrow is
+     visually under the headline (not directly under X/pagination)
+     and reads as part of the title block. */
+  padding: 0 4px;
+}
+.pc-pm-head-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+/* Mirror solo's `.pc-back` exactly so the back chip in lobby /
+   round / between-rounds screens lines up with the practice
+   header's `‹` button on a screen cross-fade. */
+.pc-pm-back {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  padding-right: 2px;  /* optical-center the `‹` glyph */
+  cursor: pointer;
+  font-family: inherit;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, transform 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.pc-pm-back:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-pm-back:active { transform: scale(0.94); }
+.pc-pm-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  line-height: 1.2;
+}
+.pc-pm-headline {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--pc-fg);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  /* Truncate if absurdly long — keeps the row from wrapping and
+     breaking the single-line alignment with X / pagination. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pc-pm-head-spacer {
+  width: 36px;
+  flex: 0 0 auto;
+}
+.pc-pm-turn-indicator {
+  width: auto;
+  min-width: 36px;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--pc-muted);
+  line-height: 1.2;
+  flex: 0 0 auto;
+}
+/* Game-over screen has no X / pagination on the header — just the
+   eyebrow + winner headline. Drop the action-row constraints so the
+   big celebratory headline can breathe. */
+.pc-pm-gameover-head .pc-pm-head-action-row {
+  justify-content: center;
+}
+.pc-pm-gameover-head .pc-pm-headline {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+/* ─── Picker ──────────────────────────────────────────────────── */
+/* Center brand + cards + tagline as a single stack on the screen,
+   instead of pinning the brand to the top and the tagline to the
+   bottom with the body stretching between. The cards now visually
+   sit at screen-vertical-center next to the brand, rather than
+   biased toward the middle of the "between-head-and-foot" region. */
+/* `.pc-pm-root` is already `position: absolute; inset: 0`, so
+   don't add `position: relative` here — that would override
+   it and collapse the picker to its natural content height,
+   leaving the bottom of the screen blank. The close X uses
+   `.pc-pm-root` itself as its positioning context. */
+.pc-pm-picker { justify-content: center; gap: 6px; }
+/* Close X — fires `corpan:exit` to the host, the same way
+   `dispatchExit` in game.ts does. Absolute-positioned at the
+   top-right inside the safe-area so the centered brand stack
+   isn't pushed off-axis. */
+.pc-pm-picker-close {
+  position: absolute;
+  /* Top inset matches solo's `.pc-root` padding-top (safe-area + 14)
+     so the chip sits at the same screen-y as solo's mode chip. The
+     extra `(36-14)/2 = 11` lines up the CENTER of this 36 px chip
+     with the center of solo's 36 px `.pc-mode` chip inside its
+     `min-height: 36` header — i.e. picker's × and solo's ✦ are at
+     the same y when you cross-fade between screens. */
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  right: calc(env(safe-area-inset-right, 0px) + 18px);
+  z-index: 10;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+.pc-pm-picker-close:hover {
+  background: var(--pc-accent-soft);
+  border-color: var(--pc-accent);
+  color: var(--pc-accent);
+}
+.pc-pm-picker-close:active { transform: scale(0.94); }
+.pc-pm-picker-head {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 0 14px;
+}
+.pc-pm-brand {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(34px, 9vw, 56px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--pc-accent);
+  margin: 0;
+  line-height: 1.05;
+}
+.pc-pm-brand-sub {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 10px 0 0;
+}
+.pc-pm-picker-body {
+  /* Vertical stack of cards. Natural-height — the picker's flex
+     container centers the head + body + foot as a group on the
+     screen, so this body doesn't need to stretch. */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px 0;
+  /* Cap width on big screens — don't let cards become full-width
+     banners on iPad landscape. */
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.pc-pm-mode-card {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px 22px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 18px;
+  box-shadow: var(--pc-shadow);
+  color: var(--pc-fg);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  /* Natural-height; never stretches to fill the body. */
+  flex: 0 0 auto;
+  width: 100%;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+.pc-pm-mode-card:hover {
+  border-color: var(--pc-accent);
+  background: var(--pc-accent-soft);
+}
+.pc-pm-mode-card:active { transform: scale(0.985); }
+.pc-pm-mode-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--pc-fg);
+}
+.pc-pm-mode-sub {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--pc-muted);
+}
+.pc-pm-picker-foot {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 14px 0 0;
+}
+.pc-pm-picker-tagline {
+  font-size: 13px;
+  color: var(--pc-muted);
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .pc-pm-mode-card { padding: 16px 18px; }
+  .pc-pm-brand { font-size: 36px; }
+}
+
+/* ─── Lobby ───────────────────────────────────────────────────── */
+.pc-pm-lobby .pc-pm-section { margin-bottom: 22px; }
+.pc-pm-section-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.pc-pm-roster {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pc-pm-roster-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  padding: 8px 10px 8px 14px;
+}
+.pc-pm-roster-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--pc-muted);
+  font-weight: 700;
+  min-width: 16px;
+}
+.pc-pm-roster-name {
+  flex: 1 1 0;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--pc-fg);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 4px;
+  min-width: 0;
+}
+.pc-pm-roster-name:focus { outline: none; }
+.pc-pm-roster-remove {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1;
+}
+.pc-pm-roster-remove:hover:not([disabled]) {
+  color: var(--pc-bad);
+  border-color: var(--pc-bad);
+}
+.pc-pm-roster-remove[disabled] { opacity: 0.3; cursor: not-allowed; }
+.pc-pm-add {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px dashed var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-add:hover:not([disabled]) { color: var(--pc-accent); border-color: var(--pc-accent); }
+.pc-pm-add[disabled] { opacity: 0.4; cursor: not-allowed; }
+.pc-pm-target-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pc-pm-target {
+  appearance: none;
+  width: 56px;
+  height: 44px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-target.active {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+  color: var(--pc-card);
+}
+.pc-pm-target-suffix {
+  font-size: 14px;
+  color: var(--pc-muted);
+  margin-left: 4px;
+}
+.pc-pm-foot {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding-top: 12px;
+}
+.pc-pm-start {
+  appearance: none;
+  width: 100%;
+  /* Substantial primary-action button — felt undersized on iPad
+     in the original 14×18 spacing. min-height: 56 hits Apple HIG
+     comfortable tap target; padding bumps for breathing room. */
+  min-height: 56px;
+  padding: 18px 22px;
+  background: var(--pc-accent);
+  color: var(--pc-card);
+  border: 1px solid var(--pc-accent);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.pc-pm-start:hover { background: var(--pc-accent-hover); }
+.pc-pm-start:active { transform: scale(0.98); }
+.pc-pm-start[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* ─── Round ───────────────────────────────────────────────────── */
+/* Multi round screen reuses solo's `.pc-card` (3-row grid → stable
+   phrase) + `.pc-stage` (anchored-bottom mic) for layout. Only the
+   multi-specific chrome lives here: the tries dots, the pass chip,
+   and the pass-the-device splash. */
+.pc-pm-round { flex: 1 1 auto; }
+.pc-pm-deck {
+  /* `.pc-card` inside is `position: absolute; inset: 0` — needs a
+     positioned parent with size. */
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 240px;
+}
+/* Multi card uses `minmax(0, 1fr)` (not just `1fr`) for the
+   above/below rows so the slot tracks are hard-capped to 1fr
+   regardless of how tall the banner / transcript / pills get.
+   Without this, the implicit `min-content` minimum on a `1fr`
+   row lets content push the row taller — which then pushes the
+   phrase (auto row) out of the geometric center. Same effect as
+   the `min-height: 0` solo sets on its slot children, applied
+   one level up where it can't be defeated. */
+.pc-pm-card {
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.pc-pm-tries-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Reserve fixed vertical space so toggling dots doesn't shift
+     the mic above. */
+  min-height: 12px;
+}
+.pc-pm-try-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.pc-pm-try-dot.used {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+.pc-pm-pass-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Explicit height locks the chip's flex-item size whether or not
+     it's visible — combined with `.is-invisible` (visibility-only
+     hide) the slot above the mic is ALWAYS the same size, so the
+     mic never moves between states. No `[hidden]` attribute on
+     this element; we toggle visibility via the class. */
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  color: var(--pc-fg);
+  padding: 0 16px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease, opacity 140ms ease;
+}
+.pc-pm-pass-chip.is-invisible {
+  visibility: hidden;
+  pointer-events: none;
+}
+.pc-pm-pass-chip:hover {
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+/* Pass-the-device splash — full-screen overlay between players. */
+.pc-pm-splash {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 16, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  animation: pc-pm-splash-in 200ms ease both;
+}
+.pc-pm-splash[hidden] { display: none; }
+.pc-pm-splash-inner {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 92vw;
+}
+.pc-pm-splash-pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0;
+}
+.pc-pm-splash-name {
+  font-size: clamp(40px, 10vw, 64px);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--pc-accent);
+}
+.pc-pm-splash-go {
+  appearance: none;
+  margin-top: 10px;
+  padding: 14px 28px;
+  background: var(--pc-accent);
+  color: var(--pc-card);
+  border: 1px solid var(--pc-accent);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pc-pm-splash-go:active { transform: scale(0.97); }
+@keyframes pc-pm-splash-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Results (between-round + game-over) ────────────────────── */
+.pc-pm-results-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 0 20px;
+}
+.pc-pm-results-phrase {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.pc-pm-results-phrase-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+.pc-pm-results-phrase-text {
+  font-size: 16px;
+  color: var(--pc-fg);
+}
+.pc-pm-scoreboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pc-pm-scoreboard thead th {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--pc-border);
+}
+.pc-pm-scoreboard tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--pc-border);
+  vertical-align: top;
+}
+.pc-pm-scoreboard tbody tr:last-child td { border-bottom: 0; }
+.pc-pm-scoreboard tr.winner {
+  background: var(--pc-accent-soft);
+}
+.pc-pm-scoreboard tr.winner .pc-pm-score-name,
+.pc-pm-scoreboard tr.winner .pc-pm-score-pct,
+.pc-pm-scoreboard tr.winner .pc-pm-score-total {
+  color: var(--pc-accent);
+  font-weight: 700;
+}
+.pc-pm-score-rank { width: 28px; color: var(--pc-muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.pc-pm-score-name { font-weight: 600; }
+.pc-pm-score-pct { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; width: 64px; }
+.pc-pm-score-heard {
+  color: var(--pc-muted);
+  font-style: italic;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pc-pm-score-total { width: 60px; text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.pc-pm-results-foot {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  padding-top: 4px;
+}
+.pc-pm-results-foot .pc-pm-pass,
+.pc-pm-results-foot .pc-pm-start {
+  flex: 1 1 0;
+}
+.pc-pm-gameover-head { padding: 24px 0 6px; }
+.pc-pm-winner {
+  font-size: clamp(24px, 6vw, 36px);
+  color: var(--pc-accent);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* (The old `.pc-pm-floating-back` / `.pc-pm-practice-host` overlay
+   was removed once practice gained a real `‹` button in its own
+   header — `mountPractice` with `onClose` callback handles the
+   back-to-picker transition. No floating chrome needed.) */
+
+/* ─── Error state ─────────────────────────────────────────────── */
+.pc-pm-error {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+.pc-pm-error p {
+  color: var(--pc-muted);
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .pc-pm-mic { width: 96px; height: 96px; }
+  .pc-pm-mic-icon { font-size: 24px; }
+  .pc-pm-score-heard { max-width: 160px; }
+}
+
+/* ─── Confirm modal ──────────────────────────────────────────── */
+/* In-pack replacement for the broken `window.confirm`. Used by
+   `pmConfirm` in `multiplayer/confirm.ts`. Sits above everything
+   (z-index higher than the tuner sheet so a confirm shown over the
+   tuner reads correctly). */
+.pc-pm-confirm-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.pc-pm-confirm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 16, 0);
+  transition: background 200ms ease;
+  pointer-events: auto;
+}
+.pc-pm-confirm-root.open .pc-pm-confirm-backdrop {
+  background: rgba(8, 8, 16, 0.55);
+}
+.pc-pm-confirm-sheet {
+  position: relative;
+  width: min(420px, calc(100vw - 40px));
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  border: 1px solid var(--pc-border);
+  border-radius: 18px;
+  padding: 22px 22px 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  transform: translateY(8px) scale(0.97);
+  opacity: 0;
+  transition:
+    transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 200ms ease;
+}
+.pc-pm-confirm-root.open .pc-pm-confirm-sheet {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+.pc-pm-confirm-msg {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--pc-fg);
+}
+.pc-pm-confirm-foot {
+  display: flex;
+  gap: 10px;
+  justify-content: stretch;
+}
+.pc-pm-confirm-cancel,
+.pc-pm-confirm-go {
+  appearance: none;
+  flex: 1 1 0;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-confirm-cancel {
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  color: var(--pc-fg);
+}
+.pc-pm-confirm-cancel:hover {
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+.pc-pm-confirm-go {
+  background: var(--pc-accent);
+  border: 1px solid var(--pc-accent);
+  color: var(--pc-card);
+}
+.pc-pm-confirm-go:hover { background: var(--pc-accent-hover); border-color: var(--pc-accent-hover); }
+.pc-pm-confirm-go.danger {
+  background: var(--pc-bad);
+  border-color: var(--pc-bad);
+}
+.pc-pm-confirm-go.danger:hover {
+  background: rgba(220, 38, 38, 0.85);
+  border-color: rgba(220, 38, 38, 0.85);
+}
+.pc-pm-confirm-cancel:active,
+.pc-pm-confirm-go:active { transform: scale(0.97); }
+

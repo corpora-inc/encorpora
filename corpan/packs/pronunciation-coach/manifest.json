@@ -1,12 +1,12 @@
 {
   "id": "pronunciation_coach",
-  "name": "Pronunciation Coach",
-  "version": "0.5.0",
+  "name": "Parlometron",
+  "version": "0.6.0",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-05-12T06:22:05.144Z"
+  "devRevision": "2026-05-17T06:45:31.195Z"
 }
