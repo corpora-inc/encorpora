@@ -157,7 +157,14 @@ export type SttApi = {
    * `downloading | verifying | verified | failed`. Throws on failure.
    */
   installModel?: (
-    opts: { model: string },
+    opts: {
+      model: string
+      /** Optional override of the source URL. Used for models we host
+       *  ourselves on our own CDN (e.g. self-quantized Whisper Large
+       *  q8 ggerganov doesn't publish). When omitted the native
+       *  plugin defaults to the hardcoded HuggingFace base. */
+      downloadUrl?: string
+    },
     onProgress?: (event: SttInstallProgress) => void,
   ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
   /**
@@ -174,6 +181,34 @@ export type SttApi = {
    * `prepare()` is a load, not a download.
    */
   unload?: () => Promise<{ unloaded: boolean }>
+  /**
+   * Tear down the audio engine + audio session entirely. Distinct from
+   * `cancelSession`, which deliberately keeps the engine warm across
+   * back-to-back recordings inside one pack session. **Call this from
+   * the pack's `unmount`** — without it, on iOS the orange mic
+   * indicator stays on and `.duckOthers` keeps the rest of the app
+   * (and other apps) softer until the next process restart.
+   */
+  releaseAudio?: () => Promise<void>
+  /**
+   * Subscribes to a per-buffer audio-level stream emitted by the
+   * native plugin while a recording session is active. Fires at the
+   * platform's natural buffer cadence — ~11 Hz on iOS, ~8 Hz on
+   * Android. Pack JS uses this for client-side silence detection
+   * (auto-stop on quiet). Returns an unsubscribe function. Optional
+   * because older host builds don't ship it; packs should feature-
+   * detect.
+   */
+  subscribeAudioLevel?: (
+    callback: (event: SttAudioLevelEvent) => void,
+  ) => Promise<() => void>
+}
+
+export type SttAudioLevelEvent = {
+  /** RMS amplitude of the latest captured buffer, 0..1. */
+  rms: number
+  /** Milliseconds since the current session started. */
+  t: number
 }
 
 export type SttInstallProgress = {

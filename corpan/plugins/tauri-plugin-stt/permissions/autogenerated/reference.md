@@ -15,6 +15,7 @@ Default permissions for the STT plugin
 - `allow-validate-model`
 - `allow-list-installed`
 - `allow-unload`
+- `allow-release-audio`
 - `allow-register-listener`
 - `allow-remove-listener`
 
@@ -205,6 +206,32 @@ Enables the register_listener command without any pre-configured scope.
 <td>
 
 Denies the register_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:allow-release-audio`
+
+</td>
+<td>
+
+Enables the release_audio command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`stt:deny-release-audio`
+
+</td>
+<td>
+
+Denies the release_audio command without any pre-configured scope.
 
 </td>
 </tr>

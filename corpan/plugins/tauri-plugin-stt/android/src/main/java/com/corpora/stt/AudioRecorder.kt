@@ -41,6 +41,20 @@ class AudioRecorder {
     private var captured: ArrayList<Float> = ArrayList(TARGET_SAMPLE_RATE * 10)
 
     /**
+     * Called on the capture thread once per successful read while
+     * `recording` is true, ~8 Hz at 2048-frame reads. Receives the RMS
+     * over the chunk and the running sample count since the most
+     * recent `startRecording()` — the plugin uses this to forward an
+     * `audio_level` event to the WebView for client-side silence
+     * detection.
+     */
+    @Volatile
+    var onLevel: ((rms: Float, samplesSinceStart: Long) -> Unit)? = null
+
+    @Volatile
+    private var samplesSinceStart: Long = 0
+
+    /**
      * Build the AudioRecord and start the capture thread. AudioRecord
      * itself is configured at TARGET_SAMPLE_RATE so the OS does any
      * needed resampling for us — no AVAudioConverter equivalent
@@ -101,6 +115,27 @@ class AudioRecorder {
                     continue
                 }
                 if (!recording.get()) continue
+
+                // Per-buffer RMS for the pack-side silence detector.
+                // Cost is ~10 µs for 2048 floats. Computed outside the
+                // capture-buffer lock so the critical section stays
+                // identical to before this feature.
+                val cb = onLevel
+                if (cb != null) {
+                    var sum = 0.0
+                    for (i in 0 until n) {
+                        val v = readBuf[i]
+                        sum += v.toDouble() * v.toDouble()
+                    }
+                    val rms = kotlin.math.sqrt(sum / n).toFloat()
+                    samplesSinceStart += n
+                    try {
+                        cb(rms, samplesSinceStart)
+                    } catch (e: Throwable) {
+                        Log.e(TAG, "onLevel threw: ${e.message}", e)
+                    }
+                }
+
                 synchronized(this) {
                     val target = captured
                     target.ensureCapacity(target.size + n)
@@ -118,6 +153,7 @@ class AudioRecorder {
         synchronized(this) {
             captured = ArrayList(TARGET_SAMPLE_RATE * 10)
         }
+        samplesSinceStart = 0
         recording.set(true)
     }
 

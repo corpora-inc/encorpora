@@ -63,6 +63,11 @@ class PrepareArgs {
 class InstallArgs {
     var model: String? = null
     var onEvent: Channel? = null
+    /** Optional override of the source URL. Used for models we host
+     *  ourselves (community fine-tunes, self-quantized variants
+     *  ggerganov doesn't publish). When null, the install path falls
+     *  back to `HF_BASE + model`. */
+    var downloadUrl: String? = null
 }
 
 @InvokeArg
@@ -75,11 +80,42 @@ class WipeArgs {
     var model: String? = null
 }
 
+/**
+ * Per-call whisper.cpp param overrides sent by the pack. Mirrors the
+ * iOS `WhisperParamsArg` and the Rust `WhisperParams`. Field names
+ * match `whisper_full_params` in whisper.h.
+ *
+ * All fields are nullable; any unset field falls back to the JNI's
+ * library-default behavior. See `nativeFullTranscribe` for the
+ * sentinel convention used to thread these through JNI without
+ * boxed Java types.
+ */
+@InvokeArg
+class WhisperParamsArg {
+    var temperature: Float? = null
+    var temperature_inc: Float? = null
+    var entropy_thold: Float? = null
+    var logprob_thold: Float? = null
+    var no_speech_thold: Float? = null
+    var suppress_blank: Boolean? = null
+    var suppress_nst: Boolean? = null
+    var n_threads: Int? = null
+    /** Native-script primer fed to whisper.cpp as `initial_prompt`.
+     *  Up to ~224 tokens; biases the decoder's first generated tokens
+     *  toward the prompt's script and vocabulary. */
+    var initial_prompt: String? = null
+}
+
 @InvokeArg
 class StartSessionArgs {
     var sessionId: String = ""
     var language: String = ""
     var expectedText: String = ""
+    /** Optional per-call overrides for `whisper_full_params`.
+     *  Critical: same JSON-roundtrip gotcha as the Rust side — Gson
+     *  ignores fields not declared here, so this property must exist
+     *  for `whisperParams` to reach the native plugin. */
+    var whisperParams: WhisperParamsArg? = null
 }
 
 @InvokeArg
@@ -109,6 +145,9 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     @Volatile private var activeSessionId: String? = null
     @Volatile private var activeLanguage: String = ""
     @Volatile private var activeExpected: String = ""
+    /** Per-call whisper.cpp overrides supplied by the pack via
+     *  `startSession.whisperParams`. nil = no overrides this session. */
+    @Volatile private var activeWhisperParams: WhisperParamsArg? = null
     @Volatile private var sessionStartedAt: Long = 0L
 
     private val http: OkHttpClient by lazy {
@@ -268,7 +307,9 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val args = invoke.parseArgs(InstallArgs::class.java)
         val name = args.model ?: DEFAULT_MODEL
         val channel = args.onEvent
-        Log.i(TAG, "install requested: $name")
+        // Pack-supplied URL wins; otherwise fall back to HF base.
+        val sourceUrl = args.downloadUrl?.takeIf { it.isNotEmpty() } ?: (HF_BASE + name)
+        Log.i(TAG, "install requested: $name  url: $sourceUrl")
 
         if (validateModelInternal(name).isEmpty()) {
             channel?.send(installEvent(name, "verified", 1.0, null, null, null, null))
@@ -287,7 +328,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             channel?.send(installEvent(name, "downloading", 0.0, null, null, null, null))
             val dest = modelFile(name)
             try {
-                downloadFile(HF_BASE + name, dest) { completed, total, fraction ->
+                downloadFile(sourceUrl, dest) { completed, total, fraction ->
                     channel?.send(installEvent(name, "downloading", fraction, completed, total, null, null))
                     Log.i(TAG, "install progress $name bytes: $completed / $total fraction: ${"%.3f".format(fraction)}")
                 }
@@ -438,6 +479,21 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             try {
                 val r = AudioRecorder()
                 r.start()
+                // Forward per-buffer RMS to the WebView for client-side
+                // silence detection. The closure captures `this`
+                // (SttPlugin) — `recorder` is owned by the plugin so
+                // the ref cycle is fine (released when the plugin is
+                // torn down). Fires ~8 Hz only while recording.
+                r.onLevel = { rms, samples ->
+                    val payload = JSObject()
+                    payload.put("rms", rms.toDouble())
+                    payload.put("t", (samples * 1000L / AudioRecorder.TARGET_SAMPLE_RATE).toInt())
+                    try {
+                        trigger("audio_level", payload)
+                    } catch (e: Throwable) {
+                        Log.e(TAG, "trigger audio_level failed: ${e.message}", e)
+                    }
+                }
                 recorder = r
             } catch (e: Throwable) {
                 Log.e(TAG, "audio engine start failed: ${e.message}", e)
@@ -450,6 +506,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         activeSessionId = args.sessionId
         activeLanguage = args.language
         activeExpected = args.expectedText
+        activeWhisperParams = args.whisperParams
         sessionStartedAt = System.currentTimeMillis()
 
         Log.i(TAG, "session started ok: ${args.sessionId}")
@@ -473,8 +530,19 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val captured = rec.stopRecording()
         val language = activeLanguage
         val expected = activeExpected
+        val overrides = activeWhisperParams
         val startedAt = sessionStartedAt
         activeSessionId = null
+        activeWhisperParams = null
+        // Release the AudioRecord between sessions. Symmetric with
+        // iOS — we used to keep it warm to skip the ~hundreds-of-ms
+        // AudioRecord startup, but holding it open kept Android's
+        // mic indicator on and the foreground-service mic notification
+        // visible. The captured samples are already snapshotted into
+        // `captured` above, so inference is unaffected by tearing
+        // down the recorder now.
+        rec.release()
+        recorder = null
 
         val baseLang = Scoring.toBaseLang(language)
         if (!Scoring.supportedLanguages.contains(baseLang)) {
@@ -500,10 +568,12 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             val padded = FloatArray(LEADING_PAD_SAMPLES + captured.size)
             System.arraycopy(captured, 0, padded, LEADING_PAD_SAMPLES, captured.size)
 
-            val nThreads = WhisperCpuConfig.preferredThreadCount
-            Log.i(TAG, "transcribe nThreads=$nThreads samples=${padded.size}")
+            val nThreadsOverride = overrides?.n_threads?.takeIf { it > 0 }
+            val nThreads = nThreadsOverride ?: WhisperCpuConfig.preferredThreadCount
+            Log.i(TAG, "transcribe nThreads=$nThreads samples=${padded.size}" +
+                (if (overrides != null) " overrides=yes" else " overrides=(none)"))
             val rc = withContext(Dispatchers.Default) {
-                whisperCtx.transcribe(padded, baseLang, nThreads)
+                whisperCtx.transcribe(padded, baseLang, nThreads, overrides)
             }
             if (rc != 0) {
                 invoke.reject("Whisper transcribe failed (rc=$rc)", "TRANSCRIBE_FAILED", ex = null)
@@ -577,8 +647,30 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     @Command
     fun cancelSession(invoke: Invoke) {
         Log.i(TAG, "cancelSession")
+        // Same teardown as stopSession — release the recorder so the
+        // mic indicator disappears immediately.
         recorder?.cancelRecording()
+        recorder?.release()
+        recorder = null
         activeSessionId = null
+        activeWhisperParams = null
+        invoke.resolve()
+    }
+
+    /**
+     * Release the AudioRecord entirely. Called when the pack closes
+     * so Android stops showing the in-use mic indicator and frees
+     * the system audio resource. Symmetric with iOS `releaseAudio`,
+     * which tears down AVAudioEngine + AVAudioSession.
+     */
+    @Command
+    fun releaseAudio(invoke: Invoke) {
+        Log.i(TAG, "releaseAudio (pack closing — tearing down recorder)")
+        recorder?.cancelRecording()
+        recorder?.release()
+        recorder = null
+        activeSessionId = null
+        activeWhisperParams = null
         invoke.resolve()
     }
 

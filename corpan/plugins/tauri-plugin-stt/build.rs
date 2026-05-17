@@ -10,6 +10,11 @@ const COMMANDS: &[&str] = &[
     "validate_model",
     "list_installed",
     "unload",
+    // Tear down the audio engine + AVAudioSession entirely so the
+    // iOS mic indicator turns off and `.duckOthers` is released
+    // after the pack closes. Distinct from `cancel_session` (which
+    // keeps the engine warm for back-to-back recordings).
+    "release_audio",
     "register_listener",
     "remove_listener",
 ];

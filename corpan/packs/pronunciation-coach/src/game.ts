@@ -8,6 +8,12 @@ import {
   setDeviceMemoryBudget,
   variantExceedsBudget,
 } from "./modelRegistry"
+import { mergeForLang, mergeSilencePolicy } from "./whisperTuning"
+import { openTuner } from "./whisperTunerUI"
+import {
+  startSilenceWatcher,
+  type SilenceWatcherHandle,
+} from "./silenceWatcher"
 
 // Local STT API contract — host owns the canonical type, we only declare
 // what we need to call. Codes mirror the host's SttErrorCode union.
@@ -49,7 +55,7 @@ type SttStatus = {
   /** Total physical RAM on the device in MB. */
   physicalMemoryMB?: number | null
 }
-type SttWordTiming = {
+export type SttWordTiming = {
   word: string
   startMs: number
   endMs: number
@@ -85,6 +91,10 @@ type SttApi = {
     sessionId: string
     language: string
     expectedText: string
+    /** Per-call overrides applied on top of `whisper_full_default_params`
+     *  in the iOS plugin. Built from `mergeForLang(lang)`; see
+     *  `whisperTuning.ts`. Optional — empty/missing = library defaults. */
+    whisperParams?: import("./whisperTuning").WhisperParams
   }): Promise<SttStartResult>
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
@@ -95,11 +105,36 @@ type SttApi = {
     problems: string[]
   }>
   installModel?(
-    opts: { model: string },
+    opts: {
+      model: string
+      /** Optional override of the source URL. Used for models we
+       *  host ourselves on our own CDN (e.g. self-quantized
+       *  variants ggerganov doesn't publish). When omitted the
+       *  native plugin defaults to its hardcoded HuggingFace base. */
+      downloadUrl?: string
+    },
     onProgress?: (event: SttInstallProgress) => void
   ): Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
   listInstalled?(opts: { models: string[] }): Promise<SttListInstalledResult>
   unload?(): Promise<{ unloaded: boolean }>
+  /** Tear down the audio engine + audio session. Call this from the
+   *  pack's unmount path — without it, the iOS mic indicator stays
+   *  on and audio is `.duckOthers`-ed until the next process kill. */
+  releaseAudio?(): Promise<void>
+  /** Subscribe to per-buffer RMS events while a session is recording.
+   *  Fires at the platform's natural buffer cadence (~11 Hz iOS,
+   *  ~8 Hz Android). Used by `silenceWatcher.ts` for auto-stop.
+   *  Optional — older host builds don't ship it. */
+  subscribeAudioLevel?(
+    callback: (event: SttAudioLevelEvent) => void,
+  ): Promise<() => void>
+}
+
+export type SttAudioLevelEvent = {
+  /** RMS amplitude of the latest captured buffer, 0..1. */
+  rms: number
+  /** Milliseconds since the current session started. */
+  t: number
 }
 
 type SttInstallProgress = {
@@ -364,7 +399,7 @@ const LOW_RESOURCE_LANGS = new Set([
 // (when a base language is known) map number-words to their digit
 // form. Keeps every letter and combining mark (essential for Indic
 // scripts).
-const normalizeForCompare = (s: string, lang?: string): string => {
+export const normalizeForCompare = (s: string, lang?: string): string => {
   const base = s
     .normalize("NFC")
     .toLowerCase()
@@ -397,7 +432,7 @@ const normalizeForCompare = (s: string, lang?: string): string => {
 // language-aware segmentation we don't have.
 const CJK_RE =
   /[぀-ゟ゠-ヿ㐀-䶿一-鿿豈-﫿가-힯]/
-const tokenizeForPills = (text: string): string[] => {
+export const tokenizeForPills = (text: string): string[] => {
   const trimmed = text.trim()
   if (!trimmed) return []
   if (/\s/.test(trimmed)) return trimmed.split(/\s+/).filter(Boolean)
@@ -427,7 +462,7 @@ const tokenizeForPills = (text: string): string[] => {
 }
 
 // Codepoint-aware Levenshtein similarity in [0, 1].
-const charSimilarity = (a: string, b: string): number => {
+export const charSimilarity = (a: string, b: string): number => {
   const an = Array.from(a)
   const bn = Array.from(b)
   const m = an.length
@@ -452,7 +487,7 @@ const charSimilarity = (a: string, b: string): number => {
   return 1 - prev[n] / Math.max(m, n)
 }
 
-const mergeApostropheWords = (
+export const mergeApostropheWords = (
   words: SttWordTiming[]
 ): SttWordTiming[] => {
   if (!words || words.length === 0) return []
@@ -643,14 +678,39 @@ export type GameHandle = {
   unmount: () => void
 }
 
+/** Optional mount-time configuration for the practice mode. */
+export type MountGameOpts = {
+  /** Override the back/close button behavior. By default the
+   *  header's `‹` button fires `corpan:exit` and exits the pack.
+   *  Parlometron passes a function that returns to the mode picker
+   *  instead (so practice → ‹ → picker → × → fully exits). */
+  onClose?: () => void
+}
+
+/**
+ * Practice mode mount — the original single-player flow. Exported
+ * under two names: `mountGame` keeps existing callers (e.g.
+ * `main.ts`-era imports) working; `mountPractice` is the
+ * Parlometron-era name used by `parlometron.ts`'s mode router.
+ * Same function, same return contract.
+ */
 export const mountGame = (
   container: HTMLElement,
-  hostApi: HostApi
+  hostApi: HostApi,
+  opts?: MountGameOpts
 ): GameHandle => {
   const stt = (hostApi as unknown as { stt?: SttApi }).stt
 
   let disposed = false
   let activeSessionId: string | null = null
+  let silenceWatch: SilenceWatcherHandle | null = null
+
+  const stopSilenceWatch = () => {
+    if (silenceWatch) {
+      silenceWatch.stop()
+      silenceWatch = null
+    }
+  }
 
   // ---- Zoom block — disable pinch-zoom for the duration of the
   // pack's mount via viewport-meta override. The host's viewport
@@ -682,7 +742,7 @@ export const mountGame = (
 
   const renderUnavailable = (
     title = "Speech recognition isn't available on this device",
-    body = "Pronunciation Coach needs the on-device Whisper plugin and didn't find a working one here. Try updating the app, or this platform may not be supported yet."
+    body = "Parlometron needs the on-device Whisper plugin and didn't find a working one here. Try updating the app, or this platform may not be supported yet."
   ) => {
     container.innerHTML = `
       <div class="pc-root">
@@ -723,16 +783,23 @@ export const mountGame = (
     <div class="pc-root" id="pc-root">
       <div class="pc-header">
         <div class="pc-header-left">
-          <span class="pc-streak" id="pc-streak" hidden>🔥 <span id="pc-streak-n">0</span></span>
+          <button class="pc-back" id="pc-close" type="button"
+                  aria-label="Back to Parlometron picker">‹</button>
         </div>
+        <button class="pc-lang-badge" id="pc-lang-badge"
+                type="button"
+                data-pc-lang-badge
+                data-pc-lang=""
+                aria-label="Target language (long-press to tune Whisper)"
+                hidden>—</button>
         <div class="pc-header-right">
+          <span class="pc-streak" id="pc-streak" hidden>🔥 <span id="pc-streak-n">0</span></span>
           <button class="pc-mode" id="pc-mode" type="button"
                   aria-pressed="false"
                   aria-label="Switch speech model"
                   title="Speech model">
             <span class="pc-mode-glyph" aria-hidden="true">✦</span>
           </button>
-          <button class="pc-close" id="pc-close" type="button" aria-label="Close">×</button>
         </div>
       </div>
 
@@ -936,6 +1003,28 @@ export const mountGame = (
     </div>
   `
 
+  // The target-language badge lives in the header (`#pc-lang-badge`),
+  // not inside the card. One persistent element across phrase swaps,
+  // updated by `updateLangBadge` whenever currentPhrase changes.
+  // Long-press is wired via delegation on the container (see below).
+  const langBadgeEl = container.querySelector<HTMLButtonElement>("#pc-lang-badge")!
+  const updateLangBadge = (lang: string | null) => {
+    if (!lang) {
+      langBadgeEl.hidden = true
+      langBadgeEl.textContent = "—"
+      langBadgeEl.setAttribute("data-pc-lang", "")
+      return
+    }
+    const base = whisperLang(lang)
+    langBadgeEl.hidden = false
+    langBadgeEl.textContent = base.toUpperCase()
+    langBadgeEl.setAttribute("data-pc-lang", base)
+    langBadgeEl.setAttribute(
+      "aria-label",
+      `Target language ${base.toUpperCase()} — long-press to tune Whisper`
+    )
+  }
+
   const fillCard = (card: HTMLDivElement, phrase: LoadedPhrase) => {
     const cfg = hostApi.getStackConfig()
     const showRoman = !!cfg.showRomanization
@@ -952,6 +1041,7 @@ export const mountGame = (
       romanHtml,
       nativeHtml
     )
+    updateLangBadge(phrase.targetLang)
   }
 
   const renderEmptyCard = (
@@ -964,6 +1054,7 @@ export const mountGame = (
       "",
       sub ? `<p class="pc-native">${escapeHtml(sub)}</p>` : ""
     )
+    updateLangBadge(null)
   }
 
   const renderCurrentPhrase = () => {
@@ -1546,6 +1637,7 @@ export const mountGame = (
 
   // ---- Mic flow ----
   const cancelActiveSession = () => {
+    stopSilenceWatch()
     const sessionId = activeSessionId
     activeSessionId = null
     if (sessionId) {
@@ -1568,10 +1660,30 @@ export const mountGame = (
         sessionId,
         language: lang,
         expectedText: currentPhrase.target.text,
+        whisperParams: mergeForLang(lang),
       })
       if (disposed) return
       if (!res.started) {
         throw new Error("STT plugin reported started=false")
+      }
+      // Feature-detect the host's audio-level stream. Older host
+      // builds (≤0.13.x) won't have it; the pack still works with the
+      // manual stop button. The state machine + thresholds live in JS
+      // so we can ship new defaults per-language via pack updates.
+      const subscribe = stt.subscribeAudioLevel
+      if (subscribe) {
+        stopSilenceWatch()
+        const watchForSession = sessionId
+        silenceWatch = startSilenceWatcher(
+          (cb) => subscribe(cb),
+          mergeSilencePolicy(lang),
+          () => {
+            if (disposed) return
+            if (activeSessionId !== watchForSession) return
+            console.log("[pronunciation-coach] silence → stopRecording")
+            stopRecording()
+          },
+        )
       }
     } catch (err) {
       console.error("[pronunciation-coach] startSession failed:", err)
@@ -1610,6 +1722,7 @@ export const mountGame = (
   const prepareWithRecovery = tryPrepareOnce
 
   const stopRecording = async () => {
+    stopSilenceWatch()
     const sessionId = activeSessionId
     if (!sessionId) {
       setUiState("idle")
@@ -1682,7 +1795,12 @@ export const mountGame = (
 
   closeBtn.addEventListener("click", () => {
     cancelActiveSession()
-    dispatchExit()
+    // Caller (parlometron.ts) overrides the default exit so the
+    // header's `‹` returns to the mode picker instead of leaving
+    // the pack entirely. When mounted standalone (no opts), still
+    // fires the legacy `corpan:exit` event the host expects.
+    if (opts?.onClose) opts.onClose()
+    else dispatchExit()
   })
 
   // Re-prepare the saved-mode kit if it isn't currently loaded.
@@ -1733,7 +1851,7 @@ export const mountGame = (
     try {
       outcome = await runSetup({
         currentActive: activeForOverlay,
-        headline: "Pronunciation Coach · Models",
+        headline: "Parlometron · Models",
         sub: "These are large, experimental, cutting-edge AI speech models running entirely on your device — no servers, no internet, no privacy compromises. They are also, frankly, not as reliable as you might hope. The bigger ones might crash your phone. The smaller ones might transcribe 'good morning' as 'goldfish moon'. Any of them might surprise you in either direction. Welcome to on-device AI in 2026. Don't take the scoring too seriously. 🤷",
       })
     } finally {
@@ -2080,6 +2198,59 @@ export const mountGame = (
   }
   window.addEventListener("keydown", onKeyDown)
 
+  // ---- Long-press on the language badge → Whisper tuner ----
+  // The badge is a small uppercase base-language code rendered inside
+  // the card by `langBadgeHtmlFor()`. Long-press (700 ms, no drag)
+  // opens the per-language whisper-param tuner. Delegated on the pack
+  // container so it survives card swaps; cleaned up when unmount wipes
+  // container.innerHTML.
+  const LONG_PRESS_MS = 700
+  const LONG_PRESS_MOVE_PX = 8
+  let lpTimer: number | null = null
+  let lpStart: { x: number; y: number } | null = null
+  let lpTargetLang: string | null = null
+  const cancelLongPress = () => {
+    if (lpTimer !== null) {
+      window.clearTimeout(lpTimer)
+      lpTimer = null
+    }
+    lpStart = null
+    lpTargetLang = null
+  }
+  // Named handlers (not inline) so unmount can remove them. Clearing
+  // `container.innerHTML` strips children but not listeners on the
+  // container itself; without explicit removal, remounting Practice
+  // would accumulate duplicate handlers and fire openTuner twice for
+  // one long-press.
+  const onLpPointerDown = (e: PointerEvent) => {
+    const t = (e.target as HTMLElement | null)?.closest?.(
+      "[data-pc-lang-badge]"
+    ) as HTMLElement | null
+    if (!t) return
+    const lang = t.getAttribute("data-pc-lang") || ""
+    if (!lang) return
+    lpStart = { x: e.clientX, y: e.clientY }
+    lpTargetLang = lang
+    lpTimer = window.setTimeout(() => {
+      lpTimer = null
+      if (lpTargetLang && !disposed) {
+        openTuner(lpTargetLang)
+      }
+      lpTargetLang = null
+      lpStart = null
+    }, LONG_PRESS_MS)
+  }
+  const onLpPointerMove = (e: PointerEvent) => {
+    if (!lpStart) return
+    const dx = e.clientX - lpStart.x
+    const dy = e.clientY - lpStart.y
+    if (Math.hypot(dx, dy) > LONG_PRESS_MOVE_PX) cancelLongPress()
+  }
+  container.addEventListener("pointerdown", onLpPointerDown)
+  container.addEventListener("pointermove", onLpPointerMove)
+  container.addEventListener("pointerup", cancelLongPress)
+  container.addEventListener("pointercancel", cancelLongPress)
+
   // ---- Restore from localStorage if available ----
   const restoreFromStorage = (): boolean => {
     const saved = loadSavedState(storage)
@@ -2224,6 +2395,14 @@ export const mountGame = (
                 <div class="pc-setup-card-actions" data-actions="${m.id}"></div>
               </div>
               <div class="pc-setup-card-desc">${escapeHtml(m.shortDesc)}</div>
+              <div class="pc-setup-card-procon">
+                <ul class="pc-setup-card-pros">
+                  ${m.pros.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}
+                </ul>
+                <ul class="pc-setup-card-cons">
+                  ${m.cons.map((c) => `<li>${escapeHtml(c)}</li>`).join("")}
+                </ul>
+              </div>
               <div class="pc-setup-card-techid" title="Underlying model file (whisper.cpp ggml format)">${escapeHtml(m.folder)}</div>
               <div class="pc-setup-progress" data-progress="${m.id}" hidden>
                 <div class="pc-setup-progress-bar"><div class="pc-setup-progress-fill"></div></div>
@@ -2467,7 +2646,10 @@ export const mountGame = (
 
         try {
           await stt.installModel(
-            { model: folderForMode(mode) },
+            {
+              model: folderForMode(mode),
+              downloadUrl: modelById(mode)?.downloadUrl,
+            },
             (event) => {
               if (event.model !== folderForMode(mode)) return
               if (event.phase === "downloading") {
@@ -2762,9 +2944,19 @@ export const mountGame = (
       disposed = true
       cancelActiveSession()
       window.removeEventListener("keydown", onKeyDown)
+      container.removeEventListener("pointerdown", onLpPointerDown)
+      container.removeEventListener("pointermove", onLpPointerMove)
+      container.removeEventListener("pointerup", cancelLongPress)
+      container.removeEventListener("pointercancel", cancelLongPress)
+      cancelLongPress()
       hideOverlay()
       teardownZoomBlock()
       container.innerHTML = ""
     },
   }
 }
+
+// Parlometron-era alias for the practice mount. Both names point at
+// the same function — `mountGame` for legacy callers, `mountPractice`
+// for the new mode router in `parlometron.ts`.
+export { mountGame as mountPractice }

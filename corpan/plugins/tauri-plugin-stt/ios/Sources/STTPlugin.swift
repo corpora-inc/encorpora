@@ -86,21 +86,59 @@ private func sttMemSnapshot(_ tag: String) {
 // -----------------------------------------------------------------------------
 final class PrepareArgs: Decodable {
     let model: String?
-    private enum CodingKeys: String, CodingKey { case model }
+    /// Optional override of the source URL. Used by `installModel`
+    /// for models we host ourselves (community Indic fine-tunes,
+    /// self-quantized variants ggerganov doesn't publish, etc.).
+    /// When nil, the install path falls back to the hardcoded
+    /// `huggingface.co/ggerganov/whisper.cpp/resolve/main/` base.
+    /// `prepare` ignores this field — it only reads `model`.
+    let downloadUrl: String?
+    private enum CodingKeys: String, CodingKey {
+        case model, downloadUrl
+        case download_url
+    }
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         model = try c.decodeIfPresent(String.self, forKey: .model)
+        let urlCamel = try c.decodeIfPresent(String.self, forKey: .downloadUrl)
+        let urlSnake = try c.decodeIfPresent(String.self, forKey: .download_url)
+        downloadUrl = urlCamel ?? urlSnake
     }
+}
+
+/// Per-call overrides on top of `whisper_full_default_params`. Every
+/// field is optional; a missing field means "use the library default."
+/// Pack sends this on startSession so we can A/B different decoder
+/// settings per language without rebuilding the plugin.
+///
+/// Field names match `whisper_full_params` in whisper.h. There is
+/// deliberately no `compression_ratio_thold` here — whisper.cpp's
+/// `entropy_thold` is its compression-ratio-style filter (per the
+/// upstream comment at whisper.h:547).
+struct WhisperParamsArg: Decodable {
+    let temperature: Float?
+    let temperature_inc: Float?
+    let entropy_thold: Float?
+    let logprob_thold: Float?
+    let no_speech_thold: Float?
+    let suppress_blank: Bool?
+    let suppress_nst: Bool?
+    let n_threads: Int32?
+    /// Initial-prompt primer for the decoder. Whisper prepends up to
+    /// ~224 tokens of this before generating, biasing output toward
+    /// the prompt's script and vocabulary. Empty = no priming.
+    let initial_prompt: String?
 }
 
 final class StartSessionArgs: Decodable {
     let sessionId: String
     let language: String
     let expectedText: String
+    let whisperParams: WhisperParamsArg?
 
     private enum CodingKeys: String, CodingKey {
-        case sessionId, language, expectedText
-        case session_id, expected_text
+        case sessionId, language, expectedText, whisperParams
+        case session_id, expected_text, whisper_params
     }
 
     init(from decoder: Decoder) throws {
@@ -112,6 +150,9 @@ final class StartSessionArgs: Decodable {
         let expectedCamel = try c.decodeIfPresent(String.self, forKey: .expectedText)
         let expectedSnake = try c.decodeIfPresent(String.self, forKey: .expected_text)
         expectedText = expectedCamel ?? expectedSnake ?? ""
+        let paramsCamel = try c.decodeIfPresent(WhisperParamsArg.self, forKey: .whisperParams)
+        let paramsSnake = try c.decodeIfPresent(WhisperParamsArg.self, forKey: .whisper_params)
+        whisperParams = paramsCamel ?? paramsSnake
     }
 }
 
@@ -188,6 +229,11 @@ struct InstallProgressPayload: Encodable {
     let total: Int64?
     let error: String?
     let code: String?
+}
+
+struct AudioLevelPayload: Encodable {
+    let rms: Float
+    let t: Int
 }
 
 struct InstallResultPayload: Encodable {
@@ -348,7 +394,15 @@ actor WhisperCppContext {
     /// Run whisper_full() over the supplied 16 kHz f32 mono samples in
     /// the requested language. Returns concatenated text + per-segment
     /// stats. Returns nil on whisper_full failure.
-    func transcribe(samples: [Float], language: String) -> TranscribeOutput? {
+    ///
+    /// `overrides` is the optional bag of per-call whisper_full_params
+    /// fields sent by the pack via `startSession.whisperParams`. Each
+    /// non-nil field is applied AFTER our own defaults below, so a
+    /// caller can e.g. set `temperature_inc = 0` to disable whisper.cpp's
+    /// internal temperature-fallback loop for low-resource languages.
+    func transcribe(
+        samples: [Float], language: String, overrides: WhisperParamsArg? = nil
+    ) -> TranscribeOutput? {
         // Two free cores keeps the UI thread responsive on iPad while
         // whisper.cpp pegs the rest. Same heuristic as upstream
         // LibWhisper.swift.
@@ -371,14 +425,53 @@ actor WhisperCppContext {
         // computeScores() reads to produce the per-word acoustic ramp.
         params.token_timestamps = true
 
-        // C string lifetime: `params.language` is a `const char *`; the
-        // Swift String must remain alive for the duration of the
-        // whisper_full() call. Wrap the entire call in withCString.
+        // Pack-side overrides. Applied last so they win over the
+        // defaults above. nil fields fall through unchanged.
+        if let o = overrides {
+            if let v = o.temperature { params.temperature = v }
+            if let v = o.temperature_inc { params.temperature_inc = v }
+            if let v = o.entropy_thold { params.entropy_thold = v }
+            if let v = o.logprob_thold { params.logprob_thold = v }
+            if let v = o.no_speech_thold { params.no_speech_thold = v }
+            if let v = o.suppress_blank { params.suppress_blank = v }
+            if let v = o.suppress_nst { params.suppress_nst = v }
+            if let v = o.n_threads, v > 0 { params.n_threads = v }
+        }
+        let promptStr = overrides?.initial_prompt ?? ""
+        sttLog(
+            "Whisper | params lang=\(language) "
+                + "temp=\(params.temperature) "
+                + "temp_inc=\(params.temperature_inc) "
+                + "entropy=\(params.entropy_thold) "
+                + "logprob=\(params.logprob_thold) "
+                + "no_speech=\(params.no_speech_thold) "
+                + "suppress_blank=\(params.suppress_blank) "
+                + "suppress_nst=\(params.suppress_nst) "
+                + "n_threads=\(params.n_threads) "
+                + "initial_prompt=\(promptStr.isEmpty ? "(none)" : "\"\(promptStr.prefix(60))\(promptStr.count > 60 ? "…" : "")\"")")
+
+        // C string lifetime: both `params.language` and
+        // `params.initial_prompt` are `const char *` borrowed by
+        // whisper_full() for the duration of the call. Nest two
+        // `withCString` blocks so Swift keeps both strings alive
+        // until whisper_full returns. The empty-prompt branch
+        // leaves `params.initial_prompt` as its default (nil) — a
+        // NULL pointer here disables priming entirely.
         return language.withCString { langPtr in
             params.language = langPtr
 
-            let runRet: Int32 = samples.withUnsafeBufferPointer { buf in
-                whisper_full(context, params, buf.baseAddress, Int32(buf.count))
+            let runRet: Int32
+            if !promptStr.isEmpty {
+                runRet = promptStr.withCString { promptPtr in
+                    params.initial_prompt = promptPtr
+                    return samples.withUnsafeBufferPointer { buf in
+                        whisper_full(context, params, buf.baseAddress, Int32(buf.count))
+                    }
+                }
+            } else {
+                runRet = samples.withUnsafeBufferPointer { buf in
+                    whisper_full(context, params, buf.baseAddress, Int32(buf.count))
+                }
             }
             guard runRet == 0 else {
                 sttErr(
@@ -658,8 +751,17 @@ private final class WhisperManager {
     private var activeSessionId: String?
     private var activeLanguage: String = "en"
     private var activeExpected: String = ""
+    /// Per-call overrides for `whisper_full_params`, sent by the pack
+    /// on `startSession`. nil here = no overrides for this session.
+    private var activeWhisperParams: WhisperParamsArg?
     private var sessionStartedAt: Date?
     private var isRecording = false
+
+    /// Called from `handleInput` while a session is recording, ~11 Hz,
+    /// with the RMS of the most recent converted chunk + a millisecond
+    /// offset from `sessionStartedAt`. The plugin sets this once and
+    /// uses it to forward `audio_level` events to the WebView.
+    var audioLevelEmitter: ((Float, Int) -> Void)?
 
     /// Default fallback model when the pack doesn't pass one. Phase 1
     /// proof-of-concept ships only `ggml-tiny.bin`, so the default is
@@ -856,11 +958,14 @@ private final class WhisperManager {
 
     func installModel(
         model requested: String?,
+        downloadUrl: String? = nil,
         progress onProgress: @escaping (InstallProgressPayload) -> Void,
         completion: @escaping (Result<InstallResultPayload, SttFailure>) -> Void
     ) {
         let modelName = requested ?? Self.defaultModel
-        sttLog("Whisper | install requested:", modelName)
+        sttLog(
+            "Whisper | install requested:", modelName,
+            "url:", downloadUrl ?? "(huggingface default)")
 
         // Fast path: already installed.
         let validationProblems = self.validateModel(modelName)
@@ -880,8 +985,17 @@ private final class WhisperManager {
             "Whisper | proceeding with download (validateModel said:",
             validationProblems.joined(separator: ", "), ")")
 
-        guard let url = downloadURL(for: modelName) else {
-            let msg = "Invalid model id (couldn't form download URL): \(modelName)"
+        // Pack-supplied URL wins (used for models we host ourselves
+        // — community Indic fine-tunes, self-quantized variants).
+        // Fall back to the HuggingFace base when nil.
+        let urlCandidate: URL? = {
+            if let custom = downloadUrl, !custom.isEmpty {
+                return URL(string: custom)
+            }
+            return downloadURL(for: modelName)
+        }()
+        guard let url = urlCandidate else {
+            let msg = "Invalid download URL for: \(modelName)"
             sttErr("Whisper |", msg)
             onProgress(
                 InstallProgressPayload(
@@ -891,6 +1005,7 @@ private final class WhisperManager {
             completion(.failure(SttFailure(code: .modelNotInstalled, description: msg)))
             return
         }
+        sttLog("Whisper | downloading from:", url.absoluteString)
 
         let dest = modelFile(modelName)
         try? FileManager.default.createDirectory(
@@ -1185,11 +1300,13 @@ private final class WhisperManager {
     // ---------------------------------------------------------------------
     func startSession(
         sessionId: String, language: String, expectedText: String,
+        whisperParams: WhisperParamsArg? = nil,
         completion: @escaping (Result<StartSessionPayload, Error>) -> Void
     ) {
         sttLog(
             "Whisper | startSession id:", sessionId, "lang:", language,
-            "expected:", expectedText.prefix(60))
+            "expected:", expectedText.prefix(60),
+            "overrides:", whisperParams != nil ? "yes" : "(none)")
 
         ensureMicPermission { granted in
             guard granted else {
@@ -1203,18 +1320,19 @@ private final class WhisperManager {
             }
 
             self.queue.async {
-                // Pre-warm pattern: AVAudioEngine + AVAudioSession +
-                // input tap stay alive across stopSession calls, so
-                // the *second* and subsequent startSession calls see
-                // sub-millisecond latency. Without this, every
-                // start ate ~1 s on engine startup, during which the
-                // user would speak the first word of their phrase
-                // and we'd never capture it. The engine is started
-                // lazily on the first session — the first tap still
-                // pays the warmup cost, but every one after is
-                // instant. handleInput gates sample accumulation on
-                // self.isRecording, so the always-running engine
-                // doesn't burn memory when no session is active.
+                // Lazy engine init on each session. We used to keep
+                // the engine warm across stopSession to dodge a ~1 s
+                // AVAudioEngine startup cost on back-to-back tries,
+                // but that left iOS's mic indicator on and held the
+                // session in `.playAndRecord + .duckOthers` (softer
+                // TTS) during scoring and result viewing. Releasing
+                // between sessions is the right user-facing tradeoff;
+                // every startSession after a stop now pays the engine
+                // setup cost. If first-word clipping becomes a
+                // recurring complaint, fix it with a background
+                // pre-warm tied to phrase-load / pass-the-device
+                // events on the pack side — keep the always-warm
+                // engine out of the native plugin.
                 if self.audioEngine == nil {
                     do {
                         try self.configureSession()
@@ -1231,6 +1349,7 @@ private final class WhisperManager {
                 self.activeSessionId = sessionId
                 self.activeLanguage = language
                 self.activeExpected = expectedText
+                self.activeWhisperParams = whisperParams
                 self.sessionStartedAt = Date()
                 self.capturedSamples.removeAll(keepingCapacity: true)
                 self.isRecording = true
@@ -1252,27 +1371,43 @@ private final class WhisperManager {
 
         let snapshot: (
             captured: [Float], language: String, expected: String,
+            params: WhisperParamsArg?,
             startedAt: Date?, activeId: String?
         ) = queue.sync {
             let s = (
                 captured: self.capturedSamples,
                 language: self.activeLanguage,
                 expected: self.activeExpected,
+                params: self.activeWhisperParams,
                 startedAt: self.sessionStartedAt,
                 activeId: self.activeSessionId
             )
-            // Engine stays warm — see startSession comment. We only
-            // flip isRecording off so handleInput stops appending to
-            // capturedSamples; the tap keeps running and discards
-            // frames between sessions.
+            // Tear down the audio engine + deactivate the session
+            // immediately after grabbing the sample snapshot. Inference
+            // doesn't need the mic, and keeping `.playAndRecord +
+            // .duckOthers` active causes two real UX bugs while
+            // scoring + viewing results:
+            //   1. iOS shows the yellow mic-in-use indicator the whole
+            //      time, even though we're not capturing anymore.
+            //   2. TTS / pack audio plays at the lower `.playAndRecord`
+            //      volume until the session deactivates.
+            // We previously kept the engine warm to dodge a ~1 s
+            // startup cost on back-to-back recordings — but the user-
+            // facing correctness of "indicator off + full TTS volume
+            // between mic tries" beats the latency win. If first-word
+            // clipping starts coming back, address it with a "preparing
+            // mic…" UI hint or a background re-warm on phrase load,
+            // NOT by re-introducing the always-warm engine.
             self.isRecording = false
             self.activeSessionId = nil
             self.capturedSamples.removeAll(keepingCapacity: false)
+            self.teardownAudio()
             return s
         }
         let captured = snapshot.captured
         let language = snapshot.language
         let expected = snapshot.expected
+        let overrides = snapshot.params
         let startedAt = snapshot.startedAt
         let activeId = snapshot.activeId
 
@@ -1331,7 +1466,8 @@ private final class WhisperManager {
             // throughput is unaffected.
             let leadingSilence = [Float](repeating: 0, count: 4800)
             let padded = leadingSilence + captured
-            let runResult = await ctx.transcribe(samples: padded, language: baseLang)
+            let runResult = await ctx.transcribe(
+                samples: padded, language: baseLang, overrides: overrides)
             guard let runResult else {
                 sttErr(
                     "Whisper | transcribe failed (whisper_full returned non-zero)")
@@ -1401,10 +1537,39 @@ private final class WhisperManager {
     func cancelSession(sessionId: String) {
         sttLog("Whisper | cancelSession id:", sessionId)
         queue.sync {
-            // Engine stays warm — see startSession comment.
+            // Same teardown pattern as stopSession — release the
+            // engine + session so the mic indicator goes away and
+            // TTS regains full volume.
             self.isRecording = false
             self.activeSessionId = nil
+            self.activeWhisperParams = nil
             self.capturedSamples.removeAll(keepingCapacity: false)
+            self.teardownAudio()
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Release audio
+    //
+    // Tear down AVAudioEngine + AVAudioSession entirely. Called when the
+    // pack is closing — without this, the engine + tap + the
+    // `.playAndRecord` audio session stay active across pack mounts,
+    // which (a) keeps the iOS mic indicator orange in the status bar
+    // and (b) keeps `.duckOthers` engaged so the rest of the app's
+    // audio plays softer until the next app kill.
+    //
+    // Distinct from `cancelSession`, which deliberately keeps the
+    // engine warm so back-to-back recordings inside one pack session
+    // don't pay the ~1 s AVAudioEngine start cost.
+    // ---------------------------------------------------------------------
+    func releaseAudio() {
+        sttLog("Whisper | releaseAudio (tearing down AVAudioEngine + session)")
+        queue.sync {
+            self.isRecording = false
+            self.activeSessionId = nil
+            self.activeWhisperParams = nil
+            self.capturedSamples.removeAll(keepingCapacity: false)
+            self.teardownAudio()
         }
     }
 
@@ -1519,6 +1684,22 @@ private final class WhisperManager {
             // frames.
             guard self.isRecording else { return }
             self.capturedSamples.append(contentsOf: chunk)
+
+            // Per-buffer RMS for the pack-side silence detector. Cost
+            // is ~5 µs for ~1365 floats. Fires at ~85 ms cadence on
+            // typical iOS hardware (4096-frame tap @ 48 kHz native).
+            if let emit = self.audioLevelEmitter {
+                var sum: Float = 0
+                for s in chunk { sum += s * s }
+                let rms = sqrt(sum / Float(chunk.count))
+                let t: Int
+                if let started = self.sessionStartedAt {
+                    t = Int(Date().timeIntervalSince(started) * 1000)
+                } else {
+                    t = 0
+                }
+                emit(rms, t)
+            }
         }
     }
 
@@ -1983,6 +2164,41 @@ enum Constants {
 
 final class STTPlugin: Plugin {
     private static let manager = WhisperManager.shared
+    private static var firstAudioLevelLogged = false
+
+    override init() {
+        super.init()
+        // Wire the audio-level emitter once. The manager is a singleton
+        // that outlives any single plugin instance, but Tauri creates
+        // one STTPlugin per WebView load — overwriting the closure on
+        // each construction is fine (and keeps the captured `self`
+        // pointing at the current plugin instance).
+        Self.manager.audioLevelEmitter = { [weak self] rms, t in
+            guard let self else { return }
+            // Use the Encodable overload, same pattern as
+            // install_progress. The JSObject overload looked tidier
+            // but routes through `Channel.send(JsonObject)` which
+            // expects `[String: Any?]`, not `[String: JSValue]` —
+            // the implicit bridge may silently drop the payload.
+            let payload = AudioLevelPayload(rms: rms, t: t)
+            do {
+                try self.trigger("audio_level", data: payload)
+            } catch {
+                // Non-fatal — the next emit lands in ~85 ms.
+                sttErr("Whisper | trigger audio_level failed:",
+                    error.localizedDescription)
+            }
+            // One-shot debug log so we can confirm the native trigger
+            // is firing without flooding os_log at 11 Hz. Reset each
+            // time the plugin re-initializes.
+            if !Self.firstAudioLevelLogged {
+                Self.firstAudioLevelLogged = true
+                sttLog("Whisper | first audio_level emit",
+                    "rms:", String(format: "%.4f", rms),
+                    "t:", t)
+            }
+        }
+    }
 
     @objc public func prepare(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(PrepareArgs.self)
@@ -1996,7 +2212,8 @@ final class STTPlugin: Plugin {
         Self.manager.startSession(
             sessionId: args.sessionId,
             language: args.language,
-            expectedText: args.expectedText
+            expectedText: args.expectedText,
+            whisperParams: args.whisperParams
         ) { result in
             switch result {
             case .success(let payload):
@@ -2031,6 +2248,11 @@ final class STTPlugin: Plugin {
     @objc public func cancelSession(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(SessionIdArgs.self)
         Self.manager.cancelSession(sessionId: args.sessionId)
+        invoke.resolve()
+    }
+
+    @objc public func releaseAudio(_ invoke: Invoke) {
+        Self.manager.releaseAudio()
         invoke.resolve()
     }
 
@@ -2074,6 +2296,7 @@ final class STTPlugin: Plugin {
         let args = try invoke.parseArgs(PrepareArgs.self)
         Self.manager.installModel(
             model: args.model,
+            downloadUrl: args.downloadUrl,
             progress: { [weak self] payload in
                 guard let self else { return }
                 do {
