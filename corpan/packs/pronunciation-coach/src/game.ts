@@ -2217,7 +2217,12 @@ export const mountGame = (
     lpStart = null
     lpTargetLang = null
   }
-  container.addEventListener("pointerdown", (e) => {
+  // Named handlers (not inline) so unmount can remove them. Clearing
+  // `container.innerHTML` strips children but not listeners on the
+  // container itself; without explicit removal, remounting Practice
+  // would accumulate duplicate handlers and fire openTuner twice for
+  // one long-press.
+  const onLpPointerDown = (e: PointerEvent) => {
     const t = (e.target as HTMLElement | null)?.closest?.(
       "[data-pc-lang-badge]"
     ) as HTMLElement | null
@@ -2234,13 +2239,15 @@ export const mountGame = (
       lpTargetLang = null
       lpStart = null
     }, LONG_PRESS_MS)
-  })
-  container.addEventListener("pointermove", (e) => {
+  }
+  const onLpPointerMove = (e: PointerEvent) => {
     if (!lpStart) return
     const dx = e.clientX - lpStart.x
     const dy = e.clientY - lpStart.y
     if (Math.hypot(dx, dy) > LONG_PRESS_MOVE_PX) cancelLongPress()
-  })
+  }
+  container.addEventListener("pointerdown", onLpPointerDown)
+  container.addEventListener("pointermove", onLpPointerMove)
   container.addEventListener("pointerup", cancelLongPress)
   container.addEventListener("pointercancel", cancelLongPress)
 
@@ -2937,6 +2944,11 @@ export const mountGame = (
       disposed = true
       cancelActiveSession()
       window.removeEventListener("keydown", onKeyDown)
+      container.removeEventListener("pointerdown", onLpPointerDown)
+      container.removeEventListener("pointermove", onLpPointerMove)
+      container.removeEventListener("pointerup", cancelLongPress)
+      container.removeEventListener("pointercancel", cancelLongPress)
+      cancelLongPress()
       hideOverlay()
       teardownZoomBlock()
       container.innerHTML = ""

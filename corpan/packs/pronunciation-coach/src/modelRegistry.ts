@@ -103,14 +103,20 @@ export const setDeviceMemoryBudget = (mb: number | null | undefined) => {
 /// budgets — but better than the alternative of showing nothing on
 /// iPad until the Swift side ships.
 const looksIpadByUA = (): boolean => {
-  if (typeof navigator === "undefined") return true
+  if (typeof navigator === "undefined") return false
   const ua = navigator.userAgent || ""
   if (/iPad/.test(ua)) return true
   if (/iPhone|iPod/.test(ua)) return false
   if (/Macintosh/.test(ua) && (navigator.maxTouchPoints ?? 0) > 1) {
     return true
   }
-  return true
+  // Unknown UA (Android, desktop, etc.): be conservative. We used to
+  // return true here, which exposed `requiresIpad: true` cards on
+  // devices that can't actually fit them. The real per-device budget
+  // from `stt.getStatus()` overrides this fallback on iOS / Android
+  // once it lands, so being conservative in the fallback only affects
+  // the brief window before that signal arrives.
+  return false
 }
 
 /// True when this device's per-app memory budget can comfortably fit

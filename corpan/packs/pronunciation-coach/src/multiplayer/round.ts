@@ -85,6 +85,14 @@ const newSessionId = (): string =>
 const escapeHtml = (s: string): string =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
 
+// Use for values interpolated into double-quoted HTML attributes
+// (e.g. `aria-label="…"`). `escapeHtml` alone does NOT escape `"`,
+// which would let a value containing a quote break out of the
+// attribute. Phrase strings come from our DB so the practical risk
+// today is low — but cheap to do correctly.
+const escapeAttr = (s: string): string =>
+  escapeHtml(s).replace(/"/g, "&quot;").replace(/'/g, "&#39;")
+
 const whisperLang = (lang: string): string => {
   if (!lang) return "en"
   return lang.split("-")[0].toLowerCase()
@@ -174,6 +182,13 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
   let phraseTarget: TranslationOut | null = null
   let phraseNative: TranslationOut | null = null
   let lastResult: SttTranscriptionResult | null = null
+  /** Transient one-line error to show in the banner slot when
+   *  scoring fails. Read + cleared by `renderResultSlots`. The catch
+   *  block in `stopRecording` used to set `banner.innerHTML`
+   *  imperatively, but `refresh()`'s renderer wiped it because the
+   *  `uiState !== "result"` branch clears the banner. Route the
+   *  message through state instead. */
+  let lastErrorMessage: string | null = null
   let silenceWatch: SilenceWatcherHandle | null = null
 
   const stopSilenceWatch = () => {
@@ -429,6 +444,23 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     )
     if (!banner || !transcript || !detail) return
 
+    // Transient error path: scoring failed (model not loaded, plugin
+    // timeout, etc.). Show just the banner with the message; clear
+    // transcript + detail. Survives even though uiState went back to
+    // "ready" — that's the bug we're working around.
+    if (lastErrorMessage && !lastResult) {
+      banner.className = "pc-result-banner bad"
+      banner.innerHTML = `<span class="pc-result-banner-text">${escapeHtml(
+        lastErrorMessage,
+      )}</span>`
+      banner.hidden = false
+      transcript.hidden = true
+      detail.hidden = true
+      transcript.innerHTML = ""
+      detail.innerHTML = ""
+      return
+    }
+
     if (!lastResult || uiState !== "result") {
       banner.hidden = true
       transcript.hidden = true
@@ -570,7 +602,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
         (w, idx) =>
           `<button class="pc-word ${pillClass(w)}" type="button"
                    data-pm-word-idx="${idx}"
-                   aria-label="Speak ${escapeHtml(w.word)}">${escapeHtml(w.word)}</button>`,
+                   aria-label="Speak ${escapeAttr(w.word)}">${escapeHtml(w.word)}</button>`,
       )
       .join("")
     detail.innerHTML = wordsHtml
@@ -632,6 +664,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     const sessionId = newSessionId()
     activeSessionId = sessionId
     lastResult = null
+    lastErrorMessage = null
     uiState = "recording"
     refresh()
     try {
@@ -701,25 +734,17 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       )
       if (disposed) return
       // Surface the failure to the player instead of silently dumping
-      // them back to "ready" — the common cause is "model not loaded"
-      // when this is the user's first time entering Multiplayer
-      // before Practice has run the install flow. Pass-back to "ready"
-      // after a beat so the next player can still try.
-      const banner = opts.container.querySelector<HTMLElement>(
-        "[data-pm-banner]",
-      )
-      if (banner) {
-        const hint =
-          code === "NOT_PREPARED" || /not prepared/i.test(msg)
-            ? "Speech model isn't loaded yet. Open Practice once to install it."
-            : `Couldn't score this attempt: ${msg}`
-        banner.className = "pc-result-banner bad"
-        banner.innerHTML = `<span class="pc-result-banner-text">${hint
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")}</span>`
-        banner.hidden = false
-      }
+      // them back to "ready". The common cause is "model not loaded"
+      // when this is the user's first time in Multiplayer before
+      // Practice has run the install flow. Route through state
+      // (`lastErrorMessage`) so `renderResultSlots` actually keeps
+      // the banner up — setting `banner.innerHTML` here directly
+      // gets wiped because uiState goes back to "ready".
+      lastErrorMessage =
+        code === "NOT_PREPARED" || /not prepared/i.test(msg)
+          ? "Speech model isn't loaded yet. Open Practice once to install it."
+          : `Couldn't score this attempt: ${msg}`
+      lastResult = null
       uiState = "ready"
       refresh()
     }

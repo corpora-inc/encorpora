@@ -14,17 +14,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-### Changed
-- **Multiplayer rounds now shuffle the target language.** Previously
-  `pickTargetTranslation` deterministically grabbed the first
-  non-native slot from the stack, so a 9-language stack kept landing
-  on the same target every round. The picker now collects every
-  non-native target the entry actually has a translation for and
-  picks one at random per round. The eyebrow gains the language
-  code (e.g. `Round 3 · KO · First to 5`) so everyone can see which
-  language the round is being scored in.
+## [0.6.0] - 2026-05-17
 
-### Added
+### Late additions before tag (rolled in from [Unreleased])
+
 - **Auto-stop on silence.** The native plugin now emits per-buffer
   RMS as `audio_level` events while recording (~11 Hz iOS, ~8 Hz
   Android). A new `silenceWatcher.ts` state machine subscribes to
@@ -37,31 +30,48 @@ Conventions: `corpan/CHANGELOGS.md`.
   Parlometron multiplayer flows. The watcher feature-detects
   `stt.subscribeAudioLevel` — older host builds quietly skip it
   and the manual stop button still works.
+- **Multiplayer rounds shuffle the target language.** Previously
+  `pickTargetTranslation` deterministically grabbed the first
+  non-native slot from the stack, so a 9-language stack kept
+  landing on the same target every round. The picker now collects
+  every non-native target the entry actually has a translation
+  for and picks one at random per round. The eyebrow gains the
+  language code (e.g. `Round 3 · KO · First to 5`) so everyone
+  can see which language the round is being scored in.
+- **Parlometron mount now pre-prepares the saved model.** Solo's
+  boot path used to be the only place that called `stt.prepare()`,
+  which meant going directly to Multiplayer on a fresh open never
+  loaded the whisper.cpp context and the first `stopSession`
+  failed silently. The router now reads the saved mode from
+  Solo's localStorage and kicks off a fire-and-forget `prepare()`
+  on mount so both modes work from any entry point.
+- **Mode picker is a vertical stack** instead of side-by-side
+  cards. The grid layout was producing super-tall cards mostly
+  filled with empty space on iPad. Cards are now natural-height,
+  stacked with a small gap, and vertically centered in the
+  available body region. Max-width capped at 520 px so they don't
+  span the full iPad-landscape width.
+- **"Pass the iPad" → "Pass the device"** across all multiplayer
+  copy. Parlometron runs on Android too.
+- **"Way off" → blank.** The bad-tier (overall < 0.6) result
+  banner now shows just the percentage. These models can be
+  wrong, and telling someone they said it wrong when they didn't
+  is worse than showing nothing.
 
-### Fixed
+### Audio session correctness (rolled in from [Unreleased])
+
 - **Audio session no longer leaks past pack close.** Added a new
   `releaseAudio()` method on the host SttApi (wired through
-  `tauri-plugin-stt`'s new `release_audio` command) and called from
-  `parlometron.ts`'s `unmount`. Tears down AVAudioEngine +
-  AVAudioSession on iOS (and AudioRecord on Android) when the pack
-  closes — fixes the stuck orange mic indicator and the
+  `tauri-plugin-stt`'s new `release_audio` command) and called
+  from `parlometron.ts`'s `unmount`. Tears down AVAudioEngine +
+  AVAudioSession on iOS (and AudioRecord on Android) when the
+  pack closes — fixes the stuck orange mic indicator and the
   `.duckOthers` ambient-audio softening that previously persisted
-  until the next process kill. `cancelSession` is unchanged so
-  back-to-back recordings inside one pack session still get the
-  pre-warm-engine latency win.
+  until the next process kill.
 
-### Changed
-- **Mode picker is a vertical stack** instead of side-by-side cards.
-  The grid layout was producing super-tall cards mostly filled
-  with empty space on iPad. Cards are now natural-height, stacked
-  with a small gap, and vertically centered in the available body
-  region. Max-width capped at 520 px so they don't span the full
-  iPad-landscape width.
-- **"Pass the iPad" → "Pass the device"** across all multiplayer
-  copy. Parlometron runs on Android too; the wording shouldn't
-  pretend otherwise.
+---
 
-## [0.6.0] - 2026-05-16
+(Original [0.6.0] entry, 2026-05-16, follows.)
 
 The **Parlometron** release. Rebrand + new multiplayer party game
 alongside the existing solo practice flow.

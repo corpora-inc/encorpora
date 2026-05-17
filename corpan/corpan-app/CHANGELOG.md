@@ -7,7 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-### Fixed
+## [0.13.0] - 2026-05-17
+
+The "Parlometron" release. The pronunciation-coach pack is rebranded
+to **Parlometron** and gains a multiplayer mode alongside the
+existing solo practice flow. The catalog ID `pronunciation_coach` is
+stable so older Corpán builds still see the 0.5.x pack; only this
+version (and newer) sees the 0.6.0 pack under its new brand.
+
+### Fixed (rolled in from [Unreleased] before tag)
 - Main experience: language stack could hide its last row under the
   floating Nav with no way to scroll to it. The inner content used
   `my-auto` to vertically center, which in WebKit's flex
@@ -20,14 +28,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   the last row. Also measured the Nav at runtime via
   `ResizeObserver` so the scroll container's bottom padding always
   exceeds the Nav's actual rendered height.
-
-## [0.13.0] - 2026-05-16
-
-The "Parlometron" release. The pronunciation-coach pack is rebranded
-to **Parlometron** and gains a multiplayer mode alongside the
-existing solo practice flow. The catalog ID `pronunciation_coach` is
-stable so older Corpán builds still see the 0.5.x pack; only this
-version (and newer) sees the 0.6.0 pack under its new brand.
 
 ### Added
 - **Per-call `downloadUrl` plumbing on `installModel`**. The host's

@@ -38,10 +38,12 @@ export type LobbyHandle = {
 }
 
 const escapeAttr = (s: string): string =>
-  s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")
-
-const escapeHtml = (s: string): string =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
 
 export const mountLobby = (opts: LobbyOpts): LobbyHandle => {
   // Working roster — mutated as the user edits names / adds rows.
@@ -124,7 +126,7 @@ export const mountLobby = (opts: LobbyOpts): LobbyHandle => {
                  spellcheck="false" />
           <button class="pc-pm-roster-remove"
                   data-pm-remove="${p.id}"
-                  aria-label="Remove ${escapeHtml(p.name)}"
+                  aria-label="Remove ${escapeAttr(p.name)}"
                   ${draftPlayers.length <= MIN_PLAYERS ? "disabled" : ""}>×</button>
         </li>`,
       )

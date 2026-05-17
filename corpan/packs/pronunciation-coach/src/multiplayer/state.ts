@@ -148,6 +148,10 @@ export const recordAttempt = (
 ): GameState => {
   const playerId = state.currentRoundOrder[state.currentPlayerIdx]
   if (!playerId) return state
+  // Refuse to consume an attempt past zero. Defends against duplicate
+  // callbacks (e.g. silence-watcher firing stopRecording while the
+  // user's tap is still in flight) overwriting a locked best-score.
+  if ((state.attemptsLeft[playerId] ?? 0) <= 0) return state
   const prev = state.bestThisRound[playerId]
   const clampedPercent = Math.max(0, Math.min(100, Math.round(percent)))
   if (!prev || clampedPercent > prev.bestPercent) {

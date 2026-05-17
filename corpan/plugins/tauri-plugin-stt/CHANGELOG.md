@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-05-17
+
+The Parlometron-pairing release: adds the `audio_level` event
+stream that powers the pack's silence-detector, the `release_audio`
+command for clean pack-close, the `downloadUrl` install field that
+unlocks our self-quantized Large q8 model, and an audio-session
+correctness fix (release between recordings instead of keeping the
+engine warm).
+
 ### Changed
 - **Release audio between sessions.** `stopSession` and
   `cancelSession` now tear down the audio engine + deactivate
