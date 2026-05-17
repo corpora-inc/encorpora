@@ -62,6 +62,8 @@ impl<R: Runtime> Stt<R> {
             model: None,
             recording: false,
             message: Some("STT not supported on desktop in this build".to_string()),
+            available_memory_mb: None,
+            physical_memory_mb: None,
         })
     }
 }

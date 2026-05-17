@@ -14,7 +14,7 @@
 
 import type { Character, CatalogNarrationEntry, VoiceProfile, BookEntry } from "./types"
 import type { CatalogIndex } from "./catalogIndex"
-import { getLanguageName } from "./searchFilter"
+import { getLanguageName, partitionLanguagesByStack } from "./searchFilter"
 import {
   playPreview,
   stopPreview,
@@ -34,11 +34,23 @@ export type NarratorDetailOptions = {
   onBack: () => void
   /** Optional translator for user-facing strings. */
   t?: (key: string, defaultValue: string, params?: Record<string, unknown>) => string
+  /**
+   * User's stack languages, in user-preferred order. Used to surface the
+   * languages the user cares about first in pill lists and book cards.
+   * Default `[]` disables prioritization (no stack configured / dev mock).
+   */
+  stackLanguages?: string[]
 }
 
 export type NarratorDetail = {
   render: () => void
   dispose: () => void
+  /**
+   * Update the stack-language list and re-render. Called by the app shell
+   * when the user changes their stack while the profile is mounted, so the
+   * pill ordering stays in sync without us tearing down the whole screen.
+   */
+  setStackLanguages: (next: string[]) => void
 }
 
 export function createNarratorDetail(
@@ -49,6 +61,14 @@ export function createNarratorDetail(
   const t = opts.t ?? ((_k: string, defaultValue: string) => defaultValue)
   let bioCollapsed = true
   let showExperimental = false
+  let stackLanguages: string[] = opts.stackLanguages ? [...opts.stackLanguages] : []
+  /**
+   * Whether the narrator-profile language list is showing every supported
+   * language (true) or only the stack-matched ones (false). Defaults to
+   * collapsed; the user expands via the "Show all" toggle and the choice
+   * resets next time the screen mounts.
+   */
+  let showAllLangs = false
   const previewUnsubs: (() => void)[] = []
 
   function render(): void {
@@ -137,15 +157,7 @@ export function createNarratorDetail(
 
     const langs = collectLanguages(character, index)
     if (langs.length > 0) {
-      const langWrap = document.createElement("div")
-      langWrap.className = "catalog-narrator-detail-langs"
-      for (const lang of langs) {
-        const pill = document.createElement("span")
-        pill.className = "catalog-narrator-detail-lang-pill"
-        pill.textContent = getLanguageName(lang)
-        langWrap.appendChild(pill)
-      }
-      wrap.appendChild(langWrap)
+      wrap.appendChild(renderLanguagePills(langs))
     }
 
     if (character.bio) {
@@ -170,6 +182,87 @@ export function createNarratorDetail(
     }
 
     return wrap
+  }
+
+  /**
+   * Render the narrator's supported-language pills, prioritizing the user's
+   * stack. With 50-language narrators, a flat list is unscannable; we put
+   * stack matches first with an accent style, then collapse the rest
+   * behind a "Show all" toggle.
+   *
+   * Layout:
+   *   [English] [Spanish] [Korean]   ← stack langs, accent style
+   *   Show all 47 languages         ← toggle (when collapsed)
+   * or, expanded:
+   *   [English] [Spanish] [Korean] [Arabic] [Bengali] …  ← muted "other" style
+   *   Show fewer
+   */
+  function renderLanguagePills(langs: string[]): HTMLElement {
+    const wrap = document.createElement("div")
+    wrap.className = "catalog-narrator-detail-langs"
+
+    const { stack, other } = partitionLanguagesByStack(langs, stackLanguages)
+
+    for (const lang of stack) {
+      wrap.appendChild(makeLangPill(lang, "stack"))
+    }
+
+    // No stack overlap — render everything as plain pills (no collapse).
+    if (stack.length === 0) {
+      for (const lang of other) {
+        wrap.appendChild(makeLangPill(lang, "plain"))
+      }
+      return wrap
+    }
+
+    // Stack exists. Reveal others on demand.
+    if (other.length === 0) return wrap
+
+    if (showAllLangs) {
+      for (const lang of other) {
+        wrap.appendChild(makeLangPill(lang, "other"))
+      }
+      const toggle = document.createElement("button")
+      toggle.type = "button"
+      toggle.className = "catalog-narrator-detail-bio-toggle"
+      toggle.textContent = t("catalog.narrator.langs.showFewer", "Show fewer")
+      toggle.onclick = () => {
+        showAllLangs = false
+        render()
+      }
+      wrap.appendChild(toggle)
+    } else {
+      const toggle = document.createElement("button")
+      toggle.type = "button"
+      toggle.className = "catalog-narrator-detail-bio-toggle"
+      toggle.textContent = t(
+        "catalog.narrator.langs.showAll",
+        "Show all {{count}} languages",
+        { count: langs.length },
+      )
+      toggle.onclick = () => {
+        showAllLangs = true
+        render()
+      }
+      wrap.appendChild(toggle)
+    }
+    return wrap
+  }
+
+  function makeLangPill(
+    lang: string,
+    kind: "stack" | "other" | "plain",
+  ): HTMLElement {
+    const pill = document.createElement("span")
+    const mod =
+      kind === "stack"
+        ? " catalog-narrator-detail-lang-pill--stack"
+        : kind === "other"
+          ? " catalog-narrator-detail-lang-pill--other"
+          : ""
+    pill.className = `catalog-narrator-detail-lang-pill${mod}`
+    pill.textContent = getLanguageName(lang)
+    return pill
   }
 
   function renderVoiceVariantsSection(profiles: VoiceProfile[]): HTMLElement {
@@ -377,18 +470,71 @@ export function createNarratorDetail(
       ),
     )
     if (langs.length > 0) {
-      const langWrap = document.createElement("div")
-      langWrap.className = "catalog-card-langs"
-      for (const lang of langs) {
-        const badge = document.createElement("span")
-        badge.className = "catalog-lang-badge"
-        badge.textContent = getLanguageName(lang)
-        langWrap.appendChild(badge)
-      }
-      card.appendChild(langWrap)
+      card.appendChild(renderBookCardLangs(langs))
     }
 
     return card
+  }
+
+  /**
+   * Stack-first badge row for a book card on a narrator profile. Same
+   * heuristic as the catalog browse card: small books render every lang,
+   * larger books surface the user's stack + a "+N more" chip, and books
+   * with zero stack overlap show a single "N languages" count chip.
+   */
+  function renderBookCardLangs(langs: string[]): HTMLElement {
+    const wrap = document.createElement("div")
+    wrap.className = "catalog-card-langs"
+
+    if (langs.length <= 3) {
+      // Even small books benefit from stack-first ordering.
+      const { stack, other } = partitionLanguagesByStack(langs, stackLanguages)
+      for (const lang of [...stack, ...other]) {
+        wrap.appendChild(makeBookCardBadge(lang, "default"))
+      }
+      return wrap
+    }
+
+    const { stack, other } = partitionLanguagesByStack(langs, stackLanguages)
+
+    if (stack.length === 0) {
+      const count = document.createElement("span")
+      count.className = "catalog-lang-badge catalog-lang-badge--count"
+      count.textContent = t(
+        "catalog.languages.count",
+        "{{count}} languages",
+        { count: langs.length },
+      )
+      wrap.appendChild(count)
+      return wrap
+    }
+
+    // Render every stack-matched language, then a "+N more" chip for the
+    // non-stack remainder. Stacks of 5–15 are common; the user's stack is
+    // exactly what they care about — never truncate it.
+    for (const lang of stack) {
+      wrap.appendChild(makeBookCardBadge(lang, "stack"))
+    }
+    if (other.length > 0) {
+      const more = document.createElement("span")
+      more.className = "catalog-lang-badge catalog-lang-badge--more"
+      more.textContent = t(
+        "catalog.languages.more",
+        "+{{count}} more",
+        { count: other.length },
+      )
+      wrap.appendChild(more)
+    }
+    return wrap
+  }
+
+  function makeBookCardBadge(lang: string, kind: "stack" | "default"): HTMLElement {
+    const badge = document.createElement("span")
+    const inStack = stackLanguages.includes(lang)
+    const mod = inStack || kind === "stack" ? " catalog-lang-badge--stack" : ""
+    badge.className = `catalog-lang-badge${mod}`
+    badge.textContent = getLanguageName(lang)
+    return badge
   }
 
   function cleanupPreviewSubs(): void {
@@ -402,7 +548,24 @@ export function createNarratorDetail(
     container.innerHTML = ""
   }
 
-  return { render, dispose }
+  function setStackLanguages(next: string[]): void {
+    const incoming = Array.isArray(next) ? [...next] : []
+    if (
+      incoming.length === stackLanguages.length &&
+      incoming.every((v, i) => v === stackLanguages[i])
+    ) {
+      return
+    }
+    stackLanguages = incoming
+    // Stack change can invalidate the collapsed "show all" choice — if the
+    // user just added a language that was previously hidden in the "other"
+    // bucket, they probably want the pills to re-render in collapsed form
+    // so the new stack pill is prominent at the top.
+    showAllLangs = false
+    render()
+  }
+
+  return { render, dispose, setStackLanguages }
 }
 
 // ── Helpers ──

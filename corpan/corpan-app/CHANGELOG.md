@@ -7,6 +7,33 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.13.1] - 2026-05-17
+
+The "model swap won't crash your app" release. Bundled
+`tauri-plugin-stt` jumps to **0.4.0** for the new
+`INSUFFICIENT_MEMORY` structured error code, a memory-headroom
+gate in `prepare()` after the unload+pressure-relief sequence,
+and a long-overdue fix for the `StatusResult` wire-format gap
+(serde was silently dropping `availableMemoryMB` on the way to
+JS, so the pack's memory-budget logic was running on a broken
+signal).
+
+### Added
+- **`INSUFFICIENT_MEMORY` in the structured-error union.**
+  `SttErrorCode` gains the new value in both `types.ts` and the
+  `STT_ERROR_CODES` set in `hostApi.ts`. Pack packs can route on
+  it the same way they route `MODEL_NOT_INSTALLED` / `NETWORK` /
+  `LOAD_FAILED`. The new code surfaces from `prepare()` when the
+  bundled plugin's memory-headroom check refuses to load a model
+  that would otherwise jetsam-kill the app.
+
+### Fixed
+- **`StatusResult` wire-format**: previously
+  `availableMemoryMB` and `physicalMemoryMB` were declared in
+  TypeScript and emitted by the native plugins but dropped by
+  Rust's serde at the mobile-plugin deserialization boundary.
+  See `tauri-plugin-stt 0.4.0` CHANGELOG for the full story.
+
 ## [0.13.0] - 2026-05-17
 
 The "Parlometron" release. The pronunciation-coach pack is rebranded

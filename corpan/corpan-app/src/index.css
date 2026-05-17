@@ -52,6 +52,33 @@ body,
 } */
 
 
+/* Pin html/body so only inner divs (overflow-y-auto) scroll.
+   Without this, when the MainExperience content overflows, the
+   document itself becomes scrollable and Android WebView paints its
+   overlay scrollbar for the document — which CSS pseudo-element
+   hiding doesn't reliably suppress. Inner scrollable panes still
+   work because they have their own overflow context. */
+html, body, #root {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Belt-and-suspenders for any inner scrollable that does opt in:
+   hide the rail across Blink/WebKit + Gecko/legacy IE. */
+.no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar-thumb,
+.no-scrollbar::-webkit-scrollbar-track,
+.no-scrollbar::-webkit-scrollbar-corner {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
 /* Base font-size + opt-in text scale classes */
 body {
     font-size: 16px;

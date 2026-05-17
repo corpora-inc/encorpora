@@ -826,6 +826,22 @@ body,
   /* No inner cap; parent .pc-result-detail already constrains
      to var(--pc-result-col). */
 }
+/* RTL target languages (Arabic, Hebrew, Persian, Urdu, pa-Arab):
+   reverse pill order so the first expected word is on the right.
+   `row-reverse` flips only the container's main-axis order — pill
+   internals are flipped separately below so the ▸ affordance moves
+   to the LEFT of the text and points leftward (◂) to match reading
+   direction. */
+.pc-words-rtl { flex-direction: row-reverse; }
+.pc-words-rtl .pc-word::after {
+  content: "◂";
+  order: -1;
+  margin-left: 0;
+  margin-right: 6px;
+}
+/* RTL "Heard you say" row: play affordance moves to the right side
+   of the transcript and the ▶ flips to ◀. */
+.pc-transcript-line-rtl { flex-direction: row-reverse; }
 /* Per-word pills double as TTS buttons — tap one to hear it
    spoken. The bars used to share the score story; now the pills
    carry it alone, so they get a bit more weight and breathing
@@ -934,6 +950,28 @@ body,
   width: 64px;
   height: 64px;
   border-width: 6px;
+}
+
+/* Cancel button on cancel-able overlays (memory-wait retry, etc.).
+   Hidden by default; shown when showOverlay() is called with
+   { cancelLabel, onCancel }. Sized below the message with margin
+   so the action is clearly secondary to the wait state. */
+.pc-overlay #pc-overlay-cancel {
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 120ms ease;
+}
+.pc-overlay #pc-overlay-cancel:hover,
+.pc-overlay #pc-overlay-cancel:active {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* ---- Unavailable screen ---- */

@@ -42,18 +42,22 @@ export type ModelVariant = {
    */
   defaultForFreshInstall: boolean
   /**
-   * If true, the variant is hidden from the setup overlay on
-   * non-iPad devices. Set this for models that have been observed
-   * to OOM-kill the app during transcribe on iPhone-class memory
-   * budgets (~5 GB per-app limit even on Pro Max). The user
+   * If true, the variant is hidden on devices that don't pass
+   * `hasLargeMemoryBudget()`. Set this for models that have been
+   * observed to OOM-kill the app during transcribe on iPhone-class
+   * memory budgets (~5 GB per-app limit even on Pro Max). The user
    * literally cannot pick a card that's been gated out, so they
    * can't install something that will crash their device.
    *
    * Threshold (as of 0.3.x testing): models ≥ ~600 MB on disk
    * exceed iPhone budget during the constrained-pass decode burst.
    * Medium (547 MB) fits; Large variants (626/632/1600 MB) do not.
+   *
+   * Renamed from `requiresIpad` in 0.6.3 — the actual constraint
+   * is RAM, not "is this an iPad". Flagship Android phones with
+   * ≥8 GB total memory clear the gate too.
    */
-  requiresIpad?: boolean
+  requiresLargeMemory?: boolean
   /**
    * Optional explicit download URL. When set, overrides the default
    * `https://huggingface.co/ggerganov/whisper.cpp/...` derivation.
@@ -64,34 +68,66 @@ export type ModelVariant = {
   downloadUrl?: string
 }
 
-/// Cached per-app jetsam budget in MB, populated once at boot via
-/// `setDeviceMemoryBudget()`. Source of truth: the iOS plugin's
-/// `getStatus()` returns `os_proc_available_memory()`. Kept as a
-/// module-level cache so the synchronous `visibleModels()` /
-/// `hasLargeMemoryBudget()` calls don't need to await.
+/// Cached memory readings from `stt.getStatus()`, populated once at
+/// boot via `setDeviceMemoryBudget()`. Kept as module-level caches
+/// so the synchronous `visibleModels()` / `hasLargeMemoryBudget()`
+/// calls don't need to await.
+///
+/// `availableMemoryMB` semantics differ by platform: on iOS it's
+/// `os_proc_available_memory()` (per-app jetsam headroom), on
+/// Android it's `ActivityManager.MemoryInfo.availMem` (system-wide
+/// free RAM). The gate function below treats them differently for
+/// that reason. `physicalMemoryMB` is platform-stable: total RAM
+/// installed on the device.
 let cachedAvailableMemoryMB: number | null = null
+let cachedPhysicalMemoryMB: number | null = null
 
-/// Threshold (MB) for offering Large variants. Empirically derived
-/// from live trace runs:
-///   • Medium (547 MB) transcribed cleanly with ~3.3 GB available
-///     at entry — 685 MB activation overhead.
-///   • Large Turbo (632 MB) reproducibly crashed even with 4.4 GB
-///     available at entry — first-transcribe spike on big Whisper
-///     models can hit 3–4 GB regardless of model resident size.
-/// 6500 MB picks a number where iPad Pro M-series (typically
-/// 7–10 GB budget) easily passes and sub-iPad-Pro devices (iPhone
-/// Pro Max ~5 GB, smaller iPads in Stage Manager) fail.
-const LARGE_MODEL_MEMORY_THRESHOLD_MB = 6500
+/// Threshold (MB) for offering Large variants when the available
+/// signal is iOS-semantic (per-app jetsam headroom). Empirically
+/// derived from live trace runs:
+///   • Medium (547 MB) transcribed cleanly with ~3.3 GB available.
+///   • Large Turbo (632 MB) reproducibly crashed with 4.4 GB
+///     available — first-transcribe spike on big Whisper models
+///     can hit 3–4 GB regardless of model resident size.
+/// 6500 MB picks a number where iPad Pro M-series (7–10 GB budget)
+/// easily passes and sub-iPad-Pro (iPhone Pro Max ~5 GB, Stage
+/// Manager iPads) fail.
+const LARGE_MODEL_AVAILABLE_THRESHOLD_MB = 6500
 
-/// Call once at app boot with the device's per-app jetsam budget in
-/// MB (from `stt.getStatus().availableMemoryMB`). Powers the
-/// memory-aware gating in `visibleModels()`. Calling without a value
-/// (null/undefined) leaves the cache untouched, so subsequent
-/// `visibleModels()` calls fall back to the conservative default
-/// (assume small device → hide Large variants).
-export const setDeviceMemoryBudget = (mb: number | null | undefined) => {
-  if (typeof mb === "number" && Number.isFinite(mb) && mb > 0) {
-    cachedAvailableMemoryMB = mb
+/// Threshold (MB) for offering Large variants when the only useful
+/// signal is total physical RAM. Used on Android, where
+/// `availMem` reports system-wide free RAM (typically half of
+/// `totalMem` even on idle devices) and so the iOS-style 6500 MB
+/// available gate would hide Large from every device. 8 GB total
+/// RAM is the lower bound of "flagship" Android — Pixel 8/9 Pro,
+/// Galaxy S24/S25 Ultra, OnePlus 12, etc. — all of which fit a
+/// 1.6 GB model with comfortable margin even when system free RAM
+/// dips to a few GB.
+const LARGE_MODEL_PHYSICAL_THRESHOLD_MB = 8000
+
+/// Call once at app boot with the device's memory readings from
+/// `stt.getStatus()`. Powers the memory-aware gating in
+/// `visibleModels()` / `hasLargeMemoryBudget()`. Either argument
+/// can be null/undefined — passing only one leaves the other cache
+/// untouched. Subsequent `hasLargeMemoryBudget()` calls fall back
+/// to the conservative UA default until both readings land.
+export const setDeviceMemoryBudget = (
+  availableMB: number | null | undefined,
+  physicalMB?: number | null | undefined,
+) => {
+  if (
+    typeof availableMB === "number"
+    && Number.isFinite(availableMB)
+    && availableMB > 0
+  ) {
+    cachedAvailableMemoryMB = availableMB
+  }
+  if (
+    typeof physicalMB === "number"
+    && Number.isFinite(physicalMB)
+    && physicalMB > 0
+  ) {
+    cachedPhysicalMemoryMB = physicalMB
   }
 }
 
@@ -119,25 +155,46 @@ const looksIpadByUA = (): boolean => {
   return false
 }
 
-/// True when this device's per-app memory budget can comfortably fit
-/// the Large variants' first-transcribe spike.
+/// True when this device can comfortably fit the Large variants'
+/// first-transcribe spike. Three-way check, any one passing
+/// suffices (we want users with capable hardware to actually see
+/// the Large card; over-conservative gating hides good experiences):
 ///
-/// Preference order:
-///   1. Real budget from `os_proc_available_memory()` (set via
-///      `setDeviceMemoryBudget()` from `stt.getStatus()`). Threshold
-///      = `LARGE_MODEL_MEMORY_THRESHOLD_MB`.
-///   2. UA-based fallback (`looksIpadByUA`) when budget is unknown.
-///      Imperfect — older iPads / Stage Manager iPads pass UA but
-///      can't actually fit — but doesn't blank out the lineup
-///      entirely on iPad while we wait for the budget signal.
+///   1. **iOS-style headroom**: `availableMemoryMB ≥ 6500`. Applies
+///      cleanly on iOS where `os_proc_available_memory()` reports
+///      per-app jetsam budget. iPad Pro M-series typically clears
+///      this; sub-iPad-Pro doesn't.
+///   2. **Android-style total RAM**: `physicalMemoryMB ≥ 8000`. On
+///      Android `availableMemoryMB` is system-wide free RAM rather
+///      than per-app budget, so the iOS-style 6.5 GB available
+///      threshold hides Large from every Android device. Using
+///      total RAM as a coarser signal lets flagship Android phones
+///      (Pixel 8+ Pro, Galaxy S24+ Ultra, etc.) see Large too.
+///   3. **UA-based fallback**: when neither memory reading is
+///      available yet (first paint before `getStatus()` resolves),
+///      fall back to looking for iPad UA. iPad gets Large; other
+///      unknown UAs don't.
 ///
-/// Once the host plugin rebuilds with the new `getStatus()` fields,
-/// the real budget takes over and the UA fallback never matters.
+/// Each check fails closed — if a reading is null we skip that
+/// check rather than refuse on missing data. The first passing
+/// check wins.
 export const hasLargeMemoryBudget = (): boolean => {
-  if (cachedAvailableMemoryMB != null) {
-    return cachedAvailableMemoryMB >= LARGE_MODEL_MEMORY_THRESHOLD_MB
+  if (
+    cachedAvailableMemoryMB != null
+    && cachedAvailableMemoryMB >= LARGE_MODEL_AVAILABLE_THRESHOLD_MB
+  ) {
+    return true
   }
-  return looksIpadByUA()
+  if (
+    cachedPhysicalMemoryMB != null
+    && cachedPhysicalMemoryMB >= LARGE_MODEL_PHYSICAL_THRESHOLD_MB
+  ) {
+    return true
+  }
+  if (cachedAvailableMemoryMB == null && cachedPhysicalMemoryMB == null) {
+    return looksIpadByUA()
+  }
+  return false
 }
 
 // Seven tiers: Tiny → Small → Medium → (Large family).
@@ -359,24 +416,25 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     ],
     approxSizeMB: 1580,
     defaultForFreshInstall: false,
-    requiresIpad: true,
+    requiresLargeMemory: true,
     downloadUrl:
       "https://d38iwc9748jekz.cloudfront.net/whisper-models/ggml-large-v3-q8_0.bin",
   },
 ]
 
-/// Models visible to the user on this device. Memory-budget-aware:
-/// devices with `availableMemoryMB >= LARGE_MODEL_MEMORY_THRESHOLD_MB`
-/// see everything; smaller-budget devices hide variants flagged
-/// `requiresIpad: true` so the user literally cannot pick a card
-/// that would OOM-kill their device. The canonical `MODELS` list is
-/// unchanged — `modelById` still resolves every id including
-/// iPad-only ones, so existing localStorage preferences from earlier
-/// installs don't get orphaned. Only the SETUP OVERLAY uses this
-/// filtered view.
+/// Models visible to the user on this device. Memory-budget-aware
+/// via `hasLargeMemoryBudget()`: devices that pass the gate (iPad
+/// Pro-class iOS, ≥8 GB flagship Android, etc.) see everything;
+/// smaller-budget devices hide variants flagged
+/// `requiresLargeMemory: true` so the user literally cannot pick a
+/// card that would OOM-kill their device. The canonical `MODELS`
+/// list is unchanged — `modelById` still resolves every id
+/// including memory-gated ones, so existing localStorage preferences
+/// from earlier installs don't get orphaned. Only the SETUP OVERLAY
+/// uses this filtered view.
 export const visibleModels = (): ReadonlyArray<ModelVariant> => {
   if (hasLargeMemoryBudget()) return MODELS
-  return MODELS.filter((m) => !m.requiresIpad)
+  return MODELS.filter((m) => !m.requiresLargeMemory)
 }
 
 /// Pick the fresh-install default from the variants currently visible
@@ -389,9 +447,9 @@ export const visibleDefaultModel = (): ModelVariant => {
 /// Convenience for the boot-time demotion check: is the model
 /// currently saved in localStorage one that this device's memory
 /// budget cannot safely run? True only if the variant is flagged
-/// `requiresIpad` AND we don't have the headroom for it.
+/// `requiresLargeMemory` AND we don't have the headroom for it.
 export const variantExceedsBudget = (m: ModelVariant): boolean => {
-  return !!m.requiresIpad && !hasLargeMemoryBudget()
+  return !!m.requiresLargeMemory && !hasLargeMemoryBudget()
 }
 
 export const modelById = (id: string | null | undefined): ModelVariant | undefined => {

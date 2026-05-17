@@ -1,4 +1,5 @@
 import AVFoundation
+import Darwin  // malloc_zone_pressure_relief
 import Foundation
 import Tauri
 import os.log
@@ -284,6 +285,14 @@ enum SttErrorCode: String {
     case micPermissionDenied = "MIC_PERMISSION_DENIED"
     case noActiveSession = "NO_ACTIVE_SESSION"
     case audioFailed = "AUDIO_FAILED"
+    /// `prepare()` ran the unload+pressure-relief sequence to free the
+    /// previous model's memory but the OS still doesn't have enough
+    /// headroom to safely allocate the requested model's weights. The
+    /// previous model has already been dropped at this point, so the
+    /// pack should route the user to "restart the app and try again"
+    /// rather than retry in-process. This is the only structured code
+    /// the user can recover from by relaunching Corpán.
+    case insufficientMemory = "INSUFFICIENT_MEMORY"
     case unknown = "UNKNOWN"
 }
 
@@ -1181,12 +1190,19 @@ private final class WhisperManager {
             }
 
             // Drop a different already-loaded kit before allocating
-            // the new one.
+            // the new one. This branch only fires on paths where the
+            // pack calls prepare() directly without an explicit
+            // stt.unload() first (rare — boot's saved-model path,
+            // some recovery flows). The normal setup-overlay path
+            // unloads in a SEPARATE JS call before prepare runs, so
+            // by the time we're here loadedModel is already nil.
             let prev = self.queue.sync { self.loadedModel }
-            if let prev, prev != modelName {
+            let swappingModels = prev != nil && prev != modelName
+            if let prev, swappingModels {
                 sttLog(
                     "Whisper | unloading previous model before swap:",
                     prev)
+                sttMemSnapshot("swap-before-unload: \(prev) → \(modelName)")
                 autoreleasepool {
                     self.queue.sync {
                         self.ctx = nil
@@ -1194,6 +1210,28 @@ private final class WhisperManager {
                     }
                 }
             }
+
+            // ALWAYS run pressure-relief + settle before the headroom
+            // check, regardless of whether THIS prepare() did the
+            // unload or whether a previous explicit stt.unload() call
+            // did. The May-17 crash investigation showed the explicit-
+            // unload path was BYPASSING this entirely: the pack called
+            // stt.unload() (which did its own pressure_relief but
+            // didn't settle), then stt.prepare() with prev=nil so the
+            // old swap-branch settle never ran, then the headroom
+            // check passed against an `os_proc_available_memory()`
+            // number that lied about the C heap's freelist hoard. The
+            // load then jetsam-killed mid-allocation.
+            //
+            // Note: malloc_zone_pressure_relief is best-effort — ggml
+            // uses aligned_alloc which may live in a zone the pressure
+            // call doesn't touch. The settle delay alone is the more
+            // reliable lever; the kernel reclaims pages on its own
+            // schedule even when malloc doesn't return them eagerly.
+            _ = malloc_zone_pressure_relief(nil, 0)
+            sttMemSnapshot("prepare-after-pressure-relief: \(modelName)")
+            Thread.sleep(forTimeInterval: 0.15)
+            sttMemSnapshot("prepare-after-settle: \(modelName)")
 
             // File present?
             let problems = self.validateModel(modelName)
@@ -1207,6 +1245,26 @@ private final class WhisperManager {
                         ready: false, model: modelName,
                         message: msg,
                         code: SttErrorCode.modelNotInstalled.rawValue))
+                return
+            }
+
+            // Memory-headroom gate. See `checkMemoryHeadroom` for the
+            // math; tldr — we require BOTH a generous available-memory
+            // margin (2.0× the model size, up from 1.3× in 0.4.0 after
+            // the May-17 jetsam-during-load crash) AND that current
+            // resident is not bloated relative to the new model
+            // (which would indicate the freelist is hoarding the
+            // previous model's weights and the next allocation will
+            // double-count against the jetsam ceiling).
+            if let headroomError = self.checkMemoryHeadroom(for: modelName) {
+                sttErr(
+                    "Whisper | load refused (INSUFFICIENT_MEMORY):",
+                    headroomError)
+                completion(
+                    PreparePayload(
+                        ready: false, model: modelName,
+                        message: headroomError,
+                        code: SttErrorCode.insufficientMemory.rawValue))
                 return
             }
 
@@ -1277,7 +1335,150 @@ private final class WhisperManager {
                 self.loadedModel = nil
             }
         }
+        // Hint malloc to give the freed weight pages back to the OS.
+        // Without this, the heap holds them on its freelist and
+        // `os_proc_available_memory()` keeps under-reporting headroom
+        // until the next big alloc triggers reclamation.
+        _ = malloc_zone_pressure_relief(nil, 0)
         sttMemSnapshot("after-unload")
+    }
+
+    /// Headroom multiplier over the on-disk model size for the
+    /// available-memory check. Bumped 1.3 → 2.0 in 0.4.1 after the
+    /// May-17 crash showed that 1.3× wasn't enough: ggml's init
+    /// transiently double-buffers the weights (raw file read + tensor
+    /// copy) and iOS's `os_proc_available_memory()` reports
+    /// optimistically relative to the actual jetsam ceiling. 2.0×
+    /// covers the init peak with a margin; tighter than this risks
+    /// passing the gate then dying mid-load.
+    private static let memoryHeadroomMultiplier: Double = 2.0
+
+    /// Read the current resident set size of this process in bytes.
+    /// Same `mach_task_basic_info` syscall that `sttMemSnapshot`
+    /// uses; factored out so the headroom check can read it cheaply.
+    /// Returns 0 if the syscall fails (rare).
+    private func currentResidentBytes() -> Int64 {
+        var info = mach_task_basic_info()
+        var count = mach_msg_type_number_t(
+            MemoryLayout<mach_task_basic_info>.size
+                / MemoryLayout<integer_t>.size)
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &info) { ptr in
+            ptr.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
+                task_info(
+                    mach_task_self_,
+                    task_flavor_t(MACH_TASK_BASIC_INFO),
+                    $0,
+                    &count)
+            }
+        }
+        return kerr == KERN_SUCCESS ? Int64(info.resident_size) : 0
+    }
+
+    /// Check whether the OS has enough room to safely allocate this
+    /// model's weights + working memory. Returns nil if we're good,
+    /// or a human-readable explanation string if we're not.
+    ///
+    /// The May-17 crash showed why a simple `available_memory >
+    /// modelSize × 1.3` check isn't enough: after an explicit
+    /// `stt.unload()`, the C heap was hoarding 1.55 GB of the
+    /// previous model on its freelist. `os_proc_available_memory()`
+    /// reported 3339 MB free — true from the kernel's POV — and our
+    /// gate passed (3339 > 1579 × 1.3 = 2053). But when ggml then
+    /// allocated 1.58 GB for the new model, peak resident climbed to
+    /// 1880 + ~3200 = ~5040 MB against a budget of ~5220 MB. iOS
+    /// jetsam fired during the load.
+    ///
+    /// The fix is a composite "projected peak vs total budget" check:
+    ///
+    ///     projectedPeak = residentNow + modelSize × 2.0
+    ///     totalBudget   = residentNow + availableNow
+    ///     refuse if projectedPeak > totalBudget × 0.85
+    ///
+    /// The 2.0× covers ggml's init double-buffering (raw file read
+    /// + tensor copy can briefly co-exist) plus per-context working
+    /// memory (mel filters, KV cache, decoder buffers ≈ 25-30% of
+    /// weights). The 0.85 ceiling leaves a 15% margin for system
+    /// overhead and the fact that `os_proc_available_memory()`
+    /// reports optimistically relative to the actual jetsam line.
+    ///
+    /// This formula correctly handles:
+    ///   - Fresh-boot first-load (low resident) → passes for
+    ///     models up to ~42% of the total budget.
+    ///   - Large→Large swap with freelist hoarding (high resident,
+    ///     similar new model) → refuses, which is the May-17 case.
+    ///   - Large→Small swap (high resident, small new model) →
+    ///     passes, because new × 2 stays small.
+    ///   - Genuinely-tight devices → refuses earlier than a flat
+    ///     multiplier would.
+    private func checkMemoryHeadroom(for modelName: String) -> String? {
+        let path = self.modelFile(modelName)
+        let modelBytes = self.fileSizeBytes(path)
+        guard modelBytes > 0 else {
+            // No file (or unreadable). Don't gate on memory — let the
+            // existing MODEL_NOT_INSTALLED path handle the missing-file
+            // case.
+            return nil
+        }
+        let availableBytes = Int64(os_proc_available_memory())
+        guard availableBytes > 0 else {
+            // The API can return 0 on simulator or weird states. Don't
+            // refuse based on a measurement we don't trust.
+            sttLog(
+                "Whisper | os_proc_available_memory returned 0 — skipping headroom gate")
+            return nil
+        }
+        let residentBytes = self.currentResidentBytes()
+        // Composite check inputs.
+        let projectedPeak = residentBytes
+            + Int64(Double(modelBytes) * Self.memoryHeadroomMultiplier)
+        let totalBudget = residentBytes + availableBytes
+        let peakLimit = Int64(Double(totalBudget) * 0.85)
+
+        // Also keep a flat available-memory floor for safety:
+        // even if the composite math says we're fine, refuse if
+        // available alone is below 1.5× the model size. Catches
+        // weird states where resident is suspiciously low (e.g.,
+        // API failure returning 0) and we can't trust the composite
+        // formula.
+        let availableFloor = Int64(Double(modelBytes) * 1.5)
+
+        let modelMB = modelBytes / 1_048_576
+        let availMB = availableBytes / 1_048_576
+        let residentMB = residentBytes / 1_048_576
+        let peakMB = projectedPeak / 1_048_576
+        let limitMB = peakLimit / 1_048_576
+        let budgetMB = totalBudget / 1_048_576
+        sttLog(
+            "Whisper | headroom check for \(modelName):",
+            "modelMB=\(modelMB) residentMB=\(residentMB)",
+            "availableMB=\(availMB) budgetMB=\(budgetMB)",
+            "projectedPeakMB=\(peakMB) peakLimitMB=\(limitMB)")
+
+        if availableBytes < availableFloor {
+            let needMB = availableFloor / 1_048_576
+            return
+                "Need ~\(needMB) MB free to load \(modelName) safely, but only \(availMB) MB is available right now. "
+                + "Close other apps and restart Corpán, then try the switch again."
+        }
+
+        if projectedPeak > peakLimit {
+            // Distinguish the "freelist hoarding" case from the
+            // "genuinely tight device" case so the user sees an
+            // accurate action. Hoarding = high resident relative to
+            // available; tight device = low budget overall.
+            if residentBytes > availableBytes / 2 {
+                return
+                    "The previous model's memory hasn't been released to the OS yet "
+                    + "(\(residentMB) MB resident with \(availMB) MB free; peak would hit \(peakMB) MB of a \(limitMB) MB safe ceiling). "
+                    + "Restart Corpán to clear the allocator state, then switch."
+            }
+            return
+                "Not enough memory budget to load this model safely "
+                + "(peak ~\(peakMB) MB > \(limitMB) MB safe ceiling). "
+                + "Close other apps and restart Corpán."
+        }
+
+        return nil
     }
 
     // ---------------------------------------------------------------------

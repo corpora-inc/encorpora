@@ -9,6 +9,16 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Added
+- Catalog now prioritizes the user's stack languages. Book cards render
+  every stack-matched language as an accent pill + a "+N more" chip for
+  the non-stack remainder (or a "N languages" count chip when there's
+  zero overlap), so a stack of 5–15 stays fully visible. Book-detail
+  pages split narrations into "Your languages" / "More languages" with
+  the long tail behind a "Show all N languages" expander, and narrator
+  profiles accent stack pills while collapsing the rest. Same data —
+  but a 50-language book is now skimmable for the languages you
+  actually care about.
 
 ## [0.6.3] - 2026-05-13
 ### Added

@@ -125,6 +125,70 @@ export function getAvailableLanguages(narrations: CatalogNarrationEntry[]): stri
   return [...set].sort()
 }
 
+/**
+ * Split a list of language codes into two ordered buckets:
+ *   - `stack`:  languages also present in the user's stack, in the user's
+ *               stack order (so "what I care about most" lands first).
+ *   - `other`:  every remaining language from the input, alphabetized by
+ *               display name for predictability.
+ *
+ * Pass `[]` for `stackLanguages` to skip prioritization — every language
+ * lands in `other`. This is what readers do until the host wires up stack
+ * config (or in dev with the mock host api before a stack is set).
+ */
+export function partitionLanguagesByStack(
+  allLanguages: string[],
+  stackLanguages: string[],
+): { stack: string[]; other: string[] } {
+  const available = new Set(allLanguages)
+  const stack: string[] = []
+  const seen = new Set<string>()
+  for (const code of stackLanguages) {
+    if (available.has(code) && !seen.has(code)) {
+      stack.push(code)
+      seen.add(code)
+    }
+  }
+  const other = allLanguages
+    .filter((code) => !seen.has(code))
+    .sort((a, b) => getLanguageName(a).localeCompare(getLanguageName(b)))
+  return { stack, other }
+}
+
+/**
+ * Sort narrations stack-first. Stack-matched narrations come first in the
+ * user's stack order; remaining narrations follow, sorted by language
+ * display name. Stable within each language so the caller's prior order
+ * (e.g. installed-first) is preserved.
+ */
+export function sortNarrationsByStack(
+  narrations: CatalogNarrationEntry[],
+  stackLanguages: string[],
+): CatalogNarrationEntry[] {
+  const stackRank = new Map<string, number>()
+  stackLanguages.forEach((code, i) => {
+    if (!stackRank.has(code)) stackRank.set(code, i)
+  })
+  const tagged = narrations.map((n, originalIndex) => ({
+    n,
+    originalIndex,
+    inStack: stackRank.has(n.language),
+    rank: stackRank.get(n.language) ?? Number.MAX_SAFE_INTEGER,
+    displayName: getLanguageName(n.language),
+  }))
+  tagged.sort((a, b) => {
+    if (a.inStack !== b.inStack) return a.inStack ? -1 : 1
+    if (a.inStack && b.inStack) {
+      if (a.rank !== b.rank) return a.rank - b.rank
+      return a.originalIndex - b.originalIndex
+    }
+    const byName = a.displayName.localeCompare(b.displayName)
+    if (byName !== 0) return byName
+    return a.originalIndex - b.originalIndex
+  })
+  return tagged.map((t) => t.n)
+}
+
 /** Language display names — native name for each code. */
 const LANG_NAMES: Record<string, string> = {
   en: "English",

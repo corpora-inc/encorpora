@@ -54,48 +54,53 @@ export function OnboardingPickPrimary() {
 
     return (
         <div
-            className="mx-auto w-full max-w-xl px-4 flex flex-col gap-2"
-            style={{
-                paddingTop: "max(env(safe-area-inset-top), 0.75rem)",
-                paddingBottom: "max(env(safe-area-inset-bottom), 1rem)",
-            }}
+            className="h-dvh w-full overflow-y-auto overscroll-contain"
+            style={{ WebkitOverflowScrolling: "touch" }}
         >
-            <ul
-                role="listbox"
-                aria-label="Choose your primary language"
-                className="flex flex-col gap-2 list-none p-0 m-0"
+            <div
+                className="mx-auto w-full max-w-xl px-4 flex flex-col gap-2"
+                style={{
+                    paddingTop: "max(env(safe-area-inset-top), 0.75rem)",
+                    paddingBottom: "max(env(safe-area-inset-bottom), 1rem)",
+                }}
             >
-                {orderedLangs.map((code) => (
-                    <PrimaryLanguageButton
-                        key={code}
-                        code={code}
-                        onSelect={handleSelect}
-                    />
-                ))}
-            </ul>
-
-            {COMING_SOON_LANGUAGES.length > 0 && (
-                <section
-                    aria-label="Languages coming soon"
-                    className="flex flex-col gap-2 mt-6"
+                <ul
+                    role="listbox"
+                    aria-label="Choose your primary language"
+                    className="flex flex-col gap-2 list-none p-0 m-0"
                 >
-                    <header className="flex items-center justify-center gap-2 mb-1">
-                        <Hourglass
-                            size={14}
-                            className="text-muted-foreground/80"
-                            aria-hidden="true"
+                    {orderedLangs.map((code) => (
+                        <PrimaryLanguageButton
+                            key={code}
+                            code={code}
+                            onSelect={handleSelect}
                         />
-                        <span className="text-xs font-medium tracking-wide text-muted-foreground">
-                            More languages coming soon
-                        </span>
-                    </header>
-                    <ul className="flex flex-col gap-2 list-none p-0 m-0">
-                        {COMING_SOON_LANGUAGES.map((code) => (
-                            <ComingSoonRow key={code} code={code} />
-                        ))}
-                    </ul>
-                </section>
-            )}
+                    ))}
+                </ul>
+
+                {COMING_SOON_LANGUAGES.length > 0 && (
+                    <section
+                        aria-label="Languages coming soon"
+                        className="flex flex-col gap-2 mt-6"
+                    >
+                        <header className="flex items-center justify-center gap-2 mb-1">
+                            <Hourglass
+                                size={14}
+                                className="text-muted-foreground/80"
+                                aria-hidden="true"
+                            />
+                            <span className="text-xs font-medium tracking-wide text-muted-foreground">
+                                More languages coming soon
+                            </span>
+                        </header>
+                        <ul className="flex flex-col gap-2 list-none p-0 m-0">
+                            {COMING_SOON_LANGUAGES.map((code) => (
+                                <ComingSoonRow key={code} code={code} />
+                            ))}
+                        </ul>
+                    </section>
+                )}
+            </div>
         </div>
     );
 }

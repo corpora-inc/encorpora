@@ -23,6 +23,8 @@ import {
   searchByTitle,
   getAvailableLanguages,
   getLanguageName,
+  partitionLanguagesByStack,
+  sortNarrationsByStack,
 } from "./searchFilter"
 import { hasUpdate } from "./versionUtil"
 import {
@@ -363,6 +365,63 @@ export function createAppShell(
   // Hydrated lookup tables (characters, voiceProfiles, books). Synthesized for
   // legacy catalogs so every UI surface can assume hydrated rows exist.
   let catalogIndex: CatalogIndex | null = null
+
+  // -----------------------------------------------------------------------
+  // User's stack languages — drives stack-first ordering in the catalog UI.
+  //
+  // Surfaces that consult `stackLanguages`:
+  //   - browse book cards (3 stack pills + "+N more" chip, or "N languages"
+  //     count when there's no overlap)
+  //   - book detail (narration rows sorted stack-first, with a "Your
+  //     languages" / "More languages" divider)
+  //   - narrator profile (stack pills accented, rest collapsed behind a
+  //     "Show all" expander)
+  //
+  // Hydrated synchronously from `hostApi.getStackConfig()` and kept in sync
+  // via `onStackConfigChange`. We expect both methods on every real host;
+  // the structural typing here keeps appShell decoupled from @shared/sdk.
+  // -----------------------------------------------------------------------
+  type StackAwareHostApi = {
+    getStackConfig?: () => { languages?: string[] } | undefined
+    onStackConfigChange?: (
+      listener: (next: { languages?: string[] }) => void,
+    ) => () => void
+  }
+  const stackHost = opts.hostApi as StackAwareHostApi
+  let stackLanguages: string[] = (() => {
+    try {
+      const langs = stackHost.getStackConfig?.()?.languages
+      return Array.isArray(langs) ? [...langs] : []
+    } catch (err) {
+      console.warn("[appShell] getStackConfig threw:", err)
+      return []
+    }
+  })()
+  const stackUnsub = stackHost.onStackConfigChange?.((next) => {
+    const incoming = Array.isArray(next?.languages) ? [...next.languages] : []
+    if (sameStringList(incoming, stackLanguages)) return
+    stackLanguages = incoming
+    // Re-render everywhere stack ordering matters. Browse + library +
+    // now-playing all rebuild their lists; the narrator profile, if mounted,
+    // re-renders via its own setter so we don't tear it down.
+    refreshBrowseSection()
+    refreshLibrarySection()
+    refreshNowPlayingSection()
+    if (browseShowingDetail) {
+      if (detailMode === "book") {
+        detailBookId = "" // force full rebuild so the divider re-renders
+        renderBookDetail()
+      } else if (detailMode === "narrator" && narratorDetailInstance) {
+        narratorDetailInstance.setStackLanguages(stackLanguages)
+      }
+    }
+  })
+
+  function sameStringList(a: string[], b: string[]): boolean {
+    if (a.length !== b.length) return false
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false
+    return true
+  }
 
   // --- State for section renderers (must be before createCommandDrawer,
   //     which calls render() immediately during construction) ---
@@ -1160,14 +1219,9 @@ export function createAppShell(
         title.className = "catalog-card-title"
         title.textContent = book.bookTitle
 
-        const langs = document.createElement("div")
-        langs.className = "catalog-card-langs"
-        for (const lang of book.languages) {
-          const badge = document.createElement("span")
-          badge.className = "catalog-lang-badge"
-          badge.textContent = getLanguageName(lang)
-          langs.appendChild(badge)
-        }
+        const langs = renderStackFirstLangBadges(book.languages, {
+          variant: "card",
+        })
 
         const meta = document.createElement("div")
         meta.className = "catalog-card-meta"
@@ -1348,6 +1402,91 @@ export function createAppShell(
     return chip
   }
 
+  /**
+   * Render a row of language badges for a book card, prioritizing the user's
+   * stack. With 50-language books, a flat pill row is visual noise; this
+   * surfaces the languages the user actually cares about and collapses
+   * everything ELSE into a "+N more" or "N languages" chip.
+   *
+   * Behaviour:
+   *   - Books with ≤3 total languages render every language directly.
+   *   - Books with stack matches render EVERY stack-matched language (in
+   *     stack order) + a "+N more" chip counting only the non-stack langs.
+   *     Stacks of 5–15 are common — wrapping across rows is acceptable;
+   *     hiding a stack language behind a count is not.
+   *   - Books with zero stack overlap render a single muted "N languages"
+   *     count chip — a nudge that this title exists in many languages.
+   */
+  function renderStackFirstLangBadges(
+    allLanguages: string[],
+    opts: { variant: "card" | "pill" },
+  ): HTMLElement {
+    const wrap = document.createElement("div")
+    wrap.className =
+      opts.variant === "card" ? "catalog-card-langs" : "catalog-narrator-detail-langs"
+
+    const { stack, other } = partitionLanguagesByStack(allLanguages, stackLanguages)
+    const badgeClass =
+      opts.variant === "card" ? "catalog-lang-badge" : "catalog-narrator-detail-lang-pill"
+
+    // Small book — render everything directly. With ≤3 languages there's no
+    // reason to summarize.
+    if (allLanguages.length <= 3) {
+      // Even small books benefit from stack-first ordering: a 3-lang book in
+      // [English, Korean, Spanish] should put the user's primary first.
+      const ordered = [...stack, ...other]
+      for (const lang of ordered) {
+        wrap.appendChild(makeLangBadge(lang, badgeClass, "stack-included"))
+      }
+      return wrap
+    }
+
+    // No stack overlap — show a single count chip.
+    if (stack.length === 0) {
+      const count = document.createElement("span")
+      count.className = `${badgeClass} ${badgeClass}--count`
+      count.textContent = tt(
+        "catalog.languages.count",
+        "{{count}} languages",
+        { count: allLanguages.length },
+      )
+      wrap.appendChild(count)
+      return wrap
+    }
+
+    // Stack-first: render every stack-matched language, then a "+N more"
+    // chip for the non-stack remainder. The user's stack IS the set of
+    // languages they care about — never hide any of those behind a count.
+    for (const lang of stack) {
+      wrap.appendChild(makeLangBadge(lang, badgeClass, "stack"))
+    }
+    if (other.length > 0) {
+      const more = document.createElement("span")
+      more.className = `${badgeClass} ${badgeClass}--more`
+      more.textContent = tt(
+        "catalog.languages.more",
+        "+{{count}} more",
+        { count: other.length },
+      )
+      wrap.appendChild(more)
+    }
+    return wrap
+  }
+
+  function makeLangBadge(
+    lang: string,
+    badgeClass: string,
+    kind: "stack" | "stack-included" | "other",
+  ): HTMLElement {
+    const badge = document.createElement("span")
+    const inStack = stackLanguages.includes(lang)
+    const stackMod = inStack && kind !== "other" ? ` ${badgeClass}--stack` : ""
+    const otherMod = !inStack && kind === "other" ? ` ${badgeClass}--other` : ""
+    badge.className = `${badgeClass}${stackMod}${otherMod}`
+    badge.textContent = getLanguageName(lang)
+    return badge
+  }
+
   function showInlineNarratorDetail(characterId: string): void {
     if (!catalogIndex) return
     if (!catalogIndex.getCharacter(characterId)) {
@@ -1378,6 +1517,7 @@ export function createAppShell(
       },
       onBack: () => exitDetailScreen(),
       t: tt,
+      stackLanguages,
     })
     narratorDetailInstance.render()
     drawerStore.setState({ activeScreen: "detail" })
@@ -1427,9 +1567,17 @@ export function createAppShell(
    * book detail screen.
    */
   let bookDetailReturnToNarratorId: string | null = null
+  /**
+   * Whether the "More languages" section on the book detail page is
+   * expanded. Resets to collapsed every time the user opens a new book —
+   * the point is to keep the page short by default and let curious users
+   * dig into the full list of N languages on demand.
+   */
+  let bookDetailMoreExpanded = false
 
   function showInlineBookDetail(narrations: CatalogNarrationEntry[]): void {
     if (narrations.length === 0) return
+    bookDetailMoreExpanded = false
     if (detailMode === "narrator") {
       // Coming from narrator profile — remember to return to it on back.
       bookDetailReturnToNarratorId = detailNarratorId
@@ -1586,9 +1734,29 @@ export function createAppShell(
       )
     }
 
-    // Installed narrations as tappable language rows (language picker)
-    const installedNarrs = narrations.filter(n => isInstalled(n.id))
+    // Installed narrations as tappable language rows (language picker).
+    // Installed rows always render — small list, no need to collapse — but
+    // we still sort stack-first so the user's primary languages appear at
+    // the top of the picker.
+    const installedNarrs = sortNarrationsByStack(
+      narrations.filter(n => isInstalled(n.id)),
+      stackLanguages,
+    )
     const availableNarrs = narrations.filter(n => !isInstalled(n.id))
+
+    // Split "available" into stack-matched vs everything else. With 50-language
+    // books, this is the wedge that keeps the page from becoming a wall: the
+    // user's stack languages render eagerly under "Your languages", and the
+    // rest hide behind a "Show all N languages" expander.
+    const stackSet = new Set(stackLanguages)
+    const stackAvailable = sortNarrationsByStack(
+      availableNarrs.filter(n => stackSet.has(n.language)),
+      stackLanguages,
+    )
+    const otherAvailable = sortNarrationsByStack(
+      availableNarrs.filter(n => !stackSet.has(n.language)),
+      [], // pure alphabetical
+    )
     const active = getActive()
 
     const detailHandlers: RowHandlers = {
@@ -1612,15 +1780,63 @@ export function createAppShell(
       detail.appendChild(createCompactRow(narr, detailHandlers))
     }
 
-    if (availableNarrs.length > 0) {
+    // "Your languages" header — only when the user actually has stack
+    // matches that aren't already installed. If no stack langs match (or
+    // they're all installed already), skip the header entirely and label
+    // the next section neutrally.
+    if (stackAvailable.length > 0) {
       const sTitle = document.createElement("div")
-      sTitle.className = "catalog-detail-section-title"
-      sTitle.textContent = installedNarrs.length > 0 ? "More narrations" : "Narrations"
+      sTitle.className = "catalog-detail-section-title catalog-detail-section-title--stack"
+      sTitle.textContent = tt("catalog.detail.yourLanguages", "Your languages")
       sTitle.style.marginTop = "16px"
       detail.appendChild(sTitle)
-
-      for (const narr of availableNarrs) {
+      for (const narr of stackAvailable) {
         detail.appendChild(createCompactRow(narr, detailHandlers))
+      }
+    }
+
+    if (otherAvailable.length > 0) {
+      const sTitle = document.createElement("div")
+      sTitle.className = "catalog-detail-section-title"
+      sTitle.style.marginTop = "16px"
+
+      // Label depends on what came before — if we already showed stack
+      // matches, this section is "more"; if we didn't, it's just the
+      // narrations list.
+      const haveStackContext = stackAvailable.length > 0 || installedNarrs.some(n => stackSet.has(n.language))
+      sTitle.textContent = haveStackContext
+        ? tt("catalog.detail.moreLanguages", "More languages")
+        : (installedNarrs.length > 0
+            ? tt("catalog.detail.moreNarrations", "More narrations")
+            : tt("catalog.detail.narrations", "Narrations"))
+      detail.appendChild(sTitle)
+
+      // Collapse threshold: when the user has a meaningful stack subset to
+      // anchor on AND the "other" list is long, hide it behind an expander.
+      // Without a stack anchor, leave everything visible — collapsing the
+      // entire list provides no benefit there.
+      const shouldCollapse =
+        haveStackContext && otherAvailable.length > 8 && !bookDetailMoreExpanded
+
+      if (shouldCollapse) {
+        const expand = document.createElement("button")
+        expand.type = "button"
+        expand.className = "catalog-detail-expand-btn"
+        expand.textContent = tt(
+          "catalog.detail.showAll",
+          "Show all {{count}} languages",
+          { count: otherAvailable.length },
+        )
+        expand.onclick = () => {
+          bookDetailMoreExpanded = true
+          detailBookId = "" // force full rebuild so the rows render
+          renderBookDetail()
+        }
+        detail.appendChild(expand)
+      } else {
+        for (const narr of otherAvailable) {
+          detail.appendChild(createCompactRow(narr, detailHandlers))
+        }
       }
     }
 
@@ -2410,6 +2626,7 @@ export function createAppShell(
     narrUnsub()
     persistUnsub()
     librarySwitcherUnsub()
+    stackUnsub?.()
     entitlementListeners.delete(entitlementChanged)
     document.removeEventListener("visibilitychange", onVisibilityChange)
     window.removeEventListener("corpan:purchase-recorded", onPurchaseEvent)

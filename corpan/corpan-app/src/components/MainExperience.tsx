@@ -20,7 +20,6 @@ import { isRTL } from "@/util/convert";
 import {
     getPlatformBottomPadding,
     getPlatformTopPaddingButtons,
-    getPlatformTopPaddingTranslations,
 } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
@@ -72,6 +71,7 @@ function MetaChips({ entry }: { entry: EntryOut }) {
     const { t } = useTranslation();
     return (
         <div
+            data-meta-chips
             className="fixed top-7 left-5 z-50 pointer-events-none"
             style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
         >
@@ -224,12 +224,16 @@ export function MainExperience() {
 
     const scrollRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLDivElement>(null);
+    const stackRef = useRef<HTMLDivElement>(null);
     // Measured at runtime so the scroll container's padding-bottom always
     // exceeds the floating Nav's actual rendered height. Otherwise a
     // language stack that is *just* tall enough to extend under the Nav
     // but not tall enough to overflow the scroll container hides its last
     // row with no way to scroll to it.
     const [navHeight, setNavHeight] = useState<number>(getPlatformBottomPadding());
+    const [layout, setLayout] = useState<{ paddingTop: number; justify: "center" | "flex-start" }>(
+        { paddingTop: 32, justify: "center" }
+    );
 
     const lookup = useMemo(() => buildLookup(currEntry), [currEntry]);
 
@@ -310,6 +314,64 @@ export function MainExperience() {
         return () => ro.disconnect();
     }, []);
 
+    // Adaptive vertical placement.
+    //
+    // Visible region in the scroll container is bounded by the fixed
+    // MetaChips overlay at the top (F = chipsBottom − scrollTop) and the
+    // floating controls card at the bottom (navHeight). Two modes:
+    //
+    //   centered: stack center hits the midpoint of (F, scrollH − nav).
+    //     paddingTop = F + CLEARANCE,  paddingBottom = nav + CLEARANCE,
+    //     justify-content: center. Math: with min-h-full and these
+    //     paddings, the flexbox identity reduces to
+    //         contentCenter = (F + scrollH − nav) / 2
+    //     i.e. true visual centering.
+    //
+    //   anchored: stack top pinned at an anchor offset (≈20% down the
+    //     scroll area, clamped). justify-content: flex-start.
+    //
+    // Switch to anchored as soon as the centered top would rise above
+    // the anchor — that's the seam where both modes agree on top
+    // placement, so the transition is jump-free as N (or text size)
+    // grows.
+    useLayoutEffect(() => {
+        const scroll = scrollRef.current;
+        const stack = stackRef.current;
+        if (!scroll || !stack) return;
+        const CLEARANCE = 32;
+
+        const recompute = () => {
+            const scrollRect = scroll.getBoundingClientRect();
+            const scrollH = scroll.clientHeight;
+            const stackH = stack.scrollHeight;
+
+            const chipsEl = document.querySelector("[data-meta-chips]") as HTMLElement | null;
+            const F = chipsEl
+                ? Math.max(0, chipsEl.getBoundingClientRect().bottom - scrollRect.top)
+                : 0;
+
+            const anchorPx = Math.max(
+                F + CLEARANCE + 20,
+                Math.min(220, Math.round(scrollH * 0.20))
+            );
+
+            const centeredTop = (F + scrollH - navHeight - stackH) / 2;
+
+            if (centeredTop >= anchorPx) {
+                setLayout({ paddingTop: F + CLEARANCE, justify: "center" });
+            } else {
+                setLayout({ paddingTop: anchorPx, justify: "flex-start" });
+            }
+        };
+
+        recompute();
+        if (typeof ResizeObserver === "undefined") return;
+        const ro = new ResizeObserver(recompute);
+        ro.observe(scroll);
+        ro.observe(stack);
+        return () => ro.disconnect();
+    }, [navHeight, displayedLanguages, currEntry?.entry_id]);
+
     // --- Nav handlers ----------------------------------------------------------
 
     const handlePrev = () => {
@@ -385,29 +447,29 @@ export function MainExperience() {
             {currEntry ? <MetaChips entry={currEntry} /> : null}
 
             <div
-                className="flex-1 w-full overflow-y-auto min-h-0 [&::-webkit-scrollbar]:hidden"
+                className="flex-1 w-full overflow-y-auto min-h-0 no-scrollbar"
                 ref={scrollRef}
-                style={{ scrollbarWidth: "none" }}
             >
-                {/* Wrapper with `min-h-full` and padding-on-wrapper: when
-                    content fits, wrapper == scroll container height and
-                    `justify-center` centers the stack inside the (pt, pb)
-                    safe area. When content doesn't fit, wrapper grows to
-                    `pt + content + pb` natural height which overflows the
-                    scroll container so scroll activates. The scroll
-                    container is a plain block (NOT `flex flex-col`) —
-                    otherwise the wrapper becomes a flex item with default
-                    `flex-shrink: 1` and gets clamped to container height
-                    instead of growing, breaking both the centering and the
-                    scroll. */}
+                {/* `min-h-full` so the wrapper matches scroll-container
+                    height when content fits, then grows to its natural
+                    `pt + content + pb` height when content overflows
+                    (driving the scroll). The scroll container is a
+                    plain block (NOT `flex flex-col`) — otherwise the
+                    wrapper becomes a flex item with default
+                    `flex-shrink: 1` and gets clamped to container
+                    height instead of growing, breaking the scroll.
+                    Padding + justify are driven by the adaptive
+                    layout effect above; see that comment for math. */}
                 <div
-                    className="min-h-full w-full flex flex-col items-center justify-center px-2"
+                    className="min-h-full w-full flex flex-col items-center px-2"
                     style={{
-                        paddingTop: `${getPlatformTopPaddingTranslations()}px`,
-                        paddingBottom: `${Math.max(navHeight + 96, getPlatformBottomPadding())}px`,
+                        paddingTop: `${layout.paddingTop}px`,
+                        paddingBottom: `${navHeight + 32}px`,
+                        justifyContent: layout.justify,
                     }}
                 >
                     <div
+                        ref={stackRef}
                         key={index}
                         className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9"
                     >

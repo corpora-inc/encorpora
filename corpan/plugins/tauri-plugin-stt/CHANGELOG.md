@@ -7,6 +7,106 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-05-17
+
+The "0.4.0's memory gate wasn't enough" point release. May-17
+device log capture showed the gate fired on the wrong condition:
+
+1. Pack flow is `stt.unload()` → `stt.prepare(newModel)` as two
+   separate JS calls. By the time `prepare()` ran, `loadedModel`
+   was already nil and the swap-branch settle code was skipped
+   entirely. The new prepare-time pressure-relief + settle never
+   executed on the actual user flow.
+2. Even if it had executed, the 1.3× available-memory headroom
+   multiplier was too tight for the freelist-hoarding case.
+   Crash log showed `resident=1880MB available=3339MB` after
+   the unload — the C heap was still parked on the previous
+   model's 1.55 GB. We passed the gate (3339 > 1.3×1579 =
+   2053) then jetsam-killed during the new model's allocation
+   when peak resident climbed to ~5040 MB against a ~5220 MB
+   budget.
+
+### Changed
+- **Settle pattern always runs at the start of `prepare()`**,
+  not just inside the swap-branch. So whether the pack pre-unloaded
+  in a separate JS call or whether prepare itself detects the swap,
+  the malloc pressure-relief + 150 ms page-reclamation settle
+  happen before the headroom check. The swap-branch keeps its
+  ctx-drop logic for callers that skip the explicit unload.
+- **Composite headroom check** replaces the flat 1.3× multiplier.
+  New formula projects peak resident as `residentNow + modelSize ×
+  2.0` (covers ggml's init double-buffering + per-context working
+  memory) and refuses if peak exceeds 85% of the total memory
+  budget (`residentNow + availableNow`). Also keeps a flat 1.5×
+  available-memory floor as belt-and-suspenders for weird states.
+  Distinguishes freelist-hoarding refusals ("restart Corpán to
+  clear the allocator") from genuinely-tight-device refusals
+  ("close other apps") so the user sees an accurate action.
+- **Headroom check log line** gains `residentMB`,
+  `projectedPeakMB`, `peakLimitMB`, and `budgetMB` so future
+  device-log forensics can reconstruct the exact decision math
+  without re-reading the source.
+
+### Added
+- **`currentResidentBytes()` helper** wrapping the same
+  `mach_task_basic_info` syscall `sttMemSnapshot` uses, factored
+  out so the headroom check can read resident memory cheaply.
+
+## [0.4.0] - 2026-05-17
+
+The "model swap won't crash your app" release. Adds end-to-end
+memory-headroom protection around `prepare()`'s model swap path,
+fixes the StatusResult wire-format gap that was silently dropping
+`availableMemoryMB` on the way to JS, and brings the Android side
+to parity.
+
+### Added
+- **`INSUFFICIENT_MEMORY` structured error code.** Returned from
+  `prepare()` when, after unloading the previously-loaded model
+  and running malloc pressure relief, the OS still doesn't have
+  enough headroom to safely allocate the new model's weights +
+  working memory (~1.3× the model file size). Lets the pack route
+  the user to "restart the app and try again" instead of
+  jetsam-crashing on the next allocation. iOS uses
+  `os_proc_available_memory()` as the authoritative measurement;
+  Android uses `ActivityManager.MemoryInfo.availMem` (and respects
+  the `lowMemory` flag).
+
+### Changed
+- **Aggressive pressure relief between model unload + reload.** iOS
+  now calls `malloc_zone_pressure_relief(nil, 0)` after the
+  `autoreleasepool { ctx = nil }` block, followed by a 150 ms
+  settle, before consulting `os_proc_available_memory()`. Without
+  this, the C heap holds whisper.cpp's freed weights on its
+  freelist and `os_proc_available_memory` under-reports headroom,
+  triggering false-positive insufficient-memory refusals.
+  Android does `System.gc() + Thread.sleep(150)` for the same
+  effect (no malloc-pressure API on Bionic). The settle delay
+  surfaces as a brief "Unloading..." beat in the pack's UI — fine
+  trade-off for the reliability win.
+- **Mirror memory snapshots bracketing the swap** (`sttMemSnapshot`
+  on iOS, new `memSnapshot` on Android) so the actual memory
+  trajectory of a crash report is reconstructable from device
+  logs. Stages: before-unload, after-pressure-relief, after-settle,
+  before-load, after-load.
+
+### Fixed
+- **`StatusResult` wire-format gap (Rust → JS).** The Rust
+  `StatusResult` struct in `src/models.rs` was missing the
+  `available_memory_mb` and `physical_memory_mb` fields that the
+  iOS and Android plugins were sending. Serde silently drops
+  unknown fields on the way through the mobile-plugin
+  deserialization boundary, so the pack's `stt.getStatus()` was
+  always returning `availableMemoryMB: undefined` on iOS — even
+  though the native side computed and emitted the value. This
+  meant the pack's UA-based fallback path (`looksIpadByUA`) was
+  the actual code path on every device, and the entire
+  memory-budget gating story was built on a broken signal. Same
+  trap that bit `whisperParams`, `downloadUrl`, and
+  `install_progress` before — added field declarations on the
+  Rust struct with the `#[serde(default)]` attribute and a
+  comment pointing future-us at the pattern.
+
 ## [0.3.2] - 2026-05-17
 
 The Parlometron-pairing release: adds the `audio_level` event

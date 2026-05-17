@@ -154,4 +154,19 @@ pub struct StatusResult {
     pub model: Option<String>,
     pub recording: bool,
     pub message: Option<String>,
+    /// Bytes still allocatable to this process before iOS jetsam fires
+    /// (from `os_proc_available_memory()`), reported in MB. None on
+    /// Android or when the native side can't measure it. Critical for
+    /// the pack's memory-headroom gate when switching between large
+    /// whisper models — see `STTPlugin.swift::prepare`'s
+    /// INSUFFICIENT_MEMORY return path. Without this field declared,
+    /// serde silently drops it at the Rust boundary even though the
+    /// iOS side sends it.
+    #[serde(default)]
+    pub available_memory_mb: Option<i64>,
+    /// Total physical RAM on the device, MB. Stable across calls.
+    /// Used by the pack to pick conservative defaults on low-budget
+    /// devices.
+    #[serde(default)]
+    pub physical_memory_mb: Option<i64>,
 }
