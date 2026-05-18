@@ -386,9 +386,19 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         }
 
         scope.launch {
-            if (ctx != null && loadedModel != name) {
+            val swappingModels = ctx != null && loadedModel != name
+            if (swappingModels) {
                 Log.i(TAG, "unloading previous model before swap: $loadedModel")
+                memSnapshot("swap-before-unload: $loadedModel → $name")
                 ctx?.release(); ctx = null; loadedModel = null
+                // Give the kernel a beat to reclaim freed pages and
+                // hint System.gc to clean up any JNI peer objects.
+                // Android can't force malloc to release like iOS can,
+                // but the GC + brief settle keeps `availMem` honest
+                // for the headroom gate below.
+                System.gc()
+                Thread.sleep(150)
+                memSnapshot("swap-after-settle")
             }
             val dest = modelFile(name)
             if (!dest.exists()) {
@@ -398,6 +408,22 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 ret.put("code", "MODEL_NOT_INSTALLED")
                 invoke.resolve(ret); return@launch
             }
+
+            // Memory-headroom gate. Mirror of the iOS check — refuse
+            // to load if `availMem` is below the model file size *
+            // 1.3 (working memory overhead). Pack routes
+            // INSUFFICIENT_MEMORY into a "restart the app" recovery
+            // overlay.
+            val headroomError = checkMemoryHeadroom(dest)
+            if (headroomError != null) {
+                Log.e(TAG, "load refused (INSUFFICIENT_MEMORY): $headroomError")
+                val ret = JSObject()
+                ret.put("ready", false); ret.put("model", name)
+                ret.put("message", headroomError)
+                ret.put("code", "INSUFFICIENT_MEMORY")
+                invoke.resolve(ret); return@launch
+            }
+
             Log.i(TAG, "loading model from disk: $name")
             val loaded = WhisperContext.load(dest.absolutePath)
             if (loaded != null) {
@@ -414,6 +440,45 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 invoke.resolve(ret)
             }
         }
+    }
+
+    /**
+     * Snapshot the current memory state to the Android log so the
+     * model-swap trajectory is reconstructable from logcat. iOS has
+     * a sibling `sttMemSnapshot`; this gives us symmetric diagnostics
+     * across platforms when a switch crashes.
+     */
+    private fun memSnapshot(label: String) {
+        val mi = ActivityManager.MemoryInfo()
+        val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        am.getMemoryInfo(mi)
+        val availMB = mi.availMem / (1024 * 1024)
+        val totalMB = mi.totalMem / (1024 * 1024)
+        Log.i(TAG, "memSnapshot[$label]: availMB=$availMB totalMB=$totalMB lowMem=${mi.lowMemory}")
+    }
+
+    /**
+     * Authoritative "can we safely load this model?" check, mirror of
+     * iOS's checkMemoryHeadroom. Returns null when we have headroom,
+     * or a human-readable explanation when we don't.
+     */
+    private fun checkMemoryHeadroom(modelFile: java.io.File): String? {
+        val modelBytes = modelFile.length()
+        if (modelBytes <= 0L) return null  // missing file — let MODEL_NOT_INSTALLED handle it
+        val mi = ActivityManager.MemoryInfo()
+        val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        am.getMemoryInfo(mi)
+        val availableBytes = mi.availMem
+        // 1.3× for whisper.cpp's working memory (mel filters, encoder
+        // hidden states, KV cache, decoder buffers).
+        val requiredBytes = (modelBytes.toDouble() * 1.3).toLong()
+        val modelMB = modelBytes / (1024 * 1024)
+        val availMB = availableBytes / (1024 * 1024)
+        val reqMB = requiredBytes / (1024 * 1024)
+        Log.i(TAG, "headroom check: modelMB=$modelMB requiredMB=$reqMB availableMB=$availMB lowMem=${mi.lowMemory}")
+        if (availableBytes >= requiredBytes && !mi.lowMemory) return null
+        return "Need ~$reqMB MB to load this model safely, but only $availMB MB is available right now. " +
+            "Close other apps and restart Corpán, then try the switch again."
     }
 
     @Command

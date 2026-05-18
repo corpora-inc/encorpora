@@ -19,15 +19,16 @@
 // from `whisperTuning.ts`. Round results come back via `onRoundDone`.
 
 import type { EntryOut, HostApi, TranslationOut } from "../sdk/types"
-import { mergeForLang, mergeSilencePolicy } from "../whisperTuning"
+import { mergeForLang } from "../whisperTuning"
 import { pmConfirm } from "./confirm"
-import {
-  startSilenceWatcher,
-  type SilenceWatcherHandle,
-} from "../silenceWatcher"
-import type { SttAudioLevelEvent } from "../game"
+// Silence auto-stop disabled in 0.6.1 — the native `audio_level`
+// stream + `silenceWatcher.ts` state machine stay intact for a
+// future re-wiring against a real VAD model, but RMS-thresholding
+// was too unreliable across mic-gain / noise-floor / accent
+// variance to ship as always-on. See pack CHANGELOG.
 import {
   charSimilarity,
+  isRTL,
   mergeApostropheWords,
   normalizeForCompare,
   tokenizeForPills,
@@ -72,9 +73,6 @@ type SttApi = {
   }): Promise<SttStartResult>
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
-  subscribeAudioLevel?(
-    callback: (event: SttAudioLevelEvent) => void,
-  ): Promise<() => void>
 }
 
 const TRANSCRIBE_TIMEOUT_MS = 90_000
@@ -189,14 +187,6 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
    *  `uiState !== "result"` branch clears the banner. Route the
    *  message through state instead. */
   let lastErrorMessage: string | null = null
-  let silenceWatch: SilenceWatcherHandle | null = null
-
-  const stopSilenceWatch = () => {
-    if (silenceWatch) {
-      silenceWatch.stop()
-      silenceWatch = null
-    }
-  }
 
   // Build the static shell once. State changes mutate the inner
   // pieces (mic class, label, dots, result slots) but the OUTER
@@ -265,7 +255,6 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
           destructive: true,
         })
         if (!proceed) return
-        stopSilenceWatch()
         if (activeSessionId) {
           stt
             .cancelSession({ sessionId: activeSessionId })
@@ -498,6 +487,11 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
 
     // "Heard you say" — same shape as solo's free transcript row.
     const freeText = (r.freeText || r.text || "").trim()
+    // RTL target langs flip pill order, play affordance to the right
+    // side, and point glyphs leftward — see solo for the same logic.
+    const rtl = isRTL(phraseTarget?.language_code ?? r.language ?? "")
+    const lineCls = rtl ? "pc-transcript-line pc-transcript-line-rtl" : "pc-transcript-line"
+    const playGlyph = rtl ? "◀" : "▶"
     if (freeText) {
       transcript.innerHTML = `
         <div class="pc-transcripts">
@@ -505,8 +499,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
                data-pm-speak-heard
                aria-label="Play what Whisper heard">
             <span class="pc-transcript-label">Heard you say</span>
-            <span class="pc-transcript-line">
-              <span class="pc-transcript-play" aria-hidden="true">▶</span>
+            <span class="${lineCls}">
+              <span class="pc-transcript-play" aria-hidden="true">${playGlyph}</span>
               <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
             </span>
           </div>
@@ -605,8 +599,9 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
                    aria-label="Speak ${escapeAttr(w.word)}">${escapeHtml(w.word)}</button>`,
       )
       .join("")
+    const wordsCls = rtl ? "pc-words pc-words-rtl" : "pc-words"
     detail.innerHTML = wordsHtml
-      ? `<div class="pc-words">${wordsHtml}</div>`
+      ? `<div class="${wordsCls}">${wordsHtml}</div>`
       : ""
     detail.hidden = !wordsHtml
 
@@ -677,21 +672,6 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       })
       if (disposed) return
       if (!res.started) throw new Error("STT did not start")
-      const subscribe = stt.subscribeAudioLevel
-      if (subscribe) {
-        stopSilenceWatch()
-        const watchForSession = sessionId
-        silenceWatch = startSilenceWatcher(
-          (cb) => subscribe(cb),
-          mergeSilencePolicy(lang),
-          () => {
-            if (disposed) return
-            if (activeSessionId !== watchForSession) return
-            console.log("[parlometron/round] silence → stopRecording")
-            stopRecording()
-          },
-        )
-      }
     } catch (err) {
       console.error("[parlometron/round] startSession failed:", err)
       activeSessionId = null
@@ -702,7 +682,6 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
 
   const stopRecording = async () => {
     if (disposed) return
-    stopSilenceWatch()
     const sessionId = activeSessionId
     if (!sessionId) return
     activeSessionId = null
@@ -761,6 +740,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       return
     }
     lastResult = null
+    lastErrorMessage = null
     uiState = "passing"
     refresh()
   }
@@ -825,7 +805,6 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
   return {
     unmount: () => {
       disposed = true
-      stopSilenceWatch()
       if (activeSessionId) {
         stt
           .cancelSession({ sessionId: activeSessionId })

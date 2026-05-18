@@ -27,6 +27,7 @@ const STT_ERROR_CODES: ReadonlySet<SttErrorCode> = new Set<SttErrorCode>([
   "MIC_PERMISSION_DENIED",
   "NO_ACTIVE_SESSION",
   "AUDIO_FAILED",
+  "INSUFFICIENT_MEMORY",
   "UNKNOWN",
 ])
 

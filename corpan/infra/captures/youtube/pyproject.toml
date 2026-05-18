@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corpan-yt"
+version = "0.1.0"
+description = "Corpán capture → YouTube programmatic CLI (videos.insert/update, thumbnails, playlists)"
+requires-python = ">=3.11"
+dependencies = [
+    "google-api-python-client>=2.150.0",
+    "google-auth-oauthlib>=1.2.1",
+    "google-auth-httplib2>=0.2.0",
+    "click>=8.1.7",
+]
+
+[project.scripts]
+corpan-yt = "corpan_yt.cli:cli"
+
+[tool.setuptools.packages.find]
+include = ["corpan_yt*"]

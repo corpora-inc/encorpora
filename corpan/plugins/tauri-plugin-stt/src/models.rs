@@ -154,4 +154,32 @@ pub struct StatusResult {
     pub model: Option<String>,
     pub recording: bool,
     pub message: Option<String>,
+    /// Bytes still allocatable to this process before iOS jetsam fires
+    /// (from `os_proc_available_memory()`), reported in MB. On
+    /// Android: `ActivityManager.MemoryInfo.availMem` (system-wide
+    /// free RAM). None when the native side can't measure it.
+    /// Critical for the pack's memory-headroom gate when switching
+    /// between large whisper models.
+    ///
+    /// **Wire-format gotcha**: the struct uses
+    /// `#[serde(rename_all = "camelCase")]`, but serde's
+    /// snake-to-camel converter would turn `available_memory_mb`
+    /// into `availableMemoryMb` (lowercase 'b' — "_mb" is one word
+    /// to serde, becomes "Mb"). The iOS and Android plugins both
+    /// emit `availableMemoryMB` (uppercase 'MB'), and TypeScript
+    /// reads `availableMemoryMB`. Without explicit renames here,
+    /// serde silently drops the native fields on deserialize, then
+    /// re-emits as `availableMemoryMb` on serialize, and JS sees
+    /// undefined. This is the SAME wire-format trap that
+    /// `PrepareResult`'s docstring warns about — bit us twice in
+    /// the same week.
+    #[serde(default, rename = "availableMemoryMB")]
+    pub available_memory_mb: Option<i64>,
+    /// Total physical RAM on the device, MB. Stable across calls.
+    /// Used by the pack to gate large-model variants on devices
+    /// where the per-process available reading is misleading
+    /// (Android in particular). Same explicit-rename gotcha as
+    /// `available_memory_mb`.
+    #[serde(default, rename = "physicalMemoryMB")]
+    pub physical_memory_mb: Option<i64>,
 }

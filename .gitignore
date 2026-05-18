@@ -2,6 +2,8 @@
 node_modules/
 *.pyc
 __pycache__/
+.venv/
+*.egg-info/
 target/
 # TODO: we actually would like this but the members
 # don't match because of rusqlite versus sqlx

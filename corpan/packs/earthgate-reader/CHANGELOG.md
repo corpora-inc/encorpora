@@ -10,6 +10,38 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-05-18
+### Fixed
+- Chapter title no longer flickers a stale placeholder when switching
+  languages. The shared transport bar used to initialize the chapter
+  span to `"Loading…"`; on every language switch `mountReader()`
+  creates a fresh transport, so that text was visible for the brief
+  window before the new segments resolved. Initial text is now empty
+  and `.earthgate-chapter-title:empty` keeps the row collapsed until
+  the reader has a real chapter to show (chapterless books stay
+  collapsed forever, as intended).
+- Transport controls no longer jerk down when the chapter title
+  arrives async for chaptered books. New per-book `hasChapters` cache
+  in localStorage; on mount the reader reads it synchronously and
+  asks the transport to reserve a line (via a non-breaking-space
+  placeholder so `:empty` doesn't collapse the row), then verifies +
+  rewrites the cache after segments load. First-ever read of a
+  brand-new chaptered book still has one small shift when the title
+  resolves; every subsequent mount, including language switches, is
+  stable from frame one. Chapterless books reserve no space and keep
+  the book title vertically centered against the time, as before.
+
+### Added
+- Catalog now prioritizes the user's stack languages. Book cards render
+  every stack-matched language as an accent pill + a "+N more" chip for
+  the non-stack remainder (or a "N languages" count chip when there's
+  zero overlap), so a stack of 5–15 stays fully visible. Book-detail
+  pages split narrations into "Your languages" / "More languages" with
+  the long tail behind a "Show all N languages" expander, and narrator
+  profiles accent stack pills while collapsing the rest. Same data —
+  but a 50-language book is now skimmable for the languages you
+  actually care about.
+
 ## [0.6.3] - 2026-05-14
 ### Added
 - Anonymous analytics: `segment_play` (auto-advance + active playback)

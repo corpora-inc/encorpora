@@ -45,6 +45,13 @@ export type SttErrorCode =
   | "MIC_PERMISSION_DENIED"
   | "NO_ACTIVE_SESSION"
   | "AUDIO_FAILED"
+  /** Native ran the unload+pressure-relief sequence but the OS still
+   *  doesn't have enough RAM to safely allocate the new model. The
+   *  previous model has been dropped at this point, so the pack
+   *  should route to a "restart the app and try again" overlay
+   *  rather than retry in-process. The only structured code that
+   *  requires app relaunch for recovery. */
+  | "INSUFFICIENT_MEMORY"
   | "UNKNOWN"
 
 export type SttPrepareResult = {

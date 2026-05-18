@@ -947,20 +947,18 @@
   .wr-skeleton-art, .wr-skeleton-line { animation: none; opacity: 0.7; }
 }
 
-/* Map-specific skeleton — full-bleed panel with a slowly-rotating globe and
-   a soft shimmer, sized to fill the map slot rather than show "fake rows". */
+/* Map-specific skeleton — fills the entire map slot (matching the map's
+   own `position: absolute; inset: 0` layout) so the globe + shimmer take
+   up the full visible map height rather than a short panel. */
 .wr-map-skeleton {
-  flex: 1 1 auto;
-  min-height: 320px;
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--wr-sp-4);
-  margin: var(--wr-sp-3) var(--wr-edge);
   background: var(--wr-chip-bg);
-  border-radius: 12px;
-  position: relative;
   overflow: hidden;
 }
 /* Diagonal sheen sweeping across the panel — masked to stay inside the

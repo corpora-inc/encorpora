@@ -8,6 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-05-17
+
+### Changed
+- "Loading the world map…" skeleton now fills the entire map slot
+  instead of sitting in a short rounded panel, so the rotating globe
+  and shimmer take up the full available height on phones and
+  tablets.
+
 ## [0.6.1] - 2026-05-06
 
 ### Changed

@@ -291,6 +291,31 @@
   color: var(--catalog-text-dim);
 }
 
+/* Stack-language badge — accent fill so the user's primary languages
+   read first at a glance on a card with many alternatives. */
+.catalog-lang-badge--stack {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+/* "+N more" chip — outline style so it reads as a quiet affordance,
+   not a peer to the stack pills. */
+.catalog-lang-badge--more {
+  background: transparent;
+  border: 1px solid var(--catalog-border);
+  color: var(--catalog-text-dim);
+  font-weight: 500;
+}
+
+/* "47 languages" count chip — same outline treatment as "+N more", used
+   only when the user has zero stack overlap with the book. */
+.catalog-lang-badge--count {
+  background: transparent;
+  border: 1px solid var(--catalog-border);
+  color: var(--catalog-text-dim);
+  font-weight: 500;
+}
+
 .catalog-card-meta {
   font-size: 12px;
   color: var(--catalog-text-dim);
@@ -431,6 +456,39 @@
   text-transform: uppercase;
   color: var(--catalog-text-dim);
   margin-bottom: 12px;
+}
+
+/* "Your languages" header — accent the user's stack section so it reads
+   as personalized, distinct from the neutral "More languages" header. */
+.catalog-detail-section-title--stack {
+  color: var(--catalog-accent);
+}
+
+/* Book-detail "Show all N languages" expander — reveals the rest of the
+   narration list when stack-priority collapsed it. Full-width tap target
+   styled like a quiet ghost button so it pairs visually with the rows it
+   replaces. */
+.catalog-detail-expand-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px dashed var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.catalog-detail-expand-btn:hover,
+.catalog-detail-expand-btn:focus-visible {
+  color: var(--catalog-text);
+  border-color: var(--catalog-text-dim);
+  outline: none;
 }
 
 /* --- Narration row --- */
@@ -1736,6 +1794,21 @@
   color: var(--catalog-text-dim);
   font-size: 11px;
   font-weight: 500;
+}
+
+/* Stack pill — filled accent so the user's languages dominate the row
+   on a narrator who supports dozens. */
+.catalog-narrator-detail-lang-pill--stack {
+  border-color: var(--catalog-accent);
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-weight: 600;
+}
+
+/* "Other" pill — dimmer than the base so it visually recedes when
+   shown alongside stack pills in the expanded view. */
+.catalog-narrator-detail-lang-pill--other {
+  opacity: 0.7;
 }
 
 .catalog-narrator-detail-bio {

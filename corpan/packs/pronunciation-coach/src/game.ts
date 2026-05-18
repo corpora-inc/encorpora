@@ -8,12 +8,15 @@ import {
   setDeviceMemoryBudget,
   variantExceedsBudget,
 } from "./modelRegistry"
-import { mergeForLang, mergeSilencePolicy } from "./whisperTuning"
+import { mergeForLang } from "./whisperTuning"
 import { openTuner } from "./whisperTunerUI"
-import {
-  startSilenceWatcher,
-  type SilenceWatcherHandle,
-} from "./silenceWatcher"
+// Silence auto-stop is wired in `silenceWatcher.ts` but currently
+// not invoked from the recording flow — RMS-thresholding-with-fixed-
+// numbers is too unreliable across mic gain / noise floor / accent
+// variance to ship as an always-on feature. The native `audio_level`
+// event stream and the watcher state machine are kept intact for
+// future re-wiring (e.g., behind a real VAD model). See pack
+// CHANGELOG 0.6.1 for the removal rationale.
 
 // Local STT API contract — host owns the canonical type, we only declare
 // what we need to call. Codes mirror the host's SttErrorCode union.
@@ -28,6 +31,7 @@ type SttErrorCode =
   | "MIC_PERMISSION_DENIED"
   | "NO_ACTIVE_SESSION"
   | "AUDIO_FAILED"
+  | "INSUFFICIENT_MEMORY"
   | "UNKNOWN"
 type SttPrepareResult = {
   ready: boolean
@@ -394,6 +398,19 @@ const LOW_RESOURCE_LANGS = new Set([
   "te", "ta", "bn", "ml", "mr", "gu", "pa", "ur", "fa", "si", "ne", "or", "as",
 ])
 
+// RTL detection. Mirrors `RTL_LANGUAGES` in `corpan-app/src/store/constants.ts`
+// — kept local so the pack doesn't reach into the host. Full code wins
+// (so `pa-Arab` is RTL but `pa-Guru` / `pa` are LTR); otherwise we fall
+// back to the base language.
+const RTL_BASE_LANGS = new Set(["ar", "he", "fa", "ur"])
+const RTL_FULL_LANGS = new Set(["pa-arab"])
+export const isRTL = (langCode: string): boolean => {
+  if (!langCode) return false
+  const c = langCode.toLowerCase()
+  if (RTL_FULL_LANGS.has(c)) return true
+  return RTL_BASE_LANGS.has(c.split("-")[0])
+}
+
 // Normalize for character-level word comparison: NFC, lowercase,
 // strip punctuation / symbols / control / format characters, then
 // (when a base language is known) map number-words to their digit
@@ -703,14 +720,6 @@ export const mountGame = (
 
   let disposed = false
   let activeSessionId: string | null = null
-  let silenceWatch: SilenceWatcherHandle | null = null
-
-  const stopSilenceWatch = () => {
-    if (silenceWatch) {
-      silenceWatch.stop()
-      silenceWatch = null
-    }
-  }
 
   // ---- Zoom block — disable pinch-zoom for the duration of the
   // pack's mount via viewport-meta override. The host's viewport
@@ -867,15 +876,43 @@ export const mountGame = (
 
   // ---- Loading overlay ----
   let overlay: HTMLDivElement | null = null
-  const showOverlay = (message: string) => {
+  type OverlayOpts = {
+    /** When present, render a Cancel button under the message with
+     *  this label. Tapping invokes `onCancel`. Use for waits where
+     *  the user should retain an escape hatch — e.g., the
+     *  INSUFFICIENT_MEMORY retry loop, where we want to absorb the
+     *  error and wait for the kernel to reclaim freelist pages
+     *  without trapping the user. */
+    cancelLabel?: string
+    onCancel?: () => void
+  }
+  const showOverlay = (message: string, opts?: OverlayOpts) => {
     if (!overlay) {
       overlay = document.createElement("div")
       overlay.className = "pc-overlay"
-      overlay.innerHTML = `<div class="pc-spinner"></div><div id="pc-overlay-msg"></div>`
+      overlay.innerHTML = `
+        <div class="pc-spinner"></div>
+        <div id="pc-overlay-msg"></div>
+        <button id="pc-overlay-cancel" type="button" hidden></button>`
       document.body.appendChild(overlay)
     }
     const msg = overlay.querySelector("#pc-overlay-msg")
     if (msg) msg.textContent = message
+    const cancelBtn = overlay.querySelector<HTMLButtonElement>(
+      "#pc-overlay-cancel"
+    )
+    if (cancelBtn) {
+      if (opts?.cancelLabel && opts.onCancel) {
+        cancelBtn.textContent = opts.cancelLabel
+        cancelBtn.hidden = false
+        // Replace any prior handler — every showOverlay call binds
+        // a fresh closure.
+        cancelBtn.onclick = opts.onCancel
+      } else {
+        cancelBtn.hidden = true
+        cancelBtn.onclick = null
+      }
+    }
   }
   const hideOverlay = () => {
     if (overlay && overlay.parentNode) {
@@ -1430,13 +1467,19 @@ export const mountGame = (
     // the tap target (the ▶ is a visual affordance, not the hit
     // area). Empty branch keeps the same shape so the layout
     // doesn't shift between success and failure.
+    //
+    // RTL target langs: flip play affordance to the right side and
+    // point the glyph leftward (◀), since reading flows right→left.
+    const rtl = isRTL(compareLang)
+    const lineCls = rtl ? "pc-transcript-line pc-transcript-line-rtl" : "pc-transcript-line"
+    const playGlyph = rtl ? "◀" : "▶"
     const heardRow = freeText.length
       ? `<div class="pc-transcript-row heard" role="button" tabindex="0"
              data-pc-speak="heard" data-no-swipe
              aria-label="Play what Whisper heard">
            <span class="pc-transcript-label">Heard you say</span>
-           <span class="pc-transcript-line">
-             <span class="pc-transcript-play" aria-hidden="true">▶</span>
+           <span class="${lineCls}">
+             <span class="pc-transcript-play" aria-hidden="true">${playGlyph}</span>
              <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
            </span>
          </div>`
@@ -1566,8 +1609,9 @@ export const mountGame = (
       // can hear an individual word, not just the whole phrase).
       // The phrase header itself is also tap-to-hear (existing
       // .pc-target click binding).
+      const wordsCls = rtl ? "pc-words pc-words-rtl" : "pc-words"
       detailEl.innerHTML = `
-        ${wordsHtml ? `<div class="pc-words">${wordsHtml}</div>` : ""}
+        ${wordsHtml ? `<div class="${wordsCls}">${wordsHtml}</div>` : ""}
         ${diagHtml}
       `
       detailEl.hidden = false
@@ -1637,7 +1681,6 @@ export const mountGame = (
 
   // ---- Mic flow ----
   const cancelActiveSession = () => {
-    stopSilenceWatch()
     const sessionId = activeSessionId
     activeSessionId = null
     if (sessionId) {
@@ -1665,25 +1708,6 @@ export const mountGame = (
       if (disposed) return
       if (!res.started) {
         throw new Error("STT plugin reported started=false")
-      }
-      // Feature-detect the host's audio-level stream. Older host
-      // builds (≤0.13.x) won't have it; the pack still works with the
-      // manual stop button. The state machine + thresholds live in JS
-      // so we can ship new defaults per-language via pack updates.
-      const subscribe = stt.subscribeAudioLevel
-      if (subscribe) {
-        stopSilenceWatch()
-        const watchForSession = sessionId
-        silenceWatch = startSilenceWatcher(
-          (cb) => subscribe(cb),
-          mergeSilencePolicy(lang),
-          () => {
-            if (disposed) return
-            if (activeSessionId !== watchForSession) return
-            console.log("[pronunciation-coach] silence → stopRecording")
-            stopRecording()
-          },
-        )
       }
     } catch (err) {
       console.error("[pronunciation-coach] startSession failed:", err)
@@ -1721,8 +1745,80 @@ export const mountGame = (
   // — not a substring heuristic — decides whether to delete files.
   const prepareWithRecovery = tryPrepareOnce
 
+  /// Sentinel thrown when the user taps Cancel on the
+  /// INSUFFICIENT_MEMORY retry overlay. Distinct from a real error
+  /// so the catch block can do "switch cancelled" instead of "load
+  /// failed" messaging.
+  class SwitchCancelledError extends Error {
+    constructor() {
+      super("Switch cancelled by user")
+      this.name = "SwitchCancelledError"
+    }
+  }
+
+  /// Wraps `prepareWithRecovery` with a memory-wait retry loop. The
+  /// native plugin's headroom gate returns `INSUFFICIENT_MEMORY`
+  /// when the OS still has the previous model parked on the C heap
+  /// freelist and a new allocation would push peak resident past
+  /// the jetsam ceiling. Empirically (May-17 device traces) waiting
+  /// 5-10 seconds is enough for iOS to reclaim those pages, so
+  /// rather than bouncing the user to a scary "restart Corpán"
+  /// error we absorb the failure, show a "Freeing memory..." overlay
+  /// with a Cancel button, and retry up to MEMORY_WAIT_MAX_ATTEMPTS.
+  ///
+  /// Returns the successful `SttPrepareResult` on the first attempt
+  /// that lands. Throws `SwitchCancelledError` if the user cancels,
+  /// or re-throws the underlying error if it's not
+  /// INSUFFICIENT_MEMORY (or if we exhaust attempts — at which
+  /// point the catch block can show the standard "couldn't load"
+  /// fallback).
+  const MEMORY_WAIT_INTERVAL_MS = 1500
+  const MEMORY_WAIT_MAX_ATTEMPTS = 10
+  const prepareWithMemoryRetry = async (
+    mode: ModelMode
+  ): Promise<SttPrepareResult> => {
+    const targetLabel = labelForMode(mode)
+    let lastError: unknown = null
+    let cancelled = false
+    const cancel = () => {
+      cancelled = true
+    }
+    for (let attempt = 1; attempt <= MEMORY_WAIT_MAX_ATTEMPTS; attempt++) {
+      if (cancelled) throw new SwitchCancelledError()
+      try {
+        return await prepareWithRecovery(mode)
+      } catch (err) {
+        const code = errCode(err)
+        if (code !== "INSUFFICIENT_MEMORY") {
+          // Different failure mode — bubble up to the regular catch
+          // (MODEL_NOT_INSTALLED, NETWORK, LOAD_FAILED, etc.).
+          throw err
+        }
+        lastError = err
+        if (attempt === MEMORY_WAIT_MAX_ATTEMPTS) break
+        // Show the retry overlay with cancel. Update the message
+        // each attempt so the user has a sense of progress.
+        const remaining = MEMORY_WAIT_MAX_ATTEMPTS - attempt
+        showOverlay(
+          `Freeing memory for ${targetLabel}…\nThis usually takes a few seconds.`,
+          { cancelLabel: "Cancel", onCancel: cancel }
+        )
+        console.log(
+          `[pronunciation-coach] INSUFFICIENT_MEMORY on attempt ${attempt}; ` +
+            `waiting ${MEMORY_WAIT_INTERVAL_MS}ms, ${remaining} retries left`
+        )
+        await new Promise<void>((resolve) =>
+          setTimeout(resolve, MEMORY_WAIT_INTERVAL_MS)
+        )
+      }
+    }
+    // Exhausted retries with INSUFFICIENT_MEMORY still firing — the
+    // device really is out of headroom right now. Re-throw the last
+    // error so the catch block routes to the "restart Corpán" path.
+    throw lastError ?? new Error("INSUFFICIENT_MEMORY")
+  }
+
   const stopRecording = async () => {
-    stopSilenceWatch()
     const sessionId = activeSessionId
     if (!sessionId) {
       setUiState("idle")
@@ -1888,9 +1984,51 @@ export const mountGame = (
     // mode points at a broken install and every subsequent boot
     // re-enters this failure loop. Only persist after prepare wins.
     const targetMode: ModelMode = outcome.mode
+    const targetLabel = labelForMode(targetMode)
+
+    // Pre-flight memory check. Native has the authoritative gate
+    // inside prepare() (after the previous model is actually
+    // unloaded and pages reclaimed), but doing a fast JS-side check
+    // FIRST lets us refuse obviously-impossible switches without
+    // unloading the currently-working model. If we unloaded then
+    // discovered insufficient memory, the user would be stuck with
+    // no working model until restart — bad UX. By checking BEFORE
+    // unload, the worst case is "we kept your working model and
+    // showed a clear message."
+    //
+    // Heuristic: current available memory (with old model still
+    // loaded) should be ≥ targetSize × 0.5. The 0.5× anticipates
+    // the old model's bytes being reclaimed when we unload, plus
+    // some working memory. The native gate uses 1.3× measured
+    // AFTER unload — that's the precise check; this is the fast
+    // refuse-the-obvious-no-go path.
+    const targetVariant = modelById(targetMode)
+    const targetSizeMB = targetVariant?.approxSizeMB ?? 0
+    if (targetSizeMB > 0 && stt?.getStatus) {
+      try {
+        const status = await stt.getStatus()
+        const availMB = status.availableMemoryMB ?? null
+        if (availMB !== null && availMB < targetSizeMB * 0.5) {
+          console.warn(
+            `[pronunciation-coach] pre-flight refused switch to ${targetMode}: avail=${availMB}MB target=${targetSizeMB}MB`
+          )
+          setUiState("idle")
+          showError(
+            `Not enough memory to switch to ${targetLabel} right now (${availMB} MB free, need ~${Math.round(targetSizeMB * 1.3)} MB). ` +
+              `Close other apps and restart Corpán, then try again. Your current model is still loaded.`
+          )
+          return
+        }
+      } catch (err) {
+        console.warn(
+          "[pronunciation-coach] pre-flight status check failed; deferring to native gate:",
+          err
+        )
+      }
+    }
+
     modelReady = false
     micBtn.disabled = true
-    const targetLabel = labelForMode(targetMode)
     // Defense in depth: explicitly unload the previously-loaded model
     // before asking for the new one. The Swift plugin already chains
     // prepare() calls so two loads can't run concurrently, but
@@ -1923,7 +2061,14 @@ export const mountGame = (
       `Loading ${targetLabel} model…\nThis can take 10–30s on first launch.`
     )
     try {
-      const r = await prepareWithRecovery(targetMode)
+      // Use the memory-aware retry wrapper so an INSUFFICIENT_MEMORY
+      // from the native gate gets absorbed into a wait+retry loop
+      // with cancel, instead of immediately surfacing as a scary
+      // "restart Corpán" error. iOS empirically takes ~5-10 s to
+      // reclaim freelist pages after a Large-model unload; waiting
+      // for that is almost always faster (and lower-friction) than
+      // forcing a process relaunch.
+      const r = await prepareWithMemoryRetry(targetMode)
       modelReady = true
       // Prepare succeeded — NOW commit the choice to persistent state.
       modelMode = targetMode
@@ -1938,9 +2083,10 @@ export const mountGame = (
     } catch (err) {
       const msg = formatErr(err)
       const code = errCode(err)
+      const isCancel = err instanceof SwitchCancelledError
       console.error(
-        `[pronunciation-coach] post-setup load failed (code=${code ?? "—"}):`,
-        msg
+        `[pronunciation-coach] post-setup load ${isCancel ? "cancelled" : "failed"} (code=${code ?? "—"}):`,
+        isCancel ? "user cancel" : msg
       )
       // Don't persist targetMode (we already gated persist behind
       // success). Plugin's validateModel will clear its own stale
@@ -1960,13 +2106,23 @@ export const mountGame = (
           hideOverlay()
           micBtn.disabled = false
           setUiState("idle")
-          if (code === "MODEL_NOT_INSTALLED") {
+          if (isCancel) {
+            showError(
+              `Switch to ${targetLabel} cancelled. Staying on ${labelForMode(previous)}.`
+            )
+          } else if (code === "MODEL_NOT_INSTALLED") {
             showError(
               `${targetLabel} isn't installed yet. Staying on ${labelForMode(previous)}.`
             )
           } else if (code === "NETWORK") {
             showError(
               `${targetLabel} needs the tokenizer — check your connection. Staying on ${labelForMode(previous)}.`
+            )
+          } else if (code === "INSUFFICIENT_MEMORY") {
+            // Retry loop exhausted — device really is out of headroom.
+            showError(
+              `Not enough memory to load ${targetLabel}. Close other apps and restart Corpán, then try the switch again. ` +
+                `Reverted to ${labelForMode(previous)}.`
             )
           } else {
             showError(
@@ -1986,13 +2142,19 @@ export const mountGame = (
         }
       }
       hideOverlay()
-      if (code === "MODEL_NOT_INSTALLED") {
+      if (isCancel) {
+        showError(`Switch to ${targetLabel} cancelled.`)
+      } else if (code === "MODEL_NOT_INSTALLED") {
         showError(
           `${targetLabel} model isn't fully installed (likely a partial download). Tap the model badge to reinstall.`
         )
       } else if (code === "NETWORK") {
         showError(
           `${targetLabel} model needs the tokenizer — check your connection and try again.`
+        )
+      } else if (code === "INSUFFICIENT_MEMORY") {
+        showError(
+          `Not enough memory to load ${targetLabel}. Close other apps and restart Corpán, then try again.`
         )
       } else {
         showError(`Could not load ${targetLabel} model: ${msg}`)
@@ -2370,13 +2532,15 @@ export const mountGame = (
 
             ${visibleModels().map((m) => {
               // visibleModels() filters out variants flagged
-              // `requiresIpad: true` on iPhone-class devices. Hard
-              // data: 626 / 632 / 1600 MB Whisper variants OOM-kill
-              // the app during transcribe on iPhone Pro Max
-              // (~5 GB per-app jetsam ceiling) even though each
-              // model loads cleanly. Hiding the card means the user
-              // can't pick a model that will crash their device.
-              // iPad shows the full lineup.
+              // `requiresLargeMemory: true` on devices that don't
+              // pass `hasLargeMemoryBudget()` — iPhone-class iOS,
+              // sub-flagship Android, etc. Hard data: 626 / 632 /
+              // 1600 MB Whisper variants OOM-kill the app during
+              // transcribe on iPhone Pro Max (~5 GB per-app jetsam
+              // ceiling) even though each model loads cleanly.
+              // Hiding the card means the user can't pick a model
+              // that will crash their device. iPad Pro and ≥8 GB
+              // Android phones see the full lineup.
               //
               // Format size label: under 1000 MB → "~NNN MB"; 1000+ →
               // "~N.N GB" so the lineup reads cleanly across two
@@ -2783,7 +2947,10 @@ export const mountGame = (
     // `os_proc_available_memory()` exposed via `stt.getStatus()`.
     try {
       const status = await stt.getStatus()
-      setDeviceMemoryBudget(status.availableMemoryMB ?? null)
+      setDeviceMemoryBudget(
+        status.availableMemoryMB ?? null,
+        status.physicalMemoryMB ?? null,
+      )
       console.log(
         `[pronunciation-coach] device memory budget: available=${status.availableMemoryMB ?? "?"}MB physical=${status.physicalMemoryMB ?? "?"}MB raw=${JSON.stringify(status)}`
       )
@@ -2805,13 +2972,15 @@ export const mountGame = (
     if (savedEarly?.mode && modelById(savedEarly.mode)) {
       modelMode = savedEarly.mode
     }
-    // Boot-time demotion: if the user's saved mode is an iPad-only
-    // variant (Large / Large Turbo / Advanced) and we're running on
-    // iPhone, replace it with the visible default (Small) before
-    // anything else touches modelMode. Without this, the boot path
-    // would prepare an iPad-only model on iPhone and OOM-kill the
-    // app on first transcribe — exactly the failure mode the
-    // requiresIpad gate is designed to prevent. The card was
+    // Boot-time demotion: if the user's saved mode is a
+    // large-memory-only variant (Large / Large Turbo / etc.) and
+    // we're running on a device that doesn't pass the memory gate,
+    // replace it with the visible default (Small) before anything
+    // else touches modelMode. Without this, the boot path would
+    // prepare a memory-gated model on a too-small device and
+    // OOM-kill the app on first transcribe — exactly the failure
+    // mode the requiresLargeMemory gate is designed to prevent.
+    // The card was
     // already hidden from the setup overlay, but a stale
     // localStorage entry from a previous install (or a user who
     // upgraded from a build that allowed iPhone to pick those
@@ -2885,9 +3054,9 @@ export const mountGame = (
         console.warn(
           "%c[pronunciation-coach] STALE PLUGIN DETECTED",
           "background:#9333ea;color:#fff;padding:2px 6px;border-radius:4px;font-weight:600",
-          "\nThe iOS app is running an old tauri-plugin-stt binary (no `code` field on errors, no marker file).",
+          "\nThe host app is running an old tauri-plugin-stt binary (no `code` field on errors, no marker file).",
           "\nValidateModel false-negatives in that build trigger destructive wipes on every Install click.",
-          "\nFix: rebuild and resideload the iOS app (cargo tauri ios dev) to pick up the marker-file fix.",
+          "\nFix: rebuild and reinstall the host app (cargo tauri ios dev / android dev) to pick up the marker-file fix.",
         )
       }
     }

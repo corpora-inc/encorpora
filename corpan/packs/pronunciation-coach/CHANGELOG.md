@@ -14,6 +14,91 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-05-17
+
+### Changed
+- **Wait + retry instead of "restart Corpán" on
+  INSUFFICIENT_MEMORY.** Device traces from the May-17 crash showed
+  that iOS reliably reclaims freelist pages 5-10 seconds after a
+  Large-model unload — the headroom gate fires too early, but the
+  memory does come back on its own. Rather than dumping the user
+  into a scary error message and forcing a process relaunch, the
+  switch flow now wraps `stt.prepare()` in a `prepareWithMemoryRetry`
+  loop: when the native gate returns INSUFFICIENT_MEMORY, the pack
+  swaps the "Loading {target}…" overlay for a "Freeing memory for
+  {target}…" message with a Cancel button, sleeps 1.5 s, and
+  retries — up to 10 attempts (~15 s ceiling). On any successful
+  attempt the flow continues normally. The "restart Corpán" error
+  is only surfaced if all 10 retries still fail (genuinely
+  out-of-memory device state) or if the user cancels (in which case
+  the message is the gentler "Switch cancelled. Staying on
+  {previous}.").
+- **`showOverlay()` supports an optional Cancel button.** When
+  invoked with `{ cancelLabel, onCancel }`, a button renders below
+  the spinner with the supplied label and handler. Used by the
+  memory-wait retry above; future cancel-able-wait flows (slow
+  installs, etc.) can use the same primitive.
+
+## [0.6.2] - 2026-05-17
+
+### Added
+- **Pre-flight memory check + INSUFFICIENT_MEMORY recovery
+  routing.** Switching between two of the largest models (e.g.
+  Large q5 → Large q8, both ~1.5 GB) could cause an iOS jetsam
+  crash when the OS hadn't reclaimed the previous model's pages
+  by the time `whisper_init_from_file_with_params` started
+  allocating. The pack now does two layers of protection:
+  1. **Pre-flight check before unload**: query
+     `stt.getStatus().availableMemoryMB` and refuse the switch
+     early (without touching the working model) if available is
+     less than half the target's `approxSizeMB`. The user sees
+     a clear "close other apps and restart Corpán" message;
+     their current model stays loaded and usable.
+  2. **Recovery from native gate**: if the pre-flight passes
+     but the new native `INSUFFICIENT_MEMORY` error code comes
+     back from `prepare()` (the authoritative check, run after
+     unload + malloc pressure relief), the pack tries to revert
+     to the previous model and surfaces the same restart-app
+     guidance.
+  Requires `tauri-plugin-stt 0.4.0`; older plugin builds don't
+  emit `INSUFFICIENT_MEMORY` so the pack falls through to the
+  generic error path and still recovers — just less specifically.
+
+### Changed
+- **Word pills lay out right-to-left for RTL target languages.** In
+  both solo and pass-the-device results, the per-word
+  red/orange/green pills under the heard transcript now flow from
+  right to left when the target language is Arabic, Hebrew,
+  Persian, Urdu, or pa-Arab — so the first expected word sits on
+  the right edge, matching reading order. Implemented via
+  `flex-direction: row-reverse` on the `.pc-words` container.
+- **Play affordances flip for RTL target languages.** Within each
+  pill, the ▸ play glyph becomes ◂ and moves to the left of the
+  word. In the "Heard you say" row, the round ▶ play button
+  becomes ◀ and moves to the right of the transcript — so in
+  both spots the affordance sits at the leading edge of the
+  reading direction.
+
+### Removed
+- **Silence auto-stop disconnected from the recording flow.** The
+  RMS-thresholding-with-fixed-numbers approach we shipped in
+  0.6.0 proved too unreliable across the variables that actually
+  matter: mic gain (varies by device), noise floor (varies by
+  environment), and speech amplitude (varies by speaker /
+  language). Every threshold tweak trades one failure mode for
+  another — quiet speakers never trip speechStart, mid-sentence
+  pauses fire false stops, persistent background noise keeps the
+  watcher armed forever. The real fix is a model-based VAD
+  (Silero / webrtcvad) running inside the native plugin tap, not
+  parameter tuning.
+- **What stays.** The native `audio_level` event stream
+  (tauri-plugin-stt 0.3.2+), `silenceWatcher.ts` state machine,
+  `subscribeAudioLevel` host API, and `SILENCE_POLICY_BY_LANG`
+  defaults map all stay intact for future re-wiring. The
+  `mountGame` and `mountRound` paths no longer subscribe; users
+  get the manual stop button back as the only stop trigger.
+  Bundle drops ~2 kB via tree-shaking.
+
 ## [0.6.0] - 2026-05-17
 
 ### Late additions before tag (rolled in from [Unreleased])

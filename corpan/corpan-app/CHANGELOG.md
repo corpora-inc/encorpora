@@ -7,6 +7,85 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.13.1] - 2026-05-17
+
+The "model swap won't crash your app, and STT events flow
+properly" release. Bundles **tauri-plugin-stt 0.4.1** — see that
+plugin's CHANGELOG for the full native-side story. Quick summary
+of what changed since 0.13.0 hit TestFlight:
+
+### Native plugin work (bundled tauri-plugin-stt 0.3.1 → 0.4.1)
+- New `audio_level` event stream (~10 Hz RMS) during recording.
+  Powers future VAD / live-transcription / waveform-viz features.
+- New `release_audio` command to tear down `AVAudioEngine` /
+  `AudioRecord` at pack close. Fixes the iOS mic-indicator-stuck
+  issue.
+- Audio session policy reversed: release the engine + session
+  between recordings instead of keeping warm. Trades back-to-back
+  latency for indicator-off + full TTS volume between mic tries.
+- `INSUFFICIENT_MEMORY` structured error code from `prepare()`,
+  emitted when the memory-headroom gate refuses a load that would
+  jetsam-crash the app.
+- Composite memory-headroom gate in `prepare()`:
+  `malloc_zone_pressure_relief` + 150 ms settle + projected-peak
+  check (residentNow + modelSize × 2.0 vs. 85% of total budget).
+  Caught the Large→Large jetsam crash that 0.13.0 would have hit.
+- `installModel` accepts an optional `downloadUrl` field, letting
+  packs ship community / self-quantized model variants from our
+  own CDN. First user: the Parlometron pack's `Large q8 ★` entry.
+
+### Host TS work
+- `INSUFFICIENT_MEMORY` added to the `SttErrorCode` union and
+  `STT_ERROR_CODES` dispatch set in `hostApi.ts`. Packs route the
+  new code the same way they route `MODEL_NOT_INSTALLED` /
+  `NETWORK` / `LOAD_FAILED`.
+- `subscribeAudioLevel` host API wired through `addPluginListener`
+  for the new `audio_level` event.
+- `releaseAudio` host API wired through.
+- `installModel` opts type gains `downloadUrl?: string`.
+
+### Fixed
+- **`StatusResult` wire-format gap, twice.** First fix: the Rust
+  `StatusResult` struct in `src/models.rs` was missing the
+  `available_memory_mb` and `physical_memory_mb` fields the iOS
+  and Android plugins emit. Serde silently drops unknown fields,
+  so `stt.getStatus().availableMemoryMB` was always `undefined`
+  on iOS. Second fix: even after declaring the fields,
+  `#[serde(rename_all = "camelCase")]` mangled them to
+  `availableMemoryMb` / `physicalMemoryMb` (lowercase `b`)
+  because serde treats `_mb` as one word. Explicit
+  `#[serde(rename = "availableMemoryMB")]` per field resolves it
+  for good. Same trap that bit `whisperParams`, `downloadUrl`,
+  and `install_progress` earlier.
+
+### Changed
+- **Adaptive vertical placement for the language stack.** Replaces
+  the old fixed-center / scroll-if-it-overflows behavior with a
+  two-mode layout that switches jump-free as N (or text size)
+  grows: *centered* (paddingTop = chipsBottom + 32, paddingBottom
+  = navHeight + 32, justify-content: center — the flexbox identity
+  reduces to true visual centering between the MetaChips overlay
+  and the floating controls card) and *anchored* (stack top pinned
+  to ~20% down the scroll area, justify-content: flex-start). The
+  switch happens at the seam where both modes agree on the top
+  edge, so growing the stack never produces a visual jump.
+  `useLayoutEffect` recomputes on mount, on window resize, and on
+  Nav-height changes.
+- **`OnboardingPickPrimary` is now scrollable.** Wrapped the
+  language list in a `h-dvh overflow-y-auto` container with
+  `WebkitOverflowScrolling: "touch"` so longer COMING_SOON lists
+  don't get clipped on small devices. Body and html are pinned
+  to 100 % height in `index.css` so the document itself never
+  scrolls (and Android WebView's overlay scrollbar can't paint
+  against it).
+
+### Fixed (other)
+- Main experience: language stack could hide its last row under
+  the floating Nav with no way to scroll to it. Replaced
+  `my-auto` flex-centering with `justify-content: safe center`
+  on the scroll container and `ResizeObserver`-driven Nav
+  height measurement so scrolling reliably reaches the last row.
+
 ## [0.13.0] - 2026-05-17
 
 The "Parlometron" release. The pronunciation-coach pack is rebranded
@@ -14,20 +93,6 @@ to **Parlometron** and gains a multiplayer mode alongside the
 existing solo practice flow. The catalog ID `pronunciation_coach` is
 stable so older Corpán builds still see the 0.5.x pack; only this
 version (and newer) sees the 0.6.0 pack under its new brand.
-
-### Fixed (rolled in from [Unreleased] before tag)
-- Main experience: language stack could hide its last row under the
-  floating Nav with no way to scroll to it. The inner content used
-  `my-auto` to vertically center, which in WebKit's flex
-  implementation can absorb layout space in a way that suppresses
-  scroll activation at the boundary where content is just barely
-  taller than the visible area. Replaced with
-  `justify-content: safe center` on the scroll container itself —
-  modern CSS that centers when content fits and falls back to
-  `flex-start` when it overflows, so scrolling reliably reaches
-  the last row. Also measured the Nav at runtime via
-  `ResizeObserver` so the scroll container's bottom padding always
-  exceeds the Nav's actual rendered height.
 
 ### Added
 - **Per-call `downloadUrl` plumbing on `installModel`**. The host's
