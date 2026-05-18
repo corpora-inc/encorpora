@@ -58,6 +58,27 @@ of what changed since 0.13.0 hit TestFlight:
   for good. Same trap that bit `whisperParams`, `downloadUrl`,
   and `install_progress` earlier.
 
+### Changed
+- **Adaptive vertical placement for the language stack.** Replaces
+  the old fixed-center / scroll-if-it-overflows behavior with a
+  two-mode layout that switches jump-free as N (or text size)
+  grows: *centered* (paddingTop = chipsBottom + 32, paddingBottom
+  = navHeight + 32, justify-content: center — the flexbox identity
+  reduces to true visual centering between the MetaChips overlay
+  and the floating controls card) and *anchored* (stack top pinned
+  to ~20% down the scroll area, justify-content: flex-start). The
+  switch happens at the seam where both modes agree on the top
+  edge, so growing the stack never produces a visual jump.
+  `useLayoutEffect` recomputes on mount, on window resize, and on
+  Nav-height changes.
+- **`OnboardingPickPrimary` is now scrollable.** Wrapped the
+  language list in a `h-dvh overflow-y-auto` container with
+  `WebkitOverflowScrolling: "touch"` so longer COMING_SOON lists
+  don't get clipped on small devices. Body and html are pinned
+  to 100 % height in `index.css` so the document itself never
+  scrolls (and Android WebView's overlay scrollbar can't paint
+  against it).
+
 ### Fixed (other)
 - Main experience: language stack could hide its last row under
   the floating Nav with no way to scroll to it. Replaced

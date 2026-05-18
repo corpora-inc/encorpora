@@ -9,6 +9,8 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.5] - 2026-05-18
 ### Fixed
 - Transport bar no longer shows a `"Ready"` placeholder for
   chapterless books, and no longer flickers a stale chapter string

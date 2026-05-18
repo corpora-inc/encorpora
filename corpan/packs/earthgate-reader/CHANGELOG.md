@@ -9,6 +9,8 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.5] - 2026-05-18
 ### Fixed
 - Chapter title no longer flickers a stale placeholder when switching
   languages. The shared transport bar used to initialize the chapter
