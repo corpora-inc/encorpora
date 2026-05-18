@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Слова",
+    "words": "Речи",
+    "styles": "Стилови"
+  },
+  "examples": {
+    "empty_for_letter": "За ово слово још нема примера речи.",
+    "tap_phrase_hint": "Додирните реченицу да је чујете",
+    "tap_word_hint": "Додирните реч да је чујете",
+    "heading_curated": "Речи са овим словом",
+    "heading_corpus": "Реченице из корпуса"
+  },
+  "word_picker": {
+    "hint": "Додирните реч да је исцртате"
+  },
+  "form": {
+    "isolated": "изолована",
+    "initial": "почетна",
+    "medial": "средња",
+    "final": "завршна"
+  },
+  "stroke": {
+    "singular": "потез",
+    "plural": "потеза"
+  },
+  "letter": {
+    "singular": "слово",
+    "plural": "слова"
+  },
+  "aria": {
+    "tutorial": "Водич",
+    "play": "Репродукуј",
+    "brush": "Подешавања четкице",
+    "free_draw": "Слободно цртање",
+    "hints": "Водиље",
+    "clear": "Обриши",
+    "exit": "Изађи"
+  },
+  "lesson": {
+    "step": "Корак {{n}} од {{total}}",
+    "back": "Назад",
+    "skip": "Прескочи увод",
+    "next": "Даље",
+    "begin": "Почни"
+  }
+}

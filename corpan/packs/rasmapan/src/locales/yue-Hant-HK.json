@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "字母",
+    "words": "字詞",
+    "styles": "書法風格"
+  },
+  "examples": {
+    "empty_for_letter": "暫時冇例子單字包含呢個字母。",
+    "tap_phrase_hint": "㩒一句嚟聽",
+    "tap_word_hint": "㩒一個字嚟聽",
+    "heading_curated": "包含呢個字母嘅字詞",
+    "heading_corpus": "語料庫嘅短語"
+  },
+  "word_picker": {
+    "hint": "㩒一個字嚟臨摹"
+  },
+  "form": {
+    "isolated": "獨立形",
+    "initial": "詞首形",
+    "medial": "詞中形",
+    "final": "詞末形"
+  },
+  "stroke": {
+    "singular": "筆畫",
+    "plural": "筆畫"
+  },
+  "letter": {
+    "singular": "字母",
+    "plural": "字母"
+  },
+  "aria": {
+    "tutorial": "教學",
+    "play": "播放",
+    "brush": "毛筆設定",
+    "free_draw": "自由繪畫",
+    "hints": "提示",
+    "clear": "清除",
+    "exit": "離開"
+  },
+  "lesson": {
+    "step": "第 {{n}} 步,共 {{total}} 步",
+    "back": "上一步",
+    "skip": "略過介紹",
+    "next": "下一步",
+    "begin": "開始"
+  }
+}

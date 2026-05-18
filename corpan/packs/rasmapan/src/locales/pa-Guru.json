@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "ਅੱਖਰ",
+    "words": "ਸ਼ਬਦ",
+    "styles": "ਸ਼ੈਲੀਆਂ"
+  },
+  "examples": {
+    "empty_for_letter": "ਇਸ ਅੱਖਰ ਲਈ ਅਜੇ ਉਦਾਹਰਨ ਸ਼ਬਦ ਨਹੀਂ ਹਨ।",
+    "tap_phrase_hint": "ਵਾਕ ਸੁਣਨ ਲਈ ਟੈਪ ਕਰੋ",
+    "tap_word_hint": "ਸ਼ਬਦ ਸੁਣਨ ਲਈ ਟੈਪ ਕਰੋ",
+    "heading_curated": "ਇਸ ਅੱਖਰ ਵਾਲੇ ਸ਼ਬਦ",
+    "heading_corpus": "ਕਾਰਪਸ ਤੋਂ ਵਾਕ"
+  },
+  "word_picker": {
+    "hint": "ਸ਼ਬਦ ਲਿਖਣ ਲਈ ਟੈਪ ਕਰੋ"
+  },
+  "form": {
+    "isolated": "ਇਕੱਲੀ",
+    "initial": "ਸ਼ੁਰੂਆਤੀ",
+    "medial": "ਮੱਧ",
+    "final": "ਅੰਤਮ"
+  },
+  "stroke": {
+    "singular": "ਲਕੀਰ",
+    "plural": "ਲਕੀਰਾਂ"
+  },
+  "letter": {
+    "singular": "ਅੱਖਰ",
+    "plural": "ਅੱਖਰ"
+  },
+  "aria": {
+    "tutorial": "ਟਿਊਟੋਰੀਅਲ",
+    "play": "ਚਲਾਓ",
+    "brush": "ਬ੍ਰਸ਼ ਸੈਟਿੰਗਾਂ",
+    "free_draw": "ਮੁਫ਼ਤ ਡਰਾਇੰਗ",
+    "hints": "ਗਾਈਡ",
+    "clear": "ਸਾਫ਼ ਕਰੋ",
+    "exit": "ਬਾਹਰ"
+  },
+  "lesson": {
+    "step": "{{total}} ਵਿੱਚੋਂ ਕਦਮ {{n}}",
+    "back": "ਪਿੱਛੇ",
+    "skip": "ਪਛਾਣ ਛੱਡੋ",
+    "next": "ਅੱਗੇ",
+    "begin": "ਸ਼ੁਰੂ"
+  }
+}

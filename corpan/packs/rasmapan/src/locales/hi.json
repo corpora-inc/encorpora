@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "अक्षर",
+    "words": "शब्द",
+    "styles": "शैलियाँ"
+  },
+  "examples": {
+    "empty_for_letter": "इस अक्षर के लिए अभी कोई उदाहरण शब्द नहीं हैं।",
+    "tap_phrase_hint": "वाक्यांश सुनने के लिए टैप करें",
+    "tap_word_hint": "शब्द सुनने के लिए टैप करें",
+    "heading_curated": "इस अक्षर वाले शब्द",
+    "heading_corpus": "कॉर्पस से वाक्यांश"
+  },
+  "word_picker": {
+    "hint": "शब्द ट्रेस करने के लिए टैप करें"
+  },
+  "form": {
+    "isolated": "अकेला",
+    "initial": "आरंभिक",
+    "medial": "मध्य",
+    "final": "अंतिम"
+  },
+  "stroke": {
+    "singular": "लकीर",
+    "plural": "लकीरें"
+  },
+  "letter": {
+    "singular": "अक्षर",
+    "plural": "अक्षर"
+  },
+  "aria": {
+    "tutorial": "ट्यूटोरियल",
+    "play": "चलाएँ",
+    "brush": "ब्रश सेटिंग्स",
+    "free_draw": "स्वतंत्र ड्राइंग",
+    "hints": "मार्गदर्शिकाएँ",
+    "clear": "साफ़ करें",
+    "exit": "बाहर"
+  },
+  "lesson": {
+    "step": "चरण {{n}} / {{total}}",
+    "back": "वापस",
+    "skip": "परिचय छोड़ें",
+    "next": "अगला",
+    "begin": "शुरू करें"
+  }
+}

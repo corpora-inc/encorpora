@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Kirjaimet",
+    "words": "Sanat",
+    "styles": "Tyylit"
+  },
+  "examples": {
+    "empty_for_letter": "Tällä kirjaimella ei ole vielä esimerkkisanoja.",
+    "tap_phrase_hint": "Napauta lausetta kuullaksesi sen",
+    "tap_word_hint": "Napauta sanaa kuullaksesi sen",
+    "heading_curated": "Sanat tällä kirjaimella",
+    "heading_corpus": "Lauseet korpuksesta"
+  },
+  "word_picker": {
+    "hint": "Napauta sanaa piirtääksesi sen"
+  },
+  "form": {
+    "isolated": "erillinen",
+    "initial": "alku",
+    "medial": "keski",
+    "final": "loppu"
+  },
+  "stroke": {
+    "singular": "veto",
+    "plural": "vetoa"
+  },
+  "letter": {
+    "singular": "kirjain",
+    "plural": "kirjainta"
+  },
+  "aria": {
+    "tutorial": "Esittely",
+    "play": "Toista",
+    "brush": "Sivellinasetukset",
+    "free_draw": "Vapaa piirto",
+    "hints": "Apuviivat",
+    "clear": "Tyhjennä",
+    "exit": "Sulje"
+  },
+  "lesson": {
+    "step": "Vaihe {{n}} / {{total}}",
+    "back": "Takaisin",
+    "skip": "Ohita esittely",
+    "next": "Seuraava",
+    "begin": "Aloita"
+  }
+}

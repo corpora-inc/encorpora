@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "אותיות",
+    "words": "מילים",
+    "styles": "סגנונות"
+  },
+  "examples": {
+    "empty_for_letter": "אין עדיין מילים לדוגמה עם האות הזו.",
+    "tap_phrase_hint": "הקש על משפט כדי לשמוע אותו",
+    "tap_word_hint": "הקש על מילה כדי לשמוע אותה",
+    "heading_curated": "מילים עם אות זו",
+    "heading_corpus": "ביטויים מהקורפוס"
+  },
+  "word_picker": {
+    "hint": "הקש על מילה כדי לעקוב אחריה"
+  },
+  "form": {
+    "isolated": "מנותקת",
+    "initial": "ראשונית",
+    "medial": "אמצעית",
+    "final": "סופית"
+  },
+  "stroke": {
+    "singular": "קו",
+    "plural": "קווים"
+  },
+  "letter": {
+    "singular": "אות",
+    "plural": "אותיות"
+  },
+  "aria": {
+    "tutorial": "מדריך",
+    "play": "נגן",
+    "brush": "הגדרות מברשת",
+    "free_draw": "ציור חופשי",
+    "hints": "הנחיות",
+    "clear": "נקה",
+    "exit": "יציאה"
+  },
+  "lesson": {
+    "step": "שלב {{n}} מתוך {{total}}",
+    "back": "חזרה",
+    "skip": "דלג על המבוא",
+    "next": "הבא",
+    "begin": "התחל"
+  }
+}

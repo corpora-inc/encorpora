@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Črke",
+    "words": "Besede",
+    "styles": "Slogi"
+  },
+  "examples": {
+    "empty_for_letter": "Za to črko še ni primerov besed.",
+    "tap_phrase_hint": "Pritisnite na stavek za poslušanje",
+    "tap_word_hint": "Pritisnite na besedo za poslušanje",
+    "heading_curated": "Besede s to črko",
+    "heading_corpus": "Stavki iz korpusa"
+  },
+  "word_picker": {
+    "hint": "Pritisnite na besedo za obris"
+  },
+  "form": {
+    "isolated": "samostojna",
+    "initial": "začetna",
+    "medial": "srednja",
+    "final": "končna"
+  },
+  "stroke": {
+    "singular": "poteza",
+    "plural": "potez"
+  },
+  "letter": {
+    "singular": "črka",
+    "plural": "črk"
+  },
+  "aria": {
+    "tutorial": "Vodič",
+    "play": "Predvajaj",
+    "brush": "Nastavitve čopiča",
+    "free_draw": "Prosto risanje",
+    "hints": "Pomoč",
+    "clear": "Počisti",
+    "exit": "Zapri"
+  },
+  "lesson": {
+    "step": "Korak {{n}} od {{total}}",
+    "back": "Nazaj",
+    "skip": "Preskoči uvod",
+    "next": "Naprej",
+    "begin": "Začni"
+  }
+}

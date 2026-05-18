@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Letters",
+    "words": "Words",
+    "styles": "Styles"
+  },
+  "examples": {
+    "empty_for_letter": "No example words for this letter yet.",
+    "tap_phrase_hint": "Tap a phrase to hear it",
+    "tap_word_hint": "Tap a word to hear it",
+    "heading_curated": "Words with this letter",
+    "heading_corpus": "Phrases from the corpus"
+  },
+  "word_picker": {
+    "hint": "Tap a word to trace it"
+  },
+  "form": {
+    "isolated": "isolated",
+    "initial": "initial",
+    "medial": "medial",
+    "final": "final"
+  },
+  "stroke": {
+    "singular": "stroke",
+    "plural": "strokes"
+  },
+  "letter": {
+    "singular": "letter",
+    "plural": "letters"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Play",
+    "brush": "Brush settings",
+    "free_draw": "Free draw",
+    "hints": "Hints",
+    "clear": "Clear",
+    "exit": "Exit"
+  },
+  "lesson": {
+    "step": "Step {{n}} of {{total}}",
+    "back": "Back",
+    "skip": "Skip intro",
+    "next": "Next",
+    "begin": "Begin"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Raidės",
+    "words": "Žodžiai",
+    "styles": "Stiliai"
+  },
+  "examples": {
+    "empty_for_letter": "Šiai raidei kol kas nėra pavyzdžių.",
+    "tap_phrase_hint": "Bakstelėkite frazę, kad ją išgirstumėte",
+    "tap_word_hint": "Bakstelėkite žodį, kad jį išgirstumėte",
+    "heading_curated": "Žodžiai su šia raide",
+    "heading_corpus": "Frazės iš korpuso"
+  },
+  "word_picker": {
+    "hint": "Bakstelėkite žodį, kad jį apvedžiotumėte"
+  },
+  "form": {
+    "isolated": "atskira",
+    "initial": "pradinė",
+    "medial": "vidurinė",
+    "final": "galinė"
+  },
+  "stroke": {
+    "singular": "potėpis",
+    "plural": "potėpių"
+  },
+  "letter": {
+    "singular": "raidė",
+    "plural": "raidžių"
+  },
+  "aria": {
+    "tutorial": "Mokymas",
+    "play": "Groti",
+    "brush": "Teptuko nustatymai",
+    "free_draw": "Laisvas piešimas",
+    "hints": "Pagalbinės linijos",
+    "clear": "Išvalyti",
+    "exit": "Išeiti"
+  },
+  "lesson": {
+    "step": "{{n}} žingsnis iš {{total}}",
+    "back": "Atgal",
+    "skip": "Praleisti įvadą",
+    "next": "Toliau",
+    "begin": "Pradėti"
+  }
+}

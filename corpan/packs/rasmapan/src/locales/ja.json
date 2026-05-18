@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "文字",
+    "words": "単語",
+    "styles": "書体"
+  },
+  "examples": {
+    "empty_for_letter": "この文字を含む例語はまだありません。",
+    "tap_phrase_hint": "フレーズをタップして聞く",
+    "tap_word_hint": "単語をタップして聞く",
+    "heading_curated": "この文字を含む単語",
+    "heading_corpus": "コーパスからのフレーズ"
+  },
+  "word_picker": {
+    "hint": "単語をタップしてなぞる"
+  },
+  "form": {
+    "isolated": "独立形",
+    "initial": "語頭形",
+    "medial": "語中形",
+    "final": "語末形"
+  },
+  "stroke": {
+    "singular": "ストローク",
+    "plural": "ストローク"
+  },
+  "letter": {
+    "singular": "文字",
+    "plural": "文字"
+  },
+  "aria": {
+    "tutorial": "チュートリアル",
+    "play": "再生",
+    "brush": "ブラシ設定",
+    "free_draw": "自由描画",
+    "hints": "ヒント",
+    "clear": "消去",
+    "exit": "終了"
+  },
+  "lesson": {
+    "step": "{{total}} ステップ中 {{n}}",
+    "back": "戻る",
+    "skip": "イントロをスキップ",
+    "next": "次へ",
+    "begin": "はじめる"
+  }
+}

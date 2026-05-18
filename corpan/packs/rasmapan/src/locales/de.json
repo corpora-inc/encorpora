@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Buchstaben",
+    "words": "Wörter",
+    "styles": "Stile"
+  },
+  "examples": {
+    "empty_for_letter": "Noch keine Beispielwörter mit diesem Buchstaben.",
+    "tap_phrase_hint": "Tippen Sie auf einen Satz, um ihn zu hören",
+    "tap_word_hint": "Tippen Sie auf ein Wort, um es zu hören",
+    "heading_curated": "Wörter mit diesem Buchstaben",
+    "heading_corpus": "Sätze aus dem Korpus"
+  },
+  "word_picker": {
+    "hint": "Tippen Sie auf ein Wort, um es nachzuzeichnen"
+  },
+  "form": {
+    "isolated": "isoliert",
+    "initial": "anfänglich",
+    "medial": "medial",
+    "final": "final"
+  },
+  "stroke": {
+    "singular": "Strich",
+    "plural": "Striche"
+  },
+  "letter": {
+    "singular": "Buchstabe",
+    "plural": "Buchstaben"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Anhören",
+    "brush": "Pinseleinstellungen",
+    "free_draw": "Freies Zeichnen",
+    "hints": "Hinweise",
+    "clear": "Löschen",
+    "exit": "Beenden"
+  },
+  "lesson": {
+    "step": "Schritt {{n}} von {{total}}",
+    "back": "Zurück",
+    "skip": "Intro überspringen",
+    "next": "Weiter",
+    "begin": "Beginnen"
+  }
+}

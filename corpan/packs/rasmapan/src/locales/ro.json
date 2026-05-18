@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Litere",
+    "words": "Cuvinte",
+    "styles": "Stiluri"
+  },
+  "examples": {
+    "empty_for_letter": "Încă nu există cuvinte exemplu cu această literă.",
+    "tap_phrase_hint": "Atinge o frază pentru a o asculta",
+    "tap_word_hint": "Atinge un cuvânt pentru a-l asculta",
+    "heading_curated": "Cuvinte cu această literă",
+    "heading_corpus": "Fraze din corpus"
+  },
+  "word_picker": {
+    "hint": "Atinge un cuvânt pentru a-l trasa"
+  },
+  "form": {
+    "isolated": "izolată",
+    "initial": "inițială",
+    "medial": "medială",
+    "final": "finală"
+  },
+  "stroke": {
+    "singular": "trasă",
+    "plural": "trase"
+  },
+  "letter": {
+    "singular": "literă",
+    "plural": "litere"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Redă",
+    "brush": "Setări pensulă",
+    "free_draw": "Desen liber",
+    "hints": "Ghidaje",
+    "clear": "Șterge",
+    "exit": "Ieșire"
+  },
+  "lesson": {
+    "step": "Pasul {{n}} din {{total}}",
+    "back": "Înapoi",
+    "skip": "Sari intro",
+    "next": "Următor",
+    "begin": "Începe"
+  }
+}

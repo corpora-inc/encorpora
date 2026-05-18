@@ -6,3 +6,4 @@ rasmapan.zip
 .env
 .env.local
 .env.*.local
+src/locales.generated.js

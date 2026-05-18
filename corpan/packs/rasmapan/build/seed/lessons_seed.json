@@ -6,7 +6,19 @@
     "title": "Reading and writing right-to-left",
     "body_md": "Arabic is written and read **right-to-left** (RTL).\n\nWords flow from the right edge of the line to the left. The first letter you write or read is the one on the right.\n\nIn this app, when you trace a letter, your strokes will sweep that direction too: think of the qalam (pen) starting where you'd naturally begin in Arabic — usually on the right — and ending on the left.\n\nNumbers run left-to-right inside an otherwise right-to-left line. That's a quirk worth knowing but not worth worrying about right now.",
     "highlight_ar": "ا ب ت ث",
-    "highlight_caption": "Reads from right (ا alif) to left (ث thaa)."
+    "highlight_caption": "Reads from right (ا alif) to left (ث thaa).",
+    "i18n": {
+      "es": {
+        "title": "Leer y escribir de derecha a izquierda",
+        "body_md": "El árabe se escribe y se lee **de derecha a izquierda** (RTL).\n\nLas palabras fluyen desde el borde derecho de la línea hacia la izquierda. La primera letra que escribes o lees es la de la derecha.\n\nEn esta aplicación, cuando traces una letra, tus trazos también irán en esa dirección: imagina que el qalam (la pluma) empieza donde naturalmente comenzarías en árabe —normalmente a la derecha— y termina a la izquierda.\n\nLos números, en cambio, se escriben de izquierda a derecha dentro de una línea que por lo demás va de derecha a izquierda. Es una particularidad que conviene conocer pero que no debe preocuparte ahora mismo.",
+        "highlight_caption": "Se lee de derecha (ا alif) a izquierda (ث thaa)."
+      },
+      "fr": {
+        "title": "Lire et écrire de droite à gauche",
+        "body_md": "L'arabe s'écrit et se lit **de droite à gauche** (RTL).\n\nLes mots circulent du bord droit de la ligne vers la gauche. La première lettre que vous écrivez ou lisez est celle de droite.\n\nDans cette application, quand vous tracez une lettre, vos traits suivent aussi ce sens : imaginez que le qalam (le calame) commence là où vous commenceriez naturellement en arabe — généralement à droite — et finit à gauche.\n\nLes chiffres, eux, s'écrivent de gauche à droite à l'intérieur d'une ligne qui va par ailleurs de droite à gauche. C'est une particularité bonne à connaître mais sans importance pour l'instant.",
+        "highlight_caption": "Se lit de droite (ا alif) à gauche (ث thaa)."
+      }
+    }
   },
   {
     "id": "intro-abjad",
@@ -14,7 +26,17 @@
     "type": "intro",
     "title": "The 28 letters",
     "body_md": "Arabic has **28 letters**, all consonants. Short vowels (a, i, u) are written as small marks above or below the letters and are usually omitted in everyday writing — readers infer them from context. Long vowels are written using three of the letters themselves: **alif** (ا) for /aa/, **waaw** (و) for /uu/, and **yaa** (ي) for /ii/.\n\nMany letters share the same body shape and are distinguished only by the **dots** above or below: baa (ب) one dot below, taa (ت) two dots above, thaa (ث) three dots above. As you trace, watch where the dots go — they carry the whole identity of the letter.",
-    "show_alphabet_grid": true
+    "show_alphabet_grid": true,
+    "i18n": {
+      "es": {
+        "title": "Las 28 letras",
+        "body_md": "El árabe tiene **28 letras**, todas consonantes. Las vocales cortas (a, i, u) se escriben como pequeñas marcas encima o debajo de las letras y se omiten en la escritura cotidiana — el lector las deduce del contexto. Las vocales largas se escriben usando tres de las propias letras: **alif** (ا) para /aa/, **waaw** (و) para /uu/ y **yaa** (ي) para /ii/.\n\nMuchas letras comparten la misma forma del cuerpo y se distinguen únicamente por los **puntos** encima o debajo: baa (ب) un punto debajo, taa (ت) dos puntos encima, thaa (ث) tres puntos encima. Al trazar, fíjate dónde van los puntos: ellos definen toda la identidad de la letra."
+      },
+      "fr": {
+        "title": "Les 28 lettres",
+        "body_md": "L'arabe compte **28 lettres**, toutes des consonnes. Les voyelles brèves (a, i, u) sont écrites sous forme de petites marques au-dessus ou en dessous des lettres et sont en général omises dans l'écriture courante — le lecteur les déduit du contexte. Les voyelles longues s'écrivent au moyen de trois des lettres elles-mêmes : **alif** (ا) pour /aa/, **waaw** (و) pour /uu/ et **yaa** (ي) pour /ii/.\n\nDe nombreuses lettres partagent la même silhouette et ne se distinguent que par les **points** placés au-dessus ou en dessous : baa (ب) un point en dessous, taa (ت) deux points au-dessus, thaa (ث) trois points au-dessus. Quand vous tracez, observez bien la position des points : c'est elle qui donne à la lettre toute son identité."
+      }
+    }
   },
   {
     "id": "intro-four-forms",
@@ -22,7 +44,17 @@
     "type": "intro",
     "title": "Four shapes per letter",
     "body_md": "Most Arabic letters change shape based on where they sit in a word:\n\n- **Isolated** — standing alone.\n- **Initial** — at the start of a word (right side, since we read RTL).\n- **Medial** — in the middle of a word.\n- **Final** — at the end of a word (left side).\n\nExample with **baa** (ب):\n\n- isolated: ب — initial: بـ — medial: ـبـ — final: ـب\n\nSix letters never connect to the letter that follows them (to their left in RTL): **alif (ا), daal (د), dhaal (ذ), raa (ر), zaay (ز), waaw (و)**. They only have **two** forms — isolated and final.",
-    "highlight_family": "baa"
+    "highlight_family": "baa",
+    "i18n": {
+      "es": {
+        "title": "Cuatro formas por letra",
+        "body_md": "La mayoría de las letras árabes cambian de forma según su posición dentro de la palabra:\n\n- **Aislada** — sola.\n- **Inicial** — al principio de la palabra (lado derecho, ya que leemos de derecha a izquierda).\n- **Medial** — en medio de la palabra.\n- **Final** — al final de la palabra (lado izquierdo).\n\nEjemplo con **baa** (ب):\n\n- aislada: ب — inicial: بـ — medial: ـبـ — final: ـب\n\nSeis letras nunca conectan con la letra que las sigue (a su izquierda en RTL): **alif (ا), daal (د), dhaal (ذ), raa (ر), zaay (ز), waaw (و)**. Estas solo tienen **dos** formas: aislada y final."
+      },
+      "fr": {
+        "title": "Quatre formes par lettre",
+        "body_md": "La plupart des lettres arabes changent de forme selon leur place dans le mot :\n\n- **Isolée** — toute seule.\n- **Initiale** — au début du mot (côté droit, puisqu'on lit de droite à gauche).\n- **Médiale** — au milieu du mot.\n- **Finale** — à la fin du mot (côté gauche).\n\nExemple avec **baa** (ب) :\n\n- isolée : ب — initiale : بـ — médiale : ـبـ — finale : ـب\n\nSix lettres ne se lient jamais à la lettre qui suit (à leur gauche en arabe) : **alif (ا), daal (د), dhaal (ذ), raa (ر), zaay (ز), waaw (و)**. Elles n'ont que **deux** formes — isolée et finale."
+      }
+    }
   },
   {
     "id": "intro-harakat",
@@ -30,7 +62,17 @@
     "type": "intro",
     "title": "Harakat — the little vowel marks",
     "body_md": "Short vowels and stops are written as small marks called **harakat**:\n\n- **Fatḥa** ( َ ) — short /a/ above the letter.\n- **Kasra** ( ِ ) — short /i/ below the letter.\n- **Ḍamma** ( ُ ) — short /u/ above the letter, looks like a tiny و.\n- **Sukūn** ( ْ ) — no vowel; the letter is bare. A small circle above.\n- **Shadda** ( ّ ) — doubles the consonant. A small 'w'-shape above the letter.\n\nIn most modern Arabic text these marks are **left out**. They appear in the Qur'an, in children's books, in song lyrics, and whenever a word might otherwise be misread.",
-    "tap_to_hear": ["بَ", "بِ", "بُ", "بْ", "بّ"]
+    "tap_to_hear": ["بَ", "بِ", "بُ", "بْ", "بّ"],
+    "i18n": {
+      "es": {
+        "title": "Harakat — las pequeñas marcas vocálicas",
+        "body_md": "Las vocales cortas y las pausas se escriben como pequeñas marcas llamadas **harakat**:\n\n- **Fatḥa** ( َ ) — /a/ corta encima de la letra.\n- **Kasra** ( ِ ) — /i/ corta debajo de la letra.\n- **Ḍamma** ( ُ ) — /u/ corta encima de la letra; parece una pequeña و.\n- **Sukūn** ( ْ ) — sin vocal; la letra va desnuda. Un pequeño círculo encima.\n- **Shadda** ( ّ ) — duplica la consonante. Una pequeña forma de \"w\" encima de la letra.\n\nEn la mayoría de los textos árabes modernos estas marcas se **omiten**. Aparecen en el Corán, en libros infantiles, en letras de canciones y en cualquier palabra que de otro modo podría leerse mal."
+      },
+      "fr": {
+        "title": "Harakat — les petites marques vocaliques",
+        "body_md": "Les voyelles brèves et les arrêts s'écrivent sous forme de petites marques appelées **harakat** :\n\n- **Fatḥa** ( َ ) — /a/ bref au-dessus de la lettre.\n- **Kasra** ( ِ ) — /i/ bref en dessous de la lettre.\n- **Ḍamma** ( ُ ) — /u/ bref au-dessus de la lettre, en forme de petit و.\n- **Sukūn** ( ْ ) — pas de voyelle ; la lettre est nue. Un petit cercle au-dessus.\n- **Shadda** ( ّ ) — double la consonne. Une petite forme en « w » au-dessus de la lettre.\n\nDans la plupart des textes arabes modernes ces marques sont **omises**. On les rencontre dans le Coran, dans les livres pour enfants, dans les paroles de chansons, et chaque fois qu'un mot pourrait sinon être mal lu."
+      }
+    }
   },
   {
     "id": "intro-sound-map",
@@ -38,7 +80,17 @@
     "type": "intro",
     "title": "Tap to hear",
     "body_md": "Tap each letter below to hear it spoken. Try saying the sound back. The Arabic system maps cleanly to sounds — once you can recognize a letter, you can pronounce its name and its sound consistently.",
-    "tap_letters": ["alif", "baa", "taa", "thaa", "jiim", "Haa", "khaa", "daal", "raa", "siin"]
+    "tap_letters": ["alif", "baa", "taa", "thaa", "jiim", "Haa", "khaa", "daal", "raa", "siin"],
+    "i18n": {
+      "es": {
+        "title": "Toca para escuchar",
+        "body_md": "Toca cada letra de abajo para escucharla. Intenta repetir el sonido. El sistema árabe se corresponde de forma muy clara con los sonidos: una vez que reconoces una letra, puedes pronunciar su nombre y su sonido de manera consistente."
+      },
+      "fr": {
+        "title": "Touchez pour écouter",
+        "body_md": "Touchez chaque lettre ci-dessous pour l'entendre. Essayez de répéter le son. Le système arabe se prête à une correspondance très nette avec les sons : dès que vous reconnaissez une lettre, vous pouvez prononcer son nom et son son de manière fiable."
+      }
+    }
   },
   {
     "id": "intro-trace-alif",
@@ -46,6 +98,16 @@
     "type": "letter",
     "title": "Trace your first letter — Alif",
     "body_md": "Alif (ا) is the simplest letter to write: a single tall vertical stroke. Start at the top and pull the qalam downward.\n\nWhen you're ready, hit **Begin** to enter practice mode. You'll have all 28 letters available — switch between Letters, Words, and Styles using the tabs.",
-    "letter_id": "alif"
+    "letter_id": "alif",
+    "i18n": {
+      "es": {
+        "title": "Traza tu primera letra — Alif",
+        "body_md": "Alif (ا) es la letra más sencilla de escribir: un único trazo vertical y alto. Empieza arriba y baja el qalam hacia abajo.\n\nCuando estés listo, pulsa **Empezar** para entrar en el modo de práctica. Tendrás las 28 letras disponibles: cambia entre Letras, Palabras y Estilos con las pestañas."
+      },
+      "fr": {
+        "title": "Tracez votre première lettre — Alif",
+        "body_md": "Alif (ا) est la lettre la plus simple à écrire : un unique trait vertical, haut et droit. Commencez en haut et descendez le qalam vers le bas.\n\nQuand vous êtes prêt, appuyez sur **Commencer** pour passer en mode pratique. Vous aurez les 28 lettres à votre disposition : passez entre Lettres, Mots et Styles avec les onglets."
+      }
+    }
   }
 ]

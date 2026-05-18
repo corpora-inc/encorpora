@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "글자",
+    "words": "단어",
+    "styles": "서체"
+  },
+  "examples": {
+    "empty_for_letter": "이 글자가 포함된 예시 단어가 아직 없습니다.",
+    "tap_phrase_hint": "구절을 눌러서 들어보세요",
+    "tap_word_hint": "단어를 눌러서 들어보세요",
+    "heading_curated": "이 글자가 들어간 단어",
+    "heading_corpus": "말뭉치의 구절"
+  },
+  "word_picker": {
+    "hint": "단어를 눌러서 따라 써 보세요"
+  },
+  "form": {
+    "isolated": "독립형",
+    "initial": "어두형",
+    "medial": "어중형",
+    "final": "어말형"
+  },
+  "stroke": {
+    "singular": "획",
+    "plural": "획"
+  },
+  "letter": {
+    "singular": "글자",
+    "plural": "글자"
+  },
+  "aria": {
+    "tutorial": "튜토리얼",
+    "play": "재생",
+    "brush": "붓 설정",
+    "free_draw": "자유 그리기",
+    "hints": "안내선",
+    "clear": "지우기",
+    "exit": "나가기"
+  },
+  "lesson": {
+    "step": "{{total}}단계 중 {{n}}",
+    "back": "이전",
+    "skip": "인트로 건너뛰기",
+    "next": "다음",
+    "begin": "시작"
+  }
+}

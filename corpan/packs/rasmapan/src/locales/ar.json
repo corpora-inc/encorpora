@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "الحروف",
+    "words": "الكلمات",
+    "styles": "الخطوط"
+  },
+  "examples": {
+    "empty_for_letter": "لا توجد بعد كلمات نموذجية تحتوي هذا الحرف.",
+    "tap_phrase_hint": "اضغط على عبارة لسماعها",
+    "tap_word_hint": "اضغط على كلمة لسماعها",
+    "heading_curated": "كلمات تحتوي هذا الحرف",
+    "heading_corpus": "جمل من المدونة"
+  },
+  "word_picker": {
+    "hint": "اضغط على كلمة لتتبعها"
+  },
+  "form": {
+    "isolated": "منفصل",
+    "initial": "أول",
+    "medial": "وسط",
+    "final": "آخر"
+  },
+  "stroke": {
+    "singular": "حركة",
+    "plural": "حركات"
+  },
+  "letter": {
+    "singular": "حرف",
+    "plural": "حروف"
+  },
+  "aria": {
+    "tutorial": "الدرس التعريفي",
+    "play": "تشغيل",
+    "brush": "إعدادات الفرشاة",
+    "free_draw": "رسم حر",
+    "hints": "إرشادات",
+    "clear": "مسح",
+    "exit": "خروج"
+  },
+  "lesson": {
+    "step": "الخطوة {{n}} من {{total}}",
+    "back": "رجوع",
+    "skip": "تخطي المقدمة",
+    "next": "التالي",
+    "begin": "ابدأ"
+  }
+}

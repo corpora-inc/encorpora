@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Písmena",
+    "words": "Slova",
+    "styles": "Styly"
+  },
+  "examples": {
+    "empty_for_letter": "Pro toto písmeno zatím nejsou ukázková slova.",
+    "tap_phrase_hint": "Klepněte na frázi, abyste si ji poslechli",
+    "tap_word_hint": "Klepněte na slovo, abyste si ho poslechli",
+    "heading_curated": "Slova s tímto písmenem",
+    "heading_corpus": "Fráze z korpusu"
+  },
+  "word_picker": {
+    "hint": "Klepněte na slovo a obkreslete ho"
+  },
+  "form": {
+    "isolated": "samostatná",
+    "initial": "počáteční",
+    "medial": "střední",
+    "final": "koncová"
+  },
+  "stroke": {
+    "singular": "tah",
+    "plural": "tahů"
+  },
+  "letter": {
+    "singular": "písmeno",
+    "plural": "písmen"
+  },
+  "aria": {
+    "tutorial": "Návod",
+    "play": "Přehrát",
+    "brush": "Nastavení štětce",
+    "free_draw": "Volné kreslení",
+    "hints": "Vodítka",
+    "clear": "Vymazat",
+    "exit": "Zavřít"
+  },
+  "lesson": {
+    "step": "Krok {{n}} z {{total}}",
+    "back": "Zpět",
+    "skip": "Přeskočit úvod",
+    "next": "Další",
+    "begin": "Začít"
+  }
+}

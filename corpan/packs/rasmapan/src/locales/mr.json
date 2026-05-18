@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "अक्षरे",
+    "words": "शब्द",
+    "styles": "शैली"
+  },
+  "examples": {
+    "empty_for_letter": "या अक्षरासाठी अद्याप उदाहरण शब्द नाहीत.",
+    "tap_phrase_hint": "वाक्यांश ऐकण्यासाठी टॅप करा",
+    "tap_word_hint": "शब्द ऐकण्यासाठी टॅप करा",
+    "heading_curated": "या अक्षराचे शब्द",
+    "heading_corpus": "कॉर्पसमधील वाक्ये"
+  },
+  "word_picker": {
+    "hint": "शब्द ट्रेस करण्यासाठी टॅप करा"
+  },
+  "form": {
+    "isolated": "एकटी",
+    "initial": "आरंभिक",
+    "medial": "मध्य",
+    "final": "अंतिम"
+  },
+  "stroke": {
+    "singular": "रेषा",
+    "plural": "रेषा"
+  },
+  "letter": {
+    "singular": "अक्षर",
+    "plural": "अक्षरे"
+  },
+  "aria": {
+    "tutorial": "ट्यूटोरियल",
+    "play": "प्ले",
+    "brush": "ब्रश सेटिंग्ज",
+    "free_draw": "मुक्त रेखाटन",
+    "hints": "मार्गदर्शक",
+    "clear": "साफ करा",
+    "exit": "बाहेर पडा"
+  },
+  "lesson": {
+    "step": "{{total}} पैकी पायरी {{n}}",
+    "back": "मागे",
+    "skip": "परिचय वगळा",
+    "next": "पुढे",
+    "begin": "सुरू करा"
+  }
+}

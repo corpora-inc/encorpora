@@ -5,9 +5,11 @@ import {
   BrushConfigWidget,
   BUILTIN_PRESETS,
 } from "../brush/index.js"
-import { LessonRunner } from "./lessons.js"
+import { LessonRunner, resetLessonProgress } from "./lessons.js"
 import { LetterTraceLayer, WordTraceLayer } from "./trace.js"
 import { StylesView } from "./styles_view.js"
+import { t, subscribeLanguageChanged, currentLanguage } from "./i18n.js"
+import { tokenizeText, wordContainsLetter } from "./tokenize.js"
 
 ;(() => {
   const GAME_ID = "rasmapan"
@@ -17,6 +19,13 @@ import { StylesView } from "./styles_view.js"
       <button class="exit-btn" data-action="exit" aria-label="Exit">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5" />
+        </svg>
+      </button>
+      <button class="tutorial-btn" data-action="tutorial" aria-label="Tutorial">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 1 4 17.5V5.5z" />
+          <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 0 1.5-1.5V5.5z" />
+          <path d="M11 4v15M13 4v15" />
         </svg>
       </button>
       <div class="hero">
@@ -44,10 +53,10 @@ import { StylesView } from "./styles_view.js"
           </div>
         </div>
       </div>
-      <div class="mode-tabs" role="tablist">
-        <button class="mode-tab is-active" data-mode="letters" role="tab" type="button">Letters</button>
-        <button class="mode-tab" data-mode="words" role="tab" type="button">Words</button>
-        <button class="mode-tab" data-mode="styles" role="tab" type="button">Styles</button>
+      <div class="mode-tabs" role="tablist" data-mode-tabs>
+        <button class="mode-tab is-active" data-mode="letters" role="tab" type="button"></button>
+        <button class="mode-tab" data-mode="words" role="tab" type="button"></button>
+        <button class="mode-tab" data-mode="styles" role="tab" type="button"></button>
       </div>
       <div class="letter-picker" data-letter-picker></div>
       <div class="workspace mode-letters" data-workspace>
@@ -73,7 +82,9 @@ import { StylesView } from "./styles_view.js"
               </button>
               <button class="icon-chip active" data-guided-toggle aria-label="Guided hints">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 9.5 12 5l8 4.5-8 4.5-8-4.5zM8 13.5v3.2c0 .8 2.1 1.8 4 1.8s4-1 4-1.8v-3.2" />
+                  <path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path class="eye-slash" d="M4 4 20 20" />
                 </svg>
               </button>
               <button class="icon-chip" data-action="clear" aria-label="Clear">
@@ -424,6 +435,10 @@ import { StylesView } from "./styles_view.js"
       completedCount: 0,
       ghostVisible: true,
       freeDraw: false,
+      // Styles mode state — populated lazily when the styles tab
+      // is first opened; nav arrows cycle through `styleIds`.
+      styleIds: [],
+      activeStyleId: null,
     }
 
     const packBaseUrl = resolvePackBaseUrl()
@@ -433,19 +448,80 @@ import { StylesView } from "./styles_view.js"
     let traceLayer = null
     let wordTraceLayer = null
     let drawingEngine = null
+    let lessonRunner = null
 
-    const queryPackDb = async (sql, params = []) => {
-      if (!hostApi.queryPackDb || !state.packDbAvailable) {
+    // --- Speak wrapper (juice-squeeze pattern) ---------------------------
+    //
+    // Prefer `speakConcurrent` so rapid taps don't cancel each other
+    // (e.g. word-chip taps in a phrase); fall back to the standard
+    // `speak`. Silently tolerate failures (missing system voice etc.).
+    const speak = (lang, text) => {
+      if (!text) return
+      if (typeof hostApi.speakConcurrent === "function") {
+        try { hostApi.speakConcurrent(lang, text); return } catch { /* fall through */ }
+      }
+      try { hostApi.speak(lang, text) } catch { /* tolerated */ }
+    }
+
+    // --- pickByLang (juice-squeeze pattern) ------------------------------
+    //
+    // Choose the best translation row for a given language code,
+    // with locale-base fallback so "ko-polite" finds a "ko"
+    // translation when the stack only carries the base. Adapted
+    // from juice-squeeze src/data.ts:50-60.
+    const pickByLang = (translations, lang) => {
+      if (!translations || !translations.length) return undefined
+      const norm = (s) => (s || "").toLowerCase()
+      const desired = norm(lang)
+      if (desired) {
+        const exact = translations.find(t => norm(t.language_code) === desired)
+        if (exact) return exact
+        const base = desired.split("-")[0]
+        const baseMatch = translations.find(t => norm(t.language_code).split("-")[0] === base)
+        if (baseMatch) return baseMatch
+      }
+      return translations[0]
+    }
+
+    // Accepts the SDK-shaped query object `{ sql, params, ... }`.
+    // Subcomponents (LessonRunner, StylesView) call us with the
+    // same shape so we route directly to hostApi.queryPackDb.
+    // Tauri's `content_packs_query_db` command expects `sql` as a
+    // string; passing an object as `sql` returns "invalid type: map".
+    //
+    // We DON'T permanently disable packDb on a single failure — one
+    // error (e.g. a stale cached connection after a hot reinstall
+    // with schema changes) shouldn't lock the pack out forever. We
+    // log + return empty for that one call and let the next one try.
+    const queryPackDb = async (query) => {
+      if (!hostApi.queryPackDb) {
+        return { columns: [], rows: [] }
+      }
+      if (typeof query !== "object" || query === null) {
         return { columns: [], rows: [] }
       }
       try {
-        return await hostApi.queryPackDb({ sql, params })
+        return await hostApi.queryPackDb(query)
       } catch (err) {
         // eslint-disable-next-line no-console
-        console.warn("[rasmapan] queryPackDb failed", err)
-        state.packDbAvailable = false
+        console.warn("[rasmapan] queryPackDb failed:", err && err.message ? err.message : err)
         return { columns: [], rows: [] }
       }
+    }
+
+    // Family → base Arabic codepoint (U+0600-U+064A range). Used to
+    // search the corpus on the base letter even if a stale cached
+    // pack-DB connection doesn't have our `base_letter` column yet.
+    // This is the canonical Unicode mapping for the 28 letters; it
+    // never needs to change.
+    const BASE_LETTER_BY_FAMILY = {
+      alif: "ا", baa: "ب", taa: "ت", thaa: "ث",
+      jiim: "ج", Haa: "ح", khaa: "خ", daal: "د",
+      dhaal: "ذ", raa: "ر", zaay: "ز", siin: "س",
+      shiin: "ش", Saad: "ص", Daad: "ض", Taa: "ط",
+      DHaa: "ظ", ain: "ع", ghain: "غ", faa: "ف",
+      qaaf: "ق", kaaf: "ك", laam: "ل", miim: "م",
+      nuun: "ن", haa: "ه", waaw: "و", yaa: "ي",
     }
 
     const getColors = () => {
@@ -466,16 +542,33 @@ import { StylesView } from "./styles_view.js"
     // --- Loaders ---------------------------------------------------------
 
     const loadFamilies = async () => {
-      const res = await queryPackDb(
-        "SELECT id, family_id, name_ar, name_en, connects_before, connects_after, frequency " +
-          "FROM arabic_letter WHERE position = 'isolated' " +
-          "ORDER BY frequency DESC NULLS LAST, id"
-      )
+      // Try the new schema first (includes `base_letter`). If it
+      // fails (stale cached connection against an older DB without
+      // the column), fall back to the legacy schema and synthesize
+      // base_letter from the family id via BASE_LETTER_BY_FAMILY.
+      const COLUMNS_NEW = "id, family_id, base_letter, name_ar, name_en, connects_before, connects_after, frequency"
+      const COLUMNS_LEGACY = "id, family_id, name_ar, name_en, connects_before, connects_after, frequency"
+      let res = await queryPackDb({
+        sql:
+          `SELECT ${COLUMNS_NEW} FROM arabic_letter ` +
+          "WHERE position = 'isolated' " +
+          "ORDER BY frequency DESC NULLS LAST, id",
+      })
+      if (!res.rows || !res.rows.length) {
+        // Try again without base_letter — covers the "stale cached
+        // connection after a re-install with schema change" case.
+        res = await queryPackDb({
+          sql:
+            `SELECT ${COLUMNS_LEGACY} FROM arabic_letter ` +
+            "WHERE position = 'isolated' " +
+            "ORDER BY frequency DESC NULLS LAST, id",
+        })
+      }
       const families = res.rows || []
       // Discover positions per family.
-      const allPosRes = await queryPackDb(
-        "SELECT family_id, position FROM arabic_letter"
-      )
+      const allPosRes = await queryPackDb({
+        sql: "SELECT family_id, position FROM arabic_letter",
+      })
       const posByFamily = new Map()
       for (const row of allPosRes.rows || []) {
         const set = posByFamily.get(row.family_id) || new Set()
@@ -486,6 +579,10 @@ import { StylesView } from "./styles_view.js"
         id: f.family_id,
         name_ar: f.name_ar,
         name_en: f.name_en,
+        // Base Arabic codepoint — prefer the DB value if available,
+        // else look it up in our static JS map (the 28 canonical
+        // base letters never change).
+        base_letter: f.base_letter || BASE_LETTER_BY_FAMILY[f.family_id] || "",
         connects_before: !!f.connects_before,
         connects_after: !!f.connects_after,
         positions: Array.from(posByFamily.get(f.family_id) || new Set(["isolated"])),
@@ -493,10 +590,11 @@ import { StylesView } from "./styles_view.js"
     }
 
     const loadWords = async () => {
-      const res = await queryPackDb(
-        "SELECT id, word, transliteration, meaning_json, letter_ids_json, difficulty " +
-          "FROM arabic_word ORDER BY difficulty ASC, id ASC"
-      )
+      const res = await queryPackDb({
+        sql:
+          "SELECT id, word, transliteration, meaning_json, letter_ids_json, difficulty " +
+          "FROM arabic_word ORDER BY difficulty ASC, id ASC",
+      })
       state.words = (res.rows || []).map((row) => {
         let meaning = {}
         let letter_ids = []
@@ -514,10 +612,10 @@ import { StylesView } from "./styles_view.js"
     }
 
     const loadWriter = async (id) => {
-      const res = await queryPackDb(
-        "SELECT data_json FROM arabic_letter_writer WHERE id = ?",
-        [id]
-      )
+      const res = await queryPackDb({
+        sql: "SELECT data_json FROM arabic_letter_writer WHERE id = ?",
+        params: [id],
+      })
       const row = (res.rows || [])[0]
       if (!row) return null
       try { return JSON.parse(row.data_json) } catch { return null }
@@ -529,10 +627,10 @@ import { StylesView } from "./styles_view.js"
         "en",
       ])
       const placeholders = langs.map(() => "?").join(",")
-      const res = await queryPackDb(
-        `SELECT language_code, summary FROM arabic_letter_note WHERE letter_id = ? AND language_code IN (${placeholders})`,
-        [familyId, ...langs]
-      )
+      const res = await queryPackDb({
+        sql: `SELECT language_code, summary FROM arabic_letter_note WHERE letter_id = ? AND language_code IN (${placeholders})`,
+        params: [familyId, ...langs],
+      })
       const rows = res.rows || []
       const byLang = new Map(rows.map((r) => [r.language_code, r.summary]))
       for (const lang of langs) {
@@ -559,22 +657,64 @@ import { StylesView } from "./styles_view.js"
       elLetterPicker.innerHTML = html
     }
 
-    const renderFormPicker = () => {
+    // Form picker chips render the actual letter glyph in each
+    // position — a tiny diagram per chip. This is language-free,
+    // so no translation surface for the picker beyond aria-labels.
+    const renderFormPicker = async () => {
       const fam = state.families.find((f) => f.id === state.activeFamilyId)
       if (!fam) {
         elFormPicker.innerHTML = ""
         return
       }
       const order = ["isolated", "initial", "medial", "final"]
-      const html = order
-        .map((pos) => {
-          const available = fam.positions.includes(pos)
-          const cls = `form-chip${pos === state.activePosition ? " is-active" : ""}`
-          const disabled = available ? "" : "disabled"
-          return `<button type="button" class="${cls}" data-pos="${pos}" ${disabled}>${pos}</button>`
-        })
-        .join("")
-      elFormPicker.innerHTML = html
+      const cards = []
+      for (const pos of order) {
+        const available = fam.positions.includes(pos)
+        const cls = `form-chip${pos === state.activePosition ? " is-active" : ""}`
+        const ariaLabel = t(`form.${pos}`)
+        if (!available) {
+          cards.push(`<button type="button" class="${cls} is-empty" data-pos="${pos}" disabled aria-label="${escapeHtml(ariaLabel)}"></button>`)
+          continue
+        }
+        // Render the actual glyph for this positional form so the
+        // chip itself is the diagram.
+        const glyphId = pos === "isolated" ? fam.id : `${fam.id}.${pos}`
+        const writer = await loadWriter(glyphId)
+        const glyph = (writer && writer.letter) || ""
+        cards.push(
+          `<button type="button" class="${cls}" data-pos="${pos}" aria-label="${escapeHtml(ariaLabel)}">` +
+            `<span class="form-chip-glyph" lang="ar">${escapeHtml(glyph)}</span>` +
+            `</button>`,
+        )
+      }
+      elFormPicker.innerHTML = cards.join("")
+    }
+
+    const renderModeTabs = () => {
+      modeTabs.forEach((tab) => {
+        const key = `mode.${tab.dataset.mode}`
+        tab.textContent = t(key)
+        tab.classList.toggle("is-active", tab.dataset.mode === state.mode)
+      })
+    }
+
+    // Update aria-labels on the icon-only toolbar buttons so screen
+    // readers see the translated text. Visible chrome is icons, so
+    // this is the only place the chrome cares about language.
+    const ARIA_KEYS = {
+      exit: "aria.exit",
+      replay: "aria.play",
+      tutorial: "aria.tutorial",
+      "brush-settings": "aria.brush",
+      "toggle-freedraw": "aria.free_draw",
+      clear: "aria.clear",
+    }
+    const renderToolbarAria = () => {
+      root.querySelectorAll("[data-action]").forEach((btn) => {
+        const key = ARIA_KEYS[btn.dataset.action]
+        if (key) btn.setAttribute("aria-label", t(key))
+      })
+      if (guidedToggle) guidedToggle.setAttribute("aria-label", t("aria.hints"))
     }
 
     const renderHero = async () => {
@@ -589,8 +729,16 @@ import { StylesView } from "./styles_view.js"
         }
         state.currentWriter = writer
         state.currentLetter = writer.letter || ""
+        // Base codepoint (U+06-range) for corpus search. Falls back
+        // to the presentation form if the family didn't carry one.
+        state.baseLetter = fam.base_letter || writer.letter || ""
         elChar.textContent = writer.letter || ""
-        elLetterName.textContent = `${fam.name_en} (${fam.name_ar}) — ${state.activePosition}`
+        // Bilingual label including the positional form name in
+        // the user's UI language — restores text the iconic pass
+        // had stripped (e.g. "ألف · alif — isolated").
+        const posName = t(`form.${state.activePosition}`)
+        elLetterName.textContent =
+          `${fam.name_ar} · ${fam.name_en} — ${posName}`
         elLetterNameEn.textContent = fam.name_en
         const note = await loadFamilyNote(fam.id)
         elEtymology.textContent = note || ""
@@ -600,8 +748,12 @@ import { StylesView } from "./styles_view.js"
           traceLayer.setGhostVisible(state.ghostVisible)
           traceLayer.setFreeDraw(state.freeDraw)
         }
+        // Stroke count as localized text — "3 strokes" / "3 trazos"
+        // / "3 traits" — re-rendered on language change via the
+        // onLanguageChanged handler.
         const total = (writer.outline || []).length || 1
-        elStrokes.textContent = `${total} ${total === 1 ? "stroke" : "strokes"}`
+        const strokeWord = t(total === 1 ? "stroke.singular" : "stroke.plural")
+        elStrokes.textContent = `${total} ${strokeWord}`
         elOverlay.style.display = "none"
       } else if (state.mode === "words") {
         const word = state.words.find((w) => w.id === state.activeWordId)
@@ -609,14 +761,55 @@ import { StylesView } from "./styles_view.js"
         state.currentWord = word
         elChar.classList.add("word-trace-run")
         elChar.textContent = word.word
-        const glossLang = state.stackConfig.languages.find((l) => word.meaning[l]) || "en"
-        const gloss = word.meaning[glossLang] || word.meaning.en || ""
+        // Use pickByLang to pick the gloss for the user's stack,
+        // with locale-base fallback. Convert the word.meaning map
+        // into the translations-array shape pickByLang expects.
+        const meaningRows = Object.entries(word.meaning || {})
+          .filter(([lang, text]) => lang && text && lang !== "ar")
+          .map(([lang, text]) => ({ language_code: lang, text }))
+        const primary = (state.stackConfig.languages || []).find(l => l !== "ar")
+        const picked = pickByLang(meaningRows, primary || currentLanguage())
+        const gloss = picked ? picked.text : ""
         elLetterName.innerHTML =
           `<span class="translit">${escapeHtml(word.transliteration || "")}</span>` +
           (gloss ? `<span class="gloss"> — ${escapeHtml(gloss)}</span>` : "")
         elLetterNameEn.textContent = word.transliteration || ""
-        elEtymology.textContent = ""
         elFormPicker.innerHTML = ""
+        // Component-letter chips for the word. Each chip shows the
+        // family's isolated glyph + the English name underneath as
+        // a small italic label. Tapping a chip drills into Letters
+        // mode with that family active — a learning shortcut from
+        // "I see this word" → "let me practice each letter".
+        const familyMap = new Map(state.families.map(f => [f.id, f]))
+        const chipsHtml = (word.letter_ids || [])
+          .map((famId) => {
+            const fam = familyMap.get(famId)
+            if (!fam) return ""
+            const glyph = fam._isolatedLetter || ""
+            return `<button class="letter-chip" type="button" data-letter-family="${escapeHtml(famId)}" title="${escapeHtml(fam.name_en)}">` +
+              `<span lang="ar">${escapeHtml(glyph)}</span>` +
+              `<span class="letter-chip-label">${escapeHtml(fam.name_en)}</span>` +
+              `</button>`
+          })
+          .join("")
+        elEtymology.innerHTML = chipsHtml
+          ? `<div class="word-letters" dir="rtl">${chipsHtml}</div>`
+          : ""
+        elEtymology.querySelectorAll("[data-letter-family]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const famId = btn.dataset.letterFamily
+            if (!famId) return
+            state.mode = "letters"
+            state.activeFamilyId = famId
+            state.activePosition = "isolated"
+            renderModeTabs()
+            renderLetterPicker()
+            renderFormPicker()
+            renderModeUI()
+            renderExamplesPanel()
+            if (drawingEngine) drawingEngine.clear()
+          })
+        })
         // Load all letter writers for the word.
         const writers = []
         for (const letterFamilyId of word.letter_ids) {
@@ -627,7 +820,10 @@ import { StylesView } from "./styles_view.js"
           wordTraceLayer.setWord(writers)
           wordTraceLayer.setGhostVisible(state.ghostVisible)
         }
-        elStrokes.textContent = `${word.letter_ids.length} letters`
+        // Letter count as localized text.
+        const ltrCount = word.letter_ids.length
+        const ltrWord = t(ltrCount === 1 ? "letter.singular" : "letter.plural")
+        elStrokes.textContent = `${ltrCount} ${ltrWord}`
         elOverlay.style.display = "none"
       }
     }
@@ -681,20 +877,63 @@ import { StylesView } from "./styles_view.js"
           packBaseUrl,
         })
       }
-      await stylesView.render()
+      await stylesView.render({ highlightId: state.activeStyleId })
+      // Cache the list of style IDs on first render so nav arrows
+      // can cycle through them without re-querying.
+      if (!state.styleIds.length) {
+        const res = await queryPackDb({
+          sql: "SELECT id FROM arabic_style ORDER BY ord ASC",
+        })
+        state.styleIds = (res.rows || []).map((r) => r.id)
+        if (!state.activeStyleId && state.styleIds.length) {
+          state.activeStyleId = state.styleIds[0]
+        }
+      }
+    }
+
+    // Pick the user's primary non-Arabic stack language; falls back
+    // to current i18next UI language; ultimate fallback English.
+    const stackPrimaryLang = () => {
+      const langs = state.stackConfig.languages || []
+      for (const l of langs) {
+        if (l && l !== "ar") return l
+      }
+      return currentLanguage() || "en"
+    }
+
+    // Render the Arabic source as a row of clickable word chips so
+    // the user can tap each word in isolation. Words containing the
+    // active baseLetter get a `.matches-letter` accent. Falls back
+    // to a plain `<span>` for non-Arabic strings.
+    const renderArabicChips = (text) => {
+      const tokens = tokenizeText(text)
+      if (!tokens.length) {
+        return `<span class="example-text" lang="ar">${escapeHtml(text)}</span>`
+      }
+      const baseLetter = state.baseLetter || ""
+      const chips = tokens.map((tok) => {
+        const matches = baseLetter && wordContainsLetter(tok, baseLetter)
+        const cls = matches ? "word-chip matches-letter" : "word-chip"
+        return `<button class="${cls}" type="button" data-speak-word="${escapeHtml(tok)}" lang="ar">${escapeHtml(tok)}</button>`
+      })
+      return `<div class="example-words" dir="rtl">${chips.join("")}</div>`
     }
 
     // Words mode: render a vertical list of word pills in the examples panel.
     const renderWordPicker = () => {
       if (!state.words.length) {
-        elExamples.innerHTML = "<div class='example-text'>No words available.</div>"
+        elExamples.innerHTML = "<div class='example-text'>—</div>"
         return
       }
+      const primary = stackPrimaryLang()
       const html = state.words
         .map((w) => {
           const cls = w.id === state.activeWordId ? "word-pill is-active" : "word-pill"
-          const glossLang = state.stackConfig.languages.find((l) => w.meaning[l]) || "en"
-          const gloss = w.meaning[glossLang] || w.meaning.en || ""
+          const meaningRows = Object.entries(w.meaning || {})
+            .filter(([lang, text]) => lang && text && lang !== "ar")
+            .map(([lang, text]) => ({ language_code: lang, text }))
+          const picked = pickByLang(meaningRows, primary)
+          const gloss = picked ? picked.text : ""
           return `
             <button class="${cls}" type="button" data-word="${escapeHtml(w.id)}">
               <span class="word-text" lang="ar">${escapeHtml(w.word)}</span>
@@ -705,7 +944,7 @@ import { StylesView } from "./styles_view.js"
         .join("")
       elExamples.innerHTML = `<div class='word-picker'>${html}</div>`
       elExampleCount.textContent = String(state.words.length)
-      elExamplesFooter.textContent = "Tap a word to trace"
+      elExamplesFooter.textContent = t("word_picker.hint")
       elExamples.querySelectorAll("[data-word]").forEach((btn) => {
         btn.addEventListener("click", () => {
           state.activeWordId = btn.dataset.word
@@ -715,70 +954,137 @@ import { StylesView } from "./styles_view.js"
       })
     }
 
+    // Letters mode examples panel: pack-owned curated words +
+    // corpus phrases that contain the active letter. The Arabic
+    // text on each card is rendered as clickable word chips
+    // (juice-squeeze tokenization) so each word can be heard in
+    // isolation.
+    const renderLetterExamples = async () => {
+      const family = state.activeFamilyId
+      if (!family) {
+        elExamples.innerHTML = ""
+        elExampleCount.textContent = "—"
+        elExamplesFooter.textContent = "—"
+        return
+      }
+      const primary = stackPrimaryLang()
+      // Step 1: curated words from arabic_word with this letter in
+      // letter_ids_json.
+      const wordRes = await queryPackDb({
+        sql:
+          'SELECT id, word, transliteration, meaning_json ' +
+          'FROM arabic_word WHERE letter_ids_json LIKE ? ' +
+          'ORDER BY difficulty ASC, id ASC LIMIT 24',
+        params: [`%"${family}"%`],
+      })
+      const wordCards = (wordRes.rows || []).map((row) => {
+        let meaning = {}
+        try { meaning = JSON.parse(row.meaning_json || "{}") } catch { /* */ }
+        const meaningRows = Object.entries(meaning)
+          .filter(([lang, text]) => lang && text && lang !== "ar")
+          .map(([lang, text]) => ({ language_code: lang, text }))
+        const picked = pickByLang(meaningRows, primary)
+        const gloss = picked ? picked.text : ""
+        return `
+          <article class="example-card" data-speak-phrase="${escapeHtml(row.word)}">
+            <span class="example-marker example-marker-curated" aria-hidden="true"></span>
+            ${renderArabicChips(row.word)}
+            <div class="example-translation translit">
+              ${escapeHtml(row.transliteration || "")}
+            </div>
+            ${gloss ? `<div class="example-translation gloss">${escapeHtml(gloss)}</div>` : ""}
+          </article>
+        `
+      })
+
+      // Step 2: corpus phrases containing this letter (base
+      // codepoint — the U+0600-range one, NOT the
+      // presentation-form). limit raised to 20.
+      const corpusCards = []
+      if (hostApi.searchEntriesByText && state.baseLetter) {
+        const stackLangs = state.stackConfig.languages || []
+        try {
+          const entries = await hostApi.searchEntriesByText({
+            text: state.baseLetter,
+            languageCodes: unique(["ar", ...stackLangs]),
+            limit: 20,
+            offset: 0,
+          })
+          for (const entry of entries || []) {
+            const ar = (entry.translations || []).find(tr => tr.language_code === "ar")
+            if (!ar) continue
+            const nonAr = (entry.translations || [])
+              .filter(tr => tr.language_code !== "ar")
+            // Show the picked stack-primary translation first; fall
+            // back to en otherwise.
+            const picked = pickByLang(nonAr, primary) || pickByLang(nonAr, "en")
+            const transHtml = picked
+              ? `<div class="example-translation">${escapeHtml(picked.text)}</div>`
+              : ""
+            corpusCards.push(`
+              <article class="example-card" data-speak-phrase="${escapeHtml(ar.text)}">
+                <span class="example-marker example-marker-corpus" aria-hidden="true"></span>
+                ${renderArabicChips(ar.text)}
+                ${transHtml}
+              </article>
+            `)
+          }
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.warn("[rasmapan] corpus search failed", err)
+        }
+      }
+
+      const sections = []
+      if (wordCards.length) {
+        sections.push(
+          `<div class="example-section-title">${escapeHtml(t("examples.heading_curated"))}</div>`,
+          ...wordCards,
+        )
+      }
+      if (corpusCards.length) {
+        sections.push(
+          `<div class="example-section-title">${escapeHtml(t("examples.heading_corpus"))}</div>`,
+          ...corpusCards,
+        )
+      }
+      const totalCount = wordCards.length + corpusCards.length
+      elExamples.innerHTML =
+        sections.join("") ||
+        `<div class="example-text muted">${escapeHtml(t("examples.empty_for_letter"))}</div>`
+      elExampleCount.textContent = String(totalCount)
+      elExamplesFooter.textContent = totalCount
+        ? t("examples.tap_word_hint")
+        : "—"
+
+      // Wire taps: chip → speak word; card body → speak whole
+      // phrase. The chip listener stops propagation so its click
+      // doesn't also trigger the parent's phrase-speak.
+      elExamples.querySelectorAll("[data-speak-word]").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          const text = btn.dataset.speakWord
+          if (text) speak("ar", text)
+        })
+      })
+      elExamples.querySelectorAll("[data-speak-phrase]").forEach((card) => {
+        card.addEventListener("click", (e) => {
+          // If the click landed on a chip, the chip already handled it.
+          if (e.target.closest("[data-speak-word]")) return
+          const text = card.dataset.speakPhrase
+          if (text) speak("ar", text)
+        })
+      })
+    }
+
     const renderExamplesPanel = async () => {
       if (state.mode === "words") {
         renderWordPicker()
         return
       }
-      if (state.mode !== "letters") return
-      if (!hostApi.searchEntriesByText) {
-        elExamples.innerHTML = "<div class='example-text muted'>Corpus search unavailable.</div>"
-        return
+      if (state.mode === "letters") {
+        await renderLetterExamples()
       }
-      const text = state.currentLetter || ""
-      if (!text || !ARABIC_RANGE.test(text)) {
-        elExamples.innerHTML = ""
-        elExampleCount.textContent = "—"
-        return
-      }
-      state.loadingExamples = true
-      const langCodes = unique([
-        ...(state.stackConfig.languages || []),
-        "ar",
-      ])
-      let entries = []
-      try {
-        entries = await hostApi.searchEntriesByText({
-          text,
-          languageCodes: langCodes,
-          limit: 24,
-          offset: 0,
-        })
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.warn("[rasmapan] searchEntriesByText failed", err)
-        entries = []
-      }
-      state.examples = entries || []
-      state.loadingExamples = false
-      const html = state.examples
-        .map((entry) => {
-          const arT = (entry.translations || []).find((t) => t.language_code === "ar")
-          if (!arT) return ""
-          const others = (entry.translations || []).filter((t) => t.language_code !== "ar")
-          const otherHtml = others
-            .slice(0, 2)
-            .map((t) => `<div class="example-translation"><span class="example-lang">${escapeHtml(t.language_code)}</span> ${escapeHtml(t.text)}</div>`)
-            .join("")
-          return `
-            <button class="example-card" type="button" data-speak="${escapeHtml(arT.text)}">
-              <div class="example-text" lang="ar">${escapeHtml(arT.text)}</div>
-              ${otherHtml}
-            </button>
-          `
-        })
-        .join("")
-      elExamples.innerHTML = html || "<div class='example-text muted'>No phrases found.</div>"
-      elExampleCount.textContent = String(state.examples.length)
-      elExamplesFooter.textContent = state.examples.length ? "Tap a phrase to hear" : "—"
-      elExamples.querySelectorAll("[data-speak]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const text = btn.dataset.speak
-          if (text) {
-            try { hostApi.speak("ar", text) } catch { /* tolerated */ }
-          }
-        })
-      })
     }
 
     const updateScoreBar = (quality, accepted) => {
@@ -862,19 +1168,27 @@ import { StylesView } from "./styles_view.js"
       if (!btn) return
       const action = btn.dataset.action
       if (action === "exit") {
-        // Host wires the exit button via initialState callbacks; if
-        // not provided, just no-op. (Pack registry typically has an
-        // unmount path triggered by the host.)
-        if (typeof initialState.onExit === "function") initialState.onExit()
+        // Corpan listens for `corpan:exit` on window and unmounts the
+        // pack (see corpan-app/src/App.tsx). Matches hanzipan's exit
+        // pattern (corpan/packs/hanzipan/src/main.js:2671).
+        try {
+          window.dispatchEvent(new CustomEvent("corpan:exit"))
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.warn("[rasmapan] exit dispatch failed", err)
+        }
         return
       }
       if (action === "speak") {
+        // For individual letters use the base U+06-range codepoint
+        // (e.g. ب U+0628) — the presentation-form codepoint in
+        // `state.currentLetter` (ﺏ U+FE8F) isn't pronounceable by
+        // most system Arabic TTS voices. Words/phrases speak
+        // verbatim since the corpus already uses base codepoints.
         const text = state.mode === "words" && state.currentWord
           ? state.currentWord.word
-          : state.currentLetter
-        if (text) {
-          try { hostApi.speak("ar", text) } catch { /* tolerated */ }
-        }
+          : state.baseLetter || state.currentLetter
+        if (text) speak("ar", text)
         return
       }
       if (action === "clear") {
@@ -884,9 +1198,14 @@ import { StylesView } from "./styles_view.js"
         return
       }
       if (action === "replay") {
-        // Re-fetch the current glyph; in v0.1.0 this is just a redraw.
-        if (state.mode === "letters") renderHero()
-        else if (state.mode === "words") renderHero()
+        // Speak the current letter or word. The dedicated speak
+        // button (in the hero) does the same; the toolbar Play
+        // gives users a second affordance right next to the
+        // canvas, useful mid-tracing without moving the cursor.
+        const text = state.mode === "words" && state.currentWord
+          ? state.currentWord.word
+          : state.baseLetter || state.currentLetter
+        if (text) speak("ar", text)
         return
       }
       if (action === "toggle-freedraw") {
@@ -909,6 +1228,16 @@ import { StylesView } from "./styles_view.js"
           })
         }
         brushWidget.toggle()
+        return
+      }
+      if (action === "tutorial") {
+        // Reset lesson progress so the runner re-shows from step 1.
+        // The user reaches this when they want to revisit the intro
+        // (e.g. after switching their stack language).
+        resetLessonProgress()
+        if (lessonRunner) {
+          lessonRunner.start()
+        }
         return
       }
     })
@@ -940,6 +1269,13 @@ import { StylesView } from "./styles_view.js"
         renderWordPicker()
         renderHero()
         if (drawingEngine) drawingEngine.clear()
+      } else if (state.mode === "styles") {
+        if (!state.styleIds.length) return
+        const idx = state.styleIds.indexOf(state.activeStyleId)
+        const base = idx < 0 ? 0 : idx
+        state.activeStyleId =
+          state.styleIds[(base + delta + state.styleIds.length) % state.styleIds.length]
+        if (stylesView) stylesView.render({ highlightId: state.activeStyleId })
       }
     }
     root.querySelector("[data-nav='prev']").addEventListener("click", () => navByDelta(-1))
@@ -953,8 +1289,12 @@ import { StylesView } from "./styles_view.js"
       resizeRaf = requestAnimationFrame(() => {
         resizeRaf = 0
         if (drawingEngine) drawingEngine.resize()
-        if (traceLayer) traceLayer.redraw()
-        if (wordTraceLayer) wordTraceLayer.redraw()
+        // Only redraw the layer that owns the canvas in this mode.
+        // Both layers share the same ghost canvas — if we redraw
+        // both, the inactive one runs `clearRect` first and wipes
+        // the visible ghost (its own data is empty in this mode).
+        if (state.mode === "letters" && traceLayer) traceLayer.redraw()
+        else if (state.mode === "words" && wordTraceLayer) wordTraceLayer.redraw()
       })
     }
     const resizeObserver = new ResizeObserver(handleResize)
@@ -963,12 +1303,27 @@ import { StylesView } from "./styles_view.js"
 
     // --- onStackConfigChange --------------------------------------------
 
+    // Two language-change channels — both call the same re-render
+    // cascade so chrome stays in sync whether the user changed
+    // their stack primary or the host i18next language directly.
+    const onLanguageChanged = () => {
+      renderModeTabs()
+      renderToolbarAria()
+      renderFormPicker()
+      renderHero()
+      renderExamplesPanel()
+      if (state.mode === "styles" && stylesView) {
+        stylesView.render({ highlightId: state.activeStyleId })
+      }
+    }
+
     if (hostApi.onStackConfigChange) {
       hostApi.onStackConfigChange((next) => {
         state.stackConfig = next
-        renderExamplesPanel()
+        onLanguageChanged()
       })
     }
+    subscribeLanguageChanged(onLanguageChanged)
 
     // --- Initial load ---------------------------------------------------
 
@@ -987,6 +1342,8 @@ import { StylesView } from "./styles_view.js"
         if (!state.activeWordId && state.words.length) {
           state.activeWordId = state.words[0].id
         }
+        renderModeTabs()
+        renderToolbarAria()
         renderLetterPicker()
         renderFormPicker()
         renderModeUI()
@@ -998,8 +1355,10 @@ import { StylesView } from "./styles_view.js"
       }
     }
 
-    // Lessons first, then practice.
-    const lessonRunner = new LessonRunner({
+    // Lessons first, then practice. `lessonRunner` is also referenced
+    // by the Tutorial toolbar action above, so it must be reachable
+    // by the time a user can click anything.
+    lessonRunner = new LessonRunner({
       container: root,
       hostApi,
       queryPackDb,

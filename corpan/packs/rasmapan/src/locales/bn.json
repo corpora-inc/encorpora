@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "অক্ষর",
+    "words": "শব্দ",
+    "styles": "শৈলী"
+  },
+  "examples": {
+    "empty_for_letter": "এই অক্ষরের কোনো উদাহরণ শব্দ এখনো নেই।",
+    "tap_phrase_hint": "শোনার জন্য বাক্যাংশে আলতো চাপুন",
+    "tap_word_hint": "শোনার জন্য শব্দে আলতো চাপুন",
+    "heading_curated": "এই অক্ষরযুক্ত শব্দ",
+    "heading_corpus": "কর্পাস থেকে বাক্যাংশ"
+  },
+  "word_picker": {
+    "hint": "ট্রেস করতে শব্দে আলতো চাপুন"
+  },
+  "form": {
+    "isolated": "একক",
+    "initial": "প্রারম্ভিক",
+    "medial": "মধ্য",
+    "final": "শেষ"
+  },
+  "stroke": {
+    "singular": "টান",
+    "plural": "টান"
+  },
+  "letter": {
+    "singular": "অক্ষর",
+    "plural": "অক্ষর"
+  },
+  "aria": {
+    "tutorial": "টিউটোরিয়াল",
+    "play": "চালান",
+    "brush": "ব্রাশ সেটিংস",
+    "free_draw": "মুক্ত অঙ্কন",
+    "hints": "নির্দেশিকা",
+    "clear": "মুছুন",
+    "exit": "বের হোন"
+  },
+  "lesson": {
+    "step": "ধাপ {{n}} / {{total}}",
+    "back": "পিছনে",
+    "skip": "ভূমিকা এড়িয়ে যান",
+    "next": "পরবর্তী",
+    "begin": "শুরু"
+  }
+}

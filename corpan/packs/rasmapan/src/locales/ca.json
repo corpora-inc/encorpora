@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Lletres",
+    "words": "Paraules",
+    "styles": "Estils"
+  },
+  "examples": {
+    "empty_for_letter": "Encara no hi ha paraules d'exemple amb aquesta lletra.",
+    "tap_phrase_hint": "Toca una frase per escoltar-la",
+    "tap_word_hint": "Toca una paraula per escoltar-la",
+    "heading_curated": "Paraules amb aquesta lletra",
+    "heading_corpus": "Frases del corpus"
+  },
+  "word_picker": {
+    "hint": "Toca una paraula per traçar-la"
+  },
+  "form": {
+    "isolated": "aïllada",
+    "initial": "inicial",
+    "medial": "mitjana",
+    "final": "final"
+  },
+  "stroke": {
+    "singular": "traç",
+    "plural": "traços"
+  },
+  "letter": {
+    "singular": "lletra",
+    "plural": "lletres"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Reprodueix",
+    "brush": "Configuració del pinzell",
+    "free_draw": "Traç lliure",
+    "hints": "Guies",
+    "clear": "Esborra",
+    "exit": "Surt"
+  },
+  "lesson": {
+    "step": "Pas {{n}} de {{total}}",
+    "back": "Enrere",
+    "skip": "Omet la intro",
+    "next": "Següent",
+    "begin": "Comença"
+  }
+}

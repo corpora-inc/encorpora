@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Harfler",
+    "words": "Kelimeler",
+    "styles": "Stiller"
+  },
+  "examples": {
+    "empty_for_letter": "Bu harf için henüz örnek kelime yok.",
+    "tap_phrase_hint": "Bir cümleyi duymak için dokunun",
+    "tap_word_hint": "Bir kelimeyi duymak için dokunun",
+    "heading_curated": "Bu harfli kelimeler",
+    "heading_corpus": "Korpus cümleleri"
+  },
+  "word_picker": {
+    "hint": "Bir kelimeyi çizmek için dokunun"
+  },
+  "form": {
+    "isolated": "yalın",
+    "initial": "başta",
+    "medial": "ortada",
+    "final": "sonda"
+  },
+  "stroke": {
+    "singular": "fırça darbesi",
+    "plural": "fırça darbesi"
+  },
+  "letter": {
+    "singular": "harf",
+    "plural": "harf"
+  },
+  "aria": {
+    "tutorial": "Eğitim",
+    "play": "Oynat",
+    "brush": "Fırça ayarları",
+    "free_draw": "Serbest çizim",
+    "hints": "İpuçları",
+    "clear": "Temizle",
+    "exit": "Çık"
+  },
+  "lesson": {
+    "step": "{{total}} adımdan {{n}}.",
+    "back": "Geri",
+    "skip": "Tanıtımı atla",
+    "next": "İleri",
+    "begin": "Başla"
+  }
+}

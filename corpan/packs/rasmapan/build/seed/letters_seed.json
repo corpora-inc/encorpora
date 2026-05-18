@@ -3,7 +3,10 @@
     "id": "alif",
     "name_ar": "ألف",
     "name_en": "alif",
-    "tags": ["non-connector", "vowel-carrier"],
+    "tags": [
+      "non-connector",
+      "vowel-carrier"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 100,
@@ -12,15 +15,24 @@
       "final": "FE8E"
     },
     "notes": {
-      "en": "Alif. The first letter. A tall vertical stroke. Often carries the long /aa/ vowel or hosts the hamza (ء). Does not connect to the letter that follows it (going left in RTL), so it always ends a word-segment.",
-      "ar": "ألف. أول حروف الهجاء. تكتب خطًا عموديًا. لا تتصل بما بعدها."
-    }
+      "en": "Alif. The first letter. A tall vertical stroke. Often carries the long /aa/ vowel or hosts the hamza (ء). Does not connect to the letter that follows it, so it always ends a word-segment.",
+      "ar": "ألف. أول حروف الهجاء. تكتب خطًا عموديًا. لا تتصل بما بعدها.",
+      "es": "Alif. La primera letra. Un trazo vertical alto. Suele llevar la vocal larga /aa/ o servir de soporte a la hamza (ء). No se conecta con la letra que la sigue, así que siempre cierra un segmento de palabra.",
+      "fr": "Alif. La première lettre. Un trait vertical droit. Porte souvent la voyelle longue /aa/ ou sert de support à la hamza (ء). Ne se lie pas à la lettre qui suit ; elle termine toujours un segment de mot.",
+      "it": "Alif. La prima lettera. Un tratto verticale alto. Spesso porta la vocale lunga /aa/ o ospita la hamza (ء). Non si lega alla lettera che la segue: chiude sempre un segmento di parola.",
+      "pt": "Alif. A primeira letra. Um traço vertical alto. Costuma carregar a vogal longa /aa/ ou apoiar a hamza (ء). Não se liga à letra seguinte; sempre encerra um segmento de palavra.",
+      "de": "Alif. Der erste Buchstabe. Ein hoher senkrechter Strich. Trägt häufig den langen /aa/-Vokal oder die Hamza (ء). Verbindet sich nicht mit dem folgenden Buchstaben — er beendet immer ein Wortsegment."
+    },
+    "base_unicode": "0627"
   },
   {
     "id": "baa",
     "name_ar": "باء",
     "name_en": "baa",
-    "tags": ["connector", "one-dot-below"],
+    "tags": [
+      "connector",
+      "one-dot-below"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 95,
@@ -32,14 +44,23 @@
     },
     "notes": {
       "en": "Baa. A shallow bowl with one dot below. Connects on both sides — so it has four positional forms.",
-      "ar": "باء. كأس مع نقطة تحتها. تتصل من الجانبين."
-    }
+      "ar": "باء. كأس مع نقطة تحتها. تتصل من الجانبين.",
+      "es": "Baa. Una pequeña copa con un punto debajo. Conecta por ambos lados, así que tiene cuatro formas posicionales.",
+      "fr": "Baa. Une petite cuvette avec un point en dessous. Se lie des deux côtés, donc elle possède quatre formes positionnelles.",
+      "it": "Baa. Una piccola coppa con un punto sotto. Si lega da entrambi i lati, quindi ha quattro forme posizionali.",
+      "pt": "Baa. Uma pequena tigela com um ponto embaixo. Liga-se dos dois lados, então tem quatro formas posicionais.",
+      "de": "Baa. Eine flache Schale mit einem Punkt darunter. Verbindet sich auf beiden Seiten und hat daher vier Positionsformen."
+    },
+    "base_unicode": "0628"
   },
   {
     "id": "taa",
     "name_ar": "تاء",
     "name_en": "taa",
-    "tags": ["connector", "two-dots-above"],
+    "tags": [
+      "connector",
+      "two-dots-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 92,
@@ -51,14 +72,23 @@
     },
     "notes": {
       "en": "Taa. Same body shape as baa, but with two dots above instead of one below. /t/ sound.",
-      "ar": "تاء. مثل الباء في الشكل لكن النقطتان فوقها."
-    }
+      "ar": "تاء. مثل الباء في الشكل لكن النقطتان فوقها.",
+      "es": "Taa. Misma forma de cuerpo que baa, pero con dos puntos encima en lugar de uno debajo. Sonido /t/.",
+      "fr": "Taa. Même silhouette que baa, mais avec deux points au-dessus au lieu d'un en dessous. Son /t/.",
+      "it": "Taa. Stessa sagoma di baa, ma con due punti sopra invece di uno sotto. Suono /t/.",
+      "pt": "Taa. Mesma forma de baa, mas com dois pontos em cima em vez de um embaixo. Som /t/.",
+      "de": "Taa. Gleicher Grundkörper wie baa, aber mit zwei Punkten oben statt einem unten. /t/-Laut."
+    },
+    "base_unicode": "062A"
   },
   {
     "id": "thaa",
     "name_ar": "ثاء",
     "name_en": "thaa",
-    "tags": ["connector", "three-dots-above"],
+    "tags": [
+      "connector",
+      "three-dots-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 50,
@@ -70,14 +100,23 @@
     },
     "notes": {
       "en": "Thaa. Same body as baa and taa, but with three dots above. Pronounced like the /th/ in 'think'.",
-      "ar": "ثاء. ثلاث نقاط فوق نفس شكل الباء."
-    }
+      "ar": "ثاء. ثلاث نقاط فوق نفس شكل الباء.",
+      "es": "Thaa. Misma forma que baa y taa, pero con tres puntos encima. Se pronuncia como /th/ en inglés 'think'.",
+      "fr": "Thaa. Même corps que baa et taa, mais avec trois points au-dessus. Se prononce comme le /th/ anglais de « think ».",
+      "it": "Thaa. Stessa sagoma di baa e taa, ma con tre punti sopra. Si pronuncia come la /th/ inglese di «think».",
+      "pt": "Thaa. Mesma forma que baa e taa, mas com três pontos em cima. Pronuncia-se como o /th/ inglês de 'think'.",
+      "de": "Thaa. Gleicher Körper wie baa und taa, aber mit drei Punkten oben. Klingt wie das englische /th/ in „think“."
+    },
+    "base_unicode": "062B"
   },
   {
     "id": "jiim",
     "name_ar": "جيم",
     "name_en": "jiim",
-    "tags": ["connector", "one-dot-below"],
+    "tags": [
+      "connector",
+      "one-dot-below"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 70,
@@ -89,14 +128,23 @@
     },
     "notes": {
       "en": "Jiim. A deep curve with a dot inside (below the curve). /j/ sound in standard Arabic. The Egyptian dialect pronounces it as a hard /g/.",
-      "ar": "جيم. منحنى مع نقطة في الوسط."
-    }
+      "ar": "جيم. منحنى مع نقطة في الوسط.",
+      "es": "Jiim. Una curva profunda con un punto dentro (debajo de la curva). Sonido /y/ inglesa («j»). En el dialecto egipcio se pronuncia como /g/ duro.",
+      "fr": "Jiim. Une courbe profonde avec un point à l'intérieur (sous la courbe). Son /dj/ en arabe standard. Le dialecte égyptien la prononce /g/ dur.",
+      "it": "Jiim. Una curva profonda con un punto dentro (sotto la curva). Suono /gi/ in arabo standard. Nel dialetto egiziano è /g/ duro.",
+      "pt": "Jiim. Uma curva profunda com um ponto dentro (abaixo da curva). Som /j/ inglês no árabe padrão. No dialeto egípcio é pronunciada como /g/ duro.",
+      "de": "Jiim. Eine tiefe Kurve mit einem Punkt darin. Klingt im Hocharabischen wie das englische /j/; im ägyptischen Dialekt als hartes /g/."
+    },
+    "base_unicode": "062C"
   },
   {
     "id": "Haa",
     "name_ar": "حاء",
     "name_en": "Haa",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 80,
@@ -108,14 +156,23 @@
     },
     "notes": {
       "en": "Haa. Same shape as jiim but without any dot. A guttural /h/ sound made deeper in the throat than English h.",
-      "ar": "حاء. مثل الجيم بدون نقطة."
-    }
+      "ar": "حاء. مثل الجيم بدون نقطة.",
+      "es": "Haa. Misma forma que jiim pero sin punto. Una /h/ gutural, más profunda en la garganta que la h inglesa.",
+      "fr": "Haa. Même forme que jiim mais sans point. Un /h/ guttural, plus profond dans la gorge que le h anglais.",
+      "it": "Haa. Stessa forma di jiim ma senza punto. Una /h/ gutturale, prodotta più in profondità nella gola della h inglese.",
+      "pt": "Haa. Mesma forma de jiim, mas sem ponto. Um /h/ gutural, mais profundo na garganta do que o h inglês.",
+      "de": "Haa. Gleiche Form wie jiim, aber ohne Punkt. Ein gutturales /h/, tiefer im Rachen erzeugt als das englische h."
+    },
+    "base_unicode": "062D"
   },
   {
     "id": "khaa",
     "name_ar": "خاء",
     "name_en": "khaa",
-    "tags": ["connector", "one-dot-above"],
+    "tags": [
+      "connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 55,
@@ -127,14 +184,23 @@
     },
     "notes": {
       "en": "Khaa. Same shape as jiim and Haa, with one dot above. /kh/ as in Scottish 'loch' or German 'Bach'.",
-      "ar": "خاء. مثل الحاء مع نقطة فوقها."
-    }
+      "ar": "خاء. مثل الحاء مع نقطة فوقها.",
+      "es": "Khaa. Misma forma que jiim y Haa, con un punto encima. /j/ española («jota») fuerte, como en 'Bach' en alemán.",
+      "fr": "Khaa. Même forme que jiim et Haa, avec un point au-dessus. Comme le /ch/ allemand de « Bach ».",
+      "it": "Khaa. Stessa forma di jiim e Haa, con un punto sopra. Come il /ch/ tedesco di «Bach».",
+      "pt": "Khaa. Mesma forma de jiim e Haa, com um ponto em cima. Som como o /ch/ alemão em 'Bach' ou o /j/ espanhol forte.",
+      "de": "Khaa. Gleiche Form wie jiim und Haa, mit einem Punkt oben. Klingt wie das deutsche /ch/ in „Bach“."
+    },
+    "base_unicode": "062E"
   },
   {
     "id": "daal",
     "name_ar": "دال",
     "name_en": "daal",
-    "tags": ["non-connector", "no-dots"],
+    "tags": [
+      "non-connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 78,
@@ -144,14 +210,23 @@
     },
     "notes": {
       "en": "Daal. A small angular hook. /d/ sound. Does not connect to the letter that follows it.",
-      "ar": "دال. خطاف صغير. لا تتصل بما بعدها."
-    }
+      "ar": "دال. خطاف صغير. لا تتصل بما بعدها.",
+      "es": "Daal. Un pequeño gancho anguloso. Sonido /d/. No se conecta con la letra que la sigue.",
+      "fr": "Daal. Un petit crochet anguleux. Son /d/. Ne se lie pas à la lettre qui suit.",
+      "it": "Daal. Un piccolo gancio angolato. Suono /d/. Non si lega alla lettera successiva.",
+      "pt": "Daal. Um pequeno gancho angular. Som /d/. Não se liga à letra seguinte.",
+      "de": "Daal. Ein kleiner kantiger Haken. /d/-Laut. Verbindet sich nicht mit dem folgenden Buchstaben."
+    },
+    "base_unicode": "062F"
   },
   {
     "id": "dhaal",
     "name_ar": "ذال",
     "name_en": "dhaal",
-    "tags": ["non-connector", "one-dot-above"],
+    "tags": [
+      "non-connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 45,
@@ -161,14 +236,23 @@
     },
     "notes": {
       "en": "Dhaal. Same shape as daal with one dot above. /th/ sound as in 'this'.",
-      "ar": "ذال. مثل الدال مع نقطة فوقها."
-    }
+      "ar": "ذال. مثل الدال مع نقطة فوقها.",
+      "es": "Dhaal. Misma forma que daal con un punto encima. Sonido /th/ como en inglés 'this'.",
+      "fr": "Dhaal. Même forme que daal avec un point au-dessus. Son /th/ comme dans l'anglais « this ».",
+      "it": "Dhaal. Stessa forma di daal con un punto sopra. Suono /th/ come nell'inglese «this».",
+      "pt": "Dhaal. Mesma forma de daal com um ponto em cima. Som /th/ como no inglês 'this'.",
+      "de": "Dhaal. Gleiche Form wie daal mit einem Punkt oben. Klingt wie das englische /th/ in „this“."
+    },
+    "base_unicode": "0630"
   },
   {
     "id": "raa",
     "name_ar": "راء",
     "name_en": "raa",
-    "tags": ["non-connector", "no-dots"],
+    "tags": [
+      "non-connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 88,
@@ -178,14 +262,23 @@
     },
     "notes": {
       "en": "Raa. A descending curve that dips below the baseline. Rolled /r/, like in Spanish or Italian. Does not connect to the letter that follows it.",
-      "ar": "راء. منحنى ينزل تحت السطر. لا تتصل بما بعدها."
-    }
+      "ar": "راء. منحنى ينزل تحت السطر. لا تتصل بما بعدها.",
+      "es": "Raa. Una curva que desciende bajo la línea base. /r/ vibrante, como en español o italiano. No se conecta con la letra siguiente.",
+      "fr": "Raa. Une courbe qui descend sous la ligne. /r/ roulé, comme en espagnol ou en italien. Ne se lie pas à la lettre qui suit.",
+      "it": "Raa. Una curva che scende sotto la linea base. /r/ vibrato, come in italiano o spagnolo. Non si lega alla lettera successiva.",
+      "pt": "Raa. Uma curva que desce abaixo da linha base. /r/ vibrante, como em espanhol ou italiano. Não se liga à letra seguinte.",
+      "de": "Raa. Eine Kurve, die unter die Grundlinie reicht. Gerolltes /r/ wie im Spanischen oder Italienischen. Verbindet sich nicht mit dem folgenden Buchstaben."
+    },
+    "base_unicode": "0631"
   },
   {
     "id": "zaay",
     "name_ar": "زاي",
     "name_en": "zaay",
-    "tags": ["non-connector", "one-dot-above"],
+    "tags": [
+      "non-connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 40,
@@ -195,14 +288,23 @@
     },
     "notes": {
       "en": "Zaay. Same shape as raa with one dot above. /z/ sound.",
-      "ar": "زاي. مثل الراء مع نقطة فوقها."
-    }
+      "ar": "زاي. مثل الراء مع نقطة فوقها.",
+      "es": "Zaay. Misma forma que raa con un punto encima. Sonido /z/.",
+      "fr": "Zaay. Même forme que raa avec un point au-dessus. Son /z/.",
+      "it": "Zaay. Stessa forma di raa con un punto sopra. Suono /z/.",
+      "pt": "Zaay. Mesma forma de raa com um ponto em cima. Som /z/.",
+      "de": "Zaay. Gleiche Form wie raa mit einem Punkt oben. /z/-Laut."
+    },
+    "base_unicode": "0632"
   },
   {
     "id": "siin",
     "name_ar": "سين",
     "name_en": "siin",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 82,
@@ -214,14 +316,23 @@
     },
     "notes": {
       "en": "Siin. Three teeth followed by a tail bowl. /s/ sound.",
-      "ar": "سين. ثلاث أسنان متبوعة بكأس."
-    }
+      "ar": "سين. ثلاث أسنان متبوعة بكأس.",
+      "es": "Siin. Tres dientecitos seguidos de una copa final. Sonido /s/.",
+      "fr": "Siin. Trois petites dents suivies d'une cuvette finale. Son /s/.",
+      "it": "Siin. Tre dentini seguiti da una coppa. Suono /s/.",
+      "pt": "Siin. Três pequenos dentes seguidos de uma tigela. Som /s/.",
+      "de": "Siin. Drei kleine Zähne gefolgt von einer Schale. /s/-Laut."
+    },
+    "base_unicode": "0633"
   },
   {
     "id": "shiin",
     "name_ar": "شين",
     "name_en": "shiin",
-    "tags": ["connector", "three-dots-above"],
+    "tags": [
+      "connector",
+      "three-dots-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 60,
@@ -233,14 +344,24 @@
     },
     "notes": {
       "en": "Shiin. Same shape as siin with three dots above. /sh/ sound.",
-      "ar": "شين. مثل السين مع ثلاث نقاط فوقها."
-    }
+      "ar": "شين. مثل السين مع ثلاث نقاط فوقها.",
+      "es": "Shiin. Misma forma que siin con tres puntos encima. Sonido /sh/ (como «ch» suave inglesa).",
+      "fr": "Shiin. Même forme que siin avec trois points au-dessus. Son /ch/ français.",
+      "it": "Shiin. Stessa forma di siin con tre punti sopra. Suono /sc/ come in «scena».",
+      "pt": "Shiin. Mesma forma de siin com três pontos em cima. Som /x/ como em 'xícara'.",
+      "de": "Shiin. Gleiche Form wie siin mit drei Punkten oben. /sch/-Laut."
+    },
+    "base_unicode": "0634"
   },
   {
     "id": "Saad",
     "name_ar": "صاد",
     "name_en": "Saad",
-    "tags": ["connector", "no-dots", "emphatic"],
+    "tags": [
+      "connector",
+      "no-dots",
+      "emphatic"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 55,
@@ -252,14 +373,24 @@
     },
     "notes": {
       "en": "Saad. An emphatic /s/ — produced with the tongue lower and the throat slightly constricted. Looks like an open loop followed by a tail.",
-      "ar": "صاد. حلقة مفتوحة مع ذيل."
-    }
+      "ar": "صاد. حلقة مفتوحة مع ذيل.",
+      "es": "Saad. Una /s/ enfática: se produce con la lengua más baja y la garganta ligeramente contraída. Parece un lazo abierto seguido de una cola.",
+      "fr": "Saad. Un /s/ emphatique : la langue plus basse, la gorge légèrement resserrée. Une boucle ouverte suivie d'une queue.",
+      "it": "Saad. Una /s/ enfatica: lingua più bassa, gola leggermente costretta. Sembra un cappio aperto seguito da una coda.",
+      "pt": "Saad. Um /s/ enfático: língua mais baixa, garganta ligeiramente contraída. Parece um laço aberto seguido de uma cauda.",
+      "de": "Saad. Ein emphatisches /s/ — Zunge tiefer, Rachen leicht verengt. Wie eine offene Schleife mit einem Schwanz."
+    },
+    "base_unicode": "0635"
   },
   {
     "id": "Daad",
     "name_ar": "ضاد",
     "name_en": "Daad",
-    "tags": ["connector", "one-dot-above", "emphatic"],
+    "tags": [
+      "connector",
+      "one-dot-above",
+      "emphatic"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 50,
@@ -271,14 +402,24 @@
     },
     "notes": {
       "en": "Daad. Same shape as Saad with one dot above. Emphatic /d/. Considered the signature sound of Arabic — Arabic is sometimes called 'the language of Daad' (لغة الضاد).",
-      "ar": "ضاد. حرف العربية المميز. مثل الصاد مع نقطة فوقها."
-    }
+      "ar": "ضاد. حرف العربية المميز. مثل الصاد مع نقطة فوقها.",
+      "es": "Daad. Misma forma que Saad con un punto encima. /d/ enfática. El sonido emblemático del árabe — al árabe se le llama a veces «la lengua del Daad» (لغة الضاد).",
+      "fr": "Daad. Même forme que Saad avec un point au-dessus. /d/ emphatique. Le son emblématique de l'arabe, parfois appelé « la langue du Daad » (لغة الضاد).",
+      "it": "Daad. Stessa forma di Saad con un punto sopra. /d/ enfatica. È il suono emblematico dell'arabo, chiamato talvolta «la lingua del Daad» (لغة الضاد).",
+      "pt": "Daad. Mesma forma de Saad com um ponto em cima. /d/ enfático. É o som símbolo do árabe; o árabe é chamado às vezes de «língua do Daad» (لغة الضاد).",
+      "de": "Daad. Gleiche Form wie Saad mit einem Punkt oben. Emphatisches /d/. Der charakteristische Laut des Arabischen — die Sprache wird manchmal „Sprache des Daad“ (لغة الضاد) genannt."
+    },
+    "base_unicode": "0636"
   },
   {
     "id": "Taa",
     "name_ar": "طاء",
     "name_en": "Taa",
-    "tags": ["connector", "no-dots", "emphatic"],
+    "tags": [
+      "connector",
+      "no-dots",
+      "emphatic"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 60,
@@ -290,14 +431,24 @@
     },
     "notes": {
       "en": "Taa (emphatic). An emphatic /t/. The letter looks like a loop with a tall vertical stroke beside it.",
-      "ar": "طاء. حرف مفخم. حلقة وعمود."
-    }
+      "ar": "طاء. حرف مفخم. حلقة وعمود.",
+      "es": "Taa (enfática). Una /t/ enfática. La letra parece un bucle con un trazo vertical alto al lado.",
+      "fr": "Taa (emphatique). Un /t/ emphatique. La lettre ressemble à une boucle accompagnée d'un trait vertical haut.",
+      "it": "Taa (enfatica). Una /t/ enfatica. Sembra un cappio con un tratto verticale alto a fianco.",
+      "pt": "Taa (enfático). Um /t/ enfático. A letra parece um laço com um traço vertical alto ao lado.",
+      "de": "Taa (emphatisch). Ein emphatisches /t/. Wirkt wie eine Schleife mit einem hohen senkrechten Strich daneben."
+    },
+    "base_unicode": "0637"
   },
   {
     "id": "DHaa",
     "name_ar": "ظاء",
     "name_en": "DHaa",
-    "tags": ["connector", "one-dot-above", "emphatic"],
+    "tags": [
+      "connector",
+      "one-dot-above",
+      "emphatic"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 35,
@@ -309,14 +460,23 @@
     },
     "notes": {
       "en": "DHaa. Same shape as Taa (emphatic) with one dot above. Emphatic /th/ as in 'this'.",
-      "ar": "ظاء. مثل الطاء مع نقطة فوقها."
-    }
+      "ar": "ظاء. مثل الطاء مع نقطة فوقها.",
+      "es": "DHaa. Misma forma que Taa enfática con un punto encima. /th/ enfática como en inglés 'this'.",
+      "fr": "DHaa. Même forme que Taa emphatique avec un point au-dessus. /th/ emphatique comme dans l'anglais « this ».",
+      "it": "DHaa. Stessa forma della Taa enfatica con un punto sopra. /th/ enfatica come nell'inglese «this».",
+      "pt": "DHaa. Mesma forma de Taa enfática com um ponto em cima. /th/ enfático como no inglês 'this'.",
+      "de": "DHaa. Gleiche Form wie Taa (emphatisch) mit einem Punkt oben. Emphatisches /th/ wie im englischen „this“."
+    },
+    "base_unicode": "0638"
   },
   {
     "id": "ain",
     "name_ar": "عين",
     "name_en": "ain",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 85,
@@ -328,14 +488,23 @@
     },
     "notes": {
       "en": "Ain. A uniquely Arabic consonant — a voiced pharyngeal sound produced deep in the throat. Often transliterated with a forward apostrophe (ʿ). No equivalent in English.",
-      "ar": "عين. حرف عربي مميز ينطق من أقصى الحلق."
-    }
+      "ar": "عين. حرف عربي مميز ينطق من أقصى الحلق.",
+      "es": "Ain. Una consonante propia del árabe: un sonido faríngeo sonoro producido en lo más profundo de la garganta. Suele transliterarse con un apóstrofo (ʿ). Sin equivalente en español.",
+      "fr": "Ain. Une consonne propre à l'arabe : un son pharyngal voisé produit au fond de la gorge. Souvent transcrite avec une apostrophe (ʿ). Sans équivalent en français.",
+      "it": "Ain. Una consonante propria dell'arabo: un suono faringale sonoro emesso in fondo alla gola. Spesso traslitterata con un apostrofo (ʿ). Senza equivalenti in italiano.",
+      "pt": "Ain. Uma consoante exclusiva do árabe: som faríngeo sonoro produzido no fundo da garganta. Normalmente transliterada com um apóstrofo (ʿ). Sem equivalente em português.",
+      "de": "Ain. Ein typisch arabischer Konsonant — ein stimmhafter pharyngaler Laut, tief im Rachen erzeugt. Wird oft mit einem Apostroph (ʿ) transliteriert. Ohne Entsprechung im Deutschen."
+    },
+    "base_unicode": "0639"
   },
   {
     "id": "ghain",
     "name_ar": "غين",
     "name_en": "ghain",
-    "tags": ["connector", "one-dot-above"],
+    "tags": [
+      "connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 45,
@@ -347,14 +516,23 @@
     },
     "notes": {
       "en": "Ghain. Same shape as ain with one dot above. A sound similar to the French 'r' in 'Paris', a voiced gargling sound.",
-      "ar": "غين. مثل العين مع نقطة فوقها."
-    }
+      "ar": "غين. مثل العين مع نقطة فوقها.",
+      "es": "Ghain. Misma forma que ain con un punto encima. Un sonido parecido a la /r/ francesa de «Paris», una vibración sonora en la garganta.",
+      "fr": "Ghain. Même forme que ain avec un point au-dessus. Un son proche du /r/ français de « Paris », un grasseyement sonore.",
+      "it": "Ghain. Stessa forma di ain con un punto sopra. Un suono simile alla /r/ francese di «Paris», una vibrazione sonora in gola.",
+      "pt": "Ghain. Mesma forma de ain com um ponto em cima. Som parecido com o /r/ francês de 'Paris', uma vibração sonora na garganta.",
+      "de": "Ghain. Gleiche Form wie ain mit einem Punkt oben. Klingt ähnlich wie das französische /r/ in „Paris“ — ein stimmhaftes Reiblaut-/Schnarr-/R/."
+    },
+    "base_unicode": "063A"
   },
   {
     "id": "faa",
     "name_ar": "فاء",
     "name_en": "faa",
-    "tags": ["connector", "one-dot-above"],
+    "tags": [
+      "connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 75,
@@ -366,14 +544,23 @@
     },
     "notes": {
       "en": "Faa. A small circle with a dot above and a tail. /f/ sound.",
-      "ar": "فاء. حلقة مع نقطة فوقها."
-    }
+      "ar": "فاء. حلقة مع نقطة فوقها.",
+      "es": "Faa. Un pequeño círculo con un punto encima y una cola. Sonido /f/.",
+      "fr": "Faa. Un petit cercle avec un point au-dessus et une queue. Son /f/.",
+      "it": "Faa. Un piccolo cerchio con un punto sopra e una coda. Suono /f/.",
+      "pt": "Faa. Um pequeno círculo com um ponto em cima e uma cauda. Som /f/.",
+      "de": "Faa. Ein kleiner Kreis mit einem Punkt oben und einem Schwanz. /f/-Laut."
+    },
+    "base_unicode": "0641"
   },
   {
     "id": "qaaf",
     "name_ar": "قاف",
     "name_en": "qaaf",
-    "tags": ["connector", "two-dots-above"],
+    "tags": [
+      "connector",
+      "two-dots-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 72,
@@ -385,14 +572,23 @@
     },
     "notes": {
       "en": "Qaaf. Looks similar to faa but with two dots above and a deeper tail that drops below the line. A uvular /q/ — produced at the back of the throat.",
-      "ar": "قاف. مثل الفاء مع نقطتين وذيل أعمق."
-    }
+      "ar": "قاف. مثل الفاء مع نقطتين وذيل أعمق.",
+      "es": "Qaaf. Parecida a faa pero con dos puntos encima y una cola más profunda que cae bajo la línea. Una /q/ uvular, producida en el fondo de la garganta.",
+      "fr": "Qaaf. Ressemble à faa mais avec deux points au-dessus et une queue plus profonde qui descend sous la ligne. Un /q/ uvulaire, produit à l'arrière de la gorge.",
+      "it": "Qaaf. Simile a faa ma con due punti sopra e una coda più profonda che scende sotto la linea. Una /q/ uvulare, prodotta in fondo alla gola.",
+      "pt": "Qaaf. Parecida com faa, mas com dois pontos em cima e uma cauda mais profunda que desce abaixo da linha. Um /q/ uvular, produzido no fundo da garganta.",
+      "de": "Qaaf. Ähnlich wie faa, aber mit zwei Punkten oben und einem tieferen Schwanz, der unter die Linie reicht. Ein uvulares /q/, hinten im Rachen erzeugt."
+    },
+    "base_unicode": "0642"
   },
   {
     "id": "kaaf",
     "name_ar": "كاف",
     "name_en": "kaaf",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 80,
@@ -404,14 +600,23 @@
     },
     "notes": {
       "en": "Kaaf. /k/ sound. The isolated form has a small inner mark (the kaaf 'kashida').",
-      "ar": "كاف. مع علامة داخلية في الشكل المستقل."
-    }
+      "ar": "كاف. مع علامة داخلية في الشكل المستقل.",
+      "es": "Kaaf. Sonido /k/. La forma aislada lleva una pequeña marca interior (la 'kashida' de la kaaf).",
+      "fr": "Kaaf. Son /k/. La forme isolée porte une petite marque interne (la « kashida » de la kaaf).",
+      "it": "Kaaf. Suono /k/. La forma isolata ha un piccolo segno interno (la «kashida» della kaaf).",
+      "pt": "Kaaf. Som /k/. A forma isolada traz uma pequena marca interna (a 'kashida' do kaaf).",
+      "de": "Kaaf. /k/-Laut. Die isolierte Form trägt eine kleine Innenmarkierung (die „Kashida“ des Kaaf)."
+    },
+    "base_unicode": "0643"
   },
   {
     "id": "laam",
     "name_ar": "لام",
     "name_en": "laam",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 95,
@@ -423,14 +628,23 @@
     },
     "notes": {
       "en": "Laam. /l/ sound. Pairs with alif to form the famous ligature 'lam-alif' (لا), which means 'no'.",
-      "ar": "لام. تتصل مع الألف لتكوّن (لا)."
-    }
+      "ar": "لام. تتصل مع الألف لتكوّن (لا).",
+      "es": "Laam. Sonido /l/. Se combina con alif para formar la famosa ligadura 'lam-alif' (لا), que significa «no».",
+      "fr": "Laam. Son /l/. Se combine avec alif pour former la fameuse ligature « lam-alif » (لا), qui signifie « non ».",
+      "it": "Laam. Suono /l/. Si combina con alif per formare la celebre legatura «lam-alif» (لا), che significa «no».",
+      "pt": "Laam. Som /l/. Combina-se com alif para formar a famosa ligadura 'lam-alif' (لا), que significa «não».",
+      "de": "Laam. /l/-Laut. Verbindet sich mit Alif zur bekannten Ligatur „Lam-Alif“ (لا), die „nein“ bedeutet."
+    },
+    "base_unicode": "0644"
   },
   {
     "id": "miim",
     "name_ar": "ميم",
     "name_en": "miim",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 90,
@@ -442,14 +656,23 @@
     },
     "notes": {
       "en": "Miim. /m/ sound. A small circle (the head) followed by a tail that descends below the line in isolated and final forms.",
-      "ar": "ميم. حلقة وذيل ينزل تحت السطر."
-    }
+      "ar": "ميم. حلقة وذيل ينزل تحت السطر.",
+      "es": "Miim. Sonido /m/. Un pequeño círculo (la «cabeza») seguido de una cola que desciende bajo la línea en las formas aislada y final.",
+      "fr": "Miim. Son /m/. Un petit cercle (la « tête ») suivi d'une queue qui descend sous la ligne dans les formes isolée et finale.",
+      "it": "Miim. Suono /m/. Un piccolo cerchio (la «testa») seguito da una coda che scende sotto la linea nelle forme isolata e finale.",
+      "pt": "Miim. Som /m/. Um pequeno círculo (a 'cabeça') seguido de uma cauda que desce abaixo da linha nas formas isolada e final.",
+      "de": "Miim. /m/-Laut. Ein kleiner Kreis (der „Kopf“) gefolgt von einem Schwanz, der in isolierter und Endform unter die Linie reicht."
+    },
+    "base_unicode": "0645"
   },
   {
     "id": "nuun",
     "name_ar": "نون",
     "name_en": "nuun",
-    "tags": ["connector", "one-dot-above"],
+    "tags": [
+      "connector",
+      "one-dot-above"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 92,
@@ -461,14 +684,23 @@
     },
     "notes": {
       "en": "Nuun. /n/ sound. A deeper bowl than baa with one dot above. Initial and medial forms look identical to baa/taa/thaa — the dot tells them apart.",
-      "ar": "نون. كأس عميق مع نقطة فوقها."
-    }
+      "ar": "نون. كأس عميق مع نقطة فوقها.",
+      "es": "Nuun. Sonido /n/. Una copa más profunda que la de baa, con un punto encima. Las formas inicial y medial son idénticas a baa/taa/thaa — el punto las distingue.",
+      "fr": "Nuun. Son /n/. Une cuvette plus profonde que celle de baa, avec un point au-dessus. Les formes initiale et médiale sont identiques à celles de baa/taa/thaa : c'est le point qui les distingue.",
+      "it": "Nuun. Suono /n/. Una coppa più profonda di quella di baa, con un punto sopra. Le forme iniziale e mediana sono identiche a quelle di baa/taa/thaa: è il punto a distinguerle.",
+      "pt": "Nuun. Som /n/. Uma tigela mais funda que a de baa, com um ponto em cima. As formas inicial e medial são idênticas às de baa/taa/thaa — é o ponto que distingue.",
+      "de": "Nuun. /n/-Laut. Eine tiefere Schale als bei baa, mit einem Punkt oben. Anfangs- und Mittelform sehen aus wie baa/taa/thaa — der Punkt unterscheidet sie."
+    },
+    "base_unicode": "0646"
   },
   {
     "id": "haa",
     "name_ar": "هاء",
     "name_en": "haa",
-    "tags": ["connector", "no-dots"],
+    "tags": [
+      "connector",
+      "no-dots"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 85,
@@ -480,14 +712,24 @@
     },
     "notes": {
       "en": "Haa (light h). /h/ sound, lighter than Haa (the emphatic). Shape varies dramatically across its four positions — the medial form is a small loop, the initial is a top loop.",
-      "ar": "هاء. شكلها يتغيّر كثيرًا بحسب موضعها."
-    }
+      "ar": "هاء. شكلها يتغيّر كثيرًا بحسب موضعها.",
+      "es": "Haa (h suave). Sonido /h/, más suave que la Haa enfática. La forma cambia mucho entre las cuatro posiciones — la medial es un pequeño lazo, la inicial un lazo superior.",
+      "fr": "Haa (h légère). Son /h/, plus léger que la Haa emphatique. La forme varie beaucoup selon la position : médiale en petite boucle, initiale en boucle haute.",
+      "it": "Haa (h leggera). Suono /h/, più leggero della Haa enfatica. La forma cambia molto a seconda della posizione — la mediana è un piccolo cappio, l'iniziale un cappio in alto.",
+      "pt": "Haa (h leve). Som /h/, mais leve que o Haa enfático. A forma muda muito entre as quatro posições — a medial é um laço pequeno, a inicial um laço superior.",
+      "de": "Haa (leichtes h). /h/-Laut, leichter als das emphatische Haa. Die Form ändert sich stark je nach Position — medial eine kleine Schleife, initial eine obere Schleife."
+    },
+    "base_unicode": "0647"
   },
   {
     "id": "waaw",
     "name_ar": "واو",
     "name_en": "waaw",
-    "tags": ["non-connector", "no-dots", "vowel-carrier"],
+    "tags": [
+      "non-connector",
+      "no-dots",
+      "vowel-carrier"
+    ],
     "connects_before": true,
     "connects_after": false,
     "frequency": 90,
@@ -497,14 +739,23 @@
     },
     "notes": {
       "en": "Waaw. A small loop with a descending tail. Carries the long /uu/ vowel and also serves as /w/. Does not connect to the letter that follows it.",
-      "ar": "واو. حلقة مع ذيل. لا تتصل بما بعدها."
-    }
+      "ar": "واو. حلقة مع ذيل. لا تتصل بما بعدها.",
+      "es": "Waaw. Un pequeño lazo con cola descendente. Lleva la vocal larga /uu/ y también funciona como /w/. No se conecta con la letra que la sigue.",
+      "fr": "Waaw. Une petite boucle avec une queue descendante. Porte la voyelle longue /uu/ et joue aussi le rôle de /w/. Ne se lie pas à la lettre qui suit.",
+      "it": "Waaw. Un piccolo cappio con una coda discendente. Porta la vocale lunga /uu/ e funge anche da /w/. Non si lega alla lettera successiva.",
+      "pt": "Waaw. Um pequeno laço com cauda descendente. Carrega a vogal longa /uu/ e serve também como /w/. Não se liga à letra seguinte.",
+      "de": "Waaw. Eine kleine Schleife mit einem nach unten reichenden Schwanz. Trägt den langen /uu/-Vokal und steht zugleich für /w/. Verbindet sich nicht mit dem folgenden Buchstaben."
+    },
+    "base_unicode": "0648"
   },
   {
     "id": "yaa",
     "name_ar": "ياء",
     "name_en": "yaa",
-    "tags": ["connector", "two-dots-below"],
+    "tags": [
+      "connector",
+      "two-dots-below"
+    ],
     "connects_before": true,
     "connects_after": true,
     "frequency": 90,
@@ -516,7 +767,13 @@
     },
     "notes": {
       "en": "Yaa. The 28th letter. Carries the long /ii/ vowel and also serves as /y/. Initial and medial forms look like baa with two dots below; isolated and final forms have a deeper descending tail.",
-      "ar": "ياء. آخر حروف الهجاء. تحمل الياء الطويلة."
-    }
+      "ar": "ياء. آخر حروف الهجاء. تحمل الياء الطويلة.",
+      "es": "Yaa. La letra número 28. Lleva la vocal larga /ii/ y también funciona como /y/. Las formas inicial y medial se parecen a baa con dos puntos debajo; las formas aislada y final tienen una cola descendente más profunda.",
+      "fr": "Yaa. La 28e lettre. Porte la voyelle longue /ii/ et joue aussi le rôle de /y/. Les formes initiale et médiale ressemblent à baa avec deux points en dessous ; les formes isolée et finale ont une queue descendante plus profonde.",
+      "it": "Yaa. La 28ª lettera. Porta la vocale lunga /ii/ e funge anche da /y/. Le forme iniziale e mediana somigliano a baa con due punti sotto; le forme isolata e finale hanno una coda discendente più profonda.",
+      "pt": "Yaa. A 28ª letra. Carrega a vogal longa /ii/ e serve também como /y/. As formas inicial e medial parecem-se com baa com dois pontos embaixo; as isolada e final têm uma cauda descendente mais funda.",
+      "de": "Yaa. Der 28. Buchstabe. Trägt den langen /ii/-Vokal und steht zugleich für /y/. Anfangs- und Mittelform sehen aus wie baa mit zwei Punkten unten; isolierte und Endform haben einen tieferen abfallenden Schwanz."
+    },
+    "base_unicode": "064A"
   }
 ]

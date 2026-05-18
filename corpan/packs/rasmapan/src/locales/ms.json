@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Huruf",
+    "words": "Perkataan",
+    "styles": "Gaya"
+  },
+  "examples": {
+    "empty_for_letter": "Belum ada contoh perkataan dengan huruf ini.",
+    "tap_phrase_hint": "Ketik frasa untuk mendengarnya",
+    "tap_word_hint": "Ketik perkataan untuk mendengarnya",
+    "heading_curated": "Perkataan dengan huruf ini",
+    "heading_corpus": "Frasa daripada korpus"
+  },
+  "word_picker": {
+    "hint": "Ketik perkataan untuk menjiplaknya"
+  },
+  "form": {
+    "isolated": "tunggal",
+    "initial": "awal",
+    "medial": "tengah",
+    "final": "akhir"
+  },
+  "stroke": {
+    "singular": "lejang",
+    "plural": "lejang"
+  },
+  "letter": {
+    "singular": "huruf",
+    "plural": "huruf"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Main",
+    "brush": "Tetapan berus",
+    "free_draw": "Lukisan bebas",
+    "hints": "Panduan",
+    "clear": "Padam",
+    "exit": "Keluar"
+  },
+  "lesson": {
+    "step": "Langkah {{n}} daripada {{total}}",
+    "back": "Kembali",
+    "skip": "Langkau intro",
+    "next": "Seterusnya",
+    "begin": "Mula"
+  }
+}

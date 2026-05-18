@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Chữ cái",
+    "words": "Từ",
+    "styles": "Phong cách"
+  },
+  "examples": {
+    "empty_for_letter": "Chưa có từ ví dụ cho chữ cái này.",
+    "tap_phrase_hint": "Chạm vào một câu để nghe",
+    "tap_word_hint": "Chạm vào một từ để nghe",
+    "heading_curated": "Từ có chữ cái này",
+    "heading_corpus": "Câu từ kho ngữ liệu"
+  },
+  "word_picker": {
+    "hint": "Chạm vào một từ để tô lại"
+  },
+  "form": {
+    "isolated": "biệt lập",
+    "initial": "đầu",
+    "medial": "giữa",
+    "final": "cuối"
+  },
+  "stroke": {
+    "singular": "nét",
+    "plural": "nét"
+  },
+  "letter": {
+    "singular": "chữ cái",
+    "plural": "chữ cái"
+  },
+  "aria": {
+    "tutorial": "Hướng dẫn",
+    "play": "Phát",
+    "brush": "Cài đặt cọ vẽ",
+    "free_draw": "Vẽ tự do",
+    "hints": "Đường dẫn",
+    "clear": "Xoá",
+    "exit": "Thoát"
+  },
+  "lesson": {
+    "step": "Bước {{n}} / {{total}}",
+    "back": "Quay lại",
+    "skip": "Bỏ qua giới thiệu",
+    "next": "Tiếp",
+    "begin": "Bắt đầu"
+  }
+}

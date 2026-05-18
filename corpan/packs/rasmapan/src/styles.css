@@ -41,7 +41,7 @@
   /* Calligraphy ink palette — read by main.js via getComputedStyle.
      User strokes match --char-ink so the ink the user lays down reads
      as the same material as the printed character above. */
-  --stroke-ghost: rgba(107, 76, 42, 0.22); /* faded sepia tracing guide */
+  --stroke-ghost: rgba(107, 76, 42, 0.45); /* sepia tracing guide — strong enough to read against the parchment background, soft enough to fade as the user inks over it */
   --stroke-user: #1a1410;                  /* near-black sumi ink */
   --stroke-wrong: #8b4513;                 /* warm red-brown */
 
@@ -134,6 +134,49 @@
   stroke-width: 2.2;
   fill: none;
   stroke-linecap: round;
+}
+
+/* Tutorial button — mirrors the exit button at the top-LEFT so
+   the intro/onboarding is one tap away from any mode (Letters,
+   Words, Styles) and persists when the workspace is hidden.
+   Book icon makes it unambiguous next to the X. */
+.tutorial-btn {
+  position: fixed;
+  top: calc(clamp(12px, 2.4vw, 20px) + var(--safe-top));
+  left: clamp(12px, 2.4vw, 24px);
+  z-index: 20;
+  border: 1.5px solid rgba(107, 76, 42, 0.3);
+  background: rgba(245, 240, 232, 0.85);
+  color: var(--accent);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px var(--shadow-soft);
+  transition: transform 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease, color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.tutorial-btn:hover {
+  background: rgba(200, 169, 110, 0.22);
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  transform: scale(1.05);
+}
+.tutorial-btn:active {
+  transform: scale(0.95);
+}
+.tutorial-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .hero-card {
@@ -671,6 +714,34 @@
   inset: 12px;
   width: calc(100% - 24px);
   height: calc(100% - 24px);
+}
+
+/* Eye toggle (data-guided-toggle): show a slash through the eye
+   when the ghost guide is hidden — gives the icon two clearly
+   different visual states. `.active` = ghost visible = no slash. */
+[data-guided-toggle] .eye-slash {
+  display: none;
+}
+[data-guided-toggle]:not(.active) .eye-slash {
+  display: inline;
+}
+
+/* Three canvases are stacked in DOM order (ghost ↓ draw ↓ fx).
+   The draw canvas is the only one that should receive pointer
+   events — the ghost and fx are decorative overlays. Without this,
+   the fx canvas (topmost) captures every click and the brush
+   never sees a `pointerdown`. */
+.canvas-layer[data-ghost],
+.canvas-layer[data-fx] {
+  pointer-events: none;
+}
+.canvas-layer[data-draw] {
+  pointer-events: auto;
+  /* Hint the OS not to interpret swipes as scroll/pan so a finger
+     drag on the canvas always draws ink rather than panning the
+     page. */
+  touch-action: none;
+  cursor: crosshair;
 }
 
 .writer-layer {
@@ -1494,20 +1565,69 @@
 
 /* Letter picker: a horizontally-scrollable grid below the hero. */
 .letter-picker {
+  /* Single horizontal row, scrolls left-right when the viewport
+     is narrower than ~28 × 50 px. Pulled up slightly via negative
+     top margin to absorb whitespace above (under the mode tabs)
+     and given a generous bottom padding so Arabic descenders
+     (ج، ر، و، ي، ع) stay safely above the overflow-y clip line. */
   display: flex;
+  flex-wrap: nowrap;
   gap: 6px;
-  padding: 6px 0;
+  padding: 0 0 54px;
+  margin-top: -12px;
+  margin-bottom: 0;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(107, 76, 42, 0.3) transparent;
+  -webkit-overflow-scrolling: touch;
 }
-
 .letter-picker::-webkit-scrollbar { height: 6px; }
 .letter-picker::-webkit-scrollbar-thumb {
   background: rgba(107, 76, 42, 0.3);
   border-radius: 999px;
+}
+
+/* Word component-letter chips in the hero-right column when in
+   Words mode. Each chip is an isolated-form glyph the user can
+   tap to drill into Letters mode for that family. */
+.word-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
+}
+.letter-chip {
+  appearance: none;
+  border: 1.5px solid rgba(107, 76, 42, 0.2);
+  background: rgba(251, 246, 236, 0.7);
+  color: var(--char-ink);
+  font-family: "Amiri", serif;
+  font-size: 24px;
+  line-height: 1.1;
+  min-width: 42px;
+  min-height: 46px;
+  padding: 2px 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
+}
+.letter-chip:hover {
+  background: rgba(200, 169, 110, 0.22);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.letter-chip-label {
+  display: block;
+  font: italic 10px/1.2 Georgia, serif;
+  color: var(--muted);
+  margin-top: 4px;
+  font-family: Georgia, serif;
 }
 
 .letter-pill {
@@ -1517,11 +1637,15 @@
   background: rgba(251, 246, 236, 0.6);
   color: var(--char-ink);
   font-family: "Amiri", serif;
-  font-size: 26px;
-  line-height: 1;
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
+  font-size: 22px;
+  /* Compact pills so all 28 letters fit in a single horizontal
+     row. Generous bottom padding inside the pill keeps Arabic
+     descenders (ج، ر، و، ي، ع) clear of the pill's own border. */
+  width: 44px;
+  min-height: 52px;
+  line-height: 1.2;
+  padding: 2px 4px 18px;
+  border-radius: 10px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1591,18 +1715,29 @@
   aspect-ratio: 16 / 7;
 }
 
-/* Lesson cards (intro flow). */
+/* Lesson cards (intro flow). The overlay scrolls when content is
+   taller than the viewport (otherwise the tap-to-hear button row gets
+   clipped off the bottom and only the first button stays clickable). */
 .lesson-overlay {
   position: absolute;
   inset: 0;
   background: rgba(245, 240, 232, 0.96);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: clamp(20px, 4vw, 40px);
   z-index: 30;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   animation: floatIn 400ms ease-out;
+}
+
+.lesson-card {
+  /* Sit centered when shorter than the viewport, scroll naturally
+     when taller. */
+  margin: auto;
 }
 
 .lesson-card {
@@ -1804,6 +1939,12 @@
   padding: 18px;
   display: grid;
   gap: 12px;
+  scroll-margin: 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.style-card.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 10px 22px var(--shadow);
 }
 
 .style-card .style-header {
@@ -1866,6 +2007,139 @@
   line-height: 1;
   letter-spacing: 0;
   padding: 8px 0;
+}
+
+/* Section heading inside the examples panel (Letters mode) — a
+   small uppercase divider between "Words with this letter" and
+   "Phrases from the corpus". */
+.example-section-title {
+  font: 600 11px/1.4 Georgia, serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 4px 6px;
+}
+.example-section-title:first-child {
+  padding-top: 4px;
+}
+
+/* Example card with a tiny visual marker on the left edge to
+   distinguish curated word cards from corpus phrase cards without
+   needing language-dependent section headings. */
+.example-card {
+  position: relative;
+  padding: 12px 14px 12px 22px;
+  display: grid;
+  gap: 6px;
+  text-align: right;
+  background: rgba(251, 246, 236, 0.6);
+  border: 1px solid rgba(107, 76, 42, 0.12);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.example-card:hover {
+  background: rgba(200, 169, 110, 0.16);
+  border-color: rgba(107, 76, 42, 0.28);
+}
+.example-marker {
+  position: absolute;
+  left: 8px;
+  top: 14px;
+  width: 6px;
+  height: calc(100% - 28px);
+  border-radius: 999px;
+}
+.example-marker-curated {
+  background: linear-gradient(180deg, var(--gold), var(--accent));
+}
+.example-marker-corpus {
+  background: linear-gradient(180deg, var(--brown), var(--accent-warm));
+}
+
+/* Row of word-chip buttons rendered inside each example card.
+   Each chip is a single Arabic word (tokenized via
+   src/tokenize.js); tapping it speaks just that word. */
+.example-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;  /* RTL: word order is rendered right-to-left by the parser */
+}
+.word-chip {
+  appearance: none;
+  border: 1px solid rgba(107, 76, 42, 0.18);
+  background: rgba(245, 240, 232, 0.7);
+  color: var(--char-ink);
+  font-family: "Amiri", serif;
+  font-size: 22px;
+  line-height: 1;
+  padding: 6px 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease,
+    transform 0.12s ease, color 0.12s ease;
+}
+.word-chip:hover {
+  background: rgba(200, 169, 110, 0.22);
+  border-color: rgba(107, 76, 42, 0.35);
+  transform: translateY(-1px);
+}
+.word-chip:active {
+  transform: translateY(0);
+}
+.word-chip.matches-letter {
+  background: rgba(200, 169, 110, 0.28);
+  border-color: var(--accent);
+  color: var(--char-ink);
+  font-weight: 500;
+}
+
+.example-translation.translit {
+  color: var(--brown);
+  font-style: italic;
+}
+.example-translation.gloss {
+  color: var(--ink);
+}
+
+/* Form-picker chips now render the actual glyph as the diagram.
+   No localized text; aria-label carries the position name. */
+.form-chip-glyph {
+  font-family: "Amiri", serif;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--char-ink);
+}
+.form-chip.is-active .form-chip-glyph {
+  color: var(--paper);
+}
+.form-chip.is-empty {
+  visibility: hidden;
+}
+
+/* Stroke / letter count rendered as `<number> <small icon>` — no
+   pluralization rules; works for every language. */
+[data-strokes] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.strokes-count {
+  font-weight: 600;
+  color: var(--accent);
+}
+.strokes-icon {
+  width: 14px;
+  height: 14px;
+  stroke: var(--brown);
+  stroke-width: 2;
+  fill: none;
+}
+.strokes-icon[lang="ar"] {
+  font-family: "Amiri", serif;
+  font-size: 16px;
+  color: var(--brown);
 }
 
 /* Word trace mode hero — show the whole word in RTL composition. */

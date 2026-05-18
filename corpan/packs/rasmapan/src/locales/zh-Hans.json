@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "字母",
+    "words": "单词",
+    "styles": "书法风格"
+  },
+  "examples": {
+    "empty_for_letter": "暂时没有包含此字母的示例单词。",
+    "tap_phrase_hint": "点击短语收听",
+    "tap_word_hint": "点击单词收听",
+    "heading_curated": "包含此字母的单词",
+    "heading_corpus": "语料库中的短语"
+  },
+  "word_picker": {
+    "hint": "点击单词描摹"
+  },
+  "form": {
+    "isolated": "独立形",
+    "initial": "词首形",
+    "medial": "词中形",
+    "final": "词末形"
+  },
+  "stroke": {
+    "singular": "笔画",
+    "plural": "笔画"
+  },
+  "letter": {
+    "singular": "字母",
+    "plural": "字母"
+  },
+  "aria": {
+    "tutorial": "教程",
+    "play": "播放",
+    "brush": "笔刷设置",
+    "free_draw": "自由绘画",
+    "hints": "提示",
+    "clear": "清除",
+    "exit": "退出"
+  },
+  "lesson": {
+    "step": "第 {{n}} 步,共 {{total}} 步",
+    "back": "上一步",
+    "skip": "跳过介绍",
+    "next": "下一步",
+    "begin": "开始"
+  }
+}

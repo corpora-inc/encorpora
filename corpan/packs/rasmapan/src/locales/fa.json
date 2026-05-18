@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "حروف",
+    "words": "کلمات",
+    "styles": "سبک‌ها"
+  },
+  "examples": {
+    "empty_for_letter": "هنوز نمونه کلماتی برای این حرف موجود نیست.",
+    "tap_phrase_hint": "برای شنیدن، روی عبارت ضربه بزنید",
+    "tap_word_hint": "برای شنیدن، روی کلمه ضربه بزنید",
+    "heading_curated": "کلمات با این حرف",
+    "heading_corpus": "عبارات از پیکره"
+  },
+  "word_picker": {
+    "hint": "برای رسم، روی کلمه ضربه بزنید"
+  },
+  "form": {
+    "isolated": "منفرد",
+    "initial": "آغازین",
+    "medial": "میانی",
+    "final": "پایانی"
+  },
+  "stroke": {
+    "singular": "خط",
+    "plural": "خط"
+  },
+  "letter": {
+    "singular": "حرف",
+    "plural": "حرف"
+  },
+  "aria": {
+    "tutorial": "آموزش",
+    "play": "پخش",
+    "brush": "تنظیمات قلم",
+    "free_draw": "نقاشی آزاد",
+    "hints": "راهنماها",
+    "clear": "پاک کردن",
+    "exit": "خروج"
+  },
+  "lesson": {
+    "step": "گام {{n}} از {{total}}",
+    "back": "بازگشت",
+    "skip": "رد کردن مقدمه",
+    "next": "بعدی",
+    "begin": "شروع"
+  }
+}

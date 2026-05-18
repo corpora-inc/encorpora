@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Bokstaver",
+    "words": "Ord",
+    "styles": "Stiler"
+  },
+  "examples": {
+    "empty_for_letter": "Ingen eksempelord med denne bokstaven ennå.",
+    "tap_phrase_hint": "Trykk på en setning for å høre den",
+    "tap_word_hint": "Trykk på et ord for å høre det",
+    "heading_curated": "Ord med denne bokstaven",
+    "heading_corpus": "Setninger fra korpuset"
+  },
+  "word_picker": {
+    "hint": "Trykk på et ord for å skrive det"
+  },
+  "form": {
+    "isolated": "isolert",
+    "initial": "innledende",
+    "medial": "medial",
+    "final": "endelig"
+  },
+  "stroke": {
+    "singular": "strek",
+    "plural": "streker"
+  },
+  "letter": {
+    "singular": "bokstav",
+    "plural": "bokstaver"
+  },
+  "aria": {
+    "tutorial": "Veiledning",
+    "play": "Spill",
+    "brush": "Penselinnstillinger",
+    "free_draw": "Frihåndstegning",
+    "hints": "Hjelpelinjer",
+    "clear": "Tøm",
+    "exit": "Lukk"
+  },
+  "lesson": {
+    "step": "Trinn {{n}} av {{total}}",
+    "back": "Tilbake",
+    "skip": "Hopp over intro",
+    "next": "Neste",
+    "begin": "Start"
+  }
+}

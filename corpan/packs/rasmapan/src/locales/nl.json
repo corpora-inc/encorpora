@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Letters",
+    "words": "Woorden",
+    "styles": "Stijlen"
+  },
+  "examples": {
+    "empty_for_letter": "Nog geen voorbeeldwoorden met deze letter.",
+    "tap_phrase_hint": "Tik op een zin om hem te horen",
+    "tap_word_hint": "Tik op een woord om het te horen",
+    "heading_curated": "Woorden met deze letter",
+    "heading_corpus": "Zinnen uit het corpus"
+  },
+  "word_picker": {
+    "hint": "Tik op een woord om het over te trekken"
+  },
+  "form": {
+    "isolated": "geïsoleerd",
+    "initial": "begin",
+    "medial": "midden",
+    "final": "eind"
+  },
+  "stroke": {
+    "singular": "streek",
+    "plural": "streken"
+  },
+  "letter": {
+    "singular": "letter",
+    "plural": "letters"
+  },
+  "aria": {
+    "tutorial": "Uitleg",
+    "play": "Afspelen",
+    "brush": "Penseelinstellingen",
+    "free_draw": "Vrij tekenen",
+    "hints": "Hulplijnen",
+    "clear": "Wissen",
+    "exit": "Sluiten"
+  },
+  "lesson": {
+    "step": "Stap {{n}} van {{total}}",
+    "back": "Terug",
+    "skip": "Intro overslaan",
+    "next": "Volgende",
+    "begin": "Beginnen"
+  }
+}

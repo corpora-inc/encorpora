@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Slova",
+    "words": "Riječi",
+    "styles": "Stilovi"
+  },
+  "examples": {
+    "empty_for_letter": "Za ovo slovo još nema primjera riječi.",
+    "tap_phrase_hint": "Dodirnite rečenicu da je čujete",
+    "tap_word_hint": "Dodirnite riječ da je čujete",
+    "heading_curated": "Riječi s ovim slovom",
+    "heading_corpus": "Rečenice iz korpusa"
+  },
+  "word_picker": {
+    "hint": "Dodirnite riječ da je iscrtate"
+  },
+  "form": {
+    "isolated": "izolirana",
+    "initial": "početna",
+    "medial": "srednja",
+    "final": "završna"
+  },
+  "stroke": {
+    "singular": "potez",
+    "plural": "poteza"
+  },
+  "letter": {
+    "singular": "slovo",
+    "plural": "slova"
+  },
+  "aria": {
+    "tutorial": "Vodič",
+    "play": "Reproduciraj",
+    "brush": "Postavke kista",
+    "free_draw": "Slobodno crtanje",
+    "hints": "Vodilice",
+    "clear": "Obriši",
+    "exit": "Izađi"
+  },
+  "lesson": {
+    "step": "Korak {{n}} od {{total}}",
+    "back": "Natrag",
+    "skip": "Preskoči uvod",
+    "next": "Dalje",
+    "begin": "Počni"
+  }
+}

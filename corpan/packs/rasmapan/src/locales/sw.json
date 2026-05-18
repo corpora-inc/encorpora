@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Herufi",
+    "words": "Maneno",
+    "styles": "Mitindo"
+  },
+  "examples": {
+    "empty_for_letter": "Bado hakuna mifano ya maneno yenye herufi hii.",
+    "tap_phrase_hint": "Gusa kifungu ili kukisikia",
+    "tap_word_hint": "Gusa neno ili kulisikia",
+    "heading_curated": "Maneno yenye herufi hii",
+    "heading_corpus": "Vifungu kutoka kwa kongoo"
+  },
+  "word_picker": {
+    "hint": "Gusa neno ili kulifuata"
+  },
+  "form": {
+    "isolated": "pekee",
+    "initial": "mwanzo",
+    "medial": "katikati",
+    "final": "mwisho"
+  },
+  "stroke": {
+    "singular": "mstari",
+    "plural": "mistari"
+  },
+  "letter": {
+    "singular": "herufi",
+    "plural": "herufi"
+  },
+  "aria": {
+    "tutorial": "Mafunzo",
+    "play": "Cheza",
+    "brush": "Mipangilio ya brashi",
+    "free_draw": "Kuchora huru",
+    "hints": "Mwongozo",
+    "clear": "Futa",
+    "exit": "Toka"
+  },
+  "lesson": {
+    "step": "Hatua ya {{n}} kati ya {{total}}",
+    "back": "Rudi",
+    "skip": "Ruka utangulizi",
+    "next": "Endelea",
+    "begin": "Anza"
+  }
+}

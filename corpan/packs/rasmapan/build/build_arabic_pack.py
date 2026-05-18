@@ -55,6 +55,7 @@ CREATE TABLE pack_meta(
 CREATE TABLE arabic_letter(
   id TEXT PRIMARY KEY,
   letter TEXT NOT NULL,
+  base_letter TEXT NOT NULL DEFAULT '',
   name_ar TEXT NOT NULL,
   name_en TEXT NOT NULL,
   unicode TEXT NOT NULL,
@@ -115,7 +116,8 @@ CREATE TABLE arabic_style(
   name_en TEXT NOT NULL,
   name_ar TEXT NOT NULL,
   sample_image TEXT,
-  description_md TEXT NOT NULL
+  description_md TEXT NOT NULL,
+  description_md_i18n TEXT NOT NULL DEFAULT '{}'
 );
 """
 
@@ -582,6 +584,15 @@ def main() -> None:
         tags = entry.get("tags", [])
         notes = entry.get("notes", {})
         positions: Dict[str, str] = entry.get("positions", {})
+        # Family-level base Arabic codepoint (U+0600-U+06FF range) —
+        # used at runtime to substring-search the corpus. Without this
+        # we'd be searching with the presentation-form codepoint
+        # (U+FE-range) which never matches real corpus text.
+        base_hex = entry.get("base_unicode", "")
+        try:
+            base_letter = chr(int(base_hex, 16)) if base_hex else ""
+        except (TypeError, ValueError):
+            base_letter = ""
         for pos in POSITION_KEYS:
             cp_hex = positions.get(pos)
             if not cp_hex:
@@ -595,14 +606,15 @@ def main() -> None:
             conn.execute(
                 """
                 INSERT INTO arabic_letter(
-                  id, letter, name_ar, name_en, unicode, position,
+                  id, letter, base_letter, name_ar, name_en, unicode, position,
                   family_id, parent_letter_id, connects_before,
                   connects_after, frequency, tags_json
-                ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     glyph_id,
                     record["letter"],
+                    base_letter,
                     name_ar,
                     name_en,
                     f"U+{cp_hex.upper()}",
@@ -745,11 +757,23 @@ def main() -> None:
             sid = style.get("id")
             if not isinstance(sid, str):
                 continue
+            # Collect per-language description variants from the `i18n`
+            # field; runtime picks the active stack's primary lang from
+            # this map and falls back to the English description_md.
+            i18n_field = style.get("i18n") or {}
+            i18n_map: Dict[str, str] = {}
+            if isinstance(i18n_field, dict):
+                for lang_code, variant in i18n_field.items():
+                    if not isinstance(lang_code, str) or not isinstance(variant, dict):
+                        continue
+                    desc = variant.get("description_md")
+                    if isinstance(desc, str) and desc.strip():
+                        i18n_map[lang_code] = desc
             conn.execute(
                 """
                 INSERT INTO arabic_style(
-                  id, ord, name_en, name_ar, sample_image, description_md
-                ) VALUES(?, ?, ?, ?, ?, ?)
+                  id, ord, name_en, name_ar, sample_image, description_md, description_md_i18n
+                ) VALUES(?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     sid,
@@ -758,6 +782,7 @@ def main() -> None:
                     style.get("name_ar", ""),
                     style.get("sample_image"),
                     style.get("description_md", ""),
+                    json.dumps(i18n_map, ensure_ascii=False),
                 ),
             )
             style_count += 1

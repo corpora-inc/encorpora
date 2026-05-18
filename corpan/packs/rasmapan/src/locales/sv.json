@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Bokstäver",
+    "words": "Ord",
+    "styles": "Stilar"
+  },
+  "examples": {
+    "empty_for_letter": "Inga exempelord med den här bokstaven än.",
+    "tap_phrase_hint": "Tryck på en mening för att höra den",
+    "tap_word_hint": "Tryck på ett ord för att höra det",
+    "heading_curated": "Ord med den här bokstaven",
+    "heading_corpus": "Meningar från korpusen"
+  },
+  "word_picker": {
+    "hint": "Tryck på ett ord för att skriva det"
+  },
+  "form": {
+    "isolated": "isolerad",
+    "initial": "initial",
+    "medial": "medial",
+    "final": "final"
+  },
+  "stroke": {
+    "singular": "drag",
+    "plural": "drag"
+  },
+  "letter": {
+    "singular": "bokstav",
+    "plural": "bokstäver"
+  },
+  "aria": {
+    "tutorial": "Handledning",
+    "play": "Spela",
+    "brush": "Penselinställningar",
+    "free_draw": "Frihandsritning",
+    "hints": "Stödlinjer",
+    "clear": "Rensa",
+    "exit": "Stäng"
+  },
+  "lesson": {
+    "step": "Steg {{n}} av {{total}}",
+    "back": "Tillbaka",
+    "skip": "Hoppa över intro",
+    "next": "Nästa",
+    "begin": "Börja"
+  }
+}

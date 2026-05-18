@@ -37,6 +37,12 @@ const SAMPLE_TEXT = "بسم الله";  // "In the name of God" — a phrase
 // shows it in Amiri (the font we ship); future versions can swap in
 // per-style fonts or real public-domain images via `sample_image`.
 
+// Pick the description language from the host i18next instance so
+// each card matches whatever the user has set as their primary
+// language in corpan settings. Falls back to English when the host
+// isn't available (browser preview).
+import { currentLanguage } from "./i18n.js";
+
 export class StylesView {
   constructor({ container, hostApi, queryPackDb, packBaseUrl }) {
     this.container = container;
@@ -46,32 +52,62 @@ export class StylesView {
     this.rendered = false;
   }
 
-  async render() {
+  async render(opts = {}) {
+    const highlightId = opts.highlightId || null;
     let rows = [];
+    // Try the new schema (with `description_md_i18n`); if the
+    // cached pack-DB connection is stale and that column doesn't
+    // exist, retry with the legacy SELECT. Same tiering pattern as
+    // `loadFamilies` / `queryAlphabet`.
     try {
       const res = await this.queryPackDb({
         sql:
-          "SELECT id, ord, name_en, name_ar, sample_image, description_md " +
-          "FROM arabic_style ORDER BY ord ASC",
+          "SELECT id, ord, name_en, name_ar, sample_image, description_md, " +
+          "description_md_i18n FROM arabic_style ORDER BY ord ASC",
       });
       rows = res.rows || [];
     } catch {
       rows = [];
     }
+    if (!rows.length) {
+      try {
+        const res = await this.queryPackDb({
+          sql:
+            "SELECT id, ord, name_en, name_ar, sample_image, description_md " +
+            "FROM arabic_style ORDER BY ord ASC",
+        });
+        rows = res.rows || [];
+      } catch {
+        rows = [];
+      }
+    }
+
+    // currentLanguage() pulls whatever the host i18next is set to
+    // right now — e.g. "es" if the user picked Spanish. Stack
+    // config no longer needed here.
+    const uiLang = currentLanguage();
 
     const cardsHtml = rows
       .map((row) => {
+        let i18n = {};
+        try {
+          i18n = JSON.parse(row.description_md_i18n || "{}");
+        } catch {
+          /* tolerate */
+        }
+        const description = i18n[uiLang] || row.description_md || "";
         const sample = row.sample_image
           ? `<div class="sample-image"><img class="sample-image-img" src="${escapeHtml(this._assetUrl(row.sample_image))}" alt="${escapeHtml(row.name_en)} sample" loading="lazy" /></div>`
           : `<div class="sample-text" lang="ar">${escapeHtml(SAMPLE_TEXT)}</div>`;
+        const activeCls = highlightId && row.id === highlightId ? " is-active" : "";
         return `
-          <article class="style-card">
+          <article class="style-card${activeCls}" data-style-id="${escapeHtml(row.id)}">
             <header class="style-header">
               <span class="style-name-en">${escapeHtml(row.name_en)}</span>
               <span class="style-name-ar" lang="ar">${escapeHtml(row.name_ar || "")}</span>
             </header>
             ${sample}
-            <div class="style-body">${renderMd(row.description_md || "")}</div>
+            <div class="style-body">${renderMd(description)}</div>
           </article>
         `;
       })
@@ -79,6 +115,17 @@ export class StylesView {
 
     this.container.innerHTML = `<div class="style-cards">${cardsHtml}</div>`;
     this.rendered = true;
+
+    // Scroll the active card into view so nav-arrow cycling
+    // actually shows the user which card is now "current".
+    if (highlightId) {
+      const el = this.container.querySelector(
+        `[data-style-id="${CSS.escape(highlightId)}"]`,
+      );
+      if (el && typeof el.scrollIntoView === "function") {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
   }
 
   _assetUrl(rel) {

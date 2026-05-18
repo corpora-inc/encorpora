@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Letras",
+    "words": "Palavras",
+    "styles": "Estilos"
+  },
+  "examples": {
+    "empty_for_letter": "Ainda não há palavras de exemplo com esta letra.",
+    "tap_phrase_hint": "Toque numa frase para ouvi-la",
+    "tap_word_hint": "Toque numa palavra para ouvi-la",
+    "heading_curated": "Palavras com esta letra",
+    "heading_corpus": "Frases do corpus"
+  },
+  "word_picker": {
+    "hint": "Toque numa palavra para traçar"
+  },
+  "form": {
+    "isolated": "isolada",
+    "initial": "inicial",
+    "medial": "medial",
+    "final": "final"
+  },
+  "stroke": {
+    "singular": "traço",
+    "plural": "traços"
+  },
+  "letter": {
+    "singular": "letra",
+    "plural": "letras"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Tocar",
+    "brush": "Configurações do pincel",
+    "free_draw": "Desenho livre",
+    "hints": "Guias",
+    "clear": "Limpar",
+    "exit": "Sair"
+  },
+  "lesson": {
+    "step": "Etapa {{n}} de {{total}}",
+    "back": "Voltar",
+    "skip": "Pular intro",
+    "next": "Próximo",
+    "begin": "Começar"
+  }
+}

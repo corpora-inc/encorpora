@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "اکھر",
+    "words": "لفظ",
+    "styles": "انداز"
+  },
+  "examples": {
+    "empty_for_letter": "اس اکھر لئی ہلے کوئی مثال شبد کوئی نہیں۔",
+    "tap_phrase_hint": "جملہ سنن لئی ٹیپ کرو",
+    "tap_word_hint": "لفظ سنن لئی ٹیپ کرو",
+    "heading_curated": "اس اکھر والے لفظ",
+    "heading_corpus": "کارپس وچوں جملے"
+  },
+  "word_picker": {
+    "hint": "لفظ نوں لکھن لئی ٹیپ کرو"
+  },
+  "form": {
+    "isolated": "اکیلی",
+    "initial": "شروع",
+    "medial": "وچکار",
+    "final": "آخر"
+  },
+  "stroke": {
+    "singular": "لکیر",
+    "plural": "لکیراں"
+  },
+  "letter": {
+    "singular": "اکھر",
+    "plural": "اکھر"
+  },
+  "aria": {
+    "tutorial": "ٹیوٹوریل",
+    "play": "چلاؤ",
+    "brush": "برش سیٹنگاں",
+    "free_draw": "آزاد ڈرائنگ",
+    "hints": "ہدایتاں",
+    "clear": "صاف کرو",
+    "exit": "باہر"
+  },
+  "lesson": {
+    "step": "{{total}} وچوں قدم {{n}}",
+    "back": "پچھے",
+    "skip": "تعارف چھڈو",
+    "next": "اگے",
+    "begin": "شروع"
+  }
+}

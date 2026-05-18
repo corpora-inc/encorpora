@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Betűk",
+    "words": "Szavak",
+    "styles": "Stílusok"
+  },
+  "examples": {
+    "empty_for_letter": "Még nincsenek példaszavak ehhez a betűhöz.",
+    "tap_phrase_hint": "Koppintson egy kifejezésre a meghallgatáshoz",
+    "tap_word_hint": "Koppintson egy szóra a meghallgatáshoz",
+    "heading_curated": "Szavak ezzel a betűvel",
+    "heading_corpus": "Kifejezések a korpuszból"
+  },
+  "word_picker": {
+    "hint": "Koppintson egy szóra az átrajzoláshoz"
+  },
+  "form": {
+    "isolated": "elszigetelt",
+    "initial": "kezdő",
+    "medial": "közbülső",
+    "final": "záró"
+  },
+  "stroke": {
+    "singular": "vonás",
+    "plural": "vonás"
+  },
+  "letter": {
+    "singular": "betű",
+    "plural": "betű"
+  },
+  "aria": {
+    "tutorial": "Útmutató",
+    "play": "Lejátszás",
+    "brush": "Ecsetbeállítások",
+    "free_draw": "Szabadkézi rajzolás",
+    "hints": "Súgóvonalak",
+    "clear": "Törlés",
+    "exit": "Kilépés"
+  },
+  "lesson": {
+    "step": "{{n}}. lépés / {{total}}",
+    "back": "Vissza",
+    "skip": "Bevezető átugrása",
+    "next": "Tovább",
+    "begin": "Kezdés"
+  }
+}

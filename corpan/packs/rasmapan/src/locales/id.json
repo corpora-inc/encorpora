@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Huruf",
+    "words": "Kata",
+    "styles": "Gaya"
+  },
+  "examples": {
+    "empty_for_letter": "Belum ada contoh kata dengan huruf ini.",
+    "tap_phrase_hint": "Ketuk frasa untuk mendengarnya",
+    "tap_word_hint": "Ketuk kata untuk mendengarnya",
+    "heading_curated": "Kata dengan huruf ini",
+    "heading_corpus": "Frasa dari korpus"
+  },
+  "word_picker": {
+    "hint": "Ketuk kata untuk menjiplaknya"
+  },
+  "form": {
+    "isolated": "terpisah",
+    "initial": "awal",
+    "medial": "tengah",
+    "final": "akhir"
+  },
+  "stroke": {
+    "singular": "goresan",
+    "plural": "goresan"
+  },
+  "letter": {
+    "singular": "huruf",
+    "plural": "huruf"
+  },
+  "aria": {
+    "tutorial": "Tutorial",
+    "play": "Putar",
+    "brush": "Pengaturan kuas",
+    "free_draw": "Gambar bebas",
+    "hints": "Panduan",
+    "clear": "Hapus",
+    "exit": "Keluar"
+  },
+  "lesson": {
+    "step": "Langkah {{n}} dari {{total}}",
+    "back": "Kembali",
+    "skip": "Lewati intro",
+    "next": "Selanjutnya",
+    "begin": "Mulai"
+  }
+}

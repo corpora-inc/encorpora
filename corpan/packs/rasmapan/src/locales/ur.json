@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "حروف",
+    "words": "الفاظ",
+    "styles": "اسلوب"
+  },
+  "examples": {
+    "empty_for_letter": "اس حرف کے لیے ابھی کوئی مثالی الفاظ نہیں ہیں۔",
+    "tap_phrase_hint": "جملہ سننے کے لیے ٹیپ کریں",
+    "tap_word_hint": "لفظ سننے کے لیے ٹیپ کریں",
+    "heading_curated": "اس حرف کے ساتھ الفاظ",
+    "heading_corpus": "کارپس سے جملے"
+  },
+  "word_picker": {
+    "hint": "لفظ کا سراغ لگانے کے لیے ٹیپ کریں"
+  },
+  "form": {
+    "isolated": "تنہا",
+    "initial": "ابتدائی",
+    "medial": "درمیانی",
+    "final": "آخری"
+  },
+  "stroke": {
+    "singular": "لکیر",
+    "plural": "لکیریں"
+  },
+  "letter": {
+    "singular": "حرف",
+    "plural": "حروف"
+  },
+  "aria": {
+    "tutorial": "ٹیوٹوریل",
+    "play": "چلائیں",
+    "brush": "برش کی ترتیبات",
+    "free_draw": "آزاد ڈرائنگ",
+    "hints": "رہنما",
+    "clear": "صاف کریں",
+    "exit": "باہر نکلیں"
+  },
+  "lesson": {
+    "step": "{{total}} میں سے مرحلہ {{n}}",
+    "back": "پیچھے",
+    "skip": "تعارف چھوڑیں",
+    "next": "آگے",
+    "begin": "شروع"
+  }
+}

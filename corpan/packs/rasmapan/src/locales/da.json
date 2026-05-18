@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "Bogstaver",
+    "words": "Ord",
+    "styles": "Stilarter"
+  },
+  "examples": {
+    "empty_for_letter": "Endnu ingen eksempelord med dette bogstav.",
+    "tap_phrase_hint": "Tryk på en sætning for at høre den",
+    "tap_word_hint": "Tryk på et ord for at høre det",
+    "heading_curated": "Ord med dette bogstav",
+    "heading_corpus": "Sætninger fra korpus"
+  },
+  "word_picker": {
+    "hint": "Tryk på et ord for at tegne det"
+  },
+  "form": {
+    "isolated": "isoleret",
+    "initial": "indledende",
+    "medial": "medial",
+    "final": "endelig"
+  },
+  "stroke": {
+    "singular": "streg",
+    "plural": "streger"
+  },
+  "letter": {
+    "singular": "bogstav",
+    "plural": "bogstaver"
+  },
+  "aria": {
+    "tutorial": "Vejledning",
+    "play": "Afspil",
+    "brush": "Penselindstillinger",
+    "free_draw": "Frihåndstegning",
+    "hints": "Hjælpelinjer",
+    "clear": "Ryd",
+    "exit": "Luk"
+  },
+  "lesson": {
+    "step": "Trin {{n}} af {{total}}",
+    "back": "Tilbage",
+    "skip": "Spring intro over",
+    "next": "Næste",
+    "begin": "Start"
+  }
+}

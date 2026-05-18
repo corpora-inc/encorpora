@@ -5,7 +5,24 @@
     "name_en": "Naskh",
     "name_ar": "نسخ",
     "sample_image": "naskh-sample.png",
-    "description_md": "**Naskh** (نسخ) means 'copy' — the workhorse script used to copy books and the Qur'an across the Islamic world from the 10th century onward. Letters are clear, rounded, and easy to read at small sizes. Almost every modern Arabic font you see — including the one in this app (Amiri) — is a Naskh design.\n\n**Use it for:** body text, books, websites, beginner writing practice."
+    "description_md": "**Naskh** (نسخ) means 'copy' — the workhorse script used to copy books and the Qur'an across the Islamic world from the 10th century onward. Letters are clear, rounded, and easy to read at small sizes. Almost every modern Arabic font you see — including the one in this app (Amiri) — is a Naskh design.\n\n**Use it for:** body text, books, websites, beginner writing practice.",
+    "i18n": {
+      "es": {
+        "description_md": "**Naskh** (نسخ) significa «copia» — la escritura de uso cotidiano empleada para copiar libros y el Corán en todo el mundo islámico desde el siglo X. Las letras son claras, redondeadas y fáciles de leer en tamaños pequeños. Casi todas las fuentes árabes modernas que ves —incluida la de esta aplicación (Amiri)— son diseños naskh.\n\n**Úsalo para:** texto corrido, libros, sitios web, práctica de escritura inicial."
+      },
+      "fr": {
+        "description_md": "**Naskh** (نسخ) signifie « copie » — l'écriture de tous les jours utilisée pour copier les livres et le Coran à travers le monde islamique depuis le Xe siècle. Les lettres y sont claires, rondes et faciles à lire en petite taille. Presque toutes les polices arabes modernes que vous voyez — y compris celle de cette application (Amiri) — sont des dessins naskh.\n\n**À utiliser pour :** corps de texte, livres, sites web, exercices d'écriture pour débutants."
+      },
+      "it": {
+        "description_md": "**Naskh** (نسخ) significa «copia» — la scrittura quotidiana usata per copiare libri e il Corano in tutto il mondo islamico dal X secolo in poi. Le lettere sono chiare, arrotondate e facili da leggere a corpo piccolo. Quasi tutti i font arabi moderni che vedi — incluso quello di questa applicazione (Amiri) — sono disegni naskh.\n\n**Usalo per:** testo corrente, libri, siti web, esercizi di scrittura per principianti."
+      },
+      "pt": {
+        "description_md": "**Naskh** (نسخ) significa «cópia» — a escrita do dia a dia usada para copiar livros e o Alcorão em todo o mundo islâmico desde o século X. As letras são claras, arredondadas e fáceis de ler em corpo pequeno. Quase todas as fontes árabes modernas que você vê — incluindo a desta aplicação (Amiri) — são desenhos naskh.\n\n**Use para:** texto corrido, livros, sites, prática de escrita inicial."
+      },
+      "de": {
+        "description_md": "**Naskh** (نسخ) bedeutet „Abschrift“ — die Alltagsschrift, mit der seit dem 10. Jahrhundert Bücher und der Koran in der gesamten islamischen Welt kopiert wurden. Die Buchstaben sind klar, rundlich und in kleinen Größen gut lesbar. Fast jede moderne arabische Schriftart — auch die in dieser App (Amiri) — ist ein Naskh-Entwurf.\n\n**Verwendung:** Fließtext, Bücher, Websites, Anfänger-Schreibübungen."
+      }
+    }
   },
   {
     "id": "thuluth",
@@ -13,7 +30,24 @@
     "name_en": "Thuluth",
     "name_ar": "ثلث",
     "sample_image": "thuluth-sample.png",
-    "description_md": "**Thuluth** (ثلث, 'one-third') gets its name from the qalam nib being cut to about one-third the width used for larger ceremonial scripts. The letters are tall, dramatic, deeply curved, and often interlace vertically.\n\n**Use it for:** architectural inscriptions, mosque domes, headings, ornamental titles. Reading it well is a calligraphy specialty in its own right."
+    "description_md": "**Thuluth** (ثلث, 'one-third') gets its name from the qalam nib being cut to about one-third the width used for larger ceremonial scripts. The letters are tall, dramatic, deeply curved, and often interlace vertically.\n\n**Use it for:** architectural inscriptions, mosque domes, headings, ornamental titles. Reading it well is a calligraphy specialty in its own right.",
+    "i18n": {
+      "es": {
+        "description_md": "**Thuluth** (ثلث, «un tercio») debe su nombre a que la punta del qalam se cortaba a aproximadamente un tercio del ancho que se usaba para escrituras ceremoniales mayores. Las letras son altas, dramáticas, muy curvadas y suelen entrelazarse verticalmente.\n\n**Úsalo para:** inscripciones arquitectónicas, cúpulas de mezquitas, titulares, títulos ornamentales. Leerlo bien es una especialidad caligráfica en sí misma."
+      },
+      "fr": {
+        "description_md": "**Thuluth** (ثلث, « un tiers ») doit son nom au calame taillé à environ un tiers de la largeur utilisée pour les écritures cérémonielles plus grandes. Les lettres sont hautes, spectaculaires, profondément courbées et s'entrelacent souvent verticalement.\n\n**À utiliser pour :** inscriptions architecturales, coupoles de mosquées, titres, intitulés ornementaux. Bien le lire est en soi une spécialité de la calligraphie."
+      },
+      "it": {
+        "description_md": "**Thuluth** (ثلث, «un terzo») prende il nome dal pennino del qalam tagliato a circa un terzo della larghezza usata per le scritture cerimoniali più grandi. Le lettere sono alte, vistose, profondamente curve e spesso si intrecciano verticalmente.\n\n**Usalo per:** iscrizioni architettoniche, cupole di moschee, titoli, intestazioni ornamentali. Leggerlo bene è di per sé una specialità calligrafica."
+      },
+      "pt": {
+        "description_md": "**Thuluth** (ثلث, «um terço») deve o nome ao bico do qalam cortado a cerca de um terço da largura usada nas escritas cerimoniais maiores. As letras são altas, dramáticas, profundamente curvas e costumam entrelaçar-se verticalmente.\n\n**Use para:** inscrições arquitetônicas, cúpulas de mesquitas, títulos, cabeçalhos ornamentais. Lê-lo bem é por si só uma especialidade caligráfica."
+      },
+      "de": {
+        "description_md": "**Thuluth** (ثلث, „ein Drittel“) verdankt seinen Namen der Qalam-Spitze, die auf etwa ein Drittel der Breite zugeschnitten ist, die für größere zeremonielle Schriften verwendet wird. Die Buchstaben sind hoch, dramatisch, stark gekrümmt und verflechten sich oft vertikal.\n\n**Verwendung:** Architektur-Inschriften, Moschee-Kuppeln, Überschriften, ornamentale Titel. Es sicher zu lesen ist eine eigene kalligrafische Disziplin."
+      }
+    }
   },
   {
     "id": "diwani",
@@ -21,7 +55,24 @@
     "name_en": "Diwani",
     "name_ar": "ديواني",
     "sample_image": "diwani-sample.png",
-    "description_md": "**Diwani** (ديواني) was developed in the Ottoman court in the 16th century as the script of the **diwan** — the imperial chancery. Letters are densely curled, often climbing on top of one another to form a tight, decorative line that's difficult to forge.\n\n**Use it for:** royal decrees, formal invitations, wedding cards, logos that want to feel sumptuous."
+    "description_md": "**Diwani** (ديواني) was developed in the Ottoman court in the 16th century as the script of the **diwan** — the imperial chancery. Letters are densely curled, often climbing on top of one another to form a tight, decorative line that's difficult to forge.\n\n**Use it for:** royal decrees, formal invitations, wedding cards, logos that want to feel sumptuous.",
+    "i18n": {
+      "es": {
+        "description_md": "**Diwani** (ديواني) fue desarrollado en la corte otomana del siglo XVI como la escritura del **diwan** — la cancillería imperial. Las letras son muy enroscadas y a menudo trepan unas sobre otras formando una línea apretada y decorativa difícil de falsificar.\n\n**Úsalo para:** decretos reales, invitaciones formales, tarjetas de boda, logos que quieran transmitir suntuosidad."
+      },
+      "fr": {
+        "description_md": "**Diwani** (ديواني) a été mis au point à la cour ottomane au XVIe siècle comme l'écriture du **diwan** — la chancellerie impériale. Les lettres y sont très bouclées et s'empilent souvent les unes sur les autres pour former une ligne dense et décorative difficile à imiter.\n\n**À utiliser pour :** décrets royaux, invitations formelles, faire-part, logos cherchant un effet somptueux."
+      },
+      "it": {
+        "description_md": "**Diwani** (ديواني) fu sviluppato nella corte ottomana del XVI secolo come scrittura del **diwan** — la cancelleria imperiale. Le lettere sono fittamente arricciate e spesso si arrampicano l'una sull'altra formando una linea compatta e decorativa difficile da contraffare.\n\n**Usalo per:** decreti reali, inviti formali, partecipazioni, loghi che vogliano apparire sontuosi."
+      },
+      "pt": {
+        "description_md": "**Diwani** (ديواني) foi desenvolvido na corte otomana do século XVI como a escrita do **diwan** — a chancelaria imperial. As letras são muito enroladas e frequentemente se sobrepõem umas às outras formando uma linha compacta e decorativa, difícil de falsificar.\n\n**Use para:** decretos reais, convites formais, convites de casamento, logos que queiram um ar suntuoso."
+      },
+      "de": {
+        "description_md": "**Diwani** (ديواني) wurde im 16. Jahrhundert am osmanischen Hof als Schrift des **Diwan** — der kaiserlichen Kanzlei — entwickelt. Die Buchstaben sind dicht gekräuselt und klettern oft übereinander; daraus entsteht eine kompakte, dekorative Zeile, die schwer zu fälschen ist.\n\n**Verwendung:** königliche Erlasse, formelle Einladungen, Hochzeitskarten, Logos mit prachtvollem Charakter."
+      }
+    }
   },
   {
     "id": "kufic",
@@ -29,6 +80,23 @@
     "name_en": "Kufic",
     "name_ar": "كوفي",
     "sample_image": "kufic-sample.png",
-    "description_md": "**Kufic** (كوفي) is the oldest Arabic script, named after the city of Kufa in Iraq. It is geometric, angular, and strikingly architectural — the script of the earliest Qur'an manuscripts and of much medieval coinage and tile work. Modern designers have given it a second life in logos and signage.\n\n**Use it for:** coins, tile work, monumental inscriptions, modern minimalist branding."
+    "description_md": "**Kufic** (كوفي) is the oldest Arabic script, named after the city of Kufa in Iraq. It is geometric, angular, and strikingly architectural — the script of the earliest Qur'an manuscripts and of much medieval coinage and tile work. Modern designers have given it a second life in logos and signage.\n\n**Use it for:** coins, tile work, monumental inscriptions, modern minimalist branding.",
+    "i18n": {
+      "es": {
+        "description_md": "**Kufi** (كوفي) es la escritura árabe más antigua, llamada así por la ciudad de Kufa en Irak. Es geométrica, angular y muy arquitectónica — la escritura de los primeros manuscritos del Corán y de buena parte de la moneda y los azulejos medievales. Los diseñadores modernos le han dado una segunda vida en logos y señalética.\n\n**Úsalo para:** monedas, azulejos, inscripciones monumentales, branding minimalista moderno."
+      },
+      "fr": {
+        "description_md": "**Coufique** (كوفي) est l'écriture arabe la plus ancienne, nommée d'après la ville de Kufa en Irak. Géométrique, angulaire et résolument architecturale, c'est l'écriture des premiers manuscrits du Coran et d'une grande partie de la numismatique et des céramiques médiévales. Les designers contemporains lui ont donné une seconde vie dans les logos et la signalétique.\n\n**À utiliser pour :** pièces de monnaie, céramique, inscriptions monumentales, branding minimaliste contemporain."
+      },
+      "it": {
+        "description_md": "**Cufico** (كوفي) è la scrittura araba più antica, chiamata così dalla città irachena di Kufa. Geometrica, angolare e fortemente architettonica, è la scrittura dei primi manoscritti del Corano e di gran parte della monetazione e delle ceramiche medievali. I designer moderni le hanno dato nuova vita in loghi e segnaletica.\n\n**Usalo per:** monete, ceramiche, iscrizioni monumentali, branding minimalista contemporaneo."
+      },
+      "pt": {
+        "description_md": "**Cúfico** (كوفي) é a escrita árabe mais antiga, batizada com o nome da cidade iraquiana de Kufa. Geométrica, angular e fortemente arquitetônica — é a escrita dos primeiros manuscritos do Alcorão e de boa parte das moedas e azulejos medievais. Designers modernos deram-lhe uma segunda vida em logos e sinalização.\n\n**Use para:** moedas, azulejos, inscrições monumentais, branding minimalista moderno."
+      },
+      "de": {
+        "description_md": "**Kufi** (كوفي) ist die älteste arabische Schrift, benannt nach der irakischen Stadt Kufa. Geometrisch, kantig und ausgesprochen architektonisch — die Schrift der frühesten Koranhandschriften sowie eines Großteils mittelalterlicher Münzen und Fliesen. Moderne Gestalter haben ihr in Logos und Beschilderung ein zweites Leben gegeben.\n\n**Verwendung:** Münzen, Fliesenarbeit, Monumentalinschriften, minimalistisches modernes Branding."
+      }
+    }
   }
 ]

@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "ตัวอักษร",
+    "words": "คำ",
+    "styles": "รูปแบบ"
+  },
+  "examples": {
+    "empty_for_letter": "ยังไม่มีตัวอย่างคำสำหรับอักษรนี้",
+    "tap_phrase_hint": "แตะที่ประโยคเพื่อฟัง",
+    "tap_word_hint": "แตะที่คำเพื่อฟัง",
+    "heading_curated": "คำที่มีอักษรนี้",
+    "heading_corpus": "ประโยคจากคลังข้อความ"
+  },
+  "word_picker": {
+    "hint": "แตะที่คำเพื่อลากตามรอย"
+  },
+  "form": {
+    "isolated": "เดี่ยว",
+    "initial": "ต้น",
+    "medial": "กลาง",
+    "final": "ท้าย"
+  },
+  "stroke": {
+    "singular": "เส้น",
+    "plural": "เส้น"
+  },
+  "letter": {
+    "singular": "ตัวอักษร",
+    "plural": "ตัวอักษร"
+  },
+  "aria": {
+    "tutorial": "บทเรียน",
+    "play": "เล่น",
+    "brush": "ตั้งค่าพู่กัน",
+    "free_draw": "วาดอิสระ",
+    "hints": "เส้นช่วย",
+    "clear": "ล้าง",
+    "exit": "ออก"
+  },
+  "lesson": {
+    "step": "ขั้นที่ {{n}} จาก {{total}}",
+    "back": "ย้อนกลับ",
+    "skip": "ข้ามแนะนำ",
+    "next": "ถัดไป",
+    "begin": "เริ่ม"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "mode": {
+    "letters": "અક્ષરો",
+    "words": "શબ્દો",
+    "styles": "શૈલીઓ"
+  },
+  "examples": {
+    "empty_for_letter": "આ અક્ષર માટે હજુ ઉદાહરણ શબ્દો નથી.",
+    "tap_phrase_hint": "વાક્ય સાંભળવા માટે ટૅપ કરો",
+    "tap_word_hint": "શબ્દ સાંભળવા માટે ટૅપ કરો",
+    "heading_curated": "આ અક્ષરવાળા શબ્દો",
+    "heading_corpus": "કોર્પસમાંથી વાક્યો"
+  },
+  "word_picker": {
+    "hint": "શબ્દ ટ્રેસ કરવા ટૅપ કરો"
+  },
+  "form": {
+    "isolated": "એકલી",
+    "initial": "પ્રારંભિક",
+    "medial": "મધ્ય",
+    "final": "અંતિમ"
+  },
+  "stroke": {
+    "singular": "લીટી",
+    "plural": "લીટીઓ"
+  },
+  "letter": {
+    "singular": "અક્ષર",
+    "plural": "અક્ષરો"
+  },
+  "aria": {
+    "tutorial": "ટ્યુટોરિયલ",
+    "play": "ચલાવો",
+    "brush": "બ્રશ સેટિંગ્સ",
+    "free_draw": "મુક્ત રેખાંકન",
+    "hints": "માર્ગદર્શિકા",
+    "clear": "સાફ કરો",
+    "exit": "બહાર નીકળો"
+  },
+  "lesson": {
+    "step": "{{total}}માંથી પગલું {{n}}",
+    "back": "પાછળ",
+    "skip": "પરિચય છોડો",
+    "next": "આગળ",
+    "begin": "શરૂ કરો"
+  }
+}
