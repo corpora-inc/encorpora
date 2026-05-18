@@ -238,7 +238,14 @@ def upload_video(
     made_for_kids: bool,
     progress_cb=None,
 ) -> str:
-    """videos.insert (resumable) — 1600 units. Returns video_id."""
+    """videos.insert (resumable) — observed cost ~100 units. Returns video_id.
+
+    Google's "Quota Calculator" doc historically reported 1600 for videos.insert,
+    and many third-party guides still cite that number. The live quota meter in
+    the GCP console measures ~100 in practice (confirmed 2026-05-17). Default
+    10,000/day budget → roughly 80-100 uploads/day, not the ~6 the 1600-figure
+    would imply.
+    """
     body = {
         "snippet": {
             "title": title,

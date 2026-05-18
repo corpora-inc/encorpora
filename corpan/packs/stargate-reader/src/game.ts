@@ -17,7 +17,7 @@ import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type Med
 import { createWaveformCache, type WaveformCache } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
-import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
+import { createBookmarkStore, createBookMetaStore, type Bookmark, drawerStore } from "@shared/state"
 import { createPrefsStore } from "@shared/state"
 import * as analytics from "@shared/analytics"
 import {
@@ -61,6 +61,7 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
 }
 
 const bookmarks = createBookmarkStore("stargate-reader")
+const bookMeta = createBookMetaStore("stargate-reader")
 const prefsStore = createPrefsStore("stargate-reader-prefs", STARGATE_PREFS_DEFAULTS)
 
 type ReaderNativeCommand = "play" | "pause" | "skipForward" | "skipBack" | "seek" | "prevChapter" | "nextChapter"
@@ -791,6 +792,16 @@ export function createStargateReader(
   // --- Transport bar ---
   const transport = createTransportBar(ui, "stargate")
   transport.setBookTitle(bookDisplayName)
+  // Reserve a line for the chapter title if we've seen this book
+  // before and know it's chaptered, so the transport doesn't jerk
+  // when the async-loaded chapter title arrives. First-ever read of a
+  // brand-new book has no cache and accepts one small shift; every
+  // subsequent mount (notably language switches) is stable from
+  // frame one.
+  const cachedMeta = bookMeta.load(bookId)
+  if (cachedMeta?.hasChapters) {
+    transport.setHasChapters(true)
+  }
 
   transport.onPlay(() => {
     void doPlay()
@@ -1231,6 +1242,15 @@ export function createStargateReader(
       // Build chapter index
       chapters = buildChapterIndex(segments)
 
+      // Update the per-book hasChapters cache so the *next* mount of
+      // this book reserves (or doesn't) the chapter title row before
+      // segments load.
+      const hasChapters = chapters.length > 1
+      transport.setHasChapters(hasChapters)
+      if (cachedMeta?.hasChapters !== hasChapters) {
+        bookMeta.save(bookId, { ...cachedMeta, hasChapters })
+      }
+
       // Build timeline
       const timeline = buildTimeline(segments, manifest)
       timelineWords = timeline.words
@@ -1299,7 +1319,12 @@ export function createStargateReader(
       scene.setRenderingAutoClearDepthStencil(1, true, true, true)
       scene.setRenderingAutoClearDepthStencil(2, true, true, true)
 
-      transport.setChapter(segments[0]?.title || "Ready")
+      // Empty for chapterless books — `.stargate-chapter-title:empty`
+      // collapses the row so the book title stays vertically centered
+      // against the time. Don't fall back to a status string like
+      // "Ready"; it would flicker on language switches and shrink to
+      // empty on first play.
+      transport.setChapter(segments[0]?.title || "")
 
       // Set chapter markers on scrub bar
       if (audioEngine && chapters.length > 0) {

@@ -433,6 +433,15 @@ body {
   text-overflow: ellipsis;
 }
 
+/* Chapterless books leave this empty; collapse cleanly so the book
+   title above (`.stargate-book-prefix`) sits alone in the chapter
+   column and centers vertically against the time on the right.
+   Matches the `:empty { display: none }` treatment on
+   `.stargate-book-prefix`. */
+.stargate-chapter-title:empty {
+  display: none;
+}
+
 /* --- Time display --- */
 
 .stargate-time {

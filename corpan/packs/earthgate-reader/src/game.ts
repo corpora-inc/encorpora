@@ -6,7 +6,7 @@ import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider
 import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor, getMediaSessionArtworkUrl } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
-import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
+import { createBookmarkStore, createBookMetaStore, type Bookmark, drawerStore } from "@shared/state"
 import * as analytics from "@shared/analytics"
 import {
   startNativeKeepAlive,
@@ -19,6 +19,7 @@ import {
 import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
 
 const bookmarks = createBookmarkStore("earthgate-reader")
+const bookMeta = createBookMetaStore("earthgate-reader")
 
 type TauriBridgeWindow = Window & {
   __TAURI_INTERNALS__?: unknown
@@ -460,6 +461,16 @@ export function createEarthgateReader(
   // Transport bar
   const transport = createTransportBar(ui, "earthgate")
   transport.setBookTitle(bookDisplayName)
+  // Reserve a line for the chapter title if we've seen this book
+  // before and know it's chaptered. Without this, the transport's
+  // layout shifts when the async-loaded chapter title arrives — most
+  // noticeably on language switches, where the controls visibly jerk.
+  // First-ever read of a brand-new book has no cache and accepts one
+  // small shift; subsequent mounts are stable from frame one.
+  const cachedMeta = bookMeta.load(bookId)
+  if (cachedMeta?.hasChapters) {
+    transport.setHasChapters(true)
+  }
 
   // --- Swipe navigation ---
   paragraphView.onNext(() => {
@@ -863,6 +874,15 @@ export function createEarthgateReader(
       drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName } })
 
       chapters = buildChapterIndex(segments)
+
+      // Update the per-book hasChapters cache so the *next* mount of
+      // this book reserves (or doesn't) the chapter title row before
+      // segments load.
+      const hasChapters = chapters.length > 1
+      transport.setHasChapters(hasChapters)
+      if (cachedMeta?.hasChapters !== hasChapters) {
+        bookMeta.save(bookId, { ...cachedMeta, hasChapters })
+      }
 
       const timeline = buildTimeline(segments, manifest)
       timelineWords = timeline.words

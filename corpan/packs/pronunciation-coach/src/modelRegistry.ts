@@ -290,13 +290,13 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo-q5_0.bin",
     label: "Large Turbo q5",
     shortDesc:
-      "The smallest 'Large.' Whisper's speedy distilled decoder, weights crushed to 5 bits. Snappy on iPhone.",
+      "The smallest 'Large.' Whisper's speedy distilled decoder, weights crushed to 5 bits.",
     pros: [
       "Smallest of the Large family",
-      "Fast on iOS",
+      "Snappy on iOS; the q8 variant is the equivalent pick on Android",
     ],
     cons: [
-      "Slow on Android",
+      "Slow on Android (5-bit math doesn't play well with Android CPUs — try the q8 Turbo instead)",
       "Distilled decoder is weaker on Telugu / Tamil / other non-Latin scripts",
     ],
     approxSizeMB: 547,
@@ -308,11 +308,11 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo-q8_0.bin",
     label: "Large Turbo q8",
     shortDesc:
-      "Same Turbo distillation as q5, but at 8-bit precision — math your phone's CPU prefers. Sweet spot for Android.",
+      "Same Turbo distillation as q5, but at 8-bit precision — math most CPUs prefer. The Turbo sweet spot on Android.",
     pros: [
       "~2.5× faster than q5 on Android",
       "Better quality than q5",
-      "Solid pick on iOS too",
+      "Works well on iOS too",
     ],
     cons: [
       "Bigger download than q5",
@@ -373,13 +373,14 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-turbo.bin",
     label: "Full Weight Large Turbo",
     shortDesc:
-      "Whisper's speedy Turbo distillation at full 16-bit precision. Hits Metal's fp16 fast path on iPad, so it's quick despite the size.",
+      "Whisper's speedy Turbo distillation at full 16-bit precision. Where the GPU fp16 fast path is available, it's quick despite the size.",
     pros: [
-      "Fastest 'Large' on iPad (Metal fp16 fast path)",
+      "Fastest 'Large' on iOS (Metal fp16 fast path)",
       "Top quality for Latin-script languages",
     ],
     cons: [
       "1.5 GB download",
+      "CPU-only on Android, so slower there",
       "Same Turbo weakness on Indic — Large q5 or q8 is better for those",
     ],
     approxSizeMB: 1549,
@@ -404,7 +405,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     folder: "ggml-large-v3-q8_0.bin",
     label: "Large q8 ★",
     shortDesc:
-      "The biggest, baddest model that still fits on iPad — full Whisper Large at 8-bit precision (we quantize this one ourselves from the original fp16, since upstream doesn't ship it). Should be the new best for Indic and other non-Latin-script languages.",
+      "The biggest, baddest model that still fits in app memory — full Whisper Large at 8-bit precision (we quantize this one ourselves from the original fp16, since upstream doesn't ship it). Should be the new best for Indic and other non-Latin-script languages.",
     pros: [
       "Higher precision than Large q5, same full 32-layer decoder",
       "Expected best quality for Telugu, Tamil, Bengali, etc.",
@@ -412,7 +413,7 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     cons: [
       "~1.6 GB download",
       "Slower than Turbo and a bit slower than Large q5",
-      "Needs ~3 GB RAM headroom during first transcribe (iPad-class only)",
+      "Needs ~3 GB RAM headroom during first transcribe",
     ],
     approxSizeMB: 1580,
     defaultForFreshInstall: false,

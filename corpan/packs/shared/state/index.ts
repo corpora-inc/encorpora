@@ -1,6 +1,9 @@
 export type { Bookmark, BookmarkStore } from "./bookmarkStore"
 export { createBookmarkStore } from "./bookmarkStore"
 
+export type { BookMeta, BookMetaStore } from "./bookMetaStore"
+export { createBookMetaStore } from "./bookMetaStore"
+
 export type { PrefsStore } from "./prefsStore"
 export { createPrefsStore } from "./prefsStore"
 

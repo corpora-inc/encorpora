@@ -9,6 +9,25 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Fixed
+- Transport bar no longer shows a `"Ready"` placeholder for
+  chapterless books, and no longer flickers a stale chapter string
+  when switching languages. The `|| "Ready"` fallback on
+  `transport.setChapter` was a regression — the same bug was already
+  fixed in earthgate-reader 0.6.3. Stargate now passes `""` for the
+  chapterless case, and `.stargate-chapter-title:empty` collapses the
+  row so the book title stays vertically centered against the time.
+- Transport controls no longer jerk down when the chapter title
+  arrives async for chaptered books. New per-book `hasChapters` cache
+  in localStorage; on mount the reader reads it synchronously and
+  asks the transport to reserve a line (via a non-breaking-space
+  placeholder so `:empty` doesn't collapse the row), then verifies +
+  rewrites the cache after segments load. First-ever read of a
+  brand-new chaptered book still has one small shift when the title
+  resolves; every subsequent mount, including language switches, is
+  stable from frame one. Chapterless books reserve no space and keep
+  the book title vertically centered against the time, as before.
+
 ### Added
 - Catalog now prioritizes the user's stack languages. Book cards render
   every stack-matched language as an accent pill + a "+N more" chip for

@@ -2,6 +2,16 @@ export type TransportBar = {
   setPlaying: (playing: boolean) => void
   setBookTitle: (title: string) => void
   setChapter: (title: string) => void
+  /**
+   * Reserve (or release) a line of vertical space for the chapter
+   * title. Call with `true` for books known to have chapters so the
+   * transport doesn't jerk when the title arrives async. Call with
+   * `false` for chapterless books so the book title stays vertically
+   * centered against the time. Readers should call this synchronously
+   * (from a per-book cache) immediately after `createTransportBar`,
+   * then again with the verified value once segments load.
+   */
+  setHasChapters: (value: boolean) => void
   setTime: (currentMs: number, totalMs: number) => void
   setProgress: (fraction: number) => void
   setChapterMarkers: (fractions: number[]) => void
@@ -76,8 +86,37 @@ export function createTransportBar(parent: HTMLElement, classPrefix: string): Tr
 
   const chapterTitle = document.createElement("span")
   chapterTitle.className = `${classPrefix}-chapter-title`
-  chapterTitle.textContent = "Loading\u2026"
+  // Start empty \u2014 chapterless books and the brief window before the
+  // reader's async initialize() resolves both collapse cleanly via
+  // `:empty { display: none }`. A "Loading\u2026" placeholder here would
+  // flicker for a split second on every language switch (mountReader
+  // creates a fresh transport before the new segments load).
+  //
+  // For chaptered books, the reader calls `setHasChapters(true)` from
+  // a per-book cache right after creating the transport \u2014 that swaps
+  // the empty content for a non-breaking space, which reserves a line
+  // of vertical space so the real title can drop in without shifting
+  // the controls below.
+  chapterTitle.textContent = ""
   chapterLabel.appendChild(chapterTitle)
+
+  // The "real" chapter title (or "" when there is none). Tracked
+  // separately from chapterTitle.textContent because the DOM may hold
+  // a `\u00a0` placeholder while space is reserved but no chapter is
+  // known yet.
+  let currentChapterTitle = ""
+  let chaptersReserved = false
+  function applyChapterText(): void {
+    if (currentChapterTitle) {
+      chapterTitle.textContent = currentChapterTitle
+    } else if (chaptersReserved) {
+      // nbsp keeps the element non-empty so `:empty { display: none }`
+      // doesn't collapse the row \u2014 reserving a line of vertical space.
+      chapterTitle.textContent = "\u00a0"
+    } else {
+      chapterTitle.textContent = ""
+    }
+  }
 
   topRow.appendChild(chapterLabel)
 
@@ -219,7 +258,13 @@ export function createTransportBar(parent: HTMLElement, classPrefix: string): Tr
     },
 
     setChapter(title: string) {
-      chapterTitle.textContent = title
+      currentChapterTitle = title
+      applyChapterText()
+    },
+
+    setHasChapters(value: boolean) {
+      chaptersReserved = value
+      applyChapterText()
     },
 
     setTime(currentMs: number, totalMs: number) {

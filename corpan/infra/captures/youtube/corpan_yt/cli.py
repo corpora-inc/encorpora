@@ -1,8 +1,9 @@
 """`corpan-yt` — programmatic YouTube CLI for the @corpán1 channel.
 
 Quota costs printed per call so you can watch the 10,000/day budget drain.
-videos.insert is 1600 units (≈6 uploads/day default); everything else is
-1–50 units.
+videos.insert is ~100 units in practice (≈80-100 uploads/day default);
+older docs cite 1600 but the live GCP meter measures ~100. Everything
+else is 1–50 units.
 
 Typical day-of:
     corpan-yt auth                   # one-time browser consent
@@ -214,7 +215,7 @@ def upload(built_dir: Path, variant: str | None, privacy: str | None, dry_run: b
         made_for_kids=made_for_kids,
         progress_cb=progress,
     )
-    total_cost += 1600
+    total_cost += 100  # observed live cost of videos.insert (not the 1600 some docs cite)
     click.echo(f"OK uploaded: https://youtu.be/{video_id}")
 
     thumb_ok = False

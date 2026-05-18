@@ -3054,9 +3054,9 @@ export const mountGame = (
         console.warn(
           "%c[pronunciation-coach] STALE PLUGIN DETECTED",
           "background:#9333ea;color:#fff;padding:2px 6px;border-radius:4px;font-weight:600",
-          "\nThe iOS app is running an old tauri-plugin-stt binary (no `code` field on errors, no marker file).",
+          "\nThe host app is running an old tauri-plugin-stt binary (no `code` field on errors, no marker file).",
           "\nValidateModel false-negatives in that build trigger destructive wipes on every Install click.",
-          "\nFix: rebuild and resideload the iOS app (cargo tauri ios dev) to pick up the marker-file fix.",
+          "\nFix: rebuild and reinstall the host app (cargo tauri ios dev / android dev) to pick up the marker-file fix.",
         )
       }
     }

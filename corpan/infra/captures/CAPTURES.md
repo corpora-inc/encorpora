@@ -141,32 +141,60 @@ pollution, no `--break-system-packages`).
 | `corpan-yt whoami` | 1 | Print authorized channel id / title / handle. |
 | `corpan-yt list -n 25` | 1–2 | Recent uploads. |
 | `corpan-yt get <video_id>` | 1 | JSON dump of metadata. |
-| `corpan-yt upload <built-dir>` | 1700 | insert (1600) + thumbnail (50) + playlist (50). |
+| `corpan-yt upload <built-dir>` | ~200 | insert (~100, live-meter; some docs say 1600 but that's outdated) + thumbnail (50) + playlist (1-50, dedupes). |
 | `corpan-yt patch <video_id> ...` | 51–151 | Update title/description/tags/thumbnail/playlist on an existing video. |
 | `corpan-yt set-thumbnail <id> <jpg>` | 50 | Thumbnail only. |
 | `corpan-yt publish <id> [--to public]` | 51 | Flip privacy. |
 | `corpan-yt playlist {ls,create,add}` | 1–50 | Playlist mgmt. |
 | `corpan-yt config-paths` | 0 | Print where creds + tokens live. |
 
-### Quota math (READ THIS)
+### Quota math (READ THIS — corrected 2026-05-17)
 
 - Default project quota: **10,000 units/day**, reset midnight Pacific.
-- `videos.insert` = **1,600 units** → **~6 uploads/day** before quota error.
-- Everything else is 1–50 units; many tweaks possible per day.
+- `videos.insert` (the upload itself): **observed ~100 units in the live
+  GCP meter**, *not* the 1,600 most docs and third-party guides quote.
+  Confirmed against the GCP Console quota dashboard on 2026-05-17 after
+  5 real uploads landed the meter at 1,357 units total.
+- `videos.update`, `thumbnails.set`, `playlistItems.insert`, `channels.update`
+  = 50 units each.
+- All reads (`videos.list`, `playlistItems.list`, `channels.list`,
+  `search.list`) = 1 unit each.
 
-Strategy for >6 uploads/day until a quota increase comes through:
+Practical implications:
 
-1. Upload the first 6 of the day via `corpan-yt upload` (full metadata,
-   thumbnail, playlist, all in one).
-2. For the rest: Ian (or you) uploads `long.mp4` manually in YouTube
-   Studio. Grab the resulting video URL. Then:
-   ```
-   corpan-yt patch <video_id> --from-meta built/.../meta.json --thumbnail built/.../thumb.jpg
-   ```
-   ~150 units per — room for 60+ patches/day.
-3. **File a quota-increase request today**: Google Cloud Console →
-   *YouTube Data API v3* → *Quotas* → *All quotas* → *Apply for higher
-   quota*. Turnaround is usually days; it's the right long-term fix.
+- A full `corpan-yt upload` (insert + thumbnail + playlist add) is **~200
+  units**, not the 1,700 my CLI originally printed. So default budget =
+  **roughly 50–80 uploads/day**, not 6.
+- For Corpán Captures cadence (10–60 captures/day, ≤3 variants each),
+  the default 10,000-unit allotment is comfortable.
+- A quota extension request becomes worthwhile only above ~80 uploads/day,
+  e.g. if you start running the pipeline for multiple channels or burst
+  hundreds of variants for a campaign. To file: GCP Console → *YouTube
+  Data API v3* → *Quotas & System Limits* → "Queries per day" row →
+  "Apply for higher quota". Audit + ~1–2 week turnaround.
+
+### Channel-side upload limit (separate from API quota!)
+
+YouTube enforces a **per-channel daily upload cap** that's independent of
+the API quota. New / low-trust channels typically get **10–15 uploads/day**
+regardless of phone verification. The error looks like:
+
+```
+HttpError 400 ... "The user has exceeded the number of videos they may upload."
+reason: 'uploadLimitExceeded', domain: 'youtube.video'
+```
+
+Confirmed on `@CorpanCaptures` on 2026-05-17: the 11th upload of the
+day was rejected. Builds for that day's overflow live locally + on S3
+and can be uploaded after midnight Pacific (or as the limit lifts).
+
+The cap raises over time as the channel:
+- Accumulates upload history without strikes
+- Gets views / engagement
+- Survives a few days
+
+There's no API-side workaround. Plan accordingly: 10–15 uploads/day for
+the first weeks, then it loosens.
 
 ### Refresh-token expiry — 7-day Testing-mode trap
 
