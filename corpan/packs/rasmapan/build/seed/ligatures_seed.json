@@ -1,0 +1,22 @@
+[
+  {
+    "id": "lam-alif",
+    "letters": ["laam", "alif"],
+    "position": "isolated",
+    "unicode_hex": "FEFB",
+    "transliteration": "lā",
+    "notes": {
+      "en": "Lam-alif. The combination of laam (ل) + alif (ا), written as a single fused glyph (لا). It is the Arabic word for 'no'. Because alif is a non-connector, this is the only way these two letters can appear together."
+    }
+  },
+  {
+    "id": "lam-alif.final",
+    "letters": ["laam", "alif"],
+    "position": "final",
+    "unicode_hex": "FEFC",
+    "transliteration": "lā",
+    "notes": {
+      "en": "Lam-alif in its final form — used when the preceding letter connects into the laam (e.g. in 'فلا' = 'so no')."
+    }
+  }
+]

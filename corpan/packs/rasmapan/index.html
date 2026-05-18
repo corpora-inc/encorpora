@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Rasmapan</title>
+  </head>
+  <body>
+    <div id="corpan-game-root"></div>
+    <!-- main.js registers rasmapan on window.CorpanGames. dev-mount.js
+         then loads sql.js + arabic.sqlite3 and mounts the pack with a
+         mock hostApi. Both are dev-only: vite library mode bundles
+         only src/main.js. -->
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/dev-mount.js"></script>
+  </body>
+</html>

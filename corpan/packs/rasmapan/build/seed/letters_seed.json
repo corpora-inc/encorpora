@@ -1,0 +1,522 @@
+[
+  {
+    "id": "alif",
+    "name_ar": "ألف",
+    "name_en": "alif",
+    "tags": ["non-connector", "vowel-carrier"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 100,
+    "positions": {
+      "isolated": "0627",
+      "final": "FE8E"
+    },
+    "notes": {
+      "en": "Alif. The first letter. A tall vertical stroke. Often carries the long /aa/ vowel or hosts the hamza (ء). Does not connect to the letter that follows it (going left in RTL), so it always ends a word-segment.",
+      "ar": "ألف. أول حروف الهجاء. تكتب خطًا عموديًا. لا تتصل بما بعدها."
+    }
+  },
+  {
+    "id": "baa",
+    "name_ar": "باء",
+    "name_en": "baa",
+    "tags": ["connector", "one-dot-below"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 95,
+    "positions": {
+      "isolated": "FE8F",
+      "final": "FE90",
+      "initial": "FE91",
+      "medial": "FE92"
+    },
+    "notes": {
+      "en": "Baa. A shallow bowl with one dot below. Connects on both sides — so it has four positional forms.",
+      "ar": "باء. كأس مع نقطة تحتها. تتصل من الجانبين."
+    }
+  },
+  {
+    "id": "taa",
+    "name_ar": "تاء",
+    "name_en": "taa",
+    "tags": ["connector", "two-dots-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 92,
+    "positions": {
+      "isolated": "FE95",
+      "final": "FE96",
+      "initial": "FE97",
+      "medial": "FE98"
+    },
+    "notes": {
+      "en": "Taa. Same body shape as baa, but with two dots above instead of one below. /t/ sound.",
+      "ar": "تاء. مثل الباء في الشكل لكن النقطتان فوقها."
+    }
+  },
+  {
+    "id": "thaa",
+    "name_ar": "ثاء",
+    "name_en": "thaa",
+    "tags": ["connector", "three-dots-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 50,
+    "positions": {
+      "isolated": "FE99",
+      "final": "FE9A",
+      "initial": "FE9B",
+      "medial": "FE9C"
+    },
+    "notes": {
+      "en": "Thaa. Same body as baa and taa, but with three dots above. Pronounced like the /th/ in 'think'.",
+      "ar": "ثاء. ثلاث نقاط فوق نفس شكل الباء."
+    }
+  },
+  {
+    "id": "jiim",
+    "name_ar": "جيم",
+    "name_en": "jiim",
+    "tags": ["connector", "one-dot-below"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 70,
+    "positions": {
+      "isolated": "FE9D",
+      "final": "FE9E",
+      "initial": "FE9F",
+      "medial": "FEA0"
+    },
+    "notes": {
+      "en": "Jiim. A deep curve with a dot inside (below the curve). /j/ sound in standard Arabic. The Egyptian dialect pronounces it as a hard /g/.",
+      "ar": "جيم. منحنى مع نقطة في الوسط."
+    }
+  },
+  {
+    "id": "Haa",
+    "name_ar": "حاء",
+    "name_en": "Haa",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 80,
+    "positions": {
+      "isolated": "FEA1",
+      "final": "FEA2",
+      "initial": "FEA3",
+      "medial": "FEA4"
+    },
+    "notes": {
+      "en": "Haa. Same shape as jiim but without any dot. A guttural /h/ sound made deeper in the throat than English h.",
+      "ar": "حاء. مثل الجيم بدون نقطة."
+    }
+  },
+  {
+    "id": "khaa",
+    "name_ar": "خاء",
+    "name_en": "khaa",
+    "tags": ["connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 55,
+    "positions": {
+      "isolated": "FEA5",
+      "final": "FEA6",
+      "initial": "FEA7",
+      "medial": "FEA8"
+    },
+    "notes": {
+      "en": "Khaa. Same shape as jiim and Haa, with one dot above. /kh/ as in Scottish 'loch' or German 'Bach'.",
+      "ar": "خاء. مثل الحاء مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "daal",
+    "name_ar": "دال",
+    "name_en": "daal",
+    "tags": ["non-connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 78,
+    "positions": {
+      "isolated": "FEA9",
+      "final": "FEAA"
+    },
+    "notes": {
+      "en": "Daal. A small angular hook. /d/ sound. Does not connect to the letter that follows it.",
+      "ar": "دال. خطاف صغير. لا تتصل بما بعدها."
+    }
+  },
+  {
+    "id": "dhaal",
+    "name_ar": "ذال",
+    "name_en": "dhaal",
+    "tags": ["non-connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 45,
+    "positions": {
+      "isolated": "FEAB",
+      "final": "FEAC"
+    },
+    "notes": {
+      "en": "Dhaal. Same shape as daal with one dot above. /th/ sound as in 'this'.",
+      "ar": "ذال. مثل الدال مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "raa",
+    "name_ar": "راء",
+    "name_en": "raa",
+    "tags": ["non-connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 88,
+    "positions": {
+      "isolated": "FEAD",
+      "final": "FEAE"
+    },
+    "notes": {
+      "en": "Raa. A descending curve that dips below the baseline. Rolled /r/, like in Spanish or Italian. Does not connect to the letter that follows it.",
+      "ar": "راء. منحنى ينزل تحت السطر. لا تتصل بما بعدها."
+    }
+  },
+  {
+    "id": "zaay",
+    "name_ar": "زاي",
+    "name_en": "zaay",
+    "tags": ["non-connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 40,
+    "positions": {
+      "isolated": "FEAF",
+      "final": "FEB0"
+    },
+    "notes": {
+      "en": "Zaay. Same shape as raa with one dot above. /z/ sound.",
+      "ar": "زاي. مثل الراء مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "siin",
+    "name_ar": "سين",
+    "name_en": "siin",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 82,
+    "positions": {
+      "isolated": "FEB1",
+      "final": "FEB2",
+      "initial": "FEB3",
+      "medial": "FEB4"
+    },
+    "notes": {
+      "en": "Siin. Three teeth followed by a tail bowl. /s/ sound.",
+      "ar": "سين. ثلاث أسنان متبوعة بكأس."
+    }
+  },
+  {
+    "id": "shiin",
+    "name_ar": "شين",
+    "name_en": "shiin",
+    "tags": ["connector", "three-dots-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 60,
+    "positions": {
+      "isolated": "FEB5",
+      "final": "FEB6",
+      "initial": "FEB7",
+      "medial": "FEB8"
+    },
+    "notes": {
+      "en": "Shiin. Same shape as siin with three dots above. /sh/ sound.",
+      "ar": "شين. مثل السين مع ثلاث نقاط فوقها."
+    }
+  },
+  {
+    "id": "Saad",
+    "name_ar": "صاد",
+    "name_en": "Saad",
+    "tags": ["connector", "no-dots", "emphatic"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 55,
+    "positions": {
+      "isolated": "FEB9",
+      "final": "FEBA",
+      "initial": "FEBB",
+      "medial": "FEBC"
+    },
+    "notes": {
+      "en": "Saad. An emphatic /s/ — produced with the tongue lower and the throat slightly constricted. Looks like an open loop followed by a tail.",
+      "ar": "صاد. حلقة مفتوحة مع ذيل."
+    }
+  },
+  {
+    "id": "Daad",
+    "name_ar": "ضاد",
+    "name_en": "Daad",
+    "tags": ["connector", "one-dot-above", "emphatic"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 50,
+    "positions": {
+      "isolated": "FEBD",
+      "final": "FEBE",
+      "initial": "FEBF",
+      "medial": "FEC0"
+    },
+    "notes": {
+      "en": "Daad. Same shape as Saad with one dot above. Emphatic /d/. Considered the signature sound of Arabic — Arabic is sometimes called 'the language of Daad' (لغة الضاد).",
+      "ar": "ضاد. حرف العربية المميز. مثل الصاد مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "Taa",
+    "name_ar": "طاء",
+    "name_en": "Taa",
+    "tags": ["connector", "no-dots", "emphatic"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 60,
+    "positions": {
+      "isolated": "FEC1",
+      "final": "FEC2",
+      "initial": "FEC3",
+      "medial": "FEC4"
+    },
+    "notes": {
+      "en": "Taa (emphatic). An emphatic /t/. The letter looks like a loop with a tall vertical stroke beside it.",
+      "ar": "طاء. حرف مفخم. حلقة وعمود."
+    }
+  },
+  {
+    "id": "DHaa",
+    "name_ar": "ظاء",
+    "name_en": "DHaa",
+    "tags": ["connector", "one-dot-above", "emphatic"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 35,
+    "positions": {
+      "isolated": "FEC5",
+      "final": "FEC6",
+      "initial": "FEC7",
+      "medial": "FEC8"
+    },
+    "notes": {
+      "en": "DHaa. Same shape as Taa (emphatic) with one dot above. Emphatic /th/ as in 'this'.",
+      "ar": "ظاء. مثل الطاء مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "ain",
+    "name_ar": "عين",
+    "name_en": "ain",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 85,
+    "positions": {
+      "isolated": "FEC9",
+      "final": "FECA",
+      "initial": "FECB",
+      "medial": "FECC"
+    },
+    "notes": {
+      "en": "Ain. A uniquely Arabic consonant — a voiced pharyngeal sound produced deep in the throat. Often transliterated with a forward apostrophe (ʿ). No equivalent in English.",
+      "ar": "عين. حرف عربي مميز ينطق من أقصى الحلق."
+    }
+  },
+  {
+    "id": "ghain",
+    "name_ar": "غين",
+    "name_en": "ghain",
+    "tags": ["connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 45,
+    "positions": {
+      "isolated": "FECD",
+      "final": "FECE",
+      "initial": "FECF",
+      "medial": "FED0"
+    },
+    "notes": {
+      "en": "Ghain. Same shape as ain with one dot above. A sound similar to the French 'r' in 'Paris', a voiced gargling sound.",
+      "ar": "غين. مثل العين مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "faa",
+    "name_ar": "فاء",
+    "name_en": "faa",
+    "tags": ["connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 75,
+    "positions": {
+      "isolated": "FED1",
+      "final": "FED2",
+      "initial": "FED3",
+      "medial": "FED4"
+    },
+    "notes": {
+      "en": "Faa. A small circle with a dot above and a tail. /f/ sound.",
+      "ar": "فاء. حلقة مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "qaaf",
+    "name_ar": "قاف",
+    "name_en": "qaaf",
+    "tags": ["connector", "two-dots-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 72,
+    "positions": {
+      "isolated": "FED5",
+      "final": "FED6",
+      "initial": "FED7",
+      "medial": "FED8"
+    },
+    "notes": {
+      "en": "Qaaf. Looks similar to faa but with two dots above and a deeper tail that drops below the line. A uvular /q/ — produced at the back of the throat.",
+      "ar": "قاف. مثل الفاء مع نقطتين وذيل أعمق."
+    }
+  },
+  {
+    "id": "kaaf",
+    "name_ar": "كاف",
+    "name_en": "kaaf",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 80,
+    "positions": {
+      "isolated": "FED9",
+      "final": "FEDA",
+      "initial": "FEDB",
+      "medial": "FEDC"
+    },
+    "notes": {
+      "en": "Kaaf. /k/ sound. The isolated form has a small inner mark (the kaaf 'kashida').",
+      "ar": "كاف. مع علامة داخلية في الشكل المستقل."
+    }
+  },
+  {
+    "id": "laam",
+    "name_ar": "لام",
+    "name_en": "laam",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 95,
+    "positions": {
+      "isolated": "FEDD",
+      "final": "FEDE",
+      "initial": "FEDF",
+      "medial": "FEE0"
+    },
+    "notes": {
+      "en": "Laam. /l/ sound. Pairs with alif to form the famous ligature 'lam-alif' (لا), which means 'no'.",
+      "ar": "لام. تتصل مع الألف لتكوّن (لا)."
+    }
+  },
+  {
+    "id": "miim",
+    "name_ar": "ميم",
+    "name_en": "miim",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 90,
+    "positions": {
+      "isolated": "FEE1",
+      "final": "FEE2",
+      "initial": "FEE3",
+      "medial": "FEE4"
+    },
+    "notes": {
+      "en": "Miim. /m/ sound. A small circle (the head) followed by a tail that descends below the line in isolated and final forms.",
+      "ar": "ميم. حلقة وذيل ينزل تحت السطر."
+    }
+  },
+  {
+    "id": "nuun",
+    "name_ar": "نون",
+    "name_en": "nuun",
+    "tags": ["connector", "one-dot-above"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 92,
+    "positions": {
+      "isolated": "FEE5",
+      "final": "FEE6",
+      "initial": "FEE7",
+      "medial": "FEE8"
+    },
+    "notes": {
+      "en": "Nuun. /n/ sound. A deeper bowl than baa with one dot above. Initial and medial forms look identical to baa/taa/thaa — the dot tells them apart.",
+      "ar": "نون. كأس عميق مع نقطة فوقها."
+    }
+  },
+  {
+    "id": "haa",
+    "name_ar": "هاء",
+    "name_en": "haa",
+    "tags": ["connector", "no-dots"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 85,
+    "positions": {
+      "isolated": "FEE9",
+      "final": "FEEA",
+      "initial": "FEEB",
+      "medial": "FEEC"
+    },
+    "notes": {
+      "en": "Haa (light h). /h/ sound, lighter than Haa (the emphatic). Shape varies dramatically across its four positions — the medial form is a small loop, the initial is a top loop.",
+      "ar": "هاء. شكلها يتغيّر كثيرًا بحسب موضعها."
+    }
+  },
+  {
+    "id": "waaw",
+    "name_ar": "واو",
+    "name_en": "waaw",
+    "tags": ["non-connector", "no-dots", "vowel-carrier"],
+    "connects_before": true,
+    "connects_after": false,
+    "frequency": 90,
+    "positions": {
+      "isolated": "FEED",
+      "final": "FEEE"
+    },
+    "notes": {
+      "en": "Waaw. A small loop with a descending tail. Carries the long /uu/ vowel and also serves as /w/. Does not connect to the letter that follows it.",
+      "ar": "واو. حلقة مع ذيل. لا تتصل بما بعدها."
+    }
+  },
+  {
+    "id": "yaa",
+    "name_ar": "ياء",
+    "name_en": "yaa",
+    "tags": ["connector", "two-dots-below"],
+    "connects_before": true,
+    "connects_after": true,
+    "frequency": 90,
+    "positions": {
+      "isolated": "FEF1",
+      "final": "FEF2",
+      "initial": "FEF3",
+      "medial": "FEF4"
+    },
+    "notes": {
+      "en": "Yaa. The 28th letter. Carries the long /ii/ vowel and also serves as /y/. Initial and medial forms look like baa with two dots below; isolated and final forms have a deeper descending tail.",
+      "ar": "ياء. آخر حروف الهجاء. تحمل الياء الطويلة."
+    }
+  }
+]

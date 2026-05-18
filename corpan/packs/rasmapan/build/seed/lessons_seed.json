@@ -1,0 +1,51 @@
+[
+  {
+    "id": "intro-rtl",
+    "ord": 1,
+    "type": "intro",
+    "title": "Reading and writing right-to-left",
+    "body_md": "Arabic is written and read **right-to-left** (RTL).\n\nWords flow from the right edge of the line to the left. The first letter you write or read is the one on the right.\n\nIn this app, when you trace a letter, your strokes will sweep that direction too: think of the qalam (pen) starting where you'd naturally begin in Arabic — usually on the right — and ending on the left.\n\nNumbers run left-to-right inside an otherwise right-to-left line. That's a quirk worth knowing but not worth worrying about right now.",
+    "highlight_ar": "ا ب ت ث",
+    "highlight_caption": "Reads from right (ا alif) to left (ث thaa)."
+  },
+  {
+    "id": "intro-abjad",
+    "ord": 2,
+    "type": "intro",
+    "title": "The 28 letters",
+    "body_md": "Arabic has **28 letters**, all consonants. Short vowels (a, i, u) are written as small marks above or below the letters and are usually omitted in everyday writing — readers infer them from context. Long vowels are written using three of the letters themselves: **alif** (ا) for /aa/, **waaw** (و) for /uu/, and **yaa** (ي) for /ii/.\n\nMany letters share the same body shape and are distinguished only by the **dots** above or below: baa (ب) one dot below, taa (ت) two dots above, thaa (ث) three dots above. As you trace, watch where the dots go — they carry the whole identity of the letter.",
+    "show_alphabet_grid": true
+  },
+  {
+    "id": "intro-four-forms",
+    "ord": 3,
+    "type": "intro",
+    "title": "Four shapes per letter",
+    "body_md": "Most Arabic letters change shape based on where they sit in a word:\n\n- **Isolated** — standing alone.\n- **Initial** — at the start of a word (right side, since we read RTL).\n- **Medial** — in the middle of a word.\n- **Final** — at the end of a word (left side).\n\nExample with **baa** (ب):\n\n- isolated: ب — initial: بـ — medial: ـبـ — final: ـب\n\nSix letters never connect to the letter that follows them (to their left in RTL): **alif (ا), daal (د), dhaal (ذ), raa (ر), zaay (ز), waaw (و)**. They only have **two** forms — isolated and final.",
+    "highlight_family": "baa"
+  },
+  {
+    "id": "intro-harakat",
+    "ord": 4,
+    "type": "intro",
+    "title": "Harakat — the little vowel marks",
+    "body_md": "Short vowels and stops are written as small marks called **harakat**:\n\n- **Fatḥa** ( َ ) — short /a/ above the letter.\n- **Kasra** ( ِ ) — short /i/ below the letter.\n- **Ḍamma** ( ُ ) — short /u/ above the letter, looks like a tiny و.\n- **Sukūn** ( ْ ) — no vowel; the letter is bare. A small circle above.\n- **Shadda** ( ّ ) — doubles the consonant. A small 'w'-shape above the letter.\n\nIn most modern Arabic text these marks are **left out**. They appear in the Qur'an, in children's books, in song lyrics, and whenever a word might otherwise be misread.",
+    "tap_to_hear": ["بَ", "بِ", "بُ", "بْ", "بّ"]
+  },
+  {
+    "id": "intro-sound-map",
+    "ord": 5,
+    "type": "intro",
+    "title": "Tap to hear",
+    "body_md": "Tap each letter below to hear it spoken. Try saying the sound back. The Arabic system maps cleanly to sounds — once you can recognize a letter, you can pronounce its name and its sound consistently.",
+    "tap_letters": ["alif", "baa", "taa", "thaa", "jiim", "Haa", "khaa", "daal", "raa", "siin"]
+  },
+  {
+    "id": "intro-trace-alif",
+    "ord": 6,
+    "type": "letter",
+    "title": "Trace your first letter — Alif",
+    "body_md": "Alif (ا) is the simplest letter to write: a single tall vertical stroke. Start at the top and pull the qalam downward.\n\nWhen you're ready, hit **Begin** to enter practice mode. You'll have all 28 letters available — switch between Letters, Words, and Styles using the tabs.",
+    "letter_id": "alif"
+  }
+]

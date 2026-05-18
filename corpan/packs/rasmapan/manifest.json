@@ -1,0 +1,15 @@
+{
+  "id": "rasmapan",
+  "name": "Rasmapan",
+  "version": "0.1.0",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "databases": {
+    "main": "data/arabic.sqlite3"
+  },
+  "devRevision": "2026-05-18T03:03:36.223Z"
+}
