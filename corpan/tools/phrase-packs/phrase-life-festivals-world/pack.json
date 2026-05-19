@@ -1,0 +1,10 @@
+{
+  "id": "phrase-life-festivals-world",
+  "version": "0.1.0",
+  "name": "Festivals of the World",
+  "description": "Diwali, Lunar New Year, Christmas, Eid, Holi, Day of the Dead, Carnival, Songkran, Hanukkah, Nowruz. The calendar's bright days, in many traditions.",
+  "category": "life",
+  "topic": "Festivals",
+  "icon": "party-popper",
+  "accent_color": "#ea580c"
+}
