@@ -1,1 +1,4 @@
 fonttools>=4.40.0
+numpy>=1.26
+shapely>=2.0
+scipy>=1.11

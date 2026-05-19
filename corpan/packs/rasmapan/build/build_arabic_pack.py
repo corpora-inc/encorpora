@@ -329,6 +329,11 @@ class GlyphData:
     outline_paths: List[str]  # one SVG `d` string per contour
     medians: List[List[List[float]]]  # one polyline per stroke
     bbox: Tuple[float, float, float, float]  # xmin, ymin, xmax, ymax in 0..1000
+    # Flattened polygon vertices per contour, same order as outline_paths
+    # (largest contour first). In the same 0..1000 viewBox coord space
+    # as outline_paths. Consumed by the Calliar outline-masking pipeline
+    # to mask recorded strokes against the canonical letter shape.
+    polygons: List[List[List[float]]] = None  # type: ignore[assignment]
 
 
 class AmiriExtractor:
@@ -436,6 +441,7 @@ class AmiriExtractor:
             outline_paths=sorted_contours,
             medians=medians,
             bbox=bbox,
+            polygons=view_polygons,
         )
 
     # --- helpers ---------------------------------------------------------
@@ -687,6 +693,8 @@ def build_glyph_record(
     extractor: AmiriExtractor,
     codepoint_hex: str,
     overrides: Optional[Dict[str, Any]] = None,
+    family_id: Optional[str] = None,
+    position: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     if not codepoint_hex:
         return None
@@ -700,13 +708,19 @@ def build_glyph_record(
     strokes = data.outline_paths
     medians = data.medians
     outline_bbox = tuple(data.bbox) if data.bbox else None
-    # Calliar-derived overrides are intentionally ignored: their
-    # trajectories include trailing connecting strokes that bleed out
-    # of the canonical isolated-letter shape (e.g. baa's recorded bowl
-    # ends inside the dot region because the writer was mid-word).
-    # The outline-derived medians produced by AmiriExtractor walk the
-    # upper edge of each Amiri contour and are guaranteed to align
-    # with the visible ghost glyph.
+    # Try the outline-masked Calliar pipeline first for isolated forms
+    # (the primary v0.1 surface). Falls through to data.medians
+    # (outline-edge trace) if the masking yields no usable result —
+    # e.g. for primitives Calliar doesn't have, or composite letters
+    # we haven't wired yet.
+    if family_id and position == "isolated" and data.polygons:
+        try:
+            from masked_medians import compose_masked_medians  # noqa: PLC0415
+            masked = compose_masked_medians(family_id, data.polygons)
+            if masked:
+                medians = masked
+        except Exception as exc:  # noqa: BLE001
+            print(f"[warn] masked-medians failed for {family_id}: {exc}", file=sys.stderr)
     scoring = "median"
     record = {
         "letter": chr(codepoint),
@@ -838,7 +852,10 @@ def main() -> None:
                 continue
             glyph_id = family_id if pos == "isolated" else f"{family_id}.{pos}"
             override = stroke_overrides_by_id.get(glyph_id)
-            record = build_glyph_record(extractor, cp_hex, override)
+            record = build_glyph_record(
+                extractor, cp_hex, override,
+                family_id=family_id, position=pos,
+            )
             if not record:
                 continue
             parent_id = None if pos == "isolated" else family_id
