@@ -390,22 +390,28 @@ export const createHostApi = (packId?: string): HostApi => {
       return () => unsubscribe()
     },
     getRandomEntry: async () => {
-      const { levels, domains } = useSettingsStore.getState()
+      const { levels, domains, phrasePackIds, baseCorpusEnabled } =
+        useSettingsStore.getState()
       return invoke("get_random_entry_with_translations", {
         levels,
         domains,
+        phrasePackIds,
+        baseCorpusEnabled,
       })
     },
     getRandomEntries: async (count: number) => {
-      const { levels, domains } = useSettingsStore.getState()
+      const { levels, domains, phrasePackIds, baseCorpusEnabled } =
+        useSettingsStore.getState()
       return invoke("get_random_entries_with_translations", {
         count,
         levels,
         domains,
+        phrasePackIds,
+        baseCorpusEnabled,
       })
     },
-    getEntryById: async (entryId) => {
-      return invoke("get_entry_by_id_with_translations", { entryId })
+    getEntryById: async (entryId, source) => {
+      return invoke("get_entry_by_id_with_translations", { entryId, source })
     },
     searchEntriesByText: async ({ text, languageCodes, limit, offset }) => {
       return invoke("search_entries_by_translation_text", {

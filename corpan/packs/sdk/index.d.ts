@@ -19,6 +19,13 @@ export type EntryOut = {
   level: string
   domains: string[]
   translations: TranslationOut[]
+  /**
+   * Source identifier: `"base"` for the bundled corpus, or a phrase-pack
+   * id (e.g. `"phrase-botany-basics"`). `entry_id` is only unique within
+   * a source — game packs that resume from history need to remember the
+   * `(source, entry_id)` pair and pass `source` to `getEntryById`.
+   */
+  source: string
 }
 
 export type PackDbQuery = {
@@ -155,7 +162,12 @@ export type HostApi = {
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   getRandomEntry: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
-  getEntryById: (entryId: number) => Promise<EntryOut>
+  /**
+   * Resolve an entry by id. `source` defaults to `"base"` (bundled corpus).
+   * For phrase-pack entries, pass the pack id you stored alongside the
+   * `entry_id` (read from `EntryOut.source` on the original sample).
+   */
+  getEntryById: (entryId: number, source?: string) => Promise<EntryOut>
   searchEntriesByText?: (options: {
     text: string
     languageCodes?: string[]

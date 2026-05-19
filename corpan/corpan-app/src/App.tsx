@@ -27,6 +27,46 @@ if (import.meta.env.DEV) {
   (window as any).resetRatingState = () => {
     useRatingStore.getState().reset();
   };
+
+  // Dev-only sideload helpers for phrase packs. Use from Safari Web
+  // Inspector against a connected iPad:
+  //
+  //   await window.__corpanInstallPhrasePack(
+  //     "http://192.168.1.x:8000/phrase-botany-basics-0.1.0.zip"
+  //   )
+  //   window.__corpanListPhrasePacks()
+  //
+  // The URL must be reachable from the iPad — usually your Mac's LAN IP
+  // serving the zip via `python3 -m http.server`. is_private_host on the
+  // Rust side allows http for 192.168/10/172.16-31/localhost ranges.
+  (window as any).__corpanInstallPhrasePack = async (zipUrl: string) => {
+    const { installPack } = await import("@/contentPacks/install");
+    const { rehydratePhrasePacksFromDisk } = await import(
+      "@/contentPacks/phrasePackRegister"
+    );
+    const result = await installPack({
+      manifestUrl: zipUrl,
+      source: "manual",
+    });
+    await rehydratePhrasePacksFromDisk();
+    return result;
+  };
+  (window as any).__corpanListPhrasePacks = async () => {
+    const { usePhrasePacksStore } = await import("@/store/phrasePacks");
+    return usePhrasePacksStore.getState().list();
+  };
+
+  // Direct access to the settings store so Safari Web Inspector can mutate
+  // active phrase packs / base-corpus toggles without dancing around the
+  // module loader. Safari's console wraps `(await import(...))` in a way
+  // that breaks the compound expression — using a top-level handle dodges it.
+  (window as any).__corpanSettings = {
+    setPhrasePackIds: (ids: string[]) =>
+      useSettingsStore.getState().setPhrasePackIds(ids),
+    setBaseCorpusEnabled: (on: boolean) =>
+      useSettingsStore.getState().setBaseCorpusEnabled(on),
+    state: () => useSettingsStore.getState(),
+  };
 }
 
 export default function App() {
@@ -59,6 +99,20 @@ export default function App() {
     fetchCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
+    // Reconcile the in-memory phrase-pack registry with what's actually on
+    // disk. Catches manual sideloads, stale persisted entries from prior
+    // installs that were since removed, version bumps, etc. No-op if no
+    // phrase packs are installed.
+    void (async () => {
+      try {
+        const { rehydratePhrasePacksFromDisk } = await import(
+          "@/contentPacks/phrasePackRegister"
+        );
+        await rehydratePhrasePacksFromDisk();
+      } catch (err) {
+        console.warn("[App] phrase-pack rehydrate failed:", err);
+      }
+    })();
   }, [fetchCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without

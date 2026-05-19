@@ -1,0 +1,10 @@
+{
+  "id": "phrase-botany-basics",
+  "version": "0.1.0",
+  "name": "Botany Basics",
+  "description": "Everyday plant-life vocabulary — flowers, leaves, photosynthesis, gardens.",
+  "category": "science",
+  "topic": "Botany",
+  "icon": "leaf",
+  "accent_color": "#a5d6a7"
+}

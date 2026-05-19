@@ -154,6 +154,21 @@ export type StackSettings = {
 
     /** Per-language TTS voice preferences */
     voicePrefs: VoicePrefsMap;
+
+    /**
+     * Active phrase packs for this stack. Empty array means "no phrase
+     * packs"; the base corpus alone (if enabled) is the source. Pack ids
+     * here may reference packs not currently installed — the query layer
+     * just skips missing packs and the UI can prompt to (re)install.
+     */
+    phrasePackIds: string[];
+
+    /**
+     * Whether the bundled `cor_entry` corpus is one of this stack's
+     * sources. Default true. A user who wants a "just Botany" or "just
+     * Advanced Business" experience can disable the base.
+     */
+    baseCorpusEnabled: boolean;
 };
 
 export type Stack = {
@@ -188,6 +203,10 @@ type MultiStackState = {
     scrollNavigationEnabled: boolean;
     /** Mirror of per-language voice prefs for active stack */
     voicePrefs: VoicePrefsMap;
+    /** Mirror of active phrase packs for active stack */
+    phrasePackIds: string[];
+    /** Mirror of base-corpus enabled flag for active stack */
+    baseCorpusEnabled: boolean;
 
     // Ephemeral per-language cycle pointer for the active stack (not persisted)
     _voiceCycleIndex: Record<string, number>;
@@ -206,6 +225,13 @@ type MultiStackState = {
     setTextSize: (size: TextSizeType) => void;
     setShowRomanization: (val: boolean) => void;
     setScrollNavigationEnabled: (val: boolean) => void;
+
+    /** Active phrase-pack id list for active stack (replaces). */
+    setPhrasePackIds: (ids: string[]) => void;
+    /** Convenience: toggle one pack on/off. */
+    togglePhrasePack: (id: string) => void;
+    /** Enable/disable the bundled corpus for active stack. */
+    setBaseCorpusEnabled: (on: boolean) => void;
 
     /** Voice preference updaters for active stack */
     setVoiceMode: (lang: string, mode: VoiceMode) => void;
@@ -257,6 +283,8 @@ const DEFAULT_SETTINGS: StackSettings = {
     showRomanization: true,
     scrollNavigationEnabled: true,
     voicePrefs: {}, // important: always an object
+    phrasePackIds: [],
+    baseCorpusEnabled: true,
 };
 
 function makeStack(name = DEFAULT_STACK_NAME, base?: Partial<StackSettings>): Stack {
@@ -302,6 +330,13 @@ function deriveFrom(stack: Stack) {
         showRomanization: stack.settings.showRomanization,
         scrollNavigationEnabled: stack.settings.scrollNavigationEnabled ?? true,
         voicePrefs: { ...vp }, // cloned, never undefined
+        phrasePackIds: Array.isArray(stack.settings.phrasePackIds)
+            ? [...stack.settings.phrasePackIds]
+            : [],
+        baseCorpusEnabled:
+            typeof stack.settings.baseCorpusEnabled === "boolean"
+                ? stack.settings.baseCorpusEnabled
+                : true,
     };
 }
 
@@ -326,13 +361,20 @@ function readPersistedBoot():
         const onboardingStep = typeof state?.onboardingStep === "number" ? state.onboardingStep : 0;
         const hasSeenPacksDiscover = !!state?.hasSeenPacksDiscover;
 
-        // Backfill voicePrefs if older persisted shape
+        // Backfill any older persisted shape with new fields.
         if (stacks && typeof activeStackId === "string") {
             for (const s of Object.values<Stack>(stacks)) {
                 if (!s.settings) {
                     s.settings = { ...(DEFAULT_SETTINGS as any) };
                 }
                 if (!s.settings.voicePrefs) s.settings.voicePrefs = {};
+                // v3 fields:
+                if (!Array.isArray(s.settings.phrasePackIds)) {
+                    s.settings.phrasePackIds = [];
+                }
+                if (typeof s.settings.baseCorpusEnabled !== "boolean") {
+                    s.settings.baseCorpusEnabled = true;
+                }
             }
             return { stacks, activeStackId, onboarded, onboardingStep, hasSeenPacksDiscover };
         }
@@ -458,6 +500,28 @@ export const useSettingsStore = create<MultiStackState>()(
                 setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
                 setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
                 setScrollNavigationEnabled: (val) => writeActiveSettings((s) => { s.scrollNavigationEnabled = val; }),
+
+                setPhrasePackIds: (ids) =>
+                    writeActiveSettings((s) => {
+                        // dedupe, preserve order
+                        const seen = new Set<string>();
+                        s.phrasePackIds = ids.filter((id) => {
+                            if (seen.has(id)) return false;
+                            seen.add(id);
+                            return true;
+                        });
+                    }),
+                togglePhrasePack: (id) =>
+                    writeActiveSettings((s) => {
+                        if (!Array.isArray(s.phrasePackIds)) s.phrasePackIds = [];
+                        if (s.phrasePackIds.includes(id)) {
+                            s.phrasePackIds = s.phrasePackIds.filter((x) => x !== id);
+                        } else {
+                            s.phrasePackIds = [...s.phrasePackIds, id];
+                        }
+                    }),
+                setBaseCorpusEnabled: (on) =>
+                    writeActiveSettings((s) => { s.baseCorpusEnabled = on; }),
 
                 // -------- Voice Prefs (active stack) --------
                 setVoiceMode: (lang, mode) =>
@@ -603,12 +667,23 @@ export const useSettingsStore = create<MultiStackState>()(
         },
         {
             name: "corpan-stacks-v1",
-            version: 2, // bump: includes voicePrefs backfill + guards
+            version: 3, // bump: adds phrasePackIds + baseCorpusEnabled per stack
             migrate: (state: any, version) => {
                 if (version < 2 && state?.stacks) {
                     for (const s of Object.values<Stack>(state.stacks)) {
                         if (!s.settings) s.settings = { ...(DEFAULT_SETTINGS as any) };
                         if (!s.settings.voicePrefs) s.settings.voicePrefs = {};
+                    }
+                }
+                if (version < 3 && state?.stacks) {
+                    for (const s of Object.values<Stack>(state.stacks)) {
+                        if (!s.settings) s.settings = { ...(DEFAULT_SETTINGS as any) };
+                        if (!Array.isArray(s.settings.phrasePackIds)) {
+                            s.settings.phrasePackIds = [];
+                        }
+                        if (typeof s.settings.baseCorpusEnabled !== "boolean") {
+                            s.settings.baseCorpusEnabled = true;
+                        }
                     }
                 }
                 return state;

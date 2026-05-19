@@ -6,6 +6,7 @@
 mod content_packs;
 mod db;
 mod pack_db;
+mod phrase_packs;
 
 use rusqlite::{params_from_iter, Connection, ToSql};
 use rusqlite::types::{Value as SqlValue, ValueRef};
@@ -20,6 +21,11 @@ use crate::content_packs::{
     ContentPackInstallResult,
 };
 use crate::pack_db::{open_pack_connection, resolve_pack_db_path, PackDbState};
+use crate::phrase_packs::{
+    collect_pack_counts, fetch_entry as fetch_phrase_pack_entry, pick_weighted_source,
+    sample_random_id as sample_random_phrase_pack_id, FilterSig, PhrasePackEntry,
+    PhrasePacksState, BASE_SOURCE_ID,
+};
 
 const PACK_DB_DEFAULT_MAX_ROWS: usize = 500;
 const PACK_DB_HARD_MAX_ROWS: usize = 2000;
@@ -32,13 +38,20 @@ struct TranslationOut {
     romanization: String, // kept as String for the API; we coalesce NULL -> ""
 }
 
-/// Return type for an entry with all translations
+/// Return type for an entry with all translations.
+///
+/// `source` identifies which corpus the entry came from: `"base"` for the
+/// bundled corpus, or the phrase-pack id (e.g. `"phrase-botany-basics"`).
+/// Callers that store entries for later lookup (history, resume) need to
+/// remember (`source`, `entry_id`) because `entry_id` is only unique within
+/// its source.
 #[derive(Serialize)]
 struct EntryOut {
     entry_id: i64,
     level: String,
     domains: Vec<String>,
     translations: Vec<TranslationOut>,
+    source: String,
 }
 
 #[derive(Serialize)]
@@ -202,16 +215,199 @@ fn fetch_entry_with_translations(
         level,
         domains: domains_vec,
         translations,
+        source: BASE_SOURCE_ID.to_string(),
     })
+}
+
+/// Build the JOIN + WHERE fragments for a filtered query against `cor_entry`.
+/// Returns (`join_clause`, `where_clauses`, `params`). The where clauses are
+/// AND-joined by the caller. Shared by the count + random-pick helpers below.
+fn build_base_filter(
+    sig: &FilterSig,
+) -> (&'static str, Vec<String>, Vec<Box<dyn ToSql>>) {
+    let mut where_clauses: Vec<String> = vec![];
+    let mut params: Vec<Box<dyn ToSql>> = vec![];
+
+    if !sig.levels.is_empty() {
+        let placeholders = vec!["?"; sig.levels.len()].join(",");
+        where_clauses.push(format!("e.level IN ({placeholders})"));
+        for lv in &sig.levels {
+            params.push(Box::new(lv.clone()));
+        }
+    }
+
+    let join: &'static str = if !sig.domains.is_empty() {
+        let placeholders = vec!["?"; sig.domains.len()].join(",");
+        where_clauses.push(format!("d.code IN ({placeholders})"));
+        for dom in &sig.domains {
+            params.push(Box::new(dom.clone()));
+        }
+        "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id \
+         INNER JOIN cor_domain d ON d.id = ced.domain_id"
+    } else {
+        ""
+    };
+
+    (join, where_clauses, params)
+}
+
+fn base_where_clause(parts: &[String]) -> String {
+    if parts.is_empty() {
+        String::new()
+    } else {
+        format!("WHERE {}", parts.join(" AND "))
+    }
+}
+
+/// COUNT(DISTINCT entry) for the base corpus matching `sig`. Used by the
+/// multi-source sampler to weight `"base"` against active phrase packs.
+fn count_base_entries(conn: &Connection, sig: &FilterSig) -> Result<i64, String> {
+    let (join, wheres, params) = build_base_filter(sig);
+    let where_str = base_where_clause(&wheres);
+    let sql = format!(
+        "SELECT COUNT(DISTINCT e.id) FROM cor_entry e {join} {where_str}"
+    );
+    let n: i64 = conn
+        .query_row(
+            &sql,
+            params_from_iter(params.iter().map(|p| &**p)),
+            |row| row.get(0),
+        )
+        .map_err(|e| e.to_string())?;
+    Ok(n)
+}
+
+/// Pick one random entry id from the base corpus matching `sig`.
+fn sample_random_base_id(conn: &Connection, sig: &FilterSig) -> Result<i64, String> {
+    let (join, wheres, params) = build_base_filter(sig);
+    let where_str = base_where_clause(&wheres);
+    let sql = format!(
+        "SELECT e.id FROM cor_entry e {join} {where_str} \
+         GROUP BY e.id ORDER BY RANDOM() LIMIT 1"
+    );
+    let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
+    let id: i64 = stmt
+        .query_row(
+            params_from_iter(params.iter().map(|p| &**p)),
+            |row| row.get(0),
+        )
+        .map_err(|e| e.to_string())?;
+    Ok(id)
+}
+
+/// Pick N random entry ids from the base corpus matching `sig`.
+fn sample_random_base_ids(
+    conn: &Connection,
+    sig: &FilterSig,
+    n: i64,
+) -> Result<Vec<i64>, String> {
+    let (join, wheres, mut params) = build_base_filter(sig);
+    let where_str = base_where_clause(&wheres);
+    let sql = format!(
+        "SELECT e.id FROM cor_entry e {join} {where_str} \
+         GROUP BY e.id ORDER BY RANDOM() LIMIT ?"
+    );
+    params.push(Box::new(n));
+    let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
+    let mut rows = stmt
+        .query(params_from_iter(params.iter().map(|p| &**p)))
+        .map_err(|e| e.to_string())?;
+    let mut out = Vec::with_capacity(n as usize);
+    while let Some(row) = rows.next().map_err(|e| e.to_string())? {
+        out.push(row.get(0).map_err(|e| e.to_string())?);
+    }
+    Ok(out)
+}
+
+/// Convert a phrase-pack-shaped entry into the public `EntryOut`. Phrase
+/// packs have no `domains` axis — they're categorised by pack `topic` and
+/// `category` instead — so `domains` is empty.
+fn phrase_pack_entry_to_out(entry: PhrasePackEntry, source: &str) -> EntryOut {
+    EntryOut {
+        entry_id: entry.entry_id,
+        level: entry.level,
+        domains: vec![],
+        translations: entry
+            .translations
+            .into_iter()
+            .map(|t| TranslationOut {
+                language_code: t.language_code,
+                text: t.text,
+                romanization: t.romanization,
+            })
+            .collect(),
+        source: source.to_string(),
+    }
 }
 
 /// Get one random entry matching given filters, with all translations
 #[command]
 fn get_random_entry_with_translations(
+    app: AppHandle,
     state: State<'_, db::DbState>,
+    pp_state: State<'_, PhrasePacksState>,
     levels: Option<Vec<String>>,
     domains: Option<Vec<String>>,
     language_codes: Option<Vec<String>>,
+    phrase_pack_ids: Option<Vec<String>>,
+    base_corpus_enabled: Option<bool>,
+) -> Result<EntryOut, String> {
+    let pack_ids = phrase_pack_ids.unwrap_or_default();
+    let base_on = base_corpus_enabled.unwrap_or(true);
+    let allowed_langs: Option<HashSet<String>> =
+        language_codes.as_ref().map(|v| v.iter().cloned().collect());
+
+    // Fast path — pre-phrase-packs behaviour, identical query plan as before.
+    if pack_ids.is_empty() && base_on {
+        return get_random_entry_base_only(&state, levels, domains, allowed_langs);
+    }
+
+    if !base_on && pack_ids.is_empty() {
+        return Err("No active sources".to_string());
+    }
+
+    // Multi-source path.
+    let sig = FilterSig::new(&levels, &domains);
+    let base_conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+
+    let mut sources: Vec<(String, i64)> = vec![];
+    if base_on {
+        let n = count_base_entries(&base_conn, &sig)?;
+        if n > 0 {
+            sources.push((BASE_SOURCE_ID.to_string(), n));
+        }
+    }
+    let pack_counts = collect_pack_counts(&app, &pp_state, &pack_ids, &sig)?;
+    for (id, n) in pack_counts {
+        if n > 0 {
+            sources.push((id, n));
+        }
+    }
+    if sources.is_empty() {
+        return Err("No entries match the current filters".to_string());
+    }
+
+    let total: i64 = sources.iter().map(|(_, c)| c).sum();
+    let chosen = pick_weighted_source(&base_conn, &sources, total)?;
+
+    if chosen == BASE_SOURCE_ID {
+        let entry_id = sample_random_base_id(&base_conn, &sig)?;
+        return fetch_entry_with_translations(&base_conn, entry_id, allowed_langs.as_ref());
+    }
+    // Release the base lock before doing any phrase-pack work.
+    drop(base_conn);
+    let id = sample_random_phrase_pack_id(&app, &pp_state, &chosen, &sig)?;
+    let entry = fetch_phrase_pack_entry(&app, &pp_state, &chosen, id, allowed_langs.as_ref())?;
+    Ok(phrase_pack_entry_to_out(entry, &chosen))
+}
+
+/// Pre-phrase-packs single-source implementation, preserved verbatim so the
+/// fast path keeps its known-good query plan.
+fn get_random_entry_base_only(
+    state: &State<'_, db::DbState>,
+    levels: Option<Vec<String>>,
+    domains: Option<Vec<String>>,
+    allowed_langs: Option<HashSet<String>>,
 ) -> Result<EntryOut, String> {
     let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
 
@@ -260,8 +456,6 @@ fn get_random_entry_with_translations(
         format!("WHERE {}", where_clauses.join(" AND "))
     };
 
-    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
-
     // Use SQLite's RANDOM() — properly seeded PRNG, uniform across the
     // *current* row set (so post-prune deletions are naturally invisible
     // and we never offset into a stale 27k count). The previous
@@ -298,113 +492,198 @@ fn get_random_entry_with_translations(
 /// Get multiple random entries matching given filters, with all translations
 #[command]
 fn get_random_entries_with_translations(
+    app: AppHandle,
     state: State<'_, db::DbState>,
+    pp_state: State<'_, PhrasePacksState>,
     count: i64,
     levels: Option<Vec<String>>,
     domains: Option<Vec<String>>,
     language_codes: Option<Vec<String>>,
+    phrase_pack_ids: Option<Vec<String>>,
+    base_corpus_enabled: Option<bool>,
 ) -> Result<Vec<EntryOut>, String> {
     if count <= 0 {
         return Ok(vec![]);
     }
 
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let pack_ids = phrase_pack_ids.unwrap_or_default();
+    let base_on = base_corpus_enabled.unwrap_or(true);
+    let allowed_langs: Option<HashSet<String>> =
+        language_codes.as_ref().map(|v| v.iter().cloned().collect());
 
-    let mut where_clauses = vec![];
-    let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
+    // Fast path — pre-phrase-packs behaviour, identical query plan.
+    if pack_ids.is_empty() && base_on {
+        let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
 
-    if let Some(ref lv_vec) = levels {
-        if !lv_vec.is_empty() {
-            let q = format!("e.level IN ({})", vec!["?"; lv_vec.len()].join(","));
-            where_clauses.push(q);
-            for lv in lv_vec {
-                params.push(Box::new(lv.clone()));
+        let mut where_clauses = vec![];
+        let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
+
+        if let Some(ref lv_vec) = levels {
+            if !lv_vec.is_empty() {
+                let q = format!("e.level IN ({})", vec!["?"; lv_vec.len()].join(","));
+                where_clauses.push(q);
+                for lv in lv_vec {
+                    params.push(Box::new(lv.clone()));
+                }
             }
         }
-    }
 
-    let (domain_join, domain_where) = if let Some(ref dom_vec) = domains {
-        if !dom_vec.is_empty() {
-            let q = format!("d.code IN ({})", vec!["?"; dom_vec.len()].join(","));
-            (
-                "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id
-                 INNER JOIN cor_domain d ON d.id = ced.domain_id",
-                Some(q),
-            )
+        let (domain_join, domain_where) = if let Some(ref dom_vec) = domains {
+            if !dom_vec.is_empty() {
+                let q = format!("d.code IN ({})", vec!["?"; dom_vec.len()].join(","));
+                (
+                    "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id
+                     INNER JOIN cor_domain d ON d.id = ced.domain_id",
+                    Some(q),
+                )
+            } else {
+                ("", None)
+            }
         } else {
             ("", None)
-        }
-    } else {
-        ("", None)
-    };
+        };
 
-    if let Some(q) = domain_where {
-        where_clauses.push(q);
-        if let Some(dom_vec) = &domains {
-            for dom in dom_vec {
-                params.push(Box::new(dom.clone()));
+        if let Some(q) = domain_where {
+            where_clauses.push(q);
+            if let Some(dom_vec) = &domains {
+                for dom in dom_vec {
+                    params.push(Box::new(dom.clone()));
+                }
             }
         }
+
+        let where_str = if where_clauses.is_empty() {
+            "".to_string()
+        } else {
+            format!("WHERE {}", where_clauses.join(" AND "))
+        };
+
+        let sql = format!(
+            "SELECT e.id
+             FROM cor_entry e
+             {domain_join}
+             {where}
+             GROUP BY e.id
+             ORDER BY RANDOM()
+             LIMIT ?",
+            domain_join = domain_join,
+            where = where_str
+        );
+
+        let mut params_with_limit = params;
+        params_with_limit.push(Box::new(count));
+
+        let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
+        let mut id_rows = stmt
+            .query(params_from_iter(params_with_limit.iter().map(|p| &**p)))
+            .map_err(|e| e.to_string())?;
+
+        let mut ids: Vec<i64> = Vec::new();
+        while let Some(row) = id_rows.next().map_err(|e| e.to_string())? {
+            ids.push(row.get(0).map_err(|e| e.to_string())?);
+        }
+
+        if ids.is_empty() {
+            return Err("No entries found for these criteria".to_string());
+        }
+
+        let mut entries = Vec::with_capacity(ids.len());
+        for entry_id in ids {
+            let entry = fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())?;
+            entries.push(entry);
+        }
+
+        return Ok(entries);
     }
 
-    let where_str = if where_clauses.is_empty() {
-        "".to_string()
-    } else {
-        format!("WHERE {}", where_clauses.join(" AND "))
-    };
-
-    // Use SQLite's RANDOM() — see singular variant above for rationale.
-    // ORDER BY RANDOM() LIMIT N draws N distinct rows in one query; no
-    // self-rolled PRNG, no offset arithmetic over a stale total.
-    let sql = format!(
-        "SELECT e.id
-         FROM cor_entry e
-         {domain_join}
-         {where}
-         GROUP BY e.id
-         ORDER BY RANDOM()
-         LIMIT ?",
-        domain_join = domain_join,
-        where = where_str
-    );
-
-    let mut params_with_limit = params;
-    params_with_limit.push(Box::new(count));
-
-    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
-    let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
-    let mut id_rows = stmt
-        .query(params_from_iter(params_with_limit.iter().map(|p| &**p)))
-        .map_err(|e| e.to_string())?;
-
-    let mut ids: Vec<i64> = Vec::new();
-    while let Some(row) = id_rows.next().map_err(|e| e.to_string())? {
-        ids.push(row.get(0).map_err(|e| e.to_string())?);
+    if !base_on && pack_ids.is_empty() {
+        return Err("No active sources".to_string());
     }
 
-    if ids.is_empty() {
-        return Err("No entries found for these criteria".to_string());
+    // Multi-source path. For each requested result we weighted-pick a source
+    // and then sample 1 entry from that source. For batches that span the
+    // base + many packs this is N round-trips total, each ~1ms — within the
+    // 50 ms p95 budget for any reasonable count.
+    let sig = FilterSig::new(&levels, &domains);
+    let base_conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+
+    let mut sources: Vec<(String, i64)> = vec![];
+    if base_on {
+        let n = count_base_entries(&base_conn, &sig)?;
+        if n > 0 {
+            sources.push((BASE_SOURCE_ID.to_string(), n));
+        }
+    }
+    let pack_counts = collect_pack_counts(&app, &pp_state, &pack_ids, &sig)?;
+    for (id, n) in pack_counts {
+        if n > 0 {
+            sources.push((id, n));
+        }
+    }
+    if sources.is_empty() {
+        return Err("No entries match the current filters".to_string());
     }
 
-    let mut entries = Vec::with_capacity(ids.len());
-    for entry_id in ids {
-        let entry = fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())?;
-        entries.push(entry);
+    let total: i64 = sources.iter().map(|(_, c)| c).sum();
+    let count_usize = count as usize;
+    let mut picks: HashMap<String, i64> = HashMap::new();
+    for _ in 0..count_usize {
+        let chosen = pick_weighted_source(&base_conn, &sources, total)?;
+        *picks.entry(chosen).or_insert(0) += 1;
+    }
+
+    let mut entries: Vec<EntryOut> = Vec::with_capacity(count_usize);
+    if let Some(&base_n) = picks.get(BASE_SOURCE_ID) {
+        let ids = sample_random_base_ids(&base_conn, &sig, base_n)?;
+        for entry_id in ids {
+            entries.push(fetch_entry_with_translations(
+                &base_conn,
+                entry_id,
+                allowed_langs.as_ref(),
+            )?);
+        }
+    }
+    drop(base_conn);
+
+    for (source_id, n) in picks.iter().filter(|(id, _)| id.as_str() != BASE_SOURCE_ID) {
+        for _ in 0..*n {
+            let id = sample_random_phrase_pack_id(&app, &pp_state, source_id, &sig)?;
+            let entry =
+                fetch_phrase_pack_entry(&app, &pp_state, source_id, id, allowed_langs.as_ref())?;
+            entries.push(phrase_pack_entry_to_out(entry, source_id));
+        }
+    }
+
+    if entries.is_empty() {
+        return Err("No entries match the current filters".to_string());
     }
 
     Ok(entries)
 }
 
-/// Fetch a specific entry by ID with all translations (optionally filtered by language codes)
+/// Fetch a specific entry by ID with all translations (optionally filtered
+/// by language codes). `source` defaults to `"base"` (bundled corpus) when
+/// omitted, so existing callers keep working. Phrase-pack entries are
+/// scoped by `source` because `entry_id` is only unique within a source.
 #[command]
 fn get_entry_by_id_with_translations(
+    app: AppHandle,
     state: State<'_, db::DbState>,
+    pp_state: State<'_, PhrasePacksState>,
     entry_id: i64,
     language_codes: Option<Vec<String>>,
+    source: Option<String>,
 ) -> Result<EntryOut, String> {
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
-    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
-    fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())
+    let allowed_langs: Option<HashSet<String>> =
+        language_codes.map(|v| v.into_iter().collect());
+    let source_id = source.unwrap_or_else(|| BASE_SOURCE_ID.to_string());
+    if source_id == BASE_SOURCE_ID {
+        let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+        return fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref());
+    }
+    let entry =
+        fetch_phrase_pack_entry(&app, &pp_state, &source_id, entry_id, allowed_langs.as_ref())?;
+    Ok(phrase_pack_entry_to_out(entry, &source_id))
 }
 
 /// Search for entries whose translation text contains the requested substring.
@@ -606,6 +885,18 @@ fn content_packs_get_manifest_url(app: AppHandle, pack_id: String) -> Result<Str
     get_manifest_url(&app, pack_id)
 }
 
+/// Invalidate the cached COUNT(*) results and any open connection for the
+/// given phrase pack. Called from JS after an install/uninstall/upgrade so
+/// the sampler doesn't keep stale data around.
+#[command]
+fn phrase_packs_invalidate_cache(
+    pp_state: State<'_, PhrasePacksState>,
+    pack_id: String,
+) -> Result<(), String> {
+    pp_state.invalidate(&pack_id);
+    Ok(())
+}
+
 /// Open Apple's Feedback Assistant app using the 'open' command (macOS/iOS)
 #[command]
 fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), String> {
@@ -669,8 +960,10 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let pack_db_state = PackDbState::new();
+    let phrase_packs_state = PhrasePacksState::new();
     tauri::Builder::default()
         .manage(pack_db_state)
+        .manage(phrase_packs_state)
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_game_packs::init())
         .invoke_handler(tauri::generate_handler![
@@ -685,6 +978,7 @@ pub fn run() {
             content_packs_fetch_bytes,
             content_packs_list_installed,
             content_packs_get_manifest_url,
+            phrase_packs_invalidate_cache,
             open_apple_feedback
         ])
         .plugin(tauri_plugin_safe_area_insets_css::init())

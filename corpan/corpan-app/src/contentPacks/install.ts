@@ -97,12 +97,18 @@ export const installPack = async (
 
   // Detect .zip URLs and handle as download install
   if (trimmed.endsWith('.zip')) {
-    // Extract pack ID from filename (remove .zip extension and normalize)
+    // Extract pack ID from filename. Strip `.zip` and a trailing `-<version>`
+    // so e.g. `phrase-botany-basics-0.1.0.zip` becomes `phrase-botany-basics`.
+    // We keep hyphens — phrase-pack ids are kebab-case and never have
+    // underscores (game-pack ids historically used underscores and we
+    // preserve that for backward compat below).
     const url = new URL(trimmed, window.location.href)
     const pathname = url.pathname
     const filename = pathname.split('/').pop() || ''
-    // Remove .zip and convert hyphens to underscores to match manifest convention
-    const packId = filename.replace(/\.zip$/, '').replace(/-/g, '_')
+    const stripped = filename.replace(/\.zip$/, '')
+    const packId = stripped.startsWith('phrase-')
+      ? stripped.replace(/-\d+(\.\d+){1,2}([-+][0-9A-Za-z.-]+)?$/, '')
+      : stripped.replace(/-/g, '_')
 
     if (!packId) {
       throw new Error("Could not determine pack ID from ZIP filename")
@@ -114,6 +120,17 @@ export const installPack = async (
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    // If this was a phrase pack, register it now. Other pack types are
+    // ignored by the helper.
+    try {
+      const { registerPhrasePackIfApplicable } = await import("./phrasePackRegister")
+      await registerPhrasePackIfApplicable(
+        result.packId,
+        request.source === "manual" ? "manual" : "catalog",
+      )
+    } catch (err) {
+      console.warn("[install] phrase-pack registration failed:", err)
+    }
     return {
       ...result,
       version: result.version ?? request.expectedVersion,

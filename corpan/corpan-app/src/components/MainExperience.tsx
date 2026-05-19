@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
+import { usePhrasePacksStore } from "@/store/phrasePacks";
 
 import { isRTL } from "@/util/convert";
 import {
@@ -38,6 +39,8 @@ type EntryOut = {
     level: string;
     domains: string[];
     translations: TranslationOut[];
+    /** "base" for the bundled corpus, or a phrase-pack id. */
+    source: string;
 };
 
 /* ------------------------------ Helpers -------------------------------- */
@@ -69,6 +72,20 @@ function pickRom(map: Record<string, string | undefined>, uiCode: string): strin
 
 function MetaChips({ entry }: { entry: EntryOut }) {
     const { t } = useTranslation();
+    // Phrase-pack entries carry no `domains` (that axis only exists in the
+    // bundled corpus). For them we render the pack's topic + accent color
+    // in the same chip slot so the user always sees what corpus the phrase
+    // came from. Source-by-source lookup against the global installed-pack
+    // registry — reactive, so a freshly-installed pack's name lands without
+    // a full re-render of the main loop.
+    const pack = usePhrasePacksStore((s) =>
+        entry.source && entry.source !== "base"
+            ? s.installed[entry.source]
+            : undefined,
+    );
+    const packLabel = pack
+        ? (pack.topic || pack.name || entry.source)
+        : undefined;
     return (
         <div
             data-meta-chips
@@ -84,6 +101,18 @@ function MetaChips({ entry }: { entry: EntryOut }) {
                         {t(`categories.${d}` as any, { defaultValue: d })}
                     </span>
                 ))}
+                {packLabel && (
+                    <span
+                        // Pack chips use the app's accent purple uniformly so
+                        // every-tap-different colors don't strobe the chrome.
+                        // The pack's own `accent_color` is reserved for the
+                        // pack picker / catalog UI where it gets to breathe.
+                        className="px-2 py-0.5 rounded-md border border-purple-400/60 bg-purple-500/[0.08] text-purple-500 text-xs"
+                        title={pack?.name}
+                    >
+                        {packLabel}
+                    </span>
+                )}
             </div>
         </div>
     );
@@ -201,6 +230,8 @@ export function MainExperience() {
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
+    const phrasePackIds = useSettingsStore((s) => s.phrasePackIds);
+    const baseCorpusEnabled = useSettingsStore((s) => s.baseCorpusEnabled);
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
@@ -253,25 +284,29 @@ export function MainExperience() {
             const sub = await invoke<EntryOut>("get_random_entry_with_translations", {
                 levels,
                 domains,
+                phrasePackIds,
+                baseCorpusEnabled,
             });
             if (sub && mySeq === fetchSeqRef.current) {
                 replaceCurrent(sub.entry_id);
                 setCurrEntry(sub);
             }
         }
-    }, [levels, domains, replaceCurrent]);
+    }, [levels, domains, phrasePackIds, baseCorpusEnabled, replaceCurrent]);
 
     const fetchRandomEntry = useCallback(async () => {
         const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
             levels,
             domains,
+            phrasePackIds,
+            baseCorpusEnabled,
         });
         if (!entry) return;
 
         pushEntry(entry.entry_id);
         setCurrEntry(entry);
         incrementUtteranceCount();
-    }, [levels, domains, pushEntry, incrementUtteranceCount]);
+    }, [levels, domains, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
 
     // --- Effects ---------------------------------------------------------------
 
