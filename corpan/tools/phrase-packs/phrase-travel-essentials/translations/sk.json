@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Kde je toaleta?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Koľko to stojí?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Prepáčte, hovoríte po anglicky?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Ešte nehovorím týmto jazykom veľmi dobre.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Mohli by ste to povedať pomalšie?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Kde si môžem kúpiť lístok?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Je toto miesto obsadené?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Chcel by som jednolôžkovú izbu na dve noci.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Máte izbu s výhľadom na more?",
+    "romanization": null
+  },
+  "9": {
+    "text": "O koľkej sa podávajú raňajky?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Mohli by ste mi, prosím, priniesť jedálny lístok?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Som vegetarián.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Mám alergiu na arašidy.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Je voda z kohútika pitná?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Mohli by sme poprosiť účet?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Je obsluha zahrnutá v cene?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Môžem zaplatiť kartou?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Beriete hotovosť?",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mohol by som dostať potvrdenie?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Drobné si nechajte.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Z ktorého nástupišťa odchádza vlak?",
+    "romanization": null
+  },
+  "21": {
+    "text": "Má let meškanie?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Zmeškal som prípoj.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Kde je výdaj batožiny?",
+    "romanization": null
+  },
+  "24": {
+    "text": "Môj kufor neprišiel.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Mohli by ste mi zavolať taxík?",
+    "romanization": null
+  },
+  "26": {
+    "text": "Ako dlho trvá cesta?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Prosím, odvezte ma na túto adresu.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Mohli by ste zastaviť na rohu?",
+    "romanization": null
+  },
+  "29": {
+    "text": "Je tu niekde blízko stanica metra?",
+    "romanization": null
+  },
+  "30": {
+    "text": "Len sa pozerám, ďakujem.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Máte to v menšej veľkosti?",
+    "romanization": null
+  },
+  "32": {
+    "text": "Môžem si to vyskúšať?",
+    "romanization": null
+  },
+  "33": {
+    "text": "Kde je skúšobná kabínka?",
+    "romanization": null
+  },
+  "34": {
+    "text": "Je to v zľave?",
+    "romanization": null
+  },
+  "35": {
+    "text": "Dostanem zľavu, ak zaplatím v hotovosti?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Je to ručne vyrobené alebo z továrne?",
+    "romanization": null
+  },
+  "37": {
+    "text": "Vezmem si to.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Mohli by ste to zabaliť ako darček?",
+    "romanization": null
+  },
+  "39": {
+    "text": "Ako dlho platí záruka?",
+    "romanization": null
+  },
+  "40": {
+    "text": "Potrebujem navštíviť lekára.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Bolí ma hlava.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Kde je najbližšia lekáreň?",
+    "romanization": null
+  },
+  "43": {
+    "text": "Potrebujem na toto recept?",
+    "romanization": null
+  },
+  "44": {
+    "text": "Stratil som pas.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Kde je policajná stanica?",
+    "romanization": null
+  },
+  "46": {
+    "text": "Mohli by ste mi, prosím, pomôcť?",
+    "romanization": null
+  },
+  "47": {
+    "text": "Myslím, že som si nechal tašku v taxíku.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Prosím, zavolajte sanitku.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Je tu niekde blízko nemocnica?",
+    "romanization": null
+  },
+  "50": {
+    "text": "Vedeli by ste mi odporučiť dobrú reštauráciu v okolí?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Aká je miestna špecialita?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Rád by som ochutnal niečo tradičné.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Je to pikantné?",
+    "romanization": null
+  },
+  "54": {
+    "text": "Mohli by sme sedieť vonku?",
+    "romanization": null
+  },
+  "55": {
+    "text": "Neponáhľame sa.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Jedlo bolo výborné, ďakujeme.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Mohol by som dostať pohár vody bez ľadu?",
+    "romanization": null
+  },
+  "58": {
+    "text": "Je toto jedlo pripravené z morských plodov?",
+    "romanization": null
+  },
+  "59": {
+    "text": "Mohol by som si to vziať so sebou?",
+    "romanization": null
+  },
+  "60": {
+    "text": "Aké sú otváracie hodiny?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Môže sa vo vnútri fotografovať?",
+    "romanization": null
+  },
+  "62": {
+    "text": "Je k dispozícii komentovaná prehliadka v angličtine?",
+    "romanization": null
+  },
+  "63": {
+    "text": "Je múzeum v nedeľu zadarmo?",
+    "romanization": null
+  },
+  "64": {
+    "text": "Ako skoro by som mal prísť?",
+    "romanization": null
+  },
+  "65": {
+    "text": "Sú lístky online lacnejšie?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Môžeme s týmito lístkami preskočiť rad?",
+    "romanization": null
+  },
+  "67": {
+    "text": "Čo by som si tu určite nemal nechať ujsť?",
+    "romanization": null
+  },
+  "68": {
+    "text": "Mohli by ste nás odfotiť?",
+    "romanization": null
+  },
+  "69": {
+    "text": "Je bezpečné prechádzať sa tu v noci?",
+    "romanization": null
+  },
+  "70": {
+    "text": "Som tu na dovolenke.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Som tu pracovne.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Zostanem tu týždeň.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Som v tejto krajine prvýkrát.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Kam by si tu niekde zašiel na obed miestny?",
+    "romanization": null
+  },
+  "75": {
+    "text": "Aké najkrajšie miesto ste navštívili?",
+    "romanization": null
+  },
+  "76": {
+    "text": "Let bol dlhý, ale ten výhľad za to stál.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Snažím sa naučiť pár slov vo vašom jazyku.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Prajem pekný večer a ďakujem za všetko.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Rád by som sa sem raz vrátil.",
+    "romanization": null
+  }
+}

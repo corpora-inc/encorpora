@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Gde je toalet?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Koliko košta?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Izvinite, da li govorite engleski?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Još ne govorim ovaj jezik baš dobro.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Možete li to da kažete malo sporije?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Gde mogu da kupim kartu?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Da li je ovo mesto zauzeto?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Želeo bih jednokrevetnu sobu na dve noći.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Imate li sobu s pogledom na more?",
+    "romanization": null
+  },
+  "9": {
+    "text": "U koliko sati se služi doručak?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Mogu li da dobijem jelovnik, molim vas?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Vegetarijanac sam.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Alergičan sam na kikiriki.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Da li je voda iz česme bezbedna za piće?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Možemo li da dobijemo račun, molim vas?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Da li je usluga uključena?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Mogu li da platim karticom?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Da li primate gotovinu?",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mogu li da dobijem fiskalni račun?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Zadržite kusur.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Sa kog perona polazi voz?",
+    "romanization": null
+  },
+  "21": {
+    "text": "Da li je let odložen?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Propustio sam presedanje.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Gde se preuzima prtljag?",
+    "romanization": null
+  },
+  "24": {
+    "text": "Moj kofer nije stigao.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Možete li da mi pozovete taksi?",
+    "romanization": null
+  },
+  "26": {
+    "text": "Koliko traje putovanje?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Molim vas, odvezite me na ovu adresu.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Možete li da stanete na uglu?",
+    "romanization": null
+  },
+  "29": {
+    "text": "Ima li stanica metroa u blizini?",
+    "romanization": null
+  },
+  "30": {
+    "text": "Samo razgledam, hvala.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Imate li ovo u manjoj veličini?",
+    "romanization": null
+  },
+  "32": {
+    "text": "Mogu li da probam?",
+    "romanization": null
+  },
+  "33": {
+    "text": "Gde je kabina za presvlačenje?",
+    "romanization": null
+  },
+  "34": {
+    "text": "Da li je ovo na sniženju?",
+    "romanization": null
+  },
+  "35": {
+    "text": "Mogu li da dobijem popust ako platim gotovinom?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Da li je ovo ručni rad ili fabrička izrada?",
+    "romanization": null
+  },
+  "37": {
+    "text": "Uzimam.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Možete li da ga zapakujete kao poklon?",
+    "romanization": null
+  },
+  "39": {
+    "text": "Koliko traje garancija?",
+    "romanization": null
+  },
+  "40": {
+    "text": "Moram da posetim lekara.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Boli me glava.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Gde je najbliža apoteka?",
+    "romanization": null
+  },
+  "43": {
+    "text": "Da li mi je za ovo potreban recept?",
+    "romanization": null
+  },
+  "44": {
+    "text": "Izgubio sam pasoš.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Gde je policijska stanica?",
+    "romanization": null
+  },
+  "46": {
+    "text": "Možete li da mi pomognete, molim vas?",
+    "romanization": null
+  },
+  "47": {
+    "text": "Mislim da sam ostavio torbu u taksiju.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Molim vas, pozovite hitnu pomoć.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Ima li bolnica u blizini?",
+    "romanization": null
+  },
+  "50": {
+    "text": "Možete li da preporučite neki dobar restoran u okolini?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Koji je lokalni specijalitet?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Želeo bih da probam nešto tradicionalno.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Da li je ljuto?",
+    "romanization": null
+  },
+  "54": {
+    "text": "Možemo li da sednemo napolju?",
+    "romanization": null
+  },
+  "55": {
+    "text": "Ne žurimo.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Hrana je bila odlična, hvala.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Mogu li da dobijem čašu vode bez leda?",
+    "romanization": null
+  },
+  "58": {
+    "text": "Da li se ovo jelo pravi s morskim plodovima?",
+    "romanization": null
+  },
+  "59": {
+    "text": "Mogu li ovo da ponesem?",
+    "romanization": null
+  },
+  "60": {
+    "text": "Koje je radno vreme?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Da li je fotografisanje unutra dozvoljeno?",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ima li vođena tura na engleskom?",
+    "romanization": null
+  },
+  "63": {
+    "text": "Da li je muzej besplatan nedeljom?",
+    "romanization": null
+  },
+  "64": {
+    "text": "Koliko ranije treba da stignem?",
+    "romanization": null
+  },
+  "65": {
+    "text": "Da li su karte jeftinije onlajn?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Možemo li s ovim kartama da preskočimo red?",
+    "romanization": null
+  },
+  "67": {
+    "text": "Šta ne bi trebalo da propustim dok sam ovde?",
+    "romanization": null
+  },
+  "68": {
+    "text": "Možete li da nas fotografišete?",
+    "romanization": null
+  },
+  "69": {
+    "text": "Da li je bezbedno šetati noću?",
+    "romanization": null
+  },
+  "70": {
+    "text": "Ovde sam na odmoru.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Ovde sam poslovno.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Ostaću nedelju dana.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Prvi put sam u ovoj zemlji.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Gde bi neko odavde ručao u okolini?",
+    "romanization": null
+  },
+  "75": {
+    "text": "Koje je najlepše mesto koje ste posetili?",
+    "romanization": null
+  },
+  "76": {
+    "text": "Let je bio dug, ali pogled je vredelo videti.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Pokušavam da naučim nekoliko reči na vašem jeziku.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Prijatno veče i hvala vam na svemu.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Voleo bih da se jednog dana vratim ovde.",
+    "romanization": null
+  }
+}

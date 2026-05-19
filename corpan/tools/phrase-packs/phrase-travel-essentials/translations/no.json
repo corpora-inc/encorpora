@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Hvor er toalettet?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Hvor mye koster det?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Unnskyld, snakker du engelsk?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Jeg snakker ikke språket så godt ennå.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Kan du si det litt saktere?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Hvor kan jeg kjøpe billett?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Er denne plassen opptatt?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Jeg vil gjerne ha et enkeltrom for to netter.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Har dere et rom med havutsikt?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Når serveres frokosten?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Kan jeg få se menyen, takk?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Jeg er vegetarianer.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Jeg er allergisk mot peanøtter.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Er det trygt å drikke vannet fra springen?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Kan vi få regningen, takk?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Er service inkludert?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Kan jeg betale med kort?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Tar dere kontanter?",
+    "romanization": null
+  },
+  "18": {
+    "text": "Kan jeg få kvittering?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Bare behold resten.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Hvilken plattform går toget fra?",
+    "romanization": null
+  },
+  "21": {
+    "text": "Er flyet forsinket?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Jeg rakk ikke forbindelsen min.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Hvor er bagasjeutleveringen?",
+    "romanization": null
+  },
+  "24": {
+    "text": "Kofferten min kom ikke fram.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Kan du ringe etter en taxi for meg?",
+    "romanization": null
+  },
+  "26": {
+    "text": "Hvor lang tid tar reisen?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Kan du kjøre meg til denne adressen?",
+    "romanization": null
+  },
+  "28": {
+    "text": "Kan du stoppe ved hjørnet?",
+    "romanization": null
+  },
+  "29": {
+    "text": "Er det en metrostasjon i nærheten?",
+    "romanization": null
+  },
+  "30": {
+    "text": "Jeg bare kikker, takk.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Har dere denne i en mindre størrelse?",
+    "romanization": null
+  },
+  "32": {
+    "text": "Kan jeg prøve den?",
+    "romanization": null
+  },
+  "33": {
+    "text": "Hvor er prøverommet?",
+    "romanization": null
+  },
+  "34": {
+    "text": "Er denne på salg?",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kan jeg få rabatt hvis jeg betaler kontant?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Er denne håndlaget eller fabrikkprodusert?",
+    "romanization": null
+  },
+  "37": {
+    "text": "Jeg tar den.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Kan du pakke den inn som gave?",
+    "romanization": null
+  },
+  "39": {
+    "text": "Hvor lang garanti er det?",
+    "romanization": null
+  },
+  "40": {
+    "text": "Jeg trenger å få tak i en lege.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Jeg har vondt i hodet.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Hvor er nærmeste apotek?",
+    "romanization": null
+  },
+  "43": {
+    "text": "Trenger jeg resept på dette?",
+    "romanization": null
+  },
+  "44": {
+    "text": "Jeg har mistet passet mitt.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Hvor er politistasjonen?",
+    "romanization": null
+  },
+  "46": {
+    "text": "Kan du hjelpe meg, er du snill?",
+    "romanization": null
+  },
+  "47": {
+    "text": "Jeg tror jeg glemte vesken min i taxien.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Ring etter ambulanse, vær så snill.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Er det et sykehus i nærheten?",
+    "romanization": null
+  },
+  "50": {
+    "text": "Kan du anbefale en god restaurant i nærheten?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Hva er den lokale spesialiteten?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Jeg vil gjerne prøve noe tradisjonelt.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Er det sterkt?",
+    "romanization": null
+  },
+  "54": {
+    "text": "Kan vi sitte ute?",
+    "romanization": null
+  },
+  "55": {
+    "text": "Vi har ikke dårlig tid.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Maten var kjempegod, tusen takk.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Kan jeg få et glass vann uten is?",
+    "romanization": null
+  },
+  "58": {
+    "text": "Er denne retten laget med sjømat?",
+    "romanization": null
+  },
+  "59": {
+    "text": "Kan jeg få dette med meg?",
+    "romanization": null
+  },
+  "60": {
+    "text": "Hva er åpningstidene?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Er det lov å fotografere inne?",
+    "romanization": null
+  },
+  "62": {
+    "text": "Finnes det en guidet omvisning på engelsk?",
+    "romanization": null
+  },
+  "63": {
+    "text": "Er museet gratis på søndager?",
+    "romanization": null
+  },
+  "64": {
+    "text": "Hvor tidlig bør jeg komme?",
+    "romanization": null
+  },
+  "65": {
+    "text": "Er billettene billigere på nett?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Kan vi slippe køen med disse billettene?",
+    "romanization": null
+  },
+  "67": {
+    "text": "Hva bør jeg få med meg mens jeg er her?",
+    "romanization": null
+  },
+  "68": {
+    "text": "Kan du ta et bilde av oss?",
+    "romanization": null
+  },
+  "69": {
+    "text": "Er det trygt å gå rundt her om kvelden?",
+    "romanization": null
+  },
+  "70": {
+    "text": "Jeg er her på ferie.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Jeg er her i jobbsammenheng.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Jeg skal være her i en uke.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Det er første gang jeg er i dette landet.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Hvor ville en lokal person spist lunsj her i nærheten?",
+    "romanization": null
+  },
+  "75": {
+    "text": "Hva er det vakreste stedet du har besøkt?",
+    "romanization": null
+  },
+  "76": {
+    "text": "Flyturen var lang, men utsikten var verdt det.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Jeg prøver å lære noen ord på språket ditt.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Ha en fin kveld, og takk for alt.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Jeg vil veldig gjerne komme tilbake hit en dag.",
+    "romanization": null
+  }
+}

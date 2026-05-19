@@ -1,0 +1,25 @@
+{
+  "onboardingStarterPackIds": [
+    "phrase-travel-essentials",
+    "phrase-learning"
+  ],
+  "phrasePackGroups": [
+    {
+      "id": "starter",
+      "label": "Essentials",
+      "description": "Broadly useful phrase packs to start with.",
+      "packIds": [
+        "phrase-travel-essentials",
+        "phrase-learning"
+      ]
+    },
+    {
+      "id": "sciences",
+      "label": "Sciences",
+      "description": "Topic packs for natural-science vocabulary.",
+      "packIds": [
+        "phrase-botany-basics"
+      ]
+    }
+  ]
+}

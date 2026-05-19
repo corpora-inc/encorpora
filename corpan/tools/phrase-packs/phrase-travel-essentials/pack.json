@@ -1,0 +1,10 @@
+{
+  "id": "phrase-travel-essentials",
+  "version": "0.1.0",
+  "name": "Travel Essentials",
+  "description": "Airports, hotels, taxis, asking for help, ordering food on the road. The phrases you reach for when you're not at home.",
+  "category": "travel",
+  "topic": "Travel",
+  "icon": "plane",
+  "accent_color": "#60a5fa"
+}

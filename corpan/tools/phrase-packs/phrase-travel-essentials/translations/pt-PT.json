@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Onde fica a casa de banho?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Quanto custa?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Desculpe, fala inglês?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Ainda não falo muito bem a língua.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Pode dizer isso mais devagar?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Onde posso comprar um bilhete?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Este lugar está ocupado?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Queria um quarto individual para duas noites.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Tem algum quarto com vista para o mar?",
+    "romanization": null
+  },
+  "9": {
+    "text": "A que horas é servido o pequeno-almoço?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Podia ver a ementa, por favor?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Sou vegetariano.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Sou alérgico a amendoins.",
+    "romanization": null
+  },
+  "13": {
+    "text": "A água da torneira é própria para beber?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Podia trazer-nos a conta, por favor?",
+    "romanization": null
+  },
+  "15": {
+    "text": "O serviço está incluído?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Posso pagar com cartão?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Aceitam dinheiro?",
+    "romanization": null
+  },
+  "18": {
+    "text": "Podia dar-me um recibo?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Fique com o troco.",
+    "romanization": null
+  },
+  "20": {
+    "text": "De que plataforma sai o comboio?",
+    "romanization": null
+  },
+  "21": {
+    "text": "O voo está atrasado?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Perdi a minha ligação.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Onde é a recolha de bagagem?",
+    "romanization": null
+  },
+  "24": {
+    "text": "A minha mala não chegou.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Podia chamar-me um táxi?",
+    "romanization": null
+  },
+  "26": {
+    "text": "Quanto tempo demora a viagem?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Leve-me a esta morada, por favor.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Pode parar ali na esquina?",
+    "romanization": null
+  },
+  "29": {
+    "text": "Há alguma estação de metro aqui perto?",
+    "romanization": null
+  },
+  "30": {
+    "text": "Estou só a ver, obrigado.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Tem isto num tamanho mais pequeno?",
+    "romanization": null
+  },
+  "32": {
+    "text": "Posso experimentar?",
+    "romanization": null
+  },
+  "33": {
+    "text": "Onde fica o provador?",
+    "romanization": null
+  },
+  "34": {
+    "text": "Isto está em saldo?",
+    "romanization": null
+  },
+  "35": {
+    "text": "Faz desconto se eu pagar em dinheiro?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Isto é feito à mão ou em fábrica?",
+    "romanization": null
+  },
+  "37": {
+    "text": "Levo isto.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Podia embrulhar para oferta?",
+    "romanization": null
+  },
+  "39": {
+    "text": "Quanto tempo tem de garantia?",
+    "romanization": null
+  },
+  "40": {
+    "text": "Preciso de ver um médico.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Tenho dor de cabeça.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Onde fica a farmácia mais próxima?",
+    "romanization": null
+  },
+  "43": {
+    "text": "Preciso de receita para isto?",
+    "romanization": null
+  },
+  "44": {
+    "text": "Perdi o meu passaporte.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Onde fica a esquadra da polícia?",
+    "romanization": null
+  },
+  "46": {
+    "text": "Podia ajudar-me, por favor?",
+    "romanization": null
+  },
+  "47": {
+    "text": "Acho que deixei a minha mala no táxi.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Chame uma ambulância, por favor.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Há algum hospital aqui perto?",
+    "romanization": null
+  },
+  "50": {
+    "text": "Pode recomendar um bom restaurante aqui por perto?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Qual é a especialidade local?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Gostava de experimentar algo tradicional.",
+    "romanization": null
+  },
+  "53": {
+    "text": "É picante?",
+    "romanization": null
+  },
+  "54": {
+    "text": "Podemos sentar-nos lá fora?",
+    "romanization": null
+  },
+  "55": {
+    "text": "Não temos pressa.",
+    "romanization": null
+  },
+  "56": {
+    "text": "A comida estava deliciosa, obrigado.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Podia trazer-me um copo de água sem gelo?",
+    "romanization": null
+  },
+  "58": {
+    "text": "Este prato leva marisco?",
+    "romanization": null
+  },
+  "59": {
+    "text": "Posso levar isto para fora?",
+    "romanization": null
+  },
+  "60": {
+    "text": "Qual é o horário de funcionamento?",
+    "romanization": null
+  },
+  "61": {
+    "text": "É permitido tirar fotografias lá dentro?",
+    "romanization": null
+  },
+  "62": {
+    "text": "Há visita guiada em inglês?",
+    "romanization": null
+  },
+  "63": {
+    "text": "O museu é gratuito aos domingos?",
+    "romanization": null
+  },
+  "64": {
+    "text": "Com que antecedência devo chegar?",
+    "romanization": null
+  },
+  "65": {
+    "text": "Os bilhetes são mais baratos online?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Com estes bilhetes podemos passar à frente na fila?",
+    "romanization": null
+  },
+  "67": {
+    "text": "O que é que não devo perder enquanto estou aqui?",
+    "romanization": null
+  },
+  "68": {
+    "text": "Pode tirar-nos uma fotografia?",
+    "romanization": null
+  },
+  "69": {
+    "text": "É seguro andar por aqui à noite?",
+    "romanization": null
+  },
+  "70": {
+    "text": "Estou cá de férias.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Estou cá em trabalho.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Vou ficar uma semana.",
+    "romanization": null
+  },
+  "73": {
+    "text": "É a minha primeira vez neste país.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Onde é que uma pessoa daqui almoçaria por esta zona?",
+    "romanization": null
+  },
+  "75": {
+    "text": "Qual foi o sítio mais bonito que já visitou?",
+    "romanization": null
+  },
+  "76": {
+    "text": "O voo foi longo, mas a vista valeu a pena.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Estou a tentar aprender algumas palavras na sua língua.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Tenha uma boa noite, e obrigado por tudo.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Gostava muito de voltar cá um dia.",
+    "romanization": null
+  }
+}

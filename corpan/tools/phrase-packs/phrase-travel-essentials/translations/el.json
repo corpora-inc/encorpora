@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Πού είναι η τουαλέτα;",
+    "romanization": "Pou einai i toualeta?"
+  },
+  "1": {
+    "text": "Πόσο κοστίζει;",
+    "romanization": "Poso kostizei?"
+  },
+  "2": {
+    "text": "Συγγνώμη, μιλάτε αγγλικά;",
+    "romanization": "Syngnomi, milate anglika?"
+  },
+  "3": {
+    "text": "Δεν μιλάω ακόμα πολύ καλά τη γλώσσα.",
+    "romanization": "Den milao akoma poly kala ti glossa."
+  },
+  "4": {
+    "text": "Μπορείτε να το πείτε πιο αργά;",
+    "romanization": "Boreite na to peite pio arga?"
+  },
+  "5": {
+    "text": "Πού μπορώ να αγοράσω εισιτήριο;",
+    "romanization": "Pou boro na agoraso eisitirio?"
+  },
+  "6": {
+    "text": "Είναι πιασμένη αυτή η θέση;",
+    "romanization": "Einai piasmeni afti i thesi?"
+  },
+  "7": {
+    "text": "Θα ήθελα ένα μονόκλινο δωμάτιο για δύο νύχτες.",
+    "romanization": "Tha ithela ena monoklino domatio gia dyo nychtes."
+  },
+  "8": {
+    "text": "Έχετε δωμάτιο με θέα στη θάλασσα;",
+    "romanization": "Echete domatio me thea sti thalassa?"
+  },
+  "9": {
+    "text": "Τι ώρα σερβίρεται το πρωινό;",
+    "romanization": "Ti ora servirεται to proino?"
+  },
+  "10": {
+    "text": "Μπορώ να δω το μενού, παρακαλώ;",
+    "romanization": "Boro na do to menou, parakalo?"
+  },
+  "11": {
+    "text": "Είμαι χορτοφάγος.",
+    "romanization": "Eimai chortofagos."
+  },
+  "12": {
+    "text": "Έχω αλλεργία στα φιστίκια.",
+    "romanization": "Echo allergia sta fistikia."
+  },
+  "13": {
+    "text": "Το νερό της βρύσης είναι πόσιμο;",
+    "romanization": "To nero tis vrysis einai posimo?"
+  },
+  "14": {
+    "text": "Μπορούμε να έχουμε τον λογαριασμό, παρακαλώ;",
+    "romanization": "Boroume na echoume ton logariasmo, parakalo?"
+  },
+  "15": {
+    "text": "Περιλαμβάνεται το σέρβις;",
+    "romanization": "Perilamvanetai to servis?"
+  },
+  "16": {
+    "text": "Μπορώ να πληρώσω με κάρτα;",
+    "romanization": "Boro na pliroso me karta?"
+  },
+  "17": {
+    "text": "Δέχεστε μετρητά;",
+    "romanization": "Decheste metrita?"
+  },
+  "18": {
+    "text": "Μπορώ να έχω μια απόδειξη;",
+    "romanization": "Boro na echo mia apodeixi?"
+  },
+  "19": {
+    "text": "Κρατήστε τα ρέστα.",
+    "romanization": "Kratiste ta resta."
+  },
+  "20": {
+    "text": "Από ποια αποβάθρα φεύγει το τρένο;",
+    "romanization": "Apo poia apovathra fevgei to treno?"
+  },
+  "21": {
+    "text": "Έχει καθυστέρηση η πτήση;",
+    "romanization": "Echei kathysterisi i ptisi?"
+  },
+  "22": {
+    "text": "Έχασα την ανταπόκρισή μου.",
+    "romanization": "Echasa tin antapokrisi mou."
+  },
+  "23": {
+    "text": "Πού είναι η παραλαβή αποσκευών;",
+    "romanization": "Pou einai i paralavi aposkevon?"
+  },
+  "24": {
+    "text": "Η βαλίτσα μου δεν έφτασε.",
+    "romanization": "I valitsa mou den eftase."
+  },
+  "25": {
+    "text": "Μπορείτε να μου καλέσετε ένα ταξί;",
+    "romanization": "Boreite na mou kalesete ena taxi?"
+  },
+  "26": {
+    "text": "Πόση ώρα διαρκεί η διαδρομή;",
+    "romanization": "Posi ora diarkei i diadromi?"
+  },
+  "27": {
+    "text": "Πηγαίνετέ με σε αυτή τη διεύθυνση, παρακαλώ.",
+    "romanization": "Pigainete me se afti ti diefthynsi, parakalo."
+  },
+  "28": {
+    "text": "Μπορείτε να σταματήσετε στη γωνία;",
+    "romanization": "Boreite na stamatisete sti gonia?"
+  },
+  "29": {
+    "text": "Υπάρχει σταθμός μετρό κοντά εδώ;",
+    "romanization": "Yparchei stathmos metro konta edo?"
+  },
+  "30": {
+    "text": "Απλώς κοιτάζω, ευχαριστώ.",
+    "romanization": "Aplos koitazo, efcharisto."
+  },
+  "31": {
+    "text": "Το έχετε σε μικρότερο μέγεθος;",
+    "romanization": "To echete se mikrotero megethos?"
+  },
+  "32": {
+    "text": "Μπορώ να το δοκιμάσω;",
+    "romanization": "Boro na to dokimaso?"
+  },
+  "33": {
+    "text": "Πού είναι το δοκιμαστήριο;",
+    "romanization": "Pou einai to dokimastirio?"
+  },
+  "34": {
+    "text": "Είναι σε προσφορά;",
+    "romanization": "Einai se prosfora?"
+  },
+  "35": {
+    "text": "Μπορώ να έχω έκπτωση αν πληρώσω μετρητά;",
+    "romanization": "Boro na echo ekptosi an pliroso metrita?"
+  },
+  "36": {
+    "text": "Είναι χειροποίητο ή βιομηχανικής παραγωγής;",
+    "romanization": "Einai cheiropoiito i viomichanikis paragogis?"
+  },
+  "37": {
+    "text": "Θα το πάρω.",
+    "romanization": "Tha to paro."
+  },
+  "38": {
+    "text": "Μπορείτε να το τυλίξετε για δώρο;",
+    "romanization": "Boreite na to tylixete gia doro?"
+  },
+  "39": {
+    "text": "Πόσο διαρκεί η εγγύηση;",
+    "romanization": "Poso diarkei i engyisi?"
+  },
+  "40": {
+    "text": "Χρειάζομαι γιατρό.",
+    "romanization": "Chreiazomai giatro."
+  },
+  "41": {
+    "text": "Έχω πονοκέφαλο.",
+    "romanization": "Echo ponokefalo."
+  },
+  "42": {
+    "text": "Πού είναι το κοντινότερο φαρμακείο;",
+    "romanization": "Pou einai to kontinotero farmakeio?"
+  },
+  "43": {
+    "text": "Χρειάζομαι συνταγή γι’ αυτό;",
+    "romanization": "Chreiazomai syntagi gi' afto?"
+  },
+  "44": {
+    "text": "Έχασα το διαβατήριό μου.",
+    "romanization": "Echasa to diavatirio mou."
+  },
+  "45": {
+    "text": "Πού είναι το αστυνομικό τμήμα;",
+    "romanization": "Pou einai to astynomiko tmima?"
+  },
+  "46": {
+    "text": "Μπορείτε να με βοηθήσετε, παρακαλώ;",
+    "romanization": "Boreite na me voithisete, parakalo?"
+  },
+  "47": {
+    "text": "Νομίζω ότι άφησα την τσάντα μου στο ταξί.",
+    "romanization": "Nomizo oti afisa tin tsanta mou sto taxi."
+  },
+  "48": {
+    "text": "Καλέστε ασθενοφόρο, παρακαλώ.",
+    "romanization": "Kaleste asthenoforo, parakalo."
+  },
+  "49": {
+    "text": "Υπάρχει νοσοκομείο κοντά;",
+    "romanization": "Yparchei nosokomeio konta?"
+  },
+  "50": {
+    "text": "Μπορείτε να μου προτείνετε ένα καλό εστιατόριο εδώ γύρω;",
+    "romanization": "Boreite na mou proteinete ena kalo estiatorio edo gyro?"
+  },
+  "51": {
+    "text": "Ποια είναι η τοπική σπεσιαλιτέ;",
+    "romanization": "Poia einai i topiki spesialite?"
+  },
+  "52": {
+    "text": "Θα ήθελα να δοκιμάσω κάτι παραδοσιακό.",
+    "romanization": "Tha ithela na dokimaso kati paradosiako."
+  },
+  "53": {
+    "text": "Είναι καυτερό;",
+    "romanization": "Einai kaft ero?"
+  },
+  "54": {
+    "text": "Μπορούμε να καθίσουμε έξω;",
+    "romanization": "Boroume na kathisoume exo?"
+  },
+  "55": {
+    "text": "Δεν βιαζόμαστε.",
+    "romanization": "Den viazomaste."
+  },
+  "56": {
+    "text": "Το φαγητό ήταν πεντανόστιμο, ευχαριστούμε.",
+    "romanization": "To fagito itan pentanostimo, efcharistoume."
+  },
+  "57": {
+    "text": "Μπορώ να έχω ένα ποτήρι νερό χωρίς πάγο;",
+    "romanization": "Boro na echo ena potiri nero choris pago?"
+  },
+  "58": {
+    "text": "Αυτό το πιάτο έχει θαλασσινά;",
+    "romanization": "Afto to piato echei thalassina?"
+  },
+  "59": {
+    "text": "Μπορώ να το πάρω σε πακέτο;",
+    "romanization": "Boro na to paro se paketo?"
+  },
+  "60": {
+    "text": "Ποιες είναι οι ώρες λειτουργίας;",
+    "romanization": "Poies einai oi ores leitourgias?"
+  },
+  "61": {
+    "text": "Επιτρέπεται η φωτογράφιση μέσα;",
+    "romanization": "Epitrepetai i fotografisi mesa?"
+  },
+  "62": {
+    "text": "Υπάρχει ξενάγηση στα αγγλικά;",
+    "romanization": "Yparchei xenagisi sta anglika?"
+  },
+  "63": {
+    "text": "Το μουσείο είναι δωρεάν τις Κυριακές;",
+    "romanization": "To mouseio einai dorean tis Kyriakes?"
+  },
+  "64": {
+    "text": "Πόσο νωρίς πρέπει να έρθω;",
+    "romanization": "Poso noris prepei na ertho?"
+  },
+  "65": {
+    "text": "Τα εισιτήρια είναι φθηνότερα online;",
+    "romanization": "Ta eisitiria einai fthinotera online?"
+  },
+  "66": {
+    "text": "Μπορούμε να περάσουμε χωρίς ουρά με αυτά τα εισιτήρια;",
+    "romanization": "Boroume na perasoume choris oura me afta ta eisitiria?"
+  },
+  "67": {
+    "text": "Τι δεν πρέπει να χάσω όσο είμαι εδώ;",
+    "romanization": "Ti den prepei na chaso oso eimai edo?"
+  },
+  "68": {
+    "text": "Μπορείτε να μας βγάλετε μια φωτογραφία;",
+    "romanization": "Boreite na mas vgalete mia fotografia?"
+  },
+  "69": {
+    "text": "Είναι ασφαλές να κυκλοφορεί κανείς τη νύχτα;",
+    "romanization": "Einai asfales na kykloforei kaneis ti nychta?"
+  },
+  "70": {
+    "text": "Είμαι εδώ για διακοπές.",
+    "romanization": "Eimai edo gia diakopes."
+  },
+  "71": {
+    "text": "Είμαι εδώ για δουλειά.",
+    "romanization": "Eimai edo gia douleia."
+  },
+  "72": {
+    "text": "Θα μείνω για μία εβδομάδα.",
+    "romanization": "Tha meino gia mia evdomada."
+  },
+  "73": {
+    "text": "Είναι η πρώτη μου φορά σε αυτή τη χώρα.",
+    "romanization": "Einai i proti mou fora se afti ti chora."
+  },
+  "74": {
+    "text": "Πού θα έτρωγε μεσημεριανό ένας ντόπιος εδώ γύρω;",
+    "romanization": "Pou tha etroge mesimeriano enas ntopios edo gyro?"
+  },
+  "75": {
+    "text": "Ποιο είναι το πιο όμορφο μέρος που έχετε επισκεφθεί;",
+    "romanization": "Poio einai to pio omorfo meros pou echete episkefthei?"
+  },
+  "76": {
+    "text": "Η πτήση ήταν μεγάλη, αλλά η θέα άξιζε τον κόπο.",
+    "romanization": "I ptisi itan megali, alla i thea axize ton kopo."
+  },
+  "77": {
+    "text": "Προσπαθώ να μάθω λίγες λέξεις στη γλώσσα σας.",
+    "romanization": "Prospatho na matho liges lexeis sti glossa sas."
+  },
+  "78": {
+    "text": "Καλό σας βράδυ και ευχαριστώ για όλα.",
+    "romanization": "Kalo sas vrady kai efcharisto gia ola."
+  },
+  "79": {
+    "text": "Θα ήθελα πολύ να ξανάρθω εδώ κάποια μέρα.",
+    "romanization": "Tha ithela poly na xanartho edo kapoia mera."
+  }
+}

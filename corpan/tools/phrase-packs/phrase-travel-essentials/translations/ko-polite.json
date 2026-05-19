@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "화장실이 어디에 있나요?",
+    "romanization": "Hwajangsiri eodie innayo?"
+  },
+  "1": {
+    "text": "얼마인가요?",
+    "romanization": "Eolmaingayo?"
+  },
+  "2": {
+    "text": "실례합니다, 영어 하실 수 있나요?",
+    "romanization": "Sillyehamnida, yeongeo hasil su innayo?"
+  },
+  "3": {
+    "text": "아직 이 언어를 잘 못해요.",
+    "romanization": "Ajik i eoneoreul jal motaeyo."
+  },
+  "4": {
+    "text": "조금 더 천천히 말씀해 주시겠어요?",
+    "romanization": "Jogeum deo cheoncheonhi malsseumhae jusigesseoyo?"
+  },
+  "5": {
+    "text": "표는 어디에서 살 수 있나요?",
+    "romanization": "Pyoneun eodieseo sal su innayo?"
+  },
+  "6": {
+    "text": "이 자리 비어 있나요?",
+    "romanization": "I jari bieo innayo?"
+  },
+  "7": {
+    "text": "싱글룸으로 이틀 묵고 싶어요.",
+    "romanization": "Singgeullumeuro iteul mukgo sipeoyo."
+  },
+  "8": {
+    "text": "바다가 보이는 방이 있나요?",
+    "romanization": "Badaga boineun bangi innayo?"
+  },
+  "9": {
+    "text": "아침 식사는 몇 시에 제공되나요?",
+    "romanization": "Achim siksaneun myeot sie jegongdoenayo?"
+  },
+  "10": {
+    "text": "메뉴 좀 볼 수 있을까요?",
+    "romanization": "Menyu jom bol su isseulkkayo?"
+  },
+  "11": {
+    "text": "저는 채식주의자예요.",
+    "romanization": "Jeoneun chaesikjuuijayeyo."
+  },
+  "12": {
+    "text": "저는 땅콩 알레르기가 있어요.",
+    "romanization": "Jeoneun ttangkong allereugiga isseoyo."
+  },
+  "13": {
+    "text": "수돗물을 마셔도 괜찮나요?",
+    "romanization": "Sudonmureul masyeodo gwaenchannayo?"
+  },
+  "14": {
+    "text": "계산서 부탁드려요.",
+    "romanization": "Gyesanseo butakdeuryeoyo."
+  },
+  "15": {
+    "text": "서비스 요금이 포함되어 있나요?",
+    "romanization": "Seobiseu yogeumi pohamdoeeo innayo?"
+  },
+  "16": {
+    "text": "카드로 결제할 수 있나요?",
+    "romanization": "Kadeuro gyeoljehal su innayo?"
+  },
+  "17": {
+    "text": "현금도 받으시나요?",
+    "romanization": "Hyeongeumdo badeusinayo?"
+  },
+  "18": {
+    "text": "영수증 받을 수 있을까요?",
+    "romanization": "Yeongsujeung badeul su isseulkkayo?"
+  },
+  "19": {
+    "text": "거스름돈은 괜찮아요.",
+    "romanization": "Geoseureumdoneun gwaenchanayo."
+  },
+  "20": {
+    "text": "기차는 몇 번 승강장에서 출발하나요?",
+    "romanization": "Gichaneun myeot beon seunggangjangeseo chulbalhanayo?"
+  },
+  "21": {
+    "text": "비행기가 지연됐나요?",
+    "romanization": "Bihaenggiga jiyeondoenna yo?"
+  },
+  "22": {
+    "text": "환승편을 놓쳤어요.",
+    "romanization": "Hwanseungpyeoneul nochyeosseoyo."
+  },
+  "23": {
+    "text": "수하물 찾는 곳이 어디인가요?",
+    "romanization": "Suhamul chatneun gosi eodiingayo?"
+  },
+  "24": {
+    "text": "제 여행 가방이 도착하지 않았어요.",
+    "romanization": "Je yeohaeng gabangi dochakaji anasseoyo."
+  },
+  "25": {
+    "text": "택시를 불러 주시겠어요?",
+    "romanization": "Taeksireul bulleo jusigesseoyo?"
+  },
+  "26": {
+    "text": "가는 데 얼마나 걸리나요?",
+    "romanization": "Ganeun de eolmana geollinayo?"
+  },
+  "27": {
+    "text": "이 주소로 가 주세요.",
+    "romanization": "I jusoro ga juseyo."
+  },
+  "28": {
+    "text": "모퉁이에서 세워 주시겠어요?",
+    "romanization": "Motungieseo sewo jusigesseoyo?"
+  },
+  "29": {
+    "text": "이 근처에 지하철역이 있나요?",
+    "romanization": "I geuncheoe jihacheollyeogi innayo?"
+  },
+  "30": {
+    "text": "그냥 둘러보는 중이에요, 감사합니다.",
+    "romanization": "Geunyang dulleoboneun jungieyo, gamsahamnida."
+  },
+  "31": {
+    "text": "이거 더 작은 사이즈가 있나요?",
+    "romanization": "Igeo deo jageun saijeuga innayo?"
+  },
+  "32": {
+    "text": "입어 봐도 될까요?",
+    "romanization": "Ibeo bwado doelkkayo?"
+  },
+  "33": {
+    "text": "탈의실이 어디인가요?",
+    "romanization": "Taru isiri eodiingayo?"
+  },
+  "34": {
+    "text": "이거 할인 중인가요?",
+    "romanization": "Igeo harin jungingayo?"
+  },
+  "35": {
+    "text": "현금으로 내면 할인해 주시나요?",
+    "romanization": "Hyeongeumeuro naemyeon harinhae jusinayo?"
+  },
+  "36": {
+    "text": "이건 수제품인가요, 공장에서 만든 건가요?",
+    "romanization": "Igeon sujepumingayo, gongjangeseo mandeun geongayo?"
+  },
+  "37": {
+    "text": "이걸로 할게요.",
+    "romanization": "Igeollo halgeyo."
+  },
+  "38": {
+    "text": "선물 포장해 주시겠어요?",
+    "romanization": "Seonmul pojanghae jusigesseoyo?"
+  },
+  "39": {
+    "text": "보증 기간은 얼마나 되나요?",
+    "romanization": "Bojeung giganeun eolmana doenayo?"
+  },
+  "40": {
+    "text": "의사를 만나야 해요.",
+    "romanization": "Uisareul mannaya haeyo."
+  },
+  "41": {
+    "text": "머리가 아파요.",
+    "romanization": "Meoriga apayo."
+  },
+  "42": {
+    "text": "가장 가까운 약국이 어디인가요?",
+    "romanization": "Gajang gakkaun yakgugi eodiingayo?"
+  },
+  "43": {
+    "text": "이건 처방전이 필요한가요?",
+    "romanization": "Igeon cheobangjeoni piryohangayo?"
+  },
+  "44": {
+    "text": "여권을 잃어버렸어요.",
+    "romanization": "Yeogwoneul ireobeoryeosseoyo."
+  },
+  "45": {
+    "text": "경찰서가 어디인가요?",
+    "romanization": "Gyeongchalseoga eodiingayo?"
+  },
+  "46": {
+    "text": "도와주시겠어요?",
+    "romanization": "Dowajusigesseoyo?"
+  },
+  "47": {
+    "text": "가방을 택시에 두고 내린 것 같아요.",
+    "romanization": "Gabangeul taeksie dugo naerin geot gatayo."
+  },
+  "48": {
+    "text": "구급차를 불러 주세요.",
+    "romanization": "Gugeupchareul bulleo juseyo."
+  },
+  "49": {
+    "text": "근처에 병원이 있나요?",
+    "romanization": "Geuncheoe byeongwoni innayo?"
+  },
+  "50": {
+    "text": "이 근처에 괜찮은 식당 추천해 주시겠어요?",
+    "romanization": "I geuncheoe gwaenchaneun sikdang chucheonhae jusigesseoyo?"
+  },
+  "51": {
+    "text": "이 지역 대표 음식이 뭐예요?",
+    "romanization": "I jiyeok daepyo eumsigi mwoyeyo?"
+  },
+  "52": {
+    "text": "전통적인 음식을 먹어 보고 싶어요.",
+    "romanization": "Jeontongjeogin eumsigeul meogeo bogo sipeoyo."
+  },
+  "53": {
+    "text": "매운가요?",
+    "romanization": "Maeungayo?"
+  },
+  "54": {
+    "text": "밖에 앉을 수 있을까요?",
+    "romanization": "Bakke anjeul su isseulkkayo?"
+  },
+  "55": {
+    "text": "저희는 서두르지 않아도 돼요.",
+    "romanization": "Jeohuineun seodureuji anado dwaeyo."
+  },
+  "56": {
+    "text": "음식이 정말 맛있었어요, 감사합니다.",
+    "romanization": "Eumsigi jeongmal masisseosseoyo, gamsahamnida."
+  },
+  "57": {
+    "text": "얼음 없이 물 한 잔 주시겠어요?",
+    "romanization": "Eoreum eopsi mul han jan jusigesseoyo?"
+  },
+  "58": {
+    "text": "이 요리에 해산물이 들어가나요?",
+    "romanization": "I yorie haesanmuri deureoganayo?"
+  },
+  "59": {
+    "text": "이거 포장해 갈 수 있을까요?",
+    "romanization": "Igeo pojanghae gal su isseulkkayo?"
+  },
+  "60": {
+    "text": "영업시간이 어떻게 되나요?",
+    "romanization": "Yeongeopsigani eotteoke doenayo?"
+  },
+  "61": {
+    "text": "안에서 사진 촬영이 가능한가요?",
+    "romanization": "Aneseo sajin ch waryeongi ganeunghangayo?"
+  },
+  "62": {
+    "text": "영어 가이드 투어가 있나요?",
+    "romanization": "Yeongeo gaideu tueoga innayo?"
+  },
+  "63": {
+    "text": "박물관은 일요일에 무료인가요?",
+    "romanization": "Bangmulgwaneun iryoire mury oingayo?"
+  },
+  "64": {
+    "text": "얼마나 일찍 도착해야 하나요?",
+    "romanization": "Eolmana iljjik dochakhaeya hanayo?"
+  },
+  "65": {
+    "text": "온라인으로 사면 표가 더 저렴한가요?",
+    "romanization": "Onllain-euro samyeon pyoga deo jeoryeomhangayo?"
+  },
+  "66": {
+    "text": "이 표로 줄을 건너뛸 수 있나요?",
+    "romanization": "I pyoro jureul geonneottwil su innayo?"
+  },
+  "67": {
+    "text": "여기에서 꼭 봐야 할 게 뭐가 있을까요?",
+    "romanization": "Yeogieseo kkok bwaya hal ge mwoga isseulkkayo?"
+  },
+  "68": {
+    "text": "저희 사진 좀 찍어 주시겠어요?",
+    "romanization": "Jeohui sajin jom jjigeo jusigesseoyo?"
+  },
+  "69": {
+    "text": "밤에 돌아다녀도 안전한가요?",
+    "romanization": "Bame doradanyeodo anjeonhangayo?"
+  },
+  "70": {
+    "text": "휴가로 왔어요.",
+    "romanization": "Hyugaro wasseoyo."
+  },
+  "71": {
+    "text": "일 때문에 왔어요.",
+    "romanization": "Il ttaemune wasseoyo."
+  },
+  "72": {
+    "text": "일주일 동안 머물 예정이에요.",
+    "romanization": "Ilju il dongan meomul yejeongieyo."
+  },
+  "73": {
+    "text": "이 나라에는 처음 와 봤어요.",
+    "romanization": "I naraeneun cheoeum wa bwasseoyo."
+  },
+  "74": {
+    "text": "이 근처에서 현지 사람들은 점심을 어디에서 먹나요?",
+    "romanization": "I geuncheoeseo hyeonji saramdeureun jeomsimeul eodieseo meongnayo?"
+  },
+  "75": {
+    "text": "가 보신 곳 중에 가장 아름다웠던 곳은 어디인가요?",
+    "romanization": "Ga bosin got junge gajang areumdawotdeon goseun eodiingayo?"
+  },
+  "76": {
+    "text": "비행은 길었지만, 전망이 그만한 가치가 있었어요.",
+    "romanization": "Bihaengeun gireotjiman, jeonmangi geumanhan gachiga isseosseoyo."
+  },
+  "77": {
+    "text": "이곳 언어로 몇 마디 배워 보려고 해요.",
+    "romanization": "Igot eoneoro myeot madi baewo boryeogo haeyo."
+  },
+  "78": {
+    "text": "좋은 저녁 보내세요. 여러모로 감사했습니다.",
+    "romanization": "Joeun jeonyeok bonaeseyo. Yeoreomoro gamsahaetseumnida."
+  },
+  "79": {
+    "text": "언젠가 꼭 다시 오고 싶어요.",
+    "romanization": "Eonjenga kkok dasi ogo sipeoyo."
+  }
+}
