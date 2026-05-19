@@ -212,9 +212,12 @@ export class LetterTraceLayer {
     const dpr = window.devicePixelRatio || 1;
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    // Trail: a soft, wide brush stroke that builds up behind the tip.
+    // Trail: a refined calligraphy line — wide enough to read at a
+    // glance, fine enough not to swamp the underlying glyph outline.
+    // 4 CSS px @ dpr=2 = 8 device px; on a 400-px-wide trace canvas
+    // that's ~1% of canvas width, comparable to a 0.5 mm qalam tip.
     ctx.strokeStyle = trailColor;
-    ctx.lineWidth = 18 * dpr;
+    ctx.lineWidth = 4 * dpr;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.beginPath();
@@ -238,16 +241,17 @@ export class LetterTraceLayer {
       }
     }
     ctx.stroke();
-    // Pen tip — bright halo + solid center. The two-layer approach
-    // makes the moving point pop against any background.
+    // Pen tip — bright halo + solid center. Sized to match the
+    // refined stroke width so the moving point reads as a pen nib,
+    // not a marker.
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "rgba(200, 169, 110, 0.5)";  // halo
     ctx.beginPath();
-    ctx.arc(tip[0], tip[1], 20 * dpr, 0, Math.PI * 2);
+    ctx.arc(tip[0], tip[1], 8 * dpr, 0, Math.PI * 2);
     ctx.fill();
     ctx.fillStyle = tipColor;  // solid sumi-ink core
     ctx.beginPath();
-    ctx.arc(tip[0], tip[1], 10 * dpr, 0, Math.PI * 2);
+    ctx.arc(tip[0], tip[1], 4 * dpr, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
@@ -259,11 +263,12 @@ export class LetterTraceLayer {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     // Two-phase: grow to peak at 60% of the dot's duration, then hold.
-    // Halo + core mirrors the moving pen tip so dots feel like they
-    // were placed by the same pen.
+    // Sized to match the visible dot in the ghost glyph — i.e. about
+    // 2-3× the line width, so it reads as "a real dot" not a pen
+    // touch-down. Halo + core mirrors the moving pen tip.
     const peak = Math.min(1, progress / 0.6);
-    const r_core = (8 + peak * 4) * dpr;
-    const r_halo = r_core + 10 * dpr;
+    const r_core = (3 + peak * 3) * dpr;
+    const r_halo = r_core + 5 * dpr;
     ctx.globalAlpha = Math.min(1, progress * 2);
     ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
     ctx.beginPath();

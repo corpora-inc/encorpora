@@ -512,13 +512,13 @@ export class LessonRunner {
           if (projected[s].length === 1) {
             const [px, py] = projected[s][0];
             const peak = Math.min(1, progress / 0.6);
-            const r = (5 + peak * 4) * dpr;
+            const r = (2 + peak * 2) * dpr;
             ctx.save();
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.globalAlpha = Math.min(1, progress * 2);
             ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
             ctx.beginPath();
-            ctx.arc(px, py, r + 6 * dpr, 0, Math.PI * 2);
+            ctx.arc(px, py, r + 3 * dpr, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillStyle = tipColor;
             ctx.beginPath();
@@ -531,8 +531,12 @@ export class LessonRunner {
             const target = totalLens[s] * progress;
             ctx.save();
             ctx.setTransform(1, 0, 0, 1, 0, 0);
+            // Fine pen — the phrase has 19 multi-stroke letters
+            // packed into a 4:1 canvas, so even a 3-CSS-px line
+            // covers ~10% of the average letter height. Anything
+            // thicker turns into a smeared blob across neighbors.
             ctx.strokeStyle = trailColor;
-            ctx.lineWidth = 8 * dpr;
+            ctx.lineWidth = 3 * dpr;
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
             ctx.beginPath();
@@ -556,14 +560,14 @@ export class LessonRunner {
               }
             }
             ctx.stroke();
-            // Tip
+            // Tip — proportional to the fine 3-CSS-px line above.
             ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
             ctx.beginPath();
-            ctx.arc(tip[0], tip[1], 14 * dpr, 0, Math.PI * 2);
+            ctx.arc(tip[0], tip[1], 6 * dpr, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillStyle = tipColor;
             ctx.beginPath();
-            ctx.arc(tip[0], tip[1], 7 * dpr, 0, Math.PI * 2);
+            ctx.arc(tip[0], tip[1], 3 * dpr, 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
           }

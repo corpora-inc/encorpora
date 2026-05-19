@@ -448,6 +448,53 @@ def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def refit_medians_to_outline_bbox(
+    medians: List[List[List[float]]],
+    outline_bbox: Tuple[float, float, float, float],
+) -> List[List[List[float]]]:
+    """Scale + translate `medians` so their COMBINED bbox fits inside
+    the given outline_bbox (preserving aspect ratio, centered).
+
+    This is the alignment step that makes the stroke-order animation
+    overlay the visible Amiri glyph instead of floating across the
+    whole viewBox. Calliar's primitive trajectories are normalized to
+    fill the viewBox at extraction time; the actual glyph as
+    rendered by the trace canvas occupies only the bbox returned by
+    fontTools (e.g. baa sits in the lower middle, alif occupies a
+    narrow vertical strip). Without this re-fit the animation traces
+    "alif"-shaped paths through air, not on top of the ghost outline
+    the user is trying to copy.
+
+    Dots and base strokes scale and translate together so their
+    relative spatial relationship survives.
+    """
+    if not medians or not outline_bbox or len(outline_bbox) != 4:
+        return medians
+    all_pts = [p for m in medians for p in m if isinstance(p, (list, tuple)) and len(p) >= 2]
+    if not all_pts:
+        return medians
+    m_x0 = min(p[0] for p in all_pts)
+    m_y0 = min(p[1] for p in all_pts)
+    m_x1 = max(p[0] for p in all_pts)
+    m_y1 = max(p[1] for p in all_pts)
+    m_w = max(1.0, m_x1 - m_x0)
+    m_h = max(1.0, m_y1 - m_y0)
+    o_x0, o_y0, o_x1, o_y1 = outline_bbox
+    target_w = max(1.0, o_x1 - o_x0)
+    target_h = max(1.0, o_y1 - o_y0)
+    scale = min(target_w / m_w, target_h / m_h)
+    o_cx = (o_x0 + o_x1) / 2.0
+    o_cy = (o_y0 + o_y1) / 2.0
+    m_cx = (m_x0 + m_x1) / 2.0
+    m_cy = (m_y0 + m_y1) / 2.0
+    tx = o_cx - m_cx * scale
+    ty = o_cy - m_cy * scale
+    return [
+        [[p[0] * scale + tx, p[1] * scale + ty] for p in stroke]
+        for stroke in medians
+    ]
+
+
 def build_glyph_record(
     extractor: AmiriExtractor,
     codepoint_hex: str,
@@ -464,11 +511,19 @@ def build_glyph_record(
         return None
     strokes = data.outline_paths
     medians = data.medians
+    outline_bbox = tuple(data.bbox) if data.bbox else None
     if overrides:
         if "strokes" in overrides and isinstance(overrides["strokes"], list):
             strokes = overrides["strokes"]
         if "medians" in overrides and isinstance(overrides["medians"], list):
             medians = overrides["medians"]
+            # Refit override medians to the outline's natural bbox so
+            # the stroke-order animation aligns with the visible ghost
+            # glyph instead of filling the whole viewBox. Calliar
+            # extraction normalizes each primitive to fill the viewBox
+            # — that's right for the audit grid but wrong for runtime.
+            if outline_bbox:
+                medians = refit_medians_to_outline_bbox(medians, outline_bbox)
     # Default to outline scoring (permissive bbox check) for letters
     # without an explicit override. Median scoring is only safe to
     # enable when the writer's `medians` array reflects ACTUAL stroke
@@ -494,7 +549,16 @@ def build_glyph_record(
         "bbox": list(data.bbox),
     }
     if isinstance(variants_raw, list) and variants_raw:
-        record["variants"] = variants_raw
+        # Same refit applied per-variant — each calligrapher's
+        # alternative trajectory needs to align with the same outline.
+        if outline_bbox:
+            record["variants"] = [
+                refit_medians_to_outline_bbox(v, outline_bbox)
+                for v in variants_raw
+                if isinstance(v, list)
+            ]
+        else:
+            record["variants"] = variants_raw
     return record
 
 
