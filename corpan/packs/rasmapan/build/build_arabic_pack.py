@@ -480,7 +480,12 @@ def build_glyph_record(
     # `scoring: "median"`. Letters not yet processed keep the
     # permissive outline scorer — no fake stroke order shown.
     scoring = (overrides or {}).get("scoring", "outline")
-    return {
+    # Multi-writer variants: alternative trajectories from other
+    # calligraphers in Calliar, picked at different points in the
+    # aspect-ratio distribution. Optional — only the isolated-form
+    # override carries these.
+    variants_raw = (overrides or {}).get("variants")
+    record = {
         "letter": chr(codepoint),
         "outline": data.outline_paths,
         "strokes": strokes,
@@ -488,6 +493,9 @@ def build_glyph_record(
         "scoring": scoring,
         "bbox": list(data.bbox),
     }
+    if isinstance(variants_raw, list) and variants_raw:
+        record["variants"] = variants_raw
+    return record
 
 
 POSITION_KEYS = ["isolated", "initial", "medial", "final"]
@@ -646,6 +654,8 @@ def main() -> None:
                 "scoring": record["scoring"],
                 "bbox": record["bbox"],
             }
+            if "variants" in record:
+                writer_payload["variants"] = record["variants"]
             conn.execute(
                 "INSERT INTO arabic_letter_writer(id, data_json) VALUES(?, ?)",
                 (glyph_id, json.dumps(writer_payload, ensure_ascii=False)),

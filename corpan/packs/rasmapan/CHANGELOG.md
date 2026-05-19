@@ -11,6 +11,29 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Positional-form stroke-order animations** — every glyph
+  variant the user sees in rasmapan (isolated / initial / medial
+  / final) now gets its own real Calliar-derived animation when
+  data exists. Position is inferred per Calliar stroke by
+  classifying its primitive neighbors (dots skipped) against the
+  Arabic connect-before / connect-after rules. 94 of the 100
+  glyph rows now ship with `scoring: "median"` and real
+  trajectories; the remaining 6 are positional Taa/DHaa (need
+  more elaborate pair-extraction we defer).
+- **Word-mode stroke-order animation** — tap Play on a 2-4 letter
+  word and the pen tip traces every letter RTL in turn. Each
+  letter's strokes are projected onto its slot transform from
+  `WordTraceLayer._layoutSlots()` (factored out of the existing
+  redraw). Letters whose writers lack real medians are silently
+  skipped without a fake animation.
+- **Multi-writer variant chip** — small "three-dots" icon next
+  to the Play button. Click to cycle through 3 alternative
+  trajectories per letter (different Arabic calligraphers'
+  interpretations of the same primitive, picked at the 25 / 50 /
+  75 percentile of the aspect-ratio distribution). Hidden when
+  the current letter has no variants (e.g. composite Taa/DHaa
+  or rare primitives with too-sparse Calliar samples). 25/28
+  letters carry full variant sets.
 - **Bismillah lesson** (intro lesson 11, type `phrase`): a "Your
   first phrase" card capping the intro flow. The 23-stroke
   trajectory for "بسم الله الرحمن الرحيم" is lifted from

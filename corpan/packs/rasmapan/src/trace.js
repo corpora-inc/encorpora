@@ -74,7 +74,18 @@ export class LetterTraceLayer {
    * Calliar-derived). The Play/Speak button still fires TTS in
    * parallel — the animation is additive.
    */
-  playStrokeOrder({ strokeDuration = 1100, gapDuration = 250, holdMs = 1500 } = {}) {
+  /** Total variants for this writer (0 if no `variants` array). */
+  variantCount() {
+    if (!this.writer || !Array.isArray(this.writer.variants)) return 0;
+    return this.writer.variants.length;
+  }
+
+  playStrokeOrder({
+    strokeDuration = 1100,
+    gapDuration = 250,
+    holdMs = 1500,
+    variantIndex = null,
+  } = {}) {
     this.cancelAnimation();
     if (!this.writer || !this.fxCtx) return;
     // Only animate writers backed by REAL stroke-order data (Calliar).
@@ -86,7 +97,18 @@ export class LetterTraceLayer {
     // place; positional forms (initial / medial / final) without
     // overrides stay at "outline" and silently skip animation here.
     if (this.writer.scoring !== "median") return;
-    const medians = Array.isArray(this.writer.medians) ? this.writer.medians : null;
+    // Pick which stroke list to animate. variantIndex=null → the
+    // canonical `writer.medians`. variantIndex=0..N → that entry
+    // from `writer.variants` (3 alternative calligraphers' takes).
+    let medians = Array.isArray(this.writer.medians) ? this.writer.medians : null;
+    if (
+      variantIndex != null &&
+      Array.isArray(this.writer.variants) &&
+      this.writer.variants[variantIndex] &&
+      Array.isArray(this.writer.variants[variantIndex])
+    ) {
+      medians = this.writer.variants[variantIndex];
+    }
     if (!medians || !medians.length) return;
     // Skip animation if any stroke is empty.
     if (medians.some((m) => !Array.isArray(m) || m.length === 0)) return;
@@ -458,28 +480,15 @@ export class WordTraceLayer extends LetterTraceLayer {
     if (!this.ghostVisible || !this.letters.length) return;
 
     const colors = this.getColors();
+    const layout = this._layoutSlots();
     const dpr = window.devicePixelRatio || 1;
-    const w = c.width / dpr;
-    const h = c.height / dpr;
-    const padding = Math.min(w, h) * 0.06;
-    const inner_w = w - padding * 2;
-    const inner_h = h - padding * 2;
-    // Lay out letters RTL: the first letter sits on the right.
-    const slot_w = inner_w / this.letters.length;
-    const slot_size = Math.min(slot_w * 0.92, inner_h);
 
     for (let i = 0; i < this.letters.length; i += 1) {
       const letter = this.letters[i];
       if (!letter || !letter.writer) continue;
-      const slotIndex = i;  // 0 is the first written → rightmost
-      const xCenter = w - padding - slot_w * (slotIndex + 0.5);
-      const yCenter = h / 2;
-      const scale = slot_size / VIEWBOX;
-      const tx = (xCenter - slot_size / 2) * dpr;
-      const ty = (yCenter - slot_size / 2) * dpr;
-
+      const slot = layout.slots[i];
       ctx.save();
-      ctx.setTransform(scale * dpr, 0, 0, scale * dpr, tx, ty);
+      ctx.setTransform(slot.scale * dpr, 0, 0, slot.scale * dpr, slot.tx, slot.ty);
       ctx.fillStyle = colors.strokeGhost;
       for (const d of letter.writer.outline || []) {
         const path = buildPath2D(d);
@@ -487,5 +496,150 @@ export class WordTraceLayer extends LetterTraceLayer {
       }
       ctx.restore();
     }
+  }
+
+  /**
+   * Pre-compute the per-letter slot transforms used by both
+   * `redraw()` and `playStrokeOrder()`. Layout is RTL: slot 0 = the
+   * first-written letter sits on the right.
+   */
+  _layoutSlots() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = this.ghostCanvas.width / dpr;
+    const h = this.ghostCanvas.height / dpr;
+    const padding = Math.min(w, h) * 0.06;
+    const inner_w = w - padding * 2;
+    const inner_h = h - padding * 2;
+    const slot_w = inner_w / Math.max(1, this.letters.length);
+    const slot_size = Math.min(slot_w * 0.92, inner_h);
+    const slots = this.letters.map((_letter, i) => {
+      const xCenter = w - padding - slot_w * (i + 0.5);
+      const yCenter = h / 2;
+      const scale = slot_size / VIEWBOX;
+      return {
+        scale,
+        tx: (xCenter - slot_size / 2) * dpr,
+        ty: (yCenter - slot_size / 2) * dpr,
+      };
+    });
+    return { slots };
+  }
+
+  /**
+   * Animate the canonical stroke order across every letter in the
+   * current word, in RTL writing order (first-written rightmost,
+   * last-written leftmost). Each letter's strokes are pre-projected
+   * onto the canvas using its slot transform, then drawn through
+   * the same per-stroke animation loop as `LetterTraceLayer`.
+   *
+   * Letters whose writers don't carry `scoring: "median"` data
+   * (e.g. non-connector letters in initial/medial positions, which
+   * don't exist typographically and fall back to the geometric
+   * Amiri medians) are silently skipped — the next letter starts
+   * after the prior letter's gap, so the pen "jumps" past them
+   * without showing a fake animation.
+   */
+  playStrokeOrder({
+    strokeDuration = 750,
+    gapDuration = 200,
+    letterGapMs = 350,
+    holdMs = 1500,
+  } = {}) {
+    this.cancelAnimation();
+    if (!this.fxCtx || !this.letters || !this.letters.length) return;
+    const layout = this._layoutSlots();
+    const dpr = window.devicePixelRatio || 1;
+
+    // Build per-letter projected stroke lists, skipping letters
+    // without real Calliar-derived medians.
+    const letterPlans = [];
+    for (let i = 0; i < this.letters.length; i += 1) {
+      const letter = this.letters[i];
+      const w = letter && letter.writer;
+      if (!w || w.scoring !== "median" || !Array.isArray(w.medians) || !w.medians.length) {
+        continue;
+      }
+      const slot = layout.slots[i];
+      const projected = w.medians.map((m) =>
+        m.map(([x, y]) => [x * slot.scale * dpr + slot.tx, y * slot.scale * dpr + slot.ty]),
+      );
+      // Pre-compute cumulative segment lengths per stroke.
+      const cumLens = projected.map((seg) => {
+        const lens = [0];
+        for (let s = 1; s < seg.length; s += 1) {
+          lens.push(lens[s - 1] + Math.hypot(seg[s][0] - seg[s - 1][0], seg[s][1] - seg[s - 1][1]));
+        }
+        return lens;
+      });
+      const totalLens = cumLens.map((c) => c[c.length - 1]);
+      // Duration per stroke — dots get the shorter pulse like the
+      // letter-mode animation.
+      const stepDur = projected.map((seg) =>
+        seg.length <= 1 ? Math.round(strokeDuration * 0.45) : strokeDuration,
+      );
+      letterPlans.push({ projected, cumLens, totalLens, stepDur });
+    }
+    if (!letterPlans.length) return;
+
+    // Total run time = sum of all step durations + intra-letter gaps
+    // + inter-letter gaps.
+    let totalDur = 0;
+    for (let l = 0; l < letterPlans.length; l += 1) {
+      const plan = letterPlans[l];
+      for (let s = 0; s < plan.projected.length; s += 1) {
+        totalDur += plan.stepDur[s];
+        if (s < plan.projected.length - 1) totalDur += gapDuration;
+      }
+      if (l < letterPlans.length - 1) totalDur += letterGapMs;
+    }
+
+    const colors = this.getColors();
+    const trailColor = colors.strokeHighlight || "rgba(139, 105, 20, 0.85)";
+    const tipColor = colors.strokeUser || "#1a1410";
+
+    this._animOpId += 1;
+    const opId = this._animOpId;
+    const startedAt = performance.now();
+
+    const tick = (now) => {
+      if (opId !== this._animOpId) return;
+      const elapsed = now - startedAt;
+      this._clearFx();
+      let cursor = 0;
+      for (let l = 0; l < letterPlans.length; l += 1) {
+        const plan = letterPlans[l];
+        for (let s = 0; s < plan.projected.length; s += 1) {
+          const startT = cursor;
+          const dur = plan.stepDur[s];
+          cursor += dur;
+          if (s < plan.projected.length - 1) cursor += gapDuration;
+          const localT = (elapsed - startT) / dur;
+          const progress = Math.max(0, Math.min(1, localT));
+          if (progress <= 0) continue;
+          if (plan.projected[s].length === 1) {
+            this._drawAnimatedDot(plan.projected[s][0], progress, tipColor);
+          } else {
+            this._drawAnimatedStroke(
+              plan.projected[s],
+              plan.cumLens[s],
+              plan.totalLens[s],
+              progress,
+              trailColor,
+              tipColor,
+            );
+          }
+        }
+        if (l < letterPlans.length - 1) cursor += letterGapMs;
+      }
+      if (elapsed >= totalDur) {
+        setTimeout(() => {
+          if (opId !== this._animOpId) return;
+          this._clearFx();
+        }, holdMs);
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 }

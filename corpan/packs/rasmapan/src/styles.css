@@ -428,10 +428,29 @@
   transform: scale(0.95);
 }
 
+.icon-chip[hidden] {
+  /* HTML `hidden` attribute is overridden by `display: inline-flex`
+     otherwise; this gets the variant chip out of the flow when
+     the current writer has no variants to cycle. */
+  display: none !important;
+}
+
 .icon-chip.active {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
+}
+
+/* Variant chip — slightly smaller than the play chip to read as
+   "secondary action". Subtle background hint that it cycles. */
+.variant-chip {
+  background: rgba(245, 240, 232, 0.6);
+  color: var(--brown);
+}
+.variant-chip:hover {
+  background: rgba(200, 169, 110, 0.28);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .score-bar {

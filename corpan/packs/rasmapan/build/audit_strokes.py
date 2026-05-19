@@ -32,20 +32,25 @@ def load_seed() -> Dict[str, dict]:
     return {r["family_id"]: r for r in rows if isinstance(r, dict)}
 
 
-def load_writers() -> Dict[str, dict]:
-    """Read each family's isolated-form Amiri outline for visual context."""
+def load_writers(all_positions: bool = False) -> Dict[str, dict]:
+    """Read writer outlines + medians for audit visualization. When
+    `all_positions=True`, returns every (family, position) glyph
+    keyed by its writer id ("baa.initial", "baa.medial", etc.).
+    Otherwise just the isolated forms keyed by bare family id."""
     out: Dict[str, dict] = {}
     if not DB.exists():
         return out
     with sqlite3.connect(str(DB)) as cx:
-        # Isolated-form writer rows use the bare family id (no `.position` suffix).
-        cur = cx.execute(
-            "SELECT id, data_json FROM arabic_letter_writer "
-            "WHERE id NOT LIKE '%.%'"
-        )
-        for fam, blob in cur:
+        if all_positions:
+            cur = cx.execute("SELECT id, data_json FROM arabic_letter_writer")
+        else:
+            cur = cx.execute(
+                "SELECT id, data_json FROM arabic_letter_writer "
+                "WHERE id NOT LIKE '%.%'"
+            )
+        for wid, blob in cur:
             try:
-                out[fam] = json.loads(blob)
+                out[wid] = json.loads(blob)
             except Exception:  # noqa: BLE001
                 continue
     return out

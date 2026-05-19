@@ -66,6 +66,13 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
                   <path d="M8 6.5 18 12 8 17.5Z" fill="currentColor" stroke="none" />
                 </svg>
               </button>
+              <button class="icon-chip variant-chip" data-action="variant" aria-label="See other writer" data-variant-chip hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="6" cy="12" r="2.5" />
+                  <circle cx="12" cy="12" r="2.5" />
+                  <circle cx="18" cy="12" r="2.5" />
+                </svg>
+              </button>
               <button class="icon-chip" data-action="brush-settings" aria-label="Brush settings">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M18 2l3 3-3 3M18 5H9a4 4 0 0 0 0 8h1M6 22l-3-3 3-3M6 19h9a4 4 0 0 0 0-8h-1" />
@@ -475,6 +482,36 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       }
     }
 
+    // Variant-chip state: tracks which variant to play on the next
+    // tap of the "see other writers" button. Cycles 0..N-1 and back
+    // around. Reset whenever the active letter changes.
+    state.variantCursor = 0
+    const variantChip = root.querySelector("[data-variant-chip]")
+    const refreshVariantChip = () => {
+      if (!variantChip) return
+      const count = state.mode === "letters" && traceLayer
+        ? traceLayer.variantCount()
+        : 0
+      if (count >= 2) {
+        variantChip.hidden = false
+      } else {
+        variantChip.hidden = true
+      }
+    }
+    const playNextVariant = () => {
+      if (state.mode !== "letters" || !traceLayer) return
+      const count = traceLayer.variantCount()
+      if (count < 2) return
+      // Cycle through variants 0..N-1, then back to canonical (null).
+      // Even cursor positions show variants; the canonical animation
+      // is reached via the regular Play button.
+      const idx = state.variantCursor % count
+      state.variantCursor = (state.variantCursor + 1) % count
+      traceLayer.playStrokeOrder({ variantIndex: idx })
+      const baseLetter = state.baseLetter || state.currentLetter
+      if (baseLetter) speak("ar", baseLetter)
+    }
+
     // --- pickByLang (juice-squeeze pattern) ------------------------------
     //
     // Choose the best translation row for a given language code,
@@ -768,6 +805,12 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           traceLayer.setGhostVisible(state.ghostVisible)
           traceLayer.setFreeDraw(state.freeDraw)
         }
+        // Variant cycling resets when the active letter or position
+        // changes, so the next tap of the "other writers" chip
+        // starts at variant 0 (not wherever we left off on a
+        // different letter).
+        state.variantCursor = 0
+        refreshVariantChip()
         // Stroke count as localized text — "3 strokes" / "3 trazos"
         // / "3 traits" — re-rendered on language change via the
         // onLanguageChanged handler.
@@ -1192,6 +1235,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         if (state.mode === mode) return
         state.mode = mode
         renderModeUI()
+        refreshVariantChip()
         if (mode === "letters") renderExamplesPanel()
         if (mode === "words") renderWordPicker()
         if (drawingEngine) drawingEngine.clear()
@@ -1265,6 +1309,10 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           })
         }
         brushWidget.toggle()
+        return
+      }
+      if (action === "variant") {
+        playNextVariant()
         return
       }
       if (action === "tutorial") {
