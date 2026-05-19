@@ -124,6 +124,206 @@ CREATE TABLE arabic_style(
 
 # --- Glyph extraction ----------------------------------------------------
 
+
+def _make_flatten_pen(glyph_set, samples_per_curve: int = 14):
+    """Returns a fontTools BasePen-derived pen that flattens curves
+    into polylines, with automatic component decomposition.
+
+    Each contour ends up in `pen.contours` as a list of (x, y) tuples
+    in raw font-unit coordinate space. The AmiriExtractor then maps
+    these through the same affine transform applied to the SVG path
+    so polygon points align 1:1 with the outline geometry.
+    """
+    from fontTools.pens.basePen import BasePen
+
+    class _FlattenPen(BasePen):
+        def __init__(self, gs, n):
+            super().__init__(gs)
+            self.n = n
+            self.contours: List[List[Tuple[float, float]]] = []
+            self._current: List[Tuple[float, float]] = []
+
+        def _moveTo(self, pt):
+            if self._current:
+                self.contours.append(self._current)
+            self._current = [(float(pt[0]), float(pt[1]))]
+
+        def _lineTo(self, pt):
+            self._current.append((float(pt[0]), float(pt[1])))
+
+        def _qCurveToOne(self, pt1, pt2):
+            p0 = self._current[-1] if self._current else (0.0, 0.0)
+            for k in range(1, self.n + 1):
+                t = k / self.n
+                x = ((1 - t) ** 2) * p0[0] + 2 * (1 - t) * t * pt1[0] + (t ** 2) * pt2[0]
+                y = ((1 - t) ** 2) * p0[1] + 2 * (1 - t) * t * pt1[1] + (t ** 2) * pt2[1]
+                self._current.append((x, y))
+
+        def _curveToOne(self, pt1, pt2, pt3):
+            p0 = self._current[-1] if self._current else (0.0, 0.0)
+            for k in range(1, self.n + 1):
+                t = k / self.n
+                x = (
+                    ((1 - t) ** 3) * p0[0]
+                    + 3 * ((1 - t) ** 2) * t * pt1[0]
+                    + 3 * (1 - t) * (t ** 2) * pt2[0]
+                    + (t ** 3) * pt3[0]
+                )
+                y = (
+                    ((1 - t) ** 3) * p0[1]
+                    + 3 * ((1 - t) ** 2) * t * pt1[1]
+                    + 3 * (1 - t) * (t ** 2) * pt2[1]
+                    + (t ** 3) * pt3[1]
+                )
+                self._current.append((x, y))
+
+        def _closePath(self):
+            if self._current:
+                self.contours.append(self._current)
+            self._current = []
+
+        def _endPath(self):
+            if self._current:
+                self.contours.append(self._current)
+            self._current = []
+
+    return _FlattenPen(glyph_set, samples_per_curve)
+
+
+def derive_median_from_polygon(
+    polygon: List[List[float]],
+    target_samples: int = 28,
+) -> List[List[float]]:
+    """Derive a centerline-ish median by walking one side of the
+    polygon between two extreme vertices, chosen to match Arabic
+    Naskh stroke direction.
+
+    Direction picker:
+    - **Tall contour** (height > 1.2 × width): the letter is a
+      vertical stroke (alif, the stem of laam/kaaf, etc.). Walk
+      from topmost vertex to bottommost vertex along the *right*
+      edge — Naskh starts vertical letters at the top and writes
+      downward, and the rightmost edge is what the eye reads as
+      "the spine of the letter".
+    - **Wide or roughly-square contour**: bowl/curve like baa,
+      taa, siin, miim, haa-body, dots. Walk from rightmost vertex
+      to leftmost vertex along the *upper* edge — natural RTL
+      Arabic writing direction and matches how a calligrapher
+      starts a bowl shape.
+
+    The resulting polyline traces the visible glyph silhouette,
+    which is what a learner sees when looking at the static ghost,
+    so the animation provably aligns with the outline.
+
+    Resampled to `target_samples` evenly-spaced points so the
+    runtime animation is smooth regardless of source discretization.
+    """
+    if not polygon or len(polygon) < 3:
+        return [[float(p[0]), float(p[1])] for p in polygon]
+    n = len(polygon)
+
+    xs = [p[0] for p in polygon]
+    ys = [p[1] for p in polygon]
+    width = max(xs) - min(xs)
+    height = max(ys) - min(ys)
+
+    def _walk(a_idx: int, b_idx: int) -> Tuple[List[List[float]], List[List[float]]]:
+        """Return (forward_walk, backward_walk) around the polygon
+        from a_idx to b_idx (circular)."""
+        fwd, bwd = [], []
+        i = a_idx
+        while True:
+            fwd.append(polygon[i])
+            if i == b_idx:
+                break
+            i = (i + 1) % n
+            if len(fwd) > n:
+                break
+        i = a_idx
+        while True:
+            bwd.append(polygon[i])
+            if i == b_idx:
+                break
+            i = (i - 1) % n
+            if len(bwd) > n:
+                break
+        return fwd, bwd
+
+    if height > width * 1.2:
+        # Tall: walk top vertex → leftmost vertex along the right
+        # (max-x) edge. Picking leftmost (not bottommost) as the
+        # endpoint matters for hooked letters like laam, raa, kaaf,
+        # waaw: their tail tip is the leftmost vertex, not the
+        # lowest, and walking through it ensures the median follows
+        # the spine all the way through the hook into the tail.
+        top_idx = min(range(n), key=lambda i: polygon[i][1])
+        end_idx = min(range(n), key=lambda i: polygon[i][0])
+        if top_idx == end_idx:
+            end_idx = max(range(n), key=lambda i: polygon[i][1])
+        if top_idx == end_idx:
+            return [[float(p[0]), float(p[1])] for p in polygon[:target_samples]]
+        fwd, bwd = _walk(top_idx, end_idx)
+        mean_x_f = sum(p[0] for p in fwd) / len(fwd)
+        mean_x_b = sum(p[0] for p in bwd) / len(bwd)
+        upper = fwd if mean_x_f > mean_x_b else bwd
+    else:
+        # Wide or square: walk right vertex → left vertex on the
+        # top (min-y, since canvas y grows downward) side
+        right_idx = max(range(n), key=lambda i: polygon[i][0])
+        left_idx = min(range(n), key=lambda i: polygon[i][0])
+        if right_idx == left_idx:
+            return [[float(p[0]), float(p[1])] for p in polygon[:target_samples]]
+        fwd, bwd = _walk(right_idx, left_idx)
+        mean_y_f = sum(p[1] for p in fwd) / len(fwd)
+        mean_y_b = sum(p[1] for p in bwd) / len(bwd)
+        upper = fwd if mean_y_f < mean_y_b else bwd
+
+    # Even-arc-length resample.
+    if len(upper) <= 2:
+        return [[float(p[0]), float(p[1])] for p in upper]
+    seg_lens = [0.0]
+    for k in range(1, len(upper)):
+        seg_lens.append(
+            seg_lens[-1]
+            + math.hypot(upper[k][0] - upper[k - 1][0], upper[k][1] - upper[k - 1][1])
+        )
+    total = seg_lens[-1]
+    if total < 1e-3:
+        return [[float(upper[0][0]), float(upper[0][1])]]
+    n_out = max(4, min(target_samples, len(upper)))
+    step = total / (n_out - 1)
+    out = [[float(upper[0][0]), float(upper[0][1])]]
+    j = 0
+    for k in range(1, n_out - 1):
+        target_dist = step * k
+        while j < len(seg_lens) - 1 and seg_lens[j + 1] < target_dist:
+            j += 1
+        if j >= len(upper) - 1:
+            break
+        seg_start = seg_lens[j]
+        seg_end = seg_lens[j + 1]
+        seg = max(1e-6, seg_end - seg_start)
+        t = (target_dist - seg_start) / seg
+        x = upper[j][0] + (upper[j + 1][0] - upper[j][0]) * t
+        y = upper[j][1] + (upper[j + 1][1] - upper[j][1]) * t
+        out.append([float(x), float(y)])
+    out.append([float(upper[-1][0]), float(upper[-1][1])])
+    return out
+
+
+def polygon_area(polygon: List[Tuple[float, float]]) -> float:
+    """Signed shoelace area; |area| used for size sorting."""
+    n = len(polygon)
+    if n < 3:
+        return 0.0
+    s = 0.0
+    for i in range(n):
+        x0, y0 = polygon[i]
+        x1, y1 = polygon[(i + 1) % n]
+        s += x0 * y1 - x1 * y0
+    return abs(s) / 2.0
+
+
 @dataclass
 class GlyphData:
     outline_paths: List[str]  # one SVG `d` string per contour
@@ -168,6 +368,12 @@ class AmiriExtractor:
         if not raw_d:
             return None
 
+        # Also capture flattened polygons via FlattenPen so we can
+        # derive medians directly from the *same* outline geometry.
+        flatten_pen = _make_flatten_pen(self.glyph_set, samples_per_curve=14)
+        glyph.draw(flatten_pen)
+        raw_polygons = flatten_pen.contours
+
         # Glyph advance width (font units, baseline-relative coords).
         hmtx = self.font["hmtx"]
         adv_width, _lsb = hmtx[glyph_name]
@@ -200,49 +406,31 @@ class AmiriExtractor:
         contours_areas.sort(key=lambda pair: pair[1], reverse=True)
         sorted_contours = [c for c, _ in contours_areas]
 
-        # Auto-derive medians: one polyline per contour, traversing
-        # the contour's bounding box from start to end. For the main
-        # body of an Arabic letter we want a right-to-left sweep
-        # (that's the writing direction); for dots, a short vertical
-        # stroke from top to bottom works.
+        # Project FlattenPen polygons into the same viewBox coordinate
+        # space as `sorted_contours`, sorted to match the same order
+        # so polygon[i] corresponds to outline contour[i].
+        view_polygons: List[List[List[float]]] = []
+        for poly in raw_polygons:
+            if not poly:
+                continue
+            vp = []
+            for (fx, fy) in poly:
+                vx = fx * scale + tx
+                vy = -fy * scale + ty
+                vp.append([vx, vy])
+            view_polygons.append(vp)
+        view_polygons.sort(key=lambda p: polygon_area([(q[0], q[1]) for q in p]), reverse=True)
+
         medians = []
-        for i, c in enumerate(sorted_contours):
-            cb = self._contour_bbox(c)
-            cx0, cy0, cx1, cy1 = cb
-            width = cx1 - cx0
-            height = cy1 - cy0
-            if i == 0 and width > height * 1.5:
-                # Wide horizontal letter body — write right to left.
-                mid_y = (cy0 + cy1) / 2.0
-                medians.append([
-                    [round(cx1, 2), round(mid_y, 2)],
-                    [round((cx0 + cx1) / 2.0, 2), round(mid_y, 2)],
-                    [round(cx0, 2), round(mid_y, 2)],
-                ])
-            elif width > height * 1.5:
-                # Wide accent — right to left.
-                mid_y = (cy0 + cy1) / 2.0
-                medians.append([
-                    [round(cx1, 2), round(mid_y, 2)],
-                    [round(cx0, 2), round(mid_y, 2)],
-                ])
-            elif height > width * 1.5:
-                # Tall — top to bottom.
-                mid_x = (cx0 + cx1) / 2.0
-                medians.append([
-                    [round(mid_x, 2), round(cy0, 2)],
-                    [round(mid_x, 2), round(cy1, 2)],
-                ])
-            else:
-                # Roughly square (dot, hamza, small accent): a short
-                # diagonal that approximates a dot tap.
-                cx = (cx0 + cx1) / 2.0
-                cy = (cy0 + cy1) / 2.0
-                r = max((cx1 - cx0), (cy1 - cy0)) / 3.0
-                medians.append([
-                    [round(cx - r, 2), round(cy - r, 2)],
-                    [round(cx + r, 2), round(cy + r, 2)],
-                ])
+        for i, _c in enumerate(sorted_contours):
+            if i >= len(view_polygons):
+                break
+            poly = view_polygons[i]
+            median = derive_median_from_polygon(poly, target_samples=28)
+            if not median or len(median) < 2:
+                continue
+            median = [[round(p[0], 2), round(p[1], 2)] for p in median]
+            medians.append(median)
 
         return GlyphData(
             outline_paths=sorted_contours,
@@ -512,34 +700,14 @@ def build_glyph_record(
     strokes = data.outline_paths
     medians = data.medians
     outline_bbox = tuple(data.bbox) if data.bbox else None
-    if overrides:
-        if "strokes" in overrides and isinstance(overrides["strokes"], list):
-            strokes = overrides["strokes"]
-        if "medians" in overrides and isinstance(overrides["medians"], list):
-            medians = overrides["medians"]
-            # Refit override medians to the outline's natural bbox so
-            # the stroke-order animation aligns with the visible ghost
-            # glyph instead of filling the whole viewBox. Calliar
-            # extraction normalizes each primitive to fill the viewBox
-            # — that's right for the audit grid but wrong for runtime.
-            if outline_bbox:
-                medians = refit_medians_to_outline_bbox(medians, outline_bbox)
-    # Default to outline scoring (permissive bbox check) for letters
-    # without an explicit override. Median scoring is only safe to
-    # enable when the writer's `medians` array reflects ACTUAL stroke
-    # order — not the geometric centerlines fontTools happens to
-    # return from the Amiri outline. Real stroke-order data comes
-    # from Calliar (https://github.com/ARBML/Calliar, MIT) via the
-    # extract/curate/compose pipeline in this directory; letters that
-    # have been processed get an override with both `medians` and
-    # `scoring: "median"`. Letters not yet processed keep the
-    # permissive outline scorer — no fake stroke order shown.
-    scoring = (overrides or {}).get("scoring", "outline")
-    # Multi-writer variants: alternative trajectories from other
-    # calligraphers in Calliar, picked at different points in the
-    # aspect-ratio distribution. Optional — only the isolated-form
-    # override carries these.
-    variants_raw = (overrides or {}).get("variants")
+    # Calliar-derived overrides are intentionally ignored: their
+    # trajectories include trailing connecting strokes that bleed out
+    # of the canonical isolated-letter shape (e.g. baa's recorded bowl
+    # ends inside the dot region because the writer was mid-word).
+    # The outline-derived medians produced by AmiriExtractor walk the
+    # upper edge of each Amiri contour and are guaranteed to align
+    # with the visible ghost glyph.
+    scoring = "median"
     record = {
         "letter": chr(codepoint),
         "outline": data.outline_paths,
@@ -548,17 +716,6 @@ def build_glyph_record(
         "scoring": scoring,
         "bbox": list(data.bbox),
     }
-    if isinstance(variants_raw, list) and variants_raw:
-        # Same refit applied per-variant — each calligrapher's
-        # alternative trajectory needs to align with the same outline.
-        if outline_bbox:
-            record["variants"] = [
-                refit_medians_to_outline_bbox(v, outline_bbox)
-                for v in variants_raw
-                if isinstance(v, list)
-            ]
-        else:
-            record["variants"] = variants_raw
     return record
 
 

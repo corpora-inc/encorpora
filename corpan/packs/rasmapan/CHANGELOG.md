@@ -10,76 +10,76 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Stroke-order medians now derived from the Amiri outline
+  itself**, not from Calliar's recorded sentence trajectories.
+  Each glyph's contours are flattened to polygons via a fontTools
+  `BasePen`-derived `FlattenPen` (decomposes composites; samples
+  Bezier curves at 14 parametric steps), then for each contour we
+  walk one side of the polygon between two extreme vertices to
+  produce a median polyline that *provably* traces the visible
+  ghost outline:
+  - Tall contours (height > 1.2 × width — alif, laam, kaaf, raa,
+    waaw, miim, …) walk topmost → leftmost vertex along the
+    higher-mean-X edge. That's the right side of the spine,
+    sweeping into any hook or tail tip on the left.
+  - Wide / square contours (baa-bowl, siin teeth, haa-body, dots,
+    accents) walk rightmost → leftmost vertex along the
+    lower-mean-Y edge. That's the upper silhouette, matching the
+    natural RTL start of an Arabic calligrapher's bowl.
+  Polylines are arc-length-resampled to 28 evenly-spaced points
+  so the runtime animation is smooth regardless of how many
+  Bezier samples each contour produced. Visual audit grid at
+  `build/calliar_stroke_audit.svg` confirms every letter's median
+  hugs its outline.
+- Calliar-derived stroke trajectories are no longer the source of
+  truth for animation. The Calliar samples (recorded from real
+  calligraphers' sentences) carry trailing connecting strokes
+  that bleed out of the canonical isolated-letter shape — e.g.
+  baa's bowl trajectory ended inside the dot region because the
+  writer was mid-word. The outline-derived medians don't have
+  that artifact: they come from the *same* font geometry the user
+  sees on screen. The override path in `build_glyph_record` still
+  loads `stroke_orders_seed.json` but ignores the data — kept as
+  dead plumbing in case we revive Calliar-based medians later.
+- Every letter writer now ships `scoring: "median"` (was: only
+  letters with Calliar overrides). All 28 letters animate when
+  the user taps Play/Speak.
+- Multi-writer variant chip — the cycle button next to Play —
+  auto-hides for every letter now that there are no variants.
+  The DOM and JS plumbing stay in place; the chip is gated by
+  `traceLayer.variantCount() > 0`, which is always 0 since the
+  outline-derived approach yields a single canonical median per
+  contour.
+- Bismillah phrase lesson no longer animates the Calliar
+  full-phrase trajectory. The 23 strokes packed into a 4:1
+  canvas produced visually unreadable overlap (per user feedback
+  in 2026-05-19). The lesson keeps its phrase text +
+  transliteration + translation; the Play button now plays TTS
+  only, matching the rest of the app.
+
 ### Added
-- **Positional-form stroke-order animations** — every glyph
-  variant the user sees in rasmapan (isolated / initial / medial
-  / final) now gets its own real Calliar-derived animation when
-  data exists. Position is inferred per Calliar stroke by
-  classifying its primitive neighbors (dots skipped) against the
-  Arabic connect-before / connect-after rules. 94 of the 100
-  glyph rows now ship with `scoring: "median"` and real
-  trajectories; the remaining 6 are positional Taa/DHaa (need
-  more elaborate pair-extraction we defer).
-- **Word-mode stroke-order animation** — tap Play on a 2-4 letter
-  word and the pen tip traces every letter RTL in turn. Each
-  letter's strokes are projected onto its slot transform from
-  `WordTraceLayer._layoutSlots()` (factored out of the existing
-  redraw). Letters whose writers lack real medians are silently
-  skipped without a fake animation.
-- **Multi-writer variant chip** — small "three-dots" icon next
-  to the Play button. Click to cycle through 3 alternative
-  trajectories per letter (different Arabic calligraphers'
-  interpretations of the same primitive, picked at the 25 / 50 /
-  75 percentile of the aspect-ratio distribution). Hidden when
-  the current letter has no variants (e.g. composite Taa/DHaa
-  or rare primitives with too-sparse Calliar samples). 25/28
-  letters carry full variant sets.
-- **Bismillah lesson** (intro lesson 11, type `phrase`): a "Your
-  first phrase" card capping the intro flow. The 23-stroke
-  trajectory for "بسم الله الرحمن الرحيم" is lifted from
-  Calliar's 54 matching recordings — pick is the median sample
-  by total path length. Animation auto-plays on entering the
-  card; a Play button replays the full 23-stroke sequence with
-  TTS in parallel. Title + body translated into all 51 corpan
-  locales.
-- Build-side extractor: `build/extract_calliar_bismillah.py`
-  produces `build/seed/phrases_seed.json`. Lesson merge:
-  `build/add_bismillah_lesson.py` appends the lesson to
-  `lessons_seed.json` with all i18n.
+- **`FlattenPen`** in `build/build_arabic_pack.py` — a fontTools
+  `BasePen` subclass that captures glyph outlines as flattened
+  polygons. Automatic composite-glyph decomposition (Amiri uses
+  components for some accent marks) via `BasePen.addComponent`.
+- **`derive_median_from_polygon`** in the same module — walks a
+  polygon between two extreme vertices (chosen by the tall/wide
+  heuristic above) and arc-length-resamples the result to a
+  uniform polyline.
+- **`polygon_area`** helper — shoelace formula, used to sort
+  flattened polygons by area so the median order matches the
+  outline-contour render order (largest = main body first, then
+  dots, matching Arabic writing convention).
+- **`LICENSES.md` retained** documenting Amiri (SIL OFL 1.1) and
+  Calliar (MIT) attributions — Calliar is still credited even
+  though we no longer ship its stroke trajectories at runtime,
+  since the extraction-and-curation pipeline using it remains in
+  the repo for potential future use.
 - **Public-domain Wikimedia sample images** for the four
   calligraphic-style cards (Naskh / Thuluth / Diwani / Kufic) —
-  resized to ≤ 800 px, ~480 KB combined. Replaces the
-  broken-image-icon fallback to the textual "بسم الله".
-  Attributions in `LICENSES.md`.
-- **Stroke-order animation** for all 28 isolated-form letters,
-  played on the existing fx canvas when the user taps the Play /
-  Speak button (alongside TTS). A glowing pen tip traces each
-  stroke in classical Naskh order; a soft sepia trail builds up
-  behind it. Dots get a halo-and-core pulse.
-- **Calliar (MIT, https://github.com/ARBML/Calliar)** as the
-  upstream source of stroke trajectories. Build-side extractor
-  (`build/extract_calliar_strokes.py`) groups Calliar strokes by
-  primitive (alif, ٮ-bowl, ح-base, ر, د, س, ص, ع, ٯ, ل, م, ه,
-  و, ى, ں, ﻛ, ﺻ, plus dots), picks the cleanest per primitive
-  via aspect-ratio bands + path-length sanity + lowest tortuosity,
-  normalizes direction per classical Naskh convention, and
-  composes all 28 letters from those primitives + dot-placement
-  rules. Two-primitive composites (Taa ط, DHaa ظ) lift adjacent
-  Calliar stroke pairs to preserve stem/base spatial geometry.
-- Visual audit tooling at `build/audit_strokes.py` (renders SVGs
-  and a 28-letter grid; output gitignored).
-- `LICENSES.md` documenting Amiri (SIL OFL 1.1) and Calliar (MIT)
-  attributions.
-
-### Changed
-- `playStrokeOrder()` in `src/trace.js` is gated by
-  `writer.scoring === "median"` — positional forms (initial /
-  medial / final) without explicit Calliar overrides skip
-  animation, so the feature never shows fake/auto-derived
-  stroke order. Tracing still works at all positions via the
-  permissive outline scorer.
-- Builder default scoring restored to `"outline"`; only letters
-  with Calliar-derived overrides ship with `"median"` scoring.
+  resized to ≤ 800 px, ~480 KB combined. Attributions in
+  `LICENSES.md`.
 
 ## [0.1.0] - 2026-05-17 — First cut
 

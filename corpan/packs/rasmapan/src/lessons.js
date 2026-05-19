@@ -328,29 +328,19 @@ export class LessonRunner {
       extra += `${nameAr}${sample}`;
     }
     // Phrase lesson (intro-bismillah and friends) — renders the Arabic
-    // phrase in large Amiri, transliteration + translation underneath,
-    // and a Play button beside a wide canvas that animates the full
-    // stroke order using Calliar-derived trajectories.
-    if (lesson.type === "phrase" && Array.isArray(lesson.phrase_strokes)) {
-      const vb = Array.isArray(lesson.phrase_viewbox) ? lesson.phrase_viewbox : [2000, 500];
-      const vbW = Number(vb[0]) || 2000;
-      const vbH = Number(vb[1]) || 500;
-      const aspectPct = ((vbH / vbW) * 100).toFixed(2);
-      // Translation/transliteration are pulled from the i18n bundle if
-      // a localized version exists, falling back to the EN fields on
-      // the lesson row itself.
+    // phrase in large Amiri, transliteration + translation, and a
+    // Play button for TTS. The Calliar-derived stroke-order animation
+    // for full phrases is disabled for v0.1.0: across 23 strokes
+    // packed into a 4:1 canvas, even a fine pen produced visually
+    // unreadable overlap unrelated to the rendered phrase.
+    if (lesson.type === "phrase") {
       const tlit = lesson.phrase_transliteration || "";
       const ten = lesson.phrase_translation_en || "";
       extra += `
         <div class="lesson-phrase">
           <div class="lesson-phrase-text" lang="ar" dir="rtl">${escapeHtml(lesson.phrase_ar || "")}</div>
-          <div class="lesson-phrase-canvas-wrap" style="padding-top:${aspectPct}%">
-            <canvas class="lesson-phrase-canvas"
-                    data-phrase-canvas
-                    data-vb="${vbW},${vbH}"></canvas>
-          </div>
           <div class="lesson-phrase-actions">
-            <button class="lesson-phrase-play" data-phrase-play type="button" aria-label="${escapeHtml(t("aria.play"))}">
+            <button class="lesson-phrase-play" data-phrase-tts type="button" aria-label="${escapeHtml(t("aria.play"))}">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 6.5 18 12 8 17.5Z" fill="currentColor" />
               </svg>
@@ -418,178 +408,26 @@ export class LessonRunner {
       .querySelector('[data-act="next"]')
       .addEventListener("click", () => this._advance(1));
 
-    this._wirePhraseCanvas(lesson);
+    this._wirePhrasePlay(lesson);
     this._wireSwipe();
   }
 
-  // Phrase-lesson canvas: wires the Play button to a stroke-order
-  // animation drawn on the lesson card's wide canvas, using the
-  // Calliar-derived trajectory shipped in `lesson.phrase_strokes`.
-  // Independent from `LetterTraceLayer.playStrokeOrder` because the
-  // lesson canvas has its own DPR sizing and coordinate space.
-  _wirePhraseCanvas(lesson) {
+  // Phrase-lesson Play button: TTS-only. The Calliar-derived
+  // stroke-order animation that previously played here was removed
+  // for v0.1.0 (see _render comment).
+  _wirePhrasePlay(lesson) {
     if (!lesson || lesson.type !== "phrase") return;
-    const canvas = this.overlay.querySelector("[data-phrase-canvas]");
-    const playBtn = this.overlay.querySelector("[data-phrase-play]");
-    if (!canvas || !playBtn) return;
-    const strokes = Array.isArray(lesson.phrase_strokes) ? lesson.phrase_strokes : [];
-    if (!strokes.length) return;
-    const vb = (canvas.getAttribute("data-vb") || "2000,500").split(",").map(Number);
-    const vbW = vb[0] || 2000;
-    const vbH = vb[1] || 500;
-
-    const ctx = canvas.getContext("2d");
-    let animOpId = 0;
-    const sizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-    };
-    const clear = () => {
-      ctx.save();
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.restore();
-    };
-
-    const play = () => {
-      sizeCanvas();
-      const dpr = window.devicePixelRatio || 1;
-      const cw = canvas.width;
-      const ch = canvas.height;
-      // Fit the viewBox into the canvas preserving aspect ratio.
-      const scale = Math.min(cw / vbW, ch / vbH);
-      const tx = (cw - vbW * scale) / 2;
-      const ty = (ch - vbH * scale) / 2;
-      const projected = strokes.map((m) =>
-        m.map(([x, y]) => [x * scale + tx, y * scale + ty]),
-      );
-      const cumLens = projected.map((seg) => {
-        const lens = [0];
-        for (let i = 1; i < seg.length; i += 1) {
-          const dx = seg[i][0] - seg[i - 1][0];
-          const dy = seg[i][1] - seg[i - 1][1];
-          lens.push(lens[lens.length - 1] + Math.sqrt(dx * dx + dy * dy));
-        }
-        return lens;
-      });
-      const totalLens = cumLens.map((c) => c[c.length - 1]);
-
-      // 23 strokes × ~600 ms each = ~14 s if played at letter speed.
-      // For a full-phrase preview that feels lively, ~450 ms per
-      // multi-point stroke + ~250 ms per dot. Total ≈ 12 s, with
-      // 80 ms inter-stroke gaps.
-      const strokeDur = 450;
-      const dotDur = 250;
-      const gap = 80;
-      const stepDur = projected.map((s) => (s.length <= 1 ? dotDur : strokeDur));
-      let total = 0;
-      for (let i = 0; i < stepDur.length; i += 1) {
-        total += stepDur[i];
-        if (i < stepDur.length - 1) total += gap;
-      }
-
-      animOpId += 1;
-      const opId = animOpId;
-      const startedAt = performance.now();
-
-      const trailColor = "rgba(139, 105, 20, 0.85)";
-      const tipColor = "#1a1410";
-
-      const tick = (now) => {
-        if (opId !== animOpId) return;
-        const elapsed = now - startedAt;
-        clear();
-        let cursor = 0;
-        for (let s = 0; s < projected.length; s += 1) {
-          const startT = cursor;
-          cursor += stepDur[s];
-          if (s < projected.length - 1) cursor += gap;
-          const localT = (elapsed - startT) / stepDur[s];
-          const progress = Math.max(0, Math.min(1, localT));
-          if (progress <= 0) continue;
-          if (projected[s].length === 1) {
-            const [px, py] = projected[s][0];
-            const peak = Math.min(1, progress / 0.6);
-            const r = (2 + peak * 2) * dpr;
-            ctx.save();
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.globalAlpha = Math.min(1, progress * 2);
-            ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
-            ctx.beginPath();
-            ctx.arc(px, py, r + 3 * dpr, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = tipColor;
-            ctx.beginPath();
-            ctx.arc(px, py, r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          } else {
-            const seg = projected[s];
-            const cum = cumLens[s];
-            const target = totalLens[s] * progress;
-            ctx.save();
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            // Fine pen — the phrase has 19 multi-stroke letters
-            // packed into a 4:1 canvas, so even a 3-CSS-px line
-            // covers ~10% of the average letter height. Anything
-            // thicker turns into a smeared blob across neighbors.
-            ctx.strokeStyle = trailColor;
-            ctx.lineWidth = 3 * dpr;
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.beginPath();
-            ctx.moveTo(seg[0][0], seg[0][1]);
-            let tip = seg[0];
-            for (let i = 1; i < seg.length; i += 1) {
-              if (cum[i] <= target) {
-                ctx.lineTo(seg[i][0], seg[i][1]);
-                tip = seg[i];
-              } else {
-                const prev = seg[i - 1];
-                const cur = seg[i];
-                const segLen = cum[i] - cum[i - 1];
-                const remain = target - cum[i - 1];
-                const f = segLen > 1e-6 ? remain / segLen : 0;
-                const px = prev[0] + (cur[0] - prev[0]) * f;
-                const py = prev[1] + (cur[1] - prev[1]) * f;
-                ctx.lineTo(px, py);
-                tip = [px, py];
-                break;
-              }
-            }
-            ctx.stroke();
-            // Tip — proportional to the fine 3-CSS-px line above.
-            ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
-            ctx.beginPath();
-            ctx.arc(tip[0], tip[1], 6 * dpr, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = tipColor;
-            ctx.beginPath();
-            ctx.arc(tip[0], tip[1], 3 * dpr, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-        }
-        if (elapsed >= total) {
-          setTimeout(() => {
-            if (opId !== animOpId) return;
-            clear();
-          }, 1800);
-          return;
-        }
-        requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      // Also speak the phrase aloud.
-      this.speak("ar", lesson.phrase_ar || "");
-    };
-
-    playBtn.addEventListener("click", play);
-    // Auto-play once on first render so the learner immediately sees
-    // what the lesson is about.
-    setTimeout(play, 400);
+    const btn = this.overlay.querySelector("[data-phrase-tts]");
+    if (!btn) return;
+    const text = lesson.phrase_ar || "";
+    if (!text) return;
+    btn.addEventListener("click", () => {
+      this.speak("ar", text);
+      btn.style.transform = "scale(1.08)";
+      setTimeout(() => {
+        btn.style.transform = "";
+      }, 180);
+    });
   }
 
   // Advance the lesson by ±1 and persist progress. Used by both the

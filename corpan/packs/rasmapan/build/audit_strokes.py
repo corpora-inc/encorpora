@@ -187,16 +187,20 @@ def quality_flags(
 
 
 def main() -> None:
-    seed = load_seed()
     writers = load_writers()
+
+    # Letters to audit: all 28 isolated-form letter families that
+    # have a writer row in the DB. (We pull medians + outlines from
+    # the writer directly now, since stroke_orders_seed.json is no
+    # longer the source of truth.)
+    family_ids = sorted(writers.keys())
 
     cards = []
     print(f"{'family':<8} {'strokes':<8} {'flags'}")
     print("-" * 60)
-    for family_id, row in seed.items():
-        f = row.get("forms", {}).get("isolated") or {}
-        medians = f.get("medians") or []
+    for family_id in family_ids:
         writer = writers.get(family_id, {})
+        medians = writer.get("medians") or []
         outline = writer.get("outline", [])
         name_ar = writer.get("letter", "")
         svg = render_letter_svg(family_id, medians, outline, name_ar=name_ar)
@@ -223,9 +227,8 @@ def main() -> None:
         x = (i % cols) * cw
         y = (i // cols) * ch
         # Inline-include each card's content by re-rendering at a shifted offset
-        f = seed[family_id].get("forms", {}).get("isolated") or {}
-        medians = f.get("medians") or []
         writer = writers.get(family_id, {})
+        medians = writer.get("medians") or []
         # Scaled-down rendering inside this slot
         parts.append(f'<g transform="translate({x},{y}) scale({cw/360:.4f})">')
         inner = render_letter_svg(family_id, medians, writer.get("outline", []),
