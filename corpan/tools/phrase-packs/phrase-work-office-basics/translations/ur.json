@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "میٹنگ دس منٹ میں شروع ہو رہی ہے۔",
+    "romanization": "Meeting das minute mein shuru ho rahi hai."
+  },
+  "1": {
+    "text": "کیا آپ اپنی سکرین شیئر کر سکتے ہیں؟",
+    "romanization": "Kya aap apni screen share kar sakte hain?"
+  },
+  "2": {
+    "text": "معذرت، میرا مائیک بند تھا۔",
+    "romanization": "Maazrat, mera mic band tha."
+  },
+  "3": {
+    "text": "ہمارا وقت زیادہ ہو رہا ہے۔",
+    "romanization": "Hamara waqt zyada ho raha hai."
+  },
+  "4": {
+    "text": "اسے اگلی میٹنگ کے لیے رکھ لیتے ہیں۔",
+    "romanization": "Ise agli meeting ke liye rakh lete hain."
+  },
+  "5": {
+    "text": "میں نوٹس لے لوں گا۔",
+    "romanization": "Main notes le loonga."
+  },
+  "6": {
+    "text": "کیا ہم سب باری باری بات کر سکتے ہیں؟",
+    "romanization": "Kya hum sab baari baari baat kar sakte hain?"
+  },
+  "7": {
+    "text": "ایجنڈا کیلنڈر انوائٹ میں ہے۔",
+    "romanization": "Agenda calendar invite mein hai."
+  },
+  "8": {
+    "text": "اس کی قیادت کون کر رہا ہے؟",
+    "romanization": "Is ki qayadat kaun kar raha hai?"
+  },
+  "9": {
+    "text": "کیا ہم اسے ریکارڈ کر رہے ہیں؟",
+    "romanization": "Kya hum ise record kar rahe hain?"
+  },
+  "10": {
+    "text": "کال آدھے راستے میں کٹ گئی۔",
+    "romanization": "Call aadhe raaste mein kat gayi."
+  },
+  "11": {
+    "text": "کیا ہم اسے پندرہ منٹ آگے بڑھا سکتے ہیں؟",
+    "romanization": "Kya hum ise pandrah minute aage badha sakte hain?"
+  },
+  "12": {
+    "text": "وہ دیر سے آیا لیکن خاموشی سے۔",
+    "romanization": "Woh der se aaya lekin khamoshi se."
+  },
+  "13": {
+    "text": "کمرہ پھر سے ڈبل بک ہو گیا ہے۔",
+    "romanization": "Kamra phir se double book ho gaya hai."
+  },
+  "14": {
+    "text": "اسے ابھی رہنے دیتے ہیں اور بعد میں دیکھیں گے۔",
+    "romanization": "Ise abhi rehne dete hain aur baad mein dekhenge."
+  },
+  "15": {
+    "text": "مجھے تین بجے ہر حال میں جانا ہے۔",
+    "romanization": "Mujhe teen baje har haal mein jaana hai."
+  },
+  "16": {
+    "text": "کیا آپ دو منٹ مزید رک سکتے ہیں؟",
+    "romanization": "Kya aap do minute mazeed ruk sakte hain?"
+  },
+  "17": {
+    "text": "وائٹ بورڈ بھر گیا ہے۔",
+    "romanization": "Whiteboard bhar gaya hai."
+  },
+  "18": {
+    "text": "کیا آپ کارروائی کے نکات کا خلاصہ کر سکتے ہیں؟",
+    "romanization": "Kya aap karwai ke nukaat ka khulasa kar sakte hain?"
+  },
+  "19": {
+    "text": "کھڑے ہو کر کی جانے والی میٹنگز حیرت انگیز طور پر جلدی ختم ہو جاتی ہیں۔",
+    "romanization": "Khade ho kar ki jaane wali meetings hairat angez taur par jaldi khatam ho jaati hain."
+  },
+  "20": {
+    "text": "میں آپ کو دن کے اختتام تک جواب دوں گا۔",
+    "romanization": "Main aap ko din ke ikhtitam tak jawab doonga."
+  },
+  "21": {
+    "text": "کیا میری آخری ای میل آپ کو ملی؟",
+    "romanization": "Kya meri aakhri email aap ko mili?"
+  },
+  "22": {
+    "text": "دیر سے جواب دینے کے لیے معذرت۔",
+    "romanization": "Der se jawab dene ke liye maazrat."
+  },
+  "23": {
+    "text": "میں سارہ کو بھی اس میں شامل کر رہا ہوں۔",
+    "romanization": "Main Sara ko bhi is mein shamil kar raha hoon."
+  },
+  "24": {
+    "text": "اٹیچمنٹ نہیں پہنچی۔",
+    "romanization": "Attachment nahin pahunchi."
+  },
+  "25": {
+    "text": "میں نے اسے فوری قرار دیا ہے۔",
+    "romanization": "Main ne ise fauri qaraar diya hai."
+  },
+  "26": {
+    "text": "کیا آپ وہ فائل دوبارہ بھیج سکتے ہیں؟",
+    "romanization": "Kya aap woh file dobara bhej sakte hain?"
+  },
+  "27": {
+    "text": "بات بہت لمبی ہو گئی ہے، میں خلاصہ کرتا ہوں۔",
+    "romanization": "Baat bahut lambi ho gayi hai, main khulasa karta hoon."
+  },
+  "28": {
+    "text": "سبجیکٹ لائن استعمال کریں تاکہ میں اسے ڈھونڈ سکوں۔",
+    "romanization": "Subject line istemal karein taake main use dhoond sakoon."
+  },
+  "29": {
+    "text": "اس نے ویک اینڈ پر اپنا ان باکس صاف کر لیا۔",
+    "romanization": "Us ne weekend par apna inbox saaf kar liya."
+  },
+  "30": {
+    "text": "براہ کرم جمعہ تک جواب دیں۔",
+    "romanization": "Barah-e-karam Jumma tak jawab dein."
+  },
+  "31": {
+    "text": "جب یہ ہو جائے گا تو میں ایک مختصر نوٹ بھیج دوں گا۔",
+    "romanization": "Jab yeh ho jaayega to main ek mukhtasar note bhej doonga."
+  },
+  "32": {
+    "text": "آٹو ریپلائی میں لکھا ہے کہ وہ سفر کر رہا ہے۔",
+    "romanization": "Auto-reply mein likha hai ke woh safar kar raha hai."
+  },
+  "33": {
+    "text": "اس نے غلطی سے غلط شخص کو کاپی کر دیا۔",
+    "romanization": "Us ne ghalti se ghalat shakhs ko copy kar diya."
+  },
+  "34": {
+    "text": "تین یاد دہانیاں کافی ہیں۔",
+    "romanization": "Teen yaad dehaniyan kaafi hain."
+  },
+  "35": {
+    "text": "کیا آپ مجھے یہ تھریڈ فارورڈ کر سکتے ہیں؟",
+    "romanization": "Kya aap mujhe yeh thread forward kar sakte hain?"
+  },
+  "36": {
+    "text": "اس کے لیے ای میل سے زیادہ چیٹ تیز ہے۔",
+    "romanization": "Is ke liye email se zyada chat tez hai."
+  },
+  "37": {
+    "text": "اس شور میں مجھے آپ کا پیغام نہیں ملا۔",
+    "romanization": "Is shor mein mujhe aap ka paigham nahin mila."
+  },
+  "38": {
+    "text": "آپ کی ای میل میں دیا گیا لنک ایک گمشدہ صفحے پر جا رہا ہے۔",
+    "romanization": "Aap ki email mein diya gaya link ek gumshuda safhe par ja raha hai."
+  },
+  "39": {
+    "text": "براہ کرم تصدیق کریں کہ آپ کو یہ مل گیا ہے۔",
+    "romanization": "Barah-e-karam tasdeeq karein ke aap ko yeh mil gaya hai."
+  },
+  "40": {
+    "text": "آخری تاریخ جمعہ دوپہر تک ہے۔",
+    "romanization": "Aakhri tareekh Jumma dopehar tak hai."
+  },
+  "41": {
+    "text": "میں بدھ تک پہلا مسودہ تیار کر لوں گا۔",
+    "romanization": "Main Budh tak pehla maswada tayyar kar loonga."
+  },
+  "42": {
+    "text": "ہمیں اس ہفتے کچھ نہ کچھ مکمل کرنا ہے۔",
+    "romanization": "Humein is hafte kuch na kuch mukammal karna hai."
+  },
+  "43": {
+    "text": "پراجیکٹ ایک دن پیچھے ہو گیا۔",
+    "romanization": "Project ek din peeche ho gaya."
+  },
+  "44": {
+    "text": "کیا آپ اسے بھیجنے سے پہلے پروف ریڈ کر سکتے ہیں؟",
+    "romanization": "Kya aap ise bhejney se pehle proofread kar sakte hain?"
+  },
+  "45": {
+    "text": "مجھے آپ کو اسٹیٹس اپ ڈیٹ دینا ہے۔",
+    "romanization": "Mujhe aap ko status update dena hai."
+  },
+  "46": {
+    "text": "اعداد و شمار پچھلے ہفتے بھیجے گئے ڈیٹا سے نہیں مل رہے۔",
+    "romanization": "Adaad-o-shumar pichle hafte bheje gaye data se nahin mil rahe."
+  },
+  "47": {
+    "text": "ہم کلائنٹ کے فیصلے کا انتظار کر رہے ہیں۔",
+    "romanization": "Hum client ke faisle ka intezar kar rahe hain."
+  },
+  "48": {
+    "text": "اس نے اسے ختم کرنے کے لیے لنچ کے دوران بھی کام کیا۔",
+    "romanization": "Us ne ise khatam karne ke liye lunch ke dauran bhi kaam kiya."
+  },
+  "49": {
+    "text": "رپورٹ آخر کار میرے ہاتھ سے نکل گئی ہے۔",
+    "romanization": "Report aakhir kaar mere haath se nikal gayi hai."
+  },
+  "50": {
+    "text": "منظوری ملتے ہی میں شروع کر دوں گا۔",
+    "romanization": "Manzoori milte hi main shuru kar doonga."
+  },
+  "51": {
+    "text": "کیا آپ اس ورژن کی منظوری دے سکتے ہیں؟",
+    "romanization": "Kya aap is version ki manzoori de sakte hain?"
+  },
+  "52": {
+    "text": "اس نے ڈیلیور کرنے سے عین پہلے ایک ٹائپو پکڑ لیا۔",
+    "romanization": "Us ne deliver karne se ain pehle ek typo pakad liya."
+  },
+  "53": {
+    "text": "ہم نے لانچ کو اگلے منگل تک ملتوی کر دیا۔",
+    "romanization": "Hum ne launch ko agle Mangal tak multavi kar diya."
+  },
+  "54": {
+    "text": "اندازہ دو گنا غلط تھا۔",
+    "romanization": "Andaza do guna ghalat tha."
+  },
+  "55": {
+    "text": "اس نے توجہ مرکوز کرنے کے لیے اپنی دوپہر خالی کر لی۔",
+    "romanization": "Us ne tawajjo markooz karne ke liye apni dopehar khaali kar li."
+  },
+  "56": {
+    "text": "معاہدہ دستخط شدہ واپس آ گیا۔",
+    "romanization": "Muahida dastakhat shuda wapas aa gaya."
+  },
+  "57": {
+    "text": "اسے مکمل سمجھ کر آگے بڑھتے ہیں۔",
+    "romanization": "Ise mukammal samajh kar aage badhte hain."
+  },
+  "58": {
+    "text": "پہلا ورژن کچا ہے لیکن کام کرتا ہے۔",
+    "romanization": "Pehla version kaccha hai lekin kaam karta hai."
+  },
+  "59": {
+    "text": "اس نے ایک بار تو وقت سے پہلے کام مکمل کر لیا۔",
+    "romanization": "Us ne ek baar to waqt se pehle kaam mukammal kar liya."
+  },
+  "60": {
+    "text": "ٹیم میں خوش آمدید۔",
+    "romanization": "Team mein khush aamdeed."
+  },
+  "61": {
+    "text": "میں آپ کو دوسروں سے ملواتا ہوں۔",
+    "romanization": "Main aap ko doosron se milwata hoon."
+  },
+  "62": {
+    "text": "وہ ابھی چھٹی سے واپس آئی ہے۔",
+    "romanization": "Woh abhi chhuti se wapas aayi hai."
+  },
+  "63": {
+    "text": "اس بارے میں پوچھنے کے لیے وہی صحیح شخص ہے۔",
+    "romanization": "Is baare mein poochhne ke liye wohi sahi shakhs hai."
+  },
+  "64": {
+    "text": "ہم منگل کو ایک ہی ڈیسک شیئر کرتے ہیں۔",
+    "romanization": "Hum Mangal ko ek hi desk share karte hain."
+  },
+  "65": {
+    "text": "قیمتوں کے بارے میں سب سے زیادہ کون جانتا ہے؟",
+    "romanization": "Qeematon ke baare mein sab se zyada kaun jaanta hai?"
+  },
+  "66": {
+    "text": "وہ ہمیشہ ٹیم کے لیے کافی لاتا ہے۔",
+    "romanization": "Woh hamesha team ke liye coffee laata hai."
+  },
+  "67": {
+    "text": "نیا ملازم جلدی سیکھتا ہے۔",
+    "romanization": "Naya mulazim jaldi seekhta hai."
+  },
+  "68": {
+    "text": "وہ مارکیٹنگ کے ساتھ مل کر کام کرتی ہے۔",
+    "romanization": "Woh marketing ke saath mil kar kaam karti hai."
+  },
+  "69": {
+    "text": "وہ یہاں سب سے زیادہ عرصے سے ہے۔",
+    "romanization": "Woh yahan sab se zyada arse se hai."
+  },
+  "70": {
+    "text": "انہوں نے کام کو بالکل آدھا آدھا بانٹ لیا۔",
+    "romanization": "Unhon ne kaam ko bilkul aadha aadha baant liya."
+  },
+  "71": {
+    "text": "ہم نے لنچ کیا اور اس کا خاکہ تیار کیا۔",
+    "romanization": "Hum ne lunch kiya aur us ka khaka tayyar kiya."
+  },
+  "72": {
+    "text": "جب میں بیمار تھا تو اس نے میری جگہ کام کیا۔",
+    "romanization": "Jab main beemar tha to us ne meri jagah kaam kiya."
+  },
+  "73": {
+    "text": "ٹیم لیپ ٹاپ کے گرد جمع ہو گئی۔",
+    "romanization": "Team laptop ke gird jama ho gayi."
+  },
+  "74": {
+    "text": "اسے سب کی سالگرہ یاد رہتی ہے۔",
+    "romanization": "Use sab ki saalgirah yaad rehti hai."
+  },
+  "75": {
+    "text": "میں کل دور سے شامل ہوں گا۔",
+    "romanization": "Main kal door se shamil hoonga."
+  },
+  "76": {
+    "text": "جمعہ کو دفتر زیادہ تر خالی ہوتا ہے۔",
+    "romanization": "Jumma ko daftar zyada tar khaali hota hai."
+  },
+  "77": {
+    "text": "آج میرا انٹرنیٹ ٹھیک نہیں چل رہا۔",
+    "romanization": "Aaj mera internet theek nahin chal raha."
+  },
+  "78": {
+    "text": "وہ ایک مختلف شہر سے کام کرتا ہے۔",
+    "romanization": "Woh ek mukhtalif shehar se kaam karta hai."
+  },
+  "79": {
+    "text": "ٹیم مہینے میں ایک بار ذاتی طور پر ملتی ہے۔",
+    "romanization": "Team mahine mein ek baar zaati taur par milti hai."
+  },
+  "80": {
+    "text": "اس نے بیڈ روم کے ایک کونے کو ڈیسک بنا لیا۔",
+    "romanization": "Us ne bedroom ke ek kone ko desk bana liya."
+  },
+  "81": {
+    "text": "ہوم آفس آخر کار صاف ستھرا ہو گیا۔",
+    "romanization": "Home office aakhir kaar saaf suthra ho gaya."
+  },
+  "82": {
+    "text": "کیا آپ اپنا کیمرہ آن کر سکتے ہیں؟",
+    "romanization": "Kya aap apna camera on kar sakte hain?"
+  },
+  "83": {
+    "text": "پس منظر کا شور ٹھیک ہے، پریشان نہ ہوں۔",
+    "romanization": "Pas manzar ka shor theek hai, pareshan na hon."
+  },
+  "84": {
+    "text": "ہم ہر صبح ایک مختصر چیک اِن کرتے ہیں۔",
+    "romanization": "Hum har subah ek mukhtasar check-in karte hain."
+  },
+  "85": {
+    "text": "پرنٹر پھر سے جام ہو گیا ہے۔",
+    "romanization": "Printer phir se jam ho gaya hai."
+  },
+  "86": {
+    "text": "کافی مشین میں بینز ختم ہو گئے ہیں۔",
+    "romanization": "Coffee machine mein beans khatam ho gaye hain."
+  },
+  "87": {
+    "text": "کیا آپ دروازہ دیکھ سکتے ہیں؟",
+    "romanization": "Kya aap darwaza dekh sakte hain?"
+  },
+  "88": {
+    "text": "کانفرنس روم کی کھڑکی نہیں کھلتی۔",
+    "romanization": "Conference room ki khirki nahin khulti."
+  },
+  "89": {
+    "text": "کسی نے اپنا لنچ ایک ہفتے کے لیے فریج میں چھوڑ دیا۔",
+    "romanization": "Kisi ne apna lunch ek hafte ke liye fridge mein chhod diya."
+  },
+  "90": {
+    "text": "تین بجے کچن میں خاموشی ہوتی ہے۔",
+    "romanization": "Teen baje kitchen mein khamoshi hoti hai."
+  },
+  "91": {
+    "text": "اس نے اپنا ذہن صاف کرنے کے لیے سیڑھیاں استعمال کیں۔",
+    "romanization": "Us ne apna zehan saaf karne ke liye seedhiyan istemal kein."
+  },
+  "92": {
+    "text": "کھڑکی پر رکھا پودا اچھا بڑھ رہا ہے۔",
+    "romanization": "Khirki par rakha pauda achha badh raha hai."
+  },
+  "93": {
+    "text": "کیا آپ فرنٹ ڈیسک پر ایک پیکج کے لیے دستخط کر سکتے ہیں؟",
+    "romanization": "Kya aap front desk par ek package ke liye dastakhat kar sakte hain?"
+  },
+  "94": {
+    "text": "بیج ریڈر خراب ہو رہا ہے۔",
+    "romanization": "Badge reader kharab ho raha hai."
+  },
+  "95": {
+    "text": "دن کا اختتام ہمیشہ اچانک آ جاتا ہے۔",
+    "romanization": "Din ka ikhtitam hamesha achaanak aa jaata hai."
+  },
+  "96": {
+    "text": "وہ ایک وقت میں ایک ونڈو کھول کر بہترین کام کرتا ہے۔",
+    "romanization": "Woh ek waqt mein ek window khol kar behtareen kaam karta hai."
+  },
+  "97": {
+    "text": "وہ دن کے آغاز کی نشاندہی کے لیے ایک موم بتی جلاتی ہے۔",
+    "romanization": "Woh din ke aaghaz ki nishandahi ke liye ek mombatti jalati hai."
+  },
+  "98": {
+    "text": "لنچ کے بعد ایک مختصر چہل قدمی مجھے سوچنے میں مدد دیتی ہے۔",
+    "romanization": "Lunch ke baad ek mukhtasar chehal qadmi mujhe sochne mein madad deti hai."
+  },
+  "99": {
+    "text": "کچھ پیر ایک چھوٹی سی کامیابی کے ساتھ شروع ہوتے ہیں۔",
+    "romanization": "Kuch Peer ek chhoti si kamyabi ke saath shuru hote hain."
+  }
+}

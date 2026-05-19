@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "บันทึกไฟล์ก่อนปิดนะ",
+    "romanization": "bantuek fai kon pit na"
+  },
+  "1": {
+    "text": "ส่งเอกสารนั้นให้หน่อยได้ไหม",
+    "romanization": "song ekkasan nan hai noi dai mai"
+  },
+  "2": {
+    "text": "โฟลเดอร์อยู่ในหน้าจอหลัก (เดสก์ท็อป)",
+    "romanization": "foedo yu nai na cho lak (desakthop)"
+  },
+  "3": {
+    "text": "หาไฟล์ที่บันทึกไว้เมื่อวานไม่เจอเลย",
+    "romanization": "ha fai thi bantuek wai muea wan mai cho loei"
+  },
+  "4": {
+    "text": "ลองค้นหาชื่อนี้ทั้งไดรฟ์เลย",
+    "romanization": "long khon ha chue ni thang draif loei"
+  },
+  "5": {
+    "text": "เขาเปลี่ยนชื่อไฟล์ผิดไป",
+    "romanization": "khao plian chue fai phit pai"
+  },
+  "6": {
+    "text": "ไฟล์ที่ดาวน์โหลดไปเข้าผิดโฟลเดอร์",
+    "romanization": "fai thi daonlot pai khao phit foedo"
+  },
+  "7": {
+    "text": "ไฟล์ใหญ่เกินกว่าจะส่งอีเมลได้",
+    "romanization": "fai yai koen kwa cha song imel dai"
+  },
+  "8": {
+    "text": "ช่วยบีบอัดเป็นไฟล์ซิปให้หน่อยได้ไหม",
+    "romanization": "chuai bip at pen fai sip hai noi dai mai"
+  },
+  "9": {
+    "text": "โฟลเดอร์บนคลาวด์จะซิงค์อัตโนมัติ",
+    "romanization": "foedo bon khlao cha sing atsanomat"
+  },
+  "10": {
+    "text": "เธอจัดระเบียบทุกอย่างไว้ในโฟลเดอร์ย่อยตามวันที่",
+    "romanization": "thoe chat rabiap thuk yang wai nai foedo yoi tam wan thi"
+  },
+  "11": {
+    "text": "ถังขยะเต็มกว่าส่วนอื่นๆ ของไดรฟ์อีก",
+    "romanization": "thang khaya tem kwa suan uen uen khong draif ik"
+  },
+  "12": {
+    "text": "เขามีไฟล์สำรองของทุกโปรเจกต์",
+    "romanization": "khao mi fai samrong khong thuk prochek"
+  },
+  "13": {
+    "text": "โฟลเดอร์ที่แชร์อัปเดตให้ทุกคนแล้ว",
+    "romanization": "foedo thi chae apdet hai thuk khon laeo"
+  },
+  "14": {
+    "text": "ไฟล์ที่หาไม่เจอ ก็เหมือนไม่มีอยู่จริงนั่นแหละ",
+    "romanization": "fai thi ha mai cho ko muean mai mi yu ching nan lae"
+  },
+  "15": {
+    "text": "ฉันลืมรหัสผ่าน",
+    "romanization": "chan luem rahat phan"
+  },
+  "16": {
+    "text": "รีเซ็ตรหัสผ่านได้จากหน้าจอเข้าสู่ระบบเลย",
+    "romanization": "riset rahat phan dai chak na cho khao su rabop loei"
+  },
+  "17": {
+    "text": "อย่าใช้รหัสผ่านเดียวกันกับทุกอย่างนะ",
+    "romanization": "ya chai rahat phan diao kan kap thuk yang na"
+  },
+  "18": {
+    "text": "ตัวจัดการรหัสผ่านจะช่วยจำให้คุณเอง",
+    "romanization": "tua chatkan rahat phan cha chuai cham hai khun eng"
+  },
+  "19": {
+    "text": "การยืนยันสองขั้นตอนเพิ่มความยุ่งยากนิดหน่อย แต่ปลอดภัยขึ้นเยอะเลย",
+    "romanization": "kan yueanyan song khan ton phoem khwam yung yak nit noi tae plot phai khuen yoe loei"
+  },
+  "20": {
+    "text": "ลองเช็กอีเมลดูนะ จะมีรหัสยืนยันส่งไป",
+    "romanization": "long chek imel du na cha mi rahat yueanyan song pai"
+  },
+  "21": {
+    "text": "ลิงก์หมดอายุภายในสิบห้านาที",
+    "romanization": "ling mot ayu phai nai sip ha nathi"
+  },
+  "22": {
+    "text": "เธอสร้างบัญชีใหม่สำหรับโปรเจกต์นี้",
+    "romanization": "thoe sang banchi mai samrap prochek ni"
+  },
+  "23": {
+    "text": "เขาจะออกจากระบบเสมอเมื่อใช้คอมพิวเตอร์สาธารณะ",
+    "romanization": "khao cha ok chak rabop samoe muea chai khomphiuto satharana"
+  },
+  "24": {
+    "text": "ชื่อผู้ใช้นี้มีคนใช้แล้ว",
+    "romanization": "chue phu chai ni mi khon chai laeo"
+  },
+  "25": {
+    "text": "เก็บโค้ดกู้คืนไว้ในที่ปลอดภัยนะ",
+    "romanization": "kep khot ku khuen wai nai thi plot phai na"
+  },
+  "26": {
+    "text": "อย่าคลิกลิงก์เข้าสู่ระบบที่น่าสงสัย",
+    "romanization": "ya khlik ling khao su rabop thi na songsai"
+  },
+  "27": {
+    "text": "อัปเดตอีเมลสำหรับกู้คืนบัญชีเมื่อย้ายที่อยู่ด้วยนะ",
+    "romanization": "apdet imel samrap ku khuen banchi muea yai thi yu dueai na"
+  },
+  "28": {
+    "text": "พาสคีย์เร็วกว่ารหัสผ่าน",
+    "romanization": "phat khi reo kwa rahat phan"
+  },
+  "29": {
+    "text": "สมัยนี้โทรศัพท์ก็เป็นเหมือนบัญชีผู้ใช้ได้ด้วย",
+    "romanization": "samai ni thorasap ko pen muean banchi phu chai dai dueai"
+  },
+  "30": {
+    "text": "ลองรีสตาร์ทเครื่องดูหรือยัง",
+    "romanization": "long ristaet khrueang du rue yang"
+  },
+  "31": {
+    "text": "สายมันหลวม",
+    "romanization": "sai man luam"
+  },
+  "32": {
+    "text": "หน้าจอค้างไปพักนึง",
+    "romanization": "na cho khang pai phak nueng"
+  },
+  "33": {
+    "text": "ปิดแท็บทั้งหมดแล้วลองใหม่",
+    "romanization": "pit thaep thang mot laeo long mai"
+  },
+  "34": {
+    "text": "ตรวจสอบว่าเชื่อมต่อกับเครือข่ายที่ถูกต้องหรือเปล่า",
+    "romanization": "truat sop wa chueam to kap khrueakhai thi thuk tong rue plao"
+  },
+  "35": {
+    "text": "คีย์บอร์ดไม่ตอบสนองเลย",
+    "romanization": "khi bot mai top sanong loei"
+  },
+  "36": {
+    "text": "พัดลมเสียงดังกว่าปกติ",
+    "romanization": "phat lom siang dang kwa pakati"
+  },
+  "37": {
+    "text": "ล้างแคชแล้วโหลดใหม่",
+    "romanization": "lang khaet laeo lot mai"
+  },
+  "38": {
+    "text": "ลองใช้เบราว์เซอร์อื่นดูสิ",
+    "romanization": "long chai brao soe uen du si"
+  },
+  "39": {
+    "text": "การอัปเดตแก้ไขบั๊กได้แล้ว",
+    "romanization": "kan apdet kae khai bak dai laeo"
+  },
+  "40": {
+    "text": "แบตเตอรี่หมดเกลี้ยงตั้งแต่เมื่อคืน",
+    "romanization": "baettoeri mot kliang tang tae muea khuen"
+  },
+  "41": {
+    "text": "กล้องเว็บแคมหยุดทำงานหลังอัปเดต",
+    "romanization": "klong wep khaem yut thamngan lang apdet"
+  },
+  "42": {
+    "text": "บางทีวิธีแก้ที่ง่ายที่สุดคือรอสักนาที",
+    "romanization": "bang thi withi kae thi ngai thi sut khue ro sak nathi"
+  },
+  "43": {
+    "text": "การรีบูตช่วยแก้ปัญหาได้มากกว่าที่หลายคนคิดนะ",
+    "romanization": "kan ribu chuai kae panha dai mak kwa thi lai khon khit na"
+  },
+  "44": {
+    "text": "เขาอธิบายข้อความแจ้งข้อผิดพลาดด้วยคำพูดที่เข้าใจง่าย",
+    "romanization": "khao athibai khokhwam chaeng kho phit phlat dueai kham phut thi khao chai ngai"
+  },
+  "45": {
+    "text": "หน้านี้โหลดนานมากเลย",
+    "romanization": "na ni lot nan mak loei"
+  },
+  "46": {
+    "text": "เว็บไซต์ล่มสำหรับทุกคนเลย",
+    "romanization": "wepsai lom samrap thuk khon loei"
+  },
+  "47": {
+    "text": "บันทึกบุ๊กมาร์กไว้จะได้หาเจออีก",
+    "romanization": "bantuek buk mak wai cha dai ha cho ik"
+  },
+  "48": {
+    "text": "ลิงก์ในอีเมลจะเปิดในแท็บใหม่",
+    "romanization": "ling nai imel cha poet nai thaep mai"
+  },
+  "49": {
+    "text": "วิดีโอโหลดค้างตลอดเลย",
+    "romanization": "wideo lot khang talot loei"
+  },
+  "50": {
+    "text": "สัญญาณอ่อนในห้องด้านหลัง",
+    "romanization": "sanyan on nai hong dan lang"
+  },
+  "51": {
+    "text": "ช่วยแชร์ลิงก์ให้หน่อยได้ไหม",
+    "romanization": "chuai chae ling hai noi dai mai"
+  },
+  "52": {
+    "text": "เว็บไซต์ดูต่างออกไปเมื่อเปิดบนมือถือ",
+    "romanization": "wepsai du tang ok pai muea poet bon mue thue"
+  },
+  "53": {
+    "text": "ป๊อปอัปเด้งขึ้นมาให้ฉันกดยอมรับคุกกี้",
+    "romanization": "pop ap deng khuen ma hai chan kot yomrap khukki"
+  },
+  "54": {
+    "text": "โฆษณานี้ยากที่จะปิด",
+    "romanization": "khotsana ni yak thi cha pit"
+  },
+  "55": {
+    "text": "เขาใช้ตัวบล็อกโฆษณากับทุกเครื่อง",
+    "romanization": "khao chai tua blok khotsana kap thuk khrueang"
+  },
+  "56": {
+    "text": "ผลการค้นหาเยอะเกินไป",
+    "romanization": "phon kan khon ha yoe koen pai"
+  },
+  "57": {
+    "text": "ลองใส่เครื่องหมายคำพูดเพื่อจำกัดการค้นหาดูสิ",
+    "romanization": "long sai khrueangmai kham phut phuea chamkat kan khon ha du si"
+  },
+  "58": {
+    "text": "บทความนี้ถูกย้ายไปอยู่หลังเพย์วอลล์แล้ว",
+    "romanization": "botkhwam ni thuk yai pai yu lang phe wol laeo"
+  },
+  "59": {
+    "text": "หน้านี้มาจากเว็บไซต์ที่ฉันเชื่อถือ",
+    "romanization": "na ni ma chak wepsai thi chan chuea thue"
+  },
+  "60": {
+    "text": "แอปอัปเดตไปเองเมื่อคืน",
+    "romanization": "aep apdet pai eng muea khuen"
+  },
+  "61": {
+    "text": "เวอร์ชันใหม่ดูแตกต่างไปจากเดิมสิ้นเชิง",
+    "romanization": "woesan mai du taek tang pai chak doem sin choeng"
+  },
+  "62": {
+    "text": "เธอถอนการติดตั้งแอปที่ไม่เคยเปิดใช้เลย",
+    "romanization": "thoe thon kan tittang aep thi mai khoei poet chai loei"
+  },
+  "63": {
+    "text": "การตั้งค่าการแจ้งเตือนมันซ่อนอยู่ในเมนู",
+    "romanization": "kan tang kha kan chaeng tuean man son yu nai menu"
+  },
+  "64": {
+    "text": "ปิดเสียงมันตอนประชุมนะ",
+    "romanization": "pit siang man ton prachum na"
+  },
+  "65": {
+    "text": "คีย์ลัดเร็วกว่าการใช้เมนู",
+    "romanization": "khi lat reo kwa kan chai menu"
+  },
+  "66": {
+    "text": "โหมดมืดช่วยถนอมสายตาตอนกลางคืนได้ดีกว่า",
+    "romanization": "mot muet chuai thanom sai ta ton klang khuen dai di kwa"
+  },
+  "67": {
+    "text": "ปิดการเล่นอัตโนมัติ",
+    "romanization": "pit kan len atsanomat"
+  },
+  "68": {
+    "text": "ไอคอนแจ้งเตือนไม่หายไปเลย",
+    "romanization": "aikon chaeng tuean mai hai pai loei"
+  },
+  "69": {
+    "text": "เขาตั้งค่าแล็ปท็อปตามที่เขาชอบ",
+    "romanization": "khao tang kha laep thop tam thi khao chop"
+  },
+  "70": {
+    "text": "อย่าเปิดไฟล์แนบจากผู้ส่งที่ไม่รู้จักนะ",
+    "romanization": "ya poet fai naep chak phu song thi mai ruchak na"
+  },
+  "71": {
+    "text": "ลิงก์ในข้อความนั้นดูน่าสงสัย",
+    "romanization": "ling nai khokhwam nan du na songsai"
+  },
+  "72": {
+    "text": "ตรวจสอบที่อยู่เต็มของผู้ส่งด้วย",
+    "romanization": "truat sop thi yu tem khong phu song dueai"
+  },
+  "73": {
+    "text": "Wi-Fi ฟรีที่สนามบินไม่เป็นส่วนตัวนะ",
+    "romanization": "wai fai fri thi sanam bin mai pen suan tua na"
+  },
+  "74": {
+    "text": "ปิดกล้องไว้เมื่อไม่ได้ใช้งาน",
+    "romanization": "pit klong wai muea mai dai chai ngan"
+  },
+  "75": {
+    "text": "ล็อกหน้าจอเมื่อคุณลุกไปจากเครื่อง",
+    "romanization": "lok na cho muea khun luk pai chak khrueang"
+  },
+  "76": {
+    "text": "ระวังข้อมูลที่คุณไม่สามารถเรียกคืนได้",
+    "romanization": "rawang khomun thi khun mai samat riak khuen dai"
+  },
+  "77": {
+    "text": "อ่านสิ่งที่กำลังจะตกลงให้ดีนะ",
+    "romanization": "an sing thi kamlang cha tok long hai di na"
+  },
+  "78": {
+    "text": "ข้อมูลรั่วไหลส่วนใหญ่มาจากการใช้รหัสผ่านซ้ำ",
+    "romanization": "khomun rua lai suan yai ma chak kan chai rahat phan sam"
+  },
+  "79": {
+    "text": "กลโกงที่ง่ายที่สุดก็ยังได้ผล เพราะมันง่ายนั่นแหละ",
+    "romanization": "kon koeng thi ngai thi sut ko yang dai phon phro man ngai nan lae"
+  },
+  "80": {
+    "text": "แล็ปท็อปช้าลงตั้งแต่การอัปเดตครั้งล่าสุด",
+    "romanization": "laep thop cha long tang tae kan apdet khrang la sut"
+  },
+  "81": {
+    "text": "หน้าจอแตกแต่ก็ยังใช้งานได้อยู่",
+    "romanization": "na cho taek tae ko yang chai ngan dai yu"
+  },
+  "82": {
+    "text": "จอภาพใหม่มาถึงเมื่อเช้านี้เอง",
+    "romanization": "cho phap mai ma thueng muea chao ni eng"
+  },
+  "83": {
+    "text": "เขาเสียบสายไปสามเส้นกว่าจะเจอเส้นที่ถูกต้อง",
+    "romanization": "khao siap sai pai sam sen kwa cha cho sen thi thuk tong"
+  },
+  "84": {
+    "text": "แบตเตอรี่ไม่อึดเหมือนเมื่อก่อนแล้ว",
+    "romanization": "baettoeri mai uet muean muea kon laeo"
+  },
+  "85": {
+    "text": "คีย์บอร์ดมีเศษขนมเต็มไปหมดตลอดหลายปีที่ผ่านมา",
+    "romanization": "khi bot mi set khanom tem pai mot talot lai pi thi phan ma"
+  },
+  "86": {
+    "text": "พัดลมจะทำงานเมื่อห้องเริ่มร้อน",
+    "romanization": "phat lom cha thamngan muea hong roem ron"
+  },
+  "87": {
+    "text": "เครื่องพิมพ์ออฟไลน์อีกแล้ว",
+    "romanization": "khrueang phim oflai ik laeo"
+  },
+  "88": {
+    "text": "หูฟังข้างหนึ่งเสียงขาดๆ หายๆ",
+    "romanization": "hu fang khang nueng siang khat khat hai hai"
+  },
+  "89": {
+    "text": "เขาทำความสะอาดหน้าจอด้วยผ้านุ่มๆ",
+    "romanization": "khao tham khwamสะอาด na cho dueai pha num num"
+  },
+  "90": {
+    "text": "ช่วยแคปหน้าจอให้หน่อยได้ไหม",
+    "romanization": "chuai khaep na cho hai noi dai mai"
+  },
+  "91": {
+    "text": "ไฟล์ถูกส่งไปตอนเที่ยงคืน",
+    "romanization": "fai thuk song pai ton thiang khuen"
+  },
+  "92": {
+    "text": "คำเชิญในปฏิทินส่งมาสองครั้ง",
+    "romanization": "kham choen nai patithin song ma song khrang"
+  },
+  "93": {
+    "text": "ลากไฟล์ไปใส่ในหน้าต่างนั้นเลย",
+    "romanization": "lak fai pai sai nai na tang nan loei"
+  },
+  "94": {
+    "text": "คลิกขวาเพื่อดูตัวเลือกเพิ่มเติม",
+    "romanization": "khlik khwa phuea du tua lueak phoemtoem"
+  },
+  "95": {
+    "text": "กด Shift ค้างไว้เพื่อเลือกหลายรายการ",
+    "romanization": "kot Shift khang wai phuea lueak lai raikan"
+  },
+  "96": {
+    "text": "ปุ่มย้อนกลับช่วยชีวิตฉันไว้หลายครั้งแล้ว",
+    "romanization": "pum yon klap chuai chiwit chan wai lai khrang laeo"
+  },
+  "97": {
+    "text": "คลิปบอร์ดจะจำสิ่งสุดท้ายที่คุณคัดลอกไว้",
+    "romanization": "khlip bot cha cham sing sut thai thi khun khat lok wai"
+  },
+  "98": {
+    "text": "ระบบแก้ไขคำผิดอัตโนมัติก็มีประโยชน์นะ แต่บางทีก็ทำให้อายเหมือนกัน",
+    "romanization": "rabop kae khai kham phit atsanomat ko mi prayot na tae bang thi ko tham hai ai muean kan"
+  },
+  "99": {
+    "text": "หน้าจอเดสก์ท็อปที่สะอาดทำให้หาสิ่งต่างๆ ได้ง่ายขึ้น",
+    "romanization": "na cho desakthop thi sa at tham hai ha sing tang tang dai ngai khuen"
+  }
+}

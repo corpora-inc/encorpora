@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Hãy lưu tệp trước khi đóng nhé.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Bạn gửi giúp mình tài liệu đó được không?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Thư mục đó nằm trên màn hình nền.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Mình không tìm thấy tệp đã lưu hôm qua.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Tìm tên đó trên toàn bộ ổ đĩa đi.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Anh ấy lỡ đổi tên tệp rồi.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Tệp tải về bị lưu nhầm thư mục rồi.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Tệp này lớn quá, không gửi email được.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Bạn nén nó thành tệp zip giúp mình được không?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Thư mục đám mây tự động đồng bộ hóa.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Cô ấy sắp xếp mọi thứ vào các thư mục con theo ngày.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Thùng rác đầy hơn cả phần còn lại của ổ đĩa.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Anh ấy luôn giữ bản sao lưu của mọi dự án.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Thư mục chia sẻ đã được cập nhật cho mọi người.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Tệp mà bạn không tìm thấy thì coi như không tồn tại.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Mình quên mật khẩu rồi.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Đặt lại mật khẩu từ màn hình đăng nhập.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Đừng dùng một mật khẩu cho mọi thứ nhé.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Trình quản lý mật khẩu sẽ nhớ giúp bạn.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Xác thực hai yếu tố thêm một bước nhưng an toàn hơn nhiều.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Kiểm tra email để lấy mã xác minh nhé.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Liên kết này hết hạn sau mười lăm phút.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Cô ấy tạo một tài khoản mới cho dự án.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Anh ấy luôn đăng xuất trên máy tính dùng chung.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Tên người dùng này đã có người sử dụng rồi.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Lưu mã khôi phục ở nơi an toàn nhé.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Đừng nhấp vào các liên kết đăng nhập đáng ngờ.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Cập nhật email khôi phục khi bạn chuyển chỗ ở.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Khóa truy cập nhanh hơn mật khẩu.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Điện thoại của bạn giờ cũng là một tài khoản rồi.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Bạn đã thử khởi động lại chưa?",
+    "romanization": null
+  },
+  "31": {
+    "text": "Dây cáp bị lỏng.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Màn hình bị đơ một lúc.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Đóng tất cả các tab rồi thử lại xem.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Kiểm tra xem bạn đã kết nối đúng mạng chưa.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Bàn phím không phản hồi.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Quạt kêu to hơn bình thường.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Xóa bộ nhớ đệm và tải lại trang.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Thử dùng một trình duyệt khác xem sao.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Bản cập nhật đã sửa lỗi đó rồi.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Pin bị hết sạch qua đêm.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Webcam ngừng hoạt động sau khi cập nhật.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Đôi khi cách sửa đơn giản nhất là đợi một lát.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Khởi động lại giải quyết được nhiều vấn đề hơn người ta nghĩ.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Anh ấy giải thích thông báo lỗi bằng những từ ngữ dễ hiểu.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Trang này tải lâu quá.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Trang web này bị sập rồi, ai cũng không vào được.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Đánh dấu trang lại để lần sau dễ tìm nhé.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Liên kết trong email mở ra một tab mới.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Video cứ bị tải liên tục.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Tín hiệu yếu ở phòng phía sau.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Bạn chia sẻ liên kết đó cho mình được không?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Trang web này trông khác trên điện thoại di động.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Cửa sổ bật lên yêu cầu mình chấp nhận cookie.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Quảng cáo này khó tắt quá.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Anh ấy dùng trình chặn quảng cáo trên mọi máy.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Kết quả tìm kiếm ra quá nhiều.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Lọc tìm kiếm bằng cách dùng dấu ngoặc kép.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Bài viết đó giờ bị khóa sau tường phí rồi.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Trang này là từ một trang web mình tin cậy.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Ứng dụng đã tự cập nhật qua đêm.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Phiên bản mới trông hoàn toàn khác.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Cô ấy đã gỡ bỏ những ứng dụng không bao giờ dùng đến.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Cài đặt thông báo bị giấu sâu trong menu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Tắt tiếng nó trong cuộc họp nhé.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Phím tắt nhanh hơn dùng menu.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Chế độ tối đỡ mỏi mắt hơn vào ban đêm.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Tắt tự động phát đi.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Biểu tượng thông báo cứ hiện mãi không biến mất.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Anh ấy cài đặt laptop theo ý mình.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Đừng mở tệp đính kèm từ người gửi không xác định.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Liên kết trong tin nhắn đó trông đáng ngờ.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Kiểm tra địa chỉ đầy đủ của người gửi.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Wi-Fi miễn phí ở sân bay không riêng tư đâu.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Che camera lại khi không dùng nhé.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Khóa màn hình khi bạn rời đi.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Cẩn thận với những thông tin không thể rút lại được.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Hãy đọc kỹ những gì bạn đang đồng ý.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Hầu hết các vụ rò rỉ dữ liệu đến từ việc dùng lại mật khẩu.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Những trò lừa đảo đơn giản nhất vẫn hiệu quả vì chúng đơn giản.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Laptop chạy chậm hơn kể từ bản cập nhật cuối cùng.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Màn hình bị nứt nhưng vẫn dùng được.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Màn hình mới đã đến sáng nay.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Anh ấy cắm ba sợi cáp trước khi tìm thấy cái đúng.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Pin không còn bền như trước nữa.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Bàn phím đã tích tụ vụn bánh kẹo qua nhiều năm.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Quạt sẽ chạy khi phòng nóng lên.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Máy in lại ngoại tuyến rồi.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Tai nghe bị mất tiếng một bên.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Anh ấy lau màn hình bằng vải mềm.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Bạn chụp ảnh màn hình giúp mình được không?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Tệp được gửi vào lúc nửa đêm.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Lời mời lịch đã gửi đến hai lần.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Kéo tệp vào cửa sổ đó.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Nhấp chuột phải để xem thêm tùy chọn.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Giữ phím Shift để chọn nhiều hơn một.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Nút hoàn tác đã cứu mình nhiều lần rồi.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Bảng tạm nhớ nội dung cuối cùng bạn đã sao chép.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Tự động sửa lỗi thì hữu ích nhưng đôi khi cũng gây ngại.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Màn hình nền gọn gàng giúp mọi thứ dễ tìm hơn.",
+    "romanization": null
+  }
+}

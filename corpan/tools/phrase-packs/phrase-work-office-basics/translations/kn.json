@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "ಸಭೆ ಹತ್ತು ನಿಮಿಷದಲ್ಲಿ ಶುರುವಾಗುತ್ತೆ.",
+    "romanization": "sabhe hattu nimiṣadalli śuruvāguttte."
+  },
+  "1": {
+    "text": "ನಿಮ್ಮ ಸ್ಕ್ರೀನ್ ಶೇರ್ ಮಾಡ್ತೀರಾ?",
+    "romanization": "nimma skrin śēr māḍtīrā?"
+  },
+  "2": {
+    "text": "ಕ್ಷಮಿಸಿ, ನಾನು ಮ್ಯೂಟ್‌ನಲ್ಲಿದ್ದೆ.",
+    "romanization": "kṣamisi, nānu myūṭnallidde."
+  },
+  "3": {
+    "text": "ನಾವು ಸಮಯ ಮೀರಿ ಹೋಗ್ತಿದೀವಿ.",
+    "romanization": "nāvu samaya mīri hogtidīvi."
+  },
+  "4": {
+    "text": "ಅದನ್ನ ಮುಂದಿನ ಸಭೆಗೆ ಇಡೋಣ.",
+    "romanization": "adanna mundina sabhege iḍōṇa."
+  },
+  "5": {
+    "text": "ನಾನು ನೋಟ್ಸ್ ತಗೊಳ್ತೀನಿ.",
+    "romanization": "nānu nōṭs tagoḷtīni."
+  },
+  "6": {
+    "text": "ಒಂದೊಂದಾಗಿ ಮಾತಾಡ್ತೀರಾ?",
+    "romanization": "ondondāgi mātāḍtīrā?"
+  },
+  "7": {
+    "text": "ಅಜೆಂಡಾ ಕ್ಯಾಲೆಂಡರ್ ಇನ್ವೈಟ್‌ನಲ್ಲಿದೆ.",
+    "romanization": "ajenḍā kyālenḍar invaiṭnallide."
+  },
+  "8": {
+    "text": "ಇದನ್ನ ಯಾರು ಲೀಡ್ ಮಾಡ್ತಿದ್ದಾರೆ?",
+    "romanization": "idanna yāru līḍ māḍtiddāre?"
+  },
+  "9": {
+    "text": "ಇದನ್ನ ರೆಕಾರ್ಡ್ ಮಾಡ್ತಿದ್ದೀವಾ?",
+    "romanization": "idanna rekārḍ māḍtiddīvā?"
+  },
+  "10": {
+    "text": "ಕಾಲ್ ಅರ್ಧಕ್ಕೆ ಕಟ್ ಆಯ್ತು.",
+    "romanization": "kāl ardhakke kaṭ āytu."
+  },
+  "11": {
+    "text": "ಇದನ್ನ ಹದಿನೈದು ನಿಮಿಷ ಮುಂದಕ್ಕೆ ಹಾಕಬಹುದಾ?",
+    "romanization": "idanna hadinaidu nimiṣa mundakke hākabahudā?"
+  },
+  "12": {
+    "text": "ಅವನು ತಡವಾಗಿ ಬಂದ, ಆದ್ರೆ ಸದ್ದಿಲ್ಲದೆ.",
+    "romanization": "avanu taḍavāgi banda, ādre saddillade."
+  },
+  "13": {
+    "text": "ರೂಮ್ ಮತ್ತೆ ಡಬಲ್-ಬುಕ್ ಆಗಿದೆ.",
+    "romanization": "rūm matte ḍabal-buk āgide."
+  },
+  "14": {
+    "text": "ಅದನ್ನ ಸದ್ಯಕ್ಕೆ ಪಕ್ಕಕ್ಕಿಟ್ಟು, ಆಮೇಲೆ ನೋಡೋಣ.",
+    "romanization": "adanna sadyakke pakkakkiṭṭu, āmele nōḍōṇa."
+  },
+  "15": {
+    "text": "ನನಗೆ ಮೂರು ಗಂಟೆಗೆ ಕಡ್ಡಾಯವಾಗಿ ಮುಗಿಸಬೇಕು.",
+    "romanization": "nanage mūru gaṇṭege kaḍḍāyavāgi mugisabēku."
+  },
+  "16": {
+    "text": "ಎರಡು ನಿಮಿಷ ಆಮೇಲೆ ಇರಬಹುದಾ?",
+    "romanization": "eraḍu nimiṣa āmele irabahudā?"
+  },
+  "17": {
+    "text": "ವೈಟ್‌ಬೋರ್ಡ್ ತುಂಬಿ ಹೋಗಿದೆ.",
+    "romanization": "vaiṭbōrḍ tumbi hōgide."
+  },
+  "18": {
+    "text": "ಆಕ್ಷನ್ ಐಟಮ್ಸ್ ಸಾರಾಂಶ ಹೇಳಬಹುದಾ?",
+    "romanization": "ākṣan aiṭams sārānśa hēḷabahudā?"
+  },
+  "19": {
+    "text": "ನಿಂತುಕೊಂಡು ಮಾಡುವ ಮೀಟಿಂಗ್‌ಗಳು ಅಚ್ಚರಿಪಡಿಸುವಷ್ಟು ವೇಗವಾಗಿ ಮುಗಿಯುತ್ತವೆ.",
+    "romanization": "nintukoṇḍu māḍuva mīṭinggaḷu accharipaḍisuvaṣṭu vēgavāgi mugiyuttave."
+  },
+  "20": {
+    "text": "ದಿನದ ಅಂತ್ಯದೊಳಗೆ ನಿಮಗೆ ತಿಳಿಸ್ತೀನಿ.",
+    "romanization": "dinada antyadoḷage nim'mage tilistīni."
+  },
+  "21": {
+    "text": "ನಾನು ಕಳಿಸಿದ ಕೊನೆಯ ಇಮೇಲ್ ತಲುಪಿತಾ?",
+    "romanization": "nānu kaḷisida koneya imēl talupitā?"
+  },
+  "22": {
+    "text": "ತಡವಾಗಿ ಉತ್ತರಿಸಿದ್ದಕ್ಕೆ ಕ್ಷಮಿಸಿ.",
+    "romanization": "taḍavāgi uttarrisiddakke kṣamisi."
+  },
+  "23": {
+    "text": "ಈ ವಿಷಯಕ್ಕೆ ಸಾರಾಳನ್ನು ಸೇರಿಸಿಕೊಳ್ಳುತ್ತಿದ್ದೇವೆ.",
+    "romanization": "ī viṣayakke sārāḷannu sērisikoḷuttiddēve."
+  },
+  "24": {
+    "text": "ಅಟ್ಯಾಚ್‌ಮೆಂಟ್ ತಲುಪಿಲ್ಲ.",
+    "romanization": "aṭyācment talupilla."
+  },
+  "25": {
+    "text": "ನಾನು ಅದನ್ನ ತುರ್ತು ಎಂದು ಗುರುತಿಸಿದ್ದೇನೆ.",
+    "romanization": "nānu adanna turtu endu gurutisiddēne."
+  },
+  "26": {
+    "text": "ಆ ಫೈಲ್ ಅನ್ನು ಮತ್ತೆ ಕಳಿಸಬಹುದಾ?",
+    "romanization": "ā fail annu matte kaḷisabahudā?"
+  },
+  "27": {
+    "text": "ಥ್ರೆಡ್ ಉದ್ದವಾಗಿದೆ, ನಾನು ಸಾರಾಂಶ ಹೇಳ್ತೀನಿ.",
+    "romanization": "thred uddavāgide, nānu sārānśa hēḷtīni."
+  },
+  "28": {
+    "text": "ನಾನು ಹುಡುಕಲು ಸುಲಭವಾಗುವಂತೆ ಸಬ್ಜೆಕ್ಟ್ ಲೈನ್ ಬಳಸಿ.",
+    "romanization": "nānu huḍukalu sulabhavāguvante sabjekṭ lain baḷasi."
+  },
+  "29": {
+    "text": "ಅವನು ವಾರಾಂತ್ಯದಲ್ಲಿ ತನ್ನ ಇನ್‌ಬಾಕ್ಸ್ ಕ್ಲಿಯರ್ ಮಾಡಿದ.",
+    "romanization": "avanu vārāntyadalli tanna inbāks kliyar māḍida."
+  },
+  "30": {
+    "text": "ದಯವಿಟ್ಟು ಶುಕ್ರವಾರದೊಳಗೆ ಉತ್ತರಿಸಿ.",
+    "romanization": "dayaviṭṭu śukravāradoḷage uttarrisī."
+  },
+  "31": {
+    "text": "ಮುಗಿದ ಮೇಲೆ ಒಂದು ಸಣ್ಣ ನೋಟ್ ಕಳಿಸ್ತೀನಿ.",
+    "romanization": "mugida mēle ondu saṇṇa nōṭ kaḷistīni."
+  },
+  "32": {
+    "text": "ಅವನು ಪ್ರಯಾಣದಲ್ಲಿದ್ದಾನೆ ಅಂತ ಆಟೋ-ರಿಪ್ಲೈ ಹೇಳುತ್ತಿದೆ.",
+    "romanization": "avanu prayāṇadalliddāne anta āṭō-riplai hēḷuttide."
+  },
+  "33": {
+    "text": "ಅವಳು ಆಕಸ್ಮಿಕವಾಗಿ ತಪ್ಪು ವ್ಯಕ್ತಿಗೆ ಕಾಪಿ ಮಾಡಿದಳು.",
+    "romanization": "avaḷu ākasamikavāgi tappu vyaktige kāpi māḍidaḷu."
+  },
+  "34": {
+    "text": "ಮೂರು ಜ್ಞಾಪನೆಗಳು ಸಾಕು.",
+    "romanization": "mūru jñāpanegaḷu sāku."
+  },
+  "35": {
+    "text": "ಆ ಥ್ರೆಡ್ ಅನ್ನು ನನಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಬಹುದಾ?",
+    "romanization": "ā thred annu nanage phārvarḍ māḍabahudā?"
+  },
+  "36": {
+    "text": "ಇದಕ್ಕೆ ಇಮೇಲ್‌ಗಿಂತ ಚಾಟ್ ವೇಗವಾಗಿದೆ.",
+    "romanization": "idakke imēlginta cāṭ vēgavāgide."
+  },
+  "37": {
+    "text": "ಎಲ್ಲ ಗದ್ದಲದಲ್ಲಿ ನಿಮ್ಮ ಮೆಸೇಜ್ ನೋಡಲಿಲ್ಲ.",
+    "romanization": "ella gaddaladalli nimma mesej nōḍalilla."
+  },
+  "38": {
+    "text": "ನಿಮ್ಮ ಇಮೇಲ್‌ನಲ್ಲಿರುವ ಲಿಂಕ್ ಕಾಣೆಯಾದ ಪುಟಕ್ಕೆ ಹೋಗುತ್ತಿದೆ.",
+    "romanization": "nimma imēlnalliruva link kāṇeyāda puṭakke hōguttide."
+  },
+  "39": {
+    "text": "ಇದು ನಿಮಗೆ ತಲುಪಿದೆ ಎಂದು ದೃಢೀಕರಿಸಿ.",
+    "romanization": "idu nim'mage talupide endu dṛḍhīkarisi."
+  },
+  "40": {
+    "text": "ಡೆಡ್‌ಲೈನ್ ಶುಕ್ರವಾರ ಮಧ್ಯಾಹ್ನ.",
+    "romanization": "ḍeḍlain śukravāra madhyāhna."
+  },
+  "41": {
+    "text": "ಬುಧವಾರದೊಳಗೆ ಮೊದಲ ಡ್ರಾಫ್ಟ್ ಸಿದ್ಧಪಡಿಸುತ್ತೇನೆ.",
+    "romanization": "budhavāradoḷage modala ḍrāfṭ siddhapaḍisuttēne."
+  },
+  "42": {
+    "text": "ಈ ವಾರ ಏನಾದರೂ ಶಿಪ್ ಮಾಡಬೇಕು.",
+    "romanization": "ī vāra ēnādarū śip māḍabēku."
+  },
+  "43": {
+    "text": "ಪ್ರಾಜೆಕ್ಟ್ ಒಂದು ದಿನ ತಡವಾಯಿತು.",
+    "romanization": "prājekṭ ondu dina taḍavāyitu."
+  },
+  "44": {
+    "text": "ನಾನು ಕಳಿಸುವ ಮೊದಲು ಇದನ್ನ ಪ್ರೂಫ್‌ರೀಡ್ ಮಾಡಬಹುದಾ?",
+    "romanization": "nānu kaḷisuva modalu idanna prūfrīḍ māḍabahudā?"
+  },
+  "45": {
+    "text": "ನಿಮಗೆ ಸ್ಟೇಟಸ್ ಅಪ್‌ಡೇಟ್ ಕೊಡಬೇಕು.",
+    "romanization": "nim'mage sṭēṭas apḍēṭ koḍabēku."
+  },
+  "46": {
+    "text": "ಸಂಖ್ಯೆಗಳು ನಾನು ಕಳೆದ ವಾರ ಕಳಿಸಿದ್ದಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ.",
+    "romanization": "saṅkhyegaḷu nānu kalada vāra kaḷisiddakke hondikeyāguttilla."
+  },
+  "47": {
+    "text": "ಕ್ಲೈಂಟ್‌ನ ನಿರ್ಧಾರಕ್ಕಾಗಿ ನಾವು ಕಾಯುತ್ತಿದ್ದೇವೆ.",
+    "romanization": "klainṭna nirdhārkkāgi nāvu kāyuttiddēve."
+  },
+  "48": {
+    "text": "ಅವನು ಊಟದ ಸಮಯದಲ್ಲೂ ಕೆಲಸ ಮಾಡಿ ಮುಗಿಸಿದ.",
+    "romanization": "avanu ūṭada samayadallū kelasa māḍi mugisida."
+  },
+  "49": {
+    "text": "ವರದಿ ಕೊನೆಗೂ ನನ್ನ ಕೈಯಿಂದ ಹೊರಬಿದ್ದಿದೆ.",
+    "romanization": "varadi konegū nanna kaiyinda horabiddide."
+  },
+  "50": {
+    "text": "ಅನುಮೋದನೆ ಸಿಕ್ಕ ತಕ್ಷಣ ಶುರು ಮಾಡ್ತೀನಿ.",
+    "romanization": "anumōdane sikka takṣaṇa śuru māḍtīni."
+  },
+  "51": {
+    "text": "ಈ ಆವೃತ್ತಿಗೆ ನೀವು ಸಹಿ ಹಾಕಬಹುದಾ?",
+    "romanization": "ī āvṛttige nīvu sahi hākabahudā?"
+  },
+  "52": {
+    "text": "ನಾವು ಶಿಪ್ ಮಾಡುವ ಮೊದಲು ಅವಳು ಒಂದು ಟೈಪೋ ಕಂಡುಹಿಡಿದಳು.",
+    "romanization": "nāvu śip māḍuva modalu avaḷu ondu ṭaipō kaṇḍuhiḍidaḷu."
+  },
+  "53": {
+    "text": "ನಾವು ಲಾಂಚ್ ಅನ್ನು ಮುಂದಿನ ಮಂಗಳವಾರಕ್ಕೆ ಮುಂದೂಡಿದೆವು.",
+    "romanization": "nāvu lānch annu mundina maṅgaḷavārakke mundūḍidevu."
+  },
+  "54": {
+    "text": "ಅಂದಾಜು ಎರಡು ಪಟ್ಟು ತಪ್ಪಾಗಿತ್ತು.",
+    "romanization": "andāju eraḍu paṭṭu tappāgittu."
+  },
+  "55": {
+    "text": "ಅವನು ಗಮನ ಹರಿಸಲು ತನ್ನ ಮಧ್ಯಾಹ್ನದ ಸಮಯವನ್ನು ಖಾಲಿ ಮಾಡಿಕೊಂಡನು.",
+    "romanization": "avanu gamana harisalu tanna madhyāhnada samayavannu khāli māḍikoṇḍanu."
+  },
+  "56": {
+    "text": "ಕಾಂಟ್ರಾಕ್ಟ್ ಸಹಿ ಮಾಡಿ ವಾಪಸ್ ಬಂದಿದೆ.",
+    "romanization": "kānṭrākṭ sahi māḍi vāpas bandide."
+  },
+  "57": {
+    "text": "ಇದನ್ನ ಮುಗಿದಿದೆ ಅಂತ ಭಾವಿಸಿ, ಮುಂದಕ್ಕೆ ಹೋಗೋಣ.",
+    "romanization": "idanna mugidide anta bhāvisi, mundakke hōgōṇa."
+  },
+  "58": {
+    "text": "ಮೊದಲ ಆವೃತ್ತಿ ಕಚ್ಚಾ ಆಗಿದೆ, ಆದರೆ ಕೆಲಸ ಮಾಡುತ್ತೆ.",
+    "romanization": "modala āvṛtti kaccā āgide, ādare kelasa māḍutte."
+  },
+  "59": {
+    "text": "ಒಂದ್ಸಲ ಅವನು ಬೇಗನೆ ಡೆಲಿವರ್ ಮಾಡಿದ.",
+    "romanization": "ondsala avanu bēgane ḍelivar māḍida."
+  },
+  "60": {
+    "text": "ತಂಡಕ್ಕೆ ಸ್ವಾಗತ.",
+    "romanization": "taṇḍakke svāgata."
+  },
+  "61": {
+    "text": "ನಿಮ್ಮನ್ನ ಬೇರೆಯವರಿಗೆ ಪರಿಚಯಿಸ್ತೀನಿ.",
+    "romanization": "nim'manna bēreyavvarige paricayistīni."
+  },
+  "62": {
+    "text": "ಅವಳು ಈಗಷ್ಟೇ ರಜೆಯಿಂದ ವಾಪಸ್ ಬಂದಿದ್ದಾಳೆ.",
+    "romanization": "avaḷu īgaṣṭe rajeyinda vāpas bandiddāḷe."
+  },
+  "63": {
+    "text": "ಇದರ ಬಗ್ಗೆ ಕೇಳಬೇಕಾದ ವ್ಯಕ್ತಿ ಅವನೇ.",
+    "romanization": "idara bagge kēḷabēkāda vyakti avane."
+  },
+  "64": {
+    "text": "ನಾವು ಮಂಗಳವಾರಗಳಲ್ಲಿ ಡೆಸ್ಕ್ ಹಂಚಿಕೊಳ್ಳುತ್ತೇವೆ.",
+    "romanization": "nāvu maṅgaḷavāragaḷalli ḍesk hancikoḷḷuttēve."
+  },
+  "65": {
+    "text": "ಬೆಲೆ ನಿಗದಿ ಬಗ್ಗೆ ಯಾರಿಗೆ ಹೆಚ್ಚು ಗೊತ್ತಿದೆ?",
+    "romanization": "bele nigadi bagge yārige heccu gottide?"
+  },
+  "66": {
+    "text": "ಅವನು ಯಾವಾಗಲೂ ತಂಡಕ್ಕೆ ಕಾಫಿ ತರುತ್ತಾನೆ.",
+    "romanization": "avanu yāvāgalū taṇḍakke kāphi taruttāne."
+  },
+  "67": {
+    "text": "ಹೊಸದಾಗಿ ಸೇರಿಕೊಂಡವರು ಬೇಗ ಕಲಿಯುತ್ತಾರೆ.",
+    "romanization": "hosadāgi sērikoṇḍavaru bēga kaliyuttāre."
+  },
+  "68": {
+    "text": "ಅವಳು ಮಾರ್ಕೆಟಿಂಗ್ ಜೊತೆ ನಿಕಟವಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಾಳೆ.",
+    "romanization": "avaḷu mārkeṭing jote nikaṭavāgi kelasa māḍuttāḷe."
+  },
+  "69": {
+    "text": "ಅವನು ಎಲ್ಲರಿಗಿಂತ ಹೆಚ್ಚು ಕಾಲ ಇಲ್ಲಿ ಇದ್ದಾನೆ.",
+    "romanization": "avanu ellariginta heccu kāla illi iddāne."
+  },
+  "70": {
+    "text": "ಅವರು ಕೆಲಸವನ್ನು ಸಮಾನವಾಗಿ ಹಂಚಿಕೊಂಡರು.",
+    "romanization": "avaru kelasavannu samānavāgi hancikoṇḍaru."
+  },
+  "71": {
+    "text": "ನಾವು ಊಟ ಮಾಡಿ, ಅದರ ಬಗ್ಗೆ ಒಂದು ಸ್ಕೆಚ್ ಮಾಡಿದೆವು.",
+    "romanization": "nāvu ūṭa māḍi, adara bagge ondu skec māḍidevu."
+  },
+  "72": {
+    "text": "ನಾನು ಹುಷಾರಿಲ್ಲದಿದ್ದಾಗ ಅವನು ನನ್ನ ಕೆಲಸ ನಿಭಾಯಿಸಿದ.",
+    "romanization": "nānu huśārilladiddāga avanu nanna kelasa nibhāyisida."
+  },
+  "73": {
+    "text": "ತಂಡ ಲ್ಯಾಪ್‌ಟಾಪ್ ಸುತ್ತ ಸೇರಿತು.",
+    "romanization": "taṇḍa lyāpṭāp sutta sēritu."
+  },
+  "74": {
+    "text": "ಅವಳು ಎಲ್ಲರ ಹುಟ್ಟುಹಬ್ಬವನ್ನೂ ನೆನಪಿಟ್ಟುಕೊಳ್ಳುತ್ತಾಳೆ.",
+    "romanization": "avaḷu ellara huṭṭuhabbavannū nenapiṭṭukoḷḷuttāḷe."
+  },
+  "75": {
+    "text": "ನಾಳೆ ನಾನು ರಿಮೋಟ್ ಆಗಿ ಸೇರಿಕೊಳ್ಳುತ್ತೇನೆ.",
+    "romanization": "nāḷe nānu rimōṭ āgi sērikoḷḷuttēne."
+  },
+  "76": {
+    "text": "ಶುಕ್ರವಾರಗಳಲ್ಲಿ ಆಫೀಸ್ ಹೆಚ್ಚಾಗಿ ಖಾಲಿಯಾಗಿರುತ್ತೆ.",
+    "romanization": "śukravāragaḷalli āphīs heccāgi khāliyāgirutte."
+  },
+  "77": {
+    "text": "ಇಂದು ನನ್ನ ಇಂಟರ್ನೆಟ್ ಅಸ್ಥಿರವಾಗಿದೆ.",
+    "romanization": "indu nanna inṭarneṭ asthiravāgide."
+  },
+  "78": {
+    "text": "ಅವನು ಬೇರೆ ನಗರದಿಂದ ಕೆಲಸ ಮಾಡುತ್ತಾನೆ.",
+    "romanization": "avanu bēre nagaradinda kelasa māḍuttāne."
+  },
+  "79": {
+    "text": "ತಂಡ ತಿಂಗಳಿಗೆ ಒಮ್ಮೆ ನೇರವಾಗಿ ಭೇಟಿಯಾಗುತ್ತದೆ.",
+    "romanization": "taṇḍa tiṅgaḷige omme nēravāgi bhēṭiyāguttade."
+  },
+  "80": {
+    "text": "ಅವಳು ಮಲಗುವ ಕೋಣೆಯ ಒಂದು ಮೂಲೆಯನ್ನು ಡೆಸ್ಕ್ ಆಗಿ ಮಾಡಿಕೊಂಡಳು.",
+    "romanization": "avaḷu malaguva kōṇeya ondu mūleyannu ḍesk āgi māḍikoṇḍaḷu."
+  },
+  "81": {
+    "text": "ಹೋಮ್ ಆಫೀಸ್ ಕೊನೆಗೂ ಅಚ್ಚುಕಟ್ಟಾಗಿದೆ.",
+    "romanization": "hōm āphīs konegū accukaṭṭāgide."
+  },
+  "82": {
+    "text": "ನಿಮ್ಮ ಕ್ಯಾಮೆರಾ ಆನ್ ಮಾಡಬಹುದಾ?",
+    "romanization": "nimma kyāmerā ān māḍabahudā?"
+  },
+  "83": {
+    "text": "ಹಿನ್ನೆಲೆ ಶಬ್ದ ಪರವಾಗಿಲ್ಲ, ಚಿಂತಿಸಬೇಡಿ.",
+    "romanization": "hinnele śabda paravāgilla, cintisabēḍi."
+  },
+  "84": {
+    "text": "ನಾವು ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ ಒಂದು ಕ್ವಿಕ್ ಚೆಕ್-ಇನ್ ಮಾಡುತ್ತೇವೆ.",
+    "romanization": "nāvu pratidina beḷigge ondu kvik cek-in māḍuttēve."
+  },
+  "85": {
+    "text": "ಪ್ರಿಂಟರ್ ಮತ್ತೆ ಜಾಮ್ ಆಗಿದೆ.",
+    "romanization": "prinṭar matte jām āgide."
+  },
+  "86": {
+    "text": "ಕಾಫಿ ಮೆಷಿನ್‌ನಲ್ಲಿ ಬೀನ್ಸ್ ಖಾಲಿಯಾಗಿದೆ.",
+    "romanization": "kāphi meṣinnalli bīns khāliyāgide."
+  },
+  "87": {
+    "text": "ಬಾಗಿಲು ತೆರೆಯಬಹುದಾ?",
+    "romanization": "bāgilu tereyabahudā?"
+  },
+  "88": {
+    "text": "ಕಾನ್ಫರೆನ್ಸ್ ರೂಮ್ ಕಿಟಕಿ ತೆರೆಯುವುದಿಲ್ಲ.",
+    "romanization": "kānpharens rūm kiṭaki tereyuvudilla."
+  },
+  "89": {
+    "text": "ಯಾರೋ ತಮ್ಮ ಊಟವನ್ನು ಒಂದು ವಾರ ಫ್ರಿಜ್‌ನಲ್ಲಿ ಬಿಟ್ಟಿದ್ದಾರೆ.",
+    "romanization": "yārō tamma ūṭavannu ondu vāra phrijnalli biṭṭiddāre."
+  },
+  "90": {
+    "text": "ಮೂರು ಗಂಟೆಗೆ ಕಿಚನ್ ಶಾಂತವಾಗಿರುತ್ತದೆ.",
+    "romanization": "mūru gaṇṭege kican śāntavāgiruttade."
+  },
+  "91": {
+    "text": "ಅವನು ಮನಸ್ಸನ್ನು ನಿರಾಳಗೊಳಿಸಲು ಮೆಟ್ಟಿಲು ಹತ್ತಿದ.",
+    "romanization": "avanu manassannu nirāḷagoḷisalu meṭṭilu hattida."
+  },
+  "92": {
+    "text": "ಕಿಟಕಿ ಹಲಗೆ ಮೇಲಿರುವ ಗಿಡ ಚೆನ್ನಾಗಿ ಬೆಳೆಯುತ್ತಿದೆ.",
+    "romanization": "kiṭaki halage mēliruva giḍa cennāgi beḷeyuttide."
+  },
+  "93": {
+    "text": "ಮುಂಭಾಗದ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ಒಂದು ಪಾರ್ಸೆಲ್‌ಗೆ ಸಹಿ ಮಾಡಬಹುದಾ?",
+    "romanization": "mumbhāgada ḍesknalli ondu pārselge sahi māḍabahudā?"
+  },
+  "94": {
+    "text": "ಬ್ಯಾಡ್ಜ್ ರೀಡರ್ ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲ.",
+    "romanization": "byāḍj rīḍar sariyāgi kelasa māḍuttilla."
+  },
+  "95": {
+    "text": "ದಿನದ ಅಂತ್ಯ ಯಾವಾಗಲೂ ಗೊತ್ತಿಲ್ಲದೆ ಬಂದುಬಿಡುತ್ತದೆ.",
+    "romanization": "dinada antya yāvāgalū gottillade bandubiḍuttade."
+  },
+  "96": {
+    "text": "ಅವನು ಒಂದೇ ವಿಂಡೋ ತೆರೆದಿಟ್ಟುಕೊಂಡು ಕೆಲಸ ಮಾಡಿದರೆ ಉತ್ತಮವಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಾನೆ.",
+    "romanization": "avanu onde vinḍō terediṭṭukoṇḍu kelasa māḍidare uttamavāgi kelasa māḍuttāne."
+  },
+  "97": {
+    "text": "ಅವಳು ದಿನದ ಆರಂಭವನ್ನು ಗುರುತಿಸಲು ಒಂದು ಕ್ಯಾಂಡಲ್ ಹಚ್ಚುತ್ತಾಳೆ.",
+    "romanization": "avaḷu dinada ārambhavannu gurutisalu ondu kyānḍal haccuttāḷe."
+  },
+  "98": {
+    "text": "ಊಟದ ನಂತರ ಒಂದು ಸಣ್ಣ ನಡಿಗೆ ನನಗೆ ಯೋಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+    "romanization": "ūṭada nantara ondu saṇṇa naḍige nanage yōcisalu sahāya māḍuttade."
+  },
+  "99": {
+    "text": "ಕೆಲವು ಸೋಮವಾರಗಳು ಒಂದು ಸಣ್ಣ ಗೆಲುವಿನೊಂದಿಗೆ ಪ್ರಾರಂಭವಾಗುತ್ತವೆ.",
+    "romanization": "kelavu sōmavāragaḷu ondu saṇṇa geluvinondige prārambhavāguttave."
+  }
+}

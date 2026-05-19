@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "África es más grande de lo que parece en la mayoría de los mapas.",
+    "romanization": null
+  },
+  "1": {
+    "text": "El océano Atlántico separa América de Europa y África.",
+    "romanization": null
+  },
+  "2": {
+    "text": "La Antártida es el continente más frío.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Asia alberga a más de la mitad de la población mundial.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Europa y Asia comparten una masa continental continua.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Australia es tanto un país como un continente.",
+    "romanization": null
+  },
+  "6": {
+    "text": "El Pacífico es el océano más grande.",
+    "romanization": null
+  },
+  "7": {
+    "text": "El océano Ártico está parcialmente cubierto de hielo.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Sudamérica tiene la selva amazónica.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Norteamérica se extiende desde climas tropicales hasta árticos.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Islandia se encuentra entre dos placas tectónicas.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Madagascar es la cuarta isla más grande del mundo.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Nueva Zelanda tiene dos islas principales.",
+    "romanization": null
+  },
+  "13": {
+    "text": "El Anillo de Fuego del Pacífico es donde ocurren muchos terremotos.",
+    "romanization": null
+  },
+  "14": {
+    "text": "El océano Índico limita con tres continentes.",
+    "romanization": null
+  },
+  "15": {
+    "text": "El Nilo fluye hacia el norte por miles de kilómetros.",
+    "romanization": null
+  },
+  "16": {
+    "text": "El Amazonas transporta más agua que cualquier otro río.",
+    "romanization": null
+  },
+  "17": {
+    "text": "El lago Baikal es el lago de agua dulce más profundo del mundo.",
+    "romanization": null
+  },
+  "18": {
+    "text": "El Misisipi drena la mayor parte del centro de Estados Unidos.",
+    "romanization": null
+  },
+  "19": {
+    "text": "El Ganges es sagrado para muchas personas.",
+    "romanization": null
+  },
+  "20": {
+    "text": "El Yangtsé es el río más largo de Asia.",
+    "romanization": null
+  },
+  "21": {
+    "text": "El Danubio atraviesa diez países.",
+    "romanization": null
+  },
+  "22": {
+    "text": "El mar Caspio es el cuerpo de agua cerrado más grande.",
+    "romanization": null
+  },
+  "23": {
+    "text": "El Volga es el río más largo enteramente en Europa.",
+    "romanization": null
+  },
+  "24": {
+    "text": "El lago Victoria es la principal fuente del Nilo Blanco.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Los Grandes Lagos contienen una quinta parte del agua dulce superficial del mundo.",
+    "romanization": null
+  },
+  "26": {
+    "text": "El Rin ha sido una ruta comercial durante siglos.",
+    "romanization": null
+  },
+  "27": {
+    "text": "El Mekong sustenta a millones de personas en el sudeste asiático.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Algunos ríos se secan antes de llegar al mar.",
+    "romanization": null
+  },
+  "29": {
+    "text": "El río Colorado esculpió el Gran Cañón a lo largo de millones de años.",
+    "romanization": null
+  },
+  "30": {
+    "text": "El Monte Everest es el punto más alto sobre el nivel del mar.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Los Andes recorren toda Sudamérica.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Los Alpes son populares entre los excursionistas en verano.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Las Rocosas se extienden desde Canadá hasta el suroeste de Estados Unidos.",
+    "romanization": null
+  },
+  "34": {
+    "text": "El Himalaya sigue elevándose lentamente.",
+    "romanization": null
+  },
+  "35": {
+    "text": "El Kilimanjaro es el pico más alto de África.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Los Montes Urales separan Europa de Asia.",
+    "romanization": null
+  },
+  "37": {
+    "text": "El Monte Fuji es sagrado para muchos en Japón.",
+    "romanization": null
+  },
+  "38": {
+    "text": "La cordillera del Atlas moldea el clima del norte de África.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Los glaciares están retrocediendo de las cordilleras de todo el mundo.",
+    "romanization": null
+  },
+  "40": {
+    "text": "El Sahara es el desierto cálido más grande.",
+    "romanization": null
+  },
+  "41": {
+    "text": "El Ártico y la Antártida son desiertos polares.",
+    "romanization": null
+  },
+  "42": {
+    "text": "El Amazonas tiene su propio sistema meteorológico.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Las selvas tropicales son cálidas y húmedas todo el año.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Las zonas templadas tienen cuatro estaciones bien diferenciadas.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Los monzones traen lluvias intensas al sur de Asia cada verano.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Los tornados son más comunes en el centro de Estados Unidos.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Los huracanes se forman sobre aguas oceánicas cálidas.",
+    "romanization": null
+  },
+  "48": {
+    "text": "El clima mediterráneo es suave y seco en verano.",
+    "romanization": null
+  },
+  "49": {
+    "text": "El permafrost cubre gran parte de Siberia.",
+    "romanization": null
+  },
+  "50": {
+    "text": "El Atacama es uno de los lugares más secos de la Tierra.",
+    "romanization": null
+  },
+  "51": {
+    "text": "La tundra tiene un verano demasiado corto para los árboles.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Los manglares crecen donde la tierra se encuentra con el agua salada.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Los arrecifes de coral necesitan agua cálida y clara para prosperar.",
+    "romanization": null
+  },
+  "54": {
+    "text": "La corriente en chorro afecta el clima en todos los continentes.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Tokio tiene más habitantes que cualquier otra área metropolitana.",
+    "romanization": null
+  },
+  "56": {
+    "text": "La Ciudad del Vaticano es el país más pequeño del mundo.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Rusia abarca once zonas horarias.",
+    "romanization": null
+  },
+  "58": {
+    "text": "India y China juntas suman más de un tercio de la población mundial.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Brasil comparte frontera con la mayoría de los países sudamericanos.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Singapur es una ciudad y un país al mismo tiempo.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Estambul se asienta en dos continentes.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ciudad del Cabo tiene una famosa montaña de cima plana.",
+    "romanization": null
+  },
+  "63": {
+    "text": "A Buenos Aires a veces se le llama la París de Sudamérica.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Lagos es una de las ciudades de más rápido crecimiento del mundo.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Reikiavik es la capital más septentrional del mundo.",
+    "romanization": null
+  },
+  "66": {
+    "text": "La Paz es una de las capitales más altas.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Sídney tiene uno de los puertos naturales más grandes.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Marrakech tiene una medina milenaria.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hanói se encuentra a orillas del río Rojo.",
+    "romanization": null
+  },
+  "70": {
+    "text": "La gente ha cruzado desiertos para comerciar con especias.",
+    "romanization": null
+  },
+  "71": {
+    "text": "La Ruta de la Seda conectaba China con el Mediterráneo.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Algunos idiomas se hablan en una sola isla pequeña.",
+    "romanization": null
+  },
+  "73": {
+    "text": "La mitad de la población mundial vive cerca de la costa.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Muchas ciudades comenzaron como puertos fluviales.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Las fronteras se mueven; los ríos y las montañas, por lo general, no.",
+    "romanization": null
+  },
+  "76": {
+    "text": "La costa mundial está más poblada que el interior.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Muchas ruinas antiguas aún están siendo descubiertas.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Algunas islas están desapareciendo lentamente bajo el aumento del nivel del mar.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Grandes migraciones han moldeado casi todos los continentes.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Australia tiene animales que no existen en ningún otro lugar.",
+    "romanization": null
+  },
+  "81": {
+    "text": "La parte más profunda del océano es la Fosa de las Marianas.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Groenlandia está cubierta mayormente de hielo.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Los volcanes pueden formar nuevas islas en pocas décadas.",
+    "romanization": null
+  },
+  "84": {
+    "text": "La aurora boreal se ve mejor desde las latitudes del norte.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Los continentes de la Tierra se están separando lentamente.",
+    "romanization": null
+  },
+  "86": {
+    "text": "El lugar más seco de la Tierra aún podría sufrir alguna inundación ocasional.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Algunos lagos son tan salados que casi nada puede vivir en ellos.",
+    "romanization": null
+  },
+  "88": {
+    "text": "La cascada más alta del mundo está en Venezuela.",
+    "romanization": null
+  },
+  "89": {
+    "text": "El Sahara era una pradera hace miles de años.",
+    "romanization": null
+  },
+  "90": {
+    "text": "¿Qué país limita con más países?",
+    "romanization": null
+  },
+  "91": {
+    "text": "¿Cuál es la diferencia entre un país y un estado?",
+    "romanization": null
+  },
+  "92": {
+    "text": "¿Dónde está el ecuador en este mapa?",
+    "romanization": null
+  },
+  "93": {
+    "text": "¿Qué océano está más cerca de aquí?",
+    "romanization": null
+  },
+  "94": {
+    "text": "¿Cuánto tiempo tomaría cruzar este país a pie?",
+    "romanization": null
+  },
+  "95": {
+    "text": "¿Cuál es el pico más alto que has escalado?",
+    "romanization": null
+  },
+  "96": {
+    "text": "Quiero ver la aurora boreal algún día.",
+    "romanization": null
+  },
+  "97": {
+    "text": "¿Es la capital también la ciudad más grande?",
+    "romanization": null
+  },
+  "98": {
+    "text": "El mapa se ve diferente al revés.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Cada país tiene una historia que vale la pena conocer.",
+    "romanization": null
+  }
+}

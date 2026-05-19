@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "ਇੱਕ ਚੰਗੀ ਜ਼ਿੰਦਗੀ ਜਿਉਣ ਦਾ ਕੀ ਮਤਲਬ ਹੈ?",
+    "romanization": "Ika caṅgī zindagī jiuṇa dā kī matalab hai?"
+  },
+  "1": {
+    "text": "ਸਾਨੂੰ ਕਿਵੇਂ ਪਤਾ ਲੱਗਦਾ ਹੈ ਕਿ ਸਾਨੂੰ ਕੀ ਪਤਾ ਹੈ?",
+    "romanization": "Sānuṁ kivaṁ patā lagadā hai ki sānuṁ kī patā hai?"
+  },
+  "2": {
+    "text": "ਕੀ ਜਾਣਨ ਅਤੇ ਵਿਸ਼ਵਾਸ ਕਰਨ ਵਿੱਚ ਕੋਈ ਫਰਕ ਹੈ?",
+    "romanization": "Kī jāṇaṇa ate viśavāsa karaṇa vica koī pharak hai?"
+  },
+  "3": {
+    "text": "ਕੁਝ ਨਾ ਹੋਣ ਦੀ ਬਜਾਏ ਕੁਝ ਕਿਉਂ ਹੈ?",
+    "romanization": "Kucha nā hoṇa dī bajāe kucha kiauṁ hai?"
+  },
+  "4": {
+    "text": "ਸਮੇਂ ਦੇ ਨਾਲ ਇੱਕ ਵਿਅਕਤੀ ਨੂੰ ਉਹੀ ਵਿਅਕਤੀ ਕੀ ਬਣਾਉਂਦਾ ਹੈ?",
+    "romanization": "Sameṁ de nāla ika viakatī nū uhī viakatī kī baṇāundā hai?"
+  },
+  "5": {
+    "text": "ਕੀ ਕੋਈ ਮਸ਼ੀਨ ਸੋਚ ਸਕਦੀ ਹੈ?",
+    "romanization": "Kī koī maśīna soca sakadī hai?"
+  },
+  "6": {
+    "text": "ਕੀ ਜੋ ਦੁਨੀਆ ਅਸੀਂ ਦੇਖਦੇ ਹਾਂ, ਉਹ ਅਸਲੀ ਦੁਨੀਆ ਹੈ?",
+    "romanization": "Kī jo dunīā asīṁ dekhade hāṁ, uha asalī dunīā hai?"
+  },
+  "7": {
+    "text": "ਅਸੀਂ ਉਹਨਾਂ ਲੋਕਾਂ ਦੇ ਕੀ ਦੇਣਦਾਰ ਹਾਂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਅਸੀਂ ਕਦੇ ਨਹੀਂ ਮਿਲਾਂਗੇ?",
+    "romanization": "Asīṁ uhanāṁ lokāṁ de kī deṇadāra hāṁ jināṁ nū asīṁ kade nahīṁ milāṁge?"
+  },
+  "8": {
+    "text": "ਆਪਣਾ ਮਨ ਬਦਲਣਾ ਇੰਨਾ ਔਖਾ ਕਿਉਂ ਹੈ?",
+    "romanization": "Āpaṇā mana badalaṇā inanā aukkhā kiauṁ hai?"
+  },
+  "9": {
+    "text": "ਦੋ ਲੋਕਾਂ ਦੇ ਸਹਿਮਤ ਹੋਣ ਦਾ ਕੀ ਮਤਲਬ ਹੈ?",
+    "romanization": "Do lokāṁ de sahamata hoṇa dā kī matalab hai?"
+  },
+  "10": {
+    "text": "ਕੀ ਸੱਚ ਦੀ ਕਾਢ ਕੱਢੀ ਜਾਂਦੀ ਹੈ ਜਾਂ ਲੱਭਿਆ ਜਾਂਦਾ ਹੈ?",
+    "romanization": "Kī sacca dī kāḍha kaḍḍhī jāndī hai jāṁ labhiā jāndā hai?"
+  },
+  "11": {
+    "text": "ਅਸੀਂ ਸਮੇਂ ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਕਿਉਂ ਮਹਿਸੂਸ ਕਰਦੇ ਹਾਂ ਜਿਵੇਂ ਅਸੀਂ ਕਰਦੇ ਹਾਂ?",
+    "romanization": "Asīṁ sameṁ nū isa tarāṁ kiauṁ mahisūsa karade hāṁ jiveṁ asīṁ karade hāṁ?"
+  },
+  "12": {
+    "text": "ਅਰਥ ਕਿੱਥੋਂ ਆਉਂਦਾ ਹੈ?",
+    "romanization": "Aratha kitthoṁ āundā hai?"
+  },
+  "13": {
+    "text": "ਅਸਲ ਵਿੱਚ ਸੁਤੰਤਰ ਇੱਛਾ ਕੀ ਹੈ?",
+    "romanization": "Asala vica sutantara icchā kī hai?"
+  },
+  "14": {
+    "text": "ਕੀ ਖੁਸ਼ੀ ਇੱਕ ਭਾਵਨਾ ਹੈ ਜਾਂ ਇੱਕ ਅਭਿਆਸ?",
+    "romanization": "Kī khuśī ika bhāvanā hai jāṁ ika abhiāsa?"
+  },
+  "15": {
+    "text": "ਸਹੀ ਚੀਜ਼ ਨੂੰ ਕਈ ਵਾਰ ਪਛਾਣਨਾ ਔਖਾ ਹੁੰਦਾ ਹੈ।",
+    "romanization": "Sahī cīza nū kaī vāra pachāṇaṇā aukkhā hundā hai."
+  },
+  "16": {
+    "text": "ਚੰਗੀਆਂ ਨੀਅਤਾਂ ਚੰਗੇ ਨਤੀਜਿਆਂ ਦੀ ਗਾਰੰਟੀ ਨਹੀਂ ਦਿੰਦੀਆਂ।",
+    "romanization": "Caṅgīāṁ nīatāṁ caṅge natījiāṁ dī gārantī nahīṁ didīāṁ."
+  },
+  "17": {
+    "text": "ਜ਼ਿਆਦਾਤਰ ਨੈਤਿਕ ਸਵਾਲ ਮੁਕਾਬਲੇ ਵਾਲੀਆਂ ਚੰਗੀਆਂ ਚੀਜ਼ਾਂ ਨੂੰ ਤੋਲਣ ਬਾਰੇ ਹੁੰਦੇ ਹਨ।",
+    "romanization": "Ziādāratara naitika savāla mukābale vālīāṁ caṅgīāṁ cīzāṁ nū tolaṇa bāre hunde hana."
+  },
+  "18": {
+    "text": "ਇੱਕ ਛੋਟਾ ਜਿਹਾ ਝੂਠ ਬਹੁਤ ਨੁਕਸਾਨ ਕਰ ਸਕਦਾ ਹੈ।",
+    "romanization": "Ika choṭā jihā jhūṭha bahuta nukasāna kara sakadā hai."
+  },
+  "19": {
+    "text": "ਇੱਕ ਦਿਆਲੂ ਮਾਹੌਲ ਵਿੱਚ ਇਮਾਨਦਾਰੀ ਆਸਾਨ ਹੁੰਦੀ ਹੈ।",
+    "romanization": "Ika diālū māhaul vica imānadārī āsaṇa hundī hai."
+  },
+  "20": {
+    "text": "ਬੇਰਹਿਮੀ ਅਕਸਰ ਛੋਟੀਆਂ ਆਦਤਾਂ ਪਿੱਛੇ ਲੁਕੀ ਹੁੰਦੀ ਹੈ।",
+    "romanization": "Berahimī akasara choṭīāṁ ādatāṁ picche lukī hundī hai."
+  },
+  "21": {
+    "text": "ਕੁਝ ਨਿਯਮ ਚੰਗੇ ਹੁੰਦੇ ਹਨ ਕਿਉਂਕਿ ਉਹ ਸਾਨੂੰ ਸੋਚਣ ਤੋਂ ਬਚਾਉਂਦੇ ਹਨ।",
+    "romanization": "Kucha nīama caṅge hunde hana kiauṁki uha sānuṁ socaṇa toṁ bacāunde hana."
+  },
+  "22": {
+    "text": "ਕਈ ਵਾਰ ਨਿਯਮ ਖੁਦ ਹੀ ਸਮੱਸਿਆ ਹੁੰਦੇ ਹਨ।",
+    "romanization": "Kaī vāra nīama khuda hī samasiā hunde hana."
+  },
+  "23": {
+    "text": "ਇੱਕ ਵਾਅਦਾ ਤੁਹਾਡੇ ਭਵਿੱਖ ਦੇ ਆਪ 'ਤੇ ਇੱਕ ਛੋਟੀ ਜਿਹੀ ਬਾਜ਼ੀ ਹੈ।",
+    "romanization": "Ika vāadā tuhāḍe bhavikkha de āpa 'te ika choṭī jihī bāzī hai."
+  },
+  "24": {
+    "text": "ਲੋਕ ਕੰਮਾਂ ਨੂੰ ਨਤੀਜਿਆਂ ਤੋਂ ਅਤੇ ਨਿਯਮਾਂ ਨੂੰ ਇਰਾਦਿਆਂ ਤੋਂ ਪਰਖਦੇ ਹਨ।",
+    "romanization": "Loka kammāṁ nū natījiāṁ toṁ ate nīamāṁ nū irādiāṁ toṁ parakhade hana."
+  },
+  "25": {
+    "text": "ਪਾਖੰਡ ਦੂਜਿਆਂ ਵਿੱਚ ਦੇਖਣਾ ਆਸਾਨ ਹੁੰਦਾ ਹੈ।",
+    "romanization": "Pākhaṇḍa dūjiāṁ vica dekhaṇā āsaṇa hundā hai."
+  },
+  "26": {
+    "text": "ਮਾਫੀ ਕੁਝ ਹੱਦ ਤੱਕ ਮਾਫ ਕਰਨ ਵਾਲੇ ਲਈ ਇੱਕ ਤੋਹਫਾ ਹੈ।",
+    "romanization": "Māphī kucha hadda taka māpha karaṇa vāle laī ika tohaphā hai."
+  },
+  "27": {
+    "text": "ਹਮਦਰਦੀ ਇੱਕ ਮਾਸਪੇਸ਼ੀ ਹੈ ਜੋ ਵਰਤੋਂ ਨਾਲ ਮਜ਼ਬੂਤ ਹੁੰਦੀ ਹੈ।",
+    "romanization": "Hamadaradī ika māspeśī hai jo varatoṁ nāla mazabūta hundī hai."
+  },
+  "28": {
+    "text": "ਨਿਆਂ ਬਦਲੇ ਵਰਗਾ ਨਹੀਂ ਹੁੰਦਾ।",
+    "romanization": "Niāṁ badale varagā nahīṁ hundā."
+  },
+  "29": {
+    "text": "ਗਰੀਬੀ ਨਾਲੋਂ ਤਾਕਤ ਚਰਿੱਤਰ ਨੂੰ ਜ਼ਿਆਦਾ ਪਰਖਦੀ ਹੈ।",
+    "romanization": "Garībī nāloṁ tākata carittara nū ziādā parakhadī hai."
+  },
+  "30": {
+    "text": "ਕੁਝ ਨਾ ਕਰਨਾ ਵੀ ਇੱਕ ਚੋਣ ਹੈ।",
+    "romanization": "Kucha nā karaṇā vī ika coṇa hai."
+  },
+  "31": {
+    "text": "ਸਭ ਤੋਂ ਔਖਾ ਗੁਣ ਸਬਰ ਹੈ।",
+    "romanization": "Sabha toṁ aukkhā guṇa sabara hai."
+  },
+  "32": {
+    "text": "ਛੋਟੀਆਂ ਦਿਆਲਤਾਵਾਂ ਇਕੱਠੀਆਂ ਹੁੰਦੀਆਂ ਹਨ।",
+    "romanization": "Choṭīāṁ diālatāvāṁ ikkaṭhīāṁ hundīāṁ hana."
+  },
+  "33": {
+    "text": "ਇੱਕ ਸਮਾਜ ਦਾ ਨਿਰਣਾ ਇਸ ਗੱਲੋਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ ਕਿ ਉਹ ਕਮਜ਼ੋਰਾਂ ਨਾਲ ਕਿਵੇਂ ਪੇਸ਼ ਆਉਂਦਾ ਹੈ।",
+    "romanization": "Ika samāja dā niraṇā isa galloṁ kītā jā sakadā hai ki uha kamazorāṁ nāla kivaṁ peśa āundā hai."
+  },
+  "34": {
+    "text": "ਹਿੰਮਤ ਡਰਦੇ ਹੋਏ ਵੀ ਚੰਗਾ ਕੰਮ ਕਰਨਾ ਹੈ।",
+    "romanization": "Himmat darade hoe vī caṅgā kamma karaṇā hai."
+  },
+  "35": {
+    "text": "ਅਸੀਂ ਇੱਕੋ ਸਮੇਂ ਆਤਮਵਿਸ਼ਵਾਸੀ ਅਤੇ ਗਲਤ ਹੋ ਸਕਦੇ ਹਾਂ।",
+    "romanization": "Asīṁ ikko sameṁ ātamaviśavāsī ate galata ho sakade hāṁ."
+  },
+  "36": {
+    "text": "ਸਬੂਤ ਉਹ ਹੈ ਜੋ ਇੱਕ ਸਾਵਧਾਨ ਮਨ ਨੂੰ ਬਦਲਦਾ ਹੈ।",
+    "romanization": "Sabūta uha hai jo ika sāvadahāna mana nū badaladā hai."
+  },
+  "37": {
+    "text": "ਜ਼ਿਆਦਾਤਰ ਵਿਸ਼ਵਾਸ ਸਮੂਹਾਂ ਵਿੱਚ ਆਉਂਦੇ ਹਨ, ਇੱਕ-ਇੱਕ ਕਰਕੇ ਨਹੀਂ।",
+    "romanization": "Ziādāratara viśavāsa samūhāṁ vica āunde hana, ika-ika karake nahīṁ."
+  },
+  "38": {
+    "text": "ਅਸੀਂ ਉਹ ਸਮੇਂ ਯਾਦ ਰੱਖਦੇ ਹਾਂ ਜਦੋਂ ਅਸੀਂ ਸਹੀ ਸੀ।",
+    "romanization": "Asīṁ uha sameṁ yāda rakkhade hāṁ jadōṁ asīṁ sahī sī."
+  },
+  "39": {
+    "text": "ਸ਼ੱਕ ਬੇਆਰਾਮਦਾਇਕ ਹੈ ਪਰ ਲਾਭਦਾਇਕ ਹੈ।",
+    "romanization": "Śakka beārāmadāika hai para lābhadāika hai."
+  },
+  "40": {
+    "text": "ਇੱਕ ਚੰਗਾ ਸਵਾਲ ਇੱਕ ਚਲਾਕ ਜਵਾਬ ਨਾਲੋਂ ਔਖਾ ਹੁੰਦਾ ਹੈ।",
+    "romanization": "Ika caṅgā savāla ika calāka javāba nāloṁ aukkhā hundā hai."
+  },
+  "41": {
+    "text": "ਕੁਝ ਸਵਾਲਾਂ ਦਾ ਇੱਕੋ ਸਹੀ ਜਵਾਬ ਨਹੀਂ ਹੁੰਦਾ।",
+    "romanization": "Kucha savālāṁ dā ikko sahī javāba nahīṁ hundā."
+  },
+  "42": {
+    "text": "ਮਾਡਲ ਗਲਤ ਹੁੰਦੇ ਹਨ ਪਰ ਕੁਝ ਲਾਭਦਾਇਕ ਹੁੰਦੇ ਹਨ।",
+    "romanization": "Māḍala galata hunde hana para kucha lābhadāika hunde hana."
+  },
+  "43": {
+    "text": "ਨਕਸ਼ਾ ਇਲਾਕਾ ਨਹੀਂ ਹੁੰਦਾ।",
+    "romanization": "Nakśā ilākā nahīṁ hundā."
+  },
+  "44": {
+    "text": "ਨਾਮ ਸਾਡੇ ਧਿਆਨ ਵਿੱਚ ਆਉਣ ਵਾਲੀਆਂ ਚੀਜ਼ਾਂ ਨੂੰ ਆਕਾਰ ਦਿੰਦੇ ਹਨ।",
+    "romanization": "Nāma sāḍe dhiāna vica āuṇa vālīāṁ cīzāṁ nū ākāra dide hana."
+  },
+  "45": {
+    "text": "ਹੌਲੀ-ਹੌਲੀ ਪੜ੍ਹਨਾ ਆਪਣੇ ਆਪ ਵਿੱਚ ਇੱਕ ਤਰ੍ਹਾਂ ਦੀ ਸੋਚ ਹੈ।",
+    "romanization": "Haulī-haulī paṛhaṇā āpaṇe āpa vica ika tarāṁ dī soca hai."
+  },
+  "46": {
+    "text": "ਮਜ਼ਬੂਤ ​​ਰਾਏ, ਹਲਕੇ ਢੰਗ ਨਾਲ ਰੱਖੀ ਗਈ।",
+    "romanization": "Mazabūta rāe, halake ḍhaṅga nāla rakkhī gaī."
+  },
+  "47": {
+    "text": "ਸਭ ਤੋਂ ਬੁੱਧੀਮਾਨ ਲੋਕ ਸਭ ਤੋਂ ਵੱਧ ਆਪਣਾ ਮਨ ਬਦਲਦੇ ਹਨ।",
+    "romanization": "Sabha toṁ buddhimāna loka sabha toṁ vadha āpaṇā mana badalade hana."
+  },
+  "48": {
+    "text": "ਅਸਹਿਮਤੀ ਗਲਤਫਹਿਮੀ ਵਰਗੀ ਨਹੀਂ ਹੁੰਦੀ।",
+    "romanization": "Asahimatī galataphahamī varagī nahīṁ hundī."
+  },
+  "49": {
+    "text": "ਕਈ ਵਾਰ ਦੋਵੇਂ ਪਾਸੇ ਕੁਝ ਹੱਦ ਤੱਕ ਸਹੀ ਹੁੰਦੇ ਹਨ।",
+    "romanization": "Kaī vāra doveṁ pāse kucha hadda taka sahī hunde hana."
+  },
+  "50": {
+    "text": "ਦੁਨੀਆ ਇਸਦੀ ਕਿਸੇ ਵੀ ਵਿਆਖਿਆ ਨਾਲੋਂ ਪੁਰਾਣੀ ਹੈ।",
+    "romanization": "Dunīā isadī kise vī viākhiaā nāloṁ purāṇī hai."
+  },
+  "51": {
+    "text": "ਚੇਤਨਾ ਸਭ ਤੋਂ ਅਜੀਬ ਚੀਜ਼ ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ ਜਾਣਦੇ ਹਾਂ।",
+    "romanization": "Cetana sabha toṁ ajība cīza hai jisanū asīṁ jāṇade hāṁ."
+  },
+  "52": {
+    "text": "ਅਸੀਂ ਦੁਨੀਆ ਨੂੰ ਜਿੰਨਾ ਸੋਚਦੇ ਹਾਂ, ਉਸ ਤੋਂ ਘੱਟ ਦੇਖਦੇ ਹਾਂ।",
+    "romanization": "Asīṁ dunīā nū jinā socade hāṁ, usa toṁ ghaṭṭa dekhade hāṁ."
+  },
+  "53": {
+    "text": "ਯਾਦਦਾਸ਼ਤ ਹਰ ਵਾਰ ਜਦੋਂ ਅਸੀਂ ਇਸਨੂੰ ਵਰਤਦੇ ਹਾਂ ਤਾਂ ਆਪਣੇ ਆਪ ਨੂੰ ਦੁਬਾਰਾ ਲਿਖਦੀ ਹੈ।",
+    "romanization": "Yādadāśata hara vāra jadōṁ asīṁ isanū varatade hāṁ tāṁ āpaṇe āpa nū dubārā likhadī hai."
+  },
+  "54": {
+    "text": "ਇੱਕੋ ਕਮਰੇ ਵਿੱਚ ਦੋ ਲੋਕ ਵੱਖ-ਵੱਖ ਕਮਰਿਆਂ ਦਾ ਅਨੁਭਵ ਕਰ ਸਕਦੇ ਹਨ।",
+    "romanization": "Ikko kamare vica do loka vakkh-vakkh kamariāṁ dā anubhava kara sakade hana."
+  },
+  "55": {
+    "text": "ਮਨ ਉਸ ਦੁਨੀਆ ਨੂੰ ਬਣਾਉਂਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਉਹ ਰਹਿੰਦਾ ਹੈ।",
+    "romanization": "Mana usa dunīā nū baṇāundā hai jisa vica uha rahidā hai."
+  },
+  "56": {
+    "text": "ਕੁਝ ਅਨੁਭਵਾਂ ਨੂੰ ਸ਼ਬਦਾਂ ਵਿੱਚ ਬਿਆਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।",
+    "romanization": "Kucha anubhavāṁ nū śabadāṁ vica biāna nahīṁ kītā jā sakadā."
+  },
+  "57": {
+    "text": "ਸੰਗੀਤ ਬਿਨਾਂ ਅਨੁਵਾਦ ਦੇ ਸਿੱਧਾ ਬੋਲਦਾ ਪ੍ਰਤੀਤ ਹੁੰਦਾ ਹੈ।",
+    "romanization": "Saṅgīta bināṁ anuvāda de siddhā boladā pratīta hundā hai."
+  },
+  "58": {
+    "text": "ਦਰਦ ਇੱਕ ਅਧਿਆਪਕ ਹੈ, ਭਾਵੇਂ ਇਸਦਾ ਕੋਈ ਸਬਕ ਨਾ ਹੋਵੇ।",
+    "romanization": "Darada ika adhiāpaka hai, bhāveṁ isadā koī sabaka nā hove."
+  },
+  "59": {
+    "text": "ਸੁੰਦਰਤਾ ਕਈ ਵਾਰ ਇੱਕ ਸੁਰਾਗ ਹੁੰਦੀ ਹੈ।",
+    "romanization": "Sundaratā kaī vāra ika surāga hundī hai."
+  },
+  "60": {
+    "text": "ਬੋਰੀਅਤ ਅਕਸਰ ਇੱਕ ਸਵਾਲ ਨੂੰ ਲੁਕਾਉਂਦੀ ਹੈ ਜਿਸਨੂੰ ਪੁੱਛਣ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।",
+    "romanization": "Borīata akasara ika savāla nū lukāundī hai jisanū pucchaṇa dī loroṛa hundī hai."
+  },
+  "61": {
+    "text": "ਇਕਾਂਤ ਉਹਨਾਂ ਚੀਜ਼ਾਂ ਨੂੰ ਸਪੱਸ਼ਟ ਕਰਦਾ ਹੈ ਜੋ ਭੀੜ ਧੁੰਦਲੀਆਂ ਕਰ ਦਿੰਦੀ ਹੈ।",
+    "romanization": "Ikāṁta uhanāṁ cīzāṁ nū sapasṭa karadā hai jo bhīṛa dhundalīāṁ kara didī hai."
+  },
+  "62": {
+    "text": "ਨੀਂਦ ਕੋਈ ਮਾਮੂਲੀ ਚੀਜ਼ ਨਹੀਂ ਹੈ।",
+    "romanization": "Nīnda koī māmūlī cīza nahīṁ hai."
+  },
+  "63": {
+    "text": "ਮੌਤ ਸਮੇਂ ਨੂੰ ਆਕਾਰ ਦਿੰਦੀ ਹੈ।",
+    "romanization": "Mauṭa sameṁ nū ākāra didī hai."
+  },
+  "64": {
+    "text": "ਵਰਤਮਾਨ ਹੀ ਇੱਕੋ ਇੱਕ ਜਗ੍ਹਾ ਹੈ ਜਿੱਥੇ ਕੁਝ ਵੀ ਵਾਪਰਦਾ ਹੈ।",
+    "romanization": "Varatamāna hī ikko ika jagah hai jitthe kucha vī vāparadā hai."
+  },
+  "65": {
+    "text": "ਸੁਕਰਾਤ ਨੇ ਕਿਹਾ ਸੀ ਕਿ ਬਿਨਾਂ ਪਰਖੀ ਜ਼ਿੰਦਗੀ ਜੀਉਣ ਦੇ ਲਾਇਕ ਨਹੀਂ ਹੈ।",
+    "romanization": "Sukarāta ne kihā sī ki bināṁ parakhī zindagī jiuṇa de lāika nahīṁ hai."
+  },
+  "66": {
+    "text": "ਸਟੋਇਕਸ ਨੇ ਸਿਰਫ ਉਹੀ ਚਾਹੁਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜੋ ਉਹਨਾਂ ਕੋਲ ਸੀ।",
+    "romanization": "Saṭoikas ne sirapha uhī cāhuṇa dī kośiśa kītī jo uhanāṁ kola sī."
+  },
+  "67": {
+    "text": "ਕਨਫਿਊਸ਼ੀਅਸ ਨੇ ਛੋਟੀਆਂ ਰਸਮਾਂ ਦੀ ਮਹੱਤਤਾ ਸਿਖਾਈ।",
+    "romanization": "Kanaphiūśīasa ne choṭīāṁ rasamāṁ dī mahattatā sikhāī."
+  },
+  "68": {
+    "text": "ਬੁੱਧ ਨੇ ਦੁੱਖ ਦੇ ਕਾਰਨ ਵੱਲ ਇਸ਼ਾਰਾ ਕੀਤਾ।",
+    "romanization": "Buddhe ne dukkha de kāraṇa valla iśārā kītā."
+  },
+  "69": {
+    "text": "ਅਰਸਤੂ ਸੋਚਦਾ ਸੀ ਕਿ ਨੇਕੀ ਇੱਕ ਆਦਤ ਹੈ, ਨਾ ਕਿ ਇੱਕ ਭਾਵਨਾ।",
+    "romanization": "Arastū socadā sī ki nekī ika ādata hai, nā ki ika bhāvanā."
+  },
+  "70": {
+    "text": "ਪਲੈਟੋ ਨੂੰ ਸ਼ੱਕ ਸੀ ਕਿ ਜੋ ਚੀਜ਼ਾਂ ਅਸੀਂ ਦੇਖਦੇ ਹਾਂ ਉਹ ਪਰਛਾਵੇਂ ਵਰਗੀਆਂ ਹਨ।",
+    "romanization": "Palaiṭo nū śakka sī ki jo cīzāṁ asīṁ dekhade hāṁ uha paracchāveṁ varagīāṁ hana."
+  },
+  "71": {
+    "text": "ਲਾਓ ਤਜ਼ੂ ਨੇ ਪਾਣੀ ਦੇ ਰਾਹ ਦੀ ਪ੍ਰਸ਼ੰਸਾ ਕੀਤੀ।",
+    "romanization": "Lāo Tazū ne pāṇī de rāha dī praśaṁsā kītī."
+  },
+  "72": {
+    "text": "ਐਪੀਕਿਊਰਸ ਸ਼ਾਂਤਮਈ ਖੁਸ਼ੀਆਂ ਚਾਹੁੰਦਾ ਸੀ, ਨਾ ਕਿ ਵੱਡੀਆਂ।",
+    "romanization": "Aipīkiūras śāṁtamī khuśīāṁ cāhundā sī, nā ki vaḍḍīāṁ."
+  },
+  "73": {
+    "text": "ਡਾਇਓਜੀਨਸ ਨੇ ਰਵਾਇਤਾਂ ਦਾ ਮਜ਼ਾਕ ਉਡਾ ਕੇ ਸਿਖਾਇਆ।",
+    "romanization": "Ḍāiōjīnasa ne ravāitāṁ dā mazāka uḍā ke sikhāiā."
+  },
+  "74": {
+    "text": "ਬਹੁਤ ਸਾਰੀਆਂ ਪਰੰਪਰਾਵਾਂ ਅਸਹਿਮਤ ਹੋਣ ਨਾਲੋਂ ਜ਼ਿਆਦਾ ਸਹਿਮਤ ਹੁੰਦੀਆਂ ਹਨ।",
+    "romanization": "Bahuta sārīāṁ paraṁparāvāṁ asahimata hoṇa nāloṁ ziādā sahamata hundīāṁ hana."
+  },
+  "75": {
+    "text": "ਕਾਂਟ ਨੇ ਕਿਹਾ ਕਿ ਲੋਕਾਂ ਨਾਲ ਅੰਤ ਦੇ ਤੌਰ 'ਤੇ ਪੇਸ਼ ਆਓ, ਨਾ ਕਿ ਸਿਰਫ ਸਾਧਨਾਂ ਵਜੋਂ।",
+    "romanization": "Kāṁṭa ne kihā ki lokāṁ nāla anta de taura 'te peśa āo, nā ki sirapha sādhanāṁ vajōṁ."
+  },
+  "76": {
+    "text": "ਹਿਊਮ ਨੇ ਦੇਖਿਆ ਕਿ ਸਿਰਫ ਤਰਕ ਸਾਨੂੰ ਪਰਵਾਹ ਨਹੀਂ ਕਰਵਾਉਂਦਾ।",
+    "romanization": "Hiūma ne dekhiā ki sirapha taraka sānuṁ paravāha nahīṁ karavāundā."
+  },
+  "77": {
+    "text": "ਨੀਤਸ਼ੇ ਨੇ ਲਿਖਿਆ ਕਿ ਕੌੜੇ ਸੱਚ ਵੀ ਤੋਹਫ਼ੇ ਹੋ ਸਕਦੇ ਹਨ।",
+    "romanization": "Nītaśe ne likhiā ki kauṛe sacca vī tohaphe ho sakade hana."
+  },
+  "78": {
+    "text": "ਵਿਟਗੇਨਸਟਾਈਨ ਨੇ ਕਿਹਾ ਕਿ ਸਾਡੀ ਭਾਸ਼ਾ ਦੀਆਂ ਸੀਮਾਵਾਂ ਹੀ ਸਾਡੇ ਸੰਸਾਰ ਦੀਆਂ ਸੀਮਾਵਾਂ ਹਨ।",
+    "romanization": "Viṭagenasṭāīna ne kihā ki sāḍī bhāśā dīāṁ sīmāvāṁ hī sāḍe saṁsāra dīāṁ sīmāvāṁ hana."
+  },
+  "79": {
+    "text": "ਸਿਮੋਨ ਡੀ ਬੋਵੋਇਰ ਨੇ ਦਲੀਲ ਦਿੱਤੀ ਕਿ ਅਸੀਂ ਆਪਣੀਆਂ ਚੋਣਾਂ ਰਾਹੀਂ ਖੁਦ ਬਣਦੇ ਹਾਂ।",
+    "romanization": "Simona ḍī Bovōira ne dalīla dittī ki asīṁ āpaṇīāṁ coṇāṁ rāhīṁ khuda baṇade hāṁ."
+  },
+  "80": {
+    "text": "ਵਿਲੀਅਮ ਜੇਮਸ ਨੇ ਕਿਹਾ ਕਿ ਵਿਸ਼ਵਾਸ ਸਾਡੇ ਕੰਮਾਂ ਨੂੰ ਆਕਾਰ ਦਿੰਦਾ ਹੈ।",
+    "romanization": "Vilīama Jemasa ne kihā ki viśavāsa sāḍe kammāṁ nū ākāra didā hai."
+  },
+  "81": {
+    "text": "ਜੌਨ ਰੌਲਸ ਨੇ ਪੁੱਛਿਆ ਕਿ ਜੇ ਸਾਨੂੰ ਪਤਾ ਨਾ ਹੁੰਦਾ ਕਿ ਅਸੀਂ ਕੌਣ ਹੋਵਾਂਗੇ ਤਾਂ ਅਸੀਂ ਕਿਹੜੇ ਨਿਯਮਾਂ ਨੂੰ ਸਵੀਕਾਰ ਕਰਾਂਗੇ।",
+    "romanization": "Jauna Raulas ne pucchā ki je sānuṁ patā nā hundā ki asīṁ kauṇa hovāṁge tāṁ asīṁ kihaṛe nīamāṁ nū savīkāra karāṁge."
+  },
+  "82": {
+    "text": "ਹੈਨਾ ਆਰੈਂਡਟ ਨੇ ਚੇਤਾਵਨੀ ਦਿੱਤੀ ਕਿ ਬੁਰਾਈ ਆਮ ਹੋ ਸਕਦੀ ਹੈ।",
+    "romanization": "Hainā Āraiṁḍaṭa ne cetāvanī dittī ki burāī āma ho sakadī hai."
+  },
+  "83": {
+    "text": "ਆਇਰਿਸ ਮਰਡੋਕ ਨੇ ਕਿਹਾ ਕਿ ਪਿਆਰ ਧਿਆਨ ਦੇਣ ਦਾ ਔਖਾ ਕੰਮ ਹੈ।",
+    "romanization": "Āirisa Maraḍoka ne kihā ki piāra dhiāna deṇa dā aukkhā kamma hai."
+  },
+  "84": {
+    "text": "ਬਹੁਤ ਸਾਰੇ ਆਧੁਨਿਕ ਦਾਰਸ਼ਨਿਕ ਕਈ ਪਰੰਪਰਾਵਾਂ ਤੋਂ ਖੁੱਲ੍ਹੇਆਮ ਉਧਾਰ ਲੈਂਦੇ ਹਨ।",
+    "romanization": "Bahuta sāre ādhunika dāraśanika kaī paraṁparāvāṁ toṁ khullheāma udhāra laiṁde hana."
+  },
+  "85": {
+    "text": "ਉਸ ਕੰਮ ਤੋਂ ਸ਼ੁਰੂ ਕਰੋ ਜੋ ਤੁਸੀਂ ਅਸਲ ਵਿੱਚ ਅੱਜ ਕਰ ਸਕਦੇ ਹੋ।",
+    "romanization": "Usa kamma toṁ śurū karo jo tusīṁ asala vica ajja kara sakade ho."
+  },
+  "86": {
+    "text": "ਸੁਣੋ ਜਿਵੇਂ ਕਿ ਤੁਸੀਂ ਗਲਤ ਹੋ ਸਕਦੇ ਹੋ।",
+    "romanization": "Suṇo jiveṁ ki tusīṁ galata ho sakade ho."
+  },
+  "87": {
+    "text": "ਜ਼ਿਆਦਾ ਕਮਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਘੱਟ ਚਾਹੁਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "romanization": "Ziādā kamāuṇa toṁ pahilāṁ ghaṭṭa cāhuṇa dī kośiśa karo."
+  },
+  "88": {
+    "text": "ਧਿਆਨ ਦਿਓ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰਦੇ ਹੋ ਜਦੋਂ ਕੋਈ ਨਹੀਂ ਦੇਖ ਰਿਹਾ ਹੁੰਦਾ।",
+    "romanization": "Dhiāna dio ki tusīṁ kī karade ho jadōṁ koī nahīṁ dekha rihā hundā."
+  },
+  "89": {
+    "text": "ਇੱਕ ਸੈਰ ਇੱਕ ਛੋਟਾ ਜਿਹਾ ਫਲਸਫਾ ਹੈ।",
+    "romanization": "Ika saira ika choṭā jihā phalasaphā hai."
+  },
+  "90": {
+    "text": "ਸਭ ਤੋਂ ਔਖੀ ਦਲੀਲ ਉਹ ਹੈ ਜੋ ਤੁਸੀਂ ਆਪਣੇ ਆਪ ਨੂੰ ਦੇਣਦਾਰ ਹੋ।",
+    "romanization": "Sabha toṁ aukkhī dalīla uha hai jo tusīṁ āpaṇe āpa nū deṇadāra ho."
+  },
+  "91": {
+    "text": "ਰਾਏ ਨੂੰ ਉਸ ਤਰ੍ਹਾਂ ਫੜੋ ਜਿਵੇਂ ਤੁਸੀਂ ਇੱਕ ਸੰਦ ਫੜਦੇ ਹੋ।",
+    "romanization": "Rāe nū usa tarāṁ phaṛo jiveṁ tusīṁ ika saṁda phaṛade ho."
+  },
+  "92": {
+    "text": "ਦੂਜੇ ਲੋਕਾਂ ਦੇ ਸ਼ਬਦਾਂ ਨੂੰ ਉਹਨਾਂ ਦੇ ਸਭ ਤੋਂ ਵਧੀਆ ਰੂਪ ਵਿੱਚ ਲਓ।",
+    "romanization": "Dūje lokāṁ de śabadāṁ nū uhanāṁ de sabha toṁ vadhīā rūpa vica lao."
+  },
+  "93": {
+    "text": "ਆਮ ਸਵੇਰਾਂ ਨੂੰ ਸ਼ੁਕਰਗੁਜ਼ਾਰੀ ਦਾ ਅਭਿਆਸ ਕਰੋ, ਨਾ ਕਿ ਸਿਰਫ ਖਾਸ ਸਵੇਰਾਂ ਨੂੰ।",
+    "romanization": "Āma saverāṁ nū śukaraguzārī dā abhiāsa karo, nā ki sirapha khāsa saverāṁ nū."
+  },
+  "94": {
+    "text": "ਸਭ ਤੋਂ ਛੋਟਾ ਰਸਤਾ ਕਈ ਵਾਰ ਸਵਾਲ ਰਾਹੀਂ ਹੁੰਦਾ ਹੈ।",
+    "romanization": "Sabha toṁ choṭā rasatā kaī vāra savāla rāhīṁ hundā hai."
+  },
+  "95": {
+    "text": "ਹੈਰਾਨੀ ਇੱਕ ਤਰ੍ਹਾਂ ਦਾ ਧਿਆਨ ਹੈ।",
+    "romanization": "Hairānī ika tarāṁ dā dhiāna hai."
+  },
+  "96": {
+    "text": "ਪੁਰਾਣੀਆਂ ਕਿਤਾਬਾਂ ਘੱਟੋ-ਘੱਟ ਕਦੇ-ਕਦੇ ਪੜ੍ਹੋ।",
+    "romanization": "Purāṇīāṁ kitābāṁ ghaṭṭo-ghaṭṭa kade-kade paṛho."
+  },
+  "97": {
+    "text": "ਚੰਗੀ ਤਰ੍ਹਾਂ ਅਸਹਿਮਤ ਹੋਵੋ ਅਤੇ ਰਿਸ਼ਤਾ ਬਚਿਆ ਰਹਿੰਦਾ ਹੈ।",
+    "romanization": "Caṅgī tarāṁ asahimata hovo ate riśatā bacīā rahidā hai."
+  },
+  "98": {
+    "text": "ਇੱਕ ਚੰਗੀ ਜ਼ਿੰਦਗੀ ਬਹੁਤ ਸਾਰੇ ਛੋਟੇ ਚੰਗੇ ਦਿਨਾਂ ਦਾ ਸਮੂਹ ਹੈ।",
+    "romanization": "Ika caṅgī zindagī bahuta sāre choṭe caṅge dināṁ dā samūha hai."
+  },
+  "99": {
+    "text": "ਕੋਈ ਆਖਰੀ ਸ਼ਬਦ ਨਹੀਂ ਹੈ।",
+    "romanization": "Koī ākharī śabada nahīṁ hai."
+  }
+}

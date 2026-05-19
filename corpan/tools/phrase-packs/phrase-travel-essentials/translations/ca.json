@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "On és el lavabo?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Quant costa?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Disculpi, parla anglès?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Encara no parlo gaire bé l'idioma.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Ho podria dir més a poc a poc?",
+    "romanization": null
+  },
+  "5": {
+    "text": "On puc comprar un bitllet?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Aquest seient està ocupat?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Voldria una habitació individual per a dues nits.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Teniu alguna habitació amb vistes al mar?",
+    "romanization": null
+  },
+  "9": {
+    "text": "A quina hora se serveix l'esmorzar?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Em podria portar la carta, si us plau?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Soc vegetarià.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Soc al·lèrgic als cacauets.",
+    "romanization": null
+  },
+  "13": {
+    "text": "L'aigua de l'aixeta es pot beure?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Ens podria portar el compte, si us plau?",
+    "romanization": null
+  },
+  "15": {
+    "text": "El servei està inclòs?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Puc pagar amb targeta?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Accepteu efectiu?",
+    "romanization": null
+  },
+  "18": {
+    "text": "Em podria fer un rebut?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Quedi's el canvi.",
+    "romanization": null
+  },
+  "20": {
+    "text": "De quina andana surt el tren?",
+    "romanization": null
+  },
+  "21": {
+    "text": "S'ha endarrerit el vol?",
+    "romanization": null
+  },
+  "22": {
+    "text": "He perdut la connexió.",
+    "romanization": null
+  },
+  "23": {
+    "text": "On és la recollida d'equipatges?",
+    "romanization": null
+  },
+  "24": {
+    "text": "La meva maleta no ha arribat.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Em podria demanar un taxi?",
+    "romanization": null
+  },
+  "26": {
+    "text": "Quant dura el trajecte?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Porti'm a aquesta adreça, si us plau.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Podria parar a la cantonada?",
+    "romanization": null
+  },
+  "29": {
+    "text": "Hi ha cap estació de metro a prop?",
+    "romanization": null
+  },
+  "30": {
+    "text": "Només estic mirant, gràcies.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Ho teniu en una talla més petita?",
+    "romanization": null
+  },
+  "32": {
+    "text": "M'ho puc emprovar?",
+    "romanization": null
+  },
+  "33": {
+    "text": "On és l'emprovador?",
+    "romanization": null
+  },
+  "34": {
+    "text": "Això està rebaixat?",
+    "romanization": null
+  },
+  "35": {
+    "text": "Em podeu fer un descompte si pago en efectiu?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Això és fet a mà o de fàbrica?",
+    "romanization": null
+  },
+  "37": {
+    "text": "M'ho quedo.",
+    "romanization": null
+  },
+  "38": {
+    "text": "M'ho podria embolicar per a regal?",
+    "romanization": null
+  },
+  "39": {
+    "text": "Quant dura la garantia?",
+    "romanization": null
+  },
+  "40": {
+    "text": "Necessito veure un metge.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Em fa mal el cap.",
+    "romanization": null
+  },
+  "42": {
+    "text": "On és la farmàcia més propera?",
+    "romanization": null
+  },
+  "43": {
+    "text": "Necessito recepta per a això?",
+    "romanization": null
+  },
+  "44": {
+    "text": "He perdut el passaport.",
+    "romanization": null
+  },
+  "45": {
+    "text": "On és la comissaria de policia?",
+    "romanization": null
+  },
+  "46": {
+    "text": "Em podria ajudar, si us plau?",
+    "romanization": null
+  },
+  "47": {
+    "text": "Crec que m'he deixat la bossa al taxi.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Truqui a una ambulància, si us plau.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Hi ha cap hospital a prop?",
+    "romanization": null
+  },
+  "50": {
+    "text": "Em podria recomanar un bon restaurant per aquí?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Quina és l'especialitat local?",
+    "romanization": null
+  },
+  "52": {
+    "text": "M'agradaria tastar alguna cosa tradicional.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Pica?",
+    "romanization": null
+  },
+  "54": {
+    "text": "Podríem seure a fora?",
+    "romanization": null
+  },
+  "55": {
+    "text": "No tenim pressa.",
+    "romanization": null
+  },
+  "56": {
+    "text": "El menjar era boníssim, gràcies.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Em podria portar un got d'aigua sense gel?",
+    "romanization": null
+  },
+  "58": {
+    "text": "Aquest plat porta marisc?",
+    "romanization": null
+  },
+  "59": {
+    "text": "M'ho podria posar per emportar?",
+    "romanization": null
+  },
+  "60": {
+    "text": "Quin horari feu?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Es poden fer fotos a dins?",
+    "romanization": null
+  },
+  "62": {
+    "text": "Hi ha visita guiada en anglès?",
+    "romanization": null
+  },
+  "63": {
+    "text": "El museu és gratis els diumenges?",
+    "romanization": null
+  },
+  "64": {
+    "text": "Amb quanta antelació hauria d'arribar?",
+    "romanization": null
+  },
+  "65": {
+    "text": "Les entrades són més barates en línia?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Amb aquestes entrades podem saltar-nos la cua?",
+    "romanization": null
+  },
+  "67": {
+    "text": "Què no m'hauria de perdre mentre soc aquí?",
+    "romanization": null
+  },
+  "68": {
+    "text": "Ens podria fer una foto?",
+    "romanization": null
+  },
+  "69": {
+    "text": "És segur passejar-hi de nit?",
+    "romanization": null
+  },
+  "70": {
+    "text": "Soc aquí de vacances.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Soc aquí per feina.",
+    "romanization": null
+  },
+  "72": {
+    "text": "M'hi estaré una setmana.",
+    "romanization": null
+  },
+  "73": {
+    "text": "És la primera vegada que vinc a aquest país.",
+    "romanization": null
+  },
+  "74": {
+    "text": "On dinaria algú d'aquí per aquesta zona?",
+    "romanization": null
+  },
+  "75": {
+    "text": "Quin és el lloc més bonic que has visitat?",
+    "romanization": null
+  },
+  "76": {
+    "text": "El vol va ser llarg, però les vistes van valdre la pena.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Intento aprendre unes quantes paraules en la vostra llengua.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Que tingui una bona tarda, i gràcies per tot.",
+    "romanization": null
+  },
+  "79": {
+    "text": "M'encantaria tornar-hi algun dia.",
+    "romanization": null
+  }
+}

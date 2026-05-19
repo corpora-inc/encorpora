@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Prețurile cresc atunci când mai mulți oameni își doresc ceva.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Când oferta crește, prețurile scad de obicei.",
+    "romanization": null
+  },
+  "2": {
+    "text": "O reducere îi face pe mai mulți oameni să cumpere.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Același produs costă diferit în orașe diferite.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Cererea se poate schimba peste noapte.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Vânzătorii măresc prețurile când stocul e pe terminate.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Cumpărătorii caută cele mai bune oferte.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Uneori, un preț mare e un semn de calitate.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Uneori, un preț mare e doar un truc de marketing.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Transportul gratuit schimbă percepția oamenilor despre o achiziție.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Prețul e rareori costul total.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Timpul e și el un fel de cost.",
+    "romanization": null
+  },
+  "12": {
+    "text": "O coadă lungă e prețul pe care-l plătești când prețul e prea mic.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Reducările îi fac pe oameni să cumpere lucruri pe care nu le-au planificat.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Oamenii reacționează mai puternic la pierderea banilor decât la câștigarea lor.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Prețurile în dolari și prețurile în moneda locală se simt diferit.",
+    "romanization": null
+  },
+  "16": {
+    "text": "O mică cheltuială zilnică se adună la o sumă mare într-un an.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Prima vânzare a zilei contează mai mult decât ultima.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Multe cumpărături mici ascund un obicei mare.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Cea mai ieftină opțiune e uneori cea mai scumpă la final.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Banii sunt doar un acord pe care-l împărtășim cu toții.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Economisirea înseamnă să-ți plătești sinele viitor.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Un buget e un plan, nu o pedeapsă.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Dobânda compusă e răbdare cu un motor mic.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Inflația roade încet banii ținuți la saltea.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Un împrumut înseamnă să te împrumuți de la sinele tău viitor.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Dobânda e chiria pentru banii împrumutați.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Ea urmărește fiecare cheltuială timp de o lună ca să vadă tiparul.",
+    "romanization": null
+  },
+  "28": {
+    "text": "El economisește o sumă fixă la fiecare salariu, înainte de orice altceva.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Fondurile de urgență fac dezastrele mici mai puțin dureroase.",
+    "romanization": null
+  },
+  "30": {
+    "text": "A cheltui puțin mai puțin e adesea mai ușor decât a câștiga mai mult.",
+    "romanization": null
+  },
+  "31": {
+    "text": "O mărire de salariu se poate pierde în cheltuieli mai mari.",
+    "romanization": null
+  },
+  "32": {
+    "text": "El a achitat împrumutul mai devreme și s-a simțit mai ușurat.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Majoritatea oamenilor supraestimează disciplina de anul viitor.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Grijile legate de bani se micșorează când ai un plan.",
+    "romanization": null
+  },
+  "35": {
+    "text": "O piață e doar un loc unde se întâlnesc cumpărătorii și vânzătorii.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Magazinele online sunt piețe fără ziduri.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Specializarea e motivul pentru care majoritatea lucrurilor sunt ieftine.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Oamenii fac schimb pentru lucrurile pe care nu le produc singuri.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Salariile reflectă cât este plătit cineva, nu întotdeauna cât valorează.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Unele meserii sunt bine plătite pentru că puțini oameni le vor.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Unele meserii sunt bine plătite pentru că puțini oameni le pot face.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Piața nu recompensează întotdeauna munca cea mai utilă.",
+    "romanization": null
+  },
+  "43": {
+    "text": "O nouă tehnologie poate șterge rapid o industrie veche.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Oamenii se mută adesea acolo unde sunt locuri de muncă.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Afacerile mici reprezintă cea mai mare parte a economiei.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Un angajat bun economisește mai mult decât costă.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Negocierea face parte din orice meserie.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Un venit suplimentar îți oferă opțiuni.",
+    "romanization": null
+  },
+  "49": {
+    "text": "A demisiona e uneori cea mai eficientă mișcare.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Oamenii răspund la stimulente, chiar și la cele mici.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Gratuit e un cuvânt magic.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Prima lună gratuită schimbă multe decizii.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Abonamentele sunt concepute să fie uitate.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Numerele rotunde par mai mari decât sunt.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Costurile irecuperabile nu ar trebui să influențeze următoarea mișcare.",
+    "romanization": null
+  },
+  "56": {
+    "text": "O taxă mică schimbă frecvența cu care oamenii se prezintă.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Bacșișul schimbă calculele unei mese.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Oamenii împărtășesc când e ușor să împărtășești.",
+    "romanization": null
+  },
+  "59": {
+    "text": "O coadă îți spune ce prețuiesc oamenii azi.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Ofertele pe termen limitat creează intenționat urgență.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Programele de loialitate recompensează ceea ce s-ar întâmpla oricum.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Opțiunile implicite decid mai mult decât își dau seama oamenii.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Recenziile influențează cererea mai mult decât reclamele.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Recomandările personale încă bat majoritatea strategiilor de marketing.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Economia crește în unii ani și scade în alții.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Recesiunile învață lecții pe care perioadele de boom le uită.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Creșterea pe termen lung ridică pe toată lumea, încet.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Câștigurile de productivitate se ascund în unelte și obiceiuri.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Ideile noi sunt singura sursă sustenabilă de creștere.",
+    "romanization": null
+  },
+  "70": {
+    "text": "O perioadă de boom poate masca multe decizii proaste.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Crahurile îi pedepsesc pe cei mai îndatorați primii.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Banii ieftini tind să găsească utilizări riscante.",
+    "romanization": null
+  },
+  "73": {
+    "text": "O bulă e greu de văzut din interior.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Recuperarea e inegală între industrii și regiuni.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Țările fac comerț pentru că ambele părți câștigă.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Tarifele măresc prețurile pentru cumpărătorii interni.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Ratele de schimb modifică costul unui import.",
+    "romanization": null
+  },
+  "78": {
+    "text": "O monedă slabă ajută exportatorii și dăunează importatorilor.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Investițiile străine pot construi sau tensiona o economie.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Remitențele susțin multe familii transfrontaliere.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Sancțiunile afectează oamenii obișnuiți mai mult decât liderii.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Lanțurile globale de aprovizionare se rup în locuri surprinzătoare.",
+    "romanization": null
+  },
+  "83": {
+    "text": "O penurie într-o țară poate mișca prețurile peste tot.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Unele industrii se grupează într-o singură regiune dintr-un motiv.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Inegalitatea crește în liniște când nimeni nu e atent.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Taxele sunt prețul bunurilor publice.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Bunurile publice sunt cele pe care nu le putem cumpăra ușor individual.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Externalitățile sunt costurile pe care nimeni nu a cerut să le plătească.",
+    "romanization": null
+  },
+  "89": {
+    "text": "O mică deficiență a pieței poate avea efecte uriașe.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Piața liberă are nevoie de reguli ca să rămână liberă.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Informația e distribuită inegal între cumpărători și vânzători.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Încrederea scade costul fiecărei tranzacții.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Reputația e un atu subestimat.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Prețul atenției a crescut.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Cele mai importante piețe adesea nu au prețuri.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Timpul și grija sunt printre cele mai rare resurse.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Deciziile economice sunt și decizii morale.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Economia sunt doar oameni care fac lucruri unii pentru alții.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Un buget simplu schimbă mai mult decât orice teorie complexă.",
+    "romanization": null
+  }
+}

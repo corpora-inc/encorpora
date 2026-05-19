@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "非洲在大多数地图上看起来比实际小。",
+    "romanization": "Fēi zhōu zài dà duō shù dì tú shàng kàn qǐ lái bǐ shí jì xiǎo."
+  },
+  "1": {
+    "text": "大西洋将美洲与欧洲和非洲分隔开来。",
+    "romanization": "Dà xī yáng jiāng Měi zhōu yǔ Ōu zhōu hé Fēi zhōu fēn gé kāi lái."
+  },
+  "2": {
+    "text": "南极洲是地球上最冷的洲。",
+    "romanization": "Nán jí zhōu shì dì qiú shàng zuì lěng de zhōu."
+  },
+  "3": {
+    "text": "亚洲居住着世界一半以上的人口。",
+    "romanization": "Yà zhōu jū zhù zhe shì jiè yī bàn yǐ shàng de rén kǒu."
+  },
+  "4": {
+    "text": "欧洲和亚洲共享一块连续的陆地。",
+    "romanization": "Ōu zhōu hé Yà zhōu gòng xiǎng yī kuài lián xù de lù dì."
+  },
+  "5": {
+    "text": "澳大利亚既是一个国家，也是一个大洲。",
+    "romanization": "Ào dà lì yà jì shì yī gè guó jiā, yě shì yī gè dà zhōu."
+  },
+  "6": {
+    "text": "太平洋是最大的海洋。",
+    "romanization": "Tài píng yáng shì zuì dà de hǎi yáng."
+  },
+  "7": {
+    "text": "北冰洋部分区域被冰覆盖。",
+    "romanization": "Běi bīng yáng bù fèn qū yù bèi bīng fù gài."
+  },
+  "8": {
+    "text": "南美洲拥有亚马逊雨林。",
+    "romanization": "Nán Měi zhōu yōng yǒu Yà mǎ xùn yǔ lín."
+  },
+  "9": {
+    "text": "北美洲的气候从热带延伸到北极地区。",
+    "romanization": "Běi Měi zhōu de qì hòu cóng rè dài yán shēn dào Běi jí dì qū."
+  },
+  "10": {
+    "text": "冰岛位于两大构造板块之间。",
+    "romanization": "Bīng dǎo wèi yú liǎng dà gòu zào bǎn kuài zhī jiān."
+  },
+  "11": {
+    "text": "马达加斯加是世界第四大岛屿。",
+    "romanization": "Mǎ dá jiā sī jiā shì shì jiè dì sì dà dǎo yǔ."
+  },
+  "12": {
+    "text": "新西兰由两大主岛组成。",
+    "romanization": "Xīn xī lán yóu liǎng dà zhǔ dǎo zǔ chéng."
+  },
+  "13": {
+    "text": "环太平洋火山带是地震多发区。",
+    "romanization": "Huán Tài píng yáng huǒ shān dài shì dì zhèn duō fā qū."
+  },
+  "14": {
+    "text": "印度洋与三大洲接壤。",
+    "romanization": "Yìn dù yáng yǔ sān dà zhōu jiē rǎng."
+  },
+  "15": {
+    "text": "尼罗河向北流淌数千英里。",
+    "romanization": "Ní luó hé xiàng běi liú tǎng shù qiān yīng lǐ."
+  },
+  "16": {
+    "text": "亚马逊河的流量比其他任何河流都大。",
+    "romanization": "Yà mǎ xùn hé de liú liàng bǐ qí tā rèn hé hé liú dōu dà."
+  },
+  "17": {
+    "text": "贝加尔湖是世界上最深的淡水湖。",
+    "romanization": "Bèi jiā ěr hú shì shì jiè shàng zuì shēn de dàn shuǐ hú."
+  },
+  "18": {
+    "text": "密西西比河灌溉着美国中部的大部分地区。",
+    "romanization": "Mì xī xī bǐ hé guàn gài zhe Měi guó zhōng bù de dà bù fèn dì qū."
+  },
+  "19": {
+    "text": "恒河对许多人来说是神圣的。",
+    "romanization": "Héng hé duì xǔ duō rén lái shuō shì shén shèng de."
+  },
+  "20": {
+    "text": "长江是亚洲最长的河流。",
+    "romanization": "Cháng jiāng shì Yà zhōu zuì cháng de hé liú."
+  },
+  "21": {
+    "text": "多瑙河流经十个国家。",
+    "romanization": "Duō nǎo hé liú jīng shí gè guó jiā."
+  },
+  "22": {
+    "text": "里海是世界上最大的内陆水体。",
+    "romanization": "Lǐ hǎi shì shì jiè shàng zuì dà de nèi lù shuǐ tǐ."
+  },
+  "23": {
+    "text": "伏尔加河是完全位于欧洲境内最长的河流。",
+    "romanization": "Fú ěr jiā hé shì wán quán wèi yú Ōu zhōu jìng nèi zuì cháng de hé liú."
+  },
+  "24": {
+    "text": "维多利亚湖是白尼罗河的主要源头。",
+    "romanization": "Wéi duō lì yà hú shì Bái Ní luó hé de zhǔ yào yuán tóu."
+  },
+  "25": {
+    "text": "五大湖储存着世界地表淡水总量的五分之一。",
+    "romanization": "Wǔ dà hú chǔ cún zhe shì jiè dì biǎo dàn shuǐ zǒng liàng de wǔ fēn zhī yī."
+  },
+  "26": {
+    "text": "莱茵河几个世纪以来一直是重要的贸易通道。",
+    "romanization": "Lái yīn hé jǐ gè shì jì yǐ lái yī zhí shì zhòng yào de mào yì tōng dào."
+  },
+  "27": {
+    "text": "湄公河养育着东南亚数百万人口。",
+    "romanization": "Méi gōng hé yǎng yù zhe Dōng nán Yà shù bǎi wàn rén kǒu."
+  },
+  "28": {
+    "text": "有些河流在入海前就干涸了。",
+    "romanization": "Yǒu xiē hé liú zài rù hǎi qián jiù gān hé le."
+  },
+  "29": {
+    "text": "科罗拉多河历经数百万年雕刻出了大峡谷。",
+    "romanization": "Kē luó lā duō hé lì jīng shù bǎi wàn nián diāo kè chū le Dà xiá gǔ."
+  },
+  "30": {
+    "text": "珠穆朗玛峰是地球上海拔最高的点。",
+    "romanization": "Zhū mù lǎng mǎ fēng shì dì qiú shàng hǎi bá zuì gāo de diǎn."
+  },
+  "31": {
+    "text": "安第斯山脉纵贯南美洲。",
+    "romanization": "Ān dì sī shān mài zòng guàn Nán Měi zhōu."
+  },
+  "32": {
+    "text": "阿尔卑斯山在夏季很受徒步旅行者欢迎。",
+    "romanization": "Ā ěr bēi sī shān zài xià jì hěn shòu tú bù lǚ xíng zhě huān yíng."
+  },
+  "33": {
+    "text": "落基山脉从加拿大一直延伸到美国西南部。",
+    "romanization": "Luò jī shān mài cóng Jiā ná dà yī zhí yán shēn dào Měi guó xī nán bù."
+  },
+  "34": {
+    "text": "喜马拉雅山脉仍在缓慢隆起。",
+    "romanization": "Xǐ mǎ lā yǎ shān mài réng zài huǎn màn lóng qǐ."
+  },
+  "35": {
+    "text": "乞力马扎罗山是非洲最高峰。",
+    "romanization": "Qǐ lì mǎ zhā luó shān shì Fēi zhōu zuì gāo fēng."
+  },
+  "36": {
+    "text": "乌拉尔山脉是欧洲和亚洲的分界线。",
+    "romanization": "Wū lā ěr shān mài shì Ōu zhōu hé Yà zhōu de fēn jiè xiàn."
+  },
+  "37": {
+    "text": "富士山对许多日本人来说是神圣的。",
+    "romanization": "Fù shì shān duì xǔ duō Rì běn rén lái shuō shì shén shèng de."
+  },
+  "38": {
+    "text": "阿特拉斯山脉影响着北非的气候。",
+    "romanization": "Ā tè lā sī shān mài yǐng xiǎng zhe Běi Fēi de qì hòu."
+  },
+  "39": {
+    "text": "全球山脉的冰川正在消退。",
+    "romanization": "Quán qiú shān mài de bīng chuān zhèng zài xiāo tuì."
+  },
+  "40": {
+    "text": "撒哈拉沙漠是世界上最大的热带沙漠。",
+    "romanization": "Sā hā lā shā mò shì shì jiè shàng zuì dà de rè dài shā mò."
+  },
+  "41": {
+    "text": "北极和南极都是极地沙漠。",
+    "romanization": "Běi jí hé Nán jí dōu shì jí dì shā mò."
+  },
+  "42": {
+    "text": "亚马逊地区有其独特的气候系统。",
+    "romanization": "Yà mǎ xùn dì qū yǒu qí dú tè de qì hòu xì tǒng."
+  },
+  "43": {
+    "text": "热带雨林全年温暖湿润。",
+    "romanization": "Rè dài yǔ lín quán nián wēn nuǎn shī rùn."
+  },
+  "44": {
+    "text": "温带地区有四季分明的特点。",
+    "romanization": "Wēn dài dì qū yǒu sì jì fēn míng de tè diǎn."
+  },
+  "45": {
+    "text": "每年夏天，季风给南亚带来大量降雨。",
+    "romanization": "Měi nián xià tiān, jì fēng gěi Nán Yà dài lái dà liàng jiàng yǔ."
+  },
+  "46": {
+    "text": "龙卷风在美国中部最为常见。",
+    "romanization": "Lóng juǎn fēng zài Měi guó zhōng bù zuì wéi cháng jiàn."
+  },
+  "47": {
+    "text": "飓风在温暖的海洋水域上形成。",
+    "romanization": "Jù fēng zài wēn nuǎn de hǎi yáng shuǐ yù shàng xíng chéng."
+  },
+  "48": {
+    "text": "地中海气候夏季温和干燥。",
+    "romanization": "Dì zhōng hǎi qì hòu xià jì wēn hé gān zào."
+  },
+  "49": {
+    "text": "永久冻土覆盖了西伯利亚的大部分地区。",
+    "romanization": "Yǒng jiǔ dòng tǔ fù gài le Xī bó lì yà de dà bù fèn dì qū."
+  },
+  "50": {
+    "text": "阿塔卡马沙漠是地球上最干燥的地方之一。",
+    "romanization": "Ā tǎ kā mǎ shā mò shì dì qiú shàng zuì gān zào de dì fāng zhī yī."
+  },
+  "51": {
+    "text": "苔原的夏季太短，不适合树木生长。",
+    "romanization": "Tái yuán de xià jì tài duǎn, bù shì hé shù mù shēng zhǎng."
+  },
+  "52": {
+    "text": "红树林生长在陆地与海水交界处。",
+    "romanization": "Hóng shù lín shēng zhǎng zài lù dì yǔ hǎi shuǐ jiāo jiè chù."
+  },
+  "53": {
+    "text": "珊瑚礁需要温暖清澈的水域才能繁衍。",
+    "romanization": "Shān hú jiāo xū yào wēn nuǎn qīng chè de shuǐ yù cái néng fán yǎn."
+  },
+  "54": {
+    "text": "喷射气流影响着各大洲的天气。",
+    "romanization": "Pēn shè qì liú yǐng xiǎng zhe gè dà zhōu de tiān qì."
+  },
+  "55": {
+    "text": "东京是人口最多的都会区。",
+    "romanization": "Dōng jīng shì rén kǒu zuì duō de dū huì qū."
+  },
+  "56": {
+    "text": "梵蒂冈城是世界上最小的国家。",
+    "romanization": "Fàn dì gāng chéng shì shì jiè shàng zuì xiǎo de guó jiā."
+  },
+  "57": {
+    "text": "俄罗斯横跨十一个时区。",
+    "romanization": "É luó sī héng kuà shí yī gè shí qū."
+  },
+  "58": {
+    "text": "印度和中国的人口总和超过世界人口的三分之一。",
+    "romanization": "Yìn dù hé Zhōng guó de rén kǒu zǒng hé chāo guò shì jiè rén kǒu de sān fēn zhī yī."
+  },
+  "59": {
+    "text": "巴西与大多数南美国家接壤。",
+    "romanization": "Bā xī yǔ dà duō shù Nán Měi guó jiā jiē rǎng."
+  },
+  "60": {
+    "text": "新加坡既是城市也是国家。",
+    "romanization": "Xīn jiā pō jì shì chéng shì yě shì guó jiā."
+  },
+  "61": {
+    "text": "伊斯坦布尔横跨两大洲。",
+    "romanization": "Yī sī tǎn bù ěr héng kuà liǎng dà zhōu."
+  },
+  "62": {
+    "text": "开普敦有一座著名的平顶山。",
+    "romanization": "Kāi pǔ dùn yǒu yī zuò zhù míng de píng dǐng shān."
+  },
+  "63": {
+    "text": "布宜诺斯艾利斯有时被称为“南美巴黎”。",
+    "romanization": "Bù yí nuò sī ài lì sī yǒu shí bèi chēng wéi \"Nán Měi Bā lí\"."
+  },
+  "64": {
+    "text": "拉各斯是世界上发展最快的城市之一。",
+    "romanization": "Lā gè sī shì shì jiè shàng fā zhǎn zuì kuài de chéng shì zhī yī."
+  },
+  "65": {
+    "text": "雷克雅未克是世界上最北的首都。",
+    "romanization": "Léi kè yǎ wèi kè shì shì jiè shàng zuì běi de shǒu dū."
+  },
+  "66": {
+    "text": "拉巴斯是海拔最高的首都之一。",
+    "romanization": "Lā bā sī shì hǎi bá zuì gāo de shǒu dū zhī yī."
+  },
+  "67": {
+    "text": "悉尼拥有世界上最大的天然港口之一。",
+    "romanization": "Xī ní yōng yǒu shì jiè shàng zuì dà de tiān rán gǎng kǒu zhī yī."
+  },
+  "68": {
+    "text": "马拉喀什有一个千年历史的老城。",
+    "romanization": "Mǎ lā kā shí yǒu yī qiān nián lì shǐ de lǎo chéng."
+  },
+  "69": {
+    "text": "河内坐落在红河沿岸。",
+    "romanization": "Hé nèi zuò luò zài Hóng hé yán àn."
+  },
+  "70": {
+    "text": "人们曾穿越沙漠进行香料贸易。",
+    "romanization": "Rén men céng chuān yuè shā mò jìn xíng xiāng liào mào yì."
+  },
+  "71": {
+    "text": "丝绸之路连接了中国和地中海地区。",
+    "romanization": "Sī chóu zhī lù lián jiē le Zhōng guó hé Dì zhōng hǎi dì qū."
+  },
+  "72": {
+    "text": "有些语言只在一个小岛上使用。",
+    "romanization": "Yǒu xiē yǔ yán zhǐ zài yī gè xiǎo dǎo shàng shǐ yòng."
+  },
+  "73": {
+    "text": "世界一半的人口居住在沿海地区。",
+    "romanization": "Shì jiè yī bàn de rén kǒu jū zhù zài yán hǎi dì qū."
+  },
+  "74": {
+    "text": "许多城市最初都是河港。",
+    "romanization": "Xǔ duō chéng shì zuì chū dōu shì hé gǎng."
+  },
+  "75": {
+    "text": "边界会变动，但河流和山脉通常不会。",
+    "romanization": "Biān jiè huì biàn dòng, dàn hé liú hé shān mài tōng cháng bù huì."
+  },
+  "76": {
+    "text": "世界的海岸线比内陆地区更拥挤。",
+    "romanization": "Shì jiè de hǎi àn xiàn bǐ nèi lù dì qū gèng yōng jǐ."
+  },
+  "77": {
+    "text": "许多古代遗址仍在被发现。",
+    "romanization": "Xǔ duō gǔ dài yí zhǐ réng zài bèi fā xiàn."
+  },
+  "78": {
+    "text": "一些岛屿正因海平面上升而缓慢消失。",
+    "romanization": "Yī xiē dǎo yǔ zhèng yīn hǎi píng miàn shàng shēng ér huǎn màn xiāo shī."
+  },
+  "79": {
+    "text": "漫长的迁徙塑造了几乎每个大洲。",
+    "romanization": "Màn cháng de qiān xǐ sù zào le jī hū měi gè dà zhōu."
+  },
+  "80": {
+    "text": "澳大利亚拥有许多其他地方没有的动物。",
+    "romanization": "Ào dà lì yà yōng yǒu xǔ duō qí tā dì fāng méi yǒu de dòng wù."
+  },
+  "81": {
+    "text": "海洋最深的地方是马里亚纳海沟。",
+    "romanization": "Hǎi yáng zuì shēn de dì fāng shì Mǎ lǐ yà nà hǎi gōu."
+  },
+  "82": {
+    "text": "格陵兰岛大部分被冰雪覆盖。",
+    "romanization": "Gé líng lán dǎo dà bù fèn bèi bīng xuě fù gài."
+  },
+  "83": {
+    "text": "火山能在几十年内形成新的岛屿。",
+    "romanization": "Huǒ shān néng zài jǐ shí nián nèi xíng chéng xīn de dǎo yǔ."
+  },
+  "84": {
+    "text": "北极光在北纬地区最容易观测到。",
+    "romanization": "Běi jí guāng zài běi wěi dì qū zuì róng yì guān cè dào."
+  },
+  "85": {
+    "text": "地球的各大洲正在缓慢地漂移分离。",
+    "romanization": "Dì qiú de gè dà zhōu zhèng zài huǎn màn de piāo yí fēn lí."
+  },
+  "86": {
+    "text": "即使是地球上最干燥的地方，也可能偶尔发生洪水。",
+    "romanization": "Jí shǐ shì dì qiú shàng zuì gān zào de dì fāng, yě kě néng ǒu ěr fā shēng hóng shuǐ."
+  },
+  "87": {
+    "text": "有些湖泊咸度极高，几乎没有生物能存活。",
+    "romanization": "Yǒu xiē hú pō xián dù jí gāo, jī hū méi yǒu shēng wù néng cún huó."
+  },
+  "88": {
+    "text": "世界上最高的瀑布在委内瑞拉。",
+    "romanization": "Shì jiè shàng zuì gāo de pù bù zài Wěi nèi ruì lā."
+  },
+  "89": {
+    "text": "撒哈拉沙漠在几千年前曾是草原。",
+    "romanization": "Sā hā lā shā mò zài jǐ qiān nián qián céng shì cǎo yuán."
+  },
+  "90": {
+    "text": "哪个国家与最多其他国家接壤？",
+    "romanization": "Nǎ gè guó jiā yǔ zuì duō qí tā guó jiā jiē rǎng?"
+  },
+  "91": {
+    "text": "国家和州有什么区别？",
+    "romanization": "Guó jiā hé zhōu yǒu shén me qū bié?"
+  },
+  "92": {
+    "text": "赤道在这张地图的哪里？",
+    "romanization": "Chì dào zài zhè zhāng dì tú de nǎ lǐ?"
+  },
+  "93": {
+    "text": "哪个海洋离这里最近？",
+    "romanization": "Nǎ gè hǎi yáng lí zhè lǐ zuì jìn?"
+  },
+  "94": {
+    "text": "走完这个国家需要多长时间？",
+    "romanization": "Zǒu wán zhè gè guó jiā xū yào duō cháng shí jiān?"
+  },
+  "95": {
+    "text": "你爬过的最高峰是哪座？",
+    "romanization": "Nǐ pá guò de zuì gāo fēng shì nǎ zuò?"
+  },
+  "96": {
+    "text": "我有一天想去看看北极光。",
+    "romanization": "Wǒ yǒu yī tiān xiǎng qù kàn kàn Běi jí guāng."
+  },
+  "97": {
+    "text": "首都是不是也是最大的城市？",
+    "romanization": "Shǒu dū shì bù shì yě shì zuì dà de chéng shì?"
+  },
+  "98": {
+    "text": "地图倒过来看感觉不一样。",
+    "romanization": "Dì tú dào guò lái kàn gǎn jué bù yī yàng."
+  },
+  "99": {
+    "text": "每个国家都有值得了解的故事。",
+    "romanization": "Měi gè guó jiā dōu yǒu zhí dé liǎo jiě de gù shì."
+  }
+}

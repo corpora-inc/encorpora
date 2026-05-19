@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "อีกสิบนาทีประชุมจะเริ่มแล้วนะ",
+    "romanization": "Ik sip nathi prachum cha roem laeo na."
+  },
+  "1": {
+    "text": "ช่วยแชร์หน้าจอหน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai share na cho noi dai mai kha/khrap?"
+  },
+  "2": {
+    "text": "ขอโทษครับ/ค่ะ เมื่อกี้ปิดไมค์อยู่",
+    "romanization": "Kho thot khrap/kha muea ki pit mai yu."
+  },
+  "3": {
+    "text": "เราใช้เวลาเกินมาแล้วนะ",
+    "romanization": "Rao chai wela koen ma laeo na."
+  },
+  "4": {
+    "text": "เรื่องนี้ไว้คุยกันประชุมหน้าดีกว่า",
+    "romanization": "Rueang ni wai khui kan prachum na di kwa."
+  },
+  "5": {
+    "text": "เดี๋ยวฉัน/ผมจดบันทึกให้",
+    "romanization": "Diao chan/phom chot banthuek hai."
+  },
+  "6": {
+    "text": "เราวนพูดกันทีละคนดีไหม",
+    "romanization": "Rao won phut kan thi la khon di mai?"
+  },
+  "7": {
+    "text": "วาระการประชุมอยู่ใน invite ในปฏิทินแล้วนะ",
+    "romanization": "Wara kan prachum yu nai invite nai patithin laeo na."
+  },
+  "8": {
+    "text": "ใครเป็นคนนำประชุมครั้งนี้คะ/ครับ",
+    "romanization": "Khrai pen khon nam prachum khrang ni kha/khrap?"
+  },
+  "9": {
+    "text": "เราอัดวิดีโออยู่ไหม",
+    "romanization": "Rao at wideo yu mai?"
+  },
+  "10": {
+    "text": "สายหลุดไปตอนกลางทางเลย",
+    "romanization": "Sai lut pai ton klang thang loei."
+  },
+  "11": {
+    "text": "เราเลื่อนออกไปอีกสิบห้านาทีได้ไหมคะ/ครับ",
+    "romanization": "Rao luean ok pai ik sip ha nathi dai mai kha/khrap?"
+  },
+  "12": {
+    "text": "เขาเข้ามาสายแต่ก็เงียบๆ นะ",
+    "romanization": "Khao khao ma sai tae ko ngiap ngiap na."
+  },
+  "13": {
+    "text": "ห้องประชุมถูกจองซ้อนอีกแล้ว",
+    "romanization": "Hong prachum thuk chong son ik laeo."
+  },
+  "14": {
+    "text": "เรื่องนี้เราพักไว้ก่อน แล้วค่อยกลับมาคุยกันใหม่",
+    "romanization": "Rueang ni rao phak wai kon laeo khoi klap ma khui kan mai."
+  },
+  "15": {
+    "text": "ฉัน/ผมมีนัดต่อตอนบ่ายสาม",
+    "romanization": "Chan/Phom mi nat to ton bai sam mong."
+  },
+  "16": {
+    "text": "อยู่คุยต่ออีกสองนาทีได้ไหมคะ/ครับ",
+    "romanization": "Yu khui to ik song nathi dai mai kha/khrap?"
+  },
+  "17": {
+    "text": "ไวท์บอร์ดเต็มแล้ว",
+    "romanization": "Wai bot tem laeo."
+  },
+  "18": {
+    "text": "ช่วยสรุป action items หน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai sarup action items noi dai mai kha/khrap?"
+  },
+  "19": {
+    "text": "ประชุมยืนนี่เร็วกว่าที่คิดเยอะเลยนะ",
+    "romanization": "Prachum yuen ni reo kwa thi khit yoe loei na."
+  },
+  "20": {
+    "text": "เดี๋ยวฉัน/ผมจะตอบกลับไปภายในสิ้นวันนี้นะ",
+    "romanization": "Diao chan/phom cha top klap pai phai nai sin wan ni na."
+  },
+  "21": {
+    "text": "อีเมลล่าสุดที่ฉัน/ผมส่งไปถึงไหมคะ/ครับ",
+    "romanization": "Emailล่าสุด thi chan/phom song pai thueng mai kha/khrap?"
+  },
+  "22": {
+    "text": "ขอโทษที่ตอบช้านะคะ/ครับ",
+    "romanization": "Kho thot thi top cha na kha/khrap."
+  },
+  "23": {
+    "text": "ขออนุญาตเพิ่มคุณซาร่าเข้ามาในเรื่องนี้ด้วยนะคะ/ครับ",
+    "romanization": "Kho anuyat phoem Khun Sara khao ma nai rueang ni duai na kha/khrap."
+  },
+  "24": {
+    "text": "ไฟล์แนบไม่ติดมาด้วย",
+    "romanization": "Fai naep mai tit ma duai."
+  },
+  "25": {
+    "text": "ฉัน/ผมทำเครื่องหมายว่าเป็นเรื่องด่วนแล้วนะ",
+    "romanization": "Chan/Phom tham khrueang mai wa pen rueang duan laeo na."
+  },
+  "26": {
+    "text": "ช่วยส่งไฟล์นั้นใหม่อีกครั้งได้ไหมคะ/ครับ",
+    "romanization": "Chuai song fai nan mai ik khrang dai mai kha/khrap?"
+  },
+  "27": {
+    "text": "กระทู้นี้ยาวมากเลย เดี๋ยวฉัน/ผมสรุปให้ฟังนะ",
+    "romanization": "Krathu ni yao mak loei diao chan/phom sarup hai fang na."
+  },
+  "28": {
+    "text": "ช่วยใส่หัวข้ออีเมลด้วยนะ จะได้หาเจอง่ายๆ",
+    "romanization": "Chuai sai hua kho email duai na cha dai ha choe ngai ngai."
+  },
+  "29": {
+    "text": "เขาเคลียร์อีเมลในกล่องขาเข้าจนหมดเกลี้ยงช่วงวันหยุด",
+    "romanization": "Khao khlia email nai klong kha khao chon mot kliang chuang wan yut."
+  },
+  "30": {
+    "text": "รบกวนตอบกลับภายในวันศุกร์นะคะ/ครับ",
+    "romanization": "Rop kuan top klap phai nai wan suk na kha/khrap."
+  },
+  "31": {
+    "text": "เดี๋ยวเสร็จแล้วจะส่งข้อความสั้นๆ ไปบอกนะ",
+    "romanization": "Diao set laeo cha song kho khwam san san pai bok na."
+  },
+  "32": {
+    "text": "ข้อความตอบกลับอัตโนมัติบอกว่าเขากำลังเดินทาง",
+    "romanization": "Kho khwam top klap atto nomat bok wa khao kamlang doen thang."
+  },
+  "33": {
+    "text": "เธอเผลอ CC ผิดคนไป",
+    "romanization": "Thoe phloe CC phit khon pai."
+  },
+  "34": {
+    "text": "เตือนสามครั้งก็พอแล้วนะ",
+    "romanization": "Tuean sam khrang ko pho laeo na."
+  },
+  "35": {
+    "text": "ช่วยส่งต่อกระทู้นี้ให้ฉัน/ผมหน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai song to krathu ni hai chan/phom noi dai mai kha/khrap?"
+  },
+  "36": {
+    "text": "เรื่องนี้คุยในแชทเร็วกว่าส่งอีเมลนะ",
+    "romanization": "Rueang ni khui nai chat reo kwa song email na."
+  },
+  "37": {
+    "text": "ข้อความของคุณตกหล่นไปในความวุ่นวายเลย",
+    "romanization": "Kho khwam khong khun tok lon pai nai khwam wunwai loei."
+  },
+  "38": {
+    "text": "ลิงก์ในอีเมลของคุณเข้าไม่ได้",
+    "romanization": "Ling nai email khong khun khao mai dai."
+  },
+  "39": {
+    "text": "รบกวนยืนยันว่าได้รับแล้วนะคะ/ครับ",
+    "romanization": "Rop kuan yuenyan wa dai rap laeo na kha/khrap."
+  },
+  "40": {
+    "text": "กำหนดส่งคือวันศุกร์ตอนเที่ยงนะ",
+    "romanization": "Kamnot song khue wan suk ton thiang na."
+  },
+  "41": {
+    "text": "ฉัน/ผมจะมีฉบับร่างแรกให้ภายในวันพุธ",
+    "romanization": "Chan/Phom cha mi chabap rang raek hai phai nai wan phut."
+  },
+  "42": {
+    "text": "เราต้องส่งมอบงานอะไรสักอย่างภายในสัปดาห์นี้",
+    "romanization": "Rao tong song mop ngan arai sak yang phai nai sapda ni."
+  },
+  "43": {
+    "text": "โปรเจกต์เลื่อนไปหนึ่งวัน",
+    "romanization": "Project luean pai nueng wan."
+  },
+  "44": {
+    "text": "ช่วยตรวจทานอันนี้ให้หน่อยได้ไหมคะ/ครับ ก่อนที่ฉัน/ผมจะส่งไป",
+    "romanization": "Chuai truat than an ni hai noi dai mai kha/khrap kon thi chan/phom cha song pai."
+  },
+  "45": {
+    "text": "ฉัน/ผมต้องแจ้งความคืบหน้าให้คุณทราบนะ",
+    "romanization": "Chan/Phom tong chaeng khwam khuep na hai khun sap na."
+  },
+  "46": {
+    "text": "ตัวเลขไม่ตรงกับที่ฉัน/ผมส่งไปเมื่อสัปดาห์ที่แล้ว",
+    "romanization": "Tua lek mai trong kap thi chan/phom song pai muea sapda thi laeo."
+  },
+  "47": {
+    "text": "เราติดอยู่ที่การตัดสินใจของลูกค้าน่ะ",
+    "romanization": "Rao tit yu thi kan tatsin chai khong luk kha na."
+  },
+  "48": {
+    "text": "เขาทำงานต่อโดยไม่พักเที่ยงเพื่อทำให้เสร็จ",
+    "romanization": "Khao tham ngan to doi mai phak thiang phuea tham hai set."
+  },
+  "49": {
+    "text": "ในที่สุดรายงานก็เสร็จเรียบร้อยแล้ว",
+    "romanization": "Nai thi sut raingan ko set riap roi laeo."
+  },
+  "50": {
+    "text": "ฉัน/ผมจะเริ่มทันทีที่ได้รับการอนุมัติ",
+    "romanization": "Chan/Phom cha roem thanthi thi dai rap kan anumati."
+  },
+  "51": {
+    "text": "ช่วยอนุมัติเวอร์ชันนี้ให้หน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai anumati version ni hai noi dai mai kha/khrap?"
+  },
+  "52": {
+    "text": "เธอเจอคำผิดก่อนที่เราจะส่งงานไปนิดเดียวเอง",
+    "romanization": "Thoe choe kham phit kon thi rao cha song ngan pai nit diao eng."
+  },
+  "53": {
+    "text": "เราเลื่อนการเปิดตัวไปเป็นวันอังคารหน้า",
+    "romanization": "Rao luean kan poet tua pai pen wan angkhan na."
+  },
+  "54": {
+    "text": "ประมาณการคลาดเคลื่อนไปถึงสองเท่าเลย",
+    "romanization": "Praman kan khlat khluean pai thueng song thao loei."
+  },
+  "55": {
+    "text": "เขาเคลียร์งานช่วงบ่ายเพื่อมาโฟกัสเรื่องนี้โดยเฉพาะ",
+    "romanization": "Khao khlia ngan chuang bai phuea ma focus rueang ni doi chaphaw."
+  },
+  "56": {
+    "text": "สัญญาถูกเซ็นกลับมาแล้ว",
+    "romanization": "Sanya thuk sen klap ma laeo."
+  },
+  "57": {
+    "text": "ถือว่าเสร็จแล้วนะ ไปเรื่องอื่นกันต่อ",
+    "romanization": "Thue wa set laeo na pai rueang uen kan to."
+  },
+  "58": {
+    "text": "เวอร์ชันแรกอาจจะยังไม่สมบูรณ์ แต่ก็ใช้งานได้นะ",
+    "romanization": "Version raek at cha yang mai sombun tae ko chai ngan dai na."
+  },
+  "59": {
+    "text": "ครั้งนี้เขาทำงานเสร็จเร็วกว่ากำหนดเป็นครั้งแรกเลย",
+    "romanization": "Khrang ni khao tham ngan set reo kwa kamnot pen khrang raek loei."
+  },
+  "60": {
+    "text": "ยินดีต้อนรับเข้าสู่ทีมนะ",
+    "romanization": "Yindi tonrap khao su thim na."
+  },
+  "61": {
+    "text": "เดี๋ยวฉัน/ผมจะแนะนำให้รู้จักคนอื่นๆ นะ",
+    "romanization": "Diao chan/phom cha naenam hai ruchak khon uen uen na."
+  },
+  "62": {
+    "text": "เธอเพิ่งกลับมาจากลาพักร้อน",
+    "romanization": "Thoe phoeng klap ma chak la phak ron."
+  },
+  "63": {
+    "text": "เรื่องนี้ต้องถามเขาเลย",
+    "romanization": "Rueang ni tong tham khao loei."
+  },
+  "64": {
+    "text": "เราใช้โต๊ะทำงานร่วมกันในวันอังคาร",
+    "romanization": "Rao chai to tham ngan ruam kan nai wan angkhan."
+  },
+  "65": {
+    "text": "ใครรู้เรื่องการตั้งราคามากที่สุดคะ/ครับ",
+    "romanization": "Khrai ru rueang kan tang rakha mak thi sut kha/khrap?"
+  },
+  "66": {
+    "text": "เขาชอบซื้อกาแฟมาฝากทีมเสมอเลย",
+    "romanization": "Khao chop sue ka fae ma fak thim samoe loei."
+  },
+  "67": {
+    "text": "พนักงานใหม่เรียนรู้เร็วมาก",
+    "romanization": "Phanak ngan mai rian ru reo mak."
+  },
+  "68": {
+    "text": "เธอทำงานใกล้ชิดกับฝ่ายการตลาด",
+    "romanization": "Thoe tham ngan klai chit kap fai kan talat."
+  },
+  "69": {
+    "text": "เขาอยู่ที่นี่นานกว่าใครเพื่อนเลย",
+    "romanization": "Khao yu thi ni nan kwa khrai phuean loei."
+  },
+  "70": {
+    "text": "พวกเขาแบ่งงานกันคนละครึ่งเป๊ะเลย",
+    "romanization": "Phuak khao baeng ngan kan khon la khrueng pe loei."
+  },
+  "71": {
+    "text": "เราไปกินข้าวเที่ยงแล้วก็ร่างไอเดียคร่าวๆ กัน",
+    "romanization": "Rao pai kin khao thiang laeo ko rang idea khrao khrao kan."
+  },
+  "72": {
+    "text": "เขาทำงานแทนฉัน/ผมตอนที่ฉัน/ผมป่วย",
+    "romanization": "Khao tham ngan thaen chan/phom ton thi chan/phom puai."
+  },
+  "73": {
+    "text": "ทีมมารวมตัวกันรอบๆ แล็ปท็อป",
+    "romanization": "Thim ma ruam tua kan rop rop laptop."
+  },
+  "74": {
+    "text": "เธอจำวันเกิดของทุกคนได้หมดเลย",
+    "romanization": "Thoe cham wan koet khong thuk khon dai mot loei."
+  },
+  "75": {
+    "text": "พรุ่งนี้ฉัน/ผมจะเข้าร่วมแบบรีโมทนะ",
+    "romanization": "Phrung ni chan/phom cha khao ruam baep remote na."
+  },
+  "76": {
+    "text": "วันศุกร์ออฟฟิศจะค่อนข้างว่าง",
+    "romanization": "Wan suk office cha khon khang wang."
+  },
+  "77": {
+    "text": "อินเทอร์เน็ตของฉัน/ผมวันนี้ไม่ค่อยเสถียรเลย",
+    "romanization": "Internet khong chan/phom wan ni mai khoi sathian loei."
+  },
+  "78": {
+    "text": "เขาทำงานจากต่างเมือง",
+    "romanization": "Khao tham ngan chak tang mueang."
+  },
+  "79": {
+    "text": "ทีมจะมาประชุมเจอหน้ากันเดือนละครั้ง",
+    "romanization": "Thim cha ma prachum choe na kan duean la khrang."
+  },
+  "80": {
+    "text": "เธอจัดมุมห้องนอนให้เป็นโต๊ะทำงาน",
+    "romanization": "Thoe chat mum hong non hai pen to tham ngan."
+  },
+  "81": {
+    "text": "ในที่สุดโฮมออฟฟิศก็เป็นระเบียบเรียบร้อยแล้ว",
+    "romanization": "Nai thi sut home office ko pen rabiap riap roi laeo."
+  },
+  "82": {
+    "text": "ช่วยเปิดกล้องหน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai poet klong noi dai mai kha/khrap?"
+  },
+  "83": {
+    "text": "เสียงรบกวนข้างหลังไม่เป็นไร ไม่ต้องกังวลนะ",
+    "romanization": "Siang rop kuan khang lang mai pen rai mai tong kangwon na."
+  },
+  "84": {
+    "text": "เราจะเช็กอินกันสั้นๆ ทุกเช้า",
+    "romanization": "Rao cha check-in kan san san thuk chao."
+  },
+  "85": {
+    "text": "เครื่องปริ้นเตอร์กระดาษติดอีกแล้ว",
+    "romanization": "Khrueang printer kradat tit ik laeo."
+  },
+  "86": {
+    "text": "เครื่องชงกาแฟเมล็ดกาแฟหมด",
+    "romanization": "Khrueang chong ka fae malet ka fae mot."
+  },
+  "87": {
+    "text": "ช่วยไปเปิดประตูให้หน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai pai poet pratu hai noi dai mai kha/khrap?"
+  },
+  "88": {
+    "text": "หน้าต่างห้องประชุมเปิดไม่ได้",
+    "romanization": "Na tang hong prachum poet mai dai."
+  },
+  "89": {
+    "text": "มีคนทิ้งอาหารกลางวันไว้ในตู้เย็นเป็นอาทิตย์เลย",
+    "romanization": "Mi khon thing ahan klang wan wai nai tu yen pen athit loei."
+  },
+  "90": {
+    "text": "ห้องครัวจะเงียบๆ ตอนบ่ายสามโมง",
+    "romanization": "Hong khrua cha ngiap ngiap ton bai sam mong."
+  },
+  "91": {
+    "text": "เขาเดินขึ้นบันไดเพื่อพักสมอง",
+    "romanization": "Khao doen khuen bandai phuea phak samong."
+  },
+  "92": {
+    "text": "ต้นไม้ที่วางอยู่ริมหน้าต่างดูท่าจะโตดีนะ",
+    "romanization": "Ton mai thi wang yu rim na tang du tha cha to di na."
+  },
+  "93": {
+    "text": "ช่วยเซ็นรับพัสดุที่เคาน์เตอร์ด้านหน้าให้หน่อยได้ไหมคะ/ครับ",
+    "romanization": "Chuai sen rap phatsadu thi counter dan na hai noi dai mai kha/khrap?"
+  },
+  "94": {
+    "text": "เครื่องอ่านบัตรมีปัญหาอีกแล้ว",
+    "romanization": "Khrueang an bat mi panha ik laeo."
+  },
+  "95": {
+    "text": "สิ้นวันนี่มาถึงเร็วกว่าที่คิดเสมอเลย",
+    "romanization": "Sin wan ni ma thueng reo kwa thi khit samoe loei."
+  },
+  "96": {
+    "text": "เขาทำงานได้ดีที่สุดตอนที่เปิดหน้าต่างโปรแกรมแค่ทีละอัน",
+    "romanization": "Khao tham ngan dai di thi sut ton thi poet na tang program khae thi la an."
+  },
+  "97": {
+    "text": "เธอจุดเทียนเพื่อเป็นสัญญาณว่าวันทำงานได้เริ่มต้นขึ้นแล้ว",
+    "romanization": "Thoe chut thian phuea pen sanyan wa wan tham ngan dai roem ton khuen laeo."
+  },
+  "98": {
+    "text": "เดินเล่นสั้นๆ หลังอาหารกลางวันช่วยให้ฉัน/ผมคิดอะไรออก",
+    "romanization": "Doen len san san lang ahan klang wan chuai hai chan/phom khit arai ok."
+  },
+  "99": {
+    "text": "วันจันทร์บางวันก็เริ่มต้นด้วยชัยชนะเล็กๆ น้อยๆ",
+    "romanization": "Wan chan bang wan ko roem ton duai chaiชนะ lek lek noi noi."
+  }
+}

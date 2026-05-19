@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "洗手間喺邊度呀？",
+    "romanization": "sai2 sau2 gaan1 hai2 bin1 dou6 aa3"
+  },
+  "1": {
+    "text": "呢個幾多錢呀？",
+    "romanization": "ni1 go3 gei2 do1 cin2 aa3"
+  },
+  "2": {
+    "text": "唔好意思，你識唔識講英文呀？",
+    "romanization": "m4 hou2 ji3 si1 nei5 sik1 m4 sik1 gong2 jing1 man2 aa3"
+  },
+  "3": {
+    "text": "我仲未講得好叻。",
+    "romanization": "ngo5 zung6 mei6 gong2 dak1 hou2 lek1"
+  },
+  "4": {
+    "text": "可唔可以講慢啲呀？",
+    "romanization": "ho2 m4 ho2 ji5 gong2 maan6 di1 aa3"
+  },
+  "5": {
+    "text": "我可以喺邊度買飛呀？",
+    "romanization": "ngo5 ho2 ji5 hai2 bin1 dou6 maai5 fei1 aa3"
+  },
+  "6": {
+    "text": "呢個位有人坐未呀？",
+    "romanization": "ni1 go3 wai2 jau5 jan4 co5 mei6 aa3"
+  },
+  "7": {
+    "text": "我想要一間單人房，住兩晚。",
+    "romanization": "ngo5 soeng2 jiu3 jat1 gaan1 daan1 jan4 fong2 zyu6 loeng5 maan5"
+  },
+  "8": {
+    "text": "有冇海景房呀？",
+    "romanization": "jau5 mou5 hoi2 ging2 fong2 aa3"
+  },
+  "9": {
+    "text": "早餐幾點供應呀？",
+    "romanization": "zou2 caan1 gei2 dim2 gung1 jing3 aa3"
+  },
+  "10": {
+    "text": "唔該，可以俾我睇吓餐牌嗎？",
+    "romanization": "m4 goi1 ho2 ji5 bei2 ngo5 tai2 haa5 caan1 paai2 maa3"
+  },
+  "11": {
+    "text": "我係素食者。",
+    "romanization": "ngo5 hai6 sou3 sik6 ze2"
+  },
+  "12": {
+    "text": "我對花生敏感。",
+    "romanization": "ngo5 deoi3 faa1 sang1 man5 gam2"
+  },
+  "13": {
+    "text": "水喉水飲唔飲得㗎？",
+    "romanization": "seoi2 hau4 seoi2 jam2 m4 jam2 dak1 gaa3"
+  },
+  "14": {
+    "text": "唔該，可以埋單嗎？",
+    "romanization": "m4 goi1 ho2 ji5 maai4 daan1 maa3"
+  },
+  "15": {
+    "text": "包咗服務費未呀？",
+    "romanization": "baau1 zo2 fuk6 mou6 fai3 mei6 aa3"
+  },
+  "16": {
+    "text": "可唔可以碌卡呀？",
+    "romanization": "ho2 m4 ho2 ji5 luk1 kaat1 aa3"
+  },
+  "17": {
+    "text": "收唔收現金呀？",
+    "romanization": "sau1 m4 sau1 jin6 gam1 aa3"
+  },
+  "18": {
+    "text": "可唔可以俾張收據我呀？",
+    "romanization": "ho2 m4 ho2 ji5 bei2 zoeng1 sau1 geoi3 ngo5 aa3"
+  },
+  "19": {
+    "text": "唔使找喇。",
+    "romanization": "m4 sai2 zaau2 laa3"
+  },
+  "20": {
+    "text": "架火車喺邊個月台開呀？",
+    "romanization": "gaa3 fo2 ce1 hai2 bin1 go3 jyut6 toi4 hoi1 aa3"
+  },
+  "21": {
+    "text": "班機延誤咗未呀？",
+    "romanization": "baan1 gei1 jin4 ng6 zo2 mei6 aa3"
+  },
+  "22": {
+    "text": "我趕唔切轉機。",
+    "romanization": "ngo5 gon2 m4 cit3 zyun2 gei1"
+  },
+  "23": {
+    "text": "行李認領處喺邊度呀？",
+    "romanization": "hang4 lei5 jing6 ling5 cyu3 hai2 bin1 dou6 aa3"
+  },
+  "24": {
+    "text": "我個行李篋冇到。",
+    "romanization": "ngo5 go3 hang4 lei5 gip1 mou5 dou3"
+  },
+  "25": {
+    "text": "可唔可以幫我叫架的士呀？",
+    "romanization": "ho2 m4 ho2 ji5 bong1 ngo5 giu3 gaa3 dik1 si2 aa3"
+  },
+  "26": {
+    "text": "車程要幾耐呀？",
+    "romanization": "ce1 cing4 jiu3 gei2 noi6 aa3"
+  },
+  "27": {
+    "text": "唔該車我去呢個地址。",
+    "romanization": "m4 goi1 ce1 ngo5 heoi3 ni1 go3 dei6 zi2"
+  },
+  "28": {
+    "text": "可唔可以喺街角停低呀？",
+    "romanization": "ho2 m4 ho2 ji5 hai2 gaai1 gok3 ting4 dai1 aa3"
+  },
+  "29": {
+    "text": "呢附近有冇地鐵站呀？",
+    "romanization": "ni1 fu6 gan6 jau5 mou5 dei6 tit3 zaam6 aa3"
+  },
+  "30": {
+    "text": "我睇吓先，唔該。",
+    "romanization": "ngo5 tai2 haa5 sin1 m4 goi1"
+  },
+  "31": {
+    "text": "呢款有冇細一個碼呀？",
+    "romanization": "ni1 fun2 jau5 mou5 sai3 jat1 go3 maa5 aa3"
+  },
+  "32": {
+    "text": "我可唔可以試身呀？",
+    "romanization": "ngo5 ho2 m4 ho2 ji5 si3 san1 aa3"
+  },
+  "33": {
+    "text": "試身室喺邊度呀？",
+    "romanization": "si3 san1 sat1 hai2 bin1 dou6 aa3"
+  },
+  "34": {
+    "text": "呢件做緊特價嗎？",
+    "romanization": "ni1 gin6 zou6 gan2 dak6 gaa3 maa3"
+  },
+  "35": {
+    "text": "如果畀現金，有冇得平啲呀？",
+    "romanization": "jyu4 gwo2 bei2 jin6 gam1 jau5 mou5 dak1 peng4 di1 aa3"
+  },
+  "36": {
+    "text": "呢個係手工做定工廠做㗎？",
+    "romanization": "ni1 go3 hai6 sau2 gung1 zou6 ding6 gung1 cong2 zou6 gaa3"
+  },
+  "37": {
+    "text": "我要呢個。",
+    "romanization": "ngo5 jiu3 ni1 go3"
+  },
+  "38": {
+    "text": "可唔可以幫我包成禮物呀？",
+    "romanization": "ho2 m4 ho2 ji5 bong1 ngo5 baau1 sing4 lai5 mat6 aa3"
+  },
+  "39": {
+    "text": "保養期有幾耐呀？",
+    "romanization": "bou2 joeng5 kei4 jau5 gei2 noi6 aa3"
+  },
+  "40": {
+    "text": "我需要睇醫生。",
+    "romanization": "ngo5 seoi1 jiu3 tai2 ji1 sang1"
+  },
+  "41": {
+    "text": "我頭痛。",
+    "romanization": "ngo5 tau4 tung3"
+  },
+  "42": {
+    "text": "最近嘅藥房喺邊度呀？",
+    "romanization": "zeoi3 gan6 ge3 joek6 fong2 hai2 bin1 dou6 aa3"
+  },
+  "43": {
+    "text": "呢隻藥使唔使醫生紙呀？",
+    "romanization": "ni1 zek3 joek6 sai2 m4 sai2 ji1 sang1 zi2 aa3"
+  },
+  "44": {
+    "text": "我唔見咗護照。",
+    "romanization": "ngo5 m4 gin3 zo2 wu6 ziu3"
+  },
+  "45": {
+    "text": "警署喺邊度呀？",
+    "romanization": "ging2 cyu5 hai2 bin1 dou6 aa3"
+  },
+  "46": {
+    "text": "唔該，可唔可以幫幫我？",
+    "romanization": "m4 goi1 ho2 m4 ho2 ji5 bong1 bong1 ngo5"
+  },
+  "47": {
+    "text": "我諗我將個袋留咗喺的士度。",
+    "romanization": "ngo5 nam2 ngo5 zoeng1 go3 doi2 lau4 zo2 hai2 dik1 si2 dou6"
+  },
+  "48": {
+    "text": "唔該叫白車。",
+    "romanization": "m4 goi1 giu3 baak6 ce1"
+  },
+  "49": {
+    "text": "附近有冇醫院呀？",
+    "romanization": "fu6 gan6 jau5 mou5 ji1 jyun2 aa3"
+  },
+  "50": {
+    "text": "可唔可以推介呢附近一間好食嘅餐廳呀？",
+    "romanization": "ho2 m4 ho2 ji5 teoi1 gaai3 ni1 fu6 gan6 jat1 gaan1 hou2 sik6 ge3 caan1 teng1 aa3"
+  },
+  "51": {
+    "text": "本地有咩特色菜呀？",
+    "romanization": "bun2 dei6 jau5 me1 dak6 sik1 coi3 aa3"
+  },
+  "52": {
+    "text": "我想試吓傳統啲嘅嘢。",
+    "romanization": "ngo5 soeng2 si3 haa5 cyun4 tung2 di1 ge3 je5"
+  },
+  "53": {
+    "text": "辣唔辣㗎？",
+    "romanization": "laat6 m4 laat6 gaa3"
+  },
+  "54": {
+    "text": "我哋可唔可以坐出面呀？",
+    "romanization": "ngo5 dei6 ho2 m4 ho2 ji5 co5 ceot1 min6 aa3"
+  },
+  "55": {
+    "text": "我哋唔趕時間。",
+    "romanization": "ngo5 dei6 m4 gon2 si4 gaan3"
+  },
+  "56": {
+    "text": "啲嘢好好食，多謝。",
+    "romanization": "di1 je5 hou2 hou2 sik6 do1 ze6"
+  },
+  "57": {
+    "text": "可唔可以俾我一杯走冰水呀？",
+    "romanization": "ho2 m4 ho2 ji5 bei2 ngo5 jat1 bui1 zau2 bing1 seoi2 aa3"
+  },
+  "58": {
+    "text": "呢道菜有冇海鮮㗎？",
+    "romanization": "ni1 dou6 coi3 jau5 mou5 hoi2 sin1 gaa3"
+  },
+  "59": {
+    "text": "呢個可唔可以拎走呀？",
+    "romanization": "ni1 go3 ho2 m4 ho2 ji5 ling1 zau2 aa3"
+  },
+  "60": {
+    "text": "營業時間係幾點到幾點呀？",
+    "romanization": "jing4 jip6 si4 gaan3 hai6 gei2 dim2 dou3 gei2 dim2 aa3"
+  },
+  "61": {
+    "text": "入面准唔准影相呀？",
+    "romanization": "jap6 min6 zeon2 m4 zeon2 jing2 soeng2 aa3"
+  },
+  "62": {
+    "text": "有冇英文導賞團呀？",
+    "romanization": "jau5 mou5 jing1 man2 dou6 soeng2 tyun4 aa3"
+  },
+  "63": {
+    "text": "博物館星期日係咪免費入場呀？",
+    "romanization": "bok3 mat6 gun2 sing1 kei4 jat6 hai6 mai6 min5 fai3 jap6 coeng4 aa3"
+  },
+  "64": {
+    "text": "我應該早幾多到呀？",
+    "romanization": "ngo5 jing1 goi1 zou2 gei2 do1 dou3 aa3"
+  },
+  "65": {
+    "text": "網上買飛會唔會平啲呀？",
+    "romanization": "mong5 soeng6 maai5 fei1 wui5 m4 wui5 peng4 di1 aa3"
+  },
+  "66": {
+    "text": "用呢啲飛可唔可以唔使排隊呀？",
+    "romanization": "jung6 ni1 di1 fei1 ho2 m4 ho2 ji5 m4 sai2 paai4 deoi2 aa3"
+  },
+  "67": {
+    "text": "嚟到呢度，有咩一定唔可以錯過呀？",
+    "romanization": "lei4 dou3 ni1 dou6 jau5 me1 jat1 ding6 m4 ho2 ji5 co3 gwo3 aa3"
+  },
+  "68": {
+    "text": "可唔可以幫我哋影張相呀？",
+    "romanization": "ho2 m4 ho2 ji5 bong1 ngo5 dei6 jing2 zoeng1 soeng2 aa3"
+  },
+  "69": {
+    "text": "夜晚喺附近行安唔安全呀？",
+    "romanization": "je6 maan5 hai2 fu6 gan6 haang4 on1 m4 on1 cyun4 aa3"
+  },
+  "70": {
+    "text": "我嚟度假㗎。",
+    "romanization": "ngo5 lei4 dou6 gaa3 gaa3"
+  },
+  "71": {
+    "text": "我嚟呢度公幹。",
+    "romanization": "ngo5 lei4 ni1 dou6 gung1 gon3"
+  },
+  "72": {
+    "text": "我會喺度留一個星期。",
+    "romanization": "ngo5 wui5 hai2 dou6 lau4 jat1 go3 sing1 kei4"
+  },
+  "73": {
+    "text": "我第一次嚟呢個國家。",
+    "romanization": "ngo5 dai6 jat1 ci3 lei4 ni1 go3 gwok3 gaa1"
+  },
+  "74": {
+    "text": "本地人喺呢附近通常去邊度食晏呀？",
+    "romanization": "bun2 dei6 jan4 hai2 ni1 fu6 gan6 tung1 soeng4 heoi3 bin1 dou6 sik6 aan3 aa3"
+  },
+  "75": {
+    "text": "你去過最靚嘅地方係邊度呀？",
+    "romanization": "nei5 heoi3 gwo3 zeoi3 leng3 ge3 dei6 fong1 hai6 bin1 dou6 aa3"
+  },
+  "76": {
+    "text": "班機好長途，不過個景值得嘅。",
+    "romanization": "baan1 gei1 hou2 coeng4 tou4 bat1 gwo3 go3 ging2 zik6 dak1 ge3"
+  },
+  "77": {
+    "text": "我想學幾個你哋語言嘅字。",
+    "romanization": "ngo5 soeng2 hok6 gei2 go3 nei5 dei6 jyu5 jin4 ge3 zi6"
+  },
+  "78": {
+    "text": "祝你有個愉快嘅晚上，多謝你幫咗我咁多。",
+    "romanization": "zuk1 nei5 jau5 go3 jyu4 faai3 ge3 maan5 soeng6 do1 ze6 nei5 bong1 zo2 ngo5 gam3 do1"
+  },
+  "79": {
+    "text": "我好想有一日再返嚟呢度。",
+    "romanization": "ngo5 hou2 soeng2 jau5 jat1 jat6 zoi3 faan1 lei4 ni1 dou6"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Maisha mazuri yana maana gani?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Tunajuaje tunachokijua?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Kuna tofauti kati ya kujua na kuamini?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Kwa nini kuna kitu badala ya kutokuwepo chochote?",
+    "romanization": null
+  },
+  "4": {
+    "text": "Ni nini kinachomfanya mtu abaki kuwa yeye yule baada ya muda?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Je, mashine inaweza kufikiri?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Je, ulimwengu tunaouona ndio ulimwengu halisi?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Tunawajibika kwa kiasi gani kwa watu ambao hatutawahi kukutana nao?",
+    "romanization": null
+  },
+  "8": {
+    "text": "Kwa nini ni vigumu sana kubadili mawazo?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Inamaanisha nini kwa watu wawili kukubaliana?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ukweli unavumbuliwa au unagunduliwa?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Kwa nini tunahisi wakati jinsi tunavyohisi?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Maana hutoka wapi?",
+    "romanization": null
+  },
+  "13": {
+    "text": "Uhiari ni nini hasa?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Furaha ni hisia au ni mazoezi?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Wakati mwingine jambo sahihi ni gumu kulitambua.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Nia njema hazihakikishi matokeo mazuri.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Maswali mengi ya kimaadili yanahusu kupima mambo mema yanayoshindana.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Uongo mdogo unaweza kusababisha uharibifu mkubwa.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Ukweli ni rahisi zaidi katika mazingira yenye upole.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Ukatili mara nyingi hujificha nyuma ya tabia ndogo ndogo.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Baadhi ya sheria ni nzuri kwa sababu zinatuepusha na ulazima wa kufikiri.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Wakati mwingine sheria zenyewe ndizo tatizo.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Ahadi ni kama dau dogo unaloliweka kwa nafsi yako ya baadaye.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Watu huhukumu matendo kwa matokeo na sheria kwa nia.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Unafiki ni rahisi kuuona kwa wengine.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Msamaha kwa kiasi fulani ni zawadi kwa yule anayesamehe.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Huruma ni kama misuli inayozidi kuimarika kadri inavyotumika.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Haki si sawa na kisasi.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Madaraka hujaribu tabia zaidi kuliko umaskini.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Kutofanya chochote pia ni chaguo.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Fadhila ngumu zaidi ni uvumilivu.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Wema mdogo mdogo hujikusanya.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Jamii inaweza kuhukumiwa kwa jinsi inavyowatendea walio dhaifu zaidi.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Ujasiri ni kutenda vizuri ukiwa na hofu.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Tunaweza kuwa na uhakika na kukosea kwa wakati mmoja.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Ushahidi ndio hubadili mawazo ya mtu makini.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Imani nyingi huja kwa vikundi, si moja baada ya nyingine.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Tunapenda kukumbuka nyakati tulizokuwa sahihi.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Shaka haifurahishi lakini ina manufaa.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Swali zuri ni gumu zaidi kuliko jibu la werevu.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Baadhi ya maswali hayana jibu moja sahihi.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Mifumo si sahihi lakini mingine ina manufaa.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Ramani si eneo halisi.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Majina huunda kile tunachokiona.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Kusoma polepole ni aina yake ya kufikiri.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Maoni thabiti, lakini yasiyoshikiliwa kwa ukali.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Watu wenye akili zaidi hubadili mawazo yao mara nyingi zaidi.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Kutokubaliana si sawa na kutoelewana.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Wakati mwingine pande zote mbili ziko sahihi kwa kiasi.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Ulimwengu ni mzee kuliko maelezo yoyote kuhusu huo.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Ufahamu ndio kitu kigeni zaidi tunachokijua.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Tunaona sehemu ndogo ya ulimwengu kuliko tunavyofikiri.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Kumbukumbu hujirekebisha kila tunapoitumia.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Watu wawili katika chumba kimoja wanaweza kupitia vyumba tofauti.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Akili hujenga ulimwengu inamoishi.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Baadhi ya uzoefu hauwezi kuelezwa kwa maneno.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Muziki huonekana kuzungumza moja kwa moja bila tafsiri.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Maumivu ni mwalimu, hata kama hayana somo.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Uzuri wakati mwingine ni dalili.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Uchovu mara nyingi huficha swali linalohitaji kuulizwa.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Upweke huweka wazi mambo ambayo umati huyatia ukungu.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Kulala si bure.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Kifo huupa wakati umbo.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Sasa ndio mahali pekee ambapo chochote hutokea.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Socrates alisema maisha yasiyochunguzwa hayafai kuishi.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Wastoiki walijaribu kutamani tu kile walichokuwa nacho.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Confucius alifundisha umuhimu wa mila ndogo ndogo.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Buddha alionyesha chanzo cha mateso.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aristotle alifikiri fadhila ni tabia, si hisia.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Plato alishuku kuwa vitu tunavyoviona ni kama vivuli.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Lao Tzu alisifu njia ya maji.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Epicurus alitaka starehe za amani, si zile kuu.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Diogenes alifundisha kwa kudhihaki desturi.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Tamaduni nyingi hukubaliana zaidi kuliko kutokubaliana.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kant alisema watendee watu kama malengo, si tu kama njia.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Hume aligundua kuwa akili pekee haitufanyi kujali.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Nietzsche aliandika kuwa kweli ngumu pia zinaweza kuwa zawadi.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Wittgenstein alisema mipaka ya lugha yetu ndiyo mipaka ya ulimwengu wetu.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Simone de Beauvoir alibishana kuwa tunakuwa sisi wenyewe kupitia chaguzi zetu.",
+    "romanization": null
+  },
+  "80": {
+    "text": "William James alisema imani huunda kile tunachoweza kufanya.",
+    "romanization": null
+  },
+  "81": {
+    "text": "John Rawls aliuliza ni sheria gani tungekubali kama hatungejua tutakuwa nani.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hannah Arendt alionya kuwa uovu unaweza kuwa wa kawaida.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Iris Murdoch alisema upendo ni kazi ngumu ya kuzingatia.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Wanafalsafa wengi wa kisasa hukopa kwa uhuru kutoka tamaduni nyingi.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Anza na kazi unayoweza kuifanya leo.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Sikiliza kana kwamba unaweza kuwa umekosea.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Jaribu kutamani kidogo kabla ya kupata zaidi.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Angalia unachofanya wakati hakuna anayekuona.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Kutembea ni falsafa ndogo.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Hoja ngumu zaidi kutoa ni ile unayojidai mwenyewe.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Shikilia maoni yako kama unavyoshikilia zana.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Chukua maneno ya wengine kwa maana yake bora.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Fanya mazoezi ya shukrani asubuhi za kawaida, si tu zile maalum.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Njia fupi zaidi wakati mwingine hupitia swali.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Kushangaa ni aina ya umakini.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Soma vitabu vya zamani angalau mara kwa mara.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Kutokubaliana kwa hekima na uhusiano utadumu.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Maisha mazuri ni jumla ya siku nyingi ndogo ndogo nzuri.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Hakuna neno la mwisho.",
+    "romanization": null
+  }
+}

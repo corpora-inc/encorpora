@@ -1,0 +1,10 @@
+{
+  "id": "phrase-arts-music-fundamentals",
+  "version": "0.1.0",
+  "name": "Music Fundamentals",
+  "description": "Instruments, notation, rhythm, practice, performance, listening. The phrases you hear in any music room.",
+  "category": "arts",
+  "topic": "Music",
+  "icon": "music",
+  "accent_color": "#a78bfa"
+}

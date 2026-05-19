@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Harga naik bila ramai orang mahukan sesuatu.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Bila bekalan bertambah, harga selalunya akan turun.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Diskaun membuatkan lebih ramai orang membeli.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Produk yang sama berharga berbeza di bandar-bandar lain.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Permintaan boleh berubah dalam sekelip mata.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Penjual menaikkan harga bila stok mula berkurangan.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Pembeli akan mencari-cari tawaran terbaik.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Kadang-kadang, harga yang tinggi menandakan kualiti.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Kadang-kadang, harga yang tinggi hanyalah helah pemasaran.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Penghantaran percuma mengubah perasaan orang tentang pembelian.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Harga jarang sekali adalah kos keseluruhan.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Masa juga adalah sejenis kos.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Beratur panjang adalah harga yang anda bayar bila harga terlalu murah.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Jualan membuatkan orang membeli barang yang tidak dirancang.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Orang lebih terkesan dengan kehilangan wang berbanding mendapatkannya.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Harga dalam dolar dan harga dalam mata wang tempatan anda terasa berbeza.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Perbelanjaan harian yang kecil boleh jadi banyak dalam setahun.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Jualan pertama hari itu lebih penting daripada yang terakhir.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Banyak pembelian kecil menyembunyikan satu tabiat besar.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Pilihan termurah kadang-kadang menjadi yang paling mahal akhirnya.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Wang hanyalah persetujuan yang kita semua kongsi.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Menabung adalah membayar diri anda di masa hadapan.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Bajet adalah rancangan, bukan hukuman.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Faedah kompaun adalah ganjaran kesabaran yang berlipat ganda.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Inflasi perlahan-lahan menghakis nilai wang tunai.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Pinjaman adalah meminjam dari diri anda di masa hadapan.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Faedah adalah sewa untuk wang yang dipinjam.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Dia menjejaki setiap perbelanjaan selama sebulan untuk melihat coraknya.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Dia menyimpan sejumlah tetap setiap hari gaji sebelum melakukan perkara lain.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Dana kecemasan menjadikan bencana kecil kurang menyakitkan.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Berbelanja sedikit kurang selalunya lebih mudah daripada mencari lebih banyak.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Kenaikan gaji boleh lesap begitu sahaja kerana perbelanjaan yang lebih besar.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Dia melunaskan pinjaman lebih awal dan berasa lebih lega.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Kebanyakan orang terlalu yakin dengan disiplin mereka tahun depan.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Kerisauan wang berkurangan bila anda ada rancangan.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Pasaran hanyalah tempat di mana pembeli dan penjual bertemu.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Kedai dalam talian adalah pasaran tanpa dinding.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Pengkhususan adalah sebab kebanyakan barang murah.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Orang berdagang untuk barang yang tidak mereka hasilkan sendiri.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Gaji mencerminkan apa yang dibayar kepada seseorang, bukan selalu nilai sebenar mereka.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Sesetengah pekerjaan bergaji tinggi kerana sedikit orang yang mahukannya.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Sesetengah pekerjaan bergaji tinggi kerana sedikit orang yang mampu melakukannya.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Pasaran tidak selalu menghargai kerja yang paling berguna.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Teknologi baharu boleh melenyapkan industri lama dengan cepat.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Orang sering berpindah ke tempat ada pekerjaan.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Perniagaan kecil membentuk sebahagian besar ekonomi.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Pekerja yang baik menjimatkan lebih daripada kos mereka.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Perundingan adalah sebahagian daripada setiap pekerjaan.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Pendapatan sampingan memberi anda pilihan.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Berhenti kerja kadang-kadang adalah langkah paling berkesan.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Orang bertindak balas terhadap insentif, walaupun yang kecil.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Percuma adalah perkataan ajaib.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Bulan pertama percuma mengubah banyak keputusan.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Langganan direka untuk dilupakan.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Nombor bulat terasa lebih besar daripada nilai sebenarnya.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Kos tenggelam tidak seharusnya mempengaruhi langkah seterusnya.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Yuran kecil mengubah kekerapan orang hadir.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Memberi tip mengubah kiraan kos hidangan.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Orang berkongsi bila perkongsian itu mudah.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Barisan memberitahu anda apa yang orang hargai hari ini.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Tawaran masa terhad sengaja mewujudkan rasa terdesak.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Program kesetiaan memberi ganjaran kepada perkara yang memang akan berlaku.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Pilihan lalai menentukan lebih banyak daripada yang disedari orang.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Ulasan mengalihkan permintaan lebih daripada iklan.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Dari mulut ke mulut masih lebih berkesan daripada kebanyakan pemasaran.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Ekonomi berkembang pada sesetengah tahun dan mengecut pada tahun yang lain.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Kemelesetan mengajar pelajaran yang dilupakan oleh ledakan ekonomi.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Pertumbuhan jangka panjang mengangkat semua orang, secara perlahan.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Peningkatan produktiviti tersembunyi dalam alatan dan tabiat.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Idea baharu adalah satu-satunya sumber pertumbuhan yang mampan.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Ledakan ekonomi boleh menyembunyikan banyak keputusan buruk.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Kejatuhan menghukum mereka yang paling banyak berhutang dahulu.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Wang murah cenderung mencari kegunaan berisiko.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Gelembung sukar dilihat dari dalamnya.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Pemulihan tidak sekata di seluruh industri dan wilayah.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Negara berdagang kerana kedua-dua pihak mendapat keuntungan.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Tarif menaikkan harga untuk pembeli di dalam negara.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Kadar pertukaran mengubah kos import.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Mata wang yang lemah membantu pengeksport dan merugikan pengimport.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Pelaburan asing boleh membina atau memberi tekanan kepada ekonomi.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Kiriman wang menyokong banyak keluarga merentasi sempadan.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Sekatan lebih menjejaskan rakyat biasa daripada pemimpin.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Rantaian bekalan global terputus di tempat yang tidak dijangka.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Kekurangan di satu negara boleh menggerakkan harga di mana-mana.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Sesetengah industri berkumpul di satu wilayah atas sebab tertentu.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Ketaksamaan berkembang secara senyap bila tiada siapa yang memerhati.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Cukai adalah harga untuk barangan awam.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Barangan awam adalah yang tidak dapat kita beli secara individu dengan mudah.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Eksternaliti adalah kos yang tiada siapa minta untuk bayar.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Kegagalan pasaran yang kecil boleh mempunyai kesan yang besar.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Pasaran bebas memerlukan peraturan untuk kekal bebas.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Maklumat tidak dikongsi secara sama rata antara pembeli dan penjual.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Kepercayaan mengurangkan kos setiap transaksi.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Reputasi adalah aset yang kurang dihargai.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Harga perhatian telah meningkat.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Pasaran paling penting selalunya tiada harga.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Masa dan penjagaan adalah antara sumber yang paling sukar didapati.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Keputusan ekonomi juga adalah keputusan moral.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Ekonomi hanyalah orang ramai melakukan sesuatu untuk satu sama lain.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Bajet yang ringkas mengubah lebih banyak daripada teori yang kompleks.",
+    "romanization": null
+  }
+}

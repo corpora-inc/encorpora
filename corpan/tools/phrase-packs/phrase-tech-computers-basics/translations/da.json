@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Gem filen, før du lukker den.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Kan du sende mig det dokument?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Mappen ligger på skrivebordet.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Jeg kan ikke finde den fil, jeg gemte i går.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Søg på hele drevet efter navnet.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Han omdøbte filen ved en fejl.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Downloadet endte i den forkerte mappe.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Filen er for stor til at maile.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Kan du komprimere den til en zip-fil?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Skymappen synkroniserer automatisk.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Hun organiserer alt i datomærkede undermapper.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Papirkurven er mere fyldt end resten af drevet.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Han tager backup af alle projekter.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Den delte mappe blev opdateret for alle.",
+    "romanization": null
+  },
+  "14": {
+    "text": "En fil, du ikke kan finde, eksisterer lige så godt ikke.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Jeg har glemt mit kodeord.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Nulstil kodeordet fra loginskærmen.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Brug ikke det samme kodeord til alt.",
+    "romanization": null
+  },
+  "18": {
+    "text": "En kodeordshåndtering husker dem for dig.",
+    "romanization": null
+  },
+  "19": {
+    "text": "To-faktor tilføjer et trin, men en masse sikkerhed.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Tjek din e-mail for en bekræftelseskode.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Linket udløb efter femten minutter.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Hun oprettede en ny konto til projektet.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Han logger ud på delte computere.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Brugernavnet er allerede optaget.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Gem gendannelseskoden et sikkert sted.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Klik ikke på mistænkelige login-links.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Opdater gendannelses-e-mailen, når du flytter.",
+    "romanization": null
+  },
+  "28": {
+    "text": "En adgangsnøgle er hurtigere end et kodeord.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Din telefon er også en konto nu om dage.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Har du prøvet at genstarte den?",
+    "romanization": null
+  },
+  "31": {
+    "text": "Kablet sad løst.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Skærmen frøs i et minut.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Luk alle fanerne, og prøv igen.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Tjek, at du er forbundet til det rigtige netværk.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Tastaturet reagerer ikke.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Blæseren larmer mere end normalt.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Ryd cachen, og genindlæs.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Prøv en anden browser.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Opdateringen rettede fejlen.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Batteriet løb tør i løbet af natten.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Webkameraet holdt op med at virke efter opdateringen.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Nogle gange er den simpleste løsning at vente et minut.",
+    "romanization": null
+  },
+  "43": {
+    "text": "En genstart løser flere problemer, end folk vil indrømme.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Han forklarede fejlmeddelelsen i almindelige ord.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Siden er evigheder om at indlæse.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Siden er nede for alle.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Bogmærk den, så du kan finde den igen.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Linket i e-mailen åbner i en ny fane.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Videoen bliver ved med at buffere.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Signalet er svagt i baglokalet.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Kan du dele linket med mig?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Hjemmesiden ser anderledes ud på mobil.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Pop-up'en bad mig om at acceptere cookies.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Reklamen er svær at lukke.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Han bruger en annonceblokering på alle maskiner.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Søgningen gav for mange resultater.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Afgræns søgningen med anførselstegn.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Artiklen er kommet bag en betalingsmur.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Siden er fra en hjemmeside, jeg stoler på.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Appen blev opdateret i løbet af natten.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Den nye version ser helt anderledes ud.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Hun fjernede de apps, hun aldrig åbnede.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Notifikationsindstillingerne er gemt dybt i menuen.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Slå lyden fra under mødet.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Tastaturgenvejen er hurtigere end menuen.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Mørk tilstand er nemmere for øjnene om natten.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Slå automatisk afspilning fra.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Notifikationsikonet forsvinder aldrig.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Han indstillede den bærbare computer, som han bedst kan lide den.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Åbn ikke vedhæftede filer fra ukendte afsendere.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Linket i den besked ser mistænkeligt ud.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Tjek afsenderens fulde adresse.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Den gratis Wi-Fi i lufthavnen er ikke privat.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Dæk kameraet til, når det ikke er i brug.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Lås skærmen, når du går væk.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Vær forsigtig med information, du ikke kan trække tilbage.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Læs, hvad du accepterer.",
+    "romanization": null
+  },
+  "78": {
+    "text": "De fleste datalæk kommer fra genbrugte kodeord.",
+    "romanization": null
+  },
+  "79": {
+    "text": "De simpleste svindelnumre virker stadig, fordi de er simple.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Den bærbare computer er langsommere siden den sidste opdatering.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Skærmen er revnet, men den virker stadig.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Den nye skærm ankom i morges.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Han satte tre kabler i, før han fandt det rigtige.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Batteriet holder ikke så længe, som det plejede.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Tastaturet har samlet krummer gennem årene.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Blæseren starter, når rummet bliver varmt.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Printeren er offline igen.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Hovedtelefonerne falder ud i den ene side.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Han renser skærmen med en blød klud.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Kan du tage et skærmbillede?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Filen blev sendt ved midnat.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Kalenderinvitationen kom igennem to gange.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Træk filen ind i vinduet.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Højreklik for at se flere muligheder.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Hold shift nede for at vælge mere end én.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Fortryd-knappen har reddet mig mange gange.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Udklipsholderen husker det sidste, du kopierede.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Autokorrektur er hjælpsom og lejlighedsvis pinlig.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Et ryddeligt skrivebord gør alt nemmere at finde.",
+    "romanization": null
+  }
+}

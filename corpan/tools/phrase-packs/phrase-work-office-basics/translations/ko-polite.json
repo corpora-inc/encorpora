@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "회의는 10분 후에 시작해요.",
+    "romanization": "Ho-uineun sipbun hue sijakaeyo."
+  },
+  "1": {
+    "text": "화면 공유 좀 해주실 수 있으세요?",
+    "romanization": "Hwamyeon gongyu jom haejusil su isseuseyo?"
+  },
+  "2": {
+    "text": "죄송해요, 제가 음소거 상태였어요.",
+    "romanization": "Joesonghaeyo, jega eumsoegeo sangtaeyeosseoyo."
+  },
+  "3": {
+    "text": "시간이 초과되고 있어요.",
+    "romanization": "Sigani chogwadoego isseoyo."
+  },
+  "4": {
+    "text": "그건 다음 회의에서 이야기해요.",
+    "romanization": "Geugeon daeum hoeuieseo iyagihaeyo."
+  },
+  "5": {
+    "text": "제가 회의록을 작성할게요.",
+    "romanization": "Jega hoeuireogeul jakseonghalgeyo."
+  },
+  "6": {
+    "text": "한 분씩 돌아가면서 말씀해주실 수 있을까요?",
+    "romanization": "Han bunssik doragamyeonseo malsseumhaejusil su isseulkkayo?"
+  },
+  "7": {
+    "text": "안건은 캘린더 초대장에 있어요.",
+    "romanization": "Angeoneun kaellindeo chodaejange isseoyo."
+  },
+  "8": {
+    "text": "이번 회의는 누가 진행하나요?",
+    "romanization": "Ibeon hoeuineun nuga jinhaenghanayo?"
+  },
+  "9": {
+    "text": "이거 녹화하고 있나요?",
+    "romanization": "Igeo nokhwahago innayo?"
+  },
+  "10": {
+    "text": "통화가 중간에 끊겼어요.",
+    "romanization": "Tonghwaga junggane kkeunkyeosseoyo."
+  },
+  "11": {
+    "text": "이거 15분만 미룰 수 있을까요?",
+    "romanization": "Igeo sipobunman mirul su isseulkkayo?"
+  },
+  "12": {
+    "text": "그분은 늦게 오셨지만 조용히 들어오셨어요.",
+    "romanization": "Geubuneun neutge osyeotjiman joyonghi deureoosyeosseoyo."
+  },
+  "13": {
+    "text": "회의실이 또 중복 예약됐어요.",
+    "romanization": "Hoeuisiri tto jungbok yeyakdwaesseoyo."
+  },
+  "14": {
+    "text": "그건 잠시 미뤄두고 나중에 다시 이야기해요.",
+    "romanization": "Geugeon jamsi mirwodu-go najunge dasi iyagihaeyo."
+  },
+  "15": {
+    "text": "저는 3시에는 꼭 가봐야 해요.",
+    "romanization": "Sesienun kkok gabwaya haeyo."
+  },
+  "16": {
+    "text": "회의 끝나고 2분만 더 있어주실 수 있으세요?",
+    "romanization": "Hoeui kkeunnago ibunman deo isseojusil su isseuseyo?"
+  },
+  "17": {
+    "text": "화이트보드가 꽉 찼어요.",
+    "romanization": "Hwaiteubodeuga kkwak chasseoyo."
+  },
+  "18": {
+    "text": "실행 항목들을 요약해주실 수 있으세요?",
+    "romanization": "Sirhaeng hangmokdeureul yoyakhaejusil su isseuseyo?"
+  },
+  "19": {
+    "text": "서서 하는 회의는 생각보다 빨리 끝나요.",
+    "romanization": "Seoseo haneun hoeuineun saenggakboda ppalli kkeunnayo."
+  },
+  "20": {
+    "text": "오늘 업무 시간 내로 다시 연락드릴게요.",
+    "romanization": "Oneul eopmu sigan naero dasi yeollakdeurilgeyo."
+  },
+  "21": {
+    "text": "제가 보낸 마지막 이메일 받으셨어요?",
+    "romanization": "Jega bonaen majimak imeil badeusyeosseoyo?"
+  },
+  "22": {
+    "text": "답장이 늦어서 죄송해요.",
+    "romanization": "Dapjangi neujeoseo joesonghaeyo."
+  },
+  "23": {
+    "text": "이 건에 대해 사라님께도 알려드릴게요.",
+    "romanization": "I geone daehae Saranimkkedo allyeodeurilgeyo."
+  },
+  "24": {
+    "text": "첨부 파일이 안 왔어요.",
+    "romanization": "Cheombu pairi an wasseoyo."
+  },
+  "25": {
+    "text": "제가 긴급으로 표시했어요.",
+    "romanization": "Jega ginggeubeuro pyosihasseoyo."
+  },
+  "26": {
+    "text": "그 파일 다시 보내주실 수 있으세요?",
+    "romanization": "Geu pail dasi bonaejusil su isseuseyo?"
+  },
+  "27": {
+    "text": "대화가 길어졌네요, 제가 요약해 드릴게요.",
+    "romanization": "Daehwaga gireojyeonne-yo, jega yoyakhae deurilgeyo."
+  },
+  "28": {
+    "text": "제가 찾기 쉽게 제목을 써주세요.",
+    "romanization": "Jega chatgi swipge jemogeul sseojuseyo."
+  },
+  "29": {
+    "text": "그분은 주말 동안 받은 편지함을 비우셨어요.",
+    "romanization": "Geubuneun jumal dong-an badeun pyeonjihameul biusyeosseoyo."
+  },
+  "30": {
+    "text": "금요일까지 답장 부탁드립니다.",
+    "romanization": "Geumyoilkkaji dapjang butakdeurimnida."
+  },
+  "31": {
+    "text": "다 되면 짧게 메모 보내드릴게요.",
+    "romanization": "Da doemyeon jjalge memo bonaedeurilgeyo."
+  },
+  "32": {
+    "text": "자동 응답에 그분이 출장 중이라고 나와요.",
+    "romanization": "Jadong eungdabe geubuni chuljang jungirago nawayo."
+  },
+  "33": {
+    "text": "그분은 실수로 다른 사람을 참조했어요.",
+    "romanization": "Geubuneun silsu-ro dareun sarameul chamjohaesseoyo."
+  },
+  "34": {
+    "text": "세 번의 알림이면 충분해요.",
+    "romanization": "Se beonui allimimyeon chungbunhaeyo."
+  },
+  "35": {
+    "text": "그 대화 내용을 저에게 전달해주실 수 있으세요?",
+    "romanization": "Geu daehwa naeyongeul jeoege jeondalhaejusil su isseuseyo?"
+  },
+  "36": {
+    "text": "이 일은 이메일보다 채팅이 더 빨라요.",
+    "romanization": "I ireun imeilboda chaetingi deo ppallayo."
+  },
+  "37": {
+    "text": "너무 정신없어서 메시지를 놓쳤어요.",
+    "romanization": "Neomu jeongsin-eopseoseo mesijireul nochyeosseoyo."
+  },
+  "38": {
+    "text": "보내주신 이메일의 링크가 없는 페이지로 연결돼요.",
+    "romanization": "Bonaejusin imeilui ringkeuga eomneun peijiro yeongyeoldwaeyo."
+  },
+  "39": {
+    "text": "받으셨는지 확인 부탁드립니다.",
+    "romanization": "Badeusyeonneunji hwagin butakdeurimnida."
+  },
+  "40": {
+    "text": "마감은 금요일 정오예요.",
+    "romanization": "Magameun geumyoil jeongoyeyo."
+  },
+  "41": {
+    "text": "수요일까지 초안을 준비할게요.",
+    "romanization": "Suyeoilkkaji choaneul junbihalgeyo."
+  },
+  "42": {
+    "text": "이번 주에 뭔가 출시해야 해요.",
+    "romanization": "Ibeon jue mwonga chulsihaeya haeyo."
+  },
+  "43": {
+    "text": "프로젝트가 하루 지연됐어요.",
+    "romanization": "Peurojekteuga haru jiyeondwaesseoyo."
+  },
+  "44": {
+    "text": "제가 보내기 전에 이거 교정해주실 수 있으세요?",
+    "romanization": "Jega bonaegi jeone igeo gyojeonghaejusil su isseuseyo?"
+  },
+  "45": {
+    "text": "진행 상황을 업데이트해 드릴게요.",
+    "romanization": "Jinhaeng sanghwangeul eopdeiteuhae deurilgeyo."
+  },
+  "46": {
+    "text": "숫자가 지난주에 제가 보낸 것과 일치하지 않아요.",
+    "romanization": "Sutjaga jinanjue jega bonaen geotgwa ilchihaji anayo."
+  },
+  "47": {
+    "text": "고객사의 결정이 없어서 진행이 막혀있어요.",
+    "romanization": "Gogaeksaui gyeoljeongi eopseoseo jinhaengi makyeo-isseoyo."
+  },
+  "48": {
+    "text": "그분은 점심시간에도 일해서 그걸 끝냈어요.",
+    "romanization": "Geubuneun jeomsim sigannedo ilhaeseo geugeol kkeutnaesseoyo."
+  },
+  "49": {
+    "text": "드디어 보고서가 제 손을 떠났어요.",
+    "romanization": "Deudieo bogoseoga je soneul tteonasseoyo."
+  },
+  "50": {
+    "text": "승인받는 대로 바로 시작할게요.",
+    "romanization": "Seunginbatneun daero baro sijakhalgeyo."
+  },
+  "51": {
+    "text": "이 버전에 대해 최종 승인해주실 수 있으세요?",
+    "romanization": "I beojeone daehae choejong seunginhaejusil su isseuseyo?"
+  },
+  "52": {
+    "text": "그분은 출시 직전에 오타를 발견했어요.",
+    "romanization": "Geubuneun chulsi jikjeone otareul balgyeonhaesseoyo."
+  },
+  "53": {
+    "text": "출시를 다음 주 화요일로 미뤘어요.",
+    "romanization": "Chulsireul daeum ju hwayeollo mirwosseoyo."
+  },
+  "54": {
+    "text": "예상치가 두 배나 틀렸어요.",
+    "romanization": "Yesangchiga du baena teullyeosseoyo."
+  },
+  "55": {
+    "text": "그분은 집중하기 위해 오후 일정을 비웠어요.",
+    "romanization": "Geubuneun jipjunghagi wihae ohu iljeongeul biwosseoyo."
+  },
+  "56": {
+    "text": "계약서가 서명된 채로 돌아왔어요.",
+    "romanization": "Gyeyakseoga seomyeongdoen chaero dorawasseoyo."
+  },
+  "57": {
+    "text": "이걸로 마무리하고 다음으로 넘어가죠.",
+    "romanization": "Igeollo mamurihago daeumeuro neomeogajyo."
+  },
+  "58": {
+    "text": "첫 번째 버전은 거칠지만 작동은 잘 돼요.",
+    "romanization": "Cheot beonjjae beojeoneun geochiljiman jakdongeun jal dwaeyo."
+  },
+  "59": {
+    "text": "그분은 이번에는 한 번 일찍 제출했어요.",
+    "romanization": "Geubuneun ibeoneneun han beon iljjik jechulhaesseoyo."
+  },
+  "60": {
+    "text": "팀에 오신 것을 환영합니다.",
+    "romanization": "Time osin geoseul hwanyeonghamnida."
+  },
+  "61": {
+    "text": "다른 분들께 소개해 드릴게요.",
+    "romanization": "Dareun bundeulkke sogehae deurilgeyo."
+  },
+  "62": {
+    "text": "그분은 방금 휴가에서 돌아오셨어요.",
+    "romanization": "Geubuneun banggeum hyugaeseo doraosyeosseoyo."
+  },
+  "63": {
+    "text": "이 일에 대해서는 그분께 여쭤보면 돼요.",
+    "romanization": "I ire daehaeseoneun geubunkke yeojjeobomyeon dwaeyo."
+  },
+  "64": {
+    "text": "저희는 화요일마다 책상을 같이 써요.",
+    "romanization": "Jeohuineun hwayoilmada chaekssangeul gachi sseoyo."
+  },
+  "65": {
+    "text": "가격 책정에 대해 누가 가장 잘 아나요?",
+    "romanization": "Gagyek chaekjeonge daehae nuga gajang jal anayo?"
+  },
+  "66": {
+    "text": "그분은 항상 팀원들을 위해 커피를 가져와요.",
+    "romanization": "Geubuneun hangsang timwondeureul wihae keopireul gajyeowayo."
+  },
+  "67": {
+    "text": "신입 직원이 빨리 배워요.",
+    "romanization": "Sinip jikwoni ppalli baewoyo."
+  },
+  "68": {
+    "text": "그분은 마케팅팀과 긴밀하게 협력해요.",
+    "romanization": "Geubuneun maketingtimgwa ginmilhage hyeomnyeokhaeyo."
+  },
+  "69": {
+    "text": "그분은 여기에서 누구보다 오래 일했어요.",
+    "romanization": "Geubuneun yeogieseo nuguboda orae ilhaesseoyo."
+  },
+  "70": {
+    "text": "그들은 일을 정확히 반으로 나눴어요.",
+    "romanization": "Geudeureun ireul jeonghwakhi baneuro nanwosseoyo."
+  },
+  "71": {
+    "text": "점심 먹으면서 대략적으로 그려봤어요.",
+    "romanization": "Jeomsim meogeumyeonseo daeryakjeogeuro geuryeobwasseoyo."
+  },
+  "72": {
+    "text": "제가 아팠을 때 그분이 제 일을 대신해줬어요.",
+    "romanization": "Jega apasseul ttae geubuni je ireul daesinhaejwosseoyo."
+  },
+  "73": {
+    "text": "팀원들이 노트북 주변에 모였어요.",
+    "romanization": "Timwondeuri noteubuk jubyeone moyeosseoyo."
+  },
+  "74": {
+    "text": "그분은 모든 사람의 생일을 기억해요.",
+    "romanization": "Geubuneun modeun saramui saengireul gieokhaeyo."
+  },
+  "75": {
+    "text": "내일은 원격으로 참여할게요.",
+    "romanization": "Naeireun wongyeogeuro chamyeohalgeyo."
+  },
+  "76": {
+    "text": "금요일에는 사무실이 거의 비어있어요.",
+    "romanization": "Geumyoireneun samusiri geoui bieo-isseoyo."
+  },
+  "77": {
+    "text": "오늘 인터넷이 불안정해요.",
+    "romanization": "Oneul inteonesi buranjeonghaeyo."
+  },
+  "78": {
+    "text": "그분은 다른 도시에서 일해요.",
+    "romanization": "Geubuneun dareun dosieseo ilhaeyo."
+  },
+  "79": {
+    "text": "팀은 한 달에 한 번 직접 만나요.",
+    "romanization": "Timeun han dare han beon jikjeop mannayo."
+  },
+  "80": {
+    "text": "그분은 침실 한쪽을 책상으로 꾸몄어요.",
+    "romanization": "Geubuneun chimsil hantjogeul chaekssangeuro kkumyeosseoyo."
+  },
+  "81": {
+    "text": "재택근무 공간이 드디어 깔끔해졌어요.",
+    "romanization": "Jaetaekgeunmu gonggani deudieo kkalkkeumhaejyeosseoyo."
+  },
+  "82": {
+    "text": "카메라를 켜주실 수 있으세요?",
+    "romanization": "Kamerareul kyeojusil su isseuseyo?"
+  },
+  "83": {
+    "text": "배경 소음은 괜찮아요, 걱정 마세요.",
+    "romanization": "Baegyeong soeumeun gwaenchanayo, geokjeong maseyo."
+  },
+  "84": {
+    "text": "저희는 매일 아침 간단하게 업무 시작 확인을 해요.",
+    "romanization": "Jeohuineun maeil achim gandanhage eopmu sijak hwagineul haeyo."
+  },
+  "85": {
+    "text": "프린터가 또 걸렸어요.",
+    "romanization": "Peurinteoga tto geollyeosseoyo."
+  },
+  "86": {
+    "text": "커피 머신에 원두가 다 떨어졌어요.",
+    "romanization": "Keopi meosine wonduga da tteoreojyeosseoyo."
+  },
+  "87": {
+    "text": "문 좀 잡아주실 수 있으세요?",
+    "romanization": "Mun jom jabajusil su isseuseyo?"
+  },
+  "88": {
+    "text": "회의실 창문이 안 열려요.",
+    "romanization": "Hoeuisil changmuni an yeollyeoyo."
+  },
+  "89": {
+    "text": "누가 냉장고에 점심을 일주일 동안 넣어뒀어요.",
+    "romanization": "Nuga naengjanggoe jeomsimeul iljuil dong-an neoeodwosseoyo."
+  },
+  "90": {
+    "text": "3시에는 탕비실이 조용해요.",
+    "romanization": "Sesienun tangbisiri joyonghaeyo."
+  },
+  "91": {
+    "text": "그분은 머리를 식히려고 계단을 이용했어요.",
+    "romanization": "Geubuneun meorireul sikiryeogo gyedaneul iyonghaesseoyo."
+  },
+  "92": {
+    "text": "창가에 있는 식물이 잘 자라고 있어요.",
+    "romanization": "Changgaye inneun singmuri jal jarago isseoyo."
+  },
+  "93": {
+    "text": "프런트 데스크에서 소포에 서명해주실 수 있으세요?",
+    "romanization": "Peureonteu deseukeueseo sopoe seomyeonghaejusil su isseuseyo?"
+  },
+  "94": {
+    "text": "출입 카드 리더기가 말썽이에요.",
+    "romanization": "Chulip kadeu rideogiga malsseongieyo."
+  },
+  "95": {
+    "text": "하루가 항상 순식간에 지나가요.",
+    "romanization": "Haruga hangsang sunsikgane jinagayo."
+  },
+  "96": {
+    "text": "그분은 한 번에 창 하나만 열어두고 일할 때 가장 효율적이에요.",
+    "romanization": "Geubuneun han beone chang hanaman yeoreodugo ilhal ttae gajang hyoyuljeogieyo."
+  },
+  "97": {
+    "text": "그분은 하루를 시작할 때 촛불을 켜요.",
+    "romanization": "Geubuneun harureul sijakhal ttae chotbureul kyeoyo."
+  },
+  "98": {
+    "text": "점심 식사 후 짧은 산책이 생각 정리하는 데 도움이 돼요.",
+    "romanization": "Jeomsim siksa hu jjalbeun sanchaegi saenggak jeongnihaneun de doumi dwaeyo."
+  },
+  "99": {
+    "text": "어떤 월요일은 작은 성공으로 시작하기도 해요.",
+    "romanization": "Eotteon woryoeireun jageun seonggong-euro sijakhagido haeyo."
+  }
+}

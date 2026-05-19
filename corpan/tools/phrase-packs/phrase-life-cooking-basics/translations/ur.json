@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "پیاز کو باریک کاٹ لیں۔",
+    "romanization": "Pyaaz ko bareek kaat len."
+  },
+  "1": {
+    "text": "پاستا ڈالنے سے پہلے پانی ابال لیں۔",
+    "romanization": "Pasta daalne se pehle paani ubaal len."
+  },
+  "2": {
+    "text": "چٹنی کو ہلکی آنچ پر پکاتے ہوئے چمچ چلاتے رہیں۔",
+    "romanization": "Chatni ko halki aanch par pakate hue chamach chalate rahen."
+  },
+  "3": {
+    "text": "چکن میں نمک اور کالی مرچ ڈال کر مصالحہ لگائیں۔",
+    "romanization": "Chicken mein namak aur kaali mirch daal kar masala lagaayen."
+  },
+  "4": {
+    "text": "انڈوں کو پھینٹیں جب تک کہ وہ جھاگ دار نہ ہو جائیں۔",
+    "romanization": "Andon ko phenten jab tak ke woh jhaag daar na ho jaayen."
+  },
+  "5": {
+    "text": "آٹے کو آہستہ سے ملائیں۔",
+    "romanization": "Aate ko aahista se milaayen."
+  },
+  "6": {
+    "text": "گوشت کو چند منٹ کے لیے رکھ دیں۔",
+    "romanization": "Gosht ko chand minute ke liye rakh den."
+  },
+  "7": {
+    "text": "سبزیوں کو تیز آنچ پر بھونیں۔",
+    "romanization": "Sabziyon ko tez aanch par bhunen."
+  },
+  "8": {
+    "text": "روٹی کو ترچھا کاٹیں۔",
+    "romanization": "Roti ko tircha kaaten."
+  },
+  "9": {
+    "text": "لہسن کو ہلکا بھونیں لیکن جلنے نہ دیں۔",
+    "romanization": "Lehsan ko halka bhunen lekin jalne na den."
+  },
+  "10": {
+    "text": "سوپ کو دوبارہ ابال لیں۔",
+    "romanization": "Soup ko dobara ubaal len."
+  },
+  "11": {
+    "text": "یخنی کو ایک گھنٹے تک ہلکی آنچ پر پکائیں۔",
+    "romanization": "Yakhni ko ek ghante tak halki aanch par pakaayen."
+  },
+  "12": {
+    "text": "چکن کو رات بھر میرینیٹ کریں۔",
+    "romanization": "Chicken ko raat bhar marinate karen."
+  },
+  "13": {
+    "text": "پہلے مصالحوں کو خشک توے پر بھون لیں۔",
+    "romanization": "Pehle masalon ko khushk tawe par bhun len."
+  },
+  "14": {
+    "text": "وائن کو آدھا ہونے تک پکائیں۔",
+    "romanization": "Wine ko aadha hone tak pakaayen."
+  },
+  "15": {
+    "text": "بروکلی کو چار منٹ تک بھاپ میں پکائیں۔",
+    "romanization": "Broccoli ko chaar minute tak bhaap mein pakaayen."
+  },
+  "16": {
+    "text": "پیاز کو آہستہ آہستہ کیریملائز کریں۔",
+    "romanization": "Pyaaz ko aahista aahista caramelize karen."
+  },
+  "17": {
+    "text": "آٹے کو گوندھیں جب تک کہ وہ نرم نہ ہو جائے۔",
+    "romanization": "Aate ko goondhen jab tak ke woh naram na ho jaayen."
+  },
+  "18": {
+    "text": "یخنی کو باریک چھلنی سے چھان لیں۔",
+    "romanization": "Yakhni ko bareek chhalni se chhaan len."
+  },
+  "19": {
+    "text": "اوپر سے تھوڑا سا تازہ جائفل کدوکش کر دیں۔",
+    "romanization": "Upar se thoda sa taaza jaifal kaddu kash kar den."
+  },
+  "20": {
+    "text": "ہمارے پاس زیتون کا تیل ختم ہو گیا ہے۔",
+    "romanization": "Hamare paas zaitoon ka tel khatam ho gaya hai."
+  },
+  "21": {
+    "text": "لیموں اتنا خشک ہے کہ اس کا رس نہیں نکلے گا۔",
+    "romanization": "Lemoo itna khushk hai ke uska ras nahin niklega."
+  },
+  "22": {
+    "text": "کیا آپ نمک پکڑا سکتے ہیں؟",
+    "romanization": "Kya aap namak pakra sakte hain?"
+  },
+  "23": {
+    "text": "تازہ تلسی سے بہت فرق پڑتا ہے۔",
+    "romanization": "Taaza tulsi se bahut farq padta hai."
+  },
+  "24": {
+    "text": "میں لہسن گٹھی کے حساب سے خریدتا ہوں۔",
+    "romanization": "Main lehsan guthi ke hisaab se khareedta hoon."
+  },
+  "25": {
+    "text": "براؤن شوگر سے کوکیز زیادہ نرم بنتی ہیں۔",
+    "romanization": "Brown sugar se cookies zyada naram banti hain."
+  },
+  "26": {
+    "text": "انڈے ابھی بھی فریج میں ہیں۔",
+    "romanization": "Ande abhi bhi fridge mein hain."
+  },
+  "27": {
+    "text": "باغ میں دھنیا تقریباً تیار ہے۔",
+    "romanization": "Baagh mein dhaniya taqreeban tayyar hai."
+  },
+  "28": {
+    "text": "ہمیں سینڈوچ کے لیے ایک ٹماٹر چاہیے۔",
+    "romanization": "Humein sandwich ke liye ek tamatar chahiye."
+  },
+  "29": {
+    "text": "مکھن کاؤنٹر پر جلدی نرم ہو جاتا ہے۔",
+    "romanization": "Makkhan counter par jaldi naram ho jaata hai."
+  },
+  "30": {
+    "text": "وہ ہر چیز میں سمندری نمک استعمال کرتا ہے۔",
+    "romanization": "Woh har cheez mein samandari namak istemal karta hai."
+  },
+  "31": {
+    "text": "آٹے کا تھیلا تقریباً خالی ہے۔",
+    "romanization": "Aate ka thaila taqreeban khaali hai."
+  },
+  "32": {
+    "text": "کریم ہفتے کے آخر تک خراب ہو گئی۔",
+    "romanization": "Cream hafte ke aakhir tak kharab ho gayi."
+  },
+  "33": {
+    "text": "مجھے کھٹی کریم کے بجائے یونانی دہی زیادہ پسند ہے۔",
+    "romanization": "Mujhe khatti cream ke bajaye Yunani dahi zyada pasand hai."
+  },
+  "34": {
+    "text": "مشروم پکنے پر سکڑ جاتے ہیں۔",
+    "romanization": "Mushroom pakne par sikud jaate hain."
+  },
+  "35": {
+    "text": "ایک چٹکی لال مرچ ڈالیں۔",
+    "romanization": "Ek chutki laal mirch daalen."
+  },
+  "36": {
+    "text": "ترکیب میں دو کپ یخنی کی ضرورت ہے۔",
+    "romanization": "Tarkeeb mein do cup yakhni ki zaroorat hai."
+  },
+  "37": {
+    "text": "وہ ہمیشہ پینٹری میں اینچوویز رکھتی ہے۔",
+    "romanization": "Woh hamesha pantry mein anchovies rakhti hai."
+  },
+  "38": {
+    "text": "شملہ مرچ بھوننے پر میٹھی ہو جاتی ہے۔",
+    "romanization": "Shimla mirch bhunne par meethi ho jaati hai."
+  },
+  "39": {
+    "text": "منجمد مٹر ایک چھوٹا سا معجزہ ہیں۔",
+    "romanization": "Munjamid matar ek chhota sa mojza hain."
+  },
+  "40": {
+    "text": "باورچی خانے سے روٹی کی خوشبو آ رہی ہے۔",
+    "romanization": "Bawarchi khane se roti ki khushboo aa rahi hai."
+  },
+  "41": {
+    "text": "اس نے سارا چاول کاؤنٹر پر گرا دیا۔",
+    "romanization": "Usne saara chawal counter par gira diya."
+  },
+  "42": {
+    "text": "کڑاہی پہلے ہی بہت گرم ہے۔",
+    "romanization": "Karahi pehle hi bahut garam hai."
+  },
+  "43": {
+    "text": "میں نے پھر سے ٹوسٹ جلا دیا۔",
+    "romanization": "Maine phir se toast jala diya."
+  },
+  "44": {
+    "text": "اس نے چٹنی چکھ کر مزید نمک ڈالا۔",
+    "romanization": "Usne chatni chakh kar mazeed namak daala."
+  },
+  "45": {
+    "text": "رات کے کھانے کے دوران دھوئیں کا الارم بج گیا۔",
+    "romanization": "Raat ke khane ke dauran dhuen ka alarm baj gaya."
+  },
+  "46": {
+    "text": "وہ کام کرتے ہوئے ساتھ ساتھ صفائی کرتا ہے۔",
+    "romanization": "Woh kaam karte hue saath saath safai karta hai."
+  },
+  "47": {
+    "text": "جب اس نے فون اٹھایا تو ہانڈی ابل کر بہہ گئی۔",
+    "romanization": "Jab usne phone uthaya to haandi ubal kar beh gayi."
+  },
+  "48": {
+    "text": "فریج کو صاف کرنے کی ضرورت ہے۔",
+    "romanization": "Fridge ko saaf karne ki zaroorat hai."
+  },
+  "49": {
+    "text": "بچوں نے بغیر کہے میز لگا دی۔",
+    "romanization": "Bachchon ne baghair kahe mez laga di."
+  },
+  "50": {
+    "text": "پاستا کا پانی ابل رہا ہے۔",
+    "romanization": "Pasta ka paani ubal raha hai."
+  },
+  "51": {
+    "text": "اس نے کٹنگ بورڈ کے نیچے تولیہ رکھا تاکہ وہ پھسلے نہیں۔",
+    "romanization": "Usne cutting board ke neeche tauliya rakha taaki woh phisle nahin."
+  },
+  "52": {
+    "text": "وہ ہمیشہ ننگے پاؤں کھانا بناتا ہے۔",
+    "romanization": "Woh hamesha nange paon khana banata hai."
+  },
+  "53": {
+    "text": "جب میں نے اوون کھولا تو کیک بیٹھ گیا۔",
+    "romanization": "Jab maine oven khola to cake baith gaya."
+  },
+  "54": {
+    "text": "ہم اوون کو پہلے سے گرم کرنا بھول گئے۔",
+    "romanization": "Hum oven ko pehle se garam karna bhool gaye."
+  },
+  "55": {
+    "text": "کتے نے دروازے سے ہر حرکت پر نظر رکھی۔",
+    "romanization": "Kutte ne darwaze se har harkat par nazar rakhi."
+  },
+  "56": {
+    "text": "باورچی خانے کی کھڑکی کھلی ہے تاکہ بھاپ باہر نکل جائے۔",
+    "romanization": "Bawarchi khane ki khidki khuli hai taaki bhaap bahar nikal jaaye."
+  },
+  "57": {
+    "text": "اس نے کھانا بناتے ہوئے موسیقی تیز کر دی۔",
+    "romanization": "Usne khana banate hue mauseeqi tez kar di."
+  },
+  "58": {
+    "text": "ہمارے کھانے کے دوران برتن جمع ہو گئے۔",
+    "romanization": "Hamare khane ke dauran bartan jama ho gaye."
+  },
+  "59": {
+    "text": "بچا ہوا کھانا کل دوپہر کا ہوگا۔",
+    "romanization": "Bacha hua khana kal dopehar ka hoga."
+  },
+  "60": {
+    "text": "میں نے ترکیب پر قدم بہ قدم عمل کیا۔",
+    "romanization": "Maine tarkeeb par qadam ba qadam amal kiya."
+  },
+  "61": {
+    "text": "پہلا پین کیک ہمیشہ خراب بنتا ہے۔",
+    "romanization": "Pehla pancake hamesha kharab banta hai."
+  },
+  "62": {
+    "text": "اس نے اتفاق سے یہ چٹنی ایجاد کی۔",
+    "romanization": "Usne ittifaq se yeh chatni ijaad ki."
+  },
+  "63": {
+    "text": "اس نے سردیوں میں خود کو بیک کرنا سکھایا۔",
+    "romanization": "Usne sardiyon mein khud ko bake karna sikhaya."
+  },
+  "64": {
+    "text": "کک بک اسی صفحے پر کھل گئی۔",
+    "romanization": "Cookbook usi safhe par khul gayi."
+  },
+  "65": {
+    "text": "میں نے ترکیب کو دوگنا کیا اور بہت زیادہ بنا لیا۔",
+    "romanization": "Maine tarkeeb ko dugna kiya aur bahut zyada bana liya."
+  },
+  "66": {
+    "text": "ویڈیو نے مجھے ڈمپلنگ موڑنے کا طریقہ دکھایا۔",
+    "romanization": "Video ne mujhe dumpling modne ka tareeqa dikhaya."
+  },
+  "67": {
+    "text": "وہ ہر چیز کو چھوٹے ترازو سے ناپتا ہے۔",
+    "romanization": "Woh har cheez ko chhote tarazu se naapta hai."
+  },
+  "68": {
+    "text": "وہ گھڑی کے بجائے خوشبو سے زیادہ کھانا پکاتی ہے۔",
+    "romanization": "Woh ghadi ke bajaye khushboo se zyada khana pakati hai."
+  },
+  "69": {
+    "text": "میں نے ایک نیا مصالحہ آزمایا اور وہ کامیاب رہا۔",
+    "romanization": "Maine ek naya masala aazmaya aur woh kamyab raha."
+  },
+  "70": {
+    "text": "پہلی بار روٹی پھولی نہیں۔",
+    "romanization": "Pehli baar roti phooli nahin."
+  },
+  "71": {
+    "text": "وہ ساتھ ساتھ چکھتی گئی اور ایڈجسٹ کرتی گئی۔",
+    "romanization": "Woh saath saath chakhti gayi aur adjust karti gayi."
+  },
+  "72": {
+    "text": "اس نے یہ ڈش اپنی دادی سے سیکھی۔",
+    "romanization": "Usne yeh dish apni dadi se seekhi."
+  },
+  "73": {
+    "text": "یہ ترکیب ایک چھوٹے کارڈ پر لکھی ہوئی نسل در نسل چلی آ رہی تھی۔",
+    "romanization": "Yeh tarkeeb ek chhote card par likhi hui nasal dar nasal chali aa rahi thi."
+  },
+  "74": {
+    "text": "اکیلے کے لیے کھانا پکانا ایک مختلف فن ہے۔",
+    "romanization": "Akele ke liye khana pakana ek mukhtalif fun hai."
+  },
+  "75": {
+    "text": "کھانا پانچ منٹ میں تیار ہے۔",
+    "romanization": "Khana paanch minute mein tayyar hai."
+  },
+  "76": {
+    "text": "براہ کرم مجھے روٹی پکڑا دیں۔",
+    "romanization": "Barah-e-karam mujhe roti pakra den."
+  },
+  "77": {
+    "text": "باورچی خانہ گھر کا سب سے گرم کمرہ ہے۔",
+    "romanization": "Bawarchi khana ghar ka sabse garam kamra hai."
+  },
+  "78": {
+    "text": "ہم نے سورج غروب ہوتے وقت باہر کھانا کھایا۔",
+    "romanization": "Humne suraj ghuroob hote waqt bahar khana khaya."
+  },
+  "79": {
+    "text": "سب نے برتن دھونے میں مدد کی۔",
+    "romanization": "Sab ne bartan dhone mein madad ki."
+  },
+  "80": {
+    "text": "وہ ہمیشہ جان بوجھ کر زیادہ کھانا بناتی ہے۔",
+    "romanization": "Woh hamesha jaan boojh kar zyada khana banati hai."
+  },
+  "81": {
+    "text": "وہ ہمیشہ وائن کی ایک بوتل لاتا ہے۔",
+    "romanization": "Woh hamesha wine ki ek bottle laata hai."
+  },
+  "82": {
+    "text": "بچوں نے تین بار کھانا لیا۔",
+    "romanization": "Bachchon ne teen baar khana liya."
+  },
+  "83": {
+    "text": "موم بتیاں پوری جل گئیں۔",
+    "romanization": "Mom battiyan poori jal gayin."
+  },
+  "84": {
+    "text": "برتن ہٹانے کے کافی دیر بعد تک ہم باتیں کرتے رہے۔",
+    "romanization": "Bartan hatane ke kaafi der baad tak hum baaten karte rahe."
+  },
+  "85": {
+    "text": "چاقو جتنا لگتا ہے اس سے زیادہ تیز ہے۔",
+    "romanization": "Chaqoo jitna lagta hai usse zyada tez hai."
+  },
+  "86": {
+    "text": "چٹنی کے لیے لکڑی کا چمچ استعمال کریں۔",
+    "romanization": "Chatni ke liye lakdi ka chamach istemal karen."
+  },
+  "87": {
+    "text": "کاسٹ آئرن کا پین بھاری ہے لیکن اس کے قابل ہے۔",
+    "romanization": "Cast iron ka pan bhaari hai lekin uske qabil hai."
+  },
+  "88": {
+    "text": "وہ مصالحے ایک چھوٹی دراز میں رکھتا ہے۔",
+    "romanization": "Woh masale ek chhoti daraaz mein rakhta hai."
+  },
+  "89": {
+    "text": "ایک اچھا کٹنگ بورڈ ہر چیز کو آسان بنا دیتا ہے۔",
+    "romanization": "Ek achha cutting board har cheez ko aasaan bana deta hai."
+  },
+  "90": {
+    "text": "اوون آخر کار کافی گرم ہو گیا ہے۔",
+    "romanization": "Oven aakhir kaar kaafi garam ho gaya hai."
+  },
+  "91": {
+    "text": "بلینڈر کو ثابت بادام پیسنے میں مشکل ہوتی ہے۔",
+    "romanization": "Blender ko sabit badam peesne mein mushkil hoti hai."
+  },
+  "92": {
+    "text": "اس نے گیلے کپڑے سے کاؤنٹر صاف کیا۔",
+    "romanization": "Usne geele kapde se counter saaf kiya."
+  },
+  "93": {
+    "text": "چھلنی دوسری دراز میں ہے۔",
+    "romanization": "Chhalni doosri daraaz mein hai."
+  },
+  "94": {
+    "text": "اوون کے دستانے مت بھولنا۔",
+    "romanization": "Oven ke dastane mat bhoolna."
+  },
+  "95": {
+    "text": "کھانا پکانا زیادہ تر صبر کا کام ہے۔",
+    "romanization": "Khana pakana zyada tar sabr ka kaam hai."
+  },
+  "96": {
+    "text": "ایک ہی اجزاء مختلف ہاتھوں میں مختلف پکوان بناتے ہیں۔",
+    "romanization": "Ek hi ajzaa mukhtalif haathon mein mukhtalif pakwaan banate hain."
+  },
+  "97": {
+    "text": "نمک وہ پہلی چیز ہے جسے آپ ٹھیک کرتے ہیں۔",
+    "romanization": "Namak woh pehli cheez hai jise aap theek karte hain."
+  },
+  "98": {
+    "text": "مزید ڈالنے سے پہلے چکھ لیں۔",
+    "romanization": "Mazeed daalne se pehle chakh len."
+  },
+  "99": {
+    "text": "آہستہ آہستہ کھایا گیا ایک سادہ کھانا ایک چھوٹی سی فتح ہے۔",
+    "romanization": "Aahista aahista khaya gaya ek saada khana ek chhoti si fatah hai."
+  }
+}

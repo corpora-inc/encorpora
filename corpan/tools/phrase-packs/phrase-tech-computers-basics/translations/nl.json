@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Sla het bestand op voordat je het sluit.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Zou je me dat document kunnen sturen?",
+    "romanization": null
+  },
+  "2": {
+    "text": "De map staat op het bureaublad.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Ik kan het bestand dat ik gisteren heb opgeslagen niet vinden.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Zoek de hele schijf af op die naam.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Hij heeft het bestand per ongeluk hernoemd.",
+    "romanization": null
+  },
+  "6": {
+    "text": "De download is in de verkeerde map terechtgekomen.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Het bestand is te groot om te e-mailen.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Zou je het kunnen zippen?",
+    "romanization": null
+  },
+  "9": {
+    "text": "De cloudmap synchroniseert automatisch.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ze organiseert alles in submappen met datums.",
+    "romanization": null
+  },
+  "11": {
+    "text": "De prullenbak is voller dan de rest van de schijf.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Hij maakt van elk project een back-up.",
+    "romanization": null
+  },
+  "13": {
+    "text": "De gedeelde map is voor iedereen bijgewerkt.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Een bestand dat je niet kunt vinden, bestaat net zo goed niet.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Ik ben mijn wachtwoord vergeten.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Stel het wachtwoord opnieuw in via het inlogscherm.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Gebruik niet overal hetzelfde wachtwoord.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Een wachtwoordmanager onthoudt ze voor je.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Twee-factor authenticatie voegt een stap toe, maar ook veel veiligheid.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Controleer je e-mail voor een verificatiecode.",
+    "romanization": null
+  },
+  "21": {
+    "text": "De link was na vijftien minuten verlopen.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Ze heeft een nieuw account aangemaakt voor het project.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Hij logt uit op gedeelde computers.",
+    "romanization": null
+  },
+  "24": {
+    "text": "De gebruikersnaam is al in gebruik.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Bewaar de herstelcode ergens veilig.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Klik niet op verdachte inloglinks.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Werk je herstel-e-mailadres bij als je verhuist.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Een passkey is sneller dan een wachtwoord.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Je telefoon is tegenwoordig ook een account.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Heb je al geprobeerd het opnieuw op te starten?",
+    "romanization": null
+  },
+  "31": {
+    "text": "De kabel zat los.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Het scherm liep een minuut vast.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Sluit alle tabbladen en probeer het opnieuw.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Controleer of je verbonden bent met het juiste netwerk.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Het toetsenbord reageert niet.",
+    "romanization": null
+  },
+  "36": {
+    "text": "De ventilator maakt meer geluid dan normaal.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Leeg de cache en laad opnieuw.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Probeer een andere browser.",
+    "romanization": null
+  },
+  "39": {
+    "text": "De update heeft de bug verholpen.",
+    "romanization": null
+  },
+  "40": {
+    "text": "De batterij was 's nachts leeggelopen.",
+    "romanization": null
+  },
+  "41": {
+    "text": "De webcam werkte niet meer na de update.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Soms is de simpelste oplossing even wachten.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Een herstart lost meer problemen op dan mensen toegeven.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Hij legde de foutmelding in duidelijke taal uit.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Het duurt eeuwig voordat de pagina laadt.",
+    "romanization": null
+  },
+  "46": {
+    "text": "De site ligt er voor iedereen uit.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Voeg het toe aan je favorieten, zodat je het later terug kunt vinden.",
+    "romanization": null
+  },
+  "48": {
+    "text": "De link in de e-mail opent in een nieuw tabblad.",
+    "romanization": null
+  },
+  "49": {
+    "text": "De video blijft bufferen.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Het signaal is zwak in de achterkamer.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Zou je de link met me kunnen delen?",
+    "romanization": null
+  },
+  "52": {
+    "text": "De website ziet er anders uit op mobiel.",
+    "romanization": null
+  },
+  "53": {
+    "text": "De pop-up vroeg me om cookies te accepteren.",
+    "romanization": null
+  },
+  "54": {
+    "text": "De advertentie is moeilijk te sluiten.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Hij gebruikt een adblocker op elke computer.",
+    "romanization": null
+  },
+  "56": {
+    "text": "De zoekopdracht leverde te veel resultaten op.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Verfijn de zoekopdracht met aanhalingstekens.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Het artikel is achter een betaalmuur verdwenen.",
+    "romanization": null
+  },
+  "59": {
+    "text": "De pagina komt van een website die ik vertrouw.",
+    "romanization": null
+  },
+  "60": {
+    "text": "De app is 's nachts bijgewerkt.",
+    "romanization": null
+  },
+  "61": {
+    "text": "De nieuwe versie ziet er compleet anders uit.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ze heeft de apps verwijderd die ze nooit opende.",
+    "romanization": null
+  },
+  "63": {
+    "text": "De meldingsinstellingen zitten diep verborgen in het menu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Zet het geluid uit tijdens de vergadering.",
+    "romanization": null
+  },
+  "65": {
+    "text": "De sneltoets is sneller dan het menu.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Donkere modus is 's avonds rustiger voor je ogen.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Schakel automatisch afspelen uit.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Het meldingsicoon verdwijnt nooit.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hij heeft de laptop ingesteld zoals hij het zelf prettig vindt.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Open geen bijlagen van onbekende afzenders.",
+    "romanization": null
+  },
+  "71": {
+    "text": "De link in dat bericht ziet er verdacht uit.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Controleer het volledige adres van de afzender.",
+    "romanization": null
+  },
+  "73": {
+    "text": "De gratis wifi op het vliegveld is niet privé.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Bedek de camera als je hem niet gebruikt.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Vergrendel het scherm als je even weggaat.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Wees voorzichtig met informatie die je niet meer kunt terughalen.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Lees waar je mee akkoord gaat.",
+    "romanization": null
+  },
+  "78": {
+    "text": "De meeste datalekken komen door hergebruikte wachtwoorden.",
+    "romanization": null
+  },
+  "79": {
+    "text": "De simpelste oplichtingspraktijken werken nog steeds omdat ze simpel zijn.",
+    "romanization": null
+  },
+  "80": {
+    "text": "De laptop is trager sinds de laatste update.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Het scherm is gebarsten, maar het werkt nog steeds.",
+    "romanization": null
+  },
+  "82": {
+    "text": "De nieuwe monitor is vanochtend aangekomen.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Hij stak drie kabels in voordat hij de juiste vond.",
+    "romanization": null
+  },
+  "84": {
+    "text": "De batterij gaat niet meer zo lang mee als vroeger.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Het toetsenbord heeft in de loop der jaren kruimels verzameld.",
+    "romanization": null
+  },
+  "86": {
+    "text": "De ventilator slaat aan als de kamer warm wordt.",
+    "romanization": null
+  },
+  "87": {
+    "text": "De printer is weer offline.",
+    "romanization": null
+  },
+  "88": {
+    "text": "De koptelefoon valt aan één kant uit.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Hij maakt het scherm schoon met een zachte doek.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Zou je een screenshot kunnen maken?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Het bestand is om middernacht verzonden.",
+    "romanization": null
+  },
+  "92": {
+    "text": "De agenda-uitnodiging kwam twee keer binnen.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Sleep het bestand naar het venster.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Klik met de rechtermuisknop voor meer opties.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Houd Shift ingedrukt om meerdere te selecteren.",
+    "romanization": null
+  },
+  "96": {
+    "text": "De ongedaan maken-knop heeft me al vaak gered.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Het klembord onthoudt het laatste wat je hebt gekopieerd.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Autocorrectie is handig en soms gênant.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Een opgeruimd bureaublad maakt alles makkelijker te vinden.",
+    "romanization": null
+  }
+}

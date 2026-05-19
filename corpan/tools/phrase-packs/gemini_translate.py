@@ -185,11 +185,27 @@ def make_client(vertex: bool):
 
 
 def translate_one(lang: str, client, model: str, pack_dir: Path, topic: str,
-                  phrases: list[dict], temperature: float) -> tuple[str, str, float, int]:
+                  phrases: list[dict], temperature: float,
+                  skip_existing: bool = False) -> tuple[str, str, float, int]:
     """Translate one language. Returns (lang, status, duration_s, output_bytes)."""
     out_path = pack_dir / "translations" / f"{lang}.json"
     out_path.parent.mkdir(exist_ok=True)
     n = len(phrases)
+
+    # Skip if a complete, well-formed file already exists.
+    if skip_existing and out_path.is_file():
+        try:
+            existing = json.loads(out_path.read_text())
+            if (isinstance(existing, dict)
+                    and len(existing) == n
+                    and all(str(i) in existing
+                            and isinstance(existing[str(i)], dict)
+                            and existing[str(i)].get("text", "").strip()
+                            for i in range(n))):
+                return (lang, "SKIP (already complete)", 0.0, out_path.stat().st_size)
+        except (json.JSONDecodeError, OSError):
+            pass  # treat as missing, retranslate
+
     prompt = build_prompt(lang, topic, n, phrases)
 
     t0 = time.time()
@@ -199,7 +215,7 @@ def translate_one(lang: str, client, model: str, pack_dir: Path, topic: str,
             contents=prompt,
             config=gtypes.GenerateContentConfig(
                 temperature=temperature,
-                max_output_tokens=32768,
+                max_output_tokens=65536,
                 response_mime_type="application/json",
             ),
         )
@@ -249,6 +265,8 @@ def main() -> int:
     p.add_argument("--temperature", type=float, default=0.2)
     p.add_argument("--write-en", action="store_true",
                    help="Also generate en.json directly from phrases.json (no model call)")
+    p.add_argument("--skip-existing", action="store_true",
+                   help="Skip languages whose translations/<lang>.json already has all entries valid")
     ns = p.parse_args()
 
     pack_dir = Path(ns.pack_dir).resolve()
@@ -278,7 +296,7 @@ def main() -> int:
     results: list[tuple[str, str, float, int]] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=ns.workers) as pool:
         futs = {pool.submit(translate_one, l, client, ns.model, pack_dir, topic, phrases,
-                            ns.temperature): l for l in langs}
+                            ns.temperature, ns.skip_existing): l for l in langs}
         for fut in concurrent.futures.as_completed(futs):
             lang, status, dur, sz = fut.result()
             marker = "✓" if status == "OK" else "✗"

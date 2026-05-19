@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "ما معنى أن نعيش حياة جيدة؟",
+    "romanization": "Mā maʿnā an naʿīsha ḥayāh jayyidah?"
+  },
+  "1": {
+    "text": "كيف نعرف ما نعرفه؟",
+    "romanization": "Kayfa naʿrifu mā naʿrifuh?"
+  },
+  "2": {
+    "text": "هل هناك فرق بين المعرفة والاعتقاد؟",
+    "romanization": "Hal hunāka farq bayna al-maʿrifah wa-al-iʿtiqād?"
+  },
+  "3": {
+    "text": "لماذا يوجد شيء بدلًا من لا شيء؟",
+    "romanization": "Limādhā yūjadu shayʾan badalāan min lā shayʾ?"
+  },
+  "4": {
+    "text": "ما الذي يجعل الشخص هو نفسه بمرور الوقت؟",
+    "romanization": "Mā alladhī yajʿalu ash-shakhṣa huwa nafsahu bi-murūr al-waqt?"
+  },
+  "5": {
+    "text": "هل يمكن لآلة أن تفكر؟",
+    "romanization": "Hal yumkinu li-ālah an tufakkir?"
+  },
+  "6": {
+    "text": "هل العالم الذي نراه هو العالم الحقيقي؟",
+    "romanization": "Hal al-ʿālam alladhī narāhu huwa al-ʿālam al-ḥaqīqī?"
+  },
+  "7": {
+    "text": "ما الذي ندين به لأشخاص لن نلتقي بهم أبدًا؟",
+    "romanization": "Mā alladhī nadīnu bihi li-ashkhāṣ lan naltaqī bihim abadan?"
+  },
+  "8": {
+    "text": "لماذا من الصعب جدًا تغيير رأي المرء؟",
+    "romanization": "Limādhā min aṣ-ṣaʿb jiddan taghyīr raʾy al-marʾ?"
+  },
+  "9": {
+    "text": "ما معنى أن يتفق شخصان؟",
+    "romanization": "Mā maʿnā an yattafiqu shakhṣān?"
+  },
+  "10": {
+    "text": "هل الحقيقة تُخترع أم تُكتشف؟",
+    "romanization": "Hal al-ḥaqīqah tukhtaraʿ am tuktashaf?"
+  },
+  "11": {
+    "text": "لماذا نشعر بالوقت بهذه الطريقة؟",
+    "romanization": "Limādhā nashʿuru bi-al-waqt bi-hādhihi aṭ-ṭarīqah?"
+  },
+  "12": {
+    "text": "من أين يأتي المعنى؟",
+    "romanization": "Min ayna yaʾtī al-maʿnā?"
+  },
+  "13": {
+    "text": "ما هي الإرادة الحرة حقًا؟",
+    "romanization": "Mā hiya al-irādah al-ḥurrah ḥaqqan?"
+  },
+  "14": {
+    "text": "هل السعادة شعور أم ممارسة؟",
+    "romanization": "Hal as-saʿādah shuʿūr am mumārasah?"
+  },
+  "15": {
+    "text": "الشيء الصحيح يصعب تمييزه أحيانًا.",
+    "romanization": "Ash-shayʾ aṣ-ṣaḥīḥ yaṣʿubu tamyīzuhū aḥyānan."
+  },
+  "16": {
+    "text": "النوايا الحسنة لا تضمن نتائج جيدة.",
+    "romanization": "An-nawāyā al-ḥasanah lā taḍmanu natāʾij jayyidah."
+  },
+  "17": {
+    "text": "معظم الأسئلة الأخلاقية تدور حول الموازنة بين الخيرات المتنافسة.",
+    "romanization": "Muʿẓam al-asʾilah al-akhlaqīyah tadūru ḥawla al-muwāzanah bayna al-khayrāt al-mutanāfisah."
+  },
+  "18": {
+    "text": "كذبة صغيرة يمكن أن تسبب ضررًا كبيرًا.",
+    "romanization": "Kadhibah ṣaghīrah yumkinu an tusabbiba ḍararan kabīran."
+  },
+  "19": {
+    "text": "الصدق أسهل في بيئة لطيفة.",
+    "romanization": "Aṣ-ṣidq ashalu fī bīʾah laṭīfah."
+  },
+  "20": {
+    "text": "القسوة غالبًا ما تختبئ وراء عادات صغيرة.",
+    "romanization": "Al-qaswah ghāliban mā takhtabiʾu warāʾa ʿādāt ṣaghīrah."
+  },
+  "21": {
+    "text": "بعض القواعد جيدة لأنها توفر علينا عناء التفكير.",
+    "romanization": "Baʿḍ al-qawāʿid jayyidah li-annahā tuwaffiru ʿalaynā ʿanāʾ at-tafkīr."
+  },
+  "22": {
+    "text": "أحيانًا تكون القواعد نفسها هي المشكلة.",
+    "romanization": "Aḥyānan takūnu al-qawāʿid nafsahā hiya al-mushkilah."
+  },
+  "23": {
+    "text": "الوعد رهان صغير على ذاتك المستقبلية.",
+    "romanization": "Al-waʿd rihān ṣaghīr ʿalā dhātika al-mustaqbalīyah."
+  },
+  "24": {
+    "text": "الناس يحكمون على الأفعال بالنتائج وعلى القواعد بالنوايا.",
+    "romanization": "An-nās yaḥkumūna ʿalā al-afʿāl bi-an-natāʾij wa-ʿalā al-qawāʿid bi-an-nawāyā."
+  },
+  "25": {
+    "text": "النفاق أسهل رؤيته في الآخرين.",
+    "romanization": "An-nifāq ashalu ruʾyatuhū fī al-ākharīn."
+  },
+  "26": {
+    "text": "المسامحة هي جزئيًا هدية لمن يسامح.",
+    "romanization": "Al-musāmaḥah hiya juzʾīyan hadīyah li-man yusāmiḥ."
+  },
+  "27": {
+    "text": "التعاطف عضلة تقوى بالاستخدام.",
+    "romanization": "At-taʿāṭuf ʿaḍalah taqwā bi-al-istiqdām."
+  },
+  "28": {
+    "text": "العدالة ليست هي الانتقام.",
+    "romanization": "Al-ʿadālah laysat hiya al-intiqām."
+  },
+  "29": {
+    "text": "السلطة تختبر الشخصية أكثر مما يختبرها الفقر.",
+    "romanization": "As-sulṭah takhtabiru ash-shakhṣīyah akthara mimmā yakhtabiruhā al-faqr."
+  },
+  "30": {
+    "text": "عدم فعل شيء هو أيضًا خيار.",
+    "romanization": "ʿAdam fiʿl shayʾ huwa ayḍan khiyār."
+  },
+  "31": {
+    "text": "أصعب فضيلة هي الصبر.",
+    "romanization": "Aṣʿab faḍīlah hiya aṣ-ṣabr."
+  },
+  "32": {
+    "text": "اللطف الصغير يتراكم.",
+    "romanization": "Al-luṭf aṣ-ṣaghīr yatarākam."
+  },
+  "33": {
+    "text": "يمكن الحكم على المجتمع من خلال معاملته للأضعف.",
+    "romanization": "Yumkinu al-ḥukm ʿalā al-mujtamaʿ min khilāl muʿāmalatihi li-al-aḍʿaf."
+  },
+  "34": {
+    "text": "الشجاعة هي التصرف بحكمة وأنت خائف.",
+    "romanization": "Ash-shajāʿah hiya at-taṣarruf bi-ḥikmah wa-anta khāʾif."
+  },
+  "35": {
+    "text": "يمكن أن نكون واثقين ومخطئين في نفس الوقت.",
+    "romanization": "Yumkinu an nakūna wāthiqīna wa-mukhaṭiʾīna fī nafs al-waqt."
+  },
+  "36": {
+    "text": "الدليل هو ما يغير العقل الحصيف.",
+    "romanization": "Ad-dalīl huwa mā yughayyiru al-ʿaql al-ḥaṣīf."
+  },
+  "37": {
+    "text": "معظم المعتقدات تأتي في مجموعات، لا واحدة تلو الأخرى.",
+    "romanization": "Muʿẓam al-muʿtaqadāt taʾtī fī majmūʿāt, lā wāḥidah talwa al-ukhrā."
+  },
+  "38": {
+    "text": "نميل إلى تذكر الأوقات التي كنا فيها على صواب.",
+    "romanization": "Namīlu ilā tadakkur al-awqāt allatī kunnā fīhā ʿalā ṣawāb."
+  },
+  "39": {
+    "text": "الشك غير مريح ولكنه مفيد.",
+    "romanization": "Ash-shakk ghayru murīḥ wa-lākinnahu mufīd."
+  },
+  "40": {
+    "text": "السؤال الجيد أصعب من الإجابة الذكية.",
+    "romanization": "As-suʾāl al-jayyid aṣʿabu min al-ijābah adh-dhakīyah."
+  },
+  "41": {
+    "text": "بعض الأسئلة ليس لها إجابة صحيحة واحدة.",
+    "romanization": "Baʿḍ al-asʾilah laysa lahā ijābah ṣaḥīḥah wāḥidah."
+  },
+  "42": {
+    "text": "النماذج خاطئة ولكن بعضها مفيد.",
+    "romanization": "An-namādhij khāṭiʾah wa-lākin baʿḍahā mufīd."
+  },
+  "43": {
+    "text": "الخريطة ليست هي الإقليم.",
+    "romanization": "Al-kharīṭah laysat hiya al-iqlīm."
+  },
+  "44": {
+    "text": "الأسماء تشكل ما نلاحظه.",
+    "romanization": "Al-asmāʾ tushakkilu mā nulāḥiẓuh."
+  },
+  "45": {
+    "text": "القراءة ببطء هي نوع خاص من التفكير.",
+    "romanization": "Al-qirāʾah bi-buṭʾ hiya nawʿ khāṣṣ min at-tafkīr."
+  },
+  "46": {
+    "text": "آراء قوية، ولكن لا تتمسك بها بشدة.",
+    "romanization": "Ārāʾ qawīyah, wa-lākin lā tatamassak bihā bi-shiddah."
+  },
+  "47": {
+    "text": "أذكى الناس هم الأكثر تغييرًا لآرائهم.",
+    "romanization": "Adhkā an-nās hum al-aktharu taghyīran li-ārāʾihim."
+  },
+  "48": {
+    "text": "الاختلاف في الرأي ليس هو سوء الفهم.",
+    "romanization": "Al-ikhtilāf fī ar-raʾy laysa huwa sūʾ al-fahm."
+  },
+  "49": {
+    "text": "أحيانًا يكون كلا الجانبين على صواب جزئيًا.",
+    "romanization": "Aḥyānan yakūnu kilā al-jānibayn ʿalā ṣawāb juzʾīyan."
+  },
+  "50": {
+    "text": "العالم أقدم من أي تفسير له.",
+    "romanization": "Al-ʿālam aqdamu min ayyi tafsīr lah."
+  },
+  "51": {
+    "text": "الوعي هو أغرب شيء نعرفه.",
+    "romanization": "Al-waʿy huwa aghrabu shayʾ naʿrifuh."
+  },
+  "52": {
+    "text": "نرى من العالم أقل مما نعتقد.",
+    "romanization": "Narā min al-ʿālam aqalla mimmā naʿtaqid."
+  },
+  "53": {
+    "text": "الذاكرة تعيد كتابة نفسها في كل مرة نستخدمها.",
+    "romanization": "Adh-dhākirah tuʿīdu kitābat nafsihā fī kulli marrah nastakhdimuhā."
+  },
+  "54": {
+    "text": "شخصان في نفس الغرفة يمكن أن يختبرا غرفًا مختلفة.",
+    "romanization": "Shakhṣān fī nafs al-ghurfah yumkinu an yakhtabirā ghurafan mukhtalifah."
+  },
+  "55": {
+    "text": "العقل يبني العالم الذي يعيش فيه.",
+    "romanization": "Al-ʿaql yubnī al-ʿālam alladhī yaʿīshu fīh."
+  },
+  "56": {
+    "text": "بعض التجارب لا يمكن التعبير عنها بالكلمات.",
+    "romanization": "Baʿḍ at-tajārib lā yumkinu at-taʿbīr ʿanhā bi-al-kalimāt."
+  },
+  "57": {
+    "text": "الموسيقى تبدو وكأنها تتحدث مباشرة دون ترجمة.",
+    "romanization": "Al-mūsīqā tabdū wa-ka-annahā tataḥaddathu mubāsharah dūna tarjamah."
+  },
+  "58": {
+    "text": "الألم معلم، حتى عندما لا يكون له درس.",
+    "romanization": "Al-alam muʿallim, ḥattā ʿindamā lā yakūnu lahū dars."
+  },
+  "59": {
+    "text": "الجمال أحيانًا يكون دليلًا.",
+    "romanization": "Al-jamāl aḥyānan yakūnu dalīlan."
+  },
+  "60": {
+    "text": "الملل غالبًا ما يخفي سؤالًا يحتاج إلى طرح.",
+    "romanization": "Al-malal ghāliban mā yukhfī suʾālan yaḥtāju ilā ṭarḥ."
+  },
+  "61": {
+    "text": "العزلة توضح أمورًا تشوشها الحشود.",
+    "romanization": "Al-ʿuzlah tuwaḍḍiḥu umūran tushawwishuhā al-ḥushūd."
+  },
+  "62": {
+    "text": "النوم ليس عدمًا.",
+    "romanization": "An-nawm laysa ʿadaman."
+  },
+  "63": {
+    "text": "الموت يمنح الزمن شكلًا.",
+    "romanization": "Al-mawt yamnaḥu az-zaman shaklan."
+  },
+  "64": {
+    "text": "الحاضر هو المكان الوحيد الذي يحدث فيه أي شيء على الإطلاق.",
+    "romanization": "Al-ḥāḍir huwa al-makān al-waḥīd alladhī yaḥduthu fīhi ayyu shayʾ ʿalā al-iṭlāq."
+  },
+  "65": {
+    "text": "قال سقراط إن الحياة غير المفحوصة لا تستحق العيش.",
+    "romanization": "Qāla Suqrāṭ inna al-ḥayāh ghayr al-mafḥūṣah lā tastaḥiqqu al-ʿaysh."
+  },
+  "66": {
+    "text": "حاول الرواقيون أن يرغبوا فقط فيما يملكون.",
+    "romanization": "Ḥāwala ar-ruwāqīyūn an yarghabū faqaṭ fīmā yamlikūn."
+  },
+  "67": {
+    "text": "علم كونفوشيوس أهمية الطقوس الصغيرة.",
+    "romanization": "ʿAllama Kunfūshiyūs ahammīyat aṭ-ṭuqūs aṣ-ṣaghīrah."
+  },
+  "68": {
+    "text": "أشار بوذا إلى سبب المعاناة.",
+    "romanization": "Ashāra Būdhā ilā sabab al-muʿānāh."
+  },
+  "69": {
+    "text": "اعتقد أرسطو أن الفضيلة عادة وليست شعورًا.",
+    "romanization": "Iʿtaqada Arisṭū anna al-faḍīlah ʿādah wa-laysat shuʿūran."
+  },
+  "70": {
+    "text": "شك أفلاطون في أن الأشياء التي نراها تشبه الظلال.",
+    "romanization": "Shakka Aflāṭūn fī anna al-ashyāʾ allatī narāhā tushbihu aẓ-ẓilāl."
+  },
+  "71": {
+    "text": "أشاد لاو تزو بطريق الماء.",
+    "romanization": "Ashāda Lāw Tzū bi-ṭarīq al-māʾ."
+  },
+  "72": {
+    "text": "أراد إبيقور ملذات هادئة، لا عظيمة.",
+    "romanization": "Arāda Ībīqūr maladhdhāt hādiʾah, lā ʿaẓīmah."
+  },
+  "73": {
+    "text": "علم ديوجينس بالسخرية من التقاليد.",
+    "romanization": "ʿAllama Diyūjīnis bi-as-sukhriyah min at-taqālīd."
+  },
+  "74": {
+    "text": "تتفق العديد من التقاليد أكثر مما تختلف.",
+    "romanization": "Tattafiqu al-ʿadīd min at-taqālīd akthara mimmā takhtalif."
+  },
+  "75": {
+    "text": "قال كانط عامل الناس كغايات، لا مجرد وسائل.",
+    "romanization": "Qāla Kānt ʿāmil an-nās ka-ghāyāt, lā mujarrad wasāʾil."
+  },
+  "76": {
+    "text": "لاحظ هيوم أن العقل وحده لا يجعلنا نهتم.",
+    "romanization": "Lāḥaẓa Hiyūm anna al-ʿaql waḥdahu lā yajʿalunā nahtamm."
+  },
+  "77": {
+    "text": "كتب نيتشه أن الحقائق الصعبة يمكن أن تكون هدايا أيضًا.",
+    "romanization": "Kataba Nītshah anna al-ḥaqāʾiq aṣ-ṣaʿbah yumkinu an takūna hadāyā ayḍan."
+  },
+  "78": {
+    "text": "قال فيتغنشتاين إن حدود لغتنا هي حدود عالمنا.",
+    "romanization": "Qāla Fītaghanshtāyn inna ḥudūd lughatinā hiya ḥudūd ʿālaminā."
+  },
+  "79": {
+    "text": "جادلت سيمون دي بوفوار بأننا نصبح ذواتنا من خلال خياراتنا.",
+    "romanization": "Jādalat Sīmūn dī Būfūwār bi-annanā nuṣbiḥu dhawātinā min khilāl khiyārātinā."
+  },
+  "80": {
+    "text": "قال ويليام جيمس إن الاعتقاد يشكل ما يمكننا فعله.",
+    "romanization": "Qāla Wīliyām Jīms inna al-iʿtiqād yushakkilu mā yumkinunā fiʿluh."
+  },
+  "81": {
+    "text": "سأل جون رولز عن القواعد التي سنقبلها لو لم نكن نعرف من سنكون.",
+    "romanization": "Saʾala Jūn Rūlz ʿan al-qawāʿid allatī sanqabaluhā law lam nakun naʿrifu man sanakūn."
+  },
+  "82": {
+    "text": "حذرت حنة أرندت من أن الشر يمكن أن يكون عاديًا.",
+    "romanization": "Ḥadhdharat Ḥannah Ārandt min anna ash-sharr yumkinu an yakūna ʿādīyan."
+  },
+  "83": {
+    "text": "قالت آيريس مردوخ إن الحب هو العمل الشاق للاهتمام.",
+    "romanization": "Qālat Āyris Murdūkh inna al-ḥubb huwa al-ʿamal ash-shāqq li-al-ihtimām."
+  },
+  "84": {
+    "text": "يستعير العديد من الفلاسفة المعاصرين بحرية من تقاليد كثيرة.",
+    "romanization": "Yastaʿīru al-ʿadīd min al-falāsifah al-muʿāṣirīn bi-ḥurrīyah min taqālīd kathīrah."
+  },
+  "85": {
+    "text": "ابدأ بالعمل الذي يمكنك فعله اليوم بالفعل.",
+    "romanization": "Ibdaʾ bi-al-ʿamal alladhī yumkinuka fiʿluhū al-yawm bi-al-fiʿl."
+  },
+  "86": {
+    "text": "استمع وكأنك قد تكون مخطئًا.",
+    "romanization": "Istamiʿ wa-ka-annaka qad takūnu mukhṭiʾan."
+  },
+  "87": {
+    "text": "حاول أن ترغب في القليل قبل أن تكسب الكثير.",
+    "romanization": "Ḥāwil an targhaba fī al-qalīl qabla an taksiba al-kathīr."
+  },
+  "88": {
+    "text": "لاحظ ما تفعله عندما لا يراك أحد.",
+    "romanization": "Lāḥiẓ mā tafʿaluhū ʿindamā lā yarāka aḥad."
+  },
+  "89": {
+    "text": "المشي فلسفة صغيرة.",
+    "romanization": "Al-mashy falsafah ṣaghīrah."
+  },
+  "90": {
+    "text": "أصعب حجة تقدمها هي تلك التي تدين بها لنفسك.",
+    "romanization": "Aṣʿab ḥujjah tuqaddimuhā hiya tilka allatī tadīnu bihā li-nafsik."
+  },
+  "91": {
+    "text": "تمسك بالآراء كما تمسك بأداة.",
+    "romanization": "Tamassak bi-al-ārāʾ kamā tamassak bi-adāh."
+  },
+  "92": {
+    "text": "خذ كلام الآخرين على أحسن وجه.",
+    "romanization": "Khudh kalām al-ākharīn ʿalā aḥsan wajh."
+  },
+  "93": {
+    "text": "مارس الامتنان في الصباحات العادية، لا في الخاصة فقط.",
+    "romanization": "Māris al-imtinān fī aṣ-ṣabāḥāt al-ʿādīyah, lā fī al-khāṣṣah faqaṭ."
+  },
+  "94": {
+    "text": "أقصر الطرق أحيانًا يمر عبر السؤال.",
+    "romanization": "Aqṣar aṭ-ṭuruq aḥyānan yamurru ʿabra as-suʾāl."
+  },
+  "95": {
+    "text": "الدهشة نوع من الانتباه.",
+    "romanization": "Ad-dahshah nawʿ min al-intibāh."
+  },
+  "96": {
+    "text": "اقرأ الكتب القديمة أحيانًا على الأقل.",
+    "romanization": "Iqraʾ al-kutub al-qadīmah aḥyānan ʿalā al-aqall."
+  },
+  "97": {
+    "text": "اختلف بلباقة وستبقى العلاقة.",
+    "romanization": "Ikhtalif bi-labāqah wa-satabqā al-ʿalāqah."
+  },
+  "98": {
+    "text": "الحياة الجيدة هي أيام جيدة صغيرة كثيرة.",
+    "romanization": "Al-ḥayāh al-jayyidah hiya ayyām jayyidah ṣaghīrah kathīrah."
+  },
+  "99": {
+    "text": "لا توجد كلمة أخيرة.",
+    "romanization": "Lā tūjadu kalimah akhīrah."
+  }
+}

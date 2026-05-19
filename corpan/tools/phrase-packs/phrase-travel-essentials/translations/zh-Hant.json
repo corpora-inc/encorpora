@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "洗手間在哪裡？",
+    "romanization": "xǐ shǒu jiān zài nǎ lǐ"
+  },
+  "1": {
+    "text": "這個多少錢？",
+    "romanization": "zhè ge duō shǎo qián"
+  },
+  "2": {
+    "text": "不好意思，請問你會說英文嗎？",
+    "romanization": "bù hǎo yì si qǐng wèn nǐ huì shuō yīng wén ma"
+  },
+  "3": {
+    "text": "我還不太會說這裡的語言。",
+    "romanization": "wǒ hái bú tài huì shuō zhè lǐ de yǔ yán"
+  },
+  "4": {
+    "text": "可以請你說慢一點嗎？",
+    "romanization": "kě yǐ qǐng nǐ shuō màn yì diǎn ma"
+  },
+  "5": {
+    "text": "我可以在哪裡買票？",
+    "romanization": "wǒ kě yǐ zài nǎ lǐ mǎi piào"
+  },
+  "6": {
+    "text": "這個位子有人坐嗎？",
+    "romanization": "zhè ge wèi zi yǒu rén zuò ma"
+  },
+  "7": {
+    "text": "我想訂一間單人房，住兩晚。",
+    "romanization": "wǒ xiǎng dìng yì jiān dān rén fáng zhù liǎng wǎn"
+  },
+  "8": {
+    "text": "請問有看得到海景的房間嗎？",
+    "romanization": "qǐng wèn yǒu kàn de dào hǎi jǐng de fáng jiān ma"
+  },
+  "9": {
+    "text": "早餐幾點供應？",
+    "romanization": "zǎo cān jǐ diǎn gōng yìng"
+  },
+  "10": {
+    "text": "可以給我看一下菜單嗎？",
+    "romanization": "kě yǐ gěi wǒ kàn yí xià cài dān ma"
+  },
+  "11": {
+    "text": "我吃素。",
+    "romanization": "wǒ chī sù"
+  },
+  "12": {
+    "text": "我對花生過敏。",
+    "romanization": "wǒ duì huā shēng guò mǐn"
+  },
+  "13": {
+    "text": "自來水可以直接喝嗎？",
+    "romanization": "zì lái shuǐ kě yǐ zhí jiē hē ma"
+  },
+  "14": {
+    "text": "麻煩幫我們結帳，謝謝。",
+    "romanization": "má fan bāng wǒ men jié zhàng xiè xie"
+  },
+  "15": {
+    "text": "服務費已經包含了嗎？",
+    "romanization": "fú wù fèi yǐ jīng bāo hán le ma"
+  },
+  "16": {
+    "text": "可以刷卡嗎？",
+    "romanization": "kě yǐ shuā kǎ ma"
+  },
+  "17": {
+    "text": "你們收現金嗎？",
+    "romanization": "nǐ men shōu xiàn jīn ma"
+  },
+  "18": {
+    "text": "可以給我收據嗎？",
+    "romanization": "kě yǐ gěi wǒ shōu jù ma"
+  },
+  "19": {
+    "text": "不用找了。",
+    "romanization": "bú yòng zhǎo le"
+  },
+  "20": {
+    "text": "這班火車從哪個月台出發？",
+    "romanization": "zhè bān huǒ chē cóng nǎ ge yuè tái chū fā"
+  },
+  "21": {
+    "text": "班機延誤了嗎？",
+    "romanization": "bān jī yán wù le ma"
+  },
+  "22": {
+    "text": "我錯過轉乘了。",
+    "romanization": "wǒ cuò guò zhuǎn chéng le"
+  },
+  "23": {
+    "text": "行李提領處在哪裡？",
+    "romanization": "xíng lǐ tí lǐng chù zài nǎ lǐ"
+  },
+  "24": {
+    "text": "我的行李箱沒有到。",
+    "romanization": "wǒ de xíng lǐ xiāng méi yǒu dào"
+  },
+  "25": {
+    "text": "可以幫我叫一台計程車嗎？",
+    "romanization": "kě yǐ bāng wǒ jiào yì tái jì chéng chē ma"
+  },
+  "26": {
+    "text": "這趟路程要多久？",
+    "romanization": "zhè tàng lù chéng yào duō jiǔ"
+  },
+  "27": {
+    "text": "請帶我到這個地址。",
+    "romanization": "qǐng dài wǒ dào zhè ge dì zhǐ"
+  },
+  "28": {
+    "text": "可以在轉角停一下嗎？",
+    "romanization": "kě yǐ zài zhuǎn jiǎo tíng yí xià ma"
+  },
+  "29": {
+    "text": "這附近有捷運站嗎？",
+    "romanization": "zhè fù jìn yǒu jié yùn zhàn ma"
+  },
+  "30": {
+    "text": "我只是看看，謝謝。",
+    "romanization": "wǒ zhǐ shì kàn kàn xiè xie"
+  },
+  "31": {
+    "text": "這個有小一點的尺寸嗎？",
+    "romanization": "zhè ge yǒu xiǎo yì diǎn de chǐ cùn ma"
+  },
+  "32": {
+    "text": "我可以試穿嗎？",
+    "romanization": "wǒ kě yǐ shì chuān ma"
+  },
+  "33": {
+    "text": "試衣間在哪裡？",
+    "romanization": "shì yī jiān zài nǎ lǐ"
+  },
+  "34": {
+    "text": "這個有特價嗎？",
+    "romanization": "zhè ge yǒu tè jià ma"
+  },
+  "35": {
+    "text": "如果付現，可以算便宜一點嗎？",
+    "romanization": "rú guǒ fù xiàn kě yǐ suàn pián yí yì diǎn ma"
+  },
+  "36": {
+    "text": "這是手工做的，還是工廠製造的？",
+    "romanization": "zhè shì shǒu gōng zuò de hái shì gōng chǎng zhì zào de"
+  },
+  "37": {
+    "text": "這個我要了。",
+    "romanization": "zhè ge wǒ yào le"
+  },
+  "38": {
+    "text": "可以幫我包成禮物嗎？",
+    "romanization": "kě yǐ bāng wǒ bāo chéng lǐ wù ma"
+  },
+  "39": {
+    "text": "保固多久？",
+    "romanization": "bǎo gù duō jiǔ"
+  },
+  "40": {
+    "text": "我需要看醫生。",
+    "romanization": "wǒ xū yào kàn yī shēng"
+  },
+  "41": {
+    "text": "我頭痛。",
+    "romanization": "wǒ tóu tòng"
+  },
+  "42": {
+    "text": "最近的藥局在哪裡？",
+    "romanization": "zuì jìn de yào jú zài nǎ lǐ"
+  },
+  "43": {
+    "text": "這個需要處方箋嗎？",
+    "romanization": "zhè ge xū yào chǔ fāng jiān ma"
+  },
+  "44": {
+    "text": "我的護照不見了。",
+    "romanization": "wǒ de hù zhào bú jiàn le"
+  },
+  "45": {
+    "text": "警察局在哪裡？",
+    "romanization": "jǐng chá jú zài nǎ lǐ"
+  },
+  "46": {
+    "text": "可以請你幫幫我嗎？",
+    "romanization": "kě yǐ qǐng nǐ bāng bāng wǒ ma"
+  },
+  "47": {
+    "text": "我想我把包包忘在計程車上了。",
+    "romanization": "wǒ xiǎng wǒ bǎ bāo bao wàng zài jì chéng chē shàng le"
+  },
+  "48": {
+    "text": "請叫救護車。",
+    "romanization": "qǐng jiào jiù hù chē"
+  },
+  "49": {
+    "text": "附近有醫院嗎？",
+    "romanization": "fù jìn yǒu yī yuàn ma"
+  },
+  "50": {
+    "text": "可以推薦這附近不錯的餐廳嗎？",
+    "romanization": "kě yǐ tuī jiàn zhè fù jìn bú cuò de cān tīng ma"
+  },
+  "51": {
+    "text": "當地有什麼特色料理？",
+    "romanization": "dāng dì yǒu shén me tè sè liào lǐ"
+  },
+  "52": {
+    "text": "我想試試傳統的東西。",
+    "romanization": "wǒ xiǎng shì shi chuán tǒng de dōng xi"
+  },
+  "53": {
+    "text": "會辣嗎？",
+    "romanization": "huì là ma"
+  },
+  "54": {
+    "text": "我們可以坐外面嗎？",
+    "romanization": "wǒ men kě yǐ zuò wài miàn ma"
+  },
+  "55": {
+    "text": "我們不趕時間。",
+    "romanization": "wǒ men bù gǎn shí jiān"
+  },
+  "56": {
+    "text": "餐點很好吃，謝謝。",
+    "romanization": "cān diǎn hěn hǎo chī xiè xie"
+  },
+  "57": {
+    "text": "可以給我一杯不加冰的水嗎？",
+    "romanization": "kě yǐ gěi wǒ yì bēi bù jiā bīng de shuǐ ma"
+  },
+  "58": {
+    "text": "這道菜有用海鮮嗎？",
+    "romanization": "zhè dào cài yǒu yòng hǎi xiān ma"
+  },
+  "59": {
+    "text": "這個可以外帶嗎？",
+    "romanization": "zhè ge kě yǐ wài dài ma"
+  },
+  "60": {
+    "text": "營業時間是幾點到幾點？",
+    "romanization": "yíng yè shí jiān shì jǐ diǎn dào jǐ diǎn"
+  },
+  "61": {
+    "text": "裡面可以拍照嗎？",
+    "romanization": "lǐ miàn kě yǐ pāi zhào ma"
+  },
+  "62": {
+    "text": "有英文導覽嗎？",
+    "romanization": "yǒu yīng wén dǎo lǎn ma"
+  },
+  "63": {
+    "text": "博物館星期天免費嗎？",
+    "romanization": "bó wù guǎn xīng qí tiān miǎn fèi ma"
+  },
+  "64": {
+    "text": "我應該提早多久到？",
+    "romanization": "wǒ yīng gāi tí zǎo duō jiǔ dào"
+  },
+  "65": {
+    "text": "網路買票會比較便宜嗎？",
+    "romanization": "wǎng lù mǎi piào huì bǐ jiào pián yí ma"
+  },
+  "66": {
+    "text": "用這些票可以不用排隊嗎？",
+    "romanization": "yòng zhè xiē piào kě yǐ bú yòng pái duì ma"
+  },
+  "67": {
+    "text": "我來這裡有什麼一定不能錯過的？",
+    "romanization": "wǒ lái zhè lǐ yǒu shén me yí dìng bù néng cuò guò de"
+  },
+  "68": {
+    "text": "可以幫我們拍張照嗎？",
+    "romanization": "kě yǐ bāng wǒ men pāi zhāng zhào ma"
+  },
+  "69": {
+    "text": "晚上在附近走走安全嗎？",
+    "romanization": "wǎn shàng zài fù jìn zǒu zou ān quán ma"
+  },
+  "70": {
+    "text": "我是來度假的。",
+    "romanization": "wǒ shì lái dù jià de"
+  },
+  "71": {
+    "text": "我是來出差的。",
+    "romanization": "wǒ shì lái chū chāi de"
+  },
+  "72": {
+    "text": "我會在這裡待一個星期。",
+    "romanization": "wǒ huì zài zhè lǐ dāi yí ge xīng qí"
+  },
+  "73": {
+    "text": "這是我第一次來這個國家。",
+    "romanization": "zhè shì wǒ dì yī cì lái zhè ge guó jiā"
+  },
+  "74": {
+    "text": "在地人中午會在這附近吃哪裡？",
+    "romanization": "zài dì rén zhōng wǔ huì zài zhè fù jìn chī nǎ lǐ"
+  },
+  "75": {
+    "text": "你去過最美的地方是哪裡？",
+    "romanization": "nǐ qù guò zuì měi de dì fāng shì nǎ lǐ"
+  },
+  "76": {
+    "text": "飛行時間很長，但風景很值得。",
+    "romanization": "fēi xíng shí jiān hěn cháng dàn fēng jǐng hěn zhí dé"
+  },
+  "77": {
+    "text": "我正在學幾句你們的語言。",
+    "romanization": "wǒ zhèng zài xué jǐ jù nǐ men de yǔ yán"
+  },
+  "78": {
+    "text": "祝你晚上愉快，也謝謝你的一切幫忙。",
+    "romanization": "zhù nǐ wǎn shàng yú kuài yě xiè xie nǐ de yí qiè bāng máng"
+  },
+  "79": {
+    "text": "希望有一天我能再回來這裡。",
+    "romanization": "xī wàng yǒu yì tiān wǒ néng zài huí lái zhè lǐ"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Vad innebär det att leva ett gott liv?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Hur vet vi det vi vet?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Finns det en skillnad mellan att veta och att tro?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Varför finns det något snarare än inget?",
+    "romanization": null
+  },
+  "4": {
+    "text": "Vad gör att en person förblir samma person över tid?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Kan en maskin tänka?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Är världen vi ser den verkliga världen?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Vad är vi skyldiga människor vi aldrig kommer att träffa?",
+    "romanization": null
+  },
+  "8": {
+    "text": "Varför är det så svårt att ändra sig?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Vad innebär det att två personer är överens?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Är sanningen uppfunnen eller upptäckt?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Varför upplever vi tid som vi gör?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Varifrån kommer meningen?",
+    "romanization": null
+  },
+  "13": {
+    "text": "Vad är egentligen fri vilja?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Är lycka en känsla eller en praktik?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Det rätta är ibland svårt att känna igen.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Goda avsikter garanterar inte goda resultat.",
+    "romanization": null
+  },
+  "17": {
+    "text": "De flesta etiska frågor handlar om att väga olika goda ting mot varandra.",
+    "romanization": null
+  },
+  "18": {
+    "text": "En liten lögn kan göra stor skada.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Ärlighet är lättare i en vänlig miljö.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Grymhet döljer sig ofta bakom små vanor.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Vissa regler är bra eftersom de besparar oss från att behöva tänka.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Ibland är reglerna själva problemet.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Ett löfte är en liten satsning på ditt framtida jag.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Människor bedömer handlingar efter resultat och regler efter avsikter.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Hyckleri är lättare att se hos andra.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Förlåtelse är delvis en gåva till den som förlåter.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Empati är en muskel som blir starkare när den används.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Rättvisa är inte samma sak som hämnd.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Makt prövar karaktären mer än fattigdom gör.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Att inte göra något är också ett val.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Den svåraste dygden är tålamod.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Små vänligheter ackumuleras.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Ett samhälle kan bedömas efter hur det behandlar de svagaste.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Mod är att agera väl trots rädsla.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Vi kan vara självsäkra och ha fel samtidigt.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Bevis är det som får ett försiktigt sinne att ändra sig.",
+    "romanization": null
+  },
+  "37": {
+    "text": "De flesta övertygelser kommer i grupper, inte en i taget.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Vi tenderar att minnas de gånger vi hade rätt.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Tvivel är obekvämt men användbart.",
+    "romanization": null
+  },
+  "40": {
+    "text": "En bra fråga är svårare än ett smart svar.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Vissa frågor har inte ett enda rätt svar.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Modeller är felaktiga men vissa är användbara.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Kartan är inte territoriet.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Namn formar vad vi lägger märke till.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Att läsa långsamt är en egen sorts tänkande.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Starka åsikter, löst hållna.",
+    "romanization": null
+  },
+  "47": {
+    "text": "De smartaste människorna ändrar sig mest.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Oenighet är inte samma sak som missförstånd.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Ibland har båda sidor delvis rätt.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Världen är äldre än någon förklaring av den.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Medvetandet är det märkligaste vi känner till.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Vi ser mindre av världen än vi tror.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Minnet skriver om sig självt varje gång vi använder det.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Två personer i samma rum kan uppleva olika rum.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Sinnet bygger den värld det lever i.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Vissa upplevelser kan inte uttryckas i ord.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Musik verkar tala direkt utan översättning.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Smärta är en lärare, även när den inte har någon läxa.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Skönhet är ibland en ledtråd.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Långtråkighet döljer ofta en fråga som behöver ställas.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Ensamhet klargör saker som folkmassor suddar ut.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Sömn är inte ingenting.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Döden ger form åt tiden.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Nuet är den enda plats där något någonsin händer.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Sokrates sade att ett oreflekterat liv inte är värt att leva.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Stoikerna försökte bara vilja det de hade.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Konfucius lärde ut vikten av små ritualer.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Buddha pekade på lidandets orsak.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aristoteles menade att dygd var en vana, inte en känsla.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Platon misstänkte att det vi ser är som skuggor.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Lao Tzu prisade vattnets väg.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Epikuros ville ha fridfulla nöjen, inte storslagna.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Diogenes undervisade genom att håna konventioner.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Många traditioner är mer överens än oense.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kant sade att man ska behandla människor som mål i sig, inte bara som medel.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Hume noterade att förnuftet ensamt inte får oss att bry oss.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Nietzsche skrev att svåra sanningar också kan vara gåvor.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Wittgenstein sade att gränserna för vårt språk är gränserna för vår värld.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Simone de Beauvoir hävdade att vi blir oss själva genom våra val.",
+    "romanization": null
+  },
+  "80": {
+    "text": "William James sade att tro formar vad vi kan göra.",
+    "romanization": null
+  },
+  "81": {
+    "text": "John Rawls frågade vilka regler vi skulle acceptera om vi inte visste vilka vi skulle vara.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hannah Arendt varnade för att ondska kan vara vardaglig.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Iris Murdoch sade att kärlek är det hårda arbetet med att vara uppmärksam.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Många moderna filosofer lånar fritt från många traditioner.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Börja med det arbete du faktiskt kan göra idag.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Lyssna som om du skulle kunna ha fel.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Försök att vilja mindre innan du tjänar mer.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Lägg märke till vad du gör när ingen ser.",
+    "romanization": null
+  },
+  "89": {
+    "text": "En promenad är en liten filosofi.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Det svåraste argumentet att föra är det du är skyldig dig själv.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Håll åsikter som du håller ett verktyg.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Tolka andras ord på bästa möjliga sätt.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Öva tacksamhet på vanliga morgnar, inte bara speciella.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Den kortaste vägen går ibland genom frågan.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Förundran är en sorts uppmärksamhet.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Läs gamla böcker åtminstone ibland.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Var oense på ett bra sätt och relationen överlever.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Ett gott liv är många små goda dagar.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Det finns inget sista ord.",
+    "romanization": null
+  }
+}

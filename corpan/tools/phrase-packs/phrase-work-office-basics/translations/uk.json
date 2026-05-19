@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Зустріч починається за десять хвилин.",
+    "romanization": "Zustrich pochynaietsia za desiat khvylyn."
+  },
+  "1": {
+    "text": "Можете увімкнути демонстрацію екрана?",
+    "romanization": "Mozhete uvimknuty demonstratsiiu ekrana?"
+  },
+  "2": {
+    "text": "Вибачте, у мене був вимкнений мікрофон.",
+    "romanization": "Vybachte, u mene buv vymknenyi mikrofon."
+  },
+  "3": {
+    "text": "Ми вже виходимо за відведений час.",
+    "romanization": "My vzhe vykhodymo za vidvedenyi chas."
+  },
+  "4": {
+    "text": "Перенесімо це на наступну зустріч.",
+    "romanization": "Perenesimo tse na nastupnu zustrich."
+  },
+  "5": {
+    "text": "Я занотую.",
+    "romanization": "Ya zanotuiu."
+  },
+  "6": {
+    "text": "Можемо пройтися по всіх у кімнаті?",
+    "romanization": "Mozhemo proitysia po vsikh u kimnati?"
+  },
+  "7": {
+    "text": "Порядок денний є в запрошенні в календарі.",
+    "romanization": "Poriadok dennyi ye v zaproshenni v kalendari."
+  },
+  "8": {
+    "text": "Хто веде цю зустріч?",
+    "romanization": "Khto vede tsiu zustrich?"
+  },
+  "9": {
+    "text": "Ми це записуємо?",
+    "romanization": "My tse zapysuiemo?"
+  },
+  "10": {
+    "text": "Дзвінок обірвався на півдорозі.",
+    "romanization": "Dzvinok obirvavsia na pivdorozi."
+  },
+  "11": {
+    "text": "Можемо посунути це на п'ятнадцять хвилин?",
+    "romanization": "Mozhemo posunuty tse na piatnadtsiat khvylyn?"
+  },
+  "12": {
+    "text": "Він зайшов із запізненням, але тихо.",
+    "romanization": "Vin zaishov iz zapiznenniam, ale tykho."
+  },
+  "13": {
+    "text": "Кімнату знову забронювали двічі.",
+    "romanization": "Kimnatu znovu zabroniuvaly dvichi."
+  },
+  "14": {
+    "text": "Відкладімо це й повернімося до нього пізніше.",
+    "romanization": "Vidkladimo tse y povernimosia do noho piznishe."
+  },
+  "15": {
+    "text": "О третій я мушу точно закінчити.",
+    "romanization": "O tretii ya mushu tochno zakinchyty."
+  },
+  "16": {
+    "text": "Можете залишитися ще на дві хвилини після зустрічі?",
+    "romanization": "Mozhete zalyshytysia shche na dvi khvylyny pislia zustrichi?"
+  },
+  "17": {
+    "text": "На дошці вже немає місця.",
+    "romanization": "Na doshtsi vzhe nemaie mistsia."
+  },
+  "18": {
+    "text": "Можете коротко підсумувати подальші кроки?",
+    "romanization": "Mozhete korotko pidsumuvaty podalshi kroky?"
+  },
+  "19": {
+    "text": "Регулярні короткі зустрічі на диво швидко минають.",
+    "romanization": "Rehuliarni korotki zustrichi na dyvo shvydko mynaiut."
+  },
+  "20": {
+    "text": "Я повернуся з відповіддю до кінця дня.",
+    "romanization": "Ya povernusia z vidpoviddiu do kintsia dnia."
+  },
+  "21": {
+    "text": "Мій останній лист дійшов?",
+    "romanization": "Mii ostannii lyst diishov?"
+  },
+  "22": {
+    "text": "Вибачте за пізню відповідь.",
+    "romanization": "Vybachte za pizniu vidpovid."
+  },
+  "23": {
+    "text": "Додаю Сару до цієї розмови.",
+    "romanization": "Dodaiu Saru do tsiiei rozmovy."
+  },
+  "24": {
+    "text": "Вкладення не прикріпилося.",
+    "romanization": "Vkladennia ne prykripylosia."
+  },
+  "25": {
+    "text": "Я позначив це як термінове.",
+    "romanization": "Ya poznachyv tse yak terminove."
+  },
+  "26": {
+    "text": "Можете надіслати той файл ще раз?",
+    "romanization": "Mozhete nadislaty toi fail shche raz?"
+  },
+  "27": {
+    "text": "Ланцюжок став довгим, тож коротко підсумую.",
+    "romanization": "Lantsiuzhok stav dovhym, tozh korotko pidsumuiu."
+  },
+  "28": {
+    "text": "Впишіть це в тему листа, щоб я міг його знайти.",
+    "romanization": "Vpyshit tse v temu lysta, shchob ya mih yoho znaity."
+  },
+  "29": {
+    "text": "За вихідні він розібрав свою пошту.",
+    "romanization": "Za vykhidni vin rozibrav svoiu poshtu."
+  },
+  "30": {
+    "text": "Будь ласка, дайте відповідь до п'ятниці.",
+    "romanization": "Bud laska, daite vidpovid do piatnytsi."
+  },
+  "31": {
+    "text": "Я надішлю коротке повідомлення, коли все буде готово.",
+    "romanization": "Ya nadishliu korotke povidomlennia, koly vse bude hotovo."
+  },
+  "32": {
+    "text": "Автовідповідь каже, що він у відрядженні.",
+    "romanization": "Avtovidpovid kazhe, shcho vin u vidriadzhenni."
+  },
+  "33": {
+    "text": "Вона випадково поставила в копію не ту людину.",
+    "romanization": "Vona vypadkovo postavyla v kopiiu ne tu liudynu."
+  },
+  "34": {
+    "text": "Трьох нагадувань уже досить.",
+    "romanization": "Tr'okh nahaduvan uzhe dosyt."
+  },
+  "35": {
+    "text": "Можете переслати мені весь ланцюжок?",
+    "romanization": "Mozhete pereslaty meni ves lantsiuzhok?"
+  },
+  "36": {
+    "text": "Для цього чат швидший за електронну пошту.",
+    "romanization": "Dlia tsoho chat shvydshyi za elektronnu poshtu."
+  },
+  "37": {
+    "text": "Я пропустив ваше повідомлення серед усього шуму.",
+    "romanization": "Ya propustyv vashe povidomlennia sered us'oho shumu."
+  },
+  "38": {
+    "text": "Посилання у вашому листі веде на неіснуючу сторінку.",
+    "romanization": "Posylannia u vashomu lysti vede na neisnuiuchu storinku."
+  },
+  "39": {
+    "text": "Будь ласка, підтвердьте, що отримали це.",
+    "romanization": "Bud laska, pidtverdte, shcho otrymaly tse."
+  },
+  "40": {
+    "text": "Кінцевий термін — п'ятниця, опівдні.",
+    "romanization": "Kintsevyi termin — piatnytsia, opivdni."
+  },
+  "41": {
+    "text": "Першу чернетку матиму до середи.",
+    "romanization": "Pershu chernetku matymu do seredy."
+  },
+  "42": {
+    "text": "Нам потрібно випустити хоч щось цього тижня.",
+    "romanization": "Nam potribno vypustyty khoch shchos tsoho tyzhnia."
+  },
+  "43": {
+    "text": "Проєкт зсунувся на день.",
+    "romanization": "Proiekt zsunuvsia na den."
+  },
+  "44": {
+    "text": "Можете вичитати це, перш ніж я надішлю?",
+    "romanization": "Mozhete vychytaty tse, persh nizh ya nadishliu?"
+  },
+  "45": {
+    "text": "Я винен вам оновлення щодо статусу.",
+    "romanization": "Ya vynen vam onovlennia shchodo statusu."
+  },
+  "46": {
+    "text": "Цифри не збігаються з тими, що я надсилав минулого тижня.",
+    "romanization": "Tsyfry ne zbihaiutsia z tymy, shcho ya nadsylav mynuloho tyzhnia."
+  },
+  "47": {
+    "text": "Ми не можемо рухатися далі без рішення клієнта.",
+    "romanization": "My ne mozhemo rukhatysia dali bez rishennia kliienta."
+  },
+  "48": {
+    "text": "Він працював під час обіду, щоб це доробити.",
+    "romanization": "Vin pratsiuvav pid chas obidu, shchob tse dorobyty."
+  },
+  "49": {
+    "text": "Звіт нарешті вже не на мені.",
+    "romanization": "Zvit nareshti vzhe ne na meni."
+  },
+  "50": {
+    "text": "Почну, щойно отримаю погодження.",
+    "romanization": "Pochnu, shchoino otrymaiu pohodzhennia."
+  },
+  "51": {
+    "text": "Можете затвердити цю версію?",
+    "romanization": "Mozhete zatverdyty tsiu versiiu?"
+  },
+  "52": {
+    "text": "Вона помітила друкарську помилку прямо перед випуском.",
+    "romanization": "Vona pomityla drukarsku pomylku priamo pered vypuskom."
+  },
+  "53": {
+    "text": "Ми перенесли запуск на наступний вівторок.",
+    "romanization": "My perenesly zapusk na nastupnyi vivtorok."
+  },
+  "54": {
+    "text": "Оцінка виявилася заниженою вдвічі.",
+    "romanization": "Otsinka vyiavylasia zanyzhenoiu vdvichi."
+  },
+  "55": {
+    "text": "Він звільнив собі другу половину дня, щоб зосередитися.",
+    "romanization": "Vin zvilnyv sobi druhu polovynu dnia, shchob zoseredytysia."
+  },
+  "56": {
+    "text": "Договір повернувся підписаним.",
+    "romanization": "Dohovir povernuvsia pidpysanym."
+  },
+  "57": {
+    "text": "Вважаймо це завершеним і рухаймося далі.",
+    "romanization": "Vvazhaimo tse zavershenym i rukhaimosia dali."
+  },
+  "58": {
+    "text": "Перша версія ще сира, але працює.",
+    "romanization": "Persha versiia shche syra, ale pratsiuie."
+  },
+  "59": {
+    "text": "Цього разу він здав усе раніше строку.",
+    "romanization": "Ts'oho razu vin zdav use ranishe stroku."
+  },
+  "60": {
+    "text": "Вітаємо в команді.",
+    "romanization": "Vitaiemo v komandi."
+  },
+  "61": {
+    "text": "Я познайомлю вас з іншими.",
+    "romanization": "Ya poznaiomliu vas z inshymy."
+  },
+  "62": {
+    "text": "Вона щойно повернулася з відпустки.",
+    "romanization": "Vona shchoino povernulasia z vidpustky."
+  },
+  "63": {
+    "text": "Саме до нього варто звернутися з цим питанням.",
+    "romanization": "Same do noho varto zvernutysia z tsym pytanniam."
+  },
+  "64": {
+    "text": "Щовівторка ми ділимо один стіл.",
+    "romanization": "Shchovivtorka my dilymo odyn stil."
+  },
+  "65": {
+    "text": "Хто найкраще розбирається в цінах?",
+    "romanization": "Khto naikrashche rozbyraietsia v tsinakh?"
+  },
+  "66": {
+    "text": "Він завжди приносить каву для команди.",
+    "romanization": "Vin zavzhdy prynosyt kavu dlia komandy."
+  },
+  "67": {
+    "text": "Новачок швидко вчиться.",
+    "romanization": "Novachok shvydko vchytsia."
+  },
+  "68": {
+    "text": "Вона тісно співпрацює з маркетингом.",
+    "romanization": "Vona tisno spivpratsiuie z marketynhom."
+  },
+  "69": {
+    "text": "Він працює тут довше за всіх.",
+    "romanization": "Vin pratsiuie tut dovshe za vsikh."
+  },
+  "70": {
+    "text": "Вони поділили роботу рівно навпіл.",
+    "romanization": "Vony podilyly robotu rivno navpil."
+  },
+  "71": {
+    "text": "Ми сходили на обід і накидали план.",
+    "romanization": "My skhodyly na obid i nakydaly plan."
+  },
+  "72": {
+    "text": "Він підстрахував мене, поки я хворів.",
+    "romanization": "Vin pidstrakhuvav mene, poky ya khvoriv."
+  },
+  "73": {
+    "text": "Команда зібралася навколо ноутбука.",
+    "romanization": "Komanda zibralasia navkolo noutbuka."
+  },
+  "74": {
+    "text": "Вона пам'ятає дні народження всіх колег.",
+    "romanization": "Vona pam'iataie dni narodzhennia vsikh koleh."
+  },
+  "75": {
+    "text": "Завтра я долучуся віддалено.",
+    "romanization": "Zavtra ya doluchusia viddaleno."
+  },
+  "76": {
+    "text": "У п'ятницю офіс здебільшого порожній.",
+    "romanization": "U piatnytsiu ofis zdebilshoho porozhnii."
+  },
+  "77": {
+    "text": "Сьогодні в мене нестабільний інтернет.",
+    "romanization": "Sohodni v mene nestabilnyi internet."
+  },
+  "78": {
+    "text": "Він працює з іншого міста.",
+    "romanization": "Vin pratsiuie z inshoho mista."
+  },
+  "79": {
+    "text": "Команда зустрічається наживо раз на місяць.",
+    "romanization": "Komanda zustrichaietsia nazhyvo raz na misiats."
+  },
+  "80": {
+    "text": "Вона облаштувала робочий куточок у спальні.",
+    "romanization": "Vona oblashtuvala robochyi kutochok u spalni."
+  },
+  "81": {
+    "text": "Домашній офіс нарешті прибраний.",
+    "romanization": "Domashnii ofis nareshti prybranyi."
+  },
+  "82": {
+    "text": "Можете увімкнути камеру?",
+    "romanization": "Mozhete uvimknuty kameru?"
+  },
+  "83": {
+    "text": "Фоновий шум не страшний, не хвилюйтеся.",
+    "romanization": "Fonovyi shum ne strashnyi, ne khvyliuitesia."
+  },
+  "84": {
+    "text": "Щоранку ми робимо короткий чекін.",
+    "romanization": "Shchoranku my robymo korotkyi chekin."
+  },
+  "85": {
+    "text": "Принтер знову зажував папір.",
+    "romanization": "Prynter znovu zazhuvav papir."
+  },
+  "86": {
+    "text": "У кавомашині закінчилися зерна.",
+    "romanization": "U kavomashyni zakinchylysia zerna."
+  },
+  "87": {
+    "text": "Можете відчинити двері?",
+    "romanization": "Mozhete vidchynyty dveri?"
+  },
+  "88": {
+    "text": "Вікно в переговорній не відчиняється.",
+    "romanization": "Vikno v perehovornii ne vidchyniaietsia."
+  },
+  "89": {
+    "text": "Хтось залишив свій обід у холодильнику на тиждень.",
+    "romanization": "Khtos zalyshyv svii obid u kholodylnyku na tyzhden."
+  },
+  "90": {
+    "text": "О третій годині на кухні тихо.",
+    "romanization": "O tretii hodyni na kukhni tykho."
+  },
+  "91": {
+    "text": "Він піднявся сходами, щоб провітрити голову.",
+    "romanization": "Vin pidniavsia skhodamy, shchob provitryty holovu."
+  },
+  "92": {
+    "text": "Рослина на підвіконні добре почувається.",
+    "romanization": "Roslyna na pidvikonni dobre pochuvaietsia."
+  },
+  "93": {
+    "text": "Можете підписатися за посилку на рецепції?",
+    "romanization": "Mozhete pidpysatysia za posylku na retseptsii?"
+  },
+  "94": {
+    "text": "Зчитувач бейджів знову вередує.",
+    "romanization": "Zchytuvach beidzhiv znovu vereduie."
+  },
+  "95": {
+    "text": "Кінець дня завжди підкрадається непомітно.",
+    "romanization": "Kinets dnia zavzhdy pidkradaietsia nepomitno."
+  },
+  "96": {
+    "text": "Йому найкраще працюється, коли відкрите лише одне вікно.",
+    "romanization": "Yomu naikrashche pratsiuietsia, koly vidkryte lyshe odne vikno."
+  },
+  "97": {
+    "text": "Вона запалює свічку, щоб позначити початок робочого дня.",
+    "romanization": "Vona zapaliuie svichku, shchob poznachyty pochatok robochoho dnia."
+  },
+  "98": {
+    "text": "Коротка прогулянка після обіду допомагає мені думати.",
+    "romanization": "Korotka prohulianka pislia obidu dopomahaie meni dumaty."
+  },
+  "99": {
+    "text": "Деякі понеділки починаються з маленької перемоги.",
+    "romanization": "Deiaki ponedilky pochynaiutsia z malen'koi peremohy."
+  }
+}

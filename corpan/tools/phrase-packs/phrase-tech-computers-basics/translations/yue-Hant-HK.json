@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "閂之前記得儲存個檔案呀。",
+    "romanization": "saan1 zi1 cin4 gei3 dak1 co5 cyun4 go3 dong2 on3 aa3."
+  },
+  "1": {
+    "text": "你可唔可以send個文件俾我呀？",
+    "romanization": "nei5 ho2 m4 ho2 ji5 send1 go3 man4 gin2 bei2 ngo5 aa3?"
+  },
+  "2": {
+    "text": "個文件夾喺個桌面度。",
+    "romanization": "go3 man4 gin2 gaap3 hai2 go3 zo1 min2 dou6."
+  },
+  "3": {
+    "text": "我搵唔到我琴日儲存咗嗰個檔案。",
+    "romanization": "ngo5 wan2 m4 dou2 ngo5 kam4 jat6 co5 cyun4 zo2 go2 go3 dong2 on3."
+  },
+  "4": {
+    "text": "成個硬碟機搵吓個名啦。",
+    "romanization": "sing4 go3 ngaang6 dip6 gei1 wan2 haa5 go3 ming2 laa1."
+  },
+  "5": {
+    "text": "佢唔小心改錯咗個檔案名。",
+    "romanization": "keoi5 m4 siu2 sam1 goi2 co3 zo2 go3 dong2 on3 ming2."
+  },
+  "6": {
+    "text": "個下載咗嘅嘢去咗錯嘅文件夾度。",
+    "romanization": "go3 haa6 zoi3 zo2 ge3 je5 heoi3 zo2 co3 ge3 man4 gin2 gaap3 dou6."
+  },
+  "7": {
+    "text": "個檔案太大喇，send唔到email。",
+    "romanization": "go3 dong2 on3 taai3 daai6 laa3, send1 m4 dou2 email."
+  },
+  "8": {
+    "text": "你可唔可以壓縮佢做個zip檔呀？",
+    "romanization": "nei5 ho2 m4 ho2 ji5 aak1 sok3 keoi5 zou6 go3 zip1 dong2 aa3?"
+  },
+  "9": {
+    "text": "個雲端文件夾會自動同步㗎。",
+    "romanization": "go3 wan4 dyun1 man4 gin2 gaap3 wui5 zi6 dung6 tung4 bu6 gaa2."
+  },
+  "10": {
+    "text": "佢將所有嘢都分晒日期放喺唔同嘅子文件夾度。",
+    "romanization": "keoi5 zoeng1 so2 jau5 je5 dou1 fan1 saai3 jat6 kei4 fong3 hai2 m4 tung4 ge3 zi2 man4 gin2 gaap3 dou6."
+  },
+  "11": {
+    "text": "個垃圾桶仲多嘢過硬碟機其他地方。",
+    "romanization": "go3 laap6 saap3 tung2 zung6 do1 je5 gwo3 ngaang6 dip6 gei1 kei4 taa1 dei6 fong1."
+  },
+  "12": {
+    "text": "佢每個project都有做備份。",
+    "romanization": "keoi5 mui5 go3 project dou1 jau5 zou6 bei6 fan6."
+  },
+  "13": {
+    "text": "個共享文件夾更新咗喇，大家都有份。",
+    "romanization": "go3 gung6 goeng2 man4 gin2 gaap3 gang1 san1 zo2 laa3, daai6 gaa1 dou1 jau5 fan6."
+  },
+  "14": {
+    "text": "搵唔到嘅檔案，等如冇存在過咁滯。",
+    "romanization": "wan2 m4 dou2 ge3 dong2 on3, dang2 jyu4 mou5 cyun4 zoi6 gwo3 gam2 zai6."
+  },
+  "15": {
+    "text": "我唔記得咗個密碼喇。",
+    "romanization": "ngo5 m4 gei3 dak1 zo2 go3 mat6 maa5 laa3."
+  },
+  "16": {
+    "text": "喺登入畫面度重設返個密碼啦。",
+    "romanization": "hai2 dang1 jap6 waa2 min2 dou6 cung4 cit3 faan1 go3 mat6 maa5 laa1."
+  },
+  "17": {
+    "text": "唔好所有嘢都用同一個密碼呀。",
+    "romanization": "m4 hou2 so2 jau5 je5 dou1 jung6 tung4 jat1 go3 mat6 maa5 aa3."
+  },
+  "18": {
+    "text": "密碼管理員會幫你記住晒㗎。",
+    "romanization": "mat6 maa5 gun2 lei5 jyun4 wui5 bong1 nei5 gei3 zyu6 saai3 gaa2."
+  },
+  "19": {
+    "text": "雙重認證係多咗個步驟，但係安全好多。",
+    "romanization": "soeng1 cung4 jing6 zing3 hai6 do1 zo2 go3 bou6 zou6, daan6 hai6 on1 cyun4 hou2 do1."
+  },
+  "20": {
+    "text": "睇吓你個email有冇驗證碼呀。",
+    "romanization": "tai2 haa5 nei5 go3 email jau5 mou5 jim6 zing3 maa5 aa3."
+  },
+  "21": {
+    "text": "條link十五分鐘之後就過期喇。",
+    "romanization": "tiu4 link1 sap6 ng5 fan1 zung1 zi1 hau6 zau6 gwo3 kei4 laa3."
+  },
+  "22": {
+    "text": "佢為咗個project開咗個新戶口。",
+    "romanization": "keoi5 wai6 zo2 go3 project hoi1 zo2 go3 san1 wu6 hau2."
+  },
+  "23": {
+    "text": "佢用完共用電腦會登出㗎。",
+    "romanization": "keoi5 jung6 jyun4 gung6 jung6 din6 nou5 wui5 dang1 ceot1 gaa2."
+  },
+  "24": {
+    "text": "個用戶名已經俾人用咗喇。",
+    "romanization": "go3 jung6 wu6 ming2 ji5 ging1 bei2 jan4 jung6 zo2 laa3."
+  },
+  "25": {
+    "text": "將個還原碼儲存喺安全嘅地方啦。",
+    "romanization": "zoeng1 go3 waan4 jyun4 maa5 co5 cyun4 hai2 on1 cyun4 ge3 dei6 fong1 laa1."
+  },
+  "26": {
+    "text": "唔好亂咁撳啲可疑嘅登入連結呀。",
+    "romanization": "m4 hou2 lyun6 gam2 gam6 di1 ho2 ji4 ge3 dang1 jap6 lin4 git3 aa3."
+  },
+  "27": {
+    "text": "你搬屋嗰陣記得更新返個還原電郵呀。",
+    "romanization": "nei5 bun1 uk1 go2 zan6 gei3 dak1 gang1 san1 faan1 go3 waan4 jyun4 din6 jau4 aa3."
+  },
+  "28": {
+    "text": "密鑰快過密碼好多㗎。",
+    "romanization": "mat6 joek3 faai3 gwo3 mat6 maa5 hou2 do1 gaa2."
+  },
+  "29": {
+    "text": "而家你部電話都係一個戶口嚟㗎喇。",
+    "romanization": "ji4 gaa1 nei5 bou6 din6 waa2 dou1 hai6 jat1 go3 wu6 hau2 lai4 gaa2 laa3."
+  },
+  "30": {
+    "text": "你有冇試過重新開機呀？",
+    "romanization": "nei5 jau5 mou5 si3 gwo3 cung4 san1 hoi1 gei1 aa3?"
+  },
+  "31": {
+    "text": "條線鬆咗呀。",
+    "romanization": "tiu4 sin3 sung1 zo2 aa3."
+  },
+  "32": {
+    "text": "個mon窒咗一陣。",
+    "romanization": "go3 mon1 zat6 zo2 jat1 zan6."
+  },
+  "33": {
+    "text": "閂晒啲分頁再試過啦。",
+    "romanization": "saan1 saai3 di1 fan1 jip6 zoi3 si3 gwo3 laa1."
+  },
+  "34": {
+    "text": "睇吓你係咪連咗啱嘅網絡呀。",
+    "romanization": "tai2 haa5 nei5 hai6 mai6 lin4 zo2 ngaam1 ge3 mong5 lok6 aa3."
+  },
+  "35": {
+    "text": "個鍵盤冇反應呀。",
+    "romanization": "go3 gin6 pun4 mou5 faan2 jing3 aa3."
+  },
+  "36": {
+    "text": "個風扇嘈過平時好多。",
+    "romanization": "go3 fung1 sin3 cou4 gwo3 ping4 si4 hou2 do1."
+  },
+  "37": {
+    "text": "清咗個快取再重新載入啦。",
+    "romanization": "cing1 zo2 go3 faai3 ceoi2 zoi3 cung4 san1 zoi3 jap6 laa1."
+  },
+  "38": {
+    "text": "試吓用第二個瀏覽器啦。",
+    "romanization": "si3 haa5 jung6 dai6 ji6 go3 lau4 laam5 hei3 laa1."
+  },
+  "39": {
+    "text": "更新咗之後，個bug就搞掂咗喇。",
+    "romanization": "gang1 san1 zo2 zi1 hau6, go3 bug1 zau6 gaau2 dim6 zo2 laa3."
+  },
+  "40": {
+    "text": "個電通宵就冇晒電喇。",
+    "romanization": "go3 din6 tung1 siu1 zau6 mou5 saai3 din6 laa3."
+  },
+  "41": {
+    "text": "更新完之後，個webcam就用唔到喇。",
+    "romanization": "gang1 san1 jyun4 zi1 hau6, go3 webcam1 zau6 jung6 m4 dou2 laa3."
+  },
+  "42": {
+    "text": "有時最簡單嘅解決方法就係等一陣。",
+    "romanization": "jau5 si4 zeoi3 gaan2 daan1 ge3 gaai2 kyut3 fong1 faat3 zau6 hai6 dang2 jat1 zan6."
+  },
+  "43": {
+    "text": "重新開機其實解決到好多人唔肯承認嘅問題。",
+    "romanization": "cung4 san1 hoi1 gei1 kei4 sat6 gaai2 kyut3 dou2 hou2 do1 jan4 m4 hang2 sing4 jing6 ge3 man6 tai4."
+  },
+  "44": {
+    "text": "佢用好簡單嘅字眼解釋咗個錯誤訊息。",
+    "romanization": "keoi5 jung6 hou2 gaan2 daan1 ge3 zi6 ngaan5 gaai2 sik1 zo2 go3 co3 ng6 seon3 sik1."
+  },
+  "45": {
+    "text": "個網頁load極都load唔到。",
+    "romanization": "go3 mong5 jip6 load1 gik6 dou1 load1 m4 dou2."
+  },
+  "46": {
+    "text": "個網站個個都上唔到。",
+    "romanization": "go3 mong5 zaam6 go3 go3 dou1 soeng5 m4 dou2."
+  },
+  "47": {
+    "text": "記低佢做書籤啦，咁下次就搵得返。",
+    "romanization": "gei3 dai1 keoi5 zou6 syu1 cim1 laa1, gam2 haa6 ci3 zau6 wan2 dak1 faan1."
+  },
+  "48": {
+    "text": "email入面條link會喺新分頁度開。",
+    "romanization": "email jap6 min6 tiu4 link1 wui5 hai2 san1 fan1 jip6 dou6 hoi1."
+  },
+  "49": {
+    "text": "條片不停咁load。",
+    "romanization": "tiu4 pin2 bat1 ting4 gam2 load1."
+  },
+  "50": {
+    "text": "後面間房個訊號好弱。",
+    "romanization": "hau6 min6 gaan1 fong2 go3 seon3 hou6 hou2 joek6."
+  },
+  "51": {
+    "text": "你可唔可以share條link俾我呀？",
+    "romanization": "nei5 ho2 m4 ho2 ji5 share1 tiu4 link1 bei2 ngo5 aa3?"
+  },
+  "52": {
+    "text": "個網站喺手機度睇會唔同樣㗎。",
+    "romanization": "go3 mong5 zaam6 hai2 sau2 gei1 dou6 tai2 wui5 m4 tung4 joeng2 gaa2."
+  },
+  "53": {
+    "text": "個彈出視窗叫我接受cookies。",
+    "romanization": "go3 daan6 ceot1 si6 coeng1 giu3 ngo5 zip3 sau6 cookies."
+  },
+  "54": {
+    "text": "個廣告好難閂。",
+    "romanization": "go3 gwong2 gou3 hou2 naan4 saan1."
+  },
+  "55": {
+    "text": "佢每部機都裝咗廣告攔截器。",
+    "romanization": "keoi5 mui5 bou6 gei1 dou1 zong1 zo2 gwong2 gou3 laan4 zit6 hei3."
+  },
+  "56": {
+    "text": "搜尋結果多到睇唔晒。",
+    "romanization": "sau2 cam4 git3 gwo2 do1 dou3 tai2 m4 saai3."
+  },
+  "57": {
+    "text": "用引號嚟收窄個搜尋範圍啦。",
+    "romanization": "jung6 jan5 hou6 lai4 sau1 zaak3 go3 sau2 cam4 faan6 wai4 laa1."
+  },
+  "58": {
+    "text": "篇文而家要俾錢先睇到喇。",
+    "romanization": "pin1 man2 ji4 gaa1 jiu3 bei2 cin2 sin1 tai2 dou2 laa3."
+  },
+  "59": {
+    "text": "呢個網頁係嚟自我信得過嘅網站。",
+    "romanization": "ni1 go3 mong5 jip6 hai6 lai4 zi6 ngo5 seon3 dak1 gwo3 ge3 mong5 zaam6."
+  },
+  "60": {
+    "text": "個app通宵自動更新咗。",
+    "romanization": "go3 app1 tung1 siu1 zi6 dung6 gang1 san1 zo2."
+  },
+  "61": {
+    "text": "新版本個樣完全唔同晒。",
+    "romanization": "san1 baan2 bun2 go3 joeng2 jyun4 cyun4 m4 tung4 saai3."
+  },
+  "62": {
+    "text": "佢剷走咗啲佢從來都冇開過嘅app。",
+    "romanization": "keoi5 caan2 zau2 zo2 di1 keoi5 cung4 loi4 dou1 mou5 hoi1 gwo3 ge3 app1."
+  },
+  "63": {
+    "text": "個通知設定收埋喺個選單好入面。",
+    "romanization": "go3 tung1 zi1 cit3 ding6 sau1 maai4 hai2 go3 syun2 daan1 hou2 jap6 min6."
+  },
+  "64": {
+    "text": "開會嗰陣記得靜音呀。",
+    "romanization": "hoi1 wui5 go2 zan6 gei3 dak1 zing6 jam1 aa3."
+  },
+  "65": {
+    "text": "鍵盤快捷鍵快過用選單好多。",
+    "romanization": "gin6 pun4 faai3 git3 gin3 faai3 gwo3 jung6 syun2 daan1 hou2 do1."
+  },
+  "66": {
+    "text": "夜晚用深色模式對眼會舒服啲。",
+    "romanization": "je6 maan5 jung6 sam1 sik1 mou4 sik1 deoi3 ngaan5 wui5 syu1 fuk6 di1."
+  },
+  "67": {
+    "text": "熄咗自動播放佢啦。",
+    "romanization": "cik1 zo2 zi6 dung6 bo3 fong3 keoi5 laa1."
+  },
+  "68": {
+    "text": "個通知徽章點都唔會消失。",
+    "romanization": "go3 tung1 zi1 fai1 zoeng1 dim2 dou1 m4 wui5 siu1 sat1."
+  },
+  "69": {
+    "text": "佢將部手提電腦set到啱晒佢心水。",
+    "romanization": "keoi5 zoeng1 bou6 sau2 tai4 din6 nou5 set1 dou3 ngaam1 saai3 keoi5 sam1 seoi2."
+  },
+  "70": {
+    "text": "唔好開啲唔識嘅人send嚟嘅附件呀。",
+    "romanization": "m4 hou2 hoi1 di1 m4 sik1 ge3 jan4 send1 lai4 ge3 fu6 gin2 aa3."
+  },
+  "71": {
+    "text": "個訊息入面條link好似有啲可疑喎。",
+    "romanization": "go3 seon3 sik1 jap6 min6 tiu4 link1 hou2 ci5 jau5 di1 ho2 ji4 wo3."
+  },
+  "72": {
+    "text": "睇清楚寄件者嘅完整地址呀。",
+    "romanization": "tai2 cing1 co2 gei3 gin2 ze2 ge3 jyun4 zing2 dei6 zi2 aa3."
+  },
+  "73": {
+    "text": "機場嘅免費Wi-Fi係冇私隱㗎。",
+    "romanization": "gei1 coeng4 ge3 min5 fai3 Wi-Fi hai6 mou5 si1 jan2 gaa2."
+  },
+  "74": {
+    "text": "唔用嗰陣記得遮住個鏡頭呀。",
+    "romanization": "m4 jung6 go2 zan6 gei3 dak1 ze1 zyu6 go3 geng3 tau4 aa3."
+  },
+  "75": {
+    "text": "你行開嗰陣記得鎖mon呀。",
+    "romanization": "nei5 hang4 hoi1 go2 zan6 gei3 dak1 so2 mon1 aa3."
+  },
+  "76": {
+    "text": "講咗出嚟收唔返嘅資料要小心啲呀。",
+    "romanization": "gong2 zo2 ceot1 lai4 sau1 m4 faan1 ge3 zi1 liu2 jiu3 siu2 sam1 di1 aa3."
+  },
+  "77": {
+    "text": "睇清楚你同意緊啲乜嘢呀。",
+    "romanization": "tai2 cing1 co2 nei5 tung4 ji3 gan2 di1 mat6 je5 aa3."
+  },
+  "78": {
+    "text": "大部分資料外洩都係因為重複用密碼。",
+    "romanization": "daai6 bou6 fan6 zi1 liu2 ngoi6 sit3 dou1 hai6 jan1 wai6 cung4 fuk1 jung6 mat6 maa5."
+  },
+  "79": {
+    "text": "最簡單嘅騙案都仲work，就係因為佢夠簡單。",
+    "romanization": "zeoi3 gaan2 daan1 ge3 pin3 on3 dou1 zung6 work1, zau6 hai6 jan1 wai6 keoi5 gau3 gaan2 daan1."
+  },
+  "80": {
+    "text": "部手提電腦上次更新完之後慢咗好多。",
+    "romanization": "bou6 sau2 tai4 din6 nou5 soeng6 ci3 gang1 san1 jyun4 zi1 hau6 maan6 zo2 hou2 do1."
+  },
+  "81": {
+    "text": "個mon裂咗，但係都仲用得。",
+    "romanization": "go3 mon1 lit6 zo2, daan6 hai6 dou1 zung6 jung6 dak1."
+  },
+  "82": {
+    "text": "新mon今朝送到喇。",
+    "romanization": "san1 mon1 gam1 ziu1 sung3 dou3 laa3."
+  },
+  "83": {
+    "text": "佢插咗三條線先搵到啱嗰條。",
+    "romanization": "keoi5 caap3 zo2 saam1 tiu4 sin3 sin1 wan2 dou2 ngaam1 go2 tiu4."
+  },
+  "84": {
+    "text": "個電冇以前咁襟用喇。",
+    "romanization": "go3 din6 mou5 ji5 cin4 gam3 gam1 jung6 laa3."
+  },
+  "85": {
+    "text": "個鍵盤呢幾年積埋好多碎屑。",
+    "romanization": "go3 gin6 pun4 ni1 gei2 nin4 zik1 maai4 hou2 do1 seoi3 sit3."
+  },
+  "86": {
+    "text": "間房一熱，個風扇就會開。",
+    "romanization": "gaan1 fong2 jat1 jit6, go3 fung1 sin3 zau6 wui5 hoi1."
+  },
+  "87": {
+    "text": "部打印機又離線喇。",
+    "romanization": "bou6 daa2 jan3 gei1 jau6 lei4 sin3 laa3."
+  },
+  "88": {
+    "text": "個耳機有一邊冇聲。",
+    "romanization": "go3 ji5 gei1 jau5 jat1 bin1 mou5 seng1."
+  },
+  "89": {
+    "text": "佢用軟布抹個mon。",
+    "romanization": "keoi5 jung6 jyun5 bou3 maat3 go3 mon1."
+  },
+  "90": {
+    "text": "你可唔可以cap個圖呀？",
+    "romanization": "nei5 ho2 m4 ho2 ji5 cap1 go3 tou4 aa3?"
+  },
+  "91": {
+    "text": "個檔案係半夜send出嚟嘅。",
+    "romanization": "go3 dong2 on3 hai6 bun3 je6 send1 ceot1 lai4 ge3."
+  },
+  "92": {
+    "text": "個日曆邀請嚟咗兩次。",
+    "romanization": "go3 jat6 lik6 jiu1 cing2 lai4 zo2 loeng5 ci3."
+  },
+  "93": {
+    "text": "將個檔案拖入個視窗度。",
+    "romanization": "zoeng1 go3 dong2 on3 to1 jap6 go3 si6 coeng1 dou6."
+  },
+  "94": {
+    "text": "右撳滑鼠睇多啲選項啦。",
+    "romanization": "jau6 gam6 waat6 sou2 tai2 do1 di1 syun2 hoeng2 laa1."
+  },
+  "95": {
+    "text": "撳住Shift掣就可以揀多過一個。",
+    "romanization": "gam6 zyu6 Shift1 zai3 zau6 ho2 ji5 gaan2 do1 gwo3 jat1 go3."
+  },
+  "96": {
+    "text": "個還原掣救過我好多次喇。",
+    "romanization": "go3 waan4 jyun4 zai3 gau3 gwo3 ngo5 hou2 do1 ci3 laa3."
+  },
+  "97": {
+    "text": "剪貼簿會記住你上次複製咗啲乜嘢。",
+    "romanization": "zin2 tip3 bou6 wui5 gei3 zyu6 nei5 soeng6 ci3 fuk1 zai3 zo2 di1 mat6 je5."
+  },
+  "98": {
+    "text": "自動校正好有用，但有時都會搞到好尷尬。",
+    "romanization": "zi6 dung6 gaau3 zing3 hou2 jung6, daan6 jau5 si4 dou1 wui5 gaau2 dou2 hou2 gaam1 gaai3."
+  },
+  "99": {
+    "text": "個桌面乾淨啲，搵嘢就方便好多。",
+    "romanization": "go3 zo1 min2 gon1 zeng6 di1, wan2 je5 zau6 fong1 bin6 hou2 do1."
+  }
+}

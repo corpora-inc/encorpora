@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Kan du spille piano?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Jeg spiller fiolin i et lite orkester.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Gitaren trenger nye strenger.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Hun spiller trommer i søsterens band.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Jeg lærer meg å spille fløyte.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Han tok opp trompeten igjen etter tjue år.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Celloen står lent mot veggen.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Stemmingen tar lengre tid enn jeg forventet.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Hvilken streng er ustemt?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Buen må få nye hår.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Jeg kjøpte et brukt keyboard på nett.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Hun foretrekker et oppreist piano fremfor et flygel.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Han bærer saksofonkassen sin overalt.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Trommeslageren rigget seg til før alle andre kom.",
+    "romanization": null
+  },
+  "14": {
+    "text": "En ukulele er lettere å begynne med enn en gitar.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Kan du lese noter?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Stykket er i G-dur.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Vi er i tre firedels takt.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Spill den første noten litt høyere.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Pausen er like viktig som noten.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Han forklarte hva en b og en kryss er.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Akkordskiftene føles naturlige nå.",
+    "romanization": null
+  },
+  "22": {
+    "text": "En skala er bare noter på rad.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Prøv det samme partiet en oktav lavere.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Hun markerte pustepausene i margen.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Dirigenten telte oss inn.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Denne takten gir meg problemer hver gang.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Melodien er enkel, men den sitter.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Han foretrekker å skrive musikk etter gehør.",
+    "romanization": null
+  },
+  "29": {
+    "text": "De fleste sanger bruker bare noen få akkorder.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Jeg øver i tretti minutter etter middag.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Spill det sakte til fingrene husker.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Hun bruker en metronom for å holde takten.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Han tar opp seg selv og lytter til det etterpå.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Varm opp før de vanskelige partiene.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Feil er en del av øvingen.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Jeg delte det opp i små seksjoner.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Fem minutter i dag er bedre enn to timer neste uke.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Hun øver foran et speil.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Læreren ga meg en ny øvelse.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Ikke forhast deg i de langsomme partiene.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Han spiller med lukkede øyne noen ganger.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Den vanskeligste takten er den jeg hoppet over.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Etter tre dager fri er jeg alltid litt rusten.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Øv mer på slutten enn på begynnelsen.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Hendene mine skalv før konserten.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Publikum klappet før stykket var ferdig.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Hun bukket og gikk av scenen.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Han glemte en linje og improviserte seg gjennom det.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Bandet stemte instrumentene mens lysene ble dempet.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Kan du bla om for meg?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Mikrofonen er for nær cymbalene.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Vi spilte et ekstranummer.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Han så ut i publikum og smilte.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Den første konserten er alltid den vanskeligste.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Scenefrykten forsvinner aldri helt.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Jeg mistet nesten buen under kadensen.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Å synge offentlig er en egen form for mot.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Applausen føltes lengre enn sangen.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Vi møtte favorittmusikeren vår etter konserten.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Hva slags musikk liker du?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Jeg vokste opp med å høre på morens plater.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Han hører på opera mens han lager mat.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Basslinjen er det som gjør sangen.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Du kan høre rommet i innspillingen.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Dette albumet høres bedre ut på vinyl.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Hun lukket øynene og lyttet til strykerne.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Pianoet er litt ustemt.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Jeg kommer stadig tilbake til dette albumet.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Første gang jeg hørte den, stoppet jeg det jeg holdt på med.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Han anbefaler en ny jazzplate hver uke.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Sangen minner meg om bestefaren min.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Det er en stille harmoni under melodien.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Livemusikk høres annerledes ut enn en innspilling.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Jeg foretrekker hodetelefoner sent på kvelden.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Koret møtes onsdag kveld.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Bassen holder hele bandet sammen.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Dirigenten førte orkesteret inn forsiktig.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Vi øvde på det samme partiet fire ganger.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Han spiller andre fiolin i det lokale symfoniorkesteret.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Kvartetten satt i en tett halvsirkel.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Trommeslageren telte opp tempoet.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hun sang harmonistemmen.",
+    "romanization": null
+  },
+  "83": {
+    "text": "To gitarer og en stemme er noen ganger nok.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Koret reiste til en liten kirke for å synge.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Han spilte inn vokalen i skapet sitt.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Kabelbrummen forsvant da hun byttet inngang.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Du trenger en annen mikrofon til den stemmen.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Han lagrer alle opptak i tilfelle det neste er dårligere.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Miksen hørtes bedre ut neste morgen.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Forsterkeren gløder når den varmes opp.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Han bruker en gammel firespors båndopptaker.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Vi la tre opptak av den samme linjen oppå hverandre.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Romklangen fikk rommet til å føles enormt.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Hun mikset albumet på kjøkkenet sitt.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Musikk gjør den lange kjøreturen kortere.",
+    "romanization": null
+  },
+  "96": {
+    "text": "En sang kan endre hvordan en dag føles.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Hele rommet sang med.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Stillheten etter den siste akkorden er en del av musikken.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Lær deg én sang du kan spille for hvem som helst.",
+    "romanization": null
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Цените се покачват, когато повече хора искат нещо.",
+    "romanization": "Tsenite se pokachvat, kogato poveche hora iskat neshto."
+  },
+  "1": {
+    "text": "Когато предлагането се увеличава, цените обикновено падат.",
+    "romanization": "Kogato predlaganeto se uvelichava, tsenite obiknoveno padat."
+  },
+  "2": {
+    "text": "Отстъпката кара повече хора да купуват.",
+    "romanization": "Otstŭpkata kara poveche hora da kupuvat."
+  },
+  "3": {
+    "text": "Един и същ продукт струва различно в различни градове.",
+    "romanization": "Edin i sŭsht produkt struva razlichno v razlichni gradove."
+  },
+  "4": {
+    "text": "Търсенето може да се промени за една нощ.",
+    "romanization": "Tŭrseneto mozhe da se promieni za edna nosht."
+  },
+  "5": {
+    "text": "Продавачите вдигат цените, когато наличността намалее.",
+    "romanization": "Prodavachite vdigat tsenite, kogato nalichnostta namalee."
+  },
+  "6": {
+    "text": "Купувачите търсят най-добрата сделка.",
+    "romanization": "Kupuvachite tŭrsyat nai-dobrata sdelka."
+  },
+  "7": {
+    "text": "Понякога високата цена е знак за качество.",
+    "romanization": "Ponyakoga visokata tsena e znak za kachestvo."
+  },
+  "8": {
+    "text": "Понякога високата цена е просто маркетингов трик.",
+    "romanization": "Ponyakoga visokata tsena e prosto marketingov trik."
+  },
+  "9": {
+    "text": "Безплатната доставка променя отношението на хората към покупката.",
+    "romanization": "Bezplatnata dostavka promenya otnoshenieto na horata kŭm pokupkata."
+  },
+  "10": {
+    "text": "Цената рядко е цялата стойност.",
+    "romanization": "Tsenata ryadko e tsyalata stoĭnost."
+  },
+  "11": {
+    "text": "Времето също е вид разход.",
+    "romanization": "Vremeto sŭshto e vid razhod."
+  },
+  "12": {
+    "text": "Дългата опашка е цената, която плащаш, когато цената е твърде ниска.",
+    "romanization": "Dŭlgata opashka e tsenata, koyato plashtash, kogato tsenata e tvŭrde niska."
+  },
+  "13": {
+    "text": "Разпродажбите карат хората да купуват неща, които не са планирали.",
+    "romanization": "Razprodazhbite karat horata da kupuvat neshta, koito ne sa planirali."
+  },
+  "14": {
+    "text": "Хората реагират по-силно на загубата на пари, отколкото на печалбата.",
+    "romanization": "Horata reagirat po-silno na zagubata na pari, otkolkoto na pechalbata."
+  },
+  "15": {
+    "text": "Цените в долари и цените в местна валута се усещат различно.",
+    "romanization": "Tsenite v dolari i tsenite v mestna valuta se useshtat razlichno."
+  },
+  "16": {
+    "text": "Малък ежедневен разход се натрупва до голяма сума за година.",
+    "romanization": "Malŭk ezhedneven razhod se natrupva do golyama suma za godina."
+  },
+  "17": {
+    "text": "Първата продажба за деня е по-важна от последната.",
+    "romanization": "Pŭrvata prodazhba za denya e po-vazhna ot poslednata."
+  },
+  "18": {
+    "text": "Много малки покупки крият един голям навик.",
+    "romanization": "Mnogo malki pokupki kriyat edin golyam navik."
+  },
+  "19": {
+    "text": "Най-евтиният вариант понякога излиза най-скъп в крайна сметка.",
+    "romanization": "Nai-evtiniyat variant ponyakoga izliza nai-skŭp v kraĭna smetka."
+  },
+  "20": {
+    "text": "Парите са просто споразумение, което всички споделяме.",
+    "romanization": "Parite sa prosto sporazumenie, koeto vsichki spodelyame."
+  },
+  "21": {
+    "text": "Спестяването е да плащаш на бъдещото си аз.",
+    "romanization": "Spestyavaneto e da plashtash na bŭdeshtoto si az."
+  },
+  "22": {
+    "text": "Бюджетът е план, а не наказание.",
+    "romanization": "Byudzhetŭt e plan, a ne nakazanie."
+  },
+  "23": {
+    "text": "Сложната лихва е търпение с малък двигател.",
+    "romanization": "Slozhnata lihva e tŭrpenie s malŭk dvigatel."
+  },
+  "24": {
+    "text": "Инфлацията бавно изяжда парите, държани в брой.",
+    "romanization": "Inflatsiyata bavno izyazhda parite, dŭrzhani v broĭ."
+  },
+  "25": {
+    "text": "Заемът е да вземеш назаем от бъдещото си аз.",
+    "romanization": "Zaemŭt e da vzemesh nazaem ot bŭdeshtoto si az."
+  },
+  "26": {
+    "text": "Лихвата е наемът за заети пари.",
+    "romanization": "Lihvata e naemŭt za zaeti pari."
+  },
+  "27": {
+    "text": "Тя проследява всеки разход за месец, за да види модела.",
+    "romanization": "Tya prosledyava vseki razhod za mesets, za da vidi modela."
+  },
+  "28": {
+    "text": "Той спестява фиксирана сума всяка заплата, преди всичко друго.",
+    "romanization": "Toĭ spestyava fiksirana suma vsyaka zaplata, predi vsichko drugo."
+  },
+  "29": {
+    "text": "Аварийните фондове правят малките бедствия по-малко болезнени.",
+    "romanization": "Avariĭnite fondove pravyat malkite bedstviya po-malko bolezneni."
+  },
+  "30": {
+    "text": "Да харчиш малко по-малко често е по-лесно, отколкото да печелиш повече.",
+    "romanization": "Da harchish malko po-malko chesto e po-lesno, otkolkoto da pechelish poveche."
+  },
+  "31": {
+    "text": "Повишението може да се изгуби в по-големи разходи.",
+    "romanization": "Povyshenieto mozhe da se izgubi v po-golemi razhodi."
+  },
+  "32": {
+    "text": "Той изплати заема по-рано и се почувства по-лек.",
+    "romanization": "Toĭ izplati zaema po-rano i se pochuvstva po-lek."
+  },
+  "33": {
+    "text": "Повечето хора надценяват дисциплината си за следващата година.",
+    "romanization": "Povecheto hora nadtsenyavat distsiplinata si za sledvashtata godina."
+  },
+  "34": {
+    "text": "Паричните притеснения намаляват, когато имаш план.",
+    "romanization": "Parichnite pritesneniya namalyavat, kogato imash plan."
+  },
+  "35": {
+    "text": "Пазарът е просто място, където се срещат купувачи и продавачи.",
+    "romanization": "Pazarŭt e prosto myasto, kŭdeto se sreshtat kupuvachi i prodavachi."
+  },
+  "36": {
+    "text": "Онлайн магазините са пазари без стени.",
+    "romanization": "Onlaĭn magazinite sa pazari bez steni."
+  },
+  "37": {
+    "text": "Специализацията е причината повечето неща да са евтини.",
+    "romanization": "Spetsializatsiyata e prichinata povecheto neshta da sa evtini."
+  },
+  "38": {
+    "text": "Хората търгуват за неща, които не произвеждат сами.",
+    "romanization": "Horata tŭrguvat za neshta, koito ne proizvezhdat sami."
+  },
+  "39": {
+    "text": "Заплатите отразяват какво получава някой, не винаги колко струва.",
+    "romanization": "Zaplatite otrazyavat kakvo poluchava nyakoĭ, ne vinagi kolko struva."
+  },
+  "40": {
+    "text": "Някои професии плащат добре, защото малко хора ги искат.",
+    "romanization": "Nyakoi profesii plashtat dobre, zashtoto malko hora gi iskat."
+  },
+  "41": {
+    "text": "Някои професии плащат добре, защото малко хора могат да ги вършат.",
+    "romanization": "Nyakoi profesii plashtat dobre, zashtoto malko hora mogat da gi vŭrshat."
+  },
+  "42": {
+    "text": "Пазарът не винаги възнаграждава най-полезната работа.",
+    "romanization": "Pazarŭt ne vinagi vŭznagrazhdava nai-poleznata rabota."
+  },
+  "43": {
+    "text": "Нова технология може бързо да унищожи стара индустрия.",
+    "romanization": "Nova tehnologiya mozhe bŭrzo da unishtozhi stara industriya."
+  },
+  "44": {
+    "text": "Хората често се местят там, където има работа.",
+    "romanization": "Horata chesto se mestyat tam, kŭdeto ima rabota."
+  },
+  "45": {
+    "text": "Малкият бизнес е по-голямата част от икономиката.",
+    "romanization": "Malkiyat biznes e po-golyamata chast ot ikonomikata."
+  },
+  "46": {
+    "text": "Добрият служител спестява повече, отколкото струва.",
+    "romanization": "Dobriyat sluzhitel spestyava poveche, otkolkoto struva."
+  },
+  "47": {
+    "text": "Преговорите са част от всяка работа.",
+    "romanization": "Pregovorite sa chast ot vsyaka rabota."
+  },
+  "48": {
+    "text": "Допълнителният доход ти дава възможности.",
+    "romanization": "Dopŭlnitelniyat dohod ti dava vŭzmozhnosti."
+  },
+  "49": {
+    "text": "Отказването понякога е най-ефективният ход.",
+    "romanization": "Otkaazvaneto ponyakoga e nai-efektivniyat hod."
+  },
+  "50": {
+    "text": "Хората реагират на стимули, дори и малки.",
+    "romanization": "Horata reagirat na stimuli, dori i malki."
+  },
+  "51": {
+    "text": "Безплатно е вълшебна дума.",
+    "romanization": "Bezplatno e vŭlshebna duma."
+  },
+  "52": {
+    "text": "Първият безплатен месец променя много решения.",
+    "romanization": "Pŭrviyat bezplaten mesets promenya mnogo resheniya."
+  },
+  "53": {
+    "text": "Абонаментите са създадени да бъдат забравяни.",
+    "romanization": "Abonamentite sa sŭzdadeni da bŭdat zabravyani."
+  },
+  "54": {
+    "text": "Кръглите числа изглеждат по-големи, отколкото са.",
+    "romanization": "Krŭglite chisla izglezhdat po-golemi, otkolkoto sa."
+  },
+  "55": {
+    "text": "Потъналите разходи не трябва да влияят на следващия ход.",
+    "romanization": "Potŭnalite razhodi ne tryabva da vliyat na sledvashtiya hod."
+  },
+  "56": {
+    "text": "Малка такса променя колко често хората се появяват.",
+    "romanization": "Malka taksa promenya kolko chesto horata se poyavyavat."
+  },
+  "57": {
+    "text": "Бакшишът променя сметката за хранене.",
+    "romanization": "Bakshishŭt promenya smetkata za hranene."
+  },
+  "58": {
+    "text": "Хората споделят, когато споделянето е лесно.",
+    "romanization": "Horata spodelyat, kogato spodelyaneto e lesno."
+  },
+  "59": {
+    "text": "Опашката ти показва какво ценят хората днес.",
+    "romanization": "Opashkata ti pokazva kakvo tsenyat horata dnes."
+  },
+  "60": {
+    "text": "Офертите с ограничено време създават спешност нарочно.",
+    "romanization": "Oferite s ogranicheno vreme sŭzdavat speshnost narochno."
+  },
+  "61": {
+    "text": "Програмите за лоялност възнаграждават това, което така или иначе би се случило.",
+    "romanization": "Programite za loyalnost vŭznagrazhdavat tova, koeto taka ili inache bi se sluchilo."
+  },
+  "62": {
+    "text": "Опциите по подразбиране решават повече, отколкото хората осъзнават.",
+    "romanization": "Optsiite po podrazbirane reshavat poveche, otkolkoto horata osŭznavat."
+  },
+  "63": {
+    "text": "Отзивите променят търсенето повече от рекламите.",
+    "romanization": "Otzivite promenyat tŭrseneto poveche ot reklamite."
+  },
+  "64": {
+    "text": "От уста на уста все още е по-силно от повечето маркетинг.",
+    "romanization": "Ot usta na usta vse oshte e po-silno ot povecheto marketing."
+  },
+  "65": {
+    "text": "Икономиката расте през някои години и се свива през други.",
+    "romanization": "Ikonomikata raste prez nyakoi godini i se sviva prez drugi."
+  },
+  "66": {
+    "text": "Рецесиите учат на уроци, които бумовете забравят.",
+    "romanization": "Retsesiite uchat na urotsi, koito bumovete zabravyat."
+  },
+  "67": {
+    "text": "Дългосрочният растеж повдига всички, бавно.",
+    "romanization": "Dŭlgosrochniyat rastezh povdiga vsichki, bavno."
+  },
+  "68": {
+    "text": "Повишенията на производителността се крият в инструменти и навици.",
+    "romanization": "Povysheniyata na proizvoditelnostta se kriyat v instrumenti i navitsi."
+  },
+  "69": {
+    "text": "Новите идеи са единственият устойчив източник на растеж.",
+    "romanization": "Novite idei sa edinstveniyat ustoĭchiv iztochnik na rastezh."
+  },
+  "70": {
+    "text": "Бумът може да прикрие много лоши решения.",
+    "romanization": "Bumŭt mozhe da prikrie mnogo loshi resheniya."
+  },
+  "71": {
+    "text": "Сривовете наказват първо най-задлъжнелите.",
+    "romanization": "Srivovete nakazvat pŭrvo nai-zadlŭzhnelite."
+  },
+  "72": {
+    "text": "Евтините пари обикновено намират рискови приложения.",
+    "romanization": "Evtinite pari obiknoveno namirat riskovi prilozheniya."
+  },
+  "73": {
+    "text": "Балонът е трудно да се види отвътре.",
+    "romanization": "Balonŭt e trudno da se vidi otvŭtre."
+  },
+  "74": {
+    "text": "Възстановяването е неравномерно в различните индустрии и региони.",
+    "romanization": "Vŭzstanovyavaneto e neravnomerno v razlichnite industrii i regioni."
+  },
+  "75": {
+    "text": "Страните търгуват, защото и двете страни печелят.",
+    "romanization": "Stranite tŭrguvat, zashtoto i dvete strani pechelyat."
+  },
+  "76": {
+    "text": "Тарифите повишават цените за купувачите у дома.",
+    "romanization": "Tarifite povishavat tsenite za kupuvachite u doma."
+  },
+  "77": {
+    "text": "Валутните курсове променят цената на вноса.",
+    "romanization": "Valutnite kursove promenyat tsenata na vnosa."
+  },
+  "78": {
+    "text": "Слабата валута помага на износителите и вреди на вносителите.",
+    "romanization": "Slabata valuta pomaga na iznositelite i vredi na vnositelite."
+  },
+  "79": {
+    "text": "Чуждестранните инвестиции могат да изградят или натоварят една икономика.",
+    "romanization": "Chuzhdestrannite investitsii mogat da izgradyat ili natovaryat edna ikonomika."
+  },
+  "80": {
+    "text": "Паричните преводи подкрепят много семейства през границите.",
+    "romanization": "Parichnite prevodi podkrepvat mnogo semeĭstva prez granitsite."
+  },
+  "81": {
+    "text": "Санкциите засягат обикновените хора повече от лидерите.",
+    "romanization": "Sanktsiite zasyagat obiknovenite hora poveche ot liderite."
+  },
+  "82": {
+    "text": "Глобалните вериги за доставки се късат на изненадващи места.",
+    "romanization": "Globalnite verigi za dostavki se kŭsat na iznenadvashchi mesta."
+  },
+  "83": {
+    "text": "Недостигът в една страна може да промени цените навсякъде.",
+    "romanization": "Nedostigŭt v edna strana mozhe da promieni tsenite navsyakŭde."
+  },
+  "84": {
+    "text": "Някои индустрии се групират в един регион по някаква причина.",
+    "romanization": "Nyakoi industrii se grupira v edin region po nyakakva prichina."
+  },
+  "85": {
+    "text": "Неравенството расте тихо, когато никой не гледа.",
+    "romanization": "Neravenstvoto raste tiho, kogato nikoĭ ne gleda."
+  },
+  "86": {
+    "text": "Данъците са цената на обществените блага.",
+    "romanization": "Danŭtsite sa tsenata na obshtestvenite blaga."
+  },
+  "87": {
+    "text": "Обществените блага са тези, които не можем лесно да купим поотделно.",
+    "romanization": "Obshtestvenite blaga sa tezi, koito ne mozhem lesno da kupim pootdelno."
+  },
+  "88": {
+    "text": "Външните ефекти са разходите, които никой не е поискал да плати.",
+    "romanization": "Vŭnshnite efekti sa razhodite, koito nikoĭ ne e poiskal da plati."
+  },
+  "89": {
+    "text": "Малък пазарен провал може да има огромни последици.",
+    "romanization": "Malŭk pazaren proval mozhe da ima ogromni posleditsi."
+  },
+  "90": {
+    "text": "Свободният пазар се нуждае от правила, за да остане свободен.",
+    "romanization": "Svobodiniyat pazar se nuzhdae ot pravila, za da ostane svoboden."
+  },
+  "91": {
+    "text": "Информацията се споделя неравномерно между купувачи и продавачи.",
+    "romanization": "Informatsiyata se spodelya neravnomerno mezhdu kupuvachi i prodavachi."
+  },
+  "92": {
+    "text": "Доверието намалява цената на всяка транзакция.",
+    "romanization": "Doverieto namalyava tsenata na vsyaka tranzaktsiya."
+  },
+  "93": {
+    "text": "Репутацията е подценен актив.",
+    "romanization": "Reputatsiyata e podtsenen aktiv."
+  },
+  "94": {
+    "text": "Цената на вниманието се е повишила.",
+    "romanization": "Tsenata na vnimanieto se e povishila."
+  },
+  "95": {
+    "text": "Най-важните пазари често нямат цени.",
+    "romanization": "Nai-vazhnite pazari chesto nyamat tseni."
+  },
+  "96": {
+    "text": "Времето и грижата са сред най-оскъдните ресурси.",
+    "romanization": "Vremeto i grizhata sa sred nai-oskŭdnite resursi."
+  },
+  "97": {
+    "text": "Икономическите решения са и морални решения.",
+    "romanization": "Ikonomicheskite resheniya sa i moralni resheniya."
+  },
+  "98": {
+    "text": "Икономиката са просто хора, които правят неща един за друг.",
+    "romanization": "Ikonomikata sa prosto hora, koito pravyat neshta edin za drug."
+  },
+  "99": {
+    "text": "Един прост бюджет променя повече от всяка сложна теория.",
+    "romanization": "Edin prost byudzhet promenya poveche ot vsyaka slozhna teoriya."
+  }
+}

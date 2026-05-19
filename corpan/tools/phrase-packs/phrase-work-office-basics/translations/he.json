@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "הפגישה מתחילה בעוד עשר דקות.",
+    "romanization": "Ha-pgisha matkhila be'od eser dakot."
+  },
+  "1": {
+    "text": "תוכל/י לשתף את המסך שלך?",
+    "romanization": "Tukhal/i leshatef et ha-masakh shelkha/shelakh?"
+  },
+  "2": {
+    "text": "סליחה, הייתי על השתק.",
+    "romanization": "Slikha, hayiti al hashtek."
+  },
+  "3": {
+    "text": "אנחנו חורגים מהזמן.",
+    "romanization": "Anakhnu khorgim me-ha-zman."
+  },
+  "4": {
+    "text": "בואו נדחה את זה לפגישה הבאה.",
+    "romanization": "Bo'u nidkhe et ze la-pgisha ha-ba'a."
+  },
+  "5": {
+    "text": "אני ארשום את הנקודות.",
+    "romanization": "Ani ershom et ha-nekudot."
+  },
+  "6": {
+    "text": "בואו נעשה סבב.",
+    "romanization": "Bo'u na'ase savav."
+  },
+  "7": {
+    "text": "סדר היום נמצא בהזמנה ביומן.",
+    "romanization": "Seder ha-yom nimtza ba-hazmana ba-yoman."
+  },
+  "8": {
+    "text": "מי מוביל/ה את זה?",
+    "romanization": "Mi movil/a et ze?"
+  },
+  "9": {
+    "text": "אנחנו מקליטים את זה?",
+    "romanization": "Anakhnu maklitim et ze?"
+  },
+  "10": {
+    "text": "השיחה התנתקה באמצע.",
+    "romanization": "Ha-sikha hitnatka ba-emtsa."
+  },
+  "11": {
+    "text": "אפשר לדחות את זה ברבע שעה?",
+    "romanization": "Efshar lidkhot et ze be-reva sha'a?"
+  },
+  "12": {
+    "text": "הוא נכנס באיחור אבל בשקט.",
+    "romanization": "Hu nikhnas be-ikhur aval be-sheket."
+  },
+  "13": {
+    "text": "החדר שוב הוזמן כפול.",
+    "romanization": "Ha-kheder shuv huzman kaful."
+  },
+  "14": {
+    "text": "בואו נשים את זה בצד ונחזור לזה אחר כך.",
+    "romanization": "Bo'u nasim et ze ba-tzad ve-nakhzor le-ze akhar kakh."
+  },
+  "15": {
+    "text": "אני חייב/ת לסיים בשלוש בדיוק.",
+    "romanization": "Ani khayav/et lesayem be-shalosh בדיוק."
+  },
+  "16": {
+    "text": "תוכל/י להישאר אחרי זה לשתי דקות?",
+    "romanization": "Tukhal/i lehisha'er akharei ze le-shtey dakot?"
+  },
+  "17": {
+    "text": "הלוח מלא.",
+    "romanization": "Ha-lu'akh male."
+  },
+  "18": {
+    "text": "תוכל/י לסכם את נקודות הפעולה?",
+    "romanization": "Tukhal/i lesakem et nekudot ha-pe'ula?"
+  },
+  "19": {
+    "text": "ישיבות בעמידה מהירות באופן מפתיע.",
+    "romanization": "Yeshivot ba-amida mehirot be-ofan maftia."
+  },
+  "20": {
+    "text": "אחזור אליך/אלייך עד סוף היום.",
+    "romanization": "Akhzor elekha/elayikh ad sof ha-yom."
+  },
+  "21": {
+    "text": "המייל האחרון שלי הגיע?",
+    "romanization": "Ha-mail ha-akharon sheli higia?"
+  },
+  "22": {
+    "text": "סליחה על התגובה המאוחרת.",
+    "romanization": "Slikha al ha-tguva ha-me'ukheret."
+  },
+  "23": {
+    "text": "אני מצרף/ת את שרה לעניין.",
+    "romanization": "Ani metzaref/et et Sara la-inyan."
+  },
+  "24": {
+    "text": "הקובץ המצורף לא הגיע.",
+    "romanization": "Ha-kovetz ha-metzoraf lo higia."
+  },
+  "25": {
+    "text": "סימנתי את זה כדחוף.",
+    "romanization": "Simanti et ze ke-dakhuf."
+  },
+  "26": {
+    "text": "תוכל/י לשלוח שוב את הקובץ הזה?",
+    "romanization": "Tukhal/i lishlo'akh shuv et ha-kovetz ha-ze?"
+  },
+  "27": {
+    "text": "השרשור התארך, תן/תני לי לסכם.",
+    "romanization": "Ha-shirshur hit'arekh, ten/tni li lesakem."
+  },
+  "28": {
+    "text": "השתמש/י בשורת הנושא כדי שאוכל למצוא את זה.",
+    "romanization": "Hishtamesh/i be-shurat ha-nose kedei she-ukhal limtzo et ze."
+  },
+  "29": {
+    "text": "הוא ניקה את תיבת הדואר הנכנס שלו בסוף השבוע.",
+    "romanization": "Hu nika et teivat ha-do'ar ha-nikhnas shelo be-sof ha-shavu'a."
+  },
+  "30": {
+    "text": "אנא השב/י עד יום שישי.",
+    "romanization": "Ana hashev/i ad yom shishi."
+  },
+  "31": {
+    "text": "אשלח הודעה קצרה כשזה יסתיים.",
+    "romanization": "Eshlakh hoda'a ktzara ke-she-ze yistayem."
+  },
+  "32": {
+    "text": "התשובה האוטומטית אומרת שהוא בנסיעה.",
+    "romanization": "Ha-tshuva ha-otomatit omeret she-hu be-nesi'a."
+  },
+  "33": {
+    "text": "היא העתיקה בטעות את האדם הלא נכון.",
+    "romanization": "Hi he'etika be-ta'ut et ha-adam ha-lo nakhon."
+  },
+  "34": {
+    "text": "שלוש תזכורות זה מספיק.",
+    "romanization": "Shalosh tizkorot ze maspik."
+  },
+  "35": {
+    "text": "תוכל/י להעביר לי את השרשור?",
+    "romanization": "Tukhal/i leha'avir li et ha-shirshur?"
+  },
+  "36": {
+    "text": "הצ'אט מהיר יותר ממייל בשביל זה.",
+    "romanization": "Ha-chat mahir yoter mi-mail bishvil ze."
+  },
+  "37": {
+    "text": "פספסתי את ההודעה שלך בכל הרעש.",
+    "romanization": "Pisfasti et ha-hoda'a shelkha/shelakh be-khol ha-ra'ash."
+  },
+  "38": {
+    "text": "הקישור במייל שלך מוביל לדף לא קיים.",
+    "romanization": "Ha-kishur ba-mail shelkha/shelakh movil le-daf lo kayam."
+  },
+  "39": {
+    "text": "אנא אשר/י שקיבלת את זה.",
+    "romanization": "Ana asher/i she-kibalta et ze."
+  },
+  "40": {
+    "text": "הדדליין הוא ביום שישי בצהריים.",
+    "romanization": "Ha-deadline hu be-yom shishi ba-tsohorayim."
+  },
+  "41": {
+    "text": "יהיה לי טיוטה ראשונה עד יום רביעי.",
+    "romanization": "Yihiye li tyuta rishona ad yom revi'i."
+  },
+  "42": {
+    "text": "אנחנו צריכים לשלוח משהו השבוע.",
+    "romanization": "Anakhnu tsrikhim lishlo'akh mashehu ha-shavu'a."
+  },
+  "43": {
+    "text": "הפרויקט התעכב ביום.",
+    "romanization": "Ha-proyect hit'akev be-yom."
+  },
+  "44": {
+    "text": "תוכל/י לעבור על זה לפני שאני שולח/ת?",
+    "romanization": "Tukhal/i la'avor al ze lifnei she-ani shole'akh/at?"
+  },
+  "45": {
+    "text": "אני חייב/ת לך עדכון סטטוס.",
+    "romanization": "Ani khayav/et lekha/lakh idkun status."
+  },
+  "46": {
+    "text": "המספרים לא תואמים למה ששלחתי בשבוע שעבר.",
+    "romanization": "Ha-misparim lo to'amim le-ma she-shalakhti ba-shavu'a she-avar."
+  },
+  "47": {
+    "text": "אנחנו תקועים בגלל החלטה מהלקוח.",
+    "romanization": "Anakhnu tku'im biglal hakhlata me-ha-lakoch."
+  },
+  "48": {
+    "text": "הוא עבד גם בזמן ארוחת הצהריים כדי לסיים את זה.",
+    "romanization": "Hu avad gam bi-zman arukhat ha-tsohorayim kedei lesayem et ze."
+  },
+  "49": {
+    "text": "הדוח סוף סוף יצא מידיי.",
+    "romanization": "Ha-do'akh sof sof yatza mi-yadai."
+  },
+  "50": {
+    "text": "אתחיל ברגע שאקבל את האישור.",
+    "romanization": "Atkhil be-rega she-akabel et ha-ishur."
+  },
+  "51": {
+    "text": "תוכל/י לאשר את הגרסה הזו?",
+    "romanization": "Tukhal/i le'asher et ha-girsa ha-zu?"
+  },
+  "52": {
+    "text": "היא תפסה טעות הקלדה רגע לפני ששלחנו.",
+    "romanization": "Hi tafsa ta'ut haklada rega lifnei she-shalakhnu."
+  },
+  "53": {
+    "text": "דחינו את ההשקה ליום שלישי הבא.",
+    "romanization": "Dakhinu et ha-hashaka le-yom shlishi ha-ba."
+  },
+  "54": {
+    "text": "ההערכה הייתה שגויה בפקטור של שתיים.",
+    "romanization": "Ha-ha'arakha hayta shguya be-faktor shel shtayim."
+  },
+  "55": {
+    "text": "הוא פינה את אחר הצהריים שלו כדי להתמקד.",
+    "romanization": "Hu pina et akhar ha-tsohorayim shelo kedei lehitmaked."
+  },
+  "56": {
+    "text": "החוזה חזר חתום.",
+    "romanization": "Ha-khoze khazar khatum."
+  },
+  "57": {
+    "text": "בואו נגיד שזה גמור ונתקדם הלאה.",
+    "romanization": "Bo'u nagid she-ze gamur ve-nitkadem hala'a."
+  },
+  "58": {
+    "text": "הגרסה הראשונה גסה אבל היא עובדת.",
+    "romanization": "Ha-girsa ha-rishona gasa aval hi ovedet."
+  },
+  "59": {
+    "text": "הוא סיפק מוקדם מהצפוי, פעם אחת.",
+    "romanization": "Hu sipek mukdam me-ha-tzapui, pa'am akhat."
+  },
+  "60": {
+    "text": "ברוך/ה הבא/ה לצוות.",
+    "romanization": "Baruch/a ha-ba/a la-tzevet."
+  },
+  "61": {
+    "text": "אציג אותך לאחרים.",
+    "romanization": "Atzig otkha/otakh la-akherim."
+  },
+  "62": {
+    "text": "היא בדיוק חזרה מחופשה.",
+    "romanization": "Hi בדיוק khazra me-khufsha."
+  },
+  "63": {
+    "text": "הוא האדם לשאול לגבי זה.",
+    "romanization": "Hu ha-adam lish'ol legabei ze."
+  },
+  "64": {
+    "text": "אנחנו חולקים שולחן בימי שלישי.",
+    "romanization": "Anakhnu kholkim shulkhan bi-yemei shlishi."
+  },
+  "65": {
+    "text": "מי יודע/ת הכי הרבה על תמחור?",
+    "romanization": "Mi yode'a/at hakhi harbe al timkhur?"
+  },
+  "66": {
+    "text": "הוא תמיד מביא קפה לצוות.",
+    "romanization": "Hu tamid mevi kafe la-tzevet."
+  },
+  "67": {
+    "text": "העובד/ת החדש/ה לומד/ת מהר.",
+    "romanization": "Ha-oved/et ha-khadash/a lomed/et maher."
+  },
+  "68": {
+    "text": "היא עובדת בצמוד למחלקת השיווק.",
+    "romanization": "Hi ovedet be-tzamud le-makhleket ha-shivuk."
+  },
+  "69": {
+    "text": "הוא נמצא כאן יותר מכל אחד אחר.",
+    "romanization": "Hu nimtza kan yoter mi-kol echad akher."
+  },
+  "70": {
+    "text": "הם חילקו את העבודה בדיוק חצי-חצי.",
+    "romanization": "Hem khilku et ha-avoda בדיוק khetzi-khetzi."
+  },
+  "71": {
+    "text": "אכלנו צהריים ושרטטנו את זה.",
+    "romanization": "Akhalnu tsohorayim ve-sirtatnu et ze."
+  },
+  "72": {
+    "text": "הוא כיסה אותי כשהייתי חולה.",
+    "romanization": "Hu kisa oti ke-she-hayiti khole."
+  },
+  "73": {
+    "text": "הצוות התאסף סביב המחשב הנייד.",
+    "romanization": "Ha-tzevet hit'asef saviv ha-makhshev ha-nayad."
+  },
+  "74": {
+    "text": "היא זוכרת את יום ההולדת של כולם.",
+    "romanization": "Hi zokheret et yom ha-huledet shel kulam."
+  },
+  "75": {
+    "text": "אצטרף מרחוק מחר.",
+    "romanization": "Etztaref me-rakhok makhar."
+  },
+  "76": {
+    "text": "המשרד כמעט ריק בימי שישי.",
+    "romanization": "Ha-misrad kim'at reik bi-yemei shishi."
+  },
+  "77": {
+    "text": "האינטרנט שלי לא יציב היום.",
+    "romanization": "Ha-internet sheli lo yatziv ha-yom."
+  },
+  "78": {
+    "text": "הוא עובד מעיר אחרת.",
+    "romanization": "Hu oved me-ir akheret."
+  },
+  "79": {
+    "text": "הצוות נפגש פנים אל פנים פעם בחודש.",
+    "romanization": "Ha-tzevet nifgash panim el panim pa'am ba-khodesh."
+  },
+  "80": {
+    "text": "היא סידרה פינה בחדר השינה כשולחן עבודה.",
+    "romanization": "Hi sidra pina ba-kheder ha-sheina ke-shulkhan avoda."
+  },
+  "81": {
+    "text": "המשרד הביתי סוף סוף מסודר.",
+    "romanization": "Ha-misrad ha-beiti sof sof mesudar."
+  },
+  "82": {
+    "text": "תוכל/י להדליק את המצלמה שלך?",
+    "romanization": "Tukhal/i lehadlik et ha-matzlema shelkha/shelakh?"
+  },
+  "83": {
+    "text": "רעש רקע זה בסדר, אל תדאג/י.",
+    "romanization": "Ra'ash reka ze be-seder, al tid'ag/i."
+  },
+  "84": {
+    "text": "אנחנו עושים צ'ק-אין מהיר כל בוקר.",
+    "romanization": "Anakhnu osim check-in mahir kol boker."
+  },
+  "85": {
+    "text": "המדפסת שוב נתקעה.",
+    "romanization": "Ha-madpeset shuv nitka'a."
+  },
+  "86": {
+    "text": "נגמרו הפולים במכונת הקפה.",
+    "romanization": "Nigmeru ha-pulim be-mekhonat ha-kafe."
+  },
+  "87": {
+    "text": "תוכל/י לפתוח את הדלת?",
+    "romanization": "Tukhal/i lifto'akh et ha-delet?"
+  },
+  "88": {
+    "text": "החלון בחדר הישיבות לא נפתח.",
+    "romanization": "Ha-khalon be-kheder ha-yeshivot lo niftakh."
+  },
+  "89": {
+    "text": "מישהו/מישהי השאיר/ה את ארוחת הצהריים שלו/שלה במקרר לשבוע.",
+    "romanization": "Mishehu/mishehi hish'ir/a et arukhat ha-tsohorayim shelo/shela ba-mekarer le-shavu'a."
+  },
+  "90": {
+    "text": "המטבח שקט בשלוש בצהריים.",
+    "romanization": "Ha-mitbakh shaket be-shalosh ba-tsohorayim."
+  },
+  "91": {
+    "text": "הוא עלה במדרגות כדי לנקות את הראש.",
+    "romanization": "Hu ala ba-madregot kedei lenakot et ha-rosh."
+  },
+  "92": {
+    "text": "הצמח על אדן החלון משגשג.",
+    "romanization": "Ha-tzemakh al eden ha-khalon meshagsheg."
+  },
+  "93": {
+    "text": "תוכל/י לחתום על חבילה בדלפק הקבלה?",
+    "romanization": "Tukhal/i lakhtom al khavila ba-delpek ha-kabala?"
+  },
+  "94": {
+    "text": "קורא התגים משתגע.",
+    "romanization": "Kore ha-tagim mishtage'a."
+  },
+  "95": {
+    "text": "סוף היום תמיד מגיע בהפתעה.",
+    "romanization": "Sof ha-yom tamid magia be-hafta'a."
+  },
+  "96": {
+    "text": "הוא עובד הכי טוב עם חלון אחד פתוח בכל פעם.",
+    "romanization": "Hu oved hakhi tov im khalon echad patu'akh be-khol pa'am."
+  },
+  "97": {
+    "text": "היא מדליקה נר כדי לסמן את תחילת היום.",
+    "romanization": "Hi madlika ner kedei lesamen et tkhilat ha-yom."
+  },
+  "98": {
+    "text": "הליכה קצרה אחרי ארוחת הצהריים עוזרת לי לחשוב.",
+    "romanization": "Halikha ktzara akharei arukhat ha-tsohorayim ozeret li lakhshov."
+  },
+  "99": {
+    "text": "יש ימי שני שמתחילים בניצחון קטן.",
+    "romanization": "Yesh yemei sheni she-matkhilim be-nitzakhon katan."
+  }
+}

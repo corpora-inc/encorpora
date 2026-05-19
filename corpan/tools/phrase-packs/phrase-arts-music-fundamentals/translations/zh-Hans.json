@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "你会弹钢琴吗？",
+    "romanization": "Nǐ huì tán gāngqín ma?"
+  },
+  "1": {
+    "text": "我在一个小型乐团里拉小提琴。",
+    "romanization": "Wǒ zài yī gè xiǎoxíng yuètuán lǐ lā xiǎotíqín."
+  },
+  "2": {
+    "text": "这把吉他需要换新琴弦了。",
+    "romanization": "Zhè bǎ jítā xūyào huàn xīn qínxián le."
+  },
+  "3": {
+    "text": "她在她姐姐的乐队里打鼓。",
+    "romanization": "Tā zài tā jiějie de yuèduì lǐ dǎgǔ."
+  },
+  "4": {
+    "text": "我正在学吹长笛。",
+    "romanization": "Wǒ zhèngzài xué chuī chángdí."
+  },
+  "5": {
+    "text": "他时隔二十年又重新拿起了小号。",
+    "romanization": "Tā shí gé èrshí nián yòu chóngxīn náqǐ le xiǎohào."
+  },
+  "6": {
+    "text": "大提琴靠在墙边。",
+    "romanization": "Dàtíqín kào zài qiáng biān."
+  },
+  "7": {
+    "text": "调音比我想象的要花更长时间。",
+    "romanization": "Diàoyīn bǐ wǒ xiǎngxiàng de yào huā gèng cháng shíjiān."
+  },
+  "8": {
+    "text": "哪根弦走音了？",
+    "romanization": "Nǎ gēn xián zǒuyīn le?"
+  },
+  "9": {
+    "text": "琴弓需要重新换弓毛了。",
+    "romanization": "Qíngōng xūyào chóngxīn huàn gōngmáo le."
+  },
+  "10": {
+    "text": "我在网上买了个二手电子琴。",
+    "romanization": "Wǒ zài wǎngshàng mǎi le gè èrshǒu diànzǐqín."
+  },
+  "11": {
+    "text": "她更喜欢立式钢琴，而不是三角钢琴。",
+    "romanization": "Tā gèng xǐhuān lìshì gāngqín, ér bú shì sānjǐǎo gāngqín."
+  },
+  "12": {
+    "text": "他走到哪儿都带着他的萨克斯风盒子。",
+    "romanization": "Tā zǒu dào nǎr dōu dài zhe tā de sàkèsīfēng hézi."
+  },
+  "13": {
+    "text": "鼓手在其他人来之前就把设备都架好了。",
+    "romanization": "Gǔshǒu zài qítā rén lái zhīqián jiù bǎ shèbèi dōu jià hǎo le."
+  },
+  "14": {
+    "text": "尤克里里比吉他更容易上手。",
+    "romanization": "Yóukèlǐlǐ bǐ jítā gèng róngyì shàngshǒu."
+  },
+  "15": {
+    "text": "你会看乐谱吗？",
+    "romanization": "Nǐ huì kàn yuèpǔ ma?"
+  },
+  "16": {
+    "text": "这首曲子是G大调的。",
+    "romanization": "Zhè shǒu qǔzi shì G dàdiào de."
+  },
+  "17": {
+    "text": "我们是四三拍。",
+    "romanization": "Wǒmen shì sì sān pāi."
+  },
+  "18": {
+    "text": "第一个音符弹响一点。",
+    "romanization": "Dì yī gè yīnfú tán xiǎng yīdiǎn."
+  },
+  "19": {
+    "text": "休止符和音符一样重要。",
+    "romanization": "Xiūzhǐfú hé yīnfú yīyàng zhòngyào."
+  },
+  "20": {
+    "text": "他解释了什么是降音和升音。",
+    "romanization": "Tā jiěshì le shénme shì jiàngyīn hé shēngyīn."
+  },
+  "21": {
+    "text": "现在和弦转换感觉很自然了。",
+    "romanization": "Xiànzài héxián zhuǎnhuàn gǎnjué hěn zìrán le."
+  },
+  "22": {
+    "text": "音阶就是一串按顺序排列的音符。",
+    "romanization": "Yīnjiē jiù shì yī chuàn àn shùnxù páiliè de yīnfú."
+  },
+  "23": {
+    "text": "试试把这一乐句降低一个八度。",
+    "romanization": "Shìshi bǎ zhè yī yuèjù jiàngdī yī gè bādù."
+  },
+  "24": {
+    "text": "她在乐谱空白处标出了换气记号。",
+    "romanization": "Tā zài yuèpǔ kòngbái chù biāochū le huànqì jìhào."
+  },
+  "25": {
+    "text": "指挥给我们数拍子起头。",
+    "romanization": "Zhǐhuī gěi wǒmen shù pāizi qǐtóu."
+  },
+  "26": {
+    "text": "每次到这一小节我都觉得很吃力。",
+    "romanization": "Měi cì dào zhè yī xiǎojié wǒ dōu juéde hěn chīlì."
+  },
+  "27": {
+    "text": "这旋律很简单，但很上头。",
+    "romanization": "Zhè xuánlǜ hěn jiǎndān, dàn hěn shàngtóu."
+  },
+  "28": {
+    "text": "他更喜欢凭感觉作曲。",
+    "romanization": "Tā gèng xǐhuān píng gǎnjué zuòqǔ."
+  },
+  "29": {
+    "text": "大部分歌曲都只用几个和弦。",
+    "romanization": "Dà bùfen gēqǔ dōu zhǐ yòng jǐ gè héxián."
+  },
+  "30": {
+    "text": "我晚饭后练习三十分钟。",
+    "romanization": "Wǒ wǎnfànhòu liànxí sānshí fēnzhōng."
+  },
+  "31": {
+    "text": "慢慢地弹，直到你的手指记住为止。",
+    "romanization": "Mànmàn de tán, zhídào nǐ de shǒuzhǐ jìzhù wéizhǐ."
+  },
+  "32": {
+    "text": "她用节拍器来保持节奏稳定。",
+    "romanization": "Tā yòng jiépāiqì lái bǎochí jiézòu wěndìng."
+  },
+  "33": {
+    "text": "他会录下自己演奏的片段，然后回放听。",
+    "romanization": "Tā huì lù xià zìjǐ yǎnzòu de piànduàn, rán hòu huífàng tīng."
+  },
+  "34": {
+    "text": "在演奏难的乐段之前先热身。",
+    "romanization": "Zài yǎnzòu nán de yuèduàn zhīqián xiān rèshēn."
+  },
+  "35": {
+    "text": "犯错是练习的一部分。",
+    "romanization": "Fàncuò shì liànxí de yī bùfen."
+  },
+  "36": {
+    "text": "我把它分解成了小段来练习。",
+    "romanization": "Wǒ bǎ tā fēnjiě chéng le xiǎo duàn lái liànxí."
+  },
+  "37": {
+    "text": "今天练五分钟比下周练两小时要好。",
+    "romanization": "Jīntiān liàn wǔ fēnzhōng bǐ xià zhōu liàn liǎng xiǎoshí yào hǎo."
+  },
+  "38": {
+    "text": "她对着镜子练习。",
+    "romanization": "Tā duì zhe jìngzi liànxí."
+  },
+  "39": {
+    "text": "老师给了我一个新的练习曲。",
+    "romanization": "Lǎoshī gěi le wǒ yī gè xīn de liànxíqǔ."
+  },
+  "40": {
+    "text": "慢的部分不要赶。",
+    "romanization": "Màn de bùfen búyào gǎn."
+  },
+  "41": {
+    "text": "他有时候会闭着眼睛演奏。",
+    "romanization": "Tā yǒu shíhou huì bì zhe yǎnjīng yǎnzòu."
+  },
+  "42": {
+    "text": "最难的小节就是我跳过的那一小节。",
+    "romanization": "Zuì nán de xiǎojié jiù shì wǒ tiàoguò de nà yī xiǎojié."
+  },
+  "43": {
+    "text": "休息三天后，我总是感觉手生了。",
+    "romanization": "Xiūxi sān tiān hòu, wǒ zǒng shì gǎnjué shǒu shēng le."
+  },
+  "44": {
+    "text": "结尾要比开头多练习。",
+    "romanization": "Jiéwěi yào bǐ kāitóu duō liànxí."
+  },
+  "45": {
+    "text": "演奏会前我的手一直在抖。",
+    "romanization": "Yǎnzòuhuì qián wǒ de shǒu yīzhí zài dǒu."
+  },
+  "46": {
+    "text": "曲子还没结束观众就鼓掌了。",
+    "romanization": "Qǔzi hái méi jiéshù guānzhòng jiù gǔzhǎng le."
+  },
+  "47": {
+    "text": "她鞠躬后走下了舞台。",
+    "romanization": "Tā jūgōng hòu zǒu xià le wǔtái."
+  },
+  "48": {
+    "text": "他忘了一句歌词，然后即兴发挥过去了。",
+    "romanization": "Tā wàng le yī jù gēcí, rán hòu jíxìng fāhuī guòqù le."
+  },
+  "49": {
+    "text": "灯光暗下来的时候，乐队在调音。",
+    "romanization": "Dēngguāng àn xiàlái de shíhou, yuèduì zài diàoyīn."
+  },
+  "50": {
+    "text": "能帮我翻一下页吗？",
+    "romanization": "Néng bāng wǒ fān yīxià yè ma?"
+  },
+  "51": {
+    "text": "麦克风离镲片太近了。",
+    "romanization": "Màikèfēng lí chǎpiàn tài jìn le."
+  },
+  "52": {
+    "text": "我们加演了一曲。",
+    "romanization": "Wǒmen jiāyǎn le yī qǔ."
+  },
+  "53": {
+    "text": "他看着人群笑了。",
+    "romanization": "Tā kàn zhe rénqún xiào le."
+  },
+  "54": {
+    "text": "第一场音乐会总是最难的。",
+    "romanization": "Dì yī chǎng yīnyuèhuì zǒng shì zuì nán de."
+  },
+  "55": {
+    "text": "怯场这种事，好像从来没完全消失过。",
+    "romanization": "Qièchǎng zhè zhǒng shì, hǎoxiàng cónglái méi wánquán xiāoshī guò."
+  },
+  "56": {
+    "text": "在华彩乐段的时候，我差点把琴弓掉了。",
+    "romanization": "Zài huácǎi yuèduàn de shíhou, wǒ chàdiǎn bǎ qíngōng diào le."
+  },
+  "57": {
+    "text": "在公共场合唱歌，本身就是一种勇气。",
+    "romanization": "Zài gōnggòng chǎnghé chànggē, běnshēn jiù shì yī zhǒng yǒngqì."
+  },
+  "58": {
+    "text": "掌声感觉比歌还长。",
+    "romanization": "Zhǎngshēng gǎnjué bǐ gē hái cháng."
+  },
+  "59": {
+    "text": "演出结束后我们见到了最喜欢的音乐家。",
+    "romanization": "Yǎnchū jiéshù hòu wǒmen jiàndào le zuì xǐhuān de yīnyuèjiā."
+  },
+  "60": {
+    "text": "你喜欢听什么类型的音乐？",
+    "romanization": "Nǐ xǐhuān tīng shénme lèixíng de yīnyuè?"
+  },
+  "61": {
+    "text": "我是听着我妈妈的唱片长大的。",
+    "romanization": "Wǒ shì tīng zhe wǒ māma de chàngpiàn zhǎngdà de."
+  },
+  "62": {
+    "text": "他做饭的时候喜欢听歌剧。",
+    "romanization": "Tā zuòfàn de shíhou xǐhuān tīng gējù."
+  },
+  "63": {
+    "text": "低音线才是这首歌的灵魂。",
+    "romanization": "Dīyīn xiàn cái shì zhè shǒu gē de línghún."
+  },
+  "64": {
+    "text": "录音里能听到房间的混响。",
+    "romanization": "Lùyīn lǐ néng tīngdào fángjiān de hùnxiǎng."
+  },
+  "65": {
+    "text": "这张专辑在黑胶唱片上听起来更好。",
+    "romanization": "Zhè zhāng zhuānjí zài hēijiāo chàngpiàn shàng tīng qǐlái gèng hǎo."
+  },
+  "66": {
+    "text": "她闭上眼睛听着弦乐。",
+    "romanization": "Tā bì shàng yǎnjīng tīng zhe xiányuè."
+  },
+  "67": {
+    "text": "这架钢琴有点走音。",
+    "romanization": "Zhè jià gāngqín yǒudiǎn zǒuyīn."
+  },
+  "68": {
+    "text": "我总是反复听这张专辑。",
+    "romanization": "Wǒ zǒng shì fǎnfù tīng zhè zhāng zhuānjí."
+  },
+  "69": {
+    "text": "第一次听到它的时候，我停下了手头的一切。",
+    "romanization": "Dì yī cì tīngdào tā de shíhou, wǒ tíng xià le shǒutóu de yīqiè."
+  },
+  "70": {
+    "text": "他每周都会推荐一张不同的爵士唱片。",
+    "romanization": "Tā měi zhōu dōu huì tuījiàn yī zhāng bùtóng de juéshì chàngpiàn."
+  },
+  "71": {
+    "text": "这首歌让我想起了我的爷爷。",
+    "romanization": "Zhè shǒu gē ràng wǒ xiǎngqǐ le wǒ de yéye."
+  },
+  "72": {
+    "text": "旋律下面藏着一种安静的和声。",
+    "romanization": "Xuánlǜ xiàmiàn cáng zhe yī zhǒng ānjìng de héshēng."
+  },
+  "73": {
+    "text": "现场音乐听起来和录音不一样。",
+    "romanization": "Xiànchǎng yīnyuè tīng qǐlái hé lùyīn bù yīyàng."
+  },
+  "74": {
+    "text": "深夜我更喜欢戴耳机听。",
+    "romanization": "Shēnyè wǒ gèng xǐhuān dài ěrjī tīng."
+  },
+  "75": {
+    "text": "合唱团每周三晚上排练。",
+    "romanization": "Héchàngtuán měi zhōu sān wǎnshàng páiliàn."
+  },
+  "76": {
+    "text": "贝斯是整个乐队的基石。",
+    "romanization": "Bèisī shì zhěnggè yuèduì de jīshí."
+  },
+  "77": {
+    "text": "指挥轻柔地引导乐团进入。",
+    "romanization": "Zhǐhuī qīngróu de yǐndǎo yuètuán jìnrù."
+  },
+  "78": {
+    "text": "同一个乐段我们排练了四遍。",
+    "romanization": "Tóng yī gè yuèduàn wǒmen páiliàn le sì biàn."
+  },
+  "79": {
+    "text": "他在当地的交响乐团里拉第二小提琴。",
+    "romanization": "Tā zài dāngdì de jiāoxiǎng yuètuán lǐ lā dì èr xiǎotíqín."
+  },
+  "80": {
+    "text": "四重奏乐手们围成一个紧密的半圆形坐着。",
+    "romanization": "Sìchóngzòu yuèshǒu men wéi chéng yī gè jǐnmì de bànyuánxíng zuò zhe."
+  },
+  "81": {
+    "text": "鼓手数着拍子定下了节奏。",
+    "romanization": "Gǔshǒu shǔ zhe pāizi dìng xià le jiézòu."
+  },
+  "82": {
+    "text": "她唱的是和声部分。",
+    "romanization": "Tā chàng de shì héshēng bùfen."
+  },
+  "83": {
+    "text": "有时候两把吉他加一个声音就足够了。",
+    "romanization": "Yǒu shíhou liǎng bǎ jítā jiā yī gè shēngyīn jiù zúgòu le."
+  },
+  "84": {
+    "text": "合唱团去了一个小教堂唱歌。",
+    "romanization": "Héchàngtuán qù le yī gè xiǎo jiàotáng chànggē."
+  },
+  "85": {
+    "text": "他在衣柜里录制了人声。",
+    "romanization": "Tā zài yīguì lǐ lùzhì le rénshēng."
+  },
+  "86": {
+    "text": "她换了输入接口后，电缆的嗡嗡声就消失了。",
+    "romanization": "Tā huàn le shūrù jiēkǒu hòu, diànlǎn de wēngwēngshēng jiù xiāoshī le."
+  },
+  "87": {
+    "text": "那个声音需要用不同的麦克风。",
+    "romanization": "Nà gè shēngyīn xūyào yòng bùtóng de màikèfēng."
+  },
+  "88": {
+    "text": "他保留了每一个录音片段，以防下一个更糟。",
+    "romanization": "Tā bǎoliú le měi yī gè lùyīn piànduàn, yǐ fáng xià yī gè gèng zāo."
+  },
+  "89": {
+    "text": "第二天早上听，混音效果更好了。",
+    "romanization": "Dì èr tiān zǎoshang tīng, hùnyīn xiàoguǒ gèng hǎo le."
+  },
+  "90": {
+    "text": "功放预热的时候会发光。",
+    "romanization": "Gōngfàng yùrè de shíhou huì fāguāng."
+  },
+  "91": {
+    "text": "他用的是一台老式的四轨磁带录音机。",
+    "romanization": "Tā yòng de shì yī tái lǎoshì de sì guǐ cídài lùyīnjī."
+  },
+  "92": {
+    "text": "我们把同一句录了三遍，然后叠在一起。",
+    "romanization": "Wǒmen bǎ tóng yī jù lù le sān biàn, rán hòu dié zài yīqǐ."
+  },
+  "93": {
+    "text": "混响让房间听起来很大。",
+    "romanization": "Hùnxiǎng ràng fángjiān tīng qǐlái hěn dà."
+  },
+  "94": {
+    "text": "她在厨房里完成了这张专辑的混音。",
+    "romanization": "Tā zài chúfáng lǐ wánchéng le zhè zhāng zhuānjí de hùnyīn."
+  },
+  "95": {
+    "text": "音乐让漫长的驾驶旅途变得没那么枯燥了。",
+    "romanization": "Yīnyuè ràng màncháng de jiàshǐ lǚtú biànde méi nàme kūzào le."
+  },
+  "96": {
+    "text": "一首歌能改变一天的感受。",
+    "romanization": "Yī shǒu gē néng gǎibiàn yī tiān de gǎnshòu."
+  },
+  "97": {
+    "text": "整个房间的人都跟着唱起来了。",
+    "romanization": "Zhěnggè fángjiān de rén dōu gēn zhe chàng qǐlái le."
+  },
+  "98": {
+    "text": "最后一个和弦后的寂静也是音乐的一部分。",
+    "romanization": "Zuì hòu yī gè héxián hòu de jìjìng yě shì yīnyuè de yī bùfen."
+  },
+  "99": {
+    "text": "学会一首你可以随时为任何人演奏的歌。",
+    "romanization": "Xuéhuì yī shǒu nǐ kěyǐ suíshí wèi rènhé rén yǎnzòu de gē."
+  }
+}

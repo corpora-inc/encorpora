@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Prisene stiger når flere ønsker noe.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Når tilbudet øker, faller prisene som regel.",
+    "romanization": null
+  },
+  "2": {
+    "text": "En rabatt får flere til å kjøpe.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Det samme produktet koster ulikt i forskjellige byer.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Etterspørselen kan endre seg over natten.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Selgere setter opp prisene når varelageret minker.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Kjøpere ser seg om etter det beste tilbudet.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Noen ganger er en høy pris et tegn på kvalitet.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Noen ganger er en høy pris bare et markedsføringstriks.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Gratis frakt endrer hvordan folk opplever et kjøp.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Prisen er sjelden hele kostnaden.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Tid er også en slags kostnad.",
+    "romanization": null
+  },
+  "12": {
+    "text": "En lang kø er det du betaler når prisen er for lav.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Salg får folk til å kjøpe ting de ikke hadde planlagt.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Folk reagerer sterkere på å tape penger enn på å tjene dem.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Priser i dollar og priser i din lokale valuta føles forskjellig.",
+    "romanization": null
+  },
+  "16": {
+    "text": "En liten daglig utgift blir mye i løpet av et år.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Dagens første salg betyr mer enn det siste.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mange små kjøp skjuler én stor vane.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Det billigste alternativet er noen ganger det dyreste til slutt.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Penger er bare en avtale vi alle deler.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Å spare er å betale ditt fremtidige jeg.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Et budsjett er en plan, ikke en straff.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Renters rente er tålmodighetens lille motor.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Inflasjon spiser sakte opp penger som holdes i kontanter.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Et lån er å låne fra ditt fremtidige jeg.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Renter er leien for lånte penger.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Hun følger med på hver utgift i en måned for å se mønsteret.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Han sparer et fast beløp hver lønningsdag før noe annet.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Nødmidler gjør små katastrofer mindre smertefulle.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Å bruke litt mindre er ofte lettere enn å tjene mer.",
+    "romanization": null
+  },
+  "31": {
+    "text": "En lønnsøkning kan forsvinne i større utgifter.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Han betalte ned lånet tidlig og følte seg lettere.",
+    "romanization": null
+  },
+  "33": {
+    "text": "De fleste overvurderer disiplinen sin neste år.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Pengebekymringer krymper når du har en plan.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Et marked er bare et sted hvor kjøpere og selgere møtes.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Nettbutikker er markeder uten vegger.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Spesialisering er grunnen til at de fleste ting er billige.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Folk handler for tingene de ikke lager selv.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Lønn reflekterer hva noen får betalt, ikke alltid hva de er verdt.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Noen jobber betaler godt fordi få mennesker vil ha dem.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Noen jobber betaler godt fordi få mennesker kan gjøre dem.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Markedet belønner ikke alltid det mest nyttige arbeidet.",
+    "romanization": null
+  },
+  "43": {
+    "text": "En ny teknologi kan raskt utslette en gammel industri.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Folk flytter ofte dit jobbene er.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Småbedrifter utgjør mesteparten av økonomien.",
+    "romanization": null
+  },
+  "46": {
+    "text": "En god ansatt sparer mer enn de koster.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Forhandling er en del av enhver jobb.",
+    "romanization": null
+  },
+  "48": {
+    "text": "En sideinntekt gir deg valgmuligheter.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Å si opp er noen ganger det mest virkningsfulle grepet.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Folk reagerer på insentiver, selv små.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Gratis er et magisk ord.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Den første måneden gratis endrer mange beslutninger.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Abonnementer er designet for å bli glemt.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Runde tall føles større enn de er.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Sunkne kostnader bør ikke påvirke neste trekk.",
+    "romanization": null
+  },
+  "56": {
+    "text": "En liten avgift endrer hvor ofte folk møter opp.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Drikkepenger endrer regnestykket for et måltid.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Folk deler når det er enkelt å dele.",
+    "romanization": null
+  },
+  "59": {
+    "text": "En kø forteller deg hva folk verdsetter i dag.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Tidsbegrensede tilbud skaper bevisst hastverk.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Lojalitetsprogrammer belønner det som uansett ville skjedd.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Standardvalg bestemmer mer enn folk innser.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Anmeldelser flytter etterspørselen mer enn annonser.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Munn-til-munn-metoden slår fortsatt det meste av markedsføring.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Økonomien vokser noen år og krymper andre.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Lavkonjunkturer lærer oss lekser som høykonjunkturer glemmer.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Langsiktig vekst løfter alle, sakte.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Produktivitetsgevinster skjuler seg i verktøy og vaner.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Nye ideer er den eneste bærekraftige kilden til vekst.",
+    "romanization": null
+  },
+  "70": {
+    "text": "En høykonjunktur kan skjule mange dårlige beslutninger.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Krakk straffer de mest belånte først.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Billige penger har en tendens til å finne risikable bruksområder.",
+    "romanization": null
+  },
+  "73": {
+    "text": "En boble er vanskelig å se innenfra.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Gjenopprettingen er ujevn på tvers av bransjer og regioner.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Land handler fordi begge sider tjener på det.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Toller hever prisene for kjøpere hjemme.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Valutakurser endrer hva en import koster.",
+    "romanization": null
+  },
+  "78": {
+    "text": "En svak valuta hjelper eksportører og skader importører.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Utenlandsk investering kan bygge opp eller belaste en økonomi.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Pengeoverføringer støtter mange familier på tvers av landegrenser.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Sanksjoner rammer vanlige folk mer enn ledere.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Globale forsyningskjeder bryter sammen på overraskende steder.",
+    "romanization": null
+  },
+  "83": {
+    "text": "En mangel i ett land kan flytte priser overalt.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Noen bransjer samler seg i én region av en grunn.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Ulikhet vokser stille når ingen følger med.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Skatter er prisen for offentlige goder.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Offentlige goder er de vi ikke enkelt kan kjøpe individuelt.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Eksternaliteter er kostnadene ingen ba om å betale.",
+    "romanization": null
+  },
+  "89": {
+    "text": "En liten markedssvikt kan ha store effekter.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Det frie markedet trenger regler for å forbli fritt.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Informasjon deles ujevnt mellom kjøpere og selgere.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Tillit senker kostnaden for hver transaksjon.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Omdømme er en undervurdert ressurs.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Prisen på oppmerksomhet har gått opp.",
+    "romanization": null
+  },
+  "95": {
+    "text": "De viktigste markedene har ofte ingen priser.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Tid og omsorg er blant de knappeste ressursene.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Økonomiske beslutninger er også moralske beslutninger.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Økonomien er bare folk som gjør ting for hverandre.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Et enkelt budsjett endrer mer enn noen kompleks teori.",
+    "romanization": null
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "어두워지기 전에 텐트를 설치해요.",
+    "romanization": "eoduwojigi jeone tenteureul seolchihaeyo."
+  },
+  "1": {
+    "text": "라이터를 어디에 뒀더라?",
+    "romanization": "raiteoreul eodie dwotdeora?"
+  },
+  "2": {
+    "text": "텐트 팩은 옆주머니에 있어요.",
+    "romanization": "tenteu paegeun yeopjumeonie isseoyo."
+  },
+  "3": {
+    "text": "제 침낭은 영하까지 견딜 수 있어요.",
+    "romanization": "je chimnang-eun yeonghakaji gyeondil su isseoyo."
+  },
+  "4": {
+    "text": "매트를 깔기 전에 공기를 넣어주세요.",
+    "romanization": "maeteureul kkalgi jeone gonggireul neoeojuseyo."
+  },
+  "5": {
+    "text": "랜턴에 새 건전지가 필요해요.",
+    "romanization": "raenteone sae geonjeonjiga piryohaeyo."
+  },
+  "6": {
+    "text": "주무시기 전에 가이라인을 팽팽하게 당겨주세요.",
+    "romanization": "jumusigi jeone gairaineul paengpaenghage danggyeojuseyo."
+  },
+  "7": {
+    "text": "레인 플라이는 솔기가 바깥쪽으로 향하게 설치해요.",
+    "romanization": "rein peullaineun solgiga bakkatjjogeuro hyanghage seolchihaeyo."
+  },
+  "8": {
+    "text": "평평한 곳에 텐트를 치세요.",
+    "romanization": "pyeongpyeonghan gose tenteureul chiseoyo."
+  },
+  "9": {
+    "text": "음식은 텐트에서 멀리 떨어뜨려 놓으세요.",
+    "romanization": "eumsigeun tenteueseo meolli tteoreotteuryeo noeuseyo."
+  },
+  "10": {
+    "text": "그분은 사치품으로 작은 베개 하나를 가져오셨어요.",
+    "romanization": "geubuneun sachipumeuro jageun begae hanareul gajyeoosyeosseoyo."
+  },
+  "11": {
+    "text": "헤드램프가 있으면 더듬거릴 일이 많이 줄어들어요.",
+    "romanization": "hedeuraempeuga isseumyeon deodeumgeoril iri mani jureodeureoyo."
+  },
+  "12": {
+    "text": "캠핑장은 두 번째 개울을 지나면 바로 나와요.",
+    "romanization": "kaempingjang-eun du beonjjae gaeureul jinamyeon baro nawayo."
+  },
+  "13": {
+    "text": "아이스박스는 그늘에 두세요.",
+    "romanization": "aiseubakseuneun geuneure duseyo."
+  },
+  "14": {
+    "text": "이 접이식 의자는 좀 낡았네요.",
+    "romanization": "i jeobwisik uijaneun jom nalganneyo."
+  },
+  "15": {
+    "text": "배낭이 보기보다 무거워요.",
+    "romanization": "baenang-i bogiboda mugeowoyo."
+  },
+  "16": {
+    "text": "지도는 배낭 옆주머니에 넣었어요.",
+    "romanization": "jidoneun baenang yeopjumeonie neoeosseoyo."
+  },
+  "17": {
+    "text": "정수 필터는 작은 드라이백 안에 있어요.",
+    "romanization": "jeongsu pilteoneun jageun deuraibaek ane isseoyo."
+  },
+  "18": {
+    "text": "손도끼에는 안전 덮개가 있어요.",
+    "romanization": "sondokkieoneun anjeon deopgaega isseoyo."
+  },
+  "19": {
+    "text": "또 캔 따개를 잊어버렸어요.",
+    "romanization": "tto kaen ttagaereul ijeobeoryeosseoyo."
+  },
+  "20": {
+    "text": "불을 붙이기 전에 마른 부싯깃을 모으세요.",
+    "romanization": "bureul butigi jeone mareun busitgiseul moeuseyo."
+  },
+  "21": {
+    "text": "화로대는 이미 만들어져 있어요.",
+    "romanization": "hwarodaeneun imi mandeureojyeo isseoyo."
+  },
+  "22": {
+    "text": "불쏘시개가 더 필요해요.",
+    "romanization": "bulssosigaega deo piryohaeyo."
+  },
+  "23": {
+    "text": "젖은 나무는 불에 넣지 마세요.",
+    "romanization": "jeojeun namuneun bure neotji maseyo."
+  },
+  "24": {
+    "text": "숯불이 불꽃보다 더 뜨거워요.",
+    "romanization": "sutburi bulkkotboda deo tteugeowoyo."
+  },
+  "25": {
+    "text": "물은 끓여서 마시세요.",
+    "romanization": "mureun kkeuryeoseo masiseyo."
+  },
+  "26": {
+    "text": "베이컨은 야외에서 요리하면 더 오래 걸려요.",
+    "romanization": "beikeoneun yawoeeseo yorihamyeon deo orae geollyeoyo."
+  },
+  "27": {
+    "text": "떠나기 전에 숯불에 물을 부어주세요.",
+    "romanization": "tteonagi jeone sutbure mureul bueojuseyo."
+  },
+  "28": {
+    "text": "그분은 추운 아침을 위해 작은 스토브를 가져오셨어요.",
+    "romanization": "geubuneun chuun achimeul wihae jageun seutobeureul gajyeoosyeosseoyo."
+  },
+  "29": {
+    "text": "커피는 야외에서 마시면 더 맛있어요.",
+    "romanization": "keopineun yawoeeseo masimyeon deo masisseoyo."
+  },
+  "30": {
+    "text": "프라이팬 손잡이가 금방 뜨거워져요.",
+    "romanization": "peuraipaen sonjabi-ga geumbang tteugeowojyeoyo."
+  },
+  "31": {
+    "text": "우리는 평평한 돌 위에서 저녁을 요리했어요.",
+    "romanization": "urineun pyeongpyeonghan dol wieoseo jeonyeogeul yorihaesseoyo."
+  },
+  "32": {
+    "text": "마시멜로에 또 불이 붙었어요.",
+    "romanization": "masimelloe tto buri buteosseoyo."
+  },
+  "33": {
+    "text": "불꽃 가장자리에서 천천히 구우세요.",
+    "romanization": "bulkkot gajangjarieseo cheoncheonhi guuseyo."
+  },
+  "34": {
+    "text": "가져온 모든 것을 다시 가져가세요.",
+    "romanization": "gajyeoon modeun geoseul dasi gajyeogaseyo."
+  },
+  "35": {
+    "text": "자정 이후에 비가 온다고 예보했어요.",
+    "romanization": "jajeong ihu-e biga ondago yebohaesseoyo."
+  },
+  "36": {
+    "text": "갑자기 바람이 세게 불었어요.",
+    "romanization": "gapjagi barami sege bureosseoyo."
+  },
+  "37": {
+    "text": "능선 위로 구름이 몰려왔어요.",
+    "romanization": "neungseon wiro gureumi mollyeowasseoyo."
+  },
+  "38": {
+    "text": "해가 진 후에 기온이 빠르게 떨어졌어요.",
+    "romanization": "haega jin hue gioni ppareuge tteoreojyeosseoyo."
+  },
+  "39": {
+    "text": "아침 서리는 10시쯤에 다 녹았어요.",
+    "romanization": "achim seorineun yeolsijjeume da nogasseoyo."
+  },
+  "40": {
+    "text": "안개 때문에 길을 따라가기 어려웠어요.",
+    "romanization": "angae ttaemune gireul ttaragagi eoryeowosseoyo."
+  },
+  "41": {
+    "text": "해 질 녘에 모기들이 나왔어요.",
+    "romanization": "hae jil nyeoke mogideuri nawasseoyo."
+  },
+  "42": {
+    "text": "여기서는 하늘이 더 넓게 보여요.",
+    "romanization": "yeogiseoneun haneuri deo neolpge boyeoyo."
+  },
+  "43": {
+    "text": "번개는 아직 몇 마일 떨어져 있어요.",
+    "romanization": "beongaeneun ajik myeot mail tteoreojyeo isseoyo."
+  },
+  "44": {
+    "text": "오후 햇볕이 가장 강해요.",
+    "romanization": "ohu haetbyeoti gajang ganghaeyo."
+  },
+  "45": {
+    "text": "그 길은 2마일 동안 강을 따라 이어져요.",
+    "romanization": "geu gireun i-mail dong-an gang-eul ttara ieojyeoyo."
+  },
+  "46": {
+    "text": "표시된 길로만 다니세요.",
+    "romanization": "pyosidoen gilloman daniseyo."
+  },
+  "47": {
+    "text": "등산로 입구는 길을 따라 3마일 위에 있어요.",
+    "romanization": "deungsanro ipguneun gireul ttara sam-mail wie isseoyo."
+  },
+  "48": {
+    "text": "갈림길에서 잘못 들어섰어요.",
+    "romanization": "gallimgireseo jalmot deureoseosseoyo."
+  },
+  "49": {
+    "text": "지도에는 봉우리 근처에 대피소가 표시되어 있어요.",
+    "romanization": "jidoeneun bonguri geuncheoe daepisoga pyosidoeeo isseoyo."
+  },
+  "50": {
+    "text": "그분은 일정한 속도를 유지하며 걸었어요.",
+    "romanization": "geubuneun iljeonghan sokdoreul yujihamyeo georeosseoyo."
+  },
+  "51": {
+    "text": "지그재그 길 덕분에 오르기가 더 쉬워요.",
+    "romanization": "jigeujaegeu gil deokbune oreugiga deo swiwoyo."
+  },
+  "52": {
+    "text": "정상에서의 경치는 오를 만한 가치가 있었어요.",
+    "romanization": "jeongsang-eseoui gyeongchineun oreul manhan gachiga isseosseoyo."
+  },
+  "53": {
+    "text": "내려갈 때 낙석을 조심하세요.",
+    "romanization": "naeryeogal ttae nakseogeul josimhaseyo."
+  },
+  "54": {
+    "text": "부드러운 흙에서 사슴 발자국을 봤어요.",
+    "romanization": "budeureoun heugeseo saseum baljajugeul bwasseoyo."
+  },
+  "55": {
+    "text": "목마르기 전에 물을 마시세요.",
+    "romanization": "mongmareugi jeone mureul masiseyo."
+  },
+  "56": {
+    "text": "정상 근처에서는 나무들이 드문드문 있었어요.",
+    "romanization": "jeongsang geuncheoeseoneun namudeuri deumundeumun isseosseoyo."
+  },
+  "57": {
+    "text": "우리는 쓰러진 통나무에 앉아 쉬었어요.",
+    "romanization": "urineun sseureojin tongnamue anja swieosseoyo."
+  },
+  "58": {
+    "text": "개울 위의 다리는 길보다 더 오래되어 보였어요.",
+    "romanization": "gaeul wiui darineun gilboda deo oraedoeo boyeosseoyo."
+  },
+  "59": {
+    "text": "해 질 녘까지 캠프로 돌아왔어요.",
+    "romanization": "hae jil nyeokkkaji kaempeuro dorawasseoyo."
+  },
+  "60": {
+    "text": "오늘 밤 은하수가 아주 밝아요.",
+    "romanization": "oneul bam eunhasuga aju balgayo."
+  },
+  "61": {
+    "text": "그분은 북두칠성을 가리켰어요.",
+    "romanization": "geubuneun bukduchilseong-eul garikyeosseoyo."
+  },
+  "62": {
+    "text": "별똥별이 하늘을 가로질러 떨어졌어요.",
+    "romanization": "byeolttongbyeori haneureul garojilleo tteoreojyeosseoyo."
+  },
+  "63": {
+    "text": "우리가 이야기하는 동안 불이 타닥타닥 소리를 냈어요.",
+    "romanization": "uriga iyagihaneun dong-an buri tadaktadak sorireul naesseoyo."
+  },
+  "64": {
+    "text": "남반구에서는 별들이 다르게 보여요.",
+    "romanization": "nambangueseoneun byeoldeuri dareuge boyeoyo."
+  },
+  "65": {
+    "text": "나무들 사이 어딘가에서 올빼미가 울었어요.",
+    "romanization": "namudeul sai eodingaeseo olppaemiga ureosseoyo."
+  },
+  "66": {
+    "text": "달이 늦게, 주황색으로 떠올랐어요.",
+    "romanization": "dari neutge, juhwangsaegeuro tteoollasseoyo."
+  },
+  "67": {
+    "text": "우리는 자정까지 모닥불 주위에 앉아 이야기를 나눴어요.",
+    "romanization": "urineun jajeongkkaji modakbul juwie anja iyagireul nawosseoyo."
+  },
+  "68": {
+    "text": "밤은 생각보다 시끄러워요.",
+    "romanization": "bameun saenggakboda sikkeureowoyo."
+  },
+  "69": {
+    "text": "우리는 텐트 문을 열어놓고 잤어요.",
+    "romanization": "urineun tenteu muneul yeoreonoko jasseoyo."
+  },
+  "70": {
+    "text": "새벽에 사슴 한 마리가 캠프를 지나갔어요.",
+    "romanization": "saebyeoge saseum han mariga kaempeureul jinagasseoyo."
+  },
+  "71": {
+    "text": "다람쥐들이 결국 간식을 찾아냈어요.",
+    "romanization": "daramjuideuri gyeolguk gansigeul chajanaesseoyo."
+  },
+  "72": {
+    "text": "우리는 건너편 강둑에서 비버를 봤어요.",
+    "romanization": "urineun geonneopyeon gangdugeseo bibeoreul bwasseoyo."
+  },
+  "73": {
+    "text": "음식은 밀봉해서 밤새 매달아 놓으세요.",
+    "romanization": "eumsigeun milbonghaeseo bamsae maedara noeuseyo."
+  },
+  "74": {
+    "text": "베어백은 나무 높은 곳에 매달아야 해요.",
+    "romanization": "be-eobaeg-eun namu nopeun gose maedaraya haeyo."
+  },
+  "75": {
+    "text": "놀랄 일을 겪고 싶지 않다면 신발을 밖에 두지 마세요.",
+    "romanization": "nollal ireul gyeokko sipji antamyeon sinbareul bakke duji maseyo."
+  },
+  "76": {
+    "text": "개구리 한 마리가 제 발 바로 옆을 뛰어 지나갔어요.",
+    "romanization": "gaeguri han mariga je bal baro yeopeul ttwieo jinagasseoyo."
+  },
+  "77": {
+    "text": "새들이 해보다 먼저 우리를 깨웠어요.",
+    "romanization": "saedeuri haeboda meonjeo urireul kkaewosseoyo."
+  },
+  "78": {
+    "text": "우리는 한동안 눈밭에 난 발자국을 따라갔어요.",
+    "romanization": "urineun handongan nunbate nan baljajugeul ttaragasseoyo."
+  },
+  "79": {
+    "text": "그 호수에는 물고기는 없었지만 잠자리가 많았어요.",
+    "romanization": "geu hosueoneun mulgogineun eopseotjiman jamjariga manasseoyo."
+  },
+  "80": {
+    "text": "아이들은 호수까지 내내 뛰어갔어요.",
+    "romanization": "aideureun hosukkaji naenae ttwieogasseoyo."
+  },
+  "81": {
+    "text": "그분은 어렸을 때 이후로 캠핑을 해본 적이 없었어요.",
+    "romanization": "geubuneun eoryeosseul ttae ihuro kaemping-eul haebon jeogi eopseosseoyo."
+  },
+  "82": {
+    "text": "그분은 저에게 지도를 읽는 방법을 알려주셨어요.",
+    "romanization": "geubuneun jeoege jidoreul ikneun bangbeobeul allyeojusyeosseoyo."
+  },
+  "83": {
+    "text": "우리는 다른 가족과 캠핑장을 함께 사용했어요.",
+    "romanization": "urineun dareun gajokgwa kaempingjang-eul hamkke sayonghaesseoyo."
+  },
+  "84": {
+    "text": "이틀 동안 야외에 있으면 모든 것이 재충전되는 것 같아요.",
+    "romanization": "iteul dong-an yawoe-e isseumyeon modeun geosi jaechungjeondoeneun geot gatayo."
+  },
+  "85": {
+    "text": "휴대폰 신호가 없는데, 오히려 좋아요.",
+    "romanization": "hyudaepon sinhoga eomneunde, oryeo johayo."
+  },
+  "86": {
+    "text": "우리는 몇 시간 동안 다른 사람을 한 명도 보지 못했어요.",
+    "romanization": "urineun myeot sigan dong-an dareun sarameul han myeongdo boji mothaesseoyo."
+  },
+  "87": {
+    "text": "그분은 불이 사그라들기 전에 잠들었어요.",
+    "romanization": "geubuneun buri sageuradeulgi jeone jamdeureosseoyo."
+  },
+  "88": {
+    "text": "첫째 날 아침은 항상 춥고 느려요.",
+    "romanization": "cheotjjae nal achimeun hangsang chupgo neuryeoyo."
+  },
+  "89": {
+    "text": "우리는 짐을 싸고 우리가 처음 왔을 때보다 더 깨끗하게 자리를 정리했어요.",
+    "romanization": "urineun jimeul ssago uriga cheoeum wasseul ttaeboda deo kkaekkeutage jarireul jeongnihaesseoyo."
+  },
+  "90": {
+    "text": "가장 가까운 수원지가 어디예요?",
+    "romanization": "gajang gakkaun suwonjiga eodiyeyo?"
+  },
+  "91": {
+    "text": "간이 화장실은 길 아래쪽에 있어요.",
+    "romanization": "gani hwajangsireun gil araejjoge isseoyo."
+  },
+  "92": {
+    "text": "음식물 쓰레기는 캠프에서 멀리 떨어진 곳에 묻으세요.",
+    "romanization": "eumsingmul sseuregineun kaempeueseo meolli tteoreojin gose mudeuseyo."
+  },
+  "93": {
+    "text": "젖은 옷은 불 옆에 걸어 말리세요.",
+    "romanization": "jeojeun oseun bul yeope georeo malliseyo."
+  },
+  "94": {
+    "text": "구급상자는 배낭 맨 위에 있어요.",
+    "romanization": "gugupsangjaneun baenang maen wie isseoyo."
+  },
+  "95": {
+    "text": "나침반은 자북을 가리켜요.",
+    "romanization": "nachimban-eun jabugeul garikyeoyo."
+  },
+  "96": {
+    "text": "호루라기가 목소리보다 더 커요.",
+    "romanization": "horuragiga moksoriboda deo keoyo."
+  },
+  "97": {
+    "text": "어디로 가는지 다른 사람에게 알려주세요.",
+    "romanization": "eodiro ganeunji dareun saramege allyeojuseyo."
+  },
+  "98": {
+    "text": "휴대폰은 드라이백에 넣어두세요.",
+    "romanization": "hyudaeponeun deuraibaeg-e neoeoduseyo."
+  },
+  "99": {
+    "text": "필요하다고 생각하는 것보다 옷을 더 여러 겹 챙기세요.",
+    "romanization": "piryohadago saenggakhaneun geotboda oseul deo yeoreogyeop chaenggiseyo."
+  }
+}

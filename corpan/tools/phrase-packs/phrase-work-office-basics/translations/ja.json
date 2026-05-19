@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "会議はあと10分で始まります。",
+    "romanization": "Kaigi wa ato jū-pun de hajimarimasu."
+  },
+  "1": {
+    "text": "画面共有をお願いできますか？",
+    "romanization": "Gamen kyōyū o onegai dekimasu ka?"
+  },
+  "2": {
+    "text": "すみません、ミュートになっていました。",
+    "romanization": "Sumimasen, myūto ni natte imashita."
+  },
+  "3": {
+    "text": "時間が押していますね。",
+    "romanization": "Jikan ga oshite imasu ne."
+  },
+  "4": {
+    "text": "それは次の会議に回しましょう。",
+    "romanization": "Sore wa tsugi no kaigi ni mawashimashō."
+  },
+  "5": {
+    "text": "私が議事録を取ります。",
+    "romanization": "Watashi ga gijiroku o torimasu."
+  },
+  "6": {
+    "text": "順番に話しましょうか？",
+    "romanization": "Junban ni hanashimashō ka?"
+  },
+  "7": {
+    "text": "議題はカレンダーの招待状に記載されています。",
+    "romanization": "Gidai wa karendā no shōtaijō ni kisaī sarete imasu."
+  },
+  "8": {
+    "text": "これ、誰が進行しますか？",
+    "romanization": "Kore, dare ga shinkō shimasu ka?"
+  },
+  "9": {
+    "text": "これ、録画していますか？",
+    "romanization": "Kore, rokuga shite imasu ka?"
+  },
+  "10": {
+    "text": "途中で通話が切れました。",
+    "romanization": "Tochū de tsūwa ga kiremashita."
+  },
+  "11": {
+    "text": "これ、15分ずらせますか？",
+    "romanization": "Kore, jūgo-fun zurasemasu ka?"
+  },
+  "12": {
+    "text": "彼は遅れて静かに入ってきました。",
+    "romanization": "Kare wa okurete shizuka ni haitte kimashita."
+  },
+  "13": {
+    "text": "また部屋がダブルブッキングされていますね。",
+    "romanization": "Mata heya ga daburu bukkingu sarete imasu ne."
+  },
+  "14": {
+    "text": "それは一旦置いておいて、後でまた話しましょう。",
+    "romanization": "Sore wa ittan oite oite, ato de mata hanashimashō."
+  },
+  "15": {
+    "text": "3時には絶対に退席しなければなりません。",
+    "romanization": "San-ji ni wa zettai ni taiseki shinakereba narimasen."
+  },
+  "16": {
+    "text": "後で2分だけ残っていただけますか？",
+    "romanization": "Ato de ni-fun dake nokotte itadakemasu ka?"
+  },
+  "17": {
+    "text": "ホワイトボードがいっぱいになりました。",
+    "romanization": "Howaito bōdo ga ippai ni narimashita."
+  },
+  "18": {
+    "text": "次のアクションアイテムをまとめていただけますか？",
+    "romanization": "Tsugi no akushon aitemu o matomete itadakemasu ka?"
+  },
+  "19": {
+    "text": "立ったままの会議は意外と早く終わりますね。",
+    "romanization": "Tatta mama no kaigi wa igai to hayaku owarimasu ne."
+  },
+  "20": {
+    "text": "今日中にご連絡します。",
+    "romanization": "Kyō-jū ni go-renraku shimasu."
+  },
+  "21": {
+    "text": "先ほどのメール、届きましたか？",
+    "romanization": "Sakihodo no mēru, todokimashita ka?"
+  },
+  "22": {
+    "text": "返信が遅くなり、申し訳ありません。",
+    "romanization": "Henshin ga osoku nari, mōshiwake arimasen."
+  },
+  "23": {
+    "text": "この件について、サラさんにも共有しますね。",
+    "romanization": "Kono ken ni tsuite, Sara-san ni mo kyōyū shimasu ne."
+  },
+  "24": {
+    "text": "添付ファイルが届きませんでした。",
+    "romanization": "Tenpu fairu ga todokimasen deshita."
+  },
+  "25": {
+    "text": "緊急としてマークしました。",
+    "romanization": "Kinkyū to shite māku shimashita."
+  },
+  "26": {
+    "text": "そのファイルをもう一度送っていただけますか？",
+    "romanization": "Sono fairu o mō ichido okutte itadakemasu ka?"
+  },
+  "27": {
+    "text": "スレッドが長くなったので、要約しますね。",
+    "romanization": "Sureddo ga nagaku natta node, yōyaku shimasu ne."
+  },
+  "28": {
+    "text": "探しやすいように件名を使ってください。",
+    "romanization": "Sagashiyasui yō ni kenmei o tsukatte kudasai."
+  },
+  "29": {
+    "text": "彼は週末に受信トレイを空にしました。",
+    "romanization": "Kare wa shūmatsu ni jushin torei o karappo ni shimashita."
+  },
+  "30": {
+    "text": "金曜日までにご返信ください。",
+    "romanization": "Kin'yōbi made ni go-henshin kudasai."
+  },
+  "31": {
+    "text": "終わったら、短いメモを送りますね。",
+    "romanization": "Owattara, mijikai memo o okurimasu ne."
+  },
+  "32": {
+    "text": "自動返信によると、彼は出張中です。",
+    "romanization": "Jidō henshin ni yoru to, kare wa shutchō-chū desu."
+  },
+  "33": {
+    "text": "彼女は間違って別の人をCCに入れてしまいました。",
+    "romanization": "Kanojo wa machigatte betsu no hito o shīshī ni irete shimaimashita."
+  },
+  "34": {
+    "text": "リマインダーは3回で十分です。",
+    "romanization": "Rimaindā wa san-kai de jūbun desu."
+  },
+  "35": {
+    "text": "そのスレッドを私に転送していただけますか？",
+    "romanization": "Sono sureddo o watashi ni tensō shite itadakemasu ka?"
+  },
+  "36": {
+    "text": "この件はメールよりチャットの方が早いです。",
+    "romanization": "Kono ken wa mēru yori chatto no hō ga hayai desu."
+  },
+  "37": {
+    "text": "たくさんのメッセージに紛れて、あなたのメッセージを見落としていました。",
+    "romanization": "Takusan no messēji ni magirete, anata no messēji o miotoshite imashita."
+  },
+  "38": {
+    "text": "あなたのメールのリンクは、存在しないページに飛びます。",
+    "romanization": "Anata no mēru no rinku wa, sonzai shinai pēji ni tobimasu."
+  },
+  "39": {
+    "text": "これを受け取ったか、確認をお願いします。",
+    "romanization": "Kore o uketotta ka, kakunin o onegai shimasu."
+  },
+  "40": {
+    "text": "締め切りは金曜日の正午です。",
+    "romanization": "Shimekiri wa Kin'yōbi no shōgo desu."
+  },
+  "41": {
+    "text": "水曜日までに初稿を準備します。",
+    "romanization": "Suiyōbi made ni shokō o junbi shimasu."
+  },
+  "42": {
+    "text": "今週中に何かをリリースする必要があります。",
+    "romanization": "Konshū-chū ni nanika o rirīsu suru hitsuyō ga arimasu."
+  },
+  "43": {
+    "text": "プロジェクトが1日遅れました。",
+    "romanization": "Purojekuto ga ichi-nichi okuremashita."
+  },
+  "44": {
+    "text": "送る前に、これを校正していただけますか？",
+    "romanization": "Okuru mae ni, kore o kōsei shite itadakemasu ka?"
+  },
+  "45": {
+    "text": "進捗報告をしなければなりませんね。",
+    "romanization": "Shinchoku hōkoku o shinakereba narimasen ne."
+  },
+  "46": {
+    "text": "数字が先週送ったものと合いません。",
+    "romanization": "Sūji ga senshū okutta mono to aimasen."
+  },
+  "47": {
+    "text": "クライアントからの決定待ちで、作業が止まっています。",
+    "romanization": "Kuraianto kara no kettei-machi de, sagyō ga tomatte imasu."
+  },
+  "48": {
+    "text": "彼は昼食も取らずにそれを終わらせました。",
+    "romanization": "Kare wa chūshoku mo torazu ni sore o owarasemashita."
+  },
+  "49": {
+    "text": "やっとレポートが私の手から離れました。",
+    "romanization": "Yatto repōto ga watashi no te kara hanaremashita."
+  },
+  "50": {
+    "text": "承認が下り次第、すぐに始めます。",
+    "romanization": "Shōnin ga orishidai, sugu ni hajimemasu."
+  },
+  "51": {
+    "text": "このバージョンで承認していただけますか？",
+    "romanization": "Kono bājon de shōnin shite itadakemasu ka?"
+  },
+  "52": {
+    "text": "リリース直前に、彼女が誤字を見つけました。",
+    "romanization": "Rirīsu chokuzen ni, kanojo ga goji o mitsukemashita."
+  },
+  "53": {
+    "text": "リリースを来週の火曜日に延期しました。",
+    "romanization": "Rirīsu o raishū no Kayōbi ni enki shimashita."
+  },
+  "54": {
+    "text": "見積もりが2倍もずれていました。",
+    "romanization": "Mitsumori ga ni-bai mo zurete imashita."
+  },
+  "55": {
+    "text": "彼は集中するために午後の予定を空けました。",
+    "romanization": "Kare wa shūchū suru tame ni gogo no yotei o akemashita."
+  },
+  "56": {
+    "text": "契約書が署名されて戻ってきました。",
+    "romanization": "Keiyakusho ga shomei sarete modotte kimashita."
+  },
+  "57": {
+    "text": "これで完了として、次に進みましょう。",
+    "romanization": "Kore de kanryō to shite, tsugi ni susumimashō."
+  },
+  "58": {
+    "text": "最初のバージョンは粗いですが、機能します。",
+    "romanization": "Saisho no bājon wa arai desu ga, kinō shimasu."
+  },
+  "59": {
+    "text": "彼は珍しく納期より早く納品しました。",
+    "romanization": "Kare wa mezurashiku nōki yori hayaku nōhin shimashita."
+  },
+  "60": {
+    "text": "チームへようこそ！",
+    "romanization": "Chīmu e yōkoso!"
+  },
+  "61": {
+    "text": "他のメンバーに紹介しますね。",
+    "romanization": "Hoka no menbā ni shōkai shimasu ne."
+  },
+  "62": {
+    "text": "彼女は休暇から戻ってきたばかりです。",
+    "romanization": "Kanojo wa kyūka kara modotte kita bakari desu."
+  },
+  "63": {
+    "text": "この件については彼に聞くのが一番です。",
+    "romanization": "Kono ken ni tsuite wa kare ni kiku no ga ichiban desu."
+  },
+  "64": {
+    "text": "火曜日はデスクを共有しています。",
+    "romanization": "Kayōbi wa desuku o kyōyū shite imasu."
+  },
+  "65": {
+    "text": "価格設定について一番詳しいのは誰ですか？",
+    "romanization": "Kakaku settei ni tsuite ichiban kuwashii no wa dare desu ka?"
+  },
+  "66": {
+    "text": "彼はいつもチームのためにコーヒーを持ってきてくれます。",
+    "romanization": "Kare wa itsumo chīmu no tame ni kōhī o motte kite kuremasu."
+  },
+  "67": {
+    "text": "新入社員は覚えるのが早いです。",
+    "romanization": "Shin'nyū shain wa oboeru no ga hayai desu."
+  },
+  "68": {
+    "text": "彼女はマーケティングと密接に連携しています。",
+    "romanization": "Kanojo wa māketingu to missetsu ni renkei shite imasu."
+  },
+  "69": {
+    "text": "彼は誰よりも長くここにいます。",
+    "romanization": "Kare wa dare yori mo nagaku koko ni imasu."
+  },
+  "70": {
+    "text": "彼らは仕事をきっちり半分に分けました。",
+    "romanization": "Karera wa shigoto o kicchi-ri hanbun ni wakemashita."
+  },
+  "71": {
+    "text": "昼食を取りながら、ざっとアイデアを書き出しました。",
+    "romanization": "Chūshoku o torinagara, zatto aidea o kakidashimashita."
+  },
+  "72": {
+    "text": "私が病気の間、彼が私の仕事を引き受けてくれました。",
+    "romanization": "Watashi ga byōki no aida, kare ga watashi no shigoto o hikiukete kuremashita."
+  },
+  "73": {
+    "text": "チームはノートパソコンの周りに集まりました。",
+    "romanization": "Chīmu wa nōtopasokon no mawari ni atsumarimashita."
+  },
+  "74": {
+    "text": "彼女はみんなの誕生日を覚えています。",
+    "romanization": "Kanojo wa minna no tanjōbi o oboete imasu."
+  },
+  "75": {
+    "text": "明日はリモートで参加します。",
+    "romanization": "Ashita wa rimōto de sanka shimasu."
+  },
+  "76": {
+    "text": "金曜日はオフィスがほとんど空っぽです。",
+    "romanization": "Kin'yōbi wa ofisu ga hotondo karappo desu."
+  },
+  "77": {
+    "text": "今日はインターネットが不安定です。",
+    "romanization": "Kyō wa intānetto ga fuantei desu."
+  },
+  "78": {
+    "text": "彼は別の都市から仕事をしています。",
+    "romanization": "Kare wa betsu no toshi kara shigoto o shite imasu."
+  },
+  "79": {
+    "text": "チームは月に一度、対面で集まります。",
+    "romanization": "Chīmu wa tsuki ni ichido, taimen de atsumarimasu."
+  },
+  "80": {
+    "text": "彼女は寝室の一角をデスクとして使っています。",
+    "romanization": "Kanojo wa shinshitsu no ikkaku o desuku to shite tsukatte imasu."
+  },
+  "81": {
+    "text": "やっとホームオフィスが片付きました。",
+    "romanization": "Yatto hōmu ofisu ga katadukimashita."
+  },
+  "82": {
+    "text": "カメラをオンにしていただけますか？",
+    "romanization": "Kamera o on ni shite itadakemasu ka?"
+  },
+  "83": {
+    "text": "背景の音は大丈夫ですよ、気にしないでください。",
+    "romanization": "Haikei no oto wa daijōbu desu yo, ki ni shinaide kudasai."
+  },
+  "84": {
+    "text": "毎朝、簡単なチェックインをしています。",
+    "romanization": "Maiasa, kantan na chekku-in o shite imasu."
+  },
+  "85": {
+    "text": "またプリンターが紙詰まりを起こしました。",
+    "romanization": "Mata purintā ga kamidzumari o okoshimashita."
+  },
+  "86": {
+    "text": "コーヒーメーカーの豆がなくなりました。",
+    "romanization": "Kōhī mēkā no mame ga nakunarimashita."
+  },
+  "87": {
+    "text": "ドアを開けていただけますか？",
+    "romanization": "Doa o akete itadakemasu ka?"
+  },
+  "88": {
+    "text": "会議室の窓は開きません。",
+    "romanization": "Kaigishitsu no mado wa akimasen."
+  },
+  "89": {
+    "text": "誰かが冷蔵庫にランチを1週間置きっぱなしにしています。",
+    "romanization": "Dareka ga reizōko ni ranchi o isshūkan okippanashi ni shite imasu."
+  },
+  "90": {
+    "text": "3時にはキッチンは静かです。",
+    "romanization": "San-ji ni wa kicchin wa shizuka desu."
+  },
+  "91": {
+    "text": "彼は気分転換に階段を使いました。",
+    "romanization": "Kare wa kibun tenkan ni kaidan o tsukaimashita."
+  },
+  "92": {
+    "text": "窓辺の植物は元気に育っています。",
+    "romanization": "Madobe no shokubutsu wa genki ni sodatte imasu."
+  },
+  "93": {
+    "text": "受付で荷物のサインをお願いできますか？",
+    "romanization": "Uketsuke de nimotsu no sain o onegai dekimasu ka?"
+  },
+  "94": {
+    "text": "カードリーダーの調子が悪いです。",
+    "romanization": "Kādo rīdā no chōshi ga warui desu."
+  },
+  "95": {
+    "text": "一日の終わりはいつもあっという間ですね。",
+    "romanization": "Ichi-nichi no owari wa itsumo attoiuma desu ne."
+  },
+  "96": {
+    "text": "彼は一度に一つのウィンドウだけを開いている時に最も効率よく作業できます。",
+    "romanization": "Kare wa ichido ni hitotsu no uindō dake o hiraite iru toki ni mottomo kōritsu yoku sagyō dekimasu."
+  },
+  "97": {
+    "text": "彼女は一日の始まりにキャンドルを灯します。",
+    "romanization": "Kanojo wa ichi-nichi no hajimari ni kyandoru o tomoshimasu."
+  },
+  "98": {
+    "text": "昼食後の短い散歩は、考えるのに役立ちます。",
+    "romanization": "Chūshoku-go no mijikai sanpo wa, kangaeru no ni yakudachimasu."
+  },
+  "99": {
+    "text": "月曜日には、小さな成功から始まることもあります。",
+    "romanization": "Getsuyōbi ni wa, chiisana seikō kara hajimaru koto mo arimasu."
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Vamos montar a barraca antes que escureça.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Onde eu guardei o isqueiro?",
+    "romanization": null
+  },
+  "2": {
+    "text": "As estacas da barraca estão no bolso lateral.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Meu saco de dormir aguenta temperaturas de congelamento.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Encha o isolante térmico antes de estendê-lo.",
+    "romanization": null
+  },
+  "5": {
+    "text": "A lanterna precisa de pilhas novas.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Estique as cordas da barraca antes de ir dormir.",
+    "romanization": null
+  },
+  "7": {
+    "text": "O sobreteto vai com as costuras para fora.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Monte a barraca em terreno plano.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Mantenha a comida longe da barraca.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ele trouxe um item de luxo: um travesseiro pequeno.",
+    "romanization": null
+  },
+  "11": {
+    "text": "A lanterna de cabeça ajuda muito para não ficar tateando no escuro.",
+    "romanization": null
+  },
+  "12": {
+    "text": "O acampamento fica logo depois do segundo riacho.",
+    "romanization": null
+  },
+  "13": {
+    "text": "A caixa térmica fica na sombra.",
+    "romanization": null
+  },
+  "14": {
+    "text": "A cadeira dobrável já teve dias melhores.",
+    "romanization": null
+  },
+  "15": {
+    "text": "A mochila é mais pesada do que parece.",
+    "romanization": null
+  },
+  "16": {
+    "text": "O mapa foi para o bolso lateral da mochila.",
+    "romanization": null
+  },
+  "17": {
+    "text": "O filtro de água está na pequena bolsa estanque.",
+    "romanization": null
+  },
+  "18": {
+    "text": "O machadinho tem uma capa de segurança.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Esquecemos o abridor de latas de novo.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Junte um pouco de isca seca antes de acender.",
+    "romanization": null
+  },
+  "21": {
+    "text": "O local da fogueira já está pronto.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Precisamos de mais gravetos para acender o fogo.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Não coloque lenha verde na fogueira.",
+    "romanization": null
+  },
+  "24": {
+    "text": "As brasas são mais quentes que as chamas.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Ferva a água antes de beber.",
+    "romanization": null
+  },
+  "26": {
+    "text": "O bacon demora mais para cozinhar ao ar livre.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Jogue água nas brasas antes de ir embora.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Ele trouxe um fogareiro pequeno para as manhãs frias.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Café tem um gosto melhor ao ar livre.",
+    "romanization": null
+  },
+  "30": {
+    "text": "O cabo da panela esquenta rápido.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Cozinhamos o jantar em uma pedra lisa.",
+    "romanization": null
+  },
+  "32": {
+    "text": "O marshmallow pegou fogo de novo.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Asse devagar, só na beirada da chama.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Leve de volta tudo o que você trouxe.",
+    "romanization": null
+  },
+  "35": {
+    "text": "A previsão diz chuva depois da meia-noite.",
+    "romanization": null
+  },
+  "36": {
+    "text": "O vento aumentou de repente.",
+    "romanization": null
+  },
+  "37": {
+    "text": "As nuvens chegaram por cima do cume.",
+    "romanization": null
+  },
+  "38": {
+    "text": "A temperatura caiu rápido depois do pôr do sol.",
+    "romanization": null
+  },
+  "39": {
+    "text": "A geada da manhã derreteu por volta das dez.",
+    "romanization": null
+  },
+  "40": {
+    "text": "A neblina dificultou seguir a trilha.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Os mosquitos apareceram ao anoitecer.",
+    "romanization": null
+  },
+  "42": {
+    "text": "O céu é maior aqui fora.",
+    "romanization": null
+  },
+  "43": {
+    "text": "O relâmpago ainda está a quilômetros de distância.",
+    "romanization": null
+  },
+  "44": {
+    "text": "O sol da tarde é o mais forte.",
+    "romanization": null
+  },
+  "45": {
+    "text": "A trilha segue o rio por dois quilômetros.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Mantenha-se na trilha marcada.",
+    "romanization": null
+  },
+  "47": {
+    "text": "O início da trilha fica três quilômetros estrada acima.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Pegamos o caminho errado na bifurcação.",
+    "romanization": null
+  },
+  "49": {
+    "text": "O mapa mostra um abrigo perto do pico.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Ele manteve um ritmo constante.",
+    "romanization": null
+  },
+  "51": {
+    "text": "As curvas em zigue-zague facilitam a subida.",
+    "romanization": null
+  },
+  "52": {
+    "text": "A vista lá de cima valeu a subida.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Cuidado com pedras soltas na descida.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Vimos pegadas de veado na terra fofa.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Beba água antes de sentir sede.",
+    "romanization": null
+  },
+  "56": {
+    "text": "As árvores ficaram mais ralas perto do cume.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Sentamos em um tronco caído para descansar.",
+    "romanization": null
+  },
+  "58": {
+    "text": "A ponte sobre o riacho parecia mais antiga que a trilha.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Estávamos de volta ao acampamento ao pôr do sol.",
+    "romanization": null
+  },
+  "60": {
+    "text": "A Via Láctea está brilhante esta noite.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Ele apontou a Ursa Maior.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Uma estrela cadente cruzou o céu.",
+    "romanization": null
+  },
+  "63": {
+    "text": "A fogueira estalava enquanto conversávamos.",
+    "romanization": null
+  },
+  "64": {
+    "text": "As estrelas são diferentes no hemisfério sul.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Uma coruja piou em algum lugar nas árvores.",
+    "romanization": null
+  },
+  "66": {
+    "text": "A lua nasceu tarde e alaranjada.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Contamos histórias ao redor da fogueira até a meia-noite.",
+    "romanization": null
+  },
+  "68": {
+    "text": "A noite é mais barulhenta do que você imagina.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Dormimos com a aba da barraca aberta.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Um veado passou pelo acampamento ao amanhecer.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Os esquilos acharam os lanches de qualquer jeito.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Vimos um castor na margem oposta.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Mantenha sua comida lacrada e pendurada durante a noite.",
+    "romanization": null
+  },
+  "74": {
+    "text": "A sacola de comida fica bem alto em uma árvore.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Não deixe sapatos do lado de fora se não quiser surpresas.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Um sapo pulou bem na frente do meu pé.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Os pássaros nos acordaram antes do sol.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Seguimos pegadas na neve por um tempo.",
+    "romanization": null
+  },
+  "79": {
+    "text": "O lago não tinha peixes, mas muitas libélulas.",
+    "romanization": null
+  },
+  "80": {
+    "text": "As crianças correram o caminho todo até o lago.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Ele não acampava desde que era criança.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Ela me mostrou como ler o mapa.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Compartilhamos o acampamento com outra família.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Dois dias ao ar livre renovam tudo.",
+    "romanization": null
+  },
+  "85": {
+    "text": "O celular está sem sinal e isso parece certo.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Não vimos outra pessoa por horas.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Ele adormeceu antes que o fogo diminuísse.",
+    "romanization": null
+  },
+  "88": {
+    "text": "A primeira manhã é sempre fria e lenta.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Arrumamos tudo e deixamos o local mais limpo do que encontramos.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Onde fica a fonte de água mais próxima?",
+    "romanization": null
+  },
+  "91": {
+    "text": "O banheiro seco fica trilha abaixo.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Enterre restos de comida longe do acampamento.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Pendure roupas molhadas perto da fogueira para secar.",
+    "romanization": null
+  },
+  "94": {
+    "text": "O kit de primeiros socorros está na parte de cima da mochila.",
+    "romanization": null
+  },
+  "95": {
+    "text": "A bússola aponta para o norte magnético.",
+    "romanization": null
+  },
+  "96": {
+    "text": "O apito é mais alto que a sua voz.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Avise alguém para onde você vai.",
+    "romanization": null
+  },
+  "98": {
+    "text": "O celular vai em uma bolsa estanque.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Traga mais camadas de roupa do que você acha que precisa.",
+    "romanization": null
+  }
+}

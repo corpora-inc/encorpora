@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Guarda el archivo antes de cerrarlo.",
+    "romanization": null
+  },
+  "1": {
+    "text": "¿Me podrías enviar ese documento?",
+    "romanization": null
+  },
+  "2": {
+    "text": "La carpeta está en el escritorio.",
+    "romanization": null
+  },
+  "3": {
+    "text": "No encuentro el archivo que guardé ayer.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Busca el nombre en toda la unidad.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Renombró el archivo por error.",
+    "romanization": null
+  },
+  "6": {
+    "text": "La descarga se fue a la carpeta equivocada.",
+    "romanization": null
+  },
+  "7": {
+    "text": "El archivo es demasiado grande para enviarlo por correo.",
+    "romanization": null
+  },
+  "8": {
+    "text": "¿Podrías comprimirlo en un archivo zip?",
+    "romanization": null
+  },
+  "9": {
+    "text": "La carpeta en la nube se sincroniza automáticamente.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ella organiza todo en subcarpetas por fecha.",
+    "romanization": null
+  },
+  "11": {
+    "text": "La papelera está más llena que el resto de la unidad.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Él guarda una copia de seguridad de cada proyecto.",
+    "romanization": null
+  },
+  "13": {
+    "text": "La carpeta compartida se actualizó para todos.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Un archivo que no encuentras es como si no existiera.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Olvidé mi contraseña.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Restablece la contraseña desde la pantalla de inicio de sesión.",
+    "romanization": null
+  },
+  "17": {
+    "text": "No uses la misma contraseña para todo.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Un gestor de contraseñas las recuerda por ti.",
+    "romanization": null
+  },
+  "19": {
+    "text": "La autenticación de dos factores añade un paso, pero mucha seguridad.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Revisa tu correo para un código de verificación.",
+    "romanization": null
+  },
+  "21": {
+    "text": "El enlace caducó en quince minutos.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Creó una cuenta nueva para el proyecto.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Él cierra sesión en los ordenadores compartidos.",
+    "romanization": null
+  },
+  "24": {
+    "text": "El nombre de usuario ya está en uso.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Guarda el código de recuperación en un lugar seguro.",
+    "romanization": null
+  },
+  "26": {
+    "text": "No hagas clic en enlaces de inicio de sesión sospechosos.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Actualiza el correo de recuperación cuando te mudes.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Una clave de acceso es más rápida que una contraseña.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Hoy en día, tu teléfono también es una cuenta.",
+    "romanization": null
+  },
+  "30": {
+    "text": "¿Has probado a reiniciarlo?",
+    "romanization": null
+  },
+  "31": {
+    "text": "El cable estaba suelto.",
+    "romanization": null
+  },
+  "32": {
+    "text": "La pantalla se congeló por un minuto.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Cierra todas las pestañas y vuelve a intentarlo.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Comprueba que estás conectado a la red correcta.",
+    "romanization": null
+  },
+  "35": {
+    "text": "El teclado no responde.",
+    "romanization": null
+  },
+  "36": {
+    "text": "El ventilador hace más ruido de lo normal.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Borra la caché y recarga la página.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Prueba con otro navegador.",
+    "romanization": null
+  },
+  "39": {
+    "text": "La actualización corrigió el error.",
+    "romanization": null
+  },
+  "40": {
+    "text": "La batería se agotó durante la noche.",
+    "romanization": null
+  },
+  "41": {
+    "text": "La cámara web dejó de funcionar después de la actualización.",
+    "romanization": null
+  },
+  "42": {
+    "text": "A veces, la solución más sencilla es esperar un minuto.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Un reinicio resuelve más problemas de los que la gente admite.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Explicó el mensaje de error con palabras sencillas.",
+    "romanization": null
+  },
+  "45": {
+    "text": "La página tarda una eternidad en cargar.",
+    "romanization": null
+  },
+  "46": {
+    "text": "El sitio web está caído para todos.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Guárdalo en favoritos para que puedas encontrarlo de nuevo.",
+    "romanization": null
+  },
+  "48": {
+    "text": "El enlace del correo se abre en una pestaña nueva.",
+    "romanization": null
+  },
+  "49": {
+    "text": "El video se sigue cargando.",
+    "romanization": null
+  },
+  "50": {
+    "text": "La señal es débil en la habitación de atrás.",
+    "romanization": null
+  },
+  "51": {
+    "text": "¿Podrías compartirme el enlace?",
+    "romanization": null
+  },
+  "52": {
+    "text": "El sitio web se ve diferente en el móvil.",
+    "romanization": null
+  },
+  "53": {
+    "text": "La ventana emergente me pidió que aceptara las cookies.",
+    "romanization": null
+  },
+  "54": {
+    "text": "El anuncio es difícil de cerrar.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Él usa un bloqueador de anuncios en cada máquina.",
+    "romanization": null
+  },
+  "56": {
+    "text": "La búsqueda arrojó demasiados resultados.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Refina la búsqueda con comillas.",
+    "romanization": null
+  },
+  "58": {
+    "text": "El artículo ahora está detrás de un muro de pago.",
+    "romanization": null
+  },
+  "59": {
+    "text": "La página es de un sitio web en el que confío.",
+    "romanization": null
+  },
+  "60": {
+    "text": "La aplicación se actualizó durante la noche.",
+    "romanization": null
+  },
+  "61": {
+    "text": "La nueva versión se ve completamente diferente.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ella eliminó las aplicaciones que nunca abría.",
+    "romanization": null
+  },
+  "63": {
+    "text": "La configuración de notificaciones está escondida en el menú.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Siléncialo durante la reunión.",
+    "romanization": null
+  },
+  "65": {
+    "text": "El atajo de teclado es más rápido que el menú.",
+    "romanization": null
+  },
+  "66": {
+    "text": "El modo oscuro es más cómodo para la vista por la noche.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Desactiva la reproducción automática.",
+    "romanization": null
+  },
+  "68": {
+    "text": "La insignia de notificación nunca desaparece.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Configuró el portátil a su gusto.",
+    "romanization": null
+  },
+  "70": {
+    "text": "No abras archivos adjuntos de remitentes desconocidos.",
+    "romanization": null
+  },
+  "71": {
+    "text": "El enlace de ese mensaje parece sospechoso.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Revisa la dirección completa del remitente.",
+    "romanization": null
+  },
+  "73": {
+    "text": "El Wi-Fi gratuito del aeropuerto no es privado.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Tapa la cámara cuando no la uses.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Bloquea la pantalla cuando te alejes.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Ten cuidado con la información que no puedes recuperar.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Lee a qué estás dando tu consentimiento.",
+    "romanization": null
+  },
+  "78": {
+    "text": "La mayoría de las fugas de datos provienen de contraseñas reutilizadas.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Las estafas más sencillas siguen funcionando porque son simples.",
+    "romanization": null
+  },
+  "80": {
+    "text": "El portátil está más lento desde la última actualización.",
+    "romanization": null
+  },
+  "81": {
+    "text": "La pantalla está rota, pero aún funciona.",
+    "romanization": null
+  },
+  "82": {
+    "text": "El nuevo monitor llegó esta mañana.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Enchufó tres cables antes de encontrar el correcto.",
+    "romanization": null
+  },
+  "84": {
+    "text": "La batería ya no dura como antes.",
+    "romanization": null
+  },
+  "85": {
+    "text": "El teclado acumuló migas con los años.",
+    "romanization": null
+  },
+  "86": {
+    "text": "El ventilador se enciende cuando la habitación se calienta.",
+    "romanization": null
+  },
+  "87": {
+    "text": "La impresora está sin conexión otra vez.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Los auriculares se cortan de un lado.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Limpia la pantalla con un paño suave.",
+    "romanization": null
+  },
+  "90": {
+    "text": "¿Podrías hacer una captura de pantalla?",
+    "romanization": null
+  },
+  "91": {
+    "text": "El archivo fue enviado a medianoche.",
+    "romanization": null
+  },
+  "92": {
+    "text": "La invitación del calendario llegó dos veces.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Arrastra el archivo a la ventana.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Haz clic derecho para ver más opciones.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Mantén Shift presionado para seleccionar más de uno.",
+    "romanization": null
+  },
+  "96": {
+    "text": "El botón de deshacer me ha salvado muchas veces.",
+    "romanization": null
+  },
+  "97": {
+    "text": "El portapapeles recuerda lo último que copiaste.",
+    "romanization": null
+  },
+  "98": {
+    "text": "El autocorrector es útil y, a veces, vergonzoso.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Un escritorio ordenado hace que todo sea más fácil de encontrar.",
+    "romanization": null
+  }
+}

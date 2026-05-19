@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Afrika ni kubwa kuliko inavyoonekana kwenye ramani nyingi.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Bahari ya Atlantiki hutenganisha Amerika na Ulaya pamoja na Afrika.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Antaktika ndio bara baridi zaidi.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Asia inakaliwa na zaidi ya nusu ya watu wote duniani.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Ulaya na Asia zinashiriki ardhi moja inayoendelea.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Australia ni nchi na pia bara.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Pasifiki ndio bahari kubwa zaidi.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Bahari ya Aktiki imefunikwa kwa kiasi na barafu.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Amerika Kusini ina msitu wa mvua wa Amazon.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Amerika Kaskazini inaenea kutoka hali ya hewa ya kitropiki hadi ya Aktiki.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Aisilandi ipo kati ya mabamba mawili ya tektoniki.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Madagaska ni kisiwa cha nne kwa ukubwa duniani.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Nyuzilandi ina visiwa viwili vikuu.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Ukanda wa Moto wa Pasifiki ndipo matetemeko mengi ya ardhi hutokea.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Bahari ya Hindi inapakana na mabara matatu.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Mto Naili hutiririka kaskazini kwa maelfu ya maili.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Mto Amazon hubeba maji mengi kuliko mto mwingine wowote.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Ziwa Baikal ndilo ziwa lenye maji baridi lenye kina kirefu zaidi duniani.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mto Mississippi hupitisha maji ya sehemu kubwa ya katikati mwa Marekani.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Mto Ganges ni mtakatifu kwa watu wengi.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Mto Yangtze ndio mto mrefu zaidi barani Asia.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Mto Danube hupita katika nchi kumi.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Bahari ya Kaspi ndio mkusanyiko mkubwa zaidi wa maji uliofungwa.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Mto Volga ndio mto mrefu zaidi ulio ndani ya Ulaya pekee.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Ziwa Viktoria ndio chanzo kikuu cha Mto Naili Mweupe.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Maziwa Makuu yana sehemu ya tano ya maji baridi ya juu ya ardhi duniani.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Mto Rhine umekuwa njia ya biashara kwa karne nyingi.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Mto Mekong unategemeza mamilioni ya watu Kusini Mashariki mwa Asia.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Baadhi ya mito hukauka kabla ya kufika baharini.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Mto Colorado ulichonga Bonde Kuu (Grand Canyon) kwa mamilioni ya miaka.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Mlima Everest ndio sehemu ya juu zaidi kutoka usawa wa bahari.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Milima ya Andes inaenea urefu wote wa Amerika Kusini.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Milima ya Alps inapendwa na wapanda milima wakati wa kiangazi.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Milima ya Rocky inaenea kutoka Kanada hadi kusini magharibi mwa Marekani.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Milima ya Himalaya bado inaendelea kupanda polepole.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kilimanjaro ndio kilele kirefu zaidi barani Afrika.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Milima ya Ural hutenganisha Ulaya na Asia.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Mlima Fuji ni mtakatifu kwa wengi nchini Japani.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Milima ya Atlas huathiri hali ya hewa ya Afrika Kaskazini.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Barafu za milimani zinapungua kutoka safu za milima duniani kote.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Jangwa la Sahara ndilo jangwa kubwa zaidi lenye joto.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Aktiki na Antaktiki ni majangwa ya ncha za dunia.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Amazon ina mfumo wake wa hali ya hewa.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Misitu ya mvua ya kitropiki huwa na joto na unyevunyevu mwaka mzima.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Kanda za wastani zina misimu minne tofauti.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Mvua za monsuni huleta mvua kubwa Kusini mwa Asia kila kiangazi.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Vimbunga (tornadoes) hutokea zaidi katikati mwa Marekani.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Vimbunga (hurricanes) huundwa juu ya maji ya bahari yenye joto.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Hali ya hewa ya Mediterania huwa na joto la wastani na ukavu wakati wa kiangazi.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Barafu ya kudumu (permafrost) inafunika sehemu kubwa ya Siberia.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Atacama ni mojawapo ya sehemu kame zaidi duniani.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Tundra ina kiangazi kifupi sana kwa miti kukua.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Mikoko hukua mahali ardhi inapokutana na maji ya chumvi.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Miamba ya matumbawe inahitaji maji ya joto na safi ili kustawi.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Mkondo wa hewa wa jet (jet stream) huathiri hali ya hewa katika mabara yote.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Tokyo ina watu wengi zaidi kuliko eneo lingine lolote la jiji kuu.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Jiji la Vatikani ndiyo nchi ndogo zaidi duniani.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Urusi inaenea katika kanda kumi na moja za saa.",
+    "romanization": null
+  },
+  "58": {
+    "text": "India na Uchina kwa pamoja zina zaidi ya theluthi moja ya watu wote duniani.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Brazili inapakana na nchi nyingi za Amerika Kusini.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Singapuri ni jiji na nchi kwa wakati mmoja.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Istanbul ipo katika mabara mawili.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Cape Town ina mlima maarufu wenye kilele tambarare.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Buenos Aires wakati mwingine huitwa Paris ya Amerika Kusini.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Lagos ni mojawapo ya miji inayokua kwa kasi zaidi duniani.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Reykjavik ndiyo mji mkuu wa kaskazini zaidi duniani.",
+    "romanization": null
+  },
+  "66": {
+    "text": "La Paz ni mojawapo ya miji mikuu yenye mwinuko wa juu zaidi.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Sydney ina mojawapo ya bandari asilia kubwa zaidi.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Marrakech ina mji wa kale wenye umri wa miaka elfu moja.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hanoi ipo kando ya Mto Mwekundu.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Watu wamevuka majangwa kufanya biashara ya viungo.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Barabara ya Hariri iliunganisha Uchina na Mediterania.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Baadhi ya lugha huzungumzwa kwenye kisiwa kimoja kidogo tu.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Nusu ya idadi ya watu duniani huishi karibu na pwani.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Miji mingi ilianza kama bandari za mito.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Mipaka hubadilika; mito na milima kwa kawaida haibadiliki.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Pwani za dunia zina watu wengi zaidi kuliko maeneo ya ndani.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Magofu mengi ya kale bado yanagunduliwa.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Baadhi ya visiwa vinatoweka polepole kutokana na kupanda kwa kina cha bahari.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Uhamiaji mrefu umeunda karibu kila bara.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Australia ina wanyama ambao hawapatikani mahali pengine popote.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Sehemu yenye kina kirefu zaidi baharini ni Bonde la Mariana.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Greenland imefunikwa zaidi na barafu.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Volkano zinaweza kuunda visiwa vipya ndani ya miongo michache.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Aurora borealis huonekana vizuri zaidi kutoka latitudo za kaskazini.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Mabara ya Dunia yanatengana polepole.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Sehemu kame zaidi duniani bado inaweza kupata mafuriko mara kwa mara.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Baadhi ya maziwa yana chumvi nyingi kiasi kwamba karibu hakuna kiumbe kinachoweza kuishi humo.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Maporomoko ya maji marefu zaidi duniani yapo Venezuela.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Jangwa la Sahara lilikuwa nyanda za malisho maelfu ya miaka iliyopita.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Ni nchi gani inapakana na nchi nyingi zaidi?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Kuna tofauti gani kati ya nchi na jimbo?",
+    "romanization": null
+  },
+  "92": {
+    "text": "Iko wapi ikweta kwenye ramani hii?",
+    "romanization": null
+  },
+  "93": {
+    "text": "Ni bahari gani iliyo karibu zaidi na hapa?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Ingechukua muda gani kutembea kuvuka nchi hii?",
+    "romanization": null
+  },
+  "95": {
+    "text": "Ni kilele gani kirefu zaidi umewahi kupanda?",
+    "romanization": null
+  },
+  "96": {
+    "text": "Nataka kuona nuru za kaskazini siku moja.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Je, mji mkuu pia ndio jiji kubwa zaidi?",
+    "romanization": null
+  },
+  "98": {
+    "text": "Ramani inaonekana tofauti ikiwa imepinduliwa.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Kila nchi ina hadithi inayostahili kujulikana.",
+    "romanization": null
+  }
+}

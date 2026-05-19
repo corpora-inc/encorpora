@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "我们趁天黑前把帐篷搭起来吧。",
+    "romanization": "Wǒ‧men chèn tiān hēi qián bǎ zhàng‧péng dā qǐ‧lái ba."
+  },
+  "1": {
+    "text": "我把打火机放哪儿了？",
+    "romanization": "Wǒ bǎ dǎ‧huǒ‧jī fàng nǎr le?"
+  },
+  "2": {
+    "text": "帐篷地钉在侧袋里。",
+    "romanization": "Zhàng‧péng dì‧dìng zài cè‧dài lǐ."
+  },
+  "3": {
+    "text": "我的睡袋能抗零度低温。",
+    "romanization": "Wǒ de shuì‧dài néng kàng líng‧dù dī‧wēn."
+  },
+  "4": {
+    "text": "铺睡垫前先把它充气。",
+    "romanization": "Pū shuì‧diàn qián xiān bǎ tā chōng‧qì."
+  },
+  "5": {
+    "text": "露营灯需要换电池了。",
+    "romanization": "Lù‧yíng‧dēng xū‧yào huàn diàn‧chí le."
+  },
+  "6": {
+    "text": "睡觉前把防风绳拉紧。",
+    "romanization": "Shuì‧jiào qián bǎ fáng‧fēng‧shéng lā jǐn."
+  },
+  "7": {
+    "text": "外帐的缝线朝外。",
+    "romanization": "Wài‧zhàng de féng‧xiàn cháo wài."
+  },
+  "8": {
+    "text": "把帐篷搭在平坦的地面上。",
+    "romanization": "Bǎ zhàng‧péng dā zài píng‧tǎn de dì‧miàn shàng."
+  },
+  "9": {
+    "text": "把食物放远点，别靠近帐篷。",
+    "romanization": "Bǎ shí‧wù fàng yuǎn diǎn, bié kào‧jìn zhàng‧péng."
+  },
+  "10": {
+    "text": "他带了一件奢侈品：一个小枕头。",
+    "romanization": "Tā dài le yī jiàn shē‧chǐ‧pǐn: yī xiǎo zhěn‧tou."
+  },
+  "11": {
+    "text": "头灯省去了很多摸索的麻烦。",
+    "romanization": "Tóu‧dēng shěng qù le hěn duō mō‧suǒ de má‧fan."
+  },
+  "12": {
+    "text": "营地就在第二条小溪过去一点。",
+    "romanization": "Yíng‧dì jiù zài dì èr tiáo xiǎo‧xī guò‧qù yī diǎn."
+  },
+  "13": {
+    "text": "保温箱要放在阴凉处。",
+    "romanization": "Bǎo‧wēn‧xiāng yào fàng zài yīn‧liáng chù."
+  },
+  "14": {
+    "text": "这把折叠椅已经很旧了。",
+    "romanization": "Zhè bǎ zhé‧dié yǐ yǐ‧jīng hěn jiù le."
+  },
+  "15": {
+    "text": "这个背包比看起来要重。",
+    "romanization": "Zhè ge bēi‧bāo bǐ kàn qǐ‧lái yào zhòng."
+  },
+  "16": {
+    "text": "地图放在背包的侧袋里了。",
+    "romanization": "Dì‧tú fàng zài bēi‧bāo de cè‧dài lǐ le."
+  },
+  "17": {
+    "text": "净水器在小防水袋里。",
+    "romanization": "Jìng‧shuǐ‧qì zài xiǎo fáng‧shuǐ‧dài lǐ."
+  },
+  "18": {
+    "text": "小斧头有安全套。",
+    "romanization": "Xiǎo fǔ‧tou yǒu ān‧quán tào."
+  },
+  "19": {
+    "text": "我们又忘了带开罐器。",
+    "romanization": "Wǒ‧men yòu wàng le dài kāi‧guàn‧qì."
+  },
+  "20": {
+    "text": "点火前先收集一些干引火物。",
+    "romanization": "Diǎn‧huǒ qián xiān shōu‧jí yī xiē gān yǐn‧huǒ‧wù."
+  },
+  "21": {
+    "text": "篝火圈已经搭好了。",
+    "romanization": "Gāo‧huǒ‧quān yǐ‧jīng dā hǎo le."
+  },
+  "22": {
+    "text": "我们需要更多的引火物。",
+    "romanization": "Wǒ‧men xū‧yào gèng duō de yǐn‧huǒ‧wù."
+  },
+  "23": {
+    "text": "别把湿木头放火里。",
+    "romanization": "Bié bǎ shī mù‧tou fàng huǒ lǐ."
+  },
+  "24": {
+    "text": "炭火比火焰更热。",
+    "romanization": "Tàn‧huǒ bǐ huǒ‧yàn gèng rè."
+  },
+  "25": {
+    "text": "喝水前先烧开。",
+    "romanization": "Hē shuǐ qián xiān shāo kāi."
+  },
+  "26": {
+    "text": "培根在户外煮熟需要更长时间。",
+    "romanization": "Péi‧gēn zài hù‧wài zhǔ shú xū‧yào gèng cháng shí‧jiān."
+  },
+  "27": {
+    "text": "离开前把水浇在炭火上。",
+    "romanization": "Lí‧kāi qián bǎ shuǐ jiāo zài tàn‧huǒ shàng."
+  },
+  "28": {
+    "text": "他带了个小炉子，以防早上冷。",
+    "romanization": "Tā dài le ge xiǎo lú‧zi, yǐ fáng zǎo‧shang lěng."
+  },
+  "29": {
+    "text": "咖啡在户外喝起来更香。",
+    "romanization": "Kā‧fēi zài hù‧wài hē qǐ‧lái gèng xiāng."
+  },
+  "30": {
+    "text": "锅把手很快就烫了。",
+    "romanization": "Guō bǎ‧shou hěn kuài jiù tàng le."
+  },
+  "31": {
+    "text": "我们在平坦的石头上做的晚饭。",
+    "romanization": "Wǒ‧men zài píng‧tǎn de shí‧tou shàng zuò de wǎn‧fàn."
+  },
+  "32": {
+    "text": "棉花糖又着火了。",
+    "romanization": "Mián‧hua‧táng yòu zháo huǒ le."
+  },
+  "33": {
+    "text": "慢慢烤，就在火焰的边缘。",
+    "romanization": "Màn‧màn kǎo, jiù zài huǒ‧yàn de biān‧yuán."
+  },
+  "34": {
+    "text": "把所有带进来的东西都带走。",
+    "romanization": "Bǎ suǒ‧yǒu dài jìn‧lái de dōng‧xi dōu dài zǒu."
+  },
+  "35": {
+    "text": "天气预报说午夜后有雨。",
+    "romanization": "Tiān‧qì yù‧bào shuō wǔ‧yè hòu yǒu yǔ."
+  },
+  "36": {
+    "text": "风突然刮大了。",
+    "romanization": "Fēng tū‧rán guā dà le."
+  },
+  "37": {
+    "text": "云层从山脊上滚滚而来。",
+    "romanization": "Yún‧céng cóng shān‧jí shàng gǔn‧gǔn ér lái."
+  },
+  "38": {
+    "text": "日落后气温骤降。",
+    "romanization": "Rì‧luò hòu qì‧wēn zhòu‧jiàng."
+  },
+  "39": {
+    "text": "早晨的霜到十点就化了。",
+    "romanization": "Zǎo‧chén de shuāng dào shí diǎn jiù huà le."
+  },
+  "40": {
+    "text": "大雾让小路很难辨认。",
+    "romanization": "Dà wù ràng xiǎo‧lù hěn nán biàn‧rèn."
+  },
+  "41": {
+    "text": "黄昏时蚊子都出来了。",
+    "romanization": "Huáng‧hūn shí wén‧zi dōu chū‧lái le."
+  },
+  "42": {
+    "text": "这里的天空看起来更广阔。",
+    "romanization": "Zhè‧lǐ de tiān‧kōng kàn qǐ‧lái gèng guǎng‧kuò."
+  },
+  "43": {
+    "text": "闪电离我们还有好几英里远。",
+    "romanization": "Shǎn‧diàn lí wǒ‧men hái yǒu hǎo jǐ yīng‧lǐ yuǎn."
+  },
+  "44": {
+    "text": "下午的阳光最强烈。",
+    "romanization": "Xià‧wǔ de yáng‧guāng zuì qiáng‧liè."
+  },
+  "45": {
+    "text": "这条小路沿着河边延伸两英里。",
+    "romanization": "Zhè tiáo xiǎo‧lù yán‧zhe hé‧biān yán‧shēn liǎng yīng‧lǐ."
+  },
+  "46": {
+    "text": "请走有标记的小径。",
+    "romanization": "Qǐng zǒu yǒu biāo‧jì de xiǎo‧jìng."
+  },
+  "47": {
+    "text": "步道起点在路上三英里处。",
+    "romanization": "Bù‧dào qǐ‧diǎn zài lù shàng sān yīng‧lǐ chù."
+  },
+  "48": {
+    "text": "我们在岔路口走错了。",
+    "romanization": "Wǒ‧men zài chà‧lù‧kǒu zǒu cuò le."
+  },
+  "49": {
+    "text": "地图显示山顶附近有个避难所。",
+    "romanization": "Dì‧tú xiǎn‧shì shān‧dǐng fù‧jìn yǒu ge bì‧nàn‧suǒ."
+  },
+  "50": {
+    "text": "他保持着稳定的步伐。",
+    "romanization": "Tā bǎo‧chí‧zhe wěn‧dìng de bù‧fá."
+  },
+  "51": {
+    "text": "之字形小径让攀登更容易。",
+    "romanization": "Zhī‧zì‧xíng xiǎo‧jìng ràng pān‧dēng gèng róng‧yì."
+  },
+  "52": {
+    "text": "山顶的景色值得这一爬。",
+    "romanization": "Shān‧dǐng de jǐng‧sè zhí‧de zhè yī pá."
+  },
+  "53": {
+    "text": "下山时注意松动的石头。",
+    "romanization": "Xià shān shí zhù‧yì sōng‧dòng de shí‧tou."
+  },
+  "54": {
+    "text": "我们在松软的泥土里看到了鹿的脚印。",
+    "romanization": "Wǒ‧men zài sōng‧ruǎn de ní‧tǔ lǐ kàn‧dào le lù de jiǎo‧yìn."
+  },
+  "55": {
+    "text": "在感到口渴之前就喝水。",
+    "romanization": "Zài gǎn‧dào kǒu‧kě zhī‧qián jiù hē shuǐ."
+  },
+  "56": {
+    "text": "靠近山顶的地方树木稀疏了。",
+    "romanization": "Kào‧jìn shān‧dǐng de dì‧fang shù‧mù xī‧shū le."
+  },
+  "57": {
+    "text": "我们坐在倒下的圆木上休息。",
+    "romanization": "Wǒ‧men zuò zài dǎo‧xià de yuán‧mù shàng xiū‧xi."
+  },
+  "58": {
+    "text": "小溪上的桥看起来比小路还老。",
+    "romanization": "Xiǎo‧xī shàng de qiáo kàn qǐ‧lái bǐ xiǎo‧lù hái lǎo."
+  },
+  "59": {
+    "text": "日落前我们回到了营地。",
+    "romanization": "Rì‧luò qián wǒ‧men huí‧dào le yíng‧dì."
+  },
+  "60": {
+    "text": "今晚的银河很亮。",
+    "romanization": "Jīn‧wǎn de yín‧hé hěn liàng."
+  },
+  "61": {
+    "text": "他指出了北斗七星。",
+    "romanization": "Tā zhǐ‧chū le Běi‧dǒu Qī‧xīng."
+  },
+  "62": {
+    "text": "一颗流星划过天空。",
+    "romanization": "Yī kē liú‧xīng huà guò tiān‧kōng."
+  },
+  "63": {
+    "text": "我们聊天的时候，篝火噼啪作响。",
+    "romanization": "Wǒ‧men liáo‧tiān de shí‧hou, gāo‧huǒ pī‧pā zuò‧xiǎng."
+  },
+  "64": {
+    "text": "南半球的星星不一样。",
+    "romanization": "Nán bàn‧qiú de xīng‧xing bù yī‧yàng."
+  },
+  "65": {
+    "text": "树林深处传来猫头鹰的叫声。",
+    "romanization": "Shù‧lín shēn‧chù chuán‧lái māo‧tóu‧yīng de jiào‧shēng."
+  },
+  "66": {
+    "text": "月亮升起得很晚，呈橙色。",
+    "romanization": "Yuè‧liang shēng‧qǐ de hěn wǎn, chéng chéng‧sè."
+  },
+  "67": {
+    "text": "我们围着篝火讲故事直到午夜。",
+    "romanization": "Wǒ‧men wéi‧zhe gāo‧huǒ jiǎng gù‧shi zhí‧dào wǔ‧yè."
+  },
+  "68": {
+    "text": "夜晚比你想象的更吵闹。",
+    "romanization": "Yè‧wǎn bǐ nǐ xiǎng‧xiàng de gèng chǎo‧nào."
+  },
+  "69": {
+    "text": "我们开着帐篷门睡觉。",
+    "romanization": "Wǒ‧men kāi‧zhe zhàng‧péng mén shuì‧jiào."
+  },
+  "70": {
+    "text": "黎明时分，一头鹿穿过营地。",
+    "romanization": "Lí‧míng shí‧fēn, yī tóu lù chuān guò yíng‧dì."
+  },
+  "71": {
+    "text": "松鼠还是找到了零食。",
+    "romanization": "Sōng‧shǔ hái‧shi zhǎo‧dào le líng‧shí."
+  },
+  "72": {
+    "text": "我们在对岸看到了一只海狸。",
+    "romanization": "Wǒ‧men zài duì‧'àn kàn‧dào le yī zhī hǎi‧lí."
+  },
+  "73": {
+    "text": "食物要密封好，晚上挂起来。",
+    "romanization": "Shí‧wù yào mì‧fēng hǎo, wǎn‧shang guà qǐ‧lái."
+  },
+  "74": {
+    "text": "防熊袋要挂在高高的树上。",
+    "romanization": "Fáng‧xióng‧dài yào guà zài gāo‧gāo de shù shàng."
+  },
+  "75": {
+    "text": "如果你不想有惊喜，就别把鞋子放在外面。",
+    "romanization": "Rú‧guǒ nǐ bù xiǎng yǒu jīng‧xǐ, jiù bié bǎ xié‧zi fàng zài wài‧miàn."
+  },
+  "76": {
+    "text": "一只青蛙跳过我的脚边。",
+    "romanization": "Yī zhī qīng‧wā tiào guò wǒ de jiǎo‧biān."
+  },
+  "77": {
+    "text": "鸟儿比太阳先叫醒了我们。",
+    "romanization": "Niǎo‧'ér bǐ tài‧yáng xiān jiào xǐng le wǒ‧men."
+  },
+  "78": {
+    "text": "我们跟着雪地里的脚印走了一会儿。",
+    "romanization": "Wǒ‧men gēn‧zhe xuě‧dì lǐ de jiǎo‧yìn zǒu le yī huìr."
+  },
+  "79": {
+    "text": "湖里没有鱼，但有很多蜻蜓。",
+    "romanization": "Hú lǐ méi‧yǒu yú, dàn yǒu hěn duō qīng‧tíng."
+  },
+  "80": {
+    "text": "孩子们一路跑到湖边。",
+    "romanization": "Hái‧zi‧men yī lù pǎo dào hú‧biān."
+  },
+  "81": {
+    "text": "他从小就没再露营过。",
+    "romanization": "Tā cóng xiǎo jiù méi zài lù‧yíng guò."
+  },
+  "82": {
+    "text": "她教我怎么看地图。",
+    "romanization": "Tā jiāo wǒ zěn‧me kàn dì‧tú."
+  },
+  "83": {
+    "text": "我们和另一家人共用营地。",
+    "romanization": "Wǒ‧men hé lìng yī jiā rén gòng‧yòng yíng‧dì."
+  },
+  "84": {
+    "text": "两天户外生活能让人焕然一新。",
+    "romanization": "Liǎng tiān hù‧wài shēng‧huó néng ràng rén huàn‧rán yī‧xīn."
+  },
+  "85": {
+    "text": "手机没信号，感觉真好。",
+    "romanization": "Shǒu‧jī méi xìn‧hào, gǎn‧jué zhēn hǎo."
+  },
+  "86": {
+    "text": "我们好几个小时都没看到其他人。",
+    "romanization": "Wǒ‧men hǎo jǐ ge xiǎo‧shí dōu méi kàn‧dào qí‧tā rén."
+  },
+  "87": {
+    "text": "他还没等火熄灭就睡着了。",
+    "romanization": "Tā hái méi děng huǒ xī‧miè jiù shuì‧zháo le."
+  },
+  "88": {
+    "text": "第一个早晨总是又冷又慢。",
+    "romanization": "Dì yī ge zǎo‧chén zǒng‧shì yòu lěng yòu màn."
+  },
+  "89": {
+    "text": "我们收拾好东西，把营地清理得比来时更干净。",
+    "romanization": "Wǒ‧men shōu‧shi hǎo dōng‧xi, bǎ yíng‧dì qīng‧lǐ de bǐ lái shí gèng gān‧jìng."
+  },
+  "90": {
+    "text": "最近的水源在哪里？",
+    "romanization": "Zuì‧jìn de shuǐ‧yuán zài nǎ‧lǐ?"
+  },
+  "91": {
+    "text": "旱厕就在小路尽头。",
+    "romanization": "Hàn‧cè jiù zài xiǎo‧lù jìn‧tóu."
+  },
+  "92": {
+    "text": "把食物残渣埋在离营地远一点的地方。",
+    "romanization": "Bǎ shí‧wù cán‧zhā mái zài lí yíng‧dì yuǎn yī diǎn de dì‧fang."
+  },
+  "93": {
+    "text": "把湿衣服挂在火边烘干。",
+    "romanization": "Bǎ shī yī‧fu guà zài huǒ biān hōng‧gān."
+  },
+  "94": {
+    "text": "急救包在背包顶部。",
+    "romanization": "Jí‧jiù‧bāo zài bēi‧bāo dǐng‧bù."
+  },
+  "95": {
+    "text": "指南针指向磁北。",
+    "romanization": "Zhǐ‧nán‧zhēn zhǐ‧xiàng cí‧běi."
+  },
+  "96": {
+    "text": "哨子比你的声音响亮。",
+    "romanization": "Shào‧zi bǐ nǐ de shēng‧yīn xiǎng‧liàng."
+  },
+  "97": {
+    "text": "告诉别人你要去哪里。",
+    "romanization": "Gào‧sù bié‧rén nǐ yào qù nǎ‧lǐ."
+  },
+  "98": {
+    "text": "手机要放在防水袋里。",
+    "romanization": "Shǒu‧jī yào fàng zài fáng‧shuǐ‧dài lǐ."
+  },
+  "99": {
+    "text": "多带几层衣服，比你觉得需要的还要多。",
+    "romanization": "Duō dài jǐ céng yī‧fu, bǐ nǐ jué‧de xū‧yào de hái yào duō."
+  }
+}

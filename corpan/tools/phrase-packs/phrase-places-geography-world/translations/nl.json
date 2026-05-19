@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Afrika is groter dan het op de meeste kaarten lijkt.",
+    "romanization": null
+  },
+  "1": {
+    "text": "De Atlantische Oceaan scheidt Amerika van Europa en Afrika.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Antarctica is het koudste continent.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Azië huisvest meer dan de helft van de wereldbevolking.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Europa en Azië delen een aaneengesloten landmassa.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Australië is zowel een land als een continent.",
+    "romanization": null
+  },
+  "6": {
+    "text": "De Stille Oceaan is de grootste oceaan.",
+    "romanization": null
+  },
+  "7": {
+    "text": "De Noordelijke IJszee is gedeeltelijk met ijs bedekt.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Zuid-Amerika heeft het Amazone-regenwoud.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Noord-Amerika strekt zich uit van tropische tot arctische klimaten.",
+    "romanization": null
+  },
+  "10": {
+    "text": "IJsland ligt tussen twee tektonische platen.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Madagaskar is het op drie na grootste eiland ter wereld.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Nieuw-Zeeland heeft twee hoofdeilanden.",
+    "romanization": null
+  },
+  "13": {
+    "text": "De Pacifische Ring van Vuur is waar veel aardbevingen plaatsvinden.",
+    "romanization": null
+  },
+  "14": {
+    "text": "De Indische Oceaan grenst aan drie continenten.",
+    "romanization": null
+  },
+  "15": {
+    "text": "De Nijl stroomt duizenden kilometers naar het noorden.",
+    "romanization": null
+  },
+  "16": {
+    "text": "De Amazone voert meer water dan welke andere rivier dan ook.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Het Baikalmeer is het diepste zoetwatermeer ter wereld.",
+    "romanization": null
+  },
+  "18": {
+    "text": "De Mississippi ontwatert het grootste deel van het centrale deel van de Verenigde Staten.",
+    "romanization": null
+  },
+  "19": {
+    "text": "De Ganges is heilig voor veel mensen.",
+    "romanization": null
+  },
+  "20": {
+    "text": "De Yangtze is de langste rivier van Azië.",
+    "romanization": null
+  },
+  "21": {
+    "text": "De Donau stroomt door tien landen.",
+    "romanization": null
+  },
+  "22": {
+    "text": "De Kaspische Zee is het grootste afgesloten waterlichaam.",
+    "romanization": null
+  },
+  "23": {
+    "text": "De Wolga is de langste rivier die volledig in Europa ligt.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Het Victoriameer is de belangrijkste bron van de Witte Nijl.",
+    "romanization": null
+  },
+  "25": {
+    "text": "De Grote Meren bevatten een vijfde van al het zoete oppervlaktewater ter wereld.",
+    "romanization": null
+  },
+  "26": {
+    "text": "De Rijn is al eeuwenlang een handelsroute.",
+    "romanization": null
+  },
+  "27": {
+    "text": "De Mekong voorziet miljoenen mensen in Zuidoost-Azië van levensonderhoud.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Sommige rivieren drogen op voordat ze de zee bereiken.",
+    "romanization": null
+  },
+  "29": {
+    "text": "De Colorado-rivier heeft de Grand Canyon in miljoenen jaren uitgesleten.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Mount Everest is het hoogste punt boven zeeniveau.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Het Andesgebergte strekt zich uit over de hele lengte van Zuid-Amerika.",
+    "romanization": null
+  },
+  "32": {
+    "text": "De Alpen zijn populair bij wandelaars in de zomer.",
+    "romanization": null
+  },
+  "33": {
+    "text": "De Rocky Mountains strekken zich uit van Canada tot in het zuidwesten van de Verenigde Staten.",
+    "romanization": null
+  },
+  "34": {
+    "text": "De Himalaya rijst nog steeds langzaam omhoog.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kilimanjaro is de hoogste top van Afrika.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Het Oeralgebergte scheidt Europa van Azië.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Mount Fuji is heilig voor velen in Japan.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Het Atlasgebergte beïnvloedt het klimaat van Noord-Afrika.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Gletsjers trekken zich wereldwijd terug uit bergketens.",
+    "romanization": null
+  },
+  "40": {
+    "text": "De Sahara is de grootste hete woestijn.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Het Noordpoolgebied en Antarctica zijn poolwoestijnen.",
+    "romanization": null
+  },
+  "42": {
+    "text": "De Amazone heeft een eigen weersysteem.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Tropische regenwouden zijn het hele jaar door warm en nat.",
+    "romanization": null
+  },
+  "44": {
+    "text": "De gematigde zones hebben vier duidelijke seizoenen.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Moessons brengen elke zomer zware regenval naar Zuid-Azië.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Tornado's komen het meest voor in het centrale deel van de Verenigde Staten.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Orkanen ontstaan boven warm oceaanwater.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Het Middellandse Zeeklimaat is mild en droog in de zomer.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Permafrost bedekt een groot deel van Siberië.",
+    "romanization": null
+  },
+  "50": {
+    "text": "De Atacama is een van de droogste plekken op aarde.",
+    "romanization": null
+  },
+  "51": {
+    "text": "De toendra heeft een te korte zomer voor bomen.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Mangroven groeien waar land en zout water samenkomen.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Koraalriffen hebben warm, helder water nodig om te gedijen.",
+    "romanization": null
+  },
+  "54": {
+    "text": "De straalstroom beïnvloedt het weer over continenten heen.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Tokio heeft meer inwoners dan welke andere metropool dan ook.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Vaticaanstad is het kleinste land ter wereld.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Rusland beslaat elf tijdzones.",
+    "romanization": null
+  },
+  "58": {
+    "text": "India en China vormen samen meer dan een derde van de wereldbevolking.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Brazilië grenst aan de meeste Zuid-Amerikaanse landen.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Singapore is tegelijkertijd een stad en een land.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Istanbul ligt op twee continenten.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Kaapstad heeft een beroemde tafelberg.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Buenos Aires wordt soms het Parijs van Zuid-Amerika genoemd.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Lagos is een van de snelstgroeiende steden ter wereld.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Reykjavik is de meest noordelijke hoofdstad ter wereld.",
+    "romanization": null
+  },
+  "66": {
+    "text": "La Paz is een van de hoogstgelegen hoofdsteden.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Sydney heeft een van de grootste natuurlijke havens.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Marrakech heeft een duizend jaar oude binnenstad.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hanoi ligt aan de Rode Rivier.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Mensen hebben woestijnen doorkruist om specerijen te verhandelen.",
+    "romanization": null
+  },
+  "71": {
+    "text": "De Zijderoute verbond China met de Middellandse Zee.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Sommige talen worden op slechts één klein eiland gesproken.",
+    "romanization": null
+  },
+  "73": {
+    "text": "De helft van de wereldbevolking woont langs de kust.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Veel steden zijn ontstaan als rivierhavens.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Grenzen verschuiven; rivieren en bergen meestal niet.",
+    "romanization": null
+  },
+  "76": {
+    "text": "De kustlijn van de wereld is dichter bevolkt dan het binnenland.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Veel oude ruïnes worden nog steeds ontdekt.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Sommige eilanden verdwijnen langzaam onder de stijgende zeespiegel.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Lange migraties hebben bijna elk continent gevormd.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Australië heeft dieren die nergens anders voorkomen.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Het diepste deel van de oceaan is de Marianentrog.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Groenland is grotendeels bedekt met ijs.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Vulkanen kunnen in enkele decennia nieuwe eilanden vormen.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Het noorderlicht is het best te zien vanaf noordelijke breedtegraden.",
+    "romanization": null
+  },
+  "85": {
+    "text": "De continenten van de aarde drijven langzaam uit elkaar.",
+    "romanization": null
+  },
+  "86": {
+    "text": "De droogste plek op aarde kan nog steeds af en toe een overstroming krijgen.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Sommige meren zijn zo zout dat er bijna niets in kan leven.",
+    "romanization": null
+  },
+  "88": {
+    "text": "De hoogste waterval ter wereld bevindt zich in Venezuela.",
+    "romanization": null
+  },
+  "89": {
+    "text": "De Sahara was duizenden jaren geleden een grasland.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Welk land grenst aan de meeste andere landen?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Wat is het verschil tussen een land en een staat?",
+    "romanization": null
+  },
+  "92": {
+    "text": "Waar is de evenaar op deze kaart?",
+    "romanization": null
+  },
+  "93": {
+    "text": "Welke oceaan is het dichtstbij?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Hoe lang zou het duren om dit land door te lopen?",
+    "romanization": null
+  },
+  "95": {
+    "text": "Wat is de hoogste top die je beklommen hebt?",
+    "romanization": null
+  },
+  "96": {
+    "text": "Ik wil op een dag het noorderlicht zien.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Is de hoofdstad ook de grootste stad?",
+    "romanization": null
+  },
+  "98": {
+    "text": "De kaart ziet er ondersteboven anders uit.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Elk land heeft een verhaal dat het waard is om te kennen.",
+    "romanization": null
+  }
+}

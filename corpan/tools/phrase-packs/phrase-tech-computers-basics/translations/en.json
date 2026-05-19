@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Save the file before you close it.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Could you send me that document?",
+    "romanization": null
+  },
+  "2": {
+    "text": "The folder is on the desktop.",
+    "romanization": null
+  },
+  "3": {
+    "text": "I can't find the file I saved yesterday.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Search the whole drive for the name.",
+    "romanization": null
+  },
+  "5": {
+    "text": "He renamed the file by mistake.",
+    "romanization": null
+  },
+  "6": {
+    "text": "The download went to the wrong folder.",
+    "romanization": null
+  },
+  "7": {
+    "text": "The file is too big to email.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Could you compress it into a zip?",
+    "romanization": null
+  },
+  "9": {
+    "text": "The cloud folder syncs automatically.",
+    "romanization": null
+  },
+  "10": {
+    "text": "She organizes everything in dated subfolders.",
+    "romanization": null
+  },
+  "11": {
+    "text": "The trash is fuller than the rest of the drive.",
+    "romanization": null
+  },
+  "12": {
+    "text": "He keeps a backup of every project.",
+    "romanization": null
+  },
+  "13": {
+    "text": "The shared folder updated for everyone.",
+    "romanization": null
+  },
+  "14": {
+    "text": "A file you can't find might as well not exist.",
+    "romanization": null
+  },
+  "15": {
+    "text": "I forgot my password.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Reset the password from the login screen.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Don't use the same password for everything.",
+    "romanization": null
+  },
+  "18": {
+    "text": "A password manager remembers them for you.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Two-factor adds a step but a lot of safety.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Check your email for a verification code.",
+    "romanization": null
+  },
+  "21": {
+    "text": "The link expired in fifteen minutes.",
+    "romanization": null
+  },
+  "22": {
+    "text": "She created a new account for the project.",
+    "romanization": null
+  },
+  "23": {
+    "text": "He signs out on shared computers.",
+    "romanization": null
+  },
+  "24": {
+    "text": "The username is already taken.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Save the recovery code somewhere safe.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Don't click suspicious login links.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Update the recovery email when you move.",
+    "romanization": null
+  },
+  "28": {
+    "text": "A passkey is faster than a password.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Your phone is also an account these days.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Have you tried restarting it?",
+    "romanization": null
+  },
+  "31": {
+    "text": "The cable was loose.",
+    "romanization": null
+  },
+  "32": {
+    "text": "The screen froze for a minute.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Close all the tabs and try again.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Check that you're connected to the right network.",
+    "romanization": null
+  },
+  "35": {
+    "text": "The keyboard isn't responding.",
+    "romanization": null
+  },
+  "36": {
+    "text": "The fan is louder than usual.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Clear the cache and reload.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Try a different browser.",
+    "romanization": null
+  },
+  "39": {
+    "text": "The update fixed the bug.",
+    "romanization": null
+  },
+  "40": {
+    "text": "The battery drained overnight.",
+    "romanization": null
+  },
+  "41": {
+    "text": "The webcam stopped working after the update.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Sometimes the simplest fix is to wait a minute.",
+    "romanization": null
+  },
+  "43": {
+    "text": "A reboot solves more problems than people admit.",
+    "romanization": null
+  },
+  "44": {
+    "text": "He explained the error message in plain words.",
+    "romanization": null
+  },
+  "45": {
+    "text": "The page is taking forever to load.",
+    "romanization": null
+  },
+  "46": {
+    "text": "The site is down for everyone.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Bookmark it so you can find it again.",
+    "romanization": null
+  },
+  "48": {
+    "text": "The link in the email opens in a new tab.",
+    "romanization": null
+  },
+  "49": {
+    "text": "The video keeps buffering.",
+    "romanization": null
+  },
+  "50": {
+    "text": "The signal is weak in the back room.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Could you share the link with me?",
+    "romanization": null
+  },
+  "52": {
+    "text": "The website looks different on mobile.",
+    "romanization": null
+  },
+  "53": {
+    "text": "The pop-up asked me to accept cookies.",
+    "romanization": null
+  },
+  "54": {
+    "text": "The advertisement is hard to close.",
+    "romanization": null
+  },
+  "55": {
+    "text": "He uses an ad blocker on every machine.",
+    "romanization": null
+  },
+  "56": {
+    "text": "The search returned too many results.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Refine the search with quotation marks.",
+    "romanization": null
+  },
+  "58": {
+    "text": "The article moved behind a paywall.",
+    "romanization": null
+  },
+  "59": {
+    "text": "The page is from a website I trust.",
+    "romanization": null
+  },
+  "60": {
+    "text": "The app updated overnight.",
+    "romanization": null
+  },
+  "61": {
+    "text": "The new version looks completely different.",
+    "romanization": null
+  },
+  "62": {
+    "text": "She removed the apps she never opened.",
+    "romanization": null
+  },
+  "63": {
+    "text": "The notification settings are buried in the menu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Mute it during the meeting.",
+    "romanization": null
+  },
+  "65": {
+    "text": "The keyboard shortcut is faster than the menu.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Dark mode is easier on the eyes at night.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Turn off auto-play.",
+    "romanization": null
+  },
+  "68": {
+    "text": "The notification badge never goes away.",
+    "romanization": null
+  },
+  "69": {
+    "text": "He set up the laptop the way he likes it.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Don't open attachments from unknown senders.",
+    "romanization": null
+  },
+  "71": {
+    "text": "The link in that message looks suspicious.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Check the sender's full address.",
+    "romanization": null
+  },
+  "73": {
+    "text": "The free Wi-Fi at the airport is not private.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Cover the camera when it's not in use.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Lock the screen when you step away.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Be careful with information you can't take back.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Read what you're agreeing to.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Most data leaks come from reused passwords.",
+    "romanization": null
+  },
+  "79": {
+    "text": "The simplest scams still work because they're simple.",
+    "romanization": null
+  },
+  "80": {
+    "text": "The laptop is slower since the last update.",
+    "romanization": null
+  },
+  "81": {
+    "text": "The screen is cracked but it still works.",
+    "romanization": null
+  },
+  "82": {
+    "text": "The new monitor arrived this morning.",
+    "romanization": null
+  },
+  "83": {
+    "text": "He plugged in three cables before finding the right one.",
+    "romanization": null
+  },
+  "84": {
+    "text": "The battery doesn't last like it used to.",
+    "romanization": null
+  },
+  "85": {
+    "text": "The keyboard collected crumbs over the years.",
+    "romanization": null
+  },
+  "86": {
+    "text": "The fan kicks in when the room gets warm.",
+    "romanization": null
+  },
+  "87": {
+    "text": "The printer is offline again.",
+    "romanization": null
+  },
+  "88": {
+    "text": "The headphones cut out on one side.",
+    "romanization": null
+  },
+  "89": {
+    "text": "He cleans the screen with a soft cloth.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Could you take a screenshot?",
+    "romanization": null
+  },
+  "91": {
+    "text": "The file was sent at midnight.",
+    "romanization": null
+  },
+  "92": {
+    "text": "The calendar invite came through twice.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Drag the file into the window.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Right-click to see more options.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Hold shift to select more than one.",
+    "romanization": null
+  },
+  "96": {
+    "text": "The undo button has saved me many times.",
+    "romanization": null
+  },
+  "97": {
+    "text": "The clipboard remembers the last thing you copied.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Autocorrect is helpful and occasionally embarrassing.",
+    "romanization": null
+  },
+  "99": {
+    "text": "A clean desktop makes everything easier to find.",
+    "romanization": null
+  }
+}

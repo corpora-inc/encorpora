@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Срещата започва след десет минути.",
+    "romanization": "Sreshtata zapochva sled deset minuti."
+  },
+  "1": {
+    "text": "Може ли да споделиш екрана си?",
+    "romanization": "Mozhe li da spodelesh ekrana si?"
+  },
+  "2": {
+    "text": "Извинявайте, бях на мют.",
+    "romanization": "Izviniavayte, biah na miut."
+  },
+  "3": {
+    "text": "Превишаваме времето.",
+    "romanization": "Previshavame vremeto."
+  },
+  "4": {
+    "text": "Да го преместим за следващата среща.",
+    "romanization": "Da go premestim za sledvashtata sreshta."
+  },
+  "5": {
+    "text": "Аз ще си водя записки.",
+    "romanization": "Az shte si vodia zapiski."
+  },
+  "6": {
+    "text": "Може ли да минем поред?",
+    "romanization": "Mozhe li da minem pored?"
+  },
+  "7": {
+    "text": "Дневният ред е в поканата за срещата.",
+    "romanization": "Dnevniyat red e v pokanata za sreshtata."
+  },
+  "8": {
+    "text": "Кой води тази?",
+    "romanization": "Koy vodi tazi?"
+  },
+  "9": {
+    "text": "Записваме ли това?",
+    "romanization": "Zapisvame li tova?"
+  },
+  "10": {
+    "text": "Връзката прекъсна по средата.",
+    "romanization": "Vrazkata prekasna po sredata."
+  },
+  "11": {
+    "text": "Може ли да го бутнем с петнадесет минути?",
+    "romanization": "Mozhe li da go butnem s petnadeset minuti?"
+  },
+  "12": {
+    "text": "Влезе късно, но тихо.",
+    "romanization": "Vleze kasno, no tiho."
+  },
+  "13": {
+    "text": "Залата е двойно резервирана отново.",
+    "romanization": "Zalata e dvoyno rezervirana otnovo."
+  },
+  "14": {
+    "text": "Да го оставим настрана и да се върнем към него.",
+    "romanization": "Da go ostavim nastrana i da se varnem kam nego."
+  },
+  "15": {
+    "text": "Трябва да приключа точно в три.",
+    "romanization": "Triabva da priklyucha tochno v tri."
+  },
+  "16": {
+    "text": "Може ли да останеш за две минути след това?",
+    "romanization": "Mozhe li da ostanesh za dve minuti sled tova?"
+  },
+  "17": {
+    "text": "Бялата дъска е пълна.",
+    "romanization": "Bialata daska e palna."
+  },
+  "18": {
+    "text": "Може ли да обобщиш задачите за изпълнение?",
+    "romanization": "Mozhe li da obobshtish zadachite za izpalnenie?"
+  },
+  "19": {
+    "text": "Срещите на крак са изненадващо бързи.",
+    "romanization": "Sreshtite na krak sa iznenadvashcho barzi."
+  },
+  "20": {
+    "text": "Ще ти отговоря до края на деня.",
+    "romanization": "Shte ti otgovoria do kraya na denia."
+  },
+  "21": {
+    "text": "Получи ли последния ми имейл?",
+    "romanization": "Poluchi li poslednia mi imeyl?"
+  },
+  "22": {
+    "text": "Извинявай за късния отговор.",
+    "romanization": "Izviniavay za kasnia otgovor."
+  },
+  "23": {
+    "text": "Включвам Сара в това.",
+    "romanization": "Vklyuchvam Sara v tova."
+  },
+  "24": {
+    "text": "Прикаченият файл не е пристигнал.",
+    "romanization": "Prikacheniyat fayl ne e pristignal."
+  },
+  "25": {
+    "text": "Маркирах го като спешно.",
+    "romanization": "Markirah go kato speshno."
+  },
+  "26": {
+    "text": "Може ли да изпратиш отново този файл?",
+    "romanization": "Mozhe li da izpratish otnovo tozi fayl?"
+  },
+  "27": {
+    "text": "Разговорът стана дълъг, нека обобщя.",
+    "romanization": "Razgovorat stana dalag, neka obobshtia."
+  },
+  "28": {
+    "text": "Използвай темата, за да мога да го намеря.",
+    "romanization": "Izpolzvay temata, za da moga da go nameria."
+  },
+  "29": {
+    "text": "Изчисти си входящата поща през уикенда.",
+    "romanization": "Izchisti si vhodyashtata poshta prez uikenda."
+  },
+  "30": {
+    "text": "Моля, отговори до петък.",
+    "romanization": "Molia, otgovori do petak."
+  },
+  "31": {
+    "text": "Ще изпратя кратко съобщение, когато е готово.",
+    "romanization": "Shte izpratia kratko saobshtenie, kogato e gotovo."
+  },
+  "32": {
+    "text": "Автоматичният отговор казва, че пътува.",
+    "romanization": "Avtomatichniyat otgovor kazva, che patuva."
+  },
+  "33": {
+    "text": "Копирала е грешния човек по погрешка.",
+    "romanization": "Kopirala e greshnia chovek po pogreshka."
+  },
+  "34": {
+    "text": "Три напомняния са достатъчни.",
+    "romanization": "Tri napomniania sa dostatachni."
+  },
+  "35": {
+    "text": "Може ли да ми препратиш разговора?",
+    "romanization": "Mozhe li da mi prepratish razgovora?"
+  },
+  "36": {
+    "text": "Чатът е по-бърз от имейла за това.",
+    "romanization": "Chatat e po-barz ot imeyla za tova."
+  },
+  "37": {
+    "text": "Пропуснах съобщението ти в целия шум.",
+    "romanization": "Propusnah saobshtenieto ti v tselia shum."
+  },
+  "38": {
+    "text": "Линкът в имейла ти води към липсваща страница.",
+    "romanization": "Linkat v imeyla ti vodi kam lipsashta stranitsa."
+  },
+  "39": {
+    "text": "Моля, потвърди, че си го получил.",
+    "romanization": "Molia, potvardi, che si go poluchil."
+  },
+  "40": {
+    "text": "Крайният срок е петък на обяд.",
+    "romanization": "Krayniyat srok e petak na obiad."
+  },
+  "41": {
+    "text": "Ще имам първи вариант до сряда.",
+    "romanization": "Shte imam parvi variant do sriada."
+  },
+  "42": {
+    "text": "Трябва да пуснем нещо тази седмица.",
+    "romanization": "Triabva da pusnem neshto tazi sedmitsa."
+  },
+  "43": {
+    "text": "Проектът се забави с един ден.",
+    "romanization": "Proektat se zabavi s edin den."
+  },
+  "44": {
+    "text": "Може ли да го прегледаш за грешки, преди да го изпратя?",
+    "romanization": "Mozhe li da go pregledash za greshki, predi da go izpratia?"
+  },
+  "45": {
+    "text": "Дължа ти ъпдейт за статуса.",
+    "romanization": "Dalzha ti apdeyt za statusa."
+  },
+  "46": {
+    "text": "Числата не съвпадат с това, което изпратих миналата седмица.",
+    "romanization": "Chislata ne savpadat s tova, koeto izpratih minalata sedmitsa."
+  },
+  "47": {
+    "text": "Чакаме решение от клиента, за да продължим.",
+    "romanization": "Chakame reshenie ot klienta, za da prodalzhim."
+  },
+  "48": {
+    "text": "Работи по време на обяд, за да го довърши.",
+    "romanization": "Raboti po vreme na obiad, za da go dovarshi."
+  },
+  "49": {
+    "text": "Най-накрая приключих с доклада.",
+    "romanization": "Nay-nakraya priklyuchih s doklada."
+  },
+  "50": {
+    "text": "Ще започна веднага щом получа одобрението.",
+    "romanization": "Shte zapochna vednaga shtom polucha odobrenieto."
+  },
+  "51": {
+    "text": "Може ли да одобриш тази версия?",
+    "romanization": "Mozhe li da odobrish tazi versia?"
+  },
+  "52": {
+    "text": "Тя хвана печатна грешка точно преди да пуснем.",
+    "romanization": "Tia hvana pechatna greshka tochno predi da pusnem."
+  },
+  "53": {
+    "text": "Отложихме старта за следващия вторник.",
+    "romanization": "Otlozhihme starta za sledvashtia vtornik."
+  },
+  "54": {
+    "text": "Оценката беше сгрешена с фактор две.",
+    "romanization": "Otsenkata beshe sgreshena s faktor dve."
+  },
+  "55": {
+    "text": "Освободи си следобеда, за да се съсредоточи.",
+    "romanization": "Osvobodi si sledobeda, za da se sasredotochi."
+  },
+  "56": {
+    "text": "Договорът се върна подписан.",
+    "romanization": "Dogovorart se varna podpisan."
+  },
+  "57": {
+    "text": "Да го приемем за готово и да продължим напред.",
+    "romanization": "Da go priemem za gotovo i da prodalzhim napred."
+  },
+  "58": {
+    "text": "Първата версия е сурова, но работи.",
+    "romanization": "Parvata versia e surova, no raboti."
+  },
+  "59": {
+    "text": "Този път достави по-рано.",
+    "romanization": "Tozi pat dostavi po-rano."
+  },
+  "60": {
+    "text": "Добре дошъл в екипа.",
+    "romanization": "Dobre doshal v ekipa."
+  },
+  "61": {
+    "text": "Ще те запозная с останалите.",
+    "romanization": "Shte te zapoznaya s ostanaliye."
+  },
+  "62": {
+    "text": "Тя току-що се върна от отпуск.",
+    "romanization": "Tia toku-shto se varna ot otpusk."
+  },
+  "63": {
+    "text": "Той е човекът, когото да питаш за това.",
+    "romanization": "Toy e chovekat, kogoto da pitash za tova."
+  },
+  "64": {
+    "text": "Делим си бюрото във вторник.",
+    "romanization": "Delim si biuroto vav vtornik."
+  },
+  "65": {
+    "text": "Кой знае най-много за ценообразуването?",
+    "romanization": "Koy znae nay-mnogo za tsenaobrazuvaneto?"
+  },
+  "66": {
+    "text": "Винаги носи кафе за екипа.",
+    "romanization": "Vinagi nosi kafe za ekipa."
+  },
+  "67": {
+    "text": "Новият служител учи бързо.",
+    "romanization": "Noviyat sluzhitel uchi barzo."
+  },
+  "68": {
+    "text": "Тя работи в тясно сътрудничество с маркетинга.",
+    "romanization": "Tia raboti v tiasno satrudnichestvo s marketinga."
+  },
+  "69": {
+    "text": "Той е тук по-дълго от всеки друг.",
+    "romanization": "Toy e tuk po-dalgo ot vseki drug."
+  },
+  "70": {
+    "text": "Разделиха си работата точно наполовина.",
+    "romanization": "Razdelikha si rabotata tochno napolovina."
+  },
+  "71": {
+    "text": "Хапнахме набързо и го скицирахме.",
+    "romanization": "Hapnahme nabarzo i go skitsirahme."
+  },
+  "72": {
+    "text": "Той ме заместваше, докато бях болен.",
+    "romanization": "Toy me zamestvashe, dokato biah bolen."
+  },
+  "73": {
+    "text": "Екипът се събра около лаптопа.",
+    "romanization": "Ekipat se sabra okolo laptopa."
+  },
+  "74": {
+    "text": "Тя помни рождения ден на всеки.",
+    "romanization": "Tia pomni rozhdenia den na vseki."
+  },
+  "75": {
+    "text": "Ще се включа дистанционно утре.",
+    "romanization": "Shte se vklyucha distantsionno utre."
+  },
+  "76": {
+    "text": "Офисът е предимно празен в петък.",
+    "romanization": "Ofisat e predimno prazen v petak."
+  },
+  "77": {
+    "text": "Интернетът ми е нестабилен днес.",
+    "romanization": "Internetat mi e nestabilen dnes."
+  },
+  "78": {
+    "text": "Той работи от друг град.",
+    "romanization": "Toy raboti ot drug grad."
+  },
+  "79": {
+    "text": "Екипът се среща на живо веднъж месечно.",
+    "romanization": "Ekipat se sreshta na zhivo vednazh mesechno."
+  },
+  "80": {
+    "text": "Тя си направи кът в спалнята за бюро.",
+    "romanization": "Tia si napravi kat v spalniata za biuro."
+  },
+  "81": {
+    "text": "Домашният офис най-накрая е подреден.",
+    "romanization": "Domashniyat ofis nay-nakraya e podreden."
+  },
+  "82": {
+    "text": "Може ли да си включиш камерата?",
+    "romanization": "Mozhe li da si vklyuchish kamerata?"
+  },
+  "83": {
+    "text": "Фоновият шум е наред, не се притеснявай.",
+    "romanization": "Fonoviyat shum e nared, ne se pritesniavay."
+  },
+  "84": {
+    "text": "Правим бърза проверка всяка сутрин.",
+    "romanization": "Pravim barza proverka vsiaka sutrin."
+  },
+  "85": {
+    "text": "Принтерът отново е заседнал.",
+    "romanization": "Printerat otnovo e zasednal."
+  },
+  "86": {
+    "text": "Кафемашината е свършила кафето.",
+    "romanization": "Kafemashinata e svarshila kafeto."
+  },
+  "87": {
+    "text": "Може ли да отвориш вратата?",
+    "romanization": "Mozhe li da otvorish vratata?"
+  },
+  "88": {
+    "text": "Прозорецът на конферентната зала не се отваря.",
+    "romanization": "Prozoretsat na konferentnata zala ne se otvaria."
+  },
+  "89": {
+    "text": "Някой си е оставил обяда в хладилника за една седмица.",
+    "romanization": "Niakoy si e ostavil obiada v hladilnika za edna sedmitsa."
+  },
+  "90": {
+    "text": "Кухнята е тиха в три часа.",
+    "romanization": "Kuhniata e tiha v tri chasa."
+  },
+  "91": {
+    "text": "Качи се по стълбите, за да си проветри главата.",
+    "romanization": "Kachi se po stalbite, za da si provetri glavata."
+  },
+  "92": {
+    "text": "Растението на перваза се развива добре.",
+    "romanization": "Rastenieto na pervaza se razviva dobre."
+  },
+  "93": {
+    "text": "Може ли да подпишеш за пратка на рецепцията?",
+    "romanization": "Mozhe li da podpishesh za pratka na retseptsiyata?"
+  },
+  "94": {
+    "text": "Четецът за карти прави проблеми.",
+    "romanization": "Chetetat za karti pravi problemi."
+  },
+  "95": {
+    "text": "Краят на деня винаги идва неочаквано.",
+    "romanization": "Krayat na denia vinagi idva neochakvano."
+  },
+  "96": {
+    "text": "Работи най-добре с един отворен прозорец наведнъж.",
+    "romanization": "Raboti nay-dobre s edin otvoren prozorets navednazh."
+  },
+  "97": {
+    "text": "Тя пали свещ, за да отбележи началото на деня.",
+    "romanization": "Tia pali svesht, za da otbelezhi nachaloto na denia."
+  },
+  "98": {
+    "text": "Кратка разходка след обяд ми помага да мисля.",
+    "romanization": "Kratka razhodka sled obiad mi pomaga da mislia."
+  },
+  "99": {
+    "text": "Някои понеделници започват с малка победа.",
+    "romanization": "Niakoi ponedelniktsi zapochvat s malka pobeda."
+  }
+}

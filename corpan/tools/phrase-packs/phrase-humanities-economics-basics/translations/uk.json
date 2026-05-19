@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Ціни зростають, коли попит на щось збільшується.",
+    "romanization": "Tsiny zrostaiut, koly popyt na shchos zbilshuietsia."
+  },
+  "1": {
+    "text": "Коли пропозиція зростає, ціни зазвичай падають.",
+    "romanization": "Koly propozytsiia zrostaie, tsiny zazvychai padaiut."
+  },
+  "2": {
+    "text": "Знижка спонукає більше людей купувати.",
+    "romanization": "Znyzhka sponukaie bilshe ludei kupuvaty."
+  },
+  "3": {
+    "text": "Один і той самий товар коштує по-різному в різних містах.",
+    "romanization": "Odyn i toi samyi tovar koshtuie po-riznomu v riznykh mistakh."
+  },
+  "4": {
+    "text": "Попит може змінитися за одну ніч.",
+    "romanization": "Popyt mozhe zminytysia za odnu nich."
+  },
+  "5": {
+    "text": "Продавці підвищують ціни, коли запаси закінчуються.",
+    "romanization": "Prodavtsi pidvyshchuiut tsiny, koly zapasy zakinchuiutsia."
+  },
+  "6": {
+    "text": "Покупці шукають найкращу пропозицію.",
+    "romanization": "Pokuptsi shukaiut naikrashchu propozytsiiu."
+  },
+  "7": {
+    "text": "Іноді висока ціна є ознакою якості.",
+    "romanization": "Inodi vysoka tsina ye oznakoiu yakosti."
+  },
+  "8": {
+    "text": "А іноді висока ціна — це просто маркетинговий хід.",
+    "romanization": "A inodi vysoka tsina — tse prosto marketynhovyi khid."
+  },
+  "9": {
+    "text": "Безкоштовна доставка змінює ставлення людей до покупки.",
+    "romanization": "Bezkoshtovna dostavka zminiuye stavlennia ludei do pokupky."
+  },
+  "10": {
+    "text": "Ціна рідко відображає повну вартість.",
+    "romanization": "Tsina ridko vidobrazhaie povnu vartist."
+  },
+  "11": {
+    "text": "Час — це також свого роду витрати.",
+    "romanization": "Chas — tse takozh svoho rodu vytraty."
+  },
+  "12": {
+    "text": "Довга черга — це те, чим ви платите, коли ціна занизька.",
+    "romanization": "Dovha cherha — tse te, chym vy platyte, koly tsina zanyska."
+  },
+  "13": {
+    "text": "Розпродажі змушують людей купувати те, що вони не планували.",
+    "romanization": "Rozprodazhi zmusuiut ludei kupuvaty te, shcho vony ne planuvaly."
+  },
+  "14": {
+    "text": "Люди сильніше реагують на втрату грошей, ніж на їхнє отримання.",
+    "romanization": "Ludy sylnishe reahuiut na vtratu hroshei, nizh na yikhnie otrymannia."
+  },
+  "15": {
+    "text": "Ціни в доларах і ціни у вашій місцевій валюті сприймаються по-різному.",
+    "romanization": "Tsiny v dolarakh i tsiny u vashii mistsevii valiuti spryimaiutsia po-riznomu."
+  },
+  "16": {
+    "text": "Невеликі щоденні витрати за рік складаються у значну суму.",
+    "romanization": "Nevelyki shchodenny vytraty za rik skladaiutsia u znachnu sumu."
+  },
+  "17": {
+    "text": "Перший продаж за день важливіший за останній.",
+    "romanization": "Pershyi prodazh za den vazhlyvishyi za ostannii."
+  },
+  "18": {
+    "text": "Багато дрібних покупок приховують одну велику звичку.",
+    "romanization": "Bahato dribnykh pokupok prykhovuiut odnu velyku zvychku."
+  },
+  "19": {
+    "text": "Найдешевший варіант іноді виявляється найдорожчим у підсумку.",
+    "romanization": "Naideshevshyi variant inodi vyiavlaietsia naidorozhchym u pidsumku."
+  },
+  "20": {
+    "text": "Гроші — це просто домовленість, яку ми всі поділяємо.",
+    "romanization": "Hroshi — tse prosto domovlenist, yaku my vsi podiliaiemo."
+  },
+  "21": {
+    "text": "Заощадження — це плата вашому майбутньому \"я\".",
+    "romanization": "Zaoshchadzhuvannia — tse plata vashomu maibutnomu \"ia\"."
+  },
+  "22": {
+    "text": "Бюджет — це план, а не покарання.",
+    "romanization": "Biudzhet — tse plan, a ne pokarannia."
+  },
+  "23": {
+    "text": "Складні відсотки — це терпіння, що працює як маленький двигун.",
+    "romanization": "Skladni vidsotky — tse terpinnia, shcho pratsiuie yak malenkyi dvyhun."
+  },
+  "24": {
+    "text": "Інфляція повільно з'їдає гроші, що зберігаються готівкою.",
+    "romanization": "Infliatsiia povilno z'yidaie hroshi, shcho zberihaiutsia hotivkoiu."
+  },
+  "25": {
+    "text": "Позика — це запозичення у свого майбутнього \"я\".",
+    "romanization": "Pozyka — tse zapozychennia u svoho maibutnoho \"ia\"."
+  },
+  "26": {
+    "text": "Відсотки — це плата за користування позиченими грошима.",
+    "romanization": "Vidsotky — tse plata za korystuvannia pozychenymy hroshyma."
+  },
+  "27": {
+    "text": "Вона відстежує кожну витрату протягом місяця, щоб побачити закономірність.",
+    "romanization": "Vona vidstezhuie kozhnu vytratu protiahom misiatsia, shchob pobachyty zakonomirnist."
+  },
+  "28": {
+    "text": "Він відкладає фіксовану суму щоразу після зарплати, перш ніж витрачати на щось інше.",
+    "romanization": "Vin vidkladaie fiksovanu sumu shchorazu pislya zarplaty, persh nizh vytrachaty na shchos inshe."
+  },
+  "29": {
+    "text": "Фінансова подушка безпеки робить невеликі нещастя менш болючими.",
+    "romanization": "Finansova podushka bezpeky robyt nevelyki neshchastia mensh boliuchymy."
+  },
+  "30": {
+    "text": "Витрачати трохи менше часто легше, ніж заробляти більше.",
+    "romanization": "Vytrachaty trokhy menshe chasto lehshe, nizh zarobliaty bilshe."
+  },
+  "31": {
+    "text": "Підвищення зарплати може розчинитися у більших витратах.",
+    "romanization": "Pidvyshchennia zarplaty mozhe rozchynytysia u bilshykh vytratah."
+  },
+  "32": {
+    "text": "Він достроково погасив позику і відчув полегшення.",
+    "romanization": "Vin dostrokovo pohasyv pozyku i vidchuv polehshennia."
+  },
+  "33": {
+    "text": "Більшість людей переоцінюють свою дисципліну на наступний рік.",
+    "romanization": "Bilshist ludei pereotsiniuiut svoiu dystsyplinu na nastupnyy rik."
+  },
+  "34": {
+    "text": "Фінансові турботи зменшуються, коли у вас є план.",
+    "romanization": "Finansovi turboty zmenshuiutsia, koly u vas ye plan."
+  },
+  "35": {
+    "text": "Ринок — це просто місце, де зустрічаються покупці та продавці.",
+    "romanization": "Rynok — tse prosto mistse, de zustrichaiutsia pokuptsi ta prodavtsi."
+  },
+  "36": {
+    "text": "Інтернет-магазини — це ринки без стін.",
+    "romanization": "Internet-mahazyny — tse rynky bez stin."
+  },
+  "37": {
+    "text": "Спеціалізація — ось чому більшість речей дешеві.",
+    "romanization": "Spetsializatsiia — os chomu bilshist rechei deshevi."
+  },
+  "38": {
+    "text": "Люди обмінюються тим, що не виробляють самі.",
+    "romanization": "Ludy obminiuiutsia tym, shcho ne vyrobliayut sami."
+  },
+  "39": {
+    "text": "Заробітна плата відображає те, що комусь платять, а не завжди те, чого він вартий.",
+    "romanization": "Zarobitna plata vidobrazhaie te, shcho komus platiat, a ne zavzhdy te, choho vin varty."
+  },
+  "40": {
+    "text": "Деякі роботи добре оплачуються, бо мало хто їх хоче.",
+    "romanization": "Deiaki roboty dobre oplachuiutsia, bo malo khto yikh khoche."
+  },
+  "41": {
+    "text": "Деякі роботи добре оплачуються, бо мало хто може їх виконувати.",
+    "romanization": "Deiaki roboty dobre oplachuiutsia, bo malo khto mozhe yikh vykonuvaty."
+  },
+  "42": {
+    "text": "Ринок не завжди винагороджує найкориснішу працю.",
+    "romanization": "Rynok ne zavzhdy vynahorodzhuie naikorysnyishu pratsiu."
+  },
+  "43": {
+    "text": "Нова технологія може швидко знищити стару галузь.",
+    "romanization": "Nova tekhnolohiia mozhe shvydko znyshchyty staru haluz."
+  },
+  "44": {
+    "text": "Люди часто переїжджають туди, де є робота.",
+    "romanization": "Ludy chasto pereyizhdzhaiut tudy, de ye robota."
+  },
+  "45": {
+    "text": "Малий бізнес становить більшу частину економіки.",
+    "romanization": "Malyi biznes stanovyt bilshu chastynu ekonomiky."
+  },
+  "46": {
+    "text": "Хороший працівник економить більше, ніж коштує.",
+    "romanization": "Khoroshyi pratsivnyk ekonomyt bilshe, nizh koshtuie."
+  },
+  "47": {
+    "text": "Переговори — це частина будь-якої роботи.",
+    "romanization": "Perehovory — tse chastyna bud-yakoi roboty."
+  },
+  "48": {
+    "text": "Додатковий дохід дає вам більше можливостей.",
+    "romanization": "Dodatkovyi dokhid daie vam bilshe mozhlyvostei."
+  },
+  "49": {
+    "text": "Звільнення іноді є найефективнішим кроком.",
+    "romanization": "Zvilnennia inodi ye naiefektyvnishym krokom."
+  },
+  "50": {
+    "text": "Люди реагують на стимули, навіть на невеликі.",
+    "romanization": "Ludy reahuiut na stymuly, navit na nevelyki."
+  },
+  "51": {
+    "text": "\"Безкоштовно\" — це чарівне слово.",
+    "romanization": "\"Bezkoshtovno\" — tse charivne slovo."
+  },
+  "52": {
+    "text": "Перший місяць безкоштовно змінює багато рішень.",
+    "romanization": "Pershyi misiats bezkoshtovno zminiuye bahato rishen."
+  },
+  "53": {
+    "text": "Підписки створені для того, щоб про них забували.",
+    "romanization": "Pidpysky stvoreni dlia toho, shchob pro nykh zabuvaly."
+  },
+  "54": {
+    "text": "Круглі числа здаються більшими, ніж є насправді.",
+    "romanization": "Kruhli chysla zdaiutsia bilshymy, nizh ye naspravdi."
+  },
+  "55": {
+    "text": "Незворотні витрати не повинні впливати на наступний крок.",
+    "romanization": "Nezvorotni vytraty ne povynni vplyvaty na nastupnyy krok."
+  },
+  "56": {
+    "text": "Невелика плата змінює частоту відвідувань.",
+    "romanization": "Nevelyka plata zminiuye chastotu vidviduvan."
+  },
+  "57": {
+    "text": "Чайові змінюють розрахунок вартості страви.",
+    "romanization": "Chaiovi zminiuiut rozrakhunok vartosti stravy."
+  },
+  "58": {
+    "text": "Люди діляться, коли ділитися легко.",
+    "romanization": "Ludy diliatsia, koly dilytysia lehko."
+  },
+  "59": {
+    "text": "Черга показує, що люди цінують сьогодні.",
+    "romanization": "Cherha pokazuie, shcho ludy tsiniuiut sohodni."
+  },
+  "60": {
+    "text": "Обмежені за часом пропозиції навмисно створюють відчуття терміновості.",
+    "romanization": "Obmezheni za chasom propozytsii navmysno stvoriuiut vidchuttia terminovosti."
+  },
+  "61": {
+    "text": "Програми лояльності винагороджують те, що сталося б у будь-якому випадку.",
+    "romanization": "Prohramy loialnosti vynahorodzhuiut te, shcho stalo by v bud-yakomu vypadku."
+  },
+  "62": {
+    "text": "Варіанти за замовчуванням вирішують більше, ніж люди усвідомлюють.",
+    "romanization": "Varianty za zamovchuvanniam vyrishtuiut bilshe, nizh ludy usvidomliuiut."
+  },
+  "63": {
+    "text": "Відгуки змінюють попит більше, ніж реклама.",
+    "romanization": "Vidhuky zminiuiut popyt bilshe, nizh reklama."
+  },
+  "64": {
+    "text": "Сарафанне радіо досі ефективніше за більшість маркетингу.",
+    "romanization": "Sarafanne radio dosi efektyvnishe za bilshist marketynhu."
+  },
+  "65": {
+    "text": "Економіка зростає в одні роки і скорочується в інші.",
+    "romanization": "Ekonomika zrostaie v odni roky i skorochuietsia v inshi."
+  },
+  "66": {
+    "text": "Рецесії вчать уроків, які забувають під час буму.",
+    "romanization": "Retsetsii vchat urokiv, yaki zabuvaiut pid chas bumu."
+  },
+  "67": {
+    "text": "Довгострокове зростання повільно піднімає всіх.",
+    "romanization": "Dovhostrokove zrostannia povilno pidnimaie vsikh."
+  },
+  "68": {
+    "text": "Зростання продуктивності приховане в інструментах і звичках.",
+    "romanization": "Zrostannia produktyvnosti prykhovane v instrumentakh i zvychkakh."
+  },
+  "69": {
+    "text": "Нові ідеї — єдине стале джерело зростання.",
+    "romanization": "Novi idei — yedyne stale dzherelo zrostannia."
+  },
+  "70": {
+    "text": "Економічний бум може приховувати багато поганих рішень.",
+    "romanization": "Ekonomichnyi bum mozhe prykhovuvaty bahato pohanykh rishen."
+  },
+  "71": {
+    "text": "Обвали насамперед карають тих, хто має найбільші борги.",
+    "romanization": "Obvaly nasampered karaiut tykh, khto maie naibilshi borhy."
+  },
+  "72": {
+    "text": "Дешеві гроші, як правило, знаходять ризиковані застосування.",
+    "romanization": "Deshevi hroshi, yak pravylo, znakhodiat ryzykovani zastosuvannia."
+  },
+  "73": {
+    "text": "Бульбашку важко побачити зсередини.",
+    "romanization": "Bulbashku vazhko pobachyty zseredyny."
+  },
+  "74": {
+    "text": "Відновлення є нерівномірним у різних галузях та регіонах.",
+    "romanization": "Vidnovlennia ye nerivnomirnym u riznykh haluziakh ta rehionakh."
+  },
+  "75": {
+    "text": "Країни торгують, тому що обидві сторони отримують вигоду.",
+    "romanization": "Krainy torhuiut, tomu shcho obydvi storony otrymuiut vyhodu."
+  },
+  "76": {
+    "text": "Тарифи підвищують ціни для покупців усередині країни.",
+    "romanization": "Taryfy pidvyshchuiut tsiny dlia pokuptsiv uperedyni krainy."
+  },
+  "77": {
+    "text": "Обмінні курси змінюють вартість імпорту.",
+    "romanization": "Obminni kursy zminiuiut vartist importu."
+  },
+  "78": {
+    "text": "Слабка валюта допомагає експортерам і шкодить імпортерам.",
+    "romanization": "Slabka valiuta dopomahaie eksporteram i shkodyt importeram."
+  },
+  "79": {
+    "text": "Іноземні інвестиції можуть розвивати або напружувати економіку.",
+    "romanization": "Inozemni investytsii mozhut rozvyvaty abo napruzhuvaty ekonomiku."
+  },
+  "80": {
+    "text": "Грошові перекази підтримують багато сімей за кордоном.",
+    "romanization": "Hroshovi perekazy pidtrymuiut bahato simei za kordonom."
+  },
+  "81": {
+    "text": "Санкції більше впливають на звичайних людей, ніж на лідерів.",
+    "romanization": "Sanktsii bilshe vplyvaiut na zvychainykh ludei, nizh na lideriv."
+  },
+  "82": {
+    "text": "Глобальні ланцюги поставок ламаються у несподіваних місцях.",
+    "romanization": "Hlobalni lantsiuhy postavok lamaiutsia u nespodivanykh mistsiakh."
+  },
+  "83": {
+    "text": "Дефіцит в одній країні може змінити ціни в усьому світі.",
+    "romanization": "Defitsyt v odnii kraini mozhe zminyty tsiny v usomu sviti."
+  },
+  "84": {
+    "text": "Деякі галузі зосереджуються в одному регіоні не просто так.",
+    "romanization": "Deiaki haluzi zoseredzhuiutsia v odnomu rehioni ne prosto tak."
+  },
+  "85": {
+    "text": "Нерівність тихо зростає, коли ніхто не спостерігає.",
+    "romanization": "Nerivnist tykho zrostaie, koly nikhto ne sposterihaie."
+  },
+  "86": {
+    "text": "Податки — це ціна суспільних благ.",
+    "romanization": "Podatky — tse tsina suspilnykh blah."
+  },
+  "87": {
+    "text": "Суспільні блага — це ті, які ми не можемо легко купити індивідуально.",
+    "romanization": "Suspilni blaha — tse ti, yaki my ne mozhemo lehko kupyty indyvidualno."
+  },
+  "88": {
+    "text": "Екстерналії — це витрати, які ніхто не просив оплачувати.",
+    "romanization": "Eksternalii — tse vytraty, yaki nikhto ne prosyv oplachuvaty."
+  },
+  "89": {
+    "text": "Невеликий збій ринку може мати величезні наслідки.",
+    "romanization": "Nevelykyi zbiu rynku mozhe maty velychezni naslidky."
+  },
+  "90": {
+    "text": "Вільному ринку потрібні правила, щоб залишатися вільним.",
+    "romanization": "Vilnomu rynku potribni pravyla, shchob zalyshatysia vilnym."
+  },
+  "91": {
+    "text": "Інформація нерівномірно розподіляється між покупцями та продавцями.",
+    "romanization": "Informatsiia nerivnomirno rozpodiliaietsia mizh pokuptsiamy ta prodavtsiamy."
+  },
+  "92": {
+    "text": "Довіра знижує вартість кожної транзакції.",
+    "romanization": "Dovira znyzhuie vartist kozhnoi tranzaktsii."
+  },
+  "93": {
+    "text": "Репутація — це недооцінений актив.",
+    "romanization": "Reputatsiia — tse nedootsinenyi aktyv."
+  },
+  "94": {
+    "text": "Ціна уваги зросла.",
+    "romanization": "Tsina uvahy zrosla."
+  },
+  "95": {
+    "text": "Найважливіші ринки часто не мають цін.",
+    "romanization": "Naivazhlyvishi rynky chasto ne maiut tsin."
+  },
+  "96": {
+    "text": "Час і турбота є одними з найдефіцитніших ресурсів.",
+    "romanization": "Chas i turbota ye odnymy z naidefitsytnishykh resursiv."
+  },
+  "97": {
+    "text": "Економічні рішення — це також моральні рішення.",
+    "romanization": "Ekonomichni rishennia — tse takozh moralni rishennia."
+  },
+  "98": {
+    "text": "Економіка — це просто люди, які роблять щось одне для одного.",
+    "romanization": "Ekonomika — tse prosto ludy, yaki robliat shchos odne dlia odnoho."
+  },
+  "99": {
+    "text": "Простий бюджет змінює більше, ніж будь-яка складна теорія.",
+    "romanization": "Prosty biudzhet zminiuye bilshe, nizh bud-iaka skladna teoriia."
+  }
+}

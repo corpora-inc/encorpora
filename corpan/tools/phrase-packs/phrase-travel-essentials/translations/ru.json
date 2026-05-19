@@ -1,0 +1,322 @@
+{
+  "0": {
+    "text": "Где здесь туалет?",
+    "romanization": "Gde zdes' tualet?"
+  },
+  "1": {
+    "text": "Сколько это стоит?",
+    "romanization": "Skol'ko eto stoit?"
+  },
+  "2": {
+    "text": "Извините, вы говорите по-английски?",
+    "romanization": "Izvinite, vy govorite po-angliyski?"
+  },
+  "3": {
+    "text": "Я пока не очень хорошо говорю на этом языке.",
+    "romanization": "Ya poka ne ochen' khorosho govoryu na etom yazyke."
+  },
+  "4": {
+    "text": "Не могли бы вы сказать это помедленнее?",
+    "romanization": "Ne mogli by vy skazat' eto pomedlenneye?"
+  },
+  "5": {
+    "text": "Где можно купить билет?",
+    "romanization": "Gde mozhno kupit' bilet?"
+  },
+  "6": {
+    "text": "Это место свободно?",
+    "romanization": "Eto mesto svobodno?"
+  },
+  "7": {
+    "text": "Мне нужен одноместный номер на две ночи.",
+    "romanization": "Mne nuzhen odnomestnyy nomer na dve nochi."
+  },
+  "8": {
+    "text": "У вас есть номер с видом на море?",
+    "romanization": "U vas est' nomer s vidom na more?"
+  },
+  "9": {
+    "text": "Во сколько подают завтрак?",
+    "romanization": "Vo skol'ko podayut zavtrak?"
+  },
+  "10": {
+    "text": "Можно посмотреть меню, пожалуйста?",
+    "romanization": "Mozhno posmotret' menyu, pozhaluysta?"
+  },
+  "11": {
+    "text": "Я вегетарианец.",
+    "romanization": "Ya vegetarianets."
+  },
+  "12": {
+    "text": "У меня аллергия на арахис.",
+    "romanization": "U menya allergiya na arakhis."
+  },
+  "13": {
+    "text": "Воду из-под крана можно пить?",
+    "romanization": "Vodu iz-pod krana mozhno pit'?"
+  },
+  "14": {
+    "text": "Можно счёт, пожалуйста?",
+    "romanization": "Mozhno schot, pozhaluysta?"
+  },
+  "15": {
+    "text": "Обслуживание включено?",
+    "romanization": "Obsluzhivaniye vklyucheno?"
+  },
+  "16": {
+    "text": "Можно оплатить картой?",
+    "romanization": "Mozhno oplatit' kartoy?"
+  },
+  "17": {
+    "text": "Вы принимаете наличные?",
+    "romanization": "Vy prinimayete nalichnyye?"
+  },
+  "18": {
+    "text": "Можно чек, пожалуйста?",
+    "romanization": "Mozhno chek, pozhaluysta?"
+  },
+  "19": {
+    "text": "Сдачи не надо.",
+    "romanization": "Sdachi ne nado."
+  },
+  "20": {
+    "text": "С какой платформы отправляется поезд?",
+    "romanization": "S kakoy platformy otpravlyayetsya poezd?"
+  },
+  "21": {
+    "text": "Рейс задержали?",
+    "romanization": "Reys zaderzhali?"
+  },
+  "22": {
+    "text": "Я опоздал на пересадку.",
+    "romanization": "Ya opozdal na peresadku."
+  },
+  "23": {
+    "text": "Где выдача багажа?",
+    "romanization": "Gde vydacha bagazha?"
+  },
+  "24": {
+    "text": "Мой чемодан не прилетел.",
+    "romanization": "Moy chemodan ne priletel."
+  },
+  "25": {
+    "text": "Не могли бы вы вызвать мне такси?",
+    "romanization": "Ne mogli by vy vyzvat' mne taksi?"
+  },
+  "26": {
+    "text": "Сколько времени занимает дорога?",
+    "romanization": "Skol'ko vremeni zanimayet doroga?"
+  },
+  "27": {
+    "text": "Отвезите меня, пожалуйста, по этому адресу.",
+    "romanization": "Otvezite menya, pozhaluysta, po etomu adresu."
+  },
+  "28": {
+    "text": "Не могли бы вы остановиться на углу?",
+    "romanization": "Ne mogli by vy ostanovit'sya na uglu?"
+  },
+  "29": {
+    "text": "Здесь поблизости есть станция метро?",
+    "romanization": "Zdes' poblizosti est' stantsiya metro?"
+  },
+  "30": {
+    "text": "Я просто смотрю, спасибо.",
+    "romanization": "Ya prosto smotryu, spasibo."
+  },
+  "31": {
+    "text": "У вас есть это поменьше?",
+    "romanization": "U vas est' eto pomen'she?"
+  },
+  "32": {
+    "text": "Можно примерить?",
+    "romanization": "Mozhno primerit'?"
+  },
+  "33": {
+    "text": "Где примерочная?",
+    "romanization": "Gde primerochnaya?"
+  },
+  "34": {
+    "text": "На это есть скидка?",
+    "romanization": "Na eto est' skidka?"
+  },
+  "35": {
+    "text": "Если я заплачу наличными, можно получить скидку?",
+    "romanization": "Esli ya zaplachu nalichnymi, mozhno poluchit' skidku?"
+  },
+  "36": {
+    "text": "Это ручная работа или фабричное производство?",
+    "romanization": "Eto ruchnaya rabota ili fabrichnoye proizvodstvo?"
+  },
+  "37": {
+    "text": "Я возьму это.",
+    "romanization": "Ya voz'mu eto."
+  },
+  "38": {
+    "text": "Не могли бы вы упаковать это как подарок?",
+    "romanization": "Ne mogli by vy upakovat' eto kak podarok?"
+  },
+  "39": {
+    "text": "На какой срок гарантия?",
+    "romanization": "Na kakoy srok garantiya?"
+  },
+  "40": {
+    "text": "Мне нужно к врачу.",
+    "romanization": "Mne nuzhno k vrachu."
+  },
+  "41": {
+    "text": "У меня болит голова.",
+    "romanization": "U menya bolit golova."
+  },
+  "42": {
+    "text": "Где ближайшая аптека?",
+    "romanization": "Gde blizhayshaya apteka?"
+  },
+  "43": {
+    "text": "На это нужен рецепт?",
+    "romanization": "Na eto nuzhen retsept?"
+  },
+  "44": {
+    "text": "Я потерял паспорт.",
+    "romanization": "Ya poteryal pasport."
+  },
+  "45": {
+    "text": "Где полицейский участок?",
+    "romanization": "Gde politseyskiy uchastok?"
+  },
+  "46": {
+    "text": "Не могли бы вы мне помочь, пожалуйста?",
+    "romanization": "Ne mogli by vy mne pomoch', pozhaluysta?"
+  },
+  "47": {
+    "text": "Кажется, я оставил сумку в такси.",
+    "romanization": "Kazhetsya, ya ostavil sumku v taksi."
+  },
+  "48": {
+    "text": "Вызовите скорую, пожалуйста.",
+    "romanization": "Vyzovite skoruyu, pozhaluysta."
+  },
+  "49": {
+    "text": "Поблизости есть больница?",
+    "romanization": "Poblizosti est' bol'nitsa?"
+  },
+  "50": {
+    "text": "Не могли бы вы посоветовать хороший ресторан поблизости?",
+    "romanization": "Ne mogli by vy posovetovat' khoroshiy restoran poblizosti?"
+  },
+  "51": {
+    "text": "Какое здесь фирменное местное блюдо?",
+    "romanization": "Kakoye zdes' firmennoye mestnoye blyudo?"
+  },
+  "52": {
+    "text": "Я хотел бы попробовать что-нибудь традиционное.",
+    "romanization": "Ya khotel by poprobovat' chto-nibud' traditsionnoye."
+  },
+  "53": {
+    "text": "Это острое?",
+    "romanization": "Eto ostroye?"
+  },
+  "54": {
+    "text": "Можно сесть на улице?",
+    "romanization": "Mozhno sest' na ulitse?"
+  },
+  "55": {
+    "text": "Мы не торопимся.",
+    "romanization": "My ne toropimsya."
+  },
+  "56": {
+    "text": "Еда была очень вкусной, спасибо.",
+    "romanization": "Yeda byla ochen' vkusnoy, spasibo."
+  },
+  "57": {
+    "text": "Можно стакан воды без льда?",
+    "romanization": "Mozhno stakan vody bez l'da?"
+  },
+  "58": {
+    "text": "В этом блюде есть морепродукты?",
+    "romanization": "V etom blyude est' moreprodukty?"
+  },
+  "59": {
+    "text": "Можно взять это с собой?",
+    "romanization": "Mozhno vzyat' eto s soboy?"
+  },
+  "60": {
+    "text": "Какие у вас часы работы?",
+    "romanization": "Kakiye u vas chasy raboty?"
+  },
+  "61": {
+    "text": "Внутри можно фотографировать?",
+    "romanization": "Vnutri mozhno fotografirovat'?"
+  },
+  "62": {
+    "text": "Есть экскурсия с гидом на английском?",
+    "romanization": "Est' ekskursiya s gidom na angliyskom?"
+  },
+  "63": {
+    "text": "По воскресеньям вход в музей бесплатный?",
+    "romanization": "Po voskresen'yam vkhod v muzey besplatnyy?"
+  },
+  "64": {
+    "text": "Насколько заранее лучше прийти?",
+    "romanization": "Naskol'ko zarane ye luchshe priyti?"
+  },
+  "65": {
+    "text": "Онлайн билеты дешевле?",
+    "romanization": "Onlayn bilety deshevle?"
+  },
+  "66": {
+    "text": "С этими билетами можно пройти без очереди?",
+    "romanization": "S etimi biletami mozhno proyti bez ocheredi?"
+  },
+  "67": {
+    "text": "Что здесь обязательно стоит посмотреть?",
+    "romanization": "Chto zdes' obyazatel'no stoit posmotret'?"
+  },
+  "68": {
+    "text": "Не могли бы вы нас сфотографировать?",
+    "romanization": "Ne mogli by vy nas sfotografirovat'?"
+  },
+  "69": {
+    "text": "Здесь безопасно гулять ночью?",
+    "romanization": "Zdes' bezopasno gulyat' noch'yu?"
+  },
+  "70": {
+    "text": "Я здесь в отпуске.",
+    "romanization": "Ya zdes' v otpuske."
+  },
+  "71": {
+    "text": "Я здесь по работе.",
+    "romanization": "Ya zdes' po rabote."
+  },
+  "72": {
+    "text": "Я останусь на неделю.",
+    "romanization": "Ya ostanus' na nedelyu."
+  },
+  "73": {
+    "text": "Я впервые в этой стране.",
+    "romanization": "Ya vpervyye v etoy strane."
+  },
+  "74": {
+    "text": "Где здесь местные обычно обедают?",
+    "romanization": "Gde zdes' mestnyye obychno obedayut?"
+  },
+  "75": {
+    "text": "Какое самое красивое место вы когда-либо посещали?",
+    "romanization": "Kakoye samoye krasivoye mesto vy kogda-libo poseshchali?"
+  },
+  "76": {
+    "text": "Перелёт был долгим, но вид того стоил.",
+    "romanization": "Perelot byl dolgim, no vid togo stoil."
+  },
+  "77": {
+    "text": "Я стараюсь выучить несколько слов на вашем языке.",
+    "romanization": "Ya starayus' vyuchit' neskol'ko slov na vashem yazyke."
+  },
+  "78": {
+    "text": "Хорошего вечера, и спасибо вам за всё.",
+    "romanization": "Khoroshego vechera, i spasibo vam za vse."
+  },
+  "79": {
+    "text": "Я бы с удовольствием вернулся сюда когда-нибудь.",
+    "romanization": "Ya by s udovol'stviyem vernulsya syuda kogda-nibud'."
+  }
+}

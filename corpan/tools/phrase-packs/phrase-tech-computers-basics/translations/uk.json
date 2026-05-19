@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Збережіть файл, перш ніж закрити його.",
+    "romanization": "Zberezhite fail, persh nizh zakryty ioho."
+  },
+  "1": {
+    "text": "Можете надіслати мені той документ?",
+    "romanization": "Mozhete nadislaty meni toi dokument?"
+  },
+  "2": {
+    "text": "Папка знаходиться на робочому столі.",
+    "romanization": "Papka znakhodytsia na robochomu stoli."
+  },
+  "3": {
+    "text": "Не можу знайти файл, який я зберіг учора.",
+    "romanization": "Ne mozhu znaity fail, yakyi ya zberih uchora."
+  },
+  "4": {
+    "text": "Пошукайте це ім'я на всьому диску.",
+    "romanization": "Poshukaite tse im'ya na vsomu dysku."
+  },
+  "5": {
+    "text": "Він випадково перейменував файл.",
+    "romanization": "Vin vypadkovo pereimenovav fail."
+  },
+  "6": {
+    "text": "Завантаження потрапило не в ту папку.",
+    "romanization": "Zavantazhennia potrapylo ne v tu papku."
+  },
+  "7": {
+    "text": "Файл занадто великий, щоб надсилати його електронною поштою.",
+    "romanization": "Fail zanadto velykyi, shchob nadsylaty ioho elektronnoyu poshtoyu."
+  },
+  "8": {
+    "text": "Можете стиснути його в архів (zip)?",
+    "romanization": "Mozhete stysnuty ioho v arkhiv (zip)?"
+  },
+  "9": {
+    "text": "Хмарна папка синхронізується автоматично.",
+    "romanization": "Khmarna papka synkhronizuietsia avtomatychno."
+  },
+  "10": {
+    "text": "Вона все організовує в підпапках за датами.",
+    "romanization": "Vona vse orhanizovuie v pidpapkakh za datamy."
+  },
+  "11": {
+    "text": "Кошик повніший, ніж решта диска.",
+    "romanization": "Koshyk povnishyi, nizh reshta dyska."
+  },
+  "12": {
+    "text": "Він зберігає резервну копію кожного проєкту.",
+    "romanization": "Vin zberihaye rezervnu kopiyu kozhnoho proyektu."
+  },
+  "13": {
+    "text": "Спільна папка оновилася для всіх.",
+    "romanization": "Spilna papka onovylasia dlia vsikh."
+  },
+  "14": {
+    "text": "Файл, який неможливо знайти, ніби й не існує.",
+    "romanization": "Fail, yakyi nemozhlyvo znaity, niby y ne isnuie."
+  },
+  "15": {
+    "text": "Я забув свій пароль.",
+    "romanization": "Ya zabuv svii parol."
+  },
+  "16": {
+    "text": "Скиньте пароль з екрана входу.",
+    "romanization": "Skynte parol z ekrana vkhodu."
+  },
+  "17": {
+    "text": "Не використовуйте один і той самий пароль для всього.",
+    "romanization": "Ne vykorystovuite odyn i toi samyi parol dlia vsioho."
+  },
+  "18": {
+    "text": "Менеджер паролів запам'ятовує їх за вас.",
+    "romanization": "Menedzher parolіv zapam'yatovuie yikh za vas."
+  },
+  "19": {
+    "text": "Двофакторна автентифікація додає крок, але значно підвищує безпеку.",
+    "romanization": "Dvofaktorna avtentyfikatsiia dodaye krok, ale znachno pidvyshchuie bezpeku."
+  },
+  "20": {
+    "text": "Перевірте свою електронну пошту на наявність коду підтвердження.",
+    "romanization": "Perevirte svoyu elektronnu poshtu na nayavnist kodu pidtverdzhennia."
+  },
+  "21": {
+    "text": "Посилання закінчило термін дії за п'ятнадцять хвилин.",
+    "romanization": "Posylannia zakinchylo termin diyi za p'yatnadtsiat khvylyn."
+  },
+  "22": {
+    "text": "Вона створила новий обліковий запис для проєкту.",
+    "romanization": "Vona stvoryla novyi oblikovyi zapys dlia proyektu."
+  },
+  "23": {
+    "text": "Він виходить з облікового запису на спільних комп'ютерах.",
+    "romanization": "Vin vykhodyt z oblikovoho zapysu na spilnykh kompiuterakh."
+  },
+  "24": {
+    "text": "Ім'я користувача вже зайняте.",
+    "romanization": "Im'ya korystuvacha vzhe zaynyate."
+  },
+  "25": {
+    "text": "Збережіть код відновлення в надійному місці.",
+    "romanization": "Zberezhite kod vidnovlennia v nadiynomu mistsi."
+  },
+  "26": {
+    "text": "Не натискайте на підозрілі посилання для входу.",
+    "romanization": "Ne natyskaĭte na pidozrili posylannia dlia vkhodu."
+  },
+  "27": {
+    "text": "Оновіть електронну пошту для відновлення, коли переїдете.",
+    "romanization": "Onovit elektronnu poshtu dlia vidnovlennia, koly pereyidete."
+  },
+  "28": {
+    "text": "Ключ доступу швидший за пароль.",
+    "romanization": "Kliuch dostupu shvydshyi za parol."
+  },
+  "29": {
+    "text": "Ваш телефон сьогодні також є обліковим записом.",
+    "romanization": "Vash telefon sohodni takozh ye oblikovym zapysom."
+  },
+  "30": {
+    "text": "Ви пробували його перезавантажити?",
+    "romanization": "Vy probuvaly yoho perezavantazhyty?"
+  },
+  "31": {
+    "text": "Кабель був ослаблений.",
+    "romanization": "Kabel buv oslablenyi."
+  },
+  "32": {
+    "text": "Екран завис на хвилину.",
+    "romanization": "Ekran zavys na khvylynu."
+  },
+  "33": {
+    "text": "Закрийте всі вкладки та спробуйте ще раз.",
+    "romanization": "Zakryite vsi vkladky ta sprobuyte shche raz."
+  },
+  "34": {
+    "text": "Перевірте, чи ви підключені до правильної мережі.",
+    "romanization": "Perevirte, chy vy pidkliucheni do pravylnoi merezhi."
+  },
+  "35": {
+    "text": "Клавіатура не реагує.",
+    "romanization": "Klawiatura ne reahuye."
+  },
+  "36": {
+    "text": "Вентилятор працює голосніше, ніж зазвичай.",
+    "romanization": "Ventylyator pratsiuie holosnishe, nizh zazvychai."
+  },
+  "37": {
+    "text": "Очистіть кеш і перезавантажте сторінку.",
+    "romanization": "Ochystit kesh i perezavantazhte storinku."
+  },
+  "38": {
+    "text": "Спробуйте інший браузер.",
+    "romanization": "Sprobuyte inshyi brauzer."
+  },
+  "39": {
+    "text": "Оновлення виправило помилку.",
+    "romanization": "Onovlennia vypravylo pomylku."
+  },
+  "40": {
+    "text": "Батарея розрядилася за ніч.",
+    "romanization": "Batareya rozryadylasia za nich."
+  },
+  "41": {
+    "text": "Вебкамера перестала працювати після оновлення.",
+    "romanization": "Vebkamera perestala pratsyuvaty pislya onovlennia."
+  },
+  "42": {
+    "text": "Іноді найпростіше рішення — просто почекати хвилину.",
+    "romanization": "Inodi nayprostishe rishennia — prosto pochekaty khvylynu."
+  },
+  "43": {
+    "text": "Перезавантаження вирішує більше проблем, ніж люди визнають.",
+    "romanization": "Perezavantazhennia vyrisuuye bilshe problem, nizh liudy vyznayut."
+  },
+  "44": {
+    "text": "Він пояснив повідомлення про помилку простими словами.",
+    "romanization": "Vin poyasnyv povidomlennia pro pomylku prostymy slovamy."
+  },
+  "45": {
+    "text": "Сторінка завантажується цілу вічність.",
+    "romanization": "Storinka zavantazhuietsia tsilu vichnist."
+  },
+  "46": {
+    "text": "Сайт не працює для всіх.",
+    "romanization": "Sait ne pratsiuie dlia vsikh."
+  },
+  "47": {
+    "text": "Додайте його в закладки, щоб потім легко знайти.",
+    "romanization": "Dodayte yoho v zakladky, shchob potim lehko znaity."
+  },
+  "48": {
+    "text": "Посилання з електронного листа відкривається в новій вкладці.",
+    "romanization": "Posylannia z elektronnogo lysta vidkryvaietsia v noviy vkladtsi."
+  },
+  "49": {
+    "text": "Відео постійно буферизується.",
+    "romanization": "Video postiyno buferyzuietsia."
+  },
+  "50": {
+    "text": "Сигнал слабкий у дальній кімнаті.",
+    "romanization": "Syhnal slabkyi u dalniy kimnati."
+  },
+  "51": {
+    "text": "Можете поділитися зі мною посиланням?",
+    "romanization": "Mozhete podilytysia zi mnoyu posylannyam?"
+  },
+  "52": {
+    "text": "Вебсайт виглядає інакше на мобільному.",
+    "romanization": "Vebsait vyhlyadaye inakshe na mobilnomu."
+  },
+  "53": {
+    "text": "Спливаюче вікно попросило мене прийняти файли cookie.",
+    "romanization": "Splyvayuche vikno poprosylo mene pryinyaty faily cookie."
+  },
+  "54": {
+    "text": "Рекламу важко закрити.",
+    "romanization": "Reklamu vazhko zakryty."
+  },
+  "55": {
+    "text": "Він використовує блокувальник реклами на кожному пристрої.",
+    "romanization": "Vin vykorystovuie blokuvalnyk reklamy na kozhnomu prystroyi."
+  },
+  "56": {
+    "text": "Пошук видав занадто багато результатів.",
+    "romanization": "Poshuk vydav zanadto bahato rezultativ."
+  },
+  "57": {
+    "text": "Уточніть пошук за допомогою лапок.",
+    "romanization": "Utochnit poshuk za dopomohoyu lapok."
+  },
+  "58": {
+    "text": "Стаття тепер за пейволом (платним доступом).",
+    "romanization": "Stattya teper za peyvolom (platnym dostupom)."
+  },
+  "59": {
+    "text": "Ця сторінка з вебсайту, якому я довіряю.",
+    "romanization": "Tsya storinka z vebsaitu, yakomu ya doviryayu."
+  },
+  "60": {
+    "text": "Додаток оновився за ніч.",
+    "romanization": "Dodatok onovylsia za nich."
+  },
+  "61": {
+    "text": "Нова версія виглядає зовсім інакше.",
+    "romanization": "Nova versiia vyhlyadaye zovsim inakshe."
+  },
+  "62": {
+    "text": "Вона видалила додатки, які ніколи не відкривала.",
+    "romanization": "Vona vydalyla dodatky, yaki nikoly ne vidkryvala."
+  },
+  "63": {
+    "text": "Налаштування сповіщень заховані глибоко в меню.",
+    "romanization": "Nalashuvannia spovishchen zakhovani hlyboko v meniu."
+  },
+  "64": {
+    "text": "Вимкніть звук під час зустрічі.",
+    "romanization": "Vymknit zvuk pid chas zustrichi."
+  },
+  "65": {
+    "text": "Гаряча клавіша швидша, ніж меню.",
+    "romanization": "Haryacha klavisha shvydsha, nizh meniu."
+  },
+  "66": {
+    "text": "Темний режим легший для очей вночі.",
+    "romanization": "Temnyi rezhym lehshyi dlia ochei vnochi."
+  },
+  "67": {
+    "text": "Вимкніть автозапуск.",
+    "romanization": "Vymknit avtozapusk."
+  },
+  "68": {
+    "text": "Значок сповіщення ніколи не зникає.",
+    "romanization": "Znachok spovishchennia nikoly ne znykaye."
+  },
+  "69": {
+    "text": "Він налаштував ноутбук так, як йому подобається.",
+    "romanization": "Vin nalashtuvav noutbuk tak, yak yomu podobayetsia."
+  },
+  "70": {
+    "text": "Не відкривайте вкладення від невідомих відправників.",
+    "romanization": "Ne vidkryvayte vkladennya vid nevidomykh vidpravnykiv."
+  },
+  "71": {
+    "text": "Посилання в цьому повідомленні виглядає підозріло.",
+    "romanization": "Posylannia v tsomu povidomlenni vyhlyadaye pidozrilo."
+  },
+  "72": {
+    "text": "Перевірте повну адресу відправника.",
+    "romanization": "Perevirte povnu adresu vidpravnyka."
+  },
+  "73": {
+    "text": "Безкоштовний Wi-Fi в аеропорту не є приватним.",
+    "romanization": "Bezkohtovnyi Wi-Fi v aeroportu ne ye pryvatnym."
+  },
+  "74": {
+    "text": "Закривайте камеру, коли вона не використовується.",
+    "romanization": "Zakryvayte kameru, koly vona ne vykorystovuyetsia."
+  },
+  "75": {
+    "text": "Блокуйте екран, коли відходите.",
+    "romanization": "Blokuyte ekran, koly vidkhodyte."
+  },
+  "76": {
+    "text": "Будьте обережні з інформацією, яку не можна повернути.",
+    "romanization": "Budte oberezhni z informatsiyeyu, yaku ne mozhna povernuty."
+  },
+  "77": {
+    "text": "Прочитайте, на що ви погоджуєтеся.",
+    "romanization": "Prochytayte, na shcho vy pohodzhuyetesia."
+  },
+  "78": {
+    "text": "Більшість витоків даних відбувається через повторне використання паролів.",
+    "romanization": "Bilshist vytokiv danykh vidbuvayetsia cherez povtorne vykorystannia parolіv."
+  },
+  "79": {
+    "text": "Найпростіші шахрайства все ще працюють, тому що вони прості.",
+    "romanization": "Nayprostishi shakhraystva vse shche pratsyuyut, tomu shcho vony prosti."
+  },
+  "80": {
+    "text": "Ноутбук працює повільніше після останнього оновлення.",
+    "romanization": "Noutbuk pratsiuie povilnishe pislya ostannoho onovlennia."
+  },
+  "81": {
+    "text": "Екран тріснутий, але все ще працює.",
+    "romanization": "Ekran trisnutyi, ale vse shche pratsiuie."
+  },
+  "82": {
+    "text": "Новий монітор прибув сьогодні вранці.",
+    "romanization": "Novyi monitor prybuv sohodni vrantsi."
+  },
+  "83": {
+    "text": "Він підключив три кабелі, перш ніж знайти потрібний.",
+    "romanization": "Vin pidklyuchyv try kabeli, persh nizh znaity potribnyi."
+  },
+  "84": {
+    "text": "Батарея вже не тримає заряд, як раніше.",
+    "romanization": "Batareya vzhe ne trymaie zaryad, yak ranishe."
+  },
+  "85": {
+    "text": "Клавіатура з роками назбирала крихт.",
+    "romanization": "Klawiatura z rokamy nazbyrala krykht."
+  },
+  "86": {
+    "text": "Вентилятор вмикається, коли в кімнаті стає тепло.",
+    "romanization": "Ventylyator vmykayetsia, koly v kimnati staye teplo."
+  },
+  "87": {
+    "text": "Принтер знову не в мережі.",
+    "romanization": "Pryntr znovu ne v merezhi."
+  },
+  "88": {
+    "text": "Навушники перестали працювати з одного боку.",
+    "romanization": "Navushnyky perestaly pratsyuvaty z odnoho boku."
+  },
+  "89": {
+    "text": "Він чистить екран м'якою ганчіркою.",
+    "romanization": "Vin chystyt ekran m'yakoyu hanchirkoyu."
+  },
+  "90": {
+    "text": "Можете зробити скріншот?",
+    "romanization": "Mozhete zrobyty skrinshot?"
+  },
+  "91": {
+    "text": "Файл був надісланий опівночі.",
+    "romanization": "Fail buv nadislanyi opivnochi."
+  },
+  "92": {
+    "text": "Запрошення в календар прийшло двічі.",
+    "romanization": "Zaproshennia v kalendar pryishlo dvichi."
+  },
+  "93": {
+    "text": "Перетягніть файл у вікно.",
+    "romanization": "Peretyahnit fail u vikno."
+  },
+  "94": {
+    "text": "Клацніть правою кнопкою миші, щоб побачити більше опцій.",
+    "romanization": "Klatsnit pravoyu knopkoyu myshi, shchob pobachyty bilshe optsiy."
+  },
+  "95": {
+    "text": "Утримуйте Shift, щоб вибрати кілька елементів.",
+    "romanization": "Utrymuite Shift, shchob vybraty kilka elementiv."
+  },
+  "96": {
+    "text": "Кнопка \"Скасувати\" рятувала мене багато разів.",
+    "romanization": "Knopka \"Skasuvaty\" ryatuvala mene bahato raziv."
+  },
+  "97": {
+    "text": "Буфер обміну пам'ятає останню скопійовану річ.",
+    "romanization": "Bufer obminu pam'yataye ostanniu skopiyovanu rich."
+  },
+  "98": {
+    "text": "Автовиправлення корисне, але іноді бентежить.",
+    "romanization": "Avtovyplavlennia korysnye, ale inodi bentezhyt."
+  },
+  "99": {
+    "text": "Чистий робочий стіл полегшує пошук усього.",
+    "romanization": "Chystyi robochyi stil polehshuye poshuk usioho."
+  }
+}

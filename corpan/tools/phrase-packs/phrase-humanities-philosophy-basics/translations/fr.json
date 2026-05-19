@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Que signifie bien vivre ?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Comment savons-nous ce que nous savons ?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Y a-t-il une différence entre savoir et croire ?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Pourquoi y a-t-il quelque chose plutôt que rien ?",
+    "romanization": null
+  },
+  "4": {
+    "text": "Qu'est-ce qui fait qu'une personne reste la même au fil du temps ?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Une machine pourrait-elle penser ?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Le monde que nous voyons est-il le monde réel ?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Que devons-nous aux personnes que nous ne rencontrerons jamais ?",
+    "romanization": null
+  },
+  "8": {
+    "text": "Pourquoi est-il si difficile de changer d'avis ?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Que signifie pour deux personnes d'être d'accord ?",
+    "romanization": null
+  },
+  "10": {
+    "text": "La vérité est-elle inventée ou découverte ?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Pourquoi percevons-nous le temps de cette manière ?",
+    "romanization": null
+  },
+  "12": {
+    "text": "D'où vient le sens ?",
+    "romanization": null
+  },
+  "13": {
+    "text": "Qu'est-ce que le libre arbitre, au fond ?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Le bonheur est-il un sentiment ou une pratique ?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Ce qui est juste est parfois difficile à reconnaître.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Les bonnes intentions ne garantissent pas de bons résultats.",
+    "romanization": null
+  },
+  "17": {
+    "text": "La plupart des questions éthiques consistent à peser des biens concurrents.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Un petit mensonge peut faire beaucoup de dégâts.",
+    "romanization": null
+  },
+  "19": {
+    "text": "L'honnêteté est plus facile dans un environnement bienveillant.",
+    "romanization": null
+  },
+  "20": {
+    "text": "La cruauté se cache souvent derrière de petites habitudes.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Certaines règles sont bonnes car elles nous évitent de devoir réfléchir.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Parfois, les règles elles-mêmes sont le problème.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Une promesse est un petit pari sur votre moi futur.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Les gens jugent les actions par leurs résultats et les règles par leurs intentions.",
+    "romanization": null
+  },
+  "25": {
+    "text": "L'hypocrisie est plus facile à voir chez les autres.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Le pardon est en partie un cadeau à celui qui pardonne.",
+    "romanization": null
+  },
+  "27": {
+    "text": "L'empathie est un muscle qui se renforce à l'usage.",
+    "romanization": null
+  },
+  "28": {
+    "text": "La justice n'est pas la même chose que la vengeance.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Le pouvoir met le caractère à l'épreuve plus que la pauvreté.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Ne rien faire est aussi un choix.",
+    "romanization": null
+  },
+  "31": {
+    "text": "La vertu la plus difficile est la patience.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Les petites gentillesses s'accumulent.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Une société peut être jugée par la façon dont elle traite les plus faibles.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Le courage, c'est bien agir même quand on a peur.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Nous pouvons être confiants et avoir tort en même temps.",
+    "romanization": null
+  },
+  "36": {
+    "text": "La preuve est ce qui fait changer d'avis un esprit prudent.",
+    "romanization": null
+  },
+  "37": {
+    "text": "La plupart des croyances viennent en groupes, pas une par une.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Nous avons tendance à nous souvenir des fois où nous avions raison.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Le doute est inconfortable mais utile.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Une bonne question est plus difficile qu'une réponse astucieuse.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Certaines questions n'ont pas une seule bonne réponse.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Les modèles sont faux, mais certains sont utiles.",
+    "romanization": null
+  },
+  "43": {
+    "text": "La carte n'est pas le territoire.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Les noms façonnent ce que nous remarquons.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Lire lentement est une forme de pensée en soi.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Des opinions fortes, mais tenues avec légèreté.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Les personnes les plus intelligentes sont celles qui changent le plus d'avis.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Le désaccord n'est pas la même chose que l'incompréhension.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Parfois, les deux parties ont en partie raison.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Le monde est plus ancien que toute explication qu'on en donne.",
+    "romanization": null
+  },
+  "51": {
+    "text": "La conscience est la chose la plus étrange que nous connaissions.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Nous voyons moins du monde que nous ne le pensons.",
+    "romanization": null
+  },
+  "53": {
+    "text": "La mémoire se réécrit à chaque fois que nous l'utilisons.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Deux personnes dans la même pièce peuvent vivre des expériences différentes.",
+    "romanization": null
+  },
+  "55": {
+    "text": "L'esprit construit le monde dans lequel il vit.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Certaines expériences ne peuvent pas être mises en mots.",
+    "romanization": null
+  },
+  "57": {
+    "text": "La musique semble parler directement, sans traduction.",
+    "romanization": null
+  },
+  "58": {
+    "text": "La douleur est une enseignante, même quand elle n'a pas de leçon.",
+    "romanization": null
+  },
+  "59": {
+    "text": "La beauté est parfois un indice.",
+    "romanization": null
+  },
+  "60": {
+    "text": "L'ennui cache souvent une question qui mérite d'être posée.",
+    "romanization": null
+  },
+  "61": {
+    "text": "La solitude clarifie ce que la foule rend flou.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Le sommeil n'est pas rien.",
+    "romanization": null
+  },
+  "63": {
+    "text": "La mort donne forme au temps.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Le présent est le seul endroit où quelque chose se passe.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Socrate a dit que la vie non examinée ne vaut pas la peine d'être vécue.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Les Stoïciens s'efforçaient de ne désirer que ce qu'ils avaient.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Confucius a enseigné l'importance des petits rituels.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Le Bouddha a montré la cause de la souffrance.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aristote pensait que la vertu était une habitude, pas un sentiment.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Platon soupçonnait que les choses que nous voyons sont comme des ombres.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Lao Tseu a loué la voie de l'eau.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Épicure recherchait des plaisirs paisibles, pas de grands plaisirs.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Diogène enseignait en se moquant des conventions.",
+    "romanization": null
+  },
+  "74": {
+    "text": "De nombreuses traditions s'accordent plus qu'elles ne divergent.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kant a dit de traiter les gens comme des fins, et non comme de simples moyens.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Hume a remarqué que la raison seule ne nous pousse pas à nous soucier.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Nietzsche a écrit que les vérités difficiles peuvent aussi être des cadeaux.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Wittgenstein a dit que les limites de notre langage sont les limites de notre monde.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Simone de Beauvoir a soutenu que nous devenons nous-mêmes par nos choix.",
+    "romanization": null
+  },
+  "80": {
+    "text": "William James a dit que la croyance façonne ce que nous pouvons faire.",
+    "romanization": null
+  },
+  "81": {
+    "text": "John Rawls a demandé quelles règles nous accepterions si nous ne savions pas qui nous serions.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hannah Arendt a averti que le mal peut être ordinaire.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Iris Murdoch a dit que l'amour est le travail difficile de l'attention.",
+    "romanization": null
+  },
+  "84": {
+    "text": "De nombreux philosophes modernes s'inspirent librement de nombreuses traditions.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Commencez par le travail que vous pouvez réellement faire aujourd'hui.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Écoutez comme si vous pouviez avoir tort.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Essayez de désirer moins avant de gagner plus.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Observez ce que vous faites quand personne ne vous regarde.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Une promenade est une petite philosophie.",
+    "romanization": null
+  },
+  "90": {
+    "text": "L'argument le plus difficile à faire est celui que vous vous devez à vous-même.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Tenez vos opinions comme vous tenez un outil.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Interprétez les paroles des autres de la meilleure façon possible.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Pratiquez la gratitude les matins ordinaires, pas seulement les spéciaux.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Le chemin le plus court passe parfois par la question.",
+    "romanization": null
+  },
+  "95": {
+    "text": "L'émerveillement est une forme d'attention.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Lisez de vieux livres au moins de temps en temps.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Sachez être en désaccord et la relation perdure.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Une bonne vie est faite de nombreux petits bons jours.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Il n'y a pas de dernier mot.",
+    "romanization": null
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Unaweza kupiga piano?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Ninapiga fidla katika okestra ndogo.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Gitaa linahitaji nyuzi mpya.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Anapiga ngoma kwenye bendi ya dada yake.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Ninajifunza kupiga filimbi.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Alianza tena kupiga tarumbeta baada ya miaka ishirini.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Chelo kimeegeshwa ukutani.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Kurekebisha sauti kunachukua muda mrefu kuliko nilivyotarajia.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Ni nyuzi gani imepoteza sauti?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Upinde unahitaji kuwekewa nyuzi mpya.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Nilinunua kibodi cha mitumba mtandaoni.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Anapendelea piano ya wima kuliko piano kubwa.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Anabeba sanduku la saksafoni yake kila mahali.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Mpiga ngoma alipanga vifaa kabla ya wengine kufika.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Ukulele ni rahisi kuanza nao kuliko gitaa.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Unaweza kusoma noti za muziki?",
+    "romanization": null
+  },
+  "16": {
+    "text": "Kipande hiki kiko katika G major.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Tuko katika mdundo wa tatu-nne.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Piga noti ya kwanza kwa sauti kubwa kidogo.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Kimya ni muhimu kama noti.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Alieleza maana ya 'flat' na 'sharp'.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Mabadiliko ya kodi yanahisi asili sasa.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Skeli ni noti zilizopangwa mfululizo.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Jaribu sehemu hiyo hiyo kwa oktava moja chini.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Aliweka alama za pumzi pembeni.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Kiongozi wa okestra alituhesabia kuanza.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Baa hii inanipa shida kila wakati.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Wimbo ni rahisi lakini unakaa akilini.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Anapendelea kutunga muziki kwa kusikiliza.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Nyimbo nyingi hutumia kodi chache tu.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Ninafanya mazoezi kwa dakika thelathini baada ya chakula cha jioni.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Piga polepole hadi vidole vyako vikumbuke.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Anatumia metronome kudumisha mdundo.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Anajirekodi na kusikiliza tena.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Pasha misuli kabla ya sehemu ngumu.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Makosa ni sehemu ya mazoezi.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Niliigawanya katika sehemu ndogo ndogo.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Dakika tano leo ni bora kuliko saa mbili wiki ijayo.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Anafanya mazoezi mbele ya kioo.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Mwalimu alinipa zoezi jipya.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Usiharakishe sehemu za polepole.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Wakati mwingine anapiga huku amefumba macho.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Kipimo kigumu zaidi ni kile nilichoruka.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Baada ya mapumziko ya siku tatu, huwa narudi nikiwa nimesahau.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Fanya mazoezi ya mwisho zaidi kuliko mwanzo.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Mikono yangu ilikuwa inatetemeka kabla ya tamasha.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Watazamaji walipiga makofi kabla kipande hakijaisha.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Alisalimu na kuondoka jukwaani.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Alisahau mstari na akaendelea kwa kubuni.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Bendi ilirekebisha vyombo huku taa zikipungua.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Unaweza kunigeuzia ukurasa?",
+    "romanization": null
+  },
+  "51": {
+    "text": "Maikrofoni iko karibu sana na matoazi.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Tulipiga wimbo wa ziada.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Aliangalia umati na kutabasamu.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Tamasha la kwanza huwa gumu zaidi.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Hofu ya jukwaa haipotei kabisa.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Nilikaribia kudondosha upinde wakati wa cadenza.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Kuimba hadharani ni aina yake ya ujasiri.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Makofi yalihisi marefu kuliko wimbo.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Tulikutana na mwanamuziki wetu tunayempenda baada ya onyesho.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Unapenda muziki wa aina gani?",
+    "romanization": null
+  },
+  "61": {
+    "text": "Nilikulia nikisikiliza rekodi za mama yangu.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Anapenda kusikiliza opera anapopika.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Mdundo wa besi ndio unaofanya wimbo uwe mzuri.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Unaweza kusikia sauti ya chumba kwenye rekodi.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Albamu hii inasikika vizuri zaidi kwenye vinyl.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Alifumba macho na kusikiliza nyuzi.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Piano imepoteza sauti kidogo.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Huwa narudi kusikiliza albamu hii mara kwa mara.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Mara ya kwanza nilipoisikia, niliacha nilichokuwa nikifanya.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Anapendekeza rekodi tofauti ya jazz kila wiki.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Wimbo huu unanikumbusha babu yangu.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Kuna upatanifu wa sauti tulivu chini ya wimbo.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Muziki wa moja kwa moja unasikika tofauti na rekodi.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Napendelea kutumia vipokea sauti vya masikioni usiku wa manane.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kwaya hukutana Jumatano jioni.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Besi huishikilia bendi nzima pamoja.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Kiongozi wa okestra aliingiza okestra polepole.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Tulifanya mazoezi ya sehemu hiyo hiyo mara nne.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Anapiga fidla ya pili katika okestra ya simfoni ya hapa.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Kundi la wanamuziki wanne walikaa katika nusu duara iliyoshikana.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Mpiga ngoma alihesabu mdundo wa kuanza.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Aliimba sehemu ya upatanifu wa sauti.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Gitaa mbili na sauti moja wakati mwingine zinatosha.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Kwaya ilisafiri hadi kanisa dogo kuimba.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Alirekodi sauti za kuimba ndani ya kabati lake.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Mngurumo wa kebo ulitoweka alipobadilisha ingizo.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Unahitaji maikrofoni tofauti kwa sauti hiyo.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Anaokoa kila rekodi kwa hofu inayofuata itakuwa mbaya zaidi.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Mchanganyiko ulisikika vizuri zaidi asubuhi iliyofuata.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Amplifaya huwaka inapopata joto.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Anatumia kinasa sauti cha kanda cha nyimbo nne cha zamani.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Tuliweka rekodi tatu za mstari huo huo juu kwa juu.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Reverb ilifanya chumba kionekane kikubwa sana.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Alichanganya albamu jikoni kwake.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Muziki hufanya safari ndefu ionekane fupi.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Wimbo unaweza kubadilisha hisia za siku.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Chumba kizima kiliimba pamoja.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Kimya baada ya kodi ya mwisho ni sehemu ya muziki.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Jifunze wimbo mmoja unaweza kuupiga kwa yeyote.",
+    "romanization": null
+  }
+}

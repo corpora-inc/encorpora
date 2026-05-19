@@ -1,0 +1,10 @@
+{
+  "id": "phrase-tech-computers-basics",
+  "version": "0.1.0",
+  "name": "Computer Basics",
+  "description": "Files, accounts, passwords, troubleshooting, updates. The vocabulary of being a person in the digital world.",
+  "category": "tech",
+  "topic": "Computers",
+  "icon": "laptop",
+  "accent_color": "#06b6d4"
+}

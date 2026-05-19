@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Hifadhi faili kabla hujaifunga.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Unaweza kunitumia hati hiyo?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Foda iko kwenye 'desktop'.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Siwezi kupata faili niliyohifadhi jana.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Tafuta jina hilo kwenye diski nzima.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Alibadilisha jina la faili kimakosa.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Upakuaji ulienda kwenye foda isiyo sahihi.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Faili ni kubwa mno kuituma kwa barua pepe.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Unaweza kuikandamiza kuwa 'zip'?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Foda ya wingu inasawazishwa kiotomatiki.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Anapanga kila kitu kwenye foda ndogo zenye tarehe.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Kikasha cha taka kimejaa zaidi kuliko sehemu nyingine ya diski.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Anaweka nakala rudufu ya kila mradi.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Foda iliyoshirikiwa imesasishwa kwa kila mtu.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Faili usiyoweza kuipata ni kama haipo.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Nimesahau nenosiri langu.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Weka upya nenosiri kutoka kwenye skrini ya kuingia.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Usitumie nenosiri moja kwa kila kitu.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Kidhibiti cha nenosiri kinakukumbushia.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Uthibitishaji wa hatua mbili unaongeza hatua moja lakini usalama mkubwa.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Angalia barua pepe yako kwa msimbo wa uthibitisho.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Kiungo kiliisha muda wake baada ya dakika kumi na tano.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Aliunda akaunti mpya kwa ajili ya mradi.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Anatoka kwenye kompyuta zinazoshirikiwa.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Jina la mtumiaji tayari limetumika.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Hifadhi msimbo wa kurejesha mahali salama.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Usibofye viungo vya kuingia vinavyotiliwa shaka.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Sasisha barua pepe ya kurejesha unapohamia.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Ufunguo-pasi ni haraka kuliko nenosiri.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Simu yako pia ni akaunti siku hizi.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Umejaribu kuiwasha upya?",
+    "romanization": null
+  },
+  "31": {
+    "text": "Kebo ilikuwa imelegea.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Skrini iliganda kwa dakika moja.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Funga tabo zote na ujaribu tena.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Hakikisha umeunganishwa kwenye mtandao sahihi.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kibodi haijibu.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Feni inatoa sauti kubwa kuliko kawaida.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Futa 'cache' na upakie upya.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Jaribu kivinjari kingine.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Sasisho lilirekebisha hitilafu.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Betri iliisha chaji usiku kucha.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Kamera ya mtandao iliacha kufanya kazi baada ya sasisho.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Wakati mwingine suluhisho rahisi zaidi ni kusubiri dakika moja.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Kuwasha upya kunatatua matatizo mengi kuliko watu wanavyokubali.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Alieleza ujumbe wa hitilafu kwa maneno rahisi.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Ukurasa unachukua muda mrefu sana kupakia.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Tovuti imefungwa kwa kila mtu.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Weka alamisho ili uweze kuipata tena.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Kiungo kilicho kwenye barua pepe kinafunguka kwenye tabo mpya.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Video inaendelea kujaza data.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Ishara ni dhaifu kwenye chumba cha nyuma.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Unaweza kunishirikisha kiungo?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Tovuti inaonekana tofauti kwenye simu ya mkononi.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Dirisha ibukizi liliniuliza nikubali 'cookies'.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Tangazo ni gumu kufunga.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Anatumia kizuia matangazo kwenye kila mashine.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Utafutaji ulileta matokeo mengi mno.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Boresha utafutaji kwa kutumia alama za nukuu.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Makala imehamia nyuma ya ukuta wa malipo.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Ukurasa huu unatoka kwenye tovuti ninayoiamini.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Programu ilisasishwa usiku kucha.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Toleo jipya linaonekana tofauti kabisa.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Aliondoa programu ambazo hakuwahi kuzifungua.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Mipangilio ya arifa imefichwa ndani ya menyu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Nyamazisha wakati wa mkutano.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Njia ya mkato ya kibodi ni haraka kuliko menyu.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Hali ya giza ni rahisi machoni usiku.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Zima uchezaji otomatiki.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Beji ya arifa haiondoki kamwe.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aliweka mipangilio ya kompyuta mpakato jinsi anavyopenda.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Usifungue viambatisho kutoka kwa watumaji wasiojulikana.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Kiungo kilicho kwenye ujumbe huo kinaonekana kutia shaka.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Angalia anwani kamili ya mtumaji.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Wi-Fi ya bure uwanjani si ya faragha.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Funika kamera isipotumika.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Funga skrini unapoondoka.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Kuwa mwangalifu na taarifa usizoweza kuzirudisha.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Soma unachokubaliana nacho.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Uvujaji mwingi wa data hutokana na nenosiri zilizotumika tena.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Utapeli rahisi bado unafanya kazi kwa sababu ni rahisi.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Kompyuta mpakato imepungua kasi tangu sasisho la mwisho.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Skrini imepasuka lakini bado inafanya kazi.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Kifuatiliaji kipya kiliwasili asubuhi ya leo.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Aliunganisha kebo tatu kabla ya kupata iliyo sahihi.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Betri haidumu kama zamani.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Kibodi ilikusanya makombo kwa miaka mingi.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Feni huwaka chumba kinapopata joto.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Printa iko nje ya mtandao tena.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Vifaa vya sauti vimekata upande mmoja.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Anasafisha skrini kwa kitambaa laini.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Unaweza kupiga picha ya skrini?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Faili ilitumwa usiku wa manane.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Mwaliko wa kalenda ulipita mara mbili.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Buruta faili ndani ya dirisha.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Bofya kulia ili kuona chaguo zaidi.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Shikilia 'Shift' kuchagua zaidi ya kimoja.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Kitufe cha kutengua kimenisaidia mara nyingi.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Ubao wa kunakili unakumbuka kitu cha mwisho ulichonakili.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Urekebishaji otomatiki unasaidia na mara kwa mara unaaibisha.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Eneo-kazi safi hurahisisha kupata kila kitu.",
+    "romanization": null
+  }
+}

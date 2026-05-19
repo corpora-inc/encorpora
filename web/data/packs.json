@@ -148,7 +148,9 @@
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.5",
     "maxAppVersion": "0.12.5",
-    "platforms": ["ios"],
+    "platforms": [
+      "ios"
+    ],
     "minOSVersion": "17.0",
     "channel": "stable",
     "packType": "game",
@@ -169,7 +171,9 @@
     "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.6",
-    "platforms": ["ios"],
+    "platforms": [
+      "ios"
+    ],
     "minOSVersion": "17.0",
     "channel": "stable",
     "packType": "game",
@@ -191,40 +195,14 @@
     "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.6",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "channel": "stable",
     "packType": "game",
     "videos": {
       "shorts": [],
       "demos": []
     }
-  },
-  {
-    "id": "phrase-learning",
-    "name": "Learning",
-    "version": "0.1.0",
-    "description": "Curiosity, practice, and discovery. 200 phrases about picking up a skill, a subject, or a new language. Translated into 51 languages.",
-    "status": "active",
-    "listed": true,
-    "manifestUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-learning-0.1.0.zip",
-    "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-learning-0.1.0.zip",
-    "minAppVersion": "0.13.1",
-    "channel": "stable",
-    "packType": "phrase",
-    "purchase": { "type": "free" }
-  },
-  {
-    "id": "phrase-botany-basics",
-    "name": "Botany Basics",
-    "version": "0.1.0",
-    "description": "Everyday plant-life vocabulary: flowers, leaves, photosynthesis, gardens. 80 phrases translated into 51 languages.",
-    "status": "active",
-    "listed": true,
-    "manifestUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
-    "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
-    "minAppVersion": "0.13.1",
-    "channel": "stable",
-    "packType": "phrase",
-    "purchase": { "type": "free" }
   }
 ]

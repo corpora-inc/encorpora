@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "需求增加时，价格就会上涨。",
+    "romanization": "xūqiú zēngjiā shí, jiàgé jiù huì shàngzhǎng."
+  },
+  "1": {
+    "text": "供应增加时，价格通常会下降。",
+    "romanization": "gōngyìng zēngjiā shí, jiàgé tōngcháng huì xiàjiàng."
+  },
+  "2": {
+    "text": "打折促销能吸引更多人购买。",
+    "romanization": "dǎzhé cùxiāo néng xīyǐn gèng duō rén gòumǎi."
+  },
+  "3": {
+    "text": "同一种商品在不同城市价格会不一样。",
+    "romanization": "tóng yī zhǒng shāngpǐn zài bùtóng chéngshì jiàgé huì bù yīyàng."
+  },
+  "4": {
+    "text": "需求可能一夜之间就变了。",
+    "romanization": "xūqiú kěnéng yīyè zhī jiān jiù biàn le."
+  },
+  "5": {
+    "text": "库存不足时，商家会提高价格。",
+    "romanization": "kùcún bùzú shí, shāngjiā huì tígāo jiàgé."
+  },
+  "6": {
+    "text": "消费者会货比三家，寻找最划算的交易。",
+    "romanization": "xiāofèizhě huì huò bǐ sān jiā, xúnzhǎo zuì huásuàn de jiāoyì."
+  },
+  "7": {
+    "text": "有时候高价是品质的象征。",
+    "romanization": "yǒushíhou gāojià shì pǐnzhì de xiàngzhēng."
+  },
+  "8": {
+    "text": "有时候高价也只是营销手段。",
+    "romanization": "yǒushíhou gāojià yě zhǐshì yíngxiāo shǒuduàn."
+  },
+  "9": {
+    "text": "包邮会改变人们对购买的感受。",
+    "romanization": "bāoyóu huì gǎibiàn rénmen duì gòumǎi de gǎnshòu."
+  },
+  "10": {
+    "text": "价格很少是全部成本。",
+    "romanization": "jiàgé hěn shǎo shì quánbù chéngběn."
+  },
+  "11": {
+    "text": "时间也是一种成本。",
+    "romanization": "shíjiān yě shì yī zhǒng chéngběn."
+  },
+  "12": {
+    "text": "价格太低时，排长队就是你付出的代价。",
+    "romanization": "jiàgé tài dī shí, pái chángduì jiù shì nǐ fùchū de dàijià."
+  },
+  "13": {
+    "text": "促销活动会让人买下原本没打算买的东西。",
+    "romanization": "cùxiāo huódòng huì ràng rén mǎi xià yuánběn méi dǎsuàn mǎi de dōngxi."
+  },
+  "14": {
+    "text": "人们对损失金钱的反应比获得金钱更强烈。",
+    "romanization": "rénmen duì sǔnshī jīnqián de fǎnyìng bǐ huòdé jīnqián gèng qiángliè."
+  },
+  "15": {
+    "text": "美元标价和本地货币标价给人的感觉不一样。",
+    "romanization": "měiyuán biāojià hé běndì huòbì biāojià gěi rén de gǎnjué bù yīyàng."
+  },
+  "16": {
+    "text": "每天的小开销一年下来会积少成多。",
+    "romanization": "měitiān de xiǎo kāixiāo yī nián xiàlái huì jī shǎo chéng duō."
+  },
+  "17": {
+    "text": "一天中的第一笔销售比最后一笔更重要。",
+    "romanization": "yī tiān zhōng de dì yī bǐ xiāoshòu bǐ zuì hòu yī bǐ gèng zhòngyào."
+  },
+  "18": {
+    "text": "许多小额购买的背后隐藏着一个大习惯。",
+    "romanization": "xǔduō xiǎo'é gòumǎi de bèihòu yǐncángzhe yī gè dà xíguàn."
+  },
+  "19": {
+    "text": "最便宜的选择最终反而可能是最贵的。",
+    "romanization": "zuì piányi de xuǎnzé zuìzhōng fǎn'ér kěnéng shì zuì guì de."
+  },
+  "20": {
+    "text": "金钱只是我们共同的约定。",
+    "romanization": "jīnqián zhǐshì wǒmen gòngtóng de yuēdìng."
+  },
+  "21": {
+    "text": "储蓄就是给未来的自己付款。",
+    "romanization": "chúxù jiù shì gěi wèilái de zìjǐ fùkuǎn."
+  },
+  "22": {
+    "text": "预算是计划，而不是惩罚。",
+    "romanization": "yùsuàn shì jìhuà, ér bù shì chéngfá."
+  },
+  "23": {
+    "text": "复利是耐心的小小发动机。",
+    "romanization": "fùlì shì nàixīn de xiǎoxiǎo fādòngjī."
+  },
+  "24": {
+    "text": "通货膨胀会慢慢侵蚀现金的购买力。",
+    "romanization": "tōnghuò péngzhàng huì mànman qīnshí xiànjīn de gòumǎilì."
+  },
+  "25": {
+    "text": "贷款就是向未来的自己借钱。",
+    "romanization": "dàikuǎn jiù shì xiàng wèilái de zìjǐ jièqián."
+  },
+  "26": {
+    "text": "利息就是借用金钱的租金。",
+    "romanization": "lìxī jiù shì jièyòng jīnqián de zūjīn."
+  },
+  "27": {
+    "text": "她记录了一个月的每一笔开销，以便找出规律。",
+    "romanization": "tā jìlù le yī gè yuè de měi yī bǐ kāixiāo, yǐbiàn zhǎochū guīlǜ."
+  },
+  "28": {
+    "text": "他每个发薪日都会优先存下固定金额。",
+    "romanization": "tā měi gè fāxīnrì dōu huì yōuxiān cún xià gùdìng jīn'é."
+  },
+  "29": {
+    "text": "应急资金能让小灾小难没那么痛苦。",
+    "romanization": "yìngjí zījīn néng ràng xiǎo zāi xiǎo nàn méi nàme tòngkǔ."
+  },
+  "30": {
+    "text": "少花一点钱通常比多赚一点钱更容易。",
+    "romanization": "shǎo huā yī diǎn qián tōngcháng bǐ duō zhuàn yī diǎn qián gèng róngyì."
+  },
+  "31": {
+    "text": "加薪的钱可能会被更大的开销吞噬。",
+    "romanization": "jiāxīn de qián kěnéng huì bèi gèng dà de kāixiāo tūnshì."
+  },
+  "32": {
+    "text": "他提前还清了贷款，感觉轻松多了。",
+    "romanization": "tā tíqián huánqīng le dàikuǎn, gǎnjué qīngsōng duō le."
+  },
+  "33": {
+    "text": "大多数人都会高估自己来年的自律性。",
+    "romanization": "dàduōshù rén dōu huì gāogū zìjǐ láinián de zìlǜxìng."
+  },
+  "34": {
+    "text": "有了计划，金钱上的烦恼就会减少。",
+    "romanization": "yǒu le jìhuà, jīnqián shàng de fánnǎo jiù huì jiǎnshǎo."
+  },
+  "35": {
+    "text": "市场就是买卖双方见面的地方。",
+    "romanization": "shìchǎng jiù shì mǎimài shuāngfāng jiànmiàn de dìfang."
+  },
+  "36": {
+    "text": "网店就是没有围墙的市场。",
+    "romanization": "wǎngdiàn jiù shì méiyǒu wéiqiáng de shìchǎng."
+  },
+  "37": {
+    "text": "专业化分工是大多数东西便宜的原因。",
+    "romanization": "zhuānyèhuà fēngōng shì dàduōshù dōngxi piányi de yuányīn."
+  },
+  "38": {
+    "text": "人们会交易自己不生产的东西。",
+    "romanization": "rénmen huì jiāoyì zìjǐ bù shēngchǎn de dōngxi."
+  },
+  "39": {
+    "text": "工资反映的是一个人得到的报酬，不总是他们的真正价值。",
+    "romanization": "gōngzī fǎnyìng de shì yī gè rén dédào de bàochou, bù zǒng shì tāmen de zhēnzhèng jiàzhí."
+  },
+  "40": {
+    "text": "有些工作薪水高是因为很少人愿意做。",
+    "romanization": "yǒuxiē gōngzuò xīshuǐ gāo shì yīnwèi hěn shǎo rén yuànyì zuò."
+  },
+  "41": {
+    "text": "有些工作薪水高是因为很少人能胜任。",
+    "romanization": "yǒuxiē gōngzuò xīshuǐ gāo shì yīnwèi hěn shǎo rén néng shèngrèn."
+  },
+  "42": {
+    "text": "市场不总是奖励最有用的工作。",
+    "romanization": "shìchǎng bù zǒng shì jiǎnglì zuì yǒuyòng de gōngzuò."
+  },
+  "43": {
+    "text": "新技术能很快淘汰旧产业。",
+    "romanization": "xīn jìshù néng hěn kuài táotài jiù chǎnyè."
+  },
+  "44": {
+    "text": "人们常常哪里有工作就往哪里去。",
+    "romanization": "rénmen chángcháng nǎlǐ yǒu gōngzuò jiù wǎng nǎlǐ qù."
+  },
+  "45": {
+    "text": "小企业是经济的主体。",
+    "romanization": "xiǎo qǐyè shì jīngjì de zhǔtǐ."
+  },
+  "46": {
+    "text": "一个好员工带来的价值会超过他们的成本。",
+    "romanization": "yī gè hǎo yuángōng dàilái de jiàzhí huì chāoguò tāmen de chéngběn."
+  },
+  "47": {
+    "text": "谈判是每份工作的一部分。",
+    "romanization": "tánpàn shì měi fèn gōngzuò de yī bùfèn."
+  },
+  "48": {
+    "text": "副业收入能给你更多选择。",
+    "romanization": "fùyè shōurù néng gěi nǐ gèng duō xuǎnzé."
+  },
+  "49": {
+    "text": "有时候辞职是最有力的举动。",
+    "romanization": "yǒushíhou cízhí shì zuì yǒulì de jǔdòng."
+  },
+  "50": {
+    "text": "人们会对激励做出反应，即使是很小的激励。",
+    "romanization": "rénmen huì duì jīlì zuòchū fǎnyìng, jíshǐ shì hěn xiǎo de jīlì."
+  },
+  "51": {
+    "text": "“免费”是一个神奇的词。",
+    "romanization": "“miǎnfèi” shì yī gè shénqí de cí."
+  },
+  "52": {
+    "text": "首月免费会改变很多决定。",
+    "romanization": "shǒuyuè miǎnfèi huì gǎibiàn hěn duō juédìng."
+  },
+  "53": {
+    "text": "订阅服务就是为了让人忘记而设计的。",
+    "romanization": "dìngyuè fúwù jiù shì wèile ràng rén wàngjì ér shèjì de."
+  },
+  "54": {
+    "text": "整数感觉比实际更大。",
+    "romanization": "zhěngshù gǎnjué bǐ shíjì gèng dà."
+  },
+  "55": {
+    "text": "沉没成本不应该影响下一步决策。",
+    "romanization": "chénmò chéngběn bù yìnggāi yǐngxiǎng xià yī bù juécè."
+  },
+  "56": {
+    "text": "一点点费用就能改变人们出现的频率。",
+    "romanization": "yī diǎndiǎn fèiyong jiù néng gǎibiàn rénmen chūxiàn de pínlǜ."
+  },
+  "57": {
+    "text": "小费会改变一顿饭的总价计算。",
+    "romanization": "xiǎofèi huì gǎibiàn yī dùn fàn de zǒngjià jìsuàn."
+  },
+  "58": {
+    "text": "当分享很方便时，人们就会分享。",
+    "romanization": "dāng fēnxiǎng hěn fāngbiàn shí, rénmen jiù huì fēnxiǎng."
+  },
+  "59": {
+    "text": "排队能告诉你人们今天看重什么。",
+    "romanization": "páiduì néng gàosù nǐ rénmen jīntiān kànzhòng shénme."
+  },
+  "60": {
+    "text": "限时优惠是故意制造紧迫感。",
+    "romanization": "xiànshí yōuhuì shì gùyì zhìzào jǐnpògǎn."
+  },
+  "61": {
+    "text": "忠诚度计划奖励的往往是那些无论如何都会发生的事情。",
+    "romanization": "zhōngchéngdù jìhuà jiǎnglì de wǎngwǎng shì nàxiē wúlùn rúhé dōu huì fāshēng de shìqíng."
+  },
+  "62": {
+    "text": "默认选项决定了比人们意识到的更多。",
+    "romanization": "mòrèn xuǎnxiàng juédìng le bǐ rénmen yìshídào de gèng duō."
+  },
+  "63": {
+    "text": "评论比广告更能改变需求。",
+    "romanization": "pínglùn bǐ guǎnggào gèng néng gǎibiàn xūqiú."
+  },
+  "64": {
+    "text": "口碑仍然胜过大多数营销手段。",
+    "romanization": "kǒubēi réngrán shèngguò dàduōshù yíngxiāo shǒuduàn."
+  },
+  "65": {
+    "text": "经济有时增长，有时萎缩。",
+    "romanization": "jīngjì yǒushí zēngzhǎng, yǒushí wěisuō."
+  },
+  "66": {
+    "text": "经济衰退会教会繁荣时期会忘记的教训。",
+    "romanization": "jīngjì shuāituì huì jiàohuì fánróng shíqī huì wàngjì de jiàoxùn."
+  },
+  "67": {
+    "text": "长期增长会慢慢让所有人受益。",
+    "romanization": "chángqī zēngzhǎng huì mànman ràng suǒyǒu rén shòuyì."
+  },
+  "68": {
+    "text": "生产力提升体现在工具和习惯中。",
+    "romanization": "shēngchǎnlì tíshēng tǐxiàn zài gōngjù hé xíguàn zhōng."
+  },
+  "69": {
+    "text": "新思想是可持续增长的唯一来源。",
+    "romanization": "xīn sīxiǎng shì kěchíxù zēngzhǎng de wéiyī láiyuán."
+  },
+  "70": {
+    "text": "经济繁荣期会掩盖很多糟糕的决定。",
+    "romanization": "jīngjì fánróngqī huì yǎngài hěn duō zāogāo de juédìng."
+  },
+  "71": {
+    "text": "经济崩溃首先惩罚那些杠杆率最高的。",
+    "romanization": "jīngjì bēngkuì shǒuxiān chéngfá nàxiē gànggǎnlǜ zuì gāo de."
+  },
+  "72": {
+    "text": "廉价资金往往会流向高风险用途。",
+    "romanization": "liánjià zījīn wǎngwǎng huì liúxiàng gāofēngxiǎn yòngtú."
+  },
+  "73": {
+    "text": "身处泡沫之中很难察觉。",
+    "romanization": "shēnchǔ pàomò zhī zhōng hěn nán chājué."
+  },
+  "74": {
+    "text": "经济复苏在不同行业和地区之间是不均衡的。",
+    "romanization": "jīngjì fùsū zài bùtóng hángyè hé dìqū zhī jiān shì bùjūnhéng de."
+  },
+  "75": {
+    "text": "国家之间进行贸易是因为双方都能获益。",
+    "romanization": "guójiā zhī jiān jìnxíng màoyì shì yīnwèi shuāngfāng dōu néng huòyì."
+  },
+  "76": {
+    "text": "关税会提高国内买家的价格。",
+    "romanization": "guānshuì huì tígāo guónèi mǎijiā de jiàgé."
+  },
+  "77": {
+    "text": "汇率会改变进口商品的成本。",
+    "romanization": "huìlǜ huì gǎibiàn jìnkǒu shāngpǐn de chéngběn."
+  },
+  "78": {
+    "text": "弱势货币有利于出口商，但会损害进口商。",
+    "romanization": "ruòshì huòbì yǒulì yú chūkǒushāng, dàn huì sǔnhài jìnkǒushāng."
+  },
+  "79": {
+    "text": "外国投资既能建设经济，也可能带来压力。",
+    "romanization": "wàiguó tóuzī jì néng jiànshè jīngjì, yě kěnéng dàilái yālì."
+  },
+  "80": {
+    "text": "跨国汇款支持着许多家庭。",
+    "romanization": "kuàguó huìkuǎn zhīchízhe xǔduō jiātíng."
+  },
+  "81": {
+    "text": "制裁对普通民众的影响大于对领导人的影响。",
+    "romanization": "zhìcái duì pǔtōng mínzhòng de yǐngxiǎng dàyú duì lǐngdǎorén de yǐngxiǎng."
+  },
+  "82": {
+    "text": "全球供应链会在意想不到的地方断裂。",
+    "romanization": "quánqiú gōngyìngliàn huì yìwàibù dào de dìfang duànliè."
+  },
+  "83": {
+    "text": "一个国家的短缺会影响全球价格。",
+    "romanization": "yī gè guójiā de duǎnquē huì yǐngxiǎng quánqiú jiàgé."
+  },
+  "84": {
+    "text": "有些产业集中在一个地区是有原因的。",
+    "romanization": "yǒuxiē chǎnyè jízhōng zài yī gè dìqū shì yǒu yuányīn de."
+  },
+  "85": {
+    "text": "当无人关注时，不平等会悄悄增长。",
+    "romanization": "dāng wúrén guānzhù shí, bù píngděng huì qiāoqiāo zēngzhǎng."
+  },
+  "86": {
+    "text": "税收是公共产品的代价。",
+    "romanization": "shuìshōu shì gōnggòng chǎnpǐn de dàijià."
+  },
+  "87": {
+    "text": "公共产品是我们无法轻易单独购买的。",
+    "romanization": "gōnggòng chǎnpǐn shì wǒmen wúfǎ qīngyì dāndú gòumǎi de."
+  },
+  "88": {
+    "text": "外部性是无人要求支付的成本。",
+    "romanization": "wàibùxìng shì wúrén yāoqiú zhīfù de chéngběn."
+  },
+  "89": {
+    "text": "小小的市场失灵也能产生巨大的影响。",
+    "romanization": "xiǎoxiǎo de shìchǎng shīlíng yě néng chǎnshēng jùdà de yǐngxiǎng."
+  },
+  "90": {
+    "text": "自由市场需要规则才能保持自由。",
+    "romanization": "zìyóu shìchǎng xūyào guīzé cái néng bǎochí zìyóu."
+  },
+  "91": {
+    "text": "买卖双方之间的信息是不对称的。",
+    "romanization": "mǎimài shuāngfāng zhī jiān de xìnxī shì bùduìchèn de."
+  },
+  "92": {
+    "text": "信任能降低每笔交易的成本。",
+    "romanization": "xìnrèn néng jiàngdī měi bǐ jiāoyì de chéngběn."
+  },
+  "93": {
+    "text": "声誉是被低估的资产。",
+    "romanization": "shēngyù shì bèi dīgū de zīchǎn."
+  },
+  "94": {
+    "text": "注意力的价格上涨了。",
+    "romanization": "zhùyìlì de jiàgé shàngzhǎng le."
+  },
+  "95": {
+    "text": "最重要的市场往往没有价格。",
+    "romanization": "zuì zhòngyào de shìchǎng wǎngwǎng méiyǒu jiàgé."
+  },
+  "96": {
+    "text": "时间和关怀是最稀缺的资源之一。",
+    "romanization": "shíjiān hé guānhuái shì zuì xīquē de zīyuán zhī yī."
+  },
+  "97": {
+    "text": "经济决策也是道德决策。",
+    "romanization": "jīngjì juécè yě shì dàodé juécè."
+  },
+  "98": {
+    "text": "经济就是人们互相为对方做事。",
+    "romanization": "jīngjì jiù shì rénmen hùxiāng wèi duìfāng zuòshì."
+  },
+  "99": {
+    "text": "一个简单的预算比任何复杂的理论都能带来更多改变。",
+    "romanization": "yī gè jiǎndān de yùsuàn bǐ rènhé fùzá de lǐlùn dōu néng dàilái gèng duō gǎibiàn."
+  }
+}

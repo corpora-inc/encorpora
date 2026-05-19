@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Afrika je veća nego što izgleda na većini karata.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Atlantski ocean razdvaja Amerike od Europe i Afrike.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Antarktika je najhladniji kontinent.",
+    "romanization": null
+  },
+  "3": {
+    "text": "U Aziji živi više od polovice svjetske populacije.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Europa i Azija čine jednu kopnenu cjelinu.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Australija je i država i kontinent.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Tihi ocean je najveći ocean.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Arktički ocean je djelomično prekriven ledom.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Južna Amerika ima amazonsku prašumu.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Sjeverna Amerika se proteže od tropskih do arktičkih klima.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Island se nalazi između dviju tektonskih ploča.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Madagaskar je četvrti najveći otok na svijetu.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Novi Zeland ima dva glavna otoka.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Pacifički vatreni prsten je područje gdje se događaju mnogi potresi.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Indijski ocean graniči s tri kontinenta.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Nil teče na sjever tisućama kilometara.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Amazon nosi više vode nego bilo koja druga rijeka.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Bajkalsko jezero je najdublje slatkovodno jezero na svijetu.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mississippi odvodi vodu iz većeg dijela središnjeg SAD-a.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Ganges je svet mnogim ljudima.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Yangtze je najduža rijeka u Aziji.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Dunav prolazi kroz deset zemalja.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Kaspijsko jezero je najveća zatvorena vodena površina.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Volga je najduža rijeka u potpunosti u Europi.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Jezero Victoria je glavni izvor Bijelog Nila.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Velika jezera sadrže petinu svjetske površinske slatke vode.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Rajna je stoljećima bila trgovački put.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Mekong podržava milijune ljudi u jugoistočnoj Aziji.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Neke rijeke presuše prije nego što dođu do mora.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Rijeka Colorado je milijunima godina oblikovala Grand Canyon.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Mount Everest je najviša točka iznad morske razine.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Ande se protežu cijelom dužinom Južne Amerike.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Alpe su popularne među planinarima ljeti.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Stjenjak se proteže od Kanade do jugozapadnog dijela Sjedinjenih Država.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Himalaja se još uvijek polako uzdiže.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kilimandžaro je najviši vrh u Africi.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Uralske planine razdvajaju Europu od Azije.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Planina Fuji je sveta mnogima u Japanu.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Planine Atlas oblikuju klimu Sjeverne Afrike.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Ledenjaci se povlače iz planinskih lanaca diljem svijeta.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Sahara je najveća vruća pustinja.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Arktik i Antarktika su polarne pustinje.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Amazon ima vlastiti vremenski sustav.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Tropske prašume su tople i vlažne tijekom cijele godine.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Umjerene zone imaju četiri izrazita godišnja doba.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Monsuni donose obilne kiše u Južnu Aziju svakog ljeta.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Tornadoi su najčešći u središnjem dijelu Sjedinjenih Država.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Uragani se formiraju iznad tople oceanske vode.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Mediteranska klima je blaga i suha ljeti.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Permafrost pokriva veći dio Sibira.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Atacama je jedno od najsušnijih mjesta na Zemlji.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Tundra ima prekratko ljeto za drveće.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Mangrove rastu tamo gdje se kopno susreće sa slanom vodom.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Koraljni grebeni trebaju toplu, bistru vodu da bi uspijevali.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Mlazna struja utječe na vrijeme diljem kontinenata.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Tokio ima više stanovnika nego bilo koje drugo metropolitansko područje.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Vatikan je najmanja država na svijetu.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Rusija se proteže kroz jedanaest vremenskih zona.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Indija i Kina zajedno čine više od trećine svjetske populacije.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Brazil graniči s većinom južnoameričkih zemalja.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Singapur je istovremeno grad i država.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Istanbul se nalazi na dva kontinenta.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Cape Town ima poznatu planinu ravnog vrha.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Buenos Aires se ponekad naziva Parizom Južne Amerike.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Lagos je jedan od najbrže rastućih gradova na svijetu.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Reykjavik je najsjevernija prijestolnica na svijetu.",
+    "romanization": null
+  },
+  "66": {
+    "text": "La Paz je jedan od najviših glavnih gradova.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Sydney ima jednu od najvećih prirodnih luka.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Marrakech ima staru gradsku jezgru staru tisuću godina.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hanoi se nalazi uz Crvenu rijeku.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Ljudi su prelazili pustinje kako bi trgovali začinima.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Put svile povezivao je Kinu s Mediteranom.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Neki se jezici govore samo na jednom malom otoku.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Polovica svjetske populacije živi blizu obale.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Mnogi su gradovi nastali kao riječne luke.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Granice se pomiču; rijeke i planine obično ne.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Svjetska obala je naseljenija od unutrašnjosti.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Mnoge drevne ruševine još uvijek se otkrivaju.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Neki otoci polako nestaju pod rastućim morem.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Duge migracije oblikovale su gotovo svaki kontinent.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Australija ima životinje koje ne postoje nigdje drugdje.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Najdublji dio oceana je Marijanska brazda.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Grenland je uglavnom prekriven ledom.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Vulkani mogu stvoriti nove otoke za nekoliko desetljeća.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Polarna svjetlost najbolje se vidi s sjevernih geografskih širina.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Zemljini kontinenti se polako razdvajaju.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Najsuše mjesto na Zemlji ipak može doživjeti povremenu poplavu.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Neka su jezera toliko slana da u njima gotovo ništa ne može živjeti.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Najviši vodopad na svijetu nalazi se u Venezueli.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Sahara je bila travnjak prije tisuće godina.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Koja država graniči s najviše drugih?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Koja je razlika između države i savezne države?",
+    "romanization": null
+  },
+  "92": {
+    "text": "Gdje je ekvator na ovoj karti?",
+    "romanization": null
+  },
+  "93": {
+    "text": "Koji je ocean najbliži ovdje?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Koliko bi trebalo da se pješke prođe kroz ovu zemlju?",
+    "romanization": null
+  },
+  "95": {
+    "text": "Koji je najviši vrh na koji si se popeo/la?",
+    "romanization": null
+  },
+  "96": {
+    "text": "Jednog dana želim vidjeti polarnu svjetlost.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Je li glavni grad ujedno i najveći grad?",
+    "romanization": null
+  },
+  "98": {
+    "text": "Karta izgleda drugačije naopako.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Svaka zemlja ima priču vrijednu poznavanja.",
+    "romanization": null
+  }
+}
