@@ -212,5 +212,19 @@
     "channel": "stable",
     "packType": "phrase",
     "purchase": { "type": "free" }
+  },
+  {
+    "id": "phrase-botany-basics",
+    "name": "Botany Basics",
+    "version": "0.1.0",
+    "description": "Everyday plant-life vocabulary: flowers, leaves, photosynthesis, gardens. 80 phrases translated into 51 languages.",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
+    "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
+    "minAppVersion": "0.13.1",
+    "channel": "stable",
+    "packType": "phrase",
+    "purchase": { "type": "free" }
   }
 ]
