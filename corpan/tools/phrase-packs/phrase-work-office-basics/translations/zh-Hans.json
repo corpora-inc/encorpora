@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "会议十分钟后开始。",
+    "romanization": "Huìyì shí fēnzhōng hòu kāishǐ."
+  },
+  "1": {
+    "text": "你能共享一下屏幕吗？",
+    "romanization": "Nǐ néng gòngxiǎng yīxià píngmù ma?"
+  },
+  "2": {
+    "text": "抱歉，我刚才静音了。",
+    "romanization": "Bàoqiàn, wǒ gāngcái jìngyīn le."
+  },
+  "3": {
+    "text": "我们超时了。",
+    "romanization": "Wǒmen chāoshí le."
+  },
+  "4": {
+    "text": "我们把这个放到下次会议讨论吧。",
+    "romanization": "Wǒmen bǎ zhège fàng dào xià cì huìyì tǎolùn ba."
+  },
+  "5": {
+    "text": "我来做会议记录。",
+    "romanization": "Wǒ lái zuò huìyì jìlù."
+  },
+  "6": {
+    "text": "我们能轮流发言吗？",
+    "romanization": "Wǒmen néng lúnliú fāyán ma?"
+  },
+  "7": {
+    "text": "会议议程在日历邀请里。",
+    "romanization": "Huìyì yìchéng zài rìlì yāoqǐng lǐ."
+  },
+  "8": {
+    "text": "这次会议谁来主持？",
+    "romanization": "Zhè cì huìyì shéi lái zhǔchí?"
+  },
+  "9": {
+    "text": "我们在录制吗？",
+    "romanization": "Wǒmen zài lùzhì ma?"
+  },
+  "10": {
+    "text": "通话打到一半断了。",
+    "romanization": "Tōnghuà dǎ dào yībàn duàn le."
+  },
+  "11": {
+    "text": "我们能把这个推迟十五分钟吗？",
+    "romanization": "Wǒmen néng bǎ zhège tuīchí shíwǔ fēnzhōng ma?"
+  },
+  "12": {
+    "text": "他迟到了，但悄悄地进来了。",
+    "romanization": "Tā chí dào le, dàn qiāoqiāo de jìnlái le."
+  },
+  "13": {
+    "text": "这个会议室又被重复预订了。",
+    "romanization": "Zhège huìyìshì yòu bèi chóngfù yùdìng le."
+  },
+  "14": {
+    "text": "咱们先把这个放一放，之后再讨论。",
+    "romanization": "Zánmen xiān bǎ zhège fàng yī fàng, zhīhòu zài tǎolùn."
+  },
+  "15": {
+    "text": "我三点必须得走。",
+    "romanization": "Wǒ sān diǎn bìxū děi zǒu."
+  },
+  "16": {
+    "text": "你能会后留两分钟吗？",
+    "romanization": "Nǐ néng huì hòu liú liǎng fēnzhōng ma?"
+  },
+  "17": {
+    "text": "白板写满了。",
+    "romanization": "Báibǎn xiě mǎn le."
+  },
+  "18": {
+    "text": "你能总结一下待办事项吗？",
+    "romanization": "Nǐ néng zǒngjié yīxià dàibàn shìxiàng ma?"
+  },
+  "19": {
+    "text": "站着开会效率真高。",
+    "romanization": "Zhànzhe kāihuì xiàolǜ zhēn gāo."
+  },
+  "20": {
+    "text": "我今天下班前回复你。",
+    "romanization": "Wǒ jīntiān xiàbān qián huífù nǐ."
+  },
+  "21": {
+    "text": "我上次发的邮件你收到了吗？",
+    "romanization": "Wǒ shàng cì fā de yóujiàn nǐ shōudào le ma?"
+  },
+  "22": {
+    "text": "抱歉回复晚了。",
+    "romanization": "Bàoqiàn huífù wǎn le."
+  },
+  "23": {
+    "text": "我把莎拉也拉进来了。",
+    "romanization": "Wǒ bǎ Shālā yě lā jìnlái le."
+  },
+  "24": {
+    "text": "附件没有发出去。",
+    "romanization": "Fùjiàn méiyǒu fā chūqù."
+  },
+  "25": {
+    "text": "我把它标记为紧急了。",
+    "romanization": "Wǒ bǎ tā biāojì wèi jǐnjí le."
+  },
+  "26": {
+    "text": "你能把那个文件再发一遍吗？",
+    "romanization": "Nǐ néng bǎ nàge wénjiàn zài fā yī biàn ma?"
+  },
+  "27": {
+    "text": "邮件记录太长了，我来总结一下。",
+    "romanization": "Yóujiàn jìlù tài cháng le, wǒ lái zǒngjié yīxià."
+  },
+  "28": {
+    "text": "请在主题里写清楚，这样我好找。",
+    "romanization": "Qǐng zài zhǔtí lǐ xiě qīngchu, zhèyàng wǒ hǎo zhǎo."
+  },
+  "29": {
+    "text": "他周末把收件箱清空了。",
+    "romanization": "Tā zhōumò bǎ shōujiànxiāng qīngkōng le."
+  },
+  "30": {
+    "text": "请在周五前回复。",
+    "romanization": "Qǐng zài Zhōuwǔ qián huífù."
+  },
+  "31": {
+    "text": "弄好后我给你发个简短通知。",
+    "romanization": "Nòng hǎo hòu wǒ gěi nǐ fā ge jiǎnduǎn tōngzhī."
+  },
+  "32": {
+    "text": "自动回复说他出差了。",
+    "romanization": "Zìdòng huífù shuō tā chūchāi le."
+  },
+  "33": {
+    "text": "她不小心抄送错了人。",
+    "romanization": "Tā bù xiǎoxīn chāosòng cuò le rén."
+  },
+  "34": {
+    "text": "三次提醒就够了。",
+    "romanization": "Sān cì tíxǐng jiù gòu le."
+  },
+  "35": {
+    "text": "你能把这个邮件串转发给我吗？",
+    "romanization": "Nǐ néng bǎ zhège yóujiàn chuàn zhuǎnfā gěi wǒ ma?"
+  },
+  "36": {
+    "text": "这事儿用聊天软件比邮件快。",
+    "romanization": "Zhè shìr yòng liáotiān ruǎnjiàn bǐ yóujiàn kuài."
+  },
+  "37": {
+    "text": "信息太多了，我没看到你的消息。",
+    "romanization": "Xìnxī tài duō le, wǒ méi kàndào nǐ de xiāoxī."
+  },
+  "38": {
+    "text": "你邮件里的链接指向的页面找不到了。",
+    "romanization": "Nǐ yóujiàn lǐ de liánjiē zhǐxiàng de yèmiàn zhǎo bù dào le."
+  },
+  "39": {
+    "text": "请确认你收到了。",
+    "romanization": "Qǐng quèrèn nǐ shōudào le."
+  },
+  "40": {
+    "text": "截止日期是周五中午。",
+    "romanization": "Jiézhǐ rìqī shì Zhōuwǔ zhōngwǔ."
+  },
+  "41": {
+    "text": "我周三前能拿出初稿。",
+    "romanization": "Wǒ Zhōusān qián néng náchū chūgǎo."
+  },
+  "42": {
+    "text": "我们这周得发布点什么。",
+    "romanization": "Wǒmen zhè zhōu děi fābù diǎn shénme."
+  },
+  "43": {
+    "text": "项目延期了一天。",
+    "romanization": "Xiàngmù yánqī le yī tiān."
+  },
+  "44": {
+    "text": "我发出去之前，你能帮我校对一下吗？",
+    "romanization": "Wǒ fā chūqù zhīqián, nǐ néng bāng wǒ jiàoduì yīxià ma?"
+  },
+  "45": {
+    "text": "我欠你一个进度更新。",
+    "romanization": "Wǒ qiàn nǐ yī ge jìndù gēngxīn."
+  },
+  "46": {
+    "text": "这些数字和我上周发的不符。",
+    "romanization": "Zhèxiē shùzì hé wǒ shàng zhōu fā de bù fú."
+  },
+  "47": {
+    "text": "我们被客户的决定卡住了。",
+    "romanization": "Wǒmen bèi kèhù de juédìng kǎ zhù le."
+  },
+  "48": {
+    "text": "他为了完成它，午饭都没吃。",
+    "romanization": "Tā wèile wánchéng tā, wǔfàn dōu méi chī."
+  },
+  "49": {
+    "text": "这份报告总算交出去了。",
+    "romanization": "Zhè fèn bàogào zǒngsuàn jiāo chūqù le."
+  },
+  "50": {
+    "text": "一旦得到批准，我马上就开始。",
+    "romanization": "Yīdàn dédào pīzhǔn, wǒ mǎshàng jiù kāishǐ."
+  },
+  "51": {
+    "text": "你能批准这个版本吗？",
+    "romanization": "Nǐ néng pīzhǔn zhège bǎnběn ma?"
+  },
+  "52": {
+    "text": "我们发布前，她及时发现了一个错别字。",
+    "romanization": "Wǒmen fābù qián, tā jíshí fāxiàn le yī ge cuòbiézì."
+  },
+  "53": {
+    "text": "我们把发布日期推迟到下周二了。",
+    "romanization": "Wǒmen bǎ fābù rìqī tuīchí dào xià zhōu'èr le."
+  },
+  "54": {
+    "text": "估算差了一倍。",
+    "romanization": "Gūsuàn chà le yī bèi."
+  },
+  "55": {
+    "text": "他把下午的时间都空出来专心工作。",
+    "romanization": "Tā bǎ xiàwǔ de shíjiān dōu kōng chūlái zhuānxīn gōngzuò."
+  },
+  "56": {
+    "text": "合同签好送回来了。",
+    "romanization": "Hétong qiān hǎo sòng huílái le."
+  },
+  "57": {
+    "text": "咱们就当它完成了，然后进行下一步吧。",
+    "romanization": "Zánmen jiù dāng tā wánchéng le, ránhòu jìnxíng xià yī bù ba."
+  },
+  "58": {
+    "text": "第一个版本虽然粗糙，但能用。",
+    "romanization": "Dì yī ge bǎnběn suīrán cūcāo, dàn néng yòng."
+  },
+  "59": {
+    "text": "他这次居然提前完成了。",
+    "romanization": "Tā zhè cì jūrán tíqián wánchéng le."
+  },
+  "60": {
+    "text": "欢迎加入团队。",
+    "romanization": "Huānyíng jiārù tuánduì."
+  },
+  "61": {
+    "text": "我把你介绍给其他人。",
+    "romanization": "Wǒ bǎ nǐ jièshào gěi qítā rén."
+  },
+  "62": {
+    "text": "她刚休假回来。",
+    "romanization": "Tā gāng xiūjià huílái."
+  },
+  "63": {
+    "text": "这事儿你得问他。",
+    "romanization": "Zhè shìr nǐ děi wèn tā."
+  },
+  "64": {
+    "text": "我们周二共用一张办公桌。",
+    "romanization": "Wǒmen Zhōu'èr gòngyòng yī zhāng bàngōngzhuō."
+  },
+  "65": {
+    "text": "谁最了解定价方面的事？",
+    "romanization": "Shéi zuì liǎojiě dìngjià fāngmiàn de shì?"
+  },
+  "66": {
+    "text": "他总是给团队带咖啡。",
+    "romanization": "Tā zǒng shì gěi tuánduì dài kāfēi."
+  },
+  "67": {
+    "text": "新来的同事学得很快。",
+    "romanization": "Xīn lái de tóngshì xué de hěn kuài."
+  },
+  "68": {
+    "text": "她和市场部合作很紧密。",
+    "romanization": "Tā hé shìchǎng bù hézuò hěn jǐnmì."
+  },
+  "69": {
+    "text": "他是这里资历最老的。",
+    "romanization": "Tā shì zhèlǐ zīlì zuì lǎo de."
+  },
+  "70": {
+    "text": "他们把工作平均分了。",
+    "romanization": "Tāmen bǎ gōngzuò píngjūn fēn le."
+  },
+  "71": {
+    "text": "我们边吃午饭边把草图画出来了。",
+    "romanization": "Wǒmen biān chī wǔfàn biān bǎ cǎotú huà chūlái le."
+  },
+  "72": {
+    "text": "我生病的时候他替我顶班了。",
+    "romanization": "Wǒ shēngbìng de shíhou tā tì wǒ dǐngbān le."
+  },
+  "73": {
+    "text": "团队成员都围在笔记本电脑旁。",
+    "romanization": "Tuánduì chéngyuán dōu wéi zài bǐjìběn diànnǎo páng."
+  },
+  "74": {
+    "text": "她记得每个人的生日。",
+    "romanization": "Tā jìde měi ge rén de shēngrì."
+  },
+  "75": {
+    "text": "我明天远程参加。",
+    "romanization": "Wǒ míngtiān yuǎnchéng cānjiā."
+  },
+  "76": {
+    "text": "办公室周五基本没人。",
+    "romanization": "Bàngōngshì Zhōuwǔ jīběn méi rén."
+  },
+  "77": {
+    "text": "我今天网络不太稳定。",
+    "romanization": "Wǒ jīntiān wǎngluò bù tài wěndìng."
+  },
+  "78": {
+    "text": "他在另一个城市工作。",
+    "romanization": "Tā zài lìng yī ge chéngshì gōngzuò."
+  },
+  "79": {
+    "text": "团队每月会面一次。",
+    "romanization": "Tuánduì měi yuè huìmiàn yī cì."
+  },
+  "80": {
+    "text": "她把卧室的一个角落布置成了办公桌。",
+    "romanization": "Tā bǎ wòshì de yī ge jiǎoluò bùzhì chéng le bàngōngzhuō."
+  },
+  "81": {
+    "text": "家庭办公室终于收拾整齐了。",
+    "romanization": "Jiātíng bàngōngshì zhōngyú shōushi zhěngqí le."
+  },
+  "82": {
+    "text": "你能打开摄像头吗？",
+    "romanization": "Nǐ néng dǎkāi shèxiàngtóu ma?"
+  },
+  "83": {
+    "text": "背景噪音没关系，别担心。",
+    "romanization": "Bèijǐng zàoyīn méi guānxi, bié dānxīn."
+  },
+  "84": {
+    "text": "我们每天早上都会快速碰个头。",
+    "romanization": "Wǒmen měitiān zǎoshang dōu huì kuàisù pèng ge tóu."
+  },
+  "85": {
+    "text": "打印机又卡纸了。",
+    "romanization": "Dǎyìnjī yòu kǎzhǐ le."
+  },
+  "86": {
+    "text": "咖啡机没咖啡豆了。",
+    "romanization": "Kāfēijī méi kāfēidòu le."
+  },
+  "87": {
+    "text": "你能去开一下门吗？",
+    "romanization": "Nǐ néng qù kāi yīxià mén ma?"
+  },
+  "88": {
+    "text": "会议室的窗户打不开。",
+    "romanization": "Huìyìshì de chuānghu dǎ bù kāi."
+  },
+  "89": {
+    "text": "有人把午饭放在冰箱里一周了。",
+    "romanization": "Yǒurén bǎ wǔfàn fàng zài bīngxiāng lǐ yī zhōu le."
+  },
+  "90": {
+    "text": "下午三点厨房很安静。",
+    "romanization": "Xiàwǔ sān diǎn chúfáng hěn ānjìng."
+  },
+  "91": {
+    "text": "他走了楼梯，想清醒一下头脑。",
+    "romanization": "Tā zǒu le lóutī, xiǎng qīngxǐng yīxià tóunǎo."
+  },
+  "92": {
+    "text": "窗台上的植物长得很好。",
+    "romanization": "Chuāngtái shàng de zhíwù zhǎng de hěn hǎo."
+  },
+  "93": {
+    "text": "你能去前台签收一下包裹吗？",
+    "romanization": "Nǐ néng qù qiántái qiānshōu yīxià bāoguǒ ma?"
+  },
+  "94": {
+    "text": "门禁刷卡器出问题了。",
+    "romanization": "Ménjìn shuākǎqì chū wèntí le."
+  },
+  "95": {
+    "text": "一天结束得总是那么快。",
+    "romanization": "Yī tiān jiéshù de zǒng shì nàme kuài."
+  },
+  "96": {
+    "text": "他一次只开一个窗口工作效率最高。",
+    "romanization": "Tā yī cì zhǐ kāi yī ge chuāngkǒu gōngzuò xiàolǜ zuì gāo."
+  },
+  "97": {
+    "text": "她点燃一支蜡烛来开启新的一天。",
+    "romanization": "Tā diǎnrán yī zhī làzhú lái kāiqǐ xīn de yī tiān."
+  },
+  "98": {
+    "text": "午饭后散散步有助于我思考。",
+    "romanization": "Wǔfàn hòu sàn sàn bù yǒu zhù yú wǒ sīkǎo."
+  },
+  "99": {
+    "text": "有些周一从一个小小的胜利开始。",
+    "romanization": "Yǒuxiē Zhōuyī cóng yī gè xiǎo xiǎo de shènglì kāishǐ."
+  }
+}

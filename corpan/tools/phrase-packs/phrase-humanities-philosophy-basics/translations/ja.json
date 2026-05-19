@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "良い人生を送るって、どういうことだと思いますか？",
+    "romanization": "Yoi jinsei o okuru tte, dōiu koto da to omoimasu ka?"
+  },
+  "1": {
+    "text": "私たちは、自分が知っていることをどうやって知るのでしょうか？",
+    "romanization": "Watashitachi wa, jibun ga shitteiru koto o dōyatte shiru no deshou ka?"
+  },
+  "2": {
+    "text": "「知っている」ことと「信じている」ことには違いがあるのでしょうか？",
+    "romanization": "Shitteiru koto to shinjiteiru koto ni wa chigai ga aru no deshou ka?"
+  },
+  "3": {
+    "text": "なぜ「何もない」のではなく「何かがある」のでしょうか？",
+    "romanization": "Naze \"nani mo nai\" no de wa naku \"nanika ga aru\" no deshou ka?"
+  },
+  "4": {
+    "text": "何が人を、時が経っても同じ人物たらしめるのでしょうか？",
+    "romanization": "Nani ga hito o, toki ga tattemo onaji jinbutsu tarashimeru no deshou ka?"
+  },
+  "5": {
+    "text": "機械は考えることができるのでしょうか？",
+    "romanization": "Kikai wa kangaeru koto ga dekiru no deshou ka?"
+  },
+  "6": {
+    "text": "私たちが見ている世界は、本当の世界なのでしょうか？",
+    "romanization": "Watashitachi ga miteiru sekai wa, hontō no sekai na no deshou ka?"
+  },
+  "7": {
+    "text": "決して会うことのない人々に、私たちは何を負っているのでしょうか？",
+    "romanization": "Kesshite au koto no nai hitobito ni, watashitachi wa nani o otteiru no deshou ka?"
+  },
+  "8": {
+    "text": "なぜ人は考えを変えるのがこんなにも難しいのでしょうか？",
+    "romanization": "Naze hito wa kangae o kaeru no ga konna ni mo muzukashii no deshou ka?"
+  },
+  "9": {
+    "text": "二人の人が「同意する」とは、どういう意味なのでしょうか？",
+    "romanization": "Futari no hito ga \"dōi suru\" to wa, dōiu imi na no deshou ka?"
+  },
+  "10": {
+    "text": "真実は「発明される」ものですか、それとも「発見される」ものですか？",
+    "romanization": "Shinjitsu wa \"hatsumei sareru\" mono desu ka, sore tomo \"hakken sareru\" mono desu ka?"
+  },
+  "11": {
+    "text": "なぜ私たちは、今のように時間を感じるのでしょうか？",
+    "romanization": "Naze watashitachi wa, ima no yō ni jikan o kanjiru no deshou ka?"
+  },
+  "12": {
+    "text": "意味はどこから生まれるのでしょうか？",
+    "romanization": "Imi wa doko kara umareru no deshou ka?"
+  },
+  "13": {
+    "text": "自由意志って、本当は何なのでしょう？",
+    "romanization": "Jiyū ishi tte, hontō wa nan na no deshou?"
+  },
+  "14": {
+    "text": "幸福は感情ですか、それとも実践するものですか？",
+    "romanization": "Kōfuku wa kanjō desu ka, sore tomo jissen suru mono desu ka?"
+  },
+  "15": {
+    "text": "正しいことって、時々見分けるのが難しいですよね。",
+    "romanization": "Tadashii koto tte, tokidoki miwakeru no ga muzukashii desu yo ne."
+  },
+  "16": {
+    "text": "良い意図があっても、必ずしも良い結果につながるとは限りません。",
+    "romanization": "Yoi ito ga attemo, kanarishimo yoi kekka ni tsunagaru to wa kagirimasen."
+  },
+  "17": {
+    "text": "倫理的な問題のほとんどは、対立する善をどう比較衡量するかです。",
+    "romanization": "Rinriteki na mondai no hotondo wa, tairitsu suru zen o dō hikaku kōryō suru ka desu."
+  },
+  "18": {
+    "text": "小さな嘘が、大きな損害をもたらすこともあります。",
+    "romanization": "Chiisana uso ga, ōkina songai o motarasu koto mo arimasu."
+  },
+  "19": {
+    "text": "親切な環境では、正直でいる方が楽です。",
+    "romanization": "Shinsetsuna kankyō de wa, shōjiki de iru hō ga raku desu."
+  },
+  "20": {
+    "text": "残酷さは、しばしば小さな習慣の陰に隠れています。",
+    "romanization": "Zankokusa wa, shibashiba chiisana shūkan no kage ni kakureteimasu."
+  },
+  "21": {
+    "text": "考える手間を省いてくれるから、良いルールもあります。",
+    "romanization": "Kangaeru tema o haishokushite kureru kara, yoi rūru mo arimasu."
+  },
+  "22": {
+    "text": "時として、ルールそのものが問題であることもあります。",
+    "romanization": "Toki to shite, rūru sono mono ga mondai de aru koto mo arimasu."
+  },
+  "23": {
+    "text": "約束は、未来の自分への小さな賭けです。",
+    "romanization": "Yakusoku wa, mirai no jibun e no chiisana kake desu."
+  },
+  "24": {
+    "text": "人は行動を結果で判断し、ルールを意図で判断します。",
+    "romanization": "Hito wa kōdō o kekka de handan shi, rūru o ito de handan shimasu."
+  },
+  "25": {
+    "text": "偽善は、他人のものだと見つけやすいものです。",
+    "romanization": "Gizen wa, tanin no mono da to mitsukeyasui mono desu."
+  },
+  "26": {
+    "text": "許しは、許す人自身への贈り物でもあります。",
+    "romanization": "Yurushi wa, yurusu hito jishin e no okurimono demo arimasu."
+  },
+  "27": {
+    "text": "共感は、使えば使うほど強くなる筋肉のようなものです。",
+    "romanization": "Kyōkan wa, tsukaeba tsukau hodo tsuyoku naru kinniku no yō na mono desu."
+  },
+  "28": {
+    "text": "正義と復讐は同じではありません。",
+    "romanization": "Seigi to fukushū wa onaji de wa arimasen."
+  },
+  "29": {
+    "text": "貧困よりも権力の方が、人の品性を試します。",
+    "romanization": "Hinkon yori mo kenryoku no hō ga, hito no hinsei o tameshimasu."
+  },
+  "30": {
+    "text": "何もしないことも、一つの選択です。",
+    "romanization": "Nani mo shinai koto mo, hitotsu no sentaku desu."
+  },
+  "31": {
+    "text": "最も難しい美徳は、忍耐です。",
+    "romanization": "Mottomo muzukashii bitoku wa, nintai desu."
+  },
+  "32": {
+    "text": "小さな親切は積み重なっていきます。",
+    "romanization": "Chiisana shinsetsu wa tsumikasanatte ikimasu."
+  },
+  "33": {
+    "text": "社会は、最も弱い人々をどう扱うかで判断できます。",
+    "romanization": "Shakai wa, mottomo yowai hitobito o dō atsukau ka de handan dekimasu."
+  },
+  "34": {
+    "text": "勇気とは、恐れながらも立派に行動することです。",
+    "romanization": "Yūki to wa, osorenagara mo rippa ni kōdō suru koto desu."
+  },
+  "35": {
+    "text": "私たちは、自信満々でいながら間違っていることもあります。",
+    "romanization": "Watashitachi wa, jishin manman de inagara machigatteiru koto mo arimasu."
+  },
+  "36": {
+    "text": "証拠こそが、慎重な人の考えを変えるものです。",
+    "romanization": "Shōko koso ga, shinchō na hito no kangae o kaeru mono desu."
+  },
+  "37": {
+    "text": "ほとんどの信念は、一つずつではなく、グループでやってきます。",
+    "romanization": "Hotondo no shin'nen wa, hitotsu zutsu de wa naku, gurūpu de yatte kimasu."
+  },
+  "38": {
+    "text": "私たちは、自分が正しかった時のことを覚えている傾向があります。",
+    "romanization": "Watashitachi wa, jibun ga tadashikatta toki no koto o oboeteiru keikō ga arimasu."
+  },
+  "39": {
+    "text": "疑いは不快ですが、役立つものです。",
+    "romanization": "Utagai wa fukai desu ga, yakudatsu mono desu."
+  },
+  "40": {
+    "text": "良い質問は、気の利いた答えよりも難しいものです。",
+    "romanization": "Yoi shitsumon wa, ki no kiita kotae yori mo muzukashii mono desu."
+  },
+  "41": {
+    "text": "一つの正解がない質問もあります。",
+    "romanization": "Hitotsu no seikai ga nai shitsumon mo arimasu."
+  },
+  "42": {
+    "text": "モデルは間違っていますが、中には役立つものもあります。",
+    "romanization": "Moderu wa machigatteimasu ga, naka ni wa yakudatsu mono mo arimasu."
+  },
+  "43": {
+    "text": "地図は、その土地そのものではありません。",
+    "romanization": "Chizu wa, sono tochi sono mono de wa arimasen."
+  },
+  "44": {
+    "text": "名前は、私たちが何に気づくかを形作ります。",
+    "romanization": "Namae wa, watashitachi ga nani ni kizuku ka o katachizukurimasu."
+  },
+  "45": {
+    "text": "ゆっくり読むことは、それ自体が一つの思考です。",
+    "romanization": "Yukkuri yomu koto wa, sore jitai ga hitotsu no shikō desu."
+  },
+  "46": {
+    "text": "強い意見を持ちつつも、固執しすぎないこと。",
+    "romanization": "Tsuyoi iken o mochitsutsu mo, koshitsu shisuginai koto."
+  },
+  "47": {
+    "text": "最も賢い人ほど、考えを最もよく変えます。",
+    "romanization": "Mottomo kashikoi hito hodo, kangae o mottomo yoku kaemasu."
+  },
+  "48": {
+    "text": "意見の相違は、誤解と同じではありません。",
+    "romanization": "Iken no sōi wa, gokai to onaji de wa arimasen."
+  },
+  "49": {
+    "text": "時には、両方の側が部分的に正しいこともあります。",
+    "romanization": "Toki ni wa, ryōhō no gawa ga bubunteki ni tadashii koto mo arimasu."
+  },
+  "50": {
+    "text": "世界は、どんな説明よりも古くから存在しています。",
+    "romanization": "Sekai wa, donna setsumei yori mo furuku kara sonzai shiteimasu."
+  },
+  "51": {
+    "text": "意識は、私たちが知る中で最も奇妙なものです。",
+    "romanization": "Ishiki wa, watashitachi ga shiru naka de mottomo kimyō na mono desu."
+  },
+  "52": {
+    "text": "私たちは、思っているよりも世界の多くを見ていません。",
+    "romanization": "Watashitachi wa, omotteiru yori mo sekai no ōku o miteimasen."
+  },
+  "53": {
+    "text": "記憶は、使うたびに書き換えられます。",
+    "romanization": "Kioku wa, tsukau tabi ni kakikaeraremasu."
+  },
+  "54": {
+    "text": "同じ部屋にいる二人でも、異なる部屋を体験することがあります。",
+    "romanization": "Onaji heya ni iru futari demo, kotonaru heya o taiken suru koto ga arimasu."
+  },
+  "55": {
+    "text": "心は、自分が生きる世界を築き上げます。",
+    "romanization": "Kokoro wa, jibun ga ikiru sekai o kizuageimasu."
+  },
+  "56": {
+    "text": "言葉にできない経験もあります。",
+    "romanization": "Kotoba ni dekinai keiken mo arimasu."
+  },
+  "57": {
+    "text": "音楽は、翻訳なしに直接語りかけてくるようです。",
+    "romanization": "Ongaku wa, hon'yaku nashi ni chokusetsu katarikakete kuru yō desu."
+  },
+  "58": {
+    "text": "痛みは、教訓がなくても教師です。",
+    "romanization": "Itami wa, kyōkun ga nakute mo kyōshi desu."
+  },
+  "59": {
+    "text": "美しさは、時に手がかりとなります。",
+    "romanization": "Utsukushisa wa, toki ni tegakari to narimasu."
+  },
+  "60": {
+    "text": "退屈は、しばしば尋ねられるべき質問を隠しています。",
+    "romanization": "Taikutsu wa, shibashiba tazunerareru beki shitsumon o kakushiteimasu."
+  },
+  "61": {
+    "text": "孤独は、群衆が曖昧にするものを明確にします。",
+    "romanization": "Kodoku wa, gunshū ga aimai ni suru mono o meikaku ni shimasu."
+  },
+  "62": {
+    "text": "睡眠は「何もない」わけではありません。",
+    "romanization": "Suimin wa \"nani mo nai\" wake de wa arimasen."
+  },
+  "63": {
+    "text": "死は、時間に形を与えます。",
+    "romanization": "Shi wa, jikan ni katachi o ataemasu."
+  },
+  "64": {
+    "text": "現在こそが、何かが起こる唯一の場所です。",
+    "romanization": "Genzaikoso ga, nanika ga okoru yuiitsu no basho desu."
+  },
+  "65": {
+    "text": "ソクラテスは「吟味されない人生に生きる価値はない」と言いました。",
+    "romanization": "Sokuratesu wa \"ginmi sarenai jinsei ni ikiru kachi wa nai\" to iimashita."
+  },
+  "66": {
+    "text": "ストア派は、持っているものだけを望もうとしました。",
+    "romanization": "Sutoa-ha wa, motteiru mono dake o nozomō to shimashita."
+  },
+  "67": {
+    "text": "孔子は、小さな儀式の大切さを教えました。",
+    "romanization": "Kōshi wa, chiisana gishiki no taisetsu-sa o oshiemashita."
+  },
+  "68": {
+    "text": "ブッダは、苦しみの原因を指し示しました。",
+    "romanization": "Budda wa, kurushimi no gen'in o sashishimeshimashita."
+  },
+  "69": {
+    "text": "アリストテレスは、徳は感情ではなく習慣だと考えました。",
+    "romanization": "Arisutoteresu wa, toku wa kanjō de wa naku shūkan da to kangaemashita."
+  },
+  "70": {
+    "text": "プラトンは、私たちが見るものは影のようなものだと考えました。",
+    "romanization": "Puraton wa, watashitachi ga miru mono wa kage no yō na mono da to kangaemashita."
+  },
+  "71": {
+    "text": "老子は、水の道を称賛しました。",
+    "romanization": "Rōshi wa, mizu no michi o shōsan shimashita."
+  },
+  "72": {
+    "text": "エピクロスは、壮大な快楽ではなく、穏やかな快楽を求めました。",
+    "romanization": "Epikurosu wa, sōdai na kairaku de wa naku, odayaka na kairaku o motomemashita."
+  },
+  "73": {
+    "text": "ディオゲネスは、慣習を嘲笑することで教えを説きました。",
+    "romanization": "Diogenesu wa, kanshū o chōshō suru koto de oshie o tokimashita."
+  },
+  "74": {
+    "text": "多くの伝統は、意見の相違よりも共通点が多いです。",
+    "romanization": "Ōku no dentō wa, iken no sōi yori mo kyōtsūten ga ōi desu."
+  },
+  "75": {
+    "text": "カントは「人を単なる手段としてではなく、目的として扱え」と言いました。",
+    "romanization": "Kanto wa \"hito o tan'naru shudan to shite de wa naku, mokuteki to shite atsukae\" to iimashita."
+  },
+  "76": {
+    "text": "ヒュームは、理性だけでは私たちに配慮させないことに気づきました。",
+    "romanization": "Hyūmu wa, risei dake de wa watashitachi ni hairyo sasenai koto ni kizukimashita."
+  },
+  "77": {
+    "text": "ニーチェは、厳しい真実も贈り物になりうると書きました。",
+    "romanization": "Nīche wa, kibishii shinjitsu mo okurimono ni nairiuru to kakimashita."
+  },
+  "78": {
+    "text": "ウィトゲンシュタインは「私たちの言語の限界が、私たちの世界の限界である」と言いました。",
+    "romanization": "Witogenshutain wa \"watashitachi no gengo no genkai ga, watashitachi no sekai no genkai de aru\" to iimashita."
+  },
+  "79": {
+    "text": "シモーヌ・ド・ボーヴォワールは、私たちは選択を通して自分自身になると主張しました。",
+    "romanization": "Shimōnu do Bōvowāru wa, watashitachi wa sentaku o tōshite jibun jishin ni naru to shuchō shimashita."
+  },
+  "80": {
+    "text": "ウィリアム・ジェームズは、信念が私たちの能力を形作ると言いました。",
+    "romanization": "Wiriamu Jēmuzu wa, shin'nen ga watashitachi no nōryoku o katachizukuru to iimashita."
+  },
+  "81": {
+    "text": "ジョン・ロールズは「自分が誰になるか分からないとしたら、どんなルールを受け入れるか」と問いかけました。",
+    "romanization": "Jon Rōruzu wa \"jibun ga dare ni naru ka wakaranai to shitara, donna rūru o ukeireru ka\" to toikakemashita."
+  },
+  "82": {
+    "text": "ハンナ・アーレントは、悪は平凡なものになりうると警告しました。",
+    "romanization": "Hanna Ārento wa, aku wa heibon na mono ni nairiuru to keikoku shimashita."
+  },
+  "83": {
+    "text": "アイリス・マードックは、愛とは「注意を払う」という骨の折れる仕事だと言いました。",
+    "romanization": "Airisu Mādokku wa, ai to wa \"chūi o harau\" to iu hone no oreru shigoto da to iimashita."
+  },
+  "84": {
+    "text": "多くの現代哲学者は、様々な伝統から自由に借用しています。",
+    "romanization": "Ōku no gendai tetsugakusha wa, samazama na dentō kara jiyū ni shakuyō shiteimasu."
+  },
+  "85": {
+    "text": "今日実際にできることから始めましょう。",
+    "romanization": "Kyō jissai ni dekiru koto kara hajimemashō."
+  },
+  "86": {
+    "text": "自分が間違っているかもしれないと思って耳を傾けましょう。",
+    "romanization": "Jibun ga machigatteiru kamo shirenai to omotte mimi o katamukemashō."
+  },
+  "87": {
+    "text": "もっと稼ぐ前に、もっと欲しがらないように努めましょう。",
+    "romanization": "Motto kasegu mae ni, motto hoshigaranai yō ni tsutomemashō."
+  },
+  "88": {
+    "text": "誰も見ていない時に、自分が何をしているか気づいてみましょう。",
+    "romanization": "Dare mo miteinai toki ni, jibun ga nani o shiteiru ka kizuite mimashō."
+  },
+  "89": {
+    "text": "散歩は、小さな哲学です。",
+    "romanization": "Sanpo wa, chiisana tetsugaku desu."
+  },
+  "90": {
+    "text": "最も難しい議論は、自分自身に負っているものです。",
+    "romanization": "Mottomo muzukashii giron wa, jibun jishin ni otteiru mono desu."
+  },
+  "91": {
+    "text": "意見は、道具を持つように扱いましょう。",
+    "romanization": "Iken wa, dōgu o motsu yō ni atsukaimashō."
+  },
+  "92": {
+    "text": "他人の言葉は、最も良い意味で受け取りましょう。",
+    "romanization": "Tanin no kotoba wa, mottomo yoi imi de uketorimashō."
+  },
+  "93": {
+    "text": "特別な日だけでなく、普段の朝にも感謝の気持ちを実践しましょう。",
+    "romanization": "Tokubetsuna hi dake de naku, fudan no asa ni mo kansha no kimochi o jissen shimashō."
+  },
+  "94": {
+    "text": "最短の道は、時として問いの中にあるものです。",
+    "romanization": "Saitan no michi wa, toki to shite toi no naka ni aru mono desu."
+  },
+  "95": {
+    "text": "驚きは、一種の注意です。",
+    "romanization": "Odoroki wa, isshu no chūi desu."
+  },
+  "96": {
+    "text": "少なくとも時々は、古い本を読みましょう。",
+    "romanization": "Sukunakutomo toki doki wa, furui hon o yomimashō."
+  },
+  "97": {
+    "text": "上手に意見を異にすれば、関係は続きます。",
+    "romanization": "Jōzu ni iken o koto ni sureba, kankei wa tsuzukimasu."
+  },
+  "98": {
+    "text": "良い人生とは、たくさんの小さな良い日々の積み重ねです。",
+    "romanization": "Yoi jinsei to wa, takusan no chiisana yoi hibi no tsumikasane desu."
+  },
+  "99": {
+    "text": "最後の言葉というものはありません。",
+    "romanization": "Saigo no kotoba to iu mono wa arimasen."
+  }
+}

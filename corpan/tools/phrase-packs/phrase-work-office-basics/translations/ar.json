@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "يبدأ الاجتماع بعد عشر دقائق.",
+    "romanization": "Yabdaʼ al-ijtimāʿ baʿda ʿashar daqāʾiq."
+  },
+  "1": {
+    "text": "هل يمكنك مشاركة شاشتك؟",
+    "romanization": "Hal yumkinuka mushārakat shāshatika?"
+  },
+  "2": {
+    "text": "آسف، كان صوتي مكتومًا.",
+    "romanization": "Āsif, kāna ṣawtī maktūman."
+  },
+  "3": {
+    "text": "لقد تجاوزنا الوقت المحدد.",
+    "romanization": "Laqad tajāwaznā al-waqt al-muḥaddad."
+  },
+  "4": {
+    "text": "لنؤجل ذلك إلى الاجتماع القادم.",
+    "romanization": "Linaʾujjal dhālika ilá al-ijtimāʿ al-qādim."
+  },
+  "5": {
+    "text": "سأدوّن الملاحظات.",
+    "romanization": "Saʾudawwin al-mulāḥaẓāt."
+  },
+  "6": {
+    "text": "هل يمكننا أخذ جولة سريعة على الحضور؟",
+    "romanization": "Hal yumkinunā akhdh jawlah sarīʿah ʿalá al-ḥuḍūr?"
+  },
+  "7": {
+    "text": "جدول الأعمال موجود في دعوة التقويم.",
+    "romanization": "Jadwal al-aʿmāl mawjūd fī daʿwat al-taqwīm."
+  },
+  "8": {
+    "text": "من سيقود هذا الاجتماع؟",
+    "romanization": "Man sayaqūd hādhā al-ijtimāʿ?"
+  },
+  "9": {
+    "text": "هل نسجل هذا الاجتماع؟",
+    "romanization": "Hal nusajjil hādhā al-ijtimāʿ?"
+  },
+  "10": {
+    "text": "انقطع الاتصال في منتصف المكالمة.",
+    "romanization": "Inqaṭaʿa al-ittiṣāl fī muntaṣaf al-mukālamah."
+  },
+  "11": {
+    "text": "هل يمكننا تأجيل هذا خمس عشرة دقيقة؟",
+    "romanization": "Hal yumkinunā taʾjīl hādhā khams ʿashrata daqīqah?"
+  },
+  "12": {
+    "text": "دخل متأخرًا لكن بهدوء.",
+    "romanization": "Dakhala mutaʾakhkhiran lakin bihudūʾ."
+  },
+  "13": {
+    "text": "الغرفة محجوزة مرتين مرة أخرى.",
+    "romanization": "Al-ghurfah maḥjūzah marratayn marrah ukhrá."
+  },
+  "14": {
+    "text": "لنؤجل هذا ونعود إليه لاحقًا.",
+    "romanization": "Linaʾujjal hādhā wa-naʿūd ilayhi lāḥiqan."
+  },
+  "15": {
+    "text": "لدي موعد نهائي في الثالثة.",
+    "romanization": "Ladayya mawʿid nihāʾī fī al-thālithah."
+  },
+  "16": {
+    "text": "هل يمكنك البقاء دقيقتين إضافيتين؟",
+    "romanization": "Hal yumkinuka al-baqāʾ daqīqatayn iḍāfiyyatayn?"
+  },
+  "17": {
+    "text": "السبورة البيضاء ممتلئة.",
+    "romanization": "Al-ṣabbūrah al-bayḍāʾ mumtaliʾah."
+  },
+  "18": {
+    "text": "هل يمكنك تلخيص بنود العمل؟",
+    "romanization": "Hal yumkinuka talkhīṣ bunūd al-ʿamal?"
+  },
+  "19": {
+    "text": "الاجتماعات الوقوفية سريعة بشكل مدهش.",
+    "romanization": "Al-ijtimāʿāt al-wuqūfīyah sarīʿah bishakl mudhish."
+  },
+  "20": {
+    "text": "سأرد عليك قبل نهاية اليوم.",
+    "romanization": "Saʾarudd ʿalayka qabla nihāyat al-yawm."
+  },
+  "21": {
+    "text": "هل وصل بريدي الإلكتروني الأخير؟",
+    "romanization": "Hal waṣala barīdī al-iliktrūnī al-akhīr?"
+  },
+  "22": {
+    "text": "آسف على الرد المتأخر.",
+    "romanization": "Āsif ʿalá al-radd al-mutaʾakhkhir."
+  },
+  "23": {
+    "text": "سأضم سارة إلى هذا الأمر.",
+    "romanization": "Saʾaḍumm Sārah ilá hādhā al-amr."
+  },
+  "24": {
+    "text": "المرفق لم يصل.",
+    "romanization": "Al-murfaqa lam yaṣil."
+  },
+  "25": {
+    "text": "لقد وضعت عليه علامة \"عاجل\".",
+    "romanization": "Laqad waḍaʿtu ʿalayhi ʿalāmat \"ʿājil\"."
+  },
+  "26": {
+    "text": "هل يمكنك إعادة إرسال ذلك الملف؟",
+    "romanization": "Hal yumkinuka iʿādat irsāl dhālika al-milaff?"
+  },
+  "27": {
+    "text": "المحادثة طالت، دعني ألخص.",
+    "romanization": "Al-muḥādathah ṭālat, daʿnī ulaḫḫiṣ."
+  },
+  "28": {
+    "text": "استخدم سطر الموضوع حتى أتمكن من العثور عليه.",
+    "romanization": "Istaʿmil saṭr al-mawḍūʿ ḥattá atamakkan min al-ʿuthūr ʿalayhi."
+  },
+  "29": {
+    "text": "قام بتنظيف صندوق بريده الوارد خلال عطلة نهاية الأسبوع.",
+    "romanization": "Qāma bitanẓīf ṣundūq barīdih al-wārid khilāla ʿuṭlat nihāyat al-usbūʿ."
+  },
+  "30": {
+    "text": "الرجاء الرد بحلول يوم الجمعة.",
+    "romanization": "Al-rajāʾ al-radd biḥulūl yawm al-jumuʿah."
+  },
+  "31": {
+    "text": "سأرسل ملاحظة قصيرة عندما ينتهي.",
+    "romanization": "Saʾursil mulāḥaẓah qaṣīrah ʿindamā yantahī."
+  },
+  "32": {
+    "text": "الرد التلقائي يقول إنه مسافر.",
+    "romanization": "Al-radd al-tilqāʾī yaqūl innahu musāfir."
+  },
+  "33": {
+    "text": "قامت بنسخ الشخص الخطأ عن طريق الخطأ.",
+    "romanization": "Qāmat binaskh al-shakhṣ al-khaṭaʾ ʿan ṭarīq al-khaṭaʾ."
+  },
+  "34": {
+    "text": "ثلاثة تذكيرات كافية.",
+    "romanization": "Thalāthat tadhkīrāt kāfiyah."
+  },
+  "35": {
+    "text": "هل يمكنك إعادة توجيه المحادثة لي؟",
+    "romanization": "Hal yumkinuka iʿādat tawjīh al-muḥādathah lī?"
+  },
+  "36": {
+    "text": "الدردشة أسرع من البريد الإلكتروني لهذا الأمر.",
+    "romanization": "Al-dardashah asraʿ min al-barīd al-iliktrūnī li-hādhā al-amr."
+  },
+  "37": {
+    "text": "فاتني رسالتك وسط كل هذه الضوضاء.",
+    "romanization": "Fātanī risālatuka wasaṭ kull hādhihi al-ḍawḍāʾ."
+  },
+  "38": {
+    "text": "الرابط في بريدك الإلكتروني يؤدي إلى صفحة غير موجودة.",
+    "romanization": "Al-rābiṭ fī barīdika al-iliktrūnī yuʾaddī ilá ṣafḥah ghayr mawjūdah."
+  },
+  "39": {
+    "text": "الرجاء تأكيد استلامك لهذا.",
+    "romanization": "Al-rajāʾ taʾkīd istilāmika li-hādhā."
+  },
+  "40": {
+    "text": "الموعد النهائي هو الجمعة ظهرًا.",
+    "romanization": "Al-mawʿid al-nihāʾī huwa al-jumuʿah ẓuhran."
+  },
+  "41": {
+    "text": "سيكون لدي مسودة أولية بحلول الأربعاء.",
+    "romanization": "Sayakūnu ladayya musawwadah awwalīyah biḥulūl al-arbiʿāʾ."
+  },
+  "42": {
+    "text": "نحتاج إلى إطلاق شيء هذا الأسبوع.",
+    "romanization": "Naḥtāj ilá iṭlāq shayʾ hādhā al-usbūʿ."
+  },
+  "43": {
+    "text": "تأخر المشروع ليوم واحد.",
+    "romanization": "Taʾakhkhara al-mashrūʿ li-yawm wāḥid."
+  },
+  "44": {
+    "text": "هل يمكنك مراجعة هذا قبل أن أرسله؟",
+    "romanization": "Hal yumkinuka murājaʿat hādhā qabla an ursilah?"
+  },
+  "45": {
+    "text": "أنا مدين لك بتحديث عن الحالة.",
+    "romanization": "Anā madīn laka bitaḥdīth ʿan al-ḥālah."
+  },
+  "46": {
+    "text": "الأرقام لا تتطابق مع ما أرسلته الأسبوع الماضي.",
+    "romanization": "Al-arqām lā tataṭābaq maʿa mā arsaltuhu al-usbūʿ al-māḍī."
+  },
+  "47": {
+    "text": "نحن متوقفون بانتظار قرار من العميل.",
+    "romanization": "Naḥnu mutawaqqifūn bi-intizār qarār min al-ʿamīl."
+  },
+  "48": {
+    "text": "عمل خلال الغداء لإنهائه.",
+    "romanization": "ʿAmila khilāla al-ghadāʾ li-inhāʾihi."
+  },
+  "49": {
+    "text": "انتهيت أخيرًا من التقرير.",
+    "romanization": "Intahaytu akhīran min al-taqrīr."
+  },
+  "50": {
+    "text": "سأبدأ حالما أحصل على الموافقة.",
+    "romanization": "Saʾabdaʾ ḥālamā aḥṣul ʿalá al-muwāfaqah."
+  },
+  "51": {
+    "text": "هل يمكنك الموافقة على هذه النسخة؟",
+    "romanization": "Hal yumkinuka al-muwāfaqah ʿalá hādhihi al-nuskhah?"
+  },
+  "52": {
+    "text": "اكتشفت خطأ مطبعيًا قبل الإطلاق مباشرة.",
+    "romanization": "Iktashafat khaṭaʾan maṭbaʿīyan qabla al-iṭlāq mubāsharah."
+  },
+  "53": {
+    "text": "أجلنا الإطلاق إلى الثلاثاء القادم.",
+    "romanization": "Ajjalnā al-iṭlāq ilá al-thulāthāʾ al-qādim."
+  },
+  "54": {
+    "text": "كان التقدير مضاعفًا.",
+    "romanization": "Kāna al-taqdīr muḍāʿafan."
+  },
+  "55": {
+    "text": "أفرغ فترة ما بعد الظهر للتركيز.",
+    "romanization": "Afraġa fatrat mā baʿda al-ẓuhr lil-tarkīz."
+  },
+  "56": {
+    "text": "عاد العقد موقعًا.",
+    "romanization": "ʿĀda al-ʿaqd muwaqqaʿan."
+  },
+  "57": {
+    "text": "لنعتبره منتهيًا وننتقل إلى التالي.",
+    "romanization": "Linʿtabirhu muntahiyan wa-nantaqil ilá al-tālī."
+  },
+  "58": {
+    "text": "النسخة الأولى غير مصقولة لكنها تعمل.",
+    "romanization": "Al-nuskhah al-ūlá ghayr maṣqūlah lākinnahā taʿmal."
+  },
+  "59": {
+    "text": "سلم مبكرًا هذه المرة.",
+    "romanization": "Sallama mubakkiran hādhihi al-marrah."
+  },
+  "60": {
+    "text": "أهلاً بك في الفريق.",
+    "romanization": "Ahlan bika fī al-farīq."
+  },
+  "61": {
+    "text": "سأعرفك على الآخرين.",
+    "romanization": "Saʾuʿarrifuka ʿalá al-ākharīn."
+  },
+  "62": {
+    "text": "لقد عادت للتو من إجازتها.",
+    "romanization": "Laqad ʿādat lil-taw min ijāzatihā."
+  },
+  "63": {
+    "text": "هو الشخص المناسب لتسأله عن هذا.",
+    "romanization": "Huwa al-shakhṣ al-munāsib litasʾalahu ʿan hādhā."
+  },
+  "64": {
+    "text": "نتقاسم مكتبًا أيام الثلاثاء.",
+    "romanization": "Nataqāsam maktaban ayyām al-thulāthāʾ."
+  },
+  "65": {
+    "text": "من يعرف أكثر عن التسعير؟",
+    "romanization": "Man yaʿrif akthar ʿan al-tasʿīr?"
+  },
+  "66": {
+    "text": "هو دائمًا يحضر القهوة للفريق.",
+    "romanization": "Huwa dāʾiman yuḥḍir al-qahwah lil-farīq."
+  },
+  "67": {
+    "text": "الموظف الجديد يتعلم بسرعة.",
+    "romanization": "Al-muwaẓẓaf al-jadīd yataʿallam bisurʿah."
+  },
+  "68": {
+    "text": "تعمل عن كثب مع قسم التسويق.",
+    "romanization": "Taʿmal ʿan kathab maʿa qism al-taswīq."
+  },
+  "69": {
+    "text": "هو الأقدم هنا.",
+    "romanization": "Huwa al-aqdam hunā."
+  },
+  "70": {
+    "text": "قسموا العمل بالتساوي تمامًا.",
+    "romanization": "Qasamū al-ʿamal bil-tasāwī tamāman."
+  },
+  "71": {
+    "text": "تناولنا الغداء ورسمنا الخطوط العريضة.",
+    "romanization": "Tanāwalnā al-ghadāʾ wa-rasamnā al-khuṭūṭ al-ʿarīḍah."
+  },
+  "72": {
+    "text": "حل محلي عندما كنت مريضًا.",
+    "romanization": "Ḥalla maḥallī ʿindamā kuntu marīḍan."
+  },
+  "73": {
+    "text": "تجمع الفريق حول الحاسوب المحمول.",
+    "romanization": "Tajammaʿa al-farīq ḥawla al-ḥāsūb al-maḥmūl."
+  },
+  "74": {
+    "text": "تتذكر أعياد ميلاد الجميع.",
+    "romanization": "Tataḍakkar aʿyād mīlād al-jamīʿ."
+  },
+  "75": {
+    "text": "سأنضم عن بعد غدًا.",
+    "romanization": "Saʾanḍamm ʿan buʿd ghadan."
+  },
+  "76": {
+    "text": "المكتب شبه فارغ أيام الجمعة.",
+    "romanization": "Al-maktab shibhu fārigh ayyām al-jumuʿah."
+  },
+  "77": {
+    "text": "اتصالي بالإنترنت غير مستقر اليوم.",
+    "romanization": "Ittiṣālī bil-intirnit ghayr mustaqirr al-yawm."
+  },
+  "78": {
+    "text": "يعمل من مدينة أخرى.",
+    "romanization": "Yaʿmal min madīnah ukhrá."
+  },
+  "79": {
+    "text": "يجتمع الفريق شخصيًا مرة واحدة في الشهر.",
+    "romanization": "Yajtamaʿu al-farīq shakhṣīyan marrah wāḥidah fī al-shahr."
+  },
+  "80": {
+    "text": "جهزت زاوية من غرفة النوم كمكتب.",
+    "romanization": "Jahhazat zāwiyah min ghurfat al-nawm ka-maktab."
+  },
+  "81": {
+    "text": "المكتب المنزلي أصبح مرتبًا أخيرًا.",
+    "romanization": "Al-maktab al-manzilī aṣbaḥa murattaban akhīran."
+  },
+  "82": {
+    "text": "هل يمكنك تشغيل الكاميرا الخاصة بك؟",
+    "romanization": "Hal yumkinuka tashghīl al-kāmīrā al-khāṣṣah bika?"
+  },
+  "83": {
+    "text": "الضوضاء الخلفية لا بأس بها، لا تقلق.",
+    "romanization": "Al-ḍawḍāʾ al-khalfīyah lā baʾsa bihā, lā taqlaq."
+  },
+  "84": {
+    "text": "نجري تفقدًا سريعًا كل صباح.",
+    "romanization": "Nujrī tafaqqudan sarīʿan kull ṣabāḥ."
+  },
+  "85": {
+    "text": "الطابعة عالقة مرة أخرى.",
+    "romanization": "Al-ṭābiʿah ʿāliqah marrah ukhrá."
+  },
+  "86": {
+    "text": "آلة القهوة نفدت منها الحبوب.",
+    "romanization": "Ālat al-qahwah nafadat minhā al-ḥubūb."
+  },
+  "87": {
+    "text": "هل يمكنك فتح الباب؟",
+    "romanization": "Hal yumkinuka fatḥ al-bāb?"
+  },
+  "88": {
+    "text": "نافذة غرفة الاجتماعات لا تفتح.",
+    "romanization": "Nāfadhat ghurfat al-ijtimāʿāt lā taftaḥ."
+  },
+  "89": {
+    "text": "شخص ما ترك غداءه في الثلاجة لمدة أسبوع.",
+    "romanization": "Shakhṣun mā taraka ghadāʾahu fī al-thallājah li-muddat usbūʿ."
+  },
+  "90": {
+    "text": "المطبخ هادئ في الساعة الثالثة.",
+    "romanization": "Al-maṭbakh hādiʾ fī al-sāʿah al-thālithah."
+  },
+  "91": {
+    "text": "صعد الدرج لتصفية ذهنه.",
+    "romanization": "Ṣaʿada al-daraj li-taṣfiyat dhahnihi."
+  },
+  "92": {
+    "text": "النبتة على حافة النافذة تنمو جيدًا.",
+    "romanization": "Al-nabtah ʿalá ḥāffat al-nāfidhah tanmū jayyidan."
+  },
+  "93": {
+    "text": "هل يمكنك التوقيع على طرد في مكتب الاستقبال؟",
+    "romanization": "Hal yumkinuka al-tawqīʿ ʿalá ṭard fī maktab al-istiqbāl?"
+  },
+  "94": {
+    "text": "قارئ البطاقات لا يعمل بشكل صحيح.",
+    "romanization": "Qāriʾ al-biṭāqāt lā yaʿmal bishakl ṣaḥīḥ."
+  },
+  "95": {
+    "text": "نهاية اليوم دائمًا ما تأتي فجأة.",
+    "romanization": "Nihāyat al-yawm dāʾiman mā taʾtī fajaʾah."
+  },
+  "96": {
+    "text": "يفضل العمل مع نافذة واحدة مفتوحة في كل مرة.",
+    "romanization": "Yufaḍḍil al-ʿamal maʿa nāfidhah wāḥidah maftūḥah fī kull marrah."
+  },
+  "97": {
+    "text": "تشعل شمعة للإشارة إلى بداية اليوم.",
+    "romanization": "Tushʿil shamʿah lil-ishārah ilá bidāyat al-yawm."
+  },
+  "98": {
+    "text": "نزهة قصيرة بعد الغداء تساعدني على التفكير.",
+    "romanization": "Nuzhah qaṣīrah baʿda al-ghadāʾ tusāʿidunī ʿalá al-tafkīr."
+  },
+  "99": {
+    "text": "بعض أيام الاثنين تبدأ بانتصار صغير.",
+    "romanization": "Baʿḍ ayyām al-ithnayn tabdaʾu bi-intiṣār ṣaghīr."
+  }
+}

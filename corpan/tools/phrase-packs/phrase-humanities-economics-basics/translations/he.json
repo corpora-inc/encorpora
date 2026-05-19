@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "כשיש יותר ביקוש, המחירים עולים.",
+    "romanization": "K'sheyesh yoter bikush, ha'mechirim olim."
+  },
+  "1": {
+    "text": "כשההיצע גדל, המחירים בדרך כלל יורדים.",
+    "romanization": "K'sheha'hetze gadel, ha'mechirim b'derech klal yordim."
+  },
+  "2": {
+    "text": "הנחה גורמת ליותר אנשים לקנות.",
+    "romanization": "Hanacha goremeth l'yoter anashim liknot."
+  },
+  "3": {
+    "text": "אותו מוצר עולה מחירים שונים בערים שונות.",
+    "romanization": "Oto mutzar oleh mechirim shonim b'arim shonot."
+  },
+  "4": {
+    "text": "הביקוש יכול להשתנות בן לילה.",
+    "romanization": "Ha'bikush yachol lehishtanot ben layla."
+  },
+  "5": {
+    "text": "מוכרים מעלים מחירים כשהמלאי אוזל.",
+    "romanization": "Mochrim ma'alim mechirim k'sheha'milay ozel."
+  },
+  "6": {
+    "text": "קונים משווים מחירים כדי למצוא את העסקה הכי טובה.",
+    "romanization": "Konim mashvim mechirim k'dei limtzo et ha'iska ha'chi tova."
+  },
+  "7": {
+    "text": "לפעמים מחיר גבוה מסמן איכות.",
+    "romanization": "Lif'amim mechir gavoha mesamen eichut."
+  },
+  "8": {
+    "text": "לפעמים מחיר גבוה הוא סתם תרגיל שיווקי.",
+    "romanization": "Lif'amim mechir gavoha hu stam targil shivuki."
+  },
+  "9": {
+    "text": "משלוח חינם משפיע על איך שאנשים תופסים קנייה.",
+    "romanization": "Mishloach chinam mashpia al eich she'anashim tofsim kniya."
+  },
+  "10": {
+    "text": "המחיר הוא כמעט אף פעם לא העלות הכוללת.",
+    "romanization": "Ha'mechir hu kim'at af pa'am lo ha'alut ha'kolelet."
+  },
+  "11": {
+    "text": "גם זמן הוא סוג של עלות.",
+    "romanization": "Gam zman hu sug shel alut."
+  },
+  "12": {
+    "text": "תור ארוך הוא המחיר שמשלמים כשהמחיר נמוך מדי.",
+    "romanization": "Tor aroch hu ha'mechir she'meshalmim k'sheha'mechir namuch midai."
+  },
+  "13": {
+    "text": "מבצעים גורמים לאנשים לקנות דברים שלא תכננו.",
+    "romanization": "Mivtza'im gormim l'anashim liknot dvarim she'lo tichnenu."
+  },
+  "14": {
+    "text": "אנשים מגיבים חזק יותר לאובדן כסף מאשר לרווח.",
+    "romanization": "Anashim magivim chazak yoter l'ovdan kesef me'asher l'revach."
+  },
+  "15": {
+    "text": "מחירים בדולרים ומחירים במטבע המקומי מרגישים אחרת.",
+    "romanization": "Mehirim b'dolarim u'mehirim ba'matbea ha'mekomi margishim acheret."
+  },
+  "16": {
+    "text": "הוצאה יומית קטנה מצטברת לסכום גדול בשנה.",
+    "romanization": "Hotza'a yomit ktana mitztaberet l'sum gadol b'shana."
+  },
+  "17": {
+    "text": "המכירה הראשונה ביום חשובה יותר מהאחרונה.",
+    "romanization": "Ha'mechira ha'rishona ba'yom chashuva yoter me'ha'achrona."
+  },
+  "18": {
+    "text": "הרבה קניות קטנות מסתירות הרגל אחד גדול.",
+    "romanization": "Harbe kniyot ktanot mastirot hergel echad gadol."
+  },
+  "19": {
+    "text": "האפשרות הזולה ביותר היא לפעמים היקרה ביותר בסופו של דבר.",
+    "romanization": "Ha'efsharut ha'zola beyoter hi lif'amim ha'yekara beyoter b'sofo shel davar."
+  },
+  "20": {
+    "text": "כסף הוא בסך הכל הסכמה משותפת.",
+    "romanization": "Kesef hu b'sach ha'kol haskama meshutefet."
+  },
+  "21": {
+    "text": "חיסכון הוא תשלום לעצמך העתידי.",
+    "romanization": "Chisachon hu tashlum l'atzmecha ha'atidi."
+  },
+  "22": {
+    "text": "תקציב הוא תוכנית, לא עונש.",
+    "romanization": "Taktsiv hu tochnit, lo onesh."
+  },
+  "23": {
+    "text": "ריבית דריבית היא סבלנות עם מנוע קטן.",
+    "romanization": "Ribit d'ravit hi savlanut im mano'a katan."
+  },
+  "24": {
+    "text": "אינפלציה שוחקת לאט את הכסף שנשמר במזומן.",
+    "romanization": "Inflatzia shocheket le'at et ha'kesef she'nishmar b'mezuman."
+  },
+  "25": {
+    "text": "הלוואה היא הלוואה מעצמך העתידי.",
+    "romanization": "Halva'a hi halva'a me'atzmecha ha'atidi."
+  },
+  "26": {
+    "text": "ריבית היא שכר הדירה על כסף לווה.",
+    "romanization": "Ribit hi s'char ha'dira al kesef love."
+  },
+  "27": {
+    "text": "היא עוקבת אחרי כל הוצאה במשך חודש כדי לזהות את הדפוס.",
+    "romanization": "Hi okevet acharei kol hotza'a b'meshech chodesh k'dei lezahot et ha'd'fus."
+  },
+  "28": {
+    "text": "הוא חוסך סכום קבוע בכל יום משכורת, לפני כל הוצאה אחרת.",
+    "romanization": "Hu chosech sum kavu'a b'chol yom maskoret, lifnei kol hotza'a acheret."
+  },
+  "29": {
+    "text": "קרן חירום הופכת אסונות קטנים לפחות כואבים.",
+    "romanization": "Keren cherum hofecht asonot ktanim l'fachot ko'avim."
+  },
+  "30": {
+    "text": "להוציא קצת פחות זה לרוב קל יותר מלהרוויח יותר.",
+    "romanization": "Lehotzi ktzat pachot ze la'rov kal yoter mil'harvi'ach yoter."
+  },
+  "31": {
+    "text": "העלאת שכר יכולה להיבלע בהוצאות גדולות יותר.",
+    "romanization": "Ha'ala'at sachar yechola lehibalea b'hotza'ot gdolot yoter."
+  },
+  "32": {
+    "text": "הוא פרע את ההלוואה מוקדם והרגיש הקלה.",
+    "romanization": "Hu para et ha'halva'a mukdam v'hirgish hakala."
+  },
+  "33": {
+    "text": "רוב האנשים מעריכים יתר על המידה את המשמעת שלהם בשנה הבאה.",
+    "romanization": "Rov ha'anashim ma'arichim yeter al ha'mida et ha'mishma'at shelahem ba'shana ha'ba'a."
+  },
+  "34": {
+    "text": "דאגות כלכליות מצטמצמות כשיש תוכנית.",
+    "romanization": "Da'agot kalkaliyot mitztamtsemot k'sheyesh tochnit."
+  },
+  "35": {
+    "text": "שוק הוא בסך הכל מקום מפגש לקונים ומוכרים.",
+    "romanization": "Shuk hu b'sach ha'kol mekom mifgash l'konim u'mochrim."
+  },
+  "36": {
+    "text": "חנויות מקוונות הן שווקים ללא קירות.",
+    "romanization": "Chanuyot mekuvanot hen shvakim l'lo kirot."
+  },
+  "37": {
+    "text": "התמחות היא הסיבה שרוב הדברים זולים.",
+    "romanization": "Hitmachut hi ha'siba she'rov ha'dvarim zolim."
+  },
+  "38": {
+    "text": "אנשים סוחרים בדברים שהם לא מייצרים בעצמם.",
+    "romanization": "Anashim sochrim b'dvarim she'hem lo meyatzerim b'atzmam."
+  },
+  "39": {
+    "text": "שכר משקף את מה שמשולם לאדם, לא תמיד את שוויו האמיתי.",
+    "romanization": "Sachar meshaqef et ma she'mesulam l'adam, lo tamid et shivyo ha'amiti."
+  },
+  "40": {
+    "text": "יש עבודות שמשלמות טוב כי מעט אנשים רוצים אותן.",
+    "romanization": "Yesh avodot she'meshalmot tov ki me'at anashim rotzim otan."
+  },
+  "41": {
+    "text": "יש עבודות שמשלמות טוב כי מעט אנשים מסוגלים לבצע אותן.",
+    "romanization": "Yesh avodot she'meshalmot tov ki me'at anashim mesugalim levatzea otan."
+  },
+  "42": {
+    "text": "השוק לא תמיד מתגמל את העבודה המועילה ביותר.",
+    "romanization": "Ha'shuk lo tamid metagmel et ha'avoda ha'mo'ila beyoter."
+  },
+  "43": {
+    "text": "טכנולוגיה חדשה יכולה לחסל תעשייה ותיקה במהירות.",
+    "romanization": "Technologia chadasha yechola lechasel ta'asiya vatika b'mehirut."
+  },
+  "44": {
+    "text": "אנשים עוברים לרוב למקומות שבהם יש עבודה.",
+    "romanization": "Anashim ovrim la'rov l'mekomot she'bahem yesh avoda."
+  },
+  "45": {
+    "text": "עסקים קטנים מהווים את רוב הכלכלה.",
+    "romanization": "Asakim ktanim mehavim et rov ha'kalkala."
+  },
+  "46": {
+    "text": "עובד טוב חוסך יותר ממה שהוא עולה.",
+    "romanization": "Oved tov chosech yoter mimah she'hu oleh."
+  },
+  "47": {
+    "text": "משא ומתן הוא חלק מכל עבודה.",
+    "romanization": "Masa u'matan hu chelek mikol avoda."
+  },
+  "48": {
+    "text": "הכנסה נוספת נותנת לך יותר אפשרויות.",
+    "romanization": "Hachnasa נוספת notenet lecha yoter efsharuyot."
+  },
+  "49": {
+    "text": "לפעמים, התפטרות היא המהלך בעל ההשפעה הגדולה ביותר.",
+    "romanization": "Lif'amim, hitpatrut hi ha'mahalach ba'al ha'hashpa'a ha'gdola beyoter."
+  },
+  "50": {
+    "text": "אנשים מגיבים לתמריצים, אפילו קטנים.",
+    "romanization": "Anashim magivim l'tamritim, afilu ktanim."
+  },
+  "51": {
+    "text": "\"חינם\" היא מילת קסם.",
+    "romanization": "\"Chinam\" hi milat kesem."
+  },
+  "52": {
+    "text": "חודש ראשון חינם משנה הרבה החלטות.",
+    "romanization": "Chodesh rishon chinam meshane harbe hachlatot."
+  },
+  "53": {
+    "text": "מנויים מתוכננים כך שישכחו מהם.",
+    "romanization": "Minuyim metuchnanin kach she'yishkechu mehem."
+  },
+  "54": {
+    "text": "מספרים עגולים נתפסים כגדולים יותר ממה שהם באמת.",
+    "romanization": "Misparim agulim nitpasim k'gdolim yoter mimah she'hem ba'emet."
+  },
+  "55": {
+    "text": "עלויות שקועות לא צריכות להשפיע על ההחלטה הבאה.",
+    "romanization": "Aluyot shku'ot lo tzrichot lehashpia al ha'hachlata ha'ba'a."
+  },
+  "56": {
+    "text": "עמלה קטנה משנה את תדירות ההגעה של אנשים.",
+    "romanization": "Amla ktana meshana et tedirut ha'haga'a shel anashim."
+  },
+  "57": {
+    "text": "טיפים משנים את החשבון הכלכלי של ארוחה.",
+    "romanization": "Tipim meshannim et ha'cheshbon ha'kalkali shel arucha."
+  },
+  "58": {
+    "text": "אנשים משתפים כשקל לשתף.",
+    "romanization": "Anashim meshatfim k'shekal leshatef."
+  },
+  "59": {
+    "text": "תור יכול ללמד אותך מה אנשים מעריכים היום.",
+    "romanization": "Tor yachol lelamed otcha ma anashim ma'arichim hayom."
+  },
+  "60": {
+    "text": "מבצעים לזמן מוגבל יוצרים תחושת דחיפות מכוונת.",
+    "romanization": "Mivtza'im l'zman mugbal yotzrim t'chushath d'chifut mekuvenet."
+  },
+  "61": {
+    "text": "תוכניות נאמנות מתגמלות התנהגות שהייתה מתרחשת בכל מקרה.",
+    "romanization": "Tochniyot ne'emanut metagmlot hitnahagut she'hayta mitracheshat b'chol mikre."
+  },
+  "62": {
+    "text": "אפשרויות ברירת מחדל קובעות יותר ממה שאנשים חושבים.",
+    "romanization": "Efsharuyot brerat mechdal kov'ot yoter mimah she'anashim choshvim."
+  },
+  "63": {
+    "text": "ביקורות משפיעות על הביקוש יותר מפרסומות.",
+    "romanization": "Bikurot mashpi'ot al ha'bikush yoter mi'pirsumot."
+  },
+  "64": {
+    "text": "שיווק מפה לאוזן עדיין עדיף על רוב הפרסום.",
+    "romanization": "Shivuk mi'peh l'ozen adayin adif al rov ha'pirsum."
+  },
+  "65": {
+    "text": "הכלכלה צומחת בשנים מסוימות ומתכווצת באחרות.",
+    "romanization": "Ha'kalkala tzomachat b'shanim mesuyamot u'mitkavetzet b'acherot."
+  },
+  "66": {
+    "text": "מיתונים מלמדים שיעורים שגאות כלכלית שוכחת.",
+    "romanization": "Mitonim melamdim shi'urim she'ge'ut kalkalit shochachat."
+  },
+  "67": {
+    "text": "צמיחה ארוכת טווח משפרת את מצבם של כולם, לאט.",
+    "romanization": "Tzmicha arukat tvach meshaperet et matzavam shel kulam, le'at."
+  },
+  "68": {
+    "text": "שיפורי פרודוקטיביות מסתתרים בכלים ובהרגלים.",
+    "romanization": "Shipurei produktiviyut mistatrim b'kelim u'v'hergelim."
+  },
+  "69": {
+    "text": "רעיונות חדשים הם המקור היחיד לצמיחה בת קיימא.",
+    "romanization": "Ra'ayonot chadashim hem ha'makor ha'yachid l'tzmicha bat kayama."
+  },
+  "70": {
+    "text": "גאות כלכלית יכולה להסוות הרבה החלטות שגויות.",
+    "romanization": "Ge'ut kalkalit yechola lehasvot harbe hachlatot shgoyot."
+  },
+  "71": {
+    "text": "קריסות פוגעות קודם כל במי שממונף יתר על המידה.",
+    "romanization": "Krisot pog'ot kodem kol b'mi she'memunaf yeter al ha'mida."
+  },
+  "72": {
+    "text": "כסף זול נוטה למצוא שימושים מסוכנים.",
+    "romanization": "Kesef zazul note limtzo shimushim mesukanim."
+  },
+  "73": {
+    "text": "קשה לזהות בועה כשאתה בתוכה.",
+    "romanization": "Kashe lezahot bu'a k'she'ata b'tocha."
+  },
+  "74": {
+    "text": "ההתאוששות אינה אחידה בין תעשיות ואזורים שונים.",
+    "romanization": "Ha'hit'oshshut eyna achida bein ta'asiyot v'azorim shonim."
+  },
+  "75": {
+    "text": "מדינות סוחרות כי שני הצדדים מרוויחים מכך.",
+    "romanization": "Medinot sochrot ki shnei ha'tzdadim marvichim mikach."
+  },
+  "76": {
+    "text": "מכסים מעלים את המחירים לצרכנים המקומיים.",
+    "romanization": "Mekasim ma'alim et ha'mechirim l'tzarchanim ha'mekomiyim."
+  },
+  "77": {
+    "text": "שערי חליפין משפיעים על עלות היבוא.",
+    "romanization": "Sha'arei chalifin mashpi'im al alut ha'yevu."
+  },
+  "78": {
+    "text": "מטבע חלש עוזר ליצואנים ופוגע ביבואנים.",
+    "romanization": "Matbea chalash ozer l'yetzuanim u'fogea b'yevu'anim."
+  },
+  "79": {
+    "text": "השקעות זרות יכולות לחזק או להחליש כלכלה.",
+    "romanization": "Hashka'ot zarot yecholot lechazek o le'hachlish kalkala."
+  },
+  "80": {
+    "text": "העברות כספים תומכות במשפחות רבות מעבר לגבולות.",
+    "romanization": "Ha'avarot ksafim tomchot b'mishpachot rabot me'ever la'gvulot."
+  },
+  "81": {
+    "text": "סנקציות משפיעות על האזרחים הפשוטים יותר מאשר על המנהיגים.",
+    "romanization": "Sanktziyot mashpi'ot al ha'ezrachim ha'pashutim yoter me'asher al ha'manhigim."
+  },
+  "82": {
+    "text": "שרשראות אספקה גלובליות נשברות במקומות בלתי צפויים.",
+    "romanization": "Sharsharot aspaka globaliyot nishbarot b'mekomot bilti tzefuyim."
+  },
+  "83": {
+    "text": "מחסור במדינה אחת יכול להשפיע על מחירים בכל העולם.",
+    "romanization": "Machsor b'medina achat yachol lehashpia al mechirim b'chol ha'olam."
+  },
+  "84": {
+    "text": "תעשיות מסוימות מתרכזות באזור אחד מסיבה טובה.",
+    "romanization": "Ta'asiyot mesuyamot mitrakzot b'ezor echad mi'siba tova."
+  },
+  "85": {
+    "text": "אי שוויון מתפתח בשקט כשאיש לא שם לב.",
+    "romanization": "I shivyon mitpate'ach b'sheket k'she'ish lo sam lev."
+  },
+  "86": {
+    "text": "מיסים הם המחיר שאנחנו משלמים על שירותים ציבוריים.",
+    "romanization": "Misim hem ha'mechir she'anachnu meshalmim al sherutim tziburiyim."
+  },
+  "87": {
+    "text": "שירותים ציבוריים הם אלה שאי אפשר לקנות בקלות באופן פרטי.",
+    "romanization": "Sherutim tziburiyim hem eleh she'i efshar liknot b'ekalut b'ofen prati."
+  },
+  "88": {
+    "text": "השפעות חיצוניות הן עלויות שאף אחד לא ביקש לשלם.",
+    "romanization": "Hashpa'ot chitzoniyot hen aluyot she'af echad lo bikesh leshalem."
+  },
+  "89": {
+    "text": "כשל שוק קטן יכול להיות בעל השפעות עצומות.",
+    "romanization": "Keshel shuk katan yachol lihyot ba'al hashpa'ot atzumot."
+  },
+  "90": {
+    "text": "השוק החופשי זקוק לכללים כדי להישאר חופשי.",
+    "romanization": "Ha'shuk ha'chofshi zakuk l'klalim k'dei lehisha'er chofshi."
+  },
+  "91": {
+    "text": "מידע מחולק באופן לא שווה בין קונים למוכרים.",
+    "romanization": "Meida mechulak b'ofen lo shave bein konim l'mochrim."
+  },
+  "92": {
+    "text": "אמון מוריד את עלות כל עסקה.",
+    "romanization": "Emun morid et alut kol iska."
+  },
+  "93": {
+    "text": "מוניטין הוא נכס שלא תמיד מקבל את ההערכה הראויה לו.",
+    "romanization": "Monitin hu neches she'lo tamid mekabel et ha'ha'aracha ha're'uya lo."
+  },
+  "94": {
+    "text": "מחיר תשומת הלב עלה.",
+    "romanization": "Mehir tsumat ha'lev ala."
+  },
+  "95": {
+    "text": "לשווקים החשובים ביותר לרוב אין מחירים.",
+    "romanization": "La'shvakim ha'chashuvim beyoter la'rov ein mechirim."
+  },
+  "96": {
+    "text": "זמן ותשומת לב הם בין המשאבים הנדירים ביותר.",
+    "romanization": "Zman u'tsumat lev hem bein ha'mashabim ha'nedirim beyoter."
+  },
+  "97": {
+    "text": "החלטות כלכליות הן גם החלטות מוסריות.",
+    "romanization": "Hachlatot kalkaliyot hen gam hachlatot musariyot."
+  },
+  "98": {
+    "text": "הכלכלה היא בסך הכל אנשים שעושים דברים אחד למען השני.",
+    "romanization": "Ha'kalkala hi b'sach ha'kol anashim she'osim dvarim echad lema'an ha'sheni."
+  },
+  "99": {
+    "text": "תקציב פשוט משנה יותר מכל תיאוריה מורכבת.",
+    "romanization": "Taktsiv pashut meshane yoter mikol te'orya murkevet."
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "什麼是美好的人生？",
+    "romanization": "shén me shì měi hǎo de rén shēng?"
+  },
+  "1": {
+    "text": "我們如何得知我們所知的一切？",
+    "romanization": "wǒ men rú hé dé zhī wǒ suǒ zhī de yī qiè?"
+  },
+  "2": {
+    "text": "「知道」跟「相信」之間有差別嗎？",
+    "romanization": "\"zhī dào\" gēn \"xiāng xìn\" zhī jiān yǒu chā bié ma?"
+  },
+  "3": {
+    "text": "為什麼會有東西，而不是什麼都沒有？",
+    "romanization": "wèi shén me huì yǒu dōng xī, ér bú shì shén me dōu méi yǒu?"
+  },
+  "4": {
+    "text": "是什麼讓一個人即使時間過去了，本質上還是同一個人？",
+    "romanization": "shì shén me ràng yī gè rén jí shǐ shí jiān guò qù le, běn zhì shàng hái shì tóng yī gè rén?"
+  },
+  "5": {
+    "text": "機器有可能思考嗎？",
+    "romanization": "jī qì yǒu kě néng sī kǎo ma?"
+  },
+  "6": {
+    "text": "我們看到的世界是真實的嗎？",
+    "romanization": "wǒ men kàn dào de shì jiè shì zhēn shí de ma?"
+  },
+  "7": {
+    "text": "我們對那些素未謀面的人有什麼義務？",
+    "romanization": "wǒ men duì nà xiē sù wèi móu miàn de rén yǒu shén me yì wù?"
+  },
+  "8": {
+    "text": "為什麼要改變心意會這麼困難？",
+    "romanization": "wèi shén me yào gǎi biàn xīn yì huì zhè me kùn nán?"
+  },
+  "9": {
+    "text": "兩個人意見一致代表什麼？",
+    "romanization": "liǎng gè rén yì jiàn yī zhì dài biǎo shén me?"
+  },
+  "10": {
+    "text": "真理是發明的還是被發現的？",
+    "romanization": "zhēn lǐ shì fā míng de hái shì bèi fā xiàn de?"
+  },
+  "11": {
+    "text": "為什麼我們對時間的感受會是現在這樣？",
+    "romanization": "wèi shén me wǒ men duì shí jiān de gǎn shòu huì shì xiàn zài zhè yàng?"
+  },
+  "12": {
+    "text": "意義從何而來？",
+    "romanization": "yì yì cóng hé ér lái?"
+  },
+  "13": {
+    "text": "自由意志到底是什麼？",
+    "romanization": "zì yóu yì zhì dào dǐ shì shén me?"
+  },
+  "14": {
+    "text": "快樂是一種感覺還是一種實踐？",
+    "romanization": "kuài lè shì yī zhǒng gǎn jué hái shì yī zhǒng shí jiàn?"
+  },
+  "15": {
+    "text": "什麼是正確的，有時候很難分辨。",
+    "romanization": "shén me shì zhèng què de, yǒu shí hòu hěn nán fēn biàn."
+  },
+  "16": {
+    "text": "好意不一定能帶來好結果。",
+    "romanization": "hǎo yì bù yī dìng néng dài lái hǎo jié guǒ."
+  },
+  "17": {
+    "text": "大部分的倫理問題，都是在權衡不同的「好」。",
+    "romanization": "dà bù fèn de lún lǐ wèn tí, dōu shì zài quán héng bù tóng de \"hǎo\"."
+  },
+  "18": {
+    "text": "一個小謊言也能造成很大的傷害。",
+    "romanization": "yī gè xiǎo huǎng yán yě néng zào chéng hěn dà de shāng hài."
+  },
+  "19": {
+    "text": "在友善的環境中，誠實會更容易。",
+    "romanization": "zài yǒu shàn de huán jìng zhōng, chéng shí huì gèng róng yì."
+  },
+  "20": {
+    "text": "殘忍往往藏在小習慣裡。",
+    "romanization": "cán rěn wǎng wǎng cáng zài xiǎo xí guàn lǐ."
+  },
+  "21": {
+    "text": "有些規則很好，因為它們讓我們不必思考。",
+    "romanization": "yǒu xiē guī zé hěn hǎo, yīn wèi tā men ràng wǒ men bú bì sī kǎo."
+  },
+  "22": {
+    "text": "有時候，問題就出在規則本身。",
+    "romanization": "yǒu shí hòu, wèn tí jiù chū zài guī zé běn shēn."
+  },
+  "23": {
+    "text": "承諾是對未來自己的小賭注。",
+    "romanization": "chéng nuò shì duì wèi lái zì jǐ de xiǎo dú zhù."
+  },
+  "24": {
+    "text": "人們用結果來判斷行為，用動機來判斷規則。",
+    "romanization": "rén men yòng jié guǒ lái pàn duàn xíng wéi, yòng dòng jī lái pàn duàn guī zé."
+  },
+  "25": {
+    "text": "偽善在別人身上更容易看出來。",
+    "romanization": "wěi shàn zài bié rén shēn shàng gèng róng yì kàn chū lái."
+  },
+  "26": {
+    "text": "原諒，某種程度上也是給予原諒者的一份禮物。",
+    "romanization": "yuán liàng, mǒu zhǒng chéng dù shàng yě shì gěi yǔ yuán liàng zhě de yī fèn lǐ wù."
+  },
+  "27": {
+    "text": "同理心就像肌肉，越使用會越強壯。",
+    "romanization": "tóng lǐ xīn jiù xiàng jī ròu, yuè shǐ yòng huì yuè qiáng zhuàng."
+  },
+  "28": {
+    "text": "正義不等於復仇。",
+    "romanization": "zhèng yì bù děng yú fù chóu."
+  },
+  "29": {
+    "text": "權力比貧困更能考驗一個人的品格。",
+    "romanization": "quán lì bǐ pín kùn gèng néng kǎo yàn yī gè rén de pǐn gé."
+  },
+  "30": {
+    "text": "什麼都不做，也是一種選擇。",
+    "romanization": "shén me dōu bú zuò, yě shì yī zhǒng xuǎn zé."
+  },
+  "31": {
+    "text": "最難的德行是耐心。",
+    "romanization": "zuì nán de dé xíng shì nài xīn."
+  },
+  "32": {
+    "text": "小小的善意會累積起來。",
+    "romanization": "xiǎo xiǎo de shàn yì huì lěi jī qǐ lái."
+  },
+  "33": {
+    "text": "一個社會的優劣，可以從它如何對待最弱小的人來判斷。",
+    "romanization": "yī gè shè huì de yōu liè, kě yǐ cóng tā rú hé duì dài zuì ruò xiǎo de rén lái pàn duàn."
+  },
+  "34": {
+    "text": "勇氣是在害怕的時候，依然能好好行動。",
+    "romanization": "yǒng qì shì zài hài pà de shí hòu, yī rán néng hǎo hǎo xíng dòng."
+  },
+  "35": {
+    "text": "我們可能同時充滿自信卻又犯錯。",
+    "romanization": "wǒ men kě néng tóng shí chōng mǎn zì xìn què yòu fàn cuò."
+  },
+  "36": {
+    "text": "證據是讓謹慎的人改變想法的關鍵。",
+    "romanization": "zhèng jù shì ràng jǐn shèn de rén gǎi biàn xiǎng fǎ de guān jiàn."
+  },
+  "37": {
+    "text": "大多數信念都是成群結隊出現的，而不是一個一個地產生。",
+    "romanization": "dà duō shù xìn niàn dōu shì chéng qún jié duì chū xiàn de, ér bú shì yī gè yī gè dì chǎn shēng."
+  },
+  "38": {
+    "text": "我們傾向於記住自己正確的時候。",
+    "romanization": "wǒ men qīng xiàng yú jì zhù zì jǐ zhèng què de shí hòu."
+  },
+  "39": {
+    "text": "懷疑令人不舒服，但卻很有用。",
+    "romanization": "huái yí lìng rén bù shū fú, dàn què hěn yǒu yòng."
+  },
+  "40": {
+    "text": "一個好問題比一個聰明的答案更難。",
+    "romanization": "yī gè hǎo wèn tí bǐ yī gè cōng míng de dá àn gèng nán."
+  },
+  "41": {
+    "text": "有些問題沒有唯一的正確答案。",
+    "romanization": "yǒu xiē wèn tí méi yǒu wéi yī de zhèng què dá àn."
+  },
+  "42": {
+    "text": "模型都是錯的，但有些很有用。",
+    "romanization": "mó xíng dōu shì cuò de, dàn yǒu xiē hěn yǒu yòng."
+  },
+  "43": {
+    "text": "地圖不等於實際的疆域。",
+    "romanization": "dì tú bù děng yú shí jì de jiāng yù."
+  },
+  "44": {
+    "text": "名稱會影響我們注意到什麼。",
+    "romanization": "míng chēng huì yǐng xiǎng wǒ men zhù yì dào shén me."
+  },
+  "45": {
+    "text": "慢讀本身就是一種思考。",
+    "romanization": "màn dú běn shēn jiù shì yī zhǒng sī kǎo."
+  },
+  "46": {
+    "text": "立場堅定，但保持開放。",
+    "romanization": "lì chǎng jiān dìng, dàn bǎo chí kāi fàng."
+  },
+  "47": {
+    "text": "最聰明的人最常改變想法。",
+    "romanization": "zuì cōng míng de rén zuì cháng gǎi biàn xiǎng fǎ."
+  },
+  "48": {
+    "text": "意見不合不等於誤解。",
+    "romanization": "yì jiàn bù hé bù děng yú wù jiě."
+  },
+  "49": {
+    "text": "有時候雙方都有一部分是對的。",
+    "romanization": "yǒu shí hòu shuāng fāng dōu yǒu yī bù fèn shì duì de."
+  },
+  "50": {
+    "text": "世界比任何對它的解釋都還要古老。",
+    "romanization": "shì jiè bǐ rèn hé duì tā de jiě shì dōu hái yào gǔ lǎo."
+  },
+  "51": {
+    "text": "意識是我們所知最奇特的事物。",
+    "romanization": "yì shí shì wǒ men suǒ zhī zuì qí tè de shì wù."
+  },
+  "52": {
+    "text": "我們看到的世界比我們想像的還要少。",
+    "romanization": "wǒ men kàn dào de shì jiè bǐ wǒ men xiǎng xiàng de hái yào shǎo."
+  },
+  "53": {
+    "text": "記憶每次被使用時都會重新改寫自己。",
+    "romanization": "jì yì měi cì bèi shǐ yòng shí dōu huì chóng xīn gǎi xiě zì jǐ."
+  },
+  "54": {
+    "text": "同一個房間裡的兩個人，可能會體驗到不同的房間。",
+    "romanization": "tóng yī gè fáng jiān lǐ de liǎng gè rén, kě néng huì tǐ yàn dào bù tóng de fáng jiān."
+  },
+  "55": {
+    "text": "心靈構築了它所處的世界。",
+    "romanization": "xīn líng gòu zhù le tā suǒ chǔ de shì jiè."
+  },
+  "56": {
+    "text": "有些經驗是無法用言語表達的。",
+    "romanization": "yǒu xiē jīng yàn shì wú fǎ yòng yán yǔ biǎo dá de."
+  },
+  "57": {
+    "text": "音樂似乎能直接傳達情感，無需翻譯。",
+    "romanization": "yīn yuè sì hū néng zhí jiē chuán dá qíng gǎn, wú xū fān yì."
+  },
+  "58": {
+    "text": "痛苦是一位老師，即使它沒有教訓。",
+    "romanization": "tòng kǔ shì yī wèi lǎo shī, jí shǐ tā méi yǒu jiào xùn."
+  },
+  "59": {
+    "text": "美有時候是一種線索。",
+    "romanization": "měi yǒu shí hòu shì yī zhǒng xiàn suǒ."
+  },
+  "60": {
+    "text": "無聊往往隱藏著一個需要被提出的問題。",
+    "romanization": "wú liáo wǎng wǎng yǐn cáng zhe yī gè xū yào bèi tí chū de wèn tí."
+  },
+  "61": {
+    "text": "獨處能讓群體模糊的事物變得清晰。",
+    "romanization": "dú chǔ néng ràng qún tǐ mó hú de shì wù biàn dé qīng xī."
+  },
+  "62": {
+    "text": "睡覺不是什麼都沒做。",
+    "romanization": "shuì jiào bú shì shén me dōu méi zuò."
+  },
+  "63": {
+    "text": "死亡賦予時間形狀。",
+    "romanization": "sǐ wáng fù yǔ shí jiān xíng zhuàng."
+  },
+  "64": {
+    "text": "當下是唯一會發生任何事情的地方。",
+    "romanization": "dāng xià shì wéi yī huì fā shēng rèn hé shì qíng de dì fāng."
+  },
+  "65": {
+    "text": "蘇格拉底說，未經審視的人生不值得活。",
+    "romanization": "sū gé lā dǐ shuō, wèi jīng shěn shì de rén shēng bù zhí dé huó."
+  },
+  "66": {
+    "text": "斯多葛學派試圖只想要他們所擁有的。",
+    "romanization": "sī duō gé xué pài shì tú zhī xiǎng yào tā men suǒ yǒng yǒu de."
+  },
+  "67": {
+    "text": "孔子教導了小禮儀的重要性。",
+    "romanization": "kǒng zǐ jiào dǎo le xiǎo lǐ yí de zhòng yào xìng."
+  },
+  "68": {
+    "text": "佛陀指出了苦難的根源。",
+    "romanization": "fó tuó zhǐ chū le kǔ nàn de gēn yuán."
+  },
+  "69": {
+    "text": "亞里斯多德認為美德是一種習慣，而不是一種感覺。",
+    "romanization": "yà lǐ sī duō dé rèn wéi měi dé shì yī zhǒng xí guàn, ér bú shì yī zhǒng gǎn jué."
+  },
+  "70": {
+    "text": "柏拉圖懷疑我們所見的事物就像影子。",
+    "romanization": "bó lā tú huái yí wǒ men suǒ jiàn de shì wù jiù xiàng yǐng zi."
+  },
+  "71": {
+    "text": "老子讚揚了水的道。",
+    "romanization": "lǎo zǐ zàn yáng le shuǐ de dào."
+  },
+  "72": {
+    "text": "伊比鳩魯追求平靜的快樂，而非宏大的享樂。",
+    "romanization": "yī bǐ jiū lǔ zhuī qiú píng jìng de kuài lè, fēi hóng dà de xiǎng lè."
+  },
+  "73": {
+    "text": "第歐根尼透過嘲諷習俗來教導。",
+    "romanization": "dì ōu gē ní tòu guò cháo fěng xí sú lái jiào dǎo."
+  },
+  "74": {
+    "text": "許多傳統的共通點比分歧點更多。",
+    "romanization": "xǔ duō chuán tǒng de gòng tōng diǎn bǐ fēn qí diǎn gèng duō."
+  },
+  "75": {
+    "text": "康德說，待人應視為目的，而非僅僅是手段。",
+    "romanization": "kāng dé shuō, dài rén yīng shì wéi mù dì, ér fēi jǐn jǐn shì shǒu duàn."
+  },
+  "76": {
+    "text": "休謨注意到，單憑理性並不能讓我們產生關懷。",
+    "romanization": "xiū mó zhù yì dào, dān píng lǐ xìng bìng bù néng ràng wǒ men chǎn shēng guān huái."
+  },
+  "77": {
+    "text": "尼采寫道，殘酷的真相也可能是一種禮物。",
+    "romanization": "ní cǎi xiě dào, cán kù de zhēn xiàng yě kě néng shì yī zhǒng lǐ wù."
+  },
+  "78": {
+    "text": "維根斯坦說，我們語言的限制就是我們世界的限制。",
+    "romanization": "wéi gēn sī tǎn shuō, wǒ men yǔ yán de xiàn zhì jiù shì wǒ men shì jiè de xiàn zhì."
+  },
+  "79": {
+    "text": "西蒙·波娃主張，我們透過選擇來成為自己。",
+    "romanization": "xī méng bō wá zhǔ zhāng, wǒ men tòu guò xuǎn zé lái chéng wéi zì jǐ."
+  },
+  "80": {
+    "text": "威廉·詹姆士說，信念塑造了我們能做什麼。",
+    "romanization": "wēi lián zhān mǔ shì shuō, xìn niàn sù zào le wǒ men néng zuò shén me."
+  },
+  "81": {
+    "text": "約翰·羅爾斯問道，如果我們不知道自己會是誰，我們會接受什麼樣的規則？",
+    "romanization": "yuē hàn luó ěr sī wèn dào, rú guǒ wǒ men bù zhī dào zì jǐ huì shì shéi, wǒ men huì jiē shòu shén me yàng de guī zé?"
+  },
+  "82": {
+    "text": "漢娜·鄂蘭警告說，邪惡可能很平凡。",
+    "romanization": "hàn nà è lán jǐng gào shuō, xié è kě néng hěn píng fán."
+  },
+  "83": {
+    "text": "艾瑞絲·梅鐸說，愛是專注的艱苦工作。",
+    "romanization": "ài ruì sī méi duó shuō, ài shì zhuān zhù de jiān kǔ gōng zuò."
+  },
+  "84": {
+    "text": "許多現代哲學家自由地借鑒了許多傳統。",
+    "romanization": "xǔ duō xiàn dài zhé xué jiā zì yóu dì jiè jiàn le xǔ duō chuán tǒng."
+  },
+  "85": {
+    "text": "從你今天實際能做的工作開始。",
+    "romanization": "cóng nǐ jīn tiān shí jì néng zuò de gōng zuò kāi shǐ."
+  },
+  "86": {
+    "text": "傾聽時，要抱持著自己可能錯了的心態。",
+    "romanization": "qīng tīng shí, yào bào chí zhe zì jǐ kě néng cuò le de xīn tài."
+  },
+  "87": {
+    "text": "在賺更多錢之前，試著減少慾望。",
+    "romanization": "zài zhuàn gèng duō qián zhī qián, shì zhe jiǎn shǎo yù wàng."
+  },
+  "88": {
+    "text": "留意你在沒人看的時候做了什麼。",
+    "romanization": "liú yì nǐ zài méi rén kàn de shí hòu zuò le shén me."
+  },
+  "89": {
+    "text": "散步是一種小小的哲學。",
+    "romanization": "sàn bù shì yī zhǒng xiǎo xiǎo de zhé xué."
+  },
+  "90": {
+    "text": "最難說服的，是自己內心的爭論。",
+    "romanization": "zuì nán shuō fú de, shì zì jǐ nèi xīn de zhēng lùn."
+  },
+  "91": {
+    "text": "持有觀點，就像你握著工具一樣。",
+    "romanization": "chí yǒu guān diǎn, jiù xiàng nǐ wò zhe gōng jù yī yàng."
+  },
+  "92": {
+    "text": "以最善意的角度理解別人的話。",
+    "romanization": "yǐ zuì shàn yì de jiǎo dù lǐ jiě bié rén de huà."
+  },
+  "93": {
+    "text": "在平凡的早晨練習感恩，而不僅僅是在特別的日子。",
+    "romanization": "zài píng fán de zǎo chén liàn xí gǎn ēn, ér bù jǐn jǐn shì zài tè bié de rì zi."
+  },
+  "94": {
+    "text": "最短的路徑有時候是透過提問。",
+    "romanization": "zuì duǎn de lù jìng yǒu shí hòu shì tòu guò tí wèn."
+  },
+  "95": {
+    "text": "驚奇是一種專注。",
+    "romanization": "jīng qí shì yī zhǒng zhuān zhù."
+  },
+  "96": {
+    "text": "至少有時候讀讀舊書。",
+    "romanization": "zhì shǎo yǒu shí hòu dú dú jiù shū."
+  },
+  "97": {
+    "text": "好好地表達不同意見，關係就能維繫。",
+    "romanization": "hǎo hǎo dì biǎo dá bù tóng yì jiàn, guān xì jiù néng wéi xì."
+  },
+  "98": {
+    "text": "美好的人生是由許多個美好的小日子組成的。",
+    "romanization": "měi hǎo de rén shēng shì yóu xǔ duō gè měi hǎo de xiǎo rì zi zǔ chéng de."
+  },
+  "99": {
+    "text": "沒有最終的定論。",
+    "romanization": "méi yǒu zuì zhōng de dìng lùn."
+  }
+}

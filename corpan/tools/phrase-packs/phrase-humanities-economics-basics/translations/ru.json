@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Цены растут, когда больше людей хотят что-то купить.",
+    "romanization": "Tseny rastut, kogda bol'she lyudey khotyat chto-to kupit'."
+  },
+  "1": {
+    "text": "Когда предложение увеличивается, цены обычно падают.",
+    "romanization": "Kogda predlozheniye uvelichivayetsya, tseny obychno padayut."
+  },
+  "2": {
+    "text": "Скидка привлекает больше покупателей.",
+    "romanization": "Skidka privlekayet bol'she pokupateley."
+  },
+  "3": {
+    "text": "Один и тот же товар стоит по-разному в разных городах.",
+    "romanization": "Odin i tot zhe tovar stoit po-raznomu v raznykh gorodakh."
+  },
+  "4": {
+    "text": "Спрос может измениться в одночасье.",
+    "romanization": "Spros mozhet izmenit'sya v odnochast'ye."
+  },
+  "5": {
+    "text": "Продавцы поднимают цены, когда товара мало.",
+    "romanization": "Prodavtsy podnimayut tseny, kogda tovara malo."
+  },
+  "6": {
+    "text": "Покупатели прицениваются, чтобы найти самое выгодное.",
+    "romanization": "Pokupateli pritsenivayutsya, chtoby nayti samoye vygodnoye."
+  },
+  "7": {
+    "text": "Иногда высокая цена — это признак качества.",
+    "romanization": "Inogda vysokaya tsena — eto priznak kachestva."
+  },
+  "8": {
+    "text": "Иногда высокая цена — это просто маркетинговый ход.",
+    "romanization": "Inogda vysokaya tsena — eto prosto marketingovyy khod."
+  },
+  "9": {
+    "text": "Бесплатная доставка меняет отношение людей к покупке.",
+    "romanization": "Besplatnaya dostavka menyayet otnosheniye lyudey k pokupke."
+  },
+  "10": {
+    "text": "Цена редко отражает полную стоимость.",
+    "romanization": "Tsena redko otrazhayet polnuyu stoimost'."
+  },
+  "11": {
+    "text": "Время — это тоже своего рода затраты.",
+    "romanization": "Vremya — eto tozhe svoyego roda zatraty."
+  },
+  "12": {
+    "text": "Длинная очередь — это то, чем вы платите, когда цена слишком низкая.",
+    "romanization": "Dlinnaya ochered' — eto to, chem vy platite, kogda tsena slishkom nizkaya."
+  },
+  "13": {
+    "text": "Распродажи заставляют людей покупать то, что они не планировали.",
+    "romanization": "Rasprodazhi zastavlyayut lyudey pokupat' to, chto oni ne planirovali."
+  },
+  "14": {
+    "text": "Люди острее реагируют на потерю денег, чем на их приобретение.",
+    "romanization": "Lyudi ostrey reagiruyut na poteryu deneg, chem na ikh priobreteniye."
+  },
+  "15": {
+    "text": "Цены в долларах и цены в местной валюте воспринимаются по-разному.",
+    "romanization": "Tseny v dollarakh i tseny v mestnoy valyute vosprinimayutsya po-raznomu."
+  },
+  "16": {
+    "text": "Небольшие ежедневные траты за год складываются в приличную сумму.",
+    "romanization": "Nebol'shiye yezhednevnyye traty za god skladyvayutsya v prilichnuyu summu."
+  },
+  "17": {
+    "text": "Первая продажа дня важнее последней.",
+    "romanization": "Pervaya prodazha dnya vazhneye posledney."
+  },
+  "18": {
+    "text": "За многими мелкими покупками скрывается одна большая привычка.",
+    "romanization": "Za mnogimi melkimi pokupkami skryvayetsya odna bol'shaya privychka."
+  },
+  "19": {
+    "text": "Самый дешёвый вариант иногда оказывается самым дорогим в итоге.",
+    "romanization": "Samyy deshovyy variant inogda okazyvayetsya samym dorogim v itoge."
+  },
+  "20": {
+    "text": "Деньги — это просто общее соглашение.",
+    "romanization": "Den'gi — eto prosto obshcheye soglasheniye."
+  },
+  "21": {
+    "text": "Сбережения — это плата вашему будущему \"я\".",
+    "romanization": "Sberezheniya — eto plata vashemu budushchemu \"ya\"."
+  },
+  "22": {
+    "text": "Бюджет — это план, а не наказание.",
+    "romanization": "Byudzhet — eto plan, a ne nakazaniye."
+  },
+  "23": {
+    "text": "Сложные проценты — это как терпение, которое даёт мощный результат.",
+    "romanization": "Slozhnyye protsenty — eto kak terpeniye, kotoroye dayot moshchnyy rezul'tat."
+  },
+  "24": {
+    "text": "Инфляция медленно \"съедает\" деньги, хранящиеся наличными.",
+    "romanization": "Inflyatsiya medlenno \"s\"yedayet\" den'gi, khranyashchiyesya nalichnymi."
+  },
+  "25": {
+    "text": "Кредит — это заём у самого себя в будущем.",
+    "romanization": "Kredit — eto zayom u samogo sebya v budushchem."
+  },
+  "26": {
+    "text": "Проценты — это плата за пользование чужими деньгами.",
+    "romanization": "Protsenty — eto plata za pol'zovaniye chuzhimi den'gami."
+  },
+  "27": {
+    "text": "Она отслеживает каждую трату в течение месяца, чтобы увидеть закономерность.",
+    "romanization": "Ona otslezhivayet kazhduyu tratu v techeniye mesyatsa, chtoby uvidet' zakonomernost'."
+  },
+  "28": {
+    "text": "Он откладывает фиксированную сумму в каждую зарплату, прежде чем тратить на что-либо ещё.",
+    "romanization": "On otkladyvayet fiksirovannuyu summu v kazhduyu zarplatu, prezhde chem tratit' na chto-libo yeshcho."
+  },
+  "29": {
+    "text": "Наличие \"подушки безопасности\" делает мелкие неприятности менее болезненными.",
+    "romanization": "Nalichiye \"podushki bezopasnosti\" delayet melkiye nepriyatnosti meneye boleznennymi."
+  },
+  "30": {
+    "text": "Тратить чуть меньше часто проще, чем зарабатывать больше.",
+    "romanization": "Tratit' chut' men'she chasto proshche, chem zarabatyvat' bol'she."
+  },
+  "31": {
+    "text": "Повышение зарплаты может \"раствориться\" в возросших расходах.",
+    "romanization": "Povysheniye zarplaty mozhet \"rastvorit'sya\" v vozrosshikh raskhodakh."
+  },
+  "32": {
+    "text": "Он досрочно погасил кредит и почувствовал себя свободнее.",
+    "romanization": "On dosrochno pogasil kredit i pochuvstvoval sebya svobodney."
+  },
+  "33": {
+    "text": "Большинство людей переоценивают свою дисциплину в следующем году.",
+    "romanization": "Bol'shinstvo lyudey pereotsenivayut svoyu distsiplinu v sleduyushchem godu."
+  },
+  "34": {
+    "text": "Финансовые тревоги уменьшаются, когда у вас есть план.",
+    "romanization": "Finansovyye trevogi umen'shayutsya, kogda u vas yest' plan."
+  },
+  "35": {
+    "text": "Рынок — это просто место, где встречаются покупатели и продавцы.",
+    "romanization": "Rynok — eto prosto mesto, gde vstrechayutsya pokupateli i prodavtsy."
+  },
+  "36": {
+    "text": "Интернет-магазины — это рынки без стен.",
+    "romanization": "Internet-magaziny — eto rynki bez sten."
+  },
+  "37": {
+    "text": "Специализация — вот почему большинство вещей дёшевы.",
+    "romanization": "Spetsializatsiya — vot pochemu bol'shinstvo veshchey doshevy."
+  },
+  "38": {
+    "text": "Люди обмениваются тем, что не производят сами.",
+    "romanization": "Lyudi obmenivayutsya tem, chto ne proizvodyat sami."
+  },
+  "39": {
+    "text": "Зарплата отражает то, сколько платят человеку, а не всегда то, сколько он стоит.",
+    "romanization": "Zarplata otrazhayet to, skol'ko platyat cheloveku, a ne vsegda to, skol'ko on stoit."
+  },
+  "40": {
+    "text": "Некоторые работы хорошо оплачиваются, потому что мало кто хочет ими заниматься.",
+    "romanization": "Nekotoryye raboty khorosho oplachivayutsya, potomu chto malo kto khochet imi zanimat'sya."
+  },
+  "41": {
+    "text": "Некоторые работы хорошо оплачиваются, потому что мало кто способен их выполнять.",
+    "romanization": "Nekotoryye raboty khorosho oplachivayutsya, potomu chto malo kto sposoben ikh vypolnyat'."
+  },
+  "42": {
+    "text": "Рынок не всегда вознаграждает самый полезный труд.",
+    "romanization": "Rynok ne vsegda voznagrazhdayet samyy poleznyy trud."
+  },
+  "43": {
+    "text": "Новая технология может быстро уничтожить старую отрасль.",
+    "romanization": "Novaya tekhnologiya mozhet bystro unichtozhit' staruyu otrasl'."
+  },
+  "44": {
+    "text": "Люди часто переезжают туда, где есть работа.",
+    "romanization": "Lyudi chasto pereyezzhayut tuda, gde yest' rabota."
+  },
+  "45": {
+    "text": "Малый бизнес составляет большую часть экономики.",
+    "romanization": "Malyy biznes sostavlyayet bol'shuyu chast' ekonomiki."
+  },
+  "46": {
+    "text": "Хороший сотрудник приносит больше пользы, чем обходится компании.",
+    "romanization": "Khoroshiy sotrudnik prinosit bol'she pol'zy, chem obkhoditsya kompanii."
+  },
+  "47": {
+    "text": "Переговоры — это часть любой работы.",
+    "romanization": "Peregovory — eto chast' lyuboy raboty."
+  },
+  "48": {
+    "text": "Дополнительный доход даёт вам больше возможностей.",
+    "romanization": "Dopolnitel'nyy dokhod dayot vam bol'she vozmozhnostey."
+  },
+  "49": {
+    "text": "Увольнение иногда является самым эффективным шагом.",
+    "romanization": "Uvol'neniye inogda yavlyayetsya samym effektivnym shagom."
+  },
+  "50": {
+    "text": "Люди реагируют на стимулы, даже на небольшие.",
+    "romanization": "Lyudi reagiruyut na stimuly, dazhe na nebol'shiye."
+  },
+  "51": {
+    "text": "\"Бесплатно\" — это волшебное слово.",
+    "romanization": "\"Besplatno\" — eto volshebnoye slovo."
+  },
+  "52": {
+    "text": "Первый бесплатный месяц меняет многие решения.",
+    "romanization": "Pervyy besplatnyy mesyats menyayet mnogiye resheniya."
+  },
+  "53": {
+    "text": "Подписки созданы для того, чтобы о них забывали.",
+    "romanization": "Podpiski sozdany dlya togo, chtoby o nikh zabyvali."
+  },
+  "54": {
+    "text": "Круглые числа кажутся больше, чем есть на самом деле.",
+    "romanization": "Kruglyye chisla kazhutsya bol'she, chem yest' na samom dele."
+  },
+  "55": {
+    "text": "Безвозвратные издержки не должны влиять на следующее решение.",
+    "romanization": "Bezvozvratnyye izderzhki ne dolzhny vliyat' na sleduyushcheye resheniye."
+  },
+  "56": {
+    "text": "Небольшая плата меняет частоту посещений.",
+    "romanization": "Nebol'shaya plata menyayet chastotu poseshcheniy."
+  },
+  "57": {
+    "text": "Чаевые меняют общую стоимость еды.",
+    "romanization": "Chayevyye menyayut obshchuyu stoimost' yedy."
+  },
+  "58": {
+    "text": "Люди делятся, когда это легко.",
+    "romanization": "Lyudi delyatsya, kogda eto legko."
+  },
+  "59": {
+    "text": "Очередь показывает, что люди ценят сегодня.",
+    "romanization": "Ochered' pokazyvayet, chto lyudi tsenyat segodnya."
+  },
+  "60": {
+    "text": "Ограниченные по времени предложения специально создают ощущение срочности.",
+    "romanization": "Ogranichennyye po vremeni predlozheniya spetsial'no sozdayut oshchushcheniye srochnosti."
+  },
+  "61": {
+    "text": "Программы лояльности вознаграждают за то, что и так бы произошло.",
+    "romanization": "Programmy loyal'nosti voznagrazhdayut za to, chto i tak by proizoshlo."
+  },
+  "62": {
+    "text": "Опции по умолчанию влияют на решения больше, чем люди осознают.",
+    "romanization": "Optsii po umolchaniyu vliyayut na resheniya bol'she, chem lyudi osoznayut."
+  },
+  "63": {
+    "text": "Отзывы влияют на спрос сильнее, чем реклама.",
+    "romanization": "Otzyvy vliyayut na spros sil'neye, chem reklama."
+  },
+  "64": {
+    "text": "Сарафанное радио всё ещё эффективнее большинства видов маркетинга.",
+    "romanization": "Sarafanoye radio vsyo yeshcho effektivneye bol'shinstva vidov marketinga."
+  },
+  "65": {
+    "text": "Экономика растёт в одни годы и сокращается в другие.",
+    "romanization": "Ekonomika rastot v odni gody i sokrashchayetsya v drugiye."
+  },
+  "66": {
+    "text": "Рецессии преподают уроки, о которых забывают во время подъёмов.",
+    "romanization": "Retsessii prepodayut uroki, o kotorykh zabyvayut vo vremya pod\"yomov."
+  },
+  "67": {
+    "text": "Долгосрочный рост медленно поднимает всех.",
+    "romanization": "Dolgosrochnyy rost medlenno podnimayet vsekh."
+  },
+  "68": {
+    "text": "Рост производительности скрывается в инструментах и привычках.",
+    "romanization": "Rost proizvoditel'nosti skryvayetsya v instrumentakh i privychkakh."
+  },
+  "69": {
+    "text": "Новые идеи — единственный устойчивый источник роста.",
+    "romanization": "Novyye idei — yedinstvennyy ustoychivyy istochnik rosta."
+  },
+  "70": {
+    "text": "Экономический подъём может скрывать множество плохих решений.",
+    "romanization": "Ekonomicheskiy pod\"yom mozhet skryvat' mnozhestvo plokhikh resheniy."
+  },
+  "71": {
+    "text": "Кризисы в первую очередь наказывают тех, кто имеет наибольшие долги.",
+    "romanization": "Krizisy v pervuyu ochered' nakazyvayut tekh, kto imeyet naibol'shiye dolgi."
+  },
+  "72": {
+    "text": "Дешёвые деньги часто находят рискованные применения.",
+    "romanization": "Deshovyye den'gi chasto nakhodyat riskovannyye primeneniya."
+  },
+  "73": {
+    "text": "Пузырь трудно заметить, находясь внутри него.",
+    "romanization": "Puzyr' trudno zametit', nakhodyas' vnutri nego."
+  },
+  "74": {
+    "text": "Восстановление происходит неравномерно по отраслям и регионам.",
+    "romanization": "Vosstanovleniye proiskhodit neravnomerno po otraslyam i regionam."
+  },
+  "75": {
+    "text": "Страны торгуют, потому что обе стороны получают выгоду.",
+    "romanization": "Strany torguyut, potomu chto obe storony poluchayut vygodu."
+  },
+  "76": {
+    "text": "Тарифы повышают цены для внутренних покупателей.",
+    "romanization": "Tarify povyshayut tseny dlya vnutrennikh pokupateley."
+  },
+  "77": {
+    "text": "Обменные курсы влияют на стоимость импорта.",
+    "romanization": "Obmennyye kursy vliyayut na stoimost' importa."
+  },
+  "78": {
+    "text": "Слабая валюта помогает экспортёрам и вредит импортёрам.",
+    "romanization": "Slabaya valyuta pomogayet eksportoram i vredit importoram."
+  },
+  "79": {
+    "text": "Иностранные инвестиции могут как развивать, так и обременять экономику.",
+    "romanization": "Inostrannyye investitsii mogut kak razvivat', tak i obremenyat' ekonomiku."
+  },
+  "80": {
+    "text": "Денежные переводы поддерживают многие семьи по всему миру.",
+    "romanization": "Denezhnyye perevody podderzhivayut mnogiye sem'i po vsemu miru."
+  },
+  "81": {
+    "text": "Санкции затрагивают обычных людей больше, чем лидеров.",
+    "romanization": "Sanktsii zatragivayut obychnykh lyudey bol'she, chem liderov."
+  },
+  "82": {
+    "text": "Глобальные цепочки поставок рвутся в самых неожиданных местах.",
+    "romanization": "Global'nyye tsepochki postavok rvutsya v samykh neozhidannykh mestakh."
+  },
+  "83": {
+    "text": "Дефицит в одной стране может повлиять на цены по всему миру.",
+    "romanization": "Defitsit v odnoy strane mozhet povliyat' na tseny po vsemu miru."
+  },
+  "84": {
+    "text": "Некоторые отрасли концентрируются в одном регионе не просто так.",
+    "romanization": "Nekotoryye otrasli kontsentriruyutsya v odnom regione ne prosto tak."
+  },
+  "85": {
+    "text": "Неравенство незаметно растёт, когда никто не следит.",
+    "romanization": "Neravenstvo nezametno rastot, kogda nikto ne sledit."
+  },
+  "86": {
+    "text": "Налоги — это цена общественных благ.",
+    "romanization": "Nalogi — eto tsena obshchestvennykh blag."
+  },
+  "87": {
+    "text": "Общественные блага — это то, что мы не можем легко купить по отдельности.",
+    "romanization": "Obshchestvennyye blaga — eto to, chto my ne mozhem legko kupit' po otdel'nosti."
+  },
+  "88": {
+    "text": "Внешние эффекты — это издержки, которые никто не просил оплачивать.",
+    "romanization": "Vneshniye effekty — eto izderzhki, kotoryye nikto ne prosil oplachivat'."
+  },
+  "89": {
+    "text": "Небольшой сбой рынка может иметь огромные последствия.",
+    "romanization": "Nebol'shoy sboy rynka mozhet imet' ogromnyye posledstviya."
+  },
+  "90": {
+    "text": "Свободному рынку нужны правила, чтобы оставаться свободным.",
+    "romanization": "Svobodnomu rynku nuzhny pravila, chtoby ostavat'sya svobodnym."
+  },
+  "91": {
+    "text": "Информация распределяется неравномерно между покупателями и продавцами.",
+    "romanization": "Informatsiya raspredelyayetsya neravnomerno mezhdu pokupatelyami i prodavtsami."
+  },
+  "92": {
+    "text": "Доверие снижает стоимость каждой сделки.",
+    "romanization": "Doveriye snizhayet stoimost' kazhdoy sdelki."
+  },
+  "93": {
+    "text": "Репутация — недооценённый актив.",
+    "romanization": "Reputatsiya — nedootsenonnyy aktiv."
+  },
+  "94": {
+    "text": "Цена внимания выросла.",
+    "romanization": "Tsena vnimaniya vyrosla."
+  },
+  "95": {
+    "text": "На самых важных рынках часто нет цен.",
+    "romanization": "Na samykh vazhnykh rynkakh chasto net tsen."
+  },
+  "96": {
+    "text": "Время и забота — одни из самых дефицитных ресурсов.",
+    "romanization": "Vremya i zabota — odni iz samykh defitsitnykh resursov."
+  },
+  "97": {
+    "text": "Экономические решения — это также и моральные решения.",
+    "romanization": "Ekonomicheskiye resheniya — eto takzhe i moral'nyye resheniya."
+  },
+  "98": {
+    "text": "Экономика — это просто люди, делающие что-то друг для друга.",
+    "romanization": "Ekonomika — eto prosto lyudi, delayushchiye chto-to drug dlya druga."
+  },
+  "99": {
+    "text": "Простой бюджет меняет больше, чем любая сложная теория.",
+    "romanization": "Prostoy byudzhet menyayet bol'she, chem lyubaya slozhnaya teoriya."
+  }
+}

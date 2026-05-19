@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Ședința începe în zece minute.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Poți să-ți partajezi ecranul?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Scuze, eram pe mut.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Depășim timpul alocat.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Să mutăm asta pentru următoarea ședință.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Voi lua notițe.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Putem să luăm pe rând?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Agenda este în invitația din calendar.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Cine conduce ședința asta?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Înregistrăm asta?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Apelul s-a deconectat la jumătate.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Putem să amânăm asta cu cincisprezece minute?",
+    "romanization": null
+  },
+  "12": {
+    "text": "A intrat târziu, dar fără zgomot.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Sala e iar rezervată de două ori.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Să lăsăm asta pentru mai târziu și să revenim la subiect.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Trebuie să mă opresc la ora trei fix.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Poți să rămâi două minute după?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Tabla este plină.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Poți să rezumi acțiunile de urmat?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Ședințele în picioare sunt surprinzător de rapide.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Revin la tine până la sfârșitul zilei.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Ți-a ajuns ultimul meu email?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Scuze pentru răspunsul întârziat.",
+    "romanization": null
+  },
+  "23": {
+    "text": "O adaug pe Sara în discuție.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Atașamentul nu a ajuns.",
+    "romanization": null
+  },
+  "25": {
+    "text": "L-am marcat ca urgent.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Poți să retrimiți fișierul ăla?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Conversația s-a lungit, lasă-mă să rezum.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Folosește subiectul ca să-l pot găsi.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Și-a golit inbox-ul în weekend.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Te rog să răspunzi până vineri.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Voi trimite o notă scurtă când e gata.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Răspunsul automat spune că e în călătorie.",
+    "romanization": null
+  },
+  "33": {
+    "text": "A copiat persoana greșită din greșeală.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Trei memento-uri sunt suficiente.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Poți să-mi trimiți mai departe conversația?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Chat-ul e mai rapid decât emailul pentru asta.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Am ratat mesajul tău în toată agitația.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Link-ul din emailul tău duce la o pagină inexistentă.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Te rog să confirmi că ai primit asta.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Termenul limită este vineri la prânz.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Voi avea o primă schiță până miercuri.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Trebuie să livrăm ceva săptămâna asta.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Proiectul a întârziat cu o zi.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Poți să corectezi asta înainte să trimit?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Îți datorez o actualizare a statusului.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Cifrele nu corespund cu ce am trimis săptămâna trecută.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Suntem blocați din cauza unei decizii de la client.",
+    "romanization": null
+  },
+  "48": {
+    "text": "A lucrat în timpul prânzului ca să termine.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Am terminat în sfârșit cu raportul.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Voi începe imediat ce primesc aprobarea.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Poți să aprobi versiunea asta?",
+    "romanization": null
+  },
+  "52": {
+    "text": "A prins o greșeală de tipar chiar înainte să livrăm.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Am amânat lansarea pentru marțea viitoare.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Estimarea a fost greșită de două ori.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Și-a eliberat după-amiaza ca să se poată concentra.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Contractul a venit înapoi semnat.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Să considerăm că e gata și să mergem mai departe.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Prima versiune e brută, dar funcționează.",
+    "romanization": null
+  },
+  "59": {
+    "text": "A livrat mai devreme, pentru o dată.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Bun venit în echipă.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Te voi prezenta celorlalți.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Tocmai s-a întors din concediu.",
+    "romanization": null
+  },
+  "63": {
+    "text": "El e persoana potrivită de întrebat despre asta.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Împărțim un birou marțea.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Cine știe cel mai mult despre prețuri?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Întotdeauna aduce cafea pentru echipă.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Noul angajat învață repede.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Lucrează îndeaproape cu departamentul de marketing.",
+    "romanization": null
+  },
+  "69": {
+    "text": "E aici de mai mult timp decât oricine.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Și-au împărțit munca exact la jumătate.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Am luat prânzul și am schițat ideea.",
+    "romanization": null
+  },
+  "72": {
+    "text": "M-a înlocuit cât am fost bolnav.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Echipa s-a adunat în jurul laptopului.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Își amintește ziua de naștere a tuturor.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Mă voi alătura de la distanță mâine.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Biroul e mai mult gol vinerea.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Internetul meu e instabil azi.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Lucrează dintr-un alt oraș.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Echipa se întâlnește fizic o dată pe lună.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Și-a amenajat un colț al dormitorului ca birou.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Biroul de acasă e în sfârșit ordonat.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Poți să-ți pornești camera?",
+    "romanization": null
+  },
+  "83": {
+    "text": "Zgomotul de fundal e în regulă, nu-ți face griji.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Facem un scurt check-in în fiecare dimineață.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Imprimanta s-a blocat din nou.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Aparatul de cafea a rămas fără boabe.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Poți să deschizi ușa?",
+    "romanization": null
+  },
+  "88": {
+    "text": "Fereastra sălii de conferințe nu se deschide.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Cineva și-a lăsat prânzul în frigider o săptămână.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Bucătăria e liniștită la ora trei.",
+    "romanization": null
+  },
+  "91": {
+    "text": "A luat scările ca să-și limpezească mintea.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Planta de pe pervaz se simte bine.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Poți să semnezi pentru un colet la recepție?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Cititorul de carduri face figuri.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Sfârșitul zilei vine mereu pe neașteptate.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Lucrează cel mai bine cu o singură fereastră deschisă odată.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Aprinde o lumânare ca să marcheze începutul zilei.",
+    "romanization": null
+  },
+  "98": {
+    "text": "O scurtă plimbare după prânz mă ajută să gândesc.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Unele zile de luni încep cu o mică victorie.",
+    "romanization": null
+  }
+}

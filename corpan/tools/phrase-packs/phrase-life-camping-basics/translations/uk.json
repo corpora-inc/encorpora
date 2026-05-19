@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Давай поставимо намет, поки не стемніло.",
+    "romanization": "Davai postavymo namet, poky ne stemnilo."
+  },
+  "1": {
+    "text": "Куди я поклав запальничку?",
+    "romanization": "Kudy ya poklav zapalnychku?"
+  },
+  "2": {
+    "text": "Кілочки для намету в бічній кишені.",
+    "romanization": "Kilochky dlya nametu v bichniy kysheni."
+  },
+  "3": {
+    "text": "Мій спальник витримує температуру до нуля.",
+    "romanization": "Miy spalnyk vytrymuie temperaturu do nulya."
+  },
+  "4": {
+    "text": "Надуй килимок, перш ніж розстеляти.",
+    "romanization": "Nadui kylymok, persh nizh rozstelaty."
+  },
+  "5": {
+    "text": "Ліхтарю потрібні нові батарейки.",
+    "romanization": "Likhtaryu potribni novi batareiky."
+  },
+  "6": {
+    "text": "Натягни відтяжки, перш ніж лягати спати.",
+    "romanization": "Natyahny vidtyazhky, persh nizh lyahaty spaty."
+  },
+  "7": {
+    "text": "Тент накидається швами назовні.",
+    "romanization": "Tent nakydaietsya shvamy nazovni."
+  },
+  "8": {
+    "text": "Став намет на рівній ділянці.",
+    "romanization": "Stav namet na rivniy dilyantsi."
+  },
+  "9": {
+    "text": "Тримай їжу подалі від намету.",
+    "romanization": "Trymai yizhu podali vid nametu."
+  },
+  "10": {
+    "text": "Він взяв одну розкішну річ: маленьку подушку.",
+    "romanization": "Vin vzyav odnu rozkishnu rich: malenku podushku."
+  },
+  "11": {
+    "text": "Налобний ліхтарик дуже допомагає, щоб не нишпорити в темряві.",
+    "romanization": "Nalobnyy likhtaryk duzhe dopomahaye, shchob ne nyshpority v temriavi."
+  },
+  "12": {
+    "text": "Місце для табору одразу за другим струмком.",
+    "romanization": "Mistse dlya taboru odrazu za druhym strumkom."
+  },
+  "13": {
+    "text": "Холодильник тримай у тіні.",
+    "romanization": "Kholodylnyk trymai u tini."
+  },
+  "14": {
+    "text": "Це розкладне крісло вже бачило кращі часи.",
+    "romanization": "Tse rozkladne krislo vzhe bachylo krashchi chasy."
+  },
+  "15": {
+    "text": "Рюкзак важчий, ніж здається.",
+    "romanization": "Ryukzak vazhchyy, nizh zdaietsya."
+  },
+  "16": {
+    "text": "Карта поїхала в бічну кишеню рюкзака.",
+    "romanization": "Karta poyikhala v bichnu kysheniu ryukzaka."
+  },
+  "17": {
+    "text": "Фільтр для води в маленькому гермомішку.",
+    "romanization": "Filtr dlya vody v malenkomu hermomishku."
+  },
+  "18": {
+    "text": "Сокира має захисний чохол.",
+    "romanization": "Sokyra maie zakhysnyy chokhol."
+  },
+  "19": {
+    "text": "Ми знову забули консервний ніж.",
+    "romanization": "My znovu zabuly konservnyy nizh."
+  },
+  "20": {
+    "text": "Збери суху розпалку, перш ніж розпалювати.",
+    "romanization": "Zbery sukhu rozpalku, persh nizh rozpalyuvaty."
+  },
+  "21": {
+    "text": "Вогнище вже облаштоване.",
+    "romanization": "Vohnyshche vzhe oblashtovane."
+  },
+  "22": {
+    "text": "Нам потрібно більше хмизу.",
+    "romanization": "Nam potribno bilshe khmyzu."
+  },
+  "23": {
+    "text": "Не кидай сирі дрова у вогонь.",
+    "romanization": "Ne kyday syri drova u vohon."
+  },
+  "24": {
+    "text": "Вугілля гарячіше за полум'я.",
+    "romanization": "Vuhillya haryachishe za polumya."
+  },
+  "25": {
+    "text": "Прокип'яти воду, перш ніж пити.",
+    "romanization": "Prokyp'yaty vodu, persh nizh pyty."
+  },
+  "26": {
+    "text": "Бекон готується довше на природі.",
+    "romanization": "Bekon hotuietsya dovshe na pryrodi."
+  },
+  "27": {
+    "text": "Залий вугілля водою, перш ніж іти.",
+    "romanization": "Zalyy vuhillya vodoyu, persh nizh ity."
+  },
+  "28": {
+    "text": "Він взяв маленьку плиту для холодних ранків.",
+    "romanization": "Vin vzyav malenku plytu dlya kholodnykh rankiv."
+  },
+  "29": {
+    "text": "Кава смакує краще на свіжому повітрі.",
+    "romanization": "Kava smakuie krashche na svizhomu povitri."
+  },
+  "30": {
+    "text": "Ручка сковорідки швидко нагрівається.",
+    "romanization": "Ruchka skovoridky shvydko nahrivaietsya."
+  },
+  "31": {
+    "text": "Ми готували вечерю на пласкому камені.",
+    "romanization": "My hotuvaly vecheryu na plaskomu kameni."
+  },
+  "32": {
+    "text": "Зефір знову загорівся.",
+    "romanization": "Zefir znovu zahorivsya."
+  },
+  "33": {
+    "text": "Смаж повільно, біля самого краю полум'я.",
+    "romanization": "Smazh povilno, bilya samoho krayu polumya."
+  },
+  "34": {
+    "text": "Забери з собою все, що приніс.",
+    "romanization": "Zabery z soboyu vse, shcho prynis."
+  },
+  "35": {
+    "text": "Прогноз обіцяє дощ після півночі.",
+    "romanization": "Prohnoz obitsiaie doshch pislya pivnochi."
+  },
+  "36": {
+    "text": "Вітер раптово посилився.",
+    "romanization": "Viter raptovo posylyvsya."
+  },
+  "37": {
+    "text": "Хмари насувалися над хребтом.",
+    "romanization": "Khmary nasuvalysya nad khrebtom."
+  },
+  "38": {
+    "text": "Температура швидко впала після заходу сонця.",
+    "romanization": "Temperatura shvydko vpala pislya zakhodu sontsya."
+  },
+  "39": {
+    "text": "Ранковий іній розтанув до десятої.",
+    "romanization": "Rankovyy iniy rastanuv do desyatoyi."
+  },
+  "40": {
+    "text": "Через туман було важко йти стежкою.",
+    "romanization": "Cherez tuman bulo vazhko yty stezhkoyu."
+  },
+  "41": {
+    "text": "Комарі вилетіли в сутінках.",
+    "romanization": "Komari vyletily v sutinkakh."
+  },
+  "42": {
+    "text": "Тут небо здається більшим.",
+    "romanization": "Tut nebo zdaietsia bilshym."
+  },
+  "43": {
+    "text": "Блискавка ще за багато кілометрів.",
+    "romanization": "Blyskavka shche za bahato kilometriv."
+  },
+  "44": {
+    "text": "Післяобіднє сонце найсильніше.",
+    "romanization": "Pislyaobidnie sontse naysylnishe."
+  },
+  "45": {
+    "text": "Стежка йде вздовж річки два кілометри.",
+    "romanization": "Stezhka yde vzdovzh richky dva kilometry."
+  },
+  "46": {
+    "text": "Тримайся маркованої стежки.",
+    "romanization": "Trymaysya markovanoyi stezhky."
+  },
+  "47": {
+    "text": "Початок стежки за три кілометри вгору по дорозі.",
+    "romanization": "Pochatok stezhky za try kilometry vhoru po dorozi."
+  },
+  "48": {
+    "text": "Ми повернули не туди на роздоріжжі.",
+    "romanization": "My povernuly ne tudy na rozdorizhzhi."
+  },
+  "49": {
+    "text": "На карті показано притулок біля вершини.",
+    "romanization": "Na karti pokazano prytulok bilya vershyny."
+  },
+  "50": {
+    "text": "Він задав рівномірний темп і тримав його.",
+    "romanization": "Vin zadav rivnomirnyy temp i trymav yoho."
+  },
+  "51": {
+    "text": "Серпантини полегшують підйом.",
+    "romanization": "Serpantyny polehshuyut pidyom."
+  },
+  "52": {
+    "text": "Вид на вершині вартував підйому.",
+    "romanization": "Vyd na vershyni vartuvav pidyomu."
+  },
+  "53": {
+    "text": "Стережися сипучих каменів на спуску.",
+    "romanization": "Sterezhysya sypuchykh kameniv na spusku."
+  },
+  "54": {
+    "text": "Ми бачили сліди оленів на м'якій землі.",
+    "romanization": "My bachyly slidy oleniv na myakiy zemli."
+  },
+  "55": {
+    "text": "Пий воду, перш ніж відчуєш спрагу.",
+    "romanization": "Pyy vodu, persh nizh vidchuyesh sprahu."
+  },
+  "56": {
+    "text": "Дерева порідшали біля вершини.",
+    "romanization": "Dereva poridshaly bilya vershyny."
+  },
+  "57": {
+    "text": "Ми сіли на повалене дерево відпочити.",
+    "romanization": "My sily na povalene derevo vidpochyty."
+  },
+  "58": {
+    "text": "Міст через струмок виглядав старішим за стежку.",
+    "romanization": "Mist cherez strumok vyhlyadav starishym za stezhku."
+  },
+  "59": {
+    "text": "Ми повернулися в табір до заходу сонця.",
+    "romanization": "My povernulysya v tabir do zakhodu sontsya."
+  },
+  "60": {
+    "text": "Чумацький Шлях сьогодні яскравий.",
+    "romanization": "Chumatskyy Shlyakh sohodni yaskravyy."
+  },
+  "61": {
+    "text": "Він показав Велику Ведмедицю.",
+    "romanization": "Vin pokazav Velyku Vedmedytsyu."
+  },
+  "62": {
+    "text": "Падаюча зірка пронеслася по небу.",
+    "romanization": "Padayucha zirka proneslasya po nebu."
+  },
+  "63": {
+    "text": "Вогонь потріскував, поки ми розмовляли.",
+    "romanization": "Vohon potriskuyav, poky my rozmovlyaly."
+  },
+  "64": {
+    "text": "Зірки в південній півкулі інші.",
+    "romanization": "Zirky v pivdenniy pivkuli inshi."
+  },
+  "65": {
+    "text": "Десь у деревах кричала сова.",
+    "romanization": "Des u derevakh krychala sova."
+  },
+  "66": {
+    "text": "Місяць зійшов пізно і був помаранчевим.",
+    "romanization": "Misiats ziyishov pizno i buv pomaranchevym."
+  },
+  "67": {
+    "text": "Ми розповідали історії біля вогню до півночі.",
+    "romanization": "My rozpovidaly istoriyi bilya vohnyu do pivnochi."
+  },
+  "68": {
+    "text": "Ніч гучніша, ніж здається.",
+    "romanization": "Nich huchnisha, nizh zdaietsya."
+  },
+  "69": {
+    "text": "Ми спали з відкритою заслінкою намету.",
+    "romanization": "My spaly z vidkrytoyu zaslinkoyu nametu."
+  },
+  "70": {
+    "text": "Олень пройшов через табір на світанку.",
+    "romanization": "Olen proyshov cherez tabir na svitanku."
+  },
+  "71": {
+    "text": "Білки все одно знайшли перекуси.",
+    "romanization": "Bilky vse odno znayshly perekusy."
+  },
+  "72": {
+    "text": "Ми бачили бобра на тому березі.",
+    "romanization": "My bachyly bobra na tomu berezi."
+  },
+  "73": {
+    "text": "Тримай їжу герметично закритою і підвішеною на ніч.",
+    "romanization": "Trymai yizhu hermetychno zakrytoyu i pidvishenoyu na nich."
+  },
+  "74": {
+    "text": "Мішок для їжі від ведмедів вішається високо на дерево.",
+    "romanization": "Mishok dlya yizhi vid vedmediv vishaietsia vysoko na derevo."
+  },
+  "75": {
+    "text": "Не залишай взуття на вулиці, якщо не хочеш сюрпризів.",
+    "romanization": "Ne zalyshay vzuttya na vulytsi, yakshcho ne khochesh syurpryziv."
+  },
+  "76": {
+    "text": "Жаба прострибала прямо повз мою ногу.",
+    "romanization": "Zhaba prostrybala pryamo povz moyu nohu."
+  },
+  "77": {
+    "text": "Птахи розбудили нас раніше, ніж сонце.",
+    "romanization": "Ptakhy rozbudyly nas ranishe, nizh sontse."
+  },
+  "78": {
+    "text": "Ми деякий час йшли по слідах на снігу.",
+    "romanization": "My deyakyy chas yshly po slidakh na snihu."
+  },
+  "79": {
+    "text": "В озері не було риби, але було багато бабок.",
+    "romanization": "V ozeri ne bulo ryby, ale bulo bahato babok."
+  },
+  "80": {
+    "text": "Діти пробігли весь шлях до озера.",
+    "romanization": "Dity probihly ves shlyakh do ozera."
+  },
+  "81": {
+    "text": "Він не ходив у походи з дитинства.",
+    "romanization": "Vin ne khodyv u pokhody z dytynstva."
+  },
+  "82": {
+    "text": "Вона показала мені, як читати карту.",
+    "romanization": "Vona pokazala meni, yak chytaty kartu."
+  },
+  "83": {
+    "text": "Ми ділили місце для табору з іншою родиною.",
+    "romanization": "My dilyly mistse dlya taboru z inshoyu rodynoyu."
+  },
+  "84": {
+    "text": "Два дні на природі все перезавантажують.",
+    "romanization": "Dva dni na pryrodi vse perezavantazhuiut."
+  },
+  "85": {
+    "text": "Телефон не має сигналу, і це чудово.",
+    "romanization": "Telefon ne maie syhnalu, i tse chudovo."
+  },
+  "86": {
+    "text": "Ми годинами не бачили жодної людини.",
+    "romanization": "My hodynamy ne bachyly zhodnoyi lyudyny."
+  },
+  "87": {
+    "text": "Він заснув, перш ніж вогонь згас.",
+    "romanization": "Vin zasnuv, persh nizh vohon zhas."
+  },
+  "88": {
+    "text": "Перший ранок завжди холодний і повільний.",
+    "romanization": "Pershyy ranok zavzhdy kholodnyy i povilnyy."
+  },
+  "89": {
+    "text": "Ми зібралися і залишили місце чистішим, ніж знайшли.",
+    "romanization": "My zibralysya i zalyshyly mistse chystishym, nizh znayshly."
+  },
+  "90": {
+    "text": "Де найближче джерело води?",
+    "romanization": "De nayblyzhche dzherelo vody?"
+  },
+  "91": {
+    "text": "Туалет-яма далі по стежці.",
+    "romanization": "Tualet-iama dali po stezhtsi."
+  },
+  "92": {
+    "text": "Закопай залишки їжі подалі від табору.",
+    "romanization": "Zakopay zalyshky yizhi podali vid taboru."
+  },
+  "93": {
+    "text": "Повісь мокрий одяг біля вогню, щоб висох.",
+    "romanization": "Povisy mokryy odyah bilya vohnyu, shchob vysokh."
+  },
+  "94": {
+    "text": "Аптечка знаходиться зверху в рюкзаку.",
+    "romanization": "Aptechka znakhodytsia zverkhu v ryukzaku."
+  },
+  "95": {
+    "text": "Компас показує на магнітну північ.",
+    "romanization": "Kompas pokazuye na mahnitnu pivnich."
+  },
+  "96": {
+    "text": "Свисток голосніший за твій голос.",
+    "romanization": "Svystok holosnishyy za tviy holos."
+  },
+  "97": {
+    "text": "Скажи комусь, куди ти йдеш.",
+    "romanization": "Skazhy komus, kudy ty ydesh."
+  },
+  "98": {
+    "text": "Мобільний телефон поклади в гермомішок.",
+    "romanization": "Mobilnyy telefon poklady v hermomishok."
+  },
+  "99": {
+    "text": "Візьми більше шарів одягу, ніж думаєш, що потрібно.",
+    "romanization": "Vizmy bilshe shariv odyahu, nizh dumayesh, shcho potribno."
+  }
+}

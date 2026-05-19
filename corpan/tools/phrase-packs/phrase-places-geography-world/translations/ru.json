@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Африка больше, чем кажется на большинстве карт.",
+    "romanization": "Afrika bol'she, chem kazhetsya na bol'shinstve kart."
+  },
+  "1": {
+    "text": "Атлантический океан отделяет Америки от Европы и Африки.",
+    "romanization": "Atlanticheskiy okean otdelyaet Ameriki ot Yevropy i Afriki."
+  },
+  "2": {
+    "text": "Антарктида — самый холодный континент.",
+    "romanization": "Antarktida — samyy kholodnyy kontinent."
+  },
+  "3": {
+    "text": "В Азии проживает более половины населения Земли.",
+    "romanization": "V Azii prozhivayet bolee poloviny naseleniya Zemli."
+  },
+  "4": {
+    "text": "Европа и Азия образуют единый материк.",
+    "romanization": "Yevropa i Aziya obrazuyut yedinyy materik."
+  },
+  "5": {
+    "text": "Австралия — это одновременно и страна, и континент.",
+    "romanization": "Avstraliya — eto odnovremenno i strana, i kontinent."
+  },
+  "6": {
+    "text": "Тихий океан — самый большой.",
+    "romanization": "Tikhiy okean — samyy bol'shoy."
+  },
+  "7": {
+    "text": "Северный Ледовитый океан частично покрыт льдом.",
+    "romanization": "Severnyy Ledovityy okean chastichno pokryt l'dom."
+  },
+  "8": {
+    "text": "В Южной Америке находится дождевой лес Амазонки.",
+    "romanization": "V Yuzhnoy Amerike nakhoditsya dozhdevoy les Amazonki."
+  },
+  "9": {
+    "text": "Северная Америка простирается от тропического до арктического климата.",
+    "romanization": "Severnaya Amerika prostirayetsya ot tropicheskogo do arkticheskogo klimata."
+  },
+  "10": {
+    "text": "Исландия расположена между двумя тектоническими плитами.",
+    "romanization": "Islandiya raspolozhena mezhdu dvumya tektonicheskimi plitami."
+  },
+  "11": {
+    "text": "Мадагаскар — четвёртый по величине остров в мире.",
+    "romanization": "Madagaskar — chetvortyy po velichine ostrov v mire."
+  },
+  "12": {
+    "text": "Новая Зеландия состоит из двух основных островов.",
+    "romanization": "Novaya Zelandiya sostoit iz dvukh osnovnykh ostrovov."
+  },
+  "13": {
+    "text": "Тихоокеанское огненное кольцо — это место, где происходит много землетрясений.",
+    "romanization": "Tikhookeanskoye ognennoye kol'tso — eto mesto, gde proiskhodit mnogo zemletryaseniy."
+  },
+  "14": {
+    "text": "Индийский океан омывает берега трёх континентов.",
+    "romanization": "Indiyskiy okean omyvayet berega trokh kontinentov."
+  },
+  "15": {
+    "text": "Нил течёт на север на протяжении тысяч миль.",
+    "romanization": "Nil techet na sever na protyazhenii tysyach mil'."
+  },
+  "16": {
+    "text": "Амазонка несёт больше воды, чем любая другая река.",
+    "romanization": "Amazonka nesot bol'she vody, chem lyubaya drugaya reka."
+  },
+  "17": {
+    "text": "Озеро Байкал — самое глубокое пресноводное озеро в мире.",
+    "romanization": "Ozero Baykal — samoye glubokoye presnovodnoye ozero v mire."
+  },
+  "18": {
+    "text": "Миссисипи охватывает большую часть центральных районов США.",
+    "romanization": "Missisipi okhvatyvayet bol'shuyu chast' tsentral'nykh rayonov SShA."
+  },
+  "19": {
+    "text": "Ганг священен для многих людей.",
+    "romanization": "Gang svyashchenen dlya mnogikh lyudey."
+  },
+  "20": {
+    "text": "Янцзы — самая длинная река в Азии.",
+    "romanization": "Yantszy — samaya dlinnaya reka v Azii."
+  },
+  "21": {
+    "text": "Дунай протекает через десять стран.",
+    "romanization": "Dunay protekayet cherez desyat' stran."
+  },
+  "22": {
+    "text": "Каспийское море — самый большой замкнутый водоём.",
+    "romanization": "Kaspiyskoye more — samyy bol'shoy zamknutyy vodoyom."
+  },
+  "23": {
+    "text": "Волга — самая длинная река, полностью расположенная в Европе.",
+    "romanization": "Volga — samaya dlinnaya reka, polnost'yu raspolozhennaya v Yevrope."
+  },
+  "24": {
+    "text": "Озеро Виктория — основной исток Белого Нила.",
+    "romanization": "Ozero Viktoriya — osnovnoy istok Belogo Nila."
+  },
+  "25": {
+    "text": "Великие озёра содержат пятую часть мировых запасов пресной поверхностной воды.",
+    "romanization": "Velikiye ozora soderzhat pyatuyu chast' mirovykh zapasov presnoy poverkhnostnoy vody."
+  },
+  "26": {
+    "text": "Рейн на протяжении веков был торговым путём.",
+    "romanization": "Reyn na protyazhenii vekov byl torgovym putom."
+  },
+  "27": {
+    "text": "Меконг обеспечивает жизнь миллионам людей в Юго-Восточной Азии.",
+    "romanization": "Mekong obespechivayet zhizn' millionam lyudey v Yugo-Vostochnoy Azii."
+  },
+  "28": {
+    "text": "Некоторые реки пересыхают, не достигнув моря.",
+    "romanization": "Nekotoryye reki peresykhayut, ne dostignuv morya."
+  },
+  "29": {
+    "text": "Река Колорадо вырезала Гранд-Каньон на протяжении миллионов лет.",
+    "romanization": "Reka Kolorado vyrezala Grand-Kan'on na protyazhenii millionov let."
+  },
+  "30": {
+    "text": "Гора Эверест — самая высокая точка над уровнем моря.",
+    "romanization": "Gora Everest — samaya vysokaya tochka nad urovnem morya."
+  },
+  "31": {
+    "text": "Анды простираются вдоль всей Южной Америки.",
+    "romanization": "Andy prostirayutsya vdol' vsey Yuzhnoy Ameriki."
+  },
+  "32": {
+    "text": "Альпы популярны среди туристов летом.",
+    "romanization": "Al'py populyarny sredi turistov letom."
+  },
+  "33": {
+    "text": "Скалистые горы простираются от Канады до юго-запада США.",
+    "romanization": "Skalistyye gory prostirayutsya ot Kanady do yugo-zapada SShA."
+  },
+  "34": {
+    "text": "Гималаи всё ещё медленно растут.",
+    "romanization": "Gimalai vsyo yeshcho medlenno rastut."
+  },
+  "35": {
+    "text": "Килиманджаро — самая высокая вершина в Африке.",
+    "romanization": "Kilimandzharo — samaya vysokaya vershina v Afrike."
+  },
+  "36": {
+    "text": "Уральские горы разделяют Европу и Азию.",
+    "romanization": "Ural'skiye gory razdelyayut Yevropu i Aziyu."
+  },
+  "37": {
+    "text": "Гора Фудзи священна для многих в Японии.",
+    "romanization": "Gora Fudzi svyashchenna dlya mnogikh v Yaponii."
+  },
+  "38": {
+    "text": "Атласские горы формируют климат Северной Африки.",
+    "romanization": "Atlasskiye gory formiruyut klimat Severnoy Afriki."
+  },
+  "39": {
+    "text": "Ледники отступают от горных хребтов по всему миру.",
+    "romanization": "Ledniki otstupayut ot gornykh khrebtov po vsemu miru."
+  },
+  "40": {
+    "text": "Сахара — самая большая жаркая пустыня.",
+    "romanization": "Sakhara — samaya bol'shaya zharkaya pustynya."
+  },
+  "41": {
+    "text": "Арктика и Антарктика — полярные пустыни.",
+    "romanization": "Arktika i Antarktika — polyarnyye pustyni."
+  },
+  "42": {
+    "text": "У Амазонки есть своя собственная погодная система.",
+    "romanization": "U Amazonki yest' svoya sobstvennaya pogodnaya sistema."
+  },
+  "43": {
+    "text": "Тропические дождевые леса тёплые и влажные круглый год.",
+    "romanization": "Tropicheskiye dozhdevyye lesa toplyye i vlazhnyye kruglyy god."
+  },
+  "44": {
+    "text": "В умеренных зонах есть четыре чётко выраженных сезона.",
+    "romanization": "V umerennykh zonakh yest' chetyre chotko vyrazhennykh sezona."
+  },
+  "45": {
+    "text": "Муссоны приносят сильные дожди в Южную Азию каждое лето.",
+    "romanization": "Mussony prinosyat sil'nyye dozhdi v Yuzhnuyu Aziyu kazhdoye leto."
+  },
+  "46": {
+    "text": "Торнадо наиболее распространены в центральных штатах США.",
+    "romanization": "Tornado naiboleye rasprostraneny v tsentral'nykh shtatakh SShA."
+  },
+  "47": {
+    "text": "Ураганы формируются над тёплыми океанскими водами.",
+    "romanization": "Uragany formiruyutsya nad toplimi okeanskimi vodami."
+  },
+  "48": {
+    "text": "Средиземноморский климат мягкий и сухой летом.",
+    "romanization": "Sredizemnomorskiy klimat myagkiy i sukhoy letom."
+  },
+  "49": {
+    "text": "Вечная мерзлота покрывает большую часть Сибири.",
+    "romanization": "Vechnaya merzlota pokryvayet bol'shuyu chast' Sibiri."
+  },
+  "50": {
+    "text": "Атакама — одно из самых засушливых мест на Земле.",
+    "romanization": "Atakama — odno iz samykh zasushlivykh mest na Zemle."
+  },
+  "51": {
+    "text": "В тундре слишком короткое лето для деревьев.",
+    "romanization": "V tundre slishkom korotkoye leto dlya derev'yev."
+  },
+  "52": {
+    "text": "Мангровые заросли растут там, где суша встречается с солёной водой.",
+    "romanization": "Mangrovyye zarosli rastut tam, gde susha vstrechayetsya s solyonoy vodoy."
+  },
+  "53": {
+    "text": "Коралловым рифам нужна тёплая, чистая вода для процветания.",
+    "romanization": "Korallovym rifam nuzhna toplaya, chistaya voda dlya protsvetaniya."
+  },
+  "54": {
+    "text": "Струйное течение влияет на погоду на разных континентах.",
+    "romanization": "Struynoye techeniye vliyayet na pogodu na raznykh kontinentakh."
+  },
+  "55": {
+    "text": "В Токио проживает больше людей, чем в любой другой агломерации.",
+    "romanization": "V Tokio prozhivayet bol'she lyudey, chem v lyuboy drugoy aglomeratsii."
+  },
+  "56": {
+    "text": "Ватикан — самая маленькая страна в мире.",
+    "romanization": "Vatikan — samaya malen'kaya strana v mire."
+  },
+  "57": {
+    "text": "Россия охватывает одиннадцать часовых поясов.",
+    "romanization": "Rossiya okhvatyvayet odinnadtsat' chasovykh poyasov."
+  },
+  "58": {
+    "text": "Индия и Китай вместе составляют более трети населения мира.",
+    "romanization": "Indiya i Kitay vmeste sostavlyayut bolee treti naseleniya mira."
+  },
+  "59": {
+    "text": "Бразилия граничит с большинством стран Южной Америки.",
+    "romanization": "Braziliya granichit s bol'shinstvom stran Yuzhnoy Ameriki."
+  },
+  "60": {
+    "text": "Сингапур — это одновременно и город, и страна.",
+    "romanization": "Singapur — eto odnovremenno i gorod, i strana."
+  },
+  "61": {
+    "text": "Стамбул расположен на двух континентах.",
+    "romanization": "Stambul raspolozhen na dvukh kontinentakh."
+  },
+  "62": {
+    "text": "В Кейптауне есть знаменитая гора с плоской вершиной.",
+    "romanization": "V Keyptaune yest' znamenitaya gora s ploskoy vershinoy."
+  },
+  "63": {
+    "text": "Буэнос-Айрес иногда называют Парижем Южной Америки.",
+    "romanization": "Buenos-Ayres inogda nazyvayut Parizhem Yuzhnoy Ameriki."
+  },
+  "64": {
+    "text": "Лагос — один из самых быстрорастущих городов в мире.",
+    "romanization": "Lagos — odin iz samykh bystrorastushchikh gorodov v mire."
+  },
+  "65": {
+    "text": "Рейкьявик — самая северная столица мира.",
+    "romanization": "Reyk'yavik — samaya severnaya stolitsa mira."
+  },
+  "66": {
+    "text": "Ла-Пас — одна из самых высокогорных столиц.",
+    "romanization": "La-Pas — odna iz samykh vysokogornykh stolits."
+  },
+  "67": {
+    "text": "В Сиднее находится одна из крупнейших естественных гаваней.",
+    "romanization": "V Sidney nakhoditsya odna iz krupneyshikh yestestvennykh gavane."
+  },
+  "68": {
+    "text": "В Марракеше есть тысячелетний старый город.",
+    "romanization": "V Marrakeshe yest' tysyacheletniy staryy gorod."
+  },
+  "69": {
+    "text": "Ханой расположен вдоль Красной реки.",
+    "romanization": "Khanoy raspolozhen vdol' Krasnoy reki."
+  },
+  "70": {
+    "text": "Люди пересекали пустыни, чтобы торговать специями.",
+    "romanization": "Lyudi peresekali pustyni, chtoby torgovat' spetsiyami."
+  },
+  "71": {
+    "text": "Шёлковый путь соединял Китай со Средиземноморьем.",
+    "romanization": "Sholkovyy put' soyedinyal Kitay so Sredizemnomor'yem."
+  },
+  "72": {
+    "text": "На некоторых языках говорят только на одном маленьком острове.",
+    "romanization": "Na nekotorykh yazykakh govoryat tol'ko na odnom malen'kom ostrove."
+  },
+  "73": {
+    "text": "Половина населения мира живёт у побережья.",
+    "romanization": "Polovina naseleniya mira zhivyot u poberezh'ya."
+  },
+  "74": {
+    "text": "Многие города начинались как речные порты.",
+    "romanization": "Mnogiye goroda nachinalis' kak rechnyye porty."
+  },
+  "75": {
+    "text": "Границы меняются; реки и горы обычно нет.",
+    "romanization": "Granitsy menyayutsya; reki i gory obychno net."
+  },
+  "76": {
+    "text": "Побережья мира более густонаселены, чем внутренние районы.",
+    "romanization": "Poberezh'ya mira boleye gustonaseleny, chem vnutrenniye rayony."
+  },
+  "77": {
+    "text": "Многие древние руины всё ещё обнаруживаются.",
+    "romanization": "Mnogiye drevniye ruiny vsyo yeshcho obnaruzhivayutsya."
+  },
+  "78": {
+    "text": "Некоторые острова медленно исчезают под поднимающимся уровнем моря.",
+    "romanization": "Nekotoryye ostrova medlenno ischezayut pod podnimayushchimsya urovnem morya."
+  },
+  "79": {
+    "text": "Длительные миграции сформировали почти каждый континент.",
+    "romanization": "Dlitel'nyye migratsii sformirovali pochti kazhdyy kontinent."
+  },
+  "80": {
+    "text": "В Австралии обитают животные, которых нет больше нигде.",
+    "romanization": "V Avstralii obitayut zhivotnyye, kotorykh net bol'she nigde."
+  },
+  "81": {
+    "text": "Самая глубокая часть океана — Марианская впадина.",
+    "romanization": "Samaya glubokaya chast' okeana — Marianskaya vpadina."
+  },
+  "82": {
+    "text": "Гренландия в основном покрыта льдом.",
+    "romanization": "Grenlandiya v osnovnom pokryta l'dom."
+  },
+  "83": {
+    "text": "Вулканы могут создавать новые острова за несколько десятилетий.",
+    "romanization": "Vulkany mogut sozdavat' novyye ostrova za neskol'ko desyatiletii."
+  },
+  "84": {
+    "text": "Северное сияние лучше всего видно из северных широт.",
+    "romanization": "Severnoye siyaniye luchshe vsego vidno iz severnykh shirot."
+  },
+  "85": {
+    "text": "Континенты Земли медленно расходятся.",
+    "romanization": "Kontinenty Zemli medlenno raskhodyatsya."
+  },
+  "86": {
+    "text": "В самом засушливом месте на Земле всё ещё могут случаться редкие наводнения.",
+    "romanization": "V samom zasushlivom meste na Zemle vsyo yeshcho mogut sluchat'sya redkiye navodneniya."
+  },
+  "87": {
+    "text": "Некоторые озёра настолько солёные, что в них почти ничего не может жить.",
+    "romanization": "Nekotoryye ozora nastol'ko solyonyye, chto v nikh pochti nichego ne mozhet zhit'."
+  },
+  "88": {
+    "text": "Самый высокий водопад в мире находится в Венесуэле.",
+    "romanization": "Samyy vysokiy vodopad v mire nakhoditsya v Venesuele."
+  },
+  "89": {
+    "text": "Сахара была травянистой равниной тысячи лет назад.",
+    "romanization": "Sakhara byla travyanistoy ravninoy tysyachi let nazad."
+  },
+  "90": {
+    "text": "Какая страна граничит с наибольшим количеством других стран?",
+    "romanization": "Kakaya strana granichit s naibol'shim kolichestvom drugikh stran?"
+  },
+  "91": {
+    "text": "В чём разница между страной и государством?",
+    "romanization": "V chom raznitsa mezhdu stranoy i gosudarstvom?"
+  },
+  "92": {
+    "text": "Где на этой карте находится экватор?",
+    "romanization": "Gde na etoy karte nakhoditsya ekvator?"
+  },
+  "93": {
+    "text": "Какой океан ближе всего отсюда?",
+    "romanization": "Kakoy okean blizhe vsego otsyuda?"
+  },
+  "94": {
+    "text": "Сколько времени займёт пройти пешком через эту страну?",
+    "romanization": "Skol'ko vremeni zaymyot proyti peshkom cherez etu stranu?"
+  },
+  "95": {
+    "text": "Какая самая высокая вершина, на которую вы поднимались?",
+    "romanization": "Kakaya samaya vysokaya vershina, na kotoruyu vy podnimalis'?"
+  },
+  "96": {
+    "text": "Я хочу однажды увидеть северное сияние.",
+    "romanization": "Ya khochu odnazhdy uvidet' severnoye siyaniye."
+  },
+  "97": {
+    "text": "Столица также является самым большим городом?",
+    "romanization": "Stolitsa takzhe yavlyayetsya samym bol'shim gorodom?"
+  },
+  "98": {
+    "text": "Карта выглядит по-другому, если её перевернуть.",
+    "romanization": "Karta vyglyadit po-drugomu, yesli yeyo perevernut'."
+  },
+  "99": {
+    "text": "У каждой страны есть история, которую стоит узнать.",
+    "romanization": "U kazhdoy strany yest' istoriya, kotoruyu stoit uznat'."
+  }
+}

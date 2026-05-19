@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "मीटिंग दस मिनट में शुरू होगी।",
+    "romanization": "Mīṭiṅg das minaṭ meṁ śurū hogī."
+  },
+  "1": {
+    "text": "क्या तुम अपनी स्क्रीन शेयर कर सकते हो?",
+    "romanization": "Kyā tum apnī skrīn śeyar kar sakte ho?"
+  },
+  "2": {
+    "text": "माफ़ करना, मैं म्यूट पर था।",
+    "romanization": "Māf karnā, maiṁ myūṭ par thā."
+  },
+  "3": {
+    "text": "हम समय से ज़्यादा ले रहे हैं।",
+    "romanization": "Ham samay se zyādā le rahe haiṁ."
+  },
+  "4": {
+    "text": "इसे अगली मीटिंग के लिए टाल देते हैं।",
+    "romanization": "Ise aglī mīṭiṅg ke lie ṭāl dete haiṁ."
+  },
+  "5": {
+    "text": "मैं नोट्स ले लूँगा।",
+    "romanization": "Maiṁ noṭs le lūṅgā."
+  },
+  "6": {
+    "text": "क्या हम एक-एक करके अपनी बात रख सकते हैं?",
+    "romanization": "Kyā ham ek-ek karke apnī bāt rakh sakte haiṁ?"
+  },
+  "7": {
+    "text": "एजेंडा कैलेंडर इनवाइट में है।",
+    "romanization": "Ejeṇḍā kalenḍar invāiṭ meṁ hai."
+  },
+  "8": {
+    "text": "इसकी अगुवाई कौन कर रहा है?",
+    "romanization": "Iskī aguvāī kaun kar rahā hai?"
+  },
+  "9": {
+    "text": "क्या हम इसे रिकॉर्ड कर रहे हैं?",
+    "romanization": "Kyā ham ise rikorḍ kar rahe haiṁ?"
+  },
+  "10": {
+    "text": "कॉल बीच में ही कट गई।",
+    "romanization": "Kāl bīc meṁ hī kaṭ gaī."
+  },
+  "11": {
+    "text": "क्या हम इसे पंद्रह मिनट आगे बढ़ा सकते हैं?",
+    "romanization": "Kyā ham ise pandrah minaṭ āge baṛhā sakte haiṁ?"
+  },
+  "12": {
+    "text": "वह देर से आया पर चुपचाप।",
+    "romanization": "Vah der se āyā par cupcāp."
+  },
+  "13": {
+    "text": "कमरा फिर से डबल-बुक हो गया है।",
+    "romanization": "Kamrā phir se ḍabal-buk ho gayā hai."
+  },
+  "14": {
+    "text": "इसे अभी रोक देते हैं और बाद में इस पर बात करेंगे।",
+    "romanization": "Ise abhī rok dete haiṁ aur bād meṁ is par bāt kareṁge."
+  },
+  "15": {
+    "text": "मुझे ठीक तीन बजे निकलना है।",
+    "romanization": "Mujhe ṭhīk tīn baje nikalnā hai."
+  },
+  "16": {
+    "text": "क्या तुम दो मिनट और रुक सकते हो?",
+    "romanization": "Kyā tum do minaṭ aur ruk sakte ho?"
+  },
+  "17": {
+    "text": "व्हाइटबोर्ड भर गया है।",
+    "romanization": "Vāiṭborḍ bhar gayā hai."
+  },
+  "18": {
+    "text": "क्या तुम एक्शन आइटम का सारांश बता सकते हो?",
+    "romanization": "Kyā tum ekśan āiṭam kā sārāṁś batā sakte ho?"
+  },
+  "19": {
+    "text": "खड़े होकर की जाने वाली मीटिंग्स हैरानी की बात है कि जल्दी ख़त्म हो जाती हैं।",
+    "romanization": "Khaṛe hokar kī jāne vālī mīṭiṅgs hairānī kī bāt hai ki jaldī ḵẖatm ho jātī haiṁ."
+  },
+  "20": {
+    "text": "मैं तुम्हें दिन के अंत तक जवाब दूँगा।",
+    "romanization": "Maiṁ tumheṁ din ke ant tak javāb dūṅgā."
+  },
+  "21": {
+    "text": "क्या मेरा आख़िरी ईमेल तुम्हें मिला?",
+    "romanization": "Kyā merā āḵẖirī īmel tumheṁ milā?"
+  },
+  "22": {
+    "text": "देर से जवाब देने के लिए माफ़ करना।",
+    "romanization": "Der se javāb dene ke lie māf karnā."
+  },
+  "23": {
+    "text": "मैं सारा को भी इस पर शामिल कर रहा हूँ।",
+    "romanization": "Maiṁ Sārā ko bhī is par śāmil kar rahā hūṁ."
+  },
+  "24": {
+    "text": "अटैचमेंट नहीं पहुँचा।",
+    "romanization": "Aṭaicmeṇṭ nahīṁ pahuṁcā."
+  },
+  "25": {
+    "text": "मैंने इसे ज़रूरी बताया है।",
+    "romanization": "Maiṁne ise zarūrī batāyā hai."
+  },
+  "26": {
+    "text": "क्या तुम वह फ़ाइल दोबारा भेज सकते हो?",
+    "romanization": "Kyā tum vah fāil dobārā bhej sakte ho?"
+  },
+  "27": {
+    "text": "यह बातचीत लंबी हो गई है, मुझे इसका सारांश बताने दो।",
+    "romanization": "Yah bātacīt lambī ho gaī hai, mujhe iskā sārāṁś batāne do."
+  },
+  "28": {
+    "text": "विषय पंक्ति का इस्तेमाल करना ताकि मैं इसे ढूँढ सकूँ।",
+    "romanization": "Viṣay paṅkti kā istemāl karnā tāki maiṁ ise ḍhūṁḍh sakūṁ."
+  },
+  "29": {
+    "text": "उसने सप्ताहांत में अपना इनबॉक्स साफ़ कर लिया।",
+    "romanization": "Usne saptāhānt meṁ apnā inboksa sāf kar liyā."
+  },
+  "30": {
+    "text": "कृपया शुक्रवार तक जवाब देना।",
+    "romanization": "Kṛpayā śukravār tak javāb denā."
+  },
+  "31": {
+    "text": "काम पूरा होने पर मैं तुम्हें एक छोटा नोट भेजूंगा।",
+    "romanization": "Kām pūrā hone par maiṁ tumheṁ ek choṭā noṭ bhejūṁgā."
+  },
+  "32": {
+    "text": "ऑटो-रिप्लाई में लिखा है कि वह यात्रा कर रहा है।",
+    "romanization": "Oṭo-riplāī meṁ likhā hai ki vah yātrā kar rahā hai."
+  },
+  "33": {
+    "text": "उसने गलती से ग़लत व्यक्ति को कॉपी कर दिया।",
+    "romanization": "Usne galtī se ġalat vyakti ko kopī kar diyā."
+  },
+  "34": {
+    "text": "तीन रिमाइंडर काफ़ी हैं।",
+    "romanization": "Tīn rimāiṇḍar kāfī haiṁ."
+  },
+  "35": {
+    "text": "क्या तुम मुझे वह थ्रेड फ़ॉरवर्ड कर सकते हो?",
+    "romanization": "Kyā tum mujhe vah thred fŏrvarḍ kar sakte ho?"
+  },
+  "36": {
+    "text": "इसके लिए चैट ईमेल से ज़्यादा तेज़ है।",
+    "romanization": "Iske lie caiṭ īmel se zyādā tez hai."
+  },
+  "37": {
+    "text": "इस शोरगुल में मैं तुम्हारा मैसेज नहीं देख पाया।",
+    "romanization": "Is śorgul meṁ maiṁ tumhārā maisej nahīṁ dekh pāyā."
+  },
+  "38": {
+    "text": "तुम्हारे ईमेल का लिंक एक ग़ायब पेज पर जा रहा है।",
+    "romanization": "Tumhāre īmel kā liṅk ek ġāyab pej par jā rahā hai."
+  },
+  "39": {
+    "text": "कृपया पुष्टि करना कि तुम्हें यह मिल गया है।",
+    "romanization": "Kṛpayā puṣṭi karnā ki tumheṁ yah mil gayā hai."
+  },
+  "40": {
+    "text": "डेडलाइन शुक्रवार दोपहर तक है।",
+    "romanization": "Ḍeḍlāin śukravār dopahar tak hai."
+  },
+  "41": {
+    "text": "बुधवार तक मेरे पास पहला ड्राफ़्ट होगा।",
+    "romanization": "Budhavār tak mere pās pahlā ḍrāfṭ hogā."
+  },
+  "42": {
+    "text": "हमें इस हफ़्ते कुछ तो डिलीवर करना है।",
+    "romanization": "Hameṁ is hafte kuch to ḍilīvar karnā hai."
+  },
+  "43": {
+    "text": "प्रोजेक्ट एक दिन पीछे हो गया।",
+    "romanization": "ProjeKṭ ek din pīche ho gayā."
+  },
+  "44": {
+    "text": "क्या तुम इसे भेजने से पहले एक बार पढ़ सकते हो?",
+    "romanization": "Kyā tum ise bhejane se pahle ek bār paṛh sakte ho?"
+  },
+  "45": {
+    "text": "मुझे तुम्हें स्टेटस अपडेट देना है।",
+    "romanization": "Mujhe tumheṁ steṭas apḍeṭ denā hai."
+  },
+  "46": {
+    "text": "संख्याएँ उससे मेल नहीं खातीं जो मैंने पिछले हफ़्ते भेजी थीं।",
+    "romanization": "Saṅkhyāeṁ usse mel nahīṁ khātīṁ jo maiṁne pichle hafte bhejī thīṁ."
+  },
+  "47": {
+    "text": "हम क्लाइंट के फ़ैसले का इंतज़ार कर रहे हैं।",
+    "romanization": "Ham klāiṇṭ ke faisle kā intazār kar rahe haiṁ."
+  },
+  "48": {
+    "text": "उसने इसे ख़त्म करने के लिए लंच के दौरान भी काम किया।",
+    "romanization": "Usne ise ḵẖatm karne ke lie laṁc ke daurān bhī kām kiyā."
+  },
+  "49": {
+    "text": "रिपोर्ट का काम मेरा ख़त्म हो गया है।",
+    "romanization": "Ripoṛṭ kā kām merā ḵẖatm ho gayā hai."
+  },
+  "50": {
+    "text": "मंज़ूरी मिलते ही मैं शुरू कर दूँगा।",
+    "romanization": "Maṁzūrī milte hī maiṁ śurū kar dūṅgā."
+  },
+  "51": {
+    "text": "क्या तुम इस वर्ज़न को मंज़ूरी दे सकते हो?",
+    "romanization": "Kyā tum is varzan ko maṁzūrī de sakte ho?"
+  },
+  "52": {
+    "text": "डिलीवर करने से ठीक पहले उसने एक टाइपो पकड़ लिया।",
+    "romanization": "Ḍilīvar karne se ṭhīk pahle usne ek ṭāipo pakaṛ liyā."
+  },
+  "53": {
+    "text": "हमने लॉन्च को अगले मंगलवार तक बढ़ा दिया है।",
+    "romanization": "Hamne lŏnc ko agle maṅgalvār tak baṛhā diyā hai."
+  },
+  "54": {
+    "text": "अनुमान दोगुना ग़लत था।",
+    "romanization": "Anumān dogunā ġalat thā."
+  },
+  "55": {
+    "text": "उसने ध्यान केंद्रित करने के लिए अपनी दोपहर खाली कर ली।",
+    "romanization": "Usne dhyān kendrit karne ke lie apnī dopahar ḵẖālī kar lī."
+  },
+  "56": {
+    "text": "कॉन्ट्रैक्ट पर हस्ताक्षर होकर वापस आ गया।",
+    "romanization": "Kŏnṭrækṭ par hastākṣar hokar vāpas ā gayā."
+  },
+  "57": {
+    "text": "चलो इसे पूरा मानकर आगे बढ़ते हैं।",
+    "romanization": "Calo ise pūrā mānkar āge baṛhte haiṁ."
+  },
+  "58": {
+    "text": "पहला वर्ज़न कच्चा है पर काम करता है।",
+    "romanization": "Pahlā varzan kaccā hai par kām kartā hai."
+  },
+  "59": {
+    "text": "एक बार तो उसने समय से पहले काम दे दिया।",
+    "romanization": "Ek bār to usne samay se pahle kām de diyā."
+  },
+  "60": {
+    "text": "टीम में तुम्हारा स्वागत है।",
+    "romanization": "Ṭīm meṁ tumhārā svāgat hai."
+  },
+  "61": {
+    "text": "मैं तुम्हें बाकियों से मिलवा दूँगा।",
+    "romanization": "Maiṁ tumheṁ bākiyoṁ se milvā dūṅgā."
+  },
+  "62": {
+    "text": "वह अभी छुट्टी से वापस आई है।",
+    "romanization": "Vah abhī chuṭṭī se vāpas āī hai."
+  },
+  "63": {
+    "text": "इस बारे में उसी से पूछना चाहिए।",
+    "romanization": "Is bāre meṁ usī se pūchnā cāhie."
+  },
+  "64": {
+    "text": "हम मंगलवार को एक ही डेस्क शेयर करते हैं।",
+    "romanization": "Ham maṅgalvār ko ek hī ḍesk śeyar karte haiṁ."
+  },
+  "65": {
+    "text": "प्राइसिंग के बारे में सबसे ज़्यादा कौन जानता है?",
+    "romanization": "Prāisiṅg ke bāre meṁ sabse zyādā kaun jāntā hai?"
+  },
+  "66": {
+    "text": "वह हमेशा टीम के लिए कॉफ़ी लाता है।",
+    "romanization": "Vah hameśā ṭīm ke lie kŏfī lātā hai."
+  },
+  "67": {
+    "text": "नया कर्मचारी जल्दी सीखता है।",
+    "romanization": "Nayā karmacārī jaldī sīkhtā hai."
+  },
+  "68": {
+    "text": "वह मार्केटिंग के साथ मिलकर काम करती है।",
+    "romanization": "Vah mārkeṭiṅg ke sāth milkar kām kartī hai."
+  },
+  "69": {
+    "text": "वह यहाँ सबसे ज़्यादा समय से है।",
+    "romanization": "Vah yahāṁ sabse zyādā samay se hai."
+  },
+  "70": {
+    "text": "उन्होंने काम को ठीक आधे-आधे में बाँट लिया।",
+    "romanization": "Unhoṁne kām ko ṭhīk ādhe-ādhe meṁ bāṁṭ liyā."
+  },
+  "71": {
+    "text": "हमने लंच किया और उसका एक मोटा-मोटा ख़ाका बना लिया।",
+    "romanization": "Hamne laṁc kiyā aur uskā ek moṭā-moṭā ḵẖākā banā liyā."
+  },
+  "72": {
+    "text": "जब मैं बीमार था, तो उसने मेरा काम संभाला।",
+    "romanization": "Jab maiṁ bīmār thā, to usne merā kām saṁbhālā."
+  },
+  "73": {
+    "text": "टीम लैपटॉप के चारों ओर जमा हो गई।",
+    "romanization": "Ṭīm laiṭapŏp ke cāroṁ or jamā ho gaī."
+  },
+  "74": {
+    "text": "उसे सबका जन्मदिन याद रहता है।",
+    "romanization": "Use sabkā janmadin yād rahtā hai."
+  },
+  "75": {
+    "text": "मैं कल दूर से ही जुड़ूँगा।",
+    "romanization": "Maiṁ kal dūr se hī juṛūṅgā."
+  },
+  "76": {
+    "text": "शुक्रवार को ऑफ़िस ज़्यादातर ख़ाली रहता है।",
+    "romanization": "Śukravār ko ŏfis zyādātār ḵẖālī rahtā hai."
+  },
+  "77": {
+    "text": "मेरा इंटरनेट आज ठीक से नहीं चल रहा है।",
+    "romanization": "Merā iṇṭarneṭ āj ṭhīk se nahīṁ cal rahā hai."
+  },
+  "78": {
+    "text": "वह दूसरे शहर से काम करता है।",
+    "romanization": "Vah dūsre śahar se kām kartā hai."
+  },
+  "79": {
+    "text": "टीम महीने में एक बार आमने-सामने मिलती है।",
+    "romanization": "Ṭīm mahīne meṁ ek bār āmne-sāmne miltī hai."
+  },
+  "80": {
+    "text": "उसने बेडरूम के एक कोने को डेस्क बना लिया।",
+    "romanization": "Usne beḍrūm ke ek kone ko ḍesk banā liyā."
+  },
+  "81": {
+    "text": "घर का ऑफ़िस आख़िरकार साफ़-सुथरा हो गया है।",
+    "romanization": "Ghar kā ŏfis āḵẖirakār sāf-suthrā ho gayā hai."
+  },
+  "82": {
+    "text": "क्या तुम अपना कैमरा चालू कर सकते हो?",
+    "romanization": "Kyā tum apnā kaimerā cālū kar sakte ho?"
+  },
+  "83": {
+    "text": "बैकग्राउंड का शोर ठीक है, चिंता मत करो।",
+    "romanization": "Baikgrāuṇḍ kā śor ṭhīk hai, cintā mat karo."
+  },
+  "84": {
+    "text": "हम हर सुबह एक छोटा चेक-इन करते हैं।",
+    "romanization": "Ham har subah ek choṭā cek-in karte haiṁ."
+  },
+  "85": {
+    "text": "प्रिंटर फिर से जाम हो गया है।",
+    "romanization": "Priṇṭar phir se jām ho gayā hai."
+  },
+  "86": {
+    "text": "कॉफ़ी मशीन में बीन्स ख़त्म हो गए हैं।",
+    "romanization": "Kŏfī maśīn meṁ bīns ḵẖatm ho gae haiṁ."
+  },
+  "87": {
+    "text": "क्या तुम दरवाज़ा खोल सकते हो?",
+    "romanization": "Kyā tum darvāzā khol sakte ho?"
+  },
+  "88": {
+    "text": "कॉन्फ़्रेंस रूम की खिड़की खुलती नहीं है।",
+    "romanization": "Kŏnfreṇs rūm kī khiṛkī khultī nahīṁ hai."
+  },
+  "89": {
+    "text": "किसी ने अपना लंच एक हफ़्ते के लिए फ़्रिज में छोड़ दिया था।",
+    "romanization": "Kisī ne apnā laṁc ek hafte ke lie frij meṁ choṛ diyā thā."
+  },
+  "90": {
+    "text": "तीन बजे किचन में शांति रहती है।",
+    "romanization": "Tīn baje kican meṁ śānti rahtī hai."
+  },
+  "91": {
+    "text": "उसने दिमाग़ साफ़ करने के लिए सीढ़ियाँ लीं।",
+    "romanization": "Usne dimāġ sāf karne ke lie sīṛhiyāṁ līṁ."
+  },
+  "92": {
+    "text": "खिड़की पर रखा पौधा अच्छा बढ़ रहा है।",
+    "romanization": "Khiṛkī par rakhā paudhā acchā baṛh rahā hai."
+  },
+  "93": {
+    "text": "क्या तुम फ़्रंट डेस्क पर एक पैकेज के लिए साइन कर सकते हो?",
+    "romanization": "Kyā tum fraṇṭ ḍesk par ek paikej ke lie sāin kar sakte ho?"
+  },
+  "94": {
+    "text": "बैज रीडर ठीक से काम नहीं कर रहा है।",
+    "romanization": "Baij rīḍar ṭhīk se kām nahīṁ kar rahā hai."
+  },
+  "95": {
+    "text": "दिन का अंत हमेशा अचानक आ जाता है।",
+    "romanization": "Din kā ant hameśā acānak ā jātā hai."
+  },
+  "96": {
+    "text": "वह एक समय में एक ही विंडो खोलकर सबसे अच्छा काम करता है।",
+    "romanization": "Vah ek samay meṁ ek hī viṇḍo kholkar sabse acchā kām kartā hai."
+  },
+  "97": {
+    "text": "वह दिन की शुरुआत के लिए एक मोमबत्ती जलाती है।",
+    "romanization": "Vah din kī śurūāt ke lie ek mombattī jalātī hai."
+  },
+  "98": {
+    "text": "लंच के बाद थोड़ी देर टहलना मुझे सोचने में मदद करता है।",
+    "romanization": "Laṁc ke bād thoṛī der ṭahalnā mujhe socne meṁ madad kartā hai."
+  },
+  "99": {
+    "text": "कुछ सोमवार एक छोटी जीत के साथ शुरू होते हैं।",
+    "romanization": "Kuch somvār ek choṭī jīt ke sāth śurū hote haiṁ."
+  }
+}

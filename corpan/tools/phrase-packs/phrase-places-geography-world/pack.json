@@ -1,0 +1,10 @@
+{
+  "id": "phrase-places-geography-world",
+  "version": "0.1.0",
+  "name": "World Geography",
+  "description": "Continents, rivers, climates, terrain. Facts and observations about the planet we share.",
+  "category": "places",
+  "topic": "Geography",
+  "icon": "globe",
+  "accent_color": "#2dd4bf"
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "מה זה אומר לחיות חיים טובים?",
+    "romanization": "Ma ze omer lachayot chayim tovim?"
+  },
+  "1": {
+    "text": "איך אנחנו יודעים את מה שאנחנו יודעים?",
+    "romanization": "Eich anachnu yodim et ma she'anachnu yodim?"
+  },
+  "2": {
+    "text": "יש הבדל בין לדעת ללהאמין?",
+    "romanization": "Yesh hevdel bein lada'at leleha'amin?"
+  },
+  "3": {
+    "text": "למה יש משהו במקום כלום?",
+    "romanization": "Lama yesh mashehu bimkom klum?"
+  },
+  "4": {
+    "text": "מה גורם לאדם להישאר אותו אדם לאורך זמן?",
+    "romanization": "Ma gorem la'adam lehisha'er oto adam le'orech zman?"
+  },
+  "5": {
+    "text": "האם מכונה יכולה לחשוב?",
+    "romanization": "Ha'im mekhona yekhola lachshov?"
+  },
+  "6": {
+    "text": "האם העולם שאנחנו רואים הוא העולם האמיתי?",
+    "romanization": "Ha'im ha'olam she'anachnu ro'im hu ha'olam ha'amiti?"
+  },
+  "7": {
+    "text": "מה אנחנו חייבים לאנשים שלעולם לא נפגוש?",
+    "romanization": "Ma anachnu chayavim la'anashim shele'olam lo nifgosh?"
+  },
+  "8": {
+    "text": "למה כל כך קשה לשנות דעה?",
+    "romanization": "Lama kol kach kashe leshanot de'a?"
+  },
+  "9": {
+    "text": "מה זה אומר כששני אנשים מסכימים?",
+    "romanization": "Ma ze omer keshenei anashim maskimim?"
+  },
+  "10": {
+    "text": "האם האמת מומצאת או מתגלה?",
+    "romanization": "Ha'im ha'emet mumtza'at o mitgala?"
+  },
+  "11": {
+    "text": "למה אנחנו מרגישים זמן כמו שאנחנו מרגישים?",
+    "romanization": "Lama anachnu margishim zman kmo she'anachnu margishim?"
+  },
+  "12": {
+    "text": "מאיפה מגיעה המשמעות?",
+    "romanization": "Me'eifo magia ha'mashma'ut?"
+  },
+  "13": {
+    "text": "מהי בעצם בחירה חופשית?",
+    "romanization": "Ma hi be'etzem bechira chofshit?"
+  },
+  "14": {
+    "text": "האם אושר הוא רגש או תרגול?",
+    "romanization": "Ha'im osher hu regesh o tirgul?"
+  },
+  "15": {
+    "text": "לפעמים קשה לזהות מה הדבר הנכון.",
+    "romanization": "Lifamim kashe lezahot ma hadavar hanachon."
+  },
+  "16": {
+    "text": "כוונות טובות לא מבטיחות תוצאות טובות.",
+    "romanization": "Kavanot tovot lo mavtichot totza'ot tovot."
+  },
+  "17": {
+    "text": "רוב השאלות האתיות עוסקות באיזון בין טובים מתחרים.",
+    "romanization": "Rov hashe'elot ha'etiyot osakot be'izun bein tovim mit'acharim."
+  },
+  "18": {
+    "text": "שקר קטן יכול לגרום נזק גדול.",
+    "romanization": "Sheker katan yakhol ligrom nezek gadol."
+  },
+  "19": {
+    "text": "כנות קלה יותר בסביבה תומכת.",
+    "romanization": "Kenut kala yoter bisviva tomekhet."
+  },
+  "20": {
+    "text": "אכזריות לעיתים קרובות מסתתרת מאחורי הרגלים קטנים.",
+    "romanization": "Akhzariyut le'itim krovot mistateret me'achorei hergelim ktanim."
+  },
+  "21": {
+    "text": "יש כללים שטובים כי הם חוסכים מאיתנו את הצורך לחשוב.",
+    "romanization": "Yesh klalim shetovim ki hem choskhim me'itanu et hatzorekh lachshov."
+  },
+  "22": {
+    "text": "לפעמים הכללים עצמם הם הבעיה.",
+    "romanization": "Lifamim haklalim atzmam hem habe'aya."
+  },
+  "23": {
+    "text": "הבטחה היא הימור קטן על העצמי העתידי שלך.",
+    "romanization": "Havtacha hi himur katan al ha'atzmi ha'atidi shelkha."
+  },
+  "24": {
+    "text": "אנשים שופטים מעשים לפי תוצאות וכללים לפי כוונות.",
+    "romanization": "Anashim shoftim ma'asim lefi totza'ot u'klalim lefi kavanot."
+  },
+  "25": {
+    "text": "צביעות קל יותר לראות אצל אחרים.",
+    "romanization": "Tzvi'ut kal yoter lir'ot etzel acherim."
+  },
+  "26": {
+    "text": "סליחה היא בחלקה מתנה למי שסולח.",
+    "romanization": "Slicha hi bechelka matana lemi shesole'ach."
+  },
+  "27": {
+    "text": "אמפתיה היא שריר שמתחזק עם השימוש.",
+    "romanization": "Empathia hi shrir shemitkhazek im hashimush."
+  },
+  "28": {
+    "text": "צדק הוא לא נקמה.",
+    "romanization": "Tzedek hu lo nekama."
+  },
+  "29": {
+    "text": "כוח בוחן אופי יותר מעוני.",
+    "romanization": "Koach bochan ofi yoter me'oni."
+  },
+  "30": {
+    "text": "לא לעשות כלום זו גם בחירה.",
+    "romanization": "Lo la'asot klum zo gam bechira."
+  },
+  "31": {
+    "text": "המידה הטובה הקשה ביותר היא סבלנות.",
+    "romanization": "Hamida hatova hakasha beyoter hi savlanut."
+  },
+  "32": {
+    "text": "מעשי חסד קטנים מצטברים.",
+    "romanization": "Ma'asei chesed ktanim mitztabrim."
+  },
+  "33": {
+    "text": "חברה נמדדת לפי איך שהיא מתייחסת לחלשים ביותר.",
+    "romanization": "Chevra nimdedet lefi eich shehi mityachaset lachalashim beyoter."
+  },
+  "34": {
+    "text": "אומץ הוא לפעול נכון כשמפחדים.",
+    "romanization": "Ometz hu lif'ol nakhon kshemefachadim."
+  },
+  "35": {
+    "text": "אפשר להיות בטוחים וטועים בו זמנית.",
+    "romanization": "Efshar lihyot betuchim ve'to'im bo zmanit."
+  },
+  "36": {
+    "text": "ראיות הן מה שמשנה דעה זהירה.",
+    "romanization": "Re'ayot hen ma shemeshane de'a zehira."
+  },
+  "37": {
+    "text": "רוב האמונות מגיעות בקבוצות, לא אחת אחת.",
+    "romanization": "Rov ha'emunot megi'ot bikvutzot, lo achat achat."
+  },
+  "38": {
+    "text": "אנחנו נוטים לזכור את הפעמים שצדקנו.",
+    "romanization": "Anachnu notim lizkor et hapa'amim shetzadaknu."
+  },
+  "39": {
+    "text": "ספק לא נוח אבל שימושי.",
+    "romanization": "Safek lo noach aval shimushi."
+  },
+  "40": {
+    "text": "שאלה טובה קשה יותר מתשובה חכמה.",
+    "romanization": "She'ela tova kasha yoter mitshuva chakhama."
+  },
+  "41": {
+    "text": "יש שאלות שאין להן תשובה נכונה אחת.",
+    "romanization": "Yesh she'elot she'ein lahen teshuvah nekhona achat."
+  },
+  "42": {
+    "text": "מודלים שגויים, אבל חלקם שימושיים.",
+    "romanization": "Modelim shgoyim, aval chelka shimushiyim."
+  },
+  "43": {
+    "text": "המפה אינה השטח.",
+    "romanization": "Hamapa eina hashetach."
+  },
+  "44": {
+    "text": "שמות מעצבים את מה שאנחנו שמים לב אליו.",
+    "romanization": "Shemot me'atzvim et ma she'anachnu samim lev elav."
+  },
+  "45": {
+    "text": "קריאה איטית היא סוג של חשיבה בפני עצמה.",
+    "romanization": "Kri'a itit hi sug shel chashiva bifnei atzma."
+  },
+  "46": {
+    "text": "דעות נחרצות, מוחזקות בגמישות.",
+    "romanization": "De'ot nachratzot, muchzakot begmishut."
+  },
+  "47": {
+    "text": "האנשים החכמים ביותר משנים את דעתם הכי הרבה.",
+    "romanization": "Ha'anashim hachakamim beyoter meshannim et da'atam hachi harbe."
+  },
+  "48": {
+    "text": "אי הסכמה היא לא אי הבנה.",
+    "romanization": "I haskama hi lo i havana."
+  },
+  "49": {
+    "text": "לפעמים שני הצדדים צודקים חלקית.",
+    "romanization": "Lifamim shnei hatzvadim tzdakim chelkit."
+  },
+  "50": {
+    "text": "העולם עתיק יותר מכל הסבר עליו.",
+    "romanization": "Ha'olam atik yoter mikol hesber alav."
+  },
+  "51": {
+    "text": "תודעה היא הדבר המוזר ביותר שאנחנו מכירים.",
+    "romanization": "Toda'a hi hadavar hamuzar beyoter she'anachnu makirim."
+  },
+  "52": {
+    "text": "אנחנו רואים פחות מהעולם ממה שאנחנו חושבים.",
+    "romanization": "Anachnu ro'im pachot meha'olam mimah she'anachnu choshvim."
+  },
+  "53": {
+    "text": "הזיכרון כותב את עצמו מחדש בכל פעם שאנחנו משתמשים בו.",
+    "romanization": "Hazikaron kotev et atzmo mechadash bechol pa'am she'anachnu mishtamshim bo."
+  },
+  "54": {
+    "text": "שני אנשים באותו חדר יכולים לחוות חדרים שונים.",
+    "romanization": "Shnei anashim be'oto cheder yekholim lachavot chadarim shonim."
+  },
+  "55": {
+    "text": "התודעה בונה את העולם שבו היא חיה.",
+    "romanization": "Hatoda'a bona et ha'olam shebo hi chaya."
+  },
+  "56": {
+    "text": "יש חוויות שאי אפשר לבטא במילים.",
+    "romanization": "Yesh chavayot she'i efshar levateh bemilim."
+  },
+  "57": {
+    "text": "מוזיקה נדמית כמדברת ישירות ללא צורך בתרגום.",
+    "romanization": "Muzika nidmet kemedaberet yeshirut lelo tzorekh betirgum."
+  },
+  "58": {
+    "text": "כאב הוא מורה, גם כשאין לו שיעור.",
+    "romanization": "Ke'ev hu moreh, gam kshe'ein lo shi'ur."
+  },
+  "59": {
+    "text": "יופי הוא לפעמים רמז.",
+    "romanization": "Yofi hu lifamim remez."
+  },
+  "60": {
+    "text": "שעמום לעיתים קרובות מסתיר שאלה שצריך לשאול.",
+    "romanization": "Shi'amum le'itim krovot mistir she'ela shetzarich lish'ol."
+  },
+  "61": {
+    "text": "בדידות מבהירה דברים שההמון מטשטש.",
+    "romanization": "Bedidut mavhira dvarim sheha'hamon metashtesh."
+  },
+  "62": {
+    "text": "שינה היא לא כלום.",
+    "romanization": "Sheina hi lo klum."
+  },
+  "63": {
+    "text": "המוות נותן צורה לזמן.",
+    "romanization": "Hamavet noten tzura lazman."
+  },
+  "64": {
+    "text": "ההווה הוא המקום היחיד שבו משהו אי פעם קורה.",
+    "romanization": "Hahove hu hamakom hayachid shebo mashehu i pa'am koreh."
+  },
+  "65": {
+    "text": "סוקרטס אמר שחיים שלא נבחנו אינם ראויים לחיותם.",
+    "romanization": "Sokrates amar shechayim shelo nivchanu einam re'uyim lechayotam."
+  },
+  "66": {
+    "text": "הסטואים ניסו לרצות רק את מה שהיה להם.",
+    "romanization": "Hastu'im nisu lirtzot rak et ma shehaya lahem."
+  },
+  "67": {
+    "text": "קונפוציוס לימד את חשיבותם של טקסים קטנים.",
+    "romanization": "Konfutzius limed et chashivutam shel taksim ktanim."
+  },
+  "68": {
+    "text": "הבודהה הצביע על שורש הסבל.",
+    "romanization": "Habudha hitzbi'a al shoresh hasavel."
+  },
+  "69": {
+    "text": "אריסטו חשב שמידה טובה היא הרגל, לא רגש.",
+    "romanization": "Aristot chashav shemida tova hi hergel, lo regesh."
+  },
+  "70": {
+    "text": "אפלטון חשד שהדברים שאנחנו רואים הם כמו צללים.",
+    "romanization": "Aflaton chashad shehadvarim she'anachnu ro'im hem kmo tlalim."
+  },
+  "71": {
+    "text": "לאו דזה שיבח את דרך המים.",
+    "romanization": "Lao Tzu shibech et derekh hamayim."
+  },
+  "72": {
+    "text": "אפיקורוס רצה תענוגות שלווים, לא גדולים.",
+    "romanization": "Epikurus ratza ta'anugot shlevim, lo gdolim."
+  },
+  "73": {
+    "text": "דיוגנס לימד על ידי לעג למוסכמות.",
+    "romanization": "Diyogenes limed al yedei la'ag lemuskamot."
+  },
+  "74": {
+    "text": "מסורות רבות מסכימות יותר משהן חולקות.",
+    "romanization": "Masorot rabot maskimot yoter mishehen cholkot."
+  },
+  "75": {
+    "text": "קאנט אמר להתייחס לאנשים כתכלית, לא רק כאמצעי.",
+    "romanization": "Kant amar lehit'yaches la'anashim ketachlit, lo rak ke'emtza'i."
+  },
+  "76": {
+    "text": "יום הבחין שרק התבונה לא גורמת לנו לאכפת.",
+    "romanization": "Hume hivchin sherak hatvuna lo gormet lanu le'ikhpat."
+  },
+  "77": {
+    "text": "ניטשה כתב שאמיתות קשות יכולות להיות גם מתנות.",
+    "romanization": "Nietzsche katav she'amitot kashot yekholot lihyot gam matanot."
+  },
+  "78": {
+    "text": "ויטגנשטיין אמר שגבולות השפה שלנו הם גבולות העולם שלנו.",
+    "romanization": "Wittgenstein amar shegvulot hasafa shelanu hem gvulot ha'olam shelanu."
+  },
+  "79": {
+    "text": "סימון דה בובואר טענה שאנחנו הופכים להיות מי שאנחנו דרך הבחירות שלנו.",
+    "romanization": "Simone de Beauvoir ta'ana she'anachnu hofkhim lihyot mi she'anachnu derekh habechirot shelanu."
+  },
+  "80": {
+    "text": "ויליאם ג'יימס אמר שאמונה מעצבת את מה שאנחנו יכולים לעשות.",
+    "romanization": "William James amar she'emuna me'atzvet et ma she'anachnu yekholim la'asot."
+  },
+  "81": {
+    "text": "ג'ון רולס שאל אילו כללים נקבל אם לא היינו יודעים מי נהיה.",
+    "romanization": "John Rawls sha'al ilu klalim nekabel im lo hayinu yodim mi nihiye."
+  },
+  "82": {
+    "text": "חנה ארנדט הזהירה שרוע יכול להיות רגיל.",
+    "romanization": "Hannah Arendt hizhira sharo'a yakhol lihyot ragil."
+  },
+  "83": {
+    "text": "איריס מרדוק אמרה שאאהבה היא העבודה הקשה של מתן תשומת לב.",
+    "romanization": "Iris Murdoch amra she'ahava hi ha'avoda hakasha shel matan tsumet lev."
+  },
+  "84": {
+    "text": "פילוסופים מודרניים רבים שואלים בחופשיות ממסורות רבות.",
+    "romanization": "Filosofim moderniyim rabim sho'alim bechofshiyut mimassorot rabot."
+  },
+  "85": {
+    "text": "התחל עם העבודה שאתה באמת יכול לעשות היום.",
+    "romanization": "Hatchal im ha'avoda she'ata be'emet yakhol la'asot hayom."
+  },
+  "86": {
+    "text": "הקשב כאילו אתה עלול לטעות.",
+    "romanization": "Hakshav ke'ilu ata alul lit'ot."
+  },
+  "87": {
+    "text": "נסה לרצות פחות לפני שתרוויח יותר.",
+    "romanization": "Nase lirtzot pachot lifnei shetarvi'ach yoter."
+  },
+  "88": {
+    "text": "שים לב מה אתה עושה כשאיש לא רואה.",
+    "romanization": "Sim lev ma ata ose kshe'ish lo ro'e."
+  },
+  "89": {
+    "text": "הליכה היא פילוסופיה קטנה.",
+    "romanization": "Halikha hi filosofia ktana."
+  },
+  "90": {
+    "text": "הטיעון הקשה ביותר להציג הוא זה שאתה חייב לעצמך.",
+    "romanization": "Hati'un hakashe beyoter lehatzig hu ze she'ata chayav le'atzmekha."
+  },
+  "91": {
+    "text": "החזק דעות כמו שאתה מחזיק כלי עבודה.",
+    "romanization": "Hachzek de'ot kmo she'ata machzik kli avoda."
+  },
+  "92": {
+    "text": "קבל את דבריהם של אחרים בפרשנות הטובה ביותר.",
+    "romanization": "Kabel et divreihem shel acherim beparshanut hatova beyoter."
+  },
+  "93": {
+    "text": "תרגל הכרת תודה בבקרים רגילים, לא רק במיוחדים.",
+    "romanization": "Targel hakarat toda babekarim regilim, lo rak bimeyuchadim."
+  },
+  "94": {
+    "text": "הדרך הקצרה ביותר עוברת לפעמים דרך השאלה.",
+    "romanization": "Haderekh haketzara beyoter overet lifamim derekh hashe'ela."
+  },
+  "95": {
+    "text": "פליאה היא סוג של תשומת לב.",
+    "romanization": "Pli'a hi sug shel tsumet lev."
+  },
+  "96": {
+    "text": "קרא ספרים ישנים לפחות לפעמים.",
+    "romanization": "Kra sfarim yeshanim lefachot lifamim."
+  },
+  "97": {
+    "text": "חלק על דברים בצורה טובה והיחסים יישרדו.",
+    "romanization": "Chalok al dvarim bitzura tova vehayechasim yishredu."
+  },
+  "98": {
+    "text": "חיים טובים הם הרבה ימים טובים קטנים.",
+    "romanization": "Chayim tovim hem harbe yamim tovim ktanim."
+  },
+  "99": {
+    "text": "אין מילה אחרונה.",
+    "romanization": "Ein mila achrona."
+  }
+}

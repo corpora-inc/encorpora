@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Kokous alkaa kymmenen minuutin päästä.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Voisitko jakaa näyttösi?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Anteeksi, olin mykistyksellä.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Menemme yliajalle.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Siirretään se seuraavaan kokoukseen.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Minä teen muistiinpanot.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Käydäänkö kierros?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Esityslista on kalenterikutsussa.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Kuka tätä vetää?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Nauhoitetaanko tämä?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Puhelu katkesi kesken kaiken.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Voidaanko tätä siirtää vartti eteenpäin?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Hän tuli myöhässä, mutta hiljaa.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Huone on taas tuplabuukattu.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Pannaan se sivuun ja palataan asiaan.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Minun on pakko lopettaa kolmelta.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Voitko jäädä pariksi minuutiksi?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Valkotaulu on täynnä.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Voisitko tiivistää toimenpiteet?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Seisomakokoukset ovat yllättävän nopeita.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Palaan asiaan sinulle päivän loppuun mennessä.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Tuliko viimeinen sähköpostini perille?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Anteeksi myöhäinen vastaus.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Otan Saran mukaan tähän.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Liite ei tullut perille.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Merkitsin sen kiireelliseksi.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Voisitko lähettää sen tiedoston uudelleen?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Keskusteluketju venyi, anna kun tiivistän.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Käytä otsikkoa, niin löydän sen.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Hän tyhjensi postilaatikkonsa viikonlopun aikana.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Vastaathan perjantaihin mennessä.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Lähetän lyhyen viestin, kun se on valmis.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Automaattinen vastaus kertoo hänen olevan matkoilla.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Hän kopioi vahingossa väärän henkilön.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Kolme muistutusta riittää.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Voisitko välittää minulle sen ketjun?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Tähän chatti on nopeampi kuin sähköposti.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Viestisi hukkui kaikkeen meluun.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Sähköpostisi linkki vie puuttuvalle sivulle.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Vahvistathan, että sait tämän.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Määräaika on perjantaina keskipäivällä.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Minulla on ensimmäinen luonnos valmiina keskiviikkoon mennessä.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Meidän on saatava jotain valmiiksi tällä viikolla.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Projekti myöhästyi päivällä.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Voisitko oikolukea tämän ennen kuin lähetän sen?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Olen sinulle velkaa tilannepäivityksen.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Numerot eivät täsmää sen kanssa, mitä lähetin viime viikolla.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Olemme jumissa asiakkaan päätöksen vuoksi.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Hän teki töitä lounastauonkin ajan saadakseen sen valmiiksi.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Raportti on vihdoin pois käsistäni.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Aloitan heti, kun saan hyväksynnän.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Voisitko hyväksyä tämän version?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Hän huomasi kirjoitusvirheen juuri ennen kuin julkaisimme.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Siirsimme julkaisun ensi tiistaihin.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Arvio heitti kertoimella kaksi.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Hän tyhjensi iltapäivänsä keskittyäkseen.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Sopimus palasi allekirjoitettuna.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Katsotaan tämä valmiiksi ja siirrytään eteenpäin.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Ensimmäinen versio on raaka, mutta se toimii.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Hän toimitti ajoissa kerrankin.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Tervetuloa tiimiin.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Esittelen sinut muille.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Hän palasi juuri lomalta.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Häneltä kannattaa kysyä tästä.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Jaamme työpöydän tiistaisin.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Kuka tietää eniten hinnoittelusta?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Hän tuo aina kahvia tiimille.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Uusi työntekijä oppii nopeasti.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Hän tekee tiivistä yhteistyötä markkinoinnin kanssa.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Hän on ollut täällä kauemmin kuin kukaan muu.",
+    "romanization": null
+  },
+  "70": {
+    "text": "He jakoivat työn tasan.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Kävimme lounaalla ja luonnostelimme sen.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Hän tuurasi minua, kun olin sairaana.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Tiimi kokoontui kannettavan tietokoneen ympärille.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Hän muistaa kaikkien syntymäpäivät.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Osallistun etänä huomenna.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Toimisto on yleensä tyhjä perjantaisin.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Internet-yhteyteni on epävakaa tänään.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Hän tekee töitä eri kaupungista.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Tiimi tapaa kasvokkain kerran kuukaudessa.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Hän järjesti makuuhuoneen nurkkaan työpisteen.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Kotitoimisto on vihdoin siisti.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Voisitko laittaa kamerasi päälle?",
+    "romanization": null
+  },
+  "83": {
+    "text": "Taustamelu on ok, älä huoli.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Teemme nopean aamukatsauksen joka aamu.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Tulostin on taas jumissa.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Kahviautomaatista on pavut loppu.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Voisitko avata oven?",
+    "romanization": null
+  },
+  "88": {
+    "text": "Neuvotteluhuoneen ikkuna ei aukea.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Joku jätti lounaansa jääkaappiin viikoksi.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Keittiö on hiljainen kello kolmelta.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Hän meni portaita pitkin selventääkseen ajatuksiaan.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Ikkunalaudan kasvi voi hyvin.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Voisitko kuitata paketin vastaanotossa?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Kulunlukija temppuilee.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Päivän loppu hiipii aina yllättäen.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Hän työskentelee parhaiten yksi ikkuna kerrallaan auki.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Hän sytyttää kynttilän merkitäkseen päivän alkua.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Lyhyt kävely lounaan jälkeen auttaa minua ajattelemaan.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Jotkut maanantait alkavat pienellä voitolla.",
+    "romanization": null
+  }
+}

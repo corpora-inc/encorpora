@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "ピアノを弾けますか？",
+    "romanization": "Piano o hikemasu ka?"
+  },
+  "1": {
+    "text": "小さなオーケストラでバイオリンを弾いています。",
+    "romanization": "Chiisana ōkesutora de baiorin o hiiteimasu."
+  },
+  "2": {
+    "text": "ギターの弦、新しいのが必要ですね。",
+    "romanization": "Gitā no gen, atarashii no ga hitsuyō desu ne."
+  },
+  "3": {
+    "text": "彼女は妹さんのバンドでドラムを叩いています。",
+    "romanization": "Kanojo wa imōto-san no bando de doramu o tataiteimasu."
+  },
+  "4": {
+    "text": "フルートを習っています。",
+    "romanization": "Furūto o naratteimasu."
+  },
+  "5": {
+    "text": "彼は20年ぶりにまたトランペットを吹き始めました。",
+    "romanization": "Kare wa nijū-nen-buri ni mata toranpetto o fuki-hajimemashita."
+  },
+  "6": {
+    "text": "チェロが壁に立てかけてあります。",
+    "romanization": "Chero ga kabe ni tatekakete arimasu."
+  },
+  "7": {
+    "text": "チューニングに思ったより時間がかかりますね。",
+    "romanization": "Chūningu ni omotta yori jikan ga kakarimasu ne."
+  },
+  "8": {
+    "text": "どの弦が音程がずれていますか？",
+    "romanization": "Dono gen ga ontei ga zureteimasu ka?"
+  },
+  "9": {
+    "text": "弓の毛を張り替える必要があります。",
+    "romanization": "Yumi no ke o harikaeru hitsuyō ga arimasu."
+  },
+  "10": {
+    "text": "オンラインで中古のキーボードを買いました。",
+    "romanization": "Onrain de chūko no kībōdo o kaimashita."
+  },
+  "11": {
+    "text": "彼女はグランドピアノよりアップライトピアノの方が好きです。",
+    "romanization": "Kanojo wa gurando piano yori appuraito piano no hō ga suki desu."
+  },
+  "12": {
+    "text": "彼はどこへ行くにもサックスのケースを持ち歩いています。",
+    "romanization": "Kare wa doko e iku ni mo sakkusu no kēsu o mochi-aruiteimasu."
+  },
+  "13": {
+    "text": "ドラマーは他の人が来る前にセッティングを終えていました。",
+    "romanization": "Doramā wa hoka no hito ga kuru mae ni settingu o oete imashita."
+  },
+  "14": {
+    "text": "ウクレレはギターよりも始めやすいですよ。",
+    "romanization": "Ukurere wa gitā yori mo hajimeyasui desu yo."
+  },
+  "15": {
+    "text": "楽譜は読めますか？",
+    "romanization": "Gakufu wa yomemasu ka?"
+  },
+  "16": {
+    "text": "その曲はト長調です。",
+    "romanization": "Sono kyoku wa To-chōchō desu."
+  },
+  "17": {
+    "text": "私たちは4分の3拍子です。",
+    "romanization": "Watashitachi wa yon-bun no san-byōshi desu."
+  },
+  "18": {
+    "text": "最初の音をもう少し大きく弾いてください。",
+    "romanization": "Saisho no oto o mō sukoshi ōkiku hiite kudasai."
+  },
+  "19": {
+    "text": "休符も音符と同じくらい大切です。",
+    "romanization": "Kyūfu mo onpu to onaji kurai taisetsu desu."
+  },
+  "20": {
+    "text": "彼はフラットとシャープが何かを説明してくれました。",
+    "romanization": "Kare wa furatto to shāpu ga nani ka o setsumei shite kuremashita."
+  },
+  "21": {
+    "text": "コードチェンジがもう自然にできるようになりました。",
+    "romanization": "Kōdo chenji ga mō shizen ni dekiru yō ni narimashita."
+  },
+  "22": {
+    "text": "スケールはただ音を順番に並べたものです。",
+    "romanization": "Sukēru wa tada oto o junban ni narabeta mono desu."
+  },
+  "23": {
+    "text": "同じパッセージを1オクターブ低く弾いてみてください。",
+    "romanization": "Onaji passēji o ichi okutābu hikuku hiite mite kudasai."
+  },
+  "24": {
+    "text": "彼女は楽譜の余白にブレスの位置を書き込みました。",
+    "romanization": "Kanojo wa gakufu no yohaku ni buresu no ichi o kakikomimashita."
+  },
+  "25": {
+    "text": "指揮者がカウントして演奏を始めました。",
+    "romanization": "Shikisha ga kaunto shite ensō o hajimemashita."
+  },
+  "26": {
+    "text": "この小節、いつも苦手なんです。",
+    "romanization": "Kono shōsetsu, itsumo nigate nan desu."
+  },
+  "27": {
+    "text": "メロディーはシンプルですが、耳に残りますね。",
+    "romanization": "Merodī wa shinpuru desu ga, mimi ni nokorimasu ne."
+  },
+  "28": {
+    "text": "彼は耳で聴いて作曲する方が好きです。",
+    "romanization": "Kare wa mimi de kiite sakkyoku suru hō ga suki desu."
+  },
+  "29": {
+    "text": "ほとんどの曲は、いくつかのコードしか使っていません。",
+    "romanization": "Hotondo no kyoku wa, ikutsuka no kōdo shika tsukatte imasen."
+  },
+  "30": {
+    "text": "夕食後に30分練習します。",
+    "romanization": "Yūshoku-go ni sanjū-pun renshū shimasu."
+  },
+  "31": {
+    "text": "指が覚えるまでゆっくり弾いてください。",
+    "romanization": "Yubi ga oboeru made yukkuri hiite kudasai."
+  },
+  "32": {
+    "text": "彼女はテンポを保つためにメトロノームを使っています。",
+    "romanization": "Kanojo wa tenpo o tamotsu tame ni metoronōmu o tsukatteimasu."
+  },
+  "33": {
+    "text": "彼は自分の演奏を録音して、後で聴き返しています。",
+    "romanization": "Kare wa jibun no ensō o rokuon shite, ato de kikikaeshiteimasu."
+  },
+  "34": {
+    "text": "難しいパッセージの前にウォーミングアップをしてください。",
+    "romanization": "Muzukashii passēji no mae ni wōminguappu o shite kudasai."
+  },
+  "35": {
+    "text": "間違いは練習の一部です。",
+    "romanization": "Machigai wa renshū no ichibu desu."
+  },
+  "36": {
+    "text": "小さなセクションに分けて練習しました。",
+    "romanization": "Chiisana sekushon ni wakete renshū shimashita."
+  },
+  "37": {
+    "text": "来週2時間やるよりも、今日5分やる方がいいですよ。",
+    "romanization": "Raishū ni-jikan yaru yori mo, kyō go-fun yaru hō ga ii desu yo."
+  },
+  "38": {
+    "text": "彼女は鏡の前で練習しています。",
+    "romanization": "Kanojo wa kagami no mae de renshū shiteimasu."
+  },
+  "39": {
+    "text": "先生が新しい練習曲をくれました。",
+    "romanization": "Sensei ga atarashii renshūkyoku o kuremashita."
+  },
+  "40": {
+    "text": "ゆっくりな部分を急がないでください。",
+    "romanization": "Yukkuri na bubun o isoganaide kudasai."
+  },
+  "41": {
+    "text": "彼は時々目を閉じて演奏します。",
+    "romanization": "Kare wa tokidoki me o tojite ensō shimasu."
+  },
+  "42": {
+    "text": "一番難しい小節は、私が飛ばしてしまったところです。",
+    "romanization": "Ichiban muzukashii shōsetsu wa, watashi ga tobashite shimatta tokoro desu."
+  },
+  "43": {
+    "text": "3日休むと、いつも腕が鈍ってしまいます。",
+    "romanization": "Mikka yasumu to, itsumo ude ga nibutte shimaimasu."
+  },
+  "44": {
+    "text": "始まりよりも終わりをもっと練習してください。",
+    "romanization": "Hajimari yori mo owari o motto renshū shite kudasai."
+  },
+  "45": {
+    "text": "発表会の前、手が震えていました。",
+    "romanization": "Happyōkai no mae, te ga furuete imashita."
+  },
+  "46": {
+    "text": "曲が終わる前に観客が拍手し始めました。",
+    "romanization": "Kyoku ga owaru mae ni kankyaku ga hakushu shi-hajimemashita."
+  },
+  "47": {
+    "text": "彼女はお辞儀をしてステージを降りました。",
+    "romanization": "Kanojo wa ojigi o shite sutēji o orimashita."
+  },
+  "48": {
+    "text": "彼はセリフを忘れて、アドリブで乗り切りました。",
+    "romanization": "Kare wa serifu o wasurete, adoribu de norikirimashita."
+  },
+  "49": {
+    "text": "照明が落ちる間にバンドはチューニングしました。",
+    "romanization": "Shōmei ga ochiru aida ni bando wa chūningu shimashita."
+  },
+  "50": {
+    "text": "ページをめくっていただけますか？",
+    "romanization": "Pēji o mekuttte itadakemasu ka?"
+  },
+  "51": {
+    "text": "マイクがシンバルに近すぎます。",
+    "romanization": "Maiku ga shinbaru ni chikasugimasu."
+  },
+  "52": {
+    "text": "私たちはアンコールを演奏しました。",
+    "romanization": "Watashitachi wa ankōru o ensō shimashita."
+  },
+  "53": {
+    "text": "彼は観客席を見て微笑みました。",
+    "romanization": "Kare wa kankyakuseki o mite hohoemimashita."
+  },
+  "54": {
+    "text": "初めてのコンサートはいつも一番大変です。",
+    "romanization": "Hajimete no konsāto wa itsumo ichiban taihen desu."
+  },
+  "55": {
+    "text": "舞台恐怖症はなかなかなくなりませんね。",
+    "romanization": "Butai kyōfushō wa nakanaka nakunarimasen ne."
+  },
+  "56": {
+    "text": "カデンツァの途中で、危うく弓を落としそうになりました。",
+    "romanization": "Kadentsa no tochū de, ayauku yumi o otoshi-sō ni narimashita."
+  },
+  "57": {
+    "text": "人前で歌うのは、それ自体が勇気ある行動です。",
+    "romanization": "Hitomae de utau no wa, sore jitai ga yūki aru kōdō desu."
+  },
+  "58": {
+    "text": "拍手が曲よりも長く感じられました。",
+    "romanization": "Hakushu ga kyoku yori mo nagaku kanjiraremashita."
+  },
+  "59": {
+    "text": "ショーの後、大好きなミュージシャンに会えました。",
+    "romanization": "Shō no ato, daisuki na myūjishan ni aemashita."
+  },
+  "60": {
+    "text": "どんな音楽が好きですか？",
+    "romanization": "Donna ongaku ga suki desu ka?"
+  },
+  "61": {
+    "text": "母のレコードを聴いて育ちました。",
+    "romanization": "Haha no rekōdo o kiite sodachimashita."
+  },
+  "62": {
+    "text": "彼は料理をしながらオペラを聴きます。",
+    "romanization": "Kare wa ryōri o shinagara opera o kikimasu."
+  },
+  "63": {
+    "text": "ベースラインがその曲を特徴づけています。",
+    "romanization": "Bēsurain ga sono kyoku o tokuchōzuketeimasu."
+  },
+  "64": {
+    "text": "その録音には部屋の響きが聴こえますね。",
+    "romanization": "Sono rokuon ni wa heya no hibiki ga kikoemasu ne."
+  },
+  "65": {
+    "text": "このアルバムはアナログレコードで聴く方がいいですよ。",
+    "romanization": "Kono arubamu wa anarogu rekōdo de kiku hō ga ii desu yo."
+  },
+  "66": {
+    "text": "彼女は目を閉じて弦楽器の音に耳を傾けました。",
+    "romanization": "Kanojo wa me o tojite gengakki no oto ni mimi o katamukemashita."
+  },
+  "67": {
+    "text": "ピアノの音程が少しずれています。",
+    "romanization": "Piano no ontei ga sukoshi zureteimasu."
+  },
+  "68": {
+    "text": "このアルバム、何度も聴き返してしまいます。",
+    "romanization": "Kono arubamu, nando mo kikikaeshite shimaimasu."
+  },
+  "69": {
+    "text": "初めて聴いた時、思わず手を止めてしまいました。",
+    "romanization": "Hajimete kiita toki, omowazu te o tomete shimaimashita."
+  },
+  "70": {
+    "text": "彼は毎週違うジャズのレコードをおすすめしてくれます。",
+    "romanization": "Kare wa maishū chigau jazu no rekōdo o osusume shite kuremasu."
+  },
+  "71": {
+    "text": "この曲を聴くと、祖父を思い出します。",
+    "romanization": "Kono kyoku o kiku to, sofu o omoidashimasu."
+  },
+  "72": {
+    "text": "メロディーの下に静かなハーモニーがあります。",
+    "romanization": "Merodī no shita ni shizuka na hāmonī ga arimasu."
+  },
+  "73": {
+    "text": "ライブ演奏は録音とは違った響きがありますね。",
+    "romanization": "Raibu ensō wa rokuon to wa chigatta hibiki ga arimasu ne."
+  },
+  "74": {
+    "text": "夜遅くはヘッドホンで聴くのが好きです。",
+    "romanization": "Yoru osoku wa heddohon de kiku no ga suki desu."
+  },
+  "75": {
+    "text": "合唱団は毎週水曜日の夜に集まります。",
+    "romanization": "Gasshōdan wa maishū suiyōbi no yoru ni atsumarimasu."
+  },
+  "76": {
+    "text": "ベースがバンド全体をまとめています。",
+    "romanization": "Bēsu ga bando zentai o matometeimasu."
+  },
+  "77": {
+    "text": "指揮者は優しくオーケストラを導きました。",
+    "romanization": "Shikisha wa yasashiku ōkesutora o michibimashita."
+  },
+  "78": {
+    "text": "同じパッセージを4回リハーサルしました。",
+    "romanization": "Onaji passēji o yon-kai rihābaru shimashita."
+  },
+  "79": {
+    "text": "彼は地元の交響楽団でセカンドバイオリンを弾いています。",
+    "romanization": "Kare wa jimoto no kōkyōgakudan de sekando baiorin o hiiteimasu."
+  },
+  "80": {
+    "text": "カルテットはきつく半円形に座っていました。",
+    "romanization": "Karutetto wa kitsuku han'enkei ni suwatte imashita."
+  },
+  "81": {
+    "text": "ドラマーがテンポをカウントしました。",
+    "romanization": "Doramā ga tenpo o kaunto shimashita."
+  },
+  "82": {
+    "text": "彼女はハーモニーパートを歌いました。",
+    "romanization": "Kanojo wa hāmonī pāto o utaimashita."
+  },
+  "83": {
+    "text": "ギター2本と歌声だけでも十分な時があります。",
+    "romanization": "Gitā ni-hon to utagoe dake demo jūbun na toki ga arimasu."
+  },
+  "84": {
+    "text": "合唱団は小さな教会へ歌いに行きました。",
+    "romanization": "Gasshōdan wa chiisana kyōkai e utai ni ikimashita."
+  },
+  "85": {
+    "text": "彼はクローゼットの中でボーカルを録音しました。",
+    "romanization": "Kare wa kurōzetto no naka de bōkaru o rokuon shimashita."
+  },
+  "86": {
+    "text": "入力を変えたら、ケーブルのハムノイズが消えました。",
+    "romanization": "Nyūryoku o kaetara, kēburu no hamu noizu ga kiemashita."
+  },
+  "87": {
+    "text": "その声には別のマイクが必要ですよ。",
+    "romanization": "Sono koe ni wa betsu no maiku ga hitsuyō desu yo."
+  },
+  "88": {
+    "text": "彼は次が悪くなる場合に備えて、すべてのテイクを保存しています。",
+    "romanization": "Kare wa tsugi ga waruku naru baai ni sonaete, subete no teiku o hozon shiteimasu."
+  },
+  "89": {
+    "text": "ミックスは翌朝聴いたらもっと良く聞こえました。",
+    "romanization": "Mikkusu wa yokuasa kiitara motto yoku kikoemashita."
+  },
+  "90": {
+    "text": "アンプは温まると光ります。",
+    "romanization": "Anpu wa atatamaru to hikarimasu."
+  },
+  "91": {
+    "text": "彼は古い4トラックのテープレコーダーを使っています。",
+    "romanization": "Kare wa furui yon-torakku no tēpu rekōdā o tsukatteimasu."
+  },
+  "92": {
+    "text": "同じラインを3つのテイクで重ねました。",
+    "romanization": "Onaji rain o mittsu no teiku de kasanemashita."
+  },
+  "93": {
+    "text": "リバーブのおかげで部屋がとても広く感じられました。",
+    "romanization": "Ribābu no okage de heya ga totemo hiroku kanjiraremashita."
+  },
+  "94": {
+    "text": "彼女はキッチンでアルバムをミックスしました。",
+    "romanization": "Kanojo wa kitchin de arubamu o mikkusu shimashita."
+  },
+  "95": {
+    "text": "音楽は長いドライブを短く感じさせます。",
+    "romanization": "Ongaku wa nagai doraibu o mijikaku kanjisemasu."
+  },
+  "96": {
+    "text": "一曲の歌が、一日の気分を変えることがあります。",
+    "romanization": "Ikkyoku no uta ga, ichinichi no kibun o kaeru koto ga arimasu."
+  },
+  "97": {
+    "text": "部屋中の人が一緒に歌いました。",
+    "romanization": "Heya-jū no hito ga issho ni utaimashita."
+  },
+  "98": {
+    "text": "最後のコードの後の静寂も音楽の一部です。",
+    "romanization": "Saigo no kōdo no ato no seijaku mo ongaku no ichibu desu."
+  },
+  "99": {
+    "text": "誰にでも弾ける曲を一つ覚えておきましょう。",
+    "romanization": "Dare ni demo hikeru kyoku o hitotsu oboete okimashō."
+  }
+}

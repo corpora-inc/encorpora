@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Cuộc họp bắt đầu sau mười phút nữa.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Bạn có thể chia sẻ màn hình được không?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Xin lỗi, tôi đang tắt tiếng.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Chúng ta đang bị lố giờ rồi.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Chúng ta hãy chuyển vấn đề này sang cuộc họp tới nhé.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Tôi sẽ ghi chép lại.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Mọi người có thể lần lượt chia sẻ không?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Chương trình nghị sự có trong lời mời trên lịch rồi.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Ai sẽ chủ trì cuộc họp này vậy?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Chúng ta có đang ghi âm/ghi hình không?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Cuộc gọi bị ngắt giữa chừng.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Chúng ta có thể lùi lại mười lăm phút được không?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Anh ấy đến muộn nhưng rất nhẹ nhàng.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Phòng này lại bị đặt trùng rồi.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Chúng ta hãy tạm gác lại vấn đề đó và quay lại sau nhé.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Tôi phải dừng đúng ba giờ.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Bạn có thể ở lại thêm hai phút được không?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Bảng trắng đầy hết rồi.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Bạn có thể tóm tắt các mục hành động được không?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Các cuộc họp đứng nhanh một cách đáng ngạc nhiên.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Tôi sẽ phản hồi bạn trước cuối ngày hôm nay.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Email cuối cùng của tôi đã đến chưa?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Xin lỗi vì đã trả lời muộn.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Tôi sẽ đưa Sara vào trao đổi về việc này.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Tệp đính kèm không gửi được.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Tôi đã đánh dấu nó là khẩn cấp.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Bạn có thể gửi lại tệp đó được không?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Chuỗi email này dài quá, để tôi tóm tắt nhé.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Hãy dùng tiêu đề email để tôi dễ tìm nhé.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Anh ấy đã dọn sạch hộp thư đến vào cuối tuần.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Vui lòng trả lời trước thứ Sáu.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Tôi sẽ gửi một tin nhắn ngắn khi xong việc.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Tin nhắn tự động nói rằng anh ấy đang đi công tác.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Cô ấy đã vô tình gửi nhầm người.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Ba lời nhắc là đủ rồi.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Bạn có thể chuyển tiếp chuỗi email đó cho tôi được không?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Dùng chat sẽ nhanh hơn email cho việc này.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Tôi đã bỏ lỡ tin nhắn của bạn giữa mớ hỗn độn đó.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Liên kết trong email của bạn dẫn đến một trang không tồn tại.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Vui lòng xác nhận bạn đã nhận được.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Hạn chót là trưa thứ Sáu.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Tôi sẽ có bản nháp đầu tiên trước thứ Tư.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Chúng ta cần hoàn thành một cái gì đó trong tuần này.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Dự án bị chậm một ngày.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Bạn có thể đọc lại cái này trước khi tôi gửi được không?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Tôi nợ bạn một bản cập nhật tình hình.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Các số liệu không khớp với những gì tôi đã gửi tuần trước.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Chúng ta đang bị tắc nghẽn vì chờ quyết định từ khách hàng.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Anh ấy đã làm việc xuyên trưa để hoàn thành nó.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Cuối cùng thì báo cáo cũng đã xong việc của tôi.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Tôi sẽ bắt đầu ngay khi nhận được sự chấp thuận.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Bạn có thể duyệt phiên bản này được không?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Cô ấy đã phát hiện ra một lỗi chính tả ngay trước khi chúng tôi hoàn thành.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Chúng tôi đã lùi ngày ra mắt sang thứ Ba tới.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Ước tính đã sai lệch gấp đôi.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Anh ấy đã dành cả buổi chiều để tập trung.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Hợp đồng đã được ký và gửi lại.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Hãy coi như xong và chuyển sang việc khác.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Phiên bản đầu tiên còn thô sơ nhưng vẫn hoạt động được.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Lần này anh ấy đã hoàn thành sớm.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Chào mừng bạn đến với đội.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Tôi sẽ giới thiệu bạn với những người khác.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Cô ấy vừa mới đi nghỉ phép về.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Anh ấy là người bạn nên hỏi về việc này.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Chúng tôi dùng chung bàn vào các ngày thứ Ba.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Ai biết nhiều nhất về giá cả vậy?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Anh ấy luôn mang cà phê cho cả đội.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Người mới học việc rất nhanh.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Cô ấy làm việc chặt chẽ với bộ phận marketing.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Anh ấy đã ở đây lâu hơn bất kỳ ai.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Họ chia công việc đều chằn chặn.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Chúng tôi ăn trưa và phác thảo ý tưởng.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Anh ấy đã làm thay tôi khi tôi bị ốm.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Cả đội tụ tập quanh chiếc máy tính xách tay.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Cô ấy nhớ sinh nhật của mọi người.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Ngày mai tôi sẽ tham gia từ xa.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Văn phòng thường trống vào các ngày thứ Sáu.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Mạng internet của tôi hôm nay không ổn định.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Anh ấy làm việc từ một thành phố khác.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Cả đội họp trực tiếp mỗi tháng một lần.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Cô ấy đã biến một góc phòng ngủ thành bàn làm việc.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Văn phòng tại nhà cuối cùng cũng gọn gàng.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Bạn có thể bật camera lên được không?",
+    "romanization": null
+  },
+  "83": {
+    "text": "Tiếng ồn nền không sao đâu, đừng lo lắng.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Chúng tôi kiểm tra nhanh tình hình mỗi sáng.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Máy in lại bị kẹt giấy rồi.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Máy pha cà phê hết hạt rồi.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Bạn có thể mở cửa giúp tôi được không?",
+    "romanization": null
+  },
+  "88": {
+    "text": "Cửa sổ phòng họp không mở được.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Ai đó đã để bữa trưa của họ trong tủ lạnh cả tuần.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Nhà bếp yên tĩnh vào lúc ba giờ.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Anh ấy đi cầu thang bộ để đầu óc thư thái.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Cây trên bệ cửa sổ đang phát triển tốt.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Bạn có thể ký nhận một gói hàng ở quầy lễ tân được không?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Đầu đọc thẻ đang bị trục trặc.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Cuối ngày luôn đến thật nhanh.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Anh ấy làm việc hiệu quả nhất khi chỉ mở một cửa sổ cùng lúc.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Cô ấy thắp một cây nến để đánh dấu sự bắt đầu của ngày làm việc.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Đi bộ một đoạn ngắn sau bữa trưa giúp tôi suy nghĩ tốt hơn.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Một số ngày thứ Hai bắt đầu bằng một chiến thắng nhỏ.",
+    "romanization": null
+  }
+}

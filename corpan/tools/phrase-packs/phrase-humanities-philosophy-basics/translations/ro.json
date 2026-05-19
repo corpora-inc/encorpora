@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Ce înseamnă să trăiești o viață bună?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Cum știm ceea ce știm?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Există o diferență între a ști și a crede?",
+    "romanization": null
+  },
+  "3": {
+    "text": "De ce există ceva, și nu nimic?",
+    "romanization": null
+  },
+  "4": {
+    "text": "Ce face ca o persoană să rămână aceeași de-a lungul timpului?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Ar putea o mașină să gândească?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Este lumea pe care o vedem lumea reală?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Ce datorăm oamenilor pe care nu-i vom întâlni niciodată?",
+    "romanization": null
+  },
+  "8": {
+    "text": "De ce e atât de greu să-ți schimbi părerea?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Ce înseamnă ca doi oameni să fie de acord?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Adevărul este inventat sau descoperit?",
+    "romanization": null
+  },
+  "11": {
+    "text": "De ce percepem timpul așa cum o facem?",
+    "romanization": null
+  },
+  "12": {
+    "text": "De unde vine sensul?",
+    "romanization": null
+  },
+  "13": {
+    "text": "Ce este, de fapt, liberul arbitru?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Fericirea este un sentiment sau o practică?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Lucrul corect e uneori greu de recunoscut.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Intențiile bune nu garantează rezultate bune.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Majoritatea întrebărilor etice se referă la cântărirea unor bunuri concurente.",
+    "romanization": null
+  },
+  "18": {
+    "text": "O minciună mică poate face mult rău.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Onestitatea e mai ușoară într-un mediu binevoitor.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Cruzimea se ascunde adesea în spatele unor obiceiuri mărunte.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Unele reguli sunt bune pentru că ne scutesc de a gândi.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Uneori, regulile însele sunt problema.",
+    "romanization": null
+  },
+  "23": {
+    "text": "O promisiune e un mic pariu pe sinele tău viitor.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Oamenii judecă acțiunile după rezultate și regulile după intenții.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Ipocrizia e mai ușor de văzut la alții.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Iertarea este, în parte, un dar pentru cel care iartă.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Empatia este un mușchi care devine mai puternic prin exercițiu.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Justiția nu este același lucru cu răzbunarea.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Puterea testează caracterul mai mult decât sărăcia.",
+    "romanization": null
+  },
+  "30": {
+    "text": "A nu face nimic este și o alegere.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Cea mai grea virtute este răbdarea.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Micile acte de bunătate se acumulează.",
+    "romanization": null
+  },
+  "33": {
+    "text": "O societate poate fi judecată după cum îi tratează pe cei mai slabi.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Curajul înseamnă să acționezi bine chiar și când îți este frică.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Putem fi încrezători și greșiți în același timp.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Dovada este ceea ce schimbă o minte atentă.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Majoritatea credințelor vin în grupuri, nu una câte una.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Avem tendința să ne amintim momentele în care am avut dreptate.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Îndoiala este inconfortabilă, dar utilă.",
+    "romanization": null
+  },
+  "40": {
+    "text": "O întrebare bună e mai grea decât un răspuns inteligent.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Unele întrebări nu au un singur răspuns corect.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Modelele sunt greșite, dar unele sunt utile.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Harta nu este teritoriul.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Numele modelează ceea ce observăm.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Cititul lent este un fel de gândire în sine.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Opinii puternice, susținute cu lejeritate.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Cei mai inteligenți oameni își schimbă cel mai des părerea.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Dezacordul nu este același lucru cu neînțelegerea.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Uneori, ambele părți au parțial dreptate.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Lumea este mai veche decât orice explicație a ei.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Conștiința este cel mai ciudat lucru pe care îl cunoaștem.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Vedem mai puțin din lume decât credem.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Memoria se rescrie singură de fiecare dată când o folosim.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Doi oameni în aceeași cameră pot experimenta camere diferite.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Mintea construiește lumea în care trăiește.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Unele experiențe nu pot fi puse în cuvinte.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Muzica pare să vorbească direct, fără traducere.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Durerea este un profesor, chiar și atunci când nu are o lecție.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Frumusețea este uneori un indiciu.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Plictiseala ascunde adesea o întrebare care trebuie pusă.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Singurătatea clarifică lucruri pe care mulțimile le estompează.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Somnul nu este nimic.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Moartea dă formă timpului.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Prezentul este singurul loc unde se întâmplă vreodată ceva.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Socrate a spus că o viață neexaminată nu merită trăită.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Stoicii încercau să-și dorească doar ceea ce aveau.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Confucius a învățat importanța micilor ritualuri.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Buddha a arătat cauza suferinței.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aristotel credea că virtutea este un obicei, nu un sentiment.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Platon suspecta că lucrurile pe care le vedem sunt ca niște umbre.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Lao Tzu a lăudat calea apei.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Epicur dorea plăceri liniștite, nu grandioase.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Diogene a predat batjocorind convențiile.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Multe tradiții sunt mai degrabă de acord decât în dezacord.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kant a spus să tratăm oamenii ca scopuri, nu doar ca mijloace.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Hume a observat că rațiunea singură nu ne face să ne pese.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Nietzsche a scris că adevărurile dure pot fi și daruri.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Wittgenstein a spus că limitele limbajului nostru sunt limitele lumii noastre.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Simone de Beauvoir a susținut că devenim noi înșine prin alegerile noastre.",
+    "romanization": null
+  },
+  "80": {
+    "text": "William James a spus că credința modelează ceea ce putem face.",
+    "romanization": null
+  },
+  "81": {
+    "text": "John Rawls a întrebat ce reguli am accepta dacă nu am ști cine vom fi.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hannah Arendt a avertizat că răul poate fi obișnuit.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Iris Murdoch a spus că iubirea este munca grea de a fi atent.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Mulți filosofi moderni împrumută liber din multe tradiții.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Începe cu munca pe care o poți face azi.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Ascultă ca și cum ai putea greși.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Încearcă să-ți dorești mai puțin înainte de a câștiga mai mult.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Observă ce faci când nimeni nu te privește.",
+    "romanization": null
+  },
+  "89": {
+    "text": "O plimbare este o mică filosofie.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Cel mai greu argument de făcut este cel pe care ți-l datorezi ție însuți.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Păstrează-ți opiniile așa cum ții o unealtă.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Interpretează cuvintele altor oameni în cel mai bun sens.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Practică recunoștința în diminețile obișnuite, nu doar în cele speciale.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Drumul cel mai scurt este uneori prin întrebare.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Mirarea este un fel de atenție.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Citește cărți vechi măcar din când în când.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Nu fi de acord cu eleganță și relația supraviețuiește.",
+    "romanization": null
+  },
+  "98": {
+    "text": "O viață bună este alcătuită din multe zile bune, mici.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Nu există un ultim cuvânt.",
+    "romanization": null
+  }
+}

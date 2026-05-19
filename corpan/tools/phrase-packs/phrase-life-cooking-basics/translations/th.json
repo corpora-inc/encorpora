@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "ซอยหอมใหญ่ให้ละเอียด",
+    "romanization": "soi hom yai hai la-iat"
+  },
+  "1": {
+    "text": "ต้มน้ำให้เดือดก่อนใส่เส้นพาสต้า",
+    "romanization": "tom nam hai dueat kon sai sen phat-ta"
+  },
+  "2": {
+    "text": "คนซอสไปเรื่อยๆ ตอนที่มันเคี่ยวอยู่",
+    "romanization": "khon sot pai rueai rueai ton thi man khiao yu"
+  },
+  "3": {
+    "text": "ปรุงรสไก่ด้วยเกลือกับพริกไทย",
+    "romanization": "prung rot kai duai kleua kap phrik thai"
+  },
+  "4": {
+    "text": "ตีไข่จนขึ้นฟู",
+    "romanization": "ti khai chon khuen fu"
+  },
+  "5": {
+    "text": "ค่อยๆ ตะล่อมแป้งลงไป",
+    "romanization": "khoi khoi ta-lom paeng long pai"
+  },
+  "6": {
+    "text": "พักเนื้อไว้สักสองสามนาที",
+    "romanization": "phak nuea wai sak song sam na-thi"
+  },
+  "7": {
+    "text": "อบผักด้วยไฟแรง",
+    "romanization": "op phak duai fai raeng"
+  },
+  "8": {
+    "text": "หั่นขนมปังเฉียงๆ",
+    "romanization": "han kha-nom-pang chiang chiang"
+  },
+  "9": {
+    "text": "เจียวกระเทียมแต่อย่าให้ไหม้",
+    "romanization": "chiao kra-thiam tae ya hai mai"
+  },
+  "10": {
+    "text": "เอาซุปกลับไปต้มให้เดือดอีกครั้ง",
+    "romanization": "ao sup klap pai tom hai dueat ik khrang"
+  },
+  "11": {
+    "text": "เคี่ยวสต็อกไว้หนึ่งชั่วโมง",
+    "romanization": "khiao stok wai nueng chua-mong"
+  },
+  "12": {
+    "text": "หมักไก่ทิ้งไว้ค้างคืน",
+    "romanization": "mak kai thing wai khang khuen"
+  },
+  "13": {
+    "text": "คั่วเครื่องเทศในกระทะเปล่าก่อน",
+    "romanization": "khua khrueang-thet nai kra-tha plao kon"
+  },
+  "14": {
+    "text": "เคี่ยวไวน์ให้งวดลงครึ่งหนึ่ง",
+    "romanization": "khiao wai hai nguat long khrueng nueng"
+  },
+  "15": {
+    "text": "นึ่งบรอกโคลีสี่นาที",
+    "romanization": "nueng brok-kho-li si na-thi"
+  },
+  "16": {
+    "text": "เคี่ยวหอมใหญ่ให้เป็นสีน้ำตาลทองช้าๆ",
+    "romanization": "khiao hom yai hai pen si nam-tan thong cha cha"
+  },
+  "17": {
+    "text": "นวดแป้งจนเนียน",
+    "romanization": "nuat paeng chon nian"
+  },
+  "18": {
+    "text": "กรองน้ำซุปด้วยกระชอนตาถี่",
+    "romanization": "krong nam sup duai kra-chon ta thi"
+  },
+  "19": {
+    "text": "ขูดลูกจันทน์เทศสดโรยหน้าเล็กน้อย",
+    "romanization": "khut luk-chan-thet sot roi na lek noi"
+  },
+  "20": {
+    "text": "น้ำมันมะกอกหมดแล้ว",
+    "romanization": "nam-man ma-kok mot laeo"
+  },
+  "21": {
+    "text": "มะนาวแห้งเกินไป บีบน้ำไม่ออก",
+    "romanization": "ma-nao haeng koen pai bip nam mai ok"
+  },
+  "22": {
+    "text": "ช่วยส่งเกลือให้หน่อยได้ไหม",
+    "romanization": "chuai song kleua hai noi dai mai"
+  },
+  "23": {
+    "text": "โหระพาสดๆ ทำให้รสชาติต่างกันเยอะเลย",
+    "romanization": "ho-ra-pha sot sot tham hai rot-chat tang kan yoe loei"
+  },
+  "24": {
+    "text": "ฉันซื้อกระเทียมเป็นหัวๆ",
+    "romanization": "chan sue kra-thiam pen hua hua"
+  },
+  "25": {
+    "text": "น้ำตาลทรายแดงทำให้คุกกี้นุ่มขึ้น",
+    "romanization": "nam-tan sai daeng tham hai khuk-ki num khuen"
+  },
+  "26": {
+    "text": "ไข่ยังอยู่ในตู้เย็น",
+    "romanization": "khai yang yu nai tu yen"
+  },
+  "27": {
+    "text": "ผักชีในสวนใกล้จะเก็บได้แล้ว",
+    "romanization": "phak-chi nai suan klai cha kep dai laeo"
+  },
+  "28": {
+    "text": "เราต้องการมะเขือเทศลูกหนึ่งสำหรับแซนด์วิช",
+    "romanization": "rao tong-kan ma-khuea-thet luk nueng sam-rap saen-wit"
+  },
+  "29": {
+    "text": "เนยจะนิ่มเร็วขึ้นถ้าตั้งไว้นอกตู้เย็น",
+    "romanization": "noei cha nim reo khuen tha tang wai nok tu yen"
+  },
+  "30": {
+    "text": "เขาใช้เกลือทะเลทำอาหารทุกอย่าง",
+    "romanization": "khao chai kleua tha-le tham a-han thuk yang"
+  },
+  "31": {
+    "text": "ถุงแป้งใกล้จะหมดแล้ว",
+    "romanization": "thung paeng klai cha mot laeo"
+  },
+  "32": {
+    "text": "ครีมเสียแล้วตั้งแต่ช่วงสุดสัปดาห์",
+    "romanization": "khrim sia laeo tang-tae chuang sut sap-da"
+  },
+  "33": {
+    "text": "ฉันชอบกรีกโยเกิร์ตมากกว่าซาวร์ครีม",
+    "romanization": "chan chop krik yo-koet mak kwa sao khrim"
+  },
+  "34": {
+    "text": "เห็ดจะหดตัวลงเมื่อโดนความร้อน",
+    "romanization": "het cha hot tua long muea don khwam ron"
+  },
+  "35": {
+    "text": "ใส่พริกป่นหยิบมือหนึ่ง",
+    "romanization": "sai phrik pon yip mue nueng"
+  },
+  "36": {
+    "text": "สูตรนี้ต้องใช้น้ำซุปสองถ้วย",
+    "romanization": "sut ni tong chai nam sup song thuai"
+  },
+  "37": {
+    "text": "เธอมีปลาแอนโชวี่ติดครัวไว้เสมอ",
+    "romanization": "thoe mi pla aen-cho-wi tit khrua wai sa-moe"
+  },
+  "38": {
+    "text": "พริกหวานจะหวานขึ้นเมื่อนำไปอบ",
+    "romanization": "phrik wan cha wan khuen muea nam pai op"
+  },
+  "39": {
+    "text": "ถั่วลันเตาแช่แข็งนี่มันมหัศจรรย์จริงๆ",
+    "romanization": "thua lan-tao chae khaeng ni man ma-hat-sa-chan ching ching"
+  },
+  "40": {
+    "text": "ในครัวมีกลิ่นขนมปังหอมฟุ้ง",
+    "romanization": "nai khrua mi klin kha-nom-pang hom fung"
+  },
+  "41": {
+    "text": "เขาทำข้าวหกเต็มเคาน์เตอร์เลย",
+    "romanization": "khao tham khao hok tem khao-toe loei"
+  },
+  "42": {
+    "text": "กระทะร้อนเกินไปแล้ว",
+    "romanization": "kra-tha ron koen pai laeo"
+  },
+  "43": {
+    "text": "ฉันทำขนมปังปิ้งไหม้อีกแล้ว",
+    "romanization": "chan tham kha-nom-pang ping mai ik laeo"
+  },
+  "44": {
+    "text": "เธอชิมซอสแล้วเติมเกลือเพิ่ม",
+    "romanization": "thoe chim sot laeo toem kleua phoem"
+  },
+  "45": {
+    "text": "สัญญาณเตือนควันดังขึ้นตอนกินข้าวเย็น",
+    "romanization": "san-yan tuean khwan dang khuen ton kin khao yen"
+  },
+  "46": {
+    "text": "เขาทำความสะอาดไปพร้อมๆ กับทำอาหาร",
+    "romanization": "khao tham khwam sa-at pai phrom phrom kap tham a-han"
+  },
+  "47": {
+    "text": "หม้อเดือดล้นตอนที่เธอรับโทรศัพท์",
+    "romanization": "mo dueat lon ton thi thoe rap tho-ra-sap"
+  },
+  "48": {
+    "text": "ต้องเช็ดตู้เย็นหน่อยแล้ว",
+    "romanization": "tong chet tu yen noi laeo"
+  },
+  "49": {
+    "text": "เด็กๆ จัดโต๊ะอาหารเองโดยไม่ต้องบอก",
+    "romanization": "dek dek chat to a-han eng doi mai tong bok"
+  },
+  "50": {
+    "text": "น้ำต้มพาสต้ากำลังเดือดปุดๆ",
+    "romanization": "nam tom phat-ta kam-lang dueat put put"
+  },
+  "51": {
+    "text": "เธอเอาผ้าเช็ดมือรองใต้เขียงกันลื่น",
+    "romanization": "thoe ao pha chet mue rong tai khiang kan luen"
+  },
+  "52": {
+    "text": "เขาทำอาหารเท้าเปล่าเสมอ",
+    "romanization": "khao tham a-han thao plao sa-moe"
+  },
+  "53": {
+    "text": "เค้กยุบตอนที่ฉันเปิดเตาอบ",
+    "romanization": "khek yup ton thi chan poet tao op"
+  },
+  "54": {
+    "text": "เราลืมอุ่นเตาอบล่วงหน้า",
+    "romanization": "rao luem un tao op luang na"
+  },
+  "55": {
+    "text": "หมามองทุกการเคลื่อนไหวจากหน้าประตู",
+    "romanization": "ma mong thuk kan khluean-wai chak na pra-tu"
+  },
+  "56": {
+    "text": "หน้าต่างครัวเปิดอยู่เพื่อระบายไอน้ำ",
+    "romanization": "na-tang khrua poet yu phuea ra-bai ai nam"
+  },
+  "57": {
+    "text": "เธอเปิดเพลงเสียงดังขึ้นตอนทำอาหาร",
+    "romanization": "thoe poet phleng siang dang khuen ton tham a-han"
+  },
+  "58": {
+    "text": "จานชามกองพะเนินตอนที่เรากินข้าว",
+    "romanization": "chan cham kong pha-noen ton thi rao kin khao"
+  },
+  "59": {
+    "text": "อาหารที่เหลือจะเป็นมื้อกลางวันพรุ่งนี้",
+    "romanization": "a-han thi luea cha pen mue klang-wan phrung ni"
+  },
+  "60": {
+    "text": "ฉันทำตามสูตรทีละขั้นตอน",
+    "romanization": "chan tham tam sut thi la khan-ton"
+  },
+  "61": {
+    "text": "แพนเค้กแผ่นแรกมักจะออกมาไม่สวยเสมอ",
+    "romanization": "phaen-khek phaen raek mak cha ok ma mai suai sa-moe"
+  },
+  "62": {
+    "text": "เธอคิดค้นซอสนี้ขึ้นมาโดยบังเอิญ",
+    "romanization": "thoe khit-khon sot ni khuen ma doi bang-oen"
+  },
+  "63": {
+    "text": "เขาสอนตัวเองทำขนมอบในช่วงฤดูหนาว",
+    "romanization": "khao son tua-eng tham kha-nom-op nai chuang rue-du nao"
+  },
+  "64": {
+    "text": "ตำราอาหารเปิดไปหน้าเดิมอีกแล้ว",
+    "romanization": "tam-ra a-han poet pai na doem ik laeo"
+  },
+  "65": {
+    "text": "ฉันเพิ่มสูตรเป็นสองเท่าเลยทำเยอะเกินไป",
+    "romanization": "chan phoem sut pen song thao loei tham yoe koen pai"
+  },
+  "66": {
+    "text": "วิดีโอสอนวิธีห่อเกี๊ยวให้ฉันดู",
+    "romanization": "wi-di-o son wi-thi ho kiao hai chan du"
+  },
+  "67": {
+    "text": "เขาวัดทุกอย่างด้วยตาชั่งเล็กๆ",
+    "romanization": "khao wat thuk yang duai ta-chang lek lek"
+  },
+  "68": {
+    "text": "เธอทำอาหารโดยอาศัยกลิ่นมากกว่าดูเวลา",
+    "romanization": "thoe tham a-han doi a-sai klin mak kwa du we-la"
+  },
+  "69": {
+    "text": "ฉันลองใช้เครื่องเทศใหม่แล้วมันก็เข้ากันดี",
+    "romanization": "chan long chai khrueang-thet mai laeo man ko khao kan di"
+  },
+  "70": {
+    "text": "ขนมปังไม่ขึ้นฟูในการอบครั้งแรก",
+    "romanization": "kha-nom-pang mai khuen fu nai kan op khrang raek"
+  },
+  "71": {
+    "text": "เธอชิมไปเรื่อยๆ แล้วก็ปรับรสชาติ",
+    "romanization": "thoe chim pai rueai rueai laeo ko prap rot-chat"
+  },
+  "72": {
+    "text": "เขาเรียนรู้เมนูนี้มาจากคุณย่า",
+    "romanization": "khao rian-ru me-nu ni ma chak khun ya"
+  },
+  "73": {
+    "text": "สูตรอาหารนี้ถูกส่งต่อกันมาบนการ์ดเล็กๆ",
+    "romanization": "sut a-han ni thuk song to kan ma bon kat lek lek"
+  },
+  "74": {
+    "text": "การทำอาหารคนเดียวก็เป็นศิลปะอีกแบบหนึ่ง",
+    "romanization": "kan tham a-han khon diao ko pen sin-la-pa ik baep nueng"
+  },
+  "75": {
+    "text": "อาหารเย็นจะพร้อมในอีกห้านาที",
+    "romanization": "a-han yen cha phrom nai ik ha na-thi"
+  },
+  "76": {
+    "text": "ช่วยส่งขนมปังให้หน่อย",
+    "romanization": "chuai song kha-nom-pang hai noi"
+  },
+  "77": {
+    "text": "ห้องครัวเป็นห้องที่อบอุ่นที่สุดในบ้าน",
+    "romanization": "hong khrua pen hong thi op-un thi sut nai ban"
+  },
+  "78": {
+    "text": "เรากินข้าวข้างนอกตอนพระอาทิตย์ตกดิน",
+    "romanization": "rao kin khao khang nok ton phra-a-thit tok din"
+  },
+  "79": {
+    "text": "ทุกคนช่วยกันล้างจาน",
+    "romanization": "thuk khon chuai kan lang chan"
+  },
+  "80": {
+    "text": "เธอทำอาหารเยอะเกินไปเสมอ ตั้งใจทำด้วยนะ",
+    "romanization": "thoe tham a-han yoe koen pai sa-moe tang-chai tham duai na"
+  },
+  "81": {
+    "text": "เขามักจะนำไวน์มาด้วยเสมอ",
+    "romanization": "khao mak cha nam wai ma duai sa-moe"
+  },
+  "82": {
+    "text": "เด็กๆ กินไปสามจานเลย",
+    "romanization": "dek dek kin pai sam chan loei"
+  },
+  "83": {
+    "text": "เทียนไขไหม้จนหมดแท่ง",
+    "romanization": "thian khai mai chon mot thaeng"
+  },
+  "84": {
+    "text": "เราคุยกันต่ออีกนานหลังจากเก็บจานไปแล้ว",
+    "romanization": "rao khui kan to ik nan lang chak kep chan pai laeo"
+  },
+  "85": {
+    "text": "มีดคมกว่าที่เห็นนะ",
+    "romanization": "mit khom kwa thi hen na"
+  },
+  "86": {
+    "text": "ใช้ทัพพีไม้คนซอสนะ",
+    "romanization": "chai thap-phi mai khon sot na"
+  },
+  "87": {
+    "text": "กระทะเหล็กหล่อหนักแต่คุ้มค่า",
+    "romanization": "kra-tha lek lo nak tae khum kha"
+  },
+  "88": {
+    "text": "เขาเก็บเครื่องเทศไว้ในลิ้นชักเล็กๆ",
+    "romanization": "khao kep khrueang-thet wai nai lin-chak lek lek"
+  },
+  "89": {
+    "text": "เขียงดีๆ ทำให้ทุกอย่างง่ายขึ้นเยอะ",
+    "romanization": "khiang di di tham hai thuk yang ngai khuen yoe"
+  },
+  "90": {
+    "text": "เตาอบร้อนได้ที่แล้วในที่สุด",
+    "romanization": "tao op ron dai thi laeo nai thi sut"
+  },
+  "91": {
+    "text": "เครื่องปั่นมีปัญหาเวลาปั่นอัลมอนด์ทั้งเม็ด",
+    "romanization": "khrueang pan mi pan-ha we-la pan al-mon thang met"
+  },
+  "92": {
+    "text": "เธอเช็ดเคาน์เตอร์ด้วยผ้าชุบน้ำหมาดๆ",
+    "romanization": "thoe chet khao-toe duai pha chup nam mat mat"
+  },
+  "93": {
+    "text": "กระชอนอยู่ในลิ้นชักที่สอง",
+    "romanization": "kra-chon yu nai lin-chak thi song"
+  },
+  "94": {
+    "text": "อย่าลืมถุงมือจับของร้อนนะ",
+    "romanization": "ya luem thung mue chap khong ron na"
+  },
+  "95": {
+    "text": "การทำอาหารส่วนใหญ่คือความอดทน",
+    "romanization": "kan tham a-han suan yai khue khwam ot-thon"
+  },
+  "96": {
+    "text": "วัตถุดิบเดียวกันแต่คนทำต่างกัน รสชาติก็ต่างกัน",
+    "romanization": "wat-thu-dip diao kan tae khon tham tang kan rot-chat ko tang kan"
+  },
+  "97": {
+    "text": "เกลือคือสิ่งแรกที่คุณต้องปรับ",
+    "romanization": "kleua khue sing raek thi khun tong prap"
+  },
+  "98": {
+    "text": "ชิมก่อนค่อยเติมเพิ่ม",
+    "romanization": "chim kon khoi toem phoem"
+  },
+  "99": {
+    "text": "อาหารง่ายๆ ที่ได้กินอย่างช้าๆ ก็ถือเป็นชัยชนะเล็กๆ น้อยๆ",
+    "romanization": "a-han ngai ngai thi dai kin yang cha cha ko thue pen chai-cha-na lek lek noi noi"
+  }
+}

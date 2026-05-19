@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "关闭文件前记得保存。",
+    "romanization": "Guān bì wén jiàn qián jì de bǎo cún."
+  },
+  "1": {
+    "text": "能把那个文件发给我吗？",
+    "romanization": "Néng bǎ nà ge wén jiàn fā gěi wǒ ma?"
+  },
+  "2": {
+    "text": "那个文件夹在桌面上。",
+    "romanization": "Nà ge wén jiàn jiā zài zhuō miàn shàng."
+  },
+  "3": {
+    "text": "我找不到昨天保存的文件了。",
+    "romanization": "Wǒ zhǎo bú dào zuó tiān bǎo cún de wén jiàn le."
+  },
+  "4": {
+    "text": "按名字搜一下整个硬盘。",
+    "romanization": "Àn míng zi sōu yí xià zhěng gè yìng pán."
+  },
+  "5": {
+    "text": "他不小心把文件改名了。",
+    "romanization": "Tā bù xiǎo xīn bǎ wén jiàn gǎi míng le."
+  },
+  "6": {
+    "text": "下载的文件存到错误的文件夹里了。",
+    "romanization": "Xià zài de wén jiàn cún dào cuò wù de wén jiàn jiā lǐ le."
+  },
+  "7": {
+    "text": "这个文件太大了，发不了邮件。",
+    "romanization": "Zhè ge wén jiàn tài dà le, fā bù liǎo yóu jiàn."
+  },
+  "8": {
+    "text": "能把它压缩成一个zip文件吗？",
+    "romanization": "Néng bǎ tā yā suō chéng yí ge zip wén jiàn ma?"
+  },
+  "9": {
+    "text": "这个云文件夹会自动同步。",
+    "romanization": "Zhè ge yún wén jiàn jiā huì zì dòng tóng bù."
+  },
+  "10": {
+    "text": "她把所有东西都按日期分到子文件夹里。",
+    "romanization": "Tā bǎ suǒ yǒu dōng xi dōu àn rì qī fēn dào zǐ wén jiàn jiā lǐ."
+  },
+  "11": {
+    "text": "垃圾桶比硬盘其他地方都满了。",
+    "romanization": "Lā jī tǒng bǐ yìng pán qí tā dì fāng dōu mǎn le."
+  },
+  "12": {
+    "text": "他给每个项目都做了备份。",
+    "romanization": "Tā gěi měi ge xiàng mù dōu zuò le bèi fèn."
+  },
+  "13": {
+    "text": "共享文件夹已经为所有人更新了。",
+    "romanization": "Gòng xiǎng wén jiàn jiā yǐ jīng wèi suǒ yǒu rén gēng xīn le."
+  },
+  "14": {
+    "text": "找不到的文件，就跟不存在一样。",
+    "romanization": "Zhǎo bú dào de wén jiàn, jiù gēn bú cún zài yí yàng."
+  },
+  "15": {
+    "text": "我把密码忘了。",
+    "romanization": "Wǒ bǎ mì mǎ wàng le."
+  },
+  "16": {
+    "text": "从登录界面重置密码。",
+    "romanization": "Cóng dēng lù jiè miàn chóng zhì mì mǎ."
+  },
+  "17": {
+    "text": "不要所有地方都用同一个密码。",
+    "romanization": "Bú yào suǒ yǒu dì fāng dōu yòng tóng yí ge mì mǎ."
+  },
+  "18": {
+    "text": "密码管理器可以帮你记住它们。",
+    "romanization": "Mì mǎ guǎn lǐ qì kě yǐ bāng nǐ jì zhù tā men."
+  },
+  "19": {
+    "text": "两步验证多一步，但安全很多。",
+    "romanization": "Liǎng bù yàn zhèng duō yí bù, dàn ān quán hěn duō."
+  },
+  "20": {
+    "text": "查一下你的邮箱，看看有没有验证码。",
+    "romanization": "Chá yí xià nǐ de yóu xiāng, kàn kan yǒu méi yǒu yàn zhèng mǎ."
+  },
+  "21": {
+    "text": "这个链接十五分钟后就过期了。",
+    "romanization": "Zhè ge liàn jiē shí wǔ fēn zhōng hòu jiù guò qī le."
+  },
+  "22": {
+    "text": "她为这个项目创建了一个新账号。",
+    "romanization": "Tā wèi zhè ge xiàng mù chuàng jiàn le yí ge xīn zhàng hào."
+  },
+  "23": {
+    "text": "他在共享电脑上会退出登录。",
+    "romanization": "Tā zài gòng xiǎng diàn nǎo shàng huì tuì chū dēng lù."
+  },
+  "24": {
+    "text": "这个用户名已经被占用了。",
+    "romanization": "Zhè ge yòng hù míng yǐ jīng bèi zhàn yòng le."
+  },
+  "25": {
+    "text": "把恢复码保存在安全的地方。",
+    "romanization": "Bǎ huī fù mǎ bǎo cún zài ān quán de dì fāng."
+  },
+  "26": {
+    "text": "不要点可疑的登录链接。",
+    "romanization": "Bú yào diǎn kě yí de dēng lù liàn jiē."
+  },
+  "27": {
+    "text": "搬家后记得更新恢复邮箱。",
+    "romanization": "Bān jiā hòu jì de gēng xīn huī fù yóu xiāng."
+  },
+  "28": {
+    "text": "密钥比密码登录更快。",
+    "romanization": "Mì yuè bǐ mì mǎ dēng lù gèng kuài."
+  },
+  "29": {
+    "text": "现在手机也能当账号用了。",
+    "romanization": "Xiàn zài shǒu jī yě néng dāng zhàng hào yòng le."
+  },
+  "30": {
+    "text": "你试过重启它吗？",
+    "romanization": "Nǐ shì guò chóng qǐ tā ma?"
+  },
+  "31": {
+    "text": "线松了。",
+    "romanization": "Xiàn sōng le."
+  },
+  "32": {
+    "text": "屏幕卡了一分钟。",
+    "romanization": "Píng mù kǎ le yī fēn zhōng."
+  },
+  "33": {
+    "text": "把所有标签页都关掉，再试试。",
+    "romanization": "Bǎ suǒ yǒu biāo qiān yè dōu guān diào, zài shì shi."
+  },
+  "34": {
+    "text": "检查一下你是不是连对了网络。",
+    "romanization": "Jiǎn chá yí xià nǐ shì bú shì lián duì le wǎng luò."
+  },
+  "35": {
+    "text": "键盘没反应了。",
+    "romanization": "Jiàn pán méi fǎn yìng le."
+  },
+  "36": {
+    "text": "风扇比平时声音大。",
+    "romanization": "Fēng shàn bǐ píng shí shēng yīn dà."
+  },
+  "37": {
+    "text": "清除缓存，然后重新加载。",
+    "romanization": "Qīng chú huǎn cún, rán hòu chóng xīn jiā zài."
+  },
+  "38": {
+    "text": "换个浏览器试试。",
+    "romanization": "Huàn ge liú lǎn qì shì shi."
+  },
+  "39": {
+    "text": "更新修复了这个bug。",
+    "romanization": "Gēng xīn xiū fù le zhè ge bug."
+  },
+  "40": {
+    "text": "电池一晚上就没电了。",
+    "romanization": "Diàn chí yì wǎn shàng jiù méi diàn le."
+  },
+  "41": {
+    "text": "更新后摄像头就不能用了。",
+    "romanization": "Gēng xīn hòu shè xiàng tóu jiù bù néng yòng le."
+  },
+  "42": {
+    "text": "有时候最简单的解决办法就是等一分钟。",
+    "romanization": "Yǒu shí hou zuì jiǎn dān de jiě jué bàn fǎ jiù shì děng yī fēn zhōng."
+  },
+  "43": {
+    "text": "重启能解决很多意想不到的问题。",
+    "romanization": "Chóng qǐ néng jiě jué hěn duō yì xiǎng bú dào de wèn tí."
+  },
+  "44": {
+    "text": "他用大白话解释了错误信息。",
+    "romanization": "Tā yòng dà bái huà jiě shì le cuò wù xìn xī."
+  },
+  "45": {
+    "text": "这个页面加载得太慢了。",
+    "romanization": "Zhè ge yè miàn jiā zài de tài màn le."
+  },
+  "46": {
+    "text": "这个网站对所有人来说都打不开了。",
+    "romanization": "Zhè ge wǎng zhàn duì suǒ yǒu rén lái shuō dōu dǎ bù kāi le."
+  },
+  "47": {
+    "text": "把它收藏起来，下次就能找到了。",
+    "romanization": "Bǎ tā shōu cáng qǐ lái, xià cì jiù néng zhǎo dào le."
+  },
+  "48": {
+    "text": "邮件里的链接会在新标签页打开。",
+    "romanization": "Yóu jiàn lǐ de liàn jiē huì zài xīn biāo qiān yè dǎ kāi."
+  },
+  "49": {
+    "text": "视频一直在缓冲。",
+    "romanization": "Shì pín yì zhí zài huǎn chōng."
+  },
+  "50": {
+    "text": "后面的房间信号很弱。",
+    "romanization": "Hòu miàn de fáng jiān xìn hào hěn ruò."
+  },
+  "51": {
+    "text": "能把链接分享给我吗？",
+    "romanization": "Néng bǎ liàn jiē fēn xiǎng gěi wǒ ma?"
+  },
+  "52": {
+    "text": "这个网站在手机上看起来不一样。",
+    "romanization": "Zhè ge wǎng zhàn zài shǒu jī shàng kàn qǐ lái bù yí yàng."
+  },
+  "53": {
+    "text": "弹窗让我接受cookie。",
+    "romanization": "Tán chuāng ràng wǒ jiē shòu cookie."
+  },
+  "54": {
+    "text": "这个广告很难关掉。",
+    "romanization": "Zhè ge guǎng gào hěn nán guān diào."
+  },
+  "55": {
+    "text": "他在每台设备上都用了广告拦截器。",
+    "romanization": "Tā zài měi tái shè bèi shàng dōu yòng le guǎng gào lán jié qì."
+  },
+  "56": {
+    "text": "搜索结果太多了。",
+    "romanization": "Sōu suǒ jié guǒ tài duō le."
+  },
+  "57": {
+    "text": "用引号来缩小搜索范围。",
+    "romanization": "Yòng yǐn hào lái suō xiǎo sōu suǒ fàn wéi."
+  },
+  "58": {
+    "text": "这篇文章现在要付费才能看了。",
+    "romanization": "Zhè piān wén zhāng xiàn zài yào fù fèi cái néng kàn le."
+  },
+  "59": {
+    "text": "这个页面来自一个我信任的网站。",
+    "romanization": "Zhè ge yè miàn lái zì yí ge wǒ xìn rèn de wǎng zhàn."
+  },
+  "60": {
+    "text": "这个应用昨晚更新了。",
+    "romanization": "Zhè ge yìng yòng zuó wǎn gēng xīn le."
+  },
+  "61": {
+    "text": "新版本看起来完全不一样了。",
+    "romanization": "Xīn bǎn běn kàn qǐ lái wán quán bù yí yàng le."
+  },
+  "62": {
+    "text": "她把那些从来没打开过的应用都删了。",
+    "romanization": "Tā bǎ nà xiē cóng lái méi dǎ kāi guò de yìng yòng dōu shān le."
+  },
+  "63": {
+    "text": "通知设置藏在菜单深处。",
+    "romanization": "Tōng zhī shè zhì cáng zài cài dān shēn chù."
+  },
+  "64": {
+    "text": "会议期间把它静音。",
+    "romanization": "Huì yì qī jiān bǎ tā jìng yīn."
+  },
+  "65": {
+    "text": "键盘快捷键比菜单操作快多了。",
+    "romanization": "Jiàn pán kuài jié jiàn bǐ cài dān cāo zuò kuài duō le."
+  },
+  "66": {
+    "text": "晚上用深色模式对眼睛更好。",
+    "romanization": "Wǎn shàng yòng shēn sè mó shì duì yǎn jīng gèng hǎo."
+  },
+  "67": {
+    "text": "把自动播放关掉。",
+    "romanization": "Bǎ zì dòng bō fàng guān diào."
+  },
+  "68": {
+    "text": "那个通知小红点一直消不掉。",
+    "romanization": "Nà ge tōng zhī xiǎo hóng diǎn yì zhí xiāo bú diào."
+  },
+  "69": {
+    "text": "他把笔记本电脑设置成了自己喜欢的样子。",
+    "romanization": "Tā bǎ bǐ jì běn diàn nǎo shè zhì chéng le zì jǐ xǐ huān de yàng zi."
+  },
+  "70": {
+    "text": "不要打开陌生发件人的附件。",
+    "romanization": "Bú yào dǎ kāi mò shēng fā jiàn rén de fù jiàn."
+  },
+  "71": {
+    "text": "那条消息里的链接看起来很可疑。",
+    "romanization": "Nà tiáo xiāo xī lǐ de liàn jiē kàn qǐ lái hěn kě yí."
+  },
+  "72": {
+    "text": "检查一下发件人的完整地址。",
+    "romanization": "Jiǎn chá yí xià fā jiàn rén de wán zhěng dì zhǐ."
+  },
+  "73": {
+    "text": "机场的免费Wi-Fi不安全。",
+    "romanization": "Jī chǎng de miǎn fèi Wi-Fi bù ān quán."
+  },
+  "74": {
+    "text": "不用摄像头的时候把它盖上。",
+    "romanization": "Bú yòng shè xiàng tóu de shí hou bǎ tā gài shàng."
+  },
+  "75": {
+    "text": "离开的时候把屏幕锁上。",
+    "romanization": "Lí kāi de shí hou bǎ píng mù suǒ shàng."
+  },
+  "76": {
+    "text": "那些发出去就收不回来的信息，要小心。",
+    "romanization": "Nà xiē fā chū qù jiù shōu bù huí lái de xìn xī, yào xiǎo xīn."
+  },
+  "77": {
+    "text": "仔细阅读你同意的内容。",
+    "romanization": "Zǐ xì yuè dú nǐ tóng yì de nèi róng."
+  },
+  "78": {
+    "text": "大部分数据泄露都源于密码重复使用。",
+    "romanization": "Dà bù fen shù jù xiè lòu dōu yuán yú mì mǎ chóng fù shǐ yòng."
+  },
+  "79": {
+    "text": "最简单的骗局之所以有效，就是因为它们简单。",
+    "romanization": "Zuì jiǎn dān de piàn jú zhī suǒ yǐ yǒu xiào, jiù shì yīn wèi tā men jiǎn dān."
+  },
+  "80": {
+    "text": "笔记本电脑上次更新后就变慢了。",
+    "romanization": "Bǐ jì běn diàn nǎo shàng cì gēng xīn hòu jiù biàn màn le."
+  },
+  "81": {
+    "text": "屏幕裂了，但还能用。",
+    "romanization": "Píng mù liè le, dàn hái néng yòng."
+  },
+  "82": {
+    "text": "新显示器今天早上到了。",
+    "romanization": "Xīn xiǎn shì qì jīn tiān zǎo shang dào le."
+  },
+  "83": {
+    "text": "他插了三根线才找到对的。",
+    "romanization": "Tā chā le sān gēn xiàn cái zhǎo dào duì de."
+  },
+  "84": {
+    "text": "电池续航不如以前了。",
+    "romanization": "Diàn chí xù háng bù rú yǐ qián le."
+  },
+  "85": {
+    "text": "键盘这些年积了不少碎屑。",
+    "romanization": "Jiàn pán zhè xiē nián jī le bù shǎo suì xiè."
+  },
+  "86": {
+    "text": "房间一热，风扇就转起来了。",
+    "romanization": "Fáng jiān yī rè, fēng shàn jiù zhuǎn qǐ lái le."
+  },
+  "87": {
+    "text": "打印机又脱机了。",
+    "romanization": "Dǎ yìn jī yòu tuō jī le."
+  },
+  "88": {
+    "text": "耳机有一边没声音了。",
+    "romanization": "Ěr jī yǒu yì biān méi shēng yīn le."
+  },
+  "89": {
+    "text": "他用软布擦屏幕。",
+    "romanization": "Tā yòng ruǎn bù cā píng mù."
+  },
+  "90": {
+    "text": "能截个图吗？",
+    "romanization": "Néng jié ge tú ma?"
+  },
+  "91": {
+    "text": "文件是半夜发出去的。",
+    "romanization": "Wén jiàn shì bàn yè fā chū qù de."
+  },
+  "92": {
+    "text": "日程邀请发了两次。",
+    "romanization": "Rì chéng yāo qǐng fā le liǎng cì."
+  },
+  "93": {
+    "text": "把文件拖到窗口里。",
+    "romanization": "Bǎ wén jiàn tuō dào chuāng kǒu lǐ."
+  },
+  "94": {
+    "text": "右键点击查看更多选项。",
+    "romanization": "Yòu jiàn diǎn jí chá kàn gèng duō xuǎn xiàng."
+  },
+  "95": {
+    "text": "按住Shift键可以多选。",
+    "romanization": "Àn zhù Shift jiàn kě yǐ duō xuǎn."
+  },
+  "96": {
+    "text": "撤销按钮救了我好多次。",
+    "romanization": "Chè xiāo àn niǔ jiù le wǒ hǎo duō cì."
+  },
+  "97": {
+    "text": "剪贴板会记住你上次复制的内容。",
+    "romanization": "Jiǎn tiē bǎn huì jì zhù nǐ shàng cì fù zhì de nèi róng."
+  },
+  "98": {
+    "text": "自动更正很有用，但有时也会让人尴尬。",
+    "romanization": "Zì dòng gēng zhèng hěn yǒu yòng, dàn yǒu shí yě huì ràng rén gān gà."
+  },
+  "99": {
+    "text": "桌面干净整洁，找东西就方便多了。",
+    "romanization": "Zhuō miàn gān jìng zhěng jié, zhǎo dōng xi jiù fāng biàn duō le."
+  }
+}

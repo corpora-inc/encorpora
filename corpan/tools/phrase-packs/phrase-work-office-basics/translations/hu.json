@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "A megbeszélés tíz perc múlva kezdődik.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Megosztanád a képernyődet?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Bocsánat, némítva voltam.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Kifutunk az időből.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Halasszuk ezt a következő megbeszélésre.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Én jegyzetelek.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Körbemennénk?",
+    "romanization": null
+  },
+  "7": {
+    "text": "A napirendet a naptármeghívóban találod.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Ki vezeti ezt?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Rögzítjük ezt?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Megszakadt a hívás félúton.",
+    "romanization": null
+  },
+  "11": {
+    "text": "El tudjuk tolni tizenöt perccel?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Későn jött be, de csendben.",
+    "romanization": null
+  },
+  "13": {
+    "text": "A terem megint duplán van lefoglalva.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Ezt tegyük félre, és majd visszatérünk rá.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Háromkor fixen be kell fejeznem.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Maradnál még két percre utána?",
+    "romanization": null
+  },
+  "17": {
+    "text": "A tábla tele van.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Összefoglalnád a teendőket?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Az álló megbeszélések meglepően gyorsak.",
+    "romanization": null
+  },
+  "20": {
+    "text": "A nap végéig jelentkezem.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Megérkezett az utolsó e-mailem?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Elnézést a késői válaszért.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Bevonjuk Sárát is ebbe.",
+    "romanization": null
+  },
+  "24": {
+    "text": "A melléklet nem érkezett meg.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Sürgősnek jelöltem.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Elküldenéd újra azt a fájlt?",
+    "romanization": null
+  },
+  "27": {
+    "text": "Hosszú lett a beszélgetés, hadd foglaljam össze.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Írj tárgyat, hogy megtaláljam.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Hétvégén kiürítette a bejövő mappáját.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Kérlek, válaszolj péntekig.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Küldök egy rövid üzenetet, ha kész van.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Az automata válasz szerint utazik.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Véletlenül rossz embert tett a másolatba.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Három emlékeztető elég.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Továbbítanád nekem a levélfolyamot?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Ehhez a chat gyorsabb, mint az e-mail.",
+    "romanization": null
+  },
+  "37": {
+    "text": "A sok üzenet között nem vettem észre a tiédet.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Az e-mailedben lévő link nem létező oldalra visz.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Kérlek, erősítsd meg, hogy megkaptad.",
+    "romanization": null
+  },
+  "40": {
+    "text": "A határidő péntek délben van.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Szerdára lesz egy első vázlatom.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Valamit ki kell adnunk ezen a héten.",
+    "romanization": null
+  },
+  "43": {
+    "text": "A projekt egy nappal csúszott.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Átnéznéd ezt, mielőtt elküldöm?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Jövök neked egy állapotjelentéssel.",
+    "romanization": null
+  },
+  "46": {
+    "text": "A számok nem egyeznek azzal, amit múlt héten küldtem.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Egy ügyfél döntése miatt áll a munka.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Ebédidőben is dolgozott, hogy befejezze.",
+    "romanization": null
+  },
+  "49": {
+    "text": "A jelentés végre lekerült a vállamról.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Amint megkapom a jóváhagyást, elkezdem.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Jóváhagynád ezt a verziót?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Épp a kiadás előtt vett észre egy elírást.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Elhalasztottuk a bevezetést jövő keddre.",
+    "romanization": null
+  },
+  "54": {
+    "text": "A becslés kétszeresen téves volt.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Szabadon hagyta a délutánját, hogy koncentrálhasson.",
+    "romanization": null
+  },
+  "56": {
+    "text": "A szerződés aláírva érkezett vissza.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Tekintsük késznek, és lépjünk tovább.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Az első verzió nyers, de működik.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Egyszer kivételesen korábban leadta.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Üdv a csapatban!",
+    "romanization": null
+  },
+  "61": {
+    "text": "Bemutatlak a többieknek.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Épp most jött vissza szabadságról.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Őt kell erről kérdezni.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Keddenként közös asztalnál dolgozunk.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Ki tud a legtöbbet az árazásról?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Mindig hoz kávét a csapatnak.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Az új kolléga gyorsan tanul.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Szorosan együttműködik a marketinggel.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Ő van itt a legrégebb óta.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Pontosan megfelezték a munkát.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Ebéd közben felvázoltuk.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Helyettesített engem, amíg beteg voltam.",
+    "romanization": null
+  },
+  "73": {
+    "text": "A csapat a laptop köré gyűlt.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Emlékszik mindenki születésnapjára.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Holnap távolról csatlakozom.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Az iroda péntekenként többnyire üres.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Ma instabil az internetem.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Más városból dolgozik.",
+    "romanization": null
+  },
+  "79": {
+    "text": "A csapat havonta egyszer személyesen találkozik.",
+    "romanization": null
+  },
+  "80": {
+    "text": "A hálószoba sarkában alakított ki egy íróasztalt.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Végre rend van az otthoni irodában.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Bekapcsolnád a kamerádat?",
+    "romanization": null
+  },
+  "83": {
+    "text": "A háttérzaj rendben van, ne aggódj.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Minden reggel gyorsan egyeztetünk.",
+    "romanization": null
+  },
+  "85": {
+    "text": "A nyomtató megint beragadt.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Kifogyott a kávé a kávéfőzőből.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Becsuknád az ajtót?",
+    "romanization": null
+  },
+  "88": {
+    "text": "A tárgyaló ablakát nem lehet kinyitni.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Valaki egy hete a hűtőben hagyta az ebédjét.",
+    "romanization": null
+  },
+  "90": {
+    "text": "A konyha csendes három órakor.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Lépcsőzött, hogy kiszellőztesse a fejét.",
+    "romanization": null
+  },
+  "92": {
+    "text": "A párkányon lévő növény jól van.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Aláírnál egy csomagot a recepción?",
+    "romanization": null
+  },
+  "94": {
+    "text": "A beléptető kártyaolvasó rosszalkodik.",
+    "romanization": null
+  },
+  "95": {
+    "text": "A nap vége mindig észrevétlenül jön el.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Akkor dolgozik a legjobban, ha egyszerre csak egy ablak van nyitva.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Gyertyát gyújt a nap kezdetekor.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Egy rövid séta ebéd után segít gondolkodni.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Néhány hétfő egy kis győzelemmel kezdődik.",
+    "romanization": null
+  }
+}

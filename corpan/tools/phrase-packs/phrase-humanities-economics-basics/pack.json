@@ -1,0 +1,10 @@
+{
+  "id": "phrase-humanities-economics-basics",
+  "version": "0.1.0",
+  "name": "Economics Basics",
+  "description": "Supply, demand, prices, money, markets, incentives. Plain-language phrases about how value moves through the world.",
+  "category": "humanities",
+  "topic": "Economics",
+  "icon": "trending-up",
+  "accent_color": "#f59e0b"
+}

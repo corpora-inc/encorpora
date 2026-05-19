@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "வெங்காயத்தை பொடியாக நறுக்குங்கள்.",
+    "romanization": "Veṅkāyattai poṭiyāka naṟukkuṅkaḷ."
+  },
+  "1": {
+    "text": "பாஸ்தா சேர்ப்பதற்கு முன் தண்ணீரை கொதிக்க விடுங்கள்.",
+    "romanization": "Pāstā cērppataṟku muṉ taṇṇīrai kotikka viṭuṅkaḷ."
+  },
+  "2": {
+    "text": "சாஸ் கொதிக்கும்போது கிளறிக்கொண்டே இருங்கள்.",
+    "romanization": "Sās kotikkumpōtu kiḷaṟikkoṇṭē iruṅkaḷ."
+  },
+  "3": {
+    "text": "கோழியில் உப்பு மற்றும் மிளகு சேர்த்து சுவையூட்டுங்கள்.",
+    "romanization": "Kōḻiyil uppu maṟṟum miḷaku cērttu cuvaiyūṭṭuṅkaḷ."
+  },
+  "4": {
+    "text": "முட்டைகளை நுரை வரும் வரை அடித்துக் கலக்குங்கள்.",
+    "romanization": "Muṭṭaikaḷai nurai varum varai aṭittuk kalakkuṅkaḷ."
+  },
+  "5": {
+    "text": "மாவை மெதுவாக உள்ளே கலக்குங்கள்.",
+    "romanization": "Māvai metuvāka uḷḷē kalakkuṅkaḷ."
+  },
+  "6": {
+    "text": "இறைச்சியை சில நிமிடங்கள் ஆற விடுங்கள்.",
+    "romanization": "Iṟaicciyai cila nimaṭikaḷ āṟa viṭuṅkaḷ."
+  },
+  "7": {
+    "text": "காய்கறிகளை அதிக சூட்டில் வறுங்கள்.",
+    "romanization": "Kāykaṟikaḷai atika cūṭṭil vaṟuṅkaḷ."
+  },
+  "8": {
+    "text": "ரொட்டியை சாய்வாக வெட்டுங்கள்.",
+    "romanization": "Roṭṭiyai cāyvāka veṭṭuṅkaḷ."
+  },
+  "9": {
+    "text": "பூண்டை வதக்குங்கள், ஆனால் கருக விடாதீர்கள்.",
+    "romanization": "Pūṇṭai vatakuṅkaḷ, āṉāl karuka viṭātīrkaḷ."
+  },
+  "10": {
+    "text": "சூப்பை மீண்டும் கொதிக்க விடுங்கள்.",
+    "romanization": "Sūppai mīṇṭum kotikka viṭuṅkaḷ."
+  },
+  "11": {
+    "text": "ஸ்டாக்கை ஒரு மணி நேரம் மெதுவாக கொதிக்க விடுங்கள்.",
+    "romanization": "Sṭāk kai oru maṇi nēram metuvāka kotikka viṭuṅkaḷ."
+  },
+  "12": {
+    "text": "கோழியை இரவு முழுவதும் ஊற வையுங்கள்.",
+    "romanization": "Kōḻiyai iravu muḻuvatum ūṟa vaiyuṅkaḷ."
+  },
+  "13": {
+    "text": "முதலில் மசாலாப் பொருட்களை வெறும் கடாயில் வறுங்கள்.",
+    "romanization": "Mutalil macālāp poruṭkaḷai verum kaṭāyil vaṟuṅkaḷ."
+  },
+  "14": {
+    "text": "ஒயினை பாதியாக சுண்ட விடுங்கள்.",
+    "romanization": "Oyiṉai pātiyāka cuṇṭa viṭuṅkaḷ."
+  },
+  "15": {
+    "text": "ப்ரோக்கோலியை நான்கு நிமிடங்கள் ஆவியில் வேக வையுங்கள்.",
+    "romanization": "Prokkōliyai nāṉku nimaṭikaḷ āviyil vēka vaiyuṅkaḷ."
+  },
+  "16": {
+    "text": "வெங்காயத்தை மெதுவாக பொன்னிறமாக வதக்குங்கள்.",
+    "romanization": "Veṅkāyattai metuvāka poṉṉiṟamāka vatakuṅkaḷ."
+  },
+  "17": {
+    "text": "மாவை மென்மையாக ஆகும் வரை பிசையுங்கள்.",
+    "romanization": "Māvai meṉmaiyāka ākum varai picaiyuṅkaḷ."
+  },
+  "18": {
+    "text": "பிராத்தை ஒரு மெல்லிய சல்லடையில் வடிகட்டுங்கள்.",
+    "romanization": "Pirāttāi oru melliya callaṭaiyil vaṭikaṭṭuṅkaḷ."
+  },
+  "19": {
+    "text": "மேலே சிறிது புதிய ஜாதிக்காயைத் துருவிப் போடுங்கள்.",
+    "romanization": "Mēlē ciṟitu putiya jātikāyait turuvip pōṭuṅkaḷ."
+  },
+  "20": {
+    "text": "எங்களிடம் ஆலிவ் எண்ணெய் தீர்ந்துவிட்டது.",
+    "romanization": "Eṅkaḷiṭam āliv eṇṇey tīrntuviṭṭatu."
+  },
+  "21": {
+    "text": "இந்த எலுமிச்சை சாறு பிழிய முடியாத அளவுக்கு காய்ந்துவிட்டது.",
+    "romanization": "Inta elumiccai cāṟu piḻiya muṭiyāta aḷavukku kāyntuviṭṭatu."
+  },
+  "22": {
+    "text": "உப்பை கொஞ்சம் கொடுப்பீர்களா?",
+    "romanization": "Uppai koñcam koṭuppīrkaḷā?"
+  },
+  "23": {
+    "text": "புதிய துளசி பெரிய வித்தியாசத்தை ஏற்படுத்தும்.",
+    "romanization": "Putiyatuḷaci periya vittiyācattai ēṟpaṭuttum."
+  },
+  "24": {
+    "text": "நான் பூண்டை முழுதாக வாங்குவேன்.",
+    "romanization": "Nāṉ pūṇṭai muḻutāka vāṅkuvēṉ."
+  },
+  "25": {
+    "text": "பழுப்பு சர்க்கரை குக்கீகளை மென்மையாக்கும்.",
+    "romanization": "Paḻuppu carkkarai kukkīkaḷai meṉmaiyākkum."
+  },
+  "26": {
+    "text": "முட்டைகள் இன்னும் ஃபிரிட்ஜில் இருக்கின்றன.",
+    "romanization": "Muṭṭaikaḷ iṉṉum friṭjil irukkiṉṟaṉa."
+  },
+  "27": {
+    "text": "தோட்டத்தில் கொத்தமல்லி கிட்டத்தட்ட தயாராகிவிட்டது.",
+    "romanization": "Tōṭṭattil kottamalli kiṭṭattaṭṭa tayārākiviṭṭatu."
+  },
+  "28": {
+    "text": "சாண்ட்விச்சுக்கு ஒரு தக்காளி தேவை.",
+    "romanization": "Sāṇṭviccukku oru takkāḷi tēvai."
+  },
+  "29": {
+    "text": "வெண்ணெய் மேடையில் வேகமாக மென்மையாகும்.",
+    "romanization": "Veṇṇey mēṭaiyil vēkamāka meṉmaiyākum."
+  },
+  "30": {
+    "text": "அவர் எல்லாவற்றுக்கும் கடல் உப்பைப் பயன்படுத்துகிறார்.",
+    "romanization": "Avar ellāvaṟṟukkum kaṭal uppaip payaṉpaṭuttukiṟār."
+  },
+  "31": {
+    "text": "மாவுப் பை கிட்டத்தட்ட காலியாகிவிட்டது.",
+    "romanization": "Māvup pai kiṭṭattaṭṭa kāliyākiviṭṭatu."
+  },
+  "32": {
+    "text": "கிரீம் வார இறுதியில் கெட்டுவிட்டது.",
+    "romanization": "Kirīm vāra iṟutiyil keṭṭuviṭṭatu."
+  },
+  "33": {
+    "text": "நான் சவர் கிரீமை விட கிரேக்க யோகர்ட்டை விரும்புகிறேன்.",
+    "romanization": "Nāṉ cavar kirīmai viṭa kirēkka yōkarṭṭai virumpukiṟēṉ."
+  },
+  "34": {
+    "text": "காளான்கள் சமைக்கும்போது சுருங்கிவிடும்.",
+    "romanization": "Kāḷāṉkaḷ camaikkumpōtu curuṅkiviṭum."
+  },
+  "35": {
+    "text": "ஒரு சிட்டிகை சிவப்பு மிளகாய் தூள் சேருங்கள்.",
+    "romanization": "Oru ciṭṭikai civappu miḷakāy tūḷ cēruṅkaḷ."
+  },
+  "36": {
+    "text": "இந்த செய்முறைக்கு இரண்டு கப் பிராத் தேவை.",
+    "romanization": "Inta ceymuṟaikku iraṇṭu kap pirāt tēvai."
+  },
+  "37": {
+    "text": "அவள் எப்போதும் அஞ்சோவிகளை சமையலறை அலமாரியில் வைத்திருப்பாள்.",
+    "romanization": "Avaḷ eppōtum añcōvikaḷai camaiyalaṟai alamāriyil vaittiruppāḷ."
+  },
+  "38": {
+    "text": "மிளகாய்கள் வறுக்கும்போது இனிப்பாக மாறும்.",
+    "romanization": "Miḷakāykaḷ vaṟukkumpōtu iṉippāka māṟum."
+  },
+  "39": {
+    "text": "உறைந்த பட்டாணி ஒரு சிறிய அற்புதம்.",
+    "romanization": "Uṟainta paṭṭāṇi oru ciṟiya aṟputam."
+  },
+  "40": {
+    "text": "சமையலறை ரொட்டி வாசனை வீசுகிறது.",
+    "romanization": "Camaiyalaṟai roṭṭi vācaṉai vīcukiṟatu."
+  },
+  "41": {
+    "text": "அவர் அரிசியை மேடை முழுவதும் கொட்டிவிட்டார்.",
+    "romanization": "Avar ariciyai mēṭai muḻuvatum koṭṭiviṭṭār."
+  },
+  "42": {
+    "text": "கடாய் இப்போதே மிகவும் சூடாக இருக்கிறது.",
+    "romanization": "Kaṭāy ippōtē mikavum cūṭāka irukkiṟatu."
+  },
+  "43": {
+    "text": "நான் மீண்டும் டோஸ்ட்டை கருக வைத்துவிட்டேன்.",
+    "romanization": "Nāṉ mīṇṭum ṭōsṭṭai karuka vaittuviṭṭēṉ."
+  },
+  "44": {
+    "text": "அவள் சாஸை சுவைத்துவிட்டு இன்னும் கொஞ்சம் உப்பு சேர்த்தாள்.",
+    "romanization": "Avaḷ cāsai cuvaittuviṭṭu iṉṉum koñcam uppu cērttāḷ."
+  },
+  "45": {
+    "text": "இரவு உணவின்போது புகை அலாரம் அடித்தது.",
+    "romanization": "Iravu uṇaviṉpōtu pukai alāram aṭittatu."
+  },
+  "46": {
+    "text": "அவர் வேலை செய்யும்போது சுத்தப்படுத்துவார்.",
+    "romanization": "Avar vēlai ceyyumpōtu cuttappaṭuttuvār."
+  },
+  "47": {
+    "text": "அவள் போன் பேசிக்கொண்டிருந்தபோது பானை பொங்கி வழிந்தது.",
+    "romanization": "Avaḷ pōṉ pēcikkoṇṭiruntapōtu pāṉai poṅki vaḻintatu."
+  },
+  "48": {
+    "text": "ஃபிரிட்ஜை துடைக்க வேண்டும்.",
+    "romanization": "Friṭjai tuṭaikka vēṇṭum."
+  },
+  "49": {
+    "text": "குழந்தைகள் கேட்காமலேயே மேசையை தயார் செய்தார்கள்.",
+    "romanization": "Kuḻantaikaḷ kēṭkāmalēyē mēcaiyai tayār ceytārkaḷ."
+  },
+  "50": {
+    "text": "பாஸ்தா தண்ணீர் கொதித்துக் கொண்டிருக்கிறது.",
+    "romanization": "Pāstā taṇṇīr kotittuk koṇṭirukkiṟatu."
+  },
+  "51": {
+    "text": "நறுக்கும் பலகை வழுக்காமல் இருக்க, அவள் அதன் அடியில் ஒரு துண்டை வைத்தாள்.",
+    "romanization": "Naṟukkum palakai vaḻukkāmal irukka, avaḷ ataṉ aṭiyil oru tuṇṭai vaittāḷ."
+  },
+  "52": {
+    "text": "அவர் எப்போதும் வெறுங்காலுடன் சமைப்பார்.",
+    "romanization": "Avar eppōtum veṟuṅkāluṭaṉ camaippār."
+  },
+  "53": {
+    "text": "நான் அடுப்பைத் திறந்தபோது கேக் அமுங்கிவிட்டது.",
+    "romanization": "Nāṉ aṭuppait tiṟantapōtu kēk amuṅkiviṭṭatu."
+  },
+  "54": {
+    "text": "அடுப்பை முன்கூட்டியே சூடுபடுத்த மறந்துவிட்டோம்.",
+    "romanization": "Aṭuppai muṉkūṭṭiyē cūṭupaṭutta maṟantuviṭṭōm."
+  },
+  "55": {
+    "text": "நாய் வாசலில் இருந்து ஒவ்வொரு அசைவையும் பார்த்தது.",
+    "romanization": "Nāy vācalil iruntu ovvoru acaivaiyum pārttatu."
+  },
+  "56": {
+    "text": "ஆவி வெளியேற சமையலறை ஜன்னல் திறந்திருக்கிறது.",
+    "romanization": "Āvi veḷiyēṟa camaiyalaṟai jaṉṉal tiṟantirukkiṟatu."
+  },
+  "57": {
+    "text": "அவள் சமைக்கும்போது இசையை சத்தமாக வைத்தாள்.",
+    "romanization": "Avaḷ camaikkumpōtu icaiyai cattāmāka vaittāḷ."
+  },
+  "58": {
+    "text": "நாங்கள் சாப்பிடும்போது பாத்திரங்கள் குவிந்துவிட்டன.",
+    "romanization": "Nāṅkaḷ cāppiṭumpōtu pāttiraṅkaḷ kuvintuviṭṭaṉa."
+  },
+  "59": {
+    "text": "மீதமுள்ள உணவு நாளை மதிய உணவாக இருக்கும்.",
+    "romanization": "Mītamulla uṇavu nāḷai matiya uṇavāka irukkum."
+  },
+  "60": {
+    "text": "நான் செய்முறையை படிபடியாகப் பின்பற்றினேன்.",
+    "romanization": "Nāṉ ceymuṟaiyai paṭipatiyākap piṉpaṟṟiṉēṉ."
+  },
+  "61": {
+    "text": "முதல் பான் கேக் எப்போதும் மோசமாக இருக்கும்.",
+    "romanization": "Mutal pāṉ kēk eppōtum mōcamāka irukkum."
+  },
+  "62": {
+    "text": "அவள் தற்செயலாக இந்த சாஸைக் கண்டுபிடித்தாள்.",
+    "romanization": "Avaḷ taṟceyalāka inta cāsaik kaṇṭupiṭittāḷ."
+  },
+  "63": {
+    "text": "அவர் குளிர்காலத்தில் சுட கற்றுக்கொண்டார்.",
+    "romanization": "Avar kuḷirkālattil cuṭa kaṟṟukkoṇṭār."
+  },
+  "64": {
+    "text": "சமையல் புத்தகம் அதே பக்கத்தில் திறந்தது.",
+    "romanization": "Camaiyal puttakam atē pakkattil tiṟantatu."
+  },
+  "65": {
+    "text": "நான் செய்முறையை இரட்டிப்பாக்கி, அதிகமாக செய்துவிட்டேன்.",
+    "romanization": "Nāṉ ceymuṟaiyai iraṭṭippākki, atikamāka ceytuviṭṭēṉ."
+  },
+  "66": {
+    "text": "ஒரு டம்ப்ளிங்கை எப்படி மடிப்பது என்று வீடியோ எனக்குக் காட்டியது.",
+    "romanization": "Oru ṭampliṅkai eppaṭi maṭippatu eṉṟu vīṭiyō eṉakkuk kāṭṭiyatu."
+  },
+  "67": {
+    "text": "அவர் எல்லாவற்றையும் ஒரு சிறிய தராசில் அளப்பார்.",
+    "romanization": "Avar ellāvaṟṟaiyum oru ciṟiya tarācil aḷappār."
+  },
+  "68": {
+    "text": "அவள் நேரத்தை விட வாசனையை வைத்து அதிகமாக சமைப்பாள்.",
+    "romanization": "Avaḷ nērattil viṭa vācaṉaiyai vaittu atikamāka camaippāḷ."
+  },
+  "69": {
+    "text": "நான் ஒரு புதிய மசாலாவை முயற்சித்தேன், அது நன்றாக இருந்தது.",
+    "romanization": "Nāṉ oru putiya macālāvai muyarcittēṉ, atu naṉṟāka iruntatu."
+  },
+  "70": {
+    "text": "முதல் முறை ரொட்டி உப்பவில்லை.",
+    "romanization": "Mutal muṟai roṭṭi uppavillai."
+  },
+  "71": {
+    "text": "அவள் சமைக்கும்போது சுவைத்து சரிசெய்தாள்.",
+    "romanization": "Avaḷ camaikkumpōtu cuvaittu cariceytāḷ."
+  },
+  "72": {
+    "text": "அவர் இந்த உணவை தன் பாட்டியிடம் இருந்து கற்றுக்கொண்டார்.",
+    "romanization": "Avar inta uṇavai taṉ pāṭṭiyiṭam iruntu kaṟṟukkoṇṭār."
+  },
+  "73": {
+    "text": "இந்த செய்முறை ஒரு சிறிய அட்டையில் எழுதப்பட்டு தலைமுறை தலைமுறையாக வந்தது.",
+    "romanization": "Inta ceymuṟai oru ciṟiya aṭṭaiyil eḻutappaṭṭu talaimuṟai talaimuṟaiyāka vantatu."
+  },
+  "74": {
+    "text": "ஒருவருக்காக சமைப்பது ஒரு தனி கலை.",
+    "romanization": "Oruvarukkāka camaippatu oru taṉi kalai."
+  },
+  "75": {
+    "text": "இரவு உணவு ஐந்து நிமிடங்களில் தயாராகிவிடும்.",
+    "romanization": "Iravu uṇavu aintu nimaṭikaḷil tayārākiviṭum."
+  },
+  "76": {
+    "text": "ரொட்டியை எனக்குக் கொடுங்கள்.",
+    "romanization": "Roṭṭiyai eṉakkuk koṭuṅkaḷ."
+  },
+  "77": {
+    "text": "சமையலறைதான் வீட்டில் மிகவும் சூடான அறை.",
+    "romanization": "Camaiyalaṟaitāṉ vīṭṭil mikavum cūṭāṉa aṟai."
+  },
+  "78": {
+    "text": "சூரியன் மறையும்போது நாங்கள் வெளியே சாப்பிட்டோம்.",
+    "romanization": "Sūriyaṉ maṟaiyumpōtu nāṅkaḷ veḷiyē cāppiṭṭōm."
+  },
+  "79": {
+    "text": "எல்லோரும் பாத்திரங்களைக் கழுவ உதவினார்கள்.",
+    "romanization": "Ellōrum pāttiraṅkaḷaik kaḻuva utaviṉārkaḷ."
+  },
+  "80": {
+    "text": "அவள் எப்போதும் வேண்டுமென்றே அதிகமாக சமைப்பாள்.",
+    "romanization": "Avaḷ eppōtum vēṇṭumeṉṟē atikamāka camaippāḷ."
+  },
+  "81": {
+    "text": "அவர் எப்போதும் ஒரு பாட்டில் ஒயின் கொண்டு வருவார்.",
+    "romanization": "Avar eppōtum oru pāṭṭil oyiṉ koṇṭu varuvār."
+  },
+  "82": {
+    "text": "குழந்தைகள் மூன்று முறை சாப்பிட்டார்கள்.",
+    "romanization": "Kuḻantaikaḷ mūṉṟu muṟai cāppiṭṭārkaḷ."
+  },
+  "83": {
+    "text": "மெழுகுவர்த்திகள் முழுவதுமாக எரிந்துவிட்டன.",
+    "romanization": "Meḻukuvarttikaḷ muḻuvatumāka erintuviṭṭaṉa."
+  },
+  "84": {
+    "text": "தட்டுகள் எடுக்கப்பட்ட பிறகும் நாங்கள் நீண்ட நேரம் பேசினோம்.",
+    "romanization": "Taṭṭukaḷ eṭukkappaṭṭa piṟakum nāṅkaḷ nīṇṭa nēram pēciṉōm."
+  },
+  "85": {
+    "text": "கத்தி பார்ப்பதை விட கூர்மையானது.",
+    "romanization": "Katti pārppatai viṭa kūrmaiyāṉatu."
+  },
+  "86": {
+    "text": "சாஸ்க்கு மரக்கரண்டியைப் பயன்படுத்துங்கள்.",
+    "romanization": "Cāskku marakkaraṇṭiyaip payaṉpaṭuttūṅkaḷ."
+  },
+  "87": {
+    "text": "வார்ப்பிரும்பு கடாய் கனமானது, ஆனால் பயனுள்ளது.",
+    "romanization": "Vārppirumpu kaṭāy kaṉamāṉatu, āṉāl payaṉuḷḷatu."
+  },
+  "88": {
+    "text": "அவர் மசாலாப் பொருட்களை ஒரு சிறிய இழுப்பறையில் வைத்திருக்கிறார்.",
+    "romanization": "Avar macālāp poruṭkaḷai oru ciṟiya iḻuppaṟaiyil vaittirukkiṟār."
+  },
+  "89": {
+    "text": "ஒரு நல்ல நறுக்கும் பலகை எல்லாவற்றையும் எளிதாக்கும்.",
+    "romanization": "Oru nalla naṟukkum palakai ellāvaṟṟaiyum eḷitākkum."
+  },
+  "90": {
+    "text": "அடுப்பு இறுதியாக போதுமான அளவு சூடாகிவிட்டது.",
+    "romanization": "Aṭuppu iṟutiyāka pōtumāṉa aḷavu cūṭākiviṭṭatu."
+  },
+  "91": {
+    "text": "முழு பாதாம் பருப்புகளை அரைக்க பிளெண்டர் சிரமப்படுகிறது.",
+    "romanization": "Muḻu pātām paruppukaḷai araikka pliḷeṇṭar ciramappaṭukiṟatu."
+  },
+  "92": {
+    "text": "அவள் மேடையை ஒரு ஈரத் துணியால் துடைத்தாள்.",
+    "romanization": "Avaḷ mēṭaiyai oru īrat tuṇiyāl tuṭaittāḷ."
+  },
+  "93": {
+    "text": "வடிகட்டி இரண்டாவது இழுப்பறையில் இருக்கிறது.",
+    "romanization": "Vaṭikaṭṭi iraṇṭāvatu iḻuppaṟaiyil irukkiṟatu."
+  },
+  "94": {
+    "text": "அடுப்பு கையுறைகளை மறக்காதீர்கள்.",
+    "romanization": "Aṭuppu kaiyuṟaikaḷai maṟakkātīrkaḷ."
+  },
+  "95": {
+    "text": "சமையல் பெரும்பாலும் பொறுமைதான்.",
+    "romanization": "Camaiyal perumpālum poṟumaitāṉ."
+  },
+  "96": {
+    "text": "ஒரே பொருட்கள் வெவ்வேறு கைகளில் வெவ்வேறு உணவுகளை உருவாக்கும்.",
+    "romanization": "Orē poruṭkaḷ vēṟupaṭṭa kaikaḷil vēṟupaṭṭa uṇavukaḷai uruvākkum."
+  },
+  "97": {
+    "text": "உப்புதான் முதலில் சரிசெய்ய வேண்டியது.",
+    "romanization": "Upputāṉ mutalil cariceyya vēṇṭiyatu."
+  },
+  "98": {
+    "text": "மேலும் சேர்ப்பதற்கு முன் சுவைத்துப் பாருங்கள்.",
+    "romanization": "Mēlum cērppataṟku muṉ cuvaittup pāruṅkaḷ."
+  },
+  "99": {
+    "text": "மெதுவாக உண்ணப்படும் ஒரு எளிய உணவு ஒரு சிறிய வெற்றி.",
+    "romanization": "Metuvāka uṇṇappaṭum oru eḷiya uṇavu oru ciṟiya veṟṟi."
+  }
+}

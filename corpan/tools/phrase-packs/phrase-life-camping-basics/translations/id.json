@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Ayo pasang tenda sebelum gelap.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Korek api kubawa di mana ya?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Pasak tenda ada di saku samping.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Kantong tidurku aman sampai suhu beku.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Pompa matras tidur sebelum kamu gelar.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Lentera ini butuh baterai baru.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Kencangkan tali tenda sebelum tidur.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Flysheet dipasang dengan jahitan menghadap keluar.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Dirikan tenda di tanah yang rata.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Jauhkan makanan dari tenda.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Dia bawa satu barang mewah: bantal kecil.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Lampu kepala sangat membantu agar tidak meraba-raba.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Tempat kemah ada persis setelah sungai kecil kedua.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Kotak pendingin tetap di tempat teduh.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Kursi lipat ini sudah tidak sebagus dulu.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Ransel ini lebih berat dari kelihatannya.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Peta masuk ke saku samping ransel.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Filter air ada di dry bag kecil.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Kapak kecil itu ada penutup pengamannya.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Kita lupa pembuka kaleng lagi.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Kumpulkan bahan bakar kering sebelum menyalakan api.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Lingkaran api sudah dibuat.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Kita butuh kayu bakar kecil lagi.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Jangan masukkan kayu basah ke api.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Bara api lebih panas dari nyala api.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Rebus airnya sebelum diminum.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Memasak bacon di luar ruangan butuh waktu lebih lama.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Siram air ke bara api sebelum pergi.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Dia bawa kompor kecil untuk pagi yang dingin.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Kopi terasa lebih enak di luar ruangan.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Gagang wajan cepat panas.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Kami masak makan malam di batu datar.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Marshmallow-nya terbakar lagi.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Panggang pelan-pelan, di pinggir nyala api saja.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Bawa pulang semua yang kamu bawa.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Ramalan cuaca bilang akan hujan setelah tengah malam.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Angin tiba-tiba bertiup kencang.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Awan-awan menyelimuti punggung bukit.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Suhu turun drastis setelah matahari terbenam.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Embun beku pagi hilang sebelum jam sepuluh.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Kabut membuat jalur sulit diikuti.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Nyamuk-nyamuk keluar saat senja.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Langit terasa lebih luas di sini.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Petir masih jauh bermil-mil.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Matahari sore paling terik.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Jalur ini mengikuti sungai sejauh dua mil.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Tetap di jalur yang ditandai.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Titik awal pendakian ada tiga mil di atas jalan.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Kami salah belok di persimpangan.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Peta menunjukkan ada tempat berlindung dekat puncak.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Dia menjaga kecepatan yang stabil dan mempertahankannya.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Jalur zig-zag membuat pendakian lebih mudah.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Pemandangan di puncak sepadan dengan pendakiannya.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Hati-hati batu lepas saat turun.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Kami melihat jejak rusa di tanah yang gembur.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Minum air sebelum kamu merasa haus.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Pohon-pohon mulai jarang di dekat puncak.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Kami duduk di batang pohon tumbang untuk istirahat.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Jembatan di atas sungai kecil itu terlihat lebih tua dari jalurnya.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Kami sudah kembali ke kemah saat matahari terbenam.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Bima Sakti sangat terang malam ini.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Dia menunjukkan rasi bintang Biduk.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Bintang jatuh melesat melintasi langit.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Api berderak saat kami bicara.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Bintang-bintang berbeda di belahan bumi selatan.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Ada burung hantu bersuara di antara pepohonan.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Bulan terbit terlambat dan berwarna jingga.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Kami bercerita di sekitar api sampai tengah malam.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Malam hari lebih berisik dari yang kamu kira.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Kami tidur dengan pintu tenda terbuka.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Seekor rusa berjalan melewati kemah saat fajar.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Tupai-tupai itu tetap menemukan camilan.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Kami melihat berang-berang di tepi seberang.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Simpan makananmu tertutup rapat dan digantung semalaman.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Kantong anti-beruang digantung tinggi di pohon.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Jangan tinggalkan sepatu di luar kalau tidak mau ada kejutan.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Seekor katak melompat tepat melewati kakiku.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Burung-burung membangunkan kami sebelum matahari terbit.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Kami mengikuti jejak di salju untuk sementara waktu.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Danau itu tidak ada ikannya tapi banyak capung.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Anak-anak berlari sepanjang jalan menuju danau.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Dia belum berkemah lagi sejak kecil.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Dia menunjukkan cara membaca peta.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Kami berbagi tempat kemah dengan keluarga lain.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Dua hari di alam terbuka membuat semuanya terasa baru lagi.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Ponsel tidak ada sinyal dan rasanya pas.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Kami tidak melihat orang lain selama berjam-jam.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Dia tertidur sebelum api padam.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Pagi pertama selalu dingin dan terasa lambat.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Kami berkemas dan meninggalkan lokasi lebih bersih dari saat kami menemukannya.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Di mana sumber air terdekat?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Jamban lubang ada di ujung jalan setapak.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Kubur sisa makanan jauh dari kemah.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Gantung pakaian basah di dekat api agar kering.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Kotak P3K ada di bagian atas ransel.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Kompas menunjuk ke utara magnetis.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Peluit lebih nyaring dari suaramu.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Beritahu seseorang ke mana kamu pergi.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Ponsel dimasukkan ke dalam dry bag.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Bawa lapisan pakaian lebih banyak dari yang kamu kira butuh.",
+    "romanization": null
+  }
+}

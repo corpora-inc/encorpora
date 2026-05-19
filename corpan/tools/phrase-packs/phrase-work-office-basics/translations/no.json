@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Møtet starter om ti minutter.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Kan du dele skjermen din?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Beklager, jeg var på mute.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Vi drar over tiden.",
+    "romanization": null
+  },
+  "4": {
+    "text": "La oss ta det på neste møte.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Jeg tar notater.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Kan vi ta en runde?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Agendaen ligger i kalenderinvitasjonen.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Hvem leder dette?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Tar vi opp dette?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Samtalen ble brutt midtveis.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Kan vi skyve på dette et kvarter?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Han kom sent, men stilte.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Rommet er dobbeltbooket igjen.",
+    "romanization": null
+  },
+  "14": {
+    "text": "La oss parkere den saken og komme tilbake til den.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Jeg må avslutte presis klokken tre.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Kan du bli igjen i to minutter?",
+    "romanization": null
+  },
+  "17": {
+    "text": "Tavlen er full.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Kan du oppsummere aksjonspunktene?",
+    "romanization": null
+  },
+  "19": {
+    "text": "Stående møter går overraskende fort.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Jeg kommer tilbake til deg innen arbeidsdagens slutt.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Kom den siste e-posten min frem?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Beklager sent svar.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Jeg inkluderer Sara på dette.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Vedlegget kom ikke frem.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Jeg markerte det som haster.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Kan du sende den filen på nytt?",
+    "romanization": null
+  },
+  "27": {
+    "text": "E-posttråden ble lang, la meg oppsummere.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Bruk emnefeltet så jeg finner det.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Han ryddet innboksen sin i helgen.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Vennligst svar innen fredag.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Jeg sender en kort beskjed når det er ferdig.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Autosvaret sier han er på reise.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Hun kopierte feil person ved et uhell.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Tre påminnelser er nok.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Kan du videresende meg tråden?",
+    "romanization": null
+  },
+  "36": {
+    "text": "Chatten går raskere enn e-post for dette.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Jeg gikk glipp av meldingen din i alt støyet.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Lenken i e-posten din fører til en side som ikke finnes.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Vennligst bekreft at du har mottatt dette.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Fristen er fredag klokken tolv.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Jeg har et første utkast innen onsdag.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Vi må levere noe denne uken.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Prosjektet ble forsinket med en dag.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Kan du korrekturlese dette før jeg sender det?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Jeg skylder deg en statusoppdatering.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Tallene stemmer ikke med det jeg sendte forrige uke.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Vi venter på en beslutning fra kunden.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Han jobbet gjennom lunsjen for å fullføre det.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Rapporten er endelig ute av mine hender.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Jeg starter så snart jeg får godkjenningen.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Kan du godkjenne denne versjonen?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Hun oppdaget en skrivefeil rett før vi leverte.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Vi utsatte lanseringen til neste tirsdag.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Anslaget var feil med en faktor på to.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Han ryddet ettermiddagen for å fokusere.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Kontrakten kom tilbake signert.",
+    "romanization": null
+  },
+  "57": {
+    "text": "La oss kalle det ferdig og gå videre.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Den første versjonen er grov, men den fungerer.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Han leverte tidlig for en gangs skyld.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Velkommen til teamet.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Jeg skal introdusere deg for de andre.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Hun er nettopp tilbake fra permisjon.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Han er den du bør spørre om dette.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Vi deler pult på tirsdager.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Hvem kan mest om prising?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Han tar alltid med kaffe til teamet.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Den nyansatte lærer fort.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Hun jobber tett med markedsavdelingen.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Han har vært her lenger enn noen andre.",
+    "romanization": null
+  },
+  "70": {
+    "text": "De delte arbeidet likt.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Vi tok lunsj og skisserte det.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Han tok over for meg mens jeg var syk.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Teamet samlet seg rundt laptopen.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Hun husker alles bursdager.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Jeg blir med eksternt i morgen.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Kontoret er stort sett tomt på fredager.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Internettet mitt er ustabilt i dag.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Han jobber fra en annen by.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Teamet møtes fysisk en gang i måneden.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Hun innredet et hjørne av soverommet som kontorplass.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Hjemmekontoret er endelig ryddig.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Kan du slå på kameraet ditt?",
+    "romanization": null
+  },
+  "83": {
+    "text": "Bakgrunnsstøy er greit, ikke bekymre deg.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Vi tar en rask innsjekk hver morgen.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Skriveren har satt seg fast igjen.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Kaffemaskinen er tom for bønner.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Kan du ta døren?",
+    "romanization": null
+  },
+  "88": {
+    "text": "Vinduet på møterommet kan ikke åpnes.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Noen har glemt lunsjen sin i kjøleskapet i en uke.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Kjøkkenet er stille klokken tre.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Han tok trappene for å klarne hodet.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Planten i vinduskarmen har det bra.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Kan du kvittere for en pakke i resepsjonen?",
+    "romanization": null
+  },
+  "94": {
+    "text": "Kortleseren tuller.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Slutten av dagen sniker seg alltid innpå.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Han jobber best med ett vindu åpent om gangen.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Hun tenner et lys for å markere starten på dagen.",
+    "romanization": null
+  },
+  "98": {
+    "text": "En kort spasertur etter lunsj hjelper meg å tenke.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Noen mandager starter med en liten seier.",
+    "romanization": null
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Az árak emelkednek, ha többen akarnak valamit.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Ha nő a kínálat, az árak általában csökkennek.",
+    "romanization": null
+  },
+  "2": {
+    "text": "A kedvezmény hatására többen vásárolnak.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Ugyanaz a termék más-más áron kapható különböző városokban.",
+    "romanization": null
+  },
+  "4": {
+    "text": "A kereslet egyik napról a másikra megváltozhat.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Az eladók felemelik az árakat, ha kevés az áru.",
+    "romanization": null
+  },
+  "6": {
+    "text": "A vásárlók körülnéznek a legjobb ajánlatért.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Néha a magas ár a minőség jele.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Néha a magas ár csak egy marketingfogás.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Az ingyenes szállítás megváltoztatja, hogyan viszonyulnak az emberek egy vásárláshoz.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Az ár ritkán jelenti a teljes költséget.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Az idő is egyfajta költség.",
+    "romanization": null
+  },
+  "12": {
+    "text": "A hosszú sor az, amit akkor fizetsz, ha túl alacsony az ár.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Az akciók hatására az emberek olyan dolgokat is megvesznek, amiket nem terveztek.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Az emberek jobban reagálnak a pénz elvesztésére, mint a megszerzésére.",
+    "romanization": null
+  },
+  "15": {
+    "text": "A dollárban és a helyi pénznemben megadott árak másképp hatnak.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Egy kis napi kiadás egy év alatt sokra rúghat.",
+    "romanization": null
+  },
+  "17": {
+    "text": "A nap első eladása fontosabb, mint az utolsó.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Sok apró vásárlás egy nagy szokást rejt.",
+    "romanization": null
+  },
+  "19": {
+    "text": "A legolcsóbb megoldás néha a legdrágább a végén.",
+    "romanization": null
+  },
+  "20": {
+    "text": "A pénz csak egy megállapodás, amit mindannyian elfogadunk.",
+    "romanization": null
+  },
+  "21": {
+    "text": "A megtakarítás azt jelenti, hogy a jövőbeli önmagadnak fizetsz.",
+    "romanization": null
+  },
+  "22": {
+    "text": "A költségvetés egy terv, nem büntetés.",
+    "romanization": null
+  },
+  "23": {
+    "text": "A kamatos kamat olyan, mint egy kis motorral hajtott türelem.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Az infláció lassan felemészti a készpénzben tartott pénzt.",
+    "romanization": null
+  },
+  "25": {
+    "text": "A hitel az, amikor a jövőbeli önmagadtól kölcsönzöl.",
+    "romanization": null
+  },
+  "26": {
+    "text": "A kamat a kölcsönzött pénz bérleti díja.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Egy hónapig minden kiadását vezeti, hogy lássa a mintázatot.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Minden fizetésnapon félretesz egy fix összeget, mielőtt bármi mást csinálna.",
+    "romanization": null
+  },
+  "29": {
+    "text": "A vésztartalék kevésbé fájdalmassá teszi az apró katasztrófákat.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Kicsit kevesebbet költeni gyakran könnyebb, mint többet keresni.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Egy fizetésemelés eltűnhet a megnövekedett kiadásokban.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Előre kifizette a hitelt, és könnyebbnek érezte magát.",
+    "romanization": null
+  },
+  "33": {
+    "text": "A legtöbb ember túlbecsüli a jövő évi fegyelmét.",
+    "romanization": null
+  },
+  "34": {
+    "text": "A pénzügyi gondok csökkennek, ha van egy terved.",
+    "romanization": null
+  },
+  "35": {
+    "text": "A piac egyszerűen egy hely, ahol a vevők és az eladók találkoznak.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Az online boltok falak nélküli piacok.",
+    "romanization": null
+  },
+  "37": {
+    "text": "A specializáció az oka annak, hogy a legtöbb dolog olcsó.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Az emberek olyan dolgokért cserélnek, amiket maguk nem állítanak elő.",
+    "romanization": null
+  },
+  "39": {
+    "text": "A bérek azt tükrözik, amennyit valaki kap, nem mindig azt, amennyit ér.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Vannak jól fizető állások, mert kevesen akarják őket.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Vannak jól fizető állások, mert kevesen képesek elvégezni őket.",
+    "romanization": null
+  },
+  "42": {
+    "text": "A piac nem mindig jutalmazza a leghasznosabb munkát.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Egy új technológia gyorsan eltörölhet egy régi iparágat.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Az emberek gyakran oda költöznek, ahol munka van.",
+    "romanization": null
+  },
+  "45": {
+    "text": "A kisvállalkozások teszik ki a gazdaság nagy részét.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Egy jó alkalmazott többet spórol, mint amennyibe kerül.",
+    "romanization": null
+  },
+  "47": {
+    "text": "A tárgyalás minden munka része.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Egy mellékjövedelem lehetőségeket ad.",
+    "romanization": null
+  },
+  "49": {
+    "text": "A felmondás néha a legnagyobb hatású lépés.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Az emberek reagálnak az ösztönzőkre, még a kicsikre is.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Az „ingyenes” egy varázsszó.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Az első ingyenes hónap sok döntést megváltoztat.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Az előfizetéseket úgy tervezik, hogy elfelejtsék őket.",
+    "romanization": null
+  },
+  "54": {
+    "text": "A kerek számok nagyobbnak tűnnek, mint amilyenek.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Az elsüllyedt költségek nem befolyásolhatják a következő lépést.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Egy kis díj megváltoztatja, milyen gyakran jelennek meg az emberek.",
+    "romanization": null
+  },
+  "57": {
+    "text": "A borravaló megváltoztatja egy étkezés matematikáját.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Az emberek akkor osztanak meg, ha könnyű megosztani.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Egy sor elárulja, mit tartanak fontosnak az emberek ma.",
+    "romanization": null
+  },
+  "60": {
+    "text": "A korlátozott idejű ajánlatok szándékosan sürgősséget keltenek.",
+    "romanization": null
+  },
+  "61": {
+    "text": "A hűségprogramok azt jutalmazzák, ami amúgy is megtörténne.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Az alapértelmezett beállítások többet döntenek el, mint gondolnánk.",
+    "romanization": null
+  },
+  "63": {
+    "text": "A vélemények jobban befolyásolják a keresletet, mint a hirdetések.",
+    "romanization": null
+  },
+  "64": {
+    "text": "A szájhagyomány még mindig veri a legtöbb marketinget.",
+    "romanization": null
+  },
+  "65": {
+    "text": "A gazdaság egyes években növekszik, másokban zsugorodik.",
+    "romanization": null
+  },
+  "66": {
+    "text": "A recessziók olyan leckéket tanítanak, amiket a fellendülések elfelejtenek.",
+    "romanization": null
+  },
+  "67": {
+    "text": "A hosszú távú növekedés lassan emel fel mindenkit.",
+    "romanization": null
+  },
+  "68": {
+    "text": "A termelékenységi nyereségek eszközökben és szokásokban rejtőznek.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Az új ötletek az egyetlen fenntartható növekedési forrás.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Egy fellendülés sok rossz döntést elfedhet.",
+    "romanization": null
+  },
+  "71": {
+    "text": "A válságok először a leginkább eladósodottakat sújtják.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Az olcsó pénz hajlamos kockázatos felhasználási módokat találni.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Egy buborékot nehéz belülről észrevenni.",
+    "romanization": null
+  },
+  "74": {
+    "text": "A fellendülés egyenetlen az iparágak és régiók között.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Az országok azért kereskednek, mert mindkét fél nyer.",
+    "romanization": null
+  },
+  "76": {
+    "text": "A vámok emelik az árakat a hazai vásárlók számára.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Az árfolyamok megváltoztatják egy importált termék árát.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Egy gyenge valuta segíti az exportőröket és árt az importőröknek.",
+    "romanization": null
+  },
+  "79": {
+    "text": "A külföldi befektetés építheti vagy megterhelheti a gazdaságot.",
+    "romanization": null
+  },
+  "80": {
+    "text": "A hazautalások sok családot támogatnak országhatárokon át.",
+    "romanization": null
+  },
+  "81": {
+    "text": "A szankciók jobban érintik az átlagembereket, mint a vezetőket.",
+    "romanization": null
+  },
+  "82": {
+    "text": "A globális ellátási láncok meglepő helyeken szakadnak meg.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Egy országban fellépő hiány mindenhol megmozgathatja az árakat.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Egyes iparágak okkal csoportosulnak egy régióban.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Az egyenlőtlenség csendben növekszik, ha senki sem figyel.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Az adók a közjavak ára.",
+    "romanization": null
+  },
+  "87": {
+    "text": "A közjavak azok, amiket nem tudunk könnyen egyénileg megvásárolni.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Az externáliák azok a költségek, amiket senki sem kért, hogy fizessen.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Egy apró piaci kudarc hatalmas hatásokkal járhat.",
+    "romanization": null
+  },
+  "90": {
+    "text": "A szabad piacnak szabályokra van szüksége, hogy szabad maradjon.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Az információ egyenetlenül oszlik meg a vevők és az eladók között.",
+    "romanization": null
+  },
+  "92": {
+    "text": "A bizalom csökkenti minden tranzakció költségét.",
+    "romanization": null
+  },
+  "93": {
+    "text": "A hírnév egy alulértékelt eszköz.",
+    "romanization": null
+  },
+  "94": {
+    "text": "A figyelem ára megnőtt.",
+    "romanization": null
+  },
+  "95": {
+    "text": "A legfontosabb piacoknak gyakran nincs áruk.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Az idő és a gondoskodás a legszűkösebb erőforrások közé tartozik.",
+    "romanization": null
+  },
+  "97": {
+    "text": "A gazdasági döntések erkölcsi döntések is.",
+    "romanization": null
+  },
+  "98": {
+    "text": "A gazdaság egyszerűen emberek, akik egymásért tesznek dolgokat.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Egy egyszerű költségvetés többet változtat, mint bármely bonyolult elmélet.",
+    "romanization": null
+  }
+}

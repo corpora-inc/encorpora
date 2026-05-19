@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Šta znači živeti dobar život?",
+    "romanization": null
+  },
+  "1": {
+    "text": "Kako znamo ono što znamo?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Postoji li razlika između znanja i verovanja?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Zašto postoji nešto, a ne ništa?",
+    "romanization": null
+  },
+  "4": {
+    "text": "Šta čini osobu istom osobom tokom vremena?",
+    "romanization": null
+  },
+  "5": {
+    "text": "Da li mašina može da misli?",
+    "romanization": null
+  },
+  "6": {
+    "text": "Da li je svet koji vidimo stvarni svet?",
+    "romanization": null
+  },
+  "7": {
+    "text": "Šta dugujemo ljudima koje nikada nećemo sresti?",
+    "romanization": null
+  },
+  "8": {
+    "text": "Zašto je tako teško promeniti mišljenje?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Šta znači kada se dvoje ljudi slože?",
+    "romanization": null
+  },
+  "10": {
+    "text": "Da li je istina izmišljena ili otkrivena?",
+    "romanization": null
+  },
+  "11": {
+    "text": "Zašto vreme osećamo na način na koji ga osećamo?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Odakle dolazi smisao?",
+    "romanization": null
+  },
+  "13": {
+    "text": "Šta je zapravo slobodna volja?",
+    "romanization": null
+  },
+  "14": {
+    "text": "Da li je sreća osećaj ili praksa?",
+    "romanization": null
+  },
+  "15": {
+    "text": "Pravu stvar je ponekad teško prepoznati.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Dobre namere ne garantuju dobre ishode.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Većina etičkih pitanja tiče se odmeravanja suprotstavljenih dobara.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mala laž može naneti mnogo štete.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Iskrenost je lakša u prijatnom okruženju.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Okrutnost se često krije iza malih navika.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Neka pravila su dobra jer nas oslobađaju potrebe da razmišljamo.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Ponekad su sama pravila problem.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Obećanje je mala opklada na vaše buduće ja.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Ljudi sude o delima po rezultatima, a o pravilima po namerama.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Licemerje je lakše uočiti kod drugih.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Oproštaj je delimično dar onome ko oprašta.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Empatija je mišić koji jača upotrebom.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Pravda nije isto što i osveta.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Moć više testira karakter nego siromaštvo.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Nečinjenje je takođe izbor.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Najteža vrlina je strpljenje.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Male ljubaznosti se nagomilavaju.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Društvo se može suditi po tome kako se odnosi prema najslabijima.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Hrabrost je dobro delovati dok se plašiš.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Možemo biti samouvereni i pogrešiti u isto vreme.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Dokazi su ono što menja pažljiv um.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Većina uverenja dolazi u grupama, a ne jedno po jedno.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Skloni smo da pamtimo kada smo bili u pravu.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Sumnja je neprijatna, ali korisna.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Dobro pitanje je teže od pametnog odgovora.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Neka pitanja nemaju jedinstven tačan odgovor.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Modeli su pogrešni, ali neki su korisni.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Mapa nije teritorija.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Imena oblikuju ono što primećujemo.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Sporo čitanje je posebna vrsta razmišljanja.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Snažna mišljenja, labavo držana.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Najpametniji ljudi najviše menjaju mišljenje.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Neslaganje nije isto što i nerazumevanje.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Ponekad su obe strane delimično u pravu.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Svet je stariji od bilo kakvog objašnjenja o njemu.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Svest je najčudnija stvar koju znamo.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Vidimo manje sveta nego što mislimo.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Sećanje se prepisuje svaki put kada ga koristimo.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Dvoje ljudi u istoj sobi mogu doživeti različite sobe.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Um gradi svet u kojem živi.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Neka iskustva se ne mogu izraziti rečima.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Muzika kao da govori direktno, bez prevoda.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Bol je učitelj, čak i kada nema lekciju.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Lepota je ponekad trag.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Dosada često krije pitanje koje treba postaviti.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Samoća razjašnjava stvari koje gužva zamagljuje.",
+    "romanization": null
+  },
+  "62": {
+    "text": "San nije ništa.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Smrt daje oblik vremenu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Sadašnjost je jedino mesto gde se išta ikada dešava.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Sokrat je rekao da neispitan život nije vredan življenja.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Stoici su pokušavali da žele samo ono što su imali.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Konfucije je učio o važnosti malih rituala.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Buda je ukazao na uzrok patnje.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Aristotel je smatrao da je vrlina navika, a ne osećaj.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Platon je sumnjao da su stvari koje vidimo poput senki.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Lao Ce je hvalio put vode.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Epikur je želeo mirna zadovoljstva, a ne velika.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Diogen je podučavao ismevanjem konvencija.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Mnoge tradicije se više slažu nego što se ne slažu.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Kant je rekao da ljude treba tretirati kao ciljeve, a ne samo kao sredstva.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Hjum je primetio da nas sam razum ne tera da brinemo.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Niče je pisao da teške istine mogu biti i darovi.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Vitgenštajn je rekao da su granice našeg jezika granice našeg sveta.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Simon de Bovoar je tvrdila da postajemo ono što jesmo kroz naše izbore.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Vilijam Džejms je rekao da verovanje oblikuje ono što možemo da uradimo.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Džon Rols je pitao koja bismo pravila prihvatili kada ne bismo znali ko ćemo biti.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Hana Arent je upozorila da zlo može biti obično.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Iris Merdok je rekla da je ljubav težak posao obraćanja pažnje.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Mnogi moderni filozofi slobodno pozajmljuju iz mnogih tradicija.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Počnite sa poslom koji zaista možete da uradite danas.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Slušajte kao da možda grešite.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Pokušajte da želite manje pre nego što zaradite više.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Primetite šta radite kada vas niko ne gleda.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Šetnja je mala filozofija.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Najteži argument za izneti je onaj koji dugujete sebi.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Držite mišljenja kao što držite alat.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Tumačite reči drugih ljudi na najbolji mogući način.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Vežbajte zahvalnost običnim jutrima, ne samo posebnim.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Najkraći put je ponekad kroz pitanje.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Čuđenje je vrsta pažnje.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Čitajte stare knjige barem ponekad.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Neslažite se dobro i veza opstaje.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Dobar život je mnogo malih dobrih dana.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Nema poslednje reči.",
+    "romanization": null
+  }
+}

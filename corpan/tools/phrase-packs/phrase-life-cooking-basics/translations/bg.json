@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Нарежете лука на ситно.",
+    "romanization": "Narezhete luka na sitno."
+  },
+  "1": {
+    "text": "Сварете водата, преди да добавите пастата.",
+    "romanization": "Svarete vodata, predi da dobavite pastata."
+  },
+  "2": {
+    "text": "Разбърквайте соса, докато къкри.",
+    "romanization": "Razbŭrkvaite sosa, dokato kŭkri."
+  },
+  "3": {
+    "text": "Овкусете пилето със сол и черен пипер.",
+    "romanization": "Ovkusete pileto sŭs sol i cheren piper."
+  },
+  "4": {
+    "text": "Разбийте яйцата, докато станат на пяна.",
+    "romanization": "Razbiite yaitsata, dokato stanat na pyana."
+  },
+  "5": {
+    "text": "Добавете брашното внимателно.",
+    "romanization": "Dobavete brashnoto vnimatelno."
+  },
+  "6": {
+    "text": "Оставете месото да си почине за няколко минути.",
+    "romanization": "Ostavete mesoto da si pochine za nyakolko minuti."
+  },
+  "7": {
+    "text": "Изпечете зеленчуците на силен огън.",
+    "romanization": "Izpechete zelenchutsite na silen ogŭn."
+  },
+  "8": {
+    "text": "Нарежете хляба на филийки по диагонал.",
+    "romanization": "Narezhete khlyaba na filiiki po diagonal."
+  },
+  "9": {
+    "text": "Задушете чесъна, но не го изгаряйте.",
+    "romanization": "Zadushete chesŭna, no ne go izgaryate."
+  },
+  "10": {
+    "text": "Оставете супата отново да заври.",
+    "romanization": "Ostavete supata otnovo da zavri."
+  },
+  "11": {
+    "text": "Оставете бульона да къкри един час.",
+    "romanization": "Ostavete bul'ona da kŭkri edin chas."
+  },
+  "12": {
+    "text": "Мариновайте пилето за една нощ.",
+    "romanization": "Marinovaite pileto za edna nosht."
+  },
+  "13": {
+    "text": "Запечете подправките първо в сух тиган.",
+    "romanization": "Zapechete podpravkite pŭrvo v sukh tigan."
+  },
+  "14": {
+    "text": "Редуцирайте виното наполовина.",
+    "romanization": "Redutsiraite vinoto napolovina."
+  },
+  "15": {
+    "text": "Сгответе броколите на пара за четири минути.",
+    "romanization": "Sgotvete brokolite na para za chetiri minuti."
+  },
+  "16": {
+    "text": "Карамелизирайте лука бавно.",
+    "romanization": "Karameliziraite luka bavno."
+  },
+  "17": {
+    "text": "Месете тестото, докато стане гладко.",
+    "romanization": "Mesete testoto, dokato stane gladko."
+  },
+  "18": {
+    "text": "Прецедете бульона през фина цедка.",
+    "romanization": "Pretsedete bul'ona prez fina tsedka."
+  },
+  "19": {
+    "text": "Настържете малко прясно индийско орехче отгоре.",
+    "romanization": "Nastŭrzhete malko pryasno indiisko orekhche otgore."
+  },
+  "20": {
+    "text": "Свърши ни зехтинът.",
+    "romanization": "Svŭrshi ni zekhtinŭt."
+  },
+  "21": {
+    "text": "Лимонът е твърде сух, за да изстискаме сок.",
+    "romanization": "Limonŭt e tvŭrde sukh, za da izstiskame sok."
+  },
+  "22": {
+    "text": "Можеш ли да подадеш солта?",
+    "romanization": "Mozhesh li da podadesh solta?"
+  },
+  "23": {
+    "text": "Пресният босилек прави голяма разлика.",
+    "romanization": "Presniyat bosilek pravi golyama razlika."
+  },
+  "24": {
+    "text": "Купувам чесън на глави.",
+    "romanization": "Kupuvam chesŭn na glavi."
+  },
+  "25": {
+    "text": "Кафявата захар прави бисквитките по-меки.",
+    "romanization": "Kafyavata zakhar pravi biskvitkite po-meki."
+  },
+  "26": {
+    "text": "Яйцата все още са в хладилника.",
+    "romanization": "Yaitsata vse oshte sa v khladilnika."
+  },
+  "27": {
+    "text": "Кориандърът в градината е почти готов.",
+    "romanization": "Koriandŭrŭt v gradinata e pochti gotov."
+  },
+  "28": {
+    "text": "Трябва ни един домат за сандвича.",
+    "romanization": "Tryabva ni edin domat za sandvicha."
+  },
+  "29": {
+    "text": "Маслото омеква по-бързо на плота.",
+    "romanization": "Masloto omekva po-bŭrzo na plota."
+  },
+  "30": {
+    "text": "Той използва морска сол за всичко.",
+    "romanization": "Toi izpolzva morska sol za vsichko."
+  },
+  "31": {
+    "text": "Пакетът с брашно е почти празен.",
+    "romanization": "Paketŭt s brashno e pochti prazen."
+  },
+  "32": {
+    "text": "Сметаната се развали през уикенда.",
+    "romanization": "Smetanata se razvali prez uikenda."
+  },
+  "33": {
+    "text": "Предпочитам гръцко кисело мляко пред заквасена сметана.",
+    "romanization": "Predpochitam grŭtsko kiselo mlyako pred zakvasena smetana."
+  },
+  "34": {
+    "text": "Гъбите се свиват, докато се готвят.",
+    "romanization": "Gŭbite se svivat, dokato se gotvyat."
+  },
+  "35": {
+    "text": "Добавете щипка червен пипер.",
+    "romanization": "Dobavete shtipka cherven piper."
+  },
+  "36": {
+    "text": "Рецептата изисква две чаши бульон.",
+    "romanization": "Retseptata iziskva dve chashi bul'on."
+  },
+  "37": {
+    "text": "Тя винаги държи аншоа в килера.",
+    "romanization": "Tya vinagi dŭrzhi anshoa v kilera."
+  },
+  "38": {
+    "text": "Чушките стават сладки, когато се изпекат.",
+    "romanization": "Chushkite stavat sladki, kogato se izpekat."
+  },
+  "39": {
+    "text": "Замразеният грах е малко чудо.",
+    "romanization": "Zamrazeniyat grakh e malko chudo."
+  },
+  "40": {
+    "text": "Кухнята мирише на хляб.",
+    "romanization": "Kukhnyata mirishe na khlyab."
+  },
+  "41": {
+    "text": "Той разсипа ориза по целия плот.",
+    "romanization": "Toi razsipa oriza po tseliya plot."
+  },
+  "42": {
+    "text": "Тиганът вече е прекалено горещ.",
+    "romanization": "Tiganŭt veche e prekaleno goresht."
+  },
+  "43": {
+    "text": "Пак изгорих препечената филийка.",
+    "romanization": "Pak izgorikh prepechenata filiika."
+  },
+  "44": {
+    "text": "Тя опита соса и добави още сол.",
+    "romanization": "Tya opita sosa i dobavi oshte sol."
+  },
+  "45": {
+    "text": "Алармата за дим се включи по време на вечеря.",
+    "romanization": "Alarmata za dim se vklyuchi po vreme na vecherya."
+  },
+  "46": {
+    "text": "Той чисти, докато готви.",
+    "romanization": "Toi chisti, dokato gotvi."
+  },
+  "47": {
+    "text": "Тенджерата изкипя, докато тя отговаряше на телефона.",
+    "romanization": "Tendzherata izkipya, dokato tya otgovaryashe na telefona."
+  },
+  "48": {
+    "text": "Хладилникът трябва да се избърше.",
+    "romanization": "Khladilnikŭt tryabva da se izbŭrshe."
+  },
+  "49": {
+    "text": "Децата подредиха масата, без да им се казва.",
+    "romanization": "Detsata podredikha masata, bez da im se kazva."
+  },
+  "50": {
+    "text": "Водата за пастата бълбука.",
+    "romanization": "Vodata za pastata bŭlbuka."
+  },
+  "51": {
+    "text": "Тя сложи кърпа под дъската за рязане, за да не се хлъзга.",
+    "romanization": "Tya slozhi kŭrpa pod dŭskata za ryazane, za da ne se khlŭzga."
+  },
+  "52": {
+    "text": "Той винаги готви бос.",
+    "romanization": "Toi vinagi gotvi bos."
+  },
+  "53": {
+    "text": "Кексът спадна, когато отворих фурната.",
+    "romanization": "Keksŭt spadna, kogato otvorikh furnata."
+  },
+  "54": {
+    "text": "Забравихме да загреем фурната предварително.",
+    "romanization": "Zabravikhme da zagreem furnata predvaritelno."
+  },
+  "55": {
+    "text": "Кучето наблюдаваше всяко движение от вратата.",
+    "romanization": "Kucheto nablyudavashe vsyako dvizhenie ot vratata."
+  },
+  "56": {
+    "text": "Прозорецът на кухнята е отворен, за да излезе парата.",
+    "romanization": "Prozoretsŭt na kukhnyata e otvoren, za da izleze parata."
+  },
+  "57": {
+    "text": "Тя усили музиката, докато готвеше.",
+    "romanization": "Tya usili muzikata, dokato gotveshe."
+  },
+  "58": {
+    "text": "Чиниите се натрупаха, докато ядяхме.",
+    "romanization": "Chiniite se natrupakha, dokato yadyakhme."
+  },
+  "59": {
+    "text": "Остатъците ще бъдат обяд утре.",
+    "romanization": "Ostatŭtsite shte bŭdat obyad utre."
+  },
+  "60": {
+    "text": "Следвах рецептата стъпка по стъпка.",
+    "romanization": "Sledvakh retseptata stŭpka po stŭpka."
+  },
+  "61": {
+    "text": "Първата палачинка винаги е най-лоша.",
+    "romanization": "Pŭrvata palachinka vinagi e nai-losha."
+  },
+  "62": {
+    "text": "Тя измисли соса случайно.",
+    "romanization": "Tya izmisli sosa sluchaino."
+  },
+  "63": {
+    "text": "Той се научи да пече през зимата.",
+    "romanization": "Toi se nauchi da peche prez zimata."
+  },
+  "64": {
+    "text": "Готварската книга се отвори на същата страница.",
+    "romanization": "Gotvarskata kniga se otvori na sŭshtata stranitsa."
+  },
+  "65": {
+    "text": "Удвоих рецептата и направих прекалено много.",
+    "romanization": "Udvoikh retseptata i napravikh prekaleno mnogo."
+  },
+  "66": {
+    "text": "Видеото ми показа как да сгъна кнедла.",
+    "romanization": "Videoto mi pokaza kak da sgŭna knedla."
+  },
+  "67": {
+    "text": "Той мери всичко с малка везна.",
+    "romanization": "Toi meri vsichko s malka vezna."
+  },
+  "68": {
+    "text": "Тя готви по мирис, повече отколкото по часовник.",
+    "romanization": "Tya gotvi po miris, poveche otkolkoto po chasovnik."
+  },
+  "69": {
+    "text": "Опитах нова подправка и се получи.",
+    "romanization": "Opitakh nova podpravka i se poluchi."
+  },
+  "70": {
+    "text": "Хлябът не втаса първия път.",
+    "romanization": "Khlyabŭt ne vtasa pŭrviya pŭt."
+  },
+  "71": {
+    "text": "Тя опитваше, докато готвеше, и коригираше.",
+    "romanization": "Tya opitvashe, dokato gotveshe, i korigirashe."
+  },
+  "72": {
+    "text": "Той научи това ястие от баба си.",
+    "romanization": "Toi nauchi tova yastie ot baba si."
+  },
+  "73": {
+    "text": "Рецептата беше предадена на малка картичка.",
+    "romanization": "Retseptata beshe predadena na malka kartichka."
+  },
+  "74": {
+    "text": "Готвенето за един човек е различно изкуство.",
+    "romanization": "Gotveneto za edin chovek e razlichno izkustvo."
+  },
+  "75": {
+    "text": "Вечерята е готова след пет минути.",
+    "romanization": "Vecheryata e gotova sled pet minuti."
+  },
+  "76": {
+    "text": "Моля, подай ми хляба.",
+    "romanization": "Molya, podai mi khlyaba."
+  },
+  "77": {
+    "text": "Кухнята е най-топлата стая в къщата.",
+    "romanization": "Kukhnyata e nai-toplata staya v kŭshtata."
+  },
+  "78": {
+    "text": "Ядохме навън, докато слънцето залязваше.",
+    "romanization": "Yadokhme navŭn, dokato slŭntseto zalyazvashe."
+  },
+  "79": {
+    "text": "Всички помогнаха с миенето на чиниите.",
+    "romanization": "Vsichki pomognakha s mieneto na chiniite."
+  },
+  "80": {
+    "text": "Тя винаги готви прекалено много, нарочно.",
+    "romanization": "Tya vinagi gotvi prekaleno mnogo, narochno."
+  },
+  "81": {
+    "text": "Той винаги носи бутилка вино.",
+    "romanization": "Toi vinagi nosi butilka vino."
+  },
+  "82": {
+    "text": "Децата изядоха по три порции.",
+    "romanization": "Detsata izyadokha po tri portsii."
+  },
+  "83": {
+    "text": "Свещите изгоряха докрай.",
+    "romanization": "Sveshtite izgoryakha dokrai."
+  },
+  "84": {
+    "text": "Разговаряхме дълго, след като чиниите бяха прибрани.",
+    "romanization": "Razgovaryakhme dŭlgo, sled kato chiniite byakha pribrani."
+  },
+  "85": {
+    "text": "Ножът е по-остър, отколкото изглежда.",
+    "romanization": "Nozhŭt e po-ostŭr, otkolkoto izglezhda."
+  },
+  "86": {
+    "text": "Използвай дървената лъжица за соса.",
+    "romanization": "Izpolzvai dŭrvenata lŭzhitsa za sosa."
+  },
+  "87": {
+    "text": "Чугуненият тиган е тежък, но си заслужава.",
+    "romanization": "Chuguneniyat tigan e tezhŭk, no si zasluzhava."
+  },
+  "88": {
+    "text": "Той държи подправките в малко чекмедже.",
+    "romanization": "Toi dŭrzhi podpravkite v malko chekmedzhe."
+  },
+  "89": {
+    "text": "Добрата дъска за рязане прави всичко по-лесно.",
+    "romanization": "Dobrata dŭska za ryazane pravi vsichko po-lesno."
+  },
+  "90": {
+    "text": "Фурната най-накрая е достатъчно гореща.",
+    "romanization": "Furnata nai-nakraya e dostatŭchno goreshta."
+  },
+  "91": {
+    "text": "Блендерът се затруднява с цели бадеми.",
+    "romanization": "Blenderŭt se zatrudnyava s tseli bademi."
+  },
+  "92": {
+    "text": "Тя избърса плота с влажна кърпа.",
+    "romanization": "Tya izbŭrsa plota s vlazhna kŭrpa."
+  },
+  "93": {
+    "text": "Гевгирът е във второто чекмедже.",
+    "romanization": "Gevgirŭt eŭ vtoroto chekmedzhe."
+  },
+  "94": {
+    "text": "Не забравяй ръкавиците за фурна.",
+    "romanization": "Ne zabravyai rŭkavitsite za furna."
+  },
+  "95": {
+    "text": "Готвенето е предимно търпение.",
+    "romanization": "Gotveneto e predimno tŭrpenie."
+  },
+  "96": {
+    "text": "Едни и същи съставки правят различни ястия в различни ръце.",
+    "romanization": "Edni i sŭshti sŭstavki pravyat razlichni yastiya v razlichni rŭtse."
+  },
+  "97": {
+    "text": "Солта е първото нещо, което коригираш.",
+    "romanization": "Solta e pŭrvoto neshto, koeto korigirash."
+  },
+  "98": {
+    "text": "Опитай, преди да добавиш още.",
+    "romanization": "Opitai, predi da dobavish oshte."
+  },
+  "99": {
+    "text": "Едно просто ястие, изядено бавно, е малка победа.",
+    "romanization": "Edno prosto yastie, izyadeno bavno, e malka pobeda."
+  }
+}

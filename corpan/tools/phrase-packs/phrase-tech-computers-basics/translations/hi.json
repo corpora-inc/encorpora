@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "फ़ाइल बंद करने से पहले उसे सेव कर लो।",
+    "romanization": "Fāil band karne se pahle use sev kar lo."
+  },
+  "1": {
+    "text": "क्या तुम मुझे वह डॉक्यूमेंट भेज सकते हो?",
+    "romanization": "Kyā tum mujhe vah ḍokyumenṭ bhej sakte ho?"
+  },
+  "2": {
+    "text": "वह फ़ोल्डर डेस्कटॉप पर है।",
+    "romanization": "Vah folḍar ḍesktôp par hai."
+  },
+  "3": {
+    "text": "मुझे वह फ़ाइल नहीं मिल रही जो मैंने कल सेव की थी।",
+    "romanization": "Mujhe vah fāil nahī̃ mil rahī jo maiñne kal sev kī thī."
+  },
+  "4": {
+    "text": "उस नाम से पूरी ड्राइव में खोजो।",
+    "romanization": "Us nām se pūrī ḍrāiv meñ khojo."
+  },
+  "5": {
+    "text": "उसने गलती से फ़ाइल का नाम बदल दिया।",
+    "romanization": "Usne galtī se fāil kā nām badal diyā."
+  },
+  "6": {
+    "text": "डाउनलोड गलत फ़ोल्डर में चला गया।",
+    "romanization": "Ḍāunloḍ galat folḍar meñ calā gayā."
+  },
+  "7": {
+    "text": "यह फ़ाइल ईमेल करने के लिए बहुत बड़ी है।",
+    "romanization": "Yah fāil īmel karne ke lie bahut baṛī hai."
+  },
+  "8": {
+    "text": "क्या तुम इसे ज़िप फ़ाइल में कंप्रेस कर सकते हो?",
+    "romanization": "Kyā tum ise zip fāil meñ kampres kar sakte ho?"
+  },
+  "9": {
+    "text": "क्लाउड फ़ोल्डर अपने आप सिंक हो जाता है।",
+    "romanization": "Klāuḍ folḍar apne āp siṅk ho jātā hai."
+  },
+  "10": {
+    "text": "वह सब कुछ तारीख़ के हिसाब से सबफ़ोल्डरों में व्यवस्थित करती है।",
+    "romanization": "Vah sab kuch tārīx ke hisāb se sabfolḍaroñ meñ vyavasthit kartī hai."
+  },
+  "11": {
+    "text": "ट्रैश ड्राइव के बाकी हिस्से से ज़्यादा भरा हुआ है।",
+    "romanization": "Traiś ḍrāiv ke bākī hisse se zyādā bharā huā hai."
+  },
+  "12": {
+    "text": "वह हर प्रोजेक्ट का बैकअप रखता है।",
+    "romanization": "Vah har projeckṭ kā baikap rakhtā hai."
+  },
+  "13": {
+    "text": "साझा फ़ोल्डर सबके लिए अपडेट हो गया।",
+    "romanization": "Sājhā folḍar sabke lie apḍeṭ ho gayā."
+  },
+  "14": {
+    "text": "जो फ़ाइल तुम्हें नहीं मिलती, समझो वह है ही नहीं।",
+    "romanization": "Jo fāil tumheñ nahī̃ miltī, samjho vah hai hī nahī̃."
+  },
+  "15": {
+    "text": "मैं अपना पासवर्ड भूल गया।",
+    "romanization": "Maiñ apnā pāsvard bhūl gayā."
+  },
+  "16": {
+    "text": "लॉगिन स्क्रीन से पासवर्ड रीसेट कर लो।",
+    "romanization": "Lôgin skrīn se pāsvard rīseṭ kar lo."
+  },
+  "17": {
+    "text": "हर चीज़ के लिए एक ही पासवर्ड इस्तेमाल मत करो।",
+    "romanization": "Har cīz ke lie ek hī pāsvard istemāl mat karo."
+  },
+  "18": {
+    "text": "एक पासवर्ड मैनेजर तुम्हारे लिए उन्हें याद रखता है।",
+    "romanization": "Ek pāsvard mainejar tumhāre lie unheñ yād rakhtā hai."
+  },
+  "19": {
+    "text": "टू-फ़ैक्टर में एक कदम ज़्यादा है, पर सुरक्षा बहुत बढ़ जाती है।",
+    "romanization": "Ṭū-faikṭar meñ ek kadam zyādā hai, par surakṣā bahut baṛh jātī hai."
+  },
+  "20": {
+    "text": "वेरिफिकेशन कोड के लिए अपना ईमेल चेक करो।",
+    "romanization": "Verifikeśan koḍ ke lie apnā īmel cek karo."
+  },
+  "21": {
+    "text": "वह लिंक पंद्रह मिनट में एक्सपायर हो गया।",
+    "romanization": "Vah liṅk pandrah minaṭ meñ ekspāyar ho gayā."
+  },
+  "22": {
+    "text": "उसने प्रोजेक्ट के लिए एक नया अकाउंट बनाया।",
+    "romanization": "Usne projeckṭ ke lie ek nayā akāunṭ banāyā."
+  },
+  "23": {
+    "text": "वह साझा कंप्यूटरों पर साइन आउट करता है।",
+    "romanization": "Vah sājhā kampyūṭaroñ par sāin āuṭ kartā hai."
+  },
+  "24": {
+    "text": "यह यूज़रनेम पहले से इस्तेमाल में है।",
+    "romanization": "Yah yūzarneim pahle se istemāl meñ hai."
+  },
+  "25": {
+    "text": "रिकवरी कोड को कहीं सुरक्षित जगह सेव कर लो।",
+    "romanization": "Rikavarī koḍ ko kahī̃ surakṣit jagah sev kar lo."
+  },
+  "26": {
+    "text": "संदिग्ध लॉगिन लिंक पर क्लिक मत करो।",
+    "romanization": "Sandigdh lôgin liṅk par klik mat karo."
+  },
+  "27": {
+    "text": "जब तुम जगह बदलो, तो रिकवरी ईमेल अपडेट कर लेना।",
+    "romanization": "Jab tum jagah badlo, to rikavarī īmel apḍeṭ kar lenā."
+  },
+  "28": {
+    "text": "पासकी पासवर्ड से ज़्यादा तेज़ होती है।",
+    "romanization": "Pāskī pāsvard se zyādā tez hotī hai."
+  },
+  "29": {
+    "text": "आजकल तुम्हारा फ़ोन भी एक अकाउंट की तरह है।",
+    "romanization": "Ājkal tumhārā fon bhī ek akāunṭ kī tarah hai."
+  },
+  "30": {
+    "text": "क्या तुमने इसे रीस्टार्ट करके देखा?",
+    "romanization": "Kyā tumne ise rīsṭārṭ karke dekhā?"
+  },
+  "31": {
+    "text": "केबल ढीली थी।",
+    "romanization": "Keibal ḍhīlī thī."
+  },
+  "32": {
+    "text": "स्क्रीन एक मिनट के लिए जम गई थी।",
+    "romanization": "Skrīn ek minaṭ ke lie jam gaī thī."
+  },
+  "33": {
+    "text": "सारे टैब बंद करके फिर से कोशिश करो।",
+    "romanization": "Sāre ṭaib band karke phir se kośiś karo."
+  },
+  "34": {
+    "text": "चेक करो कि तुम सही नेटवर्क से जुड़े हो।",
+    "romanization": "Cek karo ki tum sahī neṭvark se juṛe ho."
+  },
+  "35": {
+    "text": "कीबोर्ड काम नहीं कर रहा है।",
+    "romanization": "Kīborḍ kām nahī̃ kar rahā hai."
+  },
+  "36": {
+    "text": "पंखा सामान्य से ज़्यादा शोर कर रहा है।",
+    "romanization": "Paṅkhā sāmānya se zyādā śor kar rahā hai."
+  },
+  "37": {
+    "text": "कैश क्लियर करके रीलोड करो।",
+    "romanization": "Kaiś kliyar karke rīloḍ karo."
+  },
+  "38": {
+    "text": "कोई दूसरा ब्राउज़र इस्तेमाल करके देखो।",
+    "romanization": "Koī dūsrā brāuzar istemāl karke dekho."
+  },
+  "39": {
+    "text": "अपडेट ने बग ठीक कर दिया।",
+    "romanization": "Apḍeṭ ne bag ṭhīk kar diyā."
+  },
+  "40": {
+    "text": "बैटरी रात भर में खत्म हो गई।",
+    "romanization": "Baiṭarī rāt bhar meñ khatm ho gaī."
+  },
+  "41": {
+    "text": "अपडेट के बाद वेबकैम ने काम करना बंद कर दिया।",
+    "romanization": "Apḍeṭ ke bād vebkaiṁ ne kām karnā band kar diyā."
+  },
+  "42": {
+    "text": "कभी-कभी सबसे आसान उपाय एक मिनट इंतज़ार करना होता है।",
+    "romanization": "Kabhī-kabhī sabse āsān upāy ek minaṭ intazār karnā hotā hai."
+  },
+  "43": {
+    "text": "लोग जितना मानते हैं, रीबूट उससे ज़्यादा समस्याएँ हल करता है।",
+    "romanization": "Log jitnā mānte haiñ, rībūṭ usse zyādā samasyāeñ hal kartā hai."
+  },
+  "44": {
+    "text": "उसने एरर मैसेज को आसान शब्दों में समझाया।",
+    "romanization": "Usne erar mesej ko āsān śabdoñ meñ samjhāyā."
+  },
+  "45": {
+    "text": "पेज लोड होने में बहुत समय लग रहा है।",
+    "romanization": "Pej loḍ hone meñ bahut samay lag rahā hai."
+  },
+  "46": {
+    "text": "यह साइट सबके लिए डाउन है।",
+    "romanization": "Yah sāiṭ sabke lie ḍāun hai."
+  },
+  "47": {
+    "text": "इसे बुकमार्क कर लो ताकि तुम इसे फिर से ढूँढ सको।",
+    "romanization": "Ise bukmārk kar lo tāki tum ise phir se ḍhū̃ḍh sako."
+  },
+  "48": {
+    "text": "ईमेल में दिया गया लिंक एक नए टैब में खुलता है।",
+    "romanization": "Īmel meñ diyā gayā liṅk ek nae ṭaib meñ khultā hai."
+  },
+  "49": {
+    "text": "वीडियो बार-बार बफ़र हो रहा है।",
+    "romanization": "Viḍiyo bār-bār bafr ho rahā hai."
+  },
+  "50": {
+    "text": "पीछे वाले कमरे में सिग्नल कमज़ोर है।",
+    "romanization": "Pīche vāle kamre meñ signāl kamzor hai."
+  },
+  "51": {
+    "text": "क्या तुम मेरे साथ लिंक शेयर कर सकते हो?",
+    "romanization": "Kyā tum mere sāth liṅk śeyar kar sakte ho?"
+  },
+  "52": {
+    "text": "मोबाइल पर वेबसाइट अलग दिखती है।",
+    "romanization": "Mobāil par vebsāiṭ alag dikhtī hai."
+  },
+  "53": {
+    "text": "पॉप-अप ने मुझसे कुकीज़ स्वीकार करने को कहा।",
+    "romanization": "Pop-ap ne mujhse kukīz svīkār karne ko kahā."
+  },
+  "54": {
+    "text": "विज्ञापन बंद करना मुश्किल है।",
+    "romanization": "Vigyāpan band karnā muśkil hai."
+  },
+  "55": {
+    "text": "वह हर मशीन पर ऐड ब्लॉकर इस्तेमाल करता है।",
+    "romanization": "Vah har maśīn par aiḍ blôkar istemāl kartā hai."
+  },
+  "56": {
+    "text": "खोज में बहुत ज़्यादा नतीजे आए।",
+    "romanization": "Khoj meñ bahut zyādā natīje āe."
+  },
+  "57": {
+    "text": "कोटेशन मार्क्स का इस्तेमाल करके खोज को बेहतर बनाओ।",
+    "romanization": "Koṭeśan mārks kā istemāl karke khoj ko behtar banāo."
+  },
+  "58": {
+    "text": "वह आर्टिकल अब पेवॉल के पीछे चला गया है।",
+    "romanization": "Vah ārṭikal ab peivôl ke pīche calā gayā hai."
+  },
+  "59": {
+    "text": "यह पेज एक ऐसी वेबसाइट का है जिस पर मुझे भरोसा है।",
+    "romanization": "Yah pej ek aisī vebsāiṭ kā hai jis par mujhe bharosā hai."
+  },
+  "60": {
+    "text": "ऐप रात भर में अपडेट हो गया।",
+    "romanization": "Aip rāt bhar meñ apḍeṭ ho gayā."
+  },
+  "61": {
+    "text": "नया वर्ज़न बिल्कुल अलग दिखता है।",
+    "romanization": "Nayā varzan bilkul alag dikhtā hai."
+  },
+  "62": {
+    "text": "उसने वे ऐप हटा दिए जो उसने कभी नहीं खोले थे।",
+    "romanization": "Usne ve aip haṭā die jo usne kabhī nahī̃ khole the."
+  },
+  "63": {
+    "text": "नोटिफिकेशन सेटिंग्स मेन्यू में कहीं अंदर छिपी हुई हैं।",
+    "romanization": "Noṭifikeśan seṭiṅgs menyū meñ kahī̃ andar chipī huī haiñ."
+  },
+  "64": {
+    "text": "मीटिंग के दौरान इसे म्यूट कर दो।",
+    "romanization": "Mīṭiṅg ke daurān ise myūṭ kar do."
+  },
+  "65": {
+    "text": "कीबोर्ड शॉर्टकट मेन्यू से ज़्यादा तेज़ होता है।",
+    "romanization": "Kīborḍ śôrṭkaṭ menyū se zyādā tez hotā hai."
+  },
+  "66": {
+    "text": "रात में डार्क मोड आँखों के लिए ज़्यादा आरामदायक होता है।",
+    "romanization": "Rāt meñ ḍārk moḍ āṅkhoñ ke lie zyādā ārāmdāyak hotā hai."
+  },
+  "67": {
+    "text": "ऑटो-प्ले बंद कर दो।",
+    "romanization": "Ôṭo-ple band kar do."
+  },
+  "68": {
+    "text": "नोटिफिकेशन बैज कभी हटता ही नहीं।",
+    "romanization": "Noṭifikeśan baij kabhī haṭtā hī nahī̃."
+  },
+  "69": {
+    "text": "उसने लैपटॉप को अपनी पसंद के हिसाब से सेट किया।",
+    "romanization": "Usne laiṭôp ko apnī pasand ke hisāb se seṭ kiyā."
+  },
+  "70": {
+    "text": "अनजान भेजने वालों से आए अटैचमेंट मत खोलो।",
+    "romanization": "Anjān bhejane vāloñ se āe aṭaicmenṭ mat kholo."
+  },
+  "71": {
+    "text": "उस मैसेज में दिया गया लिंक संदिग्ध लग रहा है।",
+    "romanization": "Us mesej meñ diyā gayā liṅk sandigdh lag rahā hai."
+  },
+  "72": {
+    "text": "भेजने वाले का पूरा पता चेक करो।",
+    "romanization": "Bhejane vāle kā pūrā patā cek karo."
+  },
+  "73": {
+    "text": "एयरपोर्ट पर मुफ़्त वाई-फ़ाई प्राइवेट नहीं होता।",
+    "romanization": "Eyarporṭ par muft vāī-fāī prāivaṭ nahī̃ hotā."
+  },
+  "74": {
+    "text": "जब कैमरा इस्तेमाल में न हो, तो उसे ढक दो।",
+    "romanization": "Jab kaimarā istemāl meñ na ho, to use ḍhak do."
+  },
+  "75": {
+    "text": "जब तुम दूर जाओ, तो स्क्रीन लॉक कर दो।",
+    "romanization": "Jab tum dūr jāo, to skrīn lôk kar do."
+  },
+  "76": {
+    "text": "ऐसी जानकारी के साथ सावधान रहो जिसे तुम वापस नहीं ले सकते।",
+    "romanization": "Aisī jānkārī ke sāth sāvdhān raho jise tum vāpas nahī̃ le sakte."
+  },
+  "77": {
+    "text": "पढ़ो कि तुम किस बात पर सहमत हो रहे हो।",
+    "romanization": "Paṛho ki tum kis bāt par sahamat ho rahe ho."
+  },
+  "78": {
+    "text": "ज़्यादातर डेटा लीक दोबारा इस्तेमाल किए गए पासवर्ड से होते हैं।",
+    "romanization": "Zyādātar ḍeṭā līk dobārā istemāl kie gae pāsvard se hote haiñ."
+  },
+  "79": {
+    "text": "सबसे आसान स्कैम भी इसलिए काम करते हैं क्योंकि वे आसान होते हैं।",
+    "romanization": "Sabse āsān skaim bhī islie kām karte haiñ kyoñki ve āsān hote haiñ."
+  },
+  "80": {
+    "text": "पिछले अपडेट के बाद से लैपटॉप धीमा हो गया है।",
+    "romanization": "Pichle apḍeṭ ke bād se laiṭôp dhīmā ho gayā hai."
+  },
+  "81": {
+    "text": "स्क्रीन टूटी हुई है, पर फिर भी काम करती है।",
+    "romanization": "Skrīn ṭūṭī huī hai, par phir bhī kām kartī hai."
+  },
+  "82": {
+    "text": "नया मॉनिटर आज सुबह आ गया।",
+    "romanization": "Nayā môniṭar āj subah ā gayā."
+  },
+  "83": {
+    "text": "सही केबल ढूँढने से पहले उसने तीन केबल लगाए।",
+    "romanization": "Sahī keibal ḍhū̃ḍhne se pahle usne tīn keibal lagāe."
+  },
+  "84": {
+    "text": "बैटरी अब पहले जैसी नहीं चलती।",
+    "romanization": "Baiṭarī ab pahle jaisī nahī̃ caltī."
+  },
+  "85": {
+    "text": "सालों से कीबोर्ड में टुकड़े जमा हो गए हैं।",
+    "romanization": "Sāloñ se kīborḍ meñ ṭukṛe jamā ho gae haiñ."
+  },
+  "86": {
+    "text": "जब कमरा गरम होता है तो पंखा चलने लगता है।",
+    "romanization": "Jab kamrā garam hotā hai to paṅkhā calne lagtā hai."
+  },
+  "87": {
+    "text": "प्रिंटर फिर से ऑफ़लाइन है।",
+    "romanization": "Prinṭar phir se ôflāin hai."
+  },
+  "88": {
+    "text": "हेडफ़ोन एक तरफ़ से कट रहे हैं।",
+    "romanization": "Heḍfon ek taraf se kaṭ rahe haiñ."
+  },
+  "89": {
+    "text": "वह स्क्रीन को एक मुलायम कपड़े से साफ़ करता है।",
+    "romanization": "Vah skrīn ko ek mulāyam kapṛe se sāf kartā hai."
+  },
+  "90": {
+    "text": "क्या तुम एक स्क्रीनशॉट ले सकते हो?",
+    "romanization": "Kyā tum ek skrīnśôṭ le sakte ho?"
+  },
+  "91": {
+    "text": "फ़ाइल आधी रात को भेजी गई थी।",
+    "romanization": "Fāil ādhī rāt ko bhejī gaī thī."
+  },
+  "92": {
+    "text": "कैलेंडर इनवाइट दो बार आया।",
+    "romanization": "Kalenḍar invāiṭ do bār āyā."
+  },
+  "93": {
+    "text": "फ़ाइल को विंडो में ड्रैग करो।",
+    "romanization": "Fāil ko vinḍo meñ ḍraig karo."
+  },
+  "94": {
+    "text": "ज़्यादा विकल्प देखने के लिए राइट-क्लिक करो।",
+    "romanization": "Zyādā vikalp dekhne ke lie rāiṭ-klik karo."
+  },
+  "95": {
+    "text": "एक से ज़्यादा चुनने के लिए शिफ्ट दबाए रखो।",
+    "romanization": "Ek se zyādā cunne ke lie śifṭ dabāe rakho."
+  },
+  "96": {
+    "text": "अनडू बटन ने मुझे कई बार बचाया है।",
+    "romanization": "Anḍū baṭan ne mujhe kaī bār bacāyā hai."
+  },
+  "97": {
+    "text": "क्लिपबोर्ड तुम्हें कॉपी की गई आखिरी चीज़ याद रखता है।",
+    "romanization": "Klipborḍ tumheñ kôpī kī gaī ākhrī cīz yād rakhtā hai."
+  },
+  "98": {
+    "text": "ऑटोकरेक्ट मददगार होता है और कभी-कभी शर्मिंदा भी करता है।",
+    "romanization": "Ôṭokarekṭ madadgār hotā hai aur kabhī-kabhī śarmindā bhī kartā hai."
+  },
+  "99": {
+    "text": "एक साफ़ डेस्कटॉप सब कुछ ढूँढना आसान बना देता है।",
+    "romanization": "Ek sāf ḍesktôp sab kuch ḍhū̃ḍhnā āsān banā detā hai."
+  }
+}

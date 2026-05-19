@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Quand plus de gens veulent quelque chose, les prix montent.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Quand l'offre augmente, les prix baissent généralement.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Une promotion pousse les gens à acheter davantage.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Le même produit n'a pas le même prix d'une ville à l'autre.",
+    "romanization": null
+  },
+  "4": {
+    "text": "La demande peut changer du jour au lendemain.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Quand les stocks diminuent, les vendeurs augmentent les prix.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Les acheteurs comparent pour trouver la meilleure affaire.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Parfois, un prix élevé est un signe de qualité.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Parfois, un prix élevé n'est qu'une astuce marketing.",
+    "romanization": null
+  },
+  "9": {
+    "text": "La livraison gratuite change la perception des gens sur un achat.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Le prix ne représente que rarement le coût total.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Le temps, c'est aussi un coût.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Quand le prix est trop bas, on paie avec une longue file d'attente.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Les soldes poussent les gens à acheter des choses qu'ils n'avaient pas prévues.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Perdre de l'argent affecte plus les gens que d'en gagner.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Les prix en dollars et ceux dans votre monnaie locale sont perçus différemment.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Une petite dépense chaque jour, ça fait beaucoup à la fin de l'année.",
+    "romanization": null
+  },
+  "17": {
+    "text": "La première vente de la journée compte plus que la dernière.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Derrière de nombreux petits achats se cache souvent une grande habitude.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Le choix le moins cher peut s'avérer le plus cher à la longue.",
+    "romanization": null
+  },
+  "20": {
+    "text": "L'argent, c'est juste un accord commun.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Épargner, c'est payer votre futur vous-même.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Un budget est un plan, pas une punition.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Les intérêts composés, c'est la patience avec un petit moteur.",
+    "romanization": null
+  },
+  "24": {
+    "text": "L'inflation grignote peu à peu l'argent liquide.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Un prêt, c'est emprunter à votre futur vous-même.",
+    "romanization": null
+  },
+  "26": {
+    "text": "L'intérêt est le loyer de l'argent emprunté.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Elle note toutes ses dépenses pendant un mois pour repérer les habitudes.",
+    "romanization": null
+  },
+  "28": {
+    "text": "À chaque paie, il met de côté une somme fixe avant de dépenser.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Un fonds d'urgence rend les petits pépins moins difficiles à gérer.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Dépenser un peu moins est souvent plus facile que de gagner plus.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Une augmentation peut vite être absorbée par des dépenses plus importantes.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Il a remboursé son prêt en avance et s'est senti plus léger.",
+    "romanization": null
+  },
+  "33": {
+    "text": "La plupart des gens surestiment leur discipline pour l'année prochaine.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Les inquiétudes financières s'estompent avec un bon plan.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Un marché est juste un endroit où acheteurs et vendeurs se rencontrent.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Les boutiques en ligne sont des marchés sans murs.",
+    "romanization": null
+  },
+  "37": {
+    "text": "C'est grâce à la spécialisation que la plupart des choses sont abordables.",
+    "romanization": null
+  },
+  "38": {
+    "text": "On échange ce qu'on ne fabrique pas soi-même.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Les salaires indiquent ce qu'on gagne, pas toujours ce qu'on vaut.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Certains emplois sont bien payés parce que peu de gens en veulent.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Certains emplois sont bien payés parce que peu de gens peuvent les faire.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Le marché ne récompense pas toujours le travail le plus utile.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Une nouvelle technologie peut faire disparaître une vieille industrie en un clin d'œil.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Les gens déménagent souvent là où il y a du travail.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Les petites entreprises constituent l'essentiel de l'économie.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Un bon employé fait économiser plus qu'il ne coûte.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Négocier fait partie de tous les métiers.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Un revenu complémentaire offre plus de choix.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Parfois, démissionner est la meilleure stratégie.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Les gens sont sensibles aux incitations, même minimes.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Gratuit est un mot magique.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Le premier mois offert influence beaucoup de choix.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Les abonnements sont conçus pour être oubliés.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Les nombres ronds donnent l'impression d'être plus grands.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Les coûts passés ne devraient pas dicter les décisions futures.",
+    "romanization": null
+  },
+  "56": {
+    "text": "De petits frais peuvent changer la fréquentation.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Le pourboire modifie le coût réel d'un repas.",
+    "romanization": null
+  },
+  "58": {
+    "text": "On partage plus facilement quand c'est simple.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Une file d'attente révèle ce que les gens apprécient à l'instant T.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Les offres limitées dans le temps créent volontairement l'urgence.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Les programmes de fidélité récompensent des comportements qui auraient eu lieu quoi qu'il arrive.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Les options par défaut influencent plus de décisions qu'on ne l'imagine.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Les avis clients modifient la demande plus que les pubs.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Le bouche-à-oreille est toujours plus fort que la plupart des publicités.",
+    "romanization": null
+  },
+  "65": {
+    "text": "L'économie connaît des années de croissance et d'autres de récession.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Les récessions nous rappellent des leçons que les périodes de forte croissance font oublier.",
+    "romanization": null
+  },
+  "67": {
+    "text": "La croissance à long terme améliore la vie de tous, petit à petit.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Les gains de productivité se trouvent dans nos outils et nos habitudes.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Les nouvelles idées sont la seule source de croissance durable.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Une période de forte croissance peut cacher de nombreuses mauvaises décisions.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Les crises frappent en premier ceux qui sont les plus endettés.",
+    "romanization": null
+  },
+  "72": {
+    "text": "L'argent facile est souvent investi dans des projets risqués.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Une bulle est difficile à voir de l'intérieur.",
+    "romanization": null
+  },
+  "74": {
+    "text": "La reprise économique est inégale d'un secteur ou d'une région à l'autre.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Les pays commercent parce que les deux parties y gagnent.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Les taxes douanières font monter les prix pour les consommateurs locaux.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Les taux de change influencent le prix des importations.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Une monnaie faible aide les exportateurs et nuit aux importateurs.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Les investissements étrangers peuvent stimuler ou fragiliser une économie.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Les transferts d'argent soutiennent de nombreuses familles au-delà des frontières.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Les sanctions touchent davantage les citoyens ordinaires que les dirigeants.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Les chaînes d'approvisionnement mondiales peuvent se briser là où on s'y attend le moins.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Une pénurie dans un pays peut faire grimper les prix partout ailleurs.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Certaines industries se concentrent dans une région pour de bonnes raisons.",
+    "romanization": null
+  },
+  "85": {
+    "text": "L'inégalité progresse silencieusement quand on n'y prête pas attention.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Les impôts sont le prix des biens publics.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Les biens publics sont ceux qu'on ne peut pas acheter facilement seul.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Les externalités sont les coûts que personne n'a voulu assumer.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Une petite défaillance du marché peut avoir des conséquences immenses.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Le marché libre a besoin de règles pour rester libre.",
+    "romanization": null
+  },
+  "91": {
+    "text": "L'information est inégalement partagée entre acheteurs et vendeurs.",
+    "romanization": null
+  },
+  "92": {
+    "text": "La confiance réduit le coût de chaque transaction.",
+    "romanization": null
+  },
+  "93": {
+    "text": "La réputation est un atout sous-estimé.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Le prix de l'attention a augmenté.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Les marchés les plus essentiels n'affichent souvent pas de prix.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Le temps et l'attention comptent parmi les ressources les plus rares.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Les décisions économiques sont aussi des décisions morales.",
+    "romanization": null
+  },
+  "98": {
+    "text": "L'économie, c'est simplement des gens qui travaillent les uns pour les autres.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Un budget simple a plus d'impact que n'importe quelle théorie complexe.",
+    "romanization": null
+  }
+}

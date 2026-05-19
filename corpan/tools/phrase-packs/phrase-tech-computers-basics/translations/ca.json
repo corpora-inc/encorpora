@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Guarda el fitxer abans de tancar-lo.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Em podries enviar aquest document?",
+    "romanization": null
+  },
+  "2": {
+    "text": "La carpeta és a l'escriptori.",
+    "romanization": null
+  },
+  "3": {
+    "text": "No trobo el fitxer que vaig guardar ahir.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Cerca el nom a tot el disc.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Va canviar el nom del fitxer per error.",
+    "romanization": null
+  },
+  "6": {
+    "text": "La descàrrega va anar a la carpeta equivocada.",
+    "romanization": null
+  },
+  "7": {
+    "text": "El fitxer és massa gran per enviar per correu.",
+    "romanization": null
+  },
+  "8": {
+    "text": "El podries comprimir en un zip?",
+    "romanization": null
+  },
+  "9": {
+    "text": "La carpeta del núvol se sincronitza automàticament.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ho organitza tot en subcarpetes per data.",
+    "romanization": null
+  },
+  "11": {
+    "text": "La paperera està més plena que la resta del disc.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Guarda una còpia de seguretat de cada projecte.",
+    "romanization": null
+  },
+  "13": {
+    "text": "La carpeta compartida es va actualitzar per a tothom.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Un fitxer que no trobes és com si no existís.",
+    "romanization": null
+  },
+  "15": {
+    "text": "He oblidat la meva contrasenya.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Restableix la contrasenya des de la pantalla d'inici de sessió.",
+    "romanization": null
+  },
+  "17": {
+    "text": "No facis servir la mateixa contrasenya per a tot.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Un gestor de contrasenyes les recorda per tu.",
+    "romanization": null
+  },
+  "19": {
+    "text": "L'autenticació de dos factors afegeix un pas, però molta seguretat.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Revisa el teu correu per un codi de verificació.",
+    "romanization": null
+  },
+  "21": {
+    "text": "L'enllaç va caducar en quinze minuts.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Va crear un compte nou per al projecte.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Tanca la sessió en ordinadors compartits.",
+    "romanization": null
+  },
+  "24": {
+    "text": "El nom d'usuari ja està agafat.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Guarda el codi de recuperació en un lloc segur.",
+    "romanization": null
+  },
+  "26": {
+    "text": "No facis clic en enllaços de sessió sospitosos.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Actualitza el correu de recuperació quan et mudis.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Una clau d'accés és més ràpida que una contrasenya.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Avui dia, el teu telèfon també és un compte.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Has provat de reiniciar-lo?",
+    "romanization": null
+  },
+  "31": {
+    "text": "El cable estava fluix.",
+    "romanization": null
+  },
+  "32": {
+    "text": "La pantalla es va congelar un minut.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Tanca totes les pestanyes i torna-ho a provar.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Comprova que estàs connectat a la xarxa correcta.",
+    "romanization": null
+  },
+  "35": {
+    "text": "El teclat no respon.",
+    "romanization": null
+  },
+  "36": {
+    "text": "El ventilador fa més soroll de l'habitual.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Neteja la memòria cau i torna a carregar.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Prova un navegador diferent.",
+    "romanization": null
+  },
+  "39": {
+    "text": "L'actualització va solucionar l'error.",
+    "romanization": null
+  },
+  "40": {
+    "text": "La bateria es va esgotar durant la nit.",
+    "romanization": null
+  },
+  "41": {
+    "text": "La càmera web va deixar de funcionar després de l'actualització.",
+    "romanization": null
+  },
+  "42": {
+    "text": "De vegades, la solució més senzilla és esperar un minut.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Un reinici soluciona més problemes dels que la gent admet.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Va explicar el missatge d'error amb paraules senzilles.",
+    "romanization": null
+  },
+  "45": {
+    "text": "La pàgina triga una eternitat a carregar.",
+    "romanization": null
+  },
+  "46": {
+    "text": "El lloc web està caigut per a tothom.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Guarda'l als favorits perquè el puguis trobar de nou.",
+    "romanization": null
+  },
+  "48": {
+    "text": "L'enllaç del correu s'obre en una pestanya nova.",
+    "romanization": null
+  },
+  "49": {
+    "text": "El vídeo no para de carregar.",
+    "romanization": null
+  },
+  "50": {
+    "text": "El senyal és feble a l'habitació del darrere.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Em podries compartir l'enllaç?",
+    "romanization": null
+  },
+  "52": {
+    "text": "El lloc web es veu diferent al mòbil.",
+    "romanization": null
+  },
+  "53": {
+    "text": "La finestra emergent em va demanar que acceptés les galetes.",
+    "romanization": null
+  },
+  "54": {
+    "text": "L'anunci és difícil de tancar.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Fa servir un bloquejador d'anuncis a totes les màquines.",
+    "romanization": null
+  },
+  "56": {
+    "text": "La cerca va retornar massa resultats.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Afina la cerca amb cometes.",
+    "romanization": null
+  },
+  "58": {
+    "text": "L'article va passar a ser de pagament.",
+    "romanization": null
+  },
+  "59": {
+    "text": "La pàgina és d'un lloc web de confiança.",
+    "romanization": null
+  },
+  "60": {
+    "text": "L'aplicació es va actualitzar durant la nit.",
+    "romanization": null
+  },
+  "61": {
+    "text": "La nova versió es veu completament diferent.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Va eliminar les aplicacions que mai obria.",
+    "romanization": null
+  },
+  "63": {
+    "text": "La configuració de notificacions està amagada al menú.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Posa-ho en silenci durant la reunió.",
+    "romanization": null
+  },
+  "65": {
+    "text": "La drecera de teclat és més ràpida que el menú.",
+    "romanization": null
+  },
+  "66": {
+    "text": "El mode fosc és més agradable per als ulls a la nit.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Desactiva la reproducció automàtica.",
+    "romanization": null
+  },
+  "68": {
+    "text": "La icona de notificació no desapareix mai.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Va configurar el portàtil al seu gust.",
+    "romanization": null
+  },
+  "70": {
+    "text": "No obris fitxers adjunts de remitents desconeguts.",
+    "romanization": null
+  },
+  "71": {
+    "text": "L'enllaç d'aquest missatge sembla sospitós.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Comprova l'adreça completa del remitent.",
+    "romanization": null
+  },
+  "73": {
+    "text": "El Wi-Fi gratuït de l'aeroport no és privat.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Tapa la càmera quan no la facis servir.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Bloqueja la pantalla quan t'allunyis.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Ves amb compte amb la informació que no pots recuperar.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Llegeix el que estàs acceptant.",
+    "romanization": null
+  },
+  "78": {
+    "text": "La majoria de les filtracions de dades provenen de contrasenyes reutilitzades.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Les estafes més senzilles encara funcionen perquè són senzilles.",
+    "romanization": null
+  },
+  "80": {
+    "text": "El portàtil va més lent des de l'última actualització.",
+    "romanization": null
+  },
+  "81": {
+    "text": "La pantalla està trencada, però encara funciona.",
+    "romanization": null
+  },
+  "82": {
+    "text": "El monitor nou va arribar aquest matí.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Va endollar tres cables abans de trobar el correcte.",
+    "romanization": null
+  },
+  "84": {
+    "text": "La bateria no dura com abans.",
+    "romanization": null
+  },
+  "85": {
+    "text": "El teclat va acumular molles amb els anys.",
+    "romanization": null
+  },
+  "86": {
+    "text": "El ventilador s'engega quan l'habitació s'escalfa.",
+    "romanization": null
+  },
+  "87": {
+    "text": "La impressora està fora de línia de nou.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Els auriculars es tallen per un costat.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Neteja la pantalla amb un drap suau.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Podries fer una captura de pantalla?",
+    "romanization": null
+  },
+  "91": {
+    "text": "El fitxer es va enviar a mitjanit.",
+    "romanization": null
+  },
+  "92": {
+    "text": "La invitació del calendari va arribar dues vegades.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Arrossega el fitxer a la finestra.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Fes clic dret per veure més opcions.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Mantén premut Maj per seleccionar-ne més d'un.",
+    "romanization": null
+  },
+  "96": {
+    "text": "El botó de desfer m'ha salvat moltes vegades.",
+    "romanization": null
+  },
+  "97": {
+    "text": "El porta-retalls recorda l'última cosa que vas copiar.",
+    "romanization": null
+  },
+  "98": {
+    "text": "L'autocorrector és útil i, de vegades, vergonyós.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Un escriptori net fa que tot sigui més fàcil de trobar.",
+    "romanization": null
+  }
+}

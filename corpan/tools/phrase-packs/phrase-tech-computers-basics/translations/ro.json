@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Salvează fișierul înainte să-l închizi.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Poți să-mi trimiți documentul ăla?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Dosarul este pe desktop.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Nu găsesc fișierul pe care l-am salvat ieri.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Căută pe tot discul după nume.",
+    "romanization": null
+  },
+  "5": {
+    "text": "A redenumit fișierul din greșeală.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Descărcarea a ajuns în dosarul greșit.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Fișierul e prea mare ca să-l trimiți prin email.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Poți să-l comprimi într-un fișier zip?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Dosarul din cloud se sincronizează automat.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Ea organizează totul în subdosare datate.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Coșul de gunoi e mai plin decât restul discului.",
+    "romanization": null
+  },
+  "12": {
+    "text": "El păstrează o copie de rezervă pentru fiecare proiect.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Dosarul partajat s-a actualizat pentru toată lumea.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Un fișier pe care nu-l găsești e ca și cum n-ar exista.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Mi-am uitat parola.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Resetează parola din ecranul de autentificare.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Nu folosi aceeași parolă pentru tot.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Un manager de parole le ține minte pentru tine.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Autentificarea în doi pași adaugă un pas, dar multă siguranță.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Verifică-ți emailul pentru un cod de verificare.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Linkul a expirat în cincisprezece minute.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Ea a creat un cont nou pentru proiect.",
+    "romanization": null
+  },
+  "23": {
+    "text": "El se deloghează de pe calculatoarele partajate.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Numele de utilizator este deja luat.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Salvează codul de recuperare undeva în siguranță.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Nu da click pe linkuri de autentificare suspecte.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Actualizează emailul de recuperare când te muți.",
+    "romanization": null
+  },
+  "28": {
+    "text": "O cheie de acces e mai rapidă decât o parolă.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Telefonul tău e și el un cont în zilele noastre.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Ai încercat să-l repornești?",
+    "romanization": null
+  },
+  "31": {
+    "text": "Cablul era slăbit.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Ecranul s-a blocat pentru un minut.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Închide toate tab-urile și încearcă din nou.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Verifică dacă ești conectat la rețeaua corectă.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Tastatura nu răspunde.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Ventilatorul e mai zgomotos decât de obicei.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Golește memoria cache și reîncarcă.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Încearcă un alt browser.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Actualizarea a rezolvat bug-ul.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Bateria s-a descărcat peste noapte.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Camera web nu mai funcționează după actualizare.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Uneori, cea mai simplă soluție e să aștepți un minut.",
+    "romanization": null
+  },
+  "43": {
+    "text": "O repornire rezolvă mai multe probleme decât recunosc oamenii.",
+    "romanization": null
+  },
+  "44": {
+    "text": "A explicat mesajul de eroare în cuvinte simple.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Pagina se încarcă la nesfârșit.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Site-ul e picat pentru toată lumea.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Salvează-l la favorite ca să-l găsești din nou.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Linkul din email se deschide într-un tab nou.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Videoclipul se încarcă încontinuu.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Semnalul e slab în camera din spate.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Poți să-mi trimiți linkul?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Site-ul arată diferit pe mobil.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Fereastra pop-up mi-a cerut să accept cookie-urile.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Reclama e greu de închis.",
+    "romanization": null
+  },
+  "55": {
+    "text": "El folosește un blocator de reclame pe fiecare aparat.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Căutarea a returnat prea multe rezultate.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Rafinează căutarea cu ghilimele.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Articolul a fost mutat în spatele unui paywall.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Pagina e de pe un site în care am încredere.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Aplicația s-a actualizat peste noapte.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Noua versiune arată complet diferit.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ea a șters aplicațiile pe care nu le-a deschis niciodată.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Setările de notificare sunt ascunse adânc în meniu.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Pune-l pe mut în timpul ședinței.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Scurtătura de la tastatură e mai rapidă decât meniul.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Modul întunecat e mai odihnitor pentru ochi noaptea.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Dezactivează redarea automată.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Bula de notificare nu dispare niciodată.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Și-a configurat laptopul așa cum îi place.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Nu deschide atașamente de la expeditori necunoscuți.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Linkul din mesajul ăla pare suspect.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Verifică adresa completă a expeditorului.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Wi-Fi-ul gratuit de la aeroport nu e privat.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Acoperă camera când nu o folosești.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Blochează ecranul când te îndepărtezi.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Fii atent cu informațiile pe care nu le poți retrage.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Citește la ce ești de acord.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Majoritatea scurgerilor de date provin de la parole refolosite.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Cele mai simple înșelătorii încă funcționează pentru că sunt simple.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Laptopul e mai lent de la ultima actualizare.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Ecranul e crăpat, dar încă funcționează.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Noul monitor a sosit azi dimineață.",
+    "romanization": null
+  },
+  "83": {
+    "text": "A conectat trei cabluri înainte să-l găsească pe cel bun.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Bateria nu mai ține ca înainte.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Tastatura a adunat firimituri de-a lungul anilor.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Ventilatorul pornește când se încălzește camera.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Imprimanta e iar offline.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Căștile se întrerup pe o parte.",
+    "romanization": null
+  },
+  "89": {
+    "text": "El curăță ecranul cu o lavetă moale.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Poți să faci un screenshot?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Fișierul a fost trimis la miezul nopții.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Invitația din calendar a venit de două ori.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Trage fișierul în fereastră.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Click dreapta pentru mai multe opțiuni.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Ține apăsat Shift pentru a selecta mai multe.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Butonul de Anulare m-a salvat de multe ori.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Clipboard-ul ține minte ultimul lucru pe care l-ai copiat.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Corectarea automată e utilă și ocazional jenantă.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Un desktop curat face totul mai ușor de găsit.",
+    "romanization": null
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Postavme stan, kým sa nezotmie.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Kam som zbalil zapaľovač?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Stanové kolíky sú v bočnom vrecku.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Môj spacák je do nuly.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Nafúkni karimatku, kým ju rozložíš.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Lampáš potrebuje nové batérie.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Napni šnúry od stanu, kým pôjdeš spať.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Tropiko sa dáva švami von.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Postav stan na rovnom teréne.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Jedlo drž ďalej od stanu.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Priniesol si jednu luxusnú vec: malý vankúš.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Čelovka ušetrí veľa tápania.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Kemping je hneď za druhým potokom.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Chladiaci box zostane v tieni.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Skladacia stolička už má svoje najlepšie časy za sebou.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Batoh je ťažší, než vyzerá.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Mapa išla do bočného vrecka batohu.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Vodný filter je v malom suchom vaku.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Sekera má bezpečnostný kryt.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Zase sme zabudli otvárač na konzervy.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Nazbieraj suché triesky, kým to zapáliš.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Ohnisko je už postavené.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Potrebujeme viac podpaľu.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Nedávaj zelené drevo do ohňa.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Uhlie je horúcejšie ako plamene.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Prevar vodu, kým ju vypiješ.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Slanina sa vonku dlhšie opeká.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Pred odchodom zalej uhlie vodou.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Priniesol si malý varič na chladné rána.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Káva chutí vonku lepšie.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Rukoväť panvice sa rýchlo zohreje.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Večeru sme varili na plochom kameni.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Marshmallow sa zase chytil ohňom.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Opekaj to pomaly, len na okraji plameňa.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Odnes všetko, čo si priniesol.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Predpoveď hovorí, že po polnoci bude pršať.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Vietor náhle zosilnel.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Oblaky sa prevalili cez hrebeň.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Teplota po západe slnka rýchlo klesla.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Ranný mráz sa roztopil do desiatej.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Hmla sťažila sledovanie chodníka.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Komáre sa objavili za súmraku.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Obloha je tu vonku väčšia.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Blesky sú stále míle ďaleko.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Popoludňajšie slnko je najsilnejšie.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Chodník vedie popri rieke dva míle.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Zostaň na značenej ceste.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Začiatok chodníka je tri míle hore po ceste.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Na rázcestí sme zle odbočili.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Mapa ukazuje prístrešok blízko vrcholu.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Nastavil si rovnomerné tempo a udržal ho.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Serpentíny uľahčujú výstup.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Výhľad na vrchole stál za ten výstup.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Dávaj pozor na uvoľnené kamene pri zostupe.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Videli sme stopy jeleňov v mäkkej zemi.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Pi vodu, kým pocítiš smäd.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Stromy zredli blízko vrcholu.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Sadli sme si na spadnutý kmeň, aby sme si oddýchli.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Most cez potok vyzeral starší ako chodník.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Do tábora sme sa vrátili do západu slnka.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Mliečna dráha je dnes v noci jasná.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Ukázal na Veľký voz.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Padajúca hviezda preletela po oblohe.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Oheň praskal, kým sme sa rozprávali.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Hviezdy sú na južnej pologuli iné.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Sova zavolala niekde v stromoch.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Mesiac vyšiel neskoro a oranžový.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Rozprávali sme si príbehy pri ohni do polnoci.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Noc je hlučnejšia, než by si si myslel.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Spali sme s otvoreným vchodom do stanu.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Jeleň prešiel táborom za úsvitu.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Veveričky aj tak našli občerstvenie.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Videli sme bobra na vzdialenom brehu.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Jedlo maj zatvorené a zavesené cez noc.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Vak na medvede ide vysoko na strom.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Nenechávaj topánky vonku, ak nechceš prekvapenia.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Žaba preskočila priamo okolo mojej nohy.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Vtáky nás zobudili skôr ako slnko.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Chvíľu sme sledovali stopy v snehu.",
+    "romanization": null
+  },
+  "79": {
+    "text": "V jazere neboli ryby, ale veľa vážok.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Deti bežali celú cestu k jazeru.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Nekempoval odvtedy, čo bol dieťa.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Ukázala mi, ako čítať mapu.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Zdieľali sme táborisko s inou rodinou.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Dva dni vonku všetko resetujú.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Telefón nemá signál a je to tak správne.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Hodiny sme nevideli nikoho iného.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Zaspal, kým oheň dohasol.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Prvé ráno je vždy chladné a pomalé.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Zbalili sme sa a opustili miesto čistejšie, než sme ho našli.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Kde je najbližší zdroj vody?",
+    "romanization": null
+  },
+  "91": {
+    "text": "Suchý záchod je dole po chodníku.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Zahrab zvyšky jedla ďaleko od tábora.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Mokré oblečenie zaves pri ohni, aby uschlo.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Lekárnička je navrchu batohu.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Kompas ukazuje na magnetický sever.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Píšťalka je hlasnejšia ako tvoj hlas.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Povedz niekomu, kam ideš.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Mobil ide do suchého vaku.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Prines si viac vrstiev, než si myslíš, že potrebuješ.",
+    "romanization": null
+  }
+}

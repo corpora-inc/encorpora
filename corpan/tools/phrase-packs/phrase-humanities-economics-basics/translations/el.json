@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Οι τιμές ανεβαίνουν όταν αυξάνεται η ζήτηση για κάτι.",
+    "romanization": "Oi times anevainoun otan afxaneta i zitisi yia kati."
+  },
+  "1": {
+    "text": "Όταν αυξάνεται η προσφορά, οι τιμές συνήθως πέφτουν.",
+    "romanization": "Otan afxaneta i prosfora, oi times synithos peftoun."
+  },
+  "2": {
+    "text": "Μια έκπτωση κάνει περισσότερους ανθρώπους να αγοράσουν.",
+    "romanization": "Mia ekptosi kanei perissoterous anthropous na agorasoun."
+  },
+  "3": {
+    "text": "Το ίδιο προϊόν κοστίζει διαφορετικά σε διαφορετικές πόλεις.",
+    "romanization": "To idio proïon kostizei diaforetika se diaforetikes poleis."
+  },
+  "4": {
+    "text": "Η ζήτηση μπορεί να αλλάξει από τη μια μέρα στην άλλη.",
+    "romanization": "I zitisi borei na allaxei apo ti mia mera stin alli."
+  },
+  "5": {
+    "text": "Οι πωλητές ανεβάζουν τις τιμές όταν τα αποθέματα είναι χαμηλά.",
+    "romanization": "Oi polites anevazoun tis times otan ta apothemata einai chamila."
+  },
+  "6": {
+    "text": "Οι αγοραστές ψάχνουν για την καλύτερη προσφορά.",
+    "romanization": "Oi agorastes psachnoun yia tin kalyteri prosfora."
+  },
+  "7": {
+    "text": "Μερικές φορές, μια υψηλή τιμή είναι ένδειξη ποιότητας.",
+    "romanization": "Merikes fores, mia ipsili timi einai endeixi poiotitas."
+  },
+  "8": {
+    "text": "Άλλες φορές, μια υψηλή τιμή είναι απλώς ένα κόλπο μάρκετινγκ.",
+    "romanization": "Alles fores, mia ipsili timi einai aplos ena kolpo marketingk."
+  },
+  "9": {
+    "text": "Η δωρεάν αποστολή αλλάζει τον τρόπο που νιώθουν οι άνθρωποι για μια αγορά.",
+    "romanization": "I dorean apostoli allazei ton tropo pou niothoun oi anthropoi yia mia agora."
+  },
+  "10": {
+    "text": "Η τιμή σπάνια είναι το συνολικό κόστος.",
+    "romanization": "I timi spania einai to synoliko kostos."
+  },
+  "11": {
+    "text": "Ο χρόνος είναι κι αυτός ένα είδος κόστους.",
+    "romanization": "O chronos einai ki autos ena eidos kostous."
+  },
+  "12": {
+    "text": "Μια μεγάλη ουρά είναι αυτό που πληρώνεις όταν η τιμή είναι πολύ χαμηλή.",
+    "romanization": "Mia megali oura einai auto pou plironeis otan i timi einai poly chamili."
+  },
+  "13": {
+    "text": "Οι προσφορές κάνουν τους ανθρώπους να αγοράζουν πράγματα που δεν είχαν σκοπό.",
+    "romanization": "Oi prosfores kanoun tous anthropous na agorazoun pragmata pou den eichan skopo."
+  },
+  "14": {
+    "text": "Οι άνθρωποι αντιδρούν πιο έντονα στην απώλεια χρημάτων παρά στο κέρδος.",
+    "romanization": "Oi anthropoi antidroun pio entona stin apoleia chrimaton para sto kerdos."
+  },
+  "15": {
+    "text": "Οι τιμές σε δολάρια και οι τιμές στο τοπικό σου νόμισμα φαίνονται διαφορετικές.",
+    "romanization": "Oi times se dolaria kai oi times sto topiko sou nomisma fainontai diaforetikes."
+  },
+  "16": {
+    "text": "Ένα μικρό καθημερινό έξοδο αθροίζεται σε πολλά μέσα σε ένα χρόνο.",
+    "romanization": "Ena mikro kathimerino exodo athroizetai se polla mesa se ena chrono."
+  },
+  "17": {
+    "text": "Η πρώτη πώληση της ημέρας μετράει περισσότερο από την τελευταία.",
+    "romanization": "I proti polisi tis imeras metraei perissotero apo tin teleftaia."
+  },
+  "18": {
+    "text": "Πολλές μικρές αγορές κρύβουν μια μεγάλη συνήθεια.",
+    "romanization": "Polles mikres agores kryvoun mia megali synitheia."
+  },
+  "19": {
+    "text": "Η φθηνότερη επιλογή είναι μερικές φορές η πιο ακριβή στο τέλος.",
+    "romanization": "I fthinoteri epilogi einai merikes fores i pio akrivi sto telos."
+  },
+  "20": {
+    "text": "Το χρήμα είναι απλώς μια συμφωνία που μοιραζόμαστε όλοι.",
+    "romanization": "To chrima einai aplos mia symfonia pou moirazomaste oloi."
+  },
+  "21": {
+    "text": "Η αποταμίευση είναι σαν να πληρώνεις τον μελλοντικό σου εαυτό.",
+    "romanization": "I apotamiefsi einai san na plironeis ton mellontiko sou eafty."
+  },
+  "22": {
+    "text": "Ο προϋπολογισμός είναι ένα σχέδιο, όχι μια τιμωρία.",
+    "romanization": "O proÿpologismos einai ena schedio, ochi mia timoria."
+  },
+  "23": {
+    "text": "Ο ανατοκισμός είναι υπομονή με έναν μικρό κινητήρα.",
+    "romanization": "O anatokismos einai ypomoní me enan mikro kinitira."
+  },
+  "24": {
+    "text": "Ο πληθωρισμός ροκανίζει σιγά σιγά τα χρήματα που κρατάμε σε μετρητά.",
+    "romanization": "O plithorismos rokanizei siga siga ta chrimata pou kratame se metrita."
+  },
+  "25": {
+    "text": "Ένα δάνειο είναι σαν να δανείζεσαι από τον μελλοντικό σου εαυτό.",
+    "romanization": "Ena daneio einai san na daneizesai apo ton mellontiko sou eafty."
+  },
+  "26": {
+    "text": "Ο τόκος είναι το «ενοίκιο» για τα δανεισμένα χρήματα.",
+    "romanization": "O tokos einai to «enoikio» yia ta daneismena chrimata."
+  },
+  "27": {
+    "text": "Καταγράφει κάθε έξοδο για ένα μήνα για να δει το μοτίβο.",
+    "romanization": "Katagrafei kathe exodo yia ena mina yia na dei to motivo."
+  },
+  "28": {
+    "text": "Αποταμιεύει ένα σταθερό ποσό κάθε φορά που πληρώνεται, πριν από οτιδήποτε άλλο.",
+    "romanization": "Apotamievei ena stathero poso kathe fora pou plironetai, prin apo otidipote allo."
+  },
+  "29": {
+    "text": "Τα χρήματα έκτακτης ανάγκης κάνουν τις μικρές καταστροφές λιγότερο επώδυνες.",
+    "romanization": "Ta chrimata ektaktis anagkis kanoun tis mikres katastrofes ligotero epodynes."
+  },
+  "30": {
+    "text": "Το να ξοδεύεις λίγο λιγότερο είναι συχνά πιο εύκολο από το να κερδίζεις περισσότερα.",
+    "romanization": "To na xodeveis ligo ligotero einai sychna pio efkolo apo to na kerdizeis perissotera."
+  },
+  "31": {
+    "text": "Μια αύξηση μπορεί να χαθεί μέσα σε μεγαλύτερα έξοδα.",
+    "romanization": "Mia afxisi borei na chathei mesa se megalytera exoda."
+  },
+  "32": {
+    "text": "Εξόφλησε το δάνειο νωρίτερα και ένιωσε πιο ανάλαφρος.",
+    "romanization": "Exoflise to daneio noritera kai eniose pio analafros."
+  },
+  "33": {
+    "text": "Οι περισσότεροι άνθρωποι υπερεκτιμούν την πειθαρχία τους για την επόμενη χρονιά.",
+    "romanization": "Oi perissoteroi anthropoi yperektoimoun tin peitharchia tous yia tin epomeni chronia."
+  },
+  "34": {
+    "text": "Οι οικονομικές ανησυχίες μειώνονται όταν έχεις ένα σχέδιο.",
+    "romanization": "Oi oikonomikes anisychies meionontai otan exeis ena schedio."
+  },
+  "35": {
+    "text": "Μια αγορά είναι απλώς ένα μέρος όπου συναντιούνται αγοραστές και πωλητές.",
+    "romanization": "Mia agora einai aplos ena meros opou synantiountai agorastes kai polites."
+  },
+  "36": {
+    "text": "Τα ηλεκτρονικά καταστήματα είναι αγορές χωρίς τοίχους.",
+    "romanization": "Ta ilektronika katastimata einai agores choris toichous."
+  },
+  "37": {
+    "text": "Η εξειδίκευση είναι ο λόγος που τα περισσότερα πράγματα είναι φθηνά.",
+    "romanization": "I exeidikefsi einai o logos pou ta perissotera pragmata einai fthina."
+  },
+  "38": {
+    "text": "Οι άνθρωποι ανταλλάσσουν πράγματα που δεν παράγουν οι ίδιοι.",
+    "romanization": "Oi anthropoi antallassoun pragmata pou den paragoun oi idioi."
+  },
+  "39": {
+    "text": "Οι μισθοί αντικατοπτρίζουν το πόσο πληρώνεται κάποιος, όχι πάντα την αξία του.",
+    "romanization": "Oi misthoi antikatoptrizoun to poso plironetai kapoios, ochi panta tin axia tou."
+  },
+  "40": {
+    "text": "Κάποιες δουλειές πληρώνουν καλά επειδή λίγοι τις θέλουν.",
+    "romanization": "Kapoies douleies plironoun kala epeidi ligoi tis theloun."
+  },
+  "41": {
+    "text": "Κάποιες δουλειές πληρώνουν καλά επειδή λίγοι μπορούν να τις κάνουν.",
+    "romanization": "Kapoies douleies plironoun kala epeidi ligoi boroun na tis kanoun."
+  },
+  "42": {
+    "text": "Η αγορά δεν επιβραβεύει πάντα την πιο χρήσιμη εργασία.",
+    "romanization": "I agora den epivravevei panta tin pio chrisimi ergasia."
+  },
+  "43": {
+    "text": "Μια νέα τεχνολογία μπορεί να εξαφανίσει μια παλιά βιομηχανία γρήγορα.",
+    "romanization": "Mia nea technologia borei na exafanisei mia palia viomichania grigora."
+  },
+  "44": {
+    "text": "Οι άνθρωποι συχνά μετακινούνται εκεί που υπάρχουν δουλειές.",
+    "romanization": "Oi anthropoi sychna metakinountai ekei pou yparchoun douleies."
+  },
+  "45": {
+    "text": "Οι μικρές επιχειρήσεις αποτελούν το μεγαλύτερο μέρος της οικονομίας.",
+    "romanization": "Oi mikres epicheiriseis apoteloun to megalutero meros tis oikonomias."
+  },
+  "46": {
+    "text": "Ένας καλός υπάλληλος εξοικονομεί περισσότερα από όσα κοστίζει.",
+    "romanization": "Enas kalos ypalliilos exoikonomei perissotera apo osa kostizei."
+  },
+  "47": {
+    "text": "Η διαπραγμάτευση είναι μέρος κάθε δουλειάς.",
+    "romanization": "I diapragmatefsi einai meros kathe douleias."
+  },
+  "48": {
+    "text": "Ένα συμπληρωματικό εισόδημα σου δίνει επιλογές.",
+    "romanization": "Ena sympliromatiko eisodima sou dinei epiloges."
+  },
+  "49": {
+    "text": "Η παραίτηση είναι μερικές φορές η κίνηση με τη μεγαλύτερη μόχλευση.",
+    "romanization": "I paraitisi einai merikes fores i kinisi me ti megalyteri mochlefsi."
+  },
+  "50": {
+    "text": "Οι άνθρωποι ανταποκρίνονται στα κίνητρα, ακόμα και στα μικρά.",
+    "romanization": "Oi anthropoi antapokrinontai sta kinitra, akoma kai sta mikra."
+  },
+  "51": {
+    "text": "Το «δωρεάν» είναι μια μαγική λέξη.",
+    "romanization": "To «dorean» einai mia magiki lexi."
+  },
+  "52": {
+    "text": "Ο πρώτος μήνας δωρεάν αλλάζει πολλές αποφάσεις.",
+    "romanization": "O protos minas dorean allazei polles apofaseis."
+  },
+  "53": {
+    "text": "Οι συνδρομές είναι σχεδιασμένες για να τις ξεχνάμε.",
+    "romanization": "Oi syndromes einai schediasmenes yia na tis xechname."
+  },
+  "54": {
+    "text": "Οι στρογγυλοί αριθμοί φαίνονται μεγαλύτεροι από ό,τι είναι.",
+    "romanization": "Oi stroggiloi arithmoi fainontai megaluteroi apo o,ti einai."
+  },
+  "55": {
+    "text": "Τα μη ανακτήσιμα κόστη δεν πρέπει να επηρεάζουν την επόμενη κίνηση.",
+    "romanization": "Ta mi anaktisima kosti den prepei na epireazoun tin epomeni kinisi."
+  },
+  "56": {
+    "text": "Ένα μικρό αντίτιμο αλλάζει το πόσο συχνά εμφανίζονται οι άνθρωποι.",
+    "romanization": "Ena mikro antitimo allazei to poso sychna emfanizontai oi anthropoi."
+  },
+  "57": {
+    "text": "Το φιλοδώρημα αλλάζει τα δεδομένα ενός γεύματος.",
+    "romanization": "To filodorima allazei ta dedomena enos gevmatos."
+  },
+  "58": {
+    "text": "Οι άνθρωποι μοιράζονται όταν το μοίρασμα είναι εύκολο.",
+    "romanization": "Oi anthropoi moirazontai otan to moirasma einai efkolo."
+  },
+  "59": {
+    "text": "Μια ουρά σου δείχνει τι εκτιμούν οι άνθρωποι σήμερα.",
+    "romanization": "Mia oura sou deichnei ti ektimoun oi anthropoi simera."
+  },
+  "60": {
+    "text": "Οι προσφορές περιορισμένου χρόνου δημιουργούν σκόπιμα επείγουσα ανάγκη.",
+    "romanization": "Oi prosfores periorismenou chronou dimiourgoun skopima epeigousa anagki."
+  },
+  "61": {
+    "text": "Τα προγράμματα επιβράβευσης επιβραβεύουν αυτό που θα συνέβαινε ούτως ή άλλως.",
+    "romanization": "Ta programata epivravefsis epivravevoun auto pou tha synevainei outos i allos."
+  },
+  "62": {
+    "text": "Οι προεπιλεγμένες επιλογές αποφασίζουν περισσότερα από όσα συνειδητοποιούν οι άνθρωποι.",
+    "romanization": "Oi proepilegmenes epiloges apofasizoun perissotera apo osa syneiditopoioun oi anthropoi."
+  },
+  "63": {
+    "text": "Οι κριτικές μεταβάλλουν τη ζήτηση περισσότερο από τις διαφημίσεις.",
+    "romanization": "Oi kritikes metavalloun ti zitisi perissotero apo tis diafimiseis."
+  },
+  "64": {
+    "text": "Η από στόμα σε στόμα διαφήμιση εξακολουθεί να είναι πιο αποτελεσματική από το μεγαλύτερο μέρος του μάρκετινγκ.",
+    "romanization": "I apo stoma se stoma diafimisi exakolouthei na einai pio apotelesmatiki apo to megalutero meros tou marketingk."
+  },
+  "65": {
+    "text": "Η οικονομία αναπτύσσεται κάποιες χρονιές και συρρικνώνεται άλλες.",
+    "romanization": "I oikonomia anaptyssetai kapoies chronies kai syrriknoetai alles."
+  },
+  "66": {
+    "text": "Οι υφέσεις διδάσκουν μαθήματα που οι περίοδοι άνθησης ξεχνούν.",
+    "romanization": "Oi yfeseis didaskoun mathimata pou oi periodoi anthísis xechoun."
+  },
+  "67": {
+    "text": "Η μακροπρόθεσμη ανάπτυξη ανεβάζει όλους, αργά.",
+    "romanization": "I makroprothesmi anaptyxi anevazei olous, arga."
+  },
+  "68": {
+    "text": "Τα κέρδη παραγωγικότητας κρύβονται σε εργαλεία και συνήθειες.",
+    "romanization": "Ta kerdi paragoyikotitas kryvontai se ergalia kai synitheies."
+  },
+  "69": {
+    "text": "Οι νέες ιδέες είναι η μόνη βιώσιμη πηγή ανάπτυξης.",
+    "romanization": "Oi nees idees einai i moni viosimi pigi anaptyxis."
+  },
+  "70": {
+    "text": "Μια περίοδος άνθησης μπορεί να καλύψει πολλές κακές αποφάσεις.",
+    "romanization": "Mia periodos anthísis borei na kalypsi polles kakes apofaseis."
+  },
+  "71": {
+    "text": "Οι καταρρεύσεις τιμωρούν πρώτα τους πιο μοχλευμένους.",
+    "romanization": "Oi katarrevseis timoroun prota tous pio mochlevmenous."
+  },
+  "72": {
+    "text": "Το φθηνό χρήμα τείνει να βρίσκει επικίνδυνες χρήσεις.",
+    "romanization": "To fthino chrima teinei na vriskei epikindynes chriseis."
+  },
+  "73": {
+    "text": "Μια φούσκα είναι δύσκολο να τη δεις από μέσα της.",
+    "romanization": "Mia fouska einai dyskolo na ti deis apo mesa tis."
+  },
+  "74": {
+    "text": "Η ανάκαμψη είναι άνιση σε βιομηχανίες και περιοχές.",
+    "romanization": "I anakampsi einai anisi se viomichanies kai perióches."
+  },
+  "75": {
+    "text": "Οι χώρες εμπορεύονται επειδή και οι δύο πλευρές κερδίζουν.",
+    "romanization": "Oi chores emporevontai epeidi kai oi dyo plevres kerdizoun."
+  },
+  "76": {
+    "text": "Οι δασμοί αυξάνουν τις τιμές για τους αγοραστές στο εσωτερικό.",
+    "romanization": "Oi dasmoi afxanoun tis times yia tous agorastes sto esoteriko."
+  },
+  "77": {
+    "text": "Οι συναλλαγματικές ισοτιμίες αλλάζουν το κόστος μιας εισαγωγής.",
+    "romanization": "Oi synallagmatikes isotimies allazoun to kostos mias eisagogis."
+  },
+  "78": {
+    "text": "Ένα αδύναμο νόμισμα βοηθά τους εξαγωγείς και βλάπτει τους εισαγωγείς.",
+    "romanization": "Ena adynamo nomisma voitha tous exagogis kai vlapti tous eisagogis."
+  },
+  "79": {
+    "text": "Οι ξένες επενδύσεις μπορούν να χτίσουν ή να πιέσουν μια οικονομία.",
+    "romanization": "Oi xenes ependyseis boroun na chtisoun i na piesoun mia oikonomia."
+  },
+  "80": {
+    "text": "Τα εμβάσματα στηρίζουν πολλές οικογένειες πέρα από τα σύνορα.",
+    "romanization": "Ta embasmata stirizoun polles oikogeneies pera apo ta synora."
+  },
+  "81": {
+    "text": "Οι κυρώσεις επηρεάζουν περισσότερο τους απλούς ανθρώπους παρά τους ηγέτες.",
+    "romanization": "Oi kyroseis epireazoun perissotero tous aplous anthropous para tous igetes."
+  },
+  "82": {
+    "text": "Οι παγκόσμιες αλυσίδες εφοδιασμού σπάνε σε απρόσμενα σημεία.",
+    "romanization": "Oi pagosmies alysides efodiasmou spane se aprosmena simeia."
+  },
+  "83": {
+    "text": "Μια έλλειψη σε μια χώρα μπορεί να μετακινήσει τις τιμές παντού.",
+    "romanization": "Mia elleipsi se mia chora borei na metakinisi tis times pantou."
+  },
+  "84": {
+    "text": "Κάποιες βιομηχανίες συγκεντρώνονται σε μια περιοχή για κάποιο λόγο.",
+    "romanization": "Kapoies viomichanies sygkentrónontai se mia periochi yia kapoio logo."
+  },
+  "85": {
+    "text": "Η ανισότητα αυξάνεται σιωπηλά όταν κανείς δεν παρακολουθεί.",
+    "romanization": "I anisotita afxaneta sioopila otan kaneis den parakolouthei."
+  },
+  "86": {
+    "text": "Οι φόροι είναι το τίμημα των δημόσιων αγαθών.",
+    "romanization": "Oi foroi einai to timima ton dimosion agathon."
+  },
+  "87": {
+    "text": "Τα δημόσια αγαθά είναι αυτά που δεν μπορούμε εύκολα να αγοράσουμε ατομικά.",
+    "romanization": "Ta dimosia agatha einai auta pou den boroume efkola na agorasoume atomika."
+  },
+  "88": {
+    "text": "Οι εξωτερικότητες είναι τα κόστη που κανείς δεν ζήτησε να πληρώσει.",
+    "romanization": "Oi exoterikotites einai ta kosti pou kaneis den zitise na plirosei."
+  },
+  "89": {
+    "text": "Μια μικρή αποτυχία της αγοράς μπορεί να έχει τεράστιες επιπτώσεις.",
+    "romanization": "Mia mikri apotychia tis agoras borei na echei terasties epiptoseis."
+  },
+  "90": {
+    "text": "Η ελεύθερη αγορά χρειάζεται κανόνες για να παραμείνει ελεύθερη.",
+    "romanization": "I eleftheri agora chreiazetai kanones yia na parameinei eleftheri."
+  },
+  "91": {
+    "text": "Η πληροφορία μοιράζεται άνισα μεταξύ αγοραστών και πωλητών.",
+    "romanization": "I pliroforia moirazetai anisa metaxy agoraston kai politon."
+  },
+  "92": {
+    "text": "Η εμπιστοσύνη μειώνει το κόστος κάθε συναλλαγής.",
+    "romanization": "I empistosyni meionei to kostos kathe synallagis."
+  },
+  "93": {
+    "text": "Η φήμη είναι ένα υποτιμημένο περιουσιακό στοιχείο.",
+    "romanization": "I fimi einai ena ypotimimeno periousiako stoicheio."
+  },
+  "94": {
+    "text": "Η τιμή της προσοχής έχει ανέβει.",
+    "romanization": "I timi tis prosochis echei anevei."
+  },
+  "95": {
+    "text": "Οι πιο σημαντικές αγορές συχνά δεν έχουν τιμές.",
+    "romanization": "Oi pio simantikes agores sychna den echoun times."
+  },
+  "96": {
+    "text": "Ο χρόνος και η φροντίδα είναι από τους πιο σπάνιους πόρους.",
+    "romanization": "O chronos kai i frontida einai apo tous pio spanios porous."
+  },
+  "97": {
+    "text": "Οι οικονομικές αποφάσεις είναι και ηθικές αποφάσεις.",
+    "romanization": "Oi oikonomikes apofaseis einai kai ithikes apofaseis."
+  },
+  "98": {
+    "text": "Η οικονομία είναι απλώς άνθρωποι που κάνουν πράγματα ο ένας για τον άλλον.",
+    "romanization": "I oikonomia einai aplos anthropoi pou kanoun pragmata o enas yia ton allon."
+  },
+  "99": {
+    "text": "Ένας απλός προϋπολογισμός αλλάζει περισσότερα από οποιαδήποτε πολύπλοκη θεωρία.",
+    "romanization": "Enas aplos proÿpologismos allazei perissotera apo opoiadipote polyploki theoria."
+  }
+}

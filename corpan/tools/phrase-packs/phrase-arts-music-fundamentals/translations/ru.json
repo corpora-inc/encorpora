@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Ты умеешь играть на пианино?",
+    "romanization": "Ty umeyesh' igrat' na pianino?"
+  },
+  "1": {
+    "text": "Я играю на скрипке в небольшом оркестре.",
+    "romanization": "Ya igrayu na skripke v nebol'shom orkestre."
+  },
+  "2": {
+    "text": "Гитаре нужны новые струны.",
+    "romanization": "Gitare nuzhny novyye struny."
+  },
+  "3": {
+    "text": "Она играет на барабанах в группе своей сестры.",
+    "romanization": "Ona igrayet na barabanakh v gruppe svoyey sestry."
+  },
+  "4": {
+    "text": "Я учусь играть на флейте.",
+    "romanization": "Ya uchus' igrat' na fleyte."
+  },
+  "5": {
+    "text": "Он снова взял в руки трубу спустя двадцать лет.",
+    "romanization": "On snova vzyal v ruki trubu spustya dvadtsat' let."
+  },
+  "6": {
+    "text": "Виолончель прислонена к стене.",
+    "romanization": "Violonchel' prislonena k stene."
+  },
+  "7": {
+    "text": "Настройка занимает больше времени, чем я ожидал.",
+    "romanization": "Nastroyka zanimayet bol'she vremeni, chem ya ozhidal."
+  },
+  "8": {
+    "text": "Какая струна расстроена?",
+    "romanization": "Kakaya struna rasstroyena?"
+  },
+  "9": {
+    "text": "Смычку нужно заменить волос.",
+    "romanization": "Smychku nuzhno zamenit' volos."
+  },
+  "10": {
+    "text": "Я купил подержанный синтезатор онлайн.",
+    "romanization": "Ya kupil poderzhannyy sintezator onlayn."
+  },
+  "11": {
+    "text": "Она предпочитает пианино роялю.",
+    "romanization": "Ona predpochitayet pianino royalyu."
+  },
+  "12": {
+    "text": "Он повсюду носит свой футляр для саксофона.",
+    "romanization": "On povsyudu nosit svoy futlyar dlya saksofona."
+  },
+  "13": {
+    "text": "Барабанщик настроил инструменты до того, как все остальные пришли.",
+    "romanization": "Barabanshchik nastroyil instrumenty do togo, kak vse ostal'nyye prishli."
+  },
+  "14": {
+    "text": "На укулеле легче начать играть, чем на гитаре.",
+    "romanization": "Na ukulele legche nachat' igrat', chem na gitare."
+  },
+  "15": {
+    "text": "Ты умеешь читать ноты?",
+    "romanization": "Ty umeyesh' chitat' noty?"
+  },
+  "16": {
+    "text": "Произведение написано в соль-мажоре.",
+    "romanization": "Proizvedeniye napisano v sol'-mazhore."
+  },
+  "17": {
+    "text": "Мы играем в размере три четверти.",
+    "romanization": "My igrayem v razmere tri chetverti."
+  },
+  "18": {
+    "text": "Сыграй первую ноту немного громче.",
+    "romanization": "Sygray pervuyu notu nemnogo gromche."
+  },
+  "19": {
+    "text": "Пауза так же важна, как и нота.",
+    "romanization": "Pauza tak zhe vazhna, kak i nota."
+  },
+  "20": {
+    "text": "Он объяснил, что такое бемоль и диез.",
+    "romanization": "On ob\"yasnil, chto takoye bemol' i diyez."
+  },
+  "21": {
+    "text": "Смена аккордов теперь кажется естественной.",
+    "romanization": "Smena akkordov teper' kazhetsya yestestvennoy."
+  },
+  "22": {
+    "text": "Гамма — это просто ноты по порядку.",
+    "romanization": "Gamma — eto prosto noty po poryadku."
+  },
+  "23": {
+    "text": "Попробуй тот же отрывок на октаву ниже.",
+    "romanization": "Poprobuy tot zhe otryvok na oktavu nizhe."
+  },
+  "24": {
+    "text": "Она отметила места для вдоха на полях.",
+    "romanization": "Ona otmetila mesta dlya vdokha na polyakh."
+  },
+  "25": {
+    "text": "Дирижёр дал нам отсчёт.",
+    "romanization": "Dirizhor dal nam otschot."
+  },
+  "26": {
+    "text": "Этот такт каждый раз вызывает у меня трудности.",
+    "romanization": "Etot takt kazhdyy raz vyzyvayet u menya trudnosti."
+  },
+  "27": {
+    "text": "Мелодия простая, но запоминающаяся.",
+    "romanization": "Melodiya prostaya, no zapominayushchayasya."
+  },
+  "28": {
+    "text": "Он предпочитает писать музыку на слух.",
+    "romanization": "On predpochitayet pisat' muzyku na slukh."
+  },
+  "29": {
+    "text": "Большинство песен используют всего несколько аккордов.",
+    "romanization": "Bol'shinstvo pesen ispol'zuyut vsego neskol'ko akkordov."
+  },
+  "30": {
+    "text": "Я занимаюсь тридцать минут после ужина.",
+    "romanization": "Ya zanimayus' tridtsat' minut posle uzhina."
+  },
+  "31": {
+    "text": "Играй медленно, пока пальцы не запомнят.",
+    "romanization": "Igray medlenno, poka pal'tsy ne zapomnyat."
+  },
+  "32": {
+    "text": "Она использует метроном, чтобы держать темп.",
+    "romanization": "Ona ispol'zuyet metronom, chtoby derzhat' temp."
+  },
+  "33": {
+    "text": "Он записывает себя и потом слушает.",
+    "romanization": "On zapisyvayet sebya i potom slushayet."
+  },
+  "34": {
+    "text": "Разомнись перед сложными отрывками.",
+    "romanization": "Razomnis' pered slozhnymi otryvkami."
+  },
+  "35": {
+    "text": "Ошибки — это часть практики.",
+    "romanization": "Oshibki — eto chast' praktiki."
+  },
+  "36": {
+    "text": "Я разбил это на небольшие части.",
+    "romanization": "Ya razbil eto na nebol'shiye chasti."
+  },
+  "37": {
+    "text": "Пять минут сегодня лучше, чем два часа на следующей неделе.",
+    "romanization": "Pyat' minut segodnya luchshe, chem dva chasa na sleduyushchey nedele."
+  },
+  "38": {
+    "text": "Она занимается перед зеркалом.",
+    "romanization": "Ona zanimayetsya pered zerkalom."
+  },
+  "39": {
+    "text": "Учитель дал мне новое упражнение.",
+    "romanization": "Uchitel' dal mne novoye uprazhneniye."
+  },
+  "40": {
+    "text": "Не торопи медленные части.",
+    "romanization": "Ne toropi medlennyye chasti."
+  },
+  "41": {
+    "text": "Иногда он играет с закрытыми глазами.",
+    "romanization": "Inogda on igrayet s zakrytymi glazami."
+  },
+  "42": {
+    "text": "Самый сложный такт — тот, который я пропустил.",
+    "romanization": "Samyy slozhnyy takt — tot, kotoryy ya propustil."
+  },
+  "43": {
+    "text": "После трёх дней перерыва я всегда возвращаюсь \"ржавым\".",
+    "romanization": "Posle trëkh dney pereryva ya vsegda vozvrashchayus' \"rzhavym\"."
+  },
+  "44": {
+    "text": "Репетируй концовку больше, чем начало.",
+    "romanization": "Repetiruy kontsovku bol'she, chem nachalo."
+  },
+  "45": {
+    "text": "Мои руки дрожали перед концертом.",
+    "romanization": "Moi ruki drozhali pered kontsertom."
+  },
+  "46": {
+    "text": "Зрители зааплодировали до того, как произведение закончилось.",
+    "romanization": "Zriteli zaaplodirovali do togo, kak proizvedeniye zakonchilos'."
+  },
+  "47": {
+    "text": "Она поклонилась и ушла со сцены.",
+    "romanization": "Ona poklonilas' i ushla so stseny."
+  },
+  "48": {
+    "text": "Он забыл строчку и импровизировал.",
+    "romanization": "On zabyl strochku i improviziroval."
+  },
+  "49": {
+    "text": "Группа настраивалась, пока гас свет.",
+    "romanization": "Gruppa nastraivalas', poka gas svet."
+  },
+  "50": {
+    "text": "Не могли бы вы перевернуть страницу для меня?",
+    "romanization": "Ne mogli by vy perevernut' stranitsu dlya menya?"
+  },
+  "51": {
+    "text": "Микрофон слишком близко к тарелкам.",
+    "romanization": "Mikrofon slishkom blizko k tarelkam."
+  },
+  "52": {
+    "text": "Мы сыграли на бис.",
+    "romanization": "My sygrali na bis."
+  },
+  "53": {
+    "text": "Он посмотрел в толпу и улыбнулся.",
+    "romanization": "On posmotrel v tolpu i ulybnulsya."
+  },
+  "54": {
+    "text": "Первый концерт всегда самый сложный.",
+    "romanization": "Pervyy kontsert vsegda samyy slozhnyy."
+  },
+  "55": {
+    "text": "Страх сцены никогда полностью не проходит.",
+    "romanization": "Strakh stseny nikogda polnost'yu ne prokhodit."
+  },
+  "56": {
+    "text": "Я чуть не уронил смычок во время каденции.",
+    "romanization": "Ya chut' ne uronil smychok vo vremya kadentsii."
+  },
+  "57": {
+    "text": "Петь на публике — это особая смелость.",
+    "romanization": "Pet' na publike — eto osobaya smelost'."
+  },
+  "58": {
+    "text": "Аплодисменты казались дольше, чем песня.",
+    "romanization": "Aplodismenty kazalis' dol'she, chem pesnya."
+  },
+  "59": {
+    "text": "Мы встретили нашего любимого музыканта после концерта.",
+    "romanization": "My vstretili nashego lyubimogo muzykanta posle kontserta."
+  },
+  "60": {
+    "text": "Какую музыку ты любишь?",
+    "romanization": "Kakuyu muzyku ty lyubish'?"
+  },
+  "61": {
+    "text": "Я вырос, слушая пластинки моей мамы.",
+    "romanization": "Ya vyros, slushaya plastinki moyey mamy."
+  },
+  "62": {
+    "text": "Он слушает оперу, пока готовит.",
+    "romanization": "On slushayet operu, poka gotovit."
+  },
+  "63": {
+    "text": "Басовая партия — это то, что делает песню.",
+    "romanization": "Basovaya partiya — eto to, chto delayet pesnyu."
+  },
+  "64": {
+    "text": "В записи слышно акустику помещения.",
+    "romanization": "V zapisi slyshno akustiku pomeshcheniya."
+  },
+  "65": {
+    "text": "Этот альбом звучит лучше на виниле.",
+    "romanization": "Etot al'bom zvuchit luchshe na vinile."
+  },
+  "66": {
+    "text": "Она закрыла глаза и слушала струнные.",
+    "romanization": "Ona zakryla glaza i slushala strunnyye."
+  },
+  "67": {
+    "text": "Пианино немного расстроено.",
+    "romanization": "Pianino nemnogo rasstroyeno."
+  },
+  "68": {
+    "text": "Я постоянно возвращаюсь к этому альбому.",
+    "romanization": "Ya postoyanno vozvrashchayus' k etomu al'bomu."
+  },
+  "69": {
+    "text": "Когда я услышал это в первый раз, я остановил всё, что делал.",
+    "romanization": "Kogda ya uslyshal eto v pervyy raz, ya ostanovil vsë, chto delal."
+  },
+  "70": {
+    "text": "Каждую неделю он рекомендует новую джазовую пластинку.",
+    "romanization": "Kazhduyu nedelyu on rekomenduyet novuyu dzhazovuyu plastinku."
+  },
+  "71": {
+    "text": "Эта песня напоминает мне о моём дедушке.",
+    "romanization": "Eta pesnya napominayet mne o moyom dedushke."
+  },
+  "72": {
+    "text": "Под мелодией скрывается тихая гармония.",
+    "romanization": "Pod melodiyey skryvayetsya tikhaya garmoniya."
+  },
+  "73": {
+    "text": "Живая музыка звучит иначе, чем запись.",
+    "romanization": "Zhivaya muzyka zvuchit inache, chem zapis'."
+  },
+  "74": {
+    "text": "Поздно ночью я предпочитаю наушники.",
+    "romanization": "Pozdno noch'yu ya predpochitayu naushniki."
+  },
+  "75": {
+    "text": "Хор собирается по средам вечером.",
+    "romanization": "Khor sobirayetsya po sredam vecherom."
+  },
+  "76": {
+    "text": "Бас держит всю группу вместе.",
+    "romanization": "Bas derzhit vsyu gruppu vmeste."
+  },
+  "77": {
+    "text": "Дирижёр мягко ввёл оркестр.",
+    "romanization": "Dirizhor myagko vvël orkestr."
+  },
+  "78": {
+    "text": "Мы репетировали один и тот же отрывок четыре раза.",
+    "romanization": "My repetirovali odin i tot zhe otryvok chetyre raza."
+  },
+  "79": {
+    "text": "Он играет вторую скрипку в местном симфоническом оркестре.",
+    "romanization": "On igrayet vtoruyu skripku v mestnom simfonicheskom orkestre."
+  },
+  "80": {
+    "text": "Квартет сидел тесным полукругом.",
+    "romanization": "Kvartet sidel tesnym polukrugom."
+  },
+  "81": {
+    "text": "Барабанщик отсчитал темп.",
+    "romanization": "Barabanshchik otschital temp."
+  },
+  "82": {
+    "text": "Она спела гармоническую партию.",
+    "romanization": "Ona spela garmonicheskuyu partiyu."
+  },
+  "83": {
+    "text": "Две гитары и голос иногда достаточно.",
+    "romanization": "Dve gitary i golos inogda dostatochno."
+  },
+  "84": {
+    "text": "Хор поехал в маленькую церковь, чтобы спеть.",
+    "romanization": "Khor poyekhal v malen'kuyu tserkov', chtoby spet'."
+  },
+  "85": {
+    "text": "Он записал вокал в своём шкафу.",
+    "romanization": "On zapisal vokal v svoyom shkafu."
+  },
+  "86": {
+    "text": "Гудение кабеля исчезло, когда она поменяла вход.",
+    "romanization": "Gudeniye kabelya ischezlo, kogda ona pomenyala vkhod."
+  },
+  "87": {
+    "text": "Для этого голоса нужен другой микрофон.",
+    "romanization": "Dlya etogo golosa nuzhen drugoy mikrofon."
+  },
+  "88": {
+    "text": "Он сохраняет каждый дубль на случай, если следующий будет хуже.",
+    "romanization": "On sokhranyayet kazhdyy dubl' na sluchay, yesli sleduyushchiy budet khuzhe."
+  },
+  "89": {
+    "text": "Сведение звучало лучше на следующее утро.",
+    "romanization": "Svedeniye zvuchalo luchshe na sleduyushcheye utro."
+  },
+  "90": {
+    "text": "Усилитель светится, когда нагревается.",
+    "romanization": "Usilitel' svetitsya, kogda nagrevayetsya."
+  },
+  "91": {
+    "text": "Он использует старый четырёхдорожечный магнитофон.",
+    "romanization": "On ispol'zuyet staryy chetyrëkhdorozhechnyy magnitofon."
+  },
+  "92": {
+    "text": "Мы наложили три дубля одной и той же партии.",
+    "romanization": "My nalozhili tri dublya odnoy i toy zhe partii."
+  },
+  "93": {
+    "text": "Реверберация сделала комнату огромной.",
+    "romanization": "Reverberatsiya sdelala komnatu ogromnoy."
+  },
+  "94": {
+    "text": "Она свела альбом на своей кухне.",
+    "romanization": "Ona svela al'bom na svoyey kukhne."
+  },
+  "95": {
+    "text": "Музыка сокращает долгую дорогу.",
+    "romanization": "Muzyka sokrashchayet dolguyu dorogu."
+  },
+  "96": {
+    "text": "Песня может изменить ощущение дня.",
+    "romanization": "Pesnya mozhet izmenit' oshchushcheniye dnya."
+  },
+  "97": {
+    "text": "Вся комната подпевала.",
+    "romanization": "Vsya komnata podpevala."
+  },
+  "98": {
+    "text": "Тишина после последнего аккорда — это часть музыки.",
+    "romanization": "Tishina posle poslednego akkorda — eto chast' muzyki."
+  },
+  "99": {
+    "text": "Выучи одну песню, которую сможешь сыграть для кого угодно.",
+    "romanization": "Vyuchi odnu pesnyu, kotoruyu smozhesh' sygrat' dlya kogo ugodno."
+  }
+}

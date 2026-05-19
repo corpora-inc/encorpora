@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "קצו את הבצל דק-דק.",
+    "romanization": "kitzu et habatzal dak-dak."
+  },
+  "1": {
+    "text": "הרתיחו את המים לפני שמוסיפים את הפסטה.",
+    "romanization": "hartichu et hamayim lifnei shemosifim et hapasta."
+  },
+  "2": {
+    "text": "ערבבו את הרוטב בזמן שהוא מתבשל על אש קטנה.",
+    "romanization": "arvevu et harotev bizman shehu mitbashel al esh ktana."
+  },
+  "3": {
+    "text": "תבלו את העוף במלח ופלפל.",
+    "romanization": "tablu et ha'of bemelah u'filpel."
+  },
+  "4": {
+    "text": "טרפו את הביצים עד שהן מקציפות.",
+    "romanization": "tirfu et habeitzim ad shehen maktzifot."
+  },
+  "5": {
+    "text": "קפלו את הקמח בעדינות.",
+    "romanization": "kiflu et hakamach ba'adinut."
+  },
+  "6": {
+    "text": "תנו לבשר לנוח כמה דקות.",
+    "romanization": "tnu labasar lanu'ach kama dakot."
+  },
+  "7": {
+    "text": "צלו את הירקות בחום גבוה.",
+    "romanization": "tzlu et hayarakot bechom gavoha."
+  },
+  "8": {
+    "text": "פרסו את הלחם באלכסון.",
+    "romanization": "pirsu et halechem ba'alakson."
+  },
+  "9": {
+    "text": "טגנו את השום קלות, אבל אל תשרופו אותו.",
+    "romanization": "tag'nu et hashum kalut, aval al tishrefu oto."
+  },
+  "10": {
+    "text": "הרתיחו את המרק שוב.",
+    "romanization": "hartichu et hamarak shuv."
+  },
+  "11": {
+    "text": "בשלו את הציר על אש קטנה במשך שעה.",
+    "romanization": "bashlu et hatzir al esh ktana bemeshech sha'a."
+  },
+  "12": {
+    "text": "השרו את העוף במרינדה ללילה שלם.",
+    "romanization": "hashru et ha'of bamarinada lalayla shalem."
+  },
+  "13": {
+    "text": "קלו את התבלינים במחבת יבשה קודם.",
+    "romanization": "klu et hatavlinim bemahavet yevesha kodem."
+  },
+  "14": {
+    "text": "צמצמו את היין בחצי.",
+    "romanization": "tzimtzemu et hayayin bachatsi."
+  },
+  "15": {
+    "text": "אדו את הברוקולי במשך ארבע דקות.",
+    "romanization": "idu et habrokoli bemeshech arba dakot."
+  },
+  "16": {
+    "text": "קרמלו את הבצלים לאט-לאט.",
+    "romanization": "karmelu et habtzalim le'at-le'at."
+  },
+  "17": {
+    "text": "לשו את הבצק עד שהוא חלק.",
+    "romanization": "lushu et habatzek ad shehu chalak."
+  },
+  "18": {
+    "text": "סננו את הציר דרך מסננת דקה.",
+    "romanization": "sanenu et hatzir derech masnenet daka."
+  },
+  "19": {
+    "text": "גרדו מעט אגוז מוסקט טרי מעל.",
+    "romanization": "gardu me'at egoz muskat tari me'al."
+  },
+  "20": {
+    "text": "נגמר לנו שמן הזית.",
+    "romanization": "nigmar lanu shemen hazayit."
+  },
+  "21": {
+    "text": "הלימון יבש מדי בשביל לסחוט אותו.",
+    "romanization": "halimon yavesh midai bishvil lis'chot oto."
+  },
+  "22": {
+    "text": "אפשר להעביר לי את המלח?",
+    "romanization": "efshar leha'avir li et hamelach?"
+  },
+  "23": {
+    "text": "בזיליקום טרי עושה הבדל גדול.",
+    "romanization": "bazilikum tari ose hevdel gadol."
+  },
+  "24": {
+    "text": "אני קונה שום בראשים.",
+    "romanization": "ani kone shum berashim."
+  },
+  "25": {
+    "text": "סוכר חום הופך את העוגיות לרכות יותר.",
+    "romanization": "sukar chum hofeich et ha'ugiyot larakot yoter."
+  },
+  "26": {
+    "text": "הביצים עדיין במקרר.",
+    "romanization": "habeitzim adayin bamekarer."
+  },
+  "27": {
+    "text": "הכוסברה כמעט מוכנה בגינה.",
+    "romanization": "hakusbara kim'at muchana bagina."
+  },
+  "28": {
+    "text": "אנחנו צריכים עגבנייה לכריך.",
+    "romanization": "anachnu tzrichim agvaniya lakarech."
+  },
+  "29": {
+    "text": "החמאה מתרככת מהר יותר על השיש.",
+    "romanization": "hachema mitrachechet maher yoter al hashayish."
+  },
+  "30": {
+    "text": "הוא משתמש במלח ים לכל דבר.",
+    "romanization": "hu mishtamesh bemelach yam lechol davar."
+  },
+  "31": {
+    "text": "שקית הקמח כמעט ריקה.",
+    "romanization": "sakit hakamach kim'at reika."
+  },
+  "32": {
+    "text": "השמנת התקלקלה בסוף השבוע.",
+    "romanization": "hashamenet hitkalkela besof hashavua."
+  },
+  "33": {
+    "text": "אני מעדיף יוגורט יווני על שמנת חמוצה.",
+    "romanization": "ani ma'adif yogurt yevani al shamenet chamutza."
+  },
+  "34": {
+    "text": "הפטריות מתכווצות כשהן מתבשלות.",
+    "romanization": "hapitriyot mitkavtzot keshehen mitbashlot."
+  },
+  "35": {
+    "text": "הוסיפו קורט פלפל אדום.",
+    "romanization": "hosifu kort pilpel adom."
+  },
+  "36": {
+    "text": "המתכון דורש שתי כוסות ציר.",
+    "romanization": "hamatkon doresh shtei kosot tzir."
+  },
+  "37": {
+    "text": "היא תמיד מחזיקה אנשובי במזווה.",
+    "romanization": "hi tamid machzika anchovi bamizve."
+  },
+  "38": {
+    "text": "הפלפלים הופכים מתוקים כשהם קלויים.",
+    "romanization": "hapilpelim hofchim metukim keshehem kluyim."
+  },
+  "39": {
+    "text": "אפונה קפואה היא נס קטן.",
+    "romanization": "afuna kfu'a hi nes katan."
+  },
+  "40": {
+    "text": "המטבח מריח כמו לחם.",
+    "romanization": "hamitbach merich kmo lechem."
+  },
+  "41": {
+    "text": "הוא שפך את האורז על כל השיש.",
+    "romanization": "hu shafach et ha'orez al kol hashayish."
+  },
+  "42": {
+    "text": "המחבת כבר חמה מדי.",
+    "romanization": "hamachvat kvar chama midai."
+  },
+  "43": {
+    "text": "שרפתי את הטוסט שוב.",
+    "romanization": "sarafti et hatoast shuv."
+  },
+  "44": {
+    "text": "היא טעמה את הרוטב והוסיפה עוד מלח.",
+    "romanization": "hi ta'ama et harotev vehosifa od melach."
+  },
+  "45": {
+    "text": "גלאי העשן הופעל במהלך ארוחת הערב.",
+    "romanization": "galai ha'ashan huf'al bemahalach aruchat ha'erev."
+  },
+  "46": {
+    "text": "הוא מנקה תוך כדי עבודה.",
+    "romanization": "hu menake toch kedei avoda."
+  },
+  "47": {
+    "text": "הסיר גלש בזמן שהיא ענתה לטלפון.",
+    "romanization": "hasir galash bizman shehi aneta latelefon."
+  },
+  "48": {
+    "text": "צריך לנגב את המקרר.",
+    "romanization": "tzarich lenagev et hamekarer."
+  },
+  "49": {
+    "text": "הילדים ערכו את השולחן בלי שביקשו מהם.",
+    "romanization": "hayeladim arkhu et hashulchan bli shebikshu mehem."
+  },
+  "50": {
+    "text": "מי הפסטה מבעבעים.",
+    "romanization": "mei hapasta meva'ab'im."
+  },
+  "51": {
+    "text": "היא שמה מגבת מתחת לקרש החיתוך כדי שלא יחליק.",
+    "romanization": "hi sama magevet mitachat lekarash hachituch kedei shelo yachlik."
+  },
+  "52": {
+    "text": "הוא תמיד מבשל יחף.",
+    "romanization": "hu tamid mevashel yachef."
+  },
+  "53": {
+    "text": "העוגה צנחה כשפתחתי את התנור.",
+    "romanization": "ha'uga tzan'cha kshefatachti et hatanur."
+  },
+  "54": {
+    "text": "שכחנו לחמם מראש את התנור.",
+    "romanization": "shachachnu lechamem merosh et hatanur."
+  },
+  "55": {
+    "text": "הכלב צפה בכל תנועה מפתח הדלת.",
+    "romanization": "hakelev tzafa bechol tnu'a mipetach hadelet."
+  },
+  "56": {
+    "text": "חלון המטבח פתוח כדי לשחרר את האדים.",
+    "romanization": "chalon hamitbach patu'ach kedei leshachrer et ha'edim."
+  },
+  "57": {
+    "text": "היא הגבירה את המוזיקה בזמן שבישלה.",
+    "romanization": "hi higbira et hamuzika bizman shebishla."
+  },
+  "58": {
+    "text": "הכלים נערמו בזמן שאכלנו.",
+    "romanization": "hakelim ne'ermu bizman she'achalnu."
+  },
+  "59": {
+    "text": "השאריות יהיו ארוחת הצהריים מחר.",
+    "romanization": "hashe'eriyot yihyu aruchat hatzohorayim machar."
+  },
+  "60": {
+    "text": "עקבתי אחרי המתכון שלב אחר שלב.",
+    "romanization": "akavti acharei hamatkon shalav achar shalav."
+  },
+  "61": {
+    "text": "הפנקייק הראשון תמיד יוצא הכי גרוע.",
+    "romanization": "hapankeyk harishon tamid yotze hachi garu'a."
+  },
+  "62": {
+    "text": "היא המציאה את הרוטב בטעות.",
+    "romanization": "hi himtzi'a et harotev beta'ut."
+  },
+  "63": {
+    "text": "הוא לימד את עצמו לאפות במהלך החורף.",
+    "romanization": "hu limed et atzmo le'efot bemahalach hachoref."
+  },
+  "64": {
+    "text": "ספר הבישול נפתח מעצמו לאותו עמוד.",
+    "romanization": "sefer habishul niftach me'atzmo le'oto amud."
+  },
+  "65": {
+    "text": "הכפלתי את המתכון ויצא לי יותר מדי.",
+    "romanization": "kfaleti et hamatkon veyatza li yoter midai."
+  },
+  "66": {
+    "text": "הסרטון הראה לי איך לקפל דמפלינג.",
+    "romanization": "hasirton her'a li eich lekapel dumpling."
+  },
+  "67": {
+    "text": "הוא שוקל הכל עם משקל קטן.",
+    "romanization": "hu shokel hakol im mishkal katan."
+  },
+  "68": {
+    "text": "היא מבשלת לפי הריח יותר מאשר לפי השעון.",
+    "romanization": "hi mevashelet lefi hari'ach yoter me'asher lefi hasha'on."
+  },
+  "69": {
+    "text": "ניסיתי תבלין חדש וזה עבד.",
+    "romanization": "nisiti tavlin chadash veze avad."
+  },
+  "70": {
+    "text": "הלחם לא תפח בפעם הראשונה.",
+    "romanization": "halechem lo tafach bapa'am harishona."
+  },
+  "71": {
+    "text": "היא טעמה תוך כדי והתאימה.",
+    "romanization": "hi ta'ama toch kedei vehit'ima."
+  },
+  "72": {
+    "text": "הוא למד את המנה הזו מסבתא שלו.",
+    "romanization": "hu lamad et hamana hazot misavta shelo."
+  },
+  "73": {
+    "text": "המתכון עבר מדור לדור על כרטיס קטן.",
+    "romanization": "hamatkon avar midor ledor al kartis katan."
+  },
+  "74": {
+    "text": "לבשל לאדם אחד זו אמנות אחרת.",
+    "romanization": "levashel le'adam echad zo omanut acheret."
+  },
+  "75": {
+    "text": "ארוחת הערב מוכנה בעוד חמש דקות.",
+    "romanization": "aruchat ha'erev muchana be'od chamesh dakot."
+  },
+  "76": {
+    "text": "בבקשה תעביר לי את הלחם.",
+    "romanization": "bevakasha ta'avir li et halechem."
+  },
+  "77": {
+    "text": "המטבח הוא החדר הכי חם בבית.",
+    "romanization": "hamitbach hu hacheder hachi cham babayit."
+  },
+  "78": {
+    "text": "אכלנו בחוץ בזמן שהשמש שקעה.",
+    "romanization": "achalnu bachutz bizman shehashemesh shaka'a."
+  },
+  "79": {
+    "text": "כולם עזרו עם הכלים.",
+    "romanization": "kulam azru im hakelim."
+  },
+  "80": {
+    "text": "היא תמיד מבשלת יותר מדי, בכוונה.",
+    "romanization": "hi tamid mevashelet yoter midai, bekavana."
+  },
+  "81": {
+    "text": "הוא תמיד מביא בקבוק יין.",
+    "romanization": "hu tamid mevi bakbuk yayin."
+  },
+  "82": {
+    "text": "הילדים אכלו שלוש מנות.",
+    "romanization": "hayeladim achlu shalosh manot."
+  },
+  "83": {
+    "text": "הנרות נשרפו עד הסוף.",
+    "romanization": "hanerot nisrefu ad hasof."
+  },
+  "84": {
+    "text": "דיברנו הרבה אחרי שפינו את הצלחות.",
+    "romanization": "dibarnu harbe acharei shepinu et hatzalachot."
+  },
+  "85": {
+    "text": "הסכין חדה יותר ממה שהיא נראית.",
+    "romanization": "hasakin chada yoter mimaha shehi nir'et."
+  },
+  "86": {
+    "text": "השתמשו בכף עץ לרוטב.",
+    "romanization": "hishtamshu bekaf etz larotev."
+  },
+  "87": {
+    "text": "מחבת הברזל יצוק כבדה אבל שווה את זה.",
+    "romanization": "machvat habarzel yatzuk kveda aval shava et ze."
+  },
+  "88": {
+    "text": "הוא שומר את התבלינים במגירה קטנה.",
+    "romanization": "hu shomer et hatavlinim bemegira ktana."
+  },
+  "89": {
+    "text": "קרש חיתוך טוב עושה הכל קל יותר.",
+    "romanization": "kerash chituch tov ose hakol kal yoter."
+  },
+  "90": {
+    "text": "התנור סוף סוף חם מספיק.",
+    "romanization": "hatanur sof sof cham maspik."
+  },
+  "91": {
+    "text": "הבלנדר מתקשה עם שקדים שלמים.",
+    "romanization": "hablender mitkashe im shkedim shlemim."
+  },
+  "92": {
+    "text": "היא ניגבה את השיש עם מטלית לחה.",
+    "romanization": "hi nigva et hashayish im matlit lacha."
+  },
+  "93": {
+    "text": "המסננת נמצאת במגירה השנייה.",
+    "romanization": "hamasnenet nimtzeit bamegira hashniya."
+  },
+  "94": {
+    "text": "אל תשכחו את כפפות התנור.",
+    "romanization": "al tishkechu et kfafot hatanur."
+  },
+  "95": {
+    "text": "בישול זה בעיקר סבלנות.",
+    "romanization": "bishul ze be'ikar savlanut."
+  },
+  "96": {
+    "text": "אותם מרכיבים יוצרים מנות שונות בידיים שונות.",
+    "romanization": "otam markivim yotzrim manot shonot beyadayim shonot."
+  },
+  "97": {
+    "text": "מלח זה הדבר הראשון שמתקנים.",
+    "romanization": "melach ze hadavar harishon shemetaknim."
+  },
+  "98": {
+    "text": "טעמו לפני שאתם מוסיפים עוד.",
+    "romanization": "ta'amu lifnei she'atem mosifim od."
+  },
+  "99": {
+    "text": "ארוחה פשוטה שנאכלת לאט היא ניצחון קטן.",
+    "romanization": "arucha pshuta shene'echelet le'at hi nitzachon katan."
+  }
+}

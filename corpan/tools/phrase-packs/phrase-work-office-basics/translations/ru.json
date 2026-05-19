@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Встреча начнётся через десять минут.",
+    "romanization": "Vstrecha nachnëtsya cherez desyatʹ minut."
+  },
+  "1": {
+    "text": "Можете показать свой экран?",
+    "romanization": "Mozhete pokazatʹ svoy ekran?"
+  },
+  "2": {
+    "text": "Извините, я был на мьюте.",
+    "romanization": "Izvinite, ya byl na mʹyute."
+  },
+  "3": {
+    "text": "Мы выбиваемся из графика.",
+    "romanization": "My vybivayemsya iz grafika."
+  },
+  "4": {
+    "text": "Давайте перенесём это на следующую встречу.",
+    "romanization": "Davayte perenesyom eto na sleduyushchuyu vstrechu."
+  },
+  "5": {
+    "text": "Я буду записывать.",
+    "romanization": "Ya budu zapisyvatʹ."
+  },
+  "6": {
+    "text": "Давайте пройдёмся по кругу?",
+    "romanization": "Davayte proydyomsya po krugu?"
+  },
+  "7": {
+    "text": "Повестка дня есть в приглашении на встречу.",
+    "romanization": "Povestka dnya yestʹ v priglashenii na vstrechu."
+  },
+  "8": {
+    "text": "Кто ведёт эту встречу?",
+    "romanization": "Kto vedyot etu vstrechu?"
+  },
+  "9": {
+    "text": "Мы это записываем?",
+    "romanization": "My eto zapisyvayem?"
+  },
+  "10": {
+    "text": "Связь оборвалась на середине.",
+    "romanization": "Svyazʹ oborvalasʹ na seredine."
+  },
+  "11": {
+    "text": "Можем сдвинуть это на пятнадцать минут?",
+    "romanization": "Mozhem sdvignutʹ eto na pyatnadtsatʹ minut?"
+  },
+  "12": {
+    "text": "Он опоздал, но зашёл тихо.",
+    "romanization": "On opozdal, no zashyol tikho."
+  },
+  "13": {
+    "text": "Комната снова забронирована дважды.",
+    "romanization": "Komnata snova zabronirovana dvazhdy."
+  },
+  "14": {
+    "text": "Давайте отложим это и вернёмся к этому позже.",
+    "romanization": "Davayte otlozhim eto i vernyomsya k etomu pozzhe."
+  },
+  "15": {
+    "text": "Мне нужно закончить ровно в три.",
+    "romanization": "Mne nuzhno zakonchitʹ rovno v tri."
+  },
+  "16": {
+    "text": "Можешь остаться на пару минут после?",
+    "romanization": "Mozheshʹ ostatʹsya na paru minut posle?"
+  },
+  "17": {
+    "text": "Доска заполнена.",
+    "romanization": "Doska zapolnena."
+  },
+  "18": {
+    "text": "Можете подвести итоги по задачам?",
+    "romanization": "Mozhete podvesti itogi po zadacham?"
+  },
+  "19": {
+    "text": "Встречи стоя на удивление быстрые.",
+    "romanization": "Vstrechi stoya na udivleniye bystryye."
+  },
+  "20": {
+    "text": "Я отвечу тебе до конца дня.",
+    "romanization": "Ya otvechu tebe do kontsa dnya."
+  },
+  "21": {
+    "text": "Моё последнее письмо дошло?",
+    "romanization": "Moyo posledneye pisʹmo doshlo?"
+  },
+  "22": {
+    "text": "Извините за поздний ответ.",
+    "romanization": "Izvinite za pozdniy otvet."
+  },
+  "23": {
+    "text": "Подключаю Сару к этому вопросу.",
+    "romanization": "Podklyuchayu Saru k etomu voprosu."
+  },
+  "24": {
+    "text": "Вложение не дошло.",
+    "romanization": "Vlozheniye ne doshlo."
+  },
+  "25": {
+    "text": "Я пометил это как срочное.",
+    "romanization": "Ya pometil eto kak srochnoye."
+  },
+  "26": {
+    "text": "Можете переслать этот файл?",
+    "romanization": "Mozhete pereslatʹ etot fayl?"
+  },
+  "27": {
+    "text": "Переписка стала слишком длинной, позвольте мне подвести итог.",
+    "romanization": "Perepiska stala slishkom dlinnoy, pozvolʹte mne podvesti itog."
+  },
+  "28": {
+    "text": "Используй тему письма, чтобы я мог его найти.",
+    "romanization": "Ispolʹzuy temu pisʹma, chtoby ya mog ego nayti."
+  },
+  "29": {
+    "text": "Он разобрал свою почту за выходные.",
+    "romanization": "On razobral svoyu pochtu za vykhodnyye."
+  },
+  "30": {
+    "text": "Пожалуйста, ответьте до пятницы.",
+    "romanization": "Pozhaluysta, otvetʹte do pyatnitsy."
+  },
+  "31": {
+    "text": "Я пришлю короткое сообщение, когда это будет готово.",
+    "romanization": "Ya prishlyu korotkoye soobshcheniye, kogda eto budet gotovo."
+  },
+  "32": {
+    "text": "Автоответчик говорит, что он в командировке.",
+    "romanization": "Avtootvetchik govorit, chto on v komandirovke."
+  },
+  "33": {
+    "text": "Она случайно отправила копию не тому.",
+    "romanization": "Ona sluchayno otpravila kopiyu ne tomu."
+  },
+  "34": {
+    "text": "Трёх напоминаний достаточно.",
+    "romanization": "Tryokh napominaniy dostatochno."
+  },
+  "35": {
+    "text": "Можете переслать мне эту переписку?",
+    "romanization": "Mozhete pereslatʹ mne etu perepisku?"
+  },
+  "36": {
+    "text": "Для этого чат быстрее, чем электронная почта.",
+    "romanization": "Dlya etogo chat bystreye, chem elektronnaya pochta."
+  },
+  "37": {
+    "text": "Я пропустил твоё сообщение в этом потоке.",
+    "romanization": "Ya propustil tvoyo soobshcheniye v etom potoke."
+  },
+  "38": {
+    "text": "Ссылка в твоём письме ведёт на несуществующую страницу.",
+    "romanization": "Ssylka v tvoyom pisʹme vedyot na nesushchestvuyushchuyu stranitsu."
+  },
+  "39": {
+    "text": "Пожалуйста, подтвердите получение.",
+    "romanization": "Pozhaluysta, podtverdite polucheniye."
+  },
+  "40": {
+    "text": "Крайний срок — пятница, полдень.",
+    "romanization": "Krayniy srok — pyatnitsa, poldenʹ."
+  },
+  "41": {
+    "text": "Первый черновик будет готов к среде.",
+    "romanization": "Pervyy chernovik budet gotov k srede."
+  },
+  "42": {
+    "text": "Нам нужно что-то выпустить на этой неделе.",
+    "romanization": "Nam nuzhno chto-to vypustitʹ na etoy nedele."
+  },
+  "43": {
+    "text": "Проект задержался на день.",
+    "romanization": "Proyekt zaderzhalsya na denʹ."
+  },
+  "44": {
+    "text": "Можешь вычитать это, прежде чем я отправлю?",
+    "romanization": "Mozheshʹ vychitatʹ eto, prezhde chem ya otpravlyu?"
+  },
+  "45": {
+    "text": "Я должен тебе обновить статус.",
+    "romanization": "Ya dolzhen tebe obnovitʹ status."
+  },
+  "46": {
+    "text": "Цифры не совпадают с тем, что я отправлял на прошлой неделе.",
+    "romanization": "Tsifry ne sovpadayut s tem, chto ya otpravlyal na proshloy nedele."
+  },
+  "47": {
+    "text": "Мы ждём решения клиента.",
+    "romanization": "My zhdëm resheniya klienta."
+  },
+  "48": {
+    "text": "Он работал во время обеда, чтобы закончить это.",
+    "romanization": "On rabotal vo vremya obeda, chtoby zakonchitʹ eto."
+  },
+  "49": {
+    "text": "Отчёт наконец-то не на мне.",
+    "romanization": "Otchyot nakonets-to ne na mne."
+  },
+  "50": {
+    "text": "Я начну, как только получу одобрение.",
+    "romanization": "Ya nachnu, kak tolʹko poluchu odobreniye."
+  },
+  "51": {
+    "text": "Можете утвердить эту версию?",
+    "romanization": "Mozhete utverditʹ etu versiyu?"
+  },
+  "52": {
+    "text": "Она заметила опечатку прямо перед выпуском.",
+    "romanization": "Ona zametila opechatku pryamo pered vypuskom."
+  },
+  "53": {
+    "text": "Мы перенесли запуск на следующий вторник.",
+    "romanization": "My perenesli zapusk na sleduyushchiy vtornik."
+  },
+  "54": {
+    "text": "Оценка отличалась в два раза.",
+    "romanization": "Otsenka otlichalasʹ v dva raza."
+  },
+  "55": {
+    "text": "Он освободил вторую половину дня, чтобы сосредоточиться.",
+    "romanization": "On osvobodil vtoruyu polovinu dnya, chtoby sosredotochitʹsya."
+  },
+  "56": {
+    "text": "Контракт вернулся подписанным.",
+    "romanization": "Kontrakt vernulsya podpisannym."
+  },
+  "57": {
+    "text": "Давайте считать это сделанным и двигаться дальше.",
+    "romanization": "Davayte schitatʹ eto sdelannym i dvigatʹsya dalʹshe."
+  },
+  "58": {
+    "text": "Первая версия сырая, но работает.",
+    "romanization": "Pervaya versiya syraya, no rabotayet."
+  },
+  "59": {
+    "text": "На этот раз он сдал работу раньше срока.",
+    "romanization": "Na etot raz on sdal rabotu ranʹshe sroka."
+  },
+  "60": {
+    "text": "Добро пожаловать в команду.",
+    "romanization": "Dobro pozhalovatʹ v komandu."
+  },
+  "61": {
+    "text": "Я познакомлю тебя с остальными.",
+    "romanization": "Ya poznakomlyu tebya s ostalʹnymi."
+  },
+  "62": {
+    "text": "Она только что вернулась из отпуска.",
+    "romanization": "Ona tolʹko chto vernulasʹ iz otpuska."
+  },
+  "63": {
+    "text": "Это тот человек, к кому нужно обратиться по этому вопросу.",
+    "romanization": "Eto tot chelovek, k komu nuzhno obratitʹsya po etomu voprosu."
+  },
+  "64": {
+    "text": "По вторникам мы делим один стол.",
+    "romanization": "Po vtornikam my delim odin stol."
+  },
+  "65": {
+    "text": "Кто лучше всех разбирается в ценообразовании?",
+    "romanization": "Kto luchshe vsekh razbirayetsya v tsenoobrazovanii?"
+  },
+  "66": {
+    "text": "Он всегда приносит кофе для команды.",
+    "romanization": "On vsegda prinosit kofe dlya komandy."
+  },
+  "67": {
+    "text": "Новый сотрудник быстро учится.",
+    "romanization": "Novyy sotrudnik bystro uchitsya."
+  },
+  "68": {
+    "text": "Она тесно сотрудничает с отделом маркетинга.",
+    "romanization": "Ona tesno sotrudnichayet s otdelom marketinga."
+  },
+  "69": {
+    "text": "Он здесь дольше всех.",
+    "romanization": "On zdesʹ dolʹshe vsekh."
+  },
+  "70": {
+    "text": "Они разделили работу ровно пополам.",
+    "romanization": "Oni razdelili rabotu rovno popolam."
+  },
+  "71": {
+    "text": "Мы пообедали и набросали это.",
+    "romanization": "My poobedali i nabrosali eto."
+  },
+  "72": {
+    "text": "Он подменял меня, пока я болел.",
+    "romanization": "On podmenyal menya, poka ya bolel."
+  },
+  "73": {
+    "text": "Команда собралась вокруг ноутбука.",
+    "romanization": "Komanda sobralasʹ vokrug noutbuka."
+  },
+  "74": {
+    "text": "Она помнит дни рождения всех.",
+    "romanization": "Ona pomnit dni rozhdeniya vsekh."
+  },
+  "75": {
+    "text": "Завтра я подключусь удалённо.",
+    "romanization": "Zavtra ya podklyuchusʹ udalënno."
+  },
+  "76": {
+    "text": "По пятницам офис в основном пустой.",
+    "romanization": "Po pyatnitsam ofis v osnovnom pustoy."
+  },
+  "77": {
+    "text": "Мой интернет сегодня нестабилен.",
+    "romanization": "Moy internet segodnya nestabilen."
+  },
+  "78": {
+    "text": "Он работает из другого города.",
+    "romanization": "On rabotayet iz drugogo goroda."
+  },
+  "79": {
+    "text": "Команда встречается лично раз в месяц.",
+    "romanization": "Komanda vstrechayetsya lichno raz v mesyats."
+  },
+  "80": {
+    "text": "Она обустроила уголок спальни под рабочий стол.",
+    "romanization": "Ona obustroila ugolok spalʹni pod rabochiy stol."
+  },
+  "81": {
+    "text": "Домашний офис наконец-то в порядке.",
+    "romanization": "Domashniy ofis nakonets-to v poryadke."
+  },
+  "82": {
+    "text": "Можете включить камеру?",
+    "romanization": "Mozhete vklyuchitʹ kameru?"
+  },
+  "83": {
+    "text": "Фоновый шум — это нормально, не беспокойтесь.",
+    "romanization": "Fonovyy shum — eto normalʹno, ne bespokoytesʹ."
+  },
+  "84": {
+    "text": "Мы быстро созваниваемся каждое утро.",
+    "romanization": "My bystro sozvanivayemsya kazhdoye utro."
+  },
+  "85": {
+    "text": "Принтер снова зажевал бумагу.",
+    "romanization": "Printer snova zazheval bumagu."
+  },
+  "86": {
+    "text": "В кофемашине закончились зёрна.",
+    "romanization": "V kofemashine zakonchilisʹ zyorná."
+  },
+  "87": {
+    "text": "Можете открыть дверь?",
+    "romanization": "Mozhete otkrytʹ dverʹ?"
+  },
+  "88": {
+    "text": "Окно в конференц-зале не открывается.",
+    "romanization": "Okno v konferents-zale ne otkryvayetsya."
+  },
+  "89": {
+    "text": "Кто-то оставил свой обед в холодильнике на неделю.",
+    "romanization": "Kto-to ostavil svoy obed v kholodilʹnike na nedelyu."
+  },
+  "90": {
+    "text": "На кухне тихо в три часа.",
+    "romanization": "Na kukhne tikho v tri chasa."
+  },
+  "91": {
+    "text": "Он пошёл по лестнице, чтобы проветрить голову.",
+    "romanization": "On poshyol po lestnitse, chtoby provetritʹ golovu."
+  },
+  "92": {
+    "text": "Растение на подоконнике хорошо себя чувствует.",
+    "romanization": "Rasteniye na podokonnike khorosho sebya chuvstvuyet."
+  },
+  "93": {
+    "text": "Можете расписаться за посылку на ресепшене?",
+    "romanization": "Mozhete raspisatʹsya za posylku na resepshene?"
+  },
+  "94": {
+    "text": "Считыватель пропусков барахлит.",
+    "romanization": "Schityvatelʹ propuskov barakhlit."
+  },
+  "95": {
+    "text": "Конец дня всегда подкрадывается незаметно.",
+    "romanization": "Konets dnya vsegda podkradyvayetsya nezametno."
+  },
+  "96": {
+    "text": "Он лучше всего работает, когда открыто только одно окно.",
+    "romanization": "On luchshe vsego rabotayet, kogda otkryto tolʹko odno okno."
+  },
+  "97": {
+    "text": "Она зажигает свечу, чтобы отметить начало дня.",
+    "romanization": "Ona zazhigayet svechu, chtoby otmetitʹ nachalo dnya."
+  },
+  "98": {
+    "text": "Короткая прогулка после обеда помогает мне думать.",
+    "romanization": "Korotkaya progulka posle obeda pomogayet mne dumatʹ."
+  },
+  "99": {
+    "text": "Некоторые понедельники начинаются с маленькой победы.",
+    "romanization": "Nekotoryye ponedelʹniki nachinayutsya s malenʹkoy pobedy."
+  }
+}

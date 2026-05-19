@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "Kad više ljudi nešto želi, cijene rastu.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Kad ponuda raste, cijene obično padaju.",
+    "romanization": null
+  },
+  "2": {
+    "text": "Popust potiče više ljudi na kupnju.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Isti proizvod košta različito u različitim gradovima.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Potražnja se može promijeniti preko noći.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Prodavači podižu cijene kad zalihe opadnu.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Kupci traže najbolju ponudu.",
+    "romanization": null
+  },
+  "7": {
+    "text": "Ponekad je visoka cijena znak kvalitete.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Ponekad je visoka cijena samo marketinški trik.",
+    "romanization": null
+  },
+  "9": {
+    "text": "Besplatna dostava mijenja doživljaj kupnje.",
+    "romanization": null
+  },
+  "10": {
+    "text": "Cijena rijetko predstavlja ukupan trošak.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Vrijeme je također vrsta troška.",
+    "romanization": null
+  },
+  "12": {
+    "text": "Dugačak red je ono što plaćate kad je cijena preniska.",
+    "romanization": null
+  },
+  "13": {
+    "text": "Akcije potiču ljude da kupuju stvari koje nisu planirali.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Ljudi jače reagiraju na gubitak novca nego na njegov dobitak.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Cijene u dolarima i cijene u vašoj lokalnoj valuti doživljavaju se drugačije.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Mali dnevni trošak se zbroji u veliku svotu tijekom godine.",
+    "romanization": null
+  },
+  "17": {
+    "text": "Prva prodaja u danu važnija je od zadnje.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Mnoge male kupnje kriju jednu veliku naviku.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Najjeftinija opcija ponekad na kraju ispadne najskuplja.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Novac je samo dogovor koji svi dijelimo.",
+    "romanization": null
+  },
+  "21": {
+    "text": "Štednja je plaćanje vašem budućem ja.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Budžet je plan, a ne kazna.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Složena kamata je strpljenje s malim motorom.",
+    "romanization": null
+  },
+  "24": {
+    "text": "Inflacija polako nagriza novac koji se drži u gotovini.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Kredit je posuđivanje od vašeg budućeg ja.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Kamata je najamnina za posuđeni novac.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Ona prati svaki trošak mjesec dana kako bi vidjela obrazac.",
+    "romanization": null
+  },
+  "28": {
+    "text": "On štedi fiksni iznos svake plaće prije bilo čega drugog.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Hitni fondovi čine male katastrofe manje bolnima.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Trošiti malo manje često je lakše nego zaraditi više.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Povišica može nestati u većim troškovima.",
+    "romanization": null
+  },
+  "32": {
+    "text": "Otplatio je kredit ranije i osjećao se lakše.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Većina ljudi precjenjuje disciplinu za sljedeću godinu.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Novčane brige se smanjuju kad imate plan.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Tržište je samo mjesto gdje se susreću kupci i prodavači.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Online trgovine su tržišta bez zidova.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Specijalizacija je razlog zašto je većina stvari jeftina.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Ljudi trguju za stvari koje sami ne proizvode.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Plaće odražavaju ono što je netko plaćen, ne uvijek ono što vrijedi.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Neki poslovi su dobro plaćeni jer ih malo ljudi želi.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Neki poslovi su dobro plaćeni jer ih malo ljudi može raditi.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Tržište ne nagrađuje uvijek najkorisniji rad.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Nova tehnologija može brzo uništiti staru industriju.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Ljudi se često sele tamo gdje ima posla.",
+    "romanization": null
+  },
+  "45": {
+    "text": "Mala poduzeća čine većinu gospodarstva.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Dobar zaposlenik uštedi više nego što košta.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Pregovaranje je dio svakog posla.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Dodatni prihod daje vam opcije.",
+    "romanization": null
+  },
+  "49": {
+    "text": "Davanje otkaza je ponekad potez s najvećim utjecajem.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Ljudi reagiraju na poticaje, čak i male.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Besplatno je čarobna riječ.",
+    "romanization": null
+  },
+  "52": {
+    "text": "Prvi besplatni mjesec mijenja mnoge odluke.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Pretplate su osmišljene da se zaborave.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Okrugli brojevi djeluju veće nego što jesu.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Utopljeni troškovi ne bi trebali utjecati na sljedeći potez.",
+    "romanization": null
+  },
+  "56": {
+    "text": "Mala naknada mijenja učestalost dolazaka ljudi.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Napojnica mijenja računicu obroka.",
+    "romanization": null
+  },
+  "58": {
+    "text": "Ljudi dijele kad je dijeljenje lako.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Red vam govori što ljudi danas cijene.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Ponude ograničenog trajanja namjerno stvaraju osjećaj hitnosti.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Programi vjernosti nagrađuju ono što bi se ionako dogodilo.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Zadane opcije odlučuju više nego što ljudi shvaćaju.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Recenzije više pomiču potražnju nego oglasi.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Usmena predaja i dalje pobjeđuje većinu marketinga.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Gospodarstvo raste nekih godina, a smanjuje se drugih.",
+    "romanization": null
+  },
+  "66": {
+    "text": "Recesije uče lekcije koje procvati zaboravljaju.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Dugoročni rast podiže sve, polako.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Dobici u produktivnosti skrivaju se u alatima i navikama.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Nove ideje su jedini održivi izvor rasta.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Procvat može prikriti mnogo loših odluka.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Padovi prvo kažnjavaju najzaduženije.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Jeftin novac obično pronalazi rizične namjene.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Mjehur je teško vidjeti iznutra.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Oporavak je neujednačen u različitim industrijama i regijama.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Zemlje trguju jer obje strane dobivaju.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Carine podižu cijene kupcima kod kuće.",
+    "romanization": null
+  },
+  "77": {
+    "text": "Tečajevi mijenjaju cijenu uvoza.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Slaba valuta pomaže izvoznicima, a šteti uvoznicima.",
+    "romanization": null
+  },
+  "79": {
+    "text": "Strana ulaganja mogu izgraditi ili opteretiti gospodarstvo.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Doznake podržavaju mnoge obitelji preko granica.",
+    "romanization": null
+  },
+  "81": {
+    "text": "Sankcije više pogađaju obične ljude nego vođe.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Globalni opskrbni lanci pucaju na iznenađujućim mjestima.",
+    "romanization": null
+  },
+  "83": {
+    "text": "Nestašica u jednoj zemlji može pomaknuti cijene posvuda.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Neke se industrije s razlogom grupiraju u jednoj regiji.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Nejednakost tiho raste kad nitko ne gleda.",
+    "romanization": null
+  },
+  "86": {
+    "text": "Porezi su cijena javnih dobara.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Javna dobra su ona koja ne možemo lako kupiti pojedinačno.",
+    "romanization": null
+  },
+  "88": {
+    "text": "Eksternalije su troškovi koje nitko nije tražio platiti.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Mali tržišni neuspjeh može imati ogromne posljedice.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Slobodno tržište treba pravila da bi ostalo slobodno.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Informacije se neravnomjerno dijele između kupaca i prodavača.",
+    "romanization": null
+  },
+  "92": {
+    "text": "Povjerenje smanjuje troškove svake transakcije.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Ugled je podcijenjena imovina.",
+    "romanization": null
+  },
+  "94": {
+    "text": "Cijena pažnje je porasla.",
+    "romanization": null
+  },
+  "95": {
+    "text": "Najvažnija tržišta često nemaju cijene.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Vrijeme i briga su među najrjeđim resursima.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Ekonomske odluke su također moralne odluke.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Ekonomija su samo ljudi koji rade stvari jedni za druge.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Jednostavan budžet mijenja više nego bilo koja složena teorija.",
+    "romanization": null
+  }
+}

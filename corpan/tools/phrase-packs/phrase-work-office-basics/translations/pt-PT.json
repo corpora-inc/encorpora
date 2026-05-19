@@ -1,0 +1,402 @@
+{
+  "0": {
+    "text": "A reunião começa em dez minutos.",
+    "romanization": null
+  },
+  "1": {
+    "text": "Podes partilhar o teu ecrã?",
+    "romanization": null
+  },
+  "2": {
+    "text": "Desculpa, estava com o microfone desligado.",
+    "romanization": null
+  },
+  "3": {
+    "text": "Estamos a exceder o tempo.",
+    "romanization": null
+  },
+  "4": {
+    "text": "Vamos deixar isso para a próxima reunião.",
+    "romanization": null
+  },
+  "5": {
+    "text": "Eu tiro notas.",
+    "romanization": null
+  },
+  "6": {
+    "text": "Podemos fazer uma ronda?",
+    "romanization": null
+  },
+  "7": {
+    "text": "A agenda está no convite do calendário.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Quem está a liderar isto?",
+    "romanization": null
+  },
+  "9": {
+    "text": "Estamos a gravar isto?",
+    "romanization": null
+  },
+  "10": {
+    "text": "A chamada caiu a meio.",
+    "romanization": null
+  },
+  "11": {
+    "text": "Podemos adiar isto quinze minutos?",
+    "romanization": null
+  },
+  "12": {
+    "text": "Ele chegou atrasado, mas em silêncio.",
+    "romanization": null
+  },
+  "13": {
+    "text": "A sala está novamente com reserva dupla.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Vamos deixar isso para depois e voltamos ao assunto.",
+    "romanization": null
+  },
+  "15": {
+    "text": "Tenho de sair impreterivelmente às três.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Podes ficar dois minutos depois?",
+    "romanization": null
+  },
+  "17": {
+    "text": "O quadro branco está cheio.",
+    "romanization": null
+  },
+  "18": {
+    "text": "Podes resumir as ações a tomar?",
+    "romanization": null
+  },
+  "19": {
+    "text": "As reuniões em pé são surpreendentemente rápidas.",
+    "romanization": null
+  },
+  "20": {
+    "text": "Respondo-te até ao fim do dia.",
+    "romanization": null
+  },
+  "21": {
+    "text": "O meu último e-mail chegou?",
+    "romanization": null
+  },
+  "22": {
+    "text": "Desculpa a demora na resposta.",
+    "romanization": null
+  },
+  "23": {
+    "text": "Vou pôr a Sara a par disto.",
+    "romanization": null
+  },
+  "24": {
+    "text": "O anexo não chegou.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Marquei como urgente.",
+    "romanization": null
+  },
+  "26": {
+    "text": "Podes reenviar esse ficheiro?",
+    "romanization": null
+  },
+  "27": {
+    "text": "A conversa ficou longa, deixa-me resumir.",
+    "romanization": null
+  },
+  "28": {
+    "text": "Usa o assunto para que eu o possa encontrar.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Ele limpou a caixa de entrada durante o fim de semana.",
+    "romanization": null
+  },
+  "30": {
+    "text": "Por favor, responde até sexta-feira.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Envio uma nota curta quando estiver pronto.",
+    "romanization": null
+  },
+  "32": {
+    "text": "A resposta automática diz que ele está a viajar.",
+    "romanization": null
+  },
+  "33": {
+    "text": "Ela pôs a pessoa errada em cópia por engano.",
+    "romanization": null
+  },
+  "34": {
+    "text": "Três lembretes são suficientes.",
+    "romanization": null
+  },
+  "35": {
+    "text": "Podes reencaminhar-me a conversa?",
+    "romanization": null
+  },
+  "36": {
+    "text": "O chat é mais rápido que o e-mail para isto.",
+    "romanization": null
+  },
+  "37": {
+    "text": "Perdi a tua mensagem no meio de tanta coisa.",
+    "romanization": null
+  },
+  "38": {
+    "text": "O link no teu e-mail leva a uma página que não existe.",
+    "romanization": null
+  },
+  "39": {
+    "text": "Por favor, confirma que recebeste isto.",
+    "romanization": null
+  },
+  "40": {
+    "text": "O prazo é sexta-feira ao meio-dia.",
+    "romanization": null
+  },
+  "41": {
+    "text": "Terei um primeiro rascunho até quarta-feira.",
+    "romanization": null
+  },
+  "42": {
+    "text": "Precisamos de lançar algo esta semana.",
+    "romanization": null
+  },
+  "43": {
+    "text": "O projeto atrasou um dia.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Podes rever isto antes de eu enviar?",
+    "romanization": null
+  },
+  "45": {
+    "text": "Devo-te uma atualização de estado.",
+    "romanization": null
+  },
+  "46": {
+    "text": "Os números não correspondem ao que enviei na semana passada.",
+    "romanization": null
+  },
+  "47": {
+    "text": "Estamos à espera de uma decisão do cliente.",
+    "romanization": null
+  },
+  "48": {
+    "text": "Ele trabalhou durante o almoço para acabar.",
+    "romanization": null
+  },
+  "49": {
+    "text": "O relatório está finalmente fora das minhas mãos.",
+    "romanization": null
+  },
+  "50": {
+    "text": "Começo assim que tiver a aprovação.",
+    "romanization": null
+  },
+  "51": {
+    "text": "Podes aprovar esta versão?",
+    "romanization": null
+  },
+  "52": {
+    "text": "Ela apanhou um erro de digitação mesmo antes de lançarmos.",
+    "romanization": null
+  },
+  "53": {
+    "text": "Adiaremos o lançamento para a próxima terça-feira.",
+    "romanization": null
+  },
+  "54": {
+    "text": "A estimativa estava errada por um fator de dois.",
+    "romanization": null
+  },
+  "55": {
+    "text": "Ele libertou a tarde para se focar.",
+    "romanization": null
+  },
+  "56": {
+    "text": "O contrato voltou assinado.",
+    "romanization": null
+  },
+  "57": {
+    "text": "Vamos dar isto por terminado e seguir em frente.",
+    "romanization": null
+  },
+  "58": {
+    "text": "A primeira versão é rudimentar, mas funciona.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Ele entregou mais cedo, pela primeira vez.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Bem-vindo(a) à equipa.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Vou apresentar-te aos outros.",
+    "romanization": null
+  },
+  "62": {
+    "text": "Ela acabou de voltar da licença.",
+    "romanization": null
+  },
+  "63": {
+    "text": "Ele é a pessoa a quem perguntar sobre isto.",
+    "romanization": null
+  },
+  "64": {
+    "text": "Partilhamos secretária às terças-feiras.",
+    "romanization": null
+  },
+  "65": {
+    "text": "Quem sabe mais sobre preços?",
+    "romanization": null
+  },
+  "66": {
+    "text": "Ele traz sempre café para a equipa.",
+    "romanization": null
+  },
+  "67": {
+    "text": "O novo colaborador aprende rápido.",
+    "romanization": null
+  },
+  "68": {
+    "text": "Ela trabalha em estreita colaboração com o marketing.",
+    "romanization": null
+  },
+  "69": {
+    "text": "Ele está cá há mais tempo do que qualquer um.",
+    "romanization": null
+  },
+  "70": {
+    "text": "Eles dividiram o trabalho exatamente ao meio.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Almoçámos e esboçámos a ideia.",
+    "romanization": null
+  },
+  "72": {
+    "text": "Ele substituiu-me enquanto estive doente.",
+    "romanization": null
+  },
+  "73": {
+    "text": "A equipa juntou-se à volta do portátil.",
+    "romanization": null
+  },
+  "74": {
+    "text": "Ela lembra-se do aniversário de toda a gente.",
+    "romanization": null
+  },
+  "75": {
+    "text": "Amanhã junto-me remotamente.",
+    "romanization": null
+  },
+  "76": {
+    "text": "O escritório está quase vazio às sextas-feiras.",
+    "romanization": null
+  },
+  "77": {
+    "text": "A minha internet está instável hoje.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Ele trabalha de uma cidade diferente.",
+    "romanization": null
+  },
+  "79": {
+    "text": "A equipa reúne-se presencialmente uma vez por mês.",
+    "romanization": null
+  },
+  "80": {
+    "text": "Ela montou um canto do quarto como secretária.",
+    "romanization": null
+  },
+  "81": {
+    "text": "O escritório em casa está finalmente arrumado.",
+    "romanization": null
+  },
+  "82": {
+    "text": "Podes ligar a tua câmara?",
+    "romanization": null
+  },
+  "83": {
+    "text": "O ruído de fundo não faz mal, não te preocupes.",
+    "romanization": null
+  },
+  "84": {
+    "text": "Fazemos um pequeno ponto de situação todas as manhãs.",
+    "romanization": null
+  },
+  "85": {
+    "text": "A impressora está encravada outra vez.",
+    "romanization": null
+  },
+  "86": {
+    "text": "A máquina de café está sem grãos.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Podes abrir a porta?",
+    "romanization": null
+  },
+  "88": {
+    "text": "A janela da sala de reuniões não abre.",
+    "romanization": null
+  },
+  "89": {
+    "text": "Alguém deixou o almoço no frigorífico durante uma semana.",
+    "romanization": null
+  },
+  "90": {
+    "text": "A cozinha está silenciosa às três horas.",
+    "romanization": null
+  },
+  "91": {
+    "text": "Ele subiu as escadas para arejar a cabeça.",
+    "romanization": null
+  },
+  "92": {
+    "text": "A planta no parapeito da janela está a crescer bem.",
+    "romanization": null
+  },
+  "93": {
+    "text": "Podes assinar uma encomenda na receção?",
+    "romanization": null
+  },
+  "94": {
+    "text": "O leitor de cartões está a dar problemas.",
+    "romanization": null
+  },
+  "95": {
+    "text": "O fim do dia chega sempre sem darmos por ela.",
+    "romanization": null
+  },
+  "96": {
+    "text": "Ele trabalha melhor com uma janela aberta de cada vez.",
+    "romanization": null
+  },
+  "97": {
+    "text": "Ela acende uma vela para assinalar o início do dia.",
+    "romanization": null
+  },
+  "98": {
+    "text": "Uma pequena caminhada depois do almoço ajuda-me a pensar.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Algumas segundas-feiras começam com uma pequena vitória.",
+    "romanization": null
+  }
+}
