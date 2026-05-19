@@ -177,6 +177,10 @@ function buildPages(outputDir) {
     version: readManifestVersion(pack),
   }));
   const isListed = (pack) => pack.listed !== false;
+  // webListed lets us hide platform-duplicate or legacy-pinned catalog
+  // entries from the public packs page while still shipping them in
+  // catalog.json / catalog-v3.json for the in-app picker.
+  const isWebListed = (pack) => isListed(pack) && pack.webListed !== false;
 
   // Load templates
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
@@ -215,7 +219,7 @@ function buildPages(outputDir) {
       avatarUrl: `${basePathWithSlash}assets/${avatarFileName}`,
     };
   });
-  const listedPacks = packsWithAssets.filter(isListed);
+  const listedPacks = packsWithAssets.filter(isWebListed);
 
   // Build Corpan page
   console.log('Building corpan/index.html...');

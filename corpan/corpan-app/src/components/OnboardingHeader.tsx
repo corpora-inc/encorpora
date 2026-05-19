@@ -57,37 +57,41 @@ export const OnboardingHeader = memo(function OnboaringHeader({
             className="sticky top-0 z-500 isolate bg-background/80 md:bg-muted/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 supports-[backdrop-filter]:md:bg-muted/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
         >
-            {/* Top row */}
-            <div className="relative mx-auto w-full max-w-xl px-4 py-3">
+            {/* Top row — grows on md+ to give iPad/desktop more breathing space.
+                Vertical padding also scales up so the buttons + title get more
+                room from the safe-area inset above. */}
+            <div className="relative mx-auto w-full max-w-xl md:max-w-3xl px-4 md:px-6 py-4 md:py-6">
                 <div className="flex items-center justify-between">
                     <Button
                         type="button"
                         variant="outline"
-                        className="h-10 px-3"
+                        className="h-10 px-3 md:h-12 md:px-4"
                         onClick={onBack}
                         aria-label="Back"
                     >
-                        {dir() === "rtl" ? <ArrowRightCircle size={20} /> :
-                            <ArrowLeftCircle size={20} />}
+                        {dir() === "rtl" ? <ArrowRightCircle className="size-5 md:size-6" /> :
+                            <ArrowLeftCircle className="size-5 md:size-6" />}
                     </Button>
 
                     <Button
                         type="button"
                         onClick={onNext}
                         disabled={!canNext}
-                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-muted disabled:bg-muted"
+                        className="h-10 px-3 md:h-12 md:px-4 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-muted disabled:bg-muted"
                         aria-label="Next"
                         aria-disabled={!canNext}
                     >
-                        {dir() === "rtl" ? <ArrowLeftCircle size={20} /> :
-                            <ArrowRightCircle size={20} />}
+                        {dir() === "rtl" ? <ArrowLeftCircle className="size-5 md:size-6" /> :
+                            <ArrowRightCircle className="size-5 md:size-6" />}
                     </Button>
                 </div>
 
-                {/* Centered title + stepper */}
-                <div className="pointer-events-none absolute left-4 right-4 top-1/2 -translate-y-1/2">
-                    <div className="mx-auto max-w-md px-15">
-                        <div className="truncate text-center text-sm font-semibold text-foreground">
+                {/* Centered title + stepper. Title container grows on md+ so
+                    longer titles get more horizontal room before the larger
+                    side buttons. */}
+                <div className="pointer-events-none absolute left-4 right-4 md:left-6 md:right-6 top-1/2 -translate-y-1/2">
+                    <div className="mx-auto max-w-md md:max-w-xl px-15 md:px-20">
+                        <div className="truncate text-center text-sm md:text-base font-semibold text-foreground">
                             {title}
                         </div>
                         <Stepper steps={steps} currentIndex={currentIndex} />
@@ -113,11 +117,11 @@ const Stepper = memo(function Stepper({
     currentIndex: number;
 }) {
     return (
-        <div className="mt-2 w-full">
+        <div className="mt-2 md:mt-3 w-full">
             <ol
                 role="list"
                 aria-label="Onboarding steps"
-                className="grid w-full gap-1"
+                className="grid w-full gap-1 md:gap-1.5"
                 style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
             >
                 {steps.map((label, i) => {
@@ -129,7 +133,7 @@ const Stepper = memo(function Stepper({
                                 aria-current={active ? "step" : undefined}
                                 aria-label={label}
                                 className={[
-                                    "block h-1.5 rounded-full",
+                                    "block h-1.5 md:h-2 rounded-full",
                                     done ? "bg-purple-500" : active ? "bg-purple-400" : "bg-muted",
                                 ].join(" ")}
                             />

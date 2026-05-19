@@ -120,6 +120,28 @@ body {
 .wizard-shell .text-5xl  { font-size: 48px; line-height: 1; }
 
 /* ──────────────────────────────────────────────────────────────────
+   Onboarding row entrance — used by OnboardingPickPrimary's stagger.
+   Kept very short and very subtle: a 4px rise + 320ms opacity fade.
+   ------------------------------------------------------------------ */
+@keyframes corpan-fade-rise {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @keyframes corpan-fade-rise {
+        from { opacity: 1; transform: none; }
+        to   { opacity: 1; transform: none; }
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────────
    3) Theme tokens (kept from your file)
    ------------------------------------------------------------------ */
 @theme inline {
