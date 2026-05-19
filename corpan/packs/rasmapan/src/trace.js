@@ -36,6 +36,10 @@ export class LetterTraceLayer {
     }));
     this.ctx = ghostCanvas.getContext("2d");
 
+    this.fxCanvas = null;          // overlay for stroke-order animation
+    this.fxCtx = null;
+    this._animOpId = 0;            // bumped to cancel in-flight animations
+
     this.writer = null;            // current glyph's writer record
     this.outlinePaths = [];        // Path2D objects for each contour
     this.strokeIndex = 0;          // index of the next expected stroke
@@ -43,6 +47,180 @@ export class LetterTraceLayer {
     this.layout = { width: 0, height: 0, padding: 0 };
     this.ghostVisible = true;
     this.dirEnabled = false;       // freedraw turns this off
+  }
+
+  setFxCanvas(fxCanvas) {
+    this.fxCanvas = fxCanvas || null;
+    this.fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
+  }
+
+  /**
+   * Animate the canonical stroke order on the fx canvas. Each
+   * median polyline is traced by a moving "pen tip" over
+   * `strokeDuration` ms, with `gapDuration` ms between strokes.
+   * Single-point medians (dots) render as a tap-and-hold pulse.
+   *
+   * Trajectories come from Calliar (MIT, https://github.com/ARBML/Calliar)
+   * via the build-side extractor — real calligraphers' hands, not
+   * font-outline guesses. Stroke order is classical Naskh: base
+   * shape first, then dots.
+   *
+   * No-ops if the writer has no medians (i.e. letters not yet
+   * Calliar-derived). The Play/Speak button still fires TTS in
+   * parallel — the animation is additive.
+   */
+  playStrokeOrder({ strokeDuration = 750, gapDuration = 200 } = {}) {
+    this.cancelAnimation();
+    if (!this.writer || !this.fxCtx) return;
+    const medians = Array.isArray(this.writer.medians) ? this.writer.medians : null;
+    if (!medians || !medians.length) return;
+    // Skip animation if any stroke is empty.
+    if (medians.some((m) => !Array.isArray(m) || m.length === 0)) return;
+
+    const layout = this._effectiveLayout();
+    const dpr = window.devicePixelRatio || 1;
+    const toCanvas = ([x, y]) => [
+      (layout.x + x * (layout.size / VIEWBOX)) * dpr,
+      (layout.y + y * (layout.size / VIEWBOX)) * dpr,
+    ];
+
+    // Pre-project each stroke into canvas pixels and pre-compute
+    // cumulative segment lengths for fast progress lookup.
+    const segments = medians.map((m) => m.map(toCanvas));
+    const cumLengths = segments.map((seg) => {
+      const lens = [0];
+      for (let i = 1; i < seg.length; i += 1) {
+        const dx = seg[i][0] - seg[i - 1][0];
+        const dy = seg[i][1] - seg[i - 1][1];
+        lens.push(lens[lens.length - 1] + Math.sqrt(dx * dx + dy * dy));
+      }
+      return lens;
+    });
+    const totalLens = cumLengths.map((c) => c[c.length - 1]);
+
+    const colors = this.getColors();
+    const trailColor = colors.strokeHighlight || "rgba(139, 105, 20, 0.85)";
+    const tipColor = colors.strokeUser || "#1a1410";
+
+    // Each stroke takes strokeDuration; dots get a shorter pulse so
+    // they don't feel artificially long.
+    const stepDurations = segments.map((seg) =>
+      seg.length <= 1 ? Math.round(strokeDuration * 0.45) : strokeDuration,
+    );
+    const startedAt = performance.now();
+    let totalDuration = 0;
+    for (let i = 0; i < stepDurations.length; i += 1) {
+      totalDuration += stepDurations[i];
+      if (i < stepDurations.length - 1) totalDuration += gapDuration;
+    }
+
+    this._animOpId += 1;
+    const opId = this._animOpId;
+
+    const tick = (now) => {
+      if (opId !== this._animOpId) return;
+      const elapsed = now - startedAt;
+      this._clearFx();
+      // Walk strokes in order, drawing each at its current progress.
+      let cursor = 0;
+      for (let s = 0; s < segments.length; s += 1) {
+        const startT = cursor;
+        cursor += stepDurations[s];
+        if (s < segments.length - 1) cursor += gapDuration;
+        const dur = stepDurations[s];
+        const localT = (elapsed - startT) / dur;
+        const progress = Math.max(0, Math.min(1, localT));
+        if (progress <= 0) continue;
+        if (segments[s].length === 1) {
+          // Dot — fade-in pulse.
+          this._drawAnimatedDot(segments[s][0], progress, tipColor);
+        } else {
+          this._drawAnimatedStroke(
+            segments[s], cumLengths[s], totalLens[s],
+            progress, trailColor, tipColor,
+          );
+        }
+      }
+
+      if (elapsed >= totalDuration) {
+        // Hold the final state for a beat, then clear.
+        setTimeout(() => {
+          if (opId !== this._animOpId) return;
+          this._clearFx();
+        }, 700);
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  cancelAnimation() {
+    this._animOpId += 1;
+    this._clearFx();
+  }
+
+  _clearFx() {
+    if (!this.fxCtx || !this.fxCanvas) return;
+    this.fxCtx.save();
+    this.fxCtx.setTransform(1, 0, 0, 1, 0, 0);
+    this.fxCtx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
+    this.fxCtx.restore();
+  }
+
+  _drawAnimatedStroke(seg, cumLen, totalLen, progress, trailColor, tipColor) {
+    if (!this.fxCtx || seg.length < 2) return;
+    const ctx = this.fxCtx;
+    const targetLen = totalLen * progress;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.strokeStyle = trailColor;
+    ctx.lineWidth = 14;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+    ctx.moveTo(seg[0][0], seg[0][1]);
+    let tip = seg[0];
+    for (let i = 1; i < seg.length; i += 1) {
+      if (cumLen[i] <= targetLen) {
+        ctx.lineTo(seg[i][0], seg[i][1]);
+        tip = seg[i];
+      } else {
+        const prev = seg[i - 1];
+        const cur = seg[i];
+        const segLen = cumLen[i] - cumLen[i - 1];
+        const remain = targetLen - cumLen[i - 1];
+        const f = segLen > 1e-6 ? remain / segLen : 0;
+        const px = prev[0] + (cur[0] - prev[0]) * f;
+        const py = prev[1] + (cur[1] - prev[1]) * f;
+        ctx.lineTo(px, py);
+        tip = [px, py];
+        break;
+      }
+    }
+    ctx.stroke();
+    // Pen tip — small filled circle to anchor the eye to the moving point.
+    ctx.fillStyle = tipColor;
+    ctx.beginPath();
+    ctx.arc(tip[0], tip[1], 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  _drawAnimatedDot(pt, progress, color) {
+    if (!this.fxCtx) return;
+    const ctx = this.fxCtx;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    // Two-phase: grow to peak at 60%, hold.
+    const peak = Math.min(1, progress / 0.6);
+    const r = 6 + peak * 8;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = Math.min(1, progress * 2);
+    ctx.beginPath();
+    ctx.arc(pt[0], pt[1], r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
   }
 
   setWriter(writer) {

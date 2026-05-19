@@ -469,13 +469,17 @@ def build_glyph_record(
             strokes = overrides["strokes"]
         if "medians" in overrides and isinstance(overrides["medians"], list):
             medians = overrides["medians"]
-    # Default to median scoring: every writer record already carries an
-    # auto-derived median polyline (from the Amiri outline contours via
-    # fontTools), and `scoring.js#scoreAgainstMedian` is fully wired.
-    # Per-letter overrides can downgrade to "outline" for letters where
-    # the auto-derived polyline turns out to be a poor approximation of
-    # actual stroke order.
-    scoring = (overrides or {}).get("scoring", "median")
+    # Default to outline scoring (permissive bbox check) for letters
+    # without an explicit override. Median scoring is only safe to
+    # enable when the writer's `medians` array reflects ACTUAL stroke
+    # order — not the geometric centerlines fontTools happens to
+    # return from the Amiri outline. Real stroke-order data comes
+    # from Calliar (https://github.com/ARBML/Calliar, MIT) via the
+    # extract/curate/compose pipeline in this directory; letters that
+    # have been processed get an override with both `medians` and
+    # `scoring: "median"`. Letters not yet processed keep the
+    # permissive outline scorer — no fake stroke order shown.
+    scoring = (overrides or {}).get("scoring", "outline")
     return {
         "letter": chr(codepoint),
         "outline": data.outline_paths,

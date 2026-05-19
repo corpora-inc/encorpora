@@ -1,0 +1,14 @@
+# Calliar dataset.zip is too large to commit (51 MB) and the
+# extracted/ tree is even larger. Both are pure build inputs;
+# the canonical stroke trajectories we derive from them live
+# in `build/seed/stroke_orders_seed.json`, which IS committed.
+#
+# To regenerate the dataset locally, run:
+#   curl -sL -o dataset.zip \
+#     https://github.com/ARBML/Calliar/raw/main/calliar_dataset/dataset.zip
+#   unzip -q dataset.zip "dataset/*" -d extracted
+#
+# Then re-run `python3 build/extract_calliar_strokes.py`.
+
+dataset.zip
+extracted/

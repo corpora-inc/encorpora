@@ -461,6 +461,20 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       try { hostApi.speak(lang, text) } catch { /* tolerated */ }
     }
 
+    // Trigger canonical stroke-order animation on the fx canvas for
+    // whichever trace layer is currently active. No-op if the
+    // writer record has no medians (i.e. letter not yet processed
+    // through the Calliar pipeline). The animation is purely
+    // decorative — it doesn't affect scoring or the user's draw
+    // strokes.
+    const playCurrentStrokeOrder = () => {
+      if (state.mode === "letters" && traceLayer) {
+        traceLayer.playStrokeOrder()
+      } else if (state.mode === "words" && wordTraceLayer) {
+        wordTraceLayer.playStrokeOrder()
+      }
+    }
+
     // --- pickByLang (juice-squeeze pattern) ------------------------------
     //
     // Choose the best translation row for a given language code,
@@ -1118,8 +1132,14 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     // --- Setup drawing/tracing ------------------------------------------
 
     const ensureCanvases = () => {
-      if (!traceLayer) traceLayer = new LetterTraceLayer(elGhost, getColors)
-      if (!wordTraceLayer) wordTraceLayer = new WordTraceLayer(elGhost, getColors)
+      if (!traceLayer) {
+        traceLayer = new LetterTraceLayer(elGhost, getColors)
+        traceLayer.setFxCanvas(elFx)
+      }
+      if (!wordTraceLayer) {
+        wordTraceLayer = new WordTraceLayer(elGhost, getColors)
+        wordTraceLayer.setFxCanvas(elFx)
+      }
       if (!drawingEngine) {
         drawingEngine = new DrawingEngine(elCanvasShell, elDraw, (stroke) => {
           // Convert into compact point array for the trace layer.
@@ -1149,6 +1169,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       if (!btn) return
       state.activeFamilyId = btn.dataset.family
       state.activePosition = "isolated"
+      if (traceLayer) traceLayer.cancelAnimation()
       renderLetterPicker()
       renderFormPicker()
       renderHero()
@@ -1203,6 +1224,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           ? state.currentWord.word
           : state.baseLetter || state.currentLetter
         if (text) speak("ar", text)
+        playCurrentStrokeOrder()
         return
       }
       if (action === "clear") {
@@ -1212,14 +1234,15 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         return
       }
       if (action === "replay") {
-        // Speak the current letter or word. The dedicated speak
-        // button (in the hero) does the same; the toolbar Play
-        // gives users a second affordance right next to the
+        // Speak the current letter or word AND animate the
+        // canonical stroke order on the fx canvas. The toolbar
+        // Play gives users a second affordance right next to the
         // canvas, useful mid-tracing without moving the cursor.
         const text = state.mode === "words" && state.currentWord
           ? state.currentWord.word
           : state.baseLetter || state.currentLetter
         if (text) speak("ar", text)
+        playCurrentStrokeOrder()
         return
       }
       if (action === "toggle-freedraw") {
@@ -1278,6 +1301,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         const next = state.families[(idx + delta + state.families.length) % state.families.length]
         state.activeFamilyId = next.id
         state.activePosition = "isolated"
+        if (traceLayer) traceLayer.cancelAnimation()
         renderLetterPicker()
         renderFormPicker()
         renderHero()
@@ -1288,6 +1312,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         if (idx < 0) return
         const next = state.words[(idx + delta + state.words.length) % state.words.length]
         state.activeWordId = next.id
+        if (wordTraceLayer) wordTraceLayer.cancelAnimation()
         renderWordPicker()
         renderHero()
         if (drawingEngine) drawingEngine.clear()
