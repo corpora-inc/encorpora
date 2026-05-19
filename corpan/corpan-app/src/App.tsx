@@ -16,6 +16,7 @@ import { getPlatformTopPaddingButtons } from "./util/browser";
 import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
+import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
@@ -91,12 +92,20 @@ export default function App() {
   const gamesMap = useGamesStore((s) => s.games);
   const catalog = useCatalogStore((s) => s.getCatalog());
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
+  const fetchPhrasePackCatalog = usePhrasePackCatalogStore(
+    (s) => s.fetchCatalog,
+  );
   const installedGames = Object.values(gamesMap);
   const updates = usePackUpdates(installedGames, catalog);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
     fetchCatalog();
+    // Phrase packs ship through a dedicated S3-hosted catalog with a
+    // shorter TTL (5 min) since the publisher rewrites it directly with
+    // no PR. Two fetches, two stores — kept independent so a v3 catalog
+    // outage can't mask phrase-pack availability and vice versa.
+    void fetchPhrasePackCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
     // Reconcile the in-memory phrase-pack registry with what's actually on
@@ -113,7 +122,7 @@ export default function App() {
         console.warn("[App] phrase-pack rehydrate failed:", err);
       }
     })();
-  }, [fetchCatalog]);
+  }, [fetchCatalog, fetchPhrasePackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without
   // this, a subscription that lapsed while the app was backgrounded (sandbox

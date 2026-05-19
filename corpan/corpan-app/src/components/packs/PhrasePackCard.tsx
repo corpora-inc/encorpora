@@ -21,7 +21,7 @@ import {
     SUBSCRIPTION_MONTHLY,
 } from "@/contentPacks/purchase";
 import { unregisterPhrasePack } from "@/contentPacks/phrasePackRegister";
-import { type CatalogV3Entry } from "@/contentPacks/catalog";
+import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useEntitlementStore } from "@/store/entitlements";
 import { useSettingsStore } from "@/store/settings";
@@ -33,7 +33,7 @@ const SUBSCRIPTION_PRODUCT_IDS = new Set<string>([
     SUBSCRIPTION_ANNUAL,
 ]);
 
-export function PhrasePackCard({ pack }: { pack: CatalogV3Entry }) {
+export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
     const { t } = useTranslation();
     const { installPackBatch, batchProgress } = useInstallContext();
 

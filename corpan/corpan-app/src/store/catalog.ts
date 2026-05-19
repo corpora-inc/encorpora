@@ -1,23 +1,14 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import {
-  fetchCatalogV3,
   fetchGameCatalog,
   type CatalogGame,
-  type CatalogV3,
 } from "../contentPacks/catalog"
 import { getNetworkStatus, listenToNetworkChanges } from "../utils/network"
 import { getAppVersion } from "../lib/appVersion"
 
 type CatalogState = {
-  /** Lossy projection — games / readers / narrations as `CatalogGame`s
-   *  for the existing UI. Keep until everything reads `rawCatalog`. */
   catalog: CatalogGame[]
-  /** Source-of-truth v3 catalog used by the phrase-pack UI surfaces, which
-   *  need fields the `CatalogGame` projection drops (entry count, language
-   *  count, level range, category/topic, tags, and top-level groupings
-   *  + `onboardingStarterPackIds`). */
-  rawCatalog: CatalogV3 | null
   lastFetched: number | null
   isOnline: boolean
   isFetching: boolean
@@ -37,7 +28,6 @@ export const useCatalogStore = create<CatalogState>()(
   persist(
     (set, get) => ({
       catalog: [],
-      rawCatalog: null,
       lastFetched: null,
       isOnline: getNetworkStatus(),
       isFetching: false,
@@ -88,19 +78,10 @@ export const useCatalogStore = create<CatalogState>()(
 
           const { devMode } = get()
           console.log("[catalog] Fetching from remote... appVersion:", appVersion, "devMode:", devMode)
-          // Two fetches share a hot CloudFront cache so this is cheap.
-          // The v3 raw fetch is what the phrase-pack UI reads. The legacy
-          // `fetchGameCatalog` projection stays in place so existing
-          // game/reader/narration UI keeps working unchanged.
-          const [catalog, rawCatalog] = await Promise.all([
-            fetchGameCatalog(appVersion, devMode),
-            fetchCatalogV3(),
-          ])
-          console.log("[catalog] Fetched catalog:", catalog,
-            "raw v3 packs:", rawCatalog?.packs.length ?? "n/a")
+          const catalog = await fetchGameCatalog(appVersion, devMode)
+          console.log("[catalog] Fetched catalog:", catalog)
           set({
             catalog,
-            rawCatalog,
             lastFetched: now,
             isFetching: false,
           })
@@ -142,7 +123,6 @@ export const useCatalogStore = create<CatalogState>()(
       clearCache: () => {
         set({
           catalog: [],
-          rawCatalog: null,
           lastFetched: null,
         })
         // Fetch fresh catalog immediately (force)
@@ -154,7 +134,6 @@ export const useCatalogStore = create<CatalogState>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         catalog: state.catalog,
-        rawCatalog: state.rawCatalog,
         lastFetched: state.lastFetched,
       }),
     }

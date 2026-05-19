@@ -40,7 +40,7 @@ import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
 import { useEntitlementStore } from "@/store/entitlements";
 import { useSettingsStore } from "@/store/settings";
-import { type CatalogV3Entry } from "@/contentPacks/catalog";
+import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 
 const CURRENT_STEP_IDX = 1; // STEPS = [learning, packs, tts, socials]
 const STEP_TTS = 4;
@@ -356,7 +356,7 @@ function PhrasePackOnboardingCard({
     selected,
     onToggle,
 }: {
-    pack: CatalogV3Entry;
+    pack: PhrasePackCatalogEntry;
     selected: boolean;
     onToggle: () => void;
 }) {
@@ -364,13 +364,13 @@ function PhrasePackOnboardingCard({
     const isPaid = pack.purchase?.type === "iap";
     const priceLabel = pack.purchase?.priceLabel;
     return (
-        <li>
+        <li className="h-full">
             <button
                 type="button"
                 onClick={onToggle}
                 aria-pressed={selected}
                 className={[
-                    "group relative w-full text-start",
+                    "group relative w-full h-full text-start",
                     "rounded-xl border bg-card p-4",
                     "flex flex-col gap-2",
                     "transition-[border-color,background-color,box-shadow,transform] duration-150",
@@ -407,11 +407,15 @@ function PhrasePackOnboardingCard({
                     </span>
                 </div>
 
-                {/* Description */}
-                {pack.description && (
-                    <p className="text-xs text-muted-foreground leading-snug line-clamp-3">
+                {/* Description — `flex-1` pushes the stat chips to the
+                    bottom edge so cards of different content lengths still
+                    line up their chip rows when stretched to equal height. */}
+                {pack.description ? (
+                    <p className="flex-1 text-xs text-muted-foreground leading-snug line-clamp-3">
                         {pack.description}
                     </p>
+                ) : (
+                    <div className="flex-1" />
                 )}
 
                 {/* Stat chips */}

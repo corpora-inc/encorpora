@@ -83,57 +83,16 @@ export type CatalogV3Entry = {
    *  trailing zeros are tolerated. Used to gate packs that need APIs from
    *  a specific iOS / Android / macOS release. */
   minOSVersion?: string
-
-  /** Free-form tags for catalog-driven badges or filtering, e.g.
-   *  `["starter", "editors-pick", "new"]`. Renderer-defined semantics. */
-  tags?: string[]
-
-  /** Compressed download size in megabytes. Used by the onboarding "Install
-   *  all (~N MB)" affordance and the Packs-tab card chip. Optional because
-   *  older catalog entries (games/readers/narrations) don't carry it. */
-  sizeMb?: number
-
-  // Phrase-pack specific metadata — populated by the publisher's
-  // `build_phrase_pack.py` → catalog-append PR. Optional everywhere so a
-  // single CatalogV3Entry type continues to cover games / readers / packs.
-  /** Authored category, e.g. "science", "humanities", "lifestyle". */
-  category?: string
-  /** Authored topic, e.g. "Botany", "Music Theory". */
-  topic?: string
-  /** CEFR range covered by the pack, e.g. "A1" / "C1". */
-  levelMin?: string
-  levelMax?: string
-  /** Number of English entries in the pack. */
-  entryCount?: number
-  /** Number of target languages the pack ships translations for. */
-  languageCount?: number
 }
 
-export type PhrasePackGroup = {
-  /** Stable group id, e.g. "starter", "sciences". */
-  id: string
-  /** Display label, e.g. "Sciences". */
-  label: string
-  /** Optional one-liner shown under the group header. */
-  description?: string
-  /** Ordered pack ids belonging to this group. Packs referenced here that
-   *  the app can't see (older `minAppVersion`, wrong platform) are simply
-   *  skipped at render time. */
-  packIds: string[]
-}
+// Phrase packs are NOT on the v3 catalog. They ship through a dedicated
+// S3-hosted catalog written directly by the publisher — see
+// `contentPacks/phrasePackCatalog.ts` and `corpan/docs/PHRASE_PACK_AUTHORING.md`.
 
 export type CatalogV3 = {
   version: 3
   generatedAt: string
   packs: CatalogV3Entry[]
-  /** Catalog-driven starter set for the onboarding pack-picker step. The
-   *  app renders these (in this order) as the initial selection on the
-   *  PhrasePacks onboarding step. Absent → step auto-skips. */
-  onboardingStarterPackIds?: string[]
-  /** Catalog-driven groupings for the Packs-tab phrase-pack browser. The
-   *  app renders each group as a labeled section. Absent → fallback to a
-   *  single "All phrase packs" group. */
-  phrasePackGroups?: PhrasePackGroup[]
 }
 
 const DEFAULT_CATALOG: CatalogGame[] = [
@@ -367,32 +326,6 @@ export const parseCatalogV2 = (data: unknown): CatalogV2 | null => {
 
 const CATALOG_V3_URL = "https://encorpora.io/corpan/packs/catalog-v3.json"
 
-const parseStringArray = (value: unknown): string[] | undefined => {
-  if (!Array.isArray(value)) return undefined
-  const out = value.filter((s): s is string => typeof s === "string" && s.length > 0)
-  return out.length ? out : undefined
-}
-
-const parsePhrasePackGroups = (value: unknown): PhrasePackGroup[] | undefined => {
-  if (!Array.isArray(value)) return undefined
-  const out: PhrasePackGroup[] = []
-  for (const item of value) {
-    if (!item || typeof item !== "object") continue
-    const r = item as Record<string, unknown>
-    const id = toStringValue(r.id)
-    const label = toStringValue(r.label)
-    const packIds = parseStringArray(r.packIds)
-    if (!id || !label || !packIds) continue
-    out.push({
-      id,
-      label,
-      description: toOptionalString(r.description),
-      packIds,
-    })
-  }
-  return out.length ? out : undefined
-}
-
 const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
   if (!item || typeof item !== "object") return null
   const r = item as Record<string, unknown>
@@ -430,14 +363,6 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     packType: toOptionalString(r.packType),
     platforms,
     minOSVersion: toOptionalString(r.minOSVersion),
-    tags: parseStringArray(r.tags),
-    sizeMb: toNumber(r.sizeMb),
-    category: toOptionalString(r.category),
-    topic: toOptionalString(r.topic),
-    levelMin: toOptionalString(r.levelMin),
-    levelMax: toOptionalString(r.levelMax),
-    entryCount: toNumber(r.entryCount),
-    languageCount: toNumber(r.languageCount),
   }
 }
 
@@ -456,49 +381,13 @@ export const parseCatalogV3 = (data: unknown): CatalogV3 | null => {
     generatedAt:
       toStringValue(record.generatedAt) || new Date().toISOString(),
     packs,
-    onboardingStarterPackIds: parseStringArray(record.onboardingStarterPackIds),
-    phrasePackGroups: parsePhrasePackGroups(record.phrasePackGroups),
   }
 }
 
-/** Apply the same app/platform/OS-version filters used by
- *  `filterCatalogForApp` but return rich `CatalogV3Entry` rows instead of
- *  the lossy `CatalogGame` projection, scoped to phrase packs only. The
- *  phrase-pack UI needs the extra fields (entry count, language count,
- *  level range, category/topic, tags). */
-export const selectPhrasePacks = (
-  v3: CatalogV3,
-  appVersion: string,
-  devMode: boolean,
-  host?: { platform?: HostPlatform; osVersion?: string },
-): CatalogV3Entry[] => {
-  const hostPlatform = host?.platform
-  const hostOsVersion = host?.osVersion
-  return v3.packs.filter((entry) => {
-    if (entry.packType !== "phrase") return false
-    if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
-    if (
-      entry.maxAppVersion &&
-      compareVersions(appVersion, entry.maxAppVersion) > 0
-    ) {
-      return false
-    }
-    if (!devMode && entry.channel === "preview") return false
-    if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
-      if (!entry.platforms.includes(hostPlatform)) return false
-    }
-    if (entry.minOSVersion && hostOsVersion) {
-      if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) return false
-    }
-    return true
-  })
-}
-
-/** Public version of the previously-private `fetchCatalogV3Raw`. Returns
- *  the parsed raw v3 catalog (no app/platform filtering applied) or null
- *  on fetch / parse failure. Consumers project as needed: game UI uses
- *  `filterCatalogForApp`; phrase-pack UI uses `selectPhrasePacks`. */
-export const fetchCatalogV3 = (): Promise<CatalogV3 | null> => fetchCatalogV3Raw()
+// Phrase packs were moved to a dedicated S3-hosted catalog in Phase B′
+// (see `contentPacks/phrasePackCatalog.ts`). The old v3-catalog phrase-pack
+// helpers (`selectPhrasePacks`, `fetchCatalogV3`) and the per-entry phrase-
+// pack extension fields were removed at the same time.
 
 export const filterCatalogForApp = (
   v3: CatalogV3,

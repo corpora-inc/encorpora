@@ -3,7 +3,8 @@ import { installPack, isTauriRuntime } from "./install"
 import { useInstallProgress } from "./installProgress"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { InstallProgressDialog } from "@/components/packs/InstallProgressDialog"
-import type { CatalogGame, CatalogV3Entry } from "./catalog"
+import type { CatalogGame } from "./catalog"
+import type { PhrasePackCatalogEntry } from "./phrasePackCatalog"
 import type { InstallSource } from "./install"
 
 export type BatchInstallProgress = {
@@ -35,7 +36,7 @@ type InstallContextValue = {
    * `batchProgress` if they want a "Installing 2 of 4…" indicator.
    * Resolves with per-pack outcomes; never throws on individual failure.
    */
-  installPackBatch: (packs: CatalogV3Entry[]) => Promise<BatchInstallResult>
+  installPackBatch: (packs: PhrasePackCatalogEntry[]) => Promise<BatchInstallResult>
   /** Current batch progress, or null when no batch is running. */
   batchProgress: BatchInstallProgress | null
   isInstalling: boolean
@@ -190,7 +191,7 @@ export function InstallProvider({
   )
 
   const installPackBatch = useCallback(
-    async (packs: CatalogV3Entry[]): Promise<BatchInstallResult> => {
+    async (packs: PhrasePackCatalogEntry[]): Promise<BatchInstallResult> => {
       const installed: string[] = []
       const failed: Array<{ id: string; error: string }> = []
       if (packs.length === 0) {
@@ -206,9 +207,9 @@ export function InstallProvider({
             packId: pack.id,
             packName: pack.name,
           })
-          const downloadUrl = pack.zipUrl ?? pack.manifestUrl
+          const downloadUrl = pack.zipUrl
           if (!downloadUrl) {
-            failed.push({ id: pack.id, error: "missing zipUrl / manifestUrl" })
+            failed.push({ id: pack.id, error: "missing zipUrl" })
             continue
           }
           try {

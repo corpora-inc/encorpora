@@ -17,7 +17,7 @@ import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { PhrasePackCard } from "./PhrasePackCard";
-import { type CatalogV3Entry } from "@/contentPacks/catalog";
+import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 
 type FilterKind = "all" | "free" | "paid" | "installed";
 
@@ -33,7 +33,7 @@ export function PhrasePackBrowser() {
     const [query, setQuery] = useState("");
     const [filter, setFilter] = useState<FilterKind>("all");
 
-    const filterPack = (pack: CatalogV3Entry): boolean => {
+    const filterPack = (pack: PhrasePackCatalogEntry): boolean => {
         // Text search
         if (query.trim()) {
             const q = query.trim().toLowerCase();
