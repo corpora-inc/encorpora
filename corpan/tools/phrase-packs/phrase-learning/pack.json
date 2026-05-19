@@ -1,0 +1,10 @@
+{
+  "id": "phrase-learning",
+  "version": "0.1.0",
+  "name": "Learning",
+  "description": "Curiosity, practice, and discovery. Phrases about picking up a skill, a subject, or a new language.",
+  "category": "personal-growth",
+  "topic": "Learning",
+  "icon": "lightbulb",
+  "accent_color": "#fbbf24"
+}

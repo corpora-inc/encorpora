@@ -1,0 +1,802 @@
+{
+  "0": {
+    "text": "Why does ice float on water?",
+    "romanization": null
+  },
+  "1": {
+    "text": "What's the difference between weather and climate?",
+    "romanization": null
+  },
+  "2": {
+    "text": "How do birds know where to migrate?",
+    "romanization": null
+  },
+  "3": {
+    "text": "Where does the river start?",
+    "romanization": null
+  },
+  "4": {
+    "text": "She wonders how the engine actually works.",
+    "romanization": null
+  },
+  "5": {
+    "text": "He stopped to watch the ants for a long time.",
+    "romanization": null
+  },
+  "6": {
+    "text": "I want to know how everything fits together.",
+    "romanization": null
+  },
+  "7": {
+    "text": "The more I look, the more I notice.",
+    "romanization": null
+  },
+  "8": {
+    "text": "Children ask the best questions.",
+    "romanization": null
+  },
+  "9": {
+    "text": "What were they thinking when they invented this?",
+    "romanization": null
+  },
+  "10": {
+    "text": "She keeps a notebook of small mysteries.",
+    "romanization": null
+  },
+  "11": {
+    "text": "There must be a reason it works that way.",
+    "romanization": null
+  },
+  "12": {
+    "text": "He took the radio apart to see inside.",
+    "romanization": null
+  },
+  "13": {
+    "text": "The night sky still surprises me.",
+    "romanization": null
+  },
+  "14": {
+    "text": "Curious people make good companions.",
+    "romanization": null
+  },
+  "15": {
+    "text": "She traced the wire from the wall to the speaker.",
+    "romanization": null
+  },
+  "16": {
+    "text": "Some questions take a lifetime to answer.",
+    "romanization": null
+  },
+  "17": {
+    "text": "I never thought about it until you asked.",
+    "romanization": null
+  },
+  "18": {
+    "text": "The library shelf is full of answers I haven't asked yet.",
+    "romanization": null
+  },
+  "19": {
+    "text": "Look closely and you'll see something new.",
+    "romanization": null
+  },
+  "20": {
+    "text": "How did people travel before maps?",
+    "romanization": null
+  },
+  "21": {
+    "text": "Even the smallest leaf has a structure.",
+    "romanization": null
+  },
+  "22": {
+    "text": "Watching the bees taught me about teamwork.",
+    "romanization": null
+  },
+  "23": {
+    "text": "He kept asking why long after the lesson ended.",
+    "romanization": null
+  },
+  "24": {
+    "text": "There's a question hiding in every machine.",
+    "romanization": null
+  },
+  "25": {
+    "text": "Twenty minutes a day is enough to start.",
+    "romanization": null
+  },
+  "26": {
+    "text": "She practices the same scale every morning.",
+    "romanization": null
+  },
+  "27": {
+    "text": "Slow practice makes fast playing.",
+    "romanization": null
+  },
+  "28": {
+    "text": "He repeated the move until it felt natural.",
+    "romanization": null
+  },
+  "29": {
+    "text": "Small steps add up over months.",
+    "romanization": null
+  },
+  "30": {
+    "text": "She set a timer and worked without checking her phone.",
+    "romanization": null
+  },
+  "31": {
+    "text": "Pick one thing and stay with it for a week.",
+    "romanization": null
+  },
+  "32": {
+    "text": "I do my hardest work in the first hour after coffee.",
+    "romanization": null
+  },
+  "33": {
+    "text": "The best practice is the kind you can keep doing.",
+    "romanization": null
+  },
+  "34": {
+    "text": "He tapes his goals to the wall above his desk.",
+    "romanization": null
+  },
+  "35": {
+    "text": "She rereads her notes once a week.",
+    "romanization": null
+  },
+  "36": {
+    "text": "Daily reps beat occasional marathons.",
+    "romanization": null
+  },
+  "37": {
+    "text": "I stretch for ten minutes before I sit down to study.",
+    "romanization": null
+  },
+  "38": {
+    "text": "Habits hide in your morning routine.",
+    "romanization": null
+  },
+  "39": {
+    "text": "He keeps a calendar with a cross for every day he practices.",
+    "romanization": null
+  },
+  "40": {
+    "text": "Repetition is boring, but it's also how you get better.",
+    "romanization": null
+  },
+  "41": {
+    "text": "She made a playlist for her practice sessions.",
+    "romanization": null
+  },
+  "42": {
+    "text": "I keep the instrument out so I'll pick it up.",
+    "romanization": null
+  },
+  "43": {
+    "text": "Build the habit first, then worry about results.",
+    "romanization": null
+  },
+  "44": {
+    "text": "Most days, you just have to show up.",
+    "romanization": null
+  },
+  "45": {
+    "text": "She tuned the violin by ear.",
+    "romanization": null
+  },
+  "46": {
+    "text": "He sketched the same hand fifty times.",
+    "romanization": null
+  },
+  "47": {
+    "text": "I burned the rice the first three tries.",
+    "romanization": null
+  },
+  "48": {
+    "text": "The dough needs to rest for an hour.",
+    "romanization": null
+  },
+  "49": {
+    "text": "She wrote her first program in an afternoon.",
+    "romanization": null
+  },
+  "50": {
+    "text": "After two years of judo, the falls don't hurt as much.",
+    "romanization": null
+  },
+  "51": {
+    "text": "He folded a paper crane on the bus.",
+    "romanization": null
+  },
+  "52": {
+    "text": "The brush feels different in the morning light.",
+    "romanization": null
+  },
+  "53": {
+    "text": "I follow the recipe the first time and improvise after.",
+    "romanization": null
+  },
+  "54": {
+    "text": "Coding feels like solving a puzzle that you also wrote.",
+    "romanization": null
+  },
+  "55": {
+    "text": "She knits while listening to lectures.",
+    "romanization": null
+  },
+  "56": {
+    "text": "He learned the song one bar at a time.",
+    "romanization": null
+  },
+  "57": {
+    "text": "The bread came out heavy, but it tasted right.",
+    "romanization": null
+  },
+  "58": {
+    "text": "I learned to ride a bike on a hill with no brakes.",
+    "romanization": null
+  },
+  "59": {
+    "text": "Drawing from life is harder and better.",
+    "romanization": null
+  },
+  "60": {
+    "text": "Her chess opening surprised the whole club.",
+    "romanization": null
+  },
+  "61": {
+    "text": "Try the simple version of the recipe first.",
+    "romanization": null
+  },
+  "62": {
+    "text": "He fixed the bike with parts from the garage.",
+    "romanization": null
+  },
+  "63": {
+    "text": "The piano teacher let me pick my own piece this month.",
+    "romanization": null
+  },
+  "64": {
+    "text": "I'm trying to whistle a melody in tune.",
+    "romanization": null
+  },
+  "65": {
+    "text": "She memorized the route by walking it three times.",
+    "romanization": null
+  },
+  "66": {
+    "text": "He built a small shelf as his first carpentry project.",
+    "romanization": null
+  },
+  "67": {
+    "text": "Cold hands make the morning practice harder.",
+    "romanization": null
+  },
+  "68": {
+    "text": "I keep my sketchbook in my bag at all times.",
+    "romanization": null
+  },
+  "69": {
+    "text": "The first cake was flat, the second was perfect.",
+    "romanization": null
+  },
+  "70": {
+    "text": "He runs every Sunday before the streets get busy.",
+    "romanization": null
+  },
+  "71": {
+    "text": "Cooking from scratch is slower and so much better.",
+    "romanization": null
+  },
+  "72": {
+    "text": "She codes with the dictionary open in another tab.",
+    "romanization": null
+  },
+  "73": {
+    "text": "Learning to draw a circle was harder than I expected.",
+    "romanization": null
+  },
+  "74": {
+    "text": "He played his first concert in front of family only.",
+    "romanization": null
+  },
+  "75": {
+    "text": "My grandfather taught me how to whistle.",
+    "romanization": null
+  },
+  "76": {
+    "text": "Her teacher slowed down whenever she got lost.",
+    "romanization": null
+  },
+  "77": {
+    "text": "A good mentor asks more questions than they answer.",
+    "romanization": null
+  },
+  "78": {
+    "text": "Studying with a friend made me try harder.",
+    "romanization": null
+  },
+  "79": {
+    "text": "He still writes to his first piano teacher.",
+    "romanization": null
+  },
+  "80": {
+    "text": "The coach said one thing that changed my whole game.",
+    "romanization": null
+  },
+  "81": {
+    "text": "She thanked the librarian by name.",
+    "romanization": null
+  },
+  "82": {
+    "text": "I learn more from her quiet corrections than from any book.",
+    "romanization": null
+  },
+  "83": {
+    "text": "He brought a small gift to his last lesson.",
+    "romanization": null
+  },
+  "84": {
+    "text": "We trade tips at the climbing gym every week.",
+    "romanization": null
+  },
+  "85": {
+    "text": "Her notes in the margin helped more than the textbook.",
+    "romanization": null
+  },
+  "86": {
+    "text": "He found a mentor by showing up early and listening.",
+    "romanization": null
+  },
+  "87": {
+    "text": "Teachers remember the students who ask.",
+    "romanization": null
+  },
+  "88": {
+    "text": "My older sister taught me to read before school did.",
+    "romanization": null
+  },
+  "89": {
+    "text": "A study group is just friends who help each other.",
+    "romanization": null
+  },
+  "90": {
+    "text": "Finally, it clicked.",
+    "romanization": null
+  },
+  "91": {
+    "text": "After weeks of practice, the chord changes felt easy.",
+    "romanization": null
+  },
+  "92": {
+    "text": "She solved the puzzle on the walk home.",
+    "romanization": null
+  },
+  "93": {
+    "text": "He looked up from the page and smiled.",
+    "romanization": null
+  },
+  "94": {
+    "text": "I understood the joke a week later.",
+    "romanization": null
+  },
+  "95": {
+    "text": "The pattern was there the whole time.",
+    "romanization": null
+  },
+  "96": {
+    "text": "She realized she'd been holding her breath while she played.",
+    "romanization": null
+  },
+  "97": {
+    "text": "The connection between the two chapters made sense at last.",
+    "romanization": null
+  },
+  "98": {
+    "text": "He laughed when the answer turned out to be obvious.",
+    "romanization": null
+  },
+  "99": {
+    "text": "Sometimes the small detail is the whole secret.",
+    "romanization": null
+  },
+  "100": {
+    "text": "The first time the engine started, we cheered.",
+    "romanization": null
+  },
+  "101": {
+    "text": "I closed the book with that good kind of tired.",
+    "romanization": null
+  },
+  "102": {
+    "text": "She got it on the eleventh attempt.",
+    "romanization": null
+  },
+  "103": {
+    "text": "She understood, and her face lit up.",
+    "romanization": null
+  },
+  "104": {
+    "text": "Months of work led to one quiet, perfect paragraph.",
+    "romanization": null
+  },
+  "105": {
+    "text": "She reads in the bath until the water turns cold.",
+    "romanization": null
+  },
+  "106": {
+    "text": "He underlined the sentence he wanted to remember.",
+    "romanization": null
+  },
+  "107": {
+    "text": "The library smells like old paper and floor wax.",
+    "romanization": null
+  },
+  "108": {
+    "text": "I keep a stack of books I haven't started yet.",
+    "romanization": null
+  },
+  "109": {
+    "text": "She borrowed three novels and read them all in a week.",
+    "romanization": null
+  },
+  "110": {
+    "text": "He returned the book with a thank you note tucked inside.",
+    "romanization": null
+  },
+  "111": {
+    "text": "Read it twice if it's worth reading once.",
+    "romanization": null
+  },
+  "112": {
+    "text": "The dictionary lives next to the cookbook.",
+    "romanization": null
+  },
+  "113": {
+    "text": "I finished the chapter on the train home.",
+    "romanization": null
+  },
+  "114": {
+    "text": "She prefers paperbacks because they bend.",
+    "romanization": null
+  },
+  "115": {
+    "text": "He keeps a list of every book he's finished this year.",
+    "romanization": null
+  },
+  "116": {
+    "text": "The footnotes were almost more interesting than the text.",
+    "romanization": null
+  },
+  "117": {
+    "text": "She reads slowly so the sentences stay with her.",
+    "romanization": null
+  },
+  "118": {
+    "text": "The audiobook saved my long commute.",
+    "romanization": null
+  },
+  "119": {
+    "text": "Some books are better the second time.",
+    "romanization": null
+  },
+  "120": {
+    "text": "I'm taking a free course on astronomy.",
+    "romanization": null
+  },
+  "121": {
+    "text": "She paused the video to take notes.",
+    "romanization": null
+  },
+  "122": {
+    "text": "Online lessons let me practice at midnight.",
+    "romanization": null
+  },
+  "123": {
+    "text": "He learned to weld from videos and a friend's garage.",
+    "romanization": null
+  },
+  "124": {
+    "text": "The forum answered my question before I finished typing.",
+    "romanization": null
+  },
+  "125": {
+    "text": "I bookmark every tutorial and come back later.",
+    "romanization": null
+  },
+  "126": {
+    "text": "She subscribed to the podcast and never missed an episode.",
+    "romanization": null
+  },
+  "127": {
+    "text": "He taught himself the basics, then took one good class.",
+    "romanization": null
+  },
+  "128": {
+    "text": "I watch the lecture, then write my own summary.",
+    "romanization": null
+  },
+  "129": {
+    "text": "There's a course online for almost everything now.",
+    "romanization": null
+  },
+  "130": {
+    "text": "She practices speaking with language exchange partners online.",
+    "romanization": null
+  },
+  "131": {
+    "text": "He set up a small lab on his desk.",
+    "romanization": null
+  },
+  "132": {
+    "text": "I'm tracking what I learn in a public notebook.",
+    "romanization": null
+  },
+  "133": {
+    "text": "Self-teaching works best with a deadline.",
+    "romanization": null
+  },
+  "134": {
+    "text": "She made her own quiz to test what she knew.",
+    "romanization": null
+  },
+  "135": {
+    "text": "He tied his shoes for the first time today.",
+    "romanization": null
+  },
+  "136": {
+    "text": "She asked the same question for the third morning in a row.",
+    "romanization": null
+  },
+  "137": {
+    "text": "Children learn fastest when they're not being graded.",
+    "romanization": null
+  },
+  "138": {
+    "text": "He read his first word aloud, slowly.",
+    "romanization": null
+  },
+  "139": {
+    "text": "She built a tower as tall as herself.",
+    "romanization": null
+  },
+  "140": {
+    "text": "Watching a kid learn to swim is a lesson in trust.",
+    "romanization": null
+  },
+  "141": {
+    "text": "He wanted to know the name of every bird in the park.",
+    "romanization": null
+  },
+  "142": {
+    "text": "She drew her family with five different colors.",
+    "romanization": null
+  },
+  "143": {
+    "text": "Their first day of school was longer for the parents.",
+    "romanization": null
+  },
+  "144": {
+    "text": "He repeated the new word all the way home.",
+    "romanization": null
+  },
+  "145": {
+    "text": "He built the desk before he read the instructions.",
+    "romanization": null
+  },
+  "146": {
+    "text": "She fixed the leak by trying three different washers.",
+    "romanization": null
+  },
+  "147": {
+    "text": "I learned more from the broken pot than from the perfect one.",
+    "romanization": null
+  },
+  "148": {
+    "text": "The best teacher is sometimes the wrong answer.",
+    "romanization": null
+  },
+  "149": {
+    "text": "He apprenticed with the baker for a summer.",
+    "romanization": null
+  },
+  "150": {
+    "text": "She joined the project just to see how it was built.",
+    "romanization": null
+  },
+  "151": {
+    "text": "I figured it out by taking it apart.",
+    "romanization": null
+  },
+  "152": {
+    "text": "He shadowed the engineer for a week and asked everything.",
+    "romanization": null
+  },
+  "153": {
+    "text": "The notebook fills up faster than the lessons do.",
+    "romanization": null
+  },
+  "154": {
+    "text": "She volunteered at the clinic to learn what the books couldn't show.",
+    "romanization": null
+  },
+  "155": {
+    "text": "The first draft is for learning, the second is for sharing.",
+    "romanization": null
+  },
+  "156": {
+    "text": "He sketched the building from across the street.",
+    "romanization": null
+  },
+  "157": {
+    "text": "Make a prototype before you make a plan.",
+    "romanization": null
+  },
+  "158": {
+    "text": "She failed the parallel parking test twice, then passed it cleanly.",
+    "romanization": null
+  },
+  "159": {
+    "text": "I learn best when I have something at stake.",
+    "romanization": null
+  },
+  "160": {
+    "text": "I can read it but I freeze up when I speak.",
+    "romanization": null
+  },
+  "161": {
+    "text": "She learned twenty new words a week for a month.",
+    "romanization": null
+  },
+  "162": {
+    "text": "The accent comes easier when you stop trying so hard.",
+    "romanization": null
+  },
+  "163": {
+    "text": "He watches films in the language with subtitles in the same language.",
+    "romanization": null
+  },
+  "164": {
+    "text": "Try thinking in the new language for an hour.",
+    "romanization": null
+  },
+  "165": {
+    "text": "She labels everything in her kitchen with sticky notes.",
+    "romanization": null
+  },
+  "166": {
+    "text": "How do you say this word?",
+    "romanization": null
+  },
+  "167": {
+    "text": "I forget the word for spoon every single time.",
+    "romanization": null
+  },
+  "168": {
+    "text": "His first conversation in Spanish lasted two whole minutes.",
+    "romanization": null
+  },
+  "169": {
+    "text": "Reading children's books is great early practice.",
+    "romanization": null
+  },
+  "170": {
+    "text": "The grammar made sense after I heard it spoken.",
+    "romanization": null
+  },
+  "171": {
+    "text": "She keeps a flashcard deck on her phone.",
+    "romanization": null
+  },
+  "172": {
+    "text": "Singing along is sneaky pronunciation practice.",
+    "romanization": null
+  },
+  "173": {
+    "text": "I had a dream in French last night.",
+    "romanization": null
+  },
+  "174": {
+    "text": "He learned the language by falling in love with the music.",
+    "romanization": null
+  },
+  "175": {
+    "text": "Languages share more than you'd guess.",
+    "romanization": null
+  },
+  "176": {
+    "text": "She finally understood a joke and laughed out loud.",
+    "romanization": null
+  },
+  "177": {
+    "text": "Don't translate every word. Catch the meaning.",
+    "romanization": null
+  },
+  "178": {
+    "text": "I read a menu in Italian and understood half of it.",
+    "romanization": null
+  },
+  "179": {
+    "text": "Speak with a kind ear nearby and you'll get further faster.",
+    "romanization": null
+  },
+  "180": {
+    "text": "He practiced new sounds in the shower until they felt easy.",
+    "romanization": null
+  },
+  "181": {
+    "text": "Loan words are quiet bridges between languages.",
+    "romanization": null
+  },
+  "182": {
+    "text": "Listening came back first; speaking took longer.",
+    "romanization": null
+  },
+  "183": {
+    "text": "She found a language partner and they meet every week.",
+    "romanization": null
+  },
+  "184": {
+    "text": "I learned the word in a song before I learned it in class.",
+    "romanization": null
+  },
+  "185": {
+    "text": "I gave up for a week, then came back to it.",
+    "romanization": null
+  },
+  "186": {
+    "text": "The first paragraph took me an hour to write.",
+    "romanization": null
+  },
+  "187": {
+    "text": "She got stuck on the same passage for days.",
+    "romanization": null
+  },
+  "188": {
+    "text": "He asked for help after trying for too long alone.",
+    "romanization": null
+  },
+  "189": {
+    "text": "I almost quit, then I tried one more time.",
+    "romanization": null
+  },
+  "190": {
+    "text": "The page was full of crossings out by the end.",
+    "romanization": null
+  },
+  "191": {
+    "text": "She felt slow until she compared her week one to her week six.",
+    "romanization": null
+  },
+  "192": {
+    "text": "He fumbled the introduction, then steadied himself.",
+    "romanization": null
+  },
+  "193": {
+    "text": "Some days the practice helps. Some days it just keeps you in shape.",
+    "romanization": null
+  },
+  "194": {
+    "text": "The first version was so bad I laughed.",
+    "romanization": null
+  },
+  "195": {
+    "text": "I lost the thread halfway through the chapter and started over.",
+    "romanization": null
+  },
+  "196": {
+    "text": "He kept a list of every mistake he wanted to fix.",
+    "romanization": null
+  },
+  "197": {
+    "text": "She practiced the difficult bar separately, ten times slow.",
+    "romanization": null
+  },
+  "198": {
+    "text": "Progress is rarely a straight line.",
+    "romanization": null
+  },
+  "199": {
+    "text": "Even when it feels useless, the work is doing something.",
+    "romanization": null
+  }
+}
