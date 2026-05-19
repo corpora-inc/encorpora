@@ -230,8 +230,14 @@ def main() -> None:
         parts.append(inner_body)
         parts.append("</g>")
     parts.append("</svg>")
-    (OUT_DIR / "_grid.svg").write_text("\n".join(parts))
+    grid_svg = "\n".join(parts)
+    (OUT_DIR / "_grid.svg").write_text(grid_svg)
+    # Also snapshot the grid to a non-gitignored location so it can
+    # be committed and reviewed alongside the PR without forcing
+    # reviewers to run the audit themselves.
+    (HERE / "calliar_stroke_audit.svg").write_text(grid_svg)
     print(f"\nWrote {len(cards)} letter SVGs + grid to {OUT_DIR.relative_to(HERE.parent)}")
+    print(f"Snapshotted grid to build/calliar_stroke_audit.svg")
 
 
 if __name__ == "__main__":
