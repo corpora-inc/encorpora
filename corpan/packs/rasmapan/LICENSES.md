@@ -47,6 +47,37 @@ calligraphy by [ARBML](https://github.com/ARBML). License:
   per-primitive trajectories to honor that rule even when
   individual Calliar writers happened to record dots first.
 
+## Calligraphic-style sample images
+
+The four style cards (Naskh, Thuluth, Diwani, Kufic) show
+historical-manuscript photographs sourced from Wikimedia Commons,
+all in the **public domain** (PD-old, works whose authors died
+more than 70 years ago):
+
+- **Naskh** — `assets/styles/naskh-sample.jpg`: "A folio of the
+  Qur'an in Naskh script" by calligrapher Zayno'l-‘Abedin
+  Esfahani. Public domain.
+  Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_folio_of_the_Qur%27an_in_Naskh_script.jpg)
+
+- **Thuluth** — `assets/styles/thuluth-sample.jpg`: Thuluth
+  calligraphy by Yaqut al-Musta'simi (13th century, d. 1296).
+  Public domain.
+  Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thuluth_-_Yaqut_al-Mustasimi.jpg)
+
+- **Diwani** — `assets/styles/diwani-sample.jpg`: Ferman
+  (imperial decree) of Sultan Mehmed II (15th century, r. 1451–1481).
+  Public domain via the Google Art Project.
+  Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Unknown_scribe_-_Ferman_(imperial_decree)_of_Sultan_Mehmed_II_(r._1451-1481)_-_Google_Art_Project.jpg)
+
+- **Kufic** — `assets/styles/kufic-sample.jpg`: Kufi-script
+  parchment with Qur'anic verses (early Islamic period). Public
+  domain.
+  Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kufi_script_(D.Va)_on_parchment_(Qur%27anic_verses).jpg)
+
+All four images are resized to ≤ 800 px on the longer side and
+JPEG-recompressed at quality 75 for pack-size economy. Originals
+on Wikimedia are higher resolution if you need them.
+
 ## Corpan host
 
 The pack consumes corpan's host i18next instance
