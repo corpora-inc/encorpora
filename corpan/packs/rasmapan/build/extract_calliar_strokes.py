@@ -177,6 +177,41 @@ def collect_primitive_strokes(
 # When a primitive has a hint, the chooser prefers candidates whose
 # h/w falls in this range over candidates that merely match the
 # corpus median.
+# Per-primitive direction rule for the trajectory. The animation reads
+# the polyline in array order, so the start point determines where the
+# pen drops down. We pick a Calliar candidate by shape, then reverse
+# the polyline if it's running in the non-canonical direction.
+#
+# Each value is a 2-tuple (x_sign, y_sign):
+#   x_sign = -1  →  start.x should be > end.x  (right-to-left, RTL norm)
+#   x_sign =  0  →  no preference on X
+#   y_sign = +1  →  start.y should be < end.y  (top-to-bottom)
+#   y_sign =  0  →  no preference on Y
+#
+# Letters with naturally complex paths (waaw loops, ain's enclosed
+# shape, Saad's head+tail) get (0, 0) — trust the calligrapher's hand.
+DIRECTION_RULES: Dict[str, Tuple[int, int]] = {
+    "ا": (0, +1),    # alif: top → bottom
+    "ل": (0, +1),    # laam: top → bottom (then the hook curves back)
+    "ٮ": (-1, 0),    # baa-bowl: right → left
+    "ں": (-1, 0),    # nuun-base: right → left
+    "س": (-1, 0),    # siin teeth + bowl: right → left
+    "د": (-1, +1),   # daal: top-right → bottom-left
+    "ر": (-1, +1),   # raa: top-right → bottom-left
+    "ٯ": (0, 0),     # qaaf-base: loop + tail, varies
+    "ح": (-1, 0),    # Haa-base: right → left across the curve
+    "ﻛ": (0, +1),    # kaaf: vertical body top → bottom
+    "م": (-1, 0),    # miim: head right → tail left
+    "ى": (-1, 0),    # yaa-base scoop: right → left
+    "ه": (0, 0),     # haa: complex round shape, trust the hand
+    "ع": (0, 0),     # ain: enclosed shape, varies
+    "و": (0, 0),     # waaw: loop + tail, varies
+    "ص": (0, 0),     # Saad: head + tail, varies
+    "ﺻ": (-1, 0),    # Saad-medial: horizontal body right → left
+    "ء": (0, 0),     # hamza: small mark, varies
+}
+
+
 ASPECT_HINTS: Dict[str, Tuple[float, float]] = {
     "ا": (4.0, 12.0),    # alif — tall vertical
     "ل": (3.0, 8.0),     # laam — tall vertical with hook
@@ -261,6 +296,39 @@ def choose_canonical(
 
 
 import math  # noqa: E402 — used by choose_canonical's tortuosity
+
+
+def normalize_direction(
+    stroke: List[List[float]],
+    primitive_id: Optional[str],
+) -> List[List[float]]:
+    """If this primitive has a DIRECTION_RULES entry, reverse the
+    polyline when its start/end is the wrong way around. The Calliar
+    scorer is direction-agnostic — but the animation reads the polyline
+    in order, so a backwards trajectory would teach a backwards stroke.
+
+    For composite letters whose primitive shares this trajectory (e.g.
+    baa, taa, thaa all use the ٮ bowl), normalizing once at the
+    primitive level fixes them all consistently.
+    """
+    if primitive_id is None or not stroke or len(stroke) < 2:
+        return stroke
+    rule = DIRECTION_RULES.get(primitive_id)
+    if rule is None:
+        return stroke
+    x_sign, y_sign = rule
+    if x_sign == 0 and y_sign == 0:
+        return stroke
+    sx, sy = stroke[0]
+    ex, ey = stroke[-1]
+    wrong = False
+    if x_sign == -1 and ex > sx:   # should end further LEFT than start
+        wrong = True
+    if y_sign == +1 and ey < sy:   # should end further DOWN than start
+        wrong = True
+    if wrong:
+        return list(reversed(stroke))
+    return stroke
 
 
 def normalize_single(
@@ -451,7 +519,14 @@ def find_canonical_pair(
     def apply(stroke: List[List[float]]) -> List[List[float]]:
         return [[p[0] * scale + tx, p[1] * scale + ty] for p in stroke]
 
-    return [resample(apply(stroke_b)), resample(apply(stroke_a))]
+    # Output order: primitive_b first (base for ط: Saad-medial body),
+    # then primitive_a (stem: alif). Per-primitive direction normalization
+    # so the alif stem always runs top-to-bottom and the Saad-medial
+    # base always runs right-to-left, regardless of which way the
+    # Calliar writer happened to draw them.
+    base = normalize_direction(resample(apply(stroke_b)), primitive_b)
+    stem = normalize_direction(resample(apply(stroke_a)), primitive_a)
+    return [base, stem]
 
 
 def main() -> None:
@@ -480,6 +555,8 @@ def main() -> None:
             print(f"  [primitive {pid!r}] NO usable candidates "
                   f"(grouped: {len(grouped.get(pid, []))})")
             continue
+        # Direction-normalize to canonical Naskh writing direction.
+        chosen = normalize_direction(chosen, pid)
         canonical[pid] = chosen
         print(f"  [primitive {pid!r}] chose stroke "
               f"len={path_length(chosen):.1f} pts={len(chosen)}")
