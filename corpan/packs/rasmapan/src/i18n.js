@@ -117,9 +117,15 @@ export const subscribeLanguageChanged = (handler) => {
   }
 }
 
-/** Currently-active i18next language, lowercased. Empty string
- *  when standalone. */
+/** Currently-active i18next language. Returns the host's code with
+ *  its original casing preserved (e.g. "zh-Hans", "pt-BR", "ko-polite"
+ *  — i18next keeps the registered casing). Previously this was
+ *  `.toLowerCase()`d, which silently broke mixed-case locales: every
+ *  SQL `WHERE language_code IN (...)` lookup against the pack DB
+ *  and every `lesson.i18n[<lang>]` JS object access is
+ *  case-sensitive, so lowercasing turned `"zh-Hans"` into a key
+ *  that doesn't exist. Falls back to `"en"` when standalone. */
 export const currentLanguage = () => {
   const i18n = getI18n()
-  return (i18n && i18n.language ? i18n.language : "en").toLowerCase()
+  return i18n && i18n.language ? i18n.language : "en"
 }
