@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next"
 import { CheckCircle2 } from "lucide-react"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { Button } from "@/components/ui/button"
+import { OfflineNotice } from "@/components/OfflineNotice"
+import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { useEntitlementStore } from "@/store/entitlements"
 import { trackPaidUnlockViewed } from "@/util/analytics"
 import {
@@ -38,6 +40,7 @@ type PaywallState =
   | { kind: "subscribed"; plan: "monthly" | "annual" }
   | { kind: "ready"; products: StoreProduct[] }
   | { kind: "store_unreachable"; error: string }
+  | { kind: "offline" }
   | { kind: "pending" }
 
 const CARD_WRAPPER = "w-full max-w-md mx-auto"
@@ -46,6 +49,7 @@ export function SubscriptionOffer() {
   const { t } = useTranslation()
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const platform = useEntitlementStore((s) => s.platform)
+  const isOnline = useOnlineStatus()
 
   const [state, setState] = useState<PaywallState>({ kind: "checking" })
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "annual">("annual")
@@ -62,6 +66,9 @@ export function SubscriptionOffer() {
     if (!iapAvailable) return
     setState({ kind: "checking" })
 
+    // `getProductStatus` reads the platform's cached entitlement and works
+    // offline — surface "subscribed" calmly even in airplane mode so the
+    // user isn't pushed to a confusing "store unreachable" state.
     const [m, a] = await Promise.all([
       getProductStatus(SUBSCRIPTION_MONTHLY, "subs"),
       getProductStatus(SUBSCRIPTION_ANNUAL, "subs"),
@@ -75,6 +82,14 @@ export function SubscriptionOffer() {
       return
     }
 
+    // Not subscribed — fetching prices needs internet. Short-circuit to a
+    // calm offline state instead of hitting the store and rendering the
+    // generic amber "We couldn't reach the App Store" card.
+    if (!isOnline) {
+      setState({ kind: "offline" })
+      return
+    }
+
     const fetched = await fetchProducts(
       [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL],
       "subs"
@@ -84,7 +99,7 @@ export function SubscriptionOffer() {
     } else {
       setState({ kind: "store_unreachable", error: fetched.error })
     }
-  }, [iapAvailable])
+  }, [iapAvailable, isOnline])
 
   useEffect(() => {
     void refresh()
@@ -283,6 +298,22 @@ export function SubscriptionOffer() {
           </Button>
           {restoreInline}
         </div>
+      </div>
+    )
+  }
+
+  if (state.kind === "offline") {
+    return (
+      <div className={CARD_WRAPPER}>
+        <OfflineNotice
+          title={t("offline.subscriptionTitle", {
+            defaultValue: "Subscriptions need internet",
+          })}
+          subtitle={t("offline.subscriptionSubtitle", {
+            defaultValue:
+              "Reconnect to subscribe. Your installed packs and bundled phrases still work.",
+          })}
+        />
       </div>
     )
   }

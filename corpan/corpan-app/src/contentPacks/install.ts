@@ -78,16 +78,37 @@ export const isTauriRuntime = () => {
   )
 }
 
+const MANIFEST_FETCH_TIMEOUT_MS = 15_000
+
 const fetchManifestText = async (url: string) => {
   if (!import.meta.env.DEV && isTauriRuntime()) {
     const { fetchContentPackText } = await import("./native")
     return fetchContentPackText(url)
   }
-  const res = await fetch(proxyUrlIfNeeded(url), { cache: "no-store" })
-  if (!res.ok) {
-    throw new Error(`Manifest not found (${res.status})`)
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), MANIFEST_FETCH_TIMEOUT_MS)
+  try {
+    const res = await fetch(proxyUrlIfNeeded(url), {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+    if (!res.ok) {
+      throw new Error(`Manifest not found (${res.status})`)
+    }
+    return await res.text()
+  } catch (err) {
+    if (
+      controller.signal.aborted ||
+      (err instanceof DOMException && err.name === "AbortError")
+    ) {
+      throw new Error(
+        `Manifest fetch timed out after ${MANIFEST_FETCH_TIMEOUT_MS / 1000}s — check your connection.`,
+      )
+    }
+    throw err
+  } finally {
+    clearTimeout(timer)
   }
-  return res.text()
 }
 
 export const installPack = async (

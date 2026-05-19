@@ -99,7 +99,13 @@
     "theme": "主题",
     "themeLight": "浅色",
     "themeDark": "深色",
-    "themeSystem": "跟随系统"
+    "themeSystem": "跟随系统",
+    "phrasePacks": {
+      "header": "短语包",
+      "baseCorpusName": "基础语料",
+      "emptyHint": "在「包」标签页中添加短语包。",
+      "browseAll": "浏览短语包"
+    }
   },
   "onboarding": {
     "welcome": "欢迎",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "使用前已停用",
         "notInstalled": "未安装"
       }
+    },
+    "packs": "短语包",
+    "phrasePacks": {
+      "title": "短语包",
+      "stepTitle": "短语包",
+      "hero": "选择你的主题",
+      "loading": "加载中…",
+      "selectAll": "全选",
+      "clearAll": "清除",
+      "subscriptionNudge": "订阅以解锁所有短语包。",
+      "entryCount": "{{n}} 条短语",
+      "paid": "付费",
+      "emptyHero": "暂无短语包。",
+      "emptySub": "稍后再来。",
+      "offlineHero": "你已离线。",
+      "offlineSub": "短语包需要互联网 — 稍后在「设置 → 包」中再试。",
+      "offlineBanner": "离线 — 重新连接后将安装所选项。"
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "取消",
     "delete": "删除",
     "create": "创建",
-    "dismiss": "关闭"
+    "dismiss": "关闭",
+    "skip": "跳过"
   },
   "dialects": {
     "en": "英语",
@@ -401,7 +425,28 @@
     "purchasing": "购买中...",
     "buy": "购买 {{price}}",
     "premium": "高级",
-    "availableOnMobile": "可在iOS和Android上使用"
+    "availableOnMobile": "可在iOS和Android上使用",
+    "checking": "正在检查…",
+    "phrasePack": {
+      "sectionTitle": "短语包",
+      "empty": "暂无短语包。",
+      "offlineEmpty": "你已离线。连接后浏览。",
+      "searchPlaceholder": "搜索…",
+      "noMatches": "无匹配。",
+      "filter": {
+        "all": "全部",
+        "free": "免费",
+        "paid": "付费",
+        "installed": "已安装"
+      },
+      "activeInStack": "已启用",
+      "activeBadge": "已启用",
+      "subBadge": "订阅",
+      "paid": "付费",
+      "free": "免费",
+      "unlockSub": "通过订阅解锁",
+      "entryCount": "{{n}} 条短语"
+    }
   },
   "subscription": {
     "title": "解锁全部",

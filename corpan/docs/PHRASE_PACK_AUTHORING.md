@@ -112,14 +112,37 @@ example-botany/
   "category": "science",
   "topic": "Botany",
   "icon": "leaf",
-  "accent_color": "#a5d6a7"
+  "accent_color": "#a5d6a7",
+
+  // Optional publish-time fields — flow through manifest.json into the
+  // S3 catalog entry. Omit for sensible defaults.
+  "purchase": { "type": "free" },
+  "tags": ["starter", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable",
+  "icon_url": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics/cover.jpg"
 }
 ```
 
-Required: `id`, `version`, `name`. Optional but recommended:
+Required: `id`, `version`, `name`. Optional in-pack metadata:
 `description`, `category`, `topic`, `icon` (lucide-react icon name OR
 single emoji), `accent_color` (hex). `level_min` / `level_max` are
 inferred from `phrases.json` unless overridden.
+
+Optional publish-time fields (forwarded to the S3 catalog by
+`publish.py`):
+
+- `purchase` — `{"type": "free"}` (default), `{"type": "iap",
+  "productId": "...", "priceLabel": "$0.99"}`, or the subscription
+  product id (`corpan.sub.monthly` / `corpan.sub.annual`) to gate behind
+  the subscription.
+- `tags` — free-form list, e.g. `["starter", "editors-pick", "new"]`.
+  Renders as badges in the Packs-tab browser.
+- `min_app_version` — defaults to `"0.15.0"`. Bump only when the pack
+  depends on app features added in a later release.
+- `channel` — `"stable"` (default) or `"preview"` (hidden from non-dev
+  users; useful for in-progress translations).
+- `icon_url` — full CDN URL to a cover image (optional polish).
 
 ### `phrases.json`
 
@@ -245,65 +268,185 @@ Produces `<pack-id>-<version>.zip` (manifest.json + data.sqlite3) and
 The size of a typical 500-entry × 51-language pack is ~2 MB compressed.
 Botany Basics at 80 entries is 40 KB.
 
-## Upload
+## Publish: zip + catalog, direct to S3
+
+Phrase packs ship through a **dedicated catalog** at
+`https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/catalog.json`,
+written directly to S3 by `publish.py`. **No PR, no GitHub Actions, no
+app rebuild** — running apps pick up new packs within ~5 minutes (TTL),
+or immediately if you invalidate. This is the difference from the
+earlier v3-catalog-via-PR plan: you ship as fast as you can build.
+
+### One-shot publish
 
 ```bash
 python3 tools/phrase-packs/publish.py <pack>/build \
-    --upload --bucket corpan-prod --prefix artifacts/corpan/phrase-packs \
+    --upload \
+    --update-catalog \
+    --invalidate \
+    --bucket corpan-prod \
+    --prefix artifacts/corpan/phrase-packs \
     --profile corpora
 ```
 
+What each flag does:
+
+- `--upload` — pushes `<id>-<version>.zip` to
+  `s3://corpan-prod/artifacts/corpan/phrase-packs/<id>-<version>.zip`.
+  CloudFront strips `artifacts/` so the served URL is
+  `https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/<id>-<version>.zip`.
+  Sets `Content-Type: application/zip` and a `sha256` object metadata
+  attribute.
+- `--update-catalog` — `GET`s the live `catalog.json` from S3 (treats 404
+  as "first-ever pack, start fresh"), upserts the new pack entry by `id`,
+  writes back to the same key with
+  `Cache-Control: public, max-age=300, must-revalidate`. Running apps
+  refresh within 5 minutes.
+- `--invalidate` — optional CloudFront invalidation of
+  `/corpan/phrase-packs/catalog.json` so users on a fresh-TTL cache see
+  the update in ~30–60 seconds instead of waiting up to 5 minutes. Cost
+  ~$0.005 per invalidation. **Recommended for the first 10 free packs
+  and for any urgent fix; skip for routine adds.**
+
 Requires AWS credentials for the `corpora` profile (or your equivalent)
-with `s3:PutObject` on the `corpan-prod` bucket under
-`artifacts/corpan/phrase-packs/`. Talk to Skylar if you don't have a
-profile.
+with:
+- `s3:PutObject` and `s3:GetObject` on the `corpan-prod` bucket under
+  `artifacts/corpan/phrase-packs/`.
+- `cloudfront:CreateInvalidation` on the distribution serving
+  `d38iwc9748jekz.cloudfront.net` (only needed if you use
+  `--invalidate`).
 
-The CDN serves the resulting `https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/<id>-<version>.zip`
-(the CloudFront distribution strips the `artifacts/` prefix).
+Talk to Skylar if you don't have a profile / role.
 
-Already-published versions are immutable — uploading the same key twice
-is a publishing bug. The script does not refuse it (boto3 will overwrite)
-but you should never invoke `--upload` against an existing key. If you
-need to fix a pack, bump the version.
+### Pack zips are immutable
 
-## Catalog entry
+Already-published `<id>-<version>.zip` keys must never be overwritten —
+apps in the wild may have manifest URLs cached. If you need to fix a
+pack, **bump the version** and publish the new one; the old key stays
+in S3 forever.
 
-Phrase packs ship through the existing v3 catalog at
-`https://encorpora.io/corpan/packs/catalog-v3.json`. The source lives in
-this repo (likely `web/data/packs.json` — confirm with `grep -rn
-catalog-v3 web/`). Open a PR adding:
+The catalog's `zipUrl` for that pack id is just replaced by the new
+version's URL on the next `--update-catalog`.
+
+### Pack-entry shape (what gets written into catalog.json)
 
 ```json
 {
   "id": "phrase-botany-basics",
   "name": "Botany Basics",
   "version": "0.1.0",
-  "packType": "phrase",
   "description": "Everyday plant-life vocabulary — flowers, leaves, photosynthesis, gardens.",
-  "manifestUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0/manifest.json",
-  "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
-  "sha256": "<from the .sha256 sidecar>",
-  "sizeMb": 0.04,
-  "imageUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics/cover.jpg",
-  "purchase": { "type": "free" },
-  "minAppVersion": "0.15.0",
-  "channel": "stable",
-  "category": "science",
   "topic": "Botany",
+  "category": "science",
+  "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
+  "sha256": "e5b1de97c0ba…",
+  "sizeMb": 0.04,
   "entryCount": 80,
   "languageCount": 51,
   "levelMin": "A1",
-  "levelMax": "C1"
+  "levelMax": "C1",
+  "purchase": { "type": "free" },
+  "tags": ["starter", "new"],
+  "minAppVersion": "0.15.0",
+  "channel": "stable",
+  "iconUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics/cover.jpg",
+  "accentColor": "#a5d6a7"
 }
 ```
 
-For paid packs use `"purchase": {"type": "iap", "productId":
-"corpan_phrase_botany_basics_lifetime", "priceLabel": "$0.99"}` and
-configure the StoreKit/Play Billing product separately (talk to Skylar
-about the IAP product naming convention).
+`publish.py --update-catalog` derives most of these from the pack's
+`manifest.json` (already produced by `build_phrase_pack.py`). Fields you
+need to set explicitly on the pack's `pack.json` input:
+- `purchase` (defaults to free)
+- `tags` (optional)
+- `minAppVersion` (defaults to `0.15.0`)
+- `channel` (defaults to `stable`; use `preview` for in-progress packs
+  hidden from non-dev users)
+- `iconUrl` / `accentColor` (optional cosmetics)
 
-Land the PR. CloudFront-cached catalog refreshes are fast (< 5 min);
-running apps pick up the new entry on their next catalog fetch.
+For paid packs:
+```json
+"purchase": {
+  "type": "iap",
+  "productId": "corpan_phrase_botany_basics_lifetime",
+  "priceLabel": "$0.99"
+}
+```
+
+For subscription-gated packs use the existing subscription product id
+(`corpan.sub.monthly` or `corpan.sub.annual`) — the app detects it and
+renders "Unlock with subscription" instead of a one-time buy button.
+
+### Catalog-level curation (starter set + groups)
+
+Independent of pack publishes. Maintain a curation file locally and
+update the catalog top-level when you want to retune:
+
+```bash
+python3 tools/phrase-packs/publish.py \
+    --update-curation tools/phrase-packs/curation.json \
+    --invalidate \
+    --bucket corpan-prod \
+    --prefix artifacts/corpan/phrase-packs \
+    --profile corpora
+```
+
+`curation.json` shape:
+
+```json
+{
+  "onboardingStarterPackIds": [
+    "phrase-everyday-basics",
+    "phrase-travel-essentials",
+    "phrase-food-and-dining",
+    "phrase-family-and-relationships"
+  ],
+  "phrasePackGroups": [
+    {
+      "id": "starter",
+      "label": "Essentials",
+      "description": "The everyday packs we recommend first.",
+      "packIds": [
+        "phrase-everyday-basics",
+        "phrase-travel-essentials",
+        "phrase-food-and-dining"
+      ]
+    },
+    {
+      "id": "sciences",
+      "label": "Sciences",
+      "packIds": ["phrase-botany-basics", "phrase-physics-mechanics"]
+    },
+    {
+      "id": "humanities",
+      "label": "Humanities",
+      "packIds": ["phrase-history-modern", "phrase-philosophy-101"]
+    }
+  ]
+}
+```
+
+Without these fields the onboarding step renders its "no phrase packs
+yet" placeholder and the Packs-tab browser collapses to a single "All
+phrase packs" group.
+
+### Catalog file (catalog.json) shape — full reference
+
+```json
+{
+  "version": 1,
+  "generatedAt": "2026-05-19T03:14:00Z",
+  "onboardingStarterPackIds": [ /* … */ ],
+  "phrasePackGroups": [ /* … */ ],
+  "packs": [
+    { /* pack entry */ },
+    { /* pack entry */ }
+  ]
+}
+```
+
+`version: 1` is the wire format version. Bump only on a breaking change
+(coordinate with Skylar — the app needs to know how to parse it).
 
 ## Validation rules
 
@@ -323,14 +466,24 @@ Before publishing, also confirm by hand:
 
 If a published pack is broken (translation errors, crashes, NSFW slip):
 
-1. **Yank from catalog** — open a PR removing the entry from
-   `catalog-v3.json`. New users stop seeing it; existing users who
-   already installed it keep their copy.
-2. **Do NOT delete the S3 object.** Apps in the wild that have the manifest
-   URL cached will 404 on update checks otherwise, which crashes some
-   older clients. The S3 history is a feature, not a leak.
-3. Publish a fixed version under a higher version number. Update the
-   catalog entry on the same PR (or a follow-up).
+1. **Yank from catalog**:
+   ```bash
+   python3 tools/phrase-packs/publish.py \
+       --remove-from-catalog phrase-broken-pack-id \
+       --invalidate \
+       --bucket corpan-prod \
+       --prefix artifacts/corpan/phrase-packs \
+       --profile corpora
+   ```
+   New users stop seeing it within seconds (with `--invalidate`) or 5
+   minutes (without). Existing users who already installed it keep their
+   copy on disk; the next catalog refresh just stops listing it.
+2. **Do NOT delete the S3 zip object.** Apps in the wild that have the
+   pack manifest URL cached will 404 on update checks otherwise, which
+   crashes some older clients. The S3 history is a feature, not a leak.
+3. Publish a fixed version under a higher version number using the
+   normal `--upload --update-catalog` flow. The fixed version supersedes
+   the bad one in the catalog.
 
 ## What this contract does NOT cover (yet)
 
@@ -346,12 +499,16 @@ If a published pack is broken (translation errors, crashes, NSFW slip):
 
 ## Quick reference
 
-- **Schema reference** — `tools/phrase-packs/build_phrase_pack.py :: _write_schema`
+- **Schema reference (per-pack SQLite)** — `tools/phrase-packs/build_phrase_pack.py :: _write_schema`
 - **Build script** — `tools/phrase-packs/build_phrase_pack.py`
 - **Publish script** — `tools/phrase-packs/publish.py`
 - **Example pack** — `tools/phrase-packs/example-botany/`
 - **App query layer** — `corpan-app/src-tauri/src/phrase_packs.rs` + `lib.rs`
 - **App install layer** — `corpan-app/src/contentPacks/phrasePackRegister.ts`
+- **App catalog layer** — `corpan-app/src/contentPacks/phrasePackCatalog.ts` + `corpan-app/src/store/phrasePackCatalog.ts`
 - **App store** — `corpan-app/src/store/phrasePacks.ts`, `settings.ts` (`phrasePackIds`, `baseCorpusEnabled`)
 - **CDN base** — `https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/`
-- **Catalog** — `https://encorpora.io/corpan/packs/catalog-v3.json`
+- **Catalog URL** — `https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/catalog.json`
+- **Catalog format** — `version: 1`, `Cache-Control: public, max-age=300, must-revalidate`
+- **S3 key prefix** — `corpan-prod/artifacts/corpan/phrase-packs/`
+- **AWS profile (Skylar's local)** — `corpora`

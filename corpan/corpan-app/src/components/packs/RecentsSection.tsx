@@ -1,0 +1,128 @@
+// src/components/packs/RecentsSection.tsx
+//
+// Compact, tap-the-tile-to-launch row of recently-opened packs at the top
+// of the Packs settings panel. Replaces the previous separate "Updates"
+// section — its purpose is fast re-entry into a pack the user was just
+// using, not a duplicate catalog row.
+//
+// Hides when no installed pack has ever been launched (lastLaunchedAt is
+// undefined for everything). New installs don't appear here until the
+// user has actually opened them at least once.
+
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { Play } from "lucide-react";
+
+import type { InstalledGame } from "@/store/games";
+import type { PackUpdate } from "@/hooks/usePackUpdates";
+
+const MAX_RECENTS = 5;
+
+export function RecentsSection({
+    installedGames,
+    updates,
+    isOnline,
+    onLaunchGame,
+}: {
+    installedGames: InstalledGame[];
+    updates: PackUpdate[];
+    isOnline: boolean;
+    onLaunchGame?: (game: InstalledGame) => void;
+}) {
+    const { t } = useTranslation();
+
+    const recents = useMemo(() => {
+        return installedGames
+            .filter((g) => typeof g.lastLaunchedAt === "number")
+            .sort(
+                (a, b) =>
+                    (b.lastLaunchedAt ?? 0) - (a.lastLaunchedAt ?? 0),
+            )
+            .slice(0, MAX_RECENTS);
+    }, [installedGames]);
+
+    if (recents.length === 0) return null;
+
+    const hasUpdateForId = (id: string) =>
+        updates.some((u) => u.game.id === id);
+
+    return (
+        <div className="space-y-3">
+            <h4 className="text-base font-semibold">
+                {t("packs.recent", { defaultValue: "Recent" })}
+            </h4>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                {recents.map((game) => (
+                    <RecentTile
+                        key={game.id}
+                        game={game}
+                        hasUpdate={hasUpdateForId(game.id)}
+                        isOnline={isOnline}
+                        onLaunch={onLaunchGame}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function RecentTile({
+    game,
+    hasUpdate,
+    isOnline,
+    onLaunch,
+}: {
+    game: InstalledGame;
+    hasUpdate: boolean;
+    isOnline: boolean;
+    onLaunch?: (game: InstalledGame) => void;
+}) {
+    const { t } = useTranslation();
+    const handleClick = () => onLaunch?.(game);
+
+    return (
+        <button
+            type="button"
+            onClick={handleClick}
+            aria-label={t("packs.openPack", {
+                defaultValue: "Open {{name}}",
+                name: game.name,
+            })}
+            className={[
+                "group relative flex items-center gap-2 rounded-lg border bg-card/80 px-3 py-2.5 text-start",
+                "border-border hover:border-purple-400/60",
+                "transition-[border-color,background-color,box-shadow,transform] duration-150",
+                "active:scale-[0.98]",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/70",
+            ].join(" ")}
+        >
+            {/* Play affordance — single big tap target, no secondary button */}
+            <span
+                aria-hidden="true"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-purple-500/10 text-purple-500 group-hover:bg-purple-500/15"
+            >
+                <Play size={14} fill="currentColor" />
+            </span>
+            <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-medium text-foreground">
+                    {game.name}
+                </span>
+            </span>
+            {/* Update-available dot. Subtle — full update controls live on
+                the card in the Installed section below. Faded when offline
+                because the user can't act on it from up here either way. */}
+            {hasUpdate ? (
+                <span
+                    aria-hidden="true"
+                    title={t("packs.updateAvailable", {
+                        defaultValue: "Update available",
+                    })}
+                    className={[
+                        "h-2 w-2 shrink-0 rounded-full bg-purple-500",
+                        isOnline ? "" : "opacity-40",
+                    ].join(" ")}
+                />
+            ) : null}
+        </button>
+    );
+}

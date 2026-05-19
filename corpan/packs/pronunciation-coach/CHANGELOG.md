@@ -13,6 +13,16 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Model-setup overlay now mounts a calm offline notice when the device
+  is offline ("Model downloads need internet — already-installed models
+  still work"), and disables the Install / Reinstall buttons so taps
+  don't kick off doomed downloads. Notice and button state swap live
+  as airplane mode toggles.
+- Network-related error strings (boot prepare failure, model-switch
+  network failure, score-time blip) reworded to match the app's
+  understated offline voice — no more "Network needed — check your
+  connection" mic-button label.
 
 ## [0.6.3] - 2026-05-17
 

@@ -137,8 +137,9 @@ const createSfxHandle = (): SfxHandle => {
         bufferPromises.delete(url)
         return buffer
       })
-      .catch(() => {
+      .catch((err) => {
         bufferPromises.delete(url)
+        console.warn("[hover-runner] sfx decode failed:", url, err)
         throw new Error("Failed to decode audio")
       })
     bufferPromises.set(url, promise)
@@ -151,7 +152,12 @@ const createSfxHandle = (): SfxHandle => {
       htmlPools.set(url, entry)
     }
     const audio = getPoolAudio(entry)
-    void audio.play().catch(() => {})
+    void audio.play().catch((err) => {
+      // HTMLAudioElement.play() rejects on autoplay-gesture restrictions
+      // and on tabbed-out throttling — both are normal in this pack's
+      // gameplay flow, but log so a real decode/asset failure isn't lost.
+      console.warn("[hover-runner] sfx html play failed:", url, err)
+    })
   }
 
   const playWebAudio = (url: string) => {
@@ -208,7 +214,9 @@ const createSfxHandle = (): SfxHandle => {
       // Buffer not loaded yet, try again after loading
       ensureMusicBuffer()
       if (musicBufferPromise) {
-        musicBufferPromise.then(() => playMusic()).catch(() => {})
+        musicBufferPromise.then(() => playMusic()).catch((err) => {
+          console.warn("[hover-runner] music auto-start after load failed:", err)
+        })
       }
       return
     }
@@ -290,7 +298,9 @@ const createSfxHandle = (): SfxHandle => {
       entry.pool.length = 0
     })
     if (ctx) {
-      void ctx.close().catch(() => {})
+      void ctx.close().catch((err) => {
+        console.warn("[hover-runner] AudioContext close failed:", err)
+      })
     }
     ctx = null
     sfxGain = null

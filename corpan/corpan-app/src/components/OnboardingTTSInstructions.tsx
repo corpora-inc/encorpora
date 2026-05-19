@@ -118,7 +118,8 @@ type Phase =
     | { kind: "ready"; engine?: string | null }              // Phase B
     | { kind: "rescue"; probe: TtsHealthProbe; busy: boolean }; // diagnosis card
 
-const CURRENT_STEP_IDX = 1;
+// STEPS = [learning(0), packs(1), tts(2), socials(3)]
+const CURRENT_STEP_IDX = 2;
 
 function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
     return {
@@ -381,7 +382,11 @@ export function OnboardingTTSInstructions() {
     }
 
     function handleSkip() {
-        setStep(4);
+        // Advance past TTS to the final Finish step. STEPS = [learning(0),
+        // packs(1), tts(2), socials(3)] → wizard indices are shifted by 2
+        // (welcome + pickPrimary precede the visible stepper), so Finish
+        // lives at wizard step 5.
+        setStep(5);
     }
 
     function primaryActionFor(diagnosis: TtsDiagnosis): {
@@ -541,8 +546,8 @@ export function OnboardingTTSInstructions() {
                 title={t("onboarding.textToSpeechSetup", { defaultValue: "Text-to-speech setup" })}
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(2)}
-                onNext={() => setStep(4)}
+                onBack={() => setStep(3)}
+                onNext={() => setStep(5)}
                 canNext={true}
             >
                 {showPhaseB ? (

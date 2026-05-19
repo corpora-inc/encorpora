@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import { restoreAndSync } from "@/contentPacks/purchase"
+import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { useEntitlementStore } from "@/store/entitlements"
 
 /**
@@ -14,6 +15,7 @@ export function RestorePurchases() {
   const [result, setResult] = useState<string | null>(null)
 
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
+  const isOnline = useOnlineStatus()
 
   if (!iapAvailable) return null
 
@@ -46,7 +48,7 @@ export function RestorePurchases() {
       <Button
         variant="outline"
         onClick={handleRestore}
-        disabled={isRestoring}
+        disabled={isRestoring || !isOnline}
         className="w-full"
         size="sm"
       >
@@ -54,7 +56,13 @@ export function RestorePurchases() {
           ? t("restore.restoring", "Restoring...")
           : t("restore.button", "Restore Purchases")}
       </Button>
-      {result ? (
+      {!isOnline ? (
+        <p className="text-xs text-muted-foreground text-center">
+          {t("offline.restoreSubtitle", {
+            defaultValue: "Reconnect to restore purchases.",
+          })}
+        </p>
+      ) : result ? (
         <p className="text-xs text-muted-foreground text-center">{result}</p>
       ) : null}
     </div>

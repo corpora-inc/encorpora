@@ -9,6 +9,12 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Audio decode and playback failures now log to console with
+  context (`[hover-runner] sfx decode failed`, etc.) instead of being
+  silently swallowed by `.catch(() => {})`. Game behavior unchanged —
+  the pack is still fully offline-functional — but real failures are
+  no longer invisible.
 
 ## [0.1.0] - 2026-04 (#233 — Narrators in catalog)
 ### Added

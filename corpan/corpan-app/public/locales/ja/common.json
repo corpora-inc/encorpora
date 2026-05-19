@@ -99,7 +99,13 @@
     "theme": "テーマ",
     "themeLight": "ライト",
     "themeDark": "ダーク",
-    "themeSystem": "システム"
+    "themeSystem": "システム",
+    "phrasePacks": {
+      "header": "フレーズパック",
+      "baseCorpusName": "基本コーパス",
+      "emptyHint": "「パック」タブからパックを追加してください。",
+      "browseAll": "パックを見る"
+    }
   },
   "onboarding": {
     "welcome": "ようこそ",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "使用するまで無効",
         "notInstalled": "未インストール"
       }
+    },
+    "packs": "フレーズパック",
+    "phrasePacks": {
+      "title": "フレーズパック",
+      "stepTitle": "フレーズパック",
+      "hero": "テーマを選ぼう",
+      "loading": "読み込み中…",
+      "selectAll": "すべて選択",
+      "clearAll": "クリア",
+      "subscriptionNudge": "サブスクで全パックを開放できます。",
+      "entryCount": "{{n}}フレーズ",
+      "paid": "有料",
+      "emptyHero": "まだパックはありません。",
+      "emptySub": "また見にきてください。",
+      "offlineHero": "オフラインです。",
+      "offlineSub": "パックにはインターネットが必要です — 後で「設定 → パック」からどうぞ。",
+      "offlineBanner": "オフライン — 接続後に選択分をインストールします。"
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "キャンセル",
     "delete": "削除",
     "create": "作成",
-    "dismiss": "閉じる"
+    "dismiss": "閉じる",
+    "skip": "スキップ"
   },
   "dialects": {
     "en": "英語",
@@ -401,7 +425,28 @@
     "purchasing": "購入中...",
     "buy": "{{price}}で購入",
     "premium": "プレミアム",
-    "availableOnMobile": "iOSとAndroidで利用可能"
+    "availableOnMobile": "iOSとAndroidで利用可能",
+    "checking": "確認中…",
+    "phrasePack": {
+      "sectionTitle": "フレーズパック",
+      "empty": "まだパックはありません。",
+      "offlineEmpty": "オフラインです。接続して閲覧してください。",
+      "searchPlaceholder": "検索…",
+      "noMatches": "該当なし。",
+      "filter": {
+        "all": "すべて",
+        "free": "無料",
+        "paid": "有料",
+        "installed": "インストール済み"
+      },
+      "activeInStack": "使用中",
+      "activeBadge": "使用中",
+      "subBadge": "サブスク",
+      "paid": "有料",
+      "free": "無料",
+      "unlockSub": "サブスクで開放",
+      "entryCount": "{{n}}フレーズ"
+    }
   },
   "subscription": {
     "title": "すべてを解除",

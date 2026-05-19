@@ -99,7 +99,13 @@
     "theme": "Tema",
     "themeLight": "Açık",
     "themeDark": "Koyu",
-    "themeSystem": "Sistem"
+    "themeSystem": "Sistem",
+    "phrasePacks": {
+      "header": "İfade paketleri",
+      "baseCorpusName": "Temel külliyat",
+      "emptyHint": "Paketler sekmesinden paket ekle.",
+      "browseAll": "Paketleri keşfet"
+    }
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "Kullanılana kadar devre dışı",
         "notInstalled": "Yüklü değil"
       }
+    },
+    "packs": "İfade paketleri",
+    "phrasePacks": {
+      "title": "İfade paketleri",
+      "stepTitle": "İfade paketleri",
+      "hero": "Konularını seç",
+      "loading": "Yükleniyor…",
+      "selectAll": "Tümünü seç",
+      "clearAll": "Temizle",
+      "subscriptionNudge": "Tüm paketlerin kilidini açmak için abone ol.",
+      "entryCount": "{{n}} ifade",
+      "paid": "Ücretli",
+      "emptyHero": "Henüz paket yok.",
+      "emptySub": "Yakında tekrar bak.",
+      "offlineHero": "Çevrimdışısın.",
+      "offlineSub": "Paketler internet gerektirir — Ayarlar → Paketler'den sonra dene.",
+      "offlineBanner": "Çevrimdışı — seçim bağlanınca yüklenir."
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "İptal",
     "delete": "Sil",
     "create": "Oluştur",
-    "dismiss": "Kapat"
+    "dismiss": "Kapat",
+    "skip": "Atla"
   },
   "dialects": {
     "en": "İngilizce",
@@ -401,7 +425,28 @@
     "purchasing": "Satın alınıyor...",
     "buy": "{{price}} satın al",
     "premium": "Premium",
-    "availableOnMobile": "iOS ve Android'de mevcut"
+    "availableOnMobile": "iOS ve Android'de mevcut",
+    "checking": "Kontrol ediliyor…",
+    "phrasePack": {
+      "sectionTitle": "İfade paketleri",
+      "empty": "Henüz paket yok.",
+      "offlineEmpty": "Çevrimdışısın. Göz atmak için bağlan.",
+      "searchPlaceholder": "Ara…",
+      "noMatches": "Sonuç yok.",
+      "filter": {
+        "all": "Tümü",
+        "free": "Ücretsiz",
+        "paid": "Ücretli",
+        "installed": "Yüklü"
+      },
+      "activeInStack": "Etkin",
+      "activeBadge": "Etkin",
+      "subBadge": "Abonelik",
+      "paid": "Ücretli",
+      "free": "Ücretsiz",
+      "unlockSub": "Abonelikle aç",
+      "entryCount": "{{n}} ifade"
+    }
   },
   "subscription": {
     "title": "Hepsini aç",

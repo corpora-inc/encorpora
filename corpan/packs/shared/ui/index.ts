@@ -9,3 +9,14 @@ export { createCommandDrawer } from "./commandDrawer"
 
 export type { ToastKind, ToastOptions } from "./toast"
 export { showToast } from "./toast"
+
+export type {
+    OfflineNotice,
+    OfflineNoticeDensity,
+    OfflineNoticeOptions,
+} from "./offlineNotice"
+export {
+    createOfflineNotice,
+    isOnline,
+    onNetworkChange,
+} from "./offlineNotice"

@@ -6,6 +6,40 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Added
+- **Recent packs row** at the top of Settings → Packs. Compact tap-tile
+  for each of the last ~5 packs you've launched, so popping in and out
+  of a pack is one tap instead of scrolling through the full installed
+  list. Each tile shows a small purple dot when an update is available.
+  Driven by a new `lastLaunchedAt` field in the games store, stamped
+  by the single launch chokepoint in `App.tsx`.
+### Changed
+- **Updates section removed.** Installed packs with an available update
+  now wear a single purple "Update" badge and their action row swaps to
+  `[Update] [Open] [Remove]` — no more duplicate card in a separate
+  Updates section above. Source of truth is the Installed grid.
+- **Offline-first UI polish.** Every screen that depends on internet
+  now degrades to a calm, consistent `OfflineNotice` instead of stuck
+  spinners, dead-disabled buttons, or alarming amber error cards.
+  New shared `<OfflineNotice>` component + `useOnlineStatus` hook drive
+  the look across `PhrasePackBrowser`, `PacksListing` (Discover),
+  `PhrasePackCard`, `PackActions`, `SubscriptionOffer`, `RestorePurchases`,
+  and `OnboardingPickPhrasePacks`. Installed packs and the 510k bundled
+  phrases keep working — only the network-gated affordances are gated.
+- `SubscriptionOffer` now distinguishes "offline" from "store unreachable":
+  when the device is offline we short-circuit before hitting StoreKit / Play
+  Billing and show the offline notice; an already-subscribed user still sees
+  the green "subscribed" state from the platform's local cache.
+- Pack manifest fetches now time out at 15s with a calm error message
+  instead of spinning indefinitely on a stalled CDN connection.
+- Update button on installed pack cards is now correctly gated by
+  `isOffline` and shows a "Reconnect to download" hint — previously
+  it stayed live and would kick off a doomed download.
+- `InstallProgressDialog` no longer hangs as a spinner when the device
+  goes offline mid-install. `useInstallProgress` watches the `offline`
+  event and flips the dialog to a calm error state immediately with
+  a cloud-off glyph, heading, and a Retry button. The dialog also now
+  renders the error message (it was previously just an alert icon).
 
 ## [0.13.1] - 2026-05-17
 

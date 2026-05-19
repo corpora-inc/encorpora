@@ -99,7 +99,13 @@
     "theme": "المظهر",
     "themeLight": "فاتح",
     "themeDark": "داكن",
-    "themeSystem": "النظام"
+    "themeSystem": "النظام",
+    "phrasePacks": {
+      "header": "حزم العبارات",
+      "baseCorpusName": "المجموعة الأساسية",
+      "emptyHint": "أضف حزمًا من تبويب الحزم.",
+      "browseAll": "تصفح الحزم"
+    }
   },
   "onboarding": {
     "welcome": "مرحبًا",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "مُعطَّل حتى الاستخدام",
         "notInstalled": "غير مثبَّت"
       }
+    },
+    "packs": "حزم العبارات",
+    "phrasePacks": {
+      "title": "حزم العبارات",
+      "stepTitle": "حزم العبارات",
+      "hero": "اختر مواضيعك",
+      "loading": "جارٍ التحميل…",
+      "selectAll": "تحديد الكل",
+      "clearAll": "مسح",
+      "subscriptionNudge": "اشترك لفتح جميع الحزم.",
+      "entryCount": "{{n}} عبارة",
+      "paid": "مدفوع",
+      "emptyHero": "لا توجد حزم بعد.",
+      "emptySub": "عد قريبًا.",
+      "offlineHero": "أنت غير متصل.",
+      "offlineSub": "تحتاج الحزم إلى إنترنت — جرّب لاحقًا من الإعدادات → الحزم.",
+      "offlineBanner": "غير متصل — سيُثبَّت التحديد عند إعادة الاتصال."
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "إلغاء",
     "delete": "حذف",
     "create": "إنشاء",
-    "dismiss": "تجاهل"
+    "dismiss": "تجاهل",
+    "skip": "تخطٍّ"
   },
   "dialects": {
     "en": "الإنجليزية",
@@ -401,7 +425,28 @@
     "purchasing": "جارٍ الشراء...",
     "buy": "شراء {{price}}",
     "premium": "مميز",
-    "availableOnMobile": "متوفر على iOS و Android"
+    "availableOnMobile": "متوفر على iOS و Android",
+    "checking": "جارٍ التحقق…",
+    "phrasePack": {
+      "sectionTitle": "حزم العبارات",
+      "empty": "لا توجد حزم بعد.",
+      "offlineEmpty": "أنت غير متصل. اتصل للتصفح.",
+      "searchPlaceholder": "بحث…",
+      "noMatches": "لا توجد نتائج.",
+      "filter": {
+        "all": "الكل",
+        "free": "مجاني",
+        "paid": "مدفوع",
+        "installed": "مثبَّت"
+      },
+      "activeInStack": "نشِط",
+      "activeBadge": "نشِط",
+      "subBadge": "اشتراك",
+      "paid": "مدفوع",
+      "free": "مجاني",
+      "unlockSub": "افتح بالاشتراك",
+      "entryCount": "{{n}} عبارة"
+    }
   },
   "subscription": {
     "title": "فتح كل شيء",

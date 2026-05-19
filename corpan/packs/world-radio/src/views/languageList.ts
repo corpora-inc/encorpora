@@ -12,6 +12,11 @@ import { ALL_CORPAN_LANGUAGES, corpanToRadioLanguage, displayName } from "../api
 import { getLanguages } from "../api/radioBrowser"
 import { el, clear } from "../ui/dom"
 import { createAlert } from "../ui/alert"
+import {
+  createOfflineNotice,
+  isOnline,
+  onNetworkChange,
+} from "../../../shared/ui/offlineNotice"
 
 export type LanguageListView = {
   root: HTMLElement
@@ -40,6 +45,7 @@ export function createLanguageListView(opts: {
   let stack = [...opts.initialStack]
   let counts: Map<string, number> = new Map()
   let disposed = false
+  let hasLoaded = false
 
   function row(corpanCode: string, count: number | undefined): HTMLElement {
     const li = el("li", { class: "wr-row" })
@@ -101,10 +107,23 @@ export function createLanguageListView(opts: {
         next.set(code, byName.get(radioName.toLowerCase()) ?? 0)
       }
       counts = next
+      hasLoaded = true
       render()
     } catch (err) {
       console.error("[world-radio] language list refresh failed:", err)
       clear(alertSlot)
+      // First-time offline (no cached language list) → calm OfflineNotice
+      // explaining that World Radio streams live, instead of an alarming
+      // "Couldn't reach the directory" error card.
+      if (!isOnline()) {
+        const notice = createOfflineNotice({
+          title: "World Radio needs internet",
+          subtitle:
+            "Stations stream live from around the world. Reconnect to browse the directory.",
+        })
+        alertSlot.appendChild(notice.element)
+        return
+      }
       alertSlot.appendChild(
         createAlert({
           title: "Couldn't reach the radio directory",
@@ -118,6 +137,14 @@ export function createLanguageListView(opts: {
     }
   }
 
+  // When the user reconnects after seeing the offline notice, auto-refresh
+  // so the language list populates without a manual tap.
+  const offNetworkChange = onNetworkChange((online) => {
+    if (online && !hasLoaded && !disposed) {
+      void refresh()
+    }
+  })
+
   render()
 
   return {
@@ -129,6 +156,7 @@ export function createLanguageListView(opts: {
     refresh,
     dispose() {
       disposed = true
+      offNetworkChange()
     },
   }
 }

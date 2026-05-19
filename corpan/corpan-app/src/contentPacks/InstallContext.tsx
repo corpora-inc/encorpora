@@ -3,12 +3,41 @@ import { installPack, isTauriRuntime } from "./install"
 import { useInstallProgress } from "./installProgress"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { InstallProgressDialog } from "@/components/packs/InstallProgressDialog"
-import type { CatalogGame } from "./catalog"
+import type { CatalogGame, CatalogV3Entry } from "./catalog"
 import type { InstallSource } from "./install"
+
+export type BatchInstallProgress = {
+  /** 1-based index of the pack currently installing. */
+  current: number
+  /** Total packs in the batch. */
+  total: number
+  /** id of the pack currently being installed. */
+  packId: string
+  /** Display name of the pack currently being installed. */
+  packName: string
+}
+
+export type BatchInstallResult = {
+  /** Pack ids that installed cleanly. */
+  installed: string[]
+  /** Pack ids that failed, with their error message. */
+  failed: Array<{ id: string; error: string }>
+}
 
 type InstallContextValue = {
   installCatalogPack: (pack: CatalogGame) => Promise<void>
   installDevPack: (manifestUrl: string) => Promise<void>
+  /**
+   * Install many packs sequentially. Uses the underlying `installPack`
+   * helper directly (so phrase-pack registration via
+   * `phrasePackRegister.ts` still fires per-pack) but bypasses the
+   * single-install progress dialog — callers render their own UI from
+   * `batchProgress` if they want a "Installing 2 of 4…" indicator.
+   * Resolves with per-pack outcomes; never throws on individual failure.
+   */
+  installPackBatch: (packs: CatalogV3Entry[]) => Promise<BatchInstallResult>
+  /** Current batch progress, or null when no batch is running. */
+  batchProgress: BatchInstallProgress | null
   isInstalling: boolean
   /**
    * Launch an already-installed pack. Mirrors the `onLaunchGame` prop
@@ -42,6 +71,7 @@ export function InstallProvider({
     useInstallProgress()
   const addGame = useGamesStore((s) => s.addGame)
   const [installing, setInstalling] = useState(false)
+  const [batchProgress, setBatchProgress] = useState<BatchInstallProgress | null>(null)
   const retryRef = useRef<RetryInfo | null>(null)
   const lastInstalledGameRef = useRef<InstalledGame | null>(null)
 
@@ -159,6 +189,53 @@ export function InstallProvider({
     [doInstall]
   )
 
+  const installPackBatch = useCallback(
+    async (packs: CatalogV3Entry[]): Promise<BatchInstallResult> => {
+      const installed: string[] = []
+      const failed: Array<{ id: string; error: string }> = []
+      if (packs.length === 0) {
+        return { installed, failed }
+      }
+      setInstalling(true)
+      try {
+        for (let i = 0; i < packs.length; i += 1) {
+          const pack = packs[i]
+          setBatchProgress({
+            current: i + 1,
+            total: packs.length,
+            packId: pack.id,
+            packName: pack.name,
+          })
+          const downloadUrl = pack.zipUrl ?? pack.manifestUrl
+          if (!downloadUrl) {
+            failed.push({ id: pack.id, error: "missing zipUrl / manifestUrl" })
+            continue
+          }
+          try {
+            await installPack({
+              manifestUrl: downloadUrl,
+              source: "catalog",
+              expectedVersion: pack.version,
+            })
+            installed.push(pack.id)
+          } catch (err) {
+            const message = err instanceof Error ? err.message : String(err)
+            console.error(
+              `[InstallContext] batch install failed for ${pack.id}:`,
+              err,
+            )
+            failed.push({ id: pack.id, error: message })
+          }
+        }
+      } finally {
+        setBatchProgress(null)
+        setInstalling(false)
+      }
+      return { installed, failed }
+    },
+    [],
+  )
+
   const handleClose = useCallback(() => {
     reset()
     retryRef.current = null
@@ -189,6 +266,8 @@ export function InstallProvider({
       value={{
         installCatalogPack,
         installDevPack,
+        installPackBatch,
+        batchProgress,
         isInstalling: installing,
         launchGame: onLaunchGame,
       }}

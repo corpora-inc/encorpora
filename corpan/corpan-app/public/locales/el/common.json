@@ -99,7 +99,13 @@
     "theme": "Θέμα",
     "themeLight": "Φωτεινό",
     "themeSystem": "Σύστημα",
-    "themeDark": "Σκοτεινό"
+    "themeDark": "Σκοτεινό",
+    "phrasePacks": {
+      "header": "Πακέτα φράσεων",
+      "baseCorpusName": "Βασικό σώμα",
+      "emptyHint": "Πρόσθεσε πακέτα από την καρτέλα Πακέτα.",
+      "browseAll": "Περιήγηση πακέτων"
+    }
   },
   "onboarding": {
     "welcome": "Καλώς ήρθατε",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "Απενεργοποιημένο μέχρι τη χρήση",
         "notInstalled": "Δεν είναι εγκατεστημένο"
       }
+    },
+    "packs": "Πακέτα φράσεων",
+    "phrasePacks": {
+      "title": "Πακέτα φράσεων",
+      "stepTitle": "Πακέτα φράσεων",
+      "hero": "Διάλεξε θέματα",
+      "loading": "Φόρτωση…",
+      "selectAll": "Επιλογή όλων",
+      "clearAll": "Καθαρισμός",
+      "subscriptionNudge": "Κάνε συνδρομή για να ξεκλειδώσεις όλα τα πακέτα.",
+      "entryCount": "{{n}} φράσεις",
+      "paid": "Επί πληρωμή",
+      "emptyHero": "Δεν υπάρχουν ακόμη πακέτα.",
+      "emptySub": "Έλα ξανά σύντομα.",
+      "offlineHero": "Είσαι εκτός σύνδεσης.",
+      "offlineSub": "Τα πακέτα χρειάζονται διαδίκτυο — δοκίμασε αργότερα από Ρυθμίσεις → Πακέτα.",
+      "offlineBanner": "Εκτός σύνδεσης — η επιλογή εγκαθίσταται όταν συνδεθείς."
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "Ακύρωση",
     "delete": "Διαγραφή",
     "create": "Δημιουργία",
-    "dismiss": "Απόρριψη"
+    "dismiss": "Απόρριψη",
+    "skip": "Παράλειψη"
   },
   "dialects": {
     "en": "Αγγλικά",
@@ -401,7 +425,28 @@
     "purchasing": "Γίνεται αγορά...",
     "buy": "Αγορά {{price}}",
     "premium": "Premium",
-    "availableOnMobile": "Διαθέσιμο σε iOS & Android"
+    "availableOnMobile": "Διαθέσιμο σε iOS & Android",
+    "checking": "Έλεγχος…",
+    "phrasePack": {
+      "sectionTitle": "Πακέτα φράσεων",
+      "empty": "Δεν υπάρχουν ακόμη πακέτα.",
+      "offlineEmpty": "Είσαι εκτός σύνδεσης. Συνδέσου για περιήγηση.",
+      "searchPlaceholder": "Αναζήτηση…",
+      "noMatches": "Κανένα αποτέλεσμα.",
+      "filter": {
+        "all": "Όλα",
+        "free": "Δωρεάν",
+        "paid": "Επί πληρωμή",
+        "installed": "Εγκατεστημένο"
+      },
+      "activeInStack": "Ενεργό",
+      "activeBadge": "Ενεργό",
+      "subBadge": "Συνδρομή",
+      "paid": "Επί πληρωμή",
+      "free": "Δωρεάν",
+      "unlockSub": "Ξεκλείδωμα με συνδρομή",
+      "entryCount": "{{n}} φράσεις"
+    }
   },
   "subscription": {
     "title": "Ξεκλειδώστε τα πάντα",

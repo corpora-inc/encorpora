@@ -99,7 +99,13 @@
     "theme": "Giao diện",
     "themeLight": "Sáng",
     "themeDark": "Tối",
-    "themeSystem": "Hệ thống"
+    "themeSystem": "Hệ thống",
+    "phrasePacks": {
+      "header": "Gói cụm từ",
+      "baseCorpusName": "Kho cơ sở",
+      "emptyHint": "Thêm gói từ tab Gói.",
+      "browseAll": "Duyệt gói"
+    }
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "Tắt cho đến khi dùng",
         "notInstalled": "Chưa cài đặt"
       }
+    },
+    "packs": "Gói cụm từ",
+    "phrasePacks": {
+      "title": "Gói cụm từ",
+      "stepTitle": "Gói cụm từ",
+      "hero": "Chọn chủ đề",
+      "loading": "Đang tải…",
+      "selectAll": "Chọn tất cả",
+      "clearAll": "Xóa",
+      "subscriptionNudge": "Đăng ký để mở khóa mọi gói.",
+      "entryCount": "{{n}} cụm từ",
+      "paid": "Trả phí",
+      "emptyHero": "Chưa có gói nào.",
+      "emptySub": "Quay lại sau nhé.",
+      "offlineHero": "Bạn đang ngoại tuyến.",
+      "offlineSub": "Gói cần internet — thử lại từ Cài đặt → Gói.",
+      "offlineBanner": "Ngoại tuyến — lựa chọn sẽ cài khi kết nối lại."
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "Hủy",
     "delete": "Xóa",
     "create": "Tạo",
-    "dismiss": "Bỏ qua"
+    "dismiss": "Bỏ qua",
+    "skip": "Bỏ qua"
   },
   "dialects": {
     "en": "Tiếng Anh",
@@ -401,7 +425,28 @@
     "purchasing": "Đang mua...",
     "buy": "Mua {{price}}",
     "premium": "Cao cấp",
-    "availableOnMobile": "Có trên iOS và Android"
+    "availableOnMobile": "Có trên iOS và Android",
+    "checking": "Đang kiểm tra…",
+    "phrasePack": {
+      "sectionTitle": "Gói cụm từ",
+      "empty": "Chưa có gói nào.",
+      "offlineEmpty": "Bạn đang ngoại tuyến. Kết nối để duyệt.",
+      "searchPlaceholder": "Tìm…",
+      "noMatches": "Không có kết quả.",
+      "filter": {
+        "all": "Tất cả",
+        "free": "Miễn phí",
+        "paid": "Trả phí",
+        "installed": "Đã cài đặt"
+      },
+      "activeInStack": "Đang dùng",
+      "activeBadge": "Đang dùng",
+      "subBadge": "Đăng ký",
+      "paid": "Trả phí",
+      "free": "Miễn phí",
+      "unlockSub": "Mở khóa bằng đăng ký",
+      "entryCount": "{{n}} cụm từ"
+    }
   },
   "subscription": {
     "title": "Mở khóa tất cả",

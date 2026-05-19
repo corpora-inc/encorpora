@@ -9,6 +9,10 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- The inline `hanziwriter` Tauri-load fallback path now logs the
+  underlying error before falling back to `<script>` injection,
+  instead of silently swallowing it.
 
 ## [0.5.0] - 2026-05-10 — Earthgate retheme + Vite tooling
 

@@ -9,6 +9,13 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Catalog browser drawer now renders a calm "Browse needs internet"
+  notice when the user cold-starts the pack offline with no cached
+  catalog, instead of a misleading "No books match your search" empty
+  state. Installed narrations are unaffected — they play offline via
+  `corpan-pack://` as before. (Lives in `@shared/catalog`, applies to
+  stargate-reader too.)
 
 ## [0.6.5] - 2026-05-18
 ### Fixed

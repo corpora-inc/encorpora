@@ -245,6 +245,10 @@ export default function App() {
       setShowSettings(false);
       setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
       updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
+      // Record the launch so Recents (in PacksListing) can sort by it.
+      // Single chokepoint — every code path that opens a pack goes
+      // through this callback.
+      useGamesStore.getState().touchLaunch(game.id);
       // Any path that lands the user inside a pack counts as
       // "discovered" — if they came in via the first-run panel, dismiss
       // it so exiting the reader returns to MainExperience, not back
@@ -267,7 +271,16 @@ export default function App() {
   }, [updateGameParam]);
 
   if (!onboarded) {
-    return <OnboardingWizard />;
+    // OnboardingWizard's PickPhrasePacks step needs `useInstallContext` to
+    // kick off the starter-pack batch install. Wrap with InstallProvider
+    // so the hook resolves. The post-onboarding tree wraps separately
+    // below — that's intentional (the providers have different lifetimes
+    // and the post-onboarding one also takes `onLaunchGame`).
+    return (
+      <InstallProvider>
+        <OnboardingWizard />
+      </InstallProvider>
+    );
   }
 
   return (

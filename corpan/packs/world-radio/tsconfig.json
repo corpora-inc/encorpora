@@ -23,6 +23,7 @@
     "../shared/audio/index.ts",
     "../shared/audio/nativeKeepAlive.ts",
     "../shared/audio/nativeRadio.ts",
-    "../shared/analytics/index.ts"
+    "../shared/analytics/index.ts",
+    "../shared/ui/offlineNotice.ts"
   ]
 }

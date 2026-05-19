@@ -35,7 +35,9 @@ const LINKS = [
     },
 ] as const;
 
-const CURRENT_STEP_IDX = 4; // learning=0, tts=1, levels=2, domains=3, socials=4
+// STEPS = [learning(0), packs(1), tts(2), socials(3)] — Finish is the last
+// visible step, so its currentIndex matches the final bar.
+const CURRENT_STEP_IDX = 3;
 
 export function OnboardingFinish() {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
@@ -80,7 +82,7 @@ export function OnboardingFinish() {
                 title="Aloha!"
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(3)}
+                onBack={() => setStep(4)}
                 onNext={() => {
                     trackOnboardingCompleted();
                     setOnboarded(true);

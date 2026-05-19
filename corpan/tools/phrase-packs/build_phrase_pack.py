@@ -220,12 +220,31 @@ def build_pack(
         "levelMin": level_min,
         "levelMax": level_max,
         "entryCount": len(phrases),
+        "languageCount": len(covered),
         "languageCodes": covered,
         "icon": meta.get("icon"),
         "accentColor": meta.get("accent_color"),
         "schemaVersion": SCHEMA_VERSION,
         "databases": {"main": "data.sqlite3"},
     }
+    # Forward optional publishing fields from pack.json so the publisher's
+    # catalog-upsert path can read them straight out of the manifest. Each
+    # is omitted when not declared in pack.json.
+    #
+    # - purchase: {"type": "free" | "iap" | "code", productId?, priceLabel?}
+    # - tags: ["starter", "editors-pick", "new", ...]
+    # - minAppVersion: "0.15.0" (default applied by publish.py if missing)
+    # - channel: "stable" | "preview"
+    # - iconUrl: full CDN URL to a cover image
+    for key, source_key in (
+        ("purchase", "purchase"),
+        ("tags", "tags"),
+        ("minAppVersion", "min_app_version"),
+        ("channel", "channel"),
+        ("iconUrl", "icon_url"),
+    ):
+        if source_key in meta and meta[source_key] is not None:
+            manifest[key] = meta[source_key]
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
 
     size = db_path.stat().st_size

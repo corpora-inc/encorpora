@@ -99,7 +99,13 @@
     "theme": "थीम",
     "themeLight": "लाइट",
     "themeDark": "डार्क",
-    "themeSystem": "सिस्टम"
+    "themeSystem": "सिस्टम",
+    "phrasePacks": {
+      "header": "वाक्यांश पैक",
+      "baseCorpusName": "मूल कॉर्पस",
+      "emptyHint": "पैक्स टैब से पैक जोड़ें।",
+      "browseAll": "पैक्स देखें"
+    }
   },
   "onboarding": {
     "welcome": "स्वागत है",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "उपयोग तक अक्षम",
         "notInstalled": "इंस्टॉल नहीं"
       }
+    },
+    "packs": "वाक्यांश पैक",
+    "phrasePacks": {
+      "title": "वाक्यांश पैक",
+      "stepTitle": "वाक्यांश पैक",
+      "hero": "विषय चुनें",
+      "loading": "लोड हो रहा है…",
+      "selectAll": "सभी चुनें",
+      "clearAll": "साफ़ करें",
+      "subscriptionNudge": "सभी पैक अनलॉक करने के लिए सदस्यता लें।",
+      "entryCount": "{{n}} वाक्यांश",
+      "paid": "सशुल्क",
+      "emptyHero": "अभी कोई पैक नहीं।",
+      "emptySub": "जल्द लौटें।",
+      "offlineHero": "आप ऑफ़लाइन हैं।",
+      "offlineSub": "पैक्स को इंटरनेट चाहिए — बाद में सेटिंग्स → पैक्स से कोशिश करें।",
+      "offlineBanner": "ऑफ़लाइन — चयन कनेक्ट होने पर इंस्टॉल हो जाएगा।"
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "रद्द करें",
     "delete": "हटाएँ",
     "create": "बनाएँ",
-    "dismiss": "खारिज करें"
+    "dismiss": "खारिज करें",
+    "skip": "छोड़ें"
   },
   "dialects": {
     "en": "अंग्रेज़ी",
@@ -401,7 +425,28 @@
     "purchasing": "खरीदा जा रहा है...",
     "buy": "{{price}} में खरीदें",
     "premium": "प्रीमियम",
-    "availableOnMobile": "iOS और Android पर उपलब्ध"
+    "availableOnMobile": "iOS और Android पर उपलब्ध",
+    "checking": "जाँच हो रही है…",
+    "phrasePack": {
+      "sectionTitle": "वाक्यांश पैक",
+      "empty": "अभी कोई पैक नहीं।",
+      "offlineEmpty": "आप ऑफ़लाइन हैं। देखने के लिए कनेक्ट करें।",
+      "searchPlaceholder": "खोजें…",
+      "noMatches": "कोई परिणाम नहीं।",
+      "filter": {
+        "all": "सभी",
+        "free": "मुफ़्त",
+        "paid": "सशुल्क",
+        "installed": "इंस्टॉल किया गया"
+      },
+      "activeInStack": "सक्रिय",
+      "activeBadge": "सक्रिय",
+      "subBadge": "सदस्यता",
+      "paid": "सशुल्क",
+      "free": "मुफ़्त",
+      "unlockSub": "सदस्यता से अनलॉक करें",
+      "entryCount": "{{n}} वाक्यांश"
+    }
   },
   "subscription": {
     "title": "सब कुछ अनलॉक करें",

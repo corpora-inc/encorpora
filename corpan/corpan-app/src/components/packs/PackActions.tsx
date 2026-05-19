@@ -100,7 +100,9 @@ export function PackActions({
           {t("packs.get")}
         </Button>
         <p className="text-xs text-muted-foreground">
-          {t("packs.offline")}
+          {t("offline.installNeedsInternet", {
+            defaultValue: "Reconnect to download.",
+          })}
         </p>
       </div>
     )
@@ -112,7 +114,7 @@ export function PackActions({
         <div className="flex gap-2">
           <Button
             onClick={handleInstall}
-            disabled={isInstalling}
+            disabled={isInstalling || isOffline}
             className="flex-1"
             size="sm"
           >
@@ -127,7 +129,21 @@ export function PackActions({
           >
             {t("packs.open")}
           </Button>
+          <Button
+            variant="ghost"
+            onClick={handleRemove}
+            size="sm"
+          >
+            {t("packs.remove")}
+          </Button>
         </div>
+        {isOffline ? (
+          <p className="text-xs text-muted-foreground">
+            {t("offline.installNeedsInternet", {
+              defaultValue: "Reconnect to download.",
+            })}
+          </p>
+        ) : null}
       </div>
     )
   }
@@ -185,7 +201,9 @@ export function PackActions({
         </Button>
         {isOffline ? (
           <p className="text-xs text-muted-foreground">
-            {t("packs.offline")}
+            {t("offline.purchaseNeedsInternet", {
+              defaultValue: "Reconnect to purchase.",
+            })}
           </p>
         ) : null}
       </div>
@@ -221,7 +239,13 @@ export function PackActions({
       </Button>
       <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>{pack.purchase?.priceLabel ?? t("packs.free")}</span>
-        {isOffline ? <span>{t("packs.offline")}</span> : null}
+        {isOffline ? (
+          <span>
+            {t("offline.installNeedsInternet", {
+              defaultValue: "Reconnect to download.",
+            })}
+          </span>
+        ) : null}
       </div>
     </div>
   )

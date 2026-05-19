@@ -5,9 +5,8 @@ import { useSettingsStore } from "@/store/settings";
 
 export const STEPS = [
     { key: "learning", label: "Learning languages" },
+    { key: "packs", label: "Phrase packs" },
     { key: "tts", label: "TTS setup" },
-    // { key: "levels", label: "Levels" },
-    // { key: "domains", label: "Domains" },
     { key: "socials", label: "Follow & connect" },
 ] as const;
 

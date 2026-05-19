@@ -45,6 +45,7 @@ import {
 } from "../../ui/commandDrawer"
 import { createNarrationSwitcher, type NarrationSwitcher } from "../../ui/narrationSwitcher"
 import { showToast } from "../../ui/toast"
+import { createOfflineNotice, isOnline } from "../../ui/offlineNotice"
 import type { InstallResult } from "./installManager"
 import { drawerStore } from "../../state/drawerStore"
 import { recordNarrationUse } from "../../state/narrationHistoryStore"
@@ -1158,6 +1159,18 @@ export function createAppShell(
     if (browseSearchQuery) filtered = searchByTitle(filtered, browseSearchQuery)
 
     if (filtered.length === 0) {
+      // Cold-start offline with no cached catalog → calm notice instead of
+      // a misleading "no matches" empty state. Installed narrations still
+      // play from the local pack — only the discovery surface needs net.
+      if (allNarrations.length === 0 && !isOnline()) {
+        const notice = createOfflineNotice({
+          title: "Browse needs internet",
+          subtitle:
+            "Reconnect to discover new narrations. Your installed books still play offline.",
+        })
+        results.appendChild(notice.element)
+        return
+      }
       const empty = document.createElement("div")
       empty.className = "command-drawer-browse-empty"
       empty.textContent = "No books match your search"

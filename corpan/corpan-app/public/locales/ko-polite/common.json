@@ -99,7 +99,13 @@
     "theme": "테마",
     "themeLight": "라이트",
     "themeDark": "다크",
-    "themeSystem": "시스템"
+    "themeSystem": "시스템",
+    "phrasePacks": {
+      "header": "어구 팩",
+      "baseCorpusName": "기본 코퍼스",
+      "emptyHint": "팩 탭에서 팩을 추가하세요.",
+      "browseAll": "팩 둘러보기"
+    }
   },
   "onboarding": {
     "welcome": "환영합니다",
@@ -185,6 +191,23 @@
         "disabledUntilUsed": "사용 시까지 사용 안 함",
         "notInstalled": "설치되지 않음"
       }
+    },
+    "packs": "어구 팩",
+    "phrasePacks": {
+      "title": "어구 팩",
+      "stepTitle": "어구 팩",
+      "hero": "주제를 골라 보세요",
+      "loading": "불러오는 중…",
+      "selectAll": "전체 선택",
+      "clearAll": "지우기",
+      "subscriptionNudge": "구독하시면 모든 팩이 열립니다.",
+      "entryCount": "{{n}}개 어구",
+      "paid": "유료",
+      "emptyHero": "아직 팩이 없어요.",
+      "emptySub": "곧 다시 와 보세요.",
+      "offlineHero": "오프라인 상태예요.",
+      "offlineSub": "팩은 인터넷이 필요해요 — 나중에 설정 → 팩에서 시도하세요.",
+      "offlineBanner": "오프라인 — 다시 연결되면 선택한 팩이 설치돼요."
     }
   },
   "socials": {
@@ -215,7 +238,8 @@
     "cancel": "취소",
     "delete": "삭제",
     "create": "생성",
-    "dismiss": "닫기"
+    "dismiss": "닫기",
+    "skip": "건너뛰기"
   },
   "dialects": {
     "en": "영어",
@@ -401,7 +425,28 @@
     "purchasing": "구매 중...",
     "buy": "{{price}} 구매",
     "premium": "프리미엄",
-    "availableOnMobile": "iOS 및 Android에서 이용 가능"
+    "availableOnMobile": "iOS 및 Android에서 이용 가능",
+    "checking": "확인 중…",
+    "phrasePack": {
+      "sectionTitle": "어구 팩",
+      "empty": "아직 팩이 없어요.",
+      "offlineEmpty": "오프라인 상태예요. 연결 후 둘러보세요.",
+      "searchPlaceholder": "검색…",
+      "noMatches": "결과가 없습니다.",
+      "filter": {
+        "all": "전체",
+        "free": "무료",
+        "paid": "유료",
+        "installed": "설치됨"
+      },
+      "activeInStack": "사용 중",
+      "activeBadge": "사용 중",
+      "subBadge": "구독",
+      "paid": "유료",
+      "free": "무료",
+      "unlockSub": "구독으로 해제",
+      "entryCount": "{{n}}개 어구"
+    }
   },
   "subscription": {
     "title": "전체 잠금 해제",

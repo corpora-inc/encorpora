@@ -242,6 +242,7 @@ export function MainExperience() {
     // History
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
     const ids = activeHistory?.ids ?? [];
+    const sources = activeHistory?.sources ?? [];
     const index = activeHistory?.index ?? -1;
 
     const pushEntry = useHistoryStore((s) => s.pushEntry);
@@ -270,42 +271,102 @@ export function MainExperience() {
 
     // --- DB fetchers -----------------------------------------------------------
 
-    const resolveCurrent = useCallback(async (entry_id: number) => {
-        const mySeq = ++fetchSeqRef.current;
-        try {
-            const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id });
-            if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
-        } catch (err) {
-            // Gaslight: history references an entry that's been pruned from the bundled corpus.
-            // Substitute a same-filter random entry and rewrite the history slot in place.
-            const msg = typeof err === "string" ? err : (err as Error)?.message || "";
-            if (!/Entry not found/i.test(msg)) throw err;
-            console.warn(`history entry ${entry_id} missing; substituting`);
-            const sub = await invoke<EntryOut>("get_random_entry_with_translations", {
-                levels,
-                domains,
-                phrasePackIds,
-                baseCorpusEnabled,
-            });
-            if (sub && mySeq === fetchSeqRef.current) {
-                replaceCurrent(sub.entry_id);
-                setCurrEntry(sub);
+    const resolveCurrent = useCallback(
+        async (entry_id: number, source: string = "base") => {
+            const mySeq = ++fetchSeqRef.current;
+            try {
+                const entry = await invoke<EntryOut>(
+                    "get_entry_by_id_with_translations",
+                    { entryId: entry_id, source },
+                );
+                if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
+            } catch (err) {
+                // Gaslight: history references an entry that's been pruned
+                // from the bundled corpus, or whose pack has been
+                // uninstalled, or whose pack id is no longer in the active
+                // set. Substitute a same-filter random entry and rewrite the
+                // history slot in place.
+                const msg =
+                    typeof err === "string" ? err : (err as Error)?.message || "";
+                const isMissing =
+                    /Entry not found/i.test(msg) ||
+                    /Pack not installed/i.test(msg) ||
+                    /Pack id mismatch/i.test(msg) ||
+                    /entry .* not found/i.test(msg);
+                if (!isMissing) throw err;
+                console.warn(
+                    `[history] ${source}:${entry_id} lookup failed → substituting. raw error:`,
+                    msg,
+                );
+                if (!baseCorpusEnabled && phrasePackIds.length === 0) {
+                    useSettingsStore.getState().setBaseCorpusEnabled(true);
+                    return;
+                }
+                try {
+                    const sub = await invoke<EntryOut>(
+                        "get_random_entry_with_translations",
+                        {
+                            levels,
+                            domains,
+                            phrasePackIds,
+                            baseCorpusEnabled,
+                        },
+                    );
+                    if (sub && mySeq === fetchSeqRef.current) {
+                        replaceCurrent(sub.entry_id, sub.source);
+                        setCurrEntry(sub);
+                    }
+                } catch (subErr) {
+                    const subMsg =
+                        typeof subErr === "string"
+                            ? subErr
+                            : (subErr as Error)?.message || "";
+                    if (/No active sources/i.test(subMsg)) {
+                        useSettingsStore.getState().setBaseCorpusEnabled(true);
+                        return;
+                    }
+                    throw subErr;
+                }
             }
-        }
-    }, [levels, domains, phrasePackIds, baseCorpusEnabled, replaceCurrent]);
+        },
+        [levels, domains, phrasePackIds, baseCorpusEnabled, replaceCurrent],
+    );
 
     const fetchRandomEntry = useCallback(async () => {
-        const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
-            levels,
-            domains,
-            phrasePackIds,
-            baseCorpusEnabled,
-        });
-        if (!entry) return;
-
-        pushEntry(entry.entry_id);
-        setCurrEntry(entry);
-        incrementUtteranceCount();
+        // Belt-and-suspenders: if a user's persisted stack somehow has both
+        // base off and zero active phrase packs (older settings, race
+        // during a v3 migration, etc.), Rust returns "No active sources".
+        // The PhrasePackToggleSection UI prevents getting INTO this state,
+        // but if we DO land in it, recover quietly by re-enabling base
+        // rather than throwing an uncaught rejection up the React tree.
+        if (!baseCorpusEnabled && phrasePackIds.length === 0) {
+            useSettingsStore.getState().setBaseCorpusEnabled(true);
+            return;
+        }
+        try {
+            const entry = await invoke<EntryOut>(
+                "get_random_entry_with_translations",
+                {
+                    levels,
+                    domains,
+                    phrasePackIds,
+                    baseCorpusEnabled,
+                },
+            );
+            if (!entry) return;
+            pushEntry(entry.entry_id, entry.source);
+            setCurrEntry(entry);
+            incrementUtteranceCount();
+        } catch (err) {
+            const msg = typeof err === "string" ? err : (err as Error)?.message || "";
+            if (/No active sources/i.test(msg)) {
+                // Same recovery: silently re-enable base so the main loop
+                // doesn't end up in a permanent error state.
+                useSettingsStore.getState().setBaseCorpusEnabled(true);
+                return;
+            }
+            throw err;
+        }
     }, [levels, domains, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
 
     // --- Effects ---------------------------------------------------------------
@@ -316,7 +377,7 @@ export function MainExperience() {
         if (ids.length === 0) {
             void fetchRandomEntry();
         } else if (index >= 0 && index < ids.length) {
-            void resolveCurrent(ids[index]);
+            void resolveCurrent(ids[index], sources[index] ?? "base");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStackId]);
@@ -324,7 +385,7 @@ export function MainExperience() {
     // Re-fetch same entry when language list changes
     useEffect(() => {
         if (index >= 0 && index < ids.length) {
-            void resolveCurrent(ids[index]);
+            void resolveCurrent(ids[index], sources[index] ?? "base");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [languages]);
@@ -414,7 +475,7 @@ export function MainExperience() {
         const target = ids[index - 1];
         if (typeof target !== "number") return;
         setIndex(index - 1);
-        void resolveCurrent(target);
+        void resolveCurrent(target, sources[index - 1] ?? "base");
     };
 
     const handleNext = () => {
@@ -422,7 +483,7 @@ export function MainExperience() {
             const target = ids[index + 1];
             if (typeof target !== "number") return;
             setIndex(index + 1);
-            void resolveCurrent(target);
+            void resolveCurrent(target, sources[index + 1] ?? "base");
             return;
         }
         void fetchRandomEntry();

@@ -6,12 +6,14 @@ import {
   FolderCheck,
   CheckCircle2,
   AlertCircle,
+  CloudOff,
   Loader2,
   Check,
   RefreshCw,
   ExternalLink,
   X,
 } from "lucide-react"
+import { useTranslation } from "react-i18next"
 import {
   Dialog,
   DialogContent,
@@ -133,6 +135,7 @@ export function InstallProgressDialog({
   onRetry?: () => void
   onOpen?: () => void
 }) {
+  const { t } = useTranslation()
   const isTerminal = state.stage === "complete" || state.stage === "error"
   const isDownloading = state.stage === "downloading"
   const isInProgress =
@@ -140,6 +143,30 @@ export function InstallProgressDialog({
     state.stage === "verifying" ||
     state.stage === "extracting" ||
     state.stage === "finalizing"
+
+  // Recognized error sentinels emitted by useInstallProgress. Anything else
+  // is a Rust-side message we surface verbatim.
+  const isOfflineError = state.stage === "error" && state.error === "offline"
+  const isStuckError = state.stage === "error" && state.error === "stuck"
+  const errorHeading = isOfflineError
+    ? t("offline.title", { defaultValue: "No internet" })
+    : isStuckError
+      ? t("packs.installStuckTitle", {
+          defaultValue: "Download stalled",
+        })
+      : t("packs.installFailedTitle", {
+          defaultValue: "Install failed",
+        })
+  const errorDetail = isOfflineError
+    ? t("offline.installNeedsInternet", {
+        defaultValue: "Reconnect to download.",
+      })
+    : isStuckError
+      ? t("packs.installStuckDetail", {
+          defaultValue:
+            "No progress for a while. Check your connection and try again.",
+        })
+      : state.error || ""
 
   return (
     <Dialog open={state.active} onOpenChange={(open) => !open && isTerminal && onClose()}>
@@ -179,7 +206,11 @@ export function InstallProgressDialog({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <AlertCircle className="h-16 w-16 text-red-500" />
+                {isOfflineError ? (
+                  <CloudOff className="h-16 w-16 text-muted-foreground/70" />
+                ) : (
+                  <AlertCircle className="h-16 w-16 text-red-500" />
+                )}
               </motion.div>
             )}
             {isInProgress && (
@@ -199,6 +230,22 @@ export function InstallProgressDialog({
             <p className="text-sm font-medium text-muted-foreground text-center break-all max-w-full">
               {state.packName}
             </p>
+          )}
+
+          {/* Error heading + detail. Without this, error state was just
+              an alert icon and two buttons — the user couldn't tell why
+              the install failed. */}
+          {state.stage === "error" && (
+            <div className="flex flex-col items-center gap-1 px-2 text-center">
+              <p className="text-sm font-medium text-foreground">
+                {errorHeading}
+              </p>
+              {errorDetail ? (
+                <p className="text-xs text-muted-foreground leading-snug break-words">
+                  {errorDetail}
+                </p>
+              ) : null}
+            </div>
           )}
 
           {/* Progress bar (only during download) */}

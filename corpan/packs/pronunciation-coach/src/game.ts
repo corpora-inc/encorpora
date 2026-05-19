@@ -10,6 +10,14 @@ import {
 } from "./modelRegistry"
 import { mergeForLang } from "./whisperTuning"
 import { openTuner } from "./whisperTunerUI"
+// Direct file import (not the @shared/ui barrel) so we don't pull in
+// commandDrawer/drawerStore and their zustand dep. The offline notice is
+// pure DOM + CSS — perfect for packs that don't otherwise need shared/ui.
+import {
+  createOfflineNotice,
+  isOnline,
+  onNetworkChange,
+} from "../../shared/ui/offlineNotice"
 // Silence auto-stop is wired in `silenceWatcher.ts` but currently
 // not invoked from the recording flow — RMS-thresholding-with-fixed-
 // numbers is too unreliable across mic gain / noise floor / accent
@@ -1864,7 +1872,7 @@ export const mountGame = (
       }
       if (code === "NETWORK") {
         showError(
-          "Network hiccup while scoring. Try again — your model is fine."
+          "Brief network blip while scoring. Try again — your model is fine."
         )
         return
       }
@@ -2116,7 +2124,7 @@ export const mountGame = (
             )
           } else if (code === "NETWORK") {
             showError(
-              `${targetLabel} needs the tokenizer — check your connection. Staying on ${labelForMode(previous)}.`
+              `${targetLabel} needs internet to finish setting up. Reconnect and try again — staying on ${labelForMode(previous)} for now.`
             )
           } else if (code === "INSUFFICIENT_MEMORY") {
             // Retry loop exhausted — device really is out of headroom.
@@ -2150,7 +2158,7 @@ export const mountGame = (
         )
       } else if (code === "NETWORK") {
         showError(
-          `${targetLabel} model needs the tokenizer — check your connection and try again.`
+          `${targetLabel} needs internet to finish setting up. Reconnect and try again.`
         )
       } else if (code === "INSUFFICIENT_MEMORY") {
         showError(
@@ -2584,6 +2592,41 @@ export const mountGame = (
       `
       container.appendChild(setupRoot)
 
+      // Model downloads need internet. Mount an inline offline notice
+      // between the headline and the model cards so the user understands
+      // why install buttons may not respond. The notice swaps in/out live
+      // as airplane mode toggles.
+      const setupBody = setupRoot.querySelector<HTMLDivElement>(".pc-setup-body")
+      const firstCard = setupRoot.querySelector<HTMLElement>(".pc-setup-card")
+      let offlineNoticeEl: HTMLElement | null = null
+      const renderOfflineNotice = () => {
+        if (isOnline()) {
+          if (offlineNoticeEl) {
+            offlineNoticeEl.remove()
+            offlineNoticeEl = null
+          }
+          return
+        }
+        if (offlineNoticeEl || !setupBody) return
+        const notice = createOfflineNotice({
+          title: "Model downloads need internet",
+          subtitle:
+            "Already-installed models still work. Reconnect to install or reinstall a model.",
+        })
+        offlineNoticeEl = notice.element
+        offlineNoticeEl.style.marginBottom = "12px"
+        if (firstCard && firstCard.parentNode === setupBody) {
+          setupBody.insertBefore(offlineNoticeEl, firstCard)
+        } else {
+          setupBody.appendChild(offlineNoticeEl)
+        }
+      }
+      renderOfflineNotice()
+      // The network listener that re-renders both the offline notice and
+      // the action buttons gets registered below, after `renderActions`
+      // is defined.
+      let offNetworkChange: () => void = () => { }
+
       const errorEl = setupRoot.querySelector<HTMLDivElement>("#pc-setup-error")!
       // Two-tier install state. Source-of-truth precedence:
       //   1. Active model in this session: true (kit is in memory —
@@ -2624,6 +2667,7 @@ export const mountGame = (
       }
 
       const cleanup = () => {
+        offNetworkChange()
         if (setupRoot.parentNode) setupRoot.parentNode.removeChild(setupRoot)
       }
 
@@ -2675,21 +2719,33 @@ export const mountGame = (
           const mkBtn = (
             label: string,
             kind: "primary" | "ghost" | "danger",
-            onClick: () => void
+            onClick: () => void,
+            opts: { disabled?: boolean } = {}
           ) => {
             const b = document.createElement("button")
             b.type = "button"
             b.className = `pc-setup-btn pc-setup-btn-${kind}`
             b.textContent = label
+            if (opts.disabled) b.disabled = true
             b.addEventListener("click", onClick)
             actions.appendChild(b)
           }
 
+          // Install / Reinstall need internet. Disable them offline so
+          // taps don't kick off doomed downloads — the offline notice
+          // already explains why. Remove/Use-this work fine offline.
+          const networkBlocked = !isOnline()
+
           if (!isInstalled) {
-            mkBtn("Install", "primary", () => {
-              console.log(`[pronunciation-coach] CLICK Install mode=${mode}`)
-              startInstall(mode)
-            })
+            mkBtn(
+              "Install",
+              "primary",
+              () => {
+                console.log(`[pronunciation-coach] CLICK Install mode=${mode}`)
+                startInstall(mode)
+              },
+              { disabled: networkBlocked }
+            )
           } else if (isActive) {
             // Active and installed — no buttons. The model is loaded;
             // there's nothing for the user to do here.
@@ -2698,10 +2754,15 @@ export const mountGame = (
               console.log(`[pronunciation-coach] CLICK Use-this mode=${mode}`)
               useInstalled(mode)
             })
-            mkBtn("Reinstall", "ghost", () => {
-              console.log(`[pronunciation-coach] CLICK Reinstall mode=${mode}`)
-              startInstall(mode, true)
-            })
+            mkBtn(
+              "Reinstall",
+              "ghost",
+              () => {
+                console.log(`[pronunciation-coach] CLICK Reinstall mode=${mode}`)
+                startInstall(mode, true)
+              },
+              { disabled: networkBlocked }
+            )
             mkBtn("Remove", "danger", () => {
               console.log(`[pronunciation-coach] CLICK Remove mode=${mode}`)
               removeModel(mode)
@@ -2709,6 +2770,14 @@ export const mountGame = (
           }
         }
       }
+
+      // Hook up the network listener now that renderActions exists.
+      // Airplane-mode toggles swap the offline notice in/out and re-disable
+      // the Install/Reinstall buttons in real time.
+      offNetworkChange = onNetworkChange(() => {
+        renderOfflineNotice()
+        renderActions()
+      })
 
       const refreshInstallState = async () => {
         // We deliberately do NOT use listInstalled here. validateModel
@@ -3074,10 +3143,10 @@ export const mountGame = (
     const targetLabel = labelForMode(bootTargetMode)
     if (prepareCode === "NETWORK") {
       showError(
-        `${targetLabel} model needs the tokenizer — check your connection. Your model files are intact.`
+        `${targetLabel} needs internet to finish setting up. Reconnect and tap the model badge to retry — your downloaded files are intact.`
       )
       micBtn.disabled = true
-      micLabel.textContent = "Network needed"
+      micLabel.textContent = "Reconnect to load"
       return
     }
     if (prepareCode && prepareCode !== "MODEL_NOT_INSTALLED" && prepareCode !== "LOAD_FAILED") {

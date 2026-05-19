@@ -1,0 +1,69 @@
+.corpan-offline-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: min(420px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 20px;
+  border-radius: var(--catalog-radius, 12px);
+  border: 1px dashed
+    color-mix(in srgb, var(--catalog-border, rgba(255, 255, 255, 0.18)) 100%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--catalog-surface-dim, var(--catalog-surface, rgba(255, 255, 255, 0.03)))
+      80%,
+    transparent
+  );
+  color: var(--catalog-text-dim, rgba(255, 255, 255, 0.7));
+  font-family: var(--catalog-font, system-ui, -apple-system, sans-serif);
+  text-align: center;
+}
+
+.corpan-offline-notice--compact {
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.corpan-offline-notice__icon {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.corpan-offline-notice--compact .corpan-offline-notice__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.corpan-offline-notice__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--catalog-text, rgba(255, 255, 255, 0.92));
+  line-height: 1.35;
+  margin: 0;
+}
+
+.corpan-offline-notice--compact .corpan-offline-notice__title {
+  font-size: 12px;
+  font-weight: 400;
+  color: inherit;
+}
+
+.corpan-offline-notice__subtitle {
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--catalog-text-dim, rgba(255, 255, 255, 0.6));
+}
+
+.corpan-offline-notice__action {
+  margin-top: 4px;
+}
