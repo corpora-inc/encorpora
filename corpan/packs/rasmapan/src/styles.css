@@ -1041,12 +1041,12 @@
   }
   .letter-pill {
     width: 38px;
-    min-height: 46px;
+    min-height: 52px;
     font-size: 20px;
-    padding: 2px 4px 14px;
+    padding: 2px 4px 18px;
   }
   .letter-picker {
-    padding-bottom: 46px;
+    padding-bottom: 56px;
   }
   .form-chip {
     padding: 6px 10px;
@@ -1675,11 +1675,13 @@
      is narrower than ~28 × 50 px. Pulled up slightly via negative
      top margin to absorb whitespace above (under the mode tabs)
      and given a generous bottom padding so Arabic descenders
-     (ج، ر، و، ي، ع) stay safely above the overflow-y clip line. */
+     (ج، ر، و، ي، ع) stay safely above the overflow-y clip line.
+     64 px bottom keeps descenders well clear and leaves a touch of
+     breathing room below the pill row before the workspace starts. */
   display: flex;
   flex-wrap: nowrap;
   gap: 6px;
-  padding: 0 0 54px;
+  padding: 0 0 64px;
   margin-top: -12px;
   margin-bottom: 0;
   overflow-x: auto;
@@ -1748,9 +1750,9 @@
      row. Generous bottom padding inside the pill keeps Arabic
      descenders (ج، ر، و، ي، ع) clear of the pill's own border. */
   width: 44px;
-  min-height: 52px;
+  min-height: 58px;
   line-height: 1.2;
-  padding: 2px 4px 18px;
+  padding: 2px 4px 22px;
   border-radius: 10px;
   cursor: pointer;
   display: inline-flex;
