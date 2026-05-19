@@ -469,7 +469,13 @@ def build_glyph_record(
             strokes = overrides["strokes"]
         if "medians" in overrides and isinstance(overrides["medians"], list):
             medians = overrides["medians"]
-    scoring = "median" if overrides and overrides.get("scoring") == "median" else "outline"
+    # Default to median scoring: every writer record already carries an
+    # auto-derived median polyline (from the Amiri outline contours via
+    # fontTools), and `scoring.js#scoreAgainstMedian` is fully wired.
+    # Per-letter overrides can downgrade to "outline" for letters where
+    # the auto-derived polyline turns out to be a poor approximation of
+    # actual stroke order.
+    scoring = (overrides or {}).get("scoring", "median")
     return {
         "letter": chr(codepoint),
         "outline": data.outline_paths,
