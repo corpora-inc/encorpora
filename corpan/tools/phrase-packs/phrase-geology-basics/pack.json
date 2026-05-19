@@ -1,0 +1,10 @@
+{
+  "id": "phrase-geology-basics",
+  "version": "0.1.0",
+  "name": "Geology Basics",
+  "description": "Rocks, fossils, volcanoes, rivers, maps, minerals, and deep time in lively everyday language.",
+  "category": "science",
+  "topic": "Geology",
+  "icon": "mountain",
+  "accent_color": "#a16207"
+}
