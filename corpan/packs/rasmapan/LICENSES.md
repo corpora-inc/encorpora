@@ -24,10 +24,22 @@ calligraphy by [ARBML](https://github.com/ARBML). License:
 - Dataset paper: "Calliar: An Online Handwritten Dataset for
   Arabic Calligraphy" — Z. Alyafeai et al., arXiv:2106.10745
 - What we derive: per-primitive median polylines (alif, baa-base,
-  haa-base, daal, raa, siin-base, etc., plus dot strokes), picked
-  from the corpus by aspect-ratio + path-length heuristics and
+  haa-base, daal, raa, siin-base, Saad, ain, qaaf-base, kaaf,
+  laam, miim, haa, waaw, yaa-base, nuun-base, hamza, Saad-medial,
+  plus dot strokes), picked from the corpus by canonical
+  aspect-ratio bands + path-length sanity bounds + tortuosity
+  (path length ÷ bbox diagonal) — the cleanest curve wins. All
+  28 Arabic letters are composed from these primitives:
+  single-primitive letters use the canonical trajectory directly;
+  composite letters (baa, taa, thaa, jiim, khaa, dhaal, zaay,
+  shiin, Daad, ghain, faa, qaaf, nuun, yaa) place dot strokes at
+  bbox-relative positions; two-primitive composites (Taa, DHaa)
+  lift adjacent stroke pairs from Calliar samples to preserve the
+  spatial relationship between stem and base. Trajectories are
   normalized to rasmapan's 0..1000 viewBox. The build-side
-  extractor lives at `build/extract_calliar_strokes.py`.
+  extractor lives at `build/extract_calliar_strokes.py`; visual
+  audit tooling at `build/audit_strokes.py` writes per-letter
+  SVGs + a 28-letter grid to `build/vendor/calliar/audit/`.
 - The raw `dataset.zip` is not committed (51 MB build input);
   run `build/vendor/calliar/fetch_dataset.sh` to download it.
 - Composite-letter stroke order follows classical Naskh

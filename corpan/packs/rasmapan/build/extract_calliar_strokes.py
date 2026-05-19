@@ -53,33 +53,75 @@ PADDING = 80.0
 # Recipes describe how composite letters are assembled from primitive
 # strokes. Each recipe element is either:
 #   - "primitive:<char>"  — pull this primitive's canonical median
-#                           and drop it at viewBox center
-#   - "dot:<pos>"         — drop a dot stroke at a relative position
-#                           (above, below, above2, below2 = two dots
-#                           stacked, above3 = three dots in triangle)
+#                           and place it in the viewBox
+#   - "dot:<spec>"        — drop dot stroke(s) sized + positioned
+#                           relative to the just-placed primitive's
+#                           bbox. spec ∈ {above1, above2, above3,
+#                           below1, below2, below3}.
 #
 # Order = the classical Naskh stroke order: base shape first, then
 # dots. Many Calliar writers happen to write dots first; we
-# intentionally re-order on output.
+# intentionally re-order so the animation teaches the canonical
+# sequence.
 #
-# Phase A: alif + baa only.
+# Decomposition source: scripts/chars.py from Calliar
+# (https://github.com/ARBML/Calliar). We diverge only where
+# necessary: kaaf uses the ﻛ primitive directly (Calliar tags it as
+# its own glyph), and Taa/DHaa are deferred — their two-primitive
+# composition (alif stem + Saad-medial body) requires multi-primitive
+# spatial layout we'll handle in a follow-up; for now they fall
+# back to the permissive outline scorer.
 LETTER_RECIPES: Dict[str, List[str]] = {
-    "alif": ["primitive:ا"],
-    "baa": ["primitive:ٮ", "dot:below1"],
+    # ---- Single-primitive letters ----
+    "alif":  ["primitive:ا"],
+    "Haa":   ["primitive:ح"],
+    "daal":  ["primitive:د"],
+    "raa":   ["primitive:ر"],
+    "siin":  ["primitive:س"],
+    "Saad":  ["primitive:ص"],
+    "ain":   ["primitive:ع"],
+    "laam":  ["primitive:ل"],
+    "miim":  ["primitive:م"],
+    "haa":   ["primitive:ه"],
+    "waaw":  ["primitive:و"],
+    "kaaf":  ["primitive:ﻛ"],  # Calliar tags kaaf glyphs as ﻛ directly
+    # ---- Single-primitive + dots ----
+    "baa":   ["primitive:ٮ", "dot:below1"],
+    "taa":   ["primitive:ٮ", "dot:above2"],
+    "thaa":  ["primitive:ٮ", "dot:above3"],
+    "jiim":  ["primitive:ح", "dot:below1"],
+    "khaa":  ["primitive:ح", "dot:above1"],
+    "dhaal": ["primitive:د", "dot:above1"],
+    "zaay":  ["primitive:ر", "dot:above1"],
+    "shiin": ["primitive:س", "dot:above3"],
+    "Daad":  ["primitive:ص", "dot:above1"],
+    "ghain": ["primitive:ع", "dot:above1"],
+    "faa":   ["primitive:ٯ", "dot:above1"],
+    "qaaf":  ["primitive:ٯ", "dot:above2"],
+    "nuun":  ["primitive:ں", "dot:above1"],
+    "yaa":   ["primitive:ى", "dot:below2"],
+    # ---- Two-primitive composites ----
+    # Taa (ط) and DHaa (ظ) decompose into [alif stem, Saad-medial
+    # body]. The "pair:" step looks for adjacent stroke pairs in
+    # Calliar samples and lifts BOTH primitives' trajectories with
+    # their absolute coords intact — so the spatial relationship
+    # between the stem and base comes from real calligraphers'
+    # hands, not invented by us. Output order is base-first, then
+    # stem, per classical Naskh convention.
+    "Taa":   ["pair:ا+ﺻ"],
+    "DHaa":  ["pair:ا+ﺻ", "dot:above1"],
 }
 
-# Dot positions relative to viewBox center (after the base primitive
-# is normalized to fill the viewBox). Below-base dots sit a bit
-# beneath the bowl's bottom; above-base dots sit a bit above the
-# bowl's top.
-DOT_POSITIONS = {
-    "above1": [(500, 100)],
-    "above2": [(440, 100), (560, 100)],
-    "above3": [(380, 140), (500, 80), (620, 140)],
-    "below1": [(500, 920)],
-    "below2": [(440, 920), (560, 920)],
-    "below3": [(380, 880), (500, 940), (620, 880)],
-}
+# Dot offsets in viewBox units, applied relative to the just-placed
+# primitive's bbox. above_y_offset is added to the primitive's top
+# edge (negative = above the primitive); below_y_offset is added to
+# the bottom edge (positive = below). x-positions for the 2-dot and
+# 3-dot patterns are spaced symmetrically around the primitive's
+# horizontal center.
+DOT_GAP = 60.0  # px between primitive edge and the dot row
+DOT_SPACING_2 = 110.0  # horizontal gap between two dots
+DOT_SPACING_3 = 90.0   # horizontal gap (each side of center) for three dots
+DOT_TRIANGLE_RISE = 70.0  # how much the middle dot sits forward in a triangle
 
 
 def load_samples() -> List[List[dict]]:
@@ -128,25 +170,60 @@ def collect_primitive_strokes(
     return out
 
 
+# Canonical aspect-ratio (h/w) hints per primitive. These reflect the
+# typical isolated-form proportions in Naskh, NOT the average of all
+# Calliar occurrences — many of which are from medial/final positions
+# inside words where the shape gets stretched by connecting strokes.
+# When a primitive has a hint, the chooser prefers candidates whose
+# h/w falls in this range over candidates that merely match the
+# corpus median.
+ASPECT_HINTS: Dict[str, Tuple[float, float]] = {
+    "ا": (4.0, 12.0),    # alif — tall vertical
+    "ل": (3.0, 8.0),     # laam — tall vertical with hook
+    "ٮ": (0.35, 0.9),    # baa-bowl — wide and shallow
+    "ں": (0.35, 0.9),    # nuun-base — wide bowl, similar to baa
+    "س": (0.15, 0.45),   # siin — very wide (three teeth)
+    "ص": (0.35, 0.85),   # Saad — wide oval head with tail
+    "د": (0.45, 0.95),   # daal — wider than tall, small hook
+    "ر": (0.7, 1.6),     # raa — descending swoop
+    "ى": (0.3, 0.8),     # yaa-base — wide scoop
+    "ح": (0.65, 1.3),    # Haa-base — roundish
+    "ٯ": (0.85, 1.7),    # qaaf-base — small head + descending tail
+    "م": (0.7, 1.5),     # miim — round head + tail
+    "ه": (0.7, 1.4),     # haa — round shape
+    "و": (0.9, 1.6),     # waaw — loop + tail
+    "ع": (0.7, 1.3),     # ain — closed shape
+    "ﻛ": (1.2, 3.0),     # kaaf — tall body with internal mark
+    "ﺻ": (0.4, 0.9),     # Saad medial — horizontal body
+    "ء": (0.7, 1.5),     # hamza
+}
+
+
 def choose_canonical(
     candidates: List[List[List[float]]],
+    primitive_id: Optional[str] = None,
 ) -> Optional[List[List[float]]]:
-    """Pick the canonical trajectory for a primitive by matching the
-    *typical shape* of that primitive across the whole corpus, then
-    breaking ties on path length.
+    """Pick the canonical trajectory for a primitive.
 
-    The typical shape is captured by the per-primitive median aspect
-    ratio (height ÷ width). Alif samples cluster around h/w ≈ 7
-    (vertical line); baa-bowl samples cluster around h/w ≈ 0.7
-    (horizontal bowl); a dot at ≈ 1.0. So we:
-      1. Reject obvious tagging noise (path length < 20 px).
-      2. Compute the median h/w across the cleaned candidates.
-      3. Keep candidates within ±25% of that median ratio.
-      4. Among survivors, pick the one whose path length is closest
-         to the survivors' median (rejects short stubs and overlong
-         ornaments).
+    Pipeline:
+      1. **Aspect-ratio band.** Filter by the primitive's canonical
+         Naskh h/w band (ASPECT_HINTS) — rejects medial-position
+         distortions. Without a hint, use the corpus median ±25%.
+      2. **Tortuosity floor.** Compute median path length of the
+         aspect band. Filter to samples with path length in
+         [0.5 × median, 2.0 × median] (rejects stubs and overlong
+         flourishes).
+      3. **Cleanest wins.** Among the survivors, pick the sample
+         with the lowest tortuosity (path length ÷ bbox diagonal).
+         Tortuosity 1.0 = a straight line; 1.2 = a clean curve; >1.6
+         = a wandering or doubled-back stroke (sentence-context
+         connector tails).
+
+    Falls back gracefully if any stage rejects everything — the
+    pipeline never returns None when at least one valid candidate
+    exists.
     """
-    rows: List[Tuple[float, float, List[List[float]]]] = []
+    rows: List[Tuple[float, float, float, List[List[float]]]] = []
     for pts in candidates:
         x0, y0, x1, y1 = bbox(pts)
         w = max(1.0, x1 - x0)
@@ -154,18 +231,36 @@ def choose_canonical(
         L = path_length(pts)
         if L < 20:
             continue
-        rows.append((h / w, L, pts))
+        diag = math.sqrt(w * w + h * h)
+        tort = L / diag if diag > 0 else float("inf")
+        rows.append((h / w, L, tort, pts))
     if not rows:
         return None
-    median_ar = statistics.median(r[0] for r in rows)
-    lo = median_ar * 0.75
-    hi = median_ar * 1.25
+
+    # Stage 1: aspect-ratio band.
+    hint = ASPECT_HINTS.get(primitive_id) if primitive_id else None
+    if hint:
+        lo, hi = hint
+    else:
+        median_ar = statistics.median(r[0] for r in rows)
+        lo = median_ar * 0.75
+        hi = median_ar * 1.25
     band = [r for r in rows if lo <= r[0] <= hi]
     if not band:
         band = rows
+
+    # Stage 2: path-length sanity (reject stubs + overlong flourishes).
     median_len = statistics.median(r[1] for r in band)
-    band.sort(key=lambda r: abs(r[1] - median_len))
-    return band[0][2]
+    sized = [r for r in band if 0.5 * median_len <= r[1] <= 2.0 * median_len]
+    if not sized:
+        sized = band
+
+    # Stage 3: lowest tortuosity wins.
+    sized.sort(key=lambda r: r[2])
+    return sized[0][3]
+
+
+import math  # noqa: E402 — used by choose_canonical's tortuosity
 
 
 def normalize_single(
@@ -213,12 +308,26 @@ def resample(stroke: List[List[float]], n: int = 18) -> List[List[float]]:
 def build_letter_strokes(
     recipe: List[str],
     canonical_primitives: Dict[str, List[List[float]]],
+    canonical_pairs: Dict[str, List[List[List[float]]]],
 ) -> List[List[List[float]]]:
     """Assemble the stroke list for one letter from its recipe.
-    The base primitive (first entry) fills the viewBox; dots get
-    fixed positions relative to that viewBox."""
+
+    The first "primitive:" or "pair:" step fills the viewBox; its
+    normalized bbox becomes the anchor for any subsequent "dot:"
+    steps. Dots are positioned via DOT_GAP/DOT_SPACING constants
+    relative to that bbox, so each letter's dots sit just above
+    or below the actual shape regardless of how tall or wide the
+    base primitive naturally is.
+    """
     out: List[List[List[float]]] = []
-    base_normalized: Optional[List[List[float]]] = None
+    anchor_bbox: Optional[Tuple[float, float, float, float]] = None
+
+    def remember_anchor(strokes: List[List[List[float]]]) -> None:
+        nonlocal anchor_bbox
+        all_pts = [p for s in strokes for p in s]
+        if all_pts:
+            anchor_bbox = bbox(all_pts)
+
     for step in recipe:
         if step.startswith("primitive:"):
             pid = step.split(":", 1)[1]
@@ -226,15 +335,123 @@ def build_letter_strokes(
             if not raw:
                 return []
             norm = normalize_single(raw)
-            if base_normalized is None:
-                base_normalized = norm
-            out.append(resample(norm))
+            resampled = resample(norm)
+            if anchor_bbox is None:
+                remember_anchor([resampled])
+            out.append(resampled)
+        elif step.startswith("pair:"):
+            spec = step.split(":", 1)[1]
+            strokes = canonical_pairs.get(spec)
+            if not strokes:
+                return []
+            # canonical_pairs entries are already normalized + resampled
+            # to the viewBox as a UNIT (both strokes share one transform).
+            if anchor_bbox is None:
+                remember_anchor(strokes)
+            out.extend(strokes)
         elif step.startswith("dot:"):
             kind = step.split(":", 1)[1]
-            positions = DOT_POSITIONS.get(kind, [])
-            for x, y in positions:
-                out.append([[float(x), float(y)]])
+            if anchor_bbox is None:
+                continue
+            x0, y0, x1, y1 = anchor_bbox
+            cx = (x0 + x1) / 2
+            is_above = kind.startswith("above")
+            count_char = kind[-1]
+            try:
+                count = int(count_char)
+            except ValueError:
+                continue
+            anchor_edge = y0 if is_above else y1
+            y = anchor_edge - DOT_GAP if is_above else anchor_edge + DOT_GAP
+            if count == 1:
+                out.append([[float(cx), float(y)]])
+            elif count == 2:
+                out.append([[float(cx - DOT_SPACING_2 / 2), float(y)]])
+                out.append([[float(cx + DOT_SPACING_2 / 2), float(y)]])
+            elif count == 3:
+                # Triangle: outer two on the row, middle dot raised
+                # AWAY from the primitive (further above when above,
+                # further below when below).
+                rise = -DOT_TRIANGLE_RISE if is_above else DOT_TRIANGLE_RISE
+                out.append([[float(cx - DOT_SPACING_3), float(y)]])
+                out.append([[float(cx), float(y + rise)]])
+                out.append([[float(cx + DOT_SPACING_3), float(y)]])
     return out
+
+
+def find_canonical_pair(
+    samples: List[List[dict]],
+    primitive_a: str,
+    primitive_b: str,
+) -> Optional[List[List[List[float]]]]:
+    """Scan Calliar samples for adjacent stroke pairs tagged
+    `primitive_a` and `primitive_b` (in either order) and lift
+    them together, preserving their absolute spatial relationship.
+
+    Picks the pair whose combined bbox aspect ratio is closest to
+    the median across all matches — biases toward typical Naskh
+    proportions, rejects pairs from squished medial positions or
+    flourished display samples.
+
+    Returns the pair normalized + resampled to fit the 0..1000
+    viewBox as a single unit. Output order: primitive_b first,
+    then primitive_a — for ط that means base-then-stem, which is
+    the classical Naskh order.
+    """
+    candidates: List[Tuple[float, float, List[List[float]], List[List[float]]]] = []
+    for sample in samples:
+        if not isinstance(sample, list):
+            continue
+        for i in range(len(sample) - 1):
+            s0 = sample[i]
+            s1 = sample[i + 1]
+            if not (isinstance(s0, dict) and len(s0) == 1
+                    and isinstance(s1, dict) and len(s1) == 1):
+                continue
+            (k0, p0), = s0.items()
+            (k1, p1), = s1.items()
+            if not (isinstance(p0, list) and isinstance(p1, list)):
+                continue
+            if len(p0) < 2 or len(p1) < 2:
+                continue
+            # Accept either ordering — writers vary on which they
+            # draw first.
+            if {k0, k1} != {primitive_a, primitive_b}:
+                continue
+            stroke_a = p0 if k0 == primitive_a else p1
+            stroke_b = p0 if k0 == primitive_b else p1
+            all_pts = stroke_a + stroke_b
+            x0, y0, x1, y1 = bbox(all_pts)
+            w = max(1.0, x1 - x0)
+            h = max(1.0, y1 - y0)
+            ar = h / w
+            total_len = path_length(stroke_a) + path_length(stroke_b)
+            if total_len < 60:
+                continue
+            candidates.append((ar, total_len, stroke_a, stroke_b))
+    if not candidates:
+        return None
+    # Pick median by combined aspect ratio.
+    candidates.sort(key=lambda r: r[0])
+    chosen = candidates[len(candidates) // 2]
+    _ar, _L, stroke_a, stroke_b = chosen
+    # Normalize the combined bbox to the viewBox (preserve relative
+    # positions between the two strokes).
+    combined = stroke_a + stroke_b
+    x0, y0, x1, y1 = bbox(combined)
+    w = max(1.0, x1 - x0)
+    h = max(1.0, y1 - y0)
+    inner = VIEWBOX - 2 * PADDING
+    scale = min(inner / w, inner / h)
+    cx = (x0 + x1) / 2
+    cy = (y0 + y1) / 2
+    tx = VIEWBOX / 2 - cx * scale
+    ty = VIEWBOX / 2 - cy * scale
+
+    def apply(stroke: List[List[float]]) -> List[List[float]]:
+        return [[p[0] * scale + tx, p[1] * scale + ty] for p in stroke]
+
+    return [resample(apply(stroke_b)), resample(apply(stroke_a))]
 
 
 def main() -> None:
@@ -246,14 +463,19 @@ def main() -> None:
 
     # Choose a canonical trajectory per primitive used by any recipe.
     needed = set()
+    needed_pairs = set()
     for recipe in LETTER_RECIPES.values():
         for step in recipe:
             if step.startswith("primitive:"):
                 needed.add(step.split(":", 1)[1])
+            elif step.startswith("pair:"):
+                spec = step.split(":", 1)[1]
+                a, b = spec.split("+", 1)
+                needed_pairs.add((a, b))
 
     canonical: Dict[str, List[List[float]]] = {}
     for pid in needed:
-        chosen = choose_canonical(grouped.get(pid, []))
+        chosen = choose_canonical(grouped.get(pid, []), pid)
         if chosen is None:
             print(f"  [primitive {pid!r}] NO usable candidates "
                   f"(grouped: {len(grouped.get(pid, []))})")
@@ -261,6 +483,17 @@ def main() -> None:
         canonical[pid] = chosen
         print(f"  [primitive {pid!r}] chose stroke "
               f"len={path_length(chosen):.1f} pts={len(chosen)}")
+
+    canonical_pairs: Dict[str, List[List[List[float]]]] = {}
+    for a, b in needed_pairs:
+        pair_strokes = find_canonical_pair(samples, a, b)
+        spec = f"{a}+{b}"
+        if pair_strokes is None:
+            print(f"  [pair {spec!r}] NO adjacent-pair match in corpus")
+            continue
+        canonical_pairs[spec] = pair_strokes
+        print(f"  [pair {spec!r}] {len(pair_strokes)} stroke(s) lifted, "
+              f"sizes={[len(s) for s in pair_strokes]}")
 
     # Load existing seed; merge per family_id rather than overwrite.
     existing: List[dict] = []
@@ -274,7 +507,7 @@ def main() -> None:
     by_family = {e.get("family_id"): e for e in existing if isinstance(e, dict)}
 
     for family_id, recipe in LETTER_RECIPES.items():
-        strokes = build_letter_strokes(recipe, canonical)
+        strokes = build_letter_strokes(recipe, canonical, canonical_pairs)
         if not strokes:
             print(f"  [{family_id}] could not build — missing primitive(s)")
             continue
