@@ -77,6 +77,15 @@ export class LetterTraceLayer {
   playStrokeOrder({ strokeDuration = 1100, gapDuration = 250, holdMs = 1500 } = {}) {
     this.cancelAnimation();
     if (!this.writer || !this.fxCtx) return;
+    // Only animate writers backed by REAL stroke-order data (Calliar).
+    // Writer records carry auto-derived medians from the Amiri outline
+    // as a fallback for scoring, but those are geometric centerlines —
+    // not actual stroke order. Showing those as a preview would teach
+    // a fake order. The builder sets `scoring: "median"` only when an
+    // override from `stroke_orders_seed.json` (Calliar-derived) is in
+    // place; positional forms (initial / medial / final) without
+    // overrides stay at "outline" and silently skip animation here.
+    if (this.writer.scoring !== "median") return;
     const medians = Array.isArray(this.writer.medians) ? this.writer.medians : null;
     if (!medians || !medians.length) return;
     // Skip animation if any stroke is empty.
