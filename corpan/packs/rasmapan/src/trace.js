@@ -65,11 +65,16 @@ export class LetterTraceLayer {
    * font-outline guesses. Stroke order is classical Naskh: base
    * shape first, then dots.
    *
+   * Timing chosen for learning, not snappiness: 1.1 s per stroke
+   * gives the eye time to track the pen tip, and a 1.5 s hold at
+   * the end lets the learner study the finished letter before
+   * the canvas clears.
+   *
    * No-ops if the writer has no medians (i.e. letters not yet
    * Calliar-derived). The Play/Speak button still fires TTS in
    * parallel — the animation is additive.
    */
-  playStrokeOrder({ strokeDuration = 750, gapDuration = 200 } = {}) {
+  playStrokeOrder({ strokeDuration = 1100, gapDuration = 250, holdMs = 1500 } = {}) {
     this.cancelAnimation();
     if (!this.writer || !this.fxCtx) return;
     const medians = Array.isArray(this.writer.medians) ? this.writer.medians : null;
@@ -143,11 +148,12 @@ export class LetterTraceLayer {
       }
 
       if (elapsed >= totalDuration) {
-        // Hold the final state for a beat, then clear.
+        // Hold the final state so the learner can study the
+        // completed letter before the canvas clears.
         setTimeout(() => {
           if (opId !== this._animOpId) return;
           this._clearFx();
-        }, 700);
+        }, holdMs);
         return;
       }
       requestAnimationFrame(tick);
@@ -172,10 +178,12 @@ export class LetterTraceLayer {
     if (!this.fxCtx || seg.length < 2) return;
     const ctx = this.fxCtx;
     const targetLen = totalLen * progress;
+    const dpr = window.devicePixelRatio || 1;
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    // Trail: a soft, wide brush stroke that builds up behind the tip.
     ctx.strokeStyle = trailColor;
-    ctx.lineWidth = 14;
+    ctx.lineWidth = 18 * dpr;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.beginPath();
@@ -199,10 +207,16 @@ export class LetterTraceLayer {
       }
     }
     ctx.stroke();
-    // Pen tip — small filled circle to anchor the eye to the moving point.
-    ctx.fillStyle = tipColor;
+    // Pen tip — bright halo + solid center. The two-layer approach
+    // makes the moving point pop against any background.
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(200, 169, 110, 0.5)";  // halo
     ctx.beginPath();
-    ctx.arc(tip[0], tip[1], 8, 0, Math.PI * 2);
+    ctx.arc(tip[0], tip[1], 20 * dpr, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = tipColor;  // solid sumi-ink core
+    ctx.beginPath();
+    ctx.arc(tip[0], tip[1], 10 * dpr, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
@@ -210,15 +224,23 @@ export class LetterTraceLayer {
   _drawAnimatedDot(pt, progress, color) {
     if (!this.fxCtx) return;
     const ctx = this.fxCtx;
+    const dpr = window.devicePixelRatio || 1;
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    // Two-phase: grow to peak at 60%, hold.
+    // Two-phase: grow to peak at 60% of the dot's duration, then hold.
+    // Halo + core mirrors the moving pen tip so dots feel like they
+    // were placed by the same pen.
     const peak = Math.min(1, progress / 0.6);
-    const r = 6 + peak * 8;
-    ctx.fillStyle = color;
+    const r_core = (8 + peak * 4) * dpr;
+    const r_halo = r_core + 10 * dpr;
     ctx.globalAlpha = Math.min(1, progress * 2);
+    ctx.fillStyle = "rgba(200, 169, 110, 0.5)";
     ctx.beginPath();
-    ctx.arc(pt[0], pt[1], r, 0, Math.PI * 2);
+    ctx.arc(pt[0], pt[1], r_halo, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(pt[0], pt[1], r_core, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
