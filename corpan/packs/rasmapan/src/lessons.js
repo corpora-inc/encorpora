@@ -163,16 +163,26 @@ const makeSpeak = (hostApi) => (lang, text) => {
 };
 
 export class LessonRunner {
-  constructor({ container, hostApi, queryPackDb, onComplete }) {
+  constructor({ container, hostApi, queryPackDb, packBaseUrl, onComplete }) {
     this.container = container;
     this.hostApi = hostApi;
     this.queryPackDb = queryPackDb;
+    this.packBaseUrl = packBaseUrl || "";
     this.onComplete = onComplete;
     this.lessons = [];
     this.alphabet = [];
     this.index = 0;
     this.overlay = null;
     this.speak = makeSpeak(hostApi);
+  }
+
+  _assetUrl(rel) {
+    if (!rel) return "";
+    if (/^https?:/.test(rel) || rel.startsWith("data:")) return rel;
+    const base = this.packBaseUrl.endsWith("/")
+      ? this.packBaseUrl
+      : `${this.packBaseUrl}/`;
+    return `${base}assets/styles/${rel}`;
   }
 
   async load() {
@@ -305,6 +315,18 @@ export class LessonRunner {
         extra += `<div class="lesson-letter-display" lang="ar">${escapeHtml(row.letter)}</div>`;
       }
     }
+    // Calligraphic-style lesson — show the Arabic style name + a sample
+    // panel (image when the pack ships one, otherwise the "بسم الله"
+    // text in Amiri). Used by lessons 7–10 (naskh/thuluth/diwani/kufic).
+    if (lesson.type === "style") {
+      const sample = lesson.sample_image
+        ? `<div class="lesson-style-sample"><img class="lesson-style-sample-img" src="${escapeHtml(this._assetUrl(lesson.sample_image))}" alt="" loading="lazy" /></div>`
+        : `<div class="lesson-style-sample lesson-style-sample-text" lang="ar">بسم الله</div>`;
+      const nameAr = lesson.name_ar
+        ? `<div class="lesson-style-name-ar" lang="ar">${escapeHtml(lesson.name_ar)}</div>`
+        : "";
+      extra += `${nameAr}${sample}`;
+    }
 
     const stepLabel = t("lesson.step", {
       n: this.index + 1,
@@ -358,15 +380,67 @@ export class LessonRunner {
       });
     this.overlay
       .querySelector('[data-act="next"]')
-      .addEventListener("click", () => {
-        this.index += 1;
-        writeProgress(this.index);
-        if (this.index >= this.lessons.length) {
-          this._finish();
-        } else {
-          this._render();
-        }
-      });
+      .addEventListener("click", () => this._advance(1));
+
+    this._wireSwipe();
+  }
+
+  // Advance the lesson by ±1 and persist progress. Used by both the
+  // Next/Back buttons and the swipe handler so all three flow through
+  // identical state.
+  _advance(delta) {
+    const target = this.index + delta;
+    if (target < 0) return;
+    this.index = target;
+    writeProgress(this.index);
+    if (this.index >= this.lessons.length) {
+      this._finish();
+    } else {
+      this._render();
+    }
+  }
+
+  // Touch/pointer swipe on the lesson card. Horizontal drag past
+  // ~48px (and dominant over vertical movement) calls _advance. We
+  // wire to the card rather than the overlay so vertical scrolling
+  // inside long lesson bodies still works on the surrounding
+  // scrollable area. In RTL primary languages we could swap the
+  // direction, but the dots / buttons already convey direction; we
+  // keep "swipe left = next" universally so muscle memory carries
+  // between the chrome arrows and the gesture.
+  _wireSwipe() {
+    const card = this.overlay.querySelector(".lesson-card");
+    if (!card) return;
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+    let pointerId = null;
+    const THRESHOLD = 48;
+
+    const onDown = (e) => {
+      // Ignore drags that start on a button — those have their own
+      // click handler and shouldn't be hijacked into a swipe.
+      if (e.target.closest("button, a, input, textarea, select")) return;
+      tracking = true;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+    };
+    const onUp = (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (Math.abs(dx) < THRESHOLD) return;
+      if (Math.abs(dy) > Math.abs(dx)) return;
+      if (dx < 0) this._advance(1);
+      else this._advance(-1);
+    };
+    const onCancel = () => { tracking = false; };
+
+    card.addEventListener("pointerdown", onDown);
+    card.addEventListener("pointerup", onUp);
+    card.addEventListener("pointercancel", onCancel);
   }
 
   _finish() {

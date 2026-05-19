@@ -62,7 +62,6 @@
   min-height: 100dvh;
   height: 100%;
   overflow: hidden;
-  --safe-top: 0px;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
   background: var(--bg);
@@ -74,7 +73,14 @@
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 3vw, 24px);
-  padding: calc(clamp(16px, 3vw, 32px) + var(--safe-top)) clamp(16px, 4vw, 32px) clamp(16px, 2.5vw, 24px);
+  /* Pad inside the device safe area on all four sides — env() values
+     come from the host shell's viewport-fit=cover. Falls back to 0
+     where the inset isn't reported (desktop browser, older WebViews). */
+  padding:
+    calc(clamp(16px, 3vw, 32px) + var(--safe-top))
+    calc(clamp(16px, 4vw, 32px) + var(--safe-right))
+    calc(clamp(16px, 2.5vw, 24px) + var(--safe-bottom))
+    calc(clamp(16px, 4vw, 32px) + var(--safe-left));
   box-sizing: border-box;
   height: 100%;
   overflow-x: hidden;
@@ -980,6 +986,106 @@
 
   .examples-panel {
     height: clamp(360px, 42vh, 480px);
+  }
+}
+
+/* Slim phone screens — the iPhone SE / smaller Androids run as
+   narrow as 320–380 CSS px. Shrink the touch targets and reduce the
+   chrome padding so the hero card, mode tabs, letter picker and
+   workspace all fit on one screen without being crushed. */
+@media (max-width: 380px) {
+  .rasmapan-app {
+    gap: 10px;
+    padding:
+      calc(12px + var(--safe-top))
+      calc(12px + var(--safe-right))
+      calc(12px + var(--safe-bottom))
+      calc(12px + var(--safe-left));
+  }
+  .exit-btn,
+  .tutorial-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .exit-btn svg,
+  .tutorial-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .hero-card {
+    padding: 14px 12px;
+  }
+  .hero-left {
+    padding-inline: 28px;  /* room for prev/next arrows */
+    gap: 6px;
+  }
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .nav-prev { left: 4px; }
+  .nav-next { right: 4px; }
+  .char-symbol {
+    font-size: clamp(54px, 16vw, 78px);
+  }
+  .pinyin-btn {
+    padding: 7px 14px;
+    font-size: 18px;
+  }
+  .mode-tabs {
+    gap: 6px;
+  }
+  .mode-tab {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .letter-pill {
+    width: 38px;
+    min-height: 46px;
+    font-size: 20px;
+    padding: 2px 4px 14px;
+  }
+  .letter-picker {
+    padding-bottom: 46px;
+  }
+  .form-chip {
+    padding: 6px 10px;
+  }
+  .icon-chip {
+    width: 38px;
+    height: 38px;
+  }
+  .play-chip {
+    width: 48px;
+    height: 48px;
+  }
+  .panel-toolbar {
+    gap: 14px;
+  }
+  .draw-panel {
+    height: clamp(340px, 46vh, 460px);
+    padding: 12px;
+  }
+  .examples-panel {
+    height: clamp(300px, 38vh, 420px);
+    padding: 12px;
+  }
+  .lesson-card {
+    padding: 20px 18px;
+    gap: 14px;
+  }
+  .lesson-tap-letter {
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+  }
+  .lesson-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .lesson-btn {
+    padding: 10px 16px;
+    font-size: 13px;
   }
 }
 
@@ -2007,6 +2113,45 @@
   line-height: 1;
   letter-spacing: 0;
   padding: 8px 0;
+}
+
+/* Calligraphic-style lesson cards (7-10). The Arabic style name
+   sits below the title; the sample panel shows "بسم الله" in Amiri
+   (or a sample image if the pack ships one) at large size so the
+   user can see what the style actually looks like. */
+.lesson-style-name-ar {
+  font-family: "Amiri", serif;
+  direction: rtl;
+  font-size: clamp(32px, 5vw, 44px);
+  color: var(--char-ink);
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 1.1;
+  padding: 4px 0;
+}
+.lesson-style-sample {
+  background: var(--bg);
+  border: 1px solid rgba(107, 76, 42, 0.14);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lesson-style-sample-text {
+  font-family: "Amiri", serif;
+  direction: rtl;
+  font-size: clamp(40px, 7vw, 64px);
+  color: var(--char-ink);
+  line-height: 1.1;
+}
+.lesson-style-sample-img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: var(--radius-md);
+  display: block;
 }
 
 /* Section heading inside the examples panel (Letters mode) — a

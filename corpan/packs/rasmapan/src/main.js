@@ -7,7 +7,6 @@ import {
 } from "../brush/index.js"
 import { LessonRunner, resetLessonProgress } from "./lessons.js"
 import { LetterTraceLayer, WordTraceLayer } from "./trace.js"
-import { StylesView } from "./styles_view.js"
 import { t, subscribeLanguageChanged, currentLanguage } from "./i18n.js"
 import { tokenizeText, wordContainsLetter } from "./tokenize.js"
 
@@ -56,7 +55,6 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       <div class="mode-tabs" role="tablist" data-mode-tabs>
         <button class="mode-tab is-active" data-mode="letters" role="tab" type="button"></button>
         <button class="mode-tab" data-mode="words" role="tab" type="button"></button>
-        <button class="mode-tab" data-mode="styles" role="tab" type="button"></button>
       </div>
       <div class="letter-picker" data-letter-picker></div>
       <div class="workspace mode-letters" data-workspace>
@@ -383,11 +381,14 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     root.innerHTML = template
     container.appendChild(root)
 
-    // Adaptive top inset (mirrors Hanzipan).
-    const ua = (navigator.userAgent || "")
-    if (/iPhone|iPod/i.test(ua)) root.style.setProperty("--safe-top", "30px")
-    else if (/Android/i.test(ua)) root.style.setProperty("--safe-top", "25px")
-    else root.style.setProperty("--safe-top", "0px")
+    // No UA-based --safe-top hard-coding here: the CSS resolves
+    // --safe-top via env(safe-area-inset-top, 0px) at :root and
+    // inherits it down. Tauri's WebView passes the real notch /
+    // gesture inset through env() on both iOS and Android (assuming
+    // viewport-fit=cover on the host shell), so we don't need to
+    // sniff the UA. Previously we forced a 25-30px constant which
+    // either over- or under-shot the real inset depending on the
+    // device.
 
     const elChar = root.querySelector("[data-char]")
     const elLetterName = root.querySelector("[data-letter-name]")
@@ -415,7 +416,8 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     const modeTabs = root.querySelectorAll("[data-mode]")
 
     const state = {
-      mode: "letters",  // letters | words | styles
+      mode: "letters",  // letters | words. Styles live in the intro
+      // lesson flow now (lessons 7-10), not as a top-level mode tab.
       stackConfig: initialState.stackConfig || hostApi.getStackConfig(),
       families: [],     // [{ id, name_ar, name_en, positions: [...] }]
       activeFamilyId: null,
@@ -435,10 +437,6 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       completedCount: 0,
       ghostVisible: true,
       freeDraw: false,
-      // Styles mode state — populated lazily when the styles tab
-      // is first opened; nav arrows cycle through `styleIds`.
-      styleIds: [],
-      activeStyleId: null,
     }
 
     const packBaseUrl = resolvePackBaseUrl()
@@ -622,10 +620,18 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     }
 
     const loadFamilyNote = async (familyId) => {
-      const langs = unique([
-        ...(state.stackConfig.languages || []),
-        "en",
-      ])
+      // Look up the etymology in the user's CURRENT UI language
+      // (host i18next primary), then its base ("ko-polite" → "ko"),
+      // then English. Other stack languages don't get a shot — if
+      // we don't have the user's primary, English is the
+      // universally-readable fallback. Previously we'd walk the
+      // whole stack and return e.g. Spanish to a user who'd
+      // switched to Greek just because they happened to still
+      // have Spanish secondary.
+      const cur = currentLanguage()
+      const base = cur.split("-")[0]
+      const langs = unique([cur, base, "en"]).filter((l) => l && l !== "ar")
+      if (!langs.length) return ""
       const placeholders = langs.map(() => "?").join(",")
       const res = await queryPackDb({
         sql: `SELECT language_code, summary FROM arabic_letter_note WHERE letter_id = ? AND language_code IN (${placeholders})`,
@@ -767,8 +773,9 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         const meaningRows = Object.entries(word.meaning || {})
           .filter(([lang, text]) => lang && text && lang !== "ar")
           .map(([lang, text]) => ({ language_code: lang, text }))
-        const primary = (state.stackConfig.languages || []).find(l => l !== "ar")
-        const picked = pickByLang(meaningRows, primary || currentLanguage())
+        const picked =
+          pickByLang(meaningRows, stackPrimaryLang()) ||
+          pickByLang(meaningRows, "en")
         const gloss = picked ? picked.text : ""
         elLetterName.innerHTML =
           `<span class="translit">${escapeHtml(word.transliteration || "")}</span>` +
@@ -810,10 +817,53 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
             if (drawingEngine) drawingEngine.clear()
           })
         })
-        // Load all letter writers for the word.
+        // Load each letter's writer at the CORRECT positional form
+        // (isolated / initial / medial / final). Without this, every
+        // glyph in the word was loaded as `isolated`, which on the
+        // canvas reads as "trace 3 standalone letters" rather than
+        // a connected word — wrong for everything except single-
+        // letter words and never wrong-but-still-rare in the seed.
+        //
+        // Connection rules:
+        //   prev connects forward AND this connects backward → linked on the right
+        //   this connects forward AND next connects backward → linked on the left
+        //   both linked → medial
+        //   right-only → final
+        //   left-only  → initial
+        //   neither    → isolated
+        //
+        // The six non-connectors (alif, daal, dhaal, raa, zaay, waaw)
+        // have `connects_after: false` in the seed, which naturally
+        // forces the letter AFTER them into `initial` form. That
+        // matches real Arabic typography.
+        const famMap = new Map(state.families.map((fm) => [fm.id, fm]))
+        const ids = word.letter_ids || []
         const writers = []
-        for (const letterFamilyId of word.letter_ids) {
-          const w = await loadWriter(letterFamilyId)
+        for (let i = 0; i < ids.length; i += 1) {
+          const fam = famMap.get(ids[i])
+          if (!fam) continue
+          const prevFam = i > 0 ? famMap.get(ids[i - 1]) : null
+          const nextFam = i < ids.length - 1 ? famMap.get(ids[i + 1]) : null
+          const linkedRight = !!(prevFam && prevFam.connects_after && fam.connects_before)
+          const linkedLeft  = !!(nextFam && fam.connects_after && nextFam.connects_before)
+          let pos
+          if (linkedRight && linkedLeft) pos = "medial"
+          else if (linkedRight) pos = "final"
+          else if (linkedLeft) pos = "initial"
+          else pos = "isolated"
+          // Graceful fallback if the seed doesn't carry the requested
+          // form (e.g. some letter only has isolated+final). Walks
+          // down through closely-related forms before giving up.
+          if (!fam.positions.includes(pos)) {
+            const fallback = pos === "medial" ? ["final", "initial", "isolated"]
+              : pos === "initial" ? ["medial", "isolated"]
+              : pos === "final" ? ["medial", "isolated"]
+              : []
+            const next = fallback.find((p) => fam.positions.includes(p))
+            pos = next || "isolated"
+          }
+          const glyphId = pos === "isolated" ? fam.id : `${fam.id}.${pos}`
+          const w = await loadWriter(glyphId)
           if (w) writers.push({ writer: w })
         }
         if (wordTraceLayer) {
@@ -832,74 +882,30 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       modeTabs.forEach((tab) => {
         tab.classList.toggle("is-active", tab.dataset.mode === state.mode)
       })
-      elWorkspace.classList.remove("mode-letters", "mode-words", "mode-styles")
+      elWorkspace.classList.remove("mode-letters", "mode-words")
       elWorkspace.classList.add(`mode-${state.mode}`)
       elChar.classList.remove("word-trace-run")
       // Picker visibility.
       elLetterPicker.style.display = state.mode === "letters" ? "" : "none"
       elFormPicker.style.display = state.mode === "letters" ? "" : "none"
-      if (state.mode === "styles") {
-        elExamplesPanel.style.display = "none"
-        elDrawPanel.style.display = "none"
-        renderStylesMode()
-      } else {
-        elExamplesPanel.style.display = ""
-        elDrawPanel.style.display = ""
-        // Clear any leftover styles UI.
-        const sc = root.querySelector(".style-cards-host")
-        if (sc) sc.remove()
-        if (state.mode === "letters" && state.activeFamilyId) {
-          renderHero()
-        } else if (state.mode === "words" && state.activeWordId) {
-          renderHero()
-        } else if (state.mode === "words" && !state.activeWordId && state.words.length) {
-          state.activeWordId = state.words[0].id
-          renderWordPicker()
-          renderHero()
-        }
+      if (state.mode === "letters" && state.activeFamilyId) {
+        renderHero()
+      } else if (state.mode === "words" && state.activeWordId) {
+        renderHero()
+      } else if (state.mode === "words" && !state.activeWordId && state.words.length) {
+        state.activeWordId = state.words[0].id
+        renderWordPicker()
+        renderHero()
       }
     }
 
-    let stylesView = null
-    const renderStylesMode = async () => {
-      // Create a host below the mode tabs if not present.
-      let host = root.querySelector(".style-cards-host")
-      if (!host) {
-        host = document.createElement("div")
-        host.className = "style-cards-host"
-        elWorkspace.parentNode.insertBefore(host, elWorkspace.nextSibling)
-      }
-      if (!stylesView) {
-        stylesView = new StylesView({
-          container: host,
-          hostApi,
-          queryPackDb,
-          packBaseUrl,
-        })
-      }
-      await stylesView.render({ highlightId: state.activeStyleId })
-      // Cache the list of style IDs on first render so nav arrows
-      // can cycle through them without re-querying.
-      if (!state.styleIds.length) {
-        const res = await queryPackDb({
-          sql: "SELECT id FROM arabic_style ORDER BY ord ASC",
-        })
-        state.styleIds = (res.rows || []).map((r) => r.id)
-        if (!state.activeStyleId && state.styleIds.length) {
-          state.activeStyleId = state.styleIds[0]
-        }
-      }
-    }
-
-    // Pick the user's primary non-Arabic stack language; falls back
-    // to current i18next UI language; ultimate fallback English.
-    const stackPrimaryLang = () => {
-      const langs = state.stackConfig.languages || []
-      for (const l of langs) {
-        if (l && l !== "ar") return l
-      }
-      return currentLanguage() || "en"
-    }
+    // The user's CURRENT UI language — what's set as primary in
+    // corpan Settings. Anchored to host i18next so it always
+    // reflects what the user just picked, not whatever was first
+    // in the stack array historically. Used to pick which
+    // translation to show for letter notes, word glosses, and
+    // corpus example phrases.
+    const stackPrimaryLang = () => currentLanguage() || "en"
 
     // Render the Arabic source as a row of clickable word chips so
     // the user can tap each word in isolation. Words containing the
@@ -932,7 +938,13 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           const meaningRows = Object.entries(w.meaning || {})
             .filter(([lang, text]) => lang && text && lang !== "ar")
             .map(([lang, text]) => ({ language_code: lang, text }))
-          const picked = pickByLang(meaningRows, primary)
+          // Prefer the primary lang; fall back explicitly to
+          // English rather than pickByLang's translations[0]
+          // (which could be any other stack language depending
+          // on insertion order).
+          const picked =
+            pickByLang(meaningRows, primary) ||
+            pickByLang(meaningRows, "en")
           const gloss = picked ? picked.text : ""
           return `
             <button class="${cls}" type="button" data-word="${escapeHtml(w.id)}">
@@ -983,7 +995,9 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         const meaningRows = Object.entries(meaning)
           .filter(([lang, text]) => lang && text && lang !== "ar")
           .map(([lang, text]) => ({ language_code: lang, text }))
-        const picked = pickByLang(meaningRows, primary)
+        const picked =
+          pickByLang(meaningRows, primary) ||
+          pickByLang(meaningRows, "en")
         const gloss = picked ? picked.text : ""
         return `
           <article class="example-card" data-speak-phrase="${escapeHtml(row.word)}">
@@ -1245,8 +1259,16 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     guidedToggle.addEventListener("click", () => {
       state.ghostVisible = !state.ghostVisible
       guidedToggle.classList.toggle("active", state.ghostVisible)
-      if (traceLayer) traceLayer.setGhostVisible(state.ghostVisible)
-      if (wordTraceLayer) wordTraceLayer.setGhostVisible(state.ghostVisible)
+      // Only touch the layer that owns the canvas in this mode.
+      // Calling both `setGhostVisible`s makes the inactive layer's
+      // redraw clearRect the canvas (its data is empty) and the
+      // ghost never comes back when toggled on. Same fix as the
+      // resize handler.
+      if (state.mode === "letters" && traceLayer) {
+        traceLayer.setGhostVisible(state.ghostVisible)
+      } else if (state.mode === "words" && wordTraceLayer) {
+        wordTraceLayer.setGhostVisible(state.ghostVisible)
+      }
     })
 
     const navByDelta = (delta) => {
@@ -1269,13 +1291,6 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         renderWordPicker()
         renderHero()
         if (drawingEngine) drawingEngine.clear()
-      } else if (state.mode === "styles") {
-        if (!state.styleIds.length) return
-        const idx = state.styleIds.indexOf(state.activeStyleId)
-        const base = idx < 0 ? 0 : idx
-        state.activeStyleId =
-          state.styleIds[(base + delta + state.styleIds.length) % state.styleIds.length]
-        if (stylesView) stylesView.render({ highlightId: state.activeStyleId })
       }
     }
     root.querySelector("[data-nav='prev']").addEventListener("click", () => navByDelta(-1))
@@ -1312,9 +1327,6 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       renderFormPicker()
       renderHero()
       renderExamplesPanel()
-      if (state.mode === "styles" && stylesView) {
-        stylesView.render({ highlightId: state.activeStyleId })
-      }
     }
 
     if (hostApi.onStackConfigChange) {
@@ -1362,6 +1374,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       container: root,
       hostApi,
       queryPackDb,
+      packBaseUrl,
       onComplete: ({ initialLetter }) => {
         if (initialLetter) state.activeFamilyId = initialLetter
         ensureCanvases()
