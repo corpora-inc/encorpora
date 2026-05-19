@@ -11,6 +11,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Bismillah lesson** (intro lesson 11, type `phrase`): a "Your
+  first phrase" card capping the intro flow. The 23-stroke
+  trajectory for "بسم الله الرحمن الرحيم" is lifted from
+  Calliar's 54 matching recordings — pick is the median sample
+  by total path length. Animation auto-plays on entering the
+  card; a Play button replays the full 23-stroke sequence with
+  TTS in parallel. Title + body translated into all 51 corpan
+  locales.
+- Build-side extractor: `build/extract_calliar_bismillah.py`
+  produces `build/seed/phrases_seed.json`. Lesson merge:
+  `build/add_bismillah_lesson.py` appends the lesson to
+  `lessons_seed.json` with all i18n.
+- **Public-domain Wikimedia sample images** for the four
+  calligraphic-style cards (Naskh / Thuluth / Diwani / Kufic) —
+  resized to ≤ 800 px, ~480 KB combined. Replaces the
+  broken-image-icon fallback to the textual "بسم الله".
+  Attributions in `LICENSES.md`.
 - **Stroke-order animation** for all 28 isolated-form letters,
   played on the existing fx canvas when the user taps the Play /
   Speak button (alongside TTS). A glowing pen tip traces each
