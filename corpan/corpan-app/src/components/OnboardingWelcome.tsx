@@ -125,9 +125,18 @@ export function OnboardingWelcome() {
     return (
         <div
             ref={rootRef}
-            className="flex flex-col flex-1 w-full h-full items-center justify-center px-6 pb-6 gap-y-5
-            md:max-h-[730px] md:justify-center"
-            style={{ minHeight: 0, overflow: "hidden" }}
+            // Fixed-inset full-viewport so this screen centers regardless of
+            // what the parent WizardShell does (it is now a pass-through —
+            // each onboarding step owns its own layout). Centering is from
+            // the inner flexbox below; the fixed wrapper just hosts it.
+            className="fixed inset-0 flex flex-col items-center justify-center px-6 gap-y-5 bg-background md:bg-muted"
+            style={{
+                overflow: "hidden",
+                paddingTop: "env(safe-area-inset-top)",
+                paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)",
+                paddingLeft: "max(env(safe-area-inset-left), 1.5rem)",
+                paddingRight: "max(env(safe-area-inset-right), 1.5rem)",
+            }}
         >
             {/* Animated welcome word */}
             <div
