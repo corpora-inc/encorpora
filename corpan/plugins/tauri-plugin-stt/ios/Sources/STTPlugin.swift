@@ -131,15 +131,31 @@ struct WhisperParamsArg: Decodable {
     let initial_prompt: String?
 }
 
+/// Per-call scoring overrides applied on top of the native acoustic
+/// ramp picked by `pickAcousticRamp(modelName, baseLang)` and the
+/// compression-ratio threshold. Every field optional; a nil field
+/// means "use the native default for this slot." Mirrors the Rust
+/// `ScoringParams` and the JS `ScoringParams` in
+/// `packs/pronunciation-coach/src/scoringTuning.ts`.
+struct ScoringParamsArg: Decodable {
+    let avgZero: Float?
+    let avgOne: Float?
+    let minZero: Float?
+    let minOne: Float?
+    let textFloor: Float?
+    let compressionThreshold: Float?
+}
+
 final class StartSessionArgs: Decodable {
     let sessionId: String
     let language: String
     let expectedText: String
     let whisperParams: WhisperParamsArg?
+    let scoringParams: ScoringParamsArg?
 
     private enum CodingKeys: String, CodingKey {
-        case sessionId, language, expectedText, whisperParams
-        case session_id, expected_text, whisper_params
+        case sessionId, language, expectedText, whisperParams, scoringParams
+        case session_id, expected_text, whisper_params, scoring_params
     }
 
     init(from decoder: Decoder) throws {
@@ -154,6 +170,9 @@ final class StartSessionArgs: Decodable {
         let paramsCamel = try c.decodeIfPresent(WhisperParamsArg.self, forKey: .whisperParams)
         let paramsSnake = try c.decodeIfPresent(WhisperParamsArg.self, forKey: .whisper_params)
         whisperParams = paramsCamel ?? paramsSnake
+        let scoringCamel = try c.decodeIfPresent(ScoringParamsArg.self, forKey: .scoringParams)
+        let scoringSnake = try c.decodeIfPresent(ScoringParamsArg.self, forKey: .scoring_params)
+        scoringParams = scoringCamel ?? scoringSnake
     }
 }
 
@@ -763,6 +782,10 @@ private final class WhisperManager {
     /// Per-call overrides for `whisper_full_params`, sent by the pack
     /// on `startSession`. nil here = no overrides for this session.
     private var activeWhisperParams: WhisperParamsArg?
+    /// Per-call scoring overrides (acoustic ramp + textFloor +
+    /// compression threshold). nil = use the ramp `pickAcousticRamp`
+    /// returns and the 2.4/3.5 compression threshold unchanged.
+    private var activeScoringParams: ScoringParamsArg?
     private var sessionStartedAt: Date?
     private var isRecording = false
 
@@ -1502,12 +1525,14 @@ private final class WhisperManager {
     func startSession(
         sessionId: String, language: String, expectedText: String,
         whisperParams: WhisperParamsArg? = nil,
+        scoringParams: ScoringParamsArg? = nil,
         completion: @escaping (Result<StartSessionPayload, Error>) -> Void
     ) {
         sttLog(
             "Whisper | startSession id:", sessionId, "lang:", language,
             "expected:", expectedText.prefix(60),
-            "overrides:", whisperParams != nil ? "yes" : "(none)")
+            "overrides:", whisperParams != nil ? "yes" : "(none)",
+            "scoring:", scoringParams != nil ? "yes" : "(none)")
 
         ensureMicPermission { granted in
             guard granted else {
@@ -1551,6 +1576,7 @@ private final class WhisperManager {
                 self.activeLanguage = language
                 self.activeExpected = expectedText
                 self.activeWhisperParams = whisperParams
+                self.activeScoringParams = scoringParams
                 self.sessionStartedAt = Date()
                 self.capturedSamples.removeAll(keepingCapacity: true)
                 self.isRecording = true
@@ -1573,6 +1599,7 @@ private final class WhisperManager {
         let snapshot: (
             captured: [Float], language: String, expected: String,
             params: WhisperParamsArg?,
+            scoring: ScoringParamsArg?,
             startedAt: Date?, activeId: String?
         ) = queue.sync {
             let s = (
@@ -1580,6 +1607,7 @@ private final class WhisperManager {
                 language: self.activeLanguage,
                 expected: self.activeExpected,
                 params: self.activeWhisperParams,
+                scoring: self.activeScoringParams,
                 startedAt: self.sessionStartedAt,
                 activeId: self.activeSessionId
             )
@@ -1609,6 +1637,7 @@ private final class WhisperManager {
         let language = snapshot.language
         let expected = snapshot.expected
         let overrides = snapshot.params
+        let scoringOverrides = snapshot.scoring
         let startedAt = snapshot.startedAt
         let activeId = snapshot.activeId
 
@@ -1686,7 +1715,8 @@ private final class WhisperManager {
             let merged = self.mergeResults(runResult)
             let scoring = self.computeScores(
                 merged: merged, expected: expected,
-                language: baseLang, freeText: merged.text)
+                language: baseLang, freeText: merged.text,
+                scoringOverrides: scoringOverrides)
 
             let payload = TranscriptionPayload(
                 sessionId: sessionId,
@@ -1744,6 +1774,7 @@ private final class WhisperManager {
             self.isRecording = false
             self.activeSessionId = nil
             self.activeWhisperParams = nil
+            self.activeScoringParams = nil
             self.capturedSamples.removeAll(keepingCapacity: false)
             self.teardownAudio()
         }
@@ -1769,6 +1800,7 @@ private final class WhisperManager {
             self.isRecording = false
             self.activeSessionId = nil
             self.activeWhisperParams = nil
+            self.activeScoringParams = nil
             self.capturedSamples.removeAll(keepingCapacity: false)
             self.teardownAudio()
         }
@@ -2229,9 +2261,27 @@ private final class WhisperManager {
             : Self.highResRamp
     }
 
+    /// Overlay pack-supplied scoring overrides on top of the native
+    /// ramp picked by `pickAcousticRamp(modelName, baseLang)`. Each
+    /// non-nil field in `overrides` replaces the corresponding slot;
+    /// nil fields leave the native default. Used to dial scoring per
+    /// (language, model) from the pack without a native rebuild.
+    private func applyScoringOverlay(
+        _ base: AcousticRamp, _ overrides: ScoringParamsArg?
+    ) -> AcousticRamp {
+        guard let o = overrides else { return base }
+        return AcousticRamp(
+            avgZero: o.avgZero ?? base.avgZero,
+            avgOne: o.avgOne ?? base.avgOne,
+            minZero: o.minZero ?? base.minZero,
+            minOne: o.minOne ?? base.minOne,
+            textFloor: o.textFloor ?? base.textFloor
+        )
+    }
+
     private func computeScores(
         merged: MergedResult, expected: String, language: String,
-        freeText: String
+        freeText: String, scoringOverrides: ScoringParamsArg? = nil
     ) -> Scores {
         let baseLangNormHint = String(
             language.split(separator: "-").first ?? Substring(language)
@@ -2279,9 +2329,19 @@ private final class WhisperManager {
         let minWordProb: Float = probs.min() ?? 0
 
         let baseLang = baseLangNormHint
-        let ramp = self.pickAcousticRamp(
+        let nativeRamp = self.pickAcousticRamp(
             modelName: self.queue.sync(execute: { self.loadedModel }),
             baseLang: baseLang)
+        let ramp = self.applyScoringOverlay(nativeRamp, scoringOverrides)
+        if scoringOverrides != nil {
+            sttLog(
+                "Whisper | scoring overlay applied — avgZero",
+                String(format: "%.2f", ramp.avgZero),
+                "avgOne", String(format: "%.2f", ramp.avgOne),
+                "minZero", String(format: "%.2f", ramp.minZero),
+                "minOne", String(format: "%.2f", ramp.minOne),
+                "textFloor", String(format: "%.2f", ramp.textFloor))
+        }
 
         var acousticScore: Float
         if merged.words.isEmpty {
@@ -2320,7 +2380,9 @@ private final class WhisperManager {
             overall = transcriptScore * (ramp.textFloor + (1 - ramp.textFloor) * acousticScore)
         }
         let isLowRes = Self.lowResourceLangs.contains(baseLang)
-        let compressionThreshold: Float = isLowRes ? 3.5 : 2.4
+        let nativeCompressionThreshold: Float = isLowRes ? 3.5 : 2.4
+        let compressionThreshold: Float =
+            scoringOverrides?.compressionThreshold ?? nativeCompressionThreshold
         if merged.compressionRatio > compressionThreshold {
             overall = min(overall, 0.4)
             sttLog(
@@ -2414,7 +2476,8 @@ final class STTPlugin: Plugin {
             sessionId: args.sessionId,
             language: args.language,
             expectedText: args.expectedText,
-            whisperParams: args.whisperParams
+            whisperParams: args.whisperParams,
+            scoringParams: args.scoringParams
         ) { result in
             switch result {
             case .success(let payload):

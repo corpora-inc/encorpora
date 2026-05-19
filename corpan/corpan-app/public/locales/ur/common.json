@@ -104,7 +104,20 @@
       "header": "جملوں کے پیکجز",
       "baseCorpusName": "بنیادی کارپس",
       "emptyHint": "پیکجز ٹیب سے پیکجز شامل کریں۔",
-      "browseAll": "پیکجز دیکھیں"
+      "browseAll": "پیکجز دیکھیں",
+      "searchPlaceholder": "پیکس تلاش کریں…",
+      "filter": {
+        "all": "تمام",
+        "active": "فعال",
+        "inactive": "غیر فعال"
+      },
+      "selectAllVisible": "سب منتخب کریں",
+      "deselectAllVisible": "صاف کریں",
+      "activateGroup": "سب فعال کریں",
+      "deactivateGroup": "سب غیر فعال کریں",
+      "uncategorized": "دیگر",
+      "noMatches": "کوئی نتیجہ نہیں۔",
+      "noFiltered": "یہاں ابھی کچھ نہیں۔"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "تصدیق ہو رہی ہے…",
     "phrasePack": {
       "sectionTitle": "جملوں کے پیکجز",
-      "empty": "ابھی کوئی پیکج نہیں۔",
       "offlineEmpty": "آپ آف لائن ہیں۔ دیکھنے کے لیے جڑیں۔",
       "searchPlaceholder": "تلاش…",
       "noMatches": "کوئی نتیجہ نہیں۔",
@@ -445,7 +457,16 @@
       "paid": "ادائیگی والا",
       "free": "مفت",
       "unlockSub": "سبسکرپشن سے کھولیں",
-      "entryCount": "{{n}} جملے"
+      "entryCount": "{{n}} جملے",
+      "allInstalled": {
+        "title": "آپ کے پاس تمام فریز پیک موجود ہیں۔",
+        "subtitle": "نئے موضوعات باقاعدگی سے آتے ہیں — جب چاہیں واپس آئیں۔",
+        "manageCta": "Stacks میں منظم کریں"
+      },
+      "filterEmpty": {
+        "installed": "ابھی کچھ بھی انسٹال نہیں ہے۔",
+        "cta": "سب دکھائیں"
+      }
     }
   },
   "subscription": {

@@ -104,7 +104,20 @@
       "header": "フレーズパック",
       "baseCorpusName": "基本コーパス",
       "emptyHint": "「パック」タブからパックを追加してください。",
-      "browseAll": "パックを見る"
+      "browseAll": "パックを見る",
+      "searchPlaceholder": "パックを検索…",
+      "filter": {
+        "all": "すべて",
+        "active": "有効",
+        "inactive": "無効"
+      },
+      "selectAllVisible": "すべて選択",
+      "deselectAllVisible": "クリア",
+      "activateGroup": "すべて有効化",
+      "deactivateGroup": "すべて無効化",
+      "uncategorized": "その他",
+      "noMatches": "該当なし。",
+      "noFiltered": "今ここには何もありません。"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "確認中…",
     "phrasePack": {
       "sectionTitle": "フレーズパック",
-      "empty": "まだパックはありません。",
       "offlineEmpty": "オフラインです。接続して閲覧してください。",
       "searchPlaceholder": "検索…",
       "noMatches": "該当なし。",
@@ -445,7 +457,16 @@
       "paid": "有料",
       "free": "無料",
       "unlockSub": "サブスクで開放",
-      "entryCount": "{{n}}フレーズ"
+      "entryCount": "{{n}}フレーズ",
+      "allInstalled": {
+        "title": "すべてのフレーズパックがそろっています。",
+        "subtitle": "新しいトピックは随時追加されます — いつでも見に来てください。",
+        "manageCta": "Stacks で管理"
+      },
+      "filterEmpty": {
+        "installed": "まだ何もインストールされていません。",
+        "cta": "すべて表示"
+      }
     }
   },
   "subscription": {

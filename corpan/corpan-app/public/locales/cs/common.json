@@ -105,7 +105,20 @@
       "header": "Balíčky frází",
       "baseCorpusName": "Základní korpus",
       "emptyHint": "Přidej balíčky z karty Balíčky.",
-      "browseAll": "Procházet balíčky"
+      "browseAll": "Procházet balíčky",
+      "searchPlaceholder": "Hledat balíčky…",
+      "filter": {
+        "all": "Vše",
+        "active": "Aktivní",
+        "inactive": "Neaktivní"
+      },
+      "selectAllVisible": "Vybrat vše",
+      "deselectAllVisible": "Vyčistit",
+      "activateGroup": "Aktivovat vše",
+      "deactivateGroup": "Deaktivovat vše",
+      "uncategorized": "Ostatní",
+      "noMatches": "Žádné výsledky.",
+      "noFiltered": "Tady teď nic není."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Kontroluji…",
     "phrasePack": {
       "sectionTitle": "Balíčky frází",
-      "empty": "Zatím žádné balíčky.",
       "offlineEmpty": "Jsi offline. Připoj se k procházení.",
       "searchPlaceholder": "Hledat…",
       "noMatches": "Žádné výsledky.",
@@ -446,7 +458,16 @@
       "paid": "Placené",
       "free": "Zdarma",
       "unlockSub": "Odemknout předplatným",
-      "entryCount": "{{n}} frází"
+      "entryCount": "{{n}} frází",
+      "allInstalled": {
+        "title": "Máš všechny balíčky frází.",
+        "subtitle": "Nová témata vycházejí pravidelně — vrať se kdykoli.",
+        "manageCta": "Spravovat v Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Zatím nic nenainstalováno.",
+        "cta": "Zobrazit vše"
+      }
     }
   },
   "subscription": {

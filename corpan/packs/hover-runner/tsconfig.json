@@ -12,7 +12,11 @@
     "noEmit": true,
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "@shared/ui": ["../shared/ui/index.ts"],
+      "@shared/state": ["../shared/state/index.ts"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "../shared/ui", "../shared/state"]
 }

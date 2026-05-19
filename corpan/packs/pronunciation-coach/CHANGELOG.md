@@ -13,6 +13,19 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Added
+- **Per-(language, model) scoring overrides.** New `scoringTuning.ts`
+  passes a `scoringParams` overlay through `startSession` (sibling
+  of `whisperParams`) so the acoustic ramp, `textFloor`, and
+  compression-ratio gate can be calibrated from the pack without a
+  native rebuild. Built-in tables ship empty in this release — the
+  native plugin's ramps remain authoritative until profiles get
+  populated empirically (see Phase 2 calibration plan).
+- One `[PRON:score]` `console.info` per attempt with the score
+  breakdown (overall / transcript / acoustic / likelihood plus
+  noSpeechProb / compressionRatio / avgLogprob / temperature) for
+  dev-loop calibration via `/tmp/pc-console.log`.
+
 ### Changed
 - Model-setup overlay now mounts a calm offline notice when the device
   is offline ("Model downloads need internet — already-installed models

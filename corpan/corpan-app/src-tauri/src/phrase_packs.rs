@@ -127,6 +127,13 @@ impl PhrasePacksState {
 /// the cache. Packs with zero matches stay in the returned vec so callers
 /// can include them in weighting if desired — but callers typically filter
 /// them out before sampling.
+///
+/// Resilient to partial install state: when a pack id is listed in user
+/// settings but its SQLite/manifest isn't on disk yet (race during
+/// onboarding, manual settings drift, or a stale id), the per-pack count
+/// is logged and treated as zero rather than failing the whole call. This
+/// keeps the multi-source sampler honest about the *available* sources
+/// while never silently demoting the user back to base-only.
 pub fn collect_pack_counts<R: Runtime>(
     app: &AppHandle<R>,
     state: &PhrasePacksState,
@@ -135,8 +142,15 @@ pub fn collect_pack_counts<R: Runtime>(
 ) -> Result<Vec<(String, i64)>, String> {
     let mut out = Vec::with_capacity(pack_ids.len());
     for pid in pack_ids {
-        let n = count_phrase_pack(app, state, pid, sig)?;
-        out.push((pid.clone(), n));
+        match count_phrase_pack(app, state, pid, sig) {
+            Ok(n) => out.push((pid.clone(), n)),
+            Err(e) => {
+                eprintln!(
+                    "[phrase_packs] count skipped for {pid}: {e}; treating as 0"
+                );
+                out.push((pid.clone(), 0));
+            }
+        }
     }
     Ok(out)
 }

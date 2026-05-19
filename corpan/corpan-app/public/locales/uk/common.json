@@ -105,7 +105,20 @@
       "header": "Пакети фраз",
       "baseCorpusName": "Базовий корпус",
       "emptyHint": "Додай пакети з вкладки Пакети.",
-      "browseAll": "Переглянути пакети"
+      "browseAll": "Переглянути пакети",
+      "searchPlaceholder": "Пошук пакетів…",
+      "filter": {
+        "all": "Усі",
+        "active": "Активні",
+        "inactive": "Неактивні"
+      },
+      "selectAllVisible": "Вибрати всі",
+      "deselectAllVisible": "Очистити",
+      "activateGroup": "Активувати всі",
+      "deactivateGroup": "Деактивувати всі",
+      "uncategorized": "Інше",
+      "noMatches": "Нічого не знайдено.",
+      "noFiltered": "Тут зараз нічого."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Перевірка…",
     "phrasePack": {
       "sectionTitle": "Пакети фраз",
-      "empty": "Поки немає пакетів.",
       "offlineEmpty": "Ти офлайн. Підключись, щоб переглянути.",
       "searchPlaceholder": "Пошук…",
       "noMatches": "Немає результатів.",
@@ -446,7 +458,16 @@
       "paid": "Платно",
       "free": "Безкоштовно",
       "unlockSub": "Розблокувати підпискою",
-      "entryCount": "{{n}} фраз"
+      "entryCount": "{{n}} фраз",
+      "allInstalled": {
+        "title": "Маєш усі пакети фраз.",
+        "subtitle": "Нові теми виходять регулярно — заходь будь-коли.",
+        "manageCta": "Керувати в Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Ще нічого не встановлено.",
+        "cta": "Показати всі"
+      }
     }
   },
   "subscription": {

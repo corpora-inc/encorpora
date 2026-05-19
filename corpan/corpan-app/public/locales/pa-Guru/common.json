@@ -104,7 +104,20 @@
       "header": "ਵਾਕਾਂਸ਼ ਪੈਕ",
       "baseCorpusName": "ਮੂਲ ਕੋਰਪਸ",
       "emptyHint": "ਪੈਕ ਟੈਬ ਤੋਂ ਪੈਕ ਜੋੜੋ।",
-      "browseAll": "ਪੈਕ ਵੇਖੋ"
+      "browseAll": "ਪੈਕ ਵੇਖੋ",
+      "searchPlaceholder": "ਪੈਕ ਲੱਭੋ…",
+      "filter": {
+        "all": "ਸਾਰੇ",
+        "active": "ਸਰਗਰਮ",
+        "inactive": "ਬੰਦ"
+      },
+      "selectAllVisible": "ਸਾਰੇ ਚੁਣੋ",
+      "deselectAllVisible": "ਸਾਫ਼ ਕਰੋ",
+      "activateGroup": "ਸਾਰੇ ਚਾਲੂ ਕਰੋ",
+      "deactivateGroup": "ਸਾਰੇ ਬੰਦ ਕਰੋ",
+      "uncategorized": "ਹੋਰ",
+      "noMatches": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ।",
+      "noFiltered": "ਇੱਥੇ ਹੁਣ ਕੁਝ ਨਹੀਂ।"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "ਚੈੱਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
     "phrasePack": {
       "sectionTitle": "ਵਾਕਾਂਸ਼ ਪੈਕ",
-      "empty": "ਅਜੇ ਪੈਕ ਨਹੀਂ ਹਨ।",
       "offlineEmpty": "ਤੁਸੀਂ ਆਫਲਾਈਨ ਹੋ। ਵੇਖਣ ਲਈ ਕੁਨੈਕਟ ਕਰੋ।",
       "searchPlaceholder": "ਖੋਜੋ…",
       "noMatches": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ।",
@@ -445,7 +457,16 @@
       "paid": "ਪੇਡ",
       "free": "ਮੁਫ਼ਤ",
       "unlockSub": "ਮੈਂਬਰੀ ਨਾਲ ਖੋਲ੍ਹੋ",
-      "entryCount": "{{n}} ਵਾਕਾਂਸ਼"
+      "entryCount": "{{n}} ਵਾਕਾਂਸ਼",
+      "allInstalled": {
+        "title": "ਤੁਹਾਡੇ ਕੋਲ ਸਾਰੇ ਫ੍ਰੇਜ਼ ਪੈਕ ਹਨ।",
+        "subtitle": "ਨਵੇਂ ਵਿਸ਼ੇ ਨਿਯਮਿਤ ਆਉਂਦੇ ਹਨ — ਕਿਸੇ ਵੇਲੇ ਵੀ ਵਾਪਸ ਆਓ।",
+        "manageCta": "Stacks ਵਿੱਚ ਪ੍ਰਬੰਧ ਕਰੋ"
+      },
+      "filterEmpty": {
+        "installed": "ਅਜੇ ਕੁਝ ਇੰਸਟਾਲ ਨਹੀਂ।",
+        "cta": "ਸਾਰੇ ਵਿਖਾਓ"
+      }
     }
   },
   "subscription": {

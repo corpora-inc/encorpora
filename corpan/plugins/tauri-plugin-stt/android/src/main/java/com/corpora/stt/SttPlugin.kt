@@ -106,6 +106,27 @@ class WhisperParamsArg {
     var initial_prompt: String? = null
 }
 
+/**
+ * Per-call scoring overrides applied on top of the native acoustic
+ * ramp picked by `Scoring.pickAcousticRamp(modelName, baseLang)` and
+ * the compression-ratio gate threshold. Every field nullable; null
+ * means "use the native default for this slot." Mirrors the Swift
+ * `ScoringParamsArg`, the Rust `ScoringParams`, and the JS
+ * `ScoringParams` in `packs/pronunciation-coach/src/scoringTuning.ts`.
+ *
+ * Same wire-format gatekeeper rule as `WhisperParamsArg`: Gson drops
+ * any field not declared on this class.
+ */
+@InvokeArg
+class ScoringParamsArg {
+    var avgZero: Float? = null
+    var avgOne: Float? = null
+    var minZero: Float? = null
+    var minOne: Float? = null
+    var textFloor: Float? = null
+    var compressionThreshold: Float? = null
+}
+
 @InvokeArg
 class StartSessionArgs {
     var sessionId: String = ""
@@ -116,6 +137,9 @@ class StartSessionArgs {
      *  ignores fields not declared here, so this property must exist
      *  for `whisperParams` to reach the native plugin. */
     var whisperParams: WhisperParamsArg? = null
+    /** Optional per-call scoring overlay. Same wire-format gatekeeper
+     *  rule — must be declared here to reach the native plugin. */
+    var scoringParams: ScoringParamsArg? = null
 }
 
 @InvokeArg
@@ -148,6 +172,9 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     /** Per-call whisper.cpp overrides supplied by the pack via
      *  `startSession.whisperParams`. nil = no overrides this session. */
     @Volatile private var activeWhisperParams: WhisperParamsArg? = null
+    /** Per-call scoring overrides (acoustic ramp + textFloor +
+     *  compression threshold). nil = use the native ramps unchanged. */
+    @Volatile private var activeScoringParams: ScoringParamsArg? = null
     @Volatile private var sessionStartedAt: Long = 0L
 
     private val http: OkHttpClient by lazy {
@@ -572,6 +599,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         activeLanguage = args.language
         activeExpected = args.expectedText
         activeWhisperParams = args.whisperParams
+        activeScoringParams = args.scoringParams
         sessionStartedAt = System.currentTimeMillis()
 
         Log.i(TAG, "session started ok: ${args.sessionId}")
@@ -596,9 +624,11 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val language = activeLanguage
         val expected = activeExpected
         val overrides = activeWhisperParams
+        val scoringOverrides = activeScoringParams
         val startedAt = sessionStartedAt
         activeSessionId = null
         activeWhisperParams = null
+        activeScoringParams = null
         // Release the AudioRecord between sessions. Symmetric with
         // iOS — we used to keep it warm to skip the ~hundreds-of-ms
         // AudioRecord startup, but holding it open kept Android's
@@ -659,6 +689,16 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 .filter { !Scoring.isUncertainNumeralWord(it.word, baseLang) }
                 .map { it.probability }
 
+            val overlay = scoringOverrides?.let {
+                Scoring.ScoringOverlay(
+                    avgZero = it.avgZero,
+                    avgOne = it.avgOne,
+                    minZero = it.minZero,
+                    minOne = it.minOne,
+                    textFloor = it.textFloor,
+                    compressionThreshold = it.compressionThreshold,
+                )
+            }
             val scores = Scoring.computeScores(
                 wordProbs = acousticWordProbs,
                 avgLogprob = merged.avgLogprob,
@@ -670,6 +710,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 noSpeechProb = merged.noSpeechProb,
                 compressionRatio = 0f, // whisper.cpp doesn't expose this; safe default
                 temperature = 0f,
+                scoringOverrides = overlay,
             )
 
             Log.i(TAG, "[stt-cal] lang(pack): $language | lang(whisper): $baseLang | heard: ${merged.text.take(80)} | expected: ${expected.take(80)}")
@@ -719,6 +760,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         recorder = null
         activeSessionId = null
         activeWhisperParams = null
+        activeScoringParams = null
         invoke.resolve()
     }
 
@@ -736,6 +778,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         recorder = null
         activeSessionId = null
         activeWhisperParams = null
+        activeScoringParams = null
         invoke.resolve()
     }
 

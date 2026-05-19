@@ -26,6 +26,20 @@ export type CommandDrawerOptions = {
   onSelectBook?: (bookId: string) => void
   onExit?: () => void
   onOpen?: () => void
+  /** Fires every time the drawer transitions from open to closed. */
+  onClose?: () => void
+  /**
+   * Which screen tabs to expose. Defaults to all three reader screens
+   * (now-playing, library, browse). Game packs typically pass
+   * `["now-playing"]` and let custom sections fill the drawer.
+   * When length === 1 the tab nav is hidden — the drawer becomes a
+   * single-screen sheet.
+   */
+  screens?: ("now-playing" | "library" | "browse")[]
+  /** Override the Exit button label (e.g. translated). */
+  exitLabel?: string
+  /** Override the trigger button title (e.g. translated). */
+  triggerTitle?: string
 }
 
 export type CommandDrawer = {
@@ -75,14 +89,31 @@ export function createCommandDrawer(
   // controls, inserted by `appShell.ts`.)
 
   // --- Screen nav tabs ---
-  const screenNav = document.createElement("div")
-  screenNav.className = "command-drawer-screen-nav"
-
-  const SCREENS: { id: DrawerScreen; label: string }[] = [
+  const ALL_SCREENS: { id: DrawerScreen; label: string }[] = [
     { id: "now-playing", label: "Now Playing" },
     { id: "library", label: "Library" },
     { id: "browse", label: "Browse" },
   ]
+  const enabledScreens = opts.screens && opts.screens.length > 0
+    ? ALL_SCREENS.filter((s) => (opts.screens as string[]).includes(s.id))
+    : ALL_SCREENS
+  const SCREENS = enabledScreens.length > 0 ? enabledScreens : ALL_SCREENS
+
+  // Make sure the initial activeScreen is one of the enabled ones; if
+  // a pack restricts to ["now-playing"] but the persisted store still
+  // points at "library", reset it.
+  if (!SCREENS.some((s) => s.id === drawerStore.getState().activeScreen)) {
+    drawerStore.setState({ activeScreen: SCREENS[0].id })
+  }
+
+  const screenNav = document.createElement("div")
+  screenNav.className = "command-drawer-screen-nav"
+  // Hide the tab bar when the pack only uses one screen (e.g. a game's
+  // settings-only drawer). It still serves as a drag-to-dismiss surface
+  // because the drag listener is attached unconditionally below.
+  if (SCREENS.length <= 1) {
+    screenNav.classList.add("command-drawer-screen-nav--hidden")
+  }
 
   const screenTabs = new Map<DrawerScreen, HTMLButtonElement>()
   for (const { id, label } of SCREENS) {
@@ -221,7 +252,7 @@ export function createCommandDrawer(
 
   const exitBtn = document.createElement("button")
   exitBtn.className = "command-drawer-exit"
-  exitBtn.textContent = "Exit"
+  exitBtn.textContent = opts.exitLabel ?? "Exit"
   exitBtn.addEventListener("click", () => {
     close()
     if (opts.onExit) {
@@ -236,7 +267,7 @@ export function createCommandDrawer(
   // --- Trigger button ---
   const trigger = document.createElement("button")
   trigger.className = "command-drawer-trigger"
-  trigger.title = "Menu"
+  trigger.title = opts.triggerTitle ?? "Menu"
   trigger.innerHTML = SVG_MENU
   trigger.addEventListener("click", () => toggle())
 
@@ -329,6 +360,7 @@ export function createCommandDrawer(
       sheet.classList.remove("command-drawer-sheet--closing")
       sheet.style.pointerEvents = ""
     }, 350)
+    opts.onClose?.()
   }
 
   function toggle() {

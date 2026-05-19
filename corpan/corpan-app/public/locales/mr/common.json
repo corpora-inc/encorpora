@@ -104,7 +104,20 @@
       "header": "वाक्प्रचार पॅक",
       "baseCorpusName": "मूळ कोश",
       "emptyHint": "पॅक्स टॅबमधून पॅक जोडा.",
-      "browseAll": "पॅक्स पहा"
+      "browseAll": "पॅक्स पहा",
+      "searchPlaceholder": "पॅक शोधा…",
+      "filter": {
+        "all": "सर्व",
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "selectAllVisible": "सर्व निवडा",
+      "deselectAllVisible": "साफ करा",
+      "activateGroup": "सर्व सक्रिय करा",
+      "deactivateGroup": "सर्व निष्क्रिय करा",
+      "uncategorized": "इतर",
+      "noMatches": "कोणतेही परिणाम नाहीत.",
+      "noFiltered": "इथे आत्ता काही नाही."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "तपासत आहे…",
     "phrasePack": {
       "sectionTitle": "वाक्प्रचार पॅक",
-      "empty": "अद्याप पॅक नाहीत.",
       "offlineEmpty": "तुम्ही ऑफलाइन आहात. ब्राउझ करण्यासाठी कनेक्ट करा.",
       "searchPlaceholder": "शोधा…",
       "noMatches": "जुळणारे काही नाही.",
@@ -445,7 +457,16 @@
       "paid": "सशुल्क",
       "free": "मोफत",
       "unlockSub": "सदस्यतेने उघडा",
-      "entryCount": "{{n}} वाक्प्रचार"
+      "entryCount": "{{n}} वाक्प्रचार",
+      "allInstalled": {
+        "title": "तुमच्याकडे सर्व फ्रेज पॅक आहेत.",
+        "subtitle": "नवीन विषय नियमित येतात — कधीही परत भेट द्या.",
+        "manageCta": "Stacks मध्ये व्यवस्थापित करा"
+      },
+      "filterEmpty": {
+        "installed": "अद्याप काही स्थापित नाही.",
+        "cta": "सर्व दाखवा"
+      }
     }
   },
   "subscription": {

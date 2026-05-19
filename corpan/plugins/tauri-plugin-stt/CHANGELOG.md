@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **`scoringParams` field on `startSession`.** Wire-format
+  parameter alongside `whisperParams` that lets the pack override
+  the native acoustic ramp (`avgZero` / `avgOne` / `minZero` /
+  `minOne` / `textFloor`) and compression-ratio gate threshold per
+  call. Threaded through Rust (`models.rs::ScoringParams`), Swift
+  (`ScoringParamsArg` + `applyScoringOverlay` in
+  `STTPlugin.swift`), and Kotlin (`ScoringParamsArg` +
+  `Scoring.ScoringOverlay` + overlay-aware `Scoring.computeScores`).
+  When the field is absent or empty, every native ramp and gate
+  threshold stays exactly as before — backwards-compatible with all
+  shipped pack versions. New Swift `Whisper |` log line announces
+  when an overlay applies, with the resulting effective ramp values.
+
 ## [0.4.1] - 2026-05-17
 
 The "0.4.0's memory gate wasn't enough" point release. May-17

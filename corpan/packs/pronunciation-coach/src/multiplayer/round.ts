@@ -20,6 +20,7 @@
 
 import type { EntryOut, HostApi, TranslationOut } from "../sdk/types"
 import { mergeForLang } from "../whisperTuning"
+import { mergeScoringForLangModel } from "../scoringTuning"
 import { pmConfirm } from "./confirm"
 // Silence auto-stop disabled in 0.6.1 — the native `audio_level`
 // stream + `silenceWatcher.ts` state machine stay intact for a
@@ -70,6 +71,7 @@ type SttApi = {
     language: string
     expectedText: string
     whisperParams?: import("../whisperTuning").WhisperParams
+    scoringParams?: import("../scoringTuning").ScoringParams
   }): Promise<SttStartResult>
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
@@ -669,6 +671,10 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
         language: lang,
         expectedText: phraseTarget?.text ?? "",
         whisperParams: mergeForLang(lang),
+        // Multiplayer doesn't track the loaded model here today, so
+        // the model-substring overlay tier is skipped. Language-level
+        // scoring profile still applies.
+        scoringParams: mergeScoringForLangModel(lang, undefined),
       })
       if (disposed) return
       if (!res.started) throw new Error("STT did not start")

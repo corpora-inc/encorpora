@@ -104,7 +104,20 @@
       "header": "Πακέτα φράσεων",
       "baseCorpusName": "Βασικό σώμα",
       "emptyHint": "Πρόσθεσε πακέτα από την καρτέλα Πακέτα.",
-      "browseAll": "Περιήγηση πακέτων"
+      "browseAll": "Περιήγηση πακέτων",
+      "searchPlaceholder": "Αναζήτηση πακέτων…",
+      "filter": {
+        "all": "Όλα",
+        "active": "Ενεργά",
+        "inactive": "Ανενεργά"
+      },
+      "selectAllVisible": "Επιλογή όλων",
+      "deselectAllVisible": "Καθαρισμός",
+      "activateGroup": "Ενεργοποίηση όλων",
+      "deactivateGroup": "Απενεργοποίηση όλων",
+      "uncategorized": "Άλλα",
+      "noMatches": "Κανένα αποτέλεσμα.",
+      "noFiltered": "Τίποτα εδώ τώρα."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Έλεγχος…",
     "phrasePack": {
       "sectionTitle": "Πακέτα φράσεων",
-      "empty": "Δεν υπάρχουν ακόμη πακέτα.",
       "offlineEmpty": "Είσαι εκτός σύνδεσης. Συνδέσου για περιήγηση.",
       "searchPlaceholder": "Αναζήτηση…",
       "noMatches": "Κανένα αποτέλεσμα.",
@@ -445,7 +457,16 @@
       "paid": "Επί πληρωμή",
       "free": "Δωρεάν",
       "unlockSub": "Ξεκλείδωμα με συνδρομή",
-      "entryCount": "{{n}} φράσεις"
+      "entryCount": "{{n}} φράσεις",
+      "allInstalled": {
+        "title": "Έχεις όλα τα πακέτα φράσεων.",
+        "subtitle": "Νέα θέματα κυκλοφορούν τακτικά — έλα ξανά όποτε θες.",
+        "manageCta": "Διαχείριση στο Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Δεν έχει εγκατασταθεί τίποτα ακόμα.",
+        "cta": "Εμφάνιση όλων"
+      }
     }
   },
   "subscription": {

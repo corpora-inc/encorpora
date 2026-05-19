@@ -104,7 +104,20 @@
       "header": "جملیاں دے پیکج",
       "baseCorpusName": "بنیادی کارپس",
       "emptyHint": "پیکج ٹیب توں پیکج شامل کرو۔",
-      "browseAll": "پیکج ویکھو"
+      "browseAll": "پیکج ویکھو",
+      "searchPlaceholder": "پیک لبھو…",
+      "filter": {
+        "all": "سارے",
+        "active": "چالو",
+        "inactive": "بند"
+      },
+      "selectAllVisible": "ساریاں چنو",
+      "deselectAllVisible": "صاف کرو",
+      "activateGroup": "ساریاں چالو کرو",
+      "deactivateGroup": "ساریاں بند کرو",
+      "uncategorized": "ہور",
+      "noMatches": "کوئی نتیجہ نئیں۔",
+      "noFiltered": "ایتھے ہنڑ کچھ نئیں۔"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "چیک ہو ریا اے…",
     "phrasePack": {
       "sectionTitle": "جملیاں دے پیکج",
-      "empty": "ہلے کوئی پیکج نئیں۔",
       "offlineEmpty": "تسیں آف لائن ہو۔ ویکھن لئی جڑو۔",
       "searchPlaceholder": "لبھو…",
       "noMatches": "کوئی نتیجہ نئیں۔",
@@ -445,7 +457,16 @@
       "paid": "پیسے والا",
       "free": "مفت",
       "unlockSub": "سبسکرپشن نال کھولو",
-      "entryCount": "{{n}} جملے"
+      "entryCount": "{{n}} جملے",
+      "allInstalled": {
+        "title": "تہاڈے کول سارے فریز پیک نیں۔",
+        "subtitle": "نویں موضوع نیمت نال آؤندے نیں — جدوں چاہو پرت آؤ۔",
+        "manageCta": "Stacks وچ منظم کرو"
+      },
+      "filterEmpty": {
+        "installed": "ہلے کوجھ وی انسٹال نئیں۔",
+        "cta": "ساریاں ویکھاؤ"
+      }
     }
   },
   "subscription": {

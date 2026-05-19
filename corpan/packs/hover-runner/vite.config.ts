@@ -35,6 +35,13 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  resolve: {
+    alias: {
+      "@shared/ui": path.resolve(__dirname, "../shared/ui"),
+      "@shared/state": path.resolve(__dirname, "../shared/state"),
+      "zustand/vanilla": path.resolve(__dirname, "node_modules/zustand/esm/vanilla.mjs"),
+    },
+  },
   plugins: [updateManifestPlugin()],
   build: {
     outDir: "dist",

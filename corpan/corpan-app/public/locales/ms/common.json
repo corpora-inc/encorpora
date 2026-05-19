@@ -104,7 +104,20 @@
       "header": "Pek frasa",
       "baseCorpusName": "Korpus asas",
       "emptyHint": "Tambah pek dari tab Pek.",
-      "browseAll": "Layari pek"
+      "browseAll": "Layari pek",
+      "searchPlaceholder": "Cari pek…",
+      "filter": {
+        "all": "Semua",
+        "active": "Aktif",
+        "inactive": "Tidak aktif"
+      },
+      "selectAllVisible": "Pilih semua",
+      "deselectAllVisible": "Kosongkan",
+      "activateGroup": "Aktifkan semua",
+      "deactivateGroup": "Matikan semua",
+      "uncategorized": "Lain-lain",
+      "noMatches": "Tiada keputusan.",
+      "noFiltered": "Tiada apa-apa di sini sekarang."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Menyemak…",
     "phrasePack": {
       "sectionTitle": "Pek frasa",
-      "empty": "Belum ada pek.",
       "offlineEmpty": "Anda di luar talian. Sambung untuk melayari.",
       "searchPlaceholder": "Cari…",
       "noMatches": "Tiada hasil.",
@@ -445,7 +457,16 @@
       "paid": "Berbayar",
       "free": "Percuma",
       "unlockSub": "Buka dengan langganan",
-      "entryCount": "{{n}} frasa"
+      "entryCount": "{{n}} frasa",
+      "allInstalled": {
+        "title": "Anda sudah memiliki semua pek frasa.",
+        "subtitle": "Pek topik dikeluarkan secara berkala — kembalilah bila-bila masa.",
+        "manageCta": "Urus di Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Belum ada yang dipasang.",
+        "cta": "Tunjukkan semua"
+      }
     }
   },
   "subscription": {

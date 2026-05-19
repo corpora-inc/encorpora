@@ -104,7 +104,20 @@
       "header": "بسته‌های عبارت",
       "baseCorpusName": "پیکره پایه",
       "emptyHint": "از تب بسته‌ها بسته اضافه کن.",
-      "browseAll": "مرور بسته‌ها"
+      "browseAll": "مرور بسته‌ها",
+      "searchPlaceholder": "جستجوی بسته‌ها…",
+      "filter": {
+        "all": "همه",
+        "active": "فعال",
+        "inactive": "غیرفعال"
+      },
+      "selectAllVisible": "انتخاب همه",
+      "deselectAllVisible": "پاک کردن",
+      "activateGroup": "فعال کردن همه",
+      "deactivateGroup": "غیرفعال کردن همه",
+      "uncategorized": "سایر",
+      "noMatches": "نتیجه‌ای نیست.",
+      "noFiltered": "اینجا الان چیزی نیست."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "در حال بررسی…",
     "phrasePack": {
       "sectionTitle": "بسته‌های عبارت",
-      "empty": "هنوز بسته‌ای نیست.",
       "offlineEmpty": "آفلاین هستی. برای مرور وصل شو.",
       "searchPlaceholder": "جست‌وجو…",
       "noMatches": "نتیجه‌ای نیست.",
@@ -445,7 +457,16 @@
       "paid": "پولی",
       "free": "رایگان",
       "unlockSub": "باز کردن با اشتراک",
-      "entryCount": "{{n}} عبارت"
+      "entryCount": "{{n}} عبارت",
+      "allInstalled": {
+        "title": "همه بسته‌های عبارات را داری.",
+        "subtitle": "بسته‌های جدید مرتب منتشر می‌شوند — هر وقت خواستی برگرد.",
+        "manageCta": "مدیریت در Stacks"
+      },
+      "filterEmpty": {
+        "installed": "هنوز چیزی نصب نشده.",
+        "cta": "نمایش همه"
+      }
     }
   },
   "subscription": {

@@ -104,7 +104,20 @@
       "header": "ವಾಕ್ಯ ಪ್ಯಾಕ್‌ಗಳು",
       "baseCorpusName": "ಮೂಲ ಕಾರ್ಪಸ್",
       "emptyHint": "ಪ್ಯಾಕ್‌ಗಳ ಟ್ಯಾಬ್‌ನಿಂದ ಪ್ಯಾಕ್‌ಗಳನ್ನು ಸೇರಿಸಿ.",
-      "browseAll": "ಪ್ಯಾಕ್‌ಗಳನ್ನು ನೋಡಿ"
+      "browseAll": "ಪ್ಯಾಕ್‌ಗಳನ್ನು ನೋಡಿ",
+      "searchPlaceholder": "ಪ್ಯಾಕ್‌ಗಳನ್ನು ಹುಡುಕಿ…",
+      "filter": {
+        "all": "ಎಲ್ಲ",
+        "active": "ಸಕ್ರಿಯ",
+        "inactive": "ನಿಷ್ಕ್ರಿಯ"
+      },
+      "selectAllVisible": "ಎಲ್ಲ ಆಯ್ಕೆ",
+      "deselectAllVisible": "ತೆರವು",
+      "activateGroup": "ಎಲ್ಲ ಸಕ್ರಿಯಗೊಳಿಸಿ",
+      "deactivateGroup": "ಎಲ್ಲ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
+      "uncategorized": "ಇತರೆ",
+      "noMatches": "ಫಲಿತಾಂಶಗಳಿಲ್ಲ.",
+      "noFiltered": "ಇಲ್ಲಿ ಈಗ ಏನೂ ಇಲ್ಲ."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "ಪರಿಶೀಲಿಸುತ್ತಿದೆ…",
     "phrasePack": {
       "sectionTitle": "ವಾಕ್ಯ ಪ್ಯಾಕ್‌ಗಳು",
-      "empty": "ಇನ್ನೂ ಪ್ಯಾಕ್‌ಗಳಿಲ್ಲ.",
       "offlineEmpty": "ನೀವು ಆಫ್‌ಲೈನ್‌ ಇದ್ದೀರಿ. ಬ್ರೌಸ್‌ ಮಾಡಲು ಸಂಪರ್ಕಿಸಿ.",
       "searchPlaceholder": "ಹುಡುಕಿ…",
       "noMatches": "ಯಾವುದೂ ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ.",
@@ -445,7 +457,16 @@
       "paid": "ಪಾವತಿಸಿದ",
       "free": "ಉಚಿತ",
       "unlockSub": "ಚಂದಾದಾರಿಕೆಯೊಂದಿಗೆ ತೆರೆಯಿರಿ",
-      "entryCount": "{{n}} ವಾಕ್ಯಗಳು"
+      "entryCount": "{{n}} ವಾಕ್ಯಗಳು",
+      "allInstalled": {
+        "title": "ನಿಮ್ಮ ಬಳಿ ಎಲ್ಲ ಫ್ರೇಸ್ ಪ್ಯಾಕ್‌ಗಳಿವೆ.",
+        "subtitle": "ಹೊಸ ವಿಷಯಗಳು ನಿಯಮಿತವಾಗಿ ಬರುತ್ತವೆ — ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ಬನ್ನಿ.",
+        "manageCta": "Stacks ನಲ್ಲಿ ನಿರ್ವಹಿಸಿ"
+      },
+      "filterEmpty": {
+        "installed": "ಇನ್ನೂ ಏನೂ ಸ್ಥಾಪಿಸಿಲ್ಲ.",
+        "cta": "ಎಲ್ಲ ತೋರಿಸು"
+      }
     }
   },
   "subscription": {

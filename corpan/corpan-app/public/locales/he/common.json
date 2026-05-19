@@ -104,7 +104,20 @@
       "header": "חבילות ביטויים",
       "baseCorpusName": "קורפוס בסיסי",
       "emptyHint": "הוסף חבילות מהלשונית חבילות.",
-      "browseAll": "עיין בחבילות"
+      "browseAll": "עיין בחבילות",
+      "searchPlaceholder": "חפש חבילות…",
+      "filter": {
+        "all": "הכול",
+        "active": "פעילים",
+        "inactive": "לא פעילים"
+      },
+      "selectAllVisible": "בחר הכול",
+      "deselectAllVisible": "נקה",
+      "activateGroup": "הפעל הכול",
+      "deactivateGroup": "כבה הכול",
+      "uncategorized": "אחר",
+      "noMatches": "אין תוצאות.",
+      "noFiltered": "אין כאן כלום עכשיו."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "בודק…",
     "phrasePack": {
       "sectionTitle": "חבילות ביטויים",
-      "empty": "אין חבילות עדיין.",
       "offlineEmpty": "אתה לא מקוון. התחבר כדי לעיין.",
       "searchPlaceholder": "חיפוש…",
       "noMatches": "אין תוצאות.",
@@ -445,7 +457,16 @@
       "paid": "בתשלום",
       "free": "חינם",
       "unlockSub": "פתח עם מנוי",
-      "entryCount": "{{n}} ביטויים"
+      "entryCount": "{{n}} ביטויים",
+      "allInstalled": {
+        "title": "יש לך את כל חבילות הביטויים.",
+        "subtitle": "חבילות חדשות יוצאות באופן קבוע — חזרו מתי שתרצו.",
+        "manageCta": "ניהול ב‑Stacks"
+      },
+      "filterEmpty": {
+        "installed": "עדיין לא מותקן כלום.",
+        "cta": "הצג הכול"
+      }
     }
   },
   "subscription": {

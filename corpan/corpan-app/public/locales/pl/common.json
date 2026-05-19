@@ -104,7 +104,20 @@
       "header": "Pakiety fraz",
       "baseCorpusName": "Korpus podstawowy",
       "emptyHint": "Dodaj pakiety z karty Pakiety.",
-      "browseAll": "Przeglądaj pakiety"
+      "browseAll": "Przeglądaj pakiety",
+      "searchPlaceholder": "Szukaj paczek…",
+      "filter": {
+        "all": "Wszystkie",
+        "active": "Aktywne",
+        "inactive": "Nieaktywne"
+      },
+      "selectAllVisible": "Zaznacz wszystkie",
+      "deselectAllVisible": "Wyczyść",
+      "activateGroup": "Aktywuj wszystkie",
+      "deactivateGroup": "Wyłącz wszystkie",
+      "uncategorized": "Inne",
+      "noMatches": "Brak wyników.",
+      "noFiltered": "Pusto tutaj."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Sprawdzanie…",
     "phrasePack": {
       "sectionTitle": "Pakiety fraz",
-      "empty": "Brak pakietów.",
       "offlineEmpty": "Jesteś offline. Połącz się, aby przeglądać.",
       "searchPlaceholder": "Szukaj…",
       "noMatches": "Brak wyników.",
@@ -445,7 +457,16 @@
       "paid": "Płatne",
       "free": "Darmowe",
       "unlockSub": "Odblokuj subskrypcją",
-      "entryCount": "{{n}} fraz"
+      "entryCount": "{{n}} fraz",
+      "allInstalled": {
+        "title": "Masz wszystkie paczki fraz.",
+        "subtitle": "Nowe tematy pojawiają się regularnie — wpadaj kiedy chcesz.",
+        "manageCta": "Zarządzaj w Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nic jeszcze nie zainstalowane.",
+        "cta": "Pokaż wszystkie"
+      }
     }
   },
   "subscription": {

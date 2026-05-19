@@ -104,7 +104,20 @@
       "header": "Mondatcsomagok",
       "baseCorpusName": "Alapkorpusz",
       "emptyHint": "Adj hozzá csomagokat a Csomagok lapról.",
-      "browseAll": "Csomagok böngészése"
+      "browseAll": "Csomagok böngészése",
+      "searchPlaceholder": "Csomagok keresése…",
+      "filter": {
+        "all": "Mind",
+        "active": "Aktív",
+        "inactive": "Inaktív"
+      },
+      "selectAllVisible": "Mindet kijelölni",
+      "deselectAllVisible": "Törlés",
+      "activateGroup": "Mind aktiválni",
+      "deactivateGroup": "Mind kikapcsolni",
+      "uncategorized": "Egyéb",
+      "noMatches": "Nincs találat.",
+      "noFiltered": "Itt most semmi sincs."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Ellenőrzés…",
     "phrasePack": {
       "sectionTitle": "Mondatcsomagok",
-      "empty": "Még nincsenek csomagok.",
       "offlineEmpty": "Offline vagy. Csatlakozz a böngészéshez.",
       "searchPlaceholder": "Keresés…",
       "noMatches": "Nincs találat.",
@@ -445,7 +457,16 @@
       "paid": "Fizetős",
       "free": "Ingyenes",
       "unlockSub": "Feloldás előfizetéssel",
-      "entryCount": "{{n}} mondat"
+      "entryCount": "{{n}} mondat",
+      "allInstalled": {
+        "title": "Megvan minden kifejezéscsomag.",
+        "subtitle": "Új témák rendszeresen érkeznek — gyere vissza bármikor.",
+        "manageCta": "Kezelés a Stacksben"
+      },
+      "filterEmpty": {
+        "installed": "Még semmi sincs telepítve.",
+        "cta": "Összes megjelenítése"
+      }
     }
   },
   "subscription": {

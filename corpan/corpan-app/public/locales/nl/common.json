@@ -104,7 +104,20 @@
       "header": "Zinnenpakketten",
       "baseCorpusName": "Basiscorpus",
       "emptyHint": "Voeg pakketten toe via het tabblad Pakketten.",
-      "browseAll": "Pakketten bekijken"
+      "browseAll": "Pakketten bekijken",
+      "searchPlaceholder": "Pakketten zoeken…",
+      "filter": {
+        "all": "Alles",
+        "active": "Actief",
+        "inactive": "Inactief"
+      },
+      "selectAllVisible": "Alles selecteren",
+      "deselectAllVisible": "Wissen",
+      "activateGroup": "Alle activeren",
+      "deactivateGroup": "Alle deactiveren",
+      "uncategorized": "Overige",
+      "noMatches": "Geen resultaten.",
+      "noFiltered": "Hier is nu niets."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Controleren…",
     "phrasePack": {
       "sectionTitle": "Zinnenpakketten",
-      "empty": "Nog geen pakketten.",
       "offlineEmpty": "Je bent offline. Verbind om te bladeren.",
       "searchPlaceholder": "Zoeken…",
       "noMatches": "Geen resultaten.",
@@ -445,7 +457,16 @@
       "paid": "Betaald",
       "free": "Gratis",
       "unlockSub": "Ontgrendel met abonnement",
-      "entryCount": "{{n}} zinnen"
+      "entryCount": "{{n}} zinnen",
+      "allInstalled": {
+        "title": "Je hebt alle frasenpakketten.",
+        "subtitle": "Er komen regelmatig nieuwe pakketten bij — kom gerust terug.",
+        "manageCta": "Beheren in Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nog niets geïnstalleerd.",
+        "cta": "Alle tonen"
+      }
     }
   },
   "subscription": {

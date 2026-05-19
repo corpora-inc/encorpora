@@ -5,15 +5,31 @@
 // the full catalog — that lives in the Packs tab) with per-stack on/off
 // switches, plus the bundled-corpus toggle.
 //
-// Stays phone-friendly because the row count is bounded by what the user
-// has actually downloaded (~5–30 in practice, not 1000).
+// Designed to scale from 1 to 1000+ installed packs:
+//   - Compact one-line rows.
+//   - Search by name / topic / description.
+//   - Filter chips: All / Active / Inactive.
+//   - Bulk: Select-all / Deselect-all (acts on the visible subset).
+//   - Per-category Activate-all / Deactivate-all chips inside group
+//     headers — quick way to binge or quiet a whole topic family.
+//   - Fixed max-height scroll container so the settings page stays
+//     navigable no matter how many packs the user has.
+//
+// Base corpus row is pinned outside the scroll container — it's always
+// the first thing you see and isn't subject to the search/filter chips.
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, BookOpen, Database, Library } from "lucide-react";
+import {
+    ArrowRight,
+    BookOpen,
+    Database,
+    Library,
+    Search,
+} from "lucide-react";
 
-import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { useSettingsStore } from "@/store/settings";
 import {
     usePhrasePacksStore,
@@ -24,6 +40,10 @@ import {
 // the bundled corpus eventually wants a source-of-truth constant; for
 // now this matches `dja/release.sqlite3`.
 const BASE_CORPUS_ENTRY_COUNT = 10_000;
+
+type FilterKind = "all" | "active" | "inactive";
+
+const FILTERS: FilterKind[] = ["all", "active", "inactive"];
 
 type Props = {
     /** Called when the user taps "Browse all packs →". Owner switches the
@@ -38,28 +58,128 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
     const setBaseCorpusEnabled = useSettingsStore((s) => s.setBaseCorpusEnabled);
     const phrasePackIds = useSettingsStore((s) => s.phrasePackIds);
     const togglePhrasePack = useSettingsStore((s) => s.togglePhrasePack);
+    const setPhrasePackIds = useSettingsStore((s) => s.setPhrasePackIds);
 
     const installed = usePhrasePacksStore((s) => s.installed);
-    const packs = useMemo(
-        () =>
-            Object.values(installed).sort((a, b) =>
-                a.name.localeCompare(b.name),
-            ),
-        [installed],
-    );
+
+    const [query, setQuery] = useState("");
+    const [filter, setFilter] = useState<FilterKind>("all");
+
     const phrasesLabel = (n: number) =>
         t("packs.phrasePack.entryCount", {
             defaultValue: "{{n}} phrases",
             n,
         });
 
-    // Count chip: total active sources (base + active packs) over total
-    // possible sources (base + installed packs).
-    const totalSources = packs.length + 1;
-    const activePacksCount = packs.filter((p) =>
-        phrasePackIds.includes(p.id),
-    ).length;
+    const allPacks = useMemo(
+        () =>
+            Object.values(installed).sort((a, b) =>
+                a.name.localeCompare(b.name),
+            ),
+        [installed],
+    );
+
+    const activeSet = useMemo(() => new Set(phrasePackIds), [phrasePackIds]);
+
+    const visiblePacks = useMemo(() => {
+        const q = query.trim().toLowerCase();
+        return allPacks.filter((p) => {
+            if (q) {
+                const haystack = [p.name, p.topic, p.description, p.category]
+                    .filter(Boolean)
+                    .join(" ")
+                    .toLowerCase();
+                if (!haystack.includes(q)) return false;
+            }
+            switch (filter) {
+                case "active":
+                    return activeSet.has(p.id);
+                case "inactive":
+                    return !activeSet.has(p.id);
+                default:
+                    return true;
+            }
+        });
+    }, [allPacks, query, filter, activeSet]);
+
+    // Group visible packs by their authored `category` string. Packs
+    // missing a category fall into an "Other" bucket. Within each group
+    // packs stay in the parent's alphabetical order.
+    const visibleGroups = useMemo(() => {
+        const byCategory = new Map<string, InstalledPhrasePack[]>();
+        for (const p of visiblePacks) {
+            const key = (p.category || "").trim() || "__other__";
+            const bucket = byCategory.get(key) ?? [];
+            bucket.push(p);
+            byCategory.set(key, bucket);
+        }
+        const entries = Array.from(byCategory.entries()).sort((a, b) => {
+            // "Other" always goes last; everything else alphabetical by key.
+            if (a[0] === "__other__") return 1;
+            if (b[0] === "__other__") return -1;
+            return a[0].localeCompare(b[0]);
+        });
+        return entries.map(([key, packs]) => ({
+            key,
+            label:
+                key === "__other__"
+                    ? t("settings.phrasePacks.uncategorized", {
+                        defaultValue: "Other",
+                    })
+                    : titleCaseCategory(key),
+            packs,
+        }));
+    }, [visiblePacks, t]);
+
+    const totalSources = allPacks.length + 1;
+    const activePacksCount = allPacks.filter((p) => activeSet.has(p.id))
+        .length;
     const activeSources = (baseCorpusEnabled ? 1 : 0) + activePacksCount;
+
+    // Bulk actions operate on the currently visible (post-search, post-
+    // filter) subset. That makes them safe: a user who searched "botany"
+    // can hit "Select all" and only activate botany packs — never the
+    // whole library by surprise.
+    const visibleIds = useMemo(
+        () => visiblePacks.map((p) => p.id),
+        [visiblePacks],
+    );
+    const allVisibleActive =
+        visibleIds.length > 0 && visibleIds.every((id) => activeSet.has(id));
+    const noneVisibleActive = visibleIds.every((id) => !activeSet.has(id));
+
+    const handleSelectAllVisible = () => {
+        const next = new Set(activeSet);
+        for (const id of visibleIds) next.add(id);
+        setPhrasePackIds(Array.from(next));
+    };
+    const handleDeselectAllVisible = () => {
+        const visibleSet = new Set(visibleIds);
+        // Keep at least one source active. If base is off and unchecking
+        // every visible pack would zero out sources, force base back on.
+        const next = phrasePackIds.filter((id) => !visibleSet.has(id));
+        if (next.length === 0 && !baseCorpusEnabled) {
+            setBaseCorpusEnabled(true);
+        }
+        setPhrasePackIds(next);
+    };
+
+    const handleActivateGroup = (groupPackIds: string[]) => {
+        const next = new Set(activeSet);
+        for (const id of groupPackIds) next.add(id);
+        setPhrasePackIds(Array.from(next));
+    };
+    const handleDeactivateGroup = (groupPackIds: string[]) => {
+        const groupSet = new Set(groupPackIds);
+        const next = phrasePackIds.filter((id) => !groupSet.has(id));
+        if (next.length === 0 && !baseCorpusEnabled) {
+            setBaseCorpusEnabled(true);
+        }
+        setPhrasePackIds(next);
+    };
+
+    const showControls = allPacks.length > 0;
+    const showSearchUi = allPacks.length >= 6;
 
     return (
         <section
@@ -77,17 +197,15 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
                     })}
                 </h3>
                 <span className="text-[11px] tabular-nums text-muted-foreground">
-                    {/* Pure numbers — no translation needed. */}
                     {activeSources}/{totalSources}
                 </span>
             </header>
 
-            <ul className="flex flex-col gap-1.5 list-none p-0 m-0">
-                {/* Base corpus row — always first, always present.
-                    Disable the base toggle when it's the only thing keeping
-                    sources non-empty: zero active sources = the main loop
-                    has nothing to sample. The user can disable base only
-                    while at least one phrase pack is active. */}
+            {/* Base corpus row — always first, pinned outside the scroll
+                container so it stays visible regardless of search/filter
+                state. Disable the base toggle when it's the only thing
+                keeping sources non-empty. */}
+            <div className="mb-2">
                 <ToggleRow
                     icon={<Database size={14} aria-hidden="true" />}
                     name={t("settings.phrasePacks.baseCorpusName", {
@@ -98,29 +216,217 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
                     onToggle={() => setBaseCorpusEnabled(!baseCorpusEnabled)}
                     disabled={baseCorpusEnabled && activePacksCount === 0}
                 />
-                {/* Installed phrase packs. A pack toggle is locked off when
-                    turning it off would zero out the sources (base is off
-                    and this is the only active pack). */}
-                {packs.map((pack) => {
-                    const isActive = phrasePackIds.includes(pack.id);
-                    const isLastActive =
-                        isActive && !baseCorpusEnabled && activePacksCount === 1;
-                    return (
-                        <ToggleRow
-                            key={pack.id}
-                            icon={<BookOpen size={14} aria-hidden="true" />}
-                            name={pack.name}
-                            subtitle={formatPackSubtitle(pack, phrasesLabel)}
-                            on={isActive}
-                            onToggle={() => togglePhrasePack(pack.id)}
-                            disabled={isLastActive}
+            </div>
+
+            {/* Search + filter chips + bulk action row — only when there
+                are enough installed packs to justify the chrome. */}
+            {showSearchUi && (
+                <div className="mb-2 space-y-1.5">
+                    <div className="relative">
+                        <Search
+                            size={13}
+                            aria-hidden="true"
+                            className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground/70 pointer-events-none"
                         />
-                    );
-                })}
-            </ul>
+                        <input
+                            type="search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            placeholder={t("settings.phrasePacks.searchPlaceholder", {
+                                defaultValue: "Search packs…",
+                            })}
+                            className="w-full pl-7 pr-2.5 py-1.5 rounded-md border border-input bg-background text-xs focus:outline-none focus:ring-2 focus:ring-purple-400/40"
+                        />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1">
+                        {FILTERS.map((f) => (
+                            <button
+                                key={f}
+                                type="button"
+                                onClick={() => setFilter(f)}
+                                className={[
+                                    "px-2.5 py-0.5 rounded-full text-[11px] font-medium border transition-colors",
+                                    filter === f
+                                        ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
+                                        : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
+                                ].join(" ")}
+                            >
+                                {t(`settings.phrasePacks.filter.${f}`, {
+                                    defaultValue:
+                                        f === "all"
+                                            ? "All"
+                                            : f === "active"
+                                                ? "Active"
+                                                : "Inactive",
+                                })}
+                            </button>
+                        ))}
+                        <span className="flex-1" />
+                        {visibleIds.length > 0 && !allVisibleActive && (
+                            <button
+                                type="button"
+                                onClick={handleSelectAllVisible}
+                                className="px-2 py-0.5 text-[11px] font-medium text-purple-500 hover:text-purple-600 transition-colors"
+                            >
+                                {t("settings.phrasePacks.selectAllVisible", {
+                                    defaultValue: "Select all",
+                                })}
+                            </button>
+                        )}
+                        {visibleIds.length > 0 && !noneVisibleActive && (
+                            <button
+                                type="button"
+                                onClick={handleDeselectAllVisible}
+                                className="px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                                {t("settings.phrasePacks.deselectAllVisible", {
+                                    defaultValue: "Deselect all",
+                                })}
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
+
+            {/* Scrollable group list. Fixed max-height keeps the settings
+                page navigable even at 100+ packs.
+
+                IMPORTANT — no padding on this scroll container. Padding
+                here creates a strip above the `top: 0` sticky position
+                where rows leak into view. Padding lives INSIDE each ul
+                instead. */}
+            {showControls && (
+                <div
+                    className="max-h-[360px] overflow-y-auto rounded-md border border-border/60 bg-card/40"
+                    style={{ overscrollBehavior: "contain" }}
+                >
+                    {visibleGroups.length === 0 && (
+                        <p className="px-2 py-3 text-xs text-muted-foreground/80 text-center">
+                            {query.trim()
+                                ? t("settings.phrasePacks.noMatches", {
+                                    defaultValue: "No matches.",
+                                })
+                                : t("settings.phrasePacks.noFiltered", {
+                                    defaultValue: "Nothing here right now.",
+                                })}
+                        </p>
+                    )}
+                    {visibleGroups.map((group, gi) => {
+                        const groupActive = group.packs.filter((p) =>
+                            activeSet.has(p.id),
+                        ).length;
+                        const groupAllActive =
+                            groupActive === group.packs.length;
+                        const showHeader =
+                            visibleGroups.length > 1 || showSearchUi;
+                        return (
+                            <div key={group.key}>
+                                {/* Sticky header: fully opaque, spans the
+                                    full width of the scroll container
+                                    (the container has no padding so
+                                    nothing leaks beside it), and sticks
+                                    at top: 0 = the very top edge of the
+                                    scroll viewport. Rows scrolling past
+                                    disappear cleanly underneath. */}
+                                {showHeader && (
+                                    <div className="sticky top-0 z-10 bg-background border-b border-border/40 px-3 py-2 flex items-center gap-2">
+                                        <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                            {group.label}
+                                        </span>
+                                        <span className="text-[10px] tabular-nums text-muted-foreground/70">
+                                            {groupActive}/{group.packs.length}
+                                        </span>
+                                        <span className="flex-1" />
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                groupAllActive
+                                                    ? handleDeactivateGroup(
+                                                        group.packs.map(
+                                                            (p) => p.id,
+                                                        ),
+                                                    )
+                                                    : handleActivateGroup(
+                                                        group.packs.map(
+                                                            (p) => p.id,
+                                                        ),
+                                                    )
+                                            }
+                                            className="text-[10px] font-medium text-purple-500 hover:text-purple-600 transition-colors"
+                                        >
+                                            {groupAllActive
+                                                ? t(
+                                                    "settings.phrasePacks.deactivateGroup",
+                                                    {
+                                                        defaultValue:
+                                                            "Deactivate all",
+                                                    },
+                                                )
+                                                : t(
+                                                    "settings.phrasePacks.activateGroup",
+                                                    {
+                                                        defaultValue:
+                                                            "Activate all",
+                                                    },
+                                                )}
+                                        </button>
+                                    </div>
+                                )}
+                                <ul
+                                    className={[
+                                        "flex flex-col gap-1 list-none m-0",
+                                        // Pad the rows away from the
+                                        // container's border. When this is
+                                        // the first group AND the sticky
+                                        // header is suppressed (single-
+                                        // group + no search UI), we also
+                                        // need a top padding so the first
+                                        // row doesn't touch the top edge.
+                                        showHeader
+                                            ? "px-1.5 pt-1 pb-1.5"
+                                            : gi === 0
+                                                ? "p-1.5"
+                                                : "px-1.5 pt-1 pb-1.5",
+                                    ].join(" ")}
+                                >
+                                    {group.packs.map((pack) => {
+                                        const isActive = activeSet.has(pack.id);
+                                        const isLastActive =
+                                            isActive &&
+                                            !baseCorpusEnabled &&
+                                            activePacksCount === 1;
+                                        return (
+                                            <ToggleRow
+                                                key={pack.id}
+                                                icon={
+                                                    <BookOpen
+                                                        size={13}
+                                                        aria-hidden="true"
+                                                    />
+                                                }
+                                                name={pack.name}
+                                                subtitle={formatPackSubtitle(
+                                                    pack,
+                                                    phrasesLabel,
+                                                )}
+                                                on={isActive}
+                                                onToggle={() =>
+                                                    togglePhrasePack(pack.id)
+                                                }
+                                                disabled={isLastActive}
+                                                compact
+                                            />
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
 
             {/* Empty-state hint when no packs installed. */}
-            {packs.length === 0 && (
+            {allPacks.length === 0 && (
                 <p className="mt-2 text-xs text-muted-foreground/80 leading-snug">
                     {t("settings.phrasePacks.emptyHint", {
                         defaultValue: "Add packs from the Packs tab.",
@@ -146,6 +452,14 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
     );
 }
 
+function titleCaseCategory(raw: string): string {
+    return raw
+        .split(/[\s_-]+/)
+        .filter(Boolean)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ");
+}
+
 function formatPackSubtitle(
     pack: InstalledPhrasePack,
     phrasesLabel: (n: number) => string,
@@ -169,6 +483,7 @@ function ToggleRow({
     on,
     onToggle,
     disabled = false,
+    compact = false,
 }: {
     icon: React.ReactNode;
     name: string;
@@ -179,12 +494,16 @@ function ToggleRow({
      *  last active source on — the main loop has nothing to sample if
      *  everything is off. */
     disabled?: boolean;
+    /** Slim rows for the scrollable group list. The pinned base-corpus
+     *  row stays at full density. */
+    compact?: boolean;
 }) {
     return (
         <li>
             <div
                 className={[
-                    "w-full flex items-center gap-3 px-3 py-2.5 rounded-md",
+                    "w-full flex items-center gap-2.5 rounded-md",
+                    compact ? "px-2 py-1.5" : "px-3 py-2.5",
                     "border bg-card",
                     "transition-colors",
                     on ? "border-purple-400/40" : "border-border",
@@ -193,11 +512,16 @@ function ToggleRow({
             >
                 <span className="shrink-0 text-muted-foreground">{icon}</span>
                 <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-foreground leading-tight truncate">
+                    <div
+                        className={[
+                            "font-medium text-foreground leading-tight truncate",
+                            compact ? "text-xs" : "text-sm",
+                        ].join(" ")}
+                    >
                         {name}
                     </div>
                     {subtitle && (
-                        <div className="text-[11px] text-muted-foreground truncate">
+                        <div className="text-[10px] text-muted-foreground truncate">
                             {subtitle}
                         </div>
                     )}

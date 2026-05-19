@@ -104,7 +104,20 @@
       "header": "Frasepakker",
       "baseCorpusName": "Basiskorpus",
       "emptyHint": "Legg til pakker fra Pakker-fanen.",
-      "browseAll": "Bla i pakker"
+      "browseAll": "Bla i pakker",
+      "searchPlaceholder": "Søk pakker…",
+      "filter": {
+        "all": "Alle",
+        "active": "Aktive",
+        "inactive": "Inaktive"
+      },
+      "selectAllVisible": "Velg alle",
+      "deselectAllVisible": "Fjern",
+      "activateGroup": "Aktiver alle",
+      "deactivateGroup": "Deaktiver alle",
+      "uncategorized": "Annet",
+      "noMatches": "Ingen treff.",
+      "noFiltered": "Ingenting her nå."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Sjekker…",
     "phrasePack": {
       "sectionTitle": "Frasepakker",
-      "empty": "Ingen pakker ennå.",
       "offlineEmpty": "Du er frakoblet. Koble til for å bla.",
       "searchPlaceholder": "Søk…",
       "noMatches": "Ingen treff.",
@@ -445,7 +457,16 @@
       "paid": "Betalt",
       "free": "Gratis",
       "unlockSub": "Lås opp med abonnement",
-      "entryCount": "{{n}} fraser"
+      "entryCount": "{{n}} fraser",
+      "allInstalled": {
+        "title": "Du har alle frasepakker.",
+        "subtitle": "Nye temaer slippes jevnlig — kom tilbake når du vil.",
+        "manageCta": "Administrer i Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Ingenting installert ennå.",
+        "cta": "Vis alle"
+      }
     }
   },
   "subscription": {

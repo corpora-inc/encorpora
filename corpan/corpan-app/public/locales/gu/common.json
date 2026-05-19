@@ -104,7 +104,20 @@
       "header": "વાક્ય પેક",
       "baseCorpusName": "આધાર કોર્પસ",
       "emptyHint": "પેક્સ ટેબમાંથી પેક ઉમેરો.",
-      "browseAll": "પેક્સ જુઓ"
+      "browseAll": "પેક્સ જુઓ",
+      "searchPlaceholder": "પેક શોધો…",
+      "filter": {
+        "all": "બધા",
+        "active": "સક્રિય",
+        "inactive": "નિષ્ક્રિય"
+      },
+      "selectAllVisible": "બધા પસંદ કરો",
+      "deselectAllVisible": "સાફ કરો",
+      "activateGroup": "બધા સક્રિય કરો",
+      "deactivateGroup": "બધા નિષ્ક્રિય કરો",
+      "uncategorized": "અન્ય",
+      "noMatches": "કોઈ પરિણામ નથી.",
+      "noFiltered": "અહીં અત્યારે કંઈ નથી."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "ચકાસી રહ્યું છે…",
     "phrasePack": {
       "sectionTitle": "વાક્ય પેક",
-      "empty": "હજુ કોઈ પેક નથી.",
       "offlineEmpty": "તમે ઓફલાઇન છો. જોવા માટે કનેક્ટ કરો.",
       "searchPlaceholder": "શોધો…",
       "noMatches": "કોઈ પરિણામ નથી.",
@@ -445,7 +457,16 @@
       "paid": "ચૂકવેલ",
       "free": "મફત",
       "unlockSub": "સબ્સ્ક્રિપ્શનથી ખોલો",
-      "entryCount": "{{n}} વાક્યો"
+      "entryCount": "{{n}} વાક્યો",
+      "allInstalled": {
+        "title": "તમારી પાસે બધા ફ્રેઝ પેક છે.",
+        "subtitle": "નવા વિષય નિયમિત આવે છે — ગમે ત્યારે પાછા આવો.",
+        "manageCta": "Stacks માં મેનેજ કરો"
+      },
+      "filterEmpty": {
+        "installed": "હજુ સુધી કંઈ ઇન્સ્ટોલ થયું નથી.",
+        "cta": "બધા બતાવો"
+      }
     }
   },
   "subscription": {

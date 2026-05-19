@@ -104,7 +104,20 @@
       "header": "Paket frasa",
       "baseCorpusName": "Korpus dasar",
       "emptyHint": "Tambah paket dari tab Paket.",
-      "browseAll": "Jelajahi paket"
+      "browseAll": "Jelajahi paket",
+      "searchPlaceholder": "Cari paket…",
+      "filter": {
+        "all": "Semua",
+        "active": "Aktif",
+        "inactive": "Nonaktif"
+      },
+      "selectAllVisible": "Pilih semua",
+      "deselectAllVisible": "Hapus",
+      "activateGroup": "Aktifkan semua",
+      "deactivateGroup": "Nonaktifkan semua",
+      "uncategorized": "Lainnya",
+      "noMatches": "Tidak ada hasil.",
+      "noFiltered": "Belum ada apa-apa di sini."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Memeriksa…",
     "phrasePack": {
       "sectionTitle": "Paket frasa",
-      "empty": "Belum ada paket.",
       "offlineEmpty": "Kamu offline. Hubungkan untuk menjelajah.",
       "searchPlaceholder": "Cari…",
       "noMatches": "Tidak ada hasil.",
@@ -445,7 +457,16 @@
       "paid": "Berbayar",
       "free": "Gratis",
       "unlockSub": "Buka dengan langganan",
-      "entryCount": "{{n}} frasa"
+      "entryCount": "{{n}} frasa",
+      "allInstalled": {
+        "title": "Kamu sudah punya semua paket frasa.",
+        "subtitle": "Paket topik rilis secara berkala — kembali kapan saja.",
+        "manageCta": "Kelola di Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Belum ada yang terpasang.",
+        "cta": "Tampilkan semua"
+      }
     }
   },
   "subscription": {

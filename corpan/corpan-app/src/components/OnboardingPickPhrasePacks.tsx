@@ -57,7 +57,7 @@ export function OnboardingPickPhrasePacks() {
     const isOnline = useOnlineStatus();
     const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
 
-    const { starterPacks } = usePhrasePackCatalog();
+    const { starterPacks, defaultSelectedIds } = usePhrasePackCatalog();
     const { installPackBatch } = useInstallContext();
     const subscriptionActive = useEntitlementStore(
         (s) => s.subscription?.active ?? false,
@@ -69,15 +69,16 @@ export function OnboardingPickPhrasePacks() {
         if (!lastFetched && !isFetching && isOnline) void fetchCatalog();
     }, [lastFetched, isFetching, isOnline, fetchCatalog]);
 
-    // Local selection state: keyed by pack id. Default = every starter
-    // pre-selected (matches the "Install all" affordance).
+    // Local selection state: keyed by pack id. Seeded from the
+    // publisher-curated `defaultSelectedIds` so the recommended picks
+    // arrive pre-checked, but the full top-12 pool is browseable.
     const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
     useEffect(() => {
         if (starterPacks.length > 0 && selectedIds.size === 0) {
-            setSelectedIds(new Set(starterPacks.map((p) => p.id)));
+            setSelectedIds(new Set(defaultSelectedIds));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [starterPacks.length]);
+    }, [starterPacks.length, defaultSelectedIds.length]);
 
     const stepLabels = useMemo(
         () =>

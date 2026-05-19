@@ -104,7 +104,20 @@
       "header": "Frasepakker",
       "baseCorpusName": "Basiskorpus",
       "emptyHint": "Tilføj pakker fra Pakker-fanen.",
-      "browseAll": "Gennemse pakker"
+      "browseAll": "Gennemse pakker",
+      "searchPlaceholder": "Søg pakker…",
+      "filter": {
+        "all": "Alle",
+        "active": "Aktive",
+        "inactive": "Inaktive"
+      },
+      "selectAllVisible": "Vælg alle",
+      "deselectAllVisible": "Ryd",
+      "activateGroup": "Aktivér alle",
+      "deactivateGroup": "Deaktivér alle",
+      "uncategorized": "Andet",
+      "noMatches": "Ingen resultater.",
+      "noFiltered": "Intet her lige nu."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Tjekker…",
     "phrasePack": {
       "sectionTitle": "Frasepakker",
-      "empty": "Ingen pakker endnu.",
       "offlineEmpty": "Du er offline. Tilslut for at gennemse.",
       "searchPlaceholder": "Søg…",
       "noMatches": "Ingen resultater.",
@@ -445,7 +457,16 @@
       "paid": "Betalt",
       "free": "Gratis",
       "unlockSub": "Lås op med abonnement",
-      "entryCount": "{{n}} fraser"
+      "entryCount": "{{n}} fraser",
+      "allInstalled": {
+        "title": "Du har alle frasepakker.",
+        "subtitle": "Nye emner kommer regelmæssigt — kig forbi når du vil.",
+        "manageCta": "Administrer i Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Intet installeret endnu.",
+        "cta": "Vis alle"
+      }
     }
   },
   "subscription": {

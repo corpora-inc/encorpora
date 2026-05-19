@@ -105,7 +105,20 @@
       "header": "Paketi fraza",
       "baseCorpusName": "Osnovni korpus",
       "emptyHint": "Dodaj pakete s kartice Paketi.",
-      "browseAll": "Pregledaj pakete"
+      "browseAll": "Pregledaj pakete",
+      "searchPlaceholder": "Pretraži pakete…",
+      "filter": {
+        "all": "Sve",
+        "active": "Aktivni",
+        "inactive": "Neaktivni"
+      },
+      "selectAllVisible": "Odaberi sve",
+      "deselectAllVisible": "Očisti",
+      "activateGroup": "Aktiviraj sve",
+      "deactivateGroup": "Deaktiviraj sve",
+      "uncategorized": "Ostalo",
+      "noMatches": "Bez rezultata.",
+      "noFiltered": "Ovdje sad ničega nema."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Provjera…",
     "phrasePack": {
       "sectionTitle": "Paketi fraza",
-      "empty": "Još nema paketa.",
       "offlineEmpty": "Nisi povezan. Spoji se za pregled.",
       "searchPlaceholder": "Traži…",
       "noMatches": "Nema rezultata.",
@@ -446,7 +458,16 @@
       "paid": "Plaćeno",
       "free": "Besplatno",
       "unlockSub": "Otključaj pretplatom",
-      "entryCount": "{{n}} fraza"
+      "entryCount": "{{n}} fraza",
+      "allInstalled": {
+        "title": "Imaš sve pakete fraza.",
+        "subtitle": "Novi paketi izlaze redovito — navrati kad god želiš.",
+        "manageCta": "Upravljaj u Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Još ništa nije instalirano.",
+        "cta": "Prikaži sve"
+      }
     }
   },
   "subscription": {

@@ -105,7 +105,20 @@
       "header": "短語包",
       "baseCorpusName": "基本語料",
       "emptyHint": "喺「包」分頁加入短語包。",
-      "browseAll": "瀏覽短語包"
+      "browseAll": "瀏覽短語包",
+      "searchPlaceholder": "搜尋包…",
+      "filter": {
+        "all": "全部",
+        "active": "已開",
+        "inactive": "未開"
+      },
+      "selectAllVisible": "全選",
+      "deselectAllVisible": "清除",
+      "activateGroup": "全部開",
+      "deactivateGroup": "全部關",
+      "uncategorized": "其他",
+      "noMatches": "冇結果。",
+      "noFiltered": "依度而家咩都冇。"
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "檢查緊…",
     "phrasePack": {
       "sectionTitle": "短語包",
-      "empty": "暫時冇短語包。",
       "offlineEmpty": "你而家離線。連線後再睇。",
       "searchPlaceholder": "搜尋…",
       "noMatches": "冇結果。",
@@ -446,7 +458,16 @@
       "paid": "付費",
       "free": "免費",
       "unlockSub": "用訂閱解鎖",
-      "entryCount": "{{n}} 句短語"
+      "entryCount": "{{n}} 句短語",
+      "allInstalled": {
+        "title": "你已經有齊所有片語包。",
+        "subtitle": "新主題會定期推出 — 隨時返嚟睇下。",
+        "manageCta": "喺 Stacks 度管理"
+      },
+      "filterEmpty": {
+        "installed": "未安裝過任何包。",
+        "cta": "顯示全部"
+      }
     }
   },
   "subscription": {

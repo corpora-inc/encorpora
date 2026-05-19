@@ -104,7 +104,20 @@
       "header": "Packs de phrases",
       "baseCorpusName": "Corpus de base",
       "emptyHint": "Ajoute des packs depuis l'onglet Packs.",
-      "browseAll": "Parcourir les packs"
+      "browseAll": "Parcourir les packs",
+      "searchPlaceholder": "Rechercher des packs…",
+      "filter": {
+        "all": "Tous",
+        "active": "Actifs",
+        "inactive": "Inactifs"
+      },
+      "selectAllVisible": "Tout sélectionner",
+      "deselectAllVisible": "Tout désélectionner",
+      "activateGroup": "Tout activer",
+      "deactivateGroup": "Tout désactiver",
+      "uncategorized": "Autres",
+      "noMatches": "Aucun résultat.",
+      "noFiltered": "Rien ici pour l'instant."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Vérification…",
     "phrasePack": {
       "sectionTitle": "Packs de phrases",
-      "empty": "Pas encore de packs.",
       "offlineEmpty": "Hors ligne. Connecte-toi pour parcourir.",
       "searchPlaceholder": "Rechercher…",
       "noMatches": "Aucun résultat.",
@@ -445,7 +457,16 @@
       "paid": "Payant",
       "free": "Gratuit",
       "unlockSub": "Débloquer avec l'abonnement",
-      "entryCount": "{{n}} phrases"
+      "entryCount": "{{n}} phrases",
+      "allInstalled": {
+        "title": "Vous avez tous les packs de phrases.",
+        "subtitle": "De nouveaux thèmes sortent régulièrement — revenez quand vous voulez.",
+        "manageCta": "Gérer dans Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Aucun pack installé.",
+        "cta": "Tout afficher"
+      }
     }
   },
   "subscription": {
