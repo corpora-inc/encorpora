@@ -117,7 +117,9 @@
       "deactivateGroup": "Wyłącz wszystkie",
       "uncategorized": "Inne",
       "noMatches": "Brak wyników.",
-      "noFiltered": "Pusto tutaj."
+      "noFiltered": "Pusto tutaj.",
+      "stackTotalPhrases": "~{{count}} fraz pasuje",
+      "stackTotalNudge": "Dodaj paczki lub poszerz poziomy, aby zwiększyć różnorodność."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Pakiety fraz",
       "hero": "Wybierz tematy",
       "loading": "Ładowanie…",
-      "selectAll": "Zaznacz wszystko",
+      "selectAll": "Zaznacz wszystko ({{count}})",
       "clearAll": "Wyczyść",
       "subscriptionNudge": "Subskrybuj, aby odblokować wszystkie pakiety.",
       "entryCount": "{{n}} fraz",

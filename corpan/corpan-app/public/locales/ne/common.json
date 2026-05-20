@@ -118,7 +118,9 @@
       "deactivateGroup": "सबै निष्क्रिय गर्नुहोस्",
       "uncategorized": "अन्य",
       "noMatches": "कुनै परिणाम छैन।",
-      "noFiltered": "अहिले यहाँ केही छैन।"
+      "noFiltered": "अहिले यहाँ केही छैन।",
+      "stackTotalPhrases": "~{{count}} वाक्यांशहरू मेल खान्छन्",
+      "stackTotalNudge": "विविधताका लागि प्याक थप्नुहोस् वा स्तरहरू फराकिलो पार्नुहोस्।"
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "वाक्यांश प्याक",
       "hero": "विषयहरू छान्नुहोस्",
       "loading": "लोड हुँदै…",
-      "selectAll": "सबै छान्नुहोस्",
+      "selectAll": "सबै छान्नुहोस् ({{count}})",
       "clearAll": "खाली",
       "subscriptionNudge": "सबै प्याक खोल्न सदस्यता लिनुहोस्।",
       "entryCount": "{{n}} वाक्यांश",

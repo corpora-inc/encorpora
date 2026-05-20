@@ -117,7 +117,9 @@
       "deactivateGroup": "Zima zote",
       "uncategorized": "Nyingine",
       "noMatches": "Hakuna matokeo.",
-      "noFiltered": "Hakuna chochote hapa sasa."
+      "noFiltered": "Hakuna chochote hapa sasa.",
+      "stackTotalPhrases": "~{{count}} misemo inafanana",
+      "stackTotalNudge": "Ongeza pakiti au panua viwango kwa anuwai."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Pakiti za misemo",
       "hero": "Chagua mada zako",
       "loading": "Inapakia…",
-      "selectAll": "Chagua zote",
+      "selectAll": "Chagua zote ({{count}})",
       "clearAll": "Futa",
       "subscriptionNudge": "Jisajili kufungua pakiti zote.",
       "entryCount": "{{n}} misemo",

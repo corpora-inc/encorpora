@@ -20,6 +20,13 @@ type StackHistory = {
     index: number;
 };
 
+/** Anti-repetition tuple shape matches the Rust `ExcludeEntry` struct
+ *  (serde camelCase). Send this verbatim as `exclude` to the sampler. */
+export type HistoryTuple = {
+    source: string;
+    entryId: number;
+};
+
 type HistoryState = {
     byStack: Record<string, StackHistory>;
 
@@ -36,6 +43,11 @@ type HistoryState = {
      * never sees the missing row.
      */
     replaceCurrent: (entryId: number, source?: string) => void;
+    /** Most-recent N `(source, entryId)` tuples from the active stack's
+     *  history, newest first. Fed to the Rust sampler as the anti-
+     *  repetition `exclude` list. Safe to call at any time — returns
+     *  `[]` when the stack has no history yet. */
+    getRecentTuples: (n: number) => HistoryTuple[];
     clear: () => void;
 };
 
@@ -178,6 +190,28 @@ export const useHistoryStore = create<HistoryState>()(
                             },
                         };
                     });
+                },
+
+                getRecentTuples: (n: number): HistoryTuple[] => {
+                    if (n <= 0) return [];
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+                    const curr = get().byStack[aId];
+                    if (!curr || curr.ids.length === 0) return [];
+                    // Walk backwards from the tail so the most recent
+                    // entry is first. Cap at the available length so a
+                    // short history doesn't pad with garbage.
+                    const limit = Math.min(n, curr.ids.length);
+                    const out: HistoryTuple[] = [];
+                    for (let i = curr.ids.length - 1; i >= curr.ids.length - limit; i--) {
+                        out.push({
+                            source: curr.sources[i] ?? "base",
+                            entryId: curr.ids[i],
+                        });
+                    }
+                    return out;
                 },
 
                 clear: () => {

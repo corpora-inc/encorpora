@@ -117,7 +117,9 @@
       "deactivateGroup": "Mind kikapcsolni",
       "uncategorized": "Egyéb",
       "noMatches": "Nincs találat.",
-      "noFiltered": "Itt most semmi sincs."
+      "noFiltered": "Itt most semmi sincs.",
+      "stackTotalPhrases": "~{{count}} kifejezés illik",
+      "stackTotalNudge": "Adj hozzá csomagokat vagy bővítsd a szinteket a változatosságért."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Mondatcsomagok",
       "hero": "Válassz témákat",
       "loading": "Betöltés…",
-      "selectAll": "Mindet kijelölni",
+      "selectAll": "Mindet kijelölni ({{count}})",
       "clearAll": "Törlés",
       "subscriptionNudge": "Fizess elő az összes csomag feloldásához.",
       "entryCount": "{{n}} mondat",

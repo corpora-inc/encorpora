@@ -117,7 +117,9 @@
       "deactivateGroup": "Inaktivera alla",
       "uncategorized": "Övrigt",
       "noMatches": "Inga träffar.",
-      "noFiltered": "Inget här just nu."
+      "noFiltered": "Inget här just nu.",
+      "stackTotalPhrases": "~{{count}} fraser matchar",
+      "stackTotalNudge": "Lägg till paket eller bredda nivåerna för mer variation."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Frasepaket",
       "hero": "Välj dina ämnen",
       "loading": "Laddar…",
-      "selectAll": "Välj alla",
+      "selectAll": "Välj alla ({{count}})",
       "clearAll": "Rensa",
       "subscriptionNudge": "Prenumerera för att låsa upp alla paket.",
       "entryCount": "{{n}} fraser",

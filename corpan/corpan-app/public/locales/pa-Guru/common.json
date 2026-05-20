@@ -117,7 +117,9 @@
       "deactivateGroup": "ਸਾਰੇ ਬੰਦ ਕਰੋ",
       "uncategorized": "ਹੋਰ",
       "noMatches": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ।",
-      "noFiltered": "ਇੱਥੇ ਹੁਣ ਕੁਝ ਨਹੀਂ।"
+      "noFiltered": "ਇੱਥੇ ਹੁਣ ਕੁਝ ਨਹੀਂ।",
+      "stackTotalPhrases": "~{{count}} ਜੁਮਲੇ ਮੇਲ ਖਾਂਦੇ ਹਨ",
+      "stackTotalNudge": "ਵੰਨ-ਸੁਵੰਨਤਾ ਲਈ ਪੈਕ ਜੋੜੋ ਜਾਂ ਪੱਧਰ ਵਧਾਓ।"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "ਵਾਕਾਂਸ਼ ਪੈਕ",
       "hero": "ਆਪਣੇ ਵਿਸ਼ੇ ਚੁਣੋ",
       "loading": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…",
-      "selectAll": "ਸਾਰੇ ਚੁਣੋ",
+      "selectAll": "ਸਾਰੇ ਚੁਣੋ ({{count}})",
       "clearAll": "ਮਿਟਾਓ",
       "subscriptionNudge": "ਸਾਰੇ ਪੈਕ ਖੋਲ੍ਹਣ ਲਈ ਮੈਂਬਰੀ ਲਓ।",
       "entryCount": "{{n}} ਵਾਕਾਂਸ਼",

@@ -118,7 +118,9 @@
       "deactivateGroup": "Desactiva tots",
       "uncategorized": "Altres",
       "noMatches": "Cap resultat.",
-      "noFiltered": "Res per aquí ara mateix."
+      "noFiltered": "Res per aquí ara mateix.",
+      "stackTotalPhrases": "~{{count}} frases coincideixen",
+      "stackTotalNudge": "Afegeix paquets o amplia els nivells per a més varietat."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Paquets de frases",
       "hero": "Tria els teus temes",
       "loading": "Carregant…",
-      "selectAll": "Selecciona-ho tot",
+      "selectAll": "Selecciona-ho tot ({{count}})",
       "clearAll": "Esborra",
       "subscriptionNudge": "Subscriu-te per desbloquejar tots els paquets.",
       "entryCount": "{{n}} frases",

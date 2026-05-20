@@ -18,11 +18,21 @@ user with `levels: ["C2"]` (or any single CEFR level) against a pack
 that doesn't cover that edge. Belt + suspenders fix this release.
 
 ### Changed
-- **Default CEFR levels widened to `["A0", "A1"]`** for fresh stacks
-  (was `["A0"]`). Every live phrase pack has A1 entries; this turns
-  the most common new-user empty-result trap into a non-event.
-  Existing users keep their persisted level choices — Zustand
-  `persist` doesn't re-run defaults.
+- **Default CEFR levels widened to `["A0", "A1", "A2"]`** for fresh
+  stacks (was `["A0"]`, briefly `["A0", "A1"]` mid-cycle). Phrase
+  packs lean toward A2 in practice, so a new user with one or two
+  starter packs lands on a candidate pool roughly 3× larger than
+  before — dramatically reducing back-to-back repeats under tight
+  stack configurations. Existing users keep their persisted level
+  choices — Zustand `persist` doesn't re-run defaults.
+- **Domain filter removed from the Stacks UI.** Phrase packs supersede
+  the base-corpus domain axis: instead of toggling "travel" / "work" /
+  "food" against the bundled corpus, users pick topical phrase packs
+  directly. The `DomainPicker` component is gone; the `domains` field
+  stays in the settings store for persisted-state compat but is no
+  longer forwarded to the Rust sampler — sampling always sees "all
+  domains". Per-entry `entry.domains` chips still render in the main
+  experience because they describe the entry, not a filter.
 - **Rust filter-relaxation ladder.** When the strict
   `(levels, domains, source_set)` filter yields zero counts across
   every active source, the sampler now silently retries in
@@ -52,6 +62,53 @@ that doesn't cover that edge. Belt + suspenders fix this release.
 - `MainExperience` no longer hits an unhandled rejection on
   `"No entries match the current filters"`; that error is now
   effectively unreachable for any state the toggle UI allows.
+- Onboarding "Select all" button now correctly displays the pack
+  count ("Select all (12)") in every locale. Previously the English
+  locale rendered the literal template `{{count}}` because the
+  component never passed the count argument. Component now wires the
+  count; the 50 other locales have been patched via
+  `public/locales/add_select_all_count.py` to append the
+  parenthesized `({{count}})` placeholder.
+- Catalog browser count chip is now correct: shows the unique-pack
+  tally across visible groups instead of double-counting packs that
+  appear in multiple categories. Some packs intentionally live in
+  more than one group ("Mythology" is both Humanities and World
+  cultures) for discoverability — they now count once in the chip
+  but still appear in every group they belong to. New pure helper
+  `countUniquePacksAcrossGroups` in `hooks/usePhrasePackCatalog.ts`.
+
+### Added (anti-repetition release)
+- **Recent-exclude in the sampler.** Every call into
+  `get_random_entry_with_translations` /
+  `get_random_entries_with_translations` (whether from
+  `MainExperience` or the pack-facing `hostApi`) now passes the
+  last 10 `(source, entry_id)` tuples from `useHistoryStore` as an
+  `exclude` argument. Rust applies per-source `NOT IN (…)` filters
+  inside each pack/base query. If the resulting pool is empty across
+  every relaxed filter tier, the ladder retries once more with
+  `exclude=[]` so anti-repetition can never wedge the loop. Helper
+  `getRecentTuples(n)` on the history store; new `ExcludeEntry`
+  serde struct on the Rust side (camelCase).
+- **Stack phrase-count chip.** A calm "~N phrases match" line above
+  the phrase-pack picker in the Stacks settings tab, with a soft
+  "Add packs or widen levels for variety" nudge when the matching
+  pool drops below 50. Powered by a new read-only Rust command
+  `count_entries_for_filter` that reuses existing `count_base_entries`
+  + `collect_pack_counts` (and their FilterSig-keyed cache, so
+  repeat calls are sub-millisecond). New hook
+  `useStackPhraseCount()` debounces filter-axis changes at 250 ms.
+  i18n: two new keys (`settings.phrasePacks.stackTotalPhrases` +
+  `stackTotalNudge`), translated across all 51 locales via
+  `public/locales/add_stack_phrase_count.py`.
+
+### Notes / future-work seed
+- `corpan/docs/USER_DATA_DB_PLAN.md` documents the next architectural
+  step: a per-user SQLite store (`user_data.db`) for unbounded
+  history with indexed lookups. The recent-exclude feature in this
+  release uses the last 10 tuples already in localStorage; richer
+  features (spaced repetition, archive/dismiss, streaks, word-count
+  histograms, cross-pack analytics) need the SQLite shift and are
+  targeted for 0.16+.
 
 ## [0.15.0] - 2026-05-19 — Phrase packs, 12-pack onboarding, dedicated catalog
 

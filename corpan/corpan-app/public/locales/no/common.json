@@ -117,7 +117,9 @@
       "deactivateGroup": "Deaktiver alle",
       "uncategorized": "Annet",
       "noMatches": "Ingen treff.",
-      "noFiltered": "Ingenting her nå."
+      "noFiltered": "Ingenting her nå.",
+      "stackTotalPhrases": "~{{count}} fraser matcher",
+      "stackTotalNudge": "Legg til pakker eller utvid nivåene for mer variasjon."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Frasepakker",
       "hero": "Velg temaer",
       "loading": "Laster…",
-      "selectAll": "Velg alle",
+      "selectAll": "Velg alle ({{count}})",
       "clearAll": "Tøm",
       "subscriptionNudge": "Abonner for å låse opp alle pakker.",
       "entryCount": "{{n}} fraser",

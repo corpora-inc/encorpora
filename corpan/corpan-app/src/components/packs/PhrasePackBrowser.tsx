@@ -15,7 +15,10 @@ import { Button } from "@/components/ui/button";
 import { OfflineNotice } from "@/components/OfflineNotice";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
-import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
+import {
+    countUniquePacksAcrossGroups,
+    usePhrasePackCatalog,
+} from "@/hooks/usePhrasePackCatalog";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { PhrasePackCard } from "./PhrasePackCard";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
@@ -72,7 +75,11 @@ export function PhrasePackBrowser() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [groups, query, filter, installedById]);
 
-    const totalVisible = visibleGroups.reduce((sum, g) => sum + g.packs.length, 0);
+    // Dedupe across groups — packs can intentionally appear in more
+    // than one group (e.g. "World Mythology" lives in both Humanities
+    // and World cultures). Summing `g.packs.length` would inflate the
+    // numerator past the denominator (`allPhrasePacks.length`, unique).
+    const totalVisible = countUniquePacksAcrossGroups(visibleGroups);
     const hasAnyPhrasePacks = allPhrasePacks.length > 0;
     const installedCount = allPhrasePacks.reduce(
         (n, p) => n + (installedById[p.id] ? 1 : 0),

@@ -228,8 +228,12 @@ export function MainExperience() {
     // Settings
     const activeStackId = useSettingsStore((s) => s.activeStackId);
     const languages = useSettingsStore((s) => s.languages);
-    const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
+    // `domains` is no longer a user-facing filter (0.15.1) — phrase
+    // packs supersede the base-corpus domain axis. The store field
+    // stays (persisted state compat) but we don't forward it to the
+    // sampler; sampling sees "all domains" implicitly. Entries still
+    // carry their `entry.domains` chips for display.
     const phrasePackIds = useSettingsStore((s) => s.phrasePackIds);
     const baseCorpusEnabled = useSettingsStore((s) => s.baseCorpusEnabled);
     const rate = useSettingsStore((s) => s.rate);
@@ -307,9 +311,16 @@ export function MainExperience() {
                         "get_random_entry_with_translations",
                         {
                             levels,
-                            domains,
                             phrasePackIds,
                             baseCorpusEnabled,
+                            // Anti-repetition: avoid the last 10 entries
+                            // when sampling a substitute. Rust falls
+                            // through to no-exclude if the pool is too
+                            // thin, so this is purely a "feels-good"
+                            // signal.
+                            exclude: useHistoryStore
+                                .getState()
+                                .getRecentTuples(10),
                         },
                     );
                     if (sub && mySeq === fetchSeqRef.current) {
@@ -329,7 +340,7 @@ export function MainExperience() {
                 }
             }
         },
-        [levels, domains, phrasePackIds, baseCorpusEnabled, replaceCurrent],
+        [levels, phrasePackIds, baseCorpusEnabled, replaceCurrent],
     );
 
     const fetchRandomEntry = useCallback(async () => {
@@ -348,9 +359,14 @@ export function MainExperience() {
                 "get_random_entry_with_translations",
                 {
                     levels,
-                    domains,
                     phrasePackIds,
                     baseCorpusEnabled,
+                    // Anti-repetition: tell Rust to avoid the last 10
+                    // (source, entry_id) tuples we've handed the user.
+                    // Rust falls through to no-exclude if the resulting
+                    // pool would be empty across every relaxed filter
+                    // tier — so this never wedges the loop.
+                    exclude: useHistoryStore.getState().getRecentTuples(10),
                 },
             );
             if (!entry) return;
@@ -367,7 +383,7 @@ export function MainExperience() {
             }
             throw err;
         }
-    }, [levels, domains, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
+    }, [levels, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
 
     // --- Effects ---------------------------------------------------------------
 

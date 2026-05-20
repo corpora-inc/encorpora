@@ -117,7 +117,9 @@
       "deactivateGroup": "ปิดทั้งหมด",
       "uncategorized": "อื่นๆ",
       "noMatches": "ไม่พบผลลัพธ์",
-      "noFiltered": "ตอนนี้ไม่มีอะไรที่นี่"
+      "noFiltered": "ตอนนี้ไม่มีอะไรที่นี่",
+      "stackTotalPhrases": "~{{count}} วลีที่ตรงกัน",
+      "stackTotalNudge": "เพิ่มชุดหรือขยายระดับเพื่อความหลากหลาย"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "ชุดวลี",
       "hero": "เลือกหัวข้อของคุณ",
       "loading": "กำลังโหลด…",
-      "selectAll": "เลือกทั้งหมด",
+      "selectAll": "เลือกทั้งหมด ({{count}})",
       "clearAll": "ล้าง",
       "subscriptionNudge": "สมัครสมาชิกเพื่อปลดล็อกทุกชุด",
       "entryCount": "{{n}} วลี",

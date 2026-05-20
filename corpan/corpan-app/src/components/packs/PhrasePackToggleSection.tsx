@@ -1,9 +1,10 @@
 // src/components/packs/PhrasePackToggleSection.tsx
 //
 // Per-stack phrase-pack toggle UI, rendered inside SettingsModal's Stacks
-// tab right after DomainPicker. Lists the user's *installed* packs (not
+// tab right after LevelsPicker. Lists the user's *installed* packs (not
 // the full catalog — that lives in the Packs tab) with per-stack on/off
-// switches, plus the bundled-corpus toggle.
+// switches, plus the bundled-corpus toggle. (The legacy DomainPicker was
+// removed in 0.15.1 — phrase packs are the new topical axis.)
 //
 // Designed to scale from 1 to 1000+ installed packs:
 //   - Compact one-line rows.
@@ -30,6 +31,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { useStackPhraseCount } from "@/hooks/useStackPhraseCount";
 import { useSettingsStore } from "@/store/settings";
 import {
     usePhrasePacksStore,
@@ -181,6 +183,12 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
     const showControls = allPacks.length > 0;
     const showSearchUi = allPacks.length >= 6;
 
+    // Pool-size hint for the active stack — feeds the "~N phrases match"
+    // chip below the section header. Lazy + debounced, sub-ms server
+    // side, so it's safe to mount unconditionally.
+    const { count: stackPhraseCount } = useStackPhraseCount();
+    const lowPoolThreshold = 50;
+
     return (
         <section
             className="w-full mt-3"
@@ -200,6 +208,30 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
                     {activeSources}/{totalSources}
                 </span>
             </header>
+
+            {/* Pool-size hint. Helps a user with a tight filter (one
+                level + one small pack) understand WHY they're seeing
+                repeats — and what to do about it. Calm by default;
+                nudges louder when the pool drops below ~50 phrases. */}
+            {stackPhraseCount !== null && (
+                <div className="mb-2 flex items-baseline justify-between gap-2">
+                    <span className="text-[11px] tabular-nums text-muted-foreground">
+                        {t("settings.phrasePacks.stackTotalPhrases", {
+                            defaultValue: "~{{count}} phrases match",
+                            count: stackPhraseCount,
+                        })}
+                    </span>
+                    {stackPhraseCount > 0 &&
+                        stackPhraseCount < lowPoolThreshold && (
+                            <span className="text-[10px] text-muted-foreground/80 text-end">
+                                {t("settings.phrasePacks.stackTotalNudge", {
+                                    defaultValue:
+                                        "Add packs or widen levels for variety.",
+                                })}
+                            </span>
+                        )}
+                </div>
+            )}
 
             {/* Base corpus row — always first, pinned outside the scroll
                 container so it stays visible regardless of search/filter

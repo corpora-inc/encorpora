@@ -10,7 +10,7 @@ mod phrase_packs;
 
 use rusqlite::{params_from_iter, Connection, ToSql};
 use rusqlite::types::{Value as SqlValue, ValueRef};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value as JsonValue;
 use std::collections::HashSet;
 use std::collections::HashMap;
@@ -221,9 +221,16 @@ fn fetch_entry_with_translations(
 
 /// Build the JOIN + WHERE fragments for a filtered query against `cor_entry`.
 /// Returns (`join_clause`, `where_clauses`, `params`). The where clauses are
-/// AND-joined by the caller. Shared by the count + random-pick helpers below.
+/// AND-joined by the caller. Shared by the count + random-pick helpers
+/// below.
+///
+/// `exclude_ids` is the per-source anti-repetition list: entry ids the
+/// caller would like to skip if there are alternatives. Empty slice for
+/// no exclusion. The exclusion is a regular WHERE clause; the relaxation
+/// ladder above is responsible for retrying without exclusion if needed.
 fn build_base_filter(
     sig: &FilterSig,
+    exclude_ids: &[i64],
 ) -> (&'static str, Vec<String>, Vec<Box<dyn ToSql>>) {
     let mut where_clauses: Vec<String> = vec![];
     let mut params: Vec<Box<dyn ToSql>> = vec![];
@@ -248,6 +255,14 @@ fn build_base_filter(
         ""
     };
 
+    if !exclude_ids.is_empty() {
+        let placeholders = vec!["?"; exclude_ids.len()].join(",");
+        where_clauses.push(format!("e.id NOT IN ({placeholders})"));
+        for id in exclude_ids {
+            params.push(Box::new(*id));
+        }
+    }
+
     (join, where_clauses, params)
 }
 
@@ -261,8 +276,12 @@ fn base_where_clause(parts: &[String]) -> String {
 
 /// COUNT(DISTINCT entry) for the base corpus matching `sig`. Used by the
 /// multi-source sampler to weight `"base"` against active phrase packs.
-fn count_base_entries(conn: &Connection, sig: &FilterSig) -> Result<i64, String> {
-    let (join, wheres, params) = build_base_filter(sig);
+fn count_base_entries(
+    conn: &Connection,
+    sig: &FilterSig,
+    exclude_ids: &[i64],
+) -> Result<i64, String> {
+    let (join, wheres, params) = build_base_filter(sig, exclude_ids);
     let where_str = base_where_clause(&wheres);
     let sql = format!(
         "SELECT COUNT(DISTINCT e.id) FROM cor_entry e {join} {where_str}"
@@ -278,8 +297,12 @@ fn count_base_entries(conn: &Connection, sig: &FilterSig) -> Result<i64, String>
 }
 
 /// Pick one random entry id from the base corpus matching `sig`.
-fn sample_random_base_id(conn: &Connection, sig: &FilterSig) -> Result<i64, String> {
-    let (join, wheres, params) = build_base_filter(sig);
+fn sample_random_base_id(
+    conn: &Connection,
+    sig: &FilterSig,
+    exclude_ids: &[i64],
+) -> Result<i64, String> {
+    let (join, wheres, params) = build_base_filter(sig, exclude_ids);
     let where_str = base_where_clause(&wheres);
     let sql = format!(
         "SELECT e.id FROM cor_entry e {join} {where_str} \
@@ -299,9 +322,10 @@ fn sample_random_base_id(conn: &Connection, sig: &FilterSig) -> Result<i64, Stri
 fn sample_random_base_ids(
     conn: &Connection,
     sig: &FilterSig,
+    exclude_ids: &[i64],
     n: i64,
 ) -> Result<Vec<i64>, String> {
-    let (join, wheres, mut params) = build_base_filter(sig);
+    let (join, wheres, mut params) = build_base_filter(sig, exclude_ids);
     let where_str = base_where_clause(&wheres);
     let sql = format!(
         "SELECT e.id FROM cor_entry e {join} {where_str} \
@@ -378,6 +402,30 @@ fn relaxation_ladder(
 /// Build the `(source_id, count)` list for a given filter + source set.
 /// Returns an empty Vec when nothing matches; the caller decides whether
 /// to relax filters and try again.
+/// JS-supplied anti-repetition tuple. The sampler skips these entries
+/// when possible, falling back through the relaxation ladder when the
+/// resulting pool is empty. `camelCase` to match the JS callsite shape.
+#[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct ExcludeEntry {
+    pub source: String,
+    pub entry_id: i64,
+}
+
+/// Group exclude entries by source for per-source SQL `NOT IN (...)`
+/// application. Empty `exclude` input yields an empty map (zero
+/// allocations downstream — `gather_sources`/`collect_pack_counts` use
+/// `HashMap::get(...).unwrap_or(&empty)`).
+fn partition_exclude(
+    exclude: &[ExcludeEntry],
+) -> HashMap<String, Vec<i64>> {
+    let mut out: HashMap<String, Vec<i64>> = HashMap::new();
+    for e in exclude {
+        out.entry(e.source.clone()).or_default().push(e.entry_id);
+    }
+    out
+}
+
 fn gather_sources(
     app: &AppHandle,
     pp_state: &State<'_, PhrasePacksState>,
@@ -385,15 +433,18 @@ fn gather_sources(
     sig: &FilterSig,
     pack_ids: &[String],
     base_on: bool,
+    exclude_map: &HashMap<String, Vec<i64>>,
 ) -> Result<Vec<(String, i64)>, String> {
+    let empty: Vec<i64> = Vec::new();
     let mut sources: Vec<(String, i64)> = vec![];
     if base_on {
-        let n = count_base_entries(base_conn, sig)?;
+        let base_exclude = exclude_map.get(BASE_SOURCE_ID).unwrap_or(&empty);
+        let n = count_base_entries(base_conn, sig, base_exclude)?;
         if n > 0 {
             sources.push((BASE_SOURCE_ID.to_string(), n));
         }
     }
-    let pack_counts = collect_pack_counts(app, pp_state, pack_ids, sig)?;
+    let pack_counts = collect_pack_counts(app, pp_state, pack_ids, sig, exclude_map)?;
     for (id, n) in pack_counts {
         if n > 0 {
             sources.push((id, n));
@@ -410,17 +461,26 @@ fn try_base_only_with_relaxation(
     levels: Option<Vec<String>>,
     domains: Option<Vec<String>>,
     allowed_langs: Option<HashSet<String>>,
+    exclude_ids: &[i64],
 ) -> Result<EntryOut, String> {
-    let attempts: [(Option<Vec<String>>, Option<Vec<String>>); 3] = [
-        (levels.clone(), domains.clone()),
-        (None, domains),
-        (None, None),
-    ];
-    for (lv, dm) in attempts {
-        match get_random_entry_base_only(state, lv, dm, allowed_langs.clone()) {
-            Ok(entry) => return Ok(entry),
-            Err(e) if e == "No entries found for these criteria" => continue,
-            Err(e) => return Err(e),
+    // Try at each filter relaxation tier WITH exclude first; if every
+    // tier comes up empty, retry the strict tier without exclude as a
+    // final "anti-repetition is nice-to-have, never blocks an entry"
+    // safety net. In practice the base corpus is large enough that
+    // tier 1 with a 10-entry exclude window always succeeds.
+    let no_exclude: &[i64] = &[];
+    for ex in [exclude_ids, no_exclude] {
+        let attempts: [(Option<Vec<String>>, Option<Vec<String>>); 3] = [
+            (levels.clone(), domains.clone()),
+            (None, domains.clone()),
+            (None, None),
+        ];
+        for (lv, dm) in attempts {
+            match get_random_entry_base_only(state, lv, dm, allowed_langs.clone(), ex) {
+                Ok(entry) => return Ok(entry),
+                Err(e) if e == "No entries found for these criteria" => continue,
+                Err(e) => return Err(e),
+            }
         }
     }
     Err("No entries in the bundled corpus".to_string())
@@ -443,60 +503,86 @@ fn get_random_entry_with_translations(
     language_codes: Option<Vec<String>>,
     phrase_pack_ids: Option<Vec<String>>,
     base_corpus_enabled: Option<bool>,
+    exclude: Option<Vec<ExcludeEntry>>,
 ) -> Result<EntryOut, String> {
     let pack_ids = phrase_pack_ids.unwrap_or_default();
     let base_on = base_corpus_enabled.unwrap_or(true);
     let allowed_langs: Option<HashSet<String>> =
         language_codes.as_ref().map(|v| v.iter().cloned().collect());
+    let exclude_vec = exclude.unwrap_or_default();
+    let exclude_map = partition_exclude(&exclude_vec);
+    let empty: Vec<i64> = Vec::new();
 
     // Fast path — pre-phrase-packs behaviour, single-query plan, with a
     // tiny relaxation ladder around it so a user with restrictive
     // levels (e.g. only C2) still gets an entry.
     if pack_ids.is_empty() && base_on {
-        return try_base_only_with_relaxation(&state, levels, domains, allowed_langs);
+        let base_exclude = exclude_map.get(BASE_SOURCE_ID).unwrap_or(&empty);
+        return try_base_only_with_relaxation(
+            &state,
+            levels,
+            domains,
+            allowed_langs,
+            base_exclude,
+        );
     }
 
     if !base_on && pack_ids.is_empty() {
         return Err("No active sources".to_string());
     }
 
-    // Multi-source path with filter-relaxation ladder.
-    for (sig, force_base) in relaxation_ladder(&levels, &domains) {
-        let effective_base_on = base_on || force_base;
-        let base_conn = state
-            .conn
-            .lock()
-            .map_err(|_| "DB lock poisoned".to_string())?;
-        let sources = gather_sources(
-            &app,
-            &pp_state,
-            &base_conn,
-            &sig,
-            &pack_ids,
-            effective_base_on,
-        )?;
-        if sources.is_empty() {
-            drop(base_conn);
-            continue;
-        }
-
-        let total: i64 = sources.iter().map(|(_, c)| c).sum();
-        let chosen = pick_weighted_source(&base_conn, &sources, total)?;
-
-        if chosen == BASE_SOURCE_ID {
-            let entry_id = sample_random_base_id(&base_conn, &sig)?;
-            return fetch_entry_with_translations(
+    // Multi-source path with filter-relaxation ladder. Anti-repetition
+    // exclude is applied at every tier; if every tier comes back empty
+    // with exclude, we retry the ladder once more with exclude=[] so
+    // anti-repetition can never wedge the loop.
+    let empty_map: HashMap<String, Vec<i64>> = HashMap::new();
+    for excl_map in [&exclude_map, &empty_map] {
+        for (sig, force_base) in relaxation_ladder(&levels, &domains) {
+            let effective_base_on = base_on || force_base;
+            let base_conn = state
+                .conn
+                .lock()
+                .map_err(|_| "DB lock poisoned".to_string())?;
+            let sources = gather_sources(
+                &app,
+                &pp_state,
                 &base_conn,
-                entry_id,
-                allowed_langs.as_ref(),
-            );
+                &sig,
+                &pack_ids,
+                effective_base_on,
+                excl_map,
+            )?;
+            if sources.is_empty() {
+                drop(base_conn);
+                continue;
+            }
+
+            let total: i64 = sources.iter().map(|(_, c)| c).sum();
+            let chosen = pick_weighted_source(&base_conn, &sources, total)?;
+
+            if chosen == BASE_SOURCE_ID {
+                let base_exclude = excl_map.get(BASE_SOURCE_ID).unwrap_or(&empty);
+                let entry_id = sample_random_base_id(&base_conn, &sig, base_exclude)?;
+                return fetch_entry_with_translations(
+                    &base_conn,
+                    entry_id,
+                    allowed_langs.as_ref(),
+                );
+            }
+            // Release the base lock before doing any phrase-pack work.
+            drop(base_conn);
+            let pack_exclude = excl_map.get(&chosen).unwrap_or(&empty);
+            let id = sample_random_phrase_pack_id(
+                &app,
+                &pp_state,
+                &chosen,
+                &sig,
+                pack_exclude,
+            )?;
+            let entry =
+                fetch_phrase_pack_entry(&app, &pp_state, &chosen, id, allowed_langs.as_ref())?;
+            return Ok(phrase_pack_entry_to_out(entry, &chosen));
         }
-        // Release the base lock before doing any phrase-pack work.
-        drop(base_conn);
-        let id = sample_random_phrase_pack_id(&app, &pp_state, &chosen, &sig)?;
-        let entry =
-            fetch_phrase_pack_entry(&app, &pp_state, &chosen, id, allowed_langs.as_ref())?;
-        return Ok(phrase_pack_entry_to_out(entry, &chosen));
     }
 
     Err("No entries in the bundled corpus".to_string())
@@ -509,6 +595,7 @@ fn get_random_entry_base_only(
     levels: Option<Vec<String>>,
     domains: Option<Vec<String>>,
     allowed_langs: Option<HashSet<String>>,
+    exclude_ids: &[i64],
 ) -> Result<EntryOut, String> {
     let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
 
@@ -548,6 +635,15 @@ fn get_random_entry_base_only(
             for dom in dom_vec {
                 params.push(Box::new(dom.clone()));
             }
+        }
+    }
+
+    // Anti-repetition exclude.
+    if !exclude_ids.is_empty() {
+        let q = format!("e.id NOT IN ({})", vec!["?"; exclude_ids.len()].join(","));
+        where_clauses.push(q);
+        for id in exclude_ids {
+            params.push(Box::new(*id));
         }
     }
 
@@ -602,6 +698,7 @@ fn get_random_entries_with_translations(
     language_codes: Option<Vec<String>>,
     phrase_pack_ids: Option<Vec<String>>,
     base_corpus_enabled: Option<bool>,
+    exclude: Option<Vec<ExcludeEntry>>,
 ) -> Result<Vec<EntryOut>, String> {
     if count <= 0 {
         return Ok(vec![]);
@@ -611,36 +708,39 @@ fn get_random_entries_with_translations(
     let base_on = base_corpus_enabled.unwrap_or(true);
     let allowed_langs: Option<HashSet<String>> =
         language_codes.as_ref().map(|v| v.iter().cloned().collect());
+    let exclude_vec = exclude.unwrap_or_default();
+    let exclude_map = partition_exclude(&exclude_vec);
+    let empty: Vec<i64> = Vec::new();
 
     // Fast path — pre-phrase-packs behaviour, identical query plan.
     // Wrapped in the same 3-tier relaxation as the single-entry fast
     // path so a strict-filter user still gets a batch back.
     if pack_ids.is_empty() && base_on {
-        let attempts: [(Option<Vec<String>>, Option<Vec<String>>); 3] = [
-            (levels.clone(), domains.clone()),
-            (None, domains.clone()),
-            (None, None),
-        ];
-        let mut last_err: Option<String> = None;
-        for (lv, dm) in attempts {
-            match try_batch_base_only(
-                &state,
-                count,
-                lv,
-                dm,
-                allowed_langs.clone(),
-            ) {
-                Ok(entries) if !entries.is_empty() => return Ok(entries),
-                Ok(_) => continue,
-                Err(e) if e == "No entries found for these criteria" => {
-                    last_err = Some(e);
-                    continue;
+        let base_exclude = exclude_map.get(BASE_SOURCE_ID).unwrap_or(&empty);
+        let no_exclude: &[i64] = &[];
+        for ex in [base_exclude.as_slice(), no_exclude] {
+            let attempts: [(Option<Vec<String>>, Option<Vec<String>>); 3] = [
+                (levels.clone(), domains.clone()),
+                (None, domains.clone()),
+                (None, None),
+            ];
+            for (lv, dm) in attempts {
+                match try_batch_base_only(
+                    &state,
+                    count,
+                    lv,
+                    dm,
+                    allowed_langs.clone(),
+                    ex,
+                ) {
+                    Ok(entries) if !entries.is_empty() => return Ok(entries),
+                    Ok(_) => continue,
+                    Err(e) if e == "No entries found for these criteria" => continue,
+                    Err(e) => return Err(e),
                 }
-                Err(e) => return Err(e),
             }
         }
-        return Err(last_err
-            .unwrap_or_else(|| "No entries in the bundled corpus".to_string()));
+        return Err("No entries in the bundled corpus".to_string());
     }
 
     if !base_on && pack_ids.is_empty() {
@@ -650,68 +750,80 @@ fn get_random_entries_with_translations(
     // Multi-source path with filter-relaxation ladder. For each requested
     // result we weighted-pick a source and then sample 1 entry from that
     // source — within a single tier the sampling is N round-trips, each
-    // ~1ms. The outer loop tries up to 4 tiers in escalating relaxation.
+    // ~1ms. Outer loop tries up to 4 tiers × {with, without} exclude.
     let count_usize = count as usize;
-    for (sig, force_base) in relaxation_ladder(&levels, &domains) {
-        let effective_base_on = base_on || force_base;
-        let base_conn = state
-            .conn
-            .lock()
-            .map_err(|_| "DB lock poisoned".to_string())?;
-        let sources = gather_sources(
-            &app,
-            &pp_state,
-            &base_conn,
-            &sig,
-            &pack_ids,
-            effective_base_on,
-        )?;
-        if sources.is_empty() {
+    let empty_map: HashMap<String, Vec<i64>> = HashMap::new();
+    for excl_map in [&exclude_map, &empty_map] {
+        for (sig, force_base) in relaxation_ladder(&levels, &domains) {
+            let effective_base_on = base_on || force_base;
+            let base_conn = state
+                .conn
+                .lock()
+                .map_err(|_| "DB lock poisoned".to_string())?;
+            let sources = gather_sources(
+                &app,
+                &pp_state,
+                &base_conn,
+                &sig,
+                &pack_ids,
+                effective_base_on,
+                excl_map,
+            )?;
+            if sources.is_empty() {
+                drop(base_conn);
+                continue;
+            }
+
+            let total: i64 = sources.iter().map(|(_, c)| c).sum();
+            let mut picks: HashMap<String, i64> = HashMap::new();
+            for _ in 0..count_usize {
+                let chosen = pick_weighted_source(&base_conn, &sources, total)?;
+                *picks.entry(chosen).or_insert(0) += 1;
+            }
+
+            let mut entries: Vec<EntryOut> = Vec::with_capacity(count_usize);
+            if let Some(&base_n) = picks.get(BASE_SOURCE_ID) {
+                let base_exclude =
+                    excl_map.get(BASE_SOURCE_ID).unwrap_or(&empty);
+                let ids = sample_random_base_ids(&base_conn, &sig, base_exclude, base_n)?;
+                for entry_id in ids {
+                    entries.push(fetch_entry_with_translations(
+                        &base_conn,
+                        entry_id,
+                        allowed_langs.as_ref(),
+                    )?);
+                }
+            }
             drop(base_conn);
-            continue;
-        }
 
-        let total: i64 = sources.iter().map(|(_, c)| c).sum();
-        let mut picks: HashMap<String, i64> = HashMap::new();
-        for _ in 0..count_usize {
-            let chosen = pick_weighted_source(&base_conn, &sources, total)?;
-            *picks.entry(chosen).or_insert(0) += 1;
-        }
-
-        let mut entries: Vec<EntryOut> = Vec::with_capacity(count_usize);
-        if let Some(&base_n) = picks.get(BASE_SOURCE_ID) {
-            let ids = sample_random_base_ids(&base_conn, &sig, base_n)?;
-            for entry_id in ids {
-                entries.push(fetch_entry_with_translations(
-                    &base_conn,
-                    entry_id,
-                    allowed_langs.as_ref(),
-                )?);
+            for (source_id, n) in picks.iter().filter(|(id, _)| id.as_str() != BASE_SOURCE_ID) {
+                let pack_exclude = excl_map.get(source_id).unwrap_or(&empty);
+                for _ in 0..*n {
+                    let id = sample_random_phrase_pack_id(
+                        &app,
+                        &pp_state,
+                        source_id,
+                        &sig,
+                        pack_exclude,
+                    )?;
+                    let entry = fetch_phrase_pack_entry(
+                        &app,
+                        &pp_state,
+                        source_id,
+                        id,
+                        allowed_langs.as_ref(),
+                    )?;
+                    entries.push(phrase_pack_entry_to_out(entry, source_id));
+                }
             }
-        }
-        drop(base_conn);
 
-        for (source_id, n) in picks.iter().filter(|(id, _)| id.as_str() != BASE_SOURCE_ID) {
-            for _ in 0..*n {
-                let id =
-                    sample_random_phrase_pack_id(&app, &pp_state, source_id, &sig)?;
-                let entry = fetch_phrase_pack_entry(
-                    &app,
-                    &pp_state,
-                    source_id,
-                    id,
-                    allowed_langs.as_ref(),
-                )?;
-                entries.push(phrase_pack_entry_to_out(entry, source_id));
+            if !entries.is_empty() {
+                return Ok(entries);
             }
+            // Sources were non-empty but the per-source sampling came back
+            // empty — extremely unlikely but means this tier is dry; keep
+            // going down the ladder.
         }
-
-        if !entries.is_empty() {
-            return Ok(entries);
-        }
-        // Sources were non-empty but the per-source sampling came back
-        // empty — extremely unlikely but means this tier is dry; keep
-        // going down the ladder.
     }
 
     Err("No entries in the bundled corpus".to_string())
@@ -726,6 +838,7 @@ fn try_batch_base_only(
     levels: Option<Vec<String>>,
     domains: Option<Vec<String>>,
     allowed_langs: Option<HashSet<String>>,
+    exclude_ids: &[i64],
 ) -> Result<Vec<EntryOut>, String> {
     let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
 
@@ -763,6 +876,14 @@ fn try_batch_base_only(
             for dom in dom_vec {
                 params.push(Box::new(dom.clone()));
             }
+        }
+    }
+
+    if !exclude_ids.is_empty() {
+        let q = format!("e.id NOT IN ({})", vec!["?"; exclude_ids.len()].join(","));
+        where_clauses.push(q);
+        for id in exclude_ids {
+            params.push(Box::new(*id));
         }
     }
 
@@ -807,6 +928,46 @@ fn try_batch_base_only(
         entries.push(entry);
     }
     Ok(entries)
+}
+
+/// Sum of entries matching `(levels, base_corpus_enabled, phrase_pack_ids)`
+/// across every active source. Used by the Stacks tab to show a "~N
+/// phrases match this stack" chip so users understand their filter
+/// scope before tight-filter repetition surprises them.
+///
+/// Reuses the `count_base_entries` + `collect_pack_counts` helpers and
+/// their FilterSig-keyed cache, so consecutive calls with the same
+/// filter are sub-millisecond. Anti-repetition exclude is intentionally
+/// NOT applied here — the chip reports the gross pool size, not the
+/// post-exclude one.
+#[command]
+fn count_entries_for_filter(
+    app: AppHandle,
+    state: State<'_, db::DbState>,
+    pp_state: State<'_, PhrasePacksState>,
+    levels: Option<Vec<String>>,
+    phrase_pack_ids: Option<Vec<String>>,
+    base_corpus_enabled: Option<bool>,
+) -> Result<i64, String> {
+    let pack_ids = phrase_pack_ids.unwrap_or_default();
+    let base_on = base_corpus_enabled.unwrap_or(true);
+    let sig = FilterSig::new(&levels, &None);
+    let empty_map: HashMap<String, Vec<i64>> = HashMap::new();
+    let empty: Vec<i64> = Vec::new();
+
+    let mut total: i64 = 0;
+    if base_on {
+        let base_conn = state
+            .conn
+            .lock()
+            .map_err(|_| "DB lock poisoned".to_string())?;
+        total = total.saturating_add(count_base_entries(&base_conn, &sig, &empty)?);
+    }
+    let pack_counts = collect_pack_counts(&app, &pp_state, &pack_ids, &sig, &empty_map)?;
+    for (_, n) in pack_counts {
+        total = total.saturating_add(n);
+    }
+    Ok(total)
 }
 
 /// Fetch a specific entry by ID with all translations (optionally filtered
@@ -1117,6 +1278,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             get_random_entry_with_translations,
             get_random_entries_with_translations,
+            count_entries_for_filter,
             get_entry_by_id_with_translations,
             search_entries_by_translation_text,
             search_entries_by_translation_text_count,

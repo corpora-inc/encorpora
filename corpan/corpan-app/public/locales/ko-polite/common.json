@@ -117,7 +117,9 @@
       "deactivateGroup": "모두 비활성화",
       "uncategorized": "기타",
       "noMatches": "결과 없음.",
-      "noFiltered": "지금 여기에 아무것도 없어요."
+      "noFiltered": "지금 여기에 아무것도 없어요.",
+      "stackTotalPhrases": "~{{count}}개의 구문이 일치해요",
+      "stackTotalNudge": "다양성을 위해 팩을 추가하거나 레벨을 넓혀 보세요."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "어구 팩",
       "hero": "주제를 골라 보세요",
       "loading": "불러오는 중…",
-      "selectAll": "전체 선택",
+      "selectAll": "전체 선택 ({{count}})",
       "clearAll": "지우기",
       "subscriptionNudge": "구독하시면 모든 팩이 열립니다.",
       "entryCount": "{{n}}개 어구",

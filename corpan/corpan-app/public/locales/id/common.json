@@ -117,7 +117,9 @@
       "deactivateGroup": "Nonaktifkan semua",
       "uncategorized": "Lainnya",
       "noMatches": "Tidak ada hasil.",
-      "noFiltered": "Belum ada apa-apa di sini."
+      "noFiltered": "Belum ada apa-apa di sini.",
+      "stackTotalPhrases": "~{{count}} frasa cocok",
+      "stackTotalNudge": "Tambahkan paket atau perluas level untuk variasi."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Paket frasa",
       "hero": "Pilih topik kamu",
       "loading": "Memuat…",
-      "selectAll": "Pilih semua",
+      "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Hapus",
       "subscriptionNudge": "Berlangganan untuk membuka semua paket.",
       "entryCount": "{{n}} frasa",

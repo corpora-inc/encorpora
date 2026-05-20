@@ -118,7 +118,9 @@
       "deactivateGroup": "Деактивирай всички",
       "uncategorized": "Други",
       "noMatches": "Няма резултати.",
-      "noFiltered": "Тук сега няма нищо."
+      "noFiltered": "Тук сега няма нищо.",
+      "stackTotalPhrases": "~{{count}} фрази съвпадат",
+      "stackTotalNudge": "Добави пакети или разшири нивата за повече разнообразие."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Пакети фрази",
       "hero": "Избери теми",
       "loading": "Зареждане…",
-      "selectAll": "Избери всички",
+      "selectAll": "Избери всички ({{count}})",
       "clearAll": "Изчисти",
       "subscriptionNudge": "Абонирай се, за да отключиш всички пакети.",
       "entryCount": "{{n}} фрази",

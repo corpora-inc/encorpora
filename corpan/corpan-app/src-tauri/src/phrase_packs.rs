@@ -139,10 +139,13 @@ pub fn collect_pack_counts<R: Runtime>(
     state: &PhrasePacksState,
     pack_ids: &[String],
     sig: &FilterSig,
+    exclude_map: &std::collections::HashMap<String, Vec<i64>>,
 ) -> Result<Vec<(String, i64)>, String> {
+    let empty: Vec<i64> = Vec::new();
     let mut out = Vec::with_capacity(pack_ids.len());
     for pid in pack_ids {
-        match count_phrase_pack(app, state, pid, sig) {
+        let per_pack_exclude = exclude_map.get(pid).unwrap_or(&empty);
+        match count_phrase_pack(app, state, pid, sig, per_pack_exclude) {
             Ok(n) => out.push((pid.clone(), n)),
             Err(e) => {
                 eprintln!(
@@ -164,12 +167,16 @@ pub fn sample_random_id<R: Runtime>(
     state: &PhrasePacksState,
     pack_id: &str,
     sig: &FilterSig,
+    exclude_ids: &[i64],
 ) -> Result<i64, String> {
-    let (sql, params) = build_pack_id_sample_sql(sig);
+    let (sql, params) = build_pack_id_sample_sql(sig, exclude_ids);
     with_pack_conn(app, state, pack_id, |conn| {
         let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
         let id: i64 = stmt
-            .query_row(params_from_iter(params.iter()), |row| row.get(0))
+            .query_row(
+                params_from_iter(params.iter().map(|p| &**p)),
+                |row| row.get(0),
+            )
             .map_err(|e| e.to_string())?;
         Ok(id)
     })
@@ -251,22 +258,36 @@ fn count_phrase_pack<R: Runtime>(
     state: &PhrasePacksState,
     pack_id: &str,
     sig: &FilterSig,
+    exclude_ids: &[i64],
 ) -> Result<i64, String> {
-    let key = (pack_id.to_string(), sig.clone());
-    {
+    // Only filter-only counts hit the cache. The exclude window slides
+    // with every entry the user sees, so an exclude-aware count is a
+    // moving target and not worth caching — go straight to SQL.
+    let cache_key = if exclude_ids.is_empty() {
+        Some((pack_id.to_string(), sig.clone()))
+    } else {
+        None
+    };
+    if let Some(ref k) = cache_key {
         let inner = state.lock();
-        if let Some(&n) = inner.count_cache.get(&key) {
+        if let Some(&n) = inner.count_cache.get(k) {
             return Ok(n);
         }
     }
-    let (sql, params) = build_pack_count_sql(sig);
+    let (sql, params) = build_pack_count_sql(sig, exclude_ids);
     let count = with_pack_conn(app, state, pack_id, |conn| {
         let n: i64 = conn
-            .query_row(&sql, params_from_iter(params.iter()), |row| row.get(0))
+            .query_row(
+                &sql,
+                params_from_iter(params.iter().map(|p| &**p)),
+                |row| row.get(0),
+            )
             .map_err(|e| e.to_string())?;
         Ok(n)
     })?;
-    state.lock().count_cache.insert(key, count);
+    if let Some(k) = cache_key {
+        state.lock().count_cache.insert(k, count);
+    }
     Ok(count)
 }
 
@@ -325,30 +346,64 @@ where
     f(conn)
 }
 
-fn build_pack_count_sql(sig: &FilterSig) -> (String, Vec<&str>) {
-    if sig.levels.is_empty() {
-        return ("SELECT COUNT(*) FROM entries".to_string(), Vec::new());
+fn build_pack_count_sql(
+    sig: &FilterSig,
+    exclude_ids: &[i64],
+) -> (String, Vec<Box<dyn rusqlite::ToSql>>) {
+    let mut where_clauses: Vec<String> = Vec::new();
+    let mut params: Vec<Box<dyn rusqlite::ToSql>> = Vec::new();
+
+    if !sig.levels.is_empty() {
+        let placeholders = vec!["?"; sig.levels.len()].join(",");
+        where_clauses.push(format!("level IN ({placeholders})"));
+        for lv in &sig.levels {
+            params.push(Box::new(lv.clone()));
+        }
     }
-    let placeholders = vec!["?"; sig.levels.len()].join(",");
-    let sql = format!(
-        "SELECT COUNT(*) FROM entries WHERE level IN ({placeholders})"
-    );
-    let params: Vec<&str> = sig.levels.iter().map(|s| s.as_str()).collect();
+    if !exclude_ids.is_empty() {
+        let placeholders = vec!["?"; exclude_ids.len()].join(",");
+        where_clauses.push(format!("id NOT IN ({placeholders})"));
+        for id in exclude_ids {
+            params.push(Box::new(*id));
+        }
+    }
+
+    let mut sql = "SELECT COUNT(*) FROM entries".to_string();
+    if !where_clauses.is_empty() {
+        sql.push_str(" WHERE ");
+        sql.push_str(&where_clauses.join(" AND "));
+    }
     (sql, params)
 }
 
-fn build_pack_id_sample_sql(sig: &FilterSig) -> (String, Vec<&str>) {
-    if sig.levels.is_empty() {
-        return (
-            "SELECT id FROM entries ORDER BY RANDOM() LIMIT 1".to_string(),
-            Vec::new(),
-        );
+fn build_pack_id_sample_sql(
+    sig: &FilterSig,
+    exclude_ids: &[i64],
+) -> (String, Vec<Box<dyn rusqlite::ToSql>>) {
+    let mut where_clauses: Vec<String> = Vec::new();
+    let mut params: Vec<Box<dyn rusqlite::ToSql>> = Vec::new();
+
+    if !sig.levels.is_empty() {
+        let placeholders = vec!["?"; sig.levels.len()].join(",");
+        where_clauses.push(format!("level IN ({placeholders})"));
+        for lv in &sig.levels {
+            params.push(Box::new(lv.clone()));
+        }
     }
-    let placeholders = vec!["?"; sig.levels.len()].join(",");
-    let sql = format!(
-        "SELECT id FROM entries WHERE level IN ({placeholders}) ORDER BY RANDOM() LIMIT 1"
-    );
-    let params: Vec<&str> = sig.levels.iter().map(|s| s.as_str()).collect();
+    if !exclude_ids.is_empty() {
+        let placeholders = vec!["?"; exclude_ids.len()].join(",");
+        where_clauses.push(format!("id NOT IN ({placeholders})"));
+        for id in exclude_ids {
+            params.push(Box::new(*id));
+        }
+    }
+
+    let mut sql = "SELECT id FROM entries".to_string();
+    if !where_clauses.is_empty() {
+        sql.push_str(" WHERE ");
+        sql.push_str(&where_clauses.join(" AND "));
+    }
+    sql.push_str(" ORDER BY RANDOM() LIMIT 1");
     (sql, params)
 }
 

@@ -117,7 +117,9 @@
       "deactivateGroup": "כבה הכול",
       "uncategorized": "אחר",
       "noMatches": "אין תוצאות.",
-      "noFiltered": "אין כאן כלום עכשיו."
+      "noFiltered": "אין כאן כלום עכשיו.",
+      "stackTotalPhrases": "~{{count}} ביטויים תואמים",
+      "stackTotalNudge": "הוסף חבילות או הרחב את הרמות לגיוון."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "חבילות ביטויים",
       "hero": "בחר נושאים",
       "loading": "טוען…",
-      "selectAll": "בחר הכל",
+      "selectAll": "בחר הכל ({{count}})",
       "clearAll": "נקה",
       "subscriptionNudge": "הירשם כדי לפתוח את כל החבילות.",
       "entryCount": "{{n}} ביטויים",

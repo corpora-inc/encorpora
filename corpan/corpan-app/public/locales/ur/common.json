@@ -117,7 +117,9 @@
       "deactivateGroup": "سب غیر فعال کریں",
       "uncategorized": "دیگر",
       "noMatches": "کوئی نتیجہ نہیں۔",
-      "noFiltered": "یہاں ابھی کچھ نہیں۔"
+      "noFiltered": "یہاں ابھی کچھ نہیں۔",
+      "stackTotalPhrases": "‎~{{count}} جملے مطابقت رکھتے ہیں",
+      "stackTotalNudge": "تنوع کے لیے پیک شامل کریں یا سطحیں وسیع کریں۔"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "جملوں کے پیکجز",
       "hero": "اپنے موضوعات منتخب کریں",
       "loading": "لوڈ ہو رہا ہے…",
-      "selectAll": "سب منتخب کریں",
+      "selectAll": "سب منتخب کریں ({{count}})",
       "clearAll": "صاف کریں",
       "subscriptionNudge": "تمام پیکجز کھولنے کے لیے سبسکرائب کریں۔",
       "entryCount": "{{n}} جملے",

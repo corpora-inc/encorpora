@@ -118,7 +118,9 @@
       "deactivateGroup": "Deaktiviraj sve",
       "uncategorized": "Ostalo",
       "noMatches": "Bez rezultata.",
-      "noFiltered": "Ovdje sad ničega nema."
+      "noFiltered": "Ovdje sad ničega nema.",
+      "stackTotalPhrases": "~{{count}} fraza odgovara",
+      "stackTotalNudge": "Dodaj pakete ili proširi razine za više raznolikosti."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Paketi fraza",
       "hero": "Odaberi teme",
       "loading": "Učitavanje…",
-      "selectAll": "Odaberi sve",
+      "selectAll": "Odaberi sve ({{count}})",
       "clearAll": "Očisti",
       "subscriptionNudge": "Pretplati se da otključaš sve pakete.",
       "entryCount": "{{n}} fraza",

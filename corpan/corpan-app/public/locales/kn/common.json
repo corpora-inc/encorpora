@@ -117,7 +117,9 @@
       "deactivateGroup": "ಎಲ್ಲ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
       "uncategorized": "ಇತರೆ",
       "noMatches": "ಫಲಿತಾಂಶಗಳಿಲ್ಲ.",
-      "noFiltered": "ಇಲ್ಲಿ ಈಗ ಏನೂ ಇಲ್ಲ."
+      "noFiltered": "ಇಲ್ಲಿ ಈಗ ಏನೂ ಇಲ್ಲ.",
+      "stackTotalPhrases": "~{{count}} ನುಡಿಗಟ್ಟುಗಳು ಹೊಂದುತ್ತವೆ",
+      "stackTotalNudge": "ವೈವಿಧ್ಯಕ್ಕಾಗಿ ಪ್ಯಾಕ್‌ಗಳನ್ನು ಸೇರಿಸಿ ಅಥವಾ ಹಂತಗಳನ್ನು ವಿಸ್ತರಿಸಿ."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "ವಾಕ್ಯ ಪ್ಯಾಕ್‌ಗಳು",
       "hero": "ವಿಷಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
       "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
-      "selectAll": "ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿ",
+      "selectAll": "ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿ ({{count}})",
       "clearAll": "ತೆರವುಗೊಳಿಸಿ",
       "subscriptionNudge": "ಎಲ್ಲಾ ಪ್ಯಾಕ್‌ಗಳನ್ನು ತೆರೆಯಲು ಚಂದಾದಾರರಾಗಿ.",
       "entryCount": "{{n}} ವಾಕ್ಯಗಳು",

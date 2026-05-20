@@ -117,7 +117,9 @@
       "deactivateGroup": "Alle deaktivieren",
       "uncategorized": "Andere",
       "noMatches": "Keine Treffer.",
-      "noFiltered": "Hier ist gerade nichts."
+      "noFiltered": "Hier ist gerade nichts.",
+      "stackTotalPhrases": "~{{count}} Phrasen passen",
+      "stackTotalNudge": "Mehr Pakete oder mehr Niveaus für Abwechslung."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Phrasenpakete",
       "hero": "Wähle deine Themen",
       "loading": "Laden…",
-      "selectAll": "Alles auswählen",
+      "selectAll": "Alles auswählen ({{count}})",
       "clearAll": "Leeren",
       "subscriptionNudge": "Abonniere, um alle Pakete freizuschalten.",
       "entryCount": "{{n}} Sätze",

@@ -118,7 +118,9 @@
       "deactivateGroup": "Деактивувати всі",
       "uncategorized": "Інше",
       "noMatches": "Нічого не знайдено.",
-      "noFiltered": "Тут зараз нічого."
+      "noFiltered": "Тут зараз нічого.",
+      "stackTotalPhrases": "~{{count}} фраз відповідають",
+      "stackTotalNudge": "Додай пакети або розшир рівні для різноманіття."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Пакети фраз",
       "hero": "Обери теми",
       "loading": "Завантаження…",
-      "selectAll": "Вибрати все",
+      "selectAll": "Вибрати все ({{count}})",
       "clearAll": "Очистити",
       "subscriptionNudge": "Підпишись, щоб розблокувати всі пакети.",
       "entryCount": "{{n}} фраз",

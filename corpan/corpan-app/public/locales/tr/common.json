@@ -117,7 +117,9 @@
       "deactivateGroup": "Tümünü kapat",
       "uncategorized": "Diğer",
       "noMatches": "Sonuç yok.",
-      "noFiltered": "Burada şu an bir şey yok."
+      "noFiltered": "Burada şu an bir şey yok.",
+      "stackTotalPhrases": "~{{count}} ifade eşleşiyor",
+      "stackTotalNudge": "Çeşitlilik için paket ekle veya seviyeleri genişlet."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "İfade paketleri",
       "hero": "Konularını seç",
       "loading": "Yükleniyor…",
-      "selectAll": "Tümünü seç",
+      "selectAll": "Tümünü seç ({{count}})",
       "clearAll": "Temizle",
       "subscriptionNudge": "Tüm paketlerin kilidini açmak için abone ol.",
       "entryCount": "{{n}} ifade",

@@ -309,7 +309,11 @@ export function OnboardingPickPhrasePacks() {
                                             <Sparkles size={14} />
                                             {t(
                                                 "onboarding.phrasePacks.selectAll",
-                                                { defaultValue: "Select all" },
+                                                {
+                                                    defaultValue:
+                                                        "Select all ({{count}})",
+                                                    count: starterPacks.length,
+                                                },
                                             )}
                                         </>
                                     )}

@@ -118,7 +118,9 @@
       "deactivateGroup": "全部關",
       "uncategorized": "其他",
       "noMatches": "冇結果。",
-      "noFiltered": "依度而家咩都冇。"
+      "noFiltered": "依度而家咩都冇。",
+      "stackTotalPhrases": "~{{count}} 條片語匹配",
+      "stackTotalNudge": "加多啲包或者擴大等級，咁就多啲變化。"
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "短語包",
       "hero": "揀你嘅主題",
       "loading": "載入緊…",
-      "selectAll": "全選",
+      "selectAll": "全選 ({{count}})",
       "clearAll": "清除",
       "subscriptionNudge": "訂閱解鎖所有短語包。",
       "entryCount": "{{n}} 句短語",

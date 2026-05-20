@@ -277,13 +277,13 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    // A0 + A1 by default so a fresh user with a starter phrase pack
-    // (most of which target A1+) lands on a non-empty source set the
-    // first time the sampler runs. A0-only used to trap pack-only users
-    // into a silent "no entries match" state. The Rust sampler also has
-    // a relaxation ladder behind this (0.15.1+) but a sensible default
-    // is the first line of defense.
-    levels: ["A0", "A1"],
+    // A0 + A1 + A2 by default so a fresh user with one or two starter
+    // packs has a richly populated candidate pool from the first roll.
+    // Phrase packs lean toward A2 in practice, so this default ~3×s
+    // the pool over A0-only and dramatically reduces back-to-back
+    // repeats under tight stack configurations. The Rust sampler still
+    // has a relaxation ladder behind this for the edge cases.
+    levels: ["A0", "A1", "A2"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,

@@ -117,7 +117,9 @@
       "deactivateGroup": "બધા નિષ્ક્રિય કરો",
       "uncategorized": "અન્ય",
       "noMatches": "કોઈ પરિણામ નથી.",
-      "noFiltered": "અહીં અત્યારે કંઈ નથી."
+      "noFiltered": "અહીં અત્યારે કંઈ નથી.",
+      "stackTotalPhrases": "~{{count}} વાક્યો મેળ ખાય છે",
+      "stackTotalNudge": "વિવિધતા માટે પેક ઉમેરો અથવા સ્તર વધારો."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "વાક્ય પેક",
       "hero": "વિષય પસંદ કરો",
       "loading": "લોડ થઈ રહ્યું છે…",
-      "selectAll": "બધાં પસંદ કરો",
+      "selectAll": "બધાં પસંદ કરો ({{count}})",
       "clearAll": "સાફ કરો",
       "subscriptionNudge": "બધાં પેક ખોલવા માટે સબ્સ્ક્રાઇબ કરો.",
       "entryCount": "{{n}} વાક્યો",

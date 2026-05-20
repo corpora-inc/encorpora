@@ -117,7 +117,9 @@
       "deactivateGroup": "Tout désactiver",
       "uncategorized": "Autres",
       "noMatches": "Aucun résultat.",
-      "noFiltered": "Rien ici pour l'instant."
+      "noFiltered": "Rien ici pour l'instant.",
+      "stackTotalPhrases": "~{{count}} phrases correspondent",
+      "stackTotalNudge": "Ajoutez des packs ou élargissez les niveaux pour plus de variété."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Packs de phrases",
       "hero": "Choisis tes sujets",
       "loading": "Chargement…",
-      "selectAll": "Tout sélectionner",
+      "selectAll": "Tout sélectionner ({{count}})",
       "clearAll": "Effacer",
       "subscriptionNudge": "Abonne-toi pour débloquer tous les packs.",
       "entryCount": "{{n}} phrases",

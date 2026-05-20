@@ -117,7 +117,9 @@
       "deactivateGroup": "すべて無効化",
       "uncategorized": "その他",
       "noMatches": "該当なし。",
-      "noFiltered": "今ここには何もありません。"
+      "noFiltered": "今ここには何もありません。",
+      "stackTotalPhrases": "~{{count}} 件のフレーズが一致",
+      "stackTotalNudge": "バリエーションのためにパックを追加するか、レベルを広げましょう。"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "フレーズパック",
       "hero": "テーマを選ぼう",
       "loading": "読み込み中…",
-      "selectAll": "すべて選択",
+      "selectAll": "すべて選択 ({{count}})",
       "clearAll": "クリア",
       "subscriptionNudge": "サブスクで全パックを開放できます。",
       "entryCount": "{{n}}フレーズ",

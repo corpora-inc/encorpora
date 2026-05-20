@@ -118,7 +118,9 @@
       "deactivateGroup": "Deaktivovať všetko",
       "uncategorized": "Ostatné",
       "noMatches": "Žiadne výsledky.",
-      "noFiltered": "Tu teraz nič nie je."
+      "noFiltered": "Tu teraz nič nie je.",
+      "stackTotalPhrases": "~{{count}} fráz zodpovedá",
+      "stackTotalNudge": "Pridaj balíky alebo rozšír úrovne pre väčšiu rozmanitosť."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Balíčky fráz",
       "hero": "Vyber si témy",
       "loading": "Načítava sa…",
-      "selectAll": "Vybrať všetko",
+      "selectAll": "Vybrať všetko ({{count}})",
       "clearAll": "Vymazať",
       "subscriptionNudge": "Predplaťte si, aby ste odomkli všetky balíčky.",
       "entryCount": "{{n}} fráz",

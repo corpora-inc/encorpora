@@ -117,7 +117,9 @@
       "deactivateGroup": "غیرفعال کردن همه",
       "uncategorized": "سایر",
       "noMatches": "نتیجه‌ای نیست.",
-      "noFiltered": "اینجا الان چیزی نیست."
+      "noFiltered": "اینجا الان چیزی نیست.",
+      "stackTotalPhrases": "‎~{{count}} عبارت مطابقت دارد",
+      "stackTotalNudge": "بسته‌های بیشتری اضافه کن یا سطوح را گسترش بده."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "بسته‌های عبارت",
       "hero": "موضوعاتت را انتخاب کن",
       "loading": "در حال بارگذاری…",
-      "selectAll": "انتخاب همه",
+      "selectAll": "انتخاب همه ({{count}})",
       "clearAll": "پاک کردن",
       "subscriptionNudge": "اشتراک تهیه کن تا همه بسته‌ها باز شوند.",
       "entryCount": "{{n}} عبارت",

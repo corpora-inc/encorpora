@@ -118,7 +118,9 @@
       "deactivateGroup": "Deaktiviraj vse",
       "uncategorized": "Drugo",
       "noMatches": "Brez zadetkov.",
-      "noFiltered": "Tukaj zdaj ni ničesar."
+      "noFiltered": "Tukaj zdaj ni ničesar.",
+      "stackTotalPhrases": "~{{count}} fraz ustreza",
+      "stackTotalNudge": "Dodaj pakete ali razširi ravni za večjo raznolikost."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Paketi besednih zvez",
       "hero": "Izberi svoje teme",
       "loading": "Nalaganje…",
-      "selectAll": "Izberi vse",
+      "selectAll": "Izberi vse ({{count}})",
       "clearAll": "Počisti",
       "subscriptionNudge": "Naroči se, da odkleneš vse pakete.",
       "entryCount": "{{n}} fraz",

@@ -117,7 +117,9 @@
       "deactivateGroup": "Deaktivér alle",
       "uncategorized": "Andet",
       "noMatches": "Ingen resultater.",
-      "noFiltered": "Intet her lige nu."
+      "noFiltered": "Intet her lige nu.",
+      "stackTotalPhrases": "~{{count}} sætninger matcher",
+      "stackTotalNudge": "Tilføj pakker eller udvid niveauerne for mere variation."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Frasepakker",
       "hero": "Vælg dine emner",
       "loading": "Indlæser…",
-      "selectAll": "Vælg alle",
+      "selectAll": "Vælg alle ({{count}})",
       "clearAll": "Ryd",
       "subscriptionNudge": "Abonner for at låse alle pakker op.",
       "entryCount": "{{n}} fraser",

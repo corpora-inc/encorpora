@@ -118,7 +118,9 @@
       "deactivateGroup": "Išjungti visus",
       "uncategorized": "Kita",
       "noMatches": "Nieko nerasta.",
-      "noFiltered": "Čia dabar nieko."
+      "noFiltered": "Čia dabar nieko.",
+      "stackTotalPhrases": "~{{count}} frazių atitinka",
+      "stackTotalNudge": "Pridėk paketų arba praplėsk lygius dėl įvairovės."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Frazių paketai",
       "hero": "Pasirink temas",
       "loading": "Įkeliama…",
-      "selectAll": "Pažymėti viską",
+      "selectAll": "Pažymėti viską ({{count}})",
       "clearAll": "Išvalyti",
       "subscriptionNudge": "Užsiprenumeruok, kad atrakintum visus paketus.",
       "entryCount": "{{n}} frazių",

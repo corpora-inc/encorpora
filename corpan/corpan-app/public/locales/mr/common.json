@@ -117,7 +117,9 @@
       "deactivateGroup": "सर्व निष्क्रिय करा",
       "uncategorized": "इतर",
       "noMatches": "कोणतेही परिणाम नाहीत.",
-      "noFiltered": "इथे आत्ता काही नाही."
+      "noFiltered": "इथे आत्ता काही नाही.",
+      "stackTotalPhrases": "~{{count}} वाक्ये जुळतात",
+      "stackTotalNudge": "विविधतेसाठी पॅक जोडा किंवा स्तर वाढवा."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "वाक्प्रचार पॅक",
       "hero": "विषय निवडा",
       "loading": "लोड होत आहे…",
-      "selectAll": "सर्व निवडा",
+      "selectAll": "सर्व निवडा ({{count}})",
       "clearAll": "साफ करा",
       "subscriptionNudge": "सर्व पॅक उघडण्यासाठी सदस्यता घ्या.",
       "entryCount": "{{n}} वाक्प्रचार",

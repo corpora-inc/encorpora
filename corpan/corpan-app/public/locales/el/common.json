@@ -117,7 +117,9 @@
       "deactivateGroup": "Απενεργοποίηση όλων",
       "uncategorized": "Άλλα",
       "noMatches": "Κανένα αποτέλεσμα.",
-      "noFiltered": "Τίποτα εδώ τώρα."
+      "noFiltered": "Τίποτα εδώ τώρα.",
+      "stackTotalPhrases": "~{{count}} φράσεις ταιριάζουν",
+      "stackTotalNudge": "Πρόσθεσε πακέτα ή διεύρυνε τα επίπεδα για ποικιλία."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Πακέτα φράσεων",
       "hero": "Διάλεξε θέματα",
       "loading": "Φόρτωση…",
-      "selectAll": "Επιλογή όλων",
+      "selectAll": "Επιλογή όλων ({{count}})",
       "clearAll": "Καθαρισμός",
       "subscriptionNudge": "Κάνε συνδρομή για να ξεκλειδώσεις όλα τα πακέτα.",
       "entryCount": "{{n}} φράσεις",

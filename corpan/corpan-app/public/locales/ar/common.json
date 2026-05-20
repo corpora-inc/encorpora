@@ -117,7 +117,9 @@
       "deactivateGroup": "تعطيل الكل",
       "uncategorized": "أخرى",
       "noMatches": "لا توجد نتائج.",
-      "noFiltered": "لا شيء هنا الآن."
+      "noFiltered": "لا شيء هنا الآن.",
+      "stackTotalPhrases": "‎~{{count}} عبارة تطابق",
+      "stackTotalNudge": "أضف حزمًا أو وسّع المستويات لمزيد من التنوع."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "حزم العبارات",
       "hero": "اختر مواضيعك",
       "loading": "جارٍ التحميل…",
-      "selectAll": "تحديد الكل",
+      "selectAll": "تحديد الكل ({{count}})",
       "clearAll": "مسح",
       "subscriptionNudge": "اشترك لفتح جميع الحزم.",
       "entryCount": "{{n}} عبارة",

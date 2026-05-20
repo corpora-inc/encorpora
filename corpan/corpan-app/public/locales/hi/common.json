@@ -117,7 +117,9 @@
       "deactivateGroup": "सभी निष्क्रिय करें",
       "uncategorized": "अन्य",
       "noMatches": "कोई परिणाम नहीं।",
-      "noFiltered": "यहाँ अभी कुछ नहीं है।"
+      "noFiltered": "यहाँ अभी कुछ नहीं है।",
+      "stackTotalPhrases": "~{{count}} वाक्यांश मेल खाते हैं",
+      "stackTotalNudge": "विविधता के लिए पैक जोड़ें या स्तर बढ़ाएँ।"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "वाक्यांश पैक",
       "hero": "विषय चुनें",
       "loading": "लोड हो रहा है…",
-      "selectAll": "सभी चुनें",
+      "selectAll": "सभी चुनें ({{count}})",
       "clearAll": "साफ़ करें",
       "subscriptionNudge": "सभी पैक अनलॉक करने के लिए सदस्यता लें।",
       "entryCount": "{{n}} वाक्यांश",

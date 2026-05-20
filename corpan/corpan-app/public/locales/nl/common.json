@@ -117,7 +117,9 @@
       "deactivateGroup": "Alle deactiveren",
       "uncategorized": "Overige",
       "noMatches": "Geen resultaten.",
-      "noFiltered": "Hier is nu niets."
+      "noFiltered": "Hier is nu niets.",
+      "stackTotalPhrases": "~{{count}} zinnen passen",
+      "stackTotalNudge": "Voeg pakketten toe of verbreed de niveaus voor meer variatie."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Zinnenpakketten",
       "hero": "Kies je onderwerpen",
       "loading": "Laden…",
-      "selectAll": "Alles selecteren",
+      "selectAll": "Alles selecteren ({{count}})",
       "clearAll": "Wissen",
       "subscriptionNudge": "Abonneer om alle pakketten te ontgrendelen.",
       "entryCount": "{{n}} zinnen",

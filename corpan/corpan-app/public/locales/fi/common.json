@@ -117,7 +117,9 @@
       "deactivateGroup": "Poista kaikki",
       "uncategorized": "Muut",
       "noMatches": "Ei osumia.",
-      "noFiltered": "Täällä ei ole mitään nyt."
+      "noFiltered": "Täällä ei ole mitään nyt.",
+      "stackTotalPhrases": "~{{count}} fraasia vastaa",
+      "stackTotalNudge": "Lisää paketteja tai laajenna tasoja monipuolisuuden vuoksi."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Lausepaketit",
       "hero": "Valitse aiheesi",
       "loading": "Ladataan…",
-      "selectAll": "Valitse kaikki",
+      "selectAll": "Valitse kaikki ({{count}})",
       "clearAll": "Tyhjennä",
       "subscriptionNudge": "Tilaa avataksesi kaikki paketit.",
       "entryCount": "{{n}} lausetta",

@@ -120,7 +120,9 @@
       "deactivateGroup": "Deactivate all",
       "uncategorized": "Other",
       "noMatches": "No matches.",
-      "noFiltered": "Nothing here right now."
+      "noFiltered": "Nothing here right now.",
+      "stackTotalPhrases": "~{{count}} phrases match",
+      "stackTotalNudge": "Add packs or widen levels for variety."
     }
   },
   "onboarding": {
@@ -215,7 +217,7 @@
       "hero": "Pick your topics",
       "subtitle": "Add focused phrase packs to your stack. Toggle them on or off any time in Settings.",
       "loading": "Loading packs…",
-      "selectAll": "Select all {{count}}",
+      "selectAll": "Select all ({{count}})",
       "clearAll": "Clear selection",
       "selectedSuffix": "selected",
       "noneSelected": "None selected — Continue will skip",

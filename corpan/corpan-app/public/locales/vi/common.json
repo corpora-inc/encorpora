@@ -117,7 +117,9 @@
       "deactivateGroup": "Tắt tất cả",
       "uncategorized": "Khác",
       "noMatches": "Không có kết quả.",
-      "noFiltered": "Hiện không có gì ở đây."
+      "noFiltered": "Hiện không có gì ở đây.",
+      "stackTotalPhrases": "~{{count}} cụm từ phù hợp",
+      "stackTotalNudge": "Thêm gói hoặc mở rộng cấp độ để đa dạng hơn."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Gói cụm từ",
       "hero": "Chọn chủ đề",
       "loading": "Đang tải…",
-      "selectAll": "Chọn tất cả",
+      "selectAll": "Chọn tất cả ({{count}})",
       "clearAll": "Xóa",
       "subscriptionNudge": "Đăng ký để mở khóa mọi gói.",
       "entryCount": "{{n}} cụm từ",

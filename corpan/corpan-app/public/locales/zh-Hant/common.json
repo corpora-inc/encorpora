@@ -117,7 +117,9 @@
       "deactivateGroup": "全部關閉",
       "uncategorized": "其他",
       "noMatches": "無結果。",
-      "noFiltered": "這裡現在沒有內容。"
+      "noFiltered": "這裡現在沒有內容。",
+      "stackTotalPhrases": "~{{count}} 條片語匹配",
+      "stackTotalNudge": "新增更多包或擴大等級以增加多樣性。"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "短語包",
       "hero": "選擇你的主題",
       "loading": "載入中…",
-      "selectAll": "全選",
+      "selectAll": "全選 ({{count}})",
       "clearAll": "清除",
       "subscriptionNudge": "訂閱以解鎖所有短語包。",
       "entryCount": "{{n}} 條短語",

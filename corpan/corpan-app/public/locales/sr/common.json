@@ -118,7 +118,9 @@
       "deactivateGroup": "Деактивирај све",
       "uncategorized": "Остало",
       "noMatches": "Без резултата.",
-      "noFiltered": "Овде сад ништа нема."
+      "noFiltered": "Овде сад ништа нема.",
+      "stackTotalPhrases": "~{{count}} фраза одговара",
+      "stackTotalNudge": "Додај пакете или прошири нивое за више разноврсности."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Пакети фраза",
       "hero": "Изабери теме",
       "loading": "Учитавање…",
-      "selectAll": "Изабери све",
+      "selectAll": "Изабери све ({{count}})",
       "clearAll": "Очисти",
       "subscriptionNudge": "Претплати се да откључаш све пакете.",
       "entryCount": "{{n}} фраза",

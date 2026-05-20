@@ -1,6 +1,7 @@
 import { addPluginListener, invoke } from "@tauri-apps/api/core"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
+import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import type {
   HostApi,
@@ -397,24 +398,30 @@ export const createHostApi = (packId?: string): HostApi => {
     // SQLite not yet on disk) lives in Rust: `collect_pack_counts` treats
     // missing-pack errors as zero and continues sampling from the rest.
     getRandomEntry: async () => {
-      const { levels, domains, phrasePackIds, baseCorpusEnabled } =
+      const { levels, phrasePackIds, baseCorpusEnabled } =
         useSettingsStore.getState()
+      // `domains` intentionally NOT forwarded — phrase packs supersede
+      // the base corpus's domain axis in 0.15.1+. The Rust sampler
+      // treats omitted domains as "all domains, no JOIN".
+      // `exclude` is the most-recent 10 (source, entry_id) tuples
+      // from the host's history — anti-repetition that Rust falls
+      // through cleanly when the pool is too thin.
       return invoke("get_random_entry_with_translations", {
         levels,
-        domains,
         phrasePackIds,
         baseCorpusEnabled,
+        exclude: useHistoryStore.getState().getRecentTuples(10),
       })
     },
     getRandomEntries: async (count: number) => {
-      const { levels, domains, phrasePackIds, baseCorpusEnabled } =
+      const { levels, phrasePackIds, baseCorpusEnabled } =
         useSettingsStore.getState()
       return invoke("get_random_entries_with_translations", {
         count,
         levels,
-        domains,
         phrasePackIds,
         baseCorpusEnabled,
+        exclude: useHistoryStore.getState().getRecentTuples(10),
       })
     },
     getEntryById: async (entryId, source) => {

@@ -117,7 +117,9 @@
       "deactivateGroup": "ساریاں بند کرو",
       "uncategorized": "ہور",
       "noMatches": "کوئی نتیجہ نئیں۔",
-      "noFiltered": "ایتھے ہنڑ کچھ نئیں۔"
+      "noFiltered": "ایتھے ہنڑ کچھ نئیں۔",
+      "stackTotalPhrases": "‎~{{count}} جملے میل کھاندے نیں",
+      "stackTotalNudge": "ودھ ورائٹی واسطے پیک شامل کرو یا سطحاں ودھاؤ۔"
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "جملیاں دے پیکج",
       "hero": "اپنے موضوع چنو",
       "loading": "لوڈ ہو ریا اے…",
-      "selectAll": "ساریاں چنو",
+      "selectAll": "ساریاں چنو ({{count}})",
       "clearAll": "صاف کرو",
       "subscriptionNudge": "ساریاں پیکج کھولن لئی سبسکرائب کرو۔",
       "entryCount": "{{n}} جملے",

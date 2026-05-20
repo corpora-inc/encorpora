@@ -117,7 +117,9 @@
       "deactivateGroup": "Desativar todos",
       "uncategorized": "Outros",
       "noMatches": "Sem resultados.",
-      "noFiltered": "Nada por aqui agora."
+      "noFiltered": "Nada por aqui agora.",
+      "stackTotalPhrases": "~{{count}} frases correspondem",
+      "stackTotalNudge": "Adicione pacotes ou amplie os níveis para mais variedade."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Pacotes de frases",
       "hero": "Escolha seus tópicos",
       "loading": "Carregando…",
-      "selectAll": "Selecionar tudo",
+      "selectAll": "Selecionar tudo ({{count}})",
       "clearAll": "Limpar",
       "subscriptionNudge": "Assine para desbloquear todos os pacotes.",
       "entryCount": "{{n}} frases",

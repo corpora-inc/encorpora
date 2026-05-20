@@ -88,6 +88,29 @@ function resolveGroups(
     }));
 }
 
+/**
+ * Count unique packs across a list of resolved groups. Packs may
+ * intentionally appear in multiple groups (a "Mythology" pack reasonably
+ * belongs under both Humanities and World cultures) — so callers that
+ * want a denominator-style "how many distinct packs are visible right
+ * now" must dedupe rather than summing `group.packs.length`.
+ *
+ * Exported because the catalog browser's count chip is the only place
+ * outside this hook that needs the math, and keeping the helper next to
+ * the group types makes it discoverable for future surfaces.
+ */
+export function countUniquePacksAcrossGroups(
+    groups: ResolvedPhrasePackGroup[],
+): number {
+    const seen = new Set<string>();
+    for (const g of groups) {
+        for (const p of g.packs) {
+            seen.add(p.id);
+        }
+    }
+    return seen.size;
+}
+
 export function usePhrasePackCatalog(): PhrasePackCatalogView {
     const catalog = usePhrasePackCatalogStore((s) => s.catalog);
     // App version + dev mode live on the existing v3-catalog store. We

@@ -117,7 +117,9 @@
       "deactivateGroup": "Деактивировать всё",
       "uncategorized": "Прочее",
       "noMatches": "Ничего не найдено.",
-      "noFiltered": "Здесь сейчас ничего."
+      "noFiltered": "Здесь сейчас ничего.",
+      "stackTotalPhrases": "~{{count}} фраз подходят",
+      "stackTotalNudge": "Добавь пакеты или расширь уровни для разнообразия."
     }
   },
   "onboarding": {
@@ -211,7 +213,7 @@
       "stepTitle": "Пакеты фраз",
       "hero": "Выбери темы",
       "loading": "Загрузка…",
-      "selectAll": "Выбрать всё",
+      "selectAll": "Выбрать всё ({{count}})",
       "clearAll": "Очистить",
       "subscriptionNudge": "Оформите подписку, чтобы открыть все пакеты.",
       "entryCount": "{{n}} фраз",

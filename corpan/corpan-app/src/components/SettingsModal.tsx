@@ -10,7 +10,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { XIcon } from "lucide-react";
 import { LanguageSelectOrder } from "./LanguageSelectOrder";
-import { DomainPicker } from "./DomainPicker";
 import { PhrasePackToggleSection } from "./packs/PhrasePackToggleSection";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
@@ -205,7 +204,6 @@ export function SettingsModal({
             <LanguageSelectOrder />
             <JumpToTTSButton fullWidth />
             <LevelsPicker />
-            <DomainPicker />
             <PhrasePackToggleSection
               onOpenCatalog={() => handleTabChange("packs")}
             />

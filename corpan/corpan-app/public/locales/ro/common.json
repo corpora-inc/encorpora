@@ -118,7 +118,9 @@
       "deactivateGroup": "Dezactivează toate",
       "uncategorized": "Altele",
       "noMatches": "Nimic găsit.",
-      "noFiltered": "Nimic aici acum."
+      "noFiltered": "Nimic aici acum.",
+      "stackTotalPhrases": "~{{count}} fraze se potrivesc",
+      "stackTotalNudge": "Adaugă pachete sau extinde nivelurile pentru mai multă varietate."
     }
   },
   "onboarding": {
@@ -212,7 +214,7 @@
       "stepTitle": "Pachete de fraze",
       "hero": "Alege-ți subiectele",
       "loading": "Se încarcă…",
-      "selectAll": "Selectează tot",
+      "selectAll": "Selectează tot ({{count}})",
       "clearAll": "Șterge",
       "subscriptionNudge": "Abonează-te pentru a debloca toate pachetele.",
       "entryCount": "{{n}} fraze",
