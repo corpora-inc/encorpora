@@ -159,6 +159,14 @@ Required per row: `english`. Strongly recommended: `level` (one of
 order — index 0 becomes `entries.id = 0`, etc. **Never reorder or remove
 existing entries in a version bump** unless you do a major bump.
 
+**Cover the edges.** Include at least 3–5 entries tagged `A0` and 3–5
+tagged `C2` in every pack. The app sampler (corpan-app 0.15.1+) has a
+transparent filter-relaxation fallback that walks down the ladder
+(strict → drop levels → drop everything → bundled-corpus floor) when
+your pack can't answer the user's CEFR filter — but the first roll
+under the user's preferred level *feels best* when your pack itself
+can answer. A0 + C2 are the levels most often missing in practice.
+
 ### `translations/<lang>.json`
 
 ```json

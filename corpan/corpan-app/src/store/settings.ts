@@ -277,7 +277,13 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    levels: ["A0"],
+    // A0 + A1 by default so a fresh user with a starter phrase pack
+    // (most of which target A1+) lands on a non-empty source set the
+    // first time the sampler runs. A0-only used to trap pack-only users
+    // into a silent "no entries match" state. The Rust sampler also has
+    // a relaxation ladder behind this (0.15.1+) but a sensible default
+    // is the first line of defense.
+    levels: ["A0", "A1"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,

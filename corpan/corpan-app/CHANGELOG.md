@@ -7,6 +7,52 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.15.1] - 2026-05-20 — Never-die sampler + saner default levels
+
+The sampler used to throw `"No entries match the current filters"` (and
+freeze the main loop / blank out game packs) whenever a user's filter
+combination painted every active source into a zero-count corner. Two
+common triggers in production: brand-new users landing on default
+`levels: ["A0"]` with phrase packs that don't have A0 entries; and any
+user with `levels: ["C2"]` (or any single CEFR level) against a pack
+that doesn't cover that edge. Belt + suspenders fix this release.
+
+### Changed
+- **Default CEFR levels widened to `["A0", "A1"]`** for fresh stacks
+  (was `["A0"]`). Every live phrase pack has A1 entries; this turns
+  the most common new-user empty-result trap into a non-event.
+  Existing users keep their persisted level choices — Zustand
+  `persist` doesn't re-run defaults.
+- **Rust filter-relaxation ladder.** When the strict
+  `(levels, domains, source_set)` filter yields zero counts across
+  every active source, the sampler now silently retries in
+  escalating relaxation order:
+  1. Strict (caller's filter)
+  2. Drop levels — keep domains + active source set
+  3. Drop levels and domains — any entry from any active source
+  4. Force-include the bundled corpus, ignore all filters — the
+     universal floor
+
+  The user sees a fresh entry instead of a freeze. No UI signal — by
+  design ("oh you want some C2? .. well we don't have any so here is
+  a random selection from your selected packs"). Behavior is
+  unchanged for the healthy case: tier 1 hits and returns the same
+  entry it did in 0.15.0.
+- Both `get_random_entry_with_translations` and
+  `get_random_entries_with_translations` route through the ladder,
+  including the no-phrase-packs fast path. Every host-bridge caller
+  (Parlometron, Juice Squeeze, Hover Runner, Hanzipan) and every
+  internal `MainExperience` flow inherits the new resilience
+  automatically.
+
+### Fixed
+- Game packs no longer die when the active stack has a CEFR level not
+  represented in any selected phrase pack — the sampler walks the
+  ladder and hands back a real entry.
+- `MainExperience` no longer hits an unhandled rejection on
+  `"No entries match the current filters"`; that error is now
+  effectively unreachable for any state the toggle UI allows.
+
 ## [0.15.0] - 2026-05-19 — Phrase packs, 12-pack onboarding, dedicated catalog
 
 The headline shift: **modular phrase packs**. Corpán's bundled corpus
