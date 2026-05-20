@@ -95,6 +95,9 @@ validation:
   max_stacked_words: 3
   min_trailing_silence_ms: 75
   max_inter_word_gap_ms: 3000
+  sibling_languages:
+    ur: [hi]
+    hi: [ur]
   max_sec_per_char:
     ca: 0.15
     bn: 0.15

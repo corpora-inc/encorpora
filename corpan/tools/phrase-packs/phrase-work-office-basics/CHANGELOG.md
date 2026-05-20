@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +403 new phrases authored across 5 facets
+  (meetings & calendars, email & written communication, colleagues, managers, & teams, projects, deadlines, & deliverables, the rest of work: lunch, breaks, hybrid life). New-phrase distribution: A0:4, A1:74, A2:161, B1:42, B2:39, C1:59, C2:24.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

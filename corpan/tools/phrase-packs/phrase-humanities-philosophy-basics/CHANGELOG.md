@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +704 new phrases authored across 8 facets
+  (metaphysics & first questions, epistemology: knowledge & doubt, ethics & the good life, philosophy of mind & consciousness, political philosophy & justice, Eastern philosophy & non-Western traditions, 20th-century & modern philosophy, the philosophical life). New-phrase distribution: A0:7, A1:119, A2:279, B1:137, B2:54, C1:69, C2:39.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

@@ -402,5 +402,1621 @@
   {
     "english": "It is late.",
     "level": "A0"
+  },
+  {
+    "english": "The bus is late.",
+    "level": "A0"
+  },
+  {
+    "english": "Streetlights shine on wet roads.",
+    "level": "A1"
+  },
+  {
+    "english": "A taxi waits outside.",
+    "level": "A1"
+  },
+  {
+    "english": "The diner stays open.",
+    "level": "A1"
+  },
+  {
+    "english": "Two buses pass slowly.",
+    "level": "A1"
+  },
+  {
+    "english": "The subway platform is almost empty.",
+    "level": "A1"
+  },
+  {
+    "english": "A driver drinks coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "The shops are closed now.",
+    "level": "A1"
+  },
+  {
+    "english": "A sign blinks red.",
+    "level": "A1"
+  },
+  {
+    "english": "The last train arrives.",
+    "level": "A1"
+  },
+  {
+    "english": "A cyclist crosses the avenue.",
+    "level": "A1"
+  },
+  {
+    "english": "The laundromat is still bright.",
+    "level": "A1"
+  },
+  {
+    "english": "Sirens sound far away.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus stop is empty, but the timetable still glows.",
+    "level": "A2"
+  },
+  {
+    "english": "A taxi turns the corner and splashes through rainwater.",
+    "level": "A2"
+  },
+  {
+    "english": "The diner cook wipes the counter before another coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "The avenue looks wider when the crowds have gone.",
+    "level": "A2"
+  },
+  {
+    "english": "A night bus comes slowly, and three people get on.",
+    "level": "A2"
+  },
+  {
+    "english": "The traffic lights change for almost no one.",
+    "level": "A2"
+  },
+  {
+    "english": "A bakery truck parks beside the curb before sunrise.",
+    "level": "A2"
+  },
+  {
+    "english": "The taxi driver knows which bridges are faster tonight.",
+    "level": "A2"
+  },
+  {
+    "english": "A woman reads under the bus shelter light.",
+    "level": "A2"
+  },
+  {
+    "english": "The subway stairs smell of rain and old coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "A cleaner pushes a cart through the station.",
+    "level": "A2"
+  },
+  {
+    "english": "The hotel lobby is bright, but the street is bare.",
+    "level": "A2"
+  },
+  {
+    "english": "Someone laughs outside the diner, then the block goes still.",
+    "level": "A2"
+  },
+  {
+    "english": "The bridge lights make long lines on the river.",
+    "level": "A2"
+  },
+  {
+    "english": "A delivery bike leans against a closed pharmacy.",
+    "level": "A2"
+  },
+  {
+    "english": "The last customers leave, and the chairs go upside down.",
+    "level": "A2"
+  },
+  {
+    "english": "A bus driver waves to another bus driver.",
+    "level": "A2"
+  },
+  {
+    "english": "The neon sign buzzes above the empty sidewalk.",
+    "level": "A2"
+  },
+  {
+    "english": "A taxi radio murmurs while the driver waits.",
+    "level": "A2"
+  },
+  {
+    "english": "The station clock says two, and no one argues.",
+    "level": "A2"
+  },
+  {
+    "english": "Trash bags line the curb before the morning trucks.",
+    "level": "A2"
+  },
+  {
+    "english": "A man buys soup from the all-night counter.",
+    "level": "A2"
+  },
+  {
+    "english": "The crosswalk beeps for a person who is not there.",
+    "level": "A2"
+  },
+  {
+    "english": "Apartments above the shops show small squares of light.",
+    "level": "A2"
+  },
+  {
+    "english": "The taxi meter glows green in the rearview mirror.",
+    "level": "A2"
+  },
+  {
+    "english": "A doorman steps outside and checks the weather.",
+    "level": "A2"
+  },
+  {
+    "english": "The city bus sighs when its doors open.",
+    "level": "A2"
+  },
+  {
+    "english": "A newspaper bundle lands hard on the pavement.",
+    "level": "A2"
+  },
+  {
+    "english": "At this hour, even a busy avenue can feel private.",
+    "level": "B1"
+  },
+  {
+    "english": "The all-night diner keeps its own calendar of lost conversations.",
+    "level": "B1"
+  },
+  {
+    "english": "Taxi drivers learn the city by its pauses, not its crowds.",
+    "level": "B1"
+  },
+  {
+    "english": "A late bus makes strangers patient in a way daylight rarely does.",
+    "level": "B1"
+  },
+  {
+    "english": "The station guard recognizes the regulars who never learn his name.",
+    "level": "B1"
+  },
+  {
+    "english": "After midnight, the bright pharmacy becomes a landmark for the lonely.",
+    "level": "B1"
+  },
+  {
+    "english": "The sidewalks give back the day's noise one soft echo at a time.",
+    "level": "B1"
+  },
+  {
+    "english": "You can hear the traffic signals clicking across the whole intersection.",
+    "level": "B1"
+  },
+  {
+    "english": "The driver keeps exact change and better stories than most passengers expect.",
+    "level": "B1"
+  },
+  {
+    "english": "In the small hours, a city shows who keeps it running.",
+    "level": "B1"
+  },
+  {
+    "english": "The diner waitress knows which booths are for hunger and which are for waiting.",
+    "level": "B1"
+  },
+  {
+    "english": "A closed department store looks stranger than a sleeping house.",
+    "level": "B1"
+  },
+  {
+    "english": "The night bus collects cooks, cleaners, nurses, and people with no choice.",
+    "level": "B1"
+  },
+  {
+    "english": "Even the river seems to lower its voice beside the empty embankment.",
+    "level": "B1"
+  },
+  {
+    "english": "The city does not sleep so much as pass responsibility from hand to hand.",
+    "level": "B2"
+  },
+  {
+    "english": "Under sodium streetlights, every puddle becomes a small, unreliable map of the block.",
+    "level": "B2"
+  },
+  {
+    "english": "The all-night diner is less a restaurant than a shelter with coffee.",
+    "level": "B2"
+  },
+  {
+    "english": "A taxi line outside the station measures the hour better than any clock.",
+    "level": "B2"
+  },
+  {
+    "english": "When the crowds disappear, the architecture suddenly seems older and more exposed.",
+    "level": "B2"
+  },
+  {
+    "english": "The late bus moves with the weary dignity of a public promise kept.",
+    "level": "B2"
+  },
+  {
+    "english": "A city after midnight is full of workers leaving traces for strangers.",
+    "level": "B2"
+  },
+  {
+    "english": "The empty plaza makes every footstep sound like a decision already made.",
+    "level": "B2"
+  },
+  {
+    "english": "Neon does its best work when there is almost no audience left.",
+    "level": "B2"
+  },
+  {
+    "english": "The cab driver takes the tunnel because the bridge is beautiful but slow.",
+    "level": "B2"
+  },
+  {
+    "english": "In the deserted financial district, glass towers look less powerful than refrigerated.",
+    "level": "B2"
+  },
+  {
+    "english": "The city at night offers fewer excuses, so distances feel more exact.",
+    "level": "B2"
+  },
+  {
+    "english": "After midnight, the city becomes legible through maintenance, transport, food, and watchfulness.",
+    "level": "C1"
+  },
+  {
+    "english": "The rare emptiness of a central avenue feels less peaceful than carefully borrowed.",
+    "level": "C1"
+  },
+  {
+    "english": "In the diner window, the night arranges tired faces into a temporary republic.",
+    "level": "C1"
+  },
+  {
+    "english": "The taxi driver understands that fatigue changes the map, making short routes feel merciful.",
+    "level": "C1"
+  },
+  {
+    "english": "Streetlights do not brighten the city so much as negotiate with its darkness.",
+    "level": "C1"
+  },
+  {
+    "english": "The last bus carries a civic tenderness that the morning timetable will never advertise.",
+    "level": "C1"
+  },
+  {
+    "english": "A city emptied of crowds reveals its backstage labor without quite becoming honest.",
+    "level": "C1"
+  },
+  {
+    "english": "The shuttered storefronts make commerce look ceremonial, as if daytime were a costume.",
+    "level": "C1"
+  },
+  {
+    "english": "Between the late diners and the first delivery trucks, the city briefly belongs to endurance.",
+    "level": "C1"
+  },
+  {
+    "english": "At three, the avenue is not deserted, only edited down to its necessary characters: a driver, a cleaner, a cook, a guard, and one passenger watching the lights change.",
+    "level": "C2"
+  },
+  {
+    "english": "The all-night diner keeps faith with the sleepless by offering eggs, coffee, and a window onto streets that have forgotten how crowded they were.",
+    "level": "C2"
+  },
+  {
+    "english": "A taxi crossing an empty bridge after midnight seems to carry more than a fare; it carries the city's remaining wakefulness from one shore to another.",
+    "level": "C2"
+  },
+  {
+    "english": "When the crowd drains away, the city does not become simple; it becomes exact, every lit window, idling bus, and swept curb admitting its small part in the machinery of dawn.",
+    "level": "C2"
+  },
+  {
+    "english": "The sky is pale.",
+    "level": "A1"
+  },
+  {
+    "english": "Morning is near.",
+    "level": "A1"
+  },
+  {
+    "english": "A bird calls.",
+    "level": "A1"
+  },
+  {
+    "english": "Dew covers the grass.",
+    "level": "A1"
+  },
+  {
+    "english": "The air feels cold.",
+    "level": "A1"
+  },
+  {
+    "english": "I hear a rooster.",
+    "level": "A1"
+  },
+  {
+    "english": "The room grows lighter.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus comes early.",
+    "level": "A1"
+  },
+  {
+    "english": "The baker starts work.",
+    "level": "A1"
+  },
+  {
+    "english": "The clouds turn pink.",
+    "level": "A1"
+  },
+  {
+    "english": "We wait for sunrise.",
+    "level": "A1"
+  },
+  {
+    "english": "The night is ending.",
+    "level": "A1"
+  },
+  {
+    "english": "The alarm is silent, but my eyes are open.",
+    "level": "A2"
+  },
+  {
+    "english": "A small bird calls, and the yard answers slowly.",
+    "level": "A2"
+  },
+  {
+    "english": "Dew shines on the steps when I open the door.",
+    "level": "A2"
+  },
+  {
+    "english": "The bakery windows glow before the shops unlock their doors.",
+    "level": "A2"
+  },
+  {
+    "english": "The sky turns gray, and the roofs lose their darkness.",
+    "level": "A2"
+  },
+  {
+    "english": "I will make coffee when the sun reaches the table.",
+    "level": "A2"
+  },
+  {
+    "english": "The milk truck passes, and the street wakes by pieces.",
+    "level": "A2"
+  },
+  {
+    "english": "She folds the blanket as the room fills with blue light.",
+    "level": "A2"
+  },
+  {
+    "english": "The last star fades while the kettle begins to hiss.",
+    "level": "A2"
+  },
+  {
+    "english": "My phone says five, but the birds believe in morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The newspaper lands outside, and the hallway hears it first.",
+    "level": "A2"
+  },
+  {
+    "english": "A taxi rolls past, and its headlights look less lonely.",
+    "level": "A2"
+  },
+  {
+    "english": "The grass is wet, so my shoes darken at the toes.",
+    "level": "A2"
+  },
+  {
+    "english": "He leaves for work while the bakery trays are still warm.",
+    "level": "A2"
+  },
+  {
+    "english": "The sky is not bright yet, but the roofs are clearer.",
+    "level": "A2"
+  },
+  {
+    "english": "A bus sighs at the stop, and two workers climb in.",
+    "level": "A2"
+  },
+  {
+    "english": "The first coffee smell reaches the stairs before anyone speaks.",
+    "level": "A2"
+  },
+  {
+    "english": "We kept the curtains open, so morning found us early.",
+    "level": "A2"
+  },
+  {
+    "english": "The night bus empties, and the day bus waits across the road.",
+    "level": "A2"
+  },
+  {
+    "english": "A thin line of light sits behind the apartments.",
+    "level": "A2"
+  },
+  {
+    "english": "I slept badly, but the pale sky feels kind.",
+    "level": "A2"
+  },
+  {
+    "english": "The birds start softly, then the whole hedge joins in.",
+    "level": "A2"
+  },
+  {
+    "english": "The baker waves once, and flour marks his black shirt.",
+    "level": "A2"
+  },
+  {
+    "english": "The wet pavement shines even after the streetlamps go out.",
+    "level": "A2"
+  },
+  {
+    "english": "She opens the shop gate while the sky is still purple.",
+    "level": "A2"
+  },
+  {
+    "english": "The city stretches slowly, and the windows answer one by one.",
+    "level": "A2"
+  },
+  {
+    "english": "My tea goes cold as the room turns silver.",
+    "level": "A2"
+  },
+  {
+    "english": "Morning will come soon, and the long wait will end.",
+    "level": "A2"
+  },
+  {
+    "english": "By five, the night has lost its edge but not its chill.",
+    "level": "B1"
+  },
+  {
+    "english": "The first buses sound like the city clearing its throat.",
+    "level": "B1"
+  },
+  {
+    "english": "I like the minute when the kitchen window stops being a mirror.",
+    "level": "B1"
+  },
+  {
+    "english": "After a sleepless night, even weak sunlight feels like an apology.",
+    "level": "B1"
+  },
+  {
+    "english": "The bakery door opens early, and warm air follows the baker outside.",
+    "level": "B1"
+  },
+  {
+    "english": "Birds begin with one brave note, then make a neighborhood of it.",
+    "level": "B1"
+  },
+  {
+    "english": "The pavement holds the night's rain until the sun asks for it back.",
+    "level": "B1"
+  },
+  {
+    "english": "He came home at dawn with hospital coffee on his breath.",
+    "level": "B1"
+  },
+  {
+    "english": "The sky brightened so slowly that nobody could say when morning began.",
+    "level": "B1"
+  },
+  {
+    "english": "A few lit windows make the whole block feel less alone.",
+    "level": "B1"
+  },
+  {
+    "english": "The dew on the railing made the stairs look freshly painted.",
+    "level": "B1"
+  },
+  {
+    "english": "She watched delivery vans arrive and felt the day being assembled.",
+    "level": "B1"
+  },
+  {
+    "english": "At dawn, yesterday's worries look tired but still present.",
+    "level": "B1"
+  },
+  {
+    "english": "The city is tender for a few minutes before it remembers itself.",
+    "level": "B1"
+  },
+  {
+    "english": "The hour before sunrise has a thin mercy, especially for people who failed to sleep.",
+    "level": "B2"
+  },
+  {
+    "english": "Before the shops open, the city seems to practice being gentle.",
+    "level": "B2"
+  },
+  {
+    "english": "The first birds do not end the night so much as loosen its grip.",
+    "level": "B2"
+  },
+  {
+    "english": "Dawn arrives without drama, making small corrections to every window and roof.",
+    "level": "B2"
+  },
+  {
+    "english": "After insomnia, morning feels less like a promise than a change in evidence.",
+    "level": "B2"
+  },
+  {
+    "english": "The bakery lights make the block look inhabited before anyone has spoken.",
+    "level": "B2"
+  },
+  {
+    "english": "Dew gives the grass a temporary wealth that vanishes as soon as life resumes.",
+    "level": "B2"
+  },
+  {
+    "english": "At this hour, even traffic sounds careful, as if it might wake the houses.",
+    "level": "B2"
+  },
+  {
+    "english": "The sky grows readable by degrees, and the dark gives back its shapes.",
+    "level": "B2"
+  },
+  {
+    "english": "A night worker knows dawn as a finish line most people call a beginning.",
+    "level": "B2"
+  },
+  {
+    "english": "The long-awaited morning does not rush in; it tests each room for readiness.",
+    "level": "B2"
+  },
+  {
+    "english": "The first train into the city carries faces that belong to both night and day.",
+    "level": "B2"
+  },
+  {
+    "english": "In the hour before sunrise, the world feels provisionally forgiven, though nothing has actually changed.",
+    "level": "C1"
+  },
+  {
+    "english": "The first bakery lights suggest a civic tenderness, a promise made in flour and heat.",
+    "level": "C1"
+  },
+  {
+    "english": "Dawn is not a verdict on the night; it is the slow disclosure of what survived it.",
+    "level": "C1"
+  },
+  {
+    "english": "The early birds sound less cheerful than dutiful, as if reporting for work before language.",
+    "level": "C1"
+  },
+  {
+    "english": "After a night without sleep, the pale window becomes evidence that time has continued without asking permission.",
+    "level": "C1"
+  },
+  {
+    "english": "Dew gathers on parked cars with such delicacy that even the street seems briefly cared for.",
+    "level": "C1"
+  },
+  {
+    "english": "The city before sunrise is not empty, only entrusted to people whose labor begins before witnesses.",
+    "level": "C1"
+  },
+  {
+    "english": "Morning returns by small permissions, first to the roofs, then to the windows, then to the face.",
+    "level": "C1"
+  },
+  {
+    "english": "The long wait for dawn teaches patience without making patience feel noble or easy.",
+    "level": "C1"
+  },
+  {
+    "english": "Just before sunrise, the city holds itself in a rare suspension, bakery ovens warming, gutters silvering, and every sleepless window waiting to be released from its own reflection.",
+    "level": "C2"
+  },
+  {
+    "english": "Dawn does not conquer the night; it enters like a careful nurse, checking the pulse of streets, kitchens, birds, and faces before allowing the day to speak.",
+    "level": "C2"
+  },
+  {
+    "english": "In that narrow hour, when dew has written its brief script on railings and grass, morning seems less an arrival than a consent slowly granted by the dark.",
+    "level": "C2"
+  },
+  {
+    "english": "The first birds divide the silence with such modest authority that even the sleepless feel, for a moment, that the world has remembered how to begin.",
+    "level": "C2"
+  },
+  {
+    "english": "The nurse is awake.",
+    "level": "A0"
+  },
+  {
+    "english": "The baker starts before dawn.",
+    "level": "A1"
+  },
+  {
+    "english": "The guard checks the door.",
+    "level": "A1"
+  },
+  {
+    "english": "The driver drinks hot coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "She cleans offices at midnight.",
+    "level": "A1"
+  },
+  {
+    "english": "The taxi waits outside.",
+    "level": "A1"
+  },
+  {
+    "english": "He stocks shelves at night.",
+    "level": "A1"
+  },
+  {
+    "english": "The reporter calls the desk.",
+    "level": "A1"
+  },
+  {
+    "english": "The nurse writes notes.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus is almost empty.",
+    "level": "A1"
+  },
+  {
+    "english": "The oven warms the bakery.",
+    "level": "A1"
+  },
+  {
+    "english": "The guard walks slowly.",
+    "level": "A1"
+  },
+  {
+    "english": "The lights stay on.",
+    "level": "A1"
+  },
+  {
+    "english": "The baker arrives at three, and flour covers his sleeves.",
+    "level": "A2"
+  },
+  {
+    "english": "She drives the last bus, but she still says hello.",
+    "level": "A2"
+  },
+  {
+    "english": "The nurse checks each room before the ward grows quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "A security guard eats soup beside the front desk.",
+    "level": "A2"
+  },
+  {
+    "english": "The delivery rider learns which windows keep a light on.",
+    "level": "A2"
+  },
+  {
+    "english": "The printer runs late, and the journalist rubs her eyes.",
+    "level": "A2"
+  },
+  {
+    "english": "He unlocks the loading dock while the city sleeps.",
+    "level": "A2"
+  },
+  {
+    "english": "The cleaner finds coins under desks after everyone leaves.",
+    "level": "A2"
+  },
+  {
+    "english": "At two, the hotel clerk speaks softly to tired guests.",
+    "level": "A2"
+  },
+  {
+    "english": "The ambulance driver knows every red light on the route.",
+    "level": "A2"
+  },
+  {
+    "english": "She packs sandwiches for workers who missed dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "The radio keeps the night driver company through rain.",
+    "level": "A2"
+  },
+  {
+    "english": "By four, the baker's trays smell like warm bread.",
+    "level": "A2"
+  },
+  {
+    "english": "The hospital hallway shines, and someone whispers near room six.",
+    "level": "A2"
+  },
+  {
+    "english": "He changes the taxi sign when his shift begins.",
+    "level": "A2"
+  },
+  {
+    "english": "The warehouse crew laughs quietly over paper cups of coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "A nurse ties her hair back and answers another bell.",
+    "level": "A2"
+  },
+  {
+    "english": "The newsroom glows blue while the city closes its eyes.",
+    "level": "A2"
+  },
+  {
+    "english": "The janitor turns the key, and the office becomes his.",
+    "level": "A2"
+  },
+  {
+    "english": "She counts medicine bottles under a small lamp.",
+    "level": "A2"
+  },
+  {
+    "english": "The night cashier knows who buys milk at midnight.",
+    "level": "A2"
+  },
+  {
+    "english": "A truck pulls in, and fresh newspapers hit the pavement.",
+    "level": "A2"
+  },
+  {
+    "english": "The guard's flashlight moves across the parking lot.",
+    "level": "A2"
+  },
+  {
+    "english": "The train cleaner finds a lost glove on seat twelve.",
+    "level": "A2"
+  },
+  {
+    "english": "He calls home during break, but the children are sleeping.",
+    "level": "A2"
+  },
+  {
+    "english": "The bakery radio plays softly while dough rises in bowls.",
+    "level": "A2"
+  },
+  {
+    "english": "She drives through fog and watches for deer.",
+    "level": "A2"
+  },
+  {
+    "english": "The hospital cafeteria opens early for people ending work.",
+    "level": "A2"
+  },
+  {
+    "english": "The nurse can tell from a doorway whether a patient is resting.",
+    "level": "B1"
+  },
+  {
+    "english": "By the second coffee, the warehouse stops feeling strange and starts feeling familiar.",
+    "level": "B1"
+  },
+  {
+    "english": "The cab driver knows which diners still pour coffee after last call.",
+    "level": "B1"
+  },
+  {
+    "english": "A good security guard notices the new sound before the alarm does.",
+    "level": "B1"
+  },
+  {
+    "english": "The baker's hands move faster than his thoughts at four in the morning.",
+    "level": "B1"
+  },
+  {
+    "english": "She files the story while the mayor sleeps and the cleaners vacuum downstairs.",
+    "level": "B1"
+  },
+  {
+    "english": "Night workers greet each other with the practical kindness of people sharing odd hours.",
+    "level": "B1"
+  },
+  {
+    "english": "The bus driver remembers the faces that appear only after midnight.",
+    "level": "B1"
+  },
+  {
+    "english": "In the emergency room, quiet never means there is nothing to do.",
+    "level": "B1"
+  },
+  {
+    "english": "He keeps crackers in his locker because dinner often disappears into work.",
+    "level": "B1"
+  },
+  {
+    "english": "The city looks closed, but a hundred small jobs keep it breathing.",
+    "level": "B1"
+  },
+  {
+    "english": "She walks home after sunrise with bakery warmth still in her coat.",
+    "level": "B1"
+  },
+  {
+    "english": "The dispatcher speaks calmly because panic travels quickly over a night line.",
+    "level": "B1"
+  },
+  {
+    "english": "His sleep comes in the afternoon, with curtains pinned against the sun.",
+    "level": "B1"
+  },
+  {
+    "english": "Working nights makes breakfast feel private, almost secret, while everyone else rushes toward morning.",
+    "level": "B2"
+  },
+  {
+    "english": "The security guard learns the building's moods from elevators, pipes, and unlocked conference rooms.",
+    "level": "B2"
+  },
+  {
+    "english": "A night nurse measures time in medication rounds, low voices, and the pale squares of monitors.",
+    "level": "B2"
+  },
+  {
+    "english": "The baker leaves work smelling of yeast while commuters carry untouched plans for the day.",
+    "level": "B2"
+  },
+  {
+    "english": "Late drivers develop a map of open gas stations, broken streetlights, and forgiving shortcuts.",
+    "level": "B2"
+  },
+  {
+    "english": "In a newsroom after midnight, every sentence sounds more urgent than it may be.",
+    "level": "B2"
+  },
+  {
+    "english": "The cleaner sees the office without its confidence, chairs crooked and coffee rings exposed.",
+    "level": "B2"
+  },
+  {
+    "english": "Night work rearranges the body first, then quietly rearranges the family around it.",
+    "level": "B2"
+  },
+  {
+    "english": "The hotel clerk recognizes exhaustion in travelers before they have found their passports.",
+    "level": "B2"
+  },
+  {
+    "english": "At dawn, the people who kept the city running pass the people who think it just woke up.",
+    "level": "B2"
+  },
+  {
+    "english": "The overnight pharmacist speaks gently, because pain at three can make anyone sound frightened.",
+    "level": "B2"
+  },
+  {
+    "english": "She comes home as birds begin, carrying the smell of disinfectant and rain.",
+    "level": "B2"
+  },
+  {
+    "english": "The night shift does not merely invert the day; it builds a second clock inside the body.",
+    "level": "C1"
+  },
+  {
+    "english": "For late workers, the city is less a backdrop than a machine heard from the service side.",
+    "level": "C1"
+  },
+  {
+    "english": "The nurse's charting at three in the morning has the concentration of prayer without the comfort of ceremony.",
+    "level": "C1"
+  },
+  {
+    "english": "A bakery before dawn is an argument against emptiness, warm proof that someone has already begun.",
+    "level": "C1"
+  },
+  {
+    "english": "The security guard's solitude is professional, attentive, and broken only by doors that should not open.",
+    "level": "C1"
+  },
+  {
+    "english": "Night drivers learn to distrust the romance of empty roads, because fatigue is patient and persuasive.",
+    "level": "C1"
+  },
+  {
+    "english": "The overnight editor trims sentences while the building cools, defending clarity against sleep and deadline.",
+    "level": "C1"
+  },
+  {
+    "english": "In the fluorescent calm of the hospital corridor, kindness becomes practical before it becomes sentimental.",
+    "level": "C1"
+  },
+  {
+    "english": "The janitor knows the company by what it leaves behind, not by what it says in meetings.",
+    "level": "C1"
+  },
+  {
+    "english": "Those who work through darkness often carry morning carefully, as if it belongs to someone else.",
+    "level": "C1"
+  },
+  {
+    "english": "Before dawn, the baker stands in a white weather of flour, shaping loaves for people who will call the morning fresh without knowing who warmed it.",
+    "level": "C2"
+  },
+  {
+    "english": "The night nurse moves from room to room with a practiced tenderness, keeping company with pain, machines, and families too frightened to admit they are waiting.",
+    "level": "C2"
+  },
+  {
+    "english": "While the city performs sleep, its hidden workers count pills, load trucks, mop stations, and write tomorrow's headlines under lights that make no promise of rest.",
+    "level": "C2"
+  },
+  {
+    "english": "A security guard at the glass tower watches his own reflection patrol beside him, two quiet figures crossing the lobby until the first commuter breaks the spell.",
+    "level": "C2"
+  },
+  {
+    "english": "I am awake.",
+    "level": "A0"
+  },
+  {
+    "english": "I cannot sleep tonight.",
+    "level": "A1"
+  },
+  {
+    "english": "My eyes stay open.",
+    "level": "A1"
+  },
+  {
+    "english": "The clock says three.",
+    "level": "A1"
+  },
+  {
+    "english": "I drink warm tea.",
+    "level": "A1"
+  },
+  {
+    "english": "The bed feels strange.",
+    "level": "A1"
+  },
+  {
+    "english": "My pillow is hot.",
+    "level": "A1"
+  },
+  {
+    "english": "I hear the fridge.",
+    "level": "A1"
+  },
+  {
+    "english": "Dad is still awake.",
+    "level": "A1"
+  },
+  {
+    "english": "I need less coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "The lamp is low.",
+    "level": "A1"
+  },
+  {
+    "english": "My phone is off.",
+    "level": "A1"
+  },
+  {
+    "english": "I wake too early.",
+    "level": "A1"
+  },
+  {
+    "english": "I went to bed early, but sleep did not come.",
+    "level": "A2"
+  },
+  {
+    "english": "I made chamomile tea, and the cup warmed my hands.",
+    "level": "A2"
+  },
+  {
+    "english": "The room was cool, but my thoughts kept moving.",
+    "level": "A2"
+  },
+  {
+    "english": "I turned my pillow over, and it felt clean again.",
+    "level": "A2"
+  },
+  {
+    "english": "My phone stayed on the table, because the blue light wakes me.",
+    "level": "A2"
+  },
+  {
+    "english": "I read one page, but the same sentence returned.",
+    "level": "A2"
+  },
+  {
+    "english": "The kettle clicked off, and the apartment seemed wider.",
+    "level": "A2"
+  },
+  {
+    "english": "I checked the time once, then hid the clock.",
+    "level": "A2"
+  },
+  {
+    "english": "Tomorrow will be busy, so I should be sleeping.",
+    "level": "A2"
+  },
+  {
+    "english": "The blanket was heavy, but my legs would not settle.",
+    "level": "A2"
+  },
+  {
+    "english": "I opened the cupboard, and the mugs looked surprised.",
+    "level": "A2"
+  },
+  {
+    "english": "Warm milk helped a little, but worry stayed near.",
+    "level": "A2"
+  },
+  {
+    "english": "I counted backward from a hundred, and lost my place.",
+    "level": "A2"
+  },
+  {
+    "english": "The radiator knocked twice, then the room went still.",
+    "level": "A2"
+  },
+  {
+    "english": "I took melatonin, and waited for my body to listen.",
+    "level": "A2"
+  },
+  {
+    "english": "The hallway light was off, but I knew each chair.",
+    "level": "A2"
+  },
+  {
+    "english": "I washed my face, and the water felt too loud.",
+    "level": "A2"
+  },
+  {
+    "english": "The sheets smelled clean, yet sleep stayed across the room.",
+    "level": "A2"
+  },
+  {
+    "english": "I wrote one worry down, and two more arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "The night bus passed outside, and I wished I were aboard.",
+    "level": "A2"
+  },
+  {
+    "english": "I left the bedroom, so the bed would not feel like work.",
+    "level": "A2"
+  },
+  {
+    "english": "The tea bag darkened slowly, and so did the kitchen.",
+    "level": "A2"
+  },
+  {
+    "english": "I stretched my feet, but my mind ran errands.",
+    "level": "A2"
+  },
+  {
+    "english": "The screen tempted me, so I turned it face down.",
+    "level": "A2"
+  },
+  {
+    "english": "I breathed in for four counts, then forgot the rest.",
+    "level": "A2"
+  },
+  {
+    "english": "The milk cooled quickly, but I drank it anyway.",
+    "level": "A2"
+  },
+  {
+    "english": "My alarm was set, and that made me nervous.",
+    "level": "A2"
+  },
+  {
+    "english": "I heard one taxi pass, and then another after it.",
+    "level": "A2"
+  },
+  {
+    "english": "I can handle a short night, but not a night that keeps arguing.",
+    "level": "B1"
+  },
+  {
+    "english": "By three, every small problem has found a microphone in my head.",
+    "level": "B1"
+  },
+  {
+    "english": "I leave the bed before it starts to feel like a courtroom.",
+    "level": "B1"
+  },
+  {
+    "english": "A quiet kitchen can make one cup of tea feel important.",
+    "level": "B1"
+  },
+  {
+    "english": "I know better than to check my messages, but my hand reaches anyway.",
+    "level": "B1"
+  },
+  {
+    "english": "The trick is not to fight the night too loudly.",
+    "level": "B1"
+  },
+  {
+    "english": "Some worries wait politely all day, then sit beside me in bed.",
+    "level": "B1"
+  },
+  {
+    "english": "I tell myself rest counts, even when sleep refuses to arrive.",
+    "level": "B1"
+  },
+  {
+    "english": "There is a special loneliness in hearing everyone else breathe evenly.",
+    "level": "B1"
+  },
+  {
+    "english": "I have learned the ceiling's cracks better than I know my plans.",
+    "level": "B1"
+  },
+  {
+    "english": "After two sleepless hours, even the softest blanket feels judgmental.",
+    "level": "B1"
+  },
+  {
+    "english": "The kettle sounds cheerful in a way I do not trust.",
+    "level": "B1"
+  },
+  {
+    "english": "I keep the lights low, as if sleep might be shy.",
+    "level": "B1"
+  },
+  {
+    "english": "Morning feels closer once the sky begins testing its color.",
+    "level": "B1"
+  },
+  {
+    "english": "The pill bottle promises little, but the ritual promises enough.",
+    "level": "B1"
+  },
+  {
+    "english": "Insomnia makes the room feel borrowed, as if I am visiting my own life after hours.",
+    "level": "B2"
+  },
+  {
+    "english": "At three in the morning, discipline is mostly leaving the phone where it is.",
+    "level": "B2"
+  },
+  {
+    "english": "The body asks for darkness, while the mind keeps opening bright little windows.",
+    "level": "B2"
+  },
+  {
+    "english": "I try to practice good habits, but worry has terrible table manners.",
+    "level": "B2"
+  },
+  {
+    "english": "Melatonin is less a command than a polite suggestion slipped under the door.",
+    "level": "B2"
+  },
+  {
+    "english": "Every sleepless hour makes tomorrow smaller, then larger, then impossible to measure.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen floor is cold enough to make the present moment believable.",
+    "level": "B2"
+  },
+  {
+    "english": "I can forgive almost anything at noon, except the choices I made at two.",
+    "level": "B2"
+  },
+  {
+    "english": "A cup of valerian tea cools beside me while my thoughts rehearse old conversations.",
+    "level": "B2"
+  },
+  {
+    "english": "The bedroom stops feeling peaceful when I start using it as a place to negotiate.",
+    "level": "B2"
+  },
+  {
+    "english": "Sleep hygiene sounds clinical, but mostly it means protecting the dark from my habits.",
+    "level": "B2"
+  },
+  {
+    "english": "When rest will not come, I try to be a decent host to wakefulness.",
+    "level": "B2"
+  },
+  {
+    "english": "The cruelest part of insomnia is not being awake, but watching wakefulness become a task with rules.",
+    "level": "C1"
+  },
+  {
+    "english": "A sensible bedtime routine can feel absurdly fragile when one unpaid bill starts pacing through the mind.",
+    "level": "C1"
+  },
+  {
+    "english": "The small discipline of keeping the phone outside the bedroom becomes heroic only after midnight.",
+    "level": "C1"
+  },
+  {
+    "english": "There are nights when the body lies still, obedient and exhausted, while the mind keeps filing appeals.",
+    "level": "C1"
+  },
+  {
+    "english": "In the kitchen at three, even a plain mug of tea acquires the gravity of medicine.",
+    "level": "C1"
+  },
+  {
+    "english": "Melatonin may help the body take a hint, but it cannot settle the argument underneath.",
+    "level": "C1"
+  },
+  {
+    "english": "Insomnia teaches a person the difference between silence and quiet, because only one of them is kind.",
+    "level": "C1"
+  },
+  {
+    "english": "The anxious mind does not solve problems at night; it merely rearranges them under harsher lighting.",
+    "level": "C1"
+  },
+  {
+    "english": "Sleep hygiene asks for regularity, which is reasonable until grief, caffeine, or memory changes the room.",
+    "level": "C1"
+  },
+  {
+    "english": "By the fourth wakeful hour, tomorrow has already begun, but without any of its useful daylight.",
+    "level": "C1"
+  },
+  {
+    "english": "At three in the morning, the kitchen becomes a small embassy between the body and the mind, and every cooling cup of tea negotiates a temporary peace.",
+    "level": "C2"
+  },
+  {
+    "english": "Insomnia does not simply withhold sleep; it lengthens the corridor between one thought and the next, until even ordinary worries arrive with formal introductions.",
+    "level": "C2"
+  },
+  {
+    "english": "The wakeful hour has its own furniture, a chair pulled softly from the table, a glass of water sweating beside the sink, a clock no one trusts.",
+    "level": "C2"
+  },
+  {
+    "english": "Sleep hygiene can sound like virtue in daylight, but after midnight it is mostly mercy, the patient refusal to let the glowing world back into the room.",
+    "level": "C2"
+  },
+  {
+    "english": "I close my eyes.",
+    "level": "A0"
+  },
+  {
+    "english": "My pillow feels cool.",
+    "level": "A1"
+  },
+  {
+    "english": "He is still awake.",
+    "level": "A1"
+  },
+  {
+    "english": "She dreams of home.",
+    "level": "A1"
+  },
+  {
+    "english": "I need more sleep.",
+    "level": "A1"
+  },
+  {
+    "english": "The bed feels warm.",
+    "level": "A1"
+  },
+  {
+    "english": "I woke up early.",
+    "level": "A1"
+  },
+  {
+    "english": "My dream was strange.",
+    "level": "A1"
+  },
+  {
+    "english": "Close your eyes now.",
+    "level": "A1"
+  },
+  {
+    "english": "He snores a little.",
+    "level": "A1"
+  },
+  {
+    "english": "She slept very deeply.",
+    "level": "A1"
+  },
+  {
+    "english": "I remember my dream.",
+    "level": "A1"
+  },
+  {
+    "english": "The blanket is soft.",
+    "level": "A1"
+  },
+  {
+    "english": "I was almost asleep, but my phone buzzed once.",
+    "level": "A2"
+  },
+  {
+    "english": "She woke from a dream and reached for water.",
+    "level": "A2"
+  },
+  {
+    "english": "He slept badly, so his coffee tasted necessary.",
+    "level": "A2"
+  },
+  {
+    "english": "I will go to bed early if I can.",
+    "level": "A2"
+  },
+  {
+    "english": "The pillow smelled clean, and sleep came quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "We heard him snore, then the room went still.",
+    "level": "A2"
+  },
+  {
+    "english": "My dream faded while I brushed my teeth.",
+    "level": "A2"
+  },
+  {
+    "english": "She dreamed about school, although she left years ago.",
+    "level": "A2"
+  },
+  {
+    "english": "I woke up confused because the room looked new.",
+    "level": "A2"
+  },
+  {
+    "english": "He pulled the blanket higher and stopped moving.",
+    "level": "A2"
+  },
+  {
+    "english": "The alarm rang, and my dream broke apart.",
+    "level": "A2"
+  },
+  {
+    "english": "I slept through thunder and missed the rain.",
+    "level": "A2"
+  },
+  {
+    "english": "She keeps a notebook beside the bed for dreams.",
+    "level": "A2"
+  },
+  {
+    "english": "He tried to sleep, but the ceiling stayed interesting.",
+    "level": "A2"
+  },
+  {
+    "english": "We napped after lunch and woke in darkness.",
+    "level": "A2"
+  },
+  {
+    "english": "I dreamed of the sea, then forgot the shore.",
+    "level": "A2"
+  },
+  {
+    "english": "Her eyes closed before the long story ended.",
+    "level": "A2"
+  },
+  {
+    "english": "The child woke crying, then asked where he was.",
+    "level": "A2"
+  },
+  {
+    "english": "I remember colors better than words from dreams.",
+    "level": "A2"
+  },
+  {
+    "english": "He sleeps lightly when the rain taps the roof.",
+    "level": "A2"
+  },
+  {
+    "english": "She turned over twice and settled at last.",
+    "level": "A2"
+  },
+  {
+    "english": "We were dreaming before the heater clicked off.",
+    "level": "A2"
+  },
+  {
+    "english": "My body wanted sleep, but my mind kept talking.",
+    "level": "A2"
+  },
+  {
+    "english": "The dream felt real until the kettle boiled.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot the nightmare after breakfast had begun.",
+    "level": "A2"
+  },
+  {
+    "english": "I woke with one sentence from the dream.",
+    "level": "A2"
+  },
+  {
+    "english": "She sleeps better when the room stays cool.",
+    "level": "A2"
+  },
+  {
+    "english": "His dream returned in pieces during the morning.",
+    "level": "A2"
+  },
+  {
+    "english": "I was halfway into sleep when a tiny noise pulled me back.",
+    "level": "B1"
+  },
+  {
+    "english": "She remembers dreams best in the first minute after waking.",
+    "level": "B1"
+  },
+  {
+    "english": "He says his dreams borrow rooms from every place he has lived.",
+    "level": "B1"
+  },
+  {
+    "english": "I slept so hard that morning felt like another country.",
+    "level": "B1"
+  },
+  {
+    "english": "The nightmare lost its teeth once I described it over toast.",
+    "level": "B1"
+  },
+  {
+    "english": "She woke smiling, as if the dream had left a gift.",
+    "level": "B1"
+  },
+  {
+    "english": "My sleep comes in waves, and some nights the tide refuses.",
+    "level": "B1"
+  },
+  {
+    "english": "He tried counting breaths, but each number opened another thought.",
+    "level": "B1"
+  },
+  {
+    "english": "The dream made no sense, yet I missed it when it faded.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps waking just before the best part of the dream.",
+    "level": "B1"
+  },
+  {
+    "english": "I slept beside an open notebook and wrote nothing down.",
+    "level": "B1"
+  },
+  {
+    "english": "His alarm dragged him out of a warm, impossible room.",
+    "level": "B1"
+  },
+  {
+    "english": "We laughed at breakfast because we had dreamed the same storm.",
+    "level": "B1"
+  },
+  {
+    "english": "Some dreams leave fingerprints on the day without explaining themselves.",
+    "level": "B1"
+  },
+  {
+    "english": "He woke rested, which felt almost suspicious after so many bad nights.",
+    "level": "B1"
+  },
+  {
+    "english": "Dreams seem private until one small image follows you into breakfast without asking.",
+    "level": "B2"
+  },
+  {
+    "english": "During deep sleep, the body works quietly while the mind changes rooms.",
+    "level": "B2"
+  },
+  {
+    "english": "She trusted the dream less because it arrived with perfect lighting and no doors.",
+    "level": "B2"
+  },
+  {
+    "english": "He woke before dawn with the calm of someone briefly forgiven by sleep.",
+    "level": "B2"
+  },
+  {
+    "english": "The most vivid dreams often leave behind only one useless detail on the pillow.",
+    "level": "B2"
+  },
+  {
+    "english": "I could feel the dream breaking as soon as I named it.",
+    "level": "B2"
+  },
+  {
+    "english": "Sleep came in fragments, each one bright and strange as broken glass.",
+    "level": "B2"
+  },
+  {
+    "english": "She knew she was dreaming, but chose to stay inside the room.",
+    "level": "B2"
+  },
+  {
+    "english": "REM sleep has a quick, secret weather under closed eyelids of its own.",
+    "level": "B2"
+  },
+  {
+    "english": "He spoke in his sleep with the careful politeness of another self.",
+    "level": "B2"
+  },
+  {
+    "english": "By morning, the dream had become more atmosphere than story or warning.",
+    "level": "B2"
+  },
+  {
+    "english": "A lucid dream can feel like finding a light switch underwater and touching it.",
+    "level": "B2"
+  },
+  {
+    "english": "The dream was not prophetic, but it understood my fear with embarrassing accuracy and returned it gently.",
+    "level": "C1"
+  },
+  {
+    "english": "Sleep is the border where ordinary memory loosens its grammar and begins arranging images by temperature.",
+    "level": "C1"
+  },
+  {
+    "english": "In REM sleep, the eyes move quickly, as if reading a book the body cannot hold.",
+    "level": "C1"
+  },
+  {
+    "english": "She described the dream carefully, aware that language was already making it smaller than it had felt.",
+    "level": "C1"
+  },
+  {
+    "english": "The first waking minute is a narrow doorway, and most dreams cannot pass through it intact.",
+    "level": "C1"
+  },
+  {
+    "english": "He learned that exhaustion does not guarantee sleep, only a more dramatic form of waiting in bed.",
+    "level": "C1"
+  },
+  {
+    "english": "A vivid dream can leave the body calm and the conscience oddly busy for hours afterward.",
+    "level": "C1"
+  },
+  {
+    "english": "The sleeper turns, breath deepens, and the mind begins its private theater without selling tickets to anyone.",
+    "level": "C1"
+  },
+  {
+    "english": "Lucid dreaming offered her control, though the freedom felt strangely lonely once she noticed it.",
+    "level": "C1"
+  },
+  {
+    "english": "Morning recall depends on mercy, timing, and the small discipline of not checking the phone first.",
+    "level": "C1"
+  },
+  {
+    "english": "By the time he opened his eyes, the dream had withdrawn like a tide, leaving only a wet shine of feeling and one misplaced sentence on the shore of his mind.",
+    "level": "C2"
+  },
+  {
+    "english": "In sleep, the mind becomes an unlicensed archivist, filing childhood kitchens beside future hospitals, dead relatives beside unfinished errands, and calling the confusion a story.",
+    "level": "C2"
+  },
+  {
+    "english": "She woke with the rare lucidity of someone who had known she was dreaming, negotiated with the dream, and still returned empty handed but changed.",
+    "level": "C2"
+  },
+  {
+    "english": "The strangest dreams do not vanish at waking; they thin themselves into the day's ordinary fabric, where a cup, a hallway, or a stranger's coat can tug them back into shape.",
+    "level": "C2"
   }
 ]

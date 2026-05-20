@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +707 new phrases authored across 8 facets
+  (continents & the great landmasses, countries, capitals, & borders, cities & urban life, rivers, lakes, & freshwater, mountains, deserts, & landscapes, climate, biomes, & weather patterns, migration, language, & cultural geography, travel, exploration, & the maker's map). New-phrase distribution: A0:7, A1:119, A2:276, B1:119, B2:57, C1:90, C2:39.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

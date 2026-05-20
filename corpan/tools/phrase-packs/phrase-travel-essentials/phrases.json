@@ -330,5 +330,1693 @@
   {
     "english": "Travel is the rare practice in which the body is asked, with money and inconvenience, to confess what it already half-knew: that the place we live is only one of the many possible answers to the question of how to be a person.",
     "level": "C2"
+  },
+  {
+    "english": "Where is the market?",
+    "level": "A1"
+  },
+  {
+    "english": "I need some coins.",
+    "level": "A1"
+  },
+  {
+    "english": "This price is too high.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a cash machine.",
+    "level": "A1"
+  },
+  {
+    "english": "Where can I change money?",
+    "level": "A1"
+  },
+  {
+    "english": "The shop is closed.",
+    "level": "A1"
+  },
+  {
+    "english": "I like this color.",
+    "level": "A1"
+  },
+  {
+    "english": "Please show me that scarf.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a new charger.",
+    "level": "A1"
+  },
+  {
+    "english": "This street is beautiful.",
+    "level": "A1"
+  },
+  {
+    "english": "Thank you for your help.",
+    "level": "A1"
+  },
+  {
+    "english": "Have a nice day.",
+    "level": "A1"
+  },
+  {
+    "english": "I am from the United States.",
+    "level": "A1"
+  },
+  {
+    "english": "The weather is very warm today.",
+    "level": "A1"
+  },
+  {
+    "english": "Can you write the price for me?",
+    "level": "A2"
+  },
+  {
+    "english": "I have only large bills, and I need change.",
+    "level": "A2"
+  },
+  {
+    "english": "Do you have a bag, or should I carry it?",
+    "level": "A2"
+  },
+  {
+    "english": "I bought this yesterday, but it does not work.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I return this if it is the wrong size?",
+    "level": "A2"
+  },
+  {
+    "english": "I need a SIM card for one week.",
+    "level": "A2"
+  },
+  {
+    "english": "Does this price include tax?",
+    "level": "A2"
+  },
+  {
+    "english": "Can you show me something cheaper?",
+    "level": "A2"
+  },
+  {
+    "english": "I would like two postcards and three stamps.",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a bank near the main square?",
+    "level": "A2"
+  },
+  {
+    "english": "Which way is the old market?",
+    "level": "A2"
+  },
+  {
+    "english": "Is it far, or can I walk there?",
+    "level": "A2"
+  },
+  {
+    "english": "Turn left at the bakery, right?",
+    "level": "A2"
+  },
+  {
+    "english": "I am looking for a small grocery store.",
+    "level": "A2"
+  },
+  {
+    "english": "This is a gift for my sister.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I buy only one, not the whole box?",
+    "level": "A2"
+  },
+  {
+    "english": "I need batteries for this camera.",
+    "level": "A2"
+  },
+  {
+    "english": "Do you sell umbrellas here?",
+    "level": "A2"
+  },
+  {
+    "english": "The machine kept my card, and I need help.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you count the change again, please?",
+    "level": "A2"
+  },
+  {
+    "english": "I think there is a mistake on the total.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you mark this place on my map?",
+    "level": "A2"
+  },
+  {
+    "english": "I am meeting a friend near the fountain.",
+    "level": "A2"
+  },
+  {
+    "english": "Your city is very easy to walk around.",
+    "level": "A2"
+  },
+  {
+    "english": "Do people usually bargain in this market?",
+    "level": "A2"
+  },
+  {
+    "english": "I can pay now, and you can keep the bag.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you please speak a little more quietly?",
+    "level": "A2"
+  },
+  {
+    "english": "I am sorry, I did not understand the number.",
+    "level": "A2"
+  },
+  {
+    "english": "Thank you, that was very kind of you.",
+    "level": "A2"
+  },
+  {
+    "english": "I am trying to find a shop that sells local ceramics.",
+    "level": "B1"
+  },
+  {
+    "english": "Would you mind showing me where the price tag is?",
+    "level": "B1"
+  },
+  {
+    "english": "I would rather buy one good souvenir than fill my bag with plastic.",
+    "level": "B1"
+  },
+  {
+    "english": "If I buy three jars of honey, could you lower the price a little?",
+    "level": "B1"
+  },
+  {
+    "english": "The stall owner let me taste the olives before I chose a bag.",
+    "level": "B1"
+  },
+  {
+    "english": "I took the wrong street and ended up at a flower market.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you point me toward the river without sending me into traffic?",
+    "level": "B1"
+  },
+  {
+    "english": "I am short on cash, so I need to find an ATM first.",
+    "level": "B1"
+  },
+  {
+    "english": "That shopkeeper was patient while I counted unfamiliar coins in my palm.",
+    "level": "B1"
+  },
+  {
+    "english": "Do you know whether this market is better in the morning or evening?",
+    "level": "B1"
+  },
+  {
+    "english": "I did not plan to buy anything, but the blue bowl caught my eye.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me whether this exchange rate is fixed or negotiable?",
+    "level": "B2"
+  },
+  {
+    "english": "I like to ask the price first, because markets feel calmer when nobody has to guess.",
+    "level": "B2"
+  },
+  {
+    "english": "The best souvenir may be the one that still smells faintly of the street where you found it.",
+    "level": "B2"
+  },
+  {
+    "english": "If the price is fair, I would rather pay it than turn bargaining into a performance.",
+    "level": "B2"
+  },
+  {
+    "english": "I am trying to spend locally, so I would prefer a shop owned by someone from this neighborhood.",
+    "level": "B2"
+  },
+  {
+    "english": "The vendor switched from rapid numbers to a smile and a calculator, which saved the conversation.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you recommend a reliable place to exchange money without airport fees?",
+    "level": "B2"
+  },
+  {
+    "english": "I followed your directions to the arcade, and the old bookshop was exactly where you said.",
+    "level": "B2"
+  },
+  {
+    "english": "I would like something useful enough to survive the trip home, not just decorate a shelf.",
+    "level": "B2"
+  },
+  {
+    "english": "Before I buy this rug, could you explain how it was made and how to clean it?",
+    "level": "B2"
+  },
+  {
+    "english": "The conversation began with a price, then drifted happily into football, weather, and grandchildren.",
+    "level": "B2"
+  },
+  {
+    "english": "I misread the coins, and the cashier corrected me with such tact that nobody in line noticed.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you help me distinguish between a respectful bargain and an insult in this market?",
+    "level": "C1"
+  },
+  {
+    "english": "I am happy to negotiate, but I would like the final price to leave both of us smiling.",
+    "level": "C1"
+  },
+  {
+    "english": "In a foreign market, money becomes language, gesture, arithmetic, and theater all at once.",
+    "level": "C1"
+  },
+  {
+    "english": "The little exchange booth looked ordinary, yet its rate quietly shaped the rest of my afternoon.",
+    "level": "C1"
+  },
+  {
+    "english": "I would rather ask directions twice than walk confidently toward the wrong bridge for twenty minutes.",
+    "level": "C1"
+  },
+  {
+    "english": "When a stranger draws a route on a napkin, the city suddenly feels less private.",
+    "level": "C1"
+  },
+  {
+    "english": "The vendor praised the saffron with the seriousness of a jeweler weighing gold.",
+    "level": "C1"
+  },
+  {
+    "english": "Please tell me if haggling is expected here, because I do not want politeness to look like indifference.",
+    "level": "C1"
+  },
+  {
+    "english": "I bought the cheaper wallet, not from thrift, but because the leather carried a more honest smell.",
+    "level": "C1"
+  },
+  {
+    "english": "The cashier's small talk turned a routine purchase into my first real conversation of the day.",
+    "level": "C1"
+  },
+  {
+    "english": "A good market teaches the visitor to notice hands, scales, voices, and the pauses before numbers.",
+    "level": "C1"
+  },
+  {
+    "english": "By the time I understood the coins, their weight had already taught me something about the country, its pace, and the modest drama of paying for bread.",
+    "level": "C2"
+  },
+  {
+    "english": "The finest directions I received were not precise, but generous, full of landmarks, remembered shops, and a confidence that made the unfamiliar streets feel briefly adopted.",
+    "level": "C2"
+  },
+  {
+    "english": "In the market's narrow aisles, bargaining was less a battle than a practiced courtesy, each offer leaving room for dignity, laughter, and retreat.",
+    "level": "C2"
+  },
+  {
+    "english": "A receipt, a few coins, and a phrase kindly repeated can become the day's archive, proof that commerce sometimes opens the door to conversation.",
+    "level": "C2"
+  },
+  {
+    "english": "I need food.",
+    "level": "A0"
+  },
+  {
+    "english": "A table for one, please.",
+    "level": "A1"
+  },
+  {
+    "english": "A table for two, please.",
+    "level": "A1"
+  },
+  {
+    "english": "Can we order now?",
+    "level": "A1"
+  },
+  {
+    "english": "I would like soup.",
+    "level": "A1"
+  },
+  {
+    "english": "I do not eat meat.",
+    "level": "A1"
+  },
+  {
+    "english": "I do not drink alcohol.",
+    "level": "A1"
+  },
+  {
+    "english": "No onions, please.",
+    "level": "A1"
+  },
+  {
+    "english": "No sugar, please.",
+    "level": "A1"
+  },
+  {
+    "english": "This is too salty.",
+    "level": "A1"
+  },
+  {
+    "english": "This is very good.",
+    "level": "A1"
+  },
+  {
+    "english": "Can I have coffee?",
+    "level": "A1"
+  },
+  {
+    "english": "Can I have tea?",
+    "level": "A1"
+  },
+  {
+    "english": "We are ready to order.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a fork.",
+    "level": "A1"
+  },
+  {
+    "english": "Do you have an English menu, or should I use my phone?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you point to the dish most people order here?",
+    "level": "A2"
+  },
+  {
+    "english": "I would like the chicken, but without the cream sauce.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you make this dish without butter or cheese?",
+    "level": "A2"
+  },
+  {
+    "english": "I am allergic to shellfish, so I need to be careful.",
+    "level": "A2"
+  },
+  {
+    "english": "Does this soup contain meat stock or only vegetables?",
+    "level": "A2"
+  },
+  {
+    "english": "Could we have bread while we wait for our meal?",
+    "level": "A2"
+  },
+  {
+    "english": "I ordered the fish, but this looks like beef.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I have the sauce on the side, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you bring another spoon for the rice?",
+    "level": "A2"
+  },
+  {
+    "english": "Is the salad washed with bottled water?",
+    "level": "A2"
+  },
+  {
+    "english": "We will share two starters and order mains later.",
+    "level": "A2"
+  },
+  {
+    "english": "Could I have a small portion, if possible?",
+    "level": "A2"
+  },
+  {
+    "english": "I asked for mild food, but this is very hot.",
+    "level": "A2"
+  },
+  {
+    "english": "Do you have any dishes without wheat or flour?",
+    "level": "A2"
+  },
+  {
+    "english": "Please tell the kitchen I cannot eat eggs.",
+    "level": "A2"
+  },
+  {
+    "english": "Can we have one more plate for sharing?",
+    "level": "A2"
+  },
+  {
+    "english": "Is the fish fresh today, or was it frozen?",
+    "level": "A2"
+  },
+  {
+    "english": "I would like sparkling water with the meal.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you bring napkins, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Can we pay separately, or only together?",
+    "level": "A2"
+  },
+  {
+    "english": "Is tipping expected here, or is it optional?",
+    "level": "A2"
+  },
+  {
+    "english": "Please add a small tip to the total.",
+    "level": "A2"
+  },
+  {
+    "english": "The bill seems high, so could you check it?",
+    "level": "A2"
+  },
+  {
+    "english": "We have a train soon, so we need something quick.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you pack the rest for me, please?",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a dish that children usually like?",
+    "level": "A2"
+  },
+  {
+    "english": "Could we move to a quieter table, please?",
+    "level": "A2"
+  },
+  {
+    "english": "I would like the same dish as that table.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you help me choose something light after a long flight?",
+    "level": "B1"
+  },
+  {
+    "english": "I can eat fish, but I avoid meat and chicken.",
+    "level": "B1"
+  },
+  {
+    "english": "If the kitchen is closing soon, we can order something simple.",
+    "level": "B1"
+  },
+  {
+    "english": "I am not sure what this word means on the menu.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you check whether the dessert has nuts before I order it?",
+    "level": "B1"
+  },
+  {
+    "english": "We would rather wait than take a table beside the kitchen door.",
+    "level": "B1"
+  },
+  {
+    "english": "The soup smells wonderful, but I need to know what is in it.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you recommend a wine that goes well with this dish?",
+    "level": "B1"
+  },
+  {
+    "english": "I think our order went to another table by mistake.",
+    "level": "B1"
+  },
+  {
+    "english": "Please bring the coffee after dessert, not with it.",
+    "level": "B1"
+  },
+  {
+    "english": "I left a tip on the table, but I was not sure of the custom.",
+    "level": "B1"
+  },
+  {
+    "english": "After two airport sandwiches, a bowl of lentil soup feels like a proper welcome.",
+    "level": "B2"
+  },
+  {
+    "english": "The menu is short, which usually means the kitchen trusts what it cooks.",
+    "level": "B2"
+  },
+  {
+    "english": "I would like to try the market fish, provided it can be served without shellfish sauce.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you ask the chef whether the same oil is used for seafood and vegetables?",
+    "level": "B2"
+  },
+  {
+    "english": "We are happy to wait for a table if the kitchen can handle my allergy carefully.",
+    "level": "B2"
+  },
+  {
+    "english": "In this city, even a simple breakfast teaches you something about the morning.",
+    "level": "B2"
+  },
+  {
+    "english": "The rice was perfect, but the sauce was stronger than I expected.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you bring the bill when you have a moment, since our taxi is waiting outside?",
+    "level": "B2"
+  },
+  {
+    "english": "I do not want to offend anyone, but I need to understand the tipping custom here.",
+    "level": "B2"
+  },
+  {
+    "english": "If the portion is large, we can share one main course and order extra salad.",
+    "level": "B2"
+  },
+  {
+    "english": "The waiter understood my terrible pronunciation, then kindly repeated the dish in English.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you make a note that the allergy is medical, not just a preference?",
+    "level": "B2"
+  },
+  {
+    "english": "I would rather choose a plain dish than risk guessing at an unfamiliar ingredient.",
+    "level": "B2"
+  },
+  {
+    "english": "A good travel meal often begins with humility, because the menu knows more than the visitor.",
+    "level": "C1"
+  },
+  {
+    "english": "Could you confirm that no sesame paste, sesame oil, or sesame seeds are used in this dish?",
+    "level": "C1"
+  },
+  {
+    "english": "I am trying to eat locally, but I still need to avoid ingredients that could make me ill.",
+    "level": "C1"
+  },
+  {
+    "english": "When the server points proudly to one dish, I usually trust that better than a long description.",
+    "level": "C1"
+  },
+  {
+    "english": "The bill includes several small charges I do not recognize, so could you explain them one by one?",
+    "level": "C1"
+  },
+  {
+    "english": "I would like a meal that feels typical of the region without being too heavy before my flight.",
+    "level": "C1"
+  },
+  {
+    "english": "Please forgive the detailed questions, but a small amount of the wrong ingredient can ruin the trip.",
+    "level": "C1"
+  },
+  {
+    "english": "The restaurant is crowded and cheerful, yet the staff still treats each allergy question with patience.",
+    "level": "C1"
+  },
+  {
+    "english": "I have learned that the safest order abroad is not always the most familiar one.",
+    "level": "C1"
+  },
+  {
+    "english": "Could you suggest something seasonal that a tired traveler could eat slowly without ceremony?",
+    "level": "C1"
+  },
+  {
+    "english": "In a place where I cannot read the menu, kindness becomes part of the meal.",
+    "level": "C1"
+  },
+  {
+    "english": "The tip is my attempt to respect the local custom, not to import my own habits.",
+    "level": "C1"
+  },
+  {
+    "english": "By the time the stew arrives, thick with beans, herbs, and the patience of a kitchen that has seen many travelers, the city feels less like a map and more like a table.",
+    "level": "C2"
+  },
+  {
+    "english": "I ask about allergens with embarrassing precision, because travel invites openness, but the body remains stubbornly specific about what it can forgive.",
+    "level": "C2"
+  },
+  {
+    "english": "A handwritten menu in a small station cafe can reveal more about a country than a museum label, especially when the owner explains lunch with flour on her sleeve.",
+    "level": "C2"
+  },
+  {
+    "english": "The ritual of paying, tipping, and thanking becomes delicate abroad, where generosity must pass through unfamiliar rules before it can be understood.",
+    "level": "C2"
+  },
+  {
+    "english": "There is a rare comfort in being fed by strangers after a delayed train, when soup, bread, and a borrowed word for gratitude briefly make you less foreign.",
+    "level": "C2"
+  },
+  {
+    "english": "The gate is open.",
+    "level": "A0"
+  },
+  {
+    "english": "Where is gate twelve?",
+    "level": "A1"
+  },
+  {
+    "english": "I need my boarding pass.",
+    "level": "A1"
+  },
+  {
+    "english": "This train goes downtown.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus stops here.",
+    "level": "A1"
+  },
+  {
+    "english": "Is this the right line?",
+    "level": "A1"
+  },
+  {
+    "english": "I have one small bag.",
+    "level": "A1"
+  },
+  {
+    "english": "My flight leaves soon.",
+    "level": "A1"
+  },
+  {
+    "english": "Where is passport control?",
+    "level": "A1"
+  },
+  {
+    "english": "I need a taxi.",
+    "level": "A1"
+  },
+  {
+    "english": "Please wait for me.",
+    "level": "A1"
+  },
+  {
+    "english": "Is this train direct?",
+    "level": "A1"
+  },
+  {
+    "english": "The station is busy.",
+    "level": "A1"
+  },
+  {
+    "english": "I need some help.",
+    "level": "A1"
+  },
+  {
+    "english": "Where is the exit?",
+    "level": "A1"
+  },
+  {
+    "english": "Do I need to print my boarding pass?",
+    "level": "A2"
+  },
+  {
+    "english": "My phone has the ticket, but the screen is cracked.",
+    "level": "A2"
+  },
+  {
+    "english": "Is this the line for international departures?",
+    "level": "A2"
+  },
+  {
+    "english": "I have checked in online, but I need a bag tag.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I take this backpack on the plane?",
+    "level": "A2"
+  },
+  {
+    "english": "The gate changed, and I did not hear the announcement.",
+    "level": "A2"
+  },
+  {
+    "english": "What time does boarding begin for this flight?",
+    "level": "A2"
+  },
+  {
+    "english": "Do I need to remove my shoes at security?",
+    "level": "A2"
+  },
+  {
+    "english": "I have a bottle of medicine in my bag.",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a shuttle bus to terminal three?",
+    "level": "A2"
+  },
+  {
+    "english": "The ticket machine took my card, but no ticket came out.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I use this ticket on the metro and the bus?",
+    "level": "A2"
+  },
+  {
+    "english": "Which stop is closest to the old town?",
+    "level": "A2"
+  },
+  {
+    "english": "I will get off at the next station.",
+    "level": "A2"
+  },
+  {
+    "english": "Does this tram go to the central market?",
+    "level": "A2"
+  },
+  {
+    "english": "I got on the wrong train, so I need to go back.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you tell me when we reach my stop?",
+    "level": "A2"
+  },
+  {
+    "english": "Is the taxi meter working?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you use the meter, please?",
+    "level": "A2"
+  },
+  {
+    "english": "I need to be at the airport by six.",
+    "level": "A2"
+  },
+  {
+    "english": "Can we avoid the toll road?",
+    "level": "A2"
+  },
+  {
+    "english": "Is this entrance for departures or arrivals?",
+    "level": "A2"
+  },
+  {
+    "english": "Do I fill out this customs form now?",
+    "level": "A2"
+  },
+  {
+    "english": "I am traveling with only hand luggage today.",
+    "level": "A2"
+  },
+  {
+    "english": "My train was cancelled, and I need a new route.",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a luggage locker inside the station?",
+    "level": "A2"
+  },
+  {
+    "english": "Can I charge my phone near the gate?",
+    "level": "A2"
+  },
+  {
+    "english": "The bus is full, so I will wait for the next one.",
+    "level": "A2"
+  },
+  {
+    "english": "Please show me the fare before we leave.",
+    "level": "A2"
+  },
+  {
+    "english": "I have a tight connection, so I need the fastest route through the terminal.",
+    "level": "B1"
+  },
+  {
+    "english": "The announcement was too quiet, and half the passengers looked at each other in panic.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you tell me whether this ticket is valid after midnight?",
+    "level": "B1"
+  },
+  {
+    "english": "I need to change trains, but I cannot find the stairs to platform seven.",
+    "level": "B1"
+  },
+  {
+    "english": "The taxi driver took the scenic route, and I am not sure it was necessary.",
+    "level": "B1"
+  },
+  {
+    "english": "If customs asks, I am carrying gifts for friends, not anything for resale.",
+    "level": "B1"
+  },
+  {
+    "english": "My boarding group has not been called yet, although everyone is standing up.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you point me toward the airport train instead of the expensive shuttle?",
+    "level": "B1"
+  },
+  {
+    "english": "I would rather walk ten minutes than sit in traffic for half an hour.",
+    "level": "B1"
+  },
+  {
+    "english": "The metro map looks complicated, but I think we only need one change.",
+    "level": "B1"
+  },
+  {
+    "english": "Please let me know if this bus stops near the ferry terminal.",
+    "level": "B1"
+  },
+  {
+    "english": "The airport feels less confusing once you notice that every sign is really about three things: leaving, arriving, or waiting.",
+    "level": "B2"
+  },
+  {
+    "english": "I booked the cheaper train, but the early departure turned the whole morning into a small military operation.",
+    "level": "B2"
+  },
+  {
+    "english": "The driver quoted a fixed fare, yet the meter would probably be kinder at this hour.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you confirm that my checked bag is tagged all the way to my final destination?",
+    "level": "B2"
+  },
+  {
+    "english": "I prefer a window seat on trains because stations reveal a city before its museums do.",
+    "level": "B2"
+  },
+  {
+    "english": "The customs officer asked routine questions, but my tired brain made every answer sound suspicious.",
+    "level": "B2"
+  },
+  {
+    "english": "If the metro workers are on strike, what is the most reliable way to reach the airport?",
+    "level": "B2"
+  },
+  {
+    "english": "I followed the crowd to arrivals, then realized my gate was hiding in the opposite direction.",
+    "level": "B2"
+  },
+  {
+    "english": "The night bus is slower than a taxi, but it lets you see the city waking up.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you help me find a route with elevators, since my suitcase has lost a wheel?",
+    "level": "B2"
+  },
+  {
+    "english": "My passport photo looks nothing like me after twelve hours in economy class.",
+    "level": "B2"
+  },
+  {
+    "english": "The express train costs more, but it saves enough time to make lunch possible.",
+    "level": "B2"
+  },
+  {
+    "english": "I need a clear answer, because my visa stamp depends on leaving through the correct terminal.",
+    "level": "B2"
+  },
+  {
+    "english": "In a foreign station, confidence often means choosing one sign, following it calmly, and forgiving yourself if it leads to the wrong staircase.",
+    "level": "C1"
+  },
+  {
+    "english": "Could you check whether this itinerary leaves enough time for immigration, baggage transfer, and the long walk between terminals?",
+    "level": "C1"
+  },
+  {
+    "english": "The taxi rank looked chaotic at first, but the queue had its own quiet logic once I stopped rushing.",
+    "level": "C1"
+  },
+  {
+    "english": "I would like written confirmation of the cancellation, since my travel insurance will ask for more than a tired explanation.",
+    "level": "C1"
+  },
+  {
+    "english": "Every airport invents a different choreography of trays, belts, laptops, shoes, and small embarrassed apologies.",
+    "level": "C1"
+  },
+  {
+    "english": "The conductor spoke gently but firmly, which made my wrong ticket feel like a solvable problem instead of a disaster.",
+    "level": "C1"
+  },
+  {
+    "english": "Could you tell me whether the last train waits for delayed flights, or whether that is only wishful thinking?",
+    "level": "C1"
+  },
+  {
+    "english": "I try to learn the local word for exit before anything else, because panic rarely improves my pronunciation.",
+    "level": "C1"
+  },
+  {
+    "english": "The cheapest route involved three changes, a suburban bus, and more faith in timetables than I possessed.",
+    "level": "C1"
+  },
+  {
+    "english": "At passport control, I keep my answers short, polite, and boring, which seems to be the international language of cooperation.",
+    "level": "C1"
+  },
+  {
+    "english": "The station clerk drew a circle around my stop, then added a small star where I should change lines.",
+    "level": "C1"
+  },
+  {
+    "english": "If the airport lounge is closed, please direct me to the quietest place where I can hear announcements clearly.",
+    "level": "C1"
+  },
+  {
+    "english": "A boarding pass is a tiny promise written in codes, and every traveler knows how quickly that promise can be revised by weather, staffing, or a blinking screen.",
+    "level": "C2"
+  },
+  {
+    "english": "In the customs hall, with sleep thinning my patience and fluorescent light flattening every face, I remind myself that the officer is guarding a border, not judging my journey.",
+    "level": "C2"
+  },
+  {
+    "english": "The metro at dawn felt like a private rehearsal for the city, with cleaners, bakers, nurses, and travelers briefly sharing the same metallic hush.",
+    "level": "C2"
+  },
+  {
+    "english": "I used to think the fastest route was always the best, until a slow tram through Lisbon taught me that arrival can begin before the door opens.",
+    "level": "C2"
+  },
+  {
+    "english": "When a train is cancelled in a language you barely understand, you learn to read the room: the sudden groan, the lifted phones, the resigned migration toward another platform.",
+    "level": "C2"
+  },
+  {
+    "english": "I need a bed.",
+    "level": "A0"
+  },
+  {
+    "english": "I have a reservation.",
+    "level": "A1"
+  },
+  {
+    "english": "My name is on the booking.",
+    "level": "A1"
+  },
+  {
+    "english": "Is check-in open now?",
+    "level": "A1"
+  },
+  {
+    "english": "Can I check out late?",
+    "level": "A1"
+  },
+  {
+    "english": "Where is my room?",
+    "level": "A1"
+  },
+  {
+    "english": "The key card does not work.",
+    "level": "A1"
+  },
+  {
+    "english": "I need one towel.",
+    "level": "A1"
+  },
+  {
+    "english": "The room is too cold.",
+    "level": "A1"
+  },
+  {
+    "english": "The shower is not hot.",
+    "level": "A1"
+  },
+  {
+    "english": "Is breakfast included?",
+    "level": "A1"
+  },
+  {
+    "english": "Can you store my luggage?",
+    "level": "A1"
+  },
+  {
+    "english": "Is there free Wi-Fi?",
+    "level": "A1"
+  },
+  {
+    "english": "I booked a hostel bed.",
+    "level": "A1"
+  },
+  {
+    "english": "The elevator is very slow.",
+    "level": "A1"
+  },
+  {
+    "english": "I booked online, but I cannot find the confirmation email.",
+    "level": "A2"
+  },
+  {
+    "english": "We arrive after midnight, so please keep the room.",
+    "level": "A2"
+  },
+  {
+    "english": "Could I leave my bags here until check-in?",
+    "level": "A2"
+  },
+  {
+    "english": "The room smells of smoke, and I asked for non-smoking.",
+    "level": "A2"
+  },
+  {
+    "english": "Do you have a quiet room away from the street?",
+    "level": "A2"
+  },
+  {
+    "english": "I need an extra blanket because the room is cold.",
+    "level": "A2"
+  },
+  {
+    "english": "The air conditioner is leaking, and the floor is wet.",
+    "level": "A2"
+  },
+  {
+    "english": "Could someone fix the sink before this evening?",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a laundry room in the building?",
+    "level": "A2"
+  },
+  {
+    "english": "We are checking out tomorrow morning before seven.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you book a wake-up call for six thirty?",
+    "level": "A2"
+  },
+  {
+    "english": "I lost my key card during dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "The hostel kitchen closes early, so we bought sandwiches.",
+    "level": "A2"
+  },
+  {
+    "english": "Does this dorm have lockers for our backpacks?",
+    "level": "A2"
+  },
+  {
+    "english": "I would like the lower bunk if possible.",
+    "level": "A2"
+  },
+  {
+    "english": "The apartment host sent the door code by message.",
+    "level": "A2"
+  },
+  {
+    "english": "We cannot open the lockbox outside the entrance.",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a deposit, and when will it be returned?",
+    "level": "A2"
+  },
+  {
+    "english": "Could you print my boarding pass at reception?",
+    "level": "A2"
+  },
+  {
+    "english": "The room is clean, but the window will not close.",
+    "level": "A2"
+  },
+  {
+    "english": "We need a crib for our baby tonight.",
+    "level": "A2"
+  },
+  {
+    "english": "Are pets allowed in this hotel?",
+    "level": "A2"
+  },
+  {
+    "english": "Can you change the sheets before we come back?",
+    "level": "A2"
+  },
+  {
+    "english": "Is there parking available near the guesthouse?",
+    "level": "A2"
+  },
+  {
+    "english": "The Wi-Fi password on the card is not working.",
+    "level": "A2"
+  },
+  {
+    "english": "We booked two beds, but the room has one.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I have another pillow for my neck?",
+    "level": "A2"
+  },
+  {
+    "english": "The apartment is on the third floor with no lift.",
+    "level": "A2"
+  },
+  {
+    "english": "Please tell housekeeping not to clean the room today.",
+    "level": "A2"
+  },
+  {
+    "english": "Could we move rooms if the noise continues?",
+    "level": "A2"
+  },
+  {
+    "english": "I booked a double room, but a twin room would be fine.",
+    "level": "B1"
+  },
+  {
+    "english": "We are early, so we can wait in the lobby.",
+    "level": "B1"
+  },
+  {
+    "english": "The front desk said our room would be ready after lunch.",
+    "level": "B1"
+  },
+  {
+    "english": "I would rather pay for one more night than rush out.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you recommend a nearby laundromat that stays open late?",
+    "level": "B1"
+  },
+  {
+    "english": "The balcony door sticks, and it needs a strong push.",
+    "level": "B1"
+  },
+  {
+    "english": "I think the minibar charge was added by mistake.",
+    "level": "B1"
+  },
+  {
+    "english": "The hostel is basic, but the staff make it feel welcoming.",
+    "level": "B1"
+  },
+  {
+    "english": "Our host left fresh bread, coffee, and a handwritten map.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you hold a package for me until I arrive?",
+    "level": "B1"
+  },
+  {
+    "english": "I need a room where street noise will not wake me.",
+    "level": "B1"
+  },
+  {
+    "english": "After two night buses, a clean room feels like a small miracle.",
+    "level": "B2"
+  },
+  {
+    "english": "The photos looked brighter online, but the apartment is honest and well located.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you explain why the city tax was not shown at booking?",
+    "level": "B2"
+  },
+  {
+    "english": "We would prefer a flexible checkout, since our train leaves late.",
+    "level": "B2"
+  },
+  {
+    "english": "The guesthouse is above a bakery, so morning begins with warm bread.",
+    "level": "B2"
+  },
+  {
+    "english": "I chose the hostel for the kitchen, not for the party downstairs.",
+    "level": "B2"
+  },
+  {
+    "english": "Please note that the shower floods unless the drain cover is removed.",
+    "level": "B2"
+  },
+  {
+    "english": "The room is narrow, but the desk faces a quiet courtyard.",
+    "level": "B2"
+  },
+  {
+    "english": "I would appreciate a written confirmation of the new rate.",
+    "level": "B2"
+  },
+  {
+    "english": "The owner met us in the rain and carried the heaviest bag upstairs.",
+    "level": "B2"
+  },
+  {
+    "english": "If possible, please place us on a floor away from the elevator.",
+    "level": "B2"
+  },
+  {
+    "english": "The bed is softer than I like, but I slept well enough.",
+    "level": "B2"
+  },
+  {
+    "english": "We need somewhere practical tonight, not charming, because our plans changed.",
+    "level": "B2"
+  },
+  {
+    "english": "The hotel has seen better decades, yet its cracked tiles and brass keys have a certain dignity.",
+    "level": "C1"
+  },
+  {
+    "english": "I do not mind a small room, provided it is clean, secure, and genuinely quiet.",
+    "level": "C1"
+  },
+  {
+    "english": "The check-in form asks for details I have already entered twice online.",
+    "level": "C1"
+  },
+  {
+    "english": "By the time the clerk found our reservation, the lobby plants had become familiar landmarks.",
+    "level": "C1"
+  },
+  {
+    "english": "The apartment is cheaper than a hotel, but every message from the host feels important.",
+    "level": "C1"
+  },
+  {
+    "english": "A hostel teaches you quickly which comforts are essential and which are merely habits.",
+    "level": "C1"
+  },
+  {
+    "english": "I would like the invoice separated by night, because my employer reimburses only the conference dates.",
+    "level": "C1"
+  },
+  {
+    "english": "The room faces the station, so sleep arrives between announcements and departing buses.",
+    "level": "C1"
+  },
+  {
+    "english": "Please make a note that the safe was already locked when we entered the room.",
+    "level": "C1"
+  },
+  {
+    "english": "Good lodging does not need luxury, but it should protect the tired person from confusion.",
+    "level": "C1"
+  },
+  {
+    "english": "We chose this guesthouse because it sits near the old market without pretending to be historic.",
+    "level": "C1"
+  },
+  {
+    "english": "The late checkout fee is reasonable, although I wish it had been mentioned before payment.",
+    "level": "C1"
+  },
+  {
+    "english": "At midnight, the hotel corridor becomes a geography of half-closed doors, rolling suitcases, and strangers trying to remember their room numbers.",
+    "level": "C2"
+  },
+  {
+    "english": "The finest lodging on a journey is not always beautiful; sometimes it is simply the place where the key works and no one asks you to explain yourself.",
+    "level": "C2"
+  },
+  {
+    "english": "In the hostel kitchen, among chipped mugs and labeled bags of pasta, private itineraries briefly share a public table.",
+    "level": "C2"
+  },
+  {
+    "english": "An apartment rental can make you feel local for three days, until the washing machine icons expose the limits of your confidence.",
+    "level": "C2"
+  },
+  {
+    "english": "The front desk, with its bell, printer, and patient stack of passports, is where travel's grand ideas meet ordinary paperwork.",
+    "level": "C2"
+  },
+  {
+    "english": "This hurts now.",
+    "level": "A0"
+  },
+  {
+    "english": "I feel very sick.",
+    "level": "A1"
+  },
+  {
+    "english": "My arm hurts.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a pharmacy now.",
+    "level": "A1"
+  },
+  {
+    "english": "Please call the police.",
+    "level": "A1"
+  },
+  {
+    "english": "Someone took my passport.",
+    "level": "A1"
+  },
+  {
+    "english": "I need the embassy.",
+    "level": "A1"
+  },
+  {
+    "english": "I cannot find my hotel.",
+    "level": "A1"
+  },
+  {
+    "english": "I was robbed last night.",
+    "level": "A1"
+  },
+  {
+    "english": "I need bandages, please.",
+    "level": "A1"
+  },
+  {
+    "english": "Do you have pain medicine?",
+    "level": "A1"
+  },
+  {
+    "english": "My child is sick.",
+    "level": "A1"
+  },
+  {
+    "english": "Is this medicine safe?",
+    "level": "A1"
+  },
+  {
+    "english": "I need an interpreter.",
+    "level": "A1"
+  },
+  {
+    "english": "My tooth hurts badly.",
+    "level": "A1"
+  },
+  {
+    "english": "I cut my hand, and it will not stop bleeding.",
+    "level": "A2"
+  },
+  {
+    "english": "My phone is dead, so I cannot call anyone.",
+    "level": "A2"
+  },
+  {
+    "english": "I fell on the stairs, and my ankle hurts badly.",
+    "level": "A2"
+  },
+  {
+    "english": "I took this medicine, but I still feel worse.",
+    "level": "A2"
+  },
+  {
+    "english": "The hotel safe is open, and my passport is gone.",
+    "level": "A2"
+  },
+  {
+    "english": "I need the address of my country's embassy.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you write down the hospital address for me?",
+    "level": "A2"
+  },
+  {
+    "english": "I was in an accident, but I can still walk.",
+    "level": "A2"
+  },
+  {
+    "english": "My friend has a fever, and we need advice.",
+    "level": "A2"
+  },
+  {
+    "english": "I cannot breathe well, so please get medical help.",
+    "level": "A2"
+  },
+  {
+    "english": "I left my wallet on the bus this morning.",
+    "level": "A2"
+  },
+  {
+    "english": "Someone stole my bag while I was buying coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "I need to report a theft to the police.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you show me the emergency exit?",
+    "level": "A2"
+  },
+  {
+    "english": "I have travel insurance, but I need the phone number.",
+    "level": "A2"
+  },
+  {
+    "english": "My glasses broke, and I cannot read the signs.",
+    "level": "A2"
+  },
+  {
+    "english": "Is there a clinic open late tonight?",
+    "level": "A2"
+  },
+  {
+    "english": "I missed my medicine, and I feel shaky now.",
+    "level": "A2"
+  },
+  {
+    "english": "Please tell the pharmacist I cannot swallow pills.",
+    "level": "A2"
+  },
+  {
+    "english": "The bite is swelling, and it feels very hot.",
+    "level": "A2"
+  },
+  {
+    "english": "I burned my hand on the kettle in my room.",
+    "level": "A2"
+  },
+  {
+    "english": "My chest hurts, and I feel dizzy.",
+    "level": "A2"
+  },
+  {
+    "english": "I found this card in my bag, but not my passport.",
+    "level": "A2"
+  },
+  {
+    "english": "I need a copy of the police report.",
+    "level": "A2"
+  },
+  {
+    "english": "Can I use your phone to call my family?",
+    "level": "A2"
+  },
+  {
+    "english": "The taxi drove away with my small suitcase.",
+    "level": "A2"
+  },
+  {
+    "english": "I have no cash, and my bank card is gone.",
+    "level": "A2"
+  },
+  {
+    "english": "Can you contact the consulate for me today?",
+    "level": "A2"
+  },
+  {
+    "english": "I need directions to an emergency dentist.",
+    "level": "A2"
+  },
+  {
+    "english": "I am not sure whether this rash is serious, but it is spreading quickly.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you help me fill out this accident report in English?",
+    "level": "B1"
+  },
+  {
+    "english": "The pharmacist gave me tablets, but the instructions are confusing.",
+    "level": "B1"
+  },
+  {
+    "english": "I locked my passport in the room safe, and the code no longer works.",
+    "level": "B1"
+  },
+  {
+    "english": "If the clinic is closed, where should I go for urgent care?",
+    "level": "B1"
+  },
+  {
+    "english": "My travel insurance company asked for the hospital's official invoice.",
+    "level": "B1"
+  },
+  {
+    "english": "The police officer told me to keep a copy of this form.",
+    "level": "B1"
+  },
+  {
+    "english": "I need someone to call the airline because my medication is in my lost bag.",
+    "level": "B1"
+  },
+  {
+    "english": "My fever went down this morning, but I still feel weak.",
+    "level": "B1"
+  },
+  {
+    "english": "The embassy said they can issue an emergency travel document tomorrow.",
+    "level": "B1"
+  },
+  {
+    "english": "I would rather visit a clinic now than wait until it gets worse.",
+    "level": "B1"
+  },
+  {
+    "english": "The pain is bearable when I sit still, but it becomes sharp when I walk.",
+    "level": "B2"
+  },
+  {
+    "english": "I do not want to make a scene, but I think my drink was tampered with.",
+    "level": "B2"
+  },
+  {
+    "english": "The receptionist translated the dosage instructions, which made the prescription feel much less frightening.",
+    "level": "B2"
+  },
+  {
+    "english": "I kept photocopies of my documents online, and now that small habit may save the trip.",
+    "level": "B2"
+  },
+  {
+    "english": "The officer was polite, but I need the report number before my insurer will help.",
+    "level": "B2"
+  },
+  {
+    "english": "A crowded station is the worst place to discover that your wallet has vanished.",
+    "level": "B2"
+  },
+  {
+    "english": "I can explain the problem slowly, but medical words disappear from my memory under stress.",
+    "level": "B2"
+  },
+  {
+    "english": "If you can contact the night manager, she may know which clinic accepts visitors.",
+    "level": "B2"
+  },
+  {
+    "english": "The embassy cannot replace my visa today, so I need written proof of the theft.",
+    "level": "B2"
+  },
+  {
+    "english": "I have a chronic condition, and the medicine in my suitcase cannot be skipped for two days.",
+    "level": "B2"
+  },
+  {
+    "english": "The hospital bill is correct, but I need it printed with my full name.",
+    "level": "B2"
+  },
+  {
+    "english": "I would like a second opinion before agreeing to surgery in a language I barely understand.",
+    "level": "B2"
+  },
+  {
+    "english": "The map shows a police office, but the entrance seems to be inside the train station.",
+    "level": "B2"
+  },
+  {
+    "english": "When my passport disappeared at the hostel, the photocopy in my email became more useful than every guidebook I had packed.",
+    "level": "C1"
+  },
+  {
+    "english": "Please explain the side effects in plain language, because the box lists warnings I cannot judge safely.",
+    "level": "C1"
+  },
+  {
+    "english": "The consulate asked me to bring a police report, two photos, and proof of tomorrow's flight.",
+    "level": "C1"
+  },
+  {
+    "english": "I am trying to stay calm, but the combination of fever, distance, and unfamiliar paperwork is wearing me down.",
+    "level": "C1"
+  },
+  {
+    "english": "If the doctor writes the diagnosis clearly, my insurer can approve treatment before I leave the hospital.",
+    "level": "C1"
+  },
+  {
+    "english": "The pharmacist recognized the generic name of my medicine, even though the brand I use at home was unknown.",
+    "level": "C1"
+  },
+  {
+    "english": "I do not need special treatment, only a reliable translation of what the nurse is asking me to sign.",
+    "level": "C1"
+  },
+  {
+    "english": "Because my wallet was stolen on the tram, I need to cancel my cards before the next transaction appears.",
+    "level": "C1"
+  },
+  {
+    "english": "The emergency room is busy, so please tell me honestly whether my injury can wait until morning.",
+    "level": "C1"
+  },
+  {
+    "english": "Losing documents abroad turns ordinary details, hotel address, flight number, birth date, into a small legal vocabulary.",
+    "level": "C1"
+  },
+  {
+    "english": "I can describe the pain in ordinary words, but I need the doctor to understand where it travels.",
+    "level": "C1"
+  },
+  {
+    "english": "Before I accept the replacement document, could you confirm that the airline will let me board with it?",
+    "level": "C1"
+  },
+  {
+    "english": "In a city I had admired all morning, the stolen passport reduced beauty to procedure, a queue at the police desk, a consular number, and the stubborn need to prove I was myself.",
+    "level": "C2"
+  },
+  {
+    "english": "The pharmacist, seeing panic where my vocabulary failed, laid three boxes on the counter and explained each dose with the patience of someone translating both medicine and mercy.",
+    "level": "C2"
+  },
+  {
+    "english": "Nothing makes a traveler more precise than fear, suddenly every receipt, street name, and timetable becomes evidence in a story that must persuade strangers quickly.",
+    "level": "C2"
+  },
+  {
+    "english": "I had imagined emergencies as sirens and bright corridors, but mine began quietly, with an empty coat pocket and the sickening arithmetic of cards, cash, keys, and passport.",
+    "level": "C2"
+  },
+  {
+    "english": "If the hospital insists on payment before treatment, please ask whether my insurer can guarantee the bill directly, because delay is becoming part of the danger.",
+    "level": "C2"
   }
 ]

@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +402 new phrases authored across 5 facets
+  (gear & packing, setting up camp, fire, cooking, & water, weather, navigation, & safety, nights outside & camp life). New-phrase distribution: A0:4, A1:74, A2:164, B1:38, B2:39, C1:59, C2:24.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

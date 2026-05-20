@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +403 new phrases authored across 5 facets
+  (rules & the pitch, training & drills, fans & culture, history & the World Cup, life of a player). New-phrase distribution: A0:4, A1:59, A2:140, B1:72, B2:60, C1:48, C2:20.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

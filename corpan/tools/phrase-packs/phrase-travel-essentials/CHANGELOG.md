@@ -10,6 +10,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +422 new phrases authored across 5 facets
+  (hotels & lodging, airports, trains, & getting around, restaurants & ordering food, emergencies & asking for help, shopping, money, & small talk). New-phrase distribution: A0:4, A1:70, A2:146, B1:55, B2:64, C1:59, C2:24.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

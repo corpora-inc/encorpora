@@ -410,5 +410,1609 @@
   {
     "english": "An economy is the long, mostly invisible conversation a society has with itself about what its people most want, most fear, and are most willing to trade for one another.",
     "level": "C2"
+  },
+  {
+    "english": "GDP measures a country's output.",
+    "level": "A1"
+  },
+  {
+    "english": "Growth means more work happens.",
+    "level": "A1"
+  },
+  {
+    "english": "A recession hurts many families.",
+    "level": "A1"
+  },
+  {
+    "english": "Factories make part of GDP.",
+    "level": "A1"
+  },
+  {
+    "english": "Shops slow down in recessions.",
+    "level": "A1"
+  },
+  {
+    "english": "Central banks watch inflation.",
+    "level": "A1"
+  },
+  {
+    "english": "Governments spend in hard times.",
+    "level": "A1"
+  },
+  {
+    "english": "High rates slow borrowing.",
+    "level": "A1"
+  },
+  {
+    "english": "Low rates help loans.",
+    "level": "A1"
+  },
+  {
+    "english": "Growth brings more tax money.",
+    "level": "A1"
+  },
+  {
+    "english": "A weak economy feels nervous.",
+    "level": "A1"
+  },
+  {
+    "english": "Jobs disappear during recessions.",
+    "level": "A1"
+  },
+  {
+    "english": "Recovery takes time.",
+    "level": "A1"
+  },
+  {
+    "english": "Big economies still get sick.",
+    "level": "A1"
+  },
+  {
+    "english": "GDP counts many goods and services in one number.",
+    "level": "A2"
+  },
+  {
+    "english": "A cafe meal adds a little to GDP.",
+    "level": "A2"
+  },
+  {
+    "english": "A country grows when it produces more each year.",
+    "level": "A2"
+  },
+  {
+    "english": "When factories slow down, drivers may get fewer orders.",
+    "level": "A2"
+  },
+  {
+    "english": "A recession starts when spending falls across many places.",
+    "level": "A2"
+  },
+  {
+    "english": "People save more money when they fear losing work.",
+    "level": "A2"
+  },
+  {
+    "english": "Central banks raise rates when prices rise too fast.",
+    "level": "A2"
+  },
+  {
+    "english": "Central banks cut rates when borrowing needs help.",
+    "level": "A2"
+  },
+  {
+    "english": "Lower rates can make houses easier to buy.",
+    "level": "A2"
+  },
+  {
+    "english": "Higher rates can make car loans more expensive.",
+    "level": "A2"
+  },
+  {
+    "english": "Government checks can help families keep spending.",
+    "level": "A2"
+  },
+  {
+    "english": "New roads create jobs and support future trade.",
+    "level": "A2"
+  },
+  {
+    "english": "Tax cuts leave more money in people's pockets.",
+    "level": "A2"
+  },
+  {
+    "english": "More public spending can support a weak economy.",
+    "level": "A2"
+  },
+  {
+    "english": "Too much public spending can push prices higher.",
+    "level": "A2"
+  },
+  {
+    "english": "A growing economy can still leave some towns behind.",
+    "level": "A2"
+  },
+  {
+    "english": "A busy port often shows strong trade.",
+    "level": "A2"
+  },
+  {
+    "english": "Empty offices can show a slow local economy.",
+    "level": "A2"
+  },
+  {
+    "english": "During a recession, restaurants may close earlier.",
+    "level": "A2"
+  },
+  {
+    "english": "During growth, companies may hire before they are ready.",
+    "level": "A2"
+  },
+  {
+    "english": "GDP rises when tourists book hotels and buy meals.",
+    "level": "A2"
+  },
+  {
+    "english": "Unpaid care at home does not show clearly in GDP.",
+    "level": "A2"
+  },
+  {
+    "english": "A storm can raise GDP because repairs cost money.",
+    "level": "A2"
+  },
+  {
+    "english": "More output is not always a better life.",
+    "level": "A2"
+  },
+  {
+    "english": "A soft landing means prices cool without many job losses.",
+    "level": "A2"
+  },
+  {
+    "english": "A hard landing means the slowdown causes real pain.",
+    "level": "A2"
+  },
+  {
+    "english": "Banks lend less when they worry about the future.",
+    "level": "A2"
+  },
+  {
+    "english": "Businesses delay new plans when customers spend less.",
+    "level": "A2"
+  },
+  {
+    "english": "A strong currency can make imports cheaper.",
+    "level": "A2"
+  },
+  {
+    "english": "A weak job market changes wage talks.",
+    "level": "A2"
+  },
+  {
+    "english": "Some recessions are short, but the fear lasts longer.",
+    "level": "A2"
+  },
+  {
+    "english": "Growth feels real when paychecks stretch further.",
+    "level": "A2"
+  },
+  {
+    "english": "Government debt grows when spending exceeds tax income.",
+    "level": "A2"
+  },
+  {
+    "english": "The long economy changes one household at a time.",
+    "level": "A2"
+  },
+  {
+    "english": "GDP is useful, but it misses unpaid work and quiet suffering.",
+    "level": "B1"
+  },
+  {
+    "english": "A recession is not one bad month, but a broad loss of momentum.",
+    "level": "B1"
+  },
+  {
+    "english": "When households pull back together, even strong companies feel the chill.",
+    "level": "B1"
+  },
+  {
+    "english": "Central banks try to slow demand without breaking the job market.",
+    "level": "B1"
+  },
+  {
+    "english": "Fiscal policy is the government's checkbook meeting the business cycle.",
+    "level": "B1"
+  },
+  {
+    "english": "A rate hike moves through mortgages, credit cards, and business loans.",
+    "level": "B1"
+  },
+  {
+    "english": "The first sign of trouble may be fewer shifts at a warehouse.",
+    "level": "B1"
+  },
+  {
+    "english": "A city can look busy while its small firms are struggling.",
+    "level": "B1"
+  },
+  {
+    "english": "Stimulus can keep shops open until customers return on their own.",
+    "level": "B1"
+  },
+  {
+    "english": "Too little help can turn a slowdown into lasting damage.",
+    "level": "B1"
+  },
+  {
+    "english": "Too much help can feed inflation after the emergency has passed.",
+    "level": "B1"
+  },
+  {
+    "english": "Growth statistics sound cold until they become rent, medicine, and wages.",
+    "level": "B1"
+  },
+  {
+    "english": "A country can grow richer while many workers feel stuck.",
+    "level": "B1"
+  },
+  {
+    "english": "Productivity matters because one hour of work can produce more.",
+    "level": "B1"
+  },
+  {
+    "english": "Recessions often begin in spreadsheets and end at kitchen tables.",
+    "level": "B1"
+  },
+  {
+    "english": "The recovery looks different from a bank window and a bus stop.",
+    "level": "B1"
+  },
+  {
+    "english": "GDP compresses millions of private exchanges into a single public score, which makes it powerful, useful, and dangerously easy to overread.",
+    "level": "C1"
+  },
+  {
+    "english": "Central banks work through delay and uncertainty, raising rates today for price pressures that may already be changing.",
+    "level": "C1"
+  },
+  {
+    "english": "Fiscal policy is never just arithmetic, because each budget choice names someone as urgent and someone else as patient.",
+    "level": "C1"
+  },
+  {
+    "english": "A recession can cleanse weak investments, but it also destroys good firms that simply ran out of time.",
+    "level": "C1"
+  },
+  {
+    "english": "The problem with judging growth by averages is that averages can rise while neighborhoods empty out.",
+    "level": "C1"
+  },
+  {
+    "english": "Public borrowing can be reckless in a boom and essential in a collapse, depending on what it buys.",
+    "level": "C1"
+  },
+  {
+    "english": "The long economy is built from maintenance, trust, training, and boring competence, not only from spectacular inventions.",
+    "level": "C1"
+  },
+  {
+    "english": "A central bank can sound calm in a marble building while its decisions travel outward as postponed weddings, frozen hiring plans, and one more winter in a rented flat.",
+    "level": "C2"
+  },
+  {
+    "english": "GDP is a bright instrument panel in a dark cockpit, valuable because it gives direction, dangerous because it tempts the pilot to forget the weather outside.",
+    "level": "C2"
+  },
+  {
+    "english": "In a recession, the economy does not merely shrink; it hesitates, as families delay repairs, owners delay hiring, and young workers delay the lives they had already priced in.",
+    "level": "C2"
+  },
+  {
+    "english": "Growth becomes durable when it is less like a firework and more like plumbing, hidden networks carrying skills, credit, transport, energy, and confidence to where work can happen.",
+    "level": "C2"
+  },
+  {
+    "english": "Workers need pay.",
+    "level": "A0"
+  },
+  {
+    "english": "She earns money at work.",
+    "level": "A1"
+  },
+  {
+    "english": "He works five days a week.",
+    "level": "A1"
+  },
+  {
+    "english": "My pay comes every Friday.",
+    "level": "A1"
+  },
+  {
+    "english": "The job starts at nine.",
+    "level": "A1"
+  },
+  {
+    "english": "A nurse works long hours.",
+    "level": "A1"
+  },
+  {
+    "english": "The shop needs two workers.",
+    "level": "A1"
+  },
+  {
+    "english": "He lost his job yesterday.",
+    "level": "A1"
+  },
+  {
+    "english": "She found a better job.",
+    "level": "A1"
+  },
+  {
+    "english": "Workers ask for fair pay.",
+    "level": "A1"
+  },
+  {
+    "english": "The boss pays by the hour.",
+    "level": "A1"
+  },
+  {
+    "english": "Overtime brings extra money.",
+    "level": "A1"
+  },
+  {
+    "english": "Retired people stop regular work.",
+    "level": "A1"
+  },
+  {
+    "english": "A taxi driver wants more rides.",
+    "level": "A1"
+  },
+  {
+    "english": "The factory hired my brother.",
+    "level": "A1"
+  },
+  {
+    "english": "A slow week means less pay.",
+    "level": "A1"
+  },
+  {
+    "english": "Hourly workers earn more when they get more shifts.",
+    "level": "A2"
+  },
+  {
+    "english": "A salary feels steady, but overtime may be unpaid.",
+    "level": "A2"
+  },
+  {
+    "english": "She took a weekend shift to cover rent.",
+    "level": "A2"
+  },
+  {
+    "english": "The restaurant cut hours when lunch crowds got smaller.",
+    "level": "A2"
+  },
+  {
+    "english": "A delivery app pays more during rain and dinner rush.",
+    "level": "A2"
+  },
+  {
+    "english": "He drives at night because airport fares are higher.",
+    "level": "A2"
+  },
+  {
+    "english": "The bakery needs workers before dawn, so pay is better.",
+    "level": "A2"
+  },
+  {
+    "english": "Unemployment rises when companies stop hiring new people.",
+    "level": "A2"
+  },
+  {
+    "english": "A job offer can change a family's whole budget.",
+    "level": "A2"
+  },
+  {
+    "english": "Training costs money now, but it can raise wages later.",
+    "level": "A2"
+  },
+  {
+    "english": "Some workers trade higher pay for a shorter commute.",
+    "level": "A2"
+  },
+  {
+    "english": "A pension gives retired workers money after they stop working.",
+    "level": "A2"
+  },
+  {
+    "english": "He saves part of each paycheck for retirement.",
+    "level": "A2"
+  },
+  {
+    "english": "Gig workers choose hours, but income can jump around.",
+    "level": "A2"
+  },
+  {
+    "english": "A full-time job often comes with health insurance.",
+    "level": "A2"
+  },
+  {
+    "english": "Part-time work helps students, but the pay is smaller.",
+    "level": "A2"
+  },
+  {
+    "english": "The warehouse added night shifts before the holiday season.",
+    "level": "A2"
+  },
+  {
+    "english": "A busy hotel hires cleaners before the tourist season starts.",
+    "level": "A2"
+  },
+  {
+    "english": "When tips are good, servers can earn more than managers.",
+    "level": "A2"
+  },
+  {
+    "english": "A missing bus can cost a worker one hour's pay.",
+    "level": "A2"
+  },
+  {
+    "english": "Childcare costs decide whether some parents can work.",
+    "level": "A2"
+  },
+  {
+    "english": "He accepted lower pay because the job taught useful skills.",
+    "level": "A2"
+  },
+  {
+    "english": "A union can help workers ask for safer conditions.",
+    "level": "A2"
+  },
+  {
+    "english": "The farm needs more hands when the apples are ready.",
+    "level": "A2"
+  },
+  {
+    "english": "Remote work lets some people keep city wages in cheaper towns.",
+    "level": "A2"
+  },
+  {
+    "english": "A bonus feels large, but taxes change the final amount.",
+    "level": "A2"
+  },
+  {
+    "english": "The company froze hiring until sales became stronger.",
+    "level": "A2"
+  },
+  {
+    "english": "A crowded job fair shows many people are looking for work.",
+    "level": "A2"
+  },
+  {
+    "english": "Seasonal workers earn quickly, then search again in January.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic earns more after buying better tools.",
+    "level": "A2"
+  },
+  {
+    "english": "A license can turn a helper into a higher-paid worker.",
+    "level": "A2"
+  },
+  {
+    "english": "Young workers often start with low pay and flexible hours.",
+    "level": "A2"
+  },
+  {
+    "english": "The manager raised wages because nobody answered the job ad.",
+    "level": "A2"
+  },
+  {
+    "english": "A late paycheck can make rent and bills stressful.",
+    "level": "A2"
+  },
+  {
+    "english": "Retirement looks closer when the body gets tired before the mind.",
+    "level": "A2"
+  },
+  {
+    "english": "A good wage is partly cash and partly peace of mind.",
+    "level": "B1"
+  },
+  {
+    "english": "People stay in dull jobs when the benefits protect their families.",
+    "level": "B1"
+  },
+  {
+    "english": "The morning train shows the labor market before any chart does.",
+    "level": "B1"
+  },
+  {
+    "english": "A chef may love the kitchen and still hate the schedule.",
+    "level": "B1"
+  },
+  {
+    "english": "When rent climbs faster than wages, every paycheck feels smaller.",
+    "level": "B1"
+  },
+  {
+    "english": "A promotion can bring status, stress, and longer meetings.",
+    "level": "B1"
+  },
+  {
+    "english": "Freelancers often learn that freedom needs a cash cushion.",
+    "level": "B1"
+  },
+  {
+    "english": "Laid-off workers do not vanish from the economy, they delay purchases.",
+    "level": "B1"
+  },
+  {
+    "english": "A minimum wage matters most to people with the least bargaining power.",
+    "level": "B1"
+  },
+  {
+    "english": "The best job on paper may be worse after the commute.",
+    "level": "B1"
+  },
+  {
+    "english": "An unpaid internship is easier to accept when your parents pay rent.",
+    "level": "B1"
+  },
+  {
+    "english": "Factories close quickly, but new skills take years to build.",
+    "level": "B1"
+  },
+  {
+    "english": "A stable paycheck can make a risky dream possible.",
+    "level": "B1"
+  },
+  {
+    "english": "When workers are scarce, polite managers suddenly become better listeners.",
+    "level": "B1"
+  },
+  {
+    "english": "The gig app calls him independent, but the algorithm sets the rhythm.",
+    "level": "B1"
+  },
+  {
+    "english": "Retirement is cheaper in theory than in a body that needs care.",
+    "level": "B1"
+  },
+  {
+    "english": "A job search is work that nobody pays you to do.",
+    "level": "B1"
+  },
+  {
+    "english": "Wages are not merely prices for labor, because every shift also spends a person's health, attention, and years.",
+    "level": "B2"
+  },
+  {
+    "english": "A labor shortage can reveal which jobs were surviving on patience, pride, and workers who had nowhere else to go.",
+    "level": "C1"
+  },
+  {
+    "english": "The hourly wage looks simple until transportation, uniforms, childcare, and unpaid waiting time enter the calculation.",
+    "level": "C1"
+  },
+  {
+    "english": "Unemployment is measured as a number, but it is lived as postponed repairs, quieter birthdays, and careful grocery lists.",
+    "level": "C1"
+  },
+  {
+    "english": "Remote work changed wages unevenly, rewarding laptop jobs while leaving nurses, drivers, and cooks tied to place.",
+    "level": "C1"
+  },
+  {
+    "english": "Retirement policy sounds abstract until a sixty-eight-year-old cashier stands through another December shopping rush.",
+    "level": "C1"
+  },
+  {
+    "english": "A credential can protect quality, but it can also close the door on capable workers without formal permission.",
+    "level": "C1"
+  },
+  {
+    "english": "Gig platforms sell flexibility to customers and workers, yet the risk usually travels toward the person with fewer savings.",
+    "level": "C1"
+  },
+  {
+    "english": "The labor market never clears as neatly as a textbook chart, because people cannot instantly become welders, nurses, or accountants.",
+    "level": "C1"
+  },
+  {
+    "english": "A society can celebrate hard work while quietly pricing some workers so low that diligence becomes a way to stay almost still.",
+    "level": "C2"
+  },
+  {
+    "english": "The paycheck is a small document with a long shadow, carrying rent, food, taxes, debt, family hopes, and the private arithmetic of endurance.",
+    "level": "C2"
+  },
+  {
+    "english": "When a mine closes or a shipyard falls silent, the lost wage is only the first loss, followed by identity, routine, apprenticeships, and town memory.",
+    "level": "C2"
+  },
+  {
+    "english": "Retirement is often described as leisure, yet for many workers it arrives as a negotiation between worn joints, thin savings, and the price of medicine.",
+    "level": "C2"
+  },
+  {
+    "english": "Labor markets speak in vacancies and wage rates, but the real language is spoken at kitchen tables where people decide who can work, who must care, and what can wait.",
+    "level": "C2"
+  },
+  {
+    "english": "I save coins.",
+    "level": "A0"
+  },
+  {
+    "english": "My wallet is empty.",
+    "level": "A1"
+  },
+  {
+    "english": "She pays the bill.",
+    "level": "A1"
+  },
+  {
+    "english": "He owes ten dollars.",
+    "level": "A1"
+  },
+  {
+    "english": "We keep cash at home.",
+    "level": "A1"
+  },
+  {
+    "english": "The rent is due today.",
+    "level": "A1"
+  },
+  {
+    "english": "I check my bank balance.",
+    "level": "A1"
+  },
+  {
+    "english": "Taxes take part of each paycheck.",
+    "level": "A1"
+  },
+  {
+    "english": "A credit card is not free.",
+    "level": "A1"
+  },
+  {
+    "english": "She saves for new shoes.",
+    "level": "A1"
+  },
+  {
+    "english": "He paid the phone bill.",
+    "level": "A1"
+  },
+  {
+    "english": "We need money for repairs.",
+    "level": "A1"
+  },
+  {
+    "english": "The bank sent a letter.",
+    "level": "A1"
+  },
+  {
+    "english": "Cash feels real in your hand.",
+    "level": "A1"
+  },
+  {
+    "english": "Debt can grow fast.",
+    "level": "A1"
+  },
+  {
+    "english": "Rent comes before fun.",
+    "level": "A1"
+  },
+  {
+    "english": "She saved twenty dollars, and the washing machine still broke.",
+    "level": "A2"
+  },
+  {
+    "english": "He used cash, so the groceries felt more expensive.",
+    "level": "A2"
+  },
+  {
+    "english": "A late fee is small, but it teaches a hard lesson.",
+    "level": "A2"
+  },
+  {
+    "english": "The card was easy to swipe, and the bill came later.",
+    "level": "A2"
+  },
+  {
+    "english": "We bought used chairs, then saved the rest for rent.",
+    "level": "A2"
+  },
+  {
+    "english": "Her savings account grows slowly, but it helps her sleep.",
+    "level": "A2"
+  },
+  {
+    "english": "He borrowed for school, and the payments followed him for years.",
+    "level": "A2"
+  },
+  {
+    "english": "A mortgage turns one house into thirty years of payments.",
+    "level": "A2"
+  },
+  {
+    "english": "The tax refund arrived, and they fixed the old heater.",
+    "level": "A2"
+  },
+  {
+    "english": "She packed lunch today, so Friday dinner felt possible.",
+    "level": "A2"
+  },
+  {
+    "english": "He canceled one app, and nothing in his life changed.",
+    "level": "A2"
+  },
+  {
+    "english": "The bank pays little interest, but the money stays ready.",
+    "level": "A2"
+  },
+  {
+    "english": "Credit scores matter when you want a car or apartment.",
+    "level": "A2"
+  },
+  {
+    "english": "A family budget shows who eats first on payday.",
+    "level": "A2"
+  },
+  {
+    "english": "They split the rent, but one roommate always paid late.",
+    "level": "A2"
+  },
+  {
+    "english": "She used the bonus for debt, not a bigger television.",
+    "level": "A2"
+  },
+  {
+    "english": "He kept receipts, so tax season felt less confusing.",
+    "level": "A2"
+  },
+  {
+    "english": "A debit card spends your money, but credit borrows someone else's.",
+    "level": "A2"
+  },
+  {
+    "english": "The landlord raised rent, and their savings plan got smaller.",
+    "level": "A2"
+  },
+  {
+    "english": "One broken tooth can ruin a careful monthly budget.",
+    "level": "A2"
+  },
+  {
+    "english": "She paid the minimum, and the balance barely moved.",
+    "level": "A2"
+  },
+  {
+    "english": "He chose the cheaper plan, but the repair cost more.",
+    "level": "A2"
+  },
+  {
+    "english": "Automatic payments help, unless the account is already low.",
+    "level": "A2"
+  },
+  {
+    "english": "A full pantry makes payday feel less urgent.",
+    "level": "A2"
+  },
+  {
+    "english": "They saved for winter bills before buying holiday gifts.",
+    "level": "A2"
+  },
+  {
+    "english": "A missed payment can follow you for a long time.",
+    "level": "A2"
+  },
+  {
+    "english": "The grocery list protected her from bright packages and cravings.",
+    "level": "A2"
+  },
+  {
+    "english": "He sold the old bicycle and paid the water bill.",
+    "level": "A2"
+  },
+  {
+    "english": "A receipt is boring, but it tells the truth.",
+    "level": "A2"
+  },
+  {
+    "english": "They shared one car, so insurance cost less each month.",
+    "level": "A2"
+  },
+  {
+    "english": "She kept an envelope for rent and never touched it.",
+    "level": "A2"
+  },
+  {
+    "english": "The first paycheck felt large, then rent made it small.",
+    "level": "A2"
+  },
+  {
+    "english": "He compared loan rates before signing the car papers.",
+    "level": "A2"
+  },
+  {
+    "english": "A rainy day fund sounds old, but it works.",
+    "level": "A2"
+  },
+  {
+    "english": "She paid in advance, so next month had room.",
+    "level": "A2"
+  },
+  {
+    "english": "The electric bill taught him that every appliance has a quiet price.",
+    "level": "B1"
+  },
+  {
+    "english": "She learned credit the hard way, one small purchase at a time.",
+    "level": "B1"
+  },
+  {
+    "english": "A clean balance sheet can feel like a tidy kitchen on Sunday.",
+    "level": "B1"
+  },
+  {
+    "english": "The mortgage looked affordable until insurance and repairs joined the table.",
+    "level": "B1"
+  },
+  {
+    "english": "He treated tax paperwork like laundry, ignored until it covered the chair.",
+    "level": "B1"
+  },
+  {
+    "english": "Their emergency fund turned a blown tire into an annoying afternoon.",
+    "level": "B1"
+  },
+  {
+    "english": "Paying yourself first only works if the money leaves before temptation arrives.",
+    "level": "B1"
+  },
+  {
+    "english": "A raise helped less than expected because old wants found new names.",
+    "level": "B1"
+  },
+  {
+    "english": "The minimum payment is a polite door to a very long hallway.",
+    "level": "B1"
+  },
+  {
+    "english": "She used a spreadsheet because memory was too kind to her spending.",
+    "level": "B1"
+  },
+  {
+    "english": "The rent check clears first because shelter is not optional.",
+    "level": "B1"
+  },
+  {
+    "english": "A good credit score opens doors that cash alone cannot always open.",
+    "level": "B1"
+  },
+  {
+    "english": "He stopped lending to friends after one birthday dinner became awkward.",
+    "level": "B1"
+  },
+  {
+    "english": "The family car was cheaper to keep than to replace.",
+    "level": "B1"
+  },
+  {
+    "english": "Tax season rewards the person who kept the boring folder.",
+    "level": "B1"
+  },
+  {
+    "english": "A second job adds income, but it also steals recovery time.",
+    "level": "B1"
+  },
+  {
+    "english": "The house gained value, but the roof still wanted cash.",
+    "level": "B1"
+  },
+  {
+    "english": "Personal finance is mostly ordinary tradeoffs, made visible by due dates and balances.",
+    "level": "B2"
+  },
+  {
+    "english": "A household budget is a small map of priorities, but it also records luck, illness, prices, and timing.",
+    "level": "C1"
+  },
+  {
+    "english": "Credit can smooth a rough month, yet it becomes expensive when every month is rough.",
+    "level": "C1"
+  },
+  {
+    "english": "The safest financial choice is not always the cheapest one, because risk has its own bill.",
+    "level": "C1"
+  },
+  {
+    "english": "A mortgage lets families build equity, while also tying their choices to rates, repairs, and location.",
+    "level": "C1"
+  },
+  {
+    "english": "Taxes feel personal at the kitchen table, although they fund systems no household could build alone.",
+    "level": "C1"
+  },
+  {
+    "english": "Savings look modest during calm years, then suddenly become the difference between choice and panic.",
+    "level": "C1"
+  },
+  {
+    "english": "Debt is easiest to justify when the purchase is urgent, visible, and socially expected.",
+    "level": "C1"
+  },
+  {
+    "english": "Financial advice often ignores the rented room, the sick parent, and the paycheck that arrives late.",
+    "level": "C1"
+  },
+  {
+    "english": "In the private weather of a household, a paid bill can feel less like a transaction than a brief clearing of the sky.",
+    "level": "C2"
+  },
+  {
+    "english": "A credit card offers the grammar of convenience, but its monthly statement translates desire into dates, balances, and interest.",
+    "level": "C2"
+  },
+  {
+    "english": "The mortgage lender sees an address, an income, and a rate; the family sees a hallway, a school route, and decades of Saturday repairs.",
+    "level": "C2"
+  },
+  {
+    "english": "Taxes turn private earnings into shared pavement, libraries, clinics, and courts, which is why the line on the pay stub can feel both intimate and civic.",
+    "level": "C2"
+  },
+  {
+    "english": "The most careful saver still lives inside prices she cannot command, wages she cannot set, and emergencies that arrive without asking her permission.",
+    "level": "C2"
+  },
+  {
+    "english": "She sells bread.",
+    "level": "A0"
+  },
+  {
+    "english": "He opens a small shop.",
+    "level": "A1"
+  },
+  {
+    "english": "The cafe needs customers.",
+    "level": "A1"
+  },
+  {
+    "english": "She buys flour in bulk.",
+    "level": "A1"
+  },
+  {
+    "english": "They sell bikes online.",
+    "level": "A1"
+  },
+  {
+    "english": "His profit is small.",
+    "level": "A1"
+  },
+  {
+    "english": "The shop closes early.",
+    "level": "A1"
+  },
+  {
+    "english": "A logo helps people remember.",
+    "level": "A1"
+  },
+  {
+    "english": "Customers ask simple questions.",
+    "level": "A1"
+  },
+  {
+    "english": "Good service brings people back.",
+    "level": "A1"
+  },
+  {
+    "english": "Bad service loses buyers.",
+    "level": "A1"
+  },
+  {
+    "english": "The owner checks cash.",
+    "level": "A1"
+  },
+  {
+    "english": "New tools cost money.",
+    "level": "A1"
+  },
+  {
+    "english": "A busy street helps sales.",
+    "level": "A1"
+  },
+  {
+    "english": "The bakery hires one worker.",
+    "level": "A1"
+  },
+  {
+    "english": "She rents a tiny kitchen, and her lunch boxes sell fast.",
+    "level": "A2"
+  },
+  {
+    "english": "He prints flyers today, but most orders come through his phone.",
+    "level": "A2"
+  },
+  {
+    "english": "The barber buys better chairs, so customers wait more comfortably.",
+    "level": "A2"
+  },
+  {
+    "english": "A new cafe opens nearby, and the old one lowers prices.",
+    "level": "A2"
+  },
+  {
+    "english": "The farmer sells jam online, but shipping jars costs extra.",
+    "level": "A2"
+  },
+  {
+    "english": "They test one product first, then they order a bigger batch.",
+    "level": "A2"
+  },
+  {
+    "english": "The owner tracks waste, because spoiled food quietly cuts profit.",
+    "level": "A2"
+  },
+  {
+    "english": "A slow Monday helps her plan, but it does not pay rent.",
+    "level": "A2"
+  },
+  {
+    "english": "He borrows money for tools, and the first job repays half.",
+    "level": "A2"
+  },
+  {
+    "english": "The flower stall sells out early, so tomorrow she brings more roses.",
+    "level": "A2"
+  },
+  {
+    "english": "A clear menu saves time, and confused customers order less.",
+    "level": "A2"
+  },
+  {
+    "english": "The tailor fixes hems quickly, but custom suits take careful pricing.",
+    "level": "A2"
+  },
+  {
+    "english": "They accept cards now, and weekend sales rise a little.",
+    "level": "A2"
+  },
+  {
+    "english": "A broken freezer ruins stock, so insurance suddenly feels useful.",
+    "level": "A2"
+  },
+  {
+    "english": "The toy shop adds gift wrap, and parents spend a bit more.",
+    "level": "A2"
+  },
+  {
+    "english": "She raises wages slightly, because trained staff make fewer mistakes.",
+    "level": "A2"
+  },
+  {
+    "english": "The food truck changes corners, and lunch workers find it faster.",
+    "level": "A2"
+  },
+  {
+    "english": "He sells fewer lamps in summer, so he saves for winter.",
+    "level": "A2"
+  },
+  {
+    "english": "A cheap website looks fine, but slow checkout loses orders.",
+    "level": "A2"
+  },
+  {
+    "english": "The owner counts chairs, because every empty seat is lost revenue.",
+    "level": "A2"
+  },
+  {
+    "english": "They package soap in smaller bars, and tourists buy more gifts.",
+    "level": "A2"
+  },
+  {
+    "english": "The carpenter asks for deposits, so canceled orders hurt less.",
+    "level": "A2"
+  },
+  {
+    "english": "A morning market helps cash flow, but rain keeps people home.",
+    "level": "A2"
+  },
+  {
+    "english": "She learns which cakes travel well, then sells them to offices.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic posts clear prices, and nervous customers trust him sooner.",
+    "level": "A2"
+  },
+  {
+    "english": "A bigger sign brings visitors, but good bread makes them return.",
+    "level": "A2"
+  },
+  {
+    "english": "They rent equipment first, because buying it would drain savings.",
+    "level": "A2"
+  },
+  {
+    "english": "The bookshop hosts readings, and quiet evenings become busier.",
+    "level": "A2"
+  },
+  {
+    "english": "He pays suppliers late once, and they tighten his credit.",
+    "level": "A2"
+  },
+  {
+    "english": "A clean window shows care, but dusty shelves suggest trouble.",
+    "level": "A2"
+  },
+  {
+    "english": "The owner adds delivery, and nearby offices order lunch together.",
+    "level": "A2"
+  },
+  {
+    "english": "She studies receipts, because the best seller may earn little.",
+    "level": "A2"
+  },
+  {
+    "english": "A rival copies the flavor, so she protects the recipe.",
+    "level": "A2"
+  },
+  {
+    "english": "They train one person well, then let that person train others.",
+    "level": "A2"
+  },
+  {
+    "english": "The stall takes mobile payments, and tourists buy without local cash.",
+    "level": "A2"
+  },
+  {
+    "english": "Opening day felt busy, but the till showed how thin the margin was.",
+    "level": "B1"
+  },
+  {
+    "english": "The owner learned that praise is nice, but repeat customers pay the bills.",
+    "level": "B1"
+  },
+  {
+    "english": "A small shop can survive slow weeks if its costs stay boring.",
+    "level": "B1"
+  },
+  {
+    "english": "He stopped selling the popular sandwich because the ingredients ate the profit.",
+    "level": "B1"
+  },
+  {
+    "english": "The best location is not always worth the rent it demands.",
+    "level": "B1"
+  },
+  {
+    "english": "She priced the necklace higher after seeing customers treat it more carefully.",
+    "level": "B1"
+  },
+  {
+    "english": "A supplier who answers the phone can be worth a cheaper quote.",
+    "level": "B1"
+  },
+  {
+    "english": "The cafe did not need more ideas, it needed cleaner opening hours.",
+    "level": "B1"
+  },
+  {
+    "english": "Hiring family saved cash at first, then made every mistake more personal.",
+    "level": "B1"
+  },
+  {
+    "english": "The bakery grew when it stopped trying to please every neighborhood taste.",
+    "level": "B1"
+  },
+  {
+    "english": "A business plan meets real life when the first invoice arrives.",
+    "level": "B1"
+  },
+  {
+    "english": "He knew the shop was working when strangers started recommending it.",
+    "level": "B1"
+  },
+  {
+    "english": "Cheap rent helped the studio survive while the customer list grew.",
+    "level": "B1"
+  },
+  {
+    "english": "A rival across the street can teach faster than a consultant.",
+    "level": "B1"
+  },
+  {
+    "english": "She built the brand one honest repair and one receipt at a time.",
+    "level": "B1"
+  },
+  {
+    "english": "The lunch counter made money by serving fewer dishes very quickly.",
+    "level": "B1"
+  },
+  {
+    "english": "Owners talk about passion, but payroll arrives with no patience.",
+    "level": "B1"
+  },
+  {
+    "english": "A founder often mistakes demand for admiration, until customers praise the idea and still refuse to pay.",
+    "level": "C1"
+  },
+  {
+    "english": "The hardest early decision is not what to sell, but which tempting customers to ignore.",
+    "level": "C1"
+  },
+  {
+    "english": "Profit can look healthy on paper while late payments quietly starve the business of cash.",
+    "level": "C1"
+  },
+  {
+    "english": "A small company survives by learning faster than its mistakes become expensive.",
+    "level": "C1"
+  },
+  {
+    "english": "Competition rarely destroys a careful shop at once, it usually tests every weak habit slowly.",
+    "level": "C1"
+  },
+  {
+    "english": "The first employee changes a business from a personal hustle into a system others must understand.",
+    "level": "C1"
+  },
+  {
+    "english": "Good entrepreneurs do not merely chase gaps in the market, they notice chores people already pay to avoid.",
+    "level": "C1"
+  },
+  {
+    "english": "A loyal customer is not owned by the business, only borrowed through usefulness, fairness, and memory.",
+    "level": "C1"
+  },
+  {
+    "english": "In the first months of a company, the market speaks in fragments, one returned item, one quiet afternoon, one customer who crosses town twice.",
+    "level": "C2"
+  },
+  {
+    "english": "A small business is a wager that a private inconvenience, sharpened into a product, can become useful enough for strangers to fund.",
+    "level": "C2"
+  },
+  {
+    "english": "The founder's spreadsheet may look orderly, but the real business lives in delivery delays, tired staff, supplier moods, and the weather on Saturday.",
+    "level": "C2"
+  },
+  {
+    "english": "A shopkeeper learns economics without naming it, by watching which shelf empties first, which window sign changes footsteps, and which smile becomes another sale.",
+    "level": "C2"
+  },
+  {
+    "english": "Entrepreneurship rewards imagination only after it survives invoices, refunds, rent, taxes, competitors, and the stubborn fact that customers owe nobody their attention.",
+    "level": "C2"
+  },
+  {
+    "english": "Bread costs money.",
+    "level": "A0"
+  },
+  {
+    "english": "Rice is cheaper after harvest.",
+    "level": "A1"
+  },
+  {
+    "english": "Milk costs more in winter.",
+    "level": "A1"
+  },
+  {
+    "english": "Shops change prices every week.",
+    "level": "A1"
+  },
+  {
+    "english": "A full shelf calms buyers.",
+    "level": "A1"
+  },
+  {
+    "english": "Empty shelves make people worry.",
+    "level": "A1"
+  },
+  {
+    "english": "Trade brings coffee to cold countries.",
+    "level": "A1"
+  },
+  {
+    "english": "A baker buys flour first.",
+    "level": "A1"
+  },
+  {
+    "english": "Rent changes the price of bread.",
+    "level": "A1"
+  },
+  {
+    "english": "Scarce goods get attention fast.",
+    "level": "A1"
+  },
+  {
+    "english": "Cash feels different from card money.",
+    "level": "A1"
+  },
+  {
+    "english": "Coins move from hand to hand.",
+    "level": "A1"
+  },
+  {
+    "english": "Farmers watch prices before planting.",
+    "level": "A1"
+  },
+  {
+    "english": "Stores lower prices after holidays.",
+    "level": "A1"
+  },
+  {
+    "english": "Imported fruit costs more today.",
+    "level": "A1"
+  },
+  {
+    "english": "A busy market has many choices.",
+    "level": "A1"
+  },
+  {
+    "english": "The fish was cheap today, so we cooked it tonight.",
+    "level": "A2"
+  },
+  {
+    "english": "If fuel gets costly, delivery fees often rise too.",
+    "level": "A2"
+  },
+  {
+    "english": "A storm closed the port, and oranges arrived late.",
+    "level": "A2"
+  },
+  {
+    "english": "The shop ordered extra coats before the cold week.",
+    "level": "A2"
+  },
+  {
+    "english": "When harvests fail, families notice it at breakfast.",
+    "level": "A2"
+  },
+  {
+    "english": "A higher wage can raise the price of a haircut.",
+    "level": "A2"
+  },
+  {
+    "english": "The farmer sold early, but prices climbed after lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "People bought less beef when chicken became cheaper.",
+    "level": "A2"
+  },
+  {
+    "english": "The market opened late, so the flower prices dropped.",
+    "level": "A2"
+  },
+  {
+    "english": "A crowded bazaar gives buyers more room to bargain.",
+    "level": "A2"
+  },
+  {
+    "english": "The seller kept quiet until the buyer named a price.",
+    "level": "A2"
+  },
+  {
+    "english": "If bread costs more each month, wages feel smaller.",
+    "level": "A2"
+  },
+  {
+    "english": "A cheap train ticket can bring shoppers from another town.",
+    "level": "A2"
+  },
+  {
+    "english": "The cafe raised prices because cocoa cost more.",
+    "level": "A2"
+  },
+  {
+    "english": "Stores use signs when they want goods to move.",
+    "level": "A2"
+  },
+  {
+    "english": "A warehouse full of shoes can make prices softer.",
+    "level": "A2"
+  },
+  {
+    "english": "The last umbrella costs more when rain starts suddenly.",
+    "level": "A2"
+  },
+  {
+    "english": "A trader earns money by moving goods where they are needed.",
+    "level": "A2"
+  },
+  {
+    "english": "Local tomatoes were cheaper because trucks traveled less.",
+    "level": "A2"
+  },
+  {
+    "english": "Imported cheese became costly after shipping fees doubled.",
+    "level": "A2"
+  },
+  {
+    "english": "People paid more for rice when the road flooded.",
+    "level": "A2"
+  },
+  {
+    "english": "The merchant bought in bulk and sold in small bags.",
+    "level": "A2"
+  },
+  {
+    "english": "A factory delay can leave a store with empty hooks.",
+    "level": "A2"
+  },
+  {
+    "english": "The market price changes before the news reaches everyone.",
+    "level": "A2"
+  },
+  {
+    "english": "Buyers waited for payday, and the shoe stall stayed quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "A price tag can hide taxes, fees, and delivery.",
+    "level": "A2"
+  },
+  {
+    "english": "The grocer cut mango prices before they became too soft.",
+    "level": "A2"
+  },
+  {
+    "english": "When wheat gets expensive, noodle shops change their menus.",
+    "level": "A2"
+  },
+  {
+    "english": "A lower price can clear old stock before spring.",
+    "level": "A2"
+  },
+  {
+    "english": "The port strike slowed imports, and car parts became scarce.",
+    "level": "A2"
+  },
+  {
+    "english": "Families compare prices when the same basket costs more.",
+    "level": "A2"
+  },
+  {
+    "english": "A cheap substitute can pull buyers away from a brand.",
+    "level": "A2"
+  },
+  {
+    "english": "Some goods sell faster because they are easy to store.",
+    "level": "A2"
+  },
+  {
+    "english": "A seller with fresh ice can charge more for fish.",
+    "level": "A2"
+  },
+  {
+    "english": "Trade turns one town's surplus into another town's dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "The busier the market gets, the faster sellers learn what people will pay.",
+    "level": "B1"
+  },
+  {
+    "english": "A sudden frost can turn ordinary lettuce into the expensive item on the menu.",
+    "level": "B1"
+  },
+  {
+    "english": "When everyone expects prices to rise, the expectation can help push them higher.",
+    "level": "B1"
+  },
+  {
+    "english": "A shopkeeper learns quickly which price brings customers in and which sends them next door.",
+    "level": "B1"
+  },
+  {
+    "english": "Cheap imports can delight families at checkout while worrying workers in nearby factories.",
+    "level": "B1"
+  },
+  {
+    "english": "The price of eggs tells a story about feed, transport, weather, and disease.",
+    "level": "B1"
+  },
+  {
+    "english": "If a product is hard to replace, buyers accept price rises for longer.",
+    "level": "B1"
+  },
+  {
+    "english": "Street vendors often know demand better than the people who write reports about it.",
+    "level": "B1"
+  },
+  {
+    "english": "A weak harvest does not stay on the farm, it reaches the bakery shelf.",
+    "level": "B1"
+  },
+  {
+    "english": "When shipping containers sit in the wrong port, distant shops feel the delay.",
+    "level": "B1"
+  },
+  {
+    "english": "A tourist market prices the same scarf differently before noon and before closing.",
+    "level": "B1"
+  },
+  {
+    "english": "The sticker price changed first, but the real shock came at the register.",
+    "level": "B1"
+  },
+  {
+    "english": "A crowded trade route can make distant countries feel like neighbors.",
+    "level": "B1"
+  },
+  {
+    "english": "Sellers call it scarcity; buyers call it the day they came too late.",
+    "level": "B1"
+  },
+  {
+    "english": "Inflation feels abstract until the same grocery bag gets lighter.",
+    "level": "B1"
+  },
+  {
+    "english": "A country may sell copper abroad and buy back finished wires.",
+    "level": "B1"
+  },
+  {
+    "english": "Markets turn private guesses into public prices, one sale at a time.",
+    "level": "B1"
+  },
+  {
+    "english": "A price can look like a simple number, yet it carries weather, wages, distance, risk, and timing inside it.",
+    "level": "B2"
+  },
+  {
+    "english": "In a working market, the posted price is less a command than a conversation between scarcity and desire.",
+    "level": "C1"
+  },
+  {
+    "english": "Inflation is especially unsettling because it changes the ruler people use to measure ordinary life.",
+    "level": "C1"
+  },
+  {
+    "english": "Trade lets a region eat beyond its soil, but it also ties breakfast to distant ports.",
+    "level": "C1"
+  },
+  {
+    "english": "A bargain in one aisle may depend on cheap storage, patient capital, and workers nobody sees.",
+    "level": "C1"
+  },
+  {
+    "english": "When buyers lack good information, the neat price tag can make a risky purchase look precise.",
+    "level": "C1"
+  },
+  {
+    "english": "Scarcity does not announce itself politely; it appears as waiting, substitution, rationing, or a sharper bill.",
+    "level": "C1"
+  },
+  {
+    "english": "The global market can turn a dockworker's strike into a delay on a mechanic's bench.",
+    "level": "C1"
+  },
+  {
+    "english": "Price controls can soften pain for a moment, but they often move scarcity into lines and favors.",
+    "level": "C1"
+  },
+  {
+    "english": "A market at dawn, with fish melting on ice and sellers watching the sky, explains supply and demand better than any clean diagram.",
+    "level": "C2"
+  },
+  {
+    "english": "Inflation enters a household quietly, not as a headline but as thinner soup, postponed repairs, and the careful counting of coins before payday.",
+    "level": "C2"
+  },
+  {
+    "english": "International trade is a chain of trust stretched across oceans, where a late ship, a changed currency, or a closed border can rewrite the price of lunch.",
+    "level": "C2"
+  },
+  {
+    "english": "When a city runs short of apartments, the shortage does not remain an idea; it becomes longer commutes, crowded rooms, and families bargaining with distance.",
+    "level": "C2"
+  },
+  {
+    "english": "On a busy trading floor, rumors travel faster than ships, and one nervous price can make distant warehouses, farms, and kitchen tables adjust before sunset.",
+    "level": "C2"
   }
 ]

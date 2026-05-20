@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +708 new phrases authored across 8 facets
+  (parents & children, siblings & cousins, grandparents & the older generation, partners & marriage, in-laws & extended family, friendships across a lifetime, family meals, holidays, & rituals, grief, distance, & repair). New-phrase distribution: A0:7, A1:105, A2:246, B1:127, B2:105, C1:83, C2:35.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

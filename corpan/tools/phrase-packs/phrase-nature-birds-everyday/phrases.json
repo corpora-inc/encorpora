@@ -402,5 +402,1621 @@
   {
     "english": "I see a bird.",
     "level": "A0"
+  },
+  {
+    "english": "Birds leave in fall.",
+    "level": "A0"
+  },
+  {
+    "english": "The geese leave today.",
+    "level": "A1"
+  },
+  {
+    "english": "Swallows come back in spring.",
+    "level": "A1"
+  },
+  {
+    "english": "The hummingbird rests on a twig.",
+    "level": "A1"
+  },
+  {
+    "english": "Ducks pass over the pond.",
+    "level": "A1"
+  },
+  {
+    "english": "The flock is high above us.",
+    "level": "A1"
+  },
+  {
+    "english": "Winter brings fewer birds here.",
+    "level": "A1"
+  },
+  {
+    "english": "Spring brings the robins back.",
+    "level": "A1"
+  },
+  {
+    "english": "The young goose follows the line.",
+    "level": "A1"
+  },
+  {
+    "english": "We hear cranes at night.",
+    "level": "A1"
+  },
+  {
+    "english": "A swallow skims the river.",
+    "level": "A1"
+  },
+  {
+    "english": "The birds travel far.",
+    "level": "A1"
+  },
+  {
+    "english": "Cold rain stops the small birds.",
+    "level": "A1"
+  },
+  {
+    "english": "The swallows gather on the wire before they leave.",
+    "level": "A2"
+  },
+  {
+    "english": "We counted twelve geese, but more came after sunset.",
+    "level": "A2"
+  },
+  {
+    "english": "The hummingbird drinks quickly, then rests before the next mile.",
+    "level": "A2"
+  },
+  {
+    "english": "In September, the yard feels quiet without the swifts.",
+    "level": "A2"
+  },
+  {
+    "english": "The cranes called overhead, and everyone looked up from dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "A warm week can bring the warblers back early.",
+    "level": "A2"
+  },
+  {
+    "english": "The first robin arrived while snow still edged the steps.",
+    "level": "A2"
+  },
+  {
+    "english": "Geese crossed the moon, and their calls sounded tired.",
+    "level": "A2"
+  },
+  {
+    "english": "The swan stayed all winter because the lake did not freeze.",
+    "level": "A2"
+  },
+  {
+    "english": "We filled the feeder before the storm and watched sparrows shelter.",
+    "level": "A2"
+  },
+  {
+    "english": "Some ducks leave in groups, while others wait for colder nights.",
+    "level": "A2"
+  },
+  {
+    "english": "The chimney swifts vanished, and the evening sky looked empty.",
+    "level": "A2"
+  },
+  {
+    "english": "A tiny hummingbird will cross water that looks endless.",
+    "level": "A2"
+  },
+  {
+    "english": "The blackbirds moved through the reeds in one noisy crowd.",
+    "level": "A2"
+  },
+  {
+    "english": "By March, the gulls were already following the river north.",
+    "level": "A2"
+  },
+  {
+    "english": "The old nest stayed empty until the swallows returned.",
+    "level": "A2"
+  },
+  {
+    "english": "We heard snow geese before we saw their pale bodies.",
+    "level": "A2"
+  },
+  {
+    "english": "The flock rose from the field when the wind changed.",
+    "level": "A2"
+  },
+  {
+    "english": "Each autumn, the barn seems larger after the swallows go.",
+    "level": "A2"
+  },
+  {
+    "english": "The shorebirds ran along the mud, feeding before the tide.",
+    "level": "A2"
+  },
+  {
+    "english": "Cold mornings send the crows closer to town for food.",
+    "level": "A2"
+  },
+  {
+    "english": "A late frost can trouble nests, but many birds wait.",
+    "level": "A2"
+  },
+  {
+    "english": "The herons return when frogs begin calling from the ditch.",
+    "level": "A2"
+  },
+  {
+    "english": "We mark spring by the first swallow over the road.",
+    "level": "A2"
+  },
+  {
+    "english": "The geese landed in the cornfield and slept there.",
+    "level": "A2"
+  },
+  {
+    "english": "Some birds follow rivers, and some cross open sea.",
+    "level": "A2"
+  },
+  {
+    "english": "The night sky was clear, so the thrushes traveled.",
+    "level": "A2"
+  },
+  {
+    "english": "By morning, the berry bush had fed a passing flock.",
+    "level": "A2"
+  },
+  {
+    "english": "When the swallows leave, the insects seem to notice first.",
+    "level": "B1"
+  },
+  {
+    "english": "We step outside in October just to hear the geese arguing overhead.",
+    "level": "B1"
+  },
+  {
+    "english": "The hummingbird at the feeder is storing sugar for a journey we cannot imagine.",
+    "level": "B1"
+  },
+  {
+    "english": "A flock can make the whole neighborhood pause, even with cars still running.",
+    "level": "B1"
+  },
+  {
+    "english": "The first warbler of spring turns the bare hedge into news.",
+    "level": "B1"
+  },
+  {
+    "english": "You know winter is serious when the pond ducks finally disappear.",
+    "level": "B1"
+  },
+  {
+    "english": "The swallows do not say goodbye; one evening they simply stop returning.",
+    "level": "B1"
+  },
+  {
+    "english": "Every spring, someone on our street reports the first oriole like weather.",
+    "level": "B1"
+  },
+  {
+    "english": "The cranes pass so high that their voices arrive before their shapes.",
+    "level": "B1"
+  },
+  {
+    "english": "After the cold front, the garden filled with strangers wearing familiar feathers.",
+    "level": "B1"
+  },
+  {
+    "english": "The geese know the route, but they still sound like they are debating it.",
+    "level": "B1"
+  },
+  {
+    "english": "A tired sandpiper can make a parking lot puddle look like a coast.",
+    "level": "B1"
+  },
+  {
+    "english": "We left the porch light off because night migrants were moving through.",
+    "level": "B1"
+  },
+  {
+    "english": "By April, the same fence posts become stations for birds passing north.",
+    "level": "B1"
+  },
+  {
+    "english": "Migration makes the ordinary yard feel briefly connected to tundra, marsh, and gulf coast.",
+    "level": "B2"
+  },
+  {
+    "english": "The swallows gather with a restless patience, as if the wire itself has announced departure.",
+    "level": "B2"
+  },
+  {
+    "english": "A hummingbird at the feeder looks delicate until you remember the miles ahead.",
+    "level": "B2"
+  },
+  {
+    "english": "In autumn, the sky seems to have a schedule that no one in the house can read.",
+    "level": "B2"
+  },
+  {
+    "english": "The returning geese bring spring with them, not gently, but in loud working order.",
+    "level": "B2"
+  },
+  {
+    "english": "Some mornings the maple holds only local sparrows, and some mornings it holds travelers.",
+    "level": "B2"
+  },
+  {
+    "english": "A late storm can scatter a migration, turning patient watchers into worried neighbors.",
+    "level": "B2"
+  },
+  {
+    "english": "The warblers arrive in bright pieces, yellow here, green there, then gone by breakfast.",
+    "level": "B2"
+  },
+  {
+    "english": "The shorebirds feed as if every exposed inch of mud were a borrowed room.",
+    "level": "B2"
+  },
+  {
+    "english": "Even the crows seem to notice when the great lines of geese start moving.",
+    "level": "B2"
+  },
+  {
+    "english": "The mystery is not that birds leave, but that so many return to the right patch of earth.",
+    "level": "B2"
+  },
+  {
+    "english": "By the time we hear the thrushes at night, the journey is already well under way.",
+    "level": "B2"
+  },
+  {
+    "english": "A migrating bird turns weather into instruction, reading pressure, light, and wind with a body smaller than our hand.",
+    "level": "C1"
+  },
+  {
+    "english": "The autumn departure feels abrupt only to us; the birds have been preparing in appetite, feather, and restlessness.",
+    "level": "C1"
+  },
+  {
+    "english": "When the swallows vanish from the barn, the building keeps its shape but loses its quick punctuation.",
+    "level": "C1"
+  },
+  {
+    "english": "The hummingbird's route is a difficult argument against everything that looks fragile from a kitchen window.",
+    "level": "C1"
+  },
+  {
+    "english": "Geese crossing at dusk make distance audible, turning an unseen map into repeated calls and corrections.",
+    "level": "C1"
+  },
+  {
+    "english": "Spring migration is not a parade but a staggered return, each species answering a slightly different clock.",
+    "level": "C1"
+  },
+  {
+    "english": "The best watchers learn to expect error, because wind can rewrite a continent overnight for birds in passage.",
+    "level": "C1"
+  },
+  {
+    "english": "A single exhausted warbler on a fence can carry the weight of forests we will never visit.",
+    "level": "C1"
+  },
+  {
+    "english": "To follow migration closely is to notice how seasons arrive unevenly, wing by wing, instead of all at once.",
+    "level": "C1"
+  },
+  {
+    "english": "Before dawn, when the neighborhood still belongs to porch lamps and delivery trucks, thrushes pass overhead in the dark, trusting signals we have named but not mastered.",
+    "level": "C2"
+  },
+  {
+    "english": "The goose line bends, breaks, and gathers again, less like a symbol than a working compromise between fatigue, wind, and the old pull of breeding grounds.",
+    "level": "C2"
+  },
+  {
+    "english": "A hummingbird weighs almost nothing, yet it crosses weather, water, and our disbelief, carrying inside its bright engine a map no window watcher can unfold.",
+    "level": "C2"
+  },
+  {
+    "english": "Each spring return revises the garden without asking permission, as if the absent swallows had kept a claim on the rafters through every cold month.",
+    "level": "C2"
+  },
+  {
+    "english": "Pigeons walk near me.",
+    "level": "A0"
+  },
+  {
+    "english": "A pigeon sits on the ledge.",
+    "level": "A1"
+  },
+  {
+    "english": "The gull cries above the street.",
+    "level": "A1"
+  },
+  {
+    "english": "Crows hop beside the bus stop.",
+    "level": "A1"
+  },
+  {
+    "english": "The swift flies between tall buildings.",
+    "level": "A1"
+  },
+  {
+    "english": "A falcon waits on the tower.",
+    "level": "A1"
+  },
+  {
+    "english": "Pigeons drink from a puddle.",
+    "level": "A1"
+  },
+  {
+    "english": "The rooftop has three nests.",
+    "level": "A1"
+  },
+  {
+    "english": "A crow watches the traffic.",
+    "level": "A1"
+  },
+  {
+    "english": "Gulls circle the fish market.",
+    "level": "A1"
+  },
+  {
+    "english": "The birds wake the block.",
+    "level": "A1"
+  },
+  {
+    "english": "A pigeon coos by the stairs.",
+    "level": "A1"
+  },
+  {
+    "english": "Swifts scream over the apartments.",
+    "level": "A1"
+  },
+  {
+    "english": "The pigeons peck at crumbs, and a crow waits nearby.",
+    "level": "A2"
+  },
+  {
+    "english": "A gull landed on the lamp, but the wire shook.",
+    "level": "A2"
+  },
+  {
+    "english": "The falcon nests high, where people rarely look.",
+    "level": "A2"
+  },
+  {
+    "english": "At sunrise, crows call from the chimney pots.",
+    "level": "A2"
+  },
+  {
+    "english": "Pigeons sleep under the bridge when rain fills the square.",
+    "level": "A2"
+  },
+  {
+    "english": "The swifts will return when the brick walls warm again.",
+    "level": "A2"
+  },
+  {
+    "english": "A young gull begged outside the cafe, and nobody moved.",
+    "level": "A2"
+  },
+  {
+    "english": "The crow carried a straw to the station roof.",
+    "level": "A2"
+  },
+  {
+    "english": "Pigeons line up on the sign before the shop opens.",
+    "level": "A2"
+  },
+  {
+    "english": "The dawn chorus starts softly, then fills the alley.",
+    "level": "A2"
+  },
+  {
+    "english": "A falcon flashed past the windows, and every pigeon scattered.",
+    "level": "A2"
+  },
+  {
+    "english": "Gulls follow the garbage truck along the morning route.",
+    "level": "A2"
+  },
+  {
+    "english": "The nest is tucked behind the old air conditioner.",
+    "level": "A2"
+  },
+  {
+    "english": "Crows inspect the bins after the restaurant closes.",
+    "level": "A2"
+  },
+  {
+    "english": "A pigeon limped across the platform, but it kept eating.",
+    "level": "A2"
+  },
+  {
+    "english": "Swifts do not land often, so the sky seems their pavement.",
+    "level": "A2"
+  },
+  {
+    "english": "The gull cried from the roof until another answered.",
+    "level": "A2"
+  },
+  {
+    "english": "We saw feathers beside the tower after the falcon hunted.",
+    "level": "A2"
+  },
+  {
+    "english": "Pigeons bathe in the fountain before the offices fill.",
+    "level": "A2"
+  },
+  {
+    "english": "A crow dropped a wrapper and tried the bag instead.",
+    "level": "A2"
+  },
+  {
+    "english": "The rooftop garden brings bees, but the sparrows come first.",
+    "level": "A2"
+  },
+  {
+    "english": "Gulls rest on the warehouse roof after the harbor wind.",
+    "level": "A2"
+  },
+  {
+    "english": "The birds use the gutters like narrow streets.",
+    "level": "A2"
+  },
+  {
+    "english": "A pigeon raised two chicks above the pharmacy sign.",
+    "level": "A2"
+  },
+  {
+    "english": "Crows shouted from the crane while workers crossed the lot.",
+    "level": "A2"
+  },
+  {
+    "english": "The falcon watched from a church spire near the traffic lights.",
+    "level": "A2"
+  },
+  {
+    "english": "Swifts cut circles over the courtyard as evening cooled.",
+    "level": "A2"
+  },
+  {
+    "english": "The alley was still dark, but the pigeons were already awake.",
+    "level": "A2"
+  },
+  {
+    "english": "The city gives birds ledges, wires, vents, and endless leftovers.",
+    "level": "B1"
+  },
+  {
+    "english": "A rooftop crow can make a whole street look up.",
+    "level": "B1"
+  },
+  {
+    "english": "The pigeons know which bakery sweeps late and which one sweeps early.",
+    "level": "B1"
+  },
+  {
+    "english": "When the gulls move inland, the weather is usually changing.",
+    "level": "B1"
+  },
+  {
+    "english": "The peregrine falcon turned the office tower into a cliff.",
+    "level": "B1"
+  },
+  {
+    "english": "Swifts stitch the evening air above the flats without touching it.",
+    "level": "B1"
+  },
+  {
+    "english": "Every morning, the same crow checks the bins behind the cafe.",
+    "level": "B1"
+  },
+  {
+    "english": "Pigeons are city walkers, patient with shoes, wheels, and rain.",
+    "level": "B1"
+  },
+  {
+    "english": "The rooftop nest looks messy until you notice how well it holds.",
+    "level": "B1"
+  },
+  {
+    "english": "Gulls sound bigger than they are between glass towers.",
+    "level": "B1"
+  },
+  {
+    "english": "The first bus passed, and the pigeons lifted like smoke.",
+    "level": "B1"
+  },
+  {
+    "english": "A falcon over the avenue changes every pigeon into an expert.",
+    "level": "B1"
+  },
+  {
+    "english": "Crows treat the power lines like a meeting room with a view.",
+    "level": "B1"
+  },
+  {
+    "english": "The morning chorus comes through the open window before the alarms begin.",
+    "level": "B1"
+  },
+  {
+    "english": "Even the parking garage has its regular birds and small arguments.",
+    "level": "B1"
+  },
+  {
+    "english": "Pigeons make a public square feel occupied before any person arrives.",
+    "level": "B2"
+  },
+  {
+    "english": "The gulls patrol the rooftops with the boldness of birds that know our habits.",
+    "level": "B2"
+  },
+  {
+    "english": "A peregrine on a tower reminds the city that height once belonged to cliffs.",
+    "level": "B2"
+  },
+  {
+    "english": "The dawn chorus is thinner here, but it threads itself through sirens and shutters.",
+    "level": "B2"
+  },
+  {
+    "english": "Crows study a neighborhood with the patience of people waiting for a bus.",
+    "level": "B2"
+  },
+  {
+    "english": "Swifts turn blank apartment blocks into weather, movement, and sudden sound.",
+    "level": "B2"
+  },
+  {
+    "english": "The pigeon's nest above the awning is poor material arranged with serious purpose.",
+    "level": "B2"
+  },
+  {
+    "english": "A rooftop can be a nursery, a lookout, or a battlefield by breakfast.",
+    "level": "B2"
+  },
+  {
+    "english": "City birds learn our schedules, but they never quite become part of them.",
+    "level": "B2"
+  },
+  {
+    "english": "The falcon's dive leaves a clean silence where the pigeons had been.",
+    "level": "B2"
+  },
+  {
+    "english": "Gulls turn restaurant waste into argument, flight, and a hard bright hunger.",
+    "level": "B2"
+  },
+  {
+    "english": "The alley birds know every loose tile, warm vent, and forgiving windowsill.",
+    "level": "B2"
+  },
+  {
+    "english": "Urban birds do not merely survive among buildings; they read them as weather, shelter, and opportunity.",
+    "level": "C1"
+  },
+  {
+    "english": "The pigeon on the courthouse ledge carries no symbolism for itself, only a twig and a purpose.",
+    "level": "C1"
+  },
+  {
+    "english": "A crow crossing the traffic lights seems to understand the city as a sequence of openings.",
+    "level": "C1"
+  },
+  {
+    "english": "Peregrine falcons have made our towers useful again, translating steel and glass back into cliff face.",
+    "level": "C1"
+  },
+  {
+    "english": "The urban dawn chorus is not quieter than the countryside's, only more interrupted and more stubborn.",
+    "level": "C1"
+  },
+  {
+    "english": "Swifts above the rooftops make the air visible, as if the evening had found its handwriting.",
+    "level": "C1"
+  },
+  {
+    "english": "A gull on a chimney is still a coastal bird, even when the sea is miles away.",
+    "level": "C1"
+  },
+  {
+    "english": "The city rewards birds that can improvise, remember, and tolerate our restless rearrangement of space.",
+    "level": "C1"
+  },
+  {
+    "english": "Pigeons have accepted our architecture so thoroughly that we mistake their adaptation for ordinariness.",
+    "level": "C1"
+  },
+  {
+    "english": "From the fire escape, the crow's call sounds less like noise than a local announcement.",
+    "level": "C1"
+  },
+  {
+    "english": "Before the shops unlock their grilles, pigeons already own the square, crows audit the bins, and swifts write quick black signatures above the roofs.",
+    "level": "C2"
+  },
+  {
+    "english": "The peregrine, perched on a ledge of mirrored glass, makes the financial district briefly honest about its borrowed cliffs and manufactured height.",
+    "level": "C2"
+  },
+  {
+    "english": "In the first gray minutes, the city does not wake all at once; it is tested by gull, crow, pigeon, and swift, each voice finding a different surface to strike.",
+    "level": "C2"
+  },
+  {
+    "english": "A rooftop bird lives beside our machinery without becoming mechanical, folding weather, hunger, memory, and caution into the narrow space between vent and parapet.",
+    "level": "C2"
+  },
+  {
+    "english": "I hear a bird.",
+    "level": "A0"
+  },
+  {
+    "english": "The robin sings near the door.",
+    "level": "A1"
+  },
+  {
+    "english": "A crow calls from the streetlight.",
+    "level": "A1"
+  },
+  {
+    "english": "The sparrow chirps under the roof.",
+    "level": "A1"
+  },
+  {
+    "english": "The owl calls after dark.",
+    "level": "A1"
+  },
+  {
+    "english": "The geese honk over the school.",
+    "level": "A1"
+  },
+  {
+    "english": "A finch sings in the hedge.",
+    "level": "A1"
+  },
+  {
+    "english": "The parrot whistles for attention.",
+    "level": "A1"
+  },
+  {
+    "english": "We hear doves at noon.",
+    "level": "A1"
+  },
+  {
+    "english": "The jay screams in the yard.",
+    "level": "A1"
+  },
+  {
+    "english": "A duck quacks by the pond.",
+    "level": "A1"
+  },
+  {
+    "english": "The blackbird calls from the fence.",
+    "level": "A1"
+  },
+  {
+    "english": "Listen to the morning sparrows.",
+    "level": "A1"
+  },
+  {
+    "english": "I heard a robin before I opened the curtains.",
+    "level": "A2"
+  },
+  {
+    "english": "The crows called loudly, and the dog looked up.",
+    "level": "A2"
+  },
+  {
+    "english": "By spring, the wrens will sing from every shrub.",
+    "level": "A2"
+  },
+  {
+    "english": "We learned the sparrow's chip note at the feeder.",
+    "level": "A2"
+  },
+  {
+    "english": "The owl called once, then the whole lane went quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "A blue jay shouted, and every small bird vanished.",
+    "level": "A2"
+  },
+  {
+    "english": "The geese honked above us as the evening turned cold.",
+    "level": "A2"
+  },
+  {
+    "english": "The finch sang again when the rain finally stopped.",
+    "level": "A2"
+  },
+  {
+    "english": "I can tell the cardinal by its clear whistle now.",
+    "level": "A2"
+  },
+  {
+    "english": "The gulls cried over the harbor before the shops opened.",
+    "level": "A2"
+  },
+  {
+    "english": "At dusk, the starlings chattered in the plane trees.",
+    "level": "A2"
+  },
+  {
+    "english": "The chickadee says its name, and children remember it.",
+    "level": "A2"
+  },
+  {
+    "english": "We heard a woodpecker drum on the metal sign.",
+    "level": "A2"
+  },
+  {
+    "english": "A crow's harsh call carries farther than you expect.",
+    "level": "A2"
+  },
+  {
+    "english": "The mourning dove cooed softly outside my bedroom window.",
+    "level": "A2"
+  },
+  {
+    "english": "When the sun rises, the hedge starts to chatter.",
+    "level": "A2"
+  },
+  {
+    "english": "The same robin sings from our garage each morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The parakeet copied the microwave and fooled my father.",
+    "level": "A2"
+  },
+  {
+    "english": "The ducks quacked together when bread hit the water.",
+    "level": "A2"
+  },
+  {
+    "english": "A hawk screamed high above the empty soccer field.",
+    "level": "A2"
+  },
+  {
+    "english": "We stopped talking so we could hear the warbler.",
+    "level": "A2"
+  },
+  {
+    "english": "The evening roost sounded busy before it looked full.",
+    "level": "A2"
+  },
+  {
+    "english": "In winter, the feeder is quieter but never silent.",
+    "level": "A2"
+  },
+  {
+    "english": "The wren poured a bright trill from the fence post.",
+    "level": "A2"
+  },
+  {
+    "english": "I wrote down the call before checking the guide.",
+    "level": "A2"
+  },
+  {
+    "english": "The owl's low call came from behind the barn.",
+    "level": "A2"
+  },
+  {
+    "english": "Some calls mean danger, and the sparrows know them.",
+    "level": "A2"
+  },
+  {
+    "english": "The garden wakes by voices before it wakes by color.",
+    "level": "A2"
+  },
+  {
+    "english": "Once you know the chickadee's call, it follows you everywhere.",
+    "level": "B1"
+  },
+  {
+    "english": "The robin sounded cheerful, though it was only defending breakfast.",
+    "level": "B1"
+  },
+  {
+    "english": "In April, the dawn sounds crowded before the street does.",
+    "level": "B1"
+  },
+  {
+    "english": "My neighbor names birds by ear while his coffee cools.",
+    "level": "B1"
+  },
+  {
+    "english": "The crows have a scolding call reserved for cats.",
+    "level": "B1"
+  },
+  {
+    "english": "We waited under the maple until the warbler sang again.",
+    "level": "B1"
+  },
+  {
+    "english": "A single goose honk can make the whole flock answer.",
+    "level": "B1"
+  },
+  {
+    "english": "The owl called so evenly that the dark felt measured.",
+    "level": "B1"
+  },
+  {
+    "english": "Every spring, I mistake the first starling for a loose hinge.",
+    "level": "B1"
+  },
+  {
+    "english": "The meadowlark's song made the fence line feel farther away.",
+    "level": "B1"
+  },
+  {
+    "english": "By September, the morning chorus thins into patient reminders.",
+    "level": "B1"
+  },
+  {
+    "english": "The parrot's whistle is funny until it starts answering the phone.",
+    "level": "B1"
+  },
+  {
+    "english": "I knew the hawk was near because the sparrows stopped.",
+    "level": "B1"
+  },
+  {
+    "english": "The thrush sang from deep cover, where seeing mattered less.",
+    "level": "B1"
+  },
+  {
+    "english": "Learning birdsong changes a walk, because every hedge begins to introduce itself.",
+    "level": "B2"
+  },
+  {
+    "english": "The crow's call is not pretty, but it keeps perfect local records.",
+    "level": "B2"
+  },
+  {
+    "english": "A robin repeats one bright phrase until the yard accepts its borders.",
+    "level": "B2"
+  },
+  {
+    "english": "In late summer, the silence after nesting season feels like furniture moved overnight.",
+    "level": "B2"
+  },
+  {
+    "english": "The owl's call carries slowly, as if the night has thicker air.",
+    "level": "B2"
+  },
+  {
+    "english": "We identify some birds by absence, when every feeder suddenly goes quiet.",
+    "level": "B2"
+  },
+  {
+    "english": "The dawn chorus fades by breakfast, leaving only errands and roof gutters.",
+    "level": "B2"
+  },
+  {
+    "english": "A wren can fill a small yard with more certainty than music.",
+    "level": "B2"
+  },
+  {
+    "english": "The geese sound untidy overhead, but their calls keep the line together.",
+    "level": "B2"
+  },
+  {
+    "english": "Birdsong is practical first, though we keep hearing it as welcome.",
+    "level": "B2"
+  },
+  {
+    "english": "The warbler sang from leaves so bright that sound became the only clue.",
+    "level": "B2"
+  },
+  {
+    "english": "At the roost, starlings argue themselves into sleep with metallic little voices.",
+    "level": "B2"
+  },
+  {
+    "english": "To learn a bird by sound is to accept that recognition may arrive before sight.",
+    "level": "C1"
+  },
+  {
+    "english": "The first call of spring is not an announcement, exactly, but a correction to winter's account.",
+    "level": "C1"
+  },
+  {
+    "english": "A city robin has to sing above buses, and its bright insistence becomes part of the traffic.",
+    "level": "C1"
+  },
+  {
+    "english": "We call it a chorus because it pleases us, though each bird is mostly negotiating space.",
+    "level": "C1"
+  },
+  {
+    "english": "The owl's call, repeated at intervals, makes distance feel countable in a way daylight rarely does.",
+    "level": "C1"
+  },
+  {
+    "english": "Good listeners hear not just the note, but the weather, season, and urgency carried inside it.",
+    "level": "C1"
+  },
+  {
+    "english": "A crow's alarm can empty a tree faster than any shadow passing over the grass.",
+    "level": "C1"
+  },
+  {
+    "english": "By midsummer, the young birds practice rough copies of songs their parents delivered cleanly in May.",
+    "level": "C1"
+  },
+  {
+    "english": "The evening roost is less peaceful than orderly, a crowded exchange before darkness assigns everyone a branch.",
+    "level": "C1"
+  },
+  {
+    "english": "Birdsong teaches patience because the finest identification may be one repeated syllable from an invisible throat.",
+    "level": "C1"
+  },
+  {
+    "english": "Before the windows brighten, the garden composes itself in fragments: a robin's claim, a wren's fuse, a blackbird's liquid certainty, each voice placing a stake in the still-dark air.",
+    "level": "C2"
+  },
+  {
+    "english": "The novice wants the bird to appear, but the practiced listener is content with a phrase from the thicket, enough evidence to let the hidden life remain hidden.",
+    "level": "C2"
+  },
+  {
+    "english": "In the cold months the morning has fewer singers, so each call seems chosen with care, a small legal notice posted on frost, branch, and gutter.",
+    "level": "C2"
+  },
+  {
+    "english": "At evening, when starlings pour into the trees and quarrel toward sleep, the sound is neither music nor noise, but the day's business being folded away.",
+    "level": "C2"
+  },
+  {
+    "english": "The robin guards her nest.",
+    "level": "A1"
+  },
+  {
+    "english": "Two eggs lie in the grass.",
+    "level": "A1"
+  },
+  {
+    "english": "Do not touch the nest.",
+    "level": "A1"
+  },
+  {
+    "english": "The chick opens its beak.",
+    "level": "A1"
+  },
+  {
+    "english": "The mother bird keeps watch.",
+    "level": "A1"
+  },
+  {
+    "english": "The father brings a worm.",
+    "level": "A1"
+  },
+  {
+    "english": "The nest is under leaves.",
+    "level": "A1"
+  },
+  {
+    "english": "A sparrow feeds its young.",
+    "level": "A1"
+  },
+  {
+    "english": "The eggs are warm.",
+    "level": "A1"
+  },
+  {
+    "english": "The chick has soft down.",
+    "level": "A1"
+  },
+  {
+    "english": "We leave the hedge alone.",
+    "level": "A1"
+  },
+  {
+    "english": "The young crow calls loudly.",
+    "level": "A1"
+  },
+  {
+    "english": "A robin used dry grass, and the nest took shape by noon.",
+    "level": "A2"
+  },
+  {
+    "english": "The blue eggs looked fragile, so we stepped back from the shrub.",
+    "level": "A2"
+  },
+  {
+    "english": "A wren carried moss to the box, then vanished inside.",
+    "level": "A2"
+  },
+  {
+    "english": "The chicks begged all morning, and both parents worked without rest.",
+    "level": "A2"
+  },
+  {
+    "english": "We did not trim the hedge because a nest was hidden there.",
+    "level": "A2"
+  },
+  {
+    "english": "The swallow returned with mud, and her mate guarded the beam.",
+    "level": "A2"
+  },
+  {
+    "english": "In May, leave old stems because finches may hide nests there.",
+    "level": "A2"
+  },
+  {
+    "english": "The young sparrow hopped badly, but its parents still fed it.",
+    "level": "A2"
+  },
+  {
+    "english": "The owl chicks stayed quiet while the mother watched from above.",
+    "level": "A2"
+  },
+  {
+    "english": "A crow brought scraps of string, and the nest grew messier.",
+    "level": "A2"
+  },
+  {
+    "english": "We found broken shells under the maple after the chicks hatched.",
+    "level": "A2"
+  },
+  {
+    "english": "The goose sat low on the nest and hissed at dogs.",
+    "level": "A2"
+  },
+  {
+    "english": "The parrot tucked wood chips around her eggs in the box.",
+    "level": "A2"
+  },
+  {
+    "english": "A fledgling landed near my shoe, so I kept the cat inside.",
+    "level": "A2"
+  },
+  {
+    "english": "The ducklings followed their mother, but one kept stopping to peep.",
+    "level": "A2"
+  },
+  {
+    "english": "The hawk chick tested its wings on the edge of the nest.",
+    "level": "A2"
+  },
+  {
+    "english": "We left the fallen leaves because wrens search them for bedding.",
+    "level": "A2"
+  },
+  {
+    "english": "The blackbird chose a thorny bush, and the cats stayed away.",
+    "level": "A2"
+  },
+  {
+    "english": "A dove warmed two eggs while traffic passed below the balcony.",
+    "level": "A2"
+  },
+  {
+    "english": "The chicks slept after feeding, and the garden suddenly felt still.",
+    "level": "A2"
+  },
+  {
+    "english": "The nest looked loose, but every twig had a purpose.",
+    "level": "A2"
+  },
+  {
+    "english": "Please close the gate gently because the robin is brooding nearby.",
+    "level": "A2"
+  },
+  {
+    "english": "The young geese crossed the path, and everyone waited for them.",
+    "level": "A2"
+  },
+  {
+    "english": "A starling squeezed into the roof gap with a beakful of straw.",
+    "level": "A2"
+  },
+  {
+    "english": "The eggs will hatch soon if the cold nights pass.",
+    "level": "A2"
+  },
+  {
+    "english": "We moved the ladder away and let the swallows finish nesting.",
+    "level": "A2"
+  },
+  {
+    "english": "A chick called from the ivy, but we could not see it.",
+    "level": "A2"
+  },
+  {
+    "english": "The mother duck counted her young with quick turns of her head.",
+    "level": "A2"
+  },
+  {
+    "english": "The nesting box stayed empty for weeks, then a blue tit claimed it overnight.",
+    "level": "B1"
+  },
+  {
+    "english": "I wanted to tidy the yard, but the robins had other plans for May.",
+    "level": "B1"
+  },
+  {
+    "english": "When the fledgling froze on the path, its parents scolded us from the fence.",
+    "level": "B1"
+  },
+  {
+    "english": "A good garden in spring has a few wild corners left for nests.",
+    "level": "B1"
+  },
+  {
+    "english": "The hawk's young practiced short hops before they trusted the air below them.",
+    "level": "B1"
+  },
+  {
+    "english": "We heard the chicks before we noticed the nest tucked behind the porch light.",
+    "level": "B1"
+  },
+  {
+    "english": "The crow lined its nest with plastic, proof that city birds make do.",
+    "level": "B1"
+  },
+  {
+    "english": "Leave that pile of twigs alone, because somebody may have already chosen it.",
+    "level": "B1"
+  },
+  {
+    "english": "The goose did not look large until she stood between us and her eggs.",
+    "level": "B1"
+  },
+  {
+    "english": "A parent bird can look untidy after weeks of feeding open mouths.",
+    "level": "B1"
+  },
+  {
+    "english": "The fledgling seemed abandoned, but the sparrows were watching from the lilac.",
+    "level": "B1"
+  },
+  {
+    "english": "By June, the nest was empty except for dust and one pale shell.",
+    "level": "B1"
+  },
+  {
+    "english": "The swallow chicks leaned over the beam like neighbors watching a street.",
+    "level": "B1"
+  },
+  {
+    "english": "If you find eggs in a planter, water the flowers from the side.",
+    "level": "B1"
+  },
+  {
+    "english": "Nesting season makes a gardener less efficient, because every quiet corner may already be occupied.",
+    "level": "B2"
+  },
+  {
+    "english": "The young owl on the shed roof looked helpless, yet its mother was closer than we knew.",
+    "level": "B2"
+  },
+  {
+    "english": "A nest in the gutter is inconvenient for us, but it may be the safest place a sparrow found.",
+    "level": "B2"
+  },
+  {
+    "english": "We left the dead sunflower stalks standing, and by May they were part of a finch's nursery.",
+    "level": "B2"
+  },
+  {
+    "english": "The hard work of raising chicks is mostly invisible, measured in quick arrivals and empty beaks.",
+    "level": "B2"
+  },
+  {
+    "english": "When a fledgling leaves too early, the whole garden seems to hold its breath.",
+    "level": "B2"
+  },
+  {
+    "english": "The crow's nest looked careless from below, though it had survived two storms and a week of rain.",
+    "level": "B2"
+  },
+  {
+    "english": "Brooding turns an ordinary bird into a small furnace with feathers and patience.",
+    "level": "B2"
+  },
+  {
+    "english": "The owl chick's first climb was not graceful, but it was the beginning of flight.",
+    "level": "B2"
+  },
+  {
+    "english": "A parent starling returns so often that the fence post becomes a clock.",
+    "level": "B2"
+  },
+  {
+    "english": "In spring, the kindest hand in the garden is often the one that does nothing.",
+    "level": "B2"
+  },
+  {
+    "english": "The eggshell on the path was not damage, but evidence of a morning's success.",
+    "level": "B2"
+  },
+  {
+    "english": "A nest asks us to reconsider neatness, since the messy corner may be exactly what survival requires.",
+    "level": "C1"
+  },
+  {
+    "english": "During breeding season, the garden becomes a shared address, with birds filing small claims in ivy, eaves, and hedges.",
+    "level": "C1"
+  },
+  {
+    "english": "The fledgling stage looks like failure to us, because we mistake awkwardness for abandonment.",
+    "level": "C1"
+  },
+  {
+    "english": "A brooding bird teaches the window watcher restraint, since curiosity is useful only at a respectful distance.",
+    "level": "C1"
+  },
+  {
+    "english": "What seems like litter in a crow's nest may be engineering, insulation, and local knowledge braided together.",
+    "level": "C1"
+  },
+  {
+    "english": "May is not the month for heroic pruning, unless you enjoy evicting families you never noticed.",
+    "level": "C1"
+  },
+  {
+    "english": "The parent sparrow's route from hedge to lawn becomes so regular that the whole yard feels scheduled.",
+    "level": "C1"
+  },
+  {
+    "english": "An empty nest is not a sad object, but a record of work completed without an audience.",
+    "level": "C1"
+  },
+  {
+    "english": "To raise young, a bird must turn the neighborhood into a map of danger, food, shelter, and return.",
+    "level": "C1"
+  },
+  {
+    "english": "By the time we notice the nest, the birds have already negotiated with weather, cats, rain gutters, and our habit of calling tidiness care.",
+    "level": "C2"
+  },
+  {
+    "english": "The first flight of a young bird is not triumphal; it is a rough agreement between muscle, fear, air, and the branch left behind.",
+    "level": "C2"
+  },
+  {
+    "english": "In May, mercy may look like laziness, a rake left in the shed while hidden mouths open and close beneath the leaves.",
+    "level": "C2"
+  },
+  {
+    "english": "A bird raising young lives in a strict present, yet its repeated journeys make the garden feel ancient, purposeful, and briefly entrusted to us.",
+    "level": "C2"
+  },
+  {
+    "english": "I feed birds.",
+    "level": "A0"
+  },
+  {
+    "english": "The feeder is empty.",
+    "level": "A1"
+  },
+  {
+    "english": "A sparrow hops near my chair.",
+    "level": "A1"
+  },
+  {
+    "english": "Two finches share one perch.",
+    "level": "A1"
+  },
+  {
+    "english": "The robin stands on the lawn.",
+    "level": "A1"
+  },
+  {
+    "english": "A chickadee waits by the seeds.",
+    "level": "A1"
+  },
+  {
+    "english": "The cardinal looks bright in snow.",
+    "level": "A1"
+  },
+  {
+    "english": "We fill the bird table.",
+    "level": "A1"
+  },
+  {
+    "english": "The birds come after breakfast.",
+    "level": "A1"
+  },
+  {
+    "english": "A squirrel scares the sparrows.",
+    "level": "A1"
+  },
+  {
+    "english": "The seed bag is heavy.",
+    "level": "A1"
+  },
+  {
+    "english": "The feeder swings in the wind.",
+    "level": "A1"
+  },
+  {
+    "english": "I watch from the kitchen.",
+    "level": "A1"
+  },
+  {
+    "english": "The sparrows found the millet, and the finches found the sunflower seeds.",
+    "level": "A2"
+  },
+  {
+    "english": "A chickadee takes one seed, then flies back to the lilac.",
+    "level": "A2"
+  },
+  {
+    "english": "We cleaned the feeder yesterday, so the seed stays dry.",
+    "level": "A2"
+  },
+  {
+    "english": "The robin ignores the feeder but searches the flower bed.",
+    "level": "A2"
+  },
+  {
+    "english": "I will refill the water dish before the afternoon heat.",
+    "level": "A2"
+  },
+  {
+    "english": "A blue jay arrived first, and the smaller birds waited.",
+    "level": "A2"
+  },
+  {
+    "english": "The cardinal came late, when the yard was almost quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "Goldfinches cling to the mesh and eat upside down.",
+    "level": "A2"
+  },
+  {
+    "english": "The bird table needs a roof because rain spoils the seed.",
+    "level": "A2"
+  },
+  {
+    "english": "A mourning dove walks below the feeder and gathers fallen grain.",
+    "level": "A2"
+  },
+  {
+    "english": "We counted six sparrows before the kettle began to sing.",
+    "level": "A2"
+  },
+  {
+    "english": "The chickadee landed, took a seed, and vanished into the hedge.",
+    "level": "A2"
+  },
+  {
+    "english": "The finch has a red head, but its back is brown.",
+    "level": "A2"
+  },
+  {
+    "english": "I moved the feeder away from the window after one hard bump.",
+    "level": "A2"
+  },
+  {
+    "english": "The robins like the wet path after we water the tomatoes.",
+    "level": "A2"
+  },
+  {
+    "english": "A nuthatch runs down the trunk as if gravity forgot it.",
+    "level": "A2"
+  },
+  {
+    "english": "The sparrows argue in the hedge, then return to eat together.",
+    "level": "A2"
+  },
+  {
+    "english": "Our old feeder squeaks, but the birds do not mind.",
+    "level": "A2"
+  },
+  {
+    "english": "I left apple pieces outside, and a robin inspected them.",
+    "level": "A2"
+  },
+  {
+    "english": "The cardinal's mate stayed hidden, but she answered from the shrub.",
+    "level": "A2"
+  },
+  {
+    "english": "A chickadee calls once, and the whole feeder seems to pause.",
+    "level": "A2"
+  },
+  {
+    "english": "The seed tray is messy, so millet sprouts under the roses.",
+    "level": "A2"
+  },
+  {
+    "english": "We keep binoculars near the sink for sudden visitors.",
+    "level": "A2"
+  },
+  {
+    "english": "The finches prefer thistle seed, and they scatter the shells.",
+    "level": "A2"
+  },
+  {
+    "english": "A sparrow bathes in the saucer while another keeps watch.",
+    "level": "A2"
+  },
+  {
+    "english": "The feeder was frozen this morning, but the birds still came.",
+    "level": "A2"
+  },
+  {
+    "english": "I brushed snow from the bird table before making coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "The kitchen window frames the feeder like a small stage.",
+    "level": "A2"
+  },
+  {
+    "english": "By noon, the sparrows have picked through the seed like careful shoppers.",
+    "level": "B1"
+  },
+  {
+    "english": "The chickadees never stay long, but they make every visit count.",
+    "level": "B1"
+  },
+  {
+    "english": "I know the cardinal is near when the yard goes briefly still.",
+    "level": "B1"
+  },
+  {
+    "english": "The feeder teaches patience, because the best visitor usually arrives after you stop waiting.",
+    "level": "B1"
+  },
+  {
+    "english": "Robins patrol the mulch after rain, pulling breakfast from the soft dark soil.",
+    "level": "B1"
+  },
+  {
+    "english": "A finch can turn a plain gray morning into something worth mentioning.",
+    "level": "B1"
+  },
+  {
+    "english": "The blue jay bullies the table, then leaves most of the food behind.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned to buy better seed after the birds ignored the cheap mix.",
+    "level": "B1"
+  },
+  {
+    "english": "The sparrows fuss at each other, but they sleep in the same hedge.",
+    "level": "B1"
+  },
+  {
+    "english": "From the kitchen sink, I can tell which bird lands by the sound.",
+    "level": "B1"
+  },
+  {
+    "english": "The suet cage brings woodpeckers close enough to see their serious faces.",
+    "level": "B1"
+  },
+  {
+    "english": "A clean feeder is a small kindness, especially during a wet week.",
+    "level": "B1"
+  },
+  {
+    "english": "The chickadee seems fearless until a shadow crosses the fence.",
+    "level": "B1"
+  },
+  {
+    "english": "Cardinals visit in pairs, as if the yard were a quiet appointment.",
+    "level": "B1"
+  },
+  {
+    "english": "When the feeder runs empty, the sparrows check it anyway.",
+    "level": "B1"
+  },
+  {
+    "english": "The garden feels larger once you learn how many small birds use the same space.",
+    "level": "B2"
+  },
+  {
+    "english": "A feeder does not tame the birds, it only makes their wild errands visible.",
+    "level": "B2"
+  },
+  {
+    "english": "I used to miss chickadees until I learned to notice the quick black cap.",
+    "level": "B2"
+  },
+  {
+    "english": "The cardinal's red is not decoration in winter; it is a signal moving through bare branches.",
+    "level": "B2"
+  },
+  {
+    "english": "Every feeder has politics, with bold birds, shy birds, and one sparrow who risks everything first.",
+    "level": "B2"
+  },
+  {
+    "english": "The robin beside the tomato bed seems domestic, until it tilts its head and listens underground.",
+    "level": "B2"
+  },
+  {
+    "english": "Watching finches sort seed husks from food makes breakfast at the window feel almost ceremonial.",
+    "level": "B2"
+  },
+  {
+    "english": "A good bird table keeps rain away without pretending the garden belongs to us.",
+    "level": "B2"
+  },
+  {
+    "english": "The birds forgive an empty feeder more quickly than I forgive myself for forgetting it.",
+    "level": "B2"
+  },
+  {
+    "english": "A chickadee's visit lasts seconds, yet the kitchen feels attended after it leaves.",
+    "level": "B2"
+  },
+  {
+    "english": "The feeder makes a schedule of the yard, though no bird has agreed to keep it.",
+    "level": "B2"
+  },
+  {
+    "english": "Fallen seed changes the ground below, feeding weeds, mice, and the sparrows again.",
+    "level": "B2"
+  },
+  {
+    "english": "A feeder is an invitation with limits, offered from the house to creatures that owe the house nothing.",
+    "level": "C1"
+  },
+  {
+    "english": "The patient watcher learns that garden birds are not scenery, but neighbors with routes, tempers, and preferred branches.",
+    "level": "C1"
+  },
+  {
+    "english": "Sparrows seem common until the window teaches you how many decisions fit inside one brown body.",
+    "level": "C1"
+  },
+  {
+    "english": "A cardinal at the feeder clarifies the whole yard, turning fence, shrub, and snow into background.",
+    "level": "C1"
+  },
+  {
+    "english": "The best bird table is modest, clean, and placed where hunger need not become danger.",
+    "level": "C1"
+  },
+  {
+    "english": "Finches bring color without spectacle, arriving in small committees that revise the feeder one seed at a time.",
+    "level": "C1"
+  },
+  {
+    "english": "To watch chickadees well is to admire efficiency without mistaking it for hurry.",
+    "level": "C1"
+  },
+  {
+    "english": "The kitchen window becomes a field station when the notebook, kettle, and binoculars share the sill.",
+    "level": "C1"
+  },
+  {
+    "english": "A robin does not need the feeder, but its presence on the lawn completes the morning traffic.",
+    "level": "C1"
+  },
+  {
+    "english": "Feeding birds is not ownership; it is a brief participation in weather, appetite, and trust.",
+    "level": "C1"
+  },
+  {
+    "english": "At the kitchen window, the feeder becomes a little republic of appetite, where sparrows dispute crumbs, finches deliberate over thistle, and the cardinal arrives like a verdict in red.",
+    "level": "C2"
+  },
+  {
+    "english": "Because the birds remain free to ignore us, every visit feels less like success than permission, granted briefly by a chickadee with one seed in its beak.",
+    "level": "C2"
+  },
+  {
+    "english": "The garden teaches scale gently: a fallen sunflower shell can matter to an ant, a sparrow, a mouse, and the person sweeping the step after lunch.",
+    "level": "C2"
+  },
+  {
+    "english": "No sermon could improve the sight of a robin listening in wet soil while, three feet away, goldfinches quarrel softly over a feeder we cleaned before dawn.",
+    "level": "C2"
   }
 ]

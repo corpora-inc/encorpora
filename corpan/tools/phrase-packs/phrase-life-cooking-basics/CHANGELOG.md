@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +706 new phrases authored across 8 facets
+  (knives, pots, & the working kitchen, eggs, rice, & the daily staples, vegetables, fruits, & the farmer's market, meat, fish, & protein, baking, bread, & sweets, spices, herbs, & global flavors, hosting, feasts, & meals shared, food, memory, & the cook's voice). New-phrase distribution: A0:7, A1:117, A2:262, B1:101, B2:88, C1:92, C2:39.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

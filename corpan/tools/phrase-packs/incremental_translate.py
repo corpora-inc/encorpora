@@ -53,69 +53,105 @@ def translate_increment(lang: str, client, model: str, pack_dir: Path,
                         ) -> tuple[str, str, float, int]:
     """Translate the new phrases for one language and splice into existing file."""
     out_path = pack_dir / "translations" / f"{lang}.json"
-    if not out_path.is_file():
-        return (lang, f"MISSING_BASE: {out_path.name} not found", 0.0, 0)
-
-    existing = json.loads(out_path.read_text())
-    if not isinstance(existing, dict):
-        return (lang, "BAD_BASE: not a dict", 0.0, 0)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    if out_path.is_file():
+        existing = json.loads(out_path.read_text())
+        if not isinstance(existing, dict):
+            return (lang, "BAD_BASE: not a dict", 0.0, 0)
+    else:
+        existing = {}
 
     n = len(new_phrases)
-    # Idempotency: if file already contains all the new indices with non-empty text, no-op.
-    if len(existing) == new_from + n and all(
+    target_total = new_from + n
+
+    # Per-lang resume: each lang picks up at its own len(existing). This handles
+    # the common case of a partially-completed prior run that filled some langs
+    # to e.g. 300/808 while others sit at 0/808. Resume index = max(new_from,
+    # len(existing)).
+    lang_start = max(new_from, len(existing))
+    lang_n = target_total - lang_start
+
+    # Idempotency: already at full target with all phrases valid
+    if lang_n <= 0 and all(
             str(new_from + i) in existing
             and isinstance(existing[str(new_from + i)], dict)
             and str(existing[str(new_from + i)].get("text", "")).strip()
             for i in range(n)):
         return (lang, "SKIP (already merged)", 0.0, out_path.stat().st_size)
 
-    if len(existing) != new_from:
-        return (lang, f"BASE_SIZE_MISMATCH: have {len(existing)}, expected {new_from}", 0.0, 0)
-    prompt = build_prompt(lang, topic, n, new_phrases)
+    # Reject sparse files that have keys outside the contiguous [0, len(existing))
+    # range, which would suggest corruption rather than a clean partial fill.
+    for i in range(len(existing)):
+        if str(i) not in existing:
+            return (lang, f"NONCONTIGUOUS_BASE: missing key {i} in existing file ({len(existing)} entries)",
+                    0.0, 0)
 
-    t0 = time.time()
-    try:
-        resp = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=gtypes.GenerateContentConfig(
-                temperature=temperature,
-                max_output_tokens=8192,
-                response_mime_type="application/json",
-            ),
-        )
-    except Exception as e:
-        return (lang, f"API_ERROR: {type(e).__name__}: {str(e)[:200]}", time.time() - t0, 0)
+    # Slice the new_phrases list so the model only sees the phrases this lang
+    # still needs. new_phrases[i] corresponds to global index new_from + i, so
+    # the model needs new_phrases[lang_start - new_from : ].
+    lang_phrases = new_phrases[lang_start - new_from:]
 
-    dur = time.time() - t0
-    text = (resp.text or "").strip()
-    if not text:
-        return (lang, "EMPTY_RESPONSE", dur, 0)
-
-    try:
-        data = json.loads(text)
-    except json.JSONDecodeError as e:
-        return (lang, f"BAD_JSON: {e}", dur, len(text))
-
-    if not isinstance(data, dict) or len(data) != n:
-        return (lang, f"COUNT_MISMATCH: got {len(data) if isinstance(data, dict) else type(data).__name__}, expected {n}", dur, len(text))
-
-    # Re-key from 0..n-1 (the model sees these) to new_from..new_from+n-1 (real indices)
+    # Chunk into ≤100 phrases per call. Romanized scripts double output token
+    # count, and 400+ phrases per call hit Gemini's max_output_tokens cap → JSON
+    # truncation. Per-chunk re-keying lands each entry at its true global index.
+    CHUNK = 100
     merged = dict(existing)
-    for i in range(n):
-        k_model = str(i)
-        if k_model not in data:
-            return (lang, f"MISSING_KEY: {k_model}", dur, len(text))
-        entry = data[k_model]
-        if not isinstance(entry, dict) or "text" not in entry or not str(entry.get("text", "")).strip():
-            return (lang, f"BAD_ENTRY at {k_model}", dur, len(text))
-        rom = entry.get("romanization")
-        if isinstance(rom, str) and not rom.strip():
-            rom = None
-        merged[str(new_from + i)] = {"text": entry["text"], "romanization": rom}
+    t0 = time.time()
+    total_text_len = 0
 
-    out_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2))
-    return (lang, "OK", dur, out_path.stat().st_size)
+    for chunk_start in range(0, lang_n, CHUNK):
+        chunk_phrases = lang_phrases[chunk_start:chunk_start + CHUNK]
+        cn = len(chunk_phrases)
+        prompt = build_prompt(lang, topic, cn, chunk_phrases)
+
+        try:
+            resp = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=gtypes.GenerateContentConfig(
+                    temperature=temperature,
+                    max_output_tokens=65536,
+                    response_mime_type="application/json",
+                ),
+            )
+        except Exception as e:
+            return (lang, f"API_ERROR at chunk {chunk_start}: {type(e).__name__}: {str(e)[:200]}",
+                    time.time() - t0, total_text_len)
+
+        text = (resp.text or "").strip()
+        total_text_len += len(text)
+        if not text:
+            return (lang, f"EMPTY_RESPONSE at chunk {chunk_start}", time.time() - t0, total_text_len)
+
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError as e:
+            return (lang, f"BAD_JSON at chunk {chunk_start}: {e}", time.time() - t0, total_text_len)
+
+        if not isinstance(data, dict) or len(data) != cn:
+            return (lang, f"COUNT_MISMATCH at chunk {chunk_start}: got {len(data) if isinstance(data, dict) else type(data).__name__}, expected {cn}",
+                    time.time() - t0, total_text_len)
+
+        # Re-key from 0..cn-1 (model's view) to global index = lang_start + chunk_start + i
+        for i in range(cn):
+            k_model = str(i)
+            if k_model not in data:
+                return (lang, f"MISSING_KEY at chunk {chunk_start}: {k_model}",
+                        time.time() - t0, total_text_len)
+            entry = data[k_model]
+            if not isinstance(entry, dict) or "text" not in entry or not str(entry.get("text", "")).strip():
+                return (lang, f"BAD_ENTRY at chunk {chunk_start} key {k_model}",
+                        time.time() - t0, total_text_len)
+            rom = entry.get("romanization")
+            if isinstance(rom, str) and not rom.strip():
+                rom = None
+            global_idx = lang_start + chunk_start + i
+            merged[str(global_idx)] = {"text": entry["text"], "romanization": rom}
+
+        # Persist after each chunk so partial progress isn't lost on crash.
+        out_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2))
+
+    return (lang, "OK", time.time() - t0, out_path.stat().st_size)
 
 
 def main() -> int:

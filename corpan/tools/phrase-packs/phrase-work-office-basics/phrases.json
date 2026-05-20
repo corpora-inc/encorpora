@@ -406,5 +406,1617 @@
   {
     "english": "An office is the small daily theater in which a culture rehearses its most cherished disagreements about time, attention, hierarchy, and the long compromise between what we are paid to do and what we suspect we were meant to do instead.",
     "level": "C2"
+  },
+  {
+    "english": "Work starts now.",
+    "level": "A0"
+  },
+  {
+    "english": "The task is due today.",
+    "level": "A1"
+  },
+  {
+    "english": "I finished my ticket.",
+    "level": "A1"
+  },
+  {
+    "english": "She updated the plan.",
+    "level": "A1"
+  },
+  {
+    "english": "We need one more review.",
+    "level": "A1"
+  },
+  {
+    "english": "The task list looks short.",
+    "level": "A1"
+  },
+  {
+    "english": "He fixed the small bug.",
+    "level": "A1"
+  },
+  {
+    "english": "Please check the timeline.",
+    "level": "A1"
+  },
+  {
+    "english": "The file is ready.",
+    "level": "A1"
+  },
+  {
+    "english": "I sent the final version.",
+    "level": "A1"
+  },
+  {
+    "english": "We started the new project.",
+    "level": "A1"
+  },
+  {
+    "english": "The plan changed this morning.",
+    "level": "A1"
+  },
+  {
+    "english": "She owns that task.",
+    "level": "A1"
+  },
+  {
+    "english": "My part is done.",
+    "level": "A1"
+  },
+  {
+    "english": "The review took five minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "We missed one small detail.",
+    "level": "A1"
+  },
+  {
+    "english": "The ticket is open, but the work is nearly done.",
+    "level": "A2"
+  },
+  {
+    "english": "I moved the task to the next column.",
+    "level": "A2"
+  },
+  {
+    "english": "She added a comment, and the blocker became clearer.",
+    "level": "A2"
+  },
+  {
+    "english": "We will review the plan after lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "The client asked for changes, so the timeline shifted.",
+    "level": "A2"
+  },
+  {
+    "english": "He closed three tickets before the morning standup.",
+    "level": "A2"
+  },
+  {
+    "english": "The draft needs charts before it can go out.",
+    "level": "A2"
+  },
+  {
+    "english": "We split the project into smaller tasks.",
+    "level": "A2"
+  },
+  {
+    "english": "I added notes so the next person can continue.",
+    "level": "A2"
+  },
+  {
+    "english": "The test failed once, but it passed later.",
+    "level": "A2"
+  },
+  {
+    "english": "She checked the dates and found a missing step.",
+    "level": "A2"
+  },
+  {
+    "english": "We finished the plan, but the budget still needs review.",
+    "level": "A2"
+  },
+  {
+    "english": "The designer uploaded the mockups after the call.",
+    "level": "A2"
+  },
+  {
+    "english": "I will update the board before I leave.",
+    "level": "A2"
+  },
+  {
+    "english": "The task looked simple until we opened it.",
+    "level": "A2"
+  },
+  {
+    "english": "He tagged me because the question was about data.",
+    "level": "A2"
+  },
+  {
+    "english": "The weekly report is short, but it tells the story.",
+    "level": "A2"
+  },
+  {
+    "english": "We found the risk before it reached the customer.",
+    "level": "A2"
+  },
+  {
+    "english": "The sprint ends tomorrow, and two tasks remain.",
+    "level": "A2"
+  },
+  {
+    "english": "She moved the bug into the current sprint.",
+    "level": "A2"
+  },
+  {
+    "english": "I changed the due date after the scope grew.",
+    "level": "A2"
+  },
+  {
+    "english": "The checklist helps when everyone is tired.",
+    "level": "A2"
+  },
+  {
+    "english": "We asked for feedback before the work went too far.",
+    "level": "A2"
+  },
+  {
+    "english": "The dashboard shows progress, but it hides the hard parts.",
+    "level": "A2"
+  },
+  {
+    "english": "He updated the estimate when the data arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "The handoff was smooth because the notes were clear.",
+    "level": "A2"
+  },
+  {
+    "english": "We reopened the ticket after the bug came back.",
+    "level": "A2"
+  },
+  {
+    "english": "The release checklist lives in the shared folder.",
+    "level": "A2"
+  },
+  {
+    "english": "She asked for one owner for each deliverable.",
+    "level": "A2"
+  },
+  {
+    "english": "I saved the final file in the project folder.",
+    "level": "A2"
+  },
+  {
+    "english": "The team celebrated quietly when the build turned green.",
+    "level": "A2"
+  },
+  {
+    "english": "We kept the old plan, but changed the order.",
+    "level": "A2"
+  },
+  {
+    "english": "That task has been sitting in review all week.",
+    "level": "B1"
+  },
+  {
+    "english": "We thought it was done until support found another edge case.",
+    "level": "B1"
+  },
+  {
+    "english": "Can you break that into tickets people can actually finish?",
+    "level": "B1"
+  },
+  {
+    "english": "The retro was honest, but nobody blamed the person who stayed late.",
+    "level": "B1"
+  },
+  {
+    "english": "I can take the first pass if someone else checks the numbers.",
+    "level": "B1"
+  },
+  {
+    "english": "The board looks tidy, which usually means something is hiding.",
+    "level": "B1"
+  },
+  {
+    "english": "We are close enough to argue about details now.",
+    "level": "B1"
+  },
+  {
+    "english": "Her status update was short because the work was not.",
+    "level": "B1"
+  },
+  {
+    "english": "A deadline changes the room, even when nobody mentions it directly.",
+    "level": "B2"
+  },
+  {
+    "english": "The project finally became real when every task had a name beside it.",
+    "level": "B2"
+  },
+  {
+    "english": "We called it a quick fix, then gave it its own timeline.",
+    "level": "B2"
+  },
+  {
+    "english": "The retro sounded polite, but the notes were full of careful warnings.",
+    "level": "B2"
+  },
+  {
+    "english": "By Thursday, the plan had the tired precision of a train timetable.",
+    "level": "B2"
+  },
+  {
+    "english": "The deliverable was small, but it carried three teams on its back.",
+    "level": "B2"
+  },
+  {
+    "english": "Nobody loves the tracking sheet, yet everyone checks it before speaking.",
+    "level": "B2"
+  },
+  {
+    "english": "We protected the launch date by cutting everything nobody could explain.",
+    "level": "B2"
+  },
+  {
+    "english": "The first estimate was less a promise than a weather report, useful until the sky changed.",
+    "level": "C1"
+  },
+  {
+    "english": "A good project board admits uncertainty without letting it become the whole atmosphere.",
+    "level": "C1"
+  },
+  {
+    "english": "During the retro, the most valuable comment was the one everyone had nearly softened away.",
+    "level": "C1"
+  },
+  {
+    "english": "The deliverable looked modest on paper, but it gathered every unfinished conversation in the department.",
+    "level": "C1"
+  },
+  {
+    "english": "We kept the deadline, although the final week turned into a quiet trade of sleep for certainty.",
+    "level": "C1"
+  },
+  {
+    "english": "The status update had to be calm enough for leadership and precise enough for the people doing the work.",
+    "level": "C1"
+  },
+  {
+    "english": "Every sprint begins with clean intentions and ends with a small archive of human judgment.",
+    "level": "C1"
+  },
+  {
+    "english": "The ticket was reopened because completion, in offices, often means the problem has merely changed rooms.",
+    "level": "C1"
+  },
+  {
+    "english": "Planning gives the week a shape, then reality tests each corner with impressive patience.",
+    "level": "C1"
+  },
+  {
+    "english": "She wrote the acceptance criteria so plainly that disagreement had nowhere comfortable to hide.",
+    "level": "C1"
+  },
+  {
+    "english": "The launch depended less on brilliance than on thirty small decisions made before anyone was exhausted.",
+    "level": "C1"
+  },
+  {
+    "english": "By naming the risk early, we saved ourselves the theater of pretending surprise later.",
+    "level": "C1"
+  },
+  {
+    "english": "A project plan is an office's private calendar of hope, where tasks sit in clean rows until illness, hesitation, software, and politics begin moving the furniture.",
+    "level": "C2"
+  },
+  {
+    "english": "The retrospective did not solve the delay, but it gave the delay a grammar, which was the first honest thing we had owned all week.",
+    "level": "C2"
+  },
+  {
+    "english": "Under the fluorescent patience of Wednesday afternoon, the team revised the scope again, not because anyone lacked ambition, but because delivery has a brutal fondness for evidence.",
+    "level": "C2"
+  },
+  {
+    "english": "The final deliverable arrived without ceremony, a quiet folder link at 6:12, carrying with it revisions, compromises, and the faint relief of people who can finally stop explaining.",
+    "level": "C2"
+  },
+  {
+    "english": "What the dashboard called progress was really a chain of favors, corrections, guesses, and tiny acts of discipline performed by people who still had dinner to make.",
+    "level": "C2"
+  },
+  {
+    "english": "Lunch is in the fridge.",
+    "level": "A1"
+  },
+  {
+    "english": "I eat at my desk.",
+    "level": "A1"
+  },
+  {
+    "english": "The kitchen smells like coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "She takes the train today.",
+    "level": "A1"
+  },
+  {
+    "english": "My bus is late again.",
+    "level": "A1"
+  },
+  {
+    "english": "We work from home today.",
+    "level": "A1"
+  },
+  {
+    "english": "The office feels cold.",
+    "level": "A1"
+  },
+  {
+    "english": "He brings soup for lunch.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a short break.",
+    "level": "A1"
+  },
+  {
+    "english": "The fridge is full.",
+    "level": "A1"
+  },
+  {
+    "english": "She walks during lunch.",
+    "level": "A1"
+  },
+  {
+    "english": "We leave at five.",
+    "level": "A1"
+  },
+  {
+    "english": "My desk is at home.",
+    "level": "A1"
+  },
+  {
+    "english": "The elevator is slow today.",
+    "level": "A1"
+  },
+  {
+    "english": "I packed lunch, but the cafe downstairs looks better.",
+    "level": "A2"
+  },
+  {
+    "english": "She forgot her badge, so security called upstairs.",
+    "level": "A2"
+  },
+  {
+    "english": "The train was crowded, but I found a seat.",
+    "level": "A2"
+  },
+  {
+    "english": "I will work from home because the plumber is coming.",
+    "level": "A2"
+  },
+  {
+    "english": "We ate sandwiches outside, and the phones stayed inside.",
+    "level": "A2"
+  },
+  {
+    "english": "The microwave beeped for a full minute before anyone moved.",
+    "level": "A2"
+  },
+  {
+    "english": "He left early, but he answered messages from the bus.",
+    "level": "A2"
+  },
+  {
+    "english": "My coffee went cold while I read the morning chat.",
+    "level": "A2"
+  },
+  {
+    "english": "The office fridge has three kinds of milk today.",
+    "level": "A2"
+  },
+  {
+    "english": "She saves her commute time for laundry and quiet coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "We ordered noodles because the rain reached the lobby.",
+    "level": "A2"
+  },
+  {
+    "english": "I forgot my headphones, so the open office felt louder.",
+    "level": "A2"
+  },
+  {
+    "english": "The kitchen table becomes my desk after breakfast.",
+    "level": "A2"
+  },
+  {
+    "english": "He takes lunch late when the kitchen is empty.",
+    "level": "A2"
+  },
+  {
+    "english": "We met for drinks, but everyone checked the last train.",
+    "level": "A2"
+  },
+  {
+    "english": "The office lights come on before most people arrive.",
+    "level": "A2"
+  },
+  {
+    "english": "I keep snacks in a drawer for long afternoons.",
+    "level": "A2"
+  },
+  {
+    "english": "She changed desks because the vent blew cold air.",
+    "level": "A2"
+  },
+  {
+    "english": "The bus ride home was quiet after a loud day.",
+    "level": "A2"
+  },
+  {
+    "english": "We use the small table when the lunchroom is full.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot his umbrella, and the commute soaked his shoes.",
+    "level": "A2"
+  },
+  {
+    "english": "I took a break, but the problem followed me downstairs.",
+    "level": "A2"
+  },
+  {
+    "english": "The office coffee tastes better when someone else makes it.",
+    "level": "A2"
+  },
+  {
+    "english": "She logs off early on remote days to cook dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "We waved from two laptops and called it a team lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "The vending machine kept my coins and taught me patience.",
+    "level": "A2"
+  },
+  {
+    "english": "I missed the express train by one closing door.",
+    "level": "A2"
+  },
+  {
+    "english": "He brings leftovers in glass boxes that never leak.",
+    "level": "A2"
+  },
+  {
+    "english": "The office kitchen has better gossip than the chat.",
+    "level": "A2"
+  },
+  {
+    "english": "We left our coats on chairs and went for ramen.",
+    "level": "A2"
+  },
+  {
+    "english": "My home desk faces the wall, but the light is good.",
+    "level": "A2"
+  },
+  {
+    "english": "She stretched by the window while the kettle boiled.",
+    "level": "A2"
+  },
+  {
+    "english": "Lunch has a way of turning coworkers into actual people.",
+    "level": "B1"
+  },
+  {
+    "english": "I only noticed the weather after leaving the building for coffee.",
+    "level": "B1"
+  },
+  {
+    "english": "Remote days are calmer until the doorbell joins the schedule.",
+    "level": "B1"
+  },
+  {
+    "english": "He calls the commute his buffer between spreadsheet and sofa.",
+    "level": "B1"
+  },
+  {
+    "english": "The best ideas sometimes arrive beside the sink, holding a mug.",
+    "level": "B1"
+  },
+  {
+    "english": "After work, one drink can become a small department meeting.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps office shoes under the desk like evidence of another life.",
+    "level": "B1"
+  },
+  {
+    "english": "Nobody says much in the elevator, but everyone looks tired together.",
+    "level": "B1"
+  },
+  {
+    "english": "Hybrid work turns the calendar into a map of who can bear the train.",
+    "level": "B2"
+  },
+  {
+    "english": "The lunchroom is where titles soften, because everyone still needs a fork.",
+    "level": "B2"
+  },
+  {
+    "english": "On remote Fridays, the apartment seems to borrow the office and return it at six.",
+    "level": "B2"
+  },
+  {
+    "english": "After-work drinks promise ease, then quietly become another room where people perform competence.",
+    "level": "B2"
+  },
+  {
+    "english": "The commute wastes time, but it also gives the day a beginning and an ending.",
+    "level": "B2"
+  },
+  {
+    "english": "A shared fridge can reveal more about a workplace than its mission statement.",
+    "level": "B2"
+  },
+  {
+    "english": "The afternoon break feels minor until it is the only unscheduled mercy left.",
+    "level": "B2"
+  },
+  {
+    "english": "Lunch at work is never only lunch; it is budgeting, friendship, fatigue, and the tiny politics of who sits where.",
+    "level": "C1"
+  },
+  {
+    "english": "The office kitchen gathers the day's evidence in teaspoons, soy sauce packets, bruised bananas, and mugs nobody claims.",
+    "level": "C1"
+  },
+  {
+    "english": "Remote work removes the commute, yet leaves behind the strange need to cross some border before becoming private again.",
+    "level": "C1"
+  },
+  {
+    "english": "A crowded train after work has its own etiquette, a public silence held together by tired shoulders.",
+    "level": "C1"
+  },
+  {
+    "english": "People speak differently near the coffee machine, as if steam gives permission for smaller, truer sentences.",
+    "level": "C1"
+  },
+  {
+    "english": "The office lunch hour measures hierarchy gently, by invitations, empty chairs, and who can leave without explaining why.",
+    "level": "C1"
+  },
+  {
+    "english": "On hybrid days, the city becomes part of the job again, with delays, weather, and shoes chosen for platforms.",
+    "level": "C1"
+  },
+  {
+    "english": "There is a particular loneliness in eating leftovers beside a laptop that still expects you to answer.",
+    "level": "C1"
+  },
+  {
+    "english": "After-work drinks often begin as release and end as another careful exercise in professional visibility.",
+    "level": "C1"
+  },
+  {
+    "english": "The kitchen sink is a small moral test, failed daily by people who manage larger responsibilities with confidence.",
+    "level": "C1"
+  },
+  {
+    "english": "A packed lunch from home can feel like care arriving from an earlier, more generous version of yourself.",
+    "level": "C1"
+  },
+  {
+    "english": "By noon, the office has shed its official story and become a warmer, stranger place of reheated curry, borrowed chargers, private errands, and people remembering that bodies came to work too.",
+    "level": "C2"
+  },
+  {
+    "english": "The commute home, with its wet umbrellas and unread messages, performs a useful ceremony: it returns the worker, slowly and imperfectly, to the person who left that morning.",
+    "level": "C2"
+  },
+  {
+    "english": "Remote work promised freedom from fluorescent rooms, yet it also taught the kitchen table to hold deadlines, lunch crumbs, school forms, and the stubborn glow of unfinished tasks.",
+    "level": "C2"
+  },
+  {
+    "english": "After-work drinks occupy that delicate border where colleagues try to become friends without forgetting salaries, histories, marriages, trains to catch, and the office waiting patiently for tomorrow.",
+    "level": "C2"
+  },
+  {
+    "english": "My boss listens.",
+    "level": "A0"
+  },
+  {
+    "english": "Our team meets every morning.",
+    "level": "A1"
+  },
+  {
+    "english": "She manages the sales team.",
+    "level": "A1"
+  },
+  {
+    "english": "I like my new manager.",
+    "level": "A1"
+  },
+  {
+    "english": "He asks clear questions.",
+    "level": "A1"
+  },
+  {
+    "english": "We stand near the window.",
+    "level": "A1"
+  },
+  {
+    "english": "They talk before work.",
+    "level": "A1"
+  },
+  {
+    "english": "My coworker helped me yesterday.",
+    "level": "A1"
+  },
+  {
+    "english": "The intern takes feedback well.",
+    "level": "A1"
+  },
+  {
+    "english": "She leads the morning standup.",
+    "level": "A1"
+  },
+  {
+    "english": "He reports to Priya.",
+    "level": "A1"
+  },
+  {
+    "english": "Our manager seems tired today.",
+    "level": "A1"
+  },
+  {
+    "english": "The team feels small now.",
+    "level": "A1"
+  },
+  {
+    "english": "We eat lunch together sometimes.",
+    "level": "A1"
+  },
+  {
+    "english": "He got good feedback.",
+    "level": "A1"
+  },
+  {
+    "english": "She has a review today.",
+    "level": "A1"
+  },
+  {
+    "english": "My manager checks in on Mondays, and I bring my list.",
+    "level": "A2"
+  },
+  {
+    "english": "We shared updates quickly, but one issue needed more time.",
+    "level": "A2"
+  },
+  {
+    "english": "She gave me feedback, and I fixed the slide.",
+    "level": "A2"
+  },
+  {
+    "english": "The team lead was busy, so I asked Jordan instead.",
+    "level": "A2"
+  },
+  {
+    "english": "Our standup was short, but everyone seemed half awake.",
+    "level": "A2"
+  },
+  {
+    "english": "He missed the review, so we found another slot.",
+    "level": "A2"
+  },
+  {
+    "english": "I will ask my manager before I promise anything.",
+    "level": "A2"
+  },
+  {
+    "english": "She helps new people, and they trust her quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "The quiet teammate noticed the mistake before anyone else.",
+    "level": "A2"
+  },
+  {
+    "english": "We changed seats, and the team suddenly talked more.",
+    "level": "A2"
+  },
+  {
+    "english": "He gave direct notes, but his tone stayed kind.",
+    "level": "A2"
+  },
+  {
+    "english": "My one-on-one moved to Thursday after the client call.",
+    "level": "A2"
+  },
+  {
+    "english": "She asked for examples, and the feedback became useful.",
+    "level": "A2"
+  },
+  {
+    "english": "The manager praised the work, then asked for fewer slides.",
+    "level": "A2"
+  },
+  {
+    "english": "We all nodded, but nobody owned the decision yet.",
+    "level": "A2"
+  },
+  {
+    "english": "He joined the standup late with a wet umbrella.",
+    "level": "A2"
+  },
+  {
+    "english": "The team chat got quiet after the review scores.",
+    "level": "A2"
+  },
+  {
+    "english": "She will mentor the intern for the first month.",
+    "level": "A2"
+  },
+  {
+    "english": "I asked for help, and two people answered fast.",
+    "level": "A2"
+  },
+  {
+    "english": "The director visited our floor and remembered my name.",
+    "level": "A2"
+  },
+  {
+    "english": "We split the tasks again, but this time it felt fair.",
+    "level": "A2"
+  },
+  {
+    "english": "He changed teams, and his old chair stayed empty.",
+    "level": "A2"
+  },
+  {
+    "english": "My manager reads notes carefully before she responds.",
+    "level": "A2"
+  },
+  {
+    "english": "The team celebrated quietly with supermarket cookies.",
+    "level": "A2"
+  },
+  {
+    "english": "She missed the joke, but she caught the risk.",
+    "level": "A2"
+  },
+  {
+    "english": "We set goals in January and forget half by March.",
+    "level": "A2"
+  },
+  {
+    "english": "His feedback was brief, but it saved me an hour.",
+    "level": "A2"
+  },
+  {
+    "english": "The new supervisor wants updates in writing now.",
+    "level": "A2"
+  },
+  {
+    "english": "We waited for the manager, then solved it ourselves.",
+    "level": "A2"
+  },
+  {
+    "english": "She took the hard task because nobody else volunteered.",
+    "level": "A2"
+  },
+  {
+    "english": "Our team works better after the second cup of coffee.",
+    "level": "A2"
+  },
+  {
+    "english": "He looked nervous before his performance review.",
+    "level": "A2"
+  },
+  {
+    "english": "My manager has a way of saying no without closing the door.",
+    "level": "B1"
+  },
+  {
+    "english": "The standup went in circles until Marta named the real problem.",
+    "level": "B1"
+  },
+  {
+    "english": "He takes feedback on the chin, then quietly improves the next draft.",
+    "level": "B1"
+  },
+  {
+    "english": "She is not loud, but the team turns when she speaks.",
+    "level": "B1"
+  },
+  {
+    "english": "Our one-on-ones are half status report, half weather forecast.",
+    "level": "B1"
+  },
+  {
+    "english": "The new manager learned everyone's names before changing the process.",
+    "level": "B1"
+  },
+  {
+    "english": "We disagree often, but we know who will carry which bag.",
+    "level": "B1"
+  },
+  {
+    "english": "His review sounded kinder once I read it away from my desk.",
+    "level": "B1"
+  },
+  {
+    "english": "A good manager notices the silence after a question, not just the answers.",
+    "level": "B2"
+  },
+  {
+    "english": "The team has learned to disagree early, before politeness turns into rework.",
+    "level": "B2"
+  },
+  {
+    "english": "In the standup, small delays sound harmless until they all belong to one person.",
+    "level": "B2"
+  },
+  {
+    "english": "Her feedback was exact enough to sting, and fair enough to keep.",
+    "level": "B2"
+  },
+  {
+    "english": "Performance reviews make everyone speak like a lawyer defending a calendar.",
+    "level": "B2"
+  },
+  {
+    "english": "The best colleague on the project was the one who made confusion visible.",
+    "level": "B2"
+  },
+  {
+    "english": "He manages upward with charm, sideways with patience, and downward with lists.",
+    "level": "B2"
+  },
+  {
+    "english": "By Thursday, the team can hear stress in each other's typing.",
+    "level": "B2"
+  },
+  {
+    "english": "The one-on-one is supposed to be private, yet it carries the whole team's weather into a small room.",
+    "level": "C1"
+  },
+  {
+    "english": "A performance review measures the work, but also the employee's skill at translating worry into tidy sentences.",
+    "level": "C1"
+  },
+  {
+    "english": "She gives feedback like a careful editor, cutting only what weakens the argument and leaving the voice intact.",
+    "level": "C1"
+  },
+  {
+    "english": "The manager who asks one honest question can change the temperature of an entire standup.",
+    "level": "C1"
+  },
+  {
+    "english": "Our team has no official historian, so every old mistake survives as a whispered warning.",
+    "level": "C1"
+  },
+  {
+    "english": "In a healthy team, disagreement arrives early enough to be useful and late enough to be informed.",
+    "level": "C1"
+  },
+  {
+    "english": "He accepted the promotion, then spent a month learning how lonely authority can feel.",
+    "level": "C1"
+  },
+  {
+    "english": "The newest colleague noticed the broken ritual because everyone else had mistaken it for culture.",
+    "level": "C1"
+  },
+  {
+    "english": "Feedback lands differently when it comes with dates, examples, and the quiet promise of help.",
+    "level": "C1"
+  },
+  {
+    "english": "The standup revealed nothing dramatic, only the slow arithmetic by which teams become late.",
+    "level": "C1"
+  },
+  {
+    "english": "A manager's calendar is often a public document of private pressures, color-coded into obedience.",
+    "level": "C1"
+  },
+  {
+    "english": "She left the review with praise, two goals, and the odd sadness of being understood professionally.",
+    "level": "C1"
+  },
+  {
+    "english": "Every team invents a small constitution of glances, jokes, silences, and borrowed chargers, and the new manager learns it long before the org chart begins to make sense.",
+    "level": "C2"
+  },
+  {
+    "english": "The annual review pretends to be a mirror, but it is also a negotiation, a weather report, and a receipt for a year nobody experienced in the same order.",
+    "level": "C2"
+  },
+  {
+    "english": "In the morning standup, each person offers a modest account of yesterday, while the real project moves underneath them like plumbing nobody wants to name.",
+    "level": "C2"
+  },
+  {
+    "english": "A colleague becomes trusted not through one grand rescue, but through a hundred small consistencies that make the office feel less like a test of balance.",
+    "level": "C2"
+  },
+  {
+    "english": "The manager praised collaboration in the language of policy, yet everyone knew the team survived because two tired people kept asking the questions others were too busy to form.",
+    "level": "C2"
+  },
+  {
+    "english": "I open the calendar.",
+    "level": "A0"
+  },
+  {
+    "english": "The meeting room is cold.",
+    "level": "A1"
+  },
+  {
+    "english": "I joined the call early.",
+    "level": "A1"
+  },
+  {
+    "english": "The calendar looks full today.",
+    "level": "A1"
+  },
+  {
+    "english": "Please send the meeting link.",
+    "level": "A1"
+  },
+  {
+    "english": "We meet after lunch.",
+    "level": "A1"
+  },
+  {
+    "english": "The camera is off today.",
+    "level": "A1"
+  },
+  {
+    "english": "The room has six chairs.",
+    "level": "A1"
+  },
+  {
+    "english": "She booked a quiet room.",
+    "level": "A1"
+  },
+  {
+    "english": "The invite has no title.",
+    "level": "A1"
+  },
+  {
+    "english": "Please mute your phone.",
+    "level": "A1"
+  },
+  {
+    "english": "We meet at noon.",
+    "level": "A1"
+  },
+  {
+    "english": "My calendar is open.",
+    "level": "A1"
+  },
+  {
+    "english": "He accepted the invite.",
+    "level": "A1"
+  },
+  {
+    "english": "The projector works today.",
+    "level": "A1"
+  },
+  {
+    "english": "We need a bigger room.",
+    "level": "A1"
+  },
+  {
+    "english": "I sent the invite this morning, and everyone accepted.",
+    "level": "A2"
+  },
+  {
+    "english": "The agenda is short, but the discussion may not be.",
+    "level": "A2"
+  },
+  {
+    "english": "Please add the dial-in number before people start asking.",
+    "level": "A2"
+  },
+  {
+    "english": "The room is free at two, so I booked it.",
+    "level": "A2"
+  },
+  {
+    "english": "We can meet online, or we can use the small room.",
+    "level": "A2"
+  },
+  {
+    "english": "She declined the invite, but she sent useful comments.",
+    "level": "A2"
+  },
+  {
+    "english": "The calendar shows busy, but I can move one thing.",
+    "level": "A2"
+  },
+  {
+    "english": "Please hold the room, and I will confirm after lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "The video froze, so he finished his point in chat.",
+    "level": "A2"
+  },
+  {
+    "english": "I checked the time zones before sending the invite.",
+    "level": "A2"
+  },
+  {
+    "english": "The chairs were missing, so we met around the table.",
+    "level": "A2"
+  },
+  {
+    "english": "Please add me as optional, since I only need context.",
+    "level": "A2"
+  },
+  {
+    "english": "We will need ten minutes for questions at the end.",
+    "level": "A2"
+  },
+  {
+    "english": "The weekly review moved earlier, and nobody complained.",
+    "level": "A2"
+  },
+  {
+    "english": "I opened the agenda, but the file was blank.",
+    "level": "A2"
+  },
+  {
+    "english": "The room looked empty, yet the calendar said reserved.",
+    "level": "A2"
+  },
+  {
+    "english": "Please cancel the hold if the client chooses Tuesday.",
+    "level": "A2"
+  },
+  {
+    "english": "We have one slot open before the afternoon calls.",
+    "level": "A2"
+  },
+  {
+    "english": "The headset worked yesterday, but today it crackles.",
+    "level": "A2"
+  },
+  {
+    "english": "She sent a reminder because half the team forgot.",
+    "level": "A2"
+  },
+  {
+    "english": "We can skip introductions, since everyone knows the group.",
+    "level": "A2"
+  },
+  {
+    "english": "The invite says thirty minutes, but the topic needs twenty.",
+    "level": "A2"
+  },
+  {
+    "english": "I left space between calls, so people could breathe.",
+    "level": "A2"
+  },
+  {
+    "english": "The screen lagged badly, but the slides still changed.",
+    "level": "A2"
+  },
+  {
+    "english": "Please update the agenda before the directors join.",
+    "level": "A2"
+  },
+  {
+    "english": "He booked the room near the elevators for visitors.",
+    "level": "A2"
+  },
+  {
+    "english": "The calendar alert rang, and everyone looked suddenly tired.",
+    "level": "A2"
+  },
+  {
+    "english": "We started without the manager because her train was delayed.",
+    "level": "A2"
+  },
+  {
+    "english": "The call link changed, so two people joined the old one.",
+    "level": "A2"
+  },
+  {
+    "english": "I blocked Friday morning, but the workshop may move.",
+    "level": "A2"
+  },
+  {
+    "english": "Please keep the chat open for questions during the demo.",
+    "level": "A2"
+  },
+  {
+    "english": "The meeting ended early, and the room felt strangely peaceful.",
+    "level": "A2"
+  },
+  {
+    "english": "We picked Thursday because Wednesday was already impossible.",
+    "level": "A2"
+  },
+  {
+    "english": "Could we keep this to decisions, not a tour of every detail?",
+    "level": "B1"
+  },
+  {
+    "english": "The calendar says available, but I know better than to trust it.",
+    "level": "B1"
+  },
+  {
+    "english": "She joined from the airport and still found the right spreadsheet.",
+    "level": "B1"
+  },
+  {
+    "english": "Let's give the quiet people a minute before we close the topic.",
+    "level": "B1"
+  },
+  {
+    "english": "I can make nine if the earlier call actually ends on time.",
+    "level": "B1"
+  },
+  {
+    "english": "He treats every agenda item like a small legal hearing.",
+    "level": "B1"
+  },
+  {
+    "english": "The room was booked for strategy, but mostly we hunted for adapters.",
+    "level": "B1"
+  },
+  {
+    "english": "Please send a fresh invite, because this one has too many ghosts.",
+    "level": "B1"
+  },
+  {
+    "english": "We lost five minutes to greetings, which felt honest, if expensive.",
+    "level": "B1"
+  },
+  {
+    "english": "A full calendar can look productive while quietly stealing the work it claims to organize.",
+    "level": "B2"
+  },
+  {
+    "english": "The best meetings end with fewer mysteries, not merely with fewer minutes left.",
+    "level": "B2"
+  },
+  {
+    "english": "She schedules with unusual mercy, leaving small gaps where people can remember their jobs.",
+    "level": "B2"
+  },
+  {
+    "english": "Video calls flatten the room, so hesitation often looks like disagreement.",
+    "level": "B2"
+  },
+  {
+    "english": "The invite sounded simple until the guest list revealed six hidden committees.",
+    "level": "B2"
+  },
+  {
+    "english": "A meeting without an owner becomes weather, everyone discusses it and nobody changes it.",
+    "level": "B2"
+  },
+  {
+    "english": "The calendar color code promises order, but Friday afternoon tells a different story.",
+    "level": "B2"
+  },
+  {
+    "english": "He declined gracefully, which in office life is almost a technical skill.",
+    "level": "B2"
+  },
+  {
+    "english": "The agenda arrived late, which made every confident opinion in the room feel slightly borrowed.",
+    "level": "C1"
+  },
+  {
+    "english": "In theory the calendar protects time, but in practice it often becomes a public map of private pressure.",
+    "level": "C1"
+  },
+  {
+    "english": "She asked for five minutes and received forty, the usual exchange rate in a busy office.",
+    "level": "C1"
+  },
+  {
+    "english": "The conference room, booked for planning, slowly filled with people checking the calendar for escape routes.",
+    "level": "C1"
+  },
+  {
+    "english": "A good facilitator notices the question behind the silence and gives it a chair at the table.",
+    "level": "C1"
+  },
+  {
+    "english": "When the video delay stretches, even agreement begins to resemble suspicion.",
+    "level": "C1"
+  },
+  {
+    "english": "The smallest courtesy in scheduling is not the invitation, but the space left around it.",
+    "level": "C1"
+  },
+  {
+    "english": "He read the room better than the agenda and ended the meeting before politeness turned sour.",
+    "level": "C1"
+  },
+  {
+    "english": "The recurring invite survived three reorganizations, which gave it the dignity of an old law.",
+    "level": "C1"
+  },
+  {
+    "english": "Nobody said the meeting was unnecessary, but everyone arrived with the same careful resignation.",
+    "level": "C1"
+  },
+  {
+    "english": "The hybrid meeting made geography visible, from the office speakerphone to the kitchen laptop.",
+    "level": "C1"
+  },
+  {
+    "english": "By Thursday, the calendar had become a biography written entirely in obligations.",
+    "level": "C1"
+  },
+  {
+    "english": "The calendar, with its colored blocks and polite alarms, had converted the week into a narrow corridor where every door opened onto another conversation.",
+    "level": "C2"
+  },
+  {
+    "english": "They gathered to discuss alignment, yet the real labor was translation, each department carrying a private dictionary of urgency, risk, and acceptable delay.",
+    "level": "C2"
+  },
+  {
+    "english": "In the glass room reserved for innovation, the team spent twenty minutes negotiating whether the meeting itself belonged to anyone.",
+    "level": "C2"
+  },
+  {
+    "english": "A video call offers the illusion of equal squares, but hierarchy still enters quietly through who speaks first, who waits, and who is allowed to disappear.",
+    "level": "C2"
+  },
+  {
+    "english": "The recurring meeting remained because canceling it would require a clearer confession than anyone wanted to write in the invite.",
+    "level": "C2"
+  },
+  {
+    "english": "I write an email.",
+    "level": "A0"
+  },
+  {
+    "english": "The inbox is full.",
+    "level": "A1"
+  },
+  {
+    "english": "I sent the message.",
+    "level": "A1"
+  },
+  {
+    "english": "She reads every subject line.",
+    "level": "A1"
+  },
+  {
+    "english": "Please use a clear tone.",
+    "level": "A1"
+  },
+  {
+    "english": "My signature has my phone number.",
+    "level": "A1"
+  },
+  {
+    "english": "He forgot the greeting.",
+    "level": "A1"
+  },
+  {
+    "english": "We need a quick reply.",
+    "level": "A1"
+  },
+  {
+    "english": "This email sounds too cold.",
+    "level": "A1"
+  },
+  {
+    "english": "The draft is ready.",
+    "level": "A1"
+  },
+  {
+    "english": "She saved it as a template.",
+    "level": "A1"
+  },
+  {
+    "english": "He checks mail before coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "Please keep it brief.",
+    "level": "A1"
+  },
+  {
+    "english": "The reply went to everyone.",
+    "level": "A1"
+  },
+  {
+    "english": "I filed it under invoices.",
+    "level": "A1"
+  },
+  {
+    "english": "The note feels polite.",
+    "level": "A1"
+  },
+  {
+    "english": "I changed the subject line, and the answer came faster.",
+    "level": "A2"
+  },
+  {
+    "english": "She wrote three sentences, but the message still sounded warm.",
+    "level": "A2"
+  },
+  {
+    "english": "He added his title, so clients knew who he was.",
+    "level": "A2"
+  },
+  {
+    "english": "Please remove the old logo before you send the note.",
+    "level": "A2"
+  },
+  {
+    "english": "I saved the draft, because the wording needed another look.",
+    "level": "A2"
+  },
+  {
+    "english": "The email was polite, but the request was still clear.",
+    "level": "A2"
+  },
+  {
+    "english": "He replied to all, and the quiet office sighed.",
+    "level": "A2"
+  },
+  {
+    "english": "She bolded the deadline, so nobody could miss it.",
+    "level": "A2"
+  },
+  {
+    "english": "I read it twice before pressing send.",
+    "level": "A2"
+  },
+  {
+    "english": "The signature is too long, and it buries the phone number.",
+    "level": "A2"
+  },
+  {
+    "english": "Please add the invoice number, or accounting will ask again.",
+    "level": "A2"
+  },
+  {
+    "english": "He wrote in bullets, and the problem looked smaller.",
+    "level": "A2"
+  },
+  {
+    "english": "She deleted one paragraph, because it sounded annoyed.",
+    "level": "A2"
+  },
+  {
+    "english": "The subject says budget, but the message asks about travel.",
+    "level": "A2"
+  },
+  {
+    "english": "I archived the receipt, and now I cannot find it.",
+    "level": "A2"
+  },
+  {
+    "english": "Please thank them first, then ask for the missing details.",
+    "level": "A2"
+  },
+  {
+    "english": "He used a friendly opener, but skipped the small talk.",
+    "level": "A2"
+  },
+  {
+    "english": "The client answered quickly, so we updated the spreadsheet.",
+    "level": "A2"
+  },
+  {
+    "english": "I left the draft overnight, and it improved by morning.",
+    "level": "A2"
+  },
+  {
+    "english": "She pasted the table, but the columns broke in email.",
+    "level": "A2"
+  },
+  {
+    "english": "Please check the names before the newsletter goes out.",
+    "level": "A2"
+  },
+  {
+    "english": "He sent one careful paragraph instead of six nervous ones.",
+    "level": "A2"
+  },
+  {
+    "english": "The tone felt formal, so I softened the first sentence.",
+    "level": "A2"
+  },
+  {
+    "english": "I flagged the message, and then forgot why it mattered.",
+    "level": "A2"
+  },
+  {
+    "english": "She added a short subject, but it still felt vague.",
+    "level": "A2"
+  },
+  {
+    "english": "Please keep finance copied, or the approval may get lost.",
+    "level": "A2"
+  },
+  {
+    "english": "He asked one question, and the thread finally quieted down.",
+    "level": "A2"
+  },
+  {
+    "english": "The email looked fine on desktop, but strange on mobile.",
+    "level": "A2"
+  },
+  {
+    "english": "I scheduled the message, so it arrived during office hours.",
+    "level": "A2"
+  },
+  {
+    "english": "She used plain language, and the client stopped asking twice.",
+    "level": "A2"
+  },
+  {
+    "english": "Please make the request visible in the first line.",
+    "level": "A2"
+  },
+  {
+    "english": "He saved the address carefully, but autocomplete betrayed him.",
+    "level": "A2"
+  },
+  {
+    "english": "The message was only four lines, but it carried the whole afternoon.",
+    "level": "B1"
+  },
+  {
+    "english": "I started with thanks, because the rest of the email was not easy.",
+    "level": "B1"
+  },
+  {
+    "english": "She knows when a period sounds final and when it sounds annoyed.",
+    "level": "B1"
+  },
+  {
+    "english": "He wrote please in three places, which somehow made it less polite.",
+    "level": "B1"
+  },
+  {
+    "english": "The best subject lines feel boring until you need them six months later.",
+    "level": "B1"
+  },
+  {
+    "english": "I almost replied to everyone, then noticed the supplier was still copied.",
+    "level": "B1"
+  },
+  {
+    "english": "She changed one verb, and the request stopped sounding like an order.",
+    "level": "B1"
+  },
+  {
+    "english": "His outbox tells a quiet history of promises made after five.",
+    "level": "B1"
+  },
+  {
+    "english": "I keep a folder for decisions, because memory is bad at office politics.",
+    "level": "B1"
+  },
+  {
+    "english": "An email can sound calm on Monday and strangely defensive by Thursday.",
+    "level": "B2"
+  },
+  {
+    "english": "She writes with enough warmth to remind people there is a person behind procurement.",
+    "level": "B2"
+  },
+  {
+    "english": "The longer the thread became, the less anyone seemed willing to name the problem.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned to answer the question first, then explain the history if anyone asked.",
+    "level": "B2"
+  },
+  {
+    "english": "A good signature gives just enough proof that you belong in the room.",
+    "level": "B2"
+  },
+  {
+    "english": "Reply all is a tiny button with the social weight of a doorbell.",
+    "level": "B2"
+  },
+  {
+    "english": "The draft sat unsent while I chose between honest and professionally acceptable.",
+    "level": "B2"
+  },
+  {
+    "english": "Some emails are not communication so much as a paper trail with greetings.",
+    "level": "B2"
+  },
+  {
+    "english": "The subject line did not solve the confusion, but it gave the confusion a searchable address.",
+    "level": "C1"
+  },
+  {
+    "english": "She kept her tone courteous because written words have no face to soften them later.",
+    "level": "C1"
+  },
+  {
+    "english": "In a crowded inbox, precision is a kind of mercy, especially before the second coffee.",
+    "level": "C1"
+  },
+  {
+    "english": "He trimmed the apology until it became useful, then left the responsibility where it belonged.",
+    "level": "C1"
+  },
+  {
+    "english": "The email sounded effortless only because she had removed every sentence that explained her effort.",
+    "level": "C1"
+  },
+  {
+    "english": "What looked like brevity was really diplomacy, packed tightly enough to survive forwarding.",
+    "level": "C1"
+  },
+  {
+    "english": "He avoided reply all with the discipline of someone who had once learned publicly.",
+    "level": "C1"
+  },
+  {
+    "english": "The archived thread became the office record, more reliable than memory and less forgiving than speech.",
+    "level": "C1"
+  },
+  {
+    "english": "A written request changes shape when finance, legal, and someone's manager are all copied.",
+    "level": "C1"
+  },
+  {
+    "english": "She ended with thanks, not as decoration, but as a small bridge back to ordinary civility.",
+    "level": "C1"
+  },
+  {
+    "english": "The blank draft waited on the screen, making visible the distance between irritation and policy.",
+    "level": "C1"
+  },
+  {
+    "english": "His message was careful enough to be quoted, which is a strange modern form of caution.",
+    "level": "C1"
+  },
+  {
+    "english": "Every office develops an epistolary climate, where apologies gather like weather and the smallest change in salutation can announce a storm.",
+    "level": "C2"
+  },
+  {
+    "english": "The inbox preserves work in layers, first urgency, then clarification, then the faint sediment of personalities trying to sound reasonable.",
+    "level": "C2"
+  },
+  {
+    "english": "Before she sent the note, she removed the sentence that was true, because truth in office writing often needs a chair, a witness, and better timing.",
+    "level": "C2"
+  },
+  {
+    "english": "A reply all mistake is never merely technical; it exposes the private map of hierarchy that everyone pretends not to carry.",
+    "level": "C2"
+  },
+  {
+    "english": "By Friday afternoon, the thread had become a museum of hesitation, each message labeling an artifact that no one wanted to own.",
+    "level": "C2"
   }
 ]

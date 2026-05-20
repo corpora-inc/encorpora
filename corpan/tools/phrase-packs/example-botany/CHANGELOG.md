@@ -11,6 +11,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +423 new phrases authored across 5 facets
+  (plant anatomy & growth, flowers & pollination, trees & forests, the garden & cultivation, wild plants & ecology). New-phrase distribution: A0:4, A1:73, A2:161, B1:62, B2:43, C1:56, C2:24.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +705 new phrases authored across 8 facets
+  (notes, scales, & the basics of theory, rhythm, meter, & feel, instruments of the orchestra & beyond, composers & the classical tradition, jazz, blues, & American music, rock, pop, & popular music, world music & non-Western traditions, the practice of music: lessons, performance, listening). New-phrase distribution: A0:7, A1:119, A2:267, B1:108, B2:75, C1:90, C2:39.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR

@@ -10,6 +10,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +605 new phrases authored across 8 facets
+  (curiosity & beginnings, practice & deliberate work, mentors, teachers, & traditions, childhood & how children learn, self-teaching & autodidacts, language learning, memory, attention, & the inner work, the long arc & lifelong learning). New-phrase distribution: A0:7, A1:118, A2:258, B1:58, B2:42, C1:83, C2:39.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
 ## [0.1.1] - 2026-05-20
 ### Added
 - Ladder-completion pass: ensure at least one phrase at every CEFR
