@@ -280,52 +280,39 @@ export const initInput = (
     const DOE = DeviceOrientationEvent as unknown as DOEStatic
 
     if (typeof DOE.requestPermission !== "function") {
-      // Android / desktop: no permission flow, enable directly.
       enableTilt()
       return
     }
 
-    setTiltState("pending")
     // Method dispatch (DOE.requestPermission()) — DO NOT extract.
+    // Critical: call this BEFORE any other work in this function so
+    // the user-gesture/activation context is as fresh as possible.
     let promise: Promise<"granted" | "denied">
     try {
       promise = DOE.requestPermission()
     } catch (err) {
-      // Synchronous throw — usually means we lost the user-gesture
-      // context (e.g. the caller forgot to wire the click handler
-      // directly). Surface loudly so we can see it in device logs.
-      console.error(
-        "[hover-runner] DeviceOrientationEvent.requestPermission threw synchronously:",
-        err,
-      )
+      console.error("[hover-runner] requestPermission threw synchronously:", err)
       setTiltState("error")
       return
     }
 
+    setTiltState("pending")
     promise
       .then((result) => {
         if (result === "granted") {
           enableTilt()
         } else if (result === "denied") {
+          // WebKit does not give us a reliable way to distinguish a
+          // fresh deny from a remembered deny. Don't invent certainty
+          // from timing; let the UI offer retry + touch fallback.
           setTiltState("denied")
         } else {
-          // Some WebKit builds return non-standard strings; treat as denied.
-          console.warn(
-            "[hover-runner] requestPermission resolved with unexpected value:",
-            result,
-          )
+          console.warn("[hover-runner] requestPermission unexpected result:", result)
           setTiltState("denied")
         }
       })
       .catch((err: unknown) => {
-        // Asynchronous rejection. Most common cause on iOS/WKWebView:
-        // a NotAllowedError from being just-barely-outside the
-        // user-activation window, or a SecurityError when the page
-        // origin isn't allowed to read orientation. Log it.
-        console.error(
-          "[hover-runner] DeviceOrientationEvent.requestPermission rejected:",
-          err,
-        )
+        console.error("[hover-runner] requestPermission rejected:", err)
         setTiltState("error")
       })
   }

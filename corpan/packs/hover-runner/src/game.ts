@@ -26,6 +26,7 @@ import { tuningStore } from "./tuningStore"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 import { t, setLanguage as setUiLanguage, onChange as onUiLangChange } from "./i18n"
 import { createSettingsDrawer, type MotionControl } from "./ui/settingsDrawer"
+import { createMotionPermissionOverlay, type MotionPermissionOverlay } from "./ui/motionPermissionOverlay"
 import type { TiltState } from "./systems/input"
 import type { DrawerSectionDef } from "@shared/ui"
 
@@ -281,9 +282,14 @@ export const createHoverRunner = (
       // Ignore window close failures.
     }
   }
-
-
-  const onWakeLockGesture = () => {
+  const onWakeLockGesture = (event: PointerEvent) => {
+    const target = event.target
+    if (
+      target instanceof Element &&
+      target.closest('[data-hr-motion-permission-trigger="true"]')
+    ) {
+      return
+    }
     void requestWakeLock()
     sfx.unlock()
     // Start background music after user gesture unlocks audio (if enabled)
@@ -375,6 +381,67 @@ export const createHoverRunner = (
       }
     },
   })
+
+  // First-run motion bootstrap.
+  //
+  // On non-iOS platforms (no `requestPermission`) we just enable tilt
+  // at mount. On iOS we cannot enable from any background listener:
+  // WebKit's `requestPermission()` requires user activation, and
+  // every other handler in the canvas's pointerdown chain
+  // (audio.unlock, Babylon's pointer wiring) consumes the activation
+  // before our call can land. The only reliable gesture surface is a
+  // direct click on a real `<button>` the user explicitly taps — so
+  // we show a one-shot overlay with a single Enable Motion button.
+  //
+  // The overlay is shown only when motion is supported, the platform
+  // needs permission, AND the user's setting is still ON (we never
+  // pester someone who has opted out).
+  let motionOverlay: MotionPermissionOverlay | null = null
+  let unsubMotionOverlay: (() => void) | null = null
+  const ensureMotionOverlay = () => {
+    if (!supportsOrientation || !needsIosPermission) {
+      return
+    }
+    if (!tuningStore.getState().settings.motionControlsEnabled) {
+      return
+    }
+    if (motionOverlay) {
+      return
+    }
+    motionOverlay = createMotionPermissionOverlay({
+      parent: root,
+      onAllow: () => {
+        // Synchronous from the button's click handler — preserves
+        // the user-activation context iOS demands.
+        input.requestTilt()
+      },
+      onDismiss: () => {
+        // User chose touch — persist the preference so they don't
+        // get re-prompted next launch.
+        tuningStore.getState().setSetting("motionControlsEnabled", false)
+      },
+    })
+    if (!motionControl) {
+      return
+    }
+    unsubMotionOverlay?.()
+    unsubMotionOverlay = motionControl.subscribe((state) => {
+      motionOverlay?.setTiltState(state)
+      if (state === "waiting" || state === "active" || state === "off") {
+        unsubMotionOverlay?.()
+        unsubMotionOverlay = null
+        motionOverlay = null
+      }
+    })
+  }
+
+  if (supportsOrientation && tuningStore.getState().settings.motionControlsEnabled) {
+    if (needsIosPermission) {
+      ensureMotionOverlay()
+    } else {
+      input.enableTilt()
+    }
+  }
 
   // Live-localize UI strings that live OUTSIDE the drawer. The drawer
   // manages its own labels via its own onChange listener.
@@ -958,48 +1025,9 @@ export const createHoverRunner = (
   skinSelect.addEventListener("change", onSkinChange)
   skinCycle.addEventListener("click", onSkinCycle)
 
-  // `input` was created earlier (near the drawer setup) so the drawer
-  // could subscribe to tilt state. Below: first-run motion bootstrap.
-
-  // First-run motion bootstrap:
-  //
-  //   - Android / desktop (no `requestPermission`): just enable now.
-  //   - iOS / WKWebView (`requestPermission` exists): we can't call
-  //     it without a user gesture, and WebKit is picky about which
-  //     event types qualify as "user activation". `pointerdown` works
-  //     in most desktop Safari builds but has flaked in iOS 16/17
-  //     WKWebView. `click` and `touchend` are universally accepted.
-  //     Listen for all three and let whichever fires first win.
-  //
-  // If the user previously toggled motion OFF, respect that and don't auto-prompt.
-  let teardownFirstGesture: (() => void) | null = null
-  if (supportsOrientation && tuningStore.getState().settings.motionControlsEnabled) {
-    if (needsIosPermission) {
-      let attempted = false
-      const GESTURE_TYPES = ["click", "pointerdown", "touchend"] as const
-      const onFirstGesture = () => {
-        if (attempted) return
-        attempted = true
-        // Tear down BEFORE calling requestTilt so a re-entrant gesture
-        // (rare but possible if requestTilt synchronously triggers
-        // anything) doesn't re-fire this handler.
-        teardownFirstGesture?.()
-        teardownFirstGesture = null
-        input.requestTilt()
-      }
-      for (const ev of GESTURE_TYPES) {
-        // Capture phase so we run before any element's own handler.
-        window.addEventListener(ev, onFirstGesture, { capture: true })
-      }
-      teardownFirstGesture = () => {
-        for (const ev of GESTURE_TYPES) {
-          window.removeEventListener(ev, onFirstGesture, { capture: true } as EventListenerOptions)
-        }
-      }
-    } else {
-      input.enableTilt()
-    }
-  }
+  // `input` was created earlier; the first-run motion bootstrap was
+  // moved up near the drawer setup so its declarations are in scope
+  // for both the call site and the dispose path.
 
   // Subscribe to tuningStore so that programmatic changes to
   // `motionControlsEnabled` (e.g. Reset-All) propagate to the input
@@ -1014,10 +1042,11 @@ export const createHoverRunner = (
     if (!supportsOrientation) return
     if (next) {
       if (needsIosPermission) {
-        // Programmatic re-enable on iOS still needs a gesture — but
-        // since this fires inside a click handler (Reset-All), the
-        // gesture context is usually still valid.
-        input.requestTilt()
+        const tiltState = input.getTiltState()
+        if (tiltState === "pending" || tiltState === "waiting" || tiltState === "active") {
+          return
+        }
+        ensureMotionOverlay()
       } else {
         input.enableTilt()
       }
@@ -2453,7 +2482,9 @@ export const createHoverRunner = (
     settingsDrawer.dispose()
     unsubUiLang()
     unsubHostLang?.()
-    teardownFirstGesture?.()
+    unsubMotionOverlay?.()
+    motionOverlay?.dispose()
+    motionOverlay = null
     skinSelect.removeEventListener("change", onSkinChange)
     skinCycle.removeEventListener("click", onSkinCycle)
     promptToggleInput.removeEventListener("change", onPromptToggle)

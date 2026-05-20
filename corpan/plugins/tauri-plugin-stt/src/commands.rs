@@ -22,17 +22,19 @@ pub(crate) async fn start_session<R: Runtime>(
     args: StartSessionArgs,
 ) -> Result<StartSessionResult> {
     println!(
-        "[NATIVE_STT:DEBUG] start_session invoked: session_id={}, language={}, expected='{}', params={}",
+        "[NATIVE_STT:DEBUG] start_session invoked: session_id={}, language={}, expected='{}', params={}, scoring={}",
         args.session_id,
         args.language,
         args.expected_text.chars().take(60).collect::<String>(),
-        if args.whisper_params.is_some() { "yes" } else { "(none)" }
+        if args.whisper_params.is_some() { "yes" } else { "(none)" },
+        if args.scoring_params.is_some() { "yes" } else { "(none)" }
     );
     app.stt().start_session(
         args.session_id,
         args.language,
         args.expected_text,
         args.whisper_params,
+        args.scoring_params,
     )
 }
 

@@ -164,17 +164,21 @@ function renderMotionRow(container: HTMLElement, motion: MotionControl): () => v
   toggle.className =
     "stargate-settings-toggle" + (enabled ? " stargate-settings-toggle--active" : "")
   toggle.textContent = enabled ? "ON" : "OFF"
+  toggle.dataset.hrMotionPermissionTrigger = "true"
+  toggle.addEventListener("pointerdown", (event) => {
+    event.stopPropagation()
+  })
   toggle.addEventListener("click", () => {
     enabled = !enabled
     toggle.classList.toggle("stargate-settings-toggle--active", enabled)
     toggle.textContent = enabled ? "ON" : "OFF"
-    setSetting("motionControlsEnabled", enabled)
     if (enabled) {
       // Synchronous so iOS gets its gesture-context permission prompt.
       motion.request()
     } else {
       motion.disable()
     }
+    setSetting("motionControlsEnabled", enabled)
   })
   row.appendChild(toggle)
 
