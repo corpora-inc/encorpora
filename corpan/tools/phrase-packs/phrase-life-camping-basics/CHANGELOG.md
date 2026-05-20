@@ -9,6 +9,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 3 phrase(s) at level(s) A0, A1, C2.
+  - A0: "I love the woods."
+  - A1: "The fire is warm."
+  - C2: "A night in the woods returns the body to a rhythm the city has spent a century quietly persuading it to forget; the stars are unchanged and only our attention has narrowed."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Camping.

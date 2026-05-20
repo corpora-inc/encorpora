@@ -1,108 +1,414 @@
 [
-  {"english": "Prices go up when more people want something.", "level": "B1"},
-  {"english": "When supply grows, prices usually fall.", "level": "B2"},
-  {"english": "A discount makes more people buy.", "level": "A2"},
-  {"english": "The same product costs different amounts in different cities.", "level": "B2"},
-  {"english": "Demand can change overnight.", "level": "B2"},
-  {"english": "Sellers raise prices when stock runs low.", "level": "B2"},
-  {"english": "Buyers shop around for the best deal.", "level": "B1"},
-  {"english": "Sometimes a high price is a signal of quality.", "level": "B2"},
-  {"english": "Sometimes a high price is just a marketing trick.", "level": "B2"},
-  {"english": "Free shipping changes how people feel about a purchase.", "level": "B2"},
-  {"english": "The price is rarely the whole cost.", "level": "B2"},
-  {"english": "Time is also a kind of cost.", "level": "B2"},
-  {"english": "A long queue is what you pay when the price is too low.", "level": "C1"},
-  {"english": "Sales make people buy things they didn't plan to.", "level": "B2"},
-  {"english": "People react more to losing money than to gaining it.", "level": "C1"},
-  {"english": "Prices in dollars and prices in your local currency feel different.", "level": "B2"},
-  {"english": "A small daily expense adds up to a lot in a year.", "level": "B2"},
-  {"english": "The first sale of the day matters more than the last.", "level": "B2"},
-  {"english": "Many small purchases hide one big habit.", "level": "B2"},
-  {"english": "The cheapest option is sometimes the most expensive in the end.", "level": "B2"},
-
-  {"english": "Money is just an agreement we all share.", "level": "B2"},
-  {"english": "Saving is paying your future self.", "level": "B2"},
-  {"english": "A budget is a plan, not a punishment.", "level": "B2"},
-  {"english": "Compound interest is patience with a small engine.", "level": "C1"},
-  {"english": "Inflation slowly eats at money kept in cash.", "level": "B2"},
-  {"english": "A loan is borrowing from your future self.", "level": "B2"},
-  {"english": "Interest is the rent on borrowed money.", "level": "B2"},
-  {"english": "She tracks every expense for a month to see the pattern.", "level": "B2"},
-  {"english": "He saves a fixed amount each payday before anything else.", "level": "B2"},
-  {"english": "Emergency funds make small disasters less painful.", "level": "B2"},
-  {"english": "Spending a little less is often easier than earning more.", "level": "B2"},
-  {"english": "A raise can disappear into bigger expenses.", "level": "B2"},
-  {"english": "He paid off the loan early and felt lighter.", "level": "B2"},
-  {"english": "Most people overestimate next year's discipline.", "level": "C1"},
-  {"english": "Money worries shrink when you have a plan.", "level": "B2"},
-
-  {"english": "A market is just a place where buyers and sellers meet.", "level": "B1"},
-  {"english": "Online stores are markets without walls.", "level": "B2"},
-  {"english": "Specialization is why most things are cheap.", "level": "C1"},
-  {"english": "People trade for the things they don't make themselves.", "level": "B2"},
-  {"english": "Wages reflect what someone is paid, not always what they're worth.", "level": "C1"},
-  {"english": "Some jobs pay well because few people want them.", "level": "B2"},
-  {"english": "Some jobs pay well because few people can do them.", "level": "B2"},
-  {"english": "The market doesn't always reward the most useful work.", "level": "C1"},
-  {"english": "A new technology can wipe out an old industry quickly.", "level": "B2"},
-  {"english": "People often move where the jobs are.", "level": "B1"},
-  {"english": "Small businesses are most of the economy.", "level": "B2"},
-  {"english": "A good employee saves more than they cost.", "level": "B2"},
-  {"english": "Negotiation is part of every job.", "level": "B2"},
-  {"english": "A side income gives you options.", "level": "B2"},
-  {"english": "Quitting is sometimes the highest-leverage move.", "level": "C1"},
-
-  {"english": "People respond to incentives, even small ones.", "level": "B2"},
-  {"english": "Free is a magic word.", "level": "B1"},
-  {"english": "The first month free changes a lot of decisions.", "level": "B2"},
-  {"english": "Subscriptions are designed to be forgotten.", "level": "B2"},
-  {"english": "Round numbers feel bigger than they are.", "level": "B2"},
-  {"english": "Sunk costs should not influence the next move.", "level": "C1"},
-  {"english": "A small fee changes how often people show up.", "level": "B2"},
-  {"english": "Tipping changes the math of a meal.", "level": "B2"},
-  {"english": "People share when sharing is easy.", "level": "B1"},
-  {"english": "A queue tells you what people value today.", "level": "B2"},
-  {"english": "Limited time offers create urgency on purpose.", "level": "B2"},
-  {"english": "Loyalty programs reward what would happen anyway.", "level": "B2"},
-  {"english": "Default options decide more than people realize.", "level": "C1"},
-  {"english": "Reviews shift demand more than ads.", "level": "B2"},
-  {"english": "Word of mouth still beats most marketing.", "level": "B2"},
-
-  {"english": "The economy grows in some years and shrinks in others.", "level": "B2"},
-  {"english": "Recessions teach lessons that booms forget.", "level": "C1"},
-  {"english": "Long-run growth lifts everyone, slowly.", "level": "B2"},
-  {"english": "Productivity gains hide in tools and habits.", "level": "C1"},
-  {"english": "New ideas are the only sustainable source of growth.", "level": "B2"},
-  {"english": "A boom can mask a lot of bad decisions.", "level": "B2"},
-  {"english": "Crashes punish the most leveraged first.", "level": "C1"},
-  {"english": "Cheap money tends to find risky uses.", "level": "C1"},
-  {"english": "A bubble is hard to see from inside it.", "level": "B2"},
-  {"english": "Recovery is uneven across industries and regions.", "level": "B2"},
-
-  {"english": "Countries trade because both sides gain.", "level": "B2"},
-  {"english": "Tariffs raise prices for buyers at home.", "level": "B2"},
-  {"english": "Exchange rates change what an import costs.", "level": "B2"},
-  {"english": "A weak currency helps exporters and hurts importers.", "level": "C1"},
-  {"english": "Foreign investment can build or strain an economy.", "level": "C1"},
-  {"english": "Remittances support many families across borders.", "level": "B2"},
-  {"english": "Sanctions affect ordinary people more than leaders.", "level": "C1"},
-  {"english": "Global supply chains break in surprising places.", "level": "B2"},
-  {"english": "A shortage in one country can move prices everywhere.", "level": "B2"},
-  {"english": "Some industries cluster in one region for a reason.", "level": "B2"},
-
-  {"english": "Inequality grows quietly when nobody is watching.", "level": "B2"},
-  {"english": "Taxes are the price of public goods.", "level": "B2"},
-  {"english": "Public goods are the ones we can't easily buy individually.", "level": "B2"},
-  {"english": "Externalities are the costs nobody asked to pay.", "level": "C1"},
-  {"english": "A small market failure can have huge effects.", "level": "B2"},
-  {"english": "The free market needs rules to stay free.", "level": "C1"},
-  {"english": "Information is unevenly shared between buyers and sellers.", "level": "C1"},
-  {"english": "Trust lowers the cost of every transaction.", "level": "B2"},
-  {"english": "Reputation is an underrated asset.", "level": "B2"},
-  {"english": "The price of attention has gone up.", "level": "B2"},
-  {"english": "The most important markets often have no prices.", "level": "C1"},
-  {"english": "Time and care are among the scarcest resources.", "level": "B2"},
-  {"english": "Economic decisions are also moral decisions.", "level": "B2"},
-  {"english": "The economy is just people doing things for each other.", "level": "B2"},
-  {"english": "A simple budget changes more than any complex theory.", "level": "B2"}
+  {
+    "english": "Prices go up when more people want something.",
+    "level": "B1"
+  },
+  {
+    "english": "When supply grows, prices usually fall.",
+    "level": "B2"
+  },
+  {
+    "english": "A discount makes more people buy.",
+    "level": "A2"
+  },
+  {
+    "english": "The same product costs different amounts in different cities.",
+    "level": "B2"
+  },
+  {
+    "english": "Demand can change overnight.",
+    "level": "B2"
+  },
+  {
+    "english": "Sellers raise prices when stock runs low.",
+    "level": "B2"
+  },
+  {
+    "english": "Buyers shop around for the best deal.",
+    "level": "B1"
+  },
+  {
+    "english": "Sometimes a high price is a signal of quality.",
+    "level": "B2"
+  },
+  {
+    "english": "Sometimes a high price is just a marketing trick.",
+    "level": "B2"
+  },
+  {
+    "english": "Free shipping changes how people feel about a purchase.",
+    "level": "B2"
+  },
+  {
+    "english": "The price is rarely the whole cost.",
+    "level": "B2"
+  },
+  {
+    "english": "Time is also a kind of cost.",
+    "level": "B2"
+  },
+  {
+    "english": "A long queue is what you pay when the price is too low.",
+    "level": "C1"
+  },
+  {
+    "english": "Sales make people buy things they didn't plan to.",
+    "level": "B2"
+  },
+  {
+    "english": "People react more to losing money than to gaining it.",
+    "level": "C1"
+  },
+  {
+    "english": "Prices in dollars and prices in your local currency feel different.",
+    "level": "B2"
+  },
+  {
+    "english": "A small daily expense adds up to a lot in a year.",
+    "level": "B2"
+  },
+  {
+    "english": "The first sale of the day matters more than the last.",
+    "level": "B2"
+  },
+  {
+    "english": "Many small purchases hide one big habit.",
+    "level": "B2"
+  },
+  {
+    "english": "The cheapest option is sometimes the most expensive in the end.",
+    "level": "B2"
+  },
+  {
+    "english": "Money is just an agreement we all share.",
+    "level": "B2"
+  },
+  {
+    "english": "Saving is paying your future self.",
+    "level": "B2"
+  },
+  {
+    "english": "A budget is a plan, not a punishment.",
+    "level": "B2"
+  },
+  {
+    "english": "Compound interest is patience with a small engine.",
+    "level": "C1"
+  },
+  {
+    "english": "Inflation slowly eats at money kept in cash.",
+    "level": "B2"
+  },
+  {
+    "english": "A loan is borrowing from your future self.",
+    "level": "B2"
+  },
+  {
+    "english": "Interest is the rent on borrowed money.",
+    "level": "B2"
+  },
+  {
+    "english": "She tracks every expense for a month to see the pattern.",
+    "level": "B2"
+  },
+  {
+    "english": "He saves a fixed amount each payday before anything else.",
+    "level": "B2"
+  },
+  {
+    "english": "Emergency funds make small disasters less painful.",
+    "level": "B2"
+  },
+  {
+    "english": "Spending a little less is often easier than earning more.",
+    "level": "B2"
+  },
+  {
+    "english": "A raise can disappear into bigger expenses.",
+    "level": "B2"
+  },
+  {
+    "english": "He paid off the loan early and felt lighter.",
+    "level": "B2"
+  },
+  {
+    "english": "Most people overestimate next year's discipline.",
+    "level": "C1"
+  },
+  {
+    "english": "Money worries shrink when you have a plan.",
+    "level": "B2"
+  },
+  {
+    "english": "A market is just a place where buyers and sellers meet.",
+    "level": "B1"
+  },
+  {
+    "english": "Online stores are markets without walls.",
+    "level": "B2"
+  },
+  {
+    "english": "Specialization is why most things are cheap.",
+    "level": "C1"
+  },
+  {
+    "english": "People trade for the things they don't make themselves.",
+    "level": "B2"
+  },
+  {
+    "english": "Wages reflect what someone is paid, not always what they're worth.",
+    "level": "C1"
+  },
+  {
+    "english": "Some jobs pay well because few people want them.",
+    "level": "B2"
+  },
+  {
+    "english": "Some jobs pay well because few people can do them.",
+    "level": "B2"
+  },
+  {
+    "english": "The market doesn't always reward the most useful work.",
+    "level": "C1"
+  },
+  {
+    "english": "A new technology can wipe out an old industry quickly.",
+    "level": "B2"
+  },
+  {
+    "english": "People often move where the jobs are.",
+    "level": "B1"
+  },
+  {
+    "english": "Small businesses are most of the economy.",
+    "level": "B2"
+  },
+  {
+    "english": "A good employee saves more than they cost.",
+    "level": "B2"
+  },
+  {
+    "english": "Negotiation is part of every job.",
+    "level": "B2"
+  },
+  {
+    "english": "A side income gives you options.",
+    "level": "B2"
+  },
+  {
+    "english": "Quitting is sometimes the highest-leverage move.",
+    "level": "C1"
+  },
+  {
+    "english": "People respond to incentives, even small ones.",
+    "level": "B2"
+  },
+  {
+    "english": "Free is a magic word.",
+    "level": "B1"
+  },
+  {
+    "english": "The first month free changes a lot of decisions.",
+    "level": "B2"
+  },
+  {
+    "english": "Subscriptions are designed to be forgotten.",
+    "level": "B2"
+  },
+  {
+    "english": "Round numbers feel bigger than they are.",
+    "level": "B2"
+  },
+  {
+    "english": "Sunk costs should not influence the next move.",
+    "level": "C1"
+  },
+  {
+    "english": "A small fee changes how often people show up.",
+    "level": "B2"
+  },
+  {
+    "english": "Tipping changes the math of a meal.",
+    "level": "B2"
+  },
+  {
+    "english": "People share when sharing is easy.",
+    "level": "B1"
+  },
+  {
+    "english": "A queue tells you what people value today.",
+    "level": "B2"
+  },
+  {
+    "english": "Limited time offers create urgency on purpose.",
+    "level": "B2"
+  },
+  {
+    "english": "Loyalty programs reward what would happen anyway.",
+    "level": "B2"
+  },
+  {
+    "english": "Default options decide more than people realize.",
+    "level": "C1"
+  },
+  {
+    "english": "Reviews shift demand more than ads.",
+    "level": "B2"
+  },
+  {
+    "english": "Word of mouth still beats most marketing.",
+    "level": "B2"
+  },
+  {
+    "english": "The economy grows in some years and shrinks in others.",
+    "level": "B2"
+  },
+  {
+    "english": "Recessions teach lessons that booms forget.",
+    "level": "C1"
+  },
+  {
+    "english": "Long-run growth lifts everyone, slowly.",
+    "level": "B2"
+  },
+  {
+    "english": "Productivity gains hide in tools and habits.",
+    "level": "C1"
+  },
+  {
+    "english": "New ideas are the only sustainable source of growth.",
+    "level": "B2"
+  },
+  {
+    "english": "A boom can mask a lot of bad decisions.",
+    "level": "B2"
+  },
+  {
+    "english": "Crashes punish the most leveraged first.",
+    "level": "C1"
+  },
+  {
+    "english": "Cheap money tends to find risky uses.",
+    "level": "C1"
+  },
+  {
+    "english": "A bubble is hard to see from inside it.",
+    "level": "B2"
+  },
+  {
+    "english": "Recovery is uneven across industries and regions.",
+    "level": "B2"
+  },
+  {
+    "english": "Countries trade because both sides gain.",
+    "level": "B2"
+  },
+  {
+    "english": "Tariffs raise prices for buyers at home.",
+    "level": "B2"
+  },
+  {
+    "english": "Exchange rates change what an import costs.",
+    "level": "B2"
+  },
+  {
+    "english": "A weak currency helps exporters and hurts importers.",
+    "level": "C1"
+  },
+  {
+    "english": "Foreign investment can build or strain an economy.",
+    "level": "C1"
+  },
+  {
+    "english": "Remittances support many families across borders.",
+    "level": "B2"
+  },
+  {
+    "english": "Sanctions affect ordinary people more than leaders.",
+    "level": "C1"
+  },
+  {
+    "english": "Global supply chains break in surprising places.",
+    "level": "B2"
+  },
+  {
+    "english": "A shortage in one country can move prices everywhere.",
+    "level": "B2"
+  },
+  {
+    "english": "Some industries cluster in one region for a reason.",
+    "level": "B2"
+  },
+  {
+    "english": "Inequality grows quietly when nobody is watching.",
+    "level": "B2"
+  },
+  {
+    "english": "Taxes are the price of public goods.",
+    "level": "B2"
+  },
+  {
+    "english": "Public goods are the ones we can't easily buy individually.",
+    "level": "B2"
+  },
+  {
+    "english": "Externalities are the costs nobody asked to pay.",
+    "level": "C1"
+  },
+  {
+    "english": "A small market failure can have huge effects.",
+    "level": "B2"
+  },
+  {
+    "english": "The free market needs rules to stay free.",
+    "level": "C1"
+  },
+  {
+    "english": "Information is unevenly shared between buyers and sellers.",
+    "level": "C1"
+  },
+  {
+    "english": "Trust lowers the cost of every transaction.",
+    "level": "B2"
+  },
+  {
+    "english": "Reputation is an underrated asset.",
+    "level": "B2"
+  },
+  {
+    "english": "The price of attention has gone up.",
+    "level": "B2"
+  },
+  {
+    "english": "The most important markets often have no prices.",
+    "level": "C1"
+  },
+  {
+    "english": "Time and care are among the scarcest resources.",
+    "level": "B2"
+  },
+  {
+    "english": "Economic decisions are also moral decisions.",
+    "level": "B2"
+  },
+  {
+    "english": "The economy is just people doing things for each other.",
+    "level": "B2"
+  },
+  {
+    "english": "A simple budget changes more than any complex theory.",
+    "level": "B2"
+  },
+  {
+    "english": "I have a job.",
+    "level": "A0"
+  },
+  {
+    "english": "Money is useful.",
+    "level": "A1"
+  },
+  {
+    "english": "An economy is the long, mostly invisible conversation a society has with itself about what its people most want, most fear, and are most willing to trade for one another.",
+    "level": "C2"
+  }
 ]

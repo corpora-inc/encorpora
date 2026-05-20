@@ -1,108 +1,410 @@
 [
-  {"english": "Chop the onion finely.", "level": "A2"},
-  {"english": "Boil the water before adding the pasta.", "level": "A2"},
-  {"english": "Stir the sauce while it simmers.", "level": "B1"},
-  {"english": "Season the chicken with salt and pepper.", "level": "B1"},
-  {"english": "Whisk the eggs until they're frothy.", "level": "B1"},
-  {"english": "Fold the flour in gently.", "level": "B2"},
-  {"english": "Let the meat rest for a few minutes.", "level": "B1"},
-  {"english": "Roast the vegetables at high heat.", "level": "B1"},
-  {"english": "Slice the bread on the bias.", "level": "B2"},
-  {"english": "Sauté the garlic but don't burn it.", "level": "B2"},
-  {"english": "Bring the soup back to a boil.", "level": "B1"},
-  {"english": "Simmer the stock for an hour.", "level": "B1"},
-  {"english": "Marinate the chicken overnight.", "level": "B1"},
-  {"english": "Toast the spices in a dry pan first.", "level": "B2"},
-  {"english": "Reduce the wine by half.", "level": "B2"},
-  {"english": "Steam the broccoli for four minutes.", "level": "B1"},
-  {"english": "Caramelize the onions slowly.", "level": "B2"},
-  {"english": "Knead the dough until it's smooth.", "level": "B2"},
-  {"english": "Strain the broth through a fine sieve.", "level": "B2"},
-  {"english": "Grate a little fresh nutmeg on top.", "level": "B2"},
-
-  {"english": "We're out of olive oil.", "level": "A2"},
-  {"english": "The lemon is too dry to juice.", "level": "B1"},
-  {"english": "Could you pass the salt?", "level": "A1"},
-  {"english": "Fresh basil makes a big difference.", "level": "B1"},
-  {"english": "I buy garlic by the head.", "level": "B1"},
-  {"english": "Brown sugar makes the cookies softer.", "level": "B1"},
-  {"english": "The eggs are still in the fridge.", "level": "A2"},
-  {"english": "The cilantro is almost ready in the garden.", "level": "B1"},
-  {"english": "We need a tomato for the sandwich.", "level": "A2"},
-  {"english": "The butter softens faster on the counter.", "level": "B1"},
-  {"english": "He uses sea salt for everything.", "level": "B1"},
-  {"english": "The flour bag is almost empty.", "level": "A2"},
-  {"english": "The cream went bad over the weekend.", "level": "B1"},
-  {"english": "I prefer Greek yogurt to sour cream.", "level": "B1"},
-  {"english": "The mushrooms shrink as they cook.", "level": "B1"},
-  {"english": "Add a pinch of red pepper.", "level": "A2"},
-  {"english": "The recipe calls for two cups of broth.", "level": "B1"},
-  {"english": "She always keeps anchovies in the pantry.", "level": "B2"},
-  {"english": "The peppers turn sweet when they're roasted.", "level": "B2"},
-  {"english": "Frozen peas are a small miracle.", "level": "B2"},
-
-  {"english": "The kitchen smells like bread.", "level": "A2"},
-  {"english": "He spilled the rice all over the counter.", "level": "B1"},
-  {"english": "The pan is too hot already.", "level": "A2"},
-  {"english": "I burned the toast again.", "level": "A2"},
-  {"english": "She tasted the sauce and added more salt.", "level": "B1"},
-  {"english": "The smoke alarm went off during dinner.", "level": "B2"},
-  {"english": "He cleans as he goes.", "level": "B1"},
-  {"english": "The pot bubbled over while she answered the phone.", "level": "B2"},
-  {"english": "The fridge needs to be wiped down.", "level": "B1"},
-  {"english": "The kids set the table without being asked.", "level": "B2"},
-  {"english": "The pasta water is bubbling.", "level": "A2"},
-  {"english": "She put a towel under the cutting board so it wouldn't slip.", "level": "C1"},
-  {"english": "He always cooks barefoot.", "level": "B1"},
-  {"english": "The cake fell when I opened the oven.", "level": "B2"},
-  {"english": "We forgot to preheat the oven.", "level": "B1"},
-  {"english": "The dog watched every move from the doorway.", "level": "B2"},
-  {"english": "The kitchen window is open to let the steam out.", "level": "B2"},
-  {"english": "She turned the music up while she cooked.", "level": "B1"},
-  {"english": "The dishes piled up while we ate.", "level": "B2"},
-  {"english": "The leftovers will be lunch tomorrow.", "level": "A2"},
-
-  {"english": "I followed the recipe step by step.", "level": "A2"},
-  {"english": "The first pancake is always the worst.", "level": "B1"},
-  {"english": "She invented the sauce by accident.", "level": "B2"},
-  {"english": "He taught himself to bake during the winter.", "level": "B1"},
-  {"english": "The cookbook fell open to the same page.", "level": "B2"},
-  {"english": "I doubled the recipe and made too much.", "level": "B1"},
-  {"english": "The video showed me how to fold a dumpling.", "level": "B1"},
-  {"english": "He measures everything with a small scale.", "level": "B1"},
-  {"english": "She cooks by smell more than by clock.", "level": "B2"},
-  {"english": "I tried a new spice and it worked.", "level": "B1"},
-  {"english": "The bread didn't rise the first time.", "level": "B1"},
-  {"english": "She tasted as she went and adjusted.", "level": "B2"},
-  {"english": "He learned this dish from his grandmother.", "level": "B1"},
-  {"english": "The recipe was passed down on a small card.", "level": "B2"},
-  {"english": "Cooking for one is a different art.", "level": "B2"},
-
-  {"english": "Dinner is ready in five minutes.", "level": "A1"},
-  {"english": "Please pass me the bread.", "level": "A1"},
-  {"english": "The kitchen is the warmest room in the house.", "level": "B1"},
-  {"english": "We ate outside while the sun set.", "level": "B1"},
-  {"english": "Everyone helped with the dishes.", "level": "A2"},
-  {"english": "She always cooks too much, on purpose.", "level": "B2"},
-  {"english": "He always brings a bottle of wine.", "level": "A2"},
-  {"english": "The kids ate three helpings.", "level": "B1"},
-  {"english": "The candles burned all the way down.", "level": "B2"},
-  {"english": "We talked long after the plates were cleared.", "level": "B2"},
-
-  {"english": "The knife is sharper than it looks.", "level": "B1"},
-  {"english": "Use the wooden spoon for the sauce.", "level": "A2"},
-  {"english": "The cast iron pan is heavy but worth it.", "level": "B2"},
-  {"english": "He keeps the spices in a small drawer.", "level": "B1"},
-  {"english": "A good cutting board makes everything easier.", "level": "B1"},
-  {"english": "The oven is finally hot enough.", "level": "A2"},
-  {"english": "The blender struggles with whole almonds.", "level": "B2"},
-  {"english": "She wiped the counter with a damp cloth.", "level": "B1"},
-  {"english": "The colander is in the second drawer.", "level": "B1"},
-  {"english": "Don't forget the oven mitts.", "level": "B1"},
-
-  {"english": "Cooking is mostly patience.", "level": "B2"},
-  {"english": "The same ingredients make different dishes in different hands.", "level": "C1"},
-  {"english": "Salt is the first thing you fix.", "level": "B2"},
-  {"english": "Taste before you add more.", "level": "A2"},
-  {"english": "A simple meal eaten slowly is a small victory.", "level": "C1"}
+  {
+    "english": "Chop the onion finely.",
+    "level": "A2"
+  },
+  {
+    "english": "Boil the water before adding the pasta.",
+    "level": "A2"
+  },
+  {
+    "english": "Stir the sauce while it simmers.",
+    "level": "B1"
+  },
+  {
+    "english": "Season the chicken with salt and pepper.",
+    "level": "B1"
+  },
+  {
+    "english": "Whisk the eggs until they're frothy.",
+    "level": "B1"
+  },
+  {
+    "english": "Fold the flour in gently.",
+    "level": "B2"
+  },
+  {
+    "english": "Let the meat rest for a few minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "Roast the vegetables at high heat.",
+    "level": "B1"
+  },
+  {
+    "english": "Slice the bread on the bias.",
+    "level": "B2"
+  },
+  {
+    "english": "Sauté the garlic but don't burn it.",
+    "level": "B2"
+  },
+  {
+    "english": "Bring the soup back to a boil.",
+    "level": "B1"
+  },
+  {
+    "english": "Simmer the stock for an hour.",
+    "level": "B1"
+  },
+  {
+    "english": "Marinate the chicken overnight.",
+    "level": "B1"
+  },
+  {
+    "english": "Toast the spices in a dry pan first.",
+    "level": "B2"
+  },
+  {
+    "english": "Reduce the wine by half.",
+    "level": "B2"
+  },
+  {
+    "english": "Steam the broccoli for four minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "Caramelize the onions slowly.",
+    "level": "B2"
+  },
+  {
+    "english": "Knead the dough until it's smooth.",
+    "level": "B2"
+  },
+  {
+    "english": "Strain the broth through a fine sieve.",
+    "level": "B2"
+  },
+  {
+    "english": "Grate a little fresh nutmeg on top.",
+    "level": "B2"
+  },
+  {
+    "english": "We're out of olive oil.",
+    "level": "A2"
+  },
+  {
+    "english": "The lemon is too dry to juice.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you pass the salt?",
+    "level": "A1"
+  },
+  {
+    "english": "Fresh basil makes a big difference.",
+    "level": "B1"
+  },
+  {
+    "english": "I buy garlic by the head.",
+    "level": "B1"
+  },
+  {
+    "english": "Brown sugar makes the cookies softer.",
+    "level": "B1"
+  },
+  {
+    "english": "The eggs are still in the fridge.",
+    "level": "A2"
+  },
+  {
+    "english": "The cilantro is almost ready in the garden.",
+    "level": "B1"
+  },
+  {
+    "english": "We need a tomato for the sandwich.",
+    "level": "A2"
+  },
+  {
+    "english": "The butter softens faster on the counter.",
+    "level": "B1"
+  },
+  {
+    "english": "He uses sea salt for everything.",
+    "level": "B1"
+  },
+  {
+    "english": "The flour bag is almost empty.",
+    "level": "A2"
+  },
+  {
+    "english": "The cream went bad over the weekend.",
+    "level": "B1"
+  },
+  {
+    "english": "I prefer Greek yogurt to sour cream.",
+    "level": "B1"
+  },
+  {
+    "english": "The mushrooms shrink as they cook.",
+    "level": "B1"
+  },
+  {
+    "english": "Add a pinch of red pepper.",
+    "level": "A2"
+  },
+  {
+    "english": "The recipe calls for two cups of broth.",
+    "level": "B1"
+  },
+  {
+    "english": "She always keeps anchovies in the pantry.",
+    "level": "B2"
+  },
+  {
+    "english": "The peppers turn sweet when they're roasted.",
+    "level": "B2"
+  },
+  {
+    "english": "Frozen peas are a small miracle.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen smells like bread.",
+    "level": "A2"
+  },
+  {
+    "english": "He spilled the rice all over the counter.",
+    "level": "B1"
+  },
+  {
+    "english": "The pan is too hot already.",
+    "level": "A2"
+  },
+  {
+    "english": "I burned the toast again.",
+    "level": "A2"
+  },
+  {
+    "english": "She tasted the sauce and added more salt.",
+    "level": "B1"
+  },
+  {
+    "english": "The smoke alarm went off during dinner.",
+    "level": "B2"
+  },
+  {
+    "english": "He cleans as he goes.",
+    "level": "B1"
+  },
+  {
+    "english": "The pot bubbled over while she answered the phone.",
+    "level": "B2"
+  },
+  {
+    "english": "The fridge needs to be wiped down.",
+    "level": "B1"
+  },
+  {
+    "english": "The kids set the table without being asked.",
+    "level": "B2"
+  },
+  {
+    "english": "The pasta water is bubbling.",
+    "level": "A2"
+  },
+  {
+    "english": "She put a towel under the cutting board so it wouldn't slip.",
+    "level": "C1"
+  },
+  {
+    "english": "He always cooks barefoot.",
+    "level": "B1"
+  },
+  {
+    "english": "The cake fell when I opened the oven.",
+    "level": "B2"
+  },
+  {
+    "english": "We forgot to preheat the oven.",
+    "level": "B1"
+  },
+  {
+    "english": "The dog watched every move from the doorway.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen window is open to let the steam out.",
+    "level": "B2"
+  },
+  {
+    "english": "She turned the music up while she cooked.",
+    "level": "B1"
+  },
+  {
+    "english": "The dishes piled up while we ate.",
+    "level": "B2"
+  },
+  {
+    "english": "The leftovers will be lunch tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "I followed the recipe step by step.",
+    "level": "A2"
+  },
+  {
+    "english": "The first pancake is always the worst.",
+    "level": "B1"
+  },
+  {
+    "english": "She invented the sauce by accident.",
+    "level": "B2"
+  },
+  {
+    "english": "He taught himself to bake during the winter.",
+    "level": "B1"
+  },
+  {
+    "english": "The cookbook fell open to the same page.",
+    "level": "B2"
+  },
+  {
+    "english": "I doubled the recipe and made too much.",
+    "level": "B1"
+  },
+  {
+    "english": "The video showed me how to fold a dumpling.",
+    "level": "B1"
+  },
+  {
+    "english": "He measures everything with a small scale.",
+    "level": "B1"
+  },
+  {
+    "english": "She cooks by smell more than by clock.",
+    "level": "B2"
+  },
+  {
+    "english": "I tried a new spice and it worked.",
+    "level": "B1"
+  },
+  {
+    "english": "The bread didn't rise the first time.",
+    "level": "B1"
+  },
+  {
+    "english": "She tasted as she went and adjusted.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned this dish from his grandmother.",
+    "level": "B1"
+  },
+  {
+    "english": "The recipe was passed down on a small card.",
+    "level": "B2"
+  },
+  {
+    "english": "Cooking for one is a different art.",
+    "level": "B2"
+  },
+  {
+    "english": "Dinner is ready in five minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "Please pass me the bread.",
+    "level": "A1"
+  },
+  {
+    "english": "The kitchen is the warmest room in the house.",
+    "level": "B1"
+  },
+  {
+    "english": "We ate outside while the sun set.",
+    "level": "B1"
+  },
+  {
+    "english": "Everyone helped with the dishes.",
+    "level": "A2"
+  },
+  {
+    "english": "She always cooks too much, on purpose.",
+    "level": "B2"
+  },
+  {
+    "english": "He always brings a bottle of wine.",
+    "level": "A2"
+  },
+  {
+    "english": "The kids ate three helpings.",
+    "level": "B1"
+  },
+  {
+    "english": "The candles burned all the way down.",
+    "level": "B2"
+  },
+  {
+    "english": "We talked long after the plates were cleared.",
+    "level": "B2"
+  },
+  {
+    "english": "The knife is sharper than it looks.",
+    "level": "B1"
+  },
+  {
+    "english": "Use the wooden spoon for the sauce.",
+    "level": "A2"
+  },
+  {
+    "english": "The cast iron pan is heavy but worth it.",
+    "level": "B2"
+  },
+  {
+    "english": "He keeps the spices in a small drawer.",
+    "level": "B1"
+  },
+  {
+    "english": "A good cutting board makes everything easier.",
+    "level": "B1"
+  },
+  {
+    "english": "The oven is finally hot enough.",
+    "level": "A2"
+  },
+  {
+    "english": "The blender struggles with whole almonds.",
+    "level": "B2"
+  },
+  {
+    "english": "She wiped the counter with a damp cloth.",
+    "level": "B1"
+  },
+  {
+    "english": "The colander is in the second drawer.",
+    "level": "B1"
+  },
+  {
+    "english": "Don't forget the oven mitts.",
+    "level": "B1"
+  },
+  {
+    "english": "Cooking is mostly patience.",
+    "level": "B2"
+  },
+  {
+    "english": "The same ingredients make different dishes in different hands.",
+    "level": "C1"
+  },
+  {
+    "english": "Salt is the first thing you fix.",
+    "level": "B2"
+  },
+  {
+    "english": "Taste before you add more.",
+    "level": "A2"
+  },
+  {
+    "english": "A simple meal eaten slowly is a small victory.",
+    "level": "C1"
+  },
+  {
+    "english": "I like food.",
+    "level": "A0"
+  },
+  {
+    "english": "A kitchen is a long, generous conversation between a cook and the ingredients on the counter, and the meal is the polite agreement they finally reach about how to feed the people in the next room.",
+    "level": "C2"
+  }
 ]

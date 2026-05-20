@@ -1,107 +1,406 @@
 [
-  {"english": "It is dark.", "level": "A1"},
-  {"english": "The moon is up.", "level": "A1"},
-  {"english": "I sleep at ten.", "level": "A1"},
-  {"english": "The dog is asleep.", "level": "A1"},
-  {"english": "The street is quiet.", "level": "A1"},
-  {"english": "Good night.", "level": "A1"},
-  {"english": "I am tired.", "level": "A1"},
-  {"english": "The baby sleeps.", "level": "A1"},
-  {"english": "Turn off the light.", "level": "A1"},
-  {"english": "The house is quiet.", "level": "A1"},
-  {"english": "I had a dream.", "level": "A1"},
-  {"english": "The night is long.", "level": "A1"},
-  {"english": "The window is open.", "level": "A1"},
-  {"english": "The stars are out.", "level": "A1"},
-  {"english": "Sleep well.", "level": "A1"},
-
-  {"english": "Some thoughts only come after midnight.", "level": "A2"},
-  {"english": "The city changes when it is quiet.", "level": "A2"},
-  {"english": "She fell asleep with the book on her chest.", "level": "A2"},
-  {"english": "The wind sounds different at night.", "level": "A2"},
-  {"english": "A bad dream still hangs around in the morning.", "level": "A2"},
-  {"english": "The street outside is empty by eleven.", "level": "A2"},
-  {"english": "The fan is the only sound in the room.", "level": "A2"},
-  {"english": "The dog circled three times and lay down.", "level": "A2"},
-  {"english": "The neighbors left their porch light on.", "level": "A2"},
-  {"english": "A late phone call is rarely good news.", "level": "A2"},
-  {"english": "The cat watches the window all night.", "level": "A2"},
-  {"english": "The moon was bigger than I remembered.", "level": "A2"},
-  {"english": "We sat outside until the stars came out.", "level": "A2"},
-  {"english": "He works the night shift at the hospital.", "level": "A2"},
-  {"english": "The train passes our window at one in the morning.", "level": "A2"},
-  {"english": "The kitchen is the warmest room after midnight.", "level": "A2"},
-  {"english": "She made tea and then forgot to drink it.", "level": "A2"},
-  {"english": "The room is dark except for the screen.", "level": "A2"},
-  {"english": "I count the hours when I cannot sleep.", "level": "A2"},
-  {"english": "The dawn comes slowly through the blinds.", "level": "A2"},
-  {"english": "He set the alarm and then woke before it rang.", "level": "A2"},
-  {"english": "The clock ticks louder at night.", "level": "A2"},
-  {"english": "We talked until the first bird sang.", "level": "A2"},
-  {"english": "The sky just before sunrise has its own colors.", "level": "A2"},
-  {"english": "The streetlight outside the window hums.", "level": "A2"},
-  {"english": "The whole house breathes at night.", "level": "A2"},
-  {"english": "The old floorboards complain when you cross them.", "level": "A2"},
-  {"english": "The cars on the highway sound far away tonight.", "level": "A2"},
-  {"english": "The candle burned down to a small bright stub.", "level": "A2"},
-  {"english": "The neighbor's window finally went dark.", "level": "A2"},
-  {"english": "The night air smells of rain that has not arrived.", "level": "A2"},
-  {"english": "A long phone call after midnight is its own kind of friendship.", "level": "A2"},
-  {"english": "The walk home was longer than the walk out.", "level": "A2"},
-  {"english": "The babysitter dozed off in the chair.", "level": "A2"},
-  {"english": "We watched a movie at midnight and remembered being young.", "level": "A2"},
-
-  {"english": "A long night for one person is a short night for another.", "level": "B1"},
-  {"english": "The night shift teaches you a different city.", "level": "B1"},
-  {"english": "The hours after midnight have their own honesty.", "level": "B1"},
-  {"english": "A night drive on an empty highway is a kind of meditation.", "level": "B1"},
-  {"english": "The city's traffic is quieter, but never silent.", "level": "B1"},
-  {"english": "The mind keeps thinking after the lights go off, sometimes for hours.", "level": "B1"},
-  {"english": "The bakery on the corner lights up at four every morning.", "level": "B1"},
-  {"english": "The night belongs to nurses, drivers, and a few lonely thinkers.", "level": "B1"},
-  {"english": "An old friend will pick up the phone after midnight.", "level": "B1"},
-  {"english": "The early morning has more weather than people notice.", "level": "B1"},
-  {"english": "He learned to nap on a train, in fifteen-minute pieces.", "level": "B1"},
-  {"english": "The first hour of insomnia is the hardest to forgive.", "level": "B1"},
-  {"english": "The whole apartment building goes quiet at the same hour each night.", "level": "B1"},
-  {"english": "A walk after midnight in a safe neighborhood is one of life's small luxuries.", "level": "B1"},
-  {"english": "The night sky over a country road is louder than the city sky.", "level": "B1"},
-  {"english": "A long flight at night is a few hours of borrowed solitude.", "level": "B1"},
-  {"english": "The fridge hums, the pipes click, the building lives.", "level": "B1"},
-  {"english": "The smell of rain at three in the morning is the world's least appreciated weather.", "level": "B1"},
-
-  {"english": "The hours after midnight are honest in a way the rest of the day is not.", "level": "B2"},
-  {"english": "The city at three in the morning is its own country.", "level": "B2"},
-  {"english": "A sleepless night is a long, quiet conversation with yourself.", "level": "B2"},
-  {"english": "A baby's cry at four in the morning is the loudest sound on Earth.", "level": "B2"},
-  {"english": "A long night shift teaches you what most people only sleep through.", "level": "B2"},
-  {"english": "The mind tells different stories at night than it would by day.", "level": "B2"},
-  {"english": "A long night drive returns you to the morning a slightly different person.", "level": "B2"},
-  {"english": "An empty street under a streetlight is a small still life waiting for a passerby.", "level": "B2"},
-  {"english": "The first bird to call at dawn is the night's official notice of resignation.", "level": "B2"},
-  {"english": "The kitchen at midnight is the room where you finally tell yourself the truth.", "level": "B2"},
-  {"english": "Insomnia is the body's way of having its own opinions.", "level": "B2"},
-  {"english": "A late conversation with a friend leaves a longer mark than a long one in daylight.", "level": "B2"},
-  {"english": "The world at three in the morning belongs to those who are awake out of habit, and those out of necessity.", "level": "B2"},
-  {"english": "A nightlight in a child's room is a small public utility.", "level": "B2"},
-  {"english": "A long night ends in a slow rearrangement of the morning light.", "level": "B2"},
-
-  {"english": "The night is the world's most underappreciated weather.", "level": "C1"},
-  {"english": "A long night is also a long opportunity, if you have the energy to claim it.", "level": "C1"},
-  {"english": "The mind at night writes letters it would never send by day.", "level": "C1"},
-  {"english": "A city's night is the rehearsal for its day, and the leftover of the day before.", "level": "C1"},
-  {"english": "The night is the time the city tells itself the truth about how tired it is.", "level": "C1"},
-  {"english": "Insomnia is partly a failure of the body and partly an honesty of the mind.", "level": "C1"},
-  {"english": "The deepest silence of the night is rarely silence; it is only the absence of the louder noises.", "level": "C1"},
-  {"english": "The hour before dawn is the world's quietest hour, and the world's most patient one.", "level": "C1"},
-  {"english": "A night drive across a sleeping country reminds you that the country is mostly asleep most of the time.", "level": "C1"},
-  {"english": "The night gives the body permission to repair what the day asked it to ignore.", "level": "C1"},
-  {"english": "The hours after midnight are a kind of slow accounting, the day's books closing themselves.", "level": "C1"},
-  {"english": "The night reminds us that the loudest sounds we make are mostly daylight habits.", "level": "C1"},
-
-  {"english": "The night is the world's most patient teacher, and one of its most poorly attended classes.", "level": "C2"},
-  {"english": "A long night ends with a slow rearrangement of light that the morning will pretend it had nothing to do with.", "level": "C2"},
-  {"english": "The deepest insomnia is the company of a self the daylight refuses to admit, and the work of the small hours is mostly to make peace with that self before the alarm.", "level": "C2"},
-  {"english": "The hour before dawn is the world's most honest hour, and it asks almost nothing of those who keep it; only that they wait, quietly, until the world is ready to begin again.", "level": "C2"},
-  {"english": "A great night is one in which the body, the mind, and the dark agree on a treaty no one will be able to remember in the morning.", "level": "C2"}
+  {
+    "english": "It is dark.",
+    "level": "A1"
+  },
+  {
+    "english": "The moon is up.",
+    "level": "A1"
+  },
+  {
+    "english": "I sleep at ten.",
+    "level": "A1"
+  },
+  {
+    "english": "The dog is asleep.",
+    "level": "A1"
+  },
+  {
+    "english": "The street is quiet.",
+    "level": "A1"
+  },
+  {
+    "english": "Good night.",
+    "level": "A1"
+  },
+  {
+    "english": "I am tired.",
+    "level": "A1"
+  },
+  {
+    "english": "The baby sleeps.",
+    "level": "A1"
+  },
+  {
+    "english": "Turn off the light.",
+    "level": "A1"
+  },
+  {
+    "english": "The house is quiet.",
+    "level": "A1"
+  },
+  {
+    "english": "I had a dream.",
+    "level": "A1"
+  },
+  {
+    "english": "The night is long.",
+    "level": "A1"
+  },
+  {
+    "english": "The window is open.",
+    "level": "A1"
+  },
+  {
+    "english": "The stars are out.",
+    "level": "A1"
+  },
+  {
+    "english": "Sleep well.",
+    "level": "A1"
+  },
+  {
+    "english": "Some thoughts only come after midnight.",
+    "level": "A2"
+  },
+  {
+    "english": "The city changes when it is quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "She fell asleep with the book on her chest.",
+    "level": "A2"
+  },
+  {
+    "english": "The wind sounds different at night.",
+    "level": "A2"
+  },
+  {
+    "english": "A bad dream still hangs around in the morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The street outside is empty by eleven.",
+    "level": "A2"
+  },
+  {
+    "english": "The fan is the only sound in the room.",
+    "level": "A2"
+  },
+  {
+    "english": "The dog circled three times and lay down.",
+    "level": "A2"
+  },
+  {
+    "english": "The neighbors left their porch light on.",
+    "level": "A2"
+  },
+  {
+    "english": "A late phone call is rarely good news.",
+    "level": "A2"
+  },
+  {
+    "english": "The cat watches the window all night.",
+    "level": "A2"
+  },
+  {
+    "english": "The moon was bigger than I remembered.",
+    "level": "A2"
+  },
+  {
+    "english": "We sat outside until the stars came out.",
+    "level": "A2"
+  },
+  {
+    "english": "He works the night shift at the hospital.",
+    "level": "A2"
+  },
+  {
+    "english": "The train passes our window at one in the morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The kitchen is the warmest room after midnight.",
+    "level": "A2"
+  },
+  {
+    "english": "She made tea and then forgot to drink it.",
+    "level": "A2"
+  },
+  {
+    "english": "The room is dark except for the screen.",
+    "level": "A2"
+  },
+  {
+    "english": "I count the hours when I cannot sleep.",
+    "level": "A2"
+  },
+  {
+    "english": "The dawn comes slowly through the blinds.",
+    "level": "A2"
+  },
+  {
+    "english": "He set the alarm and then woke before it rang.",
+    "level": "A2"
+  },
+  {
+    "english": "The clock ticks louder at night.",
+    "level": "A2"
+  },
+  {
+    "english": "We talked until the first bird sang.",
+    "level": "A2"
+  },
+  {
+    "english": "The sky just before sunrise has its own colors.",
+    "level": "A2"
+  },
+  {
+    "english": "The streetlight outside the window hums.",
+    "level": "A2"
+  },
+  {
+    "english": "The whole house breathes at night.",
+    "level": "A2"
+  },
+  {
+    "english": "The old floorboards complain when you cross them.",
+    "level": "A2"
+  },
+  {
+    "english": "The cars on the highway sound far away tonight.",
+    "level": "A2"
+  },
+  {
+    "english": "The candle burned down to a small bright stub.",
+    "level": "A2"
+  },
+  {
+    "english": "The neighbor's window finally went dark.",
+    "level": "A2"
+  },
+  {
+    "english": "The night air smells of rain that has not arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "A long phone call after midnight is its own kind of friendship.",
+    "level": "A2"
+  },
+  {
+    "english": "The walk home was longer than the walk out.",
+    "level": "A2"
+  },
+  {
+    "english": "The babysitter dozed off in the chair.",
+    "level": "A2"
+  },
+  {
+    "english": "We watched a movie at midnight and remembered being young.",
+    "level": "A2"
+  },
+  {
+    "english": "A long night for one person is a short night for another.",
+    "level": "B1"
+  },
+  {
+    "english": "The night shift teaches you a different city.",
+    "level": "B1"
+  },
+  {
+    "english": "The hours after midnight have their own honesty.",
+    "level": "B1"
+  },
+  {
+    "english": "A night drive on an empty highway is a kind of meditation.",
+    "level": "B1"
+  },
+  {
+    "english": "The city's traffic is quieter, but never silent.",
+    "level": "B1"
+  },
+  {
+    "english": "The mind keeps thinking after the lights go off, sometimes for hours.",
+    "level": "B1"
+  },
+  {
+    "english": "The bakery on the corner lights up at four every morning.",
+    "level": "B1"
+  },
+  {
+    "english": "The night belongs to nurses, drivers, and a few lonely thinkers.",
+    "level": "B1"
+  },
+  {
+    "english": "An old friend will pick up the phone after midnight.",
+    "level": "B1"
+  },
+  {
+    "english": "The early morning has more weather than people notice.",
+    "level": "B1"
+  },
+  {
+    "english": "He learned to nap on a train, in fifteen-minute pieces.",
+    "level": "B1"
+  },
+  {
+    "english": "The first hour of insomnia is the hardest to forgive.",
+    "level": "B1"
+  },
+  {
+    "english": "The whole apartment building goes quiet at the same hour each night.",
+    "level": "B1"
+  },
+  {
+    "english": "A walk after midnight in a safe neighborhood is one of life's small luxuries.",
+    "level": "B1"
+  },
+  {
+    "english": "The night sky over a country road is louder than the city sky.",
+    "level": "B1"
+  },
+  {
+    "english": "A long flight at night is a few hours of borrowed solitude.",
+    "level": "B1"
+  },
+  {
+    "english": "The fridge hums, the pipes click, the building lives.",
+    "level": "B1"
+  },
+  {
+    "english": "The smell of rain at three in the morning is the world's least appreciated weather.",
+    "level": "B1"
+  },
+  {
+    "english": "The hours after midnight are honest in a way the rest of the day is not.",
+    "level": "B2"
+  },
+  {
+    "english": "The city at three in the morning is its own country.",
+    "level": "B2"
+  },
+  {
+    "english": "A sleepless night is a long, quiet conversation with yourself.",
+    "level": "B2"
+  },
+  {
+    "english": "A baby's cry at four in the morning is the loudest sound on Earth.",
+    "level": "B2"
+  },
+  {
+    "english": "A long night shift teaches you what most people only sleep through.",
+    "level": "B2"
+  },
+  {
+    "english": "The mind tells different stories at night than it would by day.",
+    "level": "B2"
+  },
+  {
+    "english": "A long night drive returns you to the morning a slightly different person.",
+    "level": "B2"
+  },
+  {
+    "english": "An empty street under a streetlight is a small still life waiting for a passerby.",
+    "level": "B2"
+  },
+  {
+    "english": "The first bird to call at dawn is the night's official notice of resignation.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen at midnight is the room where you finally tell yourself the truth.",
+    "level": "B2"
+  },
+  {
+    "english": "Insomnia is the body's way of having its own opinions.",
+    "level": "B2"
+  },
+  {
+    "english": "A late conversation with a friend leaves a longer mark than a long one in daylight.",
+    "level": "B2"
+  },
+  {
+    "english": "The world at three in the morning belongs to those who are awake out of habit, and those out of necessity.",
+    "level": "B2"
+  },
+  {
+    "english": "A nightlight in a child's room is a small public utility.",
+    "level": "B2"
+  },
+  {
+    "english": "A long night ends in a slow rearrangement of the morning light.",
+    "level": "B2"
+  },
+  {
+    "english": "The night is the world's most underappreciated weather.",
+    "level": "C1"
+  },
+  {
+    "english": "A long night is also a long opportunity, if you have the energy to claim it.",
+    "level": "C1"
+  },
+  {
+    "english": "The mind at night writes letters it would never send by day.",
+    "level": "C1"
+  },
+  {
+    "english": "A city's night is the rehearsal for its day, and the leftover of the day before.",
+    "level": "C1"
+  },
+  {
+    "english": "The night is the time the city tells itself the truth about how tired it is.",
+    "level": "C1"
+  },
+  {
+    "english": "Insomnia is partly a failure of the body and partly an honesty of the mind.",
+    "level": "C1"
+  },
+  {
+    "english": "The deepest silence of the night is rarely silence; it is only the absence of the louder noises.",
+    "level": "C1"
+  },
+  {
+    "english": "The hour before dawn is the world's quietest hour, and the world's most patient one.",
+    "level": "C1"
+  },
+  {
+    "english": "A night drive across a sleeping country reminds you that the country is mostly asleep most of the time.",
+    "level": "C1"
+  },
+  {
+    "english": "The night gives the body permission to repair what the day asked it to ignore.",
+    "level": "C1"
+  },
+  {
+    "english": "The hours after midnight are a kind of slow accounting, the day's books closing themselves.",
+    "level": "C1"
+  },
+  {
+    "english": "The night reminds us that the loudest sounds we make are mostly daylight habits.",
+    "level": "C1"
+  },
+  {
+    "english": "The night is the world's most patient teacher, and one of its most poorly attended classes.",
+    "level": "C2"
+  },
+  {
+    "english": "A long night ends with a slow rearrangement of light that the morning will pretend it had nothing to do with.",
+    "level": "C2"
+  },
+  {
+    "english": "The deepest insomnia is the company of a self the daylight refuses to admit, and the work of the small hours is mostly to make peace with that self before the alarm.",
+    "level": "C2"
+  },
+  {
+    "english": "The hour before dawn is the world's most honest hour, and it asks almost nothing of those who keep it; only that they wait, quietly, until the world is ready to begin again.",
+    "level": "C2"
+  },
+  {
+    "english": "A great night is one in which the body, the mind, and the dark agree on a treaty no one will be able to remember in the morning.",
+    "level": "C2"
+  },
+  {
+    "english": "It is late.",
+    "level": "A0"
+  }
 ]

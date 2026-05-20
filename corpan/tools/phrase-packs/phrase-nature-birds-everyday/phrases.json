@@ -1,107 +1,406 @@
 [
-  {"english": "I love birds.", "level": "A1"},
-  {"english": "The bird is on the wall.", "level": "A1"},
-  {"english": "That is a big bird.", "level": "A1"},
-  {"english": "The bird sings.", "level": "A1"},
-  {"english": "I see a black bird.", "level": "A1"},
-  {"english": "The crow is on the roof.", "level": "A1"},
-  {"english": "Birds have wings.", "level": "A1"},
-  {"english": "The duck is in the water.", "level": "A1"},
-  {"english": "A red bird sat on the fence.", "level": "A1"},
-  {"english": "The bird flew away.", "level": "A1"},
-  {"english": "The little bird is yellow.", "level": "A1"},
-  {"english": "The owl says hoo.", "level": "A1"},
-  {"english": "The bird is in the tree.", "level": "A1"},
-  {"english": "Birds can fly.", "level": "A1"},
-  {"english": "Look at the bird!", "level": "A1"},
-
-  {"english": "The cardinal sings before sunrise.", "level": "A2"},
-  {"english": "Crows are smarter than they look.", "level": "A2"},
-  {"english": "A hawk circled the field for an hour.", "level": "A2"},
-  {"english": "Sparrows nest in the gutter every spring.", "level": "A2"},
-  {"english": "The geese fly south in a long, ragged line.", "level": "A2"},
-  {"english": "A small bird tapped at the window.", "level": "A2"},
-  {"english": "The owl hunts in silence.", "level": "A2"},
-  {"english": "The robin pulls worms from the wet grass.", "level": "A2"},
-  {"english": "We hung a feeder by the kitchen window.", "level": "A2"},
-  {"english": "The pigeons gather wherever there is bread.", "level": "A2"},
-  {"english": "A hummingbird flew straight up and disappeared.", "level": "A2"},
-  {"english": "The bird's nest holds three blue eggs.", "level": "A2"},
-  {"english": "The morning is full of bird songs.", "level": "A2"},
-  {"english": "The duck dipped its head under the water.", "level": "A2"},
-  {"english": "The little finch stayed close to its mother.", "level": "A2"},
-  {"english": "The hawk caught a mouse in the long grass.", "level": "A2"},
-  {"english": "A swan turned its long neck slowly.", "level": "A2"},
-  {"english": "The seagull stole my sandwich on the beach.", "level": "A2"},
-  {"english": "The chickens come running when she calls.", "level": "A2"},
-  {"english": "Crows remember the faces of people who feed them.", "level": "A2"},
-  {"english": "A pair of doves built a nest under the porch.", "level": "A2"},
-  {"english": "Owls can turn their heads almost all the way around.", "level": "A2"},
-  {"english": "The blackbird sang from the chimney.", "level": "A2"},
-  {"english": "We listen for the cuckoo each spring.", "level": "A2"},
-  {"english": "A crow followed us along the path.", "level": "A2"},
-  {"english": "The eagle's nest is on the same cliff each year.", "level": "A2"},
-  {"english": "The little birds bathe in the dust.", "level": "A2"},
-  {"english": "The heron stood still for a long time at the edge of the lake.", "level": "A2"},
-  {"english": "A wren is small but very loud.", "level": "A2"},
-  {"english": "The peacock fanned its tail in the garden.", "level": "A2"},
-  {"english": "The flock turned together in the sky as if one creature.", "level": "A2"},
-  {"english": "The vulture circles where something has died.", "level": "A2"},
-  {"english": "A baby bird fell from the nest and we set it back.", "level": "A2"},
-  {"english": "The penguin walks like a tired old man and swims like a fish.", "level": "A2"},
-  {"english": "The parrot greeted us by name.", "level": "A2"},
-
-  {"english": "The first bird to call in the morning gets the others started.", "level": "B1"},
-  {"english": "Migrating birds use the stars and the sun to find their way.", "level": "B1"},
-  {"english": "A bird's bones are hollow so it can fly.", "level": "B1"},
-  {"english": "The same swallows return to the same barn every year.", "level": "B1"},
-  {"english": "We learned the calls before we ever saw the birds.", "level": "B1"},
-  {"english": "City crows have learned to drop nuts in traffic for cars to crack.", "level": "B1"},
-  {"english": "Owls swallow small animals whole and cough up the bones.", "level": "B1"},
-  {"english": "A flock of starlings can darken the sky at sunset.", "level": "B1"},
-  {"english": "Crows seem to hold a sort of funeral when one of them dies.", "level": "B1"},
-  {"english": "The hummingbird beats its wings so fast you only hear a hum.", "level": "B1"},
-  {"english": "Some birds sing different songs in the city than in the forest.", "level": "B1"},
-  {"english": "The little hawk learned to dive at the wind chime on the porch.", "level": "B1"},
-  {"english": "A duck on the water looks calm but is paddling hard underneath.", "level": "B1"},
-  {"english": "Pelicans fly in a line and the lead bird sets the pace.", "level": "B1"},
-  {"english": "The robin tugs each worm with a careful, sideways step.", "level": "B1"},
-  {"english": "A wild parrot can repeat a phrase it heard once.", "level": "B1"},
-  {"english": "The kingfisher dives like a small blue arrow.", "level": "B1"},
-  {"english": "The first sparrow at a new feeder brings the others by lunch.", "level": "B1"},
-
-  {"english": "A bird's song is a map of the territory it has claimed.", "level": "B2"},
-  {"english": "We thought it was the wind, but it was an owl breathing in the rafters.", "level": "B2"},
-  {"english": "Migration is older than memory, written into the birds before they hatch.", "level": "B2"},
-  {"english": "A nest is a small architecture, built from whatever the season provides.", "level": "B2"},
-  {"english": "The crow that startles us in the city helped some farmer six miles away last week.", "level": "B2"},
-  {"english": "A hawk does most of its hunting from a single high branch.", "level": "B2"},
-  {"english": "Watching a flock turn at the same instant is a small lesson in coordination.", "level": "B2"},
-  {"english": "The colors of male songbirds are dangerous; they are noticed by everything.", "level": "B2"},
-  {"english": "The cuckoo lays its eggs in another bird's nest and never raises its own young.", "level": "B2"},
-  {"english": "An eagle's grip on a fish is too strong to release voluntarily.", "level": "B2"},
-  {"english": "A canary in a coal mine was less symbol than instrument.", "level": "B2"},
-  {"english": "The hummingbird's heart beats more than a thousand times a minute.", "level": "B2"},
-  {"english": "Birds taught us about flight long before we trusted them to.", "level": "B2"},
-  {"english": "A bird seen out of season is a small mystery in a careful birder's notebook.", "level": "B2"},
-  {"english": "Feathers are the warmest invention nature ever shipped.", "level": "B2"},
-
-  {"english": "A garden with birds in it is fed and busy in a way that no still garden is.", "level": "C1"},
-  {"english": "The dawn chorus has its own order: a few soloists, then the choir, then the hum of small voices.", "level": "C1"},
-  {"english": "A great birder is mostly a great listener, sometimes for an hour without moving.", "level": "C1"},
-  {"english": "Birds were the first messengers, carrying news between cities long before the telephone.", "level": "C1"},
-  {"english": "We borrowed the language of flight from creatures who never asked our permission.", "level": "C1"},
-  {"english": "An owl's silence is engineered; its feathers break the wind into a hundred small whispers.", "level": "C1"},
-  {"english": "A flock of geese does not really have a leader; the front bird simply gets tired first.", "level": "C1"},
-  {"english": "Cities have shaped the birds that live in them, and the birds have shaped the cities back.", "level": "C1"},
-  {"english": "A wild canary, properly heard, is not yellow at all; it is a sound.", "level": "C1"},
-  {"english": "The bird outside your kitchen knows your habits better than your neighbors do.", "level": "C1"},
-  {"english": "Migration routes are inheritances, the longest unbroken traditions any creature keeps.", "level": "C1"},
-  {"english": "To name a bird is to start the long lesson of seeing it for what it is.", "level": "C1"},
-
-  {"english": "The sky was the original highway, and the birds the original travelers; we have not quite caught up.", "level": "C2"},
-  {"english": "A field guide is a confession of ignorance turned slowly into a list of small apologies.", "level": "C2"},
-  {"english": "The same star that an old shepherd counted by is the one a tern uses to cross the equator.", "level": "C2"},
-  {"english": "Birds belong to a kingdom older and more capable than ours, kinder when feeding their young and stricter when defending their nests.", "level": "C2"},
-  {"english": "Listen long enough and the morning is not a single song but a parliament, with motions, dissents, and the brief silence of agreement.", "level": "C2"}
+  {
+    "english": "I love birds.",
+    "level": "A1"
+  },
+  {
+    "english": "The bird is on the wall.",
+    "level": "A1"
+  },
+  {
+    "english": "That is a big bird.",
+    "level": "A1"
+  },
+  {
+    "english": "The bird sings.",
+    "level": "A1"
+  },
+  {
+    "english": "I see a black bird.",
+    "level": "A1"
+  },
+  {
+    "english": "The crow is on the roof.",
+    "level": "A1"
+  },
+  {
+    "english": "Birds have wings.",
+    "level": "A1"
+  },
+  {
+    "english": "The duck is in the water.",
+    "level": "A1"
+  },
+  {
+    "english": "A red bird sat on the fence.",
+    "level": "A1"
+  },
+  {
+    "english": "The bird flew away.",
+    "level": "A1"
+  },
+  {
+    "english": "The little bird is yellow.",
+    "level": "A1"
+  },
+  {
+    "english": "The owl says hoo.",
+    "level": "A1"
+  },
+  {
+    "english": "The bird is in the tree.",
+    "level": "A1"
+  },
+  {
+    "english": "Birds can fly.",
+    "level": "A1"
+  },
+  {
+    "english": "Look at the bird!",
+    "level": "A1"
+  },
+  {
+    "english": "The cardinal sings before sunrise.",
+    "level": "A2"
+  },
+  {
+    "english": "Crows are smarter than they look.",
+    "level": "A2"
+  },
+  {
+    "english": "A hawk circled the field for an hour.",
+    "level": "A2"
+  },
+  {
+    "english": "Sparrows nest in the gutter every spring.",
+    "level": "A2"
+  },
+  {
+    "english": "The geese fly south in a long, ragged line.",
+    "level": "A2"
+  },
+  {
+    "english": "A small bird tapped at the window.",
+    "level": "A2"
+  },
+  {
+    "english": "The owl hunts in silence.",
+    "level": "A2"
+  },
+  {
+    "english": "The robin pulls worms from the wet grass.",
+    "level": "A2"
+  },
+  {
+    "english": "We hung a feeder by the kitchen window.",
+    "level": "A2"
+  },
+  {
+    "english": "The pigeons gather wherever there is bread.",
+    "level": "A2"
+  },
+  {
+    "english": "A hummingbird flew straight up and disappeared.",
+    "level": "A2"
+  },
+  {
+    "english": "The bird's nest holds three blue eggs.",
+    "level": "A2"
+  },
+  {
+    "english": "The morning is full of bird songs.",
+    "level": "A2"
+  },
+  {
+    "english": "The duck dipped its head under the water.",
+    "level": "A2"
+  },
+  {
+    "english": "The little finch stayed close to its mother.",
+    "level": "A2"
+  },
+  {
+    "english": "The hawk caught a mouse in the long grass.",
+    "level": "A2"
+  },
+  {
+    "english": "A swan turned its long neck slowly.",
+    "level": "A2"
+  },
+  {
+    "english": "The seagull stole my sandwich on the beach.",
+    "level": "A2"
+  },
+  {
+    "english": "The chickens come running when she calls.",
+    "level": "A2"
+  },
+  {
+    "english": "Crows remember the faces of people who feed them.",
+    "level": "A2"
+  },
+  {
+    "english": "A pair of doves built a nest under the porch.",
+    "level": "A2"
+  },
+  {
+    "english": "Owls can turn their heads almost all the way around.",
+    "level": "A2"
+  },
+  {
+    "english": "The blackbird sang from the chimney.",
+    "level": "A2"
+  },
+  {
+    "english": "We listen for the cuckoo each spring.",
+    "level": "A2"
+  },
+  {
+    "english": "A crow followed us along the path.",
+    "level": "A2"
+  },
+  {
+    "english": "The eagle's nest is on the same cliff each year.",
+    "level": "A2"
+  },
+  {
+    "english": "The little birds bathe in the dust.",
+    "level": "A2"
+  },
+  {
+    "english": "The heron stood still for a long time at the edge of the lake.",
+    "level": "A2"
+  },
+  {
+    "english": "A wren is small but very loud.",
+    "level": "A2"
+  },
+  {
+    "english": "The peacock fanned its tail in the garden.",
+    "level": "A2"
+  },
+  {
+    "english": "The flock turned together in the sky as if one creature.",
+    "level": "A2"
+  },
+  {
+    "english": "The vulture circles where something has died.",
+    "level": "A2"
+  },
+  {
+    "english": "A baby bird fell from the nest and we set it back.",
+    "level": "A2"
+  },
+  {
+    "english": "The penguin walks like a tired old man and swims like a fish.",
+    "level": "A2"
+  },
+  {
+    "english": "The parrot greeted us by name.",
+    "level": "A2"
+  },
+  {
+    "english": "The first bird to call in the morning gets the others started.",
+    "level": "B1"
+  },
+  {
+    "english": "Migrating birds use the stars and the sun to find their way.",
+    "level": "B1"
+  },
+  {
+    "english": "A bird's bones are hollow so it can fly.",
+    "level": "B1"
+  },
+  {
+    "english": "The same swallows return to the same barn every year.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned the calls before we ever saw the birds.",
+    "level": "B1"
+  },
+  {
+    "english": "City crows have learned to drop nuts in traffic for cars to crack.",
+    "level": "B1"
+  },
+  {
+    "english": "Owls swallow small animals whole and cough up the bones.",
+    "level": "B1"
+  },
+  {
+    "english": "A flock of starlings can darken the sky at sunset.",
+    "level": "B1"
+  },
+  {
+    "english": "Crows seem to hold a sort of funeral when one of them dies.",
+    "level": "B1"
+  },
+  {
+    "english": "The hummingbird beats its wings so fast you only hear a hum.",
+    "level": "B1"
+  },
+  {
+    "english": "Some birds sing different songs in the city than in the forest.",
+    "level": "B1"
+  },
+  {
+    "english": "The little hawk learned to dive at the wind chime on the porch.",
+    "level": "B1"
+  },
+  {
+    "english": "A duck on the water looks calm but is paddling hard underneath.",
+    "level": "B1"
+  },
+  {
+    "english": "Pelicans fly in a line and the lead bird sets the pace.",
+    "level": "B1"
+  },
+  {
+    "english": "The robin tugs each worm with a careful, sideways step.",
+    "level": "B1"
+  },
+  {
+    "english": "A wild parrot can repeat a phrase it heard once.",
+    "level": "B1"
+  },
+  {
+    "english": "The kingfisher dives like a small blue arrow.",
+    "level": "B1"
+  },
+  {
+    "english": "The first sparrow at a new feeder brings the others by lunch.",
+    "level": "B1"
+  },
+  {
+    "english": "A bird's song is a map of the territory it has claimed.",
+    "level": "B2"
+  },
+  {
+    "english": "We thought it was the wind, but it was an owl breathing in the rafters.",
+    "level": "B2"
+  },
+  {
+    "english": "Migration is older than memory, written into the birds before they hatch.",
+    "level": "B2"
+  },
+  {
+    "english": "A nest is a small architecture, built from whatever the season provides.",
+    "level": "B2"
+  },
+  {
+    "english": "The crow that startles us in the city helped some farmer six miles away last week.",
+    "level": "B2"
+  },
+  {
+    "english": "A hawk does most of its hunting from a single high branch.",
+    "level": "B2"
+  },
+  {
+    "english": "Watching a flock turn at the same instant is a small lesson in coordination.",
+    "level": "B2"
+  },
+  {
+    "english": "The colors of male songbirds are dangerous; they are noticed by everything.",
+    "level": "B2"
+  },
+  {
+    "english": "The cuckoo lays its eggs in another bird's nest and never raises its own young.",
+    "level": "B2"
+  },
+  {
+    "english": "An eagle's grip on a fish is too strong to release voluntarily.",
+    "level": "B2"
+  },
+  {
+    "english": "A canary in a coal mine was less symbol than instrument.",
+    "level": "B2"
+  },
+  {
+    "english": "The hummingbird's heart beats more than a thousand times a minute.",
+    "level": "B2"
+  },
+  {
+    "english": "Birds taught us about flight long before we trusted them to.",
+    "level": "B2"
+  },
+  {
+    "english": "A bird seen out of season is a small mystery in a careful birder's notebook.",
+    "level": "B2"
+  },
+  {
+    "english": "Feathers are the warmest invention nature ever shipped.",
+    "level": "B2"
+  },
+  {
+    "english": "A garden with birds in it is fed and busy in a way that no still garden is.",
+    "level": "C1"
+  },
+  {
+    "english": "The dawn chorus has its own order: a few soloists, then the choir, then the hum of small voices.",
+    "level": "C1"
+  },
+  {
+    "english": "A great birder is mostly a great listener, sometimes for an hour without moving.",
+    "level": "C1"
+  },
+  {
+    "english": "Birds were the first messengers, carrying news between cities long before the telephone.",
+    "level": "C1"
+  },
+  {
+    "english": "We borrowed the language of flight from creatures who never asked our permission.",
+    "level": "C1"
+  },
+  {
+    "english": "An owl's silence is engineered; its feathers break the wind into a hundred small whispers.",
+    "level": "C1"
+  },
+  {
+    "english": "A flock of geese does not really have a leader; the front bird simply gets tired first.",
+    "level": "C1"
+  },
+  {
+    "english": "Cities have shaped the birds that live in them, and the birds have shaped the cities back.",
+    "level": "C1"
+  },
+  {
+    "english": "A wild canary, properly heard, is not yellow at all; it is a sound.",
+    "level": "C1"
+  },
+  {
+    "english": "The bird outside your kitchen knows your habits better than your neighbors do.",
+    "level": "C1"
+  },
+  {
+    "english": "Migration routes are inheritances, the longest unbroken traditions any creature keeps.",
+    "level": "C1"
+  },
+  {
+    "english": "To name a bird is to start the long lesson of seeing it for what it is.",
+    "level": "C1"
+  },
+  {
+    "english": "The sky was the original highway, and the birds the original travelers; we have not quite caught up.",
+    "level": "C2"
+  },
+  {
+    "english": "A field guide is a confession of ignorance turned slowly into a list of small apologies.",
+    "level": "C2"
+  },
+  {
+    "english": "The same star that an old shepherd counted by is the one a tern uses to cross the equator.",
+    "level": "C2"
+  },
+  {
+    "english": "Birds belong to a kingdom older and more capable than ours, kinder when feeding their young and stricter when defending their nests.",
+    "level": "C2"
+  },
+  {
+    "english": "Listen long enough and the morning is not a single song but a parliament, with motions, dissents, and the brief silence of agreement.",
+    "level": "C2"
+  },
+  {
+    "english": "I see a bird.",
+    "level": "A0"
+  }
 ]

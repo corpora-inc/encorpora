@@ -1,109 +1,414 @@
 [
-  {"english": "Africa is bigger than it looks on most maps.", "level": "B2"},
-  {"english": "The Atlantic Ocean separates the Americas from Europe and Africa.", "level": "B2"},
-  {"english": "Antarctica is the coldest continent.", "level": "A2"},
-  {"english": "Asia is home to more than half the world's people.", "level": "B2"},
-  {"english": "Europe and Asia share a continuous landmass.", "level": "B2"},
-  {"english": "Australia is both a country and a continent.", "level": "B1"},
-  {"english": "The Pacific is the largest ocean.", "level": "A2"},
-  {"english": "The Arctic Ocean is partly covered in ice.", "level": "B1"},
-  {"english": "South America has the Amazon rainforest.", "level": "A2"},
-  {"english": "North America stretches from tropical to arctic climates.", "level": "B2"},
-  {"english": "Iceland sits between two tectonic plates.", "level": "B2"},
-  {"english": "Madagascar is the fourth largest island in the world.", "level": "B2"},
-  {"english": "New Zealand has two main islands.", "level": "A2"},
-  {"english": "The Pacific Ring of Fire is where many earthquakes happen.", "level": "B2"},
-  {"english": "The Indian Ocean borders three continents.", "level": "B1"},
-
-  {"english": "The Nile flows north for thousands of miles.", "level": "B1"},
-  {"english": "The Amazon carries more water than any other river.", "level": "B2"},
-  {"english": "Lake Baikal is the deepest freshwater lake in the world.", "level": "B2"},
-  {"english": "The Mississippi drains most of the central United States.", "level": "B2"},
-  {"english": "The Ganges is sacred to many people.", "level": "B1"},
-  {"english": "The Yangtze is the longest river in Asia.", "level": "B1"},
-  {"english": "The Danube passes through ten countries.", "level": "B2"},
-  {"english": "The Caspian Sea is the largest enclosed body of water.", "level": "B2"},
-  {"english": "The Volga is the longest river entirely in Europe.", "level": "B2"},
-  {"english": "Lake Victoria is the main source of the White Nile.", "level": "B2"},
-  {"english": "The Great Lakes hold a fifth of the world's surface fresh water.", "level": "C1"},
-  {"english": "The Rhine has been a trade route for centuries.", "level": "B2"},
-  {"english": "The Mekong supports millions of people in Southeast Asia.", "level": "B2"},
-  {"english": "Some rivers dry up before they reach the sea.", "level": "B2"},
-  {"english": "The Colorado River carved the Grand Canyon over millions of years.", "level": "B2"},
-
-  {"english": "Mount Everest is the highest point above sea level.", "level": "B1"},
-  {"english": "The Andes run the length of South America.", "level": "B2"},
-  {"english": "The Alps are popular with hikers in summer.", "level": "B1"},
-  {"english": "The Rockies stretch from Canada into the southwestern United States.", "level": "B2"},
-  {"english": "The Himalayas are still slowly rising.", "level": "B2"},
-  {"english": "Kilimanjaro is the highest peak in Africa.", "level": "B1"},
-  {"english": "The Ural Mountains separate Europe from Asia.", "level": "B1"},
-  {"english": "Mount Fuji is sacred to many in Japan.", "level": "B1"},
-  {"english": "The Atlas Mountains shape the climate of North Africa.", "level": "B2"},
-  {"english": "Glaciers are retreating from mountain ranges worldwide.", "level": "B2"},
-
-  {"english": "The Sahara is the largest hot desert.", "level": "A2"},
-  {"english": "The Arctic and Antarctic are polar deserts.", "level": "B2"},
-  {"english": "The Amazon has its own weather system.", "level": "B2"},
-  {"english": "Tropical rainforests are warm and wet year round.", "level": "B2"},
-  {"english": "The temperate zones have four distinct seasons.", "level": "B2"},
-  {"english": "Monsoons bring heavy rain to South Asia each summer.", "level": "B2"},
-  {"english": "Tornadoes are most common in the central United States.", "level": "B2"},
-  {"english": "Hurricanes form over warm ocean water.", "level": "B2"},
-  {"english": "The Mediterranean climate is mild and dry in summer.", "level": "B2"},
-  {"english": "Permafrost covers much of Siberia.", "level": "C1"},
-  {"english": "The Atacama is one of the driest places on Earth.", "level": "B2"},
-  {"english": "The tundra has too short a summer for trees.", "level": "B2"},
-  {"english": "Mangroves grow where land meets salt water.", "level": "B2"},
-  {"english": "Coral reefs need warm, clear water to thrive.", "level": "B2"},
-  {"english": "The jet stream affects weather across continents.", "level": "B2"},
-
-  {"english": "Tokyo has more people than any other metropolitan area.", "level": "B2"},
-  {"english": "Vatican City is the smallest country in the world.", "level": "B1"},
-  {"english": "Russia spans eleven time zones.", "level": "B2"},
-  {"english": "India and China together are over a third of the world's people.", "level": "B2"},
-  {"english": "Brazil shares a border with most South American countries.", "level": "B2"},
-  {"english": "Singapore is a city and a country at the same time.", "level": "B1"},
-  {"english": "Istanbul sits on two continents.", "level": "B1"},
-  {"english": "Cape Town has a famous flat-topped mountain.", "level": "B2"},
-  {"english": "Buenos Aires is sometimes called the Paris of South America.", "level": "B2"},
-  {"english": "Lagos is one of the fastest-growing cities in the world.", "level": "B2"},
-  {"english": "Reykjavik is the world's northernmost capital.", "level": "B1"},
-  {"english": "La Paz is one of the highest capital cities.", "level": "B1"},
-  {"english": "Sydney has one of the largest natural harbors.", "level": "B2"},
-  {"english": "Marrakech has a thousand-year-old old town.", "level": "B2"},
-  {"english": "Hanoi sits along the Red River.", "level": "B1"},
-
-  {"english": "People have crossed deserts to trade for spices.", "level": "B2"},
-  {"english": "The Silk Road connected China to the Mediterranean.", "level": "B2"},
-  {"english": "Some languages are spoken on only one small island.", "level": "B2"},
-  {"english": "Half the world's population lives near the coast.", "level": "B2"},
-  {"english": "Many cities began as river ports.", "level": "B2"},
-  {"english": "Borders move; rivers and mountains usually don't.", "level": "C1"},
-  {"english": "The world's coastline is more crowded than the interior.", "level": "B2"},
-  {"english": "Many ancient ruins are still being discovered.", "level": "B2"},
-  {"english": "Some islands are slowly disappearing under rising seas.", "level": "B2"},
-  {"english": "Long migrations have shaped almost every continent.", "level": "C1"},
-
-  {"english": "Australia has animals that exist nowhere else.", "level": "B2"},
-  {"english": "The deepest part of the ocean is the Mariana Trench.", "level": "B2"},
-  {"english": "Greenland is mostly covered in ice.", "level": "B1"},
-  {"english": "Volcanoes can build new islands in a few decades.", "level": "B2"},
-  {"english": "The aurora borealis is best seen from northern latitudes.", "level": "B2"},
-  {"english": "The Earth's continents are slowly drifting apart.", "level": "B2"},
-  {"english": "The driest place on Earth might still get the occasional flood.", "level": "C1"},
-  {"english": "Some lakes are so salty that almost nothing can live in them.", "level": "B2"},
-  {"english": "The world's tallest waterfall is in Venezuela.", "level": "B1"},
-  {"english": "The Sahara was a grassland thousands of years ago.", "level": "B2"},
-
-  {"english": "Which country borders the most others?", "level": "B1"},
-  {"english": "What's the difference between a country and a state?", "level": "B1"},
-  {"english": "Where is the equator on this map?", "level": "B1"},
-  {"english": "Which ocean is closest to here?", "level": "A2"},
-  {"english": "How long would it take to walk across this country?", "level": "B1"},
-  {"english": "What's the highest peak you've climbed?", "level": "B1"},
-  {"english": "I want to see the northern lights one day.", "level": "B1"},
-  {"english": "Is the capital also the largest city?", "level": "B1"},
-  {"english": "The map looks different upside down.", "level": "B2"},
-  {"english": "Every country has a story worth knowing.", "level": "B2"}
+  {
+    "english": "Africa is bigger than it looks on most maps.",
+    "level": "B2"
+  },
+  {
+    "english": "The Atlantic Ocean separates the Americas from Europe and Africa.",
+    "level": "B2"
+  },
+  {
+    "english": "Antarctica is the coldest continent.",
+    "level": "A2"
+  },
+  {
+    "english": "Asia is home to more than half the world's people.",
+    "level": "B2"
+  },
+  {
+    "english": "Europe and Asia share a continuous landmass.",
+    "level": "B2"
+  },
+  {
+    "english": "Australia is both a country and a continent.",
+    "level": "B1"
+  },
+  {
+    "english": "The Pacific is the largest ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "The Arctic Ocean is partly covered in ice.",
+    "level": "B1"
+  },
+  {
+    "english": "South America has the Amazon rainforest.",
+    "level": "A2"
+  },
+  {
+    "english": "North America stretches from tropical to arctic climates.",
+    "level": "B2"
+  },
+  {
+    "english": "Iceland sits between two tectonic plates.",
+    "level": "B2"
+  },
+  {
+    "english": "Madagascar is the fourth largest island in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "New Zealand has two main islands.",
+    "level": "A2"
+  },
+  {
+    "english": "The Pacific Ring of Fire is where many earthquakes happen.",
+    "level": "B2"
+  },
+  {
+    "english": "The Indian Ocean borders three continents.",
+    "level": "B1"
+  },
+  {
+    "english": "The Nile flows north for thousands of miles.",
+    "level": "B1"
+  },
+  {
+    "english": "The Amazon carries more water than any other river.",
+    "level": "B2"
+  },
+  {
+    "english": "Lake Baikal is the deepest freshwater lake in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mississippi drains most of the central United States.",
+    "level": "B2"
+  },
+  {
+    "english": "The Ganges is sacred to many people.",
+    "level": "B1"
+  },
+  {
+    "english": "The Yangtze is the longest river in Asia.",
+    "level": "B1"
+  },
+  {
+    "english": "The Danube passes through ten countries.",
+    "level": "B2"
+  },
+  {
+    "english": "The Caspian Sea is the largest enclosed body of water.",
+    "level": "B2"
+  },
+  {
+    "english": "The Volga is the longest river entirely in Europe.",
+    "level": "B2"
+  },
+  {
+    "english": "Lake Victoria is the main source of the White Nile.",
+    "level": "B2"
+  },
+  {
+    "english": "The Great Lakes hold a fifth of the world's surface fresh water.",
+    "level": "C1"
+  },
+  {
+    "english": "The Rhine has been a trade route for centuries.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mekong supports millions of people in Southeast Asia.",
+    "level": "B2"
+  },
+  {
+    "english": "Some rivers dry up before they reach the sea.",
+    "level": "B2"
+  },
+  {
+    "english": "The Colorado River carved the Grand Canyon over millions of years.",
+    "level": "B2"
+  },
+  {
+    "english": "Mount Everest is the highest point above sea level.",
+    "level": "B1"
+  },
+  {
+    "english": "The Andes run the length of South America.",
+    "level": "B2"
+  },
+  {
+    "english": "The Alps are popular with hikers in summer.",
+    "level": "B1"
+  },
+  {
+    "english": "The Rockies stretch from Canada into the southwestern United States.",
+    "level": "B2"
+  },
+  {
+    "english": "The Himalayas are still slowly rising.",
+    "level": "B2"
+  },
+  {
+    "english": "Kilimanjaro is the highest peak in Africa.",
+    "level": "B1"
+  },
+  {
+    "english": "The Ural Mountains separate Europe from Asia.",
+    "level": "B1"
+  },
+  {
+    "english": "Mount Fuji is sacred to many in Japan.",
+    "level": "B1"
+  },
+  {
+    "english": "The Atlas Mountains shape the climate of North Africa.",
+    "level": "B2"
+  },
+  {
+    "english": "Glaciers are retreating from mountain ranges worldwide.",
+    "level": "B2"
+  },
+  {
+    "english": "The Sahara is the largest hot desert.",
+    "level": "A2"
+  },
+  {
+    "english": "The Arctic and Antarctic are polar deserts.",
+    "level": "B2"
+  },
+  {
+    "english": "The Amazon has its own weather system.",
+    "level": "B2"
+  },
+  {
+    "english": "Tropical rainforests are warm and wet year round.",
+    "level": "B2"
+  },
+  {
+    "english": "The temperate zones have four distinct seasons.",
+    "level": "B2"
+  },
+  {
+    "english": "Monsoons bring heavy rain to South Asia each summer.",
+    "level": "B2"
+  },
+  {
+    "english": "Tornadoes are most common in the central United States.",
+    "level": "B2"
+  },
+  {
+    "english": "Hurricanes form over warm ocean water.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mediterranean climate is mild and dry in summer.",
+    "level": "B2"
+  },
+  {
+    "english": "Permafrost covers much of Siberia.",
+    "level": "C1"
+  },
+  {
+    "english": "The Atacama is one of the driest places on Earth.",
+    "level": "B2"
+  },
+  {
+    "english": "The tundra has too short a summer for trees.",
+    "level": "B2"
+  },
+  {
+    "english": "Mangroves grow where land meets salt water.",
+    "level": "B2"
+  },
+  {
+    "english": "Coral reefs need warm, clear water to thrive.",
+    "level": "B2"
+  },
+  {
+    "english": "The jet stream affects weather across continents.",
+    "level": "B2"
+  },
+  {
+    "english": "Tokyo has more people than any other metropolitan area.",
+    "level": "B2"
+  },
+  {
+    "english": "Vatican City is the smallest country in the world.",
+    "level": "B1"
+  },
+  {
+    "english": "Russia spans eleven time zones.",
+    "level": "B2"
+  },
+  {
+    "english": "India and China together are over a third of the world's people.",
+    "level": "B2"
+  },
+  {
+    "english": "Brazil shares a border with most South American countries.",
+    "level": "B2"
+  },
+  {
+    "english": "Singapore is a city and a country at the same time.",
+    "level": "B1"
+  },
+  {
+    "english": "Istanbul sits on two continents.",
+    "level": "B1"
+  },
+  {
+    "english": "Cape Town has a famous flat-topped mountain.",
+    "level": "B2"
+  },
+  {
+    "english": "Buenos Aires is sometimes called the Paris of South America.",
+    "level": "B2"
+  },
+  {
+    "english": "Lagos is one of the fastest-growing cities in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "Reykjavik is the world's northernmost capital.",
+    "level": "B1"
+  },
+  {
+    "english": "La Paz is one of the highest capital cities.",
+    "level": "B1"
+  },
+  {
+    "english": "Sydney has one of the largest natural harbors.",
+    "level": "B2"
+  },
+  {
+    "english": "Marrakech has a thousand-year-old old town.",
+    "level": "B2"
+  },
+  {
+    "english": "Hanoi sits along the Red River.",
+    "level": "B1"
+  },
+  {
+    "english": "People have crossed deserts to trade for spices.",
+    "level": "B2"
+  },
+  {
+    "english": "The Silk Road connected China to the Mediterranean.",
+    "level": "B2"
+  },
+  {
+    "english": "Some languages are spoken on only one small island.",
+    "level": "B2"
+  },
+  {
+    "english": "Half the world's population lives near the coast.",
+    "level": "B2"
+  },
+  {
+    "english": "Many cities began as river ports.",
+    "level": "B2"
+  },
+  {
+    "english": "Borders move; rivers and mountains usually don't.",
+    "level": "C1"
+  },
+  {
+    "english": "The world's coastline is more crowded than the interior.",
+    "level": "B2"
+  },
+  {
+    "english": "Many ancient ruins are still being discovered.",
+    "level": "B2"
+  },
+  {
+    "english": "Some islands are slowly disappearing under rising seas.",
+    "level": "B2"
+  },
+  {
+    "english": "Long migrations have shaped almost every continent.",
+    "level": "C1"
+  },
+  {
+    "english": "Australia has animals that exist nowhere else.",
+    "level": "B2"
+  },
+  {
+    "english": "The deepest part of the ocean is the Mariana Trench.",
+    "level": "B2"
+  },
+  {
+    "english": "Greenland is mostly covered in ice.",
+    "level": "B1"
+  },
+  {
+    "english": "Volcanoes can build new islands in a few decades.",
+    "level": "B2"
+  },
+  {
+    "english": "The aurora borealis is best seen from northern latitudes.",
+    "level": "B2"
+  },
+  {
+    "english": "The Earth's continents are slowly drifting apart.",
+    "level": "B2"
+  },
+  {
+    "english": "The driest place on Earth might still get the occasional flood.",
+    "level": "C1"
+  },
+  {
+    "english": "Some lakes are so salty that almost nothing can live in them.",
+    "level": "B2"
+  },
+  {
+    "english": "The world's tallest waterfall is in Venezuela.",
+    "level": "B1"
+  },
+  {
+    "english": "The Sahara was a grassland thousands of years ago.",
+    "level": "B2"
+  },
+  {
+    "english": "Which country borders the most others?",
+    "level": "B1"
+  },
+  {
+    "english": "What's the difference between a country and a state?",
+    "level": "B1"
+  },
+  {
+    "english": "Where is the equator on this map?",
+    "level": "B1"
+  },
+  {
+    "english": "Which ocean is closest to here?",
+    "level": "A2"
+  },
+  {
+    "english": "How long would it take to walk across this country?",
+    "level": "B1"
+  },
+  {
+    "english": "What's the highest peak you've climbed?",
+    "level": "B1"
+  },
+  {
+    "english": "I want to see the northern lights one day.",
+    "level": "B1"
+  },
+  {
+    "english": "Is the capital also the largest city?",
+    "level": "B1"
+  },
+  {
+    "english": "The map looks different upside down.",
+    "level": "B2"
+  },
+  {
+    "english": "Every country has a story worth knowing.",
+    "level": "B2"
+  },
+  {
+    "english": "Where is it?",
+    "level": "A0"
+  },
+  {
+    "english": "I am from here.",
+    "level": "A1"
+  },
+  {
+    "english": "Geography is the slow, patient study of how the shape of the land has quietly negotiated, over centuries, with the people who agreed to call it home, and how each has rewritten the other in the bargain.",
+    "level": "C2"
+  }
 ]
