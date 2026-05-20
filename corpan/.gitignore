@@ -27,11 +27,7 @@ tools/phrase-packs/*/build/
 tools/phrase-packs/*/*.zip.sha256
 
 # Phrase-pack per-language translations — Tier 2 (derived from English source
-# via translation backend, stamped with provenance). Canonical copy lives in
-# the published zip's data.sqlite3 on S3; pack_store mirror coming in Move B.
-# New phrase packs do NOT add translations/ to git. Packs already committed
-# before this rule (the original 12 on moonshot-15-plus) stay tracked as a
-# historical baseline — gitignore does not retroactively untrack — and will
-# migrate on their next version bump per the data-tier plan
-# (~/.claude/plans/phrase-pack-authoring-snug-moon.md Move D).
+# via translation backend). Canonical copy lives in the published zip's
+# data.sqlite3 on S3. Untracked across the board as of v0.1.1 (all 24 packs).
 tools/phrase-packs/phrase-*/translations/
+tools/phrase-packs/example-botany/translations/

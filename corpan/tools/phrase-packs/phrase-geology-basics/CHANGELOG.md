@@ -10,6 +10,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 2 phrase(s) at level(s) A0, C2.
+  - A0: "There is a rock."
+  - C2: "A continent is a slow argument the planet has been having with itself for several billion years, in a vocabulary of pressure, heat, and the patient rearrangement of stone."
+
 ## [0.1.0]
 ### Added
 - Initial release with 100 English phrases about geology and adjacent

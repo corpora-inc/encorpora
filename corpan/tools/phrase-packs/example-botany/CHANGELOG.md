@@ -11,6 +11,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 2 phrase(s) at level(s) A0, C2.
+  - A0: "I like flowers."
+  - C2: "A garden is a small experiment in patience, a long correspondence between a gardener and the slow opinions of the soil."
+
 ## [0.1.0]
 ### Added
 - Initial release. 80 English phrases on botany.

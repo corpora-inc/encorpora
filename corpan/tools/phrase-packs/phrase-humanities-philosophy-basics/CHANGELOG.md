@@ -9,6 +9,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 4 phrase(s) at level(s) A0, A1, A2, C2.
+  - A0: "I think a lot."
+  - A1: "I have a question."
+  - A2: "A good question takes time to answer."
+  - C2: "Philosophy is the long, patient practice of asking the questions a culture has agreed to stop noticing, and of refusing the first easy answer until a more honest one becomes available."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Philosophy.

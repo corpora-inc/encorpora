@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 3 phrase(s) at level(s) A0, C1, C2.
+  - A0: "I want to go."
+  - C1: "A long flight returns you to yourself in a slightly different country."
+  - C2: "Travel is the rare practice in which the body is asked, with money and inconvenience, to confess what it already half-knew: that the place we live is only one of the many possible answers to the question of how to be a person."
+
 ## [0.1.0]
 ### Added
 - Initial release. 80 English phrases on practical travel.

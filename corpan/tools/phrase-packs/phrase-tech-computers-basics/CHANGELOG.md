@@ -9,6 +9,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 4 phrase(s) at level(s) A0, A1, C1, C2.
+  - A0: "I use a computer."
+  - A1: "The screen is on."
+  - C1: "A great engineer keeps a small library of mistakes carefully labeled by year."
+  - C2: "A computer is a stack of polite agreements between physics, mathematics, and human impatience, held together by the small daily faith that the next layer will keep its promises to the one above it."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Computers.

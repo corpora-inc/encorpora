@@ -9,6 +9,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 1 phrase(s) at level(s) A0.
+  - A0: "I love my mom."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 phrases authored in a single LLM context for

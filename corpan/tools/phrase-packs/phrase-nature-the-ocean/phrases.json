@@ -1,107 +1,406 @@
 [
-  {"english": "The sea is big.", "level": "A1"},
-  {"english": "I love the beach.", "level": "A1"},
-  {"english": "The water is cold.", "level": "A1"},
-  {"english": "The boat is in the water.", "level": "A1"},
-  {"english": "I see a fish.", "level": "A1"},
-  {"english": "The waves are big today.", "level": "A1"},
-  {"english": "The sand is hot.", "level": "A1"},
-  {"english": "The seagulls are loud.", "level": "A1"},
-  {"english": "Look at that wave!", "level": "A1"},
-  {"english": "The water is blue.", "level": "A1"},
-  {"english": "The fish swims fast.", "level": "A1"},
-  {"english": "The boat is far away.", "level": "A1"},
-  {"english": "The beach is full of people.", "level": "A1"},
-  {"english": "I want to swim.", "level": "A1"},
-  {"english": "The shell is pink.", "level": "A1"},
-
-  {"english": "The tide turns twice a day.", "level": "A2"},
-  {"english": "A small wave knocked the bucket over.", "level": "A2"},
-  {"english": "The seagulls follow the fishing boats.", "level": "A2"},
-  {"english": "The lighthouse stands at the edge of the cliff.", "level": "A2"},
-  {"english": "The waves break against the rocks all night.", "level": "A2"},
-  {"english": "The water is colder in the morning.", "level": "A2"},
-  {"english": "We collected shells along the shore.", "level": "A2"},
-  {"english": "The sand is hot at noon and cool at dawn.", "level": "A2"},
-  {"english": "The little boat rocked gently in the harbor.", "level": "A2"},
-  {"english": "The dolphins swam beside the boat.", "level": "A2"},
-  {"english": "The fisherman sold his catch at the dock.", "level": "A2"},
-  {"english": "The water turns gold at sunset.", "level": "A2"},
-  {"english": "A wave washed away her hat.", "level": "A2"},
-  {"english": "The whole town smells of fish on market day.", "level": "A2"},
-  {"english": "We built a sandcastle near the water.", "level": "A2"},
-  {"english": "The old man fishes from the same rock each morning.", "level": "A2"},
-  {"english": "The waves wash the footprints away.", "level": "A2"},
-  {"english": "The starfish stayed still in the warm pool.", "level": "A2"},
-  {"english": "A small crab ran sideways into a hole.", "level": "A2"},
-  {"english": "The boat creaked all night in the harbor.", "level": "A2"},
-  {"english": "He learned to swim before he learned to walk.", "level": "A2"},
-  {"english": "The salt water makes my hair stiff.", "level": "A2"},
-  {"english": "A storm at sea sounds different from a storm on land.", "level": "A2"},
-  {"english": "The deep water is darker than the shallows.", "level": "A2"},
-  {"english": "The shells in the sand are all different colors.", "level": "A2"},
-  {"english": "The current took us further than we meant to swim.", "level": "A2"},
-  {"english": "The harbor is busy in the early morning.", "level": "A2"},
-  {"english": "The sailors raised the sail together.", "level": "A2"},
-  {"english": "A whale jumped near the boat and we all shouted.", "level": "A2"},
-  {"english": "The sea is calmer in the early hours.", "level": "A2"},
-  {"english": "A jellyfish drifted past my foot.", "level": "A2"},
-  {"english": "The clouds at sea look bigger than on land.", "level": "A2"},
-  {"english": "The tide left a long ribbon of seaweed on the beach.", "level": "A2"},
-  {"english": "The little island is only visible at low tide.", "level": "A2"},
-  {"english": "We followed the smell of salt to the shore.", "level": "A2"},
-
-  {"english": "Sailors used to read the stars before they had charts.", "level": "B1"},
-  {"english": "A whale's song travels for miles underwater.", "level": "B1"},
-  {"english": "The old harbor still smells of salt and tar.", "level": "B1"},
-  {"english": "A wave is just water passing through, not water moving across.", "level": "B1"},
-  {"english": "The deep ocean is colder than any winter on land.", "level": "B1"},
-  {"english": "A coral reef is alive, even when it looks like stone.", "level": "B1"},
-  {"english": "The fishermen come back at dawn with nets full of silver.", "level": "B1"},
-  {"english": "Storms at sea can build for days before they break.", "level": "B1"},
-  {"english": "An octopus can change color in a heartbeat.", "level": "B1"},
-  {"english": "The light at the lighthouse turns once every fifteen seconds.", "level": "B1"},
-  {"english": "Sailors learned to trust their compass over their eyes.", "level": "B1"},
-  {"english": "The smell of the sea reaches the city when the wind turns.", "level": "B1"},
-  {"english": "We sailed for hours before any land came into view.", "level": "B1"},
-  {"english": "A school of fish moves as one body in the bright water.", "level": "B1"},
-  {"english": "The horizon is exactly where the sea and sky agree.", "level": "B1"},
-  {"english": "Crabs come out at night when the tide is low.", "level": "B1"},
-  {"english": "Tides are the breath of the ocean, in and out forever.", "level": "B1"},
-  {"english": "Old captains say the sea has a memory longer than men.", "level": "B1"},
-
-  {"english": "Coral reefs grow where the water is warm and clear.", "level": "B2"},
-  {"english": "A storm at sea can find you a hundred miles before its first cloud.", "level": "B2"},
-  {"english": "The deepest part of the ocean is darker than any night above water.", "level": "B2"},
-  {"english": "A wave that is calm at sea can become a wall at the shore.", "level": "B2"},
-  {"english": "Whales sing across oceans, and other whales answer days later.", "level": "B2"},
-  {"english": "Old maps showed sea monsters where the mapmakers did not yet know what was there.", "level": "B2"},
-  {"english": "Salt water tastes different at the surface than it does in the deep.", "level": "B2"},
-  {"english": "A fishing town keeps the calendar of the tides, not the calendar on the wall.", "level": "B2"},
-  {"english": "A lighthouse beam carries further than its own light, because the sea remembers the shape of darkness.", "level": "B2"},
-  {"english": "An anchor only works if it digs into something that will not move.", "level": "B2"},
-  {"english": "Sailors learned which clouds threaten and which are only passing through.", "level": "B2"},
-  {"english": "The same wave breaks the boat and rocks the cradle.", "level": "B2"},
-  {"english": "A pearl is what an oyster makes of something it cannot push away.", "level": "B2"},
-  {"english": "Tides do not arrive; they have always been arriving.", "level": "B2"},
-  {"english": "The ocean covers most of the planet and contains most of its life.", "level": "B2"},
-
-  {"english": "The ocean is older than the continents, and remembers them all.", "level": "C1"},
-  {"english": "A coastline is never twice the same shape, no matter how steady the map.", "level": "C1"},
-  {"english": "Half the breath on the planet comes from creatures the eye cannot see.", "level": "C1"},
-  {"english": "An empty horizon is not nothing; it is the place where everything you do not yet know is keeping itself.", "level": "C1"},
-  {"english": "A storm at sea teaches navigators what no map can.", "level": "C1"},
-  {"english": "The sound of waves at night is the oldest lullaby on Earth.", "level": "C1"},
-  {"english": "Sailors knew the names of every wind a thousand years before the science of meteorology.", "level": "C1"},
-  {"english": "A ship is a small society held together by the weather outside.", "level": "C1"},
-  {"english": "The shipwreck remains; the storm has gone.", "level": "C1"},
-  {"english": "The ocean is the great patient teacher of geology, of biology, and of waiting.", "level": "C1"},
-  {"english": "Every river ends at the same address.", "level": "C1"},
-  {"english": "A harbor is a promise the land makes to the sea.", "level": "C1"},
-
-  {"english": "The sea is at once the boundary and the road; civilizations that learn to read it ride it everywhere.", "level": "C2"},
-  {"english": "A whale's funeral feeds the seafloor for a century; nothing else dies so usefully.", "level": "C2"},
-  {"english": "To stand at the shore is to know that the planet is mostly water, mostly motion, and mostly elsewhere.", "level": "C2"},
-  {"english": "The poets learned from sailors that the most accurate words for the sea are the simplest, and that they are still insufficient.", "level": "C2"},
-  {"english": "A long calm at sea makes a sailor more nervous than a storm; the ocean's silence is rarely its honest mood.", "level": "C2"}
+  {
+    "english": "The sea is big.",
+    "level": "A1"
+  },
+  {
+    "english": "I love the beach.",
+    "level": "A1"
+  },
+  {
+    "english": "The water is cold.",
+    "level": "A1"
+  },
+  {
+    "english": "The boat is in the water.",
+    "level": "A1"
+  },
+  {
+    "english": "I see a fish.",
+    "level": "A1"
+  },
+  {
+    "english": "The waves are big today.",
+    "level": "A1"
+  },
+  {
+    "english": "The sand is hot.",
+    "level": "A1"
+  },
+  {
+    "english": "The seagulls are loud.",
+    "level": "A1"
+  },
+  {
+    "english": "Look at that wave!",
+    "level": "A1"
+  },
+  {
+    "english": "The water is blue.",
+    "level": "A1"
+  },
+  {
+    "english": "The fish swims fast.",
+    "level": "A1"
+  },
+  {
+    "english": "The boat is far away.",
+    "level": "A1"
+  },
+  {
+    "english": "The beach is full of people.",
+    "level": "A1"
+  },
+  {
+    "english": "I want to swim.",
+    "level": "A1"
+  },
+  {
+    "english": "The shell is pink.",
+    "level": "A1"
+  },
+  {
+    "english": "The tide turns twice a day.",
+    "level": "A2"
+  },
+  {
+    "english": "A small wave knocked the bucket over.",
+    "level": "A2"
+  },
+  {
+    "english": "The seagulls follow the fishing boats.",
+    "level": "A2"
+  },
+  {
+    "english": "The lighthouse stands at the edge of the cliff.",
+    "level": "A2"
+  },
+  {
+    "english": "The waves break against the rocks all night.",
+    "level": "A2"
+  },
+  {
+    "english": "The water is colder in the morning.",
+    "level": "A2"
+  },
+  {
+    "english": "We collected shells along the shore.",
+    "level": "A2"
+  },
+  {
+    "english": "The sand is hot at noon and cool at dawn.",
+    "level": "A2"
+  },
+  {
+    "english": "The little boat rocked gently in the harbor.",
+    "level": "A2"
+  },
+  {
+    "english": "The dolphins swam beside the boat.",
+    "level": "A2"
+  },
+  {
+    "english": "The fisherman sold his catch at the dock.",
+    "level": "A2"
+  },
+  {
+    "english": "The water turns gold at sunset.",
+    "level": "A2"
+  },
+  {
+    "english": "A wave washed away her hat.",
+    "level": "A2"
+  },
+  {
+    "english": "The whole town smells of fish on market day.",
+    "level": "A2"
+  },
+  {
+    "english": "We built a sandcastle near the water.",
+    "level": "A2"
+  },
+  {
+    "english": "The old man fishes from the same rock each morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The waves wash the footprints away.",
+    "level": "A2"
+  },
+  {
+    "english": "The starfish stayed still in the warm pool.",
+    "level": "A2"
+  },
+  {
+    "english": "A small crab ran sideways into a hole.",
+    "level": "A2"
+  },
+  {
+    "english": "The boat creaked all night in the harbor.",
+    "level": "A2"
+  },
+  {
+    "english": "He learned to swim before he learned to walk.",
+    "level": "A2"
+  },
+  {
+    "english": "The salt water makes my hair stiff.",
+    "level": "A2"
+  },
+  {
+    "english": "A storm at sea sounds different from a storm on land.",
+    "level": "A2"
+  },
+  {
+    "english": "The deep water is darker than the shallows.",
+    "level": "A2"
+  },
+  {
+    "english": "The shells in the sand are all different colors.",
+    "level": "A2"
+  },
+  {
+    "english": "The current took us further than we meant to swim.",
+    "level": "A2"
+  },
+  {
+    "english": "The harbor is busy in the early morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The sailors raised the sail together.",
+    "level": "A2"
+  },
+  {
+    "english": "A whale jumped near the boat and we all shouted.",
+    "level": "A2"
+  },
+  {
+    "english": "The sea is calmer in the early hours.",
+    "level": "A2"
+  },
+  {
+    "english": "A jellyfish drifted past my foot.",
+    "level": "A2"
+  },
+  {
+    "english": "The clouds at sea look bigger than on land.",
+    "level": "A2"
+  },
+  {
+    "english": "The tide left a long ribbon of seaweed on the beach.",
+    "level": "A2"
+  },
+  {
+    "english": "The little island is only visible at low tide.",
+    "level": "A2"
+  },
+  {
+    "english": "We followed the smell of salt to the shore.",
+    "level": "A2"
+  },
+  {
+    "english": "Sailors used to read the stars before they had charts.",
+    "level": "B1"
+  },
+  {
+    "english": "A whale's song travels for miles underwater.",
+    "level": "B1"
+  },
+  {
+    "english": "The old harbor still smells of salt and tar.",
+    "level": "B1"
+  },
+  {
+    "english": "A wave is just water passing through, not water moving across.",
+    "level": "B1"
+  },
+  {
+    "english": "The deep ocean is colder than any winter on land.",
+    "level": "B1"
+  },
+  {
+    "english": "A coral reef is alive, even when it looks like stone.",
+    "level": "B1"
+  },
+  {
+    "english": "The fishermen come back at dawn with nets full of silver.",
+    "level": "B1"
+  },
+  {
+    "english": "Storms at sea can build for days before they break.",
+    "level": "B1"
+  },
+  {
+    "english": "An octopus can change color in a heartbeat.",
+    "level": "B1"
+  },
+  {
+    "english": "The light at the lighthouse turns once every fifteen seconds.",
+    "level": "B1"
+  },
+  {
+    "english": "Sailors learned to trust their compass over their eyes.",
+    "level": "B1"
+  },
+  {
+    "english": "The smell of the sea reaches the city when the wind turns.",
+    "level": "B1"
+  },
+  {
+    "english": "We sailed for hours before any land came into view.",
+    "level": "B1"
+  },
+  {
+    "english": "A school of fish moves as one body in the bright water.",
+    "level": "B1"
+  },
+  {
+    "english": "The horizon is exactly where the sea and sky agree.",
+    "level": "B1"
+  },
+  {
+    "english": "Crabs come out at night when the tide is low.",
+    "level": "B1"
+  },
+  {
+    "english": "Tides are the breath of the ocean, in and out forever.",
+    "level": "B1"
+  },
+  {
+    "english": "Old captains say the sea has a memory longer than men.",
+    "level": "B1"
+  },
+  {
+    "english": "Coral reefs grow where the water is warm and clear.",
+    "level": "B2"
+  },
+  {
+    "english": "A storm at sea can find you a hundred miles before its first cloud.",
+    "level": "B2"
+  },
+  {
+    "english": "The deepest part of the ocean is darker than any night above water.",
+    "level": "B2"
+  },
+  {
+    "english": "A wave that is calm at sea can become a wall at the shore.",
+    "level": "B2"
+  },
+  {
+    "english": "Whales sing across oceans, and other whales answer days later.",
+    "level": "B2"
+  },
+  {
+    "english": "Old maps showed sea monsters where the mapmakers did not yet know what was there.",
+    "level": "B2"
+  },
+  {
+    "english": "Salt water tastes different at the surface than it does in the deep.",
+    "level": "B2"
+  },
+  {
+    "english": "A fishing town keeps the calendar of the tides, not the calendar on the wall.",
+    "level": "B2"
+  },
+  {
+    "english": "A lighthouse beam carries further than its own light, because the sea remembers the shape of darkness.",
+    "level": "B2"
+  },
+  {
+    "english": "An anchor only works if it digs into something that will not move.",
+    "level": "B2"
+  },
+  {
+    "english": "Sailors learned which clouds threaten and which are only passing through.",
+    "level": "B2"
+  },
+  {
+    "english": "The same wave breaks the boat and rocks the cradle.",
+    "level": "B2"
+  },
+  {
+    "english": "A pearl is what an oyster makes of something it cannot push away.",
+    "level": "B2"
+  },
+  {
+    "english": "Tides do not arrive; they have always been arriving.",
+    "level": "B2"
+  },
+  {
+    "english": "The ocean covers most of the planet and contains most of its life.",
+    "level": "B2"
+  },
+  {
+    "english": "The ocean is older than the continents, and remembers them all.",
+    "level": "C1"
+  },
+  {
+    "english": "A coastline is never twice the same shape, no matter how steady the map.",
+    "level": "C1"
+  },
+  {
+    "english": "Half the breath on the planet comes from creatures the eye cannot see.",
+    "level": "C1"
+  },
+  {
+    "english": "An empty horizon is not nothing; it is the place where everything you do not yet know is keeping itself.",
+    "level": "C1"
+  },
+  {
+    "english": "A storm at sea teaches navigators what no map can.",
+    "level": "C1"
+  },
+  {
+    "english": "The sound of waves at night is the oldest lullaby on Earth.",
+    "level": "C1"
+  },
+  {
+    "english": "Sailors knew the names of every wind a thousand years before the science of meteorology.",
+    "level": "C1"
+  },
+  {
+    "english": "A ship is a small society held together by the weather outside.",
+    "level": "C1"
+  },
+  {
+    "english": "The shipwreck remains; the storm has gone.",
+    "level": "C1"
+  },
+  {
+    "english": "The ocean is the great patient teacher of geology, of biology, and of waiting.",
+    "level": "C1"
+  },
+  {
+    "english": "Every river ends at the same address.",
+    "level": "C1"
+  },
+  {
+    "english": "A harbor is a promise the land makes to the sea.",
+    "level": "C1"
+  },
+  {
+    "english": "The sea is at once the boundary and the road; civilizations that learn to read it ride it everywhere.",
+    "level": "C2"
+  },
+  {
+    "english": "A whale's funeral feeds the seafloor for a century; nothing else dies so usefully.",
+    "level": "C2"
+  },
+  {
+    "english": "To stand at the shore is to know that the planet is mostly water, mostly motion, and mostly elsewhere.",
+    "level": "C2"
+  },
+  {
+    "english": "The poets learned from sailors that the most accurate words for the sea are the simplest, and that they are still insufficient.",
+    "level": "C2"
+  },
+  {
+    "english": "A long calm at sea makes a sailor more nervous than a storm; the ocean's silence is rarely its honest mood.",
+    "level": "C2"
+  },
+  {
+    "english": "The sea is big.",
+    "level": "A0"
+  }
 ]

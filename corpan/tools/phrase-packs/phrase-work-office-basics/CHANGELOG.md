@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 2 phrase(s) at level(s) A0, C2.
+  - A0: "I work all day."
+  - C2: "An office is the small daily theater in which a culture rehearses its most cherished disagreements about time, attention, hierarchy, and the long compromise between what we are paid to do and what we suspect we were meant to do instead."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Office.

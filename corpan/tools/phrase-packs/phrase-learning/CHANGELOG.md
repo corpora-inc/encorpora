@@ -10,6 +10,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 2 phrase(s) at level(s) A0, C2.
+  - A0: "I want to learn."
+  - C2: "To learn well is to remain a student of one's own attention, and to forgive the mind its long, uneven pilgrimage from confusion to clarity to deeper confusion of a finer grain."
+
 ## [0.1.0]
 ### Added
 - Initial release. 200 English phrases across curiosity, practice,

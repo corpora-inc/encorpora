@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 2 phrase(s) at level(s) A0, C2.
+  - A0: "I love music."
+  - C2: "Music is the public form of an inner argument the species has been having with itself since long before it had words for the argument."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Music.

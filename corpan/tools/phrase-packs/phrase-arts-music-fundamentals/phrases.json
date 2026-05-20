@@ -1,109 +1,410 @@
 [
-  {"english": "Can you play the piano?", "level": "A2"},
-  {"english": "I play the violin in a small orchestra.", "level": "B1"},
-  {"english": "The guitar needs new strings.", "level": "A2"},
-  {"english": "She plays drums in her sister's band.", "level": "A2"},
-  {"english": "I'm learning to play the flute.", "level": "A2"},
-  {"english": "He picked up the trumpet again after twenty years.", "level": "B2"},
-  {"english": "The cello is leaning against the wall.", "level": "A2"},
-  {"english": "Tuning takes longer than I expected.", "level": "B1"},
-  {"english": "Which string is out of tune?", "level": "B1"},
-  {"english": "The bow needs to be re-haired.", "level": "B2"},
-  {"english": "I bought a second-hand keyboard online.", "level": "B1"},
-  {"english": "She prefers the upright to the grand piano.", "level": "B2"},
-  {"english": "He carries his saxophone case everywhere.", "level": "B1"},
-  {"english": "The drummer set up before everyone else arrived.", "level": "B1"},
-  {"english": "A ukulele is easier to start with than a guitar.", "level": "B1"},
-
-  {"english": "Can you read sheet music?", "level": "A2"},
-  {"english": "The piece is in G major.", "level": "B1"},
-  {"english": "We're in three-four time.", "level": "B2"},
-  {"english": "Play the first note a little louder.", "level": "B1"},
-  {"english": "The rest is just as important as the note.", "level": "B2"},
-  {"english": "He explained what a flat and a sharp are.", "level": "B2"},
-  {"english": "The chord changes feel natural now.", "level": "B2"},
-  {"english": "A scale is just notes in a row.", "level": "A2"},
-  {"english": "Try the same passage one octave lower.", "level": "B2"},
-  {"english": "She marked the breaths in the margin.", "level": "B2"},
-  {"english": "The conductor counted us in.", "level": "B2"},
-  {"english": "This bar gives me trouble every time.", "level": "B2"},
-  {"english": "The melody is simple but it stays with you.", "level": "B2"},
-  {"english": "He prefers writing music by ear.", "level": "B2"},
-  {"english": "Most songs use only a few chords.", "level": "B1"},
-
-  {"english": "I practice for thirty minutes after dinner.", "level": "A2"},
-  {"english": "Play it slowly until your fingers remember.", "level": "B2"},
-  {"english": "She uses a metronome to keep steady.", "level": "B1"},
-  {"english": "He records himself and listens back.", "level": "B1"},
-  {"english": "Warm up before the hard passages.", "level": "B1"},
-  {"english": "Mistakes are part of practice.", "level": "A2"},
-  {"english": "I broke it down into small sections.", "level": "B1"},
-  {"english": "Five minutes today is better than two hours next week.", "level": "B2"},
-  {"english": "She practices in front of a mirror.", "level": "A2"},
-  {"english": "The teacher gave me a new exercise.", "level": "A2"},
-  {"english": "Don't rush the slow parts.", "level": "B1"},
-  {"english": "He plays with his eyes closed sometimes.", "level": "B1"},
-  {"english": "The trickiest measure is the one I skipped.", "level": "B2"},
-  {"english": "After three days off, I always come back rusty.", "level": "B2"},
-  {"english": "Practice the ending more than the beginning.", "level": "B1"},
-
-  {"english": "My hands were shaking before the recital.", "level": "B2"},
-  {"english": "The audience clapped before the piece was over.", "level": "B2"},
-  {"english": "She bowed and walked off the stage.", "level": "B1"},
-  {"english": "He forgot a line and improvised through it.", "level": "B2"},
-  {"english": "The band tuned up while the lights came down.", "level": "B2"},
-  {"english": "Could you turn the page for me?", "level": "B1"},
-  {"english": "The microphone is too close to the cymbals.", "level": "B2"},
-  {"english": "We played an encore.", "level": "B1"},
-  {"english": "He looked into the crowd and smiled.", "level": "B1"},
-  {"english": "The first concert is always the hardest.", "level": "B1"},
-  {"english": "Stage fright never quite goes away.", "level": "B2"},
-  {"english": "I almost dropped the bow during the cadenza.", "level": "C1"},
-  {"english": "Singing in public is its own kind of bravery.", "level": "C1"},
-  {"english": "The applause felt longer than the song.", "level": "B2"},
-  {"english": "We met our favorite musician after the show.", "level": "B1"},
-
-  {"english": "What kind of music do you like?", "level": "A1"},
-  {"english": "I grew up listening to my mother's records.", "level": "B1"},
-  {"english": "He listens to opera while he cooks.", "level": "B1"},
-  {"english": "The bass line is what makes the song.", "level": "B2"},
-  {"english": "You can hear the room in the recording.", "level": "B2"},
-  {"english": "This album sounds better on vinyl.", "level": "B2"},
-  {"english": "She closed her eyes and listened to the strings.", "level": "B1"},
-  {"english": "The piano is slightly out of tune.", "level": "B1"},
-  {"english": "I keep coming back to this album.", "level": "B1"},
-  {"english": "The first time I heard it, I stopped what I was doing.", "level": "B2"},
-  {"english": "He recommends a different jazz record every week.", "level": "B2"},
-  {"english": "The song reminds me of my grandfather.", "level": "B1"},
-  {"english": "There's a quiet harmony underneath the melody.", "level": "B2"},
-  {"english": "Live music sounds different from a recording.", "level": "B1"},
-  {"english": "I prefer headphones late at night.", "level": "A2"},
-
-  {"english": "The choir meets on Wednesday evenings.", "level": "B1"},
-  {"english": "The bass keeps the whole band together.", "level": "B2"},
-  {"english": "The conductor brought the orchestra in gently.", "level": "B2"},
-  {"english": "We rehearsed the same passage four times.", "level": "B2"},
-  {"english": "He plays second violin in the local symphony.", "level": "B2"},
-  {"english": "The quartet sat in a tight semicircle.", "level": "C1"},
-  {"english": "The drummer counted off the tempo.", "level": "B2"},
-  {"english": "She sang the harmony part.", "level": "B1"},
-  {"english": "Two guitars and a voice are sometimes enough.", "level": "B2"},
-  {"english": "The choir traveled to a small church to sing.", "level": "B1"},
-
-  {"english": "He recorded the vocals in his closet.", "level": "B2"},
-  {"english": "The cable hum disappeared when she changed the input.", "level": "C1"},
-  {"english": "You need a different microphone for that voice.", "level": "B2"},
-  {"english": "He saves every take in case the next one is worse.", "level": "B2"},
-  {"english": "The mix sounded better the next morning.", "level": "B2"},
-  {"english": "The amplifier glows when it warms up.", "level": "B2"},
-  {"english": "He uses an old four-track tape recorder.", "level": "B2"},
-  {"english": "We layered three takes of the same line.", "level": "B2"},
-  {"english": "The reverb made the room feel huge.", "level": "B2"},
-  {"english": "She mixed the album in her kitchen.", "level": "B1"},
-
-  {"english": "Music makes the long drive shorter.", "level": "B1"},
-  {"english": "A song can change how a day feels.", "level": "B1"},
-  {"english": "The whole room sang along.", "level": "B1"},
-  {"english": "Silence after the last chord is part of the music.", "level": "C1"},
-  {"english": "Learn one song you can play for anyone.", "level": "B2"}
+  {
+    "english": "Can you play the piano?",
+    "level": "A2"
+  },
+  {
+    "english": "I play the violin in a small orchestra.",
+    "level": "B1"
+  },
+  {
+    "english": "The guitar needs new strings.",
+    "level": "A2"
+  },
+  {
+    "english": "She plays drums in her sister's band.",
+    "level": "A2"
+  },
+  {
+    "english": "I'm learning to play the flute.",
+    "level": "A2"
+  },
+  {
+    "english": "He picked up the trumpet again after twenty years.",
+    "level": "B2"
+  },
+  {
+    "english": "The cello is leaning against the wall.",
+    "level": "A2"
+  },
+  {
+    "english": "Tuning takes longer than I expected.",
+    "level": "B1"
+  },
+  {
+    "english": "Which string is out of tune?",
+    "level": "B1"
+  },
+  {
+    "english": "The bow needs to be re-haired.",
+    "level": "B2"
+  },
+  {
+    "english": "I bought a second-hand keyboard online.",
+    "level": "B1"
+  },
+  {
+    "english": "She prefers the upright to the grand piano.",
+    "level": "B2"
+  },
+  {
+    "english": "He carries his saxophone case everywhere.",
+    "level": "B1"
+  },
+  {
+    "english": "The drummer set up before everyone else arrived.",
+    "level": "B1"
+  },
+  {
+    "english": "A ukulele is easier to start with than a guitar.",
+    "level": "B1"
+  },
+  {
+    "english": "Can you read sheet music?",
+    "level": "A2"
+  },
+  {
+    "english": "The piece is in G major.",
+    "level": "B1"
+  },
+  {
+    "english": "We're in three-four time.",
+    "level": "B2"
+  },
+  {
+    "english": "Play the first note a little louder.",
+    "level": "B1"
+  },
+  {
+    "english": "The rest is just as important as the note.",
+    "level": "B2"
+  },
+  {
+    "english": "He explained what a flat and a sharp are.",
+    "level": "B2"
+  },
+  {
+    "english": "The chord changes feel natural now.",
+    "level": "B2"
+  },
+  {
+    "english": "A scale is just notes in a row.",
+    "level": "A2"
+  },
+  {
+    "english": "Try the same passage one octave lower.",
+    "level": "B2"
+  },
+  {
+    "english": "She marked the breaths in the margin.",
+    "level": "B2"
+  },
+  {
+    "english": "The conductor counted us in.",
+    "level": "B2"
+  },
+  {
+    "english": "This bar gives me trouble every time.",
+    "level": "B2"
+  },
+  {
+    "english": "The melody is simple but it stays with you.",
+    "level": "B2"
+  },
+  {
+    "english": "He prefers writing music by ear.",
+    "level": "B2"
+  },
+  {
+    "english": "Most songs use only a few chords.",
+    "level": "B1"
+  },
+  {
+    "english": "I practice for thirty minutes after dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "Play it slowly until your fingers remember.",
+    "level": "B2"
+  },
+  {
+    "english": "She uses a metronome to keep steady.",
+    "level": "B1"
+  },
+  {
+    "english": "He records himself and listens back.",
+    "level": "B1"
+  },
+  {
+    "english": "Warm up before the hard passages.",
+    "level": "B1"
+  },
+  {
+    "english": "Mistakes are part of practice.",
+    "level": "A2"
+  },
+  {
+    "english": "I broke it down into small sections.",
+    "level": "B1"
+  },
+  {
+    "english": "Five minutes today is better than two hours next week.",
+    "level": "B2"
+  },
+  {
+    "english": "She practices in front of a mirror.",
+    "level": "A2"
+  },
+  {
+    "english": "The teacher gave me a new exercise.",
+    "level": "A2"
+  },
+  {
+    "english": "Don't rush the slow parts.",
+    "level": "B1"
+  },
+  {
+    "english": "He plays with his eyes closed sometimes.",
+    "level": "B1"
+  },
+  {
+    "english": "The trickiest measure is the one I skipped.",
+    "level": "B2"
+  },
+  {
+    "english": "After three days off, I always come back rusty.",
+    "level": "B2"
+  },
+  {
+    "english": "Practice the ending more than the beginning.",
+    "level": "B1"
+  },
+  {
+    "english": "My hands were shaking before the recital.",
+    "level": "B2"
+  },
+  {
+    "english": "The audience clapped before the piece was over.",
+    "level": "B2"
+  },
+  {
+    "english": "She bowed and walked off the stage.",
+    "level": "B1"
+  },
+  {
+    "english": "He forgot a line and improvised through it.",
+    "level": "B2"
+  },
+  {
+    "english": "The band tuned up while the lights came down.",
+    "level": "B2"
+  },
+  {
+    "english": "Could you turn the page for me?",
+    "level": "B1"
+  },
+  {
+    "english": "The microphone is too close to the cymbals.",
+    "level": "B2"
+  },
+  {
+    "english": "We played an encore.",
+    "level": "B1"
+  },
+  {
+    "english": "He looked into the crowd and smiled.",
+    "level": "B1"
+  },
+  {
+    "english": "The first concert is always the hardest.",
+    "level": "B1"
+  },
+  {
+    "english": "Stage fright never quite goes away.",
+    "level": "B2"
+  },
+  {
+    "english": "I almost dropped the bow during the cadenza.",
+    "level": "C1"
+  },
+  {
+    "english": "Singing in public is its own kind of bravery.",
+    "level": "C1"
+  },
+  {
+    "english": "The applause felt longer than the song.",
+    "level": "B2"
+  },
+  {
+    "english": "We met our favorite musician after the show.",
+    "level": "B1"
+  },
+  {
+    "english": "What kind of music do you like?",
+    "level": "A1"
+  },
+  {
+    "english": "I grew up listening to my mother's records.",
+    "level": "B1"
+  },
+  {
+    "english": "He listens to opera while he cooks.",
+    "level": "B1"
+  },
+  {
+    "english": "The bass line is what makes the song.",
+    "level": "B2"
+  },
+  {
+    "english": "You can hear the room in the recording.",
+    "level": "B2"
+  },
+  {
+    "english": "This album sounds better on vinyl.",
+    "level": "B2"
+  },
+  {
+    "english": "She closed her eyes and listened to the strings.",
+    "level": "B1"
+  },
+  {
+    "english": "The piano is slightly out of tune.",
+    "level": "B1"
+  },
+  {
+    "english": "I keep coming back to this album.",
+    "level": "B1"
+  },
+  {
+    "english": "The first time I heard it, I stopped what I was doing.",
+    "level": "B2"
+  },
+  {
+    "english": "He recommends a different jazz record every week.",
+    "level": "B2"
+  },
+  {
+    "english": "The song reminds me of my grandfather.",
+    "level": "B1"
+  },
+  {
+    "english": "There's a quiet harmony underneath the melody.",
+    "level": "B2"
+  },
+  {
+    "english": "Live music sounds different from a recording.",
+    "level": "B1"
+  },
+  {
+    "english": "I prefer headphones late at night.",
+    "level": "A2"
+  },
+  {
+    "english": "The choir meets on Wednesday evenings.",
+    "level": "B1"
+  },
+  {
+    "english": "The bass keeps the whole band together.",
+    "level": "B2"
+  },
+  {
+    "english": "The conductor brought the orchestra in gently.",
+    "level": "B2"
+  },
+  {
+    "english": "We rehearsed the same passage four times.",
+    "level": "B2"
+  },
+  {
+    "english": "He plays second violin in the local symphony.",
+    "level": "B2"
+  },
+  {
+    "english": "The quartet sat in a tight semicircle.",
+    "level": "C1"
+  },
+  {
+    "english": "The drummer counted off the tempo.",
+    "level": "B2"
+  },
+  {
+    "english": "She sang the harmony part.",
+    "level": "B1"
+  },
+  {
+    "english": "Two guitars and a voice are sometimes enough.",
+    "level": "B2"
+  },
+  {
+    "english": "The choir traveled to a small church to sing.",
+    "level": "B1"
+  },
+  {
+    "english": "He recorded the vocals in his closet.",
+    "level": "B2"
+  },
+  {
+    "english": "The cable hum disappeared when she changed the input.",
+    "level": "C1"
+  },
+  {
+    "english": "You need a different microphone for that voice.",
+    "level": "B2"
+  },
+  {
+    "english": "He saves every take in case the next one is worse.",
+    "level": "B2"
+  },
+  {
+    "english": "The mix sounded better the next morning.",
+    "level": "B2"
+  },
+  {
+    "english": "The amplifier glows when it warms up.",
+    "level": "B2"
+  },
+  {
+    "english": "He uses an old four-track tape recorder.",
+    "level": "B2"
+  },
+  {
+    "english": "We layered three takes of the same line.",
+    "level": "B2"
+  },
+  {
+    "english": "The reverb made the room feel huge.",
+    "level": "B2"
+  },
+  {
+    "english": "She mixed the album in her kitchen.",
+    "level": "B1"
+  },
+  {
+    "english": "Music makes the long drive shorter.",
+    "level": "B1"
+  },
+  {
+    "english": "A song can change how a day feels.",
+    "level": "B1"
+  },
+  {
+    "english": "The whole room sang along.",
+    "level": "B1"
+  },
+  {
+    "english": "Silence after the last chord is part of the music.",
+    "level": "C1"
+  },
+  {
+    "english": "Learn one song you can play for anyone.",
+    "level": "B2"
+  },
+  {
+    "english": "I love music.",
+    "level": "A0"
+  },
+  {
+    "english": "Music is the public form of an inner argument the species has been having with itself since long before it had words for the argument.",
+    "level": "C2"
+  }
 ]

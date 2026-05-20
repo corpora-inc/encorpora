@@ -1,108 +1,418 @@
 [
-  {"english": "What does it mean to live a good life?", "level": "B1"},
-  {"english": "How do we know what we know?", "level": "B1"},
-  {"english": "Is there a difference between knowing and believing?", "level": "B2"},
-  {"english": "Why is there something rather than nothing?", "level": "B2"},
-  {"english": "What makes a person the same person over time?", "level": "B2"},
-  {"english": "Could a machine think?", "level": "B1"},
-  {"english": "Is the world we see the real world?", "level": "B1"},
-  {"english": "What do we owe to people we will never meet?", "level": "B2"},
-  {"english": "Why is it so hard to change one's mind?", "level": "B2"},
-  {"english": "What does it mean for two people to agree?", "level": "B2"},
-  {"english": "Is truth invented or discovered?", "level": "B2"},
-  {"english": "Why do we feel time the way we do?", "level": "B2"},
-  {"english": "Where does meaning come from?", "level": "B2"},
-  {"english": "What is free will, really?", "level": "B2"},
-  {"english": "Is happiness a feeling or a practice?", "level": "B2"},
-
-  {"english": "The right thing is sometimes hard to recognize.", "level": "B2"},
-  {"english": "Good intentions don't guarantee good outcomes.", "level": "B2"},
-  {"english": "Most ethical questions are about weighing competing goods.", "level": "C1"},
-  {"english": "A small lie can do a lot of damage.", "level": "B1"},
-  {"english": "Honesty is easier in a kind environment.", "level": "B2"},
-  {"english": "Cruelty often hides behind small habits.", "level": "C1"},
-  {"english": "Some rules are good because they save us from having to think.", "level": "C1"},
-  {"english": "Sometimes the rules themselves are the problem.", "level": "B2"},
-  {"english": "A promise is a small bet on your future self.", "level": "B2"},
-  {"english": "People judge actions by results and rules by intentions.", "level": "C1"},
-  {"english": "Hypocrisy is easier to see in others.", "level": "B2"},
-  {"english": "Forgiveness is partly a gift to the one who forgives.", "level": "B2"},
-  {"english": "Empathy is a muscle that gets stronger with use.", "level": "B2"},
-  {"english": "Justice is not the same as revenge.", "level": "B2"},
-  {"english": "Power tests character more than poverty does.", "level": "C1"},
-  {"english": "Doing nothing is also a choice.", "level": "B1"},
-  {"english": "The hardest virtue is patience.", "level": "B2"},
-  {"english": "Small kindnesses accumulate.", "level": "B2"},
-  {"english": "A society can be judged by how it treats the weakest.", "level": "C1"},
-  {"english": "Courage is acting well while afraid.", "level": "B2"},
-
-  {"english": "We can be confident and wrong at the same time.", "level": "B2"},
-  {"english": "Evidence is what changes a careful mind.", "level": "C1"},
-  {"english": "Most beliefs come in groups, not one at a time.", "level": "B2"},
-  {"english": "We tend to remember the times we were right.", "level": "B2"},
-  {"english": "Doubt is uncomfortable but useful.", "level": "B2"},
-  {"english": "A good question is harder than a clever answer.", "level": "B2"},
-  {"english": "Some questions don't have a single right answer.", "level": "B2"},
-  {"english": "Models are wrong but some are useful.", "level": "C1"},
-  {"english": "The map is not the territory.", "level": "B2"},
-  {"english": "Names shape what we notice.", "level": "B2"},
-  {"english": "Reading slowly is its own kind of thinking.", "level": "B2"},
-  {"english": "Strong opinions, lightly held.", "level": "B2"},
-  {"english": "The smartest people change their minds the most.", "level": "B2"},
-  {"english": "Disagreement is not the same as misunderstanding.", "level": "B2"},
-  {"english": "Sometimes both sides are partly right.", "level": "B1"},
-
-  {"english": "The world is older than any explanation of it.", "level": "C1"},
-  {"english": "Consciousness is the strangest thing we know.", "level": "C1"},
-  {"english": "We see less of the world than we think.", "level": "B2"},
-  {"english": "Memory rewrites itself each time we use it.", "level": "C1"},
-  {"english": "Two people in the same room can experience different rooms.", "level": "C1"},
-  {"english": "The mind builds the world it lives in.", "level": "C1"},
-  {"english": "Some experiences cannot be put into words.", "level": "B2"},
-  {"english": "Music seems to speak directly without translation.", "level": "B2"},
-  {"english": "Pain is a teacher, even when it has no lesson.", "level": "C1"},
-  {"english": "Beauty is sometimes a clue.", "level": "B2"},
-  {"english": "Boredom often hides a question that needs asking.", "level": "B2"},
-  {"english": "Solitude clarifies things that crowds blur.", "level": "C1"},
-  {"english": "Sleep is not nothing.", "level": "B2"},
-  {"english": "Death gives shape to time.", "level": "B2"},
-  {"english": "The present is the only place anything ever happens.", "level": "B2"},
-
-  {"english": "Socrates said the unexamined life is not worth living.", "level": "B2"},
-  {"english": "The Stoics tried to want only what they had.", "level": "C1"},
-  {"english": "Confucius taught the importance of small rituals.", "level": "B2"},
-  {"english": "The Buddha pointed to the cause of suffering.", "level": "B2"},
-  {"english": "Aristotle thought virtue was a habit, not a feeling.", "level": "B2"},
-  {"english": "Plato suspected the things we see are like shadows.", "level": "B2"},
-  {"english": "Lao Tzu praised the way of water.", "level": "B2"},
-  {"english": "Epicurus wanted peaceful pleasures, not grand ones.", "level": "C1"},
-  {"english": "Diogenes taught by mocking convention.", "level": "C1"},
-  {"english": "Many traditions agree more than they disagree.", "level": "B2"},
-
-  {"english": "Kant said treat people as ends, not just means.", "level": "C1"},
-  {"english": "Hume noticed that reason alone doesn't make us care.", "level": "C1"},
-  {"english": "Nietzsche wrote that hard truths can also be gifts.", "level": "C1"},
-  {"english": "Wittgenstein said the limits of our language are the limits of our world.", "level": "C1"},
-  {"english": "Simone de Beauvoir argued that we become ourselves through our choices.", "level": "C1"},
-  {"english": "William James said belief shapes what we can do.", "level": "B2"},
-  {"english": "John Rawls asked what rules we'd accept if we didn't know who we'd be.", "level": "C1"},
-  {"english": "Hannah Arendt warned that evil can be ordinary.", "level": "B2"},
-  {"english": "Iris Murdoch said love is the hard work of paying attention.", "level": "C1"},
-  {"english": "Many modern philosophers borrow freely from many traditions.", "level": "B2"},
-
-  {"english": "Begin with the work you can actually do today.", "level": "B2"},
-  {"english": "Listen as if you might be wrong.", "level": "B2"},
-  {"english": "Try to want less before earning more.", "level": "B2"},
-  {"english": "Notice what you do when no one is watching.", "level": "B2"},
-  {"english": "A walk is a small philosophy.", "level": "B2"},
-  {"english": "The hardest argument to make is the one you owe yourself.", "level": "C1"},
-  {"english": "Hold opinions the way you hold a tool.", "level": "B2"},
-  {"english": "Take other people's words at their best.", "level": "B2"},
-  {"english": "Practice gratitude on ordinary mornings, not just special ones.", "level": "B2"},
-  {"english": "The shortest road is sometimes through the question.", "level": "B2"},
-  {"english": "Wonder is a kind of attention.", "level": "B2"},
-  {"english": "Read old books at least sometimes.", "level": "B1"},
-  {"english": "Disagree well and the relationship survives.", "level": "B2"},
-  {"english": "A good life is many small good days.", "level": "B2"},
-  {"english": "There is no last word.", "level": "B2"}
+  {
+    "english": "What does it mean to live a good life?",
+    "level": "B1"
+  },
+  {
+    "english": "How do we know what we know?",
+    "level": "B1"
+  },
+  {
+    "english": "Is there a difference between knowing and believing?",
+    "level": "B2"
+  },
+  {
+    "english": "Why is there something rather than nothing?",
+    "level": "B2"
+  },
+  {
+    "english": "What makes a person the same person over time?",
+    "level": "B2"
+  },
+  {
+    "english": "Could a machine think?",
+    "level": "B1"
+  },
+  {
+    "english": "Is the world we see the real world?",
+    "level": "B1"
+  },
+  {
+    "english": "What do we owe to people we will never meet?",
+    "level": "B2"
+  },
+  {
+    "english": "Why is it so hard to change one's mind?",
+    "level": "B2"
+  },
+  {
+    "english": "What does it mean for two people to agree?",
+    "level": "B2"
+  },
+  {
+    "english": "Is truth invented or discovered?",
+    "level": "B2"
+  },
+  {
+    "english": "Why do we feel time the way we do?",
+    "level": "B2"
+  },
+  {
+    "english": "Where does meaning come from?",
+    "level": "B2"
+  },
+  {
+    "english": "What is free will, really?",
+    "level": "B2"
+  },
+  {
+    "english": "Is happiness a feeling or a practice?",
+    "level": "B2"
+  },
+  {
+    "english": "The right thing is sometimes hard to recognize.",
+    "level": "B2"
+  },
+  {
+    "english": "Good intentions don't guarantee good outcomes.",
+    "level": "B2"
+  },
+  {
+    "english": "Most ethical questions are about weighing competing goods.",
+    "level": "C1"
+  },
+  {
+    "english": "A small lie can do a lot of damage.",
+    "level": "B1"
+  },
+  {
+    "english": "Honesty is easier in a kind environment.",
+    "level": "B2"
+  },
+  {
+    "english": "Cruelty often hides behind small habits.",
+    "level": "C1"
+  },
+  {
+    "english": "Some rules are good because they save us from having to think.",
+    "level": "C1"
+  },
+  {
+    "english": "Sometimes the rules themselves are the problem.",
+    "level": "B2"
+  },
+  {
+    "english": "A promise is a small bet on your future self.",
+    "level": "B2"
+  },
+  {
+    "english": "People judge actions by results and rules by intentions.",
+    "level": "C1"
+  },
+  {
+    "english": "Hypocrisy is easier to see in others.",
+    "level": "B2"
+  },
+  {
+    "english": "Forgiveness is partly a gift to the one who forgives.",
+    "level": "B2"
+  },
+  {
+    "english": "Empathy is a muscle that gets stronger with use.",
+    "level": "B2"
+  },
+  {
+    "english": "Justice is not the same as revenge.",
+    "level": "B2"
+  },
+  {
+    "english": "Power tests character more than poverty does.",
+    "level": "C1"
+  },
+  {
+    "english": "Doing nothing is also a choice.",
+    "level": "B1"
+  },
+  {
+    "english": "The hardest virtue is patience.",
+    "level": "B2"
+  },
+  {
+    "english": "Small kindnesses accumulate.",
+    "level": "B2"
+  },
+  {
+    "english": "A society can be judged by how it treats the weakest.",
+    "level": "C1"
+  },
+  {
+    "english": "Courage is acting well while afraid.",
+    "level": "B2"
+  },
+  {
+    "english": "We can be confident and wrong at the same time.",
+    "level": "B2"
+  },
+  {
+    "english": "Evidence is what changes a careful mind.",
+    "level": "C1"
+  },
+  {
+    "english": "Most beliefs come in groups, not one at a time.",
+    "level": "B2"
+  },
+  {
+    "english": "We tend to remember the times we were right.",
+    "level": "B2"
+  },
+  {
+    "english": "Doubt is uncomfortable but useful.",
+    "level": "B2"
+  },
+  {
+    "english": "A good question is harder than a clever answer.",
+    "level": "B2"
+  },
+  {
+    "english": "Some questions don't have a single right answer.",
+    "level": "B2"
+  },
+  {
+    "english": "Models are wrong but some are useful.",
+    "level": "C1"
+  },
+  {
+    "english": "The map is not the territory.",
+    "level": "B2"
+  },
+  {
+    "english": "Names shape what we notice.",
+    "level": "B2"
+  },
+  {
+    "english": "Reading slowly is its own kind of thinking.",
+    "level": "B2"
+  },
+  {
+    "english": "Strong opinions, lightly held.",
+    "level": "B2"
+  },
+  {
+    "english": "The smartest people change their minds the most.",
+    "level": "B2"
+  },
+  {
+    "english": "Disagreement is not the same as misunderstanding.",
+    "level": "B2"
+  },
+  {
+    "english": "Sometimes both sides are partly right.",
+    "level": "B1"
+  },
+  {
+    "english": "The world is older than any explanation of it.",
+    "level": "C1"
+  },
+  {
+    "english": "Consciousness is the strangest thing we know.",
+    "level": "C1"
+  },
+  {
+    "english": "We see less of the world than we think.",
+    "level": "B2"
+  },
+  {
+    "english": "Memory rewrites itself each time we use it.",
+    "level": "C1"
+  },
+  {
+    "english": "Two people in the same room can experience different rooms.",
+    "level": "C1"
+  },
+  {
+    "english": "The mind builds the world it lives in.",
+    "level": "C1"
+  },
+  {
+    "english": "Some experiences cannot be put into words.",
+    "level": "B2"
+  },
+  {
+    "english": "Music seems to speak directly without translation.",
+    "level": "B2"
+  },
+  {
+    "english": "Pain is a teacher, even when it has no lesson.",
+    "level": "C1"
+  },
+  {
+    "english": "Beauty is sometimes a clue.",
+    "level": "B2"
+  },
+  {
+    "english": "Boredom often hides a question that needs asking.",
+    "level": "B2"
+  },
+  {
+    "english": "Solitude clarifies things that crowds blur.",
+    "level": "C1"
+  },
+  {
+    "english": "Sleep is not nothing.",
+    "level": "B2"
+  },
+  {
+    "english": "Death gives shape to time.",
+    "level": "B2"
+  },
+  {
+    "english": "The present is the only place anything ever happens.",
+    "level": "B2"
+  },
+  {
+    "english": "Socrates said the unexamined life is not worth living.",
+    "level": "B2"
+  },
+  {
+    "english": "The Stoics tried to want only what they had.",
+    "level": "C1"
+  },
+  {
+    "english": "Confucius taught the importance of small rituals.",
+    "level": "B2"
+  },
+  {
+    "english": "The Buddha pointed to the cause of suffering.",
+    "level": "B2"
+  },
+  {
+    "english": "Aristotle thought virtue was a habit, not a feeling.",
+    "level": "B2"
+  },
+  {
+    "english": "Plato suspected the things we see are like shadows.",
+    "level": "B2"
+  },
+  {
+    "english": "Lao Tzu praised the way of water.",
+    "level": "B2"
+  },
+  {
+    "english": "Epicurus wanted peaceful pleasures, not grand ones.",
+    "level": "C1"
+  },
+  {
+    "english": "Diogenes taught by mocking convention.",
+    "level": "C1"
+  },
+  {
+    "english": "Many traditions agree more than they disagree.",
+    "level": "B2"
+  },
+  {
+    "english": "Kant said treat people as ends, not just means.",
+    "level": "C1"
+  },
+  {
+    "english": "Hume noticed that reason alone doesn't make us care.",
+    "level": "C1"
+  },
+  {
+    "english": "Nietzsche wrote that hard truths can also be gifts.",
+    "level": "C1"
+  },
+  {
+    "english": "Wittgenstein said the limits of our language are the limits of our world.",
+    "level": "C1"
+  },
+  {
+    "english": "Simone de Beauvoir argued that we become ourselves through our choices.",
+    "level": "C1"
+  },
+  {
+    "english": "William James said belief shapes what we can do.",
+    "level": "B2"
+  },
+  {
+    "english": "John Rawls asked what rules we'd accept if we didn't know who we'd be.",
+    "level": "C1"
+  },
+  {
+    "english": "Hannah Arendt warned that evil can be ordinary.",
+    "level": "B2"
+  },
+  {
+    "english": "Iris Murdoch said love is the hard work of paying attention.",
+    "level": "C1"
+  },
+  {
+    "english": "Many modern philosophers borrow freely from many traditions.",
+    "level": "B2"
+  },
+  {
+    "english": "Begin with the work you can actually do today.",
+    "level": "B2"
+  },
+  {
+    "english": "Listen as if you might be wrong.",
+    "level": "B2"
+  },
+  {
+    "english": "Try to want less before earning more.",
+    "level": "B2"
+  },
+  {
+    "english": "Notice what you do when no one is watching.",
+    "level": "B2"
+  },
+  {
+    "english": "A walk is a small philosophy.",
+    "level": "B2"
+  },
+  {
+    "english": "The hardest argument to make is the one you owe yourself.",
+    "level": "C1"
+  },
+  {
+    "english": "Hold opinions the way you hold a tool.",
+    "level": "B2"
+  },
+  {
+    "english": "Take other people's words at their best.",
+    "level": "B2"
+  },
+  {
+    "english": "Practice gratitude on ordinary mornings, not just special ones.",
+    "level": "B2"
+  },
+  {
+    "english": "The shortest road is sometimes through the question.",
+    "level": "B2"
+  },
+  {
+    "english": "Wonder is a kind of attention.",
+    "level": "B2"
+  },
+  {
+    "english": "Read old books at least sometimes.",
+    "level": "B1"
+  },
+  {
+    "english": "Disagree well and the relationship survives.",
+    "level": "B2"
+  },
+  {
+    "english": "A good life is many small good days.",
+    "level": "B2"
+  },
+  {
+    "english": "There is no last word.",
+    "level": "B2"
+  },
+  {
+    "english": "I think a lot.",
+    "level": "A0"
+  },
+  {
+    "english": "I have a question.",
+    "level": "A1"
+  },
+  {
+    "english": "A good question takes time to answer.",
+    "level": "A2"
+  },
+  {
+    "english": "Philosophy is the long, patient practice of asking the questions a culture has agreed to stop noticing, and of refusing the first easy answer until a more honest one becomes available.",
+    "level": "C2"
+  }
 ]

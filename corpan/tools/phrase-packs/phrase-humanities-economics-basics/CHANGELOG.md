@@ -9,6 +9,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 3 phrase(s) at level(s) A0, A1, C2.
+  - A0: "I have a job."
+  - A1: "Money is useful."
+  - C2: "An economy is the long, mostly invisible conversation a society has with itself about what its people most want, most fear, and are most willing to trade for one another."
+
 ## [0.1.0]
 ### Added
 - Initial release. 100 English phrases on Economics.
