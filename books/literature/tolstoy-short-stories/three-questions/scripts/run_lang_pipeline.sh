@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
-# Run a single language end-to-end through the post-EN pipeline.
-# Assumes: codex (or other translator) has produced segments_<lang>.json
-# Does:  validate → generate → polish → fixup → master --all → declick-regen → audit → publish → patch-catalog
+# Run a single language end-to-end through the post-EN pipeline for
+# Three Questions ron-gemini-v1 (Ron / Charon voice).
+# Assumes: codex has produced segments_<lang>.json in the pack dir.
+# Does:  validate → generate → polish → fixup → master --all → audit → publish → patch-catalog
 #
 # Usage:  run_lang_pipeline.sh <lang>
-#         run_lang_pipeline.sh fr
+#         run_lang_pipeline.sh bn
 set -euo pipefail
 
 LANG_CODE=${1:?usage: run_lang_pipeline.sh <lang>}
 
-PACK=/home/skyl/encorpora/books/history/pirate-biographies/02-hayreddin-barbarossa/packs/august-chatterbox-v1
+PACK=/home/skyl/encorpora/books/literature/tolstoy-short-stories/three-questions/packs/ron-gemini-v1
 BIN=/home/skyl/tts_venv/bin
-SCRIPTS=/home/skyl/encorpora/books/history/pirate-biographies/02-hayreddin-barbarossa/scripts
+SCRIPTS=/home/skyl/encorpora/books/literature/tolstoy-short-stories/three-questions/scripts
 VERSION=$($BIN/python -c "import json; print(json.load(open('$PACK/manifest.json'))['version'])")
-LOG=/tmp/barbarossa_${LANG_CODE}_${VERSION}
+LOG=/tmp/tq_${LANG_CODE}_${VERSION}
 
 mkdir -p "$LOG"
 echo "[$(date +%T)] [$LANG_CODE $VERSION] start"
@@ -25,7 +26,7 @@ $BIN/python - <<PYEOF
 import json, re
 from pathlib import Path
 PACK = Path("$PACK")
-en = json.load((PACK / "segments.json").open())
+en = json.load((PACK / "segments_en.json").open())
 xx = json.load((PACK / f"segments_${LANG_CODE}.json").open())
 em = {s['id']: s for s in en['segments']}
 xm = {s['id']: s for s in xx['segments']}
@@ -57,7 +58,7 @@ $BIN/ttsctl status "$PACK" 2>&1 | tail -8 | tee "$LOG/status_after_gen.txt"
 
 echo "[$(date +%T)] [$LANG_CODE] polish"
 $BIN/ttsctl polish "$PACK" --lang "$LANG_CODE" > "$LOG/polish.log" 2>&1
-grep -E "Result|fixed|errors|clean" "$LOG/polish.log" | tail -3 || true
+grep -E "Result|fixed|errors" "$LOG/polish.log" | tail -3 || true
 
 echo "[$(date +%T)] [$LANG_CODE] post_generate_fixup"
 $BIN/python "$SCRIPTS/post_generate_fixup.py" "$PACK" "$LANG_CODE" > "$LOG/fixup.log" 2>&1
@@ -67,17 +68,12 @@ echo "[$(date +%T)] [$LANG_CODE] master --all"
 $BIN/ttsctl master "$PACK" --lang "$LANG_CODE" --all > "$LOG/master.log" 2>&1
 tail -3 "$LOG/master.log"
 
-echo "[$(date +%T)] [$LANG_CODE] declick-regen"
-$BIN/python /home/skyl/projects/ttsctl/scripts/declick_regen.py \
-  "$PACK" "$LANG_CODE" --max-retries 3 --device cuda > "$LOG/declick.log" 2>&1
-grep -E "baseline|clean after|fallback|WARNING" "$LOG/declick.log" | tail -10 || true
-
 echo "[$(date +%T)] [$LANG_CODE] audit"
 $BIN/ttsctl audit "$PACK" --lang "$LANG_CODE" > "$LOG/audit.log" 2>&1
 tail -3 "$LOG/audit.log"
 
 echo "[$(date +%T)] [$LANG_CODE] publish"
-$BIN/ttsctl publish "$PACK" --lang "$LANG_CODE" --voice-id august --tier public > "$LOG/publish.log" 2>&1
+$BIN/ttsctl publish "$PACK" --lang "$LANG_CODE" --voice-id gemini-ron --tier public > "$LOG/publish.log" 2>&1
 tail -5 "$LOG/publish.log"
 
 echo "[$(date +%T)] [$LANG_CODE] patch-catalog"

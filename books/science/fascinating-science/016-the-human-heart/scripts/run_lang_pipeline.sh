@@ -1,27 +1,35 @@
 #!/usr/bin/env bash
-# Run a single language end-to-end through the post-EN pipeline.
-# Assumes: codex (or other translator) has produced segments_<lang>.json
+# Run a single language end-to-end through the post-EN pipeline for The Human Heart.
+# Assumes: codex (or other translator) has produced segments_<lang>.json (or EN already present)
 # Does:  validate → generate → polish → fixup → master --all → declick-regen → audit → publish → patch-catalog
 #
 # Usage:  run_lang_pipeline.sh <lang>
-#         run_lang_pipeline.sh fr
+#         run_lang_pipeline.sh en
 set -euo pipefail
 
 LANG_CODE=${1:?usage: run_lang_pipeline.sh <lang>}
 
-PACK=/home/skyl/encorpora/books/history/pirate-biographies/02-hayreddin-barbarossa/packs/august-chatterbox-v1
+PACK=/home/skyl/encorpora/books/science/fascinating-science/016-the-human-heart/packs/august-chatterbox-v1
 BIN=/home/skyl/tts_venv/bin
-SCRIPTS=/home/skyl/encorpora/books/history/pirate-biographies/02-hayreddin-barbarossa/scripts
+SCRIPTS=/home/skyl/encorpora/books/science/fascinating-science/016-the-human-heart/scripts
 VERSION=$($BIN/python -c "import json; print(json.load(open('$PACK/manifest.json'))['version'])")
-LOG=/tmp/barbarossa_${LANG_CODE}_${VERSION}
+LOG=/tmp/heart_${LANG_CODE}_${VERSION}
 
 mkdir -p "$LOG"
 echo "[$(date +%T)] [$LANG_CODE $VERSION] start"
-test -f "$PACK/segments_${LANG_CODE}.json" || { echo "missing segments_${LANG_CODE}.json"; exit 1; }
 
-# Pre-flight: id match, no digits, no dashes, no passthrough
-echo "[$(date +%T)] [$LANG_CODE] pre-flight"
-$BIN/python - <<PYEOF
+# EN reads from segments.json; other langs read from segments_<lang>.json
+if [ "$LANG_CODE" = "en" ]; then
+  SEG_FILE="$PACK/segments.json"
+else
+  SEG_FILE="$PACK/segments_${LANG_CODE}.json"
+fi
+test -f "$SEG_FILE" || { echo "missing $SEG_FILE"; exit 1; }
+
+# Pre-flight: id match, no digits, no dashes, no passthrough (skip for EN)
+if [ "$LANG_CODE" != "en" ]; then
+  echo "[$(date +%T)] [$LANG_CODE] pre-flight"
+  $BIN/python - <<PYEOF
 import json, re
 from pathlib import Path
 PACK = Path("$PACK")
@@ -50,6 +58,7 @@ if fail:
     raise SystemExit(2)
 print(f"  OK: {len(xm)} segs, 0 digits, 0 dashes, 0 untranslated")
 PYEOF
+fi
 
 echo "[$(date +%T)] [$LANG_CODE] generate"
 $BIN/ttsctl generate "$PACK" --lang "$LANG_CODE" --device cuda > "$LOG/gen.log" 2>&1

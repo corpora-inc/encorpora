@@ -2,6 +2,15 @@ version: 1
 engine: gemini
 voices:
   ca: Charon
+  bn: Charon
+  ur: Charon
+  id: Charon
+  vi: Charon
+  te: Charon
+  fa: Charon
+  ta: Charon
+  th: Charon
+  uk: Charon
 tts: {}
 retry:
   max_retries: 2
@@ -60,8 +69,26 @@ trimming:
   fade_sec: 0.05
   max_sec_per_char:
     ca: 0.15
+    bn: 0.15
+    ur: 0.15
+    id: 0.15
+    vi: 0.15
+    te: 0.15
+    fa: 0.15
+    ta: 0.15
+    th: 0.15
+    uk: 0.15
   base_buffer_sec:
     ca: 5.0
+    bn: 5.0
+    ur: 5.0
+    id: 5.0
+    vi: 5.0
+    te: 5.0
+    fa: 5.0
+    ta: 5.0
+    th: 5.0
+    uk: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -70,7 +97,34 @@ validation:
   max_inter_word_gap_ms: 3000
   max_sec_per_char:
     ca: 0.15
+    bn: 0.15
+    ur: 0.15
+    id: 0.15
+    vi: 0.15
+    te: 0.15
+    fa: 0.15
+    ta: 0.15
+    th: 0.15
+    uk: 0.15
   min_sec_per_char:
     ca: 0.02
+    bn: 0.02
+    ur: 0.02
+    id: 0.02
+    vi: 0.02
+    te: 0.02
+    fa: 0.02
+    ta: 0.02
+    th: 0.02
+    uk: 0.02
   base_buffer_sec:
     ca: 5.0
+    bn: 5.0
+    ur: 5.0
+    id: 5.0
+    vi: 5.0
+    te: 5.0
+    fa: 5.0
+    ta: 5.0
+    th: 5.0
+    uk: 5.0
