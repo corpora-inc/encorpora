@@ -104,7 +104,20 @@
       "header": "Gói cụm từ",
       "baseCorpusName": "Kho cơ sở",
       "emptyHint": "Thêm gói từ tab Gói.",
-      "browseAll": "Duyệt gói"
+      "browseAll": "Duyệt gói",
+      "searchPlaceholder": "Tìm gói…",
+      "filter": {
+        "all": "Tất cả",
+        "active": "Đang bật",
+        "inactive": "Đang tắt"
+      },
+      "selectAllVisible": "Chọn tất cả",
+      "deselectAllVisible": "Xoá",
+      "activateGroup": "Bật tất cả",
+      "deactivateGroup": "Tắt tất cả",
+      "uncategorized": "Khác",
+      "noMatches": "Không có kết quả.",
+      "noFiltered": "Hiện không có gì ở đây."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Đang kiểm tra…",
     "phrasePack": {
       "sectionTitle": "Gói cụm từ",
-      "empty": "Chưa có gói nào.",
       "offlineEmpty": "Bạn đang ngoại tuyến. Kết nối để duyệt.",
       "searchPlaceholder": "Tìm…",
       "noMatches": "Không có kết quả.",
@@ -445,7 +457,16 @@
       "paid": "Trả phí",
       "free": "Miễn phí",
       "unlockSub": "Mở khóa bằng đăng ký",
-      "entryCount": "{{n}} cụm từ"
+      "entryCount": "{{n}} cụm từ",
+      "allInstalled": {
+        "title": "Bạn đã có mọi gói cụm từ.",
+        "subtitle": "Chủ đề mới được phát hành thường xuyên — quay lại bất cứ lúc nào.",
+        "manageCta": "Quản lý trong Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Chưa cài đặt gì.",
+        "cta": "Hiện tất cả"
+      }
     }
   },
   "subscription": {

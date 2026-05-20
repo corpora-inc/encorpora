@@ -104,7 +104,20 @@
       "header": "Frasepaket",
       "baseCorpusName": "Baskorpus",
       "emptyHint": "Lägg till paket från Paket-fliken.",
-      "browseAll": "Bläddra i paket"
+      "browseAll": "Bläddra i paket",
+      "searchPlaceholder": "Sök paket…",
+      "filter": {
+        "all": "Alla",
+        "active": "Aktiva",
+        "inactive": "Inaktiva"
+      },
+      "selectAllVisible": "Välj alla",
+      "deselectAllVisible": "Rensa",
+      "activateGroup": "Aktivera alla",
+      "deactivateGroup": "Inaktivera alla",
+      "uncategorized": "Övrigt",
+      "noMatches": "Inga träffar.",
+      "noFiltered": "Inget här just nu."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Kontrollerar…",
     "phrasePack": {
       "sectionTitle": "Frasepaket",
-      "empty": "Inga paket ännu.",
       "offlineEmpty": "Du är offline. Anslut för att bläddra.",
       "searchPlaceholder": "Sök…",
       "noMatches": "Inga träffar.",
@@ -445,7 +457,16 @@
       "paid": "Betald",
       "free": "Gratis",
       "unlockSub": "Lås upp med prenumeration",
-      "entryCount": "{{n}} fraser"
+      "entryCount": "{{n}} fraser",
+      "allInstalled": {
+        "title": "Du har alla fraspaket.",
+        "subtitle": "Nya paket kommer regelbundet — kom tillbaka när du vill.",
+        "manageCta": "Hantera i Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Inget installerat än.",
+        "cta": "Visa alla"
+      }
     }
   },
   "subscription": {

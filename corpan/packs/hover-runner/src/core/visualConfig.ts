@@ -84,6 +84,17 @@ export const SHADOWS = {
 
 // ============================================================
 // SSAO (Ambient Occlusion)
+//
+// NOTE: this needs to stay enabled. Turning it off caused visible
+// flicker on the avatar/pyramid (likely because the SSAO2 prepass was
+// implicitly stabilising render ordering between the pyramid body
+// meshes / outline / GlowLayer interactions). The MRT-warning spam on
+// iOS WKWebView is annoying but cosmetic — it does NOT crash, and the
+// effect renders fine. If you want to address the spam without
+// dropping the effect, the correct fix is to pass
+// `forceGeometryBuffer: true` to `new SSAO2RenderingPipeline(...)` in
+// game.ts (uses the legacy 2-pass path that doesn't trip the MRT
+// validator). Don't just flip `enabled` to false.
 // ============================================================
 export const SSAO = {
   enabled: true,

@@ -104,7 +104,20 @@
       "header": "Pakiti za misemo",
       "baseCorpusName": "Korpasi msingi",
       "emptyHint": "Ongeza pakiti kutoka kichupo cha Pakiti.",
-      "browseAll": "Vinjari pakiti"
+      "browseAll": "Vinjari pakiti",
+      "searchPlaceholder": "Tafuta pakiti…",
+      "filter": {
+        "all": "Zote",
+        "active": "Zinazotumika",
+        "inactive": "Hazitumiki"
+      },
+      "selectAllVisible": "Chagua zote",
+      "deselectAllVisible": "Futa",
+      "activateGroup": "Washa zote",
+      "deactivateGroup": "Zima zote",
+      "uncategorized": "Nyingine",
+      "noMatches": "Hakuna matokeo.",
+      "noFiltered": "Hakuna chochote hapa sasa."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Inakagua…",
     "phrasePack": {
       "sectionTitle": "Pakiti za misemo",
-      "empty": "Hakuna pakiti bado.",
       "offlineEmpty": "Uko nje ya mtandao. Unganisha kuvinjari.",
       "searchPlaceholder": "Tafuta…",
       "noMatches": "Hakuna matokeo.",
@@ -445,7 +457,16 @@
       "paid": "Yenye malipo",
       "free": "Bure",
       "unlockSub": "Fungua kwa usajili",
-      "entryCount": "{{n}} misemo"
+      "entryCount": "{{n}} misemo",
+      "allInstalled": {
+        "title": "Una pakiti zote za misemo.",
+        "subtitle": "Pakiti mpya hutoka mara kwa mara — rudi wakati wowote.",
+        "manageCta": "Dhibiti katika Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Hakuna kilichosakinishwa bado.",
+        "cta": "Onyesha zote"
+      }
     }
   },
   "subscription": {

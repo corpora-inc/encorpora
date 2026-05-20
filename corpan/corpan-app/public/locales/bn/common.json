@@ -104,7 +104,20 @@
       "header": "বাক্যাংশ প্যাক",
       "baseCorpusName": "মূল কর্পাস",
       "emptyHint": "প্যাক ট্যাব থেকে প্যাক যোগ করুন।",
-      "browseAll": "প্যাক দেখুন"
+      "browseAll": "প্যাক দেখুন",
+      "searchPlaceholder": "প্যাক খুঁজুন…",
+      "filter": {
+        "all": "সব",
+        "active": "সক্রিয়",
+        "inactive": "নিষ্ক্রিয়"
+      },
+      "selectAllVisible": "সব নির্বাচন",
+      "deselectAllVisible": "মুছুন",
+      "activateGroup": "সব সক্রিয় করুন",
+      "deactivateGroup": "সব নিষ্ক্রিয় করুন",
+      "uncategorized": "অন্যান্য",
+      "noMatches": "কোনো ফলাফল নেই।",
+      "noFiltered": "এখানে এখন কিছু নেই।"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "যাচাই হচ্ছে…",
     "phrasePack": {
       "sectionTitle": "বাক্যাংশ প্যাক",
-      "empty": "এখনও কোনো প্যাক নেই।",
       "offlineEmpty": "আপনি অফলাইন। ব্রাউজ করতে সংযোগ করুন।",
       "searchPlaceholder": "খুঁজুন…",
       "noMatches": "কোনো ফলাফল নেই।",
@@ -445,7 +457,16 @@
       "paid": "পেইড",
       "free": "ফ্রি",
       "unlockSub": "সাবস্ক্রিপশন দিয়ে আনলক",
-      "entryCount": "{{n}} বাক্যাংশ"
+      "entryCount": "{{n}} বাক্যাংশ",
+      "allInstalled": {
+        "title": "আপনার কাছে সব ফ্রেজ প্যাক আছে।",
+        "subtitle": "নতুন বিষয় নিয়মিত আসে — যখন খুশি ফিরে আসুন।",
+        "manageCta": "Stacks-এ ব্যবস্থাপনা"
+      },
+      "filterEmpty": {
+        "installed": "এখনও কিছু ইনস্টল হয়নি।",
+        "cta": "সব দেখান"
+      }
     }
   },
   "subscription": {

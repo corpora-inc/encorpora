@@ -9,8 +9,9 @@
 
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Library, Search } from "lucide-react";
+import { CheckCircle2, Library, Search } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { OfflineNotice } from "@/components/OfflineNotice";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
@@ -73,6 +74,26 @@ export function PhrasePackBrowser() {
 
     const totalVisible = visibleGroups.reduce((sum, g) => sum + g.packs.length, 0);
     const hasAnyPhrasePacks = allPhrasePacks.length > 0;
+    const installedCount = allPhrasePacks.reduce(
+        (n, p) => n + (installedById[p.id] ? 1 : 0),
+        0,
+    );
+    const allInstalled =
+        hasAnyPhrasePacks && installedCount === allPhrasePacks.length;
+    const nothingInstalled = installedCount === 0;
+
+    const handleManageInStacks = () => {
+        window.dispatchEvent(
+            new CustomEvent("corpan:open-stacks-phrase-packs"),
+        );
+    };
+
+    // Hide the section entirely when the catalog came back empty on an
+    // online client. There is no honest copy for "we have 0 packs to show
+    // you"; surfacing nothing > lying.
+    if (!hasAnyPhrasePacks && (isOnline || lastFetched)) {
+        return null;
+    }
 
     return (
         <section
@@ -97,10 +118,10 @@ export function PhrasePackBrowser() {
                 )}
             </div>
 
-            {/* Empty state — distinguish "offline, no cached catalog"
-                from "online but the catalog has no phrase packs". The
-                user always-functional installed packs live in the Stacks
-                tab toggle section, which doesn't read the catalog at all. */}
+            {/* Catalog empty + truly offline (no cached payload to fall
+                back on). Installed phrase packs still work — they live in
+                the Stacks tab toggle section which doesn't read the
+                catalog at all. */}
             {!hasAnyPhrasePacks && !isOnline && !lastFetched && (
                 <OfflineNotice
                     title={t("offline.phrasePacksTitle", {
@@ -112,16 +133,9 @@ export function PhrasePackBrowser() {
                     })}
                 />
             )}
-            {!hasAnyPhrasePacks && (isOnline || lastFetched) && (
-                <div className="rounded-md border border-dashed border-border bg-muted/30 p-6 text-center text-sm text-muted-foreground">
-                    {t("packs.phrasePack.empty", {
-                        defaultValue: "No phrase packs yet.",
-                    })}
-                </div>
-            )}
 
-            {/* Have cached results but no network — show them, with a
-                subdued banner so the user knows what they're looking at. */}
+            {/* Cached payload + offline — subdued banner so the user knows
+                what they're looking at. Orthogonal to install state. */}
             {hasAnyPhrasePacks && !isOnline && (
                 <OfflineNotice
                     density="compact"
@@ -131,8 +145,42 @@ export function PhrasePackBrowser() {
                 />
             )}
 
-            {/* Search + filter chips */}
-            {hasAnyPhrasePacks && (
+            {/* All installed — calm, accurate callout. No grid; the user
+                already has every pack and Stacks is where toggling lives. */}
+            {allInstalled && (
+                <div className="rounded-lg border border-purple-400/40 bg-purple-500/[0.04] p-5 text-center">
+                    <CheckCircle2
+                        size={20}
+                        aria-hidden="true"
+                        className="mx-auto text-purple-500"
+                    />
+                    <p className="mt-2 text-sm font-medium text-foreground">
+                        {t("packs.phrasePack.allInstalled.title", {
+                            defaultValue: "You've got every phrase pack.",
+                        })}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                        {t("packs.phrasePack.allInstalled.subtitle", {
+                            defaultValue:
+                                "Topic packs ship regularly — check back any time.",
+                        })}
+                    </p>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleManageInStacks}
+                        className="mt-3 text-xs"
+                    >
+                        {t("packs.phrasePack.allInstalled.manageCta", {
+                            defaultValue: "Manage in Stacks",
+                        })}
+                    </Button>
+                </div>
+            )}
+
+            {/* Search + filter chips + grid — only when there's still
+                something un-installed to act on. */}
+            {hasAnyPhrasePacks && !allInstalled && (
                 <>
                     <div className="flex items-center gap-2">
                         <div className="relative flex-1">
@@ -179,14 +227,45 @@ export function PhrasePackBrowser() {
                         ))}
                     </div>
 
-                    {/* Groups */}
-                    {visibleGroups.length === 0 && (
-                        <p className="text-sm text-muted-foreground/80 px-1">
-                            {t("packs.phrasePack.noMatches", {
-                                defaultValue: "No matches.",
-                            })}
-                        </p>
-                    )}
+                    {/* Filter=installed with nothing installed — specific
+                        copy + a CTA that resets the filter. Avoids the
+                        generic "No matches" string in a state we can fix. */}
+                    {visibleGroups.length === 0 &&
+                        filter === "installed" &&
+                        nothingInstalled && (
+                            <div className="rounded-md border border-dashed border-border bg-muted/30 p-5 text-center">
+                                <p className="text-sm text-foreground">
+                                    {t(
+                                        "packs.phrasePack.filterEmpty.installed",
+                                        {
+                                            defaultValue: "Nothing installed yet.",
+                                        },
+                                    )}
+                                </p>
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => setFilter("all")}
+                                    className="mt-2 text-xs"
+                                >
+                                    {t("packs.phrasePack.filterEmpty.cta", {
+                                        defaultValue: "Show all packs",
+                                    })}
+                                </Button>
+                            </div>
+                        )}
+
+                    {/* Search / filter combo yielded nothing actionable —
+                        fall through to the existing soft message. */}
+                    {visibleGroups.length === 0 &&
+                        !(filter === "installed" && nothingInstalled) && (
+                            <p className="text-sm text-muted-foreground/80 px-1">
+                                {t("packs.phrasePack.noMatches", {
+                                    defaultValue: "No matches.",
+                                })}
+                            </p>
+                        )}
+
                     {visibleGroups.map((group) => (
                         <div key={group.id} className="space-y-2">
                             {/* Suppress group label when there's only the

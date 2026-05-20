@@ -104,7 +104,20 @@
       "header": "ชุดวลี",
       "baseCorpusName": "คลังพื้นฐาน",
       "emptyHint": "เพิ่มชุดจากแท็บชุด",
-      "browseAll": "ดูชุดทั้งหมด"
+      "browseAll": "ดูชุดทั้งหมด",
+      "searchPlaceholder": "ค้นหาชุด…",
+      "filter": {
+        "all": "ทั้งหมด",
+        "active": "ใช้งาน",
+        "inactive": "ไม่ใช้งาน"
+      },
+      "selectAllVisible": "เลือกทั้งหมด",
+      "deselectAllVisible": "ล้าง",
+      "activateGroup": "เปิดทั้งหมด",
+      "deactivateGroup": "ปิดทั้งหมด",
+      "uncategorized": "อื่นๆ",
+      "noMatches": "ไม่พบผลลัพธ์",
+      "noFiltered": "ตอนนี้ไม่มีอะไรที่นี่"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "กำลังตรวจสอบ…",
     "phrasePack": {
       "sectionTitle": "ชุดวลี",
-      "empty": "ยังไม่มีชุด",
       "offlineEmpty": "คุณออฟไลน์อยู่ เชื่อมต่อเพื่อดู",
       "searchPlaceholder": "ค้นหา…",
       "noMatches": "ไม่พบผลลัพธ์",
@@ -445,7 +457,16 @@
       "paid": "เสียค่าใช้จ่าย",
       "free": "ฟรี",
       "unlockSub": "ปลดล็อกด้วยการสมัครสมาชิก",
-      "entryCount": "{{n}} วลี"
+      "entryCount": "{{n}} วลี",
+      "allInstalled": {
+        "title": "คุณมีชุดวลีทั้งหมดแล้ว",
+        "subtitle": "ชุดหัวข้อใหม่ออกสม่ำเสมอ — กลับมาดูได้ทุกเมื่อ",
+        "manageCta": "จัดการใน Stacks"
+      },
+      "filterEmpty": {
+        "installed": "ยังไม่ได้ติดตั้งอะไรเลย",
+        "cta": "แสดงทั้งหมด"
+      }
     }
   },
   "subscription": {

@@ -16,7 +16,15 @@ import { Play } from "lucide-react";
 import type { InstalledGame } from "@/store/games";
 import type { PackUpdate } from "@/hooks/usePackUpdates";
 
-const MAX_RECENTS = 5;
+// Keep up to 8 in memory and let the grid + responsive `hidden` utilities
+// below pick a row-filling subset per breakpoint:
+//   base  (cols-2) → 6 tiles  (3 rows)
+//   sm    (cols-3) → 6 tiles  (2 rows)
+//   md    (cols-4) → 8 tiles  (2 rows)
+//   lg    (cols-5) → 5 tiles  (1 row)
+// CSS-only, no JS resize logic — the visibility class for each tile is
+// determined by its index.
+const MAX_RECENTS = 8;
 
 export function RecentsSection({
     installedGames,
@@ -52,13 +60,25 @@ export function RecentsSection({
                 {t("packs.recent", { defaultValue: "Recent" })}
             </h4>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {recents.map((game) => (
+                {recents.map((game, idx) => (
                     <RecentTile
                         key={game.id}
                         game={game}
                         hasUpdate={hasUpdateForId(game.id)}
                         isOnline={isOnline}
                         onLaunch={onLaunchGame}
+                        // 6th tile: hide at lg (cap 5 in one row).
+                        // 7th + 8th: visible only at md (cap 8 in two rows
+                        // of 4); hidden at base/sm (cap 6) and at lg
+                        // (cap 5). `md:flex` restores the button's default
+                        // flex layout that `hidden` would otherwise clobber.
+                        extraClassName={
+                            idx >= 6
+                                ? "hidden md:flex lg:hidden"
+                                : idx >= 5
+                                    ? "lg:hidden"
+                                    : ""
+                        }
                     />
                 ))}
             </div>
@@ -71,11 +91,15 @@ function RecentTile({
     hasUpdate,
     isOnline,
     onLaunch,
+    extraClassName = "",
 }: {
     game: InstalledGame;
     hasUpdate: boolean;
     isOnline: boolean;
     onLaunch?: (game: InstalledGame) => void;
+    /** Responsive visibility class from the parent — see RecentsSection
+     *  for the breakpoint table. */
+    extraClassName?: string;
 }) {
     const { t } = useTranslation();
     const handleClick = () => onLaunch?.(game);
@@ -94,6 +118,7 @@ function RecentTile({
                 "transition-[border-color,background-color,box-shadow,transform] duration-150",
                 "active:scale-[0.98]",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/70",
+                extraClassName,
             ].join(" ")}
         >
             {/* Play affordance — single big tap target, no secondary button */}

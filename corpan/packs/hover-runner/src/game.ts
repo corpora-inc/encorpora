@@ -24,6 +24,11 @@ import "@babylonjs/loaders/glTF"
 import { getSfx } from "./audio"
 import { tuningStore } from "./tuningStore"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
+import { t, setLanguage as setUiLanguage, onChange as onUiLangChange } from "./i18n"
+import { createSettingsDrawer, type MotionControl } from "./ui/settingsDrawer"
+import { createMotionPermissionOverlay, type MotionPermissionOverlay } from "./ui/motionPermissionOverlay"
+import type { TiltState } from "./systems/input"
+import type { DrawerSectionDef } from "@shared/ui"
 
 // Core modules
 import {
@@ -41,10 +46,7 @@ import {
   CAMERA,
   LIGHTING,
   GLOW,
-  SHADOWS,
   SSAO,
-  POST_PROCESSING,
-  SKIN_PRESETS,
   PYRAMIDS,
 } from "./core/visualConfig"
 import type {
@@ -167,31 +169,18 @@ export const createHoverRunner = (
     root.appendChild(fpsHud)
   }
 
-  const hudBackdrop = document.createElement("div")
-  hudBackdrop.className = "hud-backdrop"
-  root.appendChild(hudBackdrop)
-
-  const hudPanel = document.createElement("div")
-  hudPanel.className = "hud-panel"
-  root.appendChild(hudPanel)
-
-  const hudControls = document.createElement("div")
-  hudControls.className = "hud-controls"
-
-  hudPanel.append(hudControls)
-
-  const tuningPanel = document.createElement("div")
-  tuningPanel.className = "tuning-panel"
-  hudPanel.appendChild(tuningPanel)
+  // Seed the active UI language from the host's stack config; further
+  // changes are picked up via `hostApi.onStackConfigChange` below.
+  setUiLanguage(hostApi.getStackConfig().languages[0] || "en")
 
   const phraseHud = document.createElement("div")
   phraseHud.className = "phrase-hud"
   const hudPromptLabel = document.createElement("div")
   hudPromptLabel.className = "phrase-hud-label"
-  hudPromptLabel.textContent = "Listen"
+  hudPromptLabel.textContent = t("phrase.listen")
   const hudPrompt = document.createElement("div")
   hudPrompt.className = "phrase-hud-text"
-  hudPrompt.textContent = "Waiting for phrase..."
+  hudPrompt.textContent = t("phrase.waiting")
   const hudPromptRomanization = document.createElement("div")
   hudPromptRomanization.className = "phrase-hud-romanization"
   const hudAnswer = document.createElement("div")
@@ -211,425 +200,48 @@ export const createHoverRunner = (
   statusHud.className = "status-hud"
   const hudScore = document.createElement("div")
   hudScore.className = "status-score"
-  hudScore.textContent = "Score 0"
+  hudScore.textContent = t("hud.score", { n: 0 })
   const hudStreak = document.createElement("div")
   hudStreak.className = "status-streak"
-  hudStreak.textContent = "Streak 0"
+  hudStreak.textContent = t("hud.streak", { n: 0 })
   statusHud.append(hudScore, hudStreak)
   root.appendChild(statusHud)
 
+  // promptToggle (Show Prompt) — DOM created here, attached into the
+  // settings drawer's "Display" section below.
   const promptToggle = document.createElement("label")
   promptToggle.className = "hud-toggle"
   const promptToggleInput = document.createElement("input")
   promptToggleInput.type = "checkbox"
   promptToggleInput.checked = true
   const promptToggleLabel = document.createElement("span")
-  promptToggleLabel.textContent = "Show prompt"
+  promptToggleLabel.textContent = t("hud.show_prompt")
   promptToggle.append(promptToggleInput, promptToggleLabel)
 
-  // Check if device supports orientation (mobile/tablet only)
+  // Motion / tilt support detection. Motion is enabled by default
+  // (see `tuningStore` defaults). On iOS we wait for the first user
+  // gesture before calling `requestPermission()` — same listener that
+  // unlocks audio. On Android we just `enableTilt()` at mount. The
+  // legacy floating "Enable Motion" button is gone — its state now
+  // lives in the single Motion Controls row inside the drawer's
+  // Gameplay section.
   const supportsOrientation =
     typeof DeviceOrientationEvent !== "undefined" &&
     typeof window !== "undefined" &&
     window.matchMedia &&
     window.matchMedia("(pointer: coarse)").matches
+  const needsIosPermission =
+    supportsOrientation &&
+    typeof (DeviceOrientationEvent as unknown as { requestPermission?: unknown })
+      .requestPermission === "function"
 
-  let tiltButton: HTMLButtonElement | null = null
-  if (supportsOrientation) {
-    tiltButton = document.createElement("button")
-    tiltButton.className = "tilt-button"
-    tiltButton.type = "button"
-    tiltButton.textContent = "Enable Motion"
-    hudControls.appendChild(tiltButton)
-  }
+  // Settings UI (accordion popover) was replaced by the bottom command
+  // drawer in 0.2.0 — see `./ui/settingsDrawer.ts`. The drawer is
+  // constructed below, after the skin picker (used in the Display
+  // section) and reset side-effects have their references in scope.
 
-  const hudExit = document.createElement("button")
-  hudExit.className = "hud-exit"
-  hudExit.type = "button"
-  hudExit.textContent = "Exit"
-  hudControls.appendChild(hudExit)
-
-  // Accordion section helper
-  const createAccordionSection = (title: string, expanded = false) => {
-    const section = document.createElement("div")
-    section.className = "accordion-section"
-    if (expanded) section.classList.add("expanded")
-
-    const header = document.createElement("button")
-    header.className = "accordion-header"
-    header.type = "button"
-    header.innerHTML = `<span>${title}</span><span class="accordion-icon">▼</span>`
-
-    const content = document.createElement("div")
-    content.className = "accordion-content"
-
-    header.addEventListener("click", () => {
-      const wasExpanded = section.classList.contains("expanded")
-      // Close all sections
-      tuningPanel.querySelectorAll(".accordion-section").forEach((s) => {
-        s.classList.remove("expanded")
-      })
-      // Toggle this section
-      if (!wasExpanded) {
-        section.classList.add("expanded")
-      }
-    })
-
-    section.append(header, content)
-    tuningPanel.appendChild(section)
-    return content
-  }
-
-  const createTuningControl = (
-    label: string,
-    key: keyof ReturnType<typeof tuningStore.getState>["settings"],
-    min: number,
-    max: number,
-    step: number,
-    helpText: string,
-    parent: HTMLElement = tuningPanel
-  ) => {
-    const row = document.createElement("div")
-    row.className = "tuning-row"
-    const labelWrap = document.createElement("div")
-    labelWrap.className = "tuning-label-wrap"
-    const text = document.createElement("div")
-    text.className = "tuning-label"
-    text.textContent = label
-    const help = document.createElement("button")
-    help.type = "button"
-    help.className = "tuning-help"
-    help.textContent = "?"
-    help.dataset.help = helpText
-    help.title = helpText
-    help.setAttribute("aria-label", `${label} info`)
-    labelWrap.append(text, help)
-    const value = document.createElement("div")
-    value.className = "tuning-value"
-    const input = document.createElement("input")
-    input.type = "range"
-    input.min = String(min)
-    input.max = String(max)
-    input.step = String(step)
-    input.dataset.settingKey = key
-    const setValue = (next: number) => {
-      value.textContent = Number.isInteger(step) ? `${next}` : next.toFixed(2)
-    }
-    const current = tuningStore.getState().settings[key] as number
-    input.value = String(current)
-    setValue(current)
-    input.addEventListener("input", () => {
-      const next = Number(input.value)
-      tuningStore.getState().setSetting(key, next)
-      setValue(next)
-    })
-    row.append(labelWrap, value, input)
-    parent.appendChild(row)
-    return { row, input, setValue, key }
-  }
-
-  // Helper for toggle (checkbox) controls
-  const createToggleControl = (
-    label: string,
-    key: keyof ReturnType<typeof tuningStore.getState>["settings"],
-    helpText: string,
-    onChange?: (checked: boolean) => void,
-    parent: HTMLElement = tuningPanel
-  ) => {
-    const row = document.createElement("div")
-    row.className = "tuning-row tuning-row-toggle"
-    const labelWrap = document.createElement("div")
-    labelWrap.className = "tuning-label-wrap"
-    const text = document.createElement("div")
-    text.className = "tuning-label"
-    text.textContent = label
-    const help = document.createElement("button")
-    help.type = "button"
-    help.className = "tuning-help"
-    help.textContent = "?"
-    help.dataset.help = helpText
-    help.title = helpText
-    help.setAttribute("aria-label", `${label} info`)
-    labelWrap.append(text, help)
-    const input = document.createElement("input")
-    input.type = "checkbox"
-    input.className = "tuning-checkbox"
-    input.dataset.settingKey = key
-    const current = tuningStore.getState().settings[key] as boolean
-    input.checked = current
-    input.addEventListener("change", () => {
-      tuningStore.getState().setSetting(key, input.checked)
-      onChange?.(input.checked)
-    })
-    row.append(labelWrap, input)
-    parent.appendChild(row)
-    return { row, input, key }
-  }
-
-  // Audio Settings Section (first)
-  const audioSection = createAccordionSection("Audio")
-  createToggleControl(
-    "Music",
-    "musicEnabled",
-    "Enable or disable background music.",
-    (enabled) => {
-      if (enabled) {
-        sfx.playMusic()
-      } else {
-        sfx.stopMusic()
-      }
-    },
-    audioSection
-  )
-  createToggleControl(
-    "Sound FX",
-    "sfxEnabled",
-    "Enable or disable sound effects.",
-    undefined,
-    audioSection
-  )
-  createTuningControl(
-    "Music Vol",
-    "musicVolume",
-    0,
-    1,
-    0.05,
-    "Background music volume (0-100%).",
-    audioSection
-  )
-  createTuningControl(
-    "SFX Vol",
-    "sfxVolume",
-    0.01,
-    1.0,
-    0.01,
-    "Sound effects volume (1-100%).",
-    audioSection
-  )
-
-  // Gameplay Settings Section (expanded by default)
-  const gameplaySection = createAccordionSection("Gameplay", true)
-
-  createToggleControl(
-    "Auto Adjust",
-    "autoAdjustDifficulty",
-    "Dynamically adjusts difficulty based on your performance. Speed, distractors, phrase count, and correct answer probability all scale with your skill.",
-    undefined,
-    gameplaySection
-  )
-
-  // Motion Controls toggle - only show on mobile devices that support it
-  const isMobileDevice =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(pointer: coarse)").matches
-
-  if (isMobileDevice) {
-    createToggleControl(
-      "Motion Controls",
-      "motionControlsEnabled",
-      "Use device motion/tilt to control the hoverboard. When disabled, use tap to steer.",
-      undefined,
-      gameplaySection
-    )
-  }
-
-  createTuningControl(
-    "Text Scale",
-    "textScaleFactor",
-    0.1,
-    1,
-    0.05,
-    "Size of phrase text on the road.",
-    gameplaySection
-  )
-
-  // Advanced Gameplay Section (collapsed by default)
-  const advancedSection = createAccordionSection("Advanced Gameplay")
-
-  // Baseline values
-  createTuningControl(
-    "Baseline Speed",
-    "baselineSpeed",
-    8,
-    22,
-    0.5,
-    "Starting speed before auto-adjustment. Lower = easier.",
-    advancedSection
-  )
-  createTuningControl(
-    "Baseline Correct %",
-    "baselineCorrectProb",
-    0.1,
-    1,
-    0.05,
-    "Starting probability (0-1) that correct answer is in choices. Lower = harder.",
-    advancedSection
-  )
-  createTuningControl(
-    "Baseline Distractors",
-    "baselineDistractors",
-    1,
-    4,
-    1,
-    "Starting number of wrong answers. Higher = harder.",
-    advancedSection
-  )
-  createTuningControl(
-    "Baseline Max Phrases",
-    "baselineMaxPhrases",
-    1,
-    3,
-    1,
-    "Starting max simultaneous phrases. Higher = harder.",
-    advancedSection
-  )
-  createTuningControl(
-    "Baseline Max Misses",
-    "baselineMaxMisses",
-    1,
-    3,
-    1,
-    "Starting tolerance for misses. Higher = more forgiving.",
-    advancedSection
-  )
-
-  // Maximum caps
-  createTuningControl(
-    "Max Speed",
-    "maxSpeed",
-    10,
-    30,
-    0.5,
-    "Maximum speed at highest difficulty.",
-    advancedSection
-  )
-  createTuningControl(
-    "Max Distractors",
-    "maxDistractors",
-    2,
-    8,
-    1,
-    "Maximum wrong answers at highest difficulty.",
-    advancedSection
-  )
-  createTuningControl(
-    "Max Phrases",
-    "maxSimultaneousPhrases",
-    1,
-    5,
-    1,
-    "Maximum simultaneous phrases at highest difficulty.",
-    advancedSection
-  )
-  createTuningControl(
-    "Max Max Misses",
-    "maxMaxMisses",
-    2,
-    6,
-    1,
-    "Maximum miss tolerance at highest difficulty.",
-    advancedSection
-  )
-  createTuningControl(
-    "Min Correct %",
-    "minCorrectProb",
-    0.05,
-    0.5,
-    0.05,
-    "Minimum probability of correct answer at highest difficulty. 0.1 = 1 in 10.",
-    advancedSection
-  )
-
-  // Reset to defaults button
-  const resetButton = document.createElement("button")
-  resetButton.className = "reset-defaults-button"
-  resetButton.type = "button"
-  resetButton.textContent = "Reset All to Defaults"
-  resetButton.addEventListener("click", () => {
-    console.log("[RESET] Button clicked!")
-
-    // Get default settings
-    const defaults = {
-      autoAdjustDifficulty: true,
-      textScaleFactor: 0.6,
-      musicEnabled: true,
-      sfxEnabled: true,
-      musicVolume: 0.3,
-      sfxVolume: 0.5,
-      baselineSpeed: 12,
-      baselineCorrectProb: 0.5,
-      baselineDistractors: 2,
-      baselineMaxPhrases: 1,
-      baselineMaxMisses: 1,
-      maxSpeed: 22,
-      maxDistractors: 6,
-      maxSimultaneousPhrases: 3,
-      maxMaxMisses: 4,
-      minCorrectProb: 0.1,
-    }
-
-    // Reset all settings in store
-    Object.entries(defaults).forEach(([key, value]) => {
-      tuningStore.getState().setSetting(
-        key as keyof typeof defaults,
-        value
-      )
-    })
-
-    // Update all UI controls to reflect reset values
-    tuningPanel.querySelectorAll<HTMLInputElement>("input[data-setting-key]").forEach((input) => {
-      const key = input.dataset.settingKey as keyof typeof defaults
-      if (key && key in defaults) {
-        const value = defaults[key]
-        if (input.type === "checkbox") {
-          input.checked = value as boolean
-        } else if (input.type === "range" || input.type === "number") {
-          input.value = String(value)
-          // Update display value if it exists
-          const valueDisplay = input.parentElement?.querySelector(".tuning-value")
-          if (valueDisplay) {
-            const step = Number(input.step)
-            const numValue = Number(value)
-            valueDisplay.textContent = Number.isInteger(step) ? `${numValue}` : numValue.toFixed(2)
-          }
-        }
-      }
-    })
-
-    // Reset netCorrect to 0 (but preserve other stats)
-    console.log("[RESET] netCorrect BEFORE:", tuningStore.getState().stats.netCorrect)
-    tuningStore.getState().resetNetCorrect()
-    console.log("[RESET] netCorrect AFTER:", tuningStore.getState().stats.netCorrect)
-
-    // Apply audio settings properly
-    sfx.setMusicVolume(defaults.musicVolume)
-    sfx.setSfxVolume(defaults.sfxVolume)
-    // Only start/stop music if the enabled state changed
-    const currentMusicPlaying = sfx.isMusicPlaying()
-    if (defaults.musicEnabled && !currentMusicPlaying) {
-      sfx.playMusic()
-    } else if (!defaults.musicEnabled && currentMusicPlaying) {
-      sfx.stopMusic()
-    }
-
-    // Reset skin to default (first skin)
-    if (skinSelectElement && applySkinFunction) {
-      skinSelectElement.value = skinSelectElement.options[0]?.value || ""
-      applySkinFunction(skinSelectElement.value)
-    }
-
-    // Force avatar progression update
-    if (forceProgressionUpdate) {
-      forceProgressionUpdate()
-    }
-
-    console.log("[RESET] Complete!")
-  })
-  tuningPanel.appendChild(resetButton)
 
   // Store references for later cleanup
-  const tuningControls: Array<{ row: HTMLElement; input: HTMLInputElement; key: string }> = []
 
   // Apply initial audio settings
   const initSettings = tuningStore.getState().settings
@@ -642,16 +254,7 @@ export const createHoverRunner = (
     sfx.setSfxVolume(state.settings.sfxVolume)
   })
 
-  const fabButton = document.createElement("button")
-  fabButton.className = "hud-fab"
-  fabButton.type = "button"
-  fabButton.setAttribute("aria-label", "Open menu")
-  fabButton.innerHTML = `
-    <span class="hud-fab-icon" aria-hidden="true">⚙︎</span>
-  `
-  root.appendChild(fabButton)
 
-  let panelOpen = false
   let paused = false
   const setPaused = (next: boolean) => {
     paused = next
@@ -664,14 +267,6 @@ export const createHoverRunner = (
         scheduleSpeakRepeat()
       }
     }
-  }
-  const setPanelOpen = (next: boolean) => {
-    panelOpen = next
-    hudPanel.classList.toggle("open", panelOpen)
-    hudBackdrop.classList.toggle("open", panelOpen)
-    fabButton.classList.toggle("open", panelOpen)
-    fabButton.setAttribute("aria-label", panelOpen ? "Close menu" : "Open menu")
-    setPaused(panelOpen)
   }
 
   const requestExit = () => {
@@ -687,15 +282,14 @@ export const createHoverRunner = (
       // Ignore window close failures.
     }
   }
-
-  const onFabClick = () => {
-    setPanelOpen(!panelOpen)
-  }
-  const onBackdropClick = () => {
-    setPanelOpen(false)
-  }
-
-  const onWakeLockGesture = () => {
+  const onWakeLockGesture = (event: PointerEvent) => {
+    const target = event.target
+    if (
+      target instanceof Element &&
+      target.closest('[data-hr-motion-permission-trigger="true"]')
+    ) {
+      return
+    }
     void requestWakeLock()
     sfx.unlock()
     // Start background music after user gesture unlocks audio (if enabled)
@@ -713,9 +307,166 @@ export const createHoverRunner = (
   }
   window.addEventListener("corpan:host-dispose", onHostDispose as EventListener)
 
-  fabButton.addEventListener("click", onFabClick)
-  hudBackdrop.addEventListener("click", onBackdropClick)
-  hudExit.addEventListener("click", requestExit)
+  // --- Settings drawer ---
+  //
+  // The "Display" section hosts hover-runner-specific game chrome that
+  // historically lived inside the old right-side popover: the
+  // Show-Prompt toggle (built above) and the Skin picker (built later
+  // in the mount sequence). We stash the section's container here and
+  // append the skin picker into it once it exists.
+
+  // Refs that the language listener and display section close over.
+  // Skin elements are assigned later when the picker is constructed.
+  let displayContainer: HTMLElement | null = null
+  let skinLabelEl: HTMLLabelElement | null = null
+  let skinCycleEl: HTMLButtonElement | null = null
+
+  const displaySection: DrawerSectionDef = {
+    id: "hr-display",
+    title: t("settings.display.title"),
+    priority: 5,
+    render: (c) => {
+      displayContainer = c
+      c.appendChild(promptToggle)
+      // Skin picker, if already built, is re-appended here on rerender.
+      const existing = root.querySelector(".skin-panel")
+      if (existing && existing.parentElement !== c) {
+        c.appendChild(existing)
+      }
+    },
+  }
+
+  // Wire input early so the drawer can subscribe to tilt state below.
+  // The orientation listener is attached lazily via requestTilt() / enableTilt();
+  // initInput() itself only sets up keyboard + pointer.
+  let tiltListeners = new Set<(s: TiltState) => void>()
+  const input = initInput(canvas, {
+    onTiltStateChange: (s) => {
+      for (const cb of tiltListeners) cb(s)
+    },
+  })
+
+  const motionControl: MotionControl | undefined = supportsOrientation
+    ? {
+        request: () => input.requestTilt(),
+        disable: () => input.disableTilt(),
+        getState: () => input.getTiltState(),
+        subscribe: (cb) => {
+          tiltListeners.add(cb)
+          return () => {
+            tiltListeners.delete(cb)
+          }
+        },
+      }
+    : undefined
+
+  const settingsDrawer = createSettingsDrawer({
+    parent: root,
+    isMobileDevice: typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(pointer: coarse)").matches,
+    sfx,
+    motion: motionControl,
+    extraSections: [displaySection],
+    onOpen: () => setPaused(true),
+    onClose: () => setPaused(false),
+    onExit: () => requestExit(),
+    onResetExtras: () => {
+      if (skinSelectElement && applySkinFunction) {
+        skinSelectElement.value = skinSelectElement.options[0]?.value || ""
+        applySkinFunction(skinSelectElement.value)
+      }
+      if (forceProgressionUpdate) {
+        forceProgressionUpdate()
+      }
+    },
+  })
+
+  // First-run motion bootstrap.
+  //
+  // On non-iOS platforms (no `requestPermission`) we just enable tilt
+  // at mount. On iOS we cannot enable from any background listener:
+  // WebKit's `requestPermission()` requires user activation, and
+  // every other handler in the canvas's pointerdown chain
+  // (audio.unlock, Babylon's pointer wiring) consumes the activation
+  // before our call can land. The only reliable gesture surface is a
+  // direct click on a real `<button>` the user explicitly taps — so
+  // we show a one-shot overlay with a single Enable Motion button.
+  //
+  // The overlay is shown only when motion is supported, the platform
+  // needs permission, AND the user's setting is still ON (we never
+  // pester someone who has opted out).
+  let motionOverlay: MotionPermissionOverlay | null = null
+  let unsubMotionOverlay: (() => void) | null = null
+  const ensureMotionOverlay = () => {
+    if (!supportsOrientation || !needsIosPermission) {
+      return
+    }
+    if (!tuningStore.getState().settings.motionControlsEnabled) {
+      return
+    }
+    if (motionOverlay) {
+      return
+    }
+    motionOverlay = createMotionPermissionOverlay({
+      parent: root,
+      onAllow: () => {
+        // Synchronous from the button's click handler — preserves
+        // the user-activation context iOS demands.
+        input.requestTilt()
+      },
+      onDismiss: () => {
+        // User chose touch — persist the preference so they don't
+        // get re-prompted next launch.
+        tuningStore.getState().setSetting("motionControlsEnabled", false)
+      },
+    })
+    if (!motionControl) {
+      return
+    }
+    unsubMotionOverlay?.()
+    unsubMotionOverlay = motionControl.subscribe((state) => {
+      motionOverlay?.setTiltState(state)
+      if (state === "waiting" || state === "active" || state === "off") {
+        unsubMotionOverlay?.()
+        unsubMotionOverlay = null
+        motionOverlay = null
+      }
+    })
+  }
+
+  if (supportsOrientation && tuningStore.getState().settings.motionControlsEnabled) {
+    if (needsIosPermission) {
+      ensureMotionOverlay()
+    } else {
+      input.enableTilt()
+    }
+  }
+
+  // Live-localize UI strings that live OUTSIDE the drawer. The drawer
+  // manages its own labels via its own onChange listener.
+  const unsubUiLang = onUiLangChange(() => {
+    hudPromptLabel.textContent = t("phrase.listen")
+    promptToggleLabel.textContent = t("hud.show_prompt")
+    if (skinLabelEl) skinLabelEl.textContent = t("skin.label")
+    if (skinCycleEl) skinCycleEl.textContent = t("skin.cycle")
+    // Update the "Display" section title too — the drawer caches
+    // section titles at construction time and doesn't know to refresh.
+    if (displayContainer) {
+      const titleEl = displayContainer.parentElement?.querySelector(
+        ".command-drawer-section-title",
+      )
+      if (titleEl) titleEl.textContent = t("settings.display.title")
+    }
+  })
+
+  // Keep the UI language in sync with the host's primary language.
+  let unsubHostLang: (() => void) | null = null
+  if (hostApi.onStackConfigChange) {
+    unsubHostLang = hostApi.onStackConfigChange((next) => {
+      setUiLanguage(next.languages[0] || "en")
+    })
+  }
 
   const maxDevicePixelRatio = 2
   const engine = new Engine(canvas, true, {
@@ -1226,7 +977,7 @@ export const createHoverRunner = (
   const skinPanel = document.createElement("div")
   skinPanel.className = "skin-panel"
   const skinLabel = document.createElement("label")
-  skinLabel.textContent = "Skin"
+  skinLabel.textContent = t("skin.label")
   const skinSelect = document.createElement("select")
   skinSelect.className = "skin-select"
   // Store reference for reset functionality
@@ -1241,14 +992,24 @@ export const createHoverRunner = (
   const skinCycle = document.createElement("button")
   skinCycle.className = "skin-cycle"
   skinCycle.type = "button"
-  skinCycle.textContent = "Cycle"
+  skinCycle.textContent = t("skin.cycle")
   skinPanel.append(skinLabel, skinSelect, skinCycle)
-  if (tiltButton) {
-    hudControls.insertBefore(skinPanel, tiltButton)
-    hudControls.insertBefore(promptToggle, tiltButton)
+
+  // Publish skin label refs so the language listener can re-localize.
+  skinLabelEl = skinLabel
+  skinCycleEl = skinCycle
+
+  // Drop the skin picker into the drawer's "Display" section. The
+  // drawer rendered that section during its own construction (above),
+  // so `displayContainer` is set. The Show-Prompt toggle was already
+  // appended there.
+  const dc = displayContainer as HTMLElement | null
+  if (dc) {
+    dc.appendChild(skinPanel)
   } else {
-    hudControls.insertBefore(skinPanel, hudExit)
-    hudControls.insertBefore(promptToggle, hudExit)
+    // Defensive: if the drawer hasn't rendered yet, stash on root so
+    // the displaySection.render callback picks it up via querySelector.
+    root.appendChild(skinPanel)
   }
 
   const onSkinChange = () => {
@@ -1264,48 +1025,38 @@ export const createHoverRunner = (
   skinSelect.addEventListener("change", onSkinChange)
   skinCycle.addEventListener("click", onSkinCycle)
 
-  const input = initInput(canvas, tiltButton)
+  // `input` was created earlier; the first-run motion bootstrap was
+  // moved up near the drawer setup so its declarations are in scope
+  // for both the call site and the dispose path.
 
-  // Auto-enable motion controls on mobile if setting is enabled
-  // (isMobileDevice already defined above when creating the toggle)
-  const syncMotionControls = async () => {
-    const enabled = tuningStore.getState().settings.motionControlsEnabled
-    if (enabled && isMobileDevice) {
-      // Try to enable tilt - will request permission on iOS if needed
-      const needsPermission = !!(DeviceOrientationEvent as unknown as { requestPermission?: unknown }).requestPermission
-      if (needsPermission) {
-        // On iOS, we need user gesture - requestTilt will handle this
-        // Note: This will only work if called from a user gesture context
-        await input.requestTilt()
+  // Subscribe to tuningStore so that programmatic changes to
+  // `motionControlsEnabled` (e.g. Reset-All) propagate to the input
+  // layer. The drawer's Motion row itself calls `motion.request()` /
+  // `motion.disable()` synchronously from the click handler, so this
+  // subscriber is only for indirect/programmatic flips.
+  let lastMotionEnabled = tuningStore.getState().settings.motionControlsEnabled
+  const motionUnsubscribe = tuningStore.subscribe((state) => {
+    const next = state.settings.motionControlsEnabled
+    if (next === lastMotionEnabled) return
+    lastMotionEnabled = next
+    if (!supportsOrientation) return
+    if (next) {
+      if (needsIosPermission) {
+        const tiltState = input.getTiltState()
+        if (tiltState === "pending" || tiltState === "waiting" || tiltState === "active") {
+          return
+        }
+        ensureMotionOverlay()
       } else {
-        // On Android and desktop, enable directly
         input.enableTilt()
       }
     } else {
-      // Disabled or not mobile - turn off tilt
       input.disableTilt()
     }
-  }
-
-  // Initial sync - try to enable on mobile if setting is on
-  void syncMotionControls()
-
-  // Subscribe to setting changes
-  const motionUnsubscribe = tuningStore.subscribe(() => {
-    void syncMotionControls()
   })
 
-  // Also sync when tilt button is clicked (for iOS permission flow)
-  if (tiltButton) {
-    const originalClickHandler = async () => {
-      // Enable the setting when user clicks the button
-      tuningStore.getState().setSetting("motionControlsEnabled", true)
-      // The setting change will trigger syncMotionControls via subscription
-    }
-    // Note: input.ts already sets up its own click handler, so this creates two handlers
-    // The input.ts handler will request permission, and this one will update the setting
-    tiltButton.addEventListener("click", originalClickHandler)
-  }
+  // (Legacy tilt-button click handler removed in 0.2.0 — the drawer's
+  // Motion Controls row now owns the toggle + permission flow.)
 
   // Keyboard handler for toggling instrumentation (FPS/perf) with 'i' key
   const toggleInstrumentation = () => {
@@ -1876,7 +1627,7 @@ export const createHoverRunner = (
     if (current) {
       return `${current.promptLang.toUpperCase()} → ${current.answerLang.toUpperCase()}`
     }
-    return "Listen"
+    return t("phrase.listen")
   }
 
   const setPromptStatus = (text: string, isBad = false) => {
@@ -1897,7 +1648,7 @@ export const createHoverRunner = (
     phraseHud.classList.remove("match")
     hudPromptLabel.textContent = getPromptLabel()
     if (!nextRound) {
-      hudPrompt.textContent = "Waiting for phrase..."
+      hudPrompt.textContent = t("phrase.waiting")
       hudPromptRomanization.textContent = ""
       hudAnswer.textContent = ""
       hudAnswerRomanization.textContent = ""
@@ -1924,7 +1675,7 @@ export const createHoverRunner = (
 
   const showMatchHud = (nextRound: RoundState) => {
     phraseHud.classList.add("match")
-    hudPromptLabel.textContent = "Matched"
+    hudPromptLabel.textContent = t("phrase.matched")
     hudPrompt.textContent = nextRound.prompt
     if (
       gameStore.getState().stackConfig?.showRomanization &&
@@ -2001,20 +1752,17 @@ export const createHoverRunner = (
   updatePromptVisibility()
 
   const syncTuningControls = () => {
-    const { settings } = tuningStore.getState()
-    tuningControls.forEach((control) => {
-      const next = settings[control.key as keyof typeof settings] as number
-      if (Number(control.input.value) !== next) {
-        control.input.value = String(next)
-        // Note: tuningControls is currently empty, this code path is unused
-      }
-    })
+    // 0.2.0: all tuning controls now live in the bottom drawer and
+    // bind directly to `tuningStore` through `createSettingsDrawer`,
+    // so there's nothing to sync from the outside anymore. Kept as a
+    // no-op so call-sites don't need to be touched.
   }
 
   const updateStatsHud = () => {
     const { score, streak, bestStreak, netCorrect } = tuningStore.getState().stats
-    hudScore.textContent = `Score ${score} • Net ${netCorrect >= 0 ? '+' : ''}${netCorrect}`
-    hudStreak.textContent = `Streak ${streak} • Best ${bestStreak}`
+    const netStr = `${netCorrect >= 0 ? "+" : ""}${netCorrect}`
+    hudScore.textContent = t("hud.score_with_net", { n: score, net: netStr })
+    hudStreak.textContent = t("hud.streak_with_best", { n: streak, best: bestStreak })
   }
 
   syncTuningControls()
@@ -2399,7 +2147,7 @@ export const createHoverRunner = (
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
           createFailParticles(scene, phrasePosition)
           triggerScreenShake()
-          setPromptStatus("Wrong - dodge!", true)
+          setPromptStatus(t("phrase.wrong"), true)
         }
         continue
       }
@@ -2424,7 +2172,7 @@ export const createHoverRunner = (
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
           createFailParticles(scene, passedPosition)
           triggerScreenShake()
-          setPromptStatus("Missed!", true)
+          setPromptStatus(t("phrase.missed"), true)
           if (round && !hasSpoken) {
             hostApi.speak(round.answerLang, round.answer)
           }
@@ -2457,7 +2205,7 @@ export const createHoverRunner = (
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
           createFailParticles(scene, endPosition)
           triggerScreenShake()
-          setPromptStatus("Missed!", true)
+          setPromptStatus(t("phrase.missed"), true)
           if (round && !hasSpoken) {
             hostApi.speak(round.answerLang, round.answer)
           }
@@ -2731,9 +2479,12 @@ export const createHoverRunner = (
       "corpan:host-dispose",
       onHostDispose as EventListener
     )
-    hudBackdrop.removeEventListener("click", onBackdropClick)
-    fabButton.removeEventListener("click", onFabClick)
-    hudExit.removeEventListener("click", requestExit)
+    settingsDrawer.dispose()
+    unsubUiLang()
+    unsubHostLang?.()
+    unsubMotionOverlay?.()
+    motionOverlay?.dispose()
+    motionOverlay = null
     skinSelect.removeEventListener("change", onSkinChange)
     skinCycle.removeEventListener("click", onSkinCycle)
     promptToggleInput.removeEventListener("change", onPromptToggle)

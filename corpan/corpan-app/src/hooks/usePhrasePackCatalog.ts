@@ -29,10 +29,14 @@ export type PhrasePackCatalogView = {
     /** Every phrase pack visible to this client (app-version + channel
      *  gates already applied). Order preserved from the catalog payload. */
     allPhrasePacks: PhrasePackCatalogEntry[];
-    /** Catalog-driven starter set for the onboarding step. Entries listed
-     *  in `onboardingStarterPackIds` but not present in the visible pool
-     *  are silently dropped. */
+    /** Onboarding pool — up to `ONBOARDING_POOL_CAP` packs from
+     *  `allPhrasePacks` in catalog order. Surfaces the whole catalog at
+     *  first-run, not just the curated four. */
     starterPacks: PhrasePackCatalogEntry[];
+    /** Publisher-curated default-checked ids within `starterPacks`. If
+     *  the catalog omits `onboardingStarterPackIds`, falls back to every
+     *  pack in `starterPacks` (select-all). */
+    defaultSelectedIds: string[];
     /** Catalog-driven group structure for the Packs-tab browser. When the
      *  catalog declares no groups, falls back to a single "All phrase
      *  packs" group containing every visible phrase pack. */
@@ -47,10 +51,13 @@ export type PhrasePackCatalogView = {
 const EMPTY_VIEW: PhrasePackCatalogView = {
     allPhrasePacks: [],
     starterPacks: [],
+    defaultSelectedIds: [],
     groups: [],
     byId: () => undefined,
     totalSizeMb: () => 0,
 };
+
+const ONBOARDING_POOL_CAP = 12;
 
 const FALLBACK_GROUP_ID = "all";
 const FALLBACK_GROUP_LABEL = "All phrase packs";
@@ -101,10 +108,16 @@ export function usePhrasePackCatalog(): PhrasePackCatalogView {
         for (const p of allPhrasePacks) indexById.set(p.id, p);
         const visibleIds = new Set(indexById.keys());
 
-        const starterPacks = (catalog.onboardingStarterPackIds ?? [])
-            .filter((id) => visibleIds.has(id))
-            .map((id) => indexById.get(id)!)
-            .filter(Boolean);
+        const starterPacks = allPhrasePacks.slice(0, ONBOARDING_POOL_CAP);
+        const starterIds = new Set(starterPacks.map((p) => p.id));
+
+        const curatedIds = (catalog.onboardingStarterPackIds ?? []).filter(
+            (id) => starterIds.has(id),
+        );
+        const defaultSelectedIds =
+            curatedIds.length > 0
+                ? curatedIds
+                : starterPacks.map((p) => p.id);
 
         const groups = resolveGroups(
             visibleIds,
@@ -117,6 +130,13 @@ export function usePhrasePackCatalog(): PhrasePackCatalogView {
         const totalSizeMb = (ids: string[]) =>
             ids.reduce((sum, id) => sum + (indexById.get(id)?.sizeMb ?? 0), 0);
 
-        return { allPhrasePacks, starterPacks, groups, byId, totalSizeMb };
+        return {
+            allPhrasePacks,
+            starterPacks,
+            defaultSelectedIds,
+            groups,
+            byId,
+            totalSizeMb,
+        };
     }, [catalog, appVersion, devMode]);
 }

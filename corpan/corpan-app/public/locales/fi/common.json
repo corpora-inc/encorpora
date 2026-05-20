@@ -104,7 +104,20 @@
       "header": "Lausepaketit",
       "baseCorpusName": "Peruskorpus",
       "emptyHint": "Lisää paketteja Paketit-välilehdeltä.",
-      "browseAll": "Selaa paketteja"
+      "browseAll": "Selaa paketteja",
+      "searchPlaceholder": "Hae paketteja…",
+      "filter": {
+        "all": "Kaikki",
+        "active": "Aktiiviset",
+        "inactive": "Ei-aktiiviset"
+      },
+      "selectAllVisible": "Valitse kaikki",
+      "deselectAllVisible": "Tyhjennä",
+      "activateGroup": "Aktivoi kaikki",
+      "deactivateGroup": "Poista kaikki",
+      "uncategorized": "Muut",
+      "noMatches": "Ei osumia.",
+      "noFiltered": "Täällä ei ole mitään nyt."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Tarkistetaan…",
     "phrasePack": {
       "sectionTitle": "Lausepaketit",
-      "empty": "Ei vielä paketteja.",
       "offlineEmpty": "Olet offline. Yhdistä selataksesi.",
       "searchPlaceholder": "Etsi…",
       "noMatches": "Ei tuloksia.",
@@ -445,7 +457,16 @@
       "paid": "Maksullinen",
       "free": "Ilmainen",
       "unlockSub": "Avaa tilauksella",
-      "entryCount": "{{n}} lausetta"
+      "entryCount": "{{n}} lausetta",
+      "allInstalled": {
+        "title": "Sinulla on kaikki fraasipaketit.",
+        "subtitle": "Uusia aiheita julkaistaan säännöllisesti — tule takaisin milloin vain.",
+        "manageCta": "Hallinnoi Stacksissa"
+      },
+      "filterEmpty": {
+        "installed": "Ei mitään asennettu vielä.",
+        "cta": "Näytä kaikki"
+      }
     }
   },
   "subscription": {

@@ -105,7 +105,20 @@
       "header": "Paquets de frases",
       "baseCorpusName": "Corpus base",
       "emptyHint": "Afegeix paquets des de la pestanya Paquets.",
-      "browseAll": "Explora paquets"
+      "browseAll": "Explora paquets",
+      "searchPlaceholder": "Cerca paquets…",
+      "filter": {
+        "all": "Tots",
+        "active": "Actius",
+        "inactive": "Inactius"
+      },
+      "selectAllVisible": "Selecciona tot",
+      "deselectAllVisible": "Desselecciona",
+      "activateGroup": "Activa tots",
+      "deactivateGroup": "Desactiva tots",
+      "uncategorized": "Altres",
+      "noMatches": "Cap resultat.",
+      "noFiltered": "Res per aquí ara mateix."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Comprovant…",
     "phrasePack": {
       "sectionTitle": "Paquets de frases",
-      "empty": "Encara no hi ha paquets.",
       "offlineEmpty": "Estàs sense connexió. Connecta't per explorar.",
       "searchPlaceholder": "Cerca…",
       "noMatches": "Sense resultats.",
@@ -446,7 +458,16 @@
       "paid": "De pagament",
       "free": "Gratuït",
       "unlockSub": "Desbloqueja amb subscripció",
-      "entryCount": "{{n}} frases"
+      "entryCount": "{{n}} frases",
+      "allInstalled": {
+        "title": "Tens tots els paquets de frases.",
+        "subtitle": "Surten paquets nous sovint — torna quan vulguis.",
+        "manageCta": "Gestiona a Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Encara no hi ha paquets instal·lats.",
+        "cta": "Mostra-ho tot"
+      }
     }
   },
   "subscription": {

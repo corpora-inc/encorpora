@@ -394,6 +394,13 @@
   gap: 0;
 }
 
+/* Packs that pass `screens: ["now-playing"]` collapse the tab nav so
+   the drawer reads as a single-screen settings sheet. The element
+   still exists in the DOM and absorbs drag-to-dismiss gestures. */
+.command-drawer-screen-nav--hidden {
+  display: none;
+}
+
 .command-drawer-screen-tab {
   flex: 1;
   padding: 8px 0 9px;

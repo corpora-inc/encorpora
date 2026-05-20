@@ -107,7 +107,20 @@
       "baseCorpusName": "Bundled corpus",
       "baseCorpusSubtitle": "{{n}} phrases",
       "emptyHint": "No phrase packs installed yet. Add focused topics — Botany, Music, Rugby, … — from the Packs tab.",
-      "browseAll": "Browse all packs"
+      "browseAll": "Browse all packs",
+      "searchPlaceholder": "Search packs…",
+      "filter": {
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "selectAllVisible": "Select all",
+      "deselectAllVisible": "Deselect all",
+      "activateGroup": "Activate all",
+      "deactivateGroup": "Deactivate all",
+      "uncategorized": "Other",
+      "noMatches": "No matches.",
+      "noFiltered": "Nothing here right now."
     }
   },
   "onboarding": {
@@ -441,7 +454,6 @@
     "checking": "Checking…",
     "phrasePack": {
       "sectionTitle": "Phrase packs",
-      "empty": "No phrase packs available yet. Check back soon — new topics ship regularly.",
       "searchPlaceholder": "Search topics…",
       "noMatches": "Nothing matches that search yet.",
       "filter": {
@@ -458,7 +470,16 @@
       "install": "Install",
       "unlockSub": "Unlock with subscription",
       "entryCount": "{{n}} phrases",
-      "offlineEmpty": "You're offline. Connect to browse phrase packs."
+      "offlineEmpty": "You're offline. Connect to browse phrase packs.",
+      "allInstalled": {
+        "title": "You've got every phrase pack.",
+        "subtitle": "Topic packs ship regularly — check back any time.",
+        "manageCta": "Manage in Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nothing installed yet.",
+        "cta": "Show all packs"
+      }
     }
   },
   "subscription": {

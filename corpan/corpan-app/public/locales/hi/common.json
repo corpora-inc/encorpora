@@ -104,7 +104,20 @@
       "header": "वाक्यांश पैक",
       "baseCorpusName": "मूल कॉर्पस",
       "emptyHint": "पैक्स टैब से पैक जोड़ें।",
-      "browseAll": "पैक्स देखें"
+      "browseAll": "पैक्स देखें",
+      "searchPlaceholder": "पैक खोजें…",
+      "filter": {
+        "all": "सभी",
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "selectAllVisible": "सभी चुनें",
+      "deselectAllVisible": "साफ़ करें",
+      "activateGroup": "सभी सक्रिय करें",
+      "deactivateGroup": "सभी निष्क्रिय करें",
+      "uncategorized": "अन्य",
+      "noMatches": "कोई परिणाम नहीं।",
+      "noFiltered": "यहाँ अभी कुछ नहीं है।"
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "जाँच हो रही है…",
     "phrasePack": {
       "sectionTitle": "वाक्यांश पैक",
-      "empty": "अभी कोई पैक नहीं।",
       "offlineEmpty": "आप ऑफ़लाइन हैं। देखने के लिए कनेक्ट करें।",
       "searchPlaceholder": "खोजें…",
       "noMatches": "कोई परिणाम नहीं।",
@@ -445,7 +457,16 @@
       "paid": "सशुल्क",
       "free": "मुफ़्त",
       "unlockSub": "सदस्यता से अनलॉक करें",
-      "entryCount": "{{n}} वाक्यांश"
+      "entryCount": "{{n}} वाक्यांश",
+      "allInstalled": {
+        "title": "आपके पास सभी फ्रेज़ पैक हैं।",
+        "subtitle": "नए विषय नियमित आते रहते हैं — कभी भी वापस आइए।",
+        "manageCta": "Stacks में प्रबंधित करें"
+      },
+      "filterEmpty": {
+        "installed": "अभी कुछ इंस्टॉल नहीं है।",
+        "cta": "सभी दिखाएँ"
+      }
     }
   },
   "subscription": {

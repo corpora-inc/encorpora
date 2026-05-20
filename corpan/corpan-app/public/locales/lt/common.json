@@ -105,7 +105,20 @@
       "header": "Frazių paketai",
       "baseCorpusName": "Pagrindinis korpusas",
       "emptyHint": "Pridėk paketų iš Paketai skirtuko.",
-      "browseAll": "Naršyti paketus"
+      "browseAll": "Naršyti paketus",
+      "searchPlaceholder": "Ieškoti paketų…",
+      "filter": {
+        "all": "Visi",
+        "active": "Aktyvūs",
+        "inactive": "Neaktyvūs"
+      },
+      "selectAllVisible": "Pasirinkti visus",
+      "deselectAllVisible": "Išvalyti",
+      "activateGroup": "Aktyvuoti visus",
+      "deactivateGroup": "Išjungti visus",
+      "uncategorized": "Kita",
+      "noMatches": "Nieko nerasta.",
+      "noFiltered": "Čia dabar nieko."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Tikrinama…",
     "phrasePack": {
       "sectionTitle": "Frazių paketai",
-      "empty": "Paketų dar nėra.",
       "offlineEmpty": "Esi neprisijungęs. Prisijunk naršyti.",
       "searchPlaceholder": "Ieškoti…",
       "noMatches": "Nėra atitikmenų.",
@@ -446,7 +458,16 @@
       "paid": "Mokama",
       "free": "Nemokama",
       "unlockSub": "Atrakinti su prenumerata",
-      "entryCount": "{{n}} frazių"
+      "entryCount": "{{n}} frazių",
+      "allInstalled": {
+        "title": "Turi visus frazių paketus.",
+        "subtitle": "Naujos temos pasirodo reguliariai — užsuk bet kada.",
+        "manageCta": "Tvarkyti Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Dar nieko neįdiegta.",
+        "cta": "Rodyti visus"
+      }
     }
   },
   "subscription": {

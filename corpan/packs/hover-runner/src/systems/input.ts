@@ -3,9 +3,29 @@ import { tuningStore } from "../tuningStore"
 import { clamp } from "../core/utils"
 import type { InputState } from "../core/types"
 
+/**
+ * Reactive state of the device-orientation input.
+ *
+ * - `off`      — user has not enabled tilt (toggle off)
+ * - `pending`  — iOS only: permission prompt is being requested
+ * - `active`   — listener attached AND at least one event arrived
+ * - `waiting`  — listener attached but no event yet (Android/desktop typically skip straight to active)
+ * - `denied`   — iOS permission prompt was rejected
+ * - `error`    — last requestTilt() threw
+ */
+export type TiltState =
+  | "off"
+  | "pending"
+  | "active"
+  | "waiting"
+  | "denied"
+  | "error"
+
+export type InputApi = ReturnType<typeof initInput>
+
 export const initInput = (
   canvas: HTMLCanvasElement,
-  tiltButton: HTMLButtonElement | null
+  hooks: { onTiltStateChange?: (state: TiltState) => void } = {},
 ) => {
   const state: InputState = {
     row: 2,
@@ -16,13 +36,20 @@ export const initInput = (
     tiltY: 0,
   }
 
+  let tiltState: TiltState = "off"
+  function setTiltState(next: TiltState) {
+    if (next === tiltState) return
+    tiltState = next
+    hooks.onTiltStateChange?.(next)
+  }
+
   // Smoothing state for motion input
   let smoothedX = 0
   let smoothedY = 0
-  const DEAD_ZONE = 0.08 // Ignore changes smaller than this
-  const SMOOTHING_FACTOR_SMALL = 0.15 // Strong smoothing for small movements
-  const SMOOTHING_FACTOR_LARGE = 0.4 // Light smoothing for large movements
-  const LARGE_MOVEMENT_THRESHOLD = 0.3 // Threshold to detect intentional large movements
+  const DEAD_ZONE = 0.08
+  const SMOOTHING_FACTOR_SMALL = 0.15
+  const SMOOTHING_FACTOR_LARGE = 0.4
+  const LARGE_MOVEMENT_THRESHOLD = 0.3
 
   type ScreenOrientationType =
     | "portrait-primary"
@@ -30,7 +57,6 @@ export const initInput = (
     | "landscape-primary"
     | "landscape-secondary"
 
-  // Screen orientation detection for sensor remapping
   const getScreenOrientation = (): ScreenOrientationType => {
     const orientation = window.screen?.orientation
     if (orientation?.type) {
@@ -77,7 +103,6 @@ export const initInput = (
   }
 
   const onKey = (event: KeyboardEvent) => {
-    // Start music on first keyboard interaction (if not already playing)
     const audio = getSfx()
     if (tuningStore.getState().settings.musicEnabled && !audio.isMusicPlaying()) {
       audio.unlock()
@@ -99,17 +124,15 @@ export const initInput = (
   }
 
   const onPointer = (event: PointerEvent) => {
-    // Ensure canvas is mounted and has valid dimensions before processing
     if (!canvas.isConnected || !canvas.offsetParent) {
-      return // Canvas not in DOM or not visible
+      return
     }
 
     const rect = canvas.getBoundingClientRect()
     if (rect.width === 0 || rect.height === 0) {
-      return // Canvas has no dimensions yet
+      return
     }
 
-    // Start music on first canvas interaction (if not already playing)
     const audio = getSfx()
     if (tuningStore.getState().settings.musicEnabled && !audio.isMusicPlaying()) {
       audio.unlock()
@@ -133,51 +156,34 @@ export const initInput = (
       return
     }
     state.tiltActive = true
+    // First event arriving means we've gone from "waiting" → "active".
+    if (tiltState === "waiting" || tiltState === "pending") {
+      setTiltState("active")
+    }
 
-    // Get screen orientation and remap sensor axes accordingly
     const screenOrientation = getScreenOrientation()
-    console.log(
-      "[ORIENTATION] screen:",
-      screenOrientation,
-      "gamma:",
-      event.gamma.toFixed(1),
-      "beta:",
-      event.beta.toFixed(1)
-    )
     let rawX = 0
     let rawY = 0
 
-    // Remap axes based on device orientation
     switch (screenOrientation) {
       case "landscape-primary":
-        console.log("[ORIENTATION] Using landscape-primary mapping")
         rawX = event.beta
         rawY = -event.gamma
         break
       case "landscape-secondary":
-        console.log("[ORIENTATION] Using landscape-secondary mapping")
         rawX = -event.beta
         rawY = event.gamma
         break
       case "portrait-secondary":
-        console.log("[ORIENTATION] Using portrait-secondary mapping")
         rawX = -event.gamma
         rawY = -event.beta
         break
       default:
-        console.log("[ORIENTATION] Using portrait-primary mapping")
         rawX = event.gamma
         rawY = event.beta
         break
     }
-    console.log(
-      "[ORIENTATION] rawX:",
-      rawX.toFixed(1),
-      "rawY:",
-      rawY.toFixed(1)
-    )
 
-    // Calculate target values from remapped sensors
     const targetX = clamp(rawX / 16, -1, 1)
     const minPitch = 52
     const maxPitch = 62
@@ -185,13 +191,10 @@ export const initInput = (
     const normalized = (pitch - minPitch) / (maxPitch - minPitch)
     const targetY = normalized * 2 - 1
 
-    // Apply smart smoothing with dead zone
     const deltaX = Math.abs(targetX - smoothedX)
     const deltaY = Math.abs(targetY - smoothedY)
 
-    // Dead zone: ignore tiny movements (jitter from hand shake)
     if (deltaX > DEAD_ZONE) {
-      // Adaptive smoothing: use less smoothing for large intentional movements
       const factorX = deltaX > LARGE_MOVEMENT_THRESHOLD
         ? SMOOTHING_FACTOR_LARGE
         : SMOOTHING_FACTOR_SMALL
@@ -205,13 +208,11 @@ export const initInput = (
       smoothedY += (targetY - smoothedY) * factorY
     }
 
-    // Update state with smoothed values
     state.tiltX = clamp(smoothedX, -1, 1)
     state.tiltY = clamp(smoothedY, -1, 1)
   }
 
   const onOrientationChange = () => {
-    // Reset smoothed values when orientation changes to avoid jarring transitions
     smoothedX = 0
     smoothedY = 0
   }
@@ -221,86 +222,116 @@ export const initInput = (
       return
     }
     state.tiltEnabled = true
-    if (tiltButton) {
-      tiltButton.textContent = "Motion Active"
-    }
-    // Initialize smoothed values to current state to avoid jump
     smoothedX = state.tiltX
     smoothedY = state.tiltY
     window.addEventListener("deviceorientation", orientationHandler)
-    // Listen for screen orientation changes
     if (window.screen?.orientation) {
       window.screen.orientation.addEventListener("change", onOrientationChange)
     } else {
-      // Fallback for older browsers
       window.addEventListener("orientationchange", onOrientationChange)
     }
+    // No event has fired yet — sit in `waiting` until the first
+    // `deviceorientation` arrives (which flips us to `active`).
+    setTiltState("waiting")
   }
 
   const disableTilt = () => {
     if (!state.tiltEnabled) {
+      // Even if we never enabled (because permission flow is in flight),
+      // make sure we land back at `off` so the UI doesn't get stuck.
+      if (tiltState !== "off") setTiltState("off")
       return
     }
     state.tiltEnabled = false
     state.tiltActive = false
-    if (tiltButton) {
-      tiltButton.textContent = "Enable Motion"
-    }
     window.removeEventListener("deviceorientation", orientationHandler)
-    // Remove orientation change listeners
     if (window.screen?.orientation) {
       window.screen.orientation.removeEventListener("change", onOrientationChange)
     } else {
       window.removeEventListener("orientationchange", onOrientationChange)
     }
+    setTiltState("off")
   }
 
-  const requestTilt = async () => {
-    const requestPermission = (
-      DeviceOrientationEvent as unknown as {
-        requestPermission?: () => Promise<"granted" | "denied">
-      }
-    ).requestPermission
+  /**
+   * Kick off tilt synchronously from inside a user-gesture handler.
+   *
+   * iOS / WebKit gotchas this routine works around:
+   *
+   *   1. `DeviceOrientationEvent.requestPermission()` MUST be dispatched
+   *      as a method on `DeviceOrientationEvent` itself. Older
+   *      WebKit builds (iOS 16, some WKWebView versions) reject with
+   *      `NotAllowedError` when called via an extracted reference —
+   *      so we never destructure `requestPermission` into a local.
+   *
+   *   2. The call must land on the user-gesture tick. We never
+   *      `await` or do any async work before invoking it.
+   *
+   *   3. The promise's resolution arrives on a later microtask after
+   *      the prompt is dismissed; gesture context is gone by then,
+   *      which is fine — `enableTilt()` just attaches event listeners.
+   *
+   * Returns immediately. Subscribe to `onTiltStateChange` for the outcome.
+   */
+  const requestTilt = (): void => {
+    type DOEStatic = typeof DeviceOrientationEvent & {
+      requestPermission?: () => Promise<"granted" | "denied">
+    }
+    const DOE = DeviceOrientationEvent as unknown as DOEStatic
 
-    if (typeof requestPermission === "function") {
-      try {
-        const result = await requestPermission()
+    if (typeof DOE.requestPermission !== "function") {
+      enableTilt()
+      return
+    }
+
+    // Method dispatch (DOE.requestPermission()) — DO NOT extract.
+    // Critical: call this BEFORE any other work in this function so
+    // the user-gesture/activation context is as fresh as possible.
+    let promise: Promise<"granted" | "denied">
+    try {
+      promise = DOE.requestPermission()
+    } catch (err) {
+      console.error("[hover-runner] requestPermission threw synchronously:", err)
+      setTiltState("error")
+      return
+    }
+
+    setTiltState("pending")
+    promise
+      .then((result) => {
         if (result === "granted") {
           enableTilt()
+        } else if (result === "denied") {
+          // WebKit does not give us a reliable way to distinguish a
+          // fresh deny from a remembered deny. Don't invent certainty
+          // from timing; let the UI offer retry + touch fallback.
+          setTiltState("denied")
+        } else {
+          console.warn("[hover-runner] requestPermission unexpected result:", result)
+          setTiltState("denied")
         }
-      } catch {
-        // Ignore permission failures.
-      }
-    } else {
-      enableTilt()
-    }
+      })
+      .catch((err: unknown) => {
+        console.error("[hover-runner] requestPermission rejected:", err)
+        setTiltState("error")
+      })
   }
 
   window.addEventListener("keydown", onKey)
   canvas.addEventListener("pointerdown", onPointer)
-  if (tiltButton) {
-    tiltButton.addEventListener("click", requestTilt)
-    const prefersTilt =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(pointer: coarse)").matches
-    if (
-      prefersTilt &&
-      !(DeviceOrientationEvent as unknown as { requestPermission?: unknown })
-        .requestPermission
-    ) {
-      enableTilt()
-    }
-  }
 
   const dispose = () => {
     window.removeEventListener("keydown", onKey)
     canvas.removeEventListener("pointerdown", onPointer)
     disableTilt()
-    if (tiltButton) {
-      tiltButton.removeEventListener("click", requestTilt)
-    }
   }
 
-  return { state, dispose, enableTilt, disableTilt, requestTilt }
+  return {
+    state,
+    dispose,
+    enableTilt,
+    disableTilt,
+    requestTilt,
+    getTiltState: () => tiltState,
+  }
 }

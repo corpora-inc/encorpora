@@ -105,7 +105,20 @@
       "header": "Paketi besednih zvez",
       "baseCorpusName": "Osnovni korpus",
       "emptyHint": "Dodaj pakete z zavihka Paketi.",
-      "browseAll": "Brskaj po paketih"
+      "browseAll": "Brskaj po paketih",
+      "searchPlaceholder": "Iskanje paketov…",
+      "filter": {
+        "all": "Vse",
+        "active": "Aktivni",
+        "inactive": "Neaktivni"
+      },
+      "selectAllVisible": "Izberi vse",
+      "deselectAllVisible": "Počisti",
+      "activateGroup": "Aktiviraj vse",
+      "deactivateGroup": "Deaktiviraj vse",
+      "uncategorized": "Drugo",
+      "noMatches": "Brez zadetkov.",
+      "noFiltered": "Tukaj zdaj ni ničesar."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Preverjanje…",
     "phrasePack": {
       "sectionTitle": "Paketi besednih zvez",
-      "empty": "Ni paketov.",
       "offlineEmpty": "Si brez povezave. Poveži se za brskanje.",
       "searchPlaceholder": "Iskanje…",
       "noMatches": "Ni zadetkov.",
@@ -446,7 +458,16 @@
       "paid": "Plačljivo",
       "free": "Brezplačno",
       "unlockSub": "Odkleni z naročnino",
-      "entryCount": "{{n}} fraz"
+      "entryCount": "{{n}} fraz",
+      "allInstalled": {
+        "title": "Imaš vse pakete fraz.",
+        "subtitle": "Novi paketi izhajajo redno — vrni se kadar koli.",
+        "manageCta": "Upravljanje v Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Še nič ni nameščeno.",
+        "cta": "Pokaži vse"
+      }
     }
   },
   "subscription": {

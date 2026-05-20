@@ -104,7 +104,20 @@
       "header": "పదబంధ ప్యాక్‌లు",
       "baseCorpusName": "మూల కార్పస్",
       "emptyHint": "ప్యాక్‌ల ట్యాబ్ నుండి ప్యాక్‌లు జోడించండి.",
-      "browseAll": "ప్యాక్‌లు చూడండి"
+      "browseAll": "ప్యాక్‌లు చూడండి",
+      "searchPlaceholder": "ప్యాక్‌లను వెతకండి…",
+      "filter": {
+        "all": "అన్నీ",
+        "active": "క్రియాశీలం",
+        "inactive": "నిష్క్రియం"
+      },
+      "selectAllVisible": "అన్నీ ఎంచుకో",
+      "deselectAllVisible": "క్లియర్",
+      "activateGroup": "అన్నీ ఆన్ చేయి",
+      "deactivateGroup": "అన్నీ ఆఫ్ చేయి",
+      "uncategorized": "ఇతరం",
+      "noMatches": "ఫలితాలు లేవు.",
+      "noFiltered": "ఇక్కడ ఇప్పుడు ఏదీ లేదు."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "తనిఖీ చేస్తోంది…",
     "phrasePack": {
       "sectionTitle": "పదబంధ ప్యాక్‌లు",
-      "empty": "ఇంకా ప్యాక్‌లు లేవు.",
       "offlineEmpty": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. చూడటానికి కనెక్ట్ అవ్వండి.",
       "searchPlaceholder": "శోధించండి…",
       "noMatches": "సరిపోలికలు లేవు.",
@@ -445,7 +457,16 @@
       "paid": "చెల్లింపు",
       "free": "ఉచితం",
       "unlockSub": "సబ్‌స్క్రిప్షన్‌తో అన్‌లాక్ చేయండి",
-      "entryCount": "{{n}} పదబంధాలు"
+      "entryCount": "{{n}} పదబంధాలు",
+      "allInstalled": {
+        "title": "మీ దగ్గర అన్ని ఫ్రేజ్ ప్యాక్‌లు ఉన్నాయి.",
+        "subtitle": "కొత్త అంశాలు తరచుగా వస్తుంటాయి — ఎప్పుడైనా తిరిగి రండి.",
+        "manageCta": "Stacks లో నిర్వహించండి"
+      },
+      "filterEmpty": {
+        "installed": "ఇంకా ఏదీ ఇన్‌స్టాల్ చేయలేదు.",
+        "cta": "అన్నీ చూపించు"
+      }
     }
   },
   "subscription": {

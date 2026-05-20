@@ -105,7 +105,20 @@
       "header": "Pacotes de frases",
       "baseCorpusName": "Corpus base",
       "emptyHint": "Adiciona pacotes a partir do separador Pacotes.",
-      "browseAll": "Explorar pacotes"
+      "browseAll": "Explorar pacotes",
+      "searchPlaceholder": "Procurar pacotes…",
+      "filter": {
+        "all": "Todos",
+        "active": "Ativos",
+        "inactive": "Inativos"
+      },
+      "selectAllVisible": "Selecionar tudo",
+      "deselectAllVisible": "Limpar",
+      "activateGroup": "Ativar todos",
+      "deactivateGroup": "Desativar todos",
+      "uncategorized": "Outros",
+      "noMatches": "Sem resultados.",
+      "noFiltered": "Nada por aqui agora."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "A verificar…",
     "phrasePack": {
       "sectionTitle": "Pacotes de frases",
-      "empty": "Ainda não há pacotes.",
       "offlineEmpty": "Estás offline. Liga-te para explorar.",
       "searchPlaceholder": "Procurar…",
       "noMatches": "Sem resultados.",
@@ -446,7 +458,16 @@
       "paid": "Pago",
       "free": "Grátis",
       "unlockSub": "Desbloquear com subscrição",
-      "entryCount": "{{n}} frases"
+      "entryCount": "{{n}} frases",
+      "allInstalled": {
+        "title": "Tem todos os pacotes de frases.",
+        "subtitle": "Lançamos novos pacotes regularmente — volte quando quiser.",
+        "manageCta": "Gerir em Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nada instalado ainda.",
+        "cta": "Mostrar todos"
+      }
     }
   },
   "subscription": {

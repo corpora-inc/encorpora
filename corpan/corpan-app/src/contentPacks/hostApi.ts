@@ -389,6 +389,13 @@ export const createHostApi = (packId?: string): HostApi => {
       })
       return () => unsubscribe()
     },
+    // Pack-facing sampler. Forwards the user's active phrase-pack
+    // selection so every pack (including pre-0.13 production builds of
+    // Parlometron, Juice Squeeze, Hover Runner, …) benefits from topical
+    // packs the moment the user toggles them on — no pack rebuild needed.
+    // Robustness against partial install state (pack id in settings but
+    // SQLite not yet on disk) lives in Rust: `collect_pack_counts` treats
+    // missing-pack errors as zero and continues sampling from the rest.
     getRandomEntry: async () => {
       const { levels, domains, phrasePackIds, baseCorpusEnabled } =
         useSettingsStore.getState()

@@ -104,7 +104,20 @@
       "header": "حزم العبارات",
       "baseCorpusName": "المجموعة الأساسية",
       "emptyHint": "أضف حزمًا من تبويب الحزم.",
-      "browseAll": "تصفح الحزم"
+      "browseAll": "تصفح الحزم",
+      "searchPlaceholder": "ابحث عن الحزم…",
+      "filter": {
+        "all": "الكل",
+        "active": "نشط",
+        "inactive": "غير نشط"
+      },
+      "selectAllVisible": "تحديد الكل",
+      "deselectAllVisible": "مسح",
+      "activateGroup": "تفعيل الكل",
+      "deactivateGroup": "تعطيل الكل",
+      "uncategorized": "أخرى",
+      "noMatches": "لا توجد نتائج.",
+      "noFiltered": "لا شيء هنا الآن."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "جارٍ التحقق…",
     "phrasePack": {
       "sectionTitle": "حزم العبارات",
-      "empty": "لا توجد حزم بعد.",
       "offlineEmpty": "أنت غير متصل. اتصل للتصفح.",
       "searchPlaceholder": "بحث…",
       "noMatches": "لا توجد نتائج.",
@@ -445,7 +457,16 @@
       "paid": "مدفوع",
       "free": "مجاني",
       "unlockSub": "افتح بالاشتراك",
-      "entryCount": "{{n}} عبارة"
+      "entryCount": "{{n}} عبارة",
+      "allInstalled": {
+        "title": "لديك جميع حِزَم العبارات.",
+        "subtitle": "تصدر حزم جديدة بانتظام — ارجع في أي وقت.",
+        "manageCta": "إدارة في Stacks"
+      },
+      "filterEmpty": {
+        "installed": "لا شيء مثبت بعد.",
+        "cta": "عرض الكل"
+      }
     }
   },
   "subscription": {

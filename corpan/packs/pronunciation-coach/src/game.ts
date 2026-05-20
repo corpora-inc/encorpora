@@ -9,6 +9,7 @@ import {
   variantExceedsBudget,
 } from "./modelRegistry"
 import { mergeForLang } from "./whisperTuning"
+import { mergeScoringForLangModel } from "./scoringTuning"
 import { openTuner } from "./whisperTunerUI"
 // Direct file import (not the @shared/ui barrel) so we don't pull in
 // commandDrawer/drawerStore and their zustand dep. The offline notice is
@@ -107,6 +108,11 @@ type SttApi = {
      *  in the iOS plugin. Built from `mergeForLang(lang)`; see
      *  `whisperTuning.ts`. Optional — empty/missing = library defaults. */
     whisperParams?: import("./whisperTuning").WhisperParams
+    /** Per-call scoring overrides applied on top of the native plugin's
+     *  acoustic ramp + textFloor + compression threshold. Built from
+     *  `mergeScoringForLangModel(lang, modelFolder)`; see
+     *  `scoringTuning.ts`. Optional — empty/missing = native defaults. */
+    scoringParams?: import("./scoringTuning").ScoringParams
   }): Promise<SttStartResult>
   stopSession(opts: { sessionId: string }): Promise<SttTranscriptionResult>
   cancelSession(opts: { sessionId: string }): Promise<void>
@@ -1303,6 +1309,29 @@ export const mountGame = (
     const overall = Math.max(0, Math.min(1, result.overallScore))
     const noSpeech = Math.max(0, Math.min(1, result.noSpeechProb ?? 0))
     const compression = result.compressionRatio ?? 0
+
+    // Phase 2 calibration telemetry. One concise line per attempt to
+    // /tmp/pc-console.log via the dev console-server forwarder. Pair
+    // with Swift's `Whisper |` os_log lines in /tmp/whisper-trace-live.txt
+    // to read the full picture of how each attempt scored.
+    console.info("[PRON:score]", {
+      lang: result.whisperLanguage || result.language,
+      model: folderForMode(modelMode),
+      expected: currentPhrase?.target.text ?? "",
+      heard: result.text,
+      free: result.freeText,
+      overall: result.overallScore,
+      transcript: result.transcriptScore,
+      acoustic: result.acousticScore,
+      likelihood: result.likelihoodScore,
+      noSpeechProb: result.noSpeechProb,
+      compressionRatio: result.compressionRatio,
+      avgLogprob: result.avgLogprob,
+      minTokenLogprob: result.minTokenLogprob,
+      tokenLogprobStdev: result.tokenLogprobStdev,
+      temperature: result.temperature,
+    })
+
     const freeVsConstrained = Math.max(
       0,
       Math.min(1, result.freeVsConstrainedSimilarity ?? 1)
@@ -1712,6 +1741,7 @@ export const mountGame = (
         language: lang,
         expectedText: currentPhrase.target.text,
         whisperParams: mergeForLang(lang),
+        scoringParams: mergeScoringForLangModel(lang, folderForMode(modelMode)),
       })
       if (disposed) return
       if (!res.started) {

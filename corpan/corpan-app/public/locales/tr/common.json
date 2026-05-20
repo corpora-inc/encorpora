@@ -104,7 +104,20 @@
       "header": "İfade paketleri",
       "baseCorpusName": "Temel külliyat",
       "emptyHint": "Paketler sekmesinden paket ekle.",
-      "browseAll": "Paketleri keşfet"
+      "browseAll": "Paketleri keşfet",
+      "searchPlaceholder": "Paketleri ara…",
+      "filter": {
+        "all": "Tümü",
+        "active": "Etkin",
+        "inactive": "Devre dışı"
+      },
+      "selectAllVisible": "Tümünü seç",
+      "deselectAllVisible": "Temizle",
+      "activateGroup": "Tümünü etkinleştir",
+      "deactivateGroup": "Tümünü kapat",
+      "uncategorized": "Diğer",
+      "noMatches": "Sonuç yok.",
+      "noFiltered": "Burada şu an bir şey yok."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Kontrol ediliyor…",
     "phrasePack": {
       "sectionTitle": "İfade paketleri",
-      "empty": "Henüz paket yok.",
       "offlineEmpty": "Çevrimdışısın. Göz atmak için bağlan.",
       "searchPlaceholder": "Ara…",
       "noMatches": "Sonuç yok.",
@@ -445,7 +457,16 @@
       "paid": "Ücretli",
       "free": "Ücretsiz",
       "unlockSub": "Abonelikle aç",
-      "entryCount": "{{n}} ifade"
+      "entryCount": "{{n}} ifade",
+      "allInstalled": {
+        "title": "Tüm cümle paketlerine sahipsin.",
+        "subtitle": "Yeni konular düzenli olarak çıkıyor — istediğin zaman geri gel.",
+        "manageCta": "Stacks'te yönet"
+      },
+      "filterEmpty": {
+        "installed": "Henüz hiçbir şey yüklü değil.",
+        "cta": "Tümünü göster"
+      }
     }
   },
   "subscription": {

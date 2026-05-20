@@ -104,7 +104,20 @@
       "header": "어구 팩",
       "baseCorpusName": "기본 코퍼스",
       "emptyHint": "팩 탭에서 팩을 추가하세요.",
-      "browseAll": "팩 둘러보기"
+      "browseAll": "팩 둘러보기",
+      "searchPlaceholder": "팩 검색…",
+      "filter": {
+        "all": "전체",
+        "active": "활성",
+        "inactive": "비활성"
+      },
+      "selectAllVisible": "모두 선택",
+      "deselectAllVisible": "지우기",
+      "activateGroup": "모두 활성화",
+      "deactivateGroup": "모두 비활성화",
+      "uncategorized": "기타",
+      "noMatches": "결과 없음.",
+      "noFiltered": "지금 여기에 아무것도 없어요."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "확인 중…",
     "phrasePack": {
       "sectionTitle": "어구 팩",
-      "empty": "아직 팩이 없어요.",
       "offlineEmpty": "오프라인 상태예요. 연결 후 둘러보세요.",
       "searchPlaceholder": "검색…",
       "noMatches": "결과가 없습니다.",
@@ -445,7 +457,16 @@
       "paid": "유료",
       "free": "무료",
       "unlockSub": "구독으로 해제",
-      "entryCount": "{{n}}개 어구"
+      "entryCount": "{{n}}개 어구",
+      "allInstalled": {
+        "title": "모든 구문 팩을 가지고 계세요.",
+        "subtitle": "새 주제 팩이 자주 추가돼요 — 언제든 다시 들러 보세요.",
+        "manageCta": "Stacks에서 관리"
+      },
+      "filterEmpty": {
+        "installed": "아직 설치된 게 없어요.",
+        "cta": "모두 보기"
+      }
     }
   },
   "subscription": {

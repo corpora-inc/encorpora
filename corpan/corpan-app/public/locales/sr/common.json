@@ -105,7 +105,20 @@
       "header": "Пакети фраза",
       "baseCorpusName": "Основни корпус",
       "emptyHint": "Додај пакете са картице Пакети.",
-      "browseAll": "Прегледај пакете"
+      "browseAll": "Прегледај пакете",
+      "searchPlaceholder": "Претражи пакете…",
+      "filter": {
+        "all": "Све",
+        "active": "Активни",
+        "inactive": "Неактивни"
+      },
+      "selectAllVisible": "Изабери све",
+      "deselectAllVisible": "Очисти",
+      "activateGroup": "Активирај све",
+      "deactivateGroup": "Деактивирај све",
+      "uncategorized": "Остало",
+      "noMatches": "Без резултата.",
+      "noFiltered": "Овде сад ништа нема."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Провера…",
     "phrasePack": {
       "sectionTitle": "Пакети фраза",
-      "empty": "Још нема пакета.",
       "offlineEmpty": "Ниси повезан. Повежи се за преглед.",
       "searchPlaceholder": "Тражи…",
       "noMatches": "Нема резултата.",
@@ -446,7 +458,16 @@
       "paid": "Плаћено",
       "free": "Бесплатно",
       "unlockSub": "Откључај претплатом",
-      "entryCount": "{{n}} фраза"
+      "entryCount": "{{n}} фраза",
+      "allInstalled": {
+        "title": "Имаш све пакете фраза.",
+        "subtitle": "Нови пакети излазе редовно — сврати кад год желиш.",
+        "manageCta": "Управљај у Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Још ништа није инсталирано.",
+        "cta": "Прикажи све"
+      }
     }
   },
   "subscription": {

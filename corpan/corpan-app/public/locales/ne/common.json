@@ -105,7 +105,20 @@
       "header": "वाक्यांश प्याक",
       "baseCorpusName": "आधार कोर्पस",
       "emptyHint": "प्याक ट्याबबाट प्याक थप्नुहोस्।",
-      "browseAll": "प्याकहरू हेर्नुहोस्"
+      "browseAll": "प्याकहरू हेर्नुहोस्",
+      "searchPlaceholder": "प्याक खोज्नुहोस्…",
+      "filter": {
+        "all": "सबै",
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "selectAllVisible": "सबै छान्नुहोस्",
+      "deselectAllVisible": "खाली पार्नुहोस्",
+      "activateGroup": "सबै सक्रिय गर्नुहोस्",
+      "deactivateGroup": "सबै निष्क्रिय गर्नुहोस्",
+      "uncategorized": "अन्य",
+      "noMatches": "कुनै परिणाम छैन।",
+      "noFiltered": "अहिले यहाँ केही छैन।"
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "जाँच गर्दै…",
     "phrasePack": {
       "sectionTitle": "वाक्यांश प्याक",
-      "empty": "अहिले कुनै प्याक छैन।",
       "offlineEmpty": "तपाईं अफलाइन हुनुहुन्छ। हेर्न जडान गर्नुहोस्।",
       "searchPlaceholder": "खोज्नुहोस्…",
       "noMatches": "नतिजा छैन।",
@@ -446,7 +458,16 @@
       "paid": "शुल्क",
       "free": "नि:शुल्क",
       "unlockSub": "सदस्यताबाट खोल्नुहोस्",
-      "entryCount": "{{n}} वाक्यांश"
+      "entryCount": "{{n}} वाक्यांश",
+      "allInstalled": {
+        "title": "तपाईंसँग सबै फ्रेज प्याक छन्।",
+        "subtitle": "नयाँ विषयहरू नियमित आउँछन् — कुनै पनि बेला फेरि आउनुहोस्।",
+        "manageCta": "Stacks मा व्यवस्थापन गर्नुहोस्"
+      },
+      "filterEmpty": {
+        "installed": "अहिलेसम्म केही पनि स्थापना भएको छैन।",
+        "cta": "सबै देखाउनुहोस्"
+      }
     }
   },
   "subscription": {

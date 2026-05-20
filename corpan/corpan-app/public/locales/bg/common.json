@@ -105,7 +105,20 @@
       "header": "Пакети фрази",
       "baseCorpusName": "Основен корпус",
       "emptyHint": "Добави пакети от раздела Пакети.",
-      "browseAll": "Разгледай пакетите"
+      "browseAll": "Разгледай пакетите",
+      "searchPlaceholder": "Търси пакети…",
+      "filter": {
+        "all": "Всички",
+        "active": "Активни",
+        "inactive": "Неактивни"
+      },
+      "selectAllVisible": "Избери всички",
+      "deselectAllVisible": "Изчисти",
+      "activateGroup": "Активирай всички",
+      "deactivateGroup": "Деактивирай всички",
+      "uncategorized": "Други",
+      "noMatches": "Няма резултати.",
+      "noFiltered": "Тук сега няма нищо."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Проверка…",
     "phrasePack": {
       "sectionTitle": "Пакети фрази",
-      "empty": "Все още няма пакети.",
       "offlineEmpty": "Офлайн си. Свържи се, за да разглеждаш.",
       "searchPlaceholder": "Търсене…",
       "noMatches": "Няма резултати.",
@@ -446,7 +458,16 @@
       "paid": "Платено",
       "free": "Безплатно",
       "unlockSub": "Отключи с абонамент",
-      "entryCount": "{{n}} фрази"
+      "entryCount": "{{n}} фрази",
+      "allInstalled": {
+        "title": "Имаш всички пакети с фрази.",
+        "subtitle": "Нови теми излизат редовно — наминавай когато искаш.",
+        "manageCta": "Управление в Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Все още нищо не е инсталирано.",
+        "cta": "Покажи всички"
+      }
     }
   },
   "subscription": {

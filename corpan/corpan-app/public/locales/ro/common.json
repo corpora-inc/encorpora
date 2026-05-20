@@ -105,7 +105,20 @@
       "header": "Pachete de fraze",
       "baseCorpusName": "Corpus de bază",
       "emptyHint": "Adaugă pachete din fila Pachete.",
-      "browseAll": "Explorează pachete"
+      "browseAll": "Explorează pachete",
+      "searchPlaceholder": "Caută pachete…",
+      "filter": {
+        "all": "Toate",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "selectAllVisible": "Selectează tot",
+      "deselectAllVisible": "Deselectează",
+      "activateGroup": "Activează toate",
+      "deactivateGroup": "Dezactivează toate",
+      "uncategorized": "Altele",
+      "noMatches": "Nimic găsit.",
+      "noFiltered": "Nimic aici acum."
     }
   },
   "onboarding": {
@@ -430,7 +443,6 @@
     "checking": "Se verifică…",
     "phrasePack": {
       "sectionTitle": "Pachete de fraze",
-      "empty": "Niciun pachet încă.",
       "offlineEmpty": "Ești offline. Conectează-te pentru a explora.",
       "searchPlaceholder": "Caută…",
       "noMatches": "Niciun rezultat.",
@@ -446,7 +458,16 @@
       "paid": "Cu plată",
       "free": "Gratuit",
       "unlockSub": "Deblochează cu abonament",
-      "entryCount": "{{n}} fraze"
+      "entryCount": "{{n}} fraze",
+      "allInstalled": {
+        "title": "Ai toate pachetele de fraze.",
+        "subtitle": "Apar pachete noi regulat — revino oricând.",
+        "manageCta": "Gestionează în Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nimic instalat încă.",
+        "cta": "Arată toate"
+      }
     }
   },
   "subscription": {

@@ -104,7 +104,20 @@
       "header": "Phrasenpakete",
       "baseCorpusName": "Basiskorpus",
       "emptyHint": "Pakete im Reiter Pakete hinzufügen.",
-      "browseAll": "Pakete durchsuchen"
+      "browseAll": "Pakete durchsuchen",
+      "searchPlaceholder": "Pakete suchen…",
+      "filter": {
+        "all": "Alle",
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "selectAllVisible": "Alle auswählen",
+      "deselectAllVisible": "Auswahl löschen",
+      "activateGroup": "Alle aktivieren",
+      "deactivateGroup": "Alle deaktivieren",
+      "uncategorized": "Andere",
+      "noMatches": "Keine Treffer.",
+      "noFiltered": "Hier ist gerade nichts."
     }
   },
   "onboarding": {
@@ -429,7 +442,6 @@
     "checking": "Prüfung…",
     "phrasePack": {
       "sectionTitle": "Phrasenpakete",
-      "empty": "Noch keine Pakete.",
       "offlineEmpty": "Du bist offline. Verbinde dich, um zu stöbern.",
       "searchPlaceholder": "Suchen…",
       "noMatches": "Keine Treffer.",
@@ -445,7 +457,16 @@
       "paid": "Bezahlt",
       "free": "Gratis",
       "unlockSub": "Mit Abo freischalten",
-      "entryCount": "{{n}} Sätze"
+      "entryCount": "{{n}} Sätze",
+      "allInstalled": {
+        "title": "Du hast alle Phrasen-Pakete.",
+        "subtitle": "Neue Themen erscheinen regelmäßig — schau einfach wieder vorbei.",
+        "manageCta": "In Stacks verwalten"
+      },
+      "filterEmpty": {
+        "installed": "Noch nichts installiert.",
+        "cta": "Alle anzeigen"
+      }
     }
   },
   "subscription": {
