@@ -9,10 +9,18 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.5.1] - 2026-05-19
 ### Changed
 - The inline `hanziwriter` Tauri-load fallback path now logs the
   underlying error before falling back to `<script>` injection,
   instead of silently swallowing it.
+
+### Known limitations
+- `searchEntriesByText` (the lookup Hanzipan uses to find characters
+  by translation text) does not yet consult installed phrase packs —
+  it only searches the bundled corpus. Phrase-pack-aware search is a
+  Rust-side enhancement landing in a future release.
 
 ## [0.5.0] - 2026-05-10 — Earthgate retheme + Vite tooling
 

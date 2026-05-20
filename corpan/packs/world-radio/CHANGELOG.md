@@ -7,6 +7,8 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.3] - 2026-05-19
 ### Changed
 - Cold-start in airplane mode now shows a calm "World Radio needs
   internet" notice on the language list and station list, instead of

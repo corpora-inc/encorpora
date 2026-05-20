@@ -9,6 +9,8 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.6] - 2026-05-19
 ### Changed
 - Catalog browser drawer now renders a calm "Browse needs internet"
   notice when the user cold-starts the pack offline with no cached

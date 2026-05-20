@@ -13,6 +13,9 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.7.0] - 2026-05-19 — Scoring overlay + phrase-pack sourcing
+
 ### Added
 - **Per-(language, model) scoring overrides.** New `scoringTuning.ts`
   passes a `scoringParams` overlay through `startSession` (sibling
@@ -20,7 +23,8 @@ Conventions: `corpan/CHANGELOGS.md`.
   compression-ratio gate can be calibrated from the pack without a
   native rebuild. Built-in tables ship empty in this release — the
   native plugin's ramps remain authoritative until profiles get
-  populated empirically (see Phase 2 calibration plan).
+  populated empirically (see Phase 2 calibration plan). Requires
+  `tauri-plugin-stt >= 0.5.0`.
 - One `[PRON:score]` `console.info` per attempt with the score
   breakdown (overall / transcript / acoustic / likelihood plus
   noSpeechProb / compressionRatio / avgLogprob / temperature) for
@@ -36,6 +40,10 @@ Conventions: `corpan/CHANGELOGS.md`.
   network failure, score-time blip) reworded to match the app's
   understated offline voice — no more "Network needed — check your
   connection" mic-button label.
+- Phrase sampling now flows through the host-bridge's phrase-pack-
+  aware `getRandomEntry` (Corpán 0.15.0+) — no pack changes required,
+  any phrase packs the user has installed and activated automatically
+  show up in Parlometron rounds.
 
 ## [0.6.3] - 2026-05-17
 

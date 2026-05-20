@@ -6,40 +6,129 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.15.0] - 2026-05-19 — Phrase packs, 12-pack onboarding, dedicated catalog
+
+The headline shift: **modular phrase packs**. Corpán's bundled corpus
+(510k rows × 51 languages) is now augmentable with topical packs
+(Botany, Cooking, Music, Astronomy, Cinema, …) the user installs from
+the app. Every existing game pack — Parlometron, Juice Squeeze, Hover
+Runner — automatically samples from the user's active phrase packs
+through the host bridge: no pack rebuilds required.
+
+The publisher ships new packs to a dedicated CloudFront catalog
+(`d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/catalog.json`) with
+no PR / app rebuild. End-to-end time-to-production for a new pack is
+measured in seconds.
+
+(Skipping 0.14 to align the in-app version with the user-facing
+"Moonshot 15" milestone — 0.14 is reserved for any follow-up patch on
+the 0.13 line.)
+
 ### Added
-- **Recent packs row** at the top of Settings → Packs. Compact tap-tile
-  for each of the last ~5 packs you've launched, so popping in and out
-  of a pack is one tap instead of scrolling through the full installed
-  list. Each tile shows a small purple dot when an update is available.
-  Driven by a new `lastLaunchedAt` field in the games store, stamped
-  by the single launch chokepoint in `App.tsx`.
+- **Onboarding "Phrase packs" step** (`OnboardingPickPhrasePacks`).
+  Up to 12 cards from the live catalog, ordered as the publisher
+  ordered them, with the publisher-curated starter set pre-checked.
+  Bulk Select-all / Clear, individual card toggles, friendly empty
+  state when offline, never auto-skips past selection. Continue is
+  gated while the phrase-pack catalog is still loading on an online
+  client so users never stealth-skip past the step. Locked paid
+  packs (one-time IAP) are filtered out at install time —
+  entitlement gate lives client-side because the CDN zip URLs are
+  public.
+- **Stacks-tab phrase-pack picker** (`PhrasePackToggleSection`).
+  Compact one-line rows, search, filter chips (All / Active /
+  Inactive), bulk Select-all / Deselect-all that act on the visible
+  subset, per-category sticky group headers with Activate-all /
+  Deactivate-all, fixed `max-h-[360px]` scroll container. Designed
+  for 1–1000+ packs without overwhelming the settings page. The
+  base corpus toggle is pinned at the top, immune to filter state.
+- **Packs-tab phrase-pack browser** (`PhrasePackBrowser`). Catalog-
+  driven groups + cards with search, filter chips, "Active in
+  stack" badges. Distinguishes four states: catalog-empty-offline,
+  catalog-with-packs, all-installed (calm "You've got every phrase
+  pack" callout with "Manage in Stacks" CTA), and filter-installed-
+  but-nothing-installed (CTA resets the filter).
+- **Recent packs row** at the top of Settings → Packs. Holds up to
+  **8** most recently-launched packs; CSS-only responsive cap picks a
+  row-filling subset per breakpoint (5 / 8 / 6 / 6 at lg / md / sm /
+  base) so a column never goes orphan. Each tile is one big tap;
+  tiny purple dot when an update is available. Driven by a new
+  `lastLaunchedAt` field in the games store, stamped at the single
+  launch chokepoint in `App.tsx`.
+- **Dedicated phrase-pack catalog** (`PhrasePackCatalog` type, parser,
+  fetcher) — separate from the v3 game/reader/narration catalog.
+  Persisted under `corpan-phrase-pack-catalog-v1` with a 5-minute TTL
+  (vs. v3's 1 hour). Publisher writes a fresh `catalog.json` to S3
+  with `Cache-Control: public, max-age=300, must-revalidate` and
+  every running app sees the new pack within minutes; optional
+  CloudFront invalidation for instant propagation.
+- **Two-phase weighted phrase-pack sampler** in Rust
+  (`phrase_packs.rs`). Per-pack `Connection` pool with LRU cap (no
+  ATTACH), cached `COUNT(*)` per filter signature, weighted source
+  selection, one indexed query against the chosen pack. Resilient
+  to partial install state — uninstalled-pack errors are logged
+  and the source is treated as count=0 rather than failing the
+  whole call.
+- **Host-bridge phrase-pack forwarding**. `hostApi.getRandomEntry`
+  / `getRandomEntries` automatically thread the user's
+  `phrasePackIds` + `baseCorpusEnabled` into Rust, so every old pack
+  (Parlometron, Juice Squeeze, Hover Runner) samples from the
+  user's selected phrase packs without a rebuild.
+- **History pinned to `(source, entry_id)` tuples** so prev/next
+  navigation through a phrase-pack-augmented stream resolves the
+  right pack instead of falling through to base.
+
 ### Changed
-- **Updates section removed.** Installed packs with an available update
-  now wear a single purple "Update" badge and their action row swaps to
-  `[Update] [Open] [Remove]` — no more duplicate card in a separate
-  Updates section above. Source of truth is the Installed grid.
+- **Updates section removed.** Installed packs with an available
+  update now wear a single purple "Update" badge and their action
+  row swaps to `[Update] [Open] [Remove]` — no more duplicate card
+  in a separate Updates section. Source of truth is the Installed
+  grid.
 - **Offline-first UI polish.** Every screen that depends on internet
   now degrades to a calm, consistent `OfflineNotice` instead of stuck
   spinners, dead-disabled buttons, or alarming amber error cards.
-  New shared `<OfflineNotice>` component + `useOnlineStatus` hook drive
-  the look across `PhrasePackBrowser`, `PacksListing` (Discover),
-  `PhrasePackCard`, `PackActions`, `SubscriptionOffer`, `RestorePurchases`,
-  and `OnboardingPickPhrasePacks`. Installed packs and the 510k bundled
-  phrases keep working — only the network-gated affordances are gated.
-- `SubscriptionOffer` now distinguishes "offline" from "store unreachable":
-  when the device is offline we short-circuit before hitting StoreKit / Play
-  Billing and show the offline notice; an already-subscribed user still sees
-  the green "subscribed" state from the platform's local cache.
-- Pack manifest fetches now time out at 15s with a calm error message
-  instead of spinning indefinitely on a stalled CDN connection.
+  New shared `<OfflineNotice>` component + `useOnlineStatus` hook
+  drive the look across `PhrasePackBrowser`, `PacksListing`
+  (Discover), `PhrasePackCard`, `PackActions`, `SubscriptionOffer`,
+  `RestorePurchases`, and `OnboardingPickPhrasePacks`. Installed
+  packs and the 510k bundled phrases keep working — only the
+  network-gated affordances are gated.
+- `SubscriptionOffer` now distinguishes "offline" from "store
+  unreachable": when the device is offline we short-circuit before
+  hitting StoreKit / Play Billing and show the offline notice; an
+  already-subscribed user still sees the green "subscribed" state
+  from the platform's local cache.
+- Pack manifest fetches now time out at 15s with a calm error
+  message instead of spinning indefinitely on a stalled CDN
+  connection.
 - Update button on installed pack cards is now correctly gated by
   `isOffline` and shows a "Reconnect to download" hint — previously
   it stayed live and would kick off a doomed download.
-- `InstallProgressDialog` no longer hangs as a spinner when the device
-  goes offline mid-install. `useInstallProgress` watches the `offline`
-  event and flips the dialog to a calm error state immediately with
-  a cloud-off glyph, heading, and a Retry button. The dialog also now
-  renders the error message (it was previously just an alert icon).
+- 51-language i18n rollout for every new phrase-pack key — three
+  idempotent translation scripts under `public/locales/`
+  (`add_phrase_pack_translations.py`,
+  `add_b_double_prime_translations.py`,
+  `add_stack_picker_translations.py`).
+
+### Fixed
+- `InstallProgressDialog` no longer hangs as a spinner when the
+  device goes offline mid-install. `useInstallProgress` watches the
+  `offline` event, tears down the Tauri progress listener +
+  stuck-timeout interval, and flips the dialog to a calm error
+  state with a cloud-off glyph, heading, and a Retry button.
+  Prevents a late `complete` event arriving over a brief radio
+  recovery from overwriting the offline error state.
+- Phrase-pack manifest registration rejects manifests whose declared
+  `id` doesn't match the directory they were installed into, and
+  URL-encodes the pack id when fetching `manifest.json` from the
+  in-app `corpan-pack://` scheme. Closes a small spoofing vector
+  where a malformed pack zip could register under a different id.
+- Sticky group headers in the Stacks-tab phrase-pack picker no
+  longer let rows bleed above them while scrolling. The scroll
+  container's top padding was creating a strip outside the sticky
+  position; removed in favor of per-section internal padding +
+  `overscrollBehavior: contain`.
 
 ## [0.13.1] - 2026-05-17
 
