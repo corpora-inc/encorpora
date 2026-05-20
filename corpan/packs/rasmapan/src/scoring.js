@@ -169,3 +169,322 @@ export const scoreStroke = (userPoints, writer, strokeIndex) => {
   }
   return scoreAgainstBbox(userPoints, writer.bbox || [0, 0, 1000, 1000]);
 };
+
+/**
+ * v0.3 "your turn" — score the user's WHOLE free-drawing composition
+ * against the target glyph's outline polygon. Combines two metrics:
+ *
+ *   - **precision**: fraction of user points that land INSIDE the
+ *     outline polygon (i.e. the strokes hit the letter shape).
+ *   - **coverage**: fraction of probe points sampled along the outline
+ *     edge that have a user point within `RECALL_TOL` viewBox units
+ *     (i.e. the user actually drew the WHOLE letter, not just one
+ *     corner).
+ *
+ * Pure JS, no recognition model. Works for any writer that has at
+ * least one outline path. The caller passes in:
+ *   - `userStrokesView` — list of strokes in 0..1000 viewBox space
+ *     (use trace.js's _canvasToView to convert).
+ *   - `writer` — the writer record with outline + bbox.
+ *
+ * Returns `{ quality, precision, coverage, message }`. `quality` is
+ * a 0..1 score suitable for the score bar; `message` is a localized-
+ * agnostic short status string the caller can show as a banner.
+ */
+const VIEWBOX = 1000;
+const RECALL_TOL = 90;          // viewBox units — "pen passes near here"
+const PROBE_COUNT = 80;          // sample density along the outline
+
+// Pre-compute a list of (x, y) probe points sampled along an SVG path
+// `d`. We use a hidden Path2D rendered to an offscreen canvas at
+// 1000x1000 and then walk a sparse grid for cells the path touches.
+// Cheap and good enough — exact arclength sampling would be more work
+// and isn't needed for an inexact match score.
+const sampleOutlinePoints = (writer) => {
+  if (!writer || !Array.isArray(writer.outline) || !writer.outline.length) {
+    return [];
+  }
+  const canvas = document.createElement("canvas");
+  canvas.width = VIEWBOX;
+  canvas.height = VIEWBOX;
+  const ctx = canvas.getContext("2d");
+  // Render the outline as a filled silhouette in solid red — we walk
+  // its boundary by sampling pixels and finding edges.
+  ctx.fillStyle = "#ff0000";
+  for (const d of writer.outline) {
+    try {
+      const p = new Path2D(d);
+      ctx.fill(p, "evenodd");
+    } catch {
+      // ignore unparseable paths
+    }
+  }
+  // Sample a grid. For each grid cell, check if it's an EDGE pixel:
+  // one of its 4 neighbors is empty while the cell itself is filled.
+  const step = Math.max(8, Math.floor(VIEWBOX / Math.sqrt(PROBE_COUNT * 12)));
+  const probes = [];
+  const img = ctx.getImageData(0, 0, VIEWBOX, VIEWBOX).data;
+  const filled = (x, y) =>
+    x >= 0 && x < VIEWBOX && y >= 0 && y < VIEWBOX &&
+    img[(y * VIEWBOX + x) * 4 + 3] > 0;
+  for (let y = 0; y < VIEWBOX; y += step) {
+    for (let x = 0; x < VIEWBOX; x += step) {
+      if (!filled(x, y)) continue;
+      if (
+        !filled(x - step, y) ||
+        !filled(x + step, y) ||
+        !filled(x, y - step) ||
+        !filled(x, y + step)
+      ) {
+        probes.push([x, y]);
+      }
+    }
+  }
+  return probes;
+};
+
+// Build an isPointInPath tester from the writer's outline.
+const makeOutlineTester = (writer) => {
+  if (!writer || !Array.isArray(writer.outline) || !writer.outline.length) {
+    return null;
+  }
+  const canvas = document.createElement("canvas");
+  canvas.width = VIEWBOX;
+  canvas.height = VIEWBOX;
+  const ctx = canvas.getContext("2d");
+  const paths = [];
+  for (const d of writer.outline) {
+    try { paths.push(new Path2D(d)); } catch { /* ignore */ }
+  }
+  if (!paths.length) return null;
+  return (x, y) => {
+    for (const p of paths) {
+      if (ctx.isPointInPath(p, x, y, "evenodd")) return true;
+    }
+    return false;
+  };
+};
+
+// --- Shared Arabic-text fitting (used by WordTraceLayer + scoring) ----
+//
+// fitArabicText sizes an Arabic string to fit inside (innerW × innerH).
+//
+// Width: uses `m.width` from `measureText` — reliable across all
+// WebViews.
+//
+// Height: uses an empirical 1.6 × fontPx multiplier instead of
+// `actualBoundingBoxAscent` / `Descent`. The modern metrics SHOULD
+// return per-string ink height but in practice many Tauri WebKit /
+// Blink builds return font-design ascent (~1.0 × fontPx) instead,
+// under-reporting Arabic glyphs with marks above the body (ث, ش,
+// خبز) and descenders below. 1.6× is a conservative upper bound
+// for Amiri's ink extent including dots-above + descenders-below.
+// Picking a fixed ratio yields predictable rendering on every
+// WebView at the cost of words being slightly smaller than optimal
+// on cooperative engines.
+//
+// Returns: { fontPx, yOffset } for use with textAlign="center" +
+// textBaseline="middle". `yOffset` shifts the EM-line midpoint
+// down a bit so Arabic glyphs (whose ink center sits below the
+// EM middle because of the high marks zone) end up visually
+// centered.
+//
+// Usage:
+//   ctx.font = `${fit.fontPx}px "Amiri", Georgia, serif`;
+//   ctx.fillText(text, cx, cy + fit.yOffset);
+const ARABIC_HEIGHT_RATIO = 1.6;
+const ARABIC_Y_OFFSET_RATIO = 0.10;  // ~half of (ascent-descent)/h
+
+export const fitArabicText = (ctx, text, innerW, innerH) => {
+  if (!text || innerW <= 0 || innerH <= 0) return null;
+  const FONT = (px) => `${px}px "Amiri", Georgia, serif`;
+  // Probe at a reasonable size to measure width. We pick a probe
+  // size that should comfortably fit innerH (innerH / 1.6) so the
+  // probe measurement is well-formed.
+  const probePx = innerH / ARABIC_HEIGHT_RATIO;
+  ctx.font = FONT(probePx);
+  const m = ctx.measureText(text);
+  const probeW = m.width;
+  if (probeW <= 0) return null;
+  // Compute the scale that fits both axes. Width via measured
+  // probeW (linear in fontPx). Height via the empirical ratio.
+  const scaleW = innerW / probeW;
+  const scaleH = innerH / (probePx * ARABIC_HEIGHT_RATIO);
+  // scaleH is always 1.0 by construction (probePx was chosen so it
+  // exactly fits innerH); the real constraint is scaleW. Pick the
+  // smaller so width-limited words shrink.
+  const scale = Math.min(scaleW, scaleH);
+  const fontPx = probePx * scale;
+  const realH = fontPx * ARABIC_HEIGHT_RATIO;
+  // yOffset: with textBaseline="middle", the EM-line midpoint sits
+  // at `y`. Arabic ink center is below that midpoint because the
+  // ink extends further up (marks above the body) than down. Shift
+  // y down by ~10% of realH so the ink center coincides with the
+  // canvas center.
+  const yOffset = realH * ARABIC_Y_OFFSET_RATIO;
+  return { fontPx, yOffset, realW: probeW * scale, realH };
+};
+
+// --- Word-text target (v0.4) ------------------------------------------
+//
+// Words mode renders the ghost as canvas `fillText` with the Amiri
+// font instead of slotting per-letter SVG outlines. For "Score me"
+// in Words mode we rasterize the same text to an offscreen canvas
+// at the SAME aspect ratio as the on-screen ghost canvas, and reuse
+// the precision + coverage flow against the rasterized mask. Aspect
+// matching is required so the user's strokes (passed in
+// `canvasToView` CSS pixels — see `WordTraceLayer._canvasToView`)
+// line up with the rasterized text positions.
+const rasterizeWordText = (text, width, height) => {
+  const W = Math.max(32, Math.round(width || VIEWBOX));
+  const H = Math.max(32, Math.round(height || VIEWBOX));
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  const margin = Math.min(W, H) * 0.06;
+  const innerW = W - 2 * margin;
+  const innerH = H - 2 * margin;
+  const fit = fitArabicText(ctx, text, innerW, innerH);
+  if (!fit) {
+    return { mask: new Uint8ClampedArray(W * H * 4), width: W, height: H };
+  }
+  ctx.font = `${fit.fontPx}px "Amiri", Georgia, serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  if ("direction" in ctx) ctx.direction = "rtl";
+  ctx.fillStyle = "#ff0000";
+  ctx.fillText(text, W / 2, H / 2 + fit.yOffset);
+  return { mask: ctx.getImageData(0, 0, W, H).data, width: W, height: H };
+};
+
+const makeTextTester = (maskData, W, H) => (x, y) => {
+  const ix = Math.round(x);
+  const iy = Math.round(y);
+  if (ix < 0 || ix >= W || iy < 0 || iy >= H) return false;
+  return maskData[(iy * W + ix) * 4 + 3] > 0;
+};
+
+const sampleTextProbes = (maskData, W, H) => {
+  const refDim = Math.min(W, H);
+  const step = Math.max(8, Math.floor(refDim / Math.sqrt(PROBE_COUNT * 12)));
+  const probes = [];
+  const filled = (x, y) =>
+    x >= 0 && x < W && y >= 0 && y < H &&
+    maskData[(y * W + x) * 4 + 3] > 0;
+  for (let y = 0; y < H; y += step) {
+    for (let x = 0; x < W; x += step) {
+      if (!filled(x, y)) continue;
+      if (
+        !filled(x - step, y) ||
+        !filled(x + step, y) ||
+        !filled(x, y - step) ||
+        !filled(x, y + step)
+      ) {
+        probes.push([x, y]);
+      }
+    }
+  }
+  return probes;
+};
+
+// --- Generic score-me ------------------------------------------------
+//
+// `target` can be either:
+//   { kind: "writer", writer }                       — letter outline (v0.3)
+//   { kind: "text",   text, width, height }          — word fillText (v0.4)
+// or a bare writer object for backwards compat with v0.3 callers.
+// Returns { isInside, probes, recallTol } — recallTol is scaled
+// proportionally for word targets where the canvas isn't 1000-tall.
+const buildTesterAndProbes = (target) => {
+  // Backwards-compat: bare writer object as second arg.
+  if (target && target.outline && !target.kind) {
+    return {
+      isInside: makeOutlineTester(target),
+      probes: sampleOutlinePoints(target),
+      recallTol: RECALL_TOL,
+    };
+  }
+  if (target && target.kind === "writer" && target.writer) {
+    return {
+      isInside: makeOutlineTester(target.writer),
+      probes: sampleOutlinePoints(target.writer),
+      recallTol: RECALL_TOL,
+    };
+  }
+  if (target && target.kind === "text" && target.text) {
+    const { mask, width, height } = rasterizeWordText(
+      target.text, target.width, target.height,
+    );
+    // Scale the recall tolerance so it represents the same fraction
+    // of the canvas's shorter dimension as in letter mode (where the
+    // shorter dim is VIEWBOX = 1000 and tol = 90 → 9%).
+    const refDim = Math.min(width, height);
+    const tol = (RECALL_TOL / VIEWBOX) * refDim;
+    return {
+      isInside: makeTextTester(mask, width, height),
+      probes: sampleTextProbes(mask, width, height),
+      recallTol: tol,
+    };
+  }
+  return { isInside: null, probes: [], recallTol: RECALL_TOL };
+};
+
+export const scoreFreeDrawing = (userStrokesView, target) => {
+  if (!target || !userStrokesView || !userStrokesView.length) {
+    return { quality: 0, precision: 0, coverage: 0, message: "draw_to_score" };
+  }
+  // Flatten user strokes into a single point cloud.
+  const userPoints = [];
+  for (const s of userStrokesView) {
+    for (const p of s) userPoints.push([p[0], p[1]]);
+  }
+  if (userPoints.length < 6) {
+    return { quality: 0, precision: 0, coverage: 0, message: "draw_to_score" };
+  }
+
+  const { isInside, probes, recallTol } = buildTesterAndProbes(target);
+
+  let inside = 0;
+  if (isInside) {
+    for (const [x, y] of userPoints) {
+      if (isInside(x, y)) inside += 1;
+    }
+  }
+  const precision = isInside ? inside / userPoints.length : 0;
+
+  // Coverage: probe points along the target edge; for each, was
+  // there a user point within recallTol? recallTol is scaled per-target
+  // (smaller for short word canvases so the same physical pen-width
+  // covers the same fraction of the glyph).
+  const tolSq = recallTol * recallTol;
+  let recallHits = 0;
+  if (probes.length) {
+    for (const [px, py] of probes) {
+      let hit = false;
+      for (const [ux, uy] of userPoints) {
+        const dx = ux - px;
+        const dy = uy - py;
+        if (dx * dx + dy * dy < tolSq) {
+          hit = true;
+          break;
+        }
+      }
+      if (hit) recallHits += 1;
+    }
+  }
+  const coverage = probes.length ? recallHits / probes.length : 0;
+
+  // Quality: weighted toward coverage (don't reward scribbling inside
+  // one corner of the target and ignoring the rest). 60% coverage,
+  // 40% precision. Capped at 0..1.
+  const quality = Math.max(0, Math.min(1, 0.6 * coverage + 0.4 * precision));
+
+  let message = "ok";
+  if (quality < 0.35) message = "try_again";
+  else if (quality < 0.65) message = "getting_there";
+  else if (quality < 0.85) message = "good_match";
+  else message = "great_match";
+
+  return { quality, precision, coverage, message };
+};

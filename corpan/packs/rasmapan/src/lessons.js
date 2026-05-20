@@ -152,6 +152,9 @@ const queryAlphabet = async (queryPackDb) => {
 // `currentLanguage()` so it tracks the host's UI language.
 import { t, currentLanguage } from "./i18n.js";
 
+// REMOVED v0.4: normalizeArabic + ARABIC_DIACRITICS_RE were used by
+// the Bismillah Watch lookup against the Calliar recordings table.
+// Both surfaces are gone in v0.4. Bismillah is TTS-only.
 // Speak wrapper — prefers `speakConcurrent` when available, falls
 // back to `speak`. Same pattern as main.js (juice-squeeze).
 const makeSpeak = (hostApi) => (lang, text) => {
@@ -412,22 +415,23 @@ export class LessonRunner {
     this._wireSwipe();
   }
 
-  // Phrase-lesson Play button: TTS-only. The Calliar-derived
-  // stroke-order animation that previously played here was removed
-  // for v0.1.0 (see _render comment).
+  // Phrase-lesson Play button: TTS-only in v0.4. The Calliar-derived
+  // Watch / calligrapher canvas surface from v0.2 was removed because
+  // the playback was not visually shippable; Bismillah is rendered as
+  // a static Amiri phrase + TTS.
   _wirePhrasePlay(lesson) {
     if (!lesson || lesson.type !== "phrase") return;
     const btn = this.overlay.querySelector("[data-phrase-tts]");
-    if (!btn) return;
     const text = lesson.phrase_ar || "";
-    if (!text) return;
-    btn.addEventListener("click", () => {
-      this.speak("ar", text);
-      btn.style.transform = "scale(1.08)";
-      setTimeout(() => {
-        btn.style.transform = "";
-      }, 180);
-    });
+    if (btn && text) {
+      btn.addEventListener("click", () => {
+        this.speak("ar", text);
+        btn.style.transform = "scale(1.08)";
+        setTimeout(() => {
+          btn.style.transform = "";
+        }, 180);
+      });
+    }
   }
 
   // Advance the lesson by ±1 and persist progress. Used by both the

@@ -709,19 +709,21 @@ def build_glyph_record(
     medians = data.medians
     outline_bbox = tuple(data.bbox) if data.bbox else None
     # Try the outline-masked Calliar pipeline first for isolated forms
-    # (the primary v0.1 surface). Falls through to data.medians
-    # (outline-edge trace) if the masking yields no usable result —
-    # e.g. for primitives Calliar doesn't have, or composite letters
-    # we haven't wired yet.
+    # (the primary v0.1 surface). When masking fails — e.g. for the
+    # "pair:" recipes (Taa, DHaa) where we don't yet have a primitive
+    # composer — we DROP back to scoring="outline" so the runtime
+    # silently skips animation (better than showing an arbitrary
+    # outline-edge trace).
+    scoring = "outline"
     if family_id and position == "isolated" and data.polygons:
         try:
             from masked_medians import compose_masked_medians  # noqa: PLC0415
             masked = compose_masked_medians(family_id, data.polygons)
             if masked:
                 medians = masked
+                scoring = "median"
         except Exception as exc:  # noqa: BLE001
             print(f"[warn] masked-medians failed for {family_id}: {exc}", file=sys.stderr)
-    scoring = "median"
     record = {
         "letter": chr(codepoint),
         "outline": data.outline_paths,

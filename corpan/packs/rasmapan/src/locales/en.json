@@ -28,6 +28,15 @@
     "singular": "letter",
     "plural": "letters"
   },
+  "score": {
+    "draw_to_score": "Draw on the canvas first.",
+    "letters_only": "Scoring works in Letters mode.",
+    "try_again": "Try again — keep your strokes inside the letter.",
+    "getting_there": "Getting there. Cover more of the shape.",
+    "good_match": "Good match.",
+    "great_match": "Great match!",
+    "ok": "Scored."
+  },
   "aria": {
     "tutorial": "Tutorial",
     "play": "Play",

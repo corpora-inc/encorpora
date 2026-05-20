@@ -7,6 +7,7 @@ import {
 } from "../brush/index.js"
 import { LessonRunner, resetLessonProgress } from "./lessons.js"
 import { LetterTraceLayer, WordTraceLayer } from "./trace.js"
+import { scoreFreeDrawing } from "./scoring.js"
 import { t, subscribeLanguageChanged, currentLanguage } from "./i18n.js"
 import { tokenizeText, wordContainsLetter } from "./tokenize.js"
 
@@ -92,6 +93,11 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
                   <path class="eye-slash" d="M4 4 20 20" />
                 </svg>
               </button>
+              <button class="icon-chip" data-action="score" aria-label="Score me">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                </svg>
+              </button>
               <button class="icon-chip" data-action="clear" aria-label="Clear">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5" />
@@ -104,6 +110,10 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
             <canvas class="canvas-layer" data-draw></canvas>
             <canvas class="canvas-layer" data-fx></canvas>
             <div class="canvas-overlay" data-overlay>Loading...</div>
+            <div class="score-banner" data-score-banner hidden>
+              <div class="score-banner-pct" data-score-banner-pct>—</div>
+              <div class="score-banner-msg" data-score-banner-msg></div>
+            </div>
           </div>
           <div class="panel-footer">
             <div class="score-bar" data-score-bar>
@@ -196,19 +206,32 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     }
 
     resize() {
-      const rect = this.shell.getBoundingClientRect()
       const dpr = window.devicePixelRatio || 1
       this.dpr = dpr
-      const w = Math.max(1, Math.floor(rect.width))
-      const h = Math.max(1, Math.floor(rect.height))
-      this.size = { w, h }
+      // Size the canvas BUFFER to the canvas-layer's actual rendered
+      // bounds (governed by CSS: `inset: 12px` inside the shell's
+      // padding box + `width: calc(100% - 24px)`). Previously we were
+      // sizing to the SHELL's bounding rect and force-overriding the
+      // CSS via inline style — that pushed the canvas buffer 24 CSS
+      // px past the shell's overflow:hidden clip on the right and
+      // bottom, shifting every centered glyph toward the lower-right
+      // and causing it to overlap the dashed border (`::after { inset:
+      // 20px }`) on those sides. With buffer=visible-area the trace
+      // layers' centering math becomes accurate.
       const canvases = this.shell.querySelectorAll(".canvas-layer")
+      let layerW = 0
+      let layerH = 0
       canvases.forEach((c) => {
+        const rect = c.getBoundingClientRect()
+        const w = Math.max(1, Math.floor(rect.width))
+        const h = Math.max(1, Math.floor(rect.height))
         c.width = w * dpr
         c.height = h * dpr
-        c.style.width = `${w}px`
-        c.style.height = `${h}px`
+        // Intentionally NOT setting c.style.width / c.style.height —
+        // CSS governs visible size via `inset: 12px` + calc().
+        if (!layerW) { layerW = w; layerH = h }
       })
+      this.size = { w: layerW, h: layerH }
       this.redraw()
     }
 
@@ -388,14 +411,29 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     root.innerHTML = template
     container.appendChild(root)
 
-    // No UA-based --safe-top hard-coding here: the CSS resolves
-    // --safe-top via env(safe-area-inset-top, 0px) at :root and
-    // inherits it down. Tauri's WebView passes the real notch /
-    // gesture inset through env() on both iOS and Android (assuming
-    // viewport-fit=cover on the host shell), so we don't need to
-    // sniff the UA. Previously we forced a 25-30px constant which
-    // either over- or under-shot the real inset depending on the
-    // device.
+    // Safe-area handling — env(safe-area-inset-*) works reliably on
+    // iOS WebView but on Android the inset is often reported as 0px
+    // even when the system status bar IS overlapping the WebView
+    // content (host needs WindowCompat.setDecorFitsSystemWindows +
+    // viewport-fit=cover for env() to populate; older Tauri or older
+    // Android builds may not). On iOS we trust env(); on Android we
+    // apply a minimum floor so chrome (close button, hero card top,
+    // bottom action chips) doesn't slide under the status bar /
+    // gesture inset.
+    //
+    // We layer max(env(...), <android-min>) onto the existing CSS
+    // custom properties — iOS notch (~47px) wins over our 28px
+    // floor; Android with edge-to-edge enabled (~24px) is close to
+    // the floor and roughly matches; Android without edge-to-edge
+    // (env=0) gets the floor, keeping content visible.
+    const ua = (typeof navigator !== "undefined" && navigator.userAgent) || ""
+    const isAndroid = /Android/i.test(ua)
+    if (isAndroid) {
+      root.style.setProperty("--safe-top", "max(env(safe-area-inset-top, 0px), 28px)")
+      root.style.setProperty("--safe-bottom", "max(env(safe-area-inset-bottom, 0px), 18px)")
+      root.style.setProperty("--safe-left", "max(env(safe-area-inset-left, 0px), 8px)")
+      root.style.setProperty("--safe-right", "max(env(safe-area-inset-right, 0px), 8px)")
+    }
 
     const elChar = root.querySelector("[data-char]")
     const elLetterName = root.querySelector("[data-letter-name]")
@@ -421,6 +459,9 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     const guidedToggle = root.querySelector("[data-guided-toggle]")
     const freeDrawToggle = root.querySelector("[data-freedraw-toggle]")
     const modeTabs = root.querySelectorAll("[data-mode]")
+    const elScoreBanner = root.querySelector("[data-score-banner]")
+    const elScoreBannerPct = root.querySelector("[data-score-banner-pct]")
+    const elScoreBannerMsg = root.querySelector("[data-score-banner-msg]")
 
     const state = {
       mode: "letters",  // letters | words. Styles live in the intro
@@ -468,48 +509,20 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       try { hostApi.speak(lang, text) } catch { /* tolerated */ }
     }
 
-    // Trigger canonical stroke-order animation on the fx canvas for
-    // whichever trace layer is currently active. No-op if the
-    // writer record has no medians (i.e. letter not yet processed
-    // through the Calliar pipeline). The animation is purely
-    // decorative — it doesn't affect scoring or the user's draw
-    // strokes.
-    const playCurrentStrokeOrder = () => {
-      if (state.mode === "letters" && traceLayer) {
-        traceLayer.playStrokeOrder()
-      } else if (state.mode === "words" && wordTraceLayer) {
-        wordTraceLayer.playStrokeOrder()
-      }
-    }
-
-    // Variant-chip state: tracks which variant to play on the next
-    // tap of the "see other writers" button. Cycles 0..N-1 and back
-    // around. Reset whenever the active letter changes.
-    state.variantCursor = 0
+    // v0.1.1: stroke-order animation removed. Per-letter medians
+    // produced by the masked-Calliar pipeline didn't visually match
+    // the letter centerlines — the animation taught the wrong path
+    // and confused learners. Static ghost outline + start dot stays;
+    // a future Calligrapher-watch surface (v0.2) will replace this
+    // with word/phrase-level playback using Calliar's native render
+    // pattern instead of fighting their data into our viewBox.
+    //
+    // The trace.js `playStrokeOrder` API is intentionally left in
+    // place so v0.2 can rewire it, but no call sites remain here.
     const variantChip = root.querySelector("[data-variant-chip]")
+    if (variantChip) variantChip.hidden = true
     const refreshVariantChip = () => {
-      if (!variantChip) return
-      const count = state.mode === "letters" && traceLayer
-        ? traceLayer.variantCount()
-        : 0
-      if (count >= 2) {
-        variantChip.hidden = false
-      } else {
-        variantChip.hidden = true
-      }
-    }
-    const playNextVariant = () => {
-      if (state.mode !== "letters" || !traceLayer) return
-      const count = traceLayer.variantCount()
-      if (count < 2) return
-      // Cycle through variants 0..N-1, then back to canonical (null).
-      // Even cursor positions show variants; the canonical animation
-      // is reached via the regular Play button.
-      const idx = state.variantCursor % count
-      state.variantCursor = (state.variantCursor + 1) % count
-      traceLayer.playStrokeOrder({ variantIndex: idx })
-      const baseLetter = state.baseLetter || state.currentLetter
-      if (baseLetter) speak("ar", baseLetter)
+      if (variantChip) variantChip.hidden = true
     }
 
     // --- pickByLang (juice-squeeze pattern) ------------------------------
@@ -805,11 +818,6 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           traceLayer.setGhostVisible(state.ghostVisible)
           traceLayer.setFreeDraw(state.freeDraw)
         }
-        // Variant cycling resets when the active letter or position
-        // changes, so the next tap of the "other writers" chip
-        // starts at variant 0 (not wherever we left off on a
-        // different letter).
-        state.variantCursor = 0
         refreshVariantChip()
         // Stroke count as localized text — "3 strokes" / "3 trazos"
         // / "3 traits" — re-rendered on language change via the
@@ -924,7 +932,11 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           if (w) writers.push({ writer: w })
         }
         if (wordTraceLayer) {
-          wordTraceLayer.setWord(writers)
+          // Pass the raw Arabic string alongside the per-letter
+          // writers — v0.4 renders the ghost as a single big Amiri
+          // fillText composition instead of slotting separate letter
+          // glyphs side-by-side.
+          wordTraceLayer.setWord(writers, word.word)
           wordTraceLayer.setGhostVisible(state.ghostVisible)
         }
         // Letter count as localized text.
@@ -982,23 +994,23 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       return `<div class="example-words" dir="rtl">${chips.join("")}</div>`
     }
 
-    // Words mode: render a vertical list of word pills in the examples panel.
+    // Words mode: paint the 40-word picker synchronously, then
+    // async-append host-corpus phrases containing the active word.
+    // Mirrors `renderLetterExamples` pattern but rendered in two
+    // stages so the picker shows up immediately.
+    const wordCorpusSeq = { current: 0 }  // bumped to invalidate stale fetches
     const renderWordPicker = () => {
       if (!state.words.length) {
         elExamples.innerHTML = "<div class='example-text'>—</div>"
         return
       }
       const primary = stackPrimaryLang()
-      const html = state.words
+      const pillsHtml = state.words
         .map((w) => {
           const cls = w.id === state.activeWordId ? "word-pill is-active" : "word-pill"
           const meaningRows = Object.entries(w.meaning || {})
             .filter(([lang, text]) => lang && text && lang !== "ar")
             .map(([lang, text]) => ({ language_code: lang, text }))
-          // Prefer the primary lang; fall back explicitly to
-          // English rather than pickByLang's translations[0]
-          // (which could be any other stack language depending
-          // on insertion order).
           const picked =
             pickByLang(meaningRows, primary) ||
             pickByLang(meaningRows, "en")
@@ -1011,7 +1023,12 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           `
         })
         .join("")
-      elExamples.innerHTML = `<div class='word-picker'>${html}</div>`
+      // Render an empty `word-corpus` container — async append will
+      // fill it once the host search returns. Keeps the picker
+      // pills painted immediately.
+      elExamples.innerHTML =
+        `<div class='word-picker'>${pillsHtml}</div>` +
+        `<div data-word-corpus></div>`
       elExampleCount.textContent = String(state.words.length)
       elExamplesFooter.textContent = t("word_picker.hint")
       elExamples.querySelectorAll("[data-word]").forEach((btn) => {
@@ -1021,6 +1038,72 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           renderHero()
         })
       })
+      // Async corpus fetch for the active word.
+      const seq = ++wordCorpusSeq.current
+      void (async () => {
+        const activeWord = state.words.find((w) => w.id === state.activeWordId)
+        if (!activeWord || !activeWord.word || !hostApi.searchEntriesByText) return
+        const stackLangs = state.stackConfig.languages || []
+        let entries = []
+        try {
+          entries = await hostApi.searchEntriesByText({
+            text: activeWord.word,
+            languageCodes: unique(["ar", ...stackLangs]),
+            limit: 20,
+            offset: 0,
+          })
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.warn("[rasmapan] corpus search (words mode) failed", err)
+          return
+        }
+        // Bail if the user changed words while we were fetching.
+        if (seq !== wordCorpusSeq.current) return
+        const slot = elExamples.querySelector("[data-word-corpus]")
+        if (!slot) return
+        const corpusCards = []
+        for (const entry of entries || []) {
+          const ar = (entry.translations || []).find((tr) => tr.language_code === "ar")
+          if (!ar) continue
+          const nonAr = (entry.translations || [])
+            .filter((tr) => tr.language_code !== "ar")
+          const pickedRow = pickByLang(nonAr, primary) || pickByLang(nonAr, "en")
+          const transHtml = pickedRow
+            ? `<div class="example-translation">${escapeHtml(pickedRow.text)}</div>`
+            : ""
+          corpusCards.push(`
+            <article class="example-card" data-speak-phrase="${escapeHtml(ar.text)}">
+              <span class="example-marker example-marker-corpus" aria-hidden="true"></span>
+              ${renderArabicChips(ar.text)}
+              ${transHtml}
+            </article>
+          `)
+        }
+        if (!corpusCards.length) {
+          slot.innerHTML = ""
+          return
+        }
+        slot.innerHTML =
+          `<div class="example-section-title">${escapeHtml(t("examples.heading_corpus"))}</div>` +
+          corpusCards.join("")
+        elExampleCount.textContent = String(state.words.length + corpusCards.length)
+        elExamplesFooter.textContent = t("examples.tap_word_hint")
+        // Re-wire taps on the just-appended cards.
+        slot.querySelectorAll("[data-speak-word]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation()
+            const text = btn.dataset.speakWord
+            if (text) speak("ar", text)
+          })
+        })
+        slot.querySelectorAll("[data-speak-phrase]").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            if (e.target.closest("[data-speak-word]")) return
+            const text = card.dataset.speakPhrase
+            if (text) speak("ar", text)
+          })
+        })
+      })()
     }
 
     // Letters mode examples panel: pack-owned curated words +
@@ -1172,6 +1255,78 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
       elCompleteCount.textContent = String(state.completedCount)
     }
 
+    // --- v0.3 "Score me" --------------------------------------------------
+    //
+    // Grab the user's drawn strokes (from DrawingEngine, in canvas
+    // device-pixel coords), convert to 0..1000 viewBox via the active
+    // trace layer's _canvasToView, score against the current writer's
+    // outline polygon via scoreFreeDrawing(), and show a transient
+    // banner with the % match + a status string.
+    let scoreBannerTimer = null
+    const hideScoreBanner = () => {
+      if (scoreBannerTimer) {
+        clearTimeout(scoreBannerTimer)
+        scoreBannerTimer = null
+      }
+      if (elScoreBanner) elScoreBanner.hidden = true
+    }
+    const showScoreBanner = (pct, message, accent) => {
+      if (!elScoreBanner) return
+      elScoreBanner.hidden = false
+      elScoreBanner.dataset.tone = accent
+      if (elScoreBannerPct) elScoreBannerPct.textContent = `${pct}%`
+      if (elScoreBannerMsg) {
+        elScoreBannerMsg.textContent = t(`score.${message}`) || ""
+      }
+      if (scoreBannerTimer) clearTimeout(scoreBannerTimer)
+      scoreBannerTimer = setTimeout(hideScoreBanner, 4200)
+    }
+    const scoreUserDrawing = () => {
+      if (!drawingEngine || !drawingEngine.strokes || !drawingEngine.strokes.length) {
+        showScoreBanner(0, "draw_to_score", "muted")
+        return
+      }
+      // Convert each user stroke from canvas device-pixel coords to
+      // viewBox 0..1000 via whichever trace layer owns the canvas
+      // in the current mode (both expose the same `_canvasToView`).
+      const layer = state.mode === "words" ? wordTraceLayer : traceLayer
+      if (!layer || typeof layer._canvasToView !== "function") {
+        showScoreBanner(0, "draw_to_score", "muted")
+        return
+      }
+      const userStrokesView = drawingEngine.strokes.map((s) =>
+        s.map((p) => layer._canvasToView(p.x, p.y)),
+      )
+      // Pick the scoring target: a writer record for letter mode,
+      // a word-text target (rasterized fillText mask at the canvas's
+      // own aspect ratio) for word mode.
+      let target = null
+      if (state.mode === "letters" && state.currentWriter) {
+        target = state.currentWriter
+      } else if (state.mode === "words" && state.currentWord && state.currentWord.word) {
+        const vp = typeof layer.getViewportSize === "function"
+          ? layer.getViewportSize()
+          : { width: 1000, height: 1000 }
+        target = {
+          kind: "text",
+          text: state.currentWord.word,
+          width: vp.width,
+          height: vp.height,
+        }
+      }
+      if (!target) {
+        showScoreBanner(0, "draw_to_score", "muted")
+        return
+      }
+      const result = scoreFreeDrawing(userStrokesView, target)
+      const pct = Math.round((result.quality || 0) * 100)
+      const tone =
+        result.quality >= 0.85 ? "great" :
+        result.quality >= 0.65 ? "good" :
+        result.quality >= 0.35 ? "ok" : "low"
+      showScoreBanner(pct, result.message, tone)
+    }
+
     // --- Setup drawing/tracing ------------------------------------------
 
     const ensureCanvases = () => {
@@ -1268,25 +1423,27 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
           ? state.currentWord.word
           : state.baseLetter || state.currentLetter
         if (text) speak("ar", text)
-        playCurrentStrokeOrder()
         return
       }
       if (action === "clear") {
         if (drawingEngine) drawingEngine.clear()
         if (traceLayer) traceLayer.setWriter(state.currentWriter)  // resets stroke index
         elScore.style.width = "0%"
+        hideScoreBanner()
+        return
+      }
+      if (action === "score") {
+        scoreUserDrawing()
         return
       }
       if (action === "replay") {
-        // Speak the current letter or word AND animate the
-        // canonical stroke order on the fx canvas. The toolbar
-        // Play gives users a second affordance right next to the
-        // canvas, useful mid-tracing without moving the cursor.
+        // Toolbar Play is a TTS replay shortcut next to the canvas.
+        // No stroke-order animation in v0.1.1 (see comment above
+        // `refreshVariantChip`).
         const text = state.mode === "words" && state.currentWord
           ? state.currentWord.word
           : state.baseLetter || state.currentLetter
         if (text) speak("ar", text)
-        playCurrentStrokeOrder()
         return
       }
       if (action === "toggle-freedraw") {
@@ -1311,10 +1468,7 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         brushWidget.toggle()
         return
       }
-      if (action === "variant") {
-        playNextVariant()
-        return
-      }
+      // variant action removed in v0.1.1 along with playStrokeOrder.
       if (action === "tutorial") {
         // Reset lesson progress so the runner re-shows from step 1.
         // The user reaches this when they want to revisit the intro
@@ -1368,6 +1522,51 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
     }
     root.querySelector("[data-nav='prev']").addEventListener("click", () => navByDelta(-1))
     root.querySelector("[data-nav='next']").addEventListener("click", () => navByDelta(+1))
+
+    // Global swipe navigation — fires from anywhere on the main pack
+    // screen EXCEPT the brush canvas (`touch-action: none` for
+    // drawing) and the horizontally-scrolling letter picker. The
+    // examples panel scrolls vertically, so horizontal swipe there
+    // doesn't conflict.
+    //
+    // Mirrors lessons.js `_wireSwipe`: all listeners on the same
+    // element (root), per-pointer state via a Map (so a stray touch
+    // doesn't confuse a primary gesture), and the swipe FIRES on
+    // pointermove the moment the threshold is crossed — instead of
+    // waiting for pointerup. This makes it feel snappy and avoids
+    // the case where pointerup fires off the listener's element on
+    // mobile.
+    const SKIP_SWIPE_SEL =
+      ".canvas-shell, .letter-picker, " +
+      "button, a, input, textarea, select"
+    const SWIPE_THRESHOLD = 32
+    const swipeMap = new Map()  // pointerId -> { startX, startY, fired }
+    const onSwipeDown = (e) => {
+      if (e.target.closest(SKIP_SWIPE_SEL)) return
+      swipeMap.set(e.pointerId, {
+        startX: e.clientX,
+        startY: e.clientY,
+        fired: false,
+      })
+    }
+    const onSwipeMove = (e) => {
+      const s = swipeMap.get(e.pointerId)
+      if (!s || s.fired) return
+      const dx = e.clientX - s.startX
+      const dy = e.clientY - s.startY
+      if (Math.abs(dx) < SWIPE_THRESHOLD) return
+      if (Math.abs(dy) > Math.abs(dx)) return
+      s.fired = true  // prevent re-fire within the same gesture
+      if (dx < 0) navByDelta(1)
+      else navByDelta(-1)
+    }
+    const onSwipeEnd = (e) => {
+      swipeMap.delete(e.pointerId)
+    }
+    root.addEventListener("pointerdown", onSwipeDown)
+    root.addEventListener("pointermove", onSwipeMove)
+    root.addEventListener("pointerup", onSwipeEnd)
+    root.addEventListener("pointercancel", onSwipeEnd)
 
     // --- Resize ---------------------------------------------------------
 
@@ -1474,6 +1673,8 @@ import { tokenizeText, wordContainsLetter } from "./tokenize.js"
         window.removeEventListener("resize", handleResize)
         if (resizeRaf) cancelAnimationFrame(resizeRaf)
         if (drawingEngine) drawingEngine.disable()
+        // Swipe listeners are attached to `root`; removing root
+        // takes them down automatically.
         root.remove()
       },
     }

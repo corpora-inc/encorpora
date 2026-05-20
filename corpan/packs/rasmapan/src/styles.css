@@ -2427,3 +2427,48 @@
   grid-column: 1 / -1;
 }
 
+
+/* Score-me banner — overlays on the trace canvas after the user
+ * hits the score chip; auto-hides after a few seconds. */
+.score-banner {
+  position: absolute;
+  inset: auto 12px 12px 12px;
+  background: var(--paper, rgba(251, 246, 236, 0.97));
+  border: 1px solid rgba(107, 76, 42, 0.18);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  box-shadow: 0 6px 18px rgba(26, 20, 16, 0.18);
+  animation: score-banner-in 220ms ease-out;
+  z-index: 4;
+}
+
+.score-banner[hidden] {
+  display: none;
+}
+
+.score-banner-pct {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent, #8b6914);
+}
+
+.score-banner[data-tone="great"] .score-banner-pct { color: #2f7d32; }
+.score-banner[data-tone="good"] .score-banner-pct { color: #5b8b1d; }
+.score-banner[data-tone="ok"] .score-banner-pct { color: #b06b3b; }
+.score-banner[data-tone="low"] .score-banner-pct { color: #8b3c1e; }
+.score-banner[data-tone="muted"] .score-banner-pct { color: rgba(26, 20, 16, 0.62); }
+
+.score-banner-msg {
+  font-size: 13px;
+  color: var(--ink, #1a1410);
+  flex: 1 1 auto;
+}
+
+@keyframes score-banner-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

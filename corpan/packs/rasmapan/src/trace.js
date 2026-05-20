@@ -10,7 +10,7 @@
  * scorer in `./scoring.js`.
  */
 
-import { scoreStroke } from "./scoring.js";
+import { scoreStroke, fitArabicText } from "./scoring.js";
 
 const VIEWBOX = 1000;
 
@@ -286,11 +286,23 @@ export class LetterTraceLayer {
     this.strokeIndex = 0;
     this.completedStrokes = [];
     this.outlinePaths = [];
+    // Build BOTH per-contour Path2Ds (for the per-stroke highlight)
+    // AND a single combined Path2D containing every contour as a
+    // subpath. Filling the combined path once with `evenodd` is the
+    // ONLY way to subtract inner counter contours (the visible holes
+    // inside ه م ظ و ف ق ل etc.) from the outer body fill. Filling
+    // each contour separately just paints the counter on top of the
+    // body, making the glyph look like a solid blob.
+    this.outlineCombined = null;
     if (writer && Array.isArray(writer.outline)) {
+      const combined = new Path2D();
       for (const d of writer.outline) {
         const p = buildPath2D(d);
-        if (p) this.outlinePaths.push({ d, path2d: p });
+        if (!p) continue;
+        this.outlinePaths.push({ d, path2d: p });
+        combined.addPath(p);
       }
+      this.outlineCombined = combined;
     }
     this.redraw();
   }
@@ -370,41 +382,112 @@ export class LetterTraceLayer {
 
     if (!this.writer || !this.ghostVisible || !this.outlinePaths.length) return;
 
-    const layout = this._effectiveLayout();
+    const layout = this._glyphLayout();
     const colors = this.getColors();
 
-    // Map viewBox (0..1000) → canvas pixels, accounting for DPR.
+    // Map viewBox (0..1000) → canvas pixels via the glyph-bbox fit,
+    // accounting for DPR. With the bbox-based layout, tall-narrow
+    // letters like alif fill the canvas vertically with minimal
+    // padding; wide-low letters fill horizontally.
     const dpr = window.devicePixelRatio || 1;
     ctx.save();
-    const scale = (layout.size * dpr) / VIEWBOX;
-    const tx = layout.x * dpr;
-    const ty = layout.y * dpr;
-    ctx.setTransform(scale, 0, 0, scale, tx, ty);
+    ctx.setTransform(
+      layout.scale * dpr, 0, 0, layout.scale * dpr,
+      layout.tx * dpr, layout.ty * dpr,
+    );
 
-    // Fill the ghost outline in faded sepia.
+    // Fill the ghost outline in faded sepia. ONE fill call with the
+    // combined path + even-odd rule so inner counter contours
+    // subtract from the outer body fill, leaving visible holes
+    // empty (parchment shows through the counter of ه م ظ و etc.).
     ctx.fillStyle = colors.strokeGhost;
-    for (let i = 0; i < this.outlinePaths.length; i += 1) {
-      ctx.fill(this.outlinePaths[i].path2d, "evenodd");
+    if (this.outlineCombined) {
+      ctx.fill(this.outlineCombined, "evenodd");
     }
 
     // Highlight the current (next) stroke's contour, if we have one
-    // and freedraw mode is off.
+    // and freedraw mode is off. CLIP to the target contour's area,
+    // then FILL the combined path with the highlight color. That way
+    // counters still subtract within the highlighted region — the
+    // hole stays visible during the highlight (avoids the v0.4.4
+    // bug where highlighting the body filled the counter solid and
+    // erased the hole).
     if (this.dirEnabled && this.strokeIndex < this.outlinePaths.length) {
       const target = this.outlinePaths[this.strokeIndex];
-      if (target) {
+      if (target && this.outlineCombined) {
+        ctx.save();
+        ctx.clip(target.path2d, "evenodd");
         ctx.fillStyle = colors.strokeHighlight;
-        ctx.fill(target.path2d, "evenodd");
+        ctx.fill(this.outlineCombined, "evenodd");
+        ctx.restore();
       }
     }
 
     ctx.restore();
   }
 
+  /**
+   * Compute the canvas-pixel transform that maps the writer's actual
+   * glyph bbox into the canvas with a tight ~4% safety margin. Reads
+   * `writer.bbox = [minX, minY, maxX, maxY]` in 0..1000 viewBox coords
+   * and centers the rendered glyph inside the canvas. Falls back to a
+   * full-viewBox layout when the bbox is missing or degenerate.
+   *
+   * Returns `{ scale, tx, ty, w, h }` in CSS pixels — multiply by
+   * DPR at the actual `setTransform` call site.
+   */
+  _glyphLayout() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = this.ghostCanvas.width / dpr;
+    const h = this.ghostCanvas.height / dpr;
+    if (w <= 0 || h <= 0) {
+      // ResizeObserver race — return a null-fit that redraw() can
+      // safely ignore (it guards on c.width / c.height already).
+      return { scale: 1, tx: 0, ty: 0, w, h };
+    }
+    // 7% of the canvas's smaller dim, floored at 16 CSS px. The
+    // canvas-layer is inset 12px from the shell; the dashed border
+    // (canvas-shell::after) is inset 20px — 8 CSS px inside the
+    // canvas edge on every device. A 16-px floor guarantees the
+    // glyph stays well inside the dashed visible border on small
+    // phones; the 7% percentage scales gracefully on iPad.
+    const pad = Math.max(Math.min(w, h) * 0.07, 16);
+    const bbox = this.writer && Array.isArray(this.writer.bbox)
+      ? this.writer.bbox
+      : null;
+    if (bbox && bbox.length === 4) {
+      const [minX, minY, maxX, maxY] = bbox;
+      const gw = maxX - minX;
+      const gh = maxY - minY;
+      if (gw > 0 && gh > 0) {
+        const scale = Math.min((w - 2 * pad) / gw, (h - 2 * pad) / gh);
+        const ox = (w - gw * scale) / 2;
+        const oy = (h - gh * scale) / 2;
+        return {
+          scale,
+          tx: ox - minX * scale,
+          ty: oy - minY * scale,
+          w, h,
+        };
+      }
+    }
+    // Fallback: square fit of the full 0..1000 viewBox.
+    const size = Math.min(w, h) - 2 * pad;
+    const scale = size / VIEWBOX;
+    return {
+      scale,
+      tx: (w - size) / 2,
+      ty: (h - size) / 2,
+      w, h,
+    };
+  }
+
+  /** Legacy alias for callers that still expect _effectiveLayout. */
   _effectiveLayout() {
     const dpr = window.devicePixelRatio || 1;
     const w = this.ghostCanvas.width / dpr;
     const h = this.ghostCanvas.height / dpr;
-    const padding = Math.min(w, h) * 0.08;
+    const padding = Math.max(Math.min(w, h) * 0.07, 16);
     const size = Math.min(w, h) - padding * 2;
     const x = (w - size) / 2;
     const y = (h - size) / 2;
@@ -413,9 +496,9 @@ export class LetterTraceLayer {
 
   _canvasToView(canvasX, canvasY) {
     const dpr = window.devicePixelRatio || 1;
-    const layout = this._effectiveLayout();
-    const x = (canvasX / dpr - layout.x) * (VIEWBOX / layout.size);
-    const y = (canvasY / dpr - layout.y) * (VIEWBOX / layout.size);
+    const layout = this._glyphLayout();
+    const x = (canvasX / dpr - layout.tx) / layout.scale;
+    const y = (canvasY / dpr - layout.ty) / layout.scale;
     return [x, y];
   }
 }
@@ -427,17 +510,39 @@ export class LetterTraceLayer {
  * (aspect 16:7), giving each letter ~280 viewBox units of horizontal
  * room.
  */
+/**
+ * v0.4: word ghost = a single big elegant Amiri-rendered word filling
+ * the canvas. We drop the per-letter outline-slot layout (which read
+ * as "separate disconnected glyphs side-by-side") and let the
+ * browser's text engine shape the full Arabic string properly with
+ * RTL connecting forms, ligatures, and kerning.
+ *
+ * `letters` is still tracked for the score-me word-target raster
+ * (we use the same Amiri rendering against an offscreen mask) and
+ * for any future per-letter UI affordances. The `text` field is the
+ * raw Arabic string the user is tracing.
+ */
 export class WordTraceLayer extends LetterTraceLayer {
   constructor(ghostCanvas, getColors) {
     super(ghostCanvas, getColors);
-    this.letters = [];  // [{ writer, offsetX, scale }]
+    this.letters = [];
+    this.text = "";
+    this._fontReady = false;
+    this._fontPending = null;
   }
 
-  setWord(letters) {
+  /**
+   * Set the active word.
+   *   `letters`: optional array of letter writer records (for UI
+   *     metadata; not used in rendering).
+   *   `text`: the raw Arabic string to render in the ghost canvas.
+   */
+  setWord(letters, text) {
     this.letters = letters || [];
-    // Per-letter outline paths are built lazily during redraw.
+    this.text = String(text || "");
     this.strokeIndex = 0;
     this.completedStrokes = [];
+    this._ensureFont();
     this.redraw();
   }
 
@@ -445,20 +550,43 @@ export class WordTraceLayer extends LetterTraceLayer {
     /* no-op — words use setWord instead */
   }
 
+  /** Returns the raw Arabic string currently rendered. */
+  getText() {
+    return this.text;
+  }
+
+  /**
+   * Words mode lives in CSS-pixel coords (the canvas aspect is 16:7,
+   * not square, so we DON'T map to the 0..1000 letter viewBox). The
+   * score-me rasterizer below mirrors these dimensions so the
+   * rasterized text and the user's strokes share the same coord
+   * space.
+   */
+  _canvasToView(canvasX, canvasY) {
+    const dpr = window.devicePixelRatio || 1;
+    return [canvasX / dpr, canvasY / dpr];
+  }
+
+  /** CSS-pixel canvas dimensions — paired with `_canvasToView`. */
+  getViewportSize() {
+    const dpr = window.devicePixelRatio || 1;
+    return {
+      width: this.ghostCanvas.width / dpr,
+      height: this.ghostCanvas.height / dpr,
+    };
+  }
+
   totalStrokes() {
-    // Approximate — total contours across all letters.
-    let total = 0;
-    for (const l of this.letters) {
-      if (l.writer && Array.isArray(l.writer.outline)) {
-        total += l.writer.outline.length;
-      }
-    }
-    return total;
+    // Approximate — number of "writing units" in the word so the
+    // stroke counter in the toolbar reads sensibly.
+    return this.letters.length || (this.text ? this.text.length : 0);
   }
 
   consumeUserStroke(_canvasPoints) {
-    // Permissive scoring in word mode for v0.1.0: any user stroke
-    // counts toward the total. Real per-letter scoring is a follow-up.
+    // Per-stroke scoring isn't useful for whole-word free draw —
+    // the user's stroke order is loose. We just count strokes so
+    // the score bar progresses; the "Score me" button (main.js)
+    // runs the real word-shape scorer at the end.
     if (this.strokeIndex < this.totalStrokes()) {
       this.completedStrokes.push({ strokeIndex: this.strokeIndex, quality: 0.6 });
       this.strokeIndex += 1;
@@ -473,6 +601,66 @@ export class WordTraceLayer extends LetterTraceLayer {
     return { quality: 0, accepted: false, complete: true, strokeIndex: -1 };
   }
 
+  /**
+   * Compute the fitted font size + center-offset for the current
+   * text. Uses the shared `fitArabicText` helper from scoring.js so
+   * the on-screen ghost and the offscreen score-me raster share
+   * the exact same fit math. Returns null when no text or empty
+   * canvas. Coordinates are in canvas device pixels (post-DPR).
+   */
+  _wordLayout() {
+    const c = this.ghostCanvas;
+    if (!c.width || !c.height || !this.text) return null;
+    const dpr = window.devicePixelRatio || 1;
+    const cw = c.width;
+    const ch = c.height;
+    // Mirror LetterTraceLayer's margin (7% of canvas's smaller dim,
+    // floored at 16 device px × dpr to stay inside the dashed border
+    // on small phones).
+    const margin = Math.max(Math.min(cw, ch) * 0.07, 16 * dpr);
+    const innerW = cw - 2 * margin;
+    const innerH = ch - 2 * margin;
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    const fit = fitArabicText(ctx, this.text, innerW, innerH);
+    ctx.restore();
+    if (!fit) return null;
+    return {
+      fontPx: fit.fontPx,
+      yOffset: fit.yOffset,
+      cx: cw / 2,
+      cy: ch / 2,
+      cw,
+      ch,
+      dpr,
+    };
+  }
+
+  /** Wait for Amiri to load (FontFaceSet) then redraw once. */
+  _ensureFont() {
+    if (this._fontReady) return;
+    if (this._fontPending) return;
+    if (typeof document === "undefined" || !document.fonts ||
+        typeof document.fonts.load !== "function") {
+      this._fontReady = true;
+      return;
+    }
+    // Use a representative size; FontFaceSet is size-keyed but
+    // loading one size warms up the font face for all sizes.
+    this._fontPending = document.fonts.load(`64px "Amiri"`, this.text || "ا")
+      .then(() => {
+        this._fontReady = true;
+        this._fontPending = null;
+        this.redraw();
+      })
+      .catch(() => {
+        // Font failed to load — fall back to Georgia. Move on.
+        this._fontReady = true;
+        this._fontPending = null;
+      });
+  }
+
   redraw() {
     const ctx = this.ctx;
     const c = this.ghostCanvas;
@@ -482,169 +670,25 @@ export class WordTraceLayer extends LetterTraceLayer {
     ctx.clearRect(0, 0, c.width, c.height);
     ctx.restore();
 
-    if (!this.ghostVisible || !this.letters.length) return;
+    if (!this.ghostVisible || !this.text) return;
 
+    const layout = this._wordLayout();
+    if (!layout) return;
     const colors = this.getColors();
-    const layout = this._layoutSlots();
-    const dpr = window.devicePixelRatio || 1;
 
-    for (let i = 0; i < this.letters.length; i += 1) {
-      const letter = this.letters[i];
-      if (!letter || !letter.writer) continue;
-      const slot = layout.slots[i];
-      ctx.save();
-      ctx.setTransform(slot.scale * dpr, 0, 0, slot.scale * dpr, slot.tx, slot.ty);
-      ctx.fillStyle = colors.strokeGhost;
-      for (const d of letter.writer.outline || []) {
-        const path = buildPath2D(d);
-        if (path) ctx.fill(path, "evenodd");
-      }
-      ctx.restore();
-    }
-  }
-
-  /**
-   * Pre-compute the per-letter slot transforms used by both
-   * `redraw()` and `playStrokeOrder()`. Layout is RTL: slot 0 = the
-   * first-written letter sits on the right.
-   */
-  _layoutSlots() {
-    const dpr = window.devicePixelRatio || 1;
-    const w = this.ghostCanvas.width / dpr;
-    const h = this.ghostCanvas.height / dpr;
-    const padding = Math.min(w, h) * 0.06;
-    const inner_w = w - padding * 2;
-    const inner_h = h - padding * 2;
-    const slot_w = inner_w / Math.max(1, this.letters.length);
-    const slot_size = Math.min(slot_w * 0.92, inner_h);
-    const slots = this.letters.map((_letter, i) => {
-      const xCenter = w - padding - slot_w * (i + 0.5);
-      const yCenter = h / 2;
-      const scale = slot_size / VIEWBOX;
-      return {
-        scale,
-        tx: (xCenter - slot_size / 2) * dpr,
-        ty: (yCenter - slot_size / 2) * dpr,
-      };
-    });
-    return { slots };
-  }
-
-  /**
-   * Animate the canonical stroke order across every letter in the
-   * current word, in RTL writing order (first-written rightmost,
-   * last-written leftmost). Each letter's strokes are pre-projected
-   * onto the canvas using its slot transform, then drawn through
-   * the same per-stroke animation loop as `LetterTraceLayer`.
-   *
-   * Letters whose writers don't carry `scoring: "median"` data
-   * (e.g. non-connector letters in initial/medial positions, which
-   * don't exist typographically and fall back to the geometric
-   * Amiri medians) are silently skipped — the next letter starts
-   * after the prior letter's gap, so the pen "jumps" past them
-   * without showing a fake animation.
-   */
-  playStrokeOrder({
-    strokeDuration = 750,
-    gapDuration = 200,
-    letterGapMs = 350,
-    holdMs = 1500,
-  } = {}) {
-    this.cancelAnimation();
-    if (!this.fxCtx || !this.letters || !this.letters.length) return;
-    const layout = this._layoutSlots();
-    const dpr = window.devicePixelRatio || 1;
-
-    // Build per-letter projected stroke lists, skipping letters
-    // without real Calliar-derived medians.
-    const letterPlans = [];
-    for (let i = 0; i < this.letters.length; i += 1) {
-      const letter = this.letters[i];
-      const w = letter && letter.writer;
-      if (!w || w.scoring !== "median" || !Array.isArray(w.medians) || !w.medians.length) {
-        continue;
-      }
-      const slot = layout.slots[i];
-      const projected = w.medians.map((m) =>
-        m.map(([x, y]) => [x * slot.scale * dpr + slot.tx, y * slot.scale * dpr + slot.ty]),
-      );
-      // Pre-compute cumulative segment lengths per stroke.
-      const cumLens = projected.map((seg) => {
-        const lens = [0];
-        for (let s = 1; s < seg.length; s += 1) {
-          lens.push(lens[s - 1] + Math.hypot(seg[s][0] - seg[s - 1][0], seg[s][1] - seg[s - 1][1]));
-        }
-        return lens;
-      });
-      const totalLens = cumLens.map((c) => c[c.length - 1]);
-      // Duration per stroke — dots get the shorter pulse like the
-      // letter-mode animation.
-      const stepDur = projected.map((seg) =>
-        seg.length <= 1 ? Math.round(strokeDuration * 0.45) : strokeDuration,
-      );
-      letterPlans.push({ projected, cumLens, totalLens, stepDur });
-    }
-    if (!letterPlans.length) return;
-
-    // Total run time = sum of all step durations + intra-letter gaps
-    // + inter-letter gaps.
-    let totalDur = 0;
-    for (let l = 0; l < letterPlans.length; l += 1) {
-      const plan = letterPlans[l];
-      for (let s = 0; s < plan.projected.length; s += 1) {
-        totalDur += plan.stepDur[s];
-        if (s < plan.projected.length - 1) totalDur += gapDuration;
-      }
-      if (l < letterPlans.length - 1) totalDur += letterGapMs;
-    }
-
-    const colors = this.getColors();
-    const trailColor = colors.strokeHighlight || "rgba(139, 105, 20, 0.85)";
-    const tipColor = colors.strokeUser || "#1a1410";
-
-    this._animOpId += 1;
-    const opId = this._animOpId;
-    const startedAt = performance.now();
-
-    const tick = (now) => {
-      if (opId !== this._animOpId) return;
-      const elapsed = now - startedAt;
-      this._clearFx();
-      let cursor = 0;
-      for (let l = 0; l < letterPlans.length; l += 1) {
-        const plan = letterPlans[l];
-        for (let s = 0; s < plan.projected.length; s += 1) {
-          const startT = cursor;
-          const dur = plan.stepDur[s];
-          cursor += dur;
-          if (s < plan.projected.length - 1) cursor += gapDuration;
-          const localT = (elapsed - startT) / dur;
-          const progress = Math.max(0, Math.min(1, localT));
-          if (progress <= 0) continue;
-          if (plan.projected[s].length === 1) {
-            this._drawAnimatedDot(plan.projected[s][0], progress, tipColor);
-          } else {
-            this._drawAnimatedStroke(
-              plan.projected[s],
-              plan.cumLens[s],
-              plan.totalLens[s],
-              progress,
-              trailColor,
-              tipColor,
-            );
-          }
-        }
-        if (l < letterPlans.length - 1) cursor += letterGapMs;
-      }
-      if (elapsed >= totalDur) {
-        setTimeout(() => {
-          if (opId !== this._animOpId) return;
-          this._clearFx();
-        }, holdMs);
-        return;
-      }
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.font = `${layout.fontPx}px "Amiri", Georgia, serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    // Explicit RTL hint for the engine; canvas honors the string's
+    // bidi codepoints either way, but this is documented behavior.
+    if ("direction" in ctx) ctx.direction = "rtl";
+    ctx.fillStyle = colors.strokeGhost;
+    // yOffset shifts the EM-line midpoint so the ACTUAL ink center
+    // (which can be asymmetric for Arabic words with high dots /
+    // low descenders) sits at the canvas midpoint.
+    ctx.fillText(this.text, layout.cx, layout.cy + (layout.yOffset || 0));
+    ctx.restore();
   }
 }
