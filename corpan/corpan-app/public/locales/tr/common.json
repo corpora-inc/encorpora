@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Henüz hiçbir şey yüklü değil.",
         "cta": "Tümünü göster"
-      }
+      },
+      "showAll": "Tümünü göster ({{count}})",
+      "collapseList": "Daha az göster",
+      "openDrawer": "Cümle paketlerine göz at ({{count}})",
+      "openDrawerLabel": "Cümle paketlerine göz at"
     }
   },
   "subscription": {

@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "هنوز چیزی نصب نشده.",
         "cta": "نمایش همه"
-      }
+      },
+      "showAll": "نمایش همه ({{count}})",
+      "collapseList": "نمایش کمتر",
+      "openDrawer": "مرور بسته‌های عبارات ({{count}})",
+      "openDrawerLabel": "مرور بسته‌های عبارات"
     }
   },
   "subscription": {

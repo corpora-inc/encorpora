@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Encara no hi ha paquets instal·lats.",
         "cta": "Mostra-ho tot"
-      }
+      },
+      "showAll": "Mostra-ho tot ({{count}})",
+      "collapseList": "Mostra menys",
+      "openDrawer": "Explora paquets de frases ({{count}})",
+      "openDrawerLabel": "Explora paquets de frases"
     }
   },
   "subscription": {

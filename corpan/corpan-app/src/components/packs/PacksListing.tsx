@@ -8,7 +8,7 @@ import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { usePackUpdates } from "@/hooks/usePackUpdates"
 import { PackCard } from "./PackCard"
-import { PhrasePackBrowser } from "./PhrasePackBrowser"
+import { PhrasePackDrawerTrigger } from "./PhrasePackDrawerTrigger"
 import { RecentsSection } from "./RecentsSection"
 import { SubscriptionOffer } from "./SubscriptionOffer"
 import { RestorePurchases } from "./RestorePurchases"
@@ -73,9 +73,10 @@ export function PacksListing({
       {/* Subscription Offer — top of screen. Self-hides when not applicable. */}
       <SubscriptionOffer />
 
-      {/* Phrase packs — catalog-driven topic browser. Self-hides when
-          the catalog has zero `packType: "phrase"` entries. */}
-      <PhrasePackBrowser />
+      {/* Restore Purchases (self-hides on non-IAP platforms). Lives with
+          the subscription block — restoring is the natural sibling of
+          offering. */}
+      <RestorePurchases />
 
       {/* Recents — quick re-entry for packs the user has launched recently.
           Self-hides when no installed pack has ever been launched. */}
@@ -243,8 +244,12 @@ export function PacksListing({
         </div>
       )}
 
-      {/* Restore Purchases (self-hides on non-IAP platforms) */}
-      <RestorePurchases />
+      {/* Phrase-pack drawer trigger. The drawer itself lives at
+          App.tsx level and is shared with the Stacks tab's
+          PhrasePackToggleSection — same trigger component dropped into
+          both panes. Self-hides when the catalog has zero phrase
+          packs. */}
+      <PhrasePackDrawerTrigger />
     </div>
   )
 }

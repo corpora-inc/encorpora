@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "未安裝過任何包。",
         "cta": "顯示全部"
-      }
+      },
+      "showAll": "顯示全部 ({{count}})",
+      "collapseList": "收埋",
+      "openDrawer": "瀏覽片語包 ({{count}})",
+      "openDrawerLabel": "瀏覽片語包"
     }
   },
   "subscription": {

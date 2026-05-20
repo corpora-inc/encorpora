@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Belum ada yang dipasang.",
         "cta": "Tunjukkan semua"
-      }
+      },
+      "showAll": "Tunjukkan semua ({{count}})",
+      "collapseList": "Tunjukkan kurang",
+      "openDrawer": "Lihat pek frasa ({{count}})",
+      "openDrawerLabel": "Lihat pek frasa"
     }
   },
   "subscription": {

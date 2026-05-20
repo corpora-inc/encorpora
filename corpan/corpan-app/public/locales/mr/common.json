@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "अद्याप काही स्थापित नाही.",
         "cta": "सर्व दाखवा"
-      }
+      },
+      "showAll": "सर्व दाखवा ({{count}})",
+      "collapseList": "कमी दाखवा",
+      "openDrawer": "फ्रेज पॅक ब्राउझ करा ({{count}})",
+      "openDrawerLabel": "फ्रेज पॅक ब्राउझ करा"
     }
   },
   "subscription": {

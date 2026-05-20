@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Ingenting installert ennå.",
         "cta": "Vis alle"
-      }
+      },
+      "showAll": "Vis alle ({{count}})",
+      "collapseList": "Vis færre",
+      "openDrawer": "Bla i frasepakker ({{count}})",
+      "openDrawerLabel": "Bla i frasepakker"
     }
   },
   "subscription": {

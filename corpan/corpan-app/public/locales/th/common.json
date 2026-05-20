@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ยังไม่ได้ติดตั้งอะไรเลย",
         "cta": "แสดงทั้งหมด"
-      }
+      },
+      "showAll": "แสดงทั้งหมด ({{count}})",
+      "collapseList": "ย่อ",
+      "openDrawer": "เรียกดูชุดวลี ({{count}})",
+      "openDrawerLabel": "เรียกดูชุดวลี"
     }
   },
   "subscription": {

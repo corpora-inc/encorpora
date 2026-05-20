@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Ще нічого не встановлено.",
         "cta": "Показати всі"
-      }
+      },
+      "showAll": "Показати всі ({{count}})",
+      "collapseList": "Показати менше",
+      "openDrawer": "Перегляд пакетів фраз ({{count}})",
+      "openDrawerLabel": "Перегляд пакетів фраз"
     }
   },
   "subscription": {

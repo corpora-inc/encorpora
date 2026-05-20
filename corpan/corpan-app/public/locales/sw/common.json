@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Hakuna kilichosakinishwa bado.",
         "cta": "Onyesha zote"
-      }
+      },
+      "showAll": "Onyesha zote ({{count}})",
+      "collapseList": "Onyesha kidogo",
+      "openDrawer": "Vinjari pakiti za misemo ({{count}})",
+      "openDrawerLabel": "Vinjari pakiti za misemo"
     }
   },
   "subscription": {

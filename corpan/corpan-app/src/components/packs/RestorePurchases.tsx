@@ -44,7 +44,11 @@ export function RestorePurchases() {
   }
 
   return (
-    <div className="space-y-2">
+    // Match the SubscriptionOffer card width — on a wide iPad the bare
+    // "Restore Purchases" button stretched edge-to-edge and didn't line
+    // up with the subscription hero above. `max-w-md md:max-w-xl mx-auto`
+    // keeps both surfaces visually aligned at every breakpoint.
+    <div className="space-y-2 w-full max-w-md md:max-w-xl mx-auto">
       <Button
         variant="outline"
         onClick={handleRestore}

@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Dar nieko neįdiegta.",
         "cta": "Rodyti visus"
-      }
+      },
+      "showAll": "Rodyti visus ({{count}})",
+      "collapseList": "Rodyti mažiau",
+      "openDrawer": "Naršyti frazių paketus ({{count}})",
+      "openDrawerLabel": "Naršyti frazių paketus"
     }
   },
   "subscription": {

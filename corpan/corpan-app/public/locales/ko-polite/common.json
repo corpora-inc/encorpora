@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "아직 설치된 게 없어요.",
         "cta": "모두 보기"
-      }
+      },
+      "showAll": "모두 보기 ({{count}})",
+      "collapseList": "접기",
+      "openDrawer": "구문 팩 둘러보기 ({{count}})",
+      "openDrawerLabel": "구문 팩 둘러보기"
     }
   },
   "subscription": {

@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Ei mitään asennettu vielä.",
         "cta": "Näytä kaikki"
-      }
+      },
+      "showAll": "Näytä kaikki ({{count}})",
+      "collapseList": "Näytä vähemmän",
+      "openDrawer": "Selaa fraasipaketteja ({{count}})",
+      "openDrawerLabel": "Selaa fraasipaketteja"
     }
   },
   "subscription": {

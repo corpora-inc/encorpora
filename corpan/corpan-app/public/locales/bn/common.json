@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "এখনও কিছু ইনস্টল হয়নি।",
         "cta": "সব দেখান"
-      }
+      },
+      "showAll": "সব দেখান ({{count}})",
+      "collapseList": "কম দেখান",
+      "openDrawer": "ফ্রেজ প্যাক ব্রাউজ করুন ({{count}})",
+      "openDrawerLabel": "ফ্রেজ প্যাক ব্রাউজ করুন"
     }
   },
   "subscription": {

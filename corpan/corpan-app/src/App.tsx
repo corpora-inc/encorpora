@@ -9,6 +9,7 @@ import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
 import { Button } from "./components/ui/button";
 import { ContentPackOverlay } from "./components/ContentPackOverlay";
+import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
 import { TTSFailureBanner } from "./components/TTSFailureBanner";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
@@ -330,6 +331,13 @@ export default function App() {
         onLaunchGame={handleLaunchGame}
         initialTab={settingsTab}
       />
+
+      {/* App-root phrase-pack drawer. Sibling of SettingsModal so its
+          Vaul Root lives OUTSIDE the modal's overflow-y-auto scroller —
+          fixes the Stacks-tab scroll regression on iOS WKWebView and
+          lets any trigger site (Stacks, Packs, future main-exp chip)
+          open the same instance via `useDrawerStore`. */}
+      <PhrasePackDrawer />
 
       <RatingPrompt />
 

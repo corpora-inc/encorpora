@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ਅਜੇ ਕੁਝ ਇੰਸਟਾਲ ਨਹੀਂ।",
         "cta": "ਸਾਰੇ ਵਿਖਾਓ"
-      }
+      },
+      "showAll": "ਸਾਰੇ ਵਿਖਾਓ ({{count}})",
+      "collapseList": "ਘੱਟ ਵਿਖਾਓ",
+      "openDrawer": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ ({{count}})",
+      "openDrawerLabel": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ"
     }
   },
   "subscription": {

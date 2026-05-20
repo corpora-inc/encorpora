@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ಇನ್ನೂ ಏನೂ ಸ್ಥಾಪಿಸಿಲ್ಲ.",
         "cta": "ಎಲ್ಲ ತೋರಿಸು"
-      }
+      },
+      "showAll": "ಎಲ್ಲ ತೋರಿಸು ({{count}})",
+      "collapseList": "ಕಡಿಮೆ ತೋರಿಸು",
+      "openDrawer": "ಫ್ರೇಸ್ ಪ್ಯಾಕ್‌ಗಳನ್ನು ಬ್ರೌಸ್ ಮಾಡಿ ({{count}})",
+      "openDrawerLabel": "ಫ್ರೇಸ್ ಪ್ಯಾಕ್‌ಗಳನ್ನು ಬ್ರೌಸ್ ಮಾಡಿ"
     }
   },
   "subscription": {

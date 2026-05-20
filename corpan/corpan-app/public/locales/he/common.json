@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "עדיין לא מותקן כלום.",
         "cta": "הצג הכול"
-      }
+      },
+      "showAll": "הצג הכול ({{count}})",
+      "collapseList": "הצג פחות",
+      "openDrawer": "עיון בחבילות ביטויים ({{count}})",
+      "openDrawerLabel": "עיון בחבילות ביטויים"
     }
   },
   "subscription": {

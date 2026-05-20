@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Δεν έχει εγκατασταθεί τίποτα ακόμα.",
         "cta": "Εμφάνιση όλων"
-      }
+      },
+      "showAll": "Εμφάνιση όλων ({{count}})",
+      "collapseList": "Εμφάνιση λιγότερων",
+      "openDrawer": "Περιήγηση πακέτων φράσεων ({{count}})",
+      "openDrawerLabel": "Περιήγηση πακέτων φράσεων"
     }
   },
   "subscription": {

@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Zatiaľ nič nenainštalované.",
         "cta": "Zobraziť všetko"
-      }
+      },
+      "showAll": "Zobraziť všetko ({{count}})",
+      "collapseList": "Zobraziť menej",
+      "openDrawer": "Prehľadávať balíky fráz ({{count}})",
+      "openDrawerLabel": "Prehľadávať balíky fráz"
     }
   },
   "subscription": {

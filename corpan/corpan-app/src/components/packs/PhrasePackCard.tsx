@@ -33,7 +33,17 @@ const SUBSCRIPTION_PRODUCT_IDS = new Set<string>([
     SUBSCRIPTION_ANNUAL,
 ]);
 
-export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
+export function PhrasePackCard({
+    pack,
+    compact = false,
+}: {
+    pack: PhrasePackCatalogEntry;
+    /** Compact rendering for surfaces with many cards in a tight grid
+     *  (e.g. the Packs-tab browser): drops the description paragraph
+     *  and stat chips, shrinks padding/fonts. The non-compact path
+     *  stays as the canonical "full" card. */
+    compact?: boolean;
+}) {
     const { t } = useTranslation();
     const { installPackBatch, batchProgress } = useInstallContext();
 
@@ -147,7 +157,11 @@ export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
     return (
         <div
             className={[
-                "flex flex-col rounded-lg border p-4 shadow-sm h-full min-w-[260px]",
+                "flex flex-col rounded-lg border shadow-sm h-full",
+                // Slightly tighter padding/min-width than the full card,
+                // but description + chips remain — striking the balance
+                // between "too sparse to identify" and "too tall to scan".
+                compact ? "p-3 min-w-[200px]" : "p-4 min-w-[260px]",
                 "transition-[border-color,box-shadow]",
                 isActive
                     ? "border-purple-400/60 bg-purple-500/[0.04]"
@@ -158,7 +172,12 @@ export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
             {/* Header */}
             <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
-                    <h3 className="text-base font-semibold leading-tight">
+                    <h3
+                        className={[
+                            "font-semibold leading-tight",
+                            compact ? "text-sm" : "text-base",
+                        ].join(" ")}
+                    >
                         {pack.name}
                     </h3>
                     {pack.topic && pack.topic !== pack.name && (
@@ -191,16 +210,28 @@ export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
                 )}
             </div>
 
-            {/* Description */}
+            {/* Description — kept in both modes. Compact mode clamps to
+                2 lines to stay tame; full mode allows 3. */}
             {pack.description && (
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-3 leading-snug">
+                <p
+                    className={[
+                        "mt-2 text-muted-foreground leading-snug",
+                        compact ? "text-xs line-clamp-2" : "text-sm line-clamp-3",
+                    ].join(" ")}
+                >
                     {pack.description}
                 </p>
             )}
 
-            {/* Stat chips */}
+            {/* Stat chips — kept in both modes; the level range + phrase
+                count + size make a pack scannable at a glance. */}
             {statChips.length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-muted-foreground">
+                <div
+                    className={[
+                        "flex flex-wrap gap-1 text-[10px] text-muted-foreground",
+                        compact ? "mt-2" : "mt-3 gap-1.5 text-[11px]",
+                    ].join(" ")}
+                >
                     {statChips.map((c) => (
                         <span
                             key={c.key}
@@ -214,24 +245,27 @@ export function PhrasePackCard({ pack }: { pack: PhrasePackCatalogEntry }) {
             )}
 
             {/* Action area — pushes to the bottom of the card */}
-            <div className="mt-4 flex-1 flex flex-col justify-end gap-2">
+            <div
+                className={[
+                    "flex-1 flex flex-col justify-end",
+                    compact ? "mt-2 gap-1.5" : "mt-4 gap-2",
+                ].join(" ")}
+            >
                 {/* Installed */}
                 {isInstalled && (
                     <>
                         <div
                             className={[
-                                "flex items-center justify-between gap-3 px-3 py-2 rounded-md",
+                                "flex items-center justify-end gap-3 px-3 py-2 rounded-md",
                                 "border",
                                 isActive
                                     ? "border-purple-400/40 bg-purple-500/[0.06]"
                                     : "border-border bg-card",
                             ].join(" ")}
                         >
-                            <span className="text-xs font-medium text-foreground">
-                                {t("packs.phrasePack.activeInStack", {
-                                    defaultValue: "Active",
-                                })}
-                            </span>
+                            {/* "Active in stack" text removed — the toggle
+                                widget + the surrounding card's purple
+                                state already communicate it. */}
                             <Switch
                                 checked={isActive}
                                 onCheckedChange={() => togglePhrasePack(pack.id)}

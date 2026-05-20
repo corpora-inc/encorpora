@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Nada instalado ainda.",
         "cta": "Mostrar todos"
-      }
+      },
+      "showAll": "Mostrar todos ({{count}})",
+      "collapseList": "Mostrar menos",
+      "openDrawer": "Explorar pacotes de frases ({{count}})",
+      "openDrawerLabel": "Explorar pacotes de frases"
     }
   },
   "subscription": {

@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Nimic instalat încă.",
         "cta": "Arată toate"
-      }
+      },
+      "showAll": "Arată toate ({{count}})",
+      "collapseList": "Arată mai puțin",
+      "openDrawer": "Răsfoiește pachete de fraze ({{count}})",
+      "openDrawerLabel": "Răsfoiește pachete de fraze"
     }
   },
   "subscription": {

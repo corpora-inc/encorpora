@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "હજુ સુધી કંઈ ઇન્સ્ટોલ થયું નથી.",
         "cta": "બધા બતાવો"
-      }
+      },
+      "showAll": "બધા બતાવો ({{count}})",
+      "collapseList": "ઓછું બતાવો",
+      "openDrawer": "ફ્રેઝ પેક બ્રાઉઝ કરો ({{count}})",
+      "openDrawerLabel": "ફ્રેઝ પેક બ્રાઉઝ કરો"
     }
   },
   "subscription": {

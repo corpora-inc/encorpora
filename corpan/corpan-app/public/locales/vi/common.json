@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Chưa cài đặt gì.",
         "cta": "Hiện tất cả"
-      }
+      },
+      "showAll": "Hiện tất cả ({{count}})",
+      "collapseList": "Thu gọn",
+      "openDrawer": "Duyệt gói cụm từ ({{count}})",
+      "openDrawerLabel": "Duyệt gói cụm từ"
     }
   },
   "subscription": {

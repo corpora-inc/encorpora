@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ہلے کوجھ وی انسٹال نئیں۔",
         "cta": "ساریاں ویکھاؤ"
-      }
+      },
+      "showAll": "ساریاں ویکھاؤ ({{count}})",
+      "collapseList": "گھٹ ویکھاؤ",
+      "openDrawer": "فریز پیک ویکھو ({{count}})",
+      "openDrawerLabel": "فریز پیک ویکھو"
     }
   },
   "subscription": {

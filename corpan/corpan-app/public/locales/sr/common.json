@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Још ништа није инсталирано.",
         "cta": "Прикажи све"
-      }
+      },
+      "showAll": "Прикажи све ({{count}})",
+      "collapseList": "Прикажи мање",
+      "openDrawer": "Прегледај пакете фраза ({{count}})",
+      "openDrawerLabel": "Прегледај пакете фраза"
     }
   },
   "subscription": {

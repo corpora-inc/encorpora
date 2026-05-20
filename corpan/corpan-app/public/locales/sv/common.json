@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Inget installerat än.",
         "cta": "Visa alla"
-      }
+      },
+      "showAll": "Visa alla ({{count}})",
+      "collapseList": "Visa färre",
+      "openDrawer": "Bläddra bland fraspaket ({{count}})",
+      "openDrawerLabel": "Bläddra bland fraspaket"
     }
   },
   "subscription": {

@@ -14,6 +14,20 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Large q8 ★ visible on every device.** Dropped
+  `requiresLargeMemory: true` from the `large_q8_full` entry in
+  `modelRegistry.ts`. The flag had been hiding the card on devices
+  below the 8 GB physical-RAM threshold, but the model's actual
+  runtime memory is essentially identical to Full Weight Turbo
+  (`large_max`, 1549 MB on disk, no gate) — both share the 32-layer
+  encoder, and the decoder-layer delta (32 vs 4) adds only ~70 MB
+  of KV cache. iPhone 14 (6 GB) runs Full Weight Turbo fine, so
+  Large q8 ★ should too. The native runtime headroom gate in
+  `STTPlugin.swift` remains the honest authority — devices that
+  truly can't fit the load see a graceful "needs more memory"
+  message rather than not seeing the option at all.
+
 ## [0.7.0] - 2026-05-19 — Scoring overlay + phrase-pack sourcing
 
 ### Added

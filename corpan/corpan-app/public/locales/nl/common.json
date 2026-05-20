@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Nog niets geïnstalleerd.",
         "cta": "Alle tonen"
-      }
+      },
+      "showAll": "Alle tonen ({{count}})",
+      "collapseList": "Minder tonen",
+      "openDrawer": "Frasenpakketten verkennen ({{count}})",
+      "openDrawerLabel": "Frasenpakketten verkennen"
     }
   },
   "subscription": {

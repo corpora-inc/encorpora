@@ -21,18 +21,12 @@
 
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-    ArrowRight,
-    BookOpen,
-    Database,
-    Library,
-    Search,
-} from "lucide-react";
+import { BookOpen, Database, Library, Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useStackPhraseCount } from "@/hooks/useStackPhraseCount";
 import { useSettingsStore } from "@/store/settings";
+import { PhrasePackDrawerTrigger } from "./PhrasePackDrawerTrigger";
 import {
     usePhrasePacksStore,
     type InstalledPhrasePack,
@@ -47,14 +41,7 @@ type FilterKind = "all" | "active" | "inactive";
 
 const FILTERS: FilterKind[] = ["all", "active", "inactive"];
 
-type Props = {
-    /** Called when the user taps "Browse all packs →". Owner switches the
-     *  modal's active tab to "packs" and (ideally) scrolls to the phrase-
-     *  pack section. */
-    onOpenCatalog?: () => void;
-};
-
-export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
+export function PhrasePackToggleSection() {
     const { t } = useTranslation();
     const baseCorpusEnabled = useSettingsStore((s) => s.baseCorpusEnabled);
     const setBaseCorpusEnabled = useSettingsStore((s) => s.setBaseCorpusEnabled);
@@ -466,20 +453,12 @@ export function PhrasePackToggleSection({ onOpenCatalog }: Props) {
                 </p>
             )}
 
-            {/* Browse-all CTA */}
-            {onOpenCatalog && (
-                <Button
-                    type="button"
-                    variant="outline"
-                    onClick={onOpenCatalog}
-                    className="mt-3 w-full justify-center gap-2"
-                >
-                    {t("settings.phrasePacks.browseAll", {
-                        defaultValue: "Browse packs",
-                    })}
-                    <ArrowRight size={14} />
-                </Button>
-            )}
+            {/* Browse-all CTA — opens the app-root phrase-pack drawer.
+                Same trigger component the Packs tab uses; single source
+                of truth for the look + the call into the drawer store. */}
+            <div className="mt-3">
+                <PhrasePackDrawerTrigger />
+            </div>
         </section>
     );
 }

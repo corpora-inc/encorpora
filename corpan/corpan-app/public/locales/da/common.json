@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Intet installeret endnu.",
         "cta": "Vis alle"
-      }
+      },
+      "showAll": "Vis alle ({{count}})",
+      "collapseList": "Vis færre",
+      "openDrawer": "Gennemse frasepakker ({{count}})",
+      "openDrawerLabel": "Gennemse frasepakker"
     }
   },
   "subscription": {

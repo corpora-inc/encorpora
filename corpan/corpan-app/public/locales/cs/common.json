@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Zatím nic nenainstalováno.",
         "cta": "Zobrazit vše"
-      }
+      },
+      "showAll": "Zobrazit vše ({{count}})",
+      "collapseList": "Zobrazit méně",
+      "openDrawer": "Procházet balíčky frází ({{count}})",
+      "openDrawerLabel": "Procházet balíčky frází"
     }
   },
   "subscription": {

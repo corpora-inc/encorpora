@@ -473,6 +473,10 @@
       "unlockSub": "Unlock with subscription",
       "entryCount": "{{n}} phrases",
       "offlineEmpty": "You're offline. Connect to browse phrase packs.",
+      "showAll": "Show all ({{count}})",
+      "collapseList": "Show less",
+      "openDrawer": "Browse phrase packs ({{count}})",
+      "openDrawerLabel": "Browse phrase packs",
       "allInstalled": {
         "title": "You've got every phrase pack.",
         "subtitle": "Topic packs ship regularly — check back any time.",

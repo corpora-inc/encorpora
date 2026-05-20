@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "まだ何もインストールされていません。",
         "cta": "すべて表示"
-      }
+      },
+      "showAll": "すべて表示 ({{count}})",
+      "collapseList": "折りたたむ",
+      "openDrawer": "フレーズパックを見る ({{count}})",
+      "openDrawerLabel": "フレーズパックを見る"
     }
   },
   "subscription": {

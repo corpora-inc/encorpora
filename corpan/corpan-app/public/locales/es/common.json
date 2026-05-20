@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Aún no hay paquetes instalados.",
         "cta": "Mostrar todos"
-      }
+      },
+      "showAll": "Mostrar todos ({{count}})",
+      "collapseList": "Mostrar menos",
+      "openDrawer": "Explorar paquetes de frases ({{count}})",
+      "openDrawerLabel": "Explorar paquetes de frases"
     }
   },
   "subscription": {

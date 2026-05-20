@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Aucun pack installé.",
         "cta": "Tout afficher"
-      }
+      },
+      "showAll": "Tout afficher ({{count}})",
+      "collapseList": "Afficher moins",
+      "openDrawer": "Parcourir les packs de phrases ({{count}})",
+      "openDrawerLabel": "Parcourir les packs de phrases"
     }
   },
   "subscription": {

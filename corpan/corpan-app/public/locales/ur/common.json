@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ابھی کچھ بھی انسٹال نہیں ہے۔",
         "cta": "سب دکھائیں"
-      }
+      },
+      "showAll": "سب دکھائیں ({{count}})",
+      "collapseList": "کم دکھائیں",
+      "openDrawer": "فریز پیک براؤز کریں ({{count}})",
+      "openDrawerLabel": "فریز پیک براؤز کریں"
     }
   },
   "subscription": {

@@ -417,7 +417,18 @@ export const MODELS: ReadonlyArray<ModelVariant> = [
     ],
     approxSizeMB: 1580,
     defaultForFreshInstall: false,
-    requiresLargeMemory: true,
+    // No `requiresLargeMemory` flag. Disk size (1580 MB) is within
+    // 31 MB of Full Weight Turbo (`large_max`, 1549 MB) which is
+    // visible on every device, and the runtime delta is only the
+    // 32-vs-4 decoder KV cache (~70 MB extra) plus a small compute
+    // buffer increase. iPhone 14 (6 GB) runs Full Weight Turbo
+    // fine; Large q8 ★ is in the same memory class. The native
+    // runtime headroom gate in `STTPlugin.swift` is the honest
+    // authority on whether a load can proceed; gating the card
+    // here too just hid the option from devices that could load
+    // it. If a genuinely-bigger model arrives later (e.g., Large
+    // v4, ~3 GB), re-introduce `requiresLargeMemory` on that
+    // entry rather than this one.
     downloadUrl:
       "https://d38iwc9748jekz.cloudfront.net/whisper-models/ggml-large-v3-q8_0.bin",
   },

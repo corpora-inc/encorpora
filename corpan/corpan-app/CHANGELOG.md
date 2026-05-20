@@ -101,6 +101,72 @@ that doesn't cover that edge. Belt + suspenders fix this release.
   `stackTotalNudge`), translated across all 51 locales via
   `public/locales/add_stack_phrase_count.py`.
 
+### Added (Packs-tab polish)
+- **Packs-tab reorder.** SubscriptionOffer → RestorePurchases →
+  Recents → Installed → Discover → Developer Tools → phrase-pack
+  drawer trigger. Apps/games (and the related Developer Tools)
+  reachable in a single scroll; phrase packs no longer crowd the
+  top.
+- **Phrase-pack browser moved into a Vaul `<Drawer>`.** The bottom
+  of the Packs tab now shows a single "Browse phrase packs (N)"
+  button — tapping opens a bottom-sheet drawer containing the
+  full filter chrome and grid. Solves the page-height-jumping
+  problem from in-place filter toggles, and gives the browser
+  proper room to breathe (85vh) regardless of how much chrome
+  surrounds it. Drawer open state is controllable from the
+  Stacks-tab "Browse packs" CTA via a new
+  `corpan:open-phrase-pack-drawer` custom event.
+- **Category filter pills.** A new multi-select category facet
+  inside the drawer, sourced from `catalog.phrasePackGroups`. OR
+  within the category facet; AND across text search, price/install
+  chip, and categories. Lets a user say "Arts and Sciences, music"
+  with three tap+typing actions.
+- **Balanced compact card.** `PhrasePackCard compact={true}` keeps
+  description (line-clamp-2), level/count/size stat chips, and the
+  topic line, but uses tighter padding and smaller fonts. The
+  "Active in stack" text label is removed — the toggle widget +
+  the card's purple border state communicate it on their own.
+- **IAP / Restore / Dev hero widths aligned.** `SubscriptionOffer`,
+  `RestorePurchases`, and the dev-unlock card now all use
+  `max-w-md md:max-w-xl mx-auto` so they line up consistently on
+  iPad and don't stretch into one-line buttons on a wide modal.
+- **Buttons grow on iPad.** The shadcn `Button` size variants now
+  use a `md:` responsive height bump (sm 32→40, default 36→44, lg
+  40→48, icon 36→40). One change in the CVA at
+  `components/ui/button.tsx`; every button in the app —
+  Stacks-tab pickers, settings rows, IAP/restore/dev cards, the
+  new drawer trigger, in-pack drawers, everything — automatically
+  gets a 44pt-friendly tap target on tablet+ widths. Phones keep
+  the denser sizing.
+
+### Fixed (Phrase-pack drawer lifted to app root)
+- **Stacks-tab scroll regression fixed.** The phrase-pack drawer's
+  Vaul `Root` was nested inside the `SettingsModal` overflow-y-auto
+  scroll container, and on iOS WKWebView its touch handlers were
+  hijacking parent scroll even when the drawer was closed —
+  freezing the entire Stacks tab. Moved the drawer to App.tsx
+  level as a sibling of `SettingsModal`. New tiny
+  `useDrawerStore` (`src/store/drawer.ts`) owns the open state;
+  the drawer mount lives in `src/components/packs/PhrasePackDrawer.tsx`.
+- **Single shared drawer trigger across both tabs.** New
+  `src/components/packs/PhrasePackDrawerTrigger.tsx` is the *one*
+  trigger component — same button (icon + "Browse phrase packs
+  ({{count}})") dropped into both the Stacks-tab
+  `PhrasePackToggleSection` and the Packs-tab `PacksListing`. Owns
+  visual treatment, count badge, self-hide logic, and the call into
+  the drawer store. Removed: the `onOpenCatalog` prop on
+  `PhrasePackToggleSection`, the inline `<Drawer>` block + state +
+  CustomEvent `useEffect` listener in `PacksListing`, and the RAF
+  + `setTimeout` + dispatch dance in `SettingsModal.onOpenCatalog`.
+  All in service of: one drawer, one trigger component, one place
+  to open it from. The future main-experience quick-toggle chip
+  (NAVIGATION_PLAN 0.16+) will use the same store.
+- **"Browse all packs" opens the drawer.** The Stacks-tab CTA
+  flips to the Packs tab and dispatches the drawer-open event
+  after the Radix Tabs swap settles — landing the user directly
+  inside the phrase-pack drawer instead of scrolled to an inline
+  section.
+
 ### Notes / future-work seed
 - `corpan/docs/USER_DATA_DB_PLAN.md` documents the next architectural
   step: a per-user SQLite store (`user_data.db`) for unbounded
@@ -109,6 +175,12 @@ that doesn't cover that edge. Belt + suspenders fix this release.
   features (spaced repetition, archive/dismiss, streaks, word-count
   histograms, cross-pack analytics) need the SQLite shift and are
   targeted for 0.16+.
+- `corpan/docs/NAVIGATION_PLAN.md` sketches the 0.16+ Settings /
+  Library overhaul: a 3-tab top level (Stacks · Library · App
+  settings), a Library sub-nav by content kind (Apps & Games ·
+  Books · Phrase packs · Models), and a main-experience phrase-pack
+  quick-toggle bottom-sheet drawer (Vaul `<Drawer>` from
+  `src/components/ui/drawer.tsx`, currently unused).
 
 ## [0.15.0] - 2026-05-19 — Phrase packs, 12-pack onboarding, dedicated catalog
 

@@ -43,7 +43,11 @@ type PaywallState =
   | { kind: "offline" }
   | { kind: "pending" }
 
-const CARD_WRAPPER = "w-full max-w-md mx-auto"
+// Cap the card so it doesn't stretch into a one-line-wide button on
+// big iPads, but use a more generous max on tablet+ so it feels like a
+// proper hero call-to-action instead of a phone-sized card floating in
+// the middle of empty space.
+const CARD_WRAPPER = "w-full max-w-md md:max-w-xl mx-auto"
 
 export function SubscriptionOffer() {
   const { t } = useTranslation()

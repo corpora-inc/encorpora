@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Belum ada yang terpasang.",
         "cta": "Tampilkan semua"
-      }
+      },
+      "showAll": "Tampilkan semua ({{count}})",
+      "collapseList": "Tutup",
+      "openDrawer": "Jelajahi paket frasa ({{count}})",
+      "openDrawerLabel": "Jelajahi paket frasa"
     }
   },
   "subscription": {

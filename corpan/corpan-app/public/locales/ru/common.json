@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Пока ничего не установлено.",
         "cta": "Показать все"
-      }
+      },
+      "showAll": "Показать все ({{count}})",
+      "collapseList": "Показать меньше",
+      "openDrawer": "Обзор пакетов фраз ({{count}})",
+      "openDrawerLabel": "Обзор пакетов фраз"
     }
   },
   "subscription": {

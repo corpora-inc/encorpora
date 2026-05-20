@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "ఇంకా ఏదీ ఇన్‌స్టాల్ చేయలేదు.",
         "cta": "అన్నీ చూపించు"
-      }
+      },
+      "showAll": "అన్నీ చూపించు ({{count}})",
+      "collapseList": "తక్కువ చూపించు",
+      "openDrawer": "ఫ్రేజ్ ప్యాక్‌లను బ్రౌజ్ చేయి ({{count}})",
+      "openDrawerLabel": "ఫ్రేజ్ ప్యాక్‌లను బ్రౌజ్ చేయి"
     }
   },
   "subscription": {

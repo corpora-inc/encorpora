@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "अहिलेसम्म केही पनि स्थापना भएको छैन।",
         "cta": "सबै देखाउनुहोस्"
-      }
+      },
+      "showAll": "सबै देखाउनुहोस् ({{count}})",
+      "collapseList": "थोरै देखाउनुहोस्",
+      "openDrawer": "फ्रेज प्याक हेर्नुहोस् ({{count}})",
+      "openDrawerLabel": "फ्रेज प्याक हेर्नुहोस्"
     }
   },
   "subscription": {

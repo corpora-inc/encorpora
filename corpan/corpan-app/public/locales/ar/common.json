@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "لا شيء مثبت بعد.",
         "cta": "عرض الكل"
-      }
+      },
+      "showAll": "عرض الكل ({{count}})",
+      "collapseList": "عرض أقل",
+      "openDrawer": "تصفح حزم العبارات ({{count}})",
+      "openDrawerLabel": "تصفح حزم العبارات"
     }
   },
   "subscription": {

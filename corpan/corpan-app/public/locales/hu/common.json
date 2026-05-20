@@ -468,7 +468,11 @@
       "filterEmpty": {
         "installed": "Még semmi sincs telepítve.",
         "cta": "Összes megjelenítése"
-      }
+      },
+      "showAll": "Összes megjelenítése ({{count}})",
+      "collapseList": "Kevesebb megjelenítése",
+      "openDrawer": "Kifejezéscsomagok böngészése ({{count}})",
+      "openDrawerLabel": "Kifejezéscsomagok böngészése"
     }
   },
   "subscription": {

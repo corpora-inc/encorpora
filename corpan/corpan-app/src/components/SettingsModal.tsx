@@ -203,10 +203,11 @@ export function SettingsModal({
             <RateAdjuster />
             <LanguageSelectOrder />
             <JumpToTTSButton fullWidth />
+            {/* Phrase-pack manager first — what most users come here
+                to adjust. Levels picker sits below it as a finer-grained
+                refinement. */}
+            <PhrasePackToggleSection />
             <LevelsPicker />
-            <PhrasePackToggleSection
-              onOpenCatalog={() => handleTabChange("packs")}
-            />
             <RomanizationToggle />
             <ScrollNavigationToggle />
 
@@ -256,7 +257,9 @@ export function SettingsModal({
             />
 
             {!devModeEnabled && (
-              <div className="space-y-3 rounded-md border border-border bg-card/80 p-4 mt-6">
+              // Width-matched with SubscriptionOffer + RestorePurchases so
+              // the three hero-style cards line up on iPad.
+              <div className="space-y-3 rounded-md border border-border bg-card/80 p-4 mt-6 w-full max-w-md md:max-w-xl mx-auto">
                 <div className="space-y-1">
                   <div className="text-md font-semibold">
                     {t("packs.devUnlockTitle")}

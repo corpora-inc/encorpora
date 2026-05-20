@@ -1,24 +1,28 @@
 // src/components/packs/PhrasePackBrowser.tsx
 //
-// Phrase-pack section of the Packs tab. Groups, search, filter chips,
-// PhrasePackCard grid. Catalog-driven via `usePhrasePackCatalog` — adding
-// a `phrasePackGroups` entry to `catalog-v3.json` re-curates the browser
-// without an app rebuild.
+// Phrase-pack browser — now lives inside a Vaul `<Drawer>` owned by
+// `PacksListing`. The drawer container handles scroll + dismissal; this
+// component renders the search/filter chrome at the top (sticky) and a
+// flat filtered grid below.
 //
-// The first-load empty state is friendly (calm copy), not alarming.
+// Filter facets:
+//   - Text search (name / topic / description / category, AND)
+//   - Price/install chip: All · Free · Paid · Installed (single-select, AND)
+//   - Category pills derived from catalog.phrasePackGroups
+//     (multi-select; OR within the category facet, AND across facets)
+//
+// Catalog-driven via `usePhrasePackCatalog` — adding a `phrasePackGroups`
+// entry to the catalog re-curates the pill set without an app rebuild.
 
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { CheckCircle2, Library, Search } from "lucide-react";
+import { CheckCircle2, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { OfflineNotice } from "@/components/OfflineNotice";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
-import {
-    countUniquePacksAcrossGroups,
-    usePhrasePackCatalog,
-} from "@/hooks/usePhrasePackCatalog";
+import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { PhrasePackCard } from "./PhrasePackCard";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
@@ -36,9 +40,35 @@ export function PhrasePackBrowser() {
 
     const [query, setQuery] = useState("");
     const [filter, setFilter] = useState<FilterKind>("all");
+    const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
+        new Set(),
+    );
+
+    const toggleCategory = (groupId: string) => {
+        setSelectedCategories((prev) => {
+            const next = new Set(prev);
+            if (next.has(groupId)) next.delete(groupId);
+            else next.add(groupId);
+            return next;
+        });
+    };
+
+    // Category facet: pack belongs to any selected group's packIds. Null
+    // means "no category filter applied" — show everything that passes
+    // the other facets. Each pack can belong to multiple groups (e.g.
+    // World Mythology = Humanities + World cultures); OR semantics make
+    // multi-select intuitive.
+    const categoryMembership = useMemo<Set<string> | null>(() => {
+        if (selectedCategories.size === 0) return null;
+        const matched = new Set<string>();
+        for (const g of groups) {
+            if (!selectedCategories.has(g.id)) continue;
+            for (const p of g.packs) matched.add(p.id);
+        }
+        return matched;
+    }, [groups, selectedCategories]);
 
     const filterPack = (pack: PhrasePackCatalogEntry): boolean => {
-        // Text search
         if (query.trim()) {
             const q = query.trim().toLowerCase();
             const haystack = [
@@ -51,35 +81,31 @@ export function PhrasePackBrowser() {
                 .toLowerCase();
             if (!haystack.includes(q)) return false;
         }
-        // Filter chip
         switch (filter) {
             case "free":
-                return !pack.purchase || pack.purchase.type === "free";
+                if (pack.purchase && pack.purchase.type !== "free") return false;
+                break;
             case "paid":
-                return pack.purchase?.type === "iap";
+                if (pack.purchase?.type !== "iap") return false;
+                break;
             case "installed":
-                return Boolean(installedById[pack.id]);
+                if (!installedById[pack.id]) return false;
+                break;
             case "all":
             default:
-                return true;
+                break;
         }
+        if (categoryMembership !== null && !categoryMembership.has(pack.id)) {
+            return false;
+        }
+        return true;
     };
 
-    const visibleGroups = useMemo(() => {
-        return groups
-            .map((g) => ({
-                ...g,
-                packs: g.packs.filter(filterPack),
-            }))
-            .filter((g) => g.packs.length > 0);
+    const visiblePacks = useMemo(() => {
+        return allPhrasePacks.filter(filterPack);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [groups, query, filter, installedById]);
+    }, [allPhrasePacks, query, filter, installedById, categoryMembership]);
 
-    // Dedupe across groups — packs can intentionally appear in more
-    // than one group (e.g. "World Mythology" lives in both Humanities
-    // and World cultures). Summing `g.packs.length` would inflate the
-    // numerator past the denominator (`allPhrasePacks.length`, unique).
-    const totalVisible = countUniquePacksAcrossGroups(visibleGroups);
     const hasAnyPhrasePacks = allPhrasePacks.length > 0;
     const installedCount = allPhrasePacks.reduce(
         (n, p) => n + (installedById[p.id] ? 1 : 0),
@@ -95,41 +121,11 @@ export function PhrasePackBrowser() {
         );
     };
 
-    // Hide the section entirely when the catalog came back empty on an
-    // online client. There is no honest copy for "we have 0 packs to show
-    // you"; surfacing nothing > lying.
-    if (!hasAnyPhrasePacks && (isOnline || lastFetched)) {
-        return null;
-    }
-
-    return (
-        <section
-            id="phrase-pack-browser"
-            className="space-y-3"
-            aria-labelledby="phrase-pack-browser-header"
-        >
-            <div className="flex items-center justify-between">
-                <h4
-                    id="phrase-pack-browser-header"
-                    className="text-base font-semibold flex items-center gap-1.5"
-                >
-                    <Library size={16} className="text-muted-foreground/80" />
-                    {t("packs.phrasePack.sectionTitle", {
-                        defaultValue: "Phrase packs",
-                    })}
-                </h4>
-                {hasAnyPhrasePacks && (
-                    <span className="text-xs tabular-nums text-muted-foreground">
-                        {totalVisible}/{allPhrasePacks.length}
-                    </span>
-                )}
-            </div>
-
-            {/* Catalog empty + truly offline (no cached payload to fall
-                back on). Installed phrase packs still work — they live in
-                the Stacks tab toggle section which doesn't read the
-                catalog at all. */}
-            {!hasAnyPhrasePacks && !isOnline && !lastFetched && (
+    // Catalog empty + truly offline (no cached payload) — show the
+    // offline notice and bail. Other paths render the full chrome.
+    if (!hasAnyPhrasePacks && !isOnline && !lastFetched) {
+        return (
+            <div className="p-4">
                 <OfflineNotice
                     title={t("offline.phrasePacksTitle", {
                         defaultValue: "Phrase pack catalog needs internet",
@@ -139,166 +135,181 @@ export function PhrasePackBrowser() {
                             "Your installed phrase packs still work. Reconnect to browse new ones.",
                     })}
                 />
-            )}
+            </div>
+        );
+    }
+    if (!hasAnyPhrasePacks) {
+        // Catalog returned empty on an online client — nothing honest to
+        // show. The drawer's title still gives the user context.
+        return null;
+    }
 
-            {/* Cached payload + offline — subdued banner so the user knows
-                what they're looking at. Orthogonal to install state. */}
-            {hasAnyPhrasePacks && !isOnline && (
-                <OfflineNotice
-                    density="compact"
-                    title={t("offline.cachedSubtitle", {
-                        defaultValue: "Showing your last cached results.",
-                    })}
-                />
-            )}
-
-            {/* All installed — calm, accurate callout. No grid; the user
-                already has every pack and Stacks is where toggling lives. */}
-            {allInstalled && (
-                <div className="rounded-lg border border-purple-400/40 bg-purple-500/[0.04] p-5 text-center">
-                    <CheckCircle2
-                        size={20}
-                        aria-hidden="true"
-                        className="mx-auto text-purple-500"
+    return (
+        <div className="flex h-full flex-col" id="phrase-pack-browser">
+            {/* Sticky filter chrome — stays pinned at the top of the
+                drawer's scroll area so users keep their filter
+                affordances regardless of how far they've scrolled. */}
+            <div className="sticky top-0 z-10 bg-background space-y-2 px-4 pt-2 pb-3 border-b border-border/40">
+                {!isOnline && (
+                    <OfflineNotice
+                        density="compact"
+                        title={t("offline.cachedSubtitle", {
+                            defaultValue: "Showing your last cached results.",
+                        })}
                     />
-                    <p className="mt-2 text-sm font-medium text-foreground">
-                        {t("packs.phrasePack.allInstalled.title", {
-                            defaultValue: "You've got every phrase pack.",
+                )}
+                <div className="relative">
+                    <Search
+                        size={14}
+                        aria-hidden="true"
+                        className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground/70 pointer-events-none"
+                    />
+                    <input
+                        type="search"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder={t("packs.phrasePack.searchPlaceholder", {
+                            defaultValue: "Search…",
                         })}
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                        {t("packs.phrasePack.allInstalled.subtitle", {
-                            defaultValue:
-                                "Topic packs ship regularly — check back any time.",
-                        })}
-                    </p>
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={handleManageInStacks}
-                        className="mt-3 text-xs"
-                    >
-                        {t("packs.phrasePack.allInstalled.manageCta", {
-                            defaultValue: "Manage in Stacks",
-                        })}
-                    </Button>
+                        className="w-full pl-8 pr-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/40"
+                    />
                 </div>
-            )}
-
-            {/* Search + filter chips + grid — only when there's still
-                something un-installed to act on. */}
-            {hasAnyPhrasePacks && !allInstalled && (
-                <>
-                    <div className="flex items-center gap-2">
-                        <div className="relative flex-1">
-                            <Search
-                                size={14}
-                                aria-hidden="true"
-                                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground/70 pointer-events-none"
-                            />
-                            <input
-                                type="search"
-                                value={query}
-                                onChange={(e) => setQuery(e.target.value)}
-                                placeholder={t("packs.phrasePack.searchPlaceholder", {
-                                    defaultValue: "Search…",
-                                })}
-                                className="w-full pl-8 pr-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/40"
-                            />
-                        </div>
-                    </div>
+                <div className="flex flex-wrap gap-1.5">
+                    {FILTERS.map((f) => (
+                        <button
+                            key={f}
+                            type="button"
+                            onClick={() => setFilter(f)}
+                            className={[
+                                "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
+                                filter === f
+                                    ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
+                                    : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
+                            ].join(" ")}
+                        >
+                            {t(`packs.phrasePack.filter.${f}`, {
+                                defaultValue:
+                                    f === "all"
+                                        ? "All"
+                                        : f === "free"
+                                            ? "Free"
+                                            : f === "paid"
+                                                ? "Paid"
+                                                : "Installed",
+                            })}
+                        </button>
+                    ))}
+                </div>
+                {groups.length > 1 && (
                     <div className="flex flex-wrap gap-1.5">
-                        {FILTERS.map((f) => (
-                            <button
-                                key={f}
-                                type="button"
-                                onClick={() => setFilter(f)}
-                                className={[
-                                    "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
-                                    filter === f
-                                        ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
-                                        : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
-                                ].join(" ")}
-                            >
-                                {t(`packs.phrasePack.filter.${f}`, {
-                                    defaultValue:
-                                        f === "all"
-                                            ? "All"
-                                            : f === "free"
-                                                ? "Free"
-                                                : f === "paid"
-                                                    ? "Paid"
-                                                    : "Installed",
-                                })}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Filter=installed with nothing installed — specific
-                        copy + a CTA that resets the filter. Avoids the
-                        generic "No matches" string in a state we can fix. */}
-                    {visibleGroups.length === 0 &&
-                        filter === "installed" &&
-                        nothingInstalled && (
-                            <div className="rounded-md border border-dashed border-border bg-muted/30 p-5 text-center">
-                                <p className="text-sm text-foreground">
-                                    {t(
-                                        "packs.phrasePack.filterEmpty.installed",
-                                        {
-                                            defaultValue: "Nothing installed yet.",
-                                        },
-                                    )}
-                                </p>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => setFilter("all")}
-                                    className="mt-2 text-xs"
+                        {groups.map((g) => {
+                            const isSelected = selectedCategories.has(g.id);
+                            return (
+                                <button
+                                    key={g.id}
+                                    type="button"
+                                    onClick={() => toggleCategory(g.id)}
+                                    className={[
+                                        "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
+                                        isSelected
+                                            ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
+                                            : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
+                                    ].join(" ")}
                                 >
-                                    {t("packs.phrasePack.filterEmpty.cta", {
-                                        defaultValue: "Show all packs",
-                                    })}
-                                </Button>
-                            </div>
-                        )}
+                                    {g.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
 
-                    {/* Search / filter combo yielded nothing actionable —
-                        fall through to the existing soft message. */}
-                    {visibleGroups.length === 0 &&
-                        !(filter === "installed" && nothingInstalled) && (
-                            <p className="text-sm text-muted-foreground/80 px-1">
-                                {t("packs.phrasePack.noMatches", {
-                                    defaultValue: "No matches.",
-                                })}
-                            </p>
-                        )}
+            {/* Scrollable grid area. The drawer container caps the
+                overall height; this inner div fills the remaining space
+                and scrolls when the grid overflows. */}
+            <div className="flex-1 overflow-y-auto px-4 pt-3 pb-6">
+                {allInstalled && (
+                    <div className="rounded-lg border border-purple-400/40 bg-purple-500/[0.04] p-5 text-center">
+                        <CheckCircle2
+                            size={20}
+                            aria-hidden="true"
+                            className="mx-auto text-purple-500"
+                        />
+                        <p className="mt-2 text-sm font-medium text-foreground">
+                            {t("packs.phrasePack.allInstalled.title", {
+                                defaultValue: "You've got every phrase pack.",
+                            })}
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                            {t("packs.phrasePack.allInstalled.subtitle", {
+                                defaultValue:
+                                    "Topic packs ship regularly — check back any time.",
+                            })}
+                        </p>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={handleManageInStacks}
+                            className="mt-3 text-xs"
+                        >
+                            {t("packs.phrasePack.allInstalled.manageCta", {
+                                defaultValue: "Manage in Stacks",
+                            })}
+                        </Button>
+                    </div>
+                )}
 
-                    {visibleGroups.map((group) => (
-                        <div key={group.id} className="space-y-2">
-                            {/* Suppress group label when there's only the
-                                fallback "All phrase packs" container — the
-                                section header already says "Phrase packs". */}
-                            {visibleGroups.length > 1 && (
-                                <div className="px-1 pt-2">
-                                    <h5 className="text-sm font-semibold text-foreground/90">
-                                        {group.label}
-                                    </h5>
-                                    {group.description && (
-                                        <p className="text-[11px] text-muted-foreground/80 mt-0.5">
-                                            {group.description}
-                                        </p>
-                                    )}
+                {!allInstalled && (
+                    <>
+                        {visiblePacks.length === 0 &&
+                            filter === "installed" &&
+                            nothingInstalled && (
+                                <div className="rounded-md border border-dashed border-border bg-muted/30 p-5 text-center">
+                                    <p className="text-sm text-foreground">
+                                        {t(
+                                            "packs.phrasePack.filterEmpty.installed",
+                                            {
+                                                defaultValue:
+                                                    "Nothing installed yet.",
+                                            },
+                                        )}
+                                    </p>
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setFilter("all")}
+                                        className="mt-2 text-xs"
+                                    >
+                                        {t("packs.phrasePack.filterEmpty.cta", {
+                                            defaultValue: "Show all packs",
+                                        })}
+                                    </Button>
                                 </div>
                             )}
-                            <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                {group.packs.map((pack) => (
-                                    <PhrasePackCard key={pack.id} pack={pack} />
+
+                        {visiblePacks.length === 0 &&
+                            !(filter === "installed" && nothingInstalled) && (
+                                <p className="text-sm text-muted-foreground/80 px-1">
+                                    {t("packs.phrasePack.noMatches", {
+                                        defaultValue: "No matches.",
+                                    })}
+                                </p>
+                            )}
+
+                        {visiblePacks.length > 0 && (
+                            <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                                {visiblePacks.map((pack) => (
+                                    <PhrasePackCard
+                                        key={pack.id}
+                                        pack={pack}
+                                        compact
+                                    />
                                 ))}
                             </div>
-                        </div>
-                    ))}
-                </>
-            )}
-        </section>
+                        )}
+                    </>
+                )}
+            </div>
+        </div>
     );
 }

@@ -469,7 +469,11 @@
       "filterEmpty": {
         "installed": "Še nič ni nameščeno.",
         "cta": "Pokaži vse"
-      }
+      },
+      "showAll": "Pokaži vse ({{count}})",
+      "collapseList": "Pokaži manj",
+      "openDrawer": "Brskaj po paketih fraz ({{count}})",
+      "openDrawerLabel": "Brskaj po paketih fraz"
     }
   },
   "subscription": {
