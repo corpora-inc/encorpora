@@ -39,7 +39,14 @@ type PhrasePackManifest = {
 async function fetchInstalledManifest(
     packId: string,
 ): Promise<PhrasePackManifest | null> {
-    const url = `corpan-pack://localhost/${packId}/manifest.json`;
+    // encodeURIComponent here is belt-and-suspenders: pack ids should
+    // already be kebab-case lowercase alphanumerics from `pack_meta.id`,
+    // but any pack id with a `/`, `..`, or whitespace would otherwise
+    // construct a malformed URL and could (in theory) escape into the
+    // sibling pack tree on disk.
+    const url = `corpan-pack://localhost/${encodeURIComponent(
+        packId,
+    )}/manifest.json`;
     try {
         const text = await invoke<string>("content_packs_fetch_text", { url });
         return JSON.parse(text) as PhrasePackManifest;
@@ -94,6 +101,17 @@ export async function registerPhrasePackIfApplicable(
     const manifest = await fetchInstalledManifest(packId);
     if (!manifest) return false;
     if (manifest.packType !== "phrase") return false;
+    // Refuse to register a manifest whose declared id differs from the
+    // directory it was loaded out of. Without this guard, a malformed
+    // (or maliciously-built) pack zip could spoof another pack's id in
+    // the in-memory registry, causing the sampler / uninstall / toggle
+    // UI to point at the wrong source on disk.
+    if (manifest.id !== packId) {
+        console.warn(
+            `[phrase-packs] manifest id mismatch for ${packId}: got "${manifest.id}"`,
+        );
+        return false;
+    }
 
     const pack = manifestToInstalled(manifest, source);
     usePhrasePacksStore.getState().register(pack);

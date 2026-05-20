@@ -468,7 +468,12 @@ export function createSettingsDrawer(opts: SettingsDrawerOpts): SettingsDrawer {
     if (id === "hr-audio") return t("settings.audio.title")
     if (id === "hr-gameplay") return t("settings.gameplay.title")
     if (id === "hr-advanced") return t("settings.advanced.title")
-    return ""
+    // Fall back to the title the section was constructed with — keeps
+    // extraSections (e.g. "Display") readable through Reset Defaults
+    // rerenders. Re-translating an extra-section's title across a UI
+    // language change is the owner's responsibility (see game.ts).
+    const found = sections.find((s) => s.id === id)
+    return found?.title ?? ""
   }
 
   function rerender() {

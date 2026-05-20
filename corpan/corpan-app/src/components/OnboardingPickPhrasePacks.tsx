@@ -38,6 +38,7 @@ import { useInstallContext } from "@/contentPacks/InstallContext";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
+import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { useEntitlementStore } from "@/store/entitlements";
 import { useSettingsStore } from "@/store/settings";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
@@ -54,6 +55,12 @@ export function OnboardingPickPhrasePacks() {
 
     const lastFetched = useCatalogStore((s) => s.lastFetched);
     const isFetching = useCatalogStore((s) => s.isFetching);
+    // The phrase-pack catalog is its own store (Phase B′ moved phrase
+    // packs off the v3 catalog onto a dedicated S3 catalog). Both have
+    // to be considered when gating the Continue button so we don't
+    // stealth-skip the user past starter selection during a slow first
+    // online load.
+    const ppLastFetched = usePhrasePackCatalogStore((s) => s.lastFetched);
     const isOnline = useOnlineStatus();
     const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
 
@@ -115,21 +122,37 @@ export function OnboardingPickPhrasePacks() {
 
     const clearAll = () => setSelectedIds(new Set());
 
+    // Entitlement gate for onboarding installs: free packs always pass;
+    // subscription-gated IAP packs pass only when the user is already
+    // subscribed; one-time IAP packs are deferred to the Packs tab
+    // (Buy flow lives there). Prevents a user from one-tap-installing
+    // paid content they haven't purchased — the pack zip URLs are
+    // public on CloudFront, so the entitlement gate has to live here.
+    const canInstallInOnboarding = (pack: PhrasePackCatalogEntry): boolean => {
+        if (!pack.purchase || pack.purchase.type !== "iap") return true;
+        const productId = pack.purchase.productId ?? "";
+        const subscriptionGated =
+            productId.includes("subscription") ||
+            productId.includes("premium");
+        return subscriptionGated && subscriptionActive;
+    };
+
     const handleContinue = async () => {
         const chosen = starterPacks.filter((p) => selectedIds.has(p.id));
-        if (chosen.length === 0) {
+        const installable = chosen.filter(canInstallInOnboarding);
+        if (installable.length === 0) {
             setStep(STEP_TTS);
             return;
         }
-        // Activate the chosen packs immediately so the moment they finish
-        // installing the main loop is already configured to sample them.
-        setPhrasePackIds(chosen.map((p) => p.id));
+        // Activate only entitled packs so the main loop never tries to
+        // sample from a pack the user shouldn't have.
+        setPhrasePackIds(installable.map((p) => p.id));
         // Kick off the install in the background only if online. When
         // offline, just remember the selection — the user can re-trigger
         // from Settings → Packs after reconnecting. Avoids burning a noisy
         // install error during the calm onboarding finish.
         if (isOnline) {
-            void installPackBatch(chosen);
+            void installPackBatch(installable);
         }
         setStep(STEP_TTS);
     };
@@ -168,7 +191,13 @@ export function OnboardingPickPhrasePacks() {
                 currentIndex={CURRENT_STEP_IDX}
                 onBack={() => setStep(STEP_PICK_LEARNING)}
                 onNext={handleContinue}
-                canNext={true}
+                // Disable Continue while the phrase-pack catalog is still
+                // loading on an online client (avoids a stealth-skip:
+                // tapping Continue during the loading skeleton would
+                // advance with no starter packs picked). Offline users
+                // always get Continue — they can pick later from
+                // Settings → Packs.
+                canNext={!isOnline || !!ppLastFetched || hasStarter}
             />
 
             <main

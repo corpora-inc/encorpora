@@ -1,7 +1,7 @@
 {
   "id": "hover_runner",
   "name": "Hover Runner",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones",
   "entry": "dist/app.js",
   "styles": [
@@ -9,7 +9,7 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-05-20T01:34:50.082Z",
+  "devRevision": "2026-05-20T03:04:14.802Z",
   "nameLocalized": {
     "ar": "هوفر رانر",
     "bg": "Ховър Рънър",

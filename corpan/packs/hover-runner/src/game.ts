@@ -318,6 +318,7 @@ export const createHoverRunner = (
   // Refs that the language listener and display section close over.
   // Skin elements are assigned later when the picker is constructed.
   let displayContainer: HTMLElement | null = null
+  let skinPanelEl: HTMLElement | null = null
   let skinLabelEl: HTMLLabelElement | null = null
   let skinCycleEl: HTMLButtonElement | null = null
 
@@ -329,9 +330,14 @@ export const createHoverRunner = (
       displayContainer = c
       c.appendChild(promptToggle)
       // Skin picker, if already built, is re-appended here on rerender.
-      const existing = root.querySelector(".skin-panel")
-      if (existing && existing.parentElement !== c) {
-        c.appendChild(existing)
+      // We hold a direct reference rather than querySelector(".skin-panel")
+      // because the drawer's rerender wipes the section container's
+      // innerHTML before invoking render — at that moment the panel has
+      // been detached from the DOM and `root.querySelector` can't find
+      // it anywhere. The direct ref survives detachment and is safe to
+      // re-append.
+      if (skinPanelEl && skinPanelEl.parentElement !== c) {
+        c.appendChild(skinPanelEl)
       }
     },
   }
@@ -426,11 +432,21 @@ export const createHoverRunner = (
     }
     unsubMotionOverlay?.()
     unsubMotionOverlay = motionControl.subscribe((state) => {
-      motionOverlay?.setTiltState(state)
+      // Capture the current overlay reference up front — `motionOverlay`
+      // can be replaced by a later `ensureMotionOverlay()` call before
+      // this callback fires, and we want to dispose the exact instance
+      // we were forwarding state to.
+      const overlay = motionOverlay
+      overlay?.setTiltState(state)
       if (state === "waiting" || state === "active" || state === "off") {
         unsubMotionOverlay?.()
         unsubMotionOverlay = null
-        motionOverlay = null
+        // Tear down the overlay's DOM + button listeners before
+        // dropping the reference. The old code left them mounted.
+        overlay?.dispose()
+        if (motionOverlay === overlay) {
+          motionOverlay = null
+        }
       }
     })
   }
@@ -996,6 +1012,7 @@ export const createHoverRunner = (
   skinPanel.append(skinLabel, skinSelect, skinCycle)
 
   // Publish skin label refs so the language listener can re-localize.
+  skinPanelEl = skinPanel
   skinLabelEl = skinLabel
   skinCycleEl = skinCycle
 

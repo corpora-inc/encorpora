@@ -101,8 +101,19 @@ export function useInstallProgress() {
       // 2-minute event timeout — proactively flip the dialog to a calm
       // error state the moment we know we've lost the connection so the
       // user sees a Retry button instead of a forever-spinner.
+      //
+      // Once we enter the offline error state, tear down the Tauri
+      // progress listener and the stuck-timeout interval. Otherwise a
+      // late `complete` or `progress` event arriving when the radio
+      // briefly comes back could overwrite the error state and re-arm
+      // the dialog.
       unlistenNetworkRef.current = listenToNetworkChanges((online) => {
         if (online) return
+        clearTimeout_()
+        if (unlistenRef.current) {
+          unlistenRef.current()
+          unlistenRef.current = null
+        }
         setState((prev) =>
           prev.active && prev.stage !== "complete" && prev.stage !== "error"
             ? { ...prev, stage: "error", error: "offline", active: true }

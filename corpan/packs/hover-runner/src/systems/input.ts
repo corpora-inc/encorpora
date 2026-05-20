@@ -43,6 +43,14 @@ export const initInput = (
     hooks.onTiltStateChange?.(next)
   }
 
+  // Monotonic counter for outstanding permission requests. If the user
+  // dismisses the overlay (or otherwise calls `disableTilt`) while a
+  // `requestPermission` promise is still pending, we don't want the
+  // late "granted" resolution to silently re-enable tilt and overwrite
+  // their choice. Each `requestTilt` captures the current seq and
+  // bails if it has changed by the time the promise resolves.
+  let tiltRequestSeq = 0
+
   // Smoothing state for motion input
   let smoothedX = 0
   let smoothedY = 0
@@ -236,6 +244,10 @@ export const initInput = (
   }
 
   const disableTilt = () => {
+    // Invalidate any in-flight permission request so a late `granted`
+    // resolution doesn't re-enable tilt after the user explicitly
+    // turned it off (or dismissed the iOS overlay).
+    tiltRequestSeq += 1
     if (!state.tiltEnabled) {
       // Even if we never enabled (because permission flow is in flight),
       // make sure we land back at `off` so the UI doesn't get stuck.
@@ -274,10 +286,22 @@ export const initInput = (
    * Returns immediately. Subscribe to `onTiltStateChange` for the outcome.
    */
   const requestTilt = (): void => {
-    type DOEStatic = typeof DeviceOrientationEvent & {
+    const requestSeq = ++tiltRequestSeq
+    type DOEStatic = {
       requestPermission?: () => Promise<"granted" | "denied">
     }
-    const DOE = DeviceOrientationEvent as unknown as DOEStatic
+    // Read through globalThis so an unsupported browser (no
+    // `DeviceOrientationEvent` global) throws `undefined.requestPermission`
+    // a few lines down rather than `ReferenceError` here, which the
+    // existing try/catch can't catch.
+    const DOE = (globalThis as unknown as {
+      DeviceOrientationEvent?: DOEStatic
+    }).DeviceOrientationEvent
+
+    if (!DOE) {
+      setTiltState("error")
+      return
+    }
 
     if (typeof DOE.requestPermission !== "function") {
       enableTilt()
@@ -299,6 +323,10 @@ export const initInput = (
     setTiltState("pending")
     promise
       .then((result) => {
+        // A later disableTilt() or requestTilt() bumps the seq — if
+        // ours is no longer current, the user has moved on and we
+        // must not stomp their state.
+        if (requestSeq !== tiltRequestSeq) return
         if (result === "granted") {
           enableTilt()
         } else if (result === "denied") {
@@ -312,6 +340,7 @@ export const initInput = (
         }
       })
       .catch((err: unknown) => {
+        if (requestSeq !== tiltRequestSeq) return
         console.error("[hover-runner] requestPermission rejected:", err)
         setTiltState("error")
       })
