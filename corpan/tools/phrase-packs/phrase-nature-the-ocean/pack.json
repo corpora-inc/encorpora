@@ -1,0 +1,10 @@
+{
+  "id": "phrase-nature-the-ocean",
+  "version": "0.1.0",
+  "name": "The Ocean",
+  "description": "Tides, waves, sailors, whales, coral, the smell of salt. The sea that covers most of the planet.",
+  "category": "nature",
+  "topic": "Ocean",
+  "icon": "waves",
+  "accent_color": "#0e7490"
+}

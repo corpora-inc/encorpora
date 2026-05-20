@@ -1,0 +1,10 @@
+{
+  "id": "phrase-humanities-mythology-world",
+  "version": "0.1.0",
+  "name": "World Mythology",
+  "description": "Greek, Norse, Hindu, Yoruba, Polynesian, Mesoamerican, Egyptian, Chinese, Japanese, Slavic. The long stories the species keeps telling itself.",
+  "category": "humanities",
+  "topic": "Mythology",
+  "icon": "scroll",
+  "accent_color": "#78350f"
+}

@@ -2,7 +2,7 @@
   "onboardingStarterPackIds": [
     "phrase-travel-essentials",
     "phrase-life-cooking-basics",
-    "phrase-work-office-basics",
+    "phrase-life-family-and-friends",
     "phrase-learning"
   ],
   "phrasePackGroups": [
@@ -13,6 +13,8 @@
       "packIds": [
         "phrase-travel-essentials",
         "phrase-life-cooking-basics",
+        "phrase-life-family-and-friends",
+        "phrase-life-health-and-body",
         "phrase-work-office-basics",
         "phrase-tech-computers-basics",
         "phrase-learning"
@@ -21,9 +23,10 @@
     {
       "id": "arts",
       "label": "Arts",
-      "description": "Music, performance, and the vocabulary of making things.",
+      "description": "Music, film, and the vocabulary of making things.",
       "packIds": [
-        "phrase-arts-music-fundamentals"
+        "phrase-arts-music-fundamentals",
+        "phrase-arts-cinema-and-film"
       ]
     },
     {
@@ -31,8 +34,19 @@
       "label": "Sciences",
       "description": "Natural-science packs: living things, the Earth, the universe.",
       "packIds": [
+        "phrase-sciences-astronomy-night-sky",
         "phrase-botany-basics",
         "phrase-geology-basics"
+      ]
+    },
+    {
+      "id": "nature",
+      "label": "Nature",
+      "description": "Birds, oceans, and the rest of the more-than-human world.",
+      "packIds": [
+        "phrase-nature-birds-everyday",
+        "phrase-nature-the-ocean",
+        "phrase-botany-basics"
       ]
     },
     {
@@ -41,16 +55,46 @@
       "description": "Big questions, how societies work, and the ideas that shape both.",
       "packIds": [
         "phrase-humanities-philosophy-basics",
-        "phrase-humanities-economics-basics"
+        "phrase-humanities-economics-basics",
+        "phrase-humanities-mythology-world"
+      ]
+    },
+    {
+      "id": "world-cultures",
+      "label": "World cultures",
+      "description": "Festivals, myths, and geography across the globe.",
+      "packIds": [
+        "phrase-life-festivals-world",
+        "phrase-humanities-mythology-world",
+        "phrase-places-geography-world"
+      ]
+    },
+    {
+      "id": "sports",
+      "label": "Sports",
+      "description": "Games, training, and the language of moving the body well.",
+      "packIds": [
+        "phrase-sports-soccer-basics",
+        "phrase-sports-martial-arts"
       ]
     },
     {
       "id": "outdoors",
       "label": "Outdoors",
-      "description": "Camping, hiking, geography, and the language of being outside.",
+      "description": "Camping, hiking, the ocean, and the language of being outside.",
       "packIds": [
         "phrase-life-camping-basics",
+        "phrase-nature-the-ocean",
         "phrase-places-geography-world"
+      ]
+    },
+    {
+      "id": "getting-around",
+      "label": "Getting around",
+      "description": "Cars, roads, and travel between places.",
+      "packIds": [
+        "phrase-vehicles-cars-and-driving",
+        "phrase-travel-essentials"
       ]
     },
     {
@@ -65,10 +109,11 @@
     {
       "id": "mind",
       "label": "Mind",
-      "description": "Learning, thinking, and the philosophy of an examined life.",
+      "description": "Learning, thinking, the quiet hours, and the examined life.",
       "packIds": [
         "phrase-learning",
-        "phrase-humanities-philosophy-basics"
+        "phrase-humanities-philosophy-basics",
+        "phrase-life-the-night"
       ]
     },
     {

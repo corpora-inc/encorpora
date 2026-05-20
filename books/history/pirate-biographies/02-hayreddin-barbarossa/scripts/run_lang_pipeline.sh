@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run a single language end-to-end through the post-EN pipeline.
 # Assumes: codex (or other translator) has produced segments_<lang>.json
-# Does:  validate → generate → polish → fixup → master --all → audit → publish → patch-catalog
+# Does:  validate → generate → polish → fixup → master --all → declick-regen → audit → publish → patch-catalog
 #
 # Usage:  run_lang_pipeline.sh <lang>
 #         run_lang_pipeline.sh fr
@@ -66,6 +66,11 @@ grep -E "realigned|onset-patch" "$LOG/fixup.log" | tail -5
 echo "[$(date +%T)] [$LANG_CODE] master --all"
 $BIN/ttsctl master "$PACK" --lang "$LANG_CODE" --all > "$LOG/master.log" 2>&1
 tail -3 "$LOG/master.log"
+
+echo "[$(date +%T)] [$LANG_CODE] declick-regen"
+$BIN/python /home/skyl/projects/ttsctl/scripts/declick_regen.py \
+  "$PACK" "$LANG_CODE" --max-retries 3 --device cuda > "$LOG/declick.log" 2>&1
+grep -E "baseline|clean after|fallback|WARNING" "$LOG/declick.log" | tail -10
 
 echo "[$(date +%T)] [$LANG_CODE] audit"
 $BIN/ttsctl audit "$PACK" --lang "$LANG_CODE" > "$LOG/audit.log" 2>&1

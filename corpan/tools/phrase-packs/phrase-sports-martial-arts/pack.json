@@ -1,0 +1,10 @@
+{
+  "id": "phrase-sports-martial-arts",
+  "version": "0.1.0",
+  "name": "Martial Arts",
+  "description": "Judo, karate, boxing, wrestling, BJJ. The dojo, the bow, the falling-down kind of learning.",
+  "category": "sports",
+  "topic": "Martial Arts",
+  "icon": "shield",
+  "accent_color": "#991b1b"
+}

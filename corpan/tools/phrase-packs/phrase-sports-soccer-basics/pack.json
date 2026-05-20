@@ -1,0 +1,10 @@
+{
+  "id": "phrase-sports-soccer-basics",
+  "version": "0.1.0",
+  "name": "Soccer Basics",
+  "description": "The world's game. Goals, defense, the referee, the crowd, the kids playing in the street.",
+  "category": "sports",
+  "topic": "Soccer",
+  "icon": "circle-dot",
+  "accent_color": "#15803d"
+}
