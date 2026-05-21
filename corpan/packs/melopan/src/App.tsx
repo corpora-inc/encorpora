@@ -43,6 +43,8 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playheadStep, setPlayheadStep] = useState<number>(-1)
   const [sampleLoaded, setSampleLoaded] = useState(false)
+  const [debugUrl, setDebugUrl] = useState<string | null>(null)
+  const [debugError, setDebugError] = useState<string | null>(null)
 
   useEffect(() => {
     const engine = createAudioEngine()
@@ -69,8 +71,11 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     const { voice, word } = project.voicePad
     const sample = findSample(voice, word)
     const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
-    void engineRef.current.voicePad.loadSample(url).then(() => {
+    setDebugUrl(url)
+    setDebugError(null)
+    void engineRef.current.voicePad.loadSample(url).then((result) => {
       setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
+      setDebugError(result.ok ? null : (result.error ?? "unknown error"))
     })
   }, [project.voicePad.voice, project.voicePad.word])
 
@@ -126,6 +131,25 @@ export const App = ({ hostApi: _hostApi }: Props) => {
         <span>·</span>
         <span>{project.lengthSteps} steps</span>
         <span className="mp-build">melopan v{manifest.version}</span>
+      </div>
+      <div
+        style={{
+          fontSize: 10,
+          lineHeight: 1.3,
+          padding: "6px 10px",
+          background: "rgba(0,0,0,0.55)",
+          color: "#9be59b",
+          fontFamily: "ui-monospace, SFMono-Regular, monospace",
+          wordBreak: "break-all",
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+        }}
+      >
+        <div>base: {PACK_BASE_URL || "(empty)"}</div>
+        <div>url:  {debugUrl || "(none)"}</div>
+        <div style={{ color: debugError ? "#ff8a8a" : "#9be59b" }}>
+          loaded: {sampleLoaded ? "yes" : "no"}
+          {debugError ? `  err: ${debugError}` : ""}
+        </div>
       </div>
     </div>
   )

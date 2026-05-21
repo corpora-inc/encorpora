@@ -10,6 +10,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-05-20
+
+### Added
+- On-screen debug strip below the footer showing the resolved
+  `PACK_BASE_URL`, the constructed sample URL, and the load result
+  (incl. error message). Temporary while we diagnose why voice samples
+  still fall back to synth on device. Remove once playback is confirmed.
+
+### Changed
+- `voicePad.loadSample` now returns `{ ok, error? }` instead of `void`,
+  so callers can surface load failures without scraping console logs.
+
 ## [0.1.2] - 2026-05-20
 
 ### Fixed

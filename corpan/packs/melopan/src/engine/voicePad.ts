@@ -1,10 +1,12 @@
 import * as Tone from "tone"
 
+export type SampleLoadResult = { ok: boolean; error?: string }
+
 export type VoicePad = {
   /** Trigger the voice with current pitch + velocity, at a given audio time. */
   trigger: (time: number, velocity: number) => void
   /** Load a sample WAV/OGG; falls back to synth-vox if loading fails or url is null. */
-  loadSample: (url: string | null) => Promise<void>
+  loadSample: (url: string | null) => Promise<SampleLoadResult>
   /** Set pitch shift in semitones. */
   setPitch: (semis: number) => void
   /** Whether a real sample is loaded (vs the synth fallback). */
@@ -53,10 +55,10 @@ export const createVoicePad = (destination: Tone.InputNode): VoicePad => {
     return player
   }
 
-  const loadSample = async (url: string | null) => {
+  const loadSample = async (url: string | null): Promise<SampleLoadResult> => {
     if (!url) {
       sampleLoaded = false
-      return
+      return { ok: true }
     }
     try {
       const p = ensurePlayer()
@@ -65,9 +67,16 @@ export const createVoicePad = (destination: Tone.InputNode): VoicePad => {
         p.buffer = new Tone.ToneAudioBuffer(url, () => resolve(), reject)
       })
       sampleLoaded = true
+      return { ok: true }
     } catch (err) {
       console.warn("[melopan voicePad] Failed to load sample:", url, err)
       sampleLoaded = false
+      const message =
+        err instanceof Error ? err.message :
+        typeof err === "string" ? err :
+        err && typeof err === "object" && "message" in err ? String((err as { message: unknown }).message) :
+        "unknown error"
+      return { ok: false, error: message }
     }
   }
 
