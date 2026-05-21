@@ -15,23 +15,26 @@
         android:theme="@style/Theme.corpan"
         android:usesCleartextTraffic="${usesCleartextTraffic}">
         <!--
-             configChanges must include EVERY config that Android can
-             change at runtime, otherwise Android destroys + recreates
-             the Activity. Recreation calls WryActivity.onCreate again,
-             which re-enters tao::ndk_glue::create →
-             ndk_context::initialize_android_context, which asserts the
-             native context is still None and aborts the process.
+             Defense in depth against the ndk_context Activity-recreation
+             crash ("assertion failed: previous.is_none()" in
+             ndk_context::initialize_android_context, called from
+             tao::ndk_glue::create on WryActivity.onCreate).
 
-             The previously-shipped list missed fontScale, density,
-             layoutDirection, and navigation. fontScale in particular
-             was a common crash trigger for language-learning users who
-             adjust their system font size.
+             Primary defense: src-tauri/Cargo.toml [patch.crates-io]
+             vendors a fork of ndk-context that turns the assert into a
+             no-op replace, so re-init can never abort the process.
 
-             Authoritative list per Tao's known issues:
-               https://github.com/tauri-apps/tao (search ndk_context)
+             Secondary defense (this list): absorb every config change
+             Android can deliver at runtime so the Activity isn't
+             destroyed and recreated in the first place. The
+             0.13.1-shipped list missed fontScale (common for language-
+             learning users adjusting system font size); the rest of
+             the modern list (fontWeightAdjustment from API 31,
+             grammaticalGender from API 34, colorMode, touchscreen) was
+             added alongside the runtime patch.
         -->
         <activity
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|fontScale|density|layoutDirection|navigation|mcc|mnc"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|fontScale|density|layoutDirection|navigation|mcc|mnc|touchscreen|colorMode|fontWeightAdjustment|grammaticalGender"
             android:launchMode="singleTask"
             android:label="@string/main_activity_title"
             android:name=".MainActivity"

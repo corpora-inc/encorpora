@@ -7,6 +7,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Android: shrink the libgui `FenceMonitor` race window during WebView
+  teardown.** `MainActivity.cleanupWebViews` now calls `webView.onPause()`
+  between `loadUrl("about:blank")` and `removeView` / `destroy`, signalling
+  the renderer to flush pending GPU work before the Surface/BufferQueue is
+  torn down. Mitigates (does not eliminate) the upstream AOSP race that
+  reports as "pthread_mutex_lock called on a destroyed mutex" inside
+  `FenceMonitor::loop()`.
+- **Android: Activity-recreation crash (`assertion failed: previous.is_none()`
+  in `ndk_context::initialize_android_context`)**. Affected ~7 users on
+  0.13.1 per Play Console. Two-layer fix: (1) vendored fork of
+  `ndk-context` 0.1.1 under `src-tauri/vendor/ndk-context/` (wired via
+  `[patch.crates-io]`) makes `initialize_android_context` /
+  `release_android_context` idempotent, so re-init can never abort the
+  process. (2) Expanded `AndroidManifest` `configChanges` to absorb
+  `fontWeightAdjustment`, `grammaticalGender`, `colorMode`, and
+  `touchscreen` (on top of the `fontScale|density|layoutDirection|
+  navigation|mcc|mnc` added in 0.15.x), so the Activity is recreated
+  in fewer real-user scenarios in the first place.
+
 ## [0.15.5] - 2026-05-21 — Phrase-pack drawer redesign + safe-area sweep
 
 User-visible polish pass on the phrase-pack drawer (the

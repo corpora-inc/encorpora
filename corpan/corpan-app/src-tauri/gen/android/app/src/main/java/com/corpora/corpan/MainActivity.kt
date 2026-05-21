@@ -39,6 +39,11 @@ class MainActivity : TauriActivity() {
       if (child is WebView) {
         child.stopLoading()
         child.loadUrl("about:blank")
+        // Signal the renderer to flush pending GPU work before we tear down
+        // the Surface/BufferQueue. Shrinks (does not close) the libgui
+        // FenceMonitor mutex-after-destroy race that abort()s the process
+        // with "pthread_mutex_lock called on a destroyed mutex".
+        child.onPause()
         viewGroup.removeView(child)
         child.destroy()
       } else if (child is ViewGroup) {
