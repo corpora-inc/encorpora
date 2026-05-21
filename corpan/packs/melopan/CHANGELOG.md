@@ -10,6 +10,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-20
+
+### Fixed
+- Voice samples now actually load when the pack is hosted via
+  `corpan-pack://`. Previously, the relative URL `voice-kit/{file}`
+  resolved against the corpan-app host page's origin instead of the
+  pack's own location, so every sample fetch 404'd and the voice pad
+  silently fell back to synth-vox. App.tsx now resolves asset URLs
+  against `script.dataset.corpGameBaseUrl` (set by the host), matching
+  the pattern in hanzipan's `resolvePackBaseUrl()`.
+
+### Changed
+- Footer build label now reads the version from `manifest.json`
+  instead of being hardcoded, so what you see is what's actually running.
+
 ## [0.1.1] - 2026-05-20
 
 ### Changed

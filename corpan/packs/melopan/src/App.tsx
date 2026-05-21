@@ -7,6 +7,29 @@ import { StepGrid } from "./ui/StepGrid"
 import { PianoRoll } from "./ui/PianoRoll"
 import { VoicePadControls } from "./ui/VoicePadControls"
 import { findSample, type DrumTrackId, type VoiceId } from "./model/project"
+import manifest from "../manifest.json"
+
+const GAME_ID = "melopan"
+
+const resolvePackBaseUrl = (): string => {
+  const script =
+    document.querySelector<HTMLScriptElement>(`script[data-corp-game-id="${GAME_ID}"]`) ||
+    (document.currentScript as HTMLScriptElement | null)
+  const dataset = script?.dataset
+  if (dataset?.corpGameBaseUrl) return dataset.corpGameBaseUrl
+  if (dataset?.corpGameSrc) return new URL(".", dataset.corpGameSrc).toString()
+  if (script?.src) return new URL(".", script.src).toString()
+  return window.location.href
+}
+
+// In dev, vite serves public/ at the server root (no dist/ prefix).
+// In prod (loaded via corpan-pack://{packId}/), the host's baseUrl is the
+// pack root and assets live under dist/.
+const ASSET_PREFIX = import.meta.env.PROD ? "dist/" : ""
+const PACK_BASE_URL = resolvePackBaseUrl()
+
+const resolvePackAsset = (path: string): string =>
+  new URL(`${ASSET_PREFIX}${path}`, PACK_BASE_URL).toString()
 
 type Props = { hostApi: HostApi }
 
@@ -45,7 +68,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     if (!engineRef.current) return
     const { voice, word } = project.voicePad
     const sample = findSample(voice, word)
-    const url = sample ? `voice-kit/${sample.file}` : null
+    const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
     void engineRef.current.voicePad.loadSample(url).then(() => {
       setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
     })
@@ -102,7 +125,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
         <span>{project.name}</span>
         <span>·</span>
         <span>{project.lengthSteps} steps</span>
-        <span className="mp-build">melopan v0.1.0</span>
+        <span className="mp-build">melopan v{manifest.version}</span>
       </div>
     </div>
   )
