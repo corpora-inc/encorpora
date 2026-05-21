@@ -1,0 +1,650 @@
+/* ============================================================
+   Melopan — global styles + three swappable skins
+   Skins toggle via [data-skin="earthgate|stargate|hover-runner"]
+   on the .melopan-root element.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+html, body, #corpan-game-root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* { box-sizing: border-box; }
+
+/* ============================================================
+   Earthgate skin (default) — warm cream + gold + Georgia serif
+   ============================================================ */
+.melopan-root[data-skin="earthgate"] {
+  --mp-bg: #f5f0e8;
+  --mp-bg-gradient: radial-gradient(circle at 60% 0%, #ffeed8, #f5f0e8 70%);
+  --mp-surface: #ebe1cf;
+  --mp-surface-2: #e0d3b9;
+  --mp-text: #3d2b1f;
+  --mp-text-dim: #8b7355;
+  --mp-accent: #d56a1a;        /* corpan brand orange */
+  --mp-accent-2: #c8a96e;      /* earthgate gold */
+  --mp-accent-hover: #f08230;
+  --mp-success: #4a8c3f;
+  --mp-error: #8b4513;
+  --mp-border: rgba(107, 76, 42, 0.18);
+  --mp-cell-off: rgba(107, 76, 42, 0.10);
+  --mp-cell-on: var(--mp-accent);
+  --mp-playhead: rgba(213, 106, 26, 0.18);
+  --mp-font: Georgia, "Times New Roman", serif;
+  --mp-font-mono: "VT323", "Courier New", monospace;
+  --mp-radius: 10px;
+  --mp-shadow: 0 2px 10px rgba(61, 43, 31, 0.12);
+}
+
+/* ============================================================
+   Stargate skin — deep navy + bright cyan + system sans
+   ============================================================ */
+.melopan-root[data-skin="stargate"] {
+  --mp-bg: #02040b;
+  --mp-bg-gradient: radial-gradient(circle at 50% 0%, #0a1428, #02040b 65%);
+  --mp-surface: rgba(15, 25, 45, 0.85);
+  --mp-surface-2: rgba(25, 38, 65, 0.85);
+  --mp-text: #c0d0e8;
+  --mp-text-dim: #6080a0;
+  --mp-accent: #7fd6ff;
+  --mp-accent-2: #d56a1a;       /* corpan orange as secondary punch */
+  --mp-accent-hover: #a0e4ff;
+  --mp-success: #4cff9f;
+  --mp-error: #ff6060;
+  --mp-border: rgba(127, 214, 255, 0.18);
+  --mp-cell-off: rgba(127, 214, 255, 0.08);
+  --mp-cell-on: var(--mp-accent);
+  --mp-playhead: rgba(127, 214, 255, 0.14);
+  --mp-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mp-font-mono: "VT323", "Courier New", monospace;
+  --mp-radius: 12px;
+  --mp-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   Hover Runner skin — radial dark blue + cyan + Trebuchet sans
+   ============================================================ */
+.melopan-root[data-skin="hover-runner"] {
+  --mp-bg: #05070f;
+  --mp-bg-gradient: radial-gradient(circle at 60% 20%, #11203b, #05070f 55%, #020409 100%);
+  --mp-surface: rgba(8, 12, 24, 0.92);
+  --mp-surface-2: rgba(16, 26, 46, 0.92);
+  --mp-text: #eaf2ff;
+  --mp-text-dim: #90a8d0;
+  --mp-accent: #7fd6ff;
+  --mp-accent-2: #d56a1a;
+  --mp-accent-hover: #a0e4ff;
+  --mp-success: #4cff9f;
+  --mp-error: #ff6060;
+  --mp-border: rgba(234, 242, 255, 0.18);
+  --mp-cell-off: rgba(234, 242, 255, 0.10);
+  --mp-cell-on: var(--mp-accent);
+  --mp-playhead: rgba(127, 214, 255, 0.16);
+  --mp-font: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+  --mp-font-mono: "VT323", "Courier New", monospace;
+  --mp-radius: 14px;
+  --mp-shadow: 0 24px 60px rgba(3, 6, 14, 0.45);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.melopan-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--mp-bg);
+  background-image: var(--mp-bg-gradient);
+  color: var(--mp-text);
+  font-family: var(--mp-font);
+  padding:
+    calc(var(--safe-top) + 8px)
+    calc(var(--safe-right) + 12px)
+    calc(var(--safe-bottom) + 8px)
+    calc(var(--safe-left) + 12px);
+  gap: 12px;
+}
+
+.mp-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--mp-surface);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  box-shadow: var(--mp-shadow);
+  flex-wrap: wrap;
+}
+
+.mp-brand {
+  font-family: var(--mp-font-mono);
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--mp-accent);
+  text-shadow: 0 0 12px rgba(213, 106, 26, 0.35);
+  user-select: none;
+}
+.melopan-root[data-skin="stargate"] .mp-brand,
+.melopan-root[data-skin="hover-runner"] .mp-brand {
+  text-shadow: 0 0 14px rgba(127, 214, 255, 0.45);
+}
+
+.mp-transport {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mp-btn {
+  font-family: var(--mp-font);
+  font-size: 14px;
+  background: var(--mp-surface-2);
+  color: var(--mp-text);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 120ms, transform 80ms;
+  user-select: none;
+}
+.mp-btn:hover { background: var(--mp-accent); color: #fff; }
+.mp-btn:active { transform: scale(0.96); }
+.mp-btn--play { min-width: 64px; font-size: 18px; }
+.mp-btn--play.is-playing { background: var(--mp-accent); color: #fff; }
+
+.mp-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mp-font-mono);
+  font-size: 18px;
+  color: var(--mp-text-dim);
+}
+.mp-control input[type="number"] {
+  width: 64px;
+  font-family: var(--mp-font-mono);
+  font-size: 18px;
+  background: var(--mp-bg);
+  color: var(--mp-text);
+  border: 1px solid var(--mp-border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  text-align: center;
+}
+.mp-control input[type="range"] {
+  width: 96px;
+  accent-color: var(--mp-accent);
+}
+.mp-control select {
+  background: var(--mp-bg);
+  color: var(--mp-text);
+  border: 1px solid var(--mp-border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-family: var(--mp-font-mono);
+  font-size: 16px;
+}
+
+.mp-spacer { flex: 1; }
+
+/* Skin picker */
+.mp-skin-picker {
+  display: flex;
+  gap: 4px;
+  background: var(--mp-bg);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  padding: 3px;
+}
+.mp-skin-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 120ms, border-color 120ms;
+}
+.mp-skin-swatch.is-active {
+  border-color: var(--mp-accent);
+  transform: scale(1.08);
+}
+.mp-skin-swatch[data-skin="earthgate"] {
+  background: linear-gradient(135deg, #f5f0e8, #c8a96e 60%, #8b6914);
+}
+.mp-skin-swatch[data-skin="stargate"] {
+  background: linear-gradient(135deg, #02040b 40%, #7fd6ff);
+}
+.mp-skin-swatch[data-skin="hover-runner"] {
+  background: radial-gradient(circle at 60% 20%, #11203b 40%, #7fd6ff);
+}
+
+/* ============================================================
+   Step grid
+   ============================================================ */
+.mp-grid-wrap {
+  background: var(--mp-surface);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  padding: 12px;
+  box-shadow: var(--mp-shadow);
+  overflow-x: auto;
+}
+
+.mp-row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.mp-row:last-child { margin-bottom: 0; }
+
+.mp-row-label {
+  font-family: var(--mp-font-mono);
+  font-size: 18px;
+  color: var(--mp-text);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mp-row-label .mp-row-emoji {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.mp-cells {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 4px;
+  min-width: 480px;
+}
+
+.mp-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  background: var(--mp-cell-off);
+  border: 1px solid var(--mp-border);
+  cursor: pointer;
+  transition: background 80ms, transform 60ms, box-shadow 120ms;
+  position: relative;
+}
+.mp-cell:hover { background: var(--mp-cell-on); opacity: 0.7; }
+.mp-cell.is-on {
+  background: var(--mp-cell-on);
+  box-shadow: 0 0 12px var(--mp-cell-on);
+}
+.mp-cell.is-playhead {
+  background: var(--mp-playhead);
+}
+.mp-cell.is-on.is-playhead {
+  background: var(--mp-cell-on);
+  transform: scale(1.06);
+  box-shadow: 0 0 18px var(--mp-cell-on);
+}
+/* Every 4th cell gets a beat marker */
+.mp-cell.is-beat-start::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--mp-text-dim);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0.5;
+}
+
+.mp-row-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: stretch;
+  min-width: 56px;
+}
+.mp-row-side .mp-knob {
+  font-family: var(--mp-font-mono);
+  font-size: 12px;
+  color: var(--mp-text-dim);
+  text-align: center;
+}
+.mp-row-side input[type="range"] {
+  width: 56px;
+  accent-color: var(--mp-accent);
+}
+
+/* ============================================================
+   Voice pad sample picker
+   ============================================================ */
+.mp-voice-card {
+  background: var(--mp-surface-2);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  padding: 8px 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.mp-voice-card h4 {
+  margin: 0 8px 0 0;
+  font-family: var(--mp-font-mono);
+  font-size: 18px;
+  color: var(--mp-accent);
+}
+.mp-voice-chip {
+  font-family: var(--mp-font-mono);
+  font-size: 16px;
+  background: var(--mp-bg);
+  color: var(--mp-text);
+  border: 1px solid var(--mp-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 120ms;
+  user-select: none;
+}
+.mp-voice-chip:hover { background: var(--mp-accent); color: #fff; }
+.mp-voice-chip.is-active {
+  background: var(--mp-accent);
+  color: #fff;
+  box-shadow: 0 0 10px var(--mp-accent);
+}
+
+/* ============================================================
+   Stage (scrollable mid-region between top bar and footer)
+   ============================================================ */
+.mp-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 2px;
+}
+
+/* ============================================================
+   Piano roll
+   ============================================================ */
+.mp-piano-roll-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.mp-piano-roll-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.mp-piano-roll-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mp-piano-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 6px;
+  align-items: center;
+}
+
+.mp-piano-key {
+  font-family: var(--mp-font-mono);
+  font-size: 14px;
+  text-align: center;
+  padding: 4px 6px;
+  background: var(--mp-surface-2);
+  border: 1px solid var(--mp-border);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 80ms;
+}
+.mp-piano-key:hover { background: var(--mp-accent); color: #fff; }
+
+.mp-piano-cells {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 3px;
+  min-width: 480px;
+}
+
+.mp-piano-cell {
+  aspect-ratio: 1 / 1;
+  background: var(--mp-cell-off);
+  border: 1px solid var(--mp-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 80ms, transform 60ms, box-shadow 120ms;
+  position: relative;
+}
+.mp-piano-cell:hover { background: var(--mp-cell-on); opacity: 0.7; }
+.mp-piano-cell.is-on {
+  background: var(--mp-accent-2);
+  box-shadow: 0 0 8px var(--mp-accent-2);
+}
+.mp-piano-cell.is-shadow {
+  background: var(--mp-cell-off);
+  opacity: 0.6;
+}
+.mp-piano-cell.is-shadow::after {
+  /* indicate a note exists at this step but a different pitch */
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--mp-text-dim);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+.mp-piano-cell.is-playhead {
+  background: var(--mp-playhead);
+}
+.mp-piano-cell.is-on.is-playhead {
+  transform: scale(1.06);
+}
+.mp-piano-cell.is-beat-start::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  background: var(--mp-text-dim);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+/* ============================================================
+   Sample browser (modal drawer)
+   ============================================================ */
+.mp-sample-browser-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: max(16px, var(--safe-top)) max(16px, var(--safe-right)) max(16px, var(--safe-bottom)) max(16px, var(--safe-left));
+}
+
+.mp-sample-browser {
+  width: 100%;
+  max-width: 720px;
+  max-height: 100%;
+  background: var(--mp-surface);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  box-shadow: var(--mp-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--mp-text);
+}
+
+.mp-sample-browser-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mp-border);
+}
+.mp-sample-browser-head h3 {
+  margin: 0;
+  font-family: var(--mp-font-mono);
+  font-size: 22px;
+  color: var(--mp-accent);
+  letter-spacing: 1px;
+}
+.mp-sample-browser-head .mp-btn {
+  margin-left: auto;
+  min-width: 32px;
+  font-size: 18px;
+  padding: 2px 10px;
+}
+
+.mp-sample-browser-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mp-border);
+  flex-wrap: wrap;
+  background: var(--mp-surface-2);
+}
+
+.mp-search {
+  flex: 1;
+  min-width: 140px;
+  font-family: var(--mp-font);
+  font-size: 14px;
+  background: var(--mp-bg);
+  color: var(--mp-text);
+  border: 1px solid var(--mp-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.mp-sample-browser-body {
+  padding: 14px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.mp-sample-cat {
+  margin-bottom: 14px;
+}
+.mp-sample-cat h4 {
+  margin: 0 0 8px 0;
+  font-family: var(--mp-font-mono);
+  font-size: 16px;
+  color: var(--mp-text-dim);
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.mp-sample-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.mp-sample-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: var(--mp-bg);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--mp-text);
+  font-family: var(--mp-font);
+  transition: background 120ms, transform 80ms, box-shadow 120ms;
+  text-align: left;
+}
+.mp-sample-card:hover {
+  background: var(--mp-accent);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+.mp-sample-card.is-active {
+  background: var(--mp-accent);
+  color: #fff;
+  box-shadow: 0 0 10px var(--mp-accent);
+}
+.mp-sample-card-word {
+  font-family: var(--mp-font-mono);
+  font-size: 20px;
+}
+.mp-sample-card-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-family: var(--mp-font-mono);
+  font-size: 11px;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.mp-sample-card-lang {
+  background: var(--mp-accent-2);
+  color: var(--mp-bg);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+.mp-sample-card-voice {
+  opacity: 0.7;
+}
+.mp-sample-card-gloss {
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.mp-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  font-family: var(--mp-font-mono);
+  font-size: 14px;
+  color: var(--mp-text-dim);
+}
+.mp-footer .mp-build {
+  margin-left: auto;
+  opacity: 0.6;
+}
