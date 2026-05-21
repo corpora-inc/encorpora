@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "dev:corpan": "node scripts/dev-corpan.mjs",
     "preview": "vite preview",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && npm run pack",
     "voice-kit": "python3 scripts/generate-voice-kit.py"
   },
   "dependencies": {
