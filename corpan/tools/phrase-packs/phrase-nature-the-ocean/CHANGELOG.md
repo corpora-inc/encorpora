@@ -1,0 +1,32 @@
+# Changelog — The Ocean phrase pack
+
+`phrase-nature-the-ocean`. 100 English phrases about waves, tides, beaches, fish, whales, sailors, and the long human relationship with the sea. Translated into the full
+51-language ALL_LANGUAGES set.
+
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
+Conventions: `corpan/CHANGELOGS.md`.
+
+## [Unreleased]
+
+## [0.2.0] - 2026-05-20
+### Added
+- v0.2.0 expansion: +708 new phrases authored across 8 facets
+  (waves, tides, & the surface, marine life, sailing, boats, & seamanship, beaches, coasts, & tidepools, storms, weather, & danger at sea, the deep & the dark, the sea in human imagination, conservation, climate, & change). New-phrase distribution: A0:7, A1:105, A2:246, B1:127, B2:105, C1:83, C2:35.
+- Authored via codex CLI with Gemini Vertex fallback. Voice anchored
+  on the existing pack's first 20 phrases.
+
+## [0.1.1] - 2026-05-20
+### Added
+- Ladder-completion pass: ensure at least one phrase at every CEFR
+  level (A0..C2). Added 1 phrase(s) at level(s) A0.
+  - A0: "The sea is big."
+
+## [0.1.0]
+### Added
+- Initial release. 100 phrases authored in a single LLM context for
+  vocabulary + grammar coherence, distributed A1 15 / A2 35 / B1 18 /
+  B2 15 / C1 12 / C2 5 across the CEFR ladder.
+- Translations into all 51 ALL_LANGUAGES codes via Gemini 2.5 Flash on
+  Vertex AI with per-language self-system-prompt and script/romanization
+  guidance.

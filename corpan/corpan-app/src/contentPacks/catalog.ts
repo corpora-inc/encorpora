@@ -1,3 +1,8 @@
+import {
+  type LocalizedString,
+  parseLocalizedString,
+} from "./localized"
+
 export type PurchaseInfo = {
   type: "free" | "iap" | "code"
   productId?: string
@@ -12,9 +17,17 @@ export type HostPlatform = "ios" | "android" | "macos" | "windows" | "linux"
 export type CatalogGame = {
   id: string
   name: string
+  /** Per-language overrides for `name`. Resolved at the render site
+   *  against `i18n.language` via `resolveLocalized()`. Optional — older
+   *  catalogs (and packs that haven't authored translations yet) ship
+   *  English-only via the bare `name` field. */
+  nameLocalized?: LocalizedString
   version: string
   manifestUrl?: string
   description?: string
+  /** Per-language overrides for `description`. Same fallback chain as
+   *  `nameLocalized`. */
+  descriptionLocalized?: LocalizedString
   imageUrl?: string
   purchase?: PurchaseInfo
 }
@@ -60,10 +73,15 @@ export type PackChannel = "stable" | "preview"
 export type CatalogV3Entry = {
   id: string
   name: string
+  /** Per-language overrides for `name`. See `CatalogGame.nameLocalized`
+   *  for resolution semantics. */
+  nameLocalized?: LocalizedString
   version: string
   manifestUrl?: string
   zipUrl?: string
   description?: string
+  /** Per-language overrides for `description`. */
+  descriptionLocalized?: LocalizedString
   imageUrl?: string
   purchase?: PurchaseInfo
   minAppVersion: string
@@ -84,6 +102,10 @@ export type CatalogV3Entry = {
    *  a specific iOS / Android / macOS release. */
   minOSVersion?: string
 }
+
+// Phrase packs are NOT on the v3 catalog. They ship through a dedicated
+// S3-hosted catalog written directly by the publisher — see
+// `contentPacks/phrasePackCatalog.ts` and `corpan/docs/PHRASE_PACK_AUTHORING.md`.
 
 export type CatalogV3 = {
   version: 3
@@ -211,9 +233,11 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
     parsed.push({
       id,
       name: name || id,
+      nameLocalized: parseLocalizedString(record.nameLocalized),
       version,
       manifestUrl: toOptionalString(record.manifestUrl),
       description: toOptionalString(record.description),
+      descriptionLocalized: parseLocalizedString(record.descriptionLocalized),
       imageUrl: toOptionalString(record.imageUrl),
       purchase: parsePurchase(record.purchase),
     })
@@ -347,10 +371,12 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
   return {
     id,
     name: name || id,
+    nameLocalized: parseLocalizedString(r.nameLocalized),
     version,
     manifestUrl: toOptionalString(r.manifestUrl),
     zipUrl: toOptionalString(r.zipUrl),
     description: toOptionalString(r.description),
+    descriptionLocalized: parseLocalizedString(r.descriptionLocalized),
     imageUrl: toOptionalString(r.imageUrl),
     purchase: parsePurchase(r.purchase),
     minAppVersion,
@@ -379,6 +405,11 @@ export const parseCatalogV3 = (data: unknown): CatalogV3 | null => {
     packs,
   }
 }
+
+// Phrase packs were moved to a dedicated S3-hosted catalog in Phase B′
+// (see `contentPacks/phrasePackCatalog.ts`). The old v3-catalog phrase-pack
+// helpers (`selectPhrasePacks`, `fetchCatalogV3`) and the per-entry phrase-
+// pack extension fields were removed at the same time.
 
 export const filterCatalogForApp = (
   v3: CatalogV3,
@@ -419,9 +450,11 @@ export const filterCatalogForApp = (
     .map((entry) => ({
       id: entry.id,
       name: entry.name,
+      nameLocalized: entry.nameLocalized,
       version: entry.version,
       manifestUrl: entry.zipUrl ?? entry.manifestUrl,
       description: entry.description,
+      descriptionLocalized: entry.descriptionLocalized,
       imageUrl: entry.imageUrl,
       purchase: entry.purchase,
     }))

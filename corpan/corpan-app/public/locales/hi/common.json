@@ -99,7 +99,31 @@
     "theme": "थीम",
     "themeLight": "लाइट",
     "themeDark": "डार्क",
-    "themeSystem": "सिस्टम"
+    "themeSystem": "सिस्टम",
+    "phrasePacks": {
+      "header": "वाक्यांश पैक",
+      "baseCorpusName": "मूल कॉर्पस",
+      "emptyHint": "पैक्स टैब से पैक जोड़ें।",
+      "browseAll": "पैक्स देखें",
+      "searchPlaceholder": "पैक खोजें…",
+      "filter": {
+        "all": "सभी",
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "selectAllVisible": "सभी चुनें",
+      "deselectAllVisible": "साफ़ करें",
+      "activateGroup": "सभी सक्रिय करें",
+      "deactivateGroup": "सभी निष्क्रिय करें",
+      "uncategorized": "अन्य",
+      "noMatches": "कोई परिणाम नहीं।",
+      "noFiltered": "यहाँ अभी कुछ नहीं है।",
+      "stackTotalPhrases": "~{{count}} वाक्यांश मेल खाते हैं",
+      "stackTotalNudge": "विविधता के लिए पैक जोड़ें या स्तर बढ़ाएँ।"
+    },
+    "sendAnonUsage": "अनाम उपयोग डेटा भेजें",
+    "sendAnonUsageHint": "अनाम, सत्र-सीमित। कोई खाता नहीं, कोई डिवाइस आईडी नहीं, कोई IP संग्रह नहीं। इसे कभी भी बंद करें।",
+    "readPrivacyPromise": "हमारा गोपनीयता वादा पढ़ें"
   },
   "onboarding": {
     "welcome": "स्वागत है",
@@ -185,7 +209,27 @@
         "disabledUntilUsed": "उपयोग तक अक्षम",
         "notInstalled": "इंस्टॉल नहीं"
       }
-    }
+    },
+    "packs": "वाक्यांश पैक",
+    "phrasePacks": {
+      "title": "वाक्यांश पैक",
+      "stepTitle": "वाक्यांश पैक",
+      "hero": "विषय चुनें",
+      "loading": "लोड हो रहा है…",
+      "selectAll": "सभी चुनें ({{count}})",
+      "clearAll": "साफ़ करें",
+      "subscriptionNudge": "सभी पैक अनलॉक करने के लिए सदस्यता लें।",
+      "entryCount": "{{n}} वाक्यांश",
+      "paid": "सशुल्क",
+      "emptyHero": "अभी कोई पैक नहीं।",
+      "emptySub": "जल्द लौटें।",
+      "offlineHero": "आप ऑफ़लाइन हैं।",
+      "offlineSub": "पैक्स को इंटरनेट चाहिए — बाद में सेटिंग्स → पैक्स से कोशिश करें।",
+      "offlineBanner": "ऑफ़लाइन — चयन कनेक्ट होने पर इंस्टॉल हो जाएगा।"
+    },
+    "notOnAppleIOS": "iOS पर नहीं हैं",
+    "appleNoVoiceTitle": "Apple अभी {{lang}} की आवाज़ उपलब्ध नहीं कराता",
+    "appleNoVoiceBody": "Apple की accessibility टीम को एक छोटा-सा संदेश मदद कर सकता है। तब तक Android पर {{lang}} मूल रूप से काम करता है।"
   },
   "socials": {
     "youtube": {
@@ -215,7 +259,8 @@
     "cancel": "रद्द करें",
     "delete": "हटाएँ",
     "create": "बनाएँ",
-    "dismiss": "खारिज करें"
+    "dismiss": "खारिज करें",
+    "skip": "छोड़ें"
   },
   "dialects": {
     "en": "अंग्रेज़ी",
@@ -401,7 +446,42 @@
     "purchasing": "खरीदा जा रहा है...",
     "buy": "{{price}} में खरीदें",
     "premium": "प्रीमियम",
-    "availableOnMobile": "iOS और Android पर उपलब्ध"
+    "availableOnMobile": "iOS और Android पर उपलब्ध",
+    "checking": "जाँच हो रही है…",
+    "phrasePack": {
+      "sectionTitle": "वाक्यांश पैक",
+      "offlineEmpty": "आप ऑफ़लाइन हैं। देखने के लिए कनेक्ट करें।",
+      "searchPlaceholder": "खोजें…",
+      "noMatches": "कोई परिणाम नहीं।",
+      "filter": {
+        "all": "सभी",
+        "free": "मुफ़्त",
+        "paid": "सशुल्क",
+        "installed": "इंस्टॉल किया गया"
+      },
+      "activeInStack": "सक्रिय",
+      "activeBadge": "सक्रिय",
+      "subBadge": "सदस्यता",
+      "paid": "सशुल्क",
+      "free": "मुफ़्त",
+      "unlockSub": "सदस्यता से अनलॉक करें",
+      "entryCount": "{{n}} वाक्यांश",
+      "allInstalled": {
+        "title": "आपके पास सभी फ्रेज़ पैक हैं।",
+        "subtitle": "नए विषय नियमित आते रहते हैं — कभी भी वापस आइए।",
+        "manageCta": "Stacks में प्रबंधित करें"
+      },
+      "filterEmpty": {
+        "installed": "अभी कुछ इंस्टॉल नहीं है।",
+        "cta": "सभी दिखाएँ"
+      },
+      "showAll": "सभी दिखाएँ ({{count}})",
+      "collapseList": "कम दिखाएँ",
+      "openDrawer": "फ्रेज़ पैक ब्राउज़ करें ({{count}})",
+      "openDrawerLabel": "फ्रेज़ पैक ब्राउज़ करें",
+      "inactiveBadge": "निष्क्रिय",
+      "moreActionsLabel": "और कार्रवाइयां"
+    }
   },
   "subscription": {
     "title": "सब कुछ अनलॉक करें",
@@ -417,7 +497,11 @@
     "privacyPolicy": "गोपनीयता नीति",
     "autoRenewNotice": "सदस्यताएं स्वचालित रूप से नवीनीकृत होती हैं। अपने {{store}} खाते में कभी भी रद्द करें।",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "मंजूरी की प्रतीक्षा में",
+    "pendingDetail": "आपकी सदस्यता मंजूरी की प्रतीक्षा में है (Ask to Buy या बैंक सत्यापन)। मंजूरी मिलते ही यह अपने-आप सक्रिय हो जाएगी।",
+    "storeUnreachable": "अभी App Store तक पहुंचा नहीं जा सका।",
+    "tryAgain": "फिर कोशिश करें"
   },
   "restore": {
     "button": "खरीदारी पुनर्स्थापित करें",

@@ -10,12 +10,20 @@ export type InstalledGame = {
   imageUrl?: string
   source?: "catalog" | "manual" | "platform" | "download"
   installedAt: number
+  /** Unix-ms timestamp of the most recent launch. Drives the Recents row
+   *  in the Packs settings panel. Undefined for packs the user has never
+   *  opened — those fall back to installedAt for ordering. */
+  lastLaunchedAt?: number
 }
 
 type GamesState = {
   games: Record<string, InstalledGame>
   addGame: (game: Omit<InstalledGame, "installedAt">) => void
   removeGame: (id: string) => void
+  /** Record that the user just launched a pack. Updates lastLaunchedAt so
+   *  Recents can sort by it. Safe to call for ids that aren't installed —
+   *  it's a no-op then. */
+  touchLaunch: (id: string) => void
   getGame: (id: string) => InstalledGame | undefined
   listGames: () => InstalledGame[]
 }
@@ -64,6 +72,18 @@ export const useGamesStore = create<GamesState>()(
           const next = { ...state.games }
           delete next[id]
           return { games: next }
+        })
+      },
+      touchLaunch: (id) => {
+        set((state) => {
+          const existing = state.games[id]
+          if (!existing) return state
+          return {
+            games: {
+              ...state.games,
+              [id]: { ...existing, lastLaunchedAt: Date.now() },
+            },
+          }
         })
       },
       getGame: (id) => get().games[id],

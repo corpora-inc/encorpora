@@ -1,0 +1,24 @@
+series_id: sports_for_kids
+title: Sports for Kids
+description: Short kid-to-kid books where one kid introduces another to the sport they love.
+author: Skylar Saveland
+audience: kids (ages 6-12) and language learners
+voice: first-person, kid-to-kid, enthusiastic and authentic
+target_runtime_minutes: 12
+language_learning: true
+books:
+  - id: book_sports_for_kids_baseball
+    slug: 01-baseball
+    title: "Hey, I'm Ryan, and I Play Baseball"
+    narrator: Ryan
+    sport: baseball
+  - id: book_sports_for_kids_gymnastics
+    slug: 02-gymnastics
+    title: "Hi, I'm Isabelle, and I Do Gymnastics"
+    narrator: Isabelle
+    sport: gymnastics
+  - id: book_sports_for_kids_cheerleading
+    slug: 03-cheerleading
+    title: "Hey, I'm Avery, and I'm a Cheerleader"
+    narrator: Avery
+    sport: cheerleading

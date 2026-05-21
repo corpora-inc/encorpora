@@ -4,7 +4,8 @@ use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
 use crate::models::{
-    PrepareResult, StartSessionResult, StatusResult, TranscriptionResult, WhisperParams,
+    PrepareResult, ScoringParams, StartSessionResult, StatusResult, TranscriptionResult,
+    WhisperParams,
 };
 
 pub fn init<R: Runtime, C: DeserializeOwned>(
@@ -33,6 +34,7 @@ impl<R: Runtime> Stt<R> {
         _language: String,
         _expected_text: String,
         _whisper_params: Option<WhisperParams>,
+        _scoring_params: Option<ScoringParams>,
     ) -> crate::Result<StartSessionResult> {
         Ok(StartSessionResult {
             started: false,

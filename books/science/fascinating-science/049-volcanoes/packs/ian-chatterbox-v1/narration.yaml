@@ -12,19 +12,35 @@ retry:
   jitter: 0.25
   max_retries: 40
   schedules:
-    - {}
-    - {cfg_weight: 0.8, temperature: 0.5}
-    - {cfg_weight: 0.5, exaggeration: 0.2, temperature: 0.3}
-    - {cfg_weight: 0.6, exaggeration: 0.6, temperature: 0.7}
-    - {cfg_weight: 1.0, temperature: 0.2}
-    - {cfg_weight: 0.4, exaggeration: 0.5, temperature: 0.5}
-    - {cfg_weight: 0.7, exaggeration: 0.1, temperature: 0.1}
-    - {cfg_weight: 0.3, exaggeration: 0.3, temperature: 0.6}
-    - {cfg_weight: 0.9, exaggeration: 0.4, temperature: 0.4}
-    - {cfg_weight: 0.2, exaggeration: 0.7, temperature: 0.8}
+  - {}
+  - cfg_weight: 0.8
+    temperature: 0.5
+  - cfg_weight: 0.5
+    exaggeration: 0.2
+    temperature: 0.3
+  - cfg_weight: 0.6
+    exaggeration: 0.6
+    temperature: 0.7
+  - cfg_weight: 1.0
+    temperature: 0.2
+  - cfg_weight: 0.4
+    exaggeration: 0.5
+    temperature: 0.5
+  - cfg_weight: 0.7
+    exaggeration: 0.1
+    temperature: 0.1
+  - cfg_weight: 0.3
+    exaggeration: 0.3
+    temperature: 0.6
+  - cfg_weight: 0.9
+    exaggeration: 0.4
+    temperature: 0.4
+  - cfg_weight: 0.2
+    exaggeration: 0.7
+    temperature: 0.8
 mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
@@ -59,7 +75,7 @@ filter_chain:
     makeup: 1
   alimiter:
     enabled: true
-    limit: 0.708
+    limit: 0.8913
     level: false
 denoise:
   enabled: false

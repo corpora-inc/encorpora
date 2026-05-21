@@ -1,7 +1,7 @@
 {
   "id": "book_oud_history",
   "name": "The Oud",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

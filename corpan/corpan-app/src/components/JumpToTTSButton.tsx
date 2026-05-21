@@ -36,7 +36,12 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
             onClick={handleClick}
             disabled={!canEnter}
             className={[
-                "inline-flex items-center gap-2 rounded-md p-7",
+                // h-auto lets px-6 py-8 drive the height so this matches
+                // the "Browse phrase packs" / "Reconfigure stack" hero
+                // CTAs on the Stacks tab — without h-auto the Button
+                // default (h-9 md:h-11) would lock the height and the
+                // padding would be inert.
+                "inline-flex items-center gap-2 rounded-md h-auto px-6 py-6 md:py-8",
                 fullWidth ? "w-full justify-center" : "",
                 className || "",
             ].join(" ")}

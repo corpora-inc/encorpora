@@ -99,7 +99,31 @@
     "theme": "主题",
     "themeLight": "浅色",
     "themeDark": "深色",
-    "themeSystem": "跟随系统"
+    "themeSystem": "跟随系统",
+    "phrasePacks": {
+      "header": "短语包",
+      "baseCorpusName": "基础语料",
+      "emptyHint": "在「包」标签页中添加短语包。",
+      "browseAll": "浏览短语包",
+      "searchPlaceholder": "搜索包…",
+      "filter": {
+        "all": "全部",
+        "active": "已启用",
+        "inactive": "未启用"
+      },
+      "selectAllVisible": "全选",
+      "deselectAllVisible": "清除",
+      "activateGroup": "全部启用",
+      "deactivateGroup": "全部关闭",
+      "uncategorized": "其他",
+      "noMatches": "无结果。",
+      "noFiltered": "这里现在没有内容。",
+      "stackTotalPhrases": "~{{count}} 条短语匹配",
+      "stackTotalNudge": "添加更多包或扩大等级以增加多样性。"
+    },
+    "sendAnonUsage": "发送匿名使用数据",
+    "sendAnonUsageHint": "匿名、仅限当前会话。不使用账号、不使用设备 ID，也不存储 IP。可随时关闭。",
+    "readPrivacyPromise": "阅读我们的隐私承诺"
   },
   "onboarding": {
     "welcome": "欢迎",
@@ -185,7 +209,27 @@
         "disabledUntilUsed": "使用前已停用",
         "notInstalled": "未安装"
       }
-    }
+    },
+    "packs": "短语包",
+    "phrasePacks": {
+      "title": "短语包",
+      "stepTitle": "短语包",
+      "hero": "选择你的主题",
+      "loading": "加载中…",
+      "selectAll": "全选 ({{count}})",
+      "clearAll": "清除",
+      "subscriptionNudge": "订阅以解锁所有短语包。",
+      "entryCount": "{{n}} 条短语",
+      "paid": "付费",
+      "emptyHero": "暂无短语包。",
+      "emptySub": "稍后再来。",
+      "offlineHero": "你已离线。",
+      "offlineSub": "短语包需要互联网 — 稍后在「设置 → 包」中再试。",
+      "offlineBanner": "离线 — 重新连接后将安装所选项。"
+    },
+    "notOnAppleIOS": "不是 iOS",
+    "appleNoVoiceTitle": "Apple 还未提供 {{lang}} 语音",
+    "appleNoVoiceBody": "给 Apple 无障碍团队发一条简短反馈，会更有助于推动这件事。与此同时，{{lang}} 已可在 Android 上原生使用。"
   },
   "socials": {
     "youtube": {
@@ -215,7 +259,8 @@
     "cancel": "取消",
     "delete": "删除",
     "create": "创建",
-    "dismiss": "关闭"
+    "dismiss": "关闭",
+    "skip": "跳过"
   },
   "dialects": {
     "en": "英语",
@@ -401,7 +446,42 @@
     "purchasing": "购买中...",
     "buy": "购买 {{price}}",
     "premium": "高级",
-    "availableOnMobile": "可在iOS和Android上使用"
+    "availableOnMobile": "可在iOS和Android上使用",
+    "checking": "正在检查…",
+    "phrasePack": {
+      "sectionTitle": "短语包",
+      "offlineEmpty": "你已离线。连接后浏览。",
+      "searchPlaceholder": "搜索…",
+      "noMatches": "无匹配。",
+      "filter": {
+        "all": "全部",
+        "free": "免费",
+        "paid": "付费",
+        "installed": "已安装"
+      },
+      "activeInStack": "已启用",
+      "activeBadge": "已启用",
+      "subBadge": "订阅",
+      "paid": "付费",
+      "free": "免费",
+      "unlockSub": "通过订阅解锁",
+      "entryCount": "{{n}} 条短语",
+      "allInstalled": {
+        "title": "你已经拥有所有短语包。",
+        "subtitle": "新主题会定期上线 — 随时回来看看。",
+        "manageCta": "在 Stacks 中管理"
+      },
+      "filterEmpty": {
+        "installed": "尚未安装任何包。",
+        "cta": "显示全部"
+      },
+      "showAll": "显示全部 ({{count}})",
+      "collapseList": "收起",
+      "openDrawer": "浏览短语包 ({{count}})",
+      "openDrawerLabel": "浏览短语包",
+      "inactiveBadge": "未启用",
+      "moreActionsLabel": "更多操作"
+    }
   },
   "subscription": {
     "title": "解锁全部",
@@ -417,7 +497,11 @@
     "privacyPolicy": "隐私政策",
     "autoRenewNotice": "订阅将自动续订。可随时在 {{store}} 账户中取消。",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "你的订阅正在等待批准（“购买前询问”或银行验证）。获批后将自动生效。",
+    "storeUnreachable": "目前无法连接到 App Store。",
+    "tryAgain": "重试"
   },
   "restore": {
     "button": "恢复购买",

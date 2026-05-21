@@ -99,7 +99,31 @@
     "theme": "Giao diện",
     "themeLight": "Sáng",
     "themeDark": "Tối",
-    "themeSystem": "Hệ thống"
+    "themeSystem": "Hệ thống",
+    "phrasePacks": {
+      "header": "Gói cụm từ",
+      "baseCorpusName": "Kho cơ sở",
+      "emptyHint": "Thêm gói từ tab Gói.",
+      "browseAll": "Duyệt gói",
+      "searchPlaceholder": "Tìm gói…",
+      "filter": {
+        "all": "Tất cả",
+        "active": "Đang bật",
+        "inactive": "Đang tắt"
+      },
+      "selectAllVisible": "Chọn tất cả",
+      "deselectAllVisible": "Xoá",
+      "activateGroup": "Bật tất cả",
+      "deactivateGroup": "Tắt tất cả",
+      "uncategorized": "Khác",
+      "noMatches": "Không có kết quả.",
+      "noFiltered": "Hiện không có gì ở đây.",
+      "stackTotalPhrases": "~{{count}} cụm từ phù hợp",
+      "stackTotalNudge": "Thêm gói hoặc mở rộng cấp độ để đa dạng hơn."
+    },
+    "sendAnonUsage": "Gửi dữ liệu sử dụng ẩn danh",
+    "sendAnonUsageHint": "Ẩn danh, chỉ trong phiên. Không có tài khoản, không có ID thiết bị, không lưu IP. Có thể tắt bất cứ lúc nào.",
+    "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi"
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -185,7 +209,27 @@
         "disabledUntilUsed": "Tắt cho đến khi dùng",
         "notInstalled": "Chưa cài đặt"
       }
-    }
+    },
+    "packs": "Gói cụm từ",
+    "phrasePacks": {
+      "title": "Gói cụm từ",
+      "stepTitle": "Gói cụm từ",
+      "hero": "Chọn chủ đề",
+      "loading": "Đang tải…",
+      "selectAll": "Chọn tất cả ({{count}})",
+      "clearAll": "Xóa",
+      "subscriptionNudge": "Đăng ký để mở khóa mọi gói.",
+      "entryCount": "{{n}} cụm từ",
+      "paid": "Trả phí",
+      "emptyHero": "Chưa có gói nào.",
+      "emptySub": "Quay lại sau nhé.",
+      "offlineHero": "Bạn đang ngoại tuyến.",
+      "offlineSub": "Gói cần internet — thử lại từ Cài đặt → Gói.",
+      "offlineBanner": "Ngoại tuyến — lựa chọn sẽ cài khi kết nối lại."
+    },
+    "notOnAppleIOS": "Không dùng iOS",
+    "appleNoVoiceTitle": "Apple chưa cung cấp giọng {{lang}}",
+    "appleNoVoiceBody": "Một ghi chú ngắn gửi đến nhóm hỗ trợ tiếp cận của Apple sẽ giúp củng cố đề xuất này. Trong lúc đó, {{lang}} vẫn hoạt động gốc trên Android."
   },
   "socials": {
     "youtube": {
@@ -215,7 +259,8 @@
     "cancel": "Hủy",
     "delete": "Xóa",
     "create": "Tạo",
-    "dismiss": "Bỏ qua"
+    "dismiss": "Bỏ qua",
+    "skip": "Bỏ qua"
   },
   "dialects": {
     "en": "Tiếng Anh",
@@ -401,7 +446,42 @@
     "purchasing": "Đang mua...",
     "buy": "Mua {{price}}",
     "premium": "Cao cấp",
-    "availableOnMobile": "Có trên iOS và Android"
+    "availableOnMobile": "Có trên iOS và Android",
+    "checking": "Đang kiểm tra…",
+    "phrasePack": {
+      "sectionTitle": "Gói cụm từ",
+      "offlineEmpty": "Bạn đang ngoại tuyến. Kết nối để duyệt.",
+      "searchPlaceholder": "Tìm…",
+      "noMatches": "Không có kết quả.",
+      "filter": {
+        "all": "Tất cả",
+        "free": "Miễn phí",
+        "paid": "Trả phí",
+        "installed": "Đã cài đặt"
+      },
+      "activeInStack": "Đang dùng",
+      "activeBadge": "Đang dùng",
+      "subBadge": "Đăng ký",
+      "paid": "Trả phí",
+      "free": "Miễn phí",
+      "unlockSub": "Mở khóa bằng đăng ký",
+      "entryCount": "{{n}} cụm từ",
+      "allInstalled": {
+        "title": "Bạn đã có mọi gói cụm từ.",
+        "subtitle": "Chủ đề mới được phát hành thường xuyên — quay lại bất cứ lúc nào.",
+        "manageCta": "Quản lý trong Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Chưa cài đặt gì.",
+        "cta": "Hiện tất cả"
+      },
+      "showAll": "Hiện tất cả ({{count}})",
+      "collapseList": "Thu gọn",
+      "openDrawer": "Duyệt gói cụm từ ({{count}})",
+      "openDrawerLabel": "Duyệt gói cụm từ",
+      "inactiveBadge": "Không hoạt động",
+      "moreActionsLabel": "Thêm thao tác"
+    }
   },
   "subscription": {
     "title": "Mở khóa tất cả",
@@ -417,7 +497,11 @@
     "privacyPolicy": "Chính sách bảo mật",
     "autoRenewNotice": "Gói đăng ký tự động gia hạn. Hủy bất kỳ lúc nào trong tài khoản {{store}} của bạn.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Đang chờ phê duyệt",
+    "pendingDetail": "Gói đăng ký của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Gói sẽ tự động kích hoạt sau khi được phê duyệt.",
+    "storeUnreachable": "Chúng tôi không thể kết nối với App Store lúc này.",
+    "tryAgain": "Thử lại"
   },
   "restore": {
     "button": "Khôi phục mua hàng",

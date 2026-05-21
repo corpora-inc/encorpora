@@ -78,16 +78,37 @@ export const isTauriRuntime = () => {
   )
 }
 
+const MANIFEST_FETCH_TIMEOUT_MS = 15_000
+
 const fetchManifestText = async (url: string) => {
   if (!import.meta.env.DEV && isTauriRuntime()) {
     const { fetchContentPackText } = await import("./native")
     return fetchContentPackText(url)
   }
-  const res = await fetch(proxyUrlIfNeeded(url), { cache: "no-store" })
-  if (!res.ok) {
-    throw new Error(`Manifest not found (${res.status})`)
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), MANIFEST_FETCH_TIMEOUT_MS)
+  try {
+    const res = await fetch(proxyUrlIfNeeded(url), {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+    if (!res.ok) {
+      throw new Error(`Manifest not found (${res.status})`)
+    }
+    return await res.text()
+  } catch (err) {
+    if (
+      controller.signal.aborted ||
+      (err instanceof DOMException && err.name === "AbortError")
+    ) {
+      throw new Error(
+        `Manifest fetch timed out after ${MANIFEST_FETCH_TIMEOUT_MS / 1000}s — check your connection.`,
+      )
+    }
+    throw err
+  } finally {
+    clearTimeout(timer)
   }
-  return res.text()
 }
 
 export const installPack = async (
@@ -97,12 +118,18 @@ export const installPack = async (
 
   // Detect .zip URLs and handle as download install
   if (trimmed.endsWith('.zip')) {
-    // Extract pack ID from filename (remove .zip extension and normalize)
+    // Extract pack ID from filename. Strip `.zip` and a trailing `-<version>`
+    // so e.g. `phrase-botany-basics-0.1.0.zip` becomes `phrase-botany-basics`.
+    // We keep hyphens — phrase-pack ids are kebab-case and never have
+    // underscores (game-pack ids historically used underscores and we
+    // preserve that for backward compat below).
     const url = new URL(trimmed, window.location.href)
     const pathname = url.pathname
     const filename = pathname.split('/').pop() || ''
-    // Remove .zip and convert hyphens to underscores to match manifest convention
-    const packId = filename.replace(/\.zip$/, '').replace(/-/g, '_')
+    const stripped = filename.replace(/\.zip$/, '')
+    const packId = stripped.startsWith('phrase-')
+      ? stripped.replace(/-\d+(\.\d+){1,2}([-+][0-9A-Za-z.-]+)?$/, '')
+      : stripped.replace(/-/g, '_')
 
     if (!packId) {
       throw new Error("Could not determine pack ID from ZIP filename")
@@ -114,6 +141,17 @@ export const installPack = async (
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    // If this was a phrase pack, register it now. Other pack types are
+    // ignored by the helper.
+    try {
+      const { registerPhrasePackIfApplicable } = await import("./phrasePackRegister")
+      await registerPhrasePackIfApplicable(
+        result.packId,
+        request.source === "manual" ? "manual" : "catalog",
+      )
+    } catch (err) {
+      console.warn("[install] phrase-pack registration failed:", err)
+    }
     return {
       ...result,
       version: result.version ?? request.expectedVersion,

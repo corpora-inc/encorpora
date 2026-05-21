@@ -1,14 +1,46 @@
 import { createContext, useCallback, useContext, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { installPack, isTauriRuntime } from "./install"
 import { useInstallProgress } from "./installProgress"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { InstallProgressDialog } from "@/components/packs/InstallProgressDialog"
 import type { CatalogGame } from "./catalog"
+import type { PhrasePackCatalogEntry } from "./phrasePackCatalog"
+import { resolveLocalized } from "./localized"
 import type { InstallSource } from "./install"
+
+export type BatchInstallProgress = {
+  /** 1-based index of the pack currently installing. */
+  current: number
+  /** Total packs in the batch. */
+  total: number
+  /** id of the pack currently being installed. */
+  packId: string
+  /** Display name of the pack currently being installed. */
+  packName: string
+}
+
+export type BatchInstallResult = {
+  /** Pack ids that installed cleanly. */
+  installed: string[]
+  /** Pack ids that failed, with their error message. */
+  failed: Array<{ id: string; error: string }>
+}
 
 type InstallContextValue = {
   installCatalogPack: (pack: CatalogGame) => Promise<void>
   installDevPack: (manifestUrl: string) => Promise<void>
+  /**
+   * Install many packs sequentially. Uses the underlying `installPack`
+   * helper directly (so phrase-pack registration via
+   * `phrasePackRegister.ts` still fires per-pack) but bypasses the
+   * single-install progress dialog — callers render their own UI from
+   * `batchProgress` if they want a "Installing 2 of 4…" indicator.
+   * Resolves with per-pack outcomes; never throws on individual failure.
+   */
+  installPackBatch: (packs: PhrasePackCatalogEntry[]) => Promise<BatchInstallResult>
+  /** Current batch progress, or null when no batch is running. */
+  batchProgress: BatchInstallProgress | null
   isInstalling: boolean
   /**
    * Launch an already-installed pack. Mirrors the `onLaunchGame` prop
@@ -40,8 +72,10 @@ export function InstallProvider({
 }) {
   const { state, startListening, setComplete, setError, reset } =
     useInstallProgress()
+  const { i18n } = useTranslation()
   const addGame = useGamesStore((s) => s.addGame)
   const [installing, setInstalling] = useState(false)
+  const [batchProgress, setBatchProgress] = useState<BatchInstallProgress | null>(null)
   const retryRef = useRef<RetryInfo | null>(null)
   const lastInstalledGameRef = useRef<InstalledGame | null>(null)
 
@@ -124,17 +158,32 @@ export function InstallProvider({
         return
       }
       retryRef.current = { type: "catalog", pack }
+      // Resolve the pack's name + description into the active UI
+      // language so the install progress dialog (and the persisted
+      // InstalledGame record's `name`) show the user-facing string they
+      // actually saw on the pack card.
+      const lang = i18n.language || "en"
+      const localizedName = resolveLocalized(
+        pack.nameLocalized,
+        pack.name ?? pack.id,
+        lang,
+      )
+      const localizedDescription = resolveLocalized(
+        pack.descriptionLocalized,
+        pack.description ?? "",
+        lang,
+      )
       await doInstall(
         pack.manifestUrl,
         "catalog",
-        pack.name ?? pack.id,
+        localizedName,
         pack.version,
         undefined,
         pack.imageUrl,
-        pack.description,
+        localizedDescription || pack.description,
       )
     },
-    [doInstall, setError]
+    [doInstall, setError, i18n.language]
   )
 
   const installDevPack = useCallback(
@@ -157,6 +206,58 @@ export function InstallProvider({
       await doInstall(manifestUrl, "manual", packName)
     },
     [doInstall]
+  )
+
+  const installPackBatch = useCallback(
+    async (packs: PhrasePackCatalogEntry[]): Promise<BatchInstallResult> => {
+      const installed: string[] = []
+      const failed: Array<{ id: string; error: string }> = []
+      if (packs.length === 0) {
+        return { installed, failed }
+      }
+      setInstalling(true)
+      const lang = i18n.language || "en"
+      try {
+        for (let i = 0; i < packs.length; i += 1) {
+          const pack = packs[i]
+          setBatchProgress({
+            current: i + 1,
+            total: packs.length,
+            packId: pack.id,
+            packName: resolveLocalized(
+              pack.nameLocalized,
+              pack.name,
+              lang,
+            ),
+          })
+          const downloadUrl = pack.zipUrl
+          if (!downloadUrl) {
+            failed.push({ id: pack.id, error: "missing zipUrl" })
+            continue
+          }
+          try {
+            await installPack({
+              manifestUrl: downloadUrl,
+              source: "catalog",
+              expectedVersion: pack.version,
+            })
+            installed.push(pack.id)
+          } catch (err) {
+            const message = err instanceof Error ? err.message : String(err)
+            console.error(
+              `[InstallContext] batch install failed for ${pack.id}:`,
+              err,
+            )
+            failed.push({ id: pack.id, error: message })
+          }
+        }
+      } finally {
+        setBatchProgress(null)
+        setInstalling(false)
+      }
+      return { installed, failed }
+    },
+    [i18n.language],
   )
 
   const handleClose = useCallback(() => {
@@ -189,6 +290,8 @@ export function InstallProvider({
       value={{
         installCatalogPack,
         installDevPack,
+        installPackBatch,
+        batchProgress,
         isInstalling: installing,
         launchGame: onLaunchGame,
       }}

@@ -14,12 +14,38 @@ per issue × lang). Read both in tandem.
 ### Tier A — clean, ship as-is via Gemini default (cost ≤ 1.10× baseline)
 
 en, es, fr, de, it, pt, ja, ko, zh, ar, hi, ru, nl, pl, tr, sv, da,
-no, fi, el, he, ro, id, vi, fa, hu, cs, hr, ca, sl, sk, ar, fa, ru, zh
+no, fi, el, he, ro, id, vi, fa, hu, cs, hr, sl, sk
 
 - Gemini-2.5-flash text translation: ✅
 - Gemini-3.1-flash-tts: ✅
 - Whisper-large-v3 alignment: ✅
 - Default `narration.yaml` config works
+
+### Tier A* — clean BUT short-phrase language-leak on `ca` (Catalan)
+
+`ca` shipped clean in dialog contexts (AI This Week) but in
+mono-narrator books has a ~10% short-phrase language-leak rate
+(spoken as Spanish or French instead of Catalan). Three issues on
+this lang across Tolstoy/Three Questions, Soul Food, Train.
+
+- **Symptom**: validator raises `language_leak: expected=ca
+  detected=es` or `detected=fr` on short (3-5 word) Catalan sentences
+  composed of words that are also valid Spanish/French.
+  - Spanish leak examples: "El gombo és una beina verda.", "També va
+    arribar la síndria."
+  - French leak example: "Permet-me ajudar-te."
+- **Fix**: front-load anti-leak rules into the translation prompt
+  (rules A-D in
+  `~/projects/ttsctl/changelog/decisions/2026-05-19_catalan_rollout.md`).
+  Every `tts.text` ≥6 words, contains a distinctly-Catalan marker
+  (`doncs`, `ben`, `l'`, `també` + subject first, etc).
+- **Config**: set `retry.early_stop_plateau: 1` in narration.yaml so
+  codex auto_rewrite triggers after 1 retry instead of 3 (Gemini is
+  largely deterministic, the 2nd/3rd retries produce identical
+  leaks).
+- Tolstoy/Soul Food (no anti-leak translation): 1-2 hand-rewrites
+  per book + 14 pipeline cycles. Train (with anti-leak translation):
+  0 hand-rewrites + 10 cycles.
 
 ### Tier B — clean after one fix (1.10×–1.30×)
 

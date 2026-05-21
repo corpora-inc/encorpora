@@ -62,6 +62,32 @@ pub struct WhisperParams {
     pub initial_prompt: Option<String>,
 }
 
+/// Per-call scoring overrides applied on top of the native plugin's
+/// acoustic ramp + textFloor + compression-ratio threshold. Same
+/// wire-format gatekeeper rules as `WhisperParams`: any field not
+/// declared here is silently dropped at the Rust boundary.
+///
+/// Field names match the Swift `ScoringParamsArg` and Kotlin
+/// `ScoringParamsArg` exactly so the JSON shape works on every
+/// layer of the stack. Sibling of the JS `ScoringParams` type in
+/// `packs/pronunciation-coach/src/scoringTuning.ts`.
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[serde(rename_all = "camelCase")]
+pub struct ScoringParams {
+    #[serde(default)]
+    pub avg_zero: Option<f32>,
+    #[serde(default)]
+    pub avg_one: Option<f32>,
+    #[serde(default)]
+    pub min_zero: Option<f32>,
+    #[serde(default)]
+    pub min_one: Option<f32>,
+    #[serde(default)]
+    pub text_floor: Option<f32>,
+    #[serde(default)]
+    pub compression_threshold: Option<f32>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StartSessionArgs {
@@ -73,6 +99,11 @@ pub struct StartSessionArgs {
     /// `WhisperParams` for the full field list and semantics.
     #[serde(default)]
     pub whisper_params: Option<WhisperParams>,
+    /// Per-call scoring override overlay from the pack. Optional;
+    /// when absent the native plugin uses its built-in ramps and
+    /// gate thresholds. See `ScoringParams` above.
+    #[serde(default)]
+    pub scoring_params: Option<ScoringParams>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]

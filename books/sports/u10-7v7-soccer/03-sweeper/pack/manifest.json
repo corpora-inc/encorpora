@@ -1,10 +1,12 @@
 {
   "id": "book_u10_sweeper",
   "name": "You Are the Sweeper",
-  "version": "0.1.0",
+  "version": "0.2.3",
   "type": "book",
   "entry": "dist/reader.js",
-  "styles": ["dist/reader.css"],
+  "styles": [
+    "dist/reader.css"
+  ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
   "metadata": {

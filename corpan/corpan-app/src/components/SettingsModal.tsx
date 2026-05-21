@@ -10,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { XIcon } from "lucide-react";
 import { LanguageSelectOrder } from "./LanguageSelectOrder";
-import { DomainPicker } from "./DomainPicker";
+import { PhrasePackToggleSection } from "./packs/PhrasePackToggleSection";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { RomanizationToggle } from "./RomanizationToggle";
@@ -180,7 +180,7 @@ export function SettingsModal({
             </div>
           </div>
 
-          <TabsContent value="stacks" className="space-y-4 mt-8">
+          <TabsContent value="stacks" className="space-y-4 mt-8 pb-16">
             {/* Theme toggle (global) */}
             <ThemeToggle />
 
@@ -203,8 +203,11 @@ export function SettingsModal({
             <RateAdjuster />
             <LanguageSelectOrder />
             <JumpToTTSButton fullWidth />
+            {/* Phrase-pack manager first — what most users come here
+                to adjust. Levels picker sits below it as a finer-grained
+                refinement. */}
+            <PhrasePackToggleSection />
             <LevelsPicker />
-            <DomainPicker />
             <RomanizationToggle />
             <ScrollNavigationToggle />
 
@@ -216,7 +219,7 @@ export function SettingsModal({
                 onClose();
               }}
               className="
-                mt-5 w-full rounded-md px-6 py-8
+                mt-5 w-full h-auto rounded-md px-6 py-6 md:py-8
                 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
                 transition-colors cursor-pointer
                 shadow-sm
@@ -254,7 +257,9 @@ export function SettingsModal({
             />
 
             {!devModeEnabled && (
-              <div className="space-y-3 rounded-md border border-border bg-card/80 p-4 mt-6">
+              // Width-matched with SubscriptionOffer + RestorePurchases so
+              // the three hero-style cards line up on iPad.
+              <div className="space-y-3 rounded-md border border-border bg-card/80 p-4 mt-6 w-full max-w-md md:max-w-xl mx-auto">
                 <div className="space-y-1">
                   <div className="text-md font-semibold">
                     {t("packs.devUnlockTitle")}
@@ -267,7 +272,7 @@ export function SettingsModal({
                   type="button"
                   variant="outline"
                   onClick={handleDevTap}
-                  className="w-full"
+                  className="w-full !h-11 md:!h-14"
                 >
                   {t("packs.devUnlockTitle")} ({devTapCount}/7)
                 </Button>

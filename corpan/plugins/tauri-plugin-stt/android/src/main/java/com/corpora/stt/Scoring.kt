@@ -245,6 +245,27 @@ object Scoring {
         return if (lowResourceLangs.contains(baseLang)) lowResRamp else highResRamp
     }
 
+    /**
+     * Overlay pack-supplied scoring overrides on top of the native
+     * ramp picked by `pickAcousticRamp`. Each non-null field replaces
+     * the corresponding slot; null fields leave the native default.
+     * Mirrors `applyScoringOverlay` in `STTPlugin.swift`.
+     */
+    fun applyScoringOverlay(
+        base: AcousticRamp,
+        avgZero: Float?,
+        avgOne: Float?,
+        minZero: Float?,
+        minOne: Float?,
+        textFloor: Float?,
+    ): AcousticRamp = AcousticRamp(
+        avgZero = avgZero ?: base.avgZero,
+        avgOne = avgOne ?: base.avgOne,
+        minZero = minZero ?: base.minZero,
+        minOne = minOne ?: base.minOne,
+        textFloor = textFloor ?: base.textFloor,
+    )
+
     fun stdev(values: List<Float>): Float {
         if (values.size < 2) return 0f
         val mean = values.average().toFloat()
@@ -265,6 +286,22 @@ object Scoring {
     )
 
     /**
+     * Pack-supplied overlay on top of the native ramp + compression
+     * threshold. Plain nullable Floats — keeps `Scoring.kt` a pure
+     * math module with no dep on `app.tauri.annotation.InvokeArg`.
+     * The Tauri-bound `ScoringParamsArg` in `SttPlugin.kt` is adapted
+     * to this shape at the call site.
+     */
+    data class ScoringOverlay(
+        val avgZero: Float? = null,
+        val avgOne: Float? = null,
+        val minZero: Float? = null,
+        val minOne: Float? = null,
+        val textFloor: Float? = null,
+        val compressionThreshold: Float? = null,
+    )
+
+    /**
      * @param tokenLogprobStdev computed from per-token logprobs
      * @param noSpeechProb max across segments
      * @param compressionRatio max across segments (0 if not available)
@@ -281,6 +318,7 @@ object Scoring {
         noSpeechProb: Float,
         compressionRatio: Float,
         temperature: Float,
+        scoringOverrides: ScoringOverlay? = null,
     ): Scores {
         if (noSpeechProb > 0.5f) {
             return Scores(
@@ -297,7 +335,15 @@ object Scoring {
         else wordProbs.sum() / wordProbs.size
         val minWordProb = wordProbs.minOrNull() ?: 0f
 
-        val ramp = pickAcousticRamp(modelName, baseLang)
+        val nativeRamp = pickAcousticRamp(modelName, baseLang)
+        val ramp = if (scoringOverrides == null) nativeRamp else applyScoringOverlay(
+            base = nativeRamp,
+            avgZero = scoringOverrides.avgZero,
+            avgOne = scoringOverrides.avgOne,
+            minZero = scoringOverrides.minZero,
+            minOne = scoringOverrides.minOne,
+            textFloor = scoringOverrides.textFloor,
+        )
 
         var acoustic: Float = if (wordProbs.isEmpty()) {
             // Fallback to avgLogprob ramp.
@@ -319,7 +365,9 @@ object Scoring {
         else transcriptScore * (ramp.textFloor + (1f - ramp.textFloor) * acoustic)
 
         val isLowRes = lowResourceLangs.contains(baseLang)
-        val compressionThreshold = if (isLowRes) 3.5f else 2.4f
+        val nativeCompressionThreshold = if (isLowRes) 3.5f else 2.4f
+        val compressionThreshold =
+            scoringOverrides?.compressionThreshold ?: nativeCompressionThreshold
         if (compressionRatio > compressionThreshold) {
             overall = min(overall, 0.4f)
         }

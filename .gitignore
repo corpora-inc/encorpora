@@ -34,6 +34,11 @@ corpan/games/
 # Voice reference wavs — backed up to S3, not tracked in git
 voices/data/*.wav
 
+# Pre-mastered voice reference variants (HPF + denoise + compressor + loudnorm
+# applied to the raw refs at -22 / -18 / etc. LUFS targets). Derived: regen via
+# voices/scripts/sample_clone_premaster_*.py. Backed to S3 sources/voices/data/.
+voices/data/pre-mastered/
+
 # Voice candidate samples (large, local only)
 voices/samples/
 
@@ -63,6 +68,27 @@ voices/data/samples/
 # from current audio. Useful as local working notes; not history-of-record.
 **/pack/audits/
 **/packs/*/audits/
+
+# Per-language analytics from pipeline runs (run summaries: segments, errors,
+# worst-case timings). Regenerable from logs + current audio; useful as local
+# scratch / human-readable post-run report, not history-of-record. Mirrored to
+# pack_store on S3.
+**/pack/analytics_*.json
+**/packs/*/analytics_*.json
+
+# Per-language declick detection reports (false-positive/true-positive lists,
+# regen targets). Regenerable from current audio; not history-of-record.
+**/pack/declick_report_*.json
+**/packs/*/declick_report_*.json
+
+# Per-language audit JSONL summary records, one file per language under
+# <series>/lang_records/. Append-only aggregate audit trail; useful as local
+# scratch, eligible for periodic rollup to markdown summaries. Tier-2 (S3).
+**/lang_records/*.jsonl
+
+# State snapshots from in-place migrations (e.g. .pre_mms_clear left by the
+# MMS-clear pass). One-shot rollback only; never history-of-record.
+*.pre_mms_clear
 
 # Backup snapshots from in-place pipeline migrations (e.g. .pre-nikkud.bak,
 # .pre-clear-fp.bak, .pre-cjk-clear.bak). Useful for one-shot rollback,

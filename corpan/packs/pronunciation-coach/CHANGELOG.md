@@ -14,6 +14,50 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-05-20 — Scoring overlay + phrase-pack sourcing
+
+Requires `tauri-plugin-stt >= 0.5.0` and Corpán app `>= 0.15.3`.
+
+### Added
+- **Per-(language, model) scoring overrides.** New `scoringTuning.ts`
+  passes a `scoringParams` overlay through `startSession` (sibling
+  of `whisperParams`) so the acoustic ramp, `textFloor`, and
+  compression-ratio gate can be calibrated from the pack without a
+  native rebuild. Built-in tables ship empty in this release — the
+  native plugin's ramps remain authoritative until profiles get
+  populated empirically (see Phase 2 calibration plan).
+- One `[PRON:score]` `console.info` per attempt with the score
+  breakdown (overall / transcript / acoustic / likelihood plus
+  noSpeechProb / compressionRatio / avgLogprob / temperature) for
+  dev-loop calibration via `/tmp/pc-console.log`.
+
+### Changed
+- **Large q8 ★ visible on every device.** Dropped
+  `requiresLargeMemory: true` from the `large_q8_full` entry in
+  `modelRegistry.ts`. The flag had been hiding the card on devices
+  below the 8 GB physical-RAM threshold, but the model's actual
+  runtime memory is essentially identical to Full Weight Turbo
+  (`large_max`, 1549 MB on disk, no gate) — both share the 32-layer
+  encoder, and the decoder-layer delta (32 vs 4) adds only ~70 MB
+  of KV cache. iPhone 14 (6 GB) runs Full Weight Turbo fine, so
+  Large q8 ★ should too. The native runtime headroom gate in
+  `STTPlugin.swift` remains the honest authority — devices that
+  truly can't fit the load see a graceful "needs more memory"
+  message rather than not seeing the option at all.
+- Model-setup overlay now mounts a calm offline notice when the device
+  is offline ("Model downloads need internet — already-installed models
+  still work"), and disables the Install / Reinstall buttons so taps
+  don't kick off doomed downloads. Notice and button state swap live
+  as airplane mode toggles.
+- Network-related error strings (boot prepare failure, model-switch
+  network failure, score-time blip) reworded to match the app's
+  understated offline voice — no more "Network needed — check your
+  connection" mic-button label.
+- Phrase sampling now flows through the host-bridge's phrase-pack-
+  aware `getRandomEntry` (Corpán 0.15.0+) — no pack changes required,
+  any phrase packs the user has installed and activated automatically
+  show up in Parlometron rounds.
+
 ## [0.6.3] - 2026-05-17
 
 ### Changed

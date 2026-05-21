@@ -1,7 +1,7 @@
 {
   "id": "book_sailing",
   "name": "Sailing",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "book",
   "primary_language": "en",
   "entry": "dist/reader.js",

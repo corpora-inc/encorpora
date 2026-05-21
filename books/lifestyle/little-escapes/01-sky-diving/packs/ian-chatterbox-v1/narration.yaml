@@ -62,8 +62,8 @@ retry:
     exaggeration: 0.7
     temperature: 0.8
 mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
@@ -98,7 +98,7 @@ filter_chain:
     makeup: 1
   alimiter:
     enabled: true
-    limit: 0.708
+    limit: 0.8913
     level: false
 denoise:
   enabled: false

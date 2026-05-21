@@ -2,10 +2,14 @@ import { useEffect, useState, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { OfflineNotice } from "@/components/OfflineNotice"
+import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { usePackUpdates } from "@/hooks/usePackUpdates"
 import { PackCard } from "./PackCard"
+import { PhrasePackDrawerTrigger } from "./PhrasePackDrawerTrigger"
+import { RecentsSection } from "./RecentsSection"
 import { SubscriptionOffer } from "./SubscriptionOffer"
 import { RestorePurchases } from "./RestorePurchases"
 import { useInstallContext } from "@/contentPacks/InstallContext"
@@ -22,7 +26,7 @@ export function PacksListing({
 
   const catalog = useCatalogStore((s) => s.getCatalog())
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog)
-  const isOnline = useCatalogStore((s) => s.isOnline)
+  const isOnline = useOnlineStatus()
   const isFetching = useCatalogStore((s) => s.isFetching)
   const setDevMode = useCatalogStore((s) => s.setDevMode)
   const [manifestUrl, setManifestUrl] = useState("")
@@ -69,35 +73,24 @@ export function PacksListing({
       {/* Subscription Offer — top of screen. Self-hides when not applicable. */}
       <SubscriptionOffer />
 
-      {/* Section 1: Updates Available */}
-      {updates.length > 0 && (
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h4 className="text-base font-semibold text-purple-700">
-              {t("packs.updates")}
-              <span className="ml-2 text-sm font-medium text-purple-500">
-                ({updates.length})
-              </span>
-            </h4>
-          </div>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            {updates.map(({ game, update }) => (
-              <PackCard
-                key={game.id}
-                pack={update}
-                installedGame={game}
-                badge="update"
-                state="update"
-                isOffline={!isOnline}
-                onLaunch={onLaunchGame}
-                updateVersion={update.version}
-              />
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Restore Purchases (self-hides on non-IAP platforms). Lives with
+          the subscription block — restoring is the natural sibling of
+          offering. */}
+      <RestorePurchases />
 
-      {/* Section 2: Installed Packs */}
+      {/* Recents — quick re-entry for packs the user has launched recently.
+          Self-hides when no installed pack has ever been launched. */}
+      <RecentsSection
+        installedGames={installedGames}
+        updates={updates}
+        isOnline={isOnline}
+        onLaunchGame={onLaunchGame}
+      />
+
+      {/* Installed Packs — single source of truth for everything on disk.
+          Cards with an available update get a purple "update" badge and
+          their action row swaps to [Update] [Open] [Remove]. No separate
+          Updates section: a card showing up twice is just noise. */}
       <div className="space-y-3">
         <h4 className="text-base font-semibold">{t("packs.installed")}</h4>
         {installedGames.length === 0 ? (
@@ -111,14 +104,18 @@ export function PacksListing({
             {installedGames.map((game) => {
               const catalogEntry = catalog.find((c) => c.id === game.id)
               const hasUpdate = updates.some((u) => u.game.id === game.id)
+              // When the catalog has the entry, prefer ITS `name` /
+              // `description` (and the `nameLocalized` / `descriptionLocalized`
+              // maps that come with it) so the installed card renders the
+              // same localized strings as the available card. Only fall
+              // back to the persisted English `game.name` when the catalog
+              // doesn't know this pack (offline + cache empty).
               const packForCard = catalogEntry
                 ? {
                     ...catalogEntry,
                     id: game.id,
-                    name: game.name,
                     version: game.version ?? catalogEntry.version,
                     manifestUrl: game.manifestUrl ?? catalogEntry.manifestUrl,
-                    description: game.description ?? catalogEntry.description,
                     imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
                   }
                 : {
@@ -135,7 +132,7 @@ export function PacksListing({
                   key={game.id}
                   pack={packForCard}
                   installedGame={game}
-                  badge={hasUpdate ? undefined : "installed"}
+                  badge={hasUpdate ? "update" : "installed"}
                   state={hasUpdate ? "update" : "installed"}
                   isOffline={!isOnline}
                   onLaunch={onLaunchGame}
@@ -154,14 +151,7 @@ export function PacksListing({
       {/* Section 3: Discover New */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <h4 className="text-base font-semibold">{t("packs.available")}</h4>
-            {!isOnline && (
-              <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700">
-                {t("packs.offline")}
-              </span>
-            )}
-          </div>
+          <h4 className="text-base font-semibold">{t("packs.available")}</h4>
           {isOnline && (
             <Button
               size="icon"
@@ -177,25 +167,45 @@ export function PacksListing({
             </Button>
           )}
         </div>
-        {availablePacks.length === 0 ? (
+        {!isOnline && availablePacks.length === 0 ? (
+          <OfflineNotice
+            title={t("offline.packCatalogTitle", {
+              defaultValue: "Pack catalog needs internet",
+            })}
+            subtitle={t("offline.packCatalogSubtitle", {
+              defaultValue:
+                "Your installed packs still work. Reconnect to browse more.",
+            })}
+          />
+        ) : availablePacks.length === 0 ? (
           <div className="text-sm text-muted-foreground">
             {catalog.length === 0 && isFetching
               ? t("common.loading")
               : t("packs.emptyAvailable")}
           </div>
         ) : (
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-            {availablePacks.map((pack) => (
-              <PackCard
-                key={pack.id}
-                pack={pack}
-                badge="new"
-                state="available"
-                isOffline={!isOnline}
-                onLaunch={onLaunchGame}
+          <>
+            {!isOnline && (
+              <OfflineNotice
+                density="compact"
+                title={t("offline.cachedSubtitle", {
+                  defaultValue: "Showing your last cached results.",
+                })}
               />
-            ))}
-          </div>
+            )}
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+              {availablePacks.map((pack) => (
+                <PackCard
+                  key={pack.id}
+                  pack={pack}
+                  badge="new"
+                  state="available"
+                  isOffline={!isOnline}
+                  onLaunch={onLaunchGame}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
 
@@ -238,8 +248,12 @@ export function PacksListing({
         </div>
       )}
 
-      {/* Restore Purchases (self-hides on non-IAP platforms) */}
-      <RestorePurchases />
+      {/* Phrase-pack drawer trigger. The drawer itself lives at
+          App.tsx level and is shared with the Stacks tab's
+          PhrasePackToggleSection — same trigger component dropped into
+          both panes. Self-hides when the catalog has zero phrase
+          packs. */}
+      <PhrasePackDrawerTrigger />
     </div>
   )
 }

@@ -31,7 +31,7 @@ import {
 import { TRANSLATIONS } from "@/store/translations";
 import { isRTL } from "@/util/convert";
 import { ChevronLeft, ChevronRight, Hourglass } from "lucide-react";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 export function OnboardingPickPrimary() {
@@ -44,18 +44,40 @@ export function OnboardingPickPrimary() {
     // single suggested row.
     const suggested = useMemo(() => detectPreferredLang(), []);
 
-    // Apply the detected UI language eagerly. If the user then chooses a
-    // different primary, the `handleSelect` below overwrites it — there is
-    // no risk of "stuck" detection.
+    // Race-safe i18n setter. `i18n.changeLanguage` is async and not
+    // cancellable — if we fire one for `suggested` on mount and the user
+    // taps a different `code` a beat later, the two pending applies can
+    // resolve in any order and the late one wins. We track the latest
+    // desired language in a ref and re-apply if drift is detected after a
+    // call settles. Result: the user's pick always wins regardless of
+    // resolution order.
+    const desiredLangRef = useRef<string | null>(null);
+    const applyLang = useCallback(
+        async (code: string) => {
+            desiredLangRef.current = code;
+            await i18n.changeLanguage(code);
+            if (
+                desiredLangRef.current &&
+                i18n.language !== desiredLangRef.current
+            ) {
+                await i18n.changeLanguage(desiredLangRef.current);
+            }
+        },
+        [i18n],
+    );
+
+    // Apply the detected UI language eagerly so downstream onboarding pages
+    // land already localized. The race guard above keeps a quick user tap
+    // from being clobbered by this in-flight call.
     useEffect(() => {
         if (suggested && i18n.language !== suggested) {
-            void i18n.changeLanguage(suggested);
+            void applyLang(suggested);
         }
-    }, [suggested, i18n]);
+    }, [suggested, i18n, applyLang]);
 
     const handleSelect = (code: string) => {
-        void i18n.changeLanguage(code);
         setLanguages([code]);
+        void applyLang(code);
         setStep(2);
     };
 
@@ -66,7 +88,7 @@ export function OnboardingPickPrimary() {
 
     return (
         <div
-            className="fixed inset-0 overflow-y-auto overscroll-contain bg-background"
+            className="fixed inset-0 overflow-y-auto overscroll-contain bg-background md:bg-muted"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -74,10 +96,14 @@ export function OnboardingPickPrimary() {
             }}
         >
             <div
-                className="mx-auto w-full max-w-xl md:max-w-2xl px-4 sm:px-6"
+                // pb-20 static — env(safe-area-inset-bottom) returns 0
+                // on Android Tauri and is undersized in some iPad
+                // contexts (see corpan-app/AGENTS.md §6). Top padding
+                // keeps the env-calc since env() is reliable for top
+                // safe area on both platforms.
+                className="mx-auto w-full max-w-xl md:max-w-2xl px-4 sm:px-6 pb-20"
                 style={{
                     paddingTop: "calc(env(safe-area-inset-top) + 2rem)",
-                    paddingBottom: "calc(env(safe-area-inset-bottom) + 2.5rem)",
                 }}
             >
                 <Header total={ALL_LANGUAGES.length} />

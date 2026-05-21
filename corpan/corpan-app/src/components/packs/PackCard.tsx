@@ -1,12 +1,13 @@
 import { useTranslation } from "react-i18next"
 import type { CatalogGame } from "@/contentPacks/catalog"
+import { localizePack } from "@/contentPacks/localized"
 import type { InstalledGame } from "@/store/games"
 import { PackBadge, type BadgeVariant } from "./PackBadge"
 import { PackScreenshot } from "./PackScreenshot"
 import { PackActions, type PackActionState } from "./PackActions"
 
 export function PackCard({
-  pack,
+  pack: rawPack,
   installedGame,
   badge,
   state,
@@ -22,7 +23,8 @@ export function PackCard({
   onLaunch?: (game: InstalledGame) => void
   updateVersion?: string
 }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const pack = localizePack(rawPack, i18n.language || "en")
 
   return (
     <div className="flex flex-col rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">

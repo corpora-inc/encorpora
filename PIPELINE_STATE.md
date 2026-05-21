@@ -1,8 +1,33 @@
-# Narration Pipeline State — 2026-04-25 (post-incident)
+# Narration Pipeline State — 2026-05-19
 
 ## What's Running RIGHT NOW
 
 Nothing. All processes stopped. Production is clean.
+
+## Catalan rollout — paused after 3 books (2026-05-19)
+
+Shipped 3 mono-narrator `gemini-ron` packs to `tier=public`:
+
+| book | segs | pack | version |
+|---|---|---|---|
+| tolstoy-short-stories/three-questions | 82 | ron-gemini-v1 | 0.1.0 |
+| food-of-the-world/01-soul-food | 148 | ron-gemini-v1 | 0.1.0 |
+| vehicles-of-the-world/01-the-story-of-the-train | 154 | ron-gemini-v1 | 0.1.0 |
+
+Strategy: Chatterbox does not support Catalan, so Chatterbox-only
+books get a parallel new `ron-gemini-v1` pack with voiceId
+`gemini-ron`. The existing Chatterbox pack is untouched. See
+`~/projects/ttsctl/changelog/decisions/2026-05-19_catalan_rollout.md`
+for the full recipe + the language-leak anti-pattern.
+
+Per-series records in
+`<series>/lang_records/ca.jsonl` (Tolstoy, food-of-the-world,
+vehicles-of-the-world). Cross-series pitfalls registry in
+`~/encorpora/books/tech/ai-this-week/LANG_PITFALLS.md` (Tier A*
+section for ca).
+
+Queue remaining: see the changelog. Default next move per book is in
+the plan at `~/.claude/plans/it-sounds-amazing-let-s-tender-twilight.md`.
 
 ## Recent Incident — voice-id natural-key violation (2026-04-25)
 

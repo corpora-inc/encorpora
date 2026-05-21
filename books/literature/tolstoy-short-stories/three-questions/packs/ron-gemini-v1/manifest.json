@@ -1,0 +1,15 @@
+{
+  "id": "book_tolstoy_three_questions",
+  "name": "Three Questions (\u0422\u0440\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u0430)",
+  "version": "0.1.4",
+  "type": "book",
+  "primary_language": "ru",
+  "metadata": {
+    "series": "Tolstoy Short Stories",
+    "author": "Leo Tolstoy",
+    "year": 1903,
+    "tts": true,
+    "estimatedReadTime": "10-15 minutes",
+    "estimatedListenTime": "8-12 minutes"
+  }
+}

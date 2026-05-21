@@ -9,6 +9,7 @@ import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
 import { Button } from "./components/ui/button";
 import { ContentPackOverlay } from "./components/ContentPackOverlay";
+import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
 import { TTSFailureBanner } from "./components/TTSFailureBanner";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
@@ -16,6 +17,7 @@ import { getPlatformTopPaddingButtons } from "./util/browser";
 import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
+import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
@@ -26,6 +28,46 @@ import { InstallProvider } from "@/contentPacks/InstallContext";
 if (import.meta.env.DEV) {
   (window as any).resetRatingState = () => {
     useRatingStore.getState().reset();
+  };
+
+  // Dev-only sideload helpers for phrase packs. Use from Safari Web
+  // Inspector against a connected iPad:
+  //
+  //   await window.__corpanInstallPhrasePack(
+  //     "http://192.168.1.x:8000/phrase-botany-basics-0.1.0.zip"
+  //   )
+  //   window.__corpanListPhrasePacks()
+  //
+  // The URL must be reachable from the iPad — usually your Mac's LAN IP
+  // serving the zip via `python3 -m http.server`. is_private_host on the
+  // Rust side allows http for 192.168/10/172.16-31/localhost ranges.
+  (window as any).__corpanInstallPhrasePack = async (zipUrl: string) => {
+    const { installPack } = await import("@/contentPacks/install");
+    const { rehydratePhrasePacksFromDisk } = await import(
+      "@/contentPacks/phrasePackRegister"
+    );
+    const result = await installPack({
+      manifestUrl: zipUrl,
+      source: "manual",
+    });
+    await rehydratePhrasePacksFromDisk();
+    return result;
+  };
+  (window as any).__corpanListPhrasePacks = async () => {
+    const { usePhrasePacksStore } = await import("@/store/phrasePacks");
+    return usePhrasePacksStore.getState().list();
+  };
+
+  // Direct access to the settings store so Safari Web Inspector can mutate
+  // active phrase packs / base-corpus toggles without dancing around the
+  // module loader. Safari's console wraps `(await import(...))` in a way
+  // that breaks the compound expression — using a top-level handle dodges it.
+  (window as any).__corpanSettings = {
+    setPhrasePackIds: (ids: string[]) =>
+      useSettingsStore.getState().setPhrasePackIds(ids),
+    setBaseCorpusEnabled: (on: boolean) =>
+      useSettingsStore.getState().setBaseCorpusEnabled(on),
+    state: () => useSettingsStore.getState(),
   };
 }
 
@@ -51,15 +93,37 @@ export default function App() {
   const gamesMap = useGamesStore((s) => s.games);
   const catalog = useCatalogStore((s) => s.getCatalog());
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
+  const fetchPhrasePackCatalog = usePhrasePackCatalogStore(
+    (s) => s.fetchCatalog,
+  );
   const installedGames = Object.values(gamesMap);
   const updates = usePackUpdates(installedGames, catalog);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
     fetchCatalog();
+    // Phrase packs ship through a dedicated S3-hosted catalog with a
+    // shorter TTL (5 min) since the publisher rewrites it directly with
+    // no PR. Two fetches, two stores — kept independent so a v3 catalog
+    // outage can't mask phrase-pack availability and vice versa.
+    void fetchPhrasePackCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
-  }, [fetchCatalog]);
+    // Reconcile the in-memory phrase-pack registry with what's actually on
+    // disk. Catches manual sideloads, stale persisted entries from prior
+    // installs that were since removed, version bumps, etc. No-op if no
+    // phrase packs are installed.
+    void (async () => {
+      try {
+        const { rehydratePhrasePacksFromDisk } = await import(
+          "@/contentPacks/phrasePackRegister"
+        );
+        await rehydratePhrasePacksFromDisk();
+      } catch (err) {
+        console.warn("[App] phrase-pack rehydrate failed:", err);
+      }
+    })();
+  }, [fetchCatalog, fetchPhrasePackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without
   // this, a subscription that lapsed while the app was backgrounded (sandbox
@@ -191,6 +255,10 @@ export default function App() {
       setShowSettings(false);
       setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
       updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
+      // Record the launch so Recents (in PacksListing) can sort by it.
+      // Single chokepoint — every code path that opens a pack goes
+      // through this callback.
+      useGamesStore.getState().touchLaunch(game.id);
       // Any path that lands the user inside a pack counts as
       // "discovered" — if they came in via the first-run panel, dismiss
       // it so exiting the reader returns to MainExperience, not back
@@ -213,7 +281,16 @@ export default function App() {
   }, [updateGameParam]);
 
   if (!onboarded) {
-    return <OnboardingWizard />;
+    // OnboardingWizard's PickPhrasePacks step needs `useInstallContext` to
+    // kick off the starter-pack batch install. Wrap with InstallProvider
+    // so the hook resolves. The post-onboarding tree wraps separately
+    // below — that's intentional (the providers have different lifetimes
+    // and the post-onboarding one also takes `onLaunchGame`).
+    return (
+      <InstallProvider>
+        <OnboardingWizard />
+      </InstallProvider>
+    );
   }
 
   return (
@@ -254,6 +331,13 @@ export default function App() {
         onLaunchGame={handleLaunchGame}
         initialTab={settingsTab}
       />
+
+      {/* App-root phrase-pack drawer. Sibling of SettingsModal so its
+          Vaul Root lives OUTSIDE the modal's overflow-y-auto scroller —
+          fixes the Stacks-tab scroll regression on iOS WKWebView and
+          lets any trigger site (Stacks, Packs, future main-exp chip)
+          open the same instance via `useDrawerStore`. */}
+      <PhrasePackDrawer />
 
       <RatingPrompt />
 

@@ -29,6 +29,7 @@ export type InstallErrorCode =
   | "VERIFY_REJECTED"
   | "SIGNED_URL_MISSING"
   | "VERIFY_NETWORK"
+  | "OFFLINE"
   | "DOWNLOAD_FAILED"
 
 type SignedUrlResult =
@@ -56,6 +57,18 @@ async function getSignedDownloadUrl(
   receipt: string,
   platform: string
 ): Promise<SignedUrlResult> {
+  // Short-circuit before hitting the verify endpoint when the device is
+  // offline. The catalog's network errors then route to a calm offline
+  // toast instead of an alarming "couldn't reach backend" message.
+  if (typeof navigator !== "undefined" && !navigator.onLine) {
+    return {
+      url: null,
+      code: "OFFLINE",
+      message: "Purchase needs internet — reconnect and try again.",
+      detail: "navigator.onLine is false",
+    }
+  }
+
   const verifyUrl =
     ((typeof import.meta !== "undefined" &&
       import.meta.env?.VITE_GAME_VERIFY_URL) as string | undefined) ||

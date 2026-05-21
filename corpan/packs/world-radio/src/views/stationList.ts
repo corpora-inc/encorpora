@@ -38,6 +38,7 @@ import { countryCodeToFlag } from "../ui/flagEmoji"
 import { createEqGlyph, type EqGlyph, type EqMode } from "../ui/eqGlyph"
 import { createAlert } from "../ui/alert"
 import { createSkeletonRows } from "../ui/skeleton"
+import { createOfflineNotice, isOnline } from "../../../shared/ui/offlineNotice"
 import { createSegmentedToggle } from "../ui/segmentedToggle"
 import {
   applyFilters,
@@ -491,6 +492,18 @@ export function createStationListView(opts: {
         console.error("[world-radio] station list load failed:", err)
         if (disposed) return
         clear(body)
+        if (!isOnline()) {
+          // No cache + offline → calm notice. Stations stream live, so
+          // playing requires internet even if we had the metadata.
+          const notice = createOfflineNotice({
+            title: "World Radio needs internet",
+            subtitle:
+              "Stations stream live. Reconnect to browse and listen.",
+          })
+          body.appendChild(notice.element)
+          subtitle.textContent = ""
+          return
+        }
         body.appendChild(
           createAlert({
             title: "Couldn't load stations",

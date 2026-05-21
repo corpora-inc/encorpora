@@ -1,11 +1,13 @@
 {
   "id": "book_sky_diving",
   "name": "Skydiving",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "book",
   "primary_language": "en",
   "entry": "dist/reader.js",
-  "styles": ["dist/reader.css"],
+  "styles": [
+    "dist/reader.css"
+  ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
   "metadata": {

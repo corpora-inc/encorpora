@@ -8,6 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-05-19
+### Changed
+- Cold-start in airplane mode now shows a calm "World Radio needs
+  internet" notice on the language list and station list, instead of
+  an alarming red "Couldn't reach the radio directory" error card. The
+  language list also auto-refreshes when the connection returns, so
+  users don't need to manually tap "Try again".
+
 ## [0.6.2] - 2026-05-17
 
 ### Changed

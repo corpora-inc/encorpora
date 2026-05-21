@@ -100,7 +100,33 @@
     "themeLight": "Light",
     "themeSystem": "System",
     "themeDark": "Dark",
-    "primaryLanguage": "Primary (UI) language"
+    "primaryLanguage": "Primary (UI) language",
+    "sendAnonUsage": "Send anonymous usage data",
+    "sendAnonUsageHint": "Anonymous, session-scoped. No accounts, no device IDs, no IP storage. Toggle off any time.",
+    "readPrivacyPromise": "Read our Privacy Promise",
+    "phrasePacks": {
+      "header": "Phrase packs",
+      "activeCount": "{{active}} of {{total}} active",
+      "baseCorpusName": "Bundled corpus",
+      "baseCorpusSubtitle": "{{n}} phrases",
+      "emptyHint": "No phrase packs installed yet. Add focused topics — Botany, Music, Rugby, … — from the Packs tab.",
+      "browseAll": "Browse all packs",
+      "searchPlaceholder": "Search packs…",
+      "filter": {
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "selectAllVisible": "Select all",
+      "deselectAllVisible": "Deselect all",
+      "activateGroup": "Activate all",
+      "deactivateGroup": "Deactivate all",
+      "uncategorized": "Other",
+      "noMatches": "No matches.",
+      "noFiltered": "Nothing here right now.",
+      "stackTotalPhrases": "~{{count}} phrases match",
+      "stackTotalNudge": "Add packs or widen levels for variety."
+    }
   },
   "onboarding": {
     "welcome": "Welcome",
@@ -126,6 +152,9 @@
     "socialsStepTitle": "Socials",
     "noVoices": "No voices",
     "noVoicesHint": "Install voices to enable this language.",
+    "notOnAppleIOS": "Not on iOS",
+    "appleNoVoiceTitle": "Apple doesn't ship a {{lang}} voice yet",
+    "appleNoVoiceBody": "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime.",
     "languageOrderTipTitle": "Tip",
     "languageOrderTipBody": "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
     "ttsOsTipTitle": "Tip",
@@ -186,6 +215,27 @@
         "disabledUntilUsed": "Disabled until used",
         "notInstalled": "Not installed"
       }
+    },
+    "packs": "Phrase packs",
+    "phrasePacks": {
+      "title": "Phrase packs",
+      "stepTitle": "Phrase packs",
+      "hero": "Pick your topics",
+      "subtitle": "Add focused phrase packs to your stack. Toggle them on or off any time in Settings.",
+      "loading": "Loading packs…",
+      "selectAll": "Select all ({{count}})",
+      "clearAll": "Clear selection",
+      "selectedSuffix": "selected",
+      "noneSelected": "None selected — Continue will skip",
+      "skip": "Skip for now",
+      "subscriptionNudge": "Some packs are part of the subscription — you can subscribe later in Settings → Packs.",
+      "entryCount": "{{n}} phrases",
+      "paid": "Paid",
+      "emptyHero": "No phrase packs available yet.",
+      "emptySub": "New topics ship regularly — check Settings → Packs anytime.",
+      "offlineHero": "You're offline.",
+      "offlineSub": "Phrase packs need internet — try later from Settings → Packs.",
+      "offlineBanner": "Offline — selections install when reconnected."
     }
   },
   "socials": {
@@ -216,7 +266,8 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "create": "Create",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "skip": "Skip"
   },
   "dialects": {
     "en": "English",
@@ -391,18 +442,59 @@
     "manifestTitle": "Manifest URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Paste a manifest URL.",
+    "installStuckTitle": "Download stalled",
+    "installStuckDetail": "No progress for a while. Check your connection and try again.",
+    "installFailedTitle": "Install failed",
     "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "Tap 7 times to unlock manifest installs.",
     "devUnlockToast": "Developer Packs unlocked.",
     "devIntro": "Try a Corpán Pack or make your own.",
     "devLink": "Learn more on Free2z",
     "new": "New",
-    "updates": "Updates",
+    "recent": "Recent",
+    "openPack": "Open {{name}}",
+    "updateAvailable": "Update available",
     "offline": "Offline",
     "purchasing": "Purchasing...",
     "buy": "Buy {{price}}",
     "premium": "Premium",
-    "availableOnMobile": "Available on iOS & Android"
+    "availableOnMobile": "Available on iOS & Android",
+    "checking": "Checking…",
+    "phrasePack": {
+      "sectionTitle": "Phrase packs",
+      "searchPlaceholder": "Search phrase packs",
+      "noMatches": "Nothing matches that search yet.",
+      "filter": {
+        "all": "All",
+        "free": "Free",
+        "paid": "Paid",
+        "installed": "Installed"
+      },
+      "activeInStack": "Active in stack",
+      "activeBadge": "Active",
+      "inactiveBadge": "Inactive",
+      "moreActionsLabel": "More actions",
+      "subBadge": "Subscription",
+      "paid": "Paid",
+      "free": "Free",
+      "install": "Install",
+      "unlockSub": "Unlock with subscription",
+      "entryCount": "{{n}} phrases",
+      "offlineEmpty": "You're offline. Connect to browse phrase packs.",
+      "showAll": "Show all ({{count}})",
+      "collapseList": "Show less",
+      "openDrawer": "Browse phrase packs ({{count}})",
+      "openDrawerLabel": "Browse phrase packs",
+      "allInstalled": {
+        "title": "You've got every phrase pack.",
+        "subtitle": "Topic packs ship regularly — check back any time.",
+        "manageCta": "Manage in Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nothing installed yet.",
+        "cta": "Show all packs"
+      }
+    }
   },
   "subscription": {
     "title": "Unlock everything",
@@ -418,7 +510,11 @@
     "privacyPolicy": "Privacy Policy",
     "autoRenewNotice": "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Waiting for approval",
+    "pendingDetail": "Your subscription is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
+    "storeUnreachable": "We couldn't reach the App Store right now.",
+    "tryAgain": "Try again"
   },
   "restore": {
     "button": "Restore Purchases",
@@ -455,5 +551,23 @@
     "maybeLater": "Maybe later",
     "empty": "More packs are on the way — explore Corpán in the meantime.",
     "offlineEmpty": "Connect to the internet to discover packs — or skip this for now."
+  },
+  "offline": {
+    "title": "No internet",
+    "catalogSubtitle": "Reconnect to discover new packs. Your installed packs still work.",
+    "cachedSubtitle": "Showing your last cached results.",
+    "subscriptionTitle": "Subscriptions need internet",
+    "subscriptionSubtitle": "Reconnect to subscribe. Your installed packs and bundled phrases still work.",
+    "restoreSubtitle": "Reconnect to restore purchases.",
+    "voiceDownloadTitle": "Voice download needs internet",
+    "voiceDownloadSubtitle": "The voices already on your device still work. Reconnect to install more.",
+    "phrasePacksTitle": "Phrase pack catalog needs internet",
+    "phrasePacksSubtitle": "Your installed phrase packs still work. Reconnect to browse new ones.",
+    "phrasePacksOnboardingSubtitle": "You can pick phrase packs later from Settings → Packs once you reconnect.",
+    "onboardingBanner": "Offline — selections install when you reconnect.",
+    "installNeedsInternet": "Reconnect to download.",
+    "purchaseNeedsInternet": "Reconnect to purchase.",
+    "packCatalogTitle": "Pack catalog needs internet",
+    "packCatalogSubtitle": "Your installed packs still work. Reconnect to browse more."
   }
 }

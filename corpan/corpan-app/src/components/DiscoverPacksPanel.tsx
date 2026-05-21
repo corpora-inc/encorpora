@@ -1,9 +1,10 @@
 // src/components/DiscoverPacksPanel.tsx
 //
 // First-run celebration overlay shown once after onboarding completes.
-// Renders the four marquee packs (Earthgate Reader, Stargate Reader,
-// Hover Runner, Hanzipan) using the same `PackCard` the Settings panel
-// uses, so install / launch / IAP flows stay consistent.
+// Renders the curated marquee packs using the same `PackCard` the
+// Settings panel uses, so install / launch / IAP flows stay
+// consistent. `FEATURED_PACK_IDS` is the publisher-curated subset; any
+// id the user's app-version channel filters out is silently skipped.
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -23,6 +24,9 @@ const FEATURED_PACK_IDS = [
     "stargate_reader",
     "hover_runner",
     "hanzipan",
+    "pronunciation_coach",
+    "juice_squeeze",
+    "world_radio",
 ] as const;
 
 export function DiscoverPacksPanel() {
@@ -55,22 +59,49 @@ export function DiscoverPacksPanel() {
 
     return (
         <motion.div
-            className="fixed inset-0 z-[1000] flex flex-col overflow-y-auto bg-background md:bg-muted"
+            // pb-20 static — env(safe-area-inset-bottom) returns 0 on
+            // Android Tauri and is undersized inside Vaul/portal-like
+            // contexts on iPad (see corpan-app/AGENTS.md §6). Top
+            // padding stays env-aware since env() is reliable for top
+            // safe area on both platforms.
+            className="fixed inset-0 z-[1000] flex flex-col overflow-y-auto bg-background md:bg-muted pb-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             dir={dir()}
             style={{
                 paddingTop: "max(env(safe-area-inset-top), 1.5rem)",
-                paddingBottom: "max(env(safe-area-inset-bottom), 1.5rem)",
                 paddingLeft: "env(safe-area-inset-left)",
                 paddingRight: "env(safe-area-inset-right)",
                 WebkitOverflowScrolling: "touch",
             }}
         >
             <div className="mx-auto w-full max-w-3xl px-4 flex flex-col gap-6">
+                {/* Top dismiss — mirrors the bottom button so users on a
+                 *  short screen don't have to scroll past every card to
+                 *  skip. Subtler than the bottom one to avoid competing
+                 *  with the hero. */}
+                <div className="flex justify-end pt-1">
+                    <button
+                        type="button"
+                        onClick={handleDismiss}
+                        className="
+                            text-xs text-muted-foreground hover:text-foreground
+                            underline underline-offset-4
+                            decoration-muted-foreground/30 hover:decoration-foreground/60
+                            transition-colors cursor-pointer
+                            focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
+                            rounded px-2 py-1
+                        "
+                    >
+                        {t("discoverPacks.maybeLater", {
+                            defaultValue: "Maybe later",
+                        })}
+                    </button>
+                </div>
+
                 {/* Hero */}
-                <header className="text-center pt-6 pb-1">
+                <header className="text-center pt-2 pb-1">
                     <span
                         className="
                             mx-auto inline-flex h-11 w-11 items-center justify-center

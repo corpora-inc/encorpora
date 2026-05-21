@@ -1,7 +1,7 @@
 {
   "id": "book_mystery_of_the_olmec",
   "name": "The Mystery of the Olmec",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
+import { listenToNetworkChanges } from "@/utils/network"
 
 export type InstallStage =
   | "downloading"
@@ -43,6 +44,7 @@ const TIMEOUT_MS = 120_000 // 2 minutes
 export function useInstallProgress() {
   const [state, setState] = useState<InstallProgressState>(INITIAL_STATE)
   const unlistenRef = useRef<(() => void) | null>(null)
+  const unlistenNetworkRef = useRef<(() => void) | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const lastEventRef = useRef<number>(0)
 
@@ -57,6 +59,10 @@ export function useInstallProgress() {
     if (unlistenRef.current) {
       unlistenRef.current()
       unlistenRef.current = null
+    }
+    if (unlistenNetworkRef.current) {
+      unlistenNetworkRef.current()
+      unlistenNetworkRef.current = null
     }
     clearTimeout_()
   }, [clearTimeout_])
@@ -89,6 +95,31 @@ export function useInstallProgress() {
           clearTimeout_()
         }
       }, 5_000)
+
+      // Watch for the device going offline mid-install. The Rust-side
+      // downloader may keep waiting on a hung socket far longer than the
+      // 2-minute event timeout — proactively flip the dialog to a calm
+      // error state the moment we know we've lost the connection so the
+      // user sees a Retry button instead of a forever-spinner.
+      //
+      // Once we enter the offline error state, tear down the Tauri
+      // progress listener and the stuck-timeout interval. Otherwise a
+      // late `complete` or `progress` event arriving when the radio
+      // briefly comes back could overwrite the error state and re-arm
+      // the dialog.
+      unlistenNetworkRef.current = listenToNetworkChanges((online) => {
+        if (online) return
+        clearTimeout_()
+        if (unlistenRef.current) {
+          unlistenRef.current()
+          unlistenRef.current = null
+        }
+        setState((prev) =>
+          prev.active && prev.stage !== "complete" && prev.stage !== "error"
+            ? { ...prev, stage: "error", error: "offline", active: true }
+            : prev,
+        )
+      })
 
       // Dynamically import Tauri event API
       import("@tauri-apps/api/event").then(({ listen }) => {

@@ -148,7 +148,9 @@
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.5",
     "maxAppVersion": "0.12.5",
-    "platforms": ["ios"],
+    "platforms": [
+      "ios"
+    ],
     "minOSVersion": "17.0",
     "channel": "stable",
     "packType": "game",
@@ -169,7 +171,9 @@
     "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.6",
-    "platforms": ["ios"],
+    "platforms": [
+      "ios"
+    ],
     "minOSVersion": "17.0",
     "channel": "stable",
     "packType": "game",
@@ -191,7 +195,9 @@
     "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
     "minAppVersion": "0.12.6",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "channel": "stable",
     "packType": "game",
     "videos": {

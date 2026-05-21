@@ -39,6 +39,17 @@ function readData(name) {
   return JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 }
 
+function readDataOptional(name) {
+  const dataPath = path.join(DATA_DIR, `${name}.json`);
+  if (!fs.existsSync(dataPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+  } catch (err) {
+    console.warn(`[pages] Failed to parse ${name}.json:`, err);
+    return null;
+  }
+}
+
 function resolveManifestPath(pack) {
   if (pack.manifestUrl && typeof pack.manifestUrl === 'string') {
     const trimmed = pack.manifestUrl.replace(/^\//, '');
@@ -51,21 +62,81 @@ function resolveManifestPath(pack) {
   return path.join(REPO_ROOT, 'corpan', 'packs', slug, 'manifest.json');
 }
 
-function readManifestVersion(pack) {
+// Cache parsed manifests so we don't re-read the same file three times
+// per pack (once for version, once for localized fields, etc.).
+const _manifestCache = new Map();
+
+function readManifest(pack) {
   const manifestPath = resolveManifestPath(pack);
-  if (!manifestPath || !fs.existsSync(manifestPath)) {
+  if (!manifestPath) return null;
+  if (_manifestCache.has(manifestPath)) {
+    return _manifestCache.get(manifestPath);
+  }
+  if (!fs.existsSync(manifestPath)) {
+    _manifestCache.set(manifestPath, null);
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    _manifestCache.set(manifestPath, parsed);
+    return parsed;
+  } catch (error) {
+    console.warn(`[pages] Failed to read manifest for ${pack.id}:`, error);
+    _manifestCache.set(manifestPath, null);
+    return null;
+  }
+}
+
+function readManifestVersion(pack) {
+  const manifest = readManifest(pack);
+  if (!manifest) {
     console.warn(`[pages] Missing manifest for ${pack.id}, using 0.0.0`);
     return "0.0.0";
   }
-  try {
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-    if (manifest && typeof manifest.version === 'string' && manifest.version.trim()) {
-      return manifest.version.trim();
-    }
-  } catch (error) {
-    console.warn(`[pages] Failed to read manifest for ${pack.id}:`, error);
+  if (typeof manifest.version === 'string' && manifest.version.trim()) {
+    return manifest.version.trim();
   }
   return "0.0.0";
+}
+
+// Pull `nameLocalized` / `descriptionLocalized` maps off the pack's
+// manifest. Returns `{}` when the manifest is missing or the maps are
+// absent — the packs.json `name` / `description` then serve as English
+// fallback through `resolveLocalized` at render time.
+//
+// We deliberately override `.en` to match the packs.json `name` /
+// `description`. The bare `name` / `description` on the catalog entry
+// always comes from packs.json (the marketing surface), and the
+// localized-map's `en` entry must agree with it so the
+// resolveLocalized() chain produces a single canonical English string.
+function readManifestLocalized(pack) {
+  const manifest = readManifest(pack);
+  const out = {};
+  if (
+    manifest &&
+    manifest.nameLocalized &&
+    typeof manifest.nameLocalized === 'object' &&
+    !Array.isArray(manifest.nameLocalized)
+  ) {
+    const nl = { ...manifest.nameLocalized };
+    if (typeof pack.name === 'string' && pack.name.length > 0) {
+      nl.en = pack.name;
+    }
+    out.nameLocalized = nl;
+  }
+  if (
+    manifest &&
+    manifest.descriptionLocalized &&
+    typeof manifest.descriptionLocalized === 'object' &&
+    !Array.isArray(manifest.descriptionLocalized)
+  ) {
+    const dl = { ...manifest.descriptionLocalized };
+    if (typeof pack.description === 'string' && pack.description.length > 0) {
+      dl.en = pack.description;
+    }
+    out.descriptionLocalized = dl;
+  }
+  return out;
 }
 
 function ensureDir(dir) {
@@ -171,10 +242,13 @@ function buildPages(outputDir) {
   console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
 
-  // Load data
+  // Load data. Each pack carries its English `name` / `description`
+  // from packs.json plus optional `nameLocalized` / `descriptionLocalized`
+  // maps merged from its manifest.json (see `readManifestLocalized`).
   const packsData = readData('packs').map((pack) => ({
     ...pack,
     version: readManifestVersion(pack),
+    ...readManifestLocalized(pack),
   }));
   const isListed = (pack) => pack.listed !== false;
   // webListed lets us hide platform-duplicate or legacy-pinned catalog
@@ -263,9 +337,13 @@ function buildPages(outputDir) {
     return {
       id: pack.id,
       name: pack.name,
+      ...(pack.nameLocalized ? { nameLocalized: pack.nameLocalized } : {}),
       version: pack.version,
       manifestUrl: manifestUrl,
       description: pack.description,
+      ...(pack.descriptionLocalized
+        ? { descriptionLocalized: pack.descriptionLocalized }
+        : {}),
       imageUrl: imageUrl,
       purchase: { type: "free", priceLabel: "Free" }
     };
@@ -289,12 +367,16 @@ function buildPages(outputDir) {
     return {
       id: pack.id,
       name: pack.name,
+      ...(pack.nameLocalized ? { nameLocalized: pack.nameLocalized } : {}),
       version: pack.version,
       manifestUrl: manifestUrl,
       zipUrl: zipUrl,
       description: pack.description,
+      ...(pack.descriptionLocalized
+        ? { descriptionLocalized: pack.descriptionLocalized }
+        : {}),
       imageUrl: imageUrl,
-      purchase: { type: "free", priceLabel: "Free" },
+      purchase: pack.purchase || { type: "free", priceLabel: "Free" },
       minAppVersion: pack.minAppVersion || "0.9.0",
       ...(pack.maxAppVersion ? { maxAppVersion: pack.maxAppVersion } : {}),
       channel: pack.channel || "stable",
@@ -303,12 +385,57 @@ function buildPages(outputDir) {
         ? { platforms: pack.platforms }
         : {}),
       ...(pack.minOSVersion ? { minOSVersion: pack.minOSVersion } : {}),
+      // Optional phrase-pack-specific fields. Surface only when defined on
+      // the pack entry — keeps the catalog tight for game/reader/narration
+      // packs that don't use them. See PHRASE_PACK_AUTHORING.md.
+      ...(Array.isArray(pack.tags) && pack.tags.length > 0
+        ? { tags: pack.tags }
+        : {}),
+      ...(typeof pack.sizeMb === 'number' ? { sizeMb: pack.sizeMb } : {}),
+      ...(pack.category ? { category: pack.category } : {}),
+      ...(pack.topic ? { topic: pack.topic } : {}),
+      ...(pack.levelMin ? { levelMin: pack.levelMin } : {}),
+      ...(pack.levelMax ? { levelMax: pack.levelMax } : {}),
+      ...(typeof pack.entryCount === 'number'
+        ? { entryCount: pack.entryCount }
+        : {}),
+      ...(typeof pack.languageCount === 'number'
+        ? { languageCount: pack.languageCount }
+        : {}),
     };
   });
+  // Catalog-level curation for phrase packs (optional file). Lets the
+  // publishing agent re-order the onboarding starter set and rebrand
+  // browser groupings without touching packs.json or the app.
+  const phrasePackConfig = readDataOptional('phrasePackConfig');
+  const onboardingStarterPackIds = Array.isArray(
+    phrasePackConfig?.onboardingStarterPackIds,
+  )
+    ? phrasePackConfig.onboardingStarterPackIds.filter(
+        (id) => typeof id === 'string' && id.length > 0,
+      )
+    : undefined;
+  const phrasePackGroups = Array.isArray(phrasePackConfig?.phrasePackGroups)
+    ? phrasePackConfig.phrasePackGroups
+        .filter((g) => g && typeof g === 'object' && typeof g.id === 'string' && typeof g.label === 'string' && Array.isArray(g.packIds))
+        .map((g) => ({
+          id: g.id,
+          label: g.label,
+          ...(typeof g.description === 'string' ? { description: g.description } : {}),
+          packIds: g.packIds.filter((id) => typeof id === 'string' && id.length > 0),
+        }))
+        .filter((g) => g.packIds.length > 0)
+    : undefined;
   const catalogV3 = {
     version: 3,
     generatedAt: new Date().toISOString(),
     packs: catalogV3Packs,
+    ...(onboardingStarterPackIds && onboardingStarterPackIds.length > 0
+      ? { onboardingStarterPackIds }
+      : {}),
+    ...(phrasePackGroups && phrasePackGroups.length > 0
+      ? { phrasePackGroups }
+      : {}),
   };
   const catalogV3Path = path.join(outputRoot, 'corpan', 'packs', 'catalog-v3.json');
   fs.writeFileSync(catalogV3Path, JSON.stringify(catalogV3, null, 2));

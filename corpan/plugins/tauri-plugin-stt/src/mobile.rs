@@ -1,6 +1,6 @@
 use crate::models::{
     CancelSessionArgs, PrepareArgs, PrepareResult, StartSessionArgs, StartSessionResult,
-    StatusResult, StopSessionArgs, TranscriptionResult, WhisperParams,
+    ScoringParams, StatusResult, StopSessionArgs, TranscriptionResult, WhisperParams,
 };
 use serde::de::DeserializeOwned;
 use tauri::{
@@ -43,12 +43,14 @@ impl<R: Runtime> Stt<R> {
         language: String,
         expected_text: String,
         whisper_params: Option<WhisperParams>,
+        scoring_params: Option<ScoringParams>,
     ) -> crate::Result<StartSessionResult> {
         let args = StartSessionArgs {
             session_id,
             language,
             expected_text,
             whisper_params,
+            scoring_params,
         };
         self.handle
             .run_mobile_plugin::<StartSessionResult>("startSession", Some(args))

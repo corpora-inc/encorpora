@@ -99,7 +99,31 @@
     "theme": "テーマ",
     "themeLight": "ライト",
     "themeDark": "ダーク",
-    "themeSystem": "システム"
+    "themeSystem": "システム",
+    "phrasePacks": {
+      "header": "フレーズパック",
+      "baseCorpusName": "基本コーパス",
+      "emptyHint": "「パック」タブからパックを追加してください。",
+      "browseAll": "パックを見る",
+      "searchPlaceholder": "パックを検索…",
+      "filter": {
+        "all": "すべて",
+        "active": "有効",
+        "inactive": "無効"
+      },
+      "selectAllVisible": "すべて選択",
+      "deselectAllVisible": "クリア",
+      "activateGroup": "すべて有効化",
+      "deactivateGroup": "すべて無効化",
+      "uncategorized": "その他",
+      "noMatches": "該当なし。",
+      "noFiltered": "今ここには何もありません。",
+      "stackTotalPhrases": "~{{count}} 件のフレーズが一致",
+      "stackTotalNudge": "バリエーションのためにパックを追加するか、レベルを広げましょう。"
+    },
+    "sendAnonUsage": "匿名の利用データを送信",
+    "sendAnonUsageHint": "匿名で、セッション単位のデータです。アカウント不要、デバイスIDなし、IPの保存なし。いつでもオフにできます。",
+    "readPrivacyPromise": "プライバシーに関する約束を読む"
   },
   "onboarding": {
     "welcome": "ようこそ",
@@ -185,7 +209,27 @@
         "disabledUntilUsed": "使用するまで無効",
         "notInstalled": "未インストール"
       }
-    }
+    },
+    "packs": "フレーズパック",
+    "phrasePacks": {
+      "title": "フレーズパック",
+      "stepTitle": "フレーズパック",
+      "hero": "テーマを選ぼう",
+      "loading": "読み込み中…",
+      "selectAll": "すべて選択 ({{count}})",
+      "clearAll": "クリア",
+      "subscriptionNudge": "サブスクで全パックを開放できます。",
+      "entryCount": "{{n}}フレーズ",
+      "paid": "有料",
+      "emptyHero": "まだパックはありません。",
+      "emptySub": "また見にきてください。",
+      "offlineHero": "オフラインです。",
+      "offlineSub": "パックにはインターネットが必要です — 後で「設定 → パック」からどうぞ。",
+      "offlineBanner": "オフライン — 接続後に選択分をインストールします。"
+    },
+    "notOnAppleIOS": "iOSではない場合",
+    "appleNoVoiceTitle": "Apple ではまだ {{lang}} の音声が提供されていません",
+    "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。"
   },
   "socials": {
     "youtube": {
@@ -215,7 +259,8 @@
     "cancel": "キャンセル",
     "delete": "削除",
     "create": "作成",
-    "dismiss": "閉じる"
+    "dismiss": "閉じる",
+    "skip": "スキップ"
   },
   "dialects": {
     "en": "英語",
@@ -401,7 +446,42 @@
     "purchasing": "購入中...",
     "buy": "{{price}}で購入",
     "premium": "プレミアム",
-    "availableOnMobile": "iOSとAndroidで利用可能"
+    "availableOnMobile": "iOSとAndroidで利用可能",
+    "checking": "確認中…",
+    "phrasePack": {
+      "sectionTitle": "フレーズパック",
+      "offlineEmpty": "オフラインです。接続して閲覧してください。",
+      "searchPlaceholder": "検索…",
+      "noMatches": "該当なし。",
+      "filter": {
+        "all": "すべて",
+        "free": "無料",
+        "paid": "有料",
+        "installed": "インストール済み"
+      },
+      "activeInStack": "使用中",
+      "activeBadge": "使用中",
+      "subBadge": "サブスク",
+      "paid": "有料",
+      "free": "無料",
+      "unlockSub": "サブスクで開放",
+      "entryCount": "{{n}}フレーズ",
+      "allInstalled": {
+        "title": "すべてのフレーズパックがそろっています。",
+        "subtitle": "新しいトピックは随時追加されます — いつでも見に来てください。",
+        "manageCta": "Stacks で管理"
+      },
+      "filterEmpty": {
+        "installed": "まだ何もインストールされていません。",
+        "cta": "すべて表示"
+      },
+      "showAll": "すべて表示 ({{count}})",
+      "collapseList": "折りたたむ",
+      "openDrawer": "フレーズパックを見る ({{count}})",
+      "openDrawerLabel": "フレーズパックを見る",
+      "inactiveBadge": "非アクティブ",
+      "moreActionsLabel": "その他の操作"
+    }
   },
   "subscription": {
     "title": "すべてを解除",
@@ -417,7 +497,11 @@
     "privacyPolicy": "プライバシーポリシー",
     "autoRenewNotice": "サブスクリプションは自動更新されます。{{store}} アカウントからいつでもキャンセルできます。",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "承認待ち",
+    "pendingDetail": "ご利用中のサブスクリプションは承認待ちです（Ask to Buy または銀行認証）。承認されると自動的に有効になります。",
+    "storeUnreachable": "現在、App Store に接続できませんでした。",
+    "tryAgain": "再試行"
   },
   "restore": {
     "button": "購入を復元",

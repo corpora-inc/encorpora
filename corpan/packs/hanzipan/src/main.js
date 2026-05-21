@@ -764,7 +764,11 @@ import "./styles.css"
             }
             loadViaScript();
           })
-          .catch(() => {
+          .catch((err) => {
+            console.warn(
+              "[hanzipan] inline Tauri load failed, falling back to <script>:",
+              err,
+            );
             loadViaScript();
           });
         return;

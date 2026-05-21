@@ -15,6 +15,8 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
+import { usePhrasePacksStore } from "@/store/phrasePacks";
+import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
 import {
@@ -38,6 +40,8 @@ type EntryOut = {
     level: string;
     domains: string[];
     translations: TranslationOut[];
+    /** "base" for the bundled corpus, or a phrase-pack id. */
+    source: string;
 };
 
 /* ------------------------------ Helpers -------------------------------- */
@@ -68,7 +72,28 @@ function pickRom(map: Record<string, string | undefined>, uiCode: string): strin
 /* --------------------------- UI subcomponents -------------------------- */
 
 function MetaChips({ entry }: { entry: EntryOut }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    // Phrase-pack entries carry no `domains` (that axis only exists in the
+    // bundled corpus). For them we render the pack's topic + accent color
+    // in the same chip slot so the user always sees what corpus the phrase
+    // came from. Source-by-source lookup against the global installed-pack
+    // registry — reactive, so a freshly-installed pack's name lands without
+    // a full re-render of the main loop.
+    const pack = usePhrasePacksStore((s) =>
+        entry.source && entry.source !== "base"
+            ? s.installed[entry.source]
+            : undefined,
+    );
+    const lang = i18n.language || "en";
+    const localizedTopic = pack
+        ? resolveLocalized(pack.topicLocalized, pack.topic ?? "", lang)
+        : "";
+    const localizedName = pack
+        ? resolveLocalized(pack.nameLocalized, pack.name, lang)
+        : "";
+    const packLabel = pack
+        ? (localizedTopic || localizedName || entry.source)
+        : undefined;
     return (
         <div
             data-meta-chips
@@ -84,6 +109,18 @@ function MetaChips({ entry }: { entry: EntryOut }) {
                         {t(`categories.${d}` as any, { defaultValue: d })}
                     </span>
                 ))}
+                {packLabel && (
+                    <span
+                        // Pack chips use the app's accent purple uniformly so
+                        // every-tap-different colors don't strobe the chrome.
+                        // The pack's own `accent_color` is reserved for the
+                        // pack picker / catalog UI where it gets to breathe.
+                        className="px-2 py-0.5 rounded-md border border-purple-400/60 bg-purple-500/[0.08] text-purple-500 text-xs"
+                        title={localizedName || pack?.name}
+                    >
+                        {packLabel}
+                    </span>
+                )}
             </div>
         </div>
     );
@@ -199,8 +236,14 @@ export function MainExperience() {
     // Settings
     const activeStackId = useSettingsStore((s) => s.activeStackId);
     const languages = useSettingsStore((s) => s.languages);
-    const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
+    // `domains` is no longer a user-facing filter (0.15.1) — phrase
+    // packs supersede the base-corpus domain axis. The store field
+    // stays (persisted state compat) but we don't forward it to the
+    // sampler; sampling sees "all domains" implicitly. Entries still
+    // carry their `entry.domains` chips for display.
+    const phrasePackIds = useSettingsStore((s) => s.phrasePackIds);
+    const baseCorpusEnabled = useSettingsStore((s) => s.baseCorpusEnabled);
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
@@ -211,6 +254,7 @@ export function MainExperience() {
     // History
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
     const ids = activeHistory?.ids ?? [];
+    const sources = activeHistory?.sources ?? [];
     const index = activeHistory?.index ?? -1;
 
     const pushEntry = useHistoryStore((s) => s.pushEntry);
@@ -239,39 +283,115 @@ export function MainExperience() {
 
     // --- DB fetchers -----------------------------------------------------------
 
-    const resolveCurrent = useCallback(async (entry_id: number) => {
-        const mySeq = ++fetchSeqRef.current;
-        try {
-            const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id });
-            if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
-        } catch (err) {
-            // Gaslight: history references an entry that's been pruned from the bundled corpus.
-            // Substitute a same-filter random entry and rewrite the history slot in place.
-            const msg = typeof err === "string" ? err : (err as Error)?.message || "";
-            if (!/Entry not found/i.test(msg)) throw err;
-            console.warn(`history entry ${entry_id} missing; substituting`);
-            const sub = await invoke<EntryOut>("get_random_entry_with_translations", {
-                levels,
-                domains,
-            });
-            if (sub && mySeq === fetchSeqRef.current) {
-                replaceCurrent(sub.entry_id);
-                setCurrEntry(sub);
+    const resolveCurrent = useCallback(
+        async (entry_id: number, source: string = "base") => {
+            const mySeq = ++fetchSeqRef.current;
+            try {
+                const entry = await invoke<EntryOut>(
+                    "get_entry_by_id_with_translations",
+                    { entryId: entry_id, source },
+                );
+                if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
+            } catch (err) {
+                // Gaslight: history references an entry that's been pruned
+                // from the bundled corpus, or whose pack has been
+                // uninstalled, or whose pack id is no longer in the active
+                // set. Substitute a same-filter random entry and rewrite the
+                // history slot in place.
+                const msg =
+                    typeof err === "string" ? err : (err as Error)?.message || "";
+                const isMissing =
+                    /Entry not found/i.test(msg) ||
+                    /Pack not installed/i.test(msg) ||
+                    /Pack id mismatch/i.test(msg) ||
+                    /entry .* not found/i.test(msg);
+                if (!isMissing) throw err;
+                console.warn(
+                    `[history] ${source}:${entry_id} lookup failed → substituting. raw error:`,
+                    msg,
+                );
+                if (!baseCorpusEnabled && phrasePackIds.length === 0) {
+                    useSettingsStore.getState().setBaseCorpusEnabled(true);
+                    return;
+                }
+                try {
+                    const sub = await invoke<EntryOut>(
+                        "get_random_entry_with_translations",
+                        {
+                            levels,
+                            phrasePackIds,
+                            baseCorpusEnabled,
+                            // Anti-repetition: avoid the last 10 entries
+                            // when sampling a substitute. Rust falls
+                            // through to no-exclude if the pool is too
+                            // thin, so this is purely a "feels-good"
+                            // signal.
+                            exclude: useHistoryStore
+                                .getState()
+                                .getRecentTuples(10),
+                        },
+                    );
+                    if (sub && mySeq === fetchSeqRef.current) {
+                        replaceCurrent(sub.entry_id, sub.source);
+                        setCurrEntry(sub);
+                    }
+                } catch (subErr) {
+                    const subMsg =
+                        typeof subErr === "string"
+                            ? subErr
+                            : (subErr as Error)?.message || "";
+                    if (/No active sources/i.test(subMsg)) {
+                        useSettingsStore.getState().setBaseCorpusEnabled(true);
+                        return;
+                    }
+                    throw subErr;
+                }
             }
-        }
-    }, [levels, domains, replaceCurrent]);
+        },
+        [levels, phrasePackIds, baseCorpusEnabled, replaceCurrent],
+    );
 
     const fetchRandomEntry = useCallback(async () => {
-        const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
-            levels,
-            domains,
-        });
-        if (!entry) return;
-
-        pushEntry(entry.entry_id);
-        setCurrEntry(entry);
-        incrementUtteranceCount();
-    }, [levels, domains, pushEntry, incrementUtteranceCount]);
+        // Belt-and-suspenders: if a user's persisted stack somehow has both
+        // base off and zero active phrase packs (older settings, race
+        // during a v3 migration, etc.), Rust returns "No active sources".
+        // The PhrasePackToggleSection UI prevents getting INTO this state,
+        // but if we DO land in it, recover quietly by re-enabling base
+        // rather than throwing an uncaught rejection up the React tree.
+        if (!baseCorpusEnabled && phrasePackIds.length === 0) {
+            useSettingsStore.getState().setBaseCorpusEnabled(true);
+            return;
+        }
+        try {
+            const entry = await invoke<EntryOut>(
+                "get_random_entry_with_translations",
+                {
+                    levels,
+                    phrasePackIds,
+                    baseCorpusEnabled,
+                    // Anti-repetition: tell Rust to avoid the last 10
+                    // (source, entry_id) tuples we've handed the user.
+                    // Rust falls through to no-exclude if the resulting
+                    // pool would be empty across every relaxed filter
+                    // tier — so this never wedges the loop.
+                    exclude: useHistoryStore.getState().getRecentTuples(10),
+                },
+            );
+            if (!entry) return;
+            pushEntry(entry.entry_id, entry.source);
+            setCurrEntry(entry);
+            incrementUtteranceCount();
+        } catch (err) {
+            const msg = typeof err === "string" ? err : (err as Error)?.message || "";
+            if (/No active sources/i.test(msg)) {
+                // Same recovery: silently re-enable base so the main loop
+                // doesn't end up in a permanent error state.
+                useSettingsStore.getState().setBaseCorpusEnabled(true);
+                return;
+            }
+            throw err;
+        }
+    }, [levels, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
 
     // --- Effects ---------------------------------------------------------------
 
@@ -281,7 +401,7 @@ export function MainExperience() {
         if (ids.length === 0) {
             void fetchRandomEntry();
         } else if (index >= 0 && index < ids.length) {
-            void resolveCurrent(ids[index]);
+            void resolveCurrent(ids[index], sources[index] ?? "base");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStackId]);
@@ -289,7 +409,7 @@ export function MainExperience() {
     // Re-fetch same entry when language list changes
     useEffect(() => {
         if (index >= 0 && index < ids.length) {
-            void resolveCurrent(ids[index]);
+            void resolveCurrent(ids[index], sources[index] ?? "base");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [languages]);
@@ -379,7 +499,7 @@ export function MainExperience() {
         const target = ids[index - 1];
         if (typeof target !== "number") return;
         setIndex(index - 1);
-        void resolveCurrent(target);
+        void resolveCurrent(target, sources[index - 1] ?? "base");
     };
 
     const handleNext = () => {
@@ -387,7 +507,7 @@ export function MainExperience() {
             const target = ids[index + 1];
             if (typeof target !== "number") return;
             setIndex(index + 1);
-            void resolveCurrent(target);
+            void resolveCurrent(target, sources[index + 1] ?? "base");
             return;
         }
         void fetchRandomEntry();

@@ -99,7 +99,31 @@
     "theme": "Θέμα",
     "themeLight": "Φωτεινό",
     "themeSystem": "Σύστημα",
-    "themeDark": "Σκοτεινό"
+    "themeDark": "Σκοτεινό",
+    "phrasePacks": {
+      "header": "Πακέτα φράσεων",
+      "baseCorpusName": "Βασικό σώμα",
+      "emptyHint": "Πρόσθεσε πακέτα από την καρτέλα Πακέτα.",
+      "browseAll": "Περιήγηση πακέτων",
+      "searchPlaceholder": "Αναζήτηση πακέτων…",
+      "filter": {
+        "all": "Όλα",
+        "active": "Ενεργά",
+        "inactive": "Ανενεργά"
+      },
+      "selectAllVisible": "Επιλογή όλων",
+      "deselectAllVisible": "Καθαρισμός",
+      "activateGroup": "Ενεργοποίηση όλων",
+      "deactivateGroup": "Απενεργοποίηση όλων",
+      "uncategorized": "Άλλα",
+      "noMatches": "Κανένα αποτέλεσμα.",
+      "noFiltered": "Τίποτα εδώ τώρα.",
+      "stackTotalPhrases": "~{{count}} φράσεις ταιριάζουν",
+      "stackTotalNudge": "Πρόσθεσε πακέτα ή διεύρυνε τα επίπεδα για ποικιλία."
+    },
+    "sendAnonUsage": "Αποστολή ανώνυμων δεδομένων χρήσης",
+    "sendAnonUsageHint": "Ανώνυμα, μόνο για τη διάρκεια της συνεδρίας. Χωρίς λογαριασμούς, χωρίς αναγνωριστικά συσκευής, χωρίς αποθήκευση IP. Απενεργοποιήστε το όποτε θέλετε.",
+    "readPrivacyPromise": "Διαβάστε τη δέσμευσή μας για το απόρρητο"
   },
   "onboarding": {
     "welcome": "Καλώς ήρθατε",
@@ -185,7 +209,27 @@
         "disabledUntilUsed": "Απενεργοποιημένο μέχρι τη χρήση",
         "notInstalled": "Δεν είναι εγκατεστημένο"
       }
-    }
+    },
+    "packs": "Πακέτα φράσεων",
+    "phrasePacks": {
+      "title": "Πακέτα φράσεων",
+      "stepTitle": "Πακέτα φράσεων",
+      "hero": "Διάλεξε θέματα",
+      "loading": "Φόρτωση…",
+      "selectAll": "Επιλογή όλων ({{count}})",
+      "clearAll": "Καθαρισμός",
+      "subscriptionNudge": "Κάνε συνδρομή για να ξεκλειδώσεις όλα τα πακέτα.",
+      "entryCount": "{{n}} φράσεις",
+      "paid": "Επί πληρωμή",
+      "emptyHero": "Δεν υπάρχουν ακόμη πακέτα.",
+      "emptySub": "Έλα ξανά σύντομα.",
+      "offlineHero": "Είσαι εκτός σύνδεσης.",
+      "offlineSub": "Τα πακέτα χρειάζονται διαδίκτυο — δοκίμασε αργότερα από Ρυθμίσεις → Πακέτα.",
+      "offlineBanner": "Εκτός σύνδεσης — η επιλογή εγκαθίσταται όταν συνδεθείς."
+    },
+    "notOnAppleIOS": "Όχι σε iOS",
+    "appleNoVoiceTitle": "Η Apple δεν προσφέρει ακόμη φωνή για τα {{lang}}",
+    "appleNoVoiceBody": "Μια σύντομη σημείωση προς την ομάδα προσβασιμότητας της Apple βοηθά να ενισχυθεί το αίτημα. Στο μεταξύ, τα {{lang}} λειτουργούν εγγενώς στο Android."
   },
   "socials": {
     "youtube": {
@@ -215,7 +259,8 @@
     "cancel": "Ακύρωση",
     "delete": "Διαγραφή",
     "create": "Δημιουργία",
-    "dismiss": "Απόρριψη"
+    "dismiss": "Απόρριψη",
+    "skip": "Παράλειψη"
   },
   "dialects": {
     "en": "Αγγλικά",
@@ -401,7 +446,42 @@
     "purchasing": "Γίνεται αγορά...",
     "buy": "Αγορά {{price}}",
     "premium": "Premium",
-    "availableOnMobile": "Διαθέσιμο σε iOS & Android"
+    "availableOnMobile": "Διαθέσιμο σε iOS & Android",
+    "checking": "Έλεγχος…",
+    "phrasePack": {
+      "sectionTitle": "Πακέτα φράσεων",
+      "offlineEmpty": "Είσαι εκτός σύνδεσης. Συνδέσου για περιήγηση.",
+      "searchPlaceholder": "Αναζήτηση…",
+      "noMatches": "Κανένα αποτέλεσμα.",
+      "filter": {
+        "all": "Όλα",
+        "free": "Δωρεάν",
+        "paid": "Επί πληρωμή",
+        "installed": "Εγκατεστημένο"
+      },
+      "activeInStack": "Ενεργό",
+      "activeBadge": "Ενεργό",
+      "subBadge": "Συνδρομή",
+      "paid": "Επί πληρωμή",
+      "free": "Δωρεάν",
+      "unlockSub": "Ξεκλείδωμα με συνδρομή",
+      "entryCount": "{{n}} φράσεις",
+      "allInstalled": {
+        "title": "Έχεις όλα τα πακέτα φράσεων.",
+        "subtitle": "Νέα θέματα κυκλοφορούν τακτικά — έλα ξανά όποτε θες.",
+        "manageCta": "Διαχείριση στο Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Δεν έχει εγκατασταθεί τίποτα ακόμα.",
+        "cta": "Εμφάνιση όλων"
+      },
+      "showAll": "Εμφάνιση όλων ({{count}})",
+      "collapseList": "Εμφάνιση λιγότερων",
+      "openDrawer": "Περιήγηση πακέτων φράσεων ({{count}})",
+      "openDrawerLabel": "Περιήγηση πακέτων φράσεων",
+      "inactiveBadge": "Ανενεργό",
+      "moreActionsLabel": "Περισσότερες ενέργειες"
+    }
   },
   "subscription": {
     "title": "Ξεκλειδώστε τα πάντα",
@@ -417,7 +497,11 @@
     "privacyPolicy": "Πολιτική Απορρήτου",
     "autoRenewNotice": "Οι συνδρομές ανανεώνονται αυτόματα. Ακυρώστε ανά πάσα στιγμή στον λογαριασμό σας {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Αναμονή έγκρισης",
+    "pendingDetail": "Η συνδρομή σας περιμένει έγκριση (Ask to Buy ή επαλήθευση από την τράπεζα). Θα ενεργοποιηθεί αυτόματα μόλις εγκριθεί.",
+    "storeUnreachable": "Δεν μπορέσαμε να συνδεθούμε με το App Store αυτή τη στιγμή.",
+    "tryAgain": "Δοκιμάστε ξανά"
   },
   "restore": {
     "button": "Επαναφορά αγορών",

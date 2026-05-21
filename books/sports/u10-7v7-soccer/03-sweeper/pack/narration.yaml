@@ -27,7 +27,7 @@ filter_chain:
   alimiter:
     enabled: true
     level: false
-    limit: 0.708
+    limit: 0.8913
   highpass:
     enabled: true
     frequency: 80
@@ -37,8 +37,8 @@ mastering:
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
 overrides:
   ch01-010:
     tts:
@@ -293,7 +293,7 @@ validation:
     nl: 5.0
     sv: 5.0
     da: 5.0
-    "no": 5.0
+    'no': 5.0
     fi: 5.0
     pl: 5.0
     tr: 5.0
@@ -318,7 +318,7 @@ validation:
     nl: 0.12
     sv: 0.12
     da: 0.12
-    "no": 0.12
+    'no': 0.12
     fi: 0.12
     pl: 0.12
     tr: 0.12
@@ -331,7 +331,7 @@ validation:
     hi: 0.15
     zh: 0.25
     ja: 0.25
-    ko: 0.20
+    ko: 0.2
   max_stacked_words: 3
   max_trailing_silence_ratio: 0.25
   min_sec_per_char:
@@ -344,7 +344,7 @@ validation:
     nl: 0.02
     sv: 0.02
     da: 0.02
-    "no": 0.02
+    'no': 0.02
     fi: 0.02
     pl: 0.02
     tr: 0.02
@@ -371,7 +371,7 @@ voices:
   nl: ian-new-narration-try-more-chill-clear.wav
   sv: ian-new-narration-try-more-chill-clear.wav
   da: ian-new-narration-try-more-chill-clear.wav
-  "no": ian-new-narration-try-more-chill-clear.wav
+  'no': ian-new-narration-try-more-chill-clear.wav
   fi: ian-new-narration-try-more-chill-clear.wav
   pl: ian-new-narration-try-more-chill-clear.wav
   tr: ian-new-narration-try-more-chill-clear.wav
