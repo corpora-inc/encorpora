@@ -22,7 +22,7 @@ They give you high-fives.
 
 I have hit one home run in my life.
 
-One.
+Just one.
 
 I still think about it.
 

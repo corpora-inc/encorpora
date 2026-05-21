@@ -4107,10 +4107,10 @@
       "paragraph_id": "p259",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "One.",
-      "text_markdown": "One.",
+      "text": "Just one.",
+      "text_markdown": "Just one.",
       "tts": {
-        "text": "One.",
+        "text": "Just one.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
