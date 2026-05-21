@@ -45,10 +45,6 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playheadStep, setPlayheadStep] = useState<number>(-1)
   const [sampleLoaded, setSampleLoaded] = useState(false)
-  const [debugUrl, setDebugUrl] = useState<string | null>(null)
-  const [debugEffective, setDebugEffective] = useState<string | null>(null)
-  const [debugVia, setDebugVia] = useState<string | null>(null)
-  const [debugError, setDebugError] = useState<string | null>(null)
 
   useEffect(() => {
     const engine = createAudioEngine()
@@ -75,10 +71,6 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     const { voice, word } = project.voicePad
     const sample = findSample(voice, word)
     const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
-    setDebugUrl(url)
-    setDebugEffective(null)
-    setDebugVia(null)
-    setDebugError(null)
 
     blobDisposeRef.current?.()
     blobDisposeRef.current = null
@@ -98,18 +90,13 @@ export const App = ({ hostApi: _hostApi }: Props) => {
           return
         }
         blobDisposeRef.current = resolved.dispose
-        setDebugEffective(resolved.effective)
-        setDebugVia(
-          resolved.bytes != null ? `${resolved.via} (${resolved.bytes}B)` : resolved.via
-        )
-        const result = await engineRef.current!.voicePad.loadSample(resolved.effective)
+        await engineRef.current!.voicePad.loadSample(resolved.effective)
         if (cancelled) return
         setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
-        setDebugError(result.ok ? null : (result.error ?? "unknown error"))
       } catch (err) {
         if (cancelled) return
         setSampleLoaded(false)
-        setDebugError(err instanceof Error ? err.message : String(err))
+        console.warn("[melopan] voice sample load failed:", err)
       }
     })()
 
@@ -177,27 +164,6 @@ export const App = ({ hostApi: _hostApi }: Props) => {
         <span>·</span>
         <span>{project.lengthSteps} steps</span>
         <span className="mp-build">melopan v{manifest.version}</span>
-      </div>
-      <div
-        style={{
-          fontSize: 10,
-          lineHeight: 1.3,
-          padding: "6px 10px",
-          background: "rgba(0,0,0,0.55)",
-          color: "#9be59b",
-          fontFamily: "ui-monospace, SFMono-Regular, monospace",
-          wordBreak: "break-all",
-          borderTop: "1px solid rgba(255,255,255,0.1)",
-        }}
-      >
-        <div>base: {PACK_BASE_URL || "(empty)"}</div>
-        <div>url:  {debugUrl || "(none)"}</div>
-        <div>eff:  {debugEffective || "(none)"}</div>
-        <div>via:  {debugVia || "(pending)"}</div>
-        <div style={{ color: debugError ? "#ff8a8a" : "#9be59b" }}>
-          loaded: {sampleLoaded ? "yes" : "no"}
-          {debugError ? `  err: ${debugError}` : ""}
-        </div>
       </div>
     </div>
   )

@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-05-21
+
+### Removed
+- On-screen debug strip (added in v0.1.3 to diagnose voice load
+  failure). Voice playback confirmed working on iOS via the
+  `__TAURI_INTERNALS__.invoke` + Blob URL path; the diagnostic is no
+  longer needed.
+
 ## [0.1.5] - 2026-05-21
 
 ### Fixed
