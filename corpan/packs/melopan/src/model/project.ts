@@ -120,7 +120,7 @@ export const createDefaultProject = (): Project => {
  * harvested from existing corpan voice renders. Each sample is a single
  * vocal word in a specific language, by one of the corpan voice clones.
  *
- * Extend by dropping more samples into public/voice-kit/{voice}/{word}.ogg
+ * Extend by dropping more samples into public/voice-kit/{voice}/{word}.wav
  * and adding rows here.
  */
 export type KitSample = {
@@ -138,19 +138,19 @@ export type KitSample = {
 }
 
 export const KIT_SAMPLES: readonly KitSample[] = [
-  { voice: "flo",    word: "letsgo", language: "en", gloss: "let's go",      file: "flo/letsgo.ogg", category: "action" },
-  { voice: "flo",    word: "vamos",  language: "es", gloss: "let's go",      file: "flo/vamos.ogg",  category: "action" },
-  { voice: "ian",    word: "vamos",  language: "es", gloss: "let's go",      file: "ian/vamos.ogg",  category: "action" },
-  { voice: "flo",    word: "dale",   language: "es", gloss: "go for it",     file: "flo/dale.ogg",   category: "action" },
-  { voice: "ian",    word: "dale",   language: "es", gloss: "go for it",     file: "ian/dale.ogg",   category: "action" },
-  { voice: "flo",    word: "bora",   language: "pt", gloss: "let's go",      file: "flo/bora.ogg",   category: "action" },
-  { voice: "karina", word: "allez",  language: "fr", gloss: "go (come on)",  file: "karina/allez.ogg", category: "action" },
-  { voice: "ian",    word: "los",    language: "de", gloss: "go",            file: "ian/los.ogg",    category: "action" },
-  { voice: "flo",    word: "hup",    language: "nl", gloss: "come on",       file: "flo/hup.ogg",    category: "action" },
-  { voice: "flo",    word: "heia",   language: "no", gloss: "cheer",         file: "flo/heia.ogg",   category: "action" },
-  { voice: "ian",    word: "twende", language: "sw", gloss: "let's go",      file: "ian/twende.ogg", category: "action" },
-  { voice: "amr",    word: "yalla",  language: "ar", gloss: "let's go",      file: "amr/yalla.ogg",  category: "action" },
-  { voice: "amr",    word: "hadi",   language: "ar", gloss: "come on",       file: "amr/hadi.ogg",   category: "action" },
+  { voice: "flo",    word: "letsgo", language: "en", gloss: "let's go",      file: "flo/letsgo.wav", category: "action" },
+  { voice: "flo",    word: "vamos",  language: "es", gloss: "let's go",      file: "flo/vamos.wav",  category: "action" },
+  { voice: "ian",    word: "vamos",  language: "es", gloss: "let's go",      file: "ian/vamos.wav",  category: "action" },
+  { voice: "flo",    word: "dale",   language: "es", gloss: "go for it",     file: "flo/dale.wav",   category: "action" },
+  { voice: "ian",    word: "dale",   language: "es", gloss: "go for it",     file: "ian/dale.wav",   category: "action" },
+  { voice: "flo",    word: "bora",   language: "pt", gloss: "let's go",      file: "flo/bora.wav",   category: "action" },
+  { voice: "karina", word: "allez",  language: "fr", gloss: "go (come on)",  file: "karina/allez.wav", category: "action" },
+  { voice: "ian",    word: "los",    language: "de", gloss: "go",            file: "ian/los.wav",    category: "action" },
+  { voice: "flo",    word: "hup",    language: "nl", gloss: "come on",       file: "flo/hup.wav",    category: "action" },
+  { voice: "flo",    word: "heia",   language: "no", gloss: "cheer",         file: "flo/heia.wav",   category: "action" },
+  { voice: "ian",    word: "twende", language: "sw", gloss: "let's go",      file: "ian/twende.wav", category: "action" },
+  { voice: "amr",    word: "yalla",  language: "ar", gloss: "let's go",      file: "amr/yalla.wav",  category: "action" },
+  { voice: "amr",    word: "hadi",   language: "ar", gloss: "come on",       file: "amr/hadi.wav",   category: "action" },
 ] as const
 
 export const KIT_CATEGORIES: { id: string; label: string }[] = [

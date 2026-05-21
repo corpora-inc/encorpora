@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-20
+
+### Changed
+- Voice kit shipped as 16-bit PCM WAV at 24 kHz mono (down from Opus-in-OGG,
+  which iOS < 17 WebKit cannot decode). Total kit ~500 KB; final zip ~1 MB.
+
+## [0.1.0] - 2026-05-20
+
 ### Added
 - Initial scaffold (React + TypeScript + Vite + Tone.js).
 - Transport bar: BPM, time signature, play/stop, master volume.
