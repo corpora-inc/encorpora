@@ -242,6 +242,14 @@ def build_pack(
         ("minAppVersion", "min_app_version"),
         ("channel", "channel"),
         ("iconUrl", "icon_url"),
+        # Localized metadata maps (Corpán-app 0.15.3+). Snake-case in
+        # pack.json, camelCase in manifest. The resolver in
+        # phrasePackCatalog.ts :: resolveLocalized walks these maps
+        # with a 5-tier fallback (exact → base-lang → zh-script →
+        # en → bare field).
+        ("nameLocalized", "name_localized"),
+        ("descriptionLocalized", "description_localized"),
+        ("topicLocalized", "topic_localized"),
     ):
         if source_key in meta and meta[source_key] is not None:
             manifest[key] = meta[source_key]
