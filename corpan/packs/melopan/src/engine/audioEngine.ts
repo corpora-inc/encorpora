@@ -3,7 +3,7 @@ import { createDrumKit, type DrumKit } from "./drumSynths"
 import { createVoicePad, type VoicePad } from "./voicePad"
 import { createSynthVoice, type SynthVoice } from "./synthVoice"
 import type { Project, TrackId, VoiceTrackId } from "../model/project"
-import { PIANO_ROLL_PITCHES } from "../model/project"
+import { PIANO_ROLL_PITCHES, intervalForSteps } from "../model/project"
 
 export type AudioEngine = {
   start: () => Promise<void>
@@ -113,6 +113,10 @@ export const createAudioEngine = (): AudioEngine => {
     project = next
     Tone.Transport.bpm.value = next.bpm
     masterVol.volume.value = Tone.gainToDb(Math.max(0.0001, Math.min(1, next.masterVolume)))
+    // The step grid resolution depends on lengthSteps × timeSignature;
+    // recompute the loop interval so each step is one subdivision.
+    const [top, bottom] = next.timeSignature
+    loop.interval = intervalForSteps(top, bottom, next.lengthSteps)
     // Sync per-voice-track pitch every time the project changes.
     for (const t of next.tracks) {
       if (t.kind === "voice") {

@@ -10,6 +10,36 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-21
+
+### Fixed
+- **Hi-hat is now actually audible.** The MetalSynth-based hat in v0.2.0
+  was still inaudible on phone speakers — high-Q metal partials are easy
+  to lose. Replaced with a filtered-noise burst (white noise → 4 kHz HPF
+  → 8.5 kHz bandpass) on a snappy AR envelope. Same pattern hover-runner
+  uses for hits; reliably cuts through.
+- **Cell rows no longer overlap the mute/volume slider.** At 5/4, 9/8,
+  and especially the new 11/8 / 13/8 sigs the cells were colliding with
+  the right-side controls. The row now lays out as a horizontal strip
+  with the track label `position: sticky; left: 0` and the
+  mute+volume column `position: sticky; right: 0`, while `.mp-grid-wrap`
+  takes the horizontal scroll. Same treatment on the piano roll (the
+  key label sticks left). Cells are a fixed 28 px each so the row width
+  scales linearly with step count.
+
+### Added
+- **Time signatures: 11/8, 13/8, 11/4, 13/4.** The "additive meters"
+  fit alongside the existing 3/4–9/8 set. Default step counts at 16ths:
+  11/8=22, 13/8=26, 11/4=44, 13/4=52.
+- **STEPS picker** next to SIG. Lets you double / quadruple the
+  subdivision independently of the time signature — 4/4 at 16 = sixteenth
+  notes, at 32 = thirty-seconds, at 64 = sixty-fourths. Options scale
+  per signature (3/4: 12/24/48, 6/8: 12/24/48, 11/4: 44, …) and are
+  capped at 96 cells to keep individual cells tappable on phone screens.
+- The engine's Loop interval now recomputes from `intervalForSteps`
+  whenever the project changes, so the playhead always covers exactly
+  one bar regardless of step count.
+
 ## [0.2.0] - 2026-05-21 — Melopán
 
 ### Added

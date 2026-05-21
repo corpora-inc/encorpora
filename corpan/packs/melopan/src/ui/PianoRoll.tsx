@@ -119,10 +119,7 @@ export const PianoRoll = ({ playheadStep, onPreviewNote }: Props) => {
               >
                 {label}
               </div>
-              <div
-                className="mp-piano-cells"
-                style={{ gridTemplateColumns: `repeat(${lengthSteps}, 1fr)` }}
-              >
+              <div className="mp-piano-cells">
                 {Array.from({ length: lengthSteps }, (_, step) => {
                   const noteAtStep = synth.notes[step]
                   const isActive = noteAtStep === pitch

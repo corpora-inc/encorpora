@@ -47,21 +47,33 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
   }
 
   // ----- HAT -----
-  // Was previously inaudible: hatVol -6dB AND velocity*0.4 stacked to ~0.2
-  // effective volume on a phone speaker. Bring both back to roughly parity
-  // with kick/snare so the hat actually cuts through.
-  const hatVol = new Tone.Volume(0).connect(destination)
-  const hatHpf = new Tone.Filter({ type: "highpass", frequency: 6000 }).connect(hatVol)
-  const hatSynth = new Tone.MetalSynth({
-    envelope: { attack: 0.001, decay: 0.08, release: 0.04 },
-    harmonicity: 5.1,
-    modulationIndex: 32,
-    resonance: 7000,
-    octaves: 1.5,
+  // v0.2.0's MetalSynth hat was still inaudible on Jeff's phone — high-Q
+  // metal partials are easy to lose on a small speaker. Replaced with a
+  // straightforward filtered-noise burst: white noise + bandpass around
+  // 8 kHz with a touch of resonance, riding a snappy AR envelope. This is
+  // the same pattern hover-runner uses for hits and reliably cuts through.
+  const hatVol = new Tone.Volume(-2).connect(destination)
+  const hatBpf = new Tone.Filter({
+    type: "bandpass",
+    frequency: 8500,
+    Q: 1.2,
+  }).connect(hatVol)
+  const hatHpf = new Tone.Filter({
+    type: "highpass",
+    frequency: 4000,
+  }).connect(hatBpf)
+  const hatSynth = new Tone.NoiseSynth({
+    noise: { type: "white" },
+    envelope: { attack: 0.001, decay: 0.06, sustain: 0, release: 0.02 },
+    volume: 6,
   }).connect(hatHpf)
 
   const triggerHat = (time: number, velocity: number) => {
-    hatSynth.triggerAttackRelease("16n", time, Math.max(0.15, Math.min(1, velocity * 0.85)))
+    hatSynth.triggerAttackRelease(
+      "32n",
+      time,
+      Math.max(0.4, Math.min(1, velocity))
+    )
   }
 
   return {
@@ -73,6 +85,7 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
       snareNoise.dispose()
       snareBody.dispose()
       hatSynth.dispose()
+      hatBpf.dispose()
       hatHpf.dispose()
       kickVol.dispose()
       snareVol.dispose()

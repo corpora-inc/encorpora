@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useProjectStore } from "../storage/projectStore"
+import { availableStepCounts } from "../model/project"
 import { SkinPicker } from "./SkinPicker"
 
 type Props = {
@@ -23,6 +24,12 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
   const setBpm = useProjectStore((s) => s.setBpm)
   const setMasterVolume = useProjectStore((s) => s.setMasterVolume)
   const setTimeSignature = useProjectStore((s) => s.setTimeSignature)
+  const setLengthSteps = useProjectStore((s) => s.setLengthSteps)
+
+  const stepOptions = availableStepCounts(
+    project.timeSignature[0],
+    project.timeSignature[1]
+  )
 
   // Local BPM input state — only commit on blur / Enter / ± buttons so
   // typing "5" intending "50" doesn't get clamped to 40 mid-keystroke.
@@ -118,6 +125,25 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
           <option value="6/8">6/8</option>
           <option value="7/8">7/8</option>
           <option value="9/8">9/8</option>
+          <option value="11/8">11/8</option>
+          <option value="13/8">13/8</option>
+          <option value="11/4">11/4</option>
+          <option value="13/4">13/4</option>
+        </select>
+      </div>
+
+      <div className="mp-control" title="Steps per bar (subdivision)">
+        <span>STEPS</span>
+        <select
+          value={project.lengthSteps}
+          onChange={(e) => setLengthSteps(Number(e.target.value))}
+        >
+          {stepOptions.map((n) => (
+            <option key={n} value={n}>{n}</option>
+          ))}
+          {!stepOptions.includes(project.lengthSteps) && (
+            <option value={project.lengthSteps}>{project.lengthSteps}</option>
+          )}
         </select>
       </div>
 

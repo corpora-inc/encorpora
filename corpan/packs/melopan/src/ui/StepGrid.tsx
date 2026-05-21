@@ -28,10 +28,7 @@ const Row = ({
         <span>{track.name}</span>
         {track.mute && <span style={{ opacity: 0.5, fontSize: 12 }}>(muted)</span>}
       </div>
-      <div
-        className="mp-cells"
-        style={{ gridTemplateColumns: `repeat(${track.steps.length}, 1fr)` }}
-      >
+      <div className="mp-cells">
         {track.steps.map((on, i) => {
           const isBeatStart = i % 4 === 0
           const isPlayhead = i === playheadStep

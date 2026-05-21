@@ -269,14 +269,16 @@ html, body, #corpan-game-root {
   padding: 12px;
   box-shadow: var(--mp-shadow);
   overflow-x: auto;
+  /* sticky positions in children resolve against this scroll container */
 }
 
 .mp-row {
-  display: grid;
-  grid-template-columns: 110px 1fr auto;
-  gap: 10px;
+  display: flex;
   align-items: center;
+  gap: 10px;
   margin-bottom: 8px;
+  /* enough room for label + cells + side to coexist; cells expand naturally */
+  min-width: max-content;
 }
 .mp-row:last-child { margin-bottom: 0; }
 
@@ -288,6 +290,14 @@ html, body, #corpan-game-root {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex: 0 0 110px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--mp-surface);
+  padding: 4px 6px 4px 2px;
+  /* subtle shadow on the right edge so users see when content is under */
+  box-shadow: 6px 0 8px -6px rgba(0, 0, 0, 0.18);
 }
 .mp-row-label .mp-row-emoji {
   font-size: 18px;
@@ -296,9 +306,13 @@ html, body, #corpan-game-root {
 
 .mp-cells {
   display: grid;
-  /* grid-template-columns set inline per row (varies by time signature) */
+  /* Fixed cell size so the row width scales with step count and the
+     mp-grid-wrap scrolls horizontally when needed. Inline
+     grid-template-columns is no longer set; we use auto-flow instead. */
+  grid-auto-flow: column;
+  grid-auto-columns: 28px;
   gap: 4px;
-  min-width: 320px;
+  flex: 0 0 auto;
 }
 
 .mp-cell {
@@ -342,7 +356,13 @@ html, body, #corpan-game-root {
   flex-direction: column;
   gap: 4px;
   align-items: stretch;
-  min-width: 56px;
+  flex: 0 0 60px;
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  background: var(--mp-surface);
+  padding: 4px 2px 4px 6px;
+  box-shadow: -6px 0 8px -6px rgba(0, 0, 0, 0.18);
 }
 .mp-row-side .mp-knob {
   font-family: var(--mp-font-mono);
@@ -507,13 +527,19 @@ html, body, #corpan-game-root {
 }
 
 .mp-piano-row {
-  display: grid;
-  grid-template-columns: 56px 1fr;
+  display: flex;
   gap: 6px;
   align-items: center;
+  min-width: max-content;
 }
 
 .mp-piano-key {
+  flex: 0 0 56px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--mp-surface);
+  box-shadow: 6px 0 8px -6px rgba(0, 0, 0, 0.18);
   font-family: var(--mp-font-mono);
   font-size: 14px;
   text-align: center;
@@ -577,9 +603,10 @@ html, body, #corpan-game-root {
 
 .mp-piano-cells {
   display: grid;
-  /* grid-template-columns set inline per row (varies by time signature) */
+  grid-auto-flow: column;
+  grid-auto-columns: 28px;
   gap: 3px;
-  min-width: 320px;
+  flex: 0 0 auto;
 }
 
 .mp-piano-cell {

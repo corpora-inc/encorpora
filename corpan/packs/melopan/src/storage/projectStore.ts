@@ -46,6 +46,8 @@ type State = {
   setBpm: (bpm: number) => void
   setMasterVolume: (v: number) => void
   setTimeSignature: (top: number, bottom: number) => void
+  /** Override the pattern length directly (STEPS picker). */
+  setLengthSteps: (n: number) => void
   /** Voice pad — apply to a specific voice track */
   setVoicePadVoice: (trackId: VoiceTrackId, voice: string) => void
   setVoicePadWord: (trackId: VoiceTrackId, word: string | null) => void
@@ -162,6 +164,25 @@ export const useProjectStore = create<State>((set) => ({
       synth: {
         ...s.project.synth,
         notes: resizeNoteSteps(s.project.synth.notes, newLen),
+      },
+    })
+    persistDebounced(next)
+    return { project: next }
+  }),
+
+  setLengthSteps: (n) => set((s) => {
+    const clamped = Math.max(1, Math.min(256, Math.round(n)))
+    if (clamped === s.project.lengthSteps) return s
+    const next = bumpUpdate({
+      ...s.project,
+      lengthSteps: clamped,
+      tracks: s.project.tracks.map((t) => ({
+        ...t,
+        steps: resizeBoolSteps(t.steps, clamped),
+      })),
+      synth: {
+        ...s.project.synth,
+        notes: resizeNoteSteps(s.project.synth.notes, clamped),
       },
     })
     persistDebounced(next)
