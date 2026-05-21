@@ -47,6 +47,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   const [sampleLoaded, setSampleLoaded] = useState(false)
   const [debugUrl, setDebugUrl] = useState<string | null>(null)
   const [debugEffective, setDebugEffective] = useState<string | null>(null)
+  const [debugVia, setDebugVia] = useState<string | null>(null)
   const [debugError, setDebugError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
     setDebugUrl(url)
     setDebugEffective(null)
+    setDebugVia(null)
     setDebugError(null)
 
     blobDisposeRef.current?.()
@@ -97,6 +99,9 @@ export const App = ({ hostApi: _hostApi }: Props) => {
         }
         blobDisposeRef.current = resolved.dispose
         setDebugEffective(resolved.effective)
+        setDebugVia(
+          resolved.bytes != null ? `${resolved.via} (${resolved.bytes}B)` : resolved.via
+        )
         const result = await engineRef.current!.voicePad.loadSample(resolved.effective)
         if (cancelled) return
         setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
@@ -188,6 +193,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
         <div>base: {PACK_BASE_URL || "(empty)"}</div>
         <div>url:  {debugUrl || "(none)"}</div>
         <div>eff:  {debugEffective || "(none)"}</div>
+        <div>via:  {debugVia || "(pending)"}</div>
         <div style={{ color: debugError ? "#ff8a8a" : "#9be59b" }}>
           loaded: {sampleLoaded ? "yes" : "no"}
           {debugError ? `  err: ${debugError}` : ""}

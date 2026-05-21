@@ -10,6 +10,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-05-21
+
+### Fixed
+- v0.1.4's Tauri fetch path read `window.__TAURI__`, which doesn't
+  exist in Tauri 2 (and isn't enabled by `withGlobalTauri` in the
+  corpan-app config). The canonical global is
+  `window.__TAURI_INTERNALS__.invoke` — same as
+  `packs/shared/data/packFetch.ts`. Updated `packAssets.ts` to match,
+  and to handle the platform variance in the returned bytes
+  (Uint8Array / number[] / ArrayBuffer).
+
+### Added
+- Debug strip now includes a `via:` line showing which path was used
+  (`tauri-bytes`, `direct`, or `no-tauri-fallback`) plus the byte
+  count when applicable. Confirms the binary fetch actually engaged.
+
 ## [0.1.4] - 2026-05-20
 
 ### Fixed
