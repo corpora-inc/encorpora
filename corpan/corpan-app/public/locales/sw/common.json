@@ -120,7 +120,10 @@
       "noFiltered": "Hakuna chochote hapa sasa.",
       "stackTotalPhrases": "~{{count}} misemo inafanana",
       "stackTotalNudge": "Ongeza pakiti au panua viwango kwa anuwai."
-    }
+    },
+    "sendAnonUsage": "Tuma data ya matumizi bila utambulisho",
+    "sendAnonUsageHint": "Bila utambulisho, ndani ya kipindi hiki tu. Hakuna akaunti, hakuna vitambulisho vya kifaa, hakuna kuhifadhi IP. Unaweza kuzima wakati wowote.",
+    "readPrivacyPromise": "Soma Ahadi yetu ya Faragha"
   },
   "onboarding": {
     "welcome": "Karibu",
@@ -223,7 +226,10 @@
       "offlineHero": "Uko nje ya mtandao.",
       "offlineSub": "Pakiti zinahitaji intaneti — jaribu baadaye kutoka Mipangilio → Pakiti.",
       "offlineBanner": "Nje ya mtandao — chaguo zitasakinishwa ukiunganishwa."
-    }
+    },
+    "notOnAppleIOS": "Hutumii iOS",
+    "appleNoVoiceTitle": "Apple bado haina sauti ya {{lang}}",
+    "appleNoVoiceBody": "Ujumbe mfupi kwa timu ya ufikivu ya Apple husaidia kuonyesha hitaji hilo. Kwa sasa, {{lang}} inafanya kazi moja kwa moja kwenye Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Onyesha zote ({{count}})",
       "collapseList": "Onyesha kidogo",
       "openDrawer": "Vinjari pakiti za misemo ({{count}})",
-      "openDrawerLabel": "Vinjari pakiti za misemo"
+      "openDrawerLabel": "Vinjari pakiti za misemo",
+      "inactiveBadge": "Haijawashwa",
+      "moreActionsLabel": "Vitendo zaidi"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Sera ya Faragha",
     "autoRenewNotice": "Usajili unarejeshwa kiotomatiki. Ghairi wakati wowote katika akaunti yako ya {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Inasubiri idhini",
+    "pendingDetail": "Usajili wako unasubiri idhini (Ask to Buy au uthibitishaji wa benki). Utaanza kufanya kazi moja kwa moja ukishaidhinishwa.",
+    "storeUnreachable": "Hatukuweza kufikia App Store kwa sasa.",
+    "tryAgain": "Jaribu tena"
   },
   "restore": {
     "button": "Rejesha Manunuzi",

@@ -120,7 +120,10 @@
       "noFiltered": "Rien ici pour l'instant.",
       "stackTotalPhrases": "~{{count}} phrases correspondent",
       "stackTotalNudge": "Ajoutez des packs ou élargissez les niveaux pour plus de variété."
-    }
+    },
+    "sendAnonUsage": "Envoyer des données d’utilisation anonymes",
+    "sendAnonUsageHint": "Anonymes et limitées à la session. Aucun compte, aucun identifiant d’appareil, aucune adresse IP conservée. Désactivez à tout moment.",
+    "readPrivacyPromise": "Lire notre promesse de confidentialité"
   },
   "onboarding": {
     "welcome": "Bienvenue",
@@ -223,7 +226,10 @@
       "offlineHero": "Hors ligne.",
       "offlineSub": "Les packs nécessitent une connexion — réessaie plus tard depuis Réglages → Packs.",
       "offlineBanner": "Hors ligne — la sélection s'installera à la reconnexion."
-    }
+    },
+    "notOnAppleIOS": "Pas sur iOS",
+    "appleNoVoiceTitle": "Apple ne propose pas encore de voix {{lang}}",
+    "appleNoVoiceBody": "Un petit message à l’équipe accessibilité d’Apple peut aider à faire avancer les choses. En attendant, {{lang}} fonctionne nativement sur Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Tout afficher ({{count}})",
       "collapseList": "Afficher moins",
       "openDrawer": "Parcourir les packs de phrases ({{count}})",
-      "openDrawerLabel": "Parcourir les packs de phrases"
+      "openDrawerLabel": "Parcourir les packs de phrases",
+      "inactiveBadge": "Inactif",
+      "moreActionsLabel": "Plus d’actions"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Politique de confidentialité",
     "autoRenewNotice": "Les abonnements se renouvellent automatiquement. Annulez à tout moment dans votre compte {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "En attente d’approbation",
+    "pendingDetail": "Votre abonnement est en attente d’approbation (Demander l’autorisation d’acheter ou vérification bancaire). Il s’activera automatiquement une fois approuvé.",
+    "storeUnreachable": "Impossible de joindre l’App Store pour le moment.",
+    "tryAgain": "Réessayer"
   },
   "restore": {
     "button": "Restaurer les achats",

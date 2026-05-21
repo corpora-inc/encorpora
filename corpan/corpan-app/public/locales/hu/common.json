@@ -120,7 +120,10 @@
       "noFiltered": "Itt most semmi sincs.",
       "stackTotalPhrases": "~{{count}} kifejezés illik",
       "stackTotalNudge": "Adj hozzá csomagokat vagy bővítsd a szinteket a változatosságért."
-    }
+    },
+    "sendAnonUsage": "Névtelen használati adatok küldése",
+    "sendAnonUsageHint": "Névtelen, munkamenethez kötött. Nincsenek fiókok, eszközazonosítók vagy IP-cím-tárolás. Bármikor kikapcsolhatod.",
+    "readPrivacyPromise": "Olvasd el az Adatvédelmi ígéretünket"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
@@ -223,7 +226,10 @@
       "offlineHero": "Offline vagy.",
       "offlineSub": "A csomagokhoz internet kell — próbáld meg később a Beállítások → Csomagok alatt.",
       "offlineBanner": "Offline — a kijelölés telepítődik újracsatlakozáskor."
-    }
+    },
+    "notOnAppleIOS": "Nem iOS-en",
+    "appleNoVoiceTitle": "Az Apple még nem kínál {{lang}} hangot",
+    "appleNoVoiceBody": "Egy rövid üzenet az Apple akadálymentesítési csapatának segíthet. Addig is a {{lang}} natívan működik Androidon."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Összes megjelenítése ({{count}})",
       "collapseList": "Kevesebb megjelenítése",
       "openDrawer": "Kifejezéscsomagok böngészése ({{count}})",
-      "openDrawerLabel": "Kifejezéscsomagok böngészése"
+      "openDrawerLabel": "Kifejezéscsomagok böngészése",
+      "inactiveBadge": "Inaktív",
+      "moreActionsLabel": "További műveletek"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Adatvédelmi szabályzat",
     "autoRenewNotice": "Az előfizetések automatikusan megújulnak. Bármikor lemondható a {{store}} fiókban.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Jóváhagyásra vár",
+    "pendingDetail": "Az előfizetésed jóváhagyásra vár (Vásárlási engedély vagy banki ellenőrzés). A jóváhagyás után automatikusan aktiválódik.",
+    "storeUnreachable": "Jelenleg nem tudtuk elérni az App Store-t.",
+    "tryAgain": "Próbáld újra"
   },
   "restore": {
     "button": "Vásárlások visszaállítása",

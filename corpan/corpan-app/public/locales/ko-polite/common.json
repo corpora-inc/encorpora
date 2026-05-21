@@ -120,7 +120,10 @@
       "noFiltered": "지금 여기에 아무것도 없어요.",
       "stackTotalPhrases": "~{{count}}개의 구문이 일치해요",
       "stackTotalNudge": "다양성을 위해 팩을 추가하거나 레벨을 넓혀 보세요."
-    }
+    },
+    "sendAnonUsage": "익명 사용 데이터 보내기",
+    "sendAnonUsageHint": "익명이며 세션 범위로만 사용됩니다. 계정, 기기 ID, IP 저장은 없습니다. 언제든지 끌 수 있습니다.",
+    "readPrivacyPromise": "개인정보 보호 약속 읽기"
   },
   "onboarding": {
     "welcome": "환영합니다",
@@ -223,7 +226,10 @@
       "offlineHero": "오프라인 상태예요.",
       "offlineSub": "팩은 인터넷이 필요해요 — 나중에 설정 → 팩에서 시도하세요.",
       "offlineBanner": "오프라인 — 다시 연결되면 선택한 팩이 설치돼요."
-    }
+    },
+    "notOnAppleIOS": "iOS가 아니신가요",
+    "appleNoVoiceTitle": "Apple에서는 아직 {{lang}} 음성을 제공하지 않습니다",
+    "appleNoVoiceBody": "Apple의 손쉬운 사용 팀에 간단한 의견을 보내 주시면 도입에 도움이 됩니다. 그동안 Android에서는 {{lang}}가 기본으로 지원됩니다."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "모두 보기 ({{count}})",
       "collapseList": "접기",
       "openDrawer": "구문 팩 둘러보기 ({{count}})",
-      "openDrawerLabel": "구문 팩 둘러보기"
+      "openDrawerLabel": "구문 팩 둘러보기",
+      "inactiveBadge": "비활성",
+      "moreActionsLabel": "더 많은 작업"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "개인정보 처리방침",
     "autoRenewNotice": "구독은 자동으로 갱신됩니다. {{store}} 계정에서 언제든지 해지할 수 있습니다.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "승인 대기 중",
+    "pendingDetail": "구독이 승인 대기 중입니다(구입 요청 또는 은행 확인). 승인되면 자동으로 활성화됩니다.",
+    "storeUnreachable": "지금은 App Store에 연결할 수 없습니다.",
+    "tryAgain": "다시 시도"
   },
   "restore": {
     "button": "구매 복원",

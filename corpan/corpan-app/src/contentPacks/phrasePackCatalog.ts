@@ -11,6 +11,15 @@
 // publish.py both reference the same format constants.
 
 import { type PurchaseInfo } from "./catalog";
+import {
+    type LocalizedString,
+    parseLocalizedString,
+    resolveLocalized,
+} from "./localized";
+
+// Re-export so existing call sites that import `LocalizedString` /
+// `resolveLocalized` from this module keep working without changes.
+export { type LocalizedString, resolveLocalized };
 
 /** Current wire-format version of catalog.json. Bump only on a breaking
  *  change AND coordinate with `publish.py :: CATALOG_FORMAT_VERSION`. */
@@ -22,12 +31,6 @@ export const DEFAULT_PHRASE_PACK_CATALOG_URL =
     "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/catalog.json";
 
 export type PhrasePackChannel = "stable" | "preview";
-
-/** BCP-47 language code → localized string. See `resolveLocalized` for
- *  the fallback chain. Publisher partials are fine: any locale not
- *  covered falls through to the bare-string base field at the entry's
- *  top level (which stays English / required). */
-export type LocalizedString = Record<string, string>;
 
 export type PhrasePackCatalogEntry = {
     /** Stable pack id, kebab-case, immutable. e.g. "phrase-botany-basics". */
@@ -131,21 +134,6 @@ function parseStringArray(v: unknown): string[] | undefined {
     return out.length ? out : undefined;
 }
 
-/** Parse a `{ "en": "...", "es": "..." }` map. Permissive: drops
- *  non-string entries silently, returns `undefined` for empty result so
- *  the catalog entry's optional `*Localized?` field stays unset. */
-function parseLocalizedString(v: unknown): LocalizedString | undefined {
-    if (!v || typeof v !== "object" || Array.isArray(v)) return undefined;
-    const r = v as Record<string, unknown>;
-    const out: LocalizedString = {};
-    for (const [key, value] of Object.entries(r)) {
-        if (typeof key === "string" && typeof value === "string" && value.length > 0) {
-            out[key] = value;
-        }
-    }
-    return Object.keys(out).length ? out : undefined;
-}
-
 function parsePurchase(v: unknown): PurchaseInfo | undefined {
     if (!v || typeof v !== "object") return undefined;
     const r = v as Record<string, unknown>;
@@ -219,61 +207,6 @@ function parseGroups(v: unknown): PhrasePackGroup[] | undefined {
         });
     }
     return out.length ? out : undefined;
-}
-
-/* -------------------------------------------------------------------------- */
-/*  localized string resolver                                                 */
-/* -------------------------------------------------------------------------- */
-
-/** Pick the best localized variant of a string for the given UI
- *  language, falling back gracefully when a locale is missing.
- *
- *  Resolution order:
- *    1. Exact match (`pt-BR`).
- *    2. Base language (`pt-BR` → `pt`).
- *    3. Script-sibling hops for the Chinese family — handles publishers
- *       who ship only one of {Hans, Hant} and Cantonese-Hant users.
- *    4. English (`en`) entry inside the map.
- *    5. The bare-string `fallback` (already required, English at the
- *       entry top level).
- *
- *  Always returns a non-empty string when `fallback` is non-empty.
- */
-export function resolveLocalized(
-    map: LocalizedString | undefined,
-    fallback: string,
-    lang: string,
-): string {
-    if (!map) return fallback;
-
-    // 1. Exact match.
-    const exact = map[lang];
-    if (typeof exact === "string" && exact.length > 0) return exact;
-
-    // 2. Base language (locale minus region/script suffix).
-    const dashIdx = lang.indexOf("-");
-    if (dashIdx > 0) {
-        const base = lang.slice(0, dashIdx);
-        const baseHit = map[base];
-        if (typeof baseHit === "string" && baseHit.length > 0) return baseHit;
-    }
-
-    // 3. Script-sibling hops, Chinese family only.
-    if (lang.startsWith("zh") || lang.startsWith("yue")) {
-        const ZH_SIBLINGS = ["zh-Hans", "zh-Hant", "zh"];
-        for (const sib of ZH_SIBLINGS) {
-            if (sib === lang) continue;
-            const hit = map[sib];
-            if (typeof hit === "string" && hit.length > 0) return hit;
-        }
-    }
-
-    // 4. English fallback inside the map.
-    const en = map["en"];
-    if (typeof en === "string" && en.length > 0) return en;
-
-    // 5. The bare-string fallback (catalog entry's top-level field).
-    return fallback;
 }
 
 export function parsePhrasePackCatalog(

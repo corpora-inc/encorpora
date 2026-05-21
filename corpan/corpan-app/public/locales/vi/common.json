@@ -120,7 +120,10 @@
       "noFiltered": "Hiện không có gì ở đây.",
       "stackTotalPhrases": "~{{count}} cụm từ phù hợp",
       "stackTotalNudge": "Thêm gói hoặc mở rộng cấp độ để đa dạng hơn."
-    }
+    },
+    "sendAnonUsage": "Gửi dữ liệu sử dụng ẩn danh",
+    "sendAnonUsageHint": "Ẩn danh, chỉ trong phiên. Không có tài khoản, không có ID thiết bị, không lưu IP. Có thể tắt bất cứ lúc nào.",
+    "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi"
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -223,7 +226,10 @@
       "offlineHero": "Bạn đang ngoại tuyến.",
       "offlineSub": "Gói cần internet — thử lại từ Cài đặt → Gói.",
       "offlineBanner": "Ngoại tuyến — lựa chọn sẽ cài khi kết nối lại."
-    }
+    },
+    "notOnAppleIOS": "Không dùng iOS",
+    "appleNoVoiceTitle": "Apple chưa cung cấp giọng {{lang}}",
+    "appleNoVoiceBody": "Một ghi chú ngắn gửi đến nhóm hỗ trợ tiếp cận của Apple sẽ giúp củng cố đề xuất này. Trong lúc đó, {{lang}} vẫn hoạt động gốc trên Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Hiện tất cả ({{count}})",
       "collapseList": "Thu gọn",
       "openDrawer": "Duyệt gói cụm từ ({{count}})",
-      "openDrawerLabel": "Duyệt gói cụm từ"
+      "openDrawerLabel": "Duyệt gói cụm từ",
+      "inactiveBadge": "Không hoạt động",
+      "moreActionsLabel": "Thêm thao tác"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Chính sách bảo mật",
     "autoRenewNotice": "Gói đăng ký tự động gia hạn. Hủy bất kỳ lúc nào trong tài khoản {{store}} của bạn.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Đang chờ phê duyệt",
+    "pendingDetail": "Gói đăng ký của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Gói sẽ tự động kích hoạt sau khi được phê duyệt.",
+    "storeUnreachable": "Chúng tôi không thể kết nối với App Store lúc này.",
+    "tryAgain": "Thử lại"
   },
   "restore": {
     "button": "Khôi phục mua hàng",

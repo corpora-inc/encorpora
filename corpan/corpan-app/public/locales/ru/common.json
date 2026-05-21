@@ -120,7 +120,10 @@
       "noFiltered": "Здесь сейчас ничего.",
       "stackTotalPhrases": "~{{count}} фраз подходят",
       "stackTotalNudge": "Добавь пакеты или расширь уровни для разнообразия."
-    }
+    },
+    "sendAnonUsage": "Отправлять анонимные данные об использовании",
+    "sendAnonUsageHint": "Анонимно, только в рамках сеанса. Без аккаунтов, без ID устройства, без хранения IP. Можно отключить в любой момент.",
+    "readPrivacyPromise": "Прочитать наше обещание о конфиденциальности"
   },
   "onboarding": {
     "welcome": "Добро пожаловать",
@@ -223,7 +226,10 @@
       "offlineHero": "Вы офлайн.",
       "offlineSub": "Пакетам нужен интернет — попробуйте позже в Настройки → Пакеты.",
       "offlineBanner": "Офлайн — выбор установится при подключении."
-    }
+    },
+    "notOnAppleIOS": "Не на iOS",
+    "appleNoVoiceTitle": "Apple пока не предлагает голос {{lang}}",
+    "appleNoVoiceBody": "Короткое сообщение команде Apple по доступности помогает показать спрос. Пока что {{lang}} нативно работает на Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Показать все ({{count}})",
       "collapseList": "Показать меньше",
       "openDrawer": "Обзор пакетов фраз ({{count}})",
-      "openDrawerLabel": "Обзор пакетов фраз"
+      "openDrawerLabel": "Обзор пакетов фраз",
+      "inactiveBadge": "Неактивен",
+      "moreActionsLabel": "Другие действия"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Политика конфиденциальности",
     "autoRenewNotice": "Подписки продлеваются автоматически. Отменить можно в любой момент в аккаунте {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Ожидание одобрения",
+    "pendingDetail": "Ваша подписка ожидает одобрения (Ask to Buy или проверка банком). После одобрения она активируется автоматически.",
+    "storeUnreachable": "Сейчас не удалось связаться с App Store.",
+    "tryAgain": "Повторить"
   },
   "restore": {
     "button": "Восстановить покупки",

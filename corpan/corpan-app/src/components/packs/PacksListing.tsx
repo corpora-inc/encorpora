@@ -104,14 +104,18 @@ export function PacksListing({
             {installedGames.map((game) => {
               const catalogEntry = catalog.find((c) => c.id === game.id)
               const hasUpdate = updates.some((u) => u.game.id === game.id)
+              // When the catalog has the entry, prefer ITS `name` /
+              // `description` (and the `nameLocalized` / `descriptionLocalized`
+              // maps that come with it) so the installed card renders the
+              // same localized strings as the available card. Only fall
+              // back to the persisted English `game.name` when the catalog
+              // doesn't know this pack (offline + cache empty).
               const packForCard = catalogEntry
                 ? {
                     ...catalogEntry,
                     id: game.id,
-                    name: game.name,
                     version: game.version ?? catalogEntry.version,
                     manifestUrl: game.manifestUrl ?? catalogEntry.manifestUrl,
-                    description: game.description ?? catalogEntry.description,
                     imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
                   }
                 : {

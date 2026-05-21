@@ -121,7 +121,10 @@
       "noFiltered": "Nimic aici acum.",
       "stackTotalPhrases": "~{{count}} fraze se potrivesc",
       "stackTotalNudge": "Adaugă pachete sau extinde nivelurile pentru mai multă varietate."
-    }
+    },
+    "sendAnonUsage": "Trimite date anonime de utilizare",
+    "sendAnonUsageHint": "Anonime, valabile doar pe durata sesiunii. Fără conturi, fără ID-uri de dispozitiv, fără stocare IP. Poți dezactiva oricând.",
+    "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate"
   },
   "onboarding": {
     "welcome": "Bine ai venit",
@@ -224,7 +227,10 @@
       "offlineHero": "Ești offline.",
       "offlineSub": "Pachetele au nevoie de internet — încearcă mai târziu din Setări → Pachete.",
       "offlineBanner": "Offline — selecțiile se instalează la reconectare."
-    }
+    },
+    "notOnAppleIOS": "Nu ești pe iOS",
+    "appleNoVoiceTitle": "Apple nu oferă încă o voce în {{lang}}",
+    "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Arată toate ({{count}})",
       "collapseList": "Arată mai puțin",
       "openDrawer": "Răsfoiește pachete de fraze ({{count}})",
-      "openDrawerLabel": "Răsfoiește pachete de fraze"
+      "openDrawerLabel": "Răsfoiește pachete de fraze",
+      "inactiveBadge": "Inactiv",
+      "moreActionsLabel": "Mai multe acțiuni"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Politica de confidențialitate",
     "autoRenewNotice": "Abonamentele se reînnoiesc automat. Anulează oricând în contul tău {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "În așteptarea aprobării",
+    "pendingDetail": "Abonamentul tău așteaptă aprobarea (Ask to Buy sau verificare bancară). Se va activa automat după aprobare.",
+    "storeUnreachable": "Nu am putut accesa App Store acum.",
+    "tryAgain": "Încearcă din nou"
   },
   "restore": {
     "button": "Restaurare achiziții",

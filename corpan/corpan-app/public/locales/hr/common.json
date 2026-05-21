@@ -121,7 +121,10 @@
       "noFiltered": "Ovdje sad ničega nema.",
       "stackTotalPhrases": "~{{count}} fraza odgovara",
       "stackTotalNudge": "Dodaj pakete ili proširi razine za više raznolikosti."
-    }
+    },
+    "sendAnonUsage": "Šalji anonimne podatke o korištenju",
+    "sendAnonUsageHint": "Anonimno, samo za ovu sesiju. Nema računa, nema ID-jeva uređaja, nema pohrane IP adresa. Isključite kad god želite.",
+    "readPrivacyPromise": "Pročitajte naše obećanje o privatnosti"
   },
   "onboarding": {
     "welcome": "Dobrodošli",
@@ -224,7 +227,10 @@
       "offlineHero": "Nisi povezan.",
       "offlineSub": "Paketima treba internet — pokušaj kasnije u Postavke → Paketi.",
       "offlineBanner": "Bez veze — odabir se instalira po ponovnom spajanju."
-    }
+    },
+    "notOnAppleIOS": "Nije na iOS-u",
+    "appleNoVoiceTitle": "Apple još ne nudi glas za {{lang}}",
+    "appleNoVoiceBody": "Kratka poruka Appleovu timu za pristupačnost pomaže pokazati potrebu. U međuvremenu {{lang}} nativno radi na Androidu."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Prikaži sve ({{count}})",
       "collapseList": "Prikaži manje",
       "openDrawer": "Pregledaj pakete fraza ({{count}})",
-      "openDrawerLabel": "Pregledaj pakete fraza"
+      "openDrawerLabel": "Pregledaj pakete fraza",
+      "inactiveBadge": "Neaktivno",
+      "moreActionsLabel": "Više radnji"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Politika privatnosti",
     "autoRenewNotice": "Pretplate se automatski obnavljaju. Otkazati možeš u bilo kojem trenutku u svom {{store}} računu.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Čeka se odobrenje",
+    "pendingDetail": "Vaša pretplata čeka odobrenje (Ask to Buy ili potvrdu banke). Aktivirat će se automatski nakon odobrenja.",
+    "storeUnreachable": "Trenutačno nismo mogli pristupiti App Storeu.",
+    "tryAgain": "Pokušajte ponovno"
   },
   "restore": {
     "button": "Obnovi kupnje",

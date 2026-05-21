@@ -121,7 +121,10 @@
       "noFiltered": "依度而家咩都冇。",
       "stackTotalPhrases": "~{{count}} 條片語匹配",
       "stackTotalNudge": "加多啲包或者擴大等級，咁就多啲變化。"
-    }
+    },
+    "sendAnonUsage": "傳送匿名使用資料",
+    "sendAnonUsageHint": "匿名、以工作階段為範圍。無帳戶、無裝置 ID、唔會儲存 IP。你可以隨時關閉。",
+    "readPrivacyPromise": "閱讀我哋嘅私隱承諾"
   },
   "onboarding": {
     "welcome": "歡迎",
@@ -224,7 +227,10 @@
       "offlineHero": "你而家離線。",
       "offlineSub": "短語包需要網絡 — 遲啲喺「設定 → 包」再試。",
       "offlineBanner": "離線 — 重新連線後安裝所揀。"
-    }
+    },
+    "notOnAppleIOS": "唔喺 iOS",
+    "appleNoVoiceTitle": "Apple 暫時未提供 {{lang}} 語音",
+    "appleNoVoiceBody": "向 Apple 嘅無障礙團隊發個簡短意見，可以幫手反映需要。與此同時，{{lang}} 喺 Android 可原生使用。"
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "顯示全部 ({{count}})",
       "collapseList": "收埋",
       "openDrawer": "瀏覽片語包 ({{count}})",
-      "openDrawerLabel": "瀏覽片語包"
+      "openDrawerLabel": "瀏覽片語包",
+      "inactiveBadge": "未啟用",
+      "moreActionsLabel": "更多操作"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "隱私政策",
     "autoRenewNotice": "訂閱會自動續訂。隨時可以在你的 {{store}} 帳戶中取消。",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "你嘅訂閱正等候批准（購買前先徵求同意或銀行驗證）。一經批准，系統會自動啟用。",
+    "storeUnreachable": "而家未能連線到 App Store。",
+    "tryAgain": "再試一次"
   },
   "restore": {
     "button": "恢復購買",

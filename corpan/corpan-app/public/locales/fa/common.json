@@ -120,7 +120,10 @@
       "noFiltered": "اینجا الان چیزی نیست.",
       "stackTotalPhrases": "‎~{{count}} عبارت مطابقت دارد",
       "stackTotalNudge": "بسته‌های بیشتری اضافه کن یا سطوح را گسترش بده."
-    }
+    },
+    "sendAnonUsage": "ارسال داده‌های استفادهٔ ناشناس",
+    "sendAnonUsageHint": "ناشناس و محدود به همین نشست. بدون حساب کاربری، بدون شناسهٔ دستگاه، بدون ذخیرهٔ IP. هر زمان بخواهید خاموشش کنید.",
+    "readPrivacyPromise": "مطالعهٔ تعهد ما به حریم خصوصی"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -223,7 +226,10 @@
       "offlineHero": "آفلاین هستی.",
       "offlineSub": "بسته‌ها به اینترنت نیاز دارند — بعداً از تنظیمات → بسته‌ها امتحان کن.",
       "offlineBanner": "آفلاین — انتخاب پس از اتصال نصب می‌شود."
-    }
+    },
+    "notOnAppleIOS": "روی iOS نیستید",
+    "appleNoVoiceTitle": "Apple هنوز صدای {{lang}} را ارائه نکرده است",
+    "appleNoVoiceBody": "یک پیام کوتاه به تیم دسترس‌پذیری Apple می‌تواند به مطرح شدن این نیاز کمک کند. تا آن زمان، {{lang}} به‌صورت بومی روی Android کار می‌کند."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "نمایش همه ({{count}})",
       "collapseList": "نمایش کمتر",
       "openDrawer": "مرور بسته‌های عبارات ({{count}})",
-      "openDrawerLabel": "مرور بسته‌های عبارات"
+      "openDrawerLabel": "مرور بسته‌های عبارات",
+      "inactiveBadge": "غیرفعال",
+      "moreActionsLabel": "اقدام‌های بیشتر"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "سیاست حفظ حریم خصوصی",
     "autoRenewNotice": "اشتراک‌ها به‌طور خودکار تمدید می‌شوند. هر زمان از حساب {{store}} خود لغو کنید.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "در انتظار تأیید",
+    "pendingDetail": "اشتراک شما در انتظار تأیید است (Ask to Buy یا تأیید بانکی). پس از تأیید، خودکار فعال می‌شود.",
+    "storeUnreachable": "فعلاً نتوانستیم به App Store وصل شویم.",
+    "tryAgain": "تلاش دوباره"
   },
   "restore": {
     "button": "بازیابی خریدها",

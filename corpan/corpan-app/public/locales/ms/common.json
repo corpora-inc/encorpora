@@ -120,7 +120,10 @@
       "noFiltered": "Tiada apa-apa di sini sekarang.",
       "stackTotalPhrases": "~{{count}} frasa sepadan",
       "stackTotalNudge": "Tambah pek atau luaskan aras untuk variasi."
-    }
+    },
+    "sendAnonUsage": "Hantar data penggunaan tanpa nama",
+    "sendAnonUsageHint": "Tanpa nama, terhad kepada sesi. Tiada akaun, tiada ID peranti, tiada storan IP. Matikan bila-bila masa.",
+    "readPrivacyPromise": "Baca Janji Privasi kami"
   },
   "onboarding": {
     "welcome": "Selamat datang",
@@ -223,7 +226,10 @@
       "offlineHero": "Anda di luar talian.",
       "offlineSub": "Pek perlukan internet — cuba dari Tetapan → Pek.",
       "offlineBanner": "Luar talian — pilihan akan dipasang apabila disambung."
-    }
+    },
+    "notOnAppleIOS": "Bukan di iOS",
+    "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}} lagi",
+    "appleNoVoiceBody": "Sedikit maklum balas kepada pasukan kebolehcapaian Apple membantu menguatkan kes ini. Sementara itu, {{lang}} berfungsi secara asli di Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Tunjukkan semua ({{count}})",
       "collapseList": "Tunjukkan kurang",
       "openDrawer": "Lihat pek frasa ({{count}})",
-      "openDrawerLabel": "Lihat pek frasa"
+      "openDrawerLabel": "Lihat pek frasa",
+      "inactiveBadge": "Tidak aktif",
+      "moreActionsLabel": "Lagi tindakan"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Dasar Privasi",
     "autoRenewNotice": "Langganan diperbaharui secara automatik. Batalkan pada bila-bila masa dalam akaun {{store}} anda.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Menunggu kelulusan",
+    "pendingDetail": "Langganan anda sedang menunggu kelulusan (Ask to Buy atau pengesahan bank). Ia akan diaktifkan secara automatik sebaik sahaja diluluskan.",
+    "storeUnreachable": "Kami tidak dapat menghubungi App Store buat masa ini.",
+    "tryAgain": "Cuba lagi"
   },
   "restore": {
     "button": "Pulihkan Pembelian",

@@ -120,7 +120,10 @@
       "noFiltered": "Ingenting her nå.",
       "stackTotalPhrases": "~{{count}} fraser matcher",
       "stackTotalNudge": "Legg til pakker eller utvid nivåene for mer variasjon."
-    }
+    },
+    "sendAnonUsage": "Send anonyme bruksdata",
+    "sendAnonUsageHint": "Anonymt og knyttet til økten. Ingen kontoer, ingen enhets-ID-er, ingen lagring av IP-adresser. Slå det av når som helst.",
+    "readPrivacyPromise": "Les personvernløftet vårt"
   },
   "onboarding": {
     "welcome": "Velkommen",
@@ -223,7 +226,10 @@
       "offlineHero": "Du er frakoblet.",
       "offlineSub": "Pakker trenger internett — prøv senere fra Innstillinger → Pakker.",
       "offlineBanner": "Frakoblet — valg installeres ved tilkobling."
-    }
+    },
+    "notOnAppleIOS": "Ikke på iOS",
+    "appleNoVoiceTitle": "Apple har ennå ikke en {{lang}}-stemme",
+    "appleNoVoiceBody": "En kort melding til Apples tilgjengelighetsteam kan bidra til å styrke saken. {{lang}} fungerer innebygd på Android i mellomtiden."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Vis alle ({{count}})",
       "collapseList": "Vis færre",
       "openDrawer": "Bla i frasepakker ({{count}})",
-      "openDrawerLabel": "Bla i frasepakker"
+      "openDrawerLabel": "Bla i frasepakker",
+      "inactiveBadge": "Inaktiv",
+      "moreActionsLabel": "Flere handlinger"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Personvernpolicy",
     "autoRenewNotice": "Abonnementer fornyes automatisk. Avslutt når som helst i din {{store}}-konto.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Venter på godkjenning",
+    "pendingDetail": "Abonnementet ditt venter på godkjenning (Be om å kjøpe eller bankverifisering). Det aktiveres automatisk så snart det er godkjent.",
+    "storeUnreachable": "Vi fikk ikke kontakt med App Store akkurat nå.",
+    "tryAgain": "Prøv igjen"
   },
   "restore": {
     "button": "Gjenopprett kjøp",

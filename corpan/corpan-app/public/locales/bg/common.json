@@ -121,7 +121,10 @@
       "noFiltered": "Тук сега няма нищо.",
       "stackTotalPhrases": "~{{count}} фрази съвпадат",
       "stackTotalNudge": "Добави пакети или разшири нивата за повече разнообразие."
-    }
+    },
+    "sendAnonUsage": "Изпращане на анонимни данни за ползване",
+    "sendAnonUsageHint": "Анонимно, само в рамките на сесията. Без акаунти, без ID на устройства, без съхранение на IP адреси. Можете да го изключите по всяко време.",
+    "readPrivacyPromise": "Прочетете нашето обещание за поверителност"
   },
   "onboarding": {
     "welcome": "Добре дошли",
@@ -224,7 +227,10 @@
       "offlineHero": "Офлайн си.",
       "offlineSub": "Пакетите изискват интернет — опитай по-късно от Настройки → Пакети.",
       "offlineBanner": "Офлайн — изборът ще се инсталира при свързване."
-    }
+    },
+    "notOnAppleIOS": "Не сте на iOS",
+    "appleNoVoiceTitle": "Apple все още не предлага глас за {{lang}}",
+    "appleNoVoiceBody": "Кратка бележка до екипа по достъпност на Apple помага да се подкрепи това. Междувременно {{lang}} работи нативно на Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Покажи всички ({{count}})",
       "collapseList": "Покажи по-малко",
       "openDrawer": "Разгледай пакети с фрази ({{count}})",
-      "openDrawerLabel": "Разгледай пакети с фрази"
+      "openDrawerLabel": "Разгледай пакети с фрази",
+      "inactiveBadge": "Неактивен",
+      "moreActionsLabel": "Още действия"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Политика за поверителност",
     "autoRenewNotice": "Абонаментите се подновяват автоматично. Можете да отмените по всяко време в своя {{store}} акаунт.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Изчаква одобрение",
+    "pendingDetail": "Абонаментът ви изчаква одобрение (Ask to Buy или банкова проверка). Ще се активира автоматично, щом бъде одобрен.",
+    "storeUnreachable": "В момента не успяхме да се свържем с App Store.",
+    "tryAgain": "Опитайте отново"
   },
   "restore": {
     "button": "Възстановяване на покупки",

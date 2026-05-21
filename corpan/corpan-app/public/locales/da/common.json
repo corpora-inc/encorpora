@@ -120,7 +120,10 @@
       "noFiltered": "Intet her lige nu.",
       "stackTotalPhrases": "~{{count}} sætninger matcher",
       "stackTotalNudge": "Tilføj pakker eller udvid niveauerne for mere variation."
-    }
+    },
+    "sendAnonUsage": "Send anonyme brugsdata",
+    "sendAnonUsageHint": "Anonymt og kun for denne session. Ingen konti, ingen enheds-id'er, ingen lagring af IP-adresser. Slå det fra når som helst.",
+    "readPrivacyPromise": "Læs vores løfte om privatliv"
   },
   "onboarding": {
     "welcome": "Velkommen",
@@ -223,7 +226,10 @@
       "offlineHero": "Du er offline.",
       "offlineSub": "Pakker kræver internet — prøv senere fra Indstillinger → Pakker.",
       "offlineBanner": "Offline — valgene installeres ved gentilslutning."
-    }
+    },
+    "notOnAppleIOS": "Ikke på iOS",
+    "appleNoVoiceTitle": "Apple tilbyder endnu ikke en {{lang}}-stemme",
+    "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Vis alle ({{count}})",
       "collapseList": "Vis færre",
       "openDrawer": "Gennemse frasepakker ({{count}})",
-      "openDrawerLabel": "Gennemse frasepakker"
+      "openDrawerLabel": "Gennemse frasepakker",
+      "inactiveBadge": "Inaktiv",
+      "moreActionsLabel": "Flere handlinger"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Privatlivspolitik",
     "autoRenewNotice": "Abonnementer fornyes automatisk. Afmeld til enhver tid i din {{store}}-konto.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Venter på godkendelse",
+    "pendingDetail": "Dit abonnement venter på godkendelse (Spørg om at købe eller bankbekræftelse). Det aktiveres automatisk, når det er godkendt.",
+    "storeUnreachable": "Vi kunne ikke nå App Store lige nu.",
+    "tryAgain": "Prøv igen"
   },
   "restore": {
     "button": "Gendan køb",

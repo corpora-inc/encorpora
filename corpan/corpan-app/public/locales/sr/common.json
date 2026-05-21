@@ -121,7 +121,10 @@
       "noFiltered": "Овде сад ништа нема.",
       "stackTotalPhrases": "~{{count}} фраза одговара",
       "stackTotalNudge": "Додај пакете или прошири нивое за више разноврсности."
-    }
+    },
+    "sendAnonUsage": "Šalji anonimne podatke o korišćenju",
+    "sendAnonUsageHint": "Anonimno, ograničeno na sesiju. Bez naloga, bez ID-jeva uređaja, bez čuvanja IP adresa. Isključite kad god želite.",
+    "readPrivacyPromise": "Pročitajte naše obećanje o privatnosti"
   },
   "onboarding": {
     "welcome": "Dobrodošli",
@@ -224,7 +227,10 @@
       "offlineHero": "Ниси повезан.",
       "offlineSub": "Пакетима треба интернет — покушај касније у Подешавања → Пакети.",
       "offlineBanner": "Без везе — избор се инсталира по поновном повезивању."
-    }
+    },
+    "notOnAppleIOS": "Nije na iOS-u",
+    "appleNoVoiceTitle": "Apple još ne nudi {{lang}} glas",
+    "appleNoVoiceBody": "Kratka poruka Apple-ovom timu za pristupačnost pomaže da se to podrži. U međuvremenu, {{lang}} radi nativno na Android-u."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Прикажи све ({{count}})",
       "collapseList": "Прикажи мање",
       "openDrawer": "Прегледај пакете фраза ({{count}})",
-      "openDrawerLabel": "Прегледај пакете фраза"
+      "openDrawerLabel": "Прегледај пакете фраза",
+      "inactiveBadge": "Neaktivno",
+      "moreActionsLabel": "Još radnji"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Politika privatnosti",
     "autoRenewNotice": "Pretplate se automatski obnavljaju. Otkazivanje u bilo kojem trenutku u tvom {{store}} nalogu.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Čeka se odobrenje",
+    "pendingDetail": "Vaša pretplata čeka odobrenje (Ask to Buy ili verifikacija banke). Aktiviraće se automatski čim bude odobrena.",
+    "storeUnreachable": "Trenutno ne možemo da pristupimo App Store-u.",
+    "tryAgain": "Pokušajte ponovo"
   },
   "restore": {
     "button": "Vrati kupovine",

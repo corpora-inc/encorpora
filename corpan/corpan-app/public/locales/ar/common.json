@@ -120,7 +120,10 @@
       "noFiltered": "لا شيء هنا الآن.",
       "stackTotalPhrases": "‎~{{count}} عبارة تطابق",
       "stackTotalNudge": "أضف حزمًا أو وسّع المستويات لمزيد من التنوع."
-    }
+    },
+    "sendAnonUsage": "إرسال بيانات استخدام مجهولة الهوية",
+    "sendAnonUsageHint": "مجهولة الهوية وعلى مستوى الجلسة فقط. لا حسابات، ولا معرّفات أجهزة، ولا تخزين لعناوين IP. يمكنك إيقافها في أي وقت.",
+    "readPrivacyPromise": "اقرأ تعهّدنا بالخصوصية"
   },
   "onboarding": {
     "welcome": "مرحبًا",
@@ -223,7 +226,10 @@
       "offlineHero": "أنت غير متصل.",
       "offlineSub": "تحتاج الحزم إلى إنترنت — جرّب لاحقًا من الإعدادات → الحزم.",
       "offlineBanner": "غير متصل — سيُثبَّت التحديد عند إعادة الاتصال."
-    }
+    },
+    "notOnAppleIOS": "لست على iOS",
+    "appleNoVoiceTitle": "لا توفّر Apple صوتًا لـ {{lang}} بعد",
+    "appleNoVoiceBody": "ملاحظة سريعة إلى فريق تسهيلات الاستخدام في Apple تساعد في دعم هذا الطلب. وفي الوقت الحالي، يعمل {{lang}} بشكل أصلي على Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "عرض الكل ({{count}})",
       "collapseList": "عرض أقل",
       "openDrawer": "تصفح حزم العبارات ({{count}})",
-      "openDrawerLabel": "تصفح حزم العبارات"
+      "openDrawerLabel": "تصفح حزم العبارات",
+      "inactiveBadge": "غير نشط",
+      "moreActionsLabel": "مزيد من الإجراءات"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "سياسة الخصوصية",
     "autoRenewNotice": "تتجدد الاشتراكات تلقائيًا. يمكنك الإلغاء في أي وقت من حساب {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "بانتظار الموافقة",
+    "pendingDetail": "اشتراكك بانتظار الموافقة (طلب الشراء أو التحقق البنكي). سيتفعّل تلقائيًا بمجرد الموافقة عليه.",
+    "storeUnreachable": "تعذّر علينا الوصول إلى App Store الآن.",
+    "tryAgain": "حاول مرة أخرى"
   },
   "restore": {
     "button": "استعادة المشتريات",

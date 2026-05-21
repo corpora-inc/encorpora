@@ -120,7 +120,10 @@
       "noFiltered": "אין כאן כלום עכשיו.",
       "stackTotalPhrases": "~{{count}} ביטויים תואמים",
       "stackTotalNudge": "הוסף חבילות או הרחב את הרמות לגיוון."
-    }
+    },
+    "sendAnonUsage": "שליחת נתוני שימוש אנונימיים",
+    "sendAnonUsageHint": "אנונימיים ובהיקף של סשן בלבד. בלי חשבונות, בלי מזהי מכשיר ובלי שמירת כתובות IP. אפשר לכבות בכל עת.",
+    "readPrivacyPromise": "קראו את הבטחת הפרטיות שלנו"
   },
   "onboarding": {
     "welcome": "בְּרוּכִים הַבָּאִים",
@@ -223,7 +226,10 @@
       "offlineHero": "אתה במצב לא מקוון.",
       "offlineSub": "החבילות דורשות אינטרנט — נסה שוב מהגדרות → חבילות.",
       "offlineBanner": "לא מקוון — הבחירה תותקן עם החיבור מחדש."
-    }
+    },
+    "notOnAppleIOS": "לא ב-iOS",
+    "appleNoVoiceTitle": "Apple עדיין לא מספקת קול עבור {{lang}}",
+    "appleNoVoiceBody": "הודעה קצרה לצוות הנגישות של Apple יכולה לעזור לקדם את הנושא. בינתיים, {{lang}} פועלת באופן מובנה ב-Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "הצג הכול ({{count}})",
       "collapseList": "הצג פחות",
       "openDrawer": "עיון בחבילות ביטויים ({{count}})",
-      "openDrawerLabel": "עיון בחבילות ביטויים"
+      "openDrawerLabel": "עיון בחבילות ביטויים",
+      "inactiveBadge": "לא פעיל",
+      "moreActionsLabel": "פעולות נוספות"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "מְדִינִיּוּת פְּרָטִיּוּת",
     "autoRenewNotice": "מִנּוּיִים מִתְחַדְּשִׁים אוּטוֹמָטִית. בַּטֵּל בְּכָל עֵת בְּחֶשְׁבּוֹן {{store}} שֶׁלְּךָ.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "ממתין לאישור",
+    "pendingDetail": "המינוי שלך ממתין לאישור (Ask to Buy או אימות בנקאי). הוא יופעל אוטומטית לאחר האישור.",
+    "storeUnreachable": "לא הצלחנו להתחבר כעת ל-App Store.",
+    "tryAgain": "לנסות שוב"
   },
   "restore": {
     "button": "שַׁחְזֵר רְכִישׁוֹת",

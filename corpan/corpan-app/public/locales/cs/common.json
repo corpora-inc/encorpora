@@ -121,7 +121,10 @@
       "noFiltered": "Tady teď nic není.",
       "stackTotalPhrases": "~{{count}} frází odpovídá",
       "stackTotalNudge": "Přidej balíčky nebo rozšiř úrovně pro větší rozmanitost."
-    }
+    },
+    "sendAnonUsage": "Posílat anonymní údaje o používání",
+    "sendAnonUsageHint": "Anonymní, jen pro toto sezení. Žádné účty, žádná ID zařízení, žádné ukládání IP adres. Kdykoli můžete vypnout.",
+    "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí"
   },
   "onboarding": {
     "welcome": "Vítejte",
@@ -224,7 +227,10 @@
       "offlineHero": "Jsi offline.",
       "offlineSub": "Balíčky potřebují internet — zkus to později v Nastavení → Balíčky.",
       "offlineBanner": "Offline — výběr se nainstaluje po připojení."
-    }
+    },
+    "notOnAppleIOS": "Ne na iOS",
+    "appleNoVoiceTitle": "Apple zatím nenabízí hlas pro {{lang}}",
+    "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Zobrazit vše ({{count}})",
       "collapseList": "Zobrazit méně",
       "openDrawer": "Procházet balíčky frází ({{count}})",
-      "openDrawerLabel": "Procházet balíčky frází"
+      "openDrawerLabel": "Procházet balíčky frází",
+      "inactiveBadge": "Neaktivní",
+      "moreActionsLabel": "Další akce"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Zásady ochrany osobních údajů",
     "autoRenewNotice": "Předplatné se automaticky obnovuje. Zrušte kdykoliv ve svém {{store}} účtu.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Čeká na schválení",
+    "pendingDetail": "Vaše předplatné čeká na schválení (Ask to Buy nebo ověření bankou). Po schválení se aktivuje automaticky.",
+    "storeUnreachable": "K App Store se teď nepodařilo připojit.",
+    "tryAgain": "Zkusit znovu"
   },
   "restore": {
     "button": "Obnovit nákupy",

@@ -120,7 +120,10 @@
       "noFiltered": "इथे आत्ता काही नाही.",
       "stackTotalPhrases": "~{{count}} वाक्ये जुळतात",
       "stackTotalNudge": "विविधतेसाठी पॅक जोडा किंवा स्तर वाढवा."
-    }
+    },
+    "sendAnonUsage": "अनामिक वापर डेटा पाठवा",
+    "sendAnonUsageHint": "अनामिक, सत्रापुरते मर्यादित. खाती नाहीत, डिव्हाइस आयडी नाहीत, IP साठवणूक नाही. कधीही बंद करा.",
+    "readPrivacyPromise": "आमचे Privacy Promise वाचा"
   },
   "onboarding": {
     "welcome": "स्वागत",
@@ -223,7 +226,10 @@
       "offlineHero": "तुम्ही ऑफलाइन आहात.",
       "offlineSub": "पॅकसाठी इंटरनेट लागते — नंतर सेटिंग्ज → पॅक्समधून प्रयत्न करा.",
       "offlineBanner": "ऑफलाइन — कनेक्ट झाल्यावर निवडलेले इन्स्टॉल होतील."
-    }
+    },
+    "notOnAppleIOS": "iOS वर नाही",
+    "appleNoVoiceTitle": "Apple कडे अजून {{lang}} आवाज उपलब्ध नाही",
+    "appleNoVoiceBody": "Apple च्या accessibility टीमला एक छोटा संदेश पाठवल्यास त्यासाठी मदत होऊ शकते. तोपर्यंत {{lang}} Android वर मूळतःच काम करते."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "सर्व दाखवा ({{count}})",
       "collapseList": "कमी दाखवा",
       "openDrawer": "फ्रेज पॅक ब्राउझ करा ({{count}})",
-      "openDrawerLabel": "फ्रेज पॅक ब्राउझ करा"
+      "openDrawerLabel": "फ्रेज पॅक ब्राउझ करा",
+      "inactiveBadge": "निष्क्रिय",
+      "moreActionsLabel": "अधिक क्रिया"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "गोपनीयता धोरण",
     "autoRenewNotice": "सदस्यता आपोआप नूतनीकरण होते. आपल्या {{store}} खात्यात कधीही रद्द करा.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "मंजुरीची प्रतीक्षा",
+    "pendingDetail": "तुमच्या सदस्यतेला मंजुरीची प्रतीक्षा आहे (Ask to Buy किंवा बँक पडताळणी). मंजुरी मिळताच ती आपोआप सुरू होईल.",
+    "storeUnreachable": "आत्ता App Store शी संपर्क साधता आला नाही.",
+    "tryAgain": "पुन्हा प्रयत्न करा"
   },
   "restore": {
     "button": "खरेदी पुनर्संचयित करा",

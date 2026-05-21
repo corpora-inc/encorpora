@@ -121,7 +121,10 @@
       "noFiltered": "Тут зараз нічого.",
       "stackTotalPhrases": "~{{count}} фраз відповідають",
       "stackTotalNudge": "Додай пакети або розшир рівні для різноманіття."
-    }
+    },
+    "sendAnonUsage": "Надсилати анонімні дані про використання",
+    "sendAnonUsageHint": "Анонімно, у межах сеансу. Без облікових записів, без ID пристрою, без збереження IP. Можна вимкнути будь-коли.",
+    "readPrivacyPromise": "Прочитати нашу Обіцянку конфіденційності"
   },
   "onboarding": {
     "welcome": "Ласкаво просимо",
@@ -224,7 +227,10 @@
       "offlineHero": "Ти офлайн.",
       "offlineSub": "Пакетам потрібен інтернет — спробуй пізніше в Налаштування → Пакети.",
       "offlineBanner": "Офлайн — вибір установиться після з'єднання."
-    }
+    },
+    "notOnAppleIOS": "Не на iOS",
+    "appleNoVoiceTitle": "Apple ще не має голосу для {{lang}}",
+    "appleNoVoiceBody": "Коротке звернення до команди доступності Apple допоможе підсилити запит. Тим часом {{lang}} нативно працює на Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Показати всі ({{count}})",
       "collapseList": "Показати менше",
       "openDrawer": "Перегляд пакетів фраз ({{count}})",
-      "openDrawerLabel": "Перегляд пакетів фраз"
+      "openDrawerLabel": "Перегляд пакетів фраз",
+      "inactiveBadge": "Неактивний",
+      "moreActionsLabel": "Більше дій"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Політика конфіденційності",
     "autoRenewNotice": "Підписки автоматично поновлюються. Скасуйте в будь-який час у вашому {{store}} акаунті.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Очікування схвалення",
+    "pendingDetail": "Ваша підписка очікує схвалення (Ask to Buy або перевірка банком). Вона активується автоматично, щойно схвалення буде отримано.",
+    "storeUnreachable": "Зараз не вдалося підключитися до App Store.",
+    "tryAgain": "Спробувати ще раз"
   },
   "restore": {
     "button": "Відновити покупки",

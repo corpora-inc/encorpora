@@ -120,7 +120,10 @@
       "noFiltered": "ایتھے ہنڑ کچھ نئیں۔",
       "stackTotalPhrases": "‎~{{count}} جملے میل کھاندے نیں",
       "stackTotalNudge": "ودھ ورائٹی واسطے پیک شامل کرو یا سطحاں ودھاؤ۔"
-    }
+    },
+    "sendAnonUsage": "گمنام استعمال دا ڈیٹا بھیجو",
+    "sendAnonUsageHint": "گمنام، سیشن تک محدود۔ نہ اکاؤنٹس، نہ ڈیوائس آئی ڈیز، نہ IP ذخیرہ۔ کدے وی بند کر سکدے او۔",
+    "readPrivacyPromise": "ساڈا رازداری دا وعدہ پڑھو"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -223,7 +226,10 @@
       "offlineHero": "تسیں آف لائن ہو۔",
       "offlineSub": "پیکجاں لئی انٹرنیٹ چاہیدا اے — مگروں ترتیبات → پیکج توں کوشش کرو۔",
       "offlineBanner": "آف لائن — جڑن تے انتخاب نصب ہو جاؤ گا۔"
-    }
+    },
+    "notOnAppleIOS": "iOS تے نہیں",
+    "appleNoVoiceTitle": "Apple ہن تک {{lang}} دی آواز فراہم نہیں کردا",
+    "appleNoVoiceBody": "Apple دی accessibility ٹیم نوں اک چھوٹا نوٹ ایہہ معاملہ مضبوط بنا سکدا اے۔ اِدھرلے وقت وچ {{lang}} Android اُتے فطری طور تے کم کردا اے۔"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "ساریاں ویکھاؤ ({{count}})",
       "collapseList": "گھٹ ویکھاؤ",
       "openDrawer": "فریز پیک ویکھو ({{count}})",
-      "openDrawerLabel": "فریز پیک ویکھو"
+      "openDrawerLabel": "فریز پیک ویکھو",
+      "inactiveBadge": "غیر فعال",
+      "moreActionsLabel": "ہوڑ کارروائیاں"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "پرائیویسی پالیسی",
     "autoRenewNotice": "سبسکرپشناں آپے تجدید ہوندیاں نیں۔ اپنے {{store}} اکاؤنٹ توں کدی وی منسوخ کرو۔",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "منظوری دی اُڈیک",
+    "pendingDetail": "تہاڈی سبسکرپشن منظوری دی اُڈیک وچ اے (Ask to Buy یا بینک تصدیق)۔ منظوری ملدے ایہ خودکار طور تے فعال ہو جاوے گی۔",
+    "storeUnreachable": "اس وقت اسیں App Store تک نہیں پہنچ سکے۔",
+    "tryAgain": "دوبارہ کوشش کرو"
   },
   "restore": {
     "button": "خریداریاں بحال کرو",

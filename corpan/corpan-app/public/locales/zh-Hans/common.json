@@ -120,7 +120,10 @@
       "noFiltered": "这里现在没有内容。",
       "stackTotalPhrases": "~{{count}} 条短语匹配",
       "stackTotalNudge": "添加更多包或扩大等级以增加多样性。"
-    }
+    },
+    "sendAnonUsage": "发送匿名使用数据",
+    "sendAnonUsageHint": "匿名、仅限当前会话。不使用账号、不使用设备 ID，也不存储 IP。可随时关闭。",
+    "readPrivacyPromise": "阅读我们的隐私承诺"
   },
   "onboarding": {
     "welcome": "欢迎",
@@ -223,7 +226,10 @@
       "offlineHero": "你已离线。",
       "offlineSub": "短语包需要互联网 — 稍后在「设置 → 包」中再试。",
       "offlineBanner": "离线 — 重新连接后将安装所选项。"
-    }
+    },
+    "notOnAppleIOS": "不是 iOS",
+    "appleNoVoiceTitle": "Apple 还未提供 {{lang}} 语音",
+    "appleNoVoiceBody": "给 Apple 无障碍团队发一条简短反馈，会更有助于推动这件事。与此同时，{{lang}} 已可在 Android 上原生使用。"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "显示全部 ({{count}})",
       "collapseList": "收起",
       "openDrawer": "浏览短语包 ({{count}})",
-      "openDrawerLabel": "浏览短语包"
+      "openDrawerLabel": "浏览短语包",
+      "inactiveBadge": "未启用",
+      "moreActionsLabel": "更多操作"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "隐私政策",
     "autoRenewNotice": "订阅将自动续订。可随时在 {{store}} 账户中取消。",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "你的订阅正在等待批准（“购买前询问”或银行验证）。获批后将自动生效。",
+    "storeUnreachable": "目前无法连接到 App Store。",
+    "tryAgain": "重试"
   },
   "restore": {
     "button": "恢复购买",

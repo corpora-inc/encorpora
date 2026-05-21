@@ -121,7 +121,10 @@
       "noFiltered": "अहिले यहाँ केही छैन।",
       "stackTotalPhrases": "~{{count}} वाक्यांशहरू मेल खान्छन्",
       "stackTotalNudge": "विविधताका लागि प्याक थप्नुहोस् वा स्तरहरू फराकिलो पार्नुहोस्।"
-    }
+    },
+    "sendAnonUsage": "गुमनाम प्रयोग डेटा पठाउनुहोस्",
+    "sendAnonUsageHint": "गुमनाम, सत्र-सीमित। खाता छैन, डिभाइस आईडी छैन, IP भण्डारण हुँदैन। जुनसुकै बेला बन्द गर्न सक्नुहुन्छ।",
+    "readPrivacyPromise": "हाम्रो गोपनीयता प्रतिबद्धता पढ्नुहोस्"
   },
   "onboarding": {
     "welcome": "स्वागत छ",
@@ -224,7 +227,10 @@
       "offlineHero": "तपाईं अफलाइन हुनुहुन्छ।",
       "offlineSub": "प्याकलाई इन्टरनेट चाहिन्छ — पछि सेटिङ → प्याक बाट प्रयास गर्नुहोस्।",
       "offlineBanner": "अफलाइन — जडानमा छानिएकाहरू स्थापना हुनेछन्।"
-    }
+    },
+    "notOnAppleIOS": "iOS मा होइन",
+    "appleNoVoiceTitle": "Apple ले अझै {{lang}} आवाज उपलब्ध गराएको छैन",
+    "appleNoVoiceBody": "Apple को accessibility टोलीलाई छोटो सन्देश पठाउँदा यसका लागि समर्थन बलियो हुन्छ। त्यसबीच {{lang}} Android मा स्वाभाविक रूपमा काम गर्छ।"
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "सबै देखाउनुहोस् ({{count}})",
       "collapseList": "थोरै देखाउनुहोस्",
       "openDrawer": "फ्रेज प्याक हेर्नुहोस् ({{count}})",
-      "openDrawerLabel": "फ्रेज प्याक हेर्नुहोस्"
+      "openDrawerLabel": "फ्रेज प्याक हेर्नुहोस्",
+      "inactiveBadge": "निष्क्रिय",
+      "moreActionsLabel": "थप कार्यहरू"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "गोपनीयता नीति",
     "autoRenewNotice": "सदस्यताहरू स्वचालित रूपमा नवीकरण हुन्छन्। तपाईंको {{store}} खातामा कुनै पनि समयमा रद्द गर्नुहोस्।",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "स्वीकृतिको प्रतीक्षामा",
+    "pendingDetail": "तपाईंको सदस्यता स्वीकृतिको प्रतीक्षामा छ (Ask to Buy वा बैंक प्रमाणीकरण)। स्वीकृति भएपछि यो स्वतः सक्रिय हुनेछ।",
+    "storeUnreachable": "अहिले हामी App Store मा पुग्न सकेनौं।",
+    "tryAgain": "फेरि प्रयास गर्नुहोस्"
   },
   "restore": {
     "button": "खरिदहरू पुनर्स्थापना गर्नुहोस्",

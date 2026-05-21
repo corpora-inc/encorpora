@@ -120,7 +120,10 @@
       "noFiltered": "یہاں ابھی کچھ نہیں۔",
       "stackTotalPhrases": "‎~{{count}} جملے مطابقت رکھتے ہیں",
       "stackTotalNudge": "تنوع کے لیے پیک شامل کریں یا سطحیں وسیع کریں۔"
-    }
+    },
+    "sendAnonUsage": "گمنام استعمال کا ڈیٹا بھیجیں",
+    "sendAnonUsageHint": "گمنام، صرف اس سیشن تک محدود۔ نہ اکاؤنٹس، نہ ڈیوائس آئی ڈیز، نہ IP محفوظ کیا جاتا ہے۔ کسی بھی وقت بند کریں۔",
+    "readPrivacyPromise": "ہمارا رازداری کا وعدہ پڑھیں"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -223,7 +226,10 @@
       "offlineHero": "آپ آف لائن ہیں۔",
       "offlineSub": "پیکجز کو انٹرنیٹ درکار ہے — بعد میں ترتیبات → پیکجز سے کوشش کریں۔",
       "offlineBanner": "آف لائن — انتخاب جڑنے پر انسٹال ہوگا۔"
-    }
+    },
+    "notOnAppleIOS": "iOS پر نہیں",
+    "appleNoVoiceTitle": "Apple ابھی {{lang}} کی آواز فراہم نہیں کرتا",
+    "appleNoVoiceBody": "Apple کی accessibility ٹیم کو ایک مختصر نوٹ اس کی ضرورت واضح کرنے میں مدد دیتا ہے۔ اس دوران {{lang}} Android پر مقامی طور پر کام کرتی ہے۔"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "سب دکھائیں ({{count}})",
       "collapseList": "کم دکھائیں",
       "openDrawer": "فریز پیک براؤز کریں ({{count}})",
-      "openDrawerLabel": "فریز پیک براؤز کریں"
+      "openDrawerLabel": "فریز پیک براؤز کریں",
+      "inactiveBadge": "غیر فعال",
+      "moreActionsLabel": "مزید کارروائیاں"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "رازداری کی پالیسی",
     "autoRenewNotice": "سبسکرپشنز خودبخود تجدید ہوتی ہیں۔ اپنے {{store}} اکاؤنٹ سے کسی بھی وقت منسوخ کریں۔",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "منظوری کا انتظار",
+    "pendingDetail": "آپ کی سبسکرپشن منظوری کی منتظر ہے (Ask to Buy یا بینک تصدیق)۔ منظوری ملتے ہی یہ خودکار طور پر فعال ہو جائے گی۔",
+    "storeUnreachable": "ہم ابھی App Store تک نہیں پہنچ سکے۔",
+    "tryAgain": "دوبارہ کوشش کریں"
   },
   "restore": {
     "button": "خریداریاں بحال کریں",

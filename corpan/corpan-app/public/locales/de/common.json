@@ -120,7 +120,10 @@
       "noFiltered": "Hier ist gerade nichts.",
       "stackTotalPhrases": "~{{count}} Phrasen passen",
       "stackTotalNudge": "Mehr Pakete oder mehr Niveaus für Abwechslung."
-    }
+    },
+    "sendAnonUsage": "Anonyme Nutzungsdaten senden",
+    "sendAnonUsageHint": "Anonym, nur für die aktuelle Sitzung. Keine Konten, keine Geräte-IDs, keine IP-Speicherung. Jederzeit abschaltbar.",
+    "readPrivacyPromise": "Unser Datenschutzversprechen lesen"
   },
   "onboarding": {
     "welcome": "Willkommen",
@@ -223,7 +226,10 @@
       "offlineHero": "Du bist offline.",
       "offlineSub": "Pakete brauchen Internet — versuche es später in Einstellungen → Pakete.",
       "offlineBanner": "Offline — Auswahl wird beim Verbinden installiert."
-    }
+    },
+    "notOnAppleIOS": "Nicht auf iOS",
+    "appleNoVoiceTitle": "Apple bietet noch keine {{lang}}-Stimme an",
+    "appleNoVoiceBody": "Ein kurzer Hinweis an Apples Accessibility-Team hilft, den Bedarf zu zeigen. Auf Android funktioniert {{lang}} in der Zwischenzeit nativ."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Alle anzeigen ({{count}})",
       "collapseList": "Weniger anzeigen",
       "openDrawer": "Phrasen-Pakete durchsuchen ({{count}})",
-      "openDrawerLabel": "Phrasen-Pakete durchsuchen"
+      "openDrawerLabel": "Phrasen-Pakete durchsuchen",
+      "inactiveBadge": "Inaktiv",
+      "moreActionsLabel": "Weitere Aktionen"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Datenschutzrichtlinie",
     "autoRenewNotice": "Abonnements verlängern sich automatisch. Jederzeit in deinem {{store}}-Konto kündbar.",
     "storeApple": "Apple-ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Warten auf Bestätigung",
+    "pendingDetail": "Dein Abonnement wartet auf Bestätigung (Kaufanfrage oder Bankprüfung). Es wird nach der Bestätigung automatisch aktiviert.",
+    "storeUnreachable": "Der App Store ist gerade nicht erreichbar.",
+    "tryAgain": "Erneut versuchen"
   },
   "restore": {
     "button": "Käufe wiederherstellen",

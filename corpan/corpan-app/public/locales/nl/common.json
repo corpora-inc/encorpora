@@ -120,7 +120,10 @@
       "noFiltered": "Hier is nu niets.",
       "stackTotalPhrases": "~{{count}} zinnen passen",
       "stackTotalNudge": "Voeg pakketten toe of verbreed de niveaus voor meer variatie."
-    }
+    },
+    "sendAnonUsage": "Anonieme gebruiksgegevens verzenden",
+    "sendAnonUsageHint": "Anoniem, alleen voor deze sessie. Geen accounts, geen apparaat-ID's, geen opslag van IP-adressen. Je kunt dit altijd uitzetten.",
+    "readPrivacyPromise": "Lees onze Privacybelofte"
   },
   "onboarding": {
     "welcome": "Welkom",
@@ -223,7 +226,10 @@
       "offlineHero": "Je bent offline.",
       "offlineSub": "Pakketten hebben internet nodig — probeer later via Instellingen → Pakketten.",
       "offlineBanner": "Offline — selectie installeert na verbinden."
-    }
+    },
+    "notOnAppleIOS": "Niet op iOS",
+    "appleNoVoiceTitle": "Apple biedt nog geen {{lang}}-stem",
+    "appleNoVoiceBody": "Een korte melding aan het toegankelijkheidsteam van Apple helpt om dat te versnellen. Ondertussen werkt {{lang}} standaard op Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Alle tonen ({{count}})",
       "collapseList": "Minder tonen",
       "openDrawer": "Frasenpakketten verkennen ({{count}})",
-      "openDrawerLabel": "Frasenpakketten verkennen"
+      "openDrawerLabel": "Frasenpakketten verkennen",
+      "inactiveBadge": "Inactief",
+      "moreActionsLabel": "Meer acties"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Privacybeleid",
     "autoRenewNotice": "Abonnementen worden automatisch verlengd. Op elk moment opzeggen via uw {{store}}-account.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Wachten op goedkeuring",
+    "pendingDetail": "Je abonnement wacht op goedkeuring (Vraag om te kopen of bankverificatie). Het wordt automatisch geactiveerd zodra het is goedgekeurd.",
+    "storeUnreachable": "We konden de App Store nu niet bereiken.",
+    "tryAgain": "Opnieuw proberen"
   },
   "restore": {
     "button": "Aankopen herstellen",

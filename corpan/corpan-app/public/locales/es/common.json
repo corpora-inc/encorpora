@@ -120,7 +120,10 @@
       "noFiltered": "Nada por aquí ahora.",
       "stackTotalPhrases": "~{{count}} frases coinciden",
       "stackTotalNudge": "Añade paquetes o amplía los niveles para más variedad."
-    }
+    },
+    "sendAnonUsage": "Enviar datos de uso anónimos",
+    "sendAnonUsageHint": "Anónimos y limitados a la sesión. Sin cuentas, sin ID del dispositivo, sin almacenamiento de IP. Puedes desactivarlo en cualquier momento.",
+    "readPrivacyPromise": "Lee nuestra Promesa de privacidad"
   },
   "onboarding": {
     "welcome": "Bienvenido",
@@ -223,7 +226,10 @@
       "offlineHero": "Estás sin conexión.",
       "offlineSub": "Los paquetes necesitan internet — inténtalo más tarde desde Ajustes → Paquetes.",
       "offlineBanner": "Sin conexión — la selección se instalará al reconectar."
-    }
+    },
+    "notOnAppleIOS": "No uso iOS",
+    "appleNoVoiceTitle": "Apple aún no ofrece una voz en {{lang}}",
+    "appleNoVoiceBody": "Una nota breve al equipo de accesibilidad de Apple ayuda a reforzar el caso. Mientras tanto, {{lang}} funciona de forma nativa en Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Mostrar todos ({{count}})",
       "collapseList": "Mostrar menos",
       "openDrawer": "Explorar paquetes de frases ({{count}})",
-      "openDrawerLabel": "Explorar paquetes de frases"
+      "openDrawerLabel": "Explorar paquetes de frases",
+      "inactiveBadge": "Inactivo",
+      "moreActionsLabel": "Más acciones"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Política de privacidad",
     "autoRenewNotice": "Las suscripciones se renuevan automáticamente. Cancela cuando quieras en tu cuenta {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Esperando aprobación",
+    "pendingDetail": "Tu suscripción está pendiente de aprobación (Solicitar compra o verificación bancaria). Se activará automáticamente en cuanto se apruebe.",
+    "storeUnreachable": "No hemos podido acceder al App Store ahora mismo.",
+    "tryAgain": "Reintentar"
   },
   "restore": {
     "button": "Restaurar compras",

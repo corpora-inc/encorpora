@@ -121,7 +121,10 @@
       "noFiltered": "Tu teraz nič nie je.",
       "stackTotalPhrases": "~{{count}} fráz zodpovedá",
       "stackTotalNudge": "Pridaj balíky alebo rozšír úrovne pre väčšiu rozmanitosť."
-    }
+    },
+    "sendAnonUsage": "Posielať anonymné údaje o používaní",
+    "sendAnonUsageHint": "Anonymné, viazané len na reláciu. Žiadne účty, žiadne ID zariadenia, žiadne ukladanie IP. Kedykoľvek môžete vypnúť.",
+    "readPrivacyPromise": "Prečítať si náš prísľub ochrany súkromia"
   },
   "onboarding": {
     "welcome": "Vitajte",
@@ -224,7 +227,10 @@
       "offlineHero": "Si offline.",
       "offlineSub": "Balíčky potrebujú internet — skús neskôr v Nastavenia → Balíčky.",
       "offlineBanner": "Offline — výber sa nainštaluje po pripojení."
-    }
+    },
+    "notOnAppleIOS": "Nie na iOS",
+    "appleNoVoiceTitle": "Apple zatiaľ neponúka hlas pre {{lang}}",
+    "appleNoVoiceBody": "Krátka správa tímu prístupnosti v Apple pomôže posilniť argumenty. Medzitým {{lang}} funguje natívne na Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Zobraziť všetko ({{count}})",
       "collapseList": "Zobraziť menej",
       "openDrawer": "Prehľadávať balíky fráz ({{count}})",
-      "openDrawerLabel": "Prehľadávať balíky fráz"
+      "openDrawerLabel": "Prehľadávať balíky fráz",
+      "inactiveBadge": "Neaktívne",
+      "moreActionsLabel": "Ďalšie akcie"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Zásady ochrany osobných údajov",
     "autoRenewNotice": "Predplatné sa automaticky obnovuje. Zrušiť kedykoľvek vo vašom {{store}} účte.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Čaká sa na schválenie",
+    "pendingDetail": "Vaše predplatné čaká na schválenie (Ask to Buy alebo overenie bankou). Po schválení sa aktivuje automaticky.",
+    "storeUnreachable": "Momentálne sa nám nepodarilo spojiť s App Store.",
+    "tryAgain": "Skúsiť znova"
   },
   "restore": {
     "button": "Obnoviť nákupy",

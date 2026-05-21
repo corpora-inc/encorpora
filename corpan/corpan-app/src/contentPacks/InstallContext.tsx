@@ -1,10 +1,12 @@
 import { createContext, useCallback, useContext, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { installPack, isTauriRuntime } from "./install"
 import { useInstallProgress } from "./installProgress"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { InstallProgressDialog } from "@/components/packs/InstallProgressDialog"
 import type { CatalogGame } from "./catalog"
 import type { PhrasePackCatalogEntry } from "./phrasePackCatalog"
+import { resolveLocalized } from "./localized"
 import type { InstallSource } from "./install"
 
 export type BatchInstallProgress = {
@@ -70,6 +72,7 @@ export function InstallProvider({
 }) {
   const { state, startListening, setComplete, setError, reset } =
     useInstallProgress()
+  const { i18n } = useTranslation()
   const addGame = useGamesStore((s) => s.addGame)
   const [installing, setInstalling] = useState(false)
   const [batchProgress, setBatchProgress] = useState<BatchInstallProgress | null>(null)
@@ -155,17 +158,32 @@ export function InstallProvider({
         return
       }
       retryRef.current = { type: "catalog", pack }
+      // Resolve the pack's name + description into the active UI
+      // language so the install progress dialog (and the persisted
+      // InstalledGame record's `name`) show the user-facing string they
+      // actually saw on the pack card.
+      const lang = i18n.language || "en"
+      const localizedName = resolveLocalized(
+        pack.nameLocalized,
+        pack.name ?? pack.id,
+        lang,
+      )
+      const localizedDescription = resolveLocalized(
+        pack.descriptionLocalized,
+        pack.description ?? "",
+        lang,
+      )
       await doInstall(
         pack.manifestUrl,
         "catalog",
-        pack.name ?? pack.id,
+        localizedName,
         pack.version,
         undefined,
         pack.imageUrl,
-        pack.description,
+        localizedDescription || pack.description,
       )
     },
-    [doInstall, setError]
+    [doInstall, setError, i18n.language]
   )
 
   const installDevPack = useCallback(
@@ -198,6 +216,7 @@ export function InstallProvider({
         return { installed, failed }
       }
       setInstalling(true)
+      const lang = i18n.language || "en"
       try {
         for (let i = 0; i < packs.length; i += 1) {
           const pack = packs[i]
@@ -205,7 +224,11 @@ export function InstallProvider({
             current: i + 1,
             total: packs.length,
             packId: pack.id,
-            packName: pack.name,
+            packName: resolveLocalized(
+              pack.nameLocalized,
+              pack.name,
+              lang,
+            ),
           })
           const downloadUrl = pack.zipUrl
           if (!downloadUrl) {
@@ -234,7 +257,7 @@ export function InstallProvider({
       }
       return { installed, failed }
     },
-    [],
+    [i18n.language],
   )
 
   const handleClose = useCallback(() => {

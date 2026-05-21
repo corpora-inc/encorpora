@@ -15,6 +15,8 @@ import { Play } from "lucide-react";
 
 import type { InstalledGame } from "@/store/games";
 import type { PackUpdate } from "@/hooks/usePackUpdates";
+import { useCatalogStore } from "@/store/catalog";
+import { resolveLocalized } from "@/contentPacks/localized";
 
 // Keep up to 8 in memory and let the grid + responsive `hidden` utilities
 // below pick a row-filling subset per breakpoint:
@@ -101,7 +103,19 @@ function RecentTile({
      *  for the breakpoint table. */
     extraClassName?: string;
 }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    // Pick the localized name from the in-memory catalog when available
+    // — installed-game records only persist the English `name` (we don't
+    // migrate localStorage just for this), so the catalog is the source
+    // of localized strings.
+    const catalogEntry = useCatalogStore((s) =>
+        s.getCatalog().find((c) => c.id === game.id),
+    );
+    const displayName = resolveLocalized(
+        catalogEntry?.nameLocalized,
+        catalogEntry?.name || game.name,
+        i18n.language || "en",
+    );
     const handleClick = () => onLaunch?.(game);
 
     return (
@@ -110,7 +124,7 @@ function RecentTile({
             onClick={handleClick}
             aria-label={t("packs.openPack", {
                 defaultValue: "Open {{name}}",
-                name: game.name,
+                name: displayName,
             })}
             className={[
                 "group relative flex items-center gap-2 rounded-lg border bg-card/80 px-3 py-2.5 text-start",
@@ -130,7 +144,7 @@ function RecentTile({
             </span>
             <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-foreground">
-                    {game.name}
+                    {displayName}
                 </span>
             </span>
             {/* Update-available dot. Subtle — full update controls live on

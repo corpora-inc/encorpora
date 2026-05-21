@@ -120,7 +120,10 @@
       "noFiltered": "ตอนนี้ไม่มีอะไรที่นี่",
       "stackTotalPhrases": "~{{count}} วลีที่ตรงกัน",
       "stackTotalNudge": "เพิ่มชุดหรือขยายระดับเพื่อความหลากหลาย"
-    }
+    },
+    "sendAnonUsage": "ส่งข้อมูลการใช้งานแบบไม่ระบุตัวตน",
+    "sendAnonUsageHint": "ไม่ระบุตัวตนและจำกัดเฉพาะเซสชัน ไม่มีบัญชี ไม่มีรหัสอุปกรณ์ และไม่เก็บ IP ปิดได้ทุกเมื่อ",
+    "readPrivacyPromise": "อ่านคำมั่นด้านความเป็นส่วนตัวของเรา"
   },
   "onboarding": {
     "welcome": "ยินดีต้อนรับ",
@@ -223,7 +226,10 @@
       "offlineHero": "คุณออฟไลน์อยู่",
       "offlineSub": "ชุดต้องใช้อินเทอร์เน็ต — ลองอีกครั้งจากการตั้งค่า → ชุด",
       "offlineBanner": "ออฟไลน์ — รายการที่เลือกจะติดตั้งเมื่อเชื่อมต่อ"
-    }
+    },
+    "notOnAppleIOS": "ไม่ได้ใช้ iOS",
+    "appleNoVoiceTitle": "Apple ยังไม่มีเสียง {{lang}} มาให้",
+    "appleNoVoiceBody": "การส่งข้อความสั้น ๆ ถึงทีมการช่วยการเข้าถึงของ Apple จะช่วยสนับสนุนเรื่องนี้ได้ ระหว่างนี้ {{lang}} ใช้งานได้แบบเนทีฟบน Android"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "แสดงทั้งหมด ({{count}})",
       "collapseList": "ย่อ",
       "openDrawer": "เรียกดูชุดวลี ({{count}})",
-      "openDrawerLabel": "เรียกดูชุดวลี"
+      "openDrawerLabel": "เรียกดูชุดวลี",
+      "inactiveBadge": "ไม่เปิดใช้งาน",
+      "moreActionsLabel": "การดำเนินการเพิ่มเติม"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "autoRenewNotice": "การสมัครสมาชิกจะต่ออายุโดยอัตโนมัติ ยกเลิกได้ตลอดเวลาในบัญชี {{store}} ของคุณ",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "กำลังรอการอนุมัติ",
+    "pendingDetail": "การสมัครของคุณกำลังรอการอนุมัติ (Ask to Buy หรือการยืนยันจากธนาคาร) และจะเปิดใช้งานอัตโนมัติเมื่ออนุมัติแล้ว",
+    "storeUnreachable": "เราไม่สามารถเชื่อมต่อกับ App Store ได้ในขณะนี้",
+    "tryAgain": "ลองอีกครั้ง"
   },
   "restore": {
     "button": "กู้คืนการซื้อ",

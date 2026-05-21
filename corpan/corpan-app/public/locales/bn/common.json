@@ -120,7 +120,10 @@
       "noFiltered": "এখানে এখন কিছু নেই।",
       "stackTotalPhrases": "~{{count}} বাক্যাংশ মেলে",
       "stackTotalNudge": "বৈচিত্র্যের জন্য প্যাক যোগ করুন বা স্তর বাড়ান।"
-    }
+    },
+    "sendAnonUsage": "বেনামী ব্যবহার-তথ্য পাঠান",
+    "sendAnonUsageHint": "বেনামী, সেশন-ভিত্তিক। কোনো অ্যাকাউন্ট নেই, ডিভাইস আইডি নেই, IP সংরক্ষণ নেই। যেকোনো সময় বন্ধ করতে পারেন।",
+    "readPrivacyPromise": "আমাদের গোপনীয়তা প্রতিশ্রুতি পড়ুন"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
@@ -223,7 +226,10 @@
       "offlineHero": "আপনি অফলাইন।",
       "offlineSub": "প্যাকের জন্য ইন্টারনেট দরকার — পরে সেটিংস → প্যাক থেকে চেষ্টা করুন।",
       "offlineBanner": "অফলাইন — সংযোগে নির্বাচন ইনস্টল হবে।"
-    }
+    },
+    "notOnAppleIOS": "iOS-এ নয়",
+    "appleNoVoiceTitle": "Apple এখনও {{lang}} ভয়েস দেয় না",
+    "appleNoVoiceBody": "Apple-এর অ্যাক্সেসিবিলিটি টিমকে একটি ছোট বার্তা পাঠালে বিষয়টি এগোতে সাহায্য হবে। এর মধ্যে {{lang}} Android-এ স্বাভাবিকভাবেই কাজ করে।"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "সব দেখান ({{count}})",
       "collapseList": "কম দেখান",
       "openDrawer": "ফ্রেজ প্যাক ব্রাউজ করুন ({{count}})",
-      "openDrawerLabel": "ফ্রেজ প্যাক ব্রাউজ করুন"
+      "openDrawerLabel": "ফ্রেজ প্যাক ব্রাউজ করুন",
+      "inactiveBadge": "নিষ্ক্রিয়",
+      "moreActionsLabel": "আরও কাজ"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "গোপনীয়তা নীতি",
     "autoRenewNotice": "সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হয়। আপনার {{store}} অ্যাকাউন্টে যেকোনো সময় বাতিল করুন।",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "অনুমোদনের অপেক্ষায়",
+    "pendingDetail": "আপনার সাবস্ক্রিপশন অনুমোদনের অপেক্ষায় আছে (Ask to Buy বা ব্যাংক যাচাই)। অনুমোদন হলেই এটি স্বয়ংক্রিয়ভাবে সক্রিয় হবে।",
+    "storeUnreachable": "এই মুহূর্তে আমরা App Store-এ পৌঁছাতে পারছি না।",
+    "tryAgain": "আবার চেষ্টা করুন"
   },
   "restore": {
     "button": "ক্রয় পুনরুদ্ধার",

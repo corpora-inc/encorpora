@@ -120,7 +120,10 @@
       "noFiltered": "ਇੱਥੇ ਹੁਣ ਕੁਝ ਨਹੀਂ।",
       "stackTotalPhrases": "~{{count}} ਜੁਮਲੇ ਮੇਲ ਖਾਂਦੇ ਹਨ",
       "stackTotalNudge": "ਵੰਨ-ਸੁਵੰਨਤਾ ਲਈ ਪੈਕ ਜੋੜੋ ਜਾਂ ਪੱਧਰ ਵਧਾਓ।"
-    }
+    },
+    "sendAnonUsage": "ਅਗਿਆਤ ਵਰਤੋਂ ਡਾਟਾ ਭੇਜੋ",
+    "sendAnonUsageHint": "ਅਗਿਆਤ, ਸੈਸ਼ਨ-ਹੱਦ ਤੱਕ। ਕੋਈ ਖਾਤੇ ਨਹੀਂ, ਕੋਈ ਡਿਵਾਈਸ ਆਈਡੀ ਨਹੀਂ, ਕੋਈ IP ਸਟੋਰੇਜ ਨਹੀਂ। ਕਦੇ ਵੀ ਬੰਦ ਕਰੋ।",
+    "readPrivacyPromise": "ਸਾਡਾ ਪਰਦੇਦਾਰੀ ਵਾਅਦਾ ਪੜ੍ਹੋ"
   },
   "onboarding": {
     "welcome": "ਸਵਾਗਤ",
@@ -223,7 +226,10 @@
       "offlineHero": "ਤੁਸੀਂ ਆਫਲਾਈਨ ਹੋ।",
       "offlineSub": "ਪੈਕਾਂ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ — ਬਾਅਦ ਵਿੱਚ ਸੈਟਿੰਗਾਂ → ਪੈਕ ਤੋਂ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
       "offlineBanner": "ਆਫਲਾਈਨ — ਕੁਨੈਕਟ ਹੋਣ 'ਤੇ ਚੁਣੇ ਹੋਏ ਪੈਕ ਇੰਸਟਾਲ ਹੋਣਗੇ।"
-    }
+    },
+    "notOnAppleIOS": "iOS 'ਤੇ ਨਹੀਂ",
+    "appleNoVoiceTitle": "Apple ਹਾਲੇ {{lang}} ਆਵਾਜ਼ ਨਹੀਂ ਦਿੰਦਾ",
+    "appleNoVoiceBody": "Apple ਦੀ ਐਕਸੈਸਬਿਲਟੀ ਟੀਮ ਲਈ ਇੱਕ ਛੋਟੀ ਨੋਟ ਇਸ ਮਾਮਲੇ ਨੂੰ ਮਜ਼ਬੂਤ ਕਰਦੀ ਹੈ। ਇਸ ਵਿਚਕਾਰ {{lang}} Android 'ਤੇ ਮੂਲ ਤੌਰ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ।"
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "ਸਾਰੇ ਵਿਖਾਓ ({{count}})",
       "collapseList": "ਘੱਟ ਵਿਖਾਓ",
       "openDrawer": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ ({{count}})",
-      "openDrawerLabel": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ"
+      "openDrawerLabel": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ",
+      "inactiveBadge": "ਗੈਰ-ਸਰਗਰਮ",
+      "moreActionsLabel": "ਹੋਰ ਕਾਰਵਾਈਆਂ"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ",
     "autoRenewNotice": "ਸਬਸਕ੍ਰਿਪਸ਼ਨਾਂ ਆਪਣੇ ਆਪ ਨਵਿਆਈਆਂ ਜਾਂਦੀਆਂ ਹਨ। ਆਪਣੇ {{store}} ਖਾਤੇ ਵਿੱਚ ਕਿਸੇ ਵੀ ਸਮੇਂ ਰੱਦ ਕਰੋ।",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ",
+    "pendingDetail": "ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਵਿੱਚ ਹੈ (Ask to Buy ਜਾਂ ਬੈਂਕ ਤਸਦੀਕ)। ਮਨਜ਼ੂਰੀ ਮਿਲਦੇ ਹੀ ਇਹ ਆਪਣੇ ਆਪ ਸਰਗਰਮ ਹੋ ਜਾਵੇਗੀ।",
+    "storeUnreachable": "ਅਸੀਂ ਇਸ ਵੇਲੇ App Store ਤੱਕ ਨਹੀਂ ਪਹੁੰਚ ਸਕੇ।",
+    "tryAgain": "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
   },
   "restore": {
     "button": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰੋ",

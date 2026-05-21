@@ -121,7 +121,10 @@
       "noFiltered": "Čia dabar nieko.",
       "stackTotalPhrases": "~{{count}} frazių atitinka",
       "stackTotalNudge": "Pridėk paketų arba praplėsk lygius dėl įvairovės."
-    }
+    },
+    "sendAnonUsage": "Siųsti anoniminius naudojimo duomenis",
+    "sendAnonUsageHint": "Anonimiška, tik sesijos metu. Jokių paskyrų, jokių įrenginio ID, jokio IP saugojimo. Galite bet kada išjungti.",
+    "readPrivacyPromise": "Skaityti mūsų privatumo pažadą"
   },
   "onboarding": {
     "welcome": "Sveiki atvykę",
@@ -224,7 +227,10 @@
       "offlineHero": "Esi neprisijungęs.",
       "offlineSub": "Paketams reikia interneto — bandyk vėliau iš Nustatymai → Paketai.",
       "offlineBanner": "Neprisijungta — pasirinkimai bus įdiegti prisijungus."
-    }
+    },
+    "notOnAppleIOS": "Ne iOS",
+    "appleNoVoiceTitle": "Apple dar nesiūlo {{lang}} balso",
+    "appleNoVoiceBody": "Trumpa žinutė Apple prieinamumo komandai padeda parodyti poreikį. Tuo tarpu {{lang}} natūraliai veikia Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Rodyti visus ({{count}})",
       "collapseList": "Rodyti mažiau",
       "openDrawer": "Naršyti frazių paketus ({{count}})",
-      "openDrawerLabel": "Naršyti frazių paketus"
+      "openDrawerLabel": "Naršyti frazių paketus",
+      "inactiveBadge": "Neaktyvu",
+      "moreActionsLabel": "Daugiau veiksmų"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Privatumo politika",
     "autoRenewNotice": "Prenumeratos atsinaujina automatiškai. Atšaukite bet kada savo {{store}} paskyroje.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Laukiama patvirtinimo",
+    "pendingDetail": "Jūsų prenumerata laukia patvirtinimo („Ask to Buy“ arba banko patikra). Patvirtinus ji bus aktyvuota automatiškai.",
+    "storeUnreachable": "Šiuo metu nepavyko pasiekti App Store.",
+    "tryAgain": "Bandyti dar kartą"
   },
   "restore": {
     "button": "Atkurti pirkimus",

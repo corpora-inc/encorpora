@@ -121,7 +121,10 @@
       "noFiltered": "Tukaj zdaj ni ničesar.",
       "stackTotalPhrases": "~{{count}} fraz ustreza",
       "stackTotalNudge": "Dodaj pakete ali razširi ravni za večjo raznolikost."
-    }
+    },
+    "sendAnonUsage": "Pošlji anonimne podatke o uporabi",
+    "sendAnonUsageHint": "Anonimno, omejeno na sejo. Brez računov, brez ID-jev naprav, brez shranjevanja naslovov IP. Kadar koli lahko izklopite.",
+    "readPrivacyPromise": "Preberite našo obljubo o zasebnosti"
   },
   "onboarding": {
     "welcome": "Dobrodošli",
@@ -224,7 +227,10 @@
       "offlineHero": "Si brez povezave.",
       "offlineSub": "Paketi potrebujejo internet — poskusi pozneje v Nastavitve → Paketi.",
       "offlineBanner": "Brez povezave — izbor se namesti ob ponovni povezavi."
-    }
+    },
+    "notOnAppleIOS": "Ni na iOS",
+    "appleNoVoiceTitle": "Apple še nima glasu za {{lang}}",
+    "appleNoVoiceBody": "Kratek zapis Applovi ekipi za dostopnost pomaga podpreti ta primer. Medtem pa {{lang}} v Android deluje izvorno."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Pokaži vse ({{count}})",
       "collapseList": "Pokaži manj",
       "openDrawer": "Brskaj po paketih fraz ({{count}})",
-      "openDrawerLabel": "Brskaj po paketih fraz"
+      "openDrawerLabel": "Brskaj po paketih fraz",
+      "inactiveBadge": "Neaktivno",
+      "moreActionsLabel": "Več dejanj"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Politika zasebnosti",
     "autoRenewNotice": "Naročnine se samodejno obnavljajo. Prekliči kadarkoli v svojem {{store}} računu.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Čakanje na odobritev",
+    "pendingDetail": "Vaša naročnina čaka na odobritev (Ask to Buy ali preverjanje pri banki). Ko bo odobrena, se bo samodejno aktivirala.",
+    "storeUnreachable": "Trenutno ne moremo vzpostaviti povezave z App Store.",
+    "tryAgain": "Poskusi znova"
   },
   "restore": {
     "button": "Obnovi nakupe",

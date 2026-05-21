@@ -16,6 +16,7 @@ import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
+import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
 import {
@@ -71,7 +72,7 @@ function pickRom(map: Record<string, string | undefined>, uiCode: string): strin
 /* --------------------------- UI subcomponents -------------------------- */
 
 function MetaChips({ entry }: { entry: EntryOut }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     // Phrase-pack entries carry no `domains` (that axis only exists in the
     // bundled corpus). For them we render the pack's topic + accent color
     // in the same chip slot so the user always sees what corpus the phrase
@@ -83,8 +84,15 @@ function MetaChips({ entry }: { entry: EntryOut }) {
             ? s.installed[entry.source]
             : undefined,
     );
+    const lang = i18n.language || "en";
+    const localizedTopic = pack
+        ? resolveLocalized(pack.topicLocalized, pack.topic ?? "", lang)
+        : "";
+    const localizedName = pack
+        ? resolveLocalized(pack.nameLocalized, pack.name, lang)
+        : "";
     const packLabel = pack
-        ? (pack.topic || pack.name || entry.source)
+        ? (localizedTopic || localizedName || entry.source)
         : undefined;
     return (
         <div
@@ -108,7 +116,7 @@ function MetaChips({ entry }: { entry: EntryOut }) {
                         // The pack's own `accent_color` is reserved for the
                         // pack picker / catalog UI where it gets to breathe.
                         className="px-2 py-0.5 rounded-md border border-purple-400/60 bg-purple-500/[0.08] text-purple-500 text-xs"
-                        title={pack?.name}
+                        title={localizedName || pack?.name}
                     >
                         {packLabel}
                     </span>

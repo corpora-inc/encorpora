@@ -120,7 +120,10 @@
       "noFiltered": "Nada por aqui agora.",
       "stackTotalPhrases": "~{{count}} frases correspondem",
       "stackTotalNudge": "Adicione pacotes ou amplie os níveis para mais variedade."
-    }
+    },
+    "sendAnonUsage": "Enviar dados de uso anônimos",
+    "sendAnonUsageHint": "Anônimos e limitados à sessão. Sem contas, sem IDs do dispositivo, sem armazenamento de IP. Desative quando quiser.",
+    "readPrivacyPromise": "Ler nossa Promessa de Privacidade"
   },
   "onboarding": {
     "welcome": "Bem-vindo",
@@ -223,7 +226,10 @@
       "offlineHero": "Você está offline.",
       "offlineSub": "Os pacotes precisam de internet — tente mais tarde em Configurações → Pacotes.",
       "offlineBanner": "Offline — a seleção será instalada ao reconectar."
-    }
+    },
+    "notOnAppleIOS": "Não está no iOS",
+    "appleNoVoiceTitle": "A Apple ainda não oferece uma voz em {{lang}}",
+    "appleNoVoiceBody": "Um recado rápido para a equipe de acessibilidade da Apple ajuda a reforçar esse pedido. Enquanto isso, {{lang}} funciona nativamente no Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Mostrar todos ({{count}})",
       "collapseList": "Mostrar menos",
       "openDrawer": "Explorar pacotes de frases ({{count}})",
-      "openDrawerLabel": "Explorar pacotes de frases"
+      "openDrawerLabel": "Explorar pacotes de frases",
+      "inactiveBadge": "Inativo",
+      "moreActionsLabel": "Mais ações"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Política de privacidade",
     "autoRenewNotice": "As assinaturas renovam automaticamente. Cancele quando quiser na sua conta {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Aguardando aprovação",
+    "pendingDetail": "Sua assinatura está aguardando aprovação (Solicitar compra ou verificação bancária). Ela será ativada automaticamente assim que for aprovada.",
+    "storeUnreachable": "Não foi possível acessar a App Store agora.",
+    "tryAgain": "Tentar novamente"
   },
   "restore": {
     "button": "Restaurar compras",

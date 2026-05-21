@@ -121,7 +121,10 @@
       "noFiltered": "Res per aquí ara mateix.",
       "stackTotalPhrases": "~{{count}} frases coincideixen",
       "stackTotalNudge": "Afegeix paquets o amplia els nivells per a més varietat."
-    }
+    },
+    "sendAnonUsage": "Envia dades d'ús anònimes",
+    "sendAnonUsageHint": "Anònimes i limitades a la sessió. Sense comptes, sense identificadors del dispositiu i sense emmagatzemar IP. Pots desactivar-ho en qualsevol moment.",
+    "readPrivacyPromise": "Llegeix la nostra promesa de privacitat"
   },
   "onboarding": {
     "welcome": "Benvingut",
@@ -224,7 +227,10 @@
       "offlineHero": "Estàs sense connexió.",
       "offlineSub": "Els paquets necessiten internet — torna-ho a provar des de Configuració → Paquets.",
       "offlineBanner": "Sense connexió — la selecció s'instal·larà en reconnectar."
-    }
+    },
+    "notOnAppleIOS": "No tens iOS",
+    "appleNoVoiceTitle": "Apple encara no ofereix una veu en {{lang}}",
+    "appleNoVoiceBody": "Una nota breu a l'equip d'accessibilitat d'Apple ajuda a reforçar-ne la necessitat. Mentrestant, {{lang}} funciona de manera nativa a Android."
   },
   "socials": {
     "youtube": {
@@ -473,7 +479,9 @@
       "showAll": "Mostra-ho tot ({{count}})",
       "collapseList": "Mostra menys",
       "openDrawer": "Explora paquets de frases ({{count}})",
-      "openDrawerLabel": "Explora paquets de frases"
+      "openDrawerLabel": "Explora paquets de frases",
+      "inactiveBadge": "Inactiu",
+      "moreActionsLabel": "Més accions"
     }
   },
   "subscription": {
@@ -490,7 +498,11 @@
     "privacyPolicy": "Política de privadesa",
     "autoRenewNotice": "Les subscripcions es renoven automàticament. Cancel·la en qualsevol moment al teu compte de {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Esperant aprovació",
+    "pendingDetail": "La teva subscripció està pendent d'aprovació (Demanar per comprar o verificació bancària). S'activarà automàticament quan s'aprovi.",
+    "storeUnreachable": "Ara mateix no hem pogut connectar amb l'App Store.",
+    "tryAgain": "Torna-ho a provar"
   },
   "restore": {
     "button": "Restaura compres",

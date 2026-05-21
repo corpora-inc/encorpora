@@ -120,7 +120,10 @@
       "noFiltered": "Burada şu an bir şey yok.",
       "stackTotalPhrases": "~{{count}} ifade eşleşiyor",
       "stackTotalNudge": "Çeşitlilik için paket ekle veya seviyeleri genişlet."
-    }
+    },
+    "sendAnonUsage": "Anonim kullanım verilerini gönder",
+    "sendAnonUsageHint": "Anonim, oturumla sınırlı. Hesap yok, cihaz kimliği yok, IP saklanmaz. İstediğiniz zaman kapatabilirsiniz.",
+    "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun"
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",
@@ -223,7 +226,10 @@
       "offlineHero": "Çevrimdışısın.",
       "offlineSub": "Paketler internet gerektirir — Ayarlar → Paketler'den sonra dene.",
       "offlineBanner": "Çevrimdışı — seçim bağlanınca yüklenir."
-    }
+    },
+    "notOnAppleIOS": "iOS'ta değil",
+    "appleNoVoiceTitle": "Apple henüz {{lang}} sesi sunmuyor",
+    "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Tümünü göster ({{count}})",
       "collapseList": "Daha az göster",
       "openDrawer": "Cümle paketlerine göz at ({{count}})",
-      "openDrawerLabel": "Cümle paketlerine göz at"
+      "openDrawerLabel": "Cümle paketlerine göz at",
+      "inactiveBadge": "Etkin değil",
+      "moreActionsLabel": "Diğer işlemler"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Gizlilik Politikası",
     "autoRenewNotice": "Abonelikler otomatik olarak yenilenir. {{store}} hesabınızdan istediğiniz zaman iptal edebilirsiniz.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Onay bekleniyor",
+    "pendingDetail": "Aboneliğiniz onay bekliyor (Satın Alma İzni veya banka doğrulaması). Onaylandıktan sonra otomatik olarak etkinleşecektir.",
+    "storeUnreachable": "Şu anda App Store'a ulaşamadık.",
+    "tryAgain": "Tekrar dene"
   },
   "restore": {
     "button": "Satın alımları geri yükle",

@@ -120,7 +120,10 @@
       "noFiltered": "અહીં અત્યારે કંઈ નથી.",
       "stackTotalPhrases": "~{{count}} વાક્યો મેળ ખાય છે",
       "stackTotalNudge": "વિવિધતા માટે પેક ઉમેરો અથવા સ્તર વધારો."
-    }
+    },
+    "sendAnonUsage": "અનામી ઉપયોગ ડેટા મોકલો",
+    "sendAnonUsageHint": "અનામી, સત્ર-મર્યાદિત. કોઈ એકાઉન્ટ નહીં, કોઈ ડિવાઇસ ID નહીં, IP સંગ્રહ નહીં. ક્યારે પણ બંધ કરો.",
+    "readPrivacyPromise": "અમારું Privacy Promise વાંચો"
   },
   "onboarding": {
     "welcome": "સ્વાગત",
@@ -223,7 +226,10 @@
       "offlineHero": "તમે ઓફલાઇન છો.",
       "offlineSub": "પેક માટે ઈન્ટરનેટ જરૂરી છે — પછી સેટિંગ્સ → પેક્સ થી પ્રયત્ન કરો.",
       "offlineBanner": "ઓફલાઇન — જોડાય ત્યારે પસંદગીઓ ઇન્સ્ટોલ થશે."
-    }
+    },
+    "notOnAppleIOS": "iOS પર નથી",
+    "appleNoVoiceTitle": "Apple પાસે હજી {{lang}} માટે અવાજ ઉપલબ્ધ નથી",
+    "appleNoVoiceBody": "Appleની accessibility ટીમને એક ટૂંકી નોંધ મોકલવાથી મામલો આગળ વધે છે. તાત્કાલિક માટે Android પર {{lang}} મૂળભૂત રીતે કામ કરે છે."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "બધા બતાવો ({{count}})",
       "collapseList": "ઓછું બતાવો",
       "openDrawer": "ફ્રેઝ પેક બ્રાઉઝ કરો ({{count}})",
-      "openDrawerLabel": "ફ્રેઝ પેક બ્રાઉઝ કરો"
+      "openDrawerLabel": "ફ્રેઝ પેક બ્રાઉઝ કરો",
+      "inactiveBadge": "નિષ્ક્રિય",
+      "moreActionsLabel": "વધુ ક્રિયાઓ"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "ગોપનીયતા નીતિ",
     "autoRenewNotice": "સબ્સ્ક્રિપ્શન્સ આપમેળે રિન્યૂ થાય છે. તમારા {{store}} એકાઉન્ટમાં ગમે ત્યારે રદ કરો.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "મંજૂરીની રાહમાં",
+    "pendingDetail": "તમારી સબ્સ્ક્રિપ્શન મંજૂરીની રાહમાં છે (Ask to Buy અથવા બેંક ચકાસણી). મંજૂરી મળતાં જ તે આપમેળે સક્રિય થશે.",
+    "storeUnreachable": "હમણાં App Store સુધી પહોંચી શક્યા નથી.",
+    "tryAgain": "ફરી પ્રયાસ કરો"
   },
   "restore": {
     "button": "ખરીદીઓ પુનઃસ્થાપિત કરો",

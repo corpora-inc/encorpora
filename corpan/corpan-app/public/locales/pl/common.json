@@ -120,7 +120,10 @@
       "noFiltered": "Pusto tutaj.",
       "stackTotalPhrases": "~{{count}} fraz pasuje",
       "stackTotalNudge": "Dodaj paczki lub poszerz poziomy, aby zwiększyć różnorodność."
-    }
+    },
+    "sendAnonUsage": "Wysyłaj anonimowe dane o użyciu",
+    "sendAnonUsageHint": "Anonimowe, tylko w ramach sesji. Bez kont, bez identyfikatorów urządzenia, bez zapisywania adresów IP. Możesz wyłączyć w każdej chwili.",
+    "readPrivacyPromise": "Przeczytaj naszą obietnicę prywatności"
   },
   "onboarding": {
     "welcome": "Witamy",
@@ -223,7 +226,10 @@
       "offlineHero": "Jesteś offline.",
       "offlineSub": "Pakiety wymagają internetu — spróbuj później w Ustawienia → Pakiety.",
       "offlineBanner": "Offline — wybór zainstaluje się po połączeniu."
-    }
+    },
+    "notOnAppleIOS": "Nie na iOS",
+    "appleNoVoiceTitle": "Apple nie udostępnia jeszcze głosu dla {{lang}}",
+    "appleNoVoiceBody": "Krótka wiadomość do zespołu Apple ds. dostępności pomaga pokazać zapotrzebowanie. Tymczasem {{lang}} działa natywnie na Android."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Pokaż wszystkie ({{count}})",
       "collapseList": "Pokaż mniej",
       "openDrawer": "Przeglądaj paczki fraz ({{count}})",
-      "openDrawerLabel": "Przeglądaj paczki fraz"
+      "openDrawerLabel": "Przeglądaj paczki fraz",
+      "inactiveBadge": "Nieaktywne",
+      "moreActionsLabel": "Więcej działań"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Polityka prywatności",
     "autoRenewNotice": "Subskrypcje odnawiają się automatycznie. Anuluj w dowolnym momencie w koncie {{store}}.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Oczekiwanie na zatwierdzenie",
+    "pendingDetail": "Twoja subskrypcja czeka na zatwierdzenie (Ask to Buy lub weryfikacja bankowa). Włączy się automatycznie po zatwierdzeniu.",
+    "storeUnreachable": "Nie udało się teraz połączyć z App Store.",
+    "tryAgain": "Spróbuj ponownie"
   },
   "restore": {
     "button": "Przywróć zakupy",

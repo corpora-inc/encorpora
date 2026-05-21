@@ -120,7 +120,10 @@
       "noFiltered": "Inget här just nu.",
       "stackTotalPhrases": "~{{count}} fraser matchar",
       "stackTotalNudge": "Lägg till paket eller bredda nivåerna för mer variation."
-    }
+    },
+    "sendAnonUsage": "Skicka anonym användningsdata",
+    "sendAnonUsageHint": "Anonymt och knutet till sessionen. Inga konton, inga enhets-ID:n, ingen lagring av IP-adresser. Stäng av när som helst.",
+    "readPrivacyPromise": "Läs vårt integritetslöfte"
   },
   "onboarding": {
     "welcome": "Välkommen",
@@ -223,7 +226,10 @@
       "offlineHero": "Du är offline.",
       "offlineSub": "Paketen behöver internet — försök senare via Inställningar → Paket.",
       "offlineBanner": "Offline — urvalet installeras vid återanslutning."
-    }
+    },
+    "notOnAppleIOS": "Inte på iOS",
+    "appleNoVoiceTitle": "Apple har ännu ingen röst för {{lang}}",
+    "appleNoVoiceBody": "En kort notis till Apples tillgänglighetsteam hjälper till att stärka saken. {{lang}} fungerar inbyggt på Android så länge."
   },
   "socials": {
     "youtube": {
@@ -472,7 +478,9 @@
       "showAll": "Visa alla ({{count}})",
       "collapseList": "Visa färre",
       "openDrawer": "Bläddra bland fraspaket ({{count}})",
-      "openDrawerLabel": "Bläddra bland fraspaket"
+      "openDrawerLabel": "Bläddra bland fraspaket",
+      "inactiveBadge": "Inaktiv",
+      "moreActionsLabel": "Fler åtgärder"
     }
   },
   "subscription": {
@@ -489,7 +497,11 @@
     "privacyPolicy": "Integritetspolicy",
     "autoRenewNotice": "Prenumerationer förnyas automatiskt. Avbryt när som helst i ditt {{store}}-konto.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Väntar på godkännande",
+    "pendingDetail": "Din prenumeration väntar på godkännande (Be om att få köpa eller bankverifiering). Den aktiveras automatiskt när den har godkänts.",
+    "storeUnreachable": "Vi kunde inte nå App Store just nu.",
+    "tryAgain": "Försök igen"
   },
   "restore": {
     "button": "Återställ köp",
