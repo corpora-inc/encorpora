@@ -10,6 +10,58 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-21 — Melopán
+
+### Added
+- **Name now reads "Melopán"** (acute accent on the final á) everywhere
+  it's displayed — top brand and footer build label. Pack `id` stays
+  `melopan` so file paths and the host SDK contract are unchanged.
+- **BPM ± stepper.** No more mid-keystroke clamp to 40 / 240 — the
+  input now holds a local draft and only commits on blur / Enter, with
+  dedicated −/+ buttons for fine control.
+- **Time signature actually changes the pattern length.** 3/4 = 12,
+  4/4 = 16, 5/4 = 20, 6/8 = 12, 7/8 = 14, 9/8 = 18 (new). Step arrays
+  for every track (drums, voice tracks, synth notes) resize on
+  signature change — padding with rests when growing, truncating when
+  shrinking.
+- **Second voice track.** Each voice track now carries its own
+  `voice` / `word` / `pitchSemis`, so two voices can layer in the
+  sequencer. Track ids: `voice1`, `voice2`. Engine spins up a separate
+  `VoicePad` per track; App.tsx loads samples for both and tracks blob
+  URLs per track. Persisted projects from v0.1.x migrate cleanly via
+  `migrateSchema1To2` — the old single voice pad becomes `voice1`,
+  `voice2` ships empty for the user to fill.
+- **Piano roll scale modulation.** Long-press a key label (480 ms) to
+  open a ♭ / ♮ / ♯ popover that shifts that row's effective pitch by
+  -1 / 0 / +1 semitones. Stored as `synth.accidentals`; applied at
+  trigger time so changing the accidental retroactively shifts all
+  notes on that row.
+- **VS Code-style resizable panels.** Drag the bar between StepGrid /
+  PianoRoll / Voice Pads to resize each section; heights persist in
+  the project.
+
+### Changed
+- **Hi-hat audibility.** The hat was running −6 dB through the bus
+  AND multiplied by 0.4 effective velocity, which on a phone speaker
+  was inaudible. Bumped the bus to 0 dB, raised the effective velocity
+  floor, added a 6 kHz high-pass for clarity, and bumped MetalSynth
+  resonance / decay.
+- **Voice pad layout.** Pitch slider is now the dominant full-width
+  control on its own row; the standalone "▶ preview" button is gone
+  (it didn't work for first-touch anyway — `decodeAudioData` needs
+  Tone.start). Sample selection still happens through the sample
+  browser, where tapping a card previews the sound.
+- **Engine guarantees Tone.start() before every preview path.** Web
+  Audio's context is suspended until a user gesture resumes it; the
+  preview paths now `await Tone.start()` first, so previewing works
+  even before the first Play tap.
+
+### Migration
+- Project schema bumped 1 → 2. Stored projects from v0.1.x auto-migrate
+  on next load and the new shape is re-persisted, so this is a one-way
+  trip — downgrading back to v0.1.x will refuse to load the schema-2
+  payload and fall back to the default project.
+
 ## [0.1.7] - 2026-05-21
 
 ### Added

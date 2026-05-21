@@ -6,7 +6,14 @@ import { TopBar } from "./ui/TopBar"
 import { StepGrid } from "./ui/StepGrid"
 import { PianoRoll } from "./ui/PianoRoll"
 import { VoicePadControls } from "./ui/VoicePadControls"
-import { findSample, type DrumTrackId, type VoiceId } from "./model/project"
+import { ResizeHandle } from "./ui/ResizeHandle"
+import {
+  findSample,
+  isVoiceTrack,
+  type TrackId,
+  type VoiceTrackId,
+  type VoiceId,
+} from "./model/project"
 import { loadPackAssetUrl } from "./sdk/packAssets"
 import manifest from "../manifest.json"
 
@@ -23,9 +30,6 @@ const resolvePackBaseUrl = (): string => {
   return window.location.href
 }
 
-// In dev, vite serves public/ at the server root (no dist/ prefix).
-// In prod (loaded via corpan-pack://{packId}/), the host's baseUrl is the
-// pack root and assets live under dist/.
 const ASSET_PREFIX = import.meta.env.PROD ? "dist/" : ""
 const PACK_BASE_URL = resolvePackBaseUrl()
 
@@ -34,6 +38,8 @@ const resolvePackAsset = (path: string): string =>
 
 type Props = { hostApi: HostApi }
 
+type SampleState = { voice: string; word: string | null; dispose: () => void }
+
 export const App = ({ hostApi: _hostApi }: Props) => {
   const project = useProjectStore((s) => s.project)
   const ready = useProjectStore((s) => s.ready)
@@ -41,10 +47,22 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   const setVoicePadVoice = useProjectStore((s) => s.setVoicePadVoice)
 
   const engineRef = useRef<AudioEngine | null>(null)
-  const blobDisposeRef = useRef<(() => void) | null>(null)
+  /** Per-voice-track sample load state — tracks blob URL dispose + last loaded id */
+  const sampleStateRef = useRef<Record<VoiceTrackId, SampleState | null>>({
+    voice1: null,
+    voice2: null,
+  })
   const [isPlaying, setIsPlaying] = useState(false)
   const [playheadStep, setPlayheadStep] = useState<number>(-1)
-  const [sampleLoaded, setSampleLoaded] = useState(false)
+  const [sampleLoaded, setSampleLoaded] = useState<Record<VoiceTrackId, boolean>>({
+    voice1: false,
+    voice2: false,
+  })
+
+  const voiceTracks = useMemo(
+    () => project.tracks.filter(isVoiceTrack),
+    [project.tracks]
+  )
 
   useEffect(() => {
     const engine = createAudioEngine()
@@ -66,49 +84,57 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     engineRef.current.setProject(project)
   }, [project])
 
+  // Load samples for each voice track. Per-track Blob URLs are tracked so we
+  // only reload when voice/word actually changes (pitch changes via setProject).
   useEffect(() => {
     if (!engineRef.current) return
-    const { voice, word } = project.voicePad
-    const sample = findSample(voice, word)
-    const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
-
-    blobDisposeRef.current?.()
-    blobDisposeRef.current = null
-
-    if (!url) {
-      setSampleLoaded(false)
-      void engineRef.current.voicePad.loadSample(null)
-      return
-    }
-
+    const engine = engineRef.current
     let cancelled = false
-    void (async () => {
-      try {
-        const resolved = await loadPackAssetUrl(url)
-        if (cancelled) {
-          resolved.dispose()
-          return
-        }
-        blobDisposeRef.current = resolved.dispose
-        await engineRef.current!.voicePad.loadSample(resolved.effective)
-        if (cancelled) return
-        setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
-      } catch (err) {
-        if (cancelled) return
-        setSampleLoaded(false)
-        console.warn("[melopan] voice sample load failed:", err)
-      }
-    })()
 
-    return () => {
-      cancelled = true
-    }
-  }, [project.voicePad.voice, project.voicePad.word])
+    voiceTracks.forEach((vt) => {
+      const prev = sampleStateRef.current[vt.id]
+      if (prev && prev.voice === vt.voice && prev.word === vt.word) return
+
+      prev?.dispose()
+      sampleStateRef.current[vt.id] = null
+
+      const sample = findSample(vt.voice, vt.word)
+      const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
+
+      if (!url) {
+        void engine.voicePads[vt.id].loadSample(null)
+        setSampleLoaded((p) => ({ ...p, [vt.id]: false }))
+        return
+      }
+
+      void (async () => {
+        try {
+          const resolved = await loadPackAssetUrl(url)
+          if (cancelled) { resolved.dispose(); return }
+          sampleStateRef.current[vt.id] = {
+            voice: vt.voice,
+            word: vt.word,
+            dispose: resolved.dispose,
+          }
+          const result = await engine.voicePads[vt.id].loadSample(resolved.effective)
+          if (cancelled) return
+          setSampleLoaded((p) => ({ ...p, [vt.id]: result.ok }))
+        } catch (err) {
+          if (cancelled) return
+          setSampleLoaded((p) => ({ ...p, [vt.id]: false }))
+          console.warn(`[melopan] sample load failed for ${vt.id}:`, err)
+        }
+      })()
+    })
+
+    return () => { cancelled = true }
+  }, [voiceTracks])
 
   useEffect(() => {
     return () => {
-      blobDisposeRef.current?.()
-      blobDisposeRef.current = null
+      sampleStateRef.current.voice1?.dispose()
+      sampleStateRef.current.voice2?.dispose()
+      sampleStateRef.current = { voice1: null, voice2: null }
     }
   }, [])
 
@@ -124,20 +150,24 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     }
   }
 
-  const handlePreview = (trackId: DrumTrackId) => {
-    engineRef.current?.previewTrack(trackId)
+  const handlePreview = (trackId: TrackId) => {
+    void engineRef.current?.previewTrack(trackId)
   }
 
-  const handlePickSample = (v: VoiceId, w: string | null) => {
-    setVoicePadVoice(v)
-    setVoicePadWord(w)
-    setTimeout(() => engineRef.current?.previewTrack("voice"), 80)
+  const handlePickSample = (trackId: VoiceTrackId, v: VoiceId, w: string | null) => {
+    setVoicePadVoice(trackId, v)
+    setVoicePadWord(trackId, w)
+    setTimeout(() => {
+      void engineRef.current?.previewTrack(trackId)
+    }, 80)
   }
 
-  const handlePreviewVoice = () => engineRef.current?.previewTrack("voice")
+  const handlePreviewVoice = (trackId: VoiceTrackId) => {
+    void engineRef.current?.previewTrack(trackId)
+  }
 
   const handlePreviewNote = (midi: number) => {
-    engineRef.current?.previewSynthNote(midi)
+    void engineRef.current?.previewSynthNote(midi)
   }
 
   const skin = project.skin
@@ -151,19 +181,40 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     <div className={className} data-skin={skin}>
       <TopBar isPlaying={isPlaying} onTogglePlay={togglePlay} />
       <div className="mp-stage">
-        <StepGrid playheadStep={playheadStep} onPreview={handlePreview} />
-        <PianoRoll playheadStep={playheadStep} onPreviewNote={handlePreviewNote} />
-        <VoicePadControls
-          sampleLoaded={sampleLoaded}
-          onPick={handlePickSample}
-          onPreview={handlePreviewVoice}
-        />
+        <div
+          className="mp-section"
+          style={project.layout?.stepGridPx ? { height: project.layout.stepGridPx } : undefined}
+        >
+          <StepGrid playheadStep={playheadStep} onPreview={handlePreview} />
+        </div>
+        <ResizeHandle targetKey="stepGridPx" defaultPx={260} minPx={120} maxPx={800} />
+        <div
+          className="mp-section"
+          style={project.layout?.pianoRollPx ? { height: project.layout.pianoRollPx } : undefined}
+        >
+          <PianoRoll playheadStep={playheadStep} onPreviewNote={handlePreviewNote} />
+        </div>
+        <ResizeHandle targetKey="pianoRollPx" defaultPx={280} minPx={120} maxPx={900} />
+        <div
+          className="mp-section"
+          style={project.layout?.voicePadPx ? { height: project.layout.voicePadPx } : undefined}
+        >
+          {voiceTracks.map((vt) => (
+            <VoicePadControls
+              key={vt.id}
+              trackId={vt.id}
+              sampleLoaded={sampleLoaded[vt.id]}
+              onPick={handlePickSample}
+              onPreview={handlePreviewVoice}
+            />
+          ))}
+        </div>
       </div>
       <div className="mp-footer">
         <span>{project.name}</span>
         <span>·</span>
         <span>{project.lengthSteps} steps</span>
-        <span className="mp-build">melopan v{manifest.version}</span>
+        <span className="mp-build">melopán v{manifest.version}</span>
       </div>
     </div>
   )

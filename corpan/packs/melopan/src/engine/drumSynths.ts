@@ -47,17 +47,21 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
   }
 
   // ----- HAT -----
-  const hatVol = new Tone.Volume(-6).connect(destination)
+  // Was previously inaudible: hatVol -6dB AND velocity*0.4 stacked to ~0.2
+  // effective volume on a phone speaker. Bring both back to roughly parity
+  // with kick/snare so the hat actually cuts through.
+  const hatVol = new Tone.Volume(0).connect(destination)
+  const hatHpf = new Tone.Filter({ type: "highpass", frequency: 6000 }).connect(hatVol)
   const hatSynth = new Tone.MetalSynth({
-    envelope: { attack: 0.001, decay: 0.06, release: 0.02 },
+    envelope: { attack: 0.001, decay: 0.08, release: 0.04 },
     harmonicity: 5.1,
     modulationIndex: 32,
-    resonance: 4000,
+    resonance: 7000,
     octaves: 1.5,
-  }).connect(hatVol)
+  }).connect(hatHpf)
 
   const triggerHat = (time: number, velocity: number) => {
-    hatSynth.triggerAttackRelease("16n", time, velocity * 0.4)
+    hatSynth.triggerAttackRelease("16n", time, Math.max(0.15, Math.min(1, velocity * 0.85)))
   }
 
   return {
@@ -69,6 +73,7 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
       snareNoise.dispose()
       snareBody.dispose()
       hatSynth.dispose()
+      hatHpf.dispose()
       kickVol.dispose()
       snareVol.dispose()
       hatVol.dispose()

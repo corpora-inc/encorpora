@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react"
-import { useProjectStore } from "../storage/projectStore"
 import {
   VOICES,
   KIT_SAMPLES,
@@ -10,13 +9,17 @@ import {
 type Props = {
   open: boolean
   onClose: () => void
+  /** Currently selected voice for the owning voice track (so the right card highlights) */
+  currentVoice: string
+  /** Currently selected word for the owning voice track */
+  currentWord: string | null
   onPick: (voice: VoiceId, word: string | null) => void
   onPreview: () => void
 }
 
-export const SampleBrowser = ({ open, onClose, onPick, onPreview }: Props) => {
-  const voice = useProjectStore((s) => s.project.voicePad.voice)
-  const word = useProjectStore((s) => s.project.voicePad.word)
+export const SampleBrowser = ({ open, onClose, currentVoice, currentWord, onPick, onPreview }: Props) => {
+  const voice = currentVoice
+  const word = currentWord
   const [query, setQuery] = useState("")
   const [voiceFilter, setVoiceFilter] = useState<"all" | VoiceId>("all")
 

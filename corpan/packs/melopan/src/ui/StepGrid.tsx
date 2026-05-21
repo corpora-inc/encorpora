@@ -1,9 +1,9 @@
 import { useProjectStore } from "../storage/projectStore"
-import type { DrumTrack, DrumTrackId } from "../model/project"
+import type { Track, TrackId } from "../model/project"
 
 type Props = {
   playheadStep: number
-  onPreview: (trackId: DrumTrackId) => void
+  onPreview: (trackId: TrackId) => void
 }
 
 const Row = ({
@@ -14,7 +14,7 @@ const Row = ({
   onMute,
   onPreview,
 }: {
-  track: DrumTrack
+  track: Track
   playheadStep: number
   onToggle: (i: number) => void
   onVolume: (v: number) => void
@@ -28,7 +28,10 @@ const Row = ({
         <span>{track.name}</span>
         {track.mute && <span style={{ opacity: 0.5, fontSize: 12 }}>(muted)</span>}
       </div>
-      <div className="mp-cells">
+      <div
+        className="mp-cells"
+        style={{ gridTemplateColumns: `repeat(${track.steps.length}, 1fr)` }}
+      >
         {track.steps.map((on, i) => {
           const isBeatStart = i % 4 === 0
           const isPlayhead = i === playheadStep

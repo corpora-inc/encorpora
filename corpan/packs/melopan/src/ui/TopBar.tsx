@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { useProjectStore } from "../storage/projectStore"
 import { SkinPicker } from "./SkinPicker"
 
@@ -14,23 +15,49 @@ const requestExit = () => {
   }
 }
 
+const BPM_MIN = 40
+const BPM_MAX = 240
+
 export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
   const project = useProjectStore((s) => s.project)
   const setBpm = useProjectStore((s) => s.setBpm)
   const setMasterVolume = useProjectStore((s) => s.setMasterVolume)
   const setTimeSignature = useProjectStore((s) => s.setTimeSignature)
 
+  // Local BPM input state — only commit on blur / Enter / ± buttons so
+  // typing "5" intending "50" doesn't get clamped to 40 mid-keystroke.
+  const [bpmDraft, setBpmDraft] = useState(String(project.bpm))
+  useEffect(() => {
+    setBpmDraft(String(project.bpm))
+  }, [project.bpm])
+
+  const commitBpm = () => {
+    const parsed = Number(bpmDraft)
+    if (!Number.isFinite(parsed)) {
+      setBpmDraft(String(project.bpm))
+      return
+    }
+    const clamped = Math.max(BPM_MIN, Math.min(BPM_MAX, Math.round(parsed)))
+    setBpm(clamped)
+    setBpmDraft(String(clamped))
+  }
+
+  const bumpBpm = (delta: number) => {
+    const next = Math.max(BPM_MIN, Math.min(BPM_MAX, project.bpm + delta))
+    setBpm(next)
+  }
+
   return (
     <div className="mp-top-bar">
       <button
         className="mp-btn mp-btn--exit"
         onClick={requestExit}
-        aria-label="Exit Melopan"
-        title="Exit Melopan"
+        aria-label="Exit Melopán"
+        title="Exit Melopán"
       >
         ‹
       </button>
-      <div className="mp-brand">MELOPAN</div>
+      <div className="mp-brand">MELOPÁN</div>
 
       <div className="mp-transport">
         <button
@@ -43,15 +70,37 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
         </button>
       </div>
 
-      <div className="mp-control" title="Beats per minute">
+      <div className="mp-control mp-bpm" title="Beats per minute">
         <span>BPM</span>
+        <button
+          className="mp-btn mp-btn--step"
+          onClick={() => bumpBpm(-1)}
+          aria-label="Decrease BPM"
+          title="−1"
+        >
+          −
+        </button>
         <input
-          type="number"
-          min={40}
-          max={240}
-          value={project.bpm}
-          onChange={(e) => setBpm(Number(e.target.value) || project.bpm)}
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          value={bpmDraft}
+          onChange={(e) => setBpmDraft(e.target.value.replace(/[^0-9]/g, ""))}
+          onBlur={commitBpm}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              ;(e.target as HTMLInputElement).blur()
+            }
+          }}
         />
+        <button
+          className="mp-btn mp-btn--step"
+          onClick={() => bumpBpm(1)}
+          aria-label="Increase BPM"
+          title="+1"
+        >
+          +
+        </button>
       </div>
 
       <div className="mp-control" title="Time signature">
@@ -68,6 +117,7 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
           <option value="5/4">5/4</option>
           <option value="6/8">6/8</option>
           <option value="7/8">7/8</option>
+          <option value="9/8">9/8</option>
         </select>
       </div>
 
