@@ -79,19 +79,20 @@ def run(cmd: list[str], log_path: Path, timeout: int | None = None) -> int:
 def translate_pack(pack_id: str, new_from: int) -> tuple[str, int]:
     pdir = pack_dir_for(pack_id)
     log = LOG_DIR / f"{pack_id}.translate.log"
-    # Chunked incremental: per-lang call is ≤100 phrases, but a full lang
-    # with 800 new phrases is 8 sequential chunks ≈ 4-5 min. With 17
-    # workers, 51 langs need ~3 rounds → ~15 min per pack worst case.
-    # Three passes (parallel + retries) with per-pass 1800s timeout.
+    # Tuned for the v0.2.0 data volume: 800 phrases × 51 langs per pack.
+    # Pass 1: 51 workers (one per lang) so all 51 langs run in parallel.
+    #   Each lang sequentially walks its chunks (8 × ~45s for romanized
+    #   scripts at 800 phrases). One round ≈ 6 min per pack.
+    # Pass 2/3: lower concurrency to ride out 429s with extra headroom.
+    rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
+              "--new-from", str(new_from), "--vertex", "--write-en",
+              "--workers", "51"], log, timeout=3600)
     rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
               "--new-from", str(new_from), "--vertex", "--write-en",
               "--workers", "17"], log, timeout=1800)
     rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
               "--new-from", str(new_from), "--vertex", "--write-en",
-              "--workers", "6"], log, timeout=1200)
-    rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
-              "--new-from", str(new_from), "--vertex", "--write-en",
-              "--workers", "3"], log, timeout=900)
+              "--workers", "6"], log, timeout=900)
     return (pack_id, rc)
 
 

@@ -247,6 +247,10 @@ _PASSTHROUGH_FIELDS = (
     "description", "topic", "category", "levelMin", "levelMax",
     "entryCount", "tags", "iconUrl", "accentColor", "purchase",
     "minAppVersion", "channel",
+    # Localized metadata maps (Corpán-app 0.15.3+). Mirrored from
+    # manifest into catalog entry verbatim; the app's resolver walks
+    # the map with the user's UI language.
+    "nameLocalized", "descriptionLocalized", "topicLocalized",
 )
 
 
@@ -293,15 +297,47 @@ def remove_pack(catalog: dict, pack_id: str) -> bool:
     return len(catalog["packs"]) != before
 
 
+_CURATION_GROUP_LOCALIZED = (
+    # (snake_in_curation, camel_in_catalog)
+    ("label_localized", "labelLocalized"),
+    ("description_localized", "descriptionLocalized"),
+)
+
+
+def _normalize_curation_groups(groups: list) -> list:
+    """Convert snake_case localized fields to camelCase for the catalog.
+    Authors can write either form in curation.json; the catalog wire
+    format is camelCase only."""
+    out = []
+    for g in groups or []:
+        if not isinstance(g, dict):
+            out.append(g); continue
+        ng = dict(g)
+        for snake, camel in _CURATION_GROUP_LOCALIZED:
+            if snake in ng and camel not in ng:
+                ng[camel] = ng.pop(snake)
+            elif snake in ng and camel in ng:
+                # both present → camel wins, snake dropped
+                ng.pop(snake, None)
+        out.append(ng)
+    return out
+
+
 def apply_curation(catalog: dict, curation: dict) -> None:
     """Merge top-level curation fields. Missing keys in `curation` leave
-    the existing catalog values intact; explicit `null` clears them."""
-    for key in ("onboardingStarterPackIds", "phrasePackGroups"):
-        if key in curation:
-            if curation[key] is None:
-                catalog.pop(key, None)
-            else:
-                catalog[key] = curation[key]
+    the existing catalog values intact; explicit `null` clears them.
+
+    `phrasePackGroups` entries may carry `label_localized` /
+    `description_localized` (snake_case) — converted to camelCase for
+    the catalog wire format."""
+    if "onboardingStarterPackIds" in curation:
+        v = curation["onboardingStarterPackIds"]
+        if v is None: catalog.pop("onboardingStarterPackIds", None)
+        else: catalog["onboardingStarterPackIds"] = v
+    if "phrasePackGroups" in curation:
+        v = curation["phrasePackGroups"]
+        if v is None: catalog.pop("phrasePackGroups", None)
+        else: catalog["phrasePackGroups"] = _normalize_curation_groups(v)
 
 
 # ---------------------------------------------------------------------------
