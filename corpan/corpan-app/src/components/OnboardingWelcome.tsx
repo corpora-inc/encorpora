@@ -129,11 +129,14 @@ export function OnboardingWelcome() {
             // what the parent WizardShell does (it is now a pass-through —
             // each onboarding step owns its own layout). Centering is from
             // the inner flexbox below; the fixed wrapper just hosts it.
-            className="fixed inset-0 flex flex-col items-center justify-center px-6 gap-y-5 bg-background md:bg-muted"
+            // pb-12 static — content is justify-center so the Next
+            // button rarely brushes the nav bar, but a static value
+            // (instead of env+calc) makes the math deterministic on
+            // short viewports. See corpan-app/AGENTS.md §6.
+            className="fixed inset-0 flex flex-col items-center justify-center px-6 gap-y-5 bg-background md:bg-muted pb-12"
             style={{
                 overflow: "hidden",
                 paddingTop: "env(safe-area-inset-top)",
-                paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)",
                 paddingLeft: "max(env(safe-area-inset-left), 1.5rem)",
                 paddingRight: "max(env(safe-area-inset-right), 1.5rem)",
             }}

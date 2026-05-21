@@ -76,7 +76,12 @@ const EMPTY_VIEW: PhrasePackCatalogView = {
     totalSizeMb: () => 0,
 };
 
-const ONBOARDING_POOL_CAP = 12;
+// All 24 packs that ship in the live catalog. Onboarding is a scroll
+// surface anyway — the bottom buffer + Skip link stay reachable on
+// phones, and the publisher's `onboardingStarterPackIds` still
+// pre-checks only the curated subset (~4) so the user gets a sane
+// default selection without committing to all 24.
+const ONBOARDING_POOL_CAP = 24;
 
 const FALLBACK_GROUP_ID = "all";
 const FALLBACK_GROUP_LABEL = "All phrase packs";

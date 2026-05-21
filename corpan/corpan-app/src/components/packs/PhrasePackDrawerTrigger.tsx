@@ -36,7 +36,7 @@ export function PhrasePackDrawerTrigger() {
             variant="outline"
             onClick={openPhrasePacks}
             className="
-                w-full h-auto rounded-md px-6 py-8 gap-3
+                w-full h-auto rounded-md px-6 py-6 md:py-8 gap-3
                 border-purple-400/30 bg-purple-500/[0.02]
                 hover:border-purple-400/70 hover:bg-purple-500/[0.06]
                 shadow-sm group

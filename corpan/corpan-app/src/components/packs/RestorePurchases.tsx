@@ -15,9 +15,18 @@ export function RestorePurchases() {
   const [result, setResult] = useState<string | null>(null)
 
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
+  const subscriptionActive = useEntitlementStore(
+    (s) => s.subscription?.active ?? false,
+  )
   const isOnline = useOnlineStatus()
 
   if (!iapAvailable) return null
+  // Hide when the SubscriptionOffer card is in its "ready"
+  // (unsubscribed) state — that card already exposes a Restore
+  // Purchases link inline, so this standalone button is redundant.
+  // Apple's IAP-visibility rule is satisfied either way (the link is
+  // user-reachable from the same screen).
+  if (!subscriptionActive) return null
 
   const handleRestore = async () => {
     setIsRestoring(true)
@@ -53,8 +62,7 @@ export function RestorePurchases() {
         variant="outline"
         onClick={handleRestore}
         disabled={isRestoring || !isOnline}
-        className="w-full"
-        size="sm"
+        className="w-full !h-11 md:!h-14"
       >
         {isRestoring
           ? t("restore.restoring", "Restoring...")

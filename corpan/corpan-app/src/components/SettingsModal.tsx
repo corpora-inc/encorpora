@@ -180,7 +180,7 @@ export function SettingsModal({
             </div>
           </div>
 
-          <TabsContent value="stacks" className="space-y-4 mt-8">
+          <TabsContent value="stacks" className="space-y-4 mt-8 pb-16">
             {/* Theme toggle (global) */}
             <ThemeToggle />
 
@@ -219,7 +219,7 @@ export function SettingsModal({
                 onClose();
               }}
               className="
-                mt-5 w-full rounded-md px-6 py-8
+                mt-5 w-full h-auto rounded-md px-6 py-6 md:py-8
                 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
                 transition-colors cursor-pointer
                 shadow-sm
@@ -272,7 +272,7 @@ export function SettingsModal({
                   type="button"
                   variant="outline"
                   onClick={handleDevTap}
-                  className="w-full"
+                  className="w-full !h-11 md:!h-14"
                 >
                   {t("packs.devUnlockTitle")} ({devTapCount}/7)
                 </Button>

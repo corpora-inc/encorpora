@@ -101,6 +101,9 @@
     "themeSystem": "System",
     "themeDark": "Dark",
     "primaryLanguage": "Primary (UI) language",
+    "sendAnonUsage": "Send anonymous usage data",
+    "sendAnonUsageHint": "Anonymous, session-scoped. No accounts, no device IDs, no IP storage. Toggle off any time.",
+    "readPrivacyPromise": "Read our Privacy Promise",
     "phrasePacks": {
       "header": "Phrase packs",
       "activeCount": "{{active}} of {{total}} active",
@@ -149,6 +152,9 @@
     "socialsStepTitle": "Socials",
     "noVoices": "No voices",
     "noVoicesHint": "Install voices to enable this language.",
+    "notOnAppleIOS": "Not on iOS",
+    "appleNoVoiceTitle": "Apple doesn't ship a {{lang}} voice yet",
+    "appleNoVoiceBody": "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime.",
     "languageOrderTipTitle": "Tip",
     "languageOrderTipBody": "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
     "ttsOsTipTitle": "Tip",
@@ -456,7 +462,7 @@
     "checking": "Checking…",
     "phrasePack": {
       "sectionTitle": "Phrase packs",
-      "searchPlaceholder": "Search topics…",
+      "searchPlaceholder": "Search phrase packs",
       "noMatches": "Nothing matches that search yet.",
       "filter": {
         "all": "All",
@@ -466,6 +472,8 @@
       },
       "activeInStack": "Active in stack",
       "activeBadge": "Active",
+      "inactiveBadge": "Inactive",
+      "moreActionsLabel": "More actions",
       "subBadge": "Subscription",
       "paid": "Paid",
       "free": "Free",
@@ -502,7 +510,11 @@
     "privacyPolicy": "Privacy Policy",
     "autoRenewNotice": "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
     "storeApple": "Apple ID",
-    "storeGoogle": "Google Play"
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Waiting for approval",
+    "pendingDetail": "Your subscription is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
+    "storeUnreachable": "We couldn't reach the App Store right now.",
+    "tryAgain": "Try again"
   },
   "restore": {
     "button": "Restore Purchases",

@@ -96,10 +96,14 @@ export function OnboardingPickPrimary() {
             }}
         >
             <div
-                className="mx-auto w-full max-w-xl md:max-w-2xl px-4 sm:px-6"
+                // pb-20 static — env(safe-area-inset-bottom) returns 0
+                // on Android Tauri and is undersized in some iPad
+                // contexts (see corpan-app/AGENTS.md §6). Top padding
+                // keeps the env-calc since env() is reliable for top
+                // safe area on both platforms.
+                className="mx-auto w-full max-w-xl md:max-w-2xl px-4 sm:px-6 pb-20"
                 style={{
                     paddingTop: "calc(env(safe-area-inset-top) + 2rem)",
-                    paddingBottom: "calc(env(safe-area-inset-bottom) + 2.5rem)",
                 }}
             >
                 <Header total={ALL_LANGUAGES.length} />

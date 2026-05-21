@@ -31,6 +31,61 @@ type FilterKind = "all" | "free" | "paid" | "installed";
 
 const FILTERS: FilterKind[] = ["all", "free", "paid", "installed"];
 
+/** Horizontally-scrollable pill rail. One row, never wraps, scrollbar
+ *  hidden, edge fades hint at overflow content. Used for both the
+ *  price/install filter row and the category row so they share a
+ *  visual language even though the category one is the one that
+ *  actually overflows in practice. */
+function PillRail({ children }: { children: React.ReactNode }) {
+    return (
+        <div
+            className="
+                relative
+                before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:w-4
+                before:bg-gradient-to-r before:from-background before:to-transparent before:z-[1]
+                after:pointer-events-none after:absolute after:inset-y-0 after:right-0 after:w-4
+                after:bg-gradient-to-l after:from-background after:to-transparent after:z-[1]
+            "
+        >
+            <div
+                className="
+                    flex flex-nowrap gap-1 overflow-x-auto
+                    [-webkit-overflow-scrolling:touch] [scrollbar-width:none]
+                    [&::-webkit-scrollbar]:hidden
+                    px-2
+                "
+            >
+                {children}
+            </div>
+        </div>
+    );
+}
+
+function PillButton({
+    selected,
+    onClick,
+    children,
+}: {
+    selected: boolean;
+    onClick: () => void;
+    children: React.ReactNode;
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={[
+                "shrink-0 px-2.5 py-0.5 rounded-full text-[11px] font-medium border transition-colors whitespace-nowrap",
+                selected
+                    ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
+                    : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
+            ].join(" ")}
+        >
+            {children}
+        </button>
+    );
+}
+
 export function PhrasePackBrowser() {
     const { t } = useTranslation();
     const { allPhrasePacks, groups } = usePhrasePackCatalog();
@@ -52,6 +107,21 @@ export function PhrasePackBrowser() {
             return next;
         });
     };
+
+    // Sort categories so selected ones are pinned to the left of the
+    // horizontal-scroll rail. Keeps the user's active filters visible
+    // without scrolling, while preserving catalog order within each
+    // selected/unselected partition. Stable thanks to the boolean
+    // numeric trick + Array.prototype.sort being stable in modern JS.
+    const sortedGroups = useMemo(
+        () =>
+            [...groups].sort(
+                (a, b) =>
+                    Number(selectedCategories.has(b.id)) -
+                    Number(selectedCategories.has(a.id)),
+            ),
+        [groups, selectedCategories],
+    );
 
     // Category facet: pack belongs to any selected group's packIds. Null
     // means "no category filter applied" — show everything that passes
@@ -120,11 +190,15 @@ export function PhrasePackBrowser() {
         hasAnyPhrasePacks && installedCount === allPhrasePacks.length;
     const nothingInstalled = installedCount === 0;
 
-    const handleManageInStacks = () => {
-        window.dispatchEvent(
-            new CustomEvent("corpan:open-stacks-phrase-packs"),
-        );
-    };
+    // Only show the "you've got every phrase pack" celebration on the
+    // unfiltered All view. On any filter/search/category we want the
+    // grid to render so the user can see — and uninstall — the packs
+    // that match their facet (notably the Installed filter).
+    const noFilterActive =
+        filter === "all" &&
+        selectedCategories.size === 0 &&
+        query.trim().length === 0;
+    const showAllInstalledHero = allInstalled && noFilterActive;
 
     // Catalog empty + truly offline (no cached payload) — show the
     // offline notice and bail. Other paths render the full chrome.
@@ -150,7 +224,16 @@ export function PhrasePackBrowser() {
     }
 
     return (
-        <div className="flex h-full flex-col" id="phrase-pack-browser">
+        // pb-8 on the OUTER flex column (not on the inner scroll
+        // container) so the scroll area ends 32px above the drawer's
+        // bottom edge. The iPad home indicator (~21px) and the
+        // Android nav bar overlay the viewport bottom; without this
+        // outer padding, cards visible mid-scroll get clipped by
+        // those overlays even though the bottom of the *list* has
+        // its own pb-16. The pb-16 below handles end-of-list breathing
+        // room; this pb-8 handles every other scroll position.
+        // See corpan-app/AGENTS.md §6.
+        <div className="flex h-full flex-col pb-8" id="phrase-pack-browser">
             {/* Sticky filter chrome — stays pinned at the top of the
                 drawer's scroll area so users keep their filter
                 affordances regardless of how far they've scrolled. */}
@@ -174,23 +257,17 @@ export function PhrasePackBrowser() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder={t("packs.phrasePack.searchPlaceholder", {
-                            defaultValue: "Search…",
+                            defaultValue: "Search phrase packs",
                         })}
                         className="w-full pl-8 pr-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/40"
                     />
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <PillRail>
                     {FILTERS.map((f) => (
-                        <button
+                        <PillButton
                             key={f}
-                            type="button"
+                            selected={filter === f}
                             onClick={() => setFilter(f)}
-                            className={[
-                                "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
-                                filter === f
-                                    ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
-                                    : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
-                            ].join(" ")}
                         >
                             {t(`packs.phrasePack.filter.${f}`, {
                                 defaultValue:
@@ -202,38 +279,38 @@ export function PhrasePackBrowser() {
                                                 ? "Paid"
                                                 : "Installed",
                             })}
-                        </button>
+                        </PillButton>
                     ))}
-                </div>
+                </PillRail>
                 {groups.length > 1 && (
-                    <div className="flex flex-wrap gap-1.5">
-                        {groups.map((g) => {
+                    <PillRail>
+                        {sortedGroups.map((g) => {
                             const isSelected = selectedCategories.has(g.id);
                             return (
-                                <button
+                                <PillButton
                                     key={g.id}
-                                    type="button"
+                                    selected={isSelected}
                                     onClick={() => toggleCategory(g.id)}
-                                    className={[
-                                        "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
-                                        isSelected
-                                            ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
-                                            : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
-                                    ].join(" ")}
                                 >
                                     {g.label}
-                                </button>
+                                </PillButton>
                             );
                         })}
-                    </div>
+                    </PillRail>
                 )}
             </div>
 
             {/* Scrollable grid area. The drawer container caps the
                 overall height; this inner div fills the remaining space
                 and scrolls when the grid overflows. */}
-            <div className="flex-1 overflow-y-auto px-4 pt-3 pb-6">
-                {allInstalled && (
+            {/* pb-16 (64px) static clearance for the bottom safe area —
+             *  enough to clear the iPad home indicator + the Android
+             *  nav bar. env(safe-area-inset-bottom) is unreliable
+             *  here (returns 0 on Android, undersized inside Vaul's
+             *  portal on iPad in landscape) so we use the static
+             *  convention per AGENTS.md §6. */}
+            <div className="flex-1 overflow-y-auto px-4 pt-3 pb-16">
+                {showAllInstalledHero && (
                     <div className="rounded-lg border border-purple-400/40 bg-purple-500/[0.04] p-5 text-center">
                         <CheckCircle2
                             size={20}
@@ -248,23 +325,13 @@ export function PhrasePackBrowser() {
                         <p className="mt-1 text-xs text-muted-foreground">
                             {t("packs.phrasePack.allInstalled.subtitle", {
                                 defaultValue:
-                                    "Topic packs ship regularly — check back any time.",
+                                    "Topic packs ship regularly — check back any time. Tap Installed to manage what you have.",
                             })}
                         </p>
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={handleManageInStacks}
-                            className="mt-3 text-xs"
-                        >
-                            {t("packs.phrasePack.allInstalled.manageCta", {
-                                defaultValue: "Manage in Stacks",
-                            })}
-                        </Button>
                     </div>
                 )}
 
-                {!allInstalled && (
+                {!showAllInstalledHero && (
                     <>
                         {visiblePacks.length === 0 &&
                             filter === "installed" &&

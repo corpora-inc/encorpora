@@ -96,7 +96,7 @@ export function PackActions({
   if (state === "offline") {
     return (
       <div className="space-y-2">
-        <Button disabled className="w-full" size="sm">
+        <Button disabled className="w-full !h-11 md:!h-14" size="sm">
           {t("packs.get")}
         </Button>
         <p className="text-xs text-muted-foreground">
@@ -115,7 +115,7 @@ export function PackActions({
           <Button
             onClick={handleInstall}
             disabled={isInstalling || isOffline}
-            className="flex-1"
+            className="flex-1 !h-11 md:!h-14"
             size="sm"
           >
             {isInstalling
@@ -125,6 +125,7 @@ export function PackActions({
           <Button
             variant="outline"
             onClick={handleLaunch}
+            className="!h-11 md:!h-14"
             size="sm"
           >
             {t("packs.open")}
@@ -132,6 +133,7 @@ export function PackActions({
           <Button
             variant="ghost"
             onClick={handleRemove}
+            className="!h-11 md:!h-14"
             size="sm"
           >
             {t("packs.remove")}
@@ -153,7 +155,7 @@ export function PackActions({
       <div className="flex gap-2">
         <Button
           onClick={handleLaunch}
-          className="flex-1"
+          className="flex-1 !h-11 md:!h-14"
           size="sm"
         >
           {t("packs.open")}
@@ -161,6 +163,7 @@ export function PackActions({
         <Button
           variant="ghost"
           onClick={handleRemove}
+          className="!h-11 md:!h-14"
           size="sm"
         >
           {t("packs.remove")}
@@ -175,7 +178,7 @@ export function PackActions({
   if (isPremium && entitled === null) {
     return (
       <div className="space-y-2">
-        <Button disabled className="w-full" size="sm">
+        <Button disabled className="w-full !h-11 md:!h-14" size="sm">
           {t("packs.checking", "Checking…")}
         </Button>
       </div>
@@ -190,7 +193,7 @@ export function PackActions({
         <Button
           onClick={handlePurchase}
           disabled={isPurchasing || isOffline}
-          className="w-full"
+          className="w-full !h-11 md:!h-14"
           size="sm"
         >
           {isPurchasing
@@ -214,7 +217,7 @@ export function PackActions({
   if (isPremium && !entitled && !iapAvailable) {
     return (
       <div className="space-y-2">
-        <Button disabled className="w-full" size="sm">
+        <Button disabled className="w-full !h-11 md:!h-14" size="sm">
           {pack.purchase?.priceLabel ?? t("packs.premium", "Premium")}
         </Button>
         <p className="text-xs text-muted-foreground">
@@ -230,7 +233,7 @@ export function PackActions({
       <Button
         onClick={handleInstall}
         disabled={isInstalling || isOffline}
-        className="w-full"
+        className="w-full !h-11 md:!h-14"
         size="sm"
       >
         {isInstalling

@@ -621,10 +621,12 @@ export function OnboardingTTSInstructions() {
                         )}
                     </AnimatePresence>
                 </div>
-                <div
-                    className="h-8"
-                    style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
-                />
+                {/* Static bottom spacer — env(safe-area-inset-bottom)
+                 *  is unreliable (0 on Android Tauri, undersized on
+                 *  iPad in some contexts), so use the same static
+                 *  h-8+pb-20 pattern as the other onboarding screens.
+                 *  See corpan-app/AGENTS.md §6. */}
+                <div className="h-8 pb-20" />
             </main>
         </section>
     );

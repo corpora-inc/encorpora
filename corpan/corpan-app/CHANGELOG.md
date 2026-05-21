@@ -7,6 +7,95 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.15.5] - 2026-05-21 — Phrase-pack drawer redesign + safe-area sweep
+
+User-visible polish pass on the phrase-pack drawer (the
+single most-used pack-management surface) and a code-wide audit of
+bottom safe-area handling so cards and CTAs stop sitting under the
+Android nav bar / iPad home indicator.
+
+### Changed
+
+- **Phrase-pack drawer — dramatic vertical-density redesign.**
+  Phones now open the drawer at 90vh with the title row hidden (the
+  search-input placeholder "Search phrase packs" carries identity).
+  iPad caps at 80vh with the title kept. Drops shadcn's baked
+  `mt-24 + max-h-[80vh]` ceiling via `!important` overrides at the
+  call site, leaving the shared primitive untouched.
+- **Pill rails — single horizontal-scroll row, no wrapping ever.**
+  Category and price filter rows now use a shared inline `PillRail`
+  with edge fades, hidden scrollbar, and selected chips pinned to
+  the left. Replaces the previous 4–5-line wrapping grid that ate
+  half the phone viewport.
+- **Installed-pack card action cluster.** Replaced the full-width
+  bordered toggle row + standalone Remove button with a compact
+  top-right cluster: tappable `● ACTIVE` / `○ INACTIVE` pill (one
+  widget for both badge + activate toggle) + 3-dot Radix Popover
+  menu containing Remove. Cards are ~70 px shorter on phones.
+- **Hero-button height standardization.** All card/panel action
+  buttons (Subscribe, Restore Purchases, Developer Packs,
+  Get/Update/Open/Remove/Buy in PackActions) unified at
+  `!h-11 md:!h-14` (44 px / 56 px). Page-hero CTAs (Browse phrase
+  packs, Reconfigure stack, TTS setup) standardized at
+  `h-auto px-6 py-6 md:py-8`.
+- **`DiscoverPacksPanel` curated set expanded.** Added
+  `pronunciation_coach`, `juice_squeeze`, `world_radio` to the
+  marquee list and added a top-right "Maybe later" dismiss so
+  short-screen users don't have to scroll past every card to skip.
+- **Standalone "Restore Purchases" button auto-hides in the
+  unsubscribed state.** The subscription card already exposes
+  Restore inline; the redundant standalone button is now suppressed
+  when the user isn't subscribed. Re-appears in the subscribed
+  state for cross-device restore flows.
+
+### Fixed
+
+- **Phrase-pack drawer "Installed" filter never showed installed
+  packs.** The `allInstalled` short-circuit was rendering a
+  celebration card and hiding the grid even when the user actively
+  tapped Installed to manage their packs. Celebration now only
+  renders on the truly-unfiltered All view; the grid (with each
+  card's Remove menu) renders for every active filter.
+- **Bottom safe-area sweep — 5 surfaces.** `env(safe-area-inset-bottom)`
+  is unreliable (returns 0 on Android Tauri, undersized inside
+  Vaul portals on iPad). Switched to static `pb-16` / `pb-20`
+  spacers per the established convention on:
+  - `PhrasePackBrowser` (the drawer's scroll area)
+  - `OnboardingTTSInstructions` bottom spacer
+  - `OnboardingPickPrimary` content wrapper
+  - `DiscoverPacksPanel` motion container
+  - `OnboardingWelcome` (defensive, content was already centered)
+- **Search placeholder text** changed from "Search topics…" to
+  "Search phrase packs" in the en locale; pairs with the drawer
+  title removal on phones so the placeholder carries identity.
+- **Dropped stale "Manage in Stacks" CTA** + the dead
+  `corpan:open-stacks-phrase-packs` event (nobody listened).
+
+### Added
+
+- **`corpan-app/AGENTS.md`** — frontend standards doc codifying the
+  patterns above (button heights, drawer chrome, pill rails, card
+  action area, safe-area handling, i18n locale precedence, etc.)
+  so future agents can one-shot to standard.
+
+## [0.15.3] - 2026-05-20 — STT scoring-overlay wire format
+
+Bundles the embedded `tauri-plugin-stt` bump from 0.4.1 → 0.5.0.
+Pairs with `pronunciation_coach` 0.7.0 to unlock per-(language,
+model) scoring calibration from the pack without native rebuilds.
+
+### Changed
+- **Embedded `tauri-plugin-stt` → 0.5.0.** Adds optional
+  `scoringParams` field on `startSession` alongside the existing
+  `whisperParams`. When absent (every pack that hasn't opted in),
+  the native plugin's existing acoustic ramps and gate thresholds
+  remain authoritative — fully backwards-compatible. When supplied,
+  the pack overlays per-call values for `avgZero`, `avgOne`,
+  `minZero`, `minOne`, `textFloor`, and `compressionThreshold`.
+  Threaded through Rust models, Swift `STTPlugin`, and Kotlin
+  `Scoring`. New Swift log line `Whisper | scoring overlay applied`
+  surfaces effective ramp values when an overlay lands.
+
 ## [0.15.2] - 2026-05-20 — Never-die sampler + saner default levels
 
 The sampler used to throw `"No entries match the current filters"` (and

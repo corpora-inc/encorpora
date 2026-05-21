@@ -21,7 +21,7 @@
 // Visual rhythm matches OnboardingPickPrimary's calm aesthetic: generous
 // hero, single accent color, no marketing copy, scalable on iPad / desktop.
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
     BookOpen,
@@ -64,7 +64,7 @@ export function OnboardingPickPhrasePacks() {
     const isOnline = useOnlineStatus();
     const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
 
-    const { starterPacks, defaultSelectedIds } = usePhrasePackCatalog();
+    const { starterPacks } = usePhrasePackCatalog();
     const { installPackBatch } = useInstallContext();
     const subscriptionActive = useEntitlementStore(
         (s) => s.subscription?.active ?? false,
@@ -76,16 +76,22 @@ export function OnboardingPickPhrasePacks() {
         if (!lastFetched && !isFetching && isOnline) void fetchCatalog();
     }, [lastFetched, isFetching, isOnline, fetchCatalog]);
 
-    // Local selection state: keyed by pack id. Seeded from the
-    // publisher-curated `defaultSelectedIds` so the recommended picks
-    // arrive pre-checked, but the full top-12 pool is browseable.
+    // Local selection state: keyed by pack id. Seeded with **every
+    // starter pack pre-checked** — the overwhelming majority of new
+    // users want the whole shelf turned on, and the few who want to
+    // narrow can uncheck individual cards (or "Deselect all" to
+    // start fresh). The publisher's `defaultSelectedIds` is
+    // intentionally ignored here; it's still surfaced in places
+    // that need a curated subset (e.g. the Stacks tab's first-run
+    // suggestion) but onboarding goes with all-on.
     const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+    const hasSeededRef = useRef(false);
     useEffect(() => {
-        if (starterPacks.length > 0 && selectedIds.size === 0) {
-            setSelectedIds(new Set(defaultSelectedIds));
+        if (starterPacks.length > 0 && !hasSeededRef.current) {
+            setSelectedIds(new Set(starterPacks.map((p) => p.id)));
+            hasSeededRef.current = true;
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [starterPacks.length, defaultSelectedIds.length]);
+    }, [starterPacks]);
 
     const stepLabels = useMemo(
         () =>
@@ -375,6 +381,13 @@ export function OnboardingPickPhrasePacks() {
                             )}
                         </>
                     )}
+
+                    {/* Bottom buffer — matches the spacer pattern in
+                        OnboardingPickLearning so the Skip link clears
+                        the Android 3-button nav bar (env(safe-area-
+                        inset-bottom) reads 0 on some Android WebView
+                        configs, so we add a fixed buffer too). */}
+                    <div className="h-8 pb-20" />
                 </div>
             </main>
         </section>
@@ -421,8 +434,12 @@ function PhrasePackOnboardingCard({
                         <h3 className="text-sm font-semibold text-foreground leading-tight">
                             {pack.name}
                         </h3>
+                        {/* Topic line shown only on md+ — saves a row
+                            of vertical space per card on phones, where
+                            real estate is tighter. iPad keeps the
+                            airier two-line title block. */}
                         {pack.topic && pack.topic !== pack.name && (
-                            <p className="mt-0.5 text-[11px] text-muted-foreground/80 truncate">
+                            <p className="hidden md:block mt-0.5 text-[11px] text-muted-foreground/80 truncate">
                                 {pack.topic}
                             </p>
                         )}

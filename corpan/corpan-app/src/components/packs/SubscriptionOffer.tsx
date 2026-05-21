@@ -268,7 +268,7 @@ export function SubscriptionOffer() {
           <Button
             onClick={() => void manageSubscription()}
             variant="outline"
-            className="w-full"
+            className="w-full !h-11 md:!h-14"
             size="sm"
           >
             {t("subscription.manage", "Manage subscription")}
@@ -295,7 +295,7 @@ export function SubscriptionOffer() {
           <Button
             onClick={() => void refresh()}
             variant="outline"
-            className="w-full"
+            className="w-full !h-11 md:!h-14"
             size="sm"
           >
             {t("subscription.tryAgain", "Try again")}
@@ -398,7 +398,7 @@ export function SubscriptionOffer() {
         <Button
           onClick={() => void handleSubscribe()}
           disabled={isPurchasing}
-          className="w-full"
+          className="w-full !h-11 md:!h-14"
           size="sm"
         >
           {isPurchasing
