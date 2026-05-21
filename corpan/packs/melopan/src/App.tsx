@@ -7,6 +7,7 @@ import { StepGrid } from "./ui/StepGrid"
 import { PianoRoll } from "./ui/PianoRoll"
 import { VoicePadControls } from "./ui/VoicePadControls"
 import { findSample, type DrumTrackId, type VoiceId } from "./model/project"
+import { loadPackAssetUrl } from "./sdk/packAssets"
 import manifest from "../manifest.json"
 
 const GAME_ID = "melopan"
@@ -40,10 +41,12 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   const setVoicePadVoice = useProjectStore((s) => s.setVoicePadVoice)
 
   const engineRef = useRef<AudioEngine | null>(null)
+  const blobDisposeRef = useRef<(() => void) | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [playheadStep, setPlayheadStep] = useState<number>(-1)
   const [sampleLoaded, setSampleLoaded] = useState(false)
   const [debugUrl, setDebugUrl] = useState<string | null>(null)
+  const [debugEffective, setDebugEffective] = useState<string | null>(null)
   const [debugError, setDebugError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -72,12 +75,50 @@ export const App = ({ hostApi: _hostApi }: Props) => {
     const sample = findSample(voice, word)
     const url = sample ? resolvePackAsset(`voice-kit/${sample.file}`) : null
     setDebugUrl(url)
+    setDebugEffective(null)
     setDebugError(null)
-    void engineRef.current.voicePad.loadSample(url).then((result) => {
-      setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
-      setDebugError(result.ok ? null : (result.error ?? "unknown error"))
-    })
+
+    blobDisposeRef.current?.()
+    blobDisposeRef.current = null
+
+    if (!url) {
+      setSampleLoaded(false)
+      void engineRef.current.voicePad.loadSample(null)
+      return
+    }
+
+    let cancelled = false
+    void (async () => {
+      try {
+        const resolved = await loadPackAssetUrl(url)
+        if (cancelled) {
+          resolved.dispose()
+          return
+        }
+        blobDisposeRef.current = resolved.dispose
+        setDebugEffective(resolved.effective)
+        const result = await engineRef.current!.voicePad.loadSample(resolved.effective)
+        if (cancelled) return
+        setSampleLoaded(engineRef.current?.voicePad.isSampleLoaded() ?? false)
+        setDebugError(result.ok ? null : (result.error ?? "unknown error"))
+      } catch (err) {
+        if (cancelled) return
+        setSampleLoaded(false)
+        setDebugError(err instanceof Error ? err.message : String(err))
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
   }, [project.voicePad.voice, project.voicePad.word])
+
+  useEffect(() => {
+    return () => {
+      blobDisposeRef.current?.()
+      blobDisposeRef.current = null
+    }
+  }, [])
 
   const togglePlay = async () => {
     const engine = engineRef.current
@@ -146,6 +187,7 @@ export const App = ({ hostApi: _hostApi }: Props) => {
       >
         <div>base: {PACK_BASE_URL || "(empty)"}</div>
         <div>url:  {debugUrl || "(none)"}</div>
+        <div>eff:  {debugEffective || "(none)"}</div>
         <div style={{ color: debugError ? "#ff8a8a" : "#9be59b" }}>
           loaded: {sampleLoaded ? "yes" : "no"}
           {debugError ? `  err: ${debugError}` : ""}

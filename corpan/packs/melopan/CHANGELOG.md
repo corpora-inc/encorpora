@@ -10,6 +10,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-05-20
+
+### Fixed
+- Voice samples actually play now. iOS WebKit blocks `fetch`/`XHR` from
+  custom protocols, so `corpan-pack://localhost/melopan/dist/.../foo.wav`
+  was returning `Load failed` to `Tone.ToneAudioBuffer` even though the
+  URL was correct (v0.1.3's debug strip pinpointed this — the entry
+  script loaded fine via `<script src>` but binary fetches died).
+
+  New `src/sdk/packAssets.ts` calls the host's
+  `content_packs_fetch_bytes` Tauri command (`lib.rs:595`) to read the
+  asset as bytes, wraps them in a `Blob`, and hands Tone a Blob URL.
+  Outside Tauri (vite dev) the URL is returned unchanged. Same workaround
+  hanzipan uses for its `hanziwriter.min.js` load.
+
+### Added
+- Debug strip now shows `eff:` (the effective URL passed to the audio
+  engine — either a `blob:` URL for the Tauri path, or the original URL
+  in dev). Still temporary; will pull before v0.2.
+
 ## [0.1.3] - 2026-05-20
 
 ### Added
