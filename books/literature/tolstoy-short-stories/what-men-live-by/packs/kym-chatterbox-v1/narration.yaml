@@ -11,68 +11,59 @@ retry:
   max_retries: 40
   jitter: 0.25
   schedules:
-    - {}
-    - cfg_weight: 0.8
-      temperature: 0.5
-    - cfg_weight: 0.5
-      exaggeration: 0.2
-      temperature: 0.3
-    - cfg_weight: 0.6
-      exaggeration: 0.6
-      temperature: 0.7
-    - cfg_weight: 1.0
-      temperature: 0.2
-    - cfg_weight: 0.4
-      exaggeration: 0.5
-      temperature: 0.5
-    - cfg_weight: 0.7
-      exaggeration: 0.1
-      temperature: 0.1
-    - cfg_weight: 0.3
-      exaggeration: 0.3
-      temperature: 0.6
-    - cfg_weight: 0.9
-      exaggeration: 0.4
-      temperature: 0.4
-    - cfg_weight: 0.2
-      exaggeration: 0.7
-      temperature: 0.8
+  - {}
+  - cfg_weight: 0.8
+    temperature: 0.5
+  - cfg_weight: 0.5
+    exaggeration: 0.2
+    temperature: 0.3
+  - cfg_weight: 0.6
+    exaggeration: 0.6
+    temperature: 0.7
+  - cfg_weight: 1.0
+    temperature: 0.2
+  - cfg_weight: 0.4
+    exaggeration: 0.5
+    temperature: 0.5
+  - cfg_weight: 0.7
+    exaggeration: 0.1
+    temperature: 0.1
+  - cfg_weight: 0.3
+    exaggeration: 0.3
+    temperature: 0.6
+  - cfg_weight: 0.9
+    exaggeration: 0.4
+    temperature: 0.4
+  - cfg_weight: 0.2
+    exaggeration: 0.7
+    temperature: 0.8
 mastering:
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
-  target_lufs: -22.0
-  target_tp: -3.0
-# Per-language WER/CER thresholds — override the defaults from
-# ttsctl.config.ValidationThresholds. Tolstoy's literary text + Russian-origin
-# proper nouns (Семён, Михаил, etc.) push Whisper's natural WER higher even on
-# clean audio. With train-pack-derived defaults (~0.30 for de/fr/es/it/pl/pt
-# etc.), Cycle 1 first-pass failure was 64% on de — half a million GPU seconds
-# wasted across 16 langs on retries that don't improve quality. Raised here
-# based on observed cycle-1 WER distributions. Fatal validators
-# (no_words, tail_zero_duration_run, truncated_last_word) still fire — those
-# are sacred. Only the soft transcription_mismatch retries get loosened.
+  target_lufs: -18.0
+  target_tp: -1.0
 validation:
   wer_per_lang:
     ar: 0.85
-    da: 0.70
-    de: 0.70
-    el: 1.10
-    en: 0.50
-    es: 0.60
+    da: 0.7
+    de: 0.7
+    el: 1.1
+    en: 0.5
+    es: 0.6
     fi: 0.75
-    fr: 0.70
-    hi: 0.80
-    it: 0.60
+    fr: 0.7
+    hi: 0.8
+    it: 0.6
     ko: 0.85
     ms: 0.85
     nl: 0.85
-    "no": 0.85
-    pl: 0.70
-    pt: 0.60
-    ru: 0.60
-    sv: 0.70
-    sw: 1.10
+    'no': 0.85
+    pl: 0.7
+    pt: 0.6
+    ru: 0.6
+    sv: 0.7
+    sw: 1.1
     tr: 0.85
   cer_per_lang:
     he: 0.85
@@ -94,7 +85,7 @@ voices:
   ko: kym-40.wav
   ms: kym-40.wav
   nl: kym-40.wav
-  "no": kym-40.wav
+  'no': kym-40.wav
   pl: kym-40.wav
   pt: kym-40.wav
   ru: kym-40.wav
@@ -103,3 +94,8 @@ voices:
   tr: kym-40.wav
   zh: kym-40.wav
 version: 1
+filter_chain:
+  alimiter:
+    enabled: true
+    level: false
+    limit: 0.8913

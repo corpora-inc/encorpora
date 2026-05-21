@@ -1,7 +1,7 @@
 {
   "id": "book_zheng_yi_sao",
   "name": "Zheng Yi Sao: The Pirate Queen of the South China Sea",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

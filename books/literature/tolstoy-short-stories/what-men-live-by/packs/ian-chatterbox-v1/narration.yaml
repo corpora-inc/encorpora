@@ -17,7 +17,7 @@ voices:
   da: ian-new-narration-try-more-chill-clear.wav
   sv: ian-new-narration-try-more-chill-clear.wav
   fi: ian-new-narration-try-more-chill-clear.wav
-  "no": ian-new-narration-try-more-chill-clear.wav
+  'no': ian-new-narration-try-more-chill-clear.wav
   pl: ian-new-narration-try-more-chill-clear.wav
   el: ian-new-narration-try-more-chill-clear.wav
   ja: ian-new-narration-try-more-chill-clear.wav
@@ -32,8 +32,8 @@ voices:
   he: ian-new-narration-spanish-loud.wav
   zh: ian-new-narration-spanish-loud.wav
 mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
   audio_codec: aac
   audio_bitrate: '64000'
   output_ext: .m4a
@@ -69,7 +69,7 @@ filter_chain:
     makeup: 1
   alimiter:
     enabled: true
-    limit: 0.708
+    limit: 0.8913
     level: false
 denoise:
   enabled: false
@@ -95,7 +95,7 @@ trimming:
     da: 0.12
     sv: 0.12
     fi: 0.12
-    "no": 0.12
+    'no': 0.12
     pl: 0.12
     el: 0.12
     tr: 0.12
@@ -119,7 +119,7 @@ trimming:
     da: 5.0
     sv: 5.0
     fi: 5.0
-    "no": 5.0
+    'no': 5.0
     pl: 5.0
     el: 5.0
     tr: 5.0
@@ -158,7 +158,7 @@ validation:
     da: 0.12
     sv: 0.12
     fi: 0.12
-    "no": 0.12
+    'no': 0.12
     pl: 0.12
     el: 0.12
     tr: 0.12
@@ -182,7 +182,7 @@ validation:
     da: 0.02
     sv: 0.02
     fi: 0.02
-    "no": 0.02
+    'no': 0.02
     pl: 0.02
     el: 0.02
     tr: 0.02
@@ -206,7 +206,7 @@ validation:
     da: 5.0
     sv: 5.0
     fi: 5.0
-    "no": 5.0
+    'no': 5.0
     pl: 5.0
     el: 5.0
     tr: 5.0

@@ -1,7 +1,7 @@
 {
   "id": "book_soul_food_southern_us",
   "name": "Soul Food of the Southern United States",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [
@@ -15,7 +15,7 @@
     "volume": 1,
     "author": "Corpora",
     "tts": true,
-    "audience": "Adult language learners — anyone curious about American food",
+    "audience": "Adult language learners \u2014 anyone curious about American food",
     "estimatedReadTime": "10-15 minutes",
     "estimatedListenTime": "10-15 minutes"
   }

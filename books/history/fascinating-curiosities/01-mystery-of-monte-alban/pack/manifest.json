@@ -1,10 +1,12 @@
 {
   "id": "book_monte_alban",
-  "name": "The Mystery of Monte Albán",
-  "version": "0.1.0",
+  "name": "The Mystery of Monte Alb\u00e1n",
+  "version": "0.5.9",
   "type": "book",
   "entry": "dist/reader.js",
-  "styles": ["dist/reader.css"],
+  "styles": [
+    "dist/reader.css"
+  ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
   "metadata": {

@@ -1,7 +1,7 @@
 {
   "id": "book_tolstoy_what_men_live_by",
-  "name": "What Men Live By (Чем люди живы)",
-  "version": "0.1.0",
+  "name": "What Men Live By (\u0427\u0435\u043c \u043b\u044e\u0434\u0438 \u0436\u0438\u0432\u044b)",
+  "version": "0.1.2",
   "type": "book",
   "primary_language": "ru",
   "metadata": {

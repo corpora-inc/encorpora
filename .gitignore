@@ -34,6 +34,11 @@ corpan/games/
 # Voice reference wavs — backed up to S3, not tracked in git
 voices/data/*.wav
 
+# Pre-mastered voice reference variants (HPF + denoise + compressor + loudnorm
+# applied to the raw refs at -22 / -18 / etc. LUFS targets). Derived: regen via
+# voices/scripts/sample_clone_premaster_*.py. Backed to S3 sources/voices/data/.
+voices/data/pre-mastered/
+
 # Voice candidate samples (large, local only)
 voices/samples/
 

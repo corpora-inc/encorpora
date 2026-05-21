@@ -18,8 +18,8 @@ retry:
   schedules:
   - {}
 mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
@@ -54,7 +54,7 @@ filter_chain:
     makeup: 1
   alimiter:
     enabled: true
-    limit: 0.708
+    limit: 0.8913
     level: false
 denoise:
   enabled: false
@@ -96,8 +96,10 @@ validation:
   min_trailing_silence_ms: 75
   max_inter_word_gap_ms: 3000
   sibling_languages:
-    ur: [hi]
-    hi: [ur]
+    ur:
+    - hi
+    hi:
+    - ur
   max_sec_per_char:
     ca: 0.15
     bn: 0.15

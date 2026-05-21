@@ -1,7 +1,7 @@
 {
   "id": "book_train_history",
   "name": "The Story of the Train",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

@@ -11,60 +11,65 @@ retry:
   max_retries: 40
   jitter: 0.25
   schedules:
-    - {}
-    - cfg_weight: 0.8
-      temperature: 0.5
-    - cfg_weight: 0.5
-      exaggeration: 0.2
-      temperature: 0.3
-    - cfg_weight: 0.6
-      exaggeration: 0.6
-      temperature: 0.7
-    - cfg_weight: 1.0
-      temperature: 0.2
-    - cfg_weight: 0.4
-      exaggeration: 0.5
-      temperature: 0.5
-    - cfg_weight: 0.7
-      exaggeration: 0.1
-      temperature: 0.1
-    - cfg_weight: 0.3
-      exaggeration: 0.3
-      temperature: 0.6
-    - cfg_weight: 0.9
-      exaggeration: 0.4
-      temperature: 0.4
-    - cfg_weight: 0.2
-      exaggeration: 0.7
-      temperature: 0.8
+  - {}
+  - cfg_weight: 0.8
+    temperature: 0.5
+  - cfg_weight: 0.5
+    exaggeration: 0.2
+    temperature: 0.3
+  - cfg_weight: 0.6
+    exaggeration: 0.6
+    temperature: 0.7
+  - cfg_weight: 1.0
+    temperature: 0.2
+  - cfg_weight: 0.4
+    exaggeration: 0.5
+    temperature: 0.5
+  - cfg_weight: 0.7
+    exaggeration: 0.1
+    temperature: 0.1
+  - cfg_weight: 0.3
+    exaggeration: 0.3
+    temperature: 0.6
+  - cfg_weight: 0.9
+    exaggeration: 0.4
+    temperature: 0.4
+  - cfg_weight: 0.2
+    exaggeration: 0.7
+    temperature: 0.8
 mastering:
   audio_bitrate: '64000'
   audio_codec: aac
   output_ext: .m4a
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
 voices:
-  ar: august-20.wav
-  da: august-20.wav
-  de: august-20.wav
-  el: august-20.wav
-  en: august-20.wav
-  es: august-20.wav
-  fi: august-20.wav
-  fr: august-20.wav
-  he: august-20.wav
-  hi: august-20.wav
-  it: august-20.wav
-  ja: august-20.wav
-  ko: august-20.wav
-  ms: august-20.wav
-  nl: august-20.wav
-  "no": august-20.wav
-  pl: august-20.wav
-  pt: august-20.wav
-  ru: august-20.wav
-  sv: august-20.wav
-  sw: august-20.wav
-  tr: august-20.wav
-  zh: august-20.wav
+  ar: august-20-clean.wav
+  da: august-20-clean.wav
+  de: august-20-clean.wav
+  el: august-20-clean.wav
+  en: august-20-clean.wav
+  es: august-20-clean.wav
+  fi: august-20-clean.wav
+  fr: august-20-clean.wav
+  he: august-20-clean.wav
+  hi: august-20-clean.wav
+  it: august-20-clean.wav
+  ja: august-20-clean.wav
+  ko: august-20-clean.wav
+  ms: august-20-clean.wav
+  nl: august-20-clean.wav
+  'no': august-20-clean.wav
+  pl: august-20-clean.wav
+  pt: august-20-clean.wav
+  ru: august-20-clean.wav
+  sv: august-20-clean.wav
+  sw: august-20-clean.wav
+  tr: august-20-clean.wav
+  zh: august-20-clean.wav
 version: 1
+filter_chain:
+  alimiter:
+    enabled: true
+    level: false
+    limit: 0.8913

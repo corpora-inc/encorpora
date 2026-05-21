@@ -1,7 +1,7 @@
 {
   "id": "book_persian_food",
   "name": "Persian Food",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [
@@ -15,7 +15,7 @@
     "volume": 2,
     "author": "Corpora",
     "tts": true,
-    "audience": "Adult language learners — anyone curious about Iranian and Persian food",
+    "audience": "Adult language learners \u2014 anyone curious about Iranian and Persian food",
     "estimatedReadTime": "12-18 minutes",
     "estimatedListenTime": "12-18 minutes"
   }

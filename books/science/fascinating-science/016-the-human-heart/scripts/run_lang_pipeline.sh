@@ -93,4 +93,28 @@ echo "[$(date +%T)] [$LANG_CODE] patch-catalog"
 ( cd /home/skyl/encorpora/corpan/infra && $BIN/python patch-catalog.py ) > "$LOG/patch.log" 2>&1
 tail -3 "$LOG/patch.log"
 
+# Verify the just-published narration is actually in the live catalog. The
+# wrapper's publish+patch sometimes ends with the new entry missing (race or
+# silent S3 write failure) — when that happens we manually upsert and re-patch.
+NID="science-heart-august-${LANG_CODE}"
+echo "[$(date +%T)] [$LANG_CODE] catalog-verify ($NID)"
+PRESENT=$($BIN/python <<PYEOF
+import os, boto3, json
+from dotenv import load_dotenv; from pathlib import Path
+load_dotenv(Path.home() / ".env")
+ak = os.environ.get("AWS_ACCESS_KEY_ID") or os.environ.get("AWS_ACCESS_KEY")
+sk = os.environ.get("AWS_SECRET_ACCESS_KEY")
+s3 = boto3.client("s3", region_name="us-east-2", aws_access_key_id=ak, aws_secret_access_key=sk)
+o = s3.get_object(Bucket="corpan-prod", Key="artifacts/catalog-v2.json")
+cat = json.loads(o["Body"].read())
+print("yes" if any(n.get("id")=="$NID" for n in cat.get("narrations",[])) else "no")
+PYEOF
+)
+if [ "$PRESENT" != "yes" ]; then
+  echo "  WARNING: $NID missing from catalog — running manual upsert + re-patch"
+  $BIN/python /home/skyl/projects/ttsctl/scripts/upsert_narration.py \
+    "$PACK" "$LANG_CODE" --voice-id august --version "$VERSION" >> "$LOG/patch.log" 2>&1 || true
+  ( cd /home/skyl/encorpora/corpan/infra && $BIN/python patch-catalog.py ) >> "$LOG/patch.log" 2>&1
+fi
+
 echo "[$(date +%T)] [$LANG_CODE $VERSION] DONE"

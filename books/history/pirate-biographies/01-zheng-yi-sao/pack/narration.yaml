@@ -4,7 +4,7 @@ tts:
   exaggeration: 0.3
   temperature: 0.3
   top_p: 0.85
-  min_p: 0.10
+  min_p: 0.1
   repetition_penalty: 2.0
 voices:
   en: ian-new-narration-try-more-chill-clear.wav
@@ -22,8 +22,8 @@ voices:
   ru: ian-new-narration-spanish-loud.wav
   tr: ian-new-narration-spanish-loud.wav
 mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
+  target_lufs: -18.0
+  target_tp: -1.0
   audio_codec: aac
   audio_bitrate: '64000'
   output_ext: .m4a
@@ -58,7 +58,7 @@ filter_chain:
     makeup: 1
   alimiter:
     enabled: true
-    limit: 0.708
+    limit: 0.8913
     level: false
 denoise:
   enabled: false
@@ -80,7 +80,7 @@ trimming:
     de: 0.12
     hi: 0.15
     it: 0.12
-    ja: 0.20
+    ja: 0.2
     ko: 0.18
     pl: 0.12
     pt: 0.12
@@ -116,7 +116,7 @@ validation:
     de: 0.12
     hi: 0.15
     it: 0.12
-    ja: 0.20
+    ja: 0.2
     ko: 0.18
     pl: 0.12
     pt: 0.12
