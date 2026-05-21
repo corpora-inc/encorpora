@@ -15,19 +15,30 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+import { type LocalizedString } from "@/contentPacks/phrasePackCatalog";
+
 export type InstalledPhrasePack = {
     /** Stable pack id, kebab-case, e.g. "phrase-botany-basics". Immutable. */
     id: string;
     /** Semver; bumps on any content change. */
     version: string;
-    /** Display name from `pack_meta.name`. */
+    /** Display name from `pack_meta.name`. English / base. */
     name: string;
-    /** Display description from `pack_meta.description`. */
+    /** Per-language overrides for `name`, persisted from the manifest
+     *  at install time. Lets the Stacks-tab toggle list render the
+     *  installed pack's name in the active UI language even when the
+     *  catalog isn't fetched (offline cold-start). */
+    nameLocalized?: LocalizedString;
+    /** Display description from `pack_meta.description`. English / base. */
     description: string;
+    /** Per-language overrides for `description`. Optional. */
+    descriptionLocalized?: LocalizedString;
     /** Authored grouping, e.g. "science", "humanities". */
     category: string;
-    /** Authored topic, e.g. "Botany". */
+    /** Authored topic, e.g. "Botany". English / base. */
     topic: string;
+    /** Per-language overrides for `topic`. Optional. */
+    topicLocalized?: LocalizedString;
     /** CEFR range present in this pack. */
     levelMin: string;
     levelMax: string;

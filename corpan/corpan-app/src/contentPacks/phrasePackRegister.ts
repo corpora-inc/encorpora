@@ -12,6 +12,7 @@
 
 import { invoke } from "@tauri-apps/api/core";
 
+import { type LocalizedString } from "@/contentPacks/phrasePackCatalog";
 import {
     usePhrasePacksStore,
     type InstalledPhrasePack,
@@ -23,9 +24,15 @@ type PhrasePackManifest = {
     version: string;
     packType?: string;
     name?: string;
+    /** Per-language overrides for `name`. Publisher mirror of the catalog
+     *  `nameLocalized` field — included in the bundled manifest so the
+     *  installed-pack registry can render the right title offline. */
+    nameLocalized?: LocalizedString;
     description?: string;
+    descriptionLocalized?: LocalizedString;
     category?: string;
     topic?: string;
+    topicLocalized?: LocalizedString;
     levelMin?: string;
     levelMax?: string;
     entryCount?: number;
@@ -35,6 +42,19 @@ type PhrasePackManifest = {
     databases?: Record<string, string>;
     schemaVersion?: number;
 };
+
+/** Permissive parse for a manifest-provided localized map. Returns
+ *  undefined for missing/garbage values; drops non-string entries. */
+function pickLocalized(v: unknown): LocalizedString | undefined {
+    if (!v || typeof v !== "object" || Array.isArray(v)) return undefined;
+    const out: LocalizedString = {};
+    for (const [key, value] of Object.entries(v as Record<string, unknown>)) {
+        if (typeof key === "string" && typeof value === "string" && value.length > 0) {
+            out[key] = value;
+        }
+    }
+    return Object.keys(out).length ? out : undefined;
+}
 
 async function fetchInstalledManifest(
     packId: string,
@@ -67,9 +87,12 @@ function manifestToInstalled(
         id: manifest.id,
         version: manifest.version || "0.0.0",
         name: manifest.name || manifest.id,
+        nameLocalized: pickLocalized(manifest.nameLocalized),
         description: manifest.description || "",
+        descriptionLocalized: pickLocalized(manifest.descriptionLocalized),
         category: manifest.category || "uncategorized",
         topic: manifest.topic || manifest.name || manifest.id,
+        topicLocalized: pickLocalized(manifest.topicLocalized),
         levelMin: manifest.levelMin || "A1",
         levelMax: manifest.levelMax || "C2",
         entryCount: typeof manifest.entryCount === "number" ? manifest.entryCount : 0,

@@ -114,6 +114,31 @@ example-botany/
   "icon": "leaf",
   "accent_color": "#a5d6a7",
 
+  // OPTIONAL per-language overrides for the human-facing strings.
+  // Keys are BCP-47 codes from the canonical 51-locale list. Partial
+  // coverage is fine — any locale not present falls back through the
+  // resolver chain (base language → script siblings for zh/yue →
+  // English → the bare `name` / `description` / `topic` field above).
+  // The app's `usePhrasePackCatalog` hook does the resolution; render
+  // sites read `pack.name` and get the right language automatically.
+  "name_localized": {
+    "en": "Botany Basics",
+    "es": "Botánica básica",
+    "fr": "Bases de botanique",
+    "de": "Botanik-Grundlagen",
+    "ja": "植物学の基礎"
+  },
+  "description_localized": {
+    "en": "Everyday plant-life vocabulary — flowers, leaves, photosynthesis, gardens.",
+    "es": "Vocabulario cotidiano sobre plantas — flores, hojas, fotosíntesis, jardines.",
+    "fr": "Vocabulaire courant sur la vie végétale — fleurs, feuilles, photosynthèse, jardins."
+  },
+  "topic_localized": {
+    "en": "Botany",
+    "es": "Botánica",
+    "fr": "Botanique"
+  },
+
   // Optional publish-time fields — flow through manifest.json into the
   // S3 catalog entry. Omit for sensible defaults.
   "purchase": { "type": "free" },
@@ -128,6 +153,23 @@ Required: `id`, `version`, `name`. Optional in-pack metadata:
 `description`, `category`, `topic`, `icon` (lucide-react icon name OR
 single emoji), `accent_color` (hex). `level_min` / `level_max` are
 inferred from `phrases.json` unless overridden.
+
+**Localization** (optional but strongly recommended for shipping packs):
+
+- `name_localized`, `description_localized`, `topic_localized` —
+  `{ "<bcp-47>": "<translation>" }` maps. Keys come from the canonical
+  51-locale list (see `corpan-app/src/store/settings.ts ::
+  ALL_LANGUAGES`). Partial coverage falls back gracefully — the
+  resolver tries exact match → base language (`pt-BR` → `pt`) →
+  Chinese-script siblings (`zh-Hans` ↔ `zh-Hant`, plus `yue-Hant-HK`)
+  → the map's `en` entry → the bare `name`/`description`/`topic`
+  field above. Users in any locale see *something* — at worst the
+  English original, never a missing key.
+- `category` stays an English / code slug (used by search +
+  internal category routing; never displayed bare in the UI).
+- Category pill labels live on the `phrasePackGroups[*]` entries in
+  the catalog — see *Catalog-level curation* below for the
+  `label_localized` / `description_localized` field shape there.
 
 Optional publish-time fields (forwarded to the S3 catalog by
 `publish.py`):
@@ -342,9 +384,24 @@ version's URL on the next `--update-catalog`.
 {
   "id": "phrase-botany-basics",
   "name": "Botany Basics",
+  "nameLocalized": {
+    "en": "Botany Basics",
+    "es": "Botánica básica",
+    "fr": "Bases de botanique",
+    "de": "Botanik-Grundlagen",
+    "ja": "植物学の基礎"
+  },
   "version": "0.1.0",
   "description": "Everyday plant-life vocabulary — flowers, leaves, photosynthesis, gardens.",
+  "descriptionLocalized": {
+    "en": "Everyday plant-life vocabulary — flowers, leaves, photosynthesis, gardens.",
+    "es": "Vocabulario cotidiano sobre plantas — flores, hojas, fotosíntesis, jardines."
+  },
   "topic": "Botany",
+  "topicLocalized": {
+    "en": "Botany",
+    "es": "Botánica"
+  },
   "category": "science",
   "zipUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/phrase-packs/phrase-botany-basics-0.1.0.zip",
   "sha256": "e5b1de97c0ba…",
@@ -361,6 +418,13 @@ version's URL on the next `--update-catalog`.
   "accentColor": "#a5d6a7"
 }
 ```
+
+`nameLocalized` / `descriptionLocalized` / `topicLocalized` are
+optional and partial; the bare-string `name` / `description` / `topic`
+are required and act as the ultimate fallback. App-side resolver
+(`corpan-app/src/contentPacks/phrasePackCatalog.ts :: resolveLocalized`)
+walks: exact lang → base lang (`pt-BR` → `pt`) → Chinese-script
+siblings → `en` entry → bare field.
 
 `publish.py --update-catalog` derives most of these from the pack's
 `manifest.json` (already produced by `build_phrase_pack.py`). Fields you
@@ -413,7 +477,17 @@ python3 tools/phrase-packs/publish.py \
     {
       "id": "starter",
       "label": "Essentials",
+      "labelLocalized": {
+        "en": "Essentials",
+        "es": "Esenciales",
+        "fr": "Essentiels",
+        "de": "Grundlegendes"
+      },
       "description": "The everyday packs we recommend first.",
+      "descriptionLocalized": {
+        "en": "The everyday packs we recommend first.",
+        "es": "Los paquetes diarios que recomendamos primero."
+      },
       "packIds": [
         "phrase-everyday-basics",
         "phrase-travel-essentials",
@@ -423,6 +497,11 @@ python3 tools/phrase-packs/publish.py \
     {
       "id": "sciences",
       "label": "Sciences",
+      "labelLocalized": {
+        "en": "Sciences",
+        "es": "Ciencias",
+        "fr": "Sciences"
+      },
       "packIds": ["phrase-botany-basics", "phrase-physics-mechanics"]
     },
     {
@@ -433,6 +512,11 @@ python3 tools/phrase-packs/publish.py \
   ]
 }
 ```
+
+Group `labelLocalized` and `descriptionLocalized` follow the same
+optional / fallback contract as the pack fields. Same resolver, same
+51-locale list. Render sites: the category pill row in the Packs-tab
+drawer + any group header on the Stacks-tab toggle section.
 
 Without these fields the onboarding step renders its "no phrase packs
 yet" placeholder and the Packs-tab browser collapses to a single "All
@@ -455,6 +539,78 @@ phrase packs" group.
 
 `version: 1` is the wire format version. Bump only on a breaking change
 (coordinate with Skylar — the app needs to know how to parse it).
+
+## Backend agent checklist — localization rollout
+
+Corpán-app 0.15.3+ parses `nameLocalized` / `descriptionLocalized` /
+`topicLocalized` (per pack) and `labelLocalized` /
+`descriptionLocalized` (per group) and renders them in the user's UI
+language. Older app versions ignore these fields gracefully — they
+read the bare-string base fields only — so this is **purely additive**
+on the wire.
+
+Per-pack `pack.json` additions (publisher input):
+
+- `name_localized` — `{ "<bcp-47>": "..." }` map keyed by the 51
+  canonical locale codes (see `corpan-app/src/store/settings.ts ::
+  ALL_LANGUAGES` and the canonical list earlier in this doc).
+- `description_localized` — same shape.
+- `topic_localized` — same shape.
+
+All three are optional and partial coverage is fine — the resolver
+falls back to base language, then Chinese-script siblings, then `en`,
+then the bare-string fields.
+
+Per-group `curation.json` additions (publisher input):
+
+- `label_localized` — `{ "<bcp-47>": "..." }` map.
+- `description_localized` — same shape.
+
+Tooling changes (`tools/phrase-packs/`):
+
+1. `build_phrase_pack.py` — extend the pack-meta forwarder that
+   writes `manifest.json` to copy `name_localized`,
+   `description_localized`, `topic_localized` from `pack.json` →
+   `manifest.json`. Emit them in **camelCase** keys (`nameLocalized`
+   etc.) inside the manifest to match the catalog wire format. The
+   app reads the manifest at install time and persists the maps in
+   the installed-pack registry — that's what powers offline
+   Stacks-tab localization.
+
+2. `publish.py :: _PASSTHROUGH_FIELDS` — add `nameLocalized`,
+   `descriptionLocalized`, `topicLocalized` to the passthrough list
+   so `derive_catalog_entry` mirrors them from the manifest into
+   the catalog entry. No other logic change — passthrough already
+   has the right shape.
+
+3. `publish.py --update-curation` — when reading `curation.json`,
+   pass `label_localized` / `description_localized` through to each
+   catalog group entry as camelCase `labelLocalized` /
+   `descriptionLocalized`.
+
+4. No changes needed for: per-pack SQLite (phrases are already
+   multi-language inside the pack DB), the S3 zip upload path, or
+   `Cache-Control` headers. Re-publish each pack to push the new
+   manifest + catalog entry.
+
+5. Translation generation is out of scope of this contract — use
+   whatever pipeline you prefer (LLM batch, professional, mix).
+   The canonical 51-locale list is mirrored in
+   `tools/phrase-packs/build_phrase_pack.py :: DEFAULT_LANGS`.
+
+Rollout order:
+
+1. App ships 0.15.3 (or 0.16) with the parser additions + hook
+   resolution. With no publisher changes, today's English-only
+   catalog still works — every `*Localized` is `undefined` and the
+   resolver returns the bare English field.
+2. Publisher backfills `nameLocalized` + `descriptionLocalized` for
+   the existing 24 packs + 8 groups. Pushes a new `catalog.json` to
+   S3 (and `--invalidate` if you don't want to wait the 5-minute
+   TTL). Users on 0.15.3+ see localized titles immediately on the
+   next catalog refresh.
+3. Going forward, every new pack ships with the localized maps from
+   day one.
 
 ## Validation rules
 

@@ -7,7 +7,7 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.15.1] - 2026-05-20 — Never-die sampler + saner default levels
+## [0.15.2] - 2026-05-20 — Never-die sampler + saner default levels
 
 The sampler used to throw `"No entries match the current filters"` (and
 freeze the main loop / blank out game packs) whenever a user's filter
@@ -138,6 +138,19 @@ that doesn't cover that edge. Belt + suspenders fix this release.
   new drawer trigger, in-pack drawers, everything — automatically
   gets a 44pt-friendly tap target on tablet+ widths. Phones keep
   the denser sizing.
+
+### Fixed (Android crash on Activity recreation)
+- **`WryActivity.onCreate` double-init panic.** Crash signature:
+  `tao::platform_impl::platform::ndk_glue::create` →
+  `ndk_context::initialize_android_context` → `panic_with_hook` →
+  `abort`. Android recreates the Activity on configuration changes
+  not declared in `android:configChanges`; when WryActivity gets
+  `onCreate` again the native static asserts the context is still
+  `None` and aborts the process. The previously-shipped list missed
+  `fontScale`, `density`, `layoutDirection`, `navigation`, `mcc`,
+  `mnc`. `fontScale` was the common trigger for our users — language
+  learners often adjust system font size and would crash on next
+  app open. Manifest extended to cover every runtime-mutable config.
 
 ### Fixed (Phrase-pack drawer lifted to app root)
 - **Stacks-tab scroll regression fixed.** The phrase-pack drawer's

@@ -24,6 +24,8 @@ import { useTranslation } from "react-i18next";
 import { BookOpen, Database, Library, Search } from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
+import { resolveLocalized } from "@/contentPacks/phrasePackCatalog";
+import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useStackPhraseCount } from "@/hooks/useStackPhraseCount";
 import { useSettingsStore } from "@/store/settings";
 import { PhrasePackDrawerTrigger } from "./PhrasePackDrawerTrigger";
@@ -41,8 +43,19 @@ type FilterKind = "all" | "active" | "inactive";
 
 const FILTERS: FilterKind[] = ["all", "active", "inactive"];
 
+type LocalizedInstalledPack = InstalledPhrasePack & {
+    /** Display name resolved through catalog cross-lookup → installed
+     *  `*Localized` → bare English. Overrides the bare `name` field. */
+    displayName: string;
+    displayTopic: string;
+    displayDescription: string;
+    /** Pre-lowercased, includes every localized variant we know about
+     *  (from catalog + installed) so cross-language search works. */
+    searchHaystack: string;
+};
+
 export function PhrasePackToggleSection() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const baseCorpusEnabled = useSettingsStore((s) => s.baseCorpusEnabled);
     const setBaseCorpusEnabled = useSettingsStore((s) => s.setBaseCorpusEnabled);
     const phrasePackIds = useSettingsStore((s) => s.phrasePackIds);
@@ -50,6 +63,12 @@ export function PhrasePackToggleSection() {
     const setPhrasePackIds = useSettingsStore((s) => s.setPhrasePackIds);
 
     const installed = usePhrasePacksStore((s) => s.installed);
+    // Catalog cross-lookup: when the live catalog has an entry for an
+    // installed pack, we prefer ITS localized maps (they're the
+    // freshest publisher state). The installed registry's own
+    // `*Localized` maps are the offline fallback.
+    const { byId: catalogPackById } = usePhrasePackCatalog();
+    const lang = i18n.language;
 
     const [query, setQuery] = useState("");
     const [filter, setFilter] = useState<FilterKind>("all");
@@ -60,12 +79,65 @@ export function PhrasePackToggleSection() {
             n,
         });
 
-    const allPacks = useMemo(
+    const allPacks = useMemo<LocalizedInstalledPack[]>(
         () =>
-            Object.values(installed).sort((a, b) =>
-                a.name.localeCompare(b.name),
-            ),
-        [installed],
+            Object.values(installed)
+                .map((p): LocalizedInstalledPack => {
+                    const catalogEntry = catalogPackById(p.id);
+                    // Prefer catalog-side localized maps when present;
+                    // fall back to the installed record's persisted map;
+                    // ultimate fallback is the bare English field.
+                    const nameLocalized =
+                        catalogEntry?.nameLocalized ?? p.nameLocalized;
+                    const descriptionLocalized =
+                        catalogEntry?.descriptionLocalized ??
+                        p.descriptionLocalized;
+                    const topicLocalized =
+                        catalogEntry?.topicLocalized ?? p.topicLocalized;
+                    const baseName = catalogEntry?.name ?? p.name;
+                    const baseDesc =
+                        catalogEntry?.description ?? p.description;
+                    const baseTopic = catalogEntry?.topic ?? p.topic;
+                    const displayName = resolveLocalized(
+                        nameLocalized,
+                        baseName,
+                        lang,
+                    );
+                    const displayTopic = resolveLocalized(
+                        topicLocalized,
+                        baseTopic,
+                        lang,
+                    );
+                    const displayDescription = resolveLocalized(
+                        descriptionLocalized,
+                        baseDesc,
+                        lang,
+                    );
+                    // Search haystack covers every variant we have.
+                    const haystackParts: string[] = [
+                        baseName,
+                        baseDesc,
+                        baseTopic,
+                        p.category,
+                    ];
+                    if (nameLocalized)
+                        haystackParts.push(...Object.values(nameLocalized));
+                    if (descriptionLocalized)
+                        haystackParts.push(
+                            ...Object.values(descriptionLocalized),
+                        );
+                    if (topicLocalized)
+                        haystackParts.push(...Object.values(topicLocalized));
+                    return {
+                        ...p,
+                        displayName,
+                        displayTopic,
+                        displayDescription,
+                        searchHaystack: haystackParts.join(" ").toLowerCase(),
+                    };
+                })
+                .sort((a, b) => a.displayName.localeCompare(b.displayName)),
+        [installed, catalogPackById, lang],
     );
 
     const activeSet = useMemo(() => new Set(phrasePackIds), [phrasePackIds]);
@@ -74,10 +146,7 @@ export function PhrasePackToggleSection() {
         const q = query.trim().toLowerCase();
         return allPacks.filter((p) => {
             if (q) {
-                const haystack = [p.name, p.topic, p.description, p.category]
-                    .filter(Boolean)
-                    .join(" ")
-                    .toLowerCase();
+                const haystack = p.searchHaystack;
                 if (!haystack.includes(q)) return false;
             }
             switch (filter) {
@@ -95,7 +164,7 @@ export function PhrasePackToggleSection() {
     // missing a category fall into an "Other" bucket. Within each group
     // packs stay in the parent's alphabetical order.
     const visibleGroups = useMemo(() => {
-        const byCategory = new Map<string, InstalledPhrasePack[]>();
+        const byCategory = new Map<string, LocalizedInstalledPack[]>();
         for (const p of visiblePacks) {
             const key = (p.category || "").trim() || "__other__";
             const bucket = byCategory.get(key) ?? [];
@@ -423,7 +492,7 @@ export function PhrasePackToggleSection() {
                                                         aria-hidden="true"
                                                     />
                                                 }
-                                                name={pack.name}
+                                                name={pack.displayName}
                                                 subtitle={formatPackSubtitle(
                                                     pack,
                                                     phrasesLabel,

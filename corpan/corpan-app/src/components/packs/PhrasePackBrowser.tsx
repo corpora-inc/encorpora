@@ -71,14 +71,19 @@ export function PhrasePackBrowser() {
     const filterPack = (pack: PhrasePackCatalogEntry): boolean => {
         if (query.trim()) {
             const q = query.trim().toLowerCase();
-            const haystack = [
-                pack.name,
-                pack.topic ?? "",
-                pack.description ?? "",
-                pack.category ?? "",
-            ]
-                .join(" ")
-                .toLowerCase();
+            // Cross-language search: `searchHaystack` (set by
+            // `usePhrasePackCatalog`) already includes every locale
+            // variant of name/description/topic + the English base +
+            // the category slug, all lowercased. So a Spanish user can
+            // find "cocina" even if the publisher hasn't authored a
+            // Spanish description yet (English fields catch it), and
+            // an English user can find a pack by its Japanese title.
+            const haystack =
+                (pack as PhrasePackCatalogEntry & { searchHaystack?: string })
+                    .searchHaystack ??
+                [pack.name, pack.topic ?? "", pack.description ?? "", pack.category ?? ""]
+                    .join(" ")
+                    .toLowerCase();
             if (!haystack.includes(q)) return false;
         }
         switch (filter) {

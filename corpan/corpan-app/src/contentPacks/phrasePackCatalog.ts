@@ -23,18 +23,33 @@ export const DEFAULT_PHRASE_PACK_CATALOG_URL =
 
 export type PhrasePackChannel = "stable" | "preview";
 
+/** BCP-47 language code → localized string. See `resolveLocalized` for
+ *  the fallback chain. Publisher partials are fine: any locale not
+ *  covered falls through to the bare-string base field at the entry's
+ *  top level (which stays English / required). */
+export type LocalizedString = Record<string, string>;
+
 export type PhrasePackCatalogEntry = {
     /** Stable pack id, kebab-case, immutable. e.g. "phrase-botany-basics". */
     id: string;
-    /** Display name from `pack_meta.name`. */
+    /** Display name from `pack_meta.name`. English / base — REQUIRED.
+     *  Acts as the ultimate fallback when `nameLocalized` doesn't
+     *  cover the active locale. */
     name: string;
+    /** Per-language overrides for `name`. Optional. */
+    nameLocalized?: LocalizedString;
     /** Semver. */
     version: string;
-    /** Free-form display blurb. */
+    /** Free-form display blurb. English / base. */
     description?: string;
-    /** Authored topic (e.g. "Botany"). */
+    /** Per-language overrides for `description`. Optional. */
+    descriptionLocalized?: LocalizedString;
+    /** Authored topic (e.g. "Botany"). English / base. */
     topic?: string;
-    /** Authored category (e.g. "science"). */
+    /** Per-language overrides for `topic`. Optional. */
+    topicLocalized?: LocalizedString;
+    /** Authored category (e.g. "science"). Stays an English / code slug —
+     *  used by the search haystack, not displayed bare. */
     category?: string;
     /** Download target on the CDN. */
     zipUrl: string;
@@ -66,10 +81,14 @@ export type PhrasePackCatalogEntry = {
 export type PhrasePackGroup = {
     /** Stable group id, e.g. "starter", "sciences". */
     id: string;
-    /** Display label. */
+    /** Display label. English / base — REQUIRED. */
     label: string;
+    /** Per-language overrides for `label`. Optional. */
+    labelLocalized?: LocalizedString;
     /** Optional one-liner shown under the group header. */
     description?: string;
+    /** Per-language overrides for `description`. Optional. */
+    descriptionLocalized?: LocalizedString;
     /** Ordered pack ids; entries not in the catalog are silently dropped. */
     packIds: string[];
 };
@@ -112,6 +131,21 @@ function parseStringArray(v: unknown): string[] | undefined {
     return out.length ? out : undefined;
 }
 
+/** Parse a `{ "en": "...", "es": "..." }` map. Permissive: drops
+ *  non-string entries silently, returns `undefined` for empty result so
+ *  the catalog entry's optional `*Localized?` field stays unset. */
+function parseLocalizedString(v: unknown): LocalizedString | undefined {
+    if (!v || typeof v !== "object" || Array.isArray(v)) return undefined;
+    const r = v as Record<string, unknown>;
+    const out: LocalizedString = {};
+    for (const [key, value] of Object.entries(r)) {
+        if (typeof key === "string" && typeof value === "string" && value.length > 0) {
+            out[key] = value;
+        }
+    }
+    return Object.keys(out).length ? out : undefined;
+}
+
 function parsePurchase(v: unknown): PurchaseInfo | undefined {
     if (!v || typeof v !== "object") return undefined;
     const r = v as Record<string, unknown>;
@@ -142,9 +176,12 @@ function parseEntry(item: unknown): PhrasePackCatalogEntry | null {
     return {
         id,
         name: name || id,
+        nameLocalized: parseLocalizedString(r.nameLocalized),
         version,
         description: toOptionalString(r.description),
+        descriptionLocalized: parseLocalizedString(r.descriptionLocalized),
         topic: toOptionalString(r.topic),
+        topicLocalized: parseLocalizedString(r.topicLocalized),
         category: toOptionalString(r.category),
         zipUrl,
         sha256: toOptionalString(r.sha256),
@@ -175,11 +212,68 @@ function parseGroups(v: unknown): PhrasePackGroup[] | undefined {
         out.push({
             id,
             label,
+            labelLocalized: parseLocalizedString(r.labelLocalized),
             description: toOptionalString(r.description),
+            descriptionLocalized: parseLocalizedString(r.descriptionLocalized),
             packIds,
         });
     }
     return out.length ? out : undefined;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  localized string resolver                                                 */
+/* -------------------------------------------------------------------------- */
+
+/** Pick the best localized variant of a string for the given UI
+ *  language, falling back gracefully when a locale is missing.
+ *
+ *  Resolution order:
+ *    1. Exact match (`pt-BR`).
+ *    2. Base language (`pt-BR` → `pt`).
+ *    3. Script-sibling hops for the Chinese family — handles publishers
+ *       who ship only one of {Hans, Hant} and Cantonese-Hant users.
+ *    4. English (`en`) entry inside the map.
+ *    5. The bare-string `fallback` (already required, English at the
+ *       entry top level).
+ *
+ *  Always returns a non-empty string when `fallback` is non-empty.
+ */
+export function resolveLocalized(
+    map: LocalizedString | undefined,
+    fallback: string,
+    lang: string,
+): string {
+    if (!map) return fallback;
+
+    // 1. Exact match.
+    const exact = map[lang];
+    if (typeof exact === "string" && exact.length > 0) return exact;
+
+    // 2. Base language (locale minus region/script suffix).
+    const dashIdx = lang.indexOf("-");
+    if (dashIdx > 0) {
+        const base = lang.slice(0, dashIdx);
+        const baseHit = map[base];
+        if (typeof baseHit === "string" && baseHit.length > 0) return baseHit;
+    }
+
+    // 3. Script-sibling hops, Chinese family only.
+    if (lang.startsWith("zh") || lang.startsWith("yue")) {
+        const ZH_SIBLINGS = ["zh-Hans", "zh-Hant", "zh"];
+        for (const sib of ZH_SIBLINGS) {
+            if (sib === lang) continue;
+            const hit = map[sib];
+            if (typeof hit === "string" && hit.length > 0) return hit;
+        }
+    }
+
+    // 4. English fallback inside the map.
+    const en = map["en"];
+    if (typeof en === "string" && en.length > 0) return en;
+
+    // 5. The bare-string fallback (catalog entry's top-level field).
+    return fallback;
 }
 
 export function parsePhrasePackCatalog(

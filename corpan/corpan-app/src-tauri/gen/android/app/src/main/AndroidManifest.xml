@@ -14,8 +14,24 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.corpan"
         android:usesCleartextTraffic="${usesCleartextTraffic}">
+        <!--
+             configChanges must include EVERY config that Android can
+             change at runtime, otherwise Android destroys + recreates
+             the Activity. Recreation calls WryActivity.onCreate again,
+             which re-enters tao::ndk_glue::create →
+             ndk_context::initialize_android_context, which asserts the
+             native context is still None and aborts the process.
+
+             The previously-shipped list missed fontScale, density,
+             layoutDirection, and navigation. fontScale in particular
+             was a common crash trigger for language-learning users who
+             adjust their system font size.
+
+             Authoritative list per Tao's known issues:
+               https://github.com/tauri-apps/tao (search ndk_context)
+        -->
         <activity
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|fontScale|density|layoutDirection|navigation|mcc|mnc"
             android:launchMode="singleTask"
             android:label="@string/main_activity_title"
             android:name=".MainActivity"

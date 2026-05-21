@@ -8,8 +8,10 @@
 // (Phase B′), only this hook had to change.
 
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
+    resolveLocalized,
     visiblePhrasePacks,
     type PhrasePackCatalogEntry,
     type PhrasePackGroup,
@@ -17,7 +19,9 @@ import {
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 
-/** Catalog group with its `packIds` already resolved to concrete entries. */
+/** Catalog group with its `packIds` already resolved to concrete entries.
+ *  `label` and `description` are pre-resolved to the active UI language
+ *  (see `usePhrasePackCatalog` for the resolver). */
 export type ResolvedPhrasePackGroup = {
     id: string;
     label: string;
@@ -25,24 +29,39 @@ export type ResolvedPhrasePackGroup = {
     packs: PhrasePackCatalogEntry[];
 };
 
+/** Render-shape for a phrase pack: the raw catalog entry plus
+ *  pre-resolved `name` / `description` / `topic` overrides for the
+ *  current UI language. Render sites stay simple — they read
+ *  `pack.name` and friends and don't have to know about the
+ *  localized maps at all.
+ *
+ *  We also expose a `searchHaystack` that includes both the base
+ *  English fields and the localized variant for the active language,
+ *  so a user searching for "cocina" in Spanish UI still matches packs
+ *  whose Spanish title hasn't been authored yet (English fields catch
+ *  them). */
+export type LocalizedPhrasePack = PhrasePackCatalogEntry & {
+    searchHaystack: string;
+};
+
 export type PhrasePackCatalogView = {
     /** Every phrase pack visible to this client (app-version + channel
-     *  gates already applied). Order preserved from the catalog payload. */
-    allPhrasePacks: PhrasePackCatalogEntry[];
+     *  gates already applied). Order preserved from the catalog payload.
+     *  `name`, `description`, `topic` are pre-resolved to the active UI
+     *  language; the un-localized originals are preserved on the raw
+     *  `*Localized` maps for callers that want them. */
+    allPhrasePacks: LocalizedPhrasePack[];
     /** Onboarding pool — up to `ONBOARDING_POOL_CAP` packs from
-     *  `allPhrasePacks` in catalog order. Surfaces the whole catalog at
-     *  first-run, not just the curated four. */
-    starterPacks: PhrasePackCatalogEntry[];
-    /** Publisher-curated default-checked ids within `starterPacks`. If
-     *  the catalog omits `onboardingStarterPackIds`, falls back to every
-     *  pack in `starterPacks` (select-all). */
+     *  `allPhrasePacks` in catalog order. */
+    starterPacks: LocalizedPhrasePack[];
+    /** Publisher-curated default-checked ids within `starterPacks`. */
     defaultSelectedIds: string[];
     /** Catalog-driven group structure for the Packs-tab browser. When the
      *  catalog declares no groups, falls back to a single "All phrase
      *  packs" group containing every visible phrase pack. */
     groups: ResolvedPhrasePackGroup[];
     /** O(1) lookup by pack id (limited to visible phrase packs). */
-    byId: (id: string) => PhrasePackCatalogEntry | undefined;
+    byId: (id: string) => LocalizedPhrasePack | undefined;
     /** Sum `sizeMb` across the given ids. Missing entries / sizes
      *  contribute 0 — render copy should say "~N MB" not "exactly". */
     totalSizeMb: (ids: string[]) => number;
@@ -65,8 +84,9 @@ const FALLBACK_GROUP_LABEL = "All phrase packs";
 function resolveGroups(
     visibleIds: Set<string>,
     catalogGroups: PhrasePackGroup[] | undefined,
-    indexById: Map<string, PhrasePackCatalogEntry>,
-    allPacks: PhrasePackCatalogEntry[],
+    indexById: Map<string, LocalizedPhrasePack>,
+    allPacks: LocalizedPhrasePack[],
+    lang: string,
 ): ResolvedPhrasePackGroup[] {
     if (!catalogGroups || catalogGroups.length === 0) {
         return [
@@ -79,13 +99,69 @@ function resolveGroups(
     }
     return catalogGroups.map((g) => ({
         id: g.id,
-        label: g.label,
-        description: g.description,
+        label: resolveLocalized(g.labelLocalized, g.label, lang),
+        description:
+            g.description !== undefined || g.descriptionLocalized
+                ? resolveLocalized(
+                    g.descriptionLocalized,
+                    g.description ?? "",
+                    lang,
+                ) || undefined
+                : undefined,
         packs: g.packIds
             .filter((id) => visibleIds.has(id))
             .map((id) => indexById.get(id)!)
             .filter(Boolean),
     }));
+}
+
+/** Localize a single catalog entry for the active UI language. The raw
+ *  `*Localized` maps are preserved on the entry (so consumers that
+ *  WANT the raw forms can still read them), but `name`, `description`,
+ *  and `topic` are replaced with their resolved variants. */
+function localizePack(
+    pack: PhrasePackCatalogEntry,
+    lang: string,
+): LocalizedPhrasePack {
+    const name = resolveLocalized(pack.nameLocalized, pack.name, lang);
+    const description = pack.description !== undefined || pack.descriptionLocalized
+        ? resolveLocalized(
+            pack.descriptionLocalized,
+            pack.description ?? "",
+            lang,
+        ) || undefined
+        : undefined;
+    const topic = pack.topic !== undefined || pack.topicLocalized
+        ? resolveLocalized(pack.topicLocalized, pack.topic ?? "", lang) ||
+          undefined
+        : undefined;
+
+    // Search haystack: concatenate every variant we know about so a user
+    // typing in either their UI language OR English (or anything else
+    // the publisher localized to) matches. Lowercased once here so the
+    // per-keystroke search filter is just an `includes` check.
+    const haystackParts: string[] = [
+        pack.name,
+        pack.description ?? "",
+        pack.topic ?? "",
+        pack.category ?? "",
+    ];
+    if (pack.nameLocalized) haystackParts.push(...Object.values(pack.nameLocalized));
+    if (pack.descriptionLocalized) {
+        haystackParts.push(...Object.values(pack.descriptionLocalized));
+    }
+    if (pack.topicLocalized) {
+        haystackParts.push(...Object.values(pack.topicLocalized));
+    }
+    const searchHaystack = haystackParts.join(" ").toLowerCase();
+
+    return {
+        ...pack,
+        name,
+        description,
+        topic,
+        searchHaystack,
+    };
 }
 
 /**
@@ -118,16 +194,29 @@ export function usePhrasePackCatalog(): PhrasePackCatalogView {
     // the same running app.
     const appVersion = useCatalogStore((s) => s.appVersion);
     const devMode = useCatalogStore((s) => s.devMode);
+    // Active UI language. Reading from i18next gives us the same source
+    // of truth `LanguageSynchronizer` keeps in lockstep with
+    // `useSettingsStore.languages[0]`. The hook re-runs when the user
+    // changes their primary language → every pack name updates live.
+    const { i18n } = useTranslation();
+    const lang = i18n.language;
 
     return useMemo<PhrasePackCatalogView>(() => {
         if (!catalog) return EMPTY_VIEW;
 
-        const allPhrasePacks = appVersion
+        const rawVisible = appVersion
             ? visiblePhrasePacks(catalog, appVersion, devMode)
             : // No app version yet (rare; pre-getAppVersion) — show everything.
               catalog.packs;
 
-        const indexById = new Map<string, PhrasePackCatalogEntry>();
+        // Project every visible pack through the language-aware
+        // localizer. Render sites read `pack.name` / `pack.description`
+        // / `pack.topic` directly and get the right language for free.
+        const allPhrasePacks: LocalizedPhrasePack[] = rawVisible.map((p) =>
+            localizePack(p, lang),
+        );
+
+        const indexById = new Map<string, LocalizedPhrasePack>();
         for (const p of allPhrasePacks) indexById.set(p.id, p);
         const visibleIds = new Set(indexById.keys());
 
@@ -147,6 +236,7 @@ export function usePhrasePackCatalog(): PhrasePackCatalogView {
             catalog.phrasePackGroups,
             indexById,
             allPhrasePacks,
+            lang,
         );
 
         const byId = (id: string) => indexById.get(id);
@@ -161,5 +251,5 @@ export function usePhrasePackCatalog(): PhrasePackCatalogView {
             byId,
             totalSizeMb,
         };
-    }, [catalog, appVersion, devMode]);
+    }, [catalog, appVersion, devMode, lang]);
 }
