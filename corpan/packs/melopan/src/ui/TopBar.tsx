@@ -6,6 +6,14 @@ type Props = {
   onTogglePlay: () => void
 }
 
+const requestExit = () => {
+  try {
+    window.dispatchEvent(new CustomEvent("corpan:exit"))
+  } catch {
+    // Host not present (vite dev); ignore.
+  }
+}
+
 export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
   const project = useProjectStore((s) => s.project)
   const setBpm = useProjectStore((s) => s.setBpm)
@@ -14,6 +22,14 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
 
   return (
     <div className="mp-top-bar">
+      <button
+        className="mp-btn mp-btn--exit"
+        onClick={requestExit}
+        aria-label="Exit Melopan"
+        title="Exit Melopan"
+      >
+        ‹
+      </button>
       <div className="mp-brand">MELOPAN</div>
 
       <div className="mp-transport">

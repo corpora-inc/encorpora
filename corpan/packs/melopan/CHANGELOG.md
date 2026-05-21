@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-05-21
+
+### Added
+- `‹` exit button in the top bar. Click dispatches the `corpan:exit`
+  CustomEvent the host listens for — same pattern as hover-runner and
+  pronunciation-coach. No more closing the whole corpan-app to leave
+  Melopan.
+
 ## [0.1.6] - 2026-05-21
 
 ### Removed
