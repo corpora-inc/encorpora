@@ -251,7 +251,17 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         // Rust expects raw `bool` — see comment on iOS side; using
         // resolveObject(true) emits bare JSON `true`, not
         // {"available":true}.
-        invoke.resolveObject(true)
+        //
+        // Reflect the actual native-lib load status so the pack can
+        // probe up front and route to a "not supported on this
+        // device" screen before even offering a model. On x86_64
+        // Chromebooks where libhoudini can't translate the
+        // armv8.2-a SIMD intrinsics whisper.cpp is built with, this
+        // returns false. NOTE: touching WhisperContext here triggers
+        // its static initializer if it hasn't already run — which
+        // is the *whole point* of the try/catch we added in that
+        // companion `init` block. Throwing here is now impossible.
+        invoke.resolveObject(WhisperContext.isAvailable())
     }
 
     @Command
@@ -272,7 +282,8 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val systemFreeMB = (mi.availMem / (1024 * 1024)).toInt()
 
         val ret = JSObject()
-        ret.put("available", true)
+        ret.put("available", WhisperContext.isAvailable())
+        WhisperContext.unavailableReason?.let { ret.put("unavailableReason", it) }
         ret.put("prepared", ctx?.isAlive == true)
         loadedModel?.let { ret.put("model", it) }
         ret.put("recording", activeSessionId != null)
@@ -337,6 +348,25 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         // Pack-supplied URL wins; otherwise fall back to HF base.
         val sourceUrl = args.downloadUrl?.takeIf { it.isNotEmpty() } ?: (HF_BASE + name)
         Log.i(TAG, "install requested: $name  url: $sourceUrl")
+
+        // Bail BEFORE touching WhisperContext when the native lib
+        // failed to load (e.g. x86_64 Chromebook with no matching
+        // .so). Any reference to WhisperContext (including the
+        // post-download verify load test below) would otherwise
+        // re-throw UnsatisfiedLinkError from the companion's
+        // <clinit> — only fatal because Kotlin coroutines have no
+        // default uncaught-exception handler that survives. We
+        // surface this as a structured STT_UNAVAILABLE error so the
+        // pack can render a clear "speech recognition not supported
+        // on this device" message instead of crashing.
+        if (!WhisperContext.isAvailable()) {
+            val reason = WhisperContext.unavailableReason
+                ?: "On-device speech recognition is not available on this device."
+            Log.w(TAG, "installModel refused: native unavailable — $reason")
+            channel?.send(installEvent(name, "failed", null, null, null, reason, "STT_UNAVAILABLE"))
+            invoke.reject(reason, "STT_UNAVAILABLE", ex = null)
+            return
+        }
 
         if (validateModelInternal(name).isEmpty()) {
             channel?.send(installEvent(name, "verified", 1.0, null, null, null, null))
@@ -406,6 +436,22 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val args = invoke.parseArgs(PrepareArgs::class.java)
         val name = args.model ?: DEFAULT_MODEL
         Log.i(TAG, "prepare requested (local-only): $name")
+
+        // Same guard as installModel — refuse cleanly when the
+        // native library couldn't load on this device. Without this,
+        // the WhisperContext.load() call below would re-trigger the
+        // companion <clinit> UnsatisfiedLinkError and SIGKILL the
+        // app. STT_UNAVAILABLE is a recoverable JS-side error code.
+        if (!WhisperContext.isAvailable()) {
+            val reason = WhisperContext.unavailableReason
+                ?: "On-device speech recognition is not available on this device."
+            Log.w(TAG, "prepare refused: native unavailable — $reason")
+            val ret = JSObject()
+            ret.put("ready", false); ret.put("model", name)
+            ret.put("message", reason)
+            ret.put("code", "STT_UNAVAILABLE")
+            invoke.resolve(ret); return
+        }
 
         if (ctx?.isAlive == true && loadedModel == name) {
             val ret = JSObject(); ret.put("ready", true); ret.put("model", name)

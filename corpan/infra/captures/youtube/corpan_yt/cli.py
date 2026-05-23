@@ -169,13 +169,28 @@ def upload(built_dir: Path, variant: str | None, privacy: str | None, dry_run: b
 
     title = yt_meta.get("title")
     description = yt_meta.get("description", "")
-    tags = yt_meta.get("tags", [])
+    tags = list(yt_meta.get("tags", []))
     category_id = int(yt_meta.get("category_id", 27))
     privacy = privacy or yt_meta.get("privacy", "public")
     daudio = yt_meta.get("default_audio_language")
     dlang = yt_meta.get("default_language")
     made_for_kids = bool(yt_meta.get("made_for_kids", False))
     playlist_name = yt_meta.get("playlist")
+
+    # Per-variant overrides: `variant_overrides.{variant}.{description_suffix,
+    # description, title, tags, additional_tags}`. Useful for A/B testing where
+    # one variant gets different copy (e.g. different bgm credit, different title).
+    overrides = (yt_meta.get("variant_overrides") or {}).get(variant, {})
+    if "description" in overrides:
+        description = overrides["description"]
+    if "description_suffix" in overrides:
+        description = (description or "") + overrides["description_suffix"]
+    if "title" in overrides:
+        title = overrides["title"]
+    if "tags" in overrides:
+        tags = list(overrides["tags"])
+    if "additional_tags" in overrides:
+        tags = tags + list(overrides["additional_tags"])
 
     # `shorts` variant: append "#Shorts" hint to title (YouTube hint, not required).
     if variant == "shorts" and "#shorts" not in title.lower():

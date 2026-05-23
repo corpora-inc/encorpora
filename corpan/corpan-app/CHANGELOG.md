@@ -7,6 +7,42 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.15.9] - 2026-05-22 — Parlometron: graceful unavailability on unsupported ABIs
+
+### Fixed
+
+- **Parlometron crash on Chromebook (`java.lang.UnsatisfiedLinkError`).**
+  `WhisperContext.<clinit>`'s call to `System.loadLibrary("whisper-jni")`
+  was unguarded. On x86_64 Chromebooks running Android via ARC, the
+  shipped `arm64-v8a` binary (compiled with
+  `-march=armv8.2-a+fp16+dotprod`) couldn't be translated by
+  `libhoudini`, so the very first reference to `WhisperContext`
+  threw an unhandled `UnsatisfiedLinkError` from a coroutine and
+  killed the JVM. Subsequent opens of Parlometron crashed
+  instantly the same way.
+
+  Plugin `tauri-plugin-stt` bumped 0.5.0 → 0.5.1 with:
+  - `WhisperContext` companion `init` wraps `loadLibrary` in
+    try/catch, exposes `isAvailable: Boolean` + `unavailableReason:
+    String?` for callers.
+  - `SttPlugin.installModel`, `prepare`, `isAvailable`, and
+    `getStatus` all consult `WhisperContext.isAvailable()` before
+    touching any native code. When unavailable, they return a
+    structured `STT_UNAVAILABLE` error code instead of crashing.
+
+  Pack-side handling in `pronunciation-coach/src/game.ts` routes
+  `STT_UNAVAILABLE` to a clear "speech recognition isn't available
+  on this device" screen at boot, on model-switch, and on install,
+  instead of cycling through download attempts that would never
+  load. Existing iOS / non-Chromebook-Android flows unchanged.
+
+  Followups (separate work): add `x86_64` to the plugin's
+  `abiFilters` so Chromebooks + emulators can actually run
+  Parlometron once whisper.cpp's ARM-specific build flags are
+  gated per-ABI.
+
+## [0.15.6] - 2026-05-21 — Android crash mitigations
+
 ### Fixed
 
 - **Android: shrink the libgui `FenceMonitor` race window during WebView

@@ -149,17 +149,21 @@ if want_variant long; then
 fi
 
 # 2) shorts — 9:16, blur-pad to 1080x1920, ≤180s (current Shorts ceiling)
+#    Bias content upward (y = 25% of total padding from top, 75% from bottom)
+#    so Reels/Shorts UI overlays sit on the larger bottom blur band instead
+#    of clipping the content.
 SHORTS_MAX_SEC=180
+SHORTS_TOP_BIAS="${SHORTS_TOP_BIAS:-0.25}"
 if want_variant shorts; then
   OUT="$BUILT_DIR/shorts.mp4"
-  echo "==> encoding shorts.mp4 (1080x1920, blur-pad)"
+  echo "==> encoding shorts.mp4 (1080x1920, blur-pad, top-bias=$SHORTS_TOP_BIAS)"
   ffmpeg -y -hide_banner -loglevel warning -stats \
     -i "$RAW" \
     -filter_complex "
       [0:v]scale=in_range=full:out_range=tv,format=yuv420p,split=2[bg][fg];
       [bg]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=30:1[bgb];
       [fg]scale=1080:-2[fgs];
-      [bgb][fgs]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p
+      [bgb][fgs]overlay=x=(W-w)/2:y=(H-h)*${SHORTS_TOP_BIAS},setsar=1,format=yuv420p
     " \
     -c:v libx264 -crf 19 -preset slow -profile:v high \
     -t $SHORTS_MAX_SEC \

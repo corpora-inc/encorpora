@@ -122,14 +122,62 @@ class WhisperContext private constructor(private var ctxPtr: Long) {
     companion object {
         private const val TAG = "WhisperJNI-Kotlin"
 
+        /** Whether `libwhisper-jni.so` loaded successfully for this
+         *  device's ABI. False on platforms where the shipped ARM
+         *  binary can't load — notably x86_64 Chromebooks running
+         *  Android via ARC where libhoudini can't translate the
+         *  armv8.2-a+fp16+dotprod SIMD intrinsics whisper.cpp is
+         *  compiled with. Callers MUST check this before invoking
+         *  any of the `native*` methods — otherwise the first call
+         *  would re-trigger the original UnsatisfiedLinkError and
+         *  abort the process. Read this field via [isAvailable]. */
+        @JvmStatic
+        @Volatile
+        var nativeAvailable: Boolean = false
+            private set
+
+        /** Human-readable explanation of why [nativeAvailable] is
+         *  false, suitable for surfacing to the user. Null when the
+         *  library loaded cleanly. */
+        @JvmStatic
+        @Volatile
+        var unavailableReason: String? = null
+            private set
+
         init {
+            // Wrap loadLibrary so an UnsatisfiedLinkError (or any
+            // other Throwable) in this static initializer doesn't
+            // kill the JVM the first time anything references this
+            // class. Before this guard, calling
+            // WhisperContext.load() on a Chromebook with no
+            // x86_64 .so would crash the whole Corpán process at
+            // the static-init <clinit> step, before any of our
+            // model-state logic got a chance to run. See
+            // plugins/tauri-plugin-stt/android/build.gradle.kts
+            // for the ABI list (currently arm64-v8a only).
             try {
-                System.loadLibrary("c++_shared")
+                try {
+                    System.loadLibrary("c++_shared")
+                } catch (t: Throwable) {
+                    Log.w(TAG, "c++_shared load skipped: ${t.message}")
+                }
+                System.loadLibrary("whisper-jni")
+                nativeAvailable = true
+                Log.i(TAG, "whisper-jni loaded successfully")
             } catch (t: Throwable) {
-                Log.w(TAG, "c++_shared load skipped: ${t.message}")
+                nativeAvailable = false
+                unavailableReason = t.message
+                    ?: "Speech-recognition native library could not be loaded on this device."
+                Log.e(
+                    TAG,
+                    "whisper-jni FAILED to load (likely unsupported device ABI): " +
+                        "${t.javaClass.simpleName}: ${t.message}",
+                )
             }
-            System.loadLibrary("whisper-jni")
         }
+
+        @JvmStatic
+        fun isAvailable(): Boolean = nativeAvailable
 
         @JvmStatic
         external fun nativeVersion(): String
@@ -138,7 +186,20 @@ class WhisperContext private constructor(private var ctxPtr: Long) {
         external fun nativeInitFromFile(path: String): Long
 
         fun load(path: String): WhisperContext? {
-            val ptr = nativeInitFromFile(path)
+            if (!nativeAvailable) {
+                Log.w(TAG, "load() called but native lib is unavailable — returning null")
+                return null
+            }
+            val ptr = try {
+                nativeInitFromFile(path)
+            } catch (t: Throwable) {
+                // Belt-and-braces: should never fire if static init
+                // already succeeded, but if the native side has its
+                // own UnsatisfiedLinkError (missing symbol, etc.)
+                // we'd rather report it as a clean null than abort.
+                Log.e(TAG, "nativeInitFromFile threw: ${t.javaClass.simpleName}: ${t.message}")
+                return null
+            }
             if (ptr == 0L) return null
             return WhisperContext(ptr)
         }

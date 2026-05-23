@@ -15,6 +15,7 @@
 //! reference and releases it in its own destroy path, so replacing the slot
 //! does not leak.
 use std::ffi::c_void;
+use std::ptr::addr_of_mut;
 
 static mut ANDROID_CONTEXT: Option<AndroidContext> = None;
 
@@ -35,13 +36,25 @@ impl AndroidContext {
 }
 
 pub fn android_context() -> AndroidContext {
-    unsafe { ANDROID_CONTEXT.expect("android context was not initialized") }
+    // SAFETY: read-only access via a raw pointer dereference. Android
+    // JNI calls into this from the main thread; we don't synchronize
+    // against re-initialization, matching upstream ndk-context's
+    // contract.
+    unsafe {
+        (*addr_of_mut!(ANDROID_CONTEXT)).expect("android context was not initialized")
+    }
 }
 
 /// # Safety
 /// The pointers must be valid for the lifetime of the stored context.
 pub unsafe fn initialize_android_context(java_vm: *mut c_void, context_jobject: *mut c_void) {
-    let _ = ANDROID_CONTEXT.replace(AndroidContext {
+    // Use a raw pointer (addr_of_mut!) to satisfy the Rust 2024
+    // `static_mut_refs` lint without changing semantics — we still
+    // single-threaded-overwrite the slot just like upstream
+    // ndk-context, just via a raw write instead of `Option::replace`
+    // (which would implicitly take `&mut` on the static).
+    let slot = addr_of_mut!(ANDROID_CONTEXT);
+    (*slot) = Some(AndroidContext {
         java_vm,
         context_jobject,
     });
@@ -50,5 +63,6 @@ pub unsafe fn initialize_android_context(java_vm: *mut c_void, context_jobject: 
 /// # Safety
 /// Must only be called after `initialize_android_context()`.
 pub unsafe fn release_android_context() {
-    let _ = ANDROID_CONTEXT.take();
+    let slot = addr_of_mut!(ANDROID_CONTEXT);
+    (*slot) = None;
 }

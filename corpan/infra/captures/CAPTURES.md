@@ -173,6 +173,31 @@ Practical implications:
   Data API v3* → *Quotas & System Limits* → "Queries per day" row →
   "Apply for higher quota". Audit + ~1–2 week turnaround.
 
+### Content ID and "public domain" music — a trap
+
+Public-domain music in the US (pre-1929 sound recordings under the Music
+Modernization Act) is NOT automatically safe on YouTube. Record labels
+register modern remasters / cover versions of the same underlying
+recordings into Content ID, and YouTube's audio fingerprint matches
+spuriously on the PD original too.
+
+Observed on the Israel batch (2026-05-21):
+
+- **Tanz A Bissel** (Rose Gross "restored"): clean 3/3 uploads.
+- **St. Louis Blues** (ODJB 1917): claimed 4/4 uploads (worldwide or RU
+  blocks). Major-label remasters are heavily fingerprinted.
+- **Elman** (HMV DB 1146/1147): claimed 2/3 uploads, fingerprint-luck.
+
+Conclusion: pre-1929 PD music popular enough to have been remastered
+will trigger Content ID claims. Niche / obscure PD recordings are safer.
+Fresh CC0 / CC-BY material (e.g. tanpura drones from ragajunglism.org,
+freesound.org) is safest — no label has fingerprinted them.
+
+Disputing: Studio → Content → click video → Copyright tab → Dispute,
+reason "Public domain work." Explain the publication year + MMA. Most
+spurious PD claims get released within a week. Cheaper long-term to
+just pick non-claimed music than to dispute everything.
+
 ### Channel-side upload limit (separate from API quota!)
 
 YouTube enforces a **per-channel daily upload cap** that's independent of
