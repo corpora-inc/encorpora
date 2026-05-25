@@ -10,6 +10,40 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-05-25
+
+### Changed
+- **Unified step-count math across all signatures.** Picker options are
+  now `{ top × 2ⁿ }` filtered to `[6, 64]`. 3/4 → [6, 12, 24, 48], 4/4 →
+  [8, 16, 32, 64], 5/8 → [10, 20, 40], 11/4 or 11/8 → [11, 22, 44],
+  13/4 or 13/8 → [13, 26, 52]. Same rule everywhere, musically clean.
+- **Defaults bumped.** Each sig defaults to `top × 4`, which keeps
+  4/4 → 16 and 3/4 → 12 but finally distinguishes 6/8 → 24 from 3/4 → 12.
+- **Loop interval formula rewritten** to `(bottom × steps / top)n`,
+  always a clean Tone subdivision for any valid combination.
+- **Switching SIG preserves the resolution multiplier.** 4/4 @ 32 (×8)
+  → 3/4 lands at 24 (also ×8) instead of resetting to the default.
+- **3rd skin replaced with Juice Squeeze** — warm cream paper, deep
+  teal, soft gold, warm orange accents (palette lifted from the
+  juice-squeeze pack). Persisted `"hover-runner"` auto-migrates.
+
+### Added
+- **Time signatures: 2/4, 3/8, 5/8, 7/4, 10/4, 10/8, 12/8.**
+- **Return-to-default button** is now a two-tap confirm (tap → button
+  arms with `?` in accent color → tap again within 3 s to commit).
+  Avoids `window.confirm()`, which silently fails inside the Tauri
+  iOS webview.
+- **Clear button on the beats grid** (matches the synth's Clear).
+  Wipes all step patterns across kick/snare/hat/voice1/voice2 while
+  preserving volumes, mutes, names, and pitches.
+
+### Fixed / Tightened
+- Track-label column shrunk from 110 px to 48 px and font from 18 px
+  to 15 px so the cells column reclaims that space on phone widths.
+  Long names ellipsis cleanly.
+- Removed the redundant `(muted)` text from drum rows and the synth
+  header — the existing Mute/Unmute button already conveys state.
+
 ## [0.2.2] - 2026-05-25
 
 ### Fixed

@@ -26,7 +26,6 @@ const Row = ({
       <div className="mp-row-label" onClick={onPreview} title={`Preview ${track.name}`}>
         <span className="mp-row-emoji">{track.emoji}</span>
         <span>{track.name}</span>
-        {track.mute && <span style={{ opacity: 0.5, fontSize: 12 }}>(muted)</span>}
       </div>
       <div className="mp-cells">
         {track.steps.map((on, i) => {
@@ -78,9 +77,20 @@ export const StepGrid = ({ playheadStep, onPreview }: Props) => {
   const toggleStep = useProjectStore((s) => s.toggleStep)
   const setTrackVolume = useProjectStore((s) => s.setTrackVolume)
   const toggleMute = useProjectStore((s) => s.toggleMute)
+  const clearAllSteps = useProjectStore((s) => s.clearAllSteps)
 
   return (
     <div className="mp-grid-wrap">
+      <div className="mp-step-grid-head">
+        <button
+          className="mp-btn"
+          onClick={clearAllSteps}
+          style={{ padding: "2px 8px", fontSize: 12 }}
+          title="Clear all beat patterns"
+        >
+          Clear
+        </button>
+      </div>
       {tracks.map((t) => (
         <Row
           key={t.id}

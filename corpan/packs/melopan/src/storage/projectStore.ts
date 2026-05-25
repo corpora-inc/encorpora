@@ -13,6 +13,7 @@ import {
   createDefaultProject,
   migrateSchema1To2,
   stepsForTimeSignature,
+  availableStepCounts,
   resizeBoolSteps,
   resizeNoteSteps,
 } from "../model/project"
@@ -52,6 +53,8 @@ type State = {
   setVoicePadVoice: (trackId: VoiceTrackId, voice: string) => void
   setVoicePadWord: (trackId: VoiceTrackId, word: string | null) => void
   setVoicePadPitch: (trackId: VoiceTrackId, semis: number) => void
+  /** Clear all step patterns across drum + voice tracks (keeps volumes/mutes). */
+  clearAllSteps: () => void
   /** Synth (piano roll) */
   setSynthNote: (step: number, midi: number | null) => void
   clearSynthNotes: () => void
@@ -154,7 +157,17 @@ export const useProjectStore = create<State>((set) => ({
   }),
 
   setTimeSignature: (top, bottom) => set((s) => {
-    const newLen = stepsForTimeSignature(top, bottom)
+    // Preserve current resolution (×k on the top number) so the cell
+    // feel stays the same when switching sigs: 4/4 @ 32 (×8) → 3/4 @ 24
+    // (also ×8). Falls back to the sig's default if the multiplier is
+    // out of the picker range.
+    const [prevTop] = s.project.timeSignature
+    const prevMultiplier = s.project.lengthSteps / prevTop
+    const candidate = Math.round(top * prevMultiplier)
+    const opts = availableStepCounts(top, bottom)
+    const newLen = opts.includes(candidate)
+      ? candidate
+      : stepsForTimeSignature(top, bottom)
     const next = bumpUpdate({
       ...s.project,
       timeSignature: [top, bottom] as [number, number],
@@ -212,6 +225,18 @@ export const useProjectStore = create<State>((set) => ({
     const next = bumpUpdate(
       updateVoiceTrack(s.project, trackId, (t) => ({ ...t, pitchSemis: clamped }))
     )
+    persistDebounced(next)
+    return { project: next }
+  }),
+
+  clearAllSteps: () => set((s) => {
+    const next = bumpUpdate({
+      ...s.project,
+      tracks: s.project.tracks.map((t) => ({
+        ...t,
+        steps: t.steps.map(() => false),
+      })),
+    })
     persistDebounced(next)
     return { project: next }
   }),
@@ -321,12 +346,27 @@ export const hydrateProject = async () => {
     }
 
     if (project) {
+      // Migrate the legacy 'hover-runner' skin id to its replacement.
+      const migrateSkin = (s: unknown): Project["skin"] => {
+        if (s === "earthgate" || s === "stargate" || s === "juice-squeeze") return s
+        if (s === "hover-runner") return "juice-squeeze"
+        return project!.skin
+      }
       // Honor any skin preference cached in localStorage as a tiebreaker
-      let skin = project.skin
+      let skin = migrateSkin(project.skin)
       try {
         const ls = window.localStorage.getItem("melopan:skin")
-        if (ls === "earthgate" || ls === "stargate" || ls === "hover-runner") {
-          skin = ls
+        const migrated = migrateSkin(ls)
+        if (
+          migrated === "earthgate" ||
+          migrated === "stargate" ||
+          migrated === "juice-squeeze"
+        ) {
+          skin = migrated
+        }
+        // Rewrite localStorage if it held the legacy id.
+        if (ls === "hover-runner") {
+          window.localStorage.setItem("melopan:skin", "juice-squeeze")
         }
       } catch {}
       useProjectStore.setState({ project: { ...project, skin }, ready: true })

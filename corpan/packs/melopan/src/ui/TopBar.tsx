@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useProjectStore } from "../storage/projectStore"
 import { availableStepCounts } from "../model/project"
 import { SkinPicker } from "./SkinPicker"
@@ -27,10 +27,33 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
   const setLengthSteps = useProjectStore((s) => s.setLengthSteps)
   const resetProject = useProjectStore((s) => s.resetProject)
 
-  const onReset = () => {
-    if (window.confirm("Reset to default? Your current pattern will be lost.")) {
-      resetProject()
+  // Two-stage confirm — tap once to arm (button shows "?"), tap again
+  // within 3s to actually reset. Avoids window.confirm(), which is
+  // unreliable inside the Tauri webview / iOS host.
+  const [resetArmed, setResetArmed] = useState(false)
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearResetTimer = () => {
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current)
+      resetTimerRef.current = null
     }
+  }
+  useEffect(() => clearResetTimer, [])
+
+  const onReset = () => {
+    if (resetArmed) {
+      clearResetTimer()
+      setResetArmed(false)
+      resetProject()
+      return
+    }
+    setResetArmed(true)
+    clearResetTimer()
+    resetTimerRef.current = setTimeout(() => {
+      setResetArmed(false)
+      resetTimerRef.current = null
+    }, 3000)
   }
 
   const stepOptions = availableStepCounts(
@@ -72,12 +95,12 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
         ‹
       </button>
       <button
-        className="mp-btn mp-btn--reset"
+        className={`mp-btn mp-btn--reset ${resetArmed ? "is-armed" : ""}`}
         onClick={onReset}
-        aria-label="Reset to default"
-        title="Reset to default"
+        aria-label={resetArmed ? "Tap again to confirm reset" : "Reset to default"}
+        title={resetArmed ? "Tap again to confirm" : "Reset to default"}
       >
-        ↺
+        {resetArmed ? "?" : "↺"}
       </button>
       <div className="mp-brand">MELOPÁN</div>
 
@@ -134,16 +157,23 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
             setTimeSignature(t, b)
           }}
         >
+          <option value="2/4">2/4</option>
           <option value="3/4">3/4</option>
           <option value="4/4">4/4</option>
           <option value="5/4">5/4</option>
+          <option value="7/4">7/4</option>
+          <option value="10/4">10/4</option>
+          <option value="11/4">11/4</option>
+          <option value="13/4">13/4</option>
+          <option value="3/8">3/8</option>
+          <option value="5/8">5/8</option>
           <option value="6/8">6/8</option>
           <option value="7/8">7/8</option>
           <option value="9/8">9/8</option>
+          <option value="10/8">10/8</option>
           <option value="11/8">11/8</option>
+          <option value="12/8">12/8</option>
           <option value="13/8">13/8</option>
-          <option value="11/4">11/4</option>
-          <option value="13/4">13/4</option>
         </select>
       </div>
 

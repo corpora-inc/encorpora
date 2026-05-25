@@ -4,7 +4,7 @@ import type { SkinId } from "../model/project"
 const SKINS: { id: SkinId; label: string }[] = [
   { id: "earthgate", label: "Earthgate" },
   { id: "stargate", label: "Stargate" },
-  { id: "hover-runner", label: "Hover Runner" },
+  { id: "juice-squeeze", label: "Juice Squeeze" },
 ]
 
 export const SkinPicker = () => {

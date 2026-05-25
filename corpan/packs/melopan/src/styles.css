@@ -74,28 +74,29 @@ html, body, #corpan-game-root {
 }
 
 /* ============================================================
-   Hover Runner skin — radial dark blue + cyan + Trebuchet sans
+   Juice Squeeze skin — warm cream paper + deep teal + warm orange
+   (palette lifted from the juice-squeeze pack)
    ============================================================ */
-.melopan-root[data-skin="hover-runner"] {
-  --mp-bg: #05070f;
-  --mp-bg-gradient: radial-gradient(circle at 60% 20%, #11203b, #05070f 55%, #020409 100%);
-  --mp-surface: rgba(8, 12, 24, 0.92);
-  --mp-surface-2: rgba(16, 26, 46, 0.92);
-  --mp-text: #eaf2ff;
-  --mp-text-dim: #90a8d0;
-  --mp-accent: #7fd6ff;
-  --mp-accent-2: #d56a1a;
-  --mp-accent-hover: #a0e4ff;
-  --mp-success: #4cff9f;
-  --mp-error: #ff6060;
-  --mp-border: rgba(234, 242, 255, 0.18);
-  --mp-cell-off: rgba(234, 242, 255, 0.10);
+.melopan-root[data-skin="juice-squeeze"] {
+  --mp-bg: #f5efe4;
+  --mp-bg-gradient: radial-gradient(circle at 60% 20%, #fbf7f0, #f5efe4 60%, #f0e3ce 100%);
+  --mp-surface: #fbf7f0;
+  --mp-surface-2: #f0e3ce;
+  --mp-text: #1b1b1f;
+  --mp-text-dim: #5f5b57;
+  --mp-accent: #0b6b6f;        /* deep teal */
+  --mp-accent-2: #f2c572;      /* soft gold */
+  --mp-accent-hover: #0f8b8d;
+  --mp-success: #0f8b8d;
+  --mp-error: #e36c2f;         /* warm orange used as punch / error */
+  --mp-border: rgba(16, 26, 31, 0.18);
+  --mp-cell-off: rgba(16, 26, 31, 0.08);
   --mp-cell-on: var(--mp-accent);
-  --mp-playhead: rgba(127, 214, 255, 0.16);
+  --mp-playhead: rgba(227, 108, 47, 0.18);
   --mp-font: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
   --mp-font-mono: "VT323", "Courier New", monospace;
-  --mp-radius: 14px;
-  --mp-shadow: 0 24px 60px rgba(3, 6, 14, 0.45);
+  --mp-radius: 18px;
+  --mp-shadow: 0 8px 22px rgba(16, 26, 31, 0.12);
 }
 
 /* ============================================================
@@ -138,9 +139,11 @@ html, body, #corpan-game-root {
   text-shadow: 0 0 12px rgba(213, 106, 26, 0.35);
   user-select: none;
 }
-.melopan-root[data-skin="stargate"] .mp-brand,
-.melopan-root[data-skin="hover-runner"] .mp-brand {
+.melopan-root[data-skin="stargate"] .mp-brand {
   text-shadow: 0 0 14px rgba(127, 214, 255, 0.45);
+}
+.melopan-root[data-skin="juice-squeeze"] .mp-brand {
+  text-shadow: 0 0 10px rgba(11, 107, 111, 0.35);
 }
 
 .mp-transport {
@@ -176,6 +179,11 @@ html, body, #corpan-game-root {
   padding: 2px 10px 4px;
   font-size: 20px;
   line-height: 1;
+}
+.mp-btn--reset.is-armed {
+  background: var(--mp-accent);
+  color: #fff;
+  font-weight: 700;
 }
 .mp-btn--step {
   min-width: 28px;
@@ -261,8 +269,8 @@ html, body, #corpan-game-root {
 .mp-skin-swatch[data-skin="stargate"] {
   background: linear-gradient(135deg, #02040b 40%, #7fd6ff);
 }
-.mp-skin-swatch[data-skin="hover-runner"] {
-  background: radial-gradient(circle at 60% 20%, #11203b 40%, #7fd6ff);
+.mp-skin-swatch[data-skin="juice-squeeze"] {
+  background: linear-gradient(135deg, #f5efe4 35%, #f2c572 55%, #0b6b6f);
 }
 
 /* ============================================================
@@ -288,26 +296,40 @@ html, body, #corpan-game-root {
 }
 .mp-row:last-child { margin-bottom: 0; }
 
+.mp-step-grid-head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 6px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
 .mp-row-label {
   font-family: var(--mp-font-mono);
-  font-size: 18px;
+  font-size: 15px;
   color: var(--mp-text);
   user-select: none;
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex: 0 0 110px;
+  gap: 4px;
+  flex: 0 0 48px;
   position: sticky;
   left: 0;
   z-index: 2;
   background: var(--mp-surface);
-  padding: 4px 6px 4px 2px;
+  padding: 4px 4px 4px 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   /* subtle shadow on the right edge so users see when content is under */
   box-shadow: 6px 0 8px -6px rgba(0, 0, 0, 0.18);
 }
 .mp-row-label .mp-row-emoji {
-  font-size: 18px;
+  font-size: 15px;
   opacity: 0.9;
+  flex: 0 0 auto;
 }
 
 .mp-cells {

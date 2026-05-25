@@ -75,7 +75,6 @@ export const PianoRoll = ({ playheadStep, onPreviewNote }: Props) => {
         <div className="mp-row-label">
           <span className="mp-row-emoji">♪</span>
           <span>{synth.name}</span>
-          {synth.mute && <span style={{ opacity: 0.5, fontSize: 12 }}>(muted)</span>}
         </div>
         <div className="mp-piano-roll-controls">
           <button className="mp-btn" onClick={toggleSynthMute} style={{ padding: "2px 8px", fontSize: 12 }}>

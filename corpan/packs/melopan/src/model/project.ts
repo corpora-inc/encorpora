@@ -1,4 +1,4 @@
-export type SkinId = "earthgate" | "stargate" | "hover-runner"
+export type SkinId = "earthgate" | "stargate" | "juice-squeeze"
 
 export type DrumTrackId = "kick" | "snare" | "hat"
 export type VoiceTrackId = "voice1" | "voice2"
@@ -75,48 +75,65 @@ export type Project = {
 const emptyBool = (n: number) => Array.from({ length: n }, () => false)
 const emptyNotes = (n: number): (number | null)[] => Array.from({ length: n }, () => null)
 
-/**
- * Steps per bar at 16th-note resolution:
- *  - x/4  → x * 4   (4 sixteenths per quarter)
- *  - x/8  → x * 2   (2 sixteenths per eighth)
- * 3/4=12, 4/4=16, 5/4=20, 6/8=12, 7/8=14, 9/8=18, 11/8=22, 13/8=26.
- */
-export const stepsForTimeSignature = (top: number, bottom: number): number => {
-  if (bottom === 4) return top * 4
-  if (bottom === 8) return top * 2
-  return 16
-}
-
-const MAX_STEP_COUNT = 96
+// Cells per bar are always `top × 2^k`, where k ≥ 0, in [6, 64].
+const MIN_STEP_COUNT = 6
+const MAX_STEP_COUNT = 64
 
 /**
- * STEPS-picker options for a given time signature. The base count is the
- * standard 16th-note resolution; doubling and quadrupling give 32nd and
- * 64th note subdivisions. Capped at 96 cells to keep individual cells
- * tappable on phone screens.
+ * STEPS-picker options for a time signature.
+ *
+ * Rule: candidates = { top × 2^k : k ≥ 0 } ∩ [MIN_STEP_COUNT, MAX_STEP_COUNT].
+ * The denominator doesn't change which counts are offered — it only
+ * affects the loop interval (how long each cell lasts in real time).
+ *
+ *   2/4    → [8, 16, 32, 64]      3/4 or 3/8   → [6, 12, 24, 48]
+ *   4/4    → [8, 16, 32, 64]      5/4 or 5/8   → [10, 20, 40]
+ *   6/4    → [6, 12, 24, 48]      6/8          → [6, 12, 24, 48]
+ *   7/x    → [7, 14, 28, 56]      10/x         → [10, 20, 40]
+ *   11/x   → [11, 22, 44]         13/x         → [13, 26, 52]
  */
-export const availableStepCounts = (top: number, bottom: number): number[] => {
-  const base = stepsForTimeSignature(top, bottom)
-  const out = [base]
-  if (base * 2 <= MAX_STEP_COUNT) out.push(base * 2)
-  if (base * 4 <= MAX_STEP_COUNT) out.push(base * 4)
+export const availableStepCounts = (top: number, _bottom: number): number[] => {
+  const out: number[] = []
+  for (let k = 0; ; k++) {
+    const n = top * (1 << k)
+    if (n > MAX_STEP_COUNT) break
+    if (n >= MIN_STEP_COUNT) out.push(n)
+  }
+  if (out.length === 0) out.push(Math.min(top, MAX_STEP_COUNT))
   return out
 }
 
 /**
+ * Default step count for a sig: prefer `top × 4` (keeps 4/4=16, 3/4=12,
+ * and gives /8 sigs the doubled resolution that distinguishes 6/8 from
+ * 3/4). Falls back to the closest in-range option.
+ */
+export const stepsForTimeSignature = (top: number, bottom: number): number => {
+  const opts = availableStepCounts(top, bottom)
+  const preferred = top * 4
+  if (opts.includes(preferred)) return preferred
+  return opts.reduce((best, n) =>
+    Math.abs(n - preferred) < Math.abs(best - preferred) ? n : best
+  , opts[0])
+}
+
+/**
  * Tone.js Loop interval string for the given step count + signature.
- * Step counts are always 1× / 2× / 4× the base, so the result is one
- * of "16n" / "32n" / "64n" — standard subdivisions Tone parses cleanly.
+ *
+ * Each cell holds `(bar duration) / lengthSteps`. A bar holds `top` notes
+ * of value 1/bottom. In Tone "Xn" notation a cell of value 1/X gives:
+ *   X = bottom × lengthSteps / top
+ *
+ * With lengthSteps = top × 2^k, X reduces to bottom × 2^k — always a
+ * clean integer Tone parses cleanly ("4n", "8n", "16n", "32n", "64n").
  */
 export const intervalForSteps = (
   top: number,
   bottom: number,
   lengthSteps: number
 ): string => {
-  const base = stepsForTimeSignature(top, bottom)
-  const m = Math.max(1, Math.round(lengthSteps / base))
-  // 16 * 1=16n, 16 * 2=32n, 16 * 4=64n
-  return `${16 * m}n`
+  const x = Math.max(1, Math.round((bottom * lengthSteps) / top))
+  return `${x}n`
 }
 
 export const resizeBoolSteps = (arr: boolean[], newLen: number): boolean[] => {
