@@ -24,10 +24,9 @@
     {
       "id": "S00_START",
       "type": "scene",
-      "title": "The Hum Under the City",
+      "title": "The Quest for the All-Hearing Ear",
       "text": [
-        "A faint vibration lives inside every wall: not sound, but a suggestion of sound.",
-        "Some call it myth. Some call it data. You call it a trail."
+        "You are on a quest for the legendary and mysterious All-Hearing Ear. You must navigate NYC and hunt for clues, keeping your energy level up by talking with vendors and other characters along the way in the target language of your choosing."
       ],
       "on_enter": [
         { "op": "add_set", "var": "visited", "value": "S00_START" }

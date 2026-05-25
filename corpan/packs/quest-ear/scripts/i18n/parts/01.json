@@ -1,0 +1,26 @@
+{
+  "A mix please!": {
+    "ca": "Una barreja, si us plau!", "ro": "Un amestec, vă rog!", "pt-PT": "Uma mistura, por favor!", "nl": "Een mix, alsjeblieft!", "no": "En miks, takk!", "sv": "En mix, tack!", "da": "En blanding, tak!", "fi": "Sekoitus, kiitos!", "lt": "Mišinį, prašau!", "cs": "Směs, prosím!", "sk": "Zmes, prosím!", "sl": "Mešanico, prosim!", "hr": "Mješavinu, molim!", "sr": "Мешавину, молим!", "bg": "Микс, моля!", "uk": "Суміш, будь ласка!", "el": "Ένα μείγμα, παρακαλώ!", "he": "תערובת, בבקשה!", "pa-Arab": "اک ملاوٹ، جی!", "pa-Guru": "ਇੱਕ ਮਿਲਾਵਟ, ਜੀ!", "ne": "मिक्स गरिदिनुहोस्!", "ms": "Campuran, ya!", "sw": "Mchanganyiko, tafadhali!", "yue-Hant-HK": "溝埋畀我！"
+  },
+  "A rose for you?": {
+    "ca": "Una rosa per a tu?", "ro": "Un trandafir pentru tine?", "pt-PT": "Uma rosa para si?", "nl": "Een roos voor jou?", "no": "En rose til deg?", "sv": "En ros till dig?", "da": "En rose til dig?", "fi": "Ruusu sinulle?", "lt": "Rožę tau?", "cs": "Růži pro tebe?", "sk": "Ružu pre teba?", "sl": "Vrtnico zate?", "hr": "Ružu za tebe?", "sr": "Ружу за тебе?", "bg": "Роза за теб?", "uk": "Троянду тобі?", "el": "Ένα τριαντάφυλλο για σένα;", "he": "ורד בשבילך?", "pa-Arab": "تہاڈے لئی اک گلاب؟", "pa-Guru": "ਤੁਹਾਡੇ ਲਈ ਇੱਕ ਗੁਲਾਬ?", "ne": "तपाईंका लागि एउटा गुलाफ?", "ms": "Sekuntum mawar untuk awak?", "sw": "Waridi kwa ajili yako?", "yue-Hant-HK": "送朵玫瑰畀你？"
+  },
+  "Absolutely!": {
+    "ca": "I tant!", "ro": "Absolut!", "pt-PT": "Sem dúvida!", "nl": "Absoluut!", "no": "Absolutt!", "sv": "Absolut!", "da": "Absolut!", "fi": "Ehdottomasti!", "lt": "Be abejo!", "cs": "Rozhodně!", "sk": "Rozhodne!", "sl": "Vsekakor!", "hr": "Apsolutno!", "sr": "Апсолутно!", "bg": "Абсолютно!", "uk": "Абсолютно!", "el": "Απολύτως!", "he": "בהחלט!", "pa-Arab": "بالکل!", "pa-Guru": "ਬਿਲਕੁਲ!", "ne": "पक्कै!", "ms": "Sudah tentu!", "sw": "Bila shaka!", "yue-Hant-HK": "梗係啦！"
+  },
+  "Açaí smoothie?": {
+    "ca": "Batut d'açaí?", "ro": "Smoothie de açaí?", "pt-PT": "Batido de açaí?", "nl": "Açaí-smoothie?", "no": "Açaí-smoothie?", "sv": "Açaí-smoothie?", "da": "Açaí-smoothie?", "fi": "Açaí-smoothie?", "lt": "Açaí kokteilis?", "cs": "Açaí smoothie?", "sk": "Açaí smoothie?", "sl": "Açaí smoothie?", "hr": "Açaí smoothie?", "sr": "Ачаи смути?", "bg": "Асаи смути?", "uk": "Смузі з асаї?", "el": "Σμούθι açaí;", "he": "שייק אסאי?", "pa-Arab": "اچائی سموتھی؟", "pa-Guru": "ਅਕਾਈ ਸਮੂਦੀ?", "ne": "अकाई स्मुदी?", "ms": "Smoothie açaí?", "sw": "Smoothie ya açaí?", "yue-Hant-HK": "巴西莓冰沙？"
+  },
+  "Afraid of heights.": {
+    "ca": "Tinc por de les altures.", "ro": "Mi-e frică de înălțimi.", "pt-PT": "Tenho medo de alturas.", "nl": "Bang voor hoogtes.", "no": "Redd for høyder.", "sv": "Höjdrädd.", "da": "Bange for højder.", "fi": "Pelkään korkeita paikkoja.", "lt": "Bijau aukščio.", "cs": "Bojím se výšek.", "sk": "Bojím sa výšok.", "sl": "Bojim se višine.", "hr": "Bojim se visine.", "sr": "Бојим се висине.", "bg": "Страх ме е от високо.", "uk": "Боюся висоти.", "el": "Φοβάμαι τα ύψη.", "he": "מפחד מגבהים.", "pa-Arab": "مینوں اُچائی توں ڈر لگدا اے۔", "pa-Guru": "ਮੈਨੂੰ ਉਚਾਈ ਤੋਂ ਡਰ ਲੱਗਦਾ ਹੈ।", "ne": "अग्लो ठाउँसँग डर लाग्छ।", "ms": "Takut ketinggian.", "sw": "Naogopa urefu.", "yue-Hant-HK": "我驚高。"
+  },
+  "Airport? Midtown?": {
+    "ca": "Aeroport? Centre?", "ro": "Aeroport? Centru?", "pt-PT": "Aeroporto? Centro?", "nl": "Vliegveld? Centrum?", "no": "Flyplass? Sentrum?", "sv": "Flygplats? Centrum?", "da": "Lufthavn? Centrum?", "fi": "Lentokenttä? Keskusta?", "lt": "Oro uostas? Centras?", "cs": "Letiště? Centrum?", "sk": "Letisko? Centrum?", "sl": "Letališče? Center?", "hr": "Aerodrom? Centar?", "sr": "Аеродром? Центар?", "bg": "Летище? Центъра?", "uk": "Аеропорт? Центр?", "el": "Αεροδρόμιο; Κέντρο;", "he": "שדה תעופה? מרכז העיר?", "pa-Arab": "ہوائی اڈا؟ شہر دے وچکار؟", "pa-Guru": "ਹਵਾਈ ਅੱਡਾ? ਸ਼ਹਿਰ ਦੇ ਵਿਚਕਾਰ?", "ne": "विमानस्थल? सहर भित्र?", "ms": "Lapangan terbang? Tengah bandar?", "sw": "Uwanja wa ndege? Katikati ya jiji?", "yue-Hant-HK": "機場？市中心？"
+  },
+  "All the way up!": {
+    "ca": "Fins a dalt de tot!", "ro": "Până sus de tot!", "pt-PT": "Até lá acima!", "nl": "Helemaal naar boven!", "no": "Helt til topps!", "sv": "Hela vägen upp!", "da": "Helt op!", "fi": "Aivan huipulle!", "lt": "Iki pat viršaus!", "cs": "Až úplně nahoru!", "sk": "Až celkom hore!", "sl": "Čisto na vrh!", "hr": "Skroz do vrha!", "sr": "Скроз до врха!", "bg": "Чак до върха!", "uk": "Аж до самого верху!", "el": "Μέχρι πάνω πάνω!", "he": "עד למעלה!", "pa-Arab": "بالکل اُتے تک!", "pa-Guru": "ਬਿਲਕੁਲ ਉੱਪਰ ਤੱਕ!", "ne": "एकदम माथिसम्म!", "ms": "Terus ke atas sekali!", "sw": "Mpaka juu kabisa!", "yue-Hant-HK": "一直上到頂！"
+  },
+  "Allergic.": {
+    "ca": "Sóc al·lèrgic.", "ro": "Sunt alergic.", "pt-PT": "Sou alérgico.", "nl": "Allergisch.", "no": "Allergisk.", "sv": "Allergisk.", "da": "Allergisk.", "fi": "Allerginen.", "lt": "Turiu alergiją.", "cs": "Mám alergii.", "sk": "Mám alergiu.", "sl": "Alergičen sem.", "hr": "Alergičan sam.", "sr": "Алергичан сам.", "bg": "Алергичен съм.", "uk": "У мене алергія.", "el": "Έχω αλλεργία.", "he": "יש לי אלרגיה.", "pa-Arab": "مینوں الرجی اے۔", "pa-Guru": "ਮੈਨੂੰ ਐਲਰਜੀ ਹੈ।", "ne": "एलर्जी छ।", "ms": "Saya alah.", "sw": "Nina mzio.", "yue-Hant-HK": "我敏感。"
+  }
+}

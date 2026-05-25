@@ -1,11 +1,13 @@
 {
   "name": "corpan-quest-ear",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "dev:corpan": "node scripts/dev-corpan.mjs"
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && node scripts/pack.mjs"
   },
   "dependencies": {
     "phaser": "^3.80.1"
