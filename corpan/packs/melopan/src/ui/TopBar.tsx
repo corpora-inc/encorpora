@@ -25,6 +25,13 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
   const setMasterVolume = useProjectStore((s) => s.setMasterVolume)
   const setTimeSignature = useProjectStore((s) => s.setTimeSignature)
   const setLengthSteps = useProjectStore((s) => s.setLengthSteps)
+  const resetProject = useProjectStore((s) => s.resetProject)
+
+  const onReset = () => {
+    if (window.confirm("Reset to default? Your current pattern will be lost.")) {
+      resetProject()
+    }
+  }
 
   const stepOptions = availableStepCounts(
     project.timeSignature[0],
@@ -63,6 +70,14 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
         title="Exit Melopán"
       >
         ‹
+      </button>
+      <button
+        className="mp-btn mp-btn--reset"
+        onClick={onReset}
+        aria-label="Reset to default"
+        title="Reset to default"
+      >
+        ↺
       </button>
       <div className="mp-brand">MELOPÁN</div>
 

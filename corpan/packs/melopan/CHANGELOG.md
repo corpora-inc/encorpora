@@ -10,6 +10,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-05-25
+
+### Fixed
+- **Smooth pitch / volume / edit tweaks while playing.** `setProject()` in
+  the audio engine no longer reassigns `Tone.Loop.interval` on every store
+  change — only when `timeSignature` or `lengthSteps` actually changed.
+  Pre-fix, the pitch slider (a continuous-fire range input) would
+  re-sequence the loop dozens of times per second during a drag, audibly
+  glitching the kick/snare. Now interval reassignment is gated behind a
+  local last-applied-value cache (`loopIntervalStr`), so live edits route
+  straight to in-place node updates (`voicePad.setPitch` etc.).
+
+### Added
+- **Return-to-default button (↺).** In the top bar between the exit
+  button and the brand. Prompts via `window.confirm` before wiping the
+  active project back to the first-open state from `createDefaultProject()`.
+  Preserves the user's chosen skin (skins are a preference, not pattern
+  data). Writes through the same `persistDebounced` path as every other
+  mutation, so the reset survives a reload.
+
 ## [0.2.1] - 2026-05-21
 
 ### Fixed

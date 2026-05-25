@@ -64,6 +64,8 @@ type State = {
   setLayout: (next: Partial<LayoutHeights>) => void
   /** Replace the whole project (e.g. on load) */
   setProject: (next: Project) => void
+  /** Reset to first-open defaults, preserving the user's chosen skin. */
+  resetProject: () => void
 }
 
 const persist = async (project: Project) => {
@@ -289,6 +291,13 @@ export const useProjectStore = create<State>((set) => ({
     persistDebounced(next)
     set({ project: next })
   },
+
+  resetProject: () => set((s) => {
+    const fresh = createDefaultProject()
+    const next = bumpUpdate({ ...fresh, skin: s.project.skin })
+    persistDebounced(next)
+    return { project: next }
+  }),
 }))
 
 /** Load the persisted project from idb. Safe to call multiple times. */

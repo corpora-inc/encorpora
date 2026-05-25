@@ -39,6 +39,10 @@ export const createAudioEngine = (): AudioEngine => {
   let project: Project | null = null
   const stepListeners = new Set<(s: number) => void>()
   let currentStep = 0
+  // Track the last interval string we applied so we can skip redundant
+  // reassignment — Tone.Loop re-sequences on every interval set, which
+  // would glitch playback on every pitch/volume edit.
+  let loopIntervalStr = "16n"
 
   const ensureStarted = async (): Promise<void> => {
     if (Tone.context.state !== "running") {
@@ -115,8 +119,14 @@ export const createAudioEngine = (): AudioEngine => {
     masterVol.volume.value = Tone.gainToDb(Math.max(0.0001, Math.min(1, next.masterVolume)))
     // The step grid resolution depends on lengthSteps × timeSignature;
     // recompute the loop interval so each step is one subdivision.
+    // Only reassign when it actually changes — Tone.Loop re-sequences on the
+    // setter, which would cause audible glitches on every pitch/volume edit.
     const [top, bottom] = next.timeSignature
-    loop.interval = intervalForSteps(top, bottom, next.lengthSteps)
+    const newInterval = intervalForSteps(top, bottom, next.lengthSteps)
+    if (newInterval !== loopIntervalStr) {
+      loop.interval = newInterval
+      loopIntervalStr = newInterval
+    }
     // Sync per-voice-track pitch every time the project changes.
     for (const t of next.tracks) {
       if (t.kind === "voice") {

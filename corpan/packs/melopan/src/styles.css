@@ -171,6 +171,12 @@ html, body, #corpan-game-root {
   font-size: 22px;
   line-height: 1;
 }
+.mp-btn--reset {
+  min-width: 32px;
+  padding: 2px 10px 4px;
+  font-size: 20px;
+  line-height: 1;
+}
 .mp-btn--step {
   min-width: 28px;
   padding: 2px 8px;
