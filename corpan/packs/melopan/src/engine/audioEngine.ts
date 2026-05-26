@@ -2,8 +2,8 @@ import * as Tone from "tone"
 import { createDrumKit, type DrumKit } from "./drumSynths"
 import { createVoicePad, type VoicePad } from "./voicePad"
 import { createSynthVoice, type SynthVoice } from "./synthVoice"
-import type { Project, TrackId, VoiceTrackId } from "../model/project"
-import { PIANO_ROLL_PITCHES, intervalForSteps } from "../model/project"
+import type { Project, TrackId, VoiceTrackId, DelayChannelId } from "../model/project"
+import { PIANO_ROLL_PITCHES, intervalForSteps, REVERB_ROOM_GRID } from "../model/project"
 
 export type AudioEngine = {
   start: () => Promise<void>
@@ -29,12 +29,66 @@ export const createAudioEngine = (): AudioEngine => {
   const limiter = new Tone.Limiter(-1).toDestination()
   const masterVol = new Tone.Volume(Tone.gainToDb(0.8)).connect(limiter)
 
-  const drums = createDrumKit(masterVol)
-  const voicePads: Record<VoiceTrackId, VoicePad> = {
-    voice1: createVoicePad(masterVol),
-    voice2: createVoicePad(masterVol),
+  // Aux-send FX topology — each channel has independent sends per effect.
+  //
+  //   channel → dry      → masterVol                       (always full)
+  //           → delaySend  → delay  → masterDelayWet  → masterVol
+  //           → reverbSend → reverb → masterReverbWet → masterVol
+  //
+  // Effects' internal `wet` stays at 1 (pure wet output). The global
+  // "Mix" knobs are the masterDelayWet / masterReverbWet gains. Per-channel
+  // send levels (0..1) live on each channel's *Send gain. Off-routing = 0.
+  const delay = new Tone.FeedbackDelay({
+    delayTime: "8n",
+    feedback: 0.35,
+    wet: 1,
+  })
+  const masterDelayWet = new Tone.Gain(0).connect(masterVol)
+  delay.connect(masterDelayWet)
+  let delayTimeStr: string = "8n"
+
+  const reverb = new Tone.Freeverb({
+    roomSize: 0.40,
+    dampening: 3000,
+    wet: 1,
+  })
+  const masterReverbWet = new Tone.Gain(0).connect(masterVol)
+  reverb.connect(masterReverbWet)
+  let reverbRoomSize: number = 0.40
+
+  const makeChannel = () => {
+    const input = new Tone.Gain(1)
+    const delaySend = new Tone.Gain(0)
+    const reverbSend = new Tone.Gain(0)
+    input.connect(masterVol)  // dry path (always unity)
+    input.connect(delaySend)
+    input.connect(reverbSend)
+    delaySend.connect(delay)
+    reverbSend.connect(reverb)
+    return { input, delaySend, reverbSend }
   }
-  const synth = createSynthVoice(masterVol)
+  const channels: Record<
+    DelayChannelId,
+    { input: Tone.Gain; delaySend: Tone.Gain; reverbSend: Tone.Gain }
+  > = {
+    kick:   makeChannel(),
+    snare:  makeChannel(),
+    hat:    makeChannel(),
+    voice1: makeChannel(),
+    voice2: makeChannel(),
+    synth:  makeChannel(),
+  }
+
+  const drums = createDrumKit({
+    kick:  channels.kick.input,
+    snare: channels.snare.input,
+    hat:   channels.hat.input,
+  })
+  const voicePads: Record<VoiceTrackId, VoicePad> = {
+    voice1: createVoicePad(channels.voice1.input),
+    voice2: createVoicePad(channels.voice2.input),
+  }
+  const synth = createSynthVoice(channels.synth.input)
 
   let project: Project | null = null
   const stepListeners = new Set<(s: number) => void>()
@@ -133,6 +187,47 @@ export const createAudioEngine = (): AudioEngine => {
         voicePads[t.id].setPitch(t.pitchSemis)
       }
     }
+
+    const chIds: DelayChannelId[] = ["kick", "snare", "hat", "voice1", "voice2", "synth"]
+
+    // Sync master delay. Reassigning delayTime cancels in-flight echoes,
+    // so guard it — only push the new value when it changed.
+    const d = next.delay
+    if (d) {
+      if (d.time !== delayTimeStr) {
+        delay.delayTime.value = d.time
+        delayTimeStr = d.time
+      }
+      delay.feedback.value = Math.max(0, Math.min(0.9, d.feedback))
+      masterDelayWet.gain.value = d.enabled ? Math.max(0, Math.min(1, d.wet)) : 0
+      for (const ch of chIds) {
+        const cfg = d.routing?.[ch]
+        const level = cfg ? (cfg.enabled ? Math.max(0, Math.min(1, cfg.level)) : 0) : 1
+        channels[ch].delaySend.gain.value = level
+      }
+    }
+
+    // Sync master reverb. `room` is a preset id → roomSize lookup; only
+    // push roomSize when the preset actually changes. `dampening` is
+    // 0..1 (0 bright, 1 dark) mapped to Freeverb's Hz range (1k..9k,
+    // inverted: more user-dampening = lower Hz = darker tail).
+    const r = next.reverb
+    if (r) {
+      const preset = REVERB_ROOM_GRID.find((p) => p.id === r.room)
+      const rs = preset ? preset.roomSize : 0.4
+      if (rs !== reverbRoomSize) {
+        reverb.set({ roomSize: rs })
+        reverbRoomSize = rs
+      }
+      const damp = Math.max(0, Math.min(1, r.dampening))
+      reverb.set({ dampening: (1 - damp) * 8000 + 1000 })
+      masterReverbWet.gain.value = r.enabled ? Math.max(0, Math.min(1, r.wet)) : 0
+      for (const ch of chIds) {
+        const cfg = r.routing?.[ch]
+        const level = cfg ? (cfg.enabled ? Math.max(0, Math.min(1, cfg.level)) : 0) : 1
+        channels[ch].reverbSend.gain.value = level
+      }
+    }
   }
 
   const onStep = (listener: (s: number) => void) => {
@@ -168,6 +263,15 @@ export const createAudioEngine = (): AudioEngine => {
       voicePads.voice1.dispose()
       voicePads.voice2.dispose()
       synth.dispose()
+      for (const ch of Object.values(channels)) {
+        ch.delaySend.dispose()
+        ch.reverbSend.dispose()
+        ch.input.dispose()
+      }
+      masterDelayWet.dispose()
+      delay.dispose()
+      masterReverbWet.dispose()
+      reverb.dispose()
       masterVol.dispose()
       limiter.dispose()
     },

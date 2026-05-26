@@ -8,14 +8,25 @@ export type DrumKit = {
 }
 
 /**
+ * Per-instrument output destinations so each drum can route to its own
+ * aux-send channel (for the master delay routing). Kept as a small obj
+ * literal at the call site rather than a single shared destination.
+ */
+export type DrumDestinations = {
+  kick: Tone.InputNode
+  snare: Tone.InputNode
+  hat: Tone.InputNode
+}
+
+/**
  * A small synth drum kit, no samples needed.
  * - Kick: MembraneSynth tuned low with a fast pitch decay
  * - Snare: NoiseSynth + a body MembraneSynth blended
  * - Hat:  MetalSynth tuned bright with a short envelope
  */
-export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
+export const createDrumKit = (dest: DrumDestinations): DrumKit => {
   // ----- KICK -----
-  const kickVol = new Tone.Volume(0).connect(destination)
+  const kickVol = new Tone.Volume(0).connect(dest.kick)
   const kickSynth = new Tone.MembraneSynth({
     pitchDecay: 0.04,
     octaves: 6,
@@ -28,7 +39,7 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
   }
 
   // ----- SNARE -----
-  const snareVol = new Tone.Volume(0).connect(destination)
+  const snareVol = new Tone.Volume(0).connect(dest.snare)
   const snareNoise = new Tone.NoiseSynth({
     noise: { type: "white" },
     envelope: { attack: 0.001, decay: 0.18, sustain: 0 },
@@ -52,7 +63,7 @@ export const createDrumKit = (destination: Tone.InputNode): DrumKit => {
   // straightforward filtered-noise burst: white noise + bandpass around
   // 8 kHz with a touch of resonance, riding a snappy AR envelope. This is
   // the same pattern hover-runner uses for hits and reliably cuts through.
-  const hatVol = new Tone.Volume(-2).connect(destination)
+  const hatVol = new Tone.Volume(-2).connect(dest.hat)
   const hatBpf = new Tone.Filter({
     type: "bandpass",
     frequency: 8500,

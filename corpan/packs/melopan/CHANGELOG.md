@@ -10,6 +10,44 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-05-25
+
+### Added
+- **Master delay (DLY).** Top-bar button opens a popup with:
+  - On/off toggle.
+  - **Time grid** of 9 musical subdivisions: ♩ ♩. ♩₃ · ♪ ♪. ♪₃ · ♬ ♬. ♬₃
+    (quarter / dotted-quarter / triplet-quarter, eighth row, sixteenth row).
+    Stays in sync with BPM automatically.
+  - **Feedback** 0–90% (capped to avoid runaway howl).
+  - **Mix** 0–100% wet level.
+  - **Per-channel routing** — toggle button + send-level slider for each of
+    Kick / Snare / Hat / Voice 1 / Voice 2 / Synth. Quick `all` / `none`
+    presets. Off-channel = no signal into the delay regardless of master mix.
+- **Master reverb (RVB).** Top-bar button opens a parallel popup:
+  - On/off toggle.
+  - **Room grid** of 9 spaces from tight to vast: Booth · Studio · Room ·
+    Hall · Theatre · Church · Cathedral · Cavern · Space. Each preset
+    maps to a calibrated Freeverb `roomSize` (0.10 → 0.97).
+  - **Dampening** 0–100% (0 = bright/sparkly, 100 = warm/dark; mapped to
+    Freeverb high-frequency damping from 9 kHz to 1 kHz).
+  - **Mix** 0–100% wet level.
+  - **Per-channel routing** identical to delay — each channel has an
+    independent reverb send so you can route, e.g., Synth to reverb only
+    and Voice 1 to delay only.
+
+### Changed
+- **Audio chain rewritten as aux-send mixer topology.** Each instrument
+  feeds a per-channel input Gain that splits three ways: dry path
+  (always full) to masterVol, delay send (0–1) to the delay node, reverb
+  send (0–1) to the reverb node. Effects' internal `wet` stays at 1 and
+  the global Mix sliders are post-effect output gains. This makes per-
+  channel routing trivial and matches how a real mixer's aux sends work.
+
+### Migration
+- Projects from earlier versions auto-backfill `delay` and `reverb`
+  fields (both default off) on hydrate, so existing patterns load
+  unchanged and silent until you flip the effect toggles on.
+
 ## [0.2.3] - 2026-05-25
 
 ### Changed

@@ -8,6 +8,10 @@ import type {
   LayoutHeights,
   VoiceTrack,
   DrumTrack,
+  DelayConfig,
+  DelayChannelId,
+  ChannelSend,
+  ReverbConfig,
 } from "../model/project"
 import {
   createDefaultProject,
@@ -16,6 +20,10 @@ import {
   availableStepCounts,
   resizeBoolSteps,
   resizeNoteSteps,
+  DEFAULT_DELAY,
+  DEFAULT_DELAY_ROUTING,
+  DEFAULT_REVERB,
+  DEFAULT_REVERB_ROUTING,
 } from "../model/project"
 
 const DB_NAME = "melopan"
@@ -63,6 +71,14 @@ type State = {
   setAccidental: (rowIdx: number, value: number) => void
   /** Skin */
   setSkin: (skin: SkinId) => void
+  /** Master delay — patch any subset of the config in one call. */
+  setDelay: (patch: Partial<Omit<DelayConfig, "routing">> & {
+    routing?: Partial<Record<DelayChannelId, Partial<ChannelSend>>>
+  }) => void
+  /** Master reverb — patch any subset of the config in one call. */
+  setReverb: (patch: Partial<Omit<ReverbConfig, "routing">> & {
+    routing?: Partial<Record<DelayChannelId, Partial<ChannelSend>>>
+  }) => void
   /** Layout heights (px) for resizable panels */
   setLayout: (next: Partial<LayoutHeights>) => void
   /** Replace the whole project (e.g. on load) */
@@ -303,6 +319,66 @@ export const useProjectStore = create<State>((set) => ({
     return { project: next }
   }),
 
+  setDelay: (patch) => set((s) => {
+    const cur = s.project.delay ?? DEFAULT_DELAY
+    const curRouting = cur.routing ?? DEFAULT_DELAY_ROUTING
+    const mergedRouting = patch.routing
+      ? (Object.fromEntries(
+          (Object.keys(curRouting) as DelayChannelId[]).map((ch) => {
+            const curCh = curRouting[ch] ?? DEFAULT_DELAY_ROUTING[ch]
+            const patchCh = patch.routing?.[ch]
+            const merged: ChannelSend = patchCh
+              ? {
+                  enabled: patchCh.enabled ?? curCh.enabled,
+                  level: Math.max(0, Math.min(1, patchCh.level ?? curCh.level)),
+                }
+              : curCh
+            return [ch, merged]
+          })
+        ) as Record<DelayChannelId, ChannelSend>)
+      : curRouting
+    const merged: DelayConfig = {
+      enabled: patch.enabled ?? cur.enabled,
+      time: patch.time ?? cur.time,
+      feedback: Math.max(0, Math.min(0.9, patch.feedback ?? cur.feedback)),
+      wet: Math.max(0, Math.min(1, patch.wet ?? cur.wet)),
+      routing: mergedRouting,
+    }
+    const next = bumpUpdate({ ...s.project, delay: merged })
+    persistDebounced(next)
+    return { project: next }
+  }),
+
+  setReverb: (patch) => set((s) => {
+    const cur = s.project.reverb ?? DEFAULT_REVERB
+    const curRouting = cur.routing ?? DEFAULT_REVERB_ROUTING
+    const mergedRouting = patch.routing
+      ? (Object.fromEntries(
+          (Object.keys(curRouting) as DelayChannelId[]).map((ch) => {
+            const curCh = curRouting[ch] ?? DEFAULT_REVERB_ROUTING[ch]
+            const patchCh = patch.routing?.[ch]
+            const merged: ChannelSend = patchCh
+              ? {
+                  enabled: patchCh.enabled ?? curCh.enabled,
+                  level: Math.max(0, Math.min(1, patchCh.level ?? curCh.level)),
+                }
+              : curCh
+            return [ch, merged]
+          })
+        ) as Record<DelayChannelId, ChannelSend>)
+      : curRouting
+    const merged: ReverbConfig = {
+      enabled: patch.enabled ?? cur.enabled,
+      room: patch.room ?? cur.room,
+      dampening: Math.max(0, Math.min(1, patch.dampening ?? cur.dampening)),
+      wet: Math.max(0, Math.min(1, patch.wet ?? cur.wet)),
+      routing: mergedRouting,
+    }
+    const next = bumpUpdate({ ...s.project, reverb: merged })
+    persistDebounced(next)
+    return { project: next }
+  }),
+
   setLayout: (patch) => set((s) => {
     const next = bumpUpdate({
       ...s.project,
@@ -341,6 +417,25 @@ export const hydrateProject = async () => {
         if (project) {
           // Persist the migrated shape so we don't re-migrate next load
           await db.put(STORE, project, ACTIVE_KEY).catch(() => {})
+        }
+      }
+      // Backfill fields added after schema 2 was first cut.
+      if (project && !project.delay) {
+        project = { ...project, delay: { ...DEFAULT_DELAY } }
+      }
+      if (project && project.delay && !project.delay.routing) {
+        project = {
+          ...project,
+          delay: { ...project.delay, routing: { ...DEFAULT_DELAY_ROUTING } },
+        }
+      }
+      if (project && !project.reverb) {
+        project = { ...project, reverb: { ...DEFAULT_REVERB } }
+      }
+      if (project && project.reverb && !project.reverb.routing) {
+        project = {
+          ...project,
+          reverb: { ...project.reverb, routing: { ...DEFAULT_REVERB_ROUTING } },
         }
       }
     }

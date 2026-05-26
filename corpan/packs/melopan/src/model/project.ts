@@ -55,6 +55,138 @@ export type LayoutHeights = {
   voicePadPx?: number
 }
 
+/**
+ * Master delay effect. `time` is a Tone subdivision string so it stays
+ * in sync with BPM automatically. `wet` is the dry/wet crossfade
+ * (0 = no delay heard). `feedback` is the recirculation amount,
+ * clamped below 1.0 to avoid runaway.
+ */
+export type DelayTimeId =
+  | "4n" | "4n." | "4t"
+  | "8n" | "8n." | "8t"
+  | "16n" | "16n." | "16t"
+
+export const DELAY_TIME_GRID: { id: DelayTimeId; label: string }[] = [
+  { id: "4n",   label: "♩"   },
+  { id: "4n.",  label: "♩."  },
+  { id: "4t",   label: "♩₃" },
+  { id: "8n",   label: "♪"   },
+  { id: "8n.",  label: "♪."  },
+  { id: "8t",   label: "♪₃" },
+  { id: "16n",  label: "♬"   },
+  { id: "16n.", label: "♬."  },
+  { id: "16t",  label: "♬₃" },
+]
+
+export type DelayChannelId =
+  | "kick" | "snare" | "hat"
+  | "voice1" | "voice2"
+  | "synth"
+
+export const DELAY_CHANNELS: { id: DelayChannelId; label: string }[] = [
+  { id: "kick",   label: "Kick"    },
+  { id: "snare",  label: "Snare"   },
+  { id: "hat",    label: "Hat"     },
+  { id: "voice1", label: "Voice 1" },
+  { id: "voice2", label: "Voice 2" },
+  { id: "synth",  label: "Synth"   },
+]
+
+/** Per-channel aux send into the master delay. */
+export type ChannelSend = {
+  enabled: boolean  // quick on/off; preserves `level`
+  level: number     // 0..1 send amount
+}
+
+export type DelayRouting = Record<DelayChannelId, ChannelSend>
+
+export const DEFAULT_DELAY_ROUTING: DelayRouting = {
+  kick:   { enabled: true, level: 1 },
+  snare:  { enabled: true, level: 1 },
+  hat:    { enabled: true, level: 1 },
+  voice1: { enabled: true, level: 1 },
+  voice2: { enabled: true, level: 1 },
+  synth:  { enabled: true, level: 1 },
+}
+
+/**
+ * Master delay. `time` is a Tone subdivision (stays in sync with BPM).
+ * `feedback` is the recirculation amount (capped < 1 to avoid runaway).
+ * `wet` is the master delay-output level (0 = no delay heard).
+ * `routing` is the per-channel aux send config.
+ */
+export type DelayConfig = {
+  enabled: boolean
+  time: DelayTimeId
+  feedback: number  // 0..0.9
+  wet: number       // 0..1
+  routing: DelayRouting
+}
+
+export const DEFAULT_DELAY: DelayConfig = {
+  enabled: false,
+  time: "8n",
+  feedback: 0.35,
+  wet: 0.30,
+  routing: DEFAULT_DELAY_ROUTING,
+}
+
+/**
+ * Master reverb (Freeverb). `room` is a named preset that picks a
+ * Freeverb `roomSize`. `dampening` is the user-facing tone control
+ * 0..1 (0 = bright/sparkly, 1 = warm/dark). `wet` is the global
+ * reverb-output level. `routing` reuses the same per-channel send
+ * structure as the delay — each channel has an independent reverb send.
+ */
+export type ReverbRoomId =
+  | "booth" | "studio" | "room"
+  | "hall" | "theatre" | "church"
+  | "cathedral" | "cavern" | "space"
+
+export const REVERB_ROOM_GRID: {
+  id: ReverbRoomId
+  label: string
+  roomSize: number
+}[] = [
+  { id: "booth",     label: "Booth",     roomSize: 0.10 },
+  { id: "studio",    label: "Studio",    roomSize: 0.25 },
+  { id: "room",      label: "Room",      roomSize: 0.40 },
+  { id: "hall",      label: "Hall",      roomSize: 0.55 },
+  { id: "theatre",   label: "Theatre",   roomSize: 0.65 },
+  { id: "church",    label: "Church",    roomSize: 0.75 },
+  { id: "cathedral", label: "Cathedral", roomSize: 0.85 },
+  { id: "cavern",    label: "Cavern",    roomSize: 0.92 },
+  { id: "space",     label: "Space",     roomSize: 0.97 },
+]
+
+/** Per-channel reverb sends reuse the same shape as the delay routing. */
+export type ReverbRouting = DelayRouting
+
+export const DEFAULT_REVERB_ROUTING: ReverbRouting = {
+  kick:   { enabled: true, level: 1 },
+  snare:  { enabled: true, level: 1 },
+  hat:    { enabled: true, level: 1 },
+  voice1: { enabled: true, level: 1 },
+  voice2: { enabled: true, level: 1 },
+  synth:  { enabled: true, level: 1 },
+}
+
+export type ReverbConfig = {
+  enabled: boolean
+  room: ReverbRoomId
+  dampening: number // 0..1 (0 = bright, 1 = dark)
+  wet: number       // 0..1
+  routing: ReverbRouting
+}
+
+export const DEFAULT_REVERB: ReverbConfig = {
+  enabled: false,
+  room: "room",
+  dampening: 0.40,
+  wet: 0.30,
+  routing: DEFAULT_REVERB_ROUTING,
+}
+
 export type Project = {
   schema: 2
   id: string
@@ -67,6 +199,8 @@ export type Project = {
   tracks: Track[]      // drum tracks + voice tracks, rendered in order
   synth: SynthTrack
   skin: SkinId
+  delay: DelayConfig
+  reverb: ReverbConfig
   layout?: LayoutHeights
   createdAt: number
   updatedAt: number
@@ -220,6 +354,8 @@ export const createDefaultProject = (): Project => {
     tracks,
     synth: { id: "synth", name: "Synth", volume: 0.70, mute: false, notes, accidentals },
     skin: "earthgate",
+    delay: { ...DEFAULT_DELAY },
+    reverb: { ...DEFAULT_REVERB },
     createdAt: now,
     updatedAt: now,
   }
@@ -312,6 +448,8 @@ export const migrateSchema1To2 = (raw: unknown): Project | null => {
         accidentals: Array(PIANO_ROLL_PITCHES.length).fill(0),
       },
       skin: (old.skin as SkinId) ?? "earthgate",
+      delay: { ...DEFAULT_DELAY },
+      reverb: { ...DEFAULT_REVERB },
       createdAt: typeof old.createdAt === "number" ? old.createdAt : Date.now(),
       updatedAt: Date.now(),
     }

@@ -854,3 +854,155 @@ html, body, #corpan-game-root {
   margin-left: auto;
   opacity: 0.6;
 }
+
+/* ============================================================
+   Delay panel (modal)
+   ============================================================ */
+.mp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(16px, var(--safe-top)) max(16px, var(--safe-right)) max(16px, var(--safe-bottom)) max(16px, var(--safe-left));
+}
+
+.mp-delay-panel {
+  width: 100%;
+  max-width: 480px;
+  background: var(--mp-surface);
+  border: 1px solid var(--mp-border);
+  border-radius: var(--mp-radius);
+  box-shadow: var(--mp-shadow);
+  color: var(--mp-text);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mp-modal-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--mp-border);
+}
+.mp-modal-head h3 {
+  margin: 0;
+  font-family: var(--mp-font-mono);
+  font-size: 22px;
+  color: var(--mp-accent);
+  letter-spacing: 1px;
+}
+.mp-modal-head .mp-btn {
+  margin-left: auto;
+  min-width: 32px;
+  font-size: 18px;
+  padding: 2px 10px;
+}
+
+.mp-delay-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--mp-border);
+  background: var(--mp-surface-2);
+}
+.mp-delay-hint {
+  color: var(--mp-text-dim);
+  font-size: 13px;
+}
+
+.mp-delay-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--mp-border);
+}
+.mp-delay-section:last-child { border-bottom: none; }
+
+.mp-delay-label {
+  display: block;
+  font-family: var(--mp-font-mono);
+  font-size: 14px;
+  color: var(--mp-text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.mp-delay-value {
+  float: right;
+  color: var(--mp-text);
+}
+
+.mp-delay-time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.mp-delay-time-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  min-height: 52px;
+}
+.mp-delay-time-btn.is-active {
+  background: var(--mp-accent);
+  color: #fff;
+  border-color: var(--mp-accent);
+}
+.mp-delay-time-glyph {
+  font-size: 20px;
+  line-height: 1;
+}
+.mp-delay-time-id {
+  font-family: var(--mp-font-mono);
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.mp-delay-section input[type="range"] {
+  width: 100%;
+}
+
+.mp-delay-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mp-delay-channel-row {
+  display: grid;
+  grid-template-columns: 76px 1fr 40px;
+  align-items: center;
+  gap: 8px;
+}
+.mp-delay-channel-toggle {
+  font-size: 13px;
+  padding: 4px 8px;
+  text-align: center;
+  opacity: 0.55;
+}
+.mp-delay-channel-toggle.is-active {
+  background: var(--mp-accent);
+  color: #fff;
+  border-color: var(--mp-accent);
+  opacity: 1;
+}
+.mp-delay-channel-row input[type="range"]:disabled {
+  opacity: 0.3;
+}
+.mp-delay-channel-value {
+  font-family: var(--mp-font-mono);
+  font-size: 12px;
+  color: var(--mp-text-dim);
+  text-align: right;
+}
+
+.mp-delay-routing-quick {
+  font-size: 11px;
+  padding: 2px 8px;
+  margin-left: 4px;
+  opacity: 0.7;
+}

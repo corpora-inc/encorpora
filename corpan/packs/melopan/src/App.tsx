@@ -7,6 +7,8 @@ import { StepGrid } from "./ui/StepGrid"
 import { PianoRoll } from "./ui/PianoRoll"
 import { VoicePadControls } from "./ui/VoicePadControls"
 import { ResizeHandle } from "./ui/ResizeHandle"
+import { DelayPanel } from "./ui/DelayPanel"
+import { ReverbPanel } from "./ui/ReverbPanel"
 import {
   findSample,
   isVoiceTrack,
@@ -54,6 +56,8 @@ export const App = ({ hostApi: _hostApi }: Props) => {
   })
   const [isPlaying, setIsPlaying] = useState(false)
   const [playheadStep, setPlayheadStep] = useState<number>(-1)
+  const [delayOpen, setDelayOpen] = useState(false)
+  const [reverbOpen, setReverbOpen] = useState(false)
   const [sampleLoaded, setSampleLoaded] = useState<Record<VoiceTrackId, boolean>>({
     voice1: false,
     voice2: false,
@@ -179,7 +183,14 @@ export const App = ({ hostApi: _hostApi }: Props) => {
 
   return (
     <div className={className} data-skin={skin}>
-      <TopBar isPlaying={isPlaying} onTogglePlay={togglePlay} />
+      <TopBar
+        isPlaying={isPlaying}
+        onTogglePlay={togglePlay}
+        onOpenDelay={() => setDelayOpen(true)}
+        onOpenReverb={() => setReverbOpen(true)}
+      />
+      <DelayPanel open={delayOpen} onClose={() => setDelayOpen(false)} />
+      <ReverbPanel open={reverbOpen} onClose={() => setReverbOpen(false)} />
       <div className="mp-stage">
         <div
           className="mp-section"

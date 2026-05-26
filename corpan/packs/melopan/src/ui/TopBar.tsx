@@ -6,6 +6,8 @@ import { SkinPicker } from "./SkinPicker"
 type Props = {
   isPlaying: boolean
   onTogglePlay: () => void
+  onOpenDelay: () => void
+  onOpenReverb: () => void
 }
 
 const requestExit = () => {
@@ -19,7 +21,7 @@ const requestExit = () => {
 const BPM_MIN = 40
 const BPM_MAX = 240
 
-export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
+export const TopBar = ({ isPlaying, onTogglePlay, onOpenDelay, onOpenReverb }: Props) => {
   const project = useProjectStore((s) => s.project)
   const setBpm = useProjectStore((s) => s.setBpm)
   const setMasterVolume = useProjectStore((s) => s.setMasterVolume)
@@ -203,6 +205,24 @@ export const TopBar = ({ isPlaying, onTogglePlay }: Props) => {
           onChange={(e) => setMasterVolume(Number(e.target.value))}
         />
       </div>
+
+      <button
+        className={`mp-btn ${project.delay?.enabled ? "is-playing" : ""}`}
+        onClick={onOpenDelay}
+        title="Delay"
+        aria-label="Open delay panel"
+      >
+        DLY
+      </button>
+
+      <button
+        className={`mp-btn ${project.reverb?.enabled ? "is-playing" : ""}`}
+        onClick={onOpenReverb}
+        title="Reverb"
+        aria-label="Open reverb panel"
+      >
+        RVB
+      </button>
 
       <div className="mp-spacer" />
 
