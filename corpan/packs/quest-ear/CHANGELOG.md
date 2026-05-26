@@ -9,6 +9,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-05-26 — mobile-playable (touch controls, safe areas)
+### Added
+- On-screen hold buttons (◀ / ▶) to move; optional tilt-to-move ("Enable Motion",
+  iOS permission handled) — both alongside the existing keyboard controls.
+- Bigger, finger-friendly exit button.
+### Fixed
+- Safe-area insets: the mount container is padded by `env(safe-area-inset-*)` so the
+  canvas + UI clear the notch / home indicator (iPhone) and camera cutouts (Android).
+- Orientation/resize: debounced listeners re-fit the FIT canvas so rotating
+  landscape↔portrait no longer crowds the view.
+- `touch-action: none` on container + canvas so touches drive the game (no page scroll/zoom).
+
 ## [0.3.0] - 2026-05-26 — NPC corpus revival, 51 languages, NYC playground
 ### Added
 - Full NPC corpus system: multilingual vendor encounters with offering + 3-choice

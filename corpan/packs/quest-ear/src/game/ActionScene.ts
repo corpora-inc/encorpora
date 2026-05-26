@@ -169,6 +169,12 @@ export class ActionScene extends Phaser.Scene {
   private pTorso!: Phaser.GameObjects.Container
   private walkPhase = 0
 
+  // Touch / tilt input (mobile)
+  private touchDir = 0
+  private tiltDir = 0
+  private tiltEnabled = false
+  private orientationHandler?: (e: DeviceOrientationEvent) => void
+
   // Atmosphere
   private moon!: Phaser.GameObjects.Container
   private starLayer!: Phaser.GameObjects.Container
@@ -199,6 +205,9 @@ export class ActionScene extends Phaser.Scene {
     this.smashReadyAt = 0
     this.invulnUntil = 0
     this.walkPhase = 0
+    this.touchDir = 0
+    this.tiltDir = 0
+    this.tiltEnabled = false
 
     // Read languages from host API
     this.hostApi = (globalThis as any).__questEarHostApi ?? null
@@ -267,21 +276,14 @@ export class ActionScene extends Phaser.Scene {
       .setDepth(100)
       .setVisible(false)
 
-    const exitBtn = this.add
-      .text(780, 20, "✕", { fontSize: "24px", color: "#ffffff", fontFamily: "sans-serif" })
-      .setOrigin(0.5)
-      .setScrollFactor(0)
-      .setDepth(200)
-      .setInteractive({ useHandCursor: true })
-    exitBtn.on("pointerover", () => exitBtn.setColor("#ff4444"))
-    exitBtn.on("pointerout", () => exitBtn.setColor("#ffffff"))
-    exitBtn.on("pointerdown", () => {
-      this.hostApi?.stopSpeech?.()
-      window.dispatchEvent(new CustomEvent("corpan:exit"))
-    })
+    this.createExitButton()
 
     this.createSmashButton()
     this.createResponsePanel()
+    this.createTouchControls()
+
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.disableTilt())
+    this.events.once(Phaser.Scenes.Events.DESTROY, () => this.disableTilt())
 
     // Start spawning hecklers.
     this.scheduleHeckler()
@@ -297,9 +299,7 @@ export class ActionScene extends Phaser.Scene {
       this.handleResponseInput()
     }
 
-    const moving =
-      this.interactionState === "roaming" &&
-      (this.cursors.left.isDown || this.cursors.right.isDown)
+    const moving = this.interactionState === "roaming" && this.moveIntent() !== 0
     this.animatePlayer(moving, delta)
 
     const progress = Phaser.Math.Clamp(this.player.x / this.WORLD_WIDTH, 0, 1)
@@ -317,14 +317,24 @@ export class ActionScene extends Phaser.Scene {
     return 1 + this.growthLevel * this.GROWTH_PER_ACCEPT
   }
 
+  /** Combined movement intent from keyboard, on-screen buttons, or tilt. -1 left, +1 right, 0 idle. */
+  private moveIntent(): number {
+    const left = this.cursors.left.isDown || this.touchDir < 0 || this.tiltDir < 0
+    const right = this.cursors.right.isDown || this.touchDir > 0 || this.tiltDir > 0
+    if (left && !right) return -1
+    if (right && !left) return 1
+    return 0
+  }
+
   private handleMovement() {
     const body = this.player.body as Phaser.Physics.Arcade.Body
     const scale = this.currentScale()
+    const dir = this.moveIntent()
 
-    if (this.cursors.left.isDown) {
+    if (dir < 0) {
       body.setVelocityX(-this.playerSpeed)
       this.player.setScale(-scale, scale)
-    } else if (this.cursors.right.isDown) {
+    } else if (dir > 0) {
       body.setVelocityX(this.playerSpeed)
       this.player.setScale(scale, scale)
     } else {
@@ -349,6 +359,119 @@ export class ActionScene extends Phaser.Scene {
       this.pArmL.angle *= 0.8
       this.pArmR.angle *= 0.8
       this.pTorso.y = Math.sin(this.walkPhase) * 0.8
+    }
+  }
+
+  // --------------- TOUCH / TILT CONTROLS ---------------
+
+  private createExitButton() {
+    const bg = this.add
+      .circle(762, 40, 22, 0x000000, 0.5)
+      .setStrokeStyle(2, 0xffffff)
+      .setScrollFactor(0)
+      .setDepth(200)
+      .setInteractive({ useHandCursor: true })
+    const x = this.add
+      .text(762, 40, "✕", { fontSize: "26px", color: "#ffffff", fontFamily: "sans-serif" })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(201)
+    bg.on("pointerover", () => x.setColor("#ff4444"))
+    bg.on("pointerout", () => x.setColor("#ffffff"))
+    bg.on("pointerdown", () => {
+      this.hostApi?.stopSpeech?.()
+      window.dispatchEvent(new CustomEvent("corpan:exit"))
+    })
+  }
+
+  private createTouchControls() {
+    const makeBtn = (x: number, label: string, dir: number) => {
+      const c = this.add.container(x, 545).setScrollFactor(0).setDepth(130)
+      const bg = this.add.circle(0, 0, 38, 0x000000, 0.4).setStrokeStyle(2, 0x00ff41)
+      const t = this.add
+        .text(0, 2, label, { fontSize: "34px", color: "#00ff41", fontFamily: "sans-serif" })
+        .setOrigin(0.5)
+      c.add(bg)
+      c.add(t)
+      bg.setInteractive({ useHandCursor: true })
+      const press = () => {
+        this.touchDir = dir
+        bg.setFillStyle(0x004400, 0.6)
+      }
+      const release = () => {
+        if (this.touchDir === dir) this.touchDir = 0
+        bg.setFillStyle(0x000000, 0.4)
+      }
+      bg.on("pointerdown", press)
+      bg.on("pointerup", release)
+      bg.on("pointerout", release)
+      bg.on("pointerupoutside", release)
+    }
+    makeBtn(64, "◀", -1)
+    makeBtn(736, "▶", 1)
+
+    // Optional tilt-to-move toggle (only when the device reports orientation support).
+    if (typeof DeviceOrientationEvent !== "undefined") {
+      const tc = this.add.container(112, 30).setScrollFactor(0).setDepth(130)
+      const tbg = this.add.rectangle(0, 0, 150, 26, 0x000000, 0.5).setStrokeStyle(1, 0x00ff41)
+      const tt = this.add
+        .text(0, 0, "⤺ Tilt: off", {
+          fontSize: "12px",
+          color: "#00ff41",
+          fontFamily: '"Courier New", monospace',
+        })
+        .setOrigin(0.5)
+      tc.add(tbg)
+      tc.add(tt)
+      tbg.setInteractive({ useHandCursor: true })
+      tbg.on("pointerdown", () => {
+        if (this.tiltEnabled) {
+          this.disableTilt()
+          tt.setText("⤺ Tilt: off")
+        } else {
+          this.requestTilt(() => tt.setText("⤺ Tilt: on"))
+        }
+      })
+    }
+  }
+
+  private requestTilt(onEnabled: () => void) {
+    const DOE = DeviceOrientationEvent as unknown as {
+      requestPermission?: () => Promise<"granted" | "denied">
+    }
+    if (typeof DOE.requestPermission === "function") {
+      DOE.requestPermission()
+        .then((res) => {
+          if (res === "granted") {
+            this.enableTilt()
+            onEnabled()
+          }
+        })
+        .catch(() => {})
+    } else {
+      this.enableTilt()
+      onEnabled()
+    }
+  }
+
+  private enableTilt() {
+    if (this.tiltEnabled) return
+    this.tiltEnabled = true
+    this.orientationHandler = (e: DeviceOrientationEvent) => {
+      const g = e.gamma // left/right tilt in portrait
+      if (g == null) return
+      const DEAD = 6
+      this.tiltDir = g < -DEAD ? -1 : g > DEAD ? 1 : 0
+    }
+    window.addEventListener("deviceorientation", this.orientationHandler)
+  }
+
+  private disableTilt() {
+    this.tiltEnabled = false
+    this.tiltDir = 0
+    if (this.orientationHandler) {
+      window.removeEventListener("deviceorientation", this.orientationHandler)
+      this.orientationHandler = undefined
     }
   }
 

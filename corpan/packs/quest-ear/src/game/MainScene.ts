@@ -81,20 +81,19 @@ export class MainScene extends Phaser.Scene {
       }
     }
 
-    // Exit button (top-right X) — exits back to Corpan
-    const exitBtn = this.add
-      .text(780, 20, "✕", {
-        fontSize: "24px",
-        color: "#ffffff",
-        fontFamily: "sans-serif",
-      })
-      .setOrigin(0.5)
+    // Exit button (top-right) — bigger, finger-friendly, inset from the corner.
+    const exitBg = this.add
+      .circle(762, 40, 22, 0x000000, 0.5)
+      .setStrokeStyle(2, 0xffffff)
       .setDepth(200)
       .setInteractive({ useHandCursor: true })
-
-    exitBtn.on("pointerover", () => exitBtn.setColor("#ff4444"))
-    exitBtn.on("pointerout", () => exitBtn.setColor("#ffffff"))
-    exitBtn.on("pointerdown", () => {
+    const exitX = this.add
+      .text(762, 40, "✕", { fontSize: "26px", color: "#ffffff", fontFamily: "sans-serif" })
+      .setOrigin(0.5)
+      .setDepth(201)
+    exitBg.on("pointerover", () => exitX.setColor("#ff4444"))
+    exitBg.on("pointerout", () => exitX.setColor("#ffffff"))
+    exitBg.on("pointerdown", () => {
       this.hostApi?.stopSpeech?.()
       window.dispatchEvent(new CustomEvent("corpan:exit"))
     })
