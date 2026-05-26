@@ -8,16 +8,27 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.3.0] - 2026-05-26 — NPC corpus revival, 51 languages, NYC playground
 ### Added
 - Full NPC corpus system: multilingual vendor encounters with offering + 3-choice
-  response panel (accept / decline / arbitrary), proximity re-trigger, and TTS for
-  both NPC dialog and player responses.
-- Multi-language rotation across encounters driven by the active stack's languages,
-  with a language HUD indicator.
-- Riddle NPCs at milestone screens; player-growth mechanic and energy bar tracking
-  acceptance progress.
-- Exit button (top-right ✕) that stops speech and returns to Corpán.
-- `scripts/pack.mjs` + `pack` / `pack:all` npm scripts for sideloadable zip builds.
+  response panel (accept / decline / arbitrary), proximity re-trigger, riddle NPCs at
+  milestone screens, language HUD, and TTS for both NPC dialog and player responses.
+- **51-language NPC dialog corpus** (100 encounters) authored + QA'd via `scripts/i18n`
+  tooling (sources / per-language translate + review parts / merge / lint / validate).
+- Landing page (title, intro, choice) localized to the player's **primary stack language**
+  via `src/data/sceneText.json`; start trimmed to a single "Head to the NYC streets".
+- Atmosphere: parallax star field, a moon that rises with progress, periodic helicopter
+  flybys, and a sky that warms night → moonlit.
+- Character fidelity: player face + walk animation; NPC faces, vendor-colored hats, idle bob.
+- Taxi ride: accepting a taxi fast-travels you to the next station.
+- Godzilla arc: boosted growth; when building-tall, **SMASH** (button / `S`) a building (on a
+  cooldown) to reveal a detailed lit dinner interior with a seated family who speak a
+  target-language line (`src/data/familyLines.json`, 51 languages).
+- Stakes: roving French / German hecklers run in, yell absurdities (TTS, `hecklerLines.ts`),
+  and lob projectiles — dodge or take damage (shrink + energy loss, i-frames). Size and energy
+  are now coupled; player feet stay anchored to the ground at every size.
+- `scripts/pack.mjs` + `pack` / `pack:all`; dev browser harness (`dev.html` + `src/dev-harness.ts`).
 
 ## [0.1.0] - 2025-11 — NYC action scene + NPC interactions (#139)
 ### Added

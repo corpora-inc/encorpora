@@ -1,0 +1,26 @@
+{
+  "Hey! You're interrupting our dinner! How rude!": {
+    "fi": "Hei! Sinä keskeytät illallisemme! Miten töykeää!", "hu": "Hé! Megzavarod a vacsoránkat! Milyen modortalan!", "lt": "Ei! Tu trukdai mūsų vakarienei! Kaip nemandagu!", "pl": "Hej! Przeszkadzasz nam w kolacji! Co za bezczelność!", "cs": "Hej! Rušíš nám večeři! To je ale drzost!", "sk": "Hej! Rušíš nám večeru! Aké nezdvorilé!", "sl": "Hej! Motiš nam večerjo! Kako nesramno!", "hr": "Hej! Ometaš nam večeru! Kako nepristojno!", "sr": "Хеј! Прекидаш нам вечеру! Како непристојно!", "bg": "Хей! Прекъсваш вечерята ни! Колко грубо!", "uk": "Гей! Ти перебиваєш нашу вечерю! Як нечемно!", "ru": "Эй! Ты прерываешь наш ужин! Как грубо!", "el": "Έι! Διακόπτεις το δείπνο μας! Τι αγένεια!"
+  },
+  "We're trying to eat here!": {
+    "fi": "Me yritämme syödä täällä!", "hu": "Próbálunk itt enni!", "lt": "Mes čia bandome valgyti!", "pl": "Próbujemy tu jeść!", "cs": "Snažíme se tu najíst!", "sk": "Snažíme sa tu najesť!", "sl": "Tukaj poskušamo jesti!", "hr": "Pokušavamo ovdje jesti!", "sr": "Покушавамо овде да једемо!", "bg": "Опитваме се да ядем тук!", "uk": "Ми тут намагаємося їсти!", "ru": "Мы тут пытаемся поесть!", "el": "Προσπαθούμε να φάμε εδώ!"
+  },
+  "Mmm, this soup is delicious!": {
+    "fi": "Mmm, tämä keitto on herkullista!", "hu": "Mmm, ez a leves nagyon finom!", "lt": "Mmm, ši sriuba labai skani!", "pl": "Mmm, ta zupa jest pyszna!", "cs": "Mmm, tahle polévka je výborná!", "sk": "Mmm, táto polievka je vynikajúca!", "sl": "Mmm, ta juha je odlična!", "hr": "Mmm, ova juha je ukusna!", "sr": "Ммм, ова супа је укусна!", "bg": "Ммм, тази супа е вкусна!", "uk": "Ммм, цей суп смачний!", "ru": "Ммм, этот суп вкусный!", "el": "Μμμ, αυτή η σούπα είναι νόστιμη!"
+  },
+  "Could you pass the salt?": {
+    "fi": "Voisitko ojentaa suolan?", "hu": "Ideadnád a sót?", "lt": "Ar galėtum paduoti druską?", "pl": "Czy mógłbyś podać sól?", "cs": "Mohl bys podat sůl?", "sk": "Mohol by si podať soľ?", "sl": "Bi mi lahko podal sol?", "hr": "Možeš li dodati sol?", "sr": "Можеш ли да додаш со?", "bg": "Може ли да подадеш солта?", "uk": "Чи не міг би ти передати сіль?", "ru": "Не мог бы ты передать соль?", "el": "Μπορείς να μου δώσεις το αλάτι;"
+  },
+  "Who wants more rice?": {
+    "fi": "Kuka haluaa lisää riisiä?", "hu": "Ki kér még rizst?", "lt": "Kas nori daugiau ryžių?", "pl": "Kto chce więcej ryżu?", "cs": "Kdo chce ještě rýži?", "sk": "Kto chce ešte ryžu?", "sl": "Kdo želi še riža?", "hr": "Tko želi još riže?", "sr": "Ко хоће још пиринча?", "bg": "Кой иска още ориз?", "uk": "Хто хоче ще рису?", "ru": "Кто хочет ещё риса?", "el": "Ποιος θέλει κι άλλο ρύζι;"
+  },
+  "Careful — the plates are hot!": {
+    "fi": "Varo — lautaset ovat kuumia!", "hu": "Vigyázz — a tányérok forrók!", "lt": "Atsargiai — lėkštės karštos!", "pl": "Ostrożnie — talerze są gorące!", "cs": "Opatrně — talíře jsou horké!", "sk": "Opatrne — taniere sú horúce!", "sl": "Pazi — krožniki so vroči!", "hr": "Pazi — tanjuri su vrući!", "sr": "Пажљиво — тањири су врући!", "bg": "Внимавай — чиниите са горещи!", "uk": "Обережно — тарілки гарячі!", "ru": "Осторожно — тарелки горячие!", "el": "Πρόσεχε — τα πιάτα είναι ζεστά!"
+  },
+  "There's a giant at our window!": {
+    "fi": "Ikkunassamme on jättiläinen!", "hu": "Egy óriás van az ablakunknál!", "lt": "Prie mūsų lango yra milžinas!", "pl": "W naszym oknie jest olbrzym!", "cs": "U našeho okna je obr!", "sk": "Pri našom okne je obor!", "sl": "Pri našem oknu je velikan!", "hr": "Na našem prozoru je div!", "sr": "На нашем прозору је џин!", "bg": "На прозореца ни има великан!", "uk": "У нашому вікні велетень!", "ru": "В нашем окне великан!", "el": "Ένας γίγαντας είναι στο παράθυρό μας!"
+  },
+  "Dinner's getting cold!": {
+    "fi": "Illallinen jäähtyy!", "hu": "Kihűl a vacsora!", "lt": "Vakarienė atvėsta!", "pl": "Kolacja stygnie!", "cs": "Večeře stydne!", "sk": "Večera vychladne!", "sl": "Večerja se hladi!", "hr": "Večera se hladi!", "sr": "Вечера се хлади!", "bg": "Вечерята изстива!", "uk": "Вечеря холоне!", "ru": "Ужин остывает!", "el": "Το δείπνο κρυώνει!"
+  }
+}

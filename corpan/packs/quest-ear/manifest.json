@@ -1,7 +1,7 @@
 {
   "id": "quest_ear",
   "name": "Quest for the All-Hearing Ear",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "8-bit narrative quest through NYC: talk with multilingual vendors and riddle-keepers, answer in your target language, and grow as you go.",
   "entry": "dist/app.js",
   "styles": [
@@ -9,5 +9,5 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-05-25T18:31:01.413Z"
+  "devRevision": "2026-05-26T03:30:38.684Z"
 }

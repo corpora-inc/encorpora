@@ -17,7 +17,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | All the way up! | Fins a dalt de tot! |
 | Allergic. | Sóc al·lèrgic. |
 | Allergies. | Al·lèrgies. |
-| Alleyways whisper old gossip. | Els carrerons xiuxiuegen vells xafarderies. |
+| Alleyways whisper old gossip. | Els carrerons xiuxiuegen velles xafarderies. |
 | Already ate. | Ja he menjat. |
 | An apple a day is enough. | Una poma al dia ja n'hi ha prou. |
 | Apples, just picked! | Pomes, acabades de collir! |
@@ -34,7 +34,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Best views! | Les millors vistes! |
 | Bigger is better! | Com més gros, millor! |
 | Bike lanes are thin rivers. | Els carrils bici són rius prims. |
-| Blast me! | Dispara-me! |
+| Blast me! | Engega-me'l! |
 | Bodegas are neighborhood living rooms. | Les bodegues són les sales d'estar del barri. |
 | Both! | Tots dos! |
 | Bridges hum lullabies. | Els ponts taral·legen cançons de bressol. |
@@ -137,7 +137,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | I once befriended a fire hydrant. | Una vegada em vaig fer amic d'una boca d'incendi. |
 | I read online. | Ho llegeixo en línia. |
 | I speak fluent elevator music. | Parlo el fil musical d'ascensor amb fluïdesa. |
-| I'd love one! | M'encantaria un! |
+| I'd love one! | En voldria un! |
 | I'll just look up. | Només miraré cap amunt. |
 | I'll pass. | Ho deixo passar. |
 | I'll perform! | Actuaré jo! |
@@ -277,7 +277,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Stairwells echo yesterday's footsteps. | Les escales fan eco de les passes d'ahir. |
 | Standing room only! | Només lloc dret! |
 | Steam vents are the city yawning. | Les sortides de vapor són la ciutat badallant. |
-| Step on it! | Trepitja! |
+| Step on it! | Trepitja-li! |
 | Stoops are front-row seats to life. | Les escalinates són seients de primera fila a la vida. |
 | Stoplights blush at busy intersections. | Els semàfors s'enrojolen als encreuaments concorreguts. |
 | Storm drains sing at midnight. | Els embornals canten a mitjanit. |
@@ -352,7 +352,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Wifi passwords are modern poetry. | Les contrasenyes del wifi són poesia moderna. |
 | Window boxes are building jewelry. | Les jardineres són les joies dels edificis. |
 | With everything on it? | Amb tot a sobre? |
-| Wrap it up! | Emboliqueu-m'ho! |
+| Wrap it up! | Embolica-m'ho! |
 | Yellow energy! | Energia groga! |
 | Yes please! | Sí, si us plau! |
 | Yes, healthy choice! | Sí, una opció saludable! |
@@ -416,7 +416,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Comics aren't for me. | Benzile desenate nu-s pentru mine. |
 | Corner stores hold the fabric of neighborhoods. | Magazinele de la colț țin laolaltă țesătura cartierelor. |
 | Count me in! | Contează pe mine! |
-| Cream and sugar? | Frișcă și zahăr? |
+| Cream and sugar? | Lapte și zahăr? |
 | Crosswalks are painted rivers. | Trecerile de pietoni sunt râuri pictate. |
 | Crosswalks are the city's stitches. | Trecerile de pietoni sunt cusăturile orașului. |
 | Crossword puzzle inside! | Integrame înăuntru! |
@@ -520,7 +520,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Just passing through. | Doar trec pe aici. |
 | Just window shopping. | Doar mă uit la vitrine. |
 | Keep me informed! | Ține-mă la curent! |
-| Lampposts are tall sunflowers. | Stâlpii de iluminat sunt floarea-soarelui înalte. |
+| Lampposts are tall sunflowers. | Stâlpii de iluminat sunt floarea-soarelui înaltă. |
 | Large or small? | Mare sau mic? |
 | Last one of the day! | Ultimul din zi! |
 | Lemonade? | Limonadă? |
@@ -636,7 +636,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Stairwells echo yesterday's footsteps. | Casa scării răsună de pașii de ieri. |
 | Standing room only! | Doar locuri în picioare! |
 | Steam vents are the city yawning. | Gurile de abur sunt orașul căscând. |
-| Step on it! | Calc-o! |
+| Step on it! | Apasă pedala! |
 | Stoops are front-row seats to life. | Treptele de la intrare sunt locuri în primul rând la viață. |
 | Stoplights blush at busy intersections. | Semafoarele se înroșesc la intersecțiile aglomerate. |
 | Storm drains sing at midnight. | Gurile de scurgere cântă la miezul nopții. |
@@ -819,7 +819,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Full already. | Já estou cheio. |
 | Giant pretzel! | Um pretzel gigante! |
 | Give me one! | Dê-me um! |
-| Going uptown? | Vais para a baixa alta? |
+| Going uptown? | Vais para a zona alta? |
 | Good luck today. | Boa sorte hoje. |
 | Got to run. | Tenho de ir. |
 | Gravity is just a suggestion. | A gravidade é só uma sugestão. |
@@ -1045,7 +1045,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Tropical blend! | Mistura tropical! |
 | Tropical fruit? | Fruta tropical? |
 | Tulips today! | Tulipas hoje! |
-| Twisted golden treat? | Um quitute dourado torcido? |
+| Twisted golden treat? | Uma guloseima dourada torcida? |
 | Two for five dollars! | Dois por cinco dólares! |
 | Two please! | Dois, por favor! |
 | Two slices for three! | Duas fatias por três! |
@@ -1053,7 +1053,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Walls whisper at night. | As paredes sussurram à noite. |
 | Want a hot dog? | Queres um cachorro-quente? |
 | Want a slice? | Queres uma fatia? |
-| Warm and chewy! | Quente e fofo! |
+| Warm and chewy! | Quente e elástico! |
 | Watching my carbs. | Estou a controlar os hidratos. |
 | Water towers wear hats. | Os depósitos de água usam chapéus. |
 | Watermelon cooler? | Refresco de melancia? |
@@ -1182,7 +1182,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Good luck today. | Veel succes vandaag. |
 | Got to run. | Ik moet rennen. |
 | Gravity is just a suggestion. | Zwaartekracht is maar een suggestie. |
-| Green juice — healthy! | Groene sap — gezond! |
+| Green juice — healthy! | Groen sap — gezond! |
 | Had one this morning. | Had er vanmorgen al een. |
 | Half-price matinée! | Matinee voor de halve prijs! |
 | Heading downtown. | Ik ga naar downtown. |
@@ -1269,7 +1269,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | My feet hurt. | Mijn voeten doen pijn. |
 | My knees can predict rain. | Mijn knieën kunnen regen voorspellen. |
 | My shadow walked away yesterday. | Mijn schaduw liep gisteren weg. |
-| My socks are sentient. | Mijn sokken zijn bewust. |
+| My socks are sentient. | Mijn sokken hebben een bewustzijn. |
 | My weakness! | Mijn zwakte! |
 | Need a cab? | Een taxi nodig? |
 | Need a caffeine boost? | Een cafeïneboost nodig? |
@@ -1355,7 +1355,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Standing room only! | Alleen staanplaatsen! |
 | Steam vents are the city yawning. | Stoomroosters zijn de stad die geeuwt. |
 | Step on it! | Geef gas! |
-| Stoops are front-row seats to life. | Stoepen zijn de eerste rij stoelen voor het leven. |
+| Stoops are front-row seats to life. | Stoepen zijn de eerste rij van het leven. |
 | Stoplights blush at busy intersections. | Stoplichten blozen bij drukke kruispunten. |
 | Storm drains sing at midnight. | Straatkolken zingen om middernacht. |
 | Street art is the city's diary. | Straatkunst is het dagboek van de stad. |
@@ -1412,10 +1412,10 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Walls whisper at night. | Muren fluisteren 's nachts. |
 | Want a hot dog? | Wil je een hotdog? |
 | Want a slice? | Wil je een punt? |
-| Warm and chewy! | Warm en taai! |
+| Warm and chewy! | Warm en stevig! |
 | Watching my carbs. | Ik let op mijn koolhydraten. |
 | Water towers wear hats. | Watertorens dragen hoeden. |
-| Watermelon cooler? | Watermeloen-koeler? |
+| Watermelon cooler? | Watermeloendrankje? |
 | Watermelon slice? | Een stuk watermeloen? |
 | Weather forecast? | Het weerbericht? |
 | What a deal! | Wat een koopje! |
@@ -1488,7 +1488,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Clouds taste different at night. | Skyer smaker annerledes om natten. |
 | Clouds taste like nothing. | Skyer smaker ingenting. |
 | Coffee to go? | Kaffe på farten? |
-| Comedy show? | Komishow? |
+| Comedy show? | Komedishow? |
 | Comic strips today! | Tegneserier i dag! |
 | Comics aren't for me. | Tegneserier er ikke noe for meg. |
 | Corner stores hold the fabric of neighborhoods. | Hjørnebutikker holder nabolagets vev sammen. |
@@ -1592,7 +1592,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Is time real? | Er tid ekte? |
 | It's not Sunday. | Det er ikke søndag. |
 | Jazz tonight? | Jazz i kveld? |
-| Juicy peaches! | Saftige fersken! |
+| Juicy peaches! | Saftige ferskener! |
 | Just ate. | Akkurat spist. |
 | Just passing through. | Bare på gjennomreise. |
 | Just window shopping. | Bare titter i vinduene. |
@@ -1642,11 +1642,11 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | No rush. | Ingen hast. |
 | No thanks. | Nei takk. |
 | Nobody to give them to. | Ingen å gi dem til. |
-| Not a fan of green. | Ikke noe fan av grønt. |
-| Not a mustard fan. | Ikke noe fan av sennep. |
+| Not a fan of green. | Ikke noen fan av grønt. |
+| Not a mustard fan. | Ikke noen sennepsfan. |
 | Not going anywhere. | Skal ingen steder. |
 | Not hungry. | Ikke sulten. |
-| Not into sports. | Ikke noe for sport. |
+| Not into sports. | Ikke interessert i sport. |
 | Not my genre. | Ikke min sjanger. |
 | Not thirsty. | Ikke tørst. |
 | Not today. | Ikke i dag. |
@@ -1680,10 +1680,10 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Purple tastes like Tuesday. | Lilla smaker som tirsdag. |
 | Quick ride? | En rask tur? |
 | Revolving doors are confused. | Svingdører er forvirret. |
-| Ripe mangoes! | Modne mango! |
+| Ripe mangoes! | Modne mangoer! |
 | Rooftop concert? | Takkonsert? |
 | Rooftop gardens dream of forests. | Takhager drømmer om skoger. |
-| Roses for someone special? | Roser til noen spesielle? |
+| Roses for someone special? | Roser til noen spesiell? |
 | Salt or cinnamon? | Salt eller kanel? |
 | Sauerkraut on top? | Surkål oppå? |
 | Saving room for dinner. | Sparer plass til middag. |
@@ -1746,7 +1746,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Thorns scare me. | Torner skremmer meg. |
 | Tie me up! | Knyt en til meg! |
 | Today's headlines! | Dagens overskrifter! |
-| Too brainy for me. | For hjernerikt for meg. |
+| Too brainy for me. | For smart for meg. |
 | Too exotic for me. | For eksotisk for meg. |
 | Too expensive. | For dyrt. |
 | Too full. | For mett. |
@@ -1829,7 +1829,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Best views! | Bästa utsikten! |
 | Bigger is better! | Större är bättre! |
 | Bike lanes are thin rivers. | Cykelbanor är smala floder. |
-| Blast me! | Kör på mig! |
+| Blast me! | Kör hårt! |
 | Bodegas are neighborhood living rooms. | Närbutikerna är kvarterets vardagsrum. |
 | Both! | Båda! |
 | Bridges hum lullabies. | Broar nynnar vaggvisor. |
@@ -2031,7 +2031,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pigeons own this city. | Duvorna äger den här stan. |
 | Pigeons run the government. | Duvorna styr regeringen. |
 | Pineapple paradise? | Ananasparadis? |
-| Pop one in! | Slå in en! |
+| Pop one in! | Stoppa in en! |
 | Potholes are urban constellations. | Potthål är urbana stjärnbilder. |
 | Pretzel knot? | Kringelknut? |
 | Pretzel with mustard? | Kringla med senap? |
@@ -2039,7 +2039,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Purple tastes like Tuesday. | Lila smakar tisdag. |
 | Quick ride? | En snabb tur? |
 | Revolving doors are confused. | Svängdörrar är förvirrade. |
-| Ripe mangoes! | Mogna mango! |
+| Ripe mangoes! | Mogna mangor! |
 | Rooftop concert? | Takkonsert? |
 | Rooftop gardens dream of forests. | Takträdgårdar drömmer om skogar. |
 | Roses for someone special? | Rosor till någon speciell? |
@@ -2251,9 +2251,9 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Fresh juice? | Frisk juice? |
 | Fresh off the grill! | Lige fra grillen! |
 | Fresh out of the oven! | Lige fra ovnen! |
-| Fresh pretzel? | En frisk pretzel? |
+| Fresh pretzel? | En frisk kringle? |
 | Full already. | Allerede mæt. |
-| Giant pretzel! | En kæmpe pretzel! |
+| Giant pretzel! | En kæmpe kringle! |
 | Give me one! | Giv mig en! |
 | Going uptown? | Skal du mod nord? |
 | Good luck today. | Held og lykke i dag. |
@@ -2264,7 +2264,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Half-price matinée! | Matiné til halv pris! |
 | Heading downtown. | Skal mod centrum. |
 | Hit me! | Kør på! |
-| Hook me up! | Hook mig op! |
+| Hook me up! | Kom med den! |
 | Hop in! | Hop ind! |
 | Horoscope page? | Horoskopsiden? |
 | Hot and ready! | Varm og klar! |
@@ -2390,7 +2390,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pigeons own this city. | Duerne ejer denne by. |
 | Pigeons run the government. | Duerne styrer regeringen. |
 | Pineapple paradise? | Ananasparadis? |
-| Pop one in! | Pop en i munden! |
+| Pop one in! | Smid en i munden! |
 | Potholes are urban constellations. | Huller i vejen er urbane stjernebilleder. |
 | Pretzel knot? | Kringleknude? |
 | Pretzel with mustard? | Kringle med sennep? |
@@ -2588,7 +2588,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Elevators judge you silently. | Hissit tuomitsevat sinut äänettömästi. |
 | Escalators are lazy stairs. | Liukuportaat ovat laiskoja portaita. |
 | Espresso shot? | Espresso? |
-| Everyone says that. | Noin kaikki sanovat. |
+| Everyone says that. | Niin kaikki sanovat. |
 | Extra cheese today! | Tänään ekstrajuustoa! |
 | Extra mustard! | Ekstrasinappia! |
 | Extra! Extra! | Lisäpainos! Lisäpainos! |
@@ -2749,7 +2749,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pigeons own this city. | Pulut omistavat tämän kaupungin. |
 | Pigeons run the government. | Pulut johtavat hallitusta. |
 | Pineapple paradise? | Ananasparatiisi? |
-| Pop one in! | Pop yksi suuhun! |
+| Pop one in! | Pistä yksi suuhun! |
 | Potholes are urban constellations. | Kuopat ovat kaupungin tähtikuvioita. |
 | Pretzel knot? | Rinkelisolmu? |
 | Pretzel with mustard? | Rinkeli sinapilla? |
@@ -2827,13 +2827,13 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Too exotic for me. | Liian eksoottista minulle. |
 | Too expensive. | Liian kallista. |
 | Too full. | Liian täynnä. |
-| Too knotty for me. | Liian sykkyräinen minulle. |
+| Too knotty for me. | Liian solmuinen minulle. |
 | Too messy to eat. | Liian sotkuista syötäväksi. |
-| Too pricey. | Liian suolaista. |
+| Too pricey. | Liian kallista. |
 | Too sour. | Liian hapan. |
 | Too sweet for me. | Liian makeaa minulle. |
 | Too tall for my apartment. | Liian korkea asuntooni. |
-| Traffic lights are the city's heartbeat. | Liikennevalot ovat kaupungin sydämenlyönti. |
+| Traffic lights are the city's heartbeat. | Liikennevalot ovat kaupungin syke. |
 | Traffic lights have feelings. | Liikennevaloilla on tunteita. |
 | Trash cans are hungry. | Roskakorit ovat nälkäisiä. |
 | Trees gossip about us. | Puut juoruilevat meistä. |
@@ -2895,7 +2895,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Apples, just picked! | Obuoliai, ką tik nuskinti! |
 | Awnings are building eyelids. | Markizės yra pastatų vokai. |
 | Banana bunch? | Bananų kekė? |
-| Beautiful bouquet? | Gražus puokštė? |
+| Beautiful bouquet? | Graži puokštė? |
 | Been there. | Jau ten buvau. |
 | Benches judge everyone. | Suoliukai teisia visus. |
 | Berry blast? | Uogų sprogimas? |
@@ -2917,7 +2917,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Can't decide. | Negaliu apsispręsti. |
 | Can't resist! | Negaliu atsispirti! |
 | Can't stop at one. | Negaliu sustoti ties vienu. |
-| Carrot ginger shot? | Morkų ir imbiero šūvis? |
+| Carrot ginger shot? | Morkų ir imbiero šotas? |
 | Catch me up! | Papasakok naujienas! |
 | Church bells argue with car alarms. | Bažnyčios varpai ginčijasi su automobilių signalizacijomis. |
 | Classic! | Klasika! |
@@ -3033,7 +3033,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Just passing through. | Tik praeinu pro šalį. |
 | Just window shopping. | Tik dairausi po vitrinas. |
 | Keep me informed! | Informuok mane! |
-| Lampposts are tall sunflowers. | Gatvių žibintai — aukšti saulėgrąžos. |
+| Lampposts are tall sunflowers. | Gatvių žibintai — aukštos saulėgrąžos. |
 | Large or small? | Didelis ar mažas? |
 | Last one of the day! | Paskutinis šiandien! |
 | Lemonade? | Limonado? |
@@ -3054,7 +3054,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Midtown, please! | Į Midtauną, prašau! |
 | Mirrors are portals that gave up. | Veidrodžiai — tai vartai, kurie pasidavė. |
 | Morning paper? | Rytinis laikraštis? |
-| Morning pick-me-up? | Rytinis pakrovimas energija? |
+| Morning pick-me-up? | Rytinis energijos užtaisas? |
 | Museum pass? | Muziejaus bilietas? |
 | Mustard or ketchup? | Garstyčios ar kečupas? |
 | My day is already bright. | Mano diena jau šviesi. |
@@ -3113,7 +3113,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pretzel knot? | Riestainio mazgas? |
 | Pretzel with mustard? | Riestainis su garstyčiomis? |
 | Puddles are sky windows. | Balos yra dangaus langai. |
-| Purple tastes like Tuesday. | Violetinė skonio kaip antradienis. |
+| Purple tastes like Tuesday. | Violetinė primena antradienį. |
 | Quick ride? | Greitas pavėžėjimas? |
 | Revolving doors are confused. | Sukamosios durys yra pasimetusios. |
 | Ripe mangoes! | Prinokę mangai! |
@@ -3140,7 +3140,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Sounds great! | Skamba puikiai! |
 | Sounds intense. | Skamba intensyviai. |
 | Sounds refreshing! | Skamba gaivinančiai! |
-| Spoons are just tiny shovels. | Šaukštai tėra mažos kastuvėliai. |
+| Spoons are just tiny shovels. | Šaukštai tėra maži kastuvėliai. |
 | Sports section? | Sporto skiltis? |
 | Squirrels are spies. | Voverės yra šnipai. |
 | Stage fright. | Scenos baimė. |
@@ -3187,7 +3187,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Too expensive. | Per brangu. |
 | Too full. | Per sotus. |
 | Too knotty for me. | Man per daug mazgų. |
-| Too messy to eat. | Per daug netvarkinga valgyti. |
+| Too messy to eat. | Per daug terliojasi valgant. |
 | Too pricey. | Per brangu. |
 | Too sour. | Per rūgštu. |
 | Too sweet for me. | Man per saldu. |
@@ -3208,7 +3208,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Want a hot dog? | Nori dešrainio? |
 | Want a slice? | Nori gabalėlio? |
 | Warm and chewy! | Šiltas ir kramtomas! |
-| Watching my carbs. | Saugau angliavandenius. |
+| Watching my carbs. | Saugausi angliavandenių. |
 | Water towers wear hats. | Vandentiekio bokštai dėvi skrybėles. |
 | Watermelon cooler? | Arbūzų gaiva? |
 | Watermelon slice? | Arbūzo griežinėlis? |
@@ -3228,7 +3228,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Yellow energy! | Geltona energija! |
 | Yes please! | Taip, prašau! |
 | Yes, healthy choice! | Taip, sveikas pasirinkimas! |
-| Yes, ice cold! | Taip, lediniai šaltas! |
+| Yes, ice cold! | Taip, ledinis! |
 | Yes, let's go! | Taip, eime! |
 | You bet! | Be abejo! |
 | You read my mind! | Perskaitei mano mintis! |
@@ -3423,7 +3423,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | My feet hurt. | Bolí mě nohy. |
 | My knees can predict rain. | Moje kolena dokážou předpovědět déšť. |
 | My shadow walked away yesterday. | Můj stín včera odešel. |
-| My socks are sentient. | Moje ponožky jsou vědomé. |
+| My socks are sentient. | Moje ponožky mají vědomí. |
 | My weakness! | Moje slabost! |
 | Need a cab? | Potřebuješ taxi? |
 | Need a caffeine boost? | Potřebuješ dávku kofeinu? |
@@ -3492,13 +3492,13 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Skyscrapers compare heights at night. | Mrakodrapy si v noci porovnávají výšky. |
 | Skyscrapers whisper to clouds. | Mrakodrapy šeptají mrakům. |
 | Smells amazing! | Voní to úžasně! |
-| Smooth! | Lahodně jemné! |
+| Smooth! | Sametové! |
 | So juicy! | Tak šťavnaté! |
 | So trendy! | Tak trendy! |
 | Soft pretzel, warm! | Měkký preclík, teplý! |
 | Sounds great! | Zní to skvěle! |
 | Sounds intense. | Zní to intenzivně. |
-| Sounds refreshing! | Zní to osvěžujícně! |
+| Sounds refreshing! | Zní to svěže! |
 | Spoons are just tiny shovels. | Lžíce jsou jen malé lopaty. |
 | Sports section? | Sportovní rubrika? |
 | Squirrels are spies. | Veverky jsou špioni. |
@@ -3546,7 +3546,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Too expensive. | Moc drahé. |
 | Too full. | Moc plný. |
 | Too knotty for me. | Na mě moc zauzlované. |
-| Too messy to eat. | Moc se to při jídle umaže. |
+| Too messy to eat. | Při jídle bych se umazal. |
 | Too pricey. | Moc drahé. |
 | Too sour. | Moc kyselé. |
 | Too sweet for me. | Pro mě moc sladké. |
@@ -3566,7 +3566,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Walls whisper at night. | Zdi v noci šeptají. |
 | Want a hot dog? | Dáš si hot dog? |
 | Want a slice? | Dáš si kousek? |
-| Warm and chewy! | Teplé a žvýkavé! |
+| Warm and chewy! | Teplé a vláčné! |
 | Watching my carbs. | Hlídám si sacharidy. |
 | Water towers wear hats. | Vodárenské věže nosí klobouky. |
 | Watermelon cooler? | Melounový chladič? |
@@ -3625,7 +3625,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Bigger is better! | Väčšie je lepšie! |
 | Bike lanes are thin rivers. | Cyklochodníky sú tenké rieky. |
 | Blast me! | Daj mi poriadne! |
-| Bodegas are neighborhood living rooms. | Večierky sú obývačky štvrte. |
+| Bodegas are neighborhood living rooms. | Obchodíky na rohu sú obývačky štvrte. |
 | Both! | Oboje! |
 | Bridges hum lullabies. | Mosty si pobrukujú uspávanky. |
 | Broadway tonight? | Broadway dnes večer? |
@@ -3636,7 +3636,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Can't resist! | Neviem odolať! |
 | Can't stop at one. | Neviem zostať pri jednom. |
 | Carrot ginger shot? | Mrkvovo-zázvorový shot? |
-| Catch me up! | Uveď ma do obrazu! |
+| Catch me up! | Doplň ma do obrazu! |
 | Church bells argue with car alarms. | Kostolné zvony sa hádajú s autoalarmami. |
 | Classic! | Klasika! |
 | Clouds taste different at night. | Mraky v noci chutia inak. |
@@ -3654,7 +3654,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Crunchy! | Chrumkavé! |
 | Culture time! | Čas na kultúru! |
 | Daisies and lilies! | Sedmokrásky a ľalie! |
-| Delivery trucks are metal elephants. | Rozvozové dodávky sú kovoví slony. |
+| Delivery trucks are metal elephants. | Rozvozové dodávky sú kovové slony. |
 | Do pigeons dream? | Snívajú holuby? |
 | Dollar slice right here! | Kúsok za dolár priamo tu! |
 | Doorknobs collect secrets. | Kľučky zbierajú tajomstvá. |
@@ -3782,7 +3782,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | My feet hurt. | Bolia ma nohy. |
 | My knees can predict rain. | Moje kolená dokážu predpovedať dážď. |
 | My shadow walked away yesterday. | Môj tieň včera odišiel. |
-| My socks are sentient. | Moje ponožky sú vedomé. |
+| My socks are sentient. | Moje ponožky majú vedomie. |
 | My weakness! | Moja slabosť! |
 | Need a cab? | Potrebuješ taxík? |
 | Need a caffeine boost? | Potrebuješ dávku kofeínu? |
@@ -3925,7 +3925,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Walls whisper at night. | Steny v noci šepkajú. |
 | Want a hot dog? | Dáš si hot dog? |
 | Want a slice? | Dáš si kúsok? |
-| Warm and chewy! | Teplé a žuvacie! |
+| Warm and chewy! | Teplý a žuvateľný! |
 | Watching my carbs. | Strážim si sacharidy. |
 | Water towers wear hats. | Vodárenské veže nosia klobúky. |
 | Watermelon cooler? | Melónový chladič? |
@@ -3977,13 +3977,13 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Benches judge everyone. | Klopi sodijo vsakogar. |
 | Berry blast? | Jagodičevni izbruh? |
 | Best coffee on the block! | Najboljša kava v soseski! |
-| Best dogs in the city! | Najboljši hrenovke v mestu! |
+| Best dogs in the city! | Najboljše hrenovke v mestu! |
 | Best pizza in New York! | Najboljša pica v New Yorku! |
-| Best pretzels in town! | Najboljši preste v mestu! |
+| Best pretzels in town! | Najboljši preceljci v mestu! |
 | Best views! | Najlepši razgledi! |
 | Bigger is better! | Večje je boljše! |
 | Bike lanes are thin rivers. | Kolesarske steze so tanke reke. |
-| Blast me! | Daj mi po polno! |
+| Blast me! | Daj mi na polno! |
 | Bodegas are neighborhood living rooms. | Sosedske trgovinice so dnevne sobe soseske. |
 | Both! | Oboje! |
 | Bridges hum lullabies. | Mostovi prepevajo uspavanke. |
@@ -3995,7 +3995,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Can't resist! | Ne morem se upreti! |
 | Can't stop at one. | Ne morem se ustaviti pri enem. |
 | Carrot ginger shot? | Korenčkov-ingverjev shot? |
-| Catch me up! | Spelji me na tekoče! |
+| Catch me up! | Spravi me na tekoče! |
 | Church bells argue with car alarms. | Cerkveni zvonovi se prepirajo z avtomobilskimi alarmi. |
 | Classic! | Klasika! |
 | Clouds taste different at night. | Oblaki imajo ponoči drugačen okus. |
@@ -4025,8 +4025,8 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Escalators are lazy stairs. | Tekoče stopnice so lene stopnice. |
 | Espresso shot? | Espresso? |
 | Everyone says that. | To pravi vsak. |
-| Extra cheese today! | Danes extra sir! |
-| Extra mustard! | Extra gorčica! |
+| Extra cheese today! | Danes ekstra sir! |
+| Extra mustard! | Ekstra gorčica! |
 | Extra! Extra! | Posebna izdaja! Posebna izdaja! |
 | Ferry to Liberty Island? | Trajekt na Liberty Island? |
 | Fire escapes are building jewelry. | Požarne stopnice so nakit stavb. |
@@ -4222,7 +4222,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Squirrels are spies. | Veverice so vohuni. |
 | Stage fright. | Trema. |
 | Stairs go both ways. | Stopnice vodijo v obe smeri. |
-| Stairs make me suspicious. | Stopnice me delajo sumničavega. |
+| Stairs make me suspicious. | Stopnice se mi zdijo sumljive. |
 | Stairwells echo yesterday's footsteps. | Stopnišča odmevajo včerajšnje korake. |
 | Standing room only! | Samo stojišča! |
 | Steam vents are the city yawning. | Parni jaški so mesto, ki zeha. |
@@ -4242,7 +4242,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Sunflowers! | Sončnice! |
 | Sure thing! | Seveda! |
 | Sweet strawberries? | Sladke jagode? |
-| Take me to the tropics! | Odpelji me v tropе! |
+| Take me to the tropics! | Odpelji me v trope! |
 | Taxi horns speak a secret language. | Taksijske hupe govorijo skrivni jezik. |
 | Taxi! Where to? | Taksi! Kam pa? |
 | Taxis are yellow submarines. | Taksiji so rumene podmornice. |
@@ -4287,7 +4287,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Warm and chewy! | Toplo in žvečljivo! |
 | Watching my carbs. | Pazim na ogljikove hidrate. |
 | Water towers wear hats. | Vodni stolpi nosijo klobuke. |
-| Watermelon cooler? | Lubenicna osvežitev? |
+| Watermelon cooler? | Lubenična osvežitev? |
 | Watermelon slice? | Rezina lubenice? |
 | Weather forecast? | Vremenska napoved? |
 | What a deal! | Kakšna ugodnost! |
@@ -4355,7 +4355,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Can't stop at one. | Ne mogu stati na jednom. |
 | Carrot ginger shot? | Shot od mrkve i đumbira? |
 | Catch me up! | Uvedi me u tijek! |
-| Church bells argue with car alarms. | Crkvena zvona se prepiru s autoalarmom. |
+| Church bells argue with car alarms. | Crkvena zvona se prepiru s autoalarmima. |
 | Classic! | Klasika! |
 | Clouds taste different at night. | Oblaci noću imaju drugačiji okus. |
 | Clouds taste like nothing. | Oblaci nemaju nikakav okus. |
@@ -4695,9 +4695,9 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Benches judge everyone. | Клупе суде свакоме. |
 | Berry blast? | Експлозија бобица? |
 | Best coffee on the block! | Најбоља кафа у кварту! |
-| Best dogs in the city! | Најбољи хот-дог у граду! |
+| Best dogs in the city! | Најбољи хот-догови у граду! |
 | Best pizza in New York! | Најбоља пица у Њујорку! |
-| Best pretzels in town! | Најбоље переце у граду! |
+| Best pretzels in town! | Најбољи переци у граду! |
 | Best views! | Најбољи погледи! |
 | Bigger is better! | Веће је боље! |
 | Bike lanes are thin rivers. | Бициклистичке стазе су танке реке. |
@@ -4706,7 +4706,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Both! | Обоје! |
 | Bridges hum lullabies. | Мостови певуше успаванке. |
 | Broadway tonight? | Бродвеј вечерас? |
-| Brownstones blush in golden hour. | Куће од пешчара руменe у златном сату. |
+| Brownstones blush in golden hour. | Куће од пешчара румене се у златном сату. |
 | Busy today. | Данас сам заузет. |
 | Can't carry them. | Не могу да их носим. |
 | Can't decide. | Не могу да се одлучим. |
@@ -4714,7 +4714,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Can't stop at one. | Не могу да станем на једном. |
 | Carrot ginger shot? | Шот од шаргарепе и ђумбира? |
 | Catch me up! | Уведи ме у ток! |
-| Church bells argue with car alarms. | Црквена звона се препиру са ауто-аларма. |
+| Church bells argue with car alarms. | Црквена звона се препиру са ауто-алармима. |
 | Classic! | Класика! |
 | Clouds taste different at night. | Облаци ноћу имају другачији укус. |
 | Clouds taste like nothing. | Облаци немају никакав укус. |
@@ -4764,11 +4764,11 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Fresh juice? | Свеж сок? |
 | Fresh off the grill! | Свеже са роштиља! |
 | Fresh out of the oven! | Свеже из рерне! |
-| Fresh pretzel? | Свеж переца? |
+| Fresh pretzel? | Свеж перец? |
 | Full already. | Већ сам сит. |
-| Giant pretzel! | Џиновска переца! |
+| Giant pretzel! | Џиновски перец! |
 | Give me one! | Дај ми један! |
-| Going uptown? | Идеш на север? |
+| Going uptown? | Идеш у горњи град? |
 | Good luck today. | Срећно данас. |
 | Got to run. | Морам да бежим. |
 | Gravity is just a suggestion. | Гравитација је само предлог. |
@@ -4840,7 +4840,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Mailboxes are steel stomachs. | Поштански сандучићи су челични стомаци. |
 | Make it snappy! | Пожури! |
 | Mango please! | Манго, молим! |
-| Manhattanites walk sideways. | Менхетнци ходају постранце. |
+| Manhattanites walk sideways. | Менхетанци ходају постранце. |
 | Manhole covers are portals. | Шахт-поклопци су портали. |
 | Manhole covers are secret doors. | Шахт-поклопци су тајна врата. |
 | Manholes breathe city dreams. | Шахтови дишу снове града. |
@@ -4899,14 +4899,14 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pigeons are government drones. | Голубови су државни дронови. |
 | Pigeons hold grudges. | Голубови памте увреде. |
 | Pigeons hold staff meetings on ledges. | Голубови држе састанке на испустима. |
-| Pigeons invented WiFi. | Голубови су измислили WiFi. |
+| Pigeons invented WiFi. | Голубови су измислили вај-фај. |
 | Pigeons own this city. | Голубови владају овим градом. |
 | Pigeons run the government. | Голубови воде владу. |
 | Pineapple paradise? | Рајски ананас? |
 | Pop one in! | Убаци један! |
 | Potholes are urban constellations. | Рупе су градска сазвежђа. |
-| Pretzel knot? | Переца у чвору? |
-| Pretzel with mustard? | Переца са сенфом? |
+| Pretzel knot? | Перец у чвору? |
+| Pretzel with mustard? | Перец са сенфом? |
 | Puddles are sky windows. | Локве су прозори неба. |
 | Purple tastes like Tuesday. | Љубичаста има укус уторка. |
 | Quick ride? | Брза вожња? |
@@ -4931,7 +4931,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Smooth! | Глатко! |
 | So juicy! | Тако сочно! |
 | So trendy! | Тако модерно! |
-| Soft pretzel, warm! | Меки переца, топла! |
+| Soft pretzel, warm! | Меки перец, топао! |
 | Sounds great! | Звучи супер! |
 | Sounds intense. | Звучи интензивно. |
 | Sounds refreshing! | Звучи освежавајуће! |
@@ -4990,7 +4990,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Traffic lights are the city's heartbeat. | Семафори су откуцај срца града. |
 | Traffic lights have feelings. | Семафори имају осећања. |
 | Trash cans are hungry. | Канте за смеће су гладне. |
-| Trees gossip about us. | Дрвеће оговара о нама. |
+| Trees gossip about us. | Дрвеће нас оговара. |
 | Tropical blend! | Тропска мешавина! |
 | Tropical fruit? | Тропско воће? |
 | Tulips today! | Данас лале! |
@@ -5123,9 +5123,9 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Fresh juice? | Прясен сок? |
 | Fresh off the grill! | Току-що от грила! |
 | Fresh out of the oven! | Току-що от фурната! |
-| Fresh pretzel? | Прясна гевречета? |
+| Fresh pretzel? | Прясно геврече? |
 | Full already. | Вече съм сит. |
-| Giant pretzel! | Гигантска гевречета! |
+| Giant pretzel! | Гигантски геврек! |
 | Give me one! | Дай ми едно! |
 | Going uptown? | Към центъра ли? |
 | Good luck today. | Успех днес. |
@@ -5175,7 +5175,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | I'm good. | Добре съм. |
 | I'm staying here. | Оставам тук. |
 | I've had better. | Имал съм и по-добри. |
-| Iced or hot? | Със лед или гореща? |
+| Iced or hot? | С лед или гореща? |
 | Ignorance is bliss. | Невежеството е блаженство. |
 | Is it gonna rain? | Ще вали ли? |
 | Is that legal? | Това законно ли е? |
@@ -5199,7 +5199,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Mailboxes are steel stomachs. | Пощенските кутии са стоманени стомаси. |
 | Make it snappy! | По-бързо! |
 | Mango please! | Манго, моля! |
-| Manhattanites walk sideways. | Манхатънци ходят странично. |
+| Manhattanites walk sideways. | Манхатънци ходят настрани. |
 | Manhole covers are portals. | Капаците на шахтите са портали. |
 | Manhole covers are secret doors. | Капаците на шахтите са тайни врати. |
 | Manholes breathe city dreams. | Шахтите дишат мечтите на града. |
@@ -5236,7 +5236,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Not a mustard fan. | Не си падам по горчицата. |
 | Not going anywhere. | Не отивам никъде. |
 | Not hungry. | Не съм гладен. |
-| Not into sports. | Не падам по спорта. |
+| Not into sports. | Не си падам по спорта. |
 | Not my genre. | Не е моят жанр. |
 | Not thirsty. | Не съм жаден. |
 | Not today. | Не днес. |
@@ -5256,7 +5256,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Perfect snack! | Идеална закуска! |
 | Pigeons are city diplomats. | Гълъбите са дипломатите на града. |
 | Pigeons are government drones. | Гълъбите са правителствени дронове. |
-| Pigeons hold grudges. | Гълъбите тарят злоба. |
+| Pigeons hold grudges. | Гълъбите таят злоба. |
 | Pigeons hold staff meetings on ledges. | Гълъбите правят събрания по перваите. |
 | Pigeons invented WiFi. | Гълъбите изобретиха WiFi. |
 | Pigeons own this city. | Гълъбите притежават този град. |
@@ -5336,13 +5336,13 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Thorns scare me. | Тръните ме плашат. |
 | Tie me up! | Завържи ми една! |
 | Today's headlines! | Днешните заглавия! |
-| Too brainy for me. | Прекалено мозъчно за мен. |
+| Too brainy for me. | Прекалено умно за мен. |
 | Too exotic for me. | Прекалено екзотично за мен. |
 | Too expensive. | Твърде скъпо. |
 | Too full. | Твърде сит. |
 | Too knotty for me. | Прекалено заплетено за мен. |
 | Too messy to eat. | Прекалено цапащо за ядене. |
-| Too pricey. | Твърде солено. |
+| Too pricey. | Твърде скъпо. |
 | Too sour. | Прекалено кисело. |
 | Too sweet for me. | Прекалено сладко за мен. |
 | Too tall for my apartment. | Прекалено високо за апартамента ми. |
@@ -5361,7 +5361,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Walls whisper at night. | Стените шепнат нощем. |
 | Want a hot dog? | Искаш ли хот дог? |
 | Want a slice? | Искаш ли парче? |
-| Warm and chewy! | Топло и дъвчащо! |
+| Warm and chewy! | Топло и дъвчливо! |
 | Watching my carbs. | Внимавам с въглехидратите. |
 | Water towers wear hats. | Водните кули носят шапки. |
 | Watermelon cooler? | Разхладителна напитка с диня? |
@@ -5401,7 +5401,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Airport? Midtown? | Аеропорт? Центр? |
 | All the way up! | Аж до самого верху! |
 | Allergic. | У мене алергія. |
-| Allergies. | Алергії. |
+| Allergies. | Алергія. |
 | Alleyways whisper old gossip. | Провулки шепочуть старі плітки. |
 | Already ate. | Вже поїв. |
 | An apple a day is enough. | Одного яблука на день досить. |
@@ -5486,7 +5486,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Full already. | Я вже наївся. |
 | Giant pretzel! | Гігантський крендель! |
 | Give me one! | Дай мені один! |
-| Going uptown? | Їдеш у верхню частину? |
+| Going uptown? | Їдеш у верхній район? |
 | Good luck today. | Успіху сьогодні. |
 | Got to run. | Мушу бігти. |
 | Gravity is just a suggestion. | Гравітація — лише пропозиція. |
@@ -5651,8 +5651,8 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | So trendy! | Так модно! |
 | Soft pretzel, warm! | М'який крендель, теплий! |
 | Sounds great! | Звучить чудово! |
-| Sounds intense. | Звучить інтенсивно. |
-| Sounds refreshing! | Звучить освіжаюче! |
+| Sounds intense. | Звучить напружено. |
+| Sounds refreshing! | Звучить освіжно! |
 | Spoons are just tiny shovels. | Ложки — це просто маленькі лопати. |
 | Sports section? | Спортивний розділ? |
 | Squirrels are spies. | Білки — шпигуни. |
@@ -5723,7 +5723,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Warm and chewy! | Тепле й тягуче! |
 | Watching my carbs. | Стежу за вуглеводами. |
 | Water towers wear hats. | Водонапірні вежі носять капелюхи. |
-| Watermelon cooler? | Кавуновий освіжник? |
+| Watermelon cooler? | Кавуновий коктейль? |
 | Watermelon slice? | Скибка кавуна? |
 | Weather forecast? | Прогноз погоди? |
 | What a deal! | Оце вигода! |
@@ -5755,7 +5755,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | A mix please! | Ένα μείγμα, παρακαλώ! |
 | A rose for you? | Ένα τριαντάφυλλο για σένα; |
 | Absolutely! | Απολύτως! |
-| Açaí smoothie? | Σμούθι açaí; |
+| Açaí smoothie? | Σμούθι ασαΐ; |
 | Afraid of heights. | Φοβάμαι τα ύψη. |
 | Airport? Midtown? | Αεροδρόμιο; Κέντρο; |
 | All the way up! | Μέχρι πάνω πάνω! |
@@ -5879,7 +5879,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | I need a laugh! | Χρειάζομαι ένα γέλιο! |
 | I need that! | Αυτό το χρειάζομαι! |
 | I once befriended a fire hydrant. | Κάποτε έκανα φίλο έναν πυροσβεστικό κρουνό. |
-| I read online. | Διαβάζω online. |
+| I read online. | Διαβάζω στο διαδίκτυο. |
 | I speak fluent elevator music. | Μιλάω άπταιστα μουσική ασανσέρ. |
 | I'd love one! | Πολύ ευχαρίστως! |
 | I'll just look up. | Απλώς θα κοιτάξω ψηλά. |
@@ -6071,7 +6071,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Tropical blend! | Τροπικό μείγμα! |
 | Tropical fruit? | Τροπικά φρούτα; |
 | Tulips today! | Τουλίπες σήμερα! |
-| Twisted golden treat? | Ένα στριφτό χρυσό λιχουδιά; |
+| Twisted golden treat? | Μια στριφτή χρυσή λιχουδιά; |
 | Two for five dollars! | Δύο για πέντε δολάρια! |
 | Two please! | Δύο, παρακαλώ! |
 | Two slices for three! | Δύο κομμάτια για τρία! |
@@ -6295,7 +6295,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | My feet hurt. | כואבות לי הרגליים. |
 | My knees can predict rain. | הברכיים שלי יכולות לחזות גשם. |
 | My shadow walked away yesterday. | הצל שלי הלך לו אתמול. |
-| My socks are sentient. | הגרביים שלי בעלות תודעה. |
+| My socks are sentient. | הגרביים שלי בעלי תודעה. |
 | My weakness! | החולשה שלי! |
 | Need a cab? | צריך מונית? |
 | Need a caffeine boost? | צריך מנת קפאין? |
@@ -6333,11 +6333,11 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Perfect snack! | חטיף מושלם! |
 | Pigeons are city diplomats. | היונים הן הדיפלומטיות של העיר. |
 | Pigeons are government drones. | היונים הן רחפנים של הממשלה. |
-| Pigeons hold grudges. | ליונים שומרים טינה. |
-| Pigeons hold staff meetings on ledges. | ליונים עורכים ישיבות צוות על המדפים. |
-| Pigeons invented WiFi. | ליונים המציאו את ה-WiFi. |
-| Pigeons own this city. | ליונים שולטים בעיר הזאת. |
-| Pigeons run the government. | ליונים מנהלים את הממשלה. |
+| Pigeons hold grudges. | יונים נוטרות טינה. |
+| Pigeons hold staff meetings on ledges. | יונים עורכות ישיבות צוות על האדנים. |
+| Pigeons invented WiFi. | יונים המציאו את ה-WiFi. |
+| Pigeons own this city. | היונים שולטות בעיר הזאת. |
+| Pigeons run the government. | יונים מנהלות את הממשלה. |
 | Pineapple paradise? | גן עדן של אננס? |
 | Pop one in! | תזרוק אחד לפה! |
 | Potholes are urban constellations. | מהמורות הן קונסטלציות עירוניות. |
@@ -6439,7 +6439,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Want a hot dog? | רוצה נקניקייה? |
 | Want a slice? | רוצה פרוסה? |
 | Warm and chewy! | חם ונמיש! |
-| Watching my carbs. | שומר על הפחמימות. |
+| Watching my carbs. | נזהר עם הפחמימות. |
 | Water towers wear hats. | מגדלי המים חובשים כובעים. |
 | Watermelon cooler? | משקה אבטיח קר? |
 | Watermelon slice? | פרוסת אבטיח? |
@@ -6481,7 +6481,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Allergies. | الرجیاں۔ |
 | Alleyways whisper old gossip. | گلیاں پرانیاں گلاں سرگوشی کردیاں نیں۔ |
 | Already ate. | میں پہلاں ای کھا لیا اے۔ |
-| An apple a day is enough. | اک دن دا اک سیب کافی اے۔ |
+| An apple a day is enough. | دن دا اک سیب کافی اے۔ |
 | Apples, just picked! | سیب، ہنے ای توڑے نیں! |
 | Awnings are building eyelids. | چھجے عمارتاں دیاں پلکاں نیں۔ |
 | Banana bunch? | کیلیاں دا اک گُچھا؟ |
@@ -6497,7 +6497,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Bigger is better! | ودھیا اوہی جیہڑا وڈا ہووے! |
 | Bike lanes are thin rivers. | سائیکل لین پتلے دریا نیں۔ |
 | Blast me! | میرے اُتے زور لا! |
-| Bodegas are neighborhood living rooms. | محلے دیاں دکاناں محلے دے بیٹھک نیں۔ |
+| Bodegas are neighborhood living rooms. | محلے دیاں دکاناں محلے دیاں بیٹھکاں نیں۔ |
 | Both! | دوویں! |
 | Bridges hum lullabies. | پُل لوریاں گنگنا‏ندے نیں۔ |
 | Broadway tonight? | اَج رات براڈوے؟ |
@@ -6581,7 +6581,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | How sweet! | کِنا پیارا! |
 | Hungry? Grab a slice! | بھکھ لگی اے؟ اِک پیس چک لے! |
 | Hungry? Try one! | بھکھ لگی اے؟ اِک چکھ لے! |
-| Hydrants guard underground rivers. | ہائیڈرینٹ زمین ہیٹھلیاں ندیاں دی رکھوالی کردے نیں۔ |
+| Hydrants guard underground rivers. | ہائیڈرینٹ زمین ہیٹھلے دریاواں دی رکھوالی کردے نیں۔ |
 | I believe you! | مینوں یقین اے! |
 | I can hear colors. | میں رنگ سُݨ سکدا واں۔ |
 | I can smell it from here! | مینوں ایتھوں ای مہک آ رہی اے! |
@@ -6649,7 +6649,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Mustard or ketchup? | رائی یا کیچپ؟ |
 | My day is already bright. | میرا دن پہلوں ای روشن اے۔ |
 | My elbow speaks French. | میری کہنی فرانسیسی بولدی اے۔ |
-| My favorite flower! | میرا پسندیدہ پھل! |
+| My favorite flower! | میرا پسندیدہ پُھل! |
 | My favorite kind! | میری پسندیدہ قسم! |
 | My feet hurt. | میرے پیر دُکھدے نیں۔ |
 | My knees can predict rain. | میرے گوڈے مینہ دی پیشن گوئی کر سکدے نیں۔ |
@@ -6667,7 +6667,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | No bad news please. | کوئی بُری خبر نہ ہووے، جی۔ |
 | No rush. | کوئی کاہلی نئیں۔ |
 | No thanks. | نئیں، شکریہ۔ |
-| Nobody to give them to. | اے کسے نوں دین لئی کوئی نئیں۔ |
+| Nobody to give them to. | ایہناں نوں دین واسطے کوئی نئیں۔ |
 | Not a fan of green. | مینوں ہرا پسند نئیں۔ |
 | Not a mustard fan. | مینوں رائی پسند نئیں۔ |
 | Not going anywhere. | میں کِتے نئیں جا رہیا۔ |
@@ -6680,7 +6680,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Nowhere right now. | ہُنے کِتے نئیں۔ |
 | On my way! | میں آ رہیا واں! |
 | One red rose! | اک لال گلاب! |
-| One-way streets argue with themselves. | اک پاسے والیاں سڑکاں آپس وچ نئیں سگوں آپنے آپ نال بحث کردیاں نیں۔ |
+| One-way streets argue with themselves. | اک پاسے والیاں سڑکاں آپنے آپ نال بحث کردیاں نیں۔ |
 | Open mic night? | اوپن مائک نائٹ؟ |
 | Orange or mango? | مالٹا یا انب؟ |
 | Paradise found! | جنت لبھ پئی! |
@@ -6692,11 +6692,11 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Perfect snack! | بہترین ہلکا کھانا! |
 | Pigeons are city diplomats. | کبوتر شہر دے سفیر نیں۔ |
 | Pigeons are government drones. | کبوتر سرکاری ڈرون نیں۔ |
-| Pigeons hold grudges. | گُٹار کینہ رکھدے نیں۔ |
-| Pigeons hold staff meetings on ledges. | گُٹار کنّیاں تے سٹاف میٹنگاں کردے نیں۔ |
-| Pigeons invented WiFi. | گُٹار نے وائی فائی بنایا سی۔ |
-| Pigeons own this city. | ایہہ شہر گُٹاراں دا اے۔ |
-| Pigeons run the government. | حکومت گُٹار چلاندے نیں۔ |
+| Pigeons hold grudges. | کبوتر کینہ رکھدے نیں۔ |
+| Pigeons hold staff meetings on ledges. | کبوتر کنّیاں تے سٹاف میٹنگاں کردے نیں۔ |
+| Pigeons invented WiFi. | کبوتراں نے وائی فائی بنایا سی۔ |
+| Pigeons own this city. | ایہہ شہر کبوتراں دا اے۔ |
+| Pigeons run the government. | حکومت کبوتر چلاندے نیں۔ |
 | Pineapple paradise? | اناناس دی جنت؟ |
 | Pop one in! | اِک منہ وچ پا لے! |
 | Potholes are urban constellations. | ٹوئے شہری تارا منڈل نیں۔ |
@@ -6856,7 +6856,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Bigger is better! | ਜਿੰਨਾ ਵੱਡਾ, ਓਨਾ ਵਧੀਆ! |
 | Bike lanes are thin rivers. | ਸਾਈਕਲ ਲੇਨਾਂ ਪਤਲੀਆਂ ਨਦੀਆਂ ਨੇ। |
 | Blast me! | ਮੇਰੇ ਉੱਤੇ ਜ਼ੋਰ ਲਾ! |
-| Bodegas are neighborhood living rooms. | ਮੁਹੱਲੇ ਦੀਆਂ ਦੁਕਾਨਾਂ ਮੁਹੱਲੇ ਦੇ ਬੈਠਕ ਨੇ। |
+| Bodegas are neighborhood living rooms. | ਮੁਹੱਲੇ ਦੀਆਂ ਦੁਕਾਨਾਂ ਮੁਹੱਲੇ ਦੀਆਂ ਬੈਠਕਾਂ ਨੇ। |
 | Both! | ਦੋਵੇਂ! |
 | Bridges hum lullabies. | ਪੁਲ ਲੋਰੀਆਂ ਗੁਣਗੁਣਾਉਂਦੇ ਨੇ। |
 | Broadway tonight? | ਅੱਜ ਰਾਤ ਬ੍ਰਾਡਵੇ? |
@@ -7026,7 +7026,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | No bad news please. | ਕੋਈ ਬੁਰੀ ਖ਼ਬਰ ਨਾ ਹੋਵੇ, ਜੀ। |
 | No rush. | ਕੋਈ ਕਾਹਲੀ ਨਹੀਂ। |
 | No thanks. | ਨਹੀਂ, ਸ਼ੁਕਰੀਆ। |
-| Nobody to give them to. | ਇਹ ਕਿਸੇ ਨੂੰ ਦੇਣ ਲਈ ਕੋਈ ਨਹੀਂ। |
+| Nobody to give them to. | ਇਹਨਾਂ ਨੂੰ ਦੇਣ ਲਈ ਕੋਈ ਨਹੀਂ। |
 | Not a fan of green. | ਮੈਨੂੰ ਹਰਾ ਪਸੰਦ ਨਹੀਂ। |
 | Not a mustard fan. | ਮੈਨੂੰ ਰਾਈ ਪਸੰਦ ਨਹੀਂ। |
 | Not going anywhere. | ਮੈਂ ਕਿਤੇ ਨਹੀਂ ਜਾ ਰਿਹਾ। |
@@ -7193,7 +7193,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Absolutely! | पक्कै! |
 | Açaí smoothie? | अकाई स्मुदी? |
 | Afraid of heights. | अग्लो ठाउँसँग डर लाग्छ। |
-| Airport? Midtown? | विमानस्थल? सहर भित्र? |
+| Airport? Midtown? | विमानस्थल? मिडटाउन? |
 | All the way up! | एकदम माथिसम्म! |
 | Allergic. | एलर्जी छ। |
 | Allergies. | एलर्जी। |
@@ -7240,7 +7240,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Cream and sugar? | क्रिम र चिनी? |
 | Crosswalks are painted rivers. | जेब्रा क्रसिङहरू रङ्गाइएका नदीहरू हुन्। |
 | Crosswalks are the city's stitches. | पैदल बाटो सहरका टाँकाहरू हुन्। |
-| Crossword puzzle inside! | भित्र शब्दकोश पजल छ! |
+| Crossword puzzle inside! | भित्र शब्द पजल छ! |
 | Crunchy! | कुरकुरे! |
 | Culture time! | संस्कृतिको समय! |
 | Daisies and lilies! | डेजी र लिली! |
@@ -7268,12 +7268,12 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Fish have secret meetings. | माछाहरूका गोप्य बैठक हुन्छन्। |
 | Flowers brighten any day! | फूलले जुनसुकै दिन उज्यालो बनाउँछ! |
 | Flowers for a loved one? | कुनै प्रियजनका लागि फूल? |
-| Forks are just tiny pitchforks. | कांटाहरू त साना पन्जा मात्र हुन्। |
+| Forks are just tiny pitchforks. | काँटाहरू त साना खर्कुने काँटा मात्र हुन्। |
 | Fragrant bouquet? | सुगन्धित गुच्छा? |
 | Fresh brewed! | भर्खरै पकाएको! |
 | Fresh flowers? | ताजा फूल? |
 | Fresh fruit? | ताजा फलफूल? |
-| Fresh grapes? | ताजा अंगुर? |
+| Fresh grapes? | ताजा अङ्गुर? |
 | Fresh juice? | ताजा जुस? |
 | Fresh off the grill! | भर्खरै ग्रिलबाट निकालेको! |
 | Fresh out of the oven! | भर्खरै ओभनबाट निकालेको! |
@@ -7364,7 +7364,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Morning paper? | बिहानको पत्रिका? |
 | Morning pick-me-up? | बिहानको ताजगी? |
 | Museum pass? | संग्रहालयको पास? |
-| Mustard or ketchup? | रायो कि केचअप? |
+| Mustard or ketchup? | तोरीको चटनी कि केचअप? |
 | My day is already bright. | मेरो दिन पहिले नै उज्यालो छ। |
 | My elbow speaks French. | मेरो कुहिनोले फ्रेन्च बोल्छ। |
 | My favorite flower! | मेरो मनपर्ने फूल! |
@@ -7419,9 +7419,9 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Pop one in! | एउटा हालिहाल! |
 | Potholes are urban constellations. | खाल्डाहरू सहरी तारापुञ्ज हुन्। |
 | Pretzel knot? | प्रेट्जेलको गाँठो? |
-| Pretzel with mustard? | प्रेट्जेल रायतासँग? |
+| Pretzel with mustard? | तोरीको चटनीसँग प्रेट्जेल? |
 | Puddles are sky windows. | पोखरीहरू आकाशका झ्यालहरू हुन्। |
-| Purple tastes like Tuesday. | बैजनी रंगको स्वाद मङ्गलबार जस्तो छ। |
+| Purple tastes like Tuesday. | बैजनी रङको स्वाद मङ्गलबार जस्तो छ। |
 | Quick ride? | छिटो सवारी? |
 | Revolving doors are confused. | घुम्ने ढोकाहरू अलमलमा छन्। |
 | Ripe mangoes! | पाकेका आँपहरू! |
@@ -7457,7 +7457,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Stairwells echo yesterday's footsteps. | भर्‍याङका कोठाहरूले हिजोका पाइलाहरूको प्रतिध्वनि गर्छन्। |
 | Standing room only! | उभिने ठाउँ मात्र! |
 | Steam vents are the city yawning. | बाफका प्वालहरू सहरको हाई काढाइ हुन्। |
-| Step on it! | तेज़ चलाऊ! |
+| Step on it! | तेज चलाऊ! |
 | Stoops are front-row seats to life. | घरको अगाडिको भर्‍याङ जीवन हेर्ने अगिल्लो लहरको सिट हो। |
 | Stoplights blush at busy intersections. | व्यस्त चोकहरूमा बत्तीहरू लजाउँछन्। |
 | Storm drains sing at midnight. | वर्षाका नालीहरू मध्यरातमा गाउँछन्। |
@@ -7483,7 +7483,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | That's too much. | यो त धेरै भयो। |
 | The moon is following me. | चन्द्रमा मेरो पछि लागिरहेको छ। |
 | The thick one! | त्यो मोटो वाला! |
-| They deserve it! | उनीहरू यो योग्य छन्! |
+| They deserve it! | उनीहरू यसका योग्य छन्! |
 | They wilt too fast. | यी छिट्टै ओइलाउँछन्। |
 | They're lovely! | यी त साह्रै राम्रा छन्! |
 | Thin crust, just right! | पातलो क्रस्ट, एकदम ठीक! |
@@ -7518,8 +7518,8 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Warm and chewy! | न्यानो र चपाउनयोग्य! |
 | Watching my carbs. | मेरो कार्बमा ध्यान दिँदै छु। |
 | Water towers wear hats. | पानीका ट्यांकीहरूले टोपी लगाउँछन्। |
-| Watermelon cooler? | खरबुजाको शीतल पेय? |
-| Watermelon slice? | खरबुजाको एक टुक्रा? |
+| Watermelon cooler? | तरबुजाको शीतल पेय? |
+| Watermelon slice? | तरबुजाको एक टुक्रा? |
 | Weather forecast? | मौसमको पूर्वानुमान? |
 | What a deal! | कस्तो राम्रो सौदा! |
 | What happened? | के भयो? |
@@ -7655,7 +7655,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Hot and ready! | Panas dan siap! |
 | Hot coffee? | Kopi panas? |
 | Hot from the oven! | Panas dari ketuhar! |
-| How sweet! | Comelnya! |
+| How sweet! | Baiknya! |
 | Hungry? Grab a slice! | Lapar? Ambil sekeping! |
 | Hungry? Try one! | Lapar? Cuba satu! |
 | Hydrants guard underground rivers. | Pili bomba mengawal sungai bawah tanah. |
@@ -7734,7 +7734,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | My socks are sentient. | Stoking saya hidup berakal. |
 | My weakness! | Kelemahan saya! |
 | Need a cab? | Perlukan teksi? |
-| Need a caffeine boost? | Perlukan tendangan kafein? |
+| Need a caffeine boost? | Perlukan suntikan kafein? |
 | Need a ride? | Perlukan tumpang? |
 | Neither, thanks. | Tak kedua-duanya, terima kasih. |
 | Neon signs are electric poetry. | Papan tanda neon ialah puisi elektrik. |
@@ -7804,9 +7804,9 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | So juicy! | Berairnya! |
 | So trendy! | Sangat trendi! |
 | Soft pretzel, warm! | Pretzel lembut, panas! |
-| Sounds great! | Bunyi hebat! |
-| Sounds intense. | Bunyi mencabar. |
-| Sounds refreshing! | Bunyi menyegarkan! |
+| Sounds great! | Bunyinya hebat! |
+| Sounds intense. | Bunyinya mencabar. |
+| Sounds refreshing! | Bunyinya menyegarkan! |
 | Spoons are just tiny shovels. | Sudu cuma penyodok kecil. |
 | Sports section? | Ruangan sukan? |
 | Squirrels are spies. | Tupai ialah perisik. |
@@ -7918,7 +7918,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Alleyways whisper old gossip. | Vichochoro hunong'oneza umbea wa zamani. |
 | Already ate. | Nimeshakula. |
 | An apple a day is enough. | Tofaa moja kwa siku linatosha. |
-| Apples, just picked! | Matofaa, mapya yamekatwa! |
+| Apples, just picked! | Matofaa, yamechumwa sasa hivi! |
 | Awnings are building eyelids. | Vivuli vya majengo ni kope za majengo. |
 | Banana bunch? | Mkungu wa ndizi? |
 | Beautiful bouquet? | Shada zuri la maua? |
@@ -7926,7 +7926,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Benches judge everyone. | Viti vya benchi huhukumu kila mtu. |
 | Berry blast? | Mlipuko wa beri? |
 | Best coffee on the block! | Kahawa bora zaidi mtaani! |
-| Best dogs in the city! | Soseji bora zaidi jijini! |
+| Best dogs in the city! | Hotdog bora zaidi jijini! |
 | Best pizza in New York! | Pizza bora zaidi New York! |
 | Best pretzels in town! | Pretzel bora zaidi mjini! |
 | Best views! | Mandhari bora zaidi! |
@@ -7951,15 +7951,15 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Clouds taste like nothing. | Mawingu hayana ladha yoyote. |
 | Coffee to go? | Kahawa ya kuchukua? |
 | Comedy show? | Onyesho la vichekesho? |
-| Comic strips today! | Vichekesho vya picha leo! |
-| Comics aren't for me. | Vichekesho vya picha si vyangu. |
+| Comic strips today! | Katuni leo! |
+| Comics aren't for me. | Katuni si zangu. |
 | Corner stores hold the fabric of neighborhoods. | Maduka ya pembeni hushikilia mshono wa mitaa. |
 | Count me in! | Niandikishe na mimi! |
 | Cream and sugar? | Krimu na sukari? |
 | Crosswalks are painted rivers. | Vivuko vya watembea kwa miguu ni mito iliyochorwa. |
 | Crosswalks are the city's stitches. | Vivuko vya watembea kwa miguu ni mishono ya jiji. |
 | Crossword puzzle inside! | Chemsha bongo ya maneno ndani! |
-| Crunchy! | Krispi! |
+| Crunchy! | Krakakra! |
 | Culture time! | Wakati wa utamaduni! |
 | Daisies and lilies! | Daisy na yungiyungi! |
 | Delivery trucks are metal elephants. | Malori ya uwasilishaji ni tembo wa chuma. |
@@ -7986,7 +7986,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Fish have secret meetings. | Samaki wana mikutano ya siri. |
 | Flowers brighten any day! | Maua hung'arisha siku yoyote! |
 | Flowers for a loved one? | Maua kwa mpendwa wako? |
-| Forks are just tiny pitchforks. | Uma ni nyenzo ndogo za kupandia tu. |
+| Forks are just tiny pitchforks. | Uma ni vyembe vidogo tu vya kupandia. |
 | Fragrant bouquet? | Shada lenye harufu nzuri? |
 | Fresh brewed! | Imetengenezwa upya! |
 | Fresh flowers? | Maua mabichi? |
@@ -8038,7 +8038,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | I'd love one! | Ningependa moja! |
 | I'll just look up. | Nitatazama juu tu. |
 | I'll pass. | Nitaachilia. |
-| I'll perform! | Nitaonyesha mimi! |
+| I'll perform! | Nitatumbuiza! |
 | I'll show love differently. | Nitaonyesha upendo kwa njia tofauti. |
 | I'll stand! | Nitasimama! |
 | I'll take it! | Nitachukua! |
@@ -8082,7 +8082,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Morning paper? | Gazeti la asubuhi? |
 | Morning pick-me-up? | Kichocheo cha asubuhi? |
 | Museum pass? | Tiketi ya makumbusho? |
-| Mustard or ketchup? | Haradali au kachumbari ya nyanya? |
+| Mustard or ketchup? | Haradali au kechapu? |
 | My day is already bright. | Siku yangu tayari ina mwanga. |
 | My elbow speaks French. | Kiwiko changu cha mkono kinasema Kifaransa. |
 | My favorite flower! | Ua ninalolipenda! |
@@ -8113,7 +8113,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Not thirsty. | Sina kiu. |
 | Not today. | Si leo. |
 | Not tonight. | Si usiku huu. |
-| Nowhere right now. | Popote sasa hivi. |
+| Nowhere right now. | Hakuna popote sasa hivi. |
 | On my way! | Niko njiani! |
 | One red rose! | Waridi moja jekundu! |
 | One-way streets argue with themselves. | Barabara za njia moja zinabishana zenyewe. |
@@ -8358,7 +8358,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Full already. | 我已經飽喇。 |
 | Giant pretzel! | 超大個椒鹽脆餅呀！ |
 | Give me one! | 畀個我啦！ |
-| Going uptown? | 去上城嗎？ |
+| Going uptown? | 去上城呀？ |
 | Good luck today. | 今日祝你好運。 |
 | Got to run. | 我要走喇。 |
 | Gravity is just a suggestion. | 地心吸力只係個建議。 |
@@ -8380,7 +8380,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | I believe you! | 我信你！ |
 | I can hear colors. | 我聽得到顏色㗎。 |
 | I can smell it from here! | 我喺度都聞到啦！ |
-| I collect invisible stamps. | 我收集睇唔到嘅郵票。 |
+| I collect invisible stamps. | 我儲緊啲睇唔到嘅郵票。 |
 | I don't know what that is. | 我唔知嗰啲係乜嘢。 |
 | I enjoy walking. | 我鍾意行路。 |
 | I know a shortcut! | 我知條捷徑！ |
@@ -8558,7 +8558,7 @@ Languages: Catalan (ca), Romanian (ro), Portuguese (European) (pt-PT), Dutch (nl
 | Thanks anyway. | 都係唔該晒。 |
 | That's perfect! | 咁就最啱啦! |
 | That's too much. | 咁太多喇。 |
-| The moon is following me. | 個月跟住我行。 |
+| The moon is following me. | 月光跟住我。 |
 | The thick one! | 要嗰條粗嘅! |
 | They deserve it! | 佢哋抵㗎! |
 | They wilt too fast. | 佢哋好快就謝㗎喇。 |

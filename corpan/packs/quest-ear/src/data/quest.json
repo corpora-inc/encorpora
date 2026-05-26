@@ -33,22 +33,6 @@
       ],
       "choices": [
         {
-          "id": "C00A",
-          "label": "Follow the hum into the market district",
-          "to": "H10_HUB_MARKET",
-          "effects": [
-            { "op": "add_set", "var": "visited", "value": "PATH_MARKET" }
-          ]
-        },
-        {
-          "id": "C00B",
-          "label": "Take the service tunnels below street level",
-          "to": "H20_HUB_TUNNELS",
-          "effects": [
-            { "op": "add_set", "var": "visited", "value": "PATH_TUNNELS" }
-          ]
-        },
-        {
           "id": "C00C",
           "label": "Head to the NYC streets",
           "to": "A01_NYC_STREET",

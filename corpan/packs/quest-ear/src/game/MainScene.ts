@@ -4,6 +4,7 @@ import type { HostApi } from "../sdk/types"
 import { StoryGraph } from "../engine/StoryGraph"
 import { validateQuest } from "../engine/validator"
 import questData from "../data/quest.json"
+import sceneText from "../data/sceneText.json"
 
 export class MainScene extends Phaser.Scene {
   private storyGraph!: StoryGraph
@@ -118,14 +119,14 @@ export class MainScene extends Phaser.Scene {
     const screenWidth = this.cameras.main.width
     let y = screenHeight * 0.15
 
-    // Render title
-    this.titleText.setText(this.currentScene.title)
+    // Render title (in the user's primary stack language)
+    this.titleText.setText(this.tr(this.currentScene.title))
     this.titleText.setPosition(screenWidth / 2, y)
     this.titleText.setOrigin(0.5, 0)
     y += this.titleText.height + 30
 
     // Render body text (each paragraph on a new line)
-    const bodyLines = this.currentScene.text.join("\n\n")
+    const bodyLines = this.currentScene.text.map((t) => this.tr(t)).join("\n\n")
     this.bodyText.setText(bodyLines)
     this.bodyText.setPosition(screenWidth / 2, y)
     this.bodyText.setOrigin(0.5, 0)
@@ -141,7 +142,7 @@ export class MainScene extends Phaser.Scene {
     for (let i = 0; i < availableChoices.length; i++) {
       const choice = availableChoices[i]
       const button = this.add
-        .text(screenWidth / 2, y, `> ${choice.label}`, {
+        .text(screenWidth / 2, y, `> ${this.tr(choice.label)}`, {
           fontSize: "16px",
           color: "#ffffff",
           fontFamily: '"Courier New", monospace',
@@ -210,19 +211,33 @@ export class MainScene extends Phaser.Scene {
     this.choiceButtons = []
   }
 
+  /** The learner's primary stack language (falls back to English). */
+  private primaryLang(): string {
+    return this.hostApi?.getStackConfig?.()?.languages?.[0] || "en"
+  }
+
+  /**
+   * Resolve a narrative string into the primary stack language using
+   * sceneText.json. Falls back primary → base code → en → the source string.
+   */
+  private tr(en: string): string {
+    const map = (sceneText as Record<string, Record<string, string>>)[en]
+    if (!map) return en
+    const lang = this.primaryLang()
+    return map[lang] || map[lang.split("-")[0]] || map.en || en
+  }
+
   private speakScene() {
     if (!this.hostApi?.speak || !this.currentScene) {
       return
     }
 
-    // Get user's language from stack config
-    const stackConfig = this.hostApi.getStackConfig?.()
-    const lang = stackConfig?.languages?.[0] || "en"
-
-    // Combine title and body text
-    const fullText = [this.currentScene.title, ...this.currentScene.text].join(". ")
-
-    // Speak it
+    // Speak the scene in the primary stack language (text + voice matched).
+    const lang = this.primaryLang()
+    const fullText = [
+      this.tr(this.currentScene.title),
+      ...this.currentScene.text.map((t) => this.tr(t)),
+    ].join(". ")
     this.hostApi.speak(lang, fullText)
   }
 }

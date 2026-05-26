@@ -1,0 +1,47 @@
+{
+  "The Quest for the All-Hearing Ear": {
+    "fi": "Etsintä kaikenkuulevan korvan perään",
+    "hu": "A Mindenhalló Fül utáni kutatás",
+    "lt": "Visa girdinčios ausies paieška",
+    "pl": "Poszukiwanie Wszechsłyszącego Ucha",
+    "cs": "Výprava za Vševnímajícím uchem",
+    "sk": "Výprava za Všepočujúcim uchom",
+    "sl": "Iskanje Vsezaznavnega ušesa",
+    "hr": "Potraga za Svečujućim uhom",
+    "sr": "Потрага за Свечујућим ухом",
+    "bg": "Търсенето на Всечуващото ухо",
+    "uk": "Пошук Всечуйного вуха",
+    "ru": "Поиски Всеслышащего уха",
+    "el": "Η Αναζήτηση του Παντακούοντος Αυτιού"
+  },
+  "You are on a quest for the legendary and mysterious All-Hearing Ear. You must navigate NYC and hunt for clues, keeping your energy level up by talking with vendors and other characters along the way in the target language of your choosing.": {
+    "fi": "Olet etsimässä legendaarista ja salaperäistä kaikenkuulevaa korvaa. Sinun on liikuttava ympäri New Yorkia ja etsittävä johtolankoja sekä pidettävä energiatasosi yllä juttelemalla matkan varrella myyjien ja muiden hahmojen kanssa valitsemallasi kohdekielellä.",
+    "hu": "A legendás és titokzatos Mindenhalló Fül nyomába eredtél. Be kell járnod New Yorkot, nyomok után kutatva, és fenn kell tartanod az energiaszintedet úgy, hogy útközben az árusokkal és más szereplőkkel beszélgetsz az általad választott célnyelven.",
+    "lt": "Tu ieškai legendinės ir paslaptingos visa girdinčios ausies. Turi keliauti po Niujorką ir ieškoti užuominų, palaikydamas savo energijos lygį, pakeliui kalbėdamasis su prekeiviais ir kitais veikėjais tavo pasirinkta mokoma kalba.",
+    "pl": "Wyruszasz na poszukiwanie legendarnego i tajemniczego Wszechsłyszącego Ucha. Musisz przemierzać Nowy Jork i tropić wskazówki, utrzymując poziom energii poprzez rozmowy z handlarzami i innymi postaciami po drodze w wybranym przez siebie języku docelowym.",
+    "cs": "Vydáváš se na výpravu za legendárním a tajemným Vševnímajícím uchem. Musíš procházet New Yorkem a pátrat po stopách, přičemž si udržuješ hladinu energie tím, že cestou mluvíš s prodavači a dalšími postavami ve zvoleném cílovém jazyce.",
+    "sk": "Vydávaš sa na výpravu za legendárnym a tajomným Všepočujúcim uchom. Musíš sa pohybovať po New Yorku a pátrať po stopách, pričom si udržiavaš úroveň energie tým, že sa cestou rozprávaš s predavačmi a ďalšími postavami vo zvolenom cieľovom jazyku.",
+    "sl": "Podajaš se na iskanje legendarnega in skrivnostnega Vsezaznavnega ušesa. Premikati se moraš po New Yorku in iskati namige ter ohranjati svojo raven energije s pogovori s prodajalci in drugimi liki na poti v izbranem ciljnem jeziku.",
+    "hr": "Krenuo si u potragu za legendarnim i tajanstvenim Svečujućim uhom. Moraš se kretati New Yorkom i tragati za tragovima, održavajući razinu energije razgovarajući usput s prodavačima i drugim likovima na ciljnom jeziku po vlastitom izboru.",
+    "sr": "Кренуо си у потрагу за легендарним и тајанственим Свечујућим ухом. Мораш да се крећеш Њујорком и трагаш за траговима, одржавајући ниво енергије разговарајући успут са продавцима и другим ликовима на циљном језику по свом избору.",
+    "bg": "Тръгнал си да търсиш легендарното и загадъчно Всечуващо ухо. Трябва да обикаляш Ню Йорк и да търсиш улики, поддържайки нивото на енергията си, като разговаряш с продавачи и други герои по пътя на избрания от теб целеви език.",
+    "uk": "Ти вирушаєш на пошуки легендарного й загадкового Всечуйного вуха. Тобі доведеться мандрувати Нью-Йорком і шукати підказки, підтримуючи рівень своєї енергії, спілкуючись дорогою з торговцями та іншими персонажами обраною тобою цільовою мовою.",
+    "ru": "Ты отправляешься на поиски легендарного и загадочного Всеслышащего уха. Тебе предстоит странствовать по Нью-Йорку и искать подсказки, поддерживая уровень энергии, разговаривая по пути с торговцами и другими персонажами на выбранном тобой изучаемом языке.",
+    "el": "Βρίσκεσαι σε μια αναζήτηση του θρυλικού και μυστηριώδους Παντακούοντος Αυτιού. Πρέπει να περιπλανηθείς στη Νέα Υόρκη και να κυνηγήσεις στοιχεία, διατηρώντας το επίπεδο της ενέργειάς σου μιλώντας με πωλητές και άλλους χαρακτήρες στην πορεία στη γλώσσα-στόχο της επιλογής σου."
+  },
+  "Head to the NYC streets": {
+    "fi": "Suuntaa New Yorkin kaduille",
+    "hu": "Indulj New York utcáira",
+    "lt": "Patrauk į Niujorko gatves",
+    "pl": "Wyrusz na ulice Nowego Jorku",
+    "cs": "Vyraz do ulic New Yorku",
+    "sk": "Vyraz do ulíc New Yorku",
+    "sl": "Odpravi se na ulice New Yorka",
+    "hr": "Zaputi se na ulice New Yorka",
+    "sr": "Запути се на улице Њујорка",
+    "bg": "Отправи се по улиците на Ню Йорк",
+    "uk": "Вирушай на вулиці Нью-Йорка",
+    "ru": "Отправляйся на улицы Нью-Йорка",
+    "el": "Βγες στους δρόμους της Νέας Υόρκης"
+  }
+}
