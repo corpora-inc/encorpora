@@ -183,6 +183,16 @@ export class ActionScene extends Phaser.Scene {
   // Hecklers hold off until the player has progressed past the first few NPCs.
   private readonly HECKLER_START_X = 2600
 
+  // Response panel layout (shared by render + touch hit-testing) and tap state.
+  private confirmArmedIndex = -1
+  private armHintText?: Phaser.GameObjects.Text
+  private tiltLabel?: Phaser.GameObjects.Text
+  private readonly PANEL_X = 648
+  private readonly PANEL_Y = 280
+  private readonly OPT_W = 196
+  private readonly OPT_H = 48
+  private readonly OPT_SPACING = 58
+
   // Atmosphere
   private moon!: Phaser.GameObjects.Container
   private starLayer!: Phaser.GameObjects.Container
@@ -216,6 +226,7 @@ export class ActionScene extends Phaser.Scene {
     this.touchDir = 0
     this.tiltDir = 0
     this.tiltEnabled = false
+    this.confirmArmedIndex = -1
 
     // Read languages from host API
     this.hostApi = (globalThis as any).__questEarHostApi ?? null
@@ -291,8 +302,16 @@ export class ActionScene extends Phaser.Scene {
     this.createResponsePanel()
     this.createTouchControls()
 
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.disableTilt())
-    this.events.once(Phaser.Scenes.Events.DESTROY, () => this.disableTilt())
+    // Single tap handler for ALL fixed UI — hit-tested in screen coords so it
+    // works regardless of camera scroll (per-object setInteractive does not).
+    this.input.on("pointerdown", this.onPointerDown, this)
+
+    const cleanup = () => {
+      this.disableTilt()
+      this.input.off("pointerdown", this.onPointerDown, this)
+    }
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, cleanup)
+    this.events.once(Phaser.Scenes.Events.DESTROY, cleanup)
 
     // Start spawning hecklers.
     this.scheduleHeckler()
@@ -378,23 +397,21 @@ export class ActionScene extends Phaser.Scene {
   // --------------- TOUCH / TILT CONTROLS ---------------
 
   private createExitButton() {
-    const bg = this.add
-      .circle(762, 40, 22, 0x000000, 0.5)
+    // Visual only — tap handled in onPointerDown (screen-coord hit-test).
+    this.add
+      .circle(762, 40, 24, 0x000000, 0.5)
       .setStrokeStyle(2, 0xffffff)
       .setScrollFactor(0)
       .setDepth(200)
-      .setInteractive({ useHandCursor: true })
-    const x = this.add
+    this.add
       .text(762, 40, "✕", { fontSize: "26px", color: "#ffffff", fontFamily: "sans-serif" })
       .setOrigin(0.5)
       .setScrollFactor(0)
       .setDepth(201)
-    bg.on("pointerover", () => x.setColor("#ff4444"))
-    bg.on("pointerout", () => x.setColor("#ffffff"))
-    bg.on("pointerdown", () => {
-      this.hostApi?.stopSpeech?.()
-      window.dispatchEvent(new CustomEvent("corpan:exit"))
-    })
+  }
+
+  private exitHit(x: number, y: number): boolean {
+    return Math.abs(x - 762) <= 30 && Math.abs(y - 40) <= 30
   }
 
   private createTouchControls() {
@@ -429,6 +446,7 @@ export class ActionScene extends Phaser.Scene {
       .setVisible(false)
 
     // Optional tilt-to-move toggle (only when the device reports orientation support).
+    // Visual only — tap handled in onPointerDown.
     if (typeof DeviceOrientationEvent !== "undefined") {
       const tc = this.add.container(118, 30).setScrollFactor(0).setDepth(130)
       const tbg = this.add.rectangle(0, 0, 160, 30, 0x000000, 0.5).setStrokeStyle(1, 0x00ff41)
@@ -441,16 +459,67 @@ export class ActionScene extends Phaser.Scene {
         .setOrigin(0.5)
       tc.add(tbg)
       tc.add(tt)
-      tbg.setInteractive({ useHandCursor: true })
-      tbg.on("pointerdown", () => {
-        if (this.tiltEnabled) {
-          this.disableTilt()
-          tt.setText("⤺ Tilt: off")
-        } else {
-          this.requestTilt(() => tt.setText("⤺ Tilt: on"))
-        }
-      })
+      this.tiltLabel = tt
     }
+  }
+
+  private tiltHit(x: number, y: number): boolean {
+    return !!this.tiltLabel && Math.abs(x - 118) <= 84 && Math.abs(y - 30) <= 18
+  }
+
+  private toggleTilt() {
+    if (!this.tiltLabel) return
+    if (this.tiltEnabled) {
+      this.disableTilt()
+      this.tiltLabel.setText("⤺ Tilt: off")
+    } else {
+      this.requestTilt(() => this.tiltLabel?.setText("⤺ Tilt: on"))
+    }
+  }
+
+  /** Single screen-coord tap router for all camera-fixed UI (robust vs camera scroll). */
+  private onPointerDown(p: Phaser.Input.Pointer) {
+    const x = p.x
+    const y = p.y
+
+    if (this.exitHit(x, y)) {
+      this.hostApi?.stopSpeech?.()
+      window.dispatchEvent(new CustomEvent("corpan:exit"))
+      return
+    }
+    if (this.tiltHit(x, y)) {
+      this.toggleTilt()
+      return
+    }
+
+    if (this.interactionState === "interacting") {
+      const idx = this.optionAtPoint(x, y)
+      if (idx >= 0) {
+        if (idx === this.confirmArmedIndex) {
+          this.confirmResponse()
+        } else {
+          this.confirmArmedIndex = idx
+          this.selectedIndex = idx
+          this.updateResponseHighlight()
+        }
+      }
+      return
+    }
+
+    if (this.interactionState === "roaming" && this.smashBtn.visible) {
+      if (Math.abs(x - 400) <= 110 && Math.abs(y - 540) <= 26) this.trySmash()
+    }
+  }
+
+  /** Which reply row (0-2) the screen point falls in, or -1. Uses the panel's live x. */
+  private optionAtPoint(x: number, y: number): number {
+    if (!this.responsePanel.visible) return -1
+    const cx = this.responsePanel.x
+    for (let i = 0; i < 3; i++) {
+      const cy = this.responsePanel.y + (i - 1) * this.OPT_SPACING
+      if (Math.abs(x - cx) <= this.OPT_W / 2 && Math.abs(y - cy) <= this.OPT_H / 2) return i
+    }
+    return -1
   }
 
   /** Read active pointers against the bottom corners → -1 left / +1 right / 0 idle. */
@@ -629,40 +698,51 @@ export class ActionScene extends Phaser.Scene {
     this.activeNPC = null
     this.interactionState = "roaming"
     this.langLabel.setVisible(false)
+    this.confirmArmedIndex = -1
+    this.armHintText?.setVisible(false)
   }
 
   // --------------- RESPONSE PANEL ---------------
 
   private createResponsePanel() {
-    this.responsePanel = this.add.container(850, 280).setScrollFactor(0)
+    this.responsePanel = this.add.container(this.PANEL_X, this.PANEL_Y).setScrollFactor(0)
     this.responsePanel.setVisible(false)
     this.responsePanel.setDepth(100)
 
-    const panelBg = this.add.rectangle(0, 0, 160, 180, 0x000000, 0.9).setStrokeStyle(2, 0x00ff41)
+    const panelH = this.OPT_SPACING * 3 + 34
+    const panelBg = this.add
+      .rectangle(0, 0, this.OPT_W + 20, panelH, 0x000000, 0.9)
+      .setStrokeStyle(2, 0x00ff41)
     this.responsePanel.add(panelBg)
 
     for (let i = 0; i < 3; i++) {
-      const optContainer = this.add.container(0, -50 + i * 52)
-      const optBg = this.add.rectangle(0, 0, 140, 42, 0x1a1a2e).setStrokeStyle(1, 0x444444)
+      const optContainer = this.add.container(0, (i - 1) * this.OPT_SPACING)
+      const optBg = this.add.rectangle(0, 0, this.OPT_W, this.OPT_H, 0x1a1a2e).setStrokeStyle(1, 0x444444)
       optContainer.add(optBg)
       const optText = this.add
         .text(0, 0, "", {
-          fontSize: "12px",
+          fontSize: "13px",
           color: "#ffffff",
           fontFamily: '"Courier New", monospace',
-          wordWrap: { width: 125 },
+          wordWrap: { width: this.OPT_W - 22 },
+          align: "center",
         })
         .setOrigin(0.5)
       optContainer.add(optText)
-      optBg.setInteractive()
-      optBg.on("pointerdown", () => {
-        this.selectedIndex = i
-        this.updateResponseHighlight()
-        this.confirmResponse()
-      })
       this.responsePanel.add(optContainer)
       this.responseOptions.push(optContainer)
     }
+
+    // Footer hint shown once a row is armed (tap to select → tap again to confirm).
+    this.armHintText = this.add
+      .text(0, panelH / 2 - 12, "tap again to confirm ✓", {
+        fontSize: "11px",
+        color: "#ffd866",
+        fontFamily: '"Courier New", monospace',
+      })
+      .setOrigin(0.5)
+      .setVisible(false)
+    this.responsePanel.add(this.armHintText)
   }
 
   private showResponsePanel(npc: NPCInstance) {
@@ -675,16 +755,18 @@ export class ActionScene extends Phaser.Scene {
       text.setText(prefix + responseText)
     }
     this.selectedIndex = 0
+    this.confirmArmedIndex = -1
+    this.armHintText?.setVisible(false)
     this.updateResponseHighlight()
-    this.responsePanel.setX(850)
     this.responsePanel.setVisible(true)
-    this.tweens.add({ targets: this.responsePanel, x: 720, duration: 200, ease: "Power2" })
+    this.responsePanel.setX(this.PANEL_X + 220)
+    this.tweens.add({ targets: this.responsePanel, x: this.PANEL_X, duration: 200, ease: "Power2" })
   }
 
   private hideResponsePanel() {
     this.tweens.add({
       targets: this.responsePanel,
-      x: 850,
+      x: this.PANEL_X + 220,
       duration: 150,
       ease: "Power2",
       onComplete: () => this.responsePanel.setVisible(false),
@@ -696,16 +778,18 @@ export class ActionScene extends Phaser.Scene {
       const opt = this.responseOptions[i]
       const bg = opt.getAt(0) as Phaser.GameObjects.Rectangle
       const text = opt.getAt(1) as Phaser.GameObjects.Text
+      const armed = i === this.confirmArmedIndex
       if (i === this.selectedIndex) {
-        bg.setFillStyle(0x003300)
-        bg.setStrokeStyle(2, 0x00ff41)
-        text.setColor("#00ff41")
+        bg.setFillStyle(armed ? 0x006622 : 0x003300)
+        bg.setStrokeStyle(armed ? 3 : 2, armed ? 0xffd866 : 0x00ff41)
+        text.setColor(armed ? "#ffffff" : "#00ff41")
       } else {
         bg.setFillStyle(0x1a1a2e)
         bg.setStrokeStyle(1, 0x444444)
         text.setColor("#ffffff")
       }
     }
+    this.armHintText?.setVisible(this.confirmArmedIndex >= 0)
   }
 
   private handleResponseInput() {
@@ -911,8 +995,7 @@ export class ActionScene extends Phaser.Scene {
       .setOrigin(0.5)
     this.smashBtn.add(bg)
     this.smashBtn.add(label)
-    bg.setInteractive({ useHandCursor: true })
-    bg.on("pointerdown", () => this.trySmash())
+    // Tap handled in onPointerDown (screen-coord hit-test).
     this.tweens.add({
       targets: this.smashBtn,
       scale: { from: 1, to: 1.08 },

@@ -9,6 +9,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.5] - 2026-05-26 — touch-responsive replies + fixed-UI taps
+### Fixed
+- Replies / SMASH / exit / tilt taps now work after the camera scrolls. They were
+  `setScrollFactor(0)` + per-object `setInteractive`, whose hit areas are offset by camera
+  scroll — so taps missed once you walked. Now a single scene-level `pointerdown` hit-tests
+  screen coordinates (the same path that made movement reliable).
+### Changed
+- Replies are **tap-to-select → tap-again-to-confirm** (with a "tap again to confirm ✓" hint),
+  so the default-highlighted option can't be confirmed by accident. Bigger reply rows.
+  Keyboard ↑↓ + Enter still works on desktop.
+
 ## [0.3.4] - 2026-05-26 — mobile fixes (reliable movement, landscape-first)
 ### Fixed
 - Movement now polls touch pointers each frame against bottom-corner zones (+ multi-touch),
