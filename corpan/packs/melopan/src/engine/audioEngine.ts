@@ -38,10 +38,14 @@ export const createAudioEngine = (): AudioEngine => {
   // Effects' internal `wet` stays at 1 (pure wet output). The global
   // "Mix" knobs are the masterDelayWet / masterReverbWet gains. Per-channel
   // send levels (0..1) live on each channel's *Send gain. Off-routing = 0.
+  // `maxDelay` must accommodate slowest BPM × longest preset (4n. at
+  // BPM 40 = 2.25 s). The Tone default of 1 s would throw when the
+  // user picked a dotted quarter at slow tempo — black-screen in v0.2.5.
   const delay = new Tone.FeedbackDelay({
     delayTime: "8n",
     feedback: 0.35,
     wet: 1,
+    maxDelay: 3,
   })
   const masterDelayWet = new Tone.Gain(0).connect(masterVol)
   delay.connect(masterDelayWet)
@@ -207,10 +211,7 @@ export const createAudioEngine = (): AudioEngine => {
       }
     }
 
-    // Sync master reverb. `room` is a preset id → roomSize lookup; only
-    // push roomSize when the preset actually changes. `dampening` is
-    // 0..1 (0 bright, 1 dark) mapped to Freeverb's Hz range (1k..9k,
-    // inverted: more user-dampening = lower Hz = darker tail).
+    // Sync master reverb.
     const r = next.reverb
     if (r) {
       const preset = REVERB_ROOM_GRID.find((p) => p.id === r.room)

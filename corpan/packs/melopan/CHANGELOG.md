@@ -10,6 +10,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.2.6] - 2026-05-26
+
+### Fixed
+- **Black-screen crash on iOS when changing the delay time preset at
+  slower BPMs.** Root cause: `Tone.FeedbackDelay`'s default `maxDelay`
+  buffer is 1 s. At BPM 40 a dotted-quarter (`4n.`) wants 2.25 s, so
+  the setter threw and React unmounted. Bumped construction-time
+  `maxDelay` to 3 s, which covers every preset across the full
+  BPM 40–240 range with headroom.
+
 ## [0.2.5] - 2026-05-25
 
 ### Added
