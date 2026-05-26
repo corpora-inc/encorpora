@@ -32,15 +32,11 @@ const registerGame = () => {
       // Store hostApi globally for Phaser scenes to access
       ;(globalThis as any).__questEarHostApi = hostApi
 
-      // Inset the mount container by the device safe-area insets so the FIT-scaled
-      // canvas (and every in-canvas UI element) clears the notch / home indicator
-      // (iPhone) and camera cutouts (Android). Host page sets viewport-fit=cover.
+      // Landscape-first: let the FIT canvas use the full container. On phone aspect
+      // ratios FIT's letterbox bars already keep content clear of the notch / home
+      // indicator, so we don't pad the container (padding over-shrinks the view,
+      // especially the notch side in landscape).
       const prevStyle = container.getAttribute("style")
-      container.style.boxSizing = "border-box"
-      container.style.paddingTop = "env(safe-area-inset-top, 0px)"
-      container.style.paddingRight = "env(safe-area-inset-right, 0px)"
-      container.style.paddingBottom = "env(safe-area-inset-bottom, 0px)"
-      container.style.paddingLeft = "env(safe-area-inset-left, 0px)"
       container.style.background = "#0f0f23"
       container.style.overflow = "hidden"
       container.style.touchAction = "none" // touches drive the game, not page scroll/zoom

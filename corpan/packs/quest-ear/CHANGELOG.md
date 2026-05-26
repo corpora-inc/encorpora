@@ -9,6 +9,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-05-26 — mobile fixes (reliable movement, landscape-first)
+### Fixed
+- Movement now polls touch pointers each frame against bottom-corner zones (+ multi-touch),
+  so hold-to-move is reliable and survives finger drift — the ◀/▶ pads light up when active.
+- Hecklers hold off until the player has progressed past the first NPCs (no early pummeling).
+- Removed the heavy container safe-area padding (over-shrank the view, esp. landscape-left);
+  rely on the FIT letterbox, which already clears the notch at phone aspect ratios.
+### Added
+- Gentle "rotate to landscape for full screen" hint shown only in portrait (landscape-first).
+
 ## [0.3.3] - 2026-05-26 — mobile-playable (touch controls, safe areas)
 ### Added
 - On-screen hold buttons (◀ / ▶) to move; optional tilt-to-move ("Enable Motion",

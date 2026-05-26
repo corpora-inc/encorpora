@@ -174,6 +174,14 @@ export class ActionScene extends Phaser.Scene {
   private tiltDir = 0
   private tiltEnabled = false
   private orientationHandler?: (e: DeviceOrientationEvent) => void
+  private moveBgL?: Phaser.GameObjects.Arc
+  private moveBgR?: Phaser.GameObjects.Arc
+  private portraitHint?: Phaser.GameObjects.Text
+  // Move zones (camera-fixed game coords): bottom-left / bottom-right corners.
+  private readonly MOVE_ZONE_Y = 430
+  private readonly MOVE_ZONE_X = 240
+  // Hecklers hold off until the player has progressed past the first few NPCs.
+  private readonly HECKLER_START_X = 2600
 
   // Atmosphere
   private moon!: Phaser.GameObjects.Container
@@ -245,6 +253,7 @@ export class ActionScene extends Phaser.Scene {
     this.keyEnter = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
     this.keySpace = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
     this.keySmash = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+    this.input.addPointer(2) // allow up to 3 simultaneous touches (hold-move + tap)
 
     this.createEnergyBar()
 
@@ -290,6 +299,10 @@ export class ActionScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number) {
+    // Poll touch zones every frame (robust hold-to-move; multi-touch friendly).
+    this.touchDir = this.pollTouchDir()
+    this.updateMobileHud()
+
     if (this.interactionState === "roaming") {
       this.handleMovement()
       this.checkNPCProximity()
@@ -385,38 +398,43 @@ export class ActionScene extends Phaser.Scene {
   }
 
   private createTouchControls() {
-    const makeBtn = (x: number, label: string, dir: number) => {
-      const c = this.add.container(x, 545).setScrollFactor(0).setDepth(130)
-      const bg = this.add.circle(0, 0, 38, 0x000000, 0.4).setStrokeStyle(2, 0x00ff41)
+    // Visual move pads at the bottom corners. Input is POLLED in update() against
+    // bottom-corner zones (robust hold-to-move; survives finger drift + multi-touch),
+    // so these are just indicators that light up.
+    const pad = (x: number, label: string) => {
+      const c = this.add.container(x, 548).setScrollFactor(0).setDepth(130)
+      const bg = this.add.circle(0, 0, 40, 0x000000, 0.35).setStrokeStyle(2, 0x00ff41)
       const t = this.add
-        .text(0, 2, label, { fontSize: "34px", color: "#00ff41", fontFamily: "sans-serif" })
+        .text(0, 2, label, { fontSize: "36px", color: "#00ff41", fontFamily: "sans-serif" })
         .setOrigin(0.5)
       c.add(bg)
       c.add(t)
-      bg.setInteractive({ useHandCursor: true })
-      const press = () => {
-        this.touchDir = dir
-        bg.setFillStyle(0x004400, 0.6)
-      }
-      const release = () => {
-        if (this.touchDir === dir) this.touchDir = 0
-        bg.setFillStyle(0x000000, 0.4)
-      }
-      bg.on("pointerdown", press)
-      bg.on("pointerup", release)
-      bg.on("pointerout", release)
-      bg.on("pointerupoutside", release)
+      return bg
     }
-    makeBtn(64, "◀", -1)
-    makeBtn(736, "▶", 1)
+    this.moveBgL = pad(70, "◀")
+    this.moveBgR = pad(730, "▶")
+
+    // Gentle "rotate to landscape" hint — shown only while the screen is portrait.
+    this.portraitHint = this.add
+      .text(400, 72, "↻ Rotate to landscape for full screen", {
+        fontSize: "13px",
+        color: "#ffd866",
+        fontFamily: '"Courier New", monospace',
+        backgroundColor: "#000000a0",
+        padding: { x: 8, y: 4 },
+      })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(140)
+      .setVisible(false)
 
     // Optional tilt-to-move toggle (only when the device reports orientation support).
     if (typeof DeviceOrientationEvent !== "undefined") {
-      const tc = this.add.container(112, 30).setScrollFactor(0).setDepth(130)
-      const tbg = this.add.rectangle(0, 0, 150, 26, 0x000000, 0.5).setStrokeStyle(1, 0x00ff41)
+      const tc = this.add.container(118, 30).setScrollFactor(0).setDepth(130)
+      const tbg = this.add.rectangle(0, 0, 160, 30, 0x000000, 0.5).setStrokeStyle(1, 0x00ff41)
       const tt = this.add
         .text(0, 0, "⤺ Tilt: off", {
-          fontSize: "12px",
+          fontSize: "13px",
           color: "#00ff41",
           fontFamily: '"Courier New", monospace',
         })
@@ -432,6 +450,36 @@ export class ActionScene extends Phaser.Scene {
           this.requestTilt(() => tt.setText("⤺ Tilt: on"))
         }
       })
+    }
+  }
+
+  /** Read active pointers against the bottom corners → -1 left / +1 right / 0 idle. */
+  private pollTouchDir(): number {
+    const pts = [
+      this.input.pointer1,
+      this.input.pointer2,
+      this.input.pointer3,
+      this.input.mousePointer,
+    ]
+    let left = false
+    let right = false
+    for (const p of pts) {
+      if (!p || !p.isDown) continue
+      if (p.y < this.MOVE_ZONE_Y) continue
+      if (p.x < this.MOVE_ZONE_X) left = true
+      else if (p.x > 800 - this.MOVE_ZONE_X) right = true
+    }
+    return left && !right ? -1 : right && !left ? 1 : 0
+  }
+
+  /** Highlight the active move pad + toggle the portrait rotate hint. */
+  private updateMobileHud() {
+    const dir = this.moveIntent()
+    this.moveBgL?.setFillStyle(dir < 0 ? 0x007722 : 0x000000, dir < 0 ? 0.6 : 0.35)
+    this.moveBgR?.setFillStyle(dir > 0 ? 0x007722 : 0x000000, dir > 0 ? 0.6 : 0.35)
+    if (this.portraitHint) {
+      const portrait = window.innerHeight > window.innerWidth
+      if (this.portraitHint.visible !== portrait) this.portraitHint.setVisible(portrait)
     }
   }
 
@@ -1056,8 +1104,9 @@ export class ActionScene extends Phaser.Scene {
 
   private spawnHeckler() {
     if (!this.scene.isActive()) return
-    // Only heckle while the player is free to dodge.
-    if (this.interactionState !== "roaming") {
+    // Grace period: no hecklers until the player has gotten going (past the first
+    // few NPCs). Also only heckle while the player is free to dodge.
+    if (this.player.x < this.HECKLER_START_X || this.interactionState !== "roaming") {
       this.scheduleHeckler()
       return
     }
