@@ -236,6 +236,32 @@
       "offlineHero": "You're offline.",
       "offlineSub": "Phrase packs need internet — try later from Settings → Packs.",
       "offlineBanner": "Offline — selections install when reconnected."
+    },
+    "back": "Back",
+    "continue": "Continue",
+    "class": {
+      "title": "Who's this for?",
+      "subtitle": "We'll tailor Corpán to you. This stays on your device — we never send it anywhere.",
+      "learner": "I'm learning languages",
+      "learnerDesc": "Read and listen in the languages you're studying.",
+      "enjoyer": "I want to enjoy the content",
+      "enjoyerDesc": "Books, stories and games in your own language.",
+      "polyglot": "Both — I want it all",
+      "polyglotDesc": "Several languages at once, plus everything else.",
+      "kid": "It's for a kid",
+      "kidDesc": "Curated books and learning games for younger readers.",
+      "ageTitle": "How old is the reader?",
+      "ageUnder13": "Under 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Join the Corpanistas",
+      "subtitle": "Corpán Plus opens the whole library. Try the first part of any book free, forever.",
+      "everything": "Every book, every language — unlocked.",
+      "private": "No ads. Your data stays on your device.",
+      "team": "We're a small team and put every cent back into Corpán.",
+      "tryPlus": "Try Corpán Plus",
+      "continueFree": "Continue with the free tier"
     }
   },
   "socials": {
@@ -505,7 +531,10 @@
         "installed": "Nothing installed yet.",
         "cta": "Show all packs"
       }
-    }
+    },
+    "unlockWithPlus": "Unlock with Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Included with Plus"
   },
   "subscription": {
     "title": "Unlock everything",
@@ -580,5 +609,18 @@
     "purchaseNeedsInternet": "Reconnect to purchase.",
     "packCatalogTitle": "Pack catalog needs internet",
     "packCatalogSubtitle": "Your installed packs still work. Reconnect to browse more."
+  },
+  "paywall": {
+    "title": "Keep going with Corpán Plus",
+    "thanksTitle": "You're a Corpanista",
+    "thanksBody": "Thank you for supporting Corpán. Everything is unlocked.",
+    "bookSubhead": "You've reached the end of the free preview of {{title}}.",
+    "subhead": "Unlock every book in every language. No ads. Your data stays on your device.",
+    "pitch": "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing.",
+    "maybeLater": "Maybe later",
+    "continue": "Continue"
+  },
+  "streak": {
+    "title": "{{count}}-day streak"
   }
 }
