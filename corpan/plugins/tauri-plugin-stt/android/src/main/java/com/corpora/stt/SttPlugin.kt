@@ -21,6 +21,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -161,6 +163,20 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
 
     private val context: Context = activity.applicationContext
     private val scope = CoroutineScope(Dispatchers.IO + Job())
+
+    // Serializes ALL native whisper.cpp calls (init / transcribe / free).
+    // whisper.cpp + ggml share process-global lazy state — the f16/f32
+    // and type-trait tables, the CPU backend registry — initialized on
+    // first use with no internal locking. Two concurrent inits (trivial
+    // to trigger: the check-then-act in prepare()/installModel() lets two
+    // rapid calls both pass the "already loaded?" guard and both launch a
+    // load on the Dispatchers.IO pool) race on that state and SIGSEGV
+    // inside ggml_backend_sched_split_graph. A load racing a free, or a
+    // free racing an in-flight transcribe, is a use-after-free for the
+    // same reason. WhisperContext's own doc already promises callers
+    // serialize native access against in-flight calls; this mutex is that
+    // promise, kept on the only thing that can keep it — the caller.
+    private val nativeMutex = Mutex()
 
     @Volatile private var ctx: WhisperContext? = null
     @Volatile private var loadedModel: String? = null
@@ -327,17 +343,21 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     fun wipeModel(invoke: Invoke) {
         val args = invoke.parseArgs(WipeArgs::class.java)
         val name = args.model ?: DEFAULT_MODEL
-        if (loadedModel == name) {
-            ctx?.release()
-            ctx = null
-            loadedModel = null
+        scope.launch {
+            if (loadedModel == name) {
+                nativeMutex.withLock {
+                    if (loadedModel == name) {
+                        ctx?.release(); ctx = null; loadedModel = null
+                    }
+                }
+            }
+            modelFile(name).delete()
+            removeInstallMarker(name)
+            Log.i(TAG, "wiped model + marker: $name")
+            val ret = JSObject()
+            ret.put("wiped", true)
+            invoke.resolve(ret)
         }
-        modelFile(name).delete()
-        removeInstallMarker(name)
-        Log.i(TAG, "wiped model + marker: $name")
-        val ret = JSObject()
-        ret.put("wiped", true)
-        invoke.resolve(ret)
     }
 
     @Command
@@ -376,12 +396,18 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             return
         }
 
-        if (ctx != null) {
-            Log.i(TAG, "dropping previous ctx before install: $loadedModel")
-            ctx?.release(); ctx = null; loadedModel = null
-        }
-
         scope.launch {
+            // Free any resident model before the (slow) download to keep
+            // memory low. Serialized so it can't race an in-flight
+            // transcribe/load on another coroutine.
+            if (ctx != null) {
+                nativeMutex.withLock {
+                    if (ctx != null) {
+                        Log.i(TAG, "dropping previous ctx before install: $loadedModel")
+                        ctx?.release(); ctx = null; loadedModel = null
+                    }
+                }
+            }
             channel?.send(installEvent(name, "downloading", 0.0, null, null, null, null))
             val dest = modelFile(name)
             try {
@@ -392,7 +418,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 Log.i(TAG, "download finished: ${dest.absolutePath}")
                 channel?.send(installEvent(name, "verifying", 1.0, null, null, null, null))
                 Log.i(TAG, "running whisper.cpp load test: $name")
-                val loaded = WhisperContext.load(dest.absolutePath)
+                val loaded = nativeMutex.withLock { WhisperContext.load(dest.absolutePath) }
                 if (loaded != null) {
                     ctx = loaded; loadedModel = name
                     writeInstallMarker(name)
@@ -459,58 +485,70 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         }
 
         scope.launch {
-            val swappingModels = ctx != null && loadedModel != name
-            if (swappingModels) {
-                Log.i(TAG, "unloading previous model before swap: $loadedModel")
-                memSnapshot("swap-before-unload: $loadedModel → $name")
-                ctx?.release(); ctx = null; loadedModel = null
-                // Give the kernel a beat to reclaim freed pages and
-                // hint System.gc to clean up any JNI peer objects.
-                // Android can't force malloc to release like iOS can,
-                // but the GC + brief settle keeps `availMem` honest
-                // for the headroom gate below.
-                System.gc()
-                Thread.sleep(150)
-                memSnapshot("swap-after-settle")
-            }
-            val dest = modelFile(name)
-            if (!dest.exists()) {
-                val ret = JSObject()
-                ret.put("ready", false); ret.put("model", name)
-                ret.put("message", "Model not installed")
-                ret.put("code", "MODEL_NOT_INSTALLED")
-                invoke.resolve(ret); return@launch
-            }
+            nativeMutex.withLock {
+                // Re-check under the lock: the fast-path guard above runs
+                // before we acquire the mutex, so two near-simultaneous
+                // prepare() calls can both reach here. If a sibling call
+                // already loaded this exact model while we waited, just
+                // report ready instead of redundantly reloading.
+                if (ctx?.isAlive == true && loadedModel == name) {
+                    val ret = JSObject(); ret.put("ready", true); ret.put("model", name)
+                    invoke.resolve(ret); return@launch
+                }
 
-            // Memory-headroom gate. Mirror of the iOS check — refuse
-            // to load if `availMem` is below the model file size *
-            // 1.3 (working memory overhead). Pack routes
-            // INSUFFICIENT_MEMORY into a "restart the app" recovery
-            // overlay.
-            val headroomError = checkMemoryHeadroom(dest)
-            if (headroomError != null) {
-                Log.e(TAG, "load refused (INSUFFICIENT_MEMORY): $headroomError")
-                val ret = JSObject()
-                ret.put("ready", false); ret.put("model", name)
-                ret.put("message", headroomError)
-                ret.put("code", "INSUFFICIENT_MEMORY")
-                invoke.resolve(ret); return@launch
-            }
+                val swappingModels = ctx != null && loadedModel != name
+                if (swappingModels) {
+                    Log.i(TAG, "unloading previous model before swap: $loadedModel")
+                    memSnapshot("swap-before-unload: $loadedModel → $name")
+                    ctx?.release(); ctx = null; loadedModel = null
+                    // Give the kernel a beat to reclaim freed pages and
+                    // hint System.gc to clean up any JNI peer objects.
+                    // Android can't force malloc to release like iOS can,
+                    // but the GC + brief settle keeps `availMem` honest
+                    // for the headroom gate below.
+                    System.gc()
+                    Thread.sleep(150)
+                    memSnapshot("swap-after-settle")
+                }
+                val dest = modelFile(name)
+                if (!dest.exists()) {
+                    val ret = JSObject()
+                    ret.put("ready", false); ret.put("model", name)
+                    ret.put("message", "Model not installed")
+                    ret.put("code", "MODEL_NOT_INSTALLED")
+                    invoke.resolve(ret); return@launch
+                }
 
-            Log.i(TAG, "loading model from disk: $name")
-            val loaded = WhisperContext.load(dest.absolutePath)
-            if (loaded != null) {
-                ctx = loaded; loadedModel = name
-                writeInstallMarker(name)
-                Log.i(TAG, "loaded ok: $name")
-                val ret = JSObject(); ret.put("ready", true); ret.put("model", name)
-                invoke.resolve(ret)
-            } else {
-                val ret = JSObject()
-                ret.put("ready", false); ret.put("model", name)
-                ret.put("message", "Load failed — model file may be corrupt")
-                ret.put("code", "LOAD_FAILED")
-                invoke.resolve(ret)
+                // Memory-headroom gate. Mirror of the iOS check — refuse
+                // to load if `availMem` is below the model file size *
+                // 1.3 (working memory overhead). Pack routes
+                // INSUFFICIENT_MEMORY into a "restart the app" recovery
+                // overlay.
+                val headroomError = checkMemoryHeadroom(dest)
+                if (headroomError != null) {
+                    Log.e(TAG, "load refused (INSUFFICIENT_MEMORY): $headroomError")
+                    val ret = JSObject()
+                    ret.put("ready", false); ret.put("model", name)
+                    ret.put("message", headroomError)
+                    ret.put("code", "INSUFFICIENT_MEMORY")
+                    invoke.resolve(ret); return@launch
+                }
+
+                Log.i(TAG, "loading model from disk: $name")
+                val loaded = WhisperContext.load(dest.absolutePath)
+                if (loaded != null) {
+                    ctx = loaded; loadedModel = name
+                    writeInstallMarker(name)
+                    Log.i(TAG, "loaded ok: $name")
+                    val ret = JSObject(); ret.put("ready", true); ret.put("model", name)
+                    invoke.resolve(ret)
+                } else {
+                    val ret = JSObject()
+                    ret.put("ready", false); ret.put("model", name)
+                    ret.put("message", "Load failed — model file may be corrupt")
+                    ret.put("code", "LOAD_FAILED")
+                    invoke.resolve(ret)
+                }
             }
         }
     }
@@ -556,12 +594,16 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
 
     @Command
     fun unload(invoke: Invoke) {
-        if (ctx != null) {
-            Log.i(TAG, "unload — dropping in-memory ctx: $loadedModel")
-            ctx?.release(); ctx = null; loadedModel = null
+        scope.launch {
+            nativeMutex.withLock {
+                if (ctx != null) {
+                    Log.i(TAG, "unload — dropping in-memory ctx: $loadedModel")
+                    ctx?.release(); ctx = null; loadedModel = null
+                }
+            }
+            val ret = JSObject(); ret.put("unloaded", true)
+            invoke.resolve(ret)
         }
-        val ret = JSObject(); ret.put("unloaded", true)
-        invoke.resolve(ret)
     }
 
     // ---------------------------------------------------------------
@@ -713,15 +755,28 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             val nThreads = nThreadsOverride ?: WhisperCpuConfig.preferredThreadCount
             Log.i(TAG, "transcribe nThreads=$nThreads samples=${padded.size}" +
                 (if (overrides != null) " overrides=yes" else " overrides=(none)"))
-            val rc = withContext(Dispatchers.Default) {
-                whisperCtx.transcribe(padded, baseLang, nThreads, overrides)
+            // transcribe + collectResult must be one atomic region under
+            // the native mutex: a release()/swap on another coroutine
+            // between them would free the ctx we're reading results from.
+            // (transcribe() itself no-ops to rc=-1 if the ctx was freed
+            // before we acquired the lock — see WhisperContext.) Scoring
+            // and JSON below run on pure data, so they stay outside.
+            var rc: Int
+            var mergedOrNull: Merged? = null
+            nativeMutex.withLock {
+                rc = withContext(Dispatchers.Default) {
+                    whisperCtx.transcribe(padded, baseLang, nThreads, overrides)
+                }
+                if (rc == 0) mergedOrNull = collectResult(whisperCtx)
             }
             if (rc != 0) {
                 invoke.reject("Whisper transcribe failed (rc=$rc)", "TRANSCRIBE_FAILED", ex = null)
                 return@launch
             }
-
-            val merged = collectResult(whisperCtx)
+            val merged = mergedOrNull ?: run {
+                invoke.reject("Whisper transcribe produced no result", "TRANSCRIBE_FAILED", ex = null)
+                return@launch
+            }
             val normHeard = Scoring.normalize(merged.text, baseLang)
             val normExp = Scoring.normalize(expected, baseLang)
 
@@ -1008,7 +1063,19 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     override fun onDestroy() {
         scope.cancel()
         recorder?.release(); recorder = null
-        ctx?.release(); ctx = null
+        // Free the model only if no native op is in flight. A transcribe
+        // running on a Dispatchers.Default thread can't be interrupted by
+        // scope.cancel() (cancellation is cooperative; a blocking JNI call
+        // ignores it) and still holds nativeMutex — releasing the ctx
+        // underneath it would be a use-after-free, and blocking the main
+        // thread here to wait would ANR. If we can't grab the lock, skip
+        // the release: the process is tearing down and the OS reclaims it.
+        if (nativeMutex.tryLock()) {
+            try { ctx?.release() } finally { nativeMutex.unlock() }
+        } else {
+            Log.w(TAG, "onDestroy: native whisper op in flight — skipping ctx.release(); OS reclaims on teardown")
+        }
+        ctx = null
         super.onDestroy()
     }
 }

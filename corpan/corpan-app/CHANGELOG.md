@@ -7,7 +7,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.15.9] - 2026-05-22 — Parlometron: graceful unavailability on unsupported ABIs
+### Fixed
+
+- **Android: process-exit crash cluster (RenderThread/Surface/vendor
+  aborts on app close).** On Android, tao terminates the event loop with
+  `std::process::exit()`, which runs `__cxa_finalize` — every C++ static
+  destructor across `libhwui` / `libgui` / OEM vendor libs — on the loop
+  thread while the RenderThread, Mali GPU workers, and vendor singletons
+  are still live. That graceful C++ shutdown raced live threads and
+  produced a family of native aborts: `HandleUsingDestroyedMutex`
+  ("pthread_mutex_lock called on a destroyed mutex") in
+  `HardwareBitmapUploader::initialize` and hwui `CommonPool`,
+  `RefBase::incStrong` segfaults in `Surface::connect` /
+  `eglCreateWindowSurface`, and a crash in a Vivo camera vendor dtor.
+  Fixed by intercepting `RunEvent::ExitRequested` and calling
+  `api.prevent_exit()` on Android (`src-tauri/src/lib.rs`) — the loop
+  never reaches `ControlFlow::Exit`, so `process::exit` (and its
+  `__cxa_finalize` teardown) is unreachable on every `onDestroy` path
+  (back, swipe-from-recents, OOM kill, config recreate). The OS reclaims
+  the process via SIGKILL, which runs no destructors. Complementary:
+  the back button now `moveTaskToBack(true)` instead of `finish()`
+  (`MainActivity.kt`), keeping the Activity + WebView warm for instant
+  resume and avoiding needless teardown/recreate cycles.
 
 ### Fixed
 

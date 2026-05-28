@@ -17,7 +17,7 @@
 set -euo pipefail
 
 if [ $# -lt 1 ]; then
-  echo "usage: $0 <raw.mov> [--variants long,shorts,square,thumb]" >&2
+  echo "usage: $0 <raw.mov> [--variants long,shorts,square,thumb] [--square-bg blur|solid]" >&2
   exit 2
 fi
 
@@ -25,13 +25,30 @@ RAW="$1"
 shift || true
 
 VARIANTS="long,shorts,square,thumb"
+# Sidebar style for the 1:1 square variant. `blur` is the photo-portrait
+# halo trick (good for visually busy or colorful captures); `solid` paints
+# flat-color sidebars and is the right call when the source is a dark UI
+# screen — the blur of a near-uniform dark background just looks like a
+# muddy stain. SQUARE_BG_COLOR is honored when SQUARE_BG=solid; default
+# 0x252525 matches the Corpán app's dark surface so the seam disappears.
+SQUARE_BG="${SQUARE_BG:-blur}"
+SQUARE_BG_COLOR="${SQUARE_BG_COLOR:-0x252525}"
 while [ $# -gt 0 ]; do
   case "$1" in
     --variants) VARIANTS="$2"; shift 2 ;;
     --variants=*) VARIANTS="${1#*=}"; shift ;;
+    --square-bg) SQUARE_BG="$2"; shift 2 ;;
+    --square-bg=*) SQUARE_BG="${1#*=}"; shift ;;
+    --square-bg-color) SQUARE_BG_COLOR="$2"; shift 2 ;;
+    --square-bg-color=*) SQUARE_BG_COLOR="${1#*=}"; shift ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+
+case "$SQUARE_BG" in
+  blur|solid) ;;
+  *) echo "error: --square-bg must be 'blur' or 'solid' (got '$SQUARE_BG')" >&2; exit 2 ;;
+esac
 
 if [ ! -f "$RAW" ]; then
   echo "error: not a file: $RAW" >&2
@@ -171,21 +188,31 @@ if want_variant shorts; then
     "$OUT"
 fi
 
-# 3) square — 1:1, blur-pad to 1080x1080
+# 3) square — 1:1, sidebars to 1080x1080 (blur or solid; see --square-bg above)
 if want_variant square; then
   OUT="$BUILT_DIR/square.mp4"
-  echo "==> encoding square.mp4 (1080x1080, blur-pad)"
-  ffmpeg -y -hide_banner -loglevel warning -stats \
-    -i "$RAW" \
-    -filter_complex "
-      [0:v]scale=in_range=full:out_range=tv,format=yuv420p,split=2[bg][fg];
-      [bg]scale=1080:1080:force_original_aspect_ratio=increase,crop=1080:1080,boxblur=30:1[bgb];
-      [fg]scale=-2:1080[fgs];
-      [bgb][fgs]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p
-    " \
-    -c:v libx264 -crf 19 -preset slow -profile:v high \
-    $V_TAGS $A_OPTS \
-    "$OUT"
+  if [ "$SQUARE_BG" = "solid" ]; then
+    echo "==> encoding square.mp4 (1080x1080, solid sidebars $SQUARE_BG_COLOR)"
+    ffmpeg -y -hide_banner -loglevel warning -stats \
+      -i "$RAW" \
+      -vf "scale=in_range=full:out_range=tv,format=yuv420p,scale=-2:1080,pad=1080:1080:(ow-iw)/2:(oh-ih)/2:color=${SQUARE_BG_COLOR},setsar=1,format=yuv420p" \
+      -c:v libx264 -crf 19 -preset slow -profile:v high \
+      $V_TAGS $A_OPTS \
+      "$OUT"
+  else
+    echo "==> encoding square.mp4 (1080x1080, blur-pad)"
+    ffmpeg -y -hide_banner -loglevel warning -stats \
+      -i "$RAW" \
+      -filter_complex "
+        [0:v]scale=in_range=full:out_range=tv,format=yuv420p,split=2[bg][fg];
+        [bg]scale=1080:1080:force_original_aspect_ratio=increase,crop=1080:1080,boxblur=30:1[bgb];
+        [fg]scale=-2:1080[fgs];
+        [bgb][fgs]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p
+      " \
+      -c:v libx264 -crf 19 -preset slow -profile:v high \
+      $V_TAGS $A_OPTS \
+      "$OUT"
+  fi
 fi
 
 # 4) thumbnail — pick a non-black frame (~10% in, capped at 3s)

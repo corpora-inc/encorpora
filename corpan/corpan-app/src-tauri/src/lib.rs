@@ -1309,6 +1309,30 @@ pub fn run() {
             app.manage(db_state);
             Ok(())
         })
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|_app_handle, event| {
+            // Android: never perform a graceful process exit.
+            //
+            // tao terminates the event loop with std::process::exit()
+            // (tao android mod.rs:104), which runs __cxa_finalize — every
+            // C++ static destructor across libhwui / libgui / vendor libs —
+            // on the loop thread while the RenderThread, Mali GPU workers,
+            // and OEM singletons are still live. Those teardowns abort the
+            // process with "pthread_mutex_lock called on a destroyed mutex"
+            // (HardwareBitmapUploader, hwui CommonPool), segfault in
+            // Surface::connect on a dead BufferQueue, or crash inside a
+            // vendor dtor (e.g. Vivo camera singleton). tauri-runtime-wry
+            // raises RunEvent::ExitRequested before that exit (on any
+            // Activity onDestroy: back, swipe-from-recents, OOM kill,
+            // config recreate), so prevent_exit() keeps control_flow from
+            // ever reaching ControlFlow::Exit — process::exit stays
+            // unreachable. The process simply stays resident until Android
+            // reclaims it via SIGKILL, which runs no destructors and is
+            // race-free. Desktop is intentionally left to exit normally.
+            if let tauri::RunEvent::ExitRequested { api: _api, .. } = event {
+                #[cfg(target_os = "android")]
+                _api.prevent_exit();
+            }
+        });
 }
