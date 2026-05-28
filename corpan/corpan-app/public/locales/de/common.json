@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Nicht auf iOS",
     "appleNoVoiceTitle": "Apple bietet noch keine {{lang}}-Stimme an",
-    "appleNoVoiceBody": "Ein kurzer Hinweis an Apples Accessibility-Team hilft, den Bedarf zu zeigen. Auf Android funktioniert {{lang}} in der Zwischenzeit nativ."
+    "appleNoVoiceBody": "Ein kurzer Hinweis an Apples Accessibility-Team hilft, den Bedarf zu zeigen. Auf Android funktioniert {{lang}} in der Zwischenzeit nativ.",
+    "back": "Zurück",
+    "continue": "Weiter",
+    "class": {
+      "title": "Für wen ist das?",
+      "subtitle": "Wir passen Corpán an dich an. Deine Daten bleiben auf diesem Gerät – sie werden niemals gesendet.",
+      "learner": "Ich lerne Sprachen",
+      "learnerDesc": "Lies und höre in den Sprachen, die du lernst.",
+      "enjoyer": "Ich möchte Inhalte genießen",
+      "enjoyerDesc": "Bücher, Geschichten und Spiele in deiner Muttersprache.",
+      "polyglot": "Beides – ich möchte alles",
+      "polyglotDesc": "Mehrere Sprachen gleichzeitig, plus alles andere.",
+      "kid": "Es ist für ein Kind",
+      "kidDesc": "Ausgewählte Bücher und Lernspiele für jüngere Leser.",
+      "ageTitle": "Wie alt ist der Leser?",
+      "ageUnder13": "Unter 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Werde Teil der Corpanistas",
+      "subtitle": "Corpán Plus öffnet die gesamte Bibliothek. Den ersten Teil jedes Buches kannst du immer kostenlos testen.",
+      "everything": "Jedes Buch, jede Sprache – freigeschaltet.",
+      "private": "Keine Werbung. Deine Daten bleiben auf deinem Gerät.",
+      "team": "Wir sind ein kleines Team und investieren jeden Cent zurück in Corpán.",
+      "tryPlus": "Corpán Plus testen",
+      "continueFree": "Kostenlos weitermachen"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Phrasen-Pakete durchsuchen",
       "inactiveBadge": "Inaktiv",
       "moreActionsLabel": "Weitere Aktionen"
-    }
+    },
+    "unlockWithPlus": "Mit Corpán Plus freischalten",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "In Plus enthalten"
   },
   "subscription": {
     "title": "Alles freischalten",
@@ -538,5 +567,18 @@
     "maybeLater": "Vielleicht später",
     "empty": "Weitere Packs sind unterwegs — erkunde Corpán in der Zwischenzeit.",
     "offlineEmpty": "Verbinde dich mit dem Internet, um Packs zu entdecken — oder überspringe es vorerst."
+  },
+  "paywall": {
+    "title": "Mit Corpán Plus weitermachen",
+    "thanksTitle": "Du bist ein Corpanista",
+    "thanksBody": "Danke, dass du Corpán unterstützt. Alles ist freigeschaltet.",
+    "bookSubhead": "Du hast das Ende der kostenlosen Vorschau von {{title}} erreicht.",
+    "subhead": "Schalte jedes Buch in jeder Sprache frei. Keine Werbung. Deine Daten bleiben auf deinem Gerät.",
+    "pitch": "Wir sind ein kleines Team und investieren jeden Cent zurück in Corpán. Corpanistas halten die App werbefrei und fördern ihr Wachstum.",
+    "maybeLater": "Vielleicht später",
+    "continue": "Weiter"
+  },
+  "streak": {
+    "title": "{{count}}-Tage-Serie"
   }
 }

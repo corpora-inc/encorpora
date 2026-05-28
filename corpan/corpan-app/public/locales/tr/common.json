@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "iOS'ta değil",
     "appleNoVoiceTitle": "Apple henüz {{lang}} sesi sunmuyor",
-    "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor."
+    "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor.",
+    "back": "Geri",
+    "continue": "Devam",
+    "class": {
+      "title": "Kimler için?",
+      "subtitle": "Corpán'ı size göre kişiselleştireceğiz. Bilgileriniz cihazınızda kalır, asla paylaşılmaz.",
+      "learner": "Dil öğreniyorum",
+      "learnerDesc": "Öğrendiğiniz dillerde okuyun ve dinleyin.",
+      "enjoyer": "İçeriğin tadını çıkarmak istiyorum",
+      "enjoyerDesc": "Kendi dilinizde kitaplar, hikayeler ve oyunlar.",
+      "polyglot": "İkisi de — hepsini istiyorum",
+      "polyglotDesc": "Aynı anda birçok dil, artı diğer her şey.",
+      "kid": "Bir çocuk için",
+      "kidDesc": "Küçük okuyucular için özenle seçilmiş kitaplar ve eğitici oyunlar.",
+      "ageTitle": "Okuyucu kaç yaşında?",
+      "ageUnder13": "13 yaş altı",
+      "ageTeen": "13–17 yaş"
+    },
+    "pitch": {
+      "title": "Corpanistas'a katılın",
+      "subtitle": "Corpán Plus tüm kütüphaneyi açar. Herhangi bir kitabın ilk bölümünü sonsuza dek ücretsiz deneyin.",
+      "everything": "Tüm kitaplar, tüm diller — kilitsiz.",
+      "private": "Reklamsız. Verileriniz cihazınızda kalır.",
+      "team": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz.",
+      "tryPlus": "Corpán Plus'ı deneyin",
+      "continueFree": "Ücretsiz sürümle devam et"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Cümle paketlerine göz at",
       "inactiveBadge": "Etkin değil",
       "moreActionsLabel": "Diğer işlemler"
-    }
+    },
+    "unlockWithPlus": "Corpán Plus ile kilidi açın",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus'a dahil"
   },
   "subscription": {
     "title": "Hepsini aç",
@@ -538,5 +567,18 @@
     "maybeLater": "Belki sonra",
     "empty": "Daha fazla paket yolda — bu arada Corpán'ı keşfet.",
     "offlineEmpty": "Paketleri keşfetmek için internete bağlan — ya da şimdilik atla."
+  },
+  "paywall": {
+    "title": "Corpán Plus ile devam edin",
+    "thanksTitle": "Bir Corpanista'sınız",
+    "thanksBody": "Corpán'ı desteklediğiniz için teşekkür ederiz. Her şeyin kilidi açıldı.",
+    "bookSubhead": "{{title}} adlı kitabın ücretsiz önizlemesinin sonuna geldiniz.",
+    "subhead": "Tüm dillerdeki tüm kitapların kilidini açın. Reklamsız. Verileriniz cihazınızda kalır.",
+    "pitch": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz. Corpanistas sayesinde reklamsız kalıyor ve büyüyor.",
+    "maybeLater": "Belki sonra",
+    "continue": "Devam"
+  },
+  "streak": {
+    "title": "{{count}} günlük seri"
   }
 }

@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Nie na iOS",
     "appleNoVoiceTitle": "Apple nie udostępnia jeszcze głosu dla {{lang}}",
-    "appleNoVoiceBody": "Krótka wiadomość do zespołu Apple ds. dostępności pomaga pokazać zapotrzebowanie. Tymczasem {{lang}} działa natywnie na Android."
+    "appleNoVoiceBody": "Krótka wiadomość do zespołu Apple ds. dostępności pomaga pokazać zapotrzebowanie. Tymczasem {{lang}} działa natywnie na Android.",
+    "back": "Wróć",
+    "continue": "Dalej",
+    "class": {
+      "title": "Dla kogo?",
+      "subtitle": "Spersonalizujemy Corpán. Dane zostają na Twoim urządzeniu — nigdzie ich nie wysyłamy.",
+      "learner": "Uczę się języków",
+      "learnerDesc": "Czytaj i słuchaj w językach, których się uczysz.",
+      "enjoyer": "Chcę cieszyć się treściami",
+      "enjoyerDesc": "Książki, opowiadania i gry w Twoim języku.",
+      "polyglot": "Jedno i drugie — chcę wszystko",
+      "polyglotDesc": "Kilka języków jednocześnie i cała reszta.",
+      "kid": "To dla dziecka",
+      "kidDesc": "Wyselekcjonowane książki i gry edukacyjne dla młodszych czytelników.",
+      "ageTitle": "Ile lat ma czytelnik?",
+      "ageUnder13": "Poniżej 13 lat",
+      "ageTeen": "13–17 lat"
+    },
+    "pitch": {
+      "title": "Dołącz do Corpanistas",
+      "subtitle": "Corpán Plus otwiera całą bibliotekę. Wypróbuj pierwszą część dowolnej książki za darmo, na zawsze.",
+      "everything": "Każda książka, każdy język — odblokowane.",
+      "private": "Bez reklam. Twoje dane pozostają na Twoim urządzeniu.",
+      "team": "Jesteśmy małym zespołem i każdy cent inwestujemy z powrotem w Corpán.",
+      "tryPlus": "Wypróbuj Corpán Plus",
+      "continueFree": "Kontynuuj za darmo"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Przeglądaj paczki fraz",
       "inactiveBadge": "Nieaktywne",
       "moreActionsLabel": "Więcej działań"
-    }
+    },
+    "unlockWithPlus": "Odblokuj z Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "W zestawie z Plus"
   },
   "subscription": {
     "title": "Odblokuj wszystko",
@@ -538,5 +567,18 @@
     "maybeLater": "Może później",
     "empty": "Kolejne paczki są w drodze — w międzyczasie odkrywaj Corpán.",
     "offlineEmpty": "Połącz się z internetem, aby odkrywać paczki — lub pomiń to na razie."
+  },
+  "paywall": {
+    "title": "Kontynuuj z Corpán Plus",
+    "thanksTitle": "Jesteś Corpanistą",
+    "thanksBody": "Dziękujemy za wsparcie Corpán. Wszystko jest odblokowane.",
+    "bookSubhead": "Dotarłeś do końca darmowego podglądu książki {{title}}.",
+    "subhead": "Odblokuj każdą książkę w każdym języku. Bez reklam. Twoje dane pozostają na Twoim urządzeniu.",
+    "pitch": "Jesteśmy małym zespołem i każdy cent inwestujemy z powrotem w Corpán. Corpanistas sprawiają, że aplikacja jest wolna od reklam i stale się rozwija.",
+    "maybeLater": "Może później",
+    "continue": "Kontynuuj"
+  },
+  "streak": {
+    "title": "Seria {{count}} dni"
   }
 }

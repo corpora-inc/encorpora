@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Bukan di iOS",
     "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}}",
-    "appleNoVoiceBody": "Catatan singkat untuk tim aksesibilitas Apple bisa membantu menguatkan kebutuhannya. Sementara itu, {{lang}} sudah didukung secara native di Android."
+    "appleNoVoiceBody": "Catatan singkat untuk tim aksesibilitas Apple bisa membantu menguatkan kebutuhannya. Sementara itu, {{lang}} sudah didukung secara native di Android.",
+    "back": "Kembali",
+    "continue": "Lanjutkan",
+    "class": {
+      "title": "Untuk siapa ini?",
+      "subtitle": "Kami akan menyesuaikan Corpán untuk Anda. Data ini tetap di perangkat Anda — kami tidak pernah mengirimkannya ke mana pun.",
+      "learner": "Saya sedang belajar bahasa",
+      "learnerDesc": "Baca dan dengarkan dalam bahasa yang Anda pelajari.",
+      "enjoyer": "Saya ingin menikmati konten",
+      "enjoyerDesc": "Buku, cerita, dan permainan dalam bahasa Anda sendiri.",
+      "polyglot": "Keduanya — saya ingin semuanya",
+      "polyglotDesc": "Beberapa bahasa sekaligus, ditambah semua fitur lainnya.",
+      "kid": "Ini untuk anak-anak",
+      "kidDesc": "Buku dan permainan edukasi pilihan untuk pembaca muda.",
+      "ageTitle": "Berapa usia pembaca?",
+      "ageUnder13": "Di bawah 13 tahun",
+      "ageTeen": "13–17 tahun"
+    },
+    "pitch": {
+      "title": "Gabung Corpanistas",
+      "subtitle": "Corpán Plus membuka seluruh perpustakaan. Coba bagian pertama buku apa pun secara gratis, selamanya.",
+      "everything": "Semua buku, semua bahasa — terbuka.",
+      "private": "Tanpa iklan. Data Anda tetap di perangkat Anda.",
+      "team": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán.",
+      "tryPlus": "Coba Corpán Plus",
+      "continueFree": "Lanjutkan dengan versi gratis"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Jelajahi paket frasa",
       "inactiveBadge": "Tidak aktif",
       "moreActionsLabel": "Tindakan lainnya"
-    }
+    },
+    "unlockWithPlus": "Buka dengan Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Termasuk dalam Plus"
   },
   "subscription": {
     "title": "Buka semua",
@@ -538,5 +567,18 @@
     "maybeLater": "Mungkin nanti",
     "empty": "Lebih banyak pak akan datang — sementara itu jelajahi Corpán.",
     "offlineEmpty": "Sambungkan ke internet untuk menemukan pak — atau lewati untuk sekarang."
+  },
+  "paywall": {
+    "title": "Lanjutkan dengan Corpán Plus",
+    "thanksTitle": "Anda seorang Corpanista",
+    "thanksBody": "Terima kasih telah mendukung Corpán. Semuanya sudah terbuka.",
+    "bookSubhead": "Anda telah mencapai akhir pratinjau gratis {{title}}.",
+    "subhead": "Buka semua buku dalam semua bahasa. Tanpa iklan. Data Anda tetap di perangkat Anda.",
+    "pitch": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán. Corpanistas menjaganya tetap bebas iklan dan terus berkembang.",
+    "maybeLater": "Mungkin nanti",
+    "continue": "Lanjutkan"
+  },
+  "streak": {
+    "title": "Rentetan {{count}} hari"
   }
 }

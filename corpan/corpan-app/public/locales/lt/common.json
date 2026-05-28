@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Ne iOS",
     "appleNoVoiceTitle": "Apple dar nesiūlo {{lang}} balso",
-    "appleNoVoiceBody": "Trumpa žinutė Apple prieinamumo komandai padeda parodyti poreikį. Tuo tarpu {{lang}} natūraliai veikia Android."
+    "appleNoVoiceBody": "Trumpa žinutė Apple prieinamumo komandai padeda parodyti poreikį. Tuo tarpu {{lang}} natūraliai veikia Android.",
+    "back": "Atgal",
+    "continue": "Tęsti",
+    "class": {
+      "title": "Kam skirta?",
+      "subtitle": "Pritaikysime Corpán jums. Viskas lieka jūsų įrenginyje – niekur nesiunčiame.",
+      "learner": "Mokausi kalbų",
+      "learnerDesc": "Skaitykite ir klausykite besimokomomis kalbomis.",
+      "enjoyer": "Noriu mėgautis turiniu",
+      "enjoyerDesc": "Knygos, istorijos ir žaidimai jūsų kalba.",
+      "polyglot": "Abu – noriu visko",
+      "polyglotDesc": "Kelios kalbos vienu metu ir visa kita.",
+      "kid": "Skirta vaikui",
+      "kidDesc": "Atrinktos knygos ir mokomieji žaidimai jaunesniems skaitytojams.",
+      "ageTitle": "Kiek metų skaitytojui?",
+      "ageUnder13": "Iki 13 metų",
+      "ageTeen": "13–17 metų"
+    },
+    "pitch": {
+      "title": "Prisijunkite prie Corpanistas",
+      "subtitle": "Corpán Plus atveria visą biblioteką. Išbandykite bet kurios knygos pirmąją dalį nemokamai, visam laikui.",
+      "everything": "Visos knygos, visos kalbos – atrakintos.",
+      "private": "Jokių reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
+      "team": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán.",
+      "tryPlus": "Išbandyti Corpán Plus",
+      "continueFree": "Tęsti su nemokama versija"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Naršyti frazių paketus",
       "inactiveBadge": "Neaktyvu",
       "moreActionsLabel": "Daugiau veiksmų"
-    }
+    },
+    "unlockWithPlus": "Atrakinti su Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Įtraukta su Plus"
   },
   "subscription": {
     "title": "Atrakinkite viską",
@@ -539,5 +568,18 @@
     "maybeLater": "Galbūt vėliau",
     "empty": "Daugiau paketų jau pakeliui — kol kas tyrinėkite Corpán.",
     "offlineEmpty": "Prisijunkite prie interneto, kad atrastumėte paketus — arba praleiskite tai dabar."
+  },
+  "paywall": {
+    "title": "Tęskite su Corpán Plus",
+    "thanksTitle": "Jūs esate Corpanista",
+    "thanksBody": "Dėkojame, kad palaikote Corpán. Viskas atrakinta.",
+    "bookSubhead": "Pasiekėte nemokamos {{title}} peržiūros pabaigą.",
+    "subhead": "Atrakinkite visas knygas visomis kalbomis. Jokių reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
+    "pitch": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán. Corpanistas palaiko programą be reklamų ir padeda jai augti.",
+    "maybeLater": "Galbūt vėliau",
+    "continue": "Tęsti"
+  },
+  "streak": {
+    "title": "{{count}} dienų serija"
   }
 }

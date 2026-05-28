@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Ne na iOS",
     "appleNoVoiceTitle": "Apple zatím nenabízí hlas pro {{lang}}",
-    "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu."
+    "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu.",
+    "back": "Zpět",
+    "continue": "Pokračovat",
+    "class": {
+      "title": "Pro koho je Corpán?",
+      "subtitle": "Corpán vám přizpůsobíme. Vše zůstává ve vašem zařízení – nikam nic neposíláme.",
+      "learner": "Učím se jazyky",
+      "learnerDesc": "Čtěte a poslouchejte v jazycích, které studujete.",
+      "enjoyer": "Chci si užít obsah",
+      "enjoyerDesc": "Knihy, příběhy a hry ve vašem jazyce.",
+      "polyglot": "Obojí – chci vše",
+      "polyglotDesc": "Několik jazyků najednou a k tomu vše ostatní.",
+      "kid": "Je to pro dítě",
+      "kidDesc": "Vybrané knihy a výukové hry pro mladší čtenáře.",
+      "ageTitle": "Kolik je čtenáři let?",
+      "ageUnder13": "Do 13 let",
+      "ageTeen": "13–17 let"
+    },
+    "pitch": {
+      "title": "Připojte se ke Corpanistas",
+      "subtitle": "Corpán Plus otevírá celou knihovnu. První část jakékoli knihy si můžete vyzkoušet zdarma, navždy.",
+      "everything": "Každá kniha, každý jazyk – odemčeno.",
+      "private": "Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
+      "team": "Jsme malý tým a každý cent vracíme zpět do Corpánu.",
+      "tryPlus": "Vyzkoušejte Corpán Plus",
+      "continueFree": "Pokračovat zdarma"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Procházet balíčky frází",
       "inactiveBadge": "Neaktivní",
       "moreActionsLabel": "Další akce"
-    }
+    },
+    "unlockWithPlus": "Odemknout s Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Součástí Plus"
   },
   "subscription": {
     "title": "Odemkněte vše",
@@ -539,5 +568,18 @@
     "maybeLater": "Možná později",
     "empty": "Další balíčky jsou na cestě — prozkoumejte Corpán mezitím.",
     "offlineEmpty": "Připojte se k internetu, abyste objevili balíčky — nebo to nyní přeskočte."
+  },
+  "paywall": {
+    "title": "Pokračujte s Corpán Plus",
+    "thanksTitle": "Jste Corpanista",
+    "thanksBody": "Děkujeme za podporu Corpánu. Vše je odemčeno.",
+    "bookSubhead": "Dosáhli jste konce bezplatné ukázky knihy {{title}}.",
+    "subhead": "Odemkněte každou knihu v každém jazyce. Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
+    "pitch": "Jsme malý tým a každý cent vracíme zpět do Corpánu. Corpanistas udržují aplikaci bez reklam a pomáhají ji rozvíjet.",
+    "maybeLater": "Možná později",
+    "continue": "Pokračovat"
+  },
+  "streak": {
+    "title": "{{count}}-denní série"
   }
 }

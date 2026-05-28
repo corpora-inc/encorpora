@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Ei iOS:llä",
     "appleNoVoiceTitle": "Apple ei vielä tarjoa {{lang}}-ääntä",
-    "appleNoVoiceBody": "Lyhyt viesti Applen saavutettavuustiimille auttaa perustelemaan asian. {{lang}} toimii sillä välin natiivisti Androidilla."
+    "appleNoVoiceBody": "Lyhyt viesti Applen saavutettavuustiimille auttaa perustelemaan asian. {{lang}} toimii sillä välin natiivisti Androidilla.",
+    "back": "Takaisin",
+    "continue": "Jatka",
+    "class": {
+      "title": "Kenelle tämä on?",
+      "subtitle": "Räätälöimme Corpánin sinulle. Tiedot pysyvät laitteellasi – emme koskaan lähetä niitä minnekään.",
+      "learner": "Opiskelen kieliä",
+      "learnerDesc": "Lue ja kuuntele opiskelemillasi kielillä.",
+      "enjoyer": "Haluan nauttia sisällöstä",
+      "enjoyerDesc": "Kirjoja, tarinoita ja pelejä omalla kielelläsi.",
+      "polyglot": "Molemmat – haluan kaiken",
+      "polyglotDesc": "Useita kieliä samanaikaisesti ja kaikki muu.",
+      "kid": "Lapselle",
+      "kidDesc": "Kuratoituja kirjoja ja oppimispelejä nuoremmille lukijoille.",
+      "ageTitle": "Kuinka vanha lukija on?",
+      "ageUnder13": "Alle 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Liity Corpanistas-yhteisöön",
+      "subtitle": "Corpán Plus avaa koko kirjaston. Kokeile minkä tahansa kirjan ensimmäistä osaa ilmaiseksi, ikuisesti.",
+      "everything": "Kaikki kirjat, kaikki kielet – avattu.",
+      "private": "Ei mainoksia. Tietosi pysyvät laitteellasi.",
+      "team": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin.",
+      "tryPlus": "Kokeile Corpán Plus",
+      "continueFree": "Jatka ilmaisversiolla"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Selaa fraasipaketteja",
       "inactiveBadge": "Ei käytössä",
       "moreActionsLabel": "Lisää toimintoja"
-    }
+    },
+    "unlockWithPlus": "Avaa Corpán Plus -palvelulla",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Sisältyy Plus-tilaukseen"
   },
   "subscription": {
     "title": "Avaa kaikki",
@@ -538,5 +567,18 @@
     "maybeLater": "Ehkä myöhemmin",
     "empty": "Lisää paketteja on tulossa — tutustu Corpán-iin sillä välin.",
     "offlineEmpty": "Yhdistä internetiin löytääksesi paketteja — tai ohita toistaiseksi."
+  },
+  "paywall": {
+    "title": "Jatka Corpán Plus -palvelun parissa",
+    "thanksTitle": "Olet Corpanista",
+    "thanksBody": "Kiitos tuestasi Corpánille. Kaikki on avattu.",
+    "bookSubhead": "Olet saavuttanut kirjan {{title}} ilmaisen esikatselun lopun.",
+    "subhead": "Avaa kaikki kirjat kaikilla kielillä. Ei mainoksia. Tietosi pysyvät laitteellasi.",
+    "pitch": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin. Corpanistas-jäsenet pitävät sen mainoksettomana ja kehittyvänä.",
+    "maybeLater": "Ehkä myöhemmin",
+    "continue": "Jatka"
+  },
+  "streak": {
+    "title": "{{count}} päivän putki"
   }
 }

@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Ni na iOS",
     "appleNoVoiceTitle": "Apple še nima glasu za {{lang}}",
-    "appleNoVoiceBody": "Kratek zapis Applovi ekipi za dostopnost pomaga podpreti ta primer. Medtem pa {{lang}} v Android deluje izvorno."
+    "appleNoVoiceBody": "Kratek zapis Applovi ekipi za dostopnost pomaga podpreti ta primer. Medtem pa {{lang}} v Android deluje izvorno.",
+    "back": "Nazaj",
+    "continue": "Nadaljuj",
+    "class": {
+      "title": "Za koga je Corpán?",
+      "subtitle": "Corpán bomo prilagodili vam. Podatki ostanejo na vaši napravi – nikoli jih ne pošiljamo drugam.",
+      "learner": "Učim se jezike",
+      "learnerDesc": "Berite in poslušajte v jezikih, ki se jih učite.",
+      "enjoyer": "Želim uživati v vsebini",
+      "enjoyerDesc": "Knjige, zgodbe in igre v vašem jeziku.",
+      "polyglot": "Oboje – želim vse",
+      "polyglotDesc": "Več jezikov hkrati, plus vse ostalo.",
+      "kid": "Je za otroka",
+      "kidDesc": "Izbrane knjige in učne igre za mlajše bralce.",
+      "ageTitle": "Koliko je star bralec?",
+      "ageUnder13": "Pod 13 let",
+      "ageTeen": "13–17 let"
+    },
+    "pitch": {
+      "title": "Pridružite se Corpanistas",
+      "subtitle": "Corpán Plus odklene celotno knjižnico. Prvi del katere koli knjige preizkusite brezplačno, za vedno.",
+      "everything": "Vsaka knjiga, vsak jezik – odklenjeno.",
+      "private": "Brez oglasov. Vaši podatki ostanejo na vaši napravi.",
+      "team": "Smo majhna ekipa in vsak cent vložimo nazaj v Corpán.",
+      "tryPlus": "Preizkusite Corpán Plus",
+      "continueFree": "Nadaljujte z brezplačno različico"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Brskaj po paketih fraz",
       "inactiveBadge": "Neaktivno",
       "moreActionsLabel": "Več dejanj"
-    }
+    },
+    "unlockWithPlus": "Odklenite s Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Vključeno s Plus"
   },
   "subscription": {
     "title": "Odkleni vse",
@@ -539,5 +568,18 @@
     "maybeLater": "Morda kasneje",
     "empty": "Več paketov je na poti — raziskuj Corpán v tem času.",
     "offlineEmpty": "Poveži se z internetom, da odkriješ pakete — ali to preskoči za zdaj."
+  },
+  "paywall": {
+    "title": "Nadaljujte s Corpán Plus",
+    "thanksTitle": "Ste Corpanista",
+    "thanksBody": "Hvala za podporo Corpánu. Vse je odklenjeno.",
+    "bookSubhead": "Dosegli ste konec brezplačnega predogleda knjige {{title}}.",
+    "subhead": "Odklenite vsako knjigo v vsakem jeziku. Brez oglasov. Vaši podatki ostanejo na vaši napravi.",
+    "pitch": "Smo majhna ekipa in vsak cent vložimo nazaj v Corpán. Corpanistas ohranjajo aplikacijo brez oglasov in jo pomagajo razvijati.",
+    "maybeLater": "Morda pozneje",
+    "continue": "Nadaljuj"
+  },
+  "streak": {
+    "title": "{{count}}-dnevni niz"
   }
 }

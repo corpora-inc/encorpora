@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""Translate the Corpán Plus keys (paywall + new onboarding + streak) into all
+locales via Gemini Flash on Vertex. Merges only-missing keys into each
+locale's common.json, preserving everything else.
+
+Run:  /home/skyl/tts_venv/bin/python translate_corpan_plus_keys.py [--apply]
+Dry run by default (translates + prints, writes nothing).
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path.home() / ".env")
+
+from google import genai
+from google.genai import types as gtypes
+
+HERE = Path(__file__).parent
+MODEL = "gemini-2.5-flash"
+
+# The canonical EN strings to translate (path -> English). Brand terms
+# "Corpán", "Corpán Plus", "Corpanista(s)" MUST stay verbatim. {{...}}
+# placeholders MUST be preserved exactly.
+EN_FLAT: dict[str, str] = {
+    "onboarding.back": "Back",
+    "onboarding.continue": "Continue",
+    "onboarding.class.title": "Who's this for?",
+    "onboarding.class.subtitle": "We'll tailor Corpán to you. This stays on your device — we never send it anywhere.",
+    "onboarding.class.learner": "I'm learning languages",
+    "onboarding.class.learnerDesc": "Read and listen in the languages you're studying.",
+    "onboarding.class.enjoyer": "I want to enjoy the content",
+    "onboarding.class.enjoyerDesc": "Books, stories and games in your own language.",
+    "onboarding.class.polyglot": "Both — I want it all",
+    "onboarding.class.polyglotDesc": "Several languages at once, plus everything else.",
+    "onboarding.class.kid": "It's for a kid",
+    "onboarding.class.kidDesc": "Curated books and learning games for younger readers.",
+    "onboarding.class.ageTitle": "How old is the reader?",
+    "onboarding.class.ageUnder13": "Under 13",
+    "onboarding.class.ageTeen": "13–17",
+    "onboarding.pitch.title": "Join the Corpanistas",
+    "onboarding.pitch.subtitle": "Corpán Plus opens the whole library. Try the first part of any book free, forever.",
+    "onboarding.pitch.everything": "Every book, every language — unlocked.",
+    "onboarding.pitch.private": "No ads. Your data stays on your device.",
+    "onboarding.pitch.team": "We're a small team and put every cent back into Corpán.",
+    "onboarding.pitch.tryPlus": "Try Corpán Plus",
+    "onboarding.pitch.continueFree": "Continue with the free tier",
+    "paywall.title": "Keep going with Corpán Plus",
+    "paywall.thanksTitle": "You're a Corpanista",
+    "paywall.thanksBody": "Thank you for supporting Corpán. Everything is unlocked.",
+    "paywall.bookSubhead": "You've reached the end of the free preview of {{title}}.",
+    "paywall.subhead": "Unlock every book in every language. No ads. Your data stays on your device.",
+    "paywall.pitch": "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing.",
+    "paywall.maybeLater": "Maybe later",
+    "paywall.continue": "Continue",
+    "packs.unlockWithPlus": "Unlock with Corpán Plus",
+    "packs.plus": "Corpán Plus",
+    "packs.includedWithPlus": "Included with Plus",
+    "streak.title": "{{count}}-day streak",
+}
+
+# Locale dir -> human language name for the prompt.
+LANG_NAMES: dict[str, str] = {
+    "ar": "Arabic", "bg": "Bulgarian", "bn": "Bengali", "ca": "Catalan",
+    "cs": "Czech", "da": "Danish", "de": "German", "el": "Greek",
+    "es": "Spanish", "fa": "Persian (Farsi)", "fi": "Finnish", "fr": "French",
+    "gu": "Gujarati", "he": "Hebrew", "hi": "Hindi", "hr": "Croatian",
+    "hu": "Hungarian", "id": "Indonesian", "it": "Italian", "ja": "Japanese",
+    "kn": "Kannada", "ko-polite": "Korean (polite/존댓말 register)", "lt": "Lithuanian",
+    "mr": "Marathi", "ms": "Malay", "ne": "Nepali", "nl": "Dutch",
+    "no": "Norwegian", "pa-Arab": "Punjabi (Shahmukhi/Arabic script)",
+    "pa-Guru": "Punjabi (Gurmukhi script)", "pl": "Polish",
+    "pt-BR": "Brazilian Portuguese", "pt-PT": "European Portuguese",
+    "ro": "Romanian", "ru": "Russian", "sk": "Slovak", "sl": "Slovenian",
+    "sr": "Serbian", "sv": "Swedish", "sw": "Swahili", "ta": "Tamil",
+    "te": "Telugu", "th": "Thai", "tr": "Turkish", "uk": "Ukrainian",
+    "ur": "Urdu", "vi": "Vietnamese", "yue-Hant-HK": "Cantonese (Traditional, Hong Kong)",
+    "zh-Hans": "Simplified Chinese", "zh-Hant": "Traditional Chinese",
+}
+
+
+def make_client():
+    project = os.environ.get("GOOGLE_CLOUD_PROJECT", "corpora1")
+    location = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+    return genai.Client(vertexai=True, project=project, location=location)
+
+
+def build_prompt(name: str) -> str:
+    payload = json.dumps(EN_FLAT, ensure_ascii=False, indent=2)
+    return f"""You are a senior app localizer. Translate the following UI strings from English into {name} for a privacy-first language-learning app called Corpán.
+
+HARD RULES:
+- Keep the brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Corpanista", "Corpanistas".
+- Preserve every placeholder EXACTLY, including the double braces: {{{{title}}}}, {{{{count}}}}. Do not translate text inside braces.
+- Keep it concise and natural for a mobile UI in {name} — match length/tone, not word-for-word.
+- Warm, calm, non-pushy register (this is an ad-free indie app, not a hard-sell).
+- Return ONLY a JSON object with the SAME keys as the input, values translated into {name}. No commentary.
+
+INPUT (key -> English):
+{payload}
+"""
+
+
+def translate_locale(lang: str, client) -> tuple[str, dict | None, str]:
+    name = LANG_NAMES.get(lang, lang)
+    try:
+        resp = client.models.generate_content(
+            model=MODEL,
+            contents=build_prompt(name),
+            config=gtypes.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=8192,
+                response_mime_type="application/json",
+            ),
+        )
+        data = json.loads((resp.text or "").strip())
+        if not isinstance(data, dict):
+            return lang, None, "not a dict"
+        # Keep only known keys, require all present.
+        missing = [k for k in EN_FLAT if k not in data]
+        if missing:
+            return lang, None, f"missing {len(missing)} keys"
+        return lang, {k: str(data[k]) for k in EN_FLAT}, "ok"
+    except Exception as e:
+        return lang, None, f"{type(e).__name__}: {str(e)[:160]}"
+
+
+def set_path(tree: dict, dotted: str, value: str) -> None:
+    parts = dotted.split(".")
+    node = tree
+    for p in parts[:-1]:
+        node = node.setdefault(p, {})
+        if not isinstance(node, dict):
+            return  # don't clobber a non-dict
+    node.setdefault(parts[-1], value)  # only-missing
+
+
+def merge_into_locale(lang: str, flat: dict[str, str], apply: bool) -> int:
+    path = HERE / lang / "common.json"
+    if not path.is_file():
+        return 0
+    data = json.loads(path.read_text())
+    before = json.dumps(data, ensure_ascii=False)
+    for k, v in flat.items():
+        set_path(data, k, v)
+    after = json.dumps(data, ensure_ascii=False)
+    changed = before != after
+    if apply and changed:
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    return 1 if changed else 0
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--only", default=None, help="single locale for testing")
+    args = ap.parse_args()
+
+    targets = [args.only] if args.only else list(LANG_NAMES.keys())
+    client = make_client()
+
+    results: dict[str, dict] = {}
+    errors: dict[str, str] = {}
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        futs = {ex.submit(translate_locale, lang, client): lang for lang in targets}
+        for fut in as_completed(futs):
+            lang, flat, status = fut.result()
+            if flat is None:
+                errors[lang] = status
+                print(f"  ✗ {lang}: {status}", file=sys.stderr)
+            else:
+                results[lang] = flat
+                print(f"  ✓ {lang}")
+
+    written = 0
+    for lang, flat in results.items():
+        written += merge_into_locale(lang, flat, args.apply)
+
+    print(f"\n{'APPLIED' if args.apply else 'DRY RUN'}: {len(results)} translated, "
+          f"{written} locale files {'updated' if args.apply else 'would change'}, "
+          f"{len(errors)} errors.")
+    if errors:
+        print("Errors:", errors)
+
+
+if __name__ == "__main__":
+    main()

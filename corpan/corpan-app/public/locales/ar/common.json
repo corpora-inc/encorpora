@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "لست على iOS",
     "appleNoVoiceTitle": "لا توفّر Apple صوتًا لـ {{lang}} بعد",
-    "appleNoVoiceBody": "ملاحظة سريعة إلى فريق تسهيلات الاستخدام في Apple تساعد في دعم هذا الطلب. وفي الوقت الحالي، يعمل {{lang}} بشكل أصلي على Android."
+    "appleNoVoiceBody": "ملاحظة سريعة إلى فريق تسهيلات الاستخدام في Apple تساعد في دعم هذا الطلب. وفي الوقت الحالي، يعمل {{lang}} بشكل أصلي على Android.",
+    "back": "رجوع",
+    "continue": "متابعة",
+    "class": {
+      "title": "لمن هذا؟",
+      "subtitle": "سنخصص Corpán ليناسبك. تبقى هذه المعلومات على جهازك — ولا نرسلها إلى أي مكان.",
+      "learner": "أتعلم لغات",
+      "learnerDesc": "اقرأ واستمع باللغات التي تدرسها.",
+      "enjoyer": "أرغب في الاستمتاع بالمحتوى",
+      "enjoyerDesc": "كتب وقصص وألعاب بلغتك الأم.",
+      "polyglot": "كلاهما — أرغب في كل شيء",
+      "polyglotDesc": "عدة لغات في آن واحد، بالإضافة إلى كل شيء آخر.",
+      "kid": "إنه لطفل",
+      "kidDesc": "كتب وألعاب تعليمية منتقاة للقراء الصغار.",
+      "ageTitle": "كم عمر القارئ؟",
+      "ageUnder13": "أقل من 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "انضم إلى Corpanistas",
+      "subtitle": "يفتح Corpán Plus المكتبة بأكملها. جرب الجزء الأول من أي كتاب مجانًا، للأبد.",
+      "everything": "كل كتاب، كل لغة — متاحة.",
+      "private": "لا إعلانات. تبقى بياناتك على جهازك.",
+      "team": "نحن فريق صغير ونعيد كل قرش إلى Corpán.",
+      "tryPlus": "جرب Corpán Plus",
+      "continueFree": "متابعة بالنسخة المجانية"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "تصفح حزم العبارات",
       "inactiveBadge": "غير نشط",
       "moreActionsLabel": "مزيد من الإجراءات"
-    }
+    },
+    "unlockWithPlus": "افتح مع Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "مضمن مع Plus"
   },
   "subscription": {
     "title": "فتح كل شيء",
@@ -538,5 +567,18 @@
     "maybeLater": "ربما لاحقًا",
     "empty": "المزيد من الحزم في الطريق — استكشف Corpán في غضون ذلك.",
     "offlineEmpty": "اتصل بالإنترنت لاكتشاف الحزم — أو تخطّ هذا الآن."
+  },
+  "paywall": {
+    "title": "واصل مع Corpán Plus",
+    "thanksTitle": "أنت Corpanista",
+    "thanksBody": "شكرًا لدعمك Corpán. كل شيء مفتوح الآن.",
+    "bookSubhead": "لقد وصلت إلى نهاية المعاينة المجانية لـ {{title}}.",
+    "subhead": "افتح كل كتاب بكل لغة. لا إعلانات. تبقى بياناتك على جهازك.",
+    "pitch": "نحن فريق صغير ونعيد كل قرش إلى Corpán. يحافظ Corpanistas على التطبيق خاليًا من الإعلانات ومتناميًا.",
+    "maybeLater": "ربما لاحقًا",
+    "continue": "متابعة"
+  },
+  "streak": {
+    "title": "سلسلة {{count}} يومًا"
   }
 }

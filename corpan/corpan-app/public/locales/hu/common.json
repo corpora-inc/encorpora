@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Nem iOS-en",
     "appleNoVoiceTitle": "Az Apple még nem kínál {{lang}} hangot",
-    "appleNoVoiceBody": "Egy rövid üzenet az Apple akadálymentesítési csapatának segíthet. Addig is a {{lang}} natívan működik Androidon."
+    "appleNoVoiceBody": "Egy rövid üzenet az Apple akadálymentesítési csapatának segíthet. Addig is a {{lang}} natívan működik Androidon.",
+    "back": "Vissza",
+    "continue": "Tovább",
+    "class": {
+      "title": "Kinek szól?",
+      "subtitle": "A Corpán-t rád szabjuk. Ez az eszközödön marad – nem küldjük el sehova.",
+      "learner": "Nyelvet tanulok",
+      "learnerDesc": "Olvass és hallgass a tanult nyelveken.",
+      "enjoyer": "Élvezni szeretném a tartalmat",
+      "enjoyerDesc": "Könyvek, történetek és játékok a saját nyelveden.",
+      "polyglot": "Mindkettő – mindent szeretnék",
+      "polyglotDesc": "Több nyelv egyszerre, plusz minden más.",
+      "kid": "Gyereknek szól",
+      "kidDesc": "Válogatott könyvek és tanulójátékok fiatalabb olvasóknak.",
+      "ageTitle": "Hány éves az olvasó?",
+      "ageUnder13": "13 év alatt",
+      "ageTeen": "13–17 év"
+    },
+    "pitch": {
+      "title": "Csatlakozz a Corpanistákhoz",
+      "subtitle": "A Corpán Plus megnyitja a teljes könyvtárat. Bármely könyv első részét ingyen kipróbálhatod, örökre.",
+      "everything": "Minden könyv, minden nyelv – feloldva.",
+      "private": "Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
+      "team": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba.",
+      "tryPlus": "Próbáld ki a Corpán Plus-t",
+      "continueFree": "Folytatás az ingyenes verzióval"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Kifejezéscsomagok böngészése",
       "inactiveBadge": "Inaktív",
       "moreActionsLabel": "További műveletek"
-    }
+    },
+    "unlockWithPlus": "Feloldás Corpán Plus-szal",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "A Plusz tartalmazza"
   },
   "subscription": {
     "title": "Mindent feloldás",
@@ -538,5 +567,18 @@
     "maybeLater": "Talán később",
     "empty": "Még több csomag úton van — addig is fedezd fel a Corpán-t.",
     "offlineEmpty": "Csatlakozz az internethez, hogy felfedezz csomagokat — vagy hagyd ki most."
+  },
+  "paywall": {
+    "title": "Folytasd a Corpán Plus-szal",
+    "thanksTitle": "Corpanista vagy",
+    "thanksBody": "Köszönjük, hogy támogatod a Corpán-t. Minden fel van oldva.",
+    "bookSubhead": "Elérted a(z) {{title}} ingyenes előnézetének végét.",
+    "subhead": "Oldj fel minden könyvet, minden nyelven. Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
+    "pitch": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba. A Corpanisták tartják hirdetésmentesen és fejlesztik tovább.",
+    "maybeLater": "Talán később",
+    "continue": "Tovább"
+  },
+  "streak": {
+    "title": "{{count}} napos sorozat"
   }
 }

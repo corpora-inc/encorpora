@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Không dùng iOS",
     "appleNoVoiceTitle": "Apple chưa cung cấp giọng {{lang}}",
-    "appleNoVoiceBody": "Một ghi chú ngắn gửi đến nhóm hỗ trợ tiếp cận của Apple sẽ giúp củng cố đề xuất này. Trong lúc đó, {{lang}} vẫn hoạt động gốc trên Android."
+    "appleNoVoiceBody": "Một ghi chú ngắn gửi đến nhóm hỗ trợ tiếp cận của Apple sẽ giúp củng cố đề xuất này. Trong lúc đó, {{lang}} vẫn hoạt động gốc trên Android.",
+    "back": "Quay lại",
+    "continue": "Tiếp tục",
+    "class": {
+      "title": "Dành cho ai?",
+      "subtitle": "Corpán sẽ được tùy chỉnh cho bạn. Dữ liệu luôn nằm trên thiết bị của bạn, không bao giờ được gửi đi nơi khác.",
+      "learner": "Tôi đang học ngôn ngữ",
+      "learnerDesc": "Đọc và nghe bằng các ngôn ngữ bạn đang học.",
+      "enjoyer": "Tôi muốn thưởng thức nội dung",
+      "enjoyerDesc": "Sách, truyện và trò chơi bằng ngôn ngữ của bạn.",
+      "polyglot": "Cả hai — tôi muốn tất cả",
+      "polyglotDesc": "Nhiều ngôn ngữ cùng lúc, cộng với mọi thứ khác.",
+      "kid": "Dành cho trẻ em",
+      "kidDesc": "Sách và trò chơi giáo dục được tuyển chọn cho độc giả nhỏ tuổi.",
+      "ageTitle": "Độc giả bao nhiêu tuổi?",
+      "ageUnder13": "Dưới 13 tuổi",
+      "ageTeen": "13–17 tuổi"
+    },
+    "pitch": {
+      "title": "Tham gia cộng đồng Corpanistas",
+      "subtitle": "Corpán Plus mở khóa toàn bộ thư viện. Bạn có thể đọc miễn phí phần đầu của bất kỳ cuốn sách nào, mãi mãi.",
+      "everything": "Mọi cuốn sách, mọi ngôn ngữ — đã được mở khóa.",
+      "private": "Không quảng cáo. Dữ liệu của bạn luôn nằm trên thiết bị.",
+      "team": "Chúng tôi là một nhóm nhỏ và dành mọi khoản thu để phát triển Corpán.",
+      "tryPlus": "Dùng thử Corpán Plus",
+      "continueFree": "Tiếp tục với phiên bản miễn phí"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Duyệt gói cụm từ",
       "inactiveBadge": "Không hoạt động",
       "moreActionsLabel": "Thêm thao tác"
-    }
+    },
+    "unlockWithPlus": "Mở khóa bằng Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Đã bao gồm trong Plus"
   },
   "subscription": {
     "title": "Mở khóa tất cả",
@@ -538,5 +567,18 @@
     "maybeLater": "Có lẽ để sau",
     "empty": "Nhiều gói nữa đang trên đường tới — trong lúc đó hãy khám phá Corpán.",
     "offlineEmpty": "Kết nối internet để khám phá các gói — hoặc bỏ qua ngay bây giờ."
+  },
+  "paywall": {
+    "title": "Tiếp tục với Corpán Plus",
+    "thanksTitle": "Bạn là một Corpanista",
+    "thanksBody": "Cảm ơn bạn đã ủng hộ Corpán. Mọi thứ đã được mở khóa.",
+    "bookSubhead": "Bạn đã đọc hết phần xem trước miễn phí của {{title}}.",
+    "subhead": "Mở khóa mọi cuốn sách bằng mọi ngôn ngữ. Không quảng cáo. Dữ liệu của bạn luôn nằm trên thiết bị.",
+    "pitch": "Chúng tôi là một nhóm nhỏ và dành mọi khoản thu để phát triển Corpán. Corpanistas giúp ứng dụng không có quảng cáo và ngày càng phát triển.",
+    "maybeLater": "Để sau",
+    "continue": "Tiếp tục"
+  },
+  "streak": {
+    "title": "Chuỗi {{count}} ngày"
   }
 }

@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "不是 iOS",
     "appleNoVoiceTitle": "Apple 目前尚未提供 {{lang}} 語音",
-    "appleNoVoiceBody": "只要向 Apple 的無障礙團隊簡短反映，就能幫助推動這件事。在此之前，{{lang}} 已可在 Android 原生使用。"
+    "appleNoVoiceBody": "只要向 Apple 的無障礙團隊簡短反映，就能幫助推動這件事。在此之前，{{lang}} 已可在 Android 原生使用。",
+    "back": "返回",
+    "continue": "繼續",
+    "class": {
+      "title": "這是為誰準備的？",
+      "subtitle": "我們會為您量身打造 Corpán。這些資料會留在您的裝置上，絕不會傳送至任何地方。",
+      "learner": "我正在學習語言",
+      "learnerDesc": "閱讀並聆聽您正在學習的語言內容。",
+      "enjoyer": "我想享受內容",
+      "enjoyerDesc": "以您的語言享受書籍、故事和遊戲。",
+      "polyglot": "兩者皆是 — 我全都要",
+      "polyglotDesc": "同時學習多種語言，並享有所有其他功能。",
+      "kid": "這是為兒童準備的",
+      "kidDesc": "為年幼讀者精選的書籍和學習遊戲。",
+      "ageTitle": "讀者的年齡是？",
+      "ageUnder13": "13 歲以下",
+      "ageTeen": "13–17 歲"
+    },
+    "pitch": {
+      "title": "加入 Corpanistas",
+      "subtitle": "Corpán Plus 讓您暢讀整個圖書館。任何書籍的第一部分皆可永久免費試閱。",
+      "everything": "所有書籍、所有語言 — 全部解鎖。",
+      "private": "無廣告。您的資料會留在裝置上。",
+      "team": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。",
+      "tryPlus": "試用 Corpán Plus",
+      "continueFree": "繼續使用免費方案"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "瀏覽片語包",
       "inactiveBadge": "未啟用",
       "moreActionsLabel": "更多操作"
-    }
+    },
+    "unlockWithPlus": "使用 Corpán Plus 解鎖",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus 方案內含"
   },
   "subscription": {
     "title": "解鎖全部",
@@ -538,5 +567,18 @@
     "maybeLater": "稍後再說",
     "empty": "更多包正在路上——同時探索 Corpán 吧。",
     "offlineEmpty": "連接網際網路以發現包——或暫時跳過。"
+  },
+  "paywall": {
+    "title": "透過 Corpán Plus 繼續學習",
+    "thanksTitle": "您是 Corpanista",
+    "thanksBody": "感謝您支持 Corpán。所有內容皆已解鎖。",
+    "bookSubhead": "您已讀完 {{title}} 的免費預覽內容。",
+    "subhead": "解鎖所有語言的書籍。無廣告。您的資料會留在裝置上。",
+    "pitch": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。Corpanistas 讓應用程式保持無廣告並持續成長。",
+    "maybeLater": "稍後再說",
+    "continue": "繼續"
+  },
+  "streak": {
+    "title": "{{count}} 天連續學習"
   }
 }

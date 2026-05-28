@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Nie na iOS",
     "appleNoVoiceTitle": "Apple zatiaľ neponúka hlas pre {{lang}}",
-    "appleNoVoiceBody": "Krátka správa tímu prístupnosti v Apple pomôže posilniť argumenty. Medzitým {{lang}} funguje natívne na Android."
+    "appleNoVoiceBody": "Krátka správa tímu prístupnosti v Apple pomôže posilniť argumenty. Medzitým {{lang}} funguje natívne na Android.",
+    "back": "Späť",
+    "continue": "Pokračovať",
+    "class": {
+      "title": "Pre koho je to určené?",
+      "subtitle": "Corpán prispôsobíme vám. Údaje zostávajú vo vašom zariadení – nikdy ich nikam neposielame.",
+      "learner": "Učím sa jazyky",
+      "learnerDesc": "Čítajte a počúvajte v jazykoch, ktoré sa učíte.",
+      "enjoyer": "Chcem si užiť obsah",
+      "enjoyerDesc": "Knihy, príbehy a hry vo vašom jazyku.",
+      "polyglot": "Oboje – chcem všetko",
+      "polyglotDesc": "Niekoľko jazykov naraz a všetko ostatné.",
+      "kid": "Je to pre dieťa",
+      "kidDesc": "Vybrané knihy a vzdelávacie hry pre mladších čitateľov.",
+      "ageTitle": "Koľko má čitateľ rokov?",
+      "ageUnder13": "Menej ako 13",
+      "ageTeen": "13 – 17"
+    },
+    "pitch": {
+      "title": "Pridajte sa ku Corpanistas",
+      "subtitle": "Corpán Plus odomyká celú knižnicu. Prvú časť každej knihy si vyskúšajte zadarmo, navždy.",
+      "everything": "Každá kniha, každý jazyk – odomknuté.",
+      "private": "Žiadne reklamy. Vaše údaje zostávajú vo vašom zariadení.",
+      "team": "Sme malý tím a každý cent vraciame späť do Corpánu.",
+      "tryPlus": "Vyskúšajte Corpán Plus",
+      "continueFree": "Pokračovať s bezplatnou verziou"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Prehľadávať balíky fráz",
       "inactiveBadge": "Neaktívne",
       "moreActionsLabel": "Ďalšie akcie"
-    }
+    },
+    "unlockWithPlus": "Odomknúť s Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Zahrnuté v Plus"
   },
   "subscription": {
     "title": "Odomknúť všetko",
@@ -539,5 +568,18 @@
     "maybeLater": "Možno neskôr",
     "empty": "Viac balíkov je na ceste — preskúmajte Corpán zatiaľ.",
     "offlineEmpty": "Pripojte sa na internet, aby ste objavili balíky — alebo to zatiaľ preskočte."
+  },
+  "paywall": {
+    "title": "Pokračujte s Corpán Plus",
+    "thanksTitle": "Ste Corpanista",
+    "thanksBody": "Ďakujeme za podporu Corpánu. Všetko je odomknuté.",
+    "bookSubhead": "Dosiahli ste koniec bezplatnej ukážky {{title}}.",
+    "subhead": "Odomknite každú knihu v každom jazyku. Žiadne reklamy. Vaše údaje zostávajú vo vašom zariadení.",
+    "pitch": "Sme malý tím a každý cent vraciame späť do Corpánu. Corpanistas ho udržujú bez reklám a rozvíjajú.",
+    "maybeLater": "Možno neskôr",
+    "continue": "Pokračovať"
+  },
+  "streak": {
+    "title": "{{count}}-dňová séria"
   }
 }

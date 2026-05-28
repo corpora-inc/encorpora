@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "iOS가 아니신가요",
     "appleNoVoiceTitle": "Apple에서는 아직 {{lang}} 음성을 제공하지 않습니다",
-    "appleNoVoiceBody": "Apple의 손쉬운 사용 팀에 간단한 의견을 보내 주시면 도입에 도움이 됩니다. 그동안 Android에서는 {{lang}}가 기본으로 지원됩니다."
+    "appleNoVoiceBody": "Apple의 손쉬운 사용 팀에 간단한 의견을 보내 주시면 도입에 도움이 됩니다. 그동안 Android에서는 {{lang}}가 기본으로 지원됩니다.",
+    "back": "뒤로",
+    "continue": "계속",
+    "class": {
+      "title": "누구를 위한 앱인가요?",
+      "subtitle": "Corpán이 사용자님께 맞춰집니다. 이 정보는 기기에만 저장되며, 외부로 전송되지 않습니다.",
+      "learner": "언어를 배우고 있어요",
+      "learnerDesc": "학습 중인 언어로 읽고 들어보세요.",
+      "enjoyer": "콘텐츠를 즐기고 싶어요",
+      "enjoyerDesc": "모국어로 된 책, 이야기, 게임을 즐겨보세요.",
+      "polyglot": "둘 다요 — 모든 것을 원해요",
+      "polyglotDesc": "여러 언어를 동시에, 그리고 모든 콘텐츠를 이용하세요.",
+      "kid": "어린이를 위한 앱이에요",
+      "kidDesc": "어린 독자를 위한 엄선된 책과 학습 게임입니다.",
+      "ageTitle": "독자의 연령은 어떻게 되나요?",
+      "ageUnder13": "13세 미만",
+      "ageTeen": "13–17세"
+    },
+    "pitch": {
+      "title": "Corpanistas에 참여하세요",
+      "subtitle": "Corpán Plus로 전체 라이브러리를 이용하세요. 어떤 책이든 첫 부분은 영원히 무료로 체험할 수 있습니다.",
+      "everything": "모든 책, 모든 언어 — 잠금 해제.",
+      "private": "광고 없음. 사용자님의 데이터는 기기에만 저장됩니다.",
+      "team": "저희는 작은 팀이며, 모든 수익을 Corpán에 재투자합니다.",
+      "tryPlus": "Corpán Plus 체험하기",
+      "continueFree": "무료 버전으로 계속하기"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "구문 팩 둘러보기",
       "inactiveBadge": "비활성",
       "moreActionsLabel": "더 많은 작업"
-    }
+    },
+    "unlockWithPlus": "Corpán Plus로 잠금 해제",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus에 포함됨"
   },
   "subscription": {
     "title": "전체 잠금 해제",
@@ -538,5 +567,18 @@
     "maybeLater": "나중에",
     "empty": "더 많은 팩이 곧 출시됩니다 — 그동안 Corpán을 둘러보세요.",
     "offlineEmpty": "인터넷에 연결하여 팩을 찾아보세요 — 아니면 지금은 건너뛰세요."
+  },
+  "paywall": {
+    "title": "Corpán Plus로 계속 이용하세요",
+    "thanksTitle": "Corpanista가 되셨습니다",
+    "thanksBody": "Corpán을 지원해 주셔서 감사합니다. 모든 콘텐츠가 잠금 해제되었습니다.",
+    "bookSubhead": "{{title}}의 무료 미리보기가 끝났습니다.",
+    "subhead": "모든 언어의 모든 책을 잠금 해제하세요. 광고 없음. 사용자님의 데이터는 기기에만 저장됩니다.",
+    "pitch": "저희는 작은 팀이며, 모든 수익을 Corpán에 재투자합니다. Corpanistas 덕분에 광고 없이 성장할 수 있습니다.",
+    "maybeLater": "나중에 할게요",
+    "continue": "계속"
+  },
+  "streak": {
+    "title": "{{count}}일 연속 학습"
   }
 }

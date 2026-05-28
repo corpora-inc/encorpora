@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Não está em iOS",
     "appleNoVoiceTitle": "A Apple ainda não disponibiliza uma voz em {{lang}}",
-    "appleNoVoiceBody": "Uma breve nota para a equipa de acessibilidade da Apple ajuda a reforçar o pedido. Entretanto, o {{lang}} funciona nativamente no Android."
+    "appleNoVoiceBody": "Uma breve nota para a equipa de acessibilidade da Apple ajuda a reforçar o pedido. Entretanto, o {{lang}} funciona nativamente no Android.",
+    "back": "Voltar",
+    "continue": "Continuar",
+    "class": {
+      "title": "Para quem é?",
+      "subtitle": "Vamos adaptar o Corpán a si. Isto fica no seu dispositivo — nunca o enviamos para lado nenhum.",
+      "learner": "Estou a aprender idiomas",
+      "learnerDesc": "Leia e ouça nos idiomas que está a estudar.",
+      "enjoyer": "Quero desfrutar do conteúdo",
+      "enjoyerDesc": "Livros, histórias e jogos no seu idioma.",
+      "polyglot": "Ambos — quero tudo",
+      "polyglotDesc": "Vários idiomas ao mesmo tempo, mais tudo o resto.",
+      "kid": "É para uma criança",
+      "kidDesc": "Livros e jogos de aprendizagem selecionados para leitores mais jovens.",
+      "ageTitle": "Que idade tem o leitor?",
+      "ageUnder13": "Menos de 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Junte-se aos Corpanistas",
+      "subtitle": "O Corpán Plus abre a biblioteca completa. Experimente a primeira parte de qualquer livro grátis, para sempre.",
+      "everything": "Todos os livros, todos os idiomas — desbloqueados.",
+      "private": "Sem anúncios. Os seus dados ficam no seu dispositivo.",
+      "team": "Somos uma equipa pequena e investimos cada cêntimo de volta no Corpán.",
+      "tryPlus": "Experimentar Corpán Plus",
+      "continueFree": "Continuar com a versão gratuita"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Explorar pacotes de frases",
       "inactiveBadge": "Inativo",
       "moreActionsLabel": "Mais ações"
-    }
+    },
+    "unlockWithPlus": "Desbloquear com Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Incluído com Plus"
   },
   "subscription": {
     "title": "Desbloquear tudo",
@@ -539,5 +568,18 @@
     "maybeLater": "Talvez mais tarde",
     "empty": "Mais pacotes estão a caminho — explore o Corpán entretanto.",
     "offlineEmpty": "Conecte-se à internet para descobrir pacotes — ou salte isto por agora."
+  },
+  "paywall": {
+    "title": "Continue com o Corpán Plus",
+    "thanksTitle": "É um Corpanista",
+    "thanksBody": "Obrigado por apoiar o Corpán. Tudo está desbloqueado.",
+    "bookSubhead": "Chegou ao fim da pré-visualização gratuita de {{title}}.",
+    "subhead": "Desbloqueie todos os livros em todos os idiomas. Sem anúncios. Os seus dados ficam no seu dispositivo.",
+    "pitch": "Somos uma equipa pequena e investimos cada cêntimo de volta no Corpán. Os Corpanistas mantêm-no sem anúncios e em crescimento.",
+    "maybeLater": "Talvez mais tarde",
+    "continue": "Continuar"
+  },
+  "streak": {
+    "title": "Sequência de {{count}} dias"
   }
 }

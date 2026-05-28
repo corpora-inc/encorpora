@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Ikke på iOS",
     "appleNoVoiceTitle": "Apple tilbyder endnu ikke en {{lang}}-stemme",
-    "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden."
+    "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden.",
+    "back": "Tilbage",
+    "continue": "Fortsæt",
+    "class": {
+      "title": "Hvem er det til?",
+      "subtitle": "Vi tilpasser Corpán til dig. Dette forbliver på din enhed – vi sender det aldrig andre steder hen.",
+      "learner": "Jeg lærer sprog",
+      "learnerDesc": "Læs og lyt på de sprog, du studerer.",
+      "enjoyer": "Jeg vil nyde indholdet",
+      "enjoyerDesc": "Bøger, historier og spil på dit eget sprog.",
+      "polyglot": "Begge dele – jeg vil have det hele",
+      "polyglotDesc": "Flere sprog på én gang, plus alt det andet.",
+      "kid": "Det er til et barn",
+      "kidDesc": "Udvalgte bøger og læringsspil til yngre læsere.",
+      "ageTitle": "Hvor gammel er læseren?",
+      "ageUnder13": "Under 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Bliv en del af Corpanistas",
+      "subtitle": "Corpán Plus åbner hele biblioteket. Prøv den første del af enhver bog gratis, for altid.",
+      "everything": "Hver bog, hvert sprog – låst op.",
+      "private": "Ingen reklamer. Dine data forbliver på din enhed.",
+      "team": "Vi er et lille team og geninvesterer hver en krone i Corpán.",
+      "tryPlus": "Prøv Corpán Plus",
+      "continueFree": "Fortsæt med gratisversionen"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Gennemse frasepakker",
       "inactiveBadge": "Inaktiv",
       "moreActionsLabel": "Flere handlinger"
-    }
+    },
+    "unlockWithPlus": "Lås op med Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Inkluderet med Plus"
   },
   "subscription": {
     "title": "Lås alt op",
@@ -538,5 +567,18 @@
     "maybeLater": "Måske senere",
     "empty": "Flere pakker er på vej — udforsk Corpán i mellemtiden.",
     "offlineEmpty": "Opret forbindelse til internettet for at opdage pakker — eller spring over for nu."
+  },
+  "paywall": {
+    "title": "Fortsæt med Corpán Plus",
+    "thanksTitle": "Du er en Corpanista",
+    "thanksBody": "Tak for din støtte til Corpán. Alt er låst op.",
+    "bookSubhead": "Du har nået slutningen af den gratis forhåndsvisning af {{title}}.",
+    "subhead": "Lås op for alle bøger på alle sprog. Ingen reklamer. Dine data forbliver på din enhed.",
+    "pitch": "Vi er et lille team og geninvesterer hver en krone i Corpán. Corpanistas holder det reklamefrit og i vækst.",
+    "maybeLater": "Måske senere",
+    "continue": "Fortsæt"
+  },
+  "streak": {
+    "title": "{{count}} dages stribe"
   }
 }

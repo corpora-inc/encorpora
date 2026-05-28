@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "Niet op iOS",
     "appleNoVoiceTitle": "Apple biedt nog geen {{lang}}-stem",
-    "appleNoVoiceBody": "Een korte melding aan het toegankelijkheidsteam van Apple helpt om dat te versnellen. Ondertussen werkt {{lang}} standaard op Android."
+    "appleNoVoiceBody": "Een korte melding aan het toegankelijkheidsteam van Apple helpt om dat te versnellen. Ondertussen werkt {{lang}} standaard op Android.",
+    "back": "Terug",
+    "continue": "Verder",
+    "class": {
+      "title": "Voor wie is dit?",
+      "subtitle": "We stemmen Corpán op jou af. Dit blijft op je apparaat — we sturen het nooit ergens heen.",
+      "learner": "Ik leer talen",
+      "learnerDesc": "Lees en luister in de talen die je leert.",
+      "enjoyer": "Ik wil van de content genieten",
+      "enjoyerDesc": "Boeken, verhalen en spellen in je eigen taal.",
+      "polyglot": "Beide — ik wil alles",
+      "polyglotDesc": "Meerdere talen tegelijk, plus al het andere.",
+      "kid": "Het is voor een kind",
+      "kidDesc": "Samengestelde boeken en leerspellen voor jonge lezers.",
+      "ageTitle": "Hoe oud is de lezer?",
+      "ageUnder13": "Jonger dan 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Sluit je aan bij de Corpanistas",
+      "subtitle": "Corpán Plus opent de hele bibliotheek. Probeer het eerste deel van elk boek gratis, voor altijd.",
+      "everything": "Elk boek, elke taal — ontgrendeld.",
+      "private": "Geen advertenties. Je gegevens blijven op je apparaat.",
+      "team": "We zijn een klein team en steken elke cent terug in Corpán.",
+      "tryPlus": "Probeer Corpán Plus",
+      "continueFree": "Ga verder met de gratis versie"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "Frasenpakketten verkennen",
       "inactiveBadge": "Inactief",
       "moreActionsLabel": "Meer acties"
-    }
+    },
+    "unlockWithPlus": "Ontgrendel met Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Inbegrepen bij Plus"
   },
   "subscription": {
     "title": "Alles ontgrendelen",
@@ -538,5 +567,18 @@
     "maybeLater": "Misschien later",
     "empty": "Meer packs zijn onderweg — verken Corpán in de tussentijd.",
     "offlineEmpty": "Maak verbinding met internet om packs te ontdekken — of sla dit voor nu over."
+  },
+  "paywall": {
+    "title": "Ga verder met Corpán Plus",
+    "thanksTitle": "Je bent een Corpanista",
+    "thanksBody": "Bedankt voor je steun aan Corpán. Alles is ontgrendeld.",
+    "bookSubhead": "Je hebt het einde bereikt van de gratis preview van {{title}}.",
+    "subhead": "Ontgrendel elk boek in elke taal. Geen advertenties. Je gegevens blijven op je apparaat.",
+    "pitch": "We zijn een klein team en steken elke cent terug in Corpán. Corpanistas houden het advertentievrij en groeiend.",
+    "maybeLater": "Misschien later",
+    "continue": "Verder"
+  },
+  "streak": {
+    "title": "{{count}} dagen op rij"
   }
 }

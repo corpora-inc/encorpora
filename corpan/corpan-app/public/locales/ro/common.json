@@ -230,7 +230,33 @@
     },
     "notOnAppleIOS": "Nu ești pe iOS",
     "appleNoVoiceTitle": "Apple nu oferă încă o voce în {{lang}}",
-    "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android."
+    "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android.",
+    "back": "Înapoi",
+    "continue": "Continuă",
+    "class": {
+      "title": "Pentru cine este?",
+      "subtitle": "Vom adapta Corpán pentru tine. Aceste date rămân pe dispozitivul tău — nu le trimitem nicăieri.",
+      "learner": "Învăț limbi străine",
+      "learnerDesc": "Citește și ascultă în limbile pe care le studiezi.",
+      "enjoyer": "Vreau să mă bucur de conținut",
+      "enjoyerDesc": "Cărți, povești și jocuri în limba ta.",
+      "polyglot": "Ambele — le vreau pe toate",
+      "polyglotDesc": "Mai multe limbi simultan, plus tot restul.",
+      "kid": "Este pentru un copil",
+      "kidDesc": "Cărți și jocuri educative selectate pentru cititorii mai tineri.",
+      "ageTitle": "Câți ani are cititorul?",
+      "ageUnder13": "Sub 13 ani",
+      "ageTeen": "13–17 ani"
+    },
+    "pitch": {
+      "title": "Alătură-te Corpanistas",
+      "subtitle": "Corpán Plus îți deschide întreaga bibliotecă. Încearcă gratuit, pentru totdeauna, prima parte a oricărei cărți.",
+      "everything": "Fiecare carte, fiecare limbă — deblocată.",
+      "private": "Fără reclame. Datele tale rămân pe dispozitiv.",
+      "team": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán.",
+      "tryPlus": "Încearcă Corpán Plus",
+      "continueFree": "Continuă cu versiunea gratuită"
+    }
   },
   "socials": {
     "youtube": {
@@ -482,7 +508,10 @@
       "openDrawerLabel": "Răsfoiește pachete de fraze",
       "inactiveBadge": "Inactiv",
       "moreActionsLabel": "Mai multe acțiuni"
-    }
+    },
+    "unlockWithPlus": "Deblochează cu Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Inclus cu Plus"
   },
   "subscription": {
     "title": "Deblochează tot",
@@ -539,5 +568,18 @@
     "maybeLater": "Poate mai târziu",
     "empty": "Mai multe pachete sunt pe drum — explorează Corpán între timp.",
     "offlineEmpty": "Conectează-te la internet pentru a descoperi pachete — sau sari peste asta pentru acum."
+  },
+  "paywall": {
+    "title": "Continuă cu Corpán Plus",
+    "thanksTitle": "Ești un Corpanista",
+    "thanksBody": "Îți mulțumim pentru susținerea Corpán. Totul este deblocat.",
+    "bookSubhead": "Ai ajuns la finalul previzualizării gratuite a cărții {{title}}.",
+    "subhead": "Deblochează fiecare carte, în fiecare limbă. Fără reclame. Datele tale rămân pe dispozitiv.",
+    "pitch": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán. Corpanistas mențin aplicația fără reclame și în creștere.",
+    "maybeLater": "Poate mai târziu",
+    "continue": "Continuă"
+  },
+  "streak": {
+    "title": "Serie de {{count}} zile"
   }
 }

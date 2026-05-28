@@ -229,7 +229,33 @@
     },
     "notOnAppleIOS": "iOSではない場合",
     "appleNoVoiceTitle": "Apple ではまだ {{lang}} の音声が提供されていません",
-    "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。"
+    "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。",
+    "back": "戻る",
+    "continue": "続ける",
+    "class": {
+      "title": "誰が使いますか？",
+      "subtitle": "あなたに最適なCorpánを。データはデバイス内にとどまり、外部送信はしません。",
+      "learner": "言語を学習しています",
+      "learnerDesc": "学習中の言語で読んだり聞いたりできます。",
+      "enjoyer": "コンテンツを楽しみたい",
+      "enjoyerDesc": "母国語で本や物語、ゲームを楽しめます。",
+      "polyglot": "両方 — すべて利用したい",
+      "polyglotDesc": "複数の言語を同時に、その他すべて。",
+      "kid": "子供向けです",
+      "kidDesc": "お子様向けの厳選された本と学習ゲーム。",
+      "ageTitle": "読者の年齢は？",
+      "ageUnder13": "13歳未満",
+      "ageTeen": "13〜17歳"
+    },
+    "pitch": {
+      "title": "Corpanistasに参加しましょう",
+      "subtitle": "Corpán Plusで全ライブラリが開放されます。どの本も最初の部分は永久に無料で試せます。",
+      "everything": "すべての本、すべての言語 — 解放されます。",
+      "private": "広告なし。データはデバイスに保存されます。",
+      "team": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。",
+      "tryPlus": "Corpán Plusを試す",
+      "continueFree": "無料プランで続ける"
+    }
   },
   "socials": {
     "youtube": {
@@ -481,7 +507,10 @@
       "openDrawerLabel": "フレーズパックを見る",
       "inactiveBadge": "非アクティブ",
       "moreActionsLabel": "その他の操作"
-    }
+    },
+    "unlockWithPlus": "Corpán Plusで解放",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plusに含まれています"
   },
   "subscription": {
     "title": "すべてを解除",
@@ -538,5 +567,18 @@
     "maybeLater": "後で",
     "empty": "さらに多くのパックがやってきます — その間 Corpán を探検してください。",
     "offlineEmpty": "インターネットに接続してパックを見つけよう — または今はスキップ。"
+  },
+  "paywall": {
+    "title": "Corpán Plusで続けましょう",
+    "thanksTitle": "あなたはCorpanistaです",
+    "thanksBody": "Corpánをサポートしていただきありがとうございます。すべての機能が解放されました。",
+    "bookSubhead": "{{title}}の無料プレビューはここまでです。",
+    "subhead": "すべての本、すべての言語を解放。広告なし。データはデバイスに保存されます。",
+    "pitch": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。Corpanistasの皆様が、広告なしのCorpánの成長を支えています。",
+    "maybeLater": "後で",
+    "continue": "続ける"
+  },
+  "streak": {
+    "title": "{{count}}日連続"
   }
 }
