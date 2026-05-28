@@ -30,6 +30,17 @@ export type CatalogGame = {
   descriptionLocalized?: LocalizedString
   imageUrl?: string
   purchase?: PurchaseInfo
+  /** System packs (Library, readers) auto-install on launch — no user action.
+   * Lets us ship Library/reader UX updates without an app-store release. */
+  systemPack?: boolean
+}
+
+/** Corpán Plus two-ZIP artifact (preview public, full Plus-gated). */
+export type NarrationArtifact = {
+  url: string
+  sha256: string
+  sizeMb: number
+  requires?: string
 }
 
 export type CatalogNarrationEntry = {
@@ -49,6 +60,12 @@ export type CatalogNarrationEntry = {
   purchase: PurchaseInfo
   /** Minimum Corpan app version required to use this pack */
   minAppVersion?: string
+
+  // ── Corpán Plus two-ZIP model (additive) ──
+  totalSegments?: number
+  freeSegments?: number
+  preview?: NarrationArtifact
+  full?: NarrationArtifact
 }
 
 export type CatalogGamePack = {
