@@ -515,6 +515,24 @@ export function createStargateReader(
     }
   }
 
+  // Corpán Plus: report deepest segment reached for the host progress store.
+  function reportSegmentProgress(index: number) {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:segment-progress", {
+          detail: {
+            bookId,
+            language: currentLanguage,
+            segmentsReached: index + 1,
+            totalSegments: segments.length,
+          },
+        })
+      )
+    } catch {
+      /* non-fatal */
+    }
+  }
+
   function getResolvedBookTitle(): string {
     return bookDisplayName
   }
@@ -1291,6 +1309,7 @@ export function createStargateReader(
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
+            reportSegmentProgress(index)
             // Avoid native bridge work on every segment boundary; it can hitch playback.
             // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
             if (audioEngine?.isPlaying()) {

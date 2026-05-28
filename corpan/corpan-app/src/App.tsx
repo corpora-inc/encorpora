@@ -26,6 +26,7 @@ import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
+import { useProgressStore } from "@/store/progress";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -212,7 +213,28 @@ export default function App() {
       "corpan:restore-purchases-requested",
       onRestoreRequested
     );
+    /**
+     * Readers report the deepest segment reached so the Library "Continue"
+     * shelf + streaks have on-device data. Throttled on the reader side.
+     */
+    const onSegmentProgress = (e: Event) => {
+      const detail = (e as CustomEvent<{
+        bookId?: string;
+        language?: string;
+        segmentsReached?: number;
+        totalSegments?: number;
+      }>).detail;
+      if (detail?.bookId && detail?.language && typeof detail.segmentsReached === "number") {
+        useProgressStore.getState().reportProgress({
+          bookId: detail.bookId,
+          language: detail.language,
+          segmentsReached: detail.segmentsReached,
+          totalSegments: detail.totalSegments,
+        });
+      }
+    };
     window.addEventListener("corpan:request-unlock", onRequestUnlock);
+    window.addEventListener("corpan:segment-progress", onSegmentProgress);
     return () => {
       window.removeEventListener("corpan:purchase-recorded", onPurchaseRecorded);
       window.removeEventListener(
@@ -224,6 +246,7 @@ export default function App() {
         onRestoreRequested
       );
       window.removeEventListener("corpan:request-unlock", onRequestUnlock);
+      window.removeEventListener("corpan:segment-progress", onSegmentProgress);
     };
   }, []);
 

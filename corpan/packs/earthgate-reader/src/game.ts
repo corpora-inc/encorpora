@@ -421,6 +421,25 @@ export function createEarthgateReader(
     }
   }
 
+  // Corpán Plus: report deepest segment reached so the host's progress store
+  // can power the Library "Continue" shelf + streaks. Fire-and-forget.
+  function reportSegmentProgress(index: number) {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:segment-progress", {
+          detail: {
+            bookId,
+            language: currentLanguage,
+            segmentsReached: index + 1,
+            totalSegments: segments.length,
+          },
+        })
+      )
+    } catch {
+      /* non-fatal */
+    }
+  }
+
   function persistBookmark() {
     if (!audioEngine) return
     const bm: Bookmark = {
@@ -925,6 +944,7 @@ export function createEarthgateReader(
             syncNativeNowPlaying()
             // Update paragraph view when segment changes
             updateParagraphForSegment(index)
+            reportSegmentProgress(index)
             if (audioEngine?.isPlaying()) {
               analytics.track("segment_play", { segment_index: index })
             }
