@@ -43,6 +43,9 @@ export type SegmentsData = {
   book_id: string
   total_segments: number
   segments: BookSegment[]
+  /** Corpán Plus free preview: true when this is a truncated preview pack.
+   * The reader shows the paywall affordance after the last segment. */
+  is_preview?: boolean
 }
 
 /** A word positioned in the timeline with absolute timing */

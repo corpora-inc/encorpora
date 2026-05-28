@@ -389,6 +389,8 @@ export function createEarthgateReader(
   let manifest: AudioManifest | null = null
   let chapters: ChapterInfo[] = []
   let currentLanguage = (initialState?.language as string) || "en"
+  // Corpán Plus: true when the installed pack is a truncated free preview.
+  let isPreview = false
 
   const bookId =
     (initialState?.bookId as string) ||
@@ -398,6 +400,26 @@ export function createEarthgateReader(
 
   const bookDisplayName =
     (initialState?.bookTitle as string) || BOOK_NAMES[bookId] || bookId
+
+  // Corpán Plus: ask the host to open the paywall after a finished preview.
+  // The main app listens for this window event (same channel the purchase
+  // manager uses) and opens PaywallSheet with this book's context.
+  function maybeOfferPlus() {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:request-unlock", {
+          detail: {
+            surface: "reader_eof_free",
+            bookTitle: bookDisplayName,
+            bookId,
+            language: currentLanguage,
+          },
+        })
+      )
+    } catch (err) {
+      console.warn("[EarthgateReader] request-unlock dispatch failed:", err)
+    }
+  }
 
   function persistBookmark() {
     if (!audioEngine) return
@@ -865,6 +887,11 @@ export function createEarthgateReader(
 
         const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
+        // Corpán Plus: explicit flag, or infer from a truncated segment list.
+        isPreview =
+          segData.is_preview === true ||
+          (typeof segData.total_segments === "number" &&
+            segData.segments.length < segData.total_segments)
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
       }
 
@@ -915,6 +942,13 @@ export function createEarthgateReader(
           void stopNativeKeepAlive()
           nativeSessionActive = false
           nativePlaybackStateHint = "unknown"
+          // Corpán Plus: a finished preview is the conversion moment. Ask the
+          // host to surface the paywall (subscription-only). The host opens
+          // PaywallSheet; if the user subscribes, the full pack replaces this
+          // preview on next install.
+          if (isPreview) {
+            maybeOfferPlus()
+          }
         },
         () => {
           // No waveform extraction needed for DOM rendering

@@ -484,6 +484,8 @@ export function createStargateReader(
   let segments: BookSegment[] = []
   let chapters: ChapterInfo[] = []
   let currentLanguage = (initialState?.language as string) || "en"
+  // Corpán Plus: true when the installed pack is a truncated free preview.
+  let isPreview = false
 
   // Book ID for bookmark namespacing
   const bookId =
@@ -494,6 +496,24 @@ export function createStargateReader(
 
   const bookDisplayName =
     (initialState?.bookTitle as string) || BOOK_NAMES[bookId] || bookId
+
+  // Corpán Plus: ask the host to open the paywall after a finished preview.
+  function maybeOfferPlus() {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:request-unlock", {
+          detail: {
+            surface: "reader_eof_free",
+            bookTitle: bookDisplayName,
+            bookId,
+            language: currentLanguage,
+          },
+        })
+      )
+    } catch (err) {
+      console.warn("[StargateReader] request-unlock dispatch failed:", err)
+    }
+  }
 
   function getResolvedBookTitle(): string {
     return bookDisplayName
@@ -1231,6 +1251,10 @@ export function createStargateReader(
 
         const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
+        isPreview =
+          segData.is_preview === true ||
+          (typeof segData.total_segments === "number" &&
+            segData.segments.length < segData.total_segments)
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
       }
 
@@ -1286,6 +1310,10 @@ export function createStargateReader(
           void stopNativeKeepAlive()
           nativeSessionActive = false
           nativePlaybackStateHint = "unknown"
+          // Corpán Plus: finished preview → ask host to surface the paywall.
+          if (isPreview) {
+            maybeOfferPlus()
+          }
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded

@@ -5,10 +5,8 @@ import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { CatalogGame } from "@/contentPacks/catalog"
 import { useInstallContext } from "@/contentPacks/InstallContext"
-import {
-  getProductStatus,
-  purchaseAndVerify,
-} from "@/contentPacks/purchase"
+import { getProductStatus } from "@/contentPacks/purchase"
+import { usePaywallStore } from "@/store/paywall"
 
 export type PackActionState = "available" | "installed" | "update" | "offline"
 
@@ -30,21 +28,30 @@ export function PackActions({
   const { t } = useTranslation()
   const removeGame = useGamesStore((s) => s.removeGame)
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
+  const subscriptionActive = useEntitlementStore((s) => s.subscription.active)
+  const openPaywall = usePaywallStore((s) => s.openPaywall)
   const { installCatalogPack, isInstalling } = useInstallContext()
-  const [isPurchasing, setIsPurchasing] = useState(false)
 
   const isPremium = pack.purchase?.type === "iap"
   const productId = pack.purchase?.productId
 
-  // Live entitlement check via the platform plugin — no persisted snapshot.
-  // `null` while pending; we treat that as "not yet entitled" for rendering
-  // purposes so we don't flash an Install button on a premium pack.
+  // Live entitlement check. Per-book IAP is retired — new unlocks come via
+  // Corpán Plus. A premium pack is entitled if the user is subscribed OR (for
+  // legacy buyers) still owns the per-book product. `null` while pending.
   const [entitled, setEntitled] = useState<boolean | null>(
     isPremium ? null : true
   )
   useEffect(() => {
-    if (!isPremium || !productId) {
+    if (!isPremium) {
       setEntitled(true)
+      return
+    }
+    if (subscriptionActive) {
+      setEntitled(true)
+      return
+    }
+    if (!productId) {
+      setEntitled(false)
       return
     }
     let cancelled = false
@@ -55,30 +62,14 @@ export function PackActions({
     return () => {
       cancelled = true
     }
-  }, [isPremium, productId])
+  }, [isPremium, productId, subscriptionActive])
 
   const handleInstall = () => {
     installCatalogPack(pack)
   }
 
-  const handlePurchase = async () => {
-    if (!productId) return
-    setIsPurchasing(true)
-    try {
-      const result = await purchaseAndVerify(productId, pack.id)
-      if (result.cancelled) {
-        // User dismissed the purchase sheet — no-op, no error UI
-        return
-      }
-      if (result.error) {
-        console.error("[PackActions] purchase error:", result.error)
-        return
-      }
-      // Purchase succeeded — trigger install
-      installCatalogPack(pack)
-    } finally {
-      setIsPurchasing(false)
-    }
+  const handleUnlock = () => {
+    openPaywall({ surface: "library_unlock", bookId: pack.id })
   }
 
   const handleRemove = () => {
@@ -186,26 +177,22 @@ export function PackActions({
   }
 
   // Available (not installed)
-  // Premium + not entitled + IAP available → show buy button
+  // Premium + not entitled + IAP available → Corpán Plus unlock (no per-book buy)
   if (isPremium && !entitled && iapAvailable) {
     return (
       <div className="space-y-2">
         <Button
-          onClick={handlePurchase}
-          disabled={isPurchasing || isOffline}
+          onClick={handleUnlock}
+          disabled={isOffline}
           className="w-full !h-11 md:!h-14"
           size="sm"
         >
-          {isPurchasing
-            ? t("packs.purchasing", "Purchasing...")
-            : t("packs.buy", "Buy {{price}}", {
-                price: pack.purchase?.priceLabel ?? "",
-              })}
+          {t("packs.unlockWithPlus", "Unlock with Corpán Plus")}
         </Button>
         {isOffline ? (
           <p className="text-xs text-muted-foreground">
             {t("offline.purchaseNeedsInternet", {
-              defaultValue: "Reconnect to purchase.",
+              defaultValue: "Reconnect to subscribe.",
             })}
           </p>
         ) : null}
@@ -213,12 +200,12 @@ export function PackActions({
     )
   }
 
-  // Premium + not entitled + no IAP → show unavailable
+  // Premium + not entitled + no IAP → Plus unavailable on this platform
   if (isPremium && !entitled && !iapAvailable) {
     return (
       <div className="space-y-2">
         <Button disabled className="w-full !h-11 md:!h-14" size="sm">
-          {pack.purchase?.priceLabel ?? t("packs.premium", "Premium")}
+          {t("packs.plus", "Corpán Plus")}
         </Button>
         <p className="text-xs text-muted-foreground">
           {t("packs.availableOnMobile", "Available on iOS & Android")}
@@ -241,7 +228,7 @@ export function PackActions({
           : t("packs.get")}
       </Button>
       <div className="flex items-center justify-between text-xs text-muted-foreground">
-        <span>{pack.purchase?.priceLabel ?? t("packs.free")}</span>
+        <span>{isPremium ? t("packs.includedWithPlus", "Included with Plus") : t("packs.free")}</span>
         {isOffline ? (
           <span>
             {t("offline.installNeedsInternet", {
