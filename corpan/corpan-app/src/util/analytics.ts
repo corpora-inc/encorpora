@@ -152,6 +152,45 @@ export function trackPaidUnlockViewed(surface: string, packId?: string): void {
   }
 }
 
+// ── Corpán Plus paywall funnel ──
+export function trackPaywallShown(
+  surface: string,
+  bookId?: string,
+  language?: string,
+): void {
+  try {
+    analytics.track("app_paywall_shown", {
+      surface,
+      ...(bookId ? { book_id: bookId } : {}),
+      ...(language ? { language } : {}),
+    })
+  } catch {
+    /* unreachable */
+  }
+}
+
+export function trackPaywallDismissed(surface: string, bookId?: string): void {
+  try {
+    analytics.track("app_paywall_dismissed", {
+      surface,
+      ...(bookId ? { book_id: bookId } : {}),
+    })
+  } catch {
+    /* unreachable */
+  }
+}
+
+export function trackPaywallConverted(
+  plan: "monthly" | "annual",
+  surface: string,
+): void {
+  try {
+    analytics.track("app_paywall_converted", { plan, surface })
+  } catch {
+    /* unreachable */
+  }
+}
+
 /** Hot-path increment, called from the TTS chokepoint. O(1) integer add. */
 export function incrementSegmentCounter(language?: string): void {
   try {

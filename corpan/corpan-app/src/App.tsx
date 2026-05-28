@@ -24,6 +24,8 @@ import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
+import { PaywallSheet } from "@/components/paywall/PaywallSheet";
+import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -182,6 +184,25 @@ export default function App() {
         console.warn("[App] restore from reader failed:", err);
       });
     };
+    /**
+     * Any pack (reader at end of free preview, Library "Unlock with Plus")
+     * dispatches this to surface the Corpán Plus paywall. detail carries the
+     * surface + optional book context for the headline and analytics.
+     */
+    const onRequestUnlock = (e: Event) => {
+      const detail = (e as CustomEvent<{
+        surface?: string;
+        bookTitle?: string;
+        bookId?: string;
+        language?: string;
+      }>).detail;
+      usePaywallStore.getState().openPaywall({
+        surface: (detail?.surface as PaywallSurface) ?? "other",
+        bookTitle: detail?.bookTitle,
+        bookId: detail?.bookId,
+        language: detail?.language,
+      });
+    };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
     window.addEventListener(
       "corpan:subscription-recorded",
@@ -191,6 +212,7 @@ export default function App() {
       "corpan:restore-purchases-requested",
       onRestoreRequested
     );
+    window.addEventListener("corpan:request-unlock", onRequestUnlock);
     return () => {
       window.removeEventListener("corpan:purchase-recorded", onPurchaseRecorded);
       window.removeEventListener(
@@ -201,6 +223,7 @@ export default function App() {
         "corpan:restore-purchases-requested",
         onRestoreRequested
       );
+      window.removeEventListener("corpan:request-unlock", onRequestUnlock);
     };
   }, []);
 
@@ -342,6 +365,7 @@ export default function App() {
 
       <RatingPrompt />
       <UpdatePrompt />
+      <PaywallSheet />
 
       {activeGame ? (
         <ContentPackOverlay
