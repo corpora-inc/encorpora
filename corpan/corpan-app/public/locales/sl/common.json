@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Pošlji anonimne podatke o uporabi",
     "sendAnonUsageHint": "Anonimno, omejeno na sejo. Brez računov, brez ID-jev naprav, brez shranjevanja naslovov IP. Kadar koli lahko izklopite.",
-    "readPrivacyPromise": "Preberite našo obljubo o zasebnosti"
+    "readPrivacyPromise": "Preberite našo obljubo o zasebnosti",
+    "showStreak": "Prikaži bralni niz",
+    "showStreakHint": "Majhno število dni v glavi. Samo na napravi, brez opomnikov ali obvestil."
   },
   "onboarding": {
     "welcome": "Dobrodošli",

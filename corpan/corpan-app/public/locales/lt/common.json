@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Siųsti anoniminius naudojimo duomenis",
     "sendAnonUsageHint": "Anonimiška, tik sesijos metu. Jokių paskyrų, jokių įrenginio ID, jokio IP saugojimo. Galite bet kada išjungti.",
-    "readPrivacyPromise": "Skaityti mūsų privatumo pažadą"
+    "readPrivacyPromise": "Skaityti mūsų privatumo pažadą",
+    "showStreak": "Rodyti skaitymo seriją",
+    "showStreakHint": "Mažas dienų skaičius antraštėje. Tik įrenginyje, jokių priminimų ar pranešimų."
   },
   "onboarding": {
     "welcome": "Sveiki atvykę",

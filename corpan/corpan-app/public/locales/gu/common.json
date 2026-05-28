@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "અનામી ઉપયોગ ડેટા મોકલો",
     "sendAnonUsageHint": "અનામી, સત્ર-મર્યાદિત. કોઈ એકાઉન્ટ નહીં, કોઈ ડિવાઇસ ID નહીં, IP સંગ્રહ નહીં. ક્યારે પણ બંધ કરો.",
-    "readPrivacyPromise": "અમારું Privacy Promise વાંચો"
+    "readPrivacyPromise": "અમારું Privacy Promise વાંચો",
+    "showStreak": "રીડિંગ સ્ટ્રીક બતાવો",
+    "showStreakHint": "હેડરમાં નાનો દિવસ-ગણતરી. ફક્ત ડિવાઇસ પર, કોઈ રીમાઇન્ડર કે નોટિફિકેશન નહીં."
   },
   "onboarding": {
     "welcome": "સ્વાગત",

@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Anonim kullanım verilerini gönder",
     "sendAnonUsageHint": "Anonim, oturumla sınırlı. Hesap yok, cihaz kimliği yok, IP saklanmaz. İstediğiniz zaman kapatabilirsiniz.",
-    "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun"
+    "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun",
+    "showStreak": "Okuma serisini göster",
+    "showStreakHint": "Başlıkta küçük bir gün sayacı. Yalnızca cihazda, hatırlatıcı veya bildirim yok."
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",

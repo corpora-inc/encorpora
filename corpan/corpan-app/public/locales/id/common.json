@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Kirim data penggunaan anonim",
     "sendAnonUsageHint": "Anonim, terbatas pada sesi. Tanpa akun, tanpa ID perangkat, tanpa penyimpanan IP. Bisa dimatikan kapan saja.",
-    "readPrivacyPromise": "Baca Janji Privasi kami"
+    "readPrivacyPromise": "Baca Janji Privasi kami",
+    "showStreak": "Tampilkan rentetan membaca",
+    "showStreakHint": "Penghitung hari kecil di header. Hanya di perangkat, tanpa pengingat atau notifikasi."
   },
   "onboarding": {
     "welcome": "Selamat datang",

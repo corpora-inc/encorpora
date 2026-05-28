@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Lähetä anonyymit käyttötiedot",
     "sendAnonUsageHint": "Anonyymi, istuntokohtainen. Ei tilejä, ei laitetunnisteita, ei IP-osoitteiden tallennusta. Voit poistaa tämän käytöstä milloin tahansa.",
-    "readPrivacyPromise": "Lue tietosuojalupauksemme"
+    "readPrivacyPromise": "Lue tietosuojalupauksemme",
+    "showStreak": "Näytä lukemisen putki",
+    "showStreakHint": "Pieni päivälaskuri otsikossa. Vain laitteella, ei muistutuksia tai ilmoituksia."
   },
   "onboarding": {
     "welcome": "Tervetuloa",

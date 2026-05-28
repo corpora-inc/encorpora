@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Hantar data penggunaan tanpa nama",
     "sendAnonUsageHint": "Tanpa nama, terhad kepada sesi. Tiada akaun, tiada ID peranti, tiada storan IP. Matikan bila-bila masa.",
-    "readPrivacyPromise": "Baca Janji Privasi kami"
+    "readPrivacyPromise": "Baca Janji Privasi kami",
+    "showStreak": "Tunjukkan siri bacaan",
+    "showStreakHint": "Kiraan hari kecil di pengepala. Pada peranti sahaja, tiada peringatan atau pemberitahuan."
   },
   "onboarding": {
     "welcome": "Selamat datang",

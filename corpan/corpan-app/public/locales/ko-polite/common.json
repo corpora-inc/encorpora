@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "익명 사용 데이터 보내기",
     "sendAnonUsageHint": "익명이며 세션 범위로만 사용됩니다. 계정, 기기 ID, IP 저장은 없습니다. 언제든지 끌 수 있습니다.",
-    "readPrivacyPromise": "개인정보 보호 약속 읽기"
+    "readPrivacyPromise": "개인정보 보호 약속 읽기",
+    "showStreak": "연속 학습 기록 표시",
+    "showStreakHint": "헤더에 작은 일수 표시. 기기에만 저장되며, 알림은 없습니다."
   },
   "onboarding": {
     "welcome": "환영합니다",

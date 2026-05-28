@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Anonyme Nutzungsdaten senden",
     "sendAnonUsageHint": "Anonym, nur für die aktuelle Sitzung. Keine Konten, keine Geräte-IDs, keine IP-Speicherung. Jederzeit abschaltbar.",
-    "readPrivacyPromise": "Unser Datenschutzversprechen lesen"
+    "readPrivacyPromise": "Unser Datenschutzversprechen lesen",
+    "showStreak": "Leseserie anzeigen",
+    "showStreakHint": "Eine kleine Tageszahl in der Kopfzeile. Nur auf dem Gerät, keine Erinnerungen oder Benachrichtigungen."
   },
   "onboarding": {
     "welcome": "Willkommen",

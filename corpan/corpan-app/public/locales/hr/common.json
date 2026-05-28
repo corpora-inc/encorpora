@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Šalji anonimne podatke o korištenju",
     "sendAnonUsageHint": "Anonimno, samo za ovu sesiju. Nema računa, nema ID-jeva uređaja, nema pohrane IP adresa. Isključite kad god želite.",
-    "readPrivacyPromise": "Pročitajte naše obećanje o privatnosti"
+    "readPrivacyPromise": "Pročitajte naše obećanje o privatnosti",
+    "showStreak": "Prikaži niz čitanja",
+    "showStreakHint": "Mali brojač dana u zaglavlju. Samo na uređaju, bez podsjetnika ili obavijesti."
   },
   "onboarding": {
     "welcome": "Dobrodošli",

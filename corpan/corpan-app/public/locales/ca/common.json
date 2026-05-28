@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Envia dades d'ús anònimes",
     "sendAnonUsageHint": "Anònimes i limitades a la sessió. Sense comptes, sense identificadors del dispositiu i sense emmagatzemar IP. Pots desactivar-ho en qualsevol moment.",
-    "readPrivacyPromise": "Llegeix la nostra promesa de privacitat"
+    "readPrivacyPromise": "Llegeix la nostra promesa de privacitat",
+    "showStreak": "Mostra la ratxa de lectura",
+    "showStreakHint": "Un petit comptador de dies a la capçalera. Només al dispositiu, sense recordatoris ni notificacions."
   },
   "onboarding": {
     "welcome": "Benvingut",

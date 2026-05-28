@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Envoyer des données d’utilisation anonymes",
     "sendAnonUsageHint": "Anonymes et limitées à la session. Aucun compte, aucun identifiant d’appareil, aucune adresse IP conservée. Désactivez à tout moment.",
-    "readPrivacyPromise": "Lire notre promesse de confidentialité"
+    "readPrivacyPromise": "Lire notre promesse de confidentialité",
+    "showStreak": "Afficher la série de lecture",
+    "showStreakHint": "Un petit compteur de jours dans l'en-tête. Uniquement sur l'appareil, pas de rappels ni de notifications."
   },
   "onboarding": {
     "welcome": "Bienvenue",

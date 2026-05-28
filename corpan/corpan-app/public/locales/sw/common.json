@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Tuma data ya matumizi bila utambulisho",
     "sendAnonUsageHint": "Bila utambulisho, ndani ya kipindi hiki tu. Hakuna akaunti, hakuna vitambulisho vya kifaa, hakuna kuhifadhi IP. Unaweza kuzima wakati wowote.",
-    "readPrivacyPromise": "Soma Ahadi yetu ya Faragha"
+    "readPrivacyPromise": "Soma Ahadi yetu ya Faragha",
+    "showStreak": "Onyesha mfululizo wa kusoma",
+    "showStreakHint": "Hesabu ndogo ya siku kwenye kichwa. Kwenye kifaa pekee, hakuna vikumbusho au arifa."
   },
   "onboarding": {
     "welcome": "Karibu",

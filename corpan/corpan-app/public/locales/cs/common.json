@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Posílat anonymní údaje o používání",
     "sendAnonUsageHint": "Anonymní, jen pro toto sezení. Žádné účty, žádná ID zařízení, žádné ukládání IP adres. Kdykoli můžete vypnout.",
-    "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí"
+    "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí",
+    "showStreak": "Zobrazit sérii čtení",
+    "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení."
   },
   "onboarding": {
     "welcome": "Vítejte",

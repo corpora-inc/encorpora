@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Névtelen használati adatok küldése",
     "sendAnonUsageHint": "Névtelen, munkamenethez kötött. Nincsenek fiókok, eszközazonosítók vagy IP-cím-tárolás. Bármikor kikapcsolhatod.",
-    "readPrivacyPromise": "Olvasd el az Adatvédelmi ígéretünket"
+    "readPrivacyPromise": "Olvasd el az Adatvédelmi ígéretünket",
+    "showStreak": "Olvasási sorozat megjelenítése",
+    "showStreakHint": "Egy kis napi számláló a fejlécben. Csak az eszközön, emlékeztetők és értesítések nélkül."
   },
   "onboarding": {
     "welcome": "Üdvözöljük",

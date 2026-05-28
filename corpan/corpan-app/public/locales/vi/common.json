@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Gửi dữ liệu sử dụng ẩn danh",
     "sendAnonUsageHint": "Ẩn danh, chỉ trong phiên. Không có tài khoản, không có ID thiết bị, không lưu IP. Có thể tắt bất cứ lúc nào.",
-    "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi"
+    "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi",
+    "showStreak": "Hiển thị chuỗi đọc sách",
+    "showStreakHint": "Số ngày nhỏ ở tiêu đề. Chỉ trên thiết bị, không có lời nhắc hay thông báo."
   },
   "onboarding": {
     "welcome": "Chào mừng",

@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Skicka anonym användningsdata",
     "sendAnonUsageHint": "Anonymt och knutet till sessionen. Inga konton, inga enhets-ID:n, ingen lagring av IP-adresser. Stäng av när som helst.",
-    "readPrivacyPromise": "Läs vårt integritetslöfte"
+    "readPrivacyPromise": "Läs vårt integritetslöfte",
+    "showStreak": "Visa lässvit",
+    "showStreakHint": "En liten dagräknare i sidhuvudet. Endast på enheten, inga påminnelser eller notiser."
   },
   "onboarding": {
     "welcome": "Välkommen",

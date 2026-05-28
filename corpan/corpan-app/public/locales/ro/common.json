@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "Trimite date anonime de utilizare",
     "sendAnonUsageHint": "Anonime, valabile doar pe durata sesiunii. Fără conturi, fără ID-uri de dispozitiv, fără stocare IP. Poți dezactiva oricând.",
-    "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate"
+    "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate",
+    "showStreak": "Afișează seria de lectură",
+    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
   },
   "onboarding": {
     "welcome": "Bine ai venit",

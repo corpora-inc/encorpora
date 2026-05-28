@@ -124,7 +124,9 @@
     },
     "sendAnonUsage": "傳送匿名使用資料",
     "sendAnonUsageHint": "匿名、以工作階段為範圍。無帳戶、無裝置 ID、唔會儲存 IP。你可以隨時關閉。",
-    "readPrivacyPromise": "閱讀我哋嘅私隱承諾"
+    "readPrivacyPromise": "閱讀我哋嘅私隱承諾",
+    "showStreak": "顯示閱讀日數",
+    "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。"
   },
   "onboarding": {
     "welcome": "歡迎",

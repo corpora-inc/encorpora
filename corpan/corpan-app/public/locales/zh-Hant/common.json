@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "傳送匿名使用資料",
     "sendAnonUsageHint": "匿名、僅限本次使用階段。不需帳號、不含裝置 ID，也不會儲存 IP。你可隨時關閉。",
-    "readPrivacyPromise": "閱讀我們的隱私承諾"
+    "readPrivacyPromise": "閱讀我們的隱私承諾",
+    "showStreak": "顯示連續閱讀天數",
+    "showStreakHint": "標題中顯示連續閱讀天數。僅限裝置內，無提醒或通知。"
   },
   "onboarding": {
     "welcome": "歡迎",

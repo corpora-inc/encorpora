@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "अनामिक वापर डेटा पाठवा",
     "sendAnonUsageHint": "अनामिक, सत्रापुरते मर्यादित. खाती नाहीत, डिव्हाइस आयडी नाहीत, IP साठवणूक नाही. कधीही बंद करा.",
-    "readPrivacyPromise": "आमचे Privacy Promise वाचा"
+    "readPrivacyPromise": "आमचे Privacy Promise वाचा",
+    "showStreak": "वाचन मालिका दाखवा",
+    "showStreakHint": "हेडरमध्ये लहान दिवसांची संख्या. केवळ डिव्हाइसवर, कोणतेही स्मरणपत्र किंवा सूचना नाहीत."
   },
   "onboarding": {
     "welcome": "स्वागत",

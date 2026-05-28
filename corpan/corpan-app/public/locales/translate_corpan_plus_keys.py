@@ -63,6 +63,8 @@ EN_FLAT: dict[str, str] = {
     "packs.plus": "Corpán Plus",
     "packs.includedWithPlus": "Included with Plus",
     "streak.title": "{{count}}-day streak",
+    "settings.showStreak": "Show reading streak",
+    "settings.showStreakHint": "A small day-count in the header. On-device only, no reminders or notifications.",
 }
 
 # Locale dir -> human language name for the prompt.

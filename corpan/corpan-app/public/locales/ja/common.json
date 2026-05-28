@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "匿名の利用データを送信",
     "sendAnonUsageHint": "匿名で、セッション単位のデータです。アカウント不要、デバイスIDなし、IPの保存なし。いつでもオフにできます。",
-    "readPrivacyPromise": "プライバシーに関する約束を読む"
+    "readPrivacyPromise": "プライバシーに関する約束を読む",
+    "showStreak": "読書連続日数を表示",
+    "showStreakHint": "ヘッダーに小さな日数表示。デバイス内のみで、リマインダーや通知はありません。"
   },
   "onboarding": {
     "welcome": "ようこそ",

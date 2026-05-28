@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Send anonyme brugsdata",
     "sendAnonUsageHint": "Anonymt og kun for denne session. Ingen konti, ingen enheds-id'er, ingen lagring af IP-adresser. Slå det fra når som helst.",
-    "readPrivacyPromise": "Læs vores løfte om privatliv"
+    "readPrivacyPromise": "Læs vores løfte om privatliv",
+    "showStreak": "Vis læsestribe",
+    "showStreakHint": "Et lille dagstal i overskriften. Kun på enheden, ingen påmindelser eller notifikationer."
   },
   "onboarding": {
     "welcome": "Velkommen",

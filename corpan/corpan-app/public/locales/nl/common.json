@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Anonieme gebruiksgegevens verzenden",
     "sendAnonUsageHint": "Anoniem, alleen voor deze sessie. Geen accounts, geen apparaat-ID's, geen opslag van IP-adressen. Je kunt dit altijd uitzetten.",
-    "readPrivacyPromise": "Lees onze Privacybelofte"
+    "readPrivacyPromise": "Lees onze Privacybelofte",
+    "showStreak": "Leesreeks weergeven",
+    "showStreakHint": "Een kleine dagteller in de header. Alleen op je apparaat, geen herinneringen of meldingen."
   },
   "onboarding": {
     "welcome": "Welkom",

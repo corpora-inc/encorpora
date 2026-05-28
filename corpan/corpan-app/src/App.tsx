@@ -28,6 +28,7 @@ import { PaywallSheet } from "@/components/paywall/PaywallSheet";
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
+import { StreakChip } from "@/components/StreakChip";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -349,7 +350,8 @@ export default function App() {
           className="fixed top-5 pt-safe right-5 z-50"
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <StreakChip />
             <div className="relative">
               <Button
                 variant="default"

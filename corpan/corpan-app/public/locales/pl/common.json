@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "Wysyłaj anonimowe dane o użyciu",
     "sendAnonUsageHint": "Anonimowe, tylko w ramach sesji. Bez kont, bez identyfikatorów urządzenia, bez zapisywania adresów IP. Możesz wyłączyć w każdej chwili.",
-    "readPrivacyPromise": "Przeczytaj naszą obietnicę prywatności"
+    "readPrivacyPromise": "Przeczytaj naszą obietnicę prywatności",
+    "showStreak": "Pokaż passę czytania",
+    "showStreakHint": "Mała liczba dni w nagłówku. Tylko na urządzeniu, bez przypomnień i powiadomień."
   },
   "onboarding": {
     "welcome": "Witamy",

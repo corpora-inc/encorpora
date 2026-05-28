@@ -123,7 +123,9 @@
     },
     "sendAnonUsage": "发送匿名使用数据",
     "sendAnonUsageHint": "匿名、仅限当前会话。不使用账号、不使用设备 ID，也不存储 IP。可随时关闭。",
-    "readPrivacyPromise": "阅读我们的隐私承诺"
+    "readPrivacyPromise": "阅读我们的隐私承诺",
+    "showStreak": "显示阅读连读天数",
+    "showStreakHint": "在顶部显示一个小小的天数计数。仅限设备本地，无提醒或通知。"
   },
   "onboarding": {
     "welcome": "欢迎",

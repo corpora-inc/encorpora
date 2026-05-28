@@ -15,6 +15,7 @@ import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { RomanizationToggle } from "./RomanizationToggle";
 import { ScrollNavigationToggle } from "./ScrollNavigationToggle";
+import { StreakToggle } from "./StreakToggle";
 import { TextSizeAdjuster } from "./TextSizeAdjuster";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -210,6 +211,7 @@ export function SettingsModal({
             <LevelsPicker />
             <RomanizationToggle />
             <ScrollNavigationToggle />
+            <StreakToggle />
 
             {/* Global onboarding controls */}
             <Button
