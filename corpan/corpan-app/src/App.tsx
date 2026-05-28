@@ -27,6 +27,7 @@ import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
+import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -389,6 +390,7 @@ export default function App() {
       <RatingPrompt />
       <UpdatePrompt />
       <PaywallSheet />
+      <SystemPackInstaller />
 
       {activeGame ? (
         <ContentPackOverlay
