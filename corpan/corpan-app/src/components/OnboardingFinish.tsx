@@ -82,7 +82,7 @@ export function OnboardingFinish() {
                 title="Aloha!"
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(4)}
+                onBack={() => setStep(5)}
                 onNext={() => {
                     trackOnboardingCompleted();
                     setOnboarded(true);

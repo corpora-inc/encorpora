@@ -41,8 +41,8 @@ export function OnboardingPickLearning() {
         title={t("onboarding.pickLanguagesToLearn")}
         steps={stepLabels}
         currentIndex={CURRENT_STEP_IDX}
-        onBack={() => setStep(1)}
-        onNext={() => setStep(3)}
+        onBack={() => setStep(2)}
+        onNext={() => setStep(4)}
         canNext={true}
       />
 
