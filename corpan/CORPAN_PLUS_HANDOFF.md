@@ -29,12 +29,20 @@ run against production S3/catalog. No app-store submission touched.
   language+voice steps. New `OnboardingUserClass` + `OnboardingPlusPitch`.
 - `settings.ts`: `userClass`/`ageBand`/`goalIntensity` (+ `setUserProfile`, persisted).
 
-**Phase 4 — progress substrate (partial — see "Remaining")**
+**Phase 4 — progress, auto-install, streak (substrate complete)**
 - `store/progress.ts` (localStorage): deepest segment per (book,lang), with
   `booksInFlight`/`booksFinished`/`streakDays`/`segmentsToday`. Fed by the
-  `corpan:segment-progress` window event from both readers.
+  `corpan:segment-progress` window event from both readers (dist rebuilt).
+- `SystemPackInstaller`: silently installs/upgrades catalog packs flagged
+  `systemPack:true` on launch (via installPack+addGame, no dialog). Mounted.
+- `StreakChip` mounted in header (opt-in) + `StreakToggle` in Settings;
+  strings localized in all 50 locales.
 - Catalog `systemPack?` flag + two-ZIP fields added to app-side types.
-- `StreakChip` component (opt-in, off by default) — built, **not mounted yet**.
+
+**i18n — DONE for all of the above**
+- All new paywall + onboarding + streak strings translated into the 50 shipped
+  locales via Vertex Gemini Flash (`translate_corpan_plus_keys.py`), brand terms
+  + `{{placeholders}}` preserved, JSON validated.
 
 **Phase 5 — copy, i18n, backfill, docs**
 - `APP_STORE_DESCRIPTION_0_13_0.md` + `APP_STORE_WHATS_NEW_0_13_0.md`.
@@ -42,31 +50,27 @@ run against production S3/catalog. No app-store submission touched.
 - `infra/scripts/backfill_two_zip.py` (dry-run verified: 532 entries).
 - `CLAUDE.md` Corpán Plus architecture section.
 
-## Remaining work (not done — needs you / a device)
+## Remaining work
 
-1. **Library pack** (`packs/library/`) — the standalone catalog/Continue/
-   Recommended pack was NOT built: it needs a new vite/pack build pipeline I
-   couldn't verify blind. Much of its function already exists via
-   `createCatalogBrowser`/`createAppShell` in `@shared/catalog`. Suggested:
-   clone `packs/earthgate-reader/` build scaffolding, render a catalog browser
-   that reads progress via the `corpan:segment-progress`/store, launches readers,
-   and dispatches `corpan:request-unlock`. Mark it `systemPack:true` in the catalog.
-2. **System-pack auto-install runtime** — only the catalog `systemPack?` flag
-   exists. The startup logic in `App.tsx`/`store/games.ts` to silently install
-   flagged packs is NOT wired (didn't want a half-done startup path).
-3. **BookEndCard** (themed end-of-book recommendations) — not built.
-4. **Mount StreakChip** + a `dailyGoal` Settings toggle (one-liner once you can
-   see the header). Currently gated behind `localStorage corpan-streak-enabled`.
-5. **Finish-step routing** — enjoyer/kid should land in Library; currently all
-   land in MainExperience (Library pack doesn't exist yet).
-6. **~50-lang translation** of the new EN keys — run the existing Vertex fanout
-   (pattern: `public/locales/add_catalog_paywall_translations.py`). Strings work
-   in English meanwhile via inline defaults.
-7. **Run the backfill** — `python infra/scripts/backfill_two_zip.py` (dry run),
-   review, then `--apply`, then invalidate `/catalog-v2.json` on CloudFront.
-8. **Prod publish test** — `ttsctl publish <pack> --lang en --with-preview` on one
+### A. Genuinely visual/UX — warrant eyes on a device (built blind = risky)
+1. **Library pack** (`packs/library/`) — curated Continue/Recommended/All
+   shelves as a standalone `systemPack`. Partly overlaps existing
+   `createCatalogBrowser`/`createAppShell` in `@shared/catalog`; the new part
+   is the progress-driven Continue shelf + userClass recommendations. Clone
+   `packs/earthgate-reader/` scaffolding; mark `systemPack:true` in the catalog
+   (auto-install already wired). When it exists, point enjoyer/kid onboarding
+   finish-routing at it.
+2. **BookEndCard** — themed next-book recommendations when a FULL book ends
+   (readers already have catalog access via appShell; the data/event hook is
+   easy, the card visual is the judgment call).
+
+### B. Production-mutating — must NOT run unattended (money / live catalog / stores)
+3. **Run the backfill** — `python infra/scripts/backfill_two_zip.py` (dry run
+   verified: 532 entries), review, `--apply`, then invalidate `/catalog-v2.json`.
+4. **Prod publish test** — `ttsctl publish <pack> --lang en --with-preview` on one
    sacrificial book; confirm preview URL 200 / premium URL 403-without-signature;
    then flip `--with-preview` default to ON.
+5. **App Store / Play Console** — attach products, submit (per IAP_IMPLEMENTATION_STATE.md).
 
 ## Verification guide (when you're at a device)
 
