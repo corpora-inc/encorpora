@@ -32,23 +32,19 @@ It is so fast.
 
 When you can do them in a row, that's a tumbling pass.
 
-I can do a cartwheel and a round-off.
+A tumbler usually starts with cartwheels and round-offs.
 
-I'm working on a back handspring.
+Then back handsprings come next.
 
-I have my coach spot me every time.
+Each new skill takes time and a coach to spot you.
 
-Spot means she holds my back as I go over.
+Spot means the coach holds your back as you go over.
 
-Slowly I need less help.
+Slowly you need less help.
 
 That's how you learn.
 
-I'm not the best tumbler on my team, and that's okay.
-
-You don't have to be the best at everything.
-
-You have your part.
+You have your part on the team.
 
 I'm a strong base, that's my part.
 

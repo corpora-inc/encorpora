@@ -461,3 +461,51 @@ translation guarantees stale content the moment any EN edit lands.
 See rake #15.
 
 If you hit a rake not on the list above, add it.
+
+### 19. Issue 1 read too "company news roundup"; editorial voice is open-weights / DIY
+
+**Pattern:** Issue 1's news mix was reasonable but the gravity sat with
+big-co launches (GPT-5.5, Gemini I/O preview, Anthropic Mythos). User
+verdict on the draft of Issue 2 was explicit: *AI This Week leans
+scrappy DIY from here. The big company's products still come up and we
+don't ignore them. But, we look for developing trends in open source
+and compare them to the big companies as needed.*
+
+**Fix shipped 2026-05-21:**
+- `CONVENTIONS.md` updated with an "Editorial voice" section
+  explicitly calling out: lead with open weights; cover big-co as fast
+  clip; surface open alternatives for every closed product mention.
+- Episode format restructured: Cold open → Open-weights & releases
+  (lead) → Leaderboards & evals → Headlines (big-co fast clip) →
+  Top Story (deep dive) → Concept of the week → Sign-off. The older
+  "Bigger Picture" section is folded into Top Story.
+- Memory file `feedback_ai_this_week_open_weights_voice.md` written
+  so future cold-start agents inherit the direction.
+
+**Stop sign:** If a draft segment sounds like the company's own press
+release ("Google unveiled..." / "Anthropic announced..." with no
+critical or comparative framing), rewrite from the open-ecosystem
+angle.
+
+### 20. Display ↔ tts.text divergence: do it at GENERATE time, not as post-hoc patch
+
+**Pattern (continuation of rake #2 + rake #17):** Issue 1 wrote the
+manuscript markdown in spelled-out form ("May thirteenth", "GPT five
+point five") AND populated both `text` and `tts.text` identically.
+Later a `/tmp/normalize_display.py` hand-patch added display numerals.
+That patch hardcoded literal display strings per segment, conflicted
+with a `codex auto_rewrite` event, and shipped display ≠ audio.
+
+**Issue 2 approach (built in `002-may-20/scripts/`):**
+- Manuscript markdown stays in spelled-out form (Chatterbox/Gemini
+  speakable as-written).
+- `phonetics.py` provides `display_form(spelled: str) -> str` — a pure
+  regex transform from spelled-out forms to display numerals
+  (numerals, $, %, model versions, Roman numerals, dates, years).
+- `generate_dialog_segments.py` calls it for `text` while `tts.text`
+  keeps the manuscript's spelled-out content.
+- No per-segment literal-string dicts anywhere. Re-running the
+  generator is idempotent.
+
+**Stop sign:** if you find yourself writing a dict that maps segment
+IDs to display strings, STOP. Extend `phonetics.py` instead.

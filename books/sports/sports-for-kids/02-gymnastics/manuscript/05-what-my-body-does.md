@@ -62,15 +62,13 @@ A flip without your hands is called a salto.
 
 A salto is what you see in the Olympics, where the gymnast spins in the air.
 
-I am still learning my saltos.
+Some skills you can do on the floor.
 
-I can do them into the foam pit.
+Some skills you only do into the foam pit at first.
 
-I cannot do them on the floor yet.
+That keeps you safe while you learn.
 
-That is okay.
-
-Coach Maya says every gymnast has skills they are still working on.
+My coach says every gymnast has skills they are still working on.
 
 Even Olympic gymnasts have skills they are still working on.
 

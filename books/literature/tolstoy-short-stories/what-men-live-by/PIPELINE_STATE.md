@@ -7,7 +7,7 @@
 - manuscript/what-men-live-by.md — Russian source (5890 words, 12 chapters + epigraph)
 - segments.json — 620 segments (14 heading, 606 text, 114 dialogue)
 - manifest.json — book_tolstoy_what_men_live_by, primary_language: ru
-- narration.yaml — copied from Three Questions (all 23 languages configured)
+- narration.yaml — copied from Three Questions (all configured languages)
 
 ### Translations: ALL 22 COMPLETE
 ar, da, de, el, en, es, fi, fr, he, hi, it, ja, ko, ms, nl, no, pl, pt, sv, sw, tr, zh

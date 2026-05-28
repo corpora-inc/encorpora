@@ -21,23 +21,32 @@ are bugs. The speaker-audit step exists to catch these.
 
 ---
 
-## Episode format (~10–13 min)
+## Episode format (~10–13 min) — revised Ep 2+
 
-1. **Cold open** — Vindy intros herself + Ron + the four sections
-2. **Model releases** — what shipped + what is upcoming (~3 min)
-3. **Leaderboard movement** — including contamination / eval-quality
-   notes when relevant (~3 min)
-4. **Concept of the week** — one technical concept, plain language to
+1. **Cold open** — Vindy intros herself + Ron + the sections
+2. **Open-weights & releases** — what shipped in open / DIY land,
+   community models, training infra. Lead here. (~3 min)
+3. **Leaderboards & evals** — what the boards did, eval-quality and
+   contamination notes (~2 min)
+4. **Headlines** — fast clip of big-co + industry news, light touch,
+   no PR voice (~2 min)
+5. **Top Story** — one deep dive. Usually an open-source or technical
+   trend, but a meaty outside-AI piece (a la a papal encyclical, a
+   labor / policy / geopolitics story) can anchor when it has the
+   gravity (~3 min)
+6. **Concept of the week** — one technical concept, plain language to
    a little deeper. Drawn from what the week's news made interesting
-   (~2.5 min)
-5. **The Bigger Picture** — one focused non-AI editorial story with a
-   clean bidirectional AI angle. NEVER a "this week in X" survey
-   (~3.5 min)
-6. **Sign-off** — short, warm
+   (~2 min)
+7. **Sign-off** — short, warm
 
 No "after this," no "up next," no "stay with us" — there is no
 commercial break. Transitions flow continuously: "Okay, let's get to
-the leaderboards", "Now let's pull back to the bigger picture", etc.
+the leaderboards", "Now let's move to headlines", "Now let's pull back
+to the top story", etc.
+
+**Older "Bigger Picture" framing** (single AI-orthogonal world event
+with bidirectional AI angle) can still appear when a story really
+demands it, but it is no longer the default closer. Top Story is.
 
 **Cadence:** weekly Wednesday. The show drops mid-week. Sign-off
 should say "next Wednesday", NOT "next week". Avoid "for the week
@@ -45,6 +54,33 @@ ending..." framing — drops too — say "AI This Week for May 13, 2026"
 plain.
 
 ---
+
+## Editorial voice (Ep 2+)
+
+This show leans **scrappy, open-weights, on-device, nitty-gritty
+technical**. We are not a mouthpiece for the big labs. Big-co products
+get covered — we don't ignore Google I/O or a new Claude — but we
+cover them the way an open-source maintainer would: noted, contextualized
+against the open alternatives, not extolled.
+
+**Concretely:**
+- Open-weights releases lead the show. The big-co keynote highlights
+  go in Headlines, fast clip, not in the lead section.
+- When a closed model claims a benchmark win, we say "they claim" or
+  cite the company; we don't repeat marketing claims as fact.
+- We surface the open alternative for every big-co product when one
+  exists. Gemini Spark on cloud VMs? Mention that you can run a 70B
+  open model on a single workstation today. Apple's 2-bit on-device?
+  Mention llama.cpp's Q4_K_M ships in every consumer-grade model.
+- We track training infra (which chips, which countries, whose stack),
+  inference engines (vLLM, llama.cpp, SGLang, MLX), and quantization
+  formats (AWQ, GGUF, FP8, QAT) the way a serious newsroom tracks
+  the supply chain.
+- The audience is the engineer / builder / curious technical person.
+  Not the procurement manager.
+
+If a draft segment sounds like a product launch press release, rewrite
+it from the "what does this mean for the open ecosystem" angle.
 
 ## Drafting style
 

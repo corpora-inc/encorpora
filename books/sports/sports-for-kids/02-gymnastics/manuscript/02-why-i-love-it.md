@@ -50,14 +50,16 @@ I love how my heart beats really fast before my turn.
 
 I love how my coach smiles when I do something new.
 
-But mostly, I love that I can do things I could not do last year.
+But mostly, I love that I can do things now that I couldn't do before.
 
-A year ago I could not do a back handspring.
+That's how gymnastics works.
 
-Now I can.
+You practice something hard.
 
-Next year there will be something new.
+You can't do it for a long time.
 
-There is always something new.
+Then one day, you just can.
+
+There is always something new to work on.
 
 That is why I keep coming back.

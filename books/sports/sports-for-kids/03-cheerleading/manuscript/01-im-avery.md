@@ -8,23 +8,19 @@ I'm ten years old.
 
 I'm a girl, and I'm a cheerleader.
 
-A real one.
-
 I know what some people picture when they hear that.
 
-Pom-poms and big smiles and that's it.
+Pom-poms and big smiles, and that's it.
 
 There is way more to it.
 
-My team is called the Comets.
+I'm on a team with about twenty kids.
 
-We wear blue and silver.
+We wear matching uniforms.
 
-Our coach is Coach Mel.
+I have a coach.
 
 She used to compete in college, and now she trains us.
-
-There are about twenty kids on my team.
 
 We are a coed team.
 

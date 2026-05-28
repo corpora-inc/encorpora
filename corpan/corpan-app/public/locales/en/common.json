@@ -412,6 +412,17 @@
     "introTipTitle": "Stacks",
     "introTipBody": "Stacks save different learning setups — one for travel, another for work. Tap + to make a new stack."
   },
+  "update": {
+    "title": "Update available",
+    "description": "A newer version of Corpán is available in your app store.",
+    "versionLine": "Version {{version}} is ready to install.",
+    "availableLine": "Update available → {{version}}",
+    "update": "Update",
+    "updateNow": "Update now",
+    "remindLater": "Maybe later",
+    "skipThisVersion": "Skip this version",
+    "close": "Close"
+  },
   "rating": {
     "title": "Enjoying Corpán?",
     "description": "Corpán is made by a tiny open-source team just getting started. If it feels like a 5-star app, a quick rating helps us a lot.",

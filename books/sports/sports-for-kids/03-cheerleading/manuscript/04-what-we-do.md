@@ -10,7 +10,7 @@ A chant is short and it repeats.
 
 The crowd can say it with us.
 
-Something like: let's go Comets, let's go.
+Something like: let's go team, let's go.
 
 You say it twice and clap on the beats.
 
@@ -48,7 +48,7 @@ We practice motions in a mirror.
 
 Sometimes I practice them in my room.
 
-My little brother thinks I look weird, but I don't care.
+It probably looks weird, but I don't care.
 
 Then there are voices.
 
@@ -70,6 +70,6 @@ If you do it right, you can be loud for hours.
 
 If you do it wrong, you lose your voice.
 
-I've lost my voice a few times, and it's the worst.
+If you lose your voice, you sound like a frog for two days.
 
-You sound like a frog for two days.
+It's the worst.

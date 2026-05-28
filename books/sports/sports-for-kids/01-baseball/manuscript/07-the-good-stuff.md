@@ -20,11 +20,11 @@ Your whole team is waiting for you at home plate.
 
 They give you high-fives.
 
-I have hit one home run in my life.
+Most kids never hit a home run.
 
-Just one.
+Some kids hit one and then talk about it for years.
 
-I still think about it.
+It's that big a deal.
 
 Then there's the double play.
 
@@ -50,33 +50,35 @@ It feels like magic when it works.
 
 Then there's the stolen base.
 
-That's what Marcus does.
+Remember I told you a fast runner can steal a base?
 
-The pitcher throws to home plate.
+Here is how it works.
 
-While the ball is in the air, Marcus runs.
+The pitcher throws the ball toward home plate.
 
-He sprints from first base to second base.
+While the ball is in the air, the runner takes off.
 
-If he gets there before they tag him, the base is his.
+The runner sprints from first base toward second base.
 
-He stole it.
+If the runner gets to second base before the catcher's throw, the base is theirs.
+
+They stole it.
 
 That's why we call it a steal.
 
 Strikeouts are exciting too, if you're the pitcher.
 
-When Jerome strikes a batter out, the dugout goes wild.
+When your pitcher strikes a batter out, the dugout goes wild.
 
-The dugout is where we sit when we're not playing.
+The dugout is where you sit when you're not playing.
 
 It's like a little bench under a roof.
 
 We bang on the fence.
 
-We yell, "Yeah, Jerome!"
+We yell.
 
-He just smiles a little and gets the ball back.
+Our pitcher just smiles a little and gets the ball back.
 
 He acts like it's no big deal.
 

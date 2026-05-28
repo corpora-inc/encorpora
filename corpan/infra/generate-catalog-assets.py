@@ -279,6 +279,99 @@ CHARACTERS: list[CharacterSpec] = [
         ),
         accent_color="#5b6fb0",
     ),
+    CharacterSpec(
+        id="ryan",
+        display_name="Ryan",
+        tagline="A baseball kid's voice — all enthusiasm, no filter.",
+        bio=(
+            "Ryan is ten years old and loves baseball more than almost anything. "
+            "He reads the way a kid on the dugout bench does — short sentences, "
+            "big energy, every play remembered like it happened yesterday. Ryan "
+            "narrates the Sports for Kids series book about baseball, telling "
+            "another kid what the game feels like."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a happy ten-year-old boy with light brown hair "
+            "and a backwards baseball cap, gentle freckles across his nose, a "
+            "natural easy grin, eyes catching warm afternoon light. Soft natural "
+            "daylight, warm but understated palette of grass green, sky blue, "
+            "and dusty gold. Painterly digital illustration, low saturation, very "
+            "high craftsmanship, no photorealism. Centered square portrait, head "
+            "and shoulders. " + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: an empty little-league baseball diamond "
+            "in golden late-afternoon light, neatly chalked baselines, a single "
+            "wooden bat resting on home plate, distant low bleachers in soft "
+            "focus, deep blue sky shifting to warm gold at the horizon. Painterly "
+            "editorial illustration, restrained palette of grass greens, dust "
+            "ochre, and warm gold, no people in frame, no team logos, no text. "
+            + COMMON_TAIL
+        ),
+        accent_color="#4a8bce",
+    ),
+    CharacterSpec(
+        id="isabelle",
+        display_name="Isabelle",
+        tagline="A gymnast's voice — focused, joyful, just nine years old.",
+        bio=(
+            "Isabelle is nine and a competitive gymnast. She reads the way a "
+            "kid does when she is telling you about the thing she loves most — "
+            "carefully, brightly, with a small pause before the parts that matter "
+            "to her. Isabelle narrates the Sports for Kids series book about "
+            "gymnastics."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a focused nine-year-old girl with dark hair "
+            "pulled into a tight high ponytail with a small ribbon, a calm bright "
+            "smile, light catching her eyes. Soft natural daylight, warm but "
+            "understated palette of dusty rose, soft lilac, and warm cream. "
+            "Painterly digital illustration, low saturation, very high "
+            "craftsmanship, no photorealism. Centered square portrait, head and "
+            "shoulders. " + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: an empty quiet gymnastics gym in soft "
+            "warm afternoon light, a balance beam in the foreground catching a "
+            "shaft of light, unfocused parallel bars and a folded mat in the "
+            "deep background, a faint glitter of chalk in the air, pale rose "
+            "and warm cream palette shifting to soft amber. Painterly editorial "
+            "illustration, contemplative mood, no people in frame, no logos, "
+            "no text. " + COMMON_TAIL
+        ),
+        accent_color="#c98ba0",
+    ),
+    CharacterSpec(
+        id="avery",
+        display_name="Avery",
+        tagline="A cheerleader's voice — team-first, loud-proud, all heart.",
+        bio=(
+            "Avery is ten years old and a competitive cheerleader. She reads the "
+            "way a kid who loves being part of a team does — fast at the exciting "
+            "parts, slower at the trust parts, never apologizing for how much fun "
+            "the sport is. Avery narrates the Sports for Kids series book about "
+            "cheerleading."
+        ),
+        avatar_prompt=(
+            "Editorial portrait of a bright ten-year-old girl with sandy brown "
+            "hair in a high ponytail tied with a large fabric bow, a wide genuine "
+            "smile, eyes warm and confident. Soft natural daylight, warm but "
+            "understated palette of pale silver, deep teal, and warm cream. "
+            "Painterly digital illustration, low saturation, very high "
+            "craftsmanship, no photorealism. Centered square portrait, head and "
+            "shoulders. " + COMMON_TAIL
+        ),
+        banner_prompt=(
+            "Wide horizontal landscape: an empty school gymnasium floor in soft "
+            "warm afternoon light, polished wood floor catching a single shaft "
+            "of late sun, a pair of folded pom-poms resting at the edge of the "
+            "floor in soft focus, distant empty bleachers fading into shadow, "
+            "palette of pale silver, deep teal, and warm cream. Painterly "
+            "editorial illustration, contemplative mood, no people in frame, "
+            "no team logos, no text. " + COMMON_TAIL
+        ),
+        accent_color="#5fa0a8",
+    ),
 ]
 
 
@@ -651,6 +744,62 @@ BOOKS: list[BookSpec] = [
             "sense of speed and the future. No riders visible inside, no "
             "team logos, no text on the train. Single track only. "
             + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_sports_for_kids_baseball",
+        title="Hey, I'm Ryan, and I Play Baseball",
+        description=(
+            "A kid named Ryan tells another kid what baseball actually feels "
+            "like — the smell of grass, the crack of the bat, the dugout, the "
+            "one home run he is still thinking about. Part of the Sports for "
+            "Kids series."
+        ),
+        cover_prompt=(
+            "Picture-book illustration of a happy ten-year-old boy in a sky-blue "
+            "baseball jersey and backwards red cap mid-swing at a pitch, the bat "
+            "blurred just past contact, sunlit grass infield behind him, soft "
+            "dust catching warm afternoon light, a chain-link backstop fence in "
+            "soft focus far behind. Bright friendly storybook style, clean "
+            "shapes, restrained palette of grass green, sky blue, dust ochre, "
+            "and warm gold, very approachable for kids 7–10. No team logos, no "
+            "text on the jersey. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_sports_for_kids_gymnastics",
+        title="Hi, I'm Isabelle, and I Do Gymnastics",
+        description=(
+            "A nine-year-old gymnast tells another kid what gymnastics is — "
+            "the gym, the events, the chalk in the air, the moment after "
+            "sticking a landing. Part of the Sports for Kids series."
+        ),
+        cover_prompt=(
+            "Picture-book illustration of a focused nine-year-old girl in a "
+            "dusty-rose leotard mid-handstand on a polished gymnasium floor, her "
+            "high ponytail with a small ribbon hanging straight down, a balance "
+            "beam softly visible in the background, a faint glitter of chalk in "
+            "the air. Bright friendly storybook style, clean shapes, restrained "
+            "palette of dusty rose, soft lilac, and warm cream, very "
+            "approachable for kids 7–10. No logos, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_sports_for_kids_cheerleading",
+        title="Hey, I'm Avery, and I'm a Cheerleader",
+        description=(
+            "A ten-year-old cheerleader tells another kid what cheer really is — "
+            "the team, the chants, the stunts, the routine that everybody "
+            "practiced a thousand times. Part of the Sports for Kids series."
+        ),
+        cover_prompt=(
+            "Picture-book illustration of a bright ten-year-old girl in a "
+            "blue-and-silver cheerleading uniform mid-toe-touch jump, pom-poms "
+            "held high, joyful confident expression, polished sunlit gymnasium "
+            "floor below her, distant empty bleachers in soft focus behind. "
+            "Bright friendly storybook style, clean shapes, restrained palette "
+            "of pale silver, deep teal, and warm cream, very approachable for "
+            "kids 7–10. No team logos, no text on the uniform. " + COMMON_TAIL
         ),
     ),
 ]

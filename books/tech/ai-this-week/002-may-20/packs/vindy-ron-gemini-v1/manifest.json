@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_05_20",
+  "name": "AI This Week — May 20, 2026 — Magnifica Humanitas",
+  "version": "0.2.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 2,
+    "issue_date": "2026-05-20",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Curious technical listeners who want a calm conversation about real AI news, leaning open weights and on-device.",
+    "estimatedListenTime": "12 minutes"
+  }
+}

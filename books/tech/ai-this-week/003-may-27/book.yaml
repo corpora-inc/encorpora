@@ -1,0 +1,26 @@
+book:
+  issue: 3
+  title: "AI This Week — May 27, 2026"
+  subtitle: TBD
+  date: 2026-05-27
+  target_segments: 160
+
+  audience: "Curious technical listeners who want a calm conversation about real AI news, leaning open weights and on-device."
+  primary_language: en
+  pack_id: ai_this_week_2026_05_27
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first  # Cold open → Open weights → Leaderboards → Headlines → Top Story → Concept → Sign-off
+
+  # Topics populated AFTER research + draft. Research notes live in research/.
+
+  pacing:
+    - 5 sections + cold open + sign-off, dialog format
+    - ~140-180 segments, ~12 minutes
+    - One sentence per segment (Ep 2+ rule of the road)
+    - Multiple consecutive ANALYST segments are expected when Ron has a multi-sentence thought
+    - Numbers spelled as words in tts.text everywhere; display field uses numerals
+    - Bare dialog text, no Style: prefix (director_prompt layer applies at generate time)

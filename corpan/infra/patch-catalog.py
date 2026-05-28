@@ -127,6 +127,48 @@ CHARACTERS_META = {
         "status": "active",
         "order": 6,
     },
+    "ryan": {
+        "displayName": "Ryan",
+        "tagline": "A baseball kid's voice — all enthusiasm, no filter.",
+        "bio": (
+            "Ryan is ten years old and loves baseball more than almost "
+            "anything. He reads the way a kid on the dugout bench does — "
+            "short sentences, big energy, every play remembered like it "
+            "happened yesterday. Ryan narrates the Sports for Kids series "
+            "book about baseball."
+        ),
+        "accentColor": "#4a8bce",
+        "status": "active",
+        "order": 7,
+    },
+    "isabelle": {
+        "displayName": "Isabelle",
+        "tagline": "A gymnast's voice — focused, joyful, just nine years old.",
+        "bio": (
+            "Isabelle is nine and a competitive gymnast. She reads the way "
+            "a kid does when she is telling you about the thing she loves "
+            "most — carefully, brightly, with a small pause before the parts "
+            "that matter to her. Isabelle narrates the Sports for Kids "
+            "series book about gymnastics."
+        ),
+        "accentColor": "#c98ba0",
+        "status": "active",
+        "order": 8,
+    },
+    "avery": {
+        "displayName": "Avery",
+        "tagline": "A cheerleader's voice — team-first, loud-proud, all heart.",
+        "bio": (
+            "Avery is ten years old and a competitive cheerleader. She reads "
+            "the way a kid who loves being part of a team does — fast at the "
+            "exciting parts, slower at the trust parts, never apologizing "
+            "for how much fun the sport is. Avery narrates the Sports for "
+            "Kids series book about cheerleading."
+        ),
+        "accentColor": "#5fa0a8",
+        "status": "active",
+        "order": 9,
+    },
     # Skylar (sky-21.wav) and Victor (victor-business.wav) have avatars +
     # banners on S3 from the 2026-05-10 generate-catalog-assets.py pass, but
     # no narrations are using them yet. Hold them out of the catalog until
@@ -244,6 +286,51 @@ VOICE_PROFILES = [
         "providerVoiceId": "Charon",
         "source": {"kind": "native"},
         "traits": ["narrator", "analyst", "academic", "business", "dialog"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "ryan",
+        "characterId": "ryan",
+        "displayName": "Ryan",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 25,
+        },
+        "traits": ["narrator", "boy", "kid", "sports", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "isabelle",
+        "characterId": "isabelle",
+        "displayName": "Isabelle",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 16,
+        },
+        "traits": ["narrator", "girl", "kid", "sports", "language-learning"],
+        "status": "active",
+        "order": 1,
+    },
+    {
+        "id": "avery",
+        "characterId": "avery",
+        "displayName": "Avery",
+        "provider": "chatterbox",
+        "source": {
+            "kind": "cloned",
+            "sourceWaveUrl": "",
+            "sourceWaveSha256": "",
+            "lengthSeconds": 15,
+        },
+        "traits": ["narrator", "girl", "kid", "sports", "cheer", "language-learning"],
         "status": "active",
         "order": 1,
     },
@@ -419,6 +506,44 @@ BOOK_META = {
             "bigger picture. About ten minutes."
         ),
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly"],
+    },
+    "book_ai_this_week_2026_05_20": {
+        "description": (
+            "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "
+            "the open-weights front: GLM-5 on Huawei Ascend, ZAYA1-8B on AMD, "
+            "DeepSeek V4-Pro, and vLLM v0.21. Then a fast clip through Google "
+            "I/O, Karpathy to Anthropic, and the Musk-OpenAI verdict. Top story "
+            "is Pope Leo XIV's first encyclical on artificial intelligence. "
+            "Concept of the week is quantization — how a seven-billion-parameter "
+            "model fits on your phone. About twelve minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights"],
+    },
+    "book_sports_for_kids_baseball": {
+        "description": (
+            "A kid named Ryan tells another kid what baseball actually feels "
+            "like — the smell of grass, the crack of the bat, the dugout, the "
+            "one home run he is still thinking about. Part of the Sports for "
+            "Kids series."
+        ),
+        "tags": ["kids", "sports", "baseball", "language-learning"],
+    },
+    "book_sports_for_kids_gymnastics": {
+        "description": (
+            "A nine-year-old gymnast tells another kid what gymnastics is — "
+            "the gym, the events, the chalk in the air, the moment after "
+            "sticking a landing. Part of the Sports for Kids series."
+        ),
+        "tags": ["kids", "sports", "gymnastics", "language-learning"],
+    },
+    "book_sports_for_kids_cheerleading": {
+        "description": (
+            "A ten-year-old cheerleader tells another kid what cheer really "
+            "is — the team, the chants, the stunts, the routine that "
+            "everybody practiced a thousand times. Part of the Sports for "
+            "Kids series."
+        ),
+        "tags": ["kids", "sports", "cheerleading", "language-learning"],
     },
 }
 

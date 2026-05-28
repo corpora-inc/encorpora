@@ -42,13 +42,9 @@ But it is the best kind of hard.
 
 It is the kind that makes you feel proud.
 
-I go to a gym near my house.
+I go to a gym a few days a week.
 
-I go three days a week.
-
-Sometimes four.
-
-My coach is named Coach Maya.
+I have a coach there.
 
 She is patient and kind.
 

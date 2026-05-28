@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
   "book_id": "book_sports_for_kids_baseball",
-  "total_segments": 344,
+  "total_segments": 343,
   "segments": [
     {
       "id": "ch01-001",
@@ -39,7 +39,7 @@
       "text_markdown": "Hey.",
       "tts": {
         "text": "Hey.",
-        "pause_after_ms": 2000,
+        "pause_after_ms": 700,
         "repetition_penalty": 2.0
       }
     },
@@ -55,7 +55,7 @@
       "text_markdown": "I'm Ryan.",
       "tts": {
         "text": "I'm Ryan.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -71,7 +71,7 @@
       "text_markdown": "I'm ten years old.",
       "tts": {
         "text": "I'm ten years old.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -83,11 +83,11 @@
       "paragraph_id": "p6",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I play baseball.",
-      "text_markdown": "I play baseball.",
+      "text": "I enjoy playing baseball.",
+      "text_markdown": "I enjoy playing baseball.",
       "tts": {
-        "text": "I play baseball.",
-        "pause_after_ms": 800,
+        "text": "I enjoy playing baseball.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -103,7 +103,7 @@
       "text_markdown": "I play it pretty much every chance I get.",
       "tts": {
         "text": "I play it pretty much every chance I get.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.91
       }
     },
@@ -115,11 +115,11 @@
       "paragraph_id": "p8",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "My team is called the Hawks.",
-      "text_markdown": "My team is called the Hawks.",
+      "text": "I'm on a team with kids my age.",
+      "text_markdown": "I'm on a team with kids my age.",
       "tts": {
-        "text": "My team is called the Hawks.",
-        "pause_after_ms": 800,
+        "text": "I'm on a team with kids my age.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -131,11 +131,11 @@
       "paragraph_id": "p9",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "We wear blue shirts and white pants.",
-      "text_markdown": "We wear blue shirts and white pants.",
+      "text": "We wear matching uniforms.",
+      "text_markdown": "We wear matching uniforms.",
       "tts": {
-        "text": "We wear blue shirts and white pants.",
-        "pause_after_ms": 800,
+        "text": "We wear matching uniforms.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -151,7 +151,7 @@
       "text_markdown": "The pants get really dirty.",
       "tts": {
         "text": "The pants get really dirty.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -167,7 +167,7 @@
       "text_markdown": "That's part of the fun, honestly.",
       "tts": {
         "text": "That's part of the fun, honestly.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -183,7 +183,7 @@
       "text_markdown": "My mom always sighs when she sees them.",
       "tts": {
         "text": "My mom always sighs when she sees them.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -195,11 +195,11 @@
       "paragraph_id": "p13",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I play in a league with other kids my age.",
-      "text_markdown": "I play in a league with other kids my age.",
+      "text": "We have practice during the week.",
+      "text_markdown": "We have practice during the week.",
       "tts": {
-        "text": "I play in a league with other kids my age.",
-        "pause_after_ms": 800,
+        "text": "We have practice during the week.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -211,11 +211,11 @@
       "paragraph_id": "p14",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "We have practice on Tuesdays.",
-      "text_markdown": "We have practice on Tuesdays.",
+      "text": "We have games on weekends.",
+      "text_markdown": "We have games on weekends.",
       "tts": {
-        "text": "We have practice on Tuesdays.",
-        "pause_after_ms": 800,
+        "text": "We have games on weekends.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -227,11 +227,11 @@
       "paragraph_id": "p15",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "We have games on Saturdays.",
-      "text_markdown": "We have games on Saturdays.",
+      "text": "I've been playing since I was six.",
+      "text_markdown": "I've been playing since I was six.",
       "tts": {
-        "text": "We have games on Saturdays.",
-        "pause_after_ms": 800,
+        "text": "I've been playing since I was six.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -243,11 +243,11 @@
       "paragraph_id": "p16",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Sometimes we play on Sundays too.",
-      "text_markdown": "Sometimes we play on Sundays too.",
+      "text": "When I started, the bat looked huge in my hands.",
+      "text_markdown": "When I started, the bat looked huge in my hands.",
       "tts": {
-        "text": "Sometimes we play on Sundays too.",
-        "pause_after_ms": 800,
+        "text": "When I started, the bat looked huge in my hands.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -259,11 +259,11 @@
       "paragraph_id": "p17",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I've been playing since I was six.",
-      "text_markdown": "I've been playing since I was six.",
+      "text": "Now it feels just right.",
+      "text_markdown": "Now it feels just right.",
       "tts": {
-        "text": "I've been playing since I was six.",
-        "pause_after_ms": 800,
+        "text": "Now it feels just right.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -275,12 +275,12 @@
       "paragraph_id": "p18",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When I started, I was tiny.",
-      "text_markdown": "When I started, I was tiny.",
+      "text": "Some days I play great.",
+      "text_markdown": "Some days I play great.",
       "tts": {
-        "text": "When I started, I was tiny.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "Some days I play great.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -291,12 +291,12 @@
       "paragraph_id": "p19",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The bat was almost as big as me.",
-      "text_markdown": "The bat was almost as big as me.",
+      "text": "Some days I don't.",
+      "text_markdown": "Some days I don't.",
       "tts": {
-        "text": "The bat was almost as big as me.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "Some days I don't.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -307,11 +307,11 @@
       "paragraph_id": "p20",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Now the bat feels just right in my hands.",
-      "text_markdown": "Now the bat feels just right in my hands.",
+      "text": "I'm just a kid who loves the game.",
+      "text_markdown": "I'm just a kid who loves the game.",
       "tts": {
-        "text": "Now the bat feels just right in my hands.",
-        "pause_after_ms": 800,
+        "text": "I'm just a kid who loves the game.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -323,11 +323,11 @@
       "paragraph_id": "p21",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I am not the best player on my team.",
-      "text_markdown": "I am not the best player on my team.",
+      "text": "There's a kid on my team who's really fast.",
+      "text_markdown": "There's a kid on my team who's really fast.",
       "tts": {
-        "text": "I am not the best player on my team.",
-        "pause_after_ms": 800,
+        "text": "There's a kid on my team who's really fast.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -339,11 +339,11 @@
       "paragraph_id": "p22",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I am not the worst, either.",
-      "text_markdown": "I am not the worst, either.",
+      "text": "He once stole three bases in one game.",
+      "text_markdown": "He once stole three bases in one game.",
       "tts": {
-        "text": "I am not the worst, either.",
-        "pause_after_ms": 800,
+        "text": "He once stole three bases in one game.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -355,12 +355,12 @@
       "paragraph_id": "p23",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'm just a kid who loves the game.",
-      "text_markdown": "I'm just a kid who loves the game.",
+      "text": "I'll tell you what stealing a base is in a minute.",
+      "text_markdown": "I'll tell you what stealing a base is in a minute.",
       "tts": {
-        "text": "I'm just a kid who loves the game.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "I'll tell you what stealing a base is in a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -371,12 +371,12 @@
       "paragraph_id": "p24",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "My friend Marcus is on my team.",
-      "text_markdown": "My friend Marcus is on my team.",
+      "text": "Don't worry if you've never played baseball.",
+      "text_markdown": "Don't worry if you've never played baseball.",
       "tts": {
-        "text": "My friend Marcus is on my team.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "Don't worry if you've never played baseball.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -387,11 +387,11 @@
       "paragraph_id": "p25",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He is the fastest runner I know.",
-      "text_markdown": "He is the fastest runner I know.",
+      "text": "You don't need to know anything yet.",
+      "text_markdown": "You don't need to know anything yet.",
       "tts": {
-        "text": "He is the fastest runner I know.",
-        "pause_after_ms": 800,
+        "text": "You don't need to know anything yet.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -403,11 +403,11 @@
       "paragraph_id": "p26",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He once stole three bases in one game.",
-      "text_markdown": "He once stole three bases in one game.",
+      "text": "I'm going to tell you all about it.",
+      "text_markdown": "I'm going to tell you all about it.",
       "tts": {
-        "text": "He once stole three bases in one game.",
-        "pause_after_ms": 800,
+        "text": "I'm going to tell you all about it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -419,12 +419,12 @@
       "paragraph_id": "p27",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I will tell you what stealing a base is in a minute.",
-      "text_markdown": "I will tell you what stealing a base is in a minute.",
+      "text": "I'll tell you what we do.",
+      "text_markdown": "I'll tell you what we do.",
       "tts": {
-        "text": "I will tell you what stealing a base is in a minute.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.93
+        "text": "I'll tell you what we do.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -435,11 +435,11 @@
       "paragraph_id": "p28",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Don't worry if you've never played baseball.",
-      "text_markdown": "Don't worry if you've never played baseball.",
+      "text": "I'll tell you what it feels like.",
+      "text_markdown": "I'll tell you what it feels like.",
       "tts": {
-        "text": "Don't worry if you've never played baseball.",
-        "pause_after_ms": 800,
+        "text": "I'll tell you what it feels like.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -451,11 +451,11 @@
       "paragraph_id": "p29",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You don't need to know anything yet.",
-      "text_markdown": "You don't need to know anything yet.",
+      "text": "I'll tell you why I love it so much.",
+      "text_markdown": "I'll tell you why I love it so much.",
       "tts": {
-        "text": "You don't need to know anything yet.",
-        "pause_after_ms": 800,
+        "text": "I'll tell you why I love it so much.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -467,11 +467,11 @@
       "paragraph_id": "p30",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'm going to tell you all about it.",
-      "text_markdown": "I'm going to tell you all about it.",
+      "text": "Maybe by the end you'll want to try it.",
+      "text_markdown": "Maybe by the end you'll want to try it.",
       "tts": {
-        "text": "I'm going to tell you all about it.",
-        "pause_after_ms": 800,
+        "text": "Maybe by the end you'll want to try it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -483,11 +483,11 @@
       "paragraph_id": "p31",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'll tell you what we do.",
-      "text_markdown": "I'll tell you what we do.",
+      "text": "Maybe you won't.",
+      "text_markdown": "Maybe you won't.",
       "tts": {
-        "text": "I'll tell you what we do.",
-        "pause_after_ms": 800,
+        "text": "Maybe you won't.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -499,11 +499,11 @@
       "paragraph_id": "p32",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'll tell you what it feels like.",
-      "text_markdown": "I'll tell you what it feels like.",
+      "text": "That's okay too.",
+      "text_markdown": "That's okay too.",
       "tts": {
-        "text": "I'll tell you what it feels like.",
-        "pause_after_ms": 800,
+        "text": "That's okay too.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -515,11 +515,11 @@
       "paragraph_id": "p33",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'll tell you why I love it so much.",
-      "text_markdown": "I'll tell you why I love it so much.",
+      "text": "But I hope you stay and listen.",
+      "text_markdown": "But I hope you stay and listen.",
       "tts": {
-        "text": "I'll tell you why I love it so much.",
-        "pause_after_ms": 800,
+        "text": "But I hope you stay and listen.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -531,11 +531,11 @@
       "paragraph_id": "p34",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Maybe by the end you'll want to try it.",
-      "text_markdown": "Maybe by the end you'll want to try it.",
+      "text": "Baseball is my favorite thing in the world.",
+      "text_markdown": "Baseball is my favorite thing in the world.",
       "tts": {
-        "text": "Maybe by the end you'll want to try it.",
-        "pause_after_ms": 800,
+        "text": "Baseball is my favorite thing in the world.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -547,75 +547,71 @@
       "paragraph_id": "p35",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Maybe you won't.",
-      "text_markdown": "Maybe you won't.",
-      "tts": {
-        "text": "Maybe you won't.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch02-036",
-      "part": 0,
-      "chapter": 2,
-      "title": "I'm Ryan",
-      "paragraph_id": "p36",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "That's okay too.",
-      "text_markdown": "That's okay too.",
-      "tts": {
-        "text": "That's okay too.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch02-037",
-      "part": 0,
-      "chapter": 2,
-      "title": "I'm Ryan",
-      "paragraph_id": "p37",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "But I hope you stay and listen.",
-      "text_markdown": "But I hope you stay and listen.",
-      "tts": {
-        "text": "But I hope you stay and listen.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch02-038",
-      "part": 0,
-      "chapter": 2,
-      "title": "I'm Ryan",
-      "paragraph_id": "p38",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "Baseball is my favorite thing in the world.",
-      "text_markdown": "Baseball is my favorite thing in the world.",
-      "tts": {
-        "text": "Baseball is my favorite thing in the world.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch02-039",
-      "part": 0,
-      "chapter": 2,
-      "title": "I'm Ryan",
-      "paragraph_id": "p39",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "Let me show you why.",
       "text_markdown": "Let me show you why.",
       "tts": {
         "text": "Let me show you why.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Why I Love It",
+      "text_markdown": "Why I Love It"
+    },
+    {
+      "id": "ch03-037",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okay, so why do I love baseball?",
+      "text_markdown": "Okay, so why do I love baseball?",
+      "tts": {
+        "text": "Okay, so why do I love baseball?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's hard to pick just one reason.",
+      "text_markdown": "It's hard to pick just one reason.",
+      "tts": {
+        "text": "It's hard to pick just one reason.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I love how it feels to hit the ball.",
+      "text_markdown": "I love how it feels to hit the ball.",
+      "tts": {
+        "text": "I love how it feels to hit the ball.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -626,10 +622,14 @@
       "title": "Why I Love It",
       "paragraph_id": "p40",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "Why I Love It",
-      "text_markdown": "Why I Love It"
+      "block_type": "text",
+      "text": "When the bat connects, you hear a loud crack.",
+      "text_markdown": "When the bat connects, you hear a loud crack.",
+      "tts": {
+        "text": "When the bat connects, you hear a loud crack.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch03-041",
@@ -639,11 +639,11 @@
       "paragraph_id": "p41",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Okay, so why do I love baseball?",
-      "text_markdown": "Okay, so why do I love baseball?",
+      "text": "The sound goes right through you.",
+      "text_markdown": "The sound goes right through you.",
       "tts": {
-        "text": "Okay, so why do I love baseball?",
-        "pause_after_ms": 800,
+        "text": "The sound goes right through you.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -655,11 +655,11 @@
       "paragraph_id": "p42",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It's hard to pick just one reason.",
-      "text_markdown": "It's hard to pick just one reason.",
+      "text": "It makes my whole arm tingle.",
+      "text_markdown": "It makes my whole arm tingle.",
       "tts": {
-        "text": "It's hard to pick just one reason.",
-        "pause_after_ms": 800,
+        "text": "It makes my whole arm tingle.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -671,11 +671,11 @@
       "paragraph_id": "p43",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love how it feels to hit the ball.",
-      "text_markdown": "I love how it feels to hit the ball.",
+      "text": "I love running, too.",
+      "text_markdown": "I love running, too.",
       "tts": {
-        "text": "I love how it feels to hit the ball.",
-        "pause_after_ms": 800,
+        "text": "I love running, too.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -687,11 +687,11 @@
       "paragraph_id": "p44",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When the bat connects, you hear a loud crack.",
-      "text_markdown": "When the bat connects, you hear a loud crack.",
+      "text": "I love sprinting from one base to the next.",
+      "text_markdown": "I love sprinting from one base to the next.",
       "tts": {
-        "text": "When the bat connects, you hear a loud crack.",
-        "pause_after_ms": 800,
+        "text": "I love sprinting from one base to the next.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -703,11 +703,11 @@
       "paragraph_id": "p45",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The sound goes right through you.",
-      "text_markdown": "The sound goes right through you.",
+      "text": "My legs feel like they are flying.",
+      "text_markdown": "My legs feel like they are flying.",
       "tts": {
-        "text": "The sound goes right through you.",
-        "pause_after_ms": 800,
+        "text": "My legs feel like they are flying.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -719,12 +719,12 @@
       "paragraph_id": "p46",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It makes my whole arm tingle.",
-      "text_markdown": "It makes my whole arm tingle.",
+      "text": "My heart pounds in my chest.",
+      "text_markdown": "My heart pounds in my chest.",
       "tts": {
-        "text": "It makes my whole arm tingle.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "My heart pounds in my chest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
       }
     },
     {
@@ -735,11 +735,11 @@
       "paragraph_id": "p47",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love running, too.",
-      "text_markdown": "I love running, too.",
+      "text": "I love being outside.",
+      "text_markdown": "I love being outside.",
       "tts": {
-        "text": "I love running, too.",
-        "pause_after_ms": 800,
+        "text": "I love being outside.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -751,12 +751,12 @@
       "paragraph_id": "p48",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love sprinting from one base to the next.",
-      "text_markdown": "I love sprinting from one base to the next.",
+      "text": "The sky is huge above the field.",
+      "text_markdown": "The sky is huge above the field.",
       "tts": {
-        "text": "I love sprinting from one base to the next.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The sky is huge above the field.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -767,11 +767,11 @@
       "paragraph_id": "p49",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "My legs feel like they are flying.",
-      "text_markdown": "My legs feel like they are flying.",
+      "text": "The grass smells fresh, especially after it rains.",
+      "text_markdown": "The grass smells fresh, especially after it rains.",
       "tts": {
-        "text": "My legs feel like they are flying.",
-        "pause_after_ms": 800,
+        "text": "The grass smells fresh, especially after it rains.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -783,12 +783,12 @@
       "paragraph_id": "p50",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "My heart pounds in my chest.",
-      "text_markdown": "My heart pounds in my chest.",
+      "text": "I love being on a team.",
+      "text_markdown": "I love being on a team.",
       "tts": {
-        "text": "My heart pounds in my chest.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "I love being on a team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -799,11 +799,11 @@
       "paragraph_id": "p51",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love being outside.",
-      "text_markdown": "I love being outside.",
+      "text": "When I do something good, my friends cheer.",
+      "text_markdown": "When I do something good, my friends cheer.",
       "tts": {
-        "text": "I love being outside.",
-        "pause_after_ms": 800,
+        "text": "When I do something good, my friends cheer.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -815,12 +815,12 @@
       "paragraph_id": "p52",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The sky is huge above the field.",
-      "text_markdown": "The sky is huge above the field.",
+      "text": "When they do something good, I cheer too.",
+      "text_markdown": "When they do something good, I cheer too.",
       "tts": {
-        "text": "The sky is huge above the field.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "When they do something good, I cheer too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -831,11 +831,11 @@
       "paragraph_id": "p53",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The grass smells fresh, especially after it rains.",
-      "text_markdown": "The grass smells fresh, especially after it rains.",
+      "text": "Nobody plays baseball alone.",
+      "text_markdown": "Nobody plays baseball alone.",
       "tts": {
-        "text": "The grass smells fresh, especially after it rains.",
-        "pause_after_ms": 800,
+        "text": "Nobody plays baseball alone.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -847,12 +847,12 @@
       "paragraph_id": "p54",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love being on a team.",
-      "text_markdown": "I love being on a team.",
+      "text": "You always have your team behind you.",
+      "text_markdown": "You always have your team behind you.",
       "tts": {
-        "text": "I love being on a team.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You always have your team behind you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -863,11 +863,11 @@
       "paragraph_id": "p55",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When I do something good, my friends cheer.",
-      "text_markdown": "When I do something good, my friends cheer.",
+      "text": "I love the quiet moments, too.",
+      "text_markdown": "I love the quiet moments, too.",
       "tts": {
-        "text": "When I do something good, my friends cheer.",
-        "pause_after_ms": 800,
+        "text": "I love the quiet moments, too.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -879,11 +879,11 @@
       "paragraph_id": "p56",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When they do something good, I cheer too.",
-      "text_markdown": "When they do something good, I cheer too.",
+      "text": "Sometimes the game gets really still.",
+      "text_markdown": "Sometimes the game gets really still.",
       "tts": {
-        "text": "When they do something good, I cheer too.",
-        "pause_after_ms": 800,
+        "text": "Sometimes the game gets really still.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -895,11 +895,11 @@
       "paragraph_id": "p57",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Nobody plays baseball alone.",
-      "text_markdown": "Nobody plays baseball alone.",
+      "text": "The pitcher is about to throw.",
+      "text_markdown": "The pitcher is about to throw.",
       "tts": {
-        "text": "Nobody plays baseball alone.",
-        "pause_after_ms": 800,
+        "text": "The pitcher is about to throw.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -911,12 +911,12 @@
       "paragraph_id": "p58",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You always have your team behind you.",
-      "text_markdown": "You always have your team behind you.",
+      "text": "Everybody is watching.",
+      "text_markdown": "Everybody is watching.",
       "tts": {
-        "text": "You always have your team behind you.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "Everybody is watching.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -927,11 +927,11 @@
       "paragraph_id": "p59",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love the quiet moments, too.",
-      "text_markdown": "I love the quiet moments, too.",
+      "text": "Nobody is talking.",
+      "text_markdown": "Nobody is talking.",
       "tts": {
-        "text": "I love the quiet moments, too.",
-        "pause_after_ms": 800,
+        "text": "Nobody is talking.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -943,11 +943,11 @@
       "paragraph_id": "p60",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Sometimes the game gets really still.",
-      "text_markdown": "Sometimes the game gets really still.",
+      "text": "Then, in one second, everything explodes.",
+      "text_markdown": "Then, in one second, everything explodes.",
       "tts": {
-        "text": "Sometimes the game gets really still.",
-        "pause_after_ms": 800,
+        "text": "Then, in one second, everything explodes.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -959,11 +959,11 @@
       "paragraph_id": "p61",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher is about to throw.",
-      "text_markdown": "The pitcher is about to throw.",
+      "text": "The ball flies.",
+      "text_markdown": "The ball flies.",
       "tts": {
-        "text": "The pitcher is about to throw.",
-        "pause_after_ms": 800,
+        "text": "The ball flies.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -975,11 +975,11 @@
       "paragraph_id": "p62",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Everybody is watching.",
-      "text_markdown": "Everybody is watching.",
+      "text": "The runners take off.",
+      "text_markdown": "The runners take off.",
       "tts": {
-        "text": "Everybody is watching.",
-        "pause_after_ms": 800,
+        "text": "The runners take off.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -991,11 +991,11 @@
       "paragraph_id": "p63",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Nobody is talking.",
-      "text_markdown": "Nobody is talking.",
+      "text": "People shout from the stands.",
+      "text_markdown": "People shout from the stands.",
       "tts": {
-        "text": "Nobody is talking.",
-        "pause_after_ms": 800,
+        "text": "People shout from the stands.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1007,11 +1007,11 @@
       "paragraph_id": "p64",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then, in one second, everything explodes.",
-      "text_markdown": "Then, in one second, everything explodes.",
+      "text": "I love that part.",
+      "text_markdown": "I love that part.",
       "tts": {
-        "text": "Then, in one second, everything explodes.",
-        "pause_after_ms": 800,
+        "text": "I love that part.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1023,11 +1023,11 @@
       "paragraph_id": "p65",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The ball flies.",
-      "text_markdown": "The ball flies.",
+      "text": "I love that anything can happen.",
+      "text_markdown": "I love that anything can happen.",
       "tts": {
-        "text": "The ball flies.",
-        "pause_after_ms": 800,
+        "text": "I love that anything can happen.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1039,11 +1039,11 @@
       "paragraph_id": "p66",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The runners take off.",
-      "text_markdown": "The runners take off.",
+      "text": "You never know how a game will end.",
+      "text_markdown": "You never know how a game will end.",
       "tts": {
-        "text": "The runners take off.",
-        "pause_after_ms": 800,
+        "text": "You never know how a game will end.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1055,11 +1055,11 @@
       "paragraph_id": "p67",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "People shout from the stands.",
-      "text_markdown": "People shout from the stands.",
+      "text": "You can be losing the whole time.",
+      "text_markdown": "You can be losing the whole time.",
       "tts": {
-        "text": "People shout from the stands.",
-        "pause_after_ms": 800,
+        "text": "You can be losing the whole time.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1071,11 +1071,11 @@
       "paragraph_id": "p68",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love that part.",
-      "text_markdown": "I love that part.",
+      "text": "Then in the last inning, your team scores.",
+      "text_markdown": "Then in the last inning, your team scores.",
       "tts": {
-        "text": "I love that part.",
-        "pause_after_ms": 800,
+        "text": "Then in the last inning, your team scores.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1087,12 +1087,12 @@
       "paragraph_id": "p69",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love that anything can happen.",
-      "text_markdown": "I love that anything can happen.",
+      "text": "You win, and your friends jump on you.",
+      "text_markdown": "You win, and your friends jump on you.",
       "tts": {
-        "text": "I love that anything can happen.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You win, and your friends jump on you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -1103,12 +1103,12 @@
       "paragraph_id": "p70",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You never know how a game will end.",
-      "text_markdown": "You never know how a game will end.",
+      "text": "That feeling is the best feeling.",
+      "text_markdown": "That feeling is the best feeling.",
       "tts": {
-        "text": "You never know how a game will end.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "That feeling is the best feeling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
       }
     },
     {
@@ -1119,11 +1119,11 @@
       "paragraph_id": "p71",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can be losing the whole time.",
-      "text_markdown": "You can be losing the whole time.",
+      "text": "Even when we lose, I still love it.",
+      "text_markdown": "Even when we lose, I still love it.",
       "tts": {
-        "text": "You can be losing the whole time.",
-        "pause_after_ms": 800,
+        "text": "Even when we lose, I still love it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1135,11 +1135,11 @@
       "paragraph_id": "p72",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then in the last inning, your team scores.",
-      "text_markdown": "Then in the last inning, your team scores.",
+      "text": "Because tomorrow there's another practice.",
+      "text_markdown": "Because tomorrow there's another practice.",
       "tts": {
-        "text": "Then in the last inning, your team scores.",
-        "pause_after_ms": 800,
+        "text": "Because tomorrow there's another practice.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1151,12 +1151,12 @@
       "paragraph_id": "p73",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You win, and your friends jump on you.",
-      "text_markdown": "You win, and your friends jump on you.",
+      "text": "And next Saturday there's another game.",
+      "text_markdown": "And next Saturday there's another game.",
       "tts": {
-        "text": "You win, and your friends jump on you.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "And next Saturday there's another game.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1167,12 +1167,12 @@
       "paragraph_id": "p74",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That feeling is the best feeling.",
-      "text_markdown": "That feeling is the best feeling.",
+      "text": "Baseball just keeps going.",
+      "text_markdown": "Baseball just keeps going.",
       "tts": {
-        "text": "That feeling is the best feeling.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "Baseball just keeps going.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1183,75 +1183,71 @@
       "paragraph_id": "p75",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Even when we lose, I still love it.",
-      "text_markdown": "Even when we lose, I still love it.",
-      "tts": {
-        "text": "Even when we lose, I still love it.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch03-076",
-      "part": 0,
-      "chapter": 3,
-      "title": "Why I Love It",
-      "paragraph_id": "p76",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "Because tomorrow there's another practice.",
-      "text_markdown": "Because tomorrow there's another practice.",
-      "tts": {
-        "text": "Because tomorrow there's another practice.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch03-077",
-      "part": 0,
-      "chapter": 3,
-      "title": "Why I Love It",
-      "paragraph_id": "p77",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "And next Saturday there's another game.",
-      "text_markdown": "And next Saturday there's another game.",
-      "tts": {
-        "text": "And next Saturday there's another game.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch03-078",
-      "part": 0,
-      "chapter": 3,
-      "title": "Why I Love It",
-      "paragraph_id": "p78",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "Baseball just keeps going.",
-      "text_markdown": "Baseball just keeps going.",
-      "tts": {
-        "text": "Baseball just keeps going.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch03-079",
-      "part": 0,
-      "chapter": 3,
-      "title": "Why I Love It",
-      "paragraph_id": "p79",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "That's why I love it.",
       "text_markdown": "That's why I love it.",
       "tts": {
         "text": "That's why I love it.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "What We Actually Do",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "What We Actually Do",
+      "text_markdown": "What We Actually Do"
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "What We Actually Do",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me tell you what you actually do in baseball.",
+      "text_markdown": "Let me tell you what you actually do in baseball.",
+      "tts": {
+        "text": "Let me tell you what you actually do in baseball.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "What We Actually Do",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are four big things.",
+      "text_markdown": "There are four big things.",
+      "tts": {
+        "text": "There are four big things.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "What We Actually Do",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You hit.",
+      "text_markdown": "You hit.",
+      "tts": {
+        "text": "You hit.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1262,10 +1258,14 @@
       "title": "What We Actually Do",
       "paragraph_id": "p80",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "What We Actually Do",
-      "text_markdown": "What We Actually Do"
+      "block_type": "text",
+      "text": "You throw.",
+      "text_markdown": "You throw.",
+      "tts": {
+        "text": "You throw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch04-081",
@@ -1275,12 +1275,12 @@
       "paragraph_id": "p81",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Let me tell you what you actually do in baseball.",
-      "text_markdown": "Let me tell you what you actually do in baseball.",
+      "text": "You catch.",
+      "text_markdown": "You catch.",
       "tts": {
-        "text": "Let me tell you what you actually do in baseball.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.92
+        "text": "You catch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1291,11 +1291,11 @@
       "paragraph_id": "p82",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There are four big things.",
-      "text_markdown": "There are four big things.",
+      "text": "You run.",
+      "text_markdown": "You run.",
       "tts": {
-        "text": "There are four big things.",
-        "pause_after_ms": 800,
+        "text": "You run.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1307,11 +1307,11 @@
       "paragraph_id": "p83",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You hit.",
-      "text_markdown": "You hit.",
+      "text": "That's pretty much it.",
+      "text_markdown": "That's pretty much it.",
       "tts": {
-        "text": "You hit.",
-        "pause_after_ms": 800,
+        "text": "That's pretty much it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1323,11 +1323,11 @@
       "paragraph_id": "p84",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You throw.",
-      "text_markdown": "You throw.",
+      "text": "But each one takes practice.",
+      "text_markdown": "But each one takes practice.",
       "tts": {
-        "text": "You throw.",
-        "pause_after_ms": 800,
+        "text": "But each one takes practice.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1339,11 +1339,11 @@
       "paragraph_id": "p85",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You catch.",
-      "text_markdown": "You catch.",
+      "text": "Hitting is the hardest part for me.",
+      "text_markdown": "Hitting is the hardest part for me.",
       "tts": {
-        "text": "You catch.",
-        "pause_after_ms": 800,
+        "text": "Hitting is the hardest part for me.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1355,11 +1355,11 @@
       "paragraph_id": "p86",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You run.",
-      "text_markdown": "You run.",
+      "text": "You hold the bat with both hands.",
+      "text_markdown": "You hold the bat with both hands.",
       "tts": {
-        "text": "You run.",
-        "pause_after_ms": 800,
+        "text": "You hold the bat with both hands.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1371,11 +1371,11 @@
       "paragraph_id": "p87",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's pretty much it.",
-      "text_markdown": "That's pretty much it.",
+      "text": "You stand sideways to the pitcher.",
+      "text_markdown": "You stand sideways to the pitcher.",
       "tts": {
-        "text": "That's pretty much it.",
-        "pause_after_ms": 800,
+        "text": "You stand sideways to the pitcher.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1387,12 +1387,12 @@
       "paragraph_id": "p88",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "But each one takes practice.",
-      "text_markdown": "But each one takes practice.",
+      "text": "You watch the ball as it comes at you.",
+      "text_markdown": "You watch the ball as it comes at you.",
       "tts": {
-        "text": "But each one takes practice.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You watch the ball as it comes at you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -1403,11 +1403,11 @@
       "paragraph_id": "p89",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Hitting is the hardest part for me.",
-      "text_markdown": "Hitting is the hardest part for me.",
+      "text": "Then you swing.",
+      "text_markdown": "Then you swing.",
       "tts": {
-        "text": "Hitting is the hardest part for me.",
-        "pause_after_ms": 800,
+        "text": "Then you swing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1419,11 +1419,11 @@
       "paragraph_id": "p90",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You hold the bat with both hands.",
-      "text_markdown": "You hold the bat with both hands.",
+      "text": "You try to hit the ball really hard.",
+      "text_markdown": "You try to hit the ball really hard.",
       "tts": {
-        "text": "You hold the bat with both hands.",
-        "pause_after_ms": 800,
+        "text": "You try to hit the ball really hard.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1435,11 +1435,11 @@
       "paragraph_id": "p91",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You stand sideways to the pitcher.",
-      "text_markdown": "You stand sideways to the pitcher.",
+      "text": "Sometimes you miss.",
+      "text_markdown": "Sometimes you miss.",
       "tts": {
-        "text": "You stand sideways to the pitcher.",
-        "pause_after_ms": 800,
+        "text": "Sometimes you miss.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1451,12 +1451,12 @@
       "paragraph_id": "p92",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You watch the ball as it comes at you.",
-      "text_markdown": "You watch the ball as it comes at you.",
+      "text": "Okay, a lot of times you miss.",
+      "text_markdown": "Okay, a lot of times you miss.",
       "tts": {
-        "text": "You watch the ball as it comes at you.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "Okay, a lot of times you miss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1467,11 +1467,11 @@
       "paragraph_id": "p93",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then you swing.",
-      "text_markdown": "Then you swing.",
+      "text": "But when you connect, it feels amazing.",
+      "text_markdown": "But when you connect, it feels amazing.",
       "tts": {
-        "text": "Then you swing.",
-        "pause_after_ms": 800,
+        "text": "But when you connect, it feels amazing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1483,11 +1483,11 @@
       "paragraph_id": "p94",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You try to hit the ball really hard.",
-      "text_markdown": "You try to hit the ball really hard.",
+      "text": "Throwing is the part I'm best at.",
+      "text_markdown": "Throwing is the part I'm best at.",
       "tts": {
-        "text": "You try to hit the ball really hard.",
-        "pause_after_ms": 800,
+        "text": "Throwing is the part I'm best at.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1499,12 +1499,12 @@
       "paragraph_id": "p95",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Sometimes you miss.",
-      "text_markdown": "Sometimes you miss.",
+      "text": "You hold the ball in your fingers, not your palm.",
+      "text_markdown": "You hold the ball in your fingers, not your palm.",
       "tts": {
-        "text": "Sometimes you miss.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You hold the ball in your fingers, not your palm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
       }
     },
     {
@@ -1515,11 +1515,11 @@
       "paragraph_id": "p96",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Okay, a lot of times you miss.",
-      "text_markdown": "Okay, a lot of times you miss.",
+      "text": "You step toward your target.",
+      "text_markdown": "You step toward your target.",
       "tts": {
-        "text": "Okay, a lot of times you miss.",
-        "pause_after_ms": 800,
+        "text": "You step toward your target.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1531,12 +1531,12 @@
       "paragraph_id": "p97",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "But when you connect, it feels amazing.",
-      "text_markdown": "But when you connect, it feels amazing.",
+      "text": "You snap your wrist as you let it go.",
+      "text_markdown": "You snap your wrist as you let it go.",
       "tts": {
-        "text": "But when you connect, it feels amazing.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You snap your wrist as you let it go.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -1547,12 +1547,12 @@
       "paragraph_id": "p98",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Throwing is the part I'm best at.",
-      "text_markdown": "Throwing is the part I'm best at.",
+      "text": "A good throw is like drawing a straight line in the air.",
+      "text_markdown": "A good throw is like drawing a straight line in the air.",
       "tts": {
-        "text": "Throwing is the part I'm best at.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "A good throw is like drawing a straight line in the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -1563,12 +1563,12 @@
       "paragraph_id": "p99",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You hold the ball in your fingers, not your palm.",
-      "text_markdown": "You hold the ball in your fingers, not your palm.",
+      "text": "Catching is fun.",
+      "text_markdown": "Catching is fun.",
       "tts": {
-        "text": "You hold the ball in your fingers, not your palm.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.92
+        "text": "Catching is fun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1579,11 +1579,11 @@
       "paragraph_id": "p100",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You step toward your target.",
-      "text_markdown": "You step toward your target.",
+      "text": "You wear a leather glove on one hand.",
+      "text_markdown": "You wear a leather glove on one hand.",
       "tts": {
-        "text": "You step toward your target.",
-        "pause_after_ms": 800,
+        "text": "You wear a leather glove on one hand.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1595,12 +1595,12 @@
       "paragraph_id": "p101",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You snap your wrist as you let it go.",
-      "text_markdown": "You snap your wrist as you let it go.",
+      "text": "The glove is soft on the inside and stiff on the outside.",
+      "text_markdown": "The glove is soft on the inside and stiff on the outside.",
       "tts": {
-        "text": "You snap your wrist as you let it go.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "The glove is soft on the inside and stiff on the outside.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
       }
     },
     {
@@ -1611,12 +1611,12 @@
       "paragraph_id": "p102",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A good throw is like drawing a straight line in the air.",
-      "text_markdown": "A good throw is like drawing a straight line in the air.",
+      "text": "You squeeze it shut when the ball lands inside.",
+      "text_markdown": "You squeeze it shut when the ball lands inside.",
       "tts": {
-        "text": "A good throw is like drawing a straight line in the air.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.93
+        "text": "You squeeze it shut when the ball lands inside.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1627,11 +1627,11 @@
       "paragraph_id": "p103",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Catching is fun.",
-      "text_markdown": "Catching is fun.",
+      "text": "That's how you catch it.",
+      "text_markdown": "That's how you catch it.",
       "tts": {
-        "text": "Catching is fun.",
-        "pause_after_ms": 800,
+        "text": "That's how you catch it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1643,12 +1643,12 @@
       "paragraph_id": "p104",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You wear a leather glove on one hand.",
-      "text_markdown": "You wear a leather glove on one hand.",
+      "text": "If the ball is on the ground, you bend your knees.",
+      "text_markdown": "If the ball is on the ground, you bend your knees.",
       "tts": {
-        "text": "You wear a leather glove on one hand.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "If the ball is on the ground, you bend your knees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -1659,12 +1659,12 @@
       "paragraph_id": "p105",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The glove is soft on the inside and stiff on the outside.",
-      "text_markdown": "The glove is soft on the inside and stiff on the outside.",
+      "text": "You scoop it up like you're picking up sand.",
+      "text_markdown": "You scoop it up like you're picking up sand.",
       "tts": {
-        "text": "The glove is soft on the inside and stiff on the outside.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.8
+        "text": "You scoop it up like you're picking up sand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -1675,11 +1675,11 @@
       "paragraph_id": "p106",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You squeeze it shut when the ball lands inside.",
-      "text_markdown": "You squeeze it shut when the ball lands inside.",
+      "text": "Running is the simplest part.",
+      "text_markdown": "Running is the simplest part.",
       "tts": {
-        "text": "You squeeze it shut when the ball lands inside.",
-        "pause_after_ms": 800,
+        "text": "Running is the simplest part.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1691,12 +1691,12 @@
       "paragraph_id": "p107",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's how you catch it.",
-      "text_markdown": "That's how you catch it.",
+      "text": "You just go as fast as you can.",
+      "text_markdown": "You just go as fast as you can.",
       "tts": {
-        "text": "That's how you catch it.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You just go as fast as you can.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
       }
     },
     {
@@ -1707,12 +1707,12 @@
       "paragraph_id": "p108",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the ball is on the ground, you bend your knees.",
-      "text_markdown": "If the ball is on the ground, you bend your knees.",
+      "text": "But you have to run smart, too.",
+      "text_markdown": "But you have to run smart, too.",
       "tts": {
-        "text": "If the ball is on the ground, you bend your knees.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.93
+        "text": "But you have to run smart, too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1723,12 +1723,12 @@
       "paragraph_id": "p109",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You scoop it up like you're picking up sand.",
-      "text_markdown": "You scoop it up like you're picking up sand.",
+      "text": "You have to know where to run.",
+      "text_markdown": "You have to know where to run.",
       "tts": {
-        "text": "You scoop it up like you're picking up sand.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "You have to know where to run.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -1739,12 +1739,12 @@
       "paragraph_id": "p110",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Running is the simplest part.",
-      "text_markdown": "Running is the simplest part.",
+      "text": "You have to know when to stop.",
+      "text_markdown": "You have to know when to stop.",
       "tts": {
-        "text": "Running is the simplest part.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You have to know when to stop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -1755,12 +1755,12 @@
       "paragraph_id": "p111",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You just go as fast as you can.",
-      "text_markdown": "You just go as fast as you can.",
+      "text": "Sometimes you slide into a base.",
+      "text_markdown": "Sometimes you slide into a base.",
       "tts": {
-        "text": "You just go as fast as you can.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.8
+        "text": "Sometimes you slide into a base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1771,11 +1771,11 @@
       "paragraph_id": "p112",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "But you have to run smart, too.",
-      "text_markdown": "But you have to run smart, too.",
+      "text": "That means you drop low and skid across the dirt.",
+      "text_markdown": "That means you drop low and skid across the dirt.",
       "tts": {
-        "text": "But you have to run smart, too.",
-        "pause_after_ms": 800,
+        "text": "That means you drop low and skid across the dirt.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1787,12 +1787,12 @@
       "paragraph_id": "p113",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You have to know where to run.",
-      "text_markdown": "You have to know where to run.",
+      "text": "That's how the pants get dirty.",
+      "text_markdown": "That's how the pants get dirty.",
       "tts": {
-        "text": "You have to know where to run.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "That's how the pants get dirty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1803,12 +1803,12 @@
       "paragraph_id": "p114",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You have to know when to stop.",
-      "text_markdown": "You have to know when to stop.",
+      "text": "Hitting, throwing, catching, running.",
+      "text_markdown": "Hitting, throwing, catching, running.",
       "tts": {
-        "text": "You have to know when to stop.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "Hitting, throwing, catching, running.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1819,76 +1819,72 @@
       "paragraph_id": "p115",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Sometimes you slide into a base.",
-      "text_markdown": "Sometimes you slide into a base.",
-      "tts": {
-        "text": "Sometimes you slide into a base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch04-116",
-      "part": 0,
-      "chapter": 4,
-      "title": "What We Actually Do",
-      "paragraph_id": "p116",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "That means you drop low and skid across the dirt.",
-      "text_markdown": "That means you drop low and skid across the dirt.",
-      "tts": {
-        "text": "That means you drop low and skid across the dirt.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch04-117",
-      "part": 0,
-      "chapter": 4,
-      "title": "What We Actually Do",
-      "paragraph_id": "p117",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "That's how the pants get dirty.",
-      "text_markdown": "That's how the pants get dirty.",
-      "tts": {
-        "text": "That's how the pants get dirty.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch04-118",
-      "part": 0,
-      "chapter": 4,
-      "title": "What We Actually Do",
-      "paragraph_id": "p118",
-      "sentence_index": 0,
-      "block_type": "text",
-      "text": "Hitting, throwing, catching, running.",
-      "text_markdown": "Hitting, throwing, catching, running.",
-      "tts": {
-        "text": "Hitting, throwing, catching, running.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch04-119",
-      "part": 0,
-      "chapter": 4,
-      "title": "What We Actually Do",
-      "paragraph_id": "p119",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "If you can do those four things, you can play baseball.",
       "text_markdown": "If you can do those four things, you can play baseball.",
       "tts": {
         "text": "If you can do those four things, you can play baseball.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Positions",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Positions",
+      "text_markdown": "The Positions"
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Positions",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are nine players on the field at a time.",
+      "text_markdown": "There are nine players on the field at a time.",
+      "tts": {
+        "text": "There are nine players on the field at a time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Positions",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each one stands in a different spot.",
+      "text_markdown": "Each one stands in a different spot.",
+      "tts": {
+        "text": "Each one stands in a different spot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Positions",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each spot has a name and a job.",
+      "text_markdown": "Each spot has a name and a job.",
+      "tts": {
+        "text": "Each spot has a name and a job.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -1898,10 +1894,14 @@
       "title": "The Positions",
       "paragraph_id": "p120",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "The Positions",
-      "text_markdown": "The Positions"
+      "block_type": "text",
+      "text": "The most important player is the pitcher.",
+      "text_markdown": "The most important player is the pitcher.",
+      "tts": {
+        "text": "The most important player is the pitcher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
     },
     {
       "id": "ch05-121",
@@ -1911,12 +1911,12 @@
       "paragraph_id": "p121",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There are nine players on the field at a time.",
-      "text_markdown": "There are nine players on the field at a time.",
+      "text": "The pitcher stands on a small dirt mound in the middle of the field.",
+      "text_markdown": "The pitcher stands on a small dirt mound in the middle of the field.",
       "tts": {
-        "text": "There are nine players on the field at a time.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The pitcher stands on a small dirt mound in the middle of the field.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -1927,12 +1927,12 @@
       "paragraph_id": "p122",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Each one stands in a different spot.",
-      "text_markdown": "Each one stands in a different spot.",
+      "text": "The pitcher throws the ball to start every play.",
+      "text_markdown": "The pitcher throws the ball to start every play.",
       "tts": {
-        "text": "Each one stands in a different spot.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The pitcher throws the ball to start every play.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -1943,11 +1943,11 @@
       "paragraph_id": "p123",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Each spot has a name.",
-      "text_markdown": "Each spot has a name.",
+      "text": "A good pitch is hard for the batter to hit.",
+      "text_markdown": "A good pitch is hard for the batter to hit.",
       "tts": {
-        "text": "Each spot has a name.",
-        "pause_after_ms": 800,
+        "text": "A good pitch is hard for the batter to hit.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -1959,12 +1959,12 @@
       "paragraph_id": "p124",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The most important player is the pitcher.",
-      "text_markdown": "The most important player is the pitcher.",
+      "text": "A great pitch goes right past the batter's swing.",
+      "text_markdown": "A great pitch goes right past the batter's swing.",
       "tts": {
-        "text": "The most important player is the pitcher.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "A great pitch goes right past the batter's swing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -1975,12 +1975,12 @@
       "paragraph_id": "p125",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher stands in the middle of the field.",
-      "text_markdown": "The pitcher stands in the middle of the field.",
+      "text": "Across from the pitcher is the catcher.",
+      "text_markdown": "Across from the pitcher is the catcher.",
       "tts": {
-        "text": "The pitcher stands in the middle of the field.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.82
+        "text": "Across from the pitcher is the catcher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -1991,12 +1991,12 @@
       "paragraph_id": "p126",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He or she throws the ball to start every play.",
-      "text_markdown": "He or she throws the ball to start every play.",
+      "text": "The catcher squats down behind the batter.",
+      "text_markdown": "The catcher squats down behind the batter.",
       "tts": {
-        "text": "He or she throws the ball to start every play.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The catcher squats down behind the batter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -2007,12 +2007,12 @@
       "paragraph_id": "p127",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher tries to throw it past the batter.",
-      "text_markdown": "The pitcher tries to throw it past the batter.",
+      "text": "The catcher wears a mask and big pads.",
+      "text_markdown": "The catcher wears a mask and big pads.",
       "tts": {
-        "text": "The pitcher tries to throw it past the batter.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "The catcher wears a mask and big pads.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2023,12 +2023,12 @@
       "paragraph_id": "p128",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Across from the pitcher is the catcher.",
-      "text_markdown": "Across from the pitcher is the catcher.",
+      "text": "That's because the ball comes at them really fast.",
+      "text_markdown": "That's because the ball comes at them really fast.",
       "tts": {
-        "text": "Across from the pitcher is the catcher.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "That's because the ball comes at them really fast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2039,12 +2039,12 @@
       "paragraph_id": "p129",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The catcher squats down behind the batter.",
-      "text_markdown": "The catcher squats down behind the batter.",
+      "text": "The catcher catches every pitch the batter doesn't hit.",
+      "text_markdown": "The catcher catches every pitch the batter doesn't hit.",
       "tts": {
-        "text": "The catcher squats down behind the batter.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "The catcher catches every pitch the batter doesn't hit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -2055,12 +2055,12 @@
       "paragraph_id": "p130",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The catcher wears a mask and big pads.",
-      "text_markdown": "The catcher wears a mask and big pads.",
+      "text": "The catcher also tells the pitcher what kind of pitch to throw.",
+      "text_markdown": "The catcher also tells the pitcher what kind of pitch to throw.",
       "tts": {
-        "text": "The catcher wears a mask and big pads.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The catcher also tells the pitcher what kind of pitch to throw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -2071,11 +2071,11 @@
       "paragraph_id": "p131",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's because the ball comes at them really fast.",
-      "text_markdown": "That's because the ball comes at them really fast.",
+      "text": "They use little hand signals between their knees.",
+      "text_markdown": "They use little hand signals between their knees.",
       "tts": {
-        "text": "That's because the ball comes at them really fast.",
-        "pause_after_ms": 800,
+        "text": "They use little hand signals between their knees.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2087,12 +2087,12 @@
       "paragraph_id": "p132",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The catcher catches every pitch the batter doesn't hit.",
-      "text_markdown": "The catcher catches every pitch the batter doesn't hit.",
+      "text": "Then there are the infielders.",
+      "text_markdown": "Then there are the infielders.",
       "tts": {
-        "text": "The catcher catches every pitch the batter doesn't hit.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "Then there are the infielders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2103,11 +2103,11 @@
       "paragraph_id": "p133",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then there are the infielders.",
-      "text_markdown": "Then there are the infielders.",
+      "text": "Infielders play close to the bases.",
+      "text_markdown": "Infielders play close to the bases.",
       "tts": {
-        "text": "Then there are the infielders.",
-        "pause_after_ms": 800,
+        "text": "Infielders play close to the bases.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2119,12 +2119,12 @@
       "paragraph_id": "p134",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Infielders play close to the bases.",
-      "text_markdown": "Infielders play close to the bases.",
+      "text": "There's a first baseman near first base.",
+      "text_markdown": "There's a first baseman near first base.",
       "tts": {
-        "text": "Infielders play close to the bases.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "There's a first baseman near first base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -2135,11 +2135,11 @@
       "paragraph_id": "p135",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There's a first baseman near first base.",
-      "text_markdown": "There's a first baseman near first base.",
+      "text": "There's a second baseman near second base.",
+      "text_markdown": "There's a second baseman near second base.",
       "tts": {
-        "text": "There's a first baseman near first base.",
-        "pause_after_ms": 800,
+        "text": "There's a second baseman near second base.",
+        "pause_after_ms": 600,
         "repetition_penalty": 1.89
       }
     },
@@ -2151,11 +2151,11 @@
       "paragraph_id": "p136",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There's a second baseman near second base.",
-      "text_markdown": "There's a second baseman near second base.",
+      "text": "There's a third baseman near third base.",
+      "text_markdown": "There's a third baseman near third base.",
       "tts": {
-        "text": "There's a second baseman near second base.",
-        "pause_after_ms": 800,
+        "text": "There's a third baseman near third base.",
+        "pause_after_ms": 600,
         "repetition_penalty": 1.89
       }
     },
@@ -2167,12 +2167,12 @@
       "paragraph_id": "p137",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There's a third baseman near third base.",
-      "text_markdown": "There's a third baseman near third base.",
+      "text": "And there's a shortstop in between second and third.",
+      "text_markdown": "And there's a shortstop in between second and third.",
       "tts": {
-        "text": "There's a third baseman near third base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "And there's a shortstop in between second and third.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -2183,12 +2183,12 @@
       "paragraph_id": "p138",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "And there's a shortstop in between second and third.",
-      "text_markdown": "And there's a shortstop in between second and third.",
+      "text": "Shortstop is a cool position.",
+      "text_markdown": "Shortstop is a cool position.",
       "tts": {
-        "text": "And there's a shortstop in between second and third.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "Shortstop is a cool position.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2199,12 +2199,12 @@
       "paragraph_id": "p139",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Shortstop is a cool position.",
-      "text_markdown": "Shortstop is a cool position.",
+      "text": "You have to be quick to play shortstop.",
+      "text_markdown": "You have to be quick to play shortstop.",
       "tts": {
-        "text": "Shortstop is a cool position.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You have to be quick to play shortstop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -2215,12 +2215,12 @@
       "paragraph_id": "p140",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You have to be quick to play shortstop.",
-      "text_markdown": "You have to be quick to play shortstop.",
+      "text": "The ball gets hit there more than anywhere else.",
+      "text_markdown": "The ball gets hit there more than anywhere else.",
       "tts": {
-        "text": "You have to be quick to play shortstop.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "The ball gets hit there more than anywhere else.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2231,12 +2231,12 @@
       "paragraph_id": "p141",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The ball gets hit there a lot.",
-      "text_markdown": "The ball gets hit there a lot.",
+      "text": "When a grounder comes, the shortstop has to scoop it up and throw to first base.",
+      "text_markdown": "When a grounder comes, the shortstop has to scoop it up and throw to first base.",
       "tts": {
-        "text": "The ball gets hit there a lot.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "When a grounder comes, the shortstop has to scoop it up and throw to first base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
       }
     },
     {
@@ -2247,11 +2247,11 @@
       "paragraph_id": "p142",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then there are the outfielders.",
-      "text_markdown": "Then there are the outfielders.",
+      "text": "All in one smooth motion.",
+      "text_markdown": "All in one smooth motion.",
       "tts": {
-        "text": "Then there are the outfielders.",
-        "pause_after_ms": 800,
+        "text": "All in one smooth motion.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2263,11 +2263,11 @@
       "paragraph_id": "p143",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Outfielders play way back, in the grass.",
-      "text_markdown": "Outfielders play way back, in the grass.",
+      "text": "Then there are the outfielders.",
+      "text_markdown": "Then there are the outfielders.",
       "tts": {
-        "text": "Outfielders play way back, in the grass.",
-        "pause_after_ms": 800,
+        "text": "Then there are the outfielders.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2279,12 +2279,12 @@
       "paragraph_id": "p144",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There's a left fielder, a center fielder, and a right fielder.",
-      "text_markdown": "There's a left fielder, a center fielder, and a right fielder.",
+      "text": "Outfielders play way back, in the grass.",
+      "text_markdown": "Outfielders play way back, in the grass.",
       "tts": {
-        "text": "There's a left fielder, a center fielder, and a right fielder.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.71
+        "text": "Outfielders play way back, in the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2295,12 +2295,12 @@
       "paragraph_id": "p145",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "They catch the balls that get hit really far.",
-      "text_markdown": "They catch the balls that get hit really far.",
+      "text": "There's a left fielder, a center fielder, and a right fielder.",
+      "text_markdown": "There's a left fielder, a center fielder, and a right fielder.",
       "tts": {
-        "text": "They catch the balls that get hit really far.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "There's a left fielder, a center fielder, and a right fielder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.71
       }
     },
     {
@@ -2311,11 +2311,11 @@
       "paragraph_id": "p146",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I play second base, mostly.",
-      "text_markdown": "I play second base, mostly.",
+      "text": "They catch balls that fly over the infielders' heads.",
+      "text_markdown": "They catch balls that fly over the infielders' heads.",
       "tts": {
-        "text": "I play second base, mostly.",
-        "pause_after_ms": 800,
+        "text": "They catch balls that fly over the infielders' heads.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2327,12 +2327,12 @@
       "paragraph_id": "p147",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Sometimes the coach puts me in the outfield.",
-      "text_markdown": "Sometimes the coach puts me in the outfield.",
+      "text": "They also chase down balls that get past everyone.",
+      "text_markdown": "They also chase down balls that get past everyone.",
       "tts": {
-        "text": "Sometimes the coach puts me in the outfield.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "They also chase down balls that get past everyone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2343,12 +2343,12 @@
       "paragraph_id": "p148",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I like second base better.",
-      "text_markdown": "I like second base better.",
+      "text": "A long throw from the outfield is one of the coolest things in baseball.",
+      "text_markdown": "A long throw from the outfield is one of the coolest things in baseball.",
       "tts": {
-        "text": "I like second base better.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "A long throw from the outfield is one of the coolest things in baseball.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
       }
     },
     {
@@ -2359,11 +2359,11 @@
       "paragraph_id": "p149",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You feel like you're in the middle of everything.",
-      "text_markdown": "You feel like you're in the middle of everything.",
+      "text": "I play second base, mostly.",
+      "text_markdown": "I play second base, mostly.",
       "tts": {
-        "text": "You feel like you're in the middle of everything.",
-        "pause_after_ms": 800,
+        "text": "I play second base, mostly.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2375,11 +2375,11 @@
       "paragraph_id": "p150",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "My friend Marcus plays shortstop.",
-      "text_markdown": "My friend Marcus plays shortstop.",
+      "text": "Sometimes my coach puts me in the outfield.",
+      "text_markdown": "Sometimes my coach puts me in the outfield.",
       "tts": {
-        "text": "My friend Marcus plays shortstop.",
-        "pause_after_ms": 800,
+        "text": "Sometimes my coach puts me in the outfield.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2391,11 +2391,11 @@
       "paragraph_id": "p151",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Our pitcher is Jerome.",
-      "text_markdown": "Our pitcher is Jerome.",
+      "text": "I like second base better.",
+      "text_markdown": "I like second base better.",
       "tts": {
-        "text": "Our pitcher is Jerome.",
-        "pause_after_ms": 800,
+        "text": "I like second base better.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2407,11 +2407,11 @@
       "paragraph_id": "p152",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He throws really hard.",
-      "text_markdown": "He throws really hard.",
+      "text": "You feel like you're in the middle of everything.",
+      "text_markdown": "You feel like you're in the middle of everything.",
       "tts": {
-        "text": "He throws really hard.",
-        "pause_after_ms": 800,
+        "text": "You feel like you're in the middle of everything.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2423,11 +2423,11 @@
       "paragraph_id": "p153",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Nobody on our team likes batting against Jerome in practice.",
-      "text_markdown": "Nobody on our team likes batting against Jerome in practice.",
+      "text": "Every position matters.",
+      "text_markdown": "Every position matters.",
       "tts": {
-        "text": "Nobody on our team likes batting against Jerome in practice.",
-        "pause_after_ms": 800,
+        "text": "Every position matters.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2439,11 +2439,11 @@
       "paragraph_id": "p154",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Every position matters.",
-      "text_markdown": "Every position matters.",
+      "text": "The pitcher can't do it alone.",
+      "text_markdown": "The pitcher can't do it alone.",
       "tts": {
-        "text": "Every position matters.",
-        "pause_after_ms": 800,
+        "text": "The pitcher can't do it alone.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2455,11 +2455,11 @@
       "paragraph_id": "p155",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher can't do it alone.",
-      "text_markdown": "The pitcher can't do it alone.",
+      "text": "Everybody has a job on every single pitch.",
+      "text_markdown": "Everybody has a job on every single pitch.",
       "tts": {
-        "text": "The pitcher can't do it alone.",
-        "pause_after_ms": 800,
+        "text": "Everybody has a job on every single pitch.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2471,29 +2471,25 @@
       "paragraph_id": "p156",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Everybody has a job.",
-      "text_markdown": "Everybody has a job.",
-      "tts": {
-        "text": "Everybody has a job.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch05-157",
-      "part": 0,
-      "chapter": 5,
-      "title": "The Positions",
-      "paragraph_id": "p157",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "When the ball comes to your spot, you have to be ready.",
       "text_markdown": "When the ball comes to your spot, you have to be ready.",
       "tts": {
         "text": "When the ball comes to your spot, you have to be ready.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.93
       }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "How a Game Works",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "How a Game Works",
+      "text_markdown": "How a Game Works"
     },
     {
       "id": "ch06-158",
@@ -2502,10 +2498,14 @@
       "title": "How a Game Works",
       "paragraph_id": "p158",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "How a Game Works",
-      "text_markdown": "How a Game Works"
+      "block_type": "text",
+      "text": "Okay, this is the part that confuses people.",
+      "text_markdown": "Okay, this is the part that confuses people.",
+      "tts": {
+        "text": "Okay, this is the part that confuses people.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch06-159",
@@ -2515,11 +2515,11 @@
       "paragraph_id": "p159",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Okay, this is the part that confuses people.",
-      "text_markdown": "Okay, this is the part that confuses people.",
+      "text": "I'll go slow.",
+      "text_markdown": "I'll go slow.",
       "tts": {
-        "text": "Okay, this is the part that confuses people.",
-        "pause_after_ms": 800,
+        "text": "I'll go slow.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2531,11 +2531,11 @@
       "paragraph_id": "p160",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'll go slow.",
-      "text_markdown": "I'll go slow.",
+      "text": "A baseball game is split into innings.",
+      "text_markdown": "A baseball game is split into innings.",
       "tts": {
-        "text": "I'll go slow.",
-        "pause_after_ms": 800,
+        "text": "A baseball game is split into innings.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2547,11 +2547,11 @@
       "paragraph_id": "p161",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A baseball game is split into innings.",
-      "text_markdown": "A baseball game is split into innings.",
+      "text": "An inning is just a chunk of the game.",
+      "text_markdown": "An inning is just a chunk of the game.",
       "tts": {
-        "text": "A baseball game is split into innings.",
-        "pause_after_ms": 800,
+        "text": "An inning is just a chunk of the game.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2563,11 +2563,11 @@
       "paragraph_id": "p162",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "An inning is just a chunk of the game.",
-      "text_markdown": "An inning is just a chunk of the game.",
+      "text": "In each inning, both teams get a turn to bat.",
+      "text_markdown": "In each inning, both teams get a turn to bat.",
       "tts": {
-        "text": "An inning is just a chunk of the game.",
-        "pause_after_ms": 800,
+        "text": "In each inning, both teams get a turn to bat.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2579,11 +2579,11 @@
       "paragraph_id": "p163",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "In each inning, both teams get a turn to bat.",
-      "text_markdown": "In each inning, both teams get a turn to bat.",
+      "text": "One team bats first.",
+      "text_markdown": "One team bats first.",
       "tts": {
-        "text": "In each inning, both teams get a turn to bat.",
-        "pause_after_ms": 800,
+        "text": "One team bats first.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2595,11 +2595,11 @@
       "paragraph_id": "p164",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "One team bats first.",
-      "text_markdown": "One team bats first.",
+      "text": "Then the other team bats.",
+      "text_markdown": "Then the other team bats.",
       "tts": {
-        "text": "One team bats first.",
-        "pause_after_ms": 800,
+        "text": "Then the other team bats.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2611,12 +2611,12 @@
       "paragraph_id": "p165",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then the other team bats.",
-      "text_markdown": "Then the other team bats.",
+      "text": "When you're not batting, you're playing the field.",
+      "text_markdown": "When you're not batting, you're playing the field.",
       "tts": {
-        "text": "Then the other team bats.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "When you're not batting, you're playing the field.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -2627,12 +2627,12 @@
       "paragraph_id": "p166",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When you're not batting, you're playing the field.",
-      "text_markdown": "When you're not batting, you're playing the field.",
+      "text": "That means you're trying to get the other team out.",
+      "text_markdown": "That means you're trying to get the other team out.",
       "tts": {
-        "text": "When you're not batting, you're playing the field.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "That means you're trying to get the other team out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2643,11 +2643,11 @@
       "paragraph_id": "p167",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That means you're trying to get the other team out.",
-      "text_markdown": "That means you're trying to get the other team out.",
+      "text": "What does \"out\" mean?",
+      "text_markdown": "What does \"out\" mean?",
       "tts": {
-        "text": "That means you're trying to get the other team out.",
-        "pause_after_ms": 800,
+        "text": "What does \"out\" mean?",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2659,11 +2659,11 @@
       "paragraph_id": "p168",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "What does \"out\" mean?",
-      "text_markdown": "What does \"out\" mean?",
+      "text": "It means a player is done with their turn.",
+      "text_markdown": "It means a player is done with their turn.",
       "tts": {
-        "text": "What does \"out\" mean?",
-        "pause_after_ms": 800,
+        "text": "It means a player is done with their turn.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2675,11 +2675,11 @@
       "paragraph_id": "p169",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It means a player is done with their turn.",
-      "text_markdown": "It means a player is done with their turn.",
+      "text": "Each team gets three outs per inning.",
+      "text_markdown": "Each team gets three outs per inning.",
       "tts": {
-        "text": "It means a player is done with their turn.",
-        "pause_after_ms": 800,
+        "text": "Each team gets three outs per inning.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2691,11 +2691,11 @@
       "paragraph_id": "p170",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Each team gets three outs per inning.",
-      "text_markdown": "Each team gets three outs per inning.",
+      "text": "After three outs, the other team comes up to bat.",
+      "text_markdown": "After three outs, the other team comes up to bat.",
       "tts": {
-        "text": "Each team gets three outs per inning.",
-        "pause_after_ms": 800,
+        "text": "After three outs, the other team comes up to bat.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2707,11 +2707,11 @@
       "paragraph_id": "p171",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "After three outs, the other team comes up to bat.",
-      "text_markdown": "After three outs, the other team comes up to bat.",
+      "text": "There are a few ways to get out.",
+      "text_markdown": "There are a few ways to get out.",
       "tts": {
-        "text": "After three outs, the other team comes up to bat.",
-        "pause_after_ms": 800,
+        "text": "There are a few ways to get out.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2723,11 +2723,11 @@
       "paragraph_id": "p172",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "There are a few ways to get out.",
-      "text_markdown": "There are a few ways to get out.",
+      "text": "If the batter swings and misses three times, that's a strikeout.",
+      "text_markdown": "If the batter swings and misses three times, that's a strikeout.",
       "tts": {
-        "text": "There are a few ways to get out.",
-        "pause_after_ms": 800,
+        "text": "If the batter swings and misses three times, that's a strikeout.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2739,11 +2739,11 @@
       "paragraph_id": "p173",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the batter swings and misses three times, that's a strikeout.",
-      "text_markdown": "If the batter swings and misses three times, that's a strikeout.",
+      "text": "A strikeout is one out.",
+      "text_markdown": "A strikeout is one out.",
       "tts": {
-        "text": "If the batter swings and misses three times, that's a strikeout.",
-        "pause_after_ms": 800,
+        "text": "A strikeout is one out.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2755,12 +2755,12 @@
       "paragraph_id": "p174",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A strikeout is one out.",
-      "text_markdown": "A strikeout is one out.",
+      "text": "If the batter hits the ball and someone catches it in the air, that's an out.",
+      "text_markdown": "If the batter hits the ball and someone catches it in the air, that's an out.",
       "tts": {
-        "text": "A strikeout is one out.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "If the batter hits the ball and someone catches it in the air, that's an out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -2771,12 +2771,12 @@
       "paragraph_id": "p175",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the batter hits the ball and someone catches it in the air, that's an out.",
-      "text_markdown": "If the batter hits the ball and someone catches it in the air, that's an out.",
+      "text": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
+      "text_markdown": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
       "tts": {
-        "text": "If the batter hits the ball and someone catches it in the air, that's an out.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
       }
     },
     {
@@ -2787,12 +2787,12 @@
       "paragraph_id": "p176",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
-      "text_markdown": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
+      "text": "If the ball gets to first base before the runner does, the runner is out.",
+      "text_markdown": "If the ball gets to first base before the runner does, the runner is out.",
       "tts": {
-        "text": "If the batter hits the ball on the ground, the fielder can throw it to first base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.86
+        "text": "If the ball gets to first base before the runner does, the runner is out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
       }
     },
     {
@@ -2803,12 +2803,12 @@
       "paragraph_id": "p177",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the ball gets to first base before the runner does, the runner is out.",
-      "text_markdown": "If the ball gets to first base before the runner does, the runner is out.",
+      "text": "That part can be really close sometimes.",
+      "text_markdown": "That part can be really close sometimes.",
       "tts": {
-        "text": "If the ball gets to first base before the runner does, the runner is out.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.84
+        "text": "That part can be really close sometimes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2819,11 +2819,11 @@
       "paragraph_id": "p178",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That part can be really close sometimes.",
-      "text_markdown": "That part can be really close sometimes.",
+      "text": "The crowd holds their breath.",
+      "text_markdown": "The crowd holds their breath.",
       "tts": {
-        "text": "That part can be really close sometimes.",
-        "pause_after_ms": 800,
+        "text": "The crowd holds their breath.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2835,11 +2835,11 @@
       "paragraph_id": "p179",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The crowd holds their breath.",
-      "text_markdown": "The crowd holds their breath.",
+      "text": "Now, what about balls and strikes?",
+      "text_markdown": "Now, what about balls and strikes?",
       "tts": {
-        "text": "The crowd holds their breath.",
-        "pause_after_ms": 800,
+        "text": "Now, what about balls and strikes?",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2851,12 +2851,12 @@
       "paragraph_id": "p180",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Now, what about balls and strikes?",
-      "text_markdown": "Now, what about balls and strikes?",
+      "text": "When the pitcher throws, the umpire decides where the ball went.",
+      "text_markdown": "When the pitcher throws, the umpire decides where the ball went.",
       "tts": {
-        "text": "Now, what about balls and strikes?",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "When the pitcher throws, the umpire decides where the ball went.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
       }
     },
     {
@@ -2867,12 +2867,12 @@
       "paragraph_id": "p181",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When the pitcher throws, the umpire decides where the ball went.",
-      "text_markdown": "When the pitcher throws, the umpire decides where the ball went.",
+      "text": "If it goes through the strike zone, it's a strike.",
+      "text_markdown": "If it goes through the strike zone, it's a strike.",
       "tts": {
-        "text": "When the pitcher throws, the umpire decides where the ball went.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.85
+        "text": "If it goes through the strike zone, it's a strike.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
       }
     },
     {
@@ -2883,12 +2883,12 @@
       "paragraph_id": "p182",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If it goes through the strike zone, it's a strike.",
-      "text_markdown": "If it goes through the strike zone, it's a strike.",
+      "text": "The strike zone is an invisible box over home plate.",
+      "text_markdown": "The strike zone is an invisible box over home plate.",
       "tts": {
-        "text": "If it goes through the strike zone, it's a strike.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.92
+        "text": "The strike zone is an invisible box over home plate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2899,12 +2899,12 @@
       "paragraph_id": "p183",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The strike zone is an invisible box over home plate.",
-      "text_markdown": "The strike zone is an invisible box over home plate.",
+      "text": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
+      "text_markdown": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
       "tts": {
-        "text": "The strike zone is an invisible box over home plate.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -2915,12 +2915,12 @@
       "paragraph_id": "p184",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
-      "text_markdown": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
+      "text": "Three strikes and the batter is out.",
+      "text_markdown": "Three strikes and the batter is out.",
       "tts": {
-        "text": "If the pitch is outside the box, and the batter doesn't swing, it's a ball.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "Three strikes and the batter is out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -2931,11 +2931,11 @@
       "paragraph_id": "p185",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Three strikes and the batter is out.",
-      "text_markdown": "Three strikes and the batter is out.",
+      "text": "Four balls and the batter walks to first base for free.",
+      "text_markdown": "Four balls and the batter walks to first base for free.",
       "tts": {
-        "text": "Three strikes and the batter is out.",
-        "pause_after_ms": 800,
+        "text": "Four balls and the batter walks to first base for free.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2947,11 +2947,11 @@
       "paragraph_id": "p186",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Four balls and the batter walks to first base for free.",
-      "text_markdown": "Four balls and the batter walks to first base for free.",
+      "text": "That's called a walk.",
+      "text_markdown": "That's called a walk.",
       "tts": {
-        "text": "Four balls and the batter walks to first base for free.",
-        "pause_after_ms": 800,
+        "text": "That's called a walk.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2963,11 +2963,11 @@
       "paragraph_id": "p187",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's called a walk.",
-      "text_markdown": "That's called a walk.",
+      "text": "I love getting a walk.",
+      "text_markdown": "I love getting a walk.",
       "tts": {
-        "text": "That's called a walk.",
-        "pause_after_ms": 800,
+        "text": "I love getting a walk.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2979,11 +2979,11 @@
       "paragraph_id": "p188",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I love getting a walk.",
-      "text_markdown": "I love getting a walk.",
+      "text": "You don't even have to swing.",
+      "text_markdown": "You don't even have to swing.",
       "tts": {
-        "text": "I love getting a walk.",
-        "pause_after_ms": 800,
+        "text": "You don't even have to swing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -2995,12 +2995,12 @@
       "paragraph_id": "p189",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You don't even have to swing.",
-      "text_markdown": "You don't even have to swing.",
+      "text": "To score a run, a player has to touch all four bases.",
+      "text_markdown": "To score a run, a player has to touch all four bases.",
       "tts": {
-        "text": "You don't even have to swing.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "To score a run, a player has to touch all four bases.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
       }
     },
     {
@@ -3011,12 +3011,12 @@
       "paragraph_id": "p190",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "To score a run, a player has to touch all four bases.",
-      "text_markdown": "To score a run, a player has to touch all four bases.",
+      "text": "First base.",
+      "text_markdown": "First base.",
       "tts": {
-        "text": "To score a run, a player has to touch all four bases.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "First base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3027,11 +3027,11 @@
       "paragraph_id": "p191",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "First base.",
-      "text_markdown": "First base.",
+      "text": "Second base.",
+      "text_markdown": "Second base.",
       "tts": {
-        "text": "First base.",
-        "pause_after_ms": 800,
+        "text": "Second base.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3043,11 +3043,11 @@
       "paragraph_id": "p192",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Second base.",
-      "text_markdown": "Second base.",
+      "text": "Third base.",
+      "text_markdown": "Third base.",
       "tts": {
-        "text": "Second base.",
-        "pause_after_ms": 800,
+        "text": "Third base.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3059,11 +3059,11 @@
       "paragraph_id": "p193",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Third base.",
-      "text_markdown": "Third base.",
+      "text": "And finally home plate.",
+      "text_markdown": "And finally home plate.",
       "tts": {
-        "text": "Third base.",
-        "pause_after_ms": 800,
+        "text": "And finally home plate.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3075,11 +3075,11 @@
       "paragraph_id": "p194",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "And finally home plate.",
-      "text_markdown": "And finally home plate.",
+      "text": "When you cross home plate, your team gets one point.",
+      "text_markdown": "When you cross home plate, your team gets one point.",
       "tts": {
-        "text": "And finally home plate.",
-        "pause_after_ms": 800,
+        "text": "When you cross home plate, your team gets one point.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3091,11 +3091,11 @@
       "paragraph_id": "p195",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When you cross home plate, your team gets one point.",
-      "text_markdown": "When you cross home plate, your team gets one point.",
+      "text": "We call that point a run.",
+      "text_markdown": "We call that point a run.",
       "tts": {
-        "text": "When you cross home plate, your team gets one point.",
-        "pause_after_ms": 800,
+        "text": "We call that point a run.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3107,12 +3107,12 @@
       "paragraph_id": "p196",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "We call that point a run.",
-      "text_markdown": "We call that point a run.",
+      "text": "The team with the most runs at the end wins.",
+      "text_markdown": "The team with the most runs at the end wins.",
       "tts": {
-        "text": "We call that point a run.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The team with the most runs at the end wins.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
       }
     },
     {
@@ -3123,12 +3123,12 @@
       "paragraph_id": "p197",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The team with the most runs at the end wins.",
-      "text_markdown": "The team with the most runs at the end wins.",
+      "text": "Most kid games are six innings long.",
+      "text_markdown": "Most kid games are six innings long.",
       "tts": {
-        "text": "The team with the most runs at the end wins.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.84
+        "text": "Most kid games are six innings long.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3139,11 +3139,11 @@
       "paragraph_id": "p198",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Most kid games are six innings long.",
-      "text_markdown": "Most kid games are six innings long.",
+      "text": "That feels like a long time when you're losing.",
+      "text_markdown": "That feels like a long time when you're losing.",
       "tts": {
-        "text": "Most kid games are six innings long.",
-        "pause_after_ms": 800,
+        "text": "That feels like a long time when you're losing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3155,29 +3155,25 @@
       "paragraph_id": "p199",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That feels like a long time when you're losing.",
-      "text_markdown": "That feels like a long time when you're losing.",
-      "tts": {
-        "text": "That feels like a long time when you're losing.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch06-200",
-      "part": 0,
-      "chapter": 6,
-      "title": "How a Game Works",
-      "paragraph_id": "p200",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "It feels like no time at all when you're winning.",
       "text_markdown": "It feels like no time at all when you're winning.",
       "tts": {
         "text": "It feels like no time at all when you're winning.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "What It Feels Like",
+      "paragraph_id": "p200",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "What It Feels Like",
+      "text_markdown": "What It Feels Like"
     },
     {
       "id": "ch07-201",
@@ -3186,10 +3182,14 @@
       "title": "What It Feels Like",
       "paragraph_id": "p201",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "What It Feels Like",
-      "text_markdown": "What It Feels Like"
+      "block_type": "text",
+      "text": "I want to tell you what a game actually feels like.",
+      "text_markdown": "I want to tell you what a game actually feels like.",
+      "tts": {
+        "text": "I want to tell you what a game actually feels like.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch07-202",
@@ -3199,11 +3199,11 @@
       "paragraph_id": "p202",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I want to tell you what a game actually feels like.",
-      "text_markdown": "I want to tell you what a game actually feels like.",
+      "text": "Not the rules.",
+      "text_markdown": "Not the rules.",
       "tts": {
-        "text": "I want to tell you what a game actually feels like.",
-        "pause_after_ms": 800,
+        "text": "Not the rules.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3215,11 +3215,11 @@
       "paragraph_id": "p203",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Not the rules.",
-      "text_markdown": "Not the rules.",
+      "text": "The feeling.",
+      "text_markdown": "The feeling.",
       "tts": {
-        "text": "Not the rules.",
-        "pause_after_ms": 800,
+        "text": "The feeling.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3231,11 +3231,11 @@
       "paragraph_id": "p204",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The feeling.",
-      "text_markdown": "The feeling.",
+      "text": "You get to the field early.",
+      "text_markdown": "You get to the field early.",
       "tts": {
-        "text": "The feeling.",
-        "pause_after_ms": 800,
+        "text": "You get to the field early.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3247,11 +3247,11 @@
       "paragraph_id": "p205",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You get to the field early.",
-      "text_markdown": "You get to the field early.",
+      "text": "The sun is still climbing.",
+      "text_markdown": "The sun is still climbing.",
       "tts": {
-        "text": "You get to the field early.",
-        "pause_after_ms": 800,
+        "text": "The sun is still climbing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3263,12 +3263,12 @@
       "paragraph_id": "p206",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The sun is still climbing.",
-      "text_markdown": "The sun is still climbing.",
+      "text": "The grass is a little wet from the morning.",
+      "text_markdown": "The grass is a little wet from the morning.",
       "tts": {
-        "text": "The sun is still climbing.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The grass is a little wet from the morning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -3279,12 +3279,12 @@
       "paragraph_id": "p207",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The grass is a little wet from the morning.",
-      "text_markdown": "The grass is a little wet from the morning.",
+      "text": "You can smell it.",
+      "text_markdown": "You can smell it.",
       "tts": {
-        "text": "The grass is a little wet from the morning.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "You can smell it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3295,12 +3295,12 @@
       "paragraph_id": "p208",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can smell it.",
-      "text_markdown": "You can smell it.",
+      "text": "It smells green and fresh and a little bit like dirt.",
+      "text_markdown": "It smells green and fresh and a little bit like dirt.",
       "tts": {
-        "text": "You can smell it.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "It smells green and fresh and a little bit like dirt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -3311,12 +3311,12 @@
       "paragraph_id": "p209",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It smells green and fresh and a little bit like dirt.",
-      "text_markdown": "It smells green and fresh and a little bit like dirt.",
+      "text": "Your cleats sink into the soft ground.",
+      "text_markdown": "Your cleats sink into the soft ground.",
       "tts": {
-        "text": "It smells green and fresh and a little bit like dirt.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.93
+        "text": "Your cleats sink into the soft ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3327,11 +3327,11 @@
       "paragraph_id": "p210",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your cleats sink into the soft ground.",
-      "text_markdown": "Your cleats sink into the soft ground.",
+      "text": "Cleats are baseball shoes with little spikes on the bottom.",
+      "text_markdown": "Cleats are baseball shoes with little spikes on the bottom.",
       "tts": {
-        "text": "Your cleats sink into the soft ground.",
-        "pause_after_ms": 800,
+        "text": "Cleats are baseball shoes with little spikes on the bottom.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3343,12 +3343,12 @@
       "paragraph_id": "p211",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Cleats are baseball shoes with little spikes on the bottom.",
-      "text_markdown": "Cleats are baseball shoes with little spikes on the bottom.",
+      "text": "They help you grip the grass when you run.",
+      "text_markdown": "They help you grip the grass when you run.",
       "tts": {
-        "text": "Cleats are baseball shoes with little spikes on the bottom.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "They help you grip the grass when you run.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -3359,12 +3359,12 @@
       "paragraph_id": "p212",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "They help you grip the grass when you run.",
-      "text_markdown": "They help you grip the grass when you run.",
+      "text": "You pull your glove out of your bag.",
+      "text_markdown": "You pull your glove out of your bag.",
       "tts": {
-        "text": "They help you grip the grass when you run.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "You pull your glove out of your bag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -3375,12 +3375,12 @@
       "paragraph_id": "p213",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You pull your glove out of your bag.",
-      "text_markdown": "You pull your glove out of your bag.",
+      "text": "The leather smells like leather.",
+      "text_markdown": "The leather smells like leather.",
       "tts": {
-        "text": "You pull your glove out of your bag.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "The leather smells like leather.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
       }
     },
     {
@@ -3391,12 +3391,12 @@
       "paragraph_id": "p214",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The leather smells like leather.",
-      "text_markdown": "The leather smells like leather.",
+      "text": "You punch the inside of the glove with your fist.",
+      "text_markdown": "You punch the inside of the glove with your fist.",
       "tts": {
-        "text": "The leather smells like leather.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.84
+        "text": "You punch the inside of the glove with your fist.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
       }
     },
     {
@@ -3407,12 +3407,12 @@
       "paragraph_id": "p215",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You punch the inside of the glove with your fist.",
-      "text_markdown": "You punch the inside of the glove with your fist.",
+      "text": "That's just something baseball players do.",
+      "text_markdown": "That's just something baseball players do.",
       "tts": {
-        "text": "You punch the inside of the glove with your fist.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.92
+        "text": "That's just something baseball players do.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3423,11 +3423,11 @@
       "paragraph_id": "p216",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's just something baseball players do.",
-      "text_markdown": "That's just something baseball players do.",
+      "text": "I don't even know why.",
+      "text_markdown": "I don't even know why.",
       "tts": {
-        "text": "That's just something baseball players do.",
-        "pause_after_ms": 800,
+        "text": "I don't even know why.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3439,11 +3439,11 @@
       "paragraph_id": "p217",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I don't even know why.",
-      "text_markdown": "I don't even know why.",
+      "text": "It feels right, though.",
+      "text_markdown": "It feels right, though.",
       "tts": {
-        "text": "I don't even know why.",
-        "pause_after_ms": 800,
+        "text": "It feels right, though.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3455,11 +3455,11 @@
       "paragraph_id": "p218",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It feels right, though.",
-      "text_markdown": "It feels right, though.",
+      "text": "You jog out to your position.",
+      "text_markdown": "You jog out to your position.",
       "tts": {
-        "text": "It feels right, though.",
-        "pause_after_ms": 800,
+        "text": "You jog out to your position.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3471,11 +3471,11 @@
       "paragraph_id": "p219",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You jog out to your position.",
-      "text_markdown": "You jog out to your position.",
+      "text": "You bend down and grab some dirt.",
+      "text_markdown": "You bend down and grab some dirt.",
       "tts": {
-        "text": "You jog out to your position.",
-        "pause_after_ms": 800,
+        "text": "You bend down and grab some dirt.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3487,11 +3487,11 @@
       "paragraph_id": "p220",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You bend down and grab some dirt.",
-      "text_markdown": "You bend down and grab some dirt.",
+      "text": "You rub it between your fingers.",
+      "text_markdown": "You rub it between your fingers.",
       "tts": {
-        "text": "You bend down and grab some dirt.",
-        "pause_after_ms": 800,
+        "text": "You rub it between your fingers.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3503,11 +3503,11 @@
       "paragraph_id": "p221",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You rub it between your fingers.",
-      "text_markdown": "You rub it between your fingers.",
+      "text": "The dirt is cool and dry.",
+      "text_markdown": "The dirt is cool and dry.",
       "tts": {
-        "text": "You rub it between your fingers.",
-        "pause_after_ms": 800,
+        "text": "The dirt is cool and dry.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3519,12 +3519,12 @@
       "paragraph_id": "p222",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The dirt is cool and dry.",
-      "text_markdown": "The dirt is cool and dry.",
+      "text": "You can hear your coach shouting things to your team.",
+      "text_markdown": "You can hear your coach shouting things to your team.",
       "tts": {
-        "text": "The dirt is cool and dry.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You can hear your coach shouting things to your team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
       }
     },
     {
@@ -3535,12 +3535,12 @@
       "paragraph_id": "p223",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can hear your coach shouting things to your team.",
-      "text_markdown": "You can hear your coach shouting things to your team.",
+      "text": "You can hear parents talking in the stands.",
+      "text_markdown": "You can hear parents talking in the stands.",
       "tts": {
-        "text": "You can hear your coach shouting things to your team.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.92
+        "text": "You can hear parents talking in the stands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3551,11 +3551,11 @@
       "paragraph_id": "p224",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can hear parents talking in the stands.",
-      "text_markdown": "You can hear parents talking in the stands.",
+      "text": "A dog is barking somewhere.",
+      "text_markdown": "A dog is barking somewhere.",
       "tts": {
-        "text": "You can hear parents talking in the stands.",
-        "pause_after_ms": 800,
+        "text": "A dog is barking somewhere.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3567,11 +3567,11 @@
       "paragraph_id": "p225",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A dog is barking somewhere.",
-      "text_markdown": "A dog is barking somewhere.",
+      "text": "A baby is crying.",
+      "text_markdown": "A baby is crying.",
       "tts": {
-        "text": "A dog is barking somewhere.",
-        "pause_after_ms": 800,
+        "text": "A baby is crying.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3583,11 +3583,11 @@
       "paragraph_id": "p226",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A baby is crying.",
-      "text_markdown": "A baby is crying.",
+      "text": "The umpire says, \"Play ball!\"",
+      "text_markdown": "The umpire says, \"Play ball!\"",
       "tts": {
-        "text": "A baby is crying.",
-        "pause_after_ms": 800,
+        "text": "The umpire says, \"Play ball!\"",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3599,11 +3599,11 @@
       "paragraph_id": "p227",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The umpire says, \"Play ball!\"",
-      "text_markdown": "The umpire says, \"Play ball!\"",
+      "text": "Everything gets quiet for a second.",
+      "text_markdown": "Everything gets quiet for a second.",
       "tts": {
-        "text": "The umpire says, \"Play ball!\"",
-        "pause_after_ms": 800,
+        "text": "Everything gets quiet for a second.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3615,11 +3615,11 @@
       "paragraph_id": "p228",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Everything gets quiet for a second.",
-      "text_markdown": "Everything gets quiet for a second.",
+      "text": "The pitcher winds up.",
+      "text_markdown": "The pitcher winds up.",
       "tts": {
-        "text": "Everything gets quiet for a second.",
-        "pause_after_ms": 800,
+        "text": "The pitcher winds up.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3631,11 +3631,11 @@
       "paragraph_id": "p229",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher winds up.",
-      "text_markdown": "The pitcher winds up.",
+      "text": "The ball flies.",
+      "text_markdown": "The ball flies.",
       "tts": {
-        "text": "The pitcher winds up.",
-        "pause_after_ms": 800,
+        "text": "The ball flies.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3647,11 +3647,11 @@
       "paragraph_id": "p230",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The ball flies.",
-      "text_markdown": "The ball flies.",
+      "text": "The batter swings.",
+      "text_markdown": "The batter swings.",
       "tts": {
-        "text": "The ball flies.",
-        "pause_after_ms": 800,
+        "text": "The batter swings.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3663,11 +3663,11 @@
       "paragraph_id": "p231",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The batter swings.",
-      "text_markdown": "The batter swings.",
+      "text": "Crack.",
+      "text_markdown": "Crack.",
       "tts": {
-        "text": "The batter swings.",
-        "pause_after_ms": 800,
+        "text": "Crack.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3679,12 +3679,12 @@
       "paragraph_id": "p232",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Crack.",
-      "text_markdown": "Crack.",
+      "text": "The ball is in the air.",
+      "text_markdown": "The ball is in the air.",
       "tts": {
-        "text": "Crack.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The ball is in the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
       }
     },
     {
@@ -3695,12 +3695,12 @@
       "paragraph_id": "p233",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The ball is in the air.",
-      "text_markdown": "The ball is in the air.",
+      "text": "It's coming right at you.",
+      "text_markdown": "It's coming right at you.",
       "tts": {
-        "text": "The ball is in the air.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "It's coming right at you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3711,11 +3711,11 @@
       "paragraph_id": "p234",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It's coming right at you.",
-      "text_markdown": "It's coming right at you.",
+      "text": "Your stomach does a little flip.",
+      "text_markdown": "Your stomach does a little flip.",
       "tts": {
-        "text": "It's coming right at you.",
-        "pause_after_ms": 800,
+        "text": "Your stomach does a little flip.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3727,11 +3727,11 @@
       "paragraph_id": "p235",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your stomach does a little flip.",
-      "text_markdown": "Your stomach does a little flip.",
+      "text": "You raise your glove.",
+      "text_markdown": "You raise your glove.",
       "tts": {
-        "text": "Your stomach does a little flip.",
-        "pause_after_ms": 800,
+        "text": "You raise your glove.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3743,11 +3743,11 @@
       "paragraph_id": "p236",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You raise your glove.",
-      "text_markdown": "You raise your glove.",
+      "text": "You step under the ball.",
+      "text_markdown": "You step under the ball.",
       "tts": {
-        "text": "You raise your glove.",
-        "pause_after_ms": 800,
+        "text": "You step under the ball.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3759,11 +3759,11 @@
       "paragraph_id": "p237",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You step under the ball.",
-      "text_markdown": "You step under the ball.",
+      "text": "You watch it the whole way down.",
+      "text_markdown": "You watch it the whole way down.",
       "tts": {
-        "text": "You step under the ball.",
-        "pause_after_ms": 800,
+        "text": "You watch it the whole way down.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3775,11 +3775,11 @@
       "paragraph_id": "p238",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You watch it the whole way down.",
-      "text_markdown": "You watch it the whole way down.",
+      "text": "Smack — it lands in your glove.",
+      "text_markdown": "Smack — it lands in your glove.",
       "tts": {
-        "text": "You watch it the whole way down.",
-        "pause_after_ms": 800,
+        "text": "Smack — it lands in your glove.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3791,11 +3791,11 @@
       "paragraph_id": "p239",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Smack — it lands in your glove.",
-      "text_markdown": "Smack — it lands in your glove.",
+      "text": "You squeeze it shut.",
+      "text_markdown": "You squeeze it shut.",
       "tts": {
-        "text": "Smack, it lands in your glove.",
-        "pause_after_ms": 800,
+        "text": "You squeeze it shut.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3807,11 +3807,11 @@
       "paragraph_id": "p240",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You squeeze it shut.",
-      "text_markdown": "You squeeze it shut.",
+      "text": "Your team yells.",
+      "text_markdown": "Your team yells.",
       "tts": {
-        "text": "You squeeze it shut.",
-        "pause_after_ms": 800,
+        "text": "Your team yells.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3823,11 +3823,11 @@
       "paragraph_id": "p241",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your team yells.",
-      "text_markdown": "Your team yells.",
+      "text": "Your coach claps.",
+      "text_markdown": "Your coach claps.",
       "tts": {
-        "text": "Your team yells.",
-        "pause_after_ms": 800,
+        "text": "Your coach claps.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3839,12 +3839,12 @@
       "paragraph_id": "p242",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your coach claps.",
-      "text_markdown": "Your coach claps.",
+      "text": "You toss the ball back to the pitcher.",
+      "text_markdown": "You toss the ball back to the pitcher.",
       "tts": {
-        "text": "Your coach claps.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You toss the ball back to the pitcher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -3855,12 +3855,12 @@
       "paragraph_id": "p243",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You toss the ball back to the pitcher.",
-      "text_markdown": "You toss the ball back to the pitcher.",
+      "text": "You did it.",
+      "text_markdown": "You did it.",
       "tts": {
-        "text": "You toss the ball back to the pitcher.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "You did it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -3871,11 +3871,11 @@
       "paragraph_id": "p244",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You did it.",
-      "text_markdown": "You did it.",
+      "text": "That's what baseball feels like.",
+      "text_markdown": "That's what baseball feels like.",
       "tts": {
-        "text": "You did it.",
-        "pause_after_ms": 800,
+        "text": "That's what baseball feels like.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3887,29 +3887,25 @@
       "paragraph_id": "p245",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's what baseball feels like.",
-      "text_markdown": "That's what baseball feels like.",
-      "tts": {
-        "text": "That's what baseball feels like.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch07-246",
-      "part": 0,
-      "chapter": 7,
-      "title": "What It Feels Like",
-      "paragraph_id": "p246",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "Over and over again.",
       "text_markdown": "Over and over again.",
       "tts": {
         "text": "Over and over again.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.8
       }
+    },
+    {
+      "id": "ch08-246",
+      "part": 0,
+      "chapter": 8,
+      "title": "The Good Stuff",
+      "paragraph_id": "p246",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Good Stuff",
+      "text_markdown": "The Good Stuff"
     },
     {
       "id": "ch08-247",
@@ -3918,10 +3914,14 @@
       "title": "The Good Stuff",
       "paragraph_id": "p247",
       "sentence_index": 0,
-      "block_type": "heading",
-      "heading_level": 1,
-      "text": "The Good Stuff",
-      "text_markdown": "The Good Stuff"
+      "block_type": "text",
+      "text": "Now let me tell you about the really fun moments.",
+      "text_markdown": "Now let me tell you about the really fun moments.",
+      "tts": {
+        "text": "Now let me tell you about the really fun moments.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
     },
     {
       "id": "ch08-248",
@@ -3931,11 +3931,11 @@
       "paragraph_id": "p248",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Now let me tell you about the really fun moments.",
-      "text_markdown": "Now let me tell you about the really fun moments.",
+      "text": "The big stuff.",
+      "text_markdown": "The big stuff.",
       "tts": {
-        "text": "Now let me tell you about the really fun moments.",
-        "pause_after_ms": 800,
+        "text": "The big stuff.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3947,11 +3947,11 @@
       "paragraph_id": "p249",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The big stuff.",
-      "text_markdown": "The big stuff.",
+      "text": "The stuff that makes you remember a game forever.",
+      "text_markdown": "The stuff that makes you remember a game forever.",
       "tts": {
-        "text": "The big stuff.",
-        "pause_after_ms": 800,
+        "text": "The stuff that makes you remember a game forever.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3963,11 +3963,11 @@
       "paragraph_id": "p250",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The stuff that makes you remember a game forever.",
-      "text_markdown": "The stuff that makes you remember a game forever.",
+      "text": "First — the home run.",
+      "text_markdown": "First — the home run.",
       "tts": {
-        "text": "The stuff that makes you remember a game forever.",
-        "pause_after_ms": 800,
+        "text": "First — the home run.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -3979,12 +3979,12 @@
       "paragraph_id": "p251",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "First — the home run.",
-      "text_markdown": "First — the home run.",
+      "text": "A home run is when you hit the ball so far that you can run all the way around the bases.",
+      "text_markdown": "A home run is when you hit the ball so far that you can run all the way around the bases.",
       "tts": {
-        "text": "First, the home run.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "A home run is when you hit the ball so far that you can run all the way around the bases.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
       }
     },
     {
@@ -3995,12 +3995,12 @@
       "paragraph_id": "p252",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "A home run is when you hit the ball so far that you can run all the way around the bases.",
-      "text_markdown": "A home run is when you hit the ball so far that you can run all the way around the bases.",
+      "text": "You touch first, second, third, and home, all in one play.",
+      "text_markdown": "You touch first, second, third, and home, all in one play.",
       "tts": {
-        "text": "A home run is when you hit the ball so far that you can run all the way around the bases.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.85
+        "text": "You touch first, second, third, and home, all in one play.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -4011,11 +4011,11 @@
       "paragraph_id": "p253",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You touch first, second, third, and home, all in one play.",
-      "text_markdown": "You touch first, second, third, and home, all in one play.",
+      "text": "You don't even have to hurry.",
+      "text_markdown": "You don't even have to hurry.",
       "tts": {
-        "text": "You touch first, second, third, and home, all in one play.",
-        "pause_after_ms": 800,
+        "text": "You don't even have to hurry.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4027,11 +4027,11 @@
       "paragraph_id": "p254",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You don't even have to hurry.",
-      "text_markdown": "You don't even have to hurry.",
+      "text": "You can jog and smile.",
+      "text_markdown": "You can jog and smile.",
       "tts": {
-        "text": "You don't even have to hurry.",
-        "pause_after_ms": 800,
+        "text": "You can jog and smile.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4043,11 +4043,11 @@
       "paragraph_id": "p255",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can jog and smile.",
-      "text_markdown": "You can jog and smile.",
+      "text": "Your whole team is waiting for you at home plate.",
+      "text_markdown": "Your whole team is waiting for you at home plate.",
       "tts": {
-        "text": "You can jog and smile.",
-        "pause_after_ms": 800,
+        "text": "Your whole team is waiting for you at home plate.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4059,11 +4059,11 @@
       "paragraph_id": "p256",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your whole team is waiting for you at home plate.",
-      "text_markdown": "Your whole team is waiting for you at home plate.",
+      "text": "They give you high-fives.",
+      "text_markdown": "They give you high-fives.",
       "tts": {
-        "text": "Your whole team is waiting for you at home plate.",
-        "pause_after_ms": 800,
+        "text": "They give you high-fives.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4075,11 +4075,11 @@
       "paragraph_id": "p257",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "They give you high-fives.",
-      "text_markdown": "They give you high-fives.",
+      "text": "Most kids never hit a home run.",
+      "text_markdown": "Most kids never hit a home run.",
       "tts": {
-        "text": "They give you high-fives.",
-        "pause_after_ms": 800,
+        "text": "Most kids never hit a home run.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4091,11 +4091,11 @@
       "paragraph_id": "p258",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I have hit one home run in my life.",
-      "text_markdown": "I have hit one home run in my life.",
+      "text": "Some kids hit one and then talk about it for years.",
+      "text_markdown": "Some kids hit one and then talk about it for years.",
       "tts": {
-        "text": "I have hit one home run in my life.",
-        "pause_after_ms": 800,
+        "text": "Some kids hit one and then talk about it for years.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4107,11 +4107,11 @@
       "paragraph_id": "p259",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Just one.",
-      "text_markdown": "Just one.",
+      "text": "It's that big a deal.",
+      "text_markdown": "It's that big a deal.",
       "tts": {
-        "text": "Just one.",
-        "pause_after_ms": 800,
+        "text": "It's that big a deal.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4123,11 +4123,11 @@
       "paragraph_id": "p260",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I still think about it.",
-      "text_markdown": "I still think about it.",
+      "text": "Then there's the double play.",
+      "text_markdown": "Then there's the double play.",
       "tts": {
-        "text": "I still think about it.",
-        "pause_after_ms": 800,
+        "text": "Then there's the double play.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4139,11 +4139,11 @@
       "paragraph_id": "p261",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then there's the double play.",
-      "text_markdown": "Then there's the double play.",
+      "text": "That's when the fielders get two outs in one play.",
+      "text_markdown": "That's when the fielders get two outs in one play.",
       "tts": {
-        "text": "Then there's the double play.",
-        "pause_after_ms": 800,
+        "text": "That's when the fielders get two outs in one play.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4155,11 +4155,11 @@
       "paragraph_id": "p262",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's when the fielders get two outs in one play.",
-      "text_markdown": "That's when the fielders get two outs in one play.",
+      "text": "It happens fast.",
+      "text_markdown": "It happens fast.",
       "tts": {
-        "text": "That's when the fielders get two outs in one play.",
-        "pause_after_ms": 800,
+        "text": "It happens fast.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4171,12 +4171,12 @@
       "paragraph_id": "p263",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It happens fast.",
-      "text_markdown": "It happens fast.",
+      "text": "The ball gets hit on the ground.",
+      "text_markdown": "The ball gets hit on the ground.",
       "tts": {
-        "text": "It happens fast.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The ball gets hit on the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -4187,12 +4187,12 @@
       "paragraph_id": "p264",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The ball gets hit on the ground.",
-      "text_markdown": "The ball gets hit on the ground.",
+      "text": "The shortstop scoops it up.",
+      "text_markdown": "The shortstop scoops it up.",
       "tts": {
-        "text": "The ball gets hit on the ground.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "The shortstop scoops it up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -4203,11 +4203,11 @@
       "paragraph_id": "p265",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The shortstop scoops it up.",
-      "text_markdown": "The shortstop scoops it up.",
+      "text": "He throws it to second base.",
+      "text_markdown": "He throws it to second base.",
       "tts": {
-        "text": "The shortstop scoops it up.",
-        "pause_after_ms": 800,
+        "text": "He throws it to second base.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4219,12 +4219,12 @@
       "paragraph_id": "p266",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He throws it to second base.",
-      "text_markdown": "He throws it to second base.",
+      "text": "The second baseman tags the runner.",
+      "text_markdown": "The second baseman tags the runner.",
       "tts": {
-        "text": "He throws it to second base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The second baseman tags the runner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
       }
     },
     {
@@ -4235,12 +4235,12 @@
       "paragraph_id": "p267",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The second baseman tags the runner.",
-      "text_markdown": "The second baseman tags the runner.",
+      "text": "Then he throws it to first base.",
+      "text_markdown": "Then he throws it to first base.",
       "tts": {
-        "text": "The second baseman tags the runner.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.87
+        "text": "Then he throws it to first base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -4251,11 +4251,11 @@
       "paragraph_id": "p268",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then he throws it to first base.",
-      "text_markdown": "Then he throws it to first base.",
+      "text": "Two outs.",
+      "text_markdown": "Two outs.",
       "tts": {
-        "text": "Then he throws it to first base.",
-        "pause_after_ms": 800,
+        "text": "Two outs.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4267,11 +4267,11 @@
       "paragraph_id": "p269",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Two outs.",
-      "text_markdown": "Two outs.",
+      "text": "Just like that.",
+      "text_markdown": "Just like that.",
       "tts": {
-        "text": "Two outs.",
-        "pause_after_ms": 800,
+        "text": "Just like that.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4283,12 +4283,12 @@
       "paragraph_id": "p270",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Just like that.",
-      "text_markdown": "Just like that.",
+      "text": "It feels like magic when it works.",
+      "text_markdown": "It feels like magic when it works.",
       "tts": {
-        "text": "Just like that.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "It feels like magic when it works.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -4299,12 +4299,12 @@
       "paragraph_id": "p271",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It feels like magic when it works.",
-      "text_markdown": "It feels like magic when it works.",
+      "text": "Then there's the stolen base.",
+      "text_markdown": "Then there's the stolen base.",
       "tts": {
-        "text": "It feels like magic when it works.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "Then there's the stolen base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -4315,12 +4315,12 @@
       "paragraph_id": "p272",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Then there's the stolen base.",
-      "text_markdown": "Then there's the stolen base.",
+      "text": "Remember I told you a fast runner can steal a base?",
+      "text_markdown": "Remember I told you a fast runner can steal a base?",
       "tts": {
-        "text": "Then there's the stolen base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "Remember I told you a fast runner can steal a base?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -4331,11 +4331,11 @@
       "paragraph_id": "p273",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's what Marcus does.",
-      "text_markdown": "That's what Marcus does.",
+      "text": "Here is how it works.",
+      "text_markdown": "Here is how it works.",
       "tts": {
-        "text": "That's what Marcus does.",
-        "pause_after_ms": 800,
+        "text": "Here is how it works.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4347,12 +4347,12 @@
       "paragraph_id": "p274",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The pitcher throws to home plate.",
-      "text_markdown": "The pitcher throws to home plate.",
+      "text": "The pitcher throws the ball toward home plate.",
+      "text_markdown": "The pitcher throws the ball toward home plate.",
       "tts": {
-        "text": "The pitcher throws to home plate.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The pitcher throws the ball toward home plate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -4363,12 +4363,12 @@
       "paragraph_id": "p275",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "While the ball is in the air, Marcus runs.",
-      "text_markdown": "While the ball is in the air, Marcus runs.",
+      "text": "While the ball is in the air, the runner takes off.",
+      "text_markdown": "While the ball is in the air, the runner takes off.",
       "tts": {
-        "text": "While the ball is in the air, Marcus runs.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.91
+        "text": "While the ball is in the air, the runner takes off.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
       }
     },
     {
@@ -4379,12 +4379,12 @@
       "paragraph_id": "p276",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He sprints from first base to second base.",
-      "text_markdown": "He sprints from first base to second base.",
+      "text": "The runner sprints from first base toward second base.",
+      "text_markdown": "The runner sprints from first base toward second base.",
       "tts": {
-        "text": "He sprints from first base to second base.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "The runner sprints from first base toward second base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
       }
     },
     {
@@ -4395,12 +4395,12 @@
       "paragraph_id": "p277",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If he gets there before they tag him, the base is his.",
-      "text_markdown": "If he gets there before they tag him, the base is his.",
+      "text": "If the runner gets to second base before the catcher's throw, the base is theirs.",
+      "text_markdown": "If the runner gets to second base before the catcher's throw, the base is theirs.",
       "tts": {
-        "text": "If he gets there before they tag him, the base is his.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "If the runner gets to second base before the catcher's throw, the base is theirs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
       }
     },
     {
@@ -4411,11 +4411,11 @@
       "paragraph_id": "p278",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He stole it.",
-      "text_markdown": "He stole it.",
+      "text": "They stole it.",
+      "text_markdown": "They stole it.",
       "tts": {
-        "text": "He stole it.",
-        "pause_after_ms": 800,
+        "text": "They stole it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4431,7 +4431,7 @@
       "text_markdown": "That's why we call it a steal.",
       "tts": {
         "text": "That's why we call it a steal.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4447,7 +4447,7 @@
       "text_markdown": "Strikeouts are exciting too, if you're the pitcher.",
       "tts": {
         "text": "Strikeouts are exciting too, if you're the pitcher.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4459,11 +4459,11 @@
       "paragraph_id": "p281",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "When Jerome strikes a batter out, the dugout goes wild.",
-      "text_markdown": "When Jerome strikes a batter out, the dugout goes wild.",
+      "text": "When your pitcher strikes a batter out, the dugout goes wild.",
+      "text_markdown": "When your pitcher strikes a batter out, the dugout goes wild.",
       "tts": {
-        "text": "When Jerome strikes a batter out, the dugout goes wild.",
-        "pause_after_ms": 800,
+        "text": "When your pitcher strikes a batter out, the dugout goes wild.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4475,11 +4475,11 @@
       "paragraph_id": "p282",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The dugout is where we sit when we're not playing.",
-      "text_markdown": "The dugout is where we sit when we're not playing.",
+      "text": "The dugout is where you sit when you're not playing.",
+      "text_markdown": "The dugout is where you sit when you're not playing.",
       "tts": {
-        "text": "The dugout is where we sit when we're not playing.",
-        "pause_after_ms": 800,
+        "text": "The dugout is where you sit when you're not playing.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4495,7 +4495,7 @@
       "text_markdown": "It's like a little bench under a roof.",
       "tts": {
         "text": "It's like a little bench under a roof.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.9
       }
     },
@@ -4511,7 +4511,7 @@
       "text_markdown": "We bang on the fence.",
       "tts": {
         "text": "We bang on the fence.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4523,11 +4523,11 @@
       "paragraph_id": "p285",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "We yell, \"Yeah, Jerome!\"",
-      "text_markdown": "We yell, \"Yeah, Jerome!\"",
+      "text": "We yell.",
+      "text_markdown": "We yell.",
       "tts": {
-        "text": "We yell, \"Yeah, Jerome!\"",
-        "pause_after_ms": 800,
+        "text": "We yell.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4539,11 +4539,11 @@
       "paragraph_id": "p286",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "He just smiles a little and gets the ball back.",
-      "text_markdown": "He just smiles a little and gets the ball back.",
+      "text": "Our pitcher just smiles a little and gets the ball back.",
+      "text_markdown": "Our pitcher just smiles a little and gets the ball back.",
       "tts": {
-        "text": "He just smiles a little and gets the ball back.",
-        "pause_after_ms": 800,
+        "text": "Our pitcher just smiles a little and gets the ball back.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4559,7 +4559,7 @@
       "text_markdown": "He acts like it's no big deal.",
       "tts": {
         "text": "He acts like it's no big deal.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4575,7 +4575,7 @@
       "text_markdown": "But you can tell he loves it.",
       "tts": {
         "text": "But you can tell he loves it.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4591,7 +4591,7 @@
       "text_markdown": "Every kid loves the big moments.",
       "tts": {
         "text": "Every kid loves the big moments.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4607,7 +4607,7 @@
       "text_markdown": "But I love the little ones too.",
       "tts": {
         "text": "But I love the little ones too.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4623,7 +4623,7 @@
       "text_markdown": "A good catch.",
       "tts": {
         "text": "A good catch.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4639,7 +4639,7 @@
       "text_markdown": "A clean throw.",
       "tts": {
         "text": "A clean throw.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4655,7 +4655,7 @@
       "text_markdown": "Sliding into second base just in time.",
       "tts": {
         "text": "Sliding into second base just in time.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4671,7 +4671,7 @@
       "text_markdown": "Those count just as much to me.",
       "tts": {
         "text": "Those count just as much to me.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4699,7 +4699,7 @@
       "text_markdown": "Okay, I want to be honest with you about something.",
       "tts": {
         "text": "Okay, I want to be honest with you about something.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4715,7 +4715,7 @@
       "text_markdown": "Baseball is hard.",
       "tts": {
         "text": "Baseball is hard.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4731,7 +4731,7 @@
       "text_markdown": "It really is.",
       "tts": {
         "text": "It really is.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4747,7 +4747,7 @@
       "text_markdown": "You're going to strike out sometimes.",
       "tts": {
         "text": "You're going to strike out sometimes.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4763,7 +4763,7 @@
       "text_markdown": "You're going to drop a ball you should have caught.",
       "tts": {
         "text": "You're going to drop a ball you should have caught.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4775,11 +4775,11 @@
       "paragraph_id": "p301",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I dropped a fly ball last week.",
-      "text_markdown": "I dropped a fly ball last week.",
+      "text": "Every player drops a fly ball at some point.",
+      "text_markdown": "Every player drops a fly ball at some point.",
       "tts": {
-        "text": "I dropped a fly ball last week.",
-        "pause_after_ms": 800,
+        "text": "Every player drops a fly ball at some point.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4791,12 +4791,12 @@
       "paragraph_id": "p302",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It bounced right off the top of my glove.",
-      "text_markdown": "It bounced right off the top of my glove.",
+      "text": "The ball bounces right off the top of the glove.",
+      "text_markdown": "The ball bounces right off the top of the glove.",
       "tts": {
-        "text": "It bounced right off the top of my glove.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "The ball bounces right off the top of the glove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
       }
     },
     {
@@ -4807,11 +4807,11 @@
       "paragraph_id": "p303",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Everybody saw.",
-      "text_markdown": "Everybody saw.",
+      "text": "Everybody sees it.",
+      "text_markdown": "Everybody sees it.",
       "tts": {
-        "text": "Everybody saw.",
-        "pause_after_ms": 800,
+        "text": "Everybody sees it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4823,11 +4823,11 @@
       "paragraph_id": "p304",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I felt my face turn hot.",
-      "text_markdown": "I felt my face turn hot.",
+      "text": "You feel your face go hot.",
+      "text_markdown": "You feel your face go hot.",
       "tts": {
-        "text": "I felt my face turn hot.",
-        "pause_after_ms": 800,
+        "text": "You feel your face go hot.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4839,11 +4839,11 @@
       "paragraph_id": "p305",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I wanted to sit down in the grass and disappear.",
-      "text_markdown": "I wanted to sit down in the grass and disappear.",
+      "text": "You want to sit down in the grass and disappear.",
+      "text_markdown": "You want to sit down in the grass and disappear.",
       "tts": {
-        "text": "I wanted to sit down in the grass and disappear.",
-        "pause_after_ms": 800,
+        "text": "You want to sit down in the grass and disappear.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4855,11 +4855,11 @@
       "paragraph_id": "p306",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "But I didn't.",
-      "text_markdown": "But I didn't.",
+      "text": "But you don't.",
+      "text_markdown": "But you don't.",
       "tts": {
-        "text": "But I didn't.",
-        "pause_after_ms": 800,
+        "text": "But you don't.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4871,11 +4871,11 @@
       "paragraph_id": "p307",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I picked the ball up.",
-      "text_markdown": "I picked the ball up.",
+      "text": "You pick the ball up.",
+      "text_markdown": "You pick the ball up.",
       "tts": {
-        "text": "I picked the ball up.",
-        "pause_after_ms": 800,
+        "text": "You pick the ball up.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4887,11 +4887,11 @@
       "paragraph_id": "p308",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I threw it back to the infield.",
-      "text_markdown": "I threw it back to the infield.",
+      "text": "You throw it back to the infield.",
+      "text_markdown": "You throw it back to the infield.",
       "tts": {
-        "text": "I threw it back to the infield.",
-        "pause_after_ms": 800,
+        "text": "You throw it back to the infield.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4903,12 +4903,12 @@
       "paragraph_id": "p309",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "And the next time a ball came to me, I caught it.",
-      "text_markdown": "And the next time a ball came to me, I caught it.",
+      "text": "And the next time a ball comes to you, you try again.",
+      "text_markdown": "And the next time a ball comes to you, you try again.",
       "tts": {
-        "text": "And the next time a ball came to me, I caught it.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "And the next time a ball comes to you, you try again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -4923,7 +4923,7 @@
       "text_markdown": "That's the secret, I think.",
       "tts": {
         "text": "That's the secret, I think.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4939,7 +4939,7 @@
       "text_markdown": "You mess up.",
       "tts": {
         "text": "You mess up.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4955,7 +4955,7 @@
       "text_markdown": "You keep playing.",
       "tts": {
         "text": "You keep playing.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4971,7 +4971,7 @@
       "text_markdown": "You don't have to be good right away.",
       "tts": {
         "text": "You don't have to be good right away.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -4987,7 +4987,7 @@
       "text_markdown": "Nobody is good right away.",
       "tts": {
         "text": "Nobody is good right away.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5003,7 +5003,7 @@
       "text_markdown": "When I started, I couldn't even hit the ball.",
       "tts": {
         "text": "When I started, I couldn't even hit the ball.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 1.91
       }
     },
@@ -5019,7 +5019,7 @@
       "text_markdown": "I would swing and just spin around.",
       "tts": {
         "text": "I would swing and just spin around.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5031,11 +5031,11 @@
       "paragraph_id": "p317",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The kids laughed sometimes.",
-      "text_markdown": "The kids laughed sometimes.",
+      "text": "I laughed at myself sometimes.",
+      "text_markdown": "I laughed at myself sometimes.",
       "tts": {
-        "text": "The kids laughed sometimes.",
-        "pause_after_ms": 800,
+        "text": "I laughed at myself sometimes.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5047,11 +5047,11 @@
       "paragraph_id": "p318",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I laughed too.",
-      "text_markdown": "I laughed too.",
+      "text": "You can't take it too seriously.",
+      "text_markdown": "You can't take it too seriously.",
       "tts": {
-        "text": "I laughed too.",
-        "pause_after_ms": 800,
+        "text": "You can't take it too seriously.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5063,11 +5063,11 @@
       "paragraph_id": "p319",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You can't take it too seriously.",
-      "text_markdown": "You can't take it too seriously.",
+      "text": "It's a game.",
+      "text_markdown": "It's a game.",
       "tts": {
-        "text": "You can't take it too seriously.",
-        "pause_after_ms": 800,
+        "text": "It's a game.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5079,11 +5079,11 @@
       "paragraph_id": "p320",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It's a game.",
-      "text_markdown": "It's a game.",
+      "text": "It's supposed to be fun.",
+      "text_markdown": "It's supposed to be fun.",
       "tts": {
-        "text": "It's a game.",
-        "pause_after_ms": 800,
+        "text": "It's supposed to be fun.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5095,11 +5095,11 @@
       "paragraph_id": "p321",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It's supposed to be fun.",
-      "text_markdown": "It's supposed to be fun.",
+      "text": "If you ever try baseball, here's what I'd say.",
+      "text_markdown": "If you ever try baseball, here's what I'd say.",
       "tts": {
-        "text": "It's supposed to be fun.",
-        "pause_after_ms": 800,
+        "text": "If you ever try baseball, here's what I'd say.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5111,11 +5111,11 @@
       "paragraph_id": "p322",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If you ever try baseball, here's what I'd say.",
-      "text_markdown": "If you ever try baseball, here's what I'd say.",
+      "text": "Don't worry about being good.",
+      "text_markdown": "Don't worry about being good.",
       "tts": {
-        "text": "If you ever try baseball, here's what I'd say.",
-        "pause_after_ms": 800,
+        "text": "Don't worry about being good.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5127,11 +5127,11 @@
       "paragraph_id": "p323",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Don't worry about being good.",
-      "text_markdown": "Don't worry about being good.",
+      "text": "Just worry about having fun.",
+      "text_markdown": "Just worry about having fun.",
       "tts": {
-        "text": "Don't worry about being good.",
-        "pause_after_ms": 800,
+        "text": "Just worry about having fun.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5143,11 +5143,11 @@
       "paragraph_id": "p324",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Just worry about having fun.",
-      "text_markdown": "Just worry about having fun.",
+      "text": "Find a glove that fits your hand.",
+      "text_markdown": "Find a glove that fits your hand.",
       "tts": {
-        "text": "Just worry about having fun.",
-        "pause_after_ms": 800,
+        "text": "Find a glove that fits your hand.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5159,12 +5159,12 @@
       "paragraph_id": "p325",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Find a glove that fits your hand.",
-      "text_markdown": "Find a glove that fits your hand.",
+      "text": "Get out in a yard with a friend.",
+      "text_markdown": "Get out in a yard with a friend.",
       "tts": {
-        "text": "Find a glove that fits your hand.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "Get out in a yard with a friend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
       }
     },
     {
@@ -5175,12 +5175,12 @@
       "paragraph_id": "p326",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Get out in a yard with a friend.",
-      "text_markdown": "Get out in a yard with a friend.",
+      "text": "Play catch.",
+      "text_markdown": "Play catch.",
       "tts": {
-        "text": "Get out in a yard with a friend.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "Play catch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -5191,11 +5191,11 @@
       "paragraph_id": "p327",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Play catch.",
-      "text_markdown": "Play catch.",
+      "text": "That's how everybody starts.",
+      "text_markdown": "That's how everybody starts.",
       "tts": {
-        "text": "Play catch.",
-        "pause_after_ms": 800,
+        "text": "That's how everybody starts.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5207,11 +5207,11 @@
       "paragraph_id": "p328",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's how everybody starts.",
-      "text_markdown": "That's how everybody starts.",
+      "text": "Throw the ball back and forth.",
+      "text_markdown": "Throw the ball back and forth.",
       "tts": {
-        "text": "That's how everybody starts.",
-        "pause_after_ms": 800,
+        "text": "Throw the ball back and forth.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5223,11 +5223,11 @@
       "paragraph_id": "p329",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Throw the ball back and forth.",
-      "text_markdown": "Throw the ball back and forth.",
+      "text": "Talk while you do it.",
+      "text_markdown": "Talk while you do it.",
       "tts": {
-        "text": "Throw the ball back and forth.",
-        "pause_after_ms": 800,
+        "text": "Talk while you do it.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5239,11 +5239,11 @@
       "paragraph_id": "p330",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Talk while you do it.",
-      "text_markdown": "Talk while you do it.",
+      "text": "You don't even need a bat at first.",
+      "text_markdown": "You don't even need a bat at first.",
       "tts": {
-        "text": "Talk while you do it.",
-        "pause_after_ms": 800,
+        "text": "You don't even need a bat at first.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5255,12 +5255,12 @@
       "paragraph_id": "p331",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You don't even need a bat at first.",
-      "text_markdown": "You don't even need a bat at first.",
+      "text": "Just a ball, a glove, and a friend.",
+      "text_markdown": "Just a ball, a glove, and a friend.",
       "tts": {
-        "text": "You don't even need a bat at first.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "Just a ball, a glove, and a friend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
       }
     },
     {
@@ -5271,12 +5271,12 @@
       "paragraph_id": "p332",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Just a ball, a glove, and a friend.",
-      "text_markdown": "Just a ball, a glove, and a friend.",
+      "text": "If there's no friend around, throw the ball against a wall.",
+      "text_markdown": "If there's no friend around, throw the ball against a wall.",
       "tts": {
-        "text": "Just a ball, a glove, and a friend.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.8
+        "text": "If there's no friend around, throw the ball against a wall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -5287,11 +5287,11 @@
       "paragraph_id": "p333",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "If there's no friend around, throw the ball against a wall.",
-      "text_markdown": "If there's no friend around, throw the ball against a wall.",
+      "text": "That's how a lot of kids practice.",
+      "text_markdown": "That's how a lot of kids practice.",
       "tts": {
-        "text": "If there's no friend around, throw the ball against a wall.",
-        "pause_after_ms": 800,
+        "text": "That's how a lot of kids practice.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5303,12 +5303,12 @@
       "paragraph_id": "p334",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's how I practiced when I was little.",
-      "text_markdown": "That's how I practiced when I was little.",
+      "text": "The wall doesn't get tired.",
+      "text_markdown": "The wall doesn't get tired.",
       "tts": {
-        "text": "That's how I practiced when I was little.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.9
+        "text": "The wall doesn't get tired.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -5319,11 +5319,11 @@
       "paragraph_id": "p335",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The wall doesn't get tired.",
-      "text_markdown": "The wall doesn't get tired.",
+      "text": "It always throws back.",
+      "text_markdown": "It always throws back.",
       "tts": {
-        "text": "The wall doesn't get tired.",
-        "pause_after_ms": 800,
+        "text": "It always throws back.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5335,11 +5335,11 @@
       "paragraph_id": "p336",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "It always throws back.",
-      "text_markdown": "It always throws back.",
+      "text": "You might love it like I do.",
+      "text_markdown": "You might love it like I do.",
       "tts": {
-        "text": "It always throws back.",
-        "pause_after_ms": 800,
+        "text": "You might love it like I do.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5351,12 +5351,12 @@
       "paragraph_id": "p337",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You might love it like I do.",
-      "text_markdown": "You might love it like I do.",
+      "text": "You might decide it isn't for you.",
+      "text_markdown": "You might decide it isn't for you.",
       "tts": {
-        "text": "You might love it like I do.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "You might decide it isn't for you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
       }
     },
     {
@@ -5367,12 +5367,12 @@
       "paragraph_id": "p338",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "You might decide it isn't for you.",
-      "text_markdown": "You might decide it isn't for you.",
+      "text": "That's all okay.",
+      "text_markdown": "That's all okay.",
       "tts": {
-        "text": "You might decide it isn't for you.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.89
+        "text": "That's all okay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -5383,12 +5383,12 @@
       "paragraph_id": "p339",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "That's all okay.",
-      "text_markdown": "That's all okay.",
+      "text": "I hope you felt the bat hit the ball, even just once.",
+      "text_markdown": "I hope you felt the bat hit the ball, even just once.",
       "tts": {
-        "text": "That's all okay.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
+        "text": "I hope you felt the bat hit the ball, even just once.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
       }
     },
     {
@@ -5399,12 +5399,12 @@
       "paragraph_id": "p340",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I hope you felt the bat hit the ball, even just once.",
-      "text_markdown": "I hope you felt the bat hit the ball, even just once.",
+      "text": "I hope you heard that crack.",
+      "text_markdown": "I hope you heard that crack.",
       "tts": {
-        "text": "I hope you felt the bat hit the ball, even just once.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 1.93
+        "text": "I hope you heard that crack.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
       }
     },
     {
@@ -5415,11 +5415,11 @@
       "paragraph_id": "p341",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I hope you heard that crack.",
-      "text_markdown": "I hope you heard that crack.",
+      "text": "Thanks for listening.",
+      "text_markdown": "Thanks for listening.",
       "tts": {
-        "text": "I hope you heard that crack.",
-        "pause_after_ms": 800,
+        "text": "Thanks for listening.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5431,11 +5431,11 @@
       "paragraph_id": "p342",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Thanks for listening.",
-      "text_markdown": "Thanks for listening.",
+      "text": "I'm Ryan.",
+      "text_markdown": "I'm Ryan.",
       "tts": {
-        "text": "Thanks for listening.",
-        "pause_after_ms": 800,
+        "text": "I'm Ryan.",
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     },
@@ -5447,27 +5447,11 @@
       "paragraph_id": "p343",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "I'm Ryan.",
-      "text_markdown": "I'm Ryan.",
-      "tts": {
-        "text": "I'm Ryan.",
-        "pause_after_ms": 800,
-        "repetition_penalty": 2.0
-      }
-    },
-    {
-      "id": "ch09-344",
-      "part": 0,
-      "chapter": 9,
-      "title": "If You Ever Try It",
-      "paragraph_id": "p344",
-      "sentence_index": 0,
-      "block_type": "text",
       "text": "Maybe I'll see you at the field sometime.",
       "text_markdown": "Maybe I'll see you at the field sometime.",
       "tts": {
         "text": "Maybe I'll see you at the field sometime.",
-        "pause_after_ms": 800,
+        "pause_after_ms": 600,
         "repetition_penalty": 2.0
       }
     }

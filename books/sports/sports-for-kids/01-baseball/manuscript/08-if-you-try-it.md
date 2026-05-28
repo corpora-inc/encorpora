@@ -10,23 +10,23 @@ You're going to strike out sometimes.
 
 You're going to drop a ball you should have caught.
 
-I dropped a fly ball last week.
+Every player drops a fly ball at some point.
 
-It bounced right off the top of my glove.
+The ball bounces right off the top of the glove.
 
-Everybody saw.
+Everybody sees it.
 
-I felt my face turn hot.
+You feel your face go hot.
 
-I wanted to sit down in the grass and disappear.
+You want to sit down in the grass and disappear.
 
-But I didn't.
+But you don't.
 
-I picked the ball up.
+You pick the ball up.
 
-I threw it back to the infield.
+You throw it back to the infield.
 
-And the next time a ball came to me, I caught it.
+And the next time a ball comes to you, you try again.
 
 That's the secret, I think.
 
@@ -42,9 +42,7 @@ When I started, I couldn't even hit the ball.
 
 I would swing and just spin around.
 
-The kids laughed sometimes.
-
-I laughed too.
+I laughed at myself sometimes.
 
 You can't take it too seriously.
 
@@ -76,7 +74,7 @@ Just a ball, a glove, and a friend.
 
 If there's no friend around, throw the ball against a wall.
 
-That's how I practiced when I was little.
+That's how a lot of kids practice.
 
 The wall doesn't get tired.
 

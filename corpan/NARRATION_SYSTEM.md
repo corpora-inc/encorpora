@@ -11,7 +11,7 @@ We generate high-quality audiobook narrations from text manuscripts in multiple 
 3. **Word-level sync**: We generate word-level timestamps via Whisper forced alignment. The reader highlights each word as it's spoken. This requires offline alignment, not real-time TTS.
 4. **Offline playback**: Packs are downloaded once, then play without network. On-device TTS models are 300MB-4GB per language.
 5. **Voice cloning**: We clone a specific narrator voice from a 15-second WAV reference. On-device voice cloning isn't mature enough for production quality.
-6. **Multi-language from one voice**: The same cloned voice speaks 23 languages. Each language narration is a separate downloadable pack.
+6. **Multi-language from one voice**: The same cloned voice speaks across all the languages Chatterbox supports (23); Gemini-backed packs cover the rest of the app's ~50 langs. Each language narration is a separate downloadable pack.
 7. **Economics**: A 15-20MB pack (AAC audio + manifest) is smaller than shipping a TTS model per language. For audiobooks that will be listened to repeatedly by millions of users, pre-generated audio amortizes the generation cost.
 
 ## The Pipeline: Manuscript → Published Narration Pack
@@ -22,7 +22,7 @@ Manuscript (.md files)
 Segments (segments.json) — sentence-level text with metadata
     ↓ translate (Claude subagents)
 Translated Segments (segments_{lang}.json) — same structure, target language
-    ↓ ttsctl generate (Chatterbox Multilingual TTS, 23 languages)
+    ↓ ttsctl generate (Chatterbox Multilingual TTS — 23 langs — or Gemini for the rest)
 Raw Audio (WAV, 24kHz mono)
     ↓ stable-ts (Whisper forced alignment, medium model)
 Word Timestamps (alignment_{lang}.json) — word-level start_ms/end_ms
@@ -61,14 +61,14 @@ The `segments_file(pack_dir, lang)` function in `ttsctl/config.py` handles this 
 
 ## TTS Engine
 
-- **Model**: Chatterbox Multilingual TTS (`ChatterboxMultilingualTTS`) — 23 languages, voice cloning
-- **Package**: `chatterbox-tts` 0.1.7 (MIT license, Resemble AI)
+- **Models**: Chatterbox Multilingual TTS (`ChatterboxMultilingualTTS`) — 23 languages, voice cloning, free on local GPU; **Gemini** TTS — covers the remaining ~27 of the app's ~50 langs, paid per call
+- **Package**: `chatterbox-tts` 0.1.7 (MIT license, Resemble AI) + Vertex AI Gemini
 - **Voice cloning**: 15-second WAV reference per voice (zero-shot)
 - **Voice mapping**: per-language in `narration.yaml` (e.g., `en: ian-new-narration-try-more-chill-clear.wav`)
 - **TTS params**: `cfg_weight`, `exaggeration`, `temperature`, `top_p`, `min_p`, `repetition_penalty`
 - **Per-segment overrides**: via `narration.yaml` overrides section or `tts.repetition_penalty` in segments
 
-Note: Chatterbox also has a "Turbo" model (English-only, ultra-fast). We use the Multilingual model for all languages.
+Note: Chatterbox also has a "Turbo" model (English-only, ultra-fast). We use the Multilingual model for all 23 Chatterbox langs; non-Chatterbox langs are Gemini.
 
 ## Whisper Alignment
 

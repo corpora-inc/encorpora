@@ -7,6 +7,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+
+- **In-app update awareness.** New `UpdatePrompt` modal and an "Update
+  available → X.Y.Z" line in the About panel notify users when they're
+  behind the latest release for their platform. Latest version is sourced
+  from Apple's iTunes Lookup API on iOS/macOS and a CDN-hosted
+  `app-version.json` (next to `catalog-v2.json`) on Android. Modal is
+  dismissable per-version with a "remind me later" backoff; falls back to
+  no prompt when the source is unknown or stale, so we never offer an
+  update that isn't actually live in the store. See
+  `infra/PUBLISHING.md` for the Android publish step.
+
 ### Fixed
 
 - **Android: shrink the libgui `FenceMonitor` race window during WebView

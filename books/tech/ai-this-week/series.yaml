@@ -22,11 +22,14 @@ series:
     than a feed of dunks and screenshots.
 
   format:
+    # Ep 2+ structure. Earlier "Bigger Picture" framing is folded into
+    # Top Story but can still appear when an outside-AI piece anchors.
     sections:
-      - "Model releases — what shipped and what is coming"
-      - "Leaderboard movement — what the benchmarks did this week"
-      - "Vocabulary deep dive — one concept, plain language to a little deeper"
-      - "The Bigger Picture — one outside-AI story, and the AI angle in both directions"
+      - "Open-weights & releases — what shipped in open / DIY land, training infra, community models"
+      - "Leaderboards & evals — what the boards did, eval-quality and contamination notes"
+      - "Headlines — fast clip of big-co + industry news, light touch, no PR voice"
+      - "Top Story — one deep dive; usually open-source / technical, sometimes outside-AI with a clean angle"
+      - "Concept of the week — one technical concept, plain language to a little deeper"
     cast:
       - id: vindy
         role: host

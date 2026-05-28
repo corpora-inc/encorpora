@@ -1,6 +1,6 @@
-# Runbook — 23-language narration of one book by August
+# Runbook — Multi-language narration of one book by August (50+ langs)
 
-Battle-tested on Vol. 1 of the Motorcycles series (2026-05-06). All 23
+Battle-tested on Vol. 1 of the Motorcycles series (2026-05-06). All
 Chatterbox languages shipped at version 0.1.7 with August voice. Use this
 recipe verbatim for Vol. 2–12 and any future August book.
 
@@ -62,7 +62,7 @@ upstream fix options A/B/C.
    `version: 0.1.0`, plus series metadata.
 
 5. **`narration.yaml`** — copy retry schedules + mastering from a recent
-   pack (e.g. fascinating-curiosities Vol 1). `voices:` map all 23 langs to
+   pack (e.g. fascinating-curiosities Vol 1). `voices:` map all configured langs to
    the voice file. Quote `"no"` in YAML (boolean trap). Configure
    per-language validation thresholds (CJK 0.25, RTL 0.15, Indic 0.15,
    Latin 0.12).
@@ -270,7 +270,7 @@ Fix the JSON in place and re-run — the script picks up cleanly.
   cover + character avatar + character banner).
 - **Translations**: $0 (codex local, free).
 - **Audio gen**: $0 (local GPU).
-- **Total $0.65 in cloud cost** for a full 23-language ship.
+- **Total $0.65 in cloud cost** for a full multi-language ship.
 
 Wall time, end-to-end (skilled operator):
 - Phase 0 setup: ~2 hours (manuscript writing dominates)
@@ -283,7 +283,7 @@ Wall time, end-to-end (skilled operator):
 
 ## Verification checklist
 
-After all 23 languages publish:
+After all configured languages publish:
 
 ```bash
 curl -s 'https://d38iwc9748jekz.cloudfront.net/catalog-v2.json?nc='$(date +%s) \
@@ -293,7 +293,7 @@ curl -s 'https://d38iwc9748jekz.cloudfront.net/catalog-v2.json?nc='$(date +%s) \
 # Catalog has 3+ characters
 curl ... | jq '.characters | length'   # ≥3
 
-# Voice profile shows all 23 langs supported
+# Voice profile shows all configured langs supported
 curl ... | jq '.voiceProfiles[] | select(.id=="<voiceId>") | .supportedLanguages | length'
 # → 23
 

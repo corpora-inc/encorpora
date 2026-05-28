@@ -78,8 +78,8 @@ bn (Bengali), mr (Marathi), ne (Nepali)
   free-transcribed the start cleanly then trailed into garble on the
   same audio. Suggests Whisper-large-v3 Bengali decoding is weak on
   longer utterances, NOT Gemini truncation.
-- **NOT a Chatterbox option:** Chatterbox supports only 23 langs;
-  bn/mr/ne are not on that list. Forget that path.
+- **NOT a Chatterbox option:** bn/mr/ne are not in the Chatterbox
+  baseline list. Forget that path.
 - **MMS is the right cross-check.** Adapter codes for bn/mr/ne (+
   ta/te/gu/kn/ur/th) added to `ttsctl/asr_mms.py MMS_ADAPTER` on
   2026-05-14. Now Tier-2 ASR verification will fire on these langs:

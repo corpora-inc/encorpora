@@ -8,11 +8,11 @@ We wear leotards.
 
 A leotard is like a one-piece bathing suit, but for gymnastics.
 
-Mine has sparkles on the shoulders.
+Some have sparkles.
 
-Some kids have plain ones.
+Some are plain.
 
-Some kids have wild rainbow ones.
+Some have wild rainbow colors.
 
 You can pick whatever you like.
 

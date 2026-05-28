@@ -183,6 +183,50 @@ cf.create_invalidation(
 Note: Cache invalidation takes ~10-30 seconds. The `ttsctl publish` command does NOT
 auto-invalidate — run this after all publishes are done.
 
+## In-app update prompt — `app-version.json`
+
+The app shows an "Update available" banner in the About panel and a dismissable
+modal when the user is behind. It learns about new releases from two sources:
+
+- **iOS / macOS**: Apple's iTunes Lookup API
+  (`https://itunes.apple.com/lookup?bundleId=com.corpora.corpan`). No infra
+  needed — Apple updates this automatically once the build is live on the
+  store, so review delays and staged rollouts are handled for us.
+- **Android**: a JSON manifest we host on the CDN at
+  `https://d38iwc9748jekz.cloudfront.net/app-version.json` (S3:
+  `s3://corpan-prod/artifacts/app-version.json`).
+
+The source-of-truth file is checked in at `corpan/infra/app-version.json`. Bump
+the `android.version` field **AFTER** the new build is live in Play Console (or
+once the rollout is far enough along that you want the install base nudged).
+Then upload + invalidate:
+
+```bash
+aws s3 cp \
+  --profile corpan-publisher \
+  ~/encorpora/corpan/infra/app-version.json \
+  s3://corpan-prod/artifacts/app-version.json \
+  --content-type application/json \
+  --cache-control "max-age=300, public"
+
+# CloudFront invalidation (same pattern as catalog-v2.json)
+python -c "
+import boto3, time
+cf = boto3.Session(profile_name='corpan-publisher').client('cloudfront')
+cf.create_invalidation(
+    DistributionId='E1RDNUCVE70SCI',
+    InvalidationBatch={
+        'Paths': {'Quantity': 1, 'Items': ['/app-version.json']},
+        'CallerReference': str(int(time.time())),
+    },
+)
+"
+```
+
+The app fetches this hourly per session (cache-busted in the client) and is
+conservative: a missing/stale file just means no prompt. Better to under-prompt
+than to offer an update that isn't actually available yet.
+
 ## Terraform Infrastructure
 
 Location: `~/encorpora/corpan/infra/terraform/`

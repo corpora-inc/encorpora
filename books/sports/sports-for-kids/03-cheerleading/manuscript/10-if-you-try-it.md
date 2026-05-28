@@ -6,7 +6,7 @@ Most days are practice days.
 
 Not competition days, not game days, just practice.
 
-We practice three times a week, two hours each time.
+We practice multiple days a week, a couple hours each time.
 
 We stretch and we condition.
 

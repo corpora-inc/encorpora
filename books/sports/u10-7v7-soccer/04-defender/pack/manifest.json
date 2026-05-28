@@ -1,7 +1,7 @@
 {
   "id": "book_u10_defender",
   "name": "You Are the Defender",
-  "version": "0.2.4",
+  "version": "0.2.7",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

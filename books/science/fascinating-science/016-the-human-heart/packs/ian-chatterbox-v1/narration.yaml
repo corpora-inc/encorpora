@@ -1,6 +1,28 @@
 version: 1
 voices:
-  en: ian-new-narration-try-more-chill-clear.wav
+  en: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  es: pre-mastered/ian-new-narration-spanish-loud__mastered-22.wav
+  pt: pre-mastered/ian-new-narration-spanish-loud__mastered-22.wav
+  fr: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  de: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  it: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  nl: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  sv: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  da: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  'no': pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  fi: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  pl: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  tr: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  ar: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  he: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  hi: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  ru: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  zh: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  ja: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  ko: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  ms: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  el: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
+  sw: pre-mastered/ian-new-narration-try-more-chill-clear__mastered-22.wav
 tts:
   cfg_weight: 0.85
   exaggeration: 0.3
@@ -74,8 +96,52 @@ trimming:
   fade_sec: 0.05
   max_sec_per_char:
     en: 0.12
+    es: 0.12
+    fr: 0.12
+    de: 0.12
+    pt: 0.12
+    it: 0.12
+    nl: 0.12
+    sv: 0.12
+    da: 0.12
+    'no': 0.12
+    fi: 0.12
+    pl: 0.12
+    tr: 0.12
+    ru: 0.12
+    el: 0.12
+    ms: 0.12
+    sw: 0.12
+    ar: 0.15
+    he: 0.15
+    hi: 0.15
+    zh: 0.25
+    ja: 0.25
+    ko: 0.20
   base_buffer_sec:
     en: 5.0
+    es: 5.0
+    fr: 5.0
+    de: 5.0
+    pt: 5.0
+    it: 5.0
+    nl: 5.0
+    sv: 5.0
+    da: 5.0
+    'no': 5.0
+    fi: 5.0
+    pl: 5.0
+    tr: 5.0
+    ru: 5.0
+    el: 5.0
+    ms: 5.0
+    sw: 5.0
+    ar: 5.0
+    he: 5.0
+    hi: 5.0
+    zh: 5.0
+    ja: 5.0
+    ko: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -84,8 +150,74 @@ validation:
   max_inter_word_gap_ms: 3000
   max_sec_per_char:
     en: 0.12
+    es: 0.12
+    fr: 0.12
+    de: 0.12
+    pt: 0.12
+    it: 0.12
+    nl: 0.12
+    sv: 0.12
+    da: 0.12
+    'no': 0.12
+    fi: 0.12
+    pl: 0.12
+    tr: 0.12
+    ru: 0.12
+    el: 0.12
+    ms: 0.12
+    sw: 0.12
+    ar: 0.15
+    he: 0.15
+    hi: 0.15
+    zh: 0.25
+    ja: 0.25
+    ko: 0.20
   min_sec_per_char:
     en: 0.02
+    es: 0.02
+    fr: 0.02
+    de: 0.02
+    pt: 0.02
+    it: 0.02
+    nl: 0.02
+    sv: 0.02
+    da: 0.02
+    'no': 0.02
+    fi: 0.02
+    pl: 0.02
+    tr: 0.02
+    ru: 0.02
+    el: 0.02
+    ms: 0.02
+    sw: 0.02
+    ar: 0.02
+    he: 0.02
+    hi: 0.02
+    zh: 0.03
+    ja: 0.03
+    ko: 0.03
   base_buffer_sec:
     en: 5.0
+    es: 5.0
+    fr: 5.0
+    de: 5.0
+    pt: 5.0
+    it: 5.0
+    nl: 5.0
+    sv: 5.0
+    da: 5.0
+    'no': 5.0
+    fi: 5.0
+    pl: 5.0
+    tr: 5.0
+    ru: 5.0
+    el: 5.0
+    ms: 5.0
+    sw: 5.0
+    ar: 5.0
+    he: 5.0
+    hi: 5.0
+    zh: 5.0
+    ja: 5.0
+    ko: 5.0
 overrides: {}

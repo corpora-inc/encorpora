@@ -108,8 +108,7 @@ codex was offline. Safe to delete after the audit finishes.
   sv, no, da, nl, fi, ms, sw, el, he — 90,000 new translations
   (codex burned 3 quota cycles; Sonnet subagents filled gaps in parallel)
 - Romanizations: el (codex), he (codex 4,179 + deterministic Python 5,821)
-- **Release: 82M (29 langs) → 34M (38 langs)** = 58% smaller while covering
-  31% more languages.
+- **Release: 82M → 34M** = 58% smaller while covering more languages.
 
 ## Observed cut patterns (sample)
 

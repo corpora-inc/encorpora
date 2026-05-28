@@ -10,7 +10,7 @@ The site tone is **understated and elegant**. "Pure Learning" is the tagline. Av
 
 ### Product Facts (verify these against actual code before using)
 
-- **Corpan**: Language learning app with downloadable packs. 27 languages. iOS + Android. Has a web presence at /corpan/ with playable packs.
+- **Corpan**: Language learning app with downloadable packs. 50+ languages. iOS + Android. Has a web presence at /corpan/ with playable packs.
 - **Homeschool Offline**: A private homeschool **journal/calendar** app. Track school days, add notes and photos, manage multiple students. 100% offline, no cloud. It is NOT a curriculum or K-12 content platform. Check `/homeschool-offline/` for the actual app code.
 - **Hanzipan**: A Corpan pack (not a standalone app). Mandarin character studio.
 - **Juice Squeeze**: A Corpan pack (not a standalone app). Phrase-building game. Currently a prototype.

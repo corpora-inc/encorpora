@@ -1,0 +1,124 @@
+{
+  "issue_date": "2026-05-20",
+  "ran_at": "2026-05-21",
+  "must_fix_applied": [
+    {
+      "claim": "GLM-4.7 trained on Huawei Ascend with 1.2% hallucination rate",
+      "correction": "GLM-4.7 (Dec 2025) had ~90% hallucination per Vectara; the 1.2% figure was associated with the older GLM-4.5 in a single Facebook citation we couldn't independently verify. Current open-weights story is GLM-5 (Feb 2026) and GLM-5.1 (Apr 2026), both trained on ~100,000 Huawei Ascend 910B chips with MindSpore, zero NVIDIA. Manuscript rewritten to focus on the GLM-5 family and the non-NVIDIA training-stack trend, dropping the unverified hallucination claim.",
+      "segments": ["open-weights opening block"],
+      "sources": [
+        "https://huggingface.co/blog/mlabonne/glm-5",
+        "https://www.digitalapplied.com/blog/zhipu-ai-glm-5-release-744b-moe-model-analysis"
+      ]
+    },
+    {
+      "claim": "Musk v OpenAI verdict on Thursday, May 14, deliberated under 2 hours",
+      "correction": "Verdict was Monday, May 18, 2026 (not May 14). 9-member jury deliberated ~1h 53m. Decision was on statute-of-limitations grounds (Musk filed in 2024, past the limit), not on the merits. Judge Yvonne Gonzalez Rogers tossed the case.",
+      "segments": ["headlines — Musk verdict block"],
+      "sources": [
+        "https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed",
+        "https://www.cbsnews.com/news/musk-openai-lawsuit-dismissed-jury-recommendation/"
+      ]
+    },
+    {
+      "claim": "vLLM v0.21 shipped Thursday May 15",
+      "correction": "May 15, 2026 is a Friday. Updated manuscript to 'Friday, May 15'. Also added concrete v0.21 features (KV offload + hybrid memory allocator, TOKENSPEED_MLA backend tuned for DeepSeek-R1 and Kimi K2.5 prefill on Blackwell) so the segment is more than just a version-bump mention.",
+      "segments": ["open-weights closing block on vLLM"],
+      "sources": ["https://github.com/vllm-project/vllm/releases/tag/v0.21.0"]
+    },
+    {
+      "claim": "Léocadie Lushombo, Boston College",
+      "correction": "Lushombo is at the Jesuit School of Theology at Santa Clara University, not Boston College. She is a Teresian Association consecrated woman, born in DR Congo.",
+      "segments": ["top-story presenters block"],
+      "sources": [
+        "https://thenextweb.com/news/pope-leo-encyclical-magnifica-humanitas-anthropic-olah",
+        "https://www.americamagazine.org/vatican-dispatch/2026/05/18/pope-leo-encyclical-artifical-intelligence-anthropic/"
+      ]
+    },
+    {
+      "claim": "ZAYA1-8B has 8 billion total parameters, 760M active, Apache 2.0, AMD-trained",
+      "correction": "Total is 8.4 billion (not exactly 8B). 760M active confirmed. Apache 2.0 confirmed. Cluster: 1,024 AMD MI300x nodes built with IBM, with AMD Pensando Pollara interconnect. AIME math benchmark score is 89.1.",
+      "segments": ["open-weights ZAYA1-8B block"],
+      "sources": [
+        "https://www.marktechpost.com/2026/05/06/zyphra-releases-zaya1-8b-a-reasoning-moe-trained-on-amd-hardware-that-punches-far-above-its-weight-class/",
+        "https://www.zyphra.com/post/zaya1-8b"
+      ]
+    },
+    {
+      "claim": "Kimi K2.6 still #1 on OpenRouter for token volume",
+      "correction": "Kimi K2.6 topped OpenRouter in its first week (Apr 20 launch, 1.88T tokens) and held #1 over Claude Sonnet 4.6 and DeepSeek V3.2 in that window. By late April some rankings had MiMo-V2-Pro overtaking. Manuscript reframed to 'still in the top tier on OpenRouter' with the launch-week token figure for context, instead of stale 'still #1' framing.",
+      "segments": ["open-weights Kimi K2.6 block"],
+      "sources": [
+        "https://phemex.com/news/article/kimi-k26-tops-openrouter-leaderboard-with-188-trillion-tokens-76904",
+        "https://www.digitalapplied.com/blog/openrouter-rankings-april-2026-top-ai-models-data"
+      ]
+    },
+    {
+      "claim": "Bessent / US-China AI safety protocol announcement, undated, generic framing",
+      "correction": "Specific date is May 14, 2026 at the Trump-Xi summit in Beijing. Treasury Secretary Scott Bessent. Framing: 'best practices' to keep frontier models out of non-state actor hands — explicitly NOT a binding regime. Manuscript anchored to that date and framing.",
+      "segments": ["headlines — policy block"],
+      "sources": [
+        "https://www.cnbc.com/2026/05/14/us-china-ai-rules-bessent-us-lead.html",
+        "https://www.resultsense.com/news/2026-05-15-us-china-ai-guardrails-bessent-beijing/"
+      ]
+    }
+  ],
+  "hedged_or_kept": [
+    {
+      "claim": "Open vs closed gap is 5 to 15 points per Artificial Analysis intelligence index",
+      "note": "Approximate band — Artificial Analysis publishes a unified Intelligence Index where top open models (Kimi K2.6, DeepSeek V4-Pro) sit within 5-15 index points of GPT-5.5 / Opus 4.7. Specific numbers shift per refresh. Treated as 'rough band' framing."
+    },
+    {
+      "claim": "Apple on-device foundation model — ~3B params, 2-bit QAT, fits in ~750 MB",
+      "note": "All three facts confirmed from Apple Machine Learning Research papers. The model itself was a 2025 ship, used here as a teaching example for the Quantization concept-of-week section, not as 'this week' news. Manuscript framing makes that clear ('Apple's on-device foundation model goes to 2 bits per weight') — no time-anchored claim that would mislead listeners."
+    },
+    {
+      "claim": "Claude Opus 4.7 still ~1569 Elo on LM Arena coding leaderboard",
+      "note": "Carry-over from issue 1. Stable through the past two weeks per arena-style trackers. If Gemini 3.5 Flash lands on the boards next week the picture may shift."
+    },
+    {
+      "claim": "DeepSeek V4-Pro 1.6T total / 49B active; V4-Flash 284B / 13B; MIT license; launched April 24",
+      "note": "All specs confirmed across multiple sources. V4-Pro-Max additionally hits 80.6% on SWE-bench Verified per the Datacamp / Morphllm guides — kept out of the manuscript to keep this an 'open-weights releases' section, not a 'leaderboards' one."
+    },
+    {
+      "claim": "Apple Intelligence iOS 27 'Choose Your Own Adventure' third-party LLM extensions",
+      "note": "Reported by TechCrunch May 5 from internal Apple sourcing; not officially confirmed by Apple yet. Manuscript does NOT mention this — kept out of the headlines block to avoid amplifying unverified reporting."
+    },
+    {
+      "claim": "Andrej Karpathy joined Anthropic on Tuesday (May 19), pre-training team under Nick Joseph, leading a new sub-team using Claude to accelerate pre-training research",
+      "note": "Confirmed across TechCrunch / Axios / Bloomberg / Karpathy's own May 19 post. Manuscript phrasing 'leading a group focused on using Claude to accelerate pre-training research' is faithful to the Anthropic statement and the press coverage."
+    }
+  ],
+  "all_verified": [
+    "Google I/O dates: May 19-20, 2026 (Tuesday-Wednesday)",
+    "Gemini 3.5 Flash, Gemini Omni, Gemini Spark all announced May 19",
+    "Gemini Spark runs on dedicated cloud VMs powered by Gemini 3.5 Flash via Google's Antigravity framework",
+    "AI Ultra basic tier: $250/month → $100/month; new $200 high tier with Project Genie access",
+    "Compute-based usage limits replacing daily prompt caps; refreshes every 5 hours until weekly cap",
+    "Samsung XR glasses with Gemini built in",
+    "Andrej Karpathy joined Anthropic May 19, 2026 (Tuesday); pre-training team",
+    "Karpathy CV: OpenAI founding member, Tesla AI Director, Eureka Labs founder",
+    "Apple/Gemini Siri deal confirmed by Google Cloud CEO Thomas Kurian",
+    "Pope Leo XIV first encyclical: 'Magnifica Humanitas: On the Protection of Human Dignity in the Age of Artificial Intelligence'",
+    "Publication date: Monday, May 25, 2026",
+    "Signed: May 15, 2026 — exactly 135 years to the day after Pope Leo XIII signed Rerum Novarum (May 15, 1891)",
+    "Presentation: Vatican Synod Hall",
+    "Presenters: Cardinal Pietro Parolin (concluding), Cardinal Víctor Manuel Fernández, Cardinal Michael Czerny SJ, Christopher Olah (Anthropic co-founder, head of interpretability research), Prof. Anna Rowlands (Durham), Prof. Léocadie Lushombo (Jesuit School of Theology, Santa Clara)",
+    "1.4 billion Catholics worldwide (round figure)",
+    "GLM-5 family trained on ~100,000 Huawei Ascend 910B chips, MindSpore framework, zero NVIDIA",
+    "GLM-5 launched Feb 11, 2026; GLM-5.1 launched April 7, 2026",
+    "ZAYA1-8B from Zyphra, released May 6, 2026, 8.4B total / 760M active, Apache 2.0, AMD MI300x cluster",
+    "DeepSeek V4-Pro 1.6T total / 49B active; V4-Flash 284B / 13B; launched April 24, 2026; MIT license",
+    "Kimi K2.6 launched April 20, 2026; topped OpenRouter in launch week with 1.88T tokens",
+    "vLLM v0.21.0 released Friday, May 15, 2026",
+    "vLLM v0.21 highlights: KV Offload + Hybrid Memory Allocator integration; new TOKENSPEED_MLA attention backend for DeepSeek-R1 / Kimi K2.5 prefill on Blackwell",
+    "Claude Opus 4.7 still ~1569 Elo on LM Arena coding leaderboard",
+    "GPT-5.5 high-reasoning at #7 LM Arena Text; #9 Code WebDev",
+    "SWE-bench Verified retired (issue 1 callback); SWE-bench Pro + SWE-rebench are the current boards",
+    "Apple on-device foundation model: ~3B parameters, 2-bit Quantization-Aware Training",
+    "Apple uses KV-cache sharing between two transformer blocks (62.5% / 37.5% split)",
+    "Quantization formats AWQ, GGUF (with Q4_K_M as the llama.cpp default) exist and are widely used",
+    "Musk v OpenAI verdict: Monday May 18, 9-member jury, ~1h 53m deliberation, statute-of-limitations dismissal",
+    "Bessent US-China AI safety protocol announced May 14 at Trump-Xi Beijing summit; focus on non-state actor risk; non-binding"
+  ]
+}

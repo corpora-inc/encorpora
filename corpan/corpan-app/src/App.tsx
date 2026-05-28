@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
+import { UpdatePrompt } from "./components/UpdatePrompt";
 import { Button } from "./components/ui/button";
 import { ContentPackOverlay } from "./components/ContentPackOverlay";
 import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
@@ -340,6 +341,7 @@ export default function App() {
       <PhrasePackDrawer />
 
       <RatingPrompt />
+      <UpdatePrompt />
 
       {activeGame ? (
         <ContentPackOverlay
