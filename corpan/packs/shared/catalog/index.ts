@@ -6,6 +6,7 @@ export type {
   CatalogNarrationEntry,
   CatalogGamePack,
   PurchaseInfo,
+  NarrationArtifact,
   InstalledNarration,
   DownloadState,
   BookGroup,
@@ -69,7 +70,24 @@ export {
   deleteNarration,
   isTauriAvailable,
   getPackUrl,
+  isTwoZipEntry,
 } from "./src/installManager"
+
+export {
+  isCurrentlySubscribed,
+  isIapAvailable,
+  fetchStoreProducts,
+  purchaseSubscriptionProduct,
+  resolveSubscriptionReceipt,
+  requestRestorePurchases,
+  getReaderPlatform,
+  SUBSCRIPTION_MONTHLY_ID,
+  SUBSCRIPTION_ANNUAL_ID,
+  type StoreProduct,
+  type EntitlementCheck,
+  type PurchaseOutcome,
+  type SubscriptionPlan,
+} from "./src/purchaseManager"
 
 export {
   startListening,

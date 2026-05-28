@@ -604,6 +604,27 @@ export async function resolveReceiptForEntry(
   return null
 }
 
+/**
+ * Resolve an active subscription receipt (Corpán Plus). Used by the two-ZIP
+ * install path to authorise the full ZIP download. No book product involved.
+ */
+export async function resolveSubscriptionReceipt(): Promise<NarrationPurchaseReceipt | null> {
+  const platform = getReaderPlatform() ?? "desktop"
+  const subs = await restorePurchasesOfType("subs")
+  const sub = subs.find(
+    (p) =>
+      p.productId === SUBSCRIPTION_MONTHLY_ID ||
+      p.productId === SUBSCRIPTION_ANNUAL_ID
+  )
+  if (sub) {
+    const receipt = receiptFromRaw(sub)
+    if (receipt) {
+      return { transactionId: sub.id ?? sub.orderId ?? "", receipt, platform }
+    }
+  }
+  return null
+}
+
 // -----------------------------------------------------------------------------
 // Narration purchase (legacy alias) — book purchase by narration object
 // -----------------------------------------------------------------------------
