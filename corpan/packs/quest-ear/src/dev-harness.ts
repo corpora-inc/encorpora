@@ -150,12 +150,31 @@ apply.onclick = () => {
   setOpen(false)
 }
 panel.appendChild(apply)
+
+// DEV-ONLY: jump straight to the Rat King lair (a short walk from the trigger).
+const boss = document.createElement("button")
+boss.textContent = "🐀 Jump to Rat King"
+boss.style.cssText = "display:block;margin-top:6px;cursor:pointer"
+boss.onclick = () => {
+  ;(globalThis as { __questEarDebugStartX?: number }).__questEarDebugStartX = 79600
+  mountGame()
+  setOpen(false)
+}
+panel.appendChild(boss)
+
 setOpen(false)
 document.body.appendChild(bar)
 
+// In the real Corpán app the host closes the pack on corpan:exit. The harness has
+// nowhere to "exit" to, so we actually unmount + show a Restart button — otherwise
+// the exit button looks dead in-browser.
 window.addEventListener("corpan:exit", () => {
-  capText.textContent =
-    "▶ game dispatched corpan:exit (exit button). Expand languages → Apply + restart to replay."
+  if (handle && handle.unmount) handle.unmount()
+  handle = undefined
+  root.innerHTML =
+    '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#cfc;font:16px/1.4 monospace;background:#0f0f23"><div>↩ Exited the pack (corpan:exit). In Corpán this closes the game.</div><button id="dev-restart" style="font:14px monospace;padding:8px 16px;cursor:pointer">▶ Restart</button></div>'
+  document.getElementById("dev-restart")?.addEventListener("click", () => mountGame())
+  capText.textContent = "▶ corpan:exit fired — host would close the pack here."
   cap.style.display = ""
 })
 

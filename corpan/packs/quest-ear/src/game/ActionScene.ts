@@ -4,6 +4,9 @@ import type { MultiLangText, NPCEncounter, NPCResponse } from "../data/npcCorpus
 import familyLinesJson from "../data/familyLines.json"
 import { HECKLERS, type Heckler } from "../data/hecklerLines"
 import type { HostApi } from "../sdk/types"
+import { BossArena, type BossHost } from "./BossArena"
+import { getQuestSfx } from "../util/sfx"
+import { saveQuest } from "../util/save"
 
 /** Icons for each NPC vendor type */
 const NPC_ICONS: Record<string, string> = {
@@ -83,7 +86,7 @@ const RIDDLE_DATA: {
   },
 ]
 
-type InteractionState = "roaming" | "interacting" | "animating"
+type InteractionState = "roaming" | "interacting" | "animating" | "boss"
 
 interface NPCInstance {
   container: Phaser.GameObjects.Container
@@ -203,6 +206,16 @@ export class ActionScene extends Phaser.Scene {
   private smashTarget: BuildingInstance | null = null
   private smashReadyAt = 0
 
+  // Boss (Rat King) final-encounter phase
+  private boss?: BossArena
+  // Trigger well inside the reachable zone: the player's physics body scales with
+  // growth and collideWorldBounds stops a grown player ~150px short of the world
+  // edge, so a near-edge trigger (WORLD_WIDTH-50) is unreachable once you've grown.
+  private readonly BOSS_TRIGGER_X = 78500 // WORLD_WIDTH - 1500
+  private readonly ARENA_CENTER_X = 79600 // near world-end; the King's lair
+  private readonly ARENA_MIN_X = 79240
+  private readonly ARENA_MAX_X = 79900
+
   constructor() {
     super({ key: "ActionScene" })
   }
@@ -227,6 +240,8 @@ export class ActionScene extends Phaser.Scene {
     this.tiltDir = 0
     this.tiltEnabled = false
     this.confirmArmedIndex = -1
+    this.boss?.destroy()
+    this.boss = undefined
 
     // Read languages from host API
     this.hostApi = (globalThis as any).__questEarHostApi ?? null
@@ -246,6 +261,10 @@ export class ActionScene extends Phaser.Scene {
     this.createAtmosphere()
     this.createSkyline()
     this.player = this.createPlayer()
+    // DEV-ONLY: the browser harness can fast-forward the player toward the lair.
+    // Never set by the Corpán host (main.ts), so this is a no-op in production.
+    const dbgX = (globalThis as { __questEarDebugStartX?: number }).__questEarDebugStartX
+    if (typeof dbgX === "number" && Number.isFinite(dbgX)) this.player.x = dbgX
     this.createNPCs()
 
     this.physics.add.existing(this.player)
@@ -309,6 +328,8 @@ export class ActionScene extends Phaser.Scene {
     const cleanup = () => {
       this.disableTilt()
       this.input.off("pointerdown", this.onPointerDown, this)
+      this.boss?.destroy()
+      this.boss = undefined
     }
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, cleanup)
     this.events.once(Phaser.Scenes.Events.DESTROY, cleanup)
@@ -329,17 +350,34 @@ export class ActionScene extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(this.keySmash)) this.trySmash()
     } else if (this.interactionState === "interacting") {
       this.handleResponseInput()
+    } else if (this.interactionState === "boss") {
+      this.handleMovement()
+      // Keep the player penned inside the lair.
+      const body = this.player.body as Phaser.Physics.Arcade.Body
+      if (this.player.x < this.ARENA_MIN_X) {
+        this.player.x = this.ARENA_MIN_X
+        body.setVelocityX(0)
+      } else if (this.player.x > this.ARENA_MAX_X) {
+        this.player.x = this.ARENA_MAX_X
+        body.setVelocityX(0)
+      }
+      this.boss?.handleKey()
+      this.boss?.update(_time, delta)
     }
 
-    const moving = this.interactionState === "roaming" && this.moveIntent() !== 0
+    const moving =
+      (this.interactionState === "roaming" || this.interactionState === "boss") &&
+      this.moveIntent() !== 0
     this.animatePlayer(moving, delta)
 
-    const progress = Phaser.Math.Clamp(this.player.x / this.WORLD_WIDTH, 0, 1)
-    this.updateAtmosphere(progress)
-    this.progressText.setText(`${Math.floor(progress * 100)}% through NYC`)
+    if (this.interactionState !== "boss") {
+      const progress = Phaser.Math.Clamp(this.player.x / this.WORLD_WIDTH, 0, 1)
+      this.updateAtmosphere(progress)
+      this.progressText.setText(`${Math.floor(progress * 100)}% through NYC`)
 
-    if (this.player.x >= this.WORLD_WIDTH - 50) {
-      this.sceneComplete()
+      if (this.player.x >= this.BOSS_TRIGGER_X) {
+        this.enterBossPhase()
+      }
     }
   }
 
@@ -482,6 +520,9 @@ export class ActionScene extends Phaser.Scene {
     const x = p.x
     const y = p.y
 
+    // First user gesture also unlocks the audio context (iOS autoplay policy).
+    getQuestSfx().unlock()
+
     if (this.exitHit(x, y)) {
       this.hostApi?.stopSpeech?.()
       window.dispatchEvent(new CustomEvent("corpan:exit"))
@@ -489,6 +530,13 @@ export class ActionScene extends Phaser.Scene {
     }
     if (this.tiltHit(x, y)) {
       this.toggleTilt()
+      return
+    }
+
+    if (this.interactionState === "boss") {
+      // Boss UI consumes its own taps; otherwise fall through so the bottom-corner
+      // move zones still drive dodging.
+      if (this.boss?.handleTap(x, y)) return
       return
     }
 
@@ -1656,6 +1704,77 @@ export class ActionScene extends Phaser.Scene {
     container.add(this.add.rectangle(0, -37, 12, 6, hatColor))
 
     return container
+  }
+
+  // --------------- BOSS PHASE (Rat King) ---------------
+
+  /** Build the BossArena's view into this scene (only what the boss needs). */
+  private makeBossHost(): BossHost {
+    return {
+      scene: this,
+      getPlayer: () => this.player,
+      getPlayerScale: () => this.currentScale(),
+      getPlayerHearts: () => Math.max(0, Math.ceil(this.growthLevel / this.DAMAGE_STEP)),
+      getScore: () => this.acceptedSet.size,
+      takePlayerDamage: (step: number) => this.takeDamage(step),
+      // Speak with an explicit lang (the King's Latin / phrase proxies), bypassing
+      // the stack-rotation getTTSLang() the rest of the scene uses.
+      speakLang: (lang: string, text: string) => this.hostApi?.speak?.(lang, text),
+      playImpactSfx: () => getQuestSfx().playImpact(),
+      resetForReplay: () => this.setupArenaPlayer(),
+      onBossDefeated: (clue: string) => this.onBossDefeated(clue),
+      damageStep: this.DAMAGE_STEP,
+      arenaCenterX: this.ARENA_CENTER_X,
+      playerBaseY: this.PLAYER_BASE_Y,
+    }
+  }
+
+  /** Position + size the player for a (fresh) lair fight, lock the camera. */
+  private setupArenaPlayer() {
+    // The player isn't full-grown by force — give a fair floor so the fight is
+    // winnable even after a rough run, and keep size/energy consistent.
+    if (this.growthLevel < 12) this.growthLevel = 12
+    this.applySize()
+    this.player.setDepth(78) // above the lair backdrop + King (see BossArena depths)
+    this.player.x = Phaser.Math.Clamp(this.ARENA_CENTER_X - 240, this.ARENA_MIN_X, this.ARENA_MAX_X)
+    const body = this.player.body as Phaser.Physics.Arcade.Body
+    body.setVelocityX(0)
+    this.cameras.main.stopFollow()
+    this.cameras.main.centerOn(this.ARENA_CENTER_X, 300)
+  }
+
+  /** Reaching the end of NYC arrives at the King's lair — start the boss phase. */
+  private enterBossPhase() {
+    if (this.interactionState === "boss") return
+    this.interactionState = "boss"
+
+    // Clear any in-progress NPC interaction and hide all street clutter — booths,
+    // people, and question panels have no place in the King's lair.
+    this.activeNPC = null
+    this.confirmArmedIndex = -1
+    this.selectedIndex = 0
+    this.responsePanel.setVisible(false)
+    this.langLabel.setVisible(false)
+    for (const npc of this.npcs) {
+      npc.dialogBubble.setVisible(false)
+      npc.dialogVisible = false
+      npc.container.setVisible(false)
+    }
+
+    this.setupArenaPlayer()
+    this.progressText.setVisible(false)
+    this.smashBtn.setVisible(false)
+
+    this.boss = new BossArena(this.makeBossHost())
+    this.boss.start()
+  }
+
+  /** Player chose "Return Home" after the King fell. */
+  private onBossDefeated(clue: string) {
+    saveQuest({ level1FragmentCollected: true, level1Clue: clue })
+    this.boss?.destroy()
+    this.boss = undefined
+    this.sceneComplete()
   }
 
   // --------------- SCENE LIFECYCLE ---------------

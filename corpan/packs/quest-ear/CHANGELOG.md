@@ -9,6 +9,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-05-29 — The Rat King (NYC Level 1 final boss)
+### Added
+- **The Rat King final-boss encounter.** Reaching the end of the NYC run now
+  arrives at the King's street-level lair — a fixed-arena phase inside the action
+  scene. A crowned nutria on a stone throne, flanked by rats and crowned
+  lieutenants, who blusters in Latin and attacks with cheese-vomit, a telegraphed
+  spin shockwave, and a close-range tail-kick.
+- **Sound-as-force combat.** Floating language phrases (Tamil, Cantonese, Greek,
+  Sanskrit, Nahuatl, K'iche', and more) pop up mid-fight; grab one (tap / Space)
+  to hear it spoken, then hurl it (THROW button / Enter) as a beam of sound that
+  shakes the screen, thuds, and breaks the King's health. Dodge his attacks while
+  you do. Languages without an offline voice use a playful proxy voice for now.
+- **Death beat + progression hook.** The King fades to oblivion on a final Latin
+  word and reveals a fragment of the All-Hearing Ear; taking it shows a clue
+  toward the next level, then a choice to Return Home or Replay.
+- **Save persistence.** New `quest_ear.save` localStorage entry records the
+  Level-1 fragment + clue so they survive replays and app restarts.
+- **Bundled SFX path** (`src/util/sfx.ts`, modeled on hover-runner): impact thud
+  via WebAudio with a synthesized fallback, so the fight is audible before real
+  WAVs are added under `src/assets/sfx/`.
+
 ## [0.3.5] - 2026-05-26 — touch-responsive replies + fixed-UI taps
 ### Fixed
 - Replies / SMASH / exit / tilt taps now work after the camera scrolls. They were

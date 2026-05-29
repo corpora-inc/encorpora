@@ -31,7 +31,7 @@ const updateManifestPlugin = () => {
 
 export default defineConfig({
   publicDir: "public",
-  assetsInclude: ["**/*.glb"],
+  assetsInclude: ["**/*.glb", "**/*.wav"],
   define: {
     "process.env": {},
   },
