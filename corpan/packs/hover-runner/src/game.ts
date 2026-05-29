@@ -1473,7 +1473,7 @@ export const createHoverRunner = (
         }
         const lookup = buildEntryLookup(entry.translations)
         const stackConfig = gameStore.getState().stackConfig
-        const { promptLang, answerLang } = pickLanguages(stackConfig)
+        const { promptLang, answerLang, singleLanguage } = pickLanguages(stackConfig)
         const prompt = pickByLang(lookup.textByCode, promptLang)
         const answer = pickByLang(lookup.textByCode, answerLang)
         if (!prompt || !answer) {
@@ -1539,6 +1539,7 @@ export const createHoverRunner = (
           answer,
           answerRomanization,
           choices,
+          singleLanguage,
         }
         beginIntro(nextRound)
         return
@@ -1642,6 +1643,11 @@ export const createHoverRunner = (
   function getPromptLabel() {
     const current = gameStore.getState().round
     if (current) {
+      // Single-language (listening-match) rounds have no source→target
+      // direction to show; the player matches by ear, so just say "Listen".
+      if (current.singleLanguage) {
+        return t("phrase.listen")
+      }
       return `${current.promptLang.toUpperCase()} → ${current.answerLang.toUpperCase()}`
     }
     return t("phrase.listen")
@@ -1673,16 +1679,25 @@ export const createHoverRunner = (
       hudAnswerRomanization.style.display = "none"
       return
     }
-    hudPrompt.textContent = nextRound.prompt
-    if (
-      gameStore.getState().stackConfig?.showRomanization &&
-      nextRound.promptRomanization
-    ) {
-      hudPromptRomanization.textContent = nextRound.promptRomanization
-      hudPromptRomanization.style.display = "block"
-    } else {
+    // Listening-match (single-language) rounds hide the written prompt so the
+    // player must recognize it by ear among the gates. We show a speaker cue
+    // instead of the text — revealing the phrase would make the match trivial.
+    if (nextRound.singleLanguage) {
+      hudPrompt.textContent = t("phrase.listen_cue")
       hudPromptRomanization.textContent = ""
       hudPromptRomanization.style.display = "none"
+    } else {
+      hudPrompt.textContent = nextRound.prompt
+      if (
+        gameStore.getState().stackConfig?.showRomanization &&
+        nextRound.promptRomanization
+      ) {
+        hudPromptRomanization.textContent = nextRound.promptRomanization
+        hudPromptRomanization.style.display = "block"
+      } else {
+        hudPromptRomanization.textContent = ""
+        hudPromptRomanization.style.display = "none"
+      }
     }
     hudAnswer.textContent = ""
     hudAnswerRomanization.textContent = ""
@@ -1703,6 +1718,17 @@ export const createHoverRunner = (
     } else {
       hudPromptRomanization.textContent = ""
       hudPromptRomanization.style.display = "none"
+    }
+    // Single-language rounds: prompt and answer are the same phrase, so the
+    // celebration is the moment we finally reveal what they heard (shown via
+    // hudPrompt above). Showing it twice as the "answer" row would just
+    // duplicate the line, so skip the answer row here.
+    if (nextRound.singleLanguage) {
+      hudAnswer.textContent = ""
+      hudAnswer.style.display = "none"
+      hudAnswerRomanization.textContent = ""
+      hudAnswerRomanization.style.display = "none"
+      return
     }
     hudAnswer.textContent = nextRound.answer
     hudAnswer.style.display = "block"

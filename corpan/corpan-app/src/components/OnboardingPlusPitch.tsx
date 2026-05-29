@@ -4,17 +4,18 @@ import { useSettingsStore } from "@/store/settings"
 import { usePaywallStore } from "@/store/paywall"
 import { useEntitlementStore } from "@/store/entitlements"
 import { Button } from "@/components/ui/button"
+import type { OnboardingStepProps } from "@/onboarding/types"
 
 /**
- * Onboarding step 5 — the Corpán Plus pitch. Rendered after the user has
- * named their primary language and goals, so the copy is localized and can
- * speak to what they're getting. Primary CTA opens the PaywallSheet (which
- * handles the real purchase); secondary continues on the free tier.
+ * The Corpán Plus pitch. Rendered after the user has named their primary
+ * language and goals, so the copy is localized and can speak to what they're
+ * getting. Primary CTA opens the PaywallSheet (which handles the real
+ * purchase); secondary continues on the free tier. Back routing is owned by
+ * the onboarding engine (graph history), not a hardcoded branch.
  */
-export function OnboardingPlusPitch() {
+export function OnboardingPlusPitch({ onAdvance, onBack }: OnboardingStepProps = {}) {
   const { t } = useTranslation()
   const setStep = useSettingsStore((s) => s.setOnboardingStep)
-  const userClass = useSettingsStore((s) => s.userClass)
   const openPaywall = usePaywallStore((s) => s.openPaywall)
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const dir = useSettingsStore((s) => s.dir)
@@ -25,13 +26,11 @@ export function OnboardingPlusPitch() {
     { icon: HeartHandshake, text: t("onboarding.pitch.team", "We're a small team and put every cent back into Corpán.") },
   ]
 
-  // Learners/polyglots came through the language picker; back goes to voices.
-  // Enjoyers/kids skipped those; back goes to the userClass quiz.
-  const back = () => setStep(userClass === "learner" || userClass === "polyglot" ? 4 : 2)
+  const back = onBack ?? (() => setStep(4))
 
   return (
     <section
-      className="flex h-dvh min-h-[100svh] w-full flex-col items-center justify-center bg-background md:bg-muted px-6 text-center"
+      className="flex h-dvh min-h-[100svh] w-full flex-col items-center justify-center bg-background px-6 text-center"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 2rem)" }}
       dir={dir()}
     >
@@ -67,7 +66,7 @@ export function OnboardingPlusPitch() {
           ) : null}
           <button
             type="button"
-            onClick={() => setStep(6)}
+            onClick={onAdvance ?? (() => setStep(6))}
             className="block w-full text-sm text-muted-foreground underline underline-offset-2 hover:text-foreground"
           >
             {t("onboarding.pitch.continueFree", "Continue with the free tier")}

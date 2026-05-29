@@ -3,6 +3,10 @@ import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
+import { useRatingStore } from "@/store/rating"
+import { usePhrasePacksStore } from "@/store/phrasePacks"
+import type { TextSizeType } from "@/store/settings"
+import type { StackConfigPatch } from "./types"
 import type {
   HostApi,
   PackDbQuery,
@@ -67,6 +71,9 @@ const getStackSnapshot = () => {
     rate,
     textSize,
     showRomanization,
+    phrasePackIds,
+    baseCorpusEnabled,
+    scrollNavigationEnabled,
   } = useSettingsStore.getState()
   return {
     activeStackId,
@@ -76,6 +83,9 @@ const getStackSnapshot = () => {
     rate,
     textSize,
     showRomanization,
+    phrasePackIds: [...phrasePackIds],
+    baseCorpusEnabled,
+    scrollNavigationEnabled,
   }
 }
 
@@ -89,6 +99,9 @@ type StackSlice = {
   textSize: string
   showRomanization: boolean
   voicePrefs: SettingsState["voicePrefs"]
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+  scrollNavigationEnabled: boolean
 }
 
 const getStackSlice = (state: SettingsState): StackSlice => {
@@ -100,6 +113,9 @@ const getStackSlice = (state: SettingsState): StackSlice => {
     textSize: state.textSize,
     showRomanization: state.showRomanization,
     voicePrefs: state.voicePrefs,
+    phrasePackIds: state.phrasePackIds,
+    baseCorpusEnabled: state.baseCorpusEnabled,
+    scrollNavigationEnabled: state.scrollNavigationEnabled,
   }
 }
 
@@ -111,7 +127,12 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
     a.rate === b.rate &&
     a.textSize === b.textSize &&
     a.showRomanization === b.showRomanization &&
-    a.voicePrefs === b.voicePrefs
+    a.voicePrefs === b.voicePrefs &&
+    // phrasePackIds/baseCorpusEnabled drive the sampler — toggling a pack
+    // MUST re-emit so the experience re-rolls. (Previously omitted → stale.)
+    a.phrasePackIds === b.phrasePackIds &&
+    a.baseCorpusEnabled === b.baseCorpusEnabled &&
+    a.scrollNavigationEnabled === b.scrollNavigationEnabled
   )
 }
 
@@ -453,6 +474,79 @@ export const createHostApi = (packId?: string): HostApi => {
         params: query.params ?? [],
         maxRows: query.maxRows,
       })
+    },
+    // Whitelisted write surface — maps each present key to its store setter.
+    // Pure JS-side Zustand mutation; no Rust/wire boundary crossed.
+    setStackConfig: (patch: StackConfigPatch) => {
+      const s = useSettingsStore.getState()
+      if (patch.levels !== undefined) s.setLevels(patch.levels)
+      if (patch.rate !== undefined) s.setRate(patch.rate)
+      if (patch.domains !== undefined) s.setDomains(patch.domains)
+      if (patch.languages !== undefined) s.setLanguages(patch.languages)
+      if (patch.textSize !== undefined) s.setTextSize(patch.textSize as TextSizeType)
+      if (patch.showRomanization !== undefined) s.setShowRomanization(patch.showRomanization)
+      if (patch.scrollNavigationEnabled !== undefined) s.setScrollNavigationEnabled(patch.scrollNavigationEnabled)
+      if (patch.phrasePackIds !== undefined) s.setPhrasePackIds(patch.phrasePackIds)
+      if (patch.baseCorpusEnabled !== undefined) s.setBaseCorpusEnabled(patch.baseCorpusEnabled)
+    },
+    history: {
+      getState: () => {
+        const aId = useSettingsStore.getState().activeStackId
+        const h = useHistoryStore.getState().byStack[aId]
+        return h
+          ? { ids: [...h.ids], sources: [...h.sources], index: h.index }
+          : { ids: [], sources: [], index: -1 }
+      },
+      push: (entryId, source) => useHistoryStore.getState().pushEntry(entryId, source),
+      setIndex: (index) => useHistoryStore.getState().setIndex(index),
+      replaceCurrent: (entryId, source) =>
+        useHistoryStore.getState().replaceCurrent(entryId, source),
+      getRecentTuples: (n) =>
+        useHistoryStore
+          .getState()
+          .getRecentTuples(n)
+          .map((t) => ({ entryId: t.entryId, source: t.source })),
+      subscribe: (listener) => {
+        // Fire on history changes AND active-stack switches.
+        const u1 = useHistoryStore.subscribe(() => listener())
+        let prevStack = useSettingsStore.getState().activeStackId
+        const u2 = useSettingsStore.subscribe((st) => {
+          if (st.activeStackId !== prevStack) {
+            prevStack = st.activeStackId
+            listener()
+          }
+        })
+        return () => { u1(); u2() }
+      },
+    },
+    notifyUtterance: () => {
+      useRatingStore.getState().incrementUtteranceCount()
+    },
+    phrasePacks: {
+      getInstalled: () => {
+        const installed = usePhrasePacksStore.getState().installed
+        const out: Record<string, import("./types").HostInstalledPhrasePack> = {}
+        for (const [id, p] of Object.entries(installed)) {
+          out[id] = {
+            id: p.id,
+            name: p.name,
+            nameLocalized: p.nameLocalized,
+            topic: p.topic,
+            topicLocalized: p.topicLocalized,
+            accentColor: p.accentColor,
+          }
+        }
+        return out
+      },
+      setEnabled: (id, on) => {
+        const s = useSettingsStore.getState()
+        const current = s.phrasePackIds
+        const next = on
+          ? (current.includes(id) ? current : [...current, id])
+          : current.filter((x) => x !== id)
+        s.setPhrasePackIds(next)
+      },
+      subscribe: (listener) => usePhrasePacksStore.subscribe(() => listener()),
     },
     stt,
   }

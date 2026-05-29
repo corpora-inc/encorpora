@@ -1,14 +1,14 @@
 // src/App.tsx
 
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
-import { OnboardingWizard } from "@/components/OnboardingWizard";
-import { SettingsIcon } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { OnboardingEngine } from "@/onboarding/OnboardingEngine";
+import { Home as HomeIcon } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { MainExperience } from "./components/MainExperience";
+import { HomeHub } from "@/components/home/HomeHub";
 import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
 import { UpdatePrompt } from "./components/UpdatePrompt";
-import { Button } from "./components/ui/button";
 import { ContentPackOverlay } from "./components/ContentPackOverlay";
 import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
 import { TTSFailureBanner } from "./components/TTSFailureBanner";
@@ -28,7 +28,7 @@ import { PaywallSheet } from "@/components/paywall/PaywallSheet";
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
-import { StreakChip } from "@/components/StreakChip";
+import { useLandingStore } from "@/store/landing";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -318,16 +318,44 @@ export default function App() {
   );
 
   useEffect(() => {
+    // Exiting any experience returns to the Home hub (which is always mounted
+    // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
       setActiveGame(null);
       updateGameParam(null);
-      // Reopen settings modal to Packs tab after exiting a game
-      setShowSettings(true);
-      setSettingsTab("packs");
     };
     window.addEventListener("corpan:exit", onExit as EventListener);
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);
   }, [updateGameParam]);
+
+  // Launch the phrase experience (currently the in-app MainExperience; becomes
+  // the phrase_main pack in Phase 3 — distinguished at render by the absence of
+  // a manifestUrl). Single chokepoint for the native experience.
+  const openPhrase = useCallback(() => {
+    setActiveGame({ id: "phrase_main" });
+    updateGameParam({ id: "phrase_main" });
+  }, [updateGameParam]);
+
+  // Consume the one-shot landing intent from onboarding, once, on the
+  // false→true transition. A URL deep-link (?game=) always wins.
+  const landingConsumed = useRef(false);
+  useEffect(() => {
+    if (!onboarded || landingConsumed.current) return;
+    landingConsumed.current = true;
+    if (activeGame) return; // deep-link present — honor it, skip intent
+    const intent = useLandingStore.getState().consumeLanding();
+    if (!intent) return;
+    if (intent.kind === "experience") {
+      if (intent.packId === "phrase_main") {
+        openPhrase();
+      } else {
+        const g = useGamesStore.getState().getGame(intent.packId);
+        if (g) handleLaunchGame(g);
+      }
+    }
+    // kind "home"/"discover" → stay on the Home hub (default).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onboarded]);
 
   if (!onboarded) {
     // OnboardingWizard's PickPhrasePacks step needs `useInstallContext` to
@@ -337,40 +365,20 @@ export default function App() {
     // and the post-onboarding one also takes `onLaunchGame`).
     return (
       <InstallProvider>
-        <OnboardingWizard />
+        <OnboardingEngine />
       </InstallProvider>
     );
   }
 
   return (
     <InstallProvider onLaunchGame={handleLaunchGame}>
-      <div className="flex flex-col min-h-0 h-screen w-full relative">
-        <MainExperience />
-        <div
-          className="fixed top-5 pt-safe right-5 z-50"
-          style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
-        >
-          <div className="flex items-center gap-2">
-            <StreakChip />
-            <div className="relative">
-              <Button
-                variant="default"
-                size="lg"
-                className="h-10 w-12 rounded-md shadow-lg bg-background border border-border hover:bg-accent transition"
-                aria-label="Settings"
-                onClick={() => setShowSettings(true)}
-              >
-                <SettingsIcon className="text-muted-foreground h-5 w-5" />
-              </Button>
-              {updates.length > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">
-                  {updates.length}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Home hub is the always-mounted root; experiences overlay on top and
+          return here via corpan:exit. */}
+      <HomeHub
+        onSettings={() => setShowSettings(true)}
+        onLaunchPhrase={openPhrase}
+        updateCount={updates.length}
+      />
 
       <SettingsModal
         open={showSettings}
@@ -385,8 +393,7 @@ export default function App() {
       {/* App-root phrase-pack drawer. Sibling of SettingsModal so its
           Vaul Root lives OUTSIDE the modal's overflow-y-auto scroller —
           fixes the Stacks-tab scroll regression on iOS WKWebView and
-          lets any trigger site (Stacks, Packs, future main-exp chip)
-          open the same instance via `useDrawerStore`. */}
+          lets any trigger site open the same instance via `useDrawerStore`. */}
       <PhrasePackDrawer />
 
       <RatingPrompt />
@@ -394,11 +401,29 @@ export default function App() {
       <PaywallSheet />
       <SystemPackInstaller />
 
+      {/* Experience overlay. A pack (has manifestUrl) → ContentPackHost;
+          the native phrase experience (no manifestUrl) → MainExperience.
+          Both full-screen over Home; both exit via corpan:exit. */}
       {activeGame ? (
-        <ContentPackOverlay
-          id={activeGame.id}
-          manifestUrl={activeGame.manifestUrl}
-        />
+        activeGame.manifestUrl ? (
+          <ContentPackOverlay
+            id={activeGame.id}
+            manifestUrl={activeGame.manifestUrl}
+          />
+        ) : (
+          <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
+            <MainExperience />
+            <button
+              type="button"
+              aria-label="Home"
+              onClick={() => window.dispatchEvent(new CustomEvent("corpan:exit"))}
+              className="fixed right-4 z-[1110] flex h-10 w-10 items-center justify-center rounded-full bg-background/80 border border-border text-muted-foreground shadow-md backdrop-blur hover:text-foreground hover:bg-accent transition"
+              style={{ top: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)` }}
+            >
+              <HomeIcon className="h-5 w-5" />
+            </button>
+          </div>
+        )
       ) : null}
 
       <TTSFailureBanner />

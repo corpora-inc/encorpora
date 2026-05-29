@@ -128,7 +128,40 @@
       "stackTotalNudge": "Add packs or widen levels for variety."
     }
   },
+  "home": {
+    "continueLearning": "Continue learning",
+    "openPhrases": "Open phrases",
+    "phraseFlipDesc": "Flip through phrases in your languages",
+    "experiences": "Experiences",
+    "forYou": "For you",
+    "library": "Library",
+    "open": "Open",
+    "get": "Get",
+    "installing": "Installing…"
+  },
   "onboarding": {
+    "settingUp": "Setting things up…",
+    "fork": {
+      "title": "What brings you to Corpán?",
+      "subtitle": "We'll set everything up for you. You can change it later.",
+      "enjoy": { "label": "Enjoy Corpán in {{lang}}", "desc": "Read and listen to books and stories in your language." },
+      "learn": { "label": "Learn a language", "desc": "Practice a new language with phrases, books and audio." },
+      "polyglot": { "label": "Explore many languages", "desc": "Stack several languages and unlock everything." },
+      "child": { "label": "Set it up for a child", "desc": "Gentle, curated reading for younger learners." }
+    },
+    "calibrate": {
+      "enjoyTitle": "How comfortable are you reading {{lang}}?",
+      "enjoyNative": "It's my language",
+      "enjoyComfortable": "Pretty comfortable",
+      "enjoyImproving": "Still improving",
+      "learnTitle": "Have you studied {{lang}} before?",
+      "learnNever": "Never — total beginner",
+      "learnLittle": "A little",
+      "learnAdvanced": "I'm fairly advanced",
+      "childAgeTitle": "How old is the reader?",
+      "childUnder13": "Under 13",
+      "childTeen": "13–17"
+    },
     "welcome": "Welcome",
     "makePrimaryLanguage": "Make English my primary language",
     "canChangeLater": "You can change this anytime.",

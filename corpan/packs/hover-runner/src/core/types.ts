@@ -55,6 +55,10 @@ export type RoundState = {
   answer: string
   answerRomanization?: string
   choices: PhraseSpec[]
+  // Listening-match round (single-language stack): the prompt is spoken but
+  // never shown as text, so the player must recognize the written phrase among
+  // the gates by ear. See `pickLanguages` in gameplay/entryHelpers.ts.
+  singleLanguage?: boolean
 }
 
 export type EntryLookup = {

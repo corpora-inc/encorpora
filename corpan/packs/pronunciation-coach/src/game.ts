@@ -648,6 +648,17 @@ const pickTranslations = (
   entry: EntryOut,
   languages: string[]
 ): { target: TranslationOut | null; native: TranslationOut | null } => {
+  // Single-language stack (immersion / native practice): practice the one
+  // language directly, with no native gloss. Every pack must work with a
+  // one-language stack — there is no requirement to add a target language.
+  if (languages.length <= 1) {
+    const only = languages[0]
+    const target = only
+      ? entry.translations.find((t) => t.language_code === only) ?? null
+      : null
+    return { target, native: null }
+  }
+
   // Convention: languages[0] is the native (king) language; the rest are
   // target slots the learner is studying.
   const native =
@@ -1157,7 +1168,7 @@ export const mountGame = (
 
   const fetchOneEntry = async (): Promise<LoadedPhrase | null> => {
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) return null
+    if (!cfg.languages || cfg.languages.length < 1) return null
     if (!hostApi.getRandomEntry) return null
     const entry = await hostApi.getRandomEntry()
     const { target, native } = pickTranslations(entry, cfg.languages)
@@ -1190,12 +1201,12 @@ export const mountGame = (
     // fillCard via cardSkeleton, with empty (hidden) result slots.
 
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) {
+    if (!cfg.languages || cfg.languages.length < 1) {
       currentPhrase = null
       renderEmptyCard(
         cardEl,
-        "Set up at least one target language",
-        "Open Corpán settings and add a target language to start practising."
+        "No language selected",
+        "Open Corpán settings and choose a language to practise."
       )
       micBtn.disabled = true
       micLabel.textContent = "—"
@@ -2500,12 +2511,12 @@ export const mountGame = (
   // ---- Boot ----
   const loadFirstPhrase = async () => {
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) {
+    if (!cfg.languages || cfg.languages.length < 1) {
       currentPhrase = null
       renderEmptyCard(
         cardEl,
-        "Set up at least one target language",
-        "Open Corpán settings and add a target language to start practising."
+        "No language selected",
+        "Open Corpán settings and choose a language to practise."
       )
       micBtn.disabled = true
       micLabel.textContent = "—"

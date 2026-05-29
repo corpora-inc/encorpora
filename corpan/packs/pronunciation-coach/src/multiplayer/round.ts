@@ -120,6 +120,14 @@ const pickTargetTranslation = (
   entry: EntryOut,
   languages: string[],
 ): { target: TranslationOut | null; native: TranslationOut | null } => {
+  // Single-language stack: everyone practises the one language; no gloss.
+  if (languages.length <= 1) {
+    const only = languages[0]
+    const target = only
+      ? entry.translations.find((t) => t.language_code === only) ?? null
+      : null
+    return { target, native: null }
+  }
   // languages[0] is native (gloss / anchor / UI); the rest are target
   // slots. For multiplayer the phrase has to be the same across all
   // players in the round, but the target *language* gets shuffled
@@ -757,10 +765,10 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     refresh()
     try {
       const cfg = opts.hostApi.getStackConfig()
-      if (!cfg.languages || cfg.languages.length < 2) {
+      if (!cfg.languages || cfg.languages.length < 1) {
         opts.container.innerHTML = `
           <div class="pc-pm-root pc-pm-error">
-            <p>Add a target language to your Corpán stack before starting Parlometron.</p>
+            <p>Choose a language in your Corpán stack before starting Parlometron.</p>
             <button class="pc-pm-start" data-pm-quit>Back</button>
           </div>`
         opts.container

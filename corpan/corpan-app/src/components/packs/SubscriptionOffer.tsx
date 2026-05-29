@@ -49,7 +49,10 @@ type PaywallState =
 // the middle of empty space.
 const CARD_WRAPPER = "w-full max-w-md md:max-w-xl mx-auto"
 
-export function SubscriptionOffer() {
+export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: string } = {}) {
+  // Width override for contexts (e.g. the Home hub) where the card should span
+  // the surrounding grid instead of the default centered cap.
+  const wrapper = wrapperClassName ?? CARD_WRAPPER
   const { t } = useTranslation()
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const platform = useEntitlementStore((s) => s.platform)
@@ -218,7 +221,7 @@ export function SubscriptionOffer() {
   // ---------------------------------------------------------------------
   if (state.kind === "checking") {
     return (
-      <div className={CARD_WRAPPER}>
+      <div className={wrapper}>
         <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
           {/* Heading + description (~50px) */}
           <div className="space-y-2">
@@ -252,7 +255,7 @@ export function SubscriptionOffer() {
         ? t("subscription.annual", "Annual")
         : t("subscription.monthly", "Monthly")
     return (
-      <div className={CARD_WRAPPER}>
+      <div className={wrapper}>
         <div className="rounded-xl border border-emerald-200 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-900 p-4 space-y-3">
           <div className="flex items-start gap-3">
             <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
@@ -282,7 +285,7 @@ export function SubscriptionOffer() {
 
   if (state.kind === "store_unreachable") {
     return (
-      <div className={CARD_WRAPPER}>
+      <div className={wrapper}>
         <div className="rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-900 p-4 space-y-3">
           <div>
             <h3 className="font-semibold text-sm text-amber-900 dark:text-amber-100">
@@ -308,7 +311,7 @@ export function SubscriptionOffer() {
 
   if (state.kind === "offline") {
     return (
-      <div className={CARD_WRAPPER}>
+      <div className={wrapper}>
         <OfflineNotice
           title={t("offline.subscriptionTitle", {
             defaultValue: "Subscriptions need internet",
@@ -324,7 +327,7 @@ export function SubscriptionOffer() {
 
   if (state.kind === "pending") {
     return (
-      <div className={CARD_WRAPPER}>
+      <div className={wrapper}>
         <div className="rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-950/30 dark:border-blue-900 p-4 space-y-2">
           <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-100">
             {t("subscription.pendingHeading", "Waiting for approval")}
@@ -346,7 +349,7 @@ export function SubscriptionOffer() {
   const annualProduct = state.products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
   return (
-    <div className={CARD_WRAPPER}>
+    <div className={wrapper}>
       <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
         <div>
           <h3 className="font-semibold text-sm">

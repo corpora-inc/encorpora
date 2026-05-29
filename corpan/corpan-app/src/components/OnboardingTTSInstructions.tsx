@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { invoke } from "@tauri-apps/api/core";
 import { AnimatePresence, motion } from "framer-motion";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
 import {
     detectOSFromUA,
@@ -140,7 +141,7 @@ function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
 
 /* -------------------------------- Component -------------------------------- */
 
-export function OnboardingTTSInstructions() {
+export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setPreferredEngine = useSettingsStore((s) => s.setPreferredEngine);
     const languages = useSettingsStore((s) => s.languages);
@@ -382,11 +383,9 @@ export function OnboardingTTSInstructions() {
     }
 
     function handleSkip() {
-        // Advance past TTS to the final Finish step. STEPS = [learning(0),
-        // packs(1), tts(2), socials(3)] → wizard indices are shifted by 2
-        // (welcome + pickPrimary precede the visible stepper), so Finish
-        // lives at wizard step 5.
-        setStep(5);
+        // Engine-driven: advance to the next graph node (Plus pitch). Legacy
+        // fallback advances to the old wizard's Finish step (5).
+        ;(onAdvance ?? (() => setStep(5)))()
     }
 
     function primaryActionFor(diagnosis: TtsDiagnosis): {
@@ -534,7 +533,7 @@ export function OnboardingTTSInstructions() {
     return (
         <section
             id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background md:bg-muted"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -546,8 +545,8 @@ export function OnboardingTTSInstructions() {
                 title={t("onboarding.textToSpeechSetup", { defaultValue: "Text-to-speech setup" })}
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(3)}
-                onNext={() => setStep(5)}
+                onBack={onBack ?? (() => setStep(3))}
+                onNext={onAdvance ?? (() => setStep(5))}
                 canNext={true}
             >
                 {showPhaseB ? (

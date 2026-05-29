@@ -6,6 +6,47 @@ export type StackConfig = {
   rate: number
   textSize: string
   showRomanization: boolean
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+  scrollNavigationEnabled: boolean
+}
+
+export type StackConfigPatch = Partial<{
+  levels: string[]
+  rate: number
+  domains: string[]
+  languages: string[]
+  textSize: string
+  showRomanization: boolean
+  scrollNavigationEnabled: boolean
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+}>
+
+export type HostHistoryRef = { entryId: number; source: string }
+
+export type HostHistoryApi = {
+  getState: () => { ids: number[]; sources: string[]; index: number }
+  push: (entryId: number, source?: string) => void
+  setIndex: (index: number) => void
+  replaceCurrent: (entryId: number, source?: string) => void
+  getRecentTuples: (n: number) => HostHistoryRef[]
+  subscribe: (listener: () => void) => () => void
+}
+
+export type HostInstalledPhrasePack = {
+  id: string
+  name: string
+  nameLocalized?: Record<string, string>
+  topic?: string
+  topicLocalized?: Record<string, string>
+  accentColor?: string
+}
+
+export type HostPhrasePacksApi = {
+  getInstalled: () => Record<string, HostInstalledPhrasePack>
+  setEnabled: (id: string, on: boolean) => void
+  subscribe: (listener: () => void) => () => void
 }
 
 export type TranslationOut = {
@@ -160,6 +201,10 @@ export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
+  setStackConfig?: (patch: StackConfigPatch) => void
+  history?: HostHistoryApi
+  notifyUtterance?: () => void
+  phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   /**

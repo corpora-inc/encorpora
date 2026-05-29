@@ -49,11 +49,12 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     return (
         <header
             ref={headerRef}
-            // Header bg matches the section bg (bg-background → md:bg-muted) so
-            // the page color flows seamlessly up under the nav. Translucent
-            // with backdrop-blur so content scrolling underneath stays
-            // readable but feels recessed.
-            className="sticky top-0 z-500 isolate bg-background/80 md:bg-muted/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 supports-[backdrop-filter]:md:bg-muted/60"
+            // Header bg matches the section bg (bg-background everywhere now —
+            // onboarding is unified on one canvas color across phone/tablet/
+            // desktop) so the page color flows seamlessly up under the nav.
+            // Translucent with backdrop-blur so content scrolling underneath
+            // stays readable but feels recessed.
+            className="sticky top-0 z-500 isolate bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
         >
             {/* Top row — grows on md+ to give iPad/desktop more breathing space.

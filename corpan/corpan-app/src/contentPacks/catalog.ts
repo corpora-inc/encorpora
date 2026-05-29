@@ -109,6 +109,8 @@ export type CatalogV3Entry = {
   maxAppVersion?: string
   channel: PackChannel
   packType?: string
+  /** Auto-install/upgrade silently on launch (readers, the phrase engine). */
+  systemPack?: boolean
   /** Restrict the pack to specific host platforms. Absent = available
    *  everywhere. e.g. ["ios"] for packs that depend on native iOS-only
    *  plugins (Pronunciation Coach → WhisperKit / Apple Neural Engine). */
@@ -400,6 +402,7 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     maxAppVersion: toOptionalString(r.maxAppVersion),
     channel,
     packType: toOptionalString(r.packType),
+    systemPack: r.systemPack === true,
     platforms,
     minOSVersion: toOptionalString(r.minOSVersion),
   }
@@ -474,6 +477,7 @@ export const filterCatalogForApp = (
       descriptionLocalized: entry.descriptionLocalized,
       imageUrl: entry.imageUrl,
       purchase: entry.purchase,
+      systemPack: entry.systemPack,
     }))
 }
 

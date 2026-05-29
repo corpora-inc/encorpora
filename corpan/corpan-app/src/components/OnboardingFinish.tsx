@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Github, Youtube, Newspaper, Globe, ExternalLink } from "lucide-react";
 import { trackOnboardingCompleted } from "@/util/analytics";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
 /** Fill these with your actual profiles */
 const LINKS = [
@@ -39,7 +40,7 @@ const LINKS = [
 // visible step, so its currentIndex matches the final bar.
 const CURRENT_STEP_IDX = 3;
 
-export function OnboardingFinish() {
+export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setOnboarded = useSettingsStore((s) => s.setOnboarded);
     const dir = useSettingsStore((s) => s.dir);
@@ -70,7 +71,7 @@ export function OnboardingFinish() {
     return (
         <section
             id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background md:bg-muted"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -82,11 +83,15 @@ export function OnboardingFinish() {
                 title="Aloha!"
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(5)}
-                onNext={() => {
-                    trackOnboardingCompleted();
-                    setOnboarded(true);
-                }}
+                onBack={onBack ?? (() => setStep(5))}
+                onNext={
+                    onAdvance ??
+                    (() => {
+                        // Legacy path (rendered outside the engine): complete here.
+                        trackOnboardingCompleted();
+                        setOnboarded(true);
+                    })
+                }
                 canNext={true}
 
             />

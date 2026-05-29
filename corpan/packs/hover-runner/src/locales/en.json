@@ -8,6 +8,7 @@
   "hud.enable_motion": "Enable Motion",
   "hud.motion_active": "Motion Active",
   "phrase.listen": "Listen",
+  "phrase.listen_cue": "🔊 ? ? ?",
   "phrase.waiting": "Waiting for phrase...",
   "phrase.matched": "Matched",
   "phrase.wrong": "Wrong — dodge!",

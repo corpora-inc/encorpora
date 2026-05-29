@@ -6,6 +6,60 @@ export type StackConfig = {
   rate: number
   textSize: string
   showRomanization: boolean
+  /** Enabled phrase-pack ids for the active stack. The sampler already keys
+   *  on these; exposed so an experience can render "N packs / base off". */
+  phrasePackIds: string[]
+  /** Whether the bundled base corpus is sampled (vs. only phrase packs). */
+  baseCorpusEnabled: boolean
+  /** Whether scroll-driven prev/next navigation is enabled. */
+  scrollNavigationEnabled: boolean
+}
+
+/** Partial patch an experience may apply to the active stack via
+ *  {@link HostApi.setStackConfig}. Whitelisted axes only — an experience can
+ *  never reach arbitrary host state. All JS-side (no Rust/wire boundary). */
+export type StackConfigPatch = Partial<{
+  levels: string[]
+  rate: number
+  domains: string[]
+  languages: string[]
+  textSize: string
+  showRomanization: boolean
+  scrollNavigationEnabled: boolean
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+}>
+
+/** A (entryId, source) pair the sampler uses for anti-repetition. */
+export type HostHistoryRef = { entryId: number; source: string }
+
+/** Per-stack navigation history surface for the phrase experience. Hides the
+ *  per-stack bookkeeping; all methods self-scope to the active stack. */
+export type HostHistoryApi = {
+  getState: () => { ids: number[]; sources: string[]; index: number }
+  push: (entryId: number, source?: string) => void
+  setIndex: (index: number) => void
+  replaceCurrent: (entryId: number, source?: string) => void
+  getRecentTuples: (n: number) => HostHistoryRef[]
+  /** Fires on active-stack history OR activeStackId changes. */
+  subscribe: (listener: () => void) => () => void
+}
+
+/** Minimal installed-phrase-pack record for rendering source chips. */
+export type HostInstalledPhrasePack = {
+  id: string
+  name: string
+  nameLocalized?: Record<string, string>
+  topic?: string
+  topicLocalized?: Record<string, string>
+  accentColor?: string
+}
+
+export type HostPhrasePacksApi = {
+  getInstalled: () => Record<string, HostInstalledPhrasePack>
+  /** Enable/disable a pack for the active stack (sugar over setStackConfig). */
+  setEnabled: (id: string, on: boolean) => void
+  subscribe: (listener: () => void) => () => void
 }
 
 export type TranslationOut = {
@@ -243,6 +297,14 @@ export type HostApi = {
   dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
+  /** Apply a partial config patch to the active stack (whitelisted axes). */
+  setStackConfig?: (patch: StackConfigPatch) => void
+  /** Per-stack navigation history (for the phrase experience). */
+  history?: HostHistoryApi
+  /** Feed the host's rating-prompt counter (host owns the actual prompt). */
+  notifyUtterance?: () => void
+  /** Installed phrase-pack registry (for source chips + enable/disable). */
+  phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   /**

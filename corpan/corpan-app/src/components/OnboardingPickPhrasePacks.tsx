@@ -34,6 +34,7 @@ import {
 
 import { OfflineNotice } from "@/components/OfflineNotice";
 import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
+import type { OnboardingStepProps } from "@/onboarding/types";
 import { useInstallContext } from "@/contentPacks/InstallContext";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
@@ -47,7 +48,7 @@ const CURRENT_STEP_IDX = 1; // STEPS = [learning, packs, tts, socials]
 const STEP_TTS = 4;
 const STEP_PICK_LEARNING = 2;
 
-export function OnboardingPickPhrasePacks() {
+export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const { t, i18n } = useTranslation();
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setPhrasePackIds = useSettingsStore((s) => s.setPhrasePackIds);
@@ -143,11 +144,13 @@ export function OnboardingPickPhrasePacks() {
         return subscriptionGated && subscriptionActive;
     };
 
+    const advance = onAdvance ?? (() => setStep(STEP_TTS));
+
     const handleContinue = async () => {
         const chosen = starterPacks.filter((p) => selectedIds.has(p.id));
         const installable = chosen.filter(canInstallInOnboarding);
         if (installable.length === 0) {
-            setStep(STEP_TTS);
+            advance();
             return;
         }
         // Activate only entitled packs so the main loop never tries to
@@ -160,10 +163,10 @@ export function OnboardingPickPhrasePacks() {
         if (isOnline) {
             void installPackBatch(installable);
         }
-        setStep(STEP_TTS);
+        advance();
     };
 
-    const handleSkip = () => setStep(STEP_TTS);
+    const handleSkip = () => advance();
 
     const hasStarter = starterPacks.length > 0;
     const allSelected =
@@ -180,7 +183,7 @@ export function OnboardingPickPhrasePacks() {
     return (
         <section
             id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background pb-10 md:bg-muted"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background pb-10"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -195,7 +198,7 @@ export function OnboardingPickPhrasePacks() {
                 })}
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(STEP_PICK_LEARNING)}
+                onBack={onBack ?? (() => setStep(STEP_PICK_LEARNING))}
                 onNext={handleContinue}
                 // Disable Continue while the phrase-pack catalog is still
                 // loading on an online client (avoids a stealth-skip:

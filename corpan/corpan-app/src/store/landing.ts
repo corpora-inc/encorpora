@@ -1,0 +1,43 @@
+import { create } from "zustand"
+import { createJSONStorage, persist } from "zustand/middleware"
+
+/**
+ * One-shot "landing intent" produced by the onboarding decision graph and
+ * consumed exactly once by the post-onboarding shell (Home). It expresses
+ * WHERE a finished journey should land the user.
+ *
+ * Persisted so a cold restart immediately after onboarding still honors it,
+ * then cleared on consume. This is ephemeral routing intent — NOT user config
+ * (that lives in the stack). Decoupled on purpose: the onboarding engine only
+ * writes intent; the shell interprets it.
+ */
+export type LandingIntent =
+  | { kind: "home"; tab?: "roll" | "library" | "recommended" }
+  | { kind: "experience"; packId: string }
+  | { kind: "discover" }
+
+type LandingState = {
+  landing: LandingIntent | null
+  setLanding: (l: LandingIntent) => void
+  /** Return the pending intent and clear it (fires only once). */
+  consumeLanding: () => LandingIntent | null
+}
+
+export const useLandingStore = create<LandingState>()(
+  persist(
+    (set, get) => ({
+      landing: null,
+      setLanding: (landing) => set({ landing }),
+      consumeLanding: () => {
+        const l = get().landing
+        if (l) set({ landing: null })
+        return l
+      },
+    }),
+    {
+      name: "corpan-landing-v1",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (s) => ({ landing: s.landing }),
+    }
+  )
+)
