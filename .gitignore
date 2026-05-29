@@ -30,6 +30,7 @@ corpan/games/
 **/pack/audio/
 **/packs/*/audio/
 !**/packs/shared/audio/
+corpan/infra/captures/branding/music/
 
 # Voice reference wavs — backed up to S3, not tracked in git
 voices/data/*.wav

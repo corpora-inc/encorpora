@@ -41,6 +41,14 @@ type SttErrorCode =
   | "NO_ACTIVE_SESSION"
   | "AUDIO_FAILED"
   | "INSUFFICIENT_MEMORY"
+  // Plugin reports this when the underlying native lib failed to load
+  // on this device — e.g. x86_64 Chromebook running Android via ARC
+  // where libhoudini can't translate the armv8.2-a SIMD intrinsics
+  // whisper.cpp is compiled with. Different from MODEL_NOT_INSTALLED
+  // (which means "download the model and you're good"): here, no
+  // model would ever load. Route to a "Speech recognition not
+  // supported on this device" screen instead of offering download.
+  | "STT_UNAVAILABLE"
   | "UNKNOWN"
 type SttPrepareResult = {
   ready: boolean
@@ -2182,6 +2190,17 @@ export const mountGame = (
       hideOverlay()
       if (isCancel) {
         showError(`Switch to ${targetLabel} cancelled.`)
+      } else if (code === "STT_UNAVAILABLE") {
+        // Native speech-recognition lib didn't load on this device
+        // (commonly x86_64 Chromebook via ARC where libhoudini can't
+        // translate whisper.cpp's armv8.2-a SIMD intrinsics). No
+        // model would ever load here — surface the device-class
+        // limitation honestly and stop offering downloads.
+        showError(
+          `Parlometron needs on-device speech recognition that isn't available on this device. ` +
+            `It works on iPhone, iPad, and most Android phones — Chromebooks running Android in ARC ` +
+            `aren't supported yet.`
+        )
       } else if (code === "MODEL_NOT_INSTALLED") {
         showError(
           `${targetLabel} model isn't fully installed (likely a partial download). Tap the model badge to reinstall.`
@@ -2948,11 +2967,22 @@ export const mountGame = (
           installing = null
           setProgressVisible(mode, false)
           const msg = formatErr(err)
+          const code = errCode(err)
           console.error(
-            `[pronunciation-coach] install ${mode} failed:`,
+            `[pronunciation-coach] install ${mode} failed (code=${code ?? "—"}):`,
             msg
           )
-          errorEl.textContent = `Install failed: ${msg}`
+          // STT_UNAVAILABLE means there's no .so for this device's
+          // ABI — no model would ever load. Give the user the
+          // device-class explanation directly rather than the raw
+          // "DOWNLOAD_FAILED: …" string they'd otherwise see.
+          if (code === "STT_UNAVAILABLE") {
+            errorEl.textContent =
+              "Parlometron needs on-device speech recognition that isn't available on this device. " +
+              "Try Parlometron on iPhone, iPad, or an Android phone."
+          } else {
+            errorEl.textContent = `Install failed: ${msg}`
+          }
           errorEl.hidden = false
           // Critical: the plugin's install path drops the previously
           // loaded kit before its load test. If install fails here,
@@ -3171,6 +3201,20 @@ export const mountGame = (
     // Prepare failed. Route on structured code; never auto-wipe.
     hideOverlay()
     const targetLabel = labelForMode(bootTargetMode)
+    if (prepareCode === "STT_UNAVAILABLE") {
+      // Native lib unavailable for this device's ABI — there's
+      // literally no path to working speech recognition here.
+      // Stop trying to load anything; show a clear "not for this
+      // device" state so the user understands and goes back rather
+      // than tapping things that can't work.
+      showError(
+        `Parlometron needs on-device speech recognition that isn't available on this device. ` +
+          `Try Parlometron on iPhone, iPad, or an Android phone.`
+      )
+      micBtn.disabled = true
+      micLabel.textContent = "Not supported on this device"
+      return
+    }
     if (prepareCode === "NETWORK") {
       showError(
         `${targetLabel} needs internet to finish setting up. Reconnect and tap the model badge to retry — your downloaded files are intact.`

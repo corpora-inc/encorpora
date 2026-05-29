@@ -115,7 +115,18 @@ export function PacksListing({
                     ...catalogEntry,
                     id: game.id,
                     version: game.version ?? catalogEntry.version,
-                    manifestUrl: game.manifestUrl ?? catalogEntry.manifestUrl,
+                    // **Always use the catalog's CDN manifestUrl** when
+                    // available. `game.manifestUrl` is the LOCAL
+                    // `corpan-pack://localhost/<id>/manifest.json` URL
+                    // that Rust writes at install time — useful for
+                    // OPENING an installed pack, but fatal for the
+                    // Update button: passing the local URL to
+                    // installPack() makes it skip the .zip download
+                    // path entirely and just re-read the on-disk
+                    // manifest, so the in-memory store gets "updated"
+                    // to the same old version and nothing actually
+                    // gets re-downloaded. Catalog URL wins.
+                    manifestUrl: catalogEntry.manifestUrl ?? game.manifestUrl,
                     imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
                   }
                 : {

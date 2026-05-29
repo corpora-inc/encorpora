@@ -114,8 +114,9 @@ A Drawer opened *from* a Dialog must sit above it. Convention:
 - Dialog overlay/content: `z-[1100]`
 - Vaul Drawer overlay/content: `z-[1200]` (already set in
   `components/ui/drawer.tsx`)
-- Popover: `z-[1002]` (above app, below dialog/drawer — fine for
-  in-drawer overflow menus)
+- Popover: `z-[1300]` (above dialog AND drawer — popovers triggered
+  from inside either surface must overlay it, otherwise the menu
+  opens invisibly behind the parent. Bug fixed in 0.15.7.)
 
 Don't paper over a missing drawer by debugging Dialog overlay state.
 99 % of the time it's z-index.
