@@ -276,6 +276,8 @@ def main() -> None:
 
     live = invert(dead, total)
     new_total = sum(e - s for s, e in live)
+    if not live or new_total <= 0:
+        sys.exit("refusing to encode: trimming would remove the entire video")
     pct = 100 * (total - new_total) / total
     print(f"=> output: {fmt_t(new_total)} (was {fmt_t(total)}, saved {pct:.1f}%)")
 

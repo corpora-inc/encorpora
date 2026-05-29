@@ -70,7 +70,13 @@ def main() -> None:
     bgm_chain += "[bgm]"
 
     filter_parts = [
-        "[0:a]asplit=2[sp_mix][sp_sc]",
+        # Pin the speech track to the probed video duration before split:
+        # amix=duration=first below ties output length to this stream, and
+        # a few-ms-short audio track would otherwise let the (dropped)
+        # -shortest flag truncate the copied video. apad extends with
+        # silence, atrim caps it, so the video stays authoritative.
+        (f"[0:a]apad=whole_dur={video_dur:.3f},"
+         f"atrim=duration={video_dur:.3f},asplit=2[sp_mix][sp_sc]"),
         bgm_chain,
         (f"[bgm][sp_sc]sidechaincompress="
          f"threshold={args.threshold}:ratio={args.ratio}:"
@@ -103,7 +109,6 @@ def main() -> None:
         "-c:v", "copy",
         "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
         "-movflags", "+faststart",
-        "-shortest",
         str(args.output),
     ]
     print(f"=> mixing {args.video.name} + {args.bgm.name} → {args.output.name}")

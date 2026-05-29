@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.15.10] - 2026-05-28 — Android crash fixes: process-exit teardown, whisper concurrent-init, Chromebook STT
+
 ### Fixed
 
 - **Android: process-exit crash cluster (RenderThread/Surface/vendor

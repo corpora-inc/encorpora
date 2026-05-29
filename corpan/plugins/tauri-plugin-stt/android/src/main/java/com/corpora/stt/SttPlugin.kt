@@ -418,9 +418,23 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 Log.i(TAG, "download finished: ${dest.absolutePath}")
                 channel?.send(installEvent(name, "verifying", 1.0, null, null, null, null))
                 Log.i(TAG, "running whisper.cpp load test: $name")
-                val loaded = nativeMutex.withLock { WhisperContext.load(dest.absolutePath) }
+                // Release + load + adopt the new ctx under ONE lock. Doing
+                // the ctx/loadedModel assignment outside the lock would
+                // re-open the check-then-act race the mutex exists to close:
+                // a concurrent prepare()/install could load a second context
+                // and leak one. Also drops any ctx another flow loaded while
+                // we were downloading.
+                val loaded = nativeMutex.withLock {
+                    if (ctx != null) {
+                        Log.i(TAG, "dropping current ctx before install load test: $loadedModel")
+                        ctx?.release(); ctx = null; loadedModel = null
+                    }
+                    WhisperContext.load(dest.absolutePath)?.also { newCtx ->
+                        ctx = newCtx
+                        loadedModel = name
+                    }
+                }
                 if (loaded != null) {
-                    ctx = loaded; loadedModel = name
                     writeInstallMarker(name)
                     Log.i(TAG, "install + load test ok: $name")
                     channel?.send(installEvent(name, "verified", 1.0, null, null, null, null))
