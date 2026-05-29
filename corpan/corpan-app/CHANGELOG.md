@@ -19,6 +19,65 @@ Conventions: `corpan/CHANGELOGS.md`.
   update that isn't actually live in the store. See
   `infra/PUBLISHING.md` for the Android publish step.
 
+## [0.15.10] - 2026-05-28 — Android crash fixes: process-exit teardown, whisper concurrent-init, Chromebook STT
+
+### Fixed
+
+- **Android: process-exit crash cluster (RenderThread/Surface/vendor
+  aborts on app close).** On Android, tao terminates the event loop with
+  `std::process::exit()`, which runs `__cxa_finalize` — every C++ static
+  destructor across `libhwui` / `libgui` / OEM vendor libs — on the loop
+  thread while the RenderThread, Mali GPU workers, and vendor singletons
+  are still live. That graceful C++ shutdown raced live threads and
+  produced a family of native aborts: `HandleUsingDestroyedMutex`
+  ("pthread_mutex_lock called on a destroyed mutex") in
+  `HardwareBitmapUploader::initialize` and hwui `CommonPool`,
+  `RefBase::incStrong` segfaults in `Surface::connect` /
+  `eglCreateWindowSurface`, and a crash in a Vivo camera vendor dtor.
+  Fixed by intercepting `RunEvent::ExitRequested` and calling
+  `api.prevent_exit()` on Android (`src-tauri/src/lib.rs`) — the loop
+  never reaches `ControlFlow::Exit`, so `process::exit` (and its
+  `__cxa_finalize` teardown) is unreachable on every `onDestroy` path
+  (back, swipe-from-recents, OOM kill, config recreate). The OS reclaims
+  the process via SIGKILL, which runs no destructors. Complementary:
+  the back button now `moveTaskToBack(true)` instead of `finish()`
+  (`MainActivity.kt`), keeping the Activity + WebView warm for instant
+  resume and avoiding needless teardown/recreate cycles.
+
+### Fixed
+
+- **Parlometron crash on Chromebook (`java.lang.UnsatisfiedLinkError`).**
+  `WhisperContext.<clinit>`'s call to `System.loadLibrary("whisper-jni")`
+  was unguarded. On x86_64 Chromebooks running Android via ARC, the
+  shipped `arm64-v8a` binary (compiled with
+  `-march=armv8.2-a+fp16+dotprod`) couldn't be translated by
+  `libhoudini`, so the very first reference to `WhisperContext`
+  threw an unhandled `UnsatisfiedLinkError` from a coroutine and
+  killed the JVM. Subsequent opens of Parlometron crashed
+  instantly the same way.
+
+  Plugin `tauri-plugin-stt` bumped 0.5.0 → 0.5.1 with:
+  - `WhisperContext` companion `init` wraps `loadLibrary` in
+    try/catch, exposes `isAvailable: Boolean` + `unavailableReason:
+    String?` for callers.
+  - `SttPlugin.installModel`, `prepare`, `isAvailable`, and
+    `getStatus` all consult `WhisperContext.isAvailable()` before
+    touching any native code. When unavailable, they return a
+    structured `STT_UNAVAILABLE` error code instead of crashing.
+
+  Pack-side handling in `pronunciation-coach/src/game.ts` routes
+  `STT_UNAVAILABLE` to a clear "speech recognition isn't available
+  on this device" screen at boot, on model-switch, and on install,
+  instead of cycling through download attempts that would never
+  load. Existing iOS / non-Chromebook-Android flows unchanged.
+
+  Followups (separate work): add `x86_64` to the plugin's
+  `abiFilters` so Chromebooks + emulators can actually run
+  Parlometron once whisper.cpp's ARM-specific build flags are
+  gated per-ABI.
+
+## [0.15.6] - 2026-05-21 — Android crash mitigations
+
 ### Fixed
 
 - **Android: shrink the libgui `FenceMonitor` race window during WebView

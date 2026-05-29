@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Android: native SIGSEGV during model load
+  (`ggml_backend_sched_split_graph`).** All native whisper.cpp calls
+  (init / transcribe / free) now serialize through a single `Mutex`
+  in `SttPlugin`. They previously ran unsynchronized on the
+  `Dispatchers.IO` pool despite `WhisperContext`'s contract that
+  callers serialize: the check-then-act guard in `prepare()` /
+  `installModel()` let two rapid calls both launch a load, and
+  whisper.cpp + ggml share lazily-initialized, lock-free process
+  globals (f16 / type-trait tables, CPU backend registry) that
+  corrupt under concurrent init. The same lock closes the
+  load-vs-free and free-vs-transcribe use-after-free windows;
+  `onDestroy` releases via `tryLock` so teardown never frees a
+  context out from under an in-flight transcribe (nor blocks the
+  main thread waiting on one).
+
 ## [0.5.0] - 2026-05-19 — Per-call scoring overlay
 
 ### Added

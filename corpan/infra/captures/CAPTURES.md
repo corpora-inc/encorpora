@@ -173,6 +173,31 @@ Practical implications:
   Data API v3* → *Quotas & System Limits* → "Queries per day" row →
   "Apply for higher quota". Audit + ~1–2 week turnaround.
 
+### Content ID and "public domain" music — a trap
+
+Public-domain music in the US (pre-1929 sound recordings under the Music
+Modernization Act) is NOT automatically safe on YouTube. Record labels
+register modern remasters / cover versions of the same underlying
+recordings into Content ID, and YouTube's audio fingerprint matches
+spuriously on the PD original too.
+
+Observed on the Israel batch (2026-05-21):
+
+- **Tanz A Bissel** (Rose Gross "restored"): clean 3/3 uploads.
+- **St. Louis Blues** (ODJB 1917): claimed 4/4 uploads (worldwide or RU
+  blocks). Major-label remasters are heavily fingerprinted.
+- **Elman** (HMV DB 1146/1147): claimed 2/3 uploads, fingerprint-luck.
+
+Conclusion: pre-1929 PD music popular enough to have been remastered
+will trigger Content ID claims. Niche / obscure PD recordings are safer.
+Fresh CC0 / CC-BY material (e.g. tanpura drones from ragajunglism.org,
+freesound.org) is safest — no label has fingerprinted them.
+
+Disputing: Studio → Content → click video → Copyright tab → Dispute,
+reason "Public domain work." Explain the publication year + MMA. Most
+spurious PD claims get released within a week. Cheaper long-term to
+just pick non-claimed music than to dispute everything.
+
 ### Channel-side upload limit (separate from API quota!)
 
 YouTube enforces a **per-channel daily upload cap** that's independent of
@@ -195,6 +220,19 @@ The cap raises over time as the channel:
 
 There's no API-side workaround. Plan accordingly: 10–15 uploads/day for
 the first weeks, then it loosens.
+
+**Reset behavior is rolling 24 h, NOT calendar midnight** (verified
+2026-05-23 against multiple third-party guides — YouTube's own docs
+don't spell out the reset semantics for this specific error). Each
+upload "ages out" 24 hours after it landed, freeing one slot. So if you
+saturated the cap with a 10-upload burst between 19:54 PT and 21:28 PT,
+your first slot reopens around 19:54 PT the next day — *not* at
+midnight Pacific. The API-units quota (10k/day) and the GCP project's
+`Video Uploads per day` counter, in contrast, ARE calendar-day at
+midnight Pacific, so you can hit a stretch where API quota is fresh but
+the channel cap still won't take new uploads. The error in that state:
+`HTTP 400 uploadLimitExceeded` (channel) — distinct from `HTTP 429
+rateLimitExceeded` (project quota).
 
 ### Refresh-token expiry — 7-day Testing-mode trap
 
@@ -238,6 +276,34 @@ scale=...:in_range=full:out_range=tv,format=yuv420p
 — full → limited range conversion with the same BT.709 tagging the
 source was already claiming. Don't remove these filters when iterating;
 the visual regression is subtle but real on consumer devices.
+
+## Square variant — blur vs. solid sidebars
+
+The square (1:1) build pads the 3:4 source to 1080×1080 with **either**:
+
+- `--square-bg blur` *(default)* — photo-portrait halo: same source
+  scaled-to-fill, cropped, and `boxblur=30:1`'d behind a centered
+  scaled-to-fit foreground. Works well when the capture has *visual
+  variety / color* (light UI, photos, video). Smears badly when the
+  source is a dark UI with crisp text edges — you get muddy side bands
+  and ghosted chip-row stripes leaking off the foreground.
+- `--square-bg solid` — flat-color sidebars via `pad=…:color=$SQUARE_BG_COLOR`.
+  Default color `0x252525` matches the Corpán app's dark surface, so the
+  seam between foreground and sidebars effectively disappears. Use this
+  for any capture where the app is in its dark theme.
+
+Set on the command line:
+
+```
+./infra/captures/build-capture.sh raw/2026-05-22/<slug>.mov \
+    --square-bg solid --square-bg-color 0x252525
+```
+
+Or via env vars (`SQUARE_BG=solid`, `SQUARE_BG_COLOR=0x252525`) which
+also lets `build-and-upload.sh` pass it through. We left blur as the
+default because the trick is genuinely the right call when the source
+has photographic content; the toggle is what to flip for dark-UI
+captures.
 
 ## Encode profile
 

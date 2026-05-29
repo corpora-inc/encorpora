@@ -11,10 +11,21 @@ class MainActivity : TauriActivity() {
     enableEdgeToEdge()
     super.onCreate(savedInstanceState)
 
-    // Lightweight back-press handler to prevent ANR in onBackPressed
+    // Back press backgrounds the task (Home-style) instead of finish()ing
+    // the Activity. finish() makes tao's event loop terminate and call
+    // std::process::exit(), which runs __cxa_finalize — every C++ static
+    // destructor across libhwui / libgui / vendor libs — on the loop
+    // thread while the RenderThread, Mali GPU workers, and vendor
+    // singletons are still live. Those teardowns abort the process with
+    // "pthread_mutex_lock called on a destroyed mutex" (HardwareBitmap-
+    // Uploader, hwui CommonPool), segfault in Surface::connect on a dead
+    // BufferQueue, or crash in a vendor dtor (e.g. Vivo camera singleton).
+    // Keeping the process resident avoids the graceful C++ shutdown
+    // entirely; Android later reclaims us via SIGKILL, which runs no
+    // destructors and is race-free.
     onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
       override fun handleOnBackPressed() {
-        finish()
+        moveTaskToBack(true)
       }
     })
   }
