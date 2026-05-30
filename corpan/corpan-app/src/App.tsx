@@ -8,7 +8,7 @@ import { useDrawerStore } from "@/store/drawer";
 import { QuickSettingsSheet } from "@/components/QuickSettingsSheet";
 import { OnboardingTour } from "@/components/tour/OnboardingTour";
 import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { HomeHub } from "@/components/home/HomeHub";
 import { SettingsModal } from "./components/SettingsModal";
@@ -435,8 +435,11 @@ export default function App() {
 
   // Consume the one-shot landing intent from onboarding, once, on the
   // false→true transition. A URL deep-link (?game=) always wins.
+  // useLayoutEffect (not useEffect) so the tour/phrase overlay mounts BEFORE
+  // the browser paints — otherwise Home paints for one frame first and you see
+  // a flash (FOUC) right as the tour appears.
   const landingConsumed = useRef(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!onboarded || landingConsumed.current) return;
     landingConsumed.current = true;
     if (activeGame) return; // deep-link present — honor it, skip intent

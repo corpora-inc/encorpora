@@ -253,6 +253,7 @@ export function HomeHub({
                 <button
                   type="button"
                   onClick={cycleNext}
+                  data-testid="hero-cycle"
                   className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground transition hover:border-purple-400/60 hover:text-foreground active:scale-[0.98]"
                 >
                   <RefreshCw className="h-3.5 w-3.5" />
@@ -274,7 +275,7 @@ export function HomeHub({
                 </div>
               </div>
               <div className="mt-4 flex items-center gap-2">
-                <Button className="!h-11 px-6" onClick={hero.onClick}>
+                <Button className="!h-11 px-6" data-testid="hero-cta" onClick={hero.onClick}>
                   {hero.installed
                     ? t("home.tryIt", { defaultValue: "Try it" })
                     : t("home.get", { defaultValue: "Get" })}

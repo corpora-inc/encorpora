@@ -63,7 +63,7 @@ export function MultiQuestionNodeView({
       footer={
         // No Skip: Continue with nothing selected IS "skip" (commits []). One
         // button keeps the footer identical to the screens before/after.
-        <Button className="w-full !h-12" onClick={() => onDone([...selected])}>
+        <Button className="w-full !h-12" aria-label="Continue" onClick={() => onDone([...selected])}>
           {t("onboarding.continue")}
         </Button>
       }

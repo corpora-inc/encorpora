@@ -9,6 +9,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Changed
 
+- **Voice-install copy reframed — "unlock your device's best voices".** The TTS
+  voice-setup guide, OS tips, and install nudges now frame premium voices as
+  capabilities your device already has but the maker left switched off, with
+  Corpán as the helpful guide ("let's turn them on; a few taps"). Honest and
+  understated, not hype. (`voiceGuide.*`, `ttsOsTip*`, `confident.addBetter` /
+  `noVoiceFor`, `ttsRescue.engineNotInstalled`.)
+- **TTS setup no longer jerks when voices load.** The screen renders its real
+  layout the moment the engine is ready, with per-language skeleton rows that
+  fill IN PLACE when `list_voices` resolves — so the async result never changes
+  the body height or re-centers the screen. (Replaced the loading-spinner →
+  content swap with stable skeletons.)
+- **Stable test anchors for scenario coverage (no user-visible change).** Added
+  language-agnostic targeting attributes used by the iPad scenario suite:
+  `aria-label="Continue"` on the onboarding footer primary (PickLearning,
+  PickPhrasePacks, TTSInstructions, MultiQuestionNodeView); `data-lang={code}`
+  on each primary-language option (OnboardingPickPrimary);
+  `data-testid="hero-cta"` / `data-testid="hero-cycle"` on the Home For-you hero
+  CTA + "Show me another" (HomeHub); `data-testid="browse-phrase-packs"`
+  (PhrasePackDrawerTrigger); `aria-label="Close settings"` on the Settings close
+  button (SettingsModal); `data-testid="quick-full-settings"` on the Quick
+  Settings "Full settings" button. Visible text and behavior are unchanged.
+
 - **Voice onboarding — confident, region-aware default.** The TTS voice screen
   now leads with a calm per-language "Your {{lang}} voice" row: the
   auto-picked, region/script-appropriate voice + a big Play-to-test, no grid to
@@ -117,6 +139,11 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Fixed
 
+- **Pack cards: artwork pinned to the bottom with the buttons.** The screenshot
+  used to sit right under the description, so cards with longer/shorter blurbs
+  had their artwork at different heights. Only the header + description now live
+  in the flex-grow region; the screenshot + actions are pinned at the bottom, so
+  the asset and buttons stay aligned across a row regardless of description rows.
 - **Phrase Flip now shows in Home's "Recent".** As a native experience (not a
   games-store entry) it never carried a `lastLaunchedAt`, so it was missing from
   the Recent row. It now records its own launch time (`store/recentNative`) and

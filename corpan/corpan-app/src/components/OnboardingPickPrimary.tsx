@@ -207,6 +207,7 @@ function PrimaryLanguageButton({
                 type="button"
                 onClick={() => onSelect(code)}
                 lang={code}
+                data-lang={code}
                 dir={rtl ? "rtl" : "ltr"}
                 className={[
                     "group relative w-full",

@@ -175,6 +175,7 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
                 // skip). One button matches the rest of the onboarding footers.
                 <Button
                     className="w-full !h-12"
+                    aria-label="Continue"
                     disabled={!(!isOnline || !!ppLastFetched || hasStarter)}
                     onClick={handleContinue}
                 >

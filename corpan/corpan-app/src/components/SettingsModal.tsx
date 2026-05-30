@@ -134,10 +134,9 @@ export function SettingsModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
         className="
-          max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[100vw] lg:max-w-[100vw] xl:max-w-[85vw] 2xl:max-w-[75vw]
-          max-h-[100dvh] h-[100dvh] xl:h-auto xl:max-h-[95dvh]
+          !w-[100vw] !max-w-[100vw]
+          !h-[100dvh] !max-h-[100dvh]
           overflow-y-auto rounded-none bg-background pb-6
-          xl:rounded-md
           flex flex-col
           [&>div:first-child]:hidden
         "
@@ -160,7 +159,7 @@ export function SettingsModal({
             <h2 className="text-base font-semibold" dir={dir()}>
               {t("settings.settings")}
             </h2>
-            <DialogClose className="inline-flex h-12 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
+            <DialogClose aria-label="Close settings" className="inline-flex h-12 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
               <XIcon className="h-5 w-5" />
               <span className="sr-only">Close</span>
             </DialogClose>

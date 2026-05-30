@@ -16,7 +16,7 @@ export function OnboardingPickLearning({ onAdvance, onBack }: OnboardingStepProp
       onBack={onBack ?? (() => setStep(2))}
       maxWidthClass="max-w-xl"
       footer={
-        <Button className="w-full !h-12" onClick={onAdvance ?? (() => setStep(4))}>
+        <Button className="w-full !h-12" aria-label="Continue" onClick={onAdvance ?? (() => setStep(4))}>
           {t("onboarding.continue")}
         </Button>
       }

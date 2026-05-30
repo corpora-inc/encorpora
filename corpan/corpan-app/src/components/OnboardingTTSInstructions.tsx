@@ -142,6 +142,32 @@ function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
     };
 }
 
+/* -------------------------------- Skeleton -------------------------------- */
+
+/**
+ * A placeholder that mirrors the OnboardingTTSConfidentVoice row's footprint.
+ * Rendered per-language while `list_voices` is still resolving, so the async
+ * voices result fills the rows IN PLACE — the body height never changes and
+ * nothing gets pushed around / re-centered when the data arrives.
+ */
+function ConfidentVoiceSkeleton() {
+    return (
+        <div
+            className="rounded-2xl border border-border bg-card/60 p-3.5 shadow-sm"
+            aria-hidden="true"
+        >
+            <div className="flex items-center gap-3">
+                <div className="h-12 w-12 shrink-0 animate-pulse rounded-full bg-muted" />
+                <div className="min-w-0 flex-1 space-y-2">
+                    <div className="h-3 w-20 animate-pulse rounded bg-muted" />
+                    <div className="h-4 w-32 animate-pulse rounded bg-muted" />
+                    <div className="h-2.5 w-40 animate-pulse rounded bg-muted/70" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
 /* -------------------------------- Component -------------------------------- */
 
 export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepProps = {}) {
@@ -559,11 +585,9 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
         if (phase.kind === "loading") {
             return <OnboardingTTSProbing />;
         }
-        // Engine ready but voices not yet populated (list_voices is retrying).
-        // Show the loading skeleton rather than an empty page.
-        if (phase.kind === "ready" && voices === null && !recoveryFlash) {
-            return <OnboardingTTSProbing />;
-        }
+        // (Engine-ready-but-voices-still-loading no longer renders here — the
+        //  phaseB layout shows immediately with per-language skeleton rows that
+        //  fill in place, avoiding a loading→content layout jerk.)
         if (phase.kind === "ready" && recoveryFlash) {
             return <OnboardingTTSReadyConfirm engine={phase.engine ?? null} />;
         }
@@ -583,7 +607,11 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
         return null;
     };
 
-    const showPhaseB = phase.kind === "ready" && !recoveryFlash && voices !== null;
+    // Render the real layout as soon as the engine is ready — even before
+    // `list_voices` resolves. The per-language rows show skeletons until their
+    // voices arrive (then fill IN PLACE), so the body never changes height /
+    // re-centers when the async voices query returns. No loading→content swap.
+    const showPhaseB = phase.kind === "ready" && !recoveryFlash;
 
     // The whole screen is ONE scroll surface (OnboardingShell scrolls; the
     // footer Continue stays pinned). No inner scrollers, no height caps — long
@@ -623,7 +651,9 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
     // when only a low-quality voice exists, or to install when there's none.
     const renderConfidentVoice = (code: string) => {
         const list = voicesForLang(code);
-        if (list === null) return null;
+        // Voices for this language haven't resolved yet — hold the row's space
+        // with a skeleton so the real data fills IN PLACE (no layout jerk).
+        if (list === null) return <ConfidentVoiceSkeleton key={code} />;
         const sample = sampleFor(code);
         const isIOS = os === "ios" || os === "macos";
         const isGap = isIOS && isAppleIOSVoiceGap(code);
@@ -648,9 +678,8 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
             canBack
             onBack={onBack ?? (() => setStep(3))}
             maxWidthClass="max-w-3xl"
-            fill
             footer={
-                <Button className="w-full !h-12" onClick={onAdvance ?? (() => setStep(5))}>
+                <Button className="w-full !h-12" aria-label="Continue" onClick={onAdvance ?? (() => setStep(5))}>
                     {t("onboarding.continue")}
                 </Button>
             }

@@ -35,6 +35,7 @@ export function PhrasePackDrawerTrigger() {
             type="button"
             variant="outline"
             onClick={openPhrasePacks}
+            data-testid="browse-phrase-packs"
             className="
                 w-full h-auto rounded-md px-6 py-6 md:py-8 gap-3
                 border-purple-400/30 bg-purple-500/[0.02]

@@ -261,8 +261,8 @@
     "reconfigureStack": "Reconfigure stack",
     "openVoiceSettings": "Open Settings",
     "voiceGuide": {
-      "title": "Add a Premium voice",
-      "intro": "Apple's higher-quality voices live in your device settings — and they're free. Here's the quick path:",
+      "title": "Unlock your device's best voices",
+      "intro": "Your device has rich, natural voices built in — free, and far better than the default. The maker just leaves them switched off. Let's turn them on; it only takes a few taps:",
       "step1": "Tap Open Settings below.",
       "step2": "Go to Accessibility → Spoken Content → Voices.",
       "step3": "Tap your language.",
@@ -295,8 +295,8 @@
     "languageOrderTipBody": "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Best results: use Google text-to-speech. Samsung TTS does not work in Corpán.",
-    "ttsOsTipIOS": "Want richer audio? Apple offers free Premium voices. In Settings, tap Accessibility → Spoken Content → Voices → your language, then tap the download icon to add a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't offer voices for every language.)",
-    "ttsOsTipMac": "Want richer audio? Apple offers free Premium voices. In System Settings, tap Accessibility → Spoken Content → System Voice → Manage Voices, then download a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't offer voices for every language.)",
+    "ttsOsTipIOS": "Your device has free Premium voices built in — Apple just leaves them off. Switch them on: Settings → Accessibility → Spoken Content → Voices → your language, then tap the download icon for a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't cover every language yet.)",
+    "ttsOsTipMac": "Your Mac has free Premium voices built in — Apple just leaves them off. Switch them on: System Settings → Accessibility → Spoken Content → System Voice → Manage Voices, then download a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't cover every language yet.)",
     "ttsOsTipWindows": "In Settings, add/install speech voices, then return here.",
     "ttsOsTipOther": "In your device settings, add/install text-to-speech voices, then return here.",
     "installVoicesAndroid": "Install voices",
@@ -312,7 +312,7 @@
       },
       "engineNotInstalled": {
         "heading": "Install Google Text-to-Speech",
-        "detail": "Google's voice engine gives you the best quality across every language Corpán supports. It's free.",
+        "detail": "Google's free voice engine unlocks high-quality voices for most of the languages Corpán supports — most phones just don't ship with it. Let's add it:",
         "button": "Install from Play Store"
       },
       "noEngine": {
@@ -404,8 +404,8 @@
       "voiceCountOne": "1 voice ready",
       "voiceCountMany": "{{count}} voices ready",
       "andMore": "+{{count}} more",
-      "noVoiceFor": "No {{lang}} voice yet — add one to hear it read aloud.",
-      "addBetter": "Add a higher-quality voice",
+      "noVoiceFor": "No {{lang}} voice yet — let's add one so Corpán can read aloud.",
+      "addBetter": "Unlock a richer voice",
       "chooseVoices": "Choose voices"
     }
   },

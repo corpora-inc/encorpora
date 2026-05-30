@@ -1,0 +1,41 @@
+{
+  "name": "en_onboard_polyglot",
+  "title": "English UI — POLYGLOT journey, many languages",
+  "persona": "A polyglot who wants to stack several languages at once. Walks welcome → pickPrimary → fork[polyglot] → pickLearning (adds Spanish, French, German) → tts → interests → finish → Home. The polyglot branch skips calibrate + phrase-pack picking (goes straight to tts).",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Fresh first run — clear onboarding + landing, clean URL.",
+      "reset": true
+    },
+
+    { "narrate": "Welcome screen.", "wait_text": "Corpán", "screenshot": "01-welcome" },
+    { "narrate": "Begin (Next arrow).", "tap_anchor": { "aria": "Next" }, "settle": 2.0 },
+
+    { "narrate": "Pick primary (UI) language.", "wait_text": "Make English my primary language", "screenshot": "02-pick-primary" },
+    { "narrate": "English as the UI / primary language.", "tap": "Make English my primary language", "settle": 2.0 },
+
+    { "narrate": "Fork — What brings you to Corpán?", "wait_text": "What brings you to Corpán?", "screenshot": "03-fork" },
+    { "narrate": "Explore many languages (POLYGLOT).", "tap": "Explore many languages", "settle": 1.8 },
+
+    { "narrate": "Pick languages to learn — stack several targets.", "wait_text": "Pick languages to learn", "screenshot": "04-pick-learning-empty" },
+    { "narrate": "Add Spanish.", "tap": "Spanish", "settle": 0.7 },
+    { "narrate": "Add French.", "tap": "French", "settle": 0.7 },
+    { "narrate": "Add German.", "tap": "German", "settle": 0.7 },
+    { "narrate": "Stack of four (English UI + 3 targets).", "screenshot": "05-pick-learning-stacked" },
+    { "narrate": "Continue — polyglot skips calibrate + phrase packs, goes straight to TTS.", "tap_anchor": { "aria": "Continue" }, "settle": 2.0 },
+
+    { "narrate": "Text-to-speech setup — voice rows for every language in the stack.", "wait_text": "Tap a voice to hear it", "screenshot": "06-tts" },
+    { "narrate": "Accept auto-picked voices, Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Interests — skippable multi-select.", "wait_text": "What do you want to do?", "screenshot": "07-interests" },
+    { "narrate": "Pick Explore wild stuff.", "tap": "Explore wild stuff", "settle": 0.6 },
+    { "narrate": "Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Finish / engagement page.", "wait_text": "You're all set", "screenshot": "08-finish" },
+    { "narrate": "Start exploring → commit + Home (polyglot lands on Phrase Flip intent; tour first).", "tap": "Start exploring", "settle": 3.0 },
+
+    { "narrate": "Home — multi-language stack.", "wait_text": "For you", "screenshot": "09-home" },
+    { "narrate": "Confirm Settings gear present.", "assert_anchor": { "aria": "Settings" } }
+  ]
+}

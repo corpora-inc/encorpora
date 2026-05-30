@@ -28,7 +28,8 @@ export function PackCard({
 
   return (
     <div className="flex flex-col rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">
-      {/* Content area that grows */}
+      {/* Text content grows — ONLY the header + description live here, so a
+          longer/shorter description never shifts the asset below. */}
       <div className="flex flex-col gap-3 flex-1">
         {/* Header with name and badge */}
         <div className="flex items-start justify-between gap-2">
@@ -47,19 +48,15 @@ export function PackCard({
         {pack.description && (
           <p className="text-sm text-muted-foreground">{pack.description}</p>
         )}
-
-        {/* Screenshot/Video */}
-        {pack.imageUrl && (
-          <PackScreenshot
-            src={pack.imageUrl}
-            alt={pack.name}
-            type="image"
-          />
-        )}
       </div>
 
-      {/* Actions stuck to bottom */}
-      <div className="mt-3">
+      {/* Pinned to the bottom: the screenshot sits directly above the actions
+          so the asset + buttons stay aligned across cards regardless of how
+          many rows the description takes. */}
+      <div className="mt-3 flex flex-col gap-3">
+        {pack.imageUrl && (
+          <PackScreenshot src={pack.imageUrl} alt={pack.name} type="image" />
+        )}
         <PackActions
           pack={pack}
           state={state}

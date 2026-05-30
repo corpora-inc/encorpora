@@ -1,0 +1,37 @@
+{
+  "name": "en_onboard_child",
+  "title": "English UI — CHILD journey",
+  "persona": "A parent setting Corpán up for a child. Walks welcome → pickPrimary → fork[child] → childAge → tts → interests → finish → Home, with the gentlest defaults (A0, slow speech). Single English stack.",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Fresh first run — clear onboarding + landing, clean URL.",
+      "reset": true
+    },
+
+    { "narrate": "Welcome screen.", "wait_text": "Corpán", "screenshot": "01-welcome" },
+    { "narrate": "Begin (Next arrow).", "tap_anchor": { "aria": "Next" }, "settle": 2.0 },
+
+    { "narrate": "Pick primary (UI) language.", "wait_text": "Make English my primary language", "screenshot": "02-pick-primary" },
+    { "narrate": "English as the primary language.", "tap": "Make English my primary language", "settle": 2.0 },
+
+    { "narrate": "Fork — What brings you to Corpán?", "wait_text": "What brings you to Corpán?", "screenshot": "03-fork" },
+    { "narrate": "Set it up for a child.", "tap": "Set it up for a child", "settle": 1.8 },
+
+    { "narrate": "Child age band — How old is the reader?", "wait_text": "How old is the reader?", "screenshot": "04-child-age" },
+    { "narrate": "Under 13 (gentlest defaults).", "tap": "Under 13", "settle": 1.8 },
+
+    { "narrate": "Text-to-speech setup.", "wait_text": "Tap a voice to hear it", "screenshot": "05-tts" },
+    { "narrate": "Accept auto-picked voice, Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Interests — skippable multi-select.", "wait_text": "What do you want to do?", "screenshot": "06-interests" },
+    { "narrate": "Pick Play games.", "tap": "Play games", "settle": 0.6 },
+    { "narrate": "Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Finish / engagement page.", "wait_text": "You're all set", "screenshot": "07-finish" },
+    { "narrate": "Start exploring → commit + Home.", "tap": "Start exploring", "settle": 3.0 },
+
+    { "narrate": "Home — kid-friendly experiences should rank up in For you.", "wait_text": "For you", "screenshot": "08-home" },
+    { "narrate": "Confirm Settings gear present.", "assert_anchor": { "aria": "Settings" } }
+  ]
+}

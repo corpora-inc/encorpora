@@ -16,12 +16,16 @@ import { useEntitlementStore } from "@/store/entitlements";
 import { trackOnboardingCompleted } from "@/util/analytics";
 import type { OnboardingStepProps } from "@/onboarding/types";
 
+// All link icons use one accent so the row doesn't clash (the per-service
+// red/pink/amber/indigo did). Tertiary brand color: the rust-brown from the
+// Corpán mark (~#c86020) — warmer than purple and ties to the logo.
+const LINK_ICON_CLS = "text-[#c86020]";
 const LINKS = [
-    { key: "youtube", url: "https://www.youtube.com/@corpán1", Icon: Youtube, cls: "text-red-500" },
-    { key: "instagram", url: "https://instagram.com/corpanapp", Icon: Instagram, cls: "text-pink-500" },
-    { key: "github", url: "https://github.com/corpora-inc", Icon: Github, cls: "text-foreground" },
-    { key: "blog", url: "https://free2z.com/corpora", Icon: Newspaper, cls: "text-amber-500" },
-    { key: "website", url: "https://encorpora.io", Icon: Globe, cls: "text-indigo-400" },
+    { key: "youtube", url: "https://www.youtube.com/@corpán1", Icon: Youtube, cls: LINK_ICON_CLS },
+    { key: "instagram", url: "https://instagram.com/corpanapp", Icon: Instagram, cls: LINK_ICON_CLS },
+    { key: "github", url: "https://github.com/corpora-inc", Icon: Github, cls: LINK_ICON_CLS },
+    { key: "blog", url: "https://free2z.com/corpora", Icon: Newspaper, cls: LINK_ICON_CLS },
+    { key: "website", url: "https://encorpora.io", Icon: Globe, cls: LINK_ICON_CLS },
 ] as const;
 
 export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}) {

@@ -51,7 +51,7 @@ export function QuickSettingsSheet() {
           <LevelsPicker />
           <PhrasePackToggleSection />
 
-          <Button variant="outline" className="w-full" onClick={openFullSettings}>
+          <Button variant="outline" className="w-full" data-testid="quick-full-settings" onClick={openFullSettings}>
             <ExternalLink className="mr-2 h-4 w-4" />
             {t("quickSettings.fullSettings", { defaultValue: "Full settings" })}
           </Button>

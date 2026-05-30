@@ -104,9 +104,10 @@ def _js_tap(text: str, any_role: bool) -> str:
     sel = "button,[role=button],[role=option]" if any_role else "button"
     safe = json.dumps(text)
     return (
-        "(()=>{const els=[...document.querySelectorAll('" + sel + "')]"
-        ".filter(e=>e.offsetParent!==null);"
-        "const el=els.find(e=>(e.textContent||'').includes(" + safe + "));"
+        "(()=>{const needle=" + safe + ".toLowerCase();"
+        "const els=[...document.querySelectorAll('" + sel + "')]"
+        ".filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0});"
+        "const el=els.find(e=>(e.textContent||'').toLowerCase().includes(needle));"
         "if(!el)return 'NF';const t=el.closest('button')||el;"
         "window.__corpan_last_tapped=t;t.click();return 'ok';})()"
     )
@@ -151,7 +152,7 @@ def _js_tap_anchor(anchor) -> str:
     sel = json.dumps(_anchor_selector(anchor))
     return (
         "(()=>{const els=[...document.querySelectorAll(" + sel + ")]"
-        ".filter(e=>e.offsetParent!==null);const el=els[0];"
+        ".filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0});const el=els[0];"
         "if(!el)return 'NF';const t=el.closest('button')||el;"
         "window.__corpan_last_tapped=t;t.click();return 'ok';})()"
     )
@@ -162,7 +163,7 @@ def _js_anchor_present(anchor) -> str:
     sel = json.dumps(_anchor_selector(anchor))
     return (
         "(()=>{const els=[...document.querySelectorAll(" + sel + ")]"
-        ".filter(e=>e.offsetParent!==null);return els.length?'yes':'no';})()"
+        ".filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0});return els.length?'yes':'no';})()"
     )
 
 
@@ -176,7 +177,7 @@ def _js_in_viewport(anchor) -> str:
         getter = "window.__corpan_last_tapped"
     else:
         sel = json.dumps(_anchor_selector(anchor))
-        getter = "[...document.querySelectorAll(" + sel + ")].filter(e=>e.offsetParent!==null)[0]"
+        getter = "[...document.querySelectorAll(" + sel + ")].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0})[0]"
     return (
         "(()=>{const el=" + getter + ";if(!el)return 'NF';"
         "const r=el.getBoundingClientRect();"
@@ -255,9 +256,43 @@ def poll_text(needle: str, in_heading: bool, timeout_s: float = 20.0) -> bool:
     deadline = time.time() + timeout_s
     while time.time() < deadline:
         out = cdp_eval(js, attempts=2)
-        if out and "cdp failed" not in out and needle in out:
+        # Case-insensitive: innerText reflects rendered text, so CSS
+        # `text-transform: uppercase` headings (e.g. "FOR YOU") must still match
+        # a "For you" needle.
+        if out and "cdp failed" not in out and needle.lower() in out.lower():
             return True
         time.sleep(1.0)
+    return False
+
+
+def wait_app_ready(timeout_s: float = 14.0) -> None:
+    """After a reload / goto (full page nav), wait until the app has actually
+    rendered — a cold WebView reload shows a blank white screen for a few
+    seconds, and asserting/screenshotting too early catches nothing. Poll until
+    the body has real content. Brief initial sleep so the navigation starts
+    before we sample (avoids reading the outgoing page)."""
+    time.sleep(1.5)
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        out = cdp_eval("(()=>((document.body&&document.body.innerText||'').trim().length))()", attempts=2)
+        try:
+            if out and "cdp failed" not in out and int(out.strip().strip('\"')) > 10:
+                return
+        except ValueError:
+            pass
+        time.sleep(0.5)
+
+
+def poll_anchor(anchor, timeout_s: float = 8.0) -> bool:
+    """Poll until an anchor element is present — so asserts survive overlay
+    mount / animation timing after a goto/tap (one-shot checks were flaky)."""
+    js = _js_anchor_present(anchor)
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        out = cdp_eval(js, attempts=2)
+        if out and "cdp failed" not in out and out.strip().strip('"') == "yes":
+            return True
+        time.sleep(0.6)
     return False
 
 
@@ -311,18 +346,18 @@ def run(scenario_path: Path, video: bool) -> dict:
             report.append(f"**{line}**")
         if beat.get("reset"):
             cdp_eval(_js_reset())  # also navigates to a clean URL
-            time.sleep(5)
+            wait_app_ready()
         if "set_state" in beat:
             cdp_eval(_js_set_state(beat["set_state"]))
             cdp_eval("(()=>{location.reload();return 'r'})()")
-            time.sleep(5)
+            wait_app_ready()
         if "goto" in beat:
             gid = json.dumps(beat["goto"])
             cdp_eval("(()=>{const u=new URL(location);u.searchParams.set('game'," + gid + ");location.href=u.toString();return 'go'})()")
-            time.sleep(3)
+            wait_app_ready()
         if beat.get("reload"):
             cdp_eval("(()=>{location.reload();return 'r'})()")
-            time.sleep(5)
+            wait_app_ready()
         if "wait_text" in beat:
             ok = poll_text(beat["wait_text"], in_heading=False)
             report.append(f"- wait_text `{beat['wait_text']}`: {'✓' if ok else '✗ TIMEOUT'}")
@@ -360,15 +395,14 @@ def run(scenario_path: Path, video: bool) -> dict:
             # button. Language-agnostic; works regardless of localized label.
             res = cdp_eval(
                 "(()=>{const b=[...document.querySelectorAll('button')]"
-                ".filter(e=>e.offsetParent!==null);const el=b[b.length-1];"
+                ".filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0});const el=b[b.length-1];"
                 "if(!el)return 'NF';window.__corpan_last_tapped=el;el.click();return 'ok';})()"
             )
             report.append(f"- tap_primary: {res}")
             _tapped("tap_primary", res, beat.get("settle", 1.2))
         if "assert_anchor" in beat:
             anchor = beat["assert_anchor"]
-            out = cdp_eval(_js_anchor_present(anchor), attempts=3)
-            present = out.strip().strip('"') == "yes"
+            present = poll_anchor(anchor)
             mark = "✓" if present else "✗ FAIL"
             report.append(f"- assert_anchor `{_anchor_selector(anchor)}`: {mark}")
             if not present:
@@ -387,7 +421,8 @@ def run(scenario_path: Path, video: bool) -> dict:
                 failures += 1
         if "assert_text" in beat:
             out = cdp_eval(_js_visible_text(), attempts=3)
-            present = beat["assert_text"] in out
+            # Case-insensitive (see poll_text) so uppercase-CSS text still matches.
+            present = beat["assert_text"].lower() in (out or "").lower()
             mark = "✓" if present else "✗ FAIL"
             report.append(f"- assert_text `{beat['assert_text']}`: {mark}")
             if not present:
