@@ -19,6 +19,14 @@ type DrawerState = {
     openPhrasePacks: () => void
     closePhrasePacks: () => void
     setPhrasePackOpen: (open: boolean) => void
+
+    /** Quick Settings sheet — reachable from inside ANY pack (a gear in the
+     *  pack chrome) and from the host API. Compact subset of Settings
+     *  (speed / languages / levels / active phrase packs) applied live. */
+    quickSettingsOpen: boolean
+    openQuickSettings: () => void
+    closeQuickSettings: () => void
+    setQuickSettingsOpen: (open: boolean) => void
 }
 
 export const useDrawerStore = create<DrawerState>()((set) => ({
@@ -26,4 +34,9 @@ export const useDrawerStore = create<DrawerState>()((set) => ({
     openPhrasePacks: () => set({ phrasePackOpen: true }),
     closePhrasePacks: () => set({ phrasePackOpen: false }),
     setPhrasePackOpen: (open) => set({ phrasePackOpen: open }),
+
+    quickSettingsOpen: false,
+    openQuickSettings: () => set({ quickSettingsOpen: true }),
+    closeQuickSettings: () => set({ quickSettingsOpen: false }),
+    setQuickSettingsOpen: (open) => set({ quickSettingsOpen: open }),
 }))

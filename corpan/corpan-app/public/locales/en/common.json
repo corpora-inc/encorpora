@@ -133,27 +133,112 @@
     "openPhrases": "Open phrases",
     "phraseFlipDesc": "Flip through phrases in your languages",
     "experiences": "Experiences",
+    "recommended": "Recommended",
     "forYou": "For you",
     "library": "Library",
     "open": "Open",
     "get": "Get",
+    "tryIt": "Try it",
+    "showAnother": "Show me another",
+    "like": "Like",
+    "notForMe": "Not for me",
+    "plusChip": "Corpán Plus — unlock everything",
     "installing": "Installing…"
+  },
+  "tour": {
+    "progress": "{{n}} of {{total}}",
+    "maybeLater": "Maybe later"
+  },
+  "quickSettings": {
+    "title": "Quick settings",
+    "fullSettings": "Full settings"
+  },
+  "experiences": {
+    "phrase_main": {
+      "name": "Phrase Flip",
+      "blurb": "Flip through phrases in your languages — quick, focused practice."
+    },
+    "earthgate_reader": {
+      "name": "Earthgate Reader",
+      "blurb": "Read along to narrated audiobooks — calm, with word-by-word highlighting."
+    },
+    "stargate_reader": {
+      "name": "Stargate Reader",
+      "blurb": "The same audiobooks in immersive 3D — words stream through space as they're read."
+    },
+    "world_radio": {
+      "name": "World Radio",
+      "blurb": "Tune into live radio from around the world."
+    },
+    "hover_runner": {
+      "name": "Hover Runner",
+      "blurb": "Hear a phrase, steer to match it — learn by playing."
+    },
+    "juice_squeeze": {
+      "name": "Juice Squeeze",
+      "blurb": "Build phrases piece by piece in a quick game."
+    },
+    "pronunciation_coach": {
+      "name": "Parlometron",
+      "blurb": "Say phrases aloud and get pronunciation feedback."
+    },
+    "hanzipan": {
+      "name": "Hanzipan",
+      "blurb": "Master Mandarin characters, stroke by stroke."
+    }
   },
   "onboarding": {
     "settingUp": "Setting things up…",
+    "ttsIntro": "Corpán reads aloud. Tap a voice to hear it at your speed.",
+    "interests": {
+      "title": "What do you want to do?",
+      "subtitle": "Pick anything that appeals — we'll suggest experiences to match. Optional.",
+      "read": "Read stories & books",
+      "readDesc": "Dive into readers in your language.",
+      "audio": "Listen to audio",
+      "audioDesc": "Audiobooks, narration and radio.",
+      "games": "Play games",
+      "gamesDesc": "Learn through playful challenges.",
+      "speak": "Practice speaking",
+      "speakDesc": "Say phrases aloud and get feedback.",
+      "study": "Study & drill",
+      "studyDesc": "Build vocabulary with focused practice.",
+      "wild": "Explore wild stuff",
+      "wildDesc": "Surprising, experimental experiences."
+    },
+    "engage": {
+      "title": "You're all set",
+      "subtitle": "Corpán is made by a tiny open-source team. Come say hi — and if you love it, you can support us.",
+      "joinTitle": "Join the Corpanistas",
+      "joinDesc": "Support Corpán and unlock everything. Optional, anytime.",
+      "start": "Start exploring"
+    },
     "fork": {
       "title": "What brings you to Corpán?",
       "subtitle": "We'll set everything up for you. You can change it later.",
-      "enjoy": { "label": "Enjoy Corpán in {{lang}}", "desc": "Read and listen to books and stories in your language." },
-      "learn": { "label": "Learn a language", "desc": "Practice a new language with phrases, books and audio." },
-      "polyglot": { "label": "Explore many languages", "desc": "Stack several languages and unlock everything." },
-      "child": { "label": "Set it up for a child", "desc": "Gentle, curated reading for younger learners." }
+      "enjoy": {
+        "label": "Enjoy Corpán in {{lang}}",
+        "desc": "Books, stories, games, drills and more — all in your language."
+      },
+      "learn": {
+        "label": "Learn a language",
+        "desc": "Stories, games, drills and audio in a new language."
+      },
+      "polyglot": {
+        "label": "Explore many languages",
+        "desc": "Stack several languages and explore everything."
+      },
+      "child": {
+        "label": "Set it up for a child",
+        "desc": "Gentle, playful books and games for younger learners."
+      }
     },
     "calibrate": {
-      "enjoyTitle": "How comfortable are you reading {{lang}}?",
-      "enjoyNative": "It's my language",
-      "enjoyComfortable": "Pretty comfortable",
-      "enjoyImproving": "Still improving",
+      "enjoyTitle": "How well do you read {{lang}}?",
+      "enjoyNative": "Fluently — it's my language",
+      "enjoyComfortable": "Pretty well",
+      "enjoyImproving": "I'm still learning to read it",
+      "enjoyJustStarting": "Just starting — I'm new to reading it",
       "learnTitle": "Have you studied {{lang}} before?",
       "learnNever": "Never — total beginner",
       "learnLittle": "A little",
@@ -174,7 +259,21 @@
     "welcomeVisit": "Visit encorpora.io",
     "linkCopied": "Link copied. Open in your browser:",
     "reconfigureStack": "Reconfigure stack",
-    "openVoiceSettings": "Open your device's voice settings",
+    "openVoiceSettings": "Open Settings",
+    "voiceGuide": {
+      "title": "Add a Premium voice",
+      "intro": "Apple's higher-quality voices live in your device settings — and they're free. Here's the quick path:",
+      "step1": "Tap Open Settings below.",
+      "step2": "Go to Accessibility → Spoken Content → Voices.",
+      "step3": "Tap your language.",
+      "step4": "Download a Premium or Enhanced voice.",
+      "step5": "Come back to Corpán — it appears here automatically.",
+      "macStep1": "Open System Settings.",
+      "macStep2": "Go to Accessibility → Spoken Content.",
+      "macStep3": "Under System Voice, open Manage Voices.",
+      "macStep4": "Download a Premium or Enhanced voice for your language.",
+      "macStep5": "Come back to Corpán — it appears here automatically."
+    },
     "openTTSSetup": "Open TTS settings",
     "welcomeFollowUp": "Thanks for joining—see you in the community!",
     "learning": "Learning languages",
@@ -188,12 +287,16 @@
     "notOnAppleIOS": "Not on iOS",
     "appleNoVoiceTitle": "Apple doesn't ship a {{lang}} voice yet",
     "appleNoVoiceBody": "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime.",
+    "voiceRecommended": "Recommended",
+    "voicePreviewAria": "Preview {{name}}",
+    "voicePreviewSelected": "Preview selected",
+    "voiceSelectedCount": "{{count}} of {{total}}",
     "languageOrderTipTitle": "Tip",
     "languageOrderTipBody": "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Best results: use Google text-to-speech. Samsung TTS does not work in Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Want richer audio? Apple offers free Premium voices. In Settings, tap Accessibility → Spoken Content → Voices → your language, then tap the download icon to add a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't offer voices for every language.)",
+    "ttsOsTipMac": "Want richer audio? Apple offers free Premium voices. In System Settings, tap Accessibility → Spoken Content → System Voice → Manage Voices, then download a Premium or Enhanced voice. Come back and it appears here automatically. (Apple doesn't offer voices for every language.)",
     "ttsOsTipWindows": "In Settings, add/install speech voices, then return here.",
     "ttsOsTipOther": "In your device settings, add/install text-to-speech voices, then return here.",
     "installVoicesAndroid": "Install voices",
@@ -295,6 +398,15 @@
       "team": "We're a small team and put every cent back into Corpán.",
       "tryPlus": "Try Corpán Plus",
       "continueFree": "Continue with the free tier"
+    },
+    "confident": {
+      "yourVoiceFor": "Your {{lang}} voice",
+      "voiceCountOne": "1 voice ready",
+      "voiceCountMany": "{{count}} voices ready",
+      "andMore": "+{{count}} more",
+      "noVoiceFor": "No {{lang}} voice yet — add one to hear it read aloud.",
+      "addBetter": "Add a higher-quality voice",
+      "chooseVoices": "Choose voices"
     }
   },
   "socials": {
@@ -302,6 +414,11 @@
       "cta": "Watch",
       "title": "YouTube",
       "desc": "Tutorials, demos, and behind-the-scenes."
+    },
+    "instagram": {
+      "cta": "Follow",
+      "title": "Follow on Instagram",
+      "desc": "@corpanapp"
     },
     "github": {
       "cta": "Star & contribute",
@@ -503,6 +620,7 @@
     "remove": "Remove",
     "version": "v{{version}}",
     "refresh": "Refresh",
+    "updateAll": "Update all ({{count}})",
     "free": "Free",
     "install": "Install",
     "installing": "Installing...",

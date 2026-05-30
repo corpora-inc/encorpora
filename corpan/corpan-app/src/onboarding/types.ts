@@ -14,7 +14,6 @@ export type ComponentKey =
   | "pickLearning"
   | "pickPhrasePacks"
   | "tts"
-  | "plusPitch"
   | "finish"
 
 /** Accumulated, non-persisted decisions. Flushed to the stores only at a
@@ -29,6 +28,9 @@ export type Draft = {
   userClass?: UserClass
   landing?: LandingIntent
   preloadPacks?: string[]
+  /** Interest tags from the multi-select ("What do you want to do?"), used to
+   *  rank experiences. Empty/undefined = skipped (no interest signal). */
+  interests?: string[]
 }
 
 /** Context handed to every node callback. */
@@ -76,6 +78,29 @@ export type QuestionNode = {
   options: QuestionOption[]
 }
 
+/** An option in a multi-select question. No per-option `next`/`apply` — the
+ *  whole set is collected, then the node's `apply`/`next` run on Continue. */
+export type MultiOption = {
+  id: string
+  labelKey: string
+  descKey?: string
+  /** lucide-react icon name resolved by the view (kept as a string so the
+   *  graph stays import-free / data-only). */
+  icon?: string
+}
+
+export type MultiQuestionNode = {
+  kind: "multiQuestion"
+  id: NodeId
+  titleKey: string
+  subtitleKey?: string
+  interpolate?: (ctx: NodeCtx) => Record<string, string>
+  options: MultiOption[]
+  /** Apply the chosen option ids to the draft (e.g. write `interests`). */
+  apply: (ctx: NodeCtx, selectedIds: string[]) => void
+  next: NextSpec
+}
+
 export type AdapterNode = {
   kind: "adapter"
   id: NodeId
@@ -94,6 +119,7 @@ export type TerminalNode = {
 export type OnboardingNode =
   | InfoNode
   | QuestionNode
+  | MultiQuestionNode
   | AdapterNode
   | TerminalNode
 

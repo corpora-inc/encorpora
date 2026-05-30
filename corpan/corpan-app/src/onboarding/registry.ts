@@ -4,7 +4,6 @@ import { OnboardingPickPrimary } from "@/components/OnboardingPickPrimary"
 import { OnboardingPickLearning } from "@/components/OnboardingPickLearning"
 import { OnboardingPickPhrasePacks } from "@/components/OnboardingPickPhrasePacks"
 import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions"
-import { OnboardingPlusPitch } from "@/components/OnboardingPlusPitch"
 import { OnboardingFinish } from "@/components/OnboardingFinish"
 import type { ComponentKey, OnboardingStepProps } from "./types"
 
@@ -16,6 +15,5 @@ export const ONBOARDING_COMPONENTS: Record<ComponentKey, ComponentType<Onboardin
   pickLearning: OnboardingPickLearning,
   pickPhrasePacks: OnboardingPickPhrasePacks,
   tts: OnboardingTTSInstructions,
-  plusPitch: OnboardingPlusPitch,
   finish: OnboardingFinish,
 }

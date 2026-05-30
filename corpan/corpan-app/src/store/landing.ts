@@ -15,6 +15,7 @@ export type LandingIntent =
   | { kind: "home"; tab?: "roll" | "library" | "recommended" }
   | { kind: "experience"; packId: string }
   | { kind: "discover" }
+  | { kind: "tour" }
 
 type LandingState = {
   landing: LandingIntent | null

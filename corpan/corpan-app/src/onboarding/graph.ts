@@ -25,7 +25,12 @@ function commitDraft(ctx: NodeCtx) {
     goalIntensity: d.goalIntensity ?? "daily",
     ageBand: d.ageBand ?? "adult",
   })
-  useLandingStore.getState().setLanding(d.landing ?? { kind: "home", tab: "roll" })
+  if (d.interests?.length) s.setInterests(d.interests)
+  // Everyone lands in the gentle guided tour, which introduces the top-ranked
+  // experiences and drops them into their first "Try it" (skippable → Home).
+  // The per-journey `d.landing` is retained only as a fallback if the tour has
+  // nothing to show (offline cold start).
+  useLandingStore.getState().setLanding({ kind: "tour" })
   if (d.preloadPacks?.length) {
     // Best-effort background preload; a host listener (Home) kicks the batch.
     window.dispatchEvent(
@@ -119,6 +124,14 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         apply: (c) => c.patch({ levels: ["A0", "A1", "A2", "B1"], rate: 0.8, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
         next: "tts",
       },
+      {
+        // Complete beginner / new to reading it (incl. an adult who speaks but
+        // doesn't read yet, or a young child). Gentlest: A0 + slowest speech.
+        id: "just_starting",
+        labelKey: "onboarding.calibrate.enjoyJustStarting",
+        apply: (c) => c.patch({ levels: ["A0"], rate: 0.5, landing: { kind: "home", tab: "library" }, preloadPacks: PRELOAD_READERS }),
+        next: "tts",
+      },
     ],
   },
 
@@ -180,9 +193,30 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
     ],
   },
 
-  // ── Shared tail: voices → Plus pitch → community → commit ──
-  tts: { kind: "adapter", id: "tts", component: "tts", next: "plusPitch" },
-  plusPitch: { kind: "adapter", id: "plusPitch", component: "plusPitch", next: "finish" },
+  // ── Shared tail: voices → interests → engagement page → commit ──
+  // (The Plus pitch is folded SOFTLY into the engagement page now — no
+  //  standalone paywall interlude mid-onboarding.)
+  tts: { kind: "adapter", id: "tts", component: "tts", next: "interests" },
+
+  // "What do you want to do?" — a skippable multi-select that seeds the
+  // experience recommendations. Reached by every journey (all roads hit tts).
+  interests: {
+    kind: "multiQuestion",
+    id: "interests",
+    titleKey: "onboarding.interests.title",
+    subtitleKey: "onboarding.interests.subtitle",
+    options: [
+      { id: "read", labelKey: "onboarding.interests.read", descKey: "onboarding.interests.readDesc", icon: "BookOpen" },
+      { id: "audio", labelKey: "onboarding.interests.audio", descKey: "onboarding.interests.audioDesc", icon: "Headphones" },
+      { id: "games", labelKey: "onboarding.interests.games", descKey: "onboarding.interests.gamesDesc", icon: "Gamepad2" },
+      { id: "speak", labelKey: "onboarding.interests.speak", descKey: "onboarding.interests.speakDesc", icon: "Mic" },
+      { id: "study", labelKey: "onboarding.interests.study", descKey: "onboarding.interests.studyDesc", icon: "GraduationCap" },
+      { id: "wild", labelKey: "onboarding.interests.wild", descKey: "onboarding.interests.wildDesc", icon: "Sparkles" },
+    ],
+    apply: (c, ids) => c.patch({ interests: ids }),
+    next: "finish",
+  },
+
   finish: { kind: "adapter", id: "finish", component: "finish", next: "commit" },
   commit: { kind: "terminal", id: "commit", commit: commitDraft },
 }

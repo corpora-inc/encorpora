@@ -1,60 +1,31 @@
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "@/store/settings";
 import { LanguageSelectOrder } from "@/components/LanguageSelectOrder";
-import { useMemo } from "react";
-import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
 import { DismissableTip } from "./DismissableTip";
+import { Button } from "@/components/ui/button";
+import { OnboardingShell } from "@/onboarding/OnboardingShell";
 import type { OnboardingStepProps } from "@/onboarding/types";
-
-const CURRENT_STEP_IDX = 0;
 
 export function OnboardingPickLearning({ onAdvance, onBack }: OnboardingStepProps = {}) {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
-  const dir = useSettingsStore((s) => s.dir);
   const { t } = useTranslation();
 
-  const stepLabels = useMemo(
-    () =>
-      STEPS.map((s, i) =>
-        i === CURRENT_STEP_IDX
-          ? t("onboarding.learningStepTitle", { defaultValue: s.label })
-          : t(`onboarding.${s.key}`, { defaultValue: s.label })
-      ),
-    [t]
-  );
-
   return (
-    <section
-      id="onboarding-scroll"
-      // single scrollport; keep blur working
-      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background pb-10"
-      style={{
-        WebkitOverflowScrolling: "touch",
-        // safe areas: keep top/left/right here for the sticky header
-        // paddingTop: "env(safe-area-inset-top)",
-        paddingLeft: "env(safe-area-inset-left)",
-        paddingRight: "env(safe-area-inset-right)",
-        paddingBottom: "env(safe-area-inset-bottom)",
-      }}
-      dir={dir()}
+    <OnboardingShell
+      canBack
+      onBack={onBack ?? (() => setStep(2))}
+      maxWidthClass="max-w-xl"
+      footer={
+        <Button className="w-full !h-12" onClick={onAdvance ?? (() => setStep(4))}>
+          {t("onboarding.continue")}
+        </Button>
+      }
     >
-      <OnboardingHeader
-        title={t("onboarding.pickLanguagesToLearn")}
-        steps={stepLabels}
-        currentIndex={CURRENT_STEP_IDX}
-        onBack={onBack ?? (() => setStep(2))}
-        onNext={onAdvance ?? (() => setStep(4))}
-        canNext={true}
-      />
+      <h1 className="text-center text-2xl font-bold text-foreground">
+        {t("onboarding.pickLanguagesToLearn")}
+      </h1>
 
-      <main
-        // allow the flex child to actually fill the remainder
-        className="min-h-0 flex-1 px-3 py-3"
-        // put bottom safe-area on the content, so it truly reaches the bottom
-        style={{
-          paddingBottom: "calc(env(safe-area-inset-bottom) + 3rem)",
-        }}
-      >
+      <div className="mt-6 w-full">
         <DismissableTip
           storageKey="tip:language-order"
           title={t("onboarding.languageOrderTipTitle", { defaultValue: "Tip" })}
@@ -64,9 +35,7 @@ export function OnboardingPickLearning({ onAdvance, onBack }: OnboardingStepProp
           })}
         />
         <LanguageSelectOrder />
-
-        <div className="h-8 pb-20" />
-      </main>
-    </section>
+      </div>
+    </OnboardingShell>
   );
 }

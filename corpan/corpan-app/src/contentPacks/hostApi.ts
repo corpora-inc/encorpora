@@ -5,6 +5,7 @@ import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useRatingStore } from "@/store/rating"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
+import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import type { StackConfigPatch } from "./types"
 import type {
@@ -489,6 +490,7 @@ export const createHostApi = (packId?: string): HostApi => {
       if (patch.phrasePackIds !== undefined) s.setPhrasePackIds(patch.phrasePackIds)
       if (patch.baseCorpusEnabled !== undefined) s.setBaseCorpusEnabled(patch.baseCorpusEnabled)
     },
+    openQuickSettings: () => useDrawerStore.getState().openQuickSettings(),
     history: {
       getState: () => {
         const aId = useSettingsStore.getState().activeStackId

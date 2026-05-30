@@ -55,11 +55,12 @@ const OS_SPECS: Record<Props["os"], OsSpec> = {
         primaryAction: "settings",
         primaryIcon: Settings,
         primaryLabelKey: "onboarding.openVoiceSettings",
-        primaryLabelDefault: "Open Voice Settings",
+        primaryLabelDefault: "Open Settings",
         tipTitleKey: "onboarding.ttsOsTipTitle",
         tipTitleDefault: "Tip",
         tipBodyKey: "onboarding.ttsOsTipIOS",
-        tipBodyDefault: "Settings → Accessibility → Spoken Content → Voices.",
+        tipBodyDefault:
+            "In Settings, tap Accessibility → Spoken Content → Voices → your language, then download a Premium or Enhanced voice. Come back and it appears here.",
     },
     macos: {
         primaryAction: "settings",
@@ -211,10 +212,10 @@ export function OnboardingTTSInstructionsHeaderActions({
                 </div>
             )}
 
-            <div className="flex w-full items-center justify-center gap-2">
+            <div className="flex w-full flex-wrap items-center justify-center gap-2">
                 <button
                     onClick={handlePrimary}
-                    className="inline-flex items-center gap-2 rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:cursor-pointer hover:bg-accent/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
+                    className="inline-flex items-center gap-2 rounded-full border border-input bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:cursor-pointer hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
                     aria-label={primaryLabel}
                 >
                     <PrimaryIcon size={16} />
@@ -226,11 +227,11 @@ export function OnboardingTTSInstructionsHeaderActions({
                         onClick={onSmartSelect}
                         disabled={smartDisabled}
                         className={[
-                            "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition",
+                            "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition",
                             "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]",
                             smartDisabled
                                 ? "border border-input bg-muted text-muted-foreground cursor-not-allowed"
-                                : "border border-purple-600 bg-purple-600 text-white hover:bg-purple-700",
+                                : "border border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:cursor-pointer dark:border-purple-800/60 dark:bg-purple-950/40 dark:text-purple-200",
                         ].join(" ")}
                         aria-label={smartLabel}
                     >

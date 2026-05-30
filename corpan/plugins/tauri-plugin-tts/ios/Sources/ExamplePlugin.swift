@@ -11,6 +11,7 @@ import os.log
     import UIKit
 #endif
 
+
 // -----------------------------------------------------------------------------
 // Logging
 // -----------------------------------------------------------------------------
@@ -687,76 +688,51 @@ final class TTSPlugin: Plugin {
         return false
     }
 
-    // ---- Device Settings deep links (Accessibility ▸ Spoken Content ▸ Voices; older Speech paths) ----
-    @inline(__always)
-    private func iosTTSSettingsURLs() -> [URL] {
-        let schemesNew = [
-            // iOS 15+ Spoken Content
-            "App-Prefs:root=ACCESSIBILITY&path=SPOKEN_CONTENT/VOICES",
-            "App-Prefs:root=ACCESSIBILITY&path=SPOKEN_CONTENT",
-            // Some devices still resolve via General/Accessibility/Speech
-            "App-Prefs:root=General&path=ACCESSIBILITY/SPEECH/VOICES",
-            "App-Prefs:root=General&path=ACCESSIBILITY/SPEECH",
-            "App-Prefs:root=ACCESSIBILITY",
-
-            // Legacy scheme variants
-            "prefs:root=ACCESSIBILITY&path=SPOKEN_CONTENT/VOICES",
-            "prefs:root=ACCESSIBILITY&path=SPOKEN_CONTENT",
-            "prefs:root=General&path=ACCESSIBILITY/SPEECH/VOICES",
-            "prefs:root=General&path=ACCESSIBILITY/SPEECH",
-            "prefs:root=ACCESSIBILITY",
-        ]
-
-        let schemesOld = [
-            // iOS 14 and earlier Speech paths first
-            "App-Prefs:root=General&path=ACCESSIBILITY/SPEECH/VOICES",
-            "App-Prefs:root=General&path=ACCESSIBILITY/SPEECH",
-            "App-Prefs:root=ACCESSIBILITY",
-
-            // Legacy scheme variants
-            "prefs:root=General&path=ACCESSIBILITY/SPEECH/VOICES",
-            "prefs:root=General&path=ACCESSIBILITY/SPEECH",
-            "prefs:root=ACCESSIBILITY",
-        ]
-
-        if #available(iOS 15.0, *) {
-            return schemesNew.compactMap(URL.init(string:))
-        } else {
-            return schemesOld.compactMap(URL.init(string:))
-        }
-    }
-
-    // ---- Public entry point: try macOS → device Settings deeplinks → app Settings (last) ----
+    // ---- Public entry point: open Settings as a launchpad ----
+    //
+    // NOTE (proven on-device, iPadOS 26.4.2): a third-party app CANNOT deep-link
+    // into Settings beyond its own page. Every `prefs:`, `App-Prefs:` and even
+    // iOS 26's native `settings-navigation:` URL returns open() ok=false here —
+    // including the bare scheme roots — so there is no way to land the user on
+    // Accessibility ▸ Spoken Content ▸ Voices. Those schemes are also private
+    // API / an App Store rejection risk. The ONLY thing iOS lets us open is
+    // `openSettingsURLString` (the app's own Settings page), which at least gets
+    // the user INTO Settings; the in-app UI shows the exact tap path from there.
     @objc public func openTtsSettings(_ invoke: Invoke) {
         #if canImport(UIKit)
-            // 1) iOS app running on macOS (not Catalyst): open macOS System Settings
+            // iOS app running on macOS (not Catalyst): open macOS System Settings.
             if openMacSystemSettingsForTTS_viaRuntime() {
                 invoke.resolve()
                 return
             }
-
-            // 2) iPhone/iPad: try device Settings deep links (Accessibility ▸ Spoken Content ▸ Voices)
-            for url in iosTTSSettingsURLs() {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:]) { _ in invoke.resolve() }
-                    return
-                }
-            }
-
-            // 3) Last resort: open the app’s Settings page (at least lands in Settings)
-            if let appSettings = URL(string: UIApplication.openSettingsURLString),
-                UIApplication.shared.canOpenURL(appSettings)
-            {
-                UIApplication.shared.open(appSettings, options: [:]) { _ in invoke.resolve() }
-                return
-            }
-
-            // 4) If absolutely nothing worked, still resolve so the UI doesn’t hang.
-            invoke.resolve()
+            // iPhone/iPad: there is NO public API to reach Settings ▸
+            // Accessibility ▸ Spoken Content ▸ Voices, the Accessibility root,
+            // or even the Settings frontage (all confirmed on-device). The ONLY
+            // openable Settings URL is the app's own page. An in-app modal shows
+            // the exact tap path from there. (The official AccessibilitySettings
+            // API only reaches a fixed allow-list — Personal Voice etc. — none
+            // of which is Spoken Content/Voices, and landing on "Personal Voice"
+            // misleads, so we don't use it.)
+            openAppSettingsPage(invoke)
         #else
             invoke.resolve()
         #endif
     }
+
+    #if canImport(UIKit)
+        /// Open the app's own Settings page — the only public Settings URL that
+        /// reliably opens (there is NO public API for the Settings root).
+        private func openAppSettingsPage(_ invoke: Invoke) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:]) { ok in
+                    ttsLog("ttsdbg openTtsSettings | openSettingsURLString ok=", ok)
+                    invoke.resolve()
+                }
+            } else {
+                invoke.resolve()
+            }
+        }
+    #endif
 
     // installTtsDataIfSupported: Not supported on iOS → return false.
     @objc public func installTtsDataIfSupported(_ invoke: Invoke) {

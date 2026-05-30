@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useOnboardingGraph } from "./useOnboardingGraph"
 import { QuestionNodeView } from "./QuestionNodeView"
+import { MultiQuestionNodeView } from "./MultiQuestionNodeView"
 import { InfoNodeView } from "./InfoNodeView"
 import { ONBOARDING_COMPONENTS } from "./registry"
 
@@ -44,6 +45,17 @@ export function OnboardingEngine() {
           ctx={g.makeCtx()}
           canBack={g.canBack}
           onChoose={g.choose}
+          onBack={g.back}
+        />
+      )
+    case "multiQuestion":
+      return (
+        <MultiQuestionNodeView
+          key={node.id}
+          node={node}
+          ctx={g.makeCtx()}
+          canBack={g.canBack}
+          onDone={(ids) => g.chooseMulti(node, ids)}
           onBack={g.back}
         />
       )

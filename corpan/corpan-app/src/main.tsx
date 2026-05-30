@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { MotionConfig } from "framer-motion";
 import App from "./App";
 import "./i18n";
 import LanguageSynchronizer from "./components/LanguageSynchronizer";
@@ -52,9 +53,15 @@ if (import.meta.env.DEV) installDevKeepAwake();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <LanguageSynchronizer>
-      <App />
-    </LanguageSynchronizer>
+    {/* App-wide motion baseline: one tasteful easing/duration is the DEFAULT for
+        every framer-motion animation that doesn't specify its own, and all of
+        them respect the OS "reduce motion" setting. This is the global
+        smoothness lever — so we never ship ad-hoc half-baked tweens. */}
+    <MotionConfig reducedMotion="user" transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}>
+      <LanguageSynchronizer>
+        <App />
+      </LanguageSynchronizer>
+    </MotionConfig>
   </React.StrictMode>
 );
 

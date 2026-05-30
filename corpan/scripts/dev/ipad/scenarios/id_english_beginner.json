@@ -1,0 +1,32 @@
+{
+  "name": "id_english_beginner",
+  "title": "Javanese speaker — UI in Indonesian, learning English from scratch",
+  "persona": "A young Javanese speaker wants the app in Bahasa Indonesia and is learning English basically from scratch. We walk the onboarding with reflective pauses (video mode), capturing each step.",
+  "beats": [
+    {
+      "narrate": "Fresh first run: Indonesian + English in the stack, reset onboarding + URL.",
+      "reset": true,
+      "set_state": { "languages": ["id", "en"], "interests": [] }
+    },
+    { "narrate": "Welcome screen (animated word cloud)", "pause": 3000, "pause_video": 3500, "screenshot": "welcome" },
+    { "narrate": "Begin", "tap_any": "", "settle": 1.8 },
+
+    { "narrate": "Choose primary (UI) language", "wait_text": "primary", "pause_video": 2400, "screenshot": "pick-primary" },
+    { "narrate": "Pick Bahasa Indonesia as the UI language", "tap": "Bahasa Indonesia", "settle": 2.0 },
+
+    { "narrate": "What brings you to Corpán?", "wait_text": "brings you", "pause_video": 2600, "screenshot": "fork" },
+    { "narrate": "Learn a language", "tap": "Learn a language", "settle": 1.8 },
+
+    { "narrate": "Pick the language to learn", "wait_text": "Pick languages", "pause_video": 2200, "screenshot": "pick-target" },
+    { "narrate": "Add English", "tap": "English", "settle": 0.6 },
+    { "tap_primary": true, "settle": 1.8 },
+
+    { "narrate": "How much English do you know?", "wait_text": "studied", "pause_video": 2400, "screenshot": "calibrate" },
+    { "narrate": "Never — total beginner", "tap": "Never", "settle": 1.8 },
+
+    { "narrate": "Pick starter topics", "wait_text": "topics", "pause_video": 2200, "screenshot": "topics" },
+    { "narrate": "Keep all topics", "tap_primary": true, "settle": 2.0 },
+
+    { "narrate": "Voice setup — the redesigned voice picker", "wait_text": "voice", "pause_video": 3000, "screenshot": "tts-voices" }
+  ]
+}

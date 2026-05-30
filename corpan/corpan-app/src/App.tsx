@@ -2,7 +2,12 @@
 
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingEngine } from "@/onboarding/OnboardingEngine";
-import { Home as HomeIcon } from "lucide-react";
+import { Home as HomeIcon, Settings as SettingsGearIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useDrawerStore } from "@/store/drawer";
+import { QuickSettingsSheet } from "@/components/QuickSettingsSheet";
+import { OnboardingTour } from "@/components/tour/OnboardingTour";
+import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { HomeHub } from "@/components/home/HomeHub";
@@ -17,6 +22,7 @@ import { getPlatformTopPaddingButtons } from "./util/browser";
 
 import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
+import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
@@ -77,20 +83,77 @@ if (import.meta.env.DEV) {
   };
 }
 
+/** Chrome for the native Phrase Flip experience ONLY: a Quick Settings gear and
+ *  a Home button pinned to OPPOSITE top corners (gear at the leading edge, Home
+ *  at the trailing edge) so they never read as a cluttered two-button cluster.
+ *  Phrase Flip is app-owned and genuinely stack-driven (speed / text size /
+ *  languages / levels / phrase packs), so the gear is tailored here. CONTENT
+ *  PACKS get NO injected chrome — each pack owns its own exit and decides for
+ *  itself whether/how to expose stack settings (readers, for instance, gain
+ *  nothing from quick settings). RTL mirrors both corners. */
+function PhraseFlipChrome() {
+  const rtl = useSettingsStore((s) => s.dir)() === "rtl";
+  const openQuickSettings = useDrawerStore((s) => s.openQuickSettings);
+  const btnClass =
+    "fixed z-[1110] h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition";
+  const topStyle = {
+    top: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)`,
+  };
+  // Gear at the leading corner, Home opposite it at the trailing corner.
+  const gearSide = rtl ? "right-4 md:right-8" : "left-4 md:left-8";
+  const homeSide = rtl ? "left-4 md:left-8" : "right-4 md:right-8";
+  return (
+    <>
+      <Button
+        variant="default"
+        size="lg"
+        aria-label="Quick settings"
+        onClick={openQuickSettings}
+        className={`${btnClass} ${gearSide}`}
+        style={topStyle}
+      >
+        <SettingsGearIcon className="text-muted-foreground h-5 w-5" />
+      </Button>
+      <Button
+        variant="default"
+        size="lg"
+        aria-label="Home"
+        onClick={() => window.dispatchEvent(new CustomEvent("corpan:exit"))}
+        className={`${btnClass} ${homeSide}`}
+        style={topStyle}
+      >
+        <HomeIcon className="text-muted-foreground h-5 w-5" />
+      </Button>
+    </>
+  );
+}
+
 export default function App() {
   useThemeEffect();
   const [showSettings, setShowSettings] = useState(false);
-  const [settingsTab, setSettingsTab] = useState<"stacks" | "packs" | undefined>(undefined);
+  const [showTTS, setShowTTS] = useState(false);
+  const [showTour, setShowTour] = useState(false);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
+    /** Addressability groundwork: deep-link a pack to a specific entry/route. */
+    entry?: { entryId?: number; source?: string; route?: string };
   } | null>(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
     const id = params.get("game");
     if (!id) return null;
     const manifestUrl = params.get("gameUrl") ?? undefined;
-    return { id, manifestUrl };
+    const entryIdRaw = params.get("entryId");
+    const entry =
+      entryIdRaw || params.get("source") || params.get("route")
+        ? {
+            entryId: entryIdRaw ? Number(entryIdRaw) : undefined,
+            source: params.get("source") ?? undefined,
+            route: params.get("route") ?? undefined,
+          }
+        : undefined;
+    return { id, manifestUrl, entry };
   });
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
@@ -233,6 +296,20 @@ export default function App() {
           segmentsReached: detail.segmentsReached,
           totalSegments: detail.totalSegments,
         });
+        // Finishing a book is a well-timed Plus moment. The paywall store
+        // suppresses this for subscribers and frequency-caps it, so it never
+        // nags (reader end-of-FREE-preview stays its own `reader_eof_free`).
+        if (
+          typeof detail.totalSegments === "number" &&
+          detail.totalSegments > 0 &&
+          detail.segmentsReached >= detail.totalSegments
+        ) {
+          usePaywallStore.getState().openPaywall({
+            surface: "book_finished",
+            bookId: detail.bookId,
+            language: detail.language,
+          });
+        }
       }
     };
     window.addEventListener("corpan:request-unlock", onRequestUnlock);
@@ -328,10 +405,30 @@ export default function App() {
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);
   }, [updateGameParam]);
 
+  useEffect(() => {
+    // Quick Settings' "Full settings" opens the full modal OVER a running pack
+    // (the pack stays mounted underneath — we never tear it down here).
+    const onOpenSettings = () => setShowSettings(true);
+    window.addEventListener("corpan:open-settings", onOpenSettings as EventListener);
+    return () => window.removeEventListener("corpan:open-settings", onOpenSettings as EventListener);
+  }, []);
+
+  useEffect(() => {
+    // The standalone Text-to-speech / voice configurator, opened from Settings
+    // (JumpToTTSButton). Onboarding is a decision graph now, so we render the
+    // TTS screen directly rather than re-entering onboarding at a step index.
+    const onOpenTTS = () => setShowTTS(true);
+    window.addEventListener("corpan:open-tts", onOpenTTS as EventListener);
+    return () => window.removeEventListener("corpan:open-tts", onOpenTTS as EventListener);
+  }, []);
+
   // Launch the phrase experience (currently the in-app MainExperience; becomes
   // the phrase_main pack in Phase 3 — distinguished at render by the absence of
   // a manifestUrl). Single chokepoint for the native experience.
   const openPhrase = useCallback(() => {
+    // Stamp the launch so Phrase Flip shows up in Home's "Recent" row (it's a
+    // native experience, not a games-store entry, so it tracks its own time).
+    useRecentNativeStore.getState().touchPhrase();
     setActiveGame({ id: "phrase_main" });
     updateGameParam({ id: "phrase_main" });
   }, [updateGameParam]);
@@ -352,6 +449,8 @@ export default function App() {
         const g = useGamesStore.getState().getGame(intent.packId);
         if (g) handleLaunchGame(g);
       }
+    } else if (intent.kind === "tour") {
+      setShowTour(true);
     }
     // kind "home"/"discover" → stay on the Home hub (default).
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -366,6 +465,10 @@ export default function App() {
     return (
       <InstallProvider>
         <OnboardingEngine />
+        {/* Mounted during onboarding too, so the engagement page's "Join the
+            Corpanistas" CTA actually opens the paywall in-place (previously it
+            only appeared after commit, because the sheet lived post-onboarding). */}
+        <PaywallSheet />
       </InstallProvider>
     );
   }
@@ -377,17 +480,13 @@ export default function App() {
       <HomeHub
         onSettings={() => setShowSettings(true)}
         onLaunchPhrase={openPhrase}
+        onLaunchGame={handleLaunchGame}
         updateCount={updates.length}
       />
 
       <SettingsModal
         open={showSettings}
-        onClose={() => {
-          setShowSettings(false);
-          setSettingsTab(undefined);
-        }}
-        onLaunchGame={handleLaunchGame}
-        initialTab={settingsTab}
+        onClose={() => setShowSettings(false)}
       />
 
       {/* App-root phrase-pack drawer. Sibling of SettingsModal so its
@@ -406,24 +505,38 @@ export default function App() {
           Both full-screen over Home; both exit via corpan:exit. */}
       {activeGame ? (
         activeGame.manifestUrl ? (
-          <ContentPackOverlay
-            id={activeGame.id}
-            manifestUrl={activeGame.manifestUrl}
-          />
+          /* Content pack: rendered bare. The pack owns its own chrome and
+             exits via `corpan:exit` (through hostApi) — we do NOT stamp our
+             own floating buttons over a pack's layout. */
+          <ContentPackOverlay id={activeGame.id} manifestUrl={activeGame.manifestUrl} entry={activeGame.entry} />
         ) : (
+          /* Native Phrase Flip overlay — app-owned, stack-driven; gets the
+             tailored Home + Quick Settings chrome. */
           <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
             <MainExperience />
-            <button
-              type="button"
-              aria-label="Home"
-              onClick={() => window.dispatchEvent(new CustomEvent("corpan:exit"))}
-              className="fixed right-4 z-[1110] flex h-10 w-10 items-center justify-center rounded-full bg-background/80 border border-border text-muted-foreground shadow-md backdrop-blur hover:text-foreground hover:bg-accent transition"
-              style={{ top: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)` }}
-            >
-              <HomeIcon className="h-5 w-5" />
-            </button>
+            <PhraseFlipChrome />
           </div>
         )
+      ) : null}
+
+      {/* Quick Settings sheet — opened by Phrase Flip's gear or hostApi. */}
+      <QuickSettingsSheet />
+
+      {/* Standalone Text-to-speech / voice configurator, opened from Settings.
+          z above SettingsModal (Radix dialog) so it overlays it; Back/Continue
+          both just close it (voice selections persist live to the store). */}
+      {showTTS ? (
+        <div className="fixed inset-0 z-[1200]">
+          <OnboardingTTSInstructions
+            onAdvance={() => setShowTTS(false)}
+            onBack={() => setShowTTS(false)}
+          />
+        </div>
+      ) : null}
+
+      {/* Post-onboarding guided tour (over Home; launching a pack closes it). */}
+      {showTour ? (
+        <OnboardingTour onLaunchPhrase={openPhrase} onClose={() => setShowTour(false)} />
       ) : null}
 
       <TTSFailureBanner />

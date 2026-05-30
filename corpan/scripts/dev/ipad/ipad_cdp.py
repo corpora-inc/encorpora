@@ -103,6 +103,21 @@ async def pick_corpan_page(inspector: WebinspectorService) -> ApplicationPage:
             "no inspectable pages found. unlock the iPad, confirm the app is "
             "running, and that Web Inspector is enabled."
         )
+
+    # When `tauri ios dev` relaunches the app, WebKit can briefly keep BOTH the
+    # stale bundled page (web_url "tauri://localhost") and the live dev-server
+    # page (web_url "http(s)://…:1421") inspectable. Prefer the live http(s)
+    # page so we never drive a ghost. In a production/bundled run only the
+    # tauri:// page exists, so this still returns it.
+    def _rank(p: ApplicationPage) -> int:
+        url = (p.page.web_url or "").lower()
+        if url.startswith("http"):
+            return 0
+        if url.startswith("tauri"):
+            return 2
+        return 1
+
+    matches.sort(key=_rank)
     return matches[0]
 
 

@@ -33,6 +33,25 @@ export type CatalogGame = {
   /** System packs (Library, readers) auto-install on launch — no user action.
    * Lets us ship Library/reader UX updates without an app-store release. */
   systemPack?: boolean
+
+  // ── Recommendation metadata (catalog-driven so new packs can be added,
+  //    prioritized, and surfaced WITHOUT an app release). All optional; the
+  //    app falls back to `@/experiences/registry` for built-ins / older
+  //    catalogs that don't carry these yet. ──
+  /** Interest categories: "read" | "audio" | "games" | "speak" | "study" |
+   *  "wild". Matched against the user's onboarding interests when ranking. */
+  categories?: string[]
+  /** User classes this experience is an especially good fit for
+   *  ("enjoyer" | "learner" | "polyglot" | "kid_native"). */
+  goodForClass?: string[]
+  /** Cold-start order / tiebreak — lower surfaces earlier when scores tie. */
+  recommendOrder?: number
+  /** Gentle, kid-friendly content (bonus on the child journey). */
+  kidFriendly?: boolean
+  /** Language tags this experience is SPECIFIC to (e.g. Hanzipan → Chinese).
+   *  When set and none of the user's languages overlap (by base language) the
+   *  experience is heavily penalized in ranking. Omit for language-agnostic packs. */
+  languages?: string[]
 }
 
 /** Corpán Plus two-ZIP artifact (preview public, full Plus-gated). */
@@ -218,6 +237,23 @@ const toOptionalString = (value: unknown) => {
   return undefined
 }
 
+const toOptionalNumber = (value: unknown) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value
+  return undefined
+}
+
+const toOptionalBool = (value: unknown) => {
+  if (typeof value === "boolean") return value
+  return undefined
+}
+
+/** Parse a JSON string array, dropping non-string entries. undefined if absent. */
+const parseStringArray = (value: unknown): string[] | undefined => {
+  if (!Array.isArray(value)) return undefined
+  const out = value.filter((v): v is string => typeof v === "string")
+  return out.length ? out : undefined
+}
+
 const toNumber = (value: unknown) => {
   if (typeof value === "number" && Number.isFinite(value)) return value
   return undefined
@@ -259,6 +295,11 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
       descriptionLocalized: parseLocalizedString(record.descriptionLocalized),
       imageUrl: toOptionalString(record.imageUrl),
       purchase: parsePurchase(record.purchase),
+      categories: parseStringArray(record.categories),
+      goodForClass: parseStringArray(record.goodForClass),
+      recommendOrder: toOptionalNumber(record.recommendOrder),
+      kidFriendly: toOptionalBool(record.kidFriendly),
+      languages: parseStringArray(record.languages),
     })
   }
   return parsed

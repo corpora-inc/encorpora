@@ -9,6 +9,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- `openTtsSettings` (iOS): removed all private Settings URL schemes
+  (`prefs:`, `App-Prefs:`, `settings-navigation:`) — every one is rejected by
+  iPadOS 26 (`open()` → false, verified on-device) and they're an App Store
+  risk. Now opens only `openSettingsURLString` (the app's own page, the sole
+  public handle); the app shows the exact Accessibility → Spoken Content →
+  Voices path in an interstitial. The official iOS 18 `AccessibilitySettings`
+  API has no Voices/Spoken-Content destination, so it isn't used.
+
 ## [0.2.0] - 2026-04 — Android TTS onboarding (Corpán 0.11.8 #230)
 
 ### Added

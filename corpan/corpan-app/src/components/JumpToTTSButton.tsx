@@ -6,8 +6,12 @@ import { useSettingsStore } from "@/store/settings";
 import { memo } from "react";
 
 /**
- * Jumps into the onboarding flow at the TTS setup step.
- * Assumes global step indices: learning=0, tts=1, levels=2, domains=3, socials=4
+ * Opens the standalone Text-to-speech / voice configurator.
+ *
+ * Onboarding is now a decision GRAPH (no linear step index), so the old
+ * `setOnboarded(false); setStep(3)` jump dumped the user back at the welcome
+ * screen. Instead we dispatch `corpan:open-tts`, which App listens for and
+ * renders the same `OnboardingTTSInstructions` screen standalone over Settings.
  */
 export const JumpToTTSButton = memo(function JumpToTTSButton({
     className,
@@ -16,8 +20,6 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
     className?: string;
     fullWidth?: boolean;
 }) {
-    const setStep = useSettingsStore((s) => s.setOnboardingStep);
-    const setOnboarded = useSettingsStore((s) => s.setOnboarded);
     const languages = useSettingsStore((s) => s.languages);
     const { t } = useTranslation();
 
@@ -25,9 +27,7 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
     const canEnter = (languages?.length || 0) > 0;
 
     const handleClick = () => {
-        // Jump to TTS step
-        setOnboarded(false);
-        setStep(3);
+        window.dispatchEvent(new CustomEvent("corpan:open-tts"));
     };
 
     return (

@@ -231,6 +231,9 @@ type MultiStackState = {
     userClass: UserClass | null;
     ageBand: AgeBand | null;
     goalIntensity: GoalIntensity | null;
+    /** Interest tags ("read", "audio", "games", "speak", "study", "wild")
+     *  from onboarding's "What do you want to do?" — drives experience ranking. */
+    interests: string[];
 
     // Updaters (write canonical + mirrors)
     setLanguages: (codes: string[]) => void;
@@ -274,6 +277,9 @@ type MultiStackState = {
         ageBand?: AgeBand;
         goalIntensity?: GoalIntensity;
     }) => void;
+
+    /** Set the onboarding interest tags (replaces the whole set). */
+    setInterests: (interests: string[]) => void;
 
     /** Android-only: set or clear the preferred TTS engine package. */
     setPreferredEngine: (pkg: string | null) => void;
@@ -517,6 +523,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 userClass: null,
                 ageBand: null,
                 goalIntensity: null,
+                interests: [],
 
                 // Updaters
                 setLanguages: (codes) => {
@@ -645,6 +652,7 @@ export const useSettingsStore = create<MultiStackState>()(
                         ageBand: profile.ageBand ?? s.ageBand,
                         goalIntensity: profile.goalIntensity ?? s.goalIntensity,
                     })),
+                setInterests: (interests) => set({ interests: [...new Set(interests)] }),
                 setPreferredEngine: (pkg) => set({ preferredEngine: pkg && pkg.length ? pkg : null }),
 
                 // Stacks mgmt
@@ -738,6 +746,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 userClass: state.userClass,
                 ageBand: state.ageBand,
                 goalIntensity: state.goalIntensity,
+                interests: state.interests,
                 theme: state.theme,
                 preferredEngine: state.preferredEngine,
             }),

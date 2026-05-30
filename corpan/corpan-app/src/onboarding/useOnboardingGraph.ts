@@ -4,7 +4,7 @@ import { useSettingsStore } from "@/store/settings"
 import { getAutonym } from "@/store/translations"
 import { ONBOARDING_GRAPH, ENTRY_NODE } from "./graph"
 import { resolveNext } from "./types"
-import type { Draft, NodeCtx, NextSpec, QuestionOption } from "./types"
+import type { Draft, NodeCtx, NextSpec, QuestionOption, MultiQuestionNode } from "./types"
 
 /**
  * Decision-graph traversal: a string-id back-stack (pure graph walk, no
@@ -59,6 +59,16 @@ export function useOnboardingGraph() {
     [goTo, makeCtx]
   )
 
+  /** Commit a multi-select node's chosen ids (empty = skip), then route. */
+  const chooseMulti = useCallback(
+    (node: MultiQuestionNode, selectedIds: string[]) => {
+      const ctx = makeCtx()
+      node.apply(ctx, selectedIds)
+      goTo(resolveNext(node.next, ctx))
+    },
+    [goTo, makeCtx]
+  )
+
   const back = useCallback(() => {
     setHistory((h) => {
       if (!h.length) return h
@@ -73,6 +83,7 @@ export function useOnboardingGraph() {
     canBack: history.length > 0,
     advance,
     choose,
+    chooseMulti,
     back,
     makeCtx,
   }

@@ -299,6 +299,9 @@ export type HostApi = {
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   /** Apply a partial config patch to the active stack (whitelisted axes). */
   setStackConfig?: (patch: StackConfigPatch) => void
+  /** Open the host's compact Quick Settings sheet (speed / languages / levels /
+   *  active phrase packs) over the running pack. Feature-detect on older hosts. */
+  openQuickSettings?: () => void
   /** Per-stack navigation history (for the phrase experience). */
   history?: HostHistoryApi
   /** Feed the host's rating-prompt counter (host owns the actual prompt). */
