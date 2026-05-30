@@ -1,0 +1,20 @@
+{
+  "code": "zh",
+  "displayName": {
+    "en": "Mandarin Chinese",
+    "zh": "普通话"
+  },
+  "voiceLanguageCode": "zh-CN",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "data/mandarin.sqlite3",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

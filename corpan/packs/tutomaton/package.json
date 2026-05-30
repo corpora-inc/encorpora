@@ -1,0 +1,22 @@
+{
+  "name": "@corpan/tutomaton",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "bootstrap": "node scripts/bootstrap-languages.mjs"
+  },
+  "dependencies": {
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "^5.4.0",
+    "vite": "^6.0.3"
+  }
+}

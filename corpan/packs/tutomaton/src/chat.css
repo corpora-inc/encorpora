@@ -1,0 +1,166 @@
+/* Minimal styles for the Spanish tutor pack. Polish machine will refine these
+ * — this is just enough to verify behavior + layout. Real design system colors
+ * + dark mode + iOS safe-area + typography all happen on the polish pass. */
+
+:root {
+  --lt-bg: #0f1115;
+  --lt-fg: #e8e8ec;
+  --lt-user-bg: #2563eb;
+  --lt-user-fg: #fff;
+  --lt-bot-bg: #232735;
+  --lt-bot-fg: #e8e8ec;
+  --lt-muted: #7b8190;
+  --lt-border: #2a2e3a;
+  --lt-active: #4ade80;
+}
+
+.lt-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--lt-bg);
+  color: var(--lt-fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.lt-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--lt-border);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.lt-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lt-controls {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.lt-controls button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: transparent;
+  color: var(--lt-fg);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.lt-controls button.active {
+  background: var(--lt-active);
+  color: #0a0a0a;
+  border-color: var(--lt-active);
+}
+
+.lt-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lt-msg {
+  display: flex;
+  max-width: 80%;
+}
+
+.lt-msg-user {
+  align-self: flex-end;
+}
+
+.lt-msg-assistant {
+  align-self: flex-start;
+}
+
+.lt-msg-system {
+  align-self: center;
+  font-size: 12px;
+  color: var(--lt-muted);
+  font-style: italic;
+}
+
+.lt-msg-body {
+  padding: 10px 14px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.lt-msg-user .lt-msg-body {
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+  border-bottom-right-radius: 4px;
+}
+
+.lt-msg-assistant .lt-msg-body {
+  background: var(--lt-bot-bg);
+  color: var(--lt-bot-fg);
+  border-bottom-left-radius: 4px;
+}
+
+.lt-input {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--lt-border);
+  background: rgba(0, 0, 0, 0.15);
+  align-items: center;
+}
+
+.lt-text {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg);
+  color: var(--lt-fg);
+  font-size: 16px;
+  outline: none;
+}
+
+.lt-send {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lt-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lt-mic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lt-mic.recording {
+  background: #ef4444;
+  animation: lt-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes lt-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}

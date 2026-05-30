@@ -1,0 +1,73 @@
+{
+  "id": "tutomaton-v1",
+  "name": "Tutomaton",
+  "version": "0.1.0",
+  "entry": "dist/chat.js",
+  "entryType": "module",
+  "styles": [
+    "dist/chat.css"
+  ],
+  "sdkVersion": "1.0.0",
+  "minAppVersion": "0.16.0",
+  "devOnly": true,
+  "tier": "plus",
+  "packType": "tutomaton",
+  "displayName": {
+    "en": "Tutomaton — language tutor",
+    "es": "Tutomaton — tutor de idiomas",
+    "fr": "Tutomaton — tuteur de langues",
+    "de": "Tutomaton — Sprachtutor",
+    "zh": "Tutomaton — 语言老师",
+    "ja": "Tutomaton — 言語チューター"
+  },
+  "tagline": {
+    "en": "A patient tutor for every language you're learning. Runs entirely on your device.",
+    "es": "Un tutor paciente para cada idioma que estás aprendiendo. Funciona completamente en tu dispositivo.",
+    "fr": "Un tuteur patient pour chaque langue que vous apprenez. Fonctionne entièrement sur votre appareil.",
+    "zh": "为你正在学的每种语言准备的耐心老师。完全在你的设备上运行。"
+  },
+  "dependsOn": [
+    {
+      "id": "llm-base-qwen3-4b-v1",
+      "minVersion": "0.1.0"
+    }
+  ],
+  "voiceSupport": {
+    "tts": true,
+    "stt": {
+      "whisperModel": "ggml-large-v3-turbo.bin"
+    }
+  },
+  "languages": [
+    {
+      "code": "es",
+      "displayName": {
+        "en": "Spanish",
+        "es": "Español"
+      },
+      "voiceLanguageCode": "es-MX",
+      "contentVersion": "0.1.0",
+      "sizeMb": 41,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/es-0.1.0.zip",
+      "sha256": "ef7acbd88f461d686c9995ff868a77e06639fbe8baf432e23bcf0c6f828bbf8b"
+    },
+    {
+      "code": "zh",
+      "displayName": {
+        "en": "Mandarin Chinese",
+        "zh": "普通话"
+      },
+      "voiceLanguageCode": "zh-CN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-0.1.0.zip",
+      "sha256": "251f7850e0f047492c8ba940c6141440deb290aabe8ea30c8779a31f6f82aa84"
+    }
+  ],
+  "metadata": {
+    "category": "language-tutor",
+    "supportsLanguageDownload": true,
+    "supportsVoiceMode": true
+  },
+  "devRevision": "2026-05-30T18:19:26.071Z"
+}
