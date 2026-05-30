@@ -21,6 +21,16 @@ are bugs. The speaker-audit step exists to catch these.
 
 ---
 
+## Anti-repetition (READ FIRST, every issue)
+
+Before drafting, read `EPISODE_REGISTRY.md` at the series root. **The
+concept-of-the-week must never repeat** — ep1 and ep3 both nearly shipped
+"mixture of experts"; that must not happen again. Also avoid re-anchoring the
+top story on the same theme, and demote any lead framing that already ran two
+weeks straight (e.g. "Chinese open model is #1 on OpenRouter usage") to a
+one-liner. After shipping, append the issue's row to the registry and update
+its "concepts used" list in the same commit.
+
 ## Episode format (~10–13 min) — revised Ep 2+
 
 1. **Cold open** — Vindy intros herself + Ron + the sections

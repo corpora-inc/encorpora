@@ -507,6 +507,19 @@ BOOK_META = {
         ),
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly"],
     },
+    "book_ai_this_week_2026_05_27": {
+        "description": (
+            "AI This Week for May 27, 2026 — The Most-Used Model on Earth. A "
+            "quiet release week, so two hosts go where the keynotes don't: "
+            "SGLang and DeepSeek's permanent price cut reshape self-hosting, "
+            "OpenRouter shows an open MIT-licensed Chinese model is now the "
+            "most-used on Earth, and the chip war is the same story. Top story "
+            "is the state of open text-to-speech — Chatterbox, OmniVoice, "
+            "VoxCPM2, MOSS-TTS-Nano, and the license trap. Concept of the week "
+            "is mixture of experts. About fifteen minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "tts"],
+    },
     "book_ai_this_week_2026_05_20": {
         "description": (
             "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "

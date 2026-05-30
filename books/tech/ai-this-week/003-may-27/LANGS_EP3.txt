@@ -1,0 +1,6 @@
+# AI This Week Ep3 — target languages, economic-power ordered (en already first).
+# Push for 50; drop any that won't pass a clean audit (per user).
+# Provider: claude-translate for Tier C/D (passthrough/Indic): ta te gu kn ur th ja bn mr ne
+# ep2-proven-clean (38): ar ca cs da de el en es fa fi fr gu he hi hr hu id it ja kn ko ms nl no pl pt ru sk sl sv sw ta te th tr uk vi zh
+# new for 50 (12): ro bg lt sr ur bn mr ne fil lv et yue-Hant-HK
+en zh es ar fr de pt hi ja ru it ko nl tr pl id sv vi th he da no fi el cs ro hu uk sk hr bg sl lt sr fa ms ca sw ta te ur bn gu kn mr ne fil lv et yue-Hant-HK
