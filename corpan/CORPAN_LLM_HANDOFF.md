@@ -44,41 +44,62 @@ aws --profile <full-perms> cloudfront create-invalidation \
   --distribution-id E1RDNUCVE70SCI --paths /catalog-v2.json
 ```
 
-## Live-reload dev loop (THE thing the frontend agent runs)
+## Live-reload dev loop (run on the dev-pairing machine)
 
-The Spark serves Tutomaton from disk; you point a browser on any machine at the Spark via Tailscale. Edits land live.
+Tutomaton's `dev:corpan` serves the pack tree over LAN to a real corpan-app running on a device under test (iOS/Android). Edit a TS file → vite rebuilds `dist/chat.js` → `manifest.devRevision` bumps → the running app reloads the pack module. **Not a browser preview.**
 
-**Terminal A — corpan-app dev server (binds 0.0.0.0:5274 so Tailscale reaches it):**
+**One-time setup:**
 ```bash
-cd corpan-app
-npm run dev -- --port 5274 --host 0.0.0.0
+git pull
+cd corpan/packs/tutomaton
+npm install
+npm run bootstrap   # fetches ES corpus from CDN (41 MB), rebuilds ZH from build_corpus.py
 ```
 
-**Terminal B — Tutomaton pack watcher + manifest devRevision bumper:**
+**Then start the dev server:**
 ```bash
-cd packs/tutomaton
-npm install         # one-time
-npm run bootstrap   # one-time: fetches ES corpus from CDN, rebuilds ZH from build_corpus.py
 npm run dev:corpan
 ```
 
-**Frontend agent on any machine:**
+You'll see a banner like:
+
 ```
-http://spark-f62c:5274/      (Tailscale MagicDNS — short)
-http://100.99.83.64:5274/    (raw IPv4 fallback)
+────────────────────────────────────────────────────────────────────────
+ Tutomaton dev:corpan ready on port 8991
+
+ Manifest URL (point your corpan-app dev to this):
+   http://10.0.0.49:8991/packs/tutomaton/manifest.json
+
+ Other entry points served:
+   http://10.0.0.49:8991/packs/tutomaton/dist/chat.js
+   http://10.0.0.49:8991/packs/tutomaton/languages/es/module.json
+   http://10.0.0.49:8991/packs/tutomaton/languages/zh/module.json
+────────────────────────────────────────────────────────────────────────
 ```
 
-Edit `packs/tutomaton/src/*.ts` or `packs/tutomaton/languages/<code>/retrieval/*.ts` → vite rebuilds `dist/chat.js` → poll-based watcher bumps `manifest.devRevision` → corpan-app reloads the pack module. End-to-end latency is ~1 second.
+Copy the manifest URL into the corpan-app dev pack-loader. The device fetches it, then fetches the entry, language modules, etc. CORS + `Cache-Control: no-store` are wired so device reloads pick up your edits immediately.
 
-**The chat itself won't generate tokens in dev** — `window.__TAURI__` invocations go nowhere without the native runtime. The frontend agent iterates on:
-- Language picker UI / browse-languages affordance
+**Port convention (so multiple `dev:corpan` instances don't clash):**
+
+| Pack | Port |
+|---|---|
+| stargate-reader | 8989 |
+| earthgate-reader | 8990 |
+| **tutomaton** | **8991** |
+
+Override: `TUTOMATON_DEV_PORT=9001 npm run dev:corpan`. If the port is in use, the script prints a clear error and tells you to set the env var.
+
+**Why polling (not `fs.watch`) in dev-corpan.mjs:** vite's `emptyOutDir: true` recreates `dist/` on each build, which invalidates `fs.watch` handles on Linux. The watcher polls `dist/chat.js` mtime instead. Don't "fix" it back.
+
+**Chat won't generate tokens yet** — `window.__TAURI__` invocations land on stubbed plugin commands. Iterate freely on:
+- Language picker UI / browse-languages affordance for not-yet-installed languages
 - Chat bubble styles, streaming caret, scroll behavior
 - Voice mode UI (mic pulse, recording animation)
 - Onboarding modal copy + flow
 - Settings panel
-- Theme bypass rendering
+- Theme-bypass rendering
 
-Once the polish machine wires the native plugin's desktop `llama-cpp-2` real-generation path (a small change in `plugins/tauri-plugin-corpan-llm/src/state.rs`), the chat will start producing real tokens in this dev loop too.
+Once the desktop `llama-cpp-2` real-generation path is wired in `plugins/tauri-plugin-corpan-llm/src/state.rs` (currently stubbed to echo tokens), the chat will start producing real tokens in this loop too.
 
 ## Decisions locked in
 
