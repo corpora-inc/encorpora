@@ -28,6 +28,10 @@ const APPLE_STORE_FALLBACK =
 const PLAY_STORE_FALLBACK =
   `https://play.google.com/store/apps/details?id=${BUNDLE_ID}`
 
+/** Public store listings — single source of truth (share links, etc.). */
+export const APP_STORE_URL = APPLE_STORE_FALLBACK
+export const PLAY_STORE_URL = PLAY_STORE_FALLBACK
+
 type AppleLookupResponse = {
   results?: Array<{ version?: string; trackViewUrl?: string }>
 }

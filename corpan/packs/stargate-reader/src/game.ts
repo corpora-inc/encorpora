@@ -507,6 +507,8 @@ export function createStargateReader(
             bookTitle: bookDisplayName,
             bookId,
             language: currentLanguage,
+            // Skin the host paywall to match this reader (accent + bg).
+            theme: "stargate",
           },
         })
       )

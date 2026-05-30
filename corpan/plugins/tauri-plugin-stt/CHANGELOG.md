@@ -8,6 +8,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Android: native SIGSEGV during model load STILL fired after 0.5.1
+  — the lock was per-instance, the corrupt state is process-global.**
+  0.5.1's `Mutex` was a `private val` on `SttPlugin`, so it only
+  serialized native calls within ONE plugin instance. On Activity
+  recreation (process-restore, low-memory restart, or a config change
+  outside the app's `configChanges` list) Tauri builds a *second*
+  `SttPlugin` with its own mutex while the first instance's init may
+  still be running on a blocking JNI thread (cancellation is
+  cooperative; JNI ignores it). The two instance-local locks don't
+  exclude each other, so the cross-instance `whisper_init_state` race
+  kept crashing in the field on builds that already had 0.5.1. The
+  lock is now a process-global singleton (`WhisperNative.mutex`), the
+  single gate for every native call regardless of instance count.
+- **Android: pre-load ggml magic check.** `loadGuarded()` rejects a
+  file whose first bytes aren't the ggml magic (a truncated download or
+  an HTML error page saved as the model) and returns a clean
+  `LOAD_FAILED` instead of handing garbage to native init. Fails open
+  on a read error so a transient IO hiccup never blocks a real model.
+
+### Added
+- **Android: native-init crash breadcrumb.** A `.json` breadcrumb is
+  written to disk immediately before `nativeInitFromFile` and deleted
+  right after. An uncatchable SIGSEGV inside ggml init leaves it
+  behind; the next launch logs `STT_INIT_CRASH` with the model,
+  instance ordinal, instances-created count, and process uptime — the
+  cold-launch-vs-recreate signal the store crash console can't give.
+
+## [0.5.1] - 2026-05-28 — Serialize native whisper calls
+
+### Fixed
 - **Android: native SIGSEGV during model load
   (`ggml_backend_sched_split_graph`).** All native whisper.cpp calls
   (init / transcribe / free) now serialize through a single `Mutex`
@@ -21,7 +51,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   load-vs-free and free-vs-transcribe use-after-free windows;
   `onDestroy` releases via `tryLock` so teardown never frees a
   context out from under an in-flight transcribe (nor blocks the
-  main thread waiting on one).
+  main thread waiting on one). _(Shipped in app 0.15.10 — but see the
+  0.5.2 Unreleased entry: this lock was per-instance and the crash
+  persisted.)_
 
 ## [0.5.0] - 2026-05-19 — Per-call scoring overlay
 

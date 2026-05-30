@@ -31,7 +31,7 @@ import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
-import { usePaywallStore, type PaywallSurface } from "@/store/paywall";
+import { usePaywallStore, type PaywallSurface, type PaywallContext } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
@@ -261,12 +261,14 @@ export default function App() {
         bookTitle?: string;
         bookId?: string;
         language?: string;
+        theme?: string;
       }>).detail;
       usePaywallStore.getState().openPaywall({
         surface: (detail?.surface as PaywallSurface) ?? "other",
         bookTitle: detail?.bookTitle,
         bookId: detail?.bookId,
         language: detail?.language,
+        theme: detail?.theme as PaywallContext["theme"],
       });
     };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);

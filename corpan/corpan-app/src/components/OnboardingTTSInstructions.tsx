@@ -726,7 +726,15 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
                                 language with the auto-picked region-appropriate
                                 voice + Play-to-test. Single voices flow on phone;
                                 a grid keeps multi-language stacks tidy on tablet. */}
-                            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                            <div
+                                className={
+                                    langs.length === 1
+                                        // Single language → one centered, capped card (not
+                                        // flush-left in a half-width grid cell).
+                                        ? "mx-auto w-full max-w-md"
+                                        : "grid grid-cols-1 gap-3 sm:grid-cols-2"
+                                }
+                            >
                                 {langs.map((code) => renderConfidentVoice(code))}
                             </div>
 

@@ -22,6 +22,7 @@ export type PaywallSurface =
   | "home_chip"
   | "streak_milestone"
   | "book_finished"
+  | "settings"
   | "other"
 
 /** Auto-fired moments we frequency-cap (vs. user-initiated/strong-intent). */
@@ -46,12 +47,19 @@ function stampEngagement(now: number) {
   }
 }
 
+/** Visual skin for the paywall sheet. Readers pass their own so the sheet that
+ *  overlays a running reader feels like part of it (earth-toned vs. space).
+ *  Absent / unknown → the default Corpán (purple) treatment. */
+export type PaywallTheme = "earthgate" | "stargate"
+
 export type PaywallContext = {
   surface: PaywallSurface
   /** Book title to name in the subhead, if the trigger knows it. */
   bookTitle?: string
   bookId?: string
   language?: string
+  /** Visual skin to apply; set by readers, ignored elsewhere. */
+  theme?: PaywallTheme
 }
 
 type PaywallState = {

@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogClose,
 } from "@/components/ui/dialog";
-import { XIcon } from "lucide-react";
+import { XIcon, Sparkles } from "lucide-react";
 import { LanguageSelectOrder } from "./LanguageSelectOrder";
 import { PhrasePackToggleSection } from "./packs/PhrasePackToggleSection";
 import { LevelsPicker } from "./LevelsPicker";
@@ -28,8 +28,9 @@ import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { DismissableTip } from "./DismissableTip";
 import { JumpToTTSButton } from "./JumpToTTSButton";
-import { SubscriptionOffer } from "./packs/SubscriptionOffer";
-import { RestorePurchases } from "./packs/RestorePurchases";
+import { usePaywallStore } from "@/store/paywall";
+import { useEntitlementStore } from "@/store/entitlements";
+import { manageSubscription } from "@/contentPacks/purchase";
 import { useCatalogStore } from "@/store/catalog";
 import { useInstallContext } from "@/contentPacks/InstallContext";
 import { getPlatformTopPaddingButtons } from "@/util/browser";
@@ -99,6 +100,9 @@ export function SettingsModal({
   const dir = useSettingsStore((s) => s.dir);
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
+  const openPaywall = usePaywallStore((s) => s.openPaywall);
+  const iapAvailable = useEntitlementStore((s) => s.iapAvailable);
+  const subscribed = useEntitlementStore((s) => s.subscription.active);
 
   useEffect(() => {
     return () => {
@@ -208,13 +212,6 @@ export function SettingsModal({
 
           <Separator className="mt-5" />
 
-          {/* Corpán Plus — the durable subscribe/manage/restore home. Self-hides
-              when not applicable. */}
-          <SubscriptionOffer />
-          <RestorePurchases />
-
-          <Separator />
-
           {/* Advanced & Developer */}
           <div className="space-y-4">
             <AnonymousAnalyticsToggle />
@@ -240,6 +237,41 @@ export function SettingsModal({
             <h4 className="text-2xl leading-none font-medium text-center">{t("footer.aboutCorpan")}</h4>
             <p className="text-muted-foreground text-center">{t("common.instantPolyglotPractice")}</p>
           </div>
+
+          {/* Corpán Plus — a small colored entry point, not the full card.
+              Non-subscribers get a button that pops the paywall modal (which
+              carries subscribe + restore); subscribers get a quiet badge +
+              Manage. Hidden when IAP is unavailable. */}
+          {iapAvailable ? (
+            subscribed ? (
+              <div className="flex items-center justify-center gap-2 text-sm">
+                <Sparkles size={15} className="text-purple-500" aria-hidden />
+                <span className="font-medium text-purple-600 dark:text-purple-300">
+                  {t("subscription.subscribed", { defaultValue: "You're subscribed" })}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => void manageSubscription()}
+                  className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+                >
+                  {t("subscription.manage", { defaultValue: "Manage" })}
+                </button>
+              </div>
+            ) : (
+              <div className="flex justify-center">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => openPaywall({ surface: "settings" })}
+                  className="gap-2 border-purple-400/50 text-purple-600 hover:bg-purple-500/10 dark:text-purple-300 dark:border-purple-700/60"
+                >
+                  <Sparkles size={16} />
+                  {t("packs.plus", { defaultValue: "Corpán Plus" })}
+                </Button>
+              </div>
+            )
+          ) : null}
+
           <About />
         </div>
 

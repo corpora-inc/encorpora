@@ -8,18 +8,19 @@
 import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Github, Youtube, Newspaper, Globe, Instagram, ExternalLink, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Github, Youtube, Newspaper, Globe, Instagram, ExternalLink, Sparkles, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OnboardingShell } from "@/onboarding/OnboardingShell";
 import { usePaywallStore } from "@/store/paywall";
 import { useEntitlementStore } from "@/store/entitlements";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/latestVersion";
 import { trackOnboardingCompleted } from "@/util/analytics";
 import type { OnboardingStepProps } from "@/onboarding/types";
 
-// All link icons use one accent so the row doesn't clash (the per-service
-// red/pink/amber/indigo did). Tertiary brand color: the rust-brown from the
-// Corpán mark (~#c86020) — warmer than purple and ties to the logo.
-const LINK_ICON_CLS = "text-[#c86020]";
+// One calm neutral tone for every icon — matches the "What do you want to do?"
+// choice icons; the per-service brand colors (red/pink/amber/indigo) clashed.
+const LINK_ICON_CLS = "text-muted-foreground";
 const LINKS = [
     { key: "youtube", url: "https://www.youtube.com/@corpán1", Icon: Youtube, cls: LINK_ICON_CLS },
     { key: "instagram", url: "https://instagram.com/corpanapp", Icon: Instagram, cls: LINK_ICON_CLS },
@@ -40,6 +41,33 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
             await openUrl(url);
         } catch {
             try { await navigator.clipboard.writeText(url); } catch { /* ignore */ }
+        }
+    }
+
+    // Native share sheet (Messages, etc.) so users can text friends. Includes
+    // BOTH store links + a short line — the sender and recipient may be on
+    // different platforms, so we don't guess (no smart-redirect link exists).
+    // Text-only (no `url` field) so both links survive in the shared body.
+    const [shareCopied, setShareCopied] = useState(false);
+    async function shareCorpan() {
+        const pitch = t("socials.share.text", {
+            defaultValue: "Learn languages with Corpán.",
+        });
+        const message = `${pitch}\n\niOS: ${APP_STORE_URL}\nAndroid: ${PLAY_STORE_URL}`;
+        try {
+            if (typeof navigator !== "undefined" && navigator.share) {
+                await navigator.share({ title: "Corpán", text: message });
+                return;
+            }
+        } catch {
+            // user cancelled the sheet, or share is unsupported — fall through to copy
+        }
+        try {
+            await navigator.clipboard.writeText(message);
+            setShareCopied(true);
+            window.setTimeout(() => setShareCopied(false), 2000);
+        } catch {
+            /* clipboard unavailable */
         }
     }
 
@@ -128,6 +156,31 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
                         </button>
                     </li>
                 ))}
+
+                {/* Share — opens the native share sheet so users can text the
+                    link to friends (6th tile completes the 2-col grid). */}
+                <li>
+                    <button
+                        type="button"
+                        onClick={() => void shareCorpan()}
+                        className="group w-full rounded-xl border border-border bg-card p-4 text-left transition hover:-translate-y-[1px] hover:border-purple-400/60 hover:shadow-md"
+                        aria-label={t("socials.share.title", { defaultValue: "Share Corpán" })}
+                    >
+                        <div className="flex items-center gap-3">
+                            <span className={`grid h-10 w-10 place-items-center rounded-lg ${LINK_ICON_CLS}`} aria-hidden>
+                                <Share2 size={20} />
+                            </span>
+                            <div className="min-w-0 flex-1">
+                                <div className="truncate text-sm font-semibold text-foreground">
+                                    {shareCopied
+                                        ? t("socials.share.copied", { defaultValue: "Link copied!" })
+                                        : t("socials.share.title", { defaultValue: "Share Corpán" })}
+                                </div>
+                            </div>
+                            <ExternalLink size={16} className="shrink-0 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
+                        </div>
+                    </button>
+                </li>
             </ul>
         </OnboardingShell>
     );

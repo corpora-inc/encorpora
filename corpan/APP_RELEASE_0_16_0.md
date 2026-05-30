@@ -27,8 +27,18 @@ CHANGELOG `[Unreleased]` promoted to `[0.16.0] - 2026-05-30`. `npm run tsc` +
 - **TTS setup**: region-aware multi-voice auto-pick ("N voices ready"), no
   layout jerk on async voice load, opens from Settings, voice-install copy
   reframed ("unlock your device's best voices").
-- **Localization**: **all 51 locales verified — 0 missing keys, 0 placeholder
-  mismatches** (649 keys each). Onboarding/paywall/home/voiceGuide all translated.
+- **Localization**: all 51 locales verified — 0 placeholder mismatches.
+  Onboarding/paywall/home/voiceGuide all translated. **One small delta**: the 3
+  new `socials.share.*` keys (Share tile, added after the sweep) are EN-only in
+  the 50 non-EN locales — already registered in
+  `public/locales/translate_corpan_plus_keys.py`, so the next translate run
+  fills them. Shows English "Share Corpán" until then (harmless).
+- **Engagement ("You're all set") page finalized**: 6 tiles in an even 2-col
+  grid, all icons one neutral tone (matching the interests choices); new **Share
+  Corpán** tile opens the native share sheet (clipboard fallback). It shares a
+  short line + **both** real store links (App Store `id6746082061` + Play
+  `com.corpora.corpan`, exported from `lib/latestVersion`) so cross-platform
+  friends are covered. The purple "Join the Corpanistas" Plus card stays distinct.
 
 ## What's left to ship
 

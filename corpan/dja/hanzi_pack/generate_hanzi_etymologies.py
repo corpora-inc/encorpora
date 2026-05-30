@@ -157,6 +157,16 @@ def main() -> None:
         default=1,
         help="Parallel workers for batch requests (default: 1).",
     )
+    ap.add_argument(
+        "--include-existing",
+        action="store_true",
+        help=(
+            "Union the live core-DB hanzi scan with characters already "
+            "present in the existing seed JSON. Use this when the core "
+            "corpus has been slimmed but Hanzipan's character universe "
+            "should retain previously-curated chars."
+        ),
+    )
     args = ap.parse_args()
 
     core_db = args.core_db.resolve()
@@ -172,12 +182,27 @@ def main() -> None:
         langs = ["en", *langs]
 
     characters = collect_characters(core_db, ["zh-Hans", "zh-Hant"])
-    if args.limit:
-        characters = characters[: args.limit]
 
     out = args.out.resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     existing = load_existing(out)
+
+    if args.include_existing and existing:
+        # Hanzipan's character universe is canonically the etymology seed
+        # JSON — corpus slims shouldn't drop previously-curated chars from
+        # the pack. Union the scan with whatever the seed already covers.
+        existing_chars = sorted(existing.keys())
+        combined = sorted({*characters, *existing_chars})
+        added = len(combined) - len(characters)
+        if added:
+            print(
+                f"[chars] include-existing: scan={len(characters)} "
+                f"+ seed-only={added} = {len(combined)} total",
+            )
+        characters = combined
+
+    if args.limit:
+        characters = characters[: args.limit]
 
     llm_kwargs = {}
     if args.completion_model:

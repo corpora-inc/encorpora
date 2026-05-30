@@ -10,6 +10,47 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-05-30 — Etymologies in 22 new languages
+
+### Added
+- Character etymologies now ship in all 51 Corpán languages (was 29).
+  The 22 newly-covered locales: `bg`, `ca`, `cs`, `da`, `el`, `fi`,
+  `he`, `hr`, `lt`, `ms`, `ne`, `nl`, `no`, `pt-PT`, `ro`, `sk`,
+  `sl`, `sr`, `sv`, `sw`, `uk`, `yue-Hant-HK`. Users running Corpán
+  in those languages no longer fall back to English etymologies.
+
+### Changed
+- Pack character universe is now sourced from the etymology seed JSON
+  (3344 chars) rather than the live core-corpus hanzi scan. The
+  `slim corpus to 10k phrases` commit (`c3b16da9`) had shrunk the
+  scan to 2669 hanzi, which would have silently dropped 675
+  previously-curated characters on the next rebuild. Decoupling the
+  pack's char set from the corpus makes the canonical build (driven
+  by `corpan/scripts/rebuild-hanzi-pack.sh`) stable across future
+  corpus slims.
+
+### Build / Tooling
+- `corpan/dja/hanzi_pack/generate_hanzi_etymologies.py`: new
+  `--include-existing` flag unions the live scan with chars already
+  present in the etymology seed. Used to fill the 675 corpus-orphaned
+  chars without writing a separate one-off script.
+- `corpan/dja/hanzi_pack/build_hanzi_pack.py`: new
+  `--include-etymology-chars` flag does the same for the DB build.
+  Now invoked from `rebuild-hanzi-pack.sh`.
+- `rebuild-hanzi-pack.sh`: replaced the legacy `cat hanziwriter.min.js
+  > dist/app.js` plumbing (broken since the move to Vite + inlining
+  plugin) with `npm run pack:all`. The canonical CI build is unchanged.
+- Translations driven via the existing `corpora_ai` OpenAI provider
+  (`gpt-4.1-mini`); the script's resumable per-batch JSON checkpoint
+  + per-lang missing-detection picked up partial-batch drops cleanly
+  across re-runs.
+
+### Known limitations
+- Pack zip grew from ~17 MB → ~27 MB (52 MB → 72 MB SQLite); one-shot
+  download, acceptable per the 0.6.0 size budget.
+- `searchEntriesByText` still queries only the bundled corpus; the
+  cross-pack search rehoming flagged in 0.5.1 remains unimplemented.
+
 ## [0.5.1] - 2026-05-19
 ### Changed
 - The inline `hanziwriter` Tauri-load fallback path now logs the

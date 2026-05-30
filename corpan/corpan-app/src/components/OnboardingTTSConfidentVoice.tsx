@@ -84,6 +84,9 @@ export function OnboardingTTSConfidentVoice({
 
     const [speaking, setSpeaking] = useState(false);
     const speakTimer = useRef<number | null>(null);
+    // Each Play tap cycles to the next selected voice (loops) so the learner
+    // hears the variety across all their voices — not just the first one.
+    const cycleRef = useRef(0);
     function fireSpeaking() {
         setSpeaking(true);
         if (speakTimer.current) window.clearTimeout(speakTimer.current);
@@ -168,12 +171,14 @@ export function OnboardingTTSConfidentVoice({
     return (
         <div className="rounded-2xl border border-purple-200 bg-purple-50/60 p-3.5 shadow-sm dark:border-purple-800/50 dark:bg-purple-950/25">
             <div className="flex items-center gap-3">
-                {/* Big, obvious Play-to-test (previews the lead voice). */}
+                {/* Big, obvious Play-to-test — cycles through the selected voices. */}
                 <button
                     type="button"
                     onClick={() => {
+                        const v = voices[cycleRef.current % voices.length] ?? best;
+                        cycleRef.current = (cycleRef.current + 1) % voices.length;
                         fireSpeaking();
-                        void onPreview(best);
+                        void onPreview(v);
                     }}
                     aria-label={t("onboarding.voicePreviewAria", {
                         defaultValue: "Preview {{name}}",

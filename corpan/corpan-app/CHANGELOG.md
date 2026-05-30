@@ -11,6 +11,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Changed
 
+- **Paywall can be skinned per reader.** The `corpan:request-unlock` event now
+  accepts an optional `theme` ("earthgate" | "stargate"); `PaywallSheet` applies
+  a matching accent + background so the end-of-preview paywall feels native to
+  the reader it overlays. Unknown/absent theme → the default Corpán treatment.
+  The purchase flow (`SubscriptionOffer`) is unchanged.
+
 - **i18n: 0.16.0 delta translated into all 50 locales.** Filled the 144-key gap
   introduced by the Plus paywall, decision-graph onboarding, Home hub,
   experiences carousel, update prompt, install/offline states, phrase-pack
