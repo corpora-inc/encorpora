@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
+
 ### Changed
 
 - **i18n: 0.16.0 delta translated into all 50 locales.** Filled the 144-key gap

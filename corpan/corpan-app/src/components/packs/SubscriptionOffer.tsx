@@ -348,6 +348,15 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const monthlyProduct = state.products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = state.products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
+  // Annual savings vs paying monthly × 12 — computed from raw micros so it's
+  // accurate and currency-agnostic (it's a ratio). Shown as a quiet, language-
+  // neutral "−N%" badge to nudge the higher-LTV annual plan. Only when the
+  // store gives both numeric prices and annual is meaningfully cheaper.
+  const annualSavingsPct =
+    annualProduct?.priceMicros && monthlyProduct?.priceMicros && monthlyProduct.priceMicros > 0
+      ? Math.round((1 - annualProduct.priceMicros / (monthlyProduct.priceMicros * 12)) * 100)
+      : 0
+
   return (
     <div className={wrapper}>
       <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
@@ -368,12 +377,17 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
             <button
               type="button"
               onClick={() => setSelectedPlan("annual")}
-              className={`flex-1 rounded-lg border p-2 text-center text-xs transition-colors ${
+              className={`relative flex-1 rounded-lg border p-2 text-center text-xs transition-colors ${
                 selectedPlan === "annual"
                   ? "border-primary bg-primary/10 font-medium"
                   : "border-border"
               }`}
             >
+              {annualSavingsPct >= 5 ? (
+                <span className="absolute -top-2 right-1 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[9px] font-semibold leading-none text-white shadow-sm">
+                  −{annualSavingsPct}%
+                </span>
+              ) : null}
               <div className="font-medium">{annualProduct.price}</div>
               <div className="text-muted-foreground mt-0.5">
                 {t("subscription.annual", "Annual")}
