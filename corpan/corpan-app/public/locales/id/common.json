@@ -119,13 +119,16 @@
       "noMatches": "Tidak ada hasil.",
       "noFiltered": "Belum ada apa-apa di sini.",
       "stackTotalPhrases": "~{{count}} frasa cocok",
-      "stackTotalNudge": "Tambahkan paket atau perluas level untuk variasi."
+      "stackTotalNudge": "Tambahkan paket atau perluas level untuk variasi.",
+      "activeCount": "{{active}} dari {{total}} aktif",
+      "baseCorpusSubtitle": "{{n}} frasa"
     },
     "sendAnonUsage": "Kirim data penggunaan anonim",
     "sendAnonUsageHint": "Anonim, terbatas pada sesi. Tanpa akun, tanpa ID perangkat, tanpa penyimpanan IP. Bisa dimatikan kapan saja.",
     "readPrivacyPromise": "Baca Janji Privasi kami",
     "showStreak": "Tampilkan rentetan membaca",
-    "showStreakHint": "Penghitung hari kecil di header. Hanya di perangkat, tanpa pengingat atau notifikasi."
+    "showStreakHint": "Penghitung hari kecil di header. Hanya di perangkat, tanpa pengingat atau notifikasi.",
+    "primaryLanguage": "Bahasa utama (UI)"
   },
   "onboarding": {
     "welcome": "Selamat datang",
@@ -140,7 +143,7 @@
     "welcomeVisit": "Kunjungi encorpora.io",
     "linkCopied": "Tautan disalin. Buka di peramban Anda:",
     "reconfigureStack": "Konfigurasi ulang stack",
-    "openVoiceSettings": "Buka pengaturan suara di perangkat Anda",
+    "openVoiceSettings": "Buka Pengaturan",
     "openTTSSetup": "Buka pengaturan TTS",
     "welcomeFollowUp": "Terima kasih telah bergabung—sampai jumpa di komunitas!",
     "learningStepTitle": "Belajar",
@@ -149,8 +152,8 @@
     "languageOrderTipBody": "Bahasa paling bawah dalam daftar adalah bahasa antarmuka aplikasi. Untuk mengubah bahasa antarmuka, seret bahasa lain ke paling bawah.",
     "ttsOsTipTitle": "Tips",
     "ttsOsTipAndroid": "Paling cocok: gunakan Google TTS. Samsung TTS tidak berfungsi di Corpán.",
-    "ttsOsTipIOS": "Di Settings → Accessibility, cari Spoken Content dan unduh suara. Catatan: Apple tidak menyediakan suara untuk semua bahasa. Jika pembaruan tidak membantu, minta dukungan melalui aplikasi Feedback Apple.",
-    "ttsOsTipMac": "Di System Settings → Accessibility, cari Spoken Content dan unduh suara. Catatan: Apple tidak menyediakan suara untuk semua bahasa. Jika pembaruan tidak membantu, minta dukungan melalui aplikasi Feedback Apple.",
+    "ttsOsTipIOS": "Perangkat Anda memiliki suara Premium gratis bawaan — Apple hanya membiarkannya nonaktif. Aktifkan: Pengaturan → Aksesibilitas → Konten Lisan → Suara → bahasa Anda, lalu ketuk ikon unduh untuk suara Premium atau Enhanced. Kembali ke sini dan akan muncul secara otomatis. (Apple belum mendukung setiap bahasa.)",
+    "ttsOsTipMac": "Mac Anda memiliki suara Premium gratis bawaan — Apple hanya membiarkannya nonaktif. Aktifkan: Pengaturan Sistem → Aksesibilitas → Konten Lisan → Suara Sistem → Kelola Suara, lalu unduh suara Premium atau Enhanced. Kembali ke sini dan akan muncul secara otomatis. (Apple belum mendukung setiap bahasa.)",
     "ttsOsTipWindows": "Instal suara di Pengaturan lalu kembali ke sini.",
     "ttsOsTipOther": "Instal suara di pengaturan perangkat lalu kembali ke sini.",
     "installVoicesAndroid": "Instal suara",
@@ -172,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Pasang Google Text-to-Speech",
-        "detail": "Mesin suara Google memberikan kualitas terbaik di setiap bahasa yang didukung Corpán. Gratis.",
+        "detail": "Mesin suara gratis Google membuka suara berkualitas tinggi untuk sebagian besar bahasa yang didukung Corpán — kebanyakan ponsel tidak dilengkapi dengannya. Mari tambahkan:",
         "button": "Pasang dari Play Store"
       },
       "noEngine": {
@@ -227,7 +230,11 @@
       "emptySub": "Kembali lagi nanti.",
       "offlineHero": "Kamu offline.",
       "offlineSub": "Paket butuh internet — coba lagi dari Pengaturan → Paket.",
-      "offlineBanner": "Offline — pilihan akan dipasang saat terhubung."
+      "offlineBanner": "Offline — pilihan akan dipasang saat terhubung.",
+      "noneSelected": "Tidak ada yang dipilih — Lanjutkan akan melewati",
+      "selectedSuffix": "dipilih",
+      "skip": "Lewati untuk sekarang",
+      "subtitle": "Tambahkan paket frasa terfokus ke tumpukan Anda. Aktifkan atau nonaktifkan kapan saja di Pengaturan."
     },
     "notOnAppleIOS": "Bukan di iOS",
     "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}}",
@@ -257,7 +264,93 @@
       "team": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán.",
       "tryPlus": "Coba Corpán Plus",
       "continueFree": "Lanjutkan dengan versi gratis"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Berapa usia pembaca?",
+      "childTeen": "13–17 tahun",
+      "childUnder13": "Di bawah 13 tahun",
+      "enjoyComfortable": "Cukup baik",
+      "enjoyImproving": "Saya masih belajar membacanya",
+      "enjoyJustStarting": "Baru mulai — saya baru belajar membacanya",
+      "enjoyNative": "Lancar — ini bahasa saya",
+      "enjoyTitle": "Seberapa baik Anda membaca {{lang}}?",
+      "learnAdvanced": "Saya cukup mahir",
+      "learnLittle": "Sedikit",
+      "learnNever": "Belum pernah — pemula total",
+      "learnTitle": "Pernahkah Anda belajar {{lang}} sebelumnya?"
+    },
+    "confident": {
+      "addBetter": "Buka suara yang lebih kaya",
+      "andMore": "+{{count}} lainnya",
+      "chooseVoices": "Pilih suara",
+      "noVoiceFor": "Belum ada suara {{lang}} — mari tambahkan satu agar Corpán bisa membacakan.",
+      "voiceCountMany": "{{count}} suara siap",
+      "voiceCountOne": "1 suara siap",
+      "yourVoiceFor": "Suara {{lang}} Anda"
+    },
+    "engage": {
+      "joinDesc": "Dukung Corpán dan buka semua fitur. Opsional, kapan saja.",
+      "joinTitle": "Join the Corpanistas",
+      "start": "Mulai menjelajah",
+      "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",
+      "title": "Anda siap"
+    },
+    "fork": {
+      "child": {
+        "desc": "Buku dan game yang lembut, menyenangkan untuk pembelajar yang lebih muda.",
+        "label": "Siapkan untuk anak"
+      },
+      "enjoy": {
+        "desc": "Buku, cerita, game, latihan, dan lainnya — semuanya dalam bahasa Anda.",
+        "label": "Nikmati Corpán dalam {{lang}}"
+      },
+      "learn": {
+        "desc": "Cerita, game, latihan, dan audio dalam bahasa baru.",
+        "label": "Belajar bahasa"
+      },
+      "polyglot": {
+        "desc": "Tumpuk beberapa bahasa dan jelajahi semuanya.",
+        "label": "Jelajahi banyak bahasa"
+      },
+      "subtitle": "Kami akan menyiapkan semuanya untuk Anda. Anda bisa mengubahnya nanti.",
+      "title": "Apa yang membawa Anda ke Corpán?"
+    },
+    "interests": {
+      "audio": "Dengarkan audio",
+      "audioDesc": "Audiobook, narasi, dan radio.",
+      "games": "Mainkan game",
+      "gamesDesc": "Belajar melalui tantangan yang menyenangkan.",
+      "read": "Baca cerita & buku",
+      "readDesc": "Selami bacaan dalam bahasa Anda.",
+      "speak": "Latih berbicara",
+      "speakDesc": "Ucapkan frasa dengan lantang dan dapatkan umpan balik.",
+      "study": "Belajar & latihan",
+      "studyDesc": "Bangun kosakata dengan latihan terfokus.",
+      "subtitle": "Pilih apa pun yang menarik — kami akan menyarankan pengalaman yang sesuai. Opsional.",
+      "title": "Apa yang ingin Anda lakukan?",
+      "wild": "Jelajahi hal-hal unik",
+      "wildDesc": "Pengalaman yang mengejutkan dan eksperimental."
+    },
+    "settingUp": "Menyiapkan…",
+    "ttsIntro": "Corpán membacakan dengan lantang. Ketuk suara untuk mendengarkannya dengan kecepatan Anda.",
+    "voiceGuide": {
+      "intro": "Perangkat Anda memiliki suara yang kaya dan alami bawaan — gratis, dan jauh lebih baik dari bawaan. Produsen hanya membiarkannya nonaktif. Mari kita aktifkan; hanya perlu beberapa ketukan:",
+      "macStep1": "Buka Pengaturan Sistem.",
+      "macStep2": "Buka Aksesibilitas → Konten Lisan.",
+      "macStep3": "Di bawah Suara Sistem, buka Kelola Suara.",
+      "macStep4": "Unduh suara Premium atau Enhanced untuk bahasa Anda.",
+      "macStep5": "Kembali ke Corpán — akan muncul di sini secara otomatis.",
+      "step1": "Ketuk Buka Pengaturan di bawah.",
+      "step2": "Buka Aksesibilitas → Konten Lisan → Suara.",
+      "step3": "Ketuk bahasa Anda.",
+      "step4": "Unduh suara Premium atau Enhanced.",
+      "step5": "Kembali ke Corpán — akan muncul di sini secara otomatis.",
+      "title": "Buka suara terbaik perangkat Anda"
+    },
+    "voicePreviewAria": "Pratinjau {{name}}",
+    "voicePreviewSelected": "Pratinjau yang dipilih",
+    "voiceRecommended": "Direkomendasikan",
+    "voiceSelectedCount": "{{count}} dari {{total}}"
   },
   "socials": {
     "youtube": {
@@ -279,6 +372,11 @@
       "cta": "Kunjungi",
       "title": "encorpora.io",
       "desc": "Situs utama dengan dokumen dan komunitas."
+    },
+    "instagram": {
+      "cta": "Ikuti",
+      "desc": "@corpanapp",
+      "title": "Ikuti di Instagram"
     }
   },
   "common": {
@@ -469,7 +567,6 @@
     "devIntro": "Coba Corpán Pack atau buat sendiri.",
     "devLink": "Pelajari di Free2z",
     "new": "Baru",
-    "updates": "Pembaruan",
     "offline": "Offline",
     "purchasing": "Membeli...",
     "buy": "Beli {{price}}",
@@ -508,11 +605,19 @@
       "openDrawer": "Jelajahi paket frasa ({{count}})",
       "openDrawerLabel": "Jelajahi paket frasa",
       "inactiveBadge": "Tidak aktif",
-      "moreActionsLabel": "Tindakan lainnya"
+      "moreActionsLabel": "Tindakan lainnya",
+      "install": "Instal"
     },
     "unlockWithPlus": "Buka dengan Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Termasuk dalam Plus"
+    "includedWithPlus": "Termasuk dalam Plus",
+    "installFailedTitle": "Instalasi gagal",
+    "installStuckDetail": "Tidak ada kemajuan selama beberapa waktu. Periksa koneksi Anda dan coba lagi.",
+    "installStuckTitle": "Unduhan terhenti",
+    "openPack": "Buka {{name}}",
+    "recent": "Terbaru",
+    "updateAll": "Perbarui semua ({{count}})",
+    "updateAvailable": "Pembaruan tersedia"
   },
   "subscription": {
     "title": "Buka semua",
@@ -582,5 +687,93 @@
   },
   "streak": {
     "title": "Rentetan {{count}} hari"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Baca bersama audiobook yang dinarasikan — tenang, dengan penyorotan kata per kata.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Kuasai karakter Mandarin, goresan demi goresan.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Dengarkan frasa, arahkan untuk mencocokkannya — belajar sambil bermain.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Susun frasa sepotong demi sepotong dalam game cepat.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Telusuri frasa dalam bahasa Anda — latihan cepat dan terfokus.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Ucapkan frasa dengan lantang dan dapatkan umpan balik pelafalan.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Audiobook yang sama dalam 3D imersif — kata-kata mengalir di ruang angkasa saat dibaca.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Dengarkan radio siaran langsung dari seluruh dunia.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Lanjutkan belajar",
+    "experiences": "Pengalaman",
+    "forYou": "Untuk Anda",
+    "get": "Dapatkan",
+    "installing": "Menginstal…",
+    "library": "Pustaka",
+    "like": "Suka",
+    "notForMe": "Bukan untuk saya",
+    "open": "Buka",
+    "openPhrases": "Buka frasa",
+    "phraseFlipDesc": "Telusuri frasa dalam bahasa Anda",
+    "plusChip": "Corpán Plus — buka semua fitur",
+    "recommended": "Direkomendasikan",
+    "showAnother": "Tampilkan yang lain",
+    "tryIt": "Coba"
+  },
+  "offline": {
+    "cachedSubtitle": "Menampilkan hasil cache terakhir Anda.",
+    "catalogSubtitle": "Sambungkan kembali untuk menemukan paket baru. Paket yang terinstal masih berfungsi.",
+    "installNeedsInternet": "Sambungkan kembali untuk mengunduh.",
+    "onboardingBanner": "Offline — pilihan akan terinstal saat Anda tersambung kembali.",
+    "packCatalogSubtitle": "Paket yang terinstal masih berfungsi. Sambungkan kembali untuk menjelajahi lebih banyak.",
+    "packCatalogTitle": "Katalog paket memerlukan internet",
+    "phrasePacksOnboardingSubtitle": "Anda dapat memilih paket frasa nanti dari Pengaturan → Paket setelah Anda tersambung kembali.",
+    "phrasePacksSubtitle": "Paket frasa yang terinstal masih berfungsi. Sambungkan kembali untuk menjelajahi yang baru.",
+    "phrasePacksTitle": "Katalog paket frasa memerlukan internet",
+    "purchaseNeedsInternet": "Sambungkan kembali untuk membeli.",
+    "restoreSubtitle": "Sambungkan kembali untuk memulihkan pembelian.",
+    "subscriptionSubtitle": "Sambungkan kembali untuk berlangganan. Paket yang terinstal dan frasa yang dibundel masih berfungsi.",
+    "subscriptionTitle": "Langganan memerlukan internet",
+    "title": "Tidak ada internet",
+    "voiceDownloadSubtitle": "Suara yang sudah ada di perangkat Anda masih berfungsi. Sambungkan kembali untuk menginstal lebih banyak.",
+    "voiceDownloadTitle": "Pengunduhan suara memerlukan internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Pengaturan lengkap",
+    "title": "Pengaturan cepat"
+  },
+  "tour": {
+    "maybeLater": "Mungkin nanti",
+    "progress": "{{n}} dari {{total}}"
+  },
+  "update": {
+    "availableLine": "Pembaruan tersedia → {{version}}",
+    "close": "Tutup",
+    "description": "Versi Corpán yang lebih baru tersedia di toko aplikasi Anda.",
+    "remindLater": "Mungkin nanti",
+    "skipThisVersion": "Lewati versi ini",
+    "title": "Pembaruan tersedia",
+    "update": "Perbarui",
+    "updateNow": "Perbarui sekarang",
+    "versionLine": "Versi {{version}} siap diinstal."
   }
 }

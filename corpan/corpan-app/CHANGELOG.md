@@ -9,6 +9,20 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Changed
 
+- **i18n: 0.16.0 delta translated into all 50 locales.** Filled the 144-key gap
+  introduced by the Plus paywall, decision-graph onboarding, Home hub,
+  experiences carousel, update prompt, install/offline states, phrase-pack
+  picker and confident voice picker (`settings.primaryLanguage`,
+  `settings.phrasePacks.*`, `onboarding.fork.*` / `calibrate.*` / `interests.*` /
+  `voiceGuide.*` / `phrasePacks.*` / `confident.*`, `home.*`, `experiences.*`,
+  `paywall.*`, `packs.installStuck*` / `recent` / `openPack` / `updateAvailable`
+  / `updateAll` / `phrasePack.install`, `tour.*`, `quickSettings.*`, `update.*`,
+  `offline.*`, `socials.instagram.*`, `streak.title`). Refreshed the four
+  voice-install strings whose EN copy was reframed
+  (`onboarding.openVoiceSettings`, `ttsOsTipIOS`, `ttsOsTipMac`,
+  `ttsRescue.engineNotInstalled.detail`). Brand names (Corpán, Corpán Plus,
+  Corpanista(s), pack names) and all `{{placeholders}}` preserved across every
+  locale; verified zero key gaps and zero placeholder mismatches.
 - **Voice-install copy reframed — "unlock your device's best voices".** The TTS
   voice-setup guide, OS tips, and install nudges now frame premium voices as
   capabilities your device already has but the maker left switched off, with

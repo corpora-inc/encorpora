@@ -84,20 +84,11 @@ echo "[$LANG_CODE] master exit=$?"
 ttsctl audit "$PACK" --lang "$LANG_CODE" > "$LOG/audit.log" 2>&1
 echo "[$LANG_CODE] audit:"; tail -3 "$LOG/audit.log"
 
-# 6b. Leading-silence recovery loop. Catches the Gemini "dead-air then hard
-#     cut into first phoneme" pattern that first_word_weak misses (Gemini-
-#     downgraded). Resets offending segments and retries up to 3 passes; each
-#     pass re-runs fixup+master so the manifest start_ms reflects the new audio.
-for ls_pass in 1 2 3; do
-  OFF=$($PY "$SCRIPTS/find_leading_silence.py" "$PACK" "$LANG_CODE" 400 2>/dev/null)
-  [ -z "$OFF" ] && break
-  N=$(echo "$OFF" | wc -w)
-  echo "[$LANG_CODE] leading-silence pass $ls_pass — $N offender(s): $OFF"
-  $PY "$SCRIPTS/reset_segments.py" "$PACK" "$LANG_CODE" $OFF > /dev/null
-  ttsctl retry "$PACK" --lang "$LANG_CODE" >> "$LOG/gen.log" 2>&1
-  $PY "$FIXUP" "$PACK" "$LANG_CODE" >> "$LOG/fixup.log" 2>&1
-  ttsctl master "$PACK" --lang "$LANG_CODE" --all >> "$LOG/master.log" 2>&1
-done
+# 6b. (Removed.) The leading-silence recovery loop was a no-op — ttsctl retry
+#     only processes FAILED/RETRY, not the PENDING that reset_segments writes —
+#     and per the master rule first_word_weak is usually a Whisper FP, not a
+#     real defect. Real cut-offs (the ch00-086 "/Ek/" case) need a text rewrite,
+#     not blind regen. find_leading_silence.py stays as a manual diagnostic.
 
 # 7. Audio gate (drop if any segment not DONE)
 $PY "$SCRIPTS/audio_gate.py" "$PACK" "$LANG_CODE" | tee "$LOG/audiogate.log"

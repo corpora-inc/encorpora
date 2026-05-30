@@ -120,7 +120,9 @@
       "noMatches": "Bez rezultata.",
       "noFiltered": "Ovdje sad ničega nema.",
       "stackTotalPhrases": "~{{count}} fraza odgovara",
-      "stackTotalNudge": "Dodaj pakete ili proširi razine za više raznolikosti."
+      "stackTotalNudge": "Dodaj pakete ili proširi razine za više raznolikosti.",
+      "activeCount": "{{active}} od {{total}} aktivno",
+      "baseCorpusSubtitle": "{{n}} fraza"
     },
     "sendAnonUsage": "Šalji anonimne podatke o korištenju",
     "sendAnonUsageHint": "Anonimno, samo za ovu sesiju. Nema računa, nema ID-jeva uređaja, nema pohrane IP adresa. Isključite kad god želite.",
@@ -141,7 +143,7 @@
     "welcomeVisit": "Posjeti encorpora.io",
     "linkCopied": "Veza kopirana. Otvori u svom pregledniku:",
     "reconfigureStack": "Ponovno konfiguriraj stog",
-    "openVoiceSettings": "Otvori postavke glasa svog uređaja",
+    "openVoiceSettings": "Otvori Postavke",
     "openTTSSetup": "Otvori postavke TTS-a",
     "welcomeFollowUp": "Hvala što si se pridružio—vidimo se u zajednici!",
     "learning": "Učenje jezika",
@@ -156,8 +158,8 @@
     "languageOrderTipBody": "Donji jezik na popisu je jezik korisničkog sučelja aplikacije. Da bi promijenio jezik korisničkog sučelja, povuci drugi jezik na dno.",
     "ttsOsTipTitle": "Savjet",
     "ttsOsTipAndroid": "Najbolji rezultati: koristi Googleovu pretvorbu teksta u govor. Samsung TTS ne radi u Corpánu.",
-    "ttsOsTipIOS": "U Postavkama → Pristupačnost, pronađi Govoreni sadržaj i preuzmi glasove. Napomena: Apple ne pruža glasove za svaki jezik. Ako nadogradnja ne pomaže, zatraži podršku putem Appleove aplikacije za povratne informacije.",
-    "ttsOsTipMac": "U Postavkama sustava → Pristupačnost, pronađi Govoreni sadržaj i preuzmi glasove. Napomena: Apple ne pruža glasove za svaki jezik. Ako nadogradnja ne pomaže, zatraži podršku putem Appleove aplikacije za povratne informacije.",
+    "ttsOsTipIOS": "Vaš uređaj ima ugrađene besplatne Premium glasove — Apple ih jednostavno ostavlja isključenima. Uključite ih: Postavke → Pristupačnost → Izgovoreni sadržaj → Glasovi → vaš jezik, zatim dodirnite ikonu za preuzimanje za Premium ili Poboljšani glas. Vratite se i pojavit će se ovdje automatski. (Apple još ne pokriva svaki jezik.)",
+    "ttsOsTipMac": "Vaš Mac ima ugrađene besplatne Premium glasove — Apple ih jednostavno ostavlja isključenima. Uključite ih: Postavke sustava → Pristupačnost → Izgovoreni sadržaj → Glas sustava → Upravljanje glasovima, zatim preuzmite Premium ili Poboljšani glas. Vratite se i pojavit će se ovdje automatski. (Apple još ne pokriva svaki jezik.)",
     "ttsOsTipWindows": "U Postavkama, dodaj/instaliraj glasove za govor, a zatim se vrati ovdje.",
     "ttsOsTipOther": "U postavkama svog uređaja, dodaj/instaliraj glasove za pretvorbu teksta u govor, a zatim se vrati ovdje.",
     "installVoicesAndroid": "Instaliraj glasove",
@@ -173,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Instaliraj Googleovu pretvorbu teksta u govor",
-        "detail": "Googleov glasovni motor pruža najbolju kvalitetu na svakom jeziku koji Corpán podržava. Besplatno je.",
+        "detail": "Googleov besplatni glasovni mehanizam otključava visokokvalitetne glasove za većinu jezika koje Corpán podržava — većina telefona jednostavno ne dolazi s njim. Dodajmo ga:",
         "button": "Instaliraj iz Play Store-a"
       },
       "noEngine": {
@@ -228,7 +230,11 @@
       "emptySub": "Vrati se uskoro.",
       "offlineHero": "Nisi povezan.",
       "offlineSub": "Paketima treba internet — pokušaj kasnije u Postavke → Paketi.",
-      "offlineBanner": "Bez veze — odabir se instalira po ponovnom spajanju."
+      "offlineBanner": "Bez veze — odabir se instalira po ponovnom spajanju.",
+      "noneSelected": "Ništa odabrano — Nastavak će preskočiti",
+      "selectedSuffix": "odabrano",
+      "skip": "Preskoči za sada",
+      "subtitle": "Dodajte fokusirane pakete fraza u svoj skup. Uključite ih ili isključite bilo kada u Postavkama."
     },
     "notOnAppleIOS": "Nije na iOS-u",
     "appleNoVoiceTitle": "Apple još ne nudi glas za {{lang}}",
@@ -258,7 +264,93 @@
       "team": "Mi smo mali tim i svaki cent ulažemo natrag u Corpán.",
       "tryPlus": "Isprobajte Corpán Plus",
       "continueFree": "Nastavite besplatno"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Koliko je star čitatelj?",
+      "childTeen": "13–17",
+      "childUnder13": "Ispod 13",
+      "enjoyComfortable": "Prilično dobro",
+      "enjoyImproving": "Još uvijek učim čitati",
+      "enjoyJustStarting": "Tek počinjem — nov sam u čitanju",
+      "enjoyNative": "Tečno — to je moj jezik",
+      "enjoyTitle": "Koliko dobro čitate {{lang}}?",
+      "learnAdvanced": "Prilično sam napredan",
+      "learnLittle": "Malo",
+      "learnNever": "Nikad — potpuni početnik",
+      "learnTitle": "Jeste li prije učili {{lang}}?"
+    },
+    "confident": {
+      "addBetter": "Otključajte bogatiji glas",
+      "andMore": "+{{count}} više",
+      "chooseVoices": "Odaberite glasove",
+      "noVoiceFor": "Još nema glasa za {{lang}} — dodajmo ga kako bi Corpán mogao čitati naglas.",
+      "voiceCountMany": "{{count}} glasova spremno",
+      "voiceCountOne": "1 glas spreman",
+      "yourVoiceFor": "Vaš glas za {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Podržite Corpán i otključajte sve. Neobavezno, bilo kada.",
+      "joinTitle": "Pridružite se Corpanistima",
+      "start": "Počnite istraživati",
+      "subtitle": "Corpán je stvorio mali tim otvorenog koda. Pozdravite nas — a ako vam se sviđa, možete nas podržati.",
+      "title": "Sve je spremno"
+    },
+    "fork": {
+      "child": {
+        "desc": "Nježne, razigrane knjige i igre za mlađe učenike.",
+        "label": "Postavite za dijete"
+      },
+      "enjoy": {
+        "desc": "Knjige, priče, igre, vježbe i više — sve na vašem jeziku.",
+        "label": "Uživajte u Corpánu na {{lang}}"
+      },
+      "learn": {
+        "desc": "Priče, igre, vježbe i audio na novom jeziku.",
+        "label": "Učite jezik"
+      },
+      "polyglot": {
+        "desc": "Složite nekoliko jezika i istražite sve.",
+        "label": "Istražite mnoge jezike"
+      },
+      "subtitle": "Sve ćemo vam postaviti. Možete to promijeniti kasnije.",
+      "title": "Što vas dovodi u Corpán?"
+    },
+    "interests": {
+      "audio": "Slušajte audio",
+      "audioDesc": "Audioknjige, naracija i radio.",
+      "games": "Igrajte igre",
+      "gamesDesc": "Učite kroz razigrane izazove.",
+      "read": "Čitajte priče i knjige",
+      "readDesc": "Uronite u čitanje na svom jeziku.",
+      "speak": "Vježbajte govor",
+      "speakDesc": "Izgovarajte fraze naglas i dobijte povratnu informaciju.",
+      "study": "Učite i vježbajte",
+      "studyDesc": "Izgradite vokabular usredotočenom vježbom.",
+      "subtitle": "Odaberite što god vam se sviđa — predložit ćemo odgovarajuća iskustva. Neobavezno.",
+      "title": "Što želite raditi?",
+      "wild": "Istražite neobične stvari",
+      "wildDesc": "Iznenađujuća, eksperimentalna iskustva."
+    },
+    "settingUp": "Postavljam stvari…",
+    "ttsIntro": "Corpán čita naglas. Dodirnite glas da biste ga čuli svojom brzinom.",
+    "voiceGuide": {
+      "intro": "Vaš uređaj ima ugrađene bogate, prirodne glasove — besplatne i daleko bolje od zadanih. Proizvođač ih jednostavno ostavlja isključenima. Uključimo ih; potrebno je samo nekoliko dodira:",
+      "macStep1": "Otvorite Postavke sustava.",
+      "macStep2": "Idite na Pristupačnost → Izgovoreni sadržaj.",
+      "macStep3": "Pod Glas sustava, otvorite Upravljanje glasovima.",
+      "macStep4": "Preuzmite Premium ili Poboljšani glas za svoj jezik.",
+      "macStep5": "Vratite se u Corpán — pojavit će se ovdje automatski.",
+      "step1": "Dodirnite Otvori Postavke ispod.",
+      "step2": "Idite na Pristupačnost → Izgovoreni sadržaj → Glasovi.",
+      "step3": "Dodirnite svoj jezik.",
+      "step4": "Preuzmite Premium ili Poboljšani glas.",
+      "step5": "Vratite se u Corpán — pojavit će se ovdje automatski.",
+      "title": "Otključajte najbolje glasove svog uređaja"
+    },
+    "voicePreviewAria": "Pregledaj {{name}}",
+    "voicePreviewSelected": "Odabrani pregled",
+    "voiceRecommended": "Preporučeno",
+    "voiceSelectedCount": "{{count}} od {{total}}"
   },
   "socials": {
     "youtube": {
@@ -280,6 +372,11 @@
       "cta": "Posjeti",
       "title": "encorpora.io",
       "desc": "Glavna stranica s dokumentacijom i zajednicom."
+    },
+    "instagram": {
+      "cta": "Prati",
+      "desc": "@corpanapp",
+      "title": "Pratite na Instagramu"
     }
   },
   "common": {
@@ -470,7 +567,6 @@
     "devIntro": "Isprobaj Corpán paket ili napravi svoj.",
     "devLink": "Saznaj više na Free2z",
     "new": "Novi",
-    "updates": "Ažuriranja",
     "offline": "Izvan mreže",
     "purchasing": "Kupnja...",
     "buy": "Kupi {{price}}",
@@ -509,11 +605,19 @@
       "openDrawer": "Pregledaj pakete fraza ({{count}})",
       "openDrawerLabel": "Pregledaj pakete fraza",
       "inactiveBadge": "Neaktivno",
-      "moreActionsLabel": "Više radnji"
+      "moreActionsLabel": "Više radnji",
+      "install": "Instaliraj"
     },
     "unlockWithPlus": "Otključajte uz Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Uključeno uz Plus"
+    "includedWithPlus": "Uključeno uz Plus",
+    "installFailedTitle": "Instalacija neuspješna",
+    "installStuckDetail": "Nema napretka neko vrijeme. Provjerite svoju vezu i pokušajte ponovno.",
+    "installStuckTitle": "Preuzimanje zaustavljeno",
+    "openPack": "Otvori {{name}}",
+    "recent": "Nedavno",
+    "updateAll": "Ažuriraj sve ({{count}})",
+    "updateAvailable": "Dostupno ažuriranje"
   },
   "subscription": {
     "title": "Otključaj sve",
@@ -583,5 +687,93 @@
   },
   "streak": {
     "title": "{{count}}-dnevni niz"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Čitajte uz narativne audioknjige — mirno, s isticanjem riječi po riječ.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Savladajte mandarinske znakove, potez po potez.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Čujte frazu, usmjerite se da je uskladite — učite kroz igru.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Sastavite fraze dio po dio u brzoj igri.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Prelistavajte fraze na svojim jezicima — brza, usredotočena vježba.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Izgovarajte fraze naglas i dobijte povratnu informaciju o izgovoru.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Iste audioknjige u imerzivnom 3D-u — riječi teku kroz prostor dok se čitaju.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Uključite se u radio uživo iz cijelog svijeta.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Nastavi učiti",
+    "experiences": "Iskustva",
+    "forYou": "Za vas",
+    "get": "Preuzmi",
+    "installing": "Instaliram…",
+    "library": "Knjižnica",
+    "like": "Sviđa mi se",
+    "notForMe": "Nije za mene",
+    "open": "Otvori",
+    "openPhrases": "Otvori fraze",
+    "phraseFlipDesc": "Prelistavajte fraze na svojim jezicima",
+    "plusChip": "Corpán Plus — otključajte sve",
+    "recommended": "Preporučeno",
+    "showAnother": "Pokaži mi drugo",
+    "tryIt": "Isprobaj"
+  },
+  "offline": {
+    "cachedSubtitle": "Prikazuju se vaši zadnji spremljeni rezultati.",
+    "catalogSubtitle": "Ponovno se povežite da biste otkrili nove pakete. Vaši instalirani paketi i dalje rade.",
+    "installNeedsInternet": "Ponovno se povežite za preuzimanje.",
+    "onboardingBanner": "Izvan mreže — odabrano se instalira kada se ponovno povežete.",
+    "packCatalogSubtitle": "Vaši instalirani paketi i dalje rade. Ponovno se povežite za pregledavanje više.",
+    "packCatalogTitle": "Katalog paketa treba internet",
+    "phrasePacksOnboardingSubtitle": "Pakete fraza možete odabrati kasnije u Postavkama → Paketi kada se ponovno povežete.",
+    "phrasePacksSubtitle": "Vaši instalirani paketi fraza i dalje rade. Ponovno se povežite za pregledavanje novih.",
+    "phrasePacksTitle": "Katalog paketa fraza treba internet",
+    "purchaseNeedsInternet": "Ponovno se povežite za kupnju.",
+    "restoreSubtitle": "Ponovno se povežite za vraćanje kupnji.",
+    "subscriptionSubtitle": "Ponovno se povežite za pretplatu. Vaši instalirani paketi i uključene fraze i dalje rade.",
+    "subscriptionTitle": "Pretplate trebaju internet",
+    "title": "Nema interneta",
+    "voiceDownloadSubtitle": "Glasovi već na vašem uređaju i dalje rade. Ponovno se povežite za instalaciju više.",
+    "voiceDownloadTitle": "Preuzimanje glasa treba internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Pune postavke",
+    "title": "Brze postavke"
+  },
+  "tour": {
+    "maybeLater": "Možda kasnije",
+    "progress": "{{n}} od {{total}}"
+  },
+  "update": {
+    "availableLine": "Dostupno ažuriranje → {{version}}",
+    "close": "Zatvori",
+    "description": "Novija verzija Corpána dostupna je u vašoj trgovini aplikacija.",
+    "remindLater": "Možda kasnije",
+    "skipThisVersion": "Preskoči ovu verziju",
+    "title": "Dostupno ažuriranje",
+    "update": "Ažuriraj",
+    "updateNow": "Ažuriraj sada",
+    "versionLine": "Verzija {{version}} je spremna za instalaciju."
   }
 }

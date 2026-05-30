@@ -120,7 +120,9 @@
       "noMatches": "Cap resultat.",
       "noFiltered": "Res per aquí ara mateix.",
       "stackTotalPhrases": "~{{count}} frases coincideixen",
-      "stackTotalNudge": "Afegeix paquets o amplia els nivells per a més varietat."
+      "stackTotalNudge": "Afegeix paquets o amplia els nivells per a més varietat.",
+      "activeCount": "{{active}} de {{total}} actius",
+      "baseCorpusSubtitle": "{{n}} frases"
     },
     "sendAnonUsage": "Envia dades d'ús anònimes",
     "sendAnonUsageHint": "Anònimes i limitades a la sessió. Sense comptes, sense identificadors del dispositiu i sense emmagatzemar IP. Pots desactivar-ho en qualsevol moment.",
@@ -141,7 +143,7 @@
     "welcomeVisit": "Visita encorpora.io",
     "linkCopied": "Enllaç copiat. Obre'l al teu navegador:",
     "reconfigureStack": "Reconfigura el muntatge",
-    "openVoiceSettings": "Obre la configuració de veu del teu dispositiu",
+    "openVoiceSettings": "Obre Ajustos",
     "openTTSSetup": "Obre la configuració de TTS",
     "welcomeFollowUp": "Gràcies per unir-te—ens veiem a la comunitat!",
     "learning": "Aprenent idiomes",
@@ -156,8 +158,8 @@
     "languageOrderTipBody": "L'idioma de la part inferior de la llista és l'idioma de la interfície de l'aplicació. Per canviar l'idioma de la interfície, arrossega un idioma diferent a la part inferior.",
     "ttsOsTipTitle": "Consell",
     "ttsOsTipAndroid": "Millors resultats: utilitza Google text-to-speech. Samsung TTS no funciona a Corpán.",
-    "ttsOsTipIOS": "A Configuració → Accessibilitat, troba Contingut parlat i descarrega veus. Nota: Apple no proporciona veus per a cada idioma. Si l'actualització no ajuda, sol·licita suport a través de l'aplicació de feedback d'Apple.",
-    "ttsOsTipMac": "A Configuració del sistema → Accessibilitat, troba Contingut parlat i descarrega veus. Nota: Apple no proporciona veus per a cada idioma. Si l'actualització no ajuda, sol·licita suport a través de l'aplicació de feedback d'Apple.",
+    "ttsOsTipIOS": "El teu dispositiu té veus Premium gratuïtes incorporades — Apple simplement les deixa desactivades. Activa-les: Ajustos → Accessibilitat → Contingut locutat → Veus → el teu idioma, i després toca la icona de descàrrega per a una veu Premium o Millorada. Torna aquí i apareixerà automàticament. (Apple encara no cobreix tots els idiomes.)",
+    "ttsOsTipMac": "El teu Mac té veus Premium gratuïtes incorporades — Apple simplement les deixa desactivades. Activa-les: Configuració del Sistema → Accessibilitat → Contingut locutat → Veu del sistema → Gestionar veus, i després descarrega una veu Premium o Millorada. Torna aquí i apareixerà automàticament. (Apple encara no cobreix tots els idiomes.)",
     "ttsOsTipWindows": "A Configuració, afegeix/instal·la veus de discurs, després torna aquí.",
     "ttsOsTipOther": "A la configuració del teu dispositiu, afegeix/instal·la veus de text a veu, després torna aquí.",
     "installVoicesAndroid": "Instal·la veus",
@@ -173,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Instal·la Google Text-to-Speech",
-        "detail": "El motor de veu de Google et proporciona la millor qualitat en cada idioma que suporta Corpán. És gratuït.",
+        "detail": "El motor de veu gratuït de Google desbloqueja veus d'alta qualitat per a la majoria dels idiomes que Corpán admet — la majoria dels telèfons no el porten de sèrie. Afegim-lo:",
         "button": "Instal·la des de Play Store"
       },
       "noEngine": {
@@ -228,7 +230,11 @@
       "emptySub": "Torna aviat.",
       "offlineHero": "Estàs sense connexió.",
       "offlineSub": "Els paquets necessiten internet — torna-ho a provar des de Configuració → Paquets.",
-      "offlineBanner": "Sense connexió — la selecció s'instal·larà en reconnectar."
+      "offlineBanner": "Sense connexió — la selecció s'instal·larà en reconnectar.",
+      "noneSelected": "Cap seleccionat — Continuar ometrà",
+      "selectedSuffix": "seleccionats",
+      "skip": "Omet per ara",
+      "subtitle": "Afegeix paquets de frases enfocats a la teva pila. Activa'ls o desactiva'ls en qualsevol moment des d'Ajustos."
     },
     "notOnAppleIOS": "No tens iOS",
     "appleNoVoiceTitle": "Apple encara no ofereix una veu en {{lang}}",
@@ -258,7 +264,93 @@
       "team": "Som un equip petit i invertim cada cèntim de nou a Corpán.",
       "tryPlus": "Prova Corpán Plus",
       "continueFree": "Continua amb la versió gratuïta"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Quants anys té el lector?",
+      "childTeen": "13–17",
+      "childUnder13": "Menys de 13",
+      "enjoyComfortable": "Bastant bé",
+      "enjoyImproving": "Encara estic aprenent a llegir-lo",
+      "enjoyJustStarting": "Acabo de començar — sóc nou llegint-lo",
+      "enjoyNative": "Amb fluïdesa — és el meu idioma",
+      "enjoyTitle": "Com de bé llegeixes {{lang}}?",
+      "learnAdvanced": "Sóc bastant avançat",
+      "learnLittle": "Una mica",
+      "learnNever": "Mai — principiant total",
+      "learnTitle": "Has estudiat {{lang}} abans?"
+    },
+    "confident": {
+      "addBetter": "Desbloqueja una veu més rica",
+      "andMore": "+{{count}} més",
+      "chooseVoices": "Tria veus",
+      "noVoiceFor": "Encara no hi ha veu per a {{lang}} — afegim-ne una perquè Corpán pugui llegir en veu alta.",
+      "voiceCountMany": "{{count}} veus a punt",
+      "voiceCountOne": "1 veu a punt",
+      "yourVoiceFor": "La teva veu per a {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Dona suport a Corpán i desbloqueja-ho tot. Opcional, en qualsevol moment.",
+      "joinTitle": "Uneix-te als Corpanistas",
+      "start": "Comença a explorar",
+      "subtitle": "Corpán és creat per un petit equip de codi obert. Saluda'ns — i si t'encanta, pots donar-nos suport.",
+      "title": "Tot a punt"
+    },
+    "fork": {
+      "child": {
+        "desc": "Llibres i jocs suaus i divertits per a aprenents més joves.",
+        "label": "Configura-ho per a un infant"
+      },
+      "enjoy": {
+        "desc": "Llibres, històries, jocs, exercicis i més — tot en el teu idioma.",
+        "label": "Gaudeix de Corpán en {{lang}}"
+      },
+      "learn": {
+        "desc": "Històries, jocs, exercicis i àudio en un nou idioma.",
+        "label": "Aprèn un idioma"
+      },
+      "polyglot": {
+        "desc": "Apila diversos idiomes i explora-ho tot.",
+        "label": "Explora molts idiomes"
+      },
+      "subtitle": "Ho configurarem tot per a tu. Podràs canviar-ho més tard.",
+      "title": "Què et porta a Corpán?"
+    },
+    "interests": {
+      "audio": "Escoltar àudio",
+      "audioDesc": "Audiollibres, narració i ràdio.",
+      "games": "Jugar a jocs",
+      "gamesDesc": "Aprèn mitjançant reptes lúdics.",
+      "read": "Llegir històries i llibres",
+      "readDesc": "Submergeix-te en lectures en el teu idioma.",
+      "speak": "Practicar la parla",
+      "speakDesc": "Digues frases en veu alta i obtén retroalimentació.",
+      "study": "Estudiar i practicar",
+      "studyDesc": "Construeix vocabulari amb pràctica concentrada.",
+      "subtitle": "Tria el que més t'agradi — et suggerirem experiències que s'hi adaptin. Opcional.",
+      "title": "Què vols fer?",
+      "wild": "Explorar coses sorprenents",
+      "wildDesc": "Experiències sorprenents i experimentals."
+    },
+    "settingUp": "Configurant coses…",
+    "ttsIntro": "Corpán llegeix en veu alta. Toca una veu per escoltar-la a la teva velocitat.",
+    "voiceGuide": {
+      "intro": "El teu dispositiu té veus riques i naturals incorporades — gratuïtes i molt millors que les predeterminades. El fabricant simplement les deixa desactivades. Activem-les; només calen uns quants tocs:",
+      "macStep1": "Obre Configuració del Sistema.",
+      "macStep2": "Ves a Accessibilitat → Contingut locutat.",
+      "macStep3": "A Veu del sistema, obre Gestionar veus.",
+      "macStep4": "Descarrega una veu Premium o Millorada per al teu idioma.",
+      "macStep5": "Torna a Corpán — apareixerà aquí automàticament.",
+      "step1": "Toca Obre Ajustos a continuació.",
+      "step2": "Ves a Accessibilitat → Contingut locutat → Veus.",
+      "step3": "Toca el teu idioma.",
+      "step4": "Descarrega una veu Premium o Millorada.",
+      "step5": "Torna a Corpán — apareixerà aquí automàticament.",
+      "title": "Desbloqueja les millors veus del teu dispositiu"
+    },
+    "voicePreviewAria": "Previsualitza {{name}}",
+    "voicePreviewSelected": "Previsualització seleccionada",
+    "voiceRecommended": "Recomanada",
+    "voiceSelectedCount": "{{count}} de {{total}}"
   },
   "socials": {
     "youtube": {
@@ -280,6 +372,11 @@
       "cta": "Visita",
       "title": "encorpora.io",
       "desc": "Lloc principal amb documentació i comunitat."
+    },
+    "instagram": {
+      "cta": "Segueix",
+      "desc": "@corpanapp",
+      "title": "Segueix a Instagram"
     }
   },
   "common": {
@@ -470,7 +567,6 @@
     "devIntro": "Prova un paquet de Corpán o crea el teu propi.",
     "devLink": "Aprèn més a Free2z",
     "new": "Nou",
-    "updates": "Actualitzacions",
     "offline": "Desconnectat",
     "purchasing": "Comprant...",
     "buy": "Comprar {{price}}",
@@ -509,11 +605,19 @@
       "openDrawer": "Explora paquets de frases ({{count}})",
       "openDrawerLabel": "Explora paquets de frases",
       "inactiveBadge": "Inactiu",
-      "moreActionsLabel": "Més accions"
+      "moreActionsLabel": "Més accions",
+      "install": "Instal·la"
     },
     "unlockWithPlus": "Desbloqueja amb Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Inclòs amb Plus"
+    "includedWithPlus": "Inclòs amb Plus",
+    "installFailedTitle": "Instal·lació fallida",
+    "installStuckDetail": "Sense progrés des de fa una estona. Comprova la teva connexió i torna a intentar-ho.",
+    "installStuckTitle": "Descàrrega encallada",
+    "openPack": "Obre {{name}}",
+    "recent": "Recents",
+    "updateAll": "Actualitza-ho tot ({{count}})",
+    "updateAvailable": "Actualització disponible"
   },
   "subscription": {
     "title": "Desbloqueja-ho tot",
@@ -583,5 +687,93 @@
   },
   "streak": {
     "title": "Ratxa de {{count}} dies"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Llegeix amb audiollibres narrats — amb calma i ressaltat paraula per paraula.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Domina els caràcters mandarins, traç a traç.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Escolta una frase, dirigeix-te per igualar-la — aprèn jugant.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Construeix frases peça a peça en un joc ràpid.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Repassa frases en els teus idiomes — pràctica ràpida i concentrada.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Digues frases en veu alta i obtén retroalimentació de pronunciació.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Els mateixos audiollibres en 3D immersiu — les paraules flueixen per l'espai mentre es llegeixen.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Sintonitza ràdio en directe d'arreu del món.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Continua aprenent",
+    "experiences": "Experiències",
+    "forYou": "Per a tu",
+    "get": "Obtén",
+    "installing": "Instal·lant…",
+    "library": "Biblioteca",
+    "like": "M'agrada",
+    "notForMe": "No és per a mi",
+    "open": "Obre",
+    "openPhrases": "Obre frases",
+    "phraseFlipDesc": "Repassa frases en els teus idiomes",
+    "plusChip": "Corpán Plus — desbloqueja-ho tot",
+    "recommended": "Recomanat",
+    "showAnother": "Mostra'm un altre",
+    "tryIt": "Prova-ho"
+  },
+  "offline": {
+    "cachedSubtitle": "Mostrant els teus últims resultats en memòria cau.",
+    "catalogSubtitle": "Torna a connectar-te per descobrir nous paquets. Els teus paquets instal·lats encara funcionen.",
+    "installNeedsInternet": "Torna a connectar-te per descarregar.",
+    "onboardingBanner": "Sense connexió — les seleccions s'instal·laran quan et tornis a connectar.",
+    "packCatalogSubtitle": "Els teus paquets instal·lats encara funcionen. Torna a connectar-te per veure'n més.",
+    "packCatalogTitle": "El catàleg de paquets necessita internet",
+    "phrasePacksOnboardingSubtitle": "Podràs triar paquets de frases més tard des d'Ajustos → Paquets un cop et tornis a connectar.",
+    "phrasePacksSubtitle": "Els teus paquets de frases instal·lats encara funcionen. Torna a connectar-te per veure'n de nous.",
+    "phrasePacksTitle": "El catàleg de paquets de frases necessita internet",
+    "purchaseNeedsInternet": "Torna a connectar-te per comprar.",
+    "restoreSubtitle": "Torna a connectar-te per restaurar les compres.",
+    "subscriptionSubtitle": "Torna a connectar-te per subscriure't. Els teus paquets instal·lats i frases incloses encara funcionen.",
+    "subscriptionTitle": "Les subscripcions necessiten internet",
+    "title": "Sense internet",
+    "voiceDownloadSubtitle": "Les veus ja al teu dispositiu encara funcionen. Torna a connectar-te per instal·lar-ne més.",
+    "voiceDownloadTitle": "La descàrrega de veus necessita internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Ajustos complets",
+    "title": "Ajustos ràpids"
+  },
+  "tour": {
+    "maybeLater": "Potser més tard",
+    "progress": "{{n}} de {{total}}"
+  },
+  "update": {
+    "availableLine": "Actualització disponible → {{version}}",
+    "close": "Tanca",
+    "description": "Hi ha una versió més recent de Corpán disponible a la teva botiga d'aplicacions.",
+    "remindLater": "Potser més tard",
+    "skipThisVersion": "Omet aquesta versió",
+    "title": "Actualització disponible",
+    "update": "Actualitza",
+    "updateNow": "Actualitza ara",
+    "versionLine": "La versió {{version}} està a punt per instal·lar."
   }
 }

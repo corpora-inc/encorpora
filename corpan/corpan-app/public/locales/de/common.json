@@ -119,13 +119,16 @@
       "noMatches": "Keine Treffer.",
       "noFiltered": "Hier ist gerade nichts.",
       "stackTotalPhrases": "~{{count}} Phrasen passen",
-      "stackTotalNudge": "Mehr Pakete oder mehr Niveaus für Abwechslung."
+      "stackTotalNudge": "Mehr Pakete oder mehr Niveaus für Abwechslung.",
+      "activeCount": "{{active}} von {{total}} aktiv",
+      "baseCorpusSubtitle": "{{n}} Sätze"
     },
     "sendAnonUsage": "Anonyme Nutzungsdaten senden",
     "sendAnonUsageHint": "Anonym, nur für die aktuelle Sitzung. Keine Konten, keine Geräte-IDs, keine IP-Speicherung. Jederzeit abschaltbar.",
     "readPrivacyPromise": "Unser Datenschutzversprechen lesen",
     "showStreak": "Leseserie anzeigen",
-    "showStreakHint": "Eine kleine Tageszahl in der Kopfzeile. Nur auf dem Gerät, keine Erinnerungen oder Benachrichtigungen."
+    "showStreakHint": "Eine kleine Tageszahl in der Kopfzeile. Nur auf dem Gerät, keine Erinnerungen oder Benachrichtigungen.",
+    "primaryLanguage": "Primäre (UI-)Sprache"
   },
   "onboarding": {
     "welcome": "Willkommen",
@@ -140,7 +143,7 @@
     "welcomeVisit": "Besuchen Sie encorpora.io",
     "linkCopied": "Link kopiert! Im Browser öffnen:",
     "reconfigureStack": "Stack neu konfigurieren",
-    "openVoiceSettings": "Öffne die Spracheinstellungen deines Geräts",
+    "openVoiceSettings": "Einstellungen öffnen",
     "openTTSSetup": "Öffne die TTS-Einrichtung",
     "welcomeFollowUp": "Danke, dass du hier bist - wir sehen uns in der Community!",
     "learningStepTitle": "Lernen",
@@ -149,8 +152,8 @@
     "languageOrderTipBody": "Die unterste Sprache in der Liste ist die Sprache der Benutzeroberfläche. Um die Sprache der Benutzeroberfläche zu ändern, ziehe eine andere Sprache nach ganz unten.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Beste Ergebnisse: Google-Sprachausgabe verwenden. Samsung TTS funktioniert in Corpán nicht.",
-    "ttsOsTipIOS": "In Einstellungen → Bedienungshilfen, finde Gesprochene Inhalte und lade Stimmen herunter. Hinweis: Apple bietet nicht für jede Sprache Stimmen an. Wenn ein Upgrade nicht hilft, fordere Unterstützung über Apples Feedback-App an.",
-    "ttsOsTipMac": "In Systemeinstellungen → Bedienungshilfen, finde Gesprochene Inhalte und lade Stimmen herunter. Hinweis: Apple bietet nicht für jede Sprache Stimmen an. Wenn ein Upgrade nicht hilft, fordere Unterstützung über Apples Feedback-App an.",
+    "ttsOsTipIOS": "Dein Gerät hat kostenlose Premium-Stimmen integriert – Apple lässt sie nur deaktiviert. Aktiviere sie: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → deine Sprache, tippe dann auf das Download-Symbol für eine Premium- oder Erweiterte Stimme. Komm zurück, und sie erscheint hier automatisch. (Apple unterstützt noch nicht jede Sprache.)",
+    "ttsOsTipMac": "Dein Mac hat kostenlose Premium-Stimmen integriert – Apple lässt sie nur deaktiviert. Aktiviere sie: Systemeinstellungen → Bedienungshilfen → Gesprochene Inhalte → Systemstimme → Stimmen verwalten, lade dann eine Premium- oder Erweiterte Stimme herunter. Komm zurück, und sie erscheint hier automatisch. (Apple unterstützt noch nicht jede Sprache.)",
     "ttsOsTipWindows": "In Einstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
     "ttsOsTipOther": "In den Geräteeinstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
     "installVoicesAndroid": "Stimmen installieren",
@@ -172,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Google Text-to-Speech installieren",
-        "detail": "Googles Sprachmodul bietet die beste Qualität in allen von Corpán unterstützten Sprachen. Kostenlos.",
+        "detail": "Googles kostenlose Sprach-Engine schaltet hochwertige Stimmen für die meisten von Corpán unterstützten Sprachen frei – die meisten Telefone werden jedoch ohne sie ausgeliefert. Lass sie uns hinzufügen:",
         "button": "Aus Play Store installieren"
       },
       "noEngine": {
@@ -227,7 +230,11 @@
       "emptySub": "Schau bald wieder rein.",
       "offlineHero": "Du bist offline.",
       "offlineSub": "Pakete brauchen Internet — versuche es später in Einstellungen → Pakete.",
-      "offlineBanner": "Offline — Auswahl wird beim Verbinden installiert."
+      "offlineBanner": "Offline — Auswahl wird beim Verbinden installiert.",
+      "noneSelected": "Nichts ausgewählt – Weiter überspringt",
+      "selectedSuffix": "ausgewählt",
+      "skip": "Für jetzt überspringen",
+      "subtitle": "Füge gezielte Satzpakete hinzu. Du kannst sie jederzeit in den Einstellungen aktivieren oder deaktivieren."
     },
     "notOnAppleIOS": "Nicht auf iOS",
     "appleNoVoiceTitle": "Apple bietet noch keine {{lang}}-Stimme an",
@@ -257,7 +264,93 @@
       "team": "Wir sind ein kleines Team und investieren jeden Cent zurück in Corpán.",
       "tryPlus": "Corpán Plus testen",
       "continueFree": "Kostenlos weitermachen"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Wie alt ist der Leser?",
+      "childTeen": "13–17",
+      "childUnder13": "Unter 13",
+      "enjoyComfortable": "Ziemlich gut",
+      "enjoyImproving": "Ich lerne noch, es zu lesen",
+      "enjoyJustStarting": "Gerade erst angefangen – ich bin neu beim Lesen",
+      "enjoyNative": "Fließend – es ist meine Muttersprache",
+      "enjoyTitle": "Wie gut liest du {{lang}}?",
+      "learnAdvanced": "Ich bin ziemlich fortgeschritten",
+      "learnLittle": "Ein wenig",
+      "learnNever": "Nie – absoluter Anfänger",
+      "learnTitle": "Hast du {{lang}} schon einmal gelernt?"
+    },
+    "confident": {
+      "addBetter": "Eine reichere Stimme freischalten",
+      "andMore": "+{{count}} weitere",
+      "chooseVoices": "Stimmen auswählen",
+      "noVoiceFor": "Noch keine {{lang}}-Stimme – lass uns eine hinzufügen, damit Corpán vorlesen kann.",
+      "voiceCountMany": "{{count}} Stimmen bereit",
+      "voiceCountOne": "1 Stimme bereit",
+      "yourVoiceFor": "Deine {{lang}}-Stimme"
+    },
+    "engage": {
+      "joinDesc": "Unterstütze Corpán und schalte alles frei. Optional, jederzeit.",
+      "joinTitle": "Werde Teil der Corpanistas",
+      "start": "Erkundung starten",
+      "subtitle": "Corpán wird von einem kleinen Open-Source-Team entwickelt. Sag Hallo – und wenn es dir gefällt, kannst du uns unterstützen.",
+      "title": "Alles bereit"
+    },
+    "fork": {
+      "child": {
+        "desc": "Sanfte, spielerische Bücher und Spiele für jüngere Lernende.",
+        "label": "Für ein Kind einrichten"
+      },
+      "enjoy": {
+        "desc": "Bücher, Geschichten, Spiele, Übungen und mehr – alles in deiner Sprache.",
+        "label": "Corpán in {{lang}} genießen"
+      },
+      "learn": {
+        "desc": "Geschichten, Spiele, Übungen und Audio in einer neuen Sprache.",
+        "label": "Eine Sprache lernen"
+      },
+      "polyglot": {
+        "desc": "Mehrere Sprachen stapeln und alles erkunden.",
+        "label": "Viele Sprachen erkunden"
+      },
+      "subtitle": "Wir richten alles für dich ein. Du kannst es später ändern.",
+      "title": "Was führt dich zu Corpán?"
+    },
+    "interests": {
+      "audio": "Audio hören",
+      "audioDesc": "Hörbücher, Erzählungen und Radio.",
+      "games": "Spiele spielen",
+      "gamesDesc": "Durch spielerische Herausforderungen lernen.",
+      "read": "Geschichten & Bücher lesen",
+      "readDesc": "Tauche ein in Lesestoff in deiner Sprache.",
+      "speak": "Sprechen üben",
+      "speakDesc": "Sätze laut aussprechen und Feedback erhalten.",
+      "study": "Lernen & Üben",
+      "studyDesc": "Wortschatz mit gezielter Übung aufbauen.",
+      "subtitle": "Wähle, was dich anspricht – wir schlagen passende Erlebnisse vor. Optional.",
+      "title": "Was möchtest du tun?",
+      "wild": "Unerwartetes entdecken",
+      "wildDesc": "Überraschende, experimentelle Erlebnisse."
+    },
+    "settingUp": "Wird eingerichtet…",
+    "ttsIntro": "Corpán liest vor. Tippe auf eine Stimme, um sie in deiner Geschwindigkeit zu hören.",
+    "voiceGuide": {
+      "intro": "Dein Gerät hat reichhaltige, natürliche Stimmen integriert – kostenlos und viel besser als die Standardstimmen. Der Hersteller lässt sie nur deaktiviert. Lass sie uns aktivieren; es sind nur wenige Schritte:",
+      "macStep1": "Systemeinstellungen öffnen.",
+      "macStep2": "Gehe zu Bedienungshilfen → Gesprochene Inhalte.",
+      "macStep3": "Unter Systemstimme, öffne Stimmen verwalten.",
+      "macStep4": "Lade eine Premium- oder Erweiterte Stimme für deine Sprache herunter.",
+      "macStep5": "Kehre zu Corpán zurück – sie erscheint hier automatisch.",
+      "step1": "Tippe unten auf Einstellungen öffnen.",
+      "step2": "Gehe zu Bedienungshilfen → Gesprochene Inhalte → Stimmen.",
+      "step3": "Tippe auf deine Sprache.",
+      "step4": "Lade eine Premium- oder Erweiterte Stimme herunter.",
+      "step5": "Kehre zu Corpán zurück – sie erscheint hier automatisch.",
+      "title": "Die besten Stimmen deines Geräts freischalten"
+    },
+    "voicePreviewAria": "Vorschau von {{name}}",
+    "voicePreviewSelected": "Vorschau ausgewählt",
+    "voiceRecommended": "Empfohlen",
+    "voiceSelectedCount": "{{count}} von {{total}}"
   },
   "socials": {
     "youtube": {
@@ -279,6 +372,11 @@
       "cta": "Besuchen",
       "title": "encorpora.io",
       "desc": "Hauptseite mit Dokumentation und Community."
+    },
+    "instagram": {
+      "cta": "Folgen",
+      "desc": "@corpanapp",
+      "title": "Auf Instagram folgen"
     }
   },
   "common": {
@@ -469,7 +567,6 @@
     "devIntro": "Teste ein Corpán Pack oder erstelle dein eigenes.",
     "devLink": "Mehr auf Free2z",
     "new": "Neu",
-    "updates": "Updates",
     "offline": "Offline",
     "purchasing": "Wird gekauft...",
     "buy": "Kaufen {{price}}",
@@ -508,11 +605,19 @@
       "openDrawer": "Phrasen-Pakete durchsuchen ({{count}})",
       "openDrawerLabel": "Phrasen-Pakete durchsuchen",
       "inactiveBadge": "Inaktiv",
-      "moreActionsLabel": "Weitere Aktionen"
+      "moreActionsLabel": "Weitere Aktionen",
+      "install": "Installieren"
     },
     "unlockWithPlus": "Mit Corpán Plus freischalten",
     "plus": "Corpán Plus",
-    "includedWithPlus": "In Plus enthalten"
+    "includedWithPlus": "In Plus enthalten",
+    "installFailedTitle": "Installation fehlgeschlagen",
+    "installStuckDetail": "Seit einiger Zeit kein Fortschritt. Überprüfe deine Verbindung und versuche es erneut.",
+    "installStuckTitle": "Download angehalten",
+    "openPack": "{{name}} öffnen",
+    "recent": "Zuletzt",
+    "updateAll": "Alle aktualisieren ({{count}})",
+    "updateAvailable": "Update verfügbar"
   },
   "subscription": {
     "title": "Alles freischalten",
@@ -582,5 +687,93 @@
   },
   "streak": {
     "title": "{{count}}-Tage-Serie"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Hörbücher mitlesen – entspannt, mit Wort-für-Wort-Hervorhebung.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Mandarin-Zeichen meistern, Strich für Strich.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Höre einen Satz, steuere, um ihn zu treffen – spielend lernen.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Sätze Stück für Stück in einem schnellen Spiel aufbauen.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Sätze in deinen Sprachen durchblättern – schnelle, gezielte Übung.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sätze laut aussprechen und Aussprache-Feedback erhalten.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Dieselbe Hörbücher in immersivem 3D – Wörter strömen beim Lesen durch den Raum.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Live-Radio aus aller Welt hören.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Weiterlernen",
+    "experiences": "Erlebnisse",
+    "forYou": "Für dich",
+    "get": "Holen",
+    "installing": "Installiere…",
+    "library": "Bibliothek",
+    "like": "Gefällt mir",
+    "notForMe": "Nichts für mich",
+    "open": "Öffnen",
+    "openPhrases": "Sätze öffnen",
+    "phraseFlipDesc": "Sätze in deinen Sprachen durchblättern",
+    "plusChip": "Corpán Plus – alles freischalten",
+    "recommended": "Empfohlen",
+    "showAnother": "Ein anderes zeigen",
+    "tryIt": "Ausprobieren"
+  },
+  "offline": {
+    "cachedSubtitle": "Zeigt deine zuletzt zwischengespeicherten Ergebnisse an.",
+    "catalogSubtitle": "Verbinde dich erneut, um neue Pakete zu entdecken. Deine installierten Pakete funktionieren weiterhin.",
+    "installNeedsInternet": "Verbinde dich erneut, um herunterzuladen.",
+    "onboardingBanner": "Offline – Auswahlen werden installiert, wenn du dich erneut verbindest.",
+    "packCatalogSubtitle": "Deine installierten Pakete funktionieren weiterhin. Verbinde dich erneut, um weitere zu durchsuchen.",
+    "packCatalogTitle": "Paketkatalog benötigt Internet",
+    "phrasePacksOnboardingSubtitle": "Du kannst Satzpakete später unter Einstellungen → Pakete auswählen, sobald du wieder verbunden bist.",
+    "phrasePacksSubtitle": "Deine installierten Satzpakete funktionieren weiterhin. Verbinde dich erneut, um neue zu durchsuchen.",
+    "phrasePacksTitle": "Satzpaketkatalog benötigt Internet",
+    "purchaseNeedsInternet": "Verbinde dich erneut, um zu kaufen.",
+    "restoreSubtitle": "Verbinde dich erneut, um Käufe wiederherzustellen.",
+    "subscriptionSubtitle": "Verbinde dich erneut, um zu abonnieren. Deine installierten Pakete und gebündelten Sätze funktionieren weiterhin.",
+    "subscriptionTitle": "Abonnements benötigen Internet",
+    "title": "Kein Internet",
+    "voiceDownloadSubtitle": "Die Stimmen auf deinem Gerät funktionieren weiterhin. Verbinde dich erneut, um weitere zu installieren.",
+    "voiceDownloadTitle": "Stimmen-Download benötigt Internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Alle Einstellungen",
+    "title": "Schnelleinstellungen"
+  },
+  "tour": {
+    "maybeLater": "Vielleicht später",
+    "progress": "{{n}} von {{total}}"
+  },
+  "update": {
+    "availableLine": "Update verfügbar → {{version}}",
+    "close": "Schließen",
+    "description": "Eine neuere Version von Corpán ist in deinem App Store verfügbar.",
+    "remindLater": "Vielleicht später",
+    "skipThisVersion": "Diese Version überspringen",
+    "title": "Update verfügbar",
+    "update": "Aktualisieren",
+    "updateNow": "Jetzt aktualisieren",
+    "versionLine": "Version {{version}} ist zur Installation bereit."
   }
 }

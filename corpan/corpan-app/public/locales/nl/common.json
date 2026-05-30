@@ -119,13 +119,16 @@
       "noMatches": "Geen resultaten.",
       "noFiltered": "Hier is nu niets.",
       "stackTotalPhrases": "~{{count}} zinnen passen",
-      "stackTotalNudge": "Voeg pakketten toe of verbreed de niveaus voor meer variatie."
+      "stackTotalNudge": "Voeg pakketten toe of verbreed de niveaus voor meer variatie.",
+      "activeCount": "{{active}} van {{total}} actief",
+      "baseCorpusSubtitle": "{{n}} zinnen"
     },
     "sendAnonUsage": "Anonieme gebruiksgegevens verzenden",
     "sendAnonUsageHint": "Anoniem, alleen voor deze sessie. Geen accounts, geen apparaat-ID's, geen opslag van IP-adressen. Je kunt dit altijd uitzetten.",
     "readPrivacyPromise": "Lees onze Privacybelofte",
     "showStreak": "Leesreeks weergeven",
-    "showStreakHint": "Een kleine dagteller in de header. Alleen op je apparaat, geen herinneringen of meldingen."
+    "showStreakHint": "Een kleine dagteller in de header. Alleen op je apparaat, geen herinneringen of meldingen.",
+    "primaryLanguage": "Primaire (UI) taal"
   },
   "onboarding": {
     "welcome": "Welkom",
@@ -140,7 +143,7 @@
     "welcomeVisit": "Bezoek encorpora.io",
     "linkCopied": "Link gekopieerd. Open in uw browser:",
     "reconfigureStack": "Stapel opnieuw configureren",
-    "openVoiceSettings": "Open de spraakinstellingen van uw apparaat",
+    "openVoiceSettings": "Open Instellingen",
     "openTTSSetup": "Open TTS-instellingen",
     "welcomeFollowUp": "Bedankt voor het aansluiten — tot ziens in de community!",
     "learning": "Talen leren",
@@ -155,8 +158,8 @@
     "languageOrderTipBody": "De onderste taal in de lijst is de interfacetaal van de app. Sleep een andere taal naar onderen om de interfacetaal te wijzigen.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Beste resultaten: gebruik Google tekst-naar-spraak. Samsung TTS werkt niet in Corpán.",
-    "ttsOsTipIOS": "Ga in Instellingen → Toegankelijkheid naar Gesproken inhoud en download stemmen. Let op: Apple levert niet voor elke taal stemmen. Als een upgrade niet helpt, verzoek dan ondersteuning via de Feedback-app van Apple.",
-    "ttsOsTipMac": "Ga in Systeeminstellingen → Toegankelijkheid naar Gesproken inhoud en download stemmen. Let op: Apple levert niet voor elke taal stemmen. Als een upgrade niet helpt, verzoek dan ondersteuning via de Feedback-app van Apple.",
+    "ttsOsTipIOS": "Je apparaat heeft gratis Premium stemmen ingebouwd — Apple laat ze alleen uitgeschakeld. Schakel ze in: Instellingen → Toegankelijkheid → Gesproken materiaal → Stemmen → jouw taal, tik dan op het downloadicoon voor een Premium of Enhanced stem. Kom terug en deze verschijnt hier automatisch. (Apple ondersteunt nog niet elke taal.)",
+    "ttsOsTipMac": "Je Mac heeft gratis Premium stemmen ingebouwd — Apple laat ze alleen uitgeschakeld. Schakel ze in: Systeeminstellingen → Toegankelijkheid → Gesproken materiaal → Systeemstem → Beheer stemmen, download dan een Premium of Enhanced stem. Kom terug en deze verschijnt hier automatisch. (Apple ondersteunt nog niet elke taal.)",
     "ttsOsTipWindows": "Voeg in Instellingen spraakstemmen toe of installeer ze, en keer daarna hier terug.",
     "ttsOsTipOther": "Voeg in de instellingen van uw apparaat tekst-naar-spraaксtemmen toe of installeer ze, en keer daarna hier terug.",
     "installVoicesAndroid": "Stemmen installeren",
@@ -172,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Google Tekst-naar-spraak installeren",
-        "detail": "De stemengine van Google biedt de beste kwaliteit voor alle talen die Corpán ondersteunt. Het is gratis.",
+        "detail": "De gratis stemengine van Google ontgrendelt hoogwaardige stemmen voor de meeste talen die Corpán ondersteunt — de meeste telefoons worden er gewoon niet mee geleverd. Laten we deze toevoegen:",
         "button": "Installeren via Play Store"
       },
       "noEngine": {
@@ -227,7 +230,11 @@
       "emptySub": "Kom snel terug.",
       "offlineHero": "Je bent offline.",
       "offlineSub": "Pakketten hebben internet nodig — probeer later via Instellingen → Pakketten.",
-      "offlineBanner": "Offline — selectie installeert na verbinden."
+      "offlineBanner": "Offline — selectie installeert na verbinden.",
+      "noneSelected": "Geen geselecteerd — Doorgaan zal overslaan",
+      "selectedSuffix": "geselecteerd",
+      "skip": "Sla voor nu over",
+      "subtitle": "Voeg gerichte zinnenpakketten toe aan je verzameling. Schakel ze op elk moment in of uit via Instellingen."
     },
     "notOnAppleIOS": "Niet op iOS",
     "appleNoVoiceTitle": "Apple biedt nog geen {{lang}}-stem",
@@ -257,7 +264,93 @@
       "team": "We zijn een klein team en steken elke cent terug in Corpán.",
       "tryPlus": "Probeer Corpán Plus",
       "continueFree": "Ga verder met de gratis versie"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Hoe oud is de lezer?",
+      "childTeen": "13–17 jaar",
+      "childUnder13": "Jonger dan 13",
+      "enjoyComfortable": "Redelijk goed",
+      "enjoyImproving": "Ik leer het nog lezen",
+      "enjoyJustStarting": "Net begonnen — ik ben nieuw met het lezen ervan",
+      "enjoyNative": "Vloeiend — het is mijn moedertaal",
+      "enjoyTitle": "Hoe goed lees je {{lang}}?",
+      "learnAdvanced": "Ik ben redelijk gevorderd",
+      "learnLittle": "Een beetje",
+      "learnNever": "Nooit — complete beginner",
+      "learnTitle": "Heb je {{lang}} eerder gestudeerd?"
+    },
+    "confident": {
+      "addBetter": "Ontgrendel een rijkere stem",
+      "andMore": "+{{count}} meer",
+      "chooseVoices": "Kies stemmen",
+      "noVoiceFor": "Nog geen {{lang}} stem — laten we er een toevoegen zodat Corpán kan voorlezen.",
+      "voiceCountMany": "{{count}} stemmen klaar",
+      "voiceCountOne": "1 stem klaar",
+      "yourVoiceFor": "Jouw {{lang}} stem"
+    },
+    "engage": {
+      "joinDesc": "Steun Corpán en ontgrendel alles. Optioneel, op elk moment.",
+      "joinTitle": "Word lid van de Corpanistas",
+      "start": "Begin met verkennen",
+      "subtitle": "Corpán is gemaakt door een klein open-source team. Zeg hallo — en als je het geweldig vindt, kun je ons steunen.",
+      "title": "Je bent er helemaal klaar voor"
+    },
+    "fork": {
+      "child": {
+        "desc": "Zachte, speelse boeken en spelletjes voor jongere leerlingen.",
+        "label": "Instellen voor een kind"
+      },
+      "enjoy": {
+        "desc": "Boeken, verhalen, spelletjes, oefeningen en meer — allemaal in jouw taal.",
+        "label": "Geniet van Corpán in {{lang}}"
+      },
+      "learn": {
+        "desc": "Verhalen, spelletjes, oefeningen en audio in een nieuwe taal.",
+        "label": "Een taal leren"
+      },
+      "polyglot": {
+        "desc": "Combineer meerdere talen en verken alles.",
+        "label": "Verken vele talen"
+      },
+      "subtitle": "We stellen alles voor je in. Je kunt het later wijzigen.",
+      "title": "Wat brengt je naar Corpán?"
+    },
+    "interests": {
+      "audio": "Luister naar audio",
+      "audioDesc": "Audioboeken, vertellingen en radio.",
+      "games": "Speel spelletjes",
+      "gamesDesc": "Leer door speelse uitdagingen.",
+      "read": "Lees verhalen & boeken",
+      "readDesc": "Duik in leesmateriaal in jouw taal.",
+      "speak": "Oefen met spreken",
+      "speakDesc": "Spreek zinnen hardop uit en krijg feedback.",
+      "study": "Studeren & oefenen",
+      "studyDesc": "Bouw woordenschat op met gerichte oefening.",
+      "subtitle": "Kies wat je aanspreekt — we zullen passende ervaringen voorstellen. Optioneel.",
+      "title": "Wat wil je doen?",
+      "wild": "Verken onverwachte dingen",
+      "wildDesc": "Verrassende, experimentele ervaringen."
+    },
+    "settingUp": "Alles instellen…",
+    "ttsIntro": "Corpán leest voor. Tik op een stem om deze op jouw snelheid te horen.",
+    "voiceGuide": {
+      "intro": "Je apparaat heeft rijke, natuurlijke stemmen ingebouwd — gratis, en veel beter dan de standaard. De fabrikant laat ze alleen uitgeschakeld. Laten we ze inschakelen; het kost slechts een paar tikken:",
+      "macStep1": "Open Systeeminstellingen.",
+      "macStep2": "Ga naar Toegankelijkheid → Gesproken materiaal.",
+      "macStep3": "Open onder Systeemstem: Beheer stemmen.",
+      "macStep4": "Download een Premium of Enhanced stem voor jouw taal.",
+      "macStep5": "Kom terug naar Corpán — deze verschijnt hier automatisch.",
+      "step1": "Tik hieronder op Open Instellingen.",
+      "step2": "Ga naar Toegankelijkheid → Gesproken materiaal → Stemmen.",
+      "step3": "Tik op jouw taal.",
+      "step4": "Download een Premium of Enhanced stem.",
+      "step5": "Kom terug naar Corpán — deze verschijnt hier automatisch.",
+      "title": "Ontgrendel de beste stemmen van je apparaat"
+    },
+    "voicePreviewAria": "Voorbeeld van {{name}}",
+    "voicePreviewSelected": "Voorbeeld geselecteerd",
+    "voiceRecommended": "Aanbevolen",
+    "voiceSelectedCount": "{{count}} van {{total}}"
   },
   "socials": {
     "youtube": {
@@ -279,6 +372,11 @@
       "cta": "Bezoeken",
       "title": "encorpora.io",
       "desc": "Hoofdsite met documentatie en community."
+    },
+    "instagram": {
+      "cta": "Volgen",
+      "desc": "@corpanapp",
+      "title": "Volg op Instagram"
     }
   },
   "common": {
@@ -469,7 +567,6 @@
     "devIntro": "Probeer een Corpán-pakket of maak uw eigen.",
     "devLink": "Meer informatie op Free2z",
     "new": "Nieuw",
-    "updates": "Updates",
     "offline": "Offline",
     "purchasing": "Aanschaffen...",
     "buy": "Kopen {{price}}",
@@ -508,11 +605,19 @@
       "openDrawer": "Frasenpakketten verkennen ({{count}})",
       "openDrawerLabel": "Frasenpakketten verkennen",
       "inactiveBadge": "Inactief",
-      "moreActionsLabel": "Meer acties"
+      "moreActionsLabel": "Meer acties",
+      "install": "Installeren"
     },
     "unlockWithPlus": "Ontgrendel met Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Inbegrepen bij Plus"
+    "includedWithPlus": "Inbegrepen bij Plus",
+    "installFailedTitle": "Installatie mislukt",
+    "installStuckDetail": "Al een tijdje geen voortgang. Controleer je verbinding en probeer het opnieuw.",
+    "installStuckTitle": "Download vastgelopen",
+    "openPack": "Open {{name}}",
+    "recent": "Recent",
+    "updateAll": "Alles bijwerken ({{count}})",
+    "updateAvailable": "Update beschikbaar"
   },
   "subscription": {
     "title": "Alles ontgrendelen",
@@ -582,5 +687,93 @@
   },
   "streak": {
     "title": "{{count}} dagen op rij"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Lees mee met voorgelezen audioboeken — rustig, met woord-voor-woord markering.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Beheers Mandarijnse karakters, slag voor slag.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Hoor een zin, stuur om deze te matchen — leer spelenderwijs.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Bouw zinnen stukje voor stukje in een snel spel.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Blader door zinnen in jouw talen — snelle, gerichte oefening.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Spreek zinnen hardop uit en krijg feedback op je uitspraak.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Dezelfde audioboeken in meeslepend 3D — woorden stromen door de ruimte terwijl ze worden voorgelezen.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Stem af op live radio van over de hele wereld.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Verder leren",
+    "experiences": "Ervaringen",
+    "forYou": "Voor jou",
+    "get": "Downloaden",
+    "installing": "Installeren…",
+    "library": "Bibliotheek",
+    "like": "Leuk vinden",
+    "notForMe": "Niet voor mij",
+    "open": "Openen",
+    "openPhrases": "Zinnen openen",
+    "phraseFlipDesc": "Blader door zinnen in jouw talen",
+    "plusChip": "Corpán Plus — ontgrendel alles",
+    "recommended": "Aanbevolen",
+    "showAnother": "Toon een andere",
+    "tryIt": "Probeer het"
+  },
+  "offline": {
+    "cachedSubtitle": "Toont je laatst opgeslagen resultaten.",
+    "catalogSubtitle": "Maak opnieuw verbinding om nieuwe pakketten te ontdekken. Je geïnstalleerde pakketten werken nog steeds.",
+    "installNeedsInternet": "Maak opnieuw verbinding om te downloaden.",
+    "onboardingBanner": "Offline — selecties worden geïnstalleerd wanneer je opnieuw verbinding maakt.",
+    "packCatalogSubtitle": "Je geïnstalleerde pakketten werken nog steeds. Maak opnieuw verbinding om meer te bekijken.",
+    "packCatalogTitle": "Pakketcatalogus heeft internet nodig",
+    "phrasePacksOnboardingSubtitle": "Je kunt zinnenpakketten later kiezen via Instellingen → Pakketten zodra je opnieuw verbinding maakt.",
+    "phrasePacksSubtitle": "Je geïnstalleerde zinnenpakketten werken nog steeds. Maak opnieuw verbinding om nieuwe te bekijken.",
+    "phrasePacksTitle": "Zinnenpakketcatalogus heeft internet nodig",
+    "purchaseNeedsInternet": "Maak opnieuw verbinding om te kopen.",
+    "restoreSubtitle": "Maak opnieuw verbinding om aankopen te herstellen.",
+    "subscriptionSubtitle": "Maak opnieuw verbinding om je te abonneren. Je geïnstalleerde pakketten en gebundelde zinnen werken nog steeds.",
+    "subscriptionTitle": "Abonnementen hebben internet nodig",
+    "title": "Geen internet",
+    "voiceDownloadSubtitle": "De stemmen die al op je apparaat staan, werken nog steeds. Maak opnieuw verbinding om meer te installeren.",
+    "voiceDownloadTitle": "Stem downloaden heeft internet nodig"
+  },
+  "quickSettings": {
+    "fullSettings": "Volledige instellingen",
+    "title": "Snelle instellingen"
+  },
+  "tour": {
+    "maybeLater": "Misschien later",
+    "progress": "{{n}} van {{total}}"
+  },
+  "update": {
+    "availableLine": "Update beschikbaar → {{version}}",
+    "close": "Sluiten",
+    "description": "Een nieuwere versie van Corpán is beschikbaar in de app store.",
+    "remindLater": "Misschien later",
+    "skipThisVersion": "Sla deze versie over",
+    "title": "Update beschikbaar",
+    "update": "Bijwerken",
+    "updateNow": "Nu bijwerken",
+    "versionLine": "Versie {{version}} is klaar om te installeren."
   }
 }

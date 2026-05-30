@@ -120,7 +120,9 @@
       "noMatches": "Nieko nerasta.",
       "noFiltered": "Čia dabar nieko.",
       "stackTotalPhrases": "~{{count}} frazių atitinka",
-      "stackTotalNudge": "Pridėk paketų arba praplėsk lygius dėl įvairovės."
+      "stackTotalNudge": "Pridėk paketų arba praplėsk lygius dėl įvairovės.",
+      "activeCount": "{{active}} iš {{total}} aktyvių",
+      "baseCorpusSubtitle": "{{n}} frazių"
     },
     "sendAnonUsage": "Siųsti anoniminius naudojimo duomenis",
     "sendAnonUsageHint": "Anonimiška, tik sesijos metu. Jokių paskyrų, jokių įrenginio ID, jokio IP saugojimo. Galite bet kada išjungti.",
@@ -141,7 +143,7 @@
     "welcomeVisit": "Apsilankykite encorpora.io",
     "linkCopied": "Nuoroda nukopijuota. Atidarykite savo naršyklėje:",
     "reconfigureStack": "Perkonfigūruoti kaupiklį",
-    "openVoiceSettings": "Atidaryti savo įrenginio balso nustatymus",
+    "openVoiceSettings": "Atidaryti Nustatymus",
     "openTTSSetup": "Atidaryti TTS nustatymus",
     "welcomeFollowUp": "Ačiū, kad prisijungėte — iki pasimatymo bendruomenėje!",
     "learning": "Kalbų mokymasis",
@@ -156,8 +158,8 @@
     "languageOrderTipBody": "Žemiausia kalba sąraše yra programos UI kalba. Norėdami pakeisti UI kalbą, vilkite kitą kalbą į apačią.",
     "ttsOsTipTitle": "Patarimas",
     "ttsOsTipAndroid": "Geriausi rezultatai: naudokite Google tekstą į kalbą. Samsung TTS neveikia Corpán.",
-    "ttsOsTipIOS": "Nustatymuose → Prieinamumas, raskite Kalbėtą turinį ir atsisiųskite balsus. Pastaba: Apple nesuteikia balsų kiekvienai kalbai. Jei atnaujinimas nepadeda, prašykite pagalbos per Apple atsiliepimų programą.",
-    "ttsOsTipMac": "Sistemos nustatymuose → Prieinamumas, raskite Kalbėtą turinį ir atsisiųskite balsus. Pastaba: Apple nesuteikia balsų kiekvienai kalbai. Jei atnaujinimas nepadeda, prašykite pagalbos per Apple atsiliepimų programą.",
+    "ttsOsTipIOS": "Jūsų įrenginyje yra nemokami „Premium“ balsai – „Apple“ juos tiesiog palieka išjungtus. Įjunkite juos: Nustatymai → Prieinamumas → Kalbamas turinys → Balsai → jūsų kalba, tada palieskite atsisiuntimo piktogramą, kad gautumėte „Premium“ arba „Enhanced“ balsą. Grįžkite ir jis automatiškai atsiras čia. („Apple“ dar nepalaiko visų kalbų.)",
+    "ttsOsTipMac": "Jūsų „Mac“ kompiuteryje yra nemokami „Premium“ balsai – „Apple“ juos tiesiog palieka išjungtus. Įjunkite juos: Sistemos nustatymai → Prieinamumas → Kalbamas turinys → Sistemos balsas → Tvarkyti balsus, tada atsisiųskite „Premium“ arba „Enhanced“ balsą. Grįžkite ir jis automatiškai atsiras čia. („Apple“ dar nepalaiko visų kalbų.)",
     "ttsOsTipWindows": "Nustatymuose pridėkite/įdiekite kalbos balsus, tada grįžkite čia.",
     "ttsOsTipOther": "Savo įrenginio nustatymuose pridėkite/įdiekite tekstą į kalbą balsus, tada grįžkite čia.",
     "installVoicesAndroid": "Įdiekite balsus",
@@ -173,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Įdiekite Google Tekstas į kalbą",
-        "detail": "Google balso variklis suteikia geriausią kokybę visoms kalboms, kurias palaiko Corpán. Tai nemokama.",
+        "detail": "„Google“ nemokamas balso variklis atrakina aukštos kokybės balsus daugeliui kalbų, kurias palaiko Corpán – dauguma telefonų jo tiesiog neturi. Pridėkime jį:",
         "button": "Įdiekite iš Play Store"
       },
       "noEngine": {
@@ -228,7 +230,11 @@
       "emptySub": "Užsuk vėliau.",
       "offlineHero": "Esi neprisijungęs.",
       "offlineSub": "Paketams reikia interneto — bandyk vėliau iš Nustatymai → Paketai.",
-      "offlineBanner": "Neprisijungta — pasirinkimai bus įdiegti prisijungus."
+      "offlineBanner": "Neprisijungta — pasirinkimai bus įdiegti prisijungus.",
+      "noneSelected": "Nepasirinkta – Tęsti praleis",
+      "selectedSuffix": "pasirinkta",
+      "skip": "Praleisti kol kas",
+      "subtitle": "Pridėkite sutelktų frazių paketų į savo rinkinį. Įjunkite arba išjunkite juos bet kada Nustatymuose."
     },
     "notOnAppleIOS": "Ne iOS",
     "appleNoVoiceTitle": "Apple dar nesiūlo {{lang}} balso",
@@ -258,7 +264,93 @@
       "team": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán.",
       "tryPlus": "Išbandyti Corpán Plus",
       "continueFree": "Tęsti su nemokama versija"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Kiek metų skaitytojui?",
+      "childTeen": "13–17 metų",
+      "childUnder13": "Iki 13 metų",
+      "enjoyComfortable": "Gana gerai",
+      "enjoyImproving": "Vis dar mokausi skaityti",
+      "enjoyJustStarting": "Tik pradedu – man tai nauja",
+      "enjoyNative": "Sklandžiai – tai mano gimtoji kalba",
+      "enjoyTitle": "Kaip gerai skaitote {{lang}}?",
+      "learnAdvanced": "Esu gana pažengęs",
+      "learnLittle": "Šiek tiek",
+      "learnNever": "Niekada – visiškas pradedantysis",
+      "learnTitle": "Ar anksčiau mokėtės {{lang}}?"
+    },
+    "confident": {
+      "addBetter": "Atrakinkite sodresnį balsą",
+      "andMore": "+{{count}} daugiau",
+      "chooseVoices": "Pasirinkite balsus",
+      "noVoiceFor": "Kol kas nėra {{lang}} balso – pridėkime jį, kad Corpán galėtų skaityti garsiai.",
+      "voiceCountMany": "Paruošta {{count}} balsų",
+      "voiceCountOne": "Paruoštas 1 balsas",
+      "yourVoiceFor": "Jūsų {{lang}} balsas"
+    },
+    "engage": {
+      "joinDesc": "Palaikykite Corpán ir atrakinkite viską. Neprivaloma, bet kada.",
+      "joinTitle": "Prisijunkite prie Corpanistas",
+      "start": "Pradėti tyrinėti",
+      "subtitle": "Corpán kuria maža atvirojo kodo komanda. Ateikite pasisveikinti – ir jei jums patinka, galite mus paremti.",
+      "title": "Viskas paruošta"
+    },
+    "fork": {
+      "child": {
+        "desc": "Švelnios, žaismingos knygos ir žaidimai jaunesniems besimokantiesiems.",
+        "label": "Nustatyti vaikui"
+      },
+      "enjoy": {
+        "desc": "Knygos, istorijos, žaidimai, pratimai ir dar daugiau – viskas jūsų kalba.",
+        "label": "Mėgaukitės Corpán kalba {{lang}}"
+      },
+      "learn": {
+        "desc": "Istorijos, žaidimai, pratimai ir garso įrašai nauja kalba.",
+        "label": "Mokytis kalbos"
+      },
+      "polyglot": {
+        "desc": "Sudėkite kelias kalbas ir tyrinėkite viską.",
+        "label": "Tyrinėti daug kalbų"
+      },
+      "subtitle": "Viską nustatysime už jus. Galėsite pakeisti vėliau.",
+      "title": "Kas jus atvedė į Corpán?"
+    },
+    "interests": {
+      "audio": "Klausytis garso įrašų",
+      "audioDesc": "Audioknygos, pasakojimai ir radijas.",
+      "games": "Žaisti žaidimus",
+      "gamesDesc": "Mokykitės per žaismingus iššūkius.",
+      "read": "Skaityti istorijas ir knygas",
+      "readDesc": "Pasinerkite į skaitymą savo kalba.",
+      "speak": "Praktikuoti kalbėjimą",
+      "speakDesc": "Sakykite frazes garsiai ir gaukite atsiliepimus.",
+      "study": "Mokytis ir treniruotis",
+      "studyDesc": "Kurkite žodyną su sutelkta praktika.",
+      "subtitle": "Pasirinkite bet ką, kas patinka – pasiūlysime atitinkamų patirčių. Neprivaloma.",
+      "title": "Ką norite daryti?",
+      "wild": "Tyrinėti netikėtus dalykus",
+      "wildDesc": "Netikėtos, eksperimentinės patirtys."
+    },
+    "settingUp": "Nustatoma…",
+    "ttsIntro": "Corpán skaito garsiai. Palieskite balsą, kad išgirstumėte jį savo greičiu.",
+    "voiceGuide": {
+      "intro": "Jūsų įrenginyje yra sodrūs, natūralūs balsai – nemokami ir daug geresni nei numatytieji. Gamintojas juos tiesiog palieka išjungtus. Įjunkime juos; tai užtruks tik kelis palietimus:",
+      "macStep1": "Atidarykite Sistemos nustatymus.",
+      "macStep2": "Eikite į Prieinamumas → Kalbamas turinys.",
+      "macStep3": "Skiltyje Sistemos balsas atidarykite Tvarkyti balsus.",
+      "macStep4": "Atsisiųskite „Premium“ arba „Enhanced“ balsą savo kalbai.",
+      "macStep5": "Grįžkite į Corpán – jis automatiškai atsiras čia.",
+      "step1": "Palieskite Atidaryti Nustatymus žemiau.",
+      "step2": "Eikite į Prieinamumas → Kalbamas turinys → Balsai.",
+      "step3": "Palieskite savo kalbą.",
+      "step4": "Atsisiųskite „Premium“ arba „Enhanced“ balsą.",
+      "step5": "Grįžkite į Corpán – jis automatiškai atsiras čia.",
+      "title": "Atrakinkite geriausius savo įrenginio balsus"
+    },
+    "voicePreviewAria": "Peržiūrėti {{name}}",
+    "voicePreviewSelected": "Pasirinkta peržiūra",
+    "voiceRecommended": "Rekomenduojama",
+    "voiceSelectedCount": "{{count}} iš {{total}}"
   },
   "socials": {
     "youtube": {
@@ -280,6 +372,11 @@
       "cta": "Apsilankyti",
       "title": "encorpora.io",
       "desc": "Pagrindinis puslapis su dokumentacija ir bendruomene."
+    },
+    "instagram": {
+      "cta": "Sekti",
+      "desc": "@corpanapp",
+      "title": "Sekite Instagram"
     }
   },
   "common": {
@@ -470,7 +567,6 @@
     "devIntro": "Išbandykite Corpán paketą arba sukurkite savo.",
     "devLink": "Sužinokite daugiau apie Free2z",
     "new": "Naujas",
-    "updates": "Atnaujinimai",
     "offline": "Offline",
     "purchasing": "Perkama...",
     "buy": "Pirkti {{price}}",
@@ -509,11 +605,19 @@
       "openDrawer": "Naršyti frazių paketus ({{count}})",
       "openDrawerLabel": "Naršyti frazių paketus",
       "inactiveBadge": "Neaktyvu",
-      "moreActionsLabel": "Daugiau veiksmų"
+      "moreActionsLabel": "Daugiau veiksmų",
+      "install": "Įdiegti"
     },
     "unlockWithPlus": "Atrakinti su Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Įtraukta su Plus"
+    "includedWithPlus": "Įtraukta su Plus",
+    "installFailedTitle": "Diegimas nepavyko",
+    "installStuckDetail": "Kurį laiką nebuvo jokios pažangos. Patikrinkite ryšį ir bandykite dar kartą.",
+    "installStuckTitle": "Atsisiuntimas sustojo",
+    "openPack": "Atidaryti {{name}}",
+    "recent": "Naujausi",
+    "updateAll": "Atnaujinti visus ({{count}})",
+    "updateAvailable": "Yra naujinys"
   },
   "subscription": {
     "title": "Atrakinkite viską",
@@ -583,5 +687,93 @@
   },
   "streak": {
     "title": "{{count}} dienų serija"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Klausykitės ir skaitykite audioknygas – ramiai, su žodžių paryškinimu.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Įvaldykite mandarinų rašmenis, brūkšnys po brūkšnio.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Išgirskite frazę, valdykite, kad atitiktų – mokykitės žaisdami.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Kurkite frazes dalimis greitame žaidime.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Vartykite frazes savo kalbomis – greita, sutelkta praktika.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sakykite frazes garsiai ir gaukite tarimo atsiliepimus.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Tos pačios audioknygos įtraukiančiame 3D – žodžiai sklinda erdve, kai yra skaitomi.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Klausykitės tiesioginio radijo iš viso pasaulio.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Tęsti mokymąsi",
+    "experiences": "Patirtys",
+    "forYou": "Jums",
+    "get": "Gaukite",
+    "installing": "Diegiama…",
+    "library": "Biblioteka",
+    "like": "Patinka",
+    "notForMe": "Ne man",
+    "open": "Atidaryti",
+    "openPhrases": "Atidaryti frazes",
+    "phraseFlipDesc": "Vartykite frazes savo kalbomis",
+    "plusChip": "Corpán Plus – atrakinkite viską",
+    "recommended": "Rekomenduojama",
+    "showAnother": "Rodyti kitą",
+    "tryIt": "Išbandyti"
+  },
+  "offline": {
+    "cachedSubtitle": "Rodomi paskutiniai išsaugoti rezultatai.",
+    "catalogSubtitle": "Prisijunkite, kad atrastumėte naujų paketų. Jūsų įdiegti paketai vis dar veikia.",
+    "installNeedsInternet": "Prisijunkite, kad atsisiųstumėte.",
+    "onboardingBanner": "Neprisijungus – pasirinkimai bus įdiegti prisijungus.",
+    "packCatalogSubtitle": "Jūsų įdiegti paketai vis dar veikia. Prisijunkite, kad peržiūrėtumėte daugiau.",
+    "packCatalogTitle": "Paketų katalogui reikalingas internetas",
+    "phrasePacksOnboardingSubtitle": "Frazės paketus galėsite pasirinkti vėliau, prisijungę, iš Nustatymai → Paketai.",
+    "phrasePacksSubtitle": "Jūsų įdiegti frazių paketai vis dar veikia. Prisijunkite, kad peržiūrėtumėte naujus.",
+    "phrasePacksTitle": "Frazės paketų katalogui reikalingas internetas",
+    "purchaseNeedsInternet": "Prisijunkite, kad įsigytumėte.",
+    "restoreSubtitle": "Prisijunkite, kad atkurtumėte pirkinius.",
+    "subscriptionSubtitle": "Prisijunkite, kad prenumeruotumėte. Jūsų įdiegti paketai ir sujungtos frazės vis dar veikia.",
+    "subscriptionTitle": "Prenumeratoms reikalingas internetas",
+    "title": "Nėra interneto",
+    "voiceDownloadSubtitle": "Jūsų įrenginyje esantys balsai vis dar veikia. Prisijunkite, kad įdiegtumėte daugiau.",
+    "voiceDownloadTitle": "Balsų atsisiuntimui reikalingas internetas"
+  },
+  "quickSettings": {
+    "fullSettings": "Visi nustatymai",
+    "title": "Greitieji nustatymai"
+  },
+  "tour": {
+    "maybeLater": "Galbūt vėliau",
+    "progress": "{{n}} iš {{total}}"
+  },
+  "update": {
+    "availableLine": "Yra naujinys → {{version}}",
+    "close": "Uždaryti",
+    "description": "Naujesnė Corpán versija pasiekiama jūsų programėlių parduotuvėje.",
+    "remindLater": "Galbūt vėliau",
+    "skipThisVersion": "Praleisti šią versiją",
+    "title": "Yra naujinys",
+    "update": "Atnaujinti",
+    "updateNow": "Atnaujinti dabar",
+    "versionLine": "Versija {{version}} paruošta diegimui."
   }
 }

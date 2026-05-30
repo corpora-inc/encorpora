@@ -119,13 +119,16 @@
       "noMatches": "Nincs találat.",
       "noFiltered": "Itt most semmi sincs.",
       "stackTotalPhrases": "~{{count}} kifejezés illik",
-      "stackTotalNudge": "Adj hozzá csomagokat vagy bővítsd a szinteket a változatosságért."
+      "stackTotalNudge": "Adj hozzá csomagokat vagy bővítsd a szinteket a változatosságért.",
+      "activeCount": "{{active}} / {{total}} aktív",
+      "baseCorpusSubtitle": "{{n}} kifejezés"
     },
     "sendAnonUsage": "Névtelen használati adatok küldése",
     "sendAnonUsageHint": "Névtelen, munkamenethez kötött. Nincsenek fiókok, eszközazonosítók vagy IP-cím-tárolás. Bármikor kikapcsolhatod.",
     "readPrivacyPromise": "Olvasd el az Adatvédelmi ígéretünket",
     "showStreak": "Olvasási sorozat megjelenítése",
-    "showStreakHint": "Egy kis napi számláló a fejlécben. Csak az eszközön, emlékeztetők és értesítések nélkül."
+    "showStreakHint": "Egy kis napi számláló a fejlécben. Csak az eszközön, emlékeztetők és értesítések nélkül.",
+    "primaryLanguage": "Elsődleges (felhasználói felület) nyelv"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
@@ -140,7 +143,7 @@
     "welcomeVisit": "Látogasson el az encorpora.io oldalra",
     "linkCopied": "A hivatkozás kimásolva. Nyissa meg a böngészőjében:",
     "reconfigureStack": "Profil újrakonfigurálása",
-    "openVoiceSettings": "Hangbeállítások megnyitása",
+    "openVoiceSettings": "Beállítások megnyitása",
     "openTTSSetup": "TTS-beállítások megnyitása",
     "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!",
     "learningStepTitle": "Tanulás",
@@ -149,8 +152,8 @@
     "languageOrderTipBody": "A lista alján lévő nyelv az alkalmazás felületének nyelve. A felület nyelvének megváltoztatásához húzz egy másik nyelvet legalulra.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Legjobb: Google TTS. A Samsung TTS nem működik a Corpánban.",
-    "ttsOsTipIOS": "A Settings → Accessibility menüben keresd meg a Spoken Content részt, és töltsd le a hangokat. Megjegyzés: az Apple nem biztosít hangokat minden nyelvhez. Ha a frissítés nem segít, kérj támogatást az Apple Feedback appon keresztül.",
-    "ttsOsTipMac": "A System Settings → Accessibility menüben keresd meg a Spoken Content részt, és töltsd le a hangokat. Megjegyzés: az Apple nem biztosít hangokat minden nyelvhez. Ha a frissítés nem segít, kérj támogatást az Apple Feedback appon keresztül.",
+    "ttsOsTipIOS": "Az eszközöd ingyenes Prémium hangokat tartalmaz – az Apple csak kikapcsolva hagyja őket. Kapcsold be őket: Beállítások → Kisegítő lehetőségek → Felolvasott tartalom → Hangok → a nyelved, majd koppints a letöltés ikonra egy Prémium vagy Fejlett hanghoz. Gyere vissza, és automatikusan megjelenik itt. (Az Apple még nem fed le minden nyelvet.)",
+    "ttsOsTipMac": "A Mac-ed ingyenes Prémium hangokat tartalmaz – az Apple csak kikapcsolva hagyja őket. Kapcsold be őket: Rendszerbeállítások → Kisegítő lehetőségek → Felolvasott tartalom → Rendszerhang → Hangok kezelése, majd tölts le egy Prémium vagy Fejlett hangot. Gyere vissza, és automatikusan megjelenik itt. (Az Apple még nem fed le minden nyelvet.)",
     "ttsOsTipWindows": "Telepíts hangokat a Beállításokban, majd térj vissza ide.",
     "ttsOsTipOther": "Telepíts hangokat az eszköz beállításaiban, majd térj vissza ide.",
     "installVoicesAndroid": "Hangok telepítése",
@@ -172,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Telepítsd a Google Text-to-Speech-et",
-        "detail": "A Google hangmotorja minden Corpán által támogatott nyelven a legjobb minőséget nyújtja. Ingyenes.",
+        "detail": "A Google ingyenes hangmotorja kiváló minőségű hangokat tesz elérhetővé a Corpán által támogatott nyelvek többségéhez – a legtöbb telefon azonban nem tartalmazza. Adjuk hozzá:",
         "button": "Telepítés a Play Áruházból"
       },
       "noEngine": {
@@ -227,7 +230,11 @@
       "emptySub": "Nézz vissza hamarosan.",
       "offlineHero": "Offline vagy.",
       "offlineSub": "A csomagokhoz internet kell — próbáld meg később a Beállítások → Csomagok alatt.",
-      "offlineBanner": "Offline — a kijelölés telepítődik újracsatlakozáskor."
+      "offlineBanner": "Offline — a kijelölés telepítődik újracsatlakozáskor.",
+      "noneSelected": "Nincs kiválasztva – a Folytatás kihagyja",
+      "selectedSuffix": "kiválasztva",
+      "skip": "Kihagyás most",
+      "subtitle": "Adj hozzá fókuszált kifejezéscsomagokat a gyűjteményedhez. Bármikor be- vagy kikapcsolhatod őket a Beállításokban."
     },
     "notOnAppleIOS": "Nem iOS-en",
     "appleNoVoiceTitle": "Az Apple még nem kínál {{lang}} hangot",
@@ -257,7 +264,93 @@
       "team": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba.",
       "tryPlus": "Próbáld ki a Corpán Plus-t",
       "continueFree": "Folytatás az ingyenes verzióval"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Hány éves az olvasó?",
+      "childTeen": "13–17",
+      "childUnder13": "13 év alatt",
+      "enjoyComfortable": "Elég jól",
+      "enjoyImproving": "Még tanulom az olvasását",
+      "enjoyJustStarting": "Még csak most kezdem – új vagyok az olvasásában",
+      "enjoyNative": "Folyékonyan – ez az anyanyelvem",
+      "enjoyTitle": "Milyen jól olvasol {{lang}} nyelven?",
+      "learnAdvanced": "Elég haladó vagyok",
+      "learnLittle": "Kicsit",
+      "learnNever": "Soha – teljesen kezdő vagyok",
+      "learnTitle": "Tanultál már {{lang}} nyelvet korábban?"
+    },
+    "confident": {
+      "addBetter": "Oldj fel egy gazdagabb hangot",
+      "andMore": "+{{count}} további",
+      "chooseVoices": "Hangok kiválasztása",
+      "noVoiceFor": "Még nincs {{lang}} hang – adjunk hozzá egyet, hogy a Corpán fel tudjon olvasni.",
+      "voiceCountMany": "{{count}} hang készen áll",
+      "voiceCountOne": "1 hang készen áll",
+      "yourVoiceFor": "A {{lang}} hangod"
+    },
+    "engage": {
+      "joinDesc": "Támogasd a Corpánt és oldj fel mindent. Opcionális, bármikor.",
+      "joinTitle": "Csatlakozz a Corpanistas-hoz",
+      "start": "Kezdd el a felfedezést",
+      "subtitle": "A Corpánt egy apró, nyílt forráskódú csapat készíti. Gyere, köszönj be – és ha szereted, támogathatsz minket.",
+      "title": "Minden készen áll"
+    },
+    "fork": {
+      "child": {
+        "desc": "Gyengéd, játékos könyvek és játékok fiatalabb tanulóknak.",
+        "label": "Beállítás gyermek számára"
+      },
+      "enjoy": {
+        "desc": "Könyvek, történetek, játékok, gyakorlatok és még sok más – mind a te nyelveden.",
+        "label": "Élvezd a Corpánt {{lang}} nyelven"
+      },
+      "learn": {
+        "desc": "Történetek, játékok, gyakorlatok és hanganyagok egy új nyelven.",
+        "label": "Tanulj nyelvet"
+      },
+      "polyglot": {
+        "desc": "Halmozz fel több nyelvet és fedezz fel mindent.",
+        "label": "Fedezz fel sok nyelvet"
+      },
+      "subtitle": "Mindent beállítunk neked. Később megváltoztathatod.",
+      "title": "Mi hozott a Corpánhoz?"
+    },
+    "interests": {
+      "audio": "Hanganyagok hallgatása",
+      "audioDesc": "Hangoskönyvek, felolvasások és rádió.",
+      "games": "Játékok",
+      "gamesDesc": "Tanulj játékos kihívásokon keresztül.",
+      "read": "Olvass történeteket és könyveket",
+      "readDesc": "Merülj el az olvasókban a nyelveden.",
+      "speak": "Beszédgyakorlás",
+      "speakDesc": "Mondj ki kifejezéseket hangosan, és kapj visszajelzést.",
+      "study": "Tanulás és gyakorlás",
+      "studyDesc": "Építs szókincset fókuszált gyakorlással.",
+      "subtitle": "Válassz bármit, ami tetszik – mi élményeket ajánlunk hozzá. Opcionális.",
+      "title": "Mit szeretnél csinálni?",
+      "wild": "Fedezz fel különleges dolgokat",
+      "wildDesc": "Meglepő, kísérleti élmények."
+    },
+    "settingUp": "Beállítás folyamatban…",
+    "ttsIntro": "A Corpán felolvas. Koppints egy hangra, hogy meghallgasd a saját tempódban.",
+    "voiceGuide": {
+      "intro": "Az eszközöd gazdag, természetes hangokat tartalmaz – ingyenesen, és sokkal jobban, mint az alapértelmezett. A gyártó csak kikapcsolva hagyja őket. Kapcsoljuk be őket; csak néhány koppintás:",
+      "macStep1": "Nyisd meg a Rendszerbeállításokat.",
+      "macStep2": "Menj a Kisegítő lehetőségek → Felolvasott tartalom menüpontra.",
+      "macStep3": "A Rendszerhang alatt nyisd meg a Hangok kezelése menüpontot.",
+      "macStep4": "Tölts le egy Prémium vagy Fejlett hangot a nyelvedhez.",
+      "macStep5": "Gyere vissza a Corpánba – automatikusan megjelenik itt.",
+      "step1": "Koppints az alábbi Beállítások megnyitása gombra.",
+      "step2": "Menj a Kisegítő lehetőségek → Felolvasott tartalom → Hangok menüpontra.",
+      "step3": "Koppints a nyelvedre.",
+      "step4": "Tölts le egy Prémium vagy Fejlett hangot.",
+      "step5": "Gyere vissza a Corpánba – automatikusan megjelenik itt.",
+      "title": "Oldd fel az eszközöd legjobb hangjait"
+    },
+    "voicePreviewAria": "{{name}} előnézete",
+    "voicePreviewSelected": "Kiválasztott előnézete",
+    "voiceRecommended": "Ajánlott",
+    "voiceSelectedCount": "{{count}} / {{total}}"
   },
   "socials": {
     "youtube": {
@@ -279,6 +372,11 @@
       "cta": "Látogasd",
       "title": "encorpora.io",
       "desc": "A főoldal dokumentációval és közösséggel."
+    },
+    "instagram": {
+      "cta": "Követés",
+      "desc": "@corpanapp",
+      "title": "Kövesd Instagramon"
     }
   },
   "common": {
@@ -469,7 +567,6 @@
     "devIntro": "Próbálj ki egy Corpán Pack-et, vagy készíts sajátot.",
     "devLink": "Tudjon meg többet a Free2z oldalán",
     "new": "Új",
-    "updates": "Frissítések",
     "offline": "Offline",
     "purchasing": "Vásárlás...",
     "buy": "Megvásárlás {{price}}",
@@ -508,11 +605,19 @@
       "openDrawer": "Kifejezéscsomagok böngészése ({{count}})",
       "openDrawerLabel": "Kifejezéscsomagok böngészése",
       "inactiveBadge": "Inaktív",
-      "moreActionsLabel": "További műveletek"
+      "moreActionsLabel": "További műveletek",
+      "install": "Telepítés"
     },
     "unlockWithPlus": "Feloldás Corpán Plus-szal",
     "plus": "Corpán Plus",
-    "includedWithPlus": "A Plusz tartalmazza"
+    "includedWithPlus": "A Plusz tartalmazza",
+    "installFailedTitle": "Telepítés sikertelen",
+    "installStuckDetail": "Egy ideje nincs előrelépés. Ellenőrizd a kapcsolatodat, és próbáld újra.",
+    "installStuckTitle": "Letöltés megakadt",
+    "openPack": "{{name}} megnyitása",
+    "recent": "Legutóbbi",
+    "updateAll": "Összes frissítése ({{count}})",
+    "updateAvailable": "Frissítés elérhető"
   },
   "subscription": {
     "title": "Mindent feloldás",
@@ -582,5 +687,93 @@
   },
   "streak": {
     "title": "{{count}} napos sorozat"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Olvass felolvasott hangoskönyveket – nyugodtan, szóról szóra kiemeléssel.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Sajátítsd el a mandarin írásjegyeket, vonásról vonásra.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Hallj egy kifejezést, irányítsd, hogy illeszkedjen – tanulj játékkal.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Építs kifejezéseket darabonként egy gyors játékban.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Lapozz végig kifejezéseket a nyelveiden – gyors, fókuszált gyakorlás.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Mondj ki kifejezéseket hangosan, és kapj kiejtési visszajelzést.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Ugyanazok a hangoskönyvek magával ragadó 3D-ben – a szavak áramlanak a térben, ahogy felolvassák őket.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Hangolódj élő rádióra a világ minden tájáról.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Folytasd a tanulást",
+    "experiences": "Élmények",
+    "forYou": "Neked",
+    "get": "Letöltés",
+    "installing": "Telepítés…",
+    "library": "Könyvtár",
+    "like": "Tetszik",
+    "notForMe": "Nem nekem való",
+    "open": "Megnyitás",
+    "openPhrases": "Kifejezések megnyitása",
+    "phraseFlipDesc": "Lapozz végig kifejezéseket a nyelveiden",
+    "plusChip": "Corpán Plus – oldj fel mindent",
+    "recommended": "Ajánlott",
+    "showAnother": "Mutass másikat",
+    "tryIt": "Próbáld ki"
+  },
+  "offline": {
+    "cachedSubtitle": "Az utolsó gyorsítótárazott eredmények megjelenítése.",
+    "catalogSubtitle": "Csatlakozz újra az internethez új csomagok felfedezéséhez. A telepített csomagjaid továbbra is működnek.",
+    "installNeedsInternet": "Csatlakozz újra az internethez a letöltéshez.",
+    "onboardingBanner": "Offline – a kiválasztott elemek telepítése újra csatlakozáskor történik.",
+    "packCatalogSubtitle": "A telepített csomagjaid továbbra is működnek. Csatlakozz újra az internethez további böngészéshez.",
+    "packCatalogTitle": "A csomagkatalógushoz internet szükséges",
+    "phrasePacksOnboardingSubtitle": "Kifejezéscsomagokat később is kiválaszthatsz a Beállítások → Csomagok menüpontban, miután újra csatlakoztál.",
+    "phrasePacksSubtitle": "A telepített kifejezéscsomagjaid továbbra is működnek. Csatlakozz újra az internethez újak böngészéséhez.",
+    "phrasePacksTitle": "A kifejezéscsomag-katalógushoz internet szükséges",
+    "purchaseNeedsInternet": "Csatlakozz újra az internethez a vásárláshoz.",
+    "restoreSubtitle": "Csatlakozz újra az internethez a vásárlások visszaállításához.",
+    "subscriptionSubtitle": "Csatlakozz újra az internethez az előfizetéshez. A telepített csomagjaid és a csomagolt kifejezések továbbra is működnek.",
+    "subscriptionTitle": "Az előfizetésekhez internet szükséges",
+    "title": "Nincs internet",
+    "voiceDownloadSubtitle": "Az eszközödön már meglévő hangok továbbra is működnek. Csatlakozz újra az internethez további telepítéséhez.",
+    "voiceDownloadTitle": "A hangletöltéshez internet szükséges"
+  },
+  "quickSettings": {
+    "fullSettings": "Teljes beállítások",
+    "title": "Gyorsbeállítások"
+  },
+  "tour": {
+    "maybeLater": "Talán később",
+    "progress": "{{n}} / {{total}}"
+  },
+  "update": {
+    "availableLine": "Frissítés elérhető → {{version}}",
+    "close": "Bezárás",
+    "description": "A Corpán újabb verziója elérhető az alkalmazásboltban.",
+    "remindLater": "Talán később",
+    "skipThisVersion": "Verzió kihagyása",
+    "title": "Frissítés elérhető",
+    "update": "Frissítés",
+    "updateNow": "Frissítés most",
+    "versionLine": "A {{version}} verzió készen áll a telepítésre."
   }
 }

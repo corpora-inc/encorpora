@@ -104,6 +104,8 @@
     "sendAnonUsage": "Send anonymous usage data",
     "sendAnonUsageHint": "Anonymous, session-scoped. No accounts, no device IDs, no IP storage. Toggle off any time.",
     "readPrivacyPromise": "Read our Privacy Promise",
+    "showStreak": "Show reading streak",
+    "showStreakHint": "A small day-count in the header. On-device only, no reminders or notifications.",
     "phrasePacks": {
       "header": "Phrase packs",
       "activeCount": "{{active}} of {{total}} active",

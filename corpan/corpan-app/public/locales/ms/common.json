@@ -119,13 +119,16 @@
       "noMatches": "Tiada keputusan.",
       "noFiltered": "Tiada apa-apa di sini sekarang.",
       "stackTotalPhrases": "~{{count}} frasa sepadan",
-      "stackTotalNudge": "Tambah pek atau luaskan aras untuk variasi."
+      "stackTotalNudge": "Tambah pek atau luaskan aras untuk variasi.",
+      "activeCount": "{{active}} daripada {{total}} aktif",
+      "baseCorpusSubtitle": "{{n}} frasa"
     },
     "sendAnonUsage": "Hantar data penggunaan tanpa nama",
     "sendAnonUsageHint": "Tanpa nama, terhad kepada sesi. Tiada akaun, tiada ID peranti, tiada storan IP. Matikan bila-bila masa.",
     "readPrivacyPromise": "Baca Janji Privasi kami",
     "showStreak": "Tunjukkan siri bacaan",
-    "showStreakHint": "Kiraan hari kecil di pengepala. Pada peranti sahaja, tiada peringatan atau pemberitahuan."
+    "showStreakHint": "Kiraan hari kecil di pengepala. Pada peranti sahaja, tiada peringatan atau pemberitahuan.",
+    "primaryLanguage": "Bahasa utama (UI)"
   },
   "onboarding": {
     "welcome": "Selamat datang",
@@ -140,7 +143,7 @@
     "welcomeVisit": "Lawati encorpora.io",
     "linkCopied": "Pautan disalin. Buka dalam pelayar anda:",
     "reconfigureStack": "Konfigurasi semula susunan",
-    "openVoiceSettings": "Buka tetapan suara peranti anda",
+    "openVoiceSettings": "Buka Tetapan",
     "openTTSSetup": "Buka tetapan TTS",
     "welcomeFollowUp": "Terima kasih kerana bergabung — jumpa di komuniti!",
     "learning": "Mempelajari bahasa",
@@ -155,8 +158,8 @@
     "languageOrderTipBody": "Bahasa di bahagian paling bawah senarai ialah bahasa antara muka aplikasi. Untuk menukar bahasa antara muka, seret bahasa lain ke bahagian paling bawah.",
     "ttsOsTipTitle": "Petua",
     "ttsOsTipAndroid": "Hasil terbaik: gunakan Google teks-ke-pertuturan. Samsung TTS tidak berfungsi dalam Corpán.",
-    "ttsOsTipIOS": "Dalam Tetapan → Kebolehaksesan, cari Kandungan Bertutur dan muat turun suara. Nota: Apple tidak menyediakan suara untuk setiap bahasa. Jika naik taraf tidak membantu, minta sokongan melalui aplikasi Maklum Balas Apple.",
-    "ttsOsTipMac": "Dalam Tetapan Sistem → Kebolehaksesan, cari Kandungan Bertutur dan muat turun suara. Nota: Apple tidak menyediakan suara untuk setiap bahasa. Jika naik taraf tidak membantu, minta sokongan melalui aplikasi Maklum Balas Apple.",
+    "ttsOsTipIOS": "Peranti anda mempunyai suara Premium percuma terbina dalam — Apple hanya membiarkannya tidak diaktifkan. Aktifkannya: Tetapan → Kebolehcapaian → Kandungan Tuturan → Suara → bahasa anda, kemudian ketik ikon muat turun untuk suara Premium atau Enhanced. Kembali dan ia akan muncul di sini secara automatik. (Apple belum meliputi setiap bahasa lagi.)",
+    "ttsOsTipMac": "Mac anda mempunyai suara Premium percuma terbina dalam — Apple hanya membiarkannya tidak diaktifkan. Aktifkannya: Tetapan Sistem → Kebolehcapaian → Kandungan Tuturan → Suara Sistem → Urus Suara, kemudian muat turun suara Premium atau Enhanced. Kembali dan ia akan muncul di sini secara automatik. (Apple belum meliputi setiap bahasa lagi.)",
     "ttsOsTipWindows": "Dalam Tetapan, tambah/pasang suara pertuturan, kemudian kembali ke sini.",
     "ttsOsTipOther": "Dalam tetapan peranti anda, tambah/pasang suara teks-ke-pertuturan, kemudian kembali ke sini.",
     "installVoicesAndroid": "Pasang suara",
@@ -172,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Pasang Google Text-to-Speech",
-        "detail": "Enjin suara Google memberikan kualiti terbaik untuk setiap bahasa yang disokong oleh Corpán. Ia percuma.",
+        "detail": "Enjin suara percuma Google membuka kunci suara berkualiti tinggi untuk kebanyakan bahasa yang disokong Corpán — kebanyakan telefon tidak disertakan dengannya. Mari tambahkannya:",
         "button": "Pasang dari Play Store"
       },
       "noEngine": {
@@ -227,7 +230,11 @@
       "emptySub": "Kembali tidak lama lagi.",
       "offlineHero": "Anda di luar talian.",
       "offlineSub": "Pek perlukan internet — cuba dari Tetapan → Pek.",
-      "offlineBanner": "Luar talian — pilihan akan dipasang apabila disambung."
+      "offlineBanner": "Luar talian — pilihan akan dipasang apabila disambung.",
+      "noneSelected": "Tiada yang dipilih — Teruskan akan melangkau",
+      "selectedSuffix": "dipilih",
+      "skip": "Langkau buat masa ini",
+      "subtitle": "Tambah pek frasa fokus ke timbunan anda. Hidupkan atau matikannya bila-bila masa dalam Tetapan."
     },
     "notOnAppleIOS": "Bukan di iOS",
     "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}} lagi",
@@ -257,7 +264,93 @@
       "team": "Kami pasukan kecil dan setiap sen dilaburkan semula ke dalam Corpán.",
       "tryPlus": "Cuba Corpán Plus",
       "continueFree": "Teruskan dengan versi percuma"
-    }
+    },
+    "calibrate": {
+      "childAgeTitle": "Berapakah umur pembaca?",
+      "childTeen": "13–17",
+      "childUnder13": "Bawah 13",
+      "enjoyComfortable": "Cukup baik",
+      "enjoyImproving": "Saya masih belajar membacanya",
+      "enjoyJustStarting": "Baru bermula — saya baharu belajar membacanya",
+      "enjoyNative": "Fasih — ini bahasa saya",
+      "enjoyTitle": "Sejauh mana anda boleh membaca {{lang}}?",
+      "learnAdvanced": "Saya agak mahir",
+      "learnLittle": "Sedikit",
+      "learnNever": "Tidak pernah — pemula sepenuhnya",
+      "learnTitle": "Pernahkah anda belajar {{lang}} sebelum ini?"
+    },
+    "confident": {
+      "addBetter": "Buka kunci suara yang lebih kaya",
+      "andMore": "+{{count}} lagi",
+      "chooseVoices": "Pilih suara",
+      "noVoiceFor": "Tiada suara {{lang}} lagi — mari tambah satu supaya Corpán boleh membaca dengan kuat.",
+      "voiceCountMany": "{{count}} suara sedia",
+      "voiceCountOne": "1 suara sedia",
+      "yourVoiceFor": "Suara {{lang}} anda"
+    },
+    "engage": {
+      "joinDesc": "Sokong Corpán dan buka kunci segala-galanya. Pilihan, bila-bila masa.",
+      "joinTitle": "Sertai Corpanistas",
+      "start": "Mula meneroka",
+      "subtitle": "Corpán dibangunkan oleh pasukan sumber terbuka yang kecil. Mari bertegur sapa — dan jika anda menyukainya, anda boleh menyokong kami.",
+      "title": "Anda sudah bersedia"
+    },
+    "fork": {
+      "child": {
+        "desc": "Buku dan permainan yang lembut, menyeronokkan untuk pelajar yang lebih muda.",
+        "label": "Sediakan untuk kanak-kanak"
+      },
+      "enjoy": {
+        "desc": "Buku, cerita, permainan, latihan dan banyak lagi — semuanya dalam bahasa anda.",
+        "label": "Nikmati Corpán dalam {{lang}}"
+      },
+      "learn": {
+        "desc": "Cerita, permainan, latihan dan audio dalam bahasa baharu.",
+        "label": "Belajar bahasa"
+      },
+      "polyglot": {
+        "desc": "Susun beberapa bahasa dan terokai segala-galanya.",
+        "label": "Terokai banyak bahasa"
+      },
+      "subtitle": "Kami akan sediakan segala-galanya untuk anda. Anda boleh mengubahnya kemudian.",
+      "title": "Apa yang membawa anda ke Corpán?"
+    },
+    "interests": {
+      "audio": "Dengar audio",
+      "audioDesc": "Buku audio, narasi dan radio.",
+      "games": "Main permainan",
+      "gamesDesc": "Belajar melalui cabaran yang menyeronokkan.",
+      "read": "Baca cerita & buku",
+      "readDesc": "Selami bahan bacaan dalam bahasa anda.",
+      "speak": "Latih pertuturan",
+      "speakDesc": "Sebut frasa dengan kuat dan dapatkan maklum balas.",
+      "study": "Belajar & latih tubi",
+      "studyDesc": "Bina perbendaharaan kata dengan latihan fokus.",
+      "subtitle": "Pilih apa sahaja yang menarik — kami akan mencadangkan pengalaman yang sepadan. Pilihan.",
+      "title": "Apa yang anda ingin lakukan?",
+      "wild": "Terokai perkara menarik",
+      "wildDesc": "Pengalaman yang mengejutkan, eksperimental."
+    },
+    "settingUp": "Menyediakan…",
+    "ttsIntro": "Corpán membaca dengan kuat. Ketik suara untuk mendengarnya pada kelajuan anda.",
+    "voiceGuide": {
+      "intro": "Peranti anda mempunyai suara yang kaya, semula jadi terbina dalam — percuma, dan jauh lebih baik daripada lalai. Pengeluar hanya membiarkannya tidak diaktifkan. Mari aktifkannya; ia hanya memerlukan beberapa ketikan:",
+      "macStep1": "Buka Tetapan Sistem.",
+      "macStep2": "Pergi ke Kebolehcapaian → Kandungan Tuturan.",
+      "macStep3": "Di bawah Suara Sistem, buka Urus Suara.",
+      "macStep4": "Muat turun suara Premium atau Enhanced untuk bahasa anda.",
+      "macStep5": "Kembali ke Corpán — ia akan muncul di sini secara automatik.",
+      "step1": "Ketik Buka Tetapan di bawah.",
+      "step2": "Pergi ke Kebolehcapaian → Kandungan Tuturan → Suara.",
+      "step3": "Ketik bahasa anda.",
+      "step4": "Muat turun suara Premium atau Enhanced.",
+      "step5": "Kembali ke Corpán — ia akan muncul di sini secara automatik.",
+      "title": "Buka kunci suara terbaik peranti anda"
+    },
+    "voicePreviewAria": "Pratonton {{name}}",
+    "voicePreviewSelected": "Pratonton dipilih",
+    "voiceRecommended": "Disyorkan",
+    "voiceSelectedCount": "{{count}} daripada {{total}}"
   },
   "socials": {
     "youtube": {
@@ -279,6 +372,11 @@
       "cta": "Lawati",
       "title": "encorpora.io",
       "desc": "Laman utama dengan dokumentasi dan komuniti."
+    },
+    "instagram": {
+      "cta": "Ikut",
+      "desc": "@corpanapp",
+      "title": "Ikut di Instagram"
     }
   },
   "common": {
@@ -469,7 +567,6 @@
     "devIntro": "Cuba Pek Corpán atau buat sendiri.",
     "devLink": "Ketahui lebih lanjut di Free2z",
     "new": "Baru",
-    "updates": "Kemas kini",
     "offline": "Luar talian",
     "purchasing": "Sedang membeli...",
     "buy": "Beli {{price}}",
@@ -508,11 +605,19 @@
       "openDrawer": "Lihat pek frasa ({{count}})",
       "openDrawerLabel": "Lihat pek frasa",
       "inactiveBadge": "Tidak aktif",
-      "moreActionsLabel": "Lagi tindakan"
+      "moreActionsLabel": "Lagi tindakan",
+      "install": "Pasang"
     },
     "unlockWithPlus": "Buka kunci dengan Corpán Plus",
     "plus": "Corpán Plus",
-    "includedWithPlus": "Termasuk dengan Plus"
+    "includedWithPlus": "Termasuk dengan Plus",
+    "installFailedTitle": "Pemasangan gagal",
+    "installStuckDetail": "Tiada kemajuan buat seketika. Semak sambungan anda dan cuba lagi.",
+    "installStuckTitle": "Muat turun terhenti",
+    "openPack": "Buka {{name}}",
+    "recent": "Terkini",
+    "updateAll": "Kemas kini semua ({{count}})",
+    "updateAvailable": "Kemas kini tersedia"
   },
   "subscription": {
     "title": "Buka kunci semua",
@@ -582,5 +687,93 @@
   },
   "streak": {
     "title": "Siri {{count}} hari"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Baca bersama buku audio yang dinarasikan — tenang, dengan penyerlahan perkataan demi perkataan.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Kuasai aksara Mandarin, goresan demi goresan.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Dengar frasa, pandu untuk memadankannya — belajar sambil bermain.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Bina frasa sepotong demi sepotong dalam permainan pantas.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Selak frasa dalam bahasa anda — latihan pantas dan fokus.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sebut frasa dengan kuat dan dapatkan maklum balas sebutan.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Buku audio yang sama dalam 3D imersif — perkataan mengalir melalui ruang semasa dibaca.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Dengarkan radio langsung dari seluruh dunia.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Teruskan belajar",
+    "experiences": "Pengalaman",
+    "forYou": "Untuk anda",
+    "get": "Dapatkan",
+    "installing": "Memasang…",
+    "library": "Pustaka",
+    "like": "Suka",
+    "notForMe": "Bukan untuk saya",
+    "open": "Buka",
+    "openPhrases": "Buka frasa",
+    "phraseFlipDesc": "Selak frasa dalam bahasa anda",
+    "plusChip": "Corpán Plus — buka kunci segala-galanya",
+    "recommended": "Disyorkan",
+    "showAnother": "Tunjukkan yang lain",
+    "tryIt": "Cuba"
+  },
+  "offline": {
+    "cachedSubtitle": "Menunjukkan hasil terakhir yang disimpan dalam cache anda.",
+    "catalogSubtitle": "Sambung semula untuk menemui pek baharu. Pek yang dipasang anda masih berfungsi.",
+    "installNeedsInternet": "Sambung semula untuk memuat turun.",
+    "onboardingBanner": "Luar talian — pilihan akan dipasang apabila anda menyambung semula.",
+    "packCatalogSubtitle": "Pek yang dipasang anda masih berfungsi. Sambung semula untuk melayari lebih banyak.",
+    "packCatalogTitle": "Katalog pek memerlukan internet",
+    "phrasePacksOnboardingSubtitle": "Anda boleh memilih pek frasa kemudian dari Tetapan → Pek setelah anda menyambung semula.",
+    "phrasePacksSubtitle": "Pek frasa yang dipasang anda masih berfungsi. Sambung semula untuk melayari yang baharu.",
+    "phrasePacksTitle": "Katalog pek frasa memerlukan internet",
+    "purchaseNeedsInternet": "Sambung semula untuk membeli.",
+    "restoreSubtitle": "Sambung semula untuk memulihkan pembelian.",
+    "subscriptionSubtitle": "Sambung semula untuk melanggan. Pek yang dipasang dan frasa yang dibundel anda masih berfungsi.",
+    "subscriptionTitle": "Langganan memerlukan internet",
+    "title": "Tiada internet",
+    "voiceDownloadSubtitle": "Suara yang sedia ada pada peranti anda masih berfungsi. Sambung semula untuk memasang lebih banyak.",
+    "voiceDownloadTitle": "Muat turun suara memerlukan internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Tetapan penuh",
+    "title": "Tetapan pantas"
+  },
+  "tour": {
+    "maybeLater": "Mungkin kemudian",
+    "progress": "{{n}} daripada {{total}}"
+  },
+  "update": {
+    "availableLine": "Kemas kini tersedia → {{version}}",
+    "close": "Tutup",
+    "description": "Versi Corpán yang lebih baharu tersedia di gedung aplikasi anda.",
+    "remindLater": "Mungkin kemudian",
+    "skipThisVersion": "Langkau versi ini",
+    "title": "Kemas kini tersedia",
+    "update": "Kemas kini",
+    "updateNow": "Kemas kini sekarang",
+    "versionLine": "Versi {{version}} sedia untuk dipasang."
   }
 }
