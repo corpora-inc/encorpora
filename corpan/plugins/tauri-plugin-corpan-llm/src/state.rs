@@ -141,7 +141,7 @@ impl LlmState {
             let _ = f.read_exact(&mut magic);
         }
         let magic_ok = &magic == b"GGUF";
-        log::info!(
+        eprintln!(
             "[corpan-llm] gguf preflight size={} magic_ok={} ({:?})",
             size, magic_ok, magic
         );
@@ -244,7 +244,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
     let backend = match LlamaBackend::init() {
         Ok(b) => b,
         Err(e) => {
-            log::error!("[corpan-llm] backend init failed: {e}");
+            eprintln!("[corpan-llm] backend init failed: {e}");
             return;
         }
     };
@@ -266,11 +266,15 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 // returns null from BOTH the GPU and CPU paths. This is exactly
                 // the pack exit→re-enter reload case: drop first, then load.
                 if model.is_some() {
-                    log::info!("[corpan-llm] dropping previously-loaded model before reload");
+                    eprintln!("[corpan-llm] dropping previously-loaded model before reload");
                     model = None;
                 }
                 let avail = device_memory_mb();
-                log::info!("[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB");
+                let load_start = std::time::Instant::now();
+                eprintln!(
+                    "[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB perf_cores={}",
+                    perf_core_count()
+                );
                 // Try full GPU offload first (Metal). On unified-memory iOS the
                 // weights become a ~2.5 GB resident GPU buffer that can exceed the
                 // per-app jetsam limit; if that fails, fall back to CPU + mmap so
@@ -282,7 +286,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 let outcome: Result<(LlamaModel, String)> = match load_with(want_gpu) {
                     Ok(m) => Ok((m, backend_name())),
                     Err(e_gpu) if want_gpu > 0 => {
-                        log::warn!("[corpan-llm] GPU load failed ({e_gpu}); retrying CPU+mmap");
+                        eprintln!("[corpan-llm] GPU load failed ({e_gpu}); retrying CPU+mmap");
                         match load_with(0) {
                             Ok(m) => Ok((m, "cpu".to_string())),
                             Err(e_cpu) => Err(Error::LlamaCpp(format!(
@@ -299,11 +303,14 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 match outcome {
                     Ok((m, backend_str)) => {
                         model = Some(m);
-                        log::info!("[corpan-llm] loaded {model_id} ({backend_str})");
+                        eprintln!(
+                            "[corpan-llm] loaded {model_id} ({backend_str}) in {}ms",
+                            load_start.elapsed().as_millis()
+                        );
                         let _ = resp.send(Ok(backend_str));
                     }
                     Err(e) => {
-                        log::error!("[corpan-llm] {e}");
+                        eprintln!("[corpan-llm] {e}");
                         let _ = resp.send(Err(e));
                     }
                 }
@@ -353,13 +360,49 @@ fn run_chat(
     cancel: &AtomicBool,
 ) -> Result<()> {
     let n_ctx = DEFAULT_CTX;
+    // Thread count is THE Android perf lever. llama.cpp's default is a fixed 4
+    // (it does NOT autodetect cores), so on an 8-core big.LITTLE phone the
+    // matmul-bound prompt prefill runs on 4 threads the scheduler may park on
+    // efficiency cores → minutes to first token. Pin to the performance-core
+    // count. n_threads drives generation; n_threads_batch drives prefill (the
+    // long pole for Tutomaton's large grounded prompt) — set both.
+    let threads = perf_core_count();
     // Note: the RNG seed lives in the sampler (`LlamaSampler::dist`), not the
     // context params, in current llama-cpp-2.
-    let ctx_params =
-        LlamaContextParams::default().with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()));
+    let ctx_params = LlamaContextParams::default()
+        .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
+        .with_n_threads(threads)
+        .with_n_threads_batch(threads);
     let mut ctx = model
         .new_context(backend, ctx_params)
         .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
+
+    // Live system-prompt override for on-device A/B (no rebuild). Env
+    // CORPAN_LLM_SYSPROMPT or `adb shell setprop debug.corpan.sysprompt "..."`:
+    //   "none"      → drop all system messages (bare model)
+    //   non-empty   → replace every system message's content with this string
+    //   empty/unset → unchanged
+    // Lets us measure how much the ~850-token grounded prompt costs in prefill
+    // and how the tutor behaves with little/no system priming.
+    let messages = match system_prompt_override() {
+        Some(ov) if ov == "none" => {
+            eprintln!("[corpan-llm] sysprompt override: NONE (system messages dropped)");
+            messages.into_iter().filter(|m| m.role != "system").collect()
+        }
+        Some(ov) if !ov.is_empty() => {
+            eprintln!("[corpan-llm] sysprompt override: {} chars", ov.len());
+            messages
+                .into_iter()
+                .map(|mut m| {
+                    if m.role == "system" {
+                        m.content = ov.clone();
+                    }
+                    m
+                })
+                .collect()
+        }
+        _ => messages,
+    };
 
     let prompt = format_chatml(&messages);
     let tokens = model
@@ -379,6 +422,7 @@ fn run_chat(
     let mut batch = LlamaBatch::new(BATCH_CAP, 1);
     let n_prompt = tokens.len() as i32;
     let last = n_prompt - 1;
+    let prefill_start = std::time::Instant::now();
     let mut pos: i32 = 0;
     while pos < n_prompt {
         batch.clear();
@@ -392,6 +436,14 @@ fn run_chat(
             .map_err(|e| Error::LlamaCpp(format!("decode prompt: {e}")))?;
         pos = end;
     }
+    // PERF: prefill (prompt ingestion) is the suspected long pole on Android CPU.
+    // Log it separately from decode so prefill tok/s vs decode tok/s is visible.
+    let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
+    eprintln!(
+        "[corpan-llm] PERF prefill: {n_prompt} tok in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx}",
+        prefill_ms,
+        (n_prompt as f64) * 1000.0 / prefill_ms,
+    );
 
     let mut sampler = build_sampler(&options);
     let mut decoder = encoding_rs::UTF_8.new_decoder();
@@ -439,6 +491,14 @@ fn run_chat(
             .map_err(|e| Error::LlamaCpp(format!("decode: {e}")))?;
     }
 
+    // PERF: decode (token generation) throughput, separate from prefill above.
+    let decode_ms = start.elapsed().as_millis().max(1) as f64;
+    eprintln!(
+        "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
+        decode_ms,
+        (produced as f64) * 1000.0 / decode_ms,
+    );
+
     let _ = app.emit(
         &format!("llm-done:{session_id}"),
         DoneEvent {
@@ -448,6 +508,133 @@ fn run_chat(
         },
     );
     Ok(())
+}
+
+/// Number of CPU threads to use for inference = the performance-core count.
+///
+/// llama.cpp's default (a hardcoded 4, no autodetection) is wrong on phones: a
+/// modern Snapdragon is big.LITTLE (e.g. 1 prime + 3-5 performance + 2-4
+/// efficiency cores). Using ALL cores oversaturates memory bandwidth (the real
+/// bottleneck) and parks threads on slow efficiency cores; the fixed 4 leaves
+/// performance cores idle. We detect the performance-core count from sysfs max
+/// frequencies (count cores above the slowest tier). Falls back to
+/// max(2, available_parallelism/2) when sysfs is unavailable (Apple/desktop).
+fn perf_core_count() -> i32 {
+    // Manual override (no rebuild): env CORPAN_LLM_THREADS, or on Android
+    // `adb shell setprop debug.corpan.llm_threads N`. Lets us A/B thread counts
+    // live on-device. >0 wins; 0/unset/invalid → auto-detect below.
+    if let Some(n) = thread_override() {
+        if n > 0 {
+            return n;
+        }
+    }
+    #[cfg(target_os = "android")]
+    {
+        if let Some(n) = inference_threads_from_sysfs() {
+            return n;
+        }
+    }
+    let logical = std::thread::available_parallelism()
+        .map(|n| n.get())
+        .unwrap_or(4);
+    ((logical / 2).max(2)) as i32
+}
+
+/// Manual thread-count override from env or (Android) a system property.
+fn thread_override() -> Option<i32> {
+    if let Ok(v) = std::env::var("CORPAN_LLM_THREADS") {
+        if let Ok(n) = v.trim().parse::<i32>() {
+            return Some(n);
+        }
+    }
+    #[cfg(target_os = "android")]
+    {
+        if let Ok(out) = std::process::Command::new("getprop")
+            .arg("debug.corpan.llm_threads")
+            .output()
+        {
+            if let Ok(s) = String::from_utf8(out.stdout) {
+                if let Ok(n) = s.trim().parse::<i32>() {
+                    return Some(n);
+                }
+            }
+        }
+    }
+    None
+}
+
+/// Live system-prompt override for on-device A/B (no rebuild). Env
+/// CORPAN_LLM_SYSPROMPT, or on Android `adb shell setprop debug.corpan.sysprompt
+/// "..."`. Returns the trimmed value (incl. the literal "none" sentinel, handled
+/// by the caller) or None when empty/unset. Lets us measure the ~850-token
+/// grounded prompt's prefill cost and the tutor's behavior with little/no priming.
+fn system_prompt_override() -> Option<String> {
+    if let Ok(v) = std::env::var("CORPAN_LLM_SYSPROMPT") {
+        let t = v.trim();
+        if !t.is_empty() {
+            return Some(t.to_string());
+        }
+    }
+    #[cfg(target_os = "android")]
+    {
+        if let Ok(out) = std::process::Command::new("getprop")
+            .arg("debug.corpan.sysprompt")
+            .output()
+        {
+            if let Ok(s) = String::from_utf8(out.stdout) {
+                let t = s.trim();
+                if !t.is_empty() {
+                    return Some(t.to_string());
+                }
+            }
+        }
+    }
+    None
+}
+
+/// Pick the inference thread count from the Android CPU topology.
+///
+/// Classify cores by `cpu_capacity` (the kernel's normalized 0..1024 big/LITTLE
+/// signal; falls back to `cpuinfo_max_freq`). "Efficiency" = cores below 50% of
+/// the max capacity — true LITTLE cores that bottleneck LLM matmul. Use
+/// (total − efficiency) big cores; if the chip has NO efficiency tier (e.g.
+/// Snapdragon 8 Elite = 2 prime + 6 performance, all ≥74% capacity), reserve ONE
+/// core for the OS/UI/render thread so token streaming stays smooth. Clamp [2,total].
+///
+/// Examples: 8 Elite (1024×2, 765×6) → no LITTLE → 8−1 = 7. 8 Gen 3
+/// (1024 + perf×5 + ~300×2) → 2 LITTLE → 6. 4+4 (1024×4, ~400×4) → 4.
+#[cfg(target_os = "android")]
+fn inference_threads_from_sysfs() -> Option<i32> {
+    fn read_core_metrics(file: &str) -> Vec<u64> {
+        let mut v = Vec::new();
+        for cpu in 0..16 {
+            let path = format!("/sys/devices/system/cpu/cpu{cpu}/{file}");
+            match std::fs::read_to_string(&path) {
+                Ok(s) => {
+                    if let Ok(n) = s.trim().parse::<u64>() {
+                        v.push(n);
+                    }
+                }
+                Err(_) => break, // contiguous cpuN; stop at the first gap
+            }
+        }
+        v
+    }
+
+    // Prefer cpu_capacity (kernel big/LITTLE signal); fall back to max freq.
+    let mut metrics = read_core_metrics("cpu_capacity");
+    if metrics.len() < 2 {
+        metrics = read_core_metrics("cpufreq/cpuinfo_max_freq");
+    }
+    if metrics.len() < 2 {
+        return None;
+    }
+    let total = metrics.len();
+    let max = *metrics.iter().max()?;
+    let efficiency = metrics.iter().filter(|&&m| m * 2 < max).count();
+    let big = total - efficiency;
+    let n = if efficiency == 0 { big.saturating_sub(1) } else { big };
+    Some((n.clamp(2, total)) as i32)
 }
 
 // ============================================================

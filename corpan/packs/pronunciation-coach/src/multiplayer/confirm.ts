@@ -9,6 +9,8 @@
 // Used by `round.ts` and `results.ts` for the "Quit this game?"
 // prompt on the round-screen X button.
 
+import { tt } from "../i18n"
+
 const escapeHtml = (s: string): string =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
 
@@ -38,11 +40,11 @@ export const pmConfirm = (opts: ConfirmOpts): Promise<boolean> => {
         <p class="pc-pm-confirm-msg">${escapeHtml(opts.message)}</p>
         <div class="pc-pm-confirm-foot">
           <button class="pc-pm-confirm-cancel" data-pm-confirm-cancel>
-            ${escapeHtml(opts.cancelLabel ?? "Cancel")}
+            ${escapeHtml(opts.cancelLabel ?? tt("cancelDefault"))}
           </button>
           <button class="pc-pm-confirm-go ${opts.destructive ? "danger" : ""}"
                   data-pm-confirm-go>
-            ${escapeHtml(opts.confirmLabel ?? "Confirm")}
+            ${escapeHtml(opts.confirmLabel ?? tt("confirmDefault"))}
           </button>
         </div>
       </div>`

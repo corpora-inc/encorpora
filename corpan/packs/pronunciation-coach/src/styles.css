@@ -496,6 +496,13 @@ body,
   box-shadow: var(--pc-shadow);
   transition: background 120ms ease, transform 120ms ease;
   font-family: inherit;
+  /* Hold-to-speak: stop the WebView turning a press-and-hold into a
+     scroll, text selection, or long-press callout — any of which would
+     steal the pointer mid-hold and abort recording. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 .pc-mic:hover { background: color-mix(in oklab, var(--pc-accent-hover) 92%, transparent); }
 .pc-mic:active { transform: scale(0.96); }

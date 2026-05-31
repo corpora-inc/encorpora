@@ -7,6 +7,15 @@ use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tauri::{AppHandle, Emitter, Manager, Runtime};
 
+/// Cap the pre-allocation sized from a download's (attacker/CDN-controlled)
+/// Content-Length so a bogus huge value can't OOM-abort the process. 16 MiB is
+/// plenty to start; the buffer grows as real bytes arrive.
+const PREALLOC_CAP: u64 = 16 * 1024 * 1024;
+/// Hard ceiling on a single pack/module download. These are first-party signed
+/// ZIPs; 1 GiB is far above any real pack, so exceeding it means a malicious or
+/// misconfigured source — reject rather than fill memory.
+const DOWNLOAD_MAX_BYTES: u64 = 1024 * 1024 * 1024;
+
 #[derive(Debug, Clone, Serialize)]
 pub struct InstallProgressEvent {
     pub pack_id: String,
@@ -185,11 +194,25 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
             .map_err(|e| format!("Failed to get app data dir: {}", e))?;
 
         eprintln!("[fetch_text] Pack root: {:?}", pack_root);
-        let file_path = pack_root.join(pack_id).join(rel_path);
-        eprintln!("[fetch_text] Reading file: {:?}", file_path);
-
-        let content = fs::read_to_string(&file_path)
+        // SECURITY: sanitize BOTH segments so a corpan-pack:// URL cannot escape
+        // the pack root via `..` (arbitrary file read in the app sandbox). Mirror
+        // resolve_pack_db_path: reject traversal, canonicalize, verify containment.
+        let safe_pack = sanitize_rel(pack_id)?;
+        let safe_rel = sanitize_rel(rel_path)?;
+        let file_path = pack_root.join(&safe_pack).join(&safe_rel);
+        let root_canon = pack_root
+            .canonicalize()
+            .map_err(|e| format!("pack root unavailable: {e}"))?;
+        let file_canon = file_path
+            .canonicalize()
             .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+        if !file_canon.starts_with(&root_canon) {
+            return Err("path escapes pack root".to_string());
+        }
+        eprintln!("[fetch_text] Reading file: {:?}", file_canon);
+
+        let content = fs::read_to_string(&file_canon)
+            .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
         eprintln!("[fetch_text] Successfully read {} bytes from disk", content.len());
         return Ok(content);
     }
@@ -270,7 +293,11 @@ pub async fn download_and_install<R: Runtime>(
 
     let total = res.content_length().unwrap_or(0);
     let mut downloaded: u64 = 0;
-    let mut buf = Vec::with_capacity(total as usize);
+    // SECURITY: content-length is attacker/CDN-controlled. Cap the pre-alloc so a
+    // bogus huge length can't OOM-abort the process, and enforce a hard ceiling on
+    // the actual streamed bytes (these are first-party signed ZIPs; 1 GiB is well
+    // above any real pack and a download past it is malicious/misconfigured).
+    let mut buf = Vec::with_capacity((total.min(PREALLOC_CAP) as usize).max(0));
     let mut stream = res.bytes_stream();
 
     while let Some(chunk_result) = stream.next().await {
@@ -279,6 +306,12 @@ pub async fn download_and_install<R: Runtime>(
             format!("Download read failed: {e}")
         })?;
         downloaded += chunk.len() as u64;
+        if downloaded > DOWNLOAD_MAX_BYTES {
+            emit_progress("error", downloaded, total, "Download exceeded size limit");
+            return Err(format!(
+                "Download exceeded size limit ({DOWNLOAD_MAX_BYTES} bytes)"
+            ));
+        }
         buf.extend_from_slice(&chunk);
         emit_progress("downloading", downloaded, total, "Downloading");
     }
@@ -354,18 +387,31 @@ pub async fn download_and_install<R: Runtime>(
             })?;
     }
 
-    if pack_root_dir == staging {
-        fs::rename(&staging, &final_dir)
-            .map_err(|e| {
-                emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
-                format!("Failed to finalize pack install: {e}")
-            })?;
+    // The source dir to move into place (staging itself, or the nested pack root).
+    let move_from = if pack_root_dir == staging {
+        &staging
     } else {
-        fs::rename(&pack_root_dir, &final_dir)
-            .map_err(|e| {
-                emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
-                format!("Failed to finalize pack install: {e}")
-            })?;
+        &pack_root_dir
+    };
+    if let Err(e) = fs::rename(move_from, &final_dir) {
+        // CRITICAL: the old pack was already moved to backup_dir. If the swap-in
+        // fails now, restore the backup so the user isn't left with NO pack (the
+        // index.json still points at final_dir). Without this, a failed upgrade
+        // bricks the installed pack.
+        if backup_dir.exists() && !final_dir.exists() {
+            if let Err(re) = fs::rename(&backup_dir, &final_dir) {
+                eprintln!(
+                    "[pack-install] CRITICAL: finalize failed ({e}) AND backup restore failed ({re}); pack {pack_id} left at {backup_dir:?}"
+                );
+            } else {
+                eprintln!("[pack-install] finalize failed ({e}); restored previous pack from backup");
+            }
+        }
+        let _ = fs::remove_dir_all(&staging);
+        emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
+        return Err(format!("Failed to finalize pack install: {e}"));
+    }
+    if pack_root_dir != staging {
         let _ = fs::remove_dir_all(&staging);
     }
 
@@ -448,11 +494,24 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
             .map(|dir| dir.join("corpan-packs"))
             .map_err(|e| format!("Failed to get app data dir: {}", e))?;
 
-        let file_path = pack_root.join(pack_id).join(rel_path);
-        eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
-
-        let content = fs::read(&file_path)
+        // SECURITY: sanitize + canonicalize-contain, same as fetch_text — block
+        // `..` traversal out of the pack root (arbitrary file read in sandbox).
+        let safe_pack = sanitize_rel(pack_id)?;
+        let safe_rel = sanitize_rel(rel_path)?;
+        let file_path = pack_root.join(&safe_pack).join(&safe_rel);
+        let root_canon = pack_root
+            .canonicalize()
+            .map_err(|e| format!("pack root unavailable: {e}"))?;
+        let file_canon = file_path
+            .canonicalize()
             .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+        if !file_canon.starts_with(&root_canon) {
+            return Err("path escapes pack root".to_string());
+        }
+        eprintln!("[fetch_bytes] Reading file: {:?}", file_canon);
+
+        let content = fs::read(&file_canon)
+            .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
         eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
         return Ok(content);
     }
@@ -590,7 +649,9 @@ pub async fn install_module<R: Runtime>(
 
     let total = res.content_length().unwrap_or(0);
     let mut downloaded: u64 = 0;
-    let mut buf = Vec::with_capacity(total as usize);
+    // SECURITY: cap pre-alloc + enforce a hard ceiling on streamed bytes (see the
+    // matching guard in download_and_install).
+    let mut buf = Vec::with_capacity((total.min(PREALLOC_CAP) as usize).max(0));
     let mut stream = res.bytes_stream();
 
     while let Some(chunk_result) = stream.next().await {
@@ -599,6 +660,12 @@ pub async fn install_module<R: Runtime>(
             format!("Download read failed: {e}")
         })?;
         downloaded += chunk.len() as u64;
+        if downloaded > DOWNLOAD_MAX_BYTES {
+            emit_progress("error", downloaded, total, "Download exceeded size limit");
+            return Err(format!(
+                "Download exceeded size limit ({DOWNLOAD_MAX_BYTES} bytes)"
+            ));
+        }
         buf.extend_from_slice(&chunk);
         emit_progress("downloading", downloaded, total, "Downloading");
     }

@@ -7,6 +7,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Security
+
+- **content_packs.rs hardening** (release-review HIGH findings, code in 5a6c42cf):
+  - `corpan-pack://` `fetch_text`/`fetch_bytes` now sanitize + canonicalize-and-
+    contain both URL segments, closing a `..` path-traversal (arbitrary file read
+    in the app sandbox).
+  - Pack/module downloads cap the Content-Length pre-allocation (16 MiB) and
+    enforce a 1 GiB hard ceiling on streamed bytes (OOM-DoS guard).
+  - A failed pack upgrade restores the backed-up previous pack instead of leaving
+    the user with no pack.
+
 ## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
 
 ### Changed

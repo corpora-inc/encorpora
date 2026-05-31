@@ -15,6 +15,7 @@ import {
   type Player,
   type WinTarget,
 } from "./state"
+import { tt } from "../i18n"
 
 const MIN_PLAYERS = 2
 const MAX_PLAYERS = 8
@@ -75,32 +76,32 @@ export const mountLobby = (opts: LobbyOpts): LobbyHandle => {
             <span class="pc-pm-eyebrow">Parlometron</span>
           </div>
           <div class="pc-pm-head-action-row">
-            <button class="pc-pm-back" data-pm-back aria-label="Back to mode picker">‹</button>
-            <span class="pc-pm-headline">New game</span>
+            <button class="pc-pm-back" data-pm-back aria-label="${tt("lobbyBack")}">‹</button>
+            <span class="pc-pm-headline">${tt("lobbyNewGame")}</span>
             <div class="pc-pm-head-spacer"></div>
           </div>
         </header>
 
         <section class="pc-pm-section">
-          <h3 class="pc-pm-section-title">Players (${draftPlayers.length} / ${MAX_PLAYERS})</h3>
+          <h3 class="pc-pm-section-title">${tt("lobbyPlayers", { count: String(draftPlayers.length), max: String(MAX_PLAYERS) })}</h3>
           <ul class="pc-pm-roster" id="pc-pm-roster">${renderRoster()}</ul>
           <button class="pc-pm-add" data-pm-add
                   ${draftPlayers.length >= MAX_PLAYERS ? "disabled" : ""}>
-            + Add Player
+            ${tt("lobbyAddPlayer")}
           </button>
         </section>
 
         <section class="pc-pm-section">
-          <h3 class="pc-pm-section-title">First to win</h3>
+          <h3 class="pc-pm-section-title">${tt("lobbyFirstToWin")}</h3>
           <div class="pc-pm-target-row">
             ${targetButtons}
-            <span class="pc-pm-target-suffix">rounds</span>
+            <span class="pc-pm-target-suffix">${tt("lobbyRoundsSuffix")}</span>
           </div>
         </section>
 
         <footer class="pc-pm-foot">
           <button class="pc-pm-start" id="pc-pm-start" disabled>
-            Start game
+            ${tt("lobbyStart")}
           </button>
         </footer>
       </div>
@@ -120,13 +121,13 @@ export const mountLobby = (opts: LobbyOpts): LobbyHandle => {
                  data-pm-name="${p.id}"
                  value="${escapeAttr(p.name)}"
                  maxlength="24"
-                 placeholder="Player name"
+                 placeholder="${tt("lobbyPlayerName")}"
                  autocapitalize="words"
                  autocorrect="off"
                  spellcheck="false" />
           <button class="pc-pm-roster-remove"
                   data-pm-remove="${p.id}"
-                  aria-label="Remove ${escapeAttr(p.name)}"
+                  aria-label="${escapeAttr(tt("lobbyRemovePlayer", { name: p.name }))}"
                   ${draftPlayers.length <= MIN_PLAYERS ? "disabled" : ""}>×</button>
         </li>`,
       )
@@ -160,7 +161,10 @@ export const mountLobby = (opts: LobbyOpts): LobbyHandle => {
       ".pc-pm-section-title",
     )
     if (header) {
-      header.textContent = `Players (${draftPlayers.length} / ${MAX_PLAYERS})`
+      header.textContent = tt("lobbyPlayers", {
+        count: String(draftPlayers.length),
+        max: String(MAX_PLAYERS),
+      })
     }
     wireRosterRows()
     refreshAddButton()
