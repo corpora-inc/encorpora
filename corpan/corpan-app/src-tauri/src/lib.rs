@@ -1322,6 +1322,7 @@ pub fn run() {
             phrase_packs_invalidate_cache,
             open_apple_feedback
         ])
+        .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_audio_keepalive::init())

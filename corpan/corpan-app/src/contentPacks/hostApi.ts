@@ -555,6 +555,17 @@ export const createHostApi = (packId?: string): HostApi => {
       return await speakConcurrent(uiCode, text)
     },
     stopSpeech,
+    // Native clipboard via tauri-plugin-clipboard-manager — the web
+    // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),
+    // so packs route copy through here.
+    copyText: async (text: string) => {
+      try {
+        await invoke("plugin:clipboard-manager|write_text", { label: null, text })
+      } catch (error) {
+        console.error("[content-packs] copyText failed:", error)
+        throw error instanceof Error ? error : new Error(String(error))
+      }
+    },
     dispose,
     getStackConfig: () => {
       return getStackSnapshot()

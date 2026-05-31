@@ -239,7 +239,12 @@ const PackModule: ContentPackModule = {
       languages: LanguageRegistryEntry[]
       databases?: Record<string, string>
     }
-    const registry = manifest.languages
+    // Languages hidden from the picker for this launch. kn (Kannada): Qwen3-4B
+    // confuses Kannada with Devanagari script (greets in नमस्ते, not ನಮಸ್ತೆ) —
+    // hide until a stronger base model or verified fix. Revisit per the language
+    // quality report.
+    const HIDDEN_LANGS = new Set<string>(["kn"])
+    const registry = manifest.languages.filter((l) => !HIDDEN_LANGS.has(l.code))
     // The full manifest (incl. `databases` map) is written to disk by the host
     // on first language install, so `queryPackDb` can resolve per-language sqlite.
     const manifestJson = JSON.stringify(manifest)
@@ -910,7 +915,16 @@ const PackModule: ContentPackModule = {
         body.classList.add("lt-copied")
         window.setTimeout(() => body.classList.remove("lt-copied"), 900)
       }
-      // 1) execCommand via a temporary selected textarea — gesture-friendly.
+      // 1) Native clipboard via the host (tauri-plugin-clipboard-manager) — the
+      //    reliable path; the web clipboard API is blocked in the WKWebView.
+      if (hostApi.copyText) {
+        hostApi.copyText(text).then(flash).catch((e) => {
+          console.error("[tutomaton] hostApi.copyText failed:", e)
+          systemNote("Couldn't copy to the clipboard.")
+        })
+        return
+      }
+      // 2) Fallbacks for standalone/browser dev: execCommand, then the async API.
       try {
         const ta = document.createElement("textarea")
         ta.value = text
@@ -926,10 +940,9 @@ const PackModule: ContentPackModule = {
       } catch (e) {
         console.error("[tutomaton] execCommand copy failed:", e)
       }
-      // 2) async clipboard API fallback (may be blocked in WKWebView).
       navigator.clipboard?.writeText(text).then(flash).catch((e) => {
         console.error("[tutomaton] clipboard write failed:", e)
-        systemNote("Couldn't copy — long-press blocked by the system.")
+        systemNote("Couldn't copy to the clipboard.")
       })
     }
 

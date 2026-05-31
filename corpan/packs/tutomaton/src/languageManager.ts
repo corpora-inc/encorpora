@@ -54,6 +54,8 @@ export type LlmApi = {
 export type HostApi = {
   speak: (locale: string, text: string) => Promise<void>
   stopSpeech?: () => void
+  /** Native clipboard copy (WKWebView blocks the web clipboard API). */
+  copyText?: (text: string) => Promise<void>
   queryPackDb?: (args: {
     sql: string
     params: unknown[]

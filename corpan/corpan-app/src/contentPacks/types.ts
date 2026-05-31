@@ -373,6 +373,8 @@ export type HostApi = {
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
   speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
+  /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
+  copyText?: (text: string) => Promise<void>
   dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void

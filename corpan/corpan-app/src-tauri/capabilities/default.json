@@ -8,6 +8,7 @@
   "permissions": [
     "core:default",
     "opener:default",
+    "clipboard-manager:allow-write-text",
     "tts:allow-speak",
     "tts:default",
     "audio-keepalive:default",
