@@ -501,3 +501,172 @@ pub fn get_manifest_url<R: Runtime>(
     }
     Ok(manifest_url_for(&pack_id))
 }
+
+/// Sanitize a caller-supplied relative path before joining it onto a pack
+/// directory. Rejects absolute paths and `..` traversal, and strips root/prefix
+/// components, mirroring the `enclosed_name()` defense used by `safe_extract_zip`.
+/// Returns an error on any traversal attempt rather than silently swallowing it.
+fn sanitize_rel(rel: &str) -> Result<PathBuf, String> {
+    use std::path::Component;
+    let mut out = PathBuf::new();
+    for component in Path::new(rel).components() {
+        match component {
+            Component::Normal(part) => out.push(part),
+            // Drop redundant `.` segments.
+            Component::CurDir => {}
+            // Anything that could escape the pack root is a hard error.
+            Component::ParentDir
+            | Component::RootDir
+            | Component::Prefix(_) => {
+                return Err(format!("Unsafe relative path: {rel}"));
+            }
+        }
+    }
+    if out.as_os_str().is_empty() {
+        return Err(format!("Empty relative path: {rel}"));
+    }
+    Ok(out)
+}
+
+/// Download a module ZIP and extract it into a subpath of an already-installed
+/// pack's on-disk directory (e.g. a tutor pack's per-language data). Reuses the
+/// same streaming download + sha256 verify + `safe_extract_zip` path as
+/// `download_and_install`, emitting `pack-install-progress` events with the same
+/// stages. If `pack_manifest` is provided AND no `manifest.json` already exists
+/// at the pack root, it is written there so `pack_db.rs` can later resolve the
+/// pack's `databases` map. An existing manifest is never overwritten.
+pub async fn install_module<R: Runtime>(
+    app: &AppHandle<R>,
+    pack_id: String,
+    sub_path: String,
+    download_url: String,
+    expected_sha256: Option<String>,
+    pack_manifest: Option<String>,
+) -> Result<(), String> {
+    eprintln!(
+        "[pack-module] Starting module install pack_id={}, sub_path={}, url={}",
+        pack_id, sub_path, download_url
+    );
+
+    let emit_progress = |stage: &str, progress: u64, total: u64, message: &str| {
+        let _ = app.emit(
+            "pack-install-progress",
+            InstallProgressEvent {
+                pack_id: pack_id.clone(),
+                stage: stage.to_string(),
+                progress,
+                total,
+                message: message.to_string(),
+            },
+        );
+    };
+
+    // Resolve (and validate) the destination before any network work so a
+    // traversal attempt fails fast and loud.
+    let rel = sanitize_rel(&sub_path).map_err(|e| {
+        emit_progress("error", 0, 0, &e);
+        e
+    })?;
+    let pack_dir = pack_root(app)?.join(&pack_id);
+    let dest = pack_dir.join(&rel);
+
+    emit_progress("downloading", 0, 0, "Starting download");
+
+    let client = reqwest::Client::new();
+    let res = client
+        .get(&download_url)
+        .send()
+        .await
+        .map_err(|e| {
+            emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
+            format!("Download request failed: {e}")
+        })?;
+    let status = res.status();
+    if !status.is_success() {
+        let msg = format!("Download failed ({status})");
+        emit_progress("error", 0, 0, &msg);
+        return Err(msg);
+    }
+
+    let total = res.content_length().unwrap_or(0);
+    let mut downloaded: u64 = 0;
+    let mut buf = Vec::with_capacity(total as usize);
+    let mut stream = res.bytes_stream();
+
+    while let Some(chunk_result) = stream.next().await {
+        let chunk = chunk_result.map_err(|e| {
+            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
+            format!("Download read failed: {e}")
+        })?;
+        downloaded += chunk.len() as u64;
+        buf.extend_from_slice(&chunk);
+        emit_progress("downloading", downloaded, total, "Downloading");
+    }
+
+    let bytes = buf;
+    eprintln!(
+        "[pack-module] Downloaded {} bytes for {}/{}",
+        bytes.len(),
+        pack_id,
+        sub_path
+    );
+
+    emit_progress("verifying", downloaded, total, "Verifying integrity");
+
+    if let Some(expected) = expected_sha256 {
+        let actual = hash_bytes_sha256(&bytes);
+        if actual != expected {
+            emit_progress("error", 0, 0, "Module hash mismatch");
+            return Err("Module hash mismatch".to_string());
+        }
+    }
+
+    emit_progress("extracting", 0, 0, "Extracting module");
+
+    fs::create_dir_all(&dest).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Failed to create module dir: {e}"));
+        format!("Failed to create module dir: {e}")
+    })?;
+
+    safe_extract_zip(&bytes, &dest).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Extract failed: {e}"));
+        e
+    })?;
+
+    // Write the pack manifest only if one isn't already present — never clobber
+    // an existing manifest (the parent pack may already be installed).
+    if let Some(manifest) = pack_manifest {
+        let manifest_path = pack_dir.join("manifest.json");
+        if !manifest_path.exists() {
+            fs::create_dir_all(&pack_dir).map_err(|e| {
+                emit_progress("error", 0, 0, &format!("Failed to create pack dir: {e}"));
+                format!("Failed to create pack dir: {e}")
+            })?;
+            fs::write(&manifest_path, manifest).map_err(|e| {
+                emit_progress("error", 0, 0, &format!("Failed to write manifest: {e}"));
+                format!("Failed to write manifest: {e}")
+            })?;
+            eprintln!("[pack-module] Wrote manifest at {:?}", manifest_path);
+        }
+    }
+
+    eprintln!(
+        "[pack-module] Installed module {} into {:?}",
+        pack_id, dest
+    );
+
+    emit_progress("complete", 0, 0, "Module installation complete");
+
+    Ok(())
+}
+
+/// Whether `corpan-packs/<pack_id>/<rel_path>` exists on disk as a file.
+pub fn module_file_exists<R: Runtime>(
+    app: &AppHandle<R>,
+    pack_id: String,
+    rel_path: String,
+) -> Result<bool, String> {
+    let rel = sanitize_rel(&rel_path)?;
+    let path = pack_root(app)?.join(&pack_id).join(rel);
+    Ok(path.is_file())
+}

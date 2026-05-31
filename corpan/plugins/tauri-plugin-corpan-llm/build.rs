@@ -8,8 +8,12 @@ const COMMANDS: &[&str] = &[
 ];
 
 fn main() {
-    tauri_plugin::Builder::new(COMMANDS)
-        .android_path("android")
-        .ios_path("ios")
-        .build();
+    // Pure-Rust plugin: every command AND the llama.cpp inference runtime live in
+    // Rust and run on all platforms (incl. iOS/Android) on a dedicated actor
+    // thread (see src/state.rs). We deliberately do NOT register native iOS
+    // (Swift) / Android (Kotlin) plugin code — no `.ios_path()` / `.android_path()`
+    // — so there is no Swift/Kotlin to keep in sync and no `run_mobile_plugin`
+    // bridge. The `ios/` and `android/` dirs remain only as reference scaffolding
+    // and are not compiled.
+    tauri_plugin::Builder::new(COMMANDS).build();
 }

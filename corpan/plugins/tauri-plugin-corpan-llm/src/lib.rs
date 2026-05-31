@@ -20,7 +20,7 @@
 
 use tauri::{
     plugin::{Builder, TauriPlugin},
-    Manager, Runtime,
+    Manager, Wry,
 };
 
 mod commands;
@@ -35,7 +35,10 @@ use state::LlmState;
 /// ```ignore
 /// .plugin(tauri_plugin_corpan_llm::init())
 /// ```
-pub fn init<R: Runtime>() -> TauriPlugin<R> {
+///
+/// Wry-concrete: the inference actor stores an `AppHandle<Wry>` to emit stream
+/// events from its own thread. corpan-app always runs on Wry.
+pub fn init() -> TauriPlugin<Wry> {
     Builder::new("corpan-llm")
         .invoke_handler(tauri::generate_handler![
             commands::llm_status,

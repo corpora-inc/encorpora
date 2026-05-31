@@ -1,30 +1,33 @@
 /**
  * Tutomaton — multilingual on-device language tutor (pack entry point).
  *
- * This is the SHELL. Per-language content (sqlite, prompts, retriever) lives
- * in `languages/<code>/` as a downloadable module, managed by LanguageManager.
+ * The SHELL. Per-language content (sqlite, prompts, retriever) lives in
+ * `languages/<code>/` as a module managed by LanguageManager. The shared base
+ * model (Qwen3-4B GGUF) is downloaded/loaded once via ModelManager and reused by
+ * every LLM pack on the device.
  *
  *   user message
  *     → LanguageManager.current().retrieve(message)
- *     → if kind === "theme": render canonical list directly (no LLM call)
- *     → else: invoke llm_chat with messages + system prompt + grounding + reference
- *           → stream tokens into the message bubble via Tauri events
- *     → if TTS toggle on: hostApi.speak(activeLang.voiceLanguageCode, finalText)
+ *     → if kind === "theme": render the canonical list directly (no LLM call)
+ *     → else: hostApi.llm.chat(systemPrompt + grounding + reference, messages)
+ *           → stream tokens into the message bubble
+ *     → if TTS on: hostApi.speak(activeLang.voiceLanguageCode, finalText)
  *
- * Voice mode: parlometron push-to-talk. On unmount, hostApi.stt.releaseAudio()
- * is non-negotiable for the iOS mic indicator.
+ * All native access goes through `hostApi` (never `window.__TAURI__`). Voice mode
+ * is parlometron push-to-talk; on unmount `hostApi.stt.releaseAudio()` is
+ * non-negotiable for the iOS mic indicator.
  */
 
+import "./chat.css"
 import { LanguageManager, type HostApi, type LanguageRegistryEntry, type LanguageRuntime } from "./languageManager"
+import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
 
 // Minimal slice of @corpan/sdk's ContentPackModule that we actually use.
-// (Other packs inline their own host-shape too — see packs/hover-runner.)
 type ContentPackModule = {
   mount: (container: HTMLElement, hostApi: HostApi) => Promise<{ unmount?: () => void } | void> | { unmount?: () => void } | void
 }
 
 const PACK_ID = "tutomaton-v1"
-const BASE_MODEL_ID = "llm-base-qwen3-4b-v1"
 
 type Msg = { role: "user" | "assistant"; content: string }
 
@@ -34,67 +37,110 @@ type State = {
   voiceModeEnabled: boolean
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
+  cancelStream: (() => Promise<void>) | null
   recording: boolean
   sttSession: string | null
 }
 
 // ============================================================
-// Tauri bridge
+// Pack asset resolution (base URL injected on our <script> tag)
 // ============================================================
 
-declare global {
-  interface Window {
-    __TAURI__?: {
-      core: { invoke: (cmd: string, args?: object) => Promise<unknown> }
-      event: {
-        listen: (event: string, handler: (ev: { payload: unknown }) => void) => Promise<() => void>
-      }
-    }
+function readPackBaseUrl(): string {
+  try {
+    const el = document.querySelector<HTMLScriptElement>(
+      'script[data-corp-game="true"][data-corp-game-id]'
+    )
+    return el?.dataset.corpGameBaseUrl ? new URL(el.dataset.corpGameBaseUrl).toString() : ""
+  } catch {
+    return ""
   }
 }
 
-async function invoke<T = unknown>(cmd: string, args?: object): Promise<T> {
-  if (!window.__TAURI__) throw new Error("Tauri runtime not available")
-  return window.__TAURI__.core.invoke(cmd, args) as Promise<T>
+function joinUrl(base: string, rel: string): string {
+  if (!base) return rel
+  const b = base.endsWith("/") ? base.slice(0, -1) : base
+  const r = rel.startsWith("/") ? rel.slice(1) : rel
+  return `${b}/${r}`
 }
 
-async function listen(event: string, handler: (payload: unknown) => void): Promise<() => void> {
-  if (!window.__TAURI__) throw new Error("Tauri runtime not available")
-  return window.__TAURI__.event.listen(event, (ev) => handler(ev.payload))
+/** In dev the WebView is on the host origin while the pack is served
+ *  cross-origin; route those through the host's `/game-proxy` passthrough. */
+function proxied(absUrl: string): string {
+  try {
+    const u = new URL(absUrl, window.location.href)
+    if (u.protocol !== "http:" && u.protocol !== "https:") return u.toString()
+    if (u.origin === window.location.origin) return u.toString()
+    return `/game-proxy?url=${encodeURIComponent(u.toString())}`
+  } catch {
+    return absUrl
+  }
 }
 
-async function llmEnsureLoaded(): Promise<void> {
-  const status = await invoke<{ loaded: boolean; modelId?: string }>("plugin:corpan-llm|llm_status")
-  if (status.loaded && status.modelId === BASE_MODEL_ID) return
-  await invoke("plugin:corpan-llm|llm_load", { modelPackId: BASE_MODEL_ID })
-}
+// ============================================================
+// LLM streaming — via hostApi.llm (never window.__TAURI__)
+// ============================================================
+
+type StreamHandle = { sessionId: string; cancel: () => Promise<void> }
 
 async function llmChat(
+  hostApi: HostApi,
   systemPrompt: string,
   messages: Msg[],
   onToken: (token: string) => void,
   onDone: (full: string) => void,
   onError: (err: string) => void
-): Promise<string> {
-  const sessionId = await invoke<string>("plugin:corpan-llm|llm_chat", {
-    messages: [{ role: "system", content: systemPrompt }, ...messages],
-    options: { temperature: 0.55, topP: 0.9, repeatPenalty: 1.2, maxTokens: 1500 },
-  })
-  let buf = ""
-  const unsubT = await listen(`llm-token:${sessionId}`, (payload) => {
-    const t = String((payload as { token?: string }).token ?? "")
-    buf += t
-    onToken(t)
-  })
-  const unsubD = await listen(`llm-done:${sessionId}`, () => {
-    unsubT(); unsubD(); unsubE()
-    onDone(buf)
-  })
-  const unsubE = await listen(`llm-error:${sessionId}`, (payload) => {
-    unsubT(); unsubD(); unsubE()
-    onError(String((payload as { error?: string }).error ?? "unknown"))
-  })
-  return sessionId
+): Promise<StreamHandle> {
+  if (!hostApi.llm) throw new Error("On-device AI isn't available in this version.")
+  return hostApi.llm.chat(
+    {
+      messages: [{ role: "system", content: systemPrompt }, ...messages],
+      options: { temperature: 0.55, topP: 0.9, repeatPenalty: 1.2, maxTokens: 1500 },
+    },
+    { onToken, onDone: (full) => onDone(full), onError: (err) => onError(err) }
+  )
+}
+
+// ============================================================
+// Presentation helpers
+// ============================================================
+
+/** Small, tasteful flags for the language pills. Falls back to none. */
+const LANG_FLAG: Record<string, string> = { es: "🇪🇸", zh: "🇨🇳", fr: "🇫🇷", de: "🇩🇪", ja: "🇯🇵", it: "🇮🇹", pt: "🇵🇹", ko: "🇰🇷" }
+
+/** Per-language starter prompts shown in the welcome state. */
+const SUGGESTIONS: Record<string, string[]> = {
+  es: [
+    "How do you say “good morning”?",
+    "Teach me food vocabulary",
+    "Conjugate “hablar”",
+    "When do I use the subjunctive?",
+  ],
+  zh: [
+    "How do I use 了?",
+    "Teach me food vocabulary",
+    "Explain the four tones",
+    "Difference between 不 and 没",
+  ],
+}
+const SUGGESTIONS_FALLBACK = ["Teach me some greetings", "How do you say “thank you”?", "Give me food vocabulary"]
+
+function nativeName(entry: LanguageRegistryEntry): string {
+  return entry.displayName[entry.code] || entry.displayName.en || entry.code
+}
+
+function scrubOutput(s: string): string {
+  s = s.replace(
+    /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F0FF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,
+    ""
+  )
+  s = s.replace(/^#{1,6}\s+/gm, "")
+  s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
+  s = s.replace(/\*\*/g, "")
+  s = s.replace(/<\/?reference>/gi, "")
+  s = s.replace(/[ \t]+(?=\n)/g, "")
+  s = s.replace(/\n{3,}/g, "\n\n")
+  return s.trim()
 }
 
 // ============================================================
@@ -109,91 +155,232 @@ const PackModule: ContentPackModule = {
       voiceModeEnabled: false,
       activeLanguage: null,
       currentStreamId: null,
+      cancelStream: null,
       recording: false,
       sttSession: null,
     }
 
-    // Pack manifest (already extracted by the host).
-    const manifest = await fetch("./manifest.json").then((r) => r.json()) as {
+    const baseUrl = readPackBaseUrl()
+    const packFetch = (rel: string) => fetch(proxied(joinUrl(baseUrl, rel)), { cache: "no-store" })
+
+    const manifest = (await packFetch("manifest.json").then((r) => r.json())) as {
       languages: LanguageRegistryEntry[]
+      databases?: Record<string, string>
     }
     const registry = manifest.languages
+    // The full manifest (incl. `databases` map) is written to disk by the host
+    // on first language install, so `queryPackDb` can resolve per-language sqlite.
+    const manifestJson = JSON.stringify(manifest)
 
-    // ---------- LanguageManager wiring ----------
+    // On-disk sqlite path for a language, from the manifest `databases` map
+    // (e.g. "languages/es/data/spanish.sqlite3"). queryPackDb uses dbName
+    // `tutomaton-<code>`; the host resolves it against this map.
+    const dbRelPath = (code: string): string =>
+      manifest.databases?.[`tutomaton-${code}`] ?? `languages/${code}/data/${code}.sqlite3`
+    // The language module ZIP is rooted at the module dir (its top-level entries
+    // are `data/`, `module.json`, `prompts/`, `retrieval/`). Extract it AT the
+    // module dir `languages/<code>` so the DB lands exactly at dbRelPath
+    // (`languages/<code>/data/<db>.sqlite3`). Using the DB's parent dir here
+    // would double the `data/` segment → queryPackDb "Database file not found".
+    const moduleSubDir = (code: string): string => `languages/${code}`
+
+    // ---------- LanguageManager ----------
     const langMgr = new LanguageManager({
       hostApi,
       packId: PACK_ID,
       registry,
+      // Installed == the language's sqlite is ON DISK (retrieval is native/file-
+      // based). The shell's module.json/prompts/retriever come over LAN in dev or
+      // are bundled in prod; only the DB needs downloading.
       isInstalled: async (code) => {
-        // hostApi exposes a per-pack file-presence check (the polish machine
-        // will wire this to the existing pack-cache APIs). For dev, attempt
-        // to fetch the language module manifest; if it 200s, it's installed.
-        try {
-          const r = await fetch(`./languages/${code}/module.json`)
-          return r.ok
-        } catch { return false }
+        if (!hostApi.packFileExists) return false
+        return hostApi.packFileExists(PACK_ID, dbRelPath(code))
       },
-      install: async (entry) => {
-        // hostApi.installModuleZip is a new host capability — the polish
-        // machine wires it to the existing pack downloader, scoped to the
-        // pack's data dir under `languages/<code>/`. For dev, the language
-        // module is bundled with the pack ZIP already (zero-download path).
-        if ((hostApi as unknown as { installModuleZip?: Function }).installModuleZip) {
-          await (hostApi as unknown as {
-            installModuleZip: (args: { packId: string; subPath: string; url: string; sha256: string }) => Promise<void>
-          }).installModuleZip({
+      install: async (entry, onProgress) => {
+        if (!hostApi.installModuleZip) {
+          throw new Error("This version of the app can't download language data.")
+        }
+        await hostApi.installModuleZip(
+          {
             packId: PACK_ID,
-            subPath: `languages/${entry.code}`,
+            subPath: moduleSubDir(entry.code),
             url: entry.moduleUrl,
             sha256: entry.sha256,
-          })
-        }
+            packManifest: manifestJson,
+          },
+          onProgress
+        )
       },
-      loadModuleFile: async (code, rel) => {
-        return fetch(`./languages/${code}/${rel}`).then((r) => r.text())
-      },
+      loadModuleFile: async (code, rel) => packFetch(`languages/${code}/${rel}`).then((r) => r.text()),
     })
 
-    // ---------- UI shell ----------
+    // ---------- shell ----------
     container.innerHTML = `
       <div class="lt-root" data-pack="${PACK_ID}">
         <header class="lt-header">
-          <h1 class="lt-title">Tutomaton</h1>
-          <select class="lt-lang" aria-label="Language"></select>
+          <div class="lt-brand">
+            <span class="lt-brand-mark" aria-hidden="true">✦</span>
+            <span class="lt-brand-name">Tutomaton</span>
+          </div>
+          <nav class="lt-langs" aria-label="Language"></nav>
           <div class="lt-controls">
-            <button class="lt-tts" aria-label="Toggle text-to-speech">🔊</button>
-            <button class="lt-voice" aria-label="Toggle voice mode">🎤</button>
-            <button class="lt-clear" aria-label="Clear conversation">↻</button>
+            <button class="lt-icon lt-tts" aria-label="Toggle voice replies" title="Voice replies">🔊</button>
+            <button class="lt-icon lt-voice" aria-label="Toggle voice input" title="Voice input">🎤</button>
+            <button class="lt-icon lt-clear" aria-label="New conversation" title="New conversation">⟲</button>
           </div>
         </header>
-        <div class="lt-log" role="log" aria-live="polite"></div>
+
+        <main class="lt-log" role="log" aria-live="polite"></main>
+
         <footer class="lt-input">
           <button class="lt-mic" aria-label="Hold to speak" hidden>●</button>
-          <input class="lt-text" type="text" placeholder="Type in any language…" autocomplete="off">
-          <button class="lt-send" aria-label="Send">→</button>
+          <div class="lt-field">
+            <textarea class="lt-text" rows="1" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
+          </div>
+          <button class="lt-send" aria-label="Send" disabled>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
+          </button>
         </footer>
+
+        <div class="lt-setup" hidden>
+          <div class="lt-setup-card">
+            <div class="lt-setup-glyph" aria-hidden="true">✦</div>
+            <h2 class="lt-setup-title">Set up your tutor</h2>
+            <p class="lt-setup-body"></p>
+            <div class="lt-setup-progress" hidden>
+              <div class="lt-setup-bar"><div class="lt-setup-fill"></div></div>
+              <div class="lt-setup-pct"></div>
+            </div>
+            <button class="lt-setup-action"></button>
+            <p class="lt-setup-note">Runs entirely on your device. No account, nothing sent to the cloud.</p>
+          </div>
+        </div>
       </div>
     `
 
-    const $log = container.querySelector<HTMLDivElement>(".lt-log")!
-    const $input = container.querySelector<HTMLInputElement>(".lt-text")!
+    const $log = container.querySelector<HTMLElement>(".lt-log")!
+    const $text = container.querySelector<HTMLTextAreaElement>(".lt-text")!
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $voiceBtn = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
-    const $langSel = container.querySelector<HTMLSelectElement>(".lt-lang")!
+    const $langs = container.querySelector<HTMLElement>(".lt-langs")!
+    const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
+    const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
+    const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
+    const $setupFill = container.querySelector<HTMLDivElement>(".lt-setup-fill")!
+    const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
+    const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
 
-    // Populate language picker
+    // ---------- model setup gate ----------
+    let modelReady = false
+    function renderModelPhase(phase: ModelPhase) {
+      modelReady = phase.kind === "ready"
+      $setup.hidden = modelReady
+      syncSendEnabled()
+      if (modelReady) return
+
+      const showProgress = phase.kind === "downloading"
+      $setupProgress.hidden = !showProgress
+      const busy =
+        phase.kind === "checking" || phase.kind === "downloading" ||
+        phase.kind === "installing" || phase.kind === "loading"
+      $setupAction.hidden = busy
+      $setupAction.disabled = busy
+
+      switch (phase.kind) {
+        case "checking":
+          $setupBody.textContent = "Checking your device…"
+          break
+        case "needs-install":
+          $setupBody.textContent =
+            `Tutomaton runs a private AI tutor (${BASE_MODEL.displayName}, ~${(phase.sizeMb / 1024).toFixed(1)} GB) entirely on your device. Download it once — then learn anytime, even offline.`
+          $setupAction.textContent = `Download tutor · ${(phase.sizeMb / 1024).toFixed(1)} GB`
+          break
+        case "downloading":
+          $setupBody.textContent = "Downloading your tutor…"
+          $setupFill.style.width = `${phase.pct}%`
+          $setupPct.textContent = `${phase.downloadedMb} / ${phase.totalMb} MB · ${phase.pct}%`
+          break
+        case "installing":
+          $setupBody.textContent = phase.message
+          break
+        case "loading":
+          $setupBody.textContent = "Waking up your tutor…"
+          break
+        case "error":
+          $setupBody.textContent = phase.message
+          $setupAction.hidden = !phase.canRetry
+          $setupAction.disabled = false
+          $setupAction.textContent = "Try again"
+          break
+      }
+    }
+    const modelMgr = new ModelManager(hostApi, renderModelPhase)
+    $setupAction.addEventListener("click", () => void modelMgr.installAndLoad())
+
+    // ---------- language pills ----------
     const uiLocale = (navigator.language || "en").split("-")[0]
-    for (const entry of registry) {
-      const opt = document.createElement("option")
-      opt.value = entry.code
-      opt.textContent = entry.displayName[uiLocale] || entry.displayName.en || entry.code
-      $langSel.appendChild(opt)
+    function renderLangs() {
+      $langs.innerHTML = ""
+      for (const entry of registry) {
+        const pill = document.createElement("button")
+        pill.className = "lt-pill"
+        pill.dataset.code = entry.code
+        const flag = LANG_FLAG[entry.code] ? `<span class="lt-pill-flag" aria-hidden="true">${LANG_FLAG[entry.code]}</span>` : ""
+        const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
+          ? `<span class="lt-pill-sub">${entry.displayName[uiLocale]}</span>`
+          : ""
+        pill.innerHTML = `${flag}<span class="lt-pill-name">${nativeName(entry)}</span>${sub}`
+        pill.classList.toggle("active", state.activeLanguage?.code === entry.code)
+        pill.addEventListener("click", () => {
+          if (state.activeLanguage?.code === entry.code) return
+          void switchLanguage(entry.code)
+        })
+        $langs.appendChild(pill)
+      }
+    }
+
+    // ---------- message rendering ----------
+    function clearLog() {
+      $log.innerHTML = ""
+    }
+
+    function renderWelcome() {
+      clearLog()
+      const code = state.activeLanguage?.code
+      const langName = registry.find((r) => r.code === code)
+      const wrap = document.createElement("div")
+      wrap.className = "lt-welcome"
+      wrap.innerHTML = `
+        <div class="lt-welcome-mark" aria-hidden="true">✦</div>
+        <h2 class="lt-welcome-title">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
+        <p class="lt-welcome-sub">Ask anything — translations, grammar, vocab, or just chat. It all runs on your device.</p>
+        <div class="lt-chips"></div>
+      `
+      const chipsRow = wrap.querySelector<HTMLDivElement>(".lt-chips")!
+      const chips = (code && SUGGESTIONS[code]) || SUGGESTIONS_FALLBACK
+      for (const c of chips) {
+        const chip = document.createElement("button")
+        chip.className = "lt-chip"
+        chip.textContent = c
+        chip.addEventListener("click", () => {
+          if (!modelReady) return
+          void send(c)
+        })
+        chipsRow.appendChild(chip)
+      }
+      $log.appendChild(wrap)
+    }
+
+    function scrollDown() {
+      $log.scrollTop = $log.scrollHeight
     }
 
     function bubble(role: "user" | "assistant", text = ""): HTMLDivElement {
+      // First real message clears the welcome state.
+      if ($log.querySelector(".lt-welcome")) clearLog()
       const wrap = document.createElement("div")
       wrap.className = `lt-msg lt-msg-${role}`
       const body = document.createElement("div")
@@ -201,118 +388,166 @@ const PackModule: ContentPackModule = {
       body.textContent = text
       wrap.appendChild(body)
       $log.appendChild(wrap)
-      $log.scrollTop = $log.scrollHeight
+      scrollDown()
       return body
     }
 
-    function renderSystemMessage(text: string) {
+    function systemNote(text: string) {
       const wrap = document.createElement("div")
       wrap.className = "lt-msg lt-msg-system"
       wrap.textContent = text
       $log.appendChild(wrap)
+      scrollDown()
+    }
+
+    // ---------- language data download UX ----------
+    /** First time a language is picked, its lesson DB downloads. Render a calm
+     *  inline card with a live progress bar (reuses the setup-card styles). */
+    function renderLangDownloading(name: string): {
+      update: (pct: number, mb: number, totalMb: number, stage: string) => void
+    } {
+      clearLog()
+      const wrap = document.createElement("div")
+      wrap.className = "lt-welcome"
+      wrap.innerHTML = `
+        <div class="lt-welcome-mark" aria-hidden="true">📚</div>
+        <h2 class="lt-welcome-title">Adding ${name}</h2>
+        <p class="lt-welcome-sub lt-dl-msg">Downloading lessons, vocabulary & grammar…</p>
+        <div class="lt-setup-progress" style="max-width:360px">
+          <div class="lt-setup-bar"><div class="lt-setup-fill lt-dl-fill"></div></div>
+          <div class="lt-setup-pct lt-dl-pct"></div>
+        </div>
+      `
+      $log.appendChild(wrap)
+      const $fill = wrap.querySelector<HTMLDivElement>(".lt-dl-fill")!
+      const $pct = wrap.querySelector<HTMLDivElement>(".lt-dl-pct")!
+      const $msg = wrap.querySelector<HTMLParagraphElement>(".lt-dl-msg")!
+      return {
+        update: (pct, mb, totalMb, stage) => {
+          if (stage === "downloading" && totalMb > 0) {
+            $fill.style.width = `${pct}%`
+            $pct.textContent = `${mb} / ${totalMb} MB · ${pct}%`
+          } else {
+            $msg.textContent =
+              stage === "extracting" ? "Unpacking lessons…" : stage === "verifying" ? "Verifying…" : "Finishing…"
+          }
+        },
+      }
     }
 
     // ---------- language switching ----------
     async function switchLanguage(code: string) {
-      $langSel.disabled = true
-      renderSystemMessage(`Loading ${code}…`)
+      const entry = registry.find((r) => r.code === code)
+      const name = entry ? nativeName(entry) : code
+      // Show a download card only if the data isn't already on disk.
+      const installed = (await hostApi.packFileExists?.(PACK_ID, dbRelPath(code))) ?? false
+      let dl: ReturnType<typeof renderLangDownloading> | null = null
+      if (!installed) dl = renderLangDownloading(name)
       try {
-        state.activeLanguage = await langMgr.activate(code)
-        state.messages = []  // reset conversation on language change
-        $log.innerHTML = ""
-        renderSystemMessage(`Ready in ${state.activeLanguage.code}.`)
+        state.activeLanguage = await langMgr.activate(code, (p) => {
+          dl?.update(
+            p.total > 0 ? Math.min(100, Math.round((p.progress / p.total) * 100)) : 0,
+            Math.round(p.progress / 1_048_576),
+            Math.round(p.total / 1_048_576),
+            p.stage
+          )
+        })
+        state.messages = []
+        renderLangs()
+        renderWelcome()
       } catch (e) {
-        renderSystemMessage(`Failed to load ${code}: ${e}`)
-      } finally {
-        $langSel.disabled = false
+        systemNote(`Couldn't load ${name}: ${e instanceof Error ? e.message : String(e)}`)
       }
     }
 
-    $langSel.addEventListener("change", () => switchLanguage($langSel.value))
-
-    // ---------- bootstrap ----------
-    const installedCodes = await langMgr.installed()
-    const initialCode = installedCodes[0] || registry[0]?.code
-    if (initialCode) {
-      $langSel.value = initialCode
-      await Promise.all([
-        switchLanguage(initialCode),
-        llmEnsureLoaded().catch((e) => renderSystemMessage(`Loading model… ${e}`)),
-      ])
+    // ---------- send a turn ----------
+    function syncSendEnabled() {
+      const hasText = $text.value.trim().length > 0
+      $send.disabled = !modelReady || !hasText || !!state.currentStreamId
     }
 
-    // ---------- send a turn ----------
     async function send(text: string) {
-      if (!text.trim() || state.currentStreamId || !state.activeLanguage) return
+      if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
       const userText = text.trim()
       const lang = state.activeLanguage
       state.messages.push({ role: "user", content: userText })
       bubble("user", userText)
-      $input.value = ""
-      $send.disabled = true
+      $text.value = ""
+      autosize()
+      syncSendEnabled()
+
+      const dest = bubble("assistant")
+      const caret = document.createElement("span")
+      caret.className = "lt-caret"
+      dest.parentElement!.classList.add("lt-streaming")
+      dest.appendChild(caret)
+
+      const finish = () => {
+        dest.parentElement!.classList.remove("lt-streaming")
+        caret.remove()
+        state.currentStreamId = null
+        state.cancelStream = null
+        syncSendEnabled()
+      }
 
       try {
-        const rag = await lang.retrieve(userText)
+        // RAG grounding is best-effort: never let a DB miss kill the turn.
+        let rag: Awaited<ReturnType<typeof lang.retrieve>>
+        try {
+          rag = await lang.retrieve(userText)
+        } catch (ragErr) {
+          console.error("[tutomaton] retrieve failed; answering ungrounded:", ragErr)
+          rag = { kind: "none", reference: null, log: [] }
+        }
 
-        // THEME BYPASS — deliver canonical list directly, no LLM call.
+        // THEME BYPASS — deliver the canonical list directly, no LLM call.
         if (rag.kind === "theme" && rag.reference) {
-          const intro = pickThemeIntro(lang.code)
-          const body = stripThemeHeader(rag.reference)
-          const full = `${intro}\n\n${body}`
-          const dest = bubble("assistant")
+          const full = `${pickThemeIntro(lang.code)}\n\n${stripThemeHeader(rag.reference)}`
           dest.textContent = full
           state.messages.push({ role: "assistant", content: full })
           maybeSpeak(full)
-          $send.disabled = false
+          finish()
+          scrollDown()
           return
         }
 
         const systemFull = rag.reference
           ? `${lang.systemPrompt}\n\n${lang.groundingInstruction}${rag.reference}`
           : lang.systemPrompt
-        const dest = bubble("assistant", "…")
         let buf = ""
-        state.currentStreamId = await llmChat(
+        const handle = await llmChat(
+          hostApi,
           systemFull,
           state.messages,
           (tok) => {
-            if (buf === "") dest.textContent = ""
             buf += tok
+            caret.remove()
             dest.textContent = scrubOutput(buf)
+            dest.appendChild(caret)
+            scrollDown()
           },
           (full) => {
-            state.currentStreamId = null
             const cleaned = scrubOutput(full)
             dest.textContent = cleaned
             state.messages.push({ role: "assistant", content: cleaned })
             maybeSpeak(cleaned)
-            $send.disabled = false
+            finish()
+            scrollDown()
           },
           (err) => {
-            state.currentStreamId = null
-            dest.textContent = `[Error: ${err}]`
-            $send.disabled = false
+            dest.textContent = ""
+            dest.parentElement!.classList.add("lt-error")
+            dest.textContent = err.replace(/^[A-Z_]+:\s*/, "")
+            finish()
           }
         )
+        state.currentStreamId = handle.sessionId
+        state.cancelStream = handle.cancel
       } catch (e) {
-        const errText = `[Error: ${e instanceof Error ? e.message : String(e)}]`
-        bubble("assistant", errText)
-        $send.disabled = false
+        dest.parentElement!.classList.add("lt-error")
+        dest.textContent = e instanceof Error ? e.message : String(e)
+        finish()
       }
-    }
-
-    function scrubOutput(s: string): string {
-      s = s.replace(
-        /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F0FF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,
-        ""
-      )
-      s = s.replace(/^#{1,6}\s+/gm, "")
-      s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
-      s = s.replace(/\*\*/g, "")
-      s = s.replace(/<\/?reference>/gi, "")
-      s = s.replace(/[ \t]+(?=\n)/g, "")
-      s = s.replace(/\n{3,}/g, "\n\n")
-      return s.trim()
     }
 
     function maybeSpeak(text: string) {
@@ -321,19 +556,29 @@ const PackModule: ContentPackModule = {
       }
     }
 
-    // ---------- UI events ----------
-    $send.addEventListener("click", () => send($input.value))
-    $input.addEventListener("keydown", (e) => {
+    // ---------- input UX ----------
+    function autosize() {
+      $text.style.height = "auto"
+      $text.style.height = `${Math.min(140, $text.scrollHeight)}px`
+    }
+    $text.addEventListener("input", () => {
+      autosize()
+      syncSendEnabled()
+    })
+    $text.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault()
-        send($input.value)
+        void send($text.value)
       }
     })
-    $clear.addEventListener("click", () => {
+    $send.addEventListener("click", () => void send($text.value))
+
+    $clear.addEventListener("click", async () => {
+      if (state.cancelStream) await state.cancelStream().catch(() => {})
       state.messages = []
-      $log.innerHTML = ""
-      renderSystemMessage("Cleared.")
+      renderWelcome()
     })
+
     $ttsBtn.addEventListener("click", () => {
       state.ttsEnabled = !state.ttsEnabled
       $ttsBtn.classList.toggle("active", state.ttsEnabled)
@@ -344,17 +589,17 @@ const PackModule: ContentPackModule = {
       state.voiceModeEnabled = !state.voiceModeEnabled
       $voiceBtn.classList.toggle("active", state.voiceModeEnabled)
       $mic.hidden = !state.voiceModeEnabled
-      $input.style.display = state.voiceModeEnabled ? "none" : ""
+      $text.style.display = state.voiceModeEnabled ? "none" : ""
       $send.style.display = state.voiceModeEnabled ? "none" : ""
       if (state.voiceModeEnabled) {
         try {
           await hostApi.stt?.prepare?.({ model: "ggml-medium.bin" })
         } catch (e) {
-          renderSystemMessage(`Couldn't prepare voice recognition: ${e}`)
+          systemNote(`Couldn't start voice input: ${e instanceof Error ? e.message : String(e)}`)
           state.voiceModeEnabled = false
           $voiceBtn.classList.remove("active")
           $mic.hidden = true
-          $input.style.display = ""
+          $text.style.display = ""
           $send.style.display = ""
         }
       } else {
@@ -378,12 +623,21 @@ const PackModule: ContentPackModule = {
         const result = await hostApi.stt?.stopSession?.({ sessionId: state.sttSession ?? "" })
         state.recording = false
         $mic.classList.remove("recording")
-        if (result?.text) send(result.text)
+        if (result?.text) void send(result.text)
       }
     })
 
+    // ---------- bootstrap ----------
+    renderLangs()
+    const installedCodes = await langMgr.installed()
+    const initialCode = installedCodes[0] || registry[0]?.code
+    if (initialCode) await switchLanguage(initialCode)
+    void modelMgr.check()
+    syncSendEnabled()
+
     return {
       unmount: () => {
+        if (state.cancelStream) void state.cancelStream().catch(() => {})
         // CRITICAL for iOS — release the audio engine so the mic indicator clears.
         hostApi.stt?.releaseAudio?.().catch((e) => console.error("[tutomaton] releaseAudio failed:", e))
         if (state.ttsEnabled) hostApi.stopSpeech?.()
@@ -393,7 +647,7 @@ const PackModule: ContentPackModule = {
 }
 
 // ============================================================
-// Per-language theme intros
+// Per-language theme intros (for the no-LLM theme bypass)
 // ============================================================
 
 const THEME_INTROS: Record<string, string[]> = {
@@ -415,5 +669,15 @@ function stripThemeHeader(s: string): string {
   }
   return lines.join("\n")
 }
+
+// ============================================================
+// Registration — the host looks up globalThis.CorpanGames[manifest.id]
+// ============================================================
+
+const scope = globalThis as typeof globalThis & {
+  CorpanGames?: Record<string, ContentPackModule>
+}
+scope.CorpanGames = scope.CorpanGames || {}
+scope.CorpanGames[PACK_ID] = PackModule
 
 export default PackModule

@@ -190,6 +190,85 @@ export type SttTranscriptionResult = {
   words: SttWordTiming[]
 }
 
+// ============================================================
+// On-device LLM (tauri-plugin-corpan-llm) — consumed by tutor packs
+// ============================================================
+
+export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: string }
+
+export type LlmChatOptions = {
+  temperature?: number
+  topP?: number
+  repeatPenalty?: number
+  maxTokens?: number
+  stop?: string[]
+}
+
+export type LlmStatus = {
+  loaded: boolean
+  modelId?: string | null
+  backend?: string | null
+  availableMemoryMb?: number | null
+}
+
+/** Callbacks for a streaming generation. */
+export type LlmChatHandlers = {
+  onToken: (token: string) => void
+  onDone: (full: string, stats?: { totalTokens: number; elapsedMs: number }) => void
+  onError: (error: string, code?: string) => void
+}
+
+/** Handle to an in-flight generation. */
+export type LlmChatHandle = {
+  sessionId: string
+  /** Request cancellation; the stream ends via onDone/onError shortly after. */
+  cancel: () => Promise<void>
+}
+
+/** Args to download+install a base model pack (a GGUF content-pack ZIP). */
+export type LlmModelInstall = {
+  /** Pack id, e.g. "llm-base-qwen3-4b-v1". Becomes the on-disk dir name. */
+  packId: string
+  /** Full ZIP URL (CDN). */
+  url: string
+  /** Optional sha256 of the ZIP; verified when present. */
+  sha256?: string
+}
+
+/** Progress during a model install. Mirrors the host `pack-install-progress`
+ *  event: `downloading` carries byte counts; other stages carry a message. */
+export type LlmInstallProgress = {
+  stage: "downloading" | "verifying" | "extracting" | "finalizing" | "error" | string
+  /** Bytes downloaded so far (downloading stage), else 0. */
+  progress: number
+  /** Total bytes (downloading stage, when known), else 0. */
+  total: number
+  message: string
+}
+
+/**
+ * On-device LLM runtime bridge (Metal on Apple / CPU elsewhere). Optional on the
+ * host so packs feature-detect; present whenever `tauri-plugin-corpan-llm` is
+ * registered. Streaming is callback-based (the host owns the Tauri event
+ * listeners and tears them down on done/error/cancel) so packs never touch
+ * `window.__TAURI__`.
+ */
+export type LlmApi = {
+  status: () => Promise<LlmStatus>
+  /** Whether a model pack's files are present on disk (does not load it). */
+  isInstalled: (packId: string) => Promise<boolean>
+  /** Download + extract a base model pack ZIP to disk, with progress. */
+  install: (args: LlmModelInstall, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
+  /** Load a base model pack (e.g. "llm-base-qwen3-4b-v1"). Multi-second cold load. */
+  load: (args: { modelPackId: string; gpuLayers?: number; contextSize?: number }) => Promise<void>
+  unload: () => Promise<void>
+  /** Begin a streaming chat. Resolves once the session is registered + listeners armed. */
+  chat: (
+    args: { messages: LlmChatMessage[]; options?: LlmChatOptions },
+    handlers: LlmChatHandlers,
+  ) => Promise<LlmChatHandle>
+}
+
 export type SttApi = {
   isAvailable: () => Promise<boolean>
   getStatus: () => Promise<SttStatus>
@@ -327,7 +406,18 @@ export type HostApi = {
     languageCodes?: string[]
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  /** Download + extract a module ZIP into a subpath of this pack's on-disk dir
+   *  (e.g. a tutor pack's per-language data). Writes the pack manifest if absent
+   *  so `queryPackDb` can resolve the pack's `databases` map. */
+  installModuleZip?: (
+    args: { packId: string; subPath: string; url: string; sha256?: string; packManifest?: string },
+    onProgress?: (p: LlmInstallProgress) => void,
+  ) => Promise<void>
+  /** Whether `corpan-packs/<packId>/<relPath>` exists on disk and is non-empty. */
+  packFileExists?: (packId: string, relPath: string) => Promise<boolean>
   stt?: SttApi
+  /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
+  llm?: LlmApi
   isMock?: boolean
 }
 

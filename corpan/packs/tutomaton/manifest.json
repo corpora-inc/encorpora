@@ -69,5 +69,9 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-05-30T18:36:23.132Z"
+  "devRevision": "2026-05-31T05:05:23.246Z",
+  "databases": {
+    "tutomaton-es": "languages/es/data/spanish.sqlite3",
+    "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"
+  }
 }

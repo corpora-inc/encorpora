@@ -114,6 +114,16 @@ export const EXPERIENCES: ExperienceMeta[] = [
     blurbKey: "experiences.phrase_main.blurb",
     order: 8,
   },
+  {
+    // On-device multilingual LLM tutor (Plus). Strong fit for learners/polyglots
+    // who want to converse and study; language-agnostic (manages its own langs).
+    id: "tutomaton-v1",
+    categories: ["speak", "study"],
+    goodForClass: ["learner", "polyglot"],
+    nameKey: "experiences.tutomaton-v1.name",
+    blurbKey: "experiences.tutomaton-v1.blurb",
+    order: 9,
+  },
 ]
 
 export const EXPERIENCE_BY_ID: Record<string, ExperienceMeta> = Object.fromEntries(
