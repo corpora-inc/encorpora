@@ -5,6 +5,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-31 — Multi-source RAG architecture + en/fr/de/ja republish
+
 ### Added
 - **Multi-source RAG SourceRegistry** (`RAG_SOURCES_CONTRACT.md`): the
   `LanguageManager` now resolves **0..N sources per language** instead of one

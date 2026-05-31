@@ -9,13 +9,13 @@
     "ja": "\u65e5\u672c\u8a9e"
   },
   "voiceLanguageCode": "ja-JP",
-  "contentVersion": "0.1.0",
+  "contentVersion": "0.2.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "data/ja.sqlite3",
+    "database": "sources/core/data/ja.sqlite3",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
-    "retriever": "retrieval/retriever.ts"
+    "retriever": "sources/core/retrieval/retriever.ts"
   },
   "rag": {
     "schemaVersion": 1,
