@@ -1,0 +1,82 @@
+"""L1-interference errors for French as target language.
+
+Each error is a row the retriever can match against the user's input when it
+knows the user's L1. Highest-ROI feature for the universal-pivot languages
+(EN as target with ES/ZH/JA/KO L1s; FR/DE/ES as target with EN L1; etc).
+
+Skip / leave empty for languages where the L1→L2 cohort is small enough that
+authoring isn't worth it yet.
+
+Item shape:
+  {
+    "l1_code":        "es",                # required; ISO L1 code
+    "error_pattern":  r"\\bI have \\d+ years?\\b",   # JS-compatible regex string,
+                                                     # case-insensitive at retrieve time
+    "correct_form":   "I am [N] years old",
+    "l1_name":        "Spanish",
+    "l1_explanation": "En español decimos 'tengo 25 años' (literally 'I have 25 years'), pero en inglés usamos 'be' con edad: 'I am 25 (years old)'.",
+    "en_explanation": "Spanish speakers often map 'tener X años' literally to English. In English, age uses 'be': I am 25, not I have 25.",
+    "example_wrong":  "I have 25 years.",
+    "example_right":  "I am 25 (years old).",
+    "severity":       "high",              # high / med / low
+    "lesson_topic":   "verbs_be_have",     # optional pointer to a lesson
+  }
+
+Authoring tips:
+  - Pattern conservatively: false positives are worse than misses.
+    "I have N years" matches age-talk; "I have N year of experience" should
+    NOT match (singular 'year'). Use \\b boundaries.
+  - severity guides the LLM tone:
+      high = embarrassing / blocking communication
+      med  = noticeable but not blocking
+      low  = stylistic preference
+  - L1 explanation in the L1's script. en_explanation is fallback.
+  - Group by category in comments below.
+"""
+
+L1_ERRORS: list[dict] = [
+    # ============================================================
+    # === L1 = Spanish (es) ===
+    # ============================================================
+
+    # --- Verb confusion: have vs be ---
+    # TODO
+
+    # --- False friends ---
+    # TODO
+
+    # --- Articles ---
+    # TODO
+
+    # --- Prepositions ---
+    # TODO
+
+    # --- Word order / do-support ---
+    # TODO
+
+    # ============================================================
+    # === L1 = Mandarin (zh) ===
+    # ============================================================
+
+    # --- Missing articles ---
+    # TODO
+
+    # --- No plural marking ---
+    # TODO
+
+    # --- Tense confusion ---
+    # TODO
+
+    # ============================================================
+    # === L1 = Japanese (ja) ===
+    # ============================================================
+
+    # --- Missing articles ---
+    # TODO
+
+    # --- Word order ---
+    # TODO
+
+    # --- L/R distinction ---
+    # TODO
+]

@@ -1,5 +1,5 @@
 /**
- * Retriever for {LANG_NAME}.
+ * Retriever for Portuguese.
  *
  * Pure on-device pattern-match + sqlite FTS5. Returns one of:
  *   { kind: "theme",       reference: "..." }   → pack short-circuits, no LLM call
@@ -45,9 +45,9 @@ export type RagResult = {
 // ============================================================
 
 const VOCAB_PATTERNS: RegExp[] = [
-  /\bhow\s+do\s+you\s+say\s+["'']?(.+?)["'']?\s+in\s+{LANG_NAME}\b/i,
-  /\bwhat['']s?\s+the\s+{LANG_NAME}\s+(?:word|term)\s+for\s+["'']?(.+?)["'']?[?.]?$/i,
-  /\btranslate\s+["'']?(.+?)["'']?(?:\s+to\s+{LANG_NAME})?[?.]?$/i,
+  /\bhow\s+do\s+you\s+say\s+["'']?(.+?)["'']?\s+in\s+Portuguese\b/i,
+  /\bwhat['']s?\s+the\s+Portuguese\s+(?:word|term)\s+for\s+["'']?(.+?)["'']?[?.]?$/i,
+  /\btranslate\s+["'']?(.+?)["'']?(?:\s+to\s+Portuguese)?[?.]?$/i,
   /\bwhat\s+does\s+["'']?(.+?)["'']?\s+mean\b/i,
 ]
 
@@ -311,7 +311,7 @@ export async function retrieve(userMessage: string, queryDb: QueryFn, l1Code: st
   if (!msg) return { reference: null, kind: null, log }
 
   // 1. L1-error pattern (highest priority — catch mistakes before answering)
-  if (l1Code && l1Code !== "{LANG_CODE}") {
+  if (l1Code && l1Code !== "pt") {
     const err = await lookupL1Errors(msg, l1Code, queryDb)
     if (err) {
       log.push(`l1_error: ${l1Code}`)
@@ -352,7 +352,7 @@ export async function retrieve(userMessage: string, queryDb: QueryFn, l1Code: st
         const kind: RagKind = DIFF_PATTERNS.some((p) => p.test(msg)) ? "lesson_diff" : "lesson"
         // Attach L1-specific notes if relevant
         let body = `# ${lesson.title}\n\n${lesson.body_markdown}`
-        if (lesson.l1_notes_json && l1Code !== "{LANG_CODE}") {
+        if (lesson.l1_notes_json && l1Code !== "pt") {
           try {
             const notes = JSON.parse(lesson.l1_notes_json)
             if (notes[l1Code]) {

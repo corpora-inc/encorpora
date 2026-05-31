@@ -1,14 +1,18 @@
 {
-  "code": "zh",
+  "code": "en",
   "displayName": {
-    "en": "Mandarin Chinese",
-    "zh": "\u666e\u901a\u8bdd"
+    "en": "English",
+    "es": "Inglés",
+    "fr": "Anglais",
+    "de": "Englisch",
+    "zh": "英语",
+    "ja": "英語"
   },
-  "voiceLanguageCode": "zh-CN",
-  "contentVersion": "0.2.0",
+  "voiceLanguageCode": "en-US",
+  "contentVersion": "0.1.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "data/mandarin.sqlite3",
+    "database": "data/english.sqlite3",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
     "retriever": "retrieval/retriever.ts"

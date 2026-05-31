@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-05-30T17:07:12.000+00:00",
+  "generatedAt": "2026-05-31T07:22:09.000+00:00",
   "narrations": [
     {
       "id": "monte-alban-ian-en",
@@ -19725,9 +19725,9 @@
       "language": "es",
       "languageName": "Español",
       "voiceId": "gemini-vindy",
-      "version": "0.1.2",
-      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-es-0.1.2.zip",
-      "sha256": "bbe6c6ce899a75e8406d36ea61f93e87c994502bc2d1e3695019c58e27d86408",
+      "version": "0.1.3",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-es-0.1.3.zip",
+      "sha256": "bf18c85234e98b0c93d50551b09115e4edd79e28a1e5f0cfc9ba4f70a5f7bc0b",
       "sizeMb": 8.1,
       "series": "AI This Week",
       "tier": "public",
@@ -19759,20 +19759,7 @@
         "gemini-ron"
       ],
       "characterId": "vindy",
-      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg",
-      "totalSegments": 209,
-      "freeSegments": 69,
-      "preview": {
-        "url": "https://d38iwc9748jekz.cloudfront.net/narrations/preview/ai-this-week-2026-05-27-gemini-vindy-es-0.1.2-preview.zip",
-        "sha256": "ca4aadc830b4a23a0f596e6c2ae0e54ddee6aed87de2d7a0b4bed3a30ac7d196",
-        "sizeMb": 3.4
-      },
-      "full": {
-        "url": "https://d38iwc9748jekz.cloudfront.net/narrations/premium/ai-this-week-2026-05-27-gemini-vindy-es-0.1.2.zip",
-        "sha256": "bbe6c6ce899a75e8406d36ea61f93e87c994502bc2d1e3695019c58e27d86408",
-        "sizeMb": 8.1,
-        "requires": "corpan.plus"
-      }
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
     },
     {
       "id": "ai-this-week-2026-05-27-gemini-vindy-de",
@@ -21595,6 +21582,455 @@
       ],
       "characterId": "vindy",
       "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-lv",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "lv",
+      "languageName": "LV",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-lv-0.1.1.zip",
+      "sha256": "90d2aaf24fa0bef0a71ed31064e34b077aae21199426cb9092ae843890cd5776",
+      "sizeMb": 8.6,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-id",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "id",
+      "languageName": "ID",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-id-0.1.1.zip",
+      "sha256": "5dbcb143a14a501018357444290c8883832d54ac23a4a38bc079b30eb973ef65",
+      "sizeMb": 8.1,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-ja",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "ja",
+      "languageName": "日本語",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-ja-0.1.1.zip",
+      "sha256": "236a6da77bb4db514f2f11042427c6101a0a563899b14b66f41e2980d8feca7b",
+      "sizeMb": 8.2,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-hu",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "hu",
+      "languageName": "HU",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-hu-0.1.1.zip",
+      "sha256": "d8e68ec42e519e36a2ad3a0654bcce1236a3b52be80cd034375c488f1fda6681",
+      "sizeMb": 8.0,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-ta",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "ta",
+      "languageName": "TA",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-ta-0.1.1.zip",
+      "sha256": "07fc0e099465d5d08944370f00ef3f1af36a9f77326d0fa5f2fb5a0244b6ce7d",
+      "sizeMb": 8.2,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-gu",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "gu",
+      "languageName": "GU",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-gu-0.1.1.zip",
+      "sha256": "26e34a1687732a152fd87299a03d4306853f24524080141fdb1adea0607ebd66",
+      "sizeMb": 7.8,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-ne",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "ne",
+      "languageName": "NE",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-ne-0.1.1.zip",
+      "sha256": "f7ad3e0981c3127db74cd55738f2cb50828feea9758937c3054d646a910149ec",
+      "sizeMb": 8.2,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-et",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "et",
+      "languageName": "ET",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-et-0.1.1.zip",
+      "sha256": "9510b0bfdec532a4b0f4301209fa39ddf8aed3d4263c84739b4d3b13969edda5",
+      "sizeMb": 8.0,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "ai-this-week-2026-05-27-gemini-vindy-te",
+      "bookId": "book_ai_this_week_2026_05_27",
+      "bookTitle": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+      "language": "te",
+      "languageName": "TE",
+      "voiceId": "gemini-vindy",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/ai-this-week-2026-05-27-gemini-vindy-te-0.1.1.zip",
+      "sha256": "634527bf9534de0db4ae437a4c01b1425d7ecf427ed6fe80802a174ee08c398f",
+      "sizeMb": 8.1,
+      "series": "AI This Week",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "format": "dialog",
+      "cast": [
+        {
+          "speakerId": "host",
+          "voiceId": "gemini-vindy",
+          "characterId": "vindy",
+          "displayName": "Vindy",
+          "role": "host",
+          "backend": "gemini"
+        },
+        {
+          "speakerId": "analyst",
+          "voiceId": "gemini-ron",
+          "characterId": "ron",
+          "displayName": "Ron",
+          "role": "analyst",
+          "backend": "gemini"
+        }
+      ],
+      "voiceIds": [
+        "gemini-vindy",
+        "gemini-ron"
+      ],
+      "characterId": "vindy",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_ai_this_week_2026_05_27/cover.jpg"
+    },
+    {
+      "id": "soul-food-southern-us-gemini-ron-id",
+      "bookId": "book_soul_food_southern_us",
+      "bookTitle": "Soul Food of the Southern United States",
+      "language": "id",
+      "languageName": "ID",
+      "voiceId": "gemini-ron",
+      "version": "0.1.1",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/soul-food-southern-us-gemini-ron-id-0.1.1.zip",
+      "sha256": "f0bc0d42da5260f358ba7241e6786e850d2221d1be69d6b08ba2719a60354f74",
+      "sizeMb": 5.3,
+      "series": "Food of the World",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "volume": 1,
+      "characterId": "ron",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_soul_food_southern_us/cover.jpg"
+    },
+    {
+      "id": "train-history-gemini-ron-id",
+      "bookId": "book_train_history",
+      "bookTitle": "The Story of the Train",
+      "language": "id",
+      "languageName": "ID",
+      "voiceId": "gemini-ron",
+      "version": "0.1.2",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/train-history-gemini-ron-id-0.1.2.zip",
+      "sha256": "39b3dfe62bc6efa7c4aada3699bcf5c52cc3b0931f881e63ecde061fe13e46df",
+      "sizeMb": 5.2,
+      "series": "Vehicles of the World",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "volume": 1,
+      "characterId": "ron",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_train_history/cover.jpg"
+    },
+    {
+      "id": "sky-diving-aoede-gemini-id",
+      "bookId": "book_sky_diving",
+      "bookTitle": "Skydiving",
+      "language": "id",
+      "languageName": "ID",
+      "voiceId": "aoede-gemini",
+      "version": "0.1.3",
+      "downloadUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/sky-diving-aoede-gemini-id-0.1.3.zip",
+      "sha256": "06f43e9a09aedb3c0610c5b06e6e0cb9b82a574e3894ae27508fbcf24b975f7b",
+      "sizeMb": 12.9,
+      "series": "Little Escapes",
+      "tier": "public",
+      "purchase": {
+        "type": "free",
+        "priceLabel": "Free"
+      },
+      "characterId": "aoede",
+      "coverImageUrl": "https://d38iwc9748jekz.cloudfront.net/books/book_sky_diving/cover.jpg"
     }
   ],
   "gamePacks": [],
@@ -21951,6 +22387,7 @@
         "el",
         "en",
         "es",
+        "et",
         "fa",
         "fi",
         "fr",
@@ -21965,8 +22402,10 @@
         "kn",
         "ko",
         "lt",
+        "lv",
         "mr",
         "ms",
+        "ne",
         "nl",
         "no",
         "pl",
@@ -22536,16 +22975,16 @@
         "sizeMb": 2382,
         "requires": "plus"
       },
-      "publishedAt": "2026-05-30T16:58:11+00:00"
+      "publishedAt": "2026-05-31T07:22:09+00:00"
     },
     {
       "id": "tutomaton-v1",
       "name": "Tutomaton",
-      "version": "0.1.0",
-      "entry": "src/chat.ts",
+      "version": "0.3.0",
+      "entry": "dist/chat.js",
       "entryType": "module",
       "styles": [
-        "src/chat.css"
+        "dist/chat.css"
       ],
       "sdkVersion": "1.0.0",
       "minAppVersion": "0.16.0",
@@ -22580,6 +23019,38 @@
       },
       "languages": [
         {
+          "code": "de",
+          "displayName": {
+            "en": "German",
+            "es": "Alemán",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "zh": "德语",
+            "ja": "ドイツ語"
+          },
+          "voiceLanguageCode": "de-DE",
+          "contentVersion": "0.1.0",
+          "sizeMb": 1,
+          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/de-0.1.0.zip",
+          "sha256": "38c7a3828f0e615a5ea26566ba4b81b0e96b529b88abbfeb1d557d052b95cad0"
+        },
+        {
+          "code": "en",
+          "displayName": {
+            "en": "English",
+            "es": "Inglés",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "zh": "英语",
+            "ja": "英語"
+          },
+          "voiceLanguageCode": "en-US",
+          "contentVersion": "0.1.0",
+          "sizeMb": 1,
+          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/en-0.1.0.zip",
+          "sha256": "c9f73f6395d4d43d8fd97d068b683f119c10ba4e12e5e3af14a2889b4be833d0"
+        },
+        {
           "code": "es",
           "displayName": {
             "en": "Spanish",
@@ -22592,16 +23063,48 @@
           "sha256": "ef7acbd88f461d686c9995ff868a77e06639fbe8baf432e23bcf0c6f828bbf8b"
         },
         {
+          "code": "fr",
+          "displayName": {
+            "en": "French",
+            "es": "Francés",
+            "fr": "Français",
+            "de": "Französisch",
+            "zh": "法语",
+            "ja": "フランス語"
+          },
+          "voiceLanguageCode": "fr-FR",
+          "contentVersion": "0.1.0",
+          "sizeMb": 1,
+          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/fr-0.1.0.zip",
+          "sha256": "5e06fbb6575754aa745c45445e3fddde2e3b2d31bc9c3649ce3e422bac8e7984"
+        },
+        {
+          "code": "ja",
+          "displayName": {
+            "en": "Japanese",
+            "es": "Japonés",
+            "fr": "Japonais",
+            "de": "Japanisch",
+            "zh": "日语",
+            "ja": "日本語"
+          },
+          "voiceLanguageCode": "ja-JP",
+          "contentVersion": "0.1.0",
+          "sizeMb": 1,
+          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ja-0.1.0.zip",
+          "sha256": "e7efe7783771de0995735e2ddc6fa6f42471da36a8fc3554cab87cd6cde4300f"
+        },
+        {
           "code": "zh",
           "displayName": {
             "en": "Mandarin Chinese",
             "zh": "普通话"
           },
           "voiceLanguageCode": "zh-CN",
-          "contentVersion": "0.1.0",
+          "contentVersion": "0.2.0",
           "sizeMb": 1,
-          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-0.1.0.zip",
-          "sha256": "251f7850e0f047492c8ba940c6141440deb290aabe8ea30c8779a31f6f82aa84"
+          "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-0.2.0.zip",
+          "sha256": "f62add210e191ed33f5fd081192521c5a2add3c9e5cdf65814eb587cb7c63c2d"
         }
       ],
       "metadata": {
@@ -22609,18 +23112,23 @@
         "supportsLanguageDownload": true,
         "supportsVoiceMode": true
       },
+      "devRevision": "2026-05-31T07:21:09.420Z",
+      "databases": {
+        "tutomaton-es": "languages/es/data/spanish.sqlite3",
+        "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"
+      },
       "preview": {
-        "url": "https://d38iwc9748jekz.cloudfront.net/corpan/llm-packs/tutomaton-v1-0.1.0-preview.zip",
-        "sha256": "327e058db086fb1180bbf862f22e882df66b83fdd448f1c4e37d6a10590e0579",
+        "url": "https://d38iwc9748jekz.cloudfront.net/corpan/llm-packs/tutomaton-v1-0.3.0-preview.zip",
+        "sha256": "a9c0c56fed5290bab39a801bf736559cf61be935f75c19b57b69480584ceac6a",
         "sizeMb": 1
       },
       "full": {
-        "url": "https://d38iwc9748jekz.cloudfront.net/corpan/llm-packs/tutomaton-v1-0.1.0-full.zip",
-        "sha256": "b9749449da9e6ac002d854d6eb92db06295d22e1155395e1b382f6c8bfc4666a",
+        "url": "https://d38iwc9748jekz.cloudfront.net/corpan/llm-packs/tutomaton-v1-0.3.0-full.zip",
+        "sha256": "ebdb964035a8b6187c6f8c34a80efbfa72fded9dd52b4d47655ae96bf1fb3c1a",
         "sizeMb": 1,
         "requires": "plus"
       },
-      "publishedAt": "2026-05-30T17:07:12+00:00"
+      "publishedAt": "2026-05-31T07:21:44+00:00"
     }
   ]
 }

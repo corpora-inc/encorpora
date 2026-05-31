@@ -26,13 +26,20 @@ export type RetrieverModule = {
 
 import * as es from "../languages/es/retrieval/retriever"
 import * as zh from "../languages/zh/retrieval/retriever"
+import * as en from "../languages/en/retrieval/retriever"
+import * as fr from "../languages/fr/retrieval/retriever"
+import * as de from "../languages/de/retrieval/retriever"
+import * as ja from "../languages/ja/retrieval/retriever"
 
 /**
  * Code-bundled retrievers, keyed by language code. The cast is safe: each
- * module's `retrieve`/`resolveTheme` match the contract structurally (es returns
- * RagResult, a superset of RetrievalResult; zh returns the same shape).
+ * module's `retrieve`/`resolveTheme` match the contract structurally.
  */
 export const RETRIEVERS: Record<string, RetrieverModule> = {
   es: es as unknown as RetrieverModule,
   zh: zh as unknown as RetrieverModule,
+  en: en as unknown as RetrieverModule,
+  fr: fr as unknown as RetrieverModule,
+  de: de as unknown as RetrieverModule,
+  ja: ja as unknown as RetrieverModule,
 }
