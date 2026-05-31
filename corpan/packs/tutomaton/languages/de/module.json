@@ -9,13 +9,13 @@
     "ja": "\u30c9\u30a4\u30c4\u8a9e"
   },
   "voiceLanguageCode": "de-DE",
-  "contentVersion": "0.1.0",
+  "contentVersion": "0.2.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "data/de.sqlite3",
+    "database": "sources/core/data/de.sqlite3",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
-    "retriever": "retrieval/retriever.ts"
+    "retriever": "sources/core/retrieval/retriever.ts"
   },
   "rag": {
     "schemaVersion": 1,

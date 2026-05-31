@@ -2,20 +2,20 @@
   "code": "en",
   "displayName": {
     "en": "English",
-    "es": "Inglés",
+    "es": "Ingl\u00e9s",
     "fr": "Anglais",
     "de": "Englisch",
-    "zh": "英语",
-    "ja": "英語"
+    "zh": "\u82f1\u8bed",
+    "ja": "\u82f1\u8a9e"
   },
   "voiceLanguageCode": "en-US",
-  "contentVersion": "0.1.0",
+  "contentVersion": "0.2.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "data/english.sqlite3",
+    "database": "sources/core/data/english.sqlite3",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
-    "retriever": "retrieval/retriever.ts"
+    "retriever": "sources/core/retrieval/retriever.ts"
   },
   "rag": {
     "schemaVersion": 1,
