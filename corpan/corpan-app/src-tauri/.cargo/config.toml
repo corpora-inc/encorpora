@@ -76,6 +76,16 @@ rustflags = [
 # iOS device build still uses the `SDKROOT` that xcodebuild injects.
 # ───────────────────────────────────────────────────────────────────────────
 [env]
+# --- Android NDK location for build scripts (llama-cpp-sys-2's build.rs panics
+#     "Android NDK not found" unless one of these is set; it does NOT read the
+#     shell's NDK_HOME). Point at the SAME NDK 28.2 the linker/CC pins below use
+#     and that gradle's ndkVersion pins. Non-forced, so a real shell env var
+#     still wins (e.g. CI). Machine-specific like the rest of this file. ---
+ANDROID_NDK_ROOT = "/Users/skyl/Android/ndk/28.2.13676358"
+ANDROID_NDK_HOME = "/Users/skyl/Android/ndk/28.2.13676358"
+ANDROID_NDK = "/Users/skyl/Android/ndk/28.2.13676358"
+NDK_ROOT = "/Users/skyl/Android/ndk/28.2.13676358"
+
 # --- Apple: force Apple Clang (the /usr/bin/* shims dispatch to the active Xcode) ---
 CC_aarch64-apple-ios = "/usr/bin/clang"
 CXX_aarch64-apple-ios = "/usr/bin/clang++"
