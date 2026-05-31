@@ -16,8 +16,41 @@
  * a self-contained bundle the chat UI uses for retrieval + prompts + voice.
  */
 
+import { RETRIEVERS } from "./retrievers"
+
 // Minimal slice of @corpan/sdk's HostApi that this pack actually uses.
 // Inlined to keep the pack a leaf build with no workspace coupling.
+export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: string }
+export type LlmChatHandlers = {
+  onToken: (token: string) => void
+  onDone: (full: string, stats?: { totalTokens: number; elapsedMs: number }) => void
+  onError: (error: string, code?: string) => void
+}
+export type LlmInstallProgress = {
+  stage: string
+  progress: number
+  total: number
+  message: string
+}
+
+export type LlmApi = {
+  status: () => Promise<{ loaded: boolean; modelId?: string | null; backend?: string | null }>
+  isInstalled: (packId: string) => Promise<boolean>
+  install: (
+    args: { packId: string; url: string; sha256?: string },
+    onProgress?: (p: LlmInstallProgress) => void
+  ) => Promise<void>
+  load: (args: { modelPackId: string; gpuLayers?: number; contextSize?: number }) => Promise<void>
+  unload: () => Promise<void>
+  chat: (
+    args: {
+      messages: LlmChatMessage[]
+      options?: { temperature?: number; topP?: number; repeatPenalty?: number; maxTokens?: number; stop?: string[] }
+    },
+    handlers: LlmChatHandlers
+  ) => Promise<{ sessionId: string; cancel: () => Promise<void> }>
+}
+
 export type HostApi = {
   speak: (locale: string, text: string) => Promise<void>
   stopSpeech?: () => void
@@ -27,6 +60,19 @@ export type HostApi = {
     dbName: string
     packId: string
   }) => Promise<{ columns: string[]; rows: unknown[][] }>
+  /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
+  llm?: LlmApi
+  /**
+   * Download a module ZIP and extract it into the pack's on-disk dir under
+   * `subPath`, writing the pack manifest if absent. Used to deliver per-language
+   * sqlite + assets so `queryPackDb` (on-disk only) can ground retrieval.
+   */
+  installModuleZip?: (
+    args: { packId: string; subPath: string; url: string; sha256?: string; packManifest?: string },
+    onProgress?: (p: LlmInstallProgress) => void
+  ) => Promise<void>
+  /** Whether a file at `relPath` exists inside the pack's on-disk dir. */
+  packFileExists?: (packId: string, relPath: string) => Promise<boolean>
   stt?: {
     prepare?: (args: { model: string }) => Promise<void>
     startSession?: (args: { sessionId: string; language: string; expectedText: string }) => Promise<void>
@@ -90,7 +136,7 @@ export type LanguageManagerOptions = {
   /** Returns whether the module ZIP for `code` is already downloaded + extracted. */
   isInstalled: (code: string) => Promise<boolean>
   /** Trigger module download + verify + extract. Throws on sha mismatch. */
-  install: (entry: LanguageRegistryEntry) => Promise<void>
+  install: (entry: LanguageRegistryEntry, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
 }
 
 export class LanguageManager {
@@ -113,18 +159,16 @@ export class LanguageManager {
     ).then((arr) => arr.filter((x): x is string => x !== null))
   }
 
-  async ensureInstalled(code: string, onProgress?: (pct: number) => void): Promise<void> {
+  async ensureInstalled(code: string, onProgress?: (p: LlmInstallProgress) => void): Promise<void> {
     const entry = this.opts.registry.find((e) => e.code === code)
     if (!entry) throw new Error(`Unknown language: ${code}`)
     if (await this.opts.isInstalled(code)) return
-    onProgress?.(0)
-    await this.opts.install(entry)
-    onProgress?.(100)
+    await this.opts.install(entry, onProgress)
   }
 
-  async activate(code: string): Promise<LanguageRuntime> {
+  async activate(code: string, onProgress?: (p: LlmInstallProgress) => void): Promise<LanguageRuntime> {
     if (this.active?.code === code) return this.active
-    await this.ensureInstalled(code)
+    await this.ensureInstalled(code, onProgress)
 
     const moduleJson = await this.opts.loadModuleFile(code, "module.json")
     const module: LanguageModule = JSON.parse(moduleJson)
@@ -183,9 +227,11 @@ export class LanguageManager {
   }
 
   /**
-   * Lazily import the per-language retriever. The polish machine will wire this
-   * to the bundler — each language module ships a precompiled retriever.js
-   * alongside the source, and this loader pulls the precompiled one.
+   * Resolve the per-language retriever from the statically-bundled registry
+   * (see `retrievers.ts`). A runtime `import()` cannot work in the IIFE bundle —
+   * no runtime module graph, uncompiled TS source, and the specifier resolves to
+   * the host's game-proxy origin (→ 404). The retriever is code, not content;
+   * only the sqlite + prompts download lazily.
    *
    * Shape contract: every language's retriever exports:
    *   - retrieve(text, queryFn): Promise<RetrievalResult>
@@ -195,9 +241,9 @@ export class LanguageManager {
     retrieve: (text: string, queryFn: QueryFn) => Promise<RetrievalResult>
     resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
   }> {
-    // Module-relative path; resolved by the pack's bundler at build time.
-    // The actual import path is rewritten by the build tool per language.
-    return import(/* @vite-ignore */ `../languages/${code}/retrieval/retriever`)
+    const mod = RETRIEVERS[code]
+    if (!mod) throw new Error(`No bundled retriever for language: ${code}`)
+    return mod
   }
 }
 

@@ -1175,6 +1175,35 @@ async fn content_packs_install_from_url(
 }
 
 #[command]
+async fn content_packs_install_module(
+    app: AppHandle,
+    pack_id: String,
+    sub_path: String,
+    download_url: String,
+    expected_sha256: Option<String>,
+    pack_manifest: Option<String>,
+) -> Result<(), String> {
+    content_packs::install_module(
+        &app,
+        pack_id,
+        sub_path,
+        download_url,
+        expected_sha256,
+        pack_manifest,
+    )
+    .await
+}
+
+#[command]
+fn content_packs_module_file_exists(
+    app: AppHandle,
+    pack_id: String,
+    rel_path: String,
+) -> Result<bool, String> {
+    content_packs::module_file_exists(&app, pack_id, rel_path)
+}
+
+#[command]
 async fn content_packs_fetch_text(app: AppHandle, url: String) -> Result<String, String> {
     content_packs::fetch_text(&app, url).await
 }
@@ -1284,6 +1313,8 @@ pub fn run() {
             search_entries_by_translation_text_count,
             content_packs_query_db,
             content_packs_install_from_url,
+            content_packs_install_module,
+            content_packs_module_file_exists,
             content_packs_fetch_text,
             content_packs_fetch_bytes,
             content_packs_list_installed,
@@ -1298,6 +1329,7 @@ pub fn run() {
         .plugin(tauri_plugin_iap::init())
         .plugin(tauri_plugin_subscriptions::init())
         .plugin(tauri_plugin_stt::init())
+        .plugin(tauri_plugin_corpan_llm::init())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let data_dir = app
