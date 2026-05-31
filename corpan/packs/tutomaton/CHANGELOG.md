@@ -19,13 +19,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - LLM access goes through `hostApi.llm` (status/load/chat/unload) instead of
   `window.__TAURI__` (which is not exposed to pack webviews).
 - `manifest.json` declares a `databases` map for the per-language sqlite corpora.
-- Tutor personas (Spanish + Mandarin) rewritten to be chill, helpful tutors rather
-  than rigid drill machines: warm "friend who knows the language" voice that fulfills
-  requests (songs, poems, stories, jokes, roleplay, recommendations) *in the target
-  language*, corrects lightly only when it helps, and weaves in recently practiced
-  vocab/grammar without turning it into a lesson. Previously a request like "write me
-  a Mexican song" was declined by an over-broad "that's not my thing" rule. Now only
-  genuinely off-domain asks (code, math, investing, partisan politics) are lightly
-  deflected — and when in doubt, the tutor helps. Hard guardrails kept: always reply
-  in the target language, understand any input language, no emoji. A short
+- Tutor personas (Spanish + Mandarin) rewritten around FLEXIBILITY: a practice
+  partner that follows the user wherever they go and **matches their verbosity** —
+  a one-word reply to a one-word message, a full lesson when asked, concise by
+  default (small bites, not a lecture every turn). Turns any topic the user brings
+  into natural language practice without announcing it; corrects lightly only when
+  it helps; gives the user what they ask for and only deflects truly off-domain
+  asks (code, math, investing) in a single line. This replaces the earlier
+  "chill/creative" wording, which over-fit toward songs/jokes (the model began
+  steering every reply to them). Hard guardrails kept: always reply in the target
+  language, understand any input language, no emoji. A short
   parenthetical English gloss is now allowed when a learner truly needs it.
