@@ -57,11 +57,12 @@ Rules:
 - **Future sources:** separate packs on the CDN, installed by the user, discovered at
   runtime (§5). Their retriever ships **precompiled to JS** in the pack (the runtime can't
   compile TS); the source manifest's `files.retriever` points at the built artifact.
-- es/zh today (the single-module shape) get migrated INTO this shape: their current
-  `languages/<code>/{data,retrieval}` becomes `languages/<code>/sources/core/…` with a
-  generated source manifest. Backwards-compat shim: if no `sources/` dir exists, the
-  registry treats the legacy `languages/<code>/module.json` as a single authoritative core
-  source (so we can migrate incrementally without breaking the others).
+- es/zh today (the single-module shape) get **migrated outright** INTO this shape: their
+  current `languages/<code>/{data,retrieval}` becomes `languages/<code>/sources/core/…`
+  with a source manifest. **No legacy/compat shim** — we are pre-initial-release and the
+  only users, so the registry assumes the `sources/<id>/` shape everywhere and we convert
+  every existing language in the same pass. Don't accumulate tech debt for a back-compat
+  case that has no real users.
 
 ## 3. Retriever module contract (THE lock-in — both agents build to this)
 
@@ -133,8 +134,8 @@ blocks; first-by-priority." Keep it boring and correct.
 - Native: `discoverPacksByType` host API + manifest fields (`packType`, `tutomatonLanguage`,
   `authoritative`, `categories`, `priority`).
 - Pack: SourceRegistry replacing the single-module path; v1 merge (§4); per-language enable
-  storage (no UI yet); legacy single-module shim (§2); built-in sources migrated to the
-  `sources/<id>/` shape with generated source manifests.
+  storage (no UI yet); ALL built-in languages migrated outright to the `sources/<id>/`
+  shape (no legacy shim — pre-release, no users to keep compatible).
 
 **Later (pack-only or pure catalog content, no native release):**
 - New source packs (slang/dialect/medical/persona) ship to the catalog; users install;
@@ -147,8 +148,9 @@ blocks; first-by-priority." Keep it boring and correct.
 - [ ] Backend: author Arabic (and others) as `sources/<id>/` with this manifest + the
       object-row retriever contract (§3). Provide id, sha, db filename per source for the
       manifest + catalog.
-- [ ] Frontend (me): build SourceRegistry + §4 merge + prefs storage + legacy shim; add the
-      `discoverPacksByType` hostApi wrapper once the native command exists.
+- [ ] Frontend (me): build SourceRegistry + §4 merge + prefs storage; migrate every built-in
+      language to `sources/<id>/`; add the `discoverPacksByType` hostApi wrapper once the
+      native command exists.
 - [ ] Native: `packType`/source fields in `read_manifest_info`; `discoverPacksByType`
       command + hostApi method. (Frontend can stub the hostApi method to "[]" until native
       lands, so the pack works with built-ins only in the meantime.)
