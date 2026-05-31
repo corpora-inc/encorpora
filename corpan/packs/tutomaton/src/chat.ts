@@ -21,6 +21,7 @@
 import "./chat.css"
 import { LanguageManager, type HostApi, type LanguageRegistryEntry, type LanguageRuntime } from "./languageManager"
 import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
+import { t as i18n, type I18nKey } from "./i18n"
 
 // Minimal slice of @corpan/sdk's ContentPackModule that we actually use.
 // The host passes initialState.stackConfig — the user's active stack, where
@@ -222,6 +223,10 @@ const PackModule: ContentPackModule = {
     const stackLangs: string[] = Array.isArray(initialState?.stackConfig?.languages)
       ? initialState!.stackConfig!.languages!.filter((c) => typeof c === "string")
       : []
+    // Chrome is localized into the user's NATIVE language (stack languages[0]),
+    // falling back to the device locale, then English. `t()` localizes a key.
+    const uiLang = stackLangs[0] || (navigator.language || "en").split("-")[0]
+    const t = (key: I18nKey, params?: Record<string, string>) => i18n(key, uiLang, params)
     const state: State = {
       messages: [],
       // Speaker (TTS) defaults ON — the tutor speaks its replies; the control
@@ -317,10 +322,10 @@ const PackModule: ContentPackModule = {
              host App.tsx listens for. Speaker-mute + new-conversation live in the
              bottom-right FAB cluster, out of the bar. -->
         <header class="lt-header">
-          <button class="lt-back" aria-label="Back to home" title="Home">${ICON.back}</button>
+          <button class="lt-back" aria-label="${t("home")}" title="${t("home")}">${ICON.back}</button>
           <span class="lt-brand-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></span>
           <span class="lt-brand-name">Tutomaton</span>
-          <button class="lt-lang-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Switch language">
+          <button class="lt-lang-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="${t("switchLanguage")}">
             <span class="lt-lt-flag" aria-hidden="true"></span>
             <span class="lt-lt-name"></span>
             <span class="lt-lt-chev" aria-hidden="true">
@@ -329,22 +334,22 @@ const PackModule: ContentPackModule = {
           </button>
         </header>
 
-        <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="Choose a language">
+        <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="${t("chooseTutor")}">
           <div class="lt-langsheet-scrim"></div>
           <div class="lt-langsheet-panel" role="document">
             <div class="lt-langsheet-grip-zone" aria-hidden="true"><div class="lt-langsheet-grip"></div></div>
             <header class="lt-langsheet-head">
-              <h2 class="lt-langsheet-title">Choose a tutor</h2>
-              <button class="lt-langsheet-close" aria-label="Close">
+              <h2 class="lt-langsheet-title">${t("chooseTutor")}</h2>
+              <button class="lt-langsheet-close" aria-label="${t("close")}">
                 <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
               </button>
             </header>
             <div class="lt-langsheet-search">
               <span class="lt-langsheet-search-icon" aria-hidden="true">${ICON.search}</span>
               <input class="lt-langsheet-input" type="text" inputmode="search" autocomplete="off"
-                     placeholder="Search languages…" aria-label="Search languages" />
+                     placeholder="${t("searchLanguages")}" aria-label="${t("searchLanguages")}" />
             </div>
-            <div class="lt-langsheet-list" role="listbox" aria-label="Languages"></div>
+            <div class="lt-langsheet-list" role="listbox" aria-label="${t("languages")}"></div>
           </div>
         </div>
 
@@ -353,8 +358,8 @@ const PackModule: ContentPackModule = {
         <!-- Floating action cluster: translucent, out of the way, easy to reach.
              Mute toggle (TTS, defaults on) + new-conversation. -->
         <div class="lt-fabs">
-          <button class="lt-fab lt-tts active" aria-label="Mute voice replies" aria-pressed="true" title="Voice replies">${ICON.speaker}</button>
-          <button class="lt-fab lt-clear" aria-label="New conversation" title="New conversation">${ICON.refresh}</button>
+          <button class="lt-fab lt-tts active" aria-label="${t("muteVoice")}" aria-pressed="true" title="${t("voiceReplies")}">${ICON.speaker}</button>
+          <button class="lt-fab lt-clear" aria-label="${t("newConversation")}" title="${t("newConversation")}">${ICON.refresh}</button>
         </div>
 
         <footer class="lt-input">
@@ -362,9 +367,9 @@ const PackModule: ContentPackModule = {
                ~50 languages, no model to manage). The text field accepts it
                directly; we don't ship a custom STT mic. -->
           <div class="lt-field">
-            <textarea class="lt-text" rows="1" dir="auto" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
+            <textarea class="lt-text" rows="1" dir="auto" placeholder="${t("askAnything")}" autocomplete="off"></textarea>
           </div>
-          <button class="lt-send" aria-label="Send" disabled>
+          <button class="lt-send" aria-label="${t("send")}" disabled>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
           </button>
         </footer>
@@ -372,14 +377,14 @@ const PackModule: ContentPackModule = {
         <div class="lt-setup" hidden>
           <div class="lt-setup-card">
             <div class="lt-setup-glyph" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
-            <h2 class="lt-setup-title">Set up your tutor</h2>
+            <h2 class="lt-setup-title">${t("setUpTutor")}</h2>
             <p class="lt-setup-body"></p>
             <div class="lt-setup-progress" hidden>
               <div class="lt-setup-bar"><div class="lt-setup-fill"></div></div>
               <div class="lt-setup-pct"></div>
             </div>
             <button class="lt-setup-action"></button>
-            <p class="lt-setup-note">Runs entirely on your device. No account, nothing sent to the cloud.</p>
+            <p class="lt-setup-note">${t("runsOnDevice")}</p>
           </div>
         </div>
       </div>
@@ -404,6 +409,12 @@ const PackModule: ContentPackModule = {
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
     const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
 
+    // Localize the CSS pseudo-element labels (copy affordance) — pseudo-elements
+    // can't call t(), so feed them via CSS custom properties (quoted strings).
+    const $root = container.querySelector<HTMLElement>(".lt-root")!
+    $root.style.setProperty("--lt-hold-label", JSON.stringify(t("releaseToCopy")))
+    $root.style.setProperty("--lt-copied-label", JSON.stringify(t("copied")))
+
     // ---------- model setup gate ----------
     let modelReady = false
     function renderModelPhase(phase: ModelPhase) {
@@ -422,15 +433,16 @@ const PackModule: ContentPackModule = {
 
       switch (phase.kind) {
         case "checking":
-          $setupBody.textContent = "Checking your device…"
+          $setupBody.textContent = t("checkingDevice")
           break
-        case "needs-install":
-          $setupBody.textContent =
-            `Tutomaton runs a private AI tutor (${BASE_MODEL.displayName}, ~${(phase.sizeMb / 1024).toFixed(1)} GB) entirely on your device. Download it once — then learn anytime, even offline.`
-          $setupAction.textContent = `Download tutor · ${(phase.sizeMb / 1024).toFixed(1)} GB`
+        case "needs-install": {
+          const gb = (phase.sizeMb / 1024).toFixed(1)
+          $setupBody.textContent = t("needsInstall", { model: BASE_MODEL.displayName, size: gb })
+          $setupAction.textContent = t("downloadTutor", { size: gb })
           break
+        }
         case "downloading":
-          $setupBody.textContent = "Downloading your tutor…"
+          $setupBody.textContent = t("downloadingTutor")
           $setupFill.style.width = `${phase.pct}%`
           $setupPct.textContent = `${phase.downloadedMb} / ${phase.totalMb} MB · ${phase.pct}%`
           break
@@ -438,13 +450,13 @@ const PackModule: ContentPackModule = {
           $setupBody.textContent = phase.message
           break
         case "loading":
-          $setupBody.textContent = "Waking up your tutor…"
+          $setupBody.textContent = t("wakingTutor")
           break
         case "error":
           $setupBody.textContent = phase.message
           $setupAction.hidden = !phase.canRetry
           $setupAction.disabled = false
-          $setupAction.textContent = "Try again"
+          $setupAction.textContent = t("tryAgain")
           break
       }
     }
@@ -561,7 +573,7 @@ const PackModule: ContentPackModule = {
       if (matched.length === 0) {
         const empty = document.createElement("div")
         empty.className = "lt-langsheet-empty"
-        empty.textContent = "No languages match your search."
+        empty.textContent = t("noLanguagesMatch")
         $langSheetList.appendChild(empty)
         return
       }
@@ -578,9 +590,9 @@ const PackModule: ContentPackModule = {
       // searching, and avoids "empty section" awkwardness with few languages).
       const showGroups = !q && yours.length > 0 && others.length > 0
       if (showGroups) {
-        $langSheetList.appendChild(sectionHeader("Your languages"))
+        $langSheetList.appendChild(sectionHeader(t("yourLanguages")))
         for (const e of yours) $langSheetList.appendChild(makeLangCard(e, active))
-        $langSheetList.appendChild(sectionHeader("All languages"))
+        $langSheetList.appendChild(sectionHeader(t("allLanguagesSection")))
         for (const e of others) $langSheetList.appendChild(makeLangCard(e, active))
       } else {
         // Installed first so the active tutor sits at the top.
@@ -612,9 +624,9 @@ const PackModule: ContentPackModule = {
       wrap.className = "lt-welcome"
       wrap.innerHTML = `
         <div class="lt-welcome-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
-        <h2 class="lt-welcome-title" dir="auto">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
-        <p class="lt-welcome-sub">Ask anything — translations, grammar, vocab, or just chat. It all runs on your device.</p>
-        <div class="lt-welcome-langs" aria-label="Your languages"></div>
+        <h2 class="lt-welcome-title" dir="auto">${langName ? t("practice", { lang: nativeName(langName) }) : t("yourPrivateTutor")}</h2>
+        <p class="lt-welcome-sub">${t("welcomeSub")}</p>
+        <div class="lt-welcome-langs" aria-label="${t("yourLanguages")}"></div>
         <div class="lt-chips"></div>
       `
 
@@ -644,7 +656,7 @@ const PackModule: ContentPackModule = {
       const more = document.createElement("button")
       more.className = "lt-langpill lt-langpill-more"
       more.innerHTML =
-        `<span class="lt-langpill-name">${registry.length > featured.length ? "All languages" : "Browse languages"}</span>` +
+        `<span class="lt-langpill-name">${registry.length > featured.length ? t("allLanguages") : t("browseLanguages")}</span>` +
         `<span class="lt-langpill-chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg></span>`
       more.addEventListener("click", openLangSheet)
       langRow.appendChild(more)
@@ -686,7 +698,7 @@ const PackModule: ContentPackModule = {
       // into a translator). Pointer-based so it works on touch + desktop.
       if (role === "assistant") {
         wrap.classList.add("lt-speakable")
-        body.title = "Tap to hear · hold to copy"
+        body.title = t("tapToHearHoldToCopy")
         const LONG_MS = 450
         let timer: number | null = null
         let longReady = false
@@ -745,8 +757,8 @@ const PackModule: ContentPackModule = {
       wrap.className = "lt-welcome"
       wrap.innerHTML = `
         <div class="lt-welcome-mark" aria-hidden="true">📚</div>
-        <h2 class="lt-welcome-title">Adding ${name}</h2>
-        <p class="lt-welcome-sub lt-dl-msg">Downloading lessons, vocabulary & grammar…</p>
+        <h2 class="lt-welcome-title">${t("adding", { lang: name })}</h2>
+        <p class="lt-welcome-sub lt-dl-msg">${t("downloadingLessons")}</p>
         <div class="lt-setup-progress" style="max-width:360px">
           <div class="lt-setup-bar"><div class="lt-setup-fill lt-dl-fill"></div></div>
           <div class="lt-setup-pct lt-dl-pct"></div>
@@ -794,7 +806,7 @@ const PackModule: ContentPackModule = {
         renderLangs()
         renderWelcome()
       } catch (e) {
-        systemNote(`Couldn't load ${name}: ${e instanceof Error ? e.message : String(e)}`)
+        systemNote(t("couldntLoad", { lang: name, error: e instanceof Error ? e.message : String(e) }))
       }
     }
 
@@ -920,7 +932,7 @@ const PackModule: ContentPackModule = {
       if (hostApi.copyText) {
         hostApi.copyText(text).then(flash).catch((e) => {
           console.error("[tutomaton] hostApi.copyText failed:", e)
-          systemNote("Couldn't copy to the clipboard.")
+          systemNote(t("couldntCopy"))
         })
         return
       }
@@ -942,7 +954,7 @@ const PackModule: ContentPackModule = {
       }
       navigator.clipboard?.writeText(text).then(flash).catch((e) => {
         console.error("[tutomaton] clipboard write failed:", e)
-        systemNote("Couldn't copy to the clipboard.")
+        systemNote(t("couldntCopy"))
       })
     }
 
@@ -974,7 +986,7 @@ const PackModule: ContentPackModule = {
       $ttsBtn.classList.toggle("active", state.ttsEnabled)
       $ttsBtn.innerHTML = state.ttsEnabled ? ICON.speaker : ICON.speakerMuted
       $ttsBtn.setAttribute("aria-pressed", state.ttsEnabled ? "true" : "false")
-      $ttsBtn.setAttribute("aria-label", state.ttsEnabled ? "Mute voice replies" : "Unmute voice replies")
+      $ttsBtn.setAttribute("aria-label", state.ttsEnabled ? t("muteVoice") : t("unmuteVoice"))
     }
     syncTtsBtn()
     $ttsBtn.addEventListener("click", () => {
