@@ -141,7 +141,7 @@ impl LlmState {
             let _ = f.read_exact(&mut magic);
         }
         let magic_ok = &magic == b"GGUF";
-        log::info!(
+        eprintln!(
             "[corpan-llm] gguf preflight size={} magic_ok={} ({:?})",
             size, magic_ok, magic
         );
@@ -244,7 +244,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
     let backend = match LlamaBackend::init() {
         Ok(b) => b,
         Err(e) => {
-            log::error!("[corpan-llm] backend init failed: {e}");
+            eprintln!("[corpan-llm] backend init failed: {e}");
             return;
         }
     };
@@ -266,12 +266,12 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 // returns null from BOTH the GPU and CPU paths. This is exactly
                 // the pack exit→re-enter reload case: drop first, then load.
                 if model.is_some() {
-                    log::info!("[corpan-llm] dropping previously-loaded model before reload");
+                    eprintln!("[corpan-llm] dropping previously-loaded model before reload");
                     model = None;
                 }
                 let avail = device_memory_mb();
                 let load_start = std::time::Instant::now();
-                log::info!(
+                eprintln!(
                     "[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB perf_cores={}",
                     perf_core_count()
                 );
@@ -286,7 +286,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 let outcome: Result<(LlamaModel, String)> = match load_with(want_gpu) {
                     Ok(m) => Ok((m, backend_name())),
                     Err(e_gpu) if want_gpu > 0 => {
-                        log::warn!("[corpan-llm] GPU load failed ({e_gpu}); retrying CPU+mmap");
+                        eprintln!("[corpan-llm] GPU load failed ({e_gpu}); retrying CPU+mmap");
                         match load_with(0) {
                             Ok(m) => Ok((m, "cpu".to_string())),
                             Err(e_cpu) => Err(Error::LlamaCpp(format!(
@@ -303,14 +303,14 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 match outcome {
                     Ok((m, backend_str)) => {
                         model = Some(m);
-                        log::info!(
+                        eprintln!(
                             "[corpan-llm] loaded {model_id} ({backend_str}) in {}ms",
                             load_start.elapsed().as_millis()
                         );
                         let _ = resp.send(Ok(backend_str));
                     }
                     Err(e) => {
-                        log::error!("[corpan-llm] {e}");
+                        eprintln!("[corpan-llm] {e}");
                         let _ = resp.send(Err(e));
                     }
                 }
@@ -412,7 +412,7 @@ fn run_chat(
     // PERF: prefill (prompt ingestion) is the suspected long pole on Android CPU.
     // Log it separately from decode so prefill tok/s vs decode tok/s is visible.
     let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
-    log::info!(
+    eprintln!(
         "[corpan-llm] PERF prefill: {n_prompt} tok in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx}",
         prefill_ms,
         (n_prompt as f64) * 1000.0 / prefill_ms,
@@ -466,7 +466,7 @@ fn run_chat(
 
     // PERF: decode (token generation) throughput, separate from prefill above.
     let decode_ms = start.elapsed().as_millis().max(1) as f64;
-    log::info!(
+    eprintln!(
         "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
         decode_ms,
         (produced as f64) * 1000.0 / decode_ms,
