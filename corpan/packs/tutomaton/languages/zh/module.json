@@ -2,10 +2,10 @@
   "code": "zh",
   "displayName": {
     "en": "Mandarin Chinese",
-    "zh": "普通话"
+    "zh": "\u666e\u901a\u8bdd"
   },
   "voiceLanguageCode": "zh-CN",
-  "contentVersion": "0.1.0",
+  "contentVersion": "0.2.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
     "database": "data/mandarin.sqlite3",

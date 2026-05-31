@@ -141,7 +141,7 @@
   /* Drop clear of the header into the conversation area, vertically level with
      the first (right-side) user message. Header = top inset + ~56px brand row +
      border; the log's first bubble starts ~18px below that. */
-  top: calc(max(var(--lt-safe-top), 44px) + 78px);
+  top: calc(max(var(--lt-safe-top), 44px) + 64px);
   z-index: 10;
   display: flex;
   flex-direction: row;
@@ -150,7 +150,7 @@
 .lt-fab {
   width: 38px;
   height: 38px;
-  border-radius: 999px;
+  border-radius: 12px;
   border: 1px solid var(--lt-border);
   background: color-mix(in srgb, var(--lt-bg-elev) 72%, transparent);
   color: var(--lt-muted);

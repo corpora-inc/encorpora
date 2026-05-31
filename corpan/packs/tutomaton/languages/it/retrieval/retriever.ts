@@ -1,5 +1,5 @@
 /**
- * Retriever for {LANG_NAME}.
+ * Retriever for Italian.
  *
  * Pure on-device pattern-match + sqlite FTS5. Returns one of:
  *   { kind: "theme",       reference: "..." }   → pack short-circuits, no LLM call
@@ -45,9 +45,9 @@ export type RagResult = {
 // ============================================================
 
 const VOCAB_PATTERNS: RegExp[] = [
-  /\bhow\s+do\s+you\s+say\s+["'']?(.+?)["'']?\s+in\s+{LANG_NAME}\b/i,
-  /\bwhat['']s?\s+the\s+{LANG_NAME}\s+(?:word|term)\s+for\s+["'']?(.+?)["'']?[?.]?$/i,
-  /\btranslate\s+["'']?(.+?)["'']?(?:\s+to\s+{LANG_NAME})?[?.]?$/i,
+  /\bhow\s+do\s+you\s+say\s+["'']?(.+?)["'']?\s+in\s+Italian\b/i,
+  /\bwhat['']s?\s+the\s+Italian\s+(?:word|term)\s+for\s+["'']?(.+?)["'']?[?.]?$/i,
+  /\btranslate\s+["'']?(.+?)["'']?(?:\s+to\s+Italian)?[?.]?$/i,
   /\bwhat\s+does\s+["'']?(.+?)["'']?\s+mean\b/i,
 ]
 
@@ -141,8 +141,8 @@ async function lookupWord(query: string, q: QueryFn): Promise<{ lemma: string; p
   // Exact match first
   let r = await q("SELECT lemma, pos, ipa, glosses_en FROM words WHERE lemma = ? LIMIT 1", [trimmed])
   if (r.rows.length) {
-    const row = r.rows[0] as unknown[]
-    return { lemma: row[0] as string, pos: row[1] as string, ipa: row[2] as string, glosses_en: row[3] as string }
+    const row = r.rows[0] as Record<string, unknown>
+    return { lemma: row.lemma as string, pos: row.pos as string, ipa: row.ipa as string, glosses_en: row.glosses_en as string }
   }
   // Gloss search (boundary-first to avoid "cat" matching "category")
   r = await q(
@@ -151,8 +151,8 @@ async function lookupWord(query: string, q: QueryFn): Promise<{ lemma: string; p
     [`${trimmed}; %`, `%; ${trimmed}; %`, `%; ${trimmed}`],
   )
   if (r.rows.length) {
-    const row = r.rows[0] as unknown[]
-    return { lemma: row[0] as string, pos: row[1] as string, ipa: row[2] as string, glosses_en: row[3] as string }
+    const row = r.rows[0] as Record<string, unknown>
+    return { lemma: row.lemma as string, pos: row.pos as string, ipa: row.ipa as string, glosses_en: row.glosses_en as string }
   }
   return null
 }
@@ -176,8 +176,8 @@ async function lookupL1Errors(msg: string, l1Code: string, q: QueryFn): Promise<
       "example_wrong, example_right, severity FROM l1_errors WHERE l1_code = ?",
     [l1Code],
   )
-  for (const row of r.rows as unknown[][]) {
-    const pattern = row[0] as string
+  for (const row of r.rows as Record<string, unknown>[]) {
+    const pattern = row.error_pattern as string
     let re: RegExp
     try {
       re = new RegExp(pattern, "i")
@@ -186,12 +186,12 @@ async function lookupL1Errors(msg: string, l1Code: string, q: QueryFn): Promise<
     }
     if (re.test(msg)) {
       return {
-        correct_form: row[1] as string,
-        l1_explanation: (row[3] as string) || "",
-        en_explanation: row[4] as string,
-        example_wrong: (row[5] as string) || "",
-        example_right: (row[6] as string) || "",
-        severity: (row[7] as string) || "med",
+        correct_form: row.correct_form as string,
+        l1_explanation: (row.l1_explanation as string) || "",
+        en_explanation: row.en_explanation as string,
+        example_wrong: (row.example_wrong as string) || "",
+        example_right: (row.example_right as string) || "",
+        severity: (row.severity as string) || "med",
       }
     }
   }
@@ -223,12 +223,12 @@ async function lookupLessonByTopic(topic: string, q: QueryFn): Promise<{ topic: 
     [topic],
   )
   if (!r.rows.length) return null
-  const row = r.rows[0] as unknown[]
+  const row = r.rows[0] as Record<string, unknown>
   return {
-    topic: row[0] as string,
-    title: row[1] as string,
-    body_markdown: row[2] as string,
-    l1_notes_json: (row[3] as string) || "",
+    topic: row.topic as string,
+    title: row.title as string,
+    body_markdown: row.body_markdown as string,
+    l1_notes_json: (row.l1_notes_json as string) || "",
   }
 }
 
@@ -242,8 +242,8 @@ async function lookupLessonFts(query: string, q: QueryFn): Promise<{ title: stri
       [terms],
     )
     if (!r.rows.length) return null
-    const row = r.rows[0] as unknown[]
-    return { title: row[0] as string, body_markdown: row[1] as string }
+    const row = r.rows[0] as Record<string, unknown>
+    return { title: row.title as string, body_markdown: row.body_markdown as string }
   } catch {
     return null
   }
@@ -255,9 +255,9 @@ async function lookupTheme(themeKey: string, q: QueryFn): Promise<Array<{ target
     [themeKey],
   )
   return r.rows.map((row) => ({
-    target_word: (row as unknown[])[0] as string,
-    ipa: ((row as unknown[])[1] as string) || "",
-    l1_translations_json: ((row as unknown[])[2] as string) || "",
+    target_word: row.target_word as string,
+    ipa: (row.ipa as string) || "",
+    l1_translations_json: (row.l1_translations_json as string) || "",
   }))
 }
 
@@ -311,7 +311,7 @@ export async function retrieve(userMessage: string, queryDb: QueryFn, l1Code: st
   if (!msg) return { reference: null, kind: null, log }
 
   // 1. L1-error pattern (highest priority — catch mistakes before answering)
-  if (l1Code && l1Code !== "{LANG_CODE}") {
+  if (l1Code && l1Code !== "it") {
     const err = await lookupL1Errors(msg, l1Code, queryDb)
     if (err) {
       log.push(`l1_error: ${l1Code}`)
@@ -352,7 +352,7 @@ export async function retrieve(userMessage: string, queryDb: QueryFn, l1Code: st
         const kind: RagKind = DIFF_PATTERNS.some((p) => p.test(msg)) ? "lesson_diff" : "lesson"
         // Attach L1-specific notes if relevant
         let body = `# ${lesson.title}\n\n${lesson.body_markdown}`
-        if (lesson.l1_notes_json && l1Code !== "{LANG_CODE}") {
+        if (lesson.l1_notes_json && l1Code !== "it") {
           try {
             const notes = JSON.parse(lesson.l1_notes_json)
             if (notes[l1Code]) {

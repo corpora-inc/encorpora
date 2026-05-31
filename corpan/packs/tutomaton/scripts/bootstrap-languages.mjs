@@ -38,6 +38,34 @@ const LANGS = [
     method: "rebuild",
     rebuildCmd: "python3 languages/zh/build_corpus.py",
   },
+  {
+    code: "en",
+    extractTo: "languages/en",
+    finalFile: "languages/en/data/english.sqlite3",
+    method: "rebuild",
+    rebuildCmd: "python3 languages/en/build_corpus.py",
+  },
+  {
+    code: "fr",
+    extractTo: "languages/fr",
+    finalFile: "languages/fr/data/fr.sqlite3",
+    method: "rebuild",
+    rebuildCmd: "python3 languages/fr/build_corpus.py",
+  },
+  {
+    code: "de",
+    extractTo: "languages/de",
+    finalFile: "languages/de/data/de.sqlite3",
+    method: "rebuild",
+    rebuildCmd: "python3 languages/de/build_corpus.py",
+  },
+  {
+    code: "ja",
+    extractTo: "languages/ja",
+    finalFile: "languages/ja/data/ja.sqlite3",
+    method: "rebuild",
+    rebuildCmd: "python3 languages/ja/build_corpus.py",
+  },
 ]
 
 async function fetchAndExtract(lang) {

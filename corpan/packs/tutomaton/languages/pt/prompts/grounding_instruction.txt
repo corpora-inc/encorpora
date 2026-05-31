@@ -1,4 +1,4 @@
-Below is reference content from your French corpus relevant to the user's message. Treat it as a book on your desk: **consult** it when composing your answer, **don't** paste it verbatim.
+Below is reference content from your Portuguese corpus relevant to the user's message. Treat it as a book on your desk: **consult** it when composing your answer, **don't** paste it verbatim.
 
 Rules:
 1. Compose in your own voice. Don't echo headers / markdown structure / XML tags.

@@ -1,19 +1,24 @@
 {
   "code": "en",
   "displayName": {
-    "en": "English"
+    "en": "English",
+    "es": "Inglés",
+    "fr": "Anglais",
+    "de": "Englisch",
+    "zh": "英语",
+    "ja": "英語"
   },
   "voiceLanguageCode": "en-US",
   "contentVersion": "0.1.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "",
+    "database": "data/english.sqlite3",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
-    "retriever": ""
+    "retriever": "retrieval/retriever.ts"
   },
   "rag": {
     "schemaVersion": 1,
-    "themeBypassEnabled": false
+    "themeBypassEnabled": true
   }
 }
