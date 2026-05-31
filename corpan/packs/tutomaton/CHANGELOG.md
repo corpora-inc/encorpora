@@ -5,6 +5,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- Premium UI/UX pass on the chrome (presentation only — engine untouched). New
+  top bar (left→right): a small orange pyramid brand mark (inline SVG, the only
+  orange in the UI) + "Tutomaton" wordmark that doubles as an explicit
+  exit-to-home button on the LEFT, an elegant language switcher, then a compact
+  controls cluster. The controls reserve right-edge clearance so they never
+  collide with the host GameModal's floating top-right close "X" (collision-fix
+  approach b: pack's own left-side Home affordance + clear right corner).
+- Emoji chrome icons replaced with clean inline lucide-style line SVGs
+  (speaker / speaker-muted, mic, new-conversation refresh, back chevron, search) —
+  no new dependency.
+- Voice replies (TTS) now default ON; the speaker control is a mute toggle that
+  swaps between the speaker and speaker-muted icon.
+- Mic is now always present inside the input bar (iMessage-style): type to reveal
+  the send arrow, or press-and-hold the in-field mic to talk. The separate
+  full-screen "voice mode" toggle is gone. Push-to-talk logic is unchanged
+  (pointer capture, 250 ms min-hold, recording/transcribing states); STT
+  `prepare()` is now called lazily on the first press, and `releaseAudio()` on
+  unmount is preserved.
+- Language switcher scales to ~50 languages: the sheet gained a search field and
+  "Your languages" / "All languages" grouping; the welcome screen shows an intro
+  picker (your languages as pills, plus an "All languages" expander into the
+  searchable sheet). Sheet grip is now a 44 px hit band with the canonical
+  44×5 bar.
+
 ### Fixed
 - Pack now loads and renders on device. Root causes resolved: per-language
   retrievers are statically bundled (`src/retrievers.ts`) instead of a runtime

@@ -45,21 +45,42 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-.lt-brand {
-  display: flex;
+/* Home button = orange pyramid mark + wordmark. The pack's explicit, left-side
+   exit-to-home affordance (the top-right corner is reserved for the host X). */
+.lt-home {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   flex: 0 0 auto;
+  padding: 6px 10px 6px 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--lt-fg);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
 }
+.lt-home:hover { background: rgba(255, 255, 255, 0.05); }
+.lt-home:active { transform: scale(0.97); }
 .lt-brand-mark {
-  color: var(--lt-accent-2);
-  font-size: 16px;
-  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 1px 6px rgba(245, 158, 11, 0.35));
 }
+.lt-brand-mark svg { display: block; }
 .lt-brand-name {
   font-weight: 650;
   letter-spacing: -0.01em;
 }
+/* a subtle back chevron that appears on hover/desktop — reinforces "this exits" */
+.lt-home-hint {
+  display: none;
+  place-items: center;
+  color: var(--lt-muted);
+  margin-left: -2px;
+}
+.lt-home:hover .lt-home-hint { display: inline-grid; }
 
 /* compact tutor switcher in the header — tucked away, never crowds the bar */
 .lt-lang-trigger {
@@ -102,21 +123,24 @@
   flex: 0 0 auto;
   display: flex;
   gap: 6px;
+  /* HOST-X CLEARANCE: the host floats its close "X" at right:12px / z-50 OVER
+     the pack. Reserve room so our controls never sit under it. */
+  margin-right: 44px;
 }
 .lt-icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 11px;
   border: 1px solid var(--lt-border);
   background: var(--lt-bg-elev);
-  color: var(--lt-fg);
-  font-size: 15px;
+  color: var(--lt-muted);
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
-.lt-icon:hover { border-color: #34384a; }
+.lt-icon svg { display: block; }
+.lt-icon:hover { border-color: #34384a; color: var(--lt-fg); }
 .lt-icon:active { transform: scale(0.94); }
 .lt-icon.active {
   background: var(--lt-accent);
@@ -225,6 +249,40 @@
 .lt-chip:hover { border-color: var(--lt-accent); background: rgba(59, 130, 246, 0.1); }
 .lt-chip:active { transform: scale(0.97); }
 
+/* intro language picker on the welcome screen — your languages, then "All …" */
+.lt-welcome-langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.lt-langpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-langpill:hover { border-color: #34384a; }
+.lt-langpill:active { transform: scale(0.97); }
+.lt-langpill.active {
+  border-color: var(--lt-accent);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.07));
+}
+.lt-langpill-flag { font-size: 18px; line-height: 1; }
+.lt-langpill-more { color: var(--lt-muted); }
+.lt-langpill-more:hover { color: var(--lt-fg); border-color: var(--lt-accent); }
+.lt-langpill-chev { display: inline-grid; place-items: center; }
+
 /* ---------- input ---------- */
 .lt-input {
   display: flex;
@@ -239,10 +297,11 @@
 .lt-field {
   flex: 1;
   display: flex;
+  align-items: flex-end;
   background: var(--lt-bg-elev);
   border: 1px solid var(--lt-border);
-  border-radius: 18px;
-  padding: 4px 6px;
+  border-radius: 22px;
+  padding: 4px 4px 4px 6px;
   max-width: 760px;
   margin-inline: auto;
   transition: border-color 0.15s ease;
@@ -258,11 +317,51 @@
   font: inherit;
   font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
   line-height: 1.45;
-  padding: 8px 10px;
+  padding: 8px 6px 8px 10px;
   max-height: 140px;
 }
 .lt-text::placeholder { color: var(--lt-muted); }
 .lt-text:disabled { opacity: 0.5; }
+
+/* ---- mic: ALWAYS in the input row (no separate voice mode). Hold to talk. ---- */
+.lt-mic {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 38px;
+  height: 38px;
+  margin: 2px 2px 2px 0;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  /* hold-to-talk: don't let the press scroll / select / show callout */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.lt-mic svg { display: block; }
+.lt-mic:hover { color: var(--lt-fg); }
+.lt-mic:active { transform: scale(0.92); }
+.lt-mic.recording {
+  background: var(--lt-danger);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.22), 0 0 22px rgba(239, 68, 68, 0.5);
+  animation: lt-pulse 1.2s ease-in-out infinite;
+}
+.lt-mic.transcribing {
+  background: var(--lt-bot-bg);
+  color: var(--lt-accent-2);
+  animation: lt-mic-spin 0.9s linear infinite;
+}
+/* When the user is typing, the send arrow is primary and the mic steps aside. */
+.lt-input.has-text .lt-mic { display: none; }
+.lt-input:not(.has-text) .lt-send { display: none; }
 
 .lt-send {
   flex: 0 0 auto;
@@ -278,39 +377,11 @@
   box-shadow: 0 6px 18px rgba(34, 87, 214, 0.3);
   transition: transform 0.1s ease, opacity 0.2s ease;
 }
+.lt-send svg { display: block; }
 .lt-send:active { transform: scale(0.94); }
 .lt-send:disabled { opacity: 0.4; box-shadow: none; cursor: default; }
 
-.lt-mic {
-  flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 0;
-  background: var(--lt-user-bg);
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  margin-inline: auto;
-  /* hold-to-talk: don't let the press scroll / select / show callout */
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
-}
-.lt-mic:active { transform: scale(0.96); }
-.lt-mic.recording {
-  background: var(--lt-danger);
-  transform: scale(1.06);
-  box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.22), 0 0 26px rgba(239, 68, 68, 0.5);
-  animation: lt-pulse 1.2s ease-in-out infinite;
-}
-.lt-mic.transcribing {
-  background: var(--lt-bot-bg);
-  animation: lt-mic-spin 0.9s linear infinite;
-}
-@keyframes lt-pulse { 0%, 100% { transform: scale(1.06); } 50% { transform: scale(1.14); } }
+@keyframes lt-pulse { 0%, 100% { transform: scale(1.08); } 50% { transform: scale(1.16); } }
 @keyframes lt-mic-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
   .lt-mic.recording, .lt-mic.transcribing { animation: none; }
@@ -322,6 +393,8 @@
   .lt-input { padding: 16px 24px calc(16px + var(--lt-safe-bottom)); }
   .lt-header { padding: calc(12px + var(--lt-safe-top)) 22px 12px; }
   .lt-lang-trigger { max-width: 280px; }
+  /* always show the back chevron on pointer-capable big screens */
+  .lt-home-hint { display: inline-grid; }
 }
 
 /* ============================================================
@@ -365,13 +438,19 @@
 }
 .lt-langsheet.open .lt-langsheet-panel { transform: translateY(0); }
 
+/* 44px hit band with a centered 44x5 visible bar (canonical grab-area pattern) */
+.lt-langsheet-grip-zone {
+  flex: 0 0 auto;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+}
 .lt-langsheet-grip {
   width: 44px;
   height: 5px;
-  margin: 8px auto 4px;
   border-radius: 999px;
   background: #3a3f4f;
-  flex: 0 0 auto;
 }
 .lt-langsheet-head {
   display: flex;
@@ -393,6 +472,33 @@
 }
 .lt-langsheet-close:hover { color: var(--lt-fg); border-color: #34384a; }
 
+/* search field — keeps the sheet usable at ~50 languages */
+.lt-langsheet-search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 2px 12px;
+  padding: 0 12px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  transition: border-color 0.15s ease;
+}
+.lt-langsheet-search:focus-within { border-color: var(--lt-accent); }
+.lt-langsheet-search-icon { display: grid; place-items: center; color: var(--lt-muted); flex: 0 0 auto; }
+.lt-langsheet-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
+}
+.lt-langsheet-input::placeholder { color: var(--lt-muted); }
+
 .lt-langsheet-list {
   display: flex;
   flex-direction: column;
@@ -400,6 +506,23 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 2px;
+}
+
+/* grouping headers ("Your languages" / "All languages") */
+.lt-langsheet-section {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lt-muted);
+  padding: 10px 6px 2px;
+}
+.lt-langsheet-section:first-child { padding-top: 2px; }
+.lt-langsheet-empty {
+  text-align: center;
+  color: var(--lt-muted);
+  font-size: 14px;
+  padding: 28px 8px;
 }
 
 .lt-langcard {

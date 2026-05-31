@@ -34,12 +34,12 @@ type Msg = { role: "user" | "assistant"; content: string }
 type State = {
   messages: Msg[]
   ttsEnabled: boolean
-  voiceModeEnabled: boolean
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
   cancelStream: (() => Promise<void>) | null
   recording: boolean
   sttSession: string | null
+  sttPrepared: boolean
 }
 
 // ============================================================
@@ -102,6 +102,30 @@ async function llmChat(
 }
 
 // ============================================================
+// Inline SVG icon set (lucide-style line icons — no dependency).
+// Stroke icons inherit currentColor; sized by the caller's CSS.
+// ============================================================
+
+const ICON = {
+  /** Orange brand mark: a clean pyramid/triangle with a subtle gradient. The
+   *  ONLY orange in the chrome (brand-reserved). Rendered inline so the pack
+   *  never depends on an external asset. */
+  pyramid: `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <defs><linearGradient id="lt-pyr" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/>
+      </linearGradient></defs>
+      <path d="M12 3.2 21 20H3z" fill="url(#lt-pyr)"/>
+      <path d="M12 3.2 12 20H3z" fill="#fb923c" fill-opacity="0.35"/>
+    </svg>`,
+  speaker: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>`,
+  speakerMuted: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>`,
+  mic: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/></svg>`,
+  refresh: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>`,
+  back: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>`,
+  search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
+} as const
+
+// ============================================================
 // Presentation helpers
 // ============================================================
 
@@ -151,13 +175,16 @@ const PackModule: ContentPackModule = {
   async mount(container: HTMLElement, hostApi: HostApi) {
     const state: State = {
       messages: [],
-      ttsEnabled: false,
-      voiceModeEnabled: false,
+      // Speaker (TTS) defaults ON — the tutor speaks its replies; the control
+      // acts as a MUTE toggle. See $ttsBtn wiring + maybeSpeak().
+      ttsEnabled: true,
       activeLanguage: null,
       currentStreamId: null,
       cancelStream: null,
       recording: false,
       sttSession: null,
+      // STT engine is prepared lazily on the first mic press (and only once).
+      sttPrepared: false,
     }
 
     const baseUrl = readPackBaseUrl()
@@ -217,11 +244,24 @@ const PackModule: ContentPackModule = {
     // ---------- shell ----------
     container.innerHTML = `
       <div class="lt-root" data-pack="${PACK_ID}">
+        <!-- TOP BAR. Left→right: orange pyramid mark, "Tutomaton" wordmark, an
+             elegant language switcher (compact trigger → searchable sheet),
+             then a small controls cluster (speaker mute, new conversation).
+
+             HOST-X COLLISION FIX (approach b): the host GameModal floats its own
+             close "X" at top-right (z-50, absolute, right:12px, top:safe+12px)
+             OVER this pack. We therefore (1) keep the pack's top-right corner
+             clear — the controls cluster gets generous right padding so it never
+             sits under the host X — and (2) add the pack's OWN explicit "Home"
+             back affordance on the far LEFT (the pyramid+wordmark is a button
+             that exits to home), so there is an obvious, non-overlapping way
+             back regardless of the host chrome. -->
         <header class="lt-header">
-          <div class="lt-brand">
-            <span class="lt-brand-mark" aria-hidden="true">✦</span>
+          <button class="lt-home" aria-label="Back to home" title="Home">
+            <span class="lt-brand-mark" aria-hidden="true">${ICON.pyramid}</span>
             <span class="lt-brand-name">Tutomaton</span>
-          </div>
+            <span class="lt-home-hint" aria-hidden="true">${ICON.back}</span>
+          </button>
           <button class="lt-lang-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Switch language">
             <span class="lt-lt-flag" aria-hidden="true"></span>
             <span class="lt-lt-name"></span>
@@ -230,22 +270,26 @@ const PackModule: ContentPackModule = {
             </span>
           </button>
           <div class="lt-controls">
-            <button class="lt-icon lt-tts" aria-label="Toggle voice replies" title="Voice replies">🔊</button>
-            <button class="lt-icon lt-voice" aria-label="Toggle voice input" title="Voice input">🎤</button>
-            <button class="lt-icon lt-clear" aria-label="New conversation" title="New conversation">⟲</button>
+            <button class="lt-icon lt-tts active" aria-label="Mute voice replies" aria-pressed="true" title="Voice replies">${ICON.speaker}</button>
+            <button class="lt-icon lt-clear" aria-label="New conversation" title="New conversation">${ICON.refresh}</button>
           </div>
         </header>
 
         <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="Choose a language">
           <div class="lt-langsheet-scrim"></div>
           <div class="lt-langsheet-panel" role="document">
-            <div class="lt-langsheet-grip" aria-hidden="true"></div>
+            <div class="lt-langsheet-grip-zone" aria-hidden="true"><div class="lt-langsheet-grip"></div></div>
             <header class="lt-langsheet-head">
-              <h2 class="lt-langsheet-title">Your tutors</h2>
+              <h2 class="lt-langsheet-title">Choose a tutor</h2>
               <button class="lt-langsheet-close" aria-label="Close">
                 <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
               </button>
             </header>
+            <div class="lt-langsheet-search">
+              <span class="lt-langsheet-search-icon" aria-hidden="true">${ICON.search}</span>
+              <input class="lt-langsheet-input" type="text" inputmode="search" autocomplete="off"
+                     placeholder="Search languages…" aria-label="Search languages" />
+            </div>
             <div class="lt-langsheet-list" role="listbox" aria-label="Languages"></div>
           </div>
         </div>
@@ -253,9 +297,12 @@ const PackModule: ContentPackModule = {
         <main class="lt-log" role="log" aria-live="polite"></main>
 
         <footer class="lt-input">
-          <button class="lt-mic" aria-label="Hold to speak, release to send" title="Hold to speak" hidden>●</button>
+          <!-- The mic lives INSIDE the input row (always present). The send
+               arrow appears once there's text; otherwise the hold-to-talk mic
+               is the primary action. Push-to-talk logic is unchanged. -->
           <div class="lt-field">
             <textarea class="lt-text" rows="1" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
+            <button class="lt-mic" aria-label="Hold to speak, release to send" title="Hold to speak">${ICON.mic}</button>
           </div>
           <button class="lt-send" aria-label="Send" disabled>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
@@ -264,7 +311,7 @@ const PackModule: ContentPackModule = {
 
         <div class="lt-setup" hidden>
           <div class="lt-setup-card">
-            <div class="lt-setup-glyph" aria-hidden="true">✦</div>
+            <div class="lt-setup-glyph" aria-hidden="true">${ICON.pyramid}</div>
             <h2 class="lt-setup-title">Set up your tutor</h2>
             <p class="lt-setup-body"></p>
             <div class="lt-setup-progress" hidden>
@@ -283,13 +330,14 @@ const PackModule: ContentPackModule = {
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
-    const $voiceBtn = container.querySelector<HTMLButtonElement>(".lt-voice")!
+    const $home = container.querySelector<HTMLButtonElement>(".lt-home")!
     const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
     const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
     const $langSheet = container.querySelector<HTMLDivElement>(".lt-langsheet")!
     const $langSheetList = container.querySelector<HTMLDivElement>(".lt-langsheet-list")!
     const $langSheetScrim = container.querySelector<HTMLDivElement>(".lt-langsheet-scrim")!
     const $langSheetClose = container.querySelector<HTMLButtonElement>(".lt-langsheet-close")!
+    const $langSheetInput = container.querySelector<HTMLInputElement>(".lt-langsheet-input")!
     const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
     const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
     const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
@@ -349,6 +397,10 @@ const PackModule: ContentPackModule = {
     // ---------- language sheet (compact trigger + glorious sheet) ----------
     function openLangSheet() {
       $langSheet.hidden = false
+      // start from a clean, unfiltered list every open
+      langQuery = ""
+      $langSheetInput.value = ""
+      renderLangCards()
       // next frame so the open transition runs from the hidden state
       requestAnimationFrame(() => $langSheet.classList.add("open"))
       $langTrigger.setAttribute("aria-expanded", "true")
@@ -368,49 +420,108 @@ const PackModule: ContentPackModule = {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !$langSheet.hidden) closeLangSheet()
     })
+    // Live-filter the sheet as you type. Scales gracefully to ~50 languages.
+    let langQuery = ""
+    $langSheetInput.addEventListener("input", () => {
+      langQuery = $langSheetInput.value.trim().toLowerCase()
+      renderLangCards()
+    })
+
+    /** Installed ("your languages") codes, refreshed on switch. Drives grouping. */
+    let installedSet = new Set<string>()
+
+    function entryMatches(entry: LanguageRegistryEntry, q: string): boolean {
+      if (!q) return true
+      const hay = [
+        entry.code,
+        nativeName(entry),
+        ...Object.values(entry.displayName ?? {}),
+      ].join(" ").toLowerCase()
+      return hay.includes(q)
+    }
+
+    function makeLangCard(entry: LanguageRegistryEntry, active: string | undefined): HTMLButtonElement {
+      const card = document.createElement("button")
+      card.className = "lt-langcard"
+      card.dataset.code = entry.code
+      card.setAttribute("role", "option")
+      const isActive = entry.code === active
+      card.classList.toggle("active", isActive)
+      card.setAttribute("aria-selected", isActive ? "true" : "false")
+      const flag = LANG_FLAG[entry.code] || "✦"
+      const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
+        ? `<span class="lt-langcard-sub">${entry.displayName[uiLocale]}</span>`
+        : ""
+      card.innerHTML = `
+        <span class="lt-langcard-flag" aria-hidden="true">${flag}</span>
+        <span class="lt-langcard-text">
+          <span class="lt-langcard-name">${nativeName(entry)}</span>
+          ${sub}
+        </span>
+        <span class="lt-langcard-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </span>`
+      card.addEventListener("click", () => {
+        if (entry.code === state.activeLanguage?.code) {
+          closeLangSheet()
+          return
+        }
+        closeLangSheet()
+        void switchLanguage(entry.code)
+      })
+      return card
+    }
+
+    function sectionHeader(label: string): HTMLDivElement {
+      const h = document.createElement("div")
+      h.className = "lt-langsheet-section"
+      h.textContent = label
+      return h
+    }
+
+    /** (Re)render only the sheet's card list — applies the current search query
+     *  and the "Your languages" / "All languages" grouping. */
+    function renderLangCards() {
+      const active = state.activeLanguage?.code
+      $langSheetList.innerHTML = ""
+      const q = langQuery
+      const matched = registry.filter((e) => entryMatches(e, q))
+
+      if (matched.length === 0) {
+        const empty = document.createElement("div")
+        empty.className = "lt-langsheet-empty"
+        empty.textContent = "No languages match your search."
+        $langSheetList.appendChild(empty)
+        return
+      }
+
+      const yours = matched.filter((e) => installedSet.has(e.code))
+      const others = matched.filter((e) => !installedSet.has(e.code))
+
+      // Only show grouping headers when there's something installed AND we're
+      // not actively narrowing with a query (keeps a clean flat list while
+      // searching, and avoids "empty section" awkwardness with few languages).
+      const showGroups = !q && yours.length > 0 && others.length > 0
+      if (showGroups) {
+        $langSheetList.appendChild(sectionHeader("Your languages"))
+        for (const e of yours) $langSheetList.appendChild(makeLangCard(e, active))
+        $langSheetList.appendChild(sectionHeader("All languages"))
+        for (const e of others) $langSheetList.appendChild(makeLangCard(e, active))
+      } else {
+        // Installed first so the active tutor sits at the top.
+        for (const e of [...yours, ...others]) $langSheetList.appendChild(makeLangCard(e, active))
+      }
+    }
 
     function renderLangs() {
       const active = state.activeLanguage?.code
-      // 1. the compact header trigger reflects the active tutor
+      // the compact header trigger reflects the active tutor
       const activeEntry = registry.find((r) => r.code === active) ?? registry[0]
       const tFlag = $langTrigger.querySelector<HTMLSpanElement>(".lt-lt-flag")!
       const tName = $langTrigger.querySelector<HTMLSpanElement>(".lt-lt-name")!
       tFlag.textContent = (activeEntry && LANG_FLAG[activeEntry.code]) || "✦"
       tName.textContent = activeEntry ? nativeName(activeEntry) : "Language"
-
-      // 2. the sheet lists every tutor as a big card
-      $langSheetList.innerHTML = ""
-      for (const entry of registry) {
-        const card = document.createElement("button")
-        card.className = "lt-langcard"
-        card.dataset.code = entry.code
-        card.setAttribute("role", "option")
-        const isActive = entry.code === active
-        card.classList.toggle("active", isActive)
-        card.setAttribute("aria-selected", isActive ? "true" : "false")
-        const flag = LANG_FLAG[entry.code] || "✦"
-        const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
-          ? `<span class="lt-langcard-sub">${entry.displayName[uiLocale]}</span>`
-          : ""
-        card.innerHTML = `
-          <span class="lt-langcard-flag" aria-hidden="true">${flag}</span>
-          <span class="lt-langcard-text">
-            <span class="lt-langcard-name">${nativeName(entry)}</span>
-            ${sub}
-          </span>
-          <span class="lt-langcard-check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          </span>`
-        card.addEventListener("click", () => {
-          if (entry.code === state.activeLanguage?.code) {
-            closeLangSheet()
-            return
-          }
-          closeLangSheet()
-          void switchLanguage(entry.code)
-        })
-        $langSheetList.appendChild(card)
-      }
+      renderLangCards()
     }
 
     // ---------- message rendering ----------
@@ -425,11 +536,41 @@ const PackModule: ContentPackModule = {
       const wrap = document.createElement("div")
       wrap.className = "lt-welcome"
       wrap.innerHTML = `
-        <div class="lt-welcome-mark" aria-hidden="true">✦</div>
+        <div class="lt-welcome-mark" aria-hidden="true">${ICON.pyramid}</div>
         <h2 class="lt-welcome-title">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
         <p class="lt-welcome-sub">Ask anything — translations, grammar, vocab, or just chat. It all runs on your device.</p>
+        <div class="lt-welcome-langs" aria-label="Your languages"></div>
         <div class="lt-chips"></div>
       `
+
+      // ---- intro language picker: "your languages" stacked prominently, with
+      // an expand-to-all affordance (full list lives in the sheet → scales to ~50)
+      const langRow = wrap.querySelector<HTMLDivElement>(".lt-welcome-langs")!
+      const yours = registry.filter((e) => installedSet.has(e.code))
+      const featured = (yours.length > 0 ? yours : registry).slice(0, 6)
+      for (const entry of featured) {
+        const pill = document.createElement("button")
+        pill.className = "lt-langpill"
+        pill.classList.toggle("active", entry.code === code)
+        pill.setAttribute("aria-pressed", entry.code === code ? "true" : "false")
+        pill.innerHTML =
+          `<span class="lt-langpill-flag" aria-hidden="true">${LANG_FLAG[entry.code] || "✦"}</span>` +
+          `<span class="lt-langpill-name">${nativeName(entry)}</span>`
+        pill.addEventListener("click", () => {
+          if (entry.code === state.activeLanguage?.code) return
+          void switchLanguage(entry.code)
+        })
+        langRow.appendChild(pill)
+      }
+      // "All languages" expander → opens the searchable sheet (the scalable path)
+      const more = document.createElement("button")
+      more.className = "lt-langpill lt-langpill-more"
+      more.innerHTML =
+        `<span class="lt-langpill-name">${registry.length > featured.length ? "All languages" : "Browse languages"}</span>` +
+        `<span class="lt-langpill-chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg></span>`
+      more.addEventListener("click", openLangSheet)
+      langRow.appendChild(more)
+
       const chipsRow = wrap.querySelector<HTMLDivElement>(".lt-chips")!
       const chips = (code && SUGGESTIONS[code]) || SUGGESTIONS_FALLBACK
       for (const c of chips) {
@@ -524,6 +665,7 @@ const PackModule: ContentPackModule = {
           )
         })
         state.messages = []
+        installedSet.add(code)
         renderLangs()
         renderWelcome()
       } catch (e) {
@@ -532,9 +674,13 @@ const PackModule: ContentPackModule = {
     }
 
     // ---------- send a turn ----------
+    const $inputBar = container.querySelector<HTMLElement>(".lt-input")!
     function syncSendEnabled() {
       const hasText = $text.value.trim().length > 0
       $send.disabled = !modelReady || !hasText || !!state.currentStreamId
+      // iMessage-style: text present → show the send arrow; empty → show the
+      // hold-to-talk mic. CSS swaps which control is visible off this class.
+      $inputBar.classList.toggle("has-text", hasText)
     }
 
     async function send(text: string) {
@@ -650,33 +796,44 @@ const PackModule: ContentPackModule = {
       renderWelcome()
     })
 
+    // Speaker control = MUTE toggle (defaults ON). Swaps the speaker/ muted icon.
+    function syncTtsBtn() {
+      $ttsBtn.classList.toggle("active", state.ttsEnabled)
+      $ttsBtn.innerHTML = state.ttsEnabled ? ICON.speaker : ICON.speakerMuted
+      $ttsBtn.setAttribute("aria-pressed", state.ttsEnabled ? "true" : "false")
+      $ttsBtn.setAttribute("aria-label", state.ttsEnabled ? "Mute voice replies" : "Unmute voice replies")
+    }
+    syncTtsBtn()
     $ttsBtn.addEventListener("click", () => {
       state.ttsEnabled = !state.ttsEnabled
-      $ttsBtn.classList.toggle("active", state.ttsEnabled)
+      syncTtsBtn()
       if (!state.ttsEnabled) hostApi.stopSpeech?.()
     })
 
-    $voiceBtn.addEventListener("click", async () => {
-      state.voiceModeEnabled = !state.voiceModeEnabled
-      $voiceBtn.classList.toggle("active", state.voiceModeEnabled)
-      $mic.hidden = !state.voiceModeEnabled
-      $text.style.display = state.voiceModeEnabled ? "none" : ""
-      $send.style.display = state.voiceModeEnabled ? "none" : ""
-      if (state.voiceModeEnabled) {
-        try {
-          await hostApi.stt?.prepare?.({ model: "ggml-medium.bin" })
-        } catch (e) {
-          systemNote(`Couldn't start voice input: ${e instanceof Error ? e.message : String(e)}`)
-          state.voiceModeEnabled = false
-          $voiceBtn.classList.remove("active")
-          $mic.hidden = true
-          $text.style.display = ""
-          $send.style.display = ""
-        }
-      } else {
-        await hostApi.stt?.cancelSession?.({ sessionId: state.sttSession ?? "" }).catch(() => {})
+    // ---------- exit to home ----------
+    // The host GameModal owns the floating top-right "X" (guaranteed exit). This
+    // is the pack's OWN explicit left-side affordance. We try the common host
+    // close conventions defensively (no hard type dependency); if none exist the
+    // host X still works. The orange pyramid + wordmark IS the home button.
+    function exitToHome() {
+      const h = hostApi as unknown as {
+        close?: () => void
+        exit?: () => void
+        navigateHome?: () => void
+        requestClose?: () => void
       }
-    })
+      try {
+        if (typeof h.close === "function") return void h.close()
+        if (typeof h.requestClose === "function") return void h.requestClose()
+        if (typeof h.navigateHome === "function") return void h.navigateHome()
+        if (typeof h.exit === "function") return void h.exit()
+        // Last resort: ask the host shell to close via a window event.
+        window.dispatchEvent(new CustomEvent("corpan:close-game", { detail: { packId: PACK_ID } }))
+      } catch (e) {
+        console.error("[tutomaton] exitToHome failed:", e)
+      }
+    }
+    $home.addEventListener("click", exitToHome)
 
     // ---------- push-to-talk: hold the mic, release to capture+send ----------
     // A tap-to-start / tap-to-stop toggle was unreliable (a missed second tap
@@ -688,7 +845,7 @@ const PackModule: ContentPackModule = {
     let pressStart = 0
 
     async function micStart(pointerId?: number) {
-      if (pressActive || !state.voiceModeEnabled || !state.activeLanguage) return
+      if (pressActive || !state.activeLanguage || !modelReady) return
       if (state.recording) return
       pressActive = true
       pressStart = performance.now()
@@ -700,6 +857,12 @@ const PackModule: ContentPackModule = {
         try { $mic.setPointerCapture(pointerId) } catch { /* capture is best-effort */ }
       }
       try {
+        // Lazily prepare the STT engine on first use (was previously behind the
+        // removed voice-mode toggle). prepare() is idempotent on the host side.
+        if (!state.sttPrepared) {
+          await hostApi.stt?.prepare?.({ model: "ggml-medium.bin" })
+          state.sttPrepared = true
+        }
         await hostApi.stt?.startSession?.({
           sessionId,
           language: state.activeLanguage.voiceLanguageCode,
@@ -758,8 +921,9 @@ const PackModule: ContentPackModule = {
     $mic.addEventListener("lostpointercapture", () => void micStop(false))
 
     // ---------- bootstrap ----------
-    renderLangs()
     const installedCodes = await langMgr.installed()
+    installedSet = new Set(installedCodes)
+    renderLangs()
     const initialCode = installedCodes[0] || registry[0]?.code
     if (initialCode) await switchLanguage(initialCode)
     void modelMgr.check()
