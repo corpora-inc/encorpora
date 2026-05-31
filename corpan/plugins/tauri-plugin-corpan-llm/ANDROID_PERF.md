@@ -70,6 +70,24 @@ freq), which is why classifying by capacity + the all-big special-case matters.
 `CORPAN_LLM_THREADS=N`), then re-open the tutor. Try 4 / 6 / 7 / 8 and compare the PERF
 tok/s lines. `setprop debug.corpan.llm_threads 0` (or unset) returns to auto-detect.
 
+**Live system-prompt A/B without rebuild:** `adb shell setprop debug.corpan.sysprompt none`
+drops all system messages (bare model); `... debug.corpan.sysprompt "You are a Spanish
+tutor."` replaces every system message with that text; `... debug.corpan.sysprompt ""`
+restores the real ~850-token grounded prompt. Read per turn (no relaunch needed), and the
+build prints `[corpan-llm] sysprompt override: …` when active — if that line is ABSENT, the
+running APK predates this knob (commit fd0e5e31); rebuild. Measured: the full prompt is
+~850 prefill tokens ≈ 40s on the 8 Elite; `none` drops prefill to just the user message.
+
+**Measured on the 8 Elite (threads=7):** prefill ~850 tok @ ~20 tok/s ≈ **40-44s**; decode
+~9-13 tok/s (healthy). So Android is **100% prefill-bound**, not decode-bound.
+
+> **The bare prompt only lifts the per-turn FLOOR.** The real fix is **KV-cache reuse**
+> across turns: `run_chat` currently builds a fresh context and re-prefills system + the
+> ENTIRE history every turn (no reuse), so latency climbs each round and hard-errors once
+> system+history exceeds `n_ctx` 4096. iOS Metal hides this (prefill ~15-20× faster).
+> Persisting the conversation's context and decoding only the NEW tokens each turn makes
+> turn 2+ near-instant regardless of prompt size — the actual Android conversational fix.
+
 ### Phase 1.5 — Verify on device (NEXT, needs the Android dev loop)
 Build + run on the phone, send one Tutomaton turn, read the PERF logs. Capture:
 `perf_cores`, prefill tok/s, decode tok/s, total to first token. Record numbers here.
