@@ -5,6 +5,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- All supported languages now ship as prompt-only tutors, resilient to 0-N RAG
+  corpora. `LanguageManager._loadRetriever` returns a no-op retriever
+  ({kind:"none"}) when no retriever is bundled instead of throwing, so any
+  language works ungrounded out of the box (0 = no-op; 1 = bundled retriever +
+  one sqlite, as es/zh do today; N = a future retriever querying several DBs —
+  the contract already allows it). A shared tutor-prompt template + generator
+  (`tools/gen_prompts.py`) produces each language's `system_prompt.txt`,
+  `grounding_instruction.txt`, and `module.json`. Persona bent toward
+  mirroring/following the user (concise, matches verbosity, coy-not-preachy on
+  sensitive topics) while keeping the hard guardrails (always answer in the
+  target language, no emoji, optional learner gloss). 12 major languages got
+  hand-tuned in-language example exchanges; the rest use the filled-in template.
+  es' prompt was bent the same way without regressing its examples. (Publishing
+  the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
+
 ### Changed
 - Premium UI/UX pass on the chrome (presentation only — engine untouched). New
   top bar (left→right): a small orange pyramid brand mark (inline SVG, the only
