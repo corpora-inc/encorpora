@@ -5,9 +5,29 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-05-31 — Multi-source RAG architecture + en/fr/de/ja republish
+## [0.3.0] - 2026-05-31 — Multi-source RAG architecture + en/fr/de/ja republish + phrase-pack bridge
 
 ### Added
+- **Phrase-pack bridge** (`tutomaton-phrase-bridge-v1`) — a universal source
+  (`tutomatonLanguage:"*"`, per contract §7) bundled into the Tutomaton pack
+  ZIP that grounds EVERY tutor in real phrase-to-target alignments from the
+  user's already-installed Corpán phrase packs. Per turn, the bridge tokenizes
+  the user's English query, runs FTS5 BM25 across each installed pack's
+  `entries_fts` virtual table (falls back to LIKE on any pre-FTS pack), joins
+  to `translations` for the active target language, dedups by English source,
+  and returns the top hits as inspiration grounding labeled
+  `<reference type="inspiration" from="Phrase library bridge">` (§8). Composes
+  alongside the per-language `core` source on es/zh/en/fr/de/ja (canonical +
+  inspiration, two blocks); stands alone on the 40+ prompt-only stub languages
+  whenever a phrase pack covers the user's question. Pattern-A helpers param
+  passed by the SourceRegistry (`{ targetLanguage, hostApi: { phrasePacks,
+  queryPackDb } }`) — standard per-language retrievers receive `undefined` and
+  ignore it. `requiredHostApis: ["phrasePacks","queryPackDb"]` gates: any host
+  missing either capability silently skips the bridge.
+- **`universalSources[]` in the pack manifest** — new top-level field. Each
+  entry resolves to the same SourceManifestEntry shape used for per-language
+  built-ins; the SourceRegistry expands them across every language at activate
+  time. Rejects `authoritative: true` per contract §7.
 - **Multi-source RAG SourceRegistry** (`RAG_SOURCES_CONTRACT.md`): the
   `LanguageManager` now resolves **0..N sources per language** instead of one
   hard-wired retriever. Built-in sources are declared in the manifest

@@ -24,10 +24,10 @@
  * paired with backend's atomic move). The keys below are source ids.
  */
 
-import type { QueryFn, SourceRetrievalResult } from "./languageManager"
+import type { QueryFn, RetrieverHelpers, SourceRetrievalResult } from "./languageManager"
 
 export type RetrieverModule = {
-  retrieve: (text: string, queryFn: QueryFn) => Promise<SourceRetrievalResult>
+  retrieve: (text: string, queryFn: QueryFn, helpers?: RetrieverHelpers) => Promise<SourceRetrievalResult>
   resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
 }
 
@@ -37,15 +37,21 @@ import * as en from "../languages/en/sources/core/retrieval/retriever"
 import * as fr from "../languages/fr/sources/core/retrieval/retriever"
 import * as de from "../languages/de/sources/core/retrieval/retriever"
 import * as ja from "../languages/ja/sources/core/retrieval/retriever"
+import * as phraseBridge from "../sources/phrase-bridge/retriever"
 
 /**
  * Built-in source retrievers, keyed by source id. The cast is safe: each
  * module's `retrieve`/`resolveTheme` match the contract structurally.
  *
- * Live today (declared in manifest sources[] + present in the databases map):
- *   es, zh. The en/fr/de/ja retrievers are bundled + ready; switch each on by
- *   adding its manifest sources[] entry once its corpus data is verified — no
- *   code change here beyond the entry already present below.
+ * Per-language `core` sources live today (declared in manifest sources[] +
+ * present in the databases map): es, zh. en/fr/de/ja retrievers are bundled +
+ * ready; switch each on by adding its manifest sources[] entry once its corpus
+ * data is verified — no code change here beyond the entry already present below.
+ *
+ * `tutomaton-phrase-bridge-v1` is a §7 UNIVERSAL source — declared at the pack
+ * manifest top level under `universalSources[]`, applies to every target
+ * language, receives pattern-A `helpers` carrying phrasePacks + queryPackDb so
+ * it can ground tutors in the user's already-installed phrase packs.
  */
 export const RETRIEVERS: Record<string, RetrieverModule> = {
   "tutomaton-corpus-es-core-v1": es as unknown as RetrieverModule,
@@ -54,4 +60,5 @@ export const RETRIEVERS: Record<string, RetrieverModule> = {
   "tutomaton-corpus-fr-core-v1": fr as unknown as RetrieverModule,
   "tutomaton-corpus-de-core-v1": de as unknown as RetrieverModule,
   "tutomaton-corpus-ja-core-v1": ja as unknown as RetrieverModule,
+  "tutomaton-phrase-bridge-v1": phraseBridge as unknown as RetrieverModule,
 }

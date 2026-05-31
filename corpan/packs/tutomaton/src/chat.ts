@@ -178,7 +178,7 @@ function scrubOutput(s: string): string {
   s = s.replace(/^#{1,6}\s+/gm, "")
   s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
   s = s.replace(/\*\*/g, "")
-  s = s.replace(/<\/?reference>/gi, "")
+  s = s.replace(/<\/?reference\b[^>]*>/gi, "")
   // Orphaned combining marks → the "dotted-circle" artifact. A combining mark
   // (Unicode M*) only renders correctly attached to a base letter; when the
   // model drops the base (common for small models in Indic/Tamil/Arabic/Thai),
@@ -226,6 +226,7 @@ const PackModule: ContentPackModule = {
     const manifest = (await packFetch("manifest.json").then((r) => r.json())) as {
       languages: LanguageRegistryEntry[]
       databases?: Record<string, string>
+      universalSources?: import("./languageManager").SourceManifestEntry[]
     }
     // Languages hidden from the picker for this launch. kn (Kannada): Qwen3-4B
     // confuses Kannada with Devanagari script (greets in नमस्ते, not ನಮಸ್ತೆ) —
@@ -309,6 +310,10 @@ const PackModule: ContentPackModule = {
         )
       },
       loadModuleFile: async (code, rel) => packFetch(`languages/${code}/${rel}`).then((r) => r.text()),
+      // Universal sources (§7) — bundled in this pack ZIP, apply to every
+      // target language. Currently: the phrase-pack bridge. Each one receives
+      // pattern-A `helpers` carrying phrasePacks + queryPackDb at retrieve time.
+      universalSources: manifest.universalSources ?? [],
     })
 
     // ---------- shell ----------

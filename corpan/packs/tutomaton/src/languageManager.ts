@@ -99,6 +99,19 @@ export type HostApi = {
   /** Discover installed packs of a given packType (e.g. "tutomaton-rag-source").
    *  0.16.0 host stub returns []; future native lands real discovery. */
   discoverPacksByType?: (packType: string) => Promise<DiscoveredSource[]>
+  /** Installed Corpán phrase packs — used by the phrase-bridge universal source
+   *  (§7) to ground tutors in real phrase-to-target alignments the user already
+   *  has on the device. */
+  phrasePacks?: {
+    getInstalled: () => Record<string, {
+      id: string
+      name: string
+      nameLocalized?: Record<string, string>
+      topic?: string
+      topicLocalized?: Record<string, string>
+      accentColor?: string
+    }>
+  }
   stt?: {
     prepare?: (args: { model: string }) => Promise<void>
     startSession?: (args: { sessionId: string; language: string; expectedText: string }) => Promise<void>
@@ -155,8 +168,23 @@ export type QueryFn = (
   params: unknown[]
 ) => Promise<{ columns: string[]; rows: Record<string, unknown>[] }>
 
+/** Pattern A (§7 universal sources): the registry hands universal/bridge
+ *  retrievers a `helpers` argument with cross-pack access. Per-language
+ *  retrievers receive `undefined` here and ignore it; the standard 2-arg
+ *  contract is unchanged for them. */
+export type RetrieverHelpers = {
+  /** Active Tutomaton target language code (e.g. "ar", "ja", "pt-BR"). */
+  targetLanguage: string
+  /** Subset of HostApi the bridge needs. queryPackDb here accepts an explicit
+   *  packId so the bridge can hit each installed phrase pack in turn. */
+  hostApi: {
+    phrasePacks?: HostApi["phrasePacks"]
+    queryPackDb?: HostApi["queryPackDb"]
+  }
+}
+
 export type RetrieverModule = {
-  retrieve: (text: string, queryFn: QueryFn) => Promise<SourceRetrievalResult>
+  retrieve: (text: string, queryFn: QueryFn, helpers?: RetrieverHelpers) => Promise<SourceRetrievalResult>
   resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
 }
 
@@ -171,16 +199,20 @@ export type RetrievalResult = {
 }
 
 /** A source resolved for the active language: retriever + a queryFn already
- *  scoped to this source's (packId, dbName). */
+ *  scoped to this source's (packId, dbName).
+ *
+ *  Universal sources (§7) also carry `helpers` (pattern A) so the retriever
+ *  can reach across installed packs. Per-language sources have `helpers === undefined`. */
 type ResolvedSource = {
   id: string
   name: Record<string, string>
   authoritative: boolean
   priority: number
-  origin: "builtin" | "installed"
+  origin: "builtin" | "universal" | "installed"
   dbName: string
   retriever: RetrieverModule
   queryFn: QueryFn
+  helpers?: RetrieverHelpers
 }
 
 export type LanguageRuntime = {
@@ -208,6 +240,10 @@ export type LanguageManagerOptions = {
   isInstalled: (code: string) => Promise<boolean>
   /** Trigger module download + verify + extract. Throws on sha mismatch. */
   install: (entry: LanguageRegistryEntry, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
+  /** Built-in universal sources (§7): apply to every target language, MUST be
+   *  non-authoritative, get pattern-A `helpers` passed at retrieve time.
+   *  Declared at manifest top level (e.g. the phrase-pack bridge). */
+  universalSources?: SourceManifestEntry[]
 }
 
 const SOURCE_PACK_TYPE = "tutomaton-rag-source"
@@ -333,7 +369,7 @@ export class LanguageManager {
     const hostApi = this.opts.hostApi
     const out: ResolvedSource[] = []
 
-    // ---- built-in sources (bundled, declared in the manifest) ----
+    // ---- built-in per-language sources (declared in manifest.languages[].sources[]) ----
     for (const s of entry.sources ?? []) {
       if (!isSourceEnabled(code, s.id)) continue
       const need = s.requiredHostApis ?? (s.dbName === undefined || s.dbName === null ? [] : ["queryPackDb"])
@@ -347,6 +383,29 @@ export class LanguageManager {
         continue
       }
       out.push(this._resolve(code, s.id, s.name, s.authoritative, s.priority ?? 0, s.dbName ?? null, mod, "builtin", this.opts.packId))
+    }
+
+    // ---- universal sources (§7: tutomatonLanguage:"*"; bundled at the pack
+    //      level via manifest.universalSources[]; helpers carry phrasePacks + queryPackDb) ----
+    for (const u of this.opts.universalSources ?? []) {
+      if (u.authoritative) {
+        console.warn(`[tutomaton] reject universal source ${u.id}: §7 requires authoritative:false`)
+        continue
+      }
+      if (!isSourceEnabled(code, u.id)) continue
+      const need = u.requiredHostApis ?? ["queryPackDb"]
+      if (!hasHostApis(hostApi, need)) {
+        console.info(`[tutomaton] skip universal source ${u.id}: host missing ${JSON.stringify(need)}`)
+        continue
+      }
+      const mod = RETRIEVERS[u.id]
+      if (!mod) {
+        console.warn(`[tutomaton] universal source ${u.id} has no bundled retriever — skipping`)
+        continue
+      }
+      const resolved = this._resolve(code, u.id, u.name, false, u.priority ?? 0, u.dbName ?? null, mod, "universal", this.opts.packId)
+      resolved.helpers = { targetLanguage: code, hostApi: { phrasePacks: hostApi.phrasePacks, queryPackDb: hostApi.queryPackDb } }
+      out.push(resolved)
     }
 
     // ---- discovered installed source packs (0.16.0 host stub → []) ----
@@ -397,7 +456,7 @@ export class LanguageManager {
     priority: number,
     dbName: string | null,
     retriever: RetrieverModule,
-    origin: "builtin" | "installed",
+    origin: "builtin" | "universal" | "installed",
     packId: string
   ): ResolvedSource {
     const hostApi = this.opts.hostApi
@@ -444,7 +503,7 @@ export class LanguageManager {
     const results = await Promise.all(
       sources.map(async (s) => {
         try {
-          return { s, r: await s.retriever.retrieve(text, s.queryFn) }
+          return { s, r: await s.retriever.retrieve(text, s.queryFn, s.helpers) }
         } catch (e) {
           log.push(`source ${s.id} retrieve failed: ${String(e)}`)
           console.error(`[tutomaton] source ${s.id} retrieve failed:`, e)

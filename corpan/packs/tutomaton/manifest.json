@@ -725,9 +725,29 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-05-31T19:06:45.468Z",
+  "devRevision": "2026-05-31T20:11:11.160Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"
-  }
+  },
+  "universalSources": [
+    {
+      "id": "tutomaton-phrase-bridge-v1",
+      "name": {
+        "en": "Phrase library bridge"
+      },
+      "authoritative": false,
+      "priority": 20,
+      "categories": [
+        "examples",
+        "translations"
+      ],
+      "schemaVersion": 1,
+      "requiredHostApis": [
+        "phrasePacks",
+        "queryPackDb"
+      ],
+      "bundled": true
+    }
+  ]
 }
