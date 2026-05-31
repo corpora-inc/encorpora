@@ -338,7 +338,7 @@ export function HomeHub({
                   <span className="line-clamp-2 min-h-[2.5rem] w-full text-sm font-semibold text-foreground">
                     {e.name}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">
+                  <span className="mt-auto inline-flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">
                     {e.installed ? (
                       <>{t("home.open")} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" /></>
                     ) : (

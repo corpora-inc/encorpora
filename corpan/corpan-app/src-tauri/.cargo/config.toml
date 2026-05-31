@@ -13,10 +13,12 @@ rustflags = [
 ]
 
 # Force NDK linkers + 16 KB page size for ALL Android ABIs.
+# Host toolchain dir is darwin-x86_64: Google ships the macOS NDK as x86_64
+# only (runs under Rosetta on Apple Silicon). darwin-arm64 does not exist.
 
 [target.aarch64-linux-android]
-linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/aarch64-linux-android24-clang"
-ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"
+linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android24-clang"
+ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar"
 rustflags = [
     "-C",
     "link-arg=-Wl,-z,common-page-size=16384",
@@ -25,8 +27,8 @@ rustflags = [
 ]
 
 [target.armv7-linux-androideabi]
-linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/armv7a-linux-androideabi24-clang"
-ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"
+linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi24-clang"
+ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar"
 rustflags = [
     "-C",
     "link-arg=-Wl,-z,common-page-size=16384",
@@ -35,8 +37,8 @@ rustflags = [
 ]
 
 [target.x86_64-linux-android]
-linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/x86_64-linux-android24-clang"
-ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"
+linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/x86_64-linux-android24-clang"
+ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar"
 rustflags = [
     "-C",
     "link-arg=-Wl,-z,common-page-size=16384",
@@ -45,8 +47,8 @@ rustflags = [
 ]
 
 [target.i686-linux-android]
-linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/i686-linux-android24-clang"
-ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"
+linker = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android24-clang"
+ar = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar"
 rustflags = [
     "-C",
     "link-arg=-Wl,-z,common-page-size=16384",
@@ -100,6 +102,6 @@ BINDGEN_EXTRA_CLANG_ARGS_aarch64-apple-ios = "--target=arm64-apple-ios -isysroot
 #     fall back to whatever NDK happens to be first on $PATH. (Matches the linker
 #     pins above.) Android on-device LLM is Phase 6 / unverified; these are here so
 #     the toolchain is correct the moment we build it. ---
-CC_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/aarch64-linux-android24-clang"
-CXX_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/aarch64-linux-android24-clang++"
-AR_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"
+CC_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android24-clang"
+CXX_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android24-clang++"
+AR_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar"

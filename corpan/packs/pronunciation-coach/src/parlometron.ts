@@ -23,6 +23,7 @@
 // the helpers in `multiplayer/state.ts` for crash-recovery.
 
 import type { HostApi } from "./sdk/types"
+import { setUiLang, tt } from "./i18n"
 import { mountPractice, type GameHandle } from "./game"
 import { mountLobby } from "./multiplayer/lobby"
 import { mountRound } from "./multiplayer/round"
@@ -115,6 +116,18 @@ export const mountParlometron = (
   container: HTMLElement,
   hostApi: HostApi,
 ): ParlometronHandle => {
+  // Localize all Parlometron chrome into the user's native language (stack
+  // languages[0]); device locale → English fallback. Set once here so every
+  // sub-screen (picker, lobby, round, results) can use the bound `tt()`.
+  try {
+    setUiLang(
+      hostApi.getStackConfig().languages[0] ||
+        (navigator.language || "en").split("-")[0],
+    )
+  } catch (err) {
+    console.warn("[parlometron] setUiLang failed; using English:", err)
+  }
+
   let currentHandle: { unmount: () => void } | null = null
   let game: GameState | null = null
   let lastLobbySeed: { players: Player[]; winTarget: WinTarget } | null = null
@@ -138,23 +151,23 @@ export const mountParlometron = (
     container.innerHTML = `
       <div class="pc-pm-root pc-pm-picker">
         <button class="pc-pm-picker-close" data-pm-picker-close
-                aria-label="Close Parlometron">×</button>
+                aria-label="${tt("pickerClose")}">×</button>
         <header class="pc-pm-picker-head">
           <h1 class="pc-pm-brand">Parlometron</h1>
-          <p class="pc-pm-brand-sub">speak. measure. repeat.</p>
+          <p class="pc-pm-brand-sub">${tt("pickerTagline")}</p>
         </header>
         <main class="pc-pm-picker-body">
           <button class="pc-pm-mode-card" data-pm-mode="practice">
-            <span class="pc-pm-mode-title">Practice</span>
-            <span class="pc-pm-mode-sub">Solo. Repeat phrases in your target language and see what the model heard.</span>
+            <span class="pc-pm-mode-title">${tt("pickerPractice")}</span>
+            <span class="pc-pm-mode-sub">${tt("pickerPracticeDesc")}</span>
           </button>
           <button class="pc-pm-mode-card" data-pm-mode="friends">
-            <span class="pc-pm-mode-title">Play with Friends</span>
-            <span class="pc-pm-mode-sub">2–8 players. Same phrase, 3 tries each, highest score wins the round.</span>
+            <span class="pc-pm-mode-title">${tt("pickerFriends")}</span>
+            <span class="pc-pm-mode-sub">${tt("pickerFriendsDesc")}</span>
           </button>
         </main>
         <footer class="pc-pm-picker-foot">
-          <p class="pc-pm-picker-tagline">Pass the device. Best round wins.</p>
+          <p class="pc-pm-picker-tagline">${tt("pickerFooter")}</p>
         </footer>
       </div>`
     // Close X — same `corpan:exit` event the practice mode fires

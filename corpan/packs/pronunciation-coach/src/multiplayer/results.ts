@@ -13,6 +13,7 @@ import {
   type RoundHistory,
 } from "./state"
 import { pmConfirm } from "./confirm"
+import { tt } from "../i18n"
 
 const escapeHtml = (s: string): string =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -37,10 +38,10 @@ export const mountBetweenRounds = (opts: BetweenRoundsOpts): BetweenRoundsHandle
     .filter(Boolean)
   const winnerLine =
     winnerNames.length === 0
-      ? "No round winner."
+      ? tt("resBetweenNoWinner")
       : winnerNames.length === 1
-        ? `${winnerNames[0]} wins the round`
-        : `${winnerNames.join(" & ")} tie for the round`
+        ? tt("resWinsRound", { name: winnerNames[0] })
+        : tt("resTieRound", { names: winnerNames.join(" & ") })
 
   const scoreRows = round.results
     .map((r) => {
@@ -61,10 +62,10 @@ export const mountBetweenRounds = (opts: BetweenRoundsOpts): BetweenRoundsHandle
     <div class="pc-pm-root pc-pm-results">
       <header class="pc-pm-head">
         <div class="pc-pm-head-eyebrow-row">
-          <span class="pc-pm-eyebrow">Round ${round.round} · First to ${game.winTarget}</span>
+          <span class="pc-pm-eyebrow">${tt("resBetweenEyebrow", { round: String(round.round), target: String(game.winTarget) })}</span>
         </div>
         <div class="pc-pm-head-action-row">
-          <button class="pc-pm-back" data-pm-quit aria-label="Quit game">‹</button>
+          <button class="pc-pm-back" data-pm-quit aria-label="${escapeHtml(tt("roundQuitGame"))}">‹</button>
           <span class="pc-pm-headline">${escapeHtml(winnerLine)}</span>
           <div class="pc-pm-head-spacer"></div>
         </div>
@@ -72,16 +73,16 @@ export const mountBetweenRounds = (opts: BetweenRoundsOpts): BetweenRoundsHandle
 
       <main class="pc-pm-results-body">
         <p class="pc-pm-results-phrase">
-          <span class="pc-pm-results-phrase-label">Phrase</span>
+          <span class="pc-pm-results-phrase-label">${escapeHtml(tt("resPhrase"))}</span>
           <span class="pc-pm-results-phrase-text">${escapeHtml(round.expectedText)}</span>
         </p>
         <table class="pc-pm-scoreboard">
           <thead>
             <tr>
-              <th>Player</th>
-              <th>Best %</th>
-              <th>Heard</th>
-              <th>Wins</th>
+              <th>${escapeHtml(tt("resColPlayer"))}</th>
+              <th>${escapeHtml(tt("resColBest"))}</th>
+              <th>${escapeHtml(tt("resColHeard"))}</th>
+              <th>${escapeHtml(tt("resColWins"))}</th>
             </tr>
           </thead>
           <tbody>${scoreRows}</tbody>
@@ -89,17 +90,17 @@ export const mountBetweenRounds = (opts: BetweenRoundsOpts): BetweenRoundsHandle
       </main>
 
       <footer class="pc-pm-results-foot">
-        <button class="pc-pm-pass" data-pm-quit2>Quit</button>
-        <button class="pc-pm-start" data-pm-next>Next round →</button>
+        <button class="pc-pm-pass" data-pm-quit2>${escapeHtml(tt("commonQuit"))}</button>
+        <button class="pc-pm-start" data-pm-next>${escapeHtml(tt("resNextRound"))}</button>
       </footer>
     </div>`
 
   const wire = () => {
     const handleQuit = async () => {
       const proceed = await pmConfirm({
-        message: "Quit this game?",
-        confirmLabel: "Quit",
-        cancelLabel: "Keep playing",
+        message: tt("quitConfirmTitle"),
+        confirmLabel: tt("commonQuit"),
+        cancelLabel: tt("quitConfirmKeep"),
         destructive: true,
       })
       if (proceed) opts.onQuit()
@@ -139,10 +140,10 @@ export const mountGameOver = (opts: GameOverOpts): GameOverHandle => {
   const winners = gameWinners(game)
   const winnerHeadline =
     winners.length === 0
-      ? "Game over"
+      ? tt("resGameOver")
       : winners.length === 1
-        ? `${winners[0].name} wins!`
-        : `${winners.map((p) => p.name).join(" & ")} tie!`
+        ? tt("resWinsGame", { name: winners[0].name })
+        : tt("resTieGame", { names: winners.map((p) => p.name).join(" & ") })
 
   // Final cumulative scoreboard, sorted descending by wins.
   const sorted = [...game.players].sort(
@@ -175,7 +176,7 @@ export const mountGameOver = (opts: GameOverOpts): GameOverHandle => {
     <div class="pc-pm-root pc-pm-gameover">
       <header class="pc-pm-head pc-pm-gameover-head">
         <div class="pc-pm-head-eyebrow-row">
-          <span class="pc-pm-eyebrow">${escapeHtml(`Best of ${game.winTarget * 2 - 1}-ish · ${game.history.length} rounds played`)}</span>
+          <span class="pc-pm-eyebrow">${escapeHtml(tt("resGameOverEyebrow", { bestOf: String(game.winTarget * 2 - 1), rounds: String(game.history.length) }))}</span>
         </div>
         <div class="pc-pm-head-action-row">
           <span class="pc-pm-headline pc-pm-winner">${escapeHtml(winnerHeadline)}</span>
@@ -186,10 +187,10 @@ export const mountGameOver = (opts: GameOverOpts): GameOverHandle => {
         <table class="pc-pm-scoreboard pc-pm-scoreboard-final">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Player</th>
-              <th>Round wins</th>
-              <th>Avg %</th>
+              <th>${escapeHtml(tt("resColRank"))}</th>
+              <th>${escapeHtml(tt("resColPlayer"))}</th>
+              <th>${escapeHtml(tt("resColRoundWins"))}</th>
+              <th>${escapeHtml(tt("resColAvg"))}</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -197,8 +198,8 @@ export const mountGameOver = (opts: GameOverOpts): GameOverHandle => {
       </main>
 
       <footer class="pc-pm-results-foot">
-        <button class="pc-pm-pass" data-pm-done>Done</button>
-        <button class="pc-pm-start" data-pm-again>Play again</button>
+        <button class="pc-pm-pass" data-pm-done>${escapeHtml(tt("commonDone"))}</button>
+        <button class="pc-pm-start" data-pm-again>${escapeHtml(tt("resPlayAgain"))}</button>
       </footer>
     </div>`
 
