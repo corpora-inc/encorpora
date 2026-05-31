@@ -40,9 +40,11 @@ def extract_en():
     if not m:
         sys.exit("could not find `const en: Dict = {...}` in i18n.ts")
     body = m.group(1)
-    # parse `key: "value",` (values may contain escaped quotes)
+    # parse `key: "value",` (values may contain escaped quotes). Decode via
+    # json.loads on the quoted literal — the en dict has real Unicode (curly
+    # quotes, em dashes); unicode_escape would mangle multi-byte UTF-8.
     pairs = re.findall(r'\n\s*(\w+):\s*"((?:[^"\\]|\\.)*)",', body)
-    return {k: v.encode().decode("unicode_escape") for k, v in pairs}
+    return {k: json.loads(f'"{v}"') for k, v in pairs}
 
 def target_langs(argv):
     if argv:
@@ -92,22 +94,54 @@ def translate(en_dict, lang, key):
 def ts_literal(s):
     return json.dumps(s, ensure_ascii=False)
 
+def extract_locales(en):
+    """Parse the EXISTING LOCALES block out of i18n.ts so a partial --from-json
+    can MERGE into it instead of resetting every untouched key to English.
+    Returns {base: {key: value}} for every non-en locale already in the file."""
+    src = I18N.read_text()
+    m = re.search(
+        r"// GENERATED_LOCALES_START\n(.*?)\n// GENERATED_LOCALES_END", src, re.S
+    )
+    if not m:
+        return {}
+    body = m.group(1)
+    out = {}
+    # match `  <code>: { ... },` blocks (code may be bare base like `pt`)
+    for bm in re.finditer(r"\n  ([a-z]{2,3}(?:-[A-Za-z]+)?): \{(.*?)\n  \},", body, re.S):
+        code, inner = bm.group(1), bm.group(2)
+        if code == "en":
+            continue
+        pairs = re.findall(r'\n\s*(\w+):\s*"((?:[^"\\]|\\.)*)",', inner)
+        # Values are written via json.dumps(ensure_ascii=False): real Unicode with
+        # only \" \\ \n-style escapes. Reverse with json.loads on the quoted literal
+        # — NEVER unicode_escape, which mangles raw multi-byte UTF-8 into mojibake.
+        out[code] = {k: json.loads(f'"{v}"') for k, v in pairs}
+    return out
+
+
 def from_json(path, en):
     """Inject translations from a prebuilt JSON file: {code: {key: value}}.
-    Validates placeholders per key; English-fallback on any break/missing."""
+    MERGES onto the locales already in i18n.ts: existing translated keys are
+    preserved, the JSON's keys overlay them, and any key still missing falls
+    back to English. Validates {placeholder} tokens per key."""
     data = json.loads(pathlib.Path(path).read_text())
-    locales = {}
+    locales = {base: dict(d) for base, d in extract_locales(en).items()}
     for code, d in data.items():
         base = code.split("-")[0]
-        if base == "en" or base in locales:
+        if base == "en":
             continue
-        merged = {}
+        locales.setdefault(base, {})
+        for k, tv in d.items():
+            if k not in en or not isinstance(tv, str) or not tv.strip():
+                continue
+            want = set(re.findall(r"\{(\w+)\}", en[k]))
+            got = set(re.findall(r"\{(\w+)\}", tv))
+            if want == got:
+                locales[base][k] = tv
+    # English-fallback for any key still missing in a locale (keeps Dict total)
+    for base, merged in locales.items():
         for k, v in en.items():
-            tv = d.get(k)
-            want = set(re.findall(r"\{(\w+)\}", v))
-            got = set(re.findall(r"\{(\w+)\}", tv)) if isinstance(tv, str) else set()
-            merged[k] = tv if isinstance(tv, str) and tv.strip() and want == got else v
-        locales[base] = merged
+            merged.setdefault(k, v)
     return locales
 
 def main():

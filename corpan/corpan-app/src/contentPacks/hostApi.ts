@@ -783,6 +783,13 @@ export const createHostApi = (packId?: string): HostApi => {
         relPath,
       })
     },
+    discoverPacksByType: async (_packType: string) => {
+      // Native discovery (content_packs_list_installed_by_type + manifest
+      // packType/source fields) is not wired yet. Returning [] means Tutomaton
+      // runs with its built-in sources only; installed source packs slot in the
+      // moment the native command lands — no Tutomaton release required.
+      return []
+    },
     stt,
     llm,
   }

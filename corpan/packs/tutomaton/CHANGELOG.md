@@ -6,6 +6,32 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Multi-source RAG SourceRegistry** (`RAG_SOURCES_CONTRACT.md`): the
+  `LanguageManager` now resolves **0..N sources per language** instead of one
+  hard-wired retriever. Built-in sources are declared in the manifest
+  (`languages[<code>].sources[]`, keyed by source id); installed source packs are
+  discovered at runtime via the new `hostApi.discoverPacksByType("tutomaton-rag-source")`
+  (host stub returns `[]` for now — built-ins-only until native discovery lands,
+  no Tutomaton release needed to add sources later). Per-language enable prefs
+  (`tutomaton.sources.<lang>.<id>`, default-on), `requiredHostApis` gating,
+  universal-source (`tutomatonLanguage:"*"`) handling, single-authoritative
+  enforcement, and the §4 merge (authoritative theme-bypass; ≤2 grounding blocks
+  labeled `<reference type="canonical"/"inspiration">` per §8) are all wired.
+  `retrievers.ts` is now keyed by source id. es + zh ship as authoritative
+  `tutomaton-corpus-<code>-core-v1` built-in sources (exact live set preserved;
+  a lone authoritative source still injects its reference raw → byte-identical
+  grounding). `module.json` round-trip dropped — voice + sources come from the
+  manifest, prompts from conventional paths (removes the 404-parse failure mode).
+- Last selected tutor language is persisted (`tutomaton.lastLanguage`) and
+  restored on re-entry, so exiting and reopening the pack lands on the same tutor.
+- Welcome-state starter chips are now localized into the user's native language
+  (4 generic prompts, all 46 chrome locales incl. Cantonese) instead of hardcoded
+  English. `tools/gen_i18n.py` gained a non-destructive `--from-json` merge mode
+  (parses TS string literals via JSON semantics — never `unicode_escape`, which
+  was silently mangling multi-byte UTF-8; also fixed a 3-letter locale-code regex
+  that had been dropping `yue`).
+
+### Added (earlier)
 - All supported languages now ship as prompt-only tutors, resilient to 0-N RAG
   corpora. `LanguageManager._loadRetriever` returns a no-op retriever
   ({kind:"none"}) when no retriever is bundled instead of throwing, so any

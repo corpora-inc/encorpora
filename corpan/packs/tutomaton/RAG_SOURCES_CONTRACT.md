@@ -147,7 +147,6 @@ blocks; first-by-priority." Keep it boring and correct.
 ## Open items for the two agents to confirm
 - [x] Backend: author Arabic (and others) as `sources/<id>/` with this manifest + the
       object-row retriever contract (§3). Provide id, sha, db filename per source for the
-<<<<<<< HEAD
       manifest + catalog. — **agreed; backend additionally migrates the 6 published
       corpora (en, es, zh, fr, de, ja) atomically; see §11.**
 - [x] Frontend (me): build SourceRegistry + §4 merge + prefs storage + ~~legacy shim~~;
@@ -155,13 +154,6 @@ blocks; first-by-priority." Keep it boring and correct.
       — **agreed; per §11, the §2 backwards-compat shim is dropped (no legacy code surface
       for initial release).**
 - [x] Native: `packType`/source fields in `read_manifest_info`; `discoverPacksByType`
-=======
-      manifest + catalog.
-- [ ] Frontend (me): build SourceRegistry + §4 merge + prefs storage; migrate every built-in
-      language to `sources/<id>/`; add the `discoverPacksByType` hostApi wrapper once the
-      native command exists.
-- [ ] Native: `packType`/source fields in `read_manifest_info`; `discoverPacksByType`
->>>>>>> refs/remotes/origin/moonshot-15-plus-v2
       command + hostApi method. (Frontend can stub the hostApi method to "[]" until native
       lands, so the pack works with built-ins only in the meantime.) — **agreed.**
 - [x] Confirm: priority default (0) + built-in-core priority (100) acceptable.

@@ -165,7 +165,27 @@
       "contentVersion": "0.1.0",
       "sizeMb": 41,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/es-0.1.0.zip",
-      "sha256": "ef7acbd88f461d686c9995ff868a77e06639fbe8baf432e23bcf0c6f828bbf8b"
+      "sha256": "ef7acbd88f461d686c9995ff868a77e06639fbe8baf432e23bcf0c6f828bbf8b",
+      "sources": [
+        {
+          "id": "tutomaton-corpus-es-core-v1",
+          "name": {
+            "en": "Spanish Core",
+            "es": "Núcleo de español"
+          },
+          "authoritative": true,
+          "priority": 100,
+          "categories": [
+            "vocab",
+            "grammar",
+            "themes",
+            "idioms"
+          ],
+          "schemaVersion": 1,
+          "dbName": "tutomaton-es",
+          "bundled": true
+        }
+      ]
     },
     {
       "code": "fa",
@@ -653,7 +673,27 @@
       "contentVersion": "0.2.0",
       "sizeMb": 1,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-0.2.0.zip",
-      "sha256": "f62add210e191ed33f5fd081192521c5a2add3c9e5cdf65814eb587cb7c63c2d"
+      "sha256": "f62add210e191ed33f5fd081192521c5a2add3c9e5cdf65814eb587cb7c63c2d",
+      "sources": [
+        {
+          "id": "tutomaton-corpus-zh-core-v1",
+          "name": {
+            "en": "Mandarin Core",
+            "zh": "普通话核心"
+          },
+          "authoritative": true,
+          "priority": 100,
+          "categories": [
+            "vocab",
+            "grammar",
+            "themes",
+            "idioms"
+          ],
+          "schemaVersion": 1,
+          "dbName": "tutomaton-zh",
+          "bundled": true
+        }
+      ]
     },
     {
       "code": "zh-Hans",
@@ -685,7 +725,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-05-31T17:53:03.860Z",
+  "devRevision": "2026-05-31T19:06:45.468Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

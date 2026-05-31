@@ -166,23 +166,6 @@ const LANG_FLAG: Record<string, string> = {
   ur: "🇵🇰", ar: "🇸🇦", fa: "🇮🇷", he: "🇮🇱",
 }
 
-/** Per-language starter prompts shown in the welcome state. */
-const SUGGESTIONS: Record<string, string[]> = {
-  es: [
-    "How do you say “good morning”?",
-    "Teach me food vocabulary",
-    "Conjugate “hablar”",
-    "When do I use the subjunctive?",
-  ],
-  zh: [
-    "How do I use 了?",
-    "Teach me food vocabulary",
-    "Explain the four tones",
-    "Difference between 不 and 没",
-  ],
-}
-const SUGGESTIONS_FALLBACK = ["Teach me some greetings", "How do you say “thank you”?", "Give me food vocabulary"]
-
 function nativeName(entry: LanguageRegistryEntry): string {
   return entry.displayName[entry.code] || entry.displayName.en || entry.code
 }
@@ -272,6 +255,26 @@ const PackModule: ContentPackModule = {
     // (`languages/<code>/data/<db>.sqlite3`). Using the DB's parent dir here
     // would double the `data/` segment → queryPackDb "Database file not found".
     const moduleSubDir = (code: string): string => `languages/${code}`
+
+    // Persist the last selected tutor so exiting and re-entering the pack lands
+    // back on the same language. Validated against the live registry on read
+    // (a hidden/removed code is ignored → falls through to the default pick).
+    const LAST_LANG_KEY = "tutomaton.lastLanguage"
+    function saveLastLang(code: string): void {
+      try {
+        localStorage.setItem(LAST_LANG_KEY, code)
+      } catch {
+        /* storage full/unavailable — non-fatal, just won't restore next time */
+      }
+    }
+    function loadLastLang(): string | null {
+      try {
+        const code = localStorage.getItem(LAST_LANG_KEY)
+        return code && registry.some((r) => r.code === code) ? code : null
+      } catch {
+        return null
+      }
+    }
 
     // ---------- LanguageManager ----------
     const langMgr = new LanguageManager({
@@ -662,7 +665,11 @@ const PackModule: ContentPackModule = {
       langRow.appendChild(more)
 
       const chipsRow = wrap.querySelector<HTMLDivElement>(".lt-chips")!
-      const chips = (code && SUGGESTIONS[code]) || SUGGESTIONS_FALLBACK
+      // Generic starter prompts, localized into the user's native UI language
+      // (the tutor reads any language and replies in the target). Keeping them
+      // generic avoids a target×UI translation matrix while still showing the
+      // chips in the learner's own language.
+      const chips = [t("suggestHello"), t("suggestFood"), t("suggestIntroduce"), t("suggestGrammar")]
       for (const c of chips) {
         const chip = document.createElement("button")
         chip.className = "lt-chip"
@@ -803,6 +810,7 @@ const PackModule: ContentPackModule = {
         })
         state.messages = []
         installedSet.add(code)
+        saveLastLang(code)
         renderLangs()
         renderWelcome()
       } catch (e) {
@@ -1015,7 +1023,8 @@ const PackModule: ContentPackModule = {
     const installedCodes = await langMgr.installed()
     installedSet = new Set(installedCodes)
     renderLangs()
-    const initialCode = installedCodes[0] || registry[0]?.code
+    // Restore the last tutor first; else first installed; else first in registry.
+    const initialCode = loadLastLang() || installedCodes[0] || registry[0]?.code
     if (initialCode) await switchLanguage(initialCode)
     void modelMgr.check()
     syncSendEnabled()

@@ -48,6 +48,11 @@ export type I18nKey =
   | "downloadingLessons"
   | "couldntLoad"        // "Couldn't load {lang}: {error}"
   | "couldntCopy"
+  // Welcome-state starter chips (generic; localized into the native UI language).
+  | "suggestHello"
+  | "suggestFood"
+  | "suggestIntroduce"
+  | "suggestGrammar"
 
 type Dict = Record<I18nKey, string>
 
@@ -88,6 +93,10 @@ const en: Dict = {
   downloadingLessons: "Downloading lessons, vocabulary & grammar…",
   couldntLoad: "Couldn't load {lang}: {error}",
   couldntCopy: "Couldn't copy to the clipboard.",
+  suggestHello: "How do you say “hello”?",
+  suggestFood: "Teach me some food words",
+  suggestIntroduce: "Help me introduce myself",
+  suggestGrammar: "Explain a basic grammar point",
 }
 
 // ---- Generated locales (filled by tools/gen_i18n.py). en is always present. ----
@@ -130,6 +139,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "جارٍ تنزيل الدروس والمفردات والقواعد…",
     couldntLoad: "تعذّر تحميل {lang}: {error}",
     couldntCopy: "تعذّر النسخ إلى الحافظة.",
+    suggestHello: "كيف أقول «مرحبا»؟",
+    suggestFood: "علّمني بعض كلمات الطعام",
+    suggestIntroduce: "ساعدني في التعريف بنفسي",
+    suggestGrammar: "اشرح لي قاعدة نحوية بسيطة",
   },
   bg: {
     home: "Начало",
@@ -167,6 +180,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Изтегляме уроци, лексика и граматика…",
     couldntLoad: "Неуспешно зареждане на {lang}: {error}",
     couldntCopy: "Неуспешно копиране в клипборда.",
+    suggestHello: "Как се казва „здравей“?",
+    suggestFood: "Научи ме на думи за храна",
+    suggestIntroduce: "Помогни ми да се представя",
+    suggestGrammar: "Обясни ми основно граматично правило",
   },
   bn: {
     home: "হোম",
@@ -204,6 +221,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "পাঠ, শব্দভাণ্ডার ও ব্যাকরণ ডাউনলোড হচ্ছে…",
     couldntLoad: "{lang} লোড করা যায়নি: {error}",
     couldntCopy: "ক্লিপবোর্ডে কপি করা যায়নি।",
+    suggestHello: "“হ্যালো” কীভাবে বলে?",
+    suggestFood: "আমাকে কিছু খাবারের শব্দ শেখাও",
+    suggestIntroduce: "নিজের পরিচয় দিতে সাহায্য করো",
+    suggestGrammar: "একটি সহজ ব্যাকরণ নিয়ম বুঝিয়ে দাও",
   },
   ca: {
     home: "Inici",
@@ -241,6 +262,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "S'estan baixant lliçons, vocabulari i gramàtica…",
     couldntLoad: "No s'ha pogut carregar {lang}: {error}",
     couldntCopy: "No s'ha pogut copiar al porta-retalls.",
+    suggestHello: "Com es diu «hola»?",
+    suggestFood: "Ensenya'm paraules de menjar",
+    suggestIntroduce: "Ajuda'm a presentar-me",
+    suggestGrammar: "Explica'm un punt de gramàtica bàsic",
   },
   cs: {
     home: "Domů",
@@ -278,6 +303,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Stahujeme lekce, slovní zásobu a gramatiku…",
     couldntLoad: "Nepodařilo se načíst {lang}: {error}",
     couldntCopy: "Nepodařilo se zkopírovat do schránky.",
+    suggestHello: "Jak se řekne „ahoj“?",
+    suggestFood: "Nauč mě slovíčka o jídle",
+    suggestIntroduce: "Pomoz mi představit se",
+    suggestGrammar: "Vysvětli mi základní gramatiku",
   },
   da: {
     home: "Hjem",
@@ -315,6 +344,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Downloader lektioner, ordforråd og grammatik…",
     couldntLoad: "Kunne ikke indlæse {lang}: {error}",
     couldntCopy: "Kunne ikke kopiere til udklipsholderen.",
+    suggestHello: "Hvordan siger man „hej“?",
+    suggestFood: "Lær mig nogle ord om mad",
+    suggestIntroduce: "Hjælp mig med at præsentere mig selv",
+    suggestGrammar: "Forklar en grundlæggende grammatikregel",
   },
   de: {
     home: "Start",
@@ -352,6 +385,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Lektionen, Vokabeln und Grammatik werden heruntergeladen…",
     couldntLoad: "{lang} konnte nicht geladen werden: {error}",
     couldntCopy: "Konnte nicht in die Zwischenablage kopieren.",
+    suggestHello: "Wie sagt man „hallo“?",
+    suggestFood: "Bring mir ein paar Wörter zum Essen bei",
+    suggestIntroduce: "Hilf mir, mich vorzustellen",
+    suggestGrammar: "Erklär mir eine einfache Grammatikregel",
   },
   el: {
     home: "Αρχική",
@@ -389,6 +426,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Λήψη μαθημάτων, λεξιλογίου και γραμματικής…",
     couldntLoad: "Δεν ήταν δυνατή η φόρτωση {lang}: {error}",
     couldntCopy: "Δεν ήταν δυνατή η αντιγραφή στο πρόχειρο.",
+    suggestHello: "Πώς λέμε «γεια»;",
+    suggestFood: "Μάθε μου μερικές λέξεις για το φαγητό",
+    suggestIntroduce: "Βοήθησέ με να συστηθώ",
+    suggestGrammar: "Εξήγησέ μου έναν βασικό γραμματικό κανόνα",
   },
   es: {
     home: "Inicio",
@@ -426,6 +467,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Descargando lecciones, vocabulario y gramática…",
     couldntLoad: "No se pudo cargar {lang}: {error}",
     couldntCopy: "No se pudo copiar al portapapeles.",
+    suggestHello: "¿Cómo se dice «hola»?",
+    suggestFood: "Enséñame palabras de comida",
+    suggestIntroduce: "Ayúdame a presentarme",
+    suggestGrammar: "Explícame un punto básico de gramática",
   },
   fa: {
     home: "خانه",
@@ -463,6 +508,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "در حال دانلود درس‌ها، واژگان و دستور زبان…",
     couldntLoad: "بارگذاری {lang} ممکن نشد: {error}",
     couldntCopy: "کپی به کلیپ‌بورد ممکن نشد.",
+    suggestHello: "«سلام» چطور گفته می‌شود؟",
+    suggestFood: "چند کلمه‌ی غذا به من یاد بده",
+    suggestIntroduce: "کمکم کن خودم را معرفی کنم",
+    suggestGrammar: "یک نکته‌ی دستوری ساده برایم توضیح بده",
   },
   fi: {
     home: "Etusivu",
@@ -500,6 +549,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Ladataan oppitunteja, sanastoa ja kielioppia…",
     couldntLoad: "Kielen {lang} lataus epäonnistui: {error}",
     couldntCopy: "Leikepöydälle kopiointi epäonnistui.",
+    suggestHello: "Miten sanotaan ”hei”?",
+    suggestFood: "Opeta minulle ruokasanoja",
+    suggestIntroduce: "Auta minua esittäytymään",
+    suggestGrammar: "Selitä jokin peruskielioppisääntö",
   },
   fr: {
     home: "Accueil",
@@ -537,6 +590,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Téléchargement des leçons, du vocabulaire et de la grammaire…",
     couldntLoad: "Impossible de charger {lang} : {error}",
     couldntCopy: "Impossible de copier dans le presse-papiers.",
+    suggestHello: "Comment dit-on « bonjour » ?",
+    suggestFood: "Apprends-moi des mots de nourriture",
+    suggestIntroduce: "Aide-moi à me présenter",
+    suggestGrammar: "Explique-moi un point de grammaire de base",
   },
   gu: {
     home: "હોમ",
@@ -574,6 +631,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "પાઠ, શબ્દભંડોળ અને વ્યાકરણ ડાઉનલોડ થઈ રહ્યું છે…",
     couldntLoad: "{lang} લોડ થઈ શકી નહીં: {error}",
     couldntCopy: "ક્લિપબોર્ડ પર કૉપી થઈ શકી નહીં.",
+    suggestHello: "“હેલો” કેવી રીતે કહેવાય?",
+    suggestFood: "મને ખોરાકના થોડા શબ્દો શીખવો",
+    suggestIntroduce: "મારી ઓળખાણ આપવામાં મદદ કરો",
+    suggestGrammar: "એક પાયાનો વ્યાકરણ નિયમ સમજાવો",
   },
   he: {
     home: "בית",
@@ -611,6 +672,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "מוריד שיעורים, אוצר מילים ודקדוק…",
     couldntLoad: "לא ניתן לטעון את {lang}: {error}",
     couldntCopy: "לא ניתן להעתיק ללוח.",
+    suggestHello: "איך אומרים ”שלום”?",
+    suggestFood: "תלמד אותי כמה מילים של אוכל",
+    suggestIntroduce: "עזור לי להציג את עצמי",
+    suggestGrammar: "תסביר לי כלל דקדוק בסיסי",
   },
   hi: {
     home: "होम",
@@ -648,6 +713,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "पाठ, शब्दावली और व्याकरण डाउनलोड हो रहे हैं…",
     couldntLoad: "{lang} लोड नहीं हो सकी: {error}",
     couldntCopy: "क्लिपबोर्ड पर कॉपी नहीं हो सका।",
+    suggestHello: "“हैलो” कैसे कहते हैं?",
+    suggestFood: "मुझे खाने के कुछ शब्द सिखाओ",
+    suggestIntroduce: "अपना परिचय देने में मेरी मदद करो",
+    suggestGrammar: "एक बुनियादी व्याकरण नियम समझाओ",
   },
   hr: {
     home: "Početna",
@@ -685,6 +754,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Preuzimamo lekcije, vokabular i gramatiku…",
     couldntLoad: "Nije moguće učitati {lang}: {error}",
     couldntCopy: "Nije moguće kopirati u međuspremnik.",
+    suggestHello: "Kako se kaže „bok“?",
+    suggestFood: "Nauči me riječi o hrani",
+    suggestIntroduce: "Pomozi mi da se predstavim",
+    suggestGrammar: "Objasni mi osnovno gramatičko pravilo",
   },
   hu: {
     home: "Kezdőlap",
@@ -722,6 +795,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Leckék, szókincs és nyelvtan letöltése…",
     couldntLoad: "Nem sikerült betölteni a következőt: {lang}: {error}",
     couldntCopy: "Nem sikerült a vágólapra másolni.",
+    suggestHello: "Hogy mondják, hogy „szia”?",
+    suggestFood: "Taníts meg pár ételszót",
+    suggestIntroduce: "Segíts bemutatkozni",
+    suggestGrammar: "Magyarázz el egy alapvető nyelvtani szabályt",
   },
   id: {
     home: "Beranda",
@@ -759,6 +836,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Mengunduh pelajaran, kosakata & tata bahasa…",
     couldntLoad: "Tidak dapat memuat {lang}: {error}",
     couldntCopy: "Tidak dapat menyalin ke papan klip.",
+    suggestHello: "Bagaimana cara mengatakan “halo”?",
+    suggestFood: "Ajari aku beberapa kata makanan",
+    suggestIntroduce: "Bantu aku memperkenalkan diri",
+    suggestGrammar: "Jelaskan satu poin tata bahasa dasar",
   },
   it: {
     home: "Home",
@@ -796,6 +877,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Download di lezioni, vocabolario e grammatica…",
     couldntLoad: "Impossibile caricare {lang}: {error}",
     couldntCopy: "Impossibile copiare negli appunti.",
+    suggestHello: "Come si dice «ciao»?",
+    suggestFood: "Insegnami delle parole sul cibo",
+    suggestIntroduce: "Aiutami a presentarmi",
+    suggestGrammar: "Spiegami un punto di grammatica di base",
   },
   ja: {
     home: "ホーム",
@@ -833,6 +918,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "レッスン、語彙、文法をダウンロード中…",
     couldntLoad: "{lang}を読み込めませんでした：{error}",
     couldntCopy: "クリップボードにコピーできませんでした。",
+    suggestHello: "「こんにちは」は何と言いますか？",
+    suggestFood: "食べ物の単語を教えて",
+    suggestIntroduce: "自己紹介を手伝って",
+    suggestGrammar: "基本的な文法を説明して",
   },
   ko: {
     home: "홈",
@@ -870,6 +959,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "레슨, 어휘, 문법을 다운로드하고 있어요…",
     couldntLoad: "{lang}을(를) 불러올 수 없어요: {error}",
     couldntCopy: "클립보드에 복사할 수 없어요.",
+    suggestHello: "“안녕하세요”는 어떻게 말해요?",
+    suggestFood: "음식 단어를 가르쳐 줘",
+    suggestIntroduce: "내 소개를 도와줘",
+    suggestGrammar: "기초 문법을 설명해 줘",
   },
   lt: {
     home: "Pradžia",
@@ -907,6 +1000,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Atsisiunčiamos pamokos, žodynas ir gramatika…",
     couldntLoad: "Nepavyko įkelti {lang}: {error}",
     couldntCopy: "Nepavyko nukopijuoti į iškarpinę.",
+    suggestHello: "Kaip pasakyti „labas“?",
+    suggestFood: "Išmokyk mane maisto žodžių",
+    suggestIntroduce: "Padėk man prisistatyti",
+    suggestGrammar: "Paaiškink pagrindinę gramatikos taisyklę",
   },
   mr: {
     home: "होम",
@@ -944,6 +1041,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "धडे, शब्दसंग्रह आणि व्याकरण डाउनलोड होत आहे…",
     couldntLoad: "{lang} लोड करता आली नाही: {error}",
     couldntCopy: "क्लिपबोर्डवर कॉपी करता आले नाही.",
+    suggestHello: "“हॅलो” कसे म्हणतात?",
+    suggestFood: "मला खाण्याचे काही शब्द शिकव",
+    suggestIntroduce: "माझी ओळख करून देण्यात मदत कर",
+    suggestGrammar: "एक मूलभूत व्याकरण नियम समजावून सांग",
   },
   ms: {
     home: "Laman utama",
@@ -981,6 +1082,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Memuat turun pelajaran, kosa kata & tatabahasa…",
     couldntLoad: "Tidak dapat memuatkan {lang}: {error}",
     couldntCopy: "Tidak dapat menyalin ke papan keratan.",
+    suggestHello: "Bagaimana hendak menyebut “helo”?",
+    suggestFood: "Ajar saya beberapa perkataan makanan",
+    suggestIntroduce: "Bantu saya memperkenalkan diri",
+    suggestGrammar: "Terangkan satu poin tatabahasa asas",
   },
   ne: {
     home: "गृहपृष्ठ",
@@ -1018,6 +1123,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "पाठ, शब्दावली र व्याकरण डाउनलोड हुँदै…",
     couldntLoad: "{lang} लोड गर्न सकिएन: {error}",
     couldntCopy: "क्लिपबोर्डमा प्रतिलिपि गर्न सकिएन।",
+    suggestHello: "“नमस्ते” कसरी भन्ने?",
+    suggestFood: "मलाई खानाका केही शब्द सिकाउनुहोस्",
+    suggestIntroduce: "मलाई आफ्नो परिचय दिन मद्दत गर्नुहोस्",
+    suggestGrammar: "एउटा आधारभूत व्याकरण नियम बुझाउनुहोस्",
   },
   nl: {
     home: "Start",
@@ -1055,6 +1164,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Lessen, woordenschat en grammatica worden gedownload…",
     couldntLoad: "Kan {lang} niet laden: {error}",
     couldntCopy: "Kan niet naar het klembord kopiëren.",
+    suggestHello: "Hoe zeg je „hallo”?",
+    suggestFood: "Leer me wat woorden over eten",
+    suggestIntroduce: "Help me mezelf voor te stellen",
+    suggestGrammar: "Leg een basis grammaticaregel uit",
   },
   no: {
     home: "Hjem",
@@ -1092,6 +1205,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Laster ned leksjoner, ordforråd og grammatikk…",
     couldntLoad: "Kunne ikke laste inn {lang}: {error}",
     couldntCopy: "Kunne ikke kopiere til utklippstavlen.",
+    suggestHello: "Hvordan sier man „hei“?",
+    suggestFood: "Lær meg noen ord om mat",
+    suggestIntroduce: "Hjelp meg å presentere meg selv",
+    suggestGrammar: "Forklar en grunnleggende grammatikkregel",
   },
   pa: {
     home: "گھر",
@@ -1129,6 +1246,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Downloading lessons, vocabulary & grammarâ¦",
     couldntLoad: "Couldn't load {lang}: {error}",
     couldntCopy: "کلپ بورڈ تے کاپی نئیں ہو سکیا۔",
+    suggestHello: "“ਸਤ ਸ੍ਰੀ ਅਕਾਲ” ਕਿਵੇਂ ਕਹੀਦਾ ਹੈ?",
+    suggestFood: "ਮੈਨੂੰ ਖਾਣੇ ਦੇ ਕੁਝ ਸ਼ਬਦ ਸਿਖਾਓ",
+    suggestIntroduce: "ਮੇਰੀ ਜਾਣ-ਪਛਾਣ ਕਰਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੋ",
+    suggestGrammar: "ਇੱਕ ਮੁੱਢਲਾ ਵਿਆਕਰਨ ਨੁਕਤਾ ਸਮਝਾਓ",
   },
   pl: {
     home: "Główna",
@@ -1166,6 +1287,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Pobieramy lekcje, słownictwo i gramatykę…",
     couldntLoad: "Nie udało się załadować {lang}: {error}",
     couldntCopy: "Nie udało się skopiować do schowka.",
+    suggestHello: "Jak powiedzieć „cześć”?",
+    suggestFood: "Naucz mnie kilku słów o jedzeniu",
+    suggestIntroduce: "Pomóż mi się przedstawić",
+    suggestGrammar: "Wyjaśnij mi podstawową zasadę gramatyki",
   },
   pt: {
     home: "Início",
@@ -1203,6 +1328,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Baixando lições, vocabulário e gramática…",
     couldntLoad: "Não foi possível carregar {lang}: {error}",
     couldntCopy: "Não foi possível copiar para a área de transferência.",
+    suggestHello: "Como se diz «olá»?",
+    suggestFood: "Ensina-me algumas palavras de comida",
+    suggestIntroduce: "Ajuda-me a apresentar-me",
+    suggestGrammar: "Explica-me um ponto básico de gramática",
   },
   ro: {
     home: "Acasă",
@@ -1240,6 +1369,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Se descarcă lecții, vocabular și gramatică…",
     couldntLoad: "Nu s-a putut încărca {lang}: {error}",
     couldntCopy: "Nu s-a putut copia în clipboard.",
+    suggestHello: "Cum se spune „salut”?",
+    suggestFood: "Învață-mă câteva cuvinte despre mâncare",
+    suggestIntroduce: "Ajută-mă să mă prezint",
+    suggestGrammar: "Explică-mi o regulă de gramatică de bază",
   },
   ru: {
     home: "Главная",
@@ -1277,6 +1410,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Скачиваем уроки, лексику и грамматику…",
     couldntLoad: "Не удалось загрузить {lang}: {error}",
     couldntCopy: "Не удалось скопировать в буфер обмена.",
+    suggestHello: "Как сказать «привет»?",
+    suggestFood: "Научи меня словам о еде",
+    suggestIntroduce: "Помоги мне представиться",
+    suggestGrammar: "Объясни базовое правило грамматики",
   },
   sk: {
     home: "Domov",
@@ -1314,6 +1451,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Sťahujeme lekcie, slovnú zásobu a gramatiku…",
     couldntLoad: "Nepodarilo sa načítať {lang}: {error}",
     couldntCopy: "Nepodarilo sa skopírovať do schránky.",
+    suggestHello: "Ako sa povie „ahoj“?",
+    suggestFood: "Nauč ma slovíčka o jedle",
+    suggestIntroduce: "Pomôž mi predstaviť sa",
+    suggestGrammar: "Vysvetli mi základné gramatické pravidlo",
   },
   sl: {
     home: "Domov",
@@ -1351,6 +1492,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Prenašamo lekcije, besedišče in slovnico…",
     couldntLoad: "Ni bilo mogoče naložiti {lang}: {error}",
     couldntCopy: "Ni bilo mogoče kopirati v odložišče.",
+    suggestHello: "Kako rečemo „živjo“?",
+    suggestFood: "Nauči me nekaj besed o hrani",
+    suggestIntroduce: "Pomagaj mi, da se predstavim",
+    suggestGrammar: "Razloži mi osnovno slovnično pravilo",
   },
   sr: {
     home: "Почетна",
@@ -1388,6 +1533,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Преузимамо лекције, речник и граматику…",
     couldntLoad: "Није могуће учитати {lang}: {error}",
     couldntCopy: "Није могуће копирати у клипборд.",
+    suggestHello: "Како се каже „здраво“?",
+    suggestFood: "Научи ме неке речи о храни",
+    suggestIntroduce: "Помози ми да се представим",
+    suggestGrammar: "Објасни ми основно граматичко правило",
   },
   sv: {
     home: "Hem",
@@ -1425,6 +1574,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Laddar ner lektioner, ordförråd och grammatik…",
     couldntLoad: "Kunde inte ladda {lang}: {error}",
     couldntCopy: "Kunde inte kopiera till urklipp.",
+    suggestHello: "Hur säger man ”hej”?",
+    suggestFood: "Lär mig några ord om mat",
+    suggestIntroduce: "Hjälp mig att presentera mig",
+    suggestGrammar: "Förklara en grundläggande grammatikregel",
   },
   sw: {
     home: "Mwanzo",
@@ -1462,6 +1615,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Inapakua masomo, msamiati na sarufi…",
     couldntLoad: "Imeshindwa kupakia {lang}: {error}",
     couldntCopy: "Imeshindwa kunakili kwenye ubao wa kunakili.",
+    suggestHello: "Unasemaje “habari”?",
+    suggestFood: "Nifundishe maneno kadhaa ya chakula",
+    suggestIntroduce: "Nisaidie kujitambulisha",
+    suggestGrammar: "Nieleze kanuni ya msingi ya sarufi",
   },
   ta: {
     home: "முகப்பு",
@@ -1499,6 +1656,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "பாடங்கள், சொற்களஞ்சியம் மற்றும் இலக்கணம் பதிவிறக்கப்படுகிறது…",
     couldntLoad: "{lang} ஐ ஏற்ற முடியவில்லை: {error}",
     couldntCopy: "கிளிப்போர்டுக்கு நகலெடுக்க முடியவில்லை.",
+    suggestHello: "“வணக்கம்” எப்படிச் சொல்வது?",
+    suggestFood: "சில உணவுச் சொற்களைக் கற்றுக்கொடு",
+    suggestIntroduce: "என்னை அறிமுகப்படுத்த உதவு",
+    suggestGrammar: "ஒரு அடிப்படை இலக்கணப் புள்ளியை விளக்கு",
   },
   te: {
     home: "హోమ్",
@@ -1536,6 +1697,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "పాఠాలు, పదజాలం మరియు వ్యాకరణం డౌన్‌లోడ్ అవుతోంది…",
     couldntLoad: "{lang} లోడ్ చేయలేకపోయింది: {error}",
     couldntCopy: "క్లిప్‌బోర్డ్‌కు కాపీ చేయలేకపోయింది.",
+    suggestHello: "“హలో” ఎలా చెప్పాలి?",
+    suggestFood: "నాకు కొన్ని ఆహార పదాలు నేర్పించు",
+    suggestIntroduce: "నన్ను పరిచయం చేసుకోవడంలో సహాయం చెయ్యి",
+    suggestGrammar: "ఒక ప్రాథమిక వ్యాకరణ అంశాన్ని వివరించు",
   },
   th: {
     home: "หน้าแรก",
@@ -1573,6 +1738,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "กำลังดาวน์โหลดบทเรียน คำศัพท์ และไวยากรณ์…",
     couldntLoad: "โหลด {lang} ไม่ได้: {error}",
     couldntCopy: "คัดลอกไปยังคลิปบอร์ดไม่ได้",
+    suggestHello: "“สวัสดี” พูดว่าอย่างไร?",
+    suggestFood: "สอนคำศัพท์เกี่ยวกับอาหารให้หน่อย",
+    suggestIntroduce: "ช่วยฉันแนะนำตัวหน่อย",
+    suggestGrammar: "อธิบายหลักไวยากรณ์พื้นฐานให้หน่อย",
   },
   tr: {
     home: "Ana sayfa",
@@ -1610,6 +1779,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Dersler, kelimeler ve dil bilgisi indiriliyor…",
     couldntLoad: "{lang} yüklenemedi: {error}",
     couldntCopy: "Panoya kopyalanamadı.",
+    suggestHello: "“Merhaba” nasıl denir?",
+    suggestFood: "Bana birkaç yemek kelimesi öğret",
+    suggestIntroduce: "Kendimi tanıtmama yardım et",
+    suggestGrammar: "Temel bir dilbilgisi konusunu açıkla",
   },
   uk: {
     home: "Головна",
@@ -1647,6 +1820,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Завантажуємо уроки, лексику та граматику…",
     couldntLoad: "Не вдалося завантажити {lang}: {error}",
     couldntCopy: "Не вдалося скопіювати до буфера обміну.",
+    suggestHello: "Як сказати «привіт»?",
+    suggestFood: "Навчи мене слів про їжу",
+    suggestIntroduce: "Допоможи мені представитися",
+    suggestGrammar: "Поясни базове граматичне правило",
   },
   ur: {
     home: "ہوم",
@@ -1684,6 +1861,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "اسباق، الفاظ اور گرامر ڈاؤن لوڈ ہو رہے ہیں…",
     couldntLoad: "{lang} لوڈ نہیں ہو سکی: {error}",
     couldntCopy: "کلپ بورڈ پر کاپی نہیں ہو سکا۔",
+    suggestHello: "“ہیلو” کیسے کہتے ہیں؟",
+    suggestFood: "مجھے کھانے کے کچھ الفاظ سکھائیں",
+    suggestIntroduce: "میرا تعارف کرانے میں میری مدد کریں",
+    suggestGrammar: "ایک بنیادی گرامر نکتہ سمجھائیں",
   },
   vi: {
     home: "Trang chủ",
@@ -1721,6 +1902,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "Đang tải bài học, từ vựng và ngữ pháp…",
     couldntLoad: "Không thể tải {lang}: {error}",
     couldntCopy: "Không thể sao chép vào bảng nhớ tạm.",
+    suggestHello: "“Xin chào” nói thế nào?",
+    suggestFood: "Dạy tôi vài từ về đồ ăn",
+    suggestIntroduce: "Giúp tôi giới thiệu bản thân",
+    suggestGrammar: "Giải thích một điểm ngữ pháp cơ bản",
   },
   yue: {
     home: "主頁",
@@ -1758,6 +1943,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "正在下載課程、詞彙同文法…",
     couldntLoad: "無法載入{lang}：{error}",
     couldntCopy: "無法複製到剪貼簿。",
+    suggestHello: "「你好」點講？",
+    suggestFood: "教我啲食物詞彙",
+    suggestIntroduce: "幫我自我介紹",
+    suggestGrammar: "解釋一個基本文法點",
   },
   zh: {
     home: "主页",
@@ -1795,6 +1984,10 @@ const LOCALES: Record<string, Partial<Dict>> = {
     downloadingLessons: "正在下载课程、词汇和语法…",
     couldntLoad: "无法加载{lang}：{error}",
     couldntCopy: "无法复制到剪贴板。",
+    suggestHello: "“你好”怎么说？",
+    suggestFood: "教我一些食物词汇",
+    suggestIntroduce: "帮我做自我介绍",
+    suggestGrammar: "讲解一个基础语法点",
   },
 }
 // GENERATED_LOCALES_END

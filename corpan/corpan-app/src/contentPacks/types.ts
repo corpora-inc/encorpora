@@ -417,6 +417,25 @@ export type HostApi = {
   ) => Promise<void>
   /** Whether `corpan-packs/<packId>/<relPath>` exists on disk and is non-empty. */
   packFileExists?: (packId: string, relPath: string) => Promise<boolean>
+  /** Discover installed content packs of a given `packType` (e.g.
+   *  "tutomaton-rag-source"), surfacing source-descriptor fields from each pack's
+   *  manifest. Tutomaton's RAG SourceRegistry uses this to pick up installed
+   *  source packs at runtime. Native discovery is pending — ships as a `[]` stub,
+   *  so packs run with built-in sources only until the native command lands. */
+  discoverPacksByType?: (packType: string) => Promise<
+    Array<{
+      id: string
+      packId: string
+      name?: Record<string, string>
+      tutomatonLanguage: string | string[]
+      authoritative: boolean
+      priority?: number
+      categories?: string[]
+      schemaVersion?: number
+      requiredHostApis?: string[]
+      dbName?: string | null
+    }>
+  >
   stt?: SttApi
   /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
   llm?: LlmApi

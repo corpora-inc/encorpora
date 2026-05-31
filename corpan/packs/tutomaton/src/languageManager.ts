@@ -1,19 +1,23 @@
 /**
- * languageManager — discover, download, cache, and activate language modules
- * inside the Tutomaton pack.
+ * languageManager — discover, download, and activate language tutors plus their
+ * 0..N RAG sources inside the Tutomaton pack.
  *
- * Data flow:
- *   pack manifest declares languages: [{ code, moduleUrl, sha256, sizeMb, ... }]
- *   user picks a language
- *     → if cached locally → mount it
- *     → else → download module ZIP via hostApi.fetchSignedUrl + extractTo
- *            → verify sha256 → cache → mount
+ * A LANGUAGE is the tutor: a system prompt + grounding instruction (per-language,
+ * at `languages/<code>/prompts/`) + a voice. A SOURCE is a self-describing unit
+ * (sqlite + retriever) that grounds the tutor for that language. A language has
+ * 0..N sources:
+ *   0 sources → prompt-only tutor (the ~40 stub languages). Natural, no shim.
+ *   1 source  → one authoritative corpus (es, zh today).
+ *   N sources → authoritative core + non-authoritative add-ons (slang, the future
+ *               phrase-pack bridge, …). Merged per the contract (§4).
  *
- * The cache lives under the pack's own data dir (managed by the host):
- *   <packDataDir>/languages/<code>/...module contents...
+ * The SourceRegistry (this file) gathers, for the active language:
+ *   - built-in sources declared in the pack manifest (`languages[<code>].sources[]`)
+ *   - installed source packs discovered at runtime via `hostApi.discoverPacksByType`
+ * filters them by the user's per-language enable prefs + `requiredHostApis`, enforces
+ * a single authoritative winner, and hands the enabled set to the retrieval loop.
  *
- * The shell calls `activate(code)` which returns a `LanguageRuntime` —
- * a self-contained bundle the chat UI uses for retrieval + prompts + voice.
+ * See `RAG_SOURCES_CONTRACT.md` for the locked contract this implements.
  */
 
 import { RETRIEVERS } from "./retrievers"
@@ -51,6 +55,23 @@ export type LlmApi = {
   ) => Promise<{ sessionId: string; cancel: () => Promise<void> }>
 }
 
+/** A source pack discovered on disk by the host (installed, not bundled). The
+ *  native `discoverPacksByType` reads these fields from the pack's own manifest.
+ *  0.16.0 ships a host stub returning []; the registry is already wired for it. */
+export type DiscoveredSource = {
+  id: string
+  packId: string
+  name?: Record<string, string>
+  tutomatonLanguage: string | string[]
+  authoritative: boolean
+  priority?: number
+  categories?: string[]
+  schemaVersion?: number
+  requiredHostApis?: string[]
+  /** dbName key the host resolves to this pack's sqlite (null/absent → host-API source). */
+  dbName?: string | null
+}
+
 export type HostApi = {
   speak: (locale: string, text: string) => Promise<void>
   stopSpeech?: () => void
@@ -61,7 +82,7 @@ export type HostApi = {
     params: unknown[]
     dbName: string
     packId: string
-  }) => Promise<{ columns: string[]; rows: unknown[][] }>
+  }) => Promise<{ columns: string[]; rows: Record<string, unknown>[] }>
   /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
   llm?: LlmApi
   /**
@@ -75,6 +96,9 @@ export type HostApi = {
   ) => Promise<void>
   /** Whether a file at `relPath` exists inside the pack's on-disk dir. */
   packFileExists?: (packId: string, relPath: string) => Promise<boolean>
+  /** Discover installed packs of a given packType (e.g. "tutomaton-rag-source").
+   *  0.16.0 host stub returns []; future native lands real discovery. */
+  discoverPacksByType?: (packType: string) => Promise<DiscoveredSource[]>
   stt?: {
     prepare?: (args: { model: string }) => Promise<void>
     startSession?: (args: { sessionId: string; language: string; expectedText: string }) => Promise<void>
@@ -82,6 +106,26 @@ export type HostApi = {
     cancelSession?: (args: { sessionId: string }) => Promise<void>
     releaseAudio?: () => Promise<void>
   }
+}
+
+/** A built-in source as declared in the pack manifest's `languages[<code>].sources[]`.
+ *  Bundled in the pack ZIP — its retriever is statically imported in retrievers.ts,
+ *  keyed by `id`; its sqlite (if any) resolves through the manifest `databases` map. */
+export type SourceManifestEntry = {
+  /** Stable, unique; the persistence + settings key and the retriever lookup key. */
+  id: string
+  name?: Record<string, string>
+  /** May this source theme-bypass the LLM? At most one authoritative wins per language. */
+  authoritative: boolean
+  /** Higher wins ties; default 0. Built-in core = 100. */
+  priority?: number
+  categories?: string[]
+  schemaVersion?: number
+  /** dbName key into the manifest `databases` map; null/absent → host-API source (no sqlite). */
+  dbName?: string | null
+  /** Capabilities the retriever needs on hostApi; source is skipped if any are absent. */
+  requiredHostApis?: string[]
+  bundled?: boolean
 }
 
 export type LanguageRegistryEntry = {
@@ -92,21 +136,51 @@ export type LanguageRegistryEntry = {
   sizeMb: number
   moduleUrl: string
   sha256: string
+  /** Built-in RAG sources bundled with this language (0..N). Absent → prompt-only. */
+  sources?: SourceManifestEntry[]
 }
 
-export type LanguageModule = {
-  code: string
-  displayName: Record<string, string>
-  voiceLanguageCode: string
-  contentVersion: string
-  files: {
-    database: string
-    coreVocab?: string
-    systemPrompt: string
-    groundingInstruction: string
-    retriever: string
-  }
-  rag: { schemaVersion: number; themeBypassEnabled?: boolean }
+/** Result a single source's retriever returns (the rich per-source kinds). */
+export type SourceRetrievalResult = {
+  kind: string | null
+  reference: string | null
+  /** 0..1 confidence; optional. Used only for tie-break in the merge. */
+  score?: number
+  themeKey?: string
+  log: string[]
+}
+
+export type QueryFn = (
+  sql: string,
+  params: unknown[]
+) => Promise<{ columns: string[]; rows: Record<string, unknown>[] }>
+
+export type RetrieverModule = {
+  retrieve: (text: string, queryFn: QueryFn) => Promise<SourceRetrievalResult>
+  resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
+}
+
+/** The MERGED result the chat shell consumes. `theme` = authoritative theme bypass
+ *  (deliver the canonical list, no LLM). `grounded` = inject `reference` into the
+ *  system prompt. `none` = ungrounded, prompt-only. */
+export type RetrievalResult = {
+  kind: "theme" | "grounded" | "none"
+  reference: string | null
+  themeKey?: string
+  log: string[]
+}
+
+/** A source resolved for the active language: retriever + a queryFn already
+ *  scoped to this source's (packId, dbName). */
+type ResolvedSource = {
+  id: string
+  name: Record<string, string>
+  authoritative: boolean
+  priority: number
+  origin: "builtin" | "installed"
+  dbName: string
+  retriever: RetrieverModule
+  queryFn: QueryFn
 }
 
 export type LanguageRuntime = {
@@ -114,31 +188,60 @@ export type LanguageRuntime = {
   voiceLanguageCode: string
   systemPrompt: string
   groundingInstruction: string
-  /** Run the per-language retriever against the loaded sqlite. */
+  /** Run the merge across all enabled sources for this language (§4). */
   retrieve: (text: string) => Promise<RetrievalResult>
-  /** Direct theme delivery — fetches the canonical list from sqlite, no LLM. */
+  /** Direct theme delivery from the authoritative source — no LLM. */
   resolveTheme: (themeKey: string) => Promise<string | null>
-  /** sqlite db name registered with the host for queryPackDb. */
+  /** The authoritative source's dbName (or `tutomaton-<code>`); kept for diagnostics. */
   dbName: string
-}
-
-export type RetrievalResult = {
-  kind: "theme" | "lesson" | "lesson_diff" | "conjugation_one" | "conjugation_full" | "translation" | "none"
-  reference: string | null
-  themeKey?: string
-  log: string[]
+  /** The enabled sources resolved for this language (for diagnostics / a future settings UI). */
+  sources: { id: string; name: Record<string, string>; authoritative: boolean; priority: number; origin: string }[]
 }
 
 export type LanguageManagerOptions = {
   hostApi: HostApi
   packId: string
   registry: LanguageRegistryEntry[]
-  /** Loader for a file inside the active language module dir (relative path). */
+  /** Loader for a file inside a language module dir (relative path). */
   loadModuleFile: (code: string, relativePath: string) => Promise<string>
-  /** Returns whether the module ZIP for `code` is already downloaded + extracted. */
+  /** Whether the module ZIP carrying `code`'s built-in source db(s) is on disk. */
   isInstalled: (code: string) => Promise<boolean>
   /** Trigger module download + verify + extract. Throws on sha mismatch. */
   install: (entry: LanguageRegistryEntry, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
+}
+
+const SOURCE_PACK_TYPE = "tutomaton-rag-source"
+const PREF_NS = "tutomaton.sources"
+
+/** Per-language enable pref for a source. Default ON (absence = on). */
+export function isSourceEnabled(lang: string, id: string): boolean {
+  try {
+    return localStorage.getItem(`${PREF_NS}.${lang}.${id}`) !== "off"
+  } catch {
+    return true
+  }
+}
+
+/** Persist a per-language source toggle (post-v1 settings UI writes this). */
+export function setSourceEnabled(lang: string, id: string, on: boolean): void {
+  try {
+    localStorage.setItem(`${PREF_NS}.${lang}.${id}`, on ? "on" : "off")
+  } catch {
+    /* storage full / unavailable — default-on semantics keep the source usable */
+  }
+}
+
+function hasHostApis(hostApi: HostApi, caps?: string[]): boolean {
+  if (!caps || caps.length === 0) return true
+  return caps.every((c) => (hostApi as unknown as Record<string, unknown>)[c] != null)
+}
+
+function escapeAttr(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+}
+
+function wrapReference(type: "canonical" | "inspiration", from: string, markdown: string): string {
+  return `<reference type="${type}" from="${escapeAttr(from)}">\n${markdown}\n</reference>`
 }
 
 export class LanguageManager {
@@ -155,9 +258,7 @@ export class LanguageManager {
 
   installed(): Promise<string[]> {
     return Promise.all(
-      this.opts.registry.map(async (e) =>
-        (await this.opts.isInstalled(e.code)) ? e.code : null
-      )
+      this.opts.registry.map(async (e) => ((await this.opts.isInstalled(e.code)) ? e.code : null))
     ).then((arr) => arr.filter((x): x is string => x !== null))
   }
 
@@ -172,62 +273,48 @@ export class LanguageManager {
     if (this.active?.code === code) return this.active
     await this.ensureInstalled(code, onProgress)
 
-    const moduleJson = await this.opts.loadModuleFile(code, "module.json")
-    let module: LanguageModule
-    try {
-      module = JSON.parse(moduleJson) as LanguageModule
-    } catch {
-      // A missing/unpublished language returns a 404 HTML/XML error page, not
-      // JSON — fail with a clear message instead of a cryptic "unexpected
-      // identifier" from JSON.parse choking on "<...does not exist...>".
-      throw new Error(`Language "${code}" isn't available yet (its content failed to load).`)
-    }
+    const entry = this.opts.registry.find((e) => e.code === code)
+    if (!entry) throw new Error(`Unknown language: ${code}`)
 
+    // Prompts are per-LANGUAGE and live at conventional paths for every language
+    // (verified across all 52). No module.json round-trip — the manifest registry
+    // entry already carries voiceLanguageCode + sources, which removes the old
+    // "404 HTML parsed as JSON" failure mode for unpublished languages.
     const [systemPrompt, groundingInstruction] = await Promise.all([
-      this.opts.loadModuleFile(code, module.files.systemPrompt),
-      this.opts.loadModuleFile(code, module.files.groundingInstruction),
+      this.opts.loadModuleFile(code, "prompts/system_prompt.txt"),
+      this.opts.loadModuleFile(code, "prompts/grounding_instruction.txt"),
     ])
 
-    const dbName = `tutomaton-${code}`
+    const sources = await this._resolveSources(code, entry)
+    const authoritative = sources.find((s) => s.authoritative) ?? null
+    const dbName = authoritative?.dbName ?? `tutomaton-${code}`
 
-    // The retriever is bundled as TS source in the language module and shipped
-    // as part of the module ZIP. In production the polish machine will pre-
-    // compile each module's retriever to JS and load it via dynamic import.
-    // For now, the shell delegates to a per-language `retrieve` shim that the
-    // module exports; the shell imports it lazily.
-    const retrieveModule = await this._loadRetriever(code)
-
-    const retrieve = async (text: string): Promise<RetrievalResult> => {
-      return retrieveModule.retrieve(text, (sql: string, params: unknown[]) =>
-        this.opts.hostApi.queryPackDb!({
-          sql,
-          params,
-          dbName,
-          packId: this.opts.packId,
-        })
-      )
-    }
-
+    const retrieve = (text: string): Promise<RetrievalResult> => this._merge(sources, text)
     const resolveTheme = async (themeKey: string): Promise<string | null> => {
-      if (!module.rag.themeBypassEnabled) return null
-      return retrieveModule.resolveTheme(themeKey, (sql: string, params: unknown[]) =>
-        this.opts.hostApi.queryPackDb!({
-          sql,
-          params,
-          dbName,
-          packId: this.opts.packId,
-        })
-      )
+      if (!authoritative) return null
+      try {
+        return await authoritative.retriever.resolveTheme(themeKey, authoritative.queryFn)
+      } catch (e) {
+        console.error(`[tutomaton] resolveTheme failed for ${authoritative.id}:`, e)
+        return null
+      }
     }
 
     this.active = {
       code,
-      voiceLanguageCode: module.voiceLanguageCode,
+      voiceLanguageCode: entry.voiceLanguageCode,
       systemPrompt,
       groundingInstruction,
       retrieve,
       resolveTheme,
       dbName,
+      sources: sources.map((s) => ({
+        id: s.id,
+        name: s.name,
+        authoritative: s.authoritative,
+        priority: s.priority,
+        origin: s.origin,
+      })),
     }
     return this.active
   }
@@ -237,49 +324,169 @@ export class LanguageManager {
   }
 
   /**
-   * Resolve the per-language retriever from the statically-bundled registry
-   * (see `retrievers.ts`). A runtime `import()` cannot work in the IIFE bundle —
-   * no runtime module graph, uncompiled TS source, and the specifier resolves to
-   * the host's game-proxy origin (→ 404). The retriever is code, not content;
-   * only the sqlite + prompts download lazily.
-   *
-   * Shape contract: every language's retriever exports:
-   *   - retrieve(text, queryFn): Promise<RetrievalResult>
-   *   - resolveTheme(key, queryFn): Promise<string | null>
-   *
-   * RAG corpora are 0-N per language, and this one method covers all three:
-   *   - 0 corpora → the no-op below: a prompt-only tutor. Every language ships
-   *     this way out of the box, so a language never NEEDS a bundled retriever to
-   *     work — it just runs ungrounded. (chat.ts already degrades to
-   *     {kind:"none"} on any retrieval failure, and "none" IS the no-op result,
-   *     so the rest of the pipeline is unchanged.)
-   *   - 1 corpus  → a bundled retriever + one sqlite (es/zh today): retrieve()
-   *     calls queryFn against that single dbName.
-   *   - N corpora → a future bundled retriever that fires queryFn at several
-   *     dbNames and merges the hits. Nothing here forecloses it: retrieve() is
-   *     just code handed a queryFn, so a module can query as many DBs as it
-   *     likes. We don't implement N now, but the contract already allows it.
+   * Gather every enabled source for `code`: built-ins from the manifest +
+   * installed source packs discovered via the host. Filters by enable pref +
+   * requiredHostApis, rejects universal-authoritative, resolves each retriever,
+   * and enforces a single authoritative winner (§1).
    */
-  private async _loadRetriever(code: string): Promise<{
-    retrieve: (text: string, queryFn: QueryFn) => Promise<RetrievalResult>
-    resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
-  }> {
-    const mod = RETRIEVERS[code]
-    if (mod) return mod
-    // 0-corpora fallback: no bundled retriever → run prompt-only (no RAG).
-    // Noisy, not silent: announce that this language is ungrounded.
-    console.info(
-      `[tutomaton] No bundled retriever for "${code}" — running prompt-only (no RAG grounding).`,
-    )
-    return {
-      retrieve: async (): Promise<RetrievalResult> => ({
-        kind: "none",
-        reference: null,
-        log: [],
-      }),
-      resolveTheme: async (): Promise<string | null> => null,
+  private async _resolveSources(code: string, entry: LanguageRegistryEntry): Promise<ResolvedSource[]> {
+    const hostApi = this.opts.hostApi
+    const out: ResolvedSource[] = []
+
+    // ---- built-in sources (bundled, declared in the manifest) ----
+    for (const s of entry.sources ?? []) {
+      if (!isSourceEnabled(code, s.id)) continue
+      const need = s.requiredHostApis ?? (s.dbName === undefined || s.dbName === null ? [] : ["queryPackDb"])
+      if (!hasHostApis(hostApi, need)) {
+        console.info(`[tutomaton] skip built-in source ${s.id}: host missing ${JSON.stringify(need)}`)
+        continue
+      }
+      const mod = RETRIEVERS[s.id]
+      if (!mod) {
+        console.warn(`[tutomaton] built-in source ${s.id} has no bundled retriever — skipping`)
+        continue
+      }
+      out.push(this._resolve(code, s.id, s.name, s.authoritative, s.priority ?? 0, s.dbName ?? null, mod, "builtin", this.opts.packId))
     }
+
+    // ---- discovered installed source packs (0.16.0 host stub → []) ----
+    try {
+      const discovered = (await hostApi.discoverPacksByType?.(SOURCE_PACK_TYPE)) ?? []
+      for (const d of discovered) {
+        const langs = Array.isArray(d.tutomatonLanguage) ? d.tutomatonLanguage : [d.tutomatonLanguage]
+        const universal = langs.includes("*")
+        if (!universal && !langs.includes(code)) continue
+        // §7: a universal source must never claim theme-bypass authority over every language.
+        if (universal && d.authoritative) {
+          console.warn(`[tutomaton] reject source ${d.id}: tutomatonLanguage:"*" cannot be authoritative`)
+          continue
+        }
+        if (!isSourceEnabled(code, d.id)) continue
+        if (!hasHostApis(hostApi, d.requiredHostApis)) {
+          console.info(`[tutomaton] skip discovered source ${d.id}: host missing ${JSON.stringify(d.requiredHostApis)}`)
+          continue
+        }
+        const mod = this._loadInstalledRetriever(d)
+        if (!mod) {
+          console.info(`[tutomaton] discovered source ${d.id}: installed-retriever loading not wired yet — skipping`)
+          continue
+        }
+        out.push(this._resolve(code, d.id, d.name, d.authoritative, d.priority ?? 0, d.dbName ?? null, mod, "installed", d.packId))
+      }
+    } catch (e) {
+      console.error("[tutomaton] source discovery failed (continuing with built-ins):", e)
+    }
+
+    // ---- enforce a single authoritative winner (§1): highest priority, then lex id ----
+    const auths = out.filter((s) => s.authoritative)
+    if (auths.length > 1) {
+      auths.sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1))
+      for (const loser of auths.slice(1)) {
+        loser.authoritative = false
+        console.info(`[tutomaton] demoted authoritative source ${loser.id} (another won the theme-bypass slot)`)
+      }
+    }
+    return out
+  }
+
+  private _resolve(
+    code: string,
+    id: string,
+    name: Record<string, string> | undefined,
+    authoritative: boolean,
+    priority: number,
+    dbName: string | null,
+    retriever: RetrieverModule,
+    origin: "builtin" | "installed",
+    packId: string
+  ): ResolvedSource {
+    const hostApi = this.opts.hostApi
+    const effectiveDbName = dbName ?? `tutomaton-${code}`
+    const queryFn: QueryFn = (sql, params) =>
+      hostApi.queryPackDb!({ sql, params, dbName: effectiveDbName, packId })
+    return {
+      id,
+      name: name ?? { en: id },
+      authoritative,
+      priority,
+      origin,
+      dbName: effectiveDbName,
+      retriever,
+      queryFn,
+    }
+  }
+
+  /**
+   * Resolve the retriever for a discovered (installed, not bundled) source pack.
+   * Installed retrievers ship precompiled to JS; loading them at runtime needs a
+   * host-served module path the IIFE bundle can evaluate. Not wired for 0.16.0
+   * (the discover stub returns [], so this is never reached). When native lands,
+   * this is the single seam to implement JS-module loading. Returns null = skip.
+   */
+  private _loadInstalledRetriever(_d: DiscoveredSource): RetrieverModule | null {
+    return null
+  }
+
+  /**
+   * Merge enabled sources for one user turn (contract §4 + §8 labeling):
+   *   1. Theme bypass — only the authoritative source may bypass (kind "theme").
+   *   2. Otherwise ≤2 grounding blocks: authoritative canonical first, then the
+   *      highest-priority non-authoritative hit (tie-break by score, then id).
+   *   3. Nothing hits → {kind:"none"} (ungrounded, prompt-only).
+   * A lone authoritative source injects its reference RAW (byte-identical to the
+   * pre-registry behavior); labeled <reference> blocks appear only once a second
+   * source actually participates, so es/zh are unchanged until a peer source exists.
+   */
+  private async _merge(sources: ResolvedSource[], text: string): Promise<RetrievalResult> {
+    const log: string[] = []
+    if (sources.length === 0) return { kind: "none", reference: null, log }
+
+    const results = await Promise.all(
+      sources.map(async (s) => {
+        try {
+          return { s, r: await s.retriever.retrieve(text, s.queryFn) }
+        } catch (e) {
+          log.push(`source ${s.id} retrieve failed: ${String(e)}`)
+          console.error(`[tutomaton] source ${s.id} retrieve failed:`, e)
+          return { s, r: { kind: "none", reference: null, log: [] } as SourceRetrievalResult }
+        }
+      })
+    )
+
+    const auth = results.find(({ s }) => s.authoritative) ?? null
+
+    // 1. theme bypass — authoritative only
+    if (auth && auth.r.kind === "theme" && auth.r.reference) {
+      return { kind: "theme", reference: auth.r.reference, themeKey: auth.r.themeKey, log }
+    }
+
+    // 2. grounding blocks
+    const canonical = auth && auth.r.reference ? auth.r.reference : null
+    const nonAuth = results
+      .filter(({ s, r }) => !s.authoritative && r.reference)
+      .sort(
+        (a, b) =>
+          b.s.priority - a.s.priority ||
+          (b.r.score ?? 0) - (a.r.score ?? 0) ||
+          (a.s.id < b.s.id ? -1 : 1)
+      )
+    const topNonAuth = nonAuth[0] ?? null
+
+    // Lone authoritative source → raw inject (unchanged es/zh behavior).
+    if (canonical && !topNonAuth) {
+      return { kind: "grounded", reference: canonical, log }
+    }
+
+    const blocks: string[] = []
+    if (auth && canonical) blocks.push(wrapReference("canonical", srcName(auth.s), canonical))
+    if (topNonAuth && blocks.length < 2) {
+      blocks.push(wrapReference("inspiration", srcName(topNonAuth.s), topNonAuth.r.reference!))
+    }
+    if (blocks.length === 0) return { kind: "none", reference: null, log }
+    return { kind: "grounded", reference: "\n" + blocks.join("\n"), log }
   }
 }
 
-export type QueryFn = (sql: string, params: unknown[]) => Promise<{ columns: string[]; rows: unknown[][] }>
+function srcName(s: ResolvedSource): string {
+  return s.name.en ?? Object.values(s.name)[0] ?? s.id
+}

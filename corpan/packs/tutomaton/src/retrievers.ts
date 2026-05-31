@@ -1,26 +1,34 @@
 /**
- * Static retriever registry.
+ * Static retriever registry, keyed by SOURCE ID.
  *
- * The pack ships as a single IIFE bundle (vite lib mode), so per-language
- * retrievers CANNOT be loaded with a runtime `import()` — there is no module
- * graph to resolve at runtime, the source is uncompiled TS, and the specifier
- * would resolve against the host's game-proxy origin (→ 404). Instead we bundle
- * every language's retriever statically here; vite inlines the code AND any data
- * JSON they import (e.g. es/data/core_vocab.json). Retriever code is tiny (KB);
- * only the per-language sqlite (queried via hostApi.queryPackDb) and the
- * prompt/module files stay external and lazily fetched.
+ * The pack ships as a single IIFE bundle (vite lib mode), so source retrievers
+ * CANNOT be loaded with a runtime `import()` — there is no module graph to
+ * resolve at runtime, the source is uncompiled TS, and the specifier would
+ * resolve against the host's game-proxy origin (→ 404). Instead we bundle every
+ * built-in source's retriever statically here; vite inlines the code AND any
+ * data JSON they import (e.g. es/.../core_vocab.json). Retriever code is tiny
+ * (KB); only the per-source sqlite (queried via hostApi.queryPackDb) and the
+ * per-language prompt files stay external and lazily fetched.
  *
- * Contract every language retriever module must satisfy:
- *   retrieve(text, queryFn): Promise<RetrievalResult>
+ * Keyed by source id (e.g. `tutomaton-corpus-es-core-v1`), NOT language code —
+ * a language can have N sources, and the SourceRegistry resolves each manifest
+ * `sources[].id` to its retriever here. Contract every retriever satisfies:
+ *   retrieve(text, queryFn): Promise<SourceRetrievalResult>   // OBJECT rows
  *   resolveTheme(key, queryFn): Promise<string | null>
  *
- * Adding a language = author its module + add one import line here.
+ * Adding a built-in source = author its module + add one import + one entry here
+ * (and declare it in `manifest.json` languages[<code>].sources[]).
+ *
+ * NOTE (paired-commit seam, RAG_SOURCES_CONTRACT §11): the import paths below
+ * still point at the pre-migration `languages/<code>/retrieval/retriever`. When
+ * backend lands the atomic move to `languages/<code>/sources/core/retrieval/`,
+ * flip these path strings — the keys (source ids) and everything else stay.
  */
 
-import type { QueryFn, RetrievalResult } from "./languageManager"
+import type { QueryFn, SourceRetrievalResult } from "./languageManager"
 
 export type RetrieverModule = {
-  retrieve: (text: string, queryFn: QueryFn) => Promise<RetrievalResult>
+  retrieve: (text: string, queryFn: QueryFn) => Promise<SourceRetrievalResult>
   resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
 }
 
@@ -32,14 +40,19 @@ import * as de from "../languages/de/retrieval/retriever"
 import * as ja from "../languages/ja/retrieval/retriever"
 
 /**
- * Code-bundled retrievers, keyed by language code. The cast is safe: each
+ * Built-in source retrievers, keyed by source id. The cast is safe: each
  * module's `retrieve`/`resolveTheme` match the contract structurally.
+ *
+ * Live today (declared in manifest sources[] + present in the databases map):
+ *   es, zh. The en/fr/de/ja retrievers are bundled + ready; switch each on by
+ *   adding its manifest sources[] entry once its corpus data is verified — no
+ *   code change here beyond the entry already present below.
  */
 export const RETRIEVERS: Record<string, RetrieverModule> = {
-  es: es as unknown as RetrieverModule,
-  zh: zh as unknown as RetrieverModule,
-  en: en as unknown as RetrieverModule,
-  fr: fr as unknown as RetrieverModule,
-  de: de as unknown as RetrieverModule,
-  ja: ja as unknown as RetrieverModule,
+  "tutomaton-corpus-es-core-v1": es as unknown as RetrieverModule,
+  "tutomaton-corpus-zh-core-v1": zh as unknown as RetrieverModule,
+  "tutomaton-corpus-en-core-v1": en as unknown as RetrieverModule,
+  "tutomaton-corpus-fr-core-v1": fr as unknown as RetrieverModule,
+  "tutomaton-corpus-de-core-v1": de as unknown as RetrieverModule,
+  "tutomaton-corpus-ja-core-v1": ja as unknown as RetrieverModule,
 }
