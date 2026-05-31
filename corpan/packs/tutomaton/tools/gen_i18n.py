@@ -92,23 +92,45 @@ def translate(en_dict, lang, key):
 def ts_literal(s):
     return json.dumps(s, ensure_ascii=False)
 
-def main():
-    global key
-    key = load_key()
-    en = extract_en()
-    langs = target_langs(sys.argv[1:])
-    print(f"translating {len(en)} keys into {len(langs)} languages via {MODEL}…")
+def from_json(path, en):
+    """Inject translations from a prebuilt JSON file: {code: {key: value}}.
+    Validates placeholders per key; English-fallback on any break/missing."""
+    data = json.loads(pathlib.Path(path).read_text())
     locales = {}
-    for code in langs:
-        # collapse to base for the API target name, but key the TS by base locale
+    for code, d in data.items():
         base = code.split("-")[0]
-        if base in locales:
+        if base == "en" or base in locales:
             continue
-        try:
-            locales[base] = translate(en, code, base)
-            print(f"  ✓ {code} ({base})")
-        except Exception as e:
-            print(f"  ✗ {code}: {e} — skipping (English fallback at runtime)")
+        merged = {}
+        for k, v in en.items():
+            tv = d.get(k)
+            want = set(re.findall(r"\{(\w+)\}", v))
+            got = set(re.findall(r"\{(\w+)\}", tv)) if isinstance(tv, str) else set()
+            merged[k] = tv if isinstance(tv, str) and tv.strip() and want == got else v
+        locales[base] = merged
+    return locales
+
+def main():
+    en = extract_en()
+    # --from-json <file> injects pre-translated JSON (no API). Otherwise call API.
+    if len(sys.argv) >= 3 and sys.argv[1] == "--from-json":
+        locales = from_json(sys.argv[2], en)
+        print(f"injected {len(locales)} locales from {sys.argv[2]}")
+    else:
+        global key
+        key = load_key()
+        langs = target_langs(sys.argv[1:])
+        print(f"translating {len(en)} keys into {len(langs)} languages via {MODEL}…")
+        locales = {}
+        for code in langs:
+            base = code.split("-")[0]
+            if base in locales:
+                continue
+            try:
+                locales[base] = translate(en, code, base)
+                print(f"  ✓ {code} ({base})")
+            except Exception as e:
+                print(f"  ✗ {code}: {e} — skipping (English fallback at runtime)")
     # build the LOCALES block
     lines = ["const LOCALES: Record<string, Partial<Dict>> = {", "  en,"]
     for base, d in sorted(locales.items()):
