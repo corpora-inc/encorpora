@@ -177,7 +177,12 @@ const PackModule: ContentPackModule = {
     // `tutomaton-<code>`; the host resolves it against this map.
     const dbRelPath = (code: string): string =>
       manifest.databases?.[`tutomaton-${code}`] ?? `languages/${code}/data/${code}.sqlite3`
-    const dbSubDir = (code: string): string => dbRelPath(code).replace(/\/[^/]+$/, "")
+    // The language module ZIP is rooted at the module dir (its top-level entries
+    // are `data/`, `module.json`, `prompts/`, `retrieval/`). Extract it AT the
+    // module dir `languages/<code>` so the DB lands exactly at dbRelPath
+    // (`languages/<code>/data/<db>.sqlite3`). Using the DB's parent dir here
+    // would double the `data/` segment → queryPackDb "Database file not found".
+    const moduleSubDir = (code: string): string => `languages/${code}`
 
     // ---------- LanguageManager ----------
     const langMgr = new LanguageManager({
@@ -198,7 +203,7 @@ const PackModule: ContentPackModule = {
         await hostApi.installModuleZip(
           {
             packId: PACK_ID,
-            subPath: dbSubDir(entry.code),
+            subPath: moduleSubDir(entry.code),
             url: entry.moduleUrl,
             sha256: entry.sha256,
             packManifest: manifestJson,
