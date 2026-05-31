@@ -16,6 +16,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   disk) degrades to an ungrounded answer instead of killing the turn.
 
 ### Changed
+- Top bar redesigned: the tutor/language switcher moved out of the cramped inline
+  pill row into a compact header trigger (active flag + name + chevron) that opens
+  a full switcher sheet — a bottom sheet on mobile, a centered modal on desktop —
+  with large language cards (flag, native name, English sub, active check). Fixes
+  narrow-screen crowding and gives the switch a moment of its own.
 - LLM access goes through `hostApi.llm` (status/load/chat/unload) instead of
   `window.__TAURI__` (which is not exposed to pack webviews).
 - `manifest.json` declares a `databases` map for the per-language sqlite corpora.

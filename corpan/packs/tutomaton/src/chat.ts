@@ -222,13 +222,33 @@ const PackModule: ContentPackModule = {
             <span class="lt-brand-mark" aria-hidden="true">✦</span>
             <span class="lt-brand-name">Tutomaton</span>
           </div>
-          <nav class="lt-langs" aria-label="Language"></nav>
+          <button class="lt-lang-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Switch language">
+            <span class="lt-lt-flag" aria-hidden="true"></span>
+            <span class="lt-lt-name"></span>
+            <span class="lt-lt-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+            </span>
+          </button>
           <div class="lt-controls">
             <button class="lt-icon lt-tts" aria-label="Toggle voice replies" title="Voice replies">🔊</button>
             <button class="lt-icon lt-voice" aria-label="Toggle voice input" title="Voice input">🎤</button>
             <button class="lt-icon lt-clear" aria-label="New conversation" title="New conversation">⟲</button>
           </div>
         </header>
+
+        <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="Choose a language">
+          <div class="lt-langsheet-scrim"></div>
+          <div class="lt-langsheet-panel" role="document">
+            <div class="lt-langsheet-grip" aria-hidden="true"></div>
+            <header class="lt-langsheet-head">
+              <h2 class="lt-langsheet-title">Your tutors</h2>
+              <button class="lt-langsheet-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
+              </button>
+            </header>
+            <div class="lt-langsheet-list" role="listbox" aria-label="Languages"></div>
+          </div>
+        </div>
 
         <main class="lt-log" role="log" aria-live="polite"></main>
 
@@ -265,7 +285,11 @@ const PackModule: ContentPackModule = {
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $voiceBtn = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
-    const $langs = container.querySelector<HTMLElement>(".lt-langs")!
+    const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
+    const $langSheet = container.querySelector<HTMLDivElement>(".lt-langsheet")!
+    const $langSheetList = container.querySelector<HTMLDivElement>(".lt-langsheet-list")!
+    const $langSheetScrim = container.querySelector<HTMLDivElement>(".lt-langsheet-scrim")!
+    const $langSheetClose = container.querySelector<HTMLButtonElement>(".lt-langsheet-close")!
     const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
     const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
     const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
@@ -322,23 +346,70 @@ const PackModule: ContentPackModule = {
 
     // ---------- language pills ----------
     const uiLocale = (navigator.language || "en").split("-")[0]
+    // ---------- language sheet (compact trigger + glorious sheet) ----------
+    function openLangSheet() {
+      $langSheet.hidden = false
+      // next frame so the open transition runs from the hidden state
+      requestAnimationFrame(() => $langSheet.classList.add("open"))
+      $langTrigger.setAttribute("aria-expanded", "true")
+    }
+    function closeLangSheet() {
+      $langSheet.classList.remove("open")
+      $langTrigger.setAttribute("aria-expanded", "false")
+      // wait out the transition before hiding (keeps the slide-down visible)
+      window.setTimeout(() => {
+        if (!$langSheet.classList.contains("open")) $langSheet.hidden = true
+      }, 220)
+    }
+
+    $langTrigger.addEventListener("click", openLangSheet)
+    $langSheetScrim.addEventListener("click", closeLangSheet)
+    $langSheetClose.addEventListener("click", closeLangSheet)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !$langSheet.hidden) closeLangSheet()
+    })
+
     function renderLangs() {
-      $langs.innerHTML = ""
+      const active = state.activeLanguage?.code
+      // 1. the compact header trigger reflects the active tutor
+      const activeEntry = registry.find((r) => r.code === active) ?? registry[0]
+      const tFlag = $langTrigger.querySelector<HTMLSpanElement>(".lt-lt-flag")!
+      const tName = $langTrigger.querySelector<HTMLSpanElement>(".lt-lt-name")!
+      tFlag.textContent = (activeEntry && LANG_FLAG[activeEntry.code]) || "✦"
+      tName.textContent = activeEntry ? nativeName(activeEntry) : "Language"
+
+      // 2. the sheet lists every tutor as a big card
+      $langSheetList.innerHTML = ""
       for (const entry of registry) {
-        const pill = document.createElement("button")
-        pill.className = "lt-pill"
-        pill.dataset.code = entry.code
-        const flag = LANG_FLAG[entry.code] ? `<span class="lt-pill-flag" aria-hidden="true">${LANG_FLAG[entry.code]}</span>` : ""
+        const card = document.createElement("button")
+        card.className = "lt-langcard"
+        card.dataset.code = entry.code
+        card.setAttribute("role", "option")
+        const isActive = entry.code === active
+        card.classList.toggle("active", isActive)
+        card.setAttribute("aria-selected", isActive ? "true" : "false")
+        const flag = LANG_FLAG[entry.code] || "✦"
         const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
-          ? `<span class="lt-pill-sub">${entry.displayName[uiLocale]}</span>`
+          ? `<span class="lt-langcard-sub">${entry.displayName[uiLocale]}</span>`
           : ""
-        pill.innerHTML = `${flag}<span class="lt-pill-name">${nativeName(entry)}</span>${sub}`
-        pill.classList.toggle("active", state.activeLanguage?.code === entry.code)
-        pill.addEventListener("click", () => {
-          if (state.activeLanguage?.code === entry.code) return
+        card.innerHTML = `
+          <span class="lt-langcard-flag" aria-hidden="true">${flag}</span>
+          <span class="lt-langcard-text">
+            <span class="lt-langcard-name">${nativeName(entry)}</span>
+            ${sub}
+          </span>
+          <span class="lt-langcard-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </span>`
+        card.addEventListener("click", () => {
+          if (entry.code === state.activeLanguage?.code) {
+            closeLangSheet()
+            return
+          }
+          closeLangSheet()
           void switchLanguage(entry.code)
         })
-        $langs.appendChild(pill)
+        $langSheetList.appendChild(card)
       }
     }
 
