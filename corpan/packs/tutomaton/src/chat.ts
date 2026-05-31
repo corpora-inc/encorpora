@@ -205,6 +205,13 @@ const PackModule: ContentPackModule = {
     // On-disk sqlite path for a language, from the manifest `databases` map
     // (e.g. "languages/es/data/spanish.sqlite3"). queryPackDb uses dbName
     // `tutomaton-<code>`; the host resolves it against this map.
+    // A language has a downloadable RAG corpus IFF the manifest's `databases`
+    // map names a sqlite for it. Prompt-only tutors (0 RAG sources) have no
+    // entry → nothing to download. This is the discriminator that keeps the
+    // install flow from fetching a non-existent CDN zip (→ 403) for the ~50
+    // prompt-only languages. Prompts/module.json still load over LAN/bundle.
+    const hasCorpus = (code: string): boolean =>
+      typeof manifest.databases?.[`tutomaton-${code}`] === "string"
     const dbRelPath = (code: string): string =>
       manifest.databases?.[`tutomaton-${code}`] ?? `languages/${code}/data/${code}.sqlite3`
     // The language module ZIP is rooted at the module dir (its top-level entries
@@ -223,10 +230,15 @@ const PackModule: ContentPackModule = {
       // based). The shell's module.json/prompts/retriever come over LAN in dev or
       // are bundled in prod; only the DB needs downloading.
       isInstalled: async (code) => {
+        // 0 RAG sources → nothing to install; the tutor is prompt-only.
+        if (!hasCorpus(code)) return true
         if (!hostApi.packFileExists) return false
         return hostApi.packFileExists(PACK_ID, dbRelPath(code))
       },
       install: async (entry, onProgress) => {
+        // Prompt-only language (no corpus in the manifest) → skip the download
+        // entirely. Trying to fetch its placeholder CDN zip is what 403'd.
+        if (!hasCorpus(entry.code)) return
         if (!hostApi.installModuleZip) {
           throw new Error("This version of the app can't download language data.")
         }
@@ -654,10 +666,13 @@ const PackModule: ContentPackModule = {
     async function switchLanguage(code: string) {
       const entry = registry.find((r) => r.code === code)
       const name = entry ? nativeName(entry) : code
-      // Show a download card only if the data isn't already on disk.
-      const installed = (await hostApi.packFileExists?.(PACK_ID, dbRelPath(code))) ?? false
+      // Show a download card only for a language that HAS a corpus and whose
+      // sqlite isn't on disk yet. Prompt-only tutors (0 RAG sources) never
+      // download, so they go straight to chat with no card.
+      const needsDownload =
+        hasCorpus(code) && !((await hostApi.packFileExists?.(PACK_ID, dbRelPath(code))) ?? false)
       let dl: ReturnType<typeof renderLangDownloading> | null = null
-      if (!installed) dl = renderLangDownloading(name)
+      if (needsDownload) dl = renderLangDownloading(name)
       try {
         state.activeLanguage = await langMgr.activate(code, (p) => {
           dl?.update(

@@ -50,6 +50,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   44×5 bar.
 
 ### Fixed
+- Prompt-only tutors (0 RAG sources) no longer try to download a corpus: a
+  language is treated as installed when it has no entry in the manifest
+  `databases` map, so picking one of the ~50 prompt-only languages goes straight
+  to chat instead of failing with "download failed (403 forbidden)" on a
+  non-existent CDN zip. Only es/zh (which have real sqlite corpora) download.
 - Pack now loads and renders on device. Root causes resolved: per-language
   retrievers are statically bundled (`src/retrievers.ts`) instead of a runtime
   dynamic `import()` of uncompiled TS (the `game-proxy` 404); `chat.css` is
