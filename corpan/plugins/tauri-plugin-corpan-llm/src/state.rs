@@ -259,6 +259,16 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 resp,
             } => {
                 let want_gpu = n_gpu_layers.unwrap_or(999).max(0) as u32;
+                // Free any previously-loaded model BEFORE allocating the new one.
+                // The weights are a ~2.5 GB resident buffer (a GPU buffer under
+                // Metal); on unified-memory iOS, holding the old copy while
+                // loading a second exceeds the per-app jetsam limit and llama.cpp
+                // returns null from BOTH the GPU and CPU paths. This is exactly
+                // the pack exit→re-enter reload case: drop first, then load.
+                if model.is_some() {
+                    log::info!("[corpan-llm] dropping previously-loaded model before reload");
+                    model = None;
+                }
                 let avail = device_memory_mb();
                 log::info!("[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB");
                 // Try full GPU offload first (Metal). On unified-memory iOS the

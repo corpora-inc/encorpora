@@ -29,6 +29,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   CPU+mmap if that fails; integrity preflight (size + GGUF magic) rejects a
   corrupt/incomplete download with a clear `MODEL_CORRUPT` error; iOS
   `device_memory_mb()` reports allocatable headroom via `os_proc_available_memory`.
+- Re-load now frees the previously-loaded model BEFORE allocating the new one.
+  Without this, exiting and re-entering a tutor pack tried to hold two ~2.5 GB
+  models at once; on unified-memory iOS that exceeded the per-app jetsam limit
+  and `llama.cpp` returned null from both the GPU and CPU paths
+  (`LLAMA_CPP_ERROR: load failed (gpu: null …; cpu: null …)`). Drop-then-load
+  makes the second load self-healing regardless of pack lifecycle.
 
 ### Verified
 - Real on-device inference confirmed on iPad (M-class, Metal): "How do you say
