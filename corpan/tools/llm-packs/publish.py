@@ -591,8 +591,7 @@ def main():
     p_src.add_argument(
         "source_dir",
         help="Path to the source-pack directory containing manifest.json (e.g. "
-             "corpan/packs/tutomaton/languages/ar/sources/core, "
-             "or corpan/packs/tutomaton-phrase-bridge)"
+             "corpan/packs/tutomaton/languages/ar/sources/core)"
     )
     p_src.add_argument("--upload", action="store_true")
     p_src.add_argument("--bucket", default=DEFAULT_BUCKET)
