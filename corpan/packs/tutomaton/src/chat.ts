@@ -110,12 +110,15 @@ const ICON = {
   /** Orange brand mark: a clean pyramid/triangle with a subtle gradient. The
    *  ONLY orange in the chrome (brand-reserved). Rendered inline so the pack
    *  never depends on an external asset. */
-  pyramid: `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-      <defs><linearGradient id="lt-pyr" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/>
+  pyramid: `<svg viewBox="0 0 28 24" width="24" height="22" aria-hidden="true">
+      <defs><linearGradient id="lt-pyr" x1="0" y1="0" x2="1" y2="0.6">
+        <stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#f59e0b"/>
       </linearGradient></defs>
-      <path d="M12 3.2 21 20H3z" fill="url(#lt-pyr)"/>
-      <path d="M12 3.2 12 20H3z" fill="#fb923c" fill-opacity="0.35"/>
+      <!-- wide-base 3D pyramid (lit right face + shaded left face + ground line)
+           so it reads as a monument, not a warning triangle -->
+      <path d="M14 4 25 19H14z" fill="url(#lt-pyr)"/>
+      <path d="M14 4 3 19h11z" fill="#c2740b"/>
+      <line x1="2" y1="20.4" x2="26" y2="20.4" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.55"/>
     </svg>`,
   speaker: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>`,
   speakerMuted: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>`,

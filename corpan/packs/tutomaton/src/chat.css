@@ -72,6 +72,13 @@
 .lt-brand-name {
   font-weight: 650;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+/* On very narrow widths keep the pyramid as the home target and drop the
+   wordmark rather than letting it clip. */
+@media (max-width: 380px) {
+  .lt-brand-name { display: none; }
 }
 /* a subtle back chevron that appears on hover/desktop — reinforces "this exits" */
 .lt-home-hint {
