@@ -1,0 +1,18 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-{LANG_CODE}-core-v1",
+  "name": {
+    "en": "{LANG_NAME} Core",
+    "{LANG_CODE}": "{LANG_NATIVE_NAME}"
+  },
+  "tutomatonLanguage": "{LANG_CODE}",
+  "authoritative": true,
+  "priority": 100,
+  "categories": ["vocab", "grammar", "themes", "idioms"],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/{LANG_CODE}.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}

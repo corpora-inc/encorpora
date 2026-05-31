@@ -1,0 +1,23 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-phrase-bridge-v1",
+  "name": {
+    "en": "Phrase library bridge",
+    "es": "Puente a la biblioteca de frases",
+    "fr": "Pont vers la bibliothèque de phrases",
+    "de": "Brücke zur Phrasenbibliothek",
+    "zh": "短语库桥接",
+    "ja": "フレーズライブラリブリッジ"
+  },
+  "tutomatonLanguage": "*",
+  "authoritative": false,
+  "priority": 20,
+  "categories": ["examples", "translations"],
+  "schemaVersion": 1,
+  "files": {
+    "database": "",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0",
+  "requiredHostApis": ["phrasePacks", "queryPackDb"]
+}

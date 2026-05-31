@@ -1,0 +1,23 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-de-core-v1",
+  "name": {
+    "en": "German Core",
+    "de": "Deutsch"
+  },
+  "tutomatonLanguage": "de",
+  "authoritative": true,
+  "priority": 100,
+  "categories": [
+    "vocab",
+    "grammar",
+    "themes",
+    "idioms"
+  ],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/de.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}
