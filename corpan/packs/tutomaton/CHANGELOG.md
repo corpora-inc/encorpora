@@ -22,6 +22,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Header + chrome redesign: real Corpán brand mark (the ear-on-ziggurat the
+  home screen uses, inlined) replaces the placeholder triangle; top bar is now
+  a clean back-chevron · logo · wordmark · right-aligned language switcher, with
+  top/left padding that clears the iPad Stage-Manager window grip. Exit actually
+  works now — the back button fires `corpan:exit` (the event the host listens
+  for) instead of three dead event names. Mute + new-conversation moved out of
+  the bar into translucent FABs at the bottom-right above the input. Welcome and
+  model-setup screens show the real logo too.
 - Voice input now uses the keyboard's built-in dictation (on-device, ~50
   languages, no model download) typed into the text field, instead of a custom
   whisper.cpp push-to-talk mic. The custom mic pointed at an uninstalled

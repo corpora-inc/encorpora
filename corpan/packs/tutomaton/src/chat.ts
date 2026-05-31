@@ -125,6 +125,11 @@ const ICON = {
   search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
 } as const
 
+/** The real Corpán brand mark (ear on a stepped ziggurat) — the same
+ *  `corpan-mark-trim.png` the host home screen uses, downscaled to ~80px and
+ *  base64-inlined so the IIFE bundle stays self-contained (no asset fetch). */
+const LOGO_DATA_URL = "data:image/png;base64,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"
+
 // ============================================================
 // Presentation helpers
 // ============================================================
@@ -256,20 +261,16 @@ const PackModule: ContentPackModule = {
              elegant language switcher (compact trigger → searchable sheet),
              then a small controls cluster (speaker mute, new conversation).
 
-             HOST-X COLLISION FIX (approach b): the host GameModal floats its own
-             close "X" at top-right (z-50, absolute, right:12px, top:safe+12px)
-             OVER this pack. We therefore (1) keep the pack's top-right corner
-             clear — the controls cluster gets generous right padding so it never
-             sits under the host X — and (2) add the pack's OWN explicit "Home"
-             back affordance on the far LEFT (the pyramid+wordmark is a button
-             that exits to home), so there is an obvious, non-overlapping way
-             back regardless of the host chrome. -->
+             TOP BAR, left→right: a back chevron (exit to home), the real Corpán
+             brand mark, the "Tutomaton" wordmark, then the language switcher
+             right-aligned. The host injects NO chrome over content packs, so the
+             pack owns its own exit; tapping back fires the corpan:exit event the
+             host App.tsx listens for. Speaker-mute + new-conversation live in the
+             bottom-right FAB cluster, out of the bar. -->
         <header class="lt-header">
-          <button class="lt-home" aria-label="Back to home" title="Home">
-            <span class="lt-brand-mark" aria-hidden="true">${ICON.pyramid}</span>
-            <span class="lt-brand-name">Tutomaton</span>
-            <span class="lt-home-hint" aria-hidden="true">${ICON.back}</span>
-          </button>
+          <button class="lt-back" aria-label="Back to home" title="Home">${ICON.back}</button>
+          <span class="lt-brand-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></span>
+          <span class="lt-brand-name">Tutomaton</span>
           <button class="lt-lang-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Switch language">
             <span class="lt-lt-flag" aria-hidden="true"></span>
             <span class="lt-lt-name"></span>
@@ -277,10 +278,6 @@ const PackModule: ContentPackModule = {
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
             </span>
           </button>
-          <div class="lt-controls">
-            <button class="lt-icon lt-tts active" aria-label="Mute voice replies" aria-pressed="true" title="Voice replies">${ICON.speaker}</button>
-            <button class="lt-icon lt-clear" aria-label="New conversation" title="New conversation">${ICON.refresh}</button>
-          </div>
         </header>
 
         <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="Choose a language">
@@ -304,6 +301,13 @@ const PackModule: ContentPackModule = {
 
         <main class="lt-log" role="log" aria-live="polite"></main>
 
+        <!-- Floating action cluster: translucent, out of the way, easy to reach.
+             Mute toggle (TTS, defaults on) + new-conversation. -->
+        <div class="lt-fabs">
+          <button class="lt-fab lt-tts active" aria-label="Mute voice replies" aria-pressed="true" title="Voice replies">${ICON.speaker}</button>
+          <button class="lt-fab lt-clear" aria-label="New conversation" title="New conversation">${ICON.refresh}</button>
+        </div>
+
         <footer class="lt-input">
           <!-- Voice input is the keyboard's built-in dictation mic (on-device,
                ~50 languages, no model to manage). The text field accepts it
@@ -318,7 +322,7 @@ const PackModule: ContentPackModule = {
 
         <div class="lt-setup" hidden>
           <div class="lt-setup-card">
-            <div class="lt-setup-glyph" aria-hidden="true">${ICON.pyramid}</div>
+            <div class="lt-setup-glyph" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
             <h2 class="lt-setup-title">Set up your tutor</h2>
             <p class="lt-setup-body"></p>
             <div class="lt-setup-progress" hidden>
@@ -337,7 +341,7 @@ const PackModule: ContentPackModule = {
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
-    const $home = container.querySelector<HTMLButtonElement>(".lt-home")!
+    const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
     const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
     const $langSheet = container.querySelector<HTMLDivElement>(".lt-langsheet")!
     const $langSheetList = container.querySelector<HTMLDivElement>(".lt-langsheet-list")!
@@ -542,7 +546,7 @@ const PackModule: ContentPackModule = {
       const wrap = document.createElement("div")
       wrap.className = "lt-welcome"
       wrap.innerHTML = `
-        <div class="lt-welcome-mark" aria-hidden="true">${ICON.pyramid}</div>
+        <div class="lt-welcome-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
         <h2 class="lt-welcome-title">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
         <p class="lt-welcome-sub">Ask anything — translations, grammar, vocab, or just chat. It all runs on your device.</p>
         <div class="lt-welcome-langs" aria-label="Your languages"></div>
@@ -820,22 +824,17 @@ const PackModule: ContentPackModule = {
     })
 
     // ---------- exit to home ----------
-    // The host owns the floating top-right "X" (guaranteed exit). This is the
-    // pack's OWN explicit left-side affordance (the orange pyramid + wordmark IS
-    // the home button). The host shell (App.tsx) closes the pack overlay by
-    // calling its games-store `closeContentPack()`, which it wires to a set of
-    // window events — we dispatch those (the hostApi exposes no close method).
-    // Multiple names cover host versions; all funnel to the same handler.
+    // The host injects no chrome over content packs, so the pack owns its exit.
+    // App.tsx closes the overlay on the `corpan:exit` window event (the canonical
+    // event every reader uses); the hostApi exposes no close method.
     function exitToHome() {
       try {
-        for (const name of ["corpan:exit-pack", "corpan:close-pack", "corp-close-game"]) {
-          window.dispatchEvent(new CustomEvent(name, { detail: { packId: PACK_ID } }))
-        }
+        window.dispatchEvent(new CustomEvent("corpan:exit", { detail: { packId: PACK_ID } }))
       } catch (e) {
         console.error("[tutomaton] exitToHome failed:", e)
       }
     }
-    $home.addEventListener("click", exitToHome)
+    $back.addEventListener("click", exitToHome)
 
     // Voice input intentionally relies on the keyboard's built-in dictation
     // (on-device, ~50 languages, zero model to manage). No custom STT here.

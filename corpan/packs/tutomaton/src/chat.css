@@ -33,67 +33,71 @@
   overflow: hidden;
 }
 
-/* ---------- header ---------- */
+/* ---------- header ----------
+   Left→right: back chevron · brand mark · wordmark · ……… · language switcher.
+   Top/left padding clears the iPad window controls (the "stoplight" / grip that
+   floats over the top-left in Stage Manager and resized windows). */
 .lt-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: calc(10px + var(--lt-safe-top)) 14px 10px;
+  gap: 10px;
+  /* Top inset clears the iPad Stage-Manager window grip (the "•••" that floats
+     at the window's top-left and is NOT covered by safe-area-inset). */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 16px 10px
+    max(var(--lt-safe-left, 0px), 16px);
   border-bottom: 1px solid var(--lt-border);
   background: rgba(10, 11, 15, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Home button = orange pyramid mark + wordmark. The pack's explicit, left-side
-   exit-to-home affordance (the top-right corner is reserved for the host X). */
-.lt-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* back-to-home chevron — iOS-standard exit, far top-left */
+.lt-back {
   flex: 0 0 auto;
-  padding: 6px 10px 6px 6px;
+  width: 38px;
+  height: 38px;
+  margin-left: -4px;
+  border-radius: 11px;
   border: 0;
-  border-radius: 12px;
   background: transparent;
   color: var(--lt-fg);
   cursor: pointer;
+  display: grid;
+  place-items: center;
   transition: background 0.15s ease, transform 0.1s ease;
 }
-.lt-home:hover { background: rgba(255, 255, 255, 0.05); }
-.lt-home:active { transform: scale(0.97); }
+.lt-back svg { display: block; }
+.lt-back:hover { background: rgba(255, 255, 255, 0.06); }
+.lt-back:active { transform: scale(0.92); }
+
+/* the REAL Corpán mark (ear + ziggurat), matching the home screen */
 .lt-brand-mark {
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
   flex: 0 0 auto;
-  filter: drop-shadow(0 1px 6px rgba(245, 158, 11, 0.35));
 }
-.lt-brand-mark svg { display: block; }
+.lt-brand-mark img {
+  display: block;
+  height: 26px;
+  width: auto;
+}
 .lt-brand-name {
   font-weight: 650;
   letter-spacing: -0.01em;
   white-space: nowrap;
   flex: 0 0 auto;
 }
-/* On very narrow widths keep the pyramid as the home target and drop the
-   wordmark rather than letting it clip. */
-@media (max-width: 380px) {
+/* very narrow: keep the mark, drop the wordmark before it can crowd the switcher */
+@media (max-width: 400px) {
   .lt-brand-name { display: none; }
 }
-/* a subtle back chevron that appears on hover/desktop — reinforces "this exits" */
-.lt-home-hint {
-  display: none;
-  place-items: center;
-  color: var(--lt-muted);
-  margin-left: -2px;
-}
-.lt-home:hover .lt-home-hint { display: inline-grid; }
 
-/* compact tutor switcher in the header — tucked away, never crowds the bar */
+/* compact tutor switcher — right-aligned, never crowds the brand */
 .lt-lang-trigger {
   flex: 0 1 auto;
   min-width: 0;
-  margin-right: auto;
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -126,34 +130,39 @@
 }
 .lt-lang-trigger[aria-expanded="true"] .lt-lt-chev { transform: rotate(180deg); }
 
-.lt-controls {
-  flex: 0 0 auto;
+/* ---------- floating action cluster (bottom-right, above the input) ----------
+   Translucent, out of the way, easy to reach: mute toggle + new conversation. */
+.lt-fabs {
+  position: absolute;
+  right: max(var(--lt-safe-right, 0px), 12px);
+  bottom: calc(var(--lt-input-h, 76px) + var(--lt-safe-bottom) + 12px);
+  z-index: 10;
   display: flex;
-  gap: 6px;
-  /* HOST-X CLEARANCE: the host floats its close "X" at right:12px / z-50 OVER
-     the pack. Reserve room so our controls never sit under it. */
-  margin-right: 44px;
+  flex-direction: column;
+  gap: 10px;
 }
-.lt-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
+.lt-fab {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
   border: 1px solid var(--lt-border);
-  background: var(--lt-bg-elev);
+  background: color-mix(in srgb, var(--lt-bg-elev) 72%, transparent);
   color: var(--lt-muted);
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  opacity: 0.72;
 }
-.lt-icon svg { display: block; }
-.lt-icon:hover { border-color: #34384a; color: var(--lt-fg); }
-.lt-icon:active { transform: scale(0.94); }
-.lt-icon.active {
-  background: var(--lt-accent);
-  border-color: var(--lt-accent);
-  color: #fff;
-}
+.lt-fab svg { display: block; }
+.lt-fab:hover { opacity: 1; color: var(--lt-fg); border-color: #34384a; }
+.lt-fab:active { transform: scale(0.92); }
+/* speaker-on is the resting "active" state; muted dims it */
+.lt-fab.lt-tts.active { opacity: 1; color: var(--lt-fg); }
+.lt-fab.lt-tts:not(.active) { opacity: 0.6; }
 
 /* ---------- log ---------- */
 .lt-log {
@@ -230,9 +239,13 @@
   max-width: 560px;
 }
 .lt-welcome-mark {
-  font-size: 30px;
-  color: var(--lt-accent-2);
-  filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.5));
+  display: flex;
+  justify-content: center;
+}
+.lt-welcome-mark img {
+  height: 64px;
+  width: auto;
+  filter: drop-shadow(0 4px 18px rgba(245, 158, 11, 0.25));
 }
 .lt-welcome-title { margin: 4px 0 0; font-size: 21px; font-weight: 650; letter-spacing: -0.01em; }
 .lt-welcome-sub { margin: 0; color: var(--lt-muted); font-size: 14.5px; max-width: 420px; }
@@ -398,10 +411,9 @@
 @media (min-width: 768px) {
   .lt-log { padding: 26px 24px; gap: 14px; }
   .lt-input { padding: 16px 24px calc(16px + var(--lt-safe-bottom)); }
-  .lt-header { padding: calc(12px + var(--lt-safe-top)) 22px 12px; }
+  /* keep the top/left stoplight clearance even on wide layouts */
+  .lt-header { padding: calc(max(var(--lt-safe-top), 44px)) 24px 12px max(var(--lt-safe-left, 0px), 22px); }
   .lt-lang-trigger { max-width: 280px; }
-  /* always show the back chevron on pointer-capable big screens */
-  .lt-home-hint { display: inline-grid; }
 }
 
 /* ============================================================
@@ -623,9 +635,13 @@
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
 }
 .lt-setup-glyph {
-  font-size: 36px;
-  color: var(--lt-accent-2);
-  filter: drop-shadow(0 0 18px rgba(96, 165, 250, 0.55));
+  display: flex;
+  justify-content: center;
+}
+.lt-setup-glyph img {
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 4px 20px rgba(245, 158, 11, 0.28));
 }
 .lt-setup-title { margin: 0; font-size: 23px; font-weight: 660; letter-spacing: -0.01em; }
 .lt-setup-body { margin: 0; font-size: 15px; line-height: 1.6; color: var(--lt-fg); opacity: 0.86; }
