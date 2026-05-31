@@ -811,24 +811,17 @@ const PackModule: ContentPackModule = {
     })
 
     // ---------- exit to home ----------
-    // The host GameModal owns the floating top-right "X" (guaranteed exit). This
-    // is the pack's OWN explicit left-side affordance. We try the common host
-    // close conventions defensively (no hard type dependency); if none exist the
-    // host X still works. The orange pyramid + wordmark IS the home button.
+    // The host owns the floating top-right "X" (guaranteed exit). This is the
+    // pack's OWN explicit left-side affordance (the orange pyramid + wordmark IS
+    // the home button). The host shell (App.tsx) closes the pack overlay by
+    // calling its games-store `closeContentPack()`, which it wires to a set of
+    // window events — we dispatch those (the hostApi exposes no close method).
+    // Multiple names cover host versions; all funnel to the same handler.
     function exitToHome() {
-      const h = hostApi as unknown as {
-        close?: () => void
-        exit?: () => void
-        navigateHome?: () => void
-        requestClose?: () => void
-      }
       try {
-        if (typeof h.close === "function") return void h.close()
-        if (typeof h.requestClose === "function") return void h.requestClose()
-        if (typeof h.navigateHome === "function") return void h.navigateHome()
-        if (typeof h.exit === "function") return void h.exit()
-        // Last resort: ask the host shell to close via a window event.
-        window.dispatchEvent(new CustomEvent("corpan:close-game", { detail: { packId: PACK_ID } }))
+        for (const name of ["corpan:exit-pack", "corpan:close-pack", "corp-close-game"]) {
+          window.dispatchEvent(new CustomEvent(name, { detail: { packId: PACK_ID } }))
+        }
       } catch (e) {
         console.error("[tutomaton] exitToHome failed:", e)
       }

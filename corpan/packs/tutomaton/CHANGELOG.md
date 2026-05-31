@@ -11,8 +11,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   orange in the UI) + "Tutomaton" wordmark that doubles as an explicit
   exit-to-home button on the LEFT, an elegant language switcher, then a compact
   controls cluster. The controls reserve right-edge clearance so they never
-  collide with the host GameModal's floating top-right close "X" (collision-fix
-  approach b: pack's own left-side Home affordance + clear right corner).
+  collide with the host's floating top-right close "X" (collision-fix approach b:
+  pack's own left-side Home affordance + clear right corner). The Home button
+  dispatches the host's pack-close window events (`corpan:exit-pack` /
+  `corpan:close-pack` / `corp-close-game`), which App.tsx wires to
+  `closeContentPack()`.
 - Emoji chrome icons replaced with clean inline lucide-style line SVGs
   (speaker / speaker-muted, mic, new-conversation refresh, back chevron, search) —
   no new dependency.
