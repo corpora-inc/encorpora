@@ -127,12 +127,32 @@ const startServer = () => new Promise((resolve) => {
     if (rel.startsWith(`${PACK_ID}/`)) rel = rel.slice(PACK_ID.length + 1)
     if (rel === "") rel = "manifest.json"
 
-    const filePath = path.join(packRoot, rel)
+    let filePath = path.join(packRoot, rel)
 
     // Refuse path traversal
     if (!filePath.startsWith(packRoot)) {
       res.writeHead(403).end("forbidden")
       return
+    }
+
+    // Legacy-path fallback for migrated corpora (es/zh CDN ZIPs still ship the
+    // pre-migration root-`data/` layout; their manifest databases map points
+    // at OLD paths). On disk the files now live at sources/core/data/, so
+    // rewrite `languages/<code>/data/<file>` → `languages/<code>/sources/core/data/<file>`
+    // when the legacy path is missing. en/fr/de/ja already use NEW paths everywhere.
+    let legacyDb = false
+    try {
+      await stat(filePath)
+    } catch {
+      const m = rel.match(/^languages\/([^/]+)\/data\/(.+)$/)
+      if (m) {
+        const alt = path.join(packRoot, "languages", m[1], "sources", "core", "data", m[2])
+        try {
+          await stat(alt)
+          filePath = alt
+          legacyDb = true
+        } catch {}
+      }
     }
 
     try {
@@ -146,6 +166,7 @@ const startServer = () => new Promise((resolve) => {
         "Content-Type": MIME[ext] || "application/octet-stream",
         "Content-Length": s.size,
       })
+      if (legacyDb) console.log(`[${PACK_ID}] legacy-path served: ${rel}`)
       createReadStream(filePath).pipe(res)
     } catch {
       res.writeHead(404).end(`not found: ${rel}`)
