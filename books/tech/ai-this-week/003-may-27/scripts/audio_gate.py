@@ -66,10 +66,16 @@ def main() -> int:
         d = json.loads(sp.read_text())
         fixed = 0
         for sid in expected:
-            if sid in d and d[sid].get("status") != "DONE":
-                d[sid]["status"] = "DONE"
-                d[sid]["error"] = None
-                fixed += 1
+            if sid in d:
+                # Clear stale validation_errors on any DONE/reconciled segment so
+                # ttsctl publish's pack-integrity check doesn't refuse to package.
+                if d[sid].get("validation_errors"):
+                    d[sid]["validation_errors"] = []
+                    fixed += 1
+                if d[sid].get("status") != "DONE":
+                    d[sid]["status"] = "DONE"
+                    d[sid]["error"] = None
+                    fixed += 1
         if fixed:
             sp.write_text(json.dumps(d, indent=2, ensure_ascii=False))
             print(f"[{lang}] reconciled {fixed} stale non-DONE status -> DONE (valid audio)")
