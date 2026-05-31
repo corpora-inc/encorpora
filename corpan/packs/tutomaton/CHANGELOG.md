@@ -50,6 +50,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   44×5 bar.
 
 ### Fixed
+- Resource-loading hardened for the multi-language rollout: removed the `en`
+  manifest entry that had no local module (it 404'd → "unexpected identifier"
+  on JSON.parse); `activate()` now fails with a clear "isn't available yet"
+  message instead of a cryptic parse error when a language's module is missing;
+  and an empty-string `sha256` is treated as "unknown" (skip verification)
+  rather than passed to the installer as `Some("")`, which 403/published langs
+  hit as "module hash mismatch".
 - Prompt-only tutors (0 RAG sources) no longer try to download a corpus: a
   language is treated as installed when it has no entry in the manifest
   `databases` map, so picking one of the ~50 prompt-only languages goes straight

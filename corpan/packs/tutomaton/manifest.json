@@ -650,17 +650,6 @@
       "sizeMb": 1,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/tr-0.1.0.zip",
       "sha256": ""
-    },
-    {
-      "code": "en",
-      "displayName": {
-        "en": "English"
-      },
-      "voiceLanguageCode": "en-US",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/en-0.1.0.zip",
-      "sha256": ""
     }
   ],
   "metadata": {
@@ -668,7 +657,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-05-31T08:04:24.856Z",
+  "devRevision": "2026-05-31T15:15:29.122Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

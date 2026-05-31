@@ -171,7 +171,15 @@ export class LanguageManager {
     await this.ensureInstalled(code, onProgress)
 
     const moduleJson = await this.opts.loadModuleFile(code, "module.json")
-    const module: LanguageModule = JSON.parse(moduleJson)
+    let module: LanguageModule
+    try {
+      module = JSON.parse(moduleJson) as LanguageModule
+    } catch {
+      // A missing/unpublished language returns a 404 HTML/XML error page, not
+      // JSON — fail with a clear message instead of a cryptic "unexpected
+      // identifier" from JSON.parse choking on "<...does not exist...>".
+      throw new Error(`Language "${code}" isn't available yet (its content failed to load).`)
+    }
 
     const [systemPrompt, groundingInstruction] = await Promise.all([
       this.opts.loadModuleFile(code, module.files.systemPrompt),
