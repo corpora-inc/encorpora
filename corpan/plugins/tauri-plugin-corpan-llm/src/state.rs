@@ -270,7 +270,11 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                     model = None;
                 }
                 let avail = device_memory_mb();
-                log::info!("[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB");
+                let load_start = std::time::Instant::now();
+                log::info!(
+                    "[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB perf_cores={}",
+                    perf_core_count()
+                );
                 // Try full GPU offload first (Metal). On unified-memory iOS the
                 // weights become a ~2.5 GB resident GPU buffer that can exceed the
                 // per-app jetsam limit; if that fails, fall back to CPU + mmap so
@@ -299,7 +303,10 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 match outcome {
                     Ok((m, backend_str)) => {
                         model = Some(m);
-                        log::info!("[corpan-llm] loaded {model_id} ({backend_str})");
+                        log::info!(
+                            "[corpan-llm] loaded {model_id} ({backend_str}) in {}ms",
+                            load_start.elapsed().as_millis()
+                        );
                         let _ = resp.send(Ok(backend_str));
                     }
                     Err(e) => {
@@ -353,10 +360,19 @@ fn run_chat(
     cancel: &AtomicBool,
 ) -> Result<()> {
     let n_ctx = DEFAULT_CTX;
+    // Thread count is THE Android perf lever. llama.cpp's default is a fixed 4
+    // (it does NOT autodetect cores), so on an 8-core big.LITTLE phone the
+    // matmul-bound prompt prefill runs on 4 threads the scheduler may park on
+    // efficiency cores → minutes to first token. Pin to the performance-core
+    // count. n_threads drives generation; n_threads_batch drives prefill (the
+    // long pole for Tutomaton's large grounded prompt) — set both.
+    let threads = perf_core_count();
     // Note: the RNG seed lives in the sampler (`LlamaSampler::dist`), not the
     // context params, in current llama-cpp-2.
-    let ctx_params =
-        LlamaContextParams::default().with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()));
+    let ctx_params = LlamaContextParams::default()
+        .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
+        .with_n_threads(threads)
+        .with_n_threads_batch(threads);
     let mut ctx = model
         .new_context(backend, ctx_params)
         .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
@@ -379,6 +395,7 @@ fn run_chat(
     let mut batch = LlamaBatch::new(BATCH_CAP, 1);
     let n_prompt = tokens.len() as i32;
     let last = n_prompt - 1;
+    let prefill_start = std::time::Instant::now();
     let mut pos: i32 = 0;
     while pos < n_prompt {
         batch.clear();
@@ -392,6 +409,14 @@ fn run_chat(
             .map_err(|e| Error::LlamaCpp(format!("decode prompt: {e}")))?;
         pos = end;
     }
+    // PERF: prefill (prompt ingestion) is the suspected long pole on Android CPU.
+    // Log it separately from decode so prefill tok/s vs decode tok/s is visible.
+    let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
+    log::info!(
+        "[corpan-llm] PERF prefill: {n_prompt} tok in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx}",
+        prefill_ms,
+        (n_prompt as f64) * 1000.0 / prefill_ms,
+    );
 
     let mut sampler = build_sampler(&options);
     let mut decoder = encoding_rs::UTF_8.new_decoder();
@@ -439,6 +464,14 @@ fn run_chat(
             .map_err(|e| Error::LlamaCpp(format!("decode: {e}")))?;
     }
 
+    // PERF: decode (token generation) throughput, separate from prefill above.
+    let decode_ms = start.elapsed().as_millis().max(1) as f64;
+    log::info!(
+        "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
+        decode_ms,
+        (produced as f64) * 1000.0 / decode_ms,
+    );
+
     let _ = app.emit(
         &format!("llm-done:{session_id}"),
         DoneEvent {
@@ -448,6 +481,56 @@ fn run_chat(
         },
     );
     Ok(())
+}
+
+/// Number of CPU threads to use for inference = the performance-core count.
+///
+/// llama.cpp's default (a hardcoded 4, no autodetection) is wrong on phones: a
+/// modern Snapdragon is big.LITTLE (e.g. 1 prime + 3-5 performance + 2-4
+/// efficiency cores). Using ALL cores oversaturates memory bandwidth (the real
+/// bottleneck) and parks threads on slow efficiency cores; the fixed 4 leaves
+/// performance cores idle. We detect the performance-core count from sysfs max
+/// frequencies (count cores above the slowest tier). Falls back to
+/// max(2, available_parallelism/2) when sysfs is unavailable (Apple/desktop).
+fn perf_core_count() -> i32 {
+    #[cfg(target_os = "android")]
+    {
+        if let Some(n) = perf_cores_from_sysfs() {
+            return n;
+        }
+    }
+    let logical = std::thread::available_parallelism()
+        .map(|n| n.get())
+        .unwrap_or(4);
+    ((logical / 2).max(2)) as i32
+}
+
+/// Read per-CPU max frequencies from sysfs and return the number of cores NOT in
+/// the slowest frequency tier (the performance + prime cores). None if sysfs
+/// can't be read or the topology looks degenerate.
+#[cfg(target_os = "android")]
+fn perf_cores_from_sysfs() -> Option<i32> {
+    let mut freqs: Vec<u64> = Vec::new();
+    for cpu in 0..16 {
+        let path = format!("/sys/devices/system/cpu/cpu{cpu}/cpufreq/cpuinfo_max_freq");
+        match std::fs::read_to_string(&path) {
+            Ok(s) => {
+                if let Ok(f) = s.trim().parse::<u64>() {
+                    freqs.push(f);
+                }
+            }
+            Err(_) => break, // no more CPUs
+        }
+    }
+    if freqs.len() < 2 {
+        return None;
+    }
+    let min_freq = *freqs.iter().min()?;
+    // Cores faster than the slowest tier. If all share one freq (no big.LITTLE
+    // split), use all of them.
+    let perf = freqs.iter().filter(|&&f| f > min_freq).count();
+    let n = if perf == 0 { freqs.len() } else { perf };
+    Some((n.clamp(2, freqs.len())) as i32)
 }
 
 // ============================================================
