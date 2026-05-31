@@ -253,7 +253,7 @@ const PackModule: ContentPackModule = {
         <main class="lt-log" role="log" aria-live="polite"></main>
 
         <footer class="lt-input">
-          <button class="lt-mic" aria-label="Hold to speak" hidden>●</button>
+          <button class="lt-mic" aria-label="Hold to speak, release to send" title="Hold to speak" hidden>●</button>
           <div class="lt-field">
             <textarea class="lt-text" rows="1" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
           </div>
@@ -678,25 +678,84 @@ const PackModule: ContentPackModule = {
       }
     })
 
-    $mic.addEventListener("click", async () => {
-      if (!state.voiceModeEnabled || !state.activeLanguage) return
-      if (!state.recording) {
-        const sessionId = crypto.randomUUID()
-        state.sttSession = sessionId
-        state.recording = true
-        $mic.classList.add("recording")
+    // ---------- push-to-talk: hold the mic, release to capture+send ----------
+    // A tap-to-start / tap-to-stop toggle was unreliable (a missed second tap
+    // left it recording forever). Press-and-hold is unambiguous: down = record,
+    // up = stop+transcribe+send. We use Pointer Events + setPointerCapture so the
+    // release always lands on the button even if the finger slides off.
+    const MIN_HOLD_MS = 250
+    let pressActive = false
+    let pressStart = 0
+
+    async function micStart(pointerId?: number) {
+      if (pressActive || !state.voiceModeEnabled || !state.activeLanguage) return
+      if (state.recording) return
+      pressActive = true
+      pressStart = performance.now()
+      const sessionId = crypto.randomUUID()
+      state.sttSession = sessionId
+      state.recording = true
+      $mic.classList.add("recording")
+      if (pointerId !== undefined) {
+        try { $mic.setPointerCapture(pointerId) } catch { /* capture is best-effort */ }
+      }
+      try {
         await hostApi.stt?.startSession?.({
           sessionId,
           language: state.activeLanguage.voiceLanguageCode,
           expectedText: "",
         })
-      } else {
-        const result = await hostApi.stt?.stopSession?.({ sessionId: state.sttSession ?? "" })
+      } catch (e) {
+        console.error("[tutomaton] startSession failed:", e)
         state.recording = false
+        pressActive = false
         $mic.classList.remove("recording")
-        if (result?.text) void send(result.text)
+        systemNote(`Couldn't start recording: ${e instanceof Error ? e.message : String(e)}`)
       }
+    }
+
+    async function micStop(canceled = false) {
+      if (!pressActive) return
+      pressActive = false
+      const sessionId = state.sttSession ?? ""
+      const heldMs = performance.now() - pressStart
+      state.recording = false
+      $mic.classList.remove("recording")
+      // Too brief to be real speech, or an explicit cancel → drop it, don't send.
+      if (canceled || heldMs < MIN_HOLD_MS) {
+        try {
+          if (hostApi.stt?.cancelSession) await hostApi.stt.cancelSession({ sessionId })
+          else await hostApi.stt?.stopSession?.({ sessionId })
+        } catch (e) {
+          console.error("[tutomaton] cancel recording failed:", e)
+        }
+        return
+      }
+      try {
+        $mic.classList.add("transcribing")
+        const result = await hostApi.stt?.stopSession?.({ sessionId })
+        const text = result?.text?.trim()
+        if (text) void send(text)
+      } catch (e) {
+        console.error("[tutomaton] stopSession failed:", e)
+        systemNote(`Couldn't transcribe: ${e instanceof Error ? e.message : String(e)}`)
+      } finally {
+        $mic.classList.remove("transcribing")
+      }
+    }
+
+    $mic.addEventListener("pointerdown", (e) => {
+      e.preventDefault()
+      void micStart(e.pointerId)
     })
+    $mic.addEventListener("pointerup", (e) => {
+      e.preventDefault()
+      void micStop(false)
+    })
+    // Pointer left the element WITHOUT capture (or capture released) → treat as
+    // stop, not cancel: the user almost certainly finished talking.
+    $mic.addEventListener("pointercancel", () => void micStop(true))
+    $mic.addEventListener("lostpointercapture", () => void micStop(false))
 
     // ---------- bootstrap ----------
     renderLangs()

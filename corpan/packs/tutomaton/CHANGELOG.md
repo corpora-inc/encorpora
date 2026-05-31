@@ -16,6 +16,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   disk) degrades to an ungrounded answer instead of killing the turn.
 
 ### Changed
+- Voice input is now press-and-hold (push-to-talk): hold the mic to record, release
+  to transcribe + send. Replaces the tap-to-toggle that could miss its stop tap and
+  record forever. Uses pointer capture so the release always lands even if the
+  finger slides off; presses shorter than 250 ms are dropped (no empty sends), and
+  the mic shows a recording pulse then a brief transcribing state.
 - Top bar redesigned: the tutor/language switcher moved out of the cramped inline
   pill row into a compact header trigger (active flag + name + chevron) that opens
   a full switcher sheet — a bottom sheet on mobile, a centered modal on desktop —
