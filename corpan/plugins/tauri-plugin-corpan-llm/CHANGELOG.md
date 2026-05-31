@@ -5,6 +5,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Live system-prompt override** for on-device A/B with no rebuild: env
+  `CORPAN_LLM_SYSPROMPT` or `adb shell setprop debug.corpan.sysprompt "..."`.
+  `"none"` drops all system messages (bare model); a non-empty string replaces
+  every system message's content; empty/unset = unchanged. Measures how much the
+  ~850-token grounded prompt costs in prefill (the whole ~43s on Android) and how
+  the tutor behaves with little/no priming. NOTE: this only lifts the per-turn
+  prefill *floor* — the real Android cost is that `run_chat` re-prefills system +
+  full history every turn (no KV-cache reuse), so latency grows each round and
+  hard-errors at `n_ctx` 4096; iOS Metal just hides it. See `ANDROID_PERF.md`.
+
 ### Fixed
 - **Android inference speed** (Tutomaton was ~5 min to first token): pin
   llama.cpp to the device's big-core count instead of its hardcoded default of 4
