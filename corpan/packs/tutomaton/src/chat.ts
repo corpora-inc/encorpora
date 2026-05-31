@@ -23,8 +23,16 @@ import { LanguageManager, type HostApi, type LanguageRegistryEntry, type Languag
 import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
 
 // Minimal slice of @corpan/sdk's ContentPackModule that we actually use.
+// The host passes initialState.stackConfig — the user's active stack, where
+// languages[0] is their NATIVE language and languages[1..] are the ones they're
+// learning. We use it to float the user's own languages to the top of the picker.
+type MountInit = { stackConfig?: { languages?: string[] } }
 type ContentPackModule = {
-  mount: (container: HTMLElement, hostApi: HostApi) => Promise<{ unmount?: () => void } | void> | { unmount?: () => void } | void
+  mount: (
+    container: HTMLElement,
+    hostApi: HostApi,
+    initialState?: MountInit
+  ) => Promise<{ unmount?: () => void } | void> | { unmount?: () => void } | void
 }
 
 const PACK_ID = "tutomaton-v1"
@@ -135,7 +143,27 @@ const LOGO_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAABQCAY
 // ============================================================
 
 /** Small, tasteful flags for the language pills. Falls back to none. */
-const LANG_FLAG: Record<string, string> = { es: "🇪🇸", zh: "🇨🇳", fr: "🇫🇷", de: "🇩🇪", ja: "🇯🇵", it: "🇮🇹", pt: "🇵🇹", ko: "🇰🇷" }
+// Flag/glyph per language. Language ≠ nation, so a few deliberately use a SCRIPT
+// glyph instead of a national flag to avoid taking a geopolitical side:
+//   zh-Hant / yue → 繁 (Traditional/Cantonese written form is shared by TW + HK;
+//     a national flag here is a Taiwan/PRC/HK statement we don't want to make)
+//   pa-Arab (Shahmukhi) → ਪ-ish: no single clean nation, use a script mark
+// Per product calls: en=🇺🇸, es=🇪🇸 (Spain as the generic Spanish marker),
+// ru=🇷🇺, he=🇮🇱 (the only realistic national markers).
+const LANG_FLAG: Record<string, string> = {
+  en: "🇺🇸", es: "🇪🇸", it: "🇮🇹", fr: "🇫🇷", de: "🇩🇪",
+  "pt-BR": "🇧🇷", "pt-PT": "🇵🇹", nl: "🇳🇱", ca: "🇪🇸", ro: "🇷🇴",
+  ru: "🇷🇺", uk: "🇺🇦", bg: "🇧🇬", sr: "🇷🇸", pl: "🇵🇱",
+  cs: "🇨🇿", sk: "🇸🇰", sl: "🇸🇮", hr: "🇭🇷", hu: "🇭🇺",
+  fi: "🇫🇮", sv: "🇸🇪", da: "🇩🇰", no: "🇳🇴", lt: "🇱🇹",
+  el: "🇬🇷", tr: "🇹🇷",
+  zh: "🇨🇳", "zh-Hans": "🇨🇳", "zh-Hant": "繁", "yue-Hant-HK": "粵",
+  ja: "🇯🇵", "ko-polite": "🇰🇷",
+  vi: "🇻🇳", th: "🇹🇭", id: "🇮🇩", ms: "🇲🇾", sw: "🇰🇪",
+  hi: "🇮🇳", bn: "🇧🇩", ta: "🇮🇳", te: "🇮🇳", gu: "🇮🇳",
+  kn: "🇮🇳", mr: "🇮🇳", ne: "🇳🇵", "pa-Guru": "🇮🇳", "pa-Arab": " پ",
+  ur: "🇵🇰", ar: "🇸🇦", fa: "🇮🇷", he: "🇮🇱",
+}
 
 /** Per-language starter prompts shown in the welcome state. */
 const SUGGESTIONS: Record<string, string[]> = {
@@ -187,7 +215,13 @@ function scrubOutput(s: string): string {
 // ============================================================
 
 const PackModule: ContentPackModule = {
-  async mount(container: HTMLElement, hostApi: HostApi) {
+  async mount(container: HTMLElement, hostApi: HostApi, initialState?: MountInit) {
+    // The user's stack: languages[0] = their native language, [1..] = learning.
+    // We surface ALL of these (native included — we never hide it; they can chat
+    // with the tutor in any supported language) at the top of the picker.
+    const stackLangs: string[] = Array.isArray(initialState?.stackConfig?.languages)
+      ? initialState!.stackConfig!.languages!.filter((c) => typeof c === "string")
+      : []
     const state: State = {
       messages: [],
       // Speaker (TTS) defaults ON — the tutor speaks its replies; the control
@@ -447,8 +481,20 @@ const PackModule: ContentPackModule = {
       renderLangCards()
     })
 
-    /** Installed ("your languages") codes, refreshed on switch. Drives grouping. */
+    /** Installed (sqlite-on-disk) codes, refreshed on switch. */
     let installedSet = new Set<string>()
+
+    /** "Your languages" = the user's stack (native + learning), floated to the
+     *  top of the picker. The host gives bare codes (es, zh, pt); map them to our
+     *  manifest codes (which may be regional: pt-BR, zh-Hans, ko-polite, …). A
+     *  bare code matches any manifest entry that starts with it. */
+    const yourSet = new Set<string>()
+    for (const want of stackLangs) {
+      for (const e of registry) {
+        if (e.code === want || e.code.split("-")[0] === want) yourSet.add(e.code)
+      }
+    }
+    const isYours = (code: string): boolean => yourSet.has(code)
 
     function entryMatches(entry: LanguageRegistryEntry, q: string): boolean {
       if (!q) return true
@@ -515,8 +561,12 @@ const PackModule: ContentPackModule = {
         return
       }
 
-      const yours = matched.filter((e) => installedSet.has(e.code))
-      const others = matched.filter((e) => !installedSet.has(e.code))
+      // "Your languages" = the user's stack (native + learning); fall back to
+      // installed-on-disk when the host gave us no stack (e.g. standalone dev).
+      const inYours = (e: LanguageRegistryEntry) =>
+        yourSet.size > 0 ? isYours(e.code) : installedSet.has(e.code)
+      const yours = matched.filter(inYours)
+      const others = matched.filter((e) => !inYours(e))
 
       // Only show grouping headers when there's something installed AND we're
       // not actively narrowing with a query (keeps a clean flat list while
@@ -566,7 +616,10 @@ const PackModule: ContentPackModule = {
       // ---- intro language picker: "your languages" stacked prominently, with
       // an expand-to-all affordance (full list lives in the sheet → scales to ~50)
       const langRow = wrap.querySelector<HTMLDivElement>(".lt-welcome-langs")!
-      const yours = registry.filter((e) => installedSet.has(e.code))
+      // Feature the user's stack (native + learning); else installed; else first few.
+      const yours = registry.filter((e) =>
+        yourSet.size > 0 ? isYours(e.code) : installedSet.has(e.code)
+      )
       const featured = (yours.length > 0 ? yours : registry).slice(0, 6)
       for (const entry of featured) {
         const pill = document.createElement("button")
@@ -623,15 +676,44 @@ const PackModule: ContentPackModule = {
       // per-language flag needed and the chrome stays LTR.
       body.dir = "auto"
       body.textContent = text
-      // Tap an assistant reply to (re)hear it — explicit tap always speaks, even
-      // when the speaker is muted. Great for drilling pronunciation.
+      // Assistant replies: SHORT press = hear it again (always speaks, even when
+      // muted — good for drilling); LONG press = copy to clipboard (e.g. to paste
+      // into a translator). Pointer-based so it works on touch + desktop.
       if (role === "assistant") {
         wrap.classList.add("lt-speakable")
-        body.title = "Tap to hear it again"
-        body.addEventListener("click", () => {
-          const t = body.textContent?.trim()
-          if (t) speakText(t)
+        body.title = "Tap to hear · hold to copy"
+        const LONG_MS = 450
+        let timer: number | null = null
+        let longReady = false
+        const clear = () => {
+          if (timer !== null) { window.clearTimeout(timer); timer = null }
+          body.classList.remove("lt-holding")
+        }
+        body.addEventListener("pointerdown", (e) => {
+          if (e.button !== undefined && e.button !== 0) return
+          longReady = false
+          clear()
+          // The timer only MARKS the press as long + shows the "release to copy"
+          // hint. The actual copy must run in the pointerup handler so it stays
+          // inside a real user-gesture context (WKWebView blocks clipboard from
+          // timer callbacks).
+          timer = window.setTimeout(() => {
+            longReady = true
+            body.classList.add("lt-holding")
+          }, LONG_MS)
         })
+        body.addEventListener("pointerup", () => {
+          const wasLong = longReady
+          clear()
+          const t = body.textContent?.trim()
+          if (!t) return
+          if (wasLong) copyReply(t, body)   // sync, inside the gesture
+          else speakText(t)
+        })
+        body.addEventListener("pointercancel", clear)
+        body.addEventListener("pointerleave", clear)
+        // a real finger long-press fires the iOS callout/context menu — suppress it
+        body.addEventListener("contextmenu", (e) => e.preventDefault())
       }
       wrap.appendChild(body)
       $log.appendChild(wrap)
@@ -816,6 +898,39 @@ const PackModule: ContentPackModule = {
     /** Speak only if the speaker isn't muted — for auto-speaking new replies. */
     function maybeSpeak(text: string) {
       if (state.ttsEnabled) speakText(text)
+    }
+
+    /** Long-press a reply → copy to clipboard (e.g. to paste into a translator).
+     *  Runs SYNCHRONOUSLY inside the pointerup gesture. The WKWebView blocks the
+     *  async clipboard API, so we use the legacy execCommand("copy") path (which
+     *  works inside a real user gesture) and fall back to navigator.clipboard.
+     *  Flashes a brief "Copied" state; noisy on failure. */
+    function copyReply(text: string, body: HTMLElement) {
+      const flash = () => {
+        body.classList.add("lt-copied")
+        window.setTimeout(() => body.classList.remove("lt-copied"), 900)
+      }
+      // 1) execCommand via a temporary selected textarea — gesture-friendly.
+      try {
+        const ta = document.createElement("textarea")
+        ta.value = text
+        ta.setAttribute("readonly", "")
+        ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none"
+        container.appendChild(ta)
+        ta.focus()
+        ta.select()
+        ta.setSelectionRange(0, text.length)
+        const ok = document.execCommand("copy")
+        ta.remove()
+        if (ok) { flash(); return }
+      } catch (e) {
+        console.error("[tutomaton] execCommand copy failed:", e)
+      }
+      // 2) async clipboard API fallback (may be blocked in WKWebView).
+      navigator.clipboard?.writeText(text).then(flash).catch((e) => {
+        console.error("[tutomaton] clipboard write failed:", e)
+        systemNote("Couldn't copy — long-press blocked by the system.")
+      })
     }
 
     // ---------- input UX ----------

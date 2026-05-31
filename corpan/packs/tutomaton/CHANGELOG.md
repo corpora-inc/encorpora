@@ -22,6 +22,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Long-press a tutor reply to COPY it (e.g. to paste into a translator); short
+  press still replays the audio. Copy runs inside the pointerup user-gesture
+  (the async clipboard API is blocked in the WKWebView) via execCommand with a
+  navigator.clipboard fallback; a "release to copy" cue + "Copied" flash.
+- English (en) is a first-class tutor again and is never hidden — the user can
+  chat with the bot in any supported language. The picker floats the user's own
+  stack (native + learning languages, from the host stackConfig) to the top.
+- Flags/glyphs for every shippable language (en=US, es=ES, pt-BR=BR, pt-PT=PT, …);
+  Traditional Chinese / Cantonese use a 繁/粵 script glyph and Shahmukhi a script
+  mark instead of a national flag, to avoid taking a geopolitical side.
+- Action buttons (mute/speaker + new conversation) moved from the bottom-right
+  to a tidy row top-left in the conversation area, vertically level with the
+  first message (which sits on the right, so the corner stays clear).
 - RTL languages now render idiomatically: each message bubble, the welcome
   title, and the input use dir="auto", so Arabic/Hebrew/Persian/Urdu content
   right-aligns RTL (per message, mixed content handled) while English stays

@@ -132,18 +132,24 @@
 
 /* ---------- floating action cluster (bottom-right, above the input) ----------
    Translucent, out of the way, easy to reach: mute toggle + new conversation. */
+/* Tucked top-left, just under the logo, inside the conversation area. The user
+   always speaks first and their message sits on the RIGHT, so this corner stays
+   clear; later messages scroll beneath the translucent buttons. */
 .lt-fabs {
   position: absolute;
-  right: max(var(--lt-safe-right, 0px), 12px);
-  bottom: calc(var(--lt-input-h, 76px) + var(--lt-safe-bottom) + 12px);
+  left: max(var(--lt-safe-left, 0px), 14px);
+  /* Drop clear of the header into the conversation area, vertically level with
+     the first (right-side) user message. Header = top inset + ~56px brand row +
+     border; the log's first bubble starts ~18px below that. */
+  top: calc(max(var(--lt-safe-top), 44px) + 78px);
   z-index: 10;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  gap: 8px;
 }
 .lt-fab {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
   border: 1px solid var(--lt-border);
   background: color-mix(in srgb, var(--lt-bg-elev) 72%, transparent);
@@ -209,7 +215,50 @@
   cursor: pointer;
   position: relative;
   transition: border-color 0.15s ease, background 0.15s ease;
+  /* a long-press must not start text selection / the iOS callout */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
+/* while holding past the long-press threshold: cue "release to copy" */
+.lt-speakable .lt-msg-body.lt-holding {
+  border-color: var(--lt-accent-2);
+  background: rgba(96, 165, 250, 0.1);
+}
+.lt-speakable .lt-msg-body.lt-holding::before {
+  content: "Release to copy";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lt-fg);
+  background: var(--lt-bg-elev);
+  border: 1px solid var(--lt-border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.lt-speakable .lt-msg-body[dir="rtl"].lt-holding::before { right: auto; left: 10px; }
+/* brief confirmation flash when a long-press copies the reply */
+.lt-speakable .lt-msg-body.lt-copied {
+  border-color: var(--lt-accent);
+  background: rgba(59, 130, 246, 0.16);
+}
+.lt-speakable .lt-msg-body.lt-copied::before {
+  content: "Copied";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--lt-accent);
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.lt-speakable .lt-msg-body[dir="rtl"].lt-copied::before { right: auto; left: 10px; }
 .lt-speakable .lt-msg-body::after {
   content: "";
   position: absolute;
