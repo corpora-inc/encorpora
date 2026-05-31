@@ -73,6 +73,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   44×5 bar.
 
 ### Fixed
+- Fixed the Tamil/Indic "dotted-circle" (◌) artifact: small models sometimes
+  drop a base consonant and emit an orphaned combining mark (vowel sign / virama)
+  with nothing to attach to, which the font draws on a dotted circle. scrubOutput
+  now strips runs of combining marks (\p{M}) that have no base before them (at
+  text start or right after whitespace). Well-formed clusters are byte-identical
+  through the filter; only orphans are removed. Helps every combining-mark script
+  (Tamil, Devanagari, Arabic, Thai, …).
 - Resource-loading hardened for the multi-language rollout: removed the `en`
   manifest entry that had no local module (it 404'd → "unexpected identifier"
   on JSON.parse); `activate()` now fails with a clear "isn't available yet"

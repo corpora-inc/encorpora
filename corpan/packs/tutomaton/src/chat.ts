@@ -167,7 +167,17 @@ function scrubOutput(s: string): string {
   s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
   s = s.replace(/\*\*/g, "")
   s = s.replace(/<\/?reference>/gi, "")
+  // Orphaned combining marks → the "dotted-circle" artifact. A combining mark
+  // (Unicode M*) only renders correctly attached to a base letter; when the
+  // model drops the base (common for small models in Indic/Tamil/Arabic/Thai),
+  // the leftover vowel-sign/virama draws on a ◌ dotted circle. Strip any run of
+  // combining marks that has no base before it — i.e. at the start of the text
+  // or right after whitespace. Well-formed clusters (mark immediately follows
+  // its base letter) are untouched. Verified: clean Tamil passes through byte-
+  // identical; only orphan-leading sequences are cleaned.
+  s = s.replace(/(^|\s)\p{M}+/gu, "$1")
   s = s.replace(/[ \t]+(?=\n)/g, "")
+  s = s.replace(/[ \t]{2,}/g, " ")
   s = s.replace(/\n{3,}/g, "\n\n")
   return s.trim()
 }
