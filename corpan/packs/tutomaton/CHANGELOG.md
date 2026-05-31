@@ -22,6 +22,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Tutors are warmer and go with the user: added a WARMTH & ROLE directive to all
+  53 language prompts. The model now reciprocates affection/flirtation/emotion in
+  character instead of emitting base-model refusals like "expressing personal
+  feelings is not permitted / would you like to talk about something else?" — that
+  refusal was Qwen3-4B alignment surfacing despite our prompt, NOT our text.
+  Verified: Arabic "أحبك" now → "شكرًا على كلماتك، أحبّك أيضًا" (reciprocated,
+  in-character) rather than a canned deflection.
 - Chrome is now fully localizable into the user's NATIVE language (stack
   languages[0]): every header/picker/setup/welcome/FAB/error string goes through
   an in-pack t() (src/i18n.ts) keyed off the stack, with per-key English
