@@ -493,9 +493,17 @@ fn run_chat(
 /// frequencies (count cores above the slowest tier). Falls back to
 /// max(2, available_parallelism/2) when sysfs is unavailable (Apple/desktop).
 fn perf_core_count() -> i32 {
+    // Manual override (no rebuild): env CORPAN_LLM_THREADS, or on Android
+    // `adb shell setprop debug.corpan.llm_threads N`. Lets us A/B thread counts
+    // live on-device. >0 wins; 0/unset/invalid → auto-detect below.
+    if let Some(n) = thread_override() {
+        if n > 0 {
+            return n;
+        }
+    }
     #[cfg(target_os = "android")]
     {
-        if let Some(n) = perf_cores_from_sysfs() {
+        if let Some(n) = inference_threads_from_sysfs() {
             return n;
         }
     }
@@ -505,32 +513,72 @@ fn perf_core_count() -> i32 {
     ((logical / 2).max(2)) as i32
 }
 
-/// Read per-CPU max frequencies from sysfs and return the number of cores NOT in
-/// the slowest frequency tier (the performance + prime cores). None if sysfs
-/// can't be read or the topology looks degenerate.
-#[cfg(target_os = "android")]
-fn perf_cores_from_sysfs() -> Option<i32> {
-    let mut freqs: Vec<u64> = Vec::new();
-    for cpu in 0..16 {
-        let path = format!("/sys/devices/system/cpu/cpu{cpu}/cpufreq/cpuinfo_max_freq");
-        match std::fs::read_to_string(&path) {
-            Ok(s) => {
-                if let Ok(f) = s.trim().parse::<u64>() {
-                    freqs.push(f);
-                }
-            }
-            Err(_) => break, // no more CPUs
+/// Manual thread-count override from env or (Android) a system property.
+fn thread_override() -> Option<i32> {
+    if let Ok(v) = std::env::var("CORPAN_LLM_THREADS") {
+        if let Ok(n) = v.trim().parse::<i32>() {
+            return Some(n);
         }
     }
-    if freqs.len() < 2 {
+    #[cfg(target_os = "android")]
+    {
+        if let Ok(out) = std::process::Command::new("getprop")
+            .arg("debug.corpan.llm_threads")
+            .output()
+        {
+            if let Ok(s) = String::from_utf8(out.stdout) {
+                if let Ok(n) = s.trim().parse::<i32>() {
+                    return Some(n);
+                }
+            }
+        }
+    }
+    None
+}
+
+/// Pick the inference thread count from the Android CPU topology.
+///
+/// Classify cores by `cpu_capacity` (the kernel's normalized 0..1024 big/LITTLE
+/// signal; falls back to `cpuinfo_max_freq`). "Efficiency" = cores below 50% of
+/// the max capacity — true LITTLE cores that bottleneck LLM matmul. Use
+/// (total − efficiency) big cores; if the chip has NO efficiency tier (e.g.
+/// Snapdragon 8 Elite = 2 prime + 6 performance, all ≥74% capacity), reserve ONE
+/// core for the OS/UI/render thread so token streaming stays smooth. Clamp [2,total].
+///
+/// Examples: 8 Elite (1024×2, 765×6) → no LITTLE → 8−1 = 7. 8 Gen 3
+/// (1024 + perf×5 + ~300×2) → 2 LITTLE → 6. 4+4 (1024×4, ~400×4) → 4.
+#[cfg(target_os = "android")]
+fn inference_threads_from_sysfs() -> Option<i32> {
+    fn read_core_metrics(file: &str) -> Vec<u64> {
+        let mut v = Vec::new();
+        for cpu in 0..16 {
+            let path = format!("/sys/devices/system/cpu/cpu{cpu}/{file}");
+            match std::fs::read_to_string(&path) {
+                Ok(s) => {
+                    if let Ok(n) = s.trim().parse::<u64>() {
+                        v.push(n);
+                    }
+                }
+                Err(_) => break, // contiguous cpuN; stop at the first gap
+            }
+        }
+        v
+    }
+
+    // Prefer cpu_capacity (kernel big/LITTLE signal); fall back to max freq.
+    let mut metrics = read_core_metrics("cpu_capacity");
+    if metrics.len() < 2 {
+        metrics = read_core_metrics("cpufreq/cpuinfo_max_freq");
+    }
+    if metrics.len() < 2 {
         return None;
     }
-    let min_freq = *freqs.iter().min()?;
-    // Cores faster than the slowest tier. If all share one freq (no big.LITTLE
-    // split), use all of them.
-    let perf = freqs.iter().filter(|&&f| f > min_freq).count();
-    let n = if perf == 0 { freqs.len() } else { perf };
-    Some((n.clamp(2, freqs.len())) as i32)
+    let total = metrics.len();
+    let max = *metrics.iter().max()?;
+    let efficiency = metrics.iter().filter(|&&m| m * 2 < max).count();
+    let big = total - efficiency;
+    let n = if efficiency == 0 { big.saturating_sub(1) } else { big };
+    Some((n.clamp(2, total)) as i32)
 }
 
 // ============================================================

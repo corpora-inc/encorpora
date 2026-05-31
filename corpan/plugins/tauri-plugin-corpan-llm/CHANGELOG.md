@@ -5,7 +5,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Android inference speed** (Tutomaton was ~5 min to first token): pin
+  llama.cpp to the device's big-core count instead of its hardcoded default of 4
+  unpinned threads (which the scheduler parked on efficiency cores → minutes to
+  first token). `run_chat` sets `with_n_threads`/`with_n_threads_batch` from
+  `perf_core_count()`, which classifies cores by `cpu_capacity` (kernel big/LITTLE
+  signal; falls back to `cpuinfo_max_freq`): uses (total − efficiency) big cores,
+  excluding only true LITTLE cores (<50% of max capacity), and reserves ONE core
+  for the UI thread on all-big chips. On the test device (Galaxy S24 Ultra,
+  Snapdragon 8 Elite / SM8750 — 2×4.47GHz prime + 6×3.53GHz, capacity 1024×2 /
+  765×6, no efficiency tier) → **7** threads (an earlier freq-tier heuristic gave
+  a wrong **2**). Off-Android falls back to `max(2, logical/2)`; on Apple lands
+  near the P-core count. Native lib was already Release, so threads are the
+  dominant lever. See `ANDROID_PERF.md`.
+- **Live thread A/B without rebuild**: override via env `CORPAN_LLM_THREADS` or
+  Android `adb shell setprop debug.corpan.llm_threads N` (>0 wins; 0/unset →
+  auto-detect).
+
 ### Added
+- PERF instrumentation in `run_chat`: separate prefill vs decode tok/s logs
+  (`[corpan-llm] PERF prefill/decode …`) + load ms + chosen `perf_cores`.
 - Real on-device LLM inference via `llama-cpp-2` 0.1.146 (vendored llama.cpp),
   replacing the echo stub. Metal GPU on Apple targets (`metal` feature), CPU
   elsewhere. Commands: `llm_status` / `llm_load` / `llm_chat` / `llm_stop` /

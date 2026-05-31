@@ -54,10 +54,21 @@ device-log tail. This makes prefill-vs-decode and the chosen thread count visibl
 
 ### ✅ Phase 1 — Thread count fix (DONE, cargo-check clean)
 `run_chat` now sets `.with_n_threads(perf_core_count())` + `.with_n_threads_batch(...)`.
-`perf_core_count()` reads `/sys/devices/system/cpu/cpuN/cpufreq/cpuinfo_max_freq` and counts
-cores above the slowest frequency tier (the perf + prime cores); falls back to
-`max(2, logical/2)` off-Android. **Expected: the single biggest win** — turns "5 min" into
-seconds-to-first-token + usable decode.
+`perf_core_count()` classifies cores by `cpu_capacity` (kernel big/LITTLE signal; falls
+back to `cpuinfo_max_freq`): uses (total − efficiency) big cores, excluding only true
+LITTLE cores (<50% of max capacity), and reserves ONE core for the UI thread on all-big
+chips. Falls back to `max(2, logical/2)` off-Android. **Expected: the single biggest win** —
+turns "5 min" into seconds-to-first-token + usable decode.
+
+**Test device: Galaxy S24 Ultra, Snapdragon 8 Elite (SM8750), arm64.** 8 cores:
+2× prime @4.47GHz + 6× perf @3.53GHz, `cpu_capacity` 1024×2 / 765×6 — **no efficiency
+tier**. New heuristic → **7 threads** (8 − 0 LITTLE − 1 for UI). The first naïve
+freq-tier heuristic would have returned **2** here (only the 2 cores above the slowest
+freq), which is why classifying by capacity + the all-big special-case matters.
+
+**Live A/B without rebuild:** `adb shell setprop debug.corpan.llm_threads N` (or env
+`CORPAN_LLM_THREADS=N`), then re-open the tutor. Try 4 / 6 / 7 / 8 and compare the PERF
+tok/s lines. `setprop debug.corpan.llm_threads 0` (or unset) returns to auto-detect.
 
 ### Phase 1.5 — Verify on device (NEXT, needs the Android dev loop)
 Build + run on the phone, send one Tutomaton turn, read the PERF logs. Capture:
