@@ -377,6 +377,11 @@
       "cta": "Sekti",
       "desc": "@corpanapp",
       "title": "Sekite Instagram"
+    },
+    "share": {
+      "title": "Bendrinti Corpán",
+      "text": "Mokykitės kalbų su Corpán.",
+      "copied": "Nuoroda nukopijuota!"
     }
   },
   "common": {

@@ -377,6 +377,11 @@
       "cta": "Ikut",
       "desc": "@corpanapp",
       "title": "Ikut di Instagram"
+    },
+    "share": {
+      "title": "Kongsi Corpán",
+      "text": "Belajar bahasa dengan Corpán.",
+      "copied": "Pautan disalin!"
     }
   },
   "common": {

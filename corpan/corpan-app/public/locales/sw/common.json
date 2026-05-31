@@ -377,6 +377,11 @@
       "cta": "Fuata",
       "desc": "@corpanapp",
       "title": "Fuata kwenye Instagram"
+    },
+    "share": {
+      "title": "Shiriki Corpán",
+      "text": "Jifunze lugha na Corpán.",
+      "copied": "Kiungo kimenakiliwa!"
     }
   },
   "common": {

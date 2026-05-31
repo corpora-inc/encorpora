@@ -377,6 +377,11 @@
       "cta": "Seuraa",
       "desc": "@corpanapp",
       "title": "Seuraa Instagramissa"
+    },
+    "share": {
+      "title": "Jaa Corpán",
+      "text": "Opi kieliä Corpánin avulla.",
+      "copied": "Linkki kopioitu!"
     }
   },
   "common": {

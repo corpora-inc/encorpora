@@ -377,6 +377,11 @@
       "cta": "Folgen",
       "desc": "@corpanapp",
       "title": "Auf Instagram folgen"
+    },
+    "share": {
+      "title": "Corpán teilen",
+      "text": "Lerne Sprachen mit Corpán.",
+      "copied": "Link kopiert!"
     }
   },
   "common": {

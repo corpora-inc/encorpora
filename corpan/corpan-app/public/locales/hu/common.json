@@ -377,6 +377,11 @@
       "cta": "Követés",
       "desc": "@corpanapp",
       "title": "Kövesd Instagramon"
+    },
+    "share": {
+      "title": "Corpán megosztása",
+      "text": "Tanulj nyelveket a Corpánnal.",
+      "copied": "Link másolva!"
     }
   },
   "common": {

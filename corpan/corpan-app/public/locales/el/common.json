@@ -377,6 +377,11 @@
       "cta": "Ακολουθήστε",
       "desc": "@corpanapp",
       "title": "Ακολουθήστε στο Instagram"
+    },
+    "share": {
+      "title": "Κοινοποίηση Corpán",
+      "text": "Μάθε γλώσσες με το Corpán.",
+      "copied": "Ο σύνδεσμος αντιγράφηκε!"
     }
   },
   "common": {

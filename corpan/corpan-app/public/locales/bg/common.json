@@ -377,6 +377,11 @@
       "cta": "Последвай",
       "desc": "@corpanapp",
       "title": "Последвайте в Instagram"
+    },
+    "share": {
+      "title": "Сподели Corpán",
+      "text": "Учи езици с Corpán.",
+      "copied": "Връзката е копирана!"
     }
   },
   "common": {

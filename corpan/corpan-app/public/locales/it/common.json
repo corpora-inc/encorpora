@@ -377,6 +377,11 @@
       "cta": "Segui",
       "desc": "@corpanapp",
       "title": "Segui su Instagram"
+    },
+    "share": {
+      "title": "Condividi Corpán",
+      "text": "Impara le lingue con Corpán.",
+      "copied": "Link copiato!"
     }
   },
   "common": {

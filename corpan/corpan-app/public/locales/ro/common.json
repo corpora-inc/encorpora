@@ -377,6 +377,11 @@
       "cta": "Urmărește",
       "desc": "@corpanapp",
       "title": "Urmărește pe Instagram"
+    },
+    "share": {
+      "title": "Distribuie Corpán",
+      "text": "Învață limbi cu Corpán.",
+      "copied": "Link copiat!"
     }
   },
   "common": {
