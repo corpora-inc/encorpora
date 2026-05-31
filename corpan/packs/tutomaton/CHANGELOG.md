@@ -22,6 +22,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Voice input now uses the keyboard's built-in dictation (on-device, ~50
+  languages, no model download) typed into the text field, instead of a custom
+  whisper.cpp push-to-talk mic. The custom mic pointed at an uninstalled
+  `ggml-medium.bin` and failed with "Whisper not prepared" on release; rather
+  than ship a several-hundred-MB second model + its memory/management UX on top
+  of the on-device LLM, we lean on the OS dictation that's already there. The
+  in-field mic button and all STT wiring were removed.
 - Premium UI/UX pass on the chrome (presentation only — engine untouched). New
   top bar (left→right): a small orange pyramid brand mark (inline SVG, the only
   orange in the UI) + "Tutomaton" wordmark that doubles as an explicit

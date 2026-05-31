@@ -13,9 +13,9 @@
  *           → stream tokens into the message bubble
  *     → if TTS on: hostApi.speak(activeLang.voiceLanguageCode, finalText)
  *
- * All native access goes through `hostApi` (never `window.__TAURI__`). Voice mode
- * is parlometron push-to-talk; on unmount `hostApi.stt.releaseAudio()` is
- * non-negotiable for the iOS mic indicator.
+ * All native access goes through `hostApi` (never `window.__TAURI__`). Voice
+ * input is the keyboard's built-in dictation (on-device, ~50 languages, no model
+ * to manage) typed straight into the text field — there is no custom STT mic.
  */
 
 import "./chat.css"
@@ -37,9 +37,6 @@ type State = {
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
   cancelStream: (() => Promise<void>) | null
-  recording: boolean
-  sttSession: string | null
-  sttPrepared: boolean
 }
 
 // ============================================================
@@ -184,10 +181,6 @@ const PackModule: ContentPackModule = {
       activeLanguage: null,
       currentStreamId: null,
       cancelStream: null,
-      recording: false,
-      sttSession: null,
-      // STT engine is prepared lazily on the first mic press (and only once).
-      sttPrepared: false,
     }
 
     const baseUrl = readPackBaseUrl()
@@ -312,12 +305,11 @@ const PackModule: ContentPackModule = {
         <main class="lt-log" role="log" aria-live="polite"></main>
 
         <footer class="lt-input">
-          <!-- The mic lives INSIDE the input row (always present). The send
-               arrow appears once there's text; otherwise the hold-to-talk mic
-               is the primary action. Push-to-talk logic is unchanged. -->
+          <!-- Voice input is the keyboard's built-in dictation mic (on-device,
+               ~50 languages, no model to manage). The text field accepts it
+               directly; we don't ship a custom STT mic. -->
           <div class="lt-field">
             <textarea class="lt-text" rows="1" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
-            <button class="lt-mic" aria-label="Hold to speak, release to send" title="Hold to speak">${ICON.mic}</button>
           </div>
           <button class="lt-send" aria-label="Send" disabled>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
@@ -346,7 +338,6 @@ const PackModule: ContentPackModule = {
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $home = container.querySelector<HTMLButtonElement>(".lt-home")!
-    const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
     const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
     const $langSheet = container.querySelector<HTMLDivElement>(".lt-langsheet")!
     const $langSheetList = container.querySelector<HTMLDivElement>(".lt-langsheet-list")!
@@ -846,90 +837,8 @@ const PackModule: ContentPackModule = {
     }
     $home.addEventListener("click", exitToHome)
 
-    // ---------- push-to-talk: hold the mic, release to capture+send ----------
-    // A tap-to-start / tap-to-stop toggle was unreliable (a missed second tap
-    // left it recording forever). Press-and-hold is unambiguous: down = record,
-    // up = stop+transcribe+send. We use Pointer Events + setPointerCapture so the
-    // release always lands on the button even if the finger slides off.
-    const MIN_HOLD_MS = 250
-    let pressActive = false
-    let pressStart = 0
-
-    async function micStart(pointerId?: number) {
-      if (pressActive || !state.activeLanguage || !modelReady) return
-      if (state.recording) return
-      pressActive = true
-      pressStart = performance.now()
-      const sessionId = crypto.randomUUID()
-      state.sttSession = sessionId
-      state.recording = true
-      $mic.classList.add("recording")
-      if (pointerId !== undefined) {
-        try { $mic.setPointerCapture(pointerId) } catch { /* capture is best-effort */ }
-      }
-      try {
-        // Lazily prepare the STT engine on first use (was previously behind the
-        // removed voice-mode toggle). prepare() is idempotent on the host side.
-        if (!state.sttPrepared) {
-          await hostApi.stt?.prepare?.({ model: "ggml-medium.bin" })
-          state.sttPrepared = true
-        }
-        await hostApi.stt?.startSession?.({
-          sessionId,
-          language: state.activeLanguage.voiceLanguageCode,
-          expectedText: "",
-        })
-      } catch (e) {
-        console.error("[tutomaton] startSession failed:", e)
-        state.recording = false
-        pressActive = false
-        $mic.classList.remove("recording")
-        systemNote(`Couldn't start recording: ${e instanceof Error ? e.message : String(e)}`)
-      }
-    }
-
-    async function micStop(canceled = false) {
-      if (!pressActive) return
-      pressActive = false
-      const sessionId = state.sttSession ?? ""
-      const heldMs = performance.now() - pressStart
-      state.recording = false
-      $mic.classList.remove("recording")
-      // Too brief to be real speech, or an explicit cancel → drop it, don't send.
-      if (canceled || heldMs < MIN_HOLD_MS) {
-        try {
-          if (hostApi.stt?.cancelSession) await hostApi.stt.cancelSession({ sessionId })
-          else await hostApi.stt?.stopSession?.({ sessionId })
-        } catch (e) {
-          console.error("[tutomaton] cancel recording failed:", e)
-        }
-        return
-      }
-      try {
-        $mic.classList.add("transcribing")
-        const result = await hostApi.stt?.stopSession?.({ sessionId })
-        const text = result?.text?.trim()
-        if (text) void send(text)
-      } catch (e) {
-        console.error("[tutomaton] stopSession failed:", e)
-        systemNote(`Couldn't transcribe: ${e instanceof Error ? e.message : String(e)}`)
-      } finally {
-        $mic.classList.remove("transcribing")
-      }
-    }
-
-    $mic.addEventListener("pointerdown", (e) => {
-      e.preventDefault()
-      void micStart(e.pointerId)
-    })
-    $mic.addEventListener("pointerup", (e) => {
-      e.preventDefault()
-      void micStop(false)
-    })
-    // Pointer left the element WITHOUT capture (or capture released) → treat as
-    // stop, not cancel: the user almost certainly finished talking.
-    $mic.addEventListener("pointercancel", () => void micStop(true))
-    $mic.addEventListener("lostpointercapture", () => void micStop(false))
+    // Voice input intentionally relies on the keyboard's built-in dictation
+    // (on-device, ~50 languages, zero model to manage). No custom STT here.
 
     // ---------- bootstrap ----------
     const installedCodes = await langMgr.installed()
@@ -943,8 +852,6 @@ const PackModule: ContentPackModule = {
     return {
       unmount: () => {
         if (state.cancelStream) void state.cancelStream().catch(() => {})
-        // CRITICAL for iOS — release the audio engine so the mic indicator clears.
-        hostApi.stt?.releaseAudio?.().catch((e) => console.error("[tutomaton] releaseAudio failed:", e))
         if (state.ttsEnabled) hostApi.stopSpeech?.()
       },
     }
