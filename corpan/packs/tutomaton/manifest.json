@@ -13,18 +13,18 @@
   "tier": "plus",
   "packType": "tutomaton",
   "displayName": {
-    "en": "Tutomaton \u2014 language tutor",
-    "es": "Tutomaton \u2014 tutor de idiomas",
-    "fr": "Tutomaton \u2014 tuteur de langues",
-    "de": "Tutomaton \u2014 Sprachtutor",
-    "zh": "Tutomaton \u2014 \u8bed\u8a00\u8001\u5e08",
-    "ja": "Tutomaton \u2014 \u8a00\u8a9e\u30c1\u30e5\u30fc\u30bf\u30fc"
+    "en": "Tutomaton — language tutor",
+    "es": "Tutomaton — tutor de idiomas",
+    "fr": "Tutomaton — tuteur de langues",
+    "de": "Tutomaton — Sprachtutor",
+    "zh": "Tutomaton — 语言老师",
+    "ja": "Tutomaton — 言語チューター"
   },
   "tagline": {
     "en": "A patient tutor for every language you're learning. Runs entirely on your device.",
-    "es": "Un tutor paciente para cada idioma que est\u00e1s aprendiendo. Funciona completamente en tu dispositivo.",
-    "fr": "Un tuteur patient pour chaque langue que vous apprenez. Fonctionne enti\u00e8rement sur votre appareil.",
-    "zh": "\u4e3a\u4f60\u6b63\u5728\u5b66\u7684\u6bcf\u79cd\u8bed\u8a00\u51c6\u5907\u7684\u8010\u5fc3\u8001\u5e08\u3002\u5b8c\u5168\u5728\u4f60\u7684\u8bbe\u5907\u4e0a\u8fd0\u884c\u3002"
+    "es": "Un tutor paciente para cada idioma que estás aprendiendo. Funciona completamente en tu dispositivo.",
+    "fr": "Un tuteur patient pour chaque langue que vous apprenez. Fonctionne entièrement sur votre appareil.",
+    "zh": "为你正在学的每种语言准备的耐心老师。完全在你的设备上运行。"
   },
   "dependsOn": [
     {
@@ -40,14 +40,86 @@
   },
   "languages": [
     {
+      "code": "ar",
+      "displayName": {
+        "en": "Arabic (Standard)",
+        "ar": "العربية"
+      },
+      "voiceLanguageCode": "ar-SA",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ar-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "bg",
+      "displayName": {
+        "en": "Bulgarian",
+        "bg": "Български"
+      },
+      "voiceLanguageCode": "bg-BG",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/bg-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "bn",
+      "displayName": {
+        "en": "Bengali",
+        "bn": "বাংলা"
+      },
+      "voiceLanguageCode": "bn-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/bn-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ca",
+      "displayName": {
+        "en": "Catalan",
+        "ca": "Català"
+      },
+      "voiceLanguageCode": "ca-ES",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ca-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "cs",
+      "displayName": {
+        "en": "Czech",
+        "cs": "Čeština"
+      },
+      "voiceLanguageCode": "cs-CZ",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/cs-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "da",
+      "displayName": {
+        "en": "Danish",
+        "da": "Dansk"
+      },
+      "voiceLanguageCode": "da-DK",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/da-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "de",
       "displayName": {
         "en": "German",
-        "es": "Alem\u00e1n",
+        "es": "Alemán",
         "fr": "Allemand",
         "de": "Deutsch",
-        "zh": "\u5fb7\u8bed",
-        "ja": "\u30c9\u30a4\u30c4\u8a9e"
+        "zh": "德语",
+        "ja": "ドイツ語"
       },
       "voiceLanguageCode": "de-DE",
       "contentVersion": "0.1.0",
@@ -56,14 +128,26 @@
       "sha256": "38c7a3828f0e615a5ea26566ba4b81b0e96b529b88abbfeb1d557d052b95cad0"
     },
     {
+      "code": "el",
+      "displayName": {
+        "en": "Greek",
+        "el": "Ελληνικά"
+      },
+      "voiceLanguageCode": "el-GR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/el-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "en",
       "displayName": {
         "en": "English",
-        "es": "Ingl\u00e9s",
+        "es": "Inglés",
         "fr": "Anglais",
         "de": "Englisch",
-        "zh": "\u82f1\u8bed",
-        "ja": "\u82f1\u8a9e"
+        "zh": "英语",
+        "ja": "英語"
       },
       "voiceLanguageCode": "en-US",
       "contentVersion": "0.1.0",
@@ -75,7 +159,7 @@
       "code": "es",
       "displayName": {
         "en": "Spanish",
-        "es": "Espa\u00f1ol"
+        "es": "Español"
       },
       "voiceLanguageCode": "es-MX",
       "contentVersion": "0.1.0",
@@ -84,14 +168,38 @@
       "sha256": "ef7acbd88f461d686c9995ff868a77e06639fbe8baf432e23bcf0c6f828bbf8b"
     },
     {
+      "code": "fa",
+      "displayName": {
+        "en": "Persian",
+        "fa": "فارسی"
+      },
+      "voiceLanguageCode": "fa-IR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/fa-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "fi",
+      "displayName": {
+        "en": "Finnish",
+        "fi": "Suomi"
+      },
+      "voiceLanguageCode": "fi-FI",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/fi-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "fr",
       "displayName": {
         "en": "French",
-        "es": "Franc\u00e9s",
-        "fr": "Fran\u00e7ais",
-        "de": "Franz\u00f6sisch",
-        "zh": "\u6cd5\u8bed",
-        "ja": "\u30d5\u30e9\u30f3\u30b9\u8a9e"
+        "es": "Francés",
+        "fr": "Français",
+        "de": "Französisch",
+        "zh": "法语",
+        "ja": "フランス語"
       },
       "voiceLanguageCode": "fr-FR",
       "contentVersion": "0.1.0",
@@ -100,14 +208,98 @@
       "sha256": "5e06fbb6575754aa745c45445e3fddde2e3b2d31bc9c3649ce3e422bac8e7984"
     },
     {
+      "code": "gu",
+      "displayName": {
+        "en": "Gujarati",
+        "gu": "ગુજરાતી"
+      },
+      "voiceLanguageCode": "gu-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/gu-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "he",
+      "displayName": {
+        "en": "Hebrew",
+        "he": "עברית"
+      },
+      "voiceLanguageCode": "he-IL",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/he-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "hi",
+      "displayName": {
+        "en": "Hindi",
+        "hi": "हिन्दी"
+      },
+      "voiceLanguageCode": "hi-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/hi-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "hr",
+      "displayName": {
+        "en": "Croatian",
+        "hr": "Hrvatski"
+      },
+      "voiceLanguageCode": "hr-HR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/hr-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "hu",
+      "displayName": {
+        "en": "Hungarian",
+        "hu": "Magyar"
+      },
+      "voiceLanguageCode": "hu-HU",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/hu-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "id",
+      "displayName": {
+        "en": "Indonesian",
+        "id": "Bahasa Indonesia"
+      },
+      "voiceLanguageCode": "id-ID",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/id-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "it",
+      "displayName": {
+        "en": "Italian",
+        "it": "Italiano"
+      },
+      "voiceLanguageCode": "it-IT",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/it-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "ja",
       "displayName": {
         "en": "Japanese",
-        "es": "Japon\u00e9s",
+        "es": "Japonés",
         "fr": "Japonais",
         "de": "Japanisch",
-        "zh": "\u65e5\u8bed",
-        "ja": "\u65e5\u672c\u8a9e"
+        "zh": "日语",
+        "ja": "日本語"
       },
       "voiceLanguageCode": "ja-JP",
       "contentVersion": "0.1.0",
@@ -116,16 +308,376 @@
       "sha256": "e7efe7783771de0995735e2ddc6fa6f42471da36a8fc3554cab87cd6cde4300f"
     },
     {
+      "code": "kn",
+      "displayName": {
+        "en": "Kannada",
+        "kn": "ಕನ್ನಡ"
+      },
+      "voiceLanguageCode": "kn-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/kn-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ko-polite",
+      "displayName": {
+        "en": "Korean (Polite)",
+        "ko-polite": "한국어"
+      },
+      "voiceLanguageCode": "ko-KR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ko-polite-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "lt",
+      "displayName": {
+        "en": "Lithuanian",
+        "lt": "Lietuvių"
+      },
+      "voiceLanguageCode": "lt-LT",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/lt-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "mr",
+      "displayName": {
+        "en": "Marathi",
+        "mr": "मराठी"
+      },
+      "voiceLanguageCode": "mr-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/mr-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ms",
+      "displayName": {
+        "en": "Malay",
+        "ms": "Bahasa Melayu"
+      },
+      "voiceLanguageCode": "ms-MY",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ms-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ne",
+      "displayName": {
+        "en": "Nepali",
+        "ne": "नेपाली"
+      },
+      "voiceLanguageCode": "ne-NP",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ne-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "nl",
+      "displayName": {
+        "en": "Dutch",
+        "nl": "Nederlands"
+      },
+      "voiceLanguageCode": "nl-NL",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/nl-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "no",
+      "displayName": {
+        "en": "Norwegian",
+        "no": "Norsk"
+      },
+      "voiceLanguageCode": "nb-NO",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/no-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "pa-Arab",
+      "displayName": {
+        "en": "Punjabi (Shahmukhi)",
+        "pa-Arab": "پنجابی"
+      },
+      "voiceLanguageCode": "pa-PK",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pa-Arab-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "pa-Guru",
+      "displayName": {
+        "en": "Punjabi (Gurmukhi)",
+        "pa-Guru": "ਪੰਜਾਬੀ"
+      },
+      "voiceLanguageCode": "pa-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pa-Guru-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "pl",
+      "displayName": {
+        "en": "Polish",
+        "pl": "Polski"
+      },
+      "voiceLanguageCode": "pl-PL",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pl-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "pt-BR",
+      "displayName": {
+        "en": "Portuguese (Brazilian)",
+        "pt-BR": "Português (Brasil)"
+      },
+      "voiceLanguageCode": "pt-BR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pt-BR-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "pt-PT",
+      "displayName": {
+        "en": "Portuguese (European)",
+        "pt-PT": "Português (Portugal)"
+      },
+      "voiceLanguageCode": "pt-PT",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pt-PT-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ro",
+      "displayName": {
+        "en": "Romanian",
+        "ro": "Română"
+      },
+      "voiceLanguageCode": "ro-RO",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ro-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ru",
+      "displayName": {
+        "en": "Russian",
+        "ru": "Русский"
+      },
+      "voiceLanguageCode": "ru-RU",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ru-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "sk",
+      "displayName": {
+        "en": "Slovak",
+        "sk": "Slovenčina"
+      },
+      "voiceLanguageCode": "sk-SK",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sk-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "sl",
+      "displayName": {
+        "en": "Slovenian",
+        "sl": "Slovenščina"
+      },
+      "voiceLanguageCode": "sl-SI",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sl-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "sr",
+      "displayName": {
+        "en": "Serbian",
+        "sr": "Српски"
+      },
+      "voiceLanguageCode": "sr-RS",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sr-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "sv",
+      "displayName": {
+        "en": "Swedish",
+        "sv": "Svenska"
+      },
+      "voiceLanguageCode": "sv-SE",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sv-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "sw",
+      "displayName": {
+        "en": "Swahili",
+        "sw": "Kiswahili"
+      },
+      "voiceLanguageCode": "sw-KE",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sw-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ta",
+      "displayName": {
+        "en": "Tamil",
+        "ta": "தமிழ்"
+      },
+      "voiceLanguageCode": "ta-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ta-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "te",
+      "displayName": {
+        "en": "Telugu",
+        "te": "తెలుగు"
+      },
+      "voiceLanguageCode": "te-IN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/te-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "th",
+      "displayName": {
+        "en": "Thai",
+        "th": "ไทย"
+      },
+      "voiceLanguageCode": "th-TH",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/th-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "tr",
+      "displayName": {
+        "en": "Turkish",
+        "tr": "Türkçe"
+      },
+      "voiceLanguageCode": "tr-TR",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/tr-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "uk",
+      "displayName": {
+        "en": "Ukrainian",
+        "uk": "Українська"
+      },
+      "voiceLanguageCode": "uk-UA",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/uk-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "ur",
+      "displayName": {
+        "en": "Urdu",
+        "ur": "اردو"
+      },
+      "voiceLanguageCode": "ur-PK",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ur-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "vi",
+      "displayName": {
+        "en": "Vietnamese",
+        "vi": "Tiếng Việt"
+      },
+      "voiceLanguageCode": "vi-VN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/vi-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "yue-Hant-HK",
+      "displayName": {
+        "en": "Cantonese (Traditional)",
+        "yue-Hant-HK": "粵語"
+      },
+      "voiceLanguageCode": "zh-HK",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/yue-Hant-HK-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "zh",
       "displayName": {
         "en": "Mandarin Chinese",
-        "zh": "\u666e\u901a\u8bdd"
+        "zh": "普通话"
       },
       "voiceLanguageCode": "zh-CN",
       "contentVersion": "0.2.0",
       "sizeMb": 1,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-0.2.0.zip",
       "sha256": "f62add210e191ed33f5fd081192521c5a2add3c9e5cdf65814eb587cb7c63c2d"
+    },
+    {
+      "code": "zh-Hans",
+      "displayName": {
+        "en": "Chinese (Simplified)",
+        "zh-Hans": "简体中文"
+      },
+      "voiceLanguageCode": "zh-CN",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-Hans-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "zh-Hant",
+      "displayName": {
+        "en": "Chinese (Traditional)",
+        "zh-Hant": "繁體中文"
+      },
+      "voiceLanguageCode": "zh-TW",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/zh-Hant-0.1.0.zip",
+      "sha256": ""
     }
   ],
   "metadata": {
@@ -133,7 +685,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-05-31T07:21:09.420Z",
+  "devRevision": "2026-05-31T16:21:14.423Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

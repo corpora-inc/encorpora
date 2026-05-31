@@ -33,95 +33,136 @@
   overflow: hidden;
 }
 
-/* ---------- header ---------- */
+/* ---------- header ----------
+   Left→right: back chevron · brand mark · wordmark · ……… · language switcher.
+   Top/left padding clears the iPad window controls (the "stoplight" / grip that
+   floats over the top-left in Stage Manager and resized windows). */
 .lt-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: calc(10px + var(--lt-safe-top)) 14px 10px;
+  gap: 10px;
+  /* Top inset clears the iPad Stage-Manager window grip (the "•••" that floats
+     at the window's top-left and is NOT covered by safe-area-inset). */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 16px 10px
+    max(var(--lt-safe-left, 0px), 16px);
   border-bottom: 1px solid var(--lt-border);
   background: rgba(10, 11, 15, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-.lt-brand {
-  display: flex;
+/* back-to-home chevron — iOS-standard exit, far top-left */
+.lt-back {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  margin-left: -4px;
+  border-radius: 11px;
+  border: 0;
+  background: transparent;
+  color: var(--lt-fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.lt-back svg { display: block; }
+.lt-back:hover { background: rgba(255, 255, 255, 0.06); }
+.lt-back:active { transform: scale(0.92); }
+
+/* the REAL Corpán mark (ear + ziggurat), matching the home screen */
+.lt-brand-mark {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
   flex: 0 0 auto;
 }
-.lt-brand-mark {
-  color: var(--lt-accent-2);
-  font-size: 16px;
-  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+.lt-brand-mark img {
+  display: block;
+  height: 26px;
+  width: auto;
 }
 .lt-brand-name {
   font-weight: 650;
   letter-spacing: -0.01em;
-}
-
-.lt-langs {
-  flex: 1 1 auto;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding: 2px;
-  -webkit-overflow-scrolling: touch;
-}
-.lt-langs::-webkit-scrollbar { display: none; }
-
-.lt-pill {
+  white-space: nowrap;
   flex: 0 0 auto;
+}
+/* very narrow: keep the mark, drop the wordmark before it can crowd the switcher */
+@media (max-width: 400px) {
+  .lt-brand-name { display: none; }
+}
+
+/* compact tutor switcher — right-aligned, never crowds the brand */
+.lt-lang-trigger {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: auto;
   display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  padding: 7px 13px;
+  align-items: center;
+  gap: 7px;
+  max-width: 46vw;
+  padding: 7px 10px 7px 12px;
   border-radius: 999px;
   border: 1px solid var(--lt-border);
   background: var(--lt-bg-elev);
   color: var(--lt-fg);
   font-size: 13.5px;
   cursor: pointer;
-  white-space: nowrap;
   transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
 }
-.lt-pill:hover { border-color: #34384a; }
-.lt-pill:active { transform: scale(0.97); }
-.lt-pill.active {
-  border-color: var(--lt-accent);
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.22), rgba(59, 130, 246, 0.1));
+.lt-lang-trigger:hover { border-color: #34384a; }
+.lt-lang-trigger:active { transform: scale(0.97); }
+.lt-lt-flag { font-size: 15px; flex: 0 0 auto; }
+.lt-lt-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
-.lt-pill-flag { font-size: 14px; }
-.lt-pill-name { font-weight: 600; }
-.lt-pill-sub { color: var(--lt-muted); font-size: 11.5px; }
-
-.lt-controls {
+.lt-lt-chev {
   flex: 0 0 auto;
-  display: flex;
-  gap: 6px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--lt-muted);
+  transition: transform 0.2s ease;
 }
-.lt-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
+.lt-lang-trigger[aria-expanded="true"] .lt-lt-chev { transform: rotate(180deg); }
+
+/* ---------- floating action cluster (bottom-right, above the input) ----------
+   Translucent, out of the way, easy to reach: mute toggle + new conversation. */
+.lt-fabs {
+  position: absolute;
+  right: max(var(--lt-safe-right, 0px), 12px);
+  bottom: calc(var(--lt-input-h, 76px) + var(--lt-safe-bottom) + 12px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lt-fab {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
   border: 1px solid var(--lt-border);
-  background: var(--lt-bg-elev);
-  color: var(--lt-fg);
-  font-size: 15px;
+  background: color-mix(in srgb, var(--lt-bg-elev) 72%, transparent);
+  color: var(--lt-muted);
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  opacity: 0.72;
 }
-.lt-icon:hover { border-color: #34384a; }
-.lt-icon:active { transform: scale(0.94); }
-.lt-icon.active {
-  background: var(--lt-accent);
-  border-color: var(--lt-accent);
-  color: #fff;
-}
+.lt-fab svg { display: block; }
+.lt-fab:hover { opacity: 1; color: var(--lt-fg); border-color: #34384a; }
+.lt-fab:active { transform: scale(0.92); }
+/* speaker-on is the resting "active" state; muted dims it */
+.lt-fab.lt-tts.active { opacity: 1; color: var(--lt-fg); }
+.lt-fab.lt-tts:not(.active) { opacity: 0.6; }
 
 /* ---------- log ---------- */
 .lt-log {
@@ -162,6 +203,33 @@
   border: 1px solid var(--lt-border);
   border-bottom-left-radius: 5px;
 }
+/* Tap an assistant reply to (re)hear it. Subtle affordance: a speaker glyph
+   fades in on hover/press; the whole bubble is the tap target. */
+.lt-speakable .lt-msg-body {
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.lt-speakable .lt-msg-body::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+  mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+}
+.lt-speakable .lt-msg-body:hover { border-color: #34384a; }
+.lt-speakable .lt-msg-body:hover::after { opacity: 0.5; }
+.lt-speakable .lt-msg-body:active { background: #232838; }
+/* RTL replies place the speaker glyph on the left so it doesn't sit under text */
+.lt-speakable .lt-msg-body[dir="rtl"]::after { right: auto; left: 8px; }
 .lt-msg.lt-error .lt-msg-body {
   background: rgba(239, 68, 68, 0.12);
   border-color: rgba(239, 68, 68, 0.4);
@@ -198,9 +266,13 @@
   max-width: 560px;
 }
 .lt-welcome-mark {
-  font-size: 30px;
-  color: var(--lt-accent-2);
-  filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.5));
+  display: flex;
+  justify-content: center;
+}
+.lt-welcome-mark img {
+  height: 64px;
+  width: auto;
+  filter: drop-shadow(0 4px 18px rgba(245, 158, 11, 0.25));
 }
 .lt-welcome-title { margin: 4px 0 0; font-size: 21px; font-weight: 650; letter-spacing: -0.01em; }
 .lt-welcome-sub { margin: 0; color: var(--lt-muted); font-size: 14.5px; max-width: 420px; }
@@ -224,6 +296,40 @@
 .lt-chip:hover { border-color: var(--lt-accent); background: rgba(59, 130, 246, 0.1); }
 .lt-chip:active { transform: scale(0.97); }
 
+/* intro language picker on the welcome screen — your languages, then "All …" */
+.lt-welcome-langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.lt-langpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-langpill:hover { border-color: #34384a; }
+.lt-langpill:active { transform: scale(0.97); }
+.lt-langpill.active {
+  border-color: var(--lt-accent);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.07));
+}
+.lt-langpill-flag { font-size: 18px; line-height: 1; }
+.lt-langpill-more { color: var(--lt-muted); }
+.lt-langpill-more:hover { color: var(--lt-fg); border-color: var(--lt-accent); }
+.lt-langpill-chev { display: inline-grid; place-items: center; }
+
 /* ---------- input ---------- */
 .lt-input {
   display: flex;
@@ -238,10 +344,11 @@
 .lt-field {
   flex: 1;
   display: flex;
+  align-items: flex-end;
   background: var(--lt-bg-elev);
   border: 1px solid var(--lt-border);
-  border-radius: 18px;
-  padding: 4px 6px;
+  border-radius: 22px;
+  padding: 4px 4px 4px 6px;
   max-width: 760px;
   margin-inline: auto;
   transition: border-color 0.15s ease;
@@ -257,11 +364,51 @@
   font: inherit;
   font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
   line-height: 1.45;
-  padding: 8px 10px;
+  padding: 8px 6px 8px 10px;
   max-height: 140px;
 }
 .lt-text::placeholder { color: var(--lt-muted); }
 .lt-text:disabled { opacity: 0.5; }
+
+/* ---- mic: ALWAYS in the input row (no separate voice mode). Hold to talk. ---- */
+.lt-mic {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 38px;
+  height: 38px;
+  margin: 2px 2px 2px 0;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  /* hold-to-talk: don't let the press scroll / select / show callout */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.lt-mic svg { display: block; }
+.lt-mic:hover { color: var(--lt-fg); }
+.lt-mic:active { transform: scale(0.92); }
+.lt-mic.recording {
+  background: var(--lt-danger);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.22), 0 0 22px rgba(239, 68, 68, 0.5);
+  animation: lt-pulse 1.2s ease-in-out infinite;
+}
+.lt-mic.transcribing {
+  background: var(--lt-bot-bg);
+  color: var(--lt-accent-2);
+  animation: lt-mic-spin 0.9s linear infinite;
+}
+/* When the user is typing, the send arrow is primary and the mic steps aside. */
+.lt-input.has-text .lt-mic { display: none; }
+.lt-input:not(.has-text) .lt-send { display: none; }
 
 .lt-send {
   flex: 0 0 auto;
@@ -277,32 +424,209 @@
   box-shadow: 0 6px 18px rgba(34, 87, 214, 0.3);
   transition: transform 0.1s ease, opacity 0.2s ease;
 }
+.lt-send svg { display: block; }
 .lt-send:active { transform: scale(0.94); }
 .lt-send:disabled { opacity: 0.4; box-shadow: none; cursor: default; }
 
-.lt-mic {
-  flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 0;
-  background: var(--lt-user-bg);
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  margin-inline: auto;
+@keyframes lt-pulse { 0%, 100% { transform: scale(1.08); } 50% { transform: scale(1.16); } }
+@keyframes lt-mic-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .lt-mic.recording, .lt-mic.transcribing { animation: none; }
 }
-.lt-mic.recording {
-  background: var(--lt-danger);
-  animation: lt-pulse 1.2s ease-in-out infinite;
-}
-@keyframes lt-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
 /* larger breathing room on tablet/desktop */
 @media (min-width: 768px) {
   .lt-log { padding: 26px 24px; gap: 14px; }
   .lt-input { padding: 16px 24px calc(16px + var(--lt-safe-bottom)); }
-  .lt-header { padding: calc(12px + var(--lt-safe-top)) 22px 12px; }
+  /* keep the top/left stoplight clearance even on wide layouts */
+  .lt-header { padding: calc(max(var(--lt-safe-top), 44px)) 24px 12px max(var(--lt-safe-left, 0px), 22px); }
+  .lt-lang-trigger { max-width: 280px; }
+}
+
+/* ============================================================
+   Tutor switcher sheet — bottom sheet on mobile, modal on desktop
+   ============================================================ */
+.lt-langsheet {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+}
+.lt-langsheet[hidden] { display: none; }
+
+.lt-langsheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.lt-langsheet.open .lt-langsheet-scrim { opacity: 1; }
+
+.lt-langsheet-panel {
+  position: relative;
+  margin-top: auto;            /* bottom sheet on mobile */
+  width: 100%;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 18px calc(20px + var(--lt-safe-bottom));
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border: 1px solid var(--lt-border);
+  border-bottom: 0;
+  background: linear-gradient(180deg, #1a1e29, #14161e);
+  box-shadow: 0 -24px 70px rgba(0, 0, 0, 0.55);
+  transform: translateY(100%);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lt-langsheet.open .lt-langsheet-panel { transform: translateY(0); }
+
+/* 44px hit band with a centered 44x5 visible bar (canonical grab-area pattern) */
+.lt-langsheet-grip-zone {
+  flex: 0 0 auto;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+}
+.lt-langsheet-grip {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: #3a3f4f;
+}
+.lt-langsheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 2px 12px;
+}
+.lt-langsheet-title { margin: 0; font-size: 19px; font-weight: 660; letter-spacing: -0.01em; }
+.lt-langsheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lt-langsheet-close:hover { color: var(--lt-fg); border-color: #34384a; }
+
+/* search field — keeps the sheet usable at ~50 languages */
+.lt-langsheet-search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 2px 12px;
+  padding: 0 12px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  transition: border-color 0.15s ease;
+}
+.lt-langsheet-search:focus-within { border-color: var(--lt-accent); }
+.lt-langsheet-search-icon { display: grid; place-items: center; color: var(--lt-muted); flex: 0 0 auto; }
+.lt-langsheet-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
+}
+.lt-langsheet-input::placeholder { color: var(--lt-muted); }
+
+.lt-langsheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px;
+}
+
+/* grouping headers ("Your languages" / "All languages") */
+.lt-langsheet-section {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lt-muted);
+  padding: 10px 6px 2px;
+}
+.lt-langsheet-section:first-child { padding-top: 2px; }
+.lt-langsheet-empty {
+  text-align: center;
+  color: var(--lt-muted);
+  font-size: 14px;
+  padding: 28px 8px;
+}
+
+.lt-langcard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-langcard:hover { border-color: #34384a; }
+.lt-langcard:active { transform: scale(0.99); }
+.lt-langcard.active {
+  border-color: var(--lt-accent);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.07));
+}
+.lt-langcard-flag { font-size: 26px; flex: 0 0 auto; line-height: 1; }
+.lt-langcard-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.lt-langcard-name { font-size: 17px; font-weight: 640; letter-spacing: -0.01em; }
+.lt-langcard-sub { font-size: 13px; color: var(--lt-muted); }
+.lt-langcard-check {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--lt-accent-2);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.lt-langcard.active .lt-langcard-check { opacity: 1; transform: scale(1); }
+
+/* desktop: center as a modal card instead of a bottom sheet */
+@media (min-width: 768px) {
+  .lt-langsheet-panel {
+    margin: auto;
+    width: min(440px, 92vw);
+    max-height: 78vh;
+    padding: 6px 22px 22px;
+    border-radius: 22px;
+    border-bottom: 1px solid var(--lt-border);
+    transform: translateY(0) scale(0.94);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .lt-langsheet.open .lt-langsheet-panel { transform: translateY(0) scale(1); opacity: 1; }
+  .lt-langsheet-grip { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-langsheet-scrim,
+  .lt-langsheet-panel,
+  .lt-lt-chev { transition: none; }
 }
 
 /* ============================================================
@@ -338,9 +662,13 @@
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
 }
 .lt-setup-glyph {
-  font-size: 36px;
-  color: var(--lt-accent-2);
-  filter: drop-shadow(0 0 18px rgba(96, 165, 250, 0.55));
+  display: flex;
+  justify-content: center;
+}
+.lt-setup-glyph img {
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 4px 20px rgba(245, 158, 11, 0.28));
 }
 .lt-setup-title { margin: 0; font-size: 23px; font-weight: 660; letter-spacing: -0.01em; }
 .lt-setup-body { margin: 0; font-size: 15px; line-height: 1.6; color: var(--lt-fg); opacity: 0.86; }

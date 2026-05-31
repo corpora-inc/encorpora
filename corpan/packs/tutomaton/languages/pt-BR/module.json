@@ -1,0 +1,20 @@
+{
+  "code": "pt-BR",
+  "displayName": {
+    "en": "Portuguese (Brazilian)",
+    "pt-BR": "Português (Brasil)"
+  },
+  "voiceLanguageCode": "pt-BR",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": ""
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": false
+  }
+}

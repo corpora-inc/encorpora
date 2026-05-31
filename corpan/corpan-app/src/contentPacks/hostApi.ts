@@ -747,7 +747,10 @@ export const createHostApi = (packId?: string): HostApi => {
           packId: args.packId,
           subPath: args.subPath,
           downloadUrl: args.url,
-          expectedSha256: args.sha256,
+          // An empty-string sha means "unknown / not yet published" — treat it
+          // as no-sha (skip verification) rather than passing "" to Rust, which
+          // would be Some("") and fail every download with "module hash mismatch".
+          expectedSha256: args.sha256 ? args.sha256 : undefined,
           packManifest: args.packManifest,
         })
       } catch (error) {

@@ -5,7 +5,93 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- All supported languages now ship as prompt-only tutors, resilient to 0-N RAG
+  corpora. `LanguageManager._loadRetriever` returns a no-op retriever
+  ({kind:"none"}) when no retriever is bundled instead of throwing, so any
+  language works ungrounded out of the box (0 = no-op; 1 = bundled retriever +
+  one sqlite, as es/zh do today; N = a future retriever querying several DBs —
+  the contract already allows it). A shared tutor-prompt template + generator
+  (`tools/gen_prompts.py`) produces each language's `system_prompt.txt`,
+  `grounding_instruction.txt`, and `module.json`. Persona bent toward
+  mirroring/following the user (concise, matches verbosity, coy-not-preachy on
+  sensitive topics) while keeping the hard guardrails (always answer in the
+  target language, no emoji, optional learner gloss). 12 major languages got
+  hand-tuned in-language example exchanges; the rest use the filled-in template.
+  es' prompt was bent the same way without regressing its examples. (Publishing
+  the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
+
+### Changed
+- RTL languages now render idiomatically: each message bubble, the welcome
+  title, and the input use dir="auto", so Arabic/Hebrew/Persian/Urdu content
+  right-aligns RTL (per message, mixed content handled) while English stays
+  LTR — no per-language flag needed. Chrome stays LTR; user/tutor bubble sides
+  stay as ownership cues.
+- Tap any tutor reply to hear it again (TTS replay). An explicit tap always
+  speaks, even when the speaker is muted — handy for drilling pronunciation; a
+  subtle speaker glyph hints the affordance.
+- Header + chrome redesign: real Corpán brand mark (the ear-on-ziggurat the
+  home screen uses, inlined) replaces the placeholder triangle; top bar is now
+  a clean back-chevron · logo · wordmark · right-aligned language switcher, with
+  top/left padding that clears the iPad Stage-Manager window grip. Exit actually
+  works now — the back button fires `corpan:exit` (the event the host listens
+  for) instead of three dead event names. Mute + new-conversation moved out of
+  the bar into translucent FABs at the bottom-right above the input. Welcome and
+  model-setup screens show the real logo too.
+- Voice input now uses the keyboard's built-in dictation (on-device, ~50
+  languages, no model download) typed into the text field, instead of a custom
+  whisper.cpp push-to-talk mic. The custom mic pointed at an uninstalled
+  `ggml-medium.bin` and failed with "Whisper not prepared" on release; rather
+  than ship a several-hundred-MB second model + its memory/management UX on top
+  of the on-device LLM, we lean on the OS dictation that's already there. The
+  in-field mic button and all STT wiring were removed.
+- Premium UI/UX pass on the chrome (presentation only — engine untouched). New
+  top bar (left→right): a small orange pyramid brand mark (inline SVG, the only
+  orange in the UI) + "Tutomaton" wordmark that doubles as an explicit
+  exit-to-home button on the LEFT, an elegant language switcher, then a compact
+  controls cluster. The controls reserve right-edge clearance so they never
+  collide with the host's floating top-right close "X" (collision-fix approach b:
+  pack's own left-side Home affordance + clear right corner). The Home button
+  dispatches the host's pack-close window events (`corpan:exit-pack` /
+  `corpan:close-pack` / `corp-close-game`), which App.tsx wires to
+  `closeContentPack()`.
+- Emoji chrome icons replaced with clean inline lucide-style line SVGs
+  (speaker / speaker-muted, mic, new-conversation refresh, back chevron, search) —
+  no new dependency.
+- Voice replies (TTS) now default ON; the speaker control is a mute toggle that
+  swaps between the speaker and speaker-muted icon.
+- Mic is now always present inside the input bar (iMessage-style): type to reveal
+  the send arrow, or press-and-hold the in-field mic to talk. The separate
+  full-screen "voice mode" toggle is gone. Push-to-talk logic is unchanged
+  (pointer capture, 250 ms min-hold, recording/transcribing states); STT
+  `prepare()` is now called lazily on the first press, and `releaseAudio()` on
+  unmount is preserved.
+- Language switcher scales to ~50 languages: the sheet gained a search field and
+  "Your languages" / "All languages" grouping; the welcome screen shows an intro
+  picker (your languages as pills, plus an "All languages" expander into the
+  searchable sheet). Sheet grip is now a 44 px hit band with the canonical
+  44×5 bar.
+
 ### Fixed
+- Fixed the Tamil/Indic "dotted-circle" (◌) artifact: small models sometimes
+  drop a base consonant and emit an orphaned combining mark (vowel sign / virama)
+  with nothing to attach to, which the font draws on a dotted circle. scrubOutput
+  now strips runs of combining marks (\p{M}) that have no base before them (at
+  text start or right after whitespace). Well-formed clusters are byte-identical
+  through the filter; only orphans are removed. Helps every combining-mark script
+  (Tamil, Devanagari, Arabic, Thai, …).
+- Resource-loading hardened for the multi-language rollout: removed the `en`
+  manifest entry that had no local module (it 404'd → "unexpected identifier"
+  on JSON.parse); `activate()` now fails with a clear "isn't available yet"
+  message instead of a cryptic parse error when a language's module is missing;
+  and an empty-string `sha256` is treated as "unknown" (skip verification)
+  rather than passed to the installer as `Some("")`, which 403/published langs
+  hit as "module hash mismatch".
+- Prompt-only tutors (0 RAG sources) no longer try to download a corpus: a
+  language is treated as installed when it has no entry in the manifest
+  `databases` map, so picking one of the ~50 prompt-only languages goes straight
+  to chat instead of failing with "download failed (403 forbidden)" on a
+  non-existent CDN zip. Only es/zh (which have real sqlite corpora) download.
 - Pack now loads and renders on device. Root causes resolved: per-language
   retrievers are statically bundled (`src/retrievers.ts`) instead of a runtime
   dynamic `import()` of uncompiled TS (the `game-proxy` 404); `chat.css` is
@@ -16,16 +102,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   disk) degrades to an ungrounded answer instead of killing the turn.
 
 ### Changed
+- Voice input is now press-and-hold (push-to-talk): hold the mic to record, release
+  to transcribe + send. Replaces the tap-to-toggle that could miss its stop tap and
+  record forever. Uses pointer capture so the release always lands even if the
+  finger slides off; presses shorter than 250 ms are dropped (no empty sends), and
+  the mic shows a recording pulse then a brief transcribing state.
+- Top bar redesigned: the tutor/language switcher moved out of the cramped inline
+  pill row into a compact header trigger (active flag + name + chevron) that opens
+  a full switcher sheet — a bottom sheet on mobile, a centered modal on desktop —
+  with large language cards (flag, native name, English sub, active check). Fixes
+  narrow-screen crowding and gives the switch a moment of its own.
 - LLM access goes through `hostApi.llm` (status/load/chat/unload) instead of
   `window.__TAURI__` (which is not exposed to pack webviews).
 - `manifest.json` declares a `databases` map for the per-language sqlite corpora.
-- Tutor personas (Spanish + Mandarin) rewritten to be chill, helpful tutors rather
-  than rigid drill machines: warm "friend who knows the language" voice that fulfills
-  requests (songs, poems, stories, jokes, roleplay, recommendations) *in the target
-  language*, corrects lightly only when it helps, and weaves in recently practiced
-  vocab/grammar without turning it into a lesson. Previously a request like "write me
-  a Mexican song" was declined by an over-broad "that's not my thing" rule. Now only
-  genuinely off-domain asks (code, math, investing, partisan politics) are lightly
-  deflected — and when in doubt, the tutor helps. Hard guardrails kept: always reply
-  in the target language, understand any input language, no emoji. A short
+- Tutor personas (Spanish + Mandarin) rewritten around FLEXIBILITY: a practice
+  partner that follows the user wherever they go and **matches their verbosity** —
+  a one-word reply to a one-word message, a full lesson when asked, concise by
+  default (small bites, not a lecture every turn). Turns any topic the user brings
+  into natural language practice without announcing it; corrects lightly only when
+  it helps; gives the user what they ask for and only deflects truly off-domain
+  asks (code, math, investing) in a single line. This replaces the earlier
+  "chill/creative" wording, which over-fit toward songs/jokes (the model began
+  steering every reply to them). Hard guardrails kept: always reply in the target
+  language, understand any input language, no emoji. A short
   parenthetical English gloss is now allowed when a learner truly needs it.

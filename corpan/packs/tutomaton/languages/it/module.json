@@ -8,13 +8,13 @@
   "contentVersion": "0.1.0",
   "minTutomatonVersion": "0.1.0",
   "files": {
-    "database": "data/it.sqlite3",
+    "database": "",
     "systemPrompt": "prompts/system_prompt.txt",
     "groundingInstruction": "prompts/grounding_instruction.txt",
-    "retriever": "retrieval/retriever.ts"
+    "retriever": ""
   },
   "rag": {
     "schemaVersion": 1,
-    "themeBypassEnabled": true
+    "themeBypassEnabled": false
   }
 }
