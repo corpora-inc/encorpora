@@ -1,0 +1,20 @@
+{
+  "code": "zh-Hans",
+  "displayName": {
+    "en": "Chinese (Simplified)",
+    "zh-Hans": "简体中文"
+  },
+  "voiceLanguageCode": "zh-CN",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": ""
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": false
+  }
+}

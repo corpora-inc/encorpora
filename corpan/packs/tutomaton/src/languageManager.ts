@@ -236,14 +236,39 @@ export class LanguageManager {
    * Shape contract: every language's retriever exports:
    *   - retrieve(text, queryFn): Promise<RetrievalResult>
    *   - resolveTheme(key, queryFn): Promise<string | null>
+   *
+   * RAG corpora are 0-N per language, and this one method covers all three:
+   *   - 0 corpora → the no-op below: a prompt-only tutor. Every language ships
+   *     this way out of the box, so a language never NEEDS a bundled retriever to
+   *     work — it just runs ungrounded. (chat.ts already degrades to
+   *     {kind:"none"} on any retrieval failure, and "none" IS the no-op result,
+   *     so the rest of the pipeline is unchanged.)
+   *   - 1 corpus  → a bundled retriever + one sqlite (es/zh today): retrieve()
+   *     calls queryFn against that single dbName.
+   *   - N corpora → a future bundled retriever that fires queryFn at several
+   *     dbNames and merges the hits. Nothing here forecloses it: retrieve() is
+   *     just code handed a queryFn, so a module can query as many DBs as it
+   *     likes. We don't implement N now, but the contract already allows it.
    */
   private async _loadRetriever(code: string): Promise<{
     retrieve: (text: string, queryFn: QueryFn) => Promise<RetrievalResult>
     resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
   }> {
     const mod = RETRIEVERS[code]
-    if (!mod) throw new Error(`No bundled retriever for language: ${code}`)
-    return mod
+    if (mod) return mod
+    // 0-corpora fallback: no bundled retriever → run prompt-only (no RAG).
+    // Noisy, not silent: announce that this language is ungrounded.
+    console.info(
+      `[tutomaton] No bundled retriever for "${code}" — running prompt-only (no RAG grounding).`,
+    )
+    return {
+      retrieve: async (): Promise<RetrievalResult> => ({
+        kind: "none",
+        reference: null,
+        log: [],
+      }),
+      resolveTheme: async (): Promise<string | null> => null,
+    }
   }
 }
 
