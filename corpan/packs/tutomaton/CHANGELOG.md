@@ -22,6 +22,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Chrome is now fully localizable into the user's NATIVE language (stack
+  languages[0]): every header/picker/setup/welcome/FAB/error string goes through
+  an in-pack t() (src/i18n.ts) keyed off the stack, with per-key English
+  fallback so nothing is ever blank. CSS copy-affordance labels localize via CSS
+  custom properties. Generator at tools/gen_i18n.py fills all ~50 languages from
+  the English source via the OpenAI API (run with a valid OPENAI_API_KEY).
 - Long-press copy now works natively: added a clipboard bridge (hostApi.copyText,
   backed by tauri-plugin-clipboard-manager) since the WKWebView blocks the web
   clipboard API. Copy a tutor reply by holding it.
