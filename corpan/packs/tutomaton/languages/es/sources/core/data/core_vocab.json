@@ -1,0 +1,2346 @@
+{
+  "milk": {
+    "lemma": "leche",
+    "gender": "f",
+    "article": "la",
+    "plural": "leches",
+    "ipa": "/ˈletʃe/",
+    "translation": "milk"
+  },
+  "water": {
+    "lemma": "agua",
+    "gender": "f",
+    "article": "el",
+    "plural": "aguas",
+    "ipa": "/ˈaɡwa/",
+    "translation": "water (uses 'el' due to stressed initial 'a')"
+  },
+  "bread": {
+    "lemma": "pan",
+    "gender": "m",
+    "article": "el",
+    "plural": "panes",
+    "ipa": "/ˈpan/",
+    "translation": "bread"
+  },
+  "egg": {
+    "lemma": "huevo",
+    "gender": "m",
+    "article": "el",
+    "plural": "huevos",
+    "ipa": "/ˈweβo/",
+    "translation": "egg"
+  },
+  "cheese": {
+    "lemma": "queso",
+    "gender": "m",
+    "article": "el",
+    "plural": "quesos",
+    "ipa": "/ˈkeso/",
+    "translation": "cheese"
+  },
+  "butter": {
+    "lemma": "mantequilla",
+    "gender": "f",
+    "article": "la",
+    "plural": "mantequillas",
+    "ipa": "/manteˈkiʝa/",
+    "translation": "butter"
+  },
+  "oil": {
+    "lemma": "aceite",
+    "gender": "m",
+    "article": "el",
+    "plural": "aceites",
+    "ipa": "/aˈθejte/",
+    "translation": "oil"
+  },
+  "salt": {
+    "lemma": "sal",
+    "gender": "f",
+    "article": "la",
+    "plural": "sales",
+    "ipa": "/ˈsal/",
+    "translation": "salt"
+  },
+  "sugar": {
+    "lemma": "azúcar",
+    "gender": "m",
+    "article": "el",
+    "plural": "azúcares",
+    "ipa": "/aˈθukaɾ/",
+    "translation": "sugar"
+  },
+  "pepper": {
+    "lemma": "pimienta",
+    "gender": "f",
+    "article": "la",
+    "plural": "pimientas",
+    "ipa": "/piˈmjenta/",
+    "translation": "pepper (spice)"
+  },
+  "beer": {
+    "lemma": "cerveza",
+    "gender": "f",
+    "article": "la",
+    "plural": "cervezas",
+    "ipa": "/θeɾˈβeθa/",
+    "translation": "beer"
+  },
+  "wine": {
+    "lemma": "vino",
+    "gender": "m",
+    "article": "el",
+    "plural": "vinos",
+    "ipa": "/ˈbino/",
+    "translation": "wine"
+  },
+  "coffee": {
+    "lemma": "café",
+    "gender": "m",
+    "article": "el",
+    "plural": "cafés",
+    "ipa": "/kaˈfe/",
+    "translation": "coffee"
+  },
+  "tea": {
+    "lemma": "té",
+    "gender": "m",
+    "article": "el",
+    "plural": "tés",
+    "ipa": "/ˈte/",
+    "translation": "tea"
+  },
+  "juice": {
+    "lemma": "jugo",
+    "gender": "m",
+    "article": "el",
+    "plural": "jugos",
+    "ipa": "/ˈxuɣo/",
+    "translation": "juice (LatAm); in Spain 'el zumo'"
+  },
+  "rice": {
+    "lemma": "arroz",
+    "gender": "m",
+    "article": "el",
+    "plural": "arroces",
+    "ipa": "/aˈroθ/",
+    "translation": "rice"
+  },
+  "soup": {
+    "lemma": "sopa",
+    "gender": "f",
+    "article": "la",
+    "plural": "sopas",
+    "ipa": "/ˈsopa/",
+    "translation": "soup"
+  },
+  "meat": {
+    "lemma": "carne",
+    "gender": "f",
+    "article": "la",
+    "plural": "carnes",
+    "ipa": "/ˈkaɾne/",
+    "translation": "meat"
+  },
+  "chicken": {
+    "lemma": "pollo",
+    "gender": "m",
+    "article": "el",
+    "plural": "pollos",
+    "ipa": "/ˈpoʝo/",
+    "translation": "chicken (food)"
+  },
+  "fish_food": {
+    "lemma": "pescado",
+    "gender": "m",
+    "article": "el",
+    "plural": "pescados",
+    "ipa": "/pesˈkaðo/",
+    "translation": "fish (food)"
+  },
+  "fish": {
+    "lemma": "pez",
+    "gender": "m",
+    "article": "el",
+    "plural": "peces",
+    "ipa": "/ˈpeθ/",
+    "translation": "fish (live)"
+  },
+  "fruit": {
+    "lemma": "fruta",
+    "gender": "f",
+    "article": "la",
+    "plural": "frutas",
+    "ipa": "/ˈfɾuta/",
+    "translation": "fruit"
+  },
+  "vegetable": {
+    "lemma": "verdura",
+    "gender": "f",
+    "article": "la",
+    "plural": "verduras",
+    "ipa": "/beɾˈðuɾa/",
+    "translation": "vegetable"
+  },
+  "apple": {
+    "lemma": "manzana",
+    "gender": "f",
+    "article": "la",
+    "plural": "manzanas",
+    "ipa": "/manˈθana/",
+    "translation": "apple"
+  },
+  "orange": {
+    "lemma": "naranja",
+    "gender": "f",
+    "article": "la",
+    "plural": "naranjas",
+    "ipa": "/naˈɾanxa/",
+    "translation": "orange (fruit)"
+  },
+  "banana": {
+    "lemma": "plátano",
+    "gender": "m",
+    "article": "el",
+    "plural": "plátanos",
+    "ipa": "/ˈplatano/",
+    "translation": "banana (Spain, Mexico); in much of LatAm: 'la banana'"
+  },
+  "tomato": {
+    "lemma": "tomate",
+    "gender": "m",
+    "article": "el",
+    "plural": "tomates",
+    "ipa": "/toˈmate/",
+    "translation": "tomato"
+  },
+  "potato": {
+    "lemma": "papa",
+    "gender": "f",
+    "article": "la",
+    "plural": "papas",
+    "ipa": "/ˈpapa/",
+    "translation": "potato (LatAm); in Spain 'la patata'"
+  },
+  "onion": {
+    "lemma": "cebolla",
+    "gender": "f",
+    "article": "la",
+    "plural": "cebollas",
+    "ipa": "/θeˈβoʝa/",
+    "translation": "onion"
+  },
+  "lettuce": {
+    "lemma": "lechuga",
+    "gender": "f",
+    "article": "la",
+    "plural": "lechugas",
+    "ipa": "/leˈtʃuɣa/",
+    "translation": "lettuce"
+  },
+  "mother": {
+    "lemma": "madre",
+    "gender": "f",
+    "article": "la",
+    "plural": "madres",
+    "ipa": "/ˈmaðɾe/",
+    "translation": "mother"
+  },
+  "father": {
+    "lemma": "padre",
+    "gender": "m",
+    "article": "el",
+    "plural": "padres",
+    "ipa": "/ˈpaðɾe/",
+    "translation": "father"
+  },
+  "mom": {
+    "lemma": "mamá",
+    "gender": "f",
+    "article": "la",
+    "plural": "mamás",
+    "ipa": "/maˈma/",
+    "translation": "mom"
+  },
+  "dad": {
+    "lemma": "papá",
+    "gender": "m",
+    "article": "el",
+    "plural": "papás",
+    "ipa": "/paˈpa/",
+    "translation": "dad"
+  },
+  "son": {
+    "lemma": "hijo",
+    "gender": "m",
+    "article": "el",
+    "plural": "hijos",
+    "ipa": "/ˈixo/",
+    "translation": "son (m); daughter = 'la hija'"
+  },
+  "daughter": {
+    "lemma": "hija",
+    "gender": "f",
+    "article": "la",
+    "plural": "hijas",
+    "ipa": "/ˈixa/",
+    "translation": "daughter"
+  },
+  "brother": {
+    "lemma": "hermano",
+    "gender": "m",
+    "article": "el",
+    "plural": "hermanos",
+    "ipa": "/eɾˈmano/",
+    "translation": "brother (m); sister = 'la hermana'"
+  },
+  "sister": {
+    "lemma": "hermana",
+    "gender": "f",
+    "article": "la",
+    "plural": "hermanas",
+    "ipa": "/eɾˈmana/",
+    "translation": "sister"
+  },
+  "child": {
+    "lemma": "niño",
+    "gender": "m",
+    "article": "el",
+    "plural": "niños",
+    "ipa": "/ˈniɲo/",
+    "translation": "child (m); 'la niña' = girl child"
+  },
+  "girl": {
+    "lemma": "chica",
+    "gender": "f",
+    "article": "la",
+    "plural": "chicas",
+    "ipa": "/ˈtʃika/",
+    "translation": "girl; also 'la niña' (younger)"
+  },
+  "boy": {
+    "lemma": "chico",
+    "gender": "m",
+    "article": "el",
+    "plural": "chicos",
+    "ipa": "/ˈtʃiko/",
+    "translation": "boy; also 'el niño' (younger)"
+  },
+  "man": {
+    "lemma": "hombre",
+    "gender": "m",
+    "article": "el",
+    "plural": "hombres",
+    "ipa": "/ˈombɾe/",
+    "translation": "man"
+  },
+  "woman": {
+    "lemma": "mujer",
+    "gender": "f",
+    "article": "la",
+    "plural": "mujeres",
+    "ipa": "/muˈxeɾ/",
+    "translation": "woman"
+  },
+  "friend": {
+    "lemma": "amigo",
+    "gender": "m",
+    "article": "el",
+    "plural": "amigos",
+    "ipa": "/aˈmiɣo/",
+    "translation": "friend (m); 'la amiga' (f)"
+  },
+  "boyfriend": {
+    "lemma": "novio",
+    "gender": "m",
+    "article": "el",
+    "plural": "novios",
+    "ipa": "/ˈnoβjo/",
+    "translation": "boyfriend; 'la novia' = girlfriend"
+  },
+  "girlfriend": {
+    "lemma": "novia",
+    "gender": "f",
+    "article": "la",
+    "plural": "novias",
+    "ipa": "/ˈnoβja/",
+    "translation": "girlfriend"
+  },
+  "husband": {
+    "lemma": "esposo",
+    "gender": "m",
+    "article": "el",
+    "plural": "esposos",
+    "ipa": "/esˈposo/",
+    "translation": "husband; also 'el marido'"
+  },
+  "wife": {
+    "lemma": "esposa",
+    "gender": "f",
+    "article": "la",
+    "plural": "esposas",
+    "ipa": "/esˈposa/",
+    "translation": "wife; also 'la mujer'"
+  },
+  "teacher": {
+    "lemma": "maestro",
+    "gender": "m",
+    "article": "el",
+    "plural": "maestros",
+    "ipa": "/maˈestɾo/",
+    "translation": "teacher (m); 'la maestra' (f); also 'el profesor'"
+  },
+  "doctor": {
+    "lemma": "médico",
+    "gender": "m",
+    "article": "el",
+    "plural": "médicos",
+    "ipa": "/ˈmediko/",
+    "translation": "doctor / physician; 'el doctor' is the title"
+  },
+  "student": {
+    "lemma": "estudiante",
+    "gender": "m/f",
+    "article": "el/la",
+    "plural": "estudiantes",
+    "ipa": "/estuˈðjante/",
+    "translation": "student (epicene — same form m/f)"
+  },
+  "head": {
+    "lemma": "cabeza",
+    "gender": "f",
+    "article": "la",
+    "plural": "cabezas",
+    "ipa": "/kaˈβeθa/",
+    "translation": "head"
+  },
+  "face": {
+    "lemma": "cara",
+    "gender": "f",
+    "article": "la",
+    "plural": "caras",
+    "ipa": "/ˈkaɾa/",
+    "translation": "face"
+  },
+  "eye": {
+    "lemma": "ojo",
+    "gender": "m",
+    "article": "el",
+    "plural": "ojos",
+    "ipa": "/ˈoxo/",
+    "translation": "eye"
+  },
+  "nose": {
+    "lemma": "nariz",
+    "gender": "f",
+    "article": "la",
+    "plural": "narices",
+    "ipa": "/naˈɾiθ/",
+    "translation": "nose"
+  },
+  "mouth": {
+    "lemma": "boca",
+    "gender": "f",
+    "article": "la",
+    "plural": "bocas",
+    "ipa": "/ˈboka/",
+    "translation": "mouth"
+  },
+  "ear": {
+    "lemma": "oreja",
+    "gender": "f",
+    "article": "la",
+    "plural": "orejas",
+    "ipa": "/oˈɾexa/",
+    "translation": "ear (outer ear); 'el oído' = inner ear / hearing"
+  },
+  "hair": {
+    "lemma": "pelo",
+    "gender": "m",
+    "article": "el",
+    "plural": "pelos",
+    "ipa": "/ˈpelo/",
+    "translation": "hair; also 'el cabello' (more formal)"
+  },
+  "hand": {
+    "lemma": "mano",
+    "gender": "f",
+    "article": "la",
+    "plural": "manos",
+    "ipa": "/ˈmano/",
+    "translation": "hand (irregular: ends in -o but is feminine)"
+  },
+  "foot": {
+    "lemma": "pie",
+    "gender": "m",
+    "article": "el",
+    "plural": "pies",
+    "ipa": "/ˈpje/",
+    "translation": "foot"
+  },
+  "arm": {
+    "lemma": "brazo",
+    "gender": "m",
+    "article": "el",
+    "plural": "brazos",
+    "ipa": "/ˈbɾaθo/",
+    "translation": "arm"
+  },
+  "leg": {
+    "lemma": "pierna",
+    "gender": "f",
+    "article": "la",
+    "plural": "piernas",
+    "ipa": "/ˈpjeɾna/",
+    "translation": "leg"
+  },
+  "heart": {
+    "lemma": "corazón",
+    "gender": "m",
+    "article": "el",
+    "plural": "corazones",
+    "ipa": "/koɾaˈθon/",
+    "translation": "heart"
+  },
+  "body": {
+    "lemma": "cuerpo",
+    "gender": "m",
+    "article": "el",
+    "plural": "cuerpos",
+    "ipa": "/ˈkweɾpo/",
+    "translation": "body"
+  },
+  "skin": {
+    "lemma": "piel",
+    "gender": "f",
+    "article": "la",
+    "plural": "pieles",
+    "ipa": "/ˈpjel/",
+    "translation": "skin"
+  },
+  "tooth": {
+    "lemma": "diente",
+    "gender": "m",
+    "article": "el",
+    "plural": "dientes",
+    "ipa": "/ˈdjente/",
+    "translation": "tooth"
+  },
+  "cat": {
+    "lemma": "gato",
+    "gender": "m",
+    "article": "el",
+    "plural": "gatos",
+    "ipa": "/ˈɡato/",
+    "translation": "cat (m); 'la gata' (f)"
+  },
+  "dog": {
+    "lemma": "perro",
+    "gender": "m",
+    "article": "el",
+    "plural": "perros",
+    "ipa": "/ˈpero/",
+    "translation": "dog (m); 'la perra' (f)"
+  },
+  "horse": {
+    "lemma": "caballo",
+    "gender": "m",
+    "article": "el",
+    "plural": "caballos",
+    "ipa": "/kaˈβaʝo/",
+    "translation": "horse; 'la yegua' = mare"
+  },
+  "cow": {
+    "lemma": "vaca",
+    "gender": "f",
+    "article": "la",
+    "plural": "vacas",
+    "ipa": "/ˈbaka/",
+    "translation": "cow"
+  },
+  "pig": {
+    "lemma": "cerdo",
+    "gender": "m",
+    "article": "el",
+    "plural": "cerdos",
+    "ipa": "/ˈθeɾðo/",
+    "translation": "pig; in LatAm 'el chancho' / 'el puerco'"
+  },
+  "bird": {
+    "lemma": "pájaro",
+    "gender": "m",
+    "article": "el",
+    "plural": "pájaros",
+    "ipa": "/ˈpaxaɾo/",
+    "translation": "bird"
+  },
+  "mouse": {
+    "lemma": "ratón",
+    "gender": "m",
+    "article": "el",
+    "plural": "ratones",
+    "ipa": "/raˈton/",
+    "translation": "mouse"
+  },
+  "rabbit": {
+    "lemma": "conejo",
+    "gender": "m",
+    "article": "el",
+    "plural": "conejos",
+    "ipa": "/koˈnexo/",
+    "translation": "rabbit"
+  },
+  "house": {
+    "lemma": "casa",
+    "gender": "f",
+    "article": "la",
+    "plural": "casas",
+    "ipa": "/ˈkasa/",
+    "translation": "house"
+  },
+  "home": {
+    "lemma": "hogar",
+    "gender": "m",
+    "article": "el",
+    "plural": "hogares",
+    "ipa": "/oˈɣaɾ/",
+    "translation": "home; for 'go home' use 'a casa'"
+  },
+  "apartment": {
+    "lemma": "apartamento",
+    "gender": "m",
+    "article": "el",
+    "plural": "apartamentos",
+    "ipa": "/apaɾtaˈmento/",
+    "translation": "apartment; in Spain 'el piso', in Mexico 'el departamento'"
+  },
+  "room": {
+    "lemma": "habitación",
+    "gender": "f",
+    "article": "la",
+    "plural": "habitaciones",
+    "ipa": "/aβitaˈθjon/",
+    "translation": "room; also 'el cuarto'"
+  },
+  "kitchen": {
+    "lemma": "cocina",
+    "gender": "f",
+    "article": "la",
+    "plural": "cocinas",
+    "ipa": "/koˈθina/",
+    "translation": "kitchen"
+  },
+  "bathroom": {
+    "lemma": "baño",
+    "gender": "m",
+    "article": "el",
+    "plural": "baños",
+    "ipa": "/ˈbaɲo/",
+    "translation": "bathroom"
+  },
+  "bedroom": {
+    "lemma": "dormitorio",
+    "gender": "m",
+    "article": "el",
+    "plural": "dormitorios",
+    "ipa": "/doɾmiˈtoɾjo/",
+    "translation": "bedroom; also 'la recámara' (LatAm)"
+  },
+  "door": {
+    "lemma": "puerta",
+    "gender": "f",
+    "article": "la",
+    "plural": "puertas",
+    "ipa": "/ˈpweɾta/",
+    "translation": "door"
+  },
+  "window": {
+    "lemma": "ventana",
+    "gender": "f",
+    "article": "la",
+    "plural": "ventanas",
+    "ipa": "/benˈtana/",
+    "translation": "window"
+  },
+  "table": {
+    "lemma": "mesa",
+    "gender": "f",
+    "article": "la",
+    "plural": "mesas",
+    "ipa": "/ˈmesa/",
+    "translation": "table"
+  },
+  "chair": {
+    "lemma": "silla",
+    "gender": "f",
+    "article": "la",
+    "plural": "sillas",
+    "ipa": "/ˈsiʝa/",
+    "translation": "chair"
+  },
+  "bed": {
+    "lemma": "cama",
+    "gender": "f",
+    "article": "la",
+    "plural": "camas",
+    "ipa": "/ˈkama/",
+    "translation": "bed"
+  },
+  "book": {
+    "lemma": "libro",
+    "gender": "m",
+    "article": "el",
+    "plural": "libros",
+    "ipa": "/ˈliβɾo/",
+    "translation": "book"
+  },
+  "pen": {
+    "lemma": "bolígrafo",
+    "gender": "m",
+    "article": "el",
+    "plural": "bolígrafos",
+    "ipa": "/boˈliɣɾafo/",
+    "translation": "pen; 'la pluma' (Mexico), 'la lapicera' (Argentina)"
+  },
+  "phone": {
+    "lemma": "teléfono",
+    "gender": "m",
+    "article": "el",
+    "plural": "teléfonos",
+    "ipa": "/teˈlefono/",
+    "translation": "phone; coloquially 'el celular' (LatAm), 'el móvil' (Spain)"
+  },
+  "computer": {
+    "lemma": "computadora",
+    "gender": "f",
+    "article": "la",
+    "plural": "computadoras",
+    "ipa": "/komputaˈðoɾa/",
+    "translation": "computer (LatAm); in Spain 'el ordenador'"
+  },
+  "car": {
+    "lemma": "coche",
+    "gender": "m",
+    "article": "el",
+    "plural": "coches",
+    "ipa": "/ˈkotʃe/",
+    "translation": "car (Spain); in Mexico/Caribbean 'el carro', Argentina/Chile 'el auto'"
+  },
+  "day": {
+    "lemma": "día",
+    "gender": "m",
+    "article": "el",
+    "plural": "días",
+    "ipa": "/ˈdia/",
+    "translation": "day (irregular: ends in -a but is masculine)"
+  },
+  "week": {
+    "lemma": "semana",
+    "gender": "f",
+    "article": "la",
+    "plural": "semanas",
+    "ipa": "/seˈmana/",
+    "translation": "week"
+  },
+  "month": {
+    "lemma": "mes",
+    "gender": "m",
+    "article": "el",
+    "plural": "meses",
+    "ipa": "/ˈmes/",
+    "translation": "month"
+  },
+  "year": {
+    "lemma": "año",
+    "gender": "m",
+    "article": "el",
+    "plural": "años",
+    "ipa": "/ˈaɲo/",
+    "translation": "year"
+  },
+  "hour": {
+    "lemma": "hora",
+    "gender": "f",
+    "article": "la",
+    "plural": "horas",
+    "ipa": "/ˈoɾa/",
+    "translation": "hour"
+  },
+  "time": {
+    "lemma": "tiempo",
+    "gender": "m",
+    "article": "el",
+    "plural": "tiempos",
+    "ipa": "/ˈtjempo/",
+    "translation": "time; also 'the weather'"
+  },
+  "minute": {
+    "lemma": "minuto",
+    "gender": "m",
+    "article": "el",
+    "plural": "minutos",
+    "ipa": "/miˈnuto/",
+    "translation": "minute"
+  },
+  "morning": {
+    "lemma": "mañana",
+    "gender": "f",
+    "article": "la",
+    "plural": "mañanas",
+    "ipa": "/maˈɲana/",
+    "translation": "morning (also adverb: tomorrow)"
+  },
+  "afternoon": {
+    "lemma": "tarde",
+    "gender": "f",
+    "article": "la",
+    "plural": "tardes",
+    "ipa": "/ˈtaɾðe/",
+    "translation": "afternoon / evening"
+  },
+  "night": {
+    "lemma": "noche",
+    "gender": "f",
+    "article": "la",
+    "plural": "noches",
+    "ipa": "/ˈnotʃe/",
+    "translation": "night"
+  },
+  "sun": {
+    "lemma": "sol",
+    "gender": "m",
+    "article": "el",
+    "plural": "soles",
+    "ipa": "/ˈsol/",
+    "translation": "sun"
+  },
+  "moon": {
+    "lemma": "luna",
+    "gender": "f",
+    "article": "la",
+    "plural": "lunas",
+    "ipa": "/ˈluna/",
+    "translation": "moon"
+  },
+  "star": {
+    "lemma": "estrella",
+    "gender": "f",
+    "article": "la",
+    "plural": "estrellas",
+    "ipa": "/esˈtɾeʎa/",
+    "translation": "star"
+  },
+  "sky": {
+    "lemma": "cielo",
+    "gender": "m",
+    "article": "el",
+    "plural": "cielos",
+    "ipa": "/ˈθjelo/",
+    "translation": "sky / heaven"
+  },
+  "rain": {
+    "lemma": "lluvia",
+    "gender": "f",
+    "article": "la",
+    "plural": "lluvias",
+    "ipa": "/ˈʎuβja/",
+    "translation": "rain"
+  },
+  "snow": {
+    "lemma": "nieve",
+    "gender": "f",
+    "article": "la",
+    "plural": "nieves",
+    "ipa": "/ˈnjeβe/",
+    "translation": "snow"
+  },
+  "wind": {
+    "lemma": "viento",
+    "gender": "m",
+    "article": "el",
+    "plural": "vientos",
+    "ipa": "/ˈbjento/",
+    "translation": "wind"
+  },
+  "love": {
+    "lemma": "amor",
+    "gender": "m",
+    "article": "el",
+    "plural": "amores",
+    "ipa": "/aˈmoɾ/",
+    "translation": "love"
+  },
+  "life": {
+    "lemma": "vida",
+    "gender": "f",
+    "article": "la",
+    "plural": "vidas",
+    "ipa": "/ˈbiða/",
+    "translation": "life"
+  },
+  "death": {
+    "lemma": "muerte",
+    "gender": "f",
+    "article": "la",
+    "plural": "muertes",
+    "ipa": "/ˈmweɾte/",
+    "translation": "death"
+  },
+  "language": {
+    "lemma": "idioma",
+    "gender": "m",
+    "article": "el",
+    "plural": "idiomas",
+    "ipa": "/iˈðjoma/",
+    "translation": "language (irregular: ends -a but masculine, like 'el problema')"
+  },
+  "word": {
+    "lemma": "palabra",
+    "gender": "f",
+    "article": "la",
+    "plural": "palabras",
+    "ipa": "/paˈlaβɾa/",
+    "translation": "word"
+  },
+  "name": {
+    "lemma": "nombre",
+    "gender": "m",
+    "article": "el",
+    "plural": "nombres",
+    "ipa": "/ˈnombɾe/",
+    "translation": "name"
+  },
+  "money": {
+    "lemma": "dinero",
+    "gender": "m",
+    "article": "el",
+    "plural": "dineros",
+    "ipa": "/diˈneɾo/",
+    "translation": "money"
+  },
+  "job": {
+    "lemma": "trabajo",
+    "gender": "m",
+    "article": "el",
+    "plural": "trabajos",
+    "ipa": "/tɾaˈβaxo/",
+    "translation": "job / work"
+  },
+  "work": {
+    "lemma": "trabajo",
+    "gender": "m",
+    "article": "el",
+    "plural": "trabajos",
+    "ipa": "/tɾaˈβaxo/",
+    "translation": "work / job"
+  },
+  "school": {
+    "lemma": "escuela",
+    "gender": "f",
+    "article": "la",
+    "plural": "escuelas",
+    "ipa": "/esˈkwela/",
+    "translation": "school"
+  },
+  "city": {
+    "lemma": "ciudad",
+    "gender": "f",
+    "article": "la",
+    "plural": "ciudades",
+    "ipa": "/θjuˈðað/",
+    "translation": "city"
+  },
+  "country": {
+    "lemma": "país",
+    "gender": "m",
+    "article": "el",
+    "plural": "países",
+    "ipa": "/paˈis/",
+    "translation": "country"
+  },
+  "world": {
+    "lemma": "mundo",
+    "gender": "m",
+    "article": "el",
+    "plural": "mundos",
+    "ipa": "/ˈmundo/",
+    "translation": "world"
+  },
+  "music": {
+    "lemma": "música",
+    "gender": "f",
+    "article": "la",
+    "plural": "músicas",
+    "ipa": "/ˈmusika/",
+    "translation": "music"
+  },
+  "song": {
+    "lemma": "canción",
+    "gender": "f",
+    "article": "la",
+    "plural": "canciones",
+    "ipa": "/kanˈθjon/",
+    "translation": "song"
+  },
+  "color": {
+    "lemma": "color",
+    "gender": "m",
+    "article": "el",
+    "plural": "colores",
+    "ipa": "/koˈloɾ/",
+    "translation": "color"
+  },
+  "number": {
+    "lemma": "número",
+    "gender": "m",
+    "article": "el",
+    "plural": "números",
+    "ipa": "/ˈnumeɾo/",
+    "translation": "number"
+  },
+  "thing": {
+    "lemma": "cosa",
+    "gender": "f",
+    "article": "la",
+    "plural": "cosas",
+    "ipa": "/ˈkosa/",
+    "translation": "thing"
+  },
+  "story": {
+    "lemma": "cuento",
+    "gender": "m",
+    "article": "el",
+    "plural": "cuentos",
+    "ipa": "/ˈkwento/",
+    "translation": "tale / short story; 'historia' is broader"
+  },
+  "problem": {
+    "lemma": "problema",
+    "gender": "m",
+    "article": "el",
+    "plural": "problemas",
+    "ipa": "/pɾoˈβlema/",
+    "translation": "problem (irregular: ends -a but masculine — Greek origin, like 'el sistema', 'el tema', 'el clima')"
+  },
+  "system": {
+    "lemma": "sistema",
+    "gender": "m",
+    "article": "el",
+    "plural": "sistemas",
+    "ipa": "/sisˈtema/",
+    "translation": "system"
+  },
+  "theme": {
+    "lemma": "tema",
+    "gender": "m",
+    "article": "el",
+    "plural": "temas",
+    "ipa": "/ˈtema/",
+    "translation": "theme / topic"
+  },
+  "climate": {
+    "lemma": "clima",
+    "gender": "m",
+    "article": "el",
+    "plural": "climas",
+    "ipa": "/ˈklima/",
+    "translation": "climate / weather"
+  },
+  "map": {
+    "lemma": "mapa",
+    "gender": "m",
+    "article": "el",
+    "plural": "mapas",
+    "ipa": "/ˈmapa/",
+    "translation": "map (irregular: ends -a but masculine)"
+  },
+  "salad": {
+    "lemma": "ensalada",
+    "gender": "f",
+    "article": "la",
+    "plural": "ensaladas",
+    "ipa": "/ensaˈlaða/",
+    "translation": "salad"
+  },
+  "ham": {
+    "lemma": "jamón",
+    "gender": "m",
+    "article": "el",
+    "plural": "jamones",
+    "ipa": "/xaˈmon/",
+    "translation": "ham"
+  },
+  "cake": {
+    "lemma": "pastel",
+    "gender": "m",
+    "article": "el",
+    "plural": "pasteles",
+    "ipa": "/pasˈtel/",
+    "translation": "cake (LatAm); also 'la torta' / 'la tarta'"
+  },
+  "ice cream": {
+    "lemma": "helado",
+    "gender": "m",
+    "article": "el",
+    "plural": "helados",
+    "ipa": "/eˈlaðo/",
+    "translation": "ice cream"
+  },
+  "chocolate": {
+    "lemma": "chocolate",
+    "gender": "m",
+    "article": "el",
+    "plural": "chocolates",
+    "ipa": "/tʃokoˈlate/",
+    "translation": "chocolate"
+  },
+  "cookie": {
+    "lemma": "galleta",
+    "gender": "f",
+    "article": "la",
+    "plural": "galletas",
+    "ipa": "/ɡaˈʝeta/",
+    "translation": "cookie / biscuit"
+  },
+  "garlic": {
+    "lemma": "ajo",
+    "gender": "m",
+    "article": "el",
+    "plural": "ajos",
+    "ipa": "/ˈaxo/",
+    "translation": "garlic"
+  },
+  "carrot": {
+    "lemma": "zanahoria",
+    "gender": "f",
+    "article": "la",
+    "plural": "zanahorias",
+    "ipa": "/θanaˈoɾja/",
+    "translation": "carrot"
+  },
+  "pasta": {
+    "lemma": "pasta",
+    "gender": "f",
+    "article": "la",
+    "plural": "pastas",
+    "ipa": "/ˈpasta/",
+    "translation": "pasta"
+  },
+  "breakfast": {
+    "lemma": "desayuno",
+    "gender": "m",
+    "article": "el",
+    "plural": "desayunos",
+    "ipa": "/desaˈʝuno/",
+    "translation": "breakfast"
+  },
+  "lunch": {
+    "lemma": "almuerzo",
+    "gender": "m",
+    "article": "el",
+    "plural": "almuerzos",
+    "ipa": "/alˈmweɾθo/",
+    "translation": "lunch (LatAm); in Spain & Mexico 'la comida'"
+  },
+  "dinner": {
+    "lemma": "cena",
+    "gender": "f",
+    "article": "la",
+    "plural": "cenas",
+    "ipa": "/ˈθena/",
+    "translation": "dinner"
+  },
+  "recipe": {
+    "lemma": "receta",
+    "gender": "f",
+    "article": "la",
+    "plural": "recetas",
+    "ipa": "/reˈθeta/",
+    "translation": "recipe (also 'prescription')"
+  },
+  "plate": {
+    "lemma": "plato",
+    "gender": "m",
+    "article": "el",
+    "plural": "platos",
+    "ipa": "/ˈplato/",
+    "translation": "plate / dish"
+  },
+  "glass": {
+    "lemma": "vaso",
+    "gender": "m",
+    "article": "el",
+    "plural": "vasos",
+    "ipa": "/ˈbaso/",
+    "translation": "drinking glass"
+  },
+  "cup": {
+    "lemma": "taza",
+    "gender": "f",
+    "article": "la",
+    "plural": "tazas",
+    "ipa": "/ˈtaθa/",
+    "translation": "cup / mug"
+  },
+  "spoon": {
+    "lemma": "cuchara",
+    "gender": "f",
+    "article": "la",
+    "plural": "cucharas",
+    "ipa": "/kuˈtʃaɾa/",
+    "translation": "spoon"
+  },
+  "fork": {
+    "lemma": "tenedor",
+    "gender": "m",
+    "article": "el",
+    "plural": "tenedores",
+    "ipa": "/teneˈðoɾ/",
+    "translation": "fork"
+  },
+  "knife": {
+    "lemma": "cuchillo",
+    "gender": "m",
+    "article": "el",
+    "plural": "cuchillos",
+    "ipa": "/kuˈtʃiʝo/",
+    "translation": "knife"
+  },
+  "napkin": {
+    "lemma": "servilleta",
+    "gender": "f",
+    "article": "la",
+    "plural": "servilletas",
+    "ipa": "/seɾβiˈʝeta/",
+    "translation": "napkin"
+  },
+  "oven": {
+    "lemma": "horno",
+    "gender": "m",
+    "article": "el",
+    "plural": "hornos",
+    "ipa": "/ˈoɾno/",
+    "translation": "oven"
+  },
+  "fridge": {
+    "lemma": "nevera",
+    "gender": "f",
+    "article": "la",
+    "plural": "neveras",
+    "ipa": "/neˈβeɾa/",
+    "translation": "fridge (Spain); in LatAm 'el refrigerador' / 'la heladera'"
+  },
+  "earth": {
+    "lemma": "tierra",
+    "gender": "f",
+    "article": "la",
+    "plural": "tierras",
+    "ipa": "/ˈtjera/",
+    "translation": "earth / land"
+  },
+  "fire": {
+    "lemma": "fuego",
+    "gender": "m",
+    "article": "el",
+    "plural": "fuegos",
+    "ipa": "/ˈfweɣo/",
+    "translation": "fire"
+  },
+  "tree": {
+    "lemma": "árbol",
+    "gender": "m",
+    "article": "el",
+    "plural": "árboles",
+    "ipa": "/ˈaɾβol/",
+    "translation": "tree"
+  },
+  "flower": {
+    "lemma": "flor",
+    "gender": "f",
+    "article": "la",
+    "plural": "flores",
+    "ipa": "/ˈfloɾ/",
+    "translation": "flower"
+  },
+  "leaf": {
+    "lemma": "hoja",
+    "gender": "f",
+    "article": "la",
+    "plural": "hojas",
+    "ipa": "/ˈoxa/",
+    "translation": "leaf (also 'sheet of paper')"
+  },
+  "plant": {
+    "lemma": "planta",
+    "gender": "f",
+    "article": "la",
+    "plural": "plantas",
+    "ipa": "/ˈplanta/",
+    "translation": "plant (also 'floor of building')"
+  },
+  "forest": {
+    "lemma": "bosque",
+    "gender": "m",
+    "article": "el",
+    "plural": "bosques",
+    "ipa": "/ˈboske/",
+    "translation": "forest"
+  },
+  "jungle": {
+    "lemma": "selva",
+    "gender": "f",
+    "article": "la",
+    "plural": "selvas",
+    "ipa": "/ˈselβa/",
+    "translation": "jungle"
+  },
+  "mountain": {
+    "lemma": "montaña",
+    "gender": "f",
+    "article": "la",
+    "plural": "montañas",
+    "ipa": "/monˈtaɲa/",
+    "translation": "mountain"
+  },
+  "river": {
+    "lemma": "río",
+    "gender": "m",
+    "article": "el",
+    "plural": "ríos",
+    "ipa": "/ˈrio/",
+    "translation": "river"
+  },
+  "lake": {
+    "lemma": "lago",
+    "gender": "m",
+    "article": "el",
+    "plural": "lagos",
+    "ipa": "/ˈlaɣo/",
+    "translation": "lake"
+  },
+  "sea": {
+    "lemma": "mar",
+    "gender": "m",
+    "article": "el",
+    "plural": "mares",
+    "ipa": "/ˈmaɾ/",
+    "translation": "sea (usually masculine; can be feminine in poetic uses)"
+  },
+  "ocean": {
+    "lemma": "océano",
+    "gender": "m",
+    "article": "el",
+    "plural": "océanos",
+    "ipa": "/oˈθeano/",
+    "translation": "ocean"
+  },
+  "island": {
+    "lemma": "isla",
+    "gender": "f",
+    "article": "la",
+    "plural": "islas",
+    "ipa": "/ˈisla/",
+    "translation": "island"
+  },
+  "beach": {
+    "lemma": "playa",
+    "gender": "f",
+    "article": "la",
+    "plural": "playas",
+    "ipa": "/ˈplaʝa/",
+    "translation": "beach"
+  },
+  "sand": {
+    "lemma": "arena",
+    "gender": "f",
+    "article": "la",
+    "plural": "arenas",
+    "ipa": "/aˈɾena/",
+    "translation": "sand"
+  },
+  "stone": {
+    "lemma": "piedra",
+    "gender": "f",
+    "article": "la",
+    "plural": "piedras",
+    "ipa": "/ˈpjeðɾa/",
+    "translation": "stone / rock"
+  },
+  "cloud": {
+    "lemma": "nube",
+    "gender": "f",
+    "article": "la",
+    "plural": "nubes",
+    "ipa": "/ˈnuβe/",
+    "translation": "cloud"
+  },
+  "storm": {
+    "lemma": "tormenta",
+    "gender": "f",
+    "article": "la",
+    "plural": "tormentas",
+    "ipa": "/toɾˈmenta/",
+    "translation": "storm"
+  },
+  "fog": {
+    "lemma": "niebla",
+    "gender": "f",
+    "article": "la",
+    "plural": "nieblas",
+    "ipa": "/ˈnjeβla/",
+    "translation": "fog"
+  },
+  "ice": {
+    "lemma": "hielo",
+    "gender": "m",
+    "article": "el",
+    "plural": "hielos",
+    "ipa": "/ˈʝelo/",
+    "translation": "ice"
+  },
+  "weather": {
+    "lemma": "clima",
+    "gender": "m",
+    "article": "el",
+    "plural": "climas",
+    "ipa": "/ˈklima/",
+    "translation": "weather / climate (irregular masculine -a)"
+  },
+  "snake": {
+    "lemma": "serpiente",
+    "gender": "f",
+    "article": "la",
+    "plural": "serpientes",
+    "ipa": "/seɾˈpjente/",
+    "translation": "snake"
+  },
+  "frog": {
+    "lemma": "rana",
+    "gender": "f",
+    "article": "la",
+    "plural": "ranas",
+    "ipa": "/ˈrana/",
+    "translation": "frog"
+  },
+  "tongue": {
+    "lemma": "lengua",
+    "gender": "f",
+    "article": "la",
+    "plural": "lenguas",
+    "ipa": "/ˈlenɡwa/",
+    "translation": "tongue (also 'language')"
+  },
+  "teeth": {
+    "lemma": "dientes",
+    "gender": "m",
+    "article": "los",
+    "plural": "dientes",
+    "ipa": "/ˈdjentes/",
+    "translation": "teeth (singular 'el diente')"
+  },
+  "neck": {
+    "lemma": "cuello",
+    "gender": "m",
+    "article": "el",
+    "plural": "cuellos",
+    "ipa": "/ˈkweʝo/",
+    "translation": "neck"
+  },
+  "shoulder": {
+    "lemma": "hombro",
+    "gender": "m",
+    "article": "el",
+    "plural": "hombros",
+    "ipa": "/ˈombɾo/",
+    "translation": "shoulder"
+  },
+  "back": {
+    "lemma": "espalda",
+    "gender": "f",
+    "article": "la",
+    "plural": "espaldas",
+    "ipa": "/esˈpalda/",
+    "translation": "back (body)"
+  },
+  "stomach": {
+    "lemma": "estómago",
+    "gender": "m",
+    "article": "el",
+    "plural": "estómagos",
+    "ipa": "/esˈtomaɣo/",
+    "translation": "stomach"
+  },
+  "knee": {
+    "lemma": "rodilla",
+    "gender": "f",
+    "article": "la",
+    "plural": "rodillas",
+    "ipa": "/roˈðiʝa/",
+    "translation": "knee"
+  },
+  "finger": {
+    "lemma": "dedo",
+    "gender": "m",
+    "article": "el",
+    "plural": "dedos",
+    "ipa": "/ˈdeðo/",
+    "translation": "finger"
+  },
+  "toe": {
+    "lemma": "dedo del pie",
+    "gender": "m",
+    "article": "el",
+    "plural": "dedos del pie",
+    "ipa": "/ˈdeðo del pje/",
+    "translation": "toe (literally 'finger of the foot')"
+  },
+  "shirt": {
+    "lemma": "camisa",
+    "gender": "f",
+    "article": "la",
+    "plural": "camisas",
+    "ipa": "/kaˈmisa/",
+    "translation": "shirt (button-up)"
+  },
+  "t-shirt": {
+    "lemma": "camiseta",
+    "gender": "f",
+    "article": "la",
+    "plural": "camisetas",
+    "ipa": "/kamiˈseta/",
+    "translation": "t-shirt"
+  },
+  "pants": {
+    "lemma": "pantalones",
+    "gender": "m",
+    "article": "los",
+    "plural": "pantalones",
+    "ipa": "/pantaˈlones/",
+    "translation": "pants (always plural)"
+  },
+  "dress": {
+    "lemma": "vestido",
+    "gender": "m",
+    "article": "el",
+    "plural": "vestidos",
+    "ipa": "/besˈtiðo/",
+    "translation": "dress"
+  },
+  "skirt": {
+    "lemma": "falda",
+    "gender": "f",
+    "article": "la",
+    "plural": "faldas",
+    "ipa": "/ˈfalða/",
+    "translation": "skirt"
+  },
+  "shoes": {
+    "lemma": "zapatos",
+    "gender": "m",
+    "article": "los",
+    "plural": "zapatos",
+    "ipa": "/θaˈpatos/",
+    "translation": "shoes"
+  },
+  "hat": {
+    "lemma": "sombrero",
+    "gender": "m",
+    "article": "el",
+    "plural": "sombreros",
+    "ipa": "/somˈbɾeɾo/",
+    "translation": "hat"
+  },
+  "jacket": {
+    "lemma": "chaqueta",
+    "gender": "f",
+    "article": "la",
+    "plural": "chaquetas",
+    "ipa": "/tʃaˈketa/",
+    "translation": "jacket"
+  },
+  "coat": {
+    "lemma": "abrigo",
+    "gender": "m",
+    "article": "el",
+    "plural": "abrigos",
+    "ipa": "/aˈβɾiɣo/",
+    "translation": "coat"
+  },
+  "glasses": {
+    "lemma": "gafas",
+    "gender": "f",
+    "article": "las",
+    "plural": "gafas",
+    "ipa": "/ˈɡafas/",
+    "translation": "glasses (Spain); 'los lentes' (LatAm)"
+  },
+  "scarf": {
+    "lemma": "bufanda",
+    "gender": "f",
+    "article": "la",
+    "plural": "bufandas",
+    "ipa": "/buˈfanda/",
+    "translation": "scarf (warm)"
+  },
+  "glove": {
+    "lemma": "guante",
+    "gender": "m",
+    "article": "el",
+    "plural": "guantes",
+    "ipa": "/ˈɡwante/",
+    "translation": "glove"
+  },
+  "ticket": {
+    "lemma": "billete",
+    "gender": "m",
+    "article": "el",
+    "plural": "billetes",
+    "ipa": "/biˈʝete/",
+    "translation": "ticket (Spain); 'el boleto' (LatAm)"
+  },
+  "suitcase": {
+    "lemma": "maleta",
+    "gender": "f",
+    "article": "la",
+    "plural": "maletas",
+    "ipa": "/maˈleta/",
+    "translation": "suitcase"
+  },
+  "luggage": {
+    "lemma": "equipaje",
+    "gender": "m",
+    "article": "el",
+    "plural": "equipajes",
+    "ipa": "/ekiˈpaxe/",
+    "translation": "luggage"
+  },
+  "passport": {
+    "lemma": "pasaporte",
+    "gender": "m",
+    "article": "el",
+    "plural": "pasaportes",
+    "ipa": "/pasaˈpoɾte/",
+    "translation": "passport"
+  },
+  "trip": {
+    "lemma": "viaje",
+    "gender": "m",
+    "article": "el",
+    "plural": "viajes",
+    "ipa": "/ˈbjaxe/",
+    "translation": "trip / journey"
+  },
+  "airport": {
+    "lemma": "aeropuerto",
+    "gender": "m",
+    "article": "el",
+    "plural": "aeropuertos",
+    "ipa": "/aeɾoˈpweɾto/",
+    "translation": "airport"
+  },
+  "hotel": {
+    "lemma": "hotel",
+    "gender": "m",
+    "article": "el",
+    "plural": "hoteles",
+    "ipa": "/oˈtel/",
+    "translation": "hotel"
+  },
+  "key": {
+    "lemma": "llave",
+    "gender": "f",
+    "article": "la",
+    "plural": "llaves",
+    "ipa": "/ˈʝaβe/",
+    "translation": "key"
+  },
+  "bus": {
+    "lemma": "autobús",
+    "gender": "m",
+    "article": "el",
+    "plural": "autobuses",
+    "ipa": "/awtoˈβus/",
+    "translation": "bus; varies: 'el bus', 'el camión' (Mexico), 'el colectivo' (Argentina)"
+  },
+  "train": {
+    "lemma": "tren",
+    "gender": "m",
+    "article": "el",
+    "plural": "trenes",
+    "ipa": "/ˈtɾen/",
+    "translation": "train"
+  },
+  "plane": {
+    "lemma": "avión",
+    "gender": "m",
+    "article": "el",
+    "plural": "aviones",
+    "ipa": "/aˈβjon/",
+    "translation": "airplane"
+  },
+  "subway": {
+    "lemma": "metro",
+    "gender": "m",
+    "article": "el",
+    "plural": "metros",
+    "ipa": "/ˈmetɾo/",
+    "translation": "subway"
+  },
+  "taxi": {
+    "lemma": "taxi",
+    "gender": "m",
+    "article": "el",
+    "plural": "taxis",
+    "ipa": "/ˈtaksi/",
+    "translation": "taxi"
+  },
+  "bicycle": {
+    "lemma": "bicicleta",
+    "gender": "f",
+    "article": "la",
+    "plural": "bicicletas",
+    "ipa": "/biθiˈkleta/",
+    "translation": "bicycle"
+  },
+  "boat": {
+    "lemma": "barco",
+    "gender": "m",
+    "article": "el",
+    "plural": "barcos",
+    "ipa": "/ˈbaɾko/",
+    "translation": "boat / ship"
+  },
+  "station": {
+    "lemma": "estación",
+    "gender": "f",
+    "article": "la",
+    "plural": "estaciones",
+    "ipa": "/estaˈθjon/",
+    "translation": "station (also 'season')"
+  },
+  "street": {
+    "lemma": "calle",
+    "gender": "f",
+    "article": "la",
+    "plural": "calles",
+    "ipa": "/ˈkaʝe/",
+    "translation": "street"
+  },
+  "road": {
+    "lemma": "camino",
+    "gender": "m",
+    "article": "el",
+    "plural": "caminos",
+    "ipa": "/kaˈmino/",
+    "translation": "road / way / path"
+  },
+  "highway": {
+    "lemma": "carretera",
+    "gender": "f",
+    "article": "la",
+    "plural": "carreteras",
+    "ipa": "/kareˈteɾa/",
+    "translation": "highway / road"
+  },
+  "wall": {
+    "lemma": "pared",
+    "gender": "f",
+    "article": "la",
+    "plural": "paredes",
+    "ipa": "/paˈɾeð/",
+    "translation": "wall (interior)"
+  },
+  "floor": {
+    "lemma": "suelo",
+    "gender": "m",
+    "article": "el",
+    "plural": "suelos",
+    "ipa": "/ˈswelo/",
+    "translation": "floor; in LatAm often 'el piso'"
+  },
+  "ceiling": {
+    "lemma": "techo",
+    "gender": "m",
+    "article": "el",
+    "plural": "techos",
+    "ipa": "/ˈtetʃo/",
+    "translation": "ceiling / roof"
+  },
+  "mirror": {
+    "lemma": "espejo",
+    "gender": "m",
+    "article": "el",
+    "plural": "espejos",
+    "ipa": "/esˈpexo/",
+    "translation": "mirror"
+  },
+  "lamp": {
+    "lemma": "lámpara",
+    "gender": "f",
+    "article": "la",
+    "plural": "lámparas",
+    "ipa": "/ˈlampaɾa/",
+    "translation": "lamp"
+  },
+  "clock": {
+    "lemma": "reloj",
+    "gender": "m",
+    "article": "el",
+    "plural": "relojes",
+    "ipa": "/reˈlox/",
+    "translation": "clock / watch"
+  },
+  "newspaper": {
+    "lemma": "periódico",
+    "gender": "m",
+    "article": "el",
+    "plural": "periódicos",
+    "ipa": "/peˈɾjoðiko/",
+    "translation": "newspaper"
+  },
+  "letter": {
+    "lemma": "carta",
+    "gender": "f",
+    "article": "la",
+    "plural": "cartas",
+    "ipa": "/ˈkaɾta/",
+    "translation": "letter (mail); also 'la letra' = letter of alphabet"
+  },
+  "paper": {
+    "lemma": "papel",
+    "gender": "m",
+    "article": "el",
+    "plural": "papeles",
+    "ipa": "/paˈpel/",
+    "translation": "paper"
+  },
+  "pencil": {
+    "lemma": "lápiz",
+    "gender": "m",
+    "article": "el",
+    "plural": "lápices",
+    "ipa": "/ˈlapiθ/",
+    "translation": "pencil"
+  },
+  "notebook": {
+    "lemma": "cuaderno",
+    "gender": "m",
+    "article": "el",
+    "plural": "cuadernos",
+    "ipa": "/kwaˈðeɾno/",
+    "translation": "notebook"
+  },
+  "backpack": {
+    "lemma": "mochila",
+    "gender": "f",
+    "article": "la",
+    "plural": "mochilas",
+    "ipa": "/moˈtʃila/",
+    "translation": "backpack"
+  },
+  "bag": {
+    "lemma": "bolsa",
+    "gender": "f",
+    "article": "la",
+    "plural": "bolsas",
+    "ipa": "/ˈbolsa/",
+    "translation": "bag (plastic / paper)"
+  },
+  "wallet": {
+    "lemma": "cartera",
+    "gender": "f",
+    "article": "la",
+    "plural": "carteras",
+    "ipa": "/kaɾˈteɾa/",
+    "translation": "wallet (LatAm); 'la billetera' in some places"
+  },
+  "key (computer)": {
+    "lemma": "tecla",
+    "gender": "f",
+    "article": "la",
+    "plural": "teclas",
+    "ipa": "/ˈtekla/",
+    "translation": "key on a keyboard"
+  },
+  "office": {
+    "lemma": "oficina",
+    "gender": "f",
+    "article": "la",
+    "plural": "oficinas",
+    "ipa": "/ofiˈθina/",
+    "translation": "office"
+  },
+  "boss": {
+    "lemma": "jefe",
+    "gender": "m",
+    "article": "el",
+    "plural": "jefes",
+    "ipa": "/ˈxefe/",
+    "translation": "boss (m); 'la jefa' (f)"
+  },
+  "salary": {
+    "lemma": "sueldo",
+    "gender": "m",
+    "article": "el",
+    "plural": "sueldos",
+    "ipa": "/ˈsweldo/",
+    "translation": "salary; also 'el salario'"
+  },
+  "meeting": {
+    "lemma": "reunión",
+    "gender": "f",
+    "article": "la",
+    "plural": "reuniones",
+    "ipa": "/reuˈnjon/",
+    "translation": "meeting"
+  },
+  "company": {
+    "lemma": "empresa",
+    "gender": "f",
+    "article": "la",
+    "plural": "empresas",
+    "ipa": "/emˈpɾesa/",
+    "translation": "company / business"
+  },
+  "client": {
+    "lemma": "cliente",
+    "gender": "m/f",
+    "article": "el/la",
+    "plural": "clientes",
+    "ipa": "/ˈkljente/",
+    "translation": "client / customer"
+  },
+  "project": {
+    "lemma": "proyecto",
+    "gender": "m",
+    "article": "el",
+    "plural": "proyectos",
+    "ipa": "/pɾoˈʝekto/",
+    "translation": "project"
+  },
+  "exam": {
+    "lemma": "examen",
+    "gender": "m",
+    "article": "el",
+    "plural": "exámenes",
+    "ipa": "/ekˈsamen/",
+    "translation": "exam"
+  },
+  "test": {
+    "lemma": "prueba",
+    "gender": "f",
+    "article": "la",
+    "plural": "pruebas",
+    "ipa": "/ˈpɾweβa/",
+    "translation": "test / quiz / proof"
+  },
+  "homework": {
+    "lemma": "tarea",
+    "gender": "f",
+    "article": "la",
+    "plural": "tareas",
+    "ipa": "/taˈɾea/",
+    "translation": "homework (LatAm); 'los deberes' (Spain)"
+  },
+  "grade": {
+    "lemma": "nota",
+    "gender": "f",
+    "article": "la",
+    "plural": "notas",
+    "ipa": "/ˈnota/",
+    "translation": "grade / mark"
+  },
+  "class": {
+    "lemma": "clase",
+    "gender": "f",
+    "article": "la",
+    "plural": "clases",
+    "ipa": "/ˈklase/",
+    "translation": "class"
+  },
+  "university": {
+    "lemma": "universidad",
+    "gender": "f",
+    "article": "la",
+    "plural": "universidades",
+    "ipa": "/uniβeɾsiˈðað/",
+    "translation": "university"
+  },
+  "pain": {
+    "lemma": "dolor",
+    "gender": "m",
+    "article": "el",
+    "plural": "dolores",
+    "ipa": "/doˈloɾ/",
+    "translation": "pain"
+  },
+  "fever": {
+    "lemma": "fiebre",
+    "gender": "f",
+    "article": "la",
+    "plural": "fiebres",
+    "ipa": "/ˈfjeβɾe/",
+    "translation": "fever"
+  },
+  "cough": {
+    "lemma": "tos",
+    "gender": "f",
+    "article": "la",
+    "plural": "toses",
+    "ipa": "/ˈtos/",
+    "translation": "cough"
+  },
+  "flu": {
+    "lemma": "gripe",
+    "gender": "f",
+    "article": "la",
+    "plural": "gripes",
+    "ipa": "/ˈɡɾipe/",
+    "translation": "flu"
+  },
+  "cold": {
+    "lemma": "resfriado",
+    "gender": "m",
+    "article": "el",
+    "plural": "resfriados",
+    "ipa": "/resfɾiˈaðo/",
+    "translation": "common cold; also 'el catarro'"
+  },
+  "blood": {
+    "lemma": "sangre",
+    "gender": "f",
+    "article": "la",
+    "plural": "sangres",
+    "ipa": "/ˈsanɡɾe/",
+    "translation": "blood"
+  },
+  "idea": {
+    "lemma": "idea",
+    "gender": "f",
+    "article": "la",
+    "plural": "ideas",
+    "ipa": "/iˈðea/",
+    "translation": "idea"
+  },
+  "memory": {
+    "lemma": "memoria",
+    "gender": "f",
+    "article": "la",
+    "plural": "memorias",
+    "ipa": "/meˈmoɾja/",
+    "translation": "memory"
+  },
+  "dream": {
+    "lemma": "sueño",
+    "gender": "m",
+    "article": "el",
+    "plural": "sueños",
+    "ipa": "/ˈsweɲo/",
+    "translation": "dream; also 'sleep'"
+  },
+  "fear": {
+    "lemma": "miedo",
+    "gender": "m",
+    "article": "el",
+    "plural": "miedos",
+    "ipa": "/ˈmjeðo/",
+    "translation": "fear"
+  },
+  "happiness": {
+    "lemma": "felicidad",
+    "gender": "f",
+    "article": "la",
+    "plural": "felicidades",
+    "ipa": "/feliθiˈðað/",
+    "translation": "happiness"
+  },
+  "sadness": {
+    "lemma": "tristeza",
+    "gender": "f",
+    "article": "la",
+    "plural": "tristezas",
+    "ipa": "/tɾisˈteθa/",
+    "translation": "sadness"
+  },
+  "anger": {
+    "lemma": "enojo",
+    "gender": "m",
+    "article": "el",
+    "plural": "enojos",
+    "ipa": "/eˈnoxo/",
+    "translation": "anger (LatAm); 'el enfado' (Spain)"
+  },
+  "hope": {
+    "lemma": "esperanza",
+    "gender": "f",
+    "article": "la",
+    "plural": "esperanzas",
+    "ipa": "/espeˈɾanθa/",
+    "translation": "hope"
+  },
+  "truth": {
+    "lemma": "verdad",
+    "gender": "f",
+    "article": "la",
+    "plural": "verdades",
+    "ipa": "/beɾˈðað/",
+    "translation": "truth"
+  },
+  "lie": {
+    "lemma": "mentira",
+    "gender": "f",
+    "article": "la",
+    "plural": "mentiras",
+    "ipa": "/menˈtiɾa/",
+    "translation": "lie (untruth)"
+  },
+  "future": {
+    "lemma": "futuro",
+    "gender": "m",
+    "article": "el",
+    "plural": "futuros",
+    "ipa": "/fuˈtuɾo/",
+    "translation": "future"
+  },
+  "past": {
+    "lemma": "pasado",
+    "gender": "m",
+    "article": "el",
+    "plural": "pasados",
+    "ipa": "/paˈsaðo/",
+    "translation": "past"
+  },
+  "present": {
+    "lemma": "presente",
+    "gender": "m",
+    "article": "el",
+    "plural": "presentes",
+    "ipa": "/pɾeˈsente/",
+    "translation": "present (time); also 'gift'"
+  },
+  "history": {
+    "lemma": "historia",
+    "gender": "f",
+    "article": "la",
+    "plural": "historias",
+    "ipa": "/isˈtoɾja/",
+    "translation": "history; also 'story'"
+  },
+  "freedom": {
+    "lemma": "libertad",
+    "gender": "f",
+    "article": "la",
+    "plural": "libertades",
+    "ipa": "/liβeɾˈtað/",
+    "translation": "freedom / liberty"
+  },
+  "peace": {
+    "lemma": "paz",
+    "gender": "f",
+    "article": "la",
+    "plural": "paces",
+    "ipa": "/ˈpaθ/",
+    "translation": "peace"
+  },
+  "war": {
+    "lemma": "guerra",
+    "gender": "f",
+    "article": "la",
+    "plural": "guerras",
+    "ipa": "/ˈɡera/",
+    "translation": "war"
+  },
+  "government": {
+    "lemma": "gobierno",
+    "gender": "m",
+    "article": "el",
+    "plural": "gobiernos",
+    "ipa": "/ɡoˈβjeɾno/",
+    "translation": "government"
+  },
+  "law": {
+    "lemma": "ley",
+    "gender": "f",
+    "article": "la",
+    "plural": "leyes",
+    "ipa": "/ˈlej/",
+    "translation": "law"
+  },
+  "art": {
+    "lemma": "arte",
+    "gender": "m/f",
+    "article": "el/las",
+    "plural": "artes",
+    "ipa": "/ˈaɾte/",
+    "translation": "art (masculine singular: 'el arte'; feminine plural: 'las artes')"
+  },
+  "science": {
+    "lemma": "ciencia",
+    "gender": "f",
+    "article": "la",
+    "plural": "ciencias",
+    "ipa": "/ˈθjenθja/",
+    "translation": "science"
+  },
+  "religion": {
+    "lemma": "religión",
+    "gender": "f",
+    "article": "la",
+    "plural": "religiones",
+    "ipa": "/reliˈxjon/",
+    "translation": "religion"
+  },
+  "god": {
+    "lemma": "dios",
+    "gender": "m",
+    "article": "el",
+    "plural": "dioses",
+    "ipa": "/ˈdjos/",
+    "translation": "god (capitalized 'Dios' for monotheistic)"
+  },
+  "soul": {
+    "lemma": "alma",
+    "gender": "f",
+    "article": "el",
+    "plural": "almas",
+    "ipa": "/ˈalma/",
+    "translation": "soul (uses 'el' due to stressed initial a)"
+  },
+  "park": {
+    "lemma": "parque",
+    "gender": "m",
+    "article": "el",
+    "plural": "parques",
+    "ipa": "/ˈpaɾke/",
+    "translation": "park"
+  },
+  "store": {
+    "lemma": "tienda",
+    "gender": "f",
+    "article": "la",
+    "plural": "tiendas",
+    "ipa": "/ˈtjenda/",
+    "translation": "store / shop"
+  },
+  "supermarket": {
+    "lemma": "supermercado",
+    "gender": "m",
+    "article": "el",
+    "plural": "supermercados",
+    "ipa": "/supeɾmeɾˈkaðo/",
+    "translation": "supermarket"
+  },
+  "restaurant": {
+    "lemma": "restaurante",
+    "gender": "m",
+    "article": "el",
+    "plural": "restaurantes",
+    "ipa": "/restawˈɾante/",
+    "translation": "restaurant"
+  },
+  "bar": {
+    "lemma": "bar",
+    "gender": "m",
+    "article": "el",
+    "plural": "bares",
+    "ipa": "/ˈbaɾ/",
+    "translation": "bar"
+  },
+  "café": {
+    "lemma": "café",
+    "gender": "m",
+    "article": "el",
+    "plural": "cafés",
+    "ipa": "/kaˈfe/",
+    "translation": "café (also 'coffee')"
+  },
+  "church": {
+    "lemma": "iglesia",
+    "gender": "f",
+    "article": "la",
+    "plural": "iglesias",
+    "ipa": "/iˈɡlesja/",
+    "translation": "church"
+  },
+  "library": {
+    "lemma": "biblioteca",
+    "gender": "f",
+    "article": "la",
+    "plural": "bibliotecas",
+    "ipa": "/biβljoˈteka/",
+    "translation": "library (NOT 'librería' which is bookstore)"
+  },
+  "bookstore": {
+    "lemma": "librería",
+    "gender": "f",
+    "article": "la",
+    "plural": "librerías",
+    "ipa": "/liβɾeˈɾia/",
+    "translation": "bookstore (NOT library)"
+  },
+  "hospital": {
+    "lemma": "hospital",
+    "gender": "m",
+    "article": "el",
+    "plural": "hospitales",
+    "ipa": "/ospiˈtal/",
+    "translation": "hospital"
+  },
+  "neighborhood": {
+    "lemma": "barrio",
+    "gender": "m",
+    "article": "el",
+    "plural": "barrios",
+    "ipa": "/ˈbaɾjo/",
+    "translation": "neighborhood"
+  },
+  "price": {
+    "lemma": "precio",
+    "gender": "m",
+    "article": "el",
+    "plural": "precios",
+    "ipa": "/ˈpɾeθjo/",
+    "translation": "price"
+  },
+  "change (money)": {
+    "lemma": "cambio",
+    "gender": "m",
+    "article": "el",
+    "plural": "cambios",
+    "ipa": "/ˈkambjo/",
+    "translation": "change (money or transformation)"
+  },
+  "bill": {
+    "lemma": "cuenta",
+    "gender": "f",
+    "article": "la",
+    "plural": "cuentas",
+    "ipa": "/ˈkwenta/",
+    "translation": "bill (restaurant) / account"
+  },
+  "ticket (receipt)": {
+    "lemma": "recibo",
+    "gender": "m",
+    "article": "el",
+    "plural": "recibos",
+    "ipa": "/reˈθiβo/",
+    "translation": "receipt"
+  },
+  "credit card": {
+    "lemma": "tarjeta de crédito",
+    "gender": "f",
+    "article": "la",
+    "plural": "tarjetas de crédito",
+    "ipa": "/taɾˈxeta de ˈkɾeðito/",
+    "translation": "credit card"
+  },
+  "moment": {
+    "lemma": "momento",
+    "gender": "m",
+    "article": "el",
+    "plural": "momentos",
+    "ipa": "/moˈmento/",
+    "translation": "moment"
+  }
+}
