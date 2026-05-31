@@ -203,6 +203,33 @@
   border: 1px solid var(--lt-border);
   border-bottom-left-radius: 5px;
 }
+/* Tap an assistant reply to (re)hear it. Subtle affordance: a speaker glyph
+   fades in on hover/press; the whole bubble is the tap target. */
+.lt-speakable .lt-msg-body {
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.lt-speakable .lt-msg-body::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+  mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+}
+.lt-speakable .lt-msg-body:hover { border-color: #34384a; }
+.lt-speakable .lt-msg-body:hover::after { opacity: 0.5; }
+.lt-speakable .lt-msg-body:active { background: #232838; }
+/* RTL replies place the speaker glyph on the left so it doesn't sit under text */
+.lt-speakable .lt-msg-body[dir="rtl"]::after { right: auto; left: 8px; }
 .lt-msg.lt-error .lt-msg-body {
   background: rgba(239, 68, 68, 0.12);
   border-color: rgba(239, 68, 68, 0.4);

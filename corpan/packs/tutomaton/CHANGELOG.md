@@ -22,6 +22,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- RTL languages now render idiomatically: each message bubble, the welcome
+  title, and the input use dir="auto", so Arabic/Hebrew/Persian/Urdu content
+  right-aligns RTL (per message, mixed content handled) while English stays
+  LTR — no per-language flag needed. Chrome stays LTR; user/tutor bubble sides
+  stay as ownership cues.
+- Tap any tutor reply to hear it again (TTS replay). An explicit tap always
+  speaks, even when the speaker is muted — handy for drilling pronunciation; a
+  subtle speaker glyph hints the affordance.
 - Header + chrome redesign: real Corpán brand mark (the ear-on-ziggurat the
   home screen uses, inlined) replaces the placeholder triangle; top bar is now
   a clean back-chevron · logo · wordmark · right-aligned language switcher, with

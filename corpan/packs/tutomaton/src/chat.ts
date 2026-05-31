@@ -313,7 +313,7 @@ const PackModule: ContentPackModule = {
                ~50 languages, no model to manage). The text field accepts it
                directly; we don't ship a custom STT mic. -->
           <div class="lt-field">
-            <textarea class="lt-text" rows="1" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
+            <textarea class="lt-text" rows="1" dir="auto" placeholder="Ask your tutor anything…" autocomplete="off"></textarea>
           </div>
           <button class="lt-send" aria-label="Send" disabled>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
@@ -547,7 +547,7 @@ const PackModule: ContentPackModule = {
       wrap.className = "lt-welcome"
       wrap.innerHTML = `
         <div class="lt-welcome-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
-        <h2 class="lt-welcome-title">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
+        <h2 class="lt-welcome-title" dir="auto">${langName ? `Practice ${nativeName(langName)}` : "Your private tutor"}</h2>
         <p class="lt-welcome-sub">Ask anything — translations, grammar, vocab, or just chat. It all runs on your device.</p>
         <div class="lt-welcome-langs" aria-label="Your languages"></div>
         <div class="lt-chips"></div>
@@ -607,7 +607,22 @@ const PackModule: ContentPackModule = {
       wrap.className = `lt-msg lt-msg-${role}`
       const body = document.createElement("div")
       body.className = "lt-msg-body"
+      // dir="auto" makes each bubble pick LTR/RTL from its own content's first
+      // strong character — Arabic/Hebrew/Persian/Urdu replies right-align
+      // idiomatically, English left-aligns, mixed content per-message. No
+      // per-language flag needed and the chrome stays LTR.
+      body.dir = "auto"
       body.textContent = text
+      // Tap an assistant reply to (re)hear it — explicit tap always speaks, even
+      // when the speaker is muted. Great for drilling pronunciation.
+      if (role === "assistant") {
+        wrap.classList.add("lt-speakable")
+        body.title = "Tap to hear it again"
+        body.addEventListener("click", () => {
+          const t = body.textContent?.trim()
+          if (t) speakText(t)
+        })
+      }
       wrap.appendChild(body)
       $log.appendChild(wrap)
       scrollDown()
@@ -780,10 +795,17 @@ const PackModule: ContentPackModule = {
       }
     }
 
-    function maybeSpeak(text: string) {
-      if (state.ttsEnabled && text && state.activeLanguage) {
+    /** Speak text in the active language's voice. Always plays (used by an
+     *  explicit tap-to-replay on a bubble), independent of the mute toggle. */
+    function speakText(text: string) {
+      if (text && state.activeLanguage) {
         hostApi.speak(state.activeLanguage.voiceLanguageCode, text).catch((e) => console.error("[tts]", e))
       }
+    }
+
+    /** Speak only if the speaker isn't muted — for auto-speaking new replies. */
+    function maybeSpeak(text: string) {
+      if (state.ttsEnabled) speakText(text)
     }
 
     // ---------- input UX ----------
