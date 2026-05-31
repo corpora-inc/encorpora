@@ -22,6 +22,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the per-language CDN zips is a separate follow-up; dev loads them over LAN.)
 
 ### Changed
+- Long-press copy now works natively: added a clipboard bridge (hostApi.copyText,
+  backed by tauri-plugin-clipboard-manager) since the WKWebView blocks the web
+  clipboard API. Copy a tutor reply by holding it.
+- Kannada (kn) hidden from the picker for this launch — Qwen3-4B confuses Kannada
+  with Devanagari script (greets in नमस्ते, not ನಮಸ್ತೆ). Revisit with a stronger
+  base model. All other 51 languages tested coherent.
 - Long-press a tutor reply to COPY it (e.g. to paste into a translator); short
   press still replays the audio. Copy runs inside the pointerup user-gesture
   (the async clipboard API is blocked in the WKWebView) via execCommand with a
