@@ -209,7 +209,7 @@ export function RatingPrompt() {
 								<Button
 									onClick={handleFeedback}
 									variant="outline"
-									size="sm"
+									size="lg"
 									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
 								>
 									<Github className="h-4 w-4" />
