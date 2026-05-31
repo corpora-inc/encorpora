@@ -3,6 +3,7 @@ engine: gemini
 voices:
   fr: Aoede
   ko: Aoede
+  id: Aoede
 tts: {}
 retry:
   max_retries: 3
