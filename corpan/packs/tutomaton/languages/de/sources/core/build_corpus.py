@@ -35,7 +35,7 @@ LEVEL_SYSTEM = "CEFR"          # "CEFR" or "HSK" or custom
 # ============================================================
 
 HERE = Path(__file__).parent
-TEMPLATE_DIR = HERE.parent / "_template"
+TEMPLATE_DIR = HERE.parents[2] / "_template"  # languages/_template/
 SCHEMA_PATH = TEMPLATE_DIR / "schema_base.sql"
 DB_PATH = HERE / "data" / f"de.sqlite3"
 KAIKKI_CACHE = Path.home() / "data" / "kaikki" / f"kaikki-de.jsonl"

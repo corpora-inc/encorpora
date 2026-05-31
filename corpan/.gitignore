@@ -41,8 +41,16 @@ packs/*/node_modules/
 # `packs/tutomaton/scripts/bootstrap-languages.mjs`.
 # Spanish: 157 MB, fetched from the published CDN module ZIP.
 # Mandarin: 130 KB, rebuilt from build_corpus.py.
+# Post multi-source migration, corpora live under sources/<id>/data/ — both
+# patterns are matched so older trees still ignore cleanly.
 packs/tutomaton/languages/*/data/*.sqlite3
 packs/tutomaton/languages/es/data/core_vocab.json
+packs/tutomaton/languages/*/sources/*/data/*.sqlite3
+packs/tutomaton/languages/es/sources/core/data/core_vocab.json
+# Publisher build outputs (per-source ZIPs land here when --upload not used)
+packs/tutomaton/languages/*/sources/*/_dist/
+packs/tutomaton-*/data/*.sqlite3
+packs/tutomaton-*/_dist/
 
 # LLM publishing scratch
 tools/llm-packs/__pycache__/

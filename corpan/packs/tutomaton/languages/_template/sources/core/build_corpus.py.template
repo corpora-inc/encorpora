@@ -34,8 +34,13 @@ LEVEL_SYSTEM = "CEFR"          # "CEFR" or "HSK" or custom
 # PATHS
 # ============================================================
 
+# Source-pack layout: languages/<code>/sources/core/build_corpus.py
+#   HERE                = languages/<code>/sources/core/
+#   LANGUAGE_DIR        = languages/<code>/
+#   TEMPLATE_DIR        = languages/_template/   (shared schema_base.sql)
 HERE = Path(__file__).parent
-TEMPLATE_DIR = HERE.parent / "_template"
+LANGUAGE_DIR = HERE.parents[1]
+TEMPLATE_DIR = LANGUAGE_DIR.parent / "_template"
 SCHEMA_PATH = TEMPLATE_DIR / "schema_base.sql"
 DB_PATH = HERE / "data" / f"{LANG_CODE}.sqlite3"
 KAIKKI_CACHE = Path.home() / "data" / "kaikki" / f"kaikki-{LANG_CODE}.jsonl"

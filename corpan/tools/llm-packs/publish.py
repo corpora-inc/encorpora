@@ -44,10 +44,12 @@ DEFAULT_BUCKET = "corpan-prod"
 DEFAULT_PROFILE = "corpan-publisher"
 LLM_PREFIX = "artifacts/corpan/llm-packs"
 TUTOMATON_LANG_PREFIX = "artifacts/corpan/tutomaton-languages"
+TUTOMATON_SOURCE_PREFIX = "artifacts/corpan/tutomaton-sources"
 # CloudFront origin rewrites /corpan/* → s3://corpan-prod/artifacts/corpan/*
 # so public URLs drop the "/artifacts/" segment.
 LLM_CDN_PATH = "corpan/llm-packs"
 TUTOMATON_LANG_CDN_PATH = "corpan/tutomaton-languages"
+TUTOMATON_SOURCE_CDN_PATH = "corpan/tutomaton-sources"
 DEFAULT_MIN_APP_VERSION = "0.16.0"
 
 
@@ -250,6 +252,77 @@ def build_language_module(pack_dir: Path, code: str, out_dir: Path) -> dict:
     return registry_entry
 
 
+def build_source_pack(source_dir: Path, out_dir: Path) -> dict:
+    """Build a Tutomaton RAG source pack ZIP from a source-pack directory.
+
+    The source_dir should contain a `manifest.json` with packType=tutomaton-rag-source
+    (per RAG_SOURCES_CONTRACT.md §1). Returns a dict the frontend agent can paste into
+    the catalog (or into the Tutomaton manifest if this source is bundled).
+
+    ZIP filename = `<id>.zip`. The id already carries the version suffix (`-v1`); to
+    publish updated content, bump the id to `-v2` (per contract §1: "Never reuse an
+    id for different content").
+    """
+    manifest_path = source_dir / "manifest.json"
+    if not manifest_path.is_file():
+        raise SystemExit(f"missing {manifest_path}")
+    manifest = json.loads(manifest_path.read_text())
+
+    pack_type = manifest.get("packType")
+    if pack_type != "tutomaton-rag-source":
+        raise SystemExit(
+            f"manifest.packType = {pack_type!r}; expected 'tutomaton-rag-source'. "
+            f"Use the `language` or `pack` subcommand for legacy/shell packs."
+        )
+
+    src_id = manifest.get("id")
+    if not src_id:
+        raise SystemExit(f"manifest missing required `id`")
+    target_lang = manifest.get("tutomatonLanguage")
+    if not target_lang:
+        raise SystemExit(f"manifest missing required `tutomatonLanguage`")
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    zip_path = out_dir / f"{src_id}.zip"
+
+    # ZIP everything under source_dir, preserving relative paths inside the zip
+    # so the consumer's view of the pack root matches the source_dir layout.
+    with ZipFile(zip_path, "w", ZIP_DEFLATED, allowZip64=True) as z:
+        for p in sorted(source_dir.rglob("*")):
+            if not p.is_file():
+                continue
+            rel = p.relative_to(source_dir)
+            if any(part in PACK_EXCLUDE_NAMES for part in rel.parts):
+                continue
+            z.write(p, arcname=rel.as_posix())
+
+    sha = sha256_file(zip_path)
+    mb = size_mb(zip_path)
+    url = f"https://{CDN_HOST}/{TUTOMATON_SOURCE_CDN_PATH}/{zip_path.name}"
+
+    registry_entry = {
+        "id": src_id,
+        "packType": "tutomaton-rag-source",
+        "name": manifest.get("name", {}),
+        "tutomatonLanguage": target_lang,
+        "authoritative": manifest.get("authoritative", False),
+        "priority": manifest.get("priority"),
+        "categories": manifest.get("categories", []),
+        "schemaVersion": manifest.get("schemaVersion"),
+        "minTutomatonVersion": manifest.get("minTutomatonVersion"),
+        "files": manifest.get("files", {}),
+        "requiredHostApis": manifest.get("requiredHostApis", []),
+        "url": url,
+        "sha256": sha,
+        "sizeMb": mb,
+    }
+    # Drop empty/None to keep the entry tidy for the frontend agent
+    registry_entry = {k: v for k, v in registry_entry.items() if v not in (None, [], {})}
+
+    print(f"[publish] source: {zip_path.name} ({mb} MB)  sha={sha[:12]}…  id={src_id}")
+    return registry_entry
+
+
 def sync_language_into_pack_manifest(pack_dir: Path, registry_entry: dict):
     """Update pack-dir manifest.json's languages[] entry for the given code."""
     manifest_path = pack_dir / "manifest.json"
@@ -439,6 +512,28 @@ def cmd_language(args):
     print(json.dumps(registry_entry, indent=2))
 
 
+def cmd_source(args):
+    """Publish a Tutomaton RAG source pack (sources/<id>/ directory).
+
+    Outputs the registry entry the frontend agent needs to paste into either
+    the Tutomaton manifest (for bundled built-in sources) or the catalog
+    (for standalone source packs). This subcommand does NOT modify any
+    manifest — per [[manifest-owned-by-frontend]], Spark never edits
+    `packs/tutomaton/manifest.json`. Hand the output dict to the frontend
+    agent.
+    """
+    source_dir = Path(args.source_dir).resolve()
+    out_dir = Path(args.out or source_dir / "_dist").resolve()
+    registry_entry = build_source_pack(source_dir, out_dir)
+    zip_name = f"{registry_entry['id']}.zip"
+    if args.upload:
+        upload_zip(
+            out_dir / zip_name, args.bucket,
+            f"{TUTOMATON_SOURCE_PREFIX}/{zip_name}", args.profile,
+        )
+    print(json.dumps(registry_entry, indent=2, ensure_ascii=False))
+
+
 def cmd_remove(args):
     cat = download_catalog(args.bucket, args.profile)
     before = len(cat.get("llmPacks", []))
@@ -488,6 +583,22 @@ def main():
     p_lang.add_argument("--profile", default=DEFAULT_PROFILE)
     p_lang.add_argument("--out", default=None)
     p_lang.set_defaults(func=cmd_language)
+
+    p_src = sub.add_parser(
+        "source",
+        help="Ship a Tutomaton RAG source pack (sources/<id>/ dir; per RAG_SOURCES_CONTRACT.md)",
+    )
+    p_src.add_argument(
+        "source_dir",
+        help="Path to the source-pack directory containing manifest.json (e.g. "
+             "corpan/packs/tutomaton/languages/ar/sources/core, "
+             "or corpan/packs/tutomaton-phrase-bridge)"
+    )
+    p_src.add_argument("--upload", action="store_true")
+    p_src.add_argument("--bucket", default=DEFAULT_BUCKET)
+    p_src.add_argument("--profile", default=DEFAULT_PROFILE)
+    p_src.add_argument("--out", default=None)
+    p_src.set_defaults(func=cmd_source)
 
     p_rm = sub.add_parser("remove-from-catalog")
     p_rm.add_argument("pack_id")

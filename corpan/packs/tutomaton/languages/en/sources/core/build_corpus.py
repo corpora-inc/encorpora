@@ -9,7 +9,7 @@ LANG_CODE = "en"
 LANG_NAME = "English"
 
 HERE = Path(__file__).parent
-TEMPLATE_DIR = HERE.parent / "_template"
+TEMPLATE_DIR = HERE.parents[2] / "_template"  # languages/_template/
 SCHEMA_PATH = TEMPLATE_DIR / "schema_base.sql"
 DB_PATH = HERE / "data" / "english.sqlite3"
 

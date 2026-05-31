@@ -1,0 +1,22 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-en-core-v1",
+  "name": {
+    "en": "English Core"
+  },
+  "tutomatonLanguage": "en",
+  "authoritative": true,
+  "priority": 100,
+  "categories": [
+    "vocab",
+    "grammar",
+    "themes",
+    "idioms"
+  ],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/english.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}

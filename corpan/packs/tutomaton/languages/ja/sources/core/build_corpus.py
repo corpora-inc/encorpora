@@ -1,10 +1,10 @@
-"""Build French sqlite corpus for Tutomaton.
+"""Build Japanese sqlite corpus for Tutomaton.
 
 Generated from the universal template. Customize the LANG-SPECIFIC sections
 (marked with `# === LANG-SPECIFIC ===`) for this language's particulars.
 
 Inputs:
-  - ~/data/kaikki/kaikki-fr.jsonl     (download from kaikki.org;
+  - ~/data/kaikki/kaikki-ja.jsonl     (download from kaikki.org;
                                                   cached, gitignored)
   - lesson_data.py                              (hand-authored lessons)
   - theme_data.py                               (hand-authored vocab themes)
@@ -13,7 +13,7 @@ Inputs:
   - schema_base.sql (from ../_template/)
 
 Output:
-  data/fr.sqlite3
+  data/ja.sqlite3
 """
 from __future__ import annotations
 import json
@@ -25,8 +25,8 @@ from pathlib import Path
 # CONFIG — edit these for each language
 # ============================================================
 
-LANG_CODE = "fr"      # ISO 639-1, e.g. "en", "es", "zh", "fr"
-LANG_NAME = "French"      # human name, e.g. "English", "Spanish"
+LANG_CODE = "ja"      # ISO 639-1, e.g. "en", "es", "zh", "fr"
+LANG_NAME = "Japanese"      # human name, e.g. "English", "Spanish"
 TOP_WORDS = 8000               # how many lemmas to include in words table
 LEVEL_SYSTEM = "CEFR"          # "CEFR" or "HSK" or custom
 
@@ -35,10 +35,10 @@ LEVEL_SYSTEM = "CEFR"          # "CEFR" or "HSK" or custom
 # ============================================================
 
 HERE = Path(__file__).parent
-TEMPLATE_DIR = HERE.parent / "_template"
+TEMPLATE_DIR = HERE.parents[2] / "_template"  # languages/_template/
 SCHEMA_PATH = TEMPLATE_DIR / "schema_base.sql"
-DB_PATH = HERE / "data" / f"fr.sqlite3"
-KAIKKI_CACHE = Path.home() / "data" / "kaikki" / f"kaikki-fr.jsonl"
+DB_PATH = HERE / "data" / f"ja.sqlite3"
+KAIKKI_CACHE = Path.home() / "data" / "kaikki" / f"kaikki-ja.jsonl"
 CORE_VOCAB_PATH = HERE / "_source" / "core_vocab.json"
 
 # ============================================================
@@ -64,7 +64,7 @@ def iter_kaikki(path: Path):
     """Yield each kaikki Wiktionary entry as a dict."""
     if not path.exists():
         print(f"WARN: kaikki dump not found at {path}", file=sys.stderr)
-        print(f"      Download from https://kaikki.org/dictionary/French/", file=sys.stderr)
+        print(f"      Download from https://kaikki.org/dictionary/Japanese/", file=sys.stderr)
         return
     with path.open() as f:
         for line in f:
@@ -245,7 +245,7 @@ def populate_core_vocab_overrides(conn: sqlite3.Connection):
 # ============================================================
 
 def main():
-    print(f"Building French (fr) corpus → {DB_PATH}")
+    print(f"Building Japanese (ja) corpus → {DB_PATH}")
     conn = init_db()
     populate_words(conn)
     populate_core_vocab_overrides(conn)

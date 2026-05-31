@@ -19,10 +19,9 @@
  * Adding a built-in source = author its module + add one import + one entry here
  * (and declare it in `manifest.json` languages[<code>].sources[]).
  *
- * NOTE (paired-commit seam, RAG_SOURCES_CONTRACT §11): the import paths below
- * still point at the pre-migration `languages/<code>/retrieval/retriever`. When
- * backend lands the atomic move to `languages/<code>/sources/core/retrieval/`,
- * flip these path strings — the keys (source ids) and everything else stay.
+ * Import paths point at the migrated source-pack layout
+ * `languages/<code>/sources/core/retrieval/retriever` (RAG_SOURCES_CONTRACT §11,
+ * paired with backend's atomic move). The keys below are source ids.
  */
 
 import type { QueryFn, SourceRetrievalResult } from "./languageManager"
@@ -32,12 +31,12 @@ export type RetrieverModule = {
   resolveTheme: (key: string, queryFn: QueryFn) => Promise<string | null>
 }
 
-import * as es from "../languages/es/retrieval/retriever"
-import * as zh from "../languages/zh/retrieval/retriever"
-import * as en from "../languages/en/retrieval/retriever"
-import * as fr from "../languages/fr/retrieval/retriever"
-import * as de from "../languages/de/retrieval/retriever"
-import * as ja from "../languages/ja/retrieval/retriever"
+import * as es from "../languages/es/sources/core/retrieval/retriever"
+import * as zh from "../languages/zh/sources/core/retrieval/retriever"
+import * as en from "../languages/en/sources/core/retrieval/retriever"
+import * as fr from "../languages/fr/sources/core/retrieval/retriever"
+import * as de from "../languages/de/sources/core/retrieval/retriever"
+import * as ja from "../languages/ja/sources/core/retrieval/retriever"
 
 /**
  * Built-in source retrievers, keyed by source id. The cast is safe: each

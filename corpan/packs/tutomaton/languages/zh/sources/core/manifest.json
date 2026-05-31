@@ -1,0 +1,23 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-zh-core-v1",
+  "name": {
+    "en": "Mandarin Core",
+    "zh": "普通话"
+  },
+  "tutomatonLanguage": "zh",
+  "authoritative": true,
+  "priority": 100,
+  "categories": [
+    "vocab",
+    "grammar",
+    "themes",
+    "idioms"
+  ],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/mandarin.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}
