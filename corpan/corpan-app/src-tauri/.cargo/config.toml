@@ -53,3 +53,53 @@ rustflags = [
     "-C",
     "link-arg=-Wl,-z,max-page-size=16384",
 ]
+
+# ───────────────────────────────────────────────────────────────────────────
+# C/C++ TOOLCHAIN PINNING (for cc-rs + bindgen native deps, e.g. llama-cpp-sys-2)
+#
+# Why this exists: the Android NDK toolchain dir is on $PATH (see the user's
+# shell profile). Its `clang`/`clang++`/`llvm-ar` are Clang 17 and are unaware of
+# the macOS/iOS SDKs. Without an explicit compiler, cc-rs and bindgen do a bare
+# `clang++` PATH lookup and pick the NDK Clang 17 even when building an APPLE
+# target — which then fails to parse the iOS/macOS SDK libc++ headers
+# (`error: use of undeclared identifier '__builtin_ctzg'`,
+#  `static assertion failed: Cannot rebind pointer`) or can't find `stdio.h`.
+#
+# Fix: pin the compiler PER TARGET so $PATH order is irrelevant. cc-rs reads
+# `CC_<triple>` / `CXX_<triple>` / `AR_<triple>` (underscore form); bindgen reads
+# `BINDGEN_EXTRA_CLANG_ARGS_<triple>`. These are only consulted when building that
+# specific target, so Apple entries never affect Android builds and vice-versa.
+#
+# `[env]` (non-forced) does NOT override vars already in the environment, so the
+# iOS device build still uses the `SDKROOT` that xcodebuild injects.
+# ───────────────────────────────────────────────────────────────────────────
+[env]
+# --- Apple: force Apple Clang (the /usr/bin/* shims dispatch to the active Xcode) ---
+CC_aarch64-apple-ios = "/usr/bin/clang"
+CXX_aarch64-apple-ios = "/usr/bin/clang++"
+AR_aarch64-apple-ios = "/usr/bin/ar"
+CC_aarch64-apple-darwin = "/usr/bin/clang"
+CXX_aarch64-apple-darwin = "/usr/bin/clang++"
+AR_aarch64-apple-darwin = "/usr/bin/ar"
+CC_x86_64-apple-darwin = "/usr/bin/clang"
+CXX_x86_64-apple-darwin = "/usr/bin/clang++"
+AR_x86_64-apple-darwin = "/usr/bin/ar"
+
+# Desktop bindgen runs libclang directly (no Xcode env), so it needs the macOS SDK
+# headers pointed out explicitly. The unversioned `MacOSX.sdk` symlink always
+# tracks the current Xcode, so this survives Xcode upgrades. The iOS device build
+# gets its sysroot from the xcodebuild-provided SDKROOT and needs nothing here.
+BINDGEN_EXTRA_CLANG_ARGS_aarch64-apple-darwin = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+BINDGEN_EXTRA_CLANG_ARGS_x86_64-apple-darwin = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+# iOS device target: bindgen's libclang must parse the ggml headers against the
+# iOS SDK (it does not read SDKROOT on its own). `--target` makes it parse as
+# arm64-ios. Device SDK only (not simulator) — the unversioned symlink tracks Xcode.
+BINDGEN_EXTRA_CLANG_ARGS_aarch64-apple-ios = "--target=arm64-apple-ios -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+
+# --- Android: pin the NDK 28.2 Clang for cc-rs C/C++ deps so the build doesn't
+#     fall back to whatever NDK happens to be first on $PATH. (Matches the linker
+#     pins above.) Android on-device LLM is Phase 6 / unverified; these are here so
+#     the toolchain is correct the moment we build it. ---
+CC_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/aarch64-linux-android24-clang"
+CXX_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/aarch64-linux-android24-clang++"
+AR_aarch64-linux-android = "/Users/skyl/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-ar"

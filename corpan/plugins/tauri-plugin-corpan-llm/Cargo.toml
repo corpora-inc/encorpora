@@ -2,9 +2,9 @@
 name = "tauri-plugin-corpan-llm"
 version = "0.1.0"
 authors = ["Corpora Inc"]
-description = "On-device LLM runtime — vendored llama.cpp with Metal (iOS), Vulkan (Android), CPU fallback. Streaming inference, shared across packs."
+description = "On-device LLM runtime — llama.cpp with Metal (Apple), CPU (Android/desktop). Streaming inference, shared across packs."
 edition = "2021"
-exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules", "/vendor/llama.cpp/**/*.o"]
+exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-corpan-llm"
 
 [dependencies]
@@ -12,14 +12,23 @@ tauri = { version = "2" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"
-tokio = { version = "1", features = ["sync", "rt"] }
 uuid = { version = "1", features = ["v4"] }
 parking_lot = "0.12"
 log = "0.4"
+# Incremental UTF-8 decoder for streaming multi-byte tokens (e.g. Chinese hanzi
+# whose bytes can split across llama tokens). Same approach as the upstream
+# llama-cpp-2 `simple` example.
+encoding_rs = "0.8"
 
-# Desktop-only: use llama-cpp-2 for now (CPU). Mobile uses native llama.cpp via FFI bridges.
-[target.'cfg(not(any(target_os = "ios", target_os = "android")))'.dependencies]
-llama-cpp-2 = { version = "0.1", default-features = false }
+# Apple (macOS dev + iOS device): Metal GPU. Q4_K_M is fully accelerated on Metal.
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
+llama-cpp-2 = { version = "0.1.146", features = ["metal"] }
+
+# Android + other desktop: CPU. (Android GPU paths for Q4_K_M are unreliable —
+# Adreno OpenCL only accelerates q4_0/q6_K, Vulkan-Adreno fails to load, Mali is
+# slower than CPU. See memory/feedback_android_whisper_gpu.)
+[target.'cfg(not(any(target_os = "macos", target_os = "ios")))'.dependencies]
+llama-cpp-2 = { version = "0.1.146" }
 
 [build-dependencies]
 tauri-plugin = { version = "2", features = ["build"] }
@@ -27,6 +36,3 @@ tauri-build = "2"
 
 [features]
 default = []
-# Desktop only — enabled when running on macOS/Linux dev box
-metal-desktop = []
-cuda-desktop = []

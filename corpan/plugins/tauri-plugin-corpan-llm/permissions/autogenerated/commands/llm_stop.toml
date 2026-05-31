@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-llm-stop"
+description = "Enables the llm_stop command without any pre-configured scope."
+commands.allow = ["llm_stop"]
+
+[[permission]]
+identifier = "deny-llm-stop"
+description = "Denies the llm_stop command without any pre-configured scope."
+commands.deny = ["llm_stop"]

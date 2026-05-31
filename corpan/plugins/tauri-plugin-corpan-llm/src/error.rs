@@ -8,6 +8,8 @@ pub enum Error {
     AlreadyLoading,
     #[error("model not found at path: {0}")]
     ModelNotFound(String),
+    #[error("model file is corrupt or incomplete: {0}")]
+    ModelCorrupt(String),
     #[error("insufficient memory to load model")]
     InsufficientMemory,
     #[error("invalid session id: {0}")]
@@ -25,7 +27,9 @@ pub enum Error {
 }
 
 impl Serialize for Error {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    // NB: `Result` is shadowed by our own alias at the bottom of this file, so we
+    // must spell out `std::result::Result` here.
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
         S: serde::Serializer,
     {
@@ -38,6 +42,7 @@ impl Serialize for Error {
             Error::ModelNotLoaded => "MODEL_NOT_LOADED",
             Error::AlreadyLoading => "ALREADY_LOADING",
             Error::ModelNotFound(_) => "MODEL_NOT_FOUND",
+            Error::ModelCorrupt(_) => "MODEL_CORRUPT",
             Error::InsufficientMemory => "INSUFFICIENT_MEMORY",
             Error::InvalidSession(_) => "INVALID_SESSION",
             Error::GenerationInProgress => "GENERATION_IN_PROGRESS",
@@ -51,6 +56,26 @@ impl Serialize for Error {
             message: self.to_string(),
         }
         .serialize(serializer)
+    }
+}
+
+impl Error {
+    /// The (stable code, human message) pair used when emitting `llm-error` events.
+    pub fn code_and_message(&self) -> (&'static str, String) {
+        let code = match self {
+            Error::ModelNotLoaded => "MODEL_NOT_LOADED",
+            Error::AlreadyLoading => "ALREADY_LOADING",
+            Error::ModelNotFound(_) => "MODEL_NOT_FOUND",
+            Error::ModelCorrupt(_) => "MODEL_CORRUPT",
+            Error::InsufficientMemory => "INSUFFICIENT_MEMORY",
+            Error::InvalidSession(_) => "INVALID_SESSION",
+            Error::GenerationInProgress => "GENERATION_IN_PROGRESS",
+            Error::LlamaCpp(_) => "LLAMA_CPP_ERROR",
+            Error::Io(_) => "IO_ERROR",
+            Error::Sqlite(_) => "SQLITE_ERROR",
+            Error::Internal(_) => "INTERNAL_ERROR",
+        };
+        (code, self.to_string())
     }
 }
 

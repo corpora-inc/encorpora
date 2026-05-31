@@ -15,6 +15,7 @@
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",
     "stt:default",
-    "os:default"
+    "os:default",
+    "corpan-llm:default"
   ]
 }

@@ -13,7 +13,7 @@
  * native-Chinese query patterns (用中文怎么说, etc.).
  */
 
-export type QueryFn = (sql: string, params: unknown[]) => Promise<{ columns: string[]; rows: unknown[][] }>
+export type QueryFn = (sql: string, params: unknown[]) => Promise<{ columns: string[]; rows: Record<string, unknown>[] }>
 
 export type RagKind = "theme" | "lesson" | "lesson_diff" | "translation" | null
 
@@ -68,11 +68,11 @@ async function lookupTheme(themeKey: string, q: QueryFn): Promise<Array<{ hanzi:
     "SELECT hanzi, pinyin, english, classifier FROM vocabulary_themes WHERE theme = ? ORDER BY position",
     [themeKey]
   )
-  return r.rows.map((row: unknown[]) => ({
-    hanzi: row[0] as string,
-    pinyin: row[1] as string,
-    english: row[2] as string,
-    classifier: row[3] as string | null,
+  return r.rows.map((row) => ({
+    hanzi: row.hanzi as string,
+    pinyin: row.pinyin as string,
+    english: row.english as string,
+    classifier: (row.classifier as string | null) ?? null,
   }))
 }
 
@@ -93,8 +93,8 @@ function formatTheme(items: Array<{ hanzi: string; pinyin: string; english: stri
 async function lookupLessonByTopic(topic: string, q: QueryFn): Promise<{ topic: string; title: string; body_markdown: string } | null> {
   const r = await q("SELECT topic, title, body_markdown FROM lessons WHERE topic = ?", [topic])
   if (!r.rows.length) return null
-  const row = r.rows[0] as unknown[]
-  return { topic: row[0] as string, title: row[1] as string, body_markdown: row[2] as string }
+  const row = r.rows[0]
+  return { topic: row.topic as string, title: row.title as string, body_markdown: row.body_markdown as string }
 }
 
 async function lookupLessonFts(query: string, q: QueryFn): Promise<{ topic: string; title: string; body_markdown: string } | null> {
@@ -106,8 +106,8 @@ async function lookupLessonFts(query: string, q: QueryFn): Promise<{ topic: stri
     [safe.split(/\s+/).slice(0, 6).join(" OR ")]
   )
   if (!r.rows.length) return null
-  const row = r.rows[0] as unknown[]
-  return { topic: row[0] as string, title: row[1] as string, body_markdown: row[2] as string }
+  const row = r.rows[0]
+  return { topic: row.topic as string, title: row.title as string, body_markdown: row.body_markdown as string }
 }
 
 // Lessons keyed by colloquial English queries
