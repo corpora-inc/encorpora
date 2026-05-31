@@ -377,6 +377,11 @@
       "cta": "Theo dõi",
       "desc": "@corpanapp",
       "title": "Theo dõi trên Instagram"
+    },
+    "share": {
+      "title": "Chia sẻ Corpán",
+      "text": "Học ngôn ngữ cùng Corpán.",
+      "copied": "Đã sao chép liên kết!"
     }
   },
   "common": {

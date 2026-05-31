@@ -377,6 +377,11 @@
       "cta": "Takip et",
       "desc": "@corpanapp",
       "title": "Instagram'da takip et"
+    },
+    "share": {
+      "title": "Corpán'ı paylaş",
+      "text": "Corpán ile dil öğren.",
+      "copied": "Bağlantı kopyalandı!"
     }
   },
   "common": {

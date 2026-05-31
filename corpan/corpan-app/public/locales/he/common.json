@@ -377,6 +377,11 @@
       "cta": "עקוב",
       "desc": "@corpanapp",
       "title": "עקוב באינסטגרם"
+    },
+    "share": {
+      "title": "שיתוף Corpán",
+      "text": "ללמוד שפות עם Corpán.",
+      "copied": "הקישור הועתק!"
     }
   },
   "common": {

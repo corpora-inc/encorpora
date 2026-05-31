@@ -377,6 +377,11 @@
       "cta": "フォロー",
       "desc": "@corpanapp",
       "title": "Instagramをフォロー"
+    },
+    "share": {
+      "title": "Corpánを共有",
+      "text": "Corpánで言語を学ぼう。",
+      "copied": "リンクをコピーしました！"
     }
   },
   "common": {

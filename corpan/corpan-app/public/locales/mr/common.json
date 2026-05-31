@@ -377,6 +377,11 @@
       "cta": "अनुसरण करा",
       "desc": "@corpanapp",
       "title": "Instagram वर अनुसरण करा"
+    },
+    "share": {
+      "title": "Corpán शेअर करा",
+      "text": "Corpán सोबत भाषा शिका.",
+      "copied": "लिंक कॉपी झाली!"
     }
   },
   "common": {

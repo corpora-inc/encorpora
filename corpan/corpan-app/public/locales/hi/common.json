@@ -377,6 +377,11 @@
       "cta": "फ़ॉलो करें",
       "desc": "@corpanapp",
       "title": "Instagram पर फ़ॉलो करें"
+    },
+    "share": {
+      "title": "Corpán साझा करें",
+      "text": "Corpán के साथ भाषाएँ सीखें।",
+      "copied": "लिंक कॉपी हो गया!"
     }
   },
   "common": {

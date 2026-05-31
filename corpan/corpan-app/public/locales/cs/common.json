@@ -377,6 +377,11 @@
       "cta": "Sledovat",
       "desc": "@corpanapp",
       "title": "Sledujte na Instagramu"
+    },
+    "share": {
+      "title": "Sdílet Corpán",
+      "text": "Učte se jazyky s Corpán.",
+      "copied": "Odkaz zkopírován!"
     }
   },
   "common": {

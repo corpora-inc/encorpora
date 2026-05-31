@@ -377,6 +377,11 @@
       "cta": "Følg",
       "desc": "@corpanapp",
       "title": "Følg på Instagram"
+    },
+    "share": {
+      "title": "Del Corpán",
+      "text": "Lær sprog med Corpán.",
+      "copied": "Link kopieret!"
     }
   },
   "common": {

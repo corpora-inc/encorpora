@@ -377,6 +377,11 @@
       "cta": "Подписаться",
       "desc": "@corpanapp",
       "title": "Подписаться в Instagram"
+    },
+    "share": {
+      "title": "Поделиться Corpán",
+      "text": "Учите языки с Corpán.",
+      "copied": "Ссылка скопирована!"
     }
   },
   "common": {

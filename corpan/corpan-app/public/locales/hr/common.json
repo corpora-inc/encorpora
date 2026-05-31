@@ -377,6 +377,11 @@
       "cta": "Prati",
       "desc": "@corpanapp",
       "title": "Pratite na Instagramu"
+    },
+    "share": {
+      "title": "Podijeli Corpán",
+      "text": "Uči jezike uz Corpán.",
+      "copied": "Poveznica kopirana!"
     }
   },
   "common": {

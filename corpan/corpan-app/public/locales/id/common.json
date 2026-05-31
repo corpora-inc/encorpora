@@ -377,6 +377,11 @@
       "cta": "Ikuti",
       "desc": "@corpanapp",
       "title": "Ikuti di Instagram"
+    },
+    "share": {
+      "title": "Bagikan Corpán",
+      "text": "Belajar bahasa dengan Corpán.",
+      "copied": "Tautan disalin!"
     }
   },
   "common": {

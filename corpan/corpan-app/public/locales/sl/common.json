@@ -377,6 +377,11 @@
       "cta": "Spremljaj",
       "desc": "@corpanapp",
       "title": "Spremljajte na Instagramu"
+    },
+    "share": {
+      "title": "Deli Corpán",
+      "text": "Učite se jezikov s Corpán.",
+      "copied": "Povezava kopirana!"
     }
   },
   "common": {

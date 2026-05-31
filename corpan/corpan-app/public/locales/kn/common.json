@@ -377,6 +377,11 @@
       "cta": "ಅನುಸರಿಸಿ",
       "desc": "@corpanapp",
       "title": "Instagram ನಲ್ಲಿ ಅನುಸರಿಸಿ"
+    },
+    "share": {
+      "title": "Corpán ಹಂಚಿಕೊಳ್ಳಿ",
+      "text": "Corpán ಜೊತೆ ಭಾಷೆಗಳನ್ನು ಕಲಿಯಿರಿ.",
+      "copied": "ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ!"
     }
   },
   "common": {

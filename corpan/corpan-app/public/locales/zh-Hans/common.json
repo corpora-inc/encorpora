@@ -377,6 +377,11 @@
       "cta": "关注",
       "desc": "@corpanapp",
       "title": "在Instagram上关注"
+    },
+    "share": {
+      "title": "分享 Corpán",
+      "text": "用 Corpán 学习语言。",
+      "copied": "链接已复制！"
     }
   },
   "common": {
