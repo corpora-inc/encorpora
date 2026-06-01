@@ -63,6 +63,17 @@ function readPackBaseUrl(): string {
   }
 }
 
+// Build-time-inlined pack data (see vite.config.ts `define`). These replace
+// the old runtime `fetch("corpan-pack://…")` reads, which WebKit CORS-blocks
+// on-device (the WebView origin is `tauri://`, the installed pack is served
+// from `corpan-pack://`). Inlining keeps the pack fully offline / self-
+// contained — the established pattern here (cf. the base64 logo).
+declare const __TUTOMATON_MANIFEST_JSON__: string
+declare const __TUTOMATON_PROMPTS_JSON__: string
+
+const INLINED_PROMPTS: Record<string, { system: string; grounding: string }> =
+  JSON.parse(__TUTOMATON_PROMPTS_JSON__)
+
 function joinUrl(base: string, rel: string): string {
   if (!base) return rel
   const b = base.endsWith("/") ? base.slice(0, -1) : base
@@ -223,7 +234,9 @@ const PackModule: ContentPackModule = {
     const baseUrl = readPackBaseUrl()
     const packFetch = (rel: string) => fetch(proxied(joinUrl(baseUrl, rel)), { cache: "no-store" })
 
-    const manifest = (await packFetch("manifest.json").then((r) => r.json())) as {
+    // Manifest is inlined at build time — NO runtime fetch (CORS-blocked on
+    // device for the cross-origin `corpan-pack://` scheme). See chat.ts header.
+    const manifest = JSON.parse(__TUTOMATON_MANIFEST_JSON__) as {
       languages: LanguageRegistryEntry[]
       databases?: Record<string, string>
       universalSources?: import("./languageManager").SourceManifestEntry[]
@@ -309,7 +322,17 @@ const PackModule: ContentPackModule = {
           onProgress
         )
       },
-      loadModuleFile: async (code, rel) => packFetch(`languages/${code}/${rel}`).then((r) => r.text()),
+      // Prompts are inlined at build time (the only files languageManager
+      // reads). Serve them from the bundle — no cross-origin fetch. Any other
+      // path falls back to packFetch (works in http dev; not hit on device).
+      loadModuleFile: async (code, rel) => {
+        const p = INLINED_PROMPTS[code]
+        if (p) {
+          if (rel === "prompts/system_prompt.txt") return p.system
+          if (rel === "prompts/grounding_instruction.txt") return p.grounding
+        }
+        return packFetch(`languages/${code}/${rel}`).then((r) => r.text())
+      },
       // Universal sources (§7) — bundled in this pack ZIP, apply to every
       // target language. Currently: the phrase-pack bridge. Each one receives
       // pattern-A `helpers` carrying phrasePacks + queryPackDb at retrieve time.

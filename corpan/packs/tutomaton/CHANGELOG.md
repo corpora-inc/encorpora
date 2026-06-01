@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-01 — Fix on-device black screen (inline manifest + prompts)
+
+### Fixed
+- **Black screen on launch (on-device).** `mount()` fetched the pack manifest
+  (and per-language prompt files) at runtime over the `corpan-pack://` scheme.
+  On device the WebView origin is `tauri://localhost` while the installed pack
+  is served from `corpan-pack://localhost`, so WebKit CORS-blocked the
+  cross-origin `fetch` ("Origin tauri://localhost is not allowed by
+  Access-Control-Allow-Origin" → "Load failed"), `mount()` rejected, and the
+  pack rendered a black void. It worked in `npm run dev` only because the pack
+  is served same-origin over http there (and routed via `/game-proxy`). Fix:
+  the manifest and all language prompt files (`system_prompt.txt`,
+  `grounding_instruction.txt` — the only files `languageManager` reads at
+  runtime) are now **inlined into the bundle at build time** (vite `define`,
+  see `vite.config.ts`), mirroring how the pack already inlines its logo and
+  how the reader packs receive host-preloaded data. Zero runtime cross-origin
+  fetches; the pack is fully self-contained / offline. RAG sqlite databases are
+  unaffected — they still install via the native `installModuleZip`.
+
 ## [0.3.0] - 2026-05-31 — Multi-source RAG architecture + en/fr/de/ja republish + phrase-pack bridge
 
 ### Added

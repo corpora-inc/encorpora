@@ -7,6 +7,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Text-to-Speech setup: newly installed voices now appear on their own.** The
+  redesigned setup screen only refreshed its voice list on mount and on
+  `visibilitychange`, so a voice you just installed wouldn't show up until you
+  backed out of the screen and returned. The screen now lightly polls the
+  installed voices (every 3s while it's open) and refreshes the list only when
+  the voice set actually changed — so freshly installed voices surface
+  automatically, with zero re-renders in steady state.
+
 ### Changed
 
 - **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier

@@ -9,7 +9,7 @@ import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { useState } from "react";
-import { Github, Youtube, Newspaper, Globe, Instagram, ExternalLink, Sparkles, Share2 } from "lucide-react";
+import { Github, Youtube, Newspaper, Globe, Instagram, ExternalLink, Sparkles, Share2, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OnboardingShell } from "@/onboarding/OnboardingShell";
 import { usePaywallStore } from "@/store/paywall";
@@ -34,6 +34,7 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
     const setOnboarded = useSettingsStore((s) => s.setOnboarded);
     const openPaywall = usePaywallStore((s) => s.openPaywall);
     const iapAvailable = useEntitlementStore((s) => s.iapAvailable);
+    const subscribed = useEntitlementStore((s) => s.subscription.active);
     const { t } = useTranslation();
 
     async function openExternal(url: string) {
@@ -101,8 +102,10 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
             </p>
 
             <ul className="mt-6 grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
-                {/* Soft join/support — opens the Plus sheet, framed as optional. */}
-                {iapAvailable ? (
+                {/* Soft join/support. Subscribers get a gracious, non-interactive
+                    thank-you chip instead of a button that would no-op against the
+                    paywall's "never nag subscribers" guard. */}
+                {iapAvailable && !subscribed ? (
                     <li className="sm:col-span-2">
                         <button
                             type="button"
@@ -124,6 +127,24 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
                                 <ExternalLink size={16} className="shrink-0 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
                             </div>
                         </button>
+                    </li>
+                ) : iapAvailable && subscribed ? (
+                    <li className="sm:col-span-2">
+                        <div className="w-full rounded-xl border border-purple-400/50 bg-gradient-to-br from-purple-500/[0.12] to-purple-500/[0.03] p-4 text-left">
+                            <div className="flex items-center gap-3">
+                                <span className="grid h-10 w-10 place-items-center rounded-lg bg-purple-500/15 text-purple-400">
+                                    <Heart size={20} className="fill-current" />
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                    <div className="text-sm font-semibold text-foreground">
+                                        {t("onboarding.engage.subscribedTitle", { defaultValue: "You're a Corpanista" })}
+                                    </div>
+                                    <div className="mt-0.5 text-xs text-muted-foreground">
+                                        {t("onboarding.engage.subscribedDesc", { defaultValue: "Thank you for keeping Corpán ad-free and growing." })}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 ) : null}
 

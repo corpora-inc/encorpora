@@ -108,6 +108,15 @@ function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
     return out;
 }
 
+/** Stable signature of a voice set, order-independent, for change detection. */
+function voicesSignature(list: ExtendedVoiceInfo[] | null): string {
+    if (!list) return "";
+    return list
+        .map((v) => `${v.id}|${v.language}`)
+        .sort()
+        .join(",");
+}
+
 function baseLang(tag: string) {
     const t = tag.toLowerCase();
     const i = t.indexOf("-");
@@ -202,6 +211,12 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
     phaseRef.current = phase;
     const inFlightRef = useRef(false);
     const pendingRunRef = useRef(false);
+    // Latest voices snapshot for the polling effect to diff against without
+    // re-subscribing on every change. A dedicated guard prevents overlapping
+    // polls (native list_voices can be slow on Android).
+    const voicesRef = useRef<ExtendedVoiceInfo[] | null>(voices);
+    voicesRef.current = voices;
+    const pollInFlightRef = useRef(false);
 
     /**
      * Refresh voices + engine status. Returns whether the voices list was
@@ -366,6 +381,47 @@ export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepP
         return () => window.clearTimeout(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [phase.kind, voices]);
+
+    // Lightly poll the installed voices while the setup screen is open so a
+    // voice the user just installed appears on its own — without backing out
+    // and re-entering the screen. visibilitychange covers the clean
+    // return-from-Settings case, but iOS often surfaces a freshly downloaded
+    // voice a beat later (and without a visibility flip when the download
+    // happens in-app), so a gentle poll closes the gap. We only setVoices when
+    // the voice SET actually changed, so steady state causes zero re-renders
+    // (no audio/preview churn).
+    useEffect(() => {
+        if (phase.kind !== "ready") return;
+        let cancelled = false;
+        const interval = window.setInterval(async () => {
+            // Don't fight an in-flight diagnose, and don't stack polls.
+            if (inFlightRef.current || pollInFlightRef.current) return;
+            pollInFlightRef.current = true;
+            try {
+                const raw = await getVoices({});
+                if (cancelled) return;
+                const list = uniqBy(
+                    raw as ExtendedVoiceInfo[],
+                    (v) => `${v.id}|${v.language}`,
+                );
+                if (voicesSignature(list) !== voicesSignature(voicesRef.current)) {
+                    console.info(
+                        "[onboardingTTS] voice set changed on poll — refreshing list",
+                    );
+                    setVoices(list);
+                }
+            } catch (e) {
+                console.warn("[onboardingTTS] voice poll failed", e);
+            } finally {
+                pollInFlightRef.current = false;
+            }
+        }, 3000);
+        return () => {
+            cancelled = true;
+            window.clearInterval(interval);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phase.kind]);
 
     /* ---------- Rescue actions ---------- */
 
