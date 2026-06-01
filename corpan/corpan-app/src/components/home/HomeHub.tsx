@@ -157,7 +157,15 @@ export function HomeHub({
       const installedGame = games[meta.id] as InstalledGame | undefined
       const installed = meta.id === "phrase_main" || !!installedGame
       const name = loc(cg?.nameLocalized, cg?.name) ?? tk(meta.nameKey)
-      const blurb = loc(cg?.descriptionLocalized, cg?.description) ?? tk(meta.blurbKey, { defaultValue: "" })
+      // Catalog-first blurb (lets us re-author Home copy via web/data/packs.json
+      // without an app release; see CHANGELOG 0.16.1 and the plan in
+      // experiences/registry.ts header). Tagline is the short Home-recommendation
+      // copy; description is the longer landing-page copy — fall through tagline
+      // → description → the i18n key only as a defensive in-binary fallback.
+      const blurb =
+        loc(cg?.taglineLocalized, cg?.tagline)
+          ?? loc(cg?.descriptionLocalized, cg?.description)
+          ?? tk(meta.blurbKey, { defaultValue: "" })
       const onClick =
         meta.id === "phrase_main"
           ? onLaunchPhrase
