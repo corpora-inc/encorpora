@@ -11,6 +11,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Fixed
 
+- **Android: graceful gate for a missing/disabled System WebView (no more
+  startup abort).** On devices where the Android System WebView is missing,
+  disabled, or mid-update, wry's startup version probe aborted the process
+  from native code before any UI existed (`abort ← wry::webview_version ←
+  Wry::init ← Builder::build`); release builds are `panic="abort"`, so it was
+  uncatchable and showed only as an opaque crash in Play vitals. A launcher
+  trampoline (`LaunchGateActivity`) now verifies a usable WebView via
+  `WebViewCompat.getCurrentWebViewPackage()` before MainActivity (and the
+  wry/Tauri stack) is created; if none is usable it shows a dialog guiding the
+  user to enable/update Android System WebView instead of aborting. The gate
+  uses a translucent theme so the normal path renders nothing and forwards
+  straight to MainActivity.
 - **Tutomaton pack id mismatch.** The Tutomaton pack manifest's `id` was
   `tutomaton-v1` while the catalog entry was published as `tutomaton`; the
   host's pack-install path validates `catalog.id === manifest.id` byte-equal

@@ -15,6 +15,31 @@
         android:theme="@style/Theme.corpan"
         android:usesCleartextTraffic="${usesCleartextTraffic}">
         <!--
+             Launcher trampoline. Verifies a usable Android System WebView
+             exists BEFORE MainActivity (and therefore the wry/Tauri stack)
+             is created. On devices with a missing/disabled/updating System
+             WebView, wry's startup version probe aborts the process from
+             native code (release builds are panic="abort", so it is
+             uncatchable) before any UI exists. The gate cannot live inside
+             MainActivity: WryActivity.onCreate registers the lifecycle
+             observer that synchronously starts the native build, so the
+             abort races super.onCreate(). The gate uses a translucent theme
+             and a plain Activity, so the happy path renders nothing and just
+             forwards to MainActivity. See LaunchGateActivity.kt.
+        -->
+        <activity
+            android:name=".LaunchGateActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- AndroidTV support -->
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
              Defense in depth against the ndk_context Activity-recreation
              crash ("assertion failed: previous.is_none()" in
              ndk_context::initialize_android_context, called from
@@ -38,14 +63,7 @@
             android:launchMode="singleTask"
             android:label="@string/main_activity_title"
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!-- AndroidTV support -->
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
 
         <service
             android:name="com.corpora.audio_keepalive.AudioKeepAliveService"
