@@ -1,5 +1,26 @@
 [
   {
+    "id": "tutomaton",
+    "name": "Tutomaton",
+    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/tutomaton/manifest.json",
+    "zipUrl": "/corpan/packs/tutomaton.zip",
+    "landingUrl": "/corpan/packs/tutomaton/",
+    "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
+    "minAppVersion": "0.16.0",
+    "channel": "stable",
+    "packType": "tutomaton",
+    "tier": "premium",
+    "purchase": { "type": "iap", "priceLabel": "Plus" },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
+  },
+  {
     "id": "hover_runner",
     "name": "Hover Runner",
     "description": "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones",
