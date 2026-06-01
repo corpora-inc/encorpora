@@ -9,7 +9,7 @@ Three subcommands:
                catalog's `llmPacks[]` array.
 
   pack       — a regular content pack that consumes the LLM runtime
-               (e.g. `tutomaton-v1`). Two-ZIP: preview + full. Goes into the
+               (e.g. `tutomaton`). Two-ZIP: preview + full. Goes into the
                catalog's `entries[]` array (same place as phrase packs).
                For Tutomaton, the shell ZIP *excludes* per-language modules
                under `languages/` — those ship separately via `language`.

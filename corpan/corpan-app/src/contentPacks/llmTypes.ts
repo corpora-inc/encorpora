@@ -7,7 +7,7 @@
  *      One per supported runtime; downloaded once per device; reused by
  *      every LLM-consuming pack on that device.
  *
- *   2. **Regular content packs** (e.g. `tutomaton-v1`) that consume the
+ *   2. **Regular content packs** (e.g. `tutomaton`) that consume the
  *      base via `dependsOn: ["llm-base-..."]`. These are NOT special
  *      catalog entries — they're regular packs that happen to use the
  *      LLM runtime, and they ship their own internal content management
@@ -112,7 +112,7 @@ export type TutomatonLanguageModule = {
 export type CatalogLlmPersona = TwoZipDownloadable & {
   id: string
   packType: "llm-persona"
-  /** Which pack + language this overlays (e.g. "tutomaton-v1:es"). */
+  /** Which pack + language this overlays (e.g. "tutomaton:es"). */
   baseRef: string
   character: string
   displayName: Record<string, string>
