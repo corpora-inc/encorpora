@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "收聽來自世界各地的即時廣播。",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "圖托馬通",
+      "blurb": "手機裡的耐心家教，陪伴您學習每種語言。"
     }
   },
   "home": {

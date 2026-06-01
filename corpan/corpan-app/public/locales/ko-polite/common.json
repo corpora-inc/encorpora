@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "전 세계의 라이브 라디오를 들어보세요.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "투토마톤",
+      "blurb": "배우시는 모든 언어를 위한, 기기 안의 인내심 있는 개인 튜터입니다."
     }
   },
   "home": {

@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Sintonitza ràdio en directe d'arreu del món.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "El teu tutor personal i pacient, directament al teu dispositiu, per a qualsevol idioma que vulguis aprendre."
     }
   },
   "home": {

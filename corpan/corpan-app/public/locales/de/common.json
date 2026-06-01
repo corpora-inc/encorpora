@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Live-Radio aus aller Welt hören.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Ein geduldiger Tutor direkt auf deinem Gerät für jede Sprache, die du lernst."
     }
   },
   "home": {

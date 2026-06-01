@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Uglasite se na radio v živo z vsega sveta.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Potrpežljiv učitelj v tvojem žepu za vsak jezik, ki se ga učiš."
     }
   },
   "home": {

@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Dengarkan radio siaran langsung dari seluruh dunia.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Tutor sabar langsung di perangkat Anda, untuk setiap bahasa yang Anda pelajari."
     }
   },
   "home": {

@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Lyssna på liveradio från hela världen.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "En tålmodig handledare, direkt i din telefon, för alla språk du lär dig."
     }
   },
   "home": {

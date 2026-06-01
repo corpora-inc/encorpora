@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Sikiliza redio ya moja kwa moja kutoka kote ulimwenguni.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Mwalimu mvumilivu ndani ya kifaa chako, kwa lugha zote unazojifunza."
     }
   },
   "home": {
