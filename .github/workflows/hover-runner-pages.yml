@@ -128,6 +128,30 @@ jobs:
         working-directory: corpan/packs/world-radio
         run: node scripts/pack.mjs
 
+      - name: Install Tutomaton Dependencies
+        working-directory: corpan/packs/tutomaton
+        run: npm install --legacy-peer-deps
+
+      - name: Build Tutomaton
+        working-directory: corpan/packs/tutomaton
+        run: npm run build
+
+      - name: Package Tutomaton as ZIP
+        # Shell + dist + bundled bridge source + per-language module.json/prompts only.
+        # The per-language corpus sqlites (sources/core/data/*.sqlite3) ship in their
+        # own language-module ZIPs on the CloudFront catalog and are downloaded on
+        # demand when a learner activates that language.
+        run: |
+          cd corpan/packs/tutomaton
+          zip -r tutomaton.zip \
+            manifest.json \
+            dist/ \
+            sources/ \
+            languages/*/module.json \
+            languages/*/prompts/ \
+            -x "languages/*/sources/*" \
+            -x "languages/*/data/*"
+
       - name: Install Pronunciation Coach Dependencies
         working-directory: corpan/packs/pronunciation-coach
         run: npm install --legacy-peer-deps
@@ -191,6 +215,16 @@ jobs:
           cp corpan/packs/pronunciation-coach/manifest.json "web/io/out/corpan/packs/pronunciation-coach/"
           cp -R corpan/packs/pronunciation-coach/dist "web/io/out/corpan/packs/pronunciation-coach/"
           cp corpan/packs/pronunciation-coach/pronunciation-coach.zip "web/io/out/corpan/packs/pronunciation-coach.zip"
+
+      - name: Copy Tutomaton into io/out
+        # Shell only; per-language sqlites stream from the CloudFront catalog
+        # the first time a learner activates each language (`moduleUrl` in
+        # manifest.json languages[]).
+        run: |
+          mkdir -p "web/io/out/corpan/packs/tutomaton"
+          cp corpan/packs/tutomaton/manifest.json "web/io/out/corpan/packs/tutomaton/"
+          cp -R corpan/packs/tutomaton/dist "web/io/out/corpan/packs/tutomaton/"
+          cp corpan/packs/tutomaton/tutomaton.zip "web/io/out/corpan/packs/tutomaton.zip"
 
       # Legacy slug pinned for users on Corpán 0.12.5, which ships the
       # WhisperKit-based STT plugin and cannot run the 0.5.0+ pack
