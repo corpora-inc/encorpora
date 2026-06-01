@@ -116,3 +116,15 @@ export function getPlatformTopPaddingButtons(): number {
     }
     return 10;
 }
+
+/**
+ * Top padding (px) shared by the home top bar (gear) and the settings header
+ * (close-X), so the two buttons land in the exact same spot and the bars are
+ * consistent. This is a flat platform clearance (no env(safe-area-inset-top)
+ * added on top) — adding the inset on devices double-counted it and made the
+ * home bar puffy; the flat value already clears the inset and the windowed
+ * macOS/Stage-Manager "stoplight" controls.
+ */
+export function getTopBarPaddingTop(): number {
+    return getPlatformTopPaddingButtons() + 15;
+}

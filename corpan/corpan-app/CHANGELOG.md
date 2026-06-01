@@ -7,6 +7,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+
+- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
+  than it needed to be on phones and fullscreen iPad: it added a flat
+  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
+  the inset on notched devices. It now uses a single shared flat clearance
+  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
+  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
+  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
+  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
+  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
+  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
+  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
+  settings header also gets the same translucent blur as the home bar
+  (`bg-background/80 backdrop-blur`).
+
 ## [0.16.1] - 2026-06-01 — Tutomaton id fix + catalog-driven experience metadata
 
 ### Fixed

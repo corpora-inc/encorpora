@@ -34,7 +34,7 @@ import { RecentsSection } from "@/components/packs/RecentsSection"
 import { PhrasePackDrawerTrigger } from "@/components/packs/PhrasePackDrawerTrigger"
 import { PacksSection } from "./PacksSection"
 import { Button } from "@/components/ui/button"
-import { getPlatformTopPaddingButtons } from "@/util/browser"
+import { getTopBarPaddingTop } from "@/util/browser"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 import { rankHomeExperiences } from "./recommend"
 
@@ -219,8 +219,9 @@ export function HomeHub({
         style={{
           // Push the WHOLE header row down together so the mark + the gear
           // both clear the window "stoplight" controls (Stage Manager / macOS)
-          // and stay vertically aligned via items-center.
-          paddingTop: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)`,
+          // and stay vertically aligned via items-center. Shared with the
+          // settings header (getTopBarPaddingTop) so the gear + close-X match.
+          paddingTop: getTopBarPaddingTop(),
           paddingBottom: "0.5rem",
         }}
       >
