@@ -187,6 +187,10 @@
     "hanzipan": {
       "name": "Hanzipan",
       "blurb": "Master Mandarin characters, stroke by stroke."
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "A patient on-device tutor for every language you're learning."
     }
   },
   "onboarding": {

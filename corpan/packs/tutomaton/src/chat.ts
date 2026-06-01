@@ -36,7 +36,7 @@ type ContentPackModule = {
   ) => Promise<{ unmount?: () => void } | void> | { unmount?: () => void } | void
 }
 
-const PACK_ID = "tutomaton-v1"
+const PACK_ID = "tutomaton"
 
 type Msg = { role: "user" | "assistant"; content: string }
 

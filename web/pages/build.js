@@ -139,6 +139,54 @@ function readManifestLocalized(pack) {
   return out;
 }
 
+// Single source of truth for experience names + blurbs: the existing
+// `experiences.<id>.{name, blurb}` keys in
+// `corpan/corpan-app/public/locales/<lang>/common.json`. Translators have
+// already populated these across 50+ locales for the 8 pre-existing packs;
+// we denormalize them into the catalog so the running app can render
+// localized text from the catalog field (`nameLocalized` / `taglineLocalized`)
+// without depending on bundled i18n keys. Falls back gracefully when a
+// locale doesn't have the key for a given pack (e.g. a newly added pack).
+const _localesCache = {};
+function loadAllLocales() {
+  if (_localesCache.loaded) return _localesCache.byLang;
+  const localesDir = path.join(REPO_ROOT, 'corpan', 'corpan-app', 'public', 'locales');
+  const byLang = {};
+  if (fs.existsSync(localesDir)) {
+    for (const lang of fs.readdirSync(localesDir)) {
+      if (lang.startsWith('_') || lang.startsWith('.')) continue;
+      const commonPath = path.join(localesDir, lang, 'common.json');
+      if (!fs.existsSync(commonPath)) continue;
+      try {
+        const parsed = JSON.parse(fs.readFileSync(commonPath, 'utf-8'));
+        byLang[lang] = parsed && typeof parsed === 'object' ? parsed : null;
+      } catch (err) {
+        console.warn(`[pages] Failed to parse locales/${lang}/common.json:`, err.message);
+      }
+    }
+  }
+  _localesCache.byLang = byLang;
+  _localesCache.loaded = true;
+  return byLang;
+}
+
+function harvestExperienceLocales(packId) {
+  const byLang = loadAllLocales();
+  const nameMap = {};
+  const taglineMap = {};
+  for (const [lang, common] of Object.entries(byLang)) {
+    const entry = common && common.experiences && common.experiences[packId];
+    if (!entry || typeof entry !== 'object') continue;
+    if (typeof entry.name === 'string' && entry.name.length > 0) {
+      nameMap[lang] = entry.name;
+    }
+    if (typeof entry.blurb === 'string' && entry.blurb.length > 0) {
+      taglineMap[lang] = entry.blurb;
+    }
+  }
+  return { nameMap, taglineMap };
+}
+
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -364,10 +412,31 @@ function buildPages(outputDir) {
       ? (pack.avatarUrl.startsWith('/') ? `https://encorpora.io${pack.avatarUrl}` : pack.avatarUrl)
       : `https://encorpora.io/assets/${pack.id}-avatar.png`;
 
+    // Merge `experiences.<id>.{name, blurb}` translations from every locale's
+    // common.json into the catalog so the Home picker can render localized
+    // text from catalog fields without any baked-in i18n keys. The pack's own
+    // manifest-derived nameLocalized (if any) wins over the experiences map
+    // for `name` since the manifest is the authored marketing surface; the
+    // experiences map fills in the locales the manifest didn't cover.
+    const { nameMap, taglineMap } = harvestExperienceLocales(pack.id);
+    const nameLocalized = {
+      ...nameMap,
+      ...(pack.nameLocalized || {}),
+    };
+    if (typeof pack.name === 'string' && pack.name.length > 0) {
+      nameLocalized.en = pack.name;
+    }
+    const taglineLocalized = { ...taglineMap };
+    if (typeof pack.tagline === 'string' && pack.tagline.length > 0) {
+      taglineLocalized.en = pack.tagline;
+    }
+
     return {
       id: pack.id,
       name: pack.name,
-      ...(pack.nameLocalized ? { nameLocalized: pack.nameLocalized } : {}),
+      ...(Object.keys(nameLocalized).length > 0
+        ? { nameLocalized }
+        : {}),
       version: pack.version,
       manifestUrl: manifestUrl,
       zipUrl: zipUrl,
@@ -385,6 +454,32 @@ function buildPages(outputDir) {
         ? { platforms: pack.platforms }
         : {}),
       ...(pack.minOSVersion ? { minOSVersion: pack.minOSVersion } : {}),
+      // Recommendation metadata. Lets us re-shuffle / re-tag experiences
+      // on the Home picker without an app release. Mirrors the fields on
+      // `CatalogGame` / `CatalogV3Entry` and the in-binary registry
+      // (`corpan-app/src/experiences/registry.ts`), which remains as a
+      // defensive offline fallback for first-launch-without-network.
+      ...(Array.isArray(pack.categories) && pack.categories.length > 0
+        ? { categories: pack.categories }
+        : {}),
+      ...(Array.isArray(pack.goodForClass) && pack.goodForClass.length > 0
+        ? { goodForClass: pack.goodForClass }
+        : {}),
+      ...(typeof pack.recommendOrder === 'number'
+        ? { recommendOrder: pack.recommendOrder }
+        : {}),
+      ...(typeof pack.kidFriendly === 'boolean'
+        ? { kidFriendly: pack.kidFriendly }
+        : {}),
+      ...(Array.isArray(pack.languages) && pack.languages.length > 0
+        ? { languages: pack.languages }
+        : {}),
+      ...(typeof pack.tagline === 'string' && pack.tagline.length > 0
+        ? { tagline: pack.tagline }
+        : {}),
+      ...(Object.keys(taglineLocalized).length > 0
+        ? { taglineLocalized }
+        : {}),
       // Optional phrase-pack-specific fields. Surface only when defined on
       // the pack entry — keeps the catalog tight for game/reader/narration
       // packs that don't use them. See PHRASE_PACK_AUTHORING.md.

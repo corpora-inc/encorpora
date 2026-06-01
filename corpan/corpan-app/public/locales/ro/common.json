@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Ascultă radio live din întreaga lume.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Un tutore răbdător, mereu pe telefonul tău, pentru orice limbă înveți."
     }
   },
   "home": {

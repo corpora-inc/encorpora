@@ -52,6 +52,15 @@ export type CatalogGame = {
    *  When set and none of the user's languages overlap (by base language) the
    *  experience is heavily penalized in ranking. Omit for language-agnostic packs. */
   languages?: string[]
+  /** Short display blurb used in Home recommendations. Distinct from the
+   *  longer `description` (which appears on the pack's landing page). The
+   *  Home surface reads `tagline` (or its localized variant) so we can re-author
+   *  the blurb via the catalog without an app release. Empty/absent → app falls
+   *  back to its in-binary `experiences.<id>.blurb` i18n key. */
+  tagline?: string
+  /** Per-language overrides for `tagline`. Same fallback chain as the
+   *  `nameLocalized` / `descriptionLocalized` fields above. */
+  taglineLocalized?: LocalizedString
 }
 
 /** Corpán Plus two-ZIP artifact (preview public, full Plus-gated). */
@@ -139,6 +148,21 @@ export type CatalogV3Entry = {
    *  trailing zeros are tolerated. Used to gate packs that need APIs from
    *  a specific iOS / Android / macOS release. */
   minOSVersion?: string
+
+  // ── Recommendation metadata (catalog-driven; mirror of CatalogGame
+  //    fields with the same names + semantics, forwarded by
+  //    `filterCatalogForApp` so the Home picker can rank without an app
+  //    release per re-shuffle). All optional. ──
+  categories?: string[]
+  goodForClass?: string[]
+  recommendOrder?: number
+  kidFriendly?: boolean
+  languages?: string[]
+  /** Short Home-recommendation blurb. Distinct from `description`
+   *  (which is the longer landing-page copy). Falls back through the
+   *  same chain as nameLocalized / descriptionLocalized. */
+  tagline?: string
+  taglineLocalized?: LocalizedString
 }
 
 // Phrase packs are NOT on the v3 catalog. They ship through a dedicated
@@ -300,6 +324,8 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
       recommendOrder: toOptionalNumber(record.recommendOrder),
       kidFriendly: toOptionalBool(record.kidFriendly),
       languages: parseStringArray(record.languages),
+      tagline: toOptionalString(record.tagline),
+      taglineLocalized: parseLocalizedString(record.taglineLocalized),
     })
   }
   return parsed
@@ -446,6 +472,13 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     systemPack: r.systemPack === true,
     platforms,
     minOSVersion: toOptionalString(r.minOSVersion),
+    categories: parseStringArray(r.categories),
+    goodForClass: parseStringArray(r.goodForClass),
+    recommendOrder: toOptionalNumber(r.recommendOrder),
+    kidFriendly: toOptionalBool(r.kidFriendly),
+    languages: parseStringArray(r.languages),
+    tagline: toOptionalString(r.tagline),
+    taglineLocalized: parseLocalizedString(r.taglineLocalized),
   }
 }
 
@@ -519,6 +552,13 @@ export const filterCatalogForApp = (
       imageUrl: entry.imageUrl,
       purchase: entry.purchase,
       systemPack: entry.systemPack,
+      categories: entry.categories,
+      goodForClass: entry.goodForClass,
+      recommendOrder: entry.recommendOrder,
+      kidFriendly: entry.kidFriendly,
+      languages: entry.languages,
+      tagline: entry.tagline,
+      taglineLocalized: entry.taglineLocalized,
     }))
 }
 

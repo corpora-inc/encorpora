@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "收聽來自世界各地的直播電台。",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "圖特馬頓",
+      "blurb": "一個有耐性嘅隨身導師，幫你喺手機度學識任何語言。"
     }
   },
   "home": {

@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "收听全球直播电台。",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "图托马顿",
+      "blurb": "你的专属设备内置导师，耐心助你学习每一种语言。"
     }
   },
   "home": {

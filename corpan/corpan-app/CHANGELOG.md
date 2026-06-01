@@ -7,6 +7,51 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.16.1] - 2026-06-01 — Tutomaton id fix + catalog-driven experience metadata
+
+### Fixed
+
+- **Tutomaton pack id mismatch.** The Tutomaton pack manifest's `id` was
+  `tutomaton-v1` while the catalog entry was published as `tutomaton`; the
+  host's pack-install path validates `catalog.id === manifest.id` byte-equal
+  and refused to install with "pack id mismatch". The pack-side files
+  (manifest.json, src/chat.ts PACK_ID, the in-binary experiences registry
+  fallback entry) all now use bare `tutomaton`, matching the catalog and
+  every other pack's naming convention. The rebuilt `tutomaton.zip` (174KB
+  shell + dist + per-language module.json + prompts; bundles the new
+  phrase-pack bridge) ships to `https://encorpora.io/corpan/packs/tutomaton.zip`
+  on this release's GH Action.
+
+### Changed
+
+- **Experience metadata moves to the catalog (no app release for routine
+  tuning).** The Home recommendation surface now reads `categories`,
+  `goodForClass`, `recommendOrder`, `kidFriendly`, `languages`, `tagline`,
+  and `taglineLocalized` directly from each `catalog-v3.json` pack entry.
+  `corpan-app/src/experiences/registry.ts` keeps its full 9-entry data
+  array as a defensive in-binary fallback so the Home picker still renders
+  on a first launch without network, but the catalog is the source of truth
+  whenever it's reachable (already wired via the existing catalog-first
+  `resolveExperienceMeta` lookup in `recommend.ts`). Going forward,
+  reshuffling order, hiding an experience during an investigation, or
+  rewriting a tagline is a one-line edit to `web/data/packs.json` → GH
+  Action redeploys catalog-v3.json → installed apps pick it up on next
+  catalog refresh (existing 1-hour TTL).
+
+### Added
+
+- **`CatalogV3Entry.tagline` + `taglineLocalized`.** Catalog entries now
+  carry a short Home-recommendation blurb distinct from the longer
+  `description` (which appears on landing pages). `taglineLocalized` is a
+  `Record<lang, string>` mirroring `nameLocalized` / `descriptionLocalized`.
+- **`experiences.tutomaton.{name, blurb}` i18n keys** in
+  `corpan-app/public/locales/<lang>/common.json` populated for every shipped
+  locale via Gemini Vertex (Flash 2.5, project corpora1). Brand name kept
+  as `Tutomaton` for Latin-script locales; transliterated for non-Latin
+  (`トゥートマトン`, `توتوماتون`, `Тутоматон`, etc.). These feed the catalog's
+  `taglineLocalized` map automatically through the new locales-harvester in
+  `web/pages/build.js`.
+
 ## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
 
 ### Security

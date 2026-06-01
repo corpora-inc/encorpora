@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Viritä maailmanlaajuisiin suoriin radiolähetyksiin.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Oma, kärsivällinen kieltenopettajasi, joka kulkee mukanasi kaikille oppimillesi kielille."
     }
   },
   "home": {

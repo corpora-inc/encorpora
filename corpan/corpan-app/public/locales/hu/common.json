@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Hangolódj élő rádióra a világ minden tájáról.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Türelmes, a telefonodon futó oktató, bármelyik tanult nyelvedhez."
     }
   },
   "home": {

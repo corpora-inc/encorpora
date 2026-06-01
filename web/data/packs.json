@@ -2,7 +2,7 @@
   {
     "id": "tutomaton",
     "name": "Tutomaton",
-    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
+    "description": "A patient on-device language tutor for every language you're learning \u2014 grounded by your installed phrase packs. Runs entirely on your device.",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/tutomaton/manifest.json",
@@ -14,11 +14,24 @@
     "channel": "stable",
     "packType": "tutomaton",
     "tier": "premium",
-    "purchase": { "type": "iap", "priceLabel": "Plus" },
+    "purchase": {
+      "type": "iap",
+      "priceLabel": "Plus"
+    },
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "speak",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 9,
+    "tagline": "A patient on-device tutor for every language you're learning."
   },
   {
     "id": "hover_runner",
@@ -40,7 +53,18 @@
         "Rj0x7kug9oc"
       ],
       "demos": []
-    }
+    },
+    "categories": [
+      "games",
+      "read"
+    ],
+    "goodForClass": [
+      "kid_native",
+      "learner"
+    ],
+    "recommendOrder": 4,
+    "kidFriendly": true,
+    "tagline": "Hear a phrase, steer to match it \u2014 learn by playing."
   },
   {
     "id": "hanzipan",
@@ -57,7 +81,23 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "games",
+      "study",
+      "wild"
+    ],
+    "goodForClass": [
+      "polyglot",
+      "learner"
+    ],
+    "recommendOrder": 7,
+    "languages": [
+      "zh-Hans",
+      "zh-Hant",
+      "yue-Hant-HK"
+    ],
+    "tagline": "Master Mandarin characters, stroke by stroke."
   },
   {
     "id": "juice_squeeze",
@@ -76,7 +116,18 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "games",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 5,
+    "kidFriendly": true,
+    "tagline": "Build phrases piece by piece in a quick game."
   },
   {
     "id": "earthgate_reader",
@@ -95,7 +146,20 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "read",
+      "audio"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "kid_native",
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 1,
+    "kidFriendly": true,
+    "tagline": "Read along to narrated audiobooks \u2014 calm, with word-by-word highlighting."
   },
   {
     "id": "stargate_reader",
@@ -114,12 +178,23 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "read",
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot"
+    ],
+    "recommendOrder": 2,
+    "tagline": "The same audiobooks in immersive 3D \u2014 words stream through space as they're read."
   },
   {
     "id": "world_radio",
     "name": "World Radio",
-    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
+    "description": "Tune into live internet radio in any of Corpan's languages \u2014 your stack first, the world right after",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/world-radio/manifest.json",
@@ -133,12 +208,24 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot",
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 3,
+    "tagline": "Tune into live radio from around the world."
   },
   {
     "id": "world_radio",
     "name": "World Radio",
-    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
+    "description": "Tune into live internet radio in any of Corpan's languages \u2014 your stack first, the world right after",
     "status": "active",
     "listed": false,
     "manifestUrl": "/corpan/packs/world-radio-legacy/manifest.json",
@@ -153,12 +240,24 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot",
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 3,
+    "tagline": "Tune into live radio from around the world."
   },
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "webListed": false,
@@ -178,12 +277,22 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
   },
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/pronunciation-coach/manifest.json",
@@ -201,12 +310,22 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
   },
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "webListed": false,
@@ -224,6 +343,16 @@
     "videos": {
       "shorts": [],
       "demos": []
-    }
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
   }
 ]

@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Dünyanın dört bir yanından canlı radyoları dinleyin.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Öğrendiğiniz her dil için sabırlı, cihazınızdaki kişisel öğretmeniniz."
     }
   },
   "home": {

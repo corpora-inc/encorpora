@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Sintonize rádio ao vivo de todo o mundo.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "O seu tutor paciente, sempre consigo, para todas as línguas que está a aprender"
     }
   },
   "home": {

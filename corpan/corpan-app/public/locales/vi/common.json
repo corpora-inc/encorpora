@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Nghe đài trực tiếp từ khắp nơi trên thế giới.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Gia sư kiên nhẫn, luôn bên bạn trên mọi hành trình học ngôn ngữ."
     }
   },
   "home": {

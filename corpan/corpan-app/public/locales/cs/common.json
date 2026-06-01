@@ -725,6 +725,10 @@
     "world_radio": {
       "blurb": "Nalaďte si živé rádio z celého světa.",
       "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Váš trpělivý tutor přímo v aplikaci pro všechny jazyky, které se učíte."
     }
   },
   "home": {

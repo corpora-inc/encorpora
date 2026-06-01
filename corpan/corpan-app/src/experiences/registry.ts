@@ -117,11 +117,11 @@ export const EXPERIENCES: ExperienceMeta[] = [
   {
     // On-device multilingual LLM tutor (Plus). Strong fit for learners/polyglots
     // who want to converse and study; language-agnostic (manages its own langs).
-    id: "tutomaton-v1",
+    id: "tutomaton",
     categories: ["speak", "study"],
     goodForClass: ["learner", "polyglot"],
-    nameKey: "experiences.tutomaton-v1.name",
-    blurbKey: "experiences.tutomaton-v1.blurb",
+    nameKey: "experiences.tutomaton.name",
+    blurbKey: "experiences.tutomaton.blurb",
     order: 9,
   },
 ]
