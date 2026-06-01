@@ -1,7 +1,7 @@
 {
   "id": "book_u10_goalie",
   "name": "You Are the Goalkeeper",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "book",
   "entry": "dist/reader.js",
   "styles": [

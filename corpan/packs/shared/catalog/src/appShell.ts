@@ -16,7 +16,7 @@ import { buildCatalogIndex, type CatalogIndex } from "./catalogIndex"
 import { createNarratorDetail, type NarratorDetail } from "./narratorDetail"
 import { stopPreview } from "./voicePreview"
 import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
-import { getPackUrl, isTauriAvailable, installNarration, deleteNarration } from "./installManager"
+import { getPackUrl, isTauriAvailable, installNarration, deleteNarration, isTwoZipEntry } from "./installManager"
 import {
   groupBySeries,
   filterByLanguage,
@@ -196,6 +196,22 @@ export function createAppShell(
   function entitlementsLoaded(): boolean { return entitlements.loaded }
   function iapAvailableSync(): boolean { return entitlements.iapAvailable }
   function isSubscriberSync(): boolean { return entitlements.subscribed }
+
+  /** What the user will ACTUALLY download for this entry, given their
+   *  entitlement. For a two-ZIP entry a non-subscriber gets the small public
+   *  preview (first ~95 segments); a subscriber gets the full signed ZIP.
+   *  Legacy entries always report their single `sizeMb`. Returning isPreview
+   *  lets the row mark the download as a free preview so 27-min books don't
+   *  masquerade as a ~5 MB taste. */
+  function effectiveDownload(
+    narration: CatalogNarrationEntry
+  ): { sizeMb: number; isPreview: boolean } {
+    if (isTwoZipEntry(narration)) {
+      if (isSubscriberSync()) return { sizeMb: narration.full.sizeMb, isPreview: false }
+      return { sizeMb: narration.preview.sizeMb, isPreview: true }
+    }
+    return { sizeMb: narration.sizeMb, isPreview: false }
+  }
   function ownsBookSync(productId: string): boolean { return entitlements.ownedBooks.has(productId) }
 
   function isEntitledToNarrationSync(n: { purchase: { type: string; productId?: string | null } }): boolean {
@@ -1911,7 +1927,16 @@ export function createAppShell(
     } else {
       parts.push(`v${narration.version}`)
     }
-    if (narration.sizeMb) parts.push(`${Math.round(narration.sizeMb)} MB`)
+    // For an un-installed two-ZIP entry, show the size the user will actually
+    // pull (preview for non-subscribers) and tag it so a long book's small
+    // preview can't read as the whole thing.
+    if (installedVersion) {
+      if (narration.sizeMb) parts.push(`${Math.round(narration.sizeMb)} MB`)
+    } else {
+      const dl = effectiveDownload(narration)
+      if (dl.sizeMb) parts.push(`${Math.round(dl.sizeMb)} MB`)
+      if (dl.isPreview) parts.push("Free preview")
+    }
     return parts.join(" \u00B7 ")
   }
 
@@ -2076,7 +2101,7 @@ export function createAppShell(
     const btn = document.createElement("button")
     btn.type = "button"
     btn.className = "catalog-btn catalog-btn--compact"
-    const label = `${Math.round(narration.sizeMb)} MB`
+    const label = `${Math.round(effectiveDownload(narration).sizeMb)} MB`
     btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">${label}</span>`
     btn.addEventListener("click", (e) => {
       e.stopPropagation()

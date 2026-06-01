@@ -1,6 +1,6 @@
 # Little Escapes
 
-Short audio vacations into the things people love. Each volume is a single hobby or pursuit, voiced by an expert friend in a mix of first-person enthusiasm and second-person immersion. Twenty-five minute listens, available in twenty-three languages.
+Short audio vacations into the things people love. Each volume is a single hobby or pursuit, voiced by an expert friend in a mix of first-person enthusiasm and second-person immersion. Twenty-five minute listens, available in dozens of languages.
 
 See `series.yaml` for the editorial contract.
 

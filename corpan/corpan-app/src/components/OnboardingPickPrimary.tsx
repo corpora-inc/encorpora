@@ -31,10 +31,13 @@ import {
 import { TRANSLATIONS } from "@/store/translations";
 import { isRTL } from "@/util/convert";
 import { ChevronLeft, ChevronRight, Hourglass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import corpanMark from "@/assets/corpan-mark-trim.png";
+import { useApplyLang, detectPreferredLang } from "@/onboarding/useApplyLang";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
-export function OnboardingPickPrimary() {
+export function OnboardingPickPrimary({ onAdvance }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setLanguages = useSettingsStore((s) => s.setLanguages);
     const { i18n } = useTranslation();
@@ -44,31 +47,12 @@ export function OnboardingPickPrimary() {
     // single suggested row.
     const suggested = useMemo(() => detectPreferredLang(), []);
 
-    // Race-safe i18n setter. `i18n.changeLanguage` is async and not
-    // cancellable — if we fire one for `suggested` on mount and the user
-    // taps a different `code` a beat later, the two pending applies can
-    // resolve in any order and the late one wins. We track the latest
-    // desired language in a ref and re-apply if drift is detected after a
-    // call settles. Result: the user's pick always wins regardless of
-    // resolution order.
-    const desiredLangRef = useRef<string | null>(null);
-    const applyLang = useCallback(
-        async (code: string) => {
-            desiredLangRef.current = code;
-            await i18n.changeLanguage(code);
-            if (
-                desiredLangRef.current &&
-                i18n.language !== desiredLangRef.current
-            ) {
-                await i18n.changeLanguage(desiredLangRef.current);
-            }
-        },
-        [i18n],
-    );
+    // Race-safe i18n setter (shared with the onboarding engine).
+    const applyLang = useApplyLang();
 
     // Apply the detected UI language eagerly so downstream onboarding pages
-    // land already localized. The race guard above keeps a quick user tap
-    // from being clobbered by this in-flight call.
+    // land already localized. The race guard keeps a quick user tap from
+    // being clobbered by this in-flight call.
     useEffect(() => {
         if (suggested && i18n.language !== suggested) {
             void applyLang(suggested);
@@ -78,7 +62,7 @@ export function OnboardingPickPrimary() {
     const handleSelect = (code: string) => {
         setLanguages([code]);
         void applyLang(code);
-        setStep(2);
+        (onAdvance ?? (() => setStep(2)))();
     };
 
     const orderedLangs = useMemo(() => {
@@ -88,7 +72,7 @@ export function OnboardingPickPrimary() {
 
     return (
         <div
-            className="fixed inset-0 overflow-y-auto overscroll-contain bg-background md:bg-muted"
+            className="fixed inset-0 overflow-y-auto overscroll-contain bg-background"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -106,7 +90,7 @@ export function OnboardingPickPrimary() {
                     paddingTop: "calc(env(safe-area-inset-top) + 2rem)",
                 }}
             >
-                <Header total={ALL_LANGUAGES.length} />
+                <Header />
 
                 <ul
                     role="listbox"
@@ -158,12 +142,22 @@ export function OnboardingPickPrimary() {
 /*  Header                                                                    */
 /* -------------------------------------------------------------------------- */
 
-function Header({ total }: { total: number }) {
+function Header() {
     return (
-        <header className="flex flex-col items-center mb-10 sm:mb-12 select-none">
+        <header className="flex flex-col items-center mb-5 sm:mb-6 select-none">
+            {/* Tiny all-hearing-ear mark above the wordmark (replaces the
+                old language count). */}
+            <img
+                src={corpanMark}
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="select-none"
+                style={{ height: 26, width: "auto" }}
+            />
             <span
                 lang="en"
-                className="font-medium text-foreground/95"
+                className="mt-2 font-medium text-foreground/95"
                 style={{
                     fontSize: 24,
                     letterSpacing: "0.04em",
@@ -171,16 +165,6 @@ function Header({ total }: { total: number }) {
                 }}
             >
                 Corpán
-            </span>
-            <span
-                aria-hidden="true"
-                className="mt-3 font-mono tabular-nums text-muted-foreground/70"
-                style={{
-                    fontSize: 13,
-                    letterSpacing: "0.18em",
-                }}
-            >
-                {total.toString().padStart(2, "0")}
             </span>
         </header>
     );
@@ -223,6 +207,7 @@ function PrimaryLanguageButton({
                 type="button"
                 onClick={() => onSelect(code)}
                 lang={code}
+                data-lang={code}
                 dir={rtl ? "rtl" : "ltr"}
                 className={[
                     "group relative w-full",
@@ -299,40 +284,5 @@ function ComingSoonRow({ code, stagger }: { code: string; stagger: number }) {
     );
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Locale detection                                                          */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Best-effort match from `navigator.language` / `navigator.languages` to a
- * supported language code. Tries exact match first, then primary-subtag.
- * Returns null if no reasonable match.
- *
- * The browser/WKWebView returns the OS-level user language on iOS and
- * Android, so this is reliable across our shipped platforms. Desktop Tauri
- * inherits the OS locale too. We never force this match — it only seeds the
- * suggested-row indicator and the i18n default.
- */
-function detectPreferredLang(): string | null {
-    if (typeof navigator === "undefined") return null;
-    const supported = ALL_LANGUAGES.map((l) => l.toLowerCase());
-    const candidates = [
-        navigator.language,
-        ...(navigator.languages || []),
-    ]
-        .filter((s): s is string => Boolean(s))
-        .map((s) => s.toLowerCase());
-
-    for (const c of candidates) {
-        const hit = supported.indexOf(c);
-        if (hit >= 0) return ALL_LANGUAGES[hit];
-    }
-    for (const c of candidates) {
-        const prefix = c.split("-")[0];
-        const hit = supported.findIndex(
-            (s) => s === prefix || s.startsWith(prefix + "-"),
-        );
-        if (hit >= 0) return ALL_LANGUAGES[hit];
-    }
-    return null;
-}
+// Locale detection now lives in @/onboarding/useApplyLang (shared with the
+// onboarding engine).

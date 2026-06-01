@@ -119,11 +119,16 @@
       "noMatches": "Ei osumia.",
       "noFiltered": "Täällä ei ole mitään nyt.",
       "stackTotalPhrases": "~{{count}} fraasia vastaa",
-      "stackTotalNudge": "Lisää paketteja tai laajenna tasoja monipuolisuuden vuoksi."
+      "stackTotalNudge": "Lisää paketteja tai laajenna tasoja monipuolisuuden vuoksi.",
+      "activeCount": "{{active}} / {{total}} aktiivista",
+      "baseCorpusSubtitle": "{{n}} lausetta"
     },
     "sendAnonUsage": "Lähetä anonyymit käyttötiedot",
     "sendAnonUsageHint": "Anonyymi, istuntokohtainen. Ei tilejä, ei laitetunnisteita, ei IP-osoitteiden tallennusta. Voit poistaa tämän käytöstä milloin tahansa.",
-    "readPrivacyPromise": "Lue tietosuojalupauksemme"
+    "readPrivacyPromise": "Lue tietosuojalupauksemme",
+    "showStreak": "Näytä lukemisen putki",
+    "showStreakHint": "Pieni päivälaskuri otsikossa. Vain laitteella, ei muistutuksia tai ilmoituksia.",
+    "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli"
   },
   "onboarding": {
     "welcome": "Tervetuloa",
@@ -138,7 +143,7 @@
     "welcomeVisit": "Vieraile encorpora.io",
     "linkCopied": "Linkki kopioitu. Avaa selaimessasi:",
     "reconfigureStack": "Määritä pino uudelleen",
-    "openVoiceSettings": "Avaa laitteen ääniasetukset",
+    "openVoiceSettings": "Avaa asetukset",
     "openTTSSetup": "Avaa tekstistä puheeksi -asetukset",
     "welcomeFollowUp": "Kiitos liittymisestä — nähdään yhteisössä!",
     "learning": "Kielten opiskelu",
@@ -153,8 +158,8 @@
     "languageOrderTipBody": "Listan alimmainen kieli on sovelluksen käyttöliittymäkieli. Vaihda käyttöliittymäkieli vetämällä toinen kieli alimmaiseksi.",
     "ttsOsTipTitle": "Vinkki",
     "ttsOsTipAndroid": "Parhaat tulokset: käytä Google-tekstistä puheeksi -palvelua. Samsung TTS ei toimi Corpánissa.",
-    "ttsOsTipIOS": "Kohdassa Asetukset → Esteettömyys etsi Puhuttu sisältö ja lataa ääniä. Huomio: Apple ei tarjoa ääniä kaikille kielille. Jos päivitys ei auta, lähetä tuki-ilmoitus Applen Palaute-sovelluksen kautta.",
-    "ttsOsTipMac": "Kohdassa Järjestelmäasetukset → Esteettömyys etsi Puhuttu sisältö ja lataa ääniä. Huomio: Apple ei tarjoa ääniä kaikille kielille. Jos päivitys ei auta, lähetä tuki-ilmoitus Applen Palaute-sovelluksen kautta.",
+    "ttsOsTipIOS": "Laitteessasi on sisäänrakennettuja ilmaisia Premium-ääniä – Apple jättää ne vain pois päältä. Kytke ne päälle: Asetukset → Käyttöapu → Puhuttu sisältö → Äänet → kielesi, ja napauta sitten latauskuvaketta Premium- tai Enhanced-äänelle. Palaa takaisin, ja se ilmestyy tänne automaattisesti. (Apple ei vielä tue kaikkia kieliä.)",
+    "ttsOsTipMac": "Macissasi on sisäänrakennettuja ilmaisia Premium-ääniä – Apple jättää ne vain pois päältä. Kytke ne päälle: Järjestelmäasetukset → Käyttöapu → Puhuttu sisältö → Järjestelmäääni → Hallitse ääniä, ja lataa sitten Premium- tai Enhanced-ääni. Palaa takaisin, ja se ilmestyy tänne automaattisesti. (Apple ei vielä tue kaikkia kieliä.)",
     "ttsOsTipWindows": "Kohdassa Asetukset lisää tai asenna puheääniä, palaa sitten tähän.",
     "ttsOsTipOther": "Lisää tai asenna tekstistä puheeksi -ääniä laitteen asetuksissa, palaa sitten tähän.",
     "installVoicesAndroid": "Asenna ääniä",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Asenna Google Tekstistä puheeksi",
-        "detail": "Googlen äänimoottori tarjoaa parhaan laadun kaikilla Corpánin tukemilla kielillä. Se on ilmainen.",
+        "detail": "Googlen ilmainen äänimoottori avaa korkealaatuisia ääniä useimmille Corpánin tukemille kielille – useimmissa puhelimissa sitä ei vain ole valmiina. Lisätään se:",
         "button": "Asenna Play Kaupasta"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "Palaa pian.",
       "offlineHero": "Olet offline.",
       "offlineSub": "Paketit tarvitsevat internetin — yritä myöhemmin kohdasta Asetukset → Paketit.",
-      "offlineBanner": "Offline — valinnat asentuvat yhdistettäessä."
+      "offlineBanner": "Offline — valinnat asentuvat yhdistettäessä.",
+      "noneSelected": "Ei valittuna – Jatka ohittaa",
+      "selectedSuffix": "valittu",
+      "skip": "Ohita toistaiseksi",
+      "subtitle": "Lisää kohdennettuja lausepaketteja kokoelmaasi. Voit kytkeä ne päälle tai pois päältä milloin tahansa Asetuksista."
     },
     "notOnAppleIOS": "Ei iOS:llä",
     "appleNoVoiceTitle": "Apple ei vielä tarjoa {{lang}}-ääntä",
-    "appleNoVoiceBody": "Lyhyt viesti Applen saavutettavuustiimille auttaa perustelemaan asian. {{lang}} toimii sillä välin natiivisti Androidilla."
+    "appleNoVoiceBody": "Lyhyt viesti Applen saavutettavuustiimille auttaa perustelemaan asian. {{lang}} toimii sillä välin natiivisti Androidilla.",
+    "back": "Takaisin",
+    "continue": "Jatka",
+    "class": {
+      "title": "Kenelle tämä on?",
+      "subtitle": "Räätälöimme Corpánin sinulle. Tiedot pysyvät laitteellasi – emme koskaan lähetä niitä minnekään.",
+      "learner": "Opiskelen kieliä",
+      "learnerDesc": "Lue ja kuuntele opiskelemillasi kielillä.",
+      "enjoyer": "Haluan nauttia sisällöstä",
+      "enjoyerDesc": "Kirjoja, tarinoita ja pelejä omalla kielelläsi.",
+      "polyglot": "Molemmat – haluan kaiken",
+      "polyglotDesc": "Useita kieliä samanaikaisesti ja kaikki muu.",
+      "kid": "Lapselle",
+      "kidDesc": "Kuratoituja kirjoja ja oppimispelejä nuoremmille lukijoille.",
+      "ageTitle": "Kuinka vanha lukija on?",
+      "ageUnder13": "Alle 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Liity Corpanistas-yhteisöön",
+      "subtitle": "Corpán Plus avaa koko kirjaston. Kokeile minkä tahansa kirjan ensimmäistä osaa ilmaiseksi, ikuisesti.",
+      "everything": "Kaikki kirjat, kaikki kielet – avattu.",
+      "private": "Ei mainoksia. Tietosi pysyvät laitteellasi.",
+      "team": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin.",
+      "tryPlus": "Kokeile Corpán Plus",
+      "continueFree": "Jatka ilmaisversiolla"
+    },
+    "calibrate": {
+      "childAgeTitle": "Kuinka vanha lukija on?",
+      "childTeen": "13–17",
+      "childUnder13": "Alle 13",
+      "enjoyComfortable": "Melko hyvin",
+      "enjoyImproving": "Olen yhä opettelemassa lukemaan sitä",
+      "enjoyJustStarting": "Vasta aloittamassa – olen uusi sen lukemisessa",
+      "enjoyNative": "Sujuvasti – se on äidinkieleni",
+      "enjoyTitle": "Kuinka hyvin luet kieltä {{lang}}?",
+      "learnAdvanced": "Olen melko edistynyt",
+      "learnLittle": "Vähän",
+      "learnNever": "En koskaan – täysin aloittelija",
+      "learnTitle": "Oletko opiskellut kieltä {{lang}} aiemmin?"
+    },
+    "confident": {
+      "addBetter": "Avaa täyteläisempi ääni",
+      "andMore": "+{{count}} lisää",
+      "chooseVoices": "Valitse äänet",
+      "noVoiceFor": "Ei vielä ääntä kielelle {{lang}} – lisätään sellainen, jotta Corpán voi lukea ääneen.",
+      "voiceCountMany": "{{count}} ääntä valmiina",
+      "voiceCountOne": "1 ääni valmiina",
+      "yourVoiceFor": "Äänesi kielelle {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Tue Corpánia ja avaa kaikki. Vapaaehtoista, milloin tahansa.",
+      "joinTitle": "Liity Corpanistas-yhteisöön",
+      "start": "Aloita tutkiminen",
+      "subtitle": "Corpánin on luonut pieni avoimen lähdekoodin tiimi. Tule tervehtimään – ja jos pidät siitä, voit tukea meitä.",
+      "title": "Kaikki valmista"
+    },
+    "fork": {
+      "child": {
+        "desc": "Hellävaraisia, leikkisiä kirjoja ja pelejä nuoremmille oppijoille.",
+        "label": "Määritä lapselle"
+      },
+      "enjoy": {
+        "desc": "Kirjoja, tarinoita, pelejä, harjoituksia ja paljon muuta – kaikki omalla kielelläsi.",
+        "label": "Nauti Corpánista kielellä {{lang}}"
+      },
+      "learn": {
+        "desc": "Tarinat, pelit, harjoitukset ja ääni uudella kielellä.",
+        "label": "Opi kieli"
+      },
+      "polyglot": {
+        "desc": "Pinoa useita kieliä ja tutustu kaikkeen.",
+        "label": "Tutustu moniin kieliin"
+      },
+      "subtitle": "Määritämme kaiken puolestasi. Voit muuttaa asetuksia myöhemmin.",
+      "title": "Mikä tuo sinut Corpániin?"
+    },
+    "interests": {
+      "audio": "Kuuntele ääntä",
+      "audioDesc": "Äänikirjat, selostus ja radio.",
+      "games": "Pelaa pelejä",
+      "gamesDesc": "Opi leikkisien haasteiden kautta.",
+      "read": "Lue tarinoita ja kirjoja",
+      "readDesc": "Sukella lukukirjoihin omalla kielelläsi.",
+      "speak": "Harjoittele puhumista",
+      "speakDesc": "Sano lauseita ääneen ja saat palautetta.",
+      "study": "Opiskele ja harjoittele",
+      "studyDesc": "Rakenna sanavarastoa kohdennetulla harjoittelulla.",
+      "subtitle": "Valitse mikä tahansa kiinnostava – ehdotamme vastaavia kokemuksia. Vapaaehtoista.",
+      "title": "Mitä haluat tehdä?",
+      "wild": "Tutustu yllättäviin asioihin",
+      "wildDesc": "Yllättäviä, kokeellisia kokemuksia."
+    },
+    "settingUp": "Määritetään asetuksia…",
+    "ttsIntro": "Corpán lukee ääneen. Napauta ääntä kuullaksesi sen omalla nopeudellasi.",
+    "voiceGuide": {
+      "intro": "Laitteessasi on sisäänrakennettuja täyteläisiä, luonnollisia ääniä – ilmaisia ja paljon oletusääniä parempia. Valmistaja jättää ne vain pois päältä. Kytketään ne päälle; se vie vain muutaman napautuksen:",
+      "macStep1": "Avaa Järjestelmäasetukset.",
+      "macStep2": "Siirry kohtaan Käyttöapu → Puhuttu sisältö.",
+      "macStep3": "Avaa Järjestelmäääni-kohdasta Hallitse ääniä.",
+      "macStep4": "Lataa Premium- tai Enhanced-ääni kielellesi.",
+      "macStep5": "Palaa Corpániin – se ilmestyy tänne automaattisesti.",
+      "step1": "Napauta alla olevaa Avaa asetukset.",
+      "step2": "Siirry kohtaan Käyttöapu → Puhuttu sisältö → Äänet.",
+      "step3": "Napauta kieltäsi.",
+      "step4": "Lataa Premium- tai Enhanced-ääni.",
+      "step5": "Palaa Corpániin – se ilmestyy tänne automaattisesti.",
+      "title": "Avaa laitteesi parhaat äänet"
+    },
+    "voicePreviewAria": "Esikatsele {{name}}",
+    "voicePreviewSelected": "Esikatsele valittua",
+    "voiceRecommended": "Suositeltu",
+    "voiceSelectedCount": "{{count}} / {{total}}"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "Vieraile",
       "title": "encorpora.io",
       "desc": "Pääsivusto, jossa on dokumentaatio ja yhteisö."
+    },
+    "instagram": {
+      "cta": "Seuraa",
+      "desc": "@corpanapp",
+      "title": "Seuraa Instagramissa"
+    },
+    "share": {
+      "title": "Jaa Corpán",
+      "text": "Opi kieliä Corpánin avulla.",
+      "copied": "Linkki kopioitu!"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "Kokeile Corpán-pakettia tai tee omasi.",
     "devLink": "Lue lisää Free2z:ssä",
     "new": "Uusi",
-    "updates": "Päivitykset",
     "offline": "Offline",
     "purchasing": "Ostetaan...",
     "buy": "Osta {{price}}",
@@ -480,8 +610,19 @@
       "openDrawer": "Selaa fraasipaketteja ({{count}})",
       "openDrawerLabel": "Selaa fraasipaketteja",
       "inactiveBadge": "Ei käytössä",
-      "moreActionsLabel": "Lisää toimintoja"
-    }
+      "moreActionsLabel": "Lisää toimintoja",
+      "install": "Asenna"
+    },
+    "unlockWithPlus": "Avaa Corpán Plus -palvelulla",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Sisältyy Plus-tilaukseen",
+    "installFailedTitle": "Asennus epäonnistui",
+    "installStuckDetail": "Ei edistystä vähään aikaan. Tarkista yhteytesi ja yritä uudelleen.",
+    "installStuckTitle": "Lataus pysähtyi",
+    "openPack": "Avaa {{name}}",
+    "recent": "Viimeisimmät",
+    "updateAll": "Päivitä kaikki ({{count}})",
+    "updateAvailable": "Päivitys saatavilla"
   },
   "subscription": {
     "title": "Avaa kaikki",
@@ -538,5 +679,106 @@
     "maybeLater": "Ehkä myöhemmin",
     "empty": "Lisää paketteja on tulossa — tutustu Corpán-iin sillä välin.",
     "offlineEmpty": "Yhdistä internetiin löytääksesi paketteja — tai ohita toistaiseksi."
+  },
+  "paywall": {
+    "title": "Jatka Corpán Plus -palvelun parissa",
+    "thanksTitle": "Olet Corpanista",
+    "thanksBody": "Kiitos tuestasi Corpánille. Kaikki on avattu.",
+    "bookSubhead": "Olet saavuttanut kirjan {{title}} ilmaisen esikatselun lopun.",
+    "subhead": "Avaa kaikki kirjat kaikilla kielillä. Ei mainoksia. Tietosi pysyvät laitteellasi.",
+    "pitch": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin. Corpanistas-jäsenet pitävät sen mainoksettomana ja kehittyvänä.",
+    "maybeLater": "Ehkä myöhemmin",
+    "continue": "Jatka"
+  },
+  "streak": {
+    "title": "{{count}} päivän putki"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Lue mukana selostettuja äänikirjoja – rauhallisesti, sana sanalta korostaen.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Hallitse mandariinikiinan merkit, veto vedolta.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Kuule lause, ohjaa vastaamaan sitä – opi leikkimällä.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Rakenna lauseita pala palalta nopeassa pelissä.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Selaa lauseita kielilläsi – nopeaa, kohdennettua harjoittelua.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sano lauseita ääneen ja saat ääntämispalautetta.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Samaiset äänikirjat mukaansatempaavassa 3D:ssä – sanat virtaavat avaruudessa lukiessasi.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Viritä maailmanlaajuisiin suoriin radiolähetyksiin.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Jatka oppimista",
+    "experiences": "Kokemukset",
+    "forYou": "Sinulle",
+    "get": "Hanki",
+    "installing": "Asennetaan…",
+    "library": "Kirjasto",
+    "like": "Tykkää",
+    "notForMe": "Ei minulle",
+    "open": "Avaa",
+    "openPhrases": "Avaa lauseet",
+    "phraseFlipDesc": "Selaa lauseita kielilläsi",
+    "plusChip": "Corpán Plus – avaa kaikki",
+    "recommended": "Suositeltu",
+    "showAnother": "Näytä toinen",
+    "tryIt": "Kokeile"
+  },
+  "offline": {
+    "cachedSubtitle": "Näytetään viimeisimmät välimuistiin tallennetut tulokset.",
+    "catalogSubtitle": "Yhdistä uudelleen löytääksesi uusia paketteja. Asennetut paketit toimivat edelleen.",
+    "installNeedsInternet": "Yhdistä uudelleen ladataksesi.",
+    "onboardingBanner": "Offline-tila – valinnat asentuvat, kun yhdistät uudelleen.",
+    "packCatalogSubtitle": "Asennetut paketit toimivat edelleen. Yhdistä uudelleen selataksesi lisää.",
+    "packCatalogTitle": "Pakettiluettelo vaatii internet-yhteyden",
+    "phrasePacksOnboardingSubtitle": "Voit valita lausepaketteja myöhemmin kohdasta Asetukset → Paketit, kun yhdistät uudelleen.",
+    "phrasePacksSubtitle": "Asennetut lausepaketit toimivat edelleen. Yhdistä uudelleen selataksesi uusia.",
+    "phrasePacksTitle": "Lausepakettiluettelo vaatii internet-yhteyden",
+    "purchaseNeedsInternet": "Yhdistä uudelleen ostaaksesi.",
+    "restoreSubtitle": "Yhdistä uudelleen palauttaaksesi ostokset.",
+    "subscriptionSubtitle": "Yhdistä uudelleen tilataksesi. Asennetut paketit ja niputetut lauseet toimivat edelleen.",
+    "subscriptionTitle": "Tilaukset vaativat internet-yhteyden",
+    "title": "Ei internet-yhteyttä",
+    "voiceDownloadSubtitle": "Laitteellasi jo olevat äänet toimivat edelleen. Yhdistä uudelleen asentaaksesi lisää.",
+    "voiceDownloadTitle": "Äänen lataaminen vaatii internet-yhteyden"
+  },
+  "quickSettings": {
+    "fullSettings": "Kaikki asetukset",
+    "title": "Pika-asetukset"
+  },
+  "tour": {
+    "maybeLater": "Ehkä myöhemmin",
+    "progress": "{{n}} / {{total}}"
+  },
+  "update": {
+    "availableLine": "Päivitys saatavilla → {{version}}",
+    "close": "Sulje",
+    "description": "Uudempi versio Corpánista on saatavilla sovelluskaupassasi.",
+    "remindLater": "Ehkä myöhemmin",
+    "skipThisVersion": "Ohita tämä versio",
+    "title": "Päivitys saatavilla",
+    "update": "Päivitä",
+    "updateNow": "Päivitä nyt",
+    "versionLine": "Versio {{version}} on valmis asennettavaksi."
   }
 }

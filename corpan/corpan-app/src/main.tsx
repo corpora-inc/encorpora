@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { MotionConfig } from "framer-motion";
 import App from "./App";
 import "./i18n";
 import LanguageSynchronizer from "./components/LanguageSynchronizer";
 import { getVoices, getVoicesCached } from "@/util/tts-voices";
 import { initAnalytics } from "@/util/analytics";
+import { installDevKeepAwake } from "@/util/devKeepAwake";
+
+// DEV-only: hold a screen wake lock so the iPad debug loop survives the idle
+// timer. No-op in production builds.
+if (import.meta.env.DEV) installDevKeepAwake();
 
 // Ad-hoc debug surface — reachable from the Safari Web Inspector console
 // even on builds where `window.__TAURI__` isn't exposed. Examples:
@@ -47,9 +53,15 @@ import { initAnalytics } from "@/util/analytics";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <LanguageSynchronizer>
-      <App />
-    </LanguageSynchronizer>
+    {/* App-wide motion baseline: one tasteful easing/duration is the DEFAULT for
+        every framer-motion animation that doesn't specify its own, and all of
+        them respect the OS "reduce motion" setting. This is the global
+        smoothness lever — so we never ship ad-hoc half-baked tweens. */}
+    <MotionConfig reducedMotion="user" transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}>
+      <LanguageSynchronizer>
+        <App />
+      </LanguageSynchronizer>
+    </MotionConfig>
   </React.StrictMode>
 );
 

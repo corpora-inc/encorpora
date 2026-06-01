@@ -1,6 +1,7 @@
 import type {
   CatalogV2,
   CatalogNarrationEntry,
+  NarrationArtifact,
   PurchaseInfo,
   Character,
   VoiceProfile,
@@ -56,6 +57,21 @@ function parsePurchase(v: unknown): PurchaseInfo {
   }
 }
 
+/** Parse a two-ZIP artifact (preview/full). Returns undefined when absent or
+ *  malformed so the entry simply isn't treated as two-zip. */
+function parseArtifact(v: unknown): NarrationArtifact | undefined {
+  if (!v || typeof v !== "object") return undefined
+  const r = v as Record<string, unknown>
+  const url = toString(r.url)
+  if (!url) return undefined
+  return {
+    url,
+    sha256: toString(r.sha256),
+    sizeMb: toNumber(r.sizeMb) ?? 0,
+    requires: toOptString(r.requires),
+  }
+}
+
 function parseNarration(item: unknown): CatalogNarrationEntry | null {
   if (!item || typeof item !== "object") return null
   const r = item as Record<string, unknown>
@@ -84,6 +100,13 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     minAppVersion: toOptString(r.minAppVersion),
     characterId: toOptString(r.characterId),
     coverImageUrl: toOptString(r.coverImageUrl),
+    // Corpán Plus two-ZIP fields — WITHOUT these, isTwoZipEntry() is always
+    // false and every install falls back to the full legacy `downloadUrl`
+    // (no preview, no paywall). Carry them through.
+    totalSegments: toNumber(r.totalSegments),
+    freeSegments: toNumber(r.freeSegments),
+    preview: parseArtifact(r.preview),
+    full: parseArtifact(r.full),
   }
 }
 

@@ -9,6 +9,30 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Dated periodicals in the catalog (e.g. "AI This Week") now list
+  newest-first. The shared catalog grouping (`@shared/catalog`
+  `groupByBook`) sorts books by `publishedAt` descending when present,
+  falling back to the legacy narration-count/volume/title order for
+  evergreen titles.
+
+## [0.6.7] - 2026-05-30
+### Fixed
+- Corpán Plus preview/premium now actually works. The shared catalog
+  parser (`@shared/catalog` `parseNarration`) was silently dropping the
+  two-ZIP fields (`preview`/`full`/`totalSegments`/`freeSegments`), so
+  every entry looked legacy-only — `isTwoZipEntry()` was always false and
+  every download fell back to the full legacy ZIP with no preview and no
+  end-of-preview paywall. Carry the fields through. (Applies to
+  stargate-reader too.)
+### Changed
+- Narration rows now show the size you'll actually download and tag it
+  "Free preview" for non-subscribers on two-ZIP entries, so a long book's
+  small preview no longer masquerades as the whole thing. (`@shared/catalog`.)
+- End-of-preview paywall is now skinned to match the reader (warm
+  earth/amber accent + background) via a `theme` hint on the
+  `corpan:request-unlock` event. Requires Corpán ≥ 0.16.0; older hosts
+  ignore the hint and show the default paywall.
 
 ## [0.6.6] - 2026-05-19
 ### Changed

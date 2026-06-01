@@ -120,11 +120,15 @@
       "noMatches": "Nimic găsit.",
       "noFiltered": "Nimic aici acum.",
       "stackTotalPhrases": "~{{count}} fraze se potrivesc",
-      "stackTotalNudge": "Adaugă pachete sau extinde nivelurile pentru mai multă varietate."
+      "stackTotalNudge": "Adaugă pachete sau extinde nivelurile pentru mai multă varietate.",
+      "activeCount": "{{active}} din {{total}} active",
+      "baseCorpusSubtitle": "{{n}} fraze"
     },
     "sendAnonUsage": "Trimite date anonime de utilizare",
     "sendAnonUsageHint": "Anonime, valabile doar pe durata sesiunii. Fără conturi, fără ID-uri de dispozitiv, fără stocare IP. Poți dezactiva oricând.",
-    "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate"
+    "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate",
+    "showStreak": "Afișează seria de lectură",
+    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
   },
   "onboarding": {
     "welcome": "Bine ai venit",
@@ -139,7 +143,7 @@
     "welcomeVisit": "Vizitează encorpora.io",
     "linkCopied": "Link copiat. Deschide în browserul tău:",
     "reconfigureStack": "Reconfigurează stiva",
-    "openVoiceSettings": "Deschide setările vocale ale dispozitivului tău",
+    "openVoiceSettings": "Deschide Setări",
     "openTTSSetup": "Deschide setările TTS",
     "welcomeFollowUp": "Mulțumim că te-ai alăturat — ne vedem în comunitate!",
     "learning": "Învățarea limbilor",
@@ -154,8 +158,8 @@
     "languageOrderTipBody": "Limba de la baza listei este limba UI a aplicației. Pentru a schimba limba UI, trage o limbă diferită la bază.",
     "ttsOsTipTitle": "Sfat",
     "ttsOsTipAndroid": "Cele mai bune rezultate: folosește Google text-to-speech. Samsung TTS nu funcționează în Corpán.",
-    "ttsOsTipIOS": "În Setări → Accesibilitate, găsește Conținut Vorbit și descarcă voci. Notă: Apple nu oferă voci pentru fiecare limbă. Dacă actualizarea nu ajută, solicită suport prin aplicația Feedback de la Apple.",
-    "ttsOsTipMac": "În Setări de Sistem → Accesibilitate, găsește Conținut Vorbit și descarcă voci. Notă: Apple nu oferă voci pentru fiecare limbă. Dacă actualizarea nu ajută, solicită suport prin aplicația Feedback de la Apple.",
+    "ttsOsTipIOS": "Dispozitivul tău are voci Premium gratuite încorporate — Apple pur și simplu le lasă dezactivate. Activează-le: Setări → Accesibilitate → Conținut rostit → Voci → limba ta, apoi atinge pictograma de descărcare pentru o voce Premium sau Enhanced. Revino și va apărea aici automat. (Apple nu acoperă încă toate limbile.)",
+    "ttsOsTipMac": "Mac-ul tău are voci Premium gratuite încorporate — Apple pur și simplu le lasă dezactivate. Activează-le: Configurări sistem → Accesibilitate → Conținut rostit → Voce sistem → Gestionează voci, apoi descarcă o voce Premium sau Enhanced. Revino și va apărea aici automat. (Apple nu acoperă încă toate limbile.)",
     "ttsOsTipWindows": "În Setări, adaugă/instalează voci de vorbire, apoi revino aici.",
     "ttsOsTipOther": "În setările dispozitivului tău, adaugă/instalează voci text-la-vorbire, apoi revino aici.",
     "installVoicesAndroid": "Instalează voci",
@@ -171,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Instalează Google Text-to-Speech",
-        "detail": "Motorul vocal Google îți oferă cea mai bună calitate pentru fiecare limbă pe care o suportă Corpán. Este gratuit.",
+        "detail": "Motorul vocal gratuit de la Google deblochează voci de înaltă calitate pentru majoritatea limbilor suportate de Corpán — majoritatea telefoanelor pur și simplu nu vin cu el. Hai să-l adăugăm:",
         "button": "Instalează din Play Store"
       },
       "noEngine": {
@@ -226,11 +230,127 @@
       "emptySub": "Revino curând.",
       "offlineHero": "Ești offline.",
       "offlineSub": "Pachetele au nevoie de internet — încearcă mai târziu din Setări → Pachete.",
-      "offlineBanner": "Offline — selecțiile se instalează la reconectare."
+      "offlineBanner": "Offline — selecțiile se instalează la reconectare.",
+      "noneSelected": "Nimic selectat — Continuă va sări peste",
+      "selectedSuffix": "selectate",
+      "skip": "Sari peste pentru moment",
+      "subtitle": "Adaugă pachete de fraze concentrate la colecția ta. Activează-le sau dezactivează-le oricând în Setări."
     },
     "notOnAppleIOS": "Nu ești pe iOS",
     "appleNoVoiceTitle": "Apple nu oferă încă o voce în {{lang}}",
-    "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android."
+    "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android.",
+    "back": "Înapoi",
+    "continue": "Continuă",
+    "class": {
+      "title": "Pentru cine este?",
+      "subtitle": "Vom adapta Corpán pentru tine. Aceste date rămân pe dispozitivul tău — nu le trimitem nicăieri.",
+      "learner": "Învăț limbi străine",
+      "learnerDesc": "Citește și ascultă în limbile pe care le studiezi.",
+      "enjoyer": "Vreau să mă bucur de conținut",
+      "enjoyerDesc": "Cărți, povești și jocuri în limba ta.",
+      "polyglot": "Ambele — le vreau pe toate",
+      "polyglotDesc": "Mai multe limbi simultan, plus tot restul.",
+      "kid": "Este pentru un copil",
+      "kidDesc": "Cărți și jocuri educative selectate pentru cititorii mai tineri.",
+      "ageTitle": "Câți ani are cititorul?",
+      "ageUnder13": "Sub 13 ani",
+      "ageTeen": "13–17 ani"
+    },
+    "pitch": {
+      "title": "Alătură-te Corpanistas",
+      "subtitle": "Corpán Plus îți deschide întreaga bibliotecă. Încearcă gratuit, pentru totdeauna, prima parte a oricărei cărți.",
+      "everything": "Fiecare carte, fiecare limbă — deblocată.",
+      "private": "Fără reclame. Datele tale rămân pe dispozitiv.",
+      "team": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán.",
+      "tryPlus": "Încearcă Corpán Plus",
+      "continueFree": "Continuă cu versiunea gratuită"
+    },
+    "calibrate": {
+      "childAgeTitle": "Câți ani are cititorul?",
+      "childTeen": "13–17 ani",
+      "childUnder13": "Sub 13 ani",
+      "enjoyComfortable": "Destul de bine",
+      "enjoyImproving": "Încă învăț să o citesc",
+      "enjoyJustStarting": "Abia încep — sunt la început cu cititul",
+      "enjoyNative": "Fluent — este limba mea",
+      "enjoyTitle": "Cât de bine citești în {{lang}}?",
+      "learnAdvanced": "Sunt destul de avansat",
+      "learnLittle": "Puțin",
+      "learnNever": "Niciodată — începător absolut",
+      "learnTitle": "Ai studiat {{lang}} înainte?"
+    },
+    "confident": {
+      "addBetter": "Deblochează o voce mai bogată",
+      "andMore": "+{{count}} mai multe",
+      "chooseVoices": "Alege voci",
+      "noVoiceFor": "Încă nu există o voce pentru {{lang}} — hai să adăugăm una ca Corpán să poată citi cu voce tare.",
+      "voiceCountMany": "{{count}} voci pregătite",
+      "voiceCountOne": "1 voce pregătită",
+      "yourVoiceFor": "Vocea ta pentru {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Susține Corpán și deblochează totul. Opțional, oricând.",
+      "joinTitle": "Alătură-te Corpanistas",
+      "start": "Începe explorarea",
+      "subtitle": "Corpán este creat de o mică echipă open-source. Vino să ne saluți — și dacă îți place, ne poți susține.",
+      "title": "Totul e pregătit"
+    },
+    "fork": {
+      "child": {
+        "desc": "Cărți și jocuri blânde, jucăușe pentru tinerii învățăcei.",
+        "label": "Configurează pentru un copil"
+      },
+      "enjoy": {
+        "desc": "Cărți, povești, jocuri, exerciții și multe altele — totul în limba ta.",
+        "label": "Bucură-te de Corpán în {{lang}}"
+      },
+      "learn": {
+        "desc": "Povești, jocuri, exerciții și audio într-o limbă nouă.",
+        "label": "Învață o limbă"
+      },
+      "polyglot": {
+        "desc": "Adaugă mai multe limbi și explorează totul.",
+        "label": "Explorează multe limbi"
+      },
+      "subtitle": "Vom configura totul pentru tine. Poți schimba mai târziu.",
+      "title": "Ce te aduce la Corpán?"
+    },
+    "interests": {
+      "audio": "Ascultă audio",
+      "audioDesc": "Cărți audio, narațiuni și radio.",
+      "games": "Joacă jocuri",
+      "gamesDesc": "Învață prin provocări jucăușe.",
+      "read": "Citește povești și cărți",
+      "readDesc": "Aprofundează cărți în limba ta.",
+      "speak": "Exersează vorbitul",
+      "speakDesc": "Spune fraze cu voce tare și primește feedback.",
+      "study": "Studiază și exersează",
+      "studyDesc": "Construiește vocabularul cu practică concentrată.",
+      "subtitle": "Alege orice te atrage — îți vom sugera experiențe potrivite. Opțional.",
+      "title": "Ce vrei să faci?",
+      "wild": "Explorează lucruri inedite",
+      "wildDesc": "Experiențe surprinzătoare, experimentale."
+    },
+    "settingUp": "Se configurează…",
+    "ttsIntro": "Corpán citește cu voce tare. Atinge o voce pentru a o auzi la viteza ta.",
+    "voiceGuide": {
+      "intro": "Dispozitivul tău are voci bogate, naturale, încorporate — gratuite și mult mai bune decât cele implicite. Producătorul pur și simplu le lasă dezactivate. Hai să le activăm; durează doar câteva atingeri:",
+      "macStep1": "Deschide Configurări sistem.",
+      "macStep2": "Accesează Accesibilitate → Conținut rostit.",
+      "macStep3": "Sub Voce sistem, deschide Gestionează voci.",
+      "macStep4": "Descarcă o voce Premium sau Enhanced pentru limba ta.",
+      "macStep5": "Revino la Corpán — va apărea aici automat.",
+      "step1": "Atinge Deschide Setări mai jos.",
+      "step2": "Accesează Accesibilitate → Conținut rostit → Voci.",
+      "step3": "Atinge limba ta.",
+      "step4": "Descarcă o voce Premium sau Enhanced.",
+      "step5": "Revino la Corpán — va apărea aici automat.",
+      "title": "Deblochează cele mai bune voci ale dispozitivului tău"
+    },
+    "voicePreviewAria": "Previzualizează {{name}}",
+    "voicePreviewSelected": "Previzualizare selectată",
+    "voiceRecommended": "Recomandat",
+    "voiceSelectedCount": "{{count}} din {{total}}"
   },
   "socials": {
     "youtube": {
@@ -252,6 +372,16 @@
       "cta": "Vizitează",
       "title": "encorpora.io",
       "desc": "Site-ul principal cu documentație și comunitate."
+    },
+    "instagram": {
+      "cta": "Urmărește",
+      "desc": "@corpanapp",
+      "title": "Urmărește pe Instagram"
+    },
+    "share": {
+      "title": "Distribuie Corpán",
+      "text": "Învață limbi cu Corpán.",
+      "copied": "Link copiat!"
     }
   },
   "common": {
@@ -442,7 +572,6 @@
     "devIntro": "Încearcă un pachet Corpán sau creează-ți propriul.",
     "devLink": "Află mai multe pe Free2z",
     "new": "Nou",
-    "updates": "Actualizări",
     "offline": "Offline",
     "purchasing": "Cumpărare...",
     "buy": "Cumpără {{price}}",
@@ -481,8 +610,19 @@
       "openDrawer": "Răsfoiește pachete de fraze ({{count}})",
       "openDrawerLabel": "Răsfoiește pachete de fraze",
       "inactiveBadge": "Inactiv",
-      "moreActionsLabel": "Mai multe acțiuni"
-    }
+      "moreActionsLabel": "Mai multe acțiuni",
+      "install": "Instalează"
+    },
+    "unlockWithPlus": "Deblochează cu Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Inclus cu Plus",
+    "installFailedTitle": "Instalare eșuată",
+    "installStuckDetail": "Fără progres de ceva timp. Verifică-ți conexiunea și încearcă din nou.",
+    "installStuckTitle": "Descărcare blocată",
+    "openPack": "Deschide {{name}}",
+    "recent": "Recente",
+    "updateAll": "Actualizează tot ({{count}})",
+    "updateAvailable": "Actualizare disponibilă"
   },
   "subscription": {
     "title": "Deblochează tot",
@@ -539,5 +679,106 @@
     "maybeLater": "Poate mai târziu",
     "empty": "Mai multe pachete sunt pe drum — explorează Corpán între timp.",
     "offlineEmpty": "Conectează-te la internet pentru a descoperi pachete — sau sari peste asta pentru acum."
+  },
+  "paywall": {
+    "title": "Continuă cu Corpán Plus",
+    "thanksTitle": "Ești un Corpanista",
+    "thanksBody": "Îți mulțumim pentru susținerea Corpán. Totul este deblocat.",
+    "bookSubhead": "Ai ajuns la finalul previzualizării gratuite a cărții {{title}}.",
+    "subhead": "Deblochează fiecare carte, în fiecare limbă. Fără reclame. Datele tale rămân pe dispozitiv.",
+    "pitch": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán. Corpanistas mențin aplicația fără reclame și în creștere.",
+    "maybeLater": "Poate mai târziu",
+    "continue": "Continuă"
+  },
+  "streak": {
+    "title": "Serie de {{count}} zile"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Urmărește cărți audio narate — liniștit, cu evidențiere cuvânt cu cuvânt.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Stăpânește caracterele mandarine, trăsătură cu trăsătură.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Auzi o frază, potrivește-o — învață jucându-te.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Construiește fraze bucată cu bucată într-un joc rapid.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Răsfoiește fraze în limbile tale — practică rapidă, concentrată.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Spune fraze cu voce tare și primește feedback de pronunție.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Aceleași cărți audio în 3D imersiv — cuvintele curg prin spațiu pe măsură ce sunt citite.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Ascultă radio live din întreaga lume.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Continuă învățarea",
+    "experiences": "Experiențe",
+    "forYou": "Pentru tine",
+    "get": "Obține",
+    "installing": "Se instalează…",
+    "library": "Bibliotecă",
+    "like": "Îmi place",
+    "notForMe": "Nu e pentru mine",
+    "open": "Deschide",
+    "openPhrases": "Deschide fraze",
+    "phraseFlipDesc": "Răsfoiește fraze în limbile tale",
+    "plusChip": "Corpán Plus — deblochează totul",
+    "recommended": "Recomandat",
+    "showAnother": "Arată altul",
+    "tryIt": "Încearcă"
+  },
+  "offline": {
+    "cachedSubtitle": "Se afișează ultimele rezultate memorate.",
+    "catalogSubtitle": "Reconectează-te pentru a descoperi pachete noi. Pachetele tale instalate funcționează în continuare.",
+    "installNeedsInternet": "Reconectează-te pentru a descărca.",
+    "onboardingBanner": "Offline — selecțiile se instalează când te reconectezi.",
+    "packCatalogSubtitle": "Pachetele tale instalate funcționează în continuare. Reconectează-te pentru a naviga mai mult.",
+    "packCatalogTitle": "Catalogul de pachete necesită internet",
+    "phrasePacksOnboardingSubtitle": "Poți alege pachete de fraze mai târziu din Setări → Pachete odată ce te reconectezi.",
+    "phrasePacksSubtitle": "Pachetele tale de fraze instalate funcționează în continuare. Reconectează-te pentru a naviga la altele noi.",
+    "phrasePacksTitle": "Catalogul de pachete de fraze necesită internet",
+    "purchaseNeedsInternet": "Reconectează-te pentru a cumpăra.",
+    "restoreSubtitle": "Reconectează-te pentru a restaura achizițiile.",
+    "subscriptionSubtitle": "Reconectează-te pentru a te abona. Pachetele tale instalate și frazele incluse funcționează în continuare.",
+    "subscriptionTitle": "Abonamentele necesită internet",
+    "title": "Fără internet",
+    "voiceDownloadSubtitle": "Vocile deja de pe dispozitivul tău funcționează în continuare. Reconectează-te pentru a instala mai multe.",
+    "voiceDownloadTitle": "Descărcarea vocii necesită internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Setări complete",
+    "title": "Setări rapide"
+  },
+  "tour": {
+    "maybeLater": "Poate mai târziu",
+    "progress": "{{n}} din {{total}}"
+  },
+  "update": {
+    "availableLine": "Actualizare disponibilă → {{version}}",
+    "close": "Închide",
+    "description": "O versiune mai nouă de Corpán este disponibilă în magazinul tău de aplicații.",
+    "remindLater": "Poate mai târziu",
+    "skipThisVersion": "Sari peste această versiune",
+    "title": "Actualizare disponibilă",
+    "update": "Actualizează",
+    "updateNow": "Actualizează acum",
+    "versionLine": "Versiunea {{version}} este gata de instalare."
   }
 }

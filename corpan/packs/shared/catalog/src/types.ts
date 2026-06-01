@@ -6,6 +6,21 @@ export type PurchaseInfo = {
   platformPackId?: string
 }
 
+/**
+ * A downloadable narration artifact (Corpán Plus two-ZIP model).
+ *
+ * `preview` is public (first `freeSegments` segments). `full` is gated: when
+ * `requires` is set, the new runtime must obtain a CloudFront signed URL from
+ * the verify Lambda (proving an active Plus subscription) before downloading.
+ */
+export type NarrationArtifact = {
+  url: string
+  sha256: string
+  sizeMb: number
+  /** Entitlement family required to download, e.g. "corpan.plus". Absent = freely downloadable. */
+  requires?: string
+}
+
 // ── Provider ─────────────────────────────────────────────────────
 /** Where a voice is rendered. "platform" = OS-native TTS (last-resort fallback). */
 export type VoiceProvider =
@@ -78,6 +93,12 @@ export type BookEntry = {
   /** ISO code of the source manuscript language. */
   primaryLanguage: string
   tags?: string[]
+  /**
+   * ISO 8601 date this book/episode was published (e.g. "2026-05-13").
+   * Set for dated periodicals like "AI This Week" so the catalog can sort
+   * newest-first. Absent for evergreen titles (those sort by volume).
+   */
+  publishedAt?: string
 }
 
 /**
@@ -100,6 +121,12 @@ export type CatalogNarrationEntry = {
   sizeMb: number
   series?: string
   volume?: number
+  /**
+   * ISO 8601 publish date (e.g. "2026-05-13"), denormalized from the book so
+   * the grouping/sort can order dated periodicals newest-first without joining
+   * the books table. Absent for evergreen titles.
+   */
+  publishedAt?: string
   tier: "public" | "premium"
   purchase: PurchaseInfo
   /** Minimum Corpan app version required to use this pack */
@@ -110,6 +137,18 @@ export type CatalogNarrationEntry = {
   characterId?: string
   /** Optional cover URL on the row, for clients that don't load the books table. */
   coverImageUrl?: string
+
+  // ── Corpán Plus two-ZIP model (additive, optional) ──
+  // Old runtimes ignore these and use `downloadUrl`. New runtimes read ONLY
+  // these: an entry without `preview` + `full` is invisible to the new Library.
+  /** Total TTS segments in the full narration. */
+  totalSegments?: number
+  /** Segments included in the free preview (min(floor(total/3), 100), or per-book override). */
+  freeSegments?: number
+  /** Public preview artifact — first `freeSegments` segments. Non-subscribers download this. */
+  preview?: NarrationArtifact
+  /** Plus-gated full artifact — every segment. Subscribers download this via signed URL. */
+  full?: NarrationArtifact
 }
 
 /** A game pack in the CDN catalog */
@@ -165,6 +204,8 @@ export type BookGroup = {
   bookTitle: string
   series?: string
   volume?: number
+  /** ISO 8601 publish date, carried from the narration rows when present. */
+  publishedAt?: string
   narrations: CatalogNarrationEntry[]
   languages: string[]
 }

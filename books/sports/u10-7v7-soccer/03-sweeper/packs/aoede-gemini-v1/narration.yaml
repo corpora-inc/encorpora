@@ -1,0 +1,39 @@
+version: 1
+engine: gemini
+voices:
+  id: Aoede
+tts: {}
+retry:
+  max_retries: 2
+  jitter: 0.0
+  schedules:
+  - {}
+mastering:
+  target_lufs: -18.0
+  target_tp: -1.0
+  audio_bitrate: '64000'
+  audio_codec: aac
+  output_ext: .m4a
+filter_chain:
+  highpass:
+    enabled: true
+    frequency: 80
+    width_type: q
+    width: 0.7
+  adeclick:
+    enabled: true
+    window: 55
+    overlap: 75
+    threshold: 1.5
+  afftdn:
+    enabled: true
+    nr: 15
+denoise:
+  enabled: false
+trimming:
+  always_trim: true
+  tail_grace_ms: 50
+  tail_fade_ms: 100
+validation:
+  first_word_weak_threshold: 0.3
+  no_gemini_downgrade_checks: []

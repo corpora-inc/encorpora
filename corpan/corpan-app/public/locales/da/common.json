@@ -119,11 +119,16 @@
       "noMatches": "Ingen resultater.",
       "noFiltered": "Intet her lige nu.",
       "stackTotalPhrases": "~{{count}} sætninger matcher",
-      "stackTotalNudge": "Tilføj pakker eller udvid niveauerne for mere variation."
+      "stackTotalNudge": "Tilføj pakker eller udvid niveauerne for mere variation.",
+      "activeCount": "{{active}} af {{total}} aktive",
+      "baseCorpusSubtitle": "{{n}} sætninger"
     },
     "sendAnonUsage": "Send anonyme brugsdata",
     "sendAnonUsageHint": "Anonymt og kun for denne session. Ingen konti, ingen enheds-id'er, ingen lagring af IP-adresser. Slå det fra når som helst.",
-    "readPrivacyPromise": "Læs vores løfte om privatliv"
+    "readPrivacyPromise": "Læs vores løfte om privatliv",
+    "showStreak": "Vis læsestribe",
+    "showStreakHint": "Et lille dagstal i overskriften. Kun på enheden, ingen påmindelser eller notifikationer.",
+    "primaryLanguage": "Primært (brugerflade) sprog"
   },
   "onboarding": {
     "welcome": "Velkommen",
@@ -138,7 +143,7 @@
     "welcomeVisit": "Besøg encorpora.io",
     "linkCopied": "Linket er kopieret. Åbn det i din browser:",
     "reconfigureStack": "Rekonfigurer stak",
-    "openVoiceSettings": "Åbn enhedens stemmeindstillinger",
+    "openVoiceSettings": "Åbn Indstillinger",
     "openTTSSetup": "Åbn tekst-til-tale-indstillinger",
     "welcomeFollowUp": "Tak fordi du er med – vi ses i fællesskabet!",
     "learning": "Indlær sprog",
@@ -153,8 +158,8 @@
     "languageOrderTipBody": "Sproget nederst på listen er appens brugergrænsefladesprog. For at ændre brugergrænsefladesproget skal du trække et andet sprog helt ned.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Bedste resultat: brug Googles tekst-til-tale. Samsung TTS virker ikke i Corpán.",
-    "ttsOsTipIOS": "Under Indstillinger → Tilgængelighed kan du finde Talt indhold og downloade stemmer. Bemærk: Apple leverer ikke stemmer til alle sprog. Hvis en opdatering ikke hjælper, kan du anmode om support via Apples Feedback-app.",
-    "ttsOsTipMac": "Under Systemindstillinger → Tilgængelighed kan du finde Talt indhold og downloade stemmer. Bemærk: Apple leverer ikke stemmer til alle sprog. Hvis en opdatering ikke hjælper, kan du anmode om support via Apples Feedback-app.",
+    "ttsOsTipIOS": "Din enhed har gratis Premium-stemmer indbygget – Apple lader dem bare være slået fra. Slå dem til: Indstillinger → Tilgængelighed → Oplæst indhold → Stemmer → dit sprog, og tryk derefter på download-ikonet for en Premium- eller Enhanced-stemme. Kom tilbage, og den vises automatisk her. (Apple dækker ikke alle sprog endnu.)",
+    "ttsOsTipMac": "Din Mac har gratis Premium-stemmer indbygget – Apple lader dem bare være slået fra. Slå dem til: Systemindstillinger → Tilgængelighed → Oplæst indhold → Systemstemme → Administrer stemmer, og download derefter en Premium- eller Enhanced-stemme. Kom tilbage, og den vises automatisk her. (Apple dækker ikke alle sprog endnu.)",
     "ttsOsTipWindows": "Under Indstillinger kan du tilføje/installere talestemmer og derefter vende tilbage hertil.",
     "ttsOsTipOther": "Under enhedens indstillinger kan du tilføje/installere tekst-til-tale-stemmer og derefter vende tilbage hertil.",
     "installVoicesAndroid": "Installér stemmer",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Installér Google tekst-til-tale",
-        "detail": "Googles stemmeprogram giver dig den bedste kvalitet på tværs af alle de sprog, Corpán understøtter. Det er gratis.",
+        "detail": "Googles gratis stemmemotor låser op for stemmer af høj kvalitet for de fleste af de sprog, Corpán understøtter – de fleste telefoner leveres bare ikke med den. Lad os tilføje den:",
         "button": "Installér fra Play Butik"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "Kom tilbage snart.",
       "offlineHero": "Du er offline.",
       "offlineSub": "Pakker kræver internet — prøv senere fra Indstillinger → Pakker.",
-      "offlineBanner": "Offline — valgene installeres ved gentilslutning."
+      "offlineBanner": "Offline — valgene installeres ved gentilslutning.",
+      "noneSelected": "Intet valgt – Fortsæt vil springe over",
+      "selectedSuffix": "valgt",
+      "skip": "Spring over for nu",
+      "subtitle": "Tilføj fokuserede sætningspakker til din samling. Slå dem til eller fra når som helst i Indstillinger."
     },
     "notOnAppleIOS": "Ikke på iOS",
     "appleNoVoiceTitle": "Apple tilbyder endnu ikke en {{lang}}-stemme",
-    "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden."
+    "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden.",
+    "back": "Tilbage",
+    "continue": "Fortsæt",
+    "class": {
+      "title": "Hvem er det til?",
+      "subtitle": "Vi tilpasser Corpán til dig. Dette forbliver på din enhed – vi sender det aldrig andre steder hen.",
+      "learner": "Jeg lærer sprog",
+      "learnerDesc": "Læs og lyt på de sprog, du studerer.",
+      "enjoyer": "Jeg vil nyde indholdet",
+      "enjoyerDesc": "Bøger, historier og spil på dit eget sprog.",
+      "polyglot": "Begge dele – jeg vil have det hele",
+      "polyglotDesc": "Flere sprog på én gang, plus alt det andet.",
+      "kid": "Det er til et barn",
+      "kidDesc": "Udvalgte bøger og læringsspil til yngre læsere.",
+      "ageTitle": "Hvor gammel er læseren?",
+      "ageUnder13": "Under 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Bliv en del af Corpanistas",
+      "subtitle": "Corpán Plus åbner hele biblioteket. Prøv den første del af enhver bog gratis, for altid.",
+      "everything": "Hver bog, hvert sprog – låst op.",
+      "private": "Ingen reklamer. Dine data forbliver på din enhed.",
+      "team": "Vi er et lille team og geninvesterer hver en krone i Corpán.",
+      "tryPlus": "Prøv Corpán Plus",
+      "continueFree": "Fortsæt med gratisversionen"
+    },
+    "calibrate": {
+      "childAgeTitle": "Hvor gammel er læseren?",
+      "childTeen": "13–17 år",
+      "childUnder13": "Under 13 år",
+      "enjoyComfortable": "Ret godt",
+      "enjoyImproving": "Jeg lærer stadig at læse det",
+      "enjoyJustStarting": "Lige begyndt – jeg er ny til at læse det",
+      "enjoyNative": "Flydende – det er mit sprog",
+      "enjoyTitle": "Hvor godt læser du {{lang}}?",
+      "learnAdvanced": "Jeg er ret avanceret",
+      "learnLittle": "Lidt",
+      "learnNever": "Aldrig – total nybegynder",
+      "learnTitle": "Har du studeret {{lang}} før?"
+    },
+    "confident": {
+      "addBetter": "Lås op for en fyldigere stemme",
+      "andMore": "+{{count}} mere",
+      "chooseVoices": "Vælg stemmer",
+      "noVoiceFor": "Ingen {{lang}}-stemme endnu – lad os tilføje en, så Corpán kan læse højt.",
+      "voiceCountMany": "{{count}} stemmer klar",
+      "voiceCountOne": "1 stemme klar",
+      "yourVoiceFor": "Din {{lang}}-stemme"
+    },
+    "engage": {
+      "joinDesc": "Støt Corpán og lås op for alt. Valgfrit, når som helst.",
+      "joinTitle": "Join the Corpanistas",
+      "start": "Begynd at udforske",
+      "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",
+      "title": "Du er klar"
+    },
+    "fork": {
+      "child": {
+        "desc": "Blide, legende bøger og spil til yngre elever.",
+        "label": "Indstil det til et barn"
+      },
+      "enjoy": {
+        "desc": "Bøger, historier, spil, øvelser og mere – alt sammen på dit sprog.",
+        "label": "Nyd Corpán på {{lang}}"
+      },
+      "learn": {
+        "desc": "Historier, spil, øvelser og lyd på et nyt sprog.",
+        "label": "Lær et sprog"
+      },
+      "polyglot": {
+        "desc": "Stak flere sprog og udforsk alt.",
+        "label": "Udforsk mange sprog"
+      },
+      "subtitle": "Vi sætter alt op for dig. Du kan ændre det senere.",
+      "title": "Hvad bringer dig til Corpán?"
+    },
+    "interests": {
+      "audio": "Lyt til lyd",
+      "audioDesc": "Lydbøger, oplæsning og radio.",
+      "games": "Spil spil",
+      "gamesDesc": "Lær gennem legende udfordringer.",
+      "read": "Læs historier og bøger",
+      "readDesc": "Dyk ned i læsestof på dit sprog.",
+      "speak": "Øv dig i at tale",
+      "speakDesc": "Sig sætninger højt og få feedback.",
+      "study": "Studer og øv",
+      "studyDesc": "Opbyg ordforråd med fokuseret øvelse.",
+      "subtitle": "Vælg alt, hvad der tiltaler dig – vi foreslår oplevelser, der matcher. Valgfrit.",
+      "title": "Hvad vil du gerne lave?",
+      "wild": "Udforsk vilde ting",
+      "wildDesc": "Overraskende, eksperimenterende oplevelser."
+    },
+    "settingUp": "Opsætter ting…",
+    "ttsIntro": "Corpán læser højt. Tryk på en stemme for at høre den i dit tempo.",
+    "voiceGuide": {
+      "intro": "Din enhed har rige, naturlige stemmer indbygget – gratis og langt bedre end standard. Producenten lader dem bare være slået fra. Lad os slå dem til; det tager kun et par tryk:",
+      "macStep1": "Åbn Systemindstillinger.",
+      "macStep2": "Gå til Tilgængelighed → Oplæst indhold.",
+      "macStep3": "Under Systemstemme skal du åbne Administrer stemmer.",
+      "macStep4": "Download en Premium- eller Enhanced-stemme til dit sprog.",
+      "macStep5": "Kom tilbage til Corpán – den vises automatisk her.",
+      "step1": "Tryk på Åbn Indstillinger nedenfor.",
+      "step2": "Gå til Tilgængelighed → Oplæst indhold → Stemmer.",
+      "step3": "Tryk på dit sprog.",
+      "step4": "Download en Premium- eller Enhanced-stemme.",
+      "step5": "Kom tilbage til Corpán – den vises automatisk her.",
+      "title": "Lås op for din enheds bedste stemmer"
+    },
+    "voicePreviewAria": "Forhåndsvis {{name}}",
+    "voicePreviewSelected": "Valgt forhåndsvisning",
+    "voiceRecommended": "Anbefalet",
+    "voiceSelectedCount": "{{count}} af {{total}}"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "Besøg",
       "title": "encorpora.io",
       "desc": "Hovedsite med dokumentation og fællesskab."
+    },
+    "instagram": {
+      "cta": "Følg",
+      "desc": "@corpanapp",
+      "title": "Følg på Instagram"
+    },
+    "share": {
+      "title": "Del Corpán",
+      "text": "Lær sprog med Corpán.",
+      "copied": "Link kopieret!"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "Prøv en Corpán-pakke, eller lav din egen.",
     "devLink": "Læs mere på Free2z",
     "new": "Ny",
-    "updates": "Opdateringer",
     "offline": "Offline",
     "purchasing": "Køber...",
     "buy": "Køb {{price}}",
@@ -480,8 +610,19 @@
       "openDrawer": "Gennemse frasepakker ({{count}})",
       "openDrawerLabel": "Gennemse frasepakker",
       "inactiveBadge": "Inaktiv",
-      "moreActionsLabel": "Flere handlinger"
-    }
+      "moreActionsLabel": "Flere handlinger",
+      "install": "Installer"
+    },
+    "unlockWithPlus": "Lås op med Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Inkluderet med Plus",
+    "installFailedTitle": "Installation mislykkedes",
+    "installStuckDetail": "Ingen fremskridt i et stykke tid. Tjek din forbindelse og prøv igen.",
+    "installStuckTitle": "Download stoppet",
+    "openPack": "Åbn {{name}}",
+    "recent": "Seneste",
+    "updateAll": "Opdater alle ({{count}})",
+    "updateAvailable": "Opdatering tilgængelig"
   },
   "subscription": {
     "title": "Lås alt op",
@@ -538,5 +679,106 @@
     "maybeLater": "Måske senere",
     "empty": "Flere pakker er på vej — udforsk Corpán i mellemtiden.",
     "offlineEmpty": "Opret forbindelse til internettet for at opdage pakker — eller spring over for nu."
+  },
+  "paywall": {
+    "title": "Fortsæt med Corpán Plus",
+    "thanksTitle": "Du er en Corpanista",
+    "thanksBody": "Tak for din støtte til Corpán. Alt er låst op.",
+    "bookSubhead": "Du har nået slutningen af den gratis forhåndsvisning af {{title}}.",
+    "subhead": "Lås op for alle bøger på alle sprog. Ingen reklamer. Dine data forbliver på din enhed.",
+    "pitch": "Vi er et lille team og geninvesterer hver en krone i Corpán. Corpanistas holder det reklamefrit og i vækst.",
+    "maybeLater": "Måske senere",
+    "continue": "Fortsæt"
+  },
+  "streak": {
+    "title": "{{count}} dages stribe"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Læs med til indtalte lydbøger – roligt, med ord-for-ord fremhævelse.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Mestrer mandarin-tegn, strøg for strøg.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Hør en sætning, styr for at matche den – lær ved at spille.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Byg sætninger stykke for stykke i et hurtigt spil.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Gennemse sætninger på dine sprog – hurtig, fokuseret øvelse.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sig sætninger højt og få feedback på udtalen.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "De samme lydbøger i fordybende 3D – ord strømmer gennem rummet, mens de læses.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Lyt til live radio fra hele verden.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Fortsæt læringen",
+    "experiences": "Oplevelser",
+    "forYou": "Til dig",
+    "get": "Hent",
+    "installing": "Installerer…",
+    "library": "Bibliotek",
+    "like": "Synes godt om",
+    "notForMe": "Ikke for mig",
+    "open": "Åbn",
+    "openPhrases": "Åbn sætninger",
+    "phraseFlipDesc": "Gennemse sætninger på dine sprog",
+    "plusChip": "Corpán Plus — lås op for alt",
+    "recommended": "Anbefalet",
+    "showAnother": "Vis mig en anden",
+    "tryIt": "Prøv det"
+  },
+  "offline": {
+    "cachedSubtitle": "Viser dine senest cachelagrede resultater.",
+    "catalogSubtitle": "Opret forbindelse igen for at opdage nye pakker. Dine installerede pakker fungerer stadig.",
+    "installNeedsInternet": "Opret forbindelse igen for at downloade.",
+    "onboardingBanner": "Offline — valg installeres, når du opretter forbindelse igen.",
+    "packCatalogSubtitle": "Dine installerede pakker fungerer stadig. Opret forbindelse igen for at gennemse flere.",
+    "packCatalogTitle": "Pakkekatalog kræver internet",
+    "phrasePacksOnboardingSubtitle": "Du kan vælge sætningspakker senere fra Indstillinger → Pakker, når du opretter forbindelse igen.",
+    "phrasePacksSubtitle": "Dine installerede sætningspakker fungerer stadig. Opret forbindelse igen for at gennemse nye.",
+    "phrasePacksTitle": "Sætningspakkekatalog kræver internet",
+    "purchaseNeedsInternet": "Opret forbindelse igen for at købe.",
+    "restoreSubtitle": "Opret forbindelse igen for at gendanne køb.",
+    "subscriptionSubtitle": "Opret forbindelse igen for at abonnere. Dine installerede pakker og medfølgende sætninger fungerer stadig.",
+    "subscriptionTitle": "Abonnementer kræver internet",
+    "title": "Ingen internetforbindelse",
+    "voiceDownloadSubtitle": "Stemmerne, der allerede er på din enhed, fungerer stadig. Opret forbindelse igen for at installere flere.",
+    "voiceDownloadTitle": "Stemmedownload kræver internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Fuldstændige indstillinger",
+    "title": "Hurtige indstillinger"
+  },
+  "tour": {
+    "maybeLater": "Måske senere",
+    "progress": "{{n}} af {{total}}"
+  },
+  "update": {
+    "availableLine": "Opdatering tilgængelig → {{version}}",
+    "close": "Luk",
+    "description": "En nyere version af Corpán er tilgængelig i din app-butik.",
+    "remindLater": "Måske senere",
+    "skipThisVersion": "Spring denne version over",
+    "title": "Opdatering tilgængelig",
+    "update": "Opdater",
+    "updateNow": "Opdater nu",
+    "versionLine": "Version {{version}} er klar til installation."
   }
 }

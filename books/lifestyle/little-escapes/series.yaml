@@ -44,7 +44,7 @@ series:
 
   editorial_rules:
     - Mix first-person enthusiast and second-person immersive voice within and across chapters.
-    - No place names. No country, climate, or culture-specific cues that won't carry into 23 languages.
+    - No place names. No country, climate, or culture-specific cues that won't carry into every supported language.
     - No numbers as digits in any segment — always spelled out (Chatterbox cannot read Arabic numerals).
     - No acronyms in segment text — always spelled out in full prose.
     - No em-dashes mid-sentence; prefer commas or two short sentences.

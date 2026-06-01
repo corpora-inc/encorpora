@@ -3,8 +3,13 @@ import { getVersion } from "@tauri-apps/api/app";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { GithubIcon, Globe, Mail, Info } from "lucide-react";
+import { GithubIcon, Globe, Mail, Info, Download } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useLatestVersion } from "@/hooks/useLatestVersion";
+import {
+  selectIsUpdateAvailable,
+  useUpdatePromptStore,
+} from "@/store/updatePrompt";
 
 const WEBSITE_URL = "https://encorpora.io";
 const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
@@ -13,6 +18,11 @@ const SUPPORT_EMAIL = "team@encorpora.io";
 const About = () => {
   const [appVersion, setAppVersion] = useState<string>("");
   const { t } = useTranslation();
+
+  useLatestVersion();
+  const updateAvailable = useUpdatePromptStore(selectIsUpdateAvailable);
+  const latestVersion = useUpdatePromptStore((s) => s.latestVersion);
+  const latestStoreUrl = useUpdatePromptStore((s) => s.latestStoreUrl);
 
   useEffect(() => {
     (async () => {
@@ -29,14 +39,35 @@ const About = () => {
   return (
     <div className="flex flex-col gap-4">
       {/* Version Section */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Info className="h-5 w-5 text-muted-foreground" />
-          <h3 className="text-base font-medium">{t("footer.appVersion")}</h3>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Info className="h-5 w-5 text-muted-foreground" />
+            <h3 className="text-base font-medium">{t("footer.appVersion")}</h3>
+          </div>
+          <Badge variant="outline" className="px-3 py-1 text-sm">
+            {appVersion || t("common.loading")}
+          </Badge>
         </div>
-        <Badge variant="outline" className="px-3 py-1 text-sm">
-          {appVersion || t("common.loading")}
-        </Badge>
+
+        {updateAvailable && latestVersion && (
+          <div className="flex items-center justify-between rounded-lg border border-emerald-500/30 bg-emerald-500/5 px-3 py-2">
+            <span className="text-sm text-emerald-700 dark:text-emerald-300">
+              {t("update.availableLine", { version: latestVersion })}
+            </span>
+            {latestStoreUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="gap-1.5 cursor-pointer border-emerald-500/40 text-emerald-700 hover:bg-emerald-500/10 dark:text-emerald-300"
+                onClick={() => openUrl(latestStoreUrl)}
+              >
+                <Download className="h-4 w-4" />
+                {t("update.update")}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Website Section */}

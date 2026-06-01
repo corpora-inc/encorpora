@@ -19,13 +19,9 @@ import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
-import {
-    getPlatformBottomPadding,
-    getPlatformTopPaddingButtons,
-} from "@/util/browser";
+import { getPlatformBottomPadding } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
-import { DiscoverPacksPanel } from "./DiscoverPacksPanel";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -94,34 +90,29 @@ function MetaChips({ entry }: { entry: EntryOut }) {
     const packLabel = pack
         ? (localizedTopic || localizedName || entry.source)
         : undefined;
+    // Small, quiet, centered pill row — designed to sit TUCKED UNDER the nav
+    // controls (not pinned to the top of the screen). Subtle borders + muted
+    // fills + tiny type so it reads as a calm caption, never chrome clutter.
     return (
-        <div
-            data-meta-chips
-            className="fixed top-7 left-5 z-50 pointer-events-none"
-            style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
-        >
-            <div className="flex flex-wrap gap-1 items-center justify-center text-muted-foreground text-xs mb-1">
-                <span className="px-2 py-0.5 rounded-md border border-border bg-muted text-xs">
-                    {entry.level.toUpperCase()}
+        <div className="flex max-w-[260px] flex-wrap items-center justify-center gap-1">
+            <span className="rounded-full border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[10px] font-medium leading-none text-muted-foreground/80">
+                {entry.level.toUpperCase()}
+            </span>
+            {entry.domains.map((d) => (
+                <span key={d} className="rounded-full border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[10px] leading-none text-muted-foreground/80">
+                    {t(`categories.${d}` as any, { defaultValue: d })}
                 </span>
-                {entry.domains.map((d) => (
-                    <span key={d} className="px-2 py-0.5 rounded-md border border-border bg-muted text-xs">
-                        {t(`categories.${d}` as any, { defaultValue: d })}
-                    </span>
-                ))}
-                {packLabel && (
-                    <span
-                        // Pack chips use the app's accent purple uniformly so
-                        // every-tap-different colors don't strobe the chrome.
-                        // The pack's own `accent_color` is reserved for the
-                        // pack picker / catalog UI where it gets to breathe.
-                        className="px-2 py-0.5 rounded-md border border-purple-400/60 bg-purple-500/[0.08] text-purple-500 text-xs"
-                        title={localizedName || pack?.name}
-                    >
-                        {packLabel}
-                    </span>
-                )}
-            </div>
+            ))}
+            {packLabel && (
+                <span
+                    // Pack chips use the app's accent purple uniformly so
+                    // every-tap-different colors don't strobe the chrome.
+                    className="rounded-full border border-purple-400/40 bg-purple-500/[0.06] px-1.5 py-0.5 text-[10px] leading-none text-purple-500/90"
+                    title={localizedName || pack?.name}
+                >
+                    {packLabel}
+                </span>
+            )}
         </div>
     );
 }
@@ -247,7 +238,6 @@ export function MainExperience() {
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
-    const hasSeenPacksDiscover = useSettingsStore((s) => s.hasSeenPacksDiscover);
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
 
@@ -458,30 +448,33 @@ export function MainExperience() {
         const scroll = scrollRef.current;
         const stack = stackRef.current;
         if (!scroll || !stack) return;
-        const CLEARANCE = 32;
 
         const recompute = () => {
             const scrollRect = scroll.getBoundingClientRect();
             const scrollH = scroll.clientHeight;
             const stackH = stack.scrollHeight;
 
-            const chipsEl = document.querySelector("[data-meta-chips]") as HTMLElement | null;
-            const F = chipsEl
-                ? Math.max(0, chipsEl.getBoundingClientRect().bottom - scrollRect.top)
-                : 0;
+            // DEAD-CENTER the phrase stack on the device screen (consistent
+            // feel across phone + tablet). The bottom controls float over the
+            // lower edge; for the short 1–2 phrase stack this reads as true
+            // optical center. Guards: keep the stack ≥24px clear of the controls
+            // box when it's tall, and pin near the top (~20% down) when it's too
+            // tall to center at all.
+            const navTop = navRef.current
+                ? navRef.current.getBoundingClientRect().top - scrollRect.top
+                : scrollH - navHeight;
+            // Optical center reads a touch ABOVE true center, so nudge the
+            // stack up a hair (gently scaled to screen height, capped small).
+            const opticalBias = Math.min(32, Math.round(scrollH * 0.025));
+            const deadCenterTop = (scrollH - stackH) / 2 - opticalBias;
+            const clearControlsTop = navTop - stackH - 24;
+            const centeredTop = Math.min(deadCenterTop, clearControlsTop);
+            const anchorPx = Math.min(220, Math.round(scrollH * 0.2));
 
-            const anchorPx = Math.max(
-                F + CLEARANCE + 20,
-                Math.min(220, Math.round(scrollH * 0.20))
-            );
-
-            const centeredTop = (F + scrollH - navHeight - stackH) / 2;
-
-            if (centeredTop >= anchorPx) {
-                setLayout({ paddingTop: F + CLEARANCE, justify: "center" });
-            } else {
-                setLayout({ paddingTop: anchorPx, justify: "flex-start" });
-            }
+            setLayout({
+                paddingTop: Math.max(anchorPx, centeredTop),
+                justify: "flex-start",
+            });
         };
 
         recompute();
@@ -563,9 +556,6 @@ export function MainExperience() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
-            {!hasSeenPacksDiscover && <DiscoverPacksPanel />}
-            {currEntry ? <MetaChips entry={currEntry} /> : null}
-
             <div
                 className="flex-1 w-full overflow-y-auto min-h-0 no-scrollbar"
                 ref={scrollRef}
@@ -622,11 +612,17 @@ export function MainExperience() {
                 style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 3 }}
             >
                 <div
-                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-background/95 px-3 py-3 border border-border items-center min-w-[270px]"
+                    className="flex flex-col gap-2 md:gap-2.5 pointer-events-auto rounded-md shadow-2xl bg-background/95 px-3 py-3 border border-border items-center min-w-[270px]"
                 // ...
                 // style={{ marginBottom: "39px" }}
 
                 >
+                    {/* Counter ABOVE the controls and pills BELOW them, so the
+                        nav card stays balanced vertically around the button row
+                        (count + pills on opposite sides of the random button). */}
+                    <span className="text-xs text-muted-foreground">
+                        {Math.max(0, index + 1)}/{ids.length}
+                    </span>
                     <div className="flex justify-center items-center gap-8">
                         <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence" disabled={index <= 0}>
                             <ChevronLeftIcon />
@@ -638,9 +634,9 @@ export function MainExperience() {
                             <ChevronRightIcon />
                         </Button>
                     </div>
-                    <span className="text-xs text-muted-foreground mt-1">
-                        {Math.max(0, index + 1)}/{ids.length}
-                    </span>
+                    {/* Level / category / pack pills — tucked under the controls,
+                        small and centered, instead of pinned to the top. */}
+                    {currEntry ? <MetaChips entry={currEntry} /> : null}
                 </div>
             </div>
         </div>

@@ -1,0 +1,24 @@
+{
+  "code": "fr",
+  "displayName": {
+    "en": "French",
+    "es": "Franc\u00e9s",
+    "fr": "Fran\u00e7ais",
+    "de": "Franz\u00f6sisch",
+    "zh": "\u6cd5\u8bed",
+    "ja": "\u30d5\u30e9\u30f3\u30b9\u8a9e"
+  },
+  "voiceLanguageCode": "fr-FR",
+  "contentVersion": "0.2.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "sources/core/data/fr.sqlite3",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "sources/core/retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

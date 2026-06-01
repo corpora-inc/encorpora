@@ -134,6 +134,14 @@ export type TextSizeType = (typeof ALL_TEXT_SIZES)[number];
 
 export type Theme = "system" | "light" | "dark";
 
+// ── User profile (onboarding survey) ──
+/** Who the app is for — drives the landing experience + Plus pitch framing. */
+export type UserClass = "learner" | "enjoyer" | "polyglot" | "kid_native";
+/** Coarse age band (privacy-friendly; never date of birth). */
+export type AgeBand = "under_13" | "teen" | "adult" | "senior";
+/** Study cadence, derived from how many languages the user wants. */
+export type GoalIntensity = "casual" | "daily" | "intensive";
+
 export type StackId = string;
 
 export type VoiceMode = "cycle" | "random";
@@ -217,6 +225,16 @@ type MultiStackState = {
     /** Persisted: has the user seen the post-onboarding pack-discover panel? */
     hasSeenPacksDiscover: boolean;
 
+    // ── User profile (persisted) — collected in onboarding, drives the
+    // landing experience + Plus pitch framing. On-device only; never sent
+    // to a server.
+    userClass: UserClass | null;
+    ageBand: AgeBand | null;
+    goalIntensity: GoalIntensity | null;
+    /** Interest tags ("read", "audio", "games", "speak", "study", "wild")
+     *  from onboarding's "What do you want to do?" — drives experience ranking. */
+    interests: string[];
+
     // Updaters (write canonical + mirrors)
     setLanguages: (codes: string[]) => void;
     setDomains: (domains: string[]) => void;
@@ -252,6 +270,16 @@ type MultiStackState = {
     resetOnboarding: () => void;
     setOnboardingStep: (n: number) => void;
     setHasSeenPacksDiscover: (b: boolean) => void;
+
+    /** Merge any subset of the user profile collected during onboarding. */
+    setUserProfile: (profile: {
+        userClass?: UserClass;
+        ageBand?: AgeBand;
+        goalIntensity?: GoalIntensity;
+    }) => void;
+
+    /** Set the onboarding interest tags (replaces the whole set). */
+    setInterests: (interests: string[]) => void;
 
     /** Android-only: set or clear the preferred TTS engine package. */
     setPreferredEngine: (pkg: string | null) => void;
@@ -491,6 +519,12 @@ export const useSettingsStore = create<MultiStackState>()(
                 // it set true so the panel doesn't surprise them post-update.
                 hasSeenPacksDiscover: pre?.hasSeenPacksDiscover ?? !!imported,
 
+                // User profile — null until the onboarding survey fills them.
+                userClass: null,
+                ageBand: null,
+                goalIntensity: null,
+                interests: [],
+
                 // Updaters
                 setLanguages: (codes) => {
                     const oldPrimary = get().languages[0] || "";
@@ -612,6 +646,13 @@ export const useSettingsStore = create<MultiStackState>()(
                 resetOnboarding: () => set({ onboarded: false, hasSeenPacksDiscover: false }),
                 setOnboardingStep: (n) => set({ onboardingStep: n }),
                 setHasSeenPacksDiscover: (b) => set({ hasSeenPacksDiscover: b }),
+                setUserProfile: (profile) =>
+                    set((s) => ({
+                        userClass: profile.userClass ?? s.userClass,
+                        ageBand: profile.ageBand ?? s.ageBand,
+                        goalIntensity: profile.goalIntensity ?? s.goalIntensity,
+                    })),
+                setInterests: (interests) => set({ interests: [...new Set(interests)] }),
                 setPreferredEngine: (pkg) => set({ preferredEngine: pkg && pkg.length ? pkg : null }),
 
                 // Stacks mgmt
@@ -702,6 +743,10 @@ export const useSettingsStore = create<MultiStackState>()(
                 onboarded: state.onboarded,
                 onboardingStep: state.onboardingStep,
                 hasSeenPacksDiscover: state.hasSeenPacksDiscover,
+                userClass: state.userClass,
+                ageBand: state.ageBand,
+                goalIntensity: state.goalIntensity,
+                interests: state.interests,
                 theme: state.theme,
                 preferredEngine: state.preferredEngine,
             }),

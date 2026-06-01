@@ -152,6 +152,83 @@ export function trackPaidUnlockViewed(surface: string, packId?: string): void {
   }
 }
 
+// ── Corpán Plus paywall funnel ──
+export function trackPaywallShown(
+  surface: string,
+  bookId?: string,
+  language?: string,
+): void {
+  try {
+    analytics.track("app_paywall_shown", {
+      surface,
+      ...(bookId ? { book_id: bookId } : {}),
+      ...(language ? { language } : {}),
+    })
+  } catch {
+    /* unreachable */
+  }
+}
+
+export function trackPaywallDismissed(surface: string, bookId?: string): void {
+  try {
+    analytics.track("app_paywall_dismissed", {
+      surface,
+      ...(bookId ? { book_id: bookId } : {}),
+    })
+  } catch {
+    /* unreachable */
+  }
+}
+
+export function trackPaywallConverted(
+  plan: "monthly" | "annual",
+  surface: string,
+): void {
+  try {
+    analytics.track("app_paywall_converted", { plan, surface })
+  } catch {
+    /* unreachable */
+  }
+}
+
+/* ── Recommendation / ratings (on-device, no identifiers) ── */
+
+/** An experience was surfaced to the user. `surface`: "tour" | "home" | "cycle". */
+export function trackPackRecommended(surface: string, packId: string, position: number): void {
+  try {
+    analytics.track("app_pack_recommended", { surface, pack_id: packId, position })
+  } catch {
+    /* unreachable */
+  }
+}
+
+/** The user liked / kept an experience (thumbs-up, or chose "Try it"). */
+export function trackPackKept(packId: string, surface: string): void {
+  try {
+    analytics.track("app_pack_kept", { pack_id: packId, surface })
+  } catch {
+    /* unreachable */
+  }
+}
+
+/** The user dismissed / skipped an experience ("Maybe later", thumbs-down). */
+export function trackPackDiscarded(packId: string, surface: string): void {
+  try {
+    analytics.track("app_pack_discarded", { pack_id: packId, surface })
+  } catch {
+    /* unreachable */
+  }
+}
+
+/** The recommendation cycle advanced (e.g. "Show me another"). */
+export function trackCycleAdvanced(fromId: string | null, toId: string): void {
+  try {
+    analytics.track("app_cycle_advanced", { from_id: fromId ?? "", to_id: toId })
+  } catch {
+    /* unreachable */
+  }
+}
+
 /** Hot-path increment, called from the TTS chokepoint. O(1) integer add. */
 export function incrementSegmentCounter(language?: string): void {
   try {

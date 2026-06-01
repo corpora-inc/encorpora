@@ -6,6 +6,60 @@ export type StackConfig = {
   rate: number
   textSize: string
   showRomanization: boolean
+  /** Enabled phrase-pack ids for the active stack. The sampler already keys
+   *  on these; exposed so an experience can render "N packs / base off". */
+  phrasePackIds: string[]
+  /** Whether the bundled base corpus is sampled (vs. only phrase packs). */
+  baseCorpusEnabled: boolean
+  /** Whether scroll-driven prev/next navigation is enabled. */
+  scrollNavigationEnabled: boolean
+}
+
+/** Partial patch an experience may apply to the active stack via
+ *  {@link HostApi.setStackConfig}. Whitelisted axes only — an experience can
+ *  never reach arbitrary host state. All JS-side (no Rust/wire boundary). */
+export type StackConfigPatch = Partial<{
+  levels: string[]
+  rate: number
+  domains: string[]
+  languages: string[]
+  textSize: string
+  showRomanization: boolean
+  scrollNavigationEnabled: boolean
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+}>
+
+/** A (entryId, source) pair the sampler uses for anti-repetition. */
+export type HostHistoryRef = { entryId: number; source: string }
+
+/** Per-stack navigation history surface for the phrase experience. Hides the
+ *  per-stack bookkeeping; all methods self-scope to the active stack. */
+export type HostHistoryApi = {
+  getState: () => { ids: number[]; sources: string[]; index: number }
+  push: (entryId: number, source?: string) => void
+  setIndex: (index: number) => void
+  replaceCurrent: (entryId: number, source?: string) => void
+  getRecentTuples: (n: number) => HostHistoryRef[]
+  /** Fires on active-stack history OR activeStackId changes. */
+  subscribe: (listener: () => void) => () => void
+}
+
+/** Minimal installed-phrase-pack record for rendering source chips. */
+export type HostInstalledPhrasePack = {
+  id: string
+  name: string
+  nameLocalized?: Record<string, string>
+  topic?: string
+  topicLocalized?: Record<string, string>
+  accentColor?: string
+}
+
+export type HostPhrasePacksApi = {
+  getInstalled: () => Record<string, HostInstalledPhrasePack>
+  /** Enable/disable a pack for the active stack (sugar over setStackConfig). */
+  setEnabled: (id: string, on: boolean) => void
+  subscribe: (listener: () => void) => () => void
 }
 
 export type TranslationOut = {
@@ -136,6 +190,85 @@ export type SttTranscriptionResult = {
   words: SttWordTiming[]
 }
 
+// ============================================================
+// On-device LLM (tauri-plugin-corpan-llm) — consumed by tutor packs
+// ============================================================
+
+export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: string }
+
+export type LlmChatOptions = {
+  temperature?: number
+  topP?: number
+  repeatPenalty?: number
+  maxTokens?: number
+  stop?: string[]
+}
+
+export type LlmStatus = {
+  loaded: boolean
+  modelId?: string | null
+  backend?: string | null
+  availableMemoryMb?: number | null
+}
+
+/** Callbacks for a streaming generation. */
+export type LlmChatHandlers = {
+  onToken: (token: string) => void
+  onDone: (full: string, stats?: { totalTokens: number; elapsedMs: number }) => void
+  onError: (error: string, code?: string) => void
+}
+
+/** Handle to an in-flight generation. */
+export type LlmChatHandle = {
+  sessionId: string
+  /** Request cancellation; the stream ends via onDone/onError shortly after. */
+  cancel: () => Promise<void>
+}
+
+/** Args to download+install a base model pack (a GGUF content-pack ZIP). */
+export type LlmModelInstall = {
+  /** Pack id, e.g. "llm-base-qwen3-4b-v1". Becomes the on-disk dir name. */
+  packId: string
+  /** Full ZIP URL (CDN). */
+  url: string
+  /** Optional sha256 of the ZIP; verified when present. */
+  sha256?: string
+}
+
+/** Progress during a model install. Mirrors the host `pack-install-progress`
+ *  event: `downloading` carries byte counts; other stages carry a message. */
+export type LlmInstallProgress = {
+  stage: "downloading" | "verifying" | "extracting" | "finalizing" | "error" | string
+  /** Bytes downloaded so far (downloading stage), else 0. */
+  progress: number
+  /** Total bytes (downloading stage, when known), else 0. */
+  total: number
+  message: string
+}
+
+/**
+ * On-device LLM runtime bridge (Metal on Apple / CPU elsewhere). Optional on the
+ * host so packs feature-detect; present whenever `tauri-plugin-corpan-llm` is
+ * registered. Streaming is callback-based (the host owns the Tauri event
+ * listeners and tears them down on done/error/cancel) so packs never touch
+ * `window.__TAURI__`.
+ */
+export type LlmApi = {
+  status: () => Promise<LlmStatus>
+  /** Whether a model pack's files are present on disk (does not load it). */
+  isInstalled: (packId: string) => Promise<boolean>
+  /** Download + extract a base model pack ZIP to disk, with progress. */
+  install: (args: LlmModelInstall, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
+  /** Load a base model pack (e.g. "llm-base-qwen3-4b-v1"). Multi-second cold load. */
+  load: (args: { modelPackId: string; gpuLayers?: number; contextSize?: number }) => Promise<void>
+  unload: () => Promise<void>
+  /** Begin a streaming chat. Resolves once the session is registered + listeners armed. */
+  chat: (
+    args: { messages: LlmChatMessage[]; options?: LlmChatOptions },
+    handlers: LlmChatHandlers,
+  ) => Promise<LlmChatHandle>
+}
+
 export type SttApi = {
   isAvailable: () => Promise<boolean>
   getStatus: () => Promise<SttStatus>
@@ -240,9 +373,22 @@ export type HostApi = {
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
   speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
+  /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
+  copyText?: (text: string) => Promise<void>
   dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
+  /** Apply a partial config patch to the active stack (whitelisted axes). */
+  setStackConfig?: (patch: StackConfigPatch) => void
+  /** Open the host's compact Quick Settings sheet (speed / languages / levels /
+   *  active phrase packs) over the running pack. Feature-detect on older hosts. */
+  openQuickSettings?: () => void
+  /** Per-stack navigation history (for the phrase experience). */
+  history?: HostHistoryApi
+  /** Feed the host's rating-prompt counter (host owns the actual prompt). */
+  notifyUtterance?: () => void
+  /** Installed phrase-pack registry (for source chips + enable/disable). */
+  phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   /**
@@ -262,7 +408,37 @@ export type HostApi = {
     languageCodes?: string[]
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  /** Download + extract a module ZIP into a subpath of this pack's on-disk dir
+   *  (e.g. a tutor pack's per-language data). Writes the pack manifest if absent
+   *  so `queryPackDb` can resolve the pack's `databases` map. */
+  installModuleZip?: (
+    args: { packId: string; subPath: string; url: string; sha256?: string; packManifest?: string },
+    onProgress?: (p: LlmInstallProgress) => void,
+  ) => Promise<void>
+  /** Whether `corpan-packs/<packId>/<relPath>` exists on disk and is non-empty. */
+  packFileExists?: (packId: string, relPath: string) => Promise<boolean>
+  /** Discover installed content packs of a given `packType` (e.g.
+   *  "tutomaton-rag-source"), surfacing source-descriptor fields from each pack's
+   *  manifest. Tutomaton's RAG SourceRegistry uses this to pick up installed
+   *  source packs at runtime. Native discovery is pending — ships as a `[]` stub,
+   *  so packs run with built-in sources only until the native command lands. */
+  discoverPacksByType?: (packType: string) => Promise<
+    Array<{
+      id: string
+      packId: string
+      name?: Record<string, string>
+      tutomatonLanguage: string | string[]
+      authoritative: boolean
+      priority?: number
+      categories?: string[]
+      schemaVersion?: number
+      requiredHostApis?: string[]
+      dbName?: string | null
+    }>
+  >
   stt?: SttApi
+  /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
+  llm?: LlmApi
   isMock?: boolean
 }
 

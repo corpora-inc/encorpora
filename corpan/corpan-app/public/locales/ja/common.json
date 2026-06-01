@@ -119,11 +119,16 @@
       "noMatches": "該当なし。",
       "noFiltered": "今ここには何もありません。",
       "stackTotalPhrases": "~{{count}} 件のフレーズが一致",
-      "stackTotalNudge": "バリエーションのためにパックを追加するか、レベルを広げましょう。"
+      "stackTotalNudge": "バリエーションのためにパックを追加するか、レベルを広げましょう。",
+      "activeCount": "{{total}}個中{{active}}個が有効",
+      "baseCorpusSubtitle": "{{n}}フレーズ"
     },
     "sendAnonUsage": "匿名の利用データを送信",
     "sendAnonUsageHint": "匿名で、セッション単位のデータです。アカウント不要、デバイスIDなし、IPの保存なし。いつでもオフにできます。",
-    "readPrivacyPromise": "プライバシーに関する約束を読む"
+    "readPrivacyPromise": "プライバシーに関する約束を読む",
+    "showStreak": "読書連続日数を表示",
+    "showStreakHint": "ヘッダーに小さな日数表示。デバイス内のみで、リマインダーや通知はありません。",
+    "primaryLanguage": "プライマリ (UI) 言語"
   },
   "onboarding": {
     "welcome": "ようこそ",
@@ -138,7 +143,7 @@
     "welcomeVisit": "encorpora.io にアクセス",
     "linkCopied": "リンクをコピーしました。ブラウザで開いてください：",
     "reconfigureStack": "プロフィールを再設定",
-    "openVoiceSettings": "音声設定を開く",
+    "openVoiceSettings": "設定を開く",
     "openTTSSetup": "TTS設定を開く",
     "welcomeFollowUp": "ご参加ありがとうございます。コミュニティでお会いしましょう！",
     "learningStepTitle": "学習",
@@ -147,8 +152,8 @@
     "languageOrderTipBody": "リストの一番下にある言語がアプリの表示言語になります。表示言語を変更するには、別の言語を一番下までドラッグしてください。",
     "ttsOsTipTitle": "ヒント",
     "ttsOsTipAndroid": "最適: Google の読み上げを使用。Samsung TTS は Corpán では動作しません。",
-    "ttsOsTipIOS": "設定 → アクセシビリティから「読み上げコンテンツ」を探して音声をダウンロードしてください。注：Appleはすべての言語に音声を提供していません。アップグレードしても改善しない場合は、AppleのフィードバックAppからサポートをリクエストしてください。",
-    "ttsOsTipMac": "システム設定 → アクセシビリティから「読み上げコンテンツ」を探して音声をダウンロードしてください。注：Appleはすべての言語に音声を提供していません。アップグレードしても改善しない場合は、AppleのフィードバックAppからサポートをリクエストしてください。",
+    "ttsOsTipIOS": "お使いのデバイスには無料のPremium音声が内蔵されていますが、Appleはそれらをオフにしています。オンにするには: 設定 → アクセシビリティ → 読み上げコンテンツ → 声 → あなたの言語、そしてPremiumまたはEnhanced音声のダウンロードアイコンをタップしてください。戻るとここに自動的に表示されます。(Appleはまだすべての言語に対応しているわけではありません。)",
+    "ttsOsTipMac": "お使いのMacには無料のPremium音声が内蔵されていますが、Appleはそれらをオフにしています。オンにするには: システム設定 → アクセシビリティ → 読み上げコンテンツ → システムの声 → 声の管理、そしてPremiumまたはEnhanced音声をダウンロードしてください。戻るとここに自動的に表示されます。(Appleはまだすべての言語に対応しているわけではありません。)",
     "ttsOsTipWindows": "「設定」で音声を追加/インストールしてから戻ってください。",
     "ttsOsTipOther": "端末の設定で音声を追加/インストールしてから戻ってください。",
     "installVoicesAndroid": "音声を追加",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Google Text-to-Speech をインストール",
-        "detail": "Google の音声エンジンは、Corpán がサポートするすべての言語で最高品質を提供します。無料です。",
+        "detail": "Googleの無料音声エンジンは、Corpánがサポートするほとんどの言語で高品質な音声をアンロックします — ほとんどの携帯電話には標準で搭載されていません。追加しましょう:",
         "button": "Play ストアからインストール"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "また見にきてください。",
       "offlineHero": "オフラインです。",
       "offlineSub": "パックにはインターネットが必要です — 後で「設定 → パック」からどうぞ。",
-      "offlineBanner": "オフライン — 接続後に選択分をインストールします。"
+      "offlineBanner": "オフライン — 接続後に選択分をインストールします。",
+      "noneSelected": "未選択 — 続行するとスキップされます",
+      "selectedSuffix": "選択済み",
+      "skip": "今はスキップ",
+      "subtitle": "集中フレーズパックをスタックに追加しましょう。設定でいつでもオン/オフを切り替えられます。"
     },
     "notOnAppleIOS": "iOSではない場合",
     "appleNoVoiceTitle": "Apple ではまだ {{lang}} の音声が提供されていません",
-    "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。"
+    "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。",
+    "back": "戻る",
+    "continue": "続ける",
+    "class": {
+      "title": "誰が使いますか？",
+      "subtitle": "あなたに最適なCorpánを。データはデバイス内にとどまり、外部送信はしません。",
+      "learner": "言語を学習しています",
+      "learnerDesc": "学習中の言語で読んだり聞いたりできます。",
+      "enjoyer": "コンテンツを楽しみたい",
+      "enjoyerDesc": "母国語で本や物語、ゲームを楽しめます。",
+      "polyglot": "両方 — すべて利用したい",
+      "polyglotDesc": "複数の言語を同時に、その他すべて。",
+      "kid": "子供向けです",
+      "kidDesc": "お子様向けの厳選された本と学習ゲーム。",
+      "ageTitle": "読者の年齢は？",
+      "ageUnder13": "13歳未満",
+      "ageTeen": "13〜17歳"
+    },
+    "pitch": {
+      "title": "Corpanistasに参加しましょう",
+      "subtitle": "Corpán Plusで全ライブラリが開放されます。どの本も最初の部分は永久に無料で試せます。",
+      "everything": "すべての本、すべての言語 — 解放されます。",
+      "private": "広告なし。データはデバイスに保存されます。",
+      "team": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。",
+      "tryPlus": "Corpán Plusを試す",
+      "continueFree": "無料プランで続ける"
+    },
+    "calibrate": {
+      "childAgeTitle": "読者の年齢は？",
+      "childTeen": "13〜17歳",
+      "childUnder13": "13歳未満",
+      "enjoyComfortable": "かなり得意",
+      "enjoyImproving": "まだ読み方を学んでいます",
+      "enjoyJustStarting": "始めたばかり — 読み方は初心者です",
+      "enjoyNative": "流暢に — 母国語です",
+      "enjoyTitle": "{{lang}}をどのくらい読めますか？",
+      "learnAdvanced": "かなり上級者です",
+      "learnLittle": "少し",
+      "learnNever": "まったくありません — 完全な初心者です",
+      "learnTitle": "これまでに{{lang}}を学習したことがありますか？"
+    },
+    "confident": {
+      "addBetter": "より豊かな音声をアンロック",
+      "andMore": "+{{count}}件",
+      "chooseVoices": "音声を選択",
+      "noVoiceFor": "まだ{{lang}}の音声がありません — Corpánが読み上げられるように追加しましょう。",
+      "voiceCountMany": "{{count}}個の音声が準備完了",
+      "voiceCountOne": "1個の音声が準備完了",
+      "yourVoiceFor": "あなたの{{lang}}音声"
+    },
+    "engage": {
+      "joinDesc": "Corpánをサポートしてすべてをアンロック。任意で、いつでも。",
+      "joinTitle": "Corpanistasに参加する",
+      "start": "探索を開始",
+      "subtitle": "Corpánは小さなオープンソースチームによって作られています。ぜひお声がけください — 気に入っていただけたら、私たちをサポートできます。",
+      "title": "準備完了です"
+    },
+    "fork": {
+      "child": {
+        "desc": "若い学習者向けの、優しく遊び心のある本やゲーム。",
+        "label": "子供向けに設定する"
+      },
+      "enjoy": {
+        "desc": "本、物語、ゲーム、ドリルなど — すべてあなたの言語で。",
+        "label": "{{lang}}でCorpánを楽しむ"
+      },
+      "learn": {
+        "desc": "新しい言語での物語、ゲーム、ドリル、オーディオ。",
+        "label": "言語を学ぶ"
+      },
+      "polyglot": {
+        "desc": "複数の言語を重ねて、すべてを探索しましょう。",
+        "label": "多くの言語を探索する"
+      },
+      "subtitle": "すべて設定します。後で変更できます。",
+      "title": "Corpánを始めたきっかけは？"
+    },
+    "interests": {
+      "audio": "オーディオを聴く",
+      "audioDesc": "オーディオブック、ナレーション、ラジオ。",
+      "games": "ゲームをプレイ",
+      "gamesDesc": "遊び心のあるチャレンジを通して学ぶ。",
+      "read": "物語や本を読む",
+      "readDesc": "あなたの言語で読書に没頭する。",
+      "speak": "スピーキングを練習",
+      "speakDesc": "フレーズを声に出してフィードバックを受け取る。",
+      "study": "学習とドリル",
+      "studyDesc": "集中した練習で語彙を増やす。",
+      "subtitle": "興味のあるものを選んでください — それに合った体験をおすすめします。任意。",
+      "title": "何をしたいですか？",
+      "wild": "ワイルドなものを探索",
+      "wildDesc": "驚きと実験的な体験。"
+    },
+    "settingUp": "設定中…",
+    "ttsIntro": "Corpánが読み上げます。音声をタップして、あなたの速度で聞いてみましょう。",
+    "voiceGuide": {
+      "intro": "お使いのデバイスには、デフォルトよりもはるかに優れた、無料で豊かな自然な音声が内蔵されています。メーカーはそれらをオフにしているだけです。数タップでオンにしましょう:",
+      "macStep1": "システム設定を開きます。",
+      "macStep2": "アクセシビリティ → 読み上げコンテンツ に進みます。",
+      "macStep3": "システムの声の下にある「声の管理」を開きます。",
+      "macStep4": "あなたの言語のPremiumまたはEnhanced音声をダウンロードします。",
+      "macStep5": "Corpánに戻ると、ここに自動的に表示されます。",
+      "step1": "下の「設定を開く」をタップします。",
+      "step2": "アクセシビリティ → 読み上げコンテンツ → 声 に進みます。",
+      "step3": "あなたの言語をタップします。",
+      "step4": "PremiumまたはEnhanced音声をダウンロードします。",
+      "step5": "Corpánに戻ると、ここに自動的に表示されます。",
+      "title": "デバイスの最高の音声をアンロック"
+    },
+    "voicePreviewAria": "{{name}}をプレビュー",
+    "voicePreviewSelected": "選択をプレビュー",
+    "voiceRecommended": "おすすめ",
+    "voiceSelectedCount": "{{total}}個中{{count}}個"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "訪問",
       "title": "encorpora.io",
       "desc": "ドキュメントとコミュニティのメインサイト。"
+    },
+    "instagram": {
+      "cta": "フォロー",
+      "desc": "@corpanapp",
+      "title": "Instagramをフォロー"
+    },
+    "share": {
+      "title": "Corpánを共有",
+      "text": "Corpánで言語を学ぼう。",
+      "copied": "リンクをコピーしました！"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "Corpán Packを試すか、自分で作ってみましょう。",
     "devLink": "Free2zで詳しく見る",
     "new": "新規",
-    "updates": "アップデート",
     "offline": "オフライン",
     "purchasing": "購入中...",
     "buy": "{{price}}で購入",
@@ -480,8 +610,19 @@
       "openDrawer": "フレーズパックを見る ({{count}})",
       "openDrawerLabel": "フレーズパックを見る",
       "inactiveBadge": "非アクティブ",
-      "moreActionsLabel": "その他の操作"
-    }
+      "moreActionsLabel": "その他の操作",
+      "install": "インストール"
+    },
+    "unlockWithPlus": "Corpán Plusで解放",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plusに含まれています",
+    "installFailedTitle": "インストール失敗",
+    "installStuckDetail": "しばらく進捗がありません。接続を確認して再試行してください。",
+    "installStuckTitle": "ダウンロードが停止しました",
+    "openPack": "{{name}}を開く",
+    "recent": "最近",
+    "updateAll": "すべて更新 ({{count}}件)",
+    "updateAvailable": "アップデート利用可能"
   },
   "subscription": {
     "title": "すべてを解除",
@@ -538,5 +679,106 @@
     "maybeLater": "後で",
     "empty": "さらに多くのパックがやってきます — その間 Corpán を探検してください。",
     "offlineEmpty": "インターネットに接続してパックを見つけよう — または今はスキップ。"
+  },
+  "paywall": {
+    "title": "Corpán Plusで続けましょう",
+    "thanksTitle": "あなたはCorpanistaです",
+    "thanksBody": "Corpánをサポートしていただきありがとうございます。すべての機能が解放されました。",
+    "bookSubhead": "{{title}}の無料プレビューはここまでです。",
+    "subhead": "すべての本、すべての言語を解放。広告なし。データはデバイスに保存されます。",
+    "pitch": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。Corpanistasの皆様が、広告なしのCorpánの成長を支えています。",
+    "maybeLater": "後で",
+    "continue": "続ける"
+  },
+  "streak": {
+    "title": "{{count}}日連続"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "朗読オーディオブックを、単語ごとのハイライト表示で落ち着いて読み進めましょう。",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "中国語の漢字を、一画ずつマスターしましょう。",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "フレーズを聞いて、それに合わせて操作 — 遊びながら学びましょう。",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "短いゲームで、フレーズを少しずつ組み立てましょう。",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "あなたの言語のフレーズをめくって、素早く集中して練習しましょう。",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "フレーズを声に出して、発音のフィードバックを受けましょう。",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "同じオーディオブックを没入感のある3Dで — 読まれると同時に言葉が空間を流れます。",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "世界中のライブラジオを聴きましょう。",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "学習を続ける",
+    "experiences": "体験",
+    "forYou": "おすすめ",
+    "get": "入手",
+    "installing": "インストール中…",
+    "library": "ライブラリ",
+    "like": "いいね",
+    "notForMe": "興味なし",
+    "open": "開く",
+    "openPhrases": "フレーズを開く",
+    "phraseFlipDesc": "あなたの言語のフレーズをめくる",
+    "plusChip": "Corpán Plus — すべてをアンロック",
+    "recommended": "おすすめ",
+    "showAnother": "他のものを表示",
+    "tryIt": "試す"
+  },
+  "offline": {
+    "cachedSubtitle": "最後にキャッシュされた結果を表示しています。",
+    "catalogSubtitle": "再接続して新しいパックを見つけましょう。インストール済みのパックは引き続き利用できます。",
+    "installNeedsInternet": "再接続してダウンロードしてください。",
+    "onboardingBanner": "オフライン — 再接続時に選択内容がインストールされます。",
+    "packCatalogSubtitle": "インストール済みのパックは引き続き利用できます。再接続してさらに閲覧しましょう。",
+    "packCatalogTitle": "パックカタログにはインターネットが必要です",
+    "phrasePacksOnboardingSubtitle": "再接続後、設定 → パックからフレーズパックを選択できます。",
+    "phrasePacksSubtitle": "インストール済みのフレーズパックは引き続き利用できます。再接続して新しいものを閲覧しましょう。",
+    "phrasePacksTitle": "フレーズパックカタログにはインターネットが必要です",
+    "purchaseNeedsInternet": "再接続して購入してください。",
+    "restoreSubtitle": "再接続して購入を復元してください。",
+    "subscriptionSubtitle": "再接続して購読してください。インストール済みのパックとバンドルされたフレーズは引き続き利用できます。",
+    "subscriptionTitle": "サブスクリプションにはインターネットが必要です",
+    "title": "インターネット接続なし",
+    "voiceDownloadSubtitle": "デバイスに既存の音声は引き続き利用できます。再接続してさらにインストールしましょう。",
+    "voiceDownloadTitle": "音声のダウンロードにはインターネットが必要です"
+  },
+  "quickSettings": {
+    "fullSettings": "全設定",
+    "title": "クイック設定"
+  },
+  "tour": {
+    "maybeLater": "後で",
+    "progress": "{{total}}中{{n}}"
+  },
+  "update": {
+    "availableLine": "アップデート利用可能 → {{version}}",
+    "close": "閉じる",
+    "description": "アプリストアでCorpánの新しいバージョンが利用可能です。",
+    "remindLater": "後で通知",
+    "skipThisVersion": "このバージョンをスキップ",
+    "title": "アップデート利用可能",
+    "update": "アップデート",
+    "updateNow": "今すぐアップデート",
+    "versionLine": "バージョン{{version}}をインストールできます。"
   }
 }

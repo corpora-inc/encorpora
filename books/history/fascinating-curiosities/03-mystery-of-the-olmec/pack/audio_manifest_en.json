@@ -149,157 +149,182 @@
     },
     "ch03-295": {
       "file": "audio/en/ch03-295.m4a",
-      "duration_ms": 6160,
+      "duration_ms": 2940,
       "pause_after_ms": 800,
       "words": [
         {
           "word": "The",
-          "start_ms": 740,
-          "end_ms": 780
+          "start_ms": 0,
+          "end_ms": 0
         },
         {
           "word": "full",
-          "start_ms": 780,
-          "end_ms": 780
+          "start_ms": 40,
+          "end_ms": 140
         },
         {
           "word": "picture",
-          "start_ms": 780,
-          "end_ms": 780
+          "start_ms": 140,
+          "end_ms": 440
         },
         {
           "word": "requires",
-          "start_ms": 780,
-          "end_ms": 780
+          "start_ms": 440,
+          "end_ms": 700
         },
         {
           "word": "holding",
-          "start_ms": 780,
-          "end_ms": 780
-        },
-        {
-          "word": "both",
-          "start_ms": 840,
+          "start_ms": 740,
           "end_ms": 1120
         },
         {
-          "word": "ideas",
+          "word": "both",
           "start_ms": 1120,
-          "end_ms": 1920
+          "end_ms": 1500
+        },
+        {
+          "word": "ideas",
+          "start_ms": 1500,
+          "end_ms": 1860
         },
         {
           "word": "at",
-          "start_ms": 1920,
-          "end_ms": 2240
+          "start_ms": 1860,
+          "end_ms": 2140
         },
         {
           "word": "once.",
-          "start_ms": 2240,
-          "end_ms": 2340
+          "start_ms": 2140,
+          "end_ms": 2560
         }
       ]
     },
     "ch10-821": {
       "file": "audio/en/ch10-821.m4a",
-      "duration_ms": 5920,
+      "duration_ms": 4700,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "This",
-          "start_ms": 40,
-          "end_ms": 460
+          "start_ms": 60,
+          "end_ms": 160
         },
         {
           "word": "is",
-          "start_ms": 460,
-          "end_ms": 1120
+          "start_ms": 160,
+          "end_ms": 300
         },
         {
           "word": "consistent",
-          "start_ms": 1120,
-          "end_ms": 1880
+          "start_ms": 300,
+          "end_ms": 820
         },
         {
           "word": "with",
-          "start_ms": 1900,
-          "end_ms": 2060
+          "start_ms": 820,
+          "end_ms": 1140
         },
         {
           "word": "the",
-          "start_ms": 2060,
-          "end_ms": 2360
+          "start_ms": 1140,
+          "end_ms": 1280
         },
         {
           "word": "Olmec",
-          "start_ms": 2360,
-          "end_ms": 2920
+          "start_ms": 1280,
+          "end_ms": 1720
         },
         {
           "word": "but",
-          "start_ms": 3080,
-          "end_ms": 3220
+          "start_ms": 1720,
+          "end_ms": 2300
         },
         {
           "word": "does",
-          "start_ms": 3220,
-          "end_ms": 3480
+          "start_ms": 2340,
+          "end_ms": 2540
         },
         {
           "word": "not",
-          "start_ms": 3480,
-          "end_ms": 3800
+          "start_ms": 2540,
+          "end_ms": 2780
         },
         {
           "word": "prove",
-          "start_ms": 3840,
-          "end_ms": 4800
+          "start_ms": 2780,
+          "end_ms": 3120
         },
         {
           "word": "the",
-          "start_ms": 4800,
-          "end_ms": 5060
+          "start_ms": 3120,
+          "end_ms": 3300
         },
         {
           "word": "identification.",
-          "start_ms": 5060,
-          "end_ms": 5860
+          "start_ms": 3300,
+          "end_ms": 3780
         }
       ]
     },
     "ch10-856": {
       "file": "audio/en/ch10-856.m4a",
-      "duration_ms": 6880,
+      "duration_ms": 5600,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Coe,",
           "start_ms": 0,
-          "end_ms": 100
+          "end_ms": 380
         },
         {
           "word": "Michael",
-          "start_ms": 400,
-          "end_ms": 400
+          "start_ms": 600,
+          "end_ms": 820
         },
         {
           "word": "\u2014",
-          "start_ms": 400,
-          "end_ms": 940
+          "start_ms": 820,
+          "end_ms": 1120
         },
         {
           "word": "Yale",
-          "start_ms": 1100,
-          "end_ms": 1520
+          "start_ms": 1480,
+          "end_ms": 1600
         },
         {
           "word": "archaeologist",
-          "start_ms": 1520,
-          "end_ms": 2570
+          "start_ms": 1600,
+          "end_ms": 2420
         },
         {
-          "word": "(1929-2019).",
-          "start_ms": 3680,
-          "end_ms": 5030
+          "word": "(nineteen",
+          "start_ms": 2420,
+          "end_ms": 3170
+        },
+        {
+          "word": "twenty",
+          "start_ms": 3260,
+          "end_ms": 3380
+        },
+        {
+          "word": "nine",
+          "start_ms": 3380,
+          "end_ms": 3720
+        },
+        {
+          "word": "to",
+          "start_ms": 3720,
+          "end_ms": 3960
+        },
+        {
+          "word": "twenty",
+          "start_ms": 3960,
+          "end_ms": 4180
+        },
+        {
+          "word": "nineteen).",
+          "start_ms": 4180,
+          "end_ms": 4780
         }
       ]
     },

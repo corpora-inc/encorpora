@@ -18,19 +18,26 @@ export function groupByBook(narrations: CatalogNarrationEntry[]): BookGroup[] {
         bookTitle: n.bookTitle,
         series: n.series,
         volume: n.volume,
+        publishedAt: n.publishedAt,
         narrations: [],
         languages: [],
       }
       map.set(n.bookId, group)
     }
     group.narrations.push(n)
+    if (!group.publishedAt && n.publishedAt) group.publishedAt = n.publishedAt
     if (!group.languages.includes(n.language)) {
       group.languages.push(n.language)
     }
   }
 
-  // Sort books by narration count (desc), then volume, then title
+  // Sort books. Dated periodicals (e.g. "AI This Week") go newest-first; this
+  // only kicks in between two dated books, so evergreen titles fall through to
+  // the legacy order: narration count (desc), then volume, then title.
   return [...map.values()].sort((a, b) => {
+    if (a.publishedAt && b.publishedAt && a.publishedAt !== b.publishedAt) {
+      return a.publishedAt < b.publishedAt ? 1 : -1
+    }
     if (a.narrations.length !== b.narrations.length) {
       return b.narrations.length - a.narrations.length
     }

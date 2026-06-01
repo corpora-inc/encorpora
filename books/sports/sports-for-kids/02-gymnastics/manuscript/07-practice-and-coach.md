@@ -54,11 +54,11 @@ It just feels normal.
 
 That is the secret.
 
-Coach Maya watches everything.
+My coach watches everything.
 
 She sees things I do not even know I am doing.
 
-She will say, Isabelle, your left arm bent a little.
+She will say, your left arm bent a little.
 
 And I will say, no it did not.
 
@@ -82,10 +82,10 @@ A good coach makes you feel safe enough to try scary things.
 
 That is the most important part.
 
-Coach Maya makes me feel safe.
+A good coach makes you feel safe.
 
-So I try.
+So you try.
 
-And I get better.
+And you get better.
 
 That is the deal.

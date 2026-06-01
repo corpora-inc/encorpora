@@ -12,15 +12,11 @@ Some competitions are in school gyms.
 
 Some are in giant arenas.
 
-I went to one in an arena last year.
+The lights at an arena are huge.
 
-The lights were huge.
+The floor is a special spring floor.
 
-The floor was a special blue.
-
-It was springy under our shoes.
-
-That's a spring floor.
+It's springy under your shoes.
 
 Spring floors help you tumble higher.
 
@@ -78,11 +74,7 @@ You sit in your warm-up jacket.
 
 When they call the scores, your stomach flips.
 
-Last year we got second place.
-
-We weren't expecting that.
-
-We screamed and hugged.
+If you place, you scream and hug.
 
 The team hug after a routine is everything.
 

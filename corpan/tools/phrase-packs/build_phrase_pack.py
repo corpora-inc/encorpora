@@ -47,7 +47,10 @@ import time
 from pathlib import Path
 from typing import Iterable
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2  # v2 (2026-05-31): adds entries_fts (FTS5 over english).
+                   # v1 packs still readable — clients fall back to LIKE search
+                   # when entries_fts is absent. See Tutomaton phrase-bridge for
+                   # the dual-mode consumer pattern.
 APPLICATION_ID = 0x434F5250  # "CORP"
 
 # Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES (51 shipping codes).
@@ -124,6 +127,11 @@ def build_pack(
                 for i, p in enumerate(phrases)
             ],
         )
+        # Populate the FTS5 mirror of entries.english. Contentless table reads
+        # source from `entries` (content='entries' in the CREATE), so the
+        # `INSERT INTO entries_fts(entries_fts) VALUES('rebuild')` command
+        # builds the inverted index in one shot. Adds ~5-15% to pack size.
+        conn.execute("INSERT INTO entries_fts(entries_fts) VALUES('rebuild')")
         rows: list[tuple[int, str, str, str | None]] = []
         missing: list[tuple[int, str]] = []
         for i, phrase in enumerate(phrases):
@@ -303,6 +311,18 @@ def _write_schema(conn: sqlite3.Connection) -> None:
         ) WITHOUT ROWID;
 
         CREATE INDEX idx_entries_level ON entries(level);
+
+        -- FTS5 over the english column. Tutomaton's phrase-bridge (and any
+        -- future reader that does cross-pack lexical search) uses bm25(entries_fts)
+        -- for ranking; falls back to LIKE for v1 packs that lack this table.
+        -- Built as a contentless table populated from entries below (cheap
+        -- ~5-15% pack size; no triggers needed since phrase packs are
+        -- write-once: built, sealed, shipped, never mutated).
+        CREATE VIRTUAL TABLE entries_fts USING fts5(
+            english,
+            content='entries',
+            content_rowid='id'
+        );
         """
     )
 

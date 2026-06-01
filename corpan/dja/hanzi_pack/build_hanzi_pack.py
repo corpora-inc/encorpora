@@ -191,6 +191,16 @@ def main() -> None:
         default=0,
         help="Limit number of characters (0 = all)",
     )
+    ap.add_argument(
+        "--include-etymology-chars",
+        action="store_true",
+        help=(
+            "Union the live core-DB hanzi scan with characters present in "
+            "the etymology JSON. Keeps Hanzipan's character universe "
+            "stable across core-corpus slims (the seed is the canonical "
+            "set of curated chars)."
+        ),
+    )
     args = ap.parse_args()
 
     core_db = args.core_db.resolve()
@@ -198,14 +208,30 @@ def main() -> None:
         print(f"Core DB not found: {core_db}", file=sys.stderr)
         sys.exit(1)
 
-    chars = sorted(collect_characters(core_db, args.langs))
-    if args.limit:
-        chars = chars[: args.limit]
+    scan_chars = collect_characters(core_db, args.langs)
 
     strokes_raw = load_json(args.strokes)
     ety_raw = load_json(args.etymology)
     strokes = parse_strokes(strokes_raw)
     etymologies = parse_etymologies(ety_raw)
+
+    if args.include_etymology_chars and etymologies:
+        # Keep Hanzipan's character set decoupled from the slimmed corpus
+        # (the etymology seed is the canonical record of what the pack
+        # covers — see `--include-etymology-chars` help).
+        seed_chars = set(etymologies.keys())
+        added = len(seed_chars - scan_chars)
+        if added:
+            print(
+                f"[chars] include-etymology-chars: scan={len(scan_chars)} "
+                f"+ seed-only={added} = {len(scan_chars | seed_chars)} total",
+            )
+        chars = sorted(scan_chars | seed_chars)
+    else:
+        chars = sorted(scan_chars)
+
+    if args.limit:
+        chars = chars[: args.limit]
 
     out = args.out.resolve()
     out.parent.mkdir(parents=True, exist_ok=True)

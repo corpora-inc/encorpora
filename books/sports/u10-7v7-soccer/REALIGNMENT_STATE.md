@@ -1,12 +1,12 @@
 # Soccer Books Realignment — State
 
 ## Running NOW (parallel):
-- Goalkeeper (02-goalie): 23 langs × 633 segs — log: /tmp/realign_goalie.log
-- Sweeper (03-sweeper): 23 langs × 613 segs — log: /tmp/realign_sweeper.log
+- Goalkeeper (02-goalie): all configured langs × 633 segs — log: /tmp/realign_goalie.log
+- Sweeper (03-sweeper): all configured langs × 613 segs — log: /tmp/realign_sweeper.log
 
 ## Queued:
-- Defender (04-defender): 23 langs × 557 segs
-- Striker (05-striker): 13 langs × 611 segs
+- Defender (04-defender): all configured langs × 557 segs
+- Striker (05-striker): all configured langs × 611 segs
 
 ## To start Defender + Striker after Goalie/Sweeper finish:
 ```bash

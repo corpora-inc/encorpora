@@ -33,7 +33,9 @@ import {
 } from "lucide-react";
 
 import { OfflineNotice } from "@/components/OfflineNotice";
-import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
+import { OnboardingShell } from "@/onboarding/OnboardingShell";
+import { Button } from "@/components/ui/button";
+import type { OnboardingStepProps } from "@/onboarding/types";
 import { useInstallContext } from "@/contentPacks/InstallContext";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
@@ -43,15 +45,13 @@ import { useEntitlementStore } from "@/store/entitlements";
 import { useSettingsStore } from "@/store/settings";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 
-const CURRENT_STEP_IDX = 1; // STEPS = [learning, packs, tts, socials]
 const STEP_TTS = 4;
 const STEP_PICK_LEARNING = 2;
 
-export function OnboardingPickPhrasePacks() {
-    const { t, i18n } = useTranslation();
+export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepProps = {}) {
+    const { t } = useTranslation();
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setPhrasePackIds = useSettingsStore((s) => s.setPhrasePackIds);
-    const dir = useSettingsStore((s) => s.dir);
 
     const lastFetched = useCatalogStore((s) => s.lastFetched);
     const isFetching = useCatalogStore((s) => s.isFetching);
@@ -93,18 +93,6 @@ export function OnboardingPickPhrasePacks() {
         }
     }, [starterPacks]);
 
-    const stepLabels = useMemo(
-        () =>
-            STEPS.map((s, i) =>
-                i === CURRENT_STEP_IDX
-                    ? t("onboarding.phrasePacks.stepTitle", {
-                        defaultValue: "Phrase packs",
-                    })
-                    : t(`onboarding.${s.key}`, { defaultValue: s.label }),
-            ),
-        [t, i18n.language],
-    );
-
     const totalSizeMb = useMemo(
         () =>
             starterPacks
@@ -143,11 +131,13 @@ export function OnboardingPickPhrasePacks() {
         return subscriptionGated && subscriptionActive;
     };
 
+    const advance = onAdvance ?? (() => setStep(STEP_TTS));
+
     const handleContinue = async () => {
         const chosen = starterPacks.filter((p) => selectedIds.has(p.id));
         const installable = chosen.filter(canInstallInOnboarding);
         if (installable.length === 0) {
-            setStep(STEP_TTS);
+            advance();
             return;
         }
         // Activate only entitled packs so the main loop never tries to
@@ -160,10 +150,8 @@ export function OnboardingPickPhrasePacks() {
         if (isOnline) {
             void installPackBatch(installable);
         }
-        setStep(STEP_TTS);
+        advance();
     };
-
-    const handleSkip = () => setStep(STEP_TTS);
 
     const hasStarter = starterPacks.length > 0;
     const allSelected =
@@ -178,52 +166,27 @@ export function OnboardingPickPhrasePacks() {
     const showSubscriptionNudge = anyPaidUnlocked && !subscriptionActive;
 
     return (
-        <section
-            id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background pb-10 md:bg-muted"
-            style={{
-                WebkitOverflowScrolling: "touch",
-                paddingLeft: "env(safe-area-inset-left)",
-                paddingRight: "env(safe-area-inset-right)",
-                paddingBottom: "env(safe-area-inset-bottom)",
-            }}
-            dir={dir()}
+        <OnboardingShell
+            canBack
+            onBack={onBack ?? (() => setStep(STEP_PICK_LEARNING))}
+            maxWidthClass="max-w-3xl"
+            footer={
+                // No Skip: Continue with nothing selected installs nothing (==
+                // skip). One button matches the rest of the onboarding footers.
+                <Button
+                    className="w-full !h-12"
+                    aria-label="Continue"
+                    disabled={!(!isOnline || !!ppLastFetched || hasStarter)}
+                    onClick={handleContinue}
+                >
+                    {t("onboarding.continue")}
+                </Button>
+            }
         >
-            <OnboardingHeader
-                title={t("onboarding.phrasePacks.title", {
-                    defaultValue: "Phrase packs",
-                })}
-                steps={stepLabels}
-                currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(STEP_PICK_LEARNING)}
-                onNext={handleContinue}
-                // Disable Continue while the phrase-pack catalog is still
-                // loading on an online client (avoids a stealth-skip:
-                // tapping Continue during the loading skeleton would
-                // advance with no starter packs picked). Offline users
-                // always get Continue — they can pick later from
-                // Settings → Packs.
-                canNext={!isOnline || !!ppLastFetched || hasStarter}
-            />
-
-            <main
-                className="min-h-0 flex-1 px-4 sm:px-6 md:px-8 pt-4 sm:pt-6"
-                style={{
-                    paddingBottom: "calc(env(safe-area-inset-bottom) + 3rem)",
-                }}
-            >
-                <div className="mx-auto w-full max-w-xl md:max-w-3xl lg:max-w-4xl">
-                    {/* Hero */}
-                    <header className="text-center mb-6 sm:mb-8 select-none">
-                        <h2
-                            className="font-semibold text-foreground/95"
-                            style={{ fontSize: 22, letterSpacing: "0.01em" }}
-                        >
-                            {t("onboarding.phrasePacks.hero", {
-                                defaultValue: "Pick your topics",
-                            })}
-                        </h2>
-                    </header>
+            <h1 className="text-center text-2xl font-bold text-foreground">
+                {t("onboarding.phrasePacks.hero", { defaultValue: "Pick your topics" })}
+            </h1>
+            <div className="mt-6 w-full">
 
                     {/* Loading state — only while online; we don't want a
                         spinner forever for offline users. */}
@@ -354,19 +317,6 @@ export function OnboardingPickPhrasePacks() {
                                 ))}
                             </ul>
 
-                            {/* Skip link */}
-                            <div className="mt-8 text-center">
-                                <button
-                                    type="button"
-                                    onClick={handleSkip}
-                                    className="text-sm text-muted-foreground/80 hover:text-foreground underline-offset-4 hover:underline transition-colors"
-                                >
-                                    {t("common.skip", {
-                                        defaultValue: "Skip",
-                                    })}
-                                </button>
-                            </div>
-
                             {/* Subscription nudge (collapsed; sub flow lives in PacksListing) */}
                             {showSubscriptionNudge && (
                                 <div className="mt-6 mx-auto max-w-md rounded-lg border border-purple-400/40 bg-purple-500/[0.05] px-4 py-3 text-center text-xs text-muted-foreground">
@@ -382,15 +332,8 @@ export function OnboardingPickPhrasePacks() {
                         </>
                     )}
 
-                    {/* Bottom buffer — matches the spacer pattern in
-                        OnboardingPickLearning so the Skip link clears
-                        the Android 3-button nav bar (env(safe-area-
-                        inset-bottom) reads 0 on some Android WebView
-                        configs, so we add a fixed buffer too). */}
-                    <div className="h-8 pb-20" />
-                </div>
-            </main>
-        </section>
+            </div>
+        </OnboardingShell>
     );
 }
 

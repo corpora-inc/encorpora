@@ -1,177 +1,187 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingFinish.tsx
-import { useMemo } from "react";
+//
+// The ONE engagement page (replaces the separate "Join the Corpanistas" pitch
+// interlude + the old "Aloha" socials page). Shown once near the end of
+// onboarding: a warm welcome, our channels, and a SOFT "support/join" option —
+// never a hard paywall. The real Plus moment lives at engagement (reader EOF,
+// PaywallSheet), not here.
 import { useSettingsStore } from "@/store/settings";
-import { OnboardingHeader, STEPS } from "./OnboardingHeader";
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Github, Youtube, Newspaper, Globe, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Github, Youtube, Newspaper, Globe, Instagram, ExternalLink, Sparkles, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { OnboardingShell } from "@/onboarding/OnboardingShell";
+import { usePaywallStore } from "@/store/paywall";
+import { useEntitlementStore } from "@/store/entitlements";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/latestVersion";
 import { trackOnboardingCompleted } from "@/util/analytics";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
-/** Fill these with your actual profiles */
+// One calm neutral tone for every icon — matches the "What do you want to do?"
+// choice icons; the per-service brand colors (red/pink/amber/indigo) clashed.
+const LINK_ICON_CLS = "text-muted-foreground";
 const LINKS = [
-    {
-        key: "youtube",
-        url: "https://www.youtube.com/@corpán1",
-        Icon: Youtube,
-        cls: "text-red-600",
-    },
-    {
-        key: "github",
-        url: "https://github.com/corpora-inc",
-        Icon: Github,
-        cls: "text-foreground",
-    },
-    {
-        key: "blog",
-        url: "https://free2z.com/corpora",
-        Icon: Newspaper,
-        cls: "text-amber-600",
-    },
-    {
-        key: "website",
-        url: "https://encorpora.io",
-        Icon: Globe,
-        cls: "text-indigo-600",
-    },
+    { key: "youtube", url: "https://www.youtube.com/@corpán1", Icon: Youtube, cls: LINK_ICON_CLS },
+    { key: "instagram", url: "https://instagram.com/corpanapp", Icon: Instagram, cls: LINK_ICON_CLS },
+    { key: "github", url: "https://github.com/corpora-inc", Icon: Github, cls: LINK_ICON_CLS },
+    { key: "blog", url: "https://free2z.com/corpora", Icon: Newspaper, cls: LINK_ICON_CLS },
+    { key: "website", url: "https://encorpora.io", Icon: Globe, cls: LINK_ICON_CLS },
 ] as const;
 
-// STEPS = [learning(0), packs(1), tts(2), socials(3)] — Finish is the last
-// visible step, so its currentIndex matches the final bar.
-const CURRENT_STEP_IDX = 3;
-
-export function OnboardingFinish() {
+export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setOnboarded = useSettingsStore((s) => s.setOnboarded);
-    const dir = useSettingsStore((s) => s.dir);
+    const openPaywall = usePaywallStore((s) => s.openPaywall);
+    const iapAvailable = useEntitlementStore((s) => s.iapAvailable);
     const { t } = useTranslation();
-
-    const stepLabels = useMemo(
-        () =>
-            STEPS.map((s, i) =>
-                i === CURRENT_STEP_IDX
-                    ? t("onboarding.socialsStepTitle", { defaultValue: s.label })
-                    : t(`onboarding.${s.key}`, { defaultValue: s.label })
-            ),
-        [t]
-    );
 
     async function openExternal(url: string) {
         try {
             await openUrl(url);
         } catch {
-            try {
-                await navigator.clipboard.writeText(url);
-            } catch { }
-            // Fallback alert – translated
-            alert(t("onboarding.linkCopied", { defaultValue: "Link copied to clipboard." }) + "\n" + url);
+            try { await navigator.clipboard.writeText(url); } catch { /* ignore */ }
         }
     }
 
+    // Native share sheet (Messages, etc.) so users can text friends. Includes
+    // BOTH store links + a short line — the sender and recipient may be on
+    // different platforms, so we don't guess (no smart-redirect link exists).
+    // Text-only (no `url` field) so both links survive in the shared body.
+    const [shareCopied, setShareCopied] = useState(false);
+    async function shareCorpan() {
+        const pitch = t("socials.share.text", {
+            defaultValue: "Learn languages with Corpán.",
+        });
+        const message = `${pitch}\n\niOS: ${APP_STORE_URL}\nAndroid: ${PLAY_STORE_URL}`;
+        try {
+            if (typeof navigator !== "undefined" && navigator.share) {
+                await navigator.share({ title: "Corpán", text: message });
+                return;
+            }
+        } catch {
+            // user cancelled the sheet, or share is unsupported — fall through to copy
+        }
+        try {
+            await navigator.clipboard.writeText(message);
+            setShareCopied(true);
+            window.setTimeout(() => setShareCopied(false), 2000);
+        } catch {
+            /* clipboard unavailable */
+        }
+    }
+
+    const advance =
+        onAdvance ??
+        (() => {
+            // Legacy path (outside the engine): complete onboarding here.
+            trackOnboardingCompleted();
+            setOnboarded(true);
+        });
+
     return (
-        <section
-            id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background md:bg-muted"
-            style={{
-                WebkitOverflowScrolling: "touch",
-                paddingLeft: "env(safe-area-inset-left)",
-                paddingRight: "env(safe-area-inset-right)",
-            }}
-            dir={dir()}
+        <OnboardingShell
+            canBack
+            onBack={onBack ?? (() => setStep(4))}
+            maxWidthClass="max-w-xl"
+            footer={
+                <Button className="w-full !h-12" onClick={advance}>
+                    {t("onboarding.engage.start", { defaultValue: "Start exploring" })}
+                </Button>
+            }
         >
-            <OnboardingHeader
-                title="Aloha!"
-                steps={stepLabels}
-                currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(4)}
-                onNext={() => {
-                    trackOnboardingCompleted();
-                    setOnboarded(true);
-                }}
-                canNext={true}
+            <h1 className="text-center text-2xl font-bold text-foreground">
+                {t("onboarding.engage.title", { defaultValue: "You're all set" })}
+            </h1>
+            <p className="mt-2 text-center text-sm text-muted-foreground">
+                {t("onboarding.engage.subtitle", {
+                    defaultValue:
+                        "Corpán is made by a tiny open-source team. Come say hi — and if you love it, you can support us.",
+                })}
+            </p>
 
-            />
-
-            <main
-                className="flex-1 min-h-0 px-4 pt-6"
-                style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
-            >
-                <div className="mx-auto w-full max-w-xl">
-                    {/* Hero text */}
-                    <div className="mb-6 text-center">
-                        <h2 className="text-lg font-semibold text-foreground">
-                            {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
-                        </h2>
-                        <p className="mt-3 mx-3 text-sm text-muted-foreground text-justify">
-                            {t("onboarding.welcomeBody", {
-                                defaultValue:
-                                    "Corpán is an open-source project created by a tiny team, not a big company, that cares deeply about language and education. We are still just getting started, so you may see rough edges, missing features, or languages that are not here yet. If something does not work for you, please reach out via GitHub or email instead of suffering in silence - feedback and bug reports really help us. We ship frequent updates, and your patience and support help us make language learning better for everyone.",
-                            })}
-                        </p>
-                    </div>
-
-                    {/* Link grid */}
-                    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        {LINKS.map(({ key, url, Icon, cls }) => (
-                            <li key={key}>
-                                <button
-                                    onClick={() => openExternal(url)}
-                                    className="group w-full rounded-xl border border-border bg-card p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-purple-400 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 hover:cursor-pointer"
-                                    aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <span
-                                            className={`grid h-10 w-10 place-items-center rounded-lg ${cls} transition group-hover:scale-105`}
-                                            aria-hidden
-                                        >
-                                            <Icon size={20} />
-                                        </span>
-                                        <div className="min-w-0 flex-1">
-                                            <div className="truncate text-sm font-semibold text-foreground">
-                                                {t(`socials.${key}.title`, {
-                                                    // sensible defaults per brand
-                                                    defaultValue:
-                                                        key === "youtube"
-                                                            ? "Corpán Studios"
-                                                            : key === "github"
-                                                                ? "GitHub"
-                                                                : key === "blog"
-                                                                    ? "Free2Z Blog"
-                                                                    : "Website",
-                                                })}
-                                            </div>
-                                            <div className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
-                                                {t(`socials.${key}.desc`, {
-                                                    defaultValue:
-                                                        key === "youtube"
-                                                            ? "Tutorials, demos, and behind-the-scenes."
-                                                            : key === "github"
-                                                                ? "Star the repo and follow development."
-                                                                : key === "blog"
-                                                                    ? "Notes, release writeups, and essays."
-                                                                    : "Product, docs, and announcements.",
-                                                })}
-                                            </div>
-
-                                        </div>
-                                        <ExternalLink
-                                            size={16}
-                                            className="shrink-0 text-muted-foreground transition group-hover:text-foreground"
-                                            aria-hidden
-                                        />
+            <ul className="mt-6 grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
+                {/* Soft join/support — opens the Plus sheet, framed as optional. */}
+                {iapAvailable ? (
+                    <li className="sm:col-span-2">
+                        <button
+                            type="button"
+                            onClick={() => openPaywall({ surface: "onboarding_pitch" })}
+                            className="group w-full rounded-xl border border-purple-400/50 bg-gradient-to-br from-purple-500/[0.12] to-purple-500/[0.03] p-4 text-left transition hover:border-purple-400/80"
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="grid h-10 w-10 place-items-center rounded-lg bg-purple-500/15 text-purple-400">
+                                    <Sparkles size={20} />
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                    <div className="text-sm font-semibold text-foreground">
+                                        {t("onboarding.engage.joinTitle", { defaultValue: "Join the Corpanistas" })}
                                     </div>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                                    <div className="mt-0.5 text-xs text-muted-foreground">
+                                        {t("onboarding.engage.joinDesc", { defaultValue: "Support Corpán and unlock everything. Optional, anytime." })}
+                                    </div>
+                                </div>
+                                <ExternalLink size={16} className="shrink-0 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
+                            </div>
+                        </button>
+                    </li>
+                ) : null}
 
-                    {/* Subtle nudge */}
-                    <div className="mt-6 text-center text-xs text-muted-foreground pb-20">
-                        {t("onboarding.welcomeFollowUp", {
-                            defaultValue: "Thanks for being here - see you in the community!",
-                        })}
-                    </div>
-                </div>
-            </main>
-        </section >
+                {LINKS.map(({ key, url, Icon, cls }) => (
+                    <li key={key}>
+                        <button
+                            type="button"
+                            onClick={() => openExternal(url)}
+                            className="group w-full rounded-xl border border-border bg-card p-4 text-left transition hover:-translate-y-[1px] hover:border-purple-400/60 hover:shadow-md"
+                            aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className={`grid h-10 w-10 place-items-center rounded-lg ${cls}`} aria-hidden>
+                                    <Icon size={20} />
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                    <div className="truncate text-sm font-semibold text-foreground">
+                                        {t(`socials.${key}.title`, {
+                                            defaultValue:
+                                                key === "youtube" ? "Corpán Studios"
+                                                    : key === "instagram" ? "Follow on Instagram"
+                                                        : key === "github" ? "GitHub"
+                                                            : key === "blog" ? "Free2Z Blog"
+                                                                : "Website",
+                                        })}
+                                    </div>
+                                </div>
+                                <ExternalLink size={16} className="shrink-0 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
+                            </div>
+                        </button>
+                    </li>
+                ))}
+
+                {/* Share — opens the native share sheet so users can text the
+                    link to friends (6th tile completes the 2-col grid). */}
+                <li>
+                    <button
+                        type="button"
+                        onClick={() => void shareCorpan()}
+                        className="group w-full rounded-xl border border-border bg-card p-4 text-left transition hover:-translate-y-[1px] hover:border-purple-400/60 hover:shadow-md"
+                        aria-label={t("socials.share.title", { defaultValue: "Share Corpán" })}
+                    >
+                        <div className="flex items-center gap-3">
+                            <span className={`grid h-10 w-10 place-items-center rounded-lg ${LINK_ICON_CLS}`} aria-hidden>
+                                <Share2 size={20} />
+                            </span>
+                            <div className="min-w-0 flex-1">
+                                <div className="truncate text-sm font-semibold text-foreground">
+                                    {shareCopied
+                                        ? t("socials.share.copied", { defaultValue: "Link copied!" })
+                                        : t("socials.share.title", { defaultValue: "Share Corpán" })}
+                                </div>
+                            </div>
+                            <ExternalLink size={16} className="shrink-0 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
+                        </div>
+                    </button>
+                </li>
+            </ul>
+        </OnboardingShell>
     );
 }

@@ -119,11 +119,16 @@
       "noMatches": "無結果。",
       "noFiltered": "這裡現在沒有內容。",
       "stackTotalPhrases": "~{{count}} 條片語匹配",
-      "stackTotalNudge": "新增更多包或擴大等級以增加多樣性。"
+      "stackTotalNudge": "新增更多包或擴大等級以增加多樣性。",
+      "activeCount": "{{total}} 個中的 {{active}} 個啟用中",
+      "baseCorpusSubtitle": "{{n}} 個詞句"
     },
     "sendAnonUsage": "傳送匿名使用資料",
     "sendAnonUsageHint": "匿名、僅限本次使用階段。不需帳號、不含裝置 ID，也不會儲存 IP。你可隨時關閉。",
-    "readPrivacyPromise": "閱讀我們的隱私承諾"
+    "readPrivacyPromise": "閱讀我們的隱私承諾",
+    "showStreak": "顯示連續閱讀天數",
+    "showStreakHint": "標題中顯示連續閱讀天數。僅限裝置內，無提醒或通知。",
+    "primaryLanguage": "主要（使用者介面）語言"
   },
   "onboarding": {
     "welcome": "歡迎",
@@ -138,7 +143,7 @@
     "welcomeVisit": "造訪 encorpora.io",
     "linkCopied": "連結已複製！請在瀏覽器中開啟：",
     "reconfigureStack": "重新設定個人檔案",
-    "openVoiceSettings": "開啟語音設定",
+    "openVoiceSettings": "開啟「設定」",
     "openTTSSetup": "開啟 TTS 設定",
     "welcomeFollowUp": "感謝您的加入！期待在社群中與您相見。",
     "learningStepTitle": "學習",
@@ -147,8 +152,8 @@
     "languageOrderTipBody": "列表最下方的語言就是應用的介面語言。要更改介面語言，請將其他語言拖到最下方。",
     "ttsOsTipTitle": "提示",
     "ttsOsTipAndroid": "最佳效果：使用 Google 語音。Samsung TTS 在 Corpán 中無法使用。",
-    "ttsOsTipIOS": "在「設定 → 輔助使用」中找到「朗讀內容」，下載語音。注意：Apple 並不為每種語言提供語音。若升級無效，請透過 Apple 的 Feedback App 申請支援。",
-    "ttsOsTipMac": "在「系統設定 → 輔助使用」中找到「朗讀內容」，下載語音。注意：Apple 並不為每種語言提供語音。若升級無效，請透過 Apple 的 Feedback App 申請支援。",
+    "ttsOsTipIOS": "您的裝置內建免費的「進階」聲音 — Apple 只是將它們關閉了。開啟它們：「設定」→「輔助使用」→「語音內容」→「聲音」→ 您的語言，然後輕點「進階」或「增強」聲音的下載圖示。回來後，它會自動顯示在這裡。（Apple 尚未涵蓋所有語言。）",
+    "ttsOsTipMac": "您的 Mac 內建免費的「進階」聲音 — Apple 只是將它們關閉了。開啟它們：「系統設定」→「輔助使用」→「語音內容」→「系統聲音」→「管理聲音」，然後下載「進階」或「增強」聲音。回來後，它會自動顯示在這裡。（Apple 尚未涵蓋所有語言。）",
     "ttsOsTipWindows": "在「設定」安裝語音後回到這裡。",
     "ttsOsTipOther": "在裝置設定安裝語音後回到這裡。",
     "installVoicesAndroid": "安裝語音",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "安裝 Google Text-to-Speech",
-        "detail": "Google 的語音引擎在 Corpán 支援的所有語言中提供最佳品質。免費。",
+        "detail": "Google 的免費語音引擎為 Corpán 支援的大多數語言解鎖了高品質聲音 — 大多數手機並未預裝。讓我們新增它：",
         "button": "從 Play 商店安裝"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "稍後再來。",
       "offlineHero": "你目前離線。",
       "offlineSub": "短語包需要網路 — 稍後從「設定 → 包」再試。",
-      "offlineBanner": "離線 — 重新連線後將安裝所選項。"
+      "offlineBanner": "離線 — 重新連線後將安裝所選項。",
+      "noneSelected": "未選擇 — 繼續將跳過",
+      "selectedSuffix": "已選擇",
+      "skip": "暫時跳過",
+      "subtitle": "將專注詞句套件新增至您的堆疊。您可以隨時在「設定」中開啟或關閉它們。"
     },
     "notOnAppleIOS": "不是 iOS",
     "appleNoVoiceTitle": "Apple 目前尚未提供 {{lang}} 語音",
-    "appleNoVoiceBody": "只要向 Apple 的無障礙團隊簡短反映，就能幫助推動這件事。在此之前，{{lang}} 已可在 Android 原生使用。"
+    "appleNoVoiceBody": "只要向 Apple 的無障礙團隊簡短反映，就能幫助推動這件事。在此之前，{{lang}} 已可在 Android 原生使用。",
+    "back": "返回",
+    "continue": "繼續",
+    "class": {
+      "title": "這是為誰準備的？",
+      "subtitle": "我們會為您量身打造 Corpán。這些資料會留在您的裝置上，絕不會傳送至任何地方。",
+      "learner": "我正在學習語言",
+      "learnerDesc": "閱讀並聆聽您正在學習的語言內容。",
+      "enjoyer": "我想享受內容",
+      "enjoyerDesc": "以您的語言享受書籍、故事和遊戲。",
+      "polyglot": "兩者皆是 — 我全都要",
+      "polyglotDesc": "同時學習多種語言，並享有所有其他功能。",
+      "kid": "這是為兒童準備的",
+      "kidDesc": "為年幼讀者精選的書籍和學習遊戲。",
+      "ageTitle": "讀者的年齡是？",
+      "ageUnder13": "13 歲以下",
+      "ageTeen": "13–17 歲"
+    },
+    "pitch": {
+      "title": "加入 Corpanistas",
+      "subtitle": "Corpán Plus 讓您暢讀整個圖書館。任何書籍的第一部分皆可永久免費試閱。",
+      "everything": "所有書籍、所有語言 — 全部解鎖。",
+      "private": "無廣告。您的資料會留在裝置上。",
+      "team": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。",
+      "tryPlus": "試用 Corpán Plus",
+      "continueFree": "繼續使用免費方案"
+    },
+    "calibrate": {
+      "childAgeTitle": "讀者年齡？",
+      "childTeen": "13–17 歲",
+      "childUnder13": "13 歲以下",
+      "enjoyComfortable": "相當不錯",
+      "enjoyImproving": "我仍在學習閱讀",
+      "enjoyJustStarting": "剛開始 — 我是閱讀新手",
+      "enjoyNative": "流利 — 這是我的母語",
+      "enjoyTitle": "您閱讀 {{lang}} 的程度如何？",
+      "learnAdvanced": "我程度相當進階",
+      "learnLittle": "一點點",
+      "learnNever": "從未 — 完全新手",
+      "learnTitle": "您以前學過 {{lang}} 嗎？"
+    },
+    "confident": {
+      "addBetter": "解鎖更豐富的聲音",
+      "andMore": "還有 {{count}} 個",
+      "chooseVoices": "選擇聲音",
+      "noVoiceFor": "尚未有 {{lang}} 聲音 — 讓我們新增一個，讓 Corpán 可以朗讀。",
+      "voiceCountMany": "已有 {{count}} 個聲音",
+      "voiceCountOne": "已有 1 個聲音",
+      "yourVoiceFor": "您的 {{lang}} 聲音"
+    },
+    "engage": {
+      "joinDesc": "支持 Corpán 並解鎖所有內容。可選，隨時。",
+      "joinTitle": "加入 Corpanistas",
+      "start": "開始探索",
+      "subtitle": "Corpán 由一個小型開源團隊打造。歡迎打聲招呼 — 如果您喜歡，可以支持我們。",
+      "title": "您已準備就緒"
+    },
+    "fork": {
+      "child": {
+        "desc": "適合年幼學習者的溫和、有趣的書籍和遊戲。",
+        "label": "為兒童設定"
+      },
+      "enjoy": {
+        "desc": "書籍、故事、遊戲、練習等 — 全部使用您的語言。",
+        "label": "以 {{lang}} 享受 Corpán"
+      },
+      "learn": {
+        "desc": "新語言的故事、遊戲、練習和音訊。",
+        "label": "學習語言"
+      },
+      "polyglot": {
+        "desc": "堆疊多種語言並探索所有內容。",
+        "label": "探索多種語言"
+      },
+      "subtitle": "我們將為您設定一切。您可以稍後更改。",
+      "title": "什麼讓您來到 Corpán？"
+    },
+    "interests": {
+      "audio": "聆聽音訊",
+      "audioDesc": "有聲書、旁白和廣播。",
+      "games": "玩遊戲",
+      "gamesDesc": "透過有趣的挑戰學習。",
+      "read": "閱讀故事與書籍",
+      "readDesc": "沉浸於您語言的讀物。",
+      "speak": "練習口說",
+      "speakDesc": "大聲說出詞句並獲得回饋。",
+      "study": "學習與練習",
+      "studyDesc": "透過專注練習建立詞彙量。",
+      "subtitle": "選擇任何您感興趣的 — 我們將推薦相應的體驗。可選。",
+      "title": "您想做什麼？",
+      "wild": "探索新奇事物",
+      "wildDesc": "令人驚訝的實驗性體驗。"
+    },
+    "settingUp": "正在設定…",
+    "ttsIntro": "Corpán 會朗讀。輕點一個聲音，以您的速度聆聽。",
+    "voiceGuide": {
+      "intro": "您的裝置內建豐富、自然的聲音 — 免費，且遠優於預設。製造商只是將它們關閉了。讓我們開啟它們；只需輕點幾下：",
+      "macStep1": "開啟「系統設定」。",
+      "macStep2": "前往「輔助使用」→「語音內容」。",
+      "macStep3": "在「系統聲音」下，開啟「管理聲音」。",
+      "macStep4": "下載您語言的「進階」或「增強」聲音。",
+      "macStep5": "回到 Corpán — 它會自動顯示在這裡。",
+      "step1": "輕點下方的「開啟設定」。",
+      "step2": "前往「輔助使用」→「語音內容」→「聲音」。",
+      "step3": "輕點您的語言。",
+      "step4": "下載「進階」或「增強」聲音。",
+      "step5": "回到 Corpán — 它會自動顯示在這裡。",
+      "title": "解鎖您裝置的最佳聲音"
+    },
+    "voicePreviewAria": "預覽 {{name}}",
+    "voicePreviewSelected": "預覽已選",
+    "voiceRecommended": "推薦",
+    "voiceSelectedCount": "{{total}} 個中的 {{count}} 個"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "造訪",
       "title": "encorpora.io",
       "desc": "含文件與社群的主站。"
+    },
+    "instagram": {
+      "cta": "追蹤",
+      "desc": "@corpanapp",
+      "title": "在 Instagram 上追蹤"
+    },
+    "share": {
+      "title": "分享 Corpán",
+      "text": "用 Corpán 學習語言。",
+      "copied": "連結已複製！"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "試試 Corpán Pack，或自己製作。",
     "devLink": "在 Free2z 了解更多",
     "new": "新",
-    "updates": "更新",
     "offline": "離線",
     "purchasing": "購買中...",
     "buy": "購買 {{price}}",
@@ -480,8 +610,19 @@
       "openDrawer": "瀏覽片語包 ({{count}})",
       "openDrawerLabel": "瀏覽片語包",
       "inactiveBadge": "未啟用",
-      "moreActionsLabel": "更多操作"
-    }
+      "moreActionsLabel": "更多操作",
+      "install": "安裝"
+    },
+    "unlockWithPlus": "使用 Corpán Plus 解鎖",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus 方案內含",
+    "installFailedTitle": "安裝失敗",
+    "installStuckDetail": "一段時間沒有進度。請檢查您的連線並重試。",
+    "installStuckTitle": "下載停滯",
+    "openPack": "開啟 {{name}}",
+    "recent": "最近",
+    "updateAll": "全部更新 ({{count}})",
+    "updateAvailable": "有可用的更新"
   },
   "subscription": {
     "title": "解鎖全部",
@@ -538,5 +679,106 @@
     "maybeLater": "稍後再說",
     "empty": "更多包正在路上——同時探索 Corpán 吧。",
     "offlineEmpty": "連接網際網路以發現包——或暫時跳過。"
+  },
+  "paywall": {
+    "title": "透過 Corpán Plus 繼續學習",
+    "thanksTitle": "您是 Corpanista",
+    "thanksBody": "感謝您支持 Corpán。所有內容皆已解鎖。",
+    "bookSubhead": "您已讀完 {{title}} 的免費預覽內容。",
+    "subhead": "解鎖所有語言的書籍。無廣告。您的資料會留在裝置上。",
+    "pitch": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。Corpanistas 讓應用程式保持無廣告並持續成長。",
+    "maybeLater": "稍後再說",
+    "continue": "繼續"
+  },
+  "streak": {
+    "title": "{{count}} 天連續學習"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "伴隨有聲書朗讀，逐字高亮，沉浸體驗。",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "逐筆練習，精通中文漢字。",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "聽見詞句，操控匹配 — 寓教於樂。",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "在快速遊戲中，逐塊組合詞句。",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "快速翻閱您的語言詞句 — 專注練習。",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "大聲說出詞句，獲得發音回饋。",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "相同的有聲書，沉浸式3D體驗 — 詞句隨朗讀在空間中流動。",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "收聽來自世界各地的即時廣播。",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "繼續學習",
+    "experiences": "體驗",
+    "forYou": "為您推薦",
+    "get": "取得",
+    "installing": "正在安裝…",
+    "library": "資料庫",
+    "like": "喜歡",
+    "notForMe": "不適合我",
+    "open": "開啟",
+    "openPhrases": "開啟詞句",
+    "phraseFlipDesc": "翻閱您的語言詞句",
+    "plusChip": "Corpán Plus — 解鎖所有內容",
+    "recommended": "推薦",
+    "showAnother": "顯示其他",
+    "tryIt": "試用"
+  },
+  "offline": {
+    "cachedSubtitle": "顯示您上次的快取結果。",
+    "catalogSubtitle": "重新連線以探索新套件。您已安裝的套件仍可使用。",
+    "installNeedsInternet": "重新連線以下載。",
+    "onboardingBanner": "離線 — 重新連線後將安裝所選項目。",
+    "packCatalogSubtitle": "您已安裝的套件仍可使用。重新連線以瀏覽更多。",
+    "packCatalogTitle": "套件目錄需要網路連線",
+    "phrasePacksOnboardingSubtitle": "重新連線後，您可以稍後從「設定」→「套件」中選擇詞句套件。",
+    "phrasePacksSubtitle": "您已安裝的詞句套件仍可使用。重新連線以瀏覽新套件。",
+    "phrasePacksTitle": "詞句套件目錄需要網路連線",
+    "purchaseNeedsInternet": "重新連線以購買。",
+    "restoreSubtitle": "重新連線以回復購買項目。",
+    "subscriptionSubtitle": "重新連線以訂閱。您已安裝的套件和捆綁詞句仍可使用。",
+    "subscriptionTitle": "訂閱需要網路連線",
+    "title": "無網路連線",
+    "voiceDownloadSubtitle": "您裝置上已有的聲音仍可使用。重新連線以安裝更多。",
+    "voiceDownloadTitle": "聲音下載需要網路連線"
+  },
+  "quickSettings": {
+    "fullSettings": "完整設定",
+    "title": "快速設定"
+  },
+  "tour": {
+    "maybeLater": "稍後再說",
+    "progress": "{{total}} 個中的 {{n}} 個"
+  },
+  "update": {
+    "availableLine": "有可用的更新 → {{version}}",
+    "close": "關閉",
+    "description": "您的應用程式商店有 Corpán 的新版本。",
+    "remindLater": "稍後提醒",
+    "skipThisVersion": "跳過此版本",
+    "title": "有可用的更新",
+    "update": "更新",
+    "updateNow": "立即更新",
+    "versionLine": "{{version}} 版本已準備好安裝。"
   }
 }

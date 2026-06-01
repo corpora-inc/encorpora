@@ -55,6 +55,37 @@ from pymobiledevice3.services.webinspector import (  # type: ignore
 
 CORPAN_BUNDLE = "com.corpora.corpan"
 DEFAULT_TIMEOUT = 5.0
+TARGET_WAIT = 8.0  # seconds to wait for Target.targetCreated after socket setup
+
+
+def _install_target_capture() -> None:
+    """Make InspectorSession capture the auto-created target id.
+
+    WebKit (iOS 26.x) drives a single-window WebView through the Target
+    domain: after `setup_inspector_socket` it emits `Target.targetCreated`,
+    and every Runtime/Console command must be wrapped in
+    `Target.sendMessageToTarget`. Upstream's `_target_created` is a no-op, so
+    `target_id` stays None, commands go raw, and the page rejects them with
+    "'Runtime' domain was not found". We override it to record the id; once
+    set, send_command/runtime_evaluate route through the target correctly.
+    Spin-waiting in `create(wait_target=True)` hangs (consume race), so we
+    create with wait_target=False and poll for the captured id instead.
+    """
+
+    def _capture(self: InspectorSession, response: dict) -> None:
+        info = response.get("params", {}).get("targetInfo")
+        if info and self.target_id is None:
+            self.set_target_id(info["targetId"])
+
+    InspectorSession._target_created = _capture  # type: ignore[assignment]
+
+
+async def _await_target(session: InspectorSession) -> None:
+    deadline_steps = int(TARGET_WAIT / 0.01)
+    for _ in range(deadline_steps):
+        if session.target_id:
+            return
+        await asyncio.sleep(0.01)
 
 
 async def pick_corpan_page(inspector: WebinspectorService) -> ApplicationPage:
@@ -72,6 +103,21 @@ async def pick_corpan_page(inspector: WebinspectorService) -> ApplicationPage:
             "no inspectable pages found. unlock the iPad, confirm the app is "
             "running, and that Web Inspector is enabled."
         )
+
+    # When `tauri ios dev` relaunches the app, WebKit can briefly keep BOTH the
+    # stale bundled page (web_url "tauri://localhost") and the live dev-server
+    # page (web_url "http(s)://…:1421") inspectable. Prefer the live http(s)
+    # page so we never drive a ghost. In a production/bundled run only the
+    # tauri:// page exists, so this still returns it.
+    def _rank(p: ApplicationPage) -> int:
+        url = (p.page.web_url or "").lower()
+        if url.startswith("http"):
+            return 0
+        if url.startswith("tauri"):
+            return 2
+        return 1
+
+    matches.sort(key=_rank)
     return matches[0]
 
 
@@ -81,6 +127,7 @@ def _trace(msg: str) -> None:
 
 
 async def eval_js(expr: str, return_by_value: bool = True) -> Any:
+    _install_target_capture()
     udid = os.environ.get("CORPAN_IPAD_UDID", "")
     _trace("tunneld start")
     rsd = await _tunneld(udid)
@@ -109,10 +156,21 @@ async def eval_js(expr: str, return_by_value: bool = True) -> Any:
         )
         session = await InspectorSession.create(protocol, wait_target=False)
         _trace("session ready")
-        _trace("console_enable")
-        await session.console_enable()
-        _trace("runtime_enable")
-        await session.runtime_enable()
+        _trace("await target")
+        await _await_target(session)
+        _trace(f"target_id={session.target_id}")
+        if session.target_id is None:
+            raise SystemExit(
+                "no Target.targetCreated within timeout — the WebView never "
+                "exposed a target. Confirm the app is foregrounded + Web "
+                "Inspector is on."
+            )
+        # Runtime.enable is optional but cheap once the target is routed.
+        try:
+            _trace("runtime_enable")
+            await session.runtime_enable()
+        except Exception as exc:  # noqa: BLE001 - dev tool, log + continue
+            _trace(f"runtime_enable skipped: {exc}")
         _trace("runtime_evaluate")
         result = await session.runtime_evaluate(expr, return_by_value=return_by_value)
         _trace("done")

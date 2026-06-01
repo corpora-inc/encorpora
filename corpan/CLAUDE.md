@@ -230,3 +230,42 @@ Native delivery:
 - **zustand**: State management
 - **i18next**: Internationalization
 - **framer-motion**: Animations
+
+## Corpán Plus (monetization) — architecture decisions
+
+Subscription-only. **Per-book IAP is retired** (a month of à-la-carte books drew
+zero buyers; per-book SKUs are operationally expensive). Existing per-book
+owners stay entitled; no new per-book buy buttons are shown.
+
+**Free tier = server-truncated, not client-gated.** Corpán is open source, so a
+client-side "free up to segment N" check would be trivially bypassed. Instead
+the publisher (`ttsctl publish --with-preview`) emits a *truncated preview ZIP*
+(public, first `min(floor(total/3), 100)` segments) and a *full ZIP*
+(CloudFront-signed, Plus-gated). The free user never receives the paid bytes.
+
+**Three-shape catalog, clean runtime.** During the (permanent — people don't
+update) transition, `catalog-v2.json` entries carry BOTH legacy fields
+(`downloadUrl`/`tier`/`purchase`, for old runtimes) AND new fields
+(`preview`/`full`/`totalSegments`/`freeSegments`, for new runtimes). The new
+runtime reads ONLY the new fields; entries without them are skipped. The legacy
+public ZIP stays published indefinitely for old clients, so the paywall is
+intentionally "soft" until legacy publishing is ever sunset.
+
+**Key code:**
+- Install switch: `packs/shared/catalog/src/installManager.ts` (`isTwoZipEntry`)
+  — subscriber → signed full ZIP; else → public preview ZIP.
+- Paywall: `corpan-app/src/components/paywall/PaywallSheet.tsx` + `store/paywall.ts`,
+  opened by the `corpan:request-unlock` window event (readers dispatch it at
+  end-of-preview; Library/PackActions dispatch it for "Unlock with Plus").
+- Reader preview detection: `is_preview` flag in segments.json (or
+  `segments.length < total_segments`) → dispatch `corpan:request-unlock`.
+- Onboarding: primary-language-FIRST so the userClass quiz + Plus pitch are
+  localized. `OnboardingUserClass`/`OnboardingPlusPitch`; profile in
+  `store/settings.ts` (`userClass`/`ageBand`/`goalIntensity`).
+- Progress/streaks: `store/progress.ts` (localStorage only), fed by the
+  `corpan:segment-progress` window event from readers. `StreakChip` is opt-in.
+- Backfill existing catalog: `infra/scripts/backfill_two_zip.py` (dry-run first).
+
+**Principles (non-negotiable):** no ads ever; no login (Apple/Google = identity);
+on-device analytics only; the free tier is generous + permanent; localize every
+new string in ~50 langs; no Duolingo dark patterns (streak is opt-in/dignified).

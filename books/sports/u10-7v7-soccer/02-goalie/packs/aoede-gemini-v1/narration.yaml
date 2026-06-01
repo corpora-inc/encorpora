@@ -2,6 +2,7 @@ version: 1
 engine: gemini
 voices:
   bn: Aoede
+  id: Aoede
 tts: {}
 retry:
   max_retries: 2

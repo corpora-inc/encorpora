@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { invoke } from "@tauri-apps/api/core";
 import { AnimatePresence, motion } from "framer-motion";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
 import {
     detectOSFromUA,
@@ -18,6 +19,7 @@ import {
     tryAutoRecover,
     installVoiceData,
     langMatchScore,
+    defaultVoiceIdsForLang,
     type VoiceInfo,
     type TtsEngineStatus,
     type TtsHealthProbe,
@@ -31,7 +33,11 @@ import { useSettingsStore } from "@/store/settings";
 
 import { OnboardingTTSInstructionsHeaderActions } from "./OnboardingTTSInstructionsHeaderActions";
 import { OnboardingTTSInstructionsLanguageSection } from "./OnboardingTTSInstructionsLanguageSection";
-import { OnboardingHeader, STEPS } from "./OnboardingHeader";
+import { OnboardingTTSConfidentVoice } from "./OnboardingTTSConfidentVoice";
+import { ChevronDown, SlidersHorizontal } from "lucide-react";
+import { OnboardingShell } from "@/onboarding/OnboardingShell";
+import { VoiceInstallGuideModal } from "./VoiceInstallGuideModal";
+import { Button } from "@/components/ui/button";
 import { OnboardingTTSRescueCard } from "./OnboardingTTSRescueCard";
 import {
     OnboardingTTSProbing,
@@ -118,8 +124,6 @@ type Phase =
     | { kind: "ready"; engine?: string | null }              // Phase B
     | { kind: "rescue"; probe: TtsHealthProbe; busy: boolean }; // diagnosis card
 
-// STEPS = [learning(0), packs(1), tts(2), socials(3)]
-const CURRENT_STEP_IDX = 2;
 
 function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
     return {
@@ -138,13 +142,41 @@ function fallbackProbe(diagnosis: TtsDiagnosis): TtsHealthProbe {
     };
 }
 
+/* -------------------------------- Skeleton -------------------------------- */
+
+/**
+ * A placeholder that mirrors the OnboardingTTSConfidentVoice row's footprint.
+ * Rendered per-language while `list_voices` is still resolving, so the async
+ * voices result fills the rows IN PLACE — the body height never changes and
+ * nothing gets pushed around / re-centered when the data arrives.
+ */
+function ConfidentVoiceSkeleton() {
+    return (
+        <div
+            className="rounded-2xl border border-border bg-card/60 p-3.5 shadow-sm"
+            aria-hidden="true"
+        >
+            <div className="flex items-center gap-3">
+                <div className="h-12 w-12 shrink-0 animate-pulse rounded-full bg-muted" />
+                <div className="min-w-0 flex-1 space-y-2">
+                    <div className="h-3 w-20 animate-pulse rounded bg-muted" />
+                    <div className="h-4 w-32 animate-pulse rounded bg-muted" />
+                    <div className="h-2.5 w-40 animate-pulse rounded bg-muted/70" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
 /* -------------------------------- Component -------------------------------- */
 
-export function OnboardingTTSInstructions() {
+export function OnboardingTTSInstructions({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setPreferredEngine = useSettingsStore((s) => s.setPreferredEngine);
     const languages = useSettingsStore((s) => s.languages);
-    const dir = useSettingsStore((s) => s.dir);
+    // Calibrated speech rate from the comfort question — used so the voice
+    // preview is heard at the user's chosen speed (not a fixed default).
+    const rate = useSettingsStore((s) => s.rate);
 
     const voicePrefs = useSettingsStore((s) => s.voicePrefs);
     const toggleVoiceSelection = useSettingsStore((s) => s.toggleVoiceSelection);
@@ -157,6 +189,9 @@ export function OnboardingTTSInstructions() {
     );
     // Brief "✓ Voices ready!" flash after a successful auto-recovery.
     const [recoveryFlash, setRecoveryFlash] = useState(false);
+
+    // Apple-only interstitial that teaches the Settings tap-path for voices.
+    const [showVoiceGuide, setShowVoiceGuide] = useState(false);
 
     const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
     const [engineStatus, setEngineStatus] = useState<TtsEngineStatus | null>(null);
@@ -382,11 +417,9 @@ export function OnboardingTTSInstructions() {
     }
 
     function handleSkip() {
-        // Advance past TTS to the final Finish step. STEPS = [learning(0),
-        // packs(1), tts(2), socials(3)] → wizard indices are shifted by 2
-        // (welcome + pickPrimary precede the visible stepper), so Finish
-        // lives at wizard step 5.
-        setStep(5);
+        // Engine-driven: advance to the next graph node (Plus pitch). Legacy
+        // fallback advances to the old wizard's Finish step (5).
+        ;(onAdvance ?? (() => setStep(5)))()
     }
 
     function primaryActionFor(diagnosis: TtsDiagnosis): {
@@ -438,16 +471,6 @@ export function OnboardingTTSInstructions() {
         }
     }
 
-    const stepLabels = useMemo(
-        () =>
-            STEPS.map((s, i) =>
-                i === CURRENT_STEP_IDX
-                    ? t("onboarding.ttsStepTitle", { defaultValue: s.label })
-                    : t(`onboarding.${s.key}`, { defaultValue: s.label }),
-            ),
-        [t],
-    );
-
     const langs = languages;
 
     function voicesForLang(code: string): ExtendedVoiceInfo[] | null {
@@ -484,11 +507,68 @@ export function OnboardingTTSInstructions() {
         }
     }
 
+    // The auto-picked SET per language — every voice at the best tier present
+    // (all premium, else all enhanced, else whatever). Badged "Recommended" in
+    // the power-user grid; also the default selection. More good voices = more
+    // variety, and the learner sees how many they have.
+    const recommendedByLang = useMemo(() => {
+        const map: Record<string, string[]> = {};
+        for (const code of langs) {
+            map[code] = defaultVoiceIdsForLang(voicesForLang(code) || [], code);
+        }
+        return map;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [langs, voices, os]);
+
+    // The full SET of voices to surface in the confident default — the user's
+    // current selection if they've chosen, else the auto-picked top tier. The
+    // confident row leads with the COUNT ("3 voices ready") because the key
+    // signal for the average user is that they HAVE good voices and how many.
+    function shownVoicesForLang(code: string): VoiceInfo[] {
+        const list = voicesForLang(code) || [];
+        const ids = voicePrefs[code]?.ids ?? [];
+        const selected = ids.length ? list.filter((v) => ids.includes(v.id)) : [];
+        const pool = selected.length
+            ? selected
+            : list.filter((v) => recommendedByLang[code]?.includes(v.id));
+        return sortVoicesWithLangBias(pool, code);
+    }
+
+    // Auto-pick the single best region-appropriate voice per language so TTS
+    // "just works" out of the box — the single-language beginner never has to
+    // know what a voice even is, and multi-language stacks get the correct
+    // dialect (pt-PT not pt-BR, a Taiwan voice for zh-Hant, etc.). Fires once,
+    // and only for languages the user hasn't already chosen for.
+    const autoPicked = useRef(false);
+    useEffect(() => {
+        if (autoPicked.current) return;
+        const ready = phase.kind === "ready" && voices !== null && !recoveryFlash;
+        if (!ready) return;
+        for (const code of langs) {
+            const alreadyChosen = (voicePrefs[code]?.ids ?? []).length > 0;
+            if (alreadyChosen) continue;
+            const defaults = defaultVoiceIdsForLang(voicesForLang(code) || [], code);
+            if (defaults.length) setSelectionForLang(code, defaults);
+        }
+        autoPicked.current = true;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phase.kind, voices, recoveryFlash]);
+
+    // Power-user grid disclosure ("Choose voices" / "Customize").
+    const [showPicker, setShowPicker] = useState(false);
+
     async function openInstaller() {
         await deepLinkToVoiceInstall({ preferGoogle: true, engineStatus });
     }
-    async function openSettings() {
-        await openTtsSettings();
+    // Apple platforms: there's no way to deep-link into Voices, so show an
+    // interstitial that teaches the exact tap-path BEFORE opening Settings.
+    // Other platforms open settings directly.
+    function openSettings() {
+        if (os === "ios" || os === "macos") {
+            setShowVoiceGuide(true);
+        } else {
+            void openTtsSettings();
+        }
     }
 
     async function handleInstallForLang(code: string) {
@@ -505,11 +585,9 @@ export function OnboardingTTSInstructions() {
         if (phase.kind === "loading") {
             return <OnboardingTTSProbing />;
         }
-        // Engine ready but voices not yet populated (list_voices is retrying).
-        // Show the loading skeleton rather than an empty page.
-        if (phase.kind === "ready" && voices === null && !recoveryFlash) {
-            return <OnboardingTTSProbing />;
-        }
+        // (Engine-ready-but-voices-still-loading no longer renders here — the
+        //  phaseB layout shows immediately with per-language skeleton rows that
+        //  fill in place, avoiding a loading→content layout jerk.)
         if (phase.kind === "ready" && recoveryFlash) {
             return <OnboardingTTSReadyConfirm engine={phase.engine ?? null} />;
         }
@@ -529,105 +607,194 @@ export function OnboardingTTSInstructions() {
         return null;
     };
 
-    const showPhaseB = phase.kind === "ready" && !recoveryFlash && voices !== null;
+    // Render the real layout as soon as the engine is ready — even before
+    // `list_voices` resolves. The per-language rows show skeletons until their
+    // voices arrive (then fill IN PLACE), so the body never changes height /
+    // re-centers when the async voices query returns. No loading→content swap.
+    const showPhaseB = phase.kind === "ready" && !recoveryFlash;
+
+    // The whole screen is ONE scroll surface (OnboardingShell scrolls; the
+    // footer Continue stays pinned). No inner scrollers, no height caps — long
+    // voice lists simply flow and the page scrolls. Top-aligned so the
+    // loading→voices swap grows downward instead of re-centering.
+
+    const renderLanguageSection = (code: string, bare: boolean) => {
+        const list = voicesForLang(code);
+        if (list === null) return null;
+        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
+        const sample = sampleFor(code);
+        // Empty-voice CTA: install (Android) vs Apple-feedback (iOS-gap langs)
+        // vs nothing. Mutually exclusive — the section branches on whichever set.
+        const isIOS = os === "ios" || os === "macos";
+        const isGap = isIOS && isAppleIOSVoiceGap(code);
+        return (
+            <OnboardingTTSInstructionsLanguageSection
+                key={code}
+                code={code}
+                voices={list}
+                selectedIds={pref.ids}
+                recommendedIds={recommendedByLang[code]}
+                onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
+                onPreviewAny={(voice) => speakExact(voice, sample, rate)}
+                isRTL={isRTL(code)}
+                bare={bare}
+                onInstallVoiceData={
+                    os === "android" ? () => void handleInstallForLang(code) : undefined
+                }
+                onSendAppleFeedback={isGap ? () => void openAppleFeedback() : undefined}
+            />
+        );
+    };
+
+    // Case 1/2: the calm, confident "your voice for {lang}" row per language.
+    // Shows the auto-picked region-appropriate voice + Play; nudges to Settings
+    // when only a low-quality voice exists, or to install when there's none.
+    const renderConfidentVoice = (code: string) => {
+        const list = voicesForLang(code);
+        // Voices for this language haven't resolved yet — hold the row's space
+        // with a skeleton so the real data fills IN PLACE (no layout jerk).
+        if (list === null) return <ConfidentVoiceSkeleton key={code} />;
+        const sample = sampleFor(code);
+        const isIOS = os === "ios" || os === "macos";
+        const isGap = isIOS && isAppleIOSVoiceGap(code);
+        return (
+            <OnboardingTTSConfidentVoice
+                key={code}
+                code={code}
+                voices={shownVoicesForLang(code)}
+                isRTL={isRTL(code)}
+                onPreview={(voice) => speakExact(voice, sample, rate)}
+                onInstallVoiceData={
+                    os === "android" ? () => void handleInstallForLang(code) : undefined
+                }
+                onSendAppleFeedback={isGap ? () => void openAppleFeedback() : undefined}
+                onAddBetterVoice={openSettings}
+            />
+        );
+    };
 
     return (
-        <section
-            id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background md:bg-muted"
-            style={{
-                WebkitOverflowScrolling: "touch",
-                paddingLeft: "env(safe-area-inset-left)",
-                paddingRight: "env(safe-area-inset-right)",
-            }}
-            dir={dir()}
+        <OnboardingShell
+            canBack
+            onBack={onBack ?? (() => setStep(3))}
+            maxWidthClass="max-w-3xl"
+            footer={
+                <Button className="w-full !h-12" aria-label="Continue" onClick={onAdvance ?? (() => setStep(5))}>
+                    {t("onboarding.continue")}
+                </Button>
+            }
         >
-            <OnboardingHeader
-                title={t("onboarding.textToSpeechSetup", { defaultValue: "Text-to-speech setup" })}
-                steps={stepLabels}
-                currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(3)}
-                onNext={() => setStep(5)}
-                canNext={true}
-            >
-                {showPhaseB ? (
-                    <OnboardingTTSInstructionsHeaderActions
-                        os={os}
-                        onOpenInstaller={openInstaller}
-                        onOpenSettings={openSettings}
-                        onSmartSelect={smartSelectAll}
-                        canSmartSelect={canSmartSelect}
-                        engineStatus={engineStatus}
-                        engineStatusReady={engineStatusReady}
-                    />
-                ) : null}
-            </OnboardingHeader>
+            <VoiceInstallGuideModal
+                open={showVoiceGuide}
+                onOpenChange={setShowVoiceGuide}
+                isMac={os === "macos"}
+                onConfirm={() => {
+                    setShowVoiceGuide(false);
+                    void openTtsSettings();
+                }}
+            />
 
-            <main
-                className="flex-1 min-h-0"
-                style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
-            >
-                <div className="mx-auto w-full max-w-5xl px-3">
-                    <AnimatePresence mode="wait">
-                        {!showPhaseB ? (
-                            <motion.div
-                                key={phase.kind + (phase.kind === "ready" && recoveryFlash ? "-flash" : "")}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.18 }}
+            <h1 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
+                {t("onboarding.textToSpeechSetup", { defaultValue: "Set up the voice" })}
+            </h1>
+            <p className="mx-auto mt-2 max-w-md text-center text-sm text-muted-foreground">
+                {t("onboarding.ttsIntro", {
+                    defaultValue: "Corpán reads aloud. Tap a voice to hear it at your speed.",
+                })}
+            </p>
+
+            <div className="mt-5 w-full">
+                <AnimatePresence mode="wait">
+                    {!showPhaseB ? (
+                        <motion.div
+                            key={phase.kind + (phase.kind === "ready" && recoveryFlash ? "-flash" : "")}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.18 }}
+                        >
+                            {renderRescueOrPhaseA()}
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="phaseB"
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                        >
+                            {/* Case 1/2 — the calm, confident default: one row per
+                                language with the auto-picked region-appropriate
+                                voice + Play-to-test. Single voices flow on phone;
+                                a grid keeps multi-language stacks tidy on tablet. */}
+                            <div
+                                className={
+                                    langs.length === 1
+                                        // Single language → one centered, capped card (not
+                                        // flush-left in a half-width grid cell).
+                                        ? "mx-auto w-full max-w-md"
+                                        : "grid grid-cols-1 gap-3 sm:grid-cols-2"
+                                }
                             >
-                                {renderRescueOrPhaseA()}
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="phaseB"
-                                initial={{ opacity: 0, y: 6 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.2, ease: "easeOut" }}
-                            >
-                                {langs.map((code) => {
-                                    const list = voicesForLang(code);
-                                    const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
-                                    const sample = sampleFor(code);
-                                    if (list === null) return null;
+                                {langs.map((code) => renderConfidentVoice(code))}
+                            </div>
 
-                                    // Empty-voice CTA: pick install (Android) vs Apple-feedback
-                                    // (iOS-gap langs) vs nothing. Mutually exclusive — the
-                                    // section component branches on whichever is set.
-                                    const isIOS = os === "ios" || os === "macos";
-                                    const isGap = isIOS && isAppleIOSVoiceGap(code);
+                            {/* Case 3 — power-user disclosure. Hidden by default;
+                                reveals the full per-language grid with select-all
+                                + per-voice toggles for region/quality overrides. */}
+                            <div className="mt-5">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPicker((s) => !s)}
+                                    aria-expanded={showPicker}
+                                    className="mx-auto flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/70 active:scale-[0.99]"
+                                >
+                                    <SlidersHorizontal size={15} className="text-purple-600" />
+                                    <span>
+                                        {t("onboarding.confident.chooseVoices", {
+                                            defaultValue: "Choose voices",
+                                        })}
+                                    </span>
+                                    <ChevronDown
+                                        size={16}
+                                        className={[
+                                            "text-muted-foreground transition-transform",
+                                            showPicker ? "rotate-180" : "",
+                                        ].join(" ")}
+                                    />
+                                </button>
 
-                                    return (
-                                        <OnboardingTTSInstructionsLanguageSection
-                                            key={code}
-                                            code={code}
-                                            voices={list}
-                                            selectedIds={pref.ids}
-                                            onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
-                                            onPreviewAny={(voice) => speakExact(voice, sample, 0.9)}
-                                            previewSampleText={sample}
-                                            isRTL={isRTL(code)}
-                                            onInstallVoiceData={
-                                                os === "android" ? () => void handleInstallForLang(code) : undefined
-                                            }
-                                            onSendAppleFeedback={
-                                                isGap ? () => void openAppleFeedback() : undefined
-                                            }
-                                        />
-                                    );
-                                })}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-                {/* Static bottom spacer — env(safe-area-inset-bottom)
-                 *  is unreliable (0 on Android Tauri, undersized on
-                 *  iPad in some contexts), so use the same static
-                 *  h-8+pb-20 pattern as the other onboarding screens.
-                 *  See corpan-app/AGENTS.md §6. */}
-                <div className="h-8 pb-20" />
-            </main>
-        </section>
+                                <AnimatePresence initial={false}>
+                                    {showPicker ? (
+                                        <motion.div
+                                            key="picker"
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.22, ease: "easeOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="mt-4">
+                                                <div className="mb-4 flex justify-center">
+                                                    <OnboardingTTSInstructionsHeaderActions
+                                                        os={os}
+                                                        onOpenInstaller={openInstaller}
+                                                        onOpenSettings={openSettings}
+                                                        onSmartSelect={smartSelectAll}
+                                                        canSmartSelect={canSmartSelect}
+                                                        engineStatus={engineStatus}
+                                                        engineStatusReady={engineStatusReady}
+                                                    />
+                                                </div>
+                                                {langs.map((code) => renderLanguageSection(code, false))}
+                                            </div>
+                                        </motion.div>
+                                    ) : null}
+                                </AnimatePresence>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </OnboardingShell>
     );
 }

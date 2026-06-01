@@ -1,6 +1,17 @@
-import type { CatalogNarrationEntry } from "./types"
+import type { CatalogNarrationEntry, NarrationArtifact } from "./types"
 import { addInstalled, removeInstalled } from "./libraryStore"
-import { resolveReceiptForEntry } from "./purchaseManager"
+import {
+  resolveReceiptForEntry,
+  resolveSubscriptionReceipt,
+  isCurrentlySubscribed,
+} from "./purchaseManager"
+
+/** True when the entry uses the Corpán Plus two-ZIP model (preview + full). */
+export function isTwoZipEntry(
+  entry: CatalogNarrationEntry
+): entry is CatalogNarrationEntry & { preview: NarrationArtifact; full: NarrationArtifact } {
+  return !!entry.preview && !!entry.full
+}
 
 type TauriInternals = {
   invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown>
@@ -33,8 +44,8 @@ export type InstallErrorCode =
   | "DOWNLOAD_FAILED"
 
 type SignedUrlResult =
-  | { url: string }
-  | { url: null; code: Exclude<InstallErrorCode, "NO_TAURI" | "NO_RECEIPT" | "DOWNLOAD_FAILED">; message: string; detail?: string }
+  | { ok: true; url: string }
+  | { ok: false; url: null; code: Exclude<InstallErrorCode, "NO_TAURI" | "NO_RECEIPT" | "DOWNLOAD_FAILED">; message: string; detail?: string }
 
 /**
  * Production purchase-verify endpoint (AWS API Gateway → Lambda).
@@ -51,6 +62,118 @@ const DEFAULT_VERIFY_URL = "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.c
  * On success returns the URL. On failure returns a structured reason so the
  * caller can surface it to the user.
  */
+/**
+ * Generalized signed-URL request: signs an arbitrary premium download URL
+ * for a given product + receipt. Used by both the legacy per-book path
+ * (productId = corpan.book.*) and the Corpán Plus path (productId =
+ * corpan.sub.* signing the `full` artifact).
+ */
+async function requestSignedUrl(
+  downloadUrl: string,
+  productId: string | undefined,
+  packId: string,
+  transactionId: string,
+  receipt: string,
+  platform: string
+): Promise<SignedUrlResult> {
+  if (typeof navigator !== "undefined" && !navigator.onLine) {
+    return {
+      ok: false,
+      url: null,
+      code: "OFFLINE",
+      message: "Subscription needs internet — reconnect and try again.",
+      detail: "navigator.onLine is false",
+    }
+  }
+
+  const verifyUrl =
+    ((typeof import.meta !== "undefined" &&
+      import.meta.env?.VITE_GAME_VERIFY_URL) as string | undefined) ||
+    DEFAULT_VERIFY_URL
+
+  try {
+    const fullUrl = verifyUrl.replace(/\/+$/, "") + "/verify-purchase"
+    let downloadPath: string | undefined
+    try {
+      downloadPath = new URL(downloadUrl).pathname.replace(/^\/+/, "")
+    } catch {
+      downloadPath = undefined
+    }
+
+    const res = await fetch(fullUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        platform,
+        productId,
+        packId,
+        transactionId,
+        ...(downloadPath ? { downloadPath } : {}),
+        ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
+      }),
+    })
+
+    const bodyText = await res.text()
+    if (!res.ok) {
+      console.error("[reader-catalog] verify-purchase HTTP", res.status, bodyText)
+      return {
+        ok: false,
+      url: null,
+        code: "VERIFY_HTTP",
+        message: "Backend couldn't verify your subscription",
+        detail: `HTTP ${res.status}: ${truncate(bodyText, 300)}`,
+      }
+    }
+
+    let data: { status?: string; signedUrl?: string; error?: string } = {}
+    try {
+      data = JSON.parse(bodyText)
+    } catch {
+      return {
+        ok: false,
+      url: null,
+        code: "VERIFY_REJECTED",
+        message: "Backend returned an unreadable response",
+        detail: truncate(bodyText, 300),
+      }
+    }
+
+    if (data.status !== "verified") {
+      console.error("[reader-catalog] verify-purchase status", data.status, data.error)
+      return {
+        ok: false,
+      url: null,
+        code: "VERIFY_REJECTED",
+        message: "Backend rejected this receipt",
+        detail: data.error ?? `status: ${data.status ?? "(missing)"}`,
+      }
+    }
+
+    if (!data.signedUrl) {
+      console.error("[reader-catalog] verify-purchase verified but missing signedUrl")
+      return {
+        ok: false,
+      url: null,
+        code: "SIGNED_URL_MISSING",
+        message: "Backend verified you but can't issue a download URL",
+        detail: "signedUrl missing from verified response",
+      }
+    }
+
+    return { ok: true, url: data.signedUrl }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error("[reader-catalog] Signed URL request failed:", err)
+    return {
+      ok: false,
+      url: null,
+      code: "VERIFY_NETWORK",
+      message: "Couldn't reach the purchase-verify backend",
+      detail: msg,
+    }
+  }
+}
+
 async function getSignedDownloadUrl(
   entry: CatalogNarrationEntry,
   transactionId: string,
@@ -62,6 +185,7 @@ async function getSignedDownloadUrl(
   // toast instead of an alarming "couldn't reach backend" message.
   if (typeof navigator !== "undefined" && !navigator.onLine) {
     return {
+      ok: false,
       url: null,
       code: "OFFLINE",
       message: "Purchase needs internet — reconnect and try again.",
@@ -110,7 +234,8 @@ async function getSignedDownloadUrl(
     if (!res.ok) {
       console.error("[reader-catalog] verify-purchase HTTP", res.status, bodyText)
       return {
-        url: null,
+        ok: false,
+      url: null,
         code: "VERIFY_HTTP",
         message: "Backend couldn't verify your purchase",
         detail: `HTTP ${res.status}: ${truncate(bodyText, 300)}`,
@@ -122,7 +247,8 @@ async function getSignedDownloadUrl(
       data = JSON.parse(bodyText)
     } catch {
       return {
-        url: null,
+        ok: false,
+      url: null,
         code: "VERIFY_REJECTED",
         message: "Backend returned an unreadable response",
         detail: truncate(bodyText, 300),
@@ -132,7 +258,8 @@ async function getSignedDownloadUrl(
     if (data.status !== "verified") {
       console.error("[reader-catalog] verify-purchase status", data.status, data.error)
       return {
-        url: null,
+        ok: false,
+      url: null,
         code: "VERIFY_REJECTED",
         message: "Backend rejected this receipt",
         detail: data.error ?? `status: ${data.status ?? "(missing)"}`,
@@ -142,18 +269,20 @@ async function getSignedDownloadUrl(
     if (!data.signedUrl) {
       console.error("[reader-catalog] verify-purchase verified but missing signedUrl")
       return {
-        url: null,
+        ok: false,
+      url: null,
         code: "SIGNED_URL_MISSING",
         message: "Backend verified you but can't issue a download URL",
         detail: "signedUrl missing from verified response (likely CloudFront signing key not configured in Lambda)",
       }
     }
 
-    return { url: data.signedUrl }
+    return { ok: true, url: data.signedUrl }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
     console.error("[reader-catalog] Signed URL request failed:", err)
     return {
+      ok: false,
       url: null,
       code: "VERIFY_NETWORK",
       message: "Couldn't reach the purchase-verify backend",
@@ -196,6 +325,67 @@ export async function installNarration(
     }
   }
 
+  // ── Corpán Plus two-ZIP model ──
+  // New-shape entries carry preview (public) + full (Plus-gated). The new
+  // runtime reads ONLY these: subscribers get the full ZIP via signed URL;
+  // everyone else gets the public preview ZIP. The legacy downloadUrl is
+  // ignored here.
+  if (isTwoZipEntry(entry)) {
+    const sub = await isCurrentlySubscribed()
+    const wantFull = sub.ok && sub.entitled
+
+    if (wantFull) {
+      const receipt = await resolveSubscriptionReceipt()
+      if (!receipt) {
+        return {
+          ok: false,
+          code: "NO_RECEIPT",
+          message: "We couldn't find your Corpán Plus subscription",
+          detail: "resolveSubscriptionReceipt returned nothing. Try Restore Purchases.",
+        }
+      }
+      const signed = await requestSignedUrl(
+        entry.full.url,
+        "corpan.plus",
+        entry.id,
+        receipt.transactionId,
+        receipt.receipt,
+        receipt.platform
+      )
+      if (!signed.ok) {
+        return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
+      }
+      try {
+        await invoke("content_packs_install_from_url", {
+          packId: entry.id,
+          downloadUrl: signed.url,
+          expectedSha256: entry.full.sha256 || null,
+        })
+        addInstalled(entry)
+        return { ok: true }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.error("[reader-catalog] Full install failed:", entry.id, err)
+        return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
+      }
+    }
+
+    // Non-subscriber → public preview ZIP, no auth.
+    try {
+      await invoke("content_packs_install_from_url", {
+        packId: entry.id,
+        downloadUrl: entry.preview.url,
+        expectedSha256: entry.preview.sha256 || null,
+      })
+      addInstalled(entry)
+      return { ok: true }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error("[reader-catalog] Preview install failed:", entry.id, err)
+      return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
+    }
+  }
+
   let downloadUrl = entry.downloadUrl
 
   // Premium content requires a signed URL.
@@ -229,7 +419,7 @@ export async function installNarration(
       resolvedInfo.platform
     )
 
-    if (!signed.url) {
+    if (!signed.ok) {
       return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
     }
 

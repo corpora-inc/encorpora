@@ -34,7 +34,7 @@ Bases need strong legs and strong shoulders.
 
 I am a base on my team.
 
-I am not the biggest kid, but I am pretty strong.
+I am pretty strong.
 
 Then there is the back spot.
 

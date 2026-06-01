@@ -14,21 +14,21 @@ Uniform, shoes, bow, water bottle, snack.
 
 The uniform is a big deal.
 
-Mine is blue with silver stripes.
+We all match, that's the whole point.
 
 Some of the boys wear a top with shorts.
 
 It still matches.
 
-We all match, that's the whole point.
+The point is that you look like one team.
 
 Hair has to be tight and out of your face.
 
 In a high pony with a bow.
 
-My bow is silver with blue glitter.
+The bow is part of the uniform, too.
 
-It's bigger than my head.
+It's bigger than your head.
 
 Pom-poms.
 

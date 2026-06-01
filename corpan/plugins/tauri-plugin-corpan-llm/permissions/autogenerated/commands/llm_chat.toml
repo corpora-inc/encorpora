@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-llm-chat"
+description = "Enables the llm_chat command without any pre-configured scope."
+commands.allow = ["llm_chat"]
+
+[[permission]]
+identifier = "deny-llm-chat"
+description = "Denies the llm_chat command without any pre-configured scope."
+commands.deny = ["llm_chat"]

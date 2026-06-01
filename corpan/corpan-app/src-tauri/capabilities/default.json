@@ -8,6 +8,7 @@
   "permissions": [
     "core:default",
     "opener:default",
+    "clipboard-manager:allow-write-text",
     "tts:allow-speak",
     "tts:default",
     "audio-keepalive:default",
@@ -15,6 +16,7 @@
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",
     "stt:default",
-    "os:default"
+    "os:default",
+    "corpan-llm:default"
   ]
 }

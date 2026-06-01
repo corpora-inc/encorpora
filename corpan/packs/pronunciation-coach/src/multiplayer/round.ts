@@ -22,6 +22,7 @@ import type { EntryOut, HostApi, TranslationOut } from "../sdk/types"
 import { mergeForLang } from "../whisperTuning"
 import { mergeScoringForLangModel } from "../scoringTuning"
 import { pmConfirm } from "./confirm"
+import { tt } from "../i18n"
 // Silence auto-stop disabled in 0.6.1 — the native `audio_level`
 // stream + `silenceWatcher.ts` state machine stay intact for a
 // future re-wiring against a real VAD model, but RMS-thresholding
@@ -120,6 +121,14 @@ const pickTargetTranslation = (
   entry: EntryOut,
   languages: string[],
 ): { target: TranslationOut | null; native: TranslationOut | null } => {
+  // Single-language stack: everyone practises the one language; no gloss.
+  if (languages.length <= 1) {
+    const only = languages[0]
+    const target = only
+      ? entry.translations.find((t) => t.language_code === only) ?? null
+      : null
+    return { target, native: null }
+  }
   // languages[0] is native (gloss / anchor / UI); the rest are target
   // slots. For multiplayer the phrase has to be the same across all
   // players in the round, but the target *language* gets shuffled
@@ -167,8 +176,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
   if (!stt) {
     opts.container.innerHTML = `
       <div class="pc-pm-root pc-pm-error">
-        <p>Whisper STT is not available on this device.</p>
-        <button class="pc-pm-start" data-pm-quit>Back</button>
+        <p>${tt("roundNoStt")}</p>
+        <button class="pc-pm-start" data-pm-quit>${tt("commonBack")}</button>
       </div>`
     opts.container
       .querySelector<HTMLButtonElement>("[data-pm-quit]")
@@ -203,7 +212,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
             <span class="pc-pm-eyebrow" data-pm-eyebrow></span>
           </div>
           <div class="pc-pm-head-action-row">
-            <button class="pc-pm-back" data-pm-quit aria-label="Quit game">‹</button>
+            <button class="pc-pm-back" data-pm-quit aria-label="${tt("roundQuitGame")}">‹</button>
             <span class="pc-pm-headline" data-pm-headline></span>
             <div class="pc-pm-head-spacer pc-pm-turn-indicator" data-pm-turn></div>
           </div>
@@ -216,7 +225,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
               <div class="pc-result-transcript-up" data-pm-transcript hidden></div>
             </div>
             <div class="pc-card-center">
-              <h1 class="pc-target" data-pm-target>Loading…</h1>
+              <h1 class="pc-target" data-pm-target>${tt("bootLoading")}</h1>
               <p class="pc-romanization" data-pm-roman hidden></p>
               <p class="pc-native" data-pm-native hidden></p>
             </div>
@@ -231,17 +240,17 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
             <button class="pc-mic" data-pm-mic disabled>
               <span data-pm-mic-icon>●</span>
             </button>
-            <div class="pc-mic-label" data-pm-mic-label>Loading…</div>
+            <div class="pc-mic-label" data-pm-mic-label>${tt("bootLoading")}</div>
             <div class="pc-pm-tries-dots" data-pm-tries></div>
           </div>
-          <button class="pc-pm-pass-chip is-invisible" data-pm-pass>Pass to next →</button>
+          <button class="pc-pm-pass-chip is-invisible" data-pm-pass>${tt("roundPass")}</button>
         </div>
 
         <div class="pc-pm-splash" data-pm-splash hidden>
           <div class="pc-pm-splash-inner">
-            <p class="pc-pm-splash-pre">Pass the device to</p>
+            <p class="pc-pm-splash-pre">${tt("roundPassTo")}</p>
             <p class="pc-pm-splash-name" data-pm-splash-name>—</p>
-            <button class="pc-pm-splash-go" data-pm-splash-go>Ready</button>
+            <button class="pc-pm-splash-go" data-pm-splash-go>${tt("roundReady")}</button>
           </div>
         </div>
       </div>`
@@ -251,9 +260,9 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       .querySelector<HTMLButtonElement>("[data-pm-quit]")
       ?.addEventListener("click", async () => {
         const proceed = await pmConfirm({
-          message: "Quit this game? Scores will be lost.",
-          confirmLabel: "Quit",
-          cancelLabel: "Keep playing",
+          message: tt("quitConfirmMsg"),
+          confirmLabel: tt("commonQuit"),
+          cancelLabel: tt("quitConfirmKeep"),
           destructive: true,
         })
         if (!proceed) return
@@ -330,21 +339,31 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
         ? phraseTarget.language_code.split("-")[0].toUpperCase()
         : ""
       const langPart = langCode ? ` · ${langCode}` : ""
-      eyebrow.textContent = `Round ${opts.game.currentRound}${langPart} · First to ${opts.game.winTarget}`
+      // langPart ("" or " · XX", an untranslated language code) is passed
+      // as a placeholder so it lands correctly regardless of how a locale
+      // orders the surrounding words.
+      eyebrow.textContent = tt("roundEyebrow", {
+        round: String(opts.game.currentRound),
+        langPart,
+        winTarget: String(opts.game.winTarget),
+      })
     }
     const headline = q<HTMLElement>("[data-pm-headline]")
     if (headline) {
-      headline.textContent = `${player?.name ?? "—"}'s turn`
+      headline.textContent = tt("roundTurn", { name: player?.name ?? "—" })
     }
     const turn = q<HTMLElement>("[data-pm-turn]")
     if (turn) {
-      turn.textContent = `${playerNum} / ${ofPlayers}`
+      turn.textContent = tt("roundTurnIndicator", {
+        playerNum: String(playerNum),
+        ofPlayers: String(ofPlayers),
+      })
     }
 
     // Phrase card
     const targetEl = q<HTMLElement>("[data-pm-target]")
     if (targetEl) {
-      targetEl.textContent = phraseTarget?.text ?? "Loading…"
+      targetEl.textContent = phraseTarget?.text ?? tt("bootLoading")
     }
     const romanEl = q<HTMLElement>("[data-pm-roman]")
     if (romanEl) {
@@ -385,18 +404,18 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     if (micLabel) {
       micLabel.textContent =
         uiState === "loading"
-          ? "Loading…"
+          ? tt("bootLoading")
           : uiState === "passing"
-            ? `${player?.name ?? "—"}, get ready`
+            ? tt("roundMicGetReady", { name: player?.name ?? "—" })
             : uiState === "recording"
-              ? "Tap to stop"
+              ? tt("roundMicTapToStop")
               : uiState === "scoring"
-                ? "Scoring…"
+                ? tt("scoring")
                 : uiState === "result" && attemptsLeft > 0
-                  ? "Tap to try again"
+                  ? tt("roundMicTryAgain")
                   : uiState === "result"
-                    ? "Tap mic or pass"
-                    : "Tap to speak"
+                    ? tt("roundMicTapOrPass")
+                    : tt("roundMicTapToSpeak")
     }
     if (triesEl) {
       triesEl.innerHTML = Array.from({ length: MAX_ATTEMPTS_PER_PLAYER }, (_, i) => {
@@ -473,9 +492,9 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     // can read the heard-vs-expected pills below if they want detail.
     const headlineText =
       tier === "good"
-        ? "Nailed it"
+        ? tt("roundResultGood")
         : tier === "okay"
-          ? "Close — try again"
+          ? tt("roundResultOkay")
           : ""
 
     banner.className = `pc-result-banner ${tier}`
@@ -499,8 +518,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
         <div class="pc-transcripts">
           <div class="pc-transcript-row heard" role="button" tabindex="0"
                data-pm-speak-heard
-               aria-label="Play what Whisper heard">
-            <span class="pc-transcript-label">Heard you say</span>
+               aria-label="${tt("ariaPlayHeard")}">
+            <span class="pc-transcript-label">${tt("heardYouSay")}</span>
             <span class="${lineCls}">
               <span class="pc-transcript-play" aria-hidden="true">${playGlyph}</span>
               <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
@@ -727,8 +746,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       // gets wiped because uiState goes back to "ready".
       lastErrorMessage =
         code === "NOT_PREPARED" || /not prepared/i.test(msg)
-          ? "Speech model isn't loaded yet. Open Practice once to install it."
-          : `Couldn't score this attempt: ${msg}`
+          ? tt("errModelNotPrepared")
+          : tt("errCouldntScore", { error: msg })
       lastResult = null
       uiState = "ready"
       refresh()
@@ -757,11 +776,11 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     refresh()
     try {
       const cfg = opts.hostApi.getStackConfig()
-      if (!cfg.languages || cfg.languages.length < 2) {
+      if (!cfg.languages || cfg.languages.length < 1) {
         opts.container.innerHTML = `
           <div class="pc-pm-root pc-pm-error">
-            <p>Add a target language to your Corpán stack before starting Parlometron.</p>
-            <button class="pc-pm-start" data-pm-quit>Back</button>
+            <p>${tt("errNoLanguageStack")}</p>
+            <button class="pc-pm-start" data-pm-quit>${tt("commonBack")}</button>
           </div>`
         opts.container
           .querySelector<HTMLButtonElement>("[data-pm-quit]")
@@ -776,8 +795,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       if (!target) {
         opts.container.innerHTML = `
           <div class="pc-pm-root pc-pm-error">
-            <p>This phrase doesn't have a translation in your target language.</p>
-            <button class="pc-pm-start" data-pm-quit>Back</button>
+            <p>${tt("errNoTranslation")}</p>
+            <button class="pc-pm-start" data-pm-quit>${tt("commonBack")}</button>
           </div>`
         opts.container
           .querySelector<HTMLButtonElement>("[data-pm-quit]")
@@ -797,8 +816,8 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       if (disposed) return
       opts.container.innerHTML = `
         <div class="pc-pm-root pc-pm-error">
-          <p>Couldn't load a phrase. Try again later.</p>
-          <button class="pc-pm-start" data-pm-quit>Back</button>
+          <p>${tt("errCantLoadPhrase")}</p>
+          <button class="pc-pm-start" data-pm-quit>${tt("commonBack")}</button>
         </div>`
       opts.container
         .querySelector<HTMLButtonElement>("[data-pm-quit]")

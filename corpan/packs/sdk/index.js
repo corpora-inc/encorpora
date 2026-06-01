@@ -6,6 +6,9 @@ const defaultStackConfig = {
   rate: 0.8,
   textSize: "medium",
   showRomanization: true,
+  phrasePackIds: [],
+  baseCorpusEnabled: true,
+  scrollNavigationEnabled: true,
 };
 
 const getRegistry = () => {
@@ -49,16 +52,54 @@ export const createMockHostApi = (options = {}) => {
     ...defaultStackConfig,
     ...(stackOverrides || {}),
   };
+  const snapshot = () => ({ ...stackConfig, languages: [...stackConfig.languages] });
+  const stackListeners = new Set();
+  const mockHistory = { ids: [], sources: [], index: -1 };
+  const historyListeners = new Set();
 
   return {
     isMock: true,
     speak: async (uiCode, text) => {
       speakWithBrowserTts(uiCode, text, stackConfig.rate);
     },
-    getStackConfig: () => ({ ...stackConfig, languages: [...stackConfig.languages] }),
+    getStackConfig: () => snapshot(),
     onStackConfigChange: (listener) => {
-      listener({ ...stackConfig, languages: [...stackConfig.languages] });
-      return () => {};
+      listener(snapshot());
+      stackListeners.add(listener);
+      return () => stackListeners.delete(listener);
+    },
+    setStackConfig: (patch = {}) => {
+      Object.assign(stackConfig, patch);
+      for (const l of stackListeners) l(snapshot());
+    },
+    history: {
+      getState: () => ({ ids: [...mockHistory.ids], sources: [...mockHistory.sources], index: mockHistory.index }),
+      push: (entryId, source = "base") => {
+        mockHistory.ids.push(entryId);
+        mockHistory.sources.push(source);
+        mockHistory.index = mockHistory.ids.length - 1;
+        for (const l of historyListeners) l();
+      },
+      setIndex: (index) => { mockHistory.index = index; for (const l of historyListeners) l(); },
+      replaceCurrent: (entryId, source = "base") => {
+        if (mockHistory.index < 0) { mockHistory.ids.push(entryId); mockHistory.sources.push(source); mockHistory.index = 0; }
+        else { mockHistory.ids[mockHistory.index] = entryId; mockHistory.sources[mockHistory.index] = source; }
+        for (const l of historyListeners) l();
+      },
+      getRecentTuples: (n) => {
+        const out = [];
+        for (let i = mockHistory.ids.length - 1; i >= 0 && out.length < n; i -= 1) {
+          out.push({ entryId: mockHistory.ids[i], source: mockHistory.sources[i] });
+        }
+        return out;
+      },
+      subscribe: (listener) => { historyListeners.add(listener); return () => historyListeners.delete(listener); },
+    },
+    notifyUtterance: () => {},
+    phrasePacks: {
+      getInstalled: () => ({}),
+      setEnabled: () => {},
+      subscribe: () => () => {},
     },
     getRandomEntry: async () => ({
       entry_id: 1,

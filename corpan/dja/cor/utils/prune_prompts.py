@@ -1,6 +1,6 @@
 """Prompts for the audit_prune pipeline."""
 
-PRUNE_SYSTEM_PROMPT = """You are auditing English phrases for a multilingual learning corpus that ships in a small, polished mobile app. The app supports 38 languages including Hebrew, Arabic, Greek, Swahili, Malay, Hindi, Mandarin, etc.
+PRUNE_SYSTEM_PROMPT = """You are auditing English phrases for a multilingual learning corpus that ships in a small, polished mobile app. The app supports 50+ languages including Hebrew, Arabic, Greek, Swahili, Malay, Hindi, Mandarin, etc.
 
 Your job: score each phrase on three axes (1=worst, 5=best) and decide whether to CUT it.
 

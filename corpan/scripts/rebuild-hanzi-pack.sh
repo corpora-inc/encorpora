@@ -31,26 +31,16 @@ fi
 echo "[hanzi-pack] Building pack DB..."
 "${PYTHON_BIN}" "${CORPAN_ROOT}/dja/hanzi_pack/build_hanzi_pack.py" \
   --strokes "${STROKES_JSON}" \
-  --etymology "${ETYMOLOGY_JSON}"
+  --etymology "${ETYMOLOGY_JSON}" \
+  --include-etymology-chars
 
-echo "[hanzi-pack] Building dist bundle..."
+echo "[hanzi-pack] Building dist bundle + zip via npm..."
 (
   cd "${PACK_DIR}"
-  mkdir -p dist
-  cat hanziwriter.min.js > dist/app.js
-  printf '\n;' >> dist/app.js
-  cat index.js >> dist/app.js
-  cp styles.css dist/app.css
-)
-
-echo "[hanzi-pack] Packaging zip..."
-(
-  cd "${PACK_DIR}"
-  zip -r -FS hanzipan.zip \
-    manifest.json \
-    dist/ \
-    HANZIWRITER_LICENSE.txt \
-    data/
+  # Vite handles bundling (incl. inlining hanziwriter.min.js into
+  # dist/app.js — see vite.config.js). The legacy `cat *.js` path is
+  # gone; pack.mjs builds the zip.
+  npm run pack:all
 )
 
 echo "[hanzi-pack] Copying to dev output..."

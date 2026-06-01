@@ -46,7 +46,7 @@ Memory rule added: `~/.claude/projects/-home-skyl/memory/feedback_voice_id_immut
 
 ## Catalog Status
 
-### Three Questions (Три вопроса) — ALL 23 LANGS AT v0.2.0 ✓
+### Three Questions (Три вопроса) — ALL CONFIGURED LANGS AT v0.2.0 ✓
 - Pack: `~/encorpora/books/literature/tolstoy-short-stories/three-questions/packs/ian-chatterbox-v1`
 - Realigned with large-v3, published, clean
 
@@ -116,10 +116,10 @@ Realignment script: `~/bin/realign-catalog.py`
 
 ### Priority order:
 1. Finish soccer books (in progress)
-2. Volcanoes + Atom (23 langs each, published, high user impact)
-3. Zheng Yi Sao (21 langs)
-4. Genesis (7 langs, 1533 segs — big but fewer langs)
-5. Monte Albán + Unconquered People (5 langs each)
+2. Volcanoes + Atom (full multi-lang ship, published, high user impact)
+3. Zheng Yi Sao
+4. Genesis (1533 segs — big, smaller language footprint)
+5. Monte Albán + Unconquered People
 
 ## NON-NEGOTIABLE RULES
 

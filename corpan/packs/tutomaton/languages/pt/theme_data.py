@@ -1,0 +1,156 @@
+"""Themed vocabulary lists for Portuguese.
+
+Each theme maps to a list of items. The retriever returns these DIRECTLY
+when the user asks for "food vocabulary" / "show me family words" — the LLM
+is bypassed so we ship the canonical list (no hallucination).
+
+Item shape:
+  {
+    "word": "<target-language word>",       # required; with diacritics / hanzi / script
+    "ipa": "<IPA>",                         # recommended
+    "l1": {                                 # optional translations into top L1s
+      "en": "...",
+      "es": "...",
+      "fr": "...",
+      "de": "...",
+      "zh": "...",
+      "ja": "...",
+    },
+    "notes": "<optional usage note>"        # gender, classifier, register, etc.
+  }
+
+25 universal themes are scaffolded below. Each should have ~30 items for
+reference-grade. Pick high-frequency, learner-relevant words; avoid jargon.
+
+Order matters: items 1-10 should be the most useful (those will show first
+in a truncated render).
+"""
+
+THEMES: dict[str, list[dict]] = {
+
+    "food": [
+        # TODO: ~30 food items. Start with absolute basics (bread, water, rice,
+        # meat) then move to common dishes. Include both ingredients and
+        # prepared foods.
+    ],
+
+    "kitchen": [
+        # TODO: ~30 kitchen items. Utensils + appliances + actions (cook, fry,
+        # boil, chop) — though actions might live in `useful_phrases` instead.
+    ],
+
+    "family": [
+        # TODO: ~25-30 family terms. Include in-laws if your language
+        # distinguishes (most do). Order: parents, siblings, partners,
+        # children, grandparents, extended.
+    ],
+
+    "body": [
+        # TODO: ~30 body parts. Head-to-toe order works well. Include the
+        # ones used in idioms (heart, hand, head, eye).
+    ],
+
+    "weather": [
+        # TODO: ~25 weather terms. Conditions (sunny, rainy, cold), phenomena
+        # (storm, snow, fog), seasons.
+    ],
+
+    "clothes": [
+        # TODO: ~30 clothing items. Include verbs (wear, put on, take off)
+        # if they're distinctive in this language.
+    ],
+
+    "home": [
+        # TODO: ~30 home items. Rooms + furniture + everyday objects.
+    ],
+
+    "animals": [
+        # TODO: ~30 animals. Mix of pets, farm, wild, and learner-favorites
+        # (cat, dog, bird, fish, horse).
+    ],
+
+    "colors": [
+        # TODO: ~15-20 colors. Basic 11 + a few extras. Include shades only
+        # if culturally salient.
+    ],
+
+    "transport": [
+        # TODO: ~25 transport items. Modes + verbs of motion + travel-related
+        # nouns (ticket, station, road).
+    ],
+
+    "time_of_day": [
+        # TODO: ~25 time terms. Days of the week, months, today/yesterday/tomorrow,
+        # parts of day (morning/noon/evening/night), units (hour/minute/second).
+    ],
+
+    "numbers": [
+        # TODO: ~25-30 number terms. Cardinals 0-20 + key landmarks (100, 1000,
+        # 10000, million) + a few ordinals.
+    ],
+
+    "emotions": [
+        # TODO: ~25 emotion words. Basic feelings (happy, sad, angry, scared)
+        # + some nuanced (frustrated, content, anxious).
+    ],
+
+    "restaurant": [
+        # TODO: ~25-30 restaurant terms. Order, menu, bill, server, common
+        # dishes/drinks, special-request phrases.
+    ],
+
+    "travel": [
+        # TODO: ~30 travel terms. Passport, ticket, hotel, suitcase, airport,
+        # money exchange, common situations.
+    ],
+
+    "shopping": [
+        # TODO: ~25 shopping terms. Stores, money, sizes, transactions,
+        # try-on phrases.
+    ],
+
+    "school": [
+        # TODO: ~25-30 school items. Subjects, school people, school objects,
+        # exam vocabulary.
+    ],
+
+    "professions": [
+        # TODO: ~25-30 jobs. Mix of common (teacher, doctor, engineer) and
+        # service (cook, driver, nurse).
+    ],
+
+    "health": [
+        # TODO: ~25 health terms. Doctor visit, symptoms, medicines, body parts
+        # already in `body` (just the medical-context overlap).
+    ],
+
+    "technology": [
+        # TODO: ~25-30 tech terms. Phone, computer, internet, app, email,
+        # password, charger, common verbs.
+    ],
+
+    "sports": [
+        # TODO: ~25 sports terms. Common sports + verbs (play, win, lose,
+        # train) + equipment.
+    ],
+
+    "nature": [
+        # TODO: ~25-30 nature terms. Tree, flower, river, mountain, ocean,
+        # plant, garden + animals overlap.
+    ],
+
+    "greetings": [
+        # TODO: ~25 greetings + politeness phrases. Hello, goodbye, please,
+        # thank you, sorry, excuse me, how-are-you variants, leave-takings.
+    ],
+
+    "useful_phrases": [
+        # TODO: ~25-30 utility phrases. "I don't understand", "speak slowly",
+        # "what does X mean", "can you help me", time/location questions.
+    ],
+
+    "music": [
+        # TODO: ~25 music terms. Genres, instruments, verbs (sing, play, listen),
+        # cultural-specific genres (flamenco, K-pop, opera) if relevant.
+    ],
+}

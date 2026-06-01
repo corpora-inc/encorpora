@@ -200,13 +200,15 @@ def parse_manuscript(filepaths: list[str]) -> list[dict]:
         for si, (plain, md) in enumerate(zip(plain_sentences, md_sentences)):
             seg_counter += 1
             is_last = si == n - 1
+            # Kid-tempo pacing (Sports for Kids series — see CONVENTIONS.md).
+            # Default-tempo books use 2000 / 800 / 500.
             if not first_tts_emitted:
-                pause = 2000
+                pause = 700
                 first_tts_emitted = True
             elif is_last:
-                pause = 800
+                pause = 600
             else:
-                pause = 500
+                pause = 400
             seg: dict = {"id": _make_id(), **_base_fields(pid, si)}
             seg["block_type"] = block_type
             if extra:
@@ -292,7 +294,7 @@ def parse_manuscript(filepaths: list[str]) -> list[dict]:
                 seg["image_alt"] = img_match.group(1)
                 seg["tts"] = {
                     "text": img_match.group(1),
-                    "pause_after_ms": 1200,
+                    "pause_after_ms": 900,
                 }
                 segments.append(seg)
                 # Text remaining after the image
@@ -322,7 +324,7 @@ def parse_manuscript(filepaths: list[str]) -> list[dict]:
                     seg["tts"] = {
                         "text": plain,
                         "pause_after_ms": (
-                            500 if list_idx < len(list_items) - 1 else 800
+                            350 if list_idx < len(list_items) - 1 else 550
                         ),
                     }
                     segments.append(seg)

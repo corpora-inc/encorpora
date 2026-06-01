@@ -11,9 +11,11 @@ import {
 export function ContentPackOverlay({
   id,
   manifestUrl,
+  entry,
 }: {
   id: string
   manifestUrl?: string
+  entry?: { entryId?: number; source?: string; route?: string }
 }) {
   useEffect(() => {
     const meta = document.querySelector<HTMLMetaElement>('meta[name="viewport"]')
@@ -58,7 +60,7 @@ export function ContentPackOverlay({
 
   return (
     <div className="fixed inset-0 z-[1100]">
-      <ContentPackHost id={id} manifestUrl={manifestUrl} />
+      <ContentPackHost id={id} manifestUrl={manifestUrl} entry={entry} />
     </div>
   )
 }

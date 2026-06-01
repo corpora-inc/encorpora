@@ -22,7 +22,7 @@ voices:
   ko: ian-new-narration-try-more-chill-clear.wav
   ms: ian-new-narration-try-more-chill-clear.wav
   nl: ian-new-narration-try-more-chill-clear.wav
-  false: ian-new-narration-try-more-chill-clear.wav
+  "no": ian-new-narration-try-more-chill-clear.wav
   pl: ian-new-narration-try-more-chill-clear.wav
   pt: ian-new-narration-try-more-chill-clear.wav
   ru: ian-new-narration-try-more-chill-clear.wav
@@ -96,7 +96,7 @@ trimming:
     ko: 0.15
     ms: 0.12
     nl: 0.12
-    false: 0.12
+    "no": 0.12
     pl: 0.12
     pt: 0.12
     ru: 0.12
@@ -120,7 +120,7 @@ trimming:
     ko: 5.0
     ms: 5.0
     nl: 5.0
-    false: 5.0
+    "no": 5.0
     pl: 5.0
     pt: 5.0
     ru: 5.0
@@ -150,7 +150,7 @@ validation:
     ko: 0.15
     ms: 0.12
     nl: 0.12
-    false: 0.12
+    "no": 0.12
     pl: 0.12
     pt: 0.12
     ru: 0.12
@@ -174,7 +174,7 @@ validation:
     ko: 0.02
     ms: 0.02
     nl: 0.02
-    false: 0.02
+    "no": 0.02
     pl: 0.02
     pt: 0.02
     ru: 0.02
@@ -198,7 +198,7 @@ validation:
     ko: 5.0
     ms: 5.0
     nl: 5.0
-    false: 5.0
+    "no": 5.0
     pl: 5.0
     pt: 5.0
     ru: 5.0

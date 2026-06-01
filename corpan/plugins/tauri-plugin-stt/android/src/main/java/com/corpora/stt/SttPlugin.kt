@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.SystemClock
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import app.tauri.annotation.Command
@@ -30,6 +31,7 @@ import org.json.JSONArray
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 
 // Android implementation of tauri-plugin-stt — Phase 1.
 //
@@ -55,6 +57,16 @@ private const val LEADING_PAD_SAMPLES = 4_800   // 300 ms
 // user's transcript ("4.[_TT_200]") or poison the per-token logprob
 // stats.
 private val SPECIAL_TOKEN_RE = Regex("\\[_[^]]*]")
+
+/** Process-global state shared by every [SttPlugin] instance. The native
+ *  whisper.cpp/ggml globals it coordinates are process-scoped, so their
+ *  guard must be too — a per-instance lock left the cross-instance init
+ *  race open (see the comment on [SttPlugin.nativeMutex]). */
+private object WhisperNative {
+    val mutex = Mutex()
+    val instances = AtomicInteger(0)
+    val processStartUptimeMs = SystemClock.elapsedRealtime()
+}
 
 @InvokeArg
 class PrepareArgs {
@@ -167,16 +179,27 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     // Serializes ALL native whisper.cpp calls (init / transcribe / free).
     // whisper.cpp + ggml share process-global lazy state — the f16/f32
     // and type-trait tables, the CPU backend registry — initialized on
-    // first use with no internal locking. Two concurrent inits (trivial
-    // to trigger: the check-then-act in prepare()/installModel() lets two
-    // rapid calls both pass the "already loaded?" guard and both launch a
-    // load on the Dispatchers.IO pool) race on that state and SIGSEGV
-    // inside ggml_backend_sched_split_graph. A load racing a free, or a
-    // free racing an in-flight transcribe, is a use-after-free for the
-    // same reason. WhisperContext's own doc already promises callers
-    // serialize native access against in-flight calls; this mutex is that
-    // promise, kept on the only thing that can keep it — the caller.
-    private val nativeMutex = Mutex()
+    // first use with no internal locking. Two concurrent inits race on
+    // that state and SIGSEGV inside ggml_backend_sched_split_graph. A
+    // load racing a free, or a free racing an in-flight transcribe, is a
+    // use-after-free for the same reason.
+    //
+    // The lock MUST be process-global, not per-instance, because the
+    // state it guards is process-global. 0.5.1 used a `private val
+    // Mutex()`, which only serialized calls within ONE SttPlugin. On
+    // Activity recreation (process-restore, low-memory restart, or a
+    // config change outside our broad configChanges list) Tauri builds a
+    // SECOND SttPlugin with its own mutex while the first instance's init
+    // may still be running on a blocking JNI thread — cancellation is
+    // cooperative and JNI ignores it (see onDestroy). Two instance-local
+    // locks don't exclude each other, so the cross-instance init race
+    // still crashed in the field even after 0.5.1 shipped. One shared
+    // lock closes it.
+    private val nativeMutex = WhisperNative.mutex
+
+    /** 1-based ordinal of this SttPlugin within the process. >1 means the
+     *  Activity was recreated — the cross-instance scenario above. */
+    private val instanceOrdinal = WhisperNative.instances.incrementAndGet()
 
     @Volatile private var ctx: WhisperContext? = null
     @Volatile private var loadedModel: String? = null
@@ -192,6 +215,19 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
      *  compression threshold). nil = use the native ramps unchanged. */
     @Volatile private var activeScoringParams: ScoringParamsArg? = null
     @Volatile private var sessionStartedAt: Long = 0L
+
+    init {
+        if (instanceOrdinal > 1) {
+            Log.w(TAG, "SttPlugin instance #$instanceOrdinal created — Activity was recreated. " +
+                "Native lock is process-global, so cross-instance whisper init stays serialized.")
+        }
+        // A native SIGSEGV inside ggml init can't be caught in the JVM, so
+        // the only way to observe it is a breadcrumb that outlives the
+        // process: written just before nativeInitFromFile, deleted right
+        // after. If it's still on disk now, the previous init never
+        // returned — report and clear it.
+        reportPriorInitCrash()
+    }
 
     private val http: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -249,6 +285,91 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         }
         if (!installMarkerExists(name)) writeInstallMarker(name)
         return emptyList()
+    }
+
+    // ---------------------------------------------------------------
+    // Native-init safety: pre-load file sanity + crash breadcrumb
+    // ---------------------------------------------------------------
+
+    private fun initBreadcrumbFile(): File = File(markerDir(), "stt-init-inflight.json")
+
+    private fun writeInitBreadcrumb(model: String) {
+        try {
+            initBreadcrumbFile().writeText(
+                "{" +
+                    "\"model\":\"$model\"," +
+                    "\"instanceOrdinal\":$instanceOrdinal," +
+                    "\"instancesCreated\":${WhisperNative.instances.get()}," +
+                    "\"uptimeMs\":${SystemClock.elapsedRealtime() - WhisperNative.processStartUptimeMs}," +
+                    "\"ts\":${System.currentTimeMillis()}" +
+                    "}"
+            )
+        } catch (e: Exception) {
+            Log.w(TAG, "failed to write init breadcrumb: ${e.message}")
+        }
+    }
+
+    private fun clearInitBreadcrumb() {
+        try {
+            initBreadcrumbFile().delete()
+        } catch (e: Exception) {
+            Log.w(TAG, "failed to clear init breadcrumb: ${e.message}")
+        }
+    }
+
+    /** Loud post-mortem for a native init that never returned (almost
+     *  always an uncatchable SIGSEGV in whisper.cpp/ggml init). The
+     *  breadcrumb's instanceOrdinal / instancesCreated / uptimeMs answer
+     *  what the Play Console can't: cold launch vs Activity-recreate, and
+     *  whether more than one plugin instance had been built by crash time. Left
+     *  as one tagged line for the analytics layer to scrape later. */
+    private fun reportPriorInitCrash() {
+        val f = initBreadcrumbFile()
+        if (!f.exists()) return
+        val payload = try { f.readText() } catch (e: Exception) { "<unreadable: ${e.message}>" }
+        Log.e(TAG, "STT_INIT_CRASH previous on-device whisper init did not complete " +
+            "(probable native SIGSEGV in ggml init) context=$payload")
+        try { f.delete() } catch (_: Exception) {}
+    }
+
+    /** True if [f] starts with the ggml file magic. A truncated/empty
+     *  download or an HTML error page saved as the model has no magic;
+     *  catching it here returns a clean LOAD_FAILED instead of handing
+     *  garbage to native init. Fails OPEN on a read error so a transient
+     *  IO hiccup never blocks a genuine model. */
+    private fun looksLikeGgmlModel(f: File): Boolean {
+        if (!f.exists() || f.length() < 1_000_000L) return false
+        return try {
+            f.inputStream().use { s ->
+                val b = ByteArray(4)
+                if (s.read(b) != 4) return@use false
+                // GGML_FILE_MAGIC 0x67676d6c, stored little-endian on disk.
+                val magic = (b[0].toInt() and 0xff) or
+                    ((b[1].toInt() and 0xff) shl 8) or
+                    ((b[2].toInt() and 0xff) shl 16) or
+                    ((b[3].toInt() and 0xff) shl 24)
+                magic == 0x67676d6c
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "ggml magic check could not read ${f.name}, allowing load: ${e.message}")
+            true
+        }
+    }
+
+    /** The ONLY path that reaches native whisper init. MUST run while
+     *  holding [nativeMutex]. Rejects a non-ggml file before native code
+     *  sees it, then brackets the native call with the crash breadcrumb. */
+    private fun loadGuarded(name: String, path: String): WhisperContext? {
+        if (!looksLikeGgmlModel(File(path))) {
+            Log.e(TAG, "refusing to load $name: not a valid ggml model (bad magic / too small)")
+            return null
+        }
+        writeInitBreadcrumb(name)
+        try {
+            return WhisperContext.load(path)
+        } finally {
+            clearInitBreadcrumb()
+        }
     }
 
     private fun hasMicPermission(): Boolean {
@@ -429,7 +550,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                         Log.i(TAG, "dropping current ctx before install load test: $loadedModel")
                         ctx?.release(); ctx = null; loadedModel = null
                     }
-                    WhisperContext.load(dest.absolutePath)?.also { newCtx ->
+                    loadGuarded(name, dest.absolutePath)?.also { newCtx ->
                         ctx = newCtx
                         loadedModel = name
                     }
@@ -549,7 +670,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 }
 
                 Log.i(TAG, "loading model from disk: $name")
-                val loaded = WhisperContext.load(dest.absolutePath)
+                val loaded = loadGuarded(name, dest.absolutePath)
                 if (loaded != null) {
                     ctx = loaded; loadedModel = name
                     writeInstallMarker(name)

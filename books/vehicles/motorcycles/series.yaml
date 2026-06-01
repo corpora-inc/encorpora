@@ -28,7 +28,7 @@ series:
     reference: august-20.wav
     notes: |
       Warm, friendly narrator. The same voice across all twelve books and
-      all twenty-three languages.
+      every language in the live catalog.
 
   output:
     formats: [corpan-pack]

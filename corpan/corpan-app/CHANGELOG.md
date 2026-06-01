@@ -7,6 +7,198 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
+
+### Security
+
+- **content_packs.rs hardening** (release-review HIGH findings, code in 5a6c42cf):
+  - `corpan-pack://` `fetch_text`/`fetch_bytes` now sanitize + canonicalize-and-
+    contain both URL segments, closing a `..` path-traversal (arbitrary file read
+    in the app sandbox).
+  - Pack/module downloads cap the Content-Length pre-allocation (16 MiB) and
+    enforce a 1 GiB hard ceiling on streamed bytes (OOM-DoS guard).
+  - A failed pack upgrade restores the backed-up previous pack instead of leaving
+    the user with no pack.
+
+### Changed
+
+- **Paywall can be skinned per reader.** The `corpan:request-unlock` event now
+  accepts an optional `theme` ("earthgate" | "stargate"); `PaywallSheet` applies
+  a matching accent + background so the end-of-preview paywall feels native to
+  the reader it overlays. Unknown/absent theme → the default Corpán treatment.
+  The purchase flow (`SubscriptionOffer`) is unchanged.
+
+- **i18n: 0.16.0 delta translated into all 50 locales.** Filled the 144-key gap
+  introduced by the Plus paywall, decision-graph onboarding, Home hub,
+  experiences carousel, update prompt, install/offline states, phrase-pack
+  picker and confident voice picker (`settings.primaryLanguage`,
+  `settings.phrasePacks.*`, `onboarding.fork.*` / `calibrate.*` / `interests.*` /
+  `voiceGuide.*` / `phrasePacks.*` / `confident.*`, `home.*`, `experiences.*`,
+  `paywall.*`, `packs.installStuck*` / `recent` / `openPack` / `updateAvailable`
+  / `updateAll` / `phrasePack.install`, `tour.*`, `quickSettings.*`, `update.*`,
+  `offline.*`, `socials.instagram.*`, `streak.title`). Refreshed the four
+  voice-install strings whose EN copy was reframed
+  (`onboarding.openVoiceSettings`, `ttsOsTipIOS`, `ttsOsTipMac`,
+  `ttsRescue.engineNotInstalled.detail`). Brand names (Corpán, Corpán Plus,
+  Corpanista(s), pack names) and all `{{placeholders}}` preserved across every
+  locale; verified zero key gaps and zero placeholder mismatches.
+- **Voice-install copy reframed — "unlock your device's best voices".** The TTS
+  voice-setup guide, OS tips, and install nudges now frame premium voices as
+  capabilities your device already has but the maker left switched off, with
+  Corpán as the helpful guide ("let's turn them on; a few taps"). Honest and
+  understated, not hype. (`voiceGuide.*`, `ttsOsTip*`, `confident.addBetter` /
+  `noVoiceFor`, `ttsRescue.engineNotInstalled`.)
+- **TTS setup no longer jerks when voices load.** The screen renders its real
+  layout the moment the engine is ready, with per-language skeleton rows that
+  fill IN PLACE when `list_voices` resolves — so the async result never changes
+  the body height or re-centers the screen. (Replaced the loading-spinner →
+  content swap with stable skeletons.)
+- **Stable test anchors for scenario coverage (no user-visible change).** Added
+  language-agnostic targeting attributes used by the iPad scenario suite:
+  `aria-label="Continue"` on the onboarding footer primary (PickLearning,
+  PickPhrasePacks, TTSInstructions, MultiQuestionNodeView); `data-lang={code}`
+  on each primary-language option (OnboardingPickPrimary);
+  `data-testid="hero-cta"` / `data-testid="hero-cycle"` on the Home For-you hero
+  CTA + "Show me another" (HomeHub); `data-testid="browse-phrase-packs"`
+  (PhrasePackDrawerTrigger); `aria-label="Close settings"` on the Settings close
+  button (SettingsModal); `data-testid="quick-full-settings"` on the Quick
+  Settings "Full settings" button. Visible text and behavior are unchanged.
+
+- **Voice onboarding — confident, region-aware default.** The TTS voice screen
+  now leads with a calm per-language "Your {{lang}} voice" row: the
+  auto-picked, region/script-appropriate voice + a big Play-to-test, no grid to
+  wade through. Auto-pick is now dialect-aware (`langMatchScore` scores
+  region/script matches above wrong-dialect ones) so pt-PT gets a Portugal
+  voice, zh-Hant a Taiwan/HK voice, en-GB a UK voice, etc., picking the single
+  best top-tier voice by default. Low-quality-only languages show an "Add a
+  higher-quality voice" nudge to Settings; missing-voice languages keep the
+  install / Apple-feedback CTA. The full per-voice grid (select-all + per-voice
+  toggles) moved behind a "Choose voices" disclosure for power users. The
+  "Recommended" sparkle moved to the LEFT of the voice name.
+
+### Added
+
+- **Instagram on the "You're all set" page.** The onboarding engagement page now
+  links to Instagram (@corpanapp) alongside YouTube/GitHub/Free2Z/website, using
+  the same external-open helper and card markup. New localized `socials.instagram.*`
+  keys.
+- **Guided post-onboarding tour.** After "You're all set", new users step
+  through the top-ranked experiences one at a time (icon + name + "what it is" +
+  Try it / Maybe later, skippable), landing in their first pick — so nobody's
+  dumped on Home not knowing what Earthgate/Parlometron/etc. are. Reached via a
+  `{kind:"tour"}` landing intent (`components/tour/OnboardingTour`).
+- **Ratings feed the recommendation cycle.** The "For you" hero gains a like
+  (♥) and a "not for me" (✕); `store/packRating` persists them and biases
+  `scoreExperience` so the cycle leans toward what you like. Anonymous on-device
+  analytics added (`trackPackRecommended/Kept/Discarded`, `trackCycleAdvanced`).
+- **Addressability groundwork.** A pack can be deep-linked to a specific entry/
+  route (`?game=<id>&entryId=<n>&source=&route=`) — parsed into the pack's mount
+  `initialState` via `ContentPackOverlay`/`ContentPackHost`.
+
+- **Home is the single content surface; Packs tab retired.** Home now hosts
+  everything: the "For you" recommendation, a terse **Recent** row, a one-row
+  **Recommended** carousel, **Browse phrase packs**, and a spacious all-packs
+  listing (`home/PacksSection`) with per-pack **Update** + "Update all". The
+  Settings → Packs tab is gone; Settings is a single pane with a **Corpán Plus**
+  row (subscribe/manage/restore) and an **Advanced & Developer** block (the
+  7-tap dev unlock + manifest install moved here). `PacksListing` deleted.
+- **Quick Settings for the native Phrase Flip experience.** A gear beside the
+  Home button on Phrase Flip opens a compact sheet — speed, languages, levels,
+  active phrase packs — applied live; "Full settings" opens the full Settings
+  over it. This chrome is rendered **only** for the app-owned Phrase Flip (which
+  is genuinely stack-driven); content packs are NOT given injected floating
+  buttons — each pack owns its own exit and decides for itself whether/how to
+  expose stack settings (a pack can opt in via `hostApi.openQuickSettings()`).
+  (`QuickSettingsSheet`, `store/drawer` additions.)
+- **Monetization by interstitial.** Removed the drab "Unlock everything" card
+  from Home (now a tiny self-hiding Plus chip). `openPaywall` is suppressed for
+  subscribers / when IAP is unavailable and frequency-caps auto-fired engagement
+  surfaces; new `book_finished` interstitial fires when a book is completed.
+
+- **Home "For you" recommendation (Phrase Flip demoted).** The Home hero is now
+  a scored recommendation the user can act on ("Try it") or cycle ("Show me
+  another"), instead of a hardcoded Phrase Flip star. Ranking scores each
+  experience from the onboarding interests + profile against per-experience
+  **categories / good-for-class / order**. Phrase Flip is just one ranked
+  experience (in the grid unless it genuinely scores highest).
+- **Catalog-driven experiences.** Copy (`name`/`description` + localized),
+  artwork (`imageUrl`), and recommendation priority (`categories`,
+  `goodForClass`, `recommendOrder`, `kidFriendly`) now come from the catalog, so
+  new packs self-configure, rank, and localize **without an app release**. The
+  in-app `experiences/registry.ts` is the fallback for the built-in phrase
+  experience + catalog gaps. See `infra/CATALOG_RECOMMENDATION_FIELDS.md`.
+
+- **Onboarding interests multi-select ("What do you want to do?").** A new
+  skippable step (between voice setup and the engagement page, on every journey)
+  where users pick what appeals — Read, Listen, Play games, Practice speaking,
+  Study & drill, Explore wild stuff. Selections persist to `settings.interests`
+  and will drive experience recommendations. New graph node kind
+  `multiQuestion` + `MultiQuestionNodeView` (sticky Continue/Skip footer),
+  consistent with the rest of the flow.
+- **Unified onboarding footers.** Every step with a primary action (pick
+  languages, pick topics, voice setup, interests, engagement page) now uses one
+  bottom-sticky footer with a single **fixed-width** Continue button — identical
+  size and position across screens (no width jump, no button floating with the
+  content). Redundant "Skip" links removed: Continue with nothing selected is
+  the skip (commits []/installs nothing). The engagement page's "Start
+  exploring" moved into the same sticky footer. Multilingual TTS voice sections
+  start collapsed + the screen is top-aligned, so landing no longer lurches;
+  fixed the wide-iPad left-shift.
+
+- **TTS voice setup: "Add a Premium voice" guide.** Tapping "Open Settings"
+  on the text-to-speech step now shows an interstitial modal
+  (`VoiceInstallGuideModal`) with the exact tap path (Accessibility → Spoken
+  Content → Voices → your language → download Premium/Enhanced) before handing
+  off to Settings. Apple blocks deep-linking into Voices from a third-party app
+  (every `prefs:`/`settings-navigation:` scheme is rejected, and the official
+  `AccessibilitySettings` API has no matching destination — both verified
+  on-device), so this is the honest, reliable path. On return the screen
+  auto-re-scans installed voices.
+- **TTS step (single language) fills the screen.** The voice chooser grows to
+  fill the space between the header buttons and Continue (OnboardingShell's new
+  `fill` mode) instead of floating mid-screen. Also renamed the misleading
+  "Open your device's voice settings" → "Open Settings" and rewrote the
+  iOS/macOS tip to the complete Premium-voice download path.
+
+- **In-app update awareness.** New `UpdatePrompt` modal and an "Update
+  available → X.Y.Z" line in the About panel notify users when they're
+  behind the latest release for their platform. Latest version is sourced
+  from Apple's iTunes Lookup API on iOS/macOS and a CDN-hosted
+  `app-version.json` (next to `catalog-v2.json`) on Android. Modal is
+  dismissable per-version with a "remind me later" backoff; falls back to
+  no prompt when the source is unknown or stale, so we never offer an
+  update that isn't actually live in the store. See
+  `infra/PUBLISHING.md` for the Android publish step.
+
+### Fixed
+
+- **Pack cards: artwork pinned to the bottom with the buttons.** The screenshot
+  used to sit right under the description, so cards with longer/shorter blurbs
+  had their artwork at different heights. Only the header + description now live
+  in the flex-grow region; the screenshot + actions are pinned at the bottom, so
+  the asset and buttons stay aligned across a row regardless of description rows.
+- **Phrase Flip now shows in Home's "Recent".** As a native experience (not a
+  games-store entry) it never carried a `lastLaunchedAt`, so it was missing from
+  the Recent row. It now records its own launch time (`store/recentNative`) and
+  Home synthesizes a Recent tile for it, sorted in with the packs.
+- **No more floating buttons stamped over content packs.** The Home-hub refactor
+  briefly overlaid a Quick Settings gear + Home button on top of EVERY running
+  pack — including the readers, whose own layouts and exit affordances it
+  collided with, and for which Quick Settings does nothing useful (their TTS is
+  prerecorded, they show all languages, speed isn't stack-controlled, they don't
+  use the phrase corpora). That injected chrome is removed from content packs;
+  each pack keeps its own exit (`corpan:exit`). Only the app-owned Phrase Flip
+  keeps the tailored gear + Home chrome.
+- **"Text-to-speech setup" in Settings no longer dumps you on the Welcome
+  screen.** Onboarding became a decision graph (no linear step index), so the old
+  `setOnboarded(false); setStep(3)` jump restarted onboarding at Welcome. The
+  button now opens the voice configurator (`OnboardingTTSInstructions`) directly
+  as a standalone screen over Settings (`corpan:open-tts`).
+- **Language-specific experiences no longer mis-rank.** Hanzipan (and any
+  catalog pack carrying `languages`) is heavily penalized in the recommendation
+  score when none of the user's languages overlap, so it can't top the list for,
+  say, an English learner.
+
 ## [0.15.10] - 2026-05-28 — Android crash fixes: process-exit teardown, whisper concurrent-init, Chromebook STT
 
 ### Fixed
@@ -96,6 +288,21 @@ Android nav bar / iPad home indicator.
 
 ### Changed
 
+- **TTS voice picker redesigned.** Threw out the accordion / scroll-in-scroll /
+  `max-h` / fill-grow hacks: the voice screen is now one calm scroll surface with
+  the pinned-footer Continue. New premium `VoiceCard` (round Play preview, quality
+  bars, gender, a quiet "Recommended" badge on the auto-selected top-tier voices),
+  a bare single-language grid (beginner case) vs quiet stacked per-language blocks
+  (multi), responsive 1→2→3 columns, dark-mode + RTL aware. Verified on-device.
+- **Join the Corpanistas now opens the paywall in onboarding.** `PaywallSheet` is
+  mounted during onboarding too (it previously only existed post-commit, so the
+  engagement-page CTA appeared to do nothing until "Start exploring").
+- **Phrase experience Home button matches the Settings button.** Was a small
+  round translucent pill; now rendered with the *same* `<Button>` component and
+  props as Home's Settings button, so it's pixel-identical (48×48, 16px icon,
+  `rounded-md`, solid `bg-background` + border + `shadow-sm`), aligned to the
+  same right offset (`right-4 md:right-8`) and top — top-right, clear of the
+  level/domain chips.
 - **Phrase-pack drawer — dramatic vertical-density redesign.**
   Phones now open the drawer at 90vh with the title row hidden (the
   search-input placeholder "Search phrase packs" carries identity).

@@ -119,11 +119,16 @@
       "noMatches": "Hakuna matokeo.",
       "noFiltered": "Hakuna chochote hapa sasa.",
       "stackTotalPhrases": "~{{count}} misemo inafanana",
-      "stackTotalNudge": "Ongeza pakiti au panua viwango kwa anuwai."
+      "stackTotalNudge": "Ongeza pakiti au panua viwango kwa anuwai.",
+      "activeCount": "{{active}} kati ya {{total}} zinatumika",
+      "baseCorpusSubtitle": "Vifungu vya maneno {{n}}"
     },
     "sendAnonUsage": "Tuma data ya matumizi bila utambulisho",
     "sendAnonUsageHint": "Bila utambulisho, ndani ya kipindi hiki tu. Hakuna akaunti, hakuna vitambulisho vya kifaa, hakuna kuhifadhi IP. Unaweza kuzima wakati wowote.",
-    "readPrivacyPromise": "Soma Ahadi yetu ya Faragha"
+    "readPrivacyPromise": "Soma Ahadi yetu ya Faragha",
+    "showStreak": "Onyesha mfululizo wa kusoma",
+    "showStreakHint": "Hesabu ndogo ya siku kwenye kichwa. Kwenye kifaa pekee, hakuna vikumbusho au arifa.",
+    "primaryLanguage": "Lugha kuu (ya kiolesura)"
   },
   "onboarding": {
     "welcome": "Karibu",
@@ -138,7 +143,7 @@
     "welcomeVisit": "Tembelea encorpora.io",
     "linkCopied": "Kiungo kименakili. Fungua katika kivinjari chako:",
     "reconfigureStack": "Sanidi upya mfumo",
-    "openVoiceSettings": "Fungua mipangilio ya sauti ya kifaa chako",
+    "openVoiceSettings": "Fungua Mipangilio",
     "openTTSSetup": "Fungua mipangilio ya TTS",
     "welcomeFollowUp": "Asante kwa kujiunga — tutaonana katika jamii!",
     "learning": "Kujifunza lugha",
@@ -153,8 +158,8 @@
     "languageOrderTipBody": "Lugha iliyo chini kabisa kwenye orodha ndiyo lugha ya kiolesura cha programu. Ili kubadilisha lugha ya kiolesura, buruta lugha nyingine chini kabisa.",
     "ttsOsTipTitle": "Kidokezo",
     "ttsOsTipAndroid": "Matokeo bora: tumia maandishi-kwa-sauti ya Google. Samsung TTS haifanyi kazi katika Corpán.",
-    "ttsOsTipIOS": "Katika Mipangilio → Ufikiaji, pata Maudhui Yanayosemwa na upakue sauti. Kumbuka: Apple haitoi sauti kwa kila lugha. Ikiwa kusasisha hakusaidii, omba msaada kupitia programu ya Maoni ya Apple.",
-    "ttsOsTipMac": "Katika Mipangilio ya Mfumo → Ufikiaji, pata Maudhui Yanayosemwa na upakue sauti. Kumbuka: Apple haitoi sauti kwa kila lugha. Ikiwa kusasisha hakusaidii, omba msaada kupitia programu ya Maoni ya Apple.",
+    "ttsOsTipIOS": "Kifaa chako kina sauti za Premium zisizolipishwa zilizojengwa ndani — Apple huziwacha zimezimwa. Ziwasha: Mipangilio → Accessibility → Spoken Content → Voices → lugha yako, kisha gonga ikoni ya kupakua kwa sauti ya Premium au Enhanced. Rudi na itaonekana hapa kiotomatiki. (Apple bado haijajumuisha kila lugha.)",
+    "ttsOsTipMac": "Mac yako ina sauti za Premium zisizolipishwa zilizojengwa ndani — Apple huziwacha zimezimwa. Ziwasha: System Settings → Accessibility → Spoken Content → System Voice → Manage Voices, kisha pakua sauti ya Premium au Enhanced. Rudi na itaonekana hapa kiotomatiki. (Apple bado haijajumuisha kila lugha.)",
     "ttsOsTipWindows": "Katika Mipangilio, ongeza/sakinisha sauti za usemi, kisha rudi hapa.",
     "ttsOsTipOther": "Katika mipangilio ya kifaa chako, ongeza/sakinisha sauti za maandishi-kwa-sauti, kisha rudi hapa.",
     "installVoicesAndroid": "Sakinisha sauti",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Sakinisha Maandishi-kwa-sauti ya Google",
-        "detail": "Injini ya sauti ya Google inakupa ubora bora katika kila lugha inayoungwa mkono na Corpán. Ni bure.",
+        "detail": "Injini ya sauti isiyolipishwa ya Google inafungua sauti za hali ya juu kwa lugha nyingi ambazo Corpán inasaidia — simu nyingi haziji nayo. Hebu tuiongeze:",
         "button": "Sakinisha kutoka Play Store"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "Rudi hivi karibuni.",
       "offlineHero": "Uko nje ya mtandao.",
       "offlineSub": "Pakiti zinahitaji intaneti — jaribu baadaye kutoka Mipangilio → Pakiti.",
-      "offlineBanner": "Nje ya mtandao — chaguo zitasakinishwa ukiunganishwa."
+      "offlineBanner": "Nje ya mtandao — chaguo zitasakinishwa ukiunganishwa.",
+      "noneSelected": "Hakuna kilichochaguliwa — Endelea kutaruka",
+      "selectedSuffix": "imechaguliwa",
+      "skip": "Ruka kwa sasa",
+      "subtitle": "Ongeza pakiti za vifungu vya maneno zenye umakini kwenye orodha yako. Ziwasha au zizime wakati wowote kwenye Mipangilio."
     },
     "notOnAppleIOS": "Hutumii iOS",
     "appleNoVoiceTitle": "Apple bado haina sauti ya {{lang}}",
-    "appleNoVoiceBody": "Ujumbe mfupi kwa timu ya ufikivu ya Apple husaidia kuonyesha hitaji hilo. Kwa sasa, {{lang}} inafanya kazi moja kwa moja kwenye Android."
+    "appleNoVoiceBody": "Ujumbe mfupi kwa timu ya ufikivu ya Apple husaidia kuonyesha hitaji hilo. Kwa sasa, {{lang}} inafanya kazi moja kwa moja kwenye Android.",
+    "back": "Rudi",
+    "continue": "Endelea",
+    "class": {
+      "title": "Kwa nani?",
+      "subtitle": "Tutakubinafsishia Corpán. Hii itabaki kwenye kifaa chako — hatuitumi popote.",
+      "learner": "Ninajifunza lugha",
+      "learnerDesc": "Soma na usikilize katika lugha unazojifunza.",
+      "enjoyer": "Nataka kufurahia maudhui",
+      "enjoyerDesc": "Vitabu, hadithi na michezo katika lugha yako mwenyewe.",
+      "polyglot": "Zote mbili — nataka kila kitu",
+      "polyglotDesc": "Lugha kadhaa kwa wakati mmoja, pamoja na kila kitu kingine.",
+      "kid": "Ni kwa ajili ya mtoto",
+      "kidDesc": "Vitabu vilivyochaguliwa na michezo ya kujifunza kwa wasomaji wadogo.",
+      "ageTitle": "Umri wa msomaji?",
+      "ageUnder13": "Chini ya miaka 13",
+      "ageTeen": "13–17"
+    },
+    "pitch": {
+      "title": "Jiunge na Corpanistas",
+      "subtitle": "Corpán Plus inafungua maktaba yote. Jaribu sehemu ya kwanza ya kitabu chochote bure, milele.",
+      "everything": "Kila kitabu, kila lugha — imefunguliwa.",
+      "private": "Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
+      "team": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán.",
+      "tryPlus": "Jaribu Corpán Plus",
+      "continueFree": "Endelea na toleo la bure"
+    },
+    "calibrate": {
+      "childAgeTitle": "Msomaji ana umri gani?",
+      "childTeen": "Miaka 13–17",
+      "childUnder13": "Chini ya miaka 13",
+      "enjoyComfortable": "Vizuri kabisa",
+      "enjoyImproving": "Bado ninajifunza kuisoma",
+      "enjoyJustStarting": "Nimeanza tu — mimi ni mgeni katika kuisoma",
+      "enjoyNative": "Vizuri — ni lugha yangu",
+      "enjoyTitle": "Unasoma {{lang}} vizuri kiasi gani?",
+      "learnAdvanced": "Mimi ni mzoefu kiasi",
+      "learnLittle": "Kidogo",
+      "learnNever": "Kamwe — mwanzo kabisa",
+      "learnTitle": "Umewahi kusoma {{lang}} hapo awali?"
+    },
+    "confident": {
+      "addBetter": "Fungua sauti bora zaidi",
+      "andMore": "+{{count}} zaidi",
+      "chooseVoices": "Chagua sauti",
+      "noVoiceFor": "Hakuna sauti ya {{lang}} bado — hebu tuongeze moja ili Corpán iweze kusoma kwa sauti.",
+      "voiceCountMany": "Sauti {{count}} ziko tayari",
+      "voiceCountOne": "Sauti 1 iko tayari",
+      "yourVoiceFor": "Sauti yako ya {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Saidia Corpán na ufungue kila kitu. Si lazima, wakati wowote.",
+      "joinTitle": "Jiunge na Corpanistas",
+      "start": "Anza kuchunguza",
+      "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",
+      "title": "Uko tayari"
+    },
+    "fork": {
+      "child": {
+        "desc": "Vitabu na michezo laini, ya kufurahisha kwa wanafunzi wadogo.",
+        "label": "Iweke kwa ajili ya mtoto"
+      },
+      "enjoy": {
+        "desc": "Vitabu, hadithi, michezo, mazoezi na zaidi — yote katika lugha yako.",
+        "label": "Furahia Corpán katika {{lang}}"
+      },
+      "learn": {
+        "desc": "Hadithi, michezo, mazoezi na sauti katika lugha mpya.",
+        "label": "Jifunze lugha"
+      },
+      "polyglot": {
+        "desc": "Weka lugha kadhaa na uchunguze kila kitu.",
+        "label": "Chunguza lugha nyingi"
+      },
+      "subtitle": "Tutakuwekea kila kitu. Unaweza kubadilisha baadaye.",
+      "title": "Nini kinakuleta Corpán?"
+    },
+    "interests": {
+      "audio": "Sikiliza sauti",
+      "audioDesc": "Vitabu vya kusikiliza, usimulizi na redio.",
+      "games": "Cheza michezo",
+      "gamesDesc": "Jifunze kupitia changamoto za kufurahisha.",
+      "read": "Soma hadithi na vitabu",
+      "readDesc": "Jitumbukize katika wasomaji katika lugha yako.",
+      "speak": "Fanya mazoezi ya kuzungumza",
+      "speakDesc": "Sema vifungu vya maneno kwa sauti na upate maoni.",
+      "study": "Jifunze na fanya mazoezi",
+      "studyDesc": "Jenga msamiati kwa mazoezi yenye umakini.",
+      "subtitle": "Chagua chochote kinachokuvutia — tutapendekeza uzoefu unaolingana. Si lazima.",
+      "title": "Unataka kufanya nini?",
+      "wild": "Chunguza mambo ya ajabu",
+      "wildDesc": "Uzoefu wa kushangaza, wa majaribio."
+    },
+    "settingUp": "Inaweka mambo sawa…",
+    "ttsIntro": "Corpán inasoma kwa sauti. Gonga sauti ili kuisikia kwa kasi yako.",
+    "voiceGuide": {
+      "intro": "Kifaa chako kina sauti tajiri, asilia zilizojengwa ndani — zisizolipishwa, na bora zaidi kuliko zile za kawaida. Mtengenezaji huziwacha zimezimwa. Hebu tuziwashe; inachukua kugonga mara chache tu:",
+      "macStep1": "Fungua System Settings.",
+      "macStep2": "Nenda kwenye Accessibility → Spoken Content.",
+      "macStep3": "Chini ya System Voice, fungua Manage Voices.",
+      "macStep4": "Pakua sauti ya Premium au Enhanced kwa lugha yako.",
+      "macStep5": "Rudi Corpán — itaonekana hapa kiotomatiki.",
+      "step1": "Gonga Fungua Mipangilio hapa chini.",
+      "step2": "Nenda kwenye Accessibility → Spoken Content → Voices.",
+      "step3": "Gonga lugha yako.",
+      "step4": "Pakua sauti ya Premium au Enhanced.",
+      "step5": "Rudi Corpán — itaonekana hapa kiotomatiki.",
+      "title": "Fungua sauti bora zaidi za kifaa chako"
+    },
+    "voicePreviewAria": "Hakiki {{name}}",
+    "voicePreviewSelected": "Hakiki iliyochaguliwa",
+    "voiceRecommended": "Inayopendekezwa",
+    "voiceSelectedCount": "{{count}} kati ya {{total}}"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "Tembelea",
       "title": "encorpora.io",
       "desc": "Tovuti kuu yenye nyaraka na jamii."
+    },
+    "instagram": {
+      "cta": "Fuata",
+      "desc": "@corpanapp",
+      "title": "Fuata kwenye Instagram"
+    },
+    "share": {
+      "title": "Shiriki Corpán",
+      "text": "Jifunze lugha na Corpán.",
+      "copied": "Kiungo kimenakiliwa!"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "Jaribu Kifurushi cha Corpán au unda chako.",
     "devLink": "Jifunza zaidi kwenye Free2z",
     "new": "Kipya",
-    "updates": "Masasisho",
     "offline": "Nje ya mtandao",
     "purchasing": "Inanunua...",
     "buy": "Nunua {{price}}",
@@ -480,8 +610,19 @@
       "openDrawer": "Vinjari pakiti za misemo ({{count}})",
       "openDrawerLabel": "Vinjari pakiti za misemo",
       "inactiveBadge": "Haijawashwa",
-      "moreActionsLabel": "Vitendo zaidi"
-    }
+      "moreActionsLabel": "Vitendo zaidi",
+      "install": "Sakinisha"
+    },
+    "unlockWithPlus": "Fungua na Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Imejumuishwa na Plus",
+    "installFailedTitle": "Usakinishaji umeshindwa",
+    "installStuckDetail": "Hakuna maendeleo kwa muda. Angalia muunganisho wako na ujaribu tena.",
+    "installStuckTitle": "Upakuaji umesimama",
+    "openPack": "Fungua {{name}}",
+    "recent": "Ya hivi karibuni",
+    "updateAll": "Sasisha zote ({{count}})",
+    "updateAvailable": "Sasisho linapatikana"
   },
   "subscription": {
     "title": "Fungua kila kitu",
@@ -538,5 +679,106 @@
     "maybeLater": "Labda baadaye",
     "empty": "Vifurushi zaidi vinakuja — chunguza Corpán kwa muda huu.",
     "offlineEmpty": "Unganisha mtandaoni ili kugundua vifurushi — au ruka kwa sasa."
+  },
+  "paywall": {
+    "title": "Endelea na Corpán Plus",
+    "thanksTitle": "Wewe ni Corpanista",
+    "thanksBody": "Asante kwa kuunga mkono Corpán. Kila kitu kimefunguliwa.",
+    "bookSubhead": "Umekamilisha onyesho la bure la {{title}}.",
+    "subhead": "Fungua kila kitabu katika kila lugha. Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
+    "pitch": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán. Corpanistas wanaiweka bila matangazo na inakua.",
+    "maybeLater": "Labda baadaye",
+    "continue": "Endelea"
+  },
+  "streak": {
+    "title": "Mfululizo wa siku {{count}}"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Soma pamoja na vitabu vya kusikiliza vilivyosimuliwa — kwa utulivu, na kuangazia neno kwa neno.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Bobea herufi za Kimandarini, kiharusi kwa kiharusi.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Sikia kifungu cha maneno, elekeza ili kilingane — jifunze kwa kucheza.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Jenga vifungu vya maneno kipande kwa kipande katika mchezo wa haraka.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Pitia vifungu vya maneno katika lugha zako — mazoezi ya haraka, yenye umakini.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Sema vifungu vya maneno kwa sauti na upate maoni ya matamshi.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Vitabu vya kusikiliza vile vile katika 3D inayovutia — maneno hutiririka angani yanaposomwa.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Sikiliza redio ya moja kwa moja kutoka kote ulimwenguni.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Endelea kujifunza",
+    "experiences": "Uzoefu",
+    "forYou": "Kwa ajili yako",
+    "get": "Pata",
+    "installing": "Inasakinisha…",
+    "library": "Maktaba",
+    "like": "Penda",
+    "notForMe": "Si kwa ajili yangu",
+    "open": "Fungua",
+    "openPhrases": "Fungua vifungu vya maneno",
+    "phraseFlipDesc": "Pitia vifungu vya maneno katika lugha zako",
+    "plusChip": "Corpán Plus — fungua kila kitu",
+    "recommended": "Inayopendekezwa",
+    "showAnother": "Nionyeshe kingine",
+    "tryIt": "Jaribu"
+  },
+  "offline": {
+    "cachedSubtitle": "Inaonyesha matokeo yako ya mwisho yaliyohifadhiwa.",
+    "catalogSubtitle": "Unganisha tena ili kugundua pakiti mpya. Pakiti zako zilizosakinishwa bado zinafanya kazi.",
+    "installNeedsInternet": "Unganisha tena ili kupakua.",
+    "onboardingBanner": "Nje ya mtandao — chaguo zitasakinishwa utakapo unganisha tena.",
+    "packCatalogSubtitle": "Pakiti zako zilizosakinishwa bado zinafanya kazi. Unganisha tena ili kuvinjari zaidi.",
+    "packCatalogTitle": "Katalogi ya pakiti inahitaji intaneti",
+    "phrasePacksOnboardingSubtitle": "Unaweza kuchagua pakiti za vifungu vya maneno baadaye kutoka Mipangilio → Pakiti mara tu utakapo unganisha tena.",
+    "phrasePacksSubtitle": "Pakiti zako za vifungu vya maneno zilizosakinishwa bado zinafanya kazi. Unganisha tena ili kuvinjari mpya.",
+    "phrasePacksTitle": "Katalogi ya pakiti za vifungu vya maneno inahitaji intaneti",
+    "purchaseNeedsInternet": "Unganisha tena ili kununua.",
+    "restoreSubtitle": "Unganisha tena ili kurejesha ununuzi.",
+    "subscriptionSubtitle": "Unganisha tena ili kujiandikisha. Pakiti zako zilizosakinishwa na vifungu vya maneno vilivyojumuishwa bado vinafanya kazi.",
+    "subscriptionTitle": "Usajili unahitaji intaneti",
+    "title": "Hakuna intaneti",
+    "voiceDownloadSubtitle": "Sauti zilizopo kwenye kifaa chako bado zinafanya kazi. Unganisha tena ili kusakinisha zaidi.",
+    "voiceDownloadTitle": "Upakuaji wa sauti unahitaji intaneti"
+  },
+  "quickSettings": {
+    "fullSettings": "Mipangilio kamili",
+    "title": "Mipangilio ya haraka"
+  },
+  "tour": {
+    "maybeLater": "Labda baadaye",
+    "progress": "{{n}} kati ya {{total}}"
+  },
+  "update": {
+    "availableLine": "Sasisho linapatikana → {{version}}",
+    "close": "Funga",
+    "description": "Toleo jipya zaidi la Corpán linapatikana kwenye duka lako la programu.",
+    "remindLater": "Labda baadaye",
+    "skipThisVersion": "Ruka toleo hili",
+    "title": "Sasisho linapatikana",
+    "update": "Sasisha",
+    "updateNow": "Sasisha sasa",
+    "versionLine": "Toleo {{version}} liko tayari kusakinishwa."
   }
 }

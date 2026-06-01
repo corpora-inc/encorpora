@@ -1,10 +1,17 @@
 import { addPluginListener, invoke } from "@tauri-apps/api/core"
+import { listen } from "@tauri-apps/api/event"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
+import { useRatingStore } from "@/store/rating"
+import { usePhrasePacksStore } from "@/store/phrasePacks"
+import { useDrawerStore } from "@/store/drawer"
+import type { TextSizeType } from "@/store/settings"
+import type { StackConfigPatch } from "./types"
 import type {
   HostApi,
+  LlmApi,
   PackDbQuery,
   SttApi,
   SttAudioLevelEvent,
@@ -67,6 +74,9 @@ const getStackSnapshot = () => {
     rate,
     textSize,
     showRomanization,
+    phrasePackIds,
+    baseCorpusEnabled,
+    scrollNavigationEnabled,
   } = useSettingsStore.getState()
   return {
     activeStackId,
@@ -76,6 +86,9 @@ const getStackSnapshot = () => {
     rate,
     textSize,
     showRomanization,
+    phrasePackIds: [...phrasePackIds],
+    baseCorpusEnabled,
+    scrollNavigationEnabled,
   }
 }
 
@@ -89,6 +102,9 @@ type StackSlice = {
   textSize: string
   showRomanization: boolean
   voicePrefs: SettingsState["voicePrefs"]
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+  scrollNavigationEnabled: boolean
 }
 
 const getStackSlice = (state: SettingsState): StackSlice => {
@@ -100,6 +116,9 @@ const getStackSlice = (state: SettingsState): StackSlice => {
     textSize: state.textSize,
     showRomanization: state.showRomanization,
     voicePrefs: state.voicePrefs,
+    phrasePackIds: state.phrasePackIds,
+    baseCorpusEnabled: state.baseCorpusEnabled,
+    scrollNavigationEnabled: state.scrollNavigationEnabled,
   }
 }
 
@@ -111,7 +130,12 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
     a.rate === b.rate &&
     a.textSize === b.textSize &&
     a.showRomanization === b.showRomanization &&
-    a.voicePrefs === b.voicePrefs
+    a.voicePrefs === b.voicePrefs &&
+    // phrasePackIds/baseCorpusEnabled drive the sampler — toggling a pack
+    // MUST re-emit so the experience re-rolls. (Previously omitted → stale.)
+    a.phrasePackIds === b.phrasePackIds &&
+    a.baseCorpusEnabled === b.baseCorpusEnabled &&
+    a.scrollNavigationEnabled === b.scrollNavigationEnabled
   )
 }
 
@@ -155,6 +179,170 @@ export const createHostApi = (packId?: string): HostApi => {
 
   const resolvePackId = (query: PackDbQuery) => {
     return query.packId ?? packId
+  }
+
+  // Normalize a Tauri/plugin rejection into a readable Error. The plugin
+  // serializes its errors as `{ code, message }` (see error.rs); a bare
+  // `String(obj)` would render "[object Object]", hiding the real cause.
+  const llmError = (raw: unknown): Error & { code?: string } => {
+    if (raw && typeof raw === "object") {
+      const o = raw as { code?: string; message?: string; error?: string }
+      const msg = o.message ?? o.error
+      if (msg) {
+        const e = new Error(o.code ? `${o.code}: ${msg}` : msg) as Error & { code?: string }
+        e.code = o.code
+        return e
+      }
+    }
+    return new Error(raw instanceof Error ? raw.message : String(raw)) as Error & { code?: string }
+  }
+
+  // On-device LLM bridge. Streaming is callback-based: the host owns the Tauri
+  // event listeners (llm-token/done/error:{sessionId}) and tears them down on
+  // done/error/cancel, so packs never touch window.__TAURI__.
+  const llm: LlmApi = {
+    status: async () => {
+      try {
+        return await invoke("plugin:corpan-llm|llm_status")
+      } catch (error) {
+        throw llmError(error)
+      }
+    },
+    isInstalled: async (packId) => {
+      // A model pack IS a content pack on disk: getManifestUrl succeeds only when
+      // it's installed (else it throws "Pack not installed").
+      try {
+        await invoke("content_packs_get_manifest_url", { packId })
+        return true
+      } catch {
+        return false
+      }
+    },
+    install: async (args, onProgress) => {
+      // The base GGUF ships as a content-pack ZIP, so reuse the host pack
+      // downloader. Progress arrives on the global `pack-install-progress`
+      // event — filter to our pack id and forward to the callback.
+      let un: (() => void) | null = null
+      try {
+        if (onProgress) {
+          un = await listen<{
+            pack_id?: string
+            stage?: string
+            progress?: number
+            total?: number
+            message?: string
+          }>("pack-install-progress", (ev) => {
+            const p = ev.payload
+            if (!p || p.pack_id !== args.packId) return
+            onProgress({
+              stage: p.stage ?? "downloading",
+              progress: p.progress ?? 0,
+              total: p.total ?? 0,
+              message: p.message ?? "",
+            })
+          })
+        }
+        await invoke("content_packs_install_from_url", {
+          packId: args.packId,
+          downloadUrl: args.url,
+          expectedSha256: args.sha256,
+        })
+      } catch (error) {
+        throw llmError(error)
+      } finally {
+        if (un) {
+          try {
+            un()
+          } catch (error) {
+            console.error("[llm] install unlisten failed:", error)
+          }
+        }
+      }
+    },
+    load: async (args) => {
+      // Tauri wraps command params under the param name (`args: LoadArgs`),
+      // so the payload must be `{ args: {...} }` (same convention as stt).
+      try {
+        await invoke("plugin:corpan-llm|llm_load", {
+          args: {
+            modelPackId: args.modelPackId,
+            gpuLayers: args.gpuLayers,
+            contextSize: args.contextSize,
+          },
+        })
+      } catch (error) {
+        throw llmError(error)
+      }
+    },
+    unload: async () => {
+      try {
+        await invoke("plugin:corpan-llm|llm_unload")
+      } catch (error) {
+        throw llmError(error)
+      }
+    },
+    chat: async (args, handlers) => {
+      let sessionId: string
+      try {
+        sessionId = await invoke<string>("plugin:corpan-llm|llm_chat", {
+          args: {
+            messages: args.messages,
+            options: args.options ?? {},
+          },
+        })
+      } catch (error) {
+        // Synchronous command failure (e.g. MODEL_NOT_LOADED): surface via
+        // onError so the pack shows the real reason, and rethrow for awaiters.
+        const e = llmError(error)
+        handlers.onError(e.message, e.code)
+        throw e
+      }
+      let buf = ""
+      const unlisteners: Array<() => void> = []
+      const teardown = () => {
+        for (const u of unlisteners) {
+          try {
+            u()
+          } catch (error) {
+            console.error("[llm] unlisten failed:", error)
+          }
+        }
+        unlisteners.length = 0
+      }
+      const unT = await listen<{ token?: string }>(`llm-token:${sessionId}`, (ev) => {
+        const tok = String(ev.payload?.token ?? "")
+        buf += tok
+        handlers.onToken(tok)
+      })
+      const unD = await listen<{ totalTokens?: number; elapsedMs?: number }>(
+        `llm-done:${sessionId}`,
+        (ev) => {
+          teardown()
+          handlers.onDone(buf, {
+            totalTokens: ev.payload?.totalTokens ?? 0,
+            elapsedMs: ev.payload?.elapsedMs ?? 0,
+          })
+        },
+      )
+      const unE = await listen<{ error?: string; code?: string }>(
+        `llm-error:${sessionId}`,
+        (ev) => {
+          teardown()
+          handlers.onError(String(ev.payload?.error ?? "unknown"), ev.payload?.code)
+        },
+      )
+      unlisteners.push(unT, unD, unE)
+      return {
+        sessionId,
+        cancel: async () => {
+          try {
+            await invoke("plugin:corpan-llm|llm_stop", { args: { sessionId } })
+          } catch (error) {
+            console.error("[llm] stop error:", error)
+          }
+        },
+      }
+    },
   }
 
   const stt: SttApi = {
@@ -367,6 +555,17 @@ export const createHostApi = (packId?: string): HostApi => {
       return await speakConcurrent(uiCode, text)
     },
     stopSpeech,
+    // Native clipboard via tauri-plugin-clipboard-manager — the web
+    // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),
+    // so packs route copy through here.
+    copyText: async (text: string) => {
+      try {
+        await invoke("plugin:clipboard-manager|write_text", { label: null, text })
+      } catch (error) {
+        console.error("[content-packs] copyText failed:", error)
+        throw error instanceof Error ? error : new Error(String(error))
+      }
+    },
     dispose,
     getStackConfig: () => {
       return getStackSnapshot()
@@ -454,6 +653,144 @@ export const createHostApi = (packId?: string): HostApi => {
         maxRows: query.maxRows,
       })
     },
+    // Whitelisted write surface — maps each present key to its store setter.
+    // Pure JS-side Zustand mutation; no Rust/wire boundary crossed.
+    setStackConfig: (patch: StackConfigPatch) => {
+      const s = useSettingsStore.getState()
+      if (patch.levels !== undefined) s.setLevels(patch.levels)
+      if (patch.rate !== undefined) s.setRate(patch.rate)
+      if (patch.domains !== undefined) s.setDomains(patch.domains)
+      if (patch.languages !== undefined) s.setLanguages(patch.languages)
+      if (patch.textSize !== undefined) s.setTextSize(patch.textSize as TextSizeType)
+      if (patch.showRomanization !== undefined) s.setShowRomanization(patch.showRomanization)
+      if (patch.scrollNavigationEnabled !== undefined) s.setScrollNavigationEnabled(patch.scrollNavigationEnabled)
+      if (patch.phrasePackIds !== undefined) s.setPhrasePackIds(patch.phrasePackIds)
+      if (patch.baseCorpusEnabled !== undefined) s.setBaseCorpusEnabled(patch.baseCorpusEnabled)
+    },
+    openQuickSettings: () => useDrawerStore.getState().openQuickSettings(),
+    history: {
+      getState: () => {
+        const aId = useSettingsStore.getState().activeStackId
+        const h = useHistoryStore.getState().byStack[aId]
+        return h
+          ? { ids: [...h.ids], sources: [...h.sources], index: h.index }
+          : { ids: [], sources: [], index: -1 }
+      },
+      push: (entryId, source) => useHistoryStore.getState().pushEntry(entryId, source),
+      setIndex: (index) => useHistoryStore.getState().setIndex(index),
+      replaceCurrent: (entryId, source) =>
+        useHistoryStore.getState().replaceCurrent(entryId, source),
+      getRecentTuples: (n) =>
+        useHistoryStore
+          .getState()
+          .getRecentTuples(n)
+          .map((t) => ({ entryId: t.entryId, source: t.source })),
+      subscribe: (listener) => {
+        // Fire on history changes AND active-stack switches.
+        const u1 = useHistoryStore.subscribe(() => listener())
+        let prevStack = useSettingsStore.getState().activeStackId
+        const u2 = useSettingsStore.subscribe((st) => {
+          if (st.activeStackId !== prevStack) {
+            prevStack = st.activeStackId
+            listener()
+          }
+        })
+        return () => { u1(); u2() }
+      },
+    },
+    notifyUtterance: () => {
+      useRatingStore.getState().incrementUtteranceCount()
+    },
+    phrasePacks: {
+      getInstalled: () => {
+        const installed = usePhrasePacksStore.getState().installed
+        const out: Record<string, import("./types").HostInstalledPhrasePack> = {}
+        for (const [id, p] of Object.entries(installed)) {
+          out[id] = {
+            id: p.id,
+            name: p.name,
+            nameLocalized: p.nameLocalized,
+            topic: p.topic,
+            topicLocalized: p.topicLocalized,
+            accentColor: p.accentColor,
+          }
+        }
+        return out
+      },
+      setEnabled: (id, on) => {
+        const s = useSettingsStore.getState()
+        const current = s.phrasePackIds
+        const next = on
+          ? (current.includes(id) ? current : [...current, id])
+          : current.filter((x) => x !== id)
+        s.setPhrasePackIds(next)
+      },
+      subscribe: (listener) => usePhrasePacksStore.subscribe(() => listener()),
+    },
+    // Download + extract a module ZIP into a subpath of a pack's on-disk dir
+    // (e.g. a tutor pack's per-language data). Progress arrives on the global
+    // `pack-install-progress` event (same as content_packs_install_from_url) —
+    // filter to our pack id and forward to the callback. The JS arg names
+    // (`url`/`sha256`) are remapped to the Rust command params
+    // (`downloadUrl`/`expectedSha256`) here at the bridge.
+    installModuleZip: async (args, onProgress) => {
+      let un: (() => void) | null = null
+      try {
+        if (onProgress) {
+          un = await listen<{
+            pack_id?: string
+            stage?: string
+            progress?: number
+            total?: number
+            message?: string
+          }>("pack-install-progress", (ev) => {
+            const p = ev.payload
+            if (!p || p.pack_id !== args.packId) return
+            onProgress({
+              stage: p.stage ?? "downloading",
+              progress: p.progress ?? 0,
+              total: p.total ?? 0,
+              message: p.message ?? "",
+            })
+          })
+        }
+        await invoke("content_packs_install_module", {
+          packId: args.packId,
+          subPath: args.subPath,
+          downloadUrl: args.url,
+          // An empty-string sha means "unknown / not yet published" — treat it
+          // as no-sha (skip verification) rather than passing "" to Rust, which
+          // would be Some("") and fail every download with "module hash mismatch".
+          expectedSha256: args.sha256 ? args.sha256 : undefined,
+          packManifest: args.packManifest,
+        })
+      } catch (error) {
+        console.error("[content-packs] installModuleZip error:", error)
+        throw error instanceof Error ? error : new Error(String(error))
+      } finally {
+        if (un) {
+          try {
+            un()
+          } catch (error) {
+            console.error("[content-packs] installModuleZip unlisten failed:", error)
+          }
+        }
+      }
+    },
+    packFileExists: async (packId, relPath) => {
+      return invoke<boolean>("content_packs_module_file_exists", {
+        packId,
+        relPath,
+      })
+    },
+    discoverPacksByType: async (_packType: string) => {
+      // Native discovery (content_packs_list_installed_by_type + manifest
+      // packType/source fields) is not wired yet. Returning [] means Tutomaton
+      // runs with its built-in sources only; installed source packs slot in the
+      // moment the native command lands — no Tutomaton release required.
+      return []
+    },
     stt,
+    llm,
   }
 }

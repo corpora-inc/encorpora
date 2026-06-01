@@ -8,6 +8,8 @@ type LoadState = "idle" | "loading" | "ready" | "error"
 type ContentPackHostProps = {
   id: string
   manifestUrl?: string
+  /** Optional deep-link target passed into the pack's mount initialState. */
+  entry?: { entryId?: number; source?: string; route?: string }
 }
 
 const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
@@ -213,6 +215,7 @@ const waitForGameModule = async (
 export default function ContentPackHost({
   id,
   manifestUrl,
+  entry,
 }: ContentPackHostProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadState, setLoadState] = useState<LoadState>("idle")
@@ -436,6 +439,8 @@ export default function ContentPackHost({
 
         activeInstance = activeModule.mount(containerRef.current, hostApi, {
           stackConfig: hostApi.getStackConfig(),
+          // Addressability groundwork: a deep-linked entry/route, when present.
+          ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
         })
 
         if (!cancelled) {
@@ -480,7 +485,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl])
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

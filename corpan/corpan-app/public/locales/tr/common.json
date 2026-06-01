@@ -119,11 +119,16 @@
       "noMatches": "Sonuç yok.",
       "noFiltered": "Burada şu an bir şey yok.",
       "stackTotalPhrases": "~{{count}} ifade eşleşiyor",
-      "stackTotalNudge": "Çeşitlilik için paket ekle veya seviyeleri genişlet."
+      "stackTotalNudge": "Çeşitlilik için paket ekle veya seviyeleri genişlet.",
+      "activeCount": "{{total}} tanesinden {{active}} aktif",
+      "baseCorpusSubtitle": "{{n}} ifade"
     },
     "sendAnonUsage": "Anonim kullanım verilerini gönder",
     "sendAnonUsageHint": "Anonim, oturumla sınırlı. Hesap yok, cihaz kimliği yok, IP saklanmaz. İstediğiniz zaman kapatabilirsiniz.",
-    "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun"
+    "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun",
+    "showStreak": "Okuma serisini göster",
+    "showStreakHint": "Başlıkta küçük bir gün sayacı. Yalnızca cihazda, hatırlatıcı veya bildirim yok.",
+    "primaryLanguage": "Birincil (arayüz) dil"
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",
@@ -138,7 +143,7 @@
     "welcomeVisit": "encorpora.io adresini ziyaret edin",
     "linkCopied": "Bağlantı kopyalandı. Tarayıcınızda açın:",
     "reconfigureStack": "Yığını yeniden yapılandır",
-    "openVoiceSettings": "Cihazınızın ses ayarlarını açın",
+    "openVoiceSettings": "Ayarları Aç",
     "openTTSSetup": "TTS ayarlarını açın",
     "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!",
     "learningStepTitle": "Öğrenme",
@@ -147,8 +152,8 @@
     "languageOrderTipBody": "Listenin en altındaki dil, uygulamanın arayüz dilidir. Arayüz dilini değiştirmek için başka bir dili en alta sürükleyin.",
     "ttsOsTipTitle": "İpucu",
     "ttsOsTipAndroid": "En iyi sonuç: Google TTS kullanın. Samsung TTS Corpán’da çalışmaz.",
-    "ttsOsTipIOS": "Settings → Accessibility içinde Spoken Content öğesini bulun ve sesleri indirin. Not: Apple her dil için ses sağlamaz. Güncelleme işe yaramazsa Apple Feedback uygulamasıyla destek isteyin.",
-    "ttsOsTipMac": "System Settings → Accessibility içinde Spoken Content öğesini bulun ve sesleri indirin. Not: Apple her dil için ses sağlamaz. Güncelleme işe yaramazsa Apple Feedback uygulamasıyla destek isteyin.",
+    "ttsOsTipIOS": "Cihazınızda ücretsiz Premium sesler yerleşik olarak bulunur — Apple bunları kapalı bırakır. Açmak için: Ayarlar → Erişilebilirlik → Konuşulan İçerik → Sesler → diliniz, ardından Premium veya Gelişmiş bir ses için indirme simgesine dokunun. Geri döndüğünüzde otomatik olarak burada görünecektir. (Apple henüz her dili kapsamamaktadır.)",
+    "ttsOsTipMac": "Mac'inizde ücretsiz Premium sesler yerleşik olarak bulunur — Apple bunları kapalı bırakır. Açmak için: Sistem Ayarları → Erişilebilirlik → Konuşulan İçerik → Sistem Sesi → Sesleri Yönet, ardından Premium veya Gelişmiş bir ses indirin. Geri döndüğünüzde otomatik olarak burada görünecektir. (Apple henüz her dili kapsamamaktadır.)",
     "ttsOsTipWindows": "Ayarlar’dan sesleri yükleyin, sonra buraya dönün.",
     "ttsOsTipOther": "Cihaz ayarlarından sesleri yükleyin, sonra buraya dönün.",
     "installVoicesAndroid": "Sesleri yükle",
@@ -170,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Google Text-to-Speech'i yükle",
-        "detail": "Google'ın ses motoru, Corpán'ın desteklediği her dilde en iyi kaliteyi sunar. Ücretsiz.",
+        "detail": "Google'ın ücretsiz ses motoru, Corpán'ın desteklediği dillerin çoğu için yüksek kaliteli seslerin kilidini açar — çoğu telefonda bu yüklü gelmez. Hadi ekleyelim:",
         "button": "Play Store'dan yükle"
       },
       "noEngine": {
@@ -225,11 +230,127 @@
       "emptySub": "Yakında tekrar bak.",
       "offlineHero": "Çevrimdışısın.",
       "offlineSub": "Paketler internet gerektirir — Ayarlar → Paketler'den sonra dene.",
-      "offlineBanner": "Çevrimdışı — seçim bağlanınca yüklenir."
+      "offlineBanner": "Çevrimdışı — seçim bağlanınca yüklenir.",
+      "noneSelected": "Hiçbiri seçilmedi — Devam et atlayacak",
+      "selectedSuffix": "seçili",
+      "skip": "Şimdilik atla",
+      "subtitle": "Odaklanmış ifade paketlerini yığınıza ekleyin. Bunları Ayarlar'dan istediğiniz zaman açıp kapatabilirsiniz."
     },
     "notOnAppleIOS": "iOS'ta değil",
     "appleNoVoiceTitle": "Apple henüz {{lang}} sesi sunmuyor",
-    "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor."
+    "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor.",
+    "back": "Geri",
+    "continue": "Devam",
+    "class": {
+      "title": "Kimler için?",
+      "subtitle": "Corpán'ı size göre kişiselleştireceğiz. Bilgileriniz cihazınızda kalır, asla paylaşılmaz.",
+      "learner": "Dil öğreniyorum",
+      "learnerDesc": "Öğrendiğiniz dillerde okuyun ve dinleyin.",
+      "enjoyer": "İçeriğin tadını çıkarmak istiyorum",
+      "enjoyerDesc": "Kendi dilinizde kitaplar, hikayeler ve oyunlar.",
+      "polyglot": "İkisi de — hepsini istiyorum",
+      "polyglotDesc": "Aynı anda birçok dil, artı diğer her şey.",
+      "kid": "Bir çocuk için",
+      "kidDesc": "Küçük okuyucular için özenle seçilmiş kitaplar ve eğitici oyunlar.",
+      "ageTitle": "Okuyucu kaç yaşında?",
+      "ageUnder13": "13 yaş altı",
+      "ageTeen": "13–17 yaş"
+    },
+    "pitch": {
+      "title": "Corpanistas'a katılın",
+      "subtitle": "Corpán Plus tüm kütüphaneyi açar. Herhangi bir kitabın ilk bölümünü sonsuza dek ücretsiz deneyin.",
+      "everything": "Tüm kitaplar, tüm diller — kilitsiz.",
+      "private": "Reklamsız. Verileriniz cihazınızda kalır.",
+      "team": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz.",
+      "tryPlus": "Corpán Plus'ı deneyin",
+      "continueFree": "Ücretsiz sürümle devam et"
+    },
+    "calibrate": {
+      "childAgeTitle": "Okuyucu kaç yaşında?",
+      "childTeen": "13–17",
+      "childUnder13": "13 yaş altı",
+      "enjoyComfortable": "Oldukça iyi",
+      "enjoyImproving": "Hala okumayı öğreniyorum",
+      "enjoyJustStarting": "Yeni başlıyorum — okumaya yabancıyım",
+      "enjoyNative": "Akıcı — ana dilim",
+      "enjoyTitle": "{{lang}} dilini ne kadar iyi okuyorsunuz?",
+      "learnAdvanced": "Oldukça ileri seviyedeyim",
+      "learnLittle": "Biraz",
+      "learnNever": "Hiç — tamamen başlangıç seviyesi",
+      "learnTitle": "Daha önce {{lang}} çalıştınız mı?"
+    },
+    "confident": {
+      "addBetter": "Daha zengin bir sesin kilidini açın",
+      "andMore": "+{{count}} daha",
+      "chooseVoices": "Sesleri seçin",
+      "noVoiceFor": "Henüz {{lang}} sesi yok — Corpán'ın yüksek sesle okuyabilmesi için bir tane ekleyelim.",
+      "voiceCountMany": "{{count}} ses hazır",
+      "voiceCountOne": "1 ses hazır",
+      "yourVoiceFor": "{{lang}} sesiniz"
+    },
+    "engage": {
+      "joinDesc": "Corpán'ı destekleyin ve her şeyin kilidini açın. İsteğe bağlı, dilediğiniz zaman.",
+      "joinTitle": "Corpanistas'a katılın",
+      "start": "Keşfetmeye başla",
+      "subtitle": "Corpán, küçük bir açık kaynak ekibi tarafından yapıldı. Merhaba deyin — ve eğer beğenirseniz, bize destek olabilirsiniz.",
+      "title": "Her şey hazır"
+    },
+    "fork": {
+      "child": {
+        "desc": "Küçük öğrenciler için nazik, eğlenceli kitaplar ve oyunlar.",
+        "label": "Bir çocuk için ayarla"
+      },
+      "enjoy": {
+        "desc": "Kitaplar, hikayeler, oyunlar, alıştırmalar ve daha fazlası — hepsi kendi dilinizde.",
+        "label": "Corpán'ın tadını {{lang}} dilinde çıkarın"
+      },
+      "learn": {
+        "desc": "Yeni bir dilde hikayeler, oyunlar, alıştırmalar ve sesler.",
+        "label": "Bir dil öğren"
+      },
+      "polyglot": {
+        "desc": "Birden fazla dili bir araya getirin ve her şeyi keşfedin.",
+        "label": "Birçok dili keşfedin"
+      },
+      "subtitle": "Sizin için her şeyi ayarlayacağız. Daha sonra değiştirebilirsiniz.",
+      "title": "Corpán'a sizi ne getirdi?"
+    },
+    "interests": {
+      "audio": "Ses dinle",
+      "audioDesc": "Sesli kitaplar, anlatım ve radyo.",
+      "games": "Oyun oyna",
+      "gamesDesc": "Eğlenceli meydan okumalarla öğrenin.",
+      "read": "Hikaye ve kitap oku",
+      "readDesc": "Kendi dilinizdeki okuyuculara dalın.",
+      "speak": "Konuşma pratiği yap",
+      "speakDesc": "İfadeleri yüksek sesle söyleyin ve geri bildirim alın.",
+      "study": "Çalış ve alıştırma yap",
+      "studyDesc": "Odaklanmış pratikle kelime dağarcığı oluşturun.",
+      "subtitle": "Hoşunuza giden her şeyi seçin — eşleşen deneyimler önereceğiz. İsteğe bağlı.",
+      "title": "Ne yapmak istersiniz?",
+      "wild": "İlginç şeyler keşfet",
+      "wildDesc": "Şaşırtıcı, deneysel deneyimler."
+    },
+    "settingUp": "Ayarlanıyor…",
+    "ttsIntro": "Corpán yüksek sesle okur. Kendi hızınızda dinlemek için bir sese dokunun.",
+    "voiceGuide": {
+      "intro": "Cihazınızda zengin, doğal sesler yerleşik olarak bulunur — ücretsizdir ve varsayılandan çok daha iyidir. Üretici bunları kapalı bırakır. Hadi açalım; sadece birkaç dokunuş yeterli:",
+      "macStep1": "Sistem Ayarları'nı açın.",
+      "macStep2": "Erişilebilirlik → Konuşulan İçerik'e gidin.",
+      "macStep3": "Sistem Sesi altında, Sesleri Yönet'i açın.",
+      "macStep4": "Diliniz için Premium veya Gelişmiş bir ses indirin.",
+      "macStep5": "Corpán'a geri dönün — otomatik olarak burada görünecektir.",
+      "step1": "Aşağıdaki Ayarları Aç'a dokunun.",
+      "step2": "Erişilebilirlik → Konuşulan İçerik → Sesler'e gidin.",
+      "step3": "Dilinize dokunun.",
+      "step4": "Premium veya Gelişmiş bir ses indirin.",
+      "step5": "Corpán'a geri dönün — otomatik olarak burada görünecektir.",
+      "title": "Cihazınızın en iyi seslerinin kilidini açın"
+    },
+    "voicePreviewAria": "{{name}} önizlemesi",
+    "voicePreviewSelected": "Seçili önizle",
+    "voiceRecommended": "Önerilen",
+    "voiceSelectedCount": "{{total}} tanesinden {{count}} seçili"
   },
   "socials": {
     "youtube": {
@@ -251,6 +372,16 @@
       "cta": "Ziyaret et",
       "title": "encorpora.io",
       "desc": "Belgeler ve topluluk içeren ana site."
+    },
+    "instagram": {
+      "cta": "Takip et",
+      "desc": "@corpanapp",
+      "title": "Instagram'da takip et"
+    },
+    "share": {
+      "title": "Corpán'ı paylaş",
+      "text": "Corpán ile dil öğren.",
+      "copied": "Bağlantı kopyalandı!"
     }
   },
   "common": {
@@ -441,7 +572,6 @@
     "devIntro": "Bir Corpán Pack deneyin ya da kendi Pack'inizi yapın.",
     "devLink": "Free2z'de daha fazla bilgi",
     "new": "Yeni",
-    "updates": "Güncellemeler",
     "offline": "Çevrimdışı",
     "purchasing": "Satın alınıyor...",
     "buy": "{{price}} satın al",
@@ -480,8 +610,19 @@
       "openDrawer": "Cümle paketlerine göz at ({{count}})",
       "openDrawerLabel": "Cümle paketlerine göz at",
       "inactiveBadge": "Etkin değil",
-      "moreActionsLabel": "Diğer işlemler"
-    }
+      "moreActionsLabel": "Diğer işlemler",
+      "install": "Yükle"
+    },
+    "unlockWithPlus": "Corpán Plus ile kilidi açın",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus'a dahil",
+    "installFailedTitle": "Yükleme başarısız oldu",
+    "installStuckDetail": "Bir süredir ilerleme yok. Bağlantınızı kontrol edin ve tekrar deneyin.",
+    "installStuckTitle": "İndirme durdu",
+    "openPack": "{{name}}'i aç",
+    "recent": "Son kullanılanlar",
+    "updateAll": "Tümünü güncelle ({{count}})",
+    "updateAvailable": "Güncelleme mevcut"
   },
   "subscription": {
     "title": "Hepsini aç",
@@ -538,5 +679,106 @@
     "maybeLater": "Belki sonra",
     "empty": "Daha fazla paket yolda — bu arada Corpán'ı keşfet.",
     "offlineEmpty": "Paketleri keşfetmek için internete bağlan — ya da şimdilik atla."
+  },
+  "paywall": {
+    "title": "Corpán Plus ile devam edin",
+    "thanksTitle": "Bir Corpanista'sınız",
+    "thanksBody": "Corpán'ı desteklediğiniz için teşekkür ederiz. Her şeyin kilidi açıldı.",
+    "bookSubhead": "{{title}} adlı kitabın ücretsiz önizlemesinin sonuna geldiniz.",
+    "subhead": "Tüm dillerdeki tüm kitapların kilidini açın. Reklamsız. Verileriniz cihazınızda kalır.",
+    "pitch": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz. Corpanistas sayesinde reklamsız kalıyor ve büyüyor.",
+    "maybeLater": "Belki sonra",
+    "continue": "Devam"
+  },
+  "streak": {
+    "title": "{{count}} günlük seri"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Anlatımlı sesli kitapları kelime kelime vurgulamalarla sakin bir şekilde okuyun.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Mandarin karakterlerinde vuruş vuruş ustalaşın.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Bir ifadeyi dinleyin, eşleştirmek için yönlendirin — oynayarak öğrenin.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Hızlı bir oyunda ifadeleri parça parça oluşturun.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Dillerinizdeki ifadeler arasında gezinin — hızlı, odaklanmış pratik.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "İfadeleri yüksek sesle söyleyin ve telaffuz geri bildirimi alın.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Aynı sesli kitaplar sürükleyici 3D'de — kelimeler okundukça uzayda akıp gider.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Dünyanın dört bir yanından canlı radyoları dinleyin.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Öğrenmeye devam et",
+    "experiences": "Deneyimler",
+    "forYou": "Sizin için",
+    "get": "Edin",
+    "installing": "Yükleniyor…",
+    "library": "Kütüphane",
+    "like": "Beğen",
+    "notForMe": "Bana göre değil",
+    "open": "Aç",
+    "openPhrases": "İfadeleri aç",
+    "phraseFlipDesc": "Dillerinizdeki ifadeler arasında gezinin",
+    "plusChip": "Corpán Plus — her şeyin kilidini açın",
+    "recommended": "Önerilen",
+    "showAnother": "Başka bir tane göster",
+    "tryIt": "Dene"
+  },
+  "offline": {
+    "cachedSubtitle": "Son önbelleğe alınmış sonuçlarınız gösteriliyor.",
+    "catalogSubtitle": "Yeni paketleri keşfetmek için yeniden bağlanın. Yüklü paketleriniz hala çalışıyor.",
+    "installNeedsInternet": "İndirmek için yeniden bağlanın.",
+    "onboardingBanner": "Çevrimdışı — yeniden bağlandığınızda seçimleriniz yüklenecek.",
+    "packCatalogSubtitle": "Yüklü paketleriniz hala çalışıyor. Daha fazlasına göz atmak için yeniden bağlanın.",
+    "packCatalogTitle": "Paket kataloğu internet gerektiriyor",
+    "phrasePacksOnboardingSubtitle": "Yeniden bağlandığınızda ifade paketlerini daha sonra Ayarlar → Paketler bölümünden seçebilirsiniz.",
+    "phrasePacksSubtitle": "Yüklü ifade paketleriniz hala çalışıyor. Yenilerini incelemek için yeniden bağlanın.",
+    "phrasePacksTitle": "İfade paketi kataloğu internet gerektiriyor",
+    "purchaseNeedsInternet": "Satın almak için yeniden bağlanın.",
+    "restoreSubtitle": "Satın alımları geri yüklemek için yeniden bağlanın.",
+    "subscriptionSubtitle": "Abone olmak için yeniden bağlanın. Yüklü paketleriniz ve paketlenmiş ifadeleriniz hala çalışıyor.",
+    "subscriptionTitle": "Abonelikler internet gerektiriyor",
+    "title": "İnternet yok",
+    "voiceDownloadSubtitle": "Cihazınızdaki sesler hala çalışıyor. Daha fazlasını yüklemek için yeniden bağlanın.",
+    "voiceDownloadTitle": "Ses indirme internet gerektiriyor"
+  },
+  "quickSettings": {
+    "fullSettings": "Tüm ayarlar",
+    "title": "Hızlı ayarlar"
+  },
+  "tour": {
+    "maybeLater": "Belki daha sonra",
+    "progress": "{{total}} tanesinden {{n}}"
+  },
+  "update": {
+    "availableLine": "Güncelleme mevcut → {{version}}",
+    "close": "Kapat",
+    "description": "Uygulama mağazanızda Corpán'ın daha yeni bir sürümü mevcut.",
+    "remindLater": "Belki daha sonra",
+    "skipThisVersion": "Bu sürümü atla",
+    "title": "Güncelleme mevcut",
+    "update": "Güncelle",
+    "updateNow": "Şimdi güncelle",
+    "versionLine": "Sürüm {{version}} yüklenmeye hazır."
   }
 }

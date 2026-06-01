@@ -11,6 +11,7 @@ import {
 import { mergeForLang } from "./whisperTuning"
 import { mergeScoringForLangModel } from "./scoringTuning"
 import { openTuner } from "./whisperTunerUI"
+import { t as i18n, type I18nKey } from "./i18n"
 // Direct file import (not the @shared/ui barrel) so we don't pull in
 // commandDrawer/drawerStore and their zustand dep. The offline notice is
 // pure DOM + CSS — perfect for packs that don't otherwise need shared/ui.
@@ -648,6 +649,17 @@ const pickTranslations = (
   entry: EntryOut,
   languages: string[]
 ): { target: TranslationOut | null; native: TranslationOut | null } => {
+  // Single-language stack (immersion / native practice): practice the one
+  // language directly, with no native gloss. Every pack must work with a
+  // one-language stack — there is no requirement to add a target language.
+  if (languages.length <= 1) {
+    const only = languages[0]
+    const target = only
+      ? entry.translations.find((t) => t.language_code === only) ?? null
+      : null
+    return { target, native: null }
+  }
+
   // Convention: languages[0] is the native (king) language; the rest are
   // target slots the learner is studying.
   const native =
@@ -740,6 +752,14 @@ export const mountGame = (
 ): GameHandle => {
   const stt = (hostApi as unknown as { stt?: SttApi }).stt
 
+  // Chrome is localized into the user's NATIVE language (stack languages[0]),
+  // falling back to the device locale, then English. `tt()` localizes a key.
+  const uiLang =
+    hostApi.getStackConfig().languages[0] ||
+    (navigator.language || "en").split("-")[0]
+  const tt = (key: I18nKey, params?: Record<string, string>) =>
+    i18n(key, uiLang, params)
+
   let disposed = false
   let activeSessionId: string | null = null
 
@@ -780,7 +800,7 @@ export const mountGame = (
         <div class="pc-header">
           <div class="pc-header-left"></div>
           <div class="pc-header-right">
-            <button class="pc-close" id="pc-close" type="button" aria-label="Close">×</button>
+            <button class="pc-close" id="pc-close" type="button" aria-label="${escapeHtml(tt("ariaClose"))}">×</button>
           </div>
         </div>
         <div class="pc-unavailable">
@@ -843,7 +863,7 @@ export const mountGame = (
               <div class="pc-result-bars-up" data-pc-result-bars-up hidden></div>
             </div>
             <div class="pc-card-center">
-              <h1 class="pc-target" id="pc-target">Loading…</h1>
+              <h1 class="pc-target" id="pc-target">${escapeHtml(tt("bootLoading"))}</h1>
               <p class="pc-romanization" id="pc-romanization" hidden></p>
               <p class="pc-native" id="pc-native"></p>
             </div>
@@ -860,7 +880,7 @@ export const mountGame = (
             <span id="pc-mic-icon">●</span>
           </button>
           <div class="pc-mic-label" id="pc-mic-label">Loading model…</div>
-          <div class="pc-swipe-hint">← swipe to navigate →</div>
+          <div class="pc-swipe-hint">${escapeHtml(tt("swipeHint"))}</div>
         </div>
         <div class="pc-error" id="pc-error" hidden></div>
       </div>
@@ -1022,16 +1042,16 @@ export const mountGame = (
     micBtn.disabled = false
     if (next === "idle") {
       micIcon.innerHTML = "●"
-      micLabel.textContent = modelReady ? "Tap to speak" : "Loading model…"
+      micLabel.textContent = modelReady ? tt("holdToSpeak") : tt("loadingModel")
       micBtn.disabled = !modelReady || !currentPhrase
     } else if (next === "recording") {
       micBtn.classList.add("recording")
       micIcon.innerHTML = "■"
-      micLabel.textContent = "Listening… tap to stop"
+      micLabel.textContent = tt("listeningReleaseToStop")
     } else if (next === "scoring") {
       micBtn.classList.add("scoring")
       micIcon.innerHTML = `<div class="pc-spinner"></div>`
-      micLabel.textContent = "Scoring…"
+      micLabel.textContent = tt("scoring")
       micBtn.disabled = true
     }
   }
@@ -1157,7 +1177,7 @@ export const mountGame = (
 
   const fetchOneEntry = async (): Promise<LoadedPhrase | null> => {
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) return null
+    if (!cfg.languages || cfg.languages.length < 1) return null
     if (!hostApi.getRandomEntry) return null
     const entry = await hostApi.getRandomEntry()
     const { target, native } = pickTranslations(entry, cfg.languages)
@@ -1190,12 +1210,12 @@ export const mountGame = (
     // fillCard via cardSkeleton, with empty (hidden) result slots.
 
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) {
+    if (!cfg.languages || cfg.languages.length < 1) {
       currentPhrase = null
       renderEmptyCard(
         cardEl,
-        "Set up at least one target language",
-        "Open Corpán settings and add a target language to start practising."
+        tt("noLanguageSelected"),
+        tt("chooseLanguageToStudy")
       )
       micBtn.disabled = true
       micLabel.textContent = "—"
@@ -1221,13 +1241,13 @@ export const mountGame = (
       } catch (err) {
         console.error("[pronunciation-coach] fetch next failed:", err)
         showError(
-          `Could not load a phrase: ${formatErr(err)}`
+          tt("errLoadPhrase", { error: formatErr(err) })
         )
         return
       }
     }
     if (!next) {
-      showError("No phrases available — check your stack config.")
+      showError(tt("noPhrasesAvailable"))
       return
     }
 
@@ -1355,28 +1375,28 @@ export const mountGame = (
     // strong attempts now. Confetti and streak only count above 0.85
     // (real "nailed it"), the upper tiers below are for nuance.
     let headlineClass = "bad"
-    let headlineText = "Try again"
+    let headlineText = tt("resultTryAgain")
     if (silent) {
       headlineClass = "bad"
-      headlineText = "🎙️ Couldn't hear you"
+      headlineText = tt("resultCouldntHear")
     } else if (overall >= 0.95) {
       headlineClass = "good"
-      headlineText = "✨ Perfect!"
+      headlineText = tt("resultPerfect")
     } else if (overall >= 0.85) {
       headlineClass = "good"
-      headlineText = "🎉 Nailed it!"
+      headlineText = tt("resultNailedIt")
     } else if (overall >= 0.75) {
       headlineClass = "good"
-      headlineText = "Great"
+      headlineText = tt("resultGreat")
     } else if (overall >= 0.60) {
       headlineClass = "okay"
-      headlineText = "Pretty good"
+      headlineText = tt("resultPrettyGood")
     } else if (overall >= 0.45) {
       headlineClass = "okay"
-      headlineText = "Close — keep going"
+      headlineText = tt("resultCloseKeepGoing")
     } else if (overall >= 0.25) {
       headlineClass = "bad"
-      headlineText = "Keep practicing"
+      headlineText = tt("resultKeepPracticing")
     }
 
     if (silent) {
@@ -1500,8 +1520,8 @@ export const mountGame = (
     const wordsHtml = pills
       .map((w, idx) => {
         const cls = pillClass(w)
-        return `<button class="pc-word ${cls}" type="button" data-pc-word-idx="${idx}" aria-label="Speak ${escapeHtml(
-          w.word
+        return `<button class="pc-word ${cls}" type="button" data-pc-word-idx="${idx}" aria-label="${escapeHtml(
+          tt("ariaSpeakWord", { word: w.word })
         )}">${escapeHtml(w.word)}</button>`
       })
       .join("")
@@ -1521,8 +1541,8 @@ export const mountGame = (
     const heardRow = freeText.length
       ? `<div class="pc-transcript-row heard" role="button" tabindex="0"
              data-pc-speak="heard" data-no-swipe
-             aria-label="Play what Whisper heard">
-           <span class="pc-transcript-label">Heard you say</span>
+             aria-label="${escapeHtml(tt("ariaPlayHeard"))}">
+           <span class="pc-transcript-label">${escapeHtml(tt("heardYouSay"))}</span>
            <span class="${lineCls}">
              <span class="pc-transcript-play" aria-hidden="true">${playGlyph}</span>
              <span class="pc-transcript-text">${escapeHtml(freeText)}</span>
@@ -1530,9 +1550,9 @@ export const mountGame = (
          </div>`
       : freeDecodeFailed
         ? `<div class="pc-transcript-row heard empty">
-             <span class="pc-transcript-label">Heard you say</span>
+             <span class="pc-transcript-label">${escapeHtml(tt("heardYouSay"))}</span>
              <span class="pc-transcript-line">
-               <span class="pc-transcript-text empty">(couldn't make out the words)</span>
+               <span class="pc-transcript-text empty">${escapeHtml(tt("couldntMakeOutWords"))}</span>
              </span>
            </div>`
         : ""
@@ -1551,17 +1571,17 @@ export const mountGame = (
     // the user can't fix it — it's a signal that the score may not
     // mean what they expect.
     const knownScriptMismatch: Record<string, string> = {
-      "pa-arab": "Different writing system — scoring may be off",
-      "yue-hant-hk": "Different writing system — scoring may be off",
-      "zh-hans": "Different writing system — scoring may be off",
-      "zh-hant": "Different writing system — scoring may be off",
+      "pa-arab": tt("chipDifferentScript"),
+      "yue-hant-hk": tt("chipDifferentScript"),
+      "zh-hans": tt("chipDifferentScript"),
+      "zh-hant": tt("chipDifferentScript"),
     }
     const lcLang = (result.language ?? "").toLowerCase()
     const scriptMismatchNote = knownScriptMismatch[lcLang]
     const diagChips: string[] = []
     if (noSpeech > 0.2)
       diagChips.push(
-        `<div class="pc-chip pc-chip-warn">Sounded faint — try a bit louder</div>`
+        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipSoundedFaint"))}</div>`
       )
     // Compression ratio is calibrated for Latin-script languages.
     // Indic / Persian / Urdu BPE legitimately runs higher (2.5–3.5)
@@ -1574,15 +1594,15 @@ export const mountGame = (
       : 2.4
     if (compression > compressionThreshold)
       diagChips.push(
-        `<div class="pc-chip pc-chip-warn">Sounded a bit garbled</div>`
+        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipSoundedGarbled"))}</div>`
       )
     if (freeDecodeFailed)
       diagChips.push(
-        `<div class="pc-chip pc-chip-warn">Couldn't make out the words</div>`
+        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipCouldntMakeOut"))}</div>`
       )
     else if (freeVsConstrained < 0.6)
       diagChips.push(
-        `<div class="pc-chip pc-chip-warn">Words didn't quite match</div>`
+        `<div class="pc-chip pc-chip-warn">${escapeHtml(tt("chipWordsDidntMatch"))}</div>`
       )
     if (scriptMismatchNote)
       diagChips.push(
@@ -1624,7 +1644,7 @@ export const mountGame = (
       bannerEl.hidden = false
       detailEl.innerHTML = `
         <div class="pc-chips">
-          <div class="pc-chip">Move the device closer or speak louder.</div>
+          <div class="pc-chip">${escapeHtml(tt("hintMoveCloser"))}</div>
         </div>
       `
       detailEl.hidden = false
@@ -1759,7 +1779,7 @@ export const mountGame = (
       console.error("[pronunciation-coach] startSession failed:", err)
       activeSessionId = null
       showError(
-        `Could not start recording: ${formatErr(err)}`
+        tt("errStartRecording", { error: formatErr(err) })
       )
       setUiState("idle")
     }
@@ -1910,25 +1930,50 @@ export const mountGame = (
       }
       if (code === "NETWORK") {
         showError(
-          "Brief network blip while scoring. Try again — your model is fine."
+          tt("errNetworkBlip")
         )
         return
       }
-      showError(`Scoring failed: ${msg}`)
+      showError(tt("errScoringFailed", { error: msg }))
     }
   }
 
-  micBtn.addEventListener("click", () => {
-    if (uiState === "idle") {
-      startRecording().catch((err) => {
-        console.error("[pronunciation-coach] startRecording threw:", err)
-      })
-    } else if (uiState === "recording") {
+  // Hold-to-speak: press and hold the mic to record, release to stop +
+  // score. Pointer events (not click) so it works for touch and mouse;
+  // setPointerCapture keeps pointerup landing here even if the finger
+  // slides off the button, and pointercancel covers an interrupted
+  // gesture (call, system gesture) so we can never get stuck recording.
+  let micHoldActive = false
+  const beginMicHold = (e: PointerEvent) => {
+    if (uiState !== "idle" || !modelReady || !currentPhrase) return
+    e.preventDefault()
+    micHoldActive = true
+    try {
+      micBtn.setPointerCapture(e.pointerId)
+    } catch {
+      /* capture is best-effort; pointercancel still ends the hold */
+    }
+    startRecording().catch((err) => {
+      console.error("[pronunciation-coach] hold-start threw:", err)
+    })
+  }
+  const endMicHold = (e: PointerEvent) => {
+    if (!micHoldActive) return
+    micHoldActive = false
+    try {
+      micBtn.releasePointerCapture(e.pointerId)
+    } catch {
+      /* no-op if capture was never granted */
+    }
+    if (uiState === "recording") {
       stopRecording().catch((err) => {
-        console.error("[pronunciation-coach] stopRecording threw:", err)
+        console.error("[pronunciation-coach] hold-stop threw:", err)
       })
     }
-  })
+  }
+  micBtn.addEventListener("pointerdown", beginMicHold)
+  micBtn.addEventListener("pointerup", endMicHold)
+  micBtn.addEventListener("pointercancel", endMicHold)
 
   // Skip button removed from the header — swipe ←/→ already covers
   // skip-to-next, and removing the redundant button cleans up the
@@ -2403,12 +2448,21 @@ export const mountGame = (
     } else if (e.key === "Escape") {
       dispatchExit()
     } else if (e.key === " " || e.code === "Space") {
+      // Hold-to-speak parity for desktop: spacebar DOWN starts, UP stops.
+      // Ignore keydown auto-repeat so we only start once while held.
       e.preventDefault()
+      if (e.repeat) return
       if (uiState === "idle" && modelReady && currentPhrase) {
         startRecording().catch((err) =>
           console.error("[pronunciation-coach] space-start failed:", err)
         )
-      } else if (uiState === "recording") {
+      }
+    }
+  }
+  const onKeyUp = (e: KeyboardEvent) => {
+    if (e.key === " " || e.code === "Space") {
+      e.preventDefault()
+      if (uiState === "recording") {
         stopRecording().catch((err) =>
           console.error("[pronunciation-coach] space-stop failed:", err)
         )
@@ -2416,6 +2470,7 @@ export const mountGame = (
     }
   }
   window.addEventListener("keydown", onKeyDown)
+  window.addEventListener("keyup", onKeyUp)
 
   // ---- Long-press on the language badge → Whisper tuner ----
   // The badge is a small uppercase base-language code rendered inside
@@ -2500,12 +2555,12 @@ export const mountGame = (
   // ---- Boot ----
   const loadFirstPhrase = async () => {
     const cfg = hostApi.getStackConfig()
-    if (!cfg.languages || cfg.languages.length < 2) {
+    if (!cfg.languages || cfg.languages.length < 1) {
       currentPhrase = null
       renderEmptyCard(
         cardEl,
-        "Set up at least one target language",
-        "Open Corpán settings and add a target language to start practising."
+        tt("noLanguageSelected"),
+        tt("chooseLanguageToStudy")
       )
       micBtn.disabled = true
       micLabel.textContent = "—"
@@ -2526,7 +2581,7 @@ export const mountGame = (
       const phrase = await fetchOneEntry()
       if (disposed) return
       if (!phrase) {
-        showError("No phrases available — check your stack config.")
+        showError(tt("noPhrasesAvailable"))
         return
       }
       history.push(phrase)
@@ -2539,7 +2594,7 @@ export const mountGame = (
       console.error("[pronunciation-coach] loadFirstPhrase failed:", err)
       currentPhrase = null
       showError(
-        `Could not load a phrase: ${formatErr(err)}`
+        tt("errLoadPhrase", { error: formatErr(err) })
       )
       micBtn.disabled = true
       micLabel.textContent = "—"
@@ -3256,6 +3311,7 @@ export const mountGame = (
       disposed = true
       cancelActiveSession()
       window.removeEventListener("keydown", onKeyDown)
+      window.removeEventListener("keyup", onKeyUp)
       container.removeEventListener("pointerdown", onLpPointerDown)
       container.removeEventListener("pointermove", onLpPointerMove)
       container.removeEventListener("pointerup", cancelLongPress)

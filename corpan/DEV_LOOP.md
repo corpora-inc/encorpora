@@ -5,6 +5,46 @@ This is the workflow that finally let us pin down the
 Use it for any future iOS plugin / pack debugging where the bug shape
 is "something happens on the device but I can't see what".
 
+## ⚡ Instant setup (DO THIS FIRST)
+
+```sh
+bash corpan/scripts/dev/ipad/doctor.sh
+```
+
+One command verifies the WHOLE pipeline end-to-end and prints the exact
+commands to drive the device. Green across the board = you have full
+control right now. Don't rediscover this setup from scratch — it cost an
+hour once; the doctor makes it instant.
+
+**Claude has FULL device control (no copy-paste, no guessing):**
+
+| Capability | Command | Notes |
+|---|---|---|
+| **Run JS / read screen** | `scripts/dev/ipad/cdp.sh eval "EXPR"` | live WebView, returns JSON |
+| **Tap an element** | `cdp.sh click "SELECTOR"` | synthesizes `.click()` |
+| **Scroll** | `cdp.sh scroll SEL DY` | element or `window` |
+| **Measure layout** | `cdp.sh rect "SEL"` / `dom "SEL"` | bounding box, html |
+| **Pixel screenshot** | `screenshot.py /tmp/x.png` | DVT over tunneld, **no sudo** |
+| **Device os_log** | `tail-device-log.sh "FILTER"` | Swift/Rust/native |
+| **Pack JS console** | `npm run dev:console-server` | optional; CDP eval covers most |
+
+CDP + screenshots both ride the **already-running `pymobiledevice3 remote
+tunneld`** (the user starts it once with sudo; we connect without sudo via
+`_tunneld`). The CDP path needs Web Inspector ON (iPad → Settings → Apps →
+Safari → Advanced → Web Inspector).
+
+**The ONLY human steps:** (a) `sudo pymobiledevice3 remote tunneld` once
+per boot, (b) Web Inspector ON once, (c) `npm run ios:redeploy` for
+Swift/Rust changes. Everything else Claude drives directly.
+
+**Two gotchas baked into the tools (don't re-debug them):**
+- `ipad_cdp.py` must capture the auto-created `Target` id (WebKit on iOS
+  26.x routes all commands through `Target.sendMessageToTarget`; upstream's
+  `_target_created` is a no-op, so without the capture every command fails
+  with `'Runtime' domain was not found`). Already handled.
+- `cdp.sh` retries with backoff — WebInspector allows one session at a
+  time, so back-to-back calls can collide. Don't hammer it sub-second.
+
 ## TL;DR
 
 Three things stream concurrently. Each runs once and stays up:
@@ -136,13 +176,24 @@ corpan/
 
 What Claude **cannot** do autonomously:
 
-- Tap UI elements on the iPad (no XCTest UI automation set up).
-- See pixels / screenshots from the WKWebView.
-- Run `npm run ios:redeploy` itself — that holds Cargo/DerivedData
-  locks the user needs (see `feedback_no_ios_builds.md`).
+- Start `sudo pymobiledevice3 remote tunneld` (needs the user's sudo
+  password) or flip Web Inspector on (device Settings).
 
-What Claude **can** do:
+**Coordinated, single-owner (not a hard "cannot"):**
 
+- `npm run ios:redeploy` and restarting `npm run tauri ios dev`. These hold
+  Cargo/DerivedData locks, so **exactly one of us owns the device build at a
+  time** (see `feedback_no_ios_builds.md`). Default owner is the user; when he
+  explicitly hands Claude control for a task, Claude runs the redeploy and
+  restarts `tauri ios dev` itself, and they coordinate so they never build at
+  once. State who holds it whenever control changes.
+
+What Claude **can** do (this used to be the "cannot" list — it isn't
+anymore, via `scripts/dev/ipad/`):
+
+- **Tap, scroll, read, and measure the live WebView** through CDP
+  (`cdp.sh click/scroll/eval/rect/dom`) — full UI control.
+- **Take pixel screenshots** (`screenshot.py`, no sudo) and look at them.
 - Read both log streams in real time with `tail -200 /tmp/...`.
 - `cargo check`, `npm run tsc`, and `npm run build` before asking
   the user to test.
@@ -150,6 +201,33 @@ What Claude **can** do:
 
 When the iDevice link drops or the receiver crashes, restart the
 relevant terminal. That's rare.
+
+## CDP / log-tail gotchas (these cost real debugging time — read first)
+
+- **One WebInspector client at a time.** Safari's Web Inspector and
+  `cdp.sh`/`cdpd` are mutually exclusive — whichever attaches second gets
+  `no Target.targetCreated within timeout`. If CDP can't connect, **close
+  Safari's Web Inspector**. `screenshot.py` uses a different service and is
+  unaffected (use it to see device state when CDP is dead).
+- **`tunneld` is the foundation.** `sudo pymobiledevice3 remote tunneld`
+  carries the RSD tunnel for both CDP and screenshots. If it dies, `cdpd`
+  blocks silently (no socket created) and per-call CDP times out. Confirm a
+  screenshot works to verify the tunnel; if it's down, the user restarts
+  tunneld.
+- **Restart `cdpd` after any app relaunch/redeploy.** The daemon caches the
+  WebInspector page; a fresh app = stale connection. Recipe:
+  `pkill -f cdpd.py; rm -f /tmp/corpan-cdpd.sock; <venv-py> scripts/dev/ipad/cdpd.py &`
+  then give the WebView a few seconds to expose a target (retry the eval).
+- **Don't hammer exit→relaunch.** Rapid automated exit + relaunch of the heavy
+  stargate (Babylon) bundle can lock the app to a black screen. When iterating
+  on a reader, prefer asking the user to navigate, or space the operations out.
+- **Robust device os_log tail:** `scripts/dev/ipad/audio-tail.sh`
+  (`start｜refresh｜status｜stop`) — a supervised, self-healing
+  `idevicesyslog -m FILTER` that respawns on the silent-hang/disconnect that
+  freezes a bare tail during `dvt`/redeploy/lock.
+- **In-WebView console capture without Safari:** inject a wrapper that pushes
+  `console.*` into `window.__log`, then read it via `cdp.sh eval` — lets you
+  read pack logs while CDP (not Safari) owns the inspector.
 
 ## Why not headless / CI?
 

@@ -120,11 +120,15 @@
       "noMatches": "Žádné výsledky.",
       "noFiltered": "Tady teď nic není.",
       "stackTotalPhrases": "~{{count}} frází odpovídá",
-      "stackTotalNudge": "Přidej balíčky nebo rozšiř úrovně pro větší rozmanitost."
+      "stackTotalNudge": "Přidej balíčky nebo rozšiř úrovně pro větší rozmanitost.",
+      "activeCount": "{{active}} z {{total}} aktivních",
+      "baseCorpusSubtitle": "{{n}} frází"
     },
     "sendAnonUsage": "Posílat anonymní údaje o používání",
     "sendAnonUsageHint": "Anonymní, jen pro toto sezení. Žádné účty, žádná ID zařízení, žádné ukládání IP adres. Kdykoli můžete vypnout.",
-    "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí"
+    "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí",
+    "showStreak": "Zobrazit sérii čtení",
+    "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení."
   },
   "onboarding": {
     "welcome": "Vítejte",
@@ -139,7 +143,7 @@
     "welcomeVisit": "Navštivte encorpora.io",
     "linkCopied": "Odkaz zkopírován. Otevřete ve svém prohlížeči:",
     "reconfigureStack": "Znovu nakonfigurovat hromadu",
-    "openVoiceSettings": "Otevřete nastavení hlasu vašeho zařízení",
+    "openVoiceSettings": "Otevřít Nastavení",
     "openTTSSetup": "Otevřete nastavení TTS",
     "welcomeFollowUp": "Děkujeme, že jste se připojili — uvidíme se v komunitě!",
     "learning": "Učení jazyků",
@@ -154,8 +158,8 @@
     "languageOrderTipBody": "Jazyk na spodní části seznamu je jazykem uživatelského rozhraní aplikace. Chcete-li změnit jazyk uživatelského rozhraní, přetáhněte jiný jazyk dolů.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Nejlepší výsledky: použijte Google text-to-speech. Samsung TTS nefunguje v Corpánu.",
-    "ttsOsTipIOS": "V Nastavení → Přístupnost, najděte Mluvený obsah a stáhněte hlasy. Poznámka: Apple neposkytuje hlasy pro každý jazyk. Pokud aktualizace nepomůže, požádejte o podporu prostřednictvím aplikace Apple Feedback.",
-    "ttsOsTipMac": "V Systémových nastaveních → Přístupnost, najděte Mluvený obsah a stáhněte hlasy. Poznámka: Apple neposkytuje hlasy pro každý jazyk. Pokud aktualizace nepomůže, požádejte o podporu prostřednictvím aplikace Apple Feedback.",
+    "ttsOsTipIOS": "Vaše zařízení má vestavěné bezplatné hlasy Premium — Apple je jen nechává vypnuté. Zapněte je: Nastavení → Zpřístupnění → Mluvený obsah → Hlasy → váš jazyk, poté klepněte na ikonu stahování pro hlas Premium nebo Enhanced. Vraťte se a objeví se zde automaticky. (Apple zatím nepokrývá všechny jazyky.)",
+    "ttsOsTipMac": "Váš Mac má vestavěné bezplatné hlasy Premium — Apple je jen nechává vypnuté. Zapněte je: Nastavení systému → Zpřístupnění → Mluvený obsah → Systémový hlas → Spravovat hlasy, poté stáhněte hlas Premium nebo Enhanced. Vraťte se a objeví se zde automaticky. (Apple zatím nepokrývá všechny jazyky.)",
     "ttsOsTipWindows": "V Nastavení přidejte/nainstalujte hlasy pro řeč, poté se vraťte sem.",
     "ttsOsTipOther": "V nastavení vašeho zařízení přidejte/nainstalujte hlasy pro text-to-speech, poté se vraťte sem.",
     "installVoicesAndroid": "Nainstalujte hlasy",
@@ -171,7 +175,7 @@
       },
       "engineNotInstalled": {
         "heading": "Nainstalujte Google Text-to-Speech",
-        "detail": "Hlasový engine Google vám poskytne nejlepší kvalitu ve všech jazycích, které Corpán podporuje. Je to zdarma.",
+        "detail": "Bezplatný hlasový engine Google odemyká vysoce kvalitní hlasy pro většinu jazyků, které Corpán podporuje — většina telefonů ho však nemá předinstalovaný. Pojďme ho přidat:",
         "button": "Nainstalovat z Obchodu Play"
       },
       "noEngine": {
@@ -226,11 +230,127 @@
       "emptySub": "Brzy se vrať.",
       "offlineHero": "Jsi offline.",
       "offlineSub": "Balíčky potřebují internet — zkus to později v Nastavení → Balíčky.",
-      "offlineBanner": "Offline — výběr se nainstaluje po připojení."
+      "offlineBanner": "Offline — výběr se nainstaluje po připojení.",
+      "noneSelected": "Nic nevybráno — Pokračovat přeskočí",
+      "selectedSuffix": "vybráno",
+      "skip": "Přeskočit prozatím",
+      "subtitle": "Přidejte soustředěné balíčky frází do svého zásobníku. Můžete je kdykoli zapnout nebo vypnout v Nastavení."
     },
     "notOnAppleIOS": "Ne na iOS",
     "appleNoVoiceTitle": "Apple zatím nenabízí hlas pro {{lang}}",
-    "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu."
+    "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu.",
+    "back": "Zpět",
+    "continue": "Pokračovat",
+    "class": {
+      "title": "Pro koho je Corpán?",
+      "subtitle": "Corpán vám přizpůsobíme. Vše zůstává ve vašem zařízení – nikam nic neposíláme.",
+      "learner": "Učím se jazyky",
+      "learnerDesc": "Čtěte a poslouchejte v jazycích, které studujete.",
+      "enjoyer": "Chci si užít obsah",
+      "enjoyerDesc": "Knihy, příběhy a hry ve vašem jazyce.",
+      "polyglot": "Obojí – chci vše",
+      "polyglotDesc": "Několik jazyků najednou a k tomu vše ostatní.",
+      "kid": "Je to pro dítě",
+      "kidDesc": "Vybrané knihy a výukové hry pro mladší čtenáře.",
+      "ageTitle": "Kolik je čtenáři let?",
+      "ageUnder13": "Do 13 let",
+      "ageTeen": "13–17 let"
+    },
+    "pitch": {
+      "title": "Připojte se ke Corpanistas",
+      "subtitle": "Corpán Plus otevírá celou knihovnu. První část jakékoli knihy si můžete vyzkoušet zdarma, navždy.",
+      "everything": "Každá kniha, každý jazyk – odemčeno.",
+      "private": "Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
+      "team": "Jsme malý tým a každý cent vracíme zpět do Corpánu.",
+      "tryPlus": "Vyzkoušejte Corpán Plus",
+      "continueFree": "Pokračovat zdarma"
+    },
+    "calibrate": {
+      "childAgeTitle": "Kolik let je čtenáři?",
+      "childTeen": "13–17 let",
+      "childUnder13": "Méně než 13 let",
+      "enjoyComfortable": "Docela dobře",
+      "enjoyImproving": "Stále se ho učím číst",
+      "enjoyJustStarting": "Právě začínám — jsem v jeho čtení nováček",
+      "enjoyNative": "Plynule — je to můj jazyk",
+      "enjoyTitle": "Jak dobře čtete {{lang}}?",
+      "learnAdvanced": "Jsem poměrně pokročilý",
+      "learnLittle": "Trochu",
+      "learnNever": "Nikdy — úplný začátečník",
+      "learnTitle": "Učili jste se {{lang}} už dříve?"
+    },
+    "confident": {
+      "addBetter": "Odemkněte bohatší hlas",
+      "andMore": "+{{count}} dalších",
+      "chooseVoices": "Vybrat hlasy",
+      "noVoiceFor": "Zatím žádný hlas pro {{lang}} — pojďme jeden přidat, aby Corpán mohl číst nahlas.",
+      "voiceCountMany": "{{count}} hlasů připraveno",
+      "voiceCountOne": "1 hlas připraven",
+      "yourVoiceFor": "Váš hlas pro {{lang}}"
+    },
+    "engage": {
+      "joinDesc": "Podpořte Corpán a odemkněte vše. Volitelné, kdykoli.",
+      "joinTitle": "Připojte se ke Corpanistas",
+      "start": "Začít objevovat",
+      "subtitle": "Corpán je tvořen malým open-source týmem. Přijďte pozdravit — a pokud se vám líbí, můžete nás podpořit.",
+      "title": "Vše je připraveno"
+    },
+    "fork": {
+      "child": {
+        "desc": "Jemné, hravé knihy a hry pro mladší studenty.",
+        "label": "Nastavit pro dítě"
+      },
+      "enjoy": {
+        "desc": "Knihy, příběhy, hry, cvičení a další — vše ve vašem jazyce.",
+        "label": "Užijte si Corpán v {{lang}}"
+      },
+      "learn": {
+        "desc": "Příběhy, hry, cvičení a audio v novém jazyce.",
+        "label": "Učit se jazyk"
+      },
+      "polyglot": {
+        "desc": "Skládejte několik jazyků a prozkoumejte vše.",
+        "label": "Prozkoumat mnoho jazyků"
+      },
+      "subtitle": "Vše pro vás nastavíme. Můžete to změnit později.",
+      "title": "Co vás přivádí ke Corpánu?"
+    },
+    "interests": {
+      "audio": "Poslouchat audio",
+      "audioDesc": "Audioknihy, vyprávění a rádio.",
+      "games": "Hrát hry",
+      "gamesDesc": "Učte se hravými výzvami.",
+      "read": "Číst příběhy a knihy",
+      "readDesc": "Ponořte se do čtení ve svém jazyce.",
+      "speak": "Procvičovat mluvení",
+      "speakDesc": "Říkejte fráze nahlas a získejte zpětnou vazbu.",
+      "study": "Studovat a cvičit",
+      "studyDesc": "Budujte slovní zásobu soustředěným procvičováním.",
+      "subtitle": "Vyberte cokoli, co vás zaujme — navrhneme odpovídající zážitky. Volitelné.",
+      "title": "Co chcete dělat?",
+      "wild": "Prozkoumat experimentální zážitky",
+      "wildDesc": "Překvapivé, experimentální zážitky."
+    },
+    "settingUp": "Nastavuji…",
+    "ttsIntro": "Corpán čte nahlas. Klepněte na hlas, abyste ho slyšeli ve své rychlosti.",
+    "voiceGuide": {
+      "intro": "Vaše zařízení má vestavěné bohaté, přirozené hlasy — zdarma a mnohem lepší než výchozí. Výrobce je jen nechává vypnuté. Pojďme je zapnout; stačí pár klepnutí:",
+      "macStep1": "Otevřete Nastavení systému.",
+      "macStep2": "Přejděte na Zpřístupnění → Mluvený obsah.",
+      "macStep3": "Pod Systémovým hlasem otevřete Spravovat hlasy.",
+      "macStep4": "Stáhněte si hlas Premium nebo Enhanced pro váš jazyk.",
+      "macStep5": "Vraťte se do Corpánu — objeví se zde automaticky.",
+      "step1": "Klepněte na Otevřít Nastavení níže.",
+      "step2": "Přejděte na Zpřístupnění → Mluvený obsah → Hlasy.",
+      "step3": "Klepněte na svůj jazyk.",
+      "step4": "Stáhněte si hlas Premium nebo Enhanced.",
+      "step5": "Vraťte se do Corpánu — objeví se zde automaticky.",
+      "title": "Odemkněte nejlepší hlasy vašeho zařízení"
+    },
+    "voicePreviewAria": "Náhled {{name}}",
+    "voicePreviewSelected": "Náhled vybrán",
+    "voiceRecommended": "Doporučeno",
+    "voiceSelectedCount": "{{count}} z {{total}}"
   },
   "socials": {
     "youtube": {
@@ -252,6 +372,16 @@
       "cta": "Navštívit",
       "title": "encorpora.io",
       "desc": "Hlavní stránka s dokumentací a komunitou."
+    },
+    "instagram": {
+      "cta": "Sledovat",
+      "desc": "@corpanapp",
+      "title": "Sledujte na Instagramu"
+    },
+    "share": {
+      "title": "Sdílet Corpán",
+      "text": "Učte se jazyky s Corpán.",
+      "copied": "Odkaz zkopírován!"
     }
   },
   "common": {
@@ -442,7 +572,6 @@
     "devIntro": "Vyzkoušejte balíček Corpán nebo si vytvořte vlastní.",
     "devLink": "Zjistit více na Free2z",
     "new": "Nový",
-    "updates": "Aktualizace",
     "offline": "Offline",
     "purchasing": "Nakupování...",
     "buy": "Koupit {{price}}",
@@ -481,8 +610,19 @@
       "openDrawer": "Procházet balíčky frází ({{count}})",
       "openDrawerLabel": "Procházet balíčky frází",
       "inactiveBadge": "Neaktivní",
-      "moreActionsLabel": "Další akce"
-    }
+      "moreActionsLabel": "Další akce",
+      "install": "Nainstalovat"
+    },
+    "unlockWithPlus": "Odemknout s Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Součástí Plus",
+    "installFailedTitle": "Instalace selhala",
+    "installStuckDetail": "Po nějakou dobu žádný pokrok. Zkontrolujte připojení a zkuste to znovu.",
+    "installStuckTitle": "Stahování se zastavilo",
+    "openPack": "Otevřít {{name}}",
+    "recent": "Nedávné",
+    "updateAll": "Aktualizovat vše ({{count}})",
+    "updateAvailable": "Aktualizace k dispozici"
   },
   "subscription": {
     "title": "Odemkněte vše",
@@ -539,5 +679,106 @@
     "maybeLater": "Možná později",
     "empty": "Další balíčky jsou na cestě — prozkoumejte Corpán mezitím.",
     "offlineEmpty": "Připojte se k internetu, abyste objevili balíčky — nebo to nyní přeskočte."
+  },
+  "paywall": {
+    "title": "Pokračujte s Corpán Plus",
+    "thanksTitle": "Jste Corpanista",
+    "thanksBody": "Děkujeme za podporu Corpánu. Vše je odemčeno.",
+    "bookSubhead": "Dosáhli jste konce bezplatné ukázky knihy {{title}}.",
+    "subhead": "Odemkněte každou knihu v každém jazyce. Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
+    "pitch": "Jsme malý tým a každý cent vracíme zpět do Corpánu. Corpanistas udržují aplikaci bez reklam a pomáhají ji rozvíjet.",
+    "maybeLater": "Možná později",
+    "continue": "Pokračovat"
+  },
+  "streak": {
+    "title": "{{count}}-denní série"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Čtěte s namluvenými audioknihami — klidně, se zvýrazňováním slovo po slově.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Ovládněte mandarínské znaky, tah po tahu.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Poslechněte si frázi, směřujte k ní — učte se hrou.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Skládejte fráze kousek po kousku v rychlé hře.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Procházejte fráze ve svých jazycích — rychlé, soustředěné procvičování.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Říkejte fráze nahlas a získejte zpětnou vazbu k výslovnosti.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Stejné audioknihy v pohlcujícím 3D — slova proudí prostorem, jak jsou čtena.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Nalaďte si živé rádio z celého světa.",
+      "name": "World Radio"
+    }
+  },
+  "home": {
+    "continueLearning": "Pokračovat v učení",
+    "experiences": "Zážitky",
+    "forYou": "Pro vás",
+    "get": "Získat",
+    "installing": "Instaluji…",
+    "library": "Knihovna",
+    "like": "Líbí se mi",
+    "notForMe": "Ne pro mě",
+    "open": "Otevřít",
+    "openPhrases": "Otevřít fráze",
+    "phraseFlipDesc": "Procházejte fráze ve svých jazycích",
+    "plusChip": "Corpán Plus — odemkněte vše",
+    "recommended": "Doporučeno",
+    "showAnother": "Ukázat další",
+    "tryIt": "Vyzkoušet"
+  },
+  "offline": {
+    "cachedSubtitle": "Zobrazuji vaše poslední uložené výsledky.",
+    "catalogSubtitle": "Připojte se znovu, abyste objevili nové balíčky. Vaše nainstalované balíčky stále fungují.",
+    "installNeedsInternet": "Připojte se znovu ke stažení.",
+    "onboardingBanner": "Offline — výběry se nainstalují, až se znovu připojíte.",
+    "packCatalogSubtitle": "Vaše nainstalované balíčky stále fungují. Připojte se znovu k procházení dalších.",
+    "packCatalogTitle": "Katalog balíčků potřebuje internet",
+    "phrasePacksOnboardingSubtitle": "Balíčky frází si můžete vybrat později v Nastavení → Balíčky, jakmile se znovu připojíte.",
+    "phrasePacksSubtitle": "Vaše nainstalované balíčky frází stále fungují. Připojte se znovu k procházení nových.",
+    "phrasePacksTitle": "Katalog balíčků frází potřebuje internet",
+    "purchaseNeedsInternet": "Připojte se znovu k nákupu.",
+    "restoreSubtitle": "Připojte se znovu k obnovení nákupů.",
+    "subscriptionSubtitle": "Připojte se znovu k odběru. Vaše nainstalované balíčky a balené fráze stále fungují.",
+    "subscriptionTitle": "Předplatné potřebuje internet",
+    "title": "Bez internetu",
+    "voiceDownloadSubtitle": "Hlasy již ve vašem zařízení stále fungují. Připojte se znovu k instalaci dalších.",
+    "voiceDownloadTitle": "Stahování hlasů potřebuje internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Úplné nastavení",
+    "title": "Rychlé nastavení"
+  },
+  "tour": {
+    "maybeLater": "Možná později",
+    "progress": "{{n}} z {{total}}"
+  },
+  "update": {
+    "availableLine": "Aktualizace k dispozici → {{version}}",
+    "close": "Zavřít",
+    "description": "Novější verze Corpánu je k dispozici ve vašem obchodě s aplikacemi.",
+    "remindLater": "Možná později",
+    "skipThisVersion": "Přeskočit tuto verzi",
+    "title": "Aktualizace k dispozici",
+    "update": "Aktualizovat",
+    "updateNow": "Aktualizovat nyní",
+    "versionLine": "Verze {{version}} je připravena k instalaci."
   }
 }

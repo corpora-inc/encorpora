@@ -10,9 +10,9 @@ I play baseball.
 
 I play it pretty much every chance I get.
 
-My team is called the Hawks.
+I'm on a team with kids my age.
 
-We wear blue shirts and white pants.
+We wear matching uniforms.
 
 The pants get really dirty.
 
@@ -20,35 +20,27 @@ That's part of the fun, honestly.
 
 My mom always sighs when she sees them.
 
-I play in a league with other kids my age.
+We have practice during the week.
 
-We have practice on Tuesdays.
-
-We have games on Saturdays.
-
-Sometimes we play on Sundays too.
+We have games on weekends.
 
 I've been playing since I was six.
 
-When I started, I was tiny.
+When I started, the bat looked huge in my hands.
 
-The bat was almost as big as me.
+Now it feels just right.
 
-Now the bat feels just right in my hands.
+Some days I play great.
 
-I am not the best player on my team.
-
-I am not the worst, either.
+Some days I don't.
 
 I'm just a kid who loves the game.
 
-My friend Marcus is on my team.
-
-He is the fastest runner I know.
+There's a kid on my team who's really fast.
 
 He once stole three bases in one game.
 
-I will tell you what stealing a base is in a minute.
+I'll tell you what stealing a base is in a minute.
 
 Don't worry if you've never played baseball.
 

@@ -1,0 +1,21 @@
+{
+  "code": "es",
+  "displayName": {
+    "en": "Spanish",
+    "es": "Español"
+  },
+  "voiceLanguageCode": "es-MX",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "data/spanish.sqlite3",
+    "coreVocab": "data/core_vocab.json",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

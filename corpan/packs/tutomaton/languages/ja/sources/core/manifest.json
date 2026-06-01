@@ -1,0 +1,23 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-ja-core-v1",
+  "name": {
+    "en": "Japanese Core",
+    "ja": "日本語"
+  },
+  "tutomatonLanguage": "ja",
+  "authoritative": true,
+  "priority": 100,
+  "categories": [
+    "vocab",
+    "grammar",
+    "themes",
+    "idioms"
+  ],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/ja.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}

@@ -21,6 +21,7 @@ voices:
   pt: ian-new-narration-spanish-loud.wav
   ru: ian-new-narration-spanish-loud.wav
   tr: ian-new-narration-spanish-loud.wav
+  sw: ian-new-narration-try-more-chill-clear.wav
 mastering:
   target_lufs: -18.0
   target_tp: -1.0
@@ -86,6 +87,7 @@ trimming:
     pt: 0.12
     ru: 0.15
     tr: 0.12
+    sw: 0.12
   base_buffer_sec:
     en: 5.0
     es: 5.0
@@ -101,6 +103,7 @@ trimming:
     pt: 5.0
     ru: 5.0
     tr: 5.0
+    sw: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -122,6 +125,7 @@ validation:
     pt: 0.12
     ru: 0.15
     tr: 0.12
+    sw: 0.12
   min_sec_per_char:
     en: 0.02
     es: 0.02
@@ -137,6 +141,7 @@ validation:
     pt: 0.02
     ru: 0.02
     tr: 0.02
+    sw: 0.02
   base_buffer_sec:
     en: 5.0
     es: 5.0
@@ -152,6 +157,7 @@ validation:
     pt: 5.0
     ru: 5.0
     tr: 5.0
+    sw: 5.0
 retry:
   max_retries: 20
   jitter: 0.05

@@ -11,6 +11,7 @@ import { invoke } from "@tauri-apps/api/core";
 export type VoiceQuality =
     | "default"        // Apple AVSpeech: default
     | "enhanced"       // Apple AVSpeech: enhanced
+    | "premium"        // Apple AVSpeech: premium (the top Apple tier)
     | "very_low"       // Android Voice.QUALITY_*
     | "low"
     | "normal"
@@ -215,13 +216,95 @@ const LANG_ALIASES: Record<string, string[]> = {
     nb: ["no"],
 };
 
+/**
+ * Pull the script (4-letter, e.g. `Hant`) and region (2-letter or 3-digit,
+ * e.g. `PT`, `419`) subtags out of a BCP-47 tag, lowercased. Tolerates the
+ * Unicode `-u-` extension and mixed casing (`zh-Hant-HK`, `pt-br`, `yue-HK`).
+ */
+function tagParts(tag: string): { lang: string; script?: string; region?: string } {
+    const base = tag.toLowerCase().split("-u-")[0];
+    const parts = base.split("-").filter(Boolean);
+    const out: { lang: string; script?: string; region?: string } = { lang: parts[0] ?? "" };
+    for (let i = 1; i < parts.length; i++) {
+        const p = parts[i];
+        if (!out.script && p.length === 4 && /^[a-z]{4}$/.test(p)) out.script = p;
+        else if (!out.region && (p.length === 2 || /^[0-9]{3}$/.test(p))) out.region = p;
+    }
+    return out;
+}
+
+/**
+ * Some learner tags imply a script the platform encodes only via region, and
+ * vice-versa. Normalize both sides so a `zh-Hant` learner matches a `zh-TW`
+ * voice (Taiwan ⇒ Traditional) and a `zh-Hans` learner matches `zh-CN`.
+ * Returns the region set that the script implies, if any.
+ */
+const SCRIPT_IMPLIED_REGIONS: Record<string, Set<string>> = {
+    // Traditional Chinese ships from Taiwan / Hong Kong / Macau.
+    hant: new Set(["tw", "hk", "mo"]),
+    // Simplified Chinese ships from the mainland / Singapore.
+    hans: new Set(["cn", "sg"]),
+};
+function regionImpliedScript(region?: string): string | undefined {
+    if (!region) return undefined;
+    if (SCRIPT_IMPLIED_REGIONS.hant.has(region)) return "hant";
+    if (SCRIPT_IMPLIED_REGIONS.hans.has(region)) return "hans";
+    return undefined;
+}
+
+/**
+ * Score how well a voice's language tag matches what the learner wants.
+ *
+ *   3  exact tag match (`pt-PT` voice for `pt-PT`)
+ *   2  base-language match WITH a matching region/script refinement (the
+ *      learner asked for a specific dialect AND the voice is that dialect:
+ *      `pt-PT`→Portugal voice, `zh-Hant`→a Taiwan/HK voice, `en-GB`→a UK voice)
+ *   1  plain base-language match (right language, dialect not specified or not
+ *      aligned — still usable, just not region-perfect)
+ *   1  cross-tag alias (e.g. `sr`→`hr`)
+ *   0  no match
+ *
+ * The region/script awareness is what makes the *default* auto-pick correct
+ * without the user touching anything: pt-PT outranks pt-BR for a pt-PT learner.
+ */
 export function langMatchScore(voiceLang: string | undefined, want: string): number {
     if (!voiceLang || !want) return 0;
     const v = voiceLang.toLowerCase();
     const w = want.toLowerCase();
     if (v === w) return 3;
-    const b = baseLang(w);
-    if (v === b || v.startsWith(b + "-")) return 2;
+
+    const vp = tagParts(v);
+    const wp = tagParts(w);
+    const b = wp.lang;
+
+    // Plain base-language relationship (e.g. voice `pt-BR` vs want `pt-PT`).
+    const baseMatches = vp.lang === b;
+    if (baseMatches) {
+        const wantScript = wp.script ?? regionImpliedScript(wp.region);
+        const wantRegion = wp.region;
+        const voiceScript = vp.script ?? regionImpliedScript(vp.region);
+        const voiceRegion = vp.region;
+
+        // The learner specified a dialect (region and/or script).
+        const learnerSpecific = !!(wantRegion || wantScript);
+        if (learnerSpecific) {
+            const scriptOk = wantScript ? voiceScript === wantScript : true;
+            const regionOk = wantRegion ? voiceRegion === wantRegion : true;
+            // Region-perfect (or script-perfect when only script was asked) → 2.
+            // When the learner gave BOTH and only the script lines up (e.g.
+            // zh-Hant want, zh-TW voice has no explicit script but Taiwan
+            // implies Hant), the implied-script path above already covers it.
+            if ((wantScript && scriptOk && (!wantRegion || regionOk)) ||
+                (!wantScript && wantRegion && regionOk)) {
+                return 2;
+            }
+            // Right language, wrong dialect (pt-BR voice for a pt-PT learner).
+            return 1;
+        }
+        // Learner didn't specify a dialect → any same-language voice is fine.
+        return 1;
+    }
+
     const aliases = LANG_ALIASES[w] ?? LANG_ALIASES[b];
     if (aliases) {
         for (const a of aliases) {
@@ -233,6 +316,7 @@ export function langMatchScore(voiceLang: string | undefined, want: string): num
 
 function qualityRank(q?: VoiceQuality): number {
     switch (q) {
+        case "premium": return 7;  // Apple top tier — must outrank everything
         case "very_high": return 6;
         case "high": return 5;
         case "enhanced": return 4;
@@ -590,6 +674,51 @@ export function sortVoicesWithLangBias(voices: VoiceInfo[], langBias?: string): 
         if (nA > nB) return 1;
         return 0;
     });
+}
+
+/** Public, shared quality ranking (mirrors the internal `qualityRank`). */
+export function voiceQualityRank(q?: VoiceQuality): number {
+    return qualityRank(q);
+}
+
+/**
+ * True iff a quality tier counts as a "good" voice — enhanced/premium or the
+ * Android high/very_high tiers. This is the line between "just confirm and go"
+ * (case 1) and "go add a better voice" (case 2): compact/default/low voices
+ * sound robotic enough that we nudge the learner toward Settings.
+ */
+export function isGoodQuality(q?: VoiceQuality): boolean {
+    return qualityRank(q) >= 4; // enhanced | high | very_high
+}
+
+/**
+ * The single most appropriate voice for a language, region/script-aware:
+ *   1. best language match (region/script-correct beats wrong-dialect)
+ *   2. then highest quality
+ *   3. then stable by name
+ * Returns null when there are no candidates. `voices` may be the full list;
+ * non-matching voices are filtered out.
+ */
+export function pickBestVoiceForLang(voices: VoiceInfo[], want: string): VoiceInfo | null {
+    const matches = voices.filter((v) => langMatchScore(v.language, want) > 0);
+    if (!matches.length) return null;
+    return sortVoicesWithLangBias(matches, want)[0] ?? null;
+}
+
+/**
+ * The default selection for a language: ALL voices at the best quality tier
+ * present — every premium voice if any premium exist, else every enhanced
+ * (high/very_high) voice, else whatever is available. More voices is better
+ * (the sampler rotates across them for variety), and we want the learner to
+ * SEE how many good voices they have, so we select the whole top tier rather
+ * than a single pick. Region-biased order. Returns [] when there are none.
+ */
+export function defaultVoiceIdsForLang(voices: VoiceInfo[], want: string): string[] {
+    const matches = voices.filter((v) => langMatchScore(v.language, want) > 0);
+    if (!matches.length) return [];
+    const maxRank = Math.max(...matches.map((v) => qualityRank(v.quality)));
+    const topTier = matches.filter((v) => qualityRank(v.quality) === maxRank);
+    return sortVoicesWithLangBias(topTier, want).map((v) => v.id);
 }
 
 // --------------------------- Public API -------------------------------

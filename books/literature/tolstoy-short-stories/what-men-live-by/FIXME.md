@@ -32,7 +32,7 @@ Translations exist for all 22 languages. Only RU, EN, ES have audio.
 - Script at ~/bin/realign-catalog.py
 - Config already changed: whisper_model = "large-v3"
 - 185 packs, ~101K segments, ~8 hours with parallelization
-- Do Three Questions (23 langs, smallest) first as validation
+- Do Three Questions (smallest pack) first as validation
 
 ### Pipeline improvements needed
 - Content validation before publish (wrong-language detection, tts.text truncation check)

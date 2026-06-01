@@ -2,6 +2,7 @@ version: 1
 engine: gemini
 voices:
   ca: Charon
+  id: Charon
 tts: {}
 retry:
   max_retries: 2

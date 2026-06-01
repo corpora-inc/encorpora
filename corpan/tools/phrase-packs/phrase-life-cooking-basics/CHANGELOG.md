@@ -9,6 +9,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+
+## [0.3.0] - 2026-05-31
+### Added
+- **FTS5 over `entries.english`** (`SCHEMA_VERSION = 2`). Adds a contentless
+  `entries_fts` virtual table with BM25 ranking so the Tutomaton phrase-bridge
+  (and any future per-phrase-pack search UI) can do fast keyword search instead
+  of `LIKE`. Backwards-compatible: schema_version 1 readers see the same
+  `entries` + `translations` tables; FTS table sits alongside for v2 readers.
+
 ## [0.2.0] - 2026-05-20
 ### Added
 - v0.2.0 expansion: +706 new phrases authored across 8 facets

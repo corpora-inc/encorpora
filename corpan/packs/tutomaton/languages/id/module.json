@@ -1,0 +1,20 @@
+{
+  "code": "id",
+  "displayName": {
+    "en": "Indonesian",
+    "id": "Bahasa Indonesia"
+  },
+  "voiceLanguageCode": "id-ID",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": ""
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": false
+  }
+}
