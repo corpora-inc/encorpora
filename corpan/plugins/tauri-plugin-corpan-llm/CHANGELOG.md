@@ -16,6 +16,29 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   full history every turn (no KV-cache reuse), so latency grows each round and
   hard-errors at `n_ctx` 4096; iOS Metal just hides it. See `ANDROID_PERF.md`.
 
+### Added
+- **KV-cache prefix reuse across turns.** The actor now holds ONE persistent
+  `LlamaContext` per conversation (`ChatSession`) instead of building a fresh
+  context and re-prefilling system+grounding+history every turn. Each turn
+  reuses the longest common prefix already resident in the KV cache and prefills
+  only the diverged suffix (`clear_kv_cache_seq` + decode from the divergence
+  point). Self-healing: a new system prompt (language switch), a fresh
+  conversation, the sliding window dropping turns, or the prior reply
+  re-tokenizing differently all simply lower the reuse length — never produce a
+  wrong result. The session is dropped (KV invalidated) on model reload/unload
+  and poisoned on any mid-turn error. PERF log now reports `prefill: N tok
+  (reused M)`. SAFETY note on the persistent context's lifetime in `state.rs`
+  (`ChatSession`). No IPC/JS changes — the actor derives reuse from the prompt.
+- **Sliding context window (robustness).** The prompt is rebuilt fresh every
+  turn (system + grounding + RAG + the WHOLE history), so a long conversation
+  used to grow until it hard-errored at `n_ctx=4096` and decode slowed (attention
+  spans the full KV). `run_chat` now trims the oldest non-system turns to fit a
+  token budget that reserves room for the reply (keeps all leading system
+  message(s) + the most recent turns), and a new `CONTEXT_OVERFLOW` error is the
+  defensive floor if even a single turn can't fit. Keeps Android bounded + fast
+  as a chat grows, and makes headroom to afford a richer grounding/RAG block now
+  that dotprod prefill is ~3× faster. See `window_messages()` in `state.rs`.
+
 ### Fixed
 - **Android prefill ~3.2× faster** (warm ~29 → ~91 tok/s on Snapdragon 8 Elite):
   upstream `llama-cpp-sys-2` hardcodes `-march=armv8-a` for the Android

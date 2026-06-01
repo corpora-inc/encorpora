@@ -24,6 +24,8 @@ pub enum Error {
     Sqlite(String),
     #[error("internal: {0}")]
     Internal(String),
+    #[error("this message is too long for the tutor's memory — start a new conversation")]
+    ContextOverflow,
 }
 
 impl Serialize for Error {
@@ -50,6 +52,7 @@ impl Serialize for Error {
             Error::Io(_) => "IO_ERROR",
             Error::Sqlite(_) => "SQLITE_ERROR",
             Error::Internal(_) => "INTERNAL_ERROR",
+            Error::ContextOverflow => "CONTEXT_OVERFLOW",
         };
         ErrorPayload {
             code,
@@ -74,6 +77,7 @@ impl Error {
             Error::Io(_) => "IO_ERROR",
             Error::Sqlite(_) => "SQLITE_ERROR",
             Error::Internal(_) => "INTERNAL_ERROR",
+            Error::ContextOverflow => "CONTEXT_OVERFLOW",
         };
         (code, self.to_string())
     }

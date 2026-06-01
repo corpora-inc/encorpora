@@ -30,11 +30,13 @@ use parking_lot::Mutex;
 use tauri::{AppHandle, Emitter, Manager};
 
 use llama_cpp_2::context::params::LlamaContextParams;
+use llama_cpp_2::context::LlamaContext;
 use llama_cpp_2::llama_backend::LlamaBackend;
 use llama_cpp_2::llama_batch::LlamaBatch;
 use llama_cpp_2::model::params::LlamaModelParams;
 use llama_cpp_2::model::{AddBos, LlamaModel};
 use llama_cpp_2::sampling::LlamaSampler;
+use llama_cpp_2::token::LlamaToken;
 
 use crate::error::{Error, Result};
 use crate::models::{ChatArgs, ChatMessage, ChatOptions, LoadArgs, QueryPackDbArgs, StatusResponse};
@@ -240,6 +242,56 @@ impl LlmState {
 // The actor thread
 // ============================================================
 
+/// A persistent inference context plus the exact tokens currently resident in
+/// its KV cache (seq 0). Held across chat turns so we can REUSE the cached
+/// prefix instead of re-prefilling system+grounding+history every turn.
+///
+/// SAFETY: `ctx` borrows the actor's loaded `LlamaModel`, but we erase that
+/// borrow to `'static` so the context can live in the actor's state across
+/// command-loop iterations (a `LlamaContext<'a>` can't otherwise coexist with a
+/// reassignable `Option<LlamaModel>` — self-reference). This is sound ONLY
+/// because: (1) the actor thread is the sole owner and the context never leaves
+/// it; (2) we ALWAYS drop the session (`session = None`) BEFORE dropping or
+/// replacing the model (see `Cmd::Load` / `Cmd::Unload`), so the erased borrow
+/// never dangles.
+struct ChatSession {
+    ctx: LlamaContext<'static>,
+    /// Tokens currently committed in KV seq 0 (prompt prefix + tokens decoded so
+    /// far). The longest common prefix of this and the next turn's prompt is
+    /// what we get to skip re-prefilling.
+    cached: Vec<LlamaToken>,
+    /// Thread count baked into `ctx` at creation (for the PERF log; the context's
+    /// thread count is fixed once created).
+    threads: i32,
+}
+
+/// Create a fresh inference context for `model` and erase its borrow to
+/// `'static`. See `ChatSession` SAFETY. Caller MUST ensure the returned session
+/// is dropped before `model`.
+fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession> {
+    let threads = perf_core_count();
+    let ctx_params = LlamaContextParams::default()
+        .with_n_ctx(Some(NonZeroU32::new(DEFAULT_CTX).unwrap()))
+        .with_n_threads(threads)
+        .with_n_threads_batch(threads);
+    let ctx = model
+        .new_context(backend, ctx_params)
+        .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
+    // SAFETY: lifetime-only transmute (LlamaContext is `{ NonNull, &model }`);
+    // soundness rests on the drop-order invariant documented on `ChatSession`.
+    let ctx: LlamaContext<'static> = unsafe { std::mem::transmute(ctx) };
+    Ok(ChatSession {
+        ctx,
+        cached: Vec::new(),
+        threads,
+    })
+}
+
+/// Length of the longest common prefix of two token slices.
+fn common_prefix_len(a: &[LlamaToken], b: &[LlamaToken]) -> usize {
+    a.iter().zip(b.iter()).take_while(|(x, y)| x == y).count()
+}
+
 fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
     let backend = match LlamaBackend::init() {
         Ok(b) => b,
@@ -249,6 +301,9 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
         }
     };
     let mut model: Option<LlamaModel> = None;
+    // Persistent KV-cache context for the active conversation (see ChatSession).
+    // INVARIANT: always dropped (set to None) BEFORE `model` is dropped/replaced.
+    let mut session: Option<ChatSession> = None;
 
     while let Ok(cmd) = rx.recv() {
         match cmd {
@@ -267,6 +322,9 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 // the pack exit→re-enter reload case: drop first, then load.
                 if model.is_some() {
                     eprintln!("[corpan-llm] dropping previously-loaded model before reload");
+                    // INVARIANT: drop the session (its ctx borrows the old model)
+                    // BEFORE the model, and its KV belongs to the old weights.
+                    session = None;
                     model = None;
                 }
                 let avail = device_memory_mb();
@@ -316,6 +374,8 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 }
             }
             Cmd::Unload { resp } => {
+                // INVARIANT: session before model.
+                session = None;
                 model = None;
                 let _ = resp.send(());
             }
@@ -327,7 +387,16 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 cancel,
             } => {
                 let result = match model.as_ref() {
-                    Some(m) => run_chat(&backend, m, messages, options, app.clone(), &session_id, &cancel),
+                    Some(m) => run_chat(
+                        &backend,
+                        m,
+                        &mut session,
+                        messages,
+                        options,
+                        app.clone(),
+                        &session_id,
+                        &cancel,
+                    ),
                     None => Err(Error::ModelNotLoaded),
                 };
                 if let Err(e) = result {
@@ -348,55 +417,100 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
     }
 }
 
-/// Run one full generation, emitting token/done events. Blocking; runs on the
-/// actor thread so the `!Send` context never leaves it.
+/// Run one full generation against the persistent session, emitting token/done
+/// events. Blocking; runs on the actor thread so the `!Send` context never
+/// leaves it. Creates the session on first use, and POISONS it (drops, forcing
+/// a clean rebuild next turn) on any error so a half-mutated KV cache is never
+/// reused.
 fn run_chat(
     backend: &LlamaBackend,
     model: &LlamaModel,
+    session: &mut Option<ChatSession>,
     messages: Vec<ChatMessage>,
     options: ChatOptions,
     app: AppHandle<tauri::Wry>,
     session_id: &str,
     cancel: &AtomicBool,
 ) -> Result<()> {
-    let n_ctx = DEFAULT_CTX;
-    // Thread count is THE Android perf lever. llama.cpp's default is a fixed 4
-    // (it does NOT autodetect cores), so on an 8-core big.LITTLE phone the
-    // matmul-bound prompt prefill runs on 4 threads the scheduler may park on
-    // efficiency cores → minutes to first token. Pin to the performance-core
-    // count. n_threads drives generation; n_threads_batch drives prefill (the
-    // long pole for Tutomaton's large grounded prompt) — set both.
-    let threads = perf_core_count();
-    // Note: the RNG seed lives in the sampler (`LlamaSampler::dist`), not the
-    // context params, in current llama-cpp-2.
-    let ctx_params = LlamaContextParams::default()
-        .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
-        .with_n_threads(threads)
-        .with_n_threads_batch(threads);
-    let mut ctx = model
-        .new_context(backend, ctx_params)
-        .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
+    if session.is_none() {
+        *session = Some(new_session(backend, model)?);
+    }
+    let result = run_turn(
+        session.as_mut().unwrap(),
+        model,
+        messages,
+        options,
+        &app,
+        session_id,
+        cancel,
+    );
+    if result.is_err() {
+        // KV cache may be inconsistent after a mid-turn failure — discard the
+        // session so the next turn rebuilds and re-prefills from scratch.
+        *session = None;
+    }
+    result
+}
 
-    let prompt = format_chatml(&messages);
-    let tokens = model
-        .str_to_token(&prompt, AddBos::Always)
-        .map_err(|e| Error::LlamaCpp(format!("tokenize: {e}")))?;
-
+/// One turn against an existing session: window → reuse the cached KV prefix →
+/// prefill only the new suffix → generate.
+fn run_turn(
+    sess: &mut ChatSession,
+    model: &LlamaModel,
+    messages: Vec<ChatMessage>,
+    options: ChatOptions,
+    app: &AppHandle<tauri::Wry>,
+    session_id: &str,
+    cancel: &AtomicBool,
+) -> Result<()> {
     let max_tokens = options.max_tokens.unwrap_or(1500) as i32;
-    let n_ctx_i = ctx.n_ctx() as i32;
-    if tokens.len() as i32 >= n_ctx_i {
-        return Err(Error::Internal("prompt longer than context window".into()));
+    let n_ctx_i = sess.ctx.n_ctx() as i32;
+    let threads = sess.threads;
+
+    // Sliding window: the prompt is rebuilt fresh every turn (system + grounding
+    // + RAG + the WHOLE history), so an unbounded conversation grows the prompt
+    // until it (a) hard-errors at n_ctx and (b) slows decode (attention spans the
+    // full KV). Keep all leading system message(s) + the most recent turns that
+    // fit a token budget that RESERVES room for the reply; drop oldest turns.
+    let reserve = max_tokens.clamp(128, 512);
+    let budget = (n_ctx_i - reserve).max(256);
+    let (_kept_msgs, tokens, dropped) = window_messages(model, messages, budget)?;
+    if dropped > 0 {
+        eprintln!(
+            "[corpan-llm] context window: dropped {dropped} oldest message(s) to fit {budget} tok (n_ctx={n_ctx_i}, reserve={reserve})"
+        );
+    }
+    let n_prompt = tokens.len() as i32;
+    // Defensive floor — should be unreachable after windowing.
+    if n_prompt >= n_ctx_i {
+        return Err(Error::ContextOverflow);
     }
 
-    // Decode the prompt in BATCH_CAP-sized chunks. A single LlamaBatch holds at
-    // most BATCH_CAP tokens, and a grounded system prompt easily exceeds that —
-    // so we feed the prompt in windows, requesting logits only on the very last
-    // token of the final chunk (that's the position we sample from).
+    // KV PREFIX REUSE: the longest common prefix of this prompt and the tokens
+    // already resident in the KV cache costs nothing to re-ingest. Drop the KV
+    // past the divergence point, then prefill only the suffix. Self-healing: any
+    // change (new system prompt on a language switch, a fresh conversation, the
+    // sliding window dropping turns, the prior reply re-tokenizing differently)
+    // simply lowers the LCP and re-prefills from there — never incorrect.
+    let mut reuse = common_prefix_len(&sess.cached, &tokens);
+    // Always (re)decode at least the final prompt token so the sampler has fresh
+    // logits for THIS turn, even if the whole prompt was already cached.
+    if reuse >= n_prompt as usize {
+        reuse = (n_prompt - 1) as usize;
+    }
+    if reuse < sess.cached.len() {
+        sess.ctx
+            .clear_kv_cache_seq(Some(0), Some(reuse as u32), None)
+            .map_err(|e| Error::LlamaCpp(format!("kv trim: {e}")))?;
+        sess.cached.truncate(reuse);
+    }
+
+    // Prefill tokens[reuse..] in BATCH_CAP-sized chunks at ABSOLUTE positions
+    // [reuse..n_prompt), requesting logits only on the very last token.
     let mut batch = LlamaBatch::new(BATCH_CAP, 1);
-    let n_prompt = tokens.len() as i32;
     let last = n_prompt - 1;
     let prefill_start = std::time::Instant::now();
-    let mut pos: i32 = 0;
+    let mut pos: i32 = reuse as i32;
     while pos < n_prompt {
         batch.clear();
         let end = (pos + BATCH_CAP as i32).min(n_prompt);
@@ -405,17 +519,22 @@ fn run_chat(
                 .add(tokens[i as usize], i, &[0], i == last)
                 .map_err(|e| Error::LlamaCpp(format!("batch add: {e}")))?;
         }
-        ctx.decode(&mut batch)
+        sess.ctx
+            .decode(&mut batch)
             .map_err(|e| Error::LlamaCpp(format!("decode prompt: {e}")))?;
         pos = end;
     }
-    // PERF: prefill (prompt ingestion) is the suspected long pole on Android CPU.
-    // Log it separately from decode so prefill tok/s vs decode tok/s is visible.
+    // The KV now holds the full prompt: cached[..reuse] already equals
+    // tokens[..reuse] (LCP), so appending the suffix makes cached == tokens.
+    sess.cached.extend_from_slice(&tokens[reuse..]);
+
+    // PERF: report prefilled vs reused so the cache win is visible in logcat.
+    let prefilled = n_prompt - reuse as i32;
     let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
     eprintln!(
-        "[corpan-llm] PERF prefill: {n_prompt} tok in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx}",
+        "[corpan-llm] PERF prefill: {prefilled} tok (reused {reuse}) in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx_i}",
         prefill_ms,
-        (n_prompt as f64) * 1000.0 / prefill_ms,
+        (prefilled as f64) * 1000.0 / prefill_ms,
     );
 
     let mut sampler = build_sampler(&options);
@@ -426,13 +545,13 @@ fn run_chat(
     let mut n_cur = n_prompt;
     let start = std::time::Instant::now();
     let mut produced: u32 = 0;
-    let gen_limit = (tokens.len() as i32 + max_tokens).min(n_ctx_i);
+    let gen_limit = (n_prompt + max_tokens).min(n_ctx_i);
 
     while n_cur < gen_limit {
         if cancel.load(Ordering::SeqCst) {
             break;
         }
-        let token = sampler.sample(&ctx, batch.n_tokens() - 1);
+        let token = sampler.sample(&sess.ctx, batch.n_tokens() - 1);
         sampler.accept(token);
 
         if model.is_eog_token(token) {
@@ -459,8 +578,13 @@ fn run_chat(
         batch
             .add(token, n_cur, &[0], true)
             .map_err(|e| Error::LlamaCpp(format!("batch add: {e}")))?;
+        // Keep `cached` in lockstep with the KV: this token is committed by the
+        // decode below. (On a later error the whole session is dropped, so a
+        // transient mismatch is never observed.)
+        sess.cached.push(token);
         n_cur += 1;
-        ctx.decode(&mut batch)
+        sess.ctx
+            .decode(&mut batch)
             .map_err(|e| Error::LlamaCpp(format!("decode: {e}")))?;
     }
 
@@ -587,6 +711,41 @@ fn inference_threads_from_sysfs() -> Option<i32> {
 
 /// Qwen3 uses ChatML. The pack already prepends the system message, so we just
 /// wrap each message and open the assistant turn.
+/// Trim oldest non-system turns until the ChatML prompt fits `budget` tokens,
+/// always keeping the leading system message(s) AND the most recent turn. The
+/// whole prompt is re-tokenized per drop step; that's O(turns) tokenizations
+/// only when actually over budget (long conversations), and tokenization is
+/// microseconds next to inference. Returns the kept messages, their tokens
+/// (incl. BOS, ready to prefill), and how many were dropped.
+fn window_messages(
+    model: &LlamaModel,
+    messages: Vec<ChatMessage>,
+    budget: i32,
+) -> Result<(Vec<ChatMessage>, Vec<LlamaToken>, usize)> {
+    let sys_end = messages.iter().take_while(|m| m.role == "system").count();
+    let total = messages.len();
+    let mut drop = 0usize;
+    loop {
+        let kept: Vec<ChatMessage> = messages[..sys_end]
+            .iter()
+            .chain(messages[sys_end + drop..].iter())
+            .cloned()
+            .collect();
+        let prompt = format_chatml(&kept);
+        let tokens = model
+            .str_to_token(&prompt, AddBos::Always)
+            .map_err(|e| Error::LlamaCpp(format!("tokenize: {e}")))?;
+        // Stop when it fits, or when only system + the single newest turn remain
+        // (we never drop the current user turn).
+        let fits = tokens.len() as i32 <= budget;
+        let at_floor = sys_end + drop + 1 >= total;
+        if fits || at_floor {
+            return Ok((kept, tokens, drop));
+        }
+        drop += 1;
+    }
+}
+
 fn format_chatml(messages: &[ChatMessage]) -> String {
     let mut s = String::new();
     for m in messages {
