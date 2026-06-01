@@ -506,6 +506,7 @@ BOOK_META = {
             "bigger picture. About ten minutes."
         ),
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly"],
+        "published": "2026-05-13",
     },
     "book_ai_this_week_2026_05_27": {
         "description": (
@@ -519,6 +520,7 @@ BOOK_META = {
             "is mixture of experts. About fifteen minutes."
         ),
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "tts"],
+        "published": "2026-05-27",
     },
     "book_ai_this_week_2026_05_20": {
         "description": (
@@ -531,6 +533,7 @@ BOOK_META = {
             "model fits on your phone. About twelve minutes."
         ),
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights"],
+        "published": "2026-05-20",
     },
     "book_sports_for_kids_baseball": {
         "description": (
@@ -627,6 +630,7 @@ def build_books(narrations: list[dict], asset_urls: dict) -> list[dict]:
             "volume": n.get("volume"),
             "primaryLanguage": derive_primary_language(narrations, bid),
             "tags": meta.get("tags"),
+            "publishedAt": meta.get("published"),
         }
     # Drop any None values for cleanliness
     out = []
@@ -673,6 +677,12 @@ def annotate_narrations(narrations: list[dict], asset_urls: dict) -> list[dict]:
         cover = asset_urls.get("books", {}).get(n["bookId"], {}).get("coverImageUrl")
         if cover:
             n2["coverImageUrl"] = cover
+        # Denormalize the book's publish date onto the row so the client can
+        # sort dated periodicals (e.g. "AI This Week") newest-first without
+        # joining the books table.
+        published = BOOK_META.get(n["bookId"], {}).get("published")
+        if published:
+            n2["publishedAt"] = published
         out.append(n2)
     return out
 

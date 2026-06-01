@@ -88,10 +88,43 @@ running APK predates this knob (commit fd0e5e31); rebuild. Measured: the full pr
 > Persisting the conversation's context and decoding only the NEW tokens each turn makes
 > turn 2+ near-instant regardless of prompt size — the actual Android conversational fix.
 
-### Phase 1.5 — Verify on device (NEXT, needs the Android dev loop)
-Build + run on the phone, send one Tutomaton turn, read the PERF logs. Capture:
-`perf_cores`, prefill tok/s, decode tok/s, total to first token. Record numbers here.
-Decision gate: if first-token < ~10s and decode ≥ ~8 tok/s → ship it. Else → Phase 2/3.
+### ✅ Phase 1.5 — Verified on device + ARM arch bump (DONE, 2026-05-31)
+
+Measured on the **Galaxy S25 Ultra / Snapdragon 8 Elite (SM8750)** with `threads=7`,
+warm (weights resident — see cold/warm note below). Same prompts before/after; only the
+build changed.
+
+**The #1 prefill lever turned out to be the CPU SIMD baseline, not threads.** Upstream
+`llama-cpp-sys-2` hardcodes `-march=armv8-a` for the Android `arm64-v8a` ABI, which compiles
+OUT the vectorized Q4_K matmul kernels in `ggml/src/ggml-cpu/arch/arm/quants.c` (gated on
+`__ARM_FEATURE_DOTPROD`) → scalar fallback. We now build a vendored fork of `llama-cpp-sys-2`
+that sets `GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16` for that one ABI (see
+`corpan-app/src-tauri/vendor/llama-cpp-sys-2/build.rs`, search "CORPAN FORK", wired via
+`[patch.crates-io]` in `corpan-app/src-tauri/Cargo.toml`).
+
+| metric | baseline (`armv8-a`) | fork (`armv8.2-a+dotprod+fp16`) | Δ |
+|---|---|---|---|
+| **warm prefill** (90–152 tok) | ~29 tok/s | **~91–93 tok/s** | **~3.2×** |
+| decode | ~19 tok/s | ~20 tok/s | flat |
+
+So a warm ~850–1264-token grounded prompt drops from ~30–43s to **~9–14s** to first token.
+No `SIGILL` on the 8 Elite — dotprod (ARMv8.2) is safe for the arm64-v8a / minSdk-26 fleet.
+We deliberately did **not** bake in `+i8mm`/`+sme` (ARMv8.6/v9.2, 2021+ only → would SIGILL
+on older devices); KleidiAI doesn't accelerate Q4_K (only Q4_0/Q8_0), so i8mm for Q4_K would
+need `GGML_CPU_ALL_VARIANTS` (dynamic backends, rejected) or a Q4_0 model (Phase 3).
+
+**Cold vs warm (important when reading PERF logs):** the FIRST inference after `llm_load`
+faults the ~2.5 GB of mmap'd weights in from flash (I/O-bound) → understates prefill (~39
+tok/s observed). Every inference after is warm/compute-bound (~91 tok/s). Benchmark warm.
+
+**Decode is bandwidth-bound, not compute-bound** → dotprod can't help it (flat ~20 tok/s).
+The only decode lever is a *smaller* model (fewer weight bytes streamed per token): Q4_0 is
+~10-15% smaller than Q4_K_M and KleidiAI-accelerable → the strongest Phase 3 candidate
+because it helps prefill (i8mm) AND decode (bandwidth) at once.
+
+Decision gate result: warm first-token now seconds (small prompt ~1–2s; big grounded prompt
+~9–14s), decode ~20 tok/s. **Ship Phase 1.** The remaining big-prompt latency is attacked by
+Phase 2 (KV-cache reuse, below) for repeat turns, and optionally Phase 3 (Q4_0).
 
 ### Phase 2 — Tune batch + KV cache (if prefill still slow)
 - `with_n_batch` / `with_n_ubatch` are llama defaults (512); raising `n_ubatch` can speed
@@ -110,9 +143,12 @@ Adreno OpenCL backend. High effort, prefill-only payoff, 8 Gen 3 / 8 Elite only.
 unnecessary; document the spike result here if attempted.
 
 ## Notes / gotchas
-- `GGML_CPU_ARM_ARCH` is set to `armv8-a` by the crate (conservative). `armv8.2-a+dotprod+i8mm`
-  kernels are materially faster for Q4_K matmul; if Phase 1–3 leave decode lacking, a
-  crate-level arch bump is worth investigating (may need a `build.rs` env or fork).
+- ✅ **DONE (the big one):** `GGML_CPU_ARM_ARCH` was `armv8-a` (scalar Q4_K). Bumped to
+  `armv8.2-a+dotprod+fp16` via a vendored `llama-cpp-sys-2` fork → **~3.2× warm prefill**.
+  This was the #1 lever, not a "decode" afterthought. RUSTFLAGS `target-cpu` does NOT work
+  (the crate's Android branch appended `-march=armv8-a` last, overriding it) — the fork is
+  required. Keep the fork diff to the single `arm64-v8a` arm so re-vendoring on crate bumps
+  is trivial; Apple/Metal paths are untouched.
 - Don't pass `gpuLayers` on Android (no GPU backend linked → no-op; `want_gpu=999` is
   harmless, llama keeps layers on CPU).
 - Keep the iOS Metal path untouched — `perf_core_count()` falls back sensibly on Apple

@@ -9,6 +9,12 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+### Changed
+- Dated periodicals in the catalog (e.g. "AI This Week") now list
+  newest-first. The shared catalog grouping (`@shared/catalog`
+  `groupByBook`) sorts books by `publishedAt` descending when present,
+  falling back to the legacy narration-count/volume/title order for
+  evergreen titles.
 
 ## [0.6.7] - 2026-05-30
 ### Fixed

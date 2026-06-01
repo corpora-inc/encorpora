@@ -377,33 +377,6 @@ fn run_chat(
         .new_context(backend, ctx_params)
         .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
 
-    // Live system-prompt override for on-device A/B (no rebuild). Env
-    // CORPAN_LLM_SYSPROMPT or `adb shell setprop debug.corpan.sysprompt "..."`:
-    //   "none"      → drop all system messages (bare model)
-    //   non-empty   → replace every system message's content with this string
-    //   empty/unset → unchanged
-    // Lets us measure how much the ~850-token grounded prompt costs in prefill
-    // and how the tutor behaves with little/no system priming.
-    let messages = match system_prompt_override() {
-        Some(ov) if ov == "none" => {
-            eprintln!("[corpan-llm] sysprompt override: NONE (system messages dropped)");
-            messages.into_iter().filter(|m| m.role != "system").collect()
-        }
-        Some(ov) if !ov.is_empty() => {
-            eprintln!("[corpan-llm] sysprompt override: {} chars", ov.len());
-            messages
-                .into_iter()
-                .map(|mut m| {
-                    if m.role == "system" {
-                        m.content = ov.clone();
-                    }
-                    m
-                })
-                .collect()
-        }
-        _ => messages,
-    };
-
     let prompt = format_chatml(&messages);
     let tokens = model
         .str_to_token(&prompt, AddBos::Always)
@@ -556,35 +529,6 @@ fn thread_override() -> Option<i32> {
             if let Ok(s) = String::from_utf8(out.stdout) {
                 if let Ok(n) = s.trim().parse::<i32>() {
                     return Some(n);
-                }
-            }
-        }
-    }
-    None
-}
-
-/// Live system-prompt override for on-device A/B (no rebuild). Env
-/// CORPAN_LLM_SYSPROMPT, or on Android `adb shell setprop debug.corpan.sysprompt
-/// "..."`. Returns the trimmed value (incl. the literal "none" sentinel, handled
-/// by the caller) or None when empty/unset. Lets us measure the ~850-token
-/// grounded prompt's prefill cost and the tutor's behavior with little/no priming.
-fn system_prompt_override() -> Option<String> {
-    if let Ok(v) = std::env::var("CORPAN_LLM_SYSPROMPT") {
-        let t = v.trim();
-        if !t.is_empty() {
-            return Some(t.to_string());
-        }
-    }
-    #[cfg(target_os = "android")]
-    {
-        if let Ok(out) = std::process::Command::new("getprop")
-            .arg("debug.corpan.sysprompt")
-            .output()
-        {
-            if let Ok(s) = String::from_utf8(out.stdout) {
-                let t = s.trim();
-                if !t.is_empty() {
-                    return Some(t.to_string());
                 }
             }
         }

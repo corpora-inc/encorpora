@@ -868,8 +868,13 @@ const PackModule: ContentPackModule = {
         }
 
         // THEME BYPASS — deliver the canonical list directly, no LLM call.
+        // Scrub like the LLM path below: the canonical list is markdown
+        // (`- **palabra** — word`, `### ...` headers), and unscrubbed it both
+        // shows literal `**` on screen AND makes TTS read "asterisco asterisco".
         if (rag.kind === "theme" && rag.reference) {
-          const full = `${pickThemeIntro(lang.code)}\n\n${stripThemeHeader(rag.reference)}`
+          const full = scrubOutput(
+            `${pickThemeIntro(lang.code)}\n\n${stripThemeHeader(rag.reference)}`
+          )
           dest.textContent = full
           state.messages.push({ role: "assistant", content: full })
           maybeSpeak(full)

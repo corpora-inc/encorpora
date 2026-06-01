@@ -93,6 +93,12 @@ export type BookEntry = {
   /** ISO code of the source manuscript language. */
   primaryLanguage: string
   tags?: string[]
+  /**
+   * ISO 8601 date this book/episode was published (e.g. "2026-05-13").
+   * Set for dated periodicals like "AI This Week" so the catalog can sort
+   * newest-first. Absent for evergreen titles (those sort by volume).
+   */
+  publishedAt?: string
 }
 
 /**
@@ -115,6 +121,12 @@ export type CatalogNarrationEntry = {
   sizeMb: number
   series?: string
   volume?: number
+  /**
+   * ISO 8601 publish date (e.g. "2026-05-13"), denormalized from the book so
+   * the grouping/sort can order dated periodicals newest-first without joining
+   * the books table. Absent for evergreen titles.
+   */
+  publishedAt?: string
   tier: "public" | "premium"
   purchase: PurchaseInfo
   /** Minimum Corpan app version required to use this pack */
@@ -192,6 +204,8 @@ export type BookGroup = {
   bookTitle: string
   series?: string
   volume?: number
+  /** ISO 8601 publish date, carried from the narration rows when present. */
+  publishedAt?: string
   narrations: CatalogNarrationEntry[]
   languages: string[]
 }

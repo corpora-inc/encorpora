@@ -17,6 +17,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   hard-errors at `n_ctx` 4096; iOS Metal just hides it. See `ANDROID_PERF.md`.
 
 ### Fixed
+- **Android prefill ~3.2× faster** (warm ~29 → ~91 tok/s on Snapdragon 8 Elite):
+  upstream `llama-cpp-sys-2` hardcodes `-march=armv8-a` for the Android
+  `arm64-v8a` ABI, which compiles out the vectorized Q4_K matmul kernels
+  (`ggml/src/ggml-cpu/arch/arm/quants.c`, gated on `__ARM_FEATURE_DOTPROD`) and
+  runs scalar fallbacks. A vendored fork of `llama-cpp-sys-2`
+  (`corpan-app/src-tauri/vendor/llama-cpp-sys-2`, `[patch.crates-io]`) sets
+  `GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16` for that one ABI; Apple/Metal and
+  other ABIs untouched. dotprod is ARMv8.2 (safe for the minSdk-26 fleet); `+i8mm`
+  is intentionally NOT baked into the static baseline (would SIGILL on pre-2021
+  devices). Decode is bandwidth-bound and unchanged (~20 tok/s). Verified on a
+  Galaxy S25 Ultra; numbers + cold/warm caveat in `ANDROID_PERF.md`.
 - **Android inference speed** (Tutomaton was ~5 min to first token): pin
   llama.cpp to the device's big-core count instead of its hardcoded default of 4
   unpinned threads (which the scheduler parked on efficiency cores → minutes to

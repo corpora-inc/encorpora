@@ -60,3 +60,12 @@ panic = "abort"   # Smaller binary, no unwinding
 # 0.13.1 on Play Console. See vendor/ndk-context/src/lib.rs.
 [patch.crates-io]
 ndk-context = { path = "vendor/ndk-context" }
+
+# Vendored fork of llama-cpp-sys-2 0.1.146. Upstream's build.rs hardcodes the
+# conservative `-march=armv8-a` baseline for the Android arm64-v8a ABI, which
+# strips the vectorized Q4_K matmul kernels (dotprod/fp16) and runs scalar
+# fallbacks → ~20 tok/s prefill on a flagship. The fork sets
+# GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16 for that one ABI only (Apple/Metal
+# and other ABIs untouched). See vendor/llama-cpp-sys-2/build.rs (search
+# "CORPAN FORK") and plugins/tauri-plugin-corpan-llm/ANDROID_PERF.md.
+llama-cpp-sys-2 = { path = "vendor/llama-cpp-sys-2" }
