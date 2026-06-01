@@ -5,6 +5,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-01 — Fix on-device black screen (inline manifest + prompts)
+
 ### Fixed
 - **Black screen on launch (on-device).** `mount()` fetched the pack manifest
   (and per-language prompt files) at runtime over the `corpan-pack://` scheme.

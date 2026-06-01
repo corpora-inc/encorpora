@@ -1,7 +1,7 @@
 {
   "id": "tutomaton",
   "name": "Tutomaton",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "entry": "dist/chat.js",
   "entryType": "module",
   "styles": [
@@ -725,7 +725,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-06-01T20:29:55.506Z",
+  "devRevision": "2026-06-01T20:36:34.588Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"
