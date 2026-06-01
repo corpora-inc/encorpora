@@ -7,10 +7,38 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+
+- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
+  than it needed to be on phones and fullscreen iPad: it added a flat
+  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
+  the inset on notched devices. It now uses a single shared flat clearance
+  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
+  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
+  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
+  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
+  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
+  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
+  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
+  settings header also gets the same translucent blur as the home bar
+  (`bg-background/80 backdrop-blur`).
+
 ## [0.16.1] - 2026-06-01 — Tutomaton id fix + catalog-driven experience metadata
 
 ### Fixed
 
+- **Android: graceful gate for a missing/disabled System WebView (no more
+  startup abort).** On devices where the Android System WebView is missing,
+  disabled, or mid-update, wry's startup version probe aborted the process
+  from native code before any UI existed (`abort ← wry::webview_version ←
+  Wry::init ← Builder::build`); release builds are `panic="abort"`, so it was
+  uncatchable and showed only as an opaque crash in Play vitals. A launcher
+  trampoline (`LaunchGateActivity`) now verifies a usable WebView via
+  `WebViewCompat.getCurrentWebViewPackage()` before MainActivity (and the
+  wry/Tauri stack) is created; if none is usable it shows a dialog guiding the
+  user to enable/update Android System WebView instead of aborting. The gate
+  uses a translucent theme so the normal path renders nothing and forwards
+  straight to MainActivity.
 - **Tutomaton pack id mismatch.** The Tutomaton pack manifest's `id` was
   `tutomaton-v1` while the catalog entry was published as `tutomaton`; the
   host's pack-install path validates `catalog.id === manifest.id` byte-equal
