@@ -40,6 +40,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   that dotprod prefill is ~3× faster. See `window_messages()` in `state.rs`.
 
 ### Fixed
+- **Android `armv7` (32-bit) build no longer panics in the vendored
+  `llama-cpp-sys-2` `build.rs`.** Upstream `expect()`s `CARGO_CFG_TARGET_FEATURE`,
+  but Cargo does not set it for every target (notably `armv7-linux-androideabi`),
+  aborting the build. The vendored fork falls back to an empty feature list
+  (`unwrap_or_default()`) instead of panicking; arm64/Apple targets are
+  unaffected (they always have the env var).
 - **Android prefill ~3.2× faster** (warm ~29 → ~91 tok/s on Snapdragon 8 Elite):
   upstream `llama-cpp-sys-2` hardcodes `-march=armv8-a` for the Android
   `arm64-v8a` ABI, which compiles out the vectorized Q4_K matmul kernels

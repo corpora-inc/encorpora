@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
+
 ### Security
 
 - **content_packs.rs hardening** (release-review HIGH findings, code in 5a6c42cf):
@@ -17,8 +19,6 @@ Conventions: `corpan/CHANGELOGS.md`.
     enforce a 1 GiB hard ceiling on streamed bytes (OOM-DoS guard).
   - A failed pack upgrade restores the backed-up previous pack instead of leaving
     the user with no pack.
-
-## [0.16.0] - 2026-05-30 — Home hub, retention + monetization, region-aware voices
 
 ### Changed
 
