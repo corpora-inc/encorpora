@@ -148,30 +148,69 @@ pollution, no `--break-system-packages`).
 | `corpan-yt playlist {ls,create,add}` | 1–50 | Playlist mgmt. |
 | `corpan-yt config-paths` | 0 | Print where creds + tokens live. |
 
-### Quota math (READ THIS — corrected 2026-05-17)
+### Quota math (READ THIS — three caps, not one)
 
-- Default project quota: **10,000 units/day**, reset midnight Pacific.
-- `videos.insert` (the upload itself): **observed ~100 units in the live
-  GCP meter**, *not* the 1,600 most docs and third-party guides quote.
-  Confirmed against the GCP Console quota dashboard on 2026-05-17 after
-  5 real uploads landed the meter at 1,357 units total.
-- `videos.update`, `thumbnails.set`, `playlistItems.insert`, `channels.update`
-  = 50 units each.
+There are **three separate upload caps** and they enforce on different
+schedules with different error codes. Surface the one you'll actually hit
+first, not the one with the largest absolute number.
+
+| # | Cap | Error | Reset | Practical limit |
+|---|---|---|---|---|
+| 1 | **Channel-side daily uploads** (`@corpancaptures`) | `HTTP 400 uploadLimitExceeded` (reason `uploadLimitExceeded`, domain `youtube.video`) | **Rolling 24 h per upload** (NOT calendar midnight) | ~10–15/day on a low-trust channel |
+| 2 | **GCP project "Video Uploads per day"** | `HTTP 429 rateLimitExceeded` (quota metric `'Video Uploads'`, limit `'Video Uploads per day'`) | Calendar midnight Pacific | **~7/day observed** for the default Corpán project on 2026-05-23 |
+| 3 | **GCP project API units** (the "10k/day" everyone quotes) | `HTTP 403 quotaExceeded` (rare) | Calendar midnight Pacific | ~50 full uploads at ~200 units each |
+
+#### What hits first?
+
+Almost always **(2) before (3)** and **(1) before (2)** on a fresh day. Don't
+report "201 units, well inside the 10k budget" as if you have lots of headroom
+— the 10k budget is irrelevant; the 7-upload project counter is the wall.
+
+Manual UI uploads from studio.youtube.com **count against (1) only**, not (2)
+or (3). When (2) fires partway through a batch, the rest of that day's variants
+ship via UI + `corpan-yt patch` for metadata (see "Manual UI upload" recipe
+in the Ad-creative pipeline section above).
+
+#### Per-call API costs (for (3))
+
+- `videos.insert`: **observed ~100 units** (not the 1,600 most docs cite —
+  verified against GCP Console meter on 2026-05-17 after 5 real uploads landed
+  at 1,357 units total).
+- `videos.update`, `thumbnails.set`, `playlistItems.insert`, `channels.update`:
+  50 units each.
 - All reads (`videos.list`, `playlistItems.list`, `channels.list`,
-  `search.list`) = 1 unit each.
+  `search.list`): 1 unit each.
+- A full `corpan-yt upload` (insert + thumbnail + playlist add) ≈ 200 units.
+- A `corpan-yt patch` (update + thumbnail + playlist add) ≈ 150 units.
 
-Practical implications:
+#### Reset details
 
-- A full `corpan-yt upload` (insert + thumbnail + playlist add) is **~200
-  units**, not the 1,700 my CLI originally printed. So default budget =
-  **roughly 50–80 uploads/day**, not 6.
-- For Corpán Captures cadence (10–60 captures/day, ≤3 variants each),
-  the default 10,000-unit allotment is comfortable.
-- A quota extension request becomes worthwhile only above ~80 uploads/day,
-  e.g. if you start running the pipeline for multiple channels or burst
-  hundreds of variants for a campaign. To file: GCP Console → *YouTube
-  Data API v3* → *Quotas & System Limits* → "Queries per day" row →
-  "Apply for higher quota". Audit + ~1–2 week turnaround.
+- Cap (1) — **rolling 24-h per upload**, not calendar midnight. Confirmed
+  2026-05-23 against multiple third-party guides (Taisly, Viraly, SocialRails)
+  + observed locally: 10 uploads finished by 21:28 PT one night, retry at
+  00:23 PT the next day still returned `uploadLimitExceeded`. The first slot
+  reopened ~19:54 PT the next evening (24 h after the *first* upload of the
+  prior batch). Account verification at the YouTube account level can raise
+  the ceiling (confirmed on `@corpancaptures` between 2026-05-22 and
+  2026-05-23), but the rolling-window semantics stay the same.
+- Cap (2) — calendar-day at midnight Pacific. So after midnight you may have
+  project headroom but still be blocked by the channel-side rolling window
+  (and vice versa).
+- Cap (3) — calendar-day at midnight Pacific. Almost never the binding
+  constraint at current cadence; only worth surfacing if a single day's plan
+  is >40 uploads.
+
+#### Raising caps
+
+- Cap (1) relaxes organically as the channel accumulates upload history +
+  watch time without strikes. No application form. Account verification helps.
+- Cap (2) is the one to file a GCP increase for if you're running this
+  pipeline daily. Console → *YouTube Data API v3 → Quotas → "Video Uploads
+  per day" → Request increase*. 1–2 week turnaround. **This is the right
+  fix if you're hitting the ~7/day wall every day.**
+- Cap (3) increase form is at *Quotas & System Limits → "Queries per day"*.
+  Only worth filing if you're running multiple channels or bursting
+  hundreds of variants for a campaign.
 
 ### Content ID and "public domain" music — a trap
 
@@ -377,6 +416,246 @@ Encode time on Apple Silicon, ~76 s 1200×1600 input:
 - `shorts.mp4`: ~45 s (blur filter is expensive)
 - `square.mp4`: ~30 s
 - `thumb.jpg`: <1 s
+
+## Ad-creative pipeline (Google Ads triplet)
+
+The base `build-capture.sh` flow produces one video per source per variant
+(long / shorts / square) for organic YouTube uploads. **Google Ads creatives
+need something different**: the same source rendered at three aspect ratios
+(16:9, 9:16, 1:1) *as parallel A/B-able creatives*, often crossed with
+multiple music tracks, with per-variant SEO copy. This pipeline runs in
+parallel with the base one — no shared CLI yet, just a documented recipe.
+
+Used since 2026-05-22 for the Singapore series, India full tour, and
+IMG_0143/0147/0151 sets. Look at `built/2026-05-23/singapore-*/` and
+`built/2026-05-23/img0143-*/` for canonical examples on disk.
+
+### Three Google Ads aspect ratios with blur padding
+
+Output sizes:
+
+```
+horizontal: 1920×1080  (16:9 — in-stream, desktop, TV)
+vertical:   1080×1920  (9:16 — Shorts, mobile Discover)
+square:     1080×1080  (1:1  — in-feed YouTube, Instagram/Facebook crossover)
+```
+
+Per-variant filter chain (replace `<fg_scale>` and `<bg_spec>` from the table
+below):
+
+```
+[0:v]scale=in_range=full:out_range=tv,format=yuv420p,split=2[fg][bg];
+[bg]<bg_spec>[bgb];
+[fg]<fg_scale>[fgs];
+[bgb][fgs]overlay=x=(W-w)/2:y=(H-h)/2,setsar=1,format=yuv420p[vout]
+```
+
+| variant     | output      | `fg_scale`                                                 | `bg_spec`                                                                                  |
+|-------------|-------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| horizontal  | 1920×1080   | `scale=-2:1080` (fit height) for landscape source; `scale=-2:1080` (still fit height) for portrait — fg ends up 810×1080 with heavy side-blur | `scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,boxblur=30:1` |
+| vertical    | 1080×1920   | `scale=1080:-2` (fit width)                                | `scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=30:1` |
+| square      | 1080×1080   | `scale=1080:-2` from landscape source; `scale=-2:1080` from portrait — pick the side that fits inside the square | `scale=1080:1080:force_original_aspect_ratio=increase,crop=1080:1080,boxblur=30:1` |
+
+Foreground is always picked so the source fits *inside* the output frame with
+blur making up the difference — **no crop**, ever. For the `vertical` variant
+overlay, use `y=(H-h)*0.25` (top-biased; leaves more bottom space for
+Reels/Shorts UI overlays). Horizontal and square center vertically.
+
+Portrait sources will produce ~555 px of side-blur in the horizontal output
+(foreground only 810 px wide of the 1920 px frame). That's inherent; the user
+calls it "looks pretty good but it's like a long vertical short format." The
+alternative would be cropping content, which we don't.
+
+### Equal-weight music mix (no ducking, "music-video vibe")
+
+`mix-bgm.py` applies sidechain ducking. For screen-recording ad creatives that
+have no voiceover — only UI tap sounds — that's overkill, and the source audio
+ends up nearly inaudible. For the music-video vibe (music carries, source
+provides ambience at half weight), use this inline filter chain instead:
+
+```
+[1:a]aresample=48000,atrim=0:$DUR,asetpts=PTS-STARTPTS,
+  afade=t=out:st=$FADESTART:d=3[bgm];                  # 3s music fade-out
+[0:a][bgm]amix=inputs=2:duration=first:weights=1 1:normalize=1[mixed];
+[mixed]afade=t=out:st=$FMIX:d=0.2,
+  loudnorm=I=-14:LRA=11:TP=-1.5[out]                   # 0.2s click-killer + YouTube -14 LUFS
+```
+
+Where `$DUR` = video duration (seconds), `$FADESTART = $DUR - 3`,
+`$FMIX = $DUR - 0.2`.
+
+Use `mix-bgm.py` when you have voiceover and need ducking. Use this inline
+recipe when you don't.
+
+### DAW WAV pre-clean step — NOT optional
+
+WAVs exported from a DAW (Logic, Ableton, etc.) typically embed a `JUNK` chunk
++ arbitrary marker/cue chunks. When you feed such a WAV into a `-filter_complex`
+graph that outputs mp4, those non-PCM chunks come out as a **third stream** in
+the output: `codec_type=data`, `codec_name=bin_data`, `codec_tag=text`,
+duration equal to the original WAV's full length.
+
+**Symptom**: QuickTime reports the output mp4 as 60+ s longer than it actually
+plays. Confirmed on `fairy-gnomes-going-forth.wav` and `do-you-play-instru.wav`;
+not on a wav I had previously re-encoded through ffmpeg (which had already
+stripped the JUNK chunk). The user described it as "seems to be an extra ~60
+seconds for some reason." Took ~30 min to diagnose.
+
+Fix — pre-clean every DAW-origin WAV before mixing:
+
+```
+ffmpeg -y -i original.wav \
+  -map 0:a -map_metadata -1 -c:a pcm_s16le clean.wav
+```
+
+`-map 0:a` selects only the audio stream (drops the data chunks).
+`-map_metadata -1` drops file-level metadata. The output is byte-different
+from the input but the audio is bit-identical PCM at 48 kHz / 16-bit.
+
+`-dn -sn` on the **mp4 muxer alone** is NOT sufficient — the data stream is
+auto-attached during muxing after the filter graph completes, and explicit
+output stream mapping (`-map 0:v -map "[out]"`) doesn't suppress it. The fix
+has to happen on the **input side**: pre-process the WAVs first.
+
+### Music bed assembly (single track + crossfade)
+
+When the music track is longer than the video, `atrim=0:$DUR` in the audio
+chain is enough.
+
+When the video is longer than the longest single track (e.g. India full tour
+was 4:37 with no single track > 4:11), build a multi-track bed via
+`acrossfade` *before* the mix step:
+
+```
+ffmpeg -y -i lets-dance.wav -i cake-bengal.wav \
+  -filter_complex "
+    [0:a]aresample=48000[a];
+    [1:a]aresample=48000,atrim=0:$CAKE_LEN,asetpts=PTS-STARTPTS[b];
+    [a][b]acrossfade=d=4:c1=tri:c2=tri[bed]
+  " \
+  -map "[bed]" -c:a pcm_s16le bed.wav
+```
+
+Output bed length = `len(a) + len(b) - crossfade_d`. Pick `$CAKE_LEN` so the
+final equals your video duration. Then use `bed.wav` as the music input in
+the mix step.
+
+### Head-protected dead-air trim
+
+`trim-deadair.py` cuts dead segments throughout the source. Sometimes you want
+to trim only *part* of the video — e.g. "trim dead air in the first 2 min, but
+leave everything after 2:00 verbatim because that's the Stargate Reader tail."
+
+There's no CLI flag for this — pattern is an inline Python that imports
+`trim-deadair.py`'s detection functions, filters dead intervals to a target
+zone (e.g. `[10, 120]`), builds a custom `filter_complex` with `trim`/`atrim`
+per live segment + `concat`, and runs ffmpeg once. See the India full tour
+build for the canonical example (2026-05-22; commands logged in conversation,
+output at `raw/2026-05-22/india-big-stack-horizontal-onboard-main-stargate.horizontal.mp4`).
+
+Two protect zones are useful:
+
+- **Head protect** (e.g. preserve first 10 s untouched): even if it's silent,
+  preserves a "breathe in" moment for the music to ramp up before content
+  starts. Lower-bound the dead-interval filter at `PROTECT_HEAD`.
+- **Tail protect** (e.g. preserve everything after the 2-min mark): used when
+  a known section of the source (Stargate Reader, an outro card) needs to be
+  fully intact. Upper-bound the dead-interval filter at `PROTECT_TAIL`.
+
+### `variant_overrides` for per-aspect SEO copy
+
+`meta.json`'s `youtube.variant_overrides.<variant>` block carries per-variant
+overrides that `corpan-yt upload --variant <name>` applies on top of the base:
+
+```jsonc
+"variant_overrides": {
+  "horizontal": {
+    "title": "<benefit-led, ~60 chars — mobile truncates beyond>",
+    "description": "<keyword-front-loaded paragraph + app links + music credit + #hashtags>",
+    "additional_tags": ["wild-ride", "four languages", "audiobook reader"]
+  },
+  "vertical": {
+    "title": "<punchy, ends with #Shorts>",
+    "description": "<Shorts-feed copy; include #Shorts in body>",
+    "additional_tags": ["do-you-play-instru", "shorts", "polyglot shorts"]
+  },
+  "square": {
+    "title": "<value-prop, feed-friendly>",
+    "description": "<social-feed copy>",
+    "additional_tags": ["lets-dance-tamil", "language stack"]
+  }
+}
+```
+
+CLI honors `title` (replaces base), `description` (replaces; use plain
+`description_suffix` for append-only — useful when the only per-variant
+variation is a music credit), `additional_tags` (concatenates with base
+`tags`). See `youtube/corpan_yt/cli.py upload()` for the full list of
+overridable fields.
+
+YouTube ad-SEO levers worth varying per variant:
+
+- First 100–150 chars of description (what shows above the "more" button in feed)
+- First 3 hashtags become **clickable above the title**
+- Title formula: benefit-led for horizontal in-stream; list/CTA for vertical
+  Shorts; value-prop for square in-feed. Don't make all three identical or
+  they cannibalize each other in search.
+- Native-script tags (e.g. `தமிழ்`, `中文`, `繁體中文`) boost discovery
+  in regional markets.
+- `defaultLanguage` and `defaultAudioLanguage` strongly affect Discover
+  surfacing — set them per the *content's* target audience, not the
+  audio language.
+
+### Manual UI upload + `corpan-yt patch` fallback
+
+When the **project-level "Video Uploads per day" quota** (see the Quota math
+section) is exhausted but the channel cap is still clear, upload via
+studio.youtube.com directly — UI uploads do NOT count against the project
+quota counter (different API surface), only against the channel-side rolling
+24-h cap. Then patch metadata via the API (each `patch` call is ~150 units —
+doesn't touch the daily-uploads counter at all):
+
+```
+corpan-yt patch <video_id> \
+  --from-meta built/<date>/<slug>/meta.json \
+  --thumbnail built/<date>/<slug>/thumb.jpg \
+  --playlist "Corpán — <series> series"
+```
+
+`--from-meta` loads base title/description/tags/playlist/category/lang.
+**Variant-specific overrides are NOT auto-applied by `patch`** — assemble
+them manually before the call:
+
+```python
+ov = yt_meta["variant_overrides"][variant_name]
+desc = yt_meta["description"] + ov.get("description_suffix", "")
+if "description" in ov:
+    desc = ov["description"]
+tags = yt_meta["tags"] + ov.get("additional_tags", [])
+subprocess.run([
+  "corpan-yt", "patch", video_id,
+  "--title", ov.get("title") or yt_meta["title"],
+  "--description", desc,
+  "--tags", ",".join(tags),
+  "--category-id", str(yt_meta["category_id"]),
+  "--privacy", yt_meta["privacy"],
+  "--default-language", yt_meta["default_language"],
+  "--default-audio-language", yt_meta["default_audio_language"],
+  "--thumbnail", thumb_path,
+  "--playlist", yt_meta["playlist"],
+])
+```
+
+**Known flake: `--tags` set via the first patch occasionally doesn't take.**
+Symptom: the patch CLI reports OK, the immediately-following `corpan-yt get`
+shows `tags: []`. Happened on ~3 of 10 patches in 2026-05-23. Workaround:
+follow up with an explicit `--tags <csv>` re-patch after a brief sleep (~5 s);
+re-verify with `get`. Single retry always sticks.
+
+Record the UI upload in `meta.json` `youtube.uploads.<variant>` with
+`"uploaded_via": "youtube-studio-ui"` so the local archive matches what's
+live and future CLI runs don't try to re-upload the same variant (the
+`upload()` command refuses if `uploads.<variant>` exists).
 
 ## Patch-an-already-uploaded-video recipe
 
