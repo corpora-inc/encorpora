@@ -277,6 +277,60 @@ scale=...:in_range=full:out_range=tv,format=yuv420p
 source was already claiming. Don't remove these filters when iterating;
 the visual regression is subtle but real on consumer devices.
 
+## iPad screen-recording rotation — strip the displaymatrix
+
+iPadOS 26 screen recordings save a *landscape-shaped raster* + a `displaymatrix`
+side-data that tells players to rotate (typically `rotation=-90` for a
+portrait-held device, `rotation=-180` for upside-down landscape). Two distinct
+gotchas land at different points in the pipeline:
+
+1. **ffmpeg's default decode auto-rotates the input.** `[0:v]` in a
+   `-filter_complex` graph is *already* the intended-display orientation. Adding
+   a `transpose=N` filter on top will rotate again, producing sideways content.
+   `-vf` and `-filter_complex` both auto-rotate; only `-noautorotate` opts out.
+   Verify with: `ffmpeg -i $SRC -frames:v 1 /tmp/t.png && python3 -c
+   "from PIL import Image; print(Image.open('/tmp/t.png').size)"`. If the size
+   matches the user's intended display orientation, autorotate did the right
+   thing and no transpose is needed.
+2. **ffmpeg preserves the `displaymatrix` side data on output.** Even after the
+   filter graph re-encodes into a correctly-oriented raster, the output mp4
+   carries the *original* rotation matrix, and players re-rotate the result.
+   Symptom: a 1920×1080 horizontal output plays as a 1080×1920 portrait in
+   QuickTime; vertical 1080×1920 content appears 90° CCW; etc.
+
+Fix is a two-pass encode + metadata-strip remux:
+
+```
+# Pass 1 — normal encode, no transpose, full filter graph
+ffmpeg -y -i "$SRC" \
+  -filter_complex "..." \
+  -c:v libx264 -crf 18 -preset slow \
+  ... \
+  "$TMP"
+
+# Pass 2 — re-mux to strip the inherited displaymatrix
+ffmpeg -y -display_rotation 0 -i "$TMP" \
+  -c copy -map_metadata -1 -movflags +faststart \
+  "$OUT"
+```
+
+`-display_rotation 0` is an **input** option (must precede `-i`) — overrides the
+source's displaymatrix to identity. Combined with `-c copy`, the remux
+re-writes the moov atom without rotation side data, no quality loss.
+
+Verify after every encode:
+
+```
+ffprobe -v error -select_streams v -show_entries stream_side_data=rotation \
+  -of csv=p=0 "$OUT"
+```
+
+If a `rotation=` line appears, the remux step didn't run or `-display_rotation
+0` was missing. Output should be empty / `NONE`.
+
+Don't blindly add `transpose=2` based on "looks wrong" — extract a frame from
+the autorotated decode first, confirm what it actually is, *then* decide.
+
 ## Square variant — blur vs. solid sidebars
 
 The square (1:1) build pads the 3:4 source to 1080×1080 with **either**:

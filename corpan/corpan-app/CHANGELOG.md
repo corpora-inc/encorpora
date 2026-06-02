@@ -9,6 +9,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Fixed
 
+- **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
+  content-pack installer accumulated the *entire* download into an in-memory
+  `Vec<u8>`, sha256'd that buffer, then extracted the ZIP from memory. Fine for a
+  few-MB phrase pack, fatal for the ~2.5 GB `llm-base-qwen3-4b-v1` GGUF that
+  Tutomaton `dependsOn`: buffering it in RAM tripped iOS jetsam. It now streams
+  straight to a temp file on disk, hashing incrementally as bytes arrive, and
+  extracts from that file (`BufReader<File>`, entry-by-entry) — peak memory stays
+  flat regardless of model size, matching how the STT plugin downloads
+  Parlometron's whisper models. Both install paths (`download_and_install` and
+  the module installer) were fixed. The 0.16.0 `DOWNLOAD_MAX_BYTES` guard
+  (hardcoded 1 GiB, which had also rejected these downloads outright with
+  "Download exceeded size limit") was raised to 8 GiB. None of this surfaced in
+  desktop dev, where the model loads from a local path instead of downloading.
+  (`content_packs.rs`.)
+
 - **Text-to-Speech setup: newly installed voices now appear on their own.** The
   redesigned setup screen only refreshed its voice list on mount and on
   `visibilitychange`, so a voice you just installed wouldn't show up until you

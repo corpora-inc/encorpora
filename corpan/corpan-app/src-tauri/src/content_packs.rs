@@ -2,19 +2,16 @@ use futures_util::StreamExt;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
-use std::io::Cursor;
 use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tauri::{AppHandle, Emitter, Manager, Runtime};
 
-/// Cap the pre-allocation sized from a download's (attacker/CDN-controlled)
-/// Content-Length so a bogus huge value can't OOM-abort the process. 16 MiB is
-/// plenty to start; the buffer grows as real bytes arrive.
-const PREALLOC_CAP: u64 = 16 * 1024 * 1024;
 /// Hard ceiling on a single pack/module download. These are first-party signed
-/// ZIPs; 1 GiB is far above any real pack, so exceeding it means a malicious or
-/// misconfigured source — reject rather than fill memory.
-const DOWNLOAD_MAX_BYTES: u64 = 1024 * 1024 * 1024;
+/// ZIPs, but LLM base-model packs (e.g. `llm-base-qwen3-4b-v1`, a ~2.5 GB GGUF
+/// on S3 that Tutomaton `dependsOn`) are multi-gigabyte — the old 1 GiB ceiling
+/// rejected them ("Download exceeded size limit"). 8 GiB clears current models
+/// with headroom while still bounding a malicious/misconfigured runaway stream.
+const DOWNLOAD_MAX_BYTES: u64 = 8 * 1024 * 1024 * 1024;
 
 #[derive(Debug, Clone, Serialize)]
 pub struct InstallProgressEvent {
@@ -82,8 +79,15 @@ fn now_epoch_ms() -> i64 {
         .unwrap_or(0)
 }
 
-fn safe_extract_zip(data: &[u8], dest: &Path) -> Result<(), String> {
-    let reader = Cursor::new(data);
+/// Extract a ZIP that lives in a file on disk. We read it through a buffered
+/// File reader (`Read + Seek`) rather than an in-memory `Cursor<&[u8]>` so a
+/// multi-GB archive (e.g. an LLM base-model pack) never has to be resident in
+/// RAM — only the zip's per-entry decompression window + an 8 KiB copy buffer
+/// are. Same path-traversal safety as before (`enclosed_name()`), and each
+/// entry streams straight to its output file via `std::io::copy`.
+fn safe_extract_zip_file(zip_path: &Path, dest: &Path) -> Result<(), String> {
+    let file = fs::File::open(zip_path).map_err(|e| e.to_string())?;
+    let reader = std::io::BufReader::new(file);
     let mut archive = zip::ZipArchive::new(reader).map_err(|e| e.to_string())?;
     for i in 0..archive.len() {
         let mut file = archive.by_index(i).map_err(|e| e.to_string())?;
@@ -103,6 +107,67 @@ fn safe_extract_zip(data: &[u8], dest: &Path) -> Result<(), String> {
         }
     }
     Ok(())
+}
+
+/// Stream an HTTP response body to `tmp_path` on disk, hashing as bytes arrive
+/// and enforcing the `DOWNLOAD_MAX_BYTES` ceiling. Returns the hex sha256 of the
+/// streamed bytes.
+///
+/// CRITICAL: this never accumulates the body in memory. The old code pushed
+/// every chunk into a `Vec<u8>` and only then hashed/extracted it — fine for a
+/// few-MB phrase pack, but a ~2.5 GB LLM base-model pack buffered in RAM
+/// OOM/jetsam-killed the app on iOS. Writing straight to disk (like the STT
+/// plugin's `URLSession` download for Parlometron's whisper models) keeps peak
+/// memory flat regardless of model size.
+async fn stream_body_to_file<F: Fn(&str, u64, u64, &str)>(
+    res: reqwest::Response,
+    tmp_path: &Path,
+    total: u64,
+    emit_progress: &F,
+) -> Result<String, String> {
+    use sha2::Digest;
+    use std::io::Write;
+
+    if let Some(parent) = tmp_path.parent() {
+        fs::create_dir_all(parent)
+            .map_err(|e| format!("Failed to create download dir: {e}"))?;
+    }
+    let file = fs::File::create(tmp_path)
+        .map_err(|e| format!("Failed to create download file: {e}"))?;
+    let mut writer = std::io::BufWriter::new(file);
+    let mut hasher = sha2::Sha256::new();
+    let mut downloaded: u64 = 0;
+    let mut stream = res.bytes_stream();
+
+    while let Some(chunk_result) = stream.next().await {
+        let chunk = chunk_result.map_err(|e| {
+            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
+            format!("Download read failed: {e}")
+        })?;
+        downloaded += chunk.len() as u64;
+        if downloaded > DOWNLOAD_MAX_BYTES {
+            emit_progress("error", downloaded, total, "Download exceeded size limit");
+            return Err(format!(
+                "Download exceeded size limit ({DOWNLOAD_MAX_BYTES} bytes)"
+            ));
+        }
+        hasher.update(&chunk);
+        writer.write_all(&chunk).map_err(|e| {
+            emit_progress("error", downloaded, total, &format!("Disk write failed: {e}"));
+            format!("Disk write failed: {e}")
+        })?;
+        emit_progress("downloading", downloaded, total, "Downloading");
+    }
+    writer
+        .flush()
+        .map_err(|e| format!("Failed to flush download: {e}"))?;
+
+    let digest = hasher.finalize();
+    Ok(digest
+        .iter()
+        .map(|b| format!("{b:02x}"))
+        .collect::<Vec<_>>()
+        .join(""))
 }
 
 fn find_pack_root(staging: &Path) -> Option<PathBuf> {
@@ -142,18 +207,6 @@ fn read_manifest_info(path: &Path) -> Result<(String, Option<String>, Option<Str
         .and_then(|v| v.as_str())
         .map(|s| s.to_string());
     Ok((id, name, version))
-}
-
-fn hash_bytes_sha256(bytes: &[u8]) -> String {
-    use sha2::Digest;
-    let mut hasher = sha2::Sha256::new();
-    hasher.update(bytes);
-    let result = hasher.finalize();
-    result
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect::<Vec<_>>()
-        .join("")
 }
 
 fn is_private_host(host: &str) -> bool {
@@ -292,42 +345,30 @@ pub async fn download_and_install<R: Runtime>(
     }
 
     let total = res.content_length().unwrap_or(0);
-    let mut downloaded: u64 = 0;
-    // SECURITY: content-length is attacker/CDN-controlled. Cap the pre-alloc so a
-    // bogus huge length can't OOM-abort the process, and enforce a hard ceiling on
-    // the actual streamed bytes (these are first-party signed ZIPs; 1 GiB is well
-    // above any real pack and a download past it is malicious/misconfigured).
-    let mut buf = Vec::with_capacity((total.min(PREALLOC_CAP) as usize).max(0));
-    let mut stream = res.bytes_stream();
 
-    while let Some(chunk_result) = stream.next().await {
-        let chunk = chunk_result.map_err(|e| {
-            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
-            format!("Download read failed: {e}")
-        })?;
-        downloaded += chunk.len() as u64;
-        if downloaded > DOWNLOAD_MAX_BYTES {
-            emit_progress("error", downloaded, total, "Download exceeded size limit");
-            return Err(format!(
-                "Download exceeded size limit ({DOWNLOAD_MAX_BYTES} bytes)"
-            ));
+    let root = pack_root(app)?;
+    fs::create_dir_all(&root).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Failed to create pack root: {e}"));
+        format!("Failed to create pack root: {e}")
+    })?;
+
+    // Stream straight to a temp file on disk (never buffer the whole archive in
+    // RAM — a multi-GB model pack would OOM/jetsam the app). Hash is computed
+    // incrementally as bytes arrive; the size ceiling is enforced in the helper.
+    let tmp_zip = root.join(format!(".{pack_id}.download.zip"));
+    let actual_sha256 = match stream_body_to_file(res, &tmp_zip, total, &emit_progress).await {
+        Ok(h) => h,
+        Err(e) => {
+            let _ = fs::remove_file(&tmp_zip);
+            return Err(e);
         }
-        buf.extend_from_slice(&chunk);
-        emit_progress("downloading", downloaded, total, "Downloading");
-    }
+    };
+    eprintln!("[pack-install] Downloaded archive to {:?} for {}", tmp_zip, pack_id);
 
-    let bytes = buf;
-    eprintln!(
-        "[pack-install] Downloaded {} bytes for {}",
-        bytes.len(),
-        pack_id
-    );
-
-    emit_progress("verifying", downloaded, total, "Verifying integrity");
-
+    emit_progress("verifying", total, total, "Verifying integrity");
     if let Some(expected) = expected_sha256 {
-        let actual = hash_bytes_sha256(&bytes);
-        if actual != expected {
+        if actual_sha256 != expected {
+            let _ = fs::remove_file(&tmp_zip);
             emit_progress("error", 0, 0, "Pack hash mismatch");
             return Err("Pack hash mismatch".to_string());
         }
@@ -335,27 +376,25 @@ pub async fn download_and_install<R: Runtime>(
 
     emit_progress("extracting", 0, 0, "Extracting pack");
 
-    let root = pack_root(app)?;
-    fs::create_dir_all(&root)
-        .map_err(|e| {
-            emit_progress("error", 0, 0, &format!("Failed to create pack root: {e}"));
-            format!("Failed to create pack root: {e}")
-        })?;
-
     let staging = root.join(format!(".{pack_id}.staging"));
     if staging.exists() {
         let _ = fs::remove_dir_all(&staging);
     }
-    fs::create_dir_all(&staging)
-        .map_err(|e| {
-            emit_progress("error", 0, 0, &format!("Failed to create staging dir: {e}"));
-            format!("Failed to create staging dir: {e}")
-        })?;
-
-    safe_extract_zip(&bytes, &staging).map_err(|e| {
-        emit_progress("error", 0, 0, &format!("Extract failed: {e}"));
-        e
+    fs::create_dir_all(&staging).map_err(|e| {
+        let _ = fs::remove_file(&tmp_zip);
+        emit_progress("error", 0, 0, &format!("Failed to create staging dir: {e}"));
+        format!("Failed to create staging dir: {e}")
     })?;
+
+    if let Err(e) = safe_extract_zip_file(&tmp_zip, &staging) {
+        let _ = fs::remove_file(&tmp_zip);
+        emit_progress("error", 0, 0, &format!("Extract failed: {e}"));
+        return Err(e);
+    }
+    // Archive extracted — reclaim its disk space before the finalize/move so we
+    // never hold the download ZIP and the unpacked copy at once any longer than
+    // necessary.
+    let _ = fs::remove_file(&tmp_zip);
 
     let pack_root_dir = find_pack_root(&staging).ok_or_else(|| {
         emit_progress("error", 0, 0, "Manifest not found in pack");
@@ -648,41 +687,26 @@ pub async fn install_module<R: Runtime>(
     }
 
     let total = res.content_length().unwrap_or(0);
-    let mut downloaded: u64 = 0;
-    // SECURITY: cap pre-alloc + enforce a hard ceiling on streamed bytes (see the
-    // matching guard in download_and_install).
-    let mut buf = Vec::with_capacity((total.min(PREALLOC_CAP) as usize).max(0));
-    let mut stream = res.bytes_stream();
 
-    while let Some(chunk_result) = stream.next().await {
-        let chunk = chunk_result.map_err(|e| {
-            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
-            format!("Download read failed: {e}")
-        })?;
-        downloaded += chunk.len() as u64;
-        if downloaded > DOWNLOAD_MAX_BYTES {
-            emit_progress("error", downloaded, total, "Download exceeded size limit");
-            return Err(format!(
-                "Download exceeded size limit ({DOWNLOAD_MAX_BYTES} bytes)"
-            ));
+    // Stream to a temp file on disk (never buffer the whole module in RAM); the
+    // helper creates the parent dir, hashes incrementally, and caps the size.
+    let tmp_zip = pack_dir.join(format!(".module-{}.download.zip", now_epoch_ms()));
+    let actual_sha256 = match stream_body_to_file(res, &tmp_zip, total, &emit_progress).await {
+        Ok(h) => h,
+        Err(e) => {
+            let _ = fs::remove_file(&tmp_zip);
+            return Err(e);
         }
-        buf.extend_from_slice(&chunk);
-        emit_progress("downloading", downloaded, total, "Downloading");
-    }
-
-    let bytes = buf;
+    };
     eprintln!(
-        "[pack-module] Downloaded {} bytes for {}/{}",
-        bytes.len(),
-        pack_id,
-        sub_path
+        "[pack-module] Downloaded archive to {:?} for {}/{}",
+        tmp_zip, pack_id, sub_path
     );
 
-    emit_progress("verifying", downloaded, total, "Verifying integrity");
-
+    emit_progress("verifying", total, total, "Verifying integrity");
     if let Some(expected) = expected_sha256 {
-        let actual = hash_bytes_sha256(&bytes);
-        if actual != expected {
+        if actual_sha256 != expected {
+            let _ = fs::remove_file(&tmp_zip);
             emit_progress("error", 0, 0, "Module hash mismatch");
             return Err("Module hash mismatch".to_string());
         }
@@ -691,14 +715,17 @@ pub async fn install_module<R: Runtime>(
     emit_progress("extracting", 0, 0, "Extracting module");
 
     fs::create_dir_all(&dest).map_err(|e| {
+        let _ = fs::remove_file(&tmp_zip);
         emit_progress("error", 0, 0, &format!("Failed to create module dir: {e}"));
         format!("Failed to create module dir: {e}")
     })?;
 
-    safe_extract_zip(&bytes, &dest).map_err(|e| {
+    if let Err(e) = safe_extract_zip_file(&tmp_zip, &dest) {
+        let _ = fs::remove_file(&tmp_zip);
         emit_progress("error", 0, 0, &format!("Extract failed: {e}"));
-        e
-    })?;
+        return Err(e);
+    }
+    let _ = fs::remove_file(&tmp_zip);
 
     // Write the pack manifest only if one isn't already present — never clobber
     // an existing manifest (the parent pack may already be installed).
