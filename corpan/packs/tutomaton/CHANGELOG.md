@@ -5,6 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-06-02 — Localize catalog description (51 langs)
+
+### Fixed
+- **Catalog pack-card description showed English in every locale.** Every other
+  pack in `catalog-v3.json` ships a `descriptionLocalized` map (51 langs);
+  tutomaton's manifest only had a tagline map, so `PackCard.tsx` (which routes
+  through `localizePack()` and resolves `description` solely via
+  `descriptionLocalized`) fell through to the bare English `description`.
+  Added `descriptionLocalized` to `manifest.json` covering all 51 locales used
+  by the rest of the catalog, matching the tone of the existing
+  `experiences.tutomaton.blurb` translations in `common.json` and extending
+  with the full description's phrase-pack-grounding + on-device wording.
+
 ## [0.3.1] - 2026-06-01 — Fix on-device black screen (inline manifest + prompts)
 
 ### Fixed
