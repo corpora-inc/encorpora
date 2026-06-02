@@ -309,12 +309,22 @@ def _ui_lang(scn: dict) -> str:
     return "en"
 
 
-def run(scenario_path: Path, video: bool) -> dict:
-    """Run one scenario. Returns a result dict for the suite roll-up."""
+def run(scenario_path: Path, video: bool, t0: float | None = None) -> dict:
+    """Run one scenario. Returns a result dict for the suite roll-up.
+
+    `t0` (epoch seconds) anchors the optional timing manifest (timeline.json):
+    each narrate caption + screenshot is logged with its elapsed offset from
+    this clock. The studio orchestrator passes the recording-start time so the
+    captions/subtitles/narration can be aligned to the video later; when omitted
+    the scenario start is used. Emitting the manifest is additive — it does not
+    change how beats run."""
     scn = json.loads(scenario_path.read_text())
     name = scn.get("name", scenario_path.stem)
     run_dir = HERE / "runs" / f"{name}-{int(time.time())}"
     run_dir.mkdir(parents=True, exist_ok=True)
+    if t0 is None:
+        t0 = time.time()
+    timeline: list[dict] = []  # [{type, offset_s, text|file, beat}]
 
     ui_lang = _ui_lang(scn)
     check_untranslated = ui_lang != "en"
@@ -344,6 +354,8 @@ def run(scenario_path: Path, video: bool) -> dict:
             line = beat["narrate"]
             print(f"  · {line}")
             report.append(f"**{line}**")
+            timeline.append({"type": "narrate", "offset_s": round(time.time() - t0, 2),
+                             "beat": i, "text": line})
         if beat.get("reset"):
             cdp_eval(_js_reset())  # also navigates to a clean URL
             wait_app_ready()
@@ -435,6 +447,8 @@ def run(scenario_path: Path, video: bool) -> dict:
         if "screenshot" in beat:
             shot_n += 1
             fn = f"{shot_n:02d}-{beat['screenshot']}.png"
+            timeline.append({"type": "screenshot", "offset_s": round(time.time() - t0, 2),
+                             "beat": i, "file": fn})
             ok = screenshot(run_dir / fn)
             report.append(f"- screenshot `{fn}`: {'✓' if ok else '✗'}")
             # Untranslated-screen heuristic: at every captured screen, if the
@@ -456,6 +470,13 @@ def run(scenario_path: Path, video: bool) -> dict:
     status = "PASS" if failures == 0 else f"{failures} FAILURE(S)"
     report.append(f"## Result: {status}" + (f" · {warnings} warning(s)" if warnings else ""))
     (run_dir / "report.md").write_text("\n".join(report) + "\n")
+    # Timing manifest — alignment backbone for subtitles/narration (see studio.py).
+    (run_dir / "timeline.json").write_text(json.dumps({
+        "name": name,
+        "t0": t0,
+        "duration_s": round(time.time() - t0, 2),
+        "events": timeline,
+    }, indent=2) + "\n")
     icon = "✅ PASS" if failures == 0 else f"❌ {failures} failure(s)"
     if warnings:
         icon += f"  (⚠️ {warnings} warning(s))"
@@ -469,6 +490,7 @@ def run(scenario_path: Path, video: bool) -> dict:
         "passed": failures == 0,
         "report": str((run_dir / "report.md").resolve()),
         "run_dir": str(run_dir.resolve()),
+        "timeline": str((run_dir / "timeline.json").resolve()),
     }
 
 

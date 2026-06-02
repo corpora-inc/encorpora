@@ -1,32 +1,57 @@
 {
   "name": "id_english_beginner",
-  "title": "Javanese speaker — UI in Indonesian, learning English from scratch",
-  "persona": "A young Javanese speaker wants the app in Bahasa Indonesia and is learning English basically from scratch. We walk the onboarding with reflective pauses (video mode), capturing each step.",
+  "title": "Belajar bahasa Inggris — onboarding (Indonesia)",
+  "persona": "A new learner in Indonesia opens Corpán for the first time. Bahasa Indonesia UI, learning English from scratch — we walk the whole onboarding with reflective pauses (video mode) and land inside a first English lesson.",
+  "ui_lang": "id",
+  "country": "Indonesia",
+  "scene": "onboarding",
+  "playlist": "Corpán — Indonesia series",
+  "panel": {
+    "headline": "Belajar bahasa Inggris",
+    "sublines": ["Gratis. Tanpa iklan. Di perangkat Anda.", "Tutor pribadi. Sepenuhnya luring."]
+  },
   "beats": [
     {
       "narrate": "Fresh first run: Indonesian + English in the stack, reset onboarding + URL.",
       "reset": true,
       "set_state": { "languages": ["id", "en"], "interests": [] }
     },
-    { "narrate": "Welcome screen (animated word cloud)", "pause": 3000, "pause_video": 3500, "screenshot": "welcome" },
-    { "narrate": "Begin", "tap_any": "", "settle": 1.8 },
 
-    { "narrate": "Choose primary (UI) language", "wait_text": "primary", "pause_video": 2400, "screenshot": "pick-primary" },
-    { "narrate": "Pick Bahasa Indonesia as the UI language", "tap": "Bahasa Indonesia", "settle": 2.0 },
+    { "narrate": "Welcome — the animated word cloud.", "pause": 2600, "pause_video": 3400, "screenshot": "01-welcome" },
+    { "narrate": "Begin.", "tap_any": "", "settle": 1.8 },
 
-    { "narrate": "What brings you to Corpán?", "wait_text": "brings you", "pause_video": 2600, "screenshot": "fork" },
-    { "narrate": "Learn a language", "tap": "Learn a language", "settle": 1.8 },
+    { "narrate": "Choose your main language.", "pause_video": 2400, "screenshot": "02-pick-primary" },
+    { "narrate": "Pick Bahasa Indonesia — the whole app turns Indonesian.", "tap": "Bahasa Indonesia", "settle": 2.2 },
 
-    { "narrate": "Pick the language to learn", "wait_text": "Pick languages", "pause_video": 2200, "screenshot": "pick-target" },
-    { "narrate": "Add English", "tap": "English", "settle": 0.6 },
-    { "tap_primary": true, "settle": 1.8 },
+    { "narrate": "What brings you to Corpán?", "pause_video": 2600, "screenshot": "03-fork" },
+    { "narrate": "Learn a language.", "tap": "Belajar bahasa", "settle": 2.0 },
 
-    { "narrate": "How much English do you know?", "wait_text": "studied", "pause_video": 2400, "screenshot": "calibrate" },
-    { "narrate": "Never — total beginner", "tap": "Never", "settle": 1.8 },
+    { "narrate": "Which language do you want to learn?", "pause_video": 2400, "screenshot": "04-pick-target" },
+    { "narrate": "Add English.", "tap": "Inggris", "settle": 0.8 },
+    { "narrate": "Continue.", "tap_primary": true, "settle": 2.0 },
 
-    { "narrate": "Pick starter topics", "wait_text": "topics", "pause_video": 2200, "screenshot": "topics" },
-    { "narrate": "Keep all topics", "tap_primary": true, "settle": 2.0 },
+    { "narrate": "How much English do you already know?", "pause_video": 2400, "screenshot": "05-calibrate" },
+    { "narrate": "Never — a total beginner.", "tap": "Belum pernah", "settle": 2.0 },
 
-    { "narrate": "Voice setup — the redesigned voice picker", "wait_text": "voice", "pause_video": 3000, "screenshot": "tts-voices" }
+    { "narrate": "Pick a few starter topics.", "pause_video": 2200, "screenshot": "06-topics" },
+    { "narrate": "Keep the suggestions, continue.", "tap_primary": true, "settle": 2.0 },
+
+    { "narrate": "Voice setup — a clear English voice, tuned slow for a beginner.", "pause_video": 3000, "screenshot": "07-tts-voices" },
+    { "narrate": "Continue.", "tap_primary": true, "settle": 2.0 },
+
+    { "narrate": "What do you want to do? (optional)", "pause_video": 2400, "screenshot": "08-interests" },
+    { "narrate": "Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 2.0 },
+
+    { "narrate": "All set — a warm welcome.", "pause_video": 2600, "screenshot": "09-finish" },
+    { "narrate": "Start exploring.", "tap": "Mulai menjelajah", "settle": 2.4 },
+
+    { "narrate": "A gentle guided tour opens over the home.", "pause_video": 2400, "screenshot": "10-tour" },
+    { "narrate": "Skip the tour to reveal the home.", "tap": "Lewati", "settle": 1.6 },
+
+    { "narrate": "Home — a recommendation picked for an Indonesian beginner.", "wait_text": "Untuk Anda", "pause_video": 2600, "screenshot": "11-home" },
+    { "narrate": "Open the recommended English experience.", "tap_anchor": { "testid": "hero-cta" }, "settle": 3.0 },
+
+    { "narrate": "Learning English — the payoff.", "pause_video": 4500, "screenshot": "12-experience" },
+    { "narrate": "Hold on the lesson.", "pause_video": 3500, "screenshot": "13-experience-hold" }
   ]
 }

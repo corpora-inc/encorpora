@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -248,7 +249,19 @@ def upload(built_dir: Path, variant: str | None, privacy: str | None, dry_run: b
         try:
             playlist_id = yt_api.ensure_playlist(yt, title=playlist_name, privacy=privacy)
             total_cost += 1
-            _, inserted = yt_api.add_to_playlist(yt, playlist_id=playlist_id, video_id=video_id)
+            # A freshly-created playlist isn't immediately queryable — the
+            # playlistItems.insert can 404 (playlistNotFound) for a few seconds,
+            # which silently dropped the FIRST video of every new series. Retry.
+            inserted = None
+            for attempt in range(6):
+                try:
+                    _, inserted = yt_api.add_to_playlist(yt, playlist_id=playlist_id, video_id=video_id)
+                    break
+                except Exception as e:
+                    if "playlistNotFound" in str(e) and attempt < 5:
+                        time.sleep(2.0 * (attempt + 1))
+                        continue
+                    raise
             total_cost += 50 if inserted else 1
             click.echo(f"OK {'added to' if inserted else 'already in'} playlist {playlist_id}")
         except Exception as e:

@@ -130,11 +130,16 @@ do. The scenario report header notes the detected UI language.
 1. ~~**Autonomous coverage**: a suite runner over all `scenarios/*`, plus
    heuristic assertions baked into the runner~~ — **done** (`suite.py` +
    untranslated/dead-CTA/off-screen heuristics + anchors; see above).
-2. **Video pipeline**: `--video` already injects reflection pauses; add (a) a
-   screen-record hook (capture the device screen for the run window), (b) an
-   `assemble` step (ffmpeg: blur-pad to target aspect, music bed + mastering,
-   intro/outro), (c) OAuth auto-upload to YouTube — reuse the existing capture +
-   YouTube tooling. A scenario gains optional `music`, `aspect`, `voiceover` fields.
+2. **Video pipeline** — **in progress** (`studio.py`, see `infra/captures/STUDIO.md`):
+   (a) screen-record hook — built two ways: a headless Swift recorder
+   (`record.sh`/`ipad-record.swift`) for Macs/devices AVFoundation can see, and
+   the **working** path for the tunneled iPad, iOS Control Center recording +
+   `studio.py pull`. (b) `assemble` step — **done**: `studio.py assemble` reuses
+   `build-capture.sh` (blur-pad/aspects) + `mix-bgm.py` (music bed + ducking) and
+   auto-generates the YouTube sidecar from the scenario. Scenarios gained
+   `country`/`scene`/`playlist`/`ui_lang`; `scenario.run` emits `timeline.json`
+   (caption/screenshot offsets) as the narration/subtitle alignment backbone.
+   Still TODO: (c) OAuth auto-upload wiring, narration TTS stem, PiP overlay.
 3. **Scenario authoring from a brief**: generate a scenario JSON from a natural-
    language persona ("Javanese speaker, Bahasa Indonesia UI, English from
    scratch") + the route graph.
