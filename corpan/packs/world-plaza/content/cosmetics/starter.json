@@ -1,0 +1,84 @@
+{
+  "_doc": "Free starter dress-up kit for World Plaza onboarding. Every entry is a CosmeticItem (see contracts/src/identity.ts): id, slot, name, rarity, spriteRef (AssetRef), unlock. All are unlock.kind=xp value=0 (free from the start). spriteRef.url uses the placeholder:* scheme resolved by cutoutArt at render time; `tints` (extra, non-contract field, ignored by the schema) lists the colour swatches the dress-up offers for that slot. Slots: top, hat, accessory. Wholesome + dignified only.",
+  "items": [
+    {
+      "id": "top-tunic",
+      "slot": "top",
+      "name": "Plaza Tunic",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-top-tunic" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#3f7fae", "#6f9c54", "#c46b4a", "#8a6aa8", "#d98f57", "#5a7d9a"]
+    },
+    {
+      "id": "top-vest",
+      "slot": "top",
+      "name": "Cozy Vest",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-top-vest" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#c4763f", "#46647e", "#577f40", "#9a6a36", "#b5854a"]
+    },
+    {
+      "id": "hat-none",
+      "slot": "hat",
+      "name": "No Hat",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-hat-none" },
+      "unlock": { "kind": "xp", "value": 0 }
+    },
+    {
+      "id": "hat-cap",
+      "slot": "hat",
+      "name": "Traveler's Cap",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-hat-cap" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#b5854a", "#7a5a30", "#3f7fae", "#6f9c54"]
+    },
+    {
+      "id": "hat-baker",
+      "slot": "hat",
+      "name": "Baker's Hat",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-hat-baker" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#f2e8d0", "#ece3c8"]
+    },
+    {
+      "id": "hat-sun",
+      "slot": "hat",
+      "name": "Sun Hat",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-hat-sun" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#e0c060", "#d9a25a"]
+    },
+    {
+      "id": "acc-none",
+      "slot": "accessory",
+      "name": "No Accessory",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-acc-none" },
+      "unlock": { "kind": "xp", "value": 0 }
+    },
+    {
+      "id": "acc-scarf",
+      "slot": "accessory",
+      "name": "Friendly Scarf",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-acc-scarf" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#c0392b", "#3f7fae", "#577f40", "#e0c060"]
+    },
+    {
+      "id": "acc-satchel",
+      "slot": "accessory",
+      "name": "Little Satchel",
+      "rarity": "common",
+      "spriteRef": { "url": "placeholder:cos-acc-satchel" },
+      "unlock": { "kind": "xp", "value": 0 },
+      "tints": ["#9c6b3f", "#6f4a24"]
+    }
+  ]
+}

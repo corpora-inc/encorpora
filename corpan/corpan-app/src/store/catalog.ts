@@ -6,6 +6,7 @@ import {
 } from "../contentPacks/catalog"
 import { getNetworkStatus, listenToNetworkChanges } from "../utils/network"
 import { getAppVersion } from "../lib/appVersion"
+import { createLocalStorageShim } from "../util/storage"
 
 type CatalogState = {
   catalog: CatalogGame[]
@@ -131,7 +132,15 @@ export const useCatalogStore = create<CatalogState>()(
     }),
     {
       name: "corpan-catalog-v2",
-      storage: createJSONStorage(() => localStorage),
+      // Persisted to the IndexedDB (LARGE) tier — see store/phrasePackCatalog.ts
+      // for the rationale. The game/reader/narration catalog is another
+      // growable blob that shouldn't sit in the shared localStorage budget.
+      storage: createJSONStorage(() =>
+        createLocalStorageShim("game-catalog", {
+          tier: "large",
+          volatile: true,
+        })
+      ),
       partialize: (state) => ({
         catalog: state.catalog,
         lastFetched: state.lastFetched,

@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Corpán'ı destekleyin ve her şeyin kilidini açın. İsteğe bağlı, dilediğiniz zaman.",
+      "subscribedTitle": "Bir Corpanista'sınız",
+      "subscribedDesc": "Corpán'ı reklamsız tutup büyümesine yardımcı olduğunuz için teşekkürler.",
       "joinTitle": "Corpanistas'a katılın",
       "start": "Keşfetmeye başla",
       "subtitle": "Corpán, küçük bir açık kaynak ekibi tarafından yapıldı. Merhaba deyin — ve eğer beğenirseniz, bize destek olabilirsiniz.",

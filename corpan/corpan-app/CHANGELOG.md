@@ -7,6 +7,84 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.16.2] - 2026-06-04 — Android crash diagnostics + truncated-download guard
+
+### Added
+
+- **Rust-panic crash breadcrumb → on-device analytics (diagnose the
+  all-native Android tombstones).** The `panic = "abort"` release build turns
+  any Rust panic — in the app OR a statically-linked plugin (corpan-llm, stt,
+  …) — into an immediate libc `abort()` with no Java frame, i.e. the
+  unsymbolicated, single-`.so` tombstones the Play Console can't attribute. A
+  panic hook installed in `setup()` now records the panic's location, message,
+  and thread to a `panic-last.json` breadcrumb BEFORE the abort, then chains to
+  the default hook. On the next launch `take_last_crash_report` (a new Tauri
+  command, harvested in `main.tsx`) records it once as a `rust_panic` analytics
+  event. Mirrors the STT plugin's init breadcrumb; best-effort and never
+  panics itself. (`src-tauri/src/lib.rs`, `main.tsx`.)
+- **Prior STT native-init crashes are recorded into analytics.** The host
+  `stt.getStatus()` wrapper now reads the plugin's one-shot
+  `priorInitCrash` breadcrumb and records a `stt_init_crash` event, so the
+  uncatchable ggml-init SIGSEGV is harvested rather than only logged.
+  (`contentPacks/hostApi.ts`, `contentPacks/types.ts`; plugin
+  `tauri-plugin-stt` ≥ 0.5.2.)
+
+### Fixed
+
+- **`QuotaExceededError` from the phrase-pack catalog can no longer crash the
+  app.** The phrase-pack catalog (and the game/reader/narration catalog) were
+  persisted by zustand `persist` directly into the shared ~5 MB localStorage
+  budget; under a full catalog, `localStorage.setItem` threw an unhandled
+  `QuotaExceededError` (reported at `phrasePackCatalog.ts:36` in production).
+  Both stores now persist to a new IndexedDB-backed **LARGE storage tier** via
+  a quota-safe shim that evicts + retries + degrades to memory instead of
+  throwing. A one-time, idempotent startup migration moves any pre-existing
+  localStorage catalog blob into IndexedDB. (`store/phrasePackCatalog.ts`,
+  `store/catalog.ts`, `util/storage/**`, `main.tsx`.)
+
+### Added
+
+- **Unified, quota-safe storage service (`util/storage/`).** Two tiers —
+  TINY (settings/flags/identity → guarded localStorage) and LARGE (catalogs,
+  content blobs, analytics → IndexedDB) — with a namespaced async API
+  (`get`/`set`/`getJSON`/`setJSON`/`del`, TTL + schema version), LRU/volatile
+  eviction, an in-memory fallback, and a `createLocalStorageShim()` for
+  migrating zustand `persist` stores. Writes NEVER throw `QuotaExceededError`
+  to callers.
+- **Local-first analytics event store + sync seam (`util/storage/eventStore.ts`
+  + `util/analytics.ts`).** An on-device, append-only, ring-buffer-capped
+  (5 000-event) IndexedDB log. Every tracked event flows through ONE `emit()`
+  chokepoint (cloud queue + durable on-device log). New rich capture
+  (`trackScreenView`, `trackPackOpen`, `trackChallengeCompleted`, `trackError`)
+  and a `syncLocalEvents()` reconcile that batch-uploads to `/v1/events`.
+  Privacy unchanged: on-device, no persistent id, same opt-out flag.
+- **CORS fix for the analytics Beacon.** The unload path used
+  `navigator.sendBeacon`, which always sends credentials and clashed with the
+  endpoint's wildcard `Access-Control-Allow-Origin` (the
+  "Access-Control-Allow-Credentials" console error). It now prefers a
+  `credentials: "omit"` keepalive `fetch` (beacon kept only as a fallback).
+  (`packs/shared/analytics/index.ts`.)
+
+- **"You're a Corpanista" / "Thank you for keeping Corpán ad-free and growing"
+  now localized in all 50 languages.** The subscriber thank-you on the
+  onboarding engagement page used `t("onboarding.engage.subscribedTitle")` and
+  `…subscribedDesc`, but those keys were never added to `en/common.json` — so
+  i18next fell through to the inline English `defaultValue` in *every* language.
+  Added both keys to `en` and all 50 locales (the title reuses each locale's
+  already-translated `paywall.thanksTitle`). (`OnboardingFinish.tsx`,
+  `public/locales/*/common.json`.)
+
+### Added
+
+- **Localization completeness build gate (`scripts/check-i18n.mjs`, runs in
+  `npm run build`; also `npm run check:i18n`).** `en/common.json` is the source
+  of truth (it's what `i18next.d.ts` types `t()` against). The check fails the
+  build when (1) any statically-written `t("key")` in `src/` is missing from
+  `en` — the exact class of bug above, where a key only existed as an inline
+  English default — or (2) any locale's key set differs from `en` (missing keys
+  that silently fall back to English, or stale keys left after a rename).
+  Dynamic `` t(`a.${x}.b`) `` keys are skipped (can't be checked statically).
+
 ### Fixed
 
 - **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The

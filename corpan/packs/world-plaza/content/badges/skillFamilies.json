@@ -1,0 +1,69 @@
+{
+  "$comment": "toolId -> skill family map (BADGES_PROGRESSION §1.1). A tool may belong to two families; the router credits BOTH. Family ids are the C/D/E/F skill axis. Data-driven, no contract change. CDN-tunable.",
+  "families": {
+    "vocab": {
+      "copyKey": "skill.vocab",
+      "glyph": "vocab",
+      "tools": [
+        "word-scramble",
+        "picture-match",
+        "fast-translate",
+        "translate-fast",
+        "tap-translation",
+        "memory-pairs",
+        "word-search",
+        "odd-one-out",
+        "category-sort",
+        "speed-drill"
+      ]
+    },
+    "listening": {
+      "copyKey": "skill.listening",
+      "glyph": "listening",
+      "tools": [
+        "listen-choose",
+        "listen-choose-pic",
+        "number-drill",
+        "say-it-back"
+      ]
+    },
+    "speaking": {
+      "copyKey": "skill.speaking",
+      "glyph": "speaking",
+      "tools": [
+        "read-aloud",
+        "pronunciation-duel",
+        "repeat-after"
+      ]
+    },
+    "reading": {
+      "copyKey": "skill.reading",
+      "glyph": "reading",
+      "tools": [
+        "dialogue-fill",
+        "fill-the-blank",
+        "fill-blank",
+        "build-sentence",
+        "spot-typo",
+        "true-false"
+      ]
+    },
+    "grammar": {
+      "copyKey": "skill.grammar",
+      "glyph": "grammar",
+      "tools": [
+        "conjugation-tap",
+        "build-sentence",
+        "dialogue-fill"
+      ]
+    },
+    "sound": {
+      "copyKey": "skill.sound",
+      "glyph": "sound",
+      "tools": [
+        "rhyme-match",
+        "countdown-recall"
+      ]
+    }
+  }
+}

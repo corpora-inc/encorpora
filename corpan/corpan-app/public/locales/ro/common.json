@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Susține Corpán și deblochează totul. Opțional, oricând.",
+      "subscribedTitle": "Ești un Corpanista",
+      "subscribedDesc": "Mulțumim că menții Corpán fără reclame și în creștere.",
       "joinTitle": "Alătură-te Corpanistas",
       "start": "Începe explorarea",
       "subtitle": "Corpán este creat de o mică echipă open-source. Vino să ne saluți — și dacă îți place, ne poți susține.",

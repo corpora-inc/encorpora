@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Palaikykite Corpán ir atrakinkite viską. Neprivaloma, bet kada.",
+      "subscribedTitle": "Jūs esate Corpanista",
+      "subscribedDesc": "Ačiū, kad išlaikote Corpán be reklamų ir padedate jam augti.",
       "joinTitle": "Prisijunkite prie Corpanistas",
       "start": "Pradėti tyrinėti",
       "subtitle": "Corpán kuria maža atvirojo kodo komanda. Ateikite pasisveikinti – ir jei jums patinka, galite mus paremti.",

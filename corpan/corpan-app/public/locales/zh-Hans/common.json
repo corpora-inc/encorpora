@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "支持Corpán并解锁全部内容。可选，随时。",
+      "subscribedTitle": "您是 Corpanista",
+      "subscribedDesc": "感谢您让 Corpán 保持无广告并持续成长。",
       "joinTitle": "加入Corpanistas",
       "start": "开始探索",
       "subtitle": "Corpán由一个小型开源团队制作。来打个招呼吧 — 如果您喜欢它，可以支持我们。",

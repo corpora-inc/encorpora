@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>World Plaza — persona harness</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; }
+      #wp-stage {
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(120% 80% at 50% 18%, #cfe9ef, #bfe0e8 40%, #9fc8c2 100%);
+      }
+      #wp-stage::after {
+        content: "";
+        position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
+        background: linear-gradient(180deg, #e0cda4, #d9c7a3);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wp-stage"></div>
+    <script type="module" src="./persona-mount.ts"></script>
+  </body>
+</html>

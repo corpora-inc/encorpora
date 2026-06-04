@@ -68,3 +68,58 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 // Init analytics AFTER render so the app is interactive first (plan §7 C6).
 // Idempotent; safe if HMR re-runs this module in dev.
 initAnalytics();
+
+// Storage foundation bootstrap (non-blocking, after first paint):
+//   1. Migrate any oversized localStorage blobs (phrase-pack/game catalog)
+//      into the IndexedDB tier. This is the safety net for users upgrading
+//      from a build that persisted those blobs to localStorage and hit the
+//      production `QuotaExceededError`. Idempotent.
+//   2. After migration, re-hydrate the catalog stores so a just-migrated blob
+//      is picked up this session (the stores started their first hydrate from
+//      IndexedDB on import; on a fresh upgrade the blob lands during step 1).
+//   3. Reconcile the on-device analytics ring buffer with the cloud endpoint
+//      (uploads anything the live path dropped while offline).
+void (async () => {
+  try {
+    const { migrateOversizedLocalStorage } = await import(
+      "@/util/storage/migrate"
+    );
+    const migrated = await migrateOversizedLocalStorage();
+    if (migrated > 0) {
+      const [{ usePhrasePackCatalogStore }, { useCatalogStore }] =
+        await Promise.all([
+          import("@/store/phrasePackCatalog"),
+          import("@/store/catalog"),
+        ]);
+      await Promise.allSettled([
+        usePhrasePackCatalogStore.persist?.rehydrate?.(),
+        useCatalogStore.persist?.rehydrate?.(),
+      ]);
+    }
+  } catch (err) {
+    console.error("[main] storage migration failed:", err);
+  }
+  try {
+    const { syncLocalEvents } = await import("@/util/analytics");
+    await syncLocalEvents();
+  } catch (err) {
+    console.error("[main] analytics reconcile failed:", err);
+  }
+  // Harvest any Rust-panic breadcrumb from a prior run into on-device
+  // analytics. A `panic = "abort"` build turns any Rust panic (app or a
+  // statically-linked plugin) into an all-native libc abort() with no Java
+  // frame — the unsymbolicated tombstone we otherwise can't diagnose. The
+  // native hook wrote location/message/thread to disk before aborting; record
+  // it once here, then it's cleared natively. Throws on non-Tauri (web dev) —
+  // swallowed.
+  try {
+    const { invoke } = await import("@tauri-apps/api/core");
+    const report = await invoke<string | null>("take_last_crash_report");
+    if (report) {
+      const { trackEvent } = await import("@/util/analytics");
+      trackEvent("rust_panic", { context: String(report).slice(0, 500) });
+    }
+  } catch (err) {
+    console.error("[main] crash report harvest failed:", err);
+  }
+})();

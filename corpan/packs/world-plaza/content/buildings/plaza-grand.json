@@ -1,0 +1,321 @@
+{
+  "topologyId": "plaza-grand",
+  "generatedBy": "scripts/genMap.mjs",
+  "params": {
+    "size": 240,
+    "seed": 1770,
+    "districts": 7,
+    "print": false,
+    "write": true
+  },
+  "doors": {
+    "door_8": {
+      "kind": "shop",
+      "blockerIndex": 1,
+      "footprint": {
+        "x": -19.12,
+        "z": -14.25,
+        "w": 6.36,
+        "d": 5.45
+      },
+      "face": "x"
+    },
+    "door_10": {
+      "kind": "workshop",
+      "blockerIndex": 2,
+      "footprint": {
+        "x": -19.12,
+        "z": 14.25,
+        "w": 6.75,
+        "d": 5.22
+      },
+      "face": "x"
+    },
+    "door_12": {
+      "kind": "shop",
+      "blockerIndex": 3,
+      "footprint": {
+        "x": 13.38,
+        "z": -18.25,
+        "w": 5.58,
+        "d": 4.69
+      },
+      "face": "z"
+    },
+    "door_14": {
+      "kind": "shop",
+      "blockerIndex": 4,
+      "footprint": {
+        "x": 14.38,
+        "z": 19.25,
+        "w": 7.24,
+        "d": 6.69
+      },
+      "face": "z"
+    },
+    "door_17": {
+      "kind": "house",
+      "blockerIndex": 5,
+      "footprint": {
+        "x": -35,
+        "z": -17.12,
+        "w": 6.8,
+        "d": 4.95
+      },
+      "face": "z"
+    },
+    "door_20": {
+      "kind": "house",
+      "blockerIndex": 6,
+      "footprint": {
+        "x": -35,
+        "z": -7.37,
+        "w": 4.18,
+        "d": 7.14
+      },
+      "face": "z"
+    },
+    "door_22": {
+      "kind": "house",
+      "blockerIndex": 7,
+      "footprint": {
+        "x": -35,
+        "z": 7.38,
+        "w": 6.91,
+        "d": 4.84
+      },
+      "face": "z"
+    },
+    "door_24": {
+      "kind": "shop",
+      "blockerIndex": 8,
+      "footprint": {
+        "x": -35,
+        "z": 17.13,
+        "w": 4.95,
+        "d": 5.2
+      },
+      "face": "z"
+    },
+    "door_27": {
+      "kind": "house",
+      "blockerIndex": 9,
+      "footprint": {
+        "x": -17.12,
+        "z": -35,
+        "w": 4.45,
+        "d": 6.44
+      },
+      "face": "x"
+    },
+    "door_29": {
+      "kind": "shop",
+      "blockerIndex": 10,
+      "footprint": {
+        "x": -7.37,
+        "z": -35,
+        "w": 4.18,
+        "d": 6.31
+      },
+      "face": "x"
+    },
+    "door_32": {
+      "kind": "house",
+      "blockerIndex": 11,
+      "footprint": {
+        "x": -17.12,
+        "z": 35,
+        "w": 4.47,
+        "d": 4.19
+      },
+      "face": "x"
+    },
+    "door_34": {
+      "kind": "workshop",
+      "blockerIndex": 12,
+      "footprint": {
+        "x": -7.37,
+        "z": 35,
+        "w": 5.44,
+        "d": 5.18
+      },
+      "face": "x"
+    },
+    "door_36": {
+      "kind": "shop",
+      "blockerIndex": 13,
+      "footprint": {
+        "x": 7.38,
+        "z": -35,
+        "w": 7.45,
+        "d": 4.57
+      },
+      "face": "x"
+    },
+    "door_38": {
+      "kind": "house",
+      "blockerIndex": 14,
+      "footprint": {
+        "x": 17.13,
+        "z": -35,
+        "w": 7.18,
+        "d": 5.11
+      },
+      "face": "x"
+    },
+    "door_40": {
+      "kind": "workshop",
+      "blockerIndex": 15,
+      "footprint": {
+        "x": 7.38,
+        "z": 35,
+        "w": 4.33,
+        "d": 4.31
+      },
+      "face": "x"
+    },
+    "door_43": {
+      "kind": "house",
+      "blockerIndex": 16,
+      "footprint": {
+        "x": 17.13,
+        "z": 35,
+        "w": 3.91,
+        "d": 6.66
+      },
+      "face": "x"
+    },
+    "door_45": {
+      "kind": "shop",
+      "blockerIndex": 17,
+      "footprint": {
+        "x": 35,
+        "z": -17.12,
+        "w": 6.35,
+        "d": 7.11
+      },
+      "face": "z"
+    },
+    "door_47": {
+      "kind": "inn",
+      "blockerIndex": 18,
+      "footprint": {
+        "x": 35,
+        "z": -7.37,
+        "w": 5.77,
+        "d": 4.74
+      },
+      "face": "z"
+    },
+    "door_48": {
+      "kind": "chapel",
+      "blockerIndex": 19,
+      "footprint": {
+        "x": 35,
+        "z": 7.38,
+        "w": 6.34,
+        "d": 6.64
+      },
+      "face": "z"
+    },
+    "door_50": {
+      "kind": "house",
+      "blockerIndex": 20,
+      "footprint": {
+        "x": 35,
+        "z": 17.13,
+        "w": 5.78,
+        "d": 4.48
+      },
+      "face": "z"
+    },
+    "door_52": {
+      "kind": "workshop",
+      "blockerIndex": 21,
+      "footprint": {
+        "x": -39,
+        "z": -35,
+        "w": 6,
+        "d": 4.64
+      },
+      "face": "x"
+    },
+    "door_55": {
+      "kind": "chapel",
+      "blockerIndex": 22,
+      "footprint": {
+        "x": -31,
+        "z": -35,
+        "w": 6,
+        "d": 4.96
+      },
+      "face": "x"
+    },
+    "door_57": {
+      "kind": "market-hall",
+      "blockerIndex": 23,
+      "footprint": {
+        "x": -39,
+        "z": 35,
+        "w": 6,
+        "d": 6.13
+      },
+      "face": "x"
+    },
+    "door_60": {
+      "kind": "house",
+      "blockerIndex": 24,
+      "footprint": {
+        "x": -31,
+        "z": 35,
+        "w": 5.76,
+        "d": 5.06
+      },
+      "face": "x"
+    },
+    "door_61": {
+      "kind": "shop",
+      "blockerIndex": 25,
+      "footprint": {
+        "x": 31,
+        "z": -35,
+        "w": 5.08,
+        "d": 5.62
+      },
+      "face": "x"
+    },
+    "door_63": {
+      "kind": "workshop",
+      "blockerIndex": 26,
+      "footprint": {
+        "x": 39,
+        "z": -35,
+        "w": 3.94,
+        "d": 4.37
+      },
+      "face": "x"
+    },
+    "door_66": {
+      "kind": "workshop",
+      "blockerIndex": 27,
+      "footprint": {
+        "x": 31,
+        "z": 35,
+        "w": 6,
+        "d": 6.96
+      },
+      "face": "x"
+    },
+    "door_68": {
+      "kind": "house",
+      "blockerIndex": 28,
+      "footprint": {
+        "x": 39,
+        "z": 35,
+        "w": 6,
+        "d": 6.42
+      },
+      "face": "x"
+    }
+  }
+}

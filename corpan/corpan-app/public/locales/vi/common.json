@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Hỗ trợ Corpán và mở khóa mọi thứ. Tùy chọn, bất cứ lúc nào.",
+      "subscribedTitle": "Bạn là một Corpanista",
+      "subscribedDesc": "Cảm ơn bạn đã giúp Corpán không có quảng cáo và ngày càng phát triển.",
       "joinTitle": "Tham gia Corpanistas",
       "start": "Bắt đầu khám phá",
       "subtitle": "Corpán được tạo ra bởi một nhóm mã nguồn mở nhỏ. Hãy ghé thăm — và nếu bạn yêu thích, bạn có thể ủng hộ chúng tôi.",

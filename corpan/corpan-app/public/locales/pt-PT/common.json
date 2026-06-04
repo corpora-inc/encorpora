@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Apoie o Corpán e desbloqueie tudo. Opcional, a qualquer momento.",
+      "subscribedTitle": "É um Corpanista",
+      "subscribedDesc": "Obrigado por manter o Corpán sem anúncios e em crescimento.",
       "joinTitle": "Junte-se aos Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "O Corpán é feito por uma pequena equipa de código aberto. Venha dizer olá — e se gostar, pode apoiar-nos.",

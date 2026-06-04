@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Saidia Corpán na ufungue kila kitu. Si lazima, wakati wowote.",
+      "subscribedTitle": "Wewe ni Corpanista",
+      "subscribedDesc": "Asante kwa kuiweka Corpán bila matangazo na ikikua.",
       "joinTitle": "Jiunge na Corpanistas",
       "start": "Anza kuchunguza",
       "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",

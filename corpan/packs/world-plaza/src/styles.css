@@ -1,0 +1,756 @@
+/* =====================================================================
+ * World Plaza — z-index scale (single source of truth).
+ *
+ * ONE BAND now. Everything — including the shell's menu, menu button, and exit
+ * confirm — lives INSIDE `.wp-overlay` (which is `z-index:10`,
+ * `position:absolute` → it forms a STACKING CONTEXT). That overlay is the
+ * surface the Corpán host actually paints; it is the host's accepted render
+ * surface. So all UI is mounted into it and competes only with its siblings:
+ *
+ *    vignette 5 · overlay 10 · hud 11 · prompt 15 · talk 16 · joystick 20/21
+ *    · perf-hud 30 · dialogue 40 · onboarding 50 · challenge/shop 60
+ *    · menu-button 65 · menu panel 70 · exit confirm 80   ← shell chrome (M0)
+ *
+ * WHY (M0 fix — do NOT re-introduce the old "Band B"): the retired pause modal,
+ * menu button, and confirm were mounted on `document.body` at near-int32-max
+ * z-index. `z-index` only orders siblings WITHIN the same stacking context. When
+ * Corpán embeds the pack, `ContentPackHost`'s container forms its own stacking
+ * context and clips with overflow/transform/contain — so a body-appended
+ * `position:fixed` modal is laid out / clipped relative to the host container,
+ * NOT the visual viewport. The z=2.1-billion modal then painted INSIDE the
+ * host's clip region → effectively invisible, and the owner could not exit. The
+ * HUD/dialogue/challenge overlays always rendered fine because they live in
+ * `.wp-overlay`. The cure is structural: mount the shell chrome in `.wp-overlay`
+ * too — NEVER "raise the z-index". If the menu shows in standalone but not
+ * embedded, a body-append / fixed-to-viewport assumption has crept back in.
+ *
+ * Literal fallbacks in each rule keep the order if a var is ever missing.
+ * ===================================================================== */
+:root {
+  /* In-world band — children of `.wp-overlay` (the host-painted surface). */
+  --wp-z-vignette: 5;
+  --wp-z-overlay: 10;
+  --wp-z-hud: 11;
+  /* TOP HUD (consolidated, two anchors) — TOP_HUD §4.4. The center title pill +
+   * the standalone coin/XP HUD are RETIRED, so the band is just the LEFT Status
+   * Capsule + the RIGHT Place Tag (+ the capsule's expanded detail card). */
+  --wp-z-placetag: 11; /* RIGHT place tag (reuses the old --wp-z-hud slot) */
+  --wp-z-tracker: 12; /* legacy alias for the capsule's slot (kept for the CSS) */
+  --wp-z-status: 12; /* LEFT Status Capsule */
+  --wp-z-status-detail: 13; /* the capsule's expanded card — just above the capsule */
+  --wp-z-prompt: 15;
+  --wp-z-talk: 16;
+  --wp-z-perf: 30;
+  --wp-z-dialogue: 40;
+  --wp-z-onboarding: 50;
+  --wp-z-encounter: 60;
+  /* Shell chrome — TOP of the in-overlay band (still inside `.wp-overlay`). */
+  --wp-z-menu-button: 38; /* the "pack" button: above world/HUD, but UNDER the NPC
+                             dialogue (40) + challenge (60) + menu (70). It is ALSO
+                             hidden by the chrome visibility state machine during
+                             dialogue/challenge/menu, so the old "pack beside the
+                             NPC window" overlap is gone (not painted at all there). */
+  --wp-z-pack: 38; /* alias for the pack button */
+  --wp-z-menu: 70; /* the unified menu panel */
+  --wp-z-confirm: 80; /* exit confirm — the very top, above the menu */
+
+  /* Corner-FAB geometry. The bottom corners are split: the "pack" satchel owns
+   * bottom-LEFT, the minimap owns bottom-RIGHT — so the two can never overlap.
+   * One shared inset keeps both corners visually balanced. */
+  --wp-fab-inset: 14px; /* shared inset for the bottom corner FABs */
+}
+
+.wp-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #bfe0e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.wp-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  display: block;
+  touch-action: none;
+}
+.wp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+/* Screen-space vignette: fixed to the viewport between the canvas (no z-index)
+ * and the UI overlay (z-index 10). It is part of the DOM layer, NOT the 3D
+ * scene, so it is physically incapable of drifting toward center when the
+ * camera/character moves. Subtle warm darkening at the edges only. */
+.wp-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 78% 78% at 50% 50%,
+    transparent 52%,
+    rgba(28, 17, 7, 0.34) 100%
+  );
+}
+
+/* The centered `.wp-title` pill is RETIRED (TOP_HUD §0): the scene name moved out
+ * of the center into the demoted RIGHT Place Tag (`src/shell/placeTag.ts`). The
+ * center is now intentionally empty — the toast/level-up bloom zone. */
+
+/* ---- bottom hint ---- */
+.wp-hint {
+  position: absolute;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(92%, 560px);
+  color: rgba(20, 50, 63, 0.72);
+  font-size: clamp(11px, 0.6vw + 9px, 13px);
+  line-height: 1.4;
+  pointer-events: none;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* The top-right `.wp-coinhud` (the old `🪙 N ✨ N` readout) is RETIRED (TOP_HUD
+ * §0): coins live in the pack's Inventory (Wallet) tab now, and the XP integer
+ * became the focus-badge glance inside the Status Capsule's expanded card. */
+
+/* ---- toast ---- */
+.wp-toast {
+  position: absolute;
+  top: calc(46px + env(safe-area-inset-top, 0px));
+  left: 50%;
+  transform: translate(-50%, -8px);
+  max-width: min(80%, 520px);
+  padding: clamp(9px, 1vw, 12px) clamp(14px, 2vw, 20px);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1a2b34;
+  font-size: clamp(15px, 0.7vw + 13px, 18px);
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(20, 50, 63, 0.18);
+  opacity: 0;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+  pointer-events: none;
+}
+.wp-toast--in {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---- proximity prompt (speech-bubble nub over an NPC) ---- */
+.wp-prompt {
+  position: absolute;
+  z-index: 15;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1;
+  padding: 6px 9px;
+  border-radius: 14px 14px 14px 4px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 16px rgba(20, 50, 63, 0.22);
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  animation: wp-bob 0.9s ease-in-out infinite alternate;
+}
+@keyframes wp-bob {
+  from {
+    transform: translate(-50%, -100%);
+  }
+  to {
+    transform: translate(-50%, -128%);
+  }
+}
+
+/* ---- Talk button ---- */
+.wp-interact {
+  position: absolute;
+  z-index: 16;
+  bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px clamp(24px, 3vw, 32px);
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffd66b, #f0a83c);
+  color: #4a2c0a;
+  font: 700 clamp(15px, 0.7vw + 13px, 18px) / 1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 22px rgba(180, 120, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  pointer-events: auto;
+  cursor: pointer;
+  animation: wp-interact-pulse 1.3s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.wp-interact:active {
+  transform: translateX(-50%) scale(0.95);
+}
+.wp-interact-ico {
+  font-size: 1.15em;
+}
+@keyframes wp-interact-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 22px rgba(180, 120, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(240, 168, 60, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* ---- perf HUD (benchmark-only; offset from the notch when shown) ---- */
+.wp-perf-hud {
+  top: calc(6px + env(safe-area-inset-top, 0px)) !important;
+  left: calc(6px + env(safe-area-inset-left, 0px)) !important;
+}
+
+/* Desktop / fine-pointer affordances. */
+@media (hover: hover) and (pointer: fine) {
+  .wp-interact {
+    transition: transform 0.12s ease, filter 0.16s ease;
+  }
+  .wp-interact:hover {
+    filter: brightness(1.05);
+  }
+}
+
+/* Roomier tap targets on phones. */
+@media (max-width: 540px) {
+  .wp-interact {
+    min-height: 52px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-prompt,
+  .wp-interact {
+    animation: none;
+  }
+  .wp-toast {
+    transition: opacity 0.2s ease;
+  }
+}
+
+/* =====================================================================
+ * Shell chrome — the always-visible menu button + the unified menu panel.
+ * Both mount INSIDE `.wp-overlay` (M0 fix), so they are `position:absolute`
+ * (NOT fixed) and live at the TOP of the in-overlay band. Warm Antigua palette,
+ * understated/elegant. Compositor-only transitions (opacity/transform from
+ * frame 0 → no layout jank).
+ * ===================================================================== */
+
+/* ---- always-visible menu button (top-left) ---- */
+.wp-menu-button {
+  --wp-menu-accent: #c46b4a;
+  position: absolute;
+  /* Bottom-LEFT corner: this is the "pack" — your stuff/progress/quests, not a
+   * pause. It gets its own clean corner so it can never overlap the minimap
+   * (which owns the bottom-RIGHT corner). Out of the title (top) + HUD
+   * (top-right) + quest tracker (top-left). The move-stick shares the left half,
+   * but this is a discrete tap target that stops the pointer (see menuButton.ts)
+   * so a press here opens the pack instead of spawning a stick. */
+  bottom: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-bottom, 0px));
+  left: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-left, 0px));
+  color: var(--wp-menu-accent);
+  z-index: var(--wp-z-menu-button, 65);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  background: rgba(247, 239, 224, 0.82);
+  -webkit-backdrop-filter: blur(6px) saturate(1.05);
+  backdrop-filter: blur(6px) saturate(1.05);
+  box-shadow: 0 4px 14px rgba(58, 47, 37, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.15s ease;
+}
+.wp-menu-button--in {
+  opacity: 1;
+  transform: scale(1);
+}
+/* The chrome visibility state machine (TOP_HUD §4) governs the pack button like
+ * the rest of the chrome: it DIMS while an NPC is focused (Talk showing) so it's
+ * clearly secondary, and fully RECEDES during dialogue/challenge/menu (fixing the
+ * old pack-button-over-NPC-window overlap — it's not painted at all there). */
+.wp-menu-button[data-wp-chrome="dim"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.wp-menu-button[data-wp-chrome="hidden"] {
+  opacity: 0 !important;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+/* The "pack" satchel glyph — a traveler's bag = your stuff/progress/map. */
+.wp-menu-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--wp-menu-accent);
+}
+.wp-menu-button:active { transform: scale(0.92); }
+.wp-menu-button:focus-visible { outline: 2px solid var(--wp-menu-accent); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .wp-menu-button:hover { background: rgba(247, 239, 224, 0.96); }
+}
+/* Bigger touch target on phones (no precise pointer). */
+@media (hover: none) {
+  .wp-menu-button { width: 50px; height: 50px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-menu-button { transition: opacity 0.16s ease; transform: none; }
+  .wp-menu-button--in { transform: none; }
+}
+
+/* ---- the unified menu panel ---- */
+.wp-menu {
+  --wp-menu-accent: #c46b4a;
+  position: absolute;
+  inset: 0;
+  z-index: var(--wp-z-menu, 70);
+  /* FLEX centering, NOT grid place-items:center. A percentage height on the panel
+   * (`height: min(620px, calc(100% - 40px))`) does NOT resolve through a grid's
+   * auto-sized centered row — it silently falls back to CONTENT height, so the
+   * panel resized + recentered between tabs (the "All vs Recent jumps" bug). A
+   * flex container with a definite height (this is inset:0) resolves the panel's
+   * percentage height correctly, so the dialog is a truly fixed frame. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color: #3a2f25;
+}
+.wp-menu-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(130% 100% at 50% 45%, rgba(28, 20, 12, 0.5), rgba(28, 20, 12, 0.28));
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  pointer-events: auto;
+}
+.wp-menu.wp-menu--open .wp-menu-scrim { opacity: 1; }
+.wp-menu-panel {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, calc(100% - 40px));
+  /* FIXED height (was max-height): the dialog is sized to the screen ONCE and
+   * stays put — switching Map/Inventory/Quest (or In Progress/Recent/All) can no
+   * longer resize it or shift its centered position. The `.wp-menu-body` is the
+   * single internal scroll region, so a tall "All" list scrolls inside a stable
+   * frame and the footer (Resume / Leave) is always reachable. */
+  height: min(620px, calc(100% - 40px));
+  /* min-height:0 + overflow:hidden: as a flex item the panel must not grow past
+   * its fixed height to fit a tall list (the body scrolls instead), and content
+   * clips cleanly to the rounded frame. */
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 22px 22px 18px;
+  background: linear-gradient(180deg, #f7efe0, #efe3cd);
+  border-radius: 26px;
+  box-shadow: 0 24px 64px rgba(58, 47, 37, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transform: scale(0.94) translateY(10px);
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+.wp-menu.wp-menu--open .wp-menu-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.wp-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.wp-menu-title {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.01em;
+}
+.wp-menu-close {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 12px;
+  background: rgba(122, 106, 85, 0.14);
+  color: #6a5a45;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.wp-menu-close:hover { background: rgba(122, 106, 85, 0.24); }
+.wp-menu-close:active { transform: scale(0.94); }
+.wp-menu-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 4px;
+  border-radius: 14px;
+  background: rgba(122, 106, 85, 0.1);
+}
+.wp-menu-tab {
+  flex: 1 1 0;
+  min-height: 38px;
+  border: none;
+  border-radius: 11px;
+  background: transparent;
+  color: #7a6a55;
+  font: 700 14px/1 inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.wp-menu-tab--on {
+  background: rgba(255, 255, 255, 0.85);
+  color: #3a2f25;
+  box-shadow: 0 2px 8px rgba(58, 47, 37, 0.12);
+}
+.wp-menu-tab:hover:not(.wp-menu-tab--on) { color: #5a4c3a; }
+.wp-menu-body {
+  flex: 1 1 auto;
+  /* min-height:0 lets this flex child shrink below its content so it (not the
+   * panel) scrolls — the panel height is now fixed, so the body fills whatever
+   * space is left and scrolls the overflow. */
+  min-height: 0;
+  margin-top: 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.wp-menu-coming {
+  display: grid;
+  place-items: center;
+  min-height: 132px;
+  color: #9b8a72;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+.wp-menu-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+.wp-menu-foot button {
+  min-height: 50px;
+  border: none;
+  border-radius: 16px;
+  font: 700 16px/1 inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, filter 0.15s ease, background 0.15s ease;
+}
+.wp-menu-resume {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--wp-menu-accent) 82%, white), var(--wp-menu-accent));
+  color: #fff7f0;
+  box-shadow: 0 6px 18px rgba(196, 107, 74, 0.42);
+}
+.wp-menu-resume:hover { filter: brightness(1.05); }
+.wp-menu-leave {
+  background: rgba(122, 106, 85, 0.16);
+  color: #4a3c2e;
+}
+.wp-menu-leave:hover { background: rgba(122, 106, 85, 0.26); }
+.wp-menu-foot button:active { transform: scale(0.97); }
+.wp-menu-foot button:focus-visible { outline: 2px solid var(--wp-menu-accent); outline-offset: 2px; }
+
+@media (hover: none) {
+  .wp-menu-leave:hover { background: rgba(122, 106, 85, 0.16); }
+  .wp-menu-resume:hover { filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-menu-scrim, .wp-menu-panel { transition: opacity 0.18s ease; }
+  .wp-menu-panel, .wp-menu.wp-menu--open .wp-menu-panel { transform: none; }
+}
+
+/* =====================================================================
+ * TOP HUD (consolidated) — the LEFT Status Capsule (`.wp-status*`) and the RIGHT
+ * Place Tag (`.wp-placetag*`) self-inject their own scoped styles from their
+ * modules (`src/quest/questTracker.ts`, `src/shell/placeTag.ts`), keyed to the
+ * z-scale vars above. The old `.wp-tracker*` block (the pre-consolidation quest
+ * tracker) is RETIRED — the capsule supersedes it. One coherent warm-Antigua
+ * theme, one expandable left anchor, one demoted right tag, the center freed.
+ * ===================================================================== */
+
+/* =====================================================================
+ * ROOMY MENU on big screens (TOP_HUD: tablet + desktop first-class) — the menu
+ * panel + its section bodies GROW big and roomy on tablet/desktop instead of a
+ * tiny fixed box. Premium spacing; phone keeps the snug sheet.
+ * ===================================================================== */
+@media (min-width: 700px) {
+  .wp-menu-panel {
+    width: min(680px, calc(100% - 64px));
+    height: min(820px, calc(100% - 64px));
+    padding: 30px 32px 26px;
+    border-radius: 30px;
+  }
+  .wp-menu-title { font-size: 26px; }
+  .wp-menu-body { min-height: 0; margin-top: 22px; }
+  .wp-menu-tabs { margin-top: 22px; }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 1100px) {
+  .wp-menu-panel {
+    width: min(820px, calc(100% - 96px));
+    height: min(880px, calc(100% - 80px));
+    padding: 36px 40px 30px;
+  }
+  .wp-menu-body { min-height: 0; }
+}
+
+/* =====================================================================
+ * Inventory section (`src/inventory/inventoryPanel.ts`) — the multi-currency
+ * wallet shown PROPERLY: each held currency as its premium IconRenderer glyph +
+ * NAME ("Reales") + grouped total ("R 18.40"), plus owned items + a badges
+ * summary. Reuses the warm-Antigua paper-cutout language of the menu/shop.
+ * ===================================================================== */
+.wp-inv {
+  --wp-inv-accent: #c46b4a;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: #3a2f25;
+}
+.wp-inv-block { display: flex; flex-direction: column; gap: 10px; }
+.wp-inv-heading {
+  font: 800 12px/1 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a8868;
+}
+.wp-inv-empty {
+  font-size: 13.5px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #9b8a72;
+}
+.wp-inv-currencies { display: flex; flex-direction: column; gap: 8px; }
+.wp-inv-currency {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(247, 238, 222, 0.5));
+  border: 1px solid rgba(120, 100, 70, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 6px rgba(58, 47, 37, 0.1);
+}
+.wp-inv-currency-icon { flex: 0 0 auto; display: block; image-rendering: auto; }
+.wp-inv-currency-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.wp-inv-currency-name {
+  font: 700 14.5px/1.2 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #2e261d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wp-inv-currency-amount {
+  font: 800 16px/1.1 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: var(--wp-inv-accent);
+  font-variant-numeric: tabular-nums;
+}
+.wp-inv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
+}
+.wp-inv-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px 10px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(247, 238, 222, 0.45));
+  border: 1px solid rgba(120, 100, 70, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 6px rgba(58, 47, 37, 0.1);
+}
+.wp-inv-cell-face {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--wp-inv-accent) 16%, #f3e8d6);
+  color: var(--wp-inv-accent);
+  font: 800 20px/1 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+}
+.wp-inv-cell-name {
+  font: 600 11.5px/1.2 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #4a3c2e;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.wp-inv-cell-qty {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: var(--wp-inv-accent);
+  color: #fff7f0;
+  font: 800 11px/1.3 ui-rounded, system-ui, sans-serif;
+}
+.wp-inv-badges-line {
+  font: 600 14px/1.3 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #4a3c2e;
+}
+.wp-inv-link {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--wp-inv-accent) 16%, transparent);
+  color: var(--wp-inv-accent);
+  font: 700 13px/1 inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 40px;
+}
+.wp-inv-link:hover { background: color-mix(in srgb, var(--wp-inv-accent) 24%, transparent); }
+.wp-inv-link:focus-visible { outline: 2px solid var(--wp-inv-accent); outline-offset: 2px; }
+
+/* Roomier on big screens. */
+@media (min-width: 700px) {
+  .wp-inv { gap: 24px; }
+  .wp-inv-currency { padding: 14px 16px; }
+  .wp-inv-currency-name { font-size: 16px; }
+  .wp-inv-currency-amount { font-size: 18px; }
+  .wp-inv-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+}
+
+/* =====================================================================
+ * Quest section (`src/quest/questSection.ts`) — the full quest detail: title +
+ * narrative, the live objective + "what next", a progress bar + the step list.
+ * The capsule is the glance; this is the ledger.
+ * ===================================================================== */
+.wp-quest {
+  --wp-quest-accent: #c46b4a;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #3a2f25;
+}
+.wp-quest-title {
+  font: 800 18px/1.2 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #2e261d;
+}
+.wp-quest-narrative {
+  font: 400 13.5px/1.45 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  font-style: italic;
+  color: #7a6a52;
+}
+.wp-quest-block { display: flex; flex-direction: column; gap: 8px; }
+.wp-quest-heading {
+  font: 800 12px/1 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a8868;
+}
+.wp-quest-objective {
+  font: 700 16px/1.3 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #2e261d;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.wp-quest-objective::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--wp-quest-accent);
+  align-self: center;
+}
+.wp-quest-objective--complete::before { background: #5a8a4a; }
+.wp-quest-hint {
+  font: 500 13.5px/1.4 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #7a6a52;
+}
+.wp-quest-progress {
+  font: 700 11px/1 ui-rounded, system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9a8868;
+}
+.wp-quest-bar {
+  height: 7px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(120, 100, 70, 0.18);
+}
+.wp-quest-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--wp-quest-accent);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wp-quest-steps { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.wp-quest-step {
+  position: relative;
+  padding-left: 22px;
+  font: 500 14px/1.4 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+  color: #7a6a52;
+}
+.wp-quest-step::before {
+  content: "○";
+  position: absolute;
+  left: 0;
+  color: #b7a888;
+  font-size: 13px;
+}
+.wp-quest-step--done { color: #5a8a4a; text-decoration: line-through; text-decoration-color: rgba(90, 138, 74, 0.5); }
+.wp-quest-step--done::before { content: "✓"; color: #5a8a4a; }
+.wp-quest-step--active { color: #2e261d; font-weight: 700; }
+.wp-quest-step--active::before { content: "●"; color: var(--wp-quest-accent); }
+
+@media (min-width: 700px) {
+  .wp-quest { gap: 22px; }
+  .wp-quest-title { font-size: 22px; }
+  .wp-quest-narrative { font-size: 15px; }
+  .wp-quest-objective { font-size: 18px; }
+  .wp-quest-step { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-quest-bar-fill { transition: none; }
+}

@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Dona suport a Corpán i desbloqueja-ho tot. Opcional, en qualsevol moment.",
+      "subscribedTitle": "Ets un Corpanista",
+      "subscribedDesc": "Gràcies per mantenir Corpán sense anuncis i en creixement.",
       "joinTitle": "Uneix-te als Corpanistas",
       "start": "Comença a explorar",
       "subtitle": "Corpán és creat per un petit equip de codi obert. Saluda'ns — i si t'encanta, pots donar-nos suport.",

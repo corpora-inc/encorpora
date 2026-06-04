@@ -2,6 +2,9 @@ import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
+import { getVoicesCached } from "@/util/tts-voices"
+import { createVoiceTTS } from "@/util/speak"
+import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useRatingStore } from "@/store/rating"
@@ -356,7 +359,23 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     getStatus: async () => {
       try {
-        return await invoke<SttStatus>("plugin:stt|get_status")
+        const status = await invoke<SttStatus>("plugin:stt|get_status")
+        if (status.priorInitCrash) {
+          // A previous on-device whisper init never returned — an
+          // uncatchable native SIGSEGV/abort in ggml model load. The plugin
+          // wrote a breadcrumb before the crash and held it across the
+          // restart; record it ONCE into on-device analytics so the failure
+          // is actually harvested (we can't pull logcat from a random user's
+          // device). The native field is cleared by this same getStatus call.
+          try {
+            trackEvent("stt_init_crash", {
+              context: String(status.priorInitCrash).slice(0, 500),
+            })
+          } catch (e) {
+            console.error("[stt] failed to record prior init crash:", e)
+          }
+        }
+        return status
       } catch (error) {
         console.error("[stt] get_status error:", error)
         return {
@@ -555,6 +574,30 @@ export const createHostApi = (packId?: string): HostApi => {
       return await speakConcurrent(uiCode, text)
     },
     stopSpeech,
+    // Voice enumeration + voice-pinned speak — the mechanism a pack uses to give
+    // each NPC ONE sticky, gender-matched voice. Both reuse the SAME machinery the
+    // app's own per-language `voicePrefs` already run on (native voices with gender
+    // via `getVoicesCached`; `createVoiceTTS(uiCode)(text, rate, voiceId)` speaks a
+    // specific voice on native + browser), so there is no new native work.
+    listVoices: async (uiCode?: string) => {
+      const all = await getVoicesCached({ maxAgeMs: 30_000 })
+      const base = (uiCode ?? "").toLowerCase().split("-")[0]
+      const matched = base
+        ? all.filter((v) => (v.language ?? "").toLowerCase().split("-")[0] === base)
+        : all
+      const list = matched.length > 0 ? matched : all
+      return list.map((v) => ({
+        id: v.id,
+        name: v.name ?? undefined,
+        language: v.language,
+        gender: v.gender ?? "unspecified",
+      }))
+    },
+    speakVoice: async (uiCode: string, text: string, voiceId: string) => {
+      if (disposed) return
+      const { rate } = useSettingsStore.getState()
+      await createVoiceTTS(uiCode)(text, rate, voiceId)
+    },
     // Native clipboard via tauri-plugin-clipboard-manager — the web
     // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),
     // so packs route copy through here.

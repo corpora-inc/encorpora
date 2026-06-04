@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Unterstütze Corpán und schalte alles frei. Optional, jederzeit.",
+      "subscribedTitle": "Du bist ein Corpanista",
+      "subscribedDesc": "Danke, dass du Corpán werbefrei hältst und sein Wachstum förderst.",
       "joinTitle": "Werde Teil der Corpanistas",
       "start": "Erkundung starten",
       "subtitle": "Corpán wird von einem kleinen Open-Source-Team entwickelt. Sag Hallo – und wenn es dir gefällt, kannst du uns unterstützen.",

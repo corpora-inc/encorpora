@@ -1,15 +1,16 @@
 {
   "name": "corpan",
   "private": true,
-  "version": "0.16.1",
+  "version": "0.16.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run check:i18n && tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
     "tailwind:init": "tailwindcss init -p",
     "tsc": "tsc --noEmit",
+    "check:i18n": "node scripts/check-i18n.mjs",
     "ios:redeploy": "npm run tauri ios dev",
     "dev:console-server": "node ../scripts/dev/console-server.js",
     "dev:tail": "bash ../scripts/dev/tail-device-log.sh",

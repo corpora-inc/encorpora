@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Steun Corpán en ontgrendel alles. Optioneel, op elk moment.",
+      "subscribedTitle": "Je bent een Corpanista",
+      "subscribedDesc": "Bedankt dat je Corpán advertentievrij en groeiend houdt.",
       "joinTitle": "Word lid van de Corpanistas",
       "start": "Begin met verkennen",
       "subtitle": "Corpán is gemaakt door een klein open-source team. Zeg hallo — en als je het geweldig vindt, kun je ons steunen.",

@@ -1,0 +1,307 @@
+/* World Plaza exchange + market floor — in-.wp-overlay (absolute inset:0, never
+   document.body — the M0 lesson). Paper-ledger aesthetic, mobile-first.
+   Compositor-only open/close. Calm deltas, NO red FOMO (no-dark-patterns rule).
+   Every selector scoped .wp-econ-*. */
+
+.wp-econ {
+  position: absolute;
+  inset: 0;
+  z-index: 62;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: ui-rounded, "SF Pro Rounded", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #3a2a1c;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.wp-econ--in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wp-econ-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(60, 40, 20, 0.28), rgba(40, 26, 14, 0.5));
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.wp-econ-sheet {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: min(90vh, 820px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px 20px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(180deg, #fbf2e0, #f1e2c8);
+  border: 1px solid rgba(120, 86, 44, 0.3);
+  border-bottom: none;
+  box-shadow: 0 -10px 40px rgba(60, 40, 20, 0.3);
+  transform: translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+  overflow: hidden;
+}
+.wp-econ--in .wp-econ-sheet {
+  transform: translateY(0);
+}
+
+.wp-econ-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.wp-econ-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #4a3420;
+}
+.wp-econ-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(120, 86, 44, 0.16);
+  color: #5a4426;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wp-econ-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.wp-econ-tab {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 12px;
+  background: rgba(120, 86, 44, 0.12);
+  color: #6a4f2c;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.wp-econ-tab--on {
+  background: #8a5a2a;
+  color: #fff7ea;
+}
+
+.wp-econ-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---- ticker ---- */
+.wp-econ-ticker {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 2px 12px;
+  scrollbar-width: none;
+}
+.wp-econ-ticker::-webkit-scrollbar {
+  display: none;
+}
+.wp-econ-tickrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(120, 86, 44, 0.2);
+}
+.wp-econ-tick-icon {
+  width: 26px;
+  height: 26px;
+}
+.wp-econ-tick-name {
+  font-weight: 700;
+  font-size: 13px;
+}
+.wp-econ-tick-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 13px;
+}
+.wp-econ-delta {
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.wp-econ-delta--up {
+  color: #2f7a4a;
+}
+.wp-econ-delta--down {
+  color: #9a6a3a;
+}
+.wp-econ-spark {
+  display: block;
+  width: 56px;
+  height: 22px;
+}
+
+.wp-econ-headline {
+  margin: 4px 0 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(190, 150, 90, 0.18);
+  font-size: 13px;
+  font-weight: 600;
+  color: #6a4f2c;
+}
+
+/* ---- good / currency rows ---- */
+.wp-econ-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wp-econ-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(120, 86, 44, 0.18);
+}
+.wp-econ-row-name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 14px;
+}
+.wp-econ-row-sub {
+  font-size: 11px;
+  color: #8a6a3a;
+  font-weight: 600;
+}
+.wp-econ-row-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.wp-econ-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  background: #8a5a2a;
+  color: #fff7ea;
+}
+.wp-econ-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.wp-econ-btn--ghost {
+  background: rgba(120, 86, 44, 0.16);
+  color: #5a4426;
+}
+
+/* ---- exchange give/get ---- */
+.wp-econ-fx {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wp-econ-fx-pane {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(120, 86, 44, 0.2);
+}
+.wp-econ-fx-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8a6a3a;
+}
+.wp-econ-select {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 86, 44, 0.3);
+  background: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  color: #4a3420;
+}
+.wp-econ-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wp-econ-step {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(120, 86, 44, 0.16);
+  font-size: 18px;
+  font-weight: 800;
+  color: #5a4426;
+  cursor: pointer;
+}
+.wp-econ-amount {
+  min-width: 64px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 16px;
+}
+.wp-econ-rateline {
+  text-align: center;
+  font-size: 12px;
+  color: #6a4f2c;
+  font-weight: 600;
+}
+.wp-econ-get {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: #2f7a4a;
+  font-variant-numeric: tabular-nums;
+}
+
+.wp-econ-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%) translateY(10px);
+  background: #4a3420;
+  color: #fff7ea;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.wp-econ-toast--show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.wp-econ-empty {
+  text-align: center;
+  padding: 24px;
+  color: #8a6a3a;
+  font-weight: 600;
+}

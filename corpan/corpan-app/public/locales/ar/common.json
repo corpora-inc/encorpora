@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "ادعم Corpán وافتح كل شيء. اختياري، في أي وقت.",
+      "subscribedTitle": "أنت Corpanista",
+      "subscribedDesc": "شكرًا لك على إبقاء Corpán خاليًا من الإعلانات وداعمًا لنموه.",
       "joinTitle": "انضم إلى Corpanistas",
       "start": "ابدأ الاستكشاف",
       "subtitle": "Corpán تم تطويره بواسطة فريق صغير مفتوح المصدر. تعال وقل مرحباً — وإذا أحببته، يمكنك دعمنا.",

@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Támogasd a Corpánt és oldj fel mindent. Opcionális, bármikor.",
+      "subscribedTitle": "Corpanista vagy",
+      "subscribedDesc": "Köszönjük, hogy hirdetésmentesen tartod a Corpán-t, és segíted a fejlődését.",
       "joinTitle": "Csatlakozz a Corpanistas-hoz",
       "start": "Kezdd el a felfedezést",
       "subtitle": "A Corpánt egy apró, nyílt forráskódú csapat készíti. Gyere, köszönj be – és ha szereted, támogathatsz minket.",

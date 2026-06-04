@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Podprite Corpán in odklenite vse. Neobvezno, kadarkoli.",
+      "subscribedTitle": "Ste Corpanista",
+      "subscribedDesc": "Hvala, ker ohranjate Corpán brez oglasov in mu pomagate rasti.",
       "joinTitle": "Join the Corpanistas",
       "start": "Začnite raziskovati",
       "subtitle": "Corpán je ustvarila majhna ekipa odprtokodnih razvijalcev. Pozdravite nas — in če vam je všeč, nas lahko podprete.",

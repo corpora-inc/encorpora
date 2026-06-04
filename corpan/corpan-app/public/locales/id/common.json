@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Dukung Corpán dan buka semua fitur. Opsional, kapan saja.",
+      "subscribedTitle": "Anda seorang Corpanista",
+      "subscribedDesc": "Terima kasih telah menjaga Corpán tetap bebas iklan dan terus berkembang.",
       "joinTitle": "Join the Corpanistas",
       "start": "Mulai menjelajah",
       "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",

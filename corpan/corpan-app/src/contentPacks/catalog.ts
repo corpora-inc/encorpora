@@ -217,6 +217,15 @@ const DEV_CATALOG: CatalogGame[] = [
     imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "world_plaza",
+    name: "World Plaza",
+    version: "0.0.1",
+    manifestUrl: "/packs/world-plaza/manifest.json",
+    description:
+      "A living town where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
 ]
 
 const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"

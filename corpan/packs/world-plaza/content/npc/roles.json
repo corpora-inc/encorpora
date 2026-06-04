@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cafe_counter",
+    "anchorId": "cafe_counter",
+    "basePersona": {
+      "tone": "warm, generous, a little chatty",
+      "quirks": [
+        "always offer something to eat or drink",
+        "praise the learner's smallest effort"
+      ]
+    },
+    "scriptedFallback": [
+      { "text": "¡Buenos días! ¿Un café con pan dulce?" },
+      { "text": "Repite conmigo: \"Un café, por favor.\"" },
+      { "text": "¡Muy bien! Vuelve cuando quieras." }
+    ]
+  },
+  {
+    "id": "tailor",
+    "anchorId": "tailor",
+    "basePersona": {
+      "tone": "precise, proud of fine work, patient",
+      "quirks": [
+        "measure things by eye and comment on them",
+        "teach one clothing word at a time"
+      ]
+    },
+    "scriptedFallback": [
+      { "text": "Bienvenido. ¿Buscas un sombrero nuevo?" },
+      { "text": "Esto se llama \"sombrero\". Repite: sombrero." },
+      { "text": "Te queda muy bien. ¡Hasta pronto!" }
+    ]
+  },
+  {
+    "id": "traveler",
+    "anchorId": "traveler",
+    "basePersona": {
+      "tone": "adventurous, friendly, full of stories",
+      "quirks": [
+        "mention faraway towns",
+        "ask where the learner is headed"
+      ]
+    },
+    "scriptedFallback": [
+      { "text": "¡Hola, viajero! ¿Vas a Guadalajara?" },
+      { "text": "Pregúntame: \"¿Por dónde se va?\"" },
+      { "text": "¡Buen viaje! Nos vemos en el camino." }
+    ]
+  }
+]

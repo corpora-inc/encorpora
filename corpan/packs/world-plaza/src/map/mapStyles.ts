@@ -1,0 +1,237 @@
+/**
+ * mapStyles — scoped-inline CSS for the World Plaza map surfaces. Injected once
+ * via `<style data-wp-map>` (mapCore.ensureMapStyles). The slice owns
+ * `src/map/*` — NOT `styles.css` — so all hooks are namespaced `.wp-minimap*`
+ * and `.wp-map*` to avoid colliding with the orchestrator-owned stylesheet.
+ *
+ * Warm-Antigua paper aesthetic, premium + understated. Every surface mounts
+ * inside `.wp-overlay` (`position:absolute`), is safe-area aware, has ≥44px
+ * touch targets, and honours `prefers-reduced-motion` (no pulse).
+ */
+
+export const MAP_CSS = `
+/* -------------------------------------------------- corner minimap -------- */
+.wp-minimap {
+  position: absolute;
+  right: calc(env(safe-area-inset-right, 0px) + 14px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  z-index: var(--wp-z-minimap, 13);
+  width: var(--wp-minimap-size, 132px);
+  height: var(--wp-minimap-size, 132px);
+  border-radius: 16px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(180deg, #f7efe0, #ece0c6);
+  box-shadow:
+    0 6px 18px rgba(40, 28, 12, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 0 0 3px var(--wp-map-accent, #c46b4a);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.wp-minimap:hover { transform: translateY(-1px); }
+.wp-minimap:active { transform: translateY(0); }
+.wp-minimap:focus-visible {
+  outline: 2px solid var(--wp-map-accent, #c46b4a);
+  outline-offset: 2px;
+}
+.wp-minimap-canvas { display: block; width: 100%; height: 100%; }
+.wp-minimap-expand {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.72;
+  pointer-events: none;
+  color: var(--wp-map-accent, #c46b4a);
+}
+@media (max-width: 540px) {
+  .wp-minimap { --wp-minimap-size: 108px; }
+}
+
+/* -------------------------------------------------- full-screen map ------- */
+.wp-map {
+  position: absolute;
+  inset: 0;
+  z-index: var(--wp-z-map, 72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.wp-map.wp-map--open { opacity: 1; }
+.wp-map-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 20, 8, 0.46);
+  backdrop-filter: blur(2px);
+}
+.wp-map-panel {
+  position: relative;
+  /* Phone-default: nearly full bleed. Tablet/desktop GROW it (see @media below)
+     so the map is big + roomy — the owner's "should grow on bigger screens". */
+  width: min(94vw, 560px);
+  height: min(88vh, 720px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f7efe0, #efe3cd);
+  border-radius: 18px;
+  box-shadow:
+    0 18px 48px rgba(40, 28, 12, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+  padding: 16px 16px 14px;
+  transform: scale(0.97);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+/* Tablet — roomy. */
+@media (min-width: 700px) {
+  .wp-map-panel {
+    width: min(90vw, 980px);
+    height: min(90vh, 920px);
+    padding: 20px 20px 16px;
+  }
+}
+/* Desktop — big + generous, scaling up with the viewport. */
+@media (min-width: 1100px) {
+  .wp-map-panel {
+    width: min(86vw, 1320px);
+    height: min(88vh, 1000px);
+    padding: 24px 24px 18px;
+  }
+}
+.wp-map.wp-map--open .wp-map-panel { transform: scale(1); }
+.wp-map-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2px 10px;
+}
+.wp-map-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #3a2f25;
+}
+@media (min-width: 700px) {
+  .wp-map-title { font-size: 20px; }
+  .wp-map-head { margin-bottom: 14px; }
+}
+.wp-map-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(90, 74, 50, 0.08);
+  color: #6a5a45;
+  font-size: 16px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.wp-map-close:hover { background: rgba(90, 74, 50, 0.16); }
+.wp-map-close:focus-visible { outline: 2px solid var(--wp-map-accent, #c46b4a); outline-offset: 2px; }
+
+.wp-map-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #efe1c2;
+  box-shadow: inset 0 0 0 1px rgba(120, 96, 60, 0.25);
+}
+.wp-map-canvas { display: block; width: 100%; height: 100%; }
+
+/* a labelled tag floated over a marker (full map only). Curated — only named
+   specials, key POIs, the objective, and YOU get a tag (declutter). */
+.wp-map-tag {
+  position: absolute;
+  transform: translate(-50%, -135%);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  color: #3a2f25;
+  background: rgba(249, 243, 230, 0.94);
+  box-shadow: 0 1px 5px rgba(40, 28, 12, 0.22);
+  pointer-events: none;
+  max-width: 11em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 700px) {
+  .wp-map-tag { font-size: 12.5px; padding: 3px 9px; max-width: 14em; }
+}
+.wp-map-tag--objective {
+  color: #6a3c0a;
+  font-weight: 700;
+  background: rgba(255, 233, 196, 0.97);
+  box-shadow: 0 1px 6px rgba(180, 110, 10, 0.32);
+}
+.wp-map-tag--player {
+  color: #fff7f0;
+  background: var(--wp-map-accent, #c64a2e);
+}
+.wp-map-tag--hint {
+  color: #1d6b32;
+  background: rgba(214, 245, 222, 0.95);
+}
+
+.wp-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  margin: 12px 2px 2px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(120, 96, 60, 0.18);
+}
+@media (min-width: 700px) {
+  .wp-map-legend { gap: 9px 22px; margin-top: 14px; }
+}
+.wp-map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #5a4a35;
+}
+@media (min-width: 700px) {
+  .wp-map-legend-item { font-size: 13px; }
+}
+/* the swatch is a tiny canvas the legend builder paints with the EXACT marker
+   shape+colour, so the key can never drift from the dots (one source of truth). */
+.wp-map-swatch {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  display: block;
+}
+
+.wp-map-note {
+  margin: 8px 4px 0;
+  font-size: 12px;
+  color: #8a785c;
+  text-align: center;
+}
+
+/* the gentle objective pulse — opt out under reduced motion */
+@keyframes wp-map-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-minimap, .wp-map, .wp-map-panel { transition: none; }
+}
+
+@media (max-width: 540px) {
+  .wp-map-panel { width: 96vw; max-height: 94vh; border-radius: 14px; }
+}
+`

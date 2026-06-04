@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "支持 Corpán 並解鎖所有功能。可選，隨時。",
+      "subscribedTitle": "你是一位 Corpanista",
+      "subscribedDesc": "多謝你令 Corpán 保持無廣告並持續成長。",
       "joinTitle": "加入 Corpanistas",
       "start": "開始探索",
       "subtitle": "Corpán 由一個小型開源團隊製作。歡迎打招呼 — 如果您喜歡，可以支持我們。",

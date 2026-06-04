@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Tue Corpánia ja avaa kaikki. Vapaaehtoista, milloin tahansa.",
+      "subscribedTitle": "Olet Corpanista",
+      "subscribedDesc": "Kiitos, että pidät Corpánin mainoksettomana ja kasvavana.",
       "joinTitle": "Liity Corpanistas-yhteisöön",
       "start": "Aloita tutkiminen",
       "subtitle": "Corpánin on luonut pieni avoimen lähdekoodin tiimi. Tule tervehtimään – ja jos pidät siitä, voit tukea meitä.",

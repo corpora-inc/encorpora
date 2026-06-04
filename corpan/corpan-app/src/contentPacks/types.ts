@@ -149,6 +149,13 @@ export type SttStatus = {
   availableMemoryMB?: number | null
   /** Total physical RAM on the device in MB. */
   physicalMemoryMB?: number | null
+  /** Set by the Android plugin on the first getStatus after a prior
+   *  on-device whisper init crashed (uncatchable native SIGSEGV/abort in
+   *  ggml model load). The native side wrote a breadcrumb before the crash
+   *  and held it across the restart; the host's getStatus wrapper records
+   *  it once into on-device analytics, then the field is cleared natively.
+   *  JSON string with `model`/`instanceOrdinal`/`instancesCreated`/`uptimeMs`. */
+  priorInitCrash?: string | null
 }
 
 export type SttWordTiming = {
@@ -368,11 +375,27 @@ export type SttInstallProgress = {
   code?: SttErrorCode
 }
 
+/** A TTS voice the host can speak with (for a pack's sticky per-NPC voice). */
+export type HostVoiceInfo = {
+  id: string
+  name?: string
+  /** BCP-47 (e.g. "es-MX"). */
+  language: string
+  /** Gender when the platform exposes it (iOS/macOS do; Android often doesn't). */
+  gender?: "male" | "female" | "unspecified"
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
   speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
+  /** Enumerate available TTS voices (optionally filtered to a language), with
+   *  gender when known — lets a pack pin a sticky, gender-matched voice per NPC. */
+  listVoices?: (uiCode?: string) => Promise<HostVoiceInfo[]>
+  /** Speak `text` with a SPECIFIC voice id (from `listVoices`), not just a
+   *  language — the mechanism behind a pack's per-NPC sticky voice. */
+  speakVoice?: (uiCode: string, text: string, voiceId: string) => Promise<void>
   /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
   copyText?: (text: string) => Promise<void>
   dispose?: () => void

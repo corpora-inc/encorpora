@@ -1,0 +1,35 @@
+{
+  "name": "corpan-world-plaza",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "preview": "vite preview",
+    "server": "npm --prefix server run server",
+    "server:install": "npm --prefix server install",
+    "server:typecheck": "npm --prefix server run typecheck",
+    "qa:mp": "node qa/mp-presence.mjs"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^6.48.0",
+    "@babylonjs/gui": "^6.48.0",
+    "@babylonjs/loaders": "^6.48.0",
+    "colyseus.js": "^0.16.22",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "happy-dom": "^20.0.11",
+    "playwright": "^1.60.0",
+    "typescript": "^5.4.0",
+    "vite": "^6.0.3",
+    "vitest": "^4.0.16"
+  }
+}

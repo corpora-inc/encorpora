@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "תמוך ב-Corpán ופתח את הכל. אופציונלי, בכל עת.",
+      "subscribedTitle": "את/ה Corpanista",
+      "subscribedDesc": "תודה שאתם עוזרים ל-Corpán להישאר ללא פרסומות ולצמוח.",
       "joinTitle": "Join the Corpanistas",
       "start": "התחל לחקור",
       "subtitle": "Corpán נוצר על ידי צוות קוד פתוח קטן. בוא לומר שלום — ואם אתה אוהב את זה, תוכל לתמוך בנו.",

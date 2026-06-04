@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Stöd Corpán och lås upp allt. Valfritt, när som helst.",
+      "subscribedTitle": "Du är en Corpanista",
+      "subscribedDesc": "Tack för att du håller Corpán annonsfri och växande.",
       "joinTitle": "Gå med i Corpanistas",
       "start": "Börja utforska",
       "subtitle": "Corpán är skapat av ett litet öppen källkod-team. Kom och säg hej — och om du älskar det kan du stödja oss.",

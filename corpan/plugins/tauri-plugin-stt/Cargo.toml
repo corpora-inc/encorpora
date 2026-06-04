@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-stt"
-version = "0.5.2"
+version = "0.5.3"
 authors = ["Corpora Inc"]
 description = "On-device speech-to-text via whisper.cpp (iOS XCFramework + Android JNI)."
 edition = "2021"

@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Støt Corpán og lås op for alt. Valgfrit, når som helst.",
+      "subscribedTitle": "Du er en Corpanista",
+      "subscribedDesc": "Tak, fordi du holder Corpán reklamefrit og i vækst.",
       "joinTitle": "Join the Corpanistas",
       "start": "Begynd at udforske",
       "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",

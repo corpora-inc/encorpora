@@ -1,0 +1,567 @@
+{
+  "id": "antigua-grand",
+  "topologyId": "plaza-grand",
+  "setting": {
+    "place": "Antigua",
+    "era": "1770",
+    "mood": "warm colonial market day"
+  },
+  "themeId": "paper",
+  "narrativeBlurb": "A whole town wakes around the great plaza: streets fan out past the fountain to shops, an inn, a chapel and workshops, each door open to a story.",
+  "anchorSkins": {
+    "fountain": {
+      "spriteRef": {
+        "url": "placeholder:fountain"
+      }
+    },
+    "plaza_bench_0": {
+      "spriteRef": {
+        "url": "placeholder:bench"
+      }
+    },
+    "plaza_lamp_1": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "plaza_bench_2": {
+      "spriteRef": {
+        "url": "placeholder:bench"
+      }
+    },
+    "plaza_lamp_3": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "plaza_bench_4": {
+      "spriteRef": {
+        "url": "placeholder:bench"
+      }
+    },
+    "plaza_lamp_5": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "plaza_bench_6": {
+      "spriteRef": {
+        "url": "placeholder:bench"
+      }
+    },
+    "plaza_lamp_7": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "plaza_market": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "plaza_crier": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_8": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_9": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_10": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "station_11": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_12": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_13": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_14": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_15": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "lamp_16": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_17": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_18": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "lamp_19": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_20": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_21": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_22": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_23": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_24": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_25": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "lamp_26": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_27": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "vendor_28": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_29": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_30": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "lamp_31": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_32": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_33": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_34": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "station_35": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_36": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_37": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_38": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "vendor_39": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_40": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "station_41": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "lamp_42": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_43": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_44": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_45": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_46": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_47": {
+      "spriteRef": {
+        "url": "placeholder:inn"
+      }
+    },
+    "door_48": {
+      "spriteRef": {
+        "url": "placeholder:chapel"
+      }
+    },
+    "vendor_49": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_50": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_51": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "door_52": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "station_53": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "lamp_54": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_55": {
+      "spriteRef": {
+        "url": "placeholder:chapel"
+      }
+    },
+    "vendor_56": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_57": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "vendor_58": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "lamp_59": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_60": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "door_61": {
+      "spriteRef": {
+        "url": "placeholder:shop"
+      }
+    },
+    "vendor_62": {
+      "spriteRef": {
+        "url": "placeholder:stall"
+      }
+    },
+    "door_63": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "station_64": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    },
+    "lamp_65": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_66": {
+      "spriteRef": {
+        "url": "placeholder:workshop"
+      }
+    },
+    "lamp_67": {
+      "spriteRef": {
+        "url": "placeholder:lamp"
+      }
+    },
+    "door_68": {
+      "spriteRef": {
+        "url": "placeholder:house"
+      }
+    },
+    "station_69": {
+      "spriteRef": {
+        "url": "placeholder:cafe"
+      }
+    }
+  },
+  "npcSkins": {
+    "plaza_market": {
+      "spriteRef": {
+        "url": "placeholder:npc-vendor"
+      },
+      "voiceHint": "es-MX"
+    },
+    "plaza_crier": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_9": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_11": {
+      "spriteRef": {
+        "url": "placeholder:npc-artisan"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_13": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_15": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_18": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_21": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_23": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_25": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_28": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_30": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_33": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_35": {
+      "spriteRef": {
+        "url": "placeholder:npc-artisan"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_37": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_39": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_41": {
+      "spriteRef": {
+        "url": "placeholder:npc-artisan"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_44": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_46": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_49": {
+      "spriteRef": {
+        "url": "placeholder:npc-friar"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_51": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_53": {
+      "spriteRef": {
+        "url": "placeholder:npc-artisan"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_56": {
+      "spriteRef": {
+        "url": "placeholder:npc-friar"
+      },
+      "voiceHint": "es-ES"
+    },
+    "vendor_58": {
+      "spriteRef": {
+        "url": "placeholder:npc-vendor"
+      },
+      "voiceHint": "es-MX"
+    },
+    "vendor_62": {
+      "spriteRef": {
+        "url": "placeholder:npc-merchant"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_64": {
+      "spriteRef": {
+        "url": "placeholder:npc-artisan"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station_69": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    }
+  },
+  "palette": {
+    "ground": "#d9c7a3",
+    "groundAlt": "#cdb892",
+    "road": "#b9a079",
+    "roadEdge": "#9c8462",
+    "plaza": "#e3d3ad",
+    "sky": "#bfe0e8",
+    "accent": "#c46b4a",
+    "building": "#e7d4ad"
+  },
+  "sky": {
+    "horizon": "#dcc7a0",
+    "zenith": "#bfe0e8",
+    "fog": 0.32,
+    "fogColor": "#e7dcc4",
+    "timeOfDay": "day"
+  },
+  "landmark": {
+    "kind": "cathedral",
+    "tintHex": "#efe4cf",
+    "label": "La Catedral",
+    "azimuth": 0,
+    "scale": 1.1
+  },
+  "buildingStyle": "antigua-stucco"
+}

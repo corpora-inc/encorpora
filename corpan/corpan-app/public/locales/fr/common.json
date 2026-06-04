@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Soutenez Corpán et débloquez tout. Facultatif, à tout moment.",
+      "subscribedTitle": "Vous êtes un Corpanista",
+      "subscribedDesc": "Merci de garder Corpán sans publicité et en pleine croissance.",
       "joinTitle": "Rejoignez les Corpanistas",
       "start": "Commencer à explorer",
       "subtitle": "Corpán est développé par une petite équipe open source. Venez nous saluer — et si vous aimez l'app, vous pouvez nous soutenir.",

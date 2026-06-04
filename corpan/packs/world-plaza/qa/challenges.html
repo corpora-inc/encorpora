@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>World Plaza — challenges QA</title>
+    <style>
+      html, body { margin: 0; height: 100%; }
+      /* Stand-in for the 3D world canvas; its box must never move when an
+         overlay opens/closes (the layout-shift contract). */
+      #stage {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(120% 80% at 50% 10%, #cdeaf0, #a9d2dd 60%, #8fbecb);
+      }
+      #overlay { position: absolute; inset: 0; z-index: 10; }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <div id="overlay"></div>
+    <script type="module" src="./challenges-mount.ts"></script>
+  </body>
+</html>

@@ -1296,6 +1296,71 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
+/// Quote `s` as a JSON string literal. Used by the panic hook to build a
+/// valid-JSON breadcrumb from free-text fields. Never panics:
+/// `serde_json::to_string` on a `&str` does not fail, and the fallback keeps
+/// the hook infallible regardless.
+fn json_quote(s: &str) -> String {
+    serde_json::to_string(s).unwrap_or_else(|_| "\"\"".to_string())
+}
+
+/// Crash observability for the `panic = "abort"` Android build.
+///
+/// Any Rust panic — an `unwrap`/`expect`/index-out-of-bounds anywhere in the
+/// app OR a statically-linked plugin (corpan-llm, stt, …) — aborts the process
+/// immediately with no Java frame: exactly the unsymbolicated, all-native
+/// tombstone we otherwise cannot diagnose from the Play Console. Install a hook
+/// that records the panic's location + message + thread to a breadcrumb file
+/// BEFORE the abort runs, then chains to the previous (default) hook so the
+/// usual stderr print + abort still happen. `take_last_crash_report` hands the
+/// breadcrumb to on-device analytics on the next launch (mirrors the STT
+/// plugin's init breadcrumb). Best-effort throughout; the hook never panics.
+fn install_panic_breadcrumb(data_dir: &std::path::Path) {
+    let path = data_dir.join("panic-last.json");
+    let prev = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |info| {
+        let loc = info
+            .location()
+            .map(|l| format!("{}:{}:{}", l.file(), l.line(), l.column()))
+            .unwrap_or_else(|| "<unknown>".to_string());
+        let msg = info
+            .payload()
+            .downcast_ref::<&str>()
+            .map(|s| s.to_string())
+            .or_else(|| info.payload().downcast_ref::<String>().cloned())
+            .unwrap_or_else(|| "<non-string panic payload>".to_string());
+        let thread = std::thread::current()
+            .name()
+            .unwrap_or("<unnamed>")
+            .to_string();
+        let payload = format!(
+            "{{\"location\":{},\"message\":{},\"thread\":{}}}",
+            json_quote(&loc),
+            json_quote(&msg),
+            json_quote(&thread),
+        );
+        let _ = std::fs::write(&path, payload);
+        prev(info);
+    }));
+}
+
+/// Read and clear the last Rust-panic breadcrumb, if any. Called once at JS
+/// boot; the returned JSON string is recorded into on-device analytics. Returns
+/// `None` when no breadcrumb exists (the common, healthy case).
+#[command]
+fn take_last_crash_report(app: AppHandle) -> Option<String> {
+    let dir = app.path().app_data_dir().ok()?;
+    let path = dir.join("panic-last.json");
+    let content = std::fs::read_to_string(&path).ok()?;
+    let _ = std::fs::remove_file(&path);
+    let trimmed = content.trim();
+    if trimmed.is_empty() {
+        None
+    } else {
+        Some(trimmed.to_string())
+    }
+}
+
 pub fn run() {
     let pack_db_state = PackDbState::new();
     let phrase_packs_state = PhrasePacksState::new();
@@ -1320,7 +1385,8 @@ pub fn run() {
             content_packs_list_installed,
             content_packs_get_manifest_url,
             phrase_packs_invalidate_cache,
-            open_apple_feedback
+            open_apple_feedback,
+            take_last_crash_report
         ])
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_safe_area_insets_css::init())
@@ -1337,6 +1403,9 @@ pub fn run() {
                 .path()
                 .app_data_dir()
                 .map_err(|e| format!("failed to resolve app data dir: {}", e))?;
+            // Install the panic breadcrumb hook before anything else can crash.
+            // Borrow data_dir here; it is moved into DbState::new below.
+            install_panic_breadcrumb(&data_dir);
             let db_state = db::DbState::new(data_dir)
                 .map_err(|e| format!("failed to initialize database: {}", e))?;
             app.manage(db_state);

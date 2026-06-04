@@ -1,0 +1,732 @@
+{
+  "id": "plaza-grand",
+  "bounds": {
+    "minX": -120,
+    "maxX": 120,
+    "minZ": -120,
+    "maxZ": 120
+  },
+  "spawns": [
+    {
+      "x": 0,
+      "z": 11.5
+    },
+    {
+      "x": 11.5,
+      "z": 0
+    },
+    {
+      "x": 0,
+      "z": -11.5
+    }
+  ],
+  "blockers": [
+    {
+      "x": 0,
+      "z": 0,
+      "w": 3,
+      "d": 3
+    },
+    {
+      "x": -19.12,
+      "z": -14.25,
+      "w": 6.36,
+      "d": 5.45
+    },
+    {
+      "x": -19.12,
+      "z": 14.25,
+      "w": 6.75,
+      "d": 5.22
+    },
+    {
+      "x": 13.38,
+      "z": -18.25,
+      "w": 5.58,
+      "d": 4.69
+    },
+    {
+      "x": 14.38,
+      "z": 19.25,
+      "w": 7.24,
+      "d": 6.69
+    },
+    {
+      "x": -35,
+      "z": -17.12,
+      "w": 6.8,
+      "d": 4.95
+    },
+    {
+      "x": -35,
+      "z": -7.37,
+      "w": 4.18,
+      "d": 7.14
+    },
+    {
+      "x": -35,
+      "z": 7.38,
+      "w": 6.91,
+      "d": 4.84
+    },
+    {
+      "x": -35,
+      "z": 17.13,
+      "w": 4.95,
+      "d": 5.2
+    },
+    {
+      "x": -17.12,
+      "z": -35,
+      "w": 4.45,
+      "d": 6.44
+    },
+    {
+      "x": -7.37,
+      "z": -35,
+      "w": 4.18,
+      "d": 6.31
+    },
+    {
+      "x": -17.12,
+      "z": 35,
+      "w": 4.47,
+      "d": 4.19
+    },
+    {
+      "x": -7.37,
+      "z": 35,
+      "w": 5.44,
+      "d": 5.18
+    },
+    {
+      "x": 7.38,
+      "z": -35,
+      "w": 7.45,
+      "d": 4.57
+    },
+    {
+      "x": 17.13,
+      "z": -35,
+      "w": 7.18,
+      "d": 5.11
+    },
+    {
+      "x": 7.38,
+      "z": 35,
+      "w": 4.33,
+      "d": 4.31
+    },
+    {
+      "x": 17.13,
+      "z": 35,
+      "w": 3.91,
+      "d": 6.66
+    },
+    {
+      "x": 35,
+      "z": -17.12,
+      "w": 6.35,
+      "d": 7.11
+    },
+    {
+      "x": 35,
+      "z": -7.37,
+      "w": 5.77,
+      "d": 4.74
+    },
+    {
+      "x": 35,
+      "z": 7.38,
+      "w": 6.34,
+      "d": 6.64
+    },
+    {
+      "x": 35,
+      "z": 17.13,
+      "w": 5.78,
+      "d": 4.48
+    },
+    {
+      "x": -39,
+      "z": -35,
+      "w": 6,
+      "d": 4.64
+    },
+    {
+      "x": -31,
+      "z": -35,
+      "w": 6,
+      "d": 4.96
+    },
+    {
+      "x": -39,
+      "z": 35,
+      "w": 6,
+      "d": 6.13
+    },
+    {
+      "x": -31,
+      "z": 35,
+      "w": 5.76,
+      "d": 5.06
+    },
+    {
+      "x": 31,
+      "z": -35,
+      "w": 5.08,
+      "d": 5.62
+    },
+    {
+      "x": 39,
+      "z": -35,
+      "w": 3.94,
+      "d": 4.37
+    },
+    {
+      "x": 31,
+      "z": 35,
+      "w": 6,
+      "d": 6.96
+    },
+    {
+      "x": 39,
+      "z": 35,
+      "w": 6,
+      "d": 6.42
+    }
+  ],
+  "anchors": [
+    {
+      "id": "fountain",
+      "role": "decor",
+      "x": 0,
+      "z": 0
+    },
+    {
+      "id": "plaza_bench_0",
+      "role": "bench",
+      "x": 8.03,
+      "z": 3.3,
+      "facing": -2.75
+    },
+    {
+      "id": "plaza_lamp_1",
+      "role": "decor",
+      "x": 3.34,
+      "z": 8.01,
+      "facing": -1.97
+    },
+    {
+      "id": "plaza_bench_2",
+      "role": "bench",
+      "x": -3.3,
+      "z": 8.03,
+      "facing": -1.18
+    },
+    {
+      "id": "plaza_lamp_3",
+      "role": "decor",
+      "x": -8.01,
+      "z": 3.34,
+      "facing": -0.4
+    },
+    {
+      "id": "plaza_bench_4",
+      "role": "bench",
+      "x": -8.03,
+      "z": -3.3,
+      "facing": 0.39
+    },
+    {
+      "id": "plaza_lamp_5",
+      "role": "decor",
+      "x": -3.34,
+      "z": -8.01,
+      "facing": 1.18
+    },
+    {
+      "id": "plaza_bench_6",
+      "role": "bench",
+      "x": 3.3,
+      "z": -8.03,
+      "facing": 1.96
+    },
+    {
+      "id": "plaza_lamp_7",
+      "role": "decor",
+      "x": 8.01,
+      "z": -3.34,
+      "facing": 2.75
+    },
+    {
+      "id": "plaza_market",
+      "role": "vendor",
+      "x": 12.8,
+      "z": -11.5,
+      "facing": 2.31
+    },
+    {
+      "id": "plaza_crier",
+      "role": "npc_station",
+      "x": -11.5,
+      "z": 12.8,
+      "facing": -0.88
+    },
+    {
+      "id": "door_8",
+      "role": "portal",
+      "x": -23.7,
+      "z": -14.25,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_9",
+      "role": "vendor",
+      "x": -24.6,
+      "z": -14.25,
+      "facing": 0
+    },
+    {
+      "id": "door_10",
+      "role": "portal",
+      "x": -23.9,
+      "z": 14.25,
+      "facing": 3.14
+    },
+    {
+      "id": "station_11",
+      "role": "npc_station",
+      "x": -24.8,
+      "z": 14.25,
+      "facing": 0
+    },
+    {
+      "id": "door_12",
+      "role": "portal",
+      "x": 13.38,
+      "z": -21.99,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_13",
+      "role": "vendor",
+      "x": 13.38,
+      "z": -22.89,
+      "facing": 1.57
+    },
+    {
+      "id": "door_14",
+      "role": "portal",
+      "x": 14.38,
+      "z": 24,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_15",
+      "role": "vendor",
+      "x": 14.38,
+      "z": 24.9,
+      "facing": -1.57
+    },
+    {
+      "id": "lamp_16",
+      "role": "decor",
+      "x": 10.16,
+      "z": 24
+    },
+    {
+      "id": "door_17",
+      "role": "portal",
+      "x": -35,
+      "z": -20.99,
+      "facing": -1.57
+    },
+    {
+      "id": "station_18",
+      "role": "npc_station",
+      "x": -35,
+      "z": -21.89,
+      "facing": 1.57
+    },
+    {
+      "id": "lamp_19",
+      "role": "decor",
+      "x": -31,
+      "z": -20.99
+    },
+    {
+      "id": "door_20",
+      "role": "portal",
+      "x": -35,
+      "z": -2.4,
+      "facing": 1.57
+    },
+    {
+      "id": "station_21",
+      "role": "npc_station",
+      "x": -35,
+      "z": -1.5,
+      "facing": -1.57
+    },
+    {
+      "id": "door_22",
+      "role": "portal",
+      "x": -35,
+      "z": 3.56,
+      "facing": -1.57
+    },
+    {
+      "id": "station_23",
+      "role": "npc_station",
+      "x": -35,
+      "z": 2.66,
+      "facing": 1.57
+    },
+    {
+      "id": "door_24",
+      "role": "portal",
+      "x": -35,
+      "z": 21.13,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_25",
+      "role": "vendor",
+      "x": -35,
+      "z": 22.03,
+      "facing": -1.57
+    },
+    {
+      "id": "lamp_26",
+      "role": "decor",
+      "x": -38.08,
+      "z": 21.13
+    },
+    {
+      "id": "door_27",
+      "role": "portal",
+      "x": -20.74,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_28",
+      "role": "vendor",
+      "x": -21.64,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "door_29",
+      "role": "portal",
+      "x": -3.88,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_30",
+      "role": "vendor",
+      "x": -2.98,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "lamp_31",
+      "role": "decor",
+      "x": -3.88,
+      "z": -31.24
+    },
+    {
+      "id": "door_32",
+      "role": "portal",
+      "x": -20.76,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "station_33",
+      "role": "npc_station",
+      "x": -21.66,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "door_34",
+      "role": "portal",
+      "x": -3.25,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "station_35",
+      "role": "npc_station",
+      "x": -2.35,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "door_36",
+      "role": "portal",
+      "x": 2.26,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_37",
+      "role": "vendor",
+      "x": 1.36,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "door_38",
+      "role": "portal",
+      "x": 22.12,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_39",
+      "role": "vendor",
+      "x": 23.02,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "door_40",
+      "role": "portal",
+      "x": 3.82,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "station_41",
+      "role": "npc_station",
+      "x": 2.92,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "lamp_42",
+      "role": "decor",
+      "x": 3.82,
+      "z": 32.24
+    },
+    {
+      "id": "door_43",
+      "role": "portal",
+      "x": 20.49,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "station_44",
+      "role": "npc_station",
+      "x": 21.39,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "door_45",
+      "role": "portal",
+      "x": 35,
+      "z": -22.08,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_46",
+      "role": "vendor",
+      "x": 35,
+      "z": -22.98,
+      "facing": 1.57
+    },
+    {
+      "id": "door_47",
+      "role": "portal",
+      "x": 35,
+      "z": -3.6,
+      "facing": 1.57
+    },
+    {
+      "id": "door_48",
+      "role": "portal",
+      "x": 35,
+      "z": 2.66,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_49",
+      "role": "vendor",
+      "x": 35,
+      "z": 1.76,
+      "facing": 1.57
+    },
+    {
+      "id": "door_50",
+      "role": "portal",
+      "x": 35,
+      "z": 20.77,
+      "facing": 1.57
+    },
+    {
+      "id": "station_51",
+      "role": "npc_station",
+      "x": 35,
+      "z": 21.67,
+      "facing": -1.57
+    },
+    {
+      "id": "door_52",
+      "role": "portal",
+      "x": -43.4,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "station_53",
+      "role": "npc_station",
+      "x": -44.3,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "lamp_54",
+      "role": "decor",
+      "x": -43.4,
+      "z": -37.92
+    },
+    {
+      "id": "door_55",
+      "role": "portal",
+      "x": -26.6,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_56",
+      "role": "vendor",
+      "x": -25.7,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "door_57",
+      "role": "portal",
+      "x": -43.4,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_58",
+      "role": "vendor",
+      "x": -44.3,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "lamp_59",
+      "role": "decor",
+      "x": -43.4,
+      "z": 31.34
+    },
+    {
+      "id": "door_60",
+      "role": "portal",
+      "x": -26.72,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "door_61",
+      "role": "portal",
+      "x": 27.06,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_62",
+      "role": "vendor",
+      "x": 26.16,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "door_63",
+      "role": "portal",
+      "x": 42.37,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "station_64",
+      "role": "npc_station",
+      "x": 43.27,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "lamp_65",
+      "role": "decor",
+      "x": 42.37,
+      "z": -32.22
+    },
+    {
+      "id": "door_66",
+      "role": "portal",
+      "x": 26.6,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "lamp_67",
+      "role": "decor",
+      "x": 26.6,
+      "z": 30.92
+    },
+    {
+      "id": "door_68",
+      "role": "portal",
+      "x": 43.4,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "station_69",
+      "role": "npc_station",
+      "x": 44.3,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "docks",
+      "role": "npc_station",
+      "kind": "docks",
+      "x": 0,
+      "z": 55,
+      "facing": 1.5708
+    },
+    {
+      "id": "mooring_post_n0",
+      "role": "decor",
+      "kind": "decor",
+      "x": -2.4,
+      "z": 55.4
+    },
+    {
+      "id": "mooring_post_n1",
+      "role": "decor",
+      "kind": "decor",
+      "x": 2.4,
+      "z": 55.4
+    },
+    {
+      "id": "city_gate",
+      "role": "portal",
+      "kind": "city_gate",
+      "x": 0,
+      "z": -55,
+      "facing": -1.5708
+    }
+  ]
+}

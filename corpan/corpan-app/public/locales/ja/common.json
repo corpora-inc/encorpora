@@ -290,6 +290,8 @@
     },
     "engage": {
       "joinDesc": "Corpánをサポートしてすべてをアンロック。任意で、いつでも。",
+      "subscribedTitle": "あなたはCorpanistaです",
+      "subscribedDesc": "Corpánを広告なしで成長させ続けてくださり、ありがとうございます。",
       "joinTitle": "Corpanistasに参加する",
       "start": "探索を開始",
       "subtitle": "Corpánは小さなオープンソースチームによって作られています。ぜひお声がけください — 気に入っていただけたら、私たちをサポートできます。",
