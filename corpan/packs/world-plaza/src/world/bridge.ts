@@ -70,11 +70,13 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
   const nearZ = Math.min(opts.nearZ, opts.farZ)
   const farZ = Math.max(opts.nearZ, opts.farZ)
   const span = farZ - nearZ
-  const midZ = (nearZ + farZ) / 2
 
   // ---- materials (warm stone in the city key, matching props/buildings) ----
+  // LOW emissive (0.16) so the directional sun carves real shape into the deck +
+  // arches (a higher lift washes the pale stone flat — same trap the trough water
+  // hit). Wider shade spread (deck/stone/dk/lt) gives the masonry readable depth.
   const stoneBase = hex(opts.palette?.stone ?? "#cdbf9f")
-  const mk = (name: string, rgb: RGB, emissive = 0.3): StandardMaterial => {
+  const mk = (name: string, rgb: RGB, emissive = 0.16): StandardMaterial => {
     const m = new StandardMaterial(`wp-bridge-${name}`, scene)
     m.diffuseColor = toC3(rgb)
     m.emissiveColor = toC3(rgb).scale(emissive)
@@ -82,10 +84,10 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
     m.freeze()
     return m
   }
-  const matDeck = mk("deck", shade(stoneBase, -0.06))
+  const matDeck = mk("deck", shade(stoneBase, -0.12))
   const matStone = mk("stone", stoneBase)
-  const matStoneDk = mk("stoneDk", shade(stoneBase, -0.2))
-  const matStoneLt = mk("stoneLt", shade(stoneBase, 0.12))
+  const matStoneDk = mk("stoneDk", shade(stoneBase, -0.32))
+  const matStoneLt = mk("stoneLt", shade(stoneBase, 0.16))
 
   const add = (m: Mesh, mat: StandardMaterial): Mesh => {
     m.material = mat

@@ -169,7 +169,9 @@ export function mountQuestTracker(
   opts: QuestTrackerOptions,
 ): QuestTrackerHandle {
   ensureStyles()
-  const strings: QuestTrackerStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
+  // `let` (not const) so `relocalize` can swap the localized copy in place when the
+  // immersion toggle flips the UI locale without a world rebuild (IMMERSION_TOGGLE).
+  let strings: QuestTrackerStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
   const anchorName = opts.anchorName ?? ((a: string) => prettyAnchor(a))
   const reduced =
     typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches

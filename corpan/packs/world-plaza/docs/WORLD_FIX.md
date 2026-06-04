@@ -284,6 +284,28 @@ doorway on any building.
 - `src/city/cityMapGeometry.ts` (new) — derive map water+blocker rects from CityLayout — §13
 - `src/map/{mapCore,schematic,minimap}.ts` — render water + map-geometry blockers — §13
 - `src/map/fullMap.ts` — full-map zoom (pinch + wheel + ± buttons + drag-pan) — §13
+- `src/world/bridge.ts` (new) — real 3D stone arch bridge, water under it — §14
+
+## §14 — River bridge: real 3D arch structure, water beneath (`src/world/bridge.ts`)
+
+The crossing was a flat cobblestone road at water level ("a normal road coloured
+blue by the water behind it"). `buildBridge` is a real premium stone ARCH bridge:
+a cambered raised DECK (top ≈ y3.0, humped +0.7 at midspan) well above the
+riverwalk water sheet (≈ y0.07) so water flows BENEATH; balustraded PARAPETS
+(kerb + coping + balusters) down both sides; semicircular ARCH rings (fans of
+tilted voussoir blocks) springing from PIERS that stand IN the river; and stone
+APPROACH RAMPS rising from each bank onto the deck. Low emissive (0.16) + a wide
+shade spread so the sun carves real masonry depth (a higher lift washed it flat —
+same trap as the trough water). Pure additive set-dressing (own create+dispose),
+like the fountain/riverwalk: it does NOT touch the streaming spine, collision, or
+layout. The walkable corridor is already open in places' collision field
+(`bridgeX`/`bridgeHalfW`) and quest-flow's traverse keys off the `bridge_n`
+anchor, so the mesh just makes the crossing READ as a bridge. Coords from
+`layout.water` (CityWater): deck spans `[bankZ, farPromZ]` over the river
+`[waterZ, farBankZ]` at X=`bridgeX`, half-width `bridgeHalfW`. Verified webkit
+(`qa/bridge.{html,ts}`): `/tmp/wp-bridge-3q.png` (arches + piers + water under),
+`/tmp/wp-bridge-side.png` (cambered walkable deck + parapets + ramp). game.ts wire:
+`buildBridge(world.scene, { x: cityWater.bridgeX, nearZ: cityWater.bankZ, farZ: cityWater.farPromZ, halfWidth: cityWater.bridgeHalfW, waterY: 0.07, palette: scene.palette })`.
 
 ## §8 — Gray ground / no roads = inverted ground-quad winding
 

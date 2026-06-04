@@ -309,6 +309,17 @@ not). See `src/city/waterPlacement.test.ts`. Pair it with generation-time
 defense-in-depth (drop any prop that lands past the boundary) so you never even
 seed a floating object.
 
+The SAME box-obstacle trick crafts the WORLD EDGE (#32): a procedural world that
+runs off into fog reads as unfinished. Don't make the edge infinite — bound it
+with a designed wall (a perimeter rampart with gates) and turn the natural
+boundary (a river/sea) into a BAND, not an edge: near bank → water → FAR bank
+(more city) so a bridge ARRIVES somewhere instead of running off the map. Model
+each as data (`CityWater.farBankZ`, `CityBoundary` + per-chunk `CityWallRect` with
+a `gateGap`), emit box obstacles split around the gates, and build the wall MESH
+from the SAME segments (`world/cityWall.ts`, a city-lifetime additive layer in
+`mountCity`) so collider ↔ wall are one truth. Keep every boundary knob relative
+to `bounds`/`half` so a later world-size bump keeps a coherent edge for free.
+
 ## §7. Storage
 
 All packs run in the host WebView's single origin and **share one ~5 MB localStorage

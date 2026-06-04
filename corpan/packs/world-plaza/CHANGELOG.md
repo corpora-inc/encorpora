@@ -134,6 +134,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **Translation/matching games keep BOTH languages under immersion (#27).** A
+  cross-language challenge (translate, tap-the-meaning, match-the-pairs) is
+  inherently two-language — it shows one side in the target and the other in the
+  native and asks you to connect them. Under immersion (e.g. Arabic-from-English)
+  the native side was being dropped, collapsing both halves to the target — a
+  tautology with no answer ("where is the Arabic I'm matching TO?"). Now the
+  orchestrator keeps `ChallengeContext.nativeLanguage = learnerPair.native` for
+  cross-language tools REGARDLESS of the immersion toggle (immersion still
+  collapses chrome + the native gloss of monolingual drills). The cross-language
+  tool set is declared in `src/challenges/registry.ts` (`isCrossLanguageTool`):
+  fast-translate, tap-translation, listen-choose-pic, memory-pairs, true-false,
+  category-sort, picture-match (+ legacy aliases). Guarded by
+  `src/challenges/crossLanguage.test.ts`.
 - **Raw control JSON never leaks into the NPC dialog bubble (#38).** A small model
   sometimes emits a bare `{ "kind": "reward", "xp": 10 }` WITHOUT the
   `<<tool>…</tool>>` delimiters, and the splitter passed it straight through as
@@ -151,6 +164,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   wrong/old pin can never carry over. Any legacy persisted pins
   (`wp:npc:voice:v1`/`v2`) are cleared on load. Deterministic-by-`npcId|target`
   assignment + the target-language guard are unchanged (`src/npc/npcVoice.ts`).
+- **The world has a crafted edge now — a walled city on a river, not a fog
+  dead-end (#32).** The map used to run off into nothing (the bridge ran off the
+  edge into fog). The +Z waterfront is now a real RIVER BAND: a near quay, the
+  open river, then a FAR-BANK district the bridge actually crosses TO (more city —
+  "cross the bridge" arrives somewhere, never the map edge). The three land edges
+  get a stone perimeter RAMPART with gates where the avenues pass through, and a
+  sea wall caps the far bank. You meet a designed wall at the edge, and nothing
+  spawns past it — the rampart + river are box obstacles in the same field every
+  spawner and the player consult (`CityWater.farBankZ`/`farPromZ`, `CityBoundary`,
+  per-chunk `CityWallRect`; `world/cityWall.ts` builds the matching rampart mesh,
+  wired city-lifetime in `mountCity`). Proven headlessly
+  (`src/city/waterPlacement.test.ts`) and in WebKit (`qa/cityground.mjs`: rampart
+  698/698 blocked off-gate, gates 8/8 walkable, bridge reaches the far bank).
 - **Nobody and nothing stands on the river anymore — the water is now solid for
   placement (#30), and the waterfront is a real promenade (#31).** NPCs, ambient
   strollers, stall-keepers and props used to spawn and wander in the open water
@@ -247,6 +273,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (`src/npc/promptLocale.test.ts`); EN-from-AR correctly gets the English directive.
 
 ### Changed
+- **NPC chat is creative + varied again, not a "Repeat after me" drill (#37).**
+  The system prompt was OVERSPECIFYING: `describeObjective` leaked the mechanical
+  challenge `toolId` (`lead the learner through 1 "repeat-after" challenge`) into
+  the persona template, and the beginner scaffold literally said "lots of
+  repetition" — so a 4B model parroted "Repeat after me: X" every turn. Now the
+  objective is a soft human goal ("help the traveler pick up a few useful, real
+  phrases through natural conversation"), the scaffold gives light direction ("Keep
+  it easy: short, very common words…"), and a warm anti-drill nudge steers the
+  model to be a real local, say something NEW each turn, weave words in naturally,
+  and stay coherent — never literally drill. Scripted no-LLM fallback `teach` lines
+  were also de-drilled (no more "Repite conmigo"). `src/npc/promptProgram.ts`,
+  `src/npc/personaGen.ts`.
 - **Smooth city streaming — shared city-lifetime caches + time-sliced builds.**
   Walking forward used to hitch (~130ms on device) every time a chunk crossed the
   horizon because each streamed chunk REPEATED heavy work: it repainted every

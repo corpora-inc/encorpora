@@ -71,12 +71,61 @@ decorates this band; its extent is owned here.
   - riverwalk band walkable: **94/94** (real promenade)
   - shots: `/tmp/wp-ground-riverwalk.png`, `/tmp/wp-ground-bank.png`
 
+## Crafted world boundary (#32)
+
+The world no longer dead-ends into fog. The +Z edge is the river/sea; the three
+LAND edges get a designed perimeter rampart with gates, and the river crosses to
+a FAR-BANK district (more city), not the map edge.
+
+**River is a BAND, not water-to-edge.** `CityWater` gained `farBankZ`/`farPromZ`:
+`[bankZ, waterZ)` near quay → `[waterZ, farBankZ)` open river → `[farBankZ,
+farPromZ)` far quay → far-bank warehouses → sea wall. The bridge spans the band
+(`bridgeX ± bridgeHalfW`) and ARRIVES on walkable far-bank land. A `bridge_s`
+anchor marks the far approach (quest-flow #26 "cross the bridge" lands there).
+
+**Perimeter rampart.** `CityBoundary` (`inset`/`thickness`/`gates`) drives a
+rampart on S/E/W inset from the bounds, plus a sea wall capping the far bank.
+Each edge is sliced into per-chunk `CityWallRect` segments (with a `gateGap`
+where a cardinal avenue / the bridge mouth passes through). `city/collision.ts ::
+wallBoxes` turns each into a box obstacle (split around the gate), so the player
+meets a wall — never raw ground — and nothing spawns past it. `world/cityWall.ts`
+(`buildCityWall`) builds the matching rampart mesh (merged body + cap +
+thin-instanced gate piers) from the SAME segments, wired as a city-lifetime layer
+in `mountCity` (built once, frozen, disposed with the city). Collider ↔ mesh are
+one source of truth. env-art dresses the edge (boats, distant skyline, horizon
+atmosphere); the layout owns where land/water/walls/far-bank/gates sit.
+
+All boundary knobs are relative to `bounds`/`half`, so a later world-size bump
+(#34) keeps a coherent edge for free.
+
+## Proof
+
+- **`src/city/waterPlacement.test.ts`** (vitest, headless, pure data): water —
+  every water-painted chunk has a collision rect; the river band reads `blocked`
+  off-bridge; bridge corridor open; riverwalk walkable; no prop in the river band;
+  bridge arrives on far-bank land. Boundary — every off-gate rampart point reads
+  `blocked`; every gate is walkable; all three land edges + the sea wall present;
+  the sea wall leaves the bridge mouth open. Covers `generateCity()` + `stubCity()`.
+- **`qa/cityground.mjs`** (WebKit ≈ WKWebView): frames the riverwalk, river band,
+  far bank, and the wall; reports live-field placement. Last run:
+  - open-water blocked **702/702**; bridge corridor **17/17** open; riverwalk
+    **92/94** walkable.
+  - rampart off-gate blocked **698/698**; gates **8/8** walkable; bridge reaches
+    far bank **PASS**. (`page errors: none`.)
+  - shots: `/tmp/wp-ground-riverband.png` (near bank → river → far bank → wall),
+    `/tmp/wp-wall-corner.png` (rampart ring), `/tmp/wp-ground-farbank.png`.
+
 ## Shared-file coordination
 
-- `layout.ts` / `collision.ts` / `generateCity.ts` / `stubCity.ts` are touched
-  here for the water model. `world-fix` owns the core `world/collision.ts` field
-  math (untouched) + crowd behavior + bridge structure; the water collider rides
-  on top purely via `chunkObstacles`.
-- `bridgeX = 0`, `bridgeHalfW = (AVENUE_W + 4)/2 + 1` (≈7u half). If world-fix
-  builds a wider/narrower bridge deck (#29), align `bridgeHalfW` so the collider
-  gap matches the visible deck.
+- `layout.ts` / `collision.ts` / `generateCity.ts` / `stubCity.ts` / `mountCity.ts`
+  + new `world/cityWall.ts` are touched here for the water + boundary model.
+  `world-fix` owns the core `world/collision.ts` field math (untouched) + crowd
+  behavior + bridge structure; the water/wall colliders ride on top purely via
+  `chunkObstacles`.
+- `bridgeX = 0`, `bridgeHalfW = (AVENUE_W + 4)/2 + 1` (≈7u half). The bridge now
+  spans Z ∈ `[bankZ, farBankZ]` (≈[294, 344]); world-fix's bridge STRUCTURE (#29)
+  reads `layout.water` for that span + the far-bank arrival. Align `bridgeHalfW`
+  if the visible deck width changes.
+- env-art reads `layout.water` (`waterZ`/`bankZ`/`farBankZ`) for the riverwalk +
+  distant-skyline/horizon dressing, and `layout.boundary` + the wall segments for
+  gate-tower / banner dressing on the rampart.
