@@ -10,3 +10,7 @@ audit/pass2_errors.jsonl
 audit/run.log
 translate/missing/
 translate/*.log
+
+# Localization grader output (regenerate with eval/ar/run.sh); keep the
+# scripts + FINDINGS.md tracked.
+eval/*/report.*.json

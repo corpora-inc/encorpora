@@ -7,7 +7,35 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+
+- **"Honest hello" onboarding interlude (`OnboardingWelcomePact`).** A new screen
+  between the primary-language picker and the "What brings you to Corpán?" fork,
+  shown once in the user's chosen language. It sets expectations and builds a
+  human connection up front — tiny team, bleeding-edge/any-to-any, "we're still
+  mastering {{lang}}", everything free — then makes a heartfelt, openly-joking
+  early-adopter "pact": expect rough edges, and **please email/GitHub instead of
+  a sad rating** (routes to `team@encorpora.io` + GitHub issues), plus a
+  collaborator/ambassador recruitment line. Deliberately NOT a review gate (no
+  "you agree not to rate low" — that violates store policy); it asks, it doesn't
+  condition app use. Wired as an adapter node in the onboarding graph; localized
+  in en + ar (other ~49 locales fall back to English until the pipeline runs).
+
 ### Fixed
+
+- **Arabic localization polish + RTL hardening.** After a 1-star Arabic review
+  ("غير مفهوم" — "incomprehensible"), we audited the whole Arabic surface with a
+  strong-model grader (`dja/eval/ar/`, GPT-5.x via codex). The corpus, TTS, and
+  UI text graded strong (medians 5/5), but the grader caught real defects in
+  `ar/common.json`: the TTS voice-setup steps named the wrong iOS menu
+  (`تسهيلات الاستخدام` → Apple's actual `إمكانية الوصول`, so the enable-voices
+  instructions were unfollowable); Norwegian Bokmål had Latin letters welded
+  into the Arabic word (`بوكmål` → `بوكمول`); "Visit encorpora.io" had reversed
+  word order; the brand name was inconsistently transliterated (`كوربان` →
+  `Corpán`); and "stack"/"pack" chrome was rendered three different ways.
+  Unified the terminology and localized the remaining English `Packs`/`Stacks`
+  labels. Also set `dir`/`lang` on the `<html>` root reactively
+  (`LanguageSynchronizer.tsx`) so RTL chrome flips as one unit, not piecemeal.
 
 - **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
   content-pack installer accumulated the *entire* download into an in-memory
