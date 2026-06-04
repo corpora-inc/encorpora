@@ -6,31 +6,21 @@ import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import { Color3 } from "@babylonjs/core/Maths/math"
 
 /**
- * objectiveBeacon — the UNMISSABLE "talk to THIS person" marker.
+ * objectiveBeacon — the premium, UNMISSABLE "talk to THIS person" marker.
  *
- * THE OWNER'S RECURRING PAIN: "I got to the fountain, I stand on the star, and
- * NOTHING happens. Shouldn't there be a special NPC there to help me?" The
- * objective NPC IS stationed at the step's anchor — but it looks exactly like the
- * 28 wandering townsfolk, so you can't tell which one to walk up to. The road
- * arrow points you to the right PLACE; this beacon points you to the right
- * PERSON, standing over their head from across the plaza.
+ * The objective NPC is stationed at the active step's anchor but looks like any of
+ * the 28 wandering townsfolk; the road arrow points to the right PLACE, this
+ * beacon points to the right PERSON, hovering over their head from across the
+ * plaza. It tracks the NPC's LIVE position (they gently hover near the anchor).
  *
- * It is a three-part, self-lit, warm-accent marker that hovers above the objective
- * NPC's LIVE position (the NPC gently hovers near its anchor, so the beacon
- * tracks it, not a static point):
- *   • a tall vertical SHAFT of light (a billboarded column) you can see over
- *     rooftops from anywhere in the plaza — the "here!" pillar.
- *   • a bobbing downward CHEVRON just above the head ("this one").
- *   • a soft ground RING at the feet (the star you stand on, but attached to the
- *     person, not the floor — so the two can never disagree).
- *
- * Each part is the repo's canonical ADDITIVE glow card (the lamp-halo recipe in
- * dressing.ts `makeGlowSpecies`): a warm rgba texture whose alpha is FEATHERED to
- * zero at every edge, drawn self-lit with ADD blend — so it reads as LIGHT, never
- * an opaque slab or a black box. Depth-write OFF + render-last so it never
- * z-fights the world or hides behind a building (it draws THROUGH — intentional:
- * a wayfinding beacon you can see from anywhere). Gentle breathing pulse (static
- * under reduced motion).
+ * DESIGN (v2 — the v1 additive "shaft" washed out to a transparent white pillar):
+ * a designed, warm-accent floating MAP PIN — a rounded teardrop with a bright gem
+ * eye — bobbing + slowly turning above the head, with a downward CHEVRON beneath
+ * it ("this one") and a soft pulsing ground RING at the feet. The solid shapes use
+ * STANDARD alpha (so the warm accent stays warm — no white-wash), each backed by a
+ * separate soft ADDITIVE halo for glow. Depth-write OFF + render-last so the
+ * beacon shows THROUGH the world (a wayfinding marker you see from anywhere).
+ * Gentle pulse + bob + spin (static under reduced motion).
  *
  * Pure consumer (mirrors roadArrow): the orchestrator injects `getTarget()` (the
  * objective NPC's live world point, or null when there's no active objective /
@@ -61,126 +51,155 @@ export interface ObjectiveBeaconHandle {
   dispose: () => void
 }
 
-/** Height of the head the chevron/shaft sit above (paper-people are ~2u tall). */
+/** Head height the marker sits above (paper-people are ~2u tall). */
 const HEAD_Y = 2.35
-/** The light shaft rises this far above the head — visible over rooftops. */
-const SHAFT_H = 5.4
-const SHAFT_W = 0.9
-/** Chevron quad size (world units), bobbing just over the head. */
-const CHEVRON_SIZE = 1.25
-/** Ground ring size at the feet. */
+/** The pin floats this far above the head; the chevron sits just under it. */
+const PIN_Y = HEAD_Y + 1.35
+const PIN_SIZE = 1.5
+const HALO_SIZE = 2.7 // soft additive glow behind the pin
+const CHEVRON_SIZE = 0.95
 const RING_SIZE = 2.4
 
 const hex = (s: string | undefined, fallback: string): Color3 =>
   Color3.FromHexString(s ?? fallback)
 
-/** Warm RGB triplet for the painter (the accent, lightened toward a hot core). */
+/** Warm RGB triplets for the painter, derived from the scene accent. */
 interface Warm {
   /** the accent itself, e.g. "230,138,60". */
   base: string
-  /** a brighter, whiter version for the hot core, e.g. "255,224,170". */
-  core: string
+  /** a deeper, saturated edge for the pin outline/contrast. */
+  deep: string
+  /** a bright hot highlight (accent lifted toward white) for the gem + sheen. */
+  hot: string
 }
+
+/* --------------------------------------------------------------- painters */
 
 /**
- * The recipe is the repo's canonical ADDITIVE glow card (dressing.ts
- * `makeGlowSpecies`): paint the texture in WARM rgba with the alpha FEATHERED to
- * zero at every edge (never a solid fill), drive it through
- * `useAlphaFromDiffuseTexture` + ADD blend, so the lit areas read as LIGHT and the
- * transparent areas add NOTHING (no gray slab, no black box). Additive blooms
- * hard, so cores stay modest + fall off fast.
+ * A designed MAP PIN: a rounded teardrop body in the warm accent with a darker
+ * rim for definition, a bright gem "eye", and a soft top sheen — drawn on a
+ * transparent canvas so STANDARD alpha keeps the warm colour (no white-wash). The
+ * tip points DOWN (at the person). Canvas: tip near the bottom, bulb up top.
  */
-
-/** A soft vertical light column: warm core, feathering to nothing at every edge. */
-function paintShaft(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm): void {
+function paintPin(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm): void {
   ctx.clearRect(0, 0, w, h)
-  // Vertical falloff (alpha): brightest just above the head (canvas bottom),
-  // fading to 0 at the very top — never a solid column.
-  const v = ctx.createLinearGradient(0, h, 0, 0)
-  v.addColorStop(0, `rgba(${warm.base},0.0)`) // the very base feathers in
-  v.addColorStop(0.12, `rgba(${warm.base},0.5)`)
-  v.addColorStop(0.5, `rgba(${warm.base},0.28)`)
-  v.addColorStop(1, `rgba(${warm.base},0.0)`)
-  ctx.fillStyle = v
-  ctx.fillRect(0, 0, w, h)
-  // Horizontal falloff: bright hot core down the centre, transparent at the sides
-  // (so the column is a soft beam, not a flat-edged plank). Multiply keeps the
-  // product alpha = vertical × horizontal, feathered on all four sides.
-  ctx.globalCompositeOperation = "destination-in"
-  const hgrad = ctx.createLinearGradient(0, 0, w, 0)
-  hgrad.addColorStop(0, "rgba(0,0,0,0)")
-  hgrad.addColorStop(0.5, "rgba(0,0,0,1)")
-  hgrad.addColorStop(1, "rgba(0,0,0,0)")
-  ctx.fillStyle = hgrad
-  ctx.fillRect(0, 0, w, h)
-  ctx.globalCompositeOperation = "source-over"
-  // A hot near-white core stripe down the centre for body (additive, modest).
-  const core = ctx.createLinearGradient(0, 0, w, 0)
-  core.addColorStop(0, `rgba(${warm.core},0)`)
-  core.addColorStop(0.5, `rgba(${warm.core},0.5)`)
-  core.addColorStop(1, `rgba(${warm.core},0)`)
-  ctx.globalCompositeOperation = "lighter"
-  ctx.fillStyle = core
-  ctx.fillRect(w * 0.32, 0, w * 0.36, h)
-  ctx.globalCompositeOperation = "source-over"
+  const cx = w / 2
+  const bulbCy = h * 0.4 // centre of the round head
+  const bulbR = w * 0.3
+  const tipY = h * 0.9 // the point at the bottom
+
+  // soft drop shadow so the pin reads as a solid object floating over the world.
+  ctx.save()
+  ctx.shadowColor = "rgba(40,20,0,0.35)"
+  ctx.shadowBlur = w * 0.05
+  ctx.shadowOffsetY = h * 0.012
+
+  // pin body: a teardrop = a circle (the head) + two tangent lines down to the tip.
+  ctx.beginPath()
+  const a = Math.asin(bulbR / (tipY - bulbCy)) // tangent angle from centre to tip
+  ctx.arc(cx, bulbCy, bulbR, Math.PI / 2 + a, Math.PI / 2 - a, false) // the head arc
+  ctx.lineTo(cx, tipY) // down to the point
+  ctx.closePath()
+
+  // warm fill with a vertical sheen (lighter at the top of the bulb).
+  const fill = ctx.createLinearGradient(0, bulbCy - bulbR, 0, tipY)
+  fill.addColorStop(0, `rgba(${warm.hot},1)`)
+  fill.addColorStop(0.32, `rgba(${warm.base},1)`)
+  fill.addColorStop(1, `rgba(${warm.deep},1)`)
+  ctx.fillStyle = fill
+  ctx.fill()
+  ctx.restore()
+
+  // a crisp darker rim for definition against any background.
+  ctx.lineWidth = w * 0.035
+  ctx.strokeStyle = `rgba(${warm.deep},0.9)`
+  ctx.stroke()
+
+  // the gem "eye" — a bright inset disc with a hot highlight (the focal point).
+  const gemR = bulbR * 0.5
+  const gem = ctx.createRadialGradient(cx - gemR * 0.3, bulbCy - gemR * 0.3, gemR * 0.1, cx, bulbCy, gemR)
+  gem.addColorStop(0, "rgba(255,255,255,0.98)")
+  gem.addColorStop(0.5, `rgba(${warm.hot},0.98)`)
+  gem.addColorStop(1, `rgba(${warm.base},0.95)`)
+  ctx.beginPath()
+  ctx.arc(cx, bulbCy, gemR, 0, Math.PI * 2)
+  ctx.fillStyle = gem
+  ctx.fill()
 }
 
-/** A glowing downward chevron ("▼ this one"), a warm fill with a soft halo. */
+/** A soft round warm HALO (additive glow behind the pin). Alpha feathered to 0. */
+function paintHalo(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm): void {
+  ctx.clearRect(0, 0, w, h)
+  const g = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2)
+  g.addColorStop(0, `rgba(${warm.hot},0.5)`)
+  g.addColorStop(0.32, `rgba(${warm.base},0.26)`)
+  g.addColorStop(0.6, `rgba(${warm.base},0.07)`)
+  g.addColorStop(1, `rgba(${warm.base},0)`)
+  ctx.fillStyle = g
+  ctx.fillRect(0, 0, w, h)
+}
+
+/** A solid downward CHEVRON ("▼ this one") in the warm accent, with a dark rim. */
 function paintChevron(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm): void {
   ctx.clearRect(0, 0, w, h)
   ctx.save()
   ctx.translate(w / 2, h / 2)
-  // soft warm halo so the silhouette feathers (additive → the halo reads as glow).
-  ctx.shadowColor = `rgba(${warm.base},0.9)`
-  ctx.shadowBlur = w * 0.14
-  ctx.fillStyle = `rgba(${warm.core},0.95)`
-  ctx.beginPath()
-  // a thick chevron pointing DOWN (tip at +y / canvas bottom).
-  const halfW = w * 0.3
-  const topY = -h * 0.24
+  const halfW = w * 0.32
+  const topY = -h * 0.22
   const tipY = h * 0.3
-  const thick = h * 0.18
+  const thick = h * 0.2
+  ctx.beginPath()
   ctx.moveTo(-halfW, topY)
   ctx.lineTo(0, tipY)
   ctx.lineTo(halfW, topY)
-  ctx.lineTo(halfW - thick * 0.6, topY)
+  ctx.lineTo(halfW - thick * 0.62, topY)
   ctx.lineTo(0, tipY - thick)
-  ctx.lineTo(-halfW + thick * 0.6, topY)
+  ctx.lineTo(-halfW + thick * 0.62, topY)
   ctx.closePath()
+  ctx.fillStyle = `rgba(${warm.base},1)`
+  ctx.shadowColor = "rgba(40,20,0,0.3)"
+  ctx.shadowBlur = w * 0.03
   ctx.fill()
+  ctx.lineWidth = w * 0.02
+  ctx.strokeStyle = `rgba(${warm.deep},0.9)`
+  ctx.stroke()
   ctx.restore()
 }
 
-/** A soft glowing ring (radial annulus), feathered to nothing inside and out. */
+/** A warm glowing RING (radial annulus), feathered to nothing inside and out. */
 function paintRing(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm): void {
   ctx.clearRect(0, 0, w, h)
   const cx = w / 2
   const cy = h / 2
   const outer = w * 0.46
-  const g = ctx.createRadialGradient(cx, cy, outer * 0.5, cx, cy, outer)
-  g.addColorStop(0, `rgba(${warm.base},0.0)`) // transparent centre
-  g.addColorStop(0.62, `rgba(${warm.base},0.45)`)
-  g.addColorStop(0.78, `rgba(${warm.core},0.55)`) // brightest at the ring itself
-  g.addColorStop(1, `rgba(${warm.base},0.0)`) // soft outer feather
+  const g = ctx.createRadialGradient(cx, cy, outer * 0.55, cx, cy, outer)
+  g.addColorStop(0, `rgba(${warm.base},0.0)`)
+  g.addColorStop(0.66, `rgba(${warm.base},0.4)`)
+  g.addColorStop(0.8, `rgba(${warm.hot},0.6)`) // brightest at the ring
+  g.addColorStop(1, `rgba(${warm.base},0.0)`)
   ctx.fillStyle = g
   ctx.beginPath()
   ctx.arc(cx, cy, outer, 0, Math.PI * 2)
   ctx.fill()
 }
 
+/* --------------------------------------------------------------- material */
+
+const ALPHA_ADD = 1
+const ALPHA_COMBINE = 2
+
 /**
- * Build the canonical ADDITIVE-glow material (mirrors dressing.ts
- * `makeGlowSpecies`): the warm rgba texture drives BOTH colour and alpha
- * (`useAlphaFromDiffuseTexture`), self-lit (`emissiveColor` white + lighting
- * disabled), ADD blend so it reads as LIGHT (never an opaque slab / black box),
- * depth-write off + render-last so the beacon shows through the world.
+ * Self-lit, depth-write-off, render-last unlit material. `blend` picks the look:
+ * COMBINE keeps the texture's warm colour (the designed solid shapes — pin,
+ * chevron, ring); ADD makes a soft glow (the halo) that brightens the scene.
  */
-function makeBeaconMat(
+function makeMat(
   scene: Scene,
   name: string,
   paint: (ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm) => void,
   size: { w: number; h: number },
   warm: Warm,
+  blend: typeof ALPHA_ADD | typeof ALPHA_COMBINE,
 ): { mat: StandardMaterial; tex: DynamicTexture } {
   const tex = new DynamicTexture(`${name}-tex`, size, scene, true)
   tex.hasAlpha = true
@@ -188,13 +207,19 @@ function makeBeaconMat(
   tex.update()
   const mat = new StandardMaterial(`${name}-mat`, scene)
   mat.diffuseTexture = tex
-  mat.useAlphaFromDiffuseTexture = true // the texture's alpha is the silhouette
-  mat.emissiveColor = new Color3(1, 1, 1) // self-lit — the warm colour comes from the texture
+  mat.useAlphaFromDiffuseTexture = true
+  mat.emissiveColor = new Color3(1, 1, 1) // self-lit — the warm colour is in the texture
   mat.disableLighting = true
   mat.specularColor = new Color3(0, 0, 0)
-  mat.alphaMode = 1 // ALPHA_ADD — reads as glowing light, not a wall
+  mat.alphaMode = blend
+  // MUST force ALPHABLEND transparency: with disableDepthWrite + a COMBINE blend
+  // but no transparency mode, Babylon treats the material as OPAQUE and renders
+  // the transparent texels as a BLACK box (the v2 regression). ALPHABLEND keys the
+  // texture's alpha so only the painted shape shows. (ADD is inherently blended,
+  // but setting it here too is harmless + explicit.)
+  mat.transparencyMode = StandardMaterial.MATERIAL_ALPHABLEND
   mat.backFaceCulling = false
-  mat.disableDepthWrite = true // never z-fight; draw THROUGH the world (a beacon)
+  mat.disableDepthWrite = true // draw THROUGH the world — never z-fight
   mat.alpha = 0
   return { mat, tex }
 }
@@ -206,106 +231,112 @@ export function createObjectiveBeacon(
   const accent = hex(opts.accent, "#e08a3c")
   const reduced =
     typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches
-  // The warm palette for the painter: the accent itself, plus a brighter, whiter
-  // "core" (the accent lifted ~55% toward white) for the hot centre of the glow.
   const r = Math.round(accent.r * 255)
   const g = Math.round(accent.g * 255)
   const b = Math.round(accent.b * 255)
-  const lift = (c: number) => Math.round(c + (255 - c) * 0.55)
+  const lift = (c: number, t: number) => Math.round(c + (255 - c) * t)
+  const deepen = (c: number, t: number) => Math.round(c * (1 - t))
   const warm: Warm = {
     base: `${r},${g},${b}`,
-    core: `${lift(r)},${lift(g)},${lift(b)}`,
+    deep: `${deepen(r, 0.42)},${deepen(g, 0.42)},${deepen(b, 0.42)}`,
+    hot: `${lift(r, 0.6)},${lift(g, 0.6)},${lift(b, 0.6)}`,
   }
 
-  // ── the light SHAFT (vertical billboard column) ──────────────────────────
-  const shaftBuilt = makeBeaconMat(scene, "wp-obj-shaft", paintShaft, { w: 128, h: 512 }, warm)
-  const shaft: Mesh = MeshBuilder.CreatePlane(
-    "wp-obj-shaft",
-    { width: SHAFT_W, height: SHAFT_H },
-    scene,
-  )
-  shaft.material = shaftBuilt.mat
-  shaft.billboardMode = Mesh.BILLBOARDMODE_Y // spins about Y to face the camera (a column)
-  shaft.isPickable = false
-  shaft.renderingGroupId = 3 // render LAST so the beacon is always visible
-  // A billboarded column's bounds rotate each frame; skip the frustum test so it
-  // never pops out when the camera is off-axis (it's cheap — three small quads).
-  shaft.alwaysSelectAsActiveMesh = true
-  shaft.setEnabled(false)
+  // ── soft HALO behind the pin (additive glow) ──────────────────────────────
+  const haloBuilt = makeMat(scene, "wp-obj-halo", paintHalo, { w: 256, h: 256 }, warm, ALPHA_ADD)
+  const halo: Mesh = MeshBuilder.CreatePlane("wp-obj-halo", { size: HALO_SIZE }, scene)
+  halo.material = haloBuilt.mat
+  halo.billboardMode = Mesh.BILLBOARDMODE_ALL
+  halo.isPickable = false
+  halo.renderingGroupId = 3
+  halo.alwaysSelectAsActiveMesh = true
+  halo.setEnabled(false)
 
-  // ── the bobbing CHEVRON (always faces camera, just above the head) ───────
-  const chevBuilt = makeBeaconMat(scene, "wp-obj-chev", paintChevron, { w: 256, h: 256 }, warm)
+  // ── the designed PIN (solid warm, standard alpha so it stays warm) ────────
+  const pinBuilt = makeMat(scene, "wp-obj-pin", paintPin, { w: 256, h: 256 }, warm, ALPHA_COMBINE)
+  const pin: Mesh = MeshBuilder.CreatePlane("wp-obj-pin", { size: PIN_SIZE }, scene)
+  pin.material = pinBuilt.mat
+  // Face the camera about Y only, so the pin keeps its upright "map-pin" pose and
+  // we can gently turn it for life without it tumbling.
+  pin.billboardMode = Mesh.BILLBOARDMODE_Y
+  pin.isPickable = false
+  pin.renderingGroupId = 3
+  pin.alwaysSelectAsActiveMesh = true
+  pin.setEnabled(false)
+
+  // ── the downward CHEVRON ("this one") ─────────────────────────────────────
+  const chevBuilt = makeMat(scene, "wp-obj-chev", paintChevron, { w: 256, h: 256 }, warm, ALPHA_COMBINE)
   const chevron: Mesh = MeshBuilder.CreatePlane("wp-obj-chev", { size: CHEVRON_SIZE }, scene)
   chevron.material = chevBuilt.mat
-  chevron.billboardMode = Mesh.BILLBOARDMODE_ALL // always faces the camera flat
+  chevron.billboardMode = Mesh.BILLBOARDMODE_ALL
   chevron.isPickable = false
   chevron.renderingGroupId = 3
   chevron.alwaysSelectAsActiveMesh = true
   chevron.setEnabled(false)
 
-  // ── the ground RING (flat halo at the feet) ──────────────────────────────
-  const ringBuilt = makeBeaconMat(scene, "wp-obj-ring", paintRing, { w: 256, h: 256 }, warm)
+  // ── the ground RING at the feet ───────────────────────────────────────────
+  const ringBuilt = makeMat(scene, "wp-obj-ring", paintRing, { w: 256, h: 256 }, warm, ALPHA_ADD)
   const ring: Mesh = MeshBuilder.CreatePlane("wp-obj-ring", { size: RING_SIZE }, scene)
   ring.material = ringBuilt.mat
   ring.rotation.x = Math.PI / 2 // lie flat on the ground
   ring.position.y = 0.06 // a hair above the road (never coplanar — §2 z-fight rule)
   ring.isPickable = false
-  ring.renderingGroupId = 0 // the ring DOES sit on the ground (group 0, depth-write off)
+  ring.renderingGroupId = 0
   ring.setEnabled(false)
 
+  const parts = [halo, pin, chevron, ring]
   const setEnabled = (on: boolean) => {
-    if (shaft.isEnabled() !== on) shaft.setEnabled(on)
-    if (chevron.isEnabled() !== on) chevron.setEnabled(on)
-    if (ring.isEnabled() !== on) ring.setEnabled(on)
+    for (const m of parts) if (m.isEnabled() !== on) m.setEnabled(on)
   }
 
   let phase = 0
   let bob = 0
+  let spin = 0
 
   const update = (dt: number) => {
     const target = opts.getTarget()
     const suppressed = opts.isSuppressed?.() ?? false
     if (!target || suppressed) {
-      if (shaft.isEnabled()) setEnabled(false)
+      if (pin.isEnabled()) setEnabled(false)
       return
     }
-    if (!shaft.isEnabled()) setEnabled(true)
+    if (!pin.isEnabled()) setEnabled(true)
 
-    // Position all three parts over the NPC's live point.
-    shaft.position.x = target.x
-    shaft.position.z = target.z
-    shaft.position.y = HEAD_Y + SHAFT_H / 2 // base at the head, rising up
-    chevron.position.x = target.x
-    chevron.position.z = target.z
-    ring.position.x = target.x
-    ring.position.z = target.z
-
-    // breathing pulse + a gentle chevron bob (static under reduced motion).
-    let breathe = 1
-    if (!reduced) {
-      phase = (phase + dt / 1.5) % 1 // ~1.5s loop
-      breathe = 0.7 + 0.3 * Math.sin(phase * Math.PI * 2)
-      bob = (bob + dt / 1.1) % 1
-      chevron.position.y = HEAD_Y + 0.55 + 0.18 * Math.sin(bob * Math.PI * 2)
-    } else {
-      chevron.position.y = HEAD_Y + 0.55
+    for (const m of parts) {
+      m.position.x = target.x
+      m.position.z = target.z
     }
 
-    shaftBuilt.mat.alpha = 0.5 * breathe
-    chevBuilt.mat.alpha = 0.92 * (0.78 + 0.22 * breathe) // chevron stays bold + readable
+    // bob the pin + chevron together; pulse the halo/ring; slow-spin the pin.
+    let breathe = 1
+    let lift = 0
+    if (!reduced) {
+      phase = (phase + dt / 1.6) % 1
+      breathe = 0.72 + 0.28 * Math.sin(phase * Math.PI * 2)
+      bob = (bob + dt / 1.3) % 1
+      lift = 0.14 * Math.sin(bob * Math.PI * 2)
+      spin = (spin + dt * 0.6) % (Math.PI * 2)
+      pin.rotation.y = 0.32 * Math.sin(spin) // a gentle sway, not a full tumble
+    }
+    pin.position.y = PIN_Y + lift
+    halo.position.y = PIN_Y + lift
+    chevron.position.y = HEAD_Y + 0.5 + lift
+
+    // The designed shapes stay near-opaque (so they read crisp); the glow pulses.
+    pinBuilt.mat.alpha = 1
+    chevBuilt.mat.alpha = 0.96
+    haloBuilt.mat.alpha = 0.55 * breathe
     ringBuilt.mat.alpha = 0.5 * breathe
   }
 
   return {
     update,
     dispose: () => {
-      for (const b of [shaftBuilt, chevBuilt, ringBuilt]) {
+      for (const b of [haloBuilt, pinBuilt, chevBuilt, ringBuilt]) {
         b.mat.dispose()
         b.tex.dispose()
       }
-      shaft.dispose()
-      chevron.dispose()
-      ring.dispose()
+      for (const m of parts) m.dispose()
     },
   }
 }

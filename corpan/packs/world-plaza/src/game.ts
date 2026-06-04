@@ -74,6 +74,7 @@ import { createTraversalTrigger } from "./quest/traversalTrigger"
 import { buildFountain } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
 import { buildRiverwalk } from "./world/riverwalk"
+import { buildBridge } from "./world/bridge"
 import { createPopulation } from "./city/population"
 import { prefersReducedMotion } from "./world/reducedMotion"
 
@@ -226,8 +227,17 @@ function buildWorld(
   // EVERYWHERE"). A single-language Track is forced "on". Every `learnerPair.native`
   // that drives UI COPY or the RTL `dir` now reads `uiLocale` instead; the corpus
   // native gloss reads `resolver.challengeNativeLanguage()`.
-  const resolver = createImmersionResolver({ level: immersionLevel, learnerPair })
-  const uiLocale = resolver.uiLocale()
+  // `let` (not const): toggling immersion IN PLACE (no world rebuild) recomputes
+  // the resolver + uiLocale and re-localizes the live surfaces (see `relocalize`
+  // below). `currentUiLocale()` lets modal factories (section/interlude/inventory)
+  // read the LIVE locale so they render correctly on their next open after a flip.
+  let resolver = createImmersionResolver({ level: immersionLevel, learnerPair })
+  let uiLocale = resolver.uiLocale()
+  const currentUiLocale = (): string => uiLocale
+  // The toggle CONTROL itself ALWAYS renders in the learner's NATIVE language
+  // (#20b) — so they can always read it to turn immersion back OFF, even while the
+  // rest of the UI is in the target. This is the one surface immune to immersion.
+  const nativeLocale = learnerPair.native
 
   // Validate the data-driven content against the frozen contracts (fail loud).
   // The topology is no longer a hand-authored plaza JSON — it's SYNTHESIZED from
@@ -452,7 +462,13 @@ function buildWorld(
   const harborAnchor = city.getAnchor("harbor")
   const bridgeAnchor = city.getAnchor("bridge_n")
   const cityWater = (layout as unknown as {
-    water?: { waterZ: number; bridgeX: number; bridgeHalfW: number }
+    water?: {
+      waterZ: number
+      bankZ: number
+      farPromZ: number
+      bridgeX: number
+      bridgeHalfW: number
+    }
   }).water
   const waterEdgeZ = cityWater?.waterZ ?? bridgeAnchor?.z ?? null
   const riverwalk =
@@ -480,6 +496,20 @@ function buildWorld(
           reducedMotion,
         })
       : null
+  // The real 3D stone ARCH bridge (#29) — raised deck + parapets + arches on piers
+  // in the river, water passing UNDERNEATH. Spans bankZ→farPromZ at the bridge gap;
+  // purely visual (places' collider already opens the corridor, quest-flow's traverse
+  // keys off bridge_n), so it's a static mesh built once + disposed with the world.
+  const bridge = cityWater
+    ? buildBridge(world.scene, {
+        x: cityWater.bridgeX,
+        nearZ: cityWater.bankZ,
+        farZ: cityWater.farPromZ,
+        halfWidth: cityWater.bridgeHalfW,
+        waterY: 0.07,
+        palette: scene.palette,
+      })
+    : null
   // Proximity-streamed ambient strollers + stall-keepers (density follows you).
   const population = createPopulation(world.scene, {
     layout,
@@ -1295,6 +1325,7 @@ function buildWorld(
     population.dispose()
     harborWater?.dispose()
     riverwalk?.dispose()
+    bridge?.dispose()
     fountain.dispose()
     cameraFade.dispose()
     player.dispose()

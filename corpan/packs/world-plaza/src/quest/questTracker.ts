@@ -155,6 +155,12 @@ export interface QuestTrackerHandle {
   refresh(): void
   /** Re-skin the lore block + accent on scene flip (Antigua ⇄ Tokyo). */
   setScene?(place: CapsulePlace, accent?: string): void
+  /**
+   * Swap the localized copy IN PLACE (immersion toggle → new UI locale) and
+   * re-render — no teardown, no world rebuild. The capsule's text re-resolves;
+   * its position/expansion/subscriptions are untouched.
+   */
+  relocalize(strings: Partial<QuestTrackerStrings>): void
   /** Programmatically collapse the expanded card (e.g. when chrome recedes). */
   collapse(): void
   dispose(): void
@@ -552,6 +558,11 @@ export function mountQuestTracker(
     setScene(next: CapsulePlace, accent?: string): void {
       place = next
       if (accent) root.style.setProperty("--wp-status-accent", accent)
+      if (expanded) renderDetail()
+    },
+    relocalize(next: Partial<QuestTrackerStrings>): void {
+      strings = { ...DEFAULT_STRINGS, ...next }
+      render()
       if (expanded) renderDetail()
     },
     collapse(): void {

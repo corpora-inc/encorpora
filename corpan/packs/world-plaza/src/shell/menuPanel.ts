@@ -87,6 +87,11 @@ export interface MenuPanelHandle {
   toggle(): boolean
   /** Switch the active section (opens the menu if closed). */
   showSection(section: MenuSectionId): void
+  /**
+   * Swap the localized copy in place (immersion toggle → new UI locale). If the
+   * panel is open it re-renders immediately; otherwise the next open uses it.
+   */
+  setStrings(strings: Partial<MenuStrings>): void
   dispose(): void
 }
 
@@ -96,7 +101,10 @@ export interface MenuPanelHandle {
 const SECTION_ORDER: MenuSectionId[] = ["map", "inventory", "quest", "badges"]
 
 export function createMenuPanel(opts: MenuPanelOptions): MenuPanelHandle {
-  const s: MenuStrings = {
+  // `let` (not const) so `setStrings` can swap the localized copy in place when the
+  // immersion toggle flips the UI locale; the panel rebuilds its DOM each open, so
+  // updating `s` (and re-rendering if currently open) re-localizes without a remount.
+  let s: MenuStrings = {
     ...DEFAULT_MENU_STRINGS,
     ...(opts.strings ?? {}),
     tabs: { ...DEFAULT_MENU_STRINGS.tabs, ...(opts.strings?.tabs ?? {}) },
@@ -347,6 +355,31 @@ export function createMenuPanel(opts: MenuPanelOptions): MenuPanelHandle {
         return
       }
       if (root) renderSection(root)
+    },
+
+    setStrings(next: Partial<MenuStrings>) {
+      s = {
+        ...DEFAULT_MENU_STRINGS,
+        ...next,
+        tabs: { ...DEFAULT_MENU_STRINGS.tabs, ...(next.tabs ?? {}) },
+      }
+      // If the panel is on screen, refresh the chrome text in place (the section
+      // body re-renders separately). The next open rebuilds from `s` regardless.
+      if (root) {
+        const set = (sel: string, text: string) => {
+          const elx = root!.querySelector<HTMLElement>(sel)
+          if (elx) elx.textContent = text
+        }
+        set(".wp-menu-title", s.title)
+        set(".wp-menu-resume", s.resume)
+        set(".wp-menu-leave", s.leave)
+        root.querySelectorAll<HTMLElement>("[data-wp-menu-tab]").forEach((b) => {
+          const id = b.getAttribute("data-wp-menu-tab") as MenuSectionId | null
+          if (id) b.textContent = s.tabs[id]
+        })
+        const close = root.querySelector<HTMLElement>(".wp-menu-close")
+        if (close) close.setAttribute("aria-label", s.close)
+      }
     },
 
     dispose() {

@@ -122,6 +122,8 @@ export interface Shell {
   isPaused(): boolean
   /** Persist now (pause/exit/visibility). No-op if no snapshot provider. */
   save(): void
+  /** Swap the menu's localized copy in place (immersion toggle → new UI locale). */
+  relocalizeMenu(strings: Partial<MenuStrings>): void
   dispose(): void
 }
 
@@ -211,6 +213,7 @@ export function createShell(opts: ShellOptions): Shell {
     requestExit: runExit,
     isPaused: () => menu.isOpen(),
     save: persist,
+    relocalizeMenu: (strings) => menu.setStrings(strings),
     dispose: () => {
       menuButton?.dispose()
       menu.dispose()

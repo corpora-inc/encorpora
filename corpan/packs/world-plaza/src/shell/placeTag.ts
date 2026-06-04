@@ -71,13 +71,19 @@ export interface PlaceTagHandle {
   setScene(setting: PlaceSetting, accent?: string): void
   /** Re-read the presence count (call when net presence changes). */
   refresh(): void
+  /** Re-resolve the online/presence words for a new UI locale in place (immersion). */
+  relocalize(lang: string): void
   dispose(): void
 }
 
 export function mountPlaceTag(opts: PlaceTagOptions): PlaceTagHandle {
   ensureStyles()
 
-  const strings = resolveStrings(opts)
+  // `let` (not const) so `relocalize` can re-resolve the online/presence words for
+  // a new UI locale in place (immersion toggle) without a remount. Place/era are
+  // language-neutral proper nouns; only these labels localize.
+  let lang = opts.lang ?? "en"
+  let strings = resolveStrings({ ...opts, lang })
   let setting = opts.setting
 
   const root = document.createElement("div")
@@ -162,6 +168,11 @@ export function mountPlaceTag(opts: PlaceTagOptions): PlaceTagHandle {
       setting = next
       if (accent) root.style.setProperty("--wp-placetag-accent", accent)
       renderSetting()
+    },
+    relocalize(nextLang: string): void {
+      lang = nextLang
+      strings = resolveStrings({ ...opts, lang })
+      renderPresence()
     },
     refresh: renderPresence,
     dispose(): void {
