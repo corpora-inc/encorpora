@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **World detail pass: plaza fountain, ambient life, harbor water & atmosphere
+  (C5/C6/C7).** The spawn plaza now has a real **HD-2D stone fountain**
+  centerpiece (`src/world/fountain.ts`) at the `fountain` anchor — an octagonal
+  plinth, basin with a still water disc, a tiered pedestal/bowls/finial, and a
+  faint running water jet, with a gentle water shimmer. Its matching **circle
+  collider is restored** in `src/city/collision.ts` (now backed by real geometry,
+  streaming in/out with the fountain's chunk). The city now feels populated near
+  you: a new **proximity-streamed ambient-life layer** (`src/city/population.ts`)
+  adds a small recycled pool of background strollers that **wake near the player
+  and sleep when far** (density follows you, count never grows), plus a pooled set
+  of **stall-keepers** that wake at the markets nearest you — all lightweight
+  half-res billboards that are never talk targets, so the crowd/Talk layer is
+  untouched. A premium atmosphere touch adds a breathing **harbor water sheen**
+  out at the quay (`src/world/harborWater.ts`, a flat sheet that never occludes
+  the horizon) on top of the existing warm key/rim light + haze grading. All
+  motion honours `prefers-reduced-motion` (`src/world/reducedMotion.ts`). Bounded
+  + additive: no change to the streaming spine; verified no per-frame regression
+  (steady-state frame time unchanged) and only +2 MB scene-texture memory
+  (123 → 125 MB).
 - **Deterministic, hand-held quest loop + juicy completion interlude (A2).**
   The quest loop no longer depends on the model: every objective NPC now offers
   its step's challenge via an always-present **"Begin" affordance** (a new

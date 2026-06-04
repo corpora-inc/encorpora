@@ -1,8 +1,7 @@
-import { RoomTopology, Scene as WorldSceneSchema, NpcRole, Quest, type ChallengeContext, type ChallengeToolId } from "@world-plaza/contracts"
+import { RoomTopology, Scene as WorldSceneSchema, NpcRole, type LearnerPair, type ChallengeContext, type ChallengeToolId, type Quest as QuestT } from "@world-plaza/contracts"
 import sceneJson from "../content/scenes/corpan-city.json"
 import { generateCity, mountCity } from "./city"
 import rolesJson from "../content/npc/roles.json"
-import questJson from "../content/quests/es-guadalajara.json"
 import specialJson from "../content/npc/special.json"
 import { createWorldEngine } from "./world/engine"
 import { applyAtmosphere } from "./world/atmosphere"
@@ -26,7 +25,10 @@ import {
   type CorpanChallengeHostApi,
 } from "./challenges/host"
 import { inventory } from "./economy/inventory"
-import { createQuestEngine } from "./quest/questState"
+import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/questState"
+import { getQuest, entryQuestId, nextQuests, firstStep } from "./quest/questCatalog"
+import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
+import { resolveEntry, bindStackReactivity, samePair } from "./entry"
 import { createSpecialNpcResolver } from "./quest/specialNpc"
 import { resolveStepContent, challengeSatisfiesStep } from "./quest/questContent"
 import { mountQuestTracker } from "./quest/questTracker"
@@ -50,6 +52,11 @@ import {
   type TaxiDestination,
 } from "./vignettes"
 import { createPortalAffordance } from "./world/portalAffordance"
+import { createRoadArrow } from "./wayfinding/roadArrow"
+import { buildFountain } from "./world/fountain"
+import { buildHarborWater } from "./world/harborWater"
+import { createPopulation } from "./city/population"
+import { prefersReducedMotion } from "./world/reducedMotion"
 
 /**
  * World Plaza — game wiring. Onboarding (pick a safe name, dress an avatar) →
@@ -85,6 +92,10 @@ function saveIdentity(id: OnboardingResult) {
 export function startGame(container: HTMLElement, host?: unknown): GameHandle {
   let disposed = false
   let teardownWorld: (() => void) | null = null
+  let stopReactivity: (() => void) | null = null
+  // The pair the world is CURRENTLY bound to (read by the reactive subscription to
+  // decide whether a stack flip actually changed the derived default pair).
+  let currentPair: LearnerPair | null = null
   const npcHost = (host as NpcHostApi | undefined) ?? createMockHost()
   // Corpus/TTS/STT-backed host for challenges (real corpan host, else a mock
   // with a built-in EN↔ES corpus so challenges run standalone in the browser).
@@ -92,29 +103,71 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
     ? createChallengeHost(host as CorpanChallengeHostApi)
     : mockChallengeHost()
 
-  const begin = (identity: OnboardingResult) => {
+  // Build (or REBUILD) the world for a given pair. Tearing down + rebuilding is
+  // safe because all per-Track state keys on the pair; this is the reactive path.
+  const buildFor = (identity: OnboardingResult, learnerPair: LearnerPair) => {
     if (disposed) return
-    teardownWorld = buildWorld(container, npcHost, chHost, identity)
+    teardownWorld?.()
+    currentPair = learnerPair
+    teardownWorld = buildWorld(container, npcHost, chHost, identity, learnerPair)
+  }
+
+  const begin = async (identity: OnboardingResult) => {
+    if (disposed) return
+    // Premium welcome + (multi-target) language CHOOSER; derives the pair from the
+    // LIVE Corpán stack (replaces the hardcoded `quest.learnerPair`). `container`
+    // is the host's accepted render surface; the surfaces mount a fullscreen root
+    // into it (same lifecycle as onboarding).
+    let learnerPair: LearnerPair
+    try {
+      const res = await resolveEntry({
+        host,
+        container,
+        accent: "#e8b54a",
+        playerName: identity.name.displayName,
+        place: "Corpan City",
+      })
+      learnerPair = res.learnerPair
+    } catch (err) {
+      console.error("[world-plaza] entry resolve failed; using default pair:", err)
+      learnerPair = { target: "es", native: "en" } as LearnerPair
+    }
+    if (disposed) return
+    buildFor(identity, learnerPair)
+
+    // REACTIVITY: exit → flip the stack in Corpán → return rebinds the world to the
+    // new stack's first target. Stored unsub fires in `dispose`.
+    stopReactivity?.()
+    stopReactivity = bindStackReactivity(
+      host,
+      () => currentPair ?? learnerPair,
+      (nextPair) => {
+        if (currentPair && samePair(nextPair, currentPair)) return
+        buildFor(identity, nextPair)
+      },
+    )
   }
 
   const saved = loadIdentity()
   if (saved) {
-    begin(saved)
+    void begin(saved)
   } else {
     runOnboarding(container, { playerId: "player-local" })
       .then((res) => {
         saveIdentity(res)
-        begin(res)
+        return begin(res)
       })
       .catch((err) => {
         console.error("[world-plaza] onboarding failed; using defaults:", err)
-        begin(defaultIdentity())
+        return begin(defaultIdentity())
       })
   }
 
   return {
     dispose: () => {
       disposed = true
+      stopReactivity?.()
+      stopReactivity = null
       teardownWorld?.()
       teardownWorld = null
       container.replaceChildren()
@@ -122,19 +175,46 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
   }
 }
 
+const ACTIVE_QUEST_KEY = "wp:activeQuest:v1"
+
 function buildWorld(
   container: HTMLElement,
   npcHost: NpcHostApi,
   chHost: ChallengeRuntimeHost,
   identity: OnboardingResult,
+  learnerPair: LearnerPair,
 ): () => void {
   // Validate the data-driven content against the frozen contracts (fail loud).
   // The topology is no longer a hand-authored plaza JSON — it's SYNTHESIZED from
   // the procedurally generated Corpan City below (one big streaming map).
   const scene = WorldSceneSchema.parse(sceneJson)
   const roles = NpcRole.array().parse(rolesJson)
-  const quest = Quest.parse(questJson)
-  const learnerPair = quest.learnerPair
+
+  // ── ACTIVE QUEST model (A2) ────────────────────────────────────────────────
+  // The world is no longer pinned to ONE hardcoded quest JSON. The quest catalog
+  // owns the graph; the orchestrator owns which quest is ACTIVE and persists that
+  // choice (`wp:activeQuest:v1`). A brand-new player auto-starts `entryQuestId`
+  // (the dead-simple 1-step beginner quest). These are `let` because the
+  // completion interlude's next-quest pick RE-POINTS the active quest mid-session.
+  const loadActiveQuestId = (): string => {
+    try {
+      const raw = localStorage.getItem(ACTIVE_QUEST_KEY)
+      if (raw && getQuest(raw)) return raw
+    } catch (err) {
+      console.warn("[world-plaza] could not read active quest:", err)
+    }
+    return entryQuestId
+  }
+  const saveActiveQuestId = (id: string) => {
+    try {
+      localStorage.setItem(ACTIVE_QUEST_KEY, id)
+    } catch (err) {
+      console.warn("[world-plaza] could not persist active quest:", err)
+    }
+  }
+  let quest: QuestT = getQuest(loadActiveQuestId()) ?? getQuest(entryQuestId)!
+  if (!quest) throw new Error("[world-plaza] no quests in catalog")
+  saveActiveQuestId(quest.id)
 
   // ---- DOM: canvas + overlay (joysticks, dialogue, toasts, title) ----
   const rootEl = document.createElement("div")
@@ -215,11 +295,26 @@ function buildWorld(
   // crowd so the player finds each where its map marker points. (The resolver also
   // drives the M2 dialogue marking + the engine's delivery routing elsewhere.)
   const specialNpc = createSpecialNpcResolver(specialJson)
-  const questSpecials = specialNpc.forQuest(quest.id).map((s) => ({
+  // Station the active quest's special NPCs at their anchors…
+  const specialEntries = specialNpc.forQuest(quest.id).map((s) => ({
     anchorId: s.anchorId,
     name: s.name,
     role: s.role,
   }))
+  // …PLUS a generic OBJECTIVE NPC at every step anchor the active quest points at
+  // that has no authored special (e.g. the entry quest `es-cafe-travel` → `plaza`).
+  // This guarantees the deterministic Begin chip is always reachable: an NPC stands
+  // where the objective marker points, and the forced-offer path keys off the step
+  // anchor matching the engaged anchor. (The crowd is built once for the world's
+  // INITIAL active quest; the interlude's later quest pick re-points the markers +
+  // capsule, and shares the spawn-`plaza` objective NPC across the beginner arc.)
+  const specialAnchors = new Set(specialEntries.map((s) => s.anchorId))
+  const objectiveStations = quest.steps
+    .map((st) => st.anchorId)
+    .filter((id): id is string => !!id && !specialAnchors.has(id))
+    .filter((id, i, arr) => arr.indexOf(id) === i)
+    .map((anchorId) => ({ anchorId, name: "a local", role: "townsperson" }))
+  const questSpecials = [...specialEntries, ...objectiveStations]
   // Autonomous wandering townsfolk — EVERY one gets a generated persona (passing
   // `scene` gives them era/place/language flavour), so all are talkable. The quest
   // specials are bound as STATIONED agents hovering at their anchors.
@@ -279,6 +374,39 @@ function buildWorld(
   }
   toast(`Welcome, ${identity.name.displayName}`)
 
+  // ── World detail (C): real fountain centrepiece + harbor water + ambient
+  // population. Each is an ADDITIVE, bounded layer (its own create + per-frame
+  // update + dispose) that does NOT touch the city streaming spine. All honour
+  // prefers-reduced-motion (still water / planted figures).
+  const reducedMotion = prefersReducedMotion()
+  // The plaza fountain at the `fountain` anchor (0,0). The collision field already
+  // restores a matching circle collider for the `fountain` anchor (city/collision),
+  // so this just adds the visible HD-2D volume the collider stands for.
+  const fountainAnchor = city.getAnchor("fountain")
+  const fountain = buildFountain(world.scene, {
+    palette: scene.palette,
+    reducedMotion,
+  })
+  fountain.root.position.set(fountainAnchor?.x ?? 0, 0, fountainAnchor?.z ?? 0)
+  // The harbour water sheen along the +Z waterfront (centred on the harbor anchor).
+  const harborAnchor = city.getAnchor("harbor")
+  const harborWater = harborAnchor
+    ? buildHarborWater(world.scene, {
+        harbor: { x: harborAnchor.x, z: harborAnchor.z },
+        bounds: layout.bounds,
+        palette: scene.palette,
+        reducedMotion,
+      })
+    : null
+  if (!harborAnchor) console.warn("[world-plaza] no `harbor` anchor — harbor water disabled")
+  // Proximity-streamed ambient strollers + stall-keepers (density follows you).
+  const population = createPopulation(world.scene, {
+    layout,
+    obstacles,
+    palette: scene.palette,
+    reducedMotion,
+  })
+
   // ── Economy + Badges HUD ──────────────────────────────────────────────────
   // Swap the REAL procedural icon renderer into the currency catalog (replaces
   // the stub disc with beveled coins/bills/ingots — zero call-site change).
@@ -310,11 +438,78 @@ function buildWorld(
   // It reads inventory + authored item rules to know each step's state (needs-item
   // / ready-to-deliver / done), GATES advancement (the model can't fake progress),
   // and drives both the tracker HUD and the challenge's content selection.
-  const questEngine = createQuestEngine({
+  // The LIVE inner engine for the active quest (`let` — re-created by
+  // `setActiveQuest` when the completion interlude picks the next quest).
+  let activeEngine: QuestEngine = createQuestEngine({
     quest,
     inventory: inventory(),
     playerId: identity.name.playerId,
   })
+  // A stable DELEGATING proxy every consumer (tracker, quest section, mapView,
+  // the focus/challenge path) holds. On `setActiveQuest` we swap `activeEngine`
+  // and re-subscribe the proxy's listeners to it, then emit `change` so they
+  // re-render against the new quest — so the capsule/section/markers re-point
+  // WITHOUT re-mounting any UI (they captured the proxy, not the inner engine).
+  const proxyListeners = new Set<(e: QuestEvent) => void>()
+  let unsubActive: (() => void) | null = activeEngine.subscribe((e) => {
+    for (const fn of proxyListeners) {
+      try {
+        fn(e)
+      } catch (err) {
+        console.error("[world-plaza] quest proxy subscriber threw:", err)
+      }
+    }
+  })
+  const questEngine: QuestEngine = {
+    state: () => activeEngine.state(),
+    quest: () => activeEngine.quest(),
+    currentStep: () => activeEngine.currentStep(),
+    stepState: (id) => activeEngine.stepState(id),
+    currentStepState: () => activeEngine.currentStepState(),
+    isStepSatisfied: (id) => activeEngine.isStepSatisfied(id),
+    markStepBeaten: (id) => activeEngine.markStepBeaten(id),
+    isStepBeaten: (id) => activeEngine.isStepBeaten(id),
+    advance: (id) => activeEngine.advance(id),
+    getQuestMarkers: () => activeEngine.getQuestMarkers(),
+    subscribe: (fn) => {
+      proxyListeners.add(fn)
+      return () => proxyListeners.delete(fn)
+    },
+    reset: () => activeEngine.reset(),
+  }
+
+  // Swap the world's ACTIVE quest (the completion-interlude pick). Rebuilds the
+  // inner engine, re-points `quest` (so `anchorName`/markers/content follow it),
+  // persists the choice, re-subscribes the proxy, and fires `change` so the
+  // capsule + quest section + map markers re-render against the new objective.
+  const setActiveQuest = (next: QuestT) => {
+    saveActiveQuestId(next.id)
+    quest = next
+    unsubActive?.()
+    activeEngine = createQuestEngine({
+      quest: next,
+      inventory: inventory(),
+      playerId: identity.name.playerId,
+    })
+    unsubActive = activeEngine.subscribe((e) => {
+      for (const fn of proxyListeners) {
+        try {
+          fn(e)
+        } catch (err) {
+          console.error("[world-plaza] quest proxy subscriber threw:", err)
+        }
+      }
+    })
+    // Re-arm the completion listener on the NEW engine + nudge consumers.
+    armCompletionListener()
+    for (const fn of proxyListeners) {
+      try {
+        fn({ type: "change" })
+      } catch (err) {
+        console.error("[world-plaza] quest proxy subscriber threw:", err)
+      }
+    }
+  }
 
   // Map: a pure consumer of the MapView bundle — topology + live player position +
   // remote players (empty until the net client lands) + quest markers from the
@@ -358,7 +553,13 @@ function buildWorld(
     if (focus.getFocused()) return "focused"
     return "world"
   }
-  const refreshChrome = () => chrome.set(deriveChromeState())
+  const refreshChrome = () => {
+    const next = deriveChromeState()
+    // When a blocking surface takes over (dialogue/challenge/menu), collapse the
+    // expanded Status Capsule so it doesn't linger over the receded chrome (G).
+    if (next !== "world" && next !== "focused") tracker?.collapse?.()
+    chrome.set(next)
+  }
 
   // A friendly NPC/anchor name for the capsule + quest section hints ("the
   // boatman" at `docks`), resolved through the special-NPC content when present.
@@ -382,6 +583,18 @@ function buildWorld(
     // authored clue/questFacts dialogue (M1) + the deterministic hand-over chain.
     // Generic wanderers get none of this → their dialogue is byte-identical to before.
     const special = specialNpc.forAnchor(it.anchorId, quest.id)
+    // DETERMINISTIC objective offer (A2): when the engaged NPC stands AT the active
+    // step's anchor, force a "Begin" chip for that step's challenge — so EVERY
+    // objective NPC offers its step's challenge, not just the authored special.json
+    // ones. (`repeat-after` is the safe default tool for steps without a `toolId`.)
+    const curStep = questEngine.currentStep()
+    const isObjectiveNpc = !!curStep?.anchorId && it.anchorId === curStep.anchorId
+    const forcedOffer = isObjectiveNpc
+      ? {
+          tool: (curStep?.toolId ?? "repeat-after") as ChallengeToolId,
+          chipLabel: vt("quest.begin") === "quest.begin" ? "Begin" : vt("quest.begin"),
+        }
+      : undefined
     openDialogue = npcRuntime.open({
       npcRole: role,
       scene,
@@ -389,6 +602,7 @@ function buildWorld(
       learnerPair,
       container: overlay,
       npcName: special ? specialNpc.displayName(special, undefined, learnerPair.target) : undefined,
+      ...(forcedOffer ? { forcedOffer } : {}),
       ...(special ? { questEngine, inventory: inventory(), isSpecial: true } : {}),
       // A clue-giver special NPC deterministically GRANTS its item (idempotent) +
       // fires a juicy "🎁 Received…" reveal — never the model claiming it.
@@ -425,10 +639,14 @@ function buildWorld(
               result: { toolId: intent.tool, score: res.score, rewards: res.rewards },
               context: ctx,
             })
-            // Advance the quest IF this challenge satisfies the current step
-            // (deterministically gated inside the engine — never faked).
+            // Advance the quest IF the engaged NPC is the CURRENT step's objective
+            // NPC and this challenge satisfies that step. A challenge-gated step now
+            // REQUIRES the beaten flag before `advance` is honored, so we mark it
+            // beaten THEN advance (the deterministic referee — never the model).
             const step = questEngine.currentStep()
-            if (step && challengeSatisfiesStep(step, intent.tool, res.score)) {
+            const atObjective = !!step?.anchorId && engagedId === step.anchorId
+            if (step && atObjective && challengeSatisfiesStep(step, intent.tool, res.score)) {
+              questEngine.markStepBeaten(step.id)
               questEngine.advance(step.id)
             }
           })
@@ -481,6 +699,70 @@ function buildWorld(
     void uiLocale
     return key
   }
+
+  // ── Quest completion interlude (A2) ─────────────────────────────────────────
+  // On the engine's `complete` event we PAUSE the world and run the standalone
+  // celebration → 2–3-way next-quest picker. Picking a card RE-POINTS the active
+  // quest (engine + markers + capsule). The interlude is its own `await …show()`
+  // (NOT a host vignette). `armCompletionListener` re-subscribes onto the current
+  // inner engine each time `setActiveQuest` swaps it.
+  let unsubComplete: (() => void) | null = null
+  let interludeOpen = false
+  const buildNextOptions = (questId: string): NextQuestOption[] =>
+    nextQuests(questId).map((q) => {
+      const fs = firstStep(q)
+      return {
+        id: q.id,
+        title: q.title,
+        whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : q.title,
+        whatToDo: fs?.label ?? q.narrative,
+        motif: fs?.anchorId,
+      }
+    })
+  const onComplete = async (completed: QuestT) => {
+    if (interludeOpen) return
+    interludeOpen = true
+    // Pause the world while the interlude owns the screen (the menu chrome state
+    // recedes the band/pack the same way the menu does).
+    setWorldActive(false)
+    chrome.set("menu")
+    try {
+      const interlude = createQuestInterlude({
+        overlay,
+        completedQuestTitle: completed.title,
+        reward: {
+          xp: completed.rewards.xp,
+          coins: completed.rewards.coins,
+          items: completed.rewards.grant,
+        },
+        newItems: completed.rewards.grant,
+        options: buildNextOptions(completed.id),
+        accent: scene.palette?.accent,
+        iconRenderer,
+        locale: learnerPair.native,
+        t: (key, params) => vt(key, params),
+      })
+      const picked = await interlude.show()
+      if (picked) {
+        const next = getQuest(picked.chosenQuestId)
+        if (next) setActiveQuest(next)
+        else console.warn("[world-plaza] picked unknown next quest:", picked.chosenQuestId)
+      }
+    } catch (e) {
+      console.error("[world-plaza] quest interlude failed:", e)
+    } finally {
+      interludeOpen = false
+      setWorldActive(true)
+      refreshChrome()
+    }
+  }
+  function armCompletionListener(): void {
+    unsubComplete?.()
+    unsubComplete = activeEngine.subscribe((e) => {
+      if (e.type === "complete") void onComplete(activeEngine.quest())
+    })
+  }
+  armCompletionListener()
 
   // The ONE non-trivial bind: map the thin OpenNpcArgs onto the real
   // `npcRuntime.open` by SYNTHESIZING an NpcRole from the persona seed +
@@ -704,9 +986,29 @@ function buildWorld(
   // dialogue/challenge/menu). Apply the current state immediately.
   chrome.register({ el: tracker.el, role: "band" })
   chrome.register({ el: placeTag.el, role: "band" })
+  // The corner minimap is a "map" surface — it RECEDES during a blocking surface
+  // (challenge/dialogue/menu) the same way the band does, so the map doesn't sit
+  // over an NPC chat or a centered challenge (G — chrome coherence).
+  chrome.register({ el: minimap.el, role: "map" })
   const packButton = overlay.querySelector<HTMLElement>(".wp-menu-button")
   if (packButton) chrome.register({ el: packButton, role: "pack" })
   else console.warn("[world-plaza] pack button (.wp-menu-button) not found — chrome won't govern it")
+
+  // ── On-road wayfinding arrow (G) ────────────────────────────────────────────
+  // A subtle floor marker a few steps ahead of the player pointing at the current
+  // objective's anchor. Pure consumer: it reads the live player pose + the active
+  // objective marker (resolved to a world point via the city anchor), and is
+  // ticked in the frame loop + disposed on teardown.
+  const roadArrow = createRoadArrow(world.scene, {
+    getPlayer: () => ({ ...player.getPos(), facing: player.getFacing() }),
+    getTarget: () => {
+      const obj = questEngine.getQuestMarkers().find((m) => m.kind === "objective")
+      if (!obj) return null
+      const a = city.getAnchor(obj.anchorId)
+      return a ? { x: a.x, z: a.z } : null
+    },
+    accent: scene.palette?.accent,
+  })
 
   // v1 is ONE world — Corpan City. The dev-only Antigua⇄Tokyo geometry flip is
   // retired here (the per-player Scene-divergence machinery stays in the contracts,
@@ -746,6 +1048,11 @@ function buildWorld(
     }
     cameraFade.update(dt)
     minimap.tick()
+    // World detail (C) + wayfinding (G) per-frame ticks (all cheap, RM-gated).
+    fountain.update(dt)
+    harborWater?.update(dt)
+    population.update(dt, p)
+    roadArrow.update(dt)
   })
 
   function teardown() {
@@ -762,12 +1069,20 @@ function buildWorld(
     if (typeof window !== "undefined")
       delete (window as unknown as { __wpEnterTaxi?: () => void }).__wpEnterTaxi
     void npcRuntime.dispose()
+    // Quest completion listener + active engine subscription.
+    unsubComplete?.()
+    unsubActive?.()
     chrome.dispose()
     placeTag.dispose()
     tracker.dispose()
     shell.dispose()
     focus.dispose()
     crowd.dispose()
+    // World detail (C) + wayfinding (G) layers.
+    roadArrow.dispose()
+    population.dispose()
+    harborWater?.dispose()
+    fountain.dispose()
     cameraFade.dispose()
     player.dispose()
     city.dispose()
