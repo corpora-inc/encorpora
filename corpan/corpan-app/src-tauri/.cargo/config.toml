@@ -3,11 +3,20 @@
 # macOS: Swift runtime for tauri-plugin-iap's Swift bridge.
 # System Swift is in the dyld shared cache; /usr/lib/swift resolves there.
 [target.x86_64-apple-darwin]
+# Pin the LINKER to Apple's clang. The Android NDK clang is first on $PATH (shell
+# profile), and rustc's default `cc` link driver would otherwise resolve to it —
+# the NDK clang segfaults linking a macOS binary. The CC_*-apple-darwin env pins
+# below fix the COMPILE side; this fixes the LINK side, so $PATH order no longer
+# matters. Permanent fix for the `clang: linker command failed / Segmentation
+# fault: 11` desktop crash — no more stripping the NDK from PATH by hand.
+linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
 ]
 
 [target.aarch64-apple-darwin]
+# Pin the LINKER to Apple's clang too (same NDK-on-$PATH reason as x86_64 above).
+linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
 ]
