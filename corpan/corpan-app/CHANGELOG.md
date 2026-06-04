@@ -34,8 +34,7 @@ Conventions: `corpan/CHANGELOGS.md`.
   word order; the brand name was inconsistently transliterated (`كوربان` →
   `Corpán`); and "stack"/"pack" chrome was rendered three different ways.
   Unified the terminology and localized the remaining English `Packs`/`Stacks`
-  labels. Also set `dir`/`lang` on the `<html>` root reactively
-  (`LanguageSynchronizer.tsx`) so RTL chrome flips as one unit, not piecemeal.
+  labels.
 
 - **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
   content-pack installer accumulated the *entire* download into an in-memory
