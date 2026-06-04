@@ -40,11 +40,31 @@ function openBaker() {
   })
 }
 
+/** Open the baker as the OBJECTIVE NPC (forcedOffer → the deterministic "Begin"
+ *  chip). Used to prove the challenge intro/segue renders as the Play-row caption
+ *  by the button, NEVER as a dialog bubble. */
+function openObjective() {
+  handle?.close()
+  handle = runtime.open({
+    npcRole: roles.find((r) => r.id === "cafe_counter")!,
+    scene,
+    quest,
+    learnerPair: { target: "es", native: "en" },
+    container: stage,
+    npcName: "Doña Marta",
+    forcedOffer: { tool: "say-it-back", chipLabel: "Begin" },
+    onIntent: (intent) => {
+      intents.push(intent)
+    },
+  })
+}
+
 openBaker()
 
 // ---- dev/QA observability hooks (no gameplay logic) ----
 ;(window as unknown as Record<string, unknown>).__wpNpc = {
   send: (text: string) => handle?.send(text),
+  openObjective,
   intents: () => intents.map((i) => ({ ...i })),
   bubbles: () =>
     Array.from(document.querySelectorAll(".wp-npc-msg")).map((el) => ({

@@ -185,9 +185,9 @@ function resolveStrings(opts: PlaceTagOptions): PlaceTagStrings {
     return out && out !== key ? out : interpolate(fallback, params)
   }
   const defaults: PlaceTagStrings = {
-    online: (n) => tr("wp.placetag.online", "{n} online", { n }),
+    online: (n) => tr("placetag.online", "{n} online", { n }),
     presenceAria: (n) =>
-      tr("wp.placetag.presenceAria", n === 1 ? "1 player nearby" : "{n} players nearby", { n }),
+      tr("placetag.presenceAria", n === 1 ? "1 player nearby" : "{n} players nearby", { n }),
   }
   return { ...defaults, ...(opts.strings ?? {}) }
 }

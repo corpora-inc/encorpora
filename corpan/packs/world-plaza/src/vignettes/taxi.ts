@@ -94,7 +94,6 @@ export function createTaxiVignette(opts: TaxiOptions = {}): Vignette {
         return s
       }
       const accent = scene.palette?.accent ?? "#e8b54a"
-      const targetVoice = scene.npcSkins?.[opts.driverId ?? "taxi-driver"]?.voiceHint
       const destinations =
         opts.destinations && opts.destinations.length ? opts.destinations : DEMO_DESTINATIONS
 
@@ -171,7 +170,10 @@ export function createTaxiVignette(opts: TaxiOptions = {}): Vignette {
           t("vignette.taxi.fallback.smalltalk", "Lovely day for a drive, isn't it?"),
           t("vignette.taxi.fallback.prompt", "Just tell me where, and we'll be off."),
         ],
-        voiceCode: targetVoice,
+        // The driver speaks the language you're LEARNING (target), and the runtime
+        // picks a sticky per-NPC voice within that language. NOT the scene's old
+        // `voiceHint` (that re-introduced the ES-voice-for-EN-text mismatch, R2-2).
+        voiceCode: learnerPair.target,
         starterChips: [
           t("vignette.taxi.chip.where", "Where to?"),
           t("vignette.taxi.chip.weather", "Nice weather today."),

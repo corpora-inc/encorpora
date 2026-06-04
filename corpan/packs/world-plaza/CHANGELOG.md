@@ -8,6 +8,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Localization stays current automatically (`check-translations`).** A
+  fail-loud, CI-friendly gate (`npm run check-translations`) scans for (a) any
+  catalog key missing in any of the ~46 shipped languages and (b) any user-facing
+  string in the chrome surfaces that isn't routed through the `t()` translation
+  seam — so a newly-added string surfaces as "needs translation" instead of
+  silently shipping English to 50 languages. `check-translations:fix` auto-fills
+  missing keys via the generator. The coverage half is mirrored in the test suite
+  so `npm test` gates it too. (Internal tooling; see `docs/LOCALIZATION.md` §8.)
+- **Total immersion toggle — turn the whole game into your target language.** A
+  dignified, opt-in switch (top of the menu's Quest section) flips the entire
+  interface from your native language into the language you're learning: every
+  menu, hint, quest objective, the status capsule — all in the target — and the
+  NPCs stop adding native glosses while challenges become target-only. Turn it ON
+  for a language you're strong in, leave it OFF for a hard one — the setting is
+  remembered per language pair. A single-language stack is always immersed (the
+  toggle hides itself). When the target reads right-to-left (e.g. learning Arabic),
+  immersion flips the whole UI to RTL too. Built on one pure resolver
+  (`src/immersion/immersion.ts`) every surface consults — `uiLocale()` picks
+  native-or-target, so nothing can leak. See `docs/IMMERSION_TOGGLE.md`.
+- **The whole interface now speaks your language — in ~50 languages, right-to-left
+  too (R2-4 / R2-5).** Every UI chrome string (the welcome, the language chooser,
+  onboarding, the menu, the status capsule, quest hints/progress, the quest-
+  complete interlude, the presence pip) renders in the language you KNOW — your
+  Corpán stack's primary language — instead of always-English. The first thing you
+  see ("Good morning, …") greets a Spanish speaker in Spanish. When your language
+  reads right-to-left (Arabic, Hebrew, Farsi, Urdu) the entire chrome mirrors to
+  RTL. Built on the proven repo i18n pattern: one English source-of-truth catalog
+  (`src/i18n/strings.ts`) generated into the full Corpán language set
+  (`tools/gen_i18n.py`), a `t(key, native)` resolver that collapses regional
+  variants and never shows a blank, and `applyDir()` for RTL. See
+  `docs/I18N_RTL.md`.
+- **Quests are now impossible to miss: a glowing objective NPC beacon.** Every
+  active quest step's objective NPC is marked by an unmissable, self-lit beacon —
+  a tall light shaft, a bobbing "this one" chevron over the head, and a ground
+  halo ring at the feet (`src/wayfinding/objectiveBeacon.ts`) — that hovers over
+  the NPC's live position so you can see who to talk to from across the plaza. The
+  beacon + the on-road arrow + the map star now all resolve through one shared
+  live-objective locator (`src/quest/objectiveLocator.ts`), so they always point
+  at the same person. The three beginner quests (café / market / directions) get
+  named helper NPCs at their step anchors (`content/npc/special.json`) instead of
+  an anonymous "a local". This fixes the long-standing "I stand on the star and
+  nothing happens — where's the NPC?" — the objective NPC is now visible, glowing,
+  and talkable, with the deterministic Begin → win → advance loop already in place.
 - **World detail pass: plaza fountain, ambient life, harbor water & atmosphere
   (C5/C6/C7).** The spawn plaza now has a real **HD-2D stone fountain**
   centerpiece (`src/world/fountain.ts`) at the `fountain` anchor — an octagonal
@@ -79,6 +122,74 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Scoped `<style data-wp-entry>` (no shared `styles.css` edits); reuses the
   onboarding/vignette fullscreen-DOM lifecycle. See `src/entry/INTEGRATION.md`
   for the `game.ts` wiring.
+
+### Fixed
+- **ALL challenge-framing text is now out of the dialog and lives by the launch
+  button.** Every line that introduces or frames a challenge — the pre-challenge
+  invite/segue ("let's see how fast you are"), the "play another" re-offer, and
+  (already, on the challenge card) the instruction line ("Which is it?") — renders
+  as a small quiet caption next to the Begin/Play button, never as an NPC dialog
+  bubble, and is never spoken. The pre-challenge segue moved from
+  `ui.endNpcTurn(segue)` + `speak(segue)` in the chat log to the Play-row caption
+  (`dialogueUI.setPlayOffer(show, label, caption)` + `.wp-npc-play-caption`); the
+  objective-NPC "Begin" path and the LLM offer path both flow through that one
+  caption. The NPC's own conversational lines still stream into the log and are
+  voiced as before. Guarded by a regression test
+  (`src/npc/challengeText.test.ts`) asserting the segue is by the button, NOT in
+  the log, and never passed to TTS, plus a screenshot check in `qa/npc.mjs`.
+- **Bailing out of a challenge no longer says "Nicely done!"** Dismissing a
+  challenge (the ✕ button, ESC, or a backdrop tap) is now treated as a NEUTRAL
+  skip — no reward reveal, no win juice, and the quest step is NOT marked beaten
+  or advanced. Only an actual completion celebrates. `runChallenge` now tags every
+  result with `outcome: "completed" | "aborted"` (`src/challenges/registry.ts` +
+  the `ChallengeResultPlus` contract), and the game's post-challenge handler early-
+  returns on an abort.
+- **Challenge instruction text is now a quiet caption, not a spoken NPC bubble.**
+  The meta-instruction ("Which is it? Listen carefully.", "Unscramble the word",
+  etc.) renders as a small, secondary, uppercase-tracked label at the top of the
+  challenge card (`overlay.setInstruction()` + `.wp-ch-instruction`), reserved
+  apart from the big bold prompt which now carries only the actual STIMULUS (the
+  phrase to read/say, the word to build). Instructions were already never passed
+  to TTS — only the target-language stimulus is spoken — so the spoken register
+  (NPC dialogue + the challenge audio you must identify) stays intact while the
+  instruction reads as the widget's own chrome.
+- **NPC TTS no longer speaks the target text in a WRONG-LANGUAGE voice (R2-2,
+  on-device).** On a device with no installed target-language voice (e.g. an
+  ES-locale device learning EN), `listVoices("en")` returned voices but none were
+  English; `npcVoice` USED to "keep the full list" and deterministically pin a
+  Spanish voiceId → `speakVoice("en", text, esVoiceId)` → English NPC text spoken
+  in a Spanish voice. Now the candidate set is STRICTLY voices whose own
+  `.language` matches the target; if none match we pin NOTHING and fall back to
+  language-only `speak(target, text)` (the native plugin then picks a
+  target-language voice from `language`), so a non-target voice is never pinned. A
+  PIN-SITE language guard double-checks before `speakVoice`. The sticky-voice cache
+  is now keyed by `npcId|target` (bumped to `wp:npc:voice:v2`, value `{id,language}`)
+  so a voice pinned for one target is never reused for another, and a stale
+  wrong-language pin is discarded. On-device diagnostics now log `listVoices`
+  returns + match counts + the pinned voice's language (noisy, not silent) so the
+  host's voice behavior is visible. (Companion host-side `listVoices` "keep the full
+  list" fallback flagged to the app team.)
+- **NPC language correctness — the prompt AND the voice now match the TARGET
+  language (R2-2).** Two mismatches are fixed so an NPC always teaches in the
+  language the player is LEARNING, in any language pair. (1) **Voice:** the TTS
+  voice language is now `learnerPair.target` (`src/npc/npcRuntime.ts`), not the
+  scene-derived `voiceHint` — an ES→EN NPC spoke English text through a *Spanish*
+  voice (and fed TTS a non-BCP-47 `:warm` suffix); per-NPC voice variety still
+  comes deterministically from `npcVoice.pickVoiceId` over the TARGET language's
+  voices. (2) **Prompt language:** the decisive language+behaviour directive of
+  the system prompt is now composed IN the target language and its native script
+  (new `src/npc/promptLocale.ts`, wired into `composeSystemPrompt`) — an English
+  "reply in Arabic" rail made a 4B model emit Latin-letter babble; an
+  AR-from-EN NPC now gets an Arabic directive ("تحدَّث بالعربية فقط، بأحرفها
+  العربية…") and writes Arabic. The directive is now authored **by hand for the
+  ENTIRE Corpán roster** (all 60 codes / 52 scripts — `languageNames.ts`'s 57 plus
+  `lt`/`sl`/`ne` from the chrome i18n catalog — every target primes the model in
+  its own script, not just en/es/ar), each with an `en` fallback + a
+  `registerPromptLocale()` seam (mirrors `challengeSegues`). Script-variant codes
+  resolve to their OWN entry (exact-code-first lookup), so `sr-Latn` is Latin (not
+  Cyrillic `sr`) and `pa-Arab` is Shahmukhi (not Gurmukhi `pa`). All 60 verified in
+  the correct script by the codex LLM judge + a regression test
+  (`src/npc/promptLocale.test.ts`); EN-from-AR correctly gets the English directive.
 
 ### Changed
 - **Smooth city streaming — shared city-lifetime caches + time-sliced builds.**

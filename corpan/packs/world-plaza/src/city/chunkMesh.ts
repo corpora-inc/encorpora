@@ -175,9 +175,25 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
     for (; pIndex < end; pIndex++) {
       const [species, list] = propGroups[pIndex]
       const master = cache.propMaster(species)
-      // clone shares geometry + materials (refcounted) — cheap; the clone is the
-      // chunk's own thin-instance carrier and is disposed with the chunk.
+      // clone shares geometry + materials (refcounted); the clone is the chunk's
+      // own thin-instance carrier and is disposed with the chunk.
       const mesh = master.clone(`wp-city-prop-${species}-${chunk.key}`, root) as Mesh
+      // CRITICAL (the §2 invisible-props bug): a clone SHARES the master's
+      // Geometry (Babylon clone calls `geometry.applyToMesh`). `thinInstanceSetBuffer`
+      // writes the per-instance `world0..world3` vertex buffers into that SHARED
+      // geometry (Mesh.setVerticesBuffer → _geometry.setVerticesBuffer). With many
+      // chunks cloning the SAME master, each chunk's thin-instance buffer
+      // OVERWRITES the previous chunk's on the one shared geometry — but each
+      // chunk keeps its OWN per-mesh `instancesCount`. A chunk then issues a
+      // `drawElementsInstanced` for N instances against a geometry whose `world*`
+      // buffer was last written by a DIFFERENT chunk with fewer instances →
+      // `glDrawElementsInstanced: Vertex buffer is not big enough` and the prop
+      // draw is dropped (invisible trees/benches/etc.). It reproduces in
+      // standalone too — it is NOT a headless artifact. Fix: give each chunk
+      // clone its OWN geometry so its instance buffers can't be clobbered by a
+      // sibling chunk. Materials stay shared/refcounted (copy keeps the same
+      // material refs), so this only duplicates the cheap low-poly vertex data.
+      mesh.makeGeometryUnique()
       mesh.setEnabled(true)
       mesh.isPickable = false
       const buf = new Float32Array(list.length * 16)

@@ -78,7 +78,7 @@ export const wordScramble: ToolImpl = {
       })()
 
       clear(overlay.body)
-      overlay.setPrompt(S.unscramble, S.meansHint(chosen.native))
+      overlay.setInstruction(`${S.unscramble} · ${S.meansHint(chosen.native)}`)
       const slot = h("div", "wp-ch-slot")
       const tray = h("div", "wp-ch-grid wp-ch-grid--row")
       overlay.body.appendChild(slot)
@@ -170,7 +170,7 @@ export const buildSentence: ToolImpl = {
       const scrambled = shuffle(words, rnd)
 
       clear(overlay.body)
-      overlay.setPrompt(S.buildOrder, S.meansHint(chosen.native))
+      overlay.setInstruction(`${S.buildOrder} · ${S.meansHint(chosen.native)}`)
       const slot = h("div", "wp-ch-slot")
       const tray = h("div", "wp-ch-grid wp-ch-grid--row")
       overlay.body.appendChild(slot)
@@ -313,7 +313,7 @@ export const dialogueFill: ToolImpl = {
       const opts = shuffle([missing.target, ...distractors], rnd)
 
       clear(overlay.body)
-      overlay.setPrompt(S.missingLine)
+      overlay.setInstruction(S.missingLine)
       const convo = h("div", "wp-ch-convo")
       const line = (who: string, text: string, dim = false) => {
         const row = h("div", "wp-ch-line", `${who}  ${text}`)
@@ -384,7 +384,7 @@ export const spotTypo: ToolImpl = {
         const set = shuffle([typo.word, ...others], rnd)
         const ok = await new Promise<boolean>((resolve) => {
           clear(overlay.body)
-          overlay.setPrompt(S.whichTypo)
+          overlay.setInstruction(S.whichTypo)
           const grid = h("div", "wp-ch-grid wp-ch-grid--2")
           let answered = false
           set.forEach((w) => {
@@ -546,7 +546,7 @@ export const rhymeMatch: ToolImpl = {
       )
       const opts = shuffle([answer, ...distractors], rnd)
       clear(overlay.body)
-      overlay.setPrompt(S.whichRhymes(prompt))
+      overlay.setInstruction(S.whichRhymes(prompt))
       void overlay.speak(prompt)
       const grid = h("div", "wp-ch-grid wp-ch-grid--2")
       let answered = false

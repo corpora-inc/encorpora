@@ -214,7 +214,16 @@ export function buildChunkGround(
       positions.push(x0, 0, z0, x1, 0, z0, x1, 0, z1, x0, 0, z1)
       for (let k = 0; k < 4; k++) normals.push(0, 1, 0)
       uvs.push(x0 * inv, z0 * inv, x1 * inv, z0 * inv, x1 * inv, z1 * inv, x0 * inv, z1 * inv)
-      indices.push(v, v + 2, v + 1, v, v + 3, v + 2)
+      // Wind CCW as seen from ABOVE (+Y up) so the ground's TOP face is the FRONT
+      // face. THE GRAY-GROUND BUG: the old winding (v,v+2,v+1 / v,v+3,v+2) made the
+      // single face point DOWN, so Babylon's default back-face culling hid it from
+      // EVERY normal (above-ground) camera — the whole streaming ground rendered
+      // invisible and the sky/clear-colour showed through as a flat "gray plane,
+      // no roads". Corners are 0:(x0,z0) 1:(x1,z0) 2:(x1,z1) 3:(x0,z1); the CCW-
+      // from-above triangles are (0,1,2) and (0,2,3). (This reproduced in WebKit ≈
+      // WKWebView via qa/cityground.mjs; buildings were unaffected because their
+      // faces are wound correctly.)
+      indices.push(v, v + 1, v + 2, v, v + 2, v + 3)
       v += 4
     }
     const mesh = new Mesh(`wp-city-ground-${chunk.key}-${surface}`, scene)

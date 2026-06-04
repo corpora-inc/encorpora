@@ -185,6 +185,19 @@
   flex-direction: column;
   gap: 14px;
 }
+/* The quiet, SECONDARY instruction caption ("Which is it? Listen carefully.").
+ * Deliberately small + soft + uppercase-tracked so it reads as the widget's own
+ * label, never a big bold NPC-dialog bubble. It is NEVER spoken by TTS. */
+.wp-ch-instruction {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #9a7a4e;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
 .wp-ch-prompt {
   font-size: clamp(18px, 4.4vw, 23px);
   font-weight: 800;

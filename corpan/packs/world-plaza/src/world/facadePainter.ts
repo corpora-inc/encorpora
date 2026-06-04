@@ -1,5 +1,15 @@
 import type { FacadeSpec } from "./facadePaint"
 import type { PaintRequest, PaintResult } from "./painter.worker"
+// Vite `?worker&inline` bundles painter.worker.ts (and its `drawFacade` import)
+// into a SELF-CONTAINED base64 data-URL Blob worker INLINED into the main IIFE
+// chunk — NO separate `/assets/painter.worker-*.js` file. That separate file was
+// the embedded-host bug: the host's `/packs` middleware served the worker URL as
+// `index.html` (a 404 fallback), so the worker loaded HTML and died with
+// `SyntaxError: Unexpected token '<'` (→ gray buildings). An inlined Blob worker
+// has no URL to mis-resolve, so it loads in the embedded WebView too. With
+// `worker.format: "iife"` (vite.config.ts) this is a CLASSIC Blob worker — maximal
+// WKWebView compatibility (no module-worker requirement).
+import PainterWorker from "./painter.worker?worker&inline"
 
 /**
  * world/facadePainter.ts — the main-thread side of the OffscreenCanvas façade
@@ -8,9 +18,10 @@ import type { PaintRequest, PaintResult } from "./painter.worker"
  * runs in the worker — the main thread only does the cheap GPU upload.
  *
  * FEATURE-DETECTED, with a clean fallback. If the WebView lacks OffscreenCanvas,
- * module workers, `transferToImageBitmap`, or `transferControlToOffscreen`-class
- * support (older WKWebView < iOS 16.4), `supported` is false and the caller
- * paints on the main thread exactly as before. We NEVER hard-depend on the worker.
+ * workers, `transferToImageBitmap`, or `createImageBitmap` support, `supported`
+ * is false and the caller paints on the main thread exactly as before. We NEVER
+ * hard-depend on the worker, and ANY worker error trips a permanent main-thread
+ * fallback so a building is never left gray.
  *
  * The worker is created lazily on first use so a city that never paints a façade
  * (or a non-supporting WebView) spins up nothing.
@@ -57,8 +68,9 @@ export function createFacadePainter(): FacadePainter {
     if (broken) return null
     if (worker) return worker
     try {
-      // Vite worker support: bundles painter.worker.ts as a module worker.
-      worker = new Worker(new URL("./painter.worker.ts", import.meta.url), { type: "module" })
+      // Vite `?worker&inline` → a constructor that spins up the inlined Blob
+      // worker. No external URL, so it works in the embedded host's `/packs`.
+      worker = new PainterWorker()
       worker.onmessage = (ev: MessageEvent<PaintResult & { bitmap: ImageBitmap | null }>) => {
         const { id, bitmap } = ev.data
         const resolve = pending.get(id)

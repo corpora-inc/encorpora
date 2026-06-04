@@ -93,9 +93,38 @@ assert("a Challenge card rendered for the fired tool", cards.length >= 1, JSON.s
 
 await page.screenshot({ path: "/tmp/wp-npc-tool.png" })
 
+// ---- 5. PROOF: challenge intro/segue lives BY THE BUTTON, not the bubble ---
+// Reopen as the OBJECTIVE NPC (forcedOffer → deterministic "Begin" chip). The
+// challenge intro/segue must render as the Play-row caption (by the button) and
+// NEVER as a dialog bubble in the log.
+await page.evaluate(() => window.__wpNpc.openObjective())
+await page.waitForSelector(".wp-npc-play-caption", { timeout: 6000 })
+await page.waitForSelector(".wp-npc-chip-play", { timeout: 6000 })
+
+const segueProof = await page.evaluate(() => {
+  const cap = document.querySelector(".wp-npc-play-caption")
+  const playrow = document.querySelector(".wp-npc-playrow")
+  const log = document.querySelector(".wp-npc-log")
+  const caption = (cap?.textContent ?? "").trim()
+  return {
+    caption,
+    captionInPlayrow: !!playrow?.querySelector(".wp-npc-play-caption"),
+    buttonInPlayrow: !!playrow?.querySelector(".wp-npc-chip-play"),
+    // does the segue text leak into the dialog log? (must be false)
+    captionTextInLog: caption.length > 0 && (log?.textContent ?? "").includes(caption),
+    captionElInLog: !!document.querySelector(".wp-npc-log .wp-npc-play-caption"),
+  }
+})
+assert("challenge intro caption is present by the button", segueProof.caption.length > 0, JSON.stringify(segueProof.caption.slice(0, 40)))
+assert("caption + Begin button live in the play row (button chrome)", segueProof.captionInPlayrow && segueProof.buttonInPlayrow)
+assert("challenge intro text does NOT appear in the dialog log", !segueProof.captionTextInLog)
+assert("caption element is NOT inside the dialog log", !segueProof.captionElInLog)
+
+await page.screenshot({ path: "/tmp/wp-npc-segue.png" })
+
 console.log("\npageerrors:", errors.length ? errors : "none")
 const failed = results.filter((r) => !r.ok)
 console.log(`\n${results.length - failed.length}/${results.length} checks passed`)
-console.log("screenshots: /tmp/wp-npc-stream.png, /tmp/wp-npc-tool.png")
+console.log("screenshots: /tmp/wp-npc-stream.png, /tmp/wp-npc-tool.png, /tmp/wp-npc-segue.png")
 await browser.close()
 process.exit(failed.length ? 1 : 0)

@@ -115,7 +115,13 @@ export type OpenArgs = {
   container: HTMLElement
   /** A friendly NPC name for the header (else derived from role id). */
   npcName?: string
-  /** TTS voice code; falls back to the scene's npcSkin voiceHint, then target. */
+  /**
+   * EXPLICIT TTS-voice-LANGUAGE override (BCP-47). Optional escape hatch for
+   * vignettes/tests. When omitted, the voice language is `learnerPair.target` (the
+   * language being LEARNED), so the spoken voice matches the target-language text.
+   * Do NOT pass a scene-derived `voiceHint` here — that re-introduces the R2-2
+   * mismatch (Spanish voice on English text + a non-BCP-47 ":warm" suffix).
+   */
   voiceCode?: string
   /** Fired whenever the model emits a structured NpcIntent. */
   onIntent?: (intent: NpcIntent) => void
@@ -212,10 +218,28 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
 
   function open(args: OpenArgs): NpcDialogueHandle {
     const npcName = args.npcName ?? prettyRole(args.npcRole.id)
-    const voiceCode =
-      args.voiceCode ??
-      args.scene.npcSkins[args.npcRole.id]?.voiceHint ??
-      args.learnerPair.target
+    // R2-2 — the TTS VOICE language must be the TARGET language (what the player is
+    // LEARNING), so the spoken voice matches the spoken text. We deliberately do
+    // NOT fall back to `scene.npcSkins[id].voiceHint`: that hint is SCENE-derived
+    // (Spanish for the Antigua world) AND carries a non-BCP-47 ":warm" character
+    // suffix, so it spoke English NPC text through a Spanish voice (ES→EN) and fed a
+    // junk language code to TTS. Per-NPC voice VARIETY is handled separately +
+    // deterministically by `npcVoice.pickVoiceId` (hashing the npc id over the
+    // TARGET language's voice set), so the scene hint is not needed here. An
+    // explicit `args.voiceCode` override still wins (vignettes/tests).
+    const voiceCode = args.voiceCode ?? args.learnerPair.target
+
+    // R2-2 DIAGNOSTIC (noisy, not silent): make the TOP of the voice chain visible
+    // on-device so we can confirm the real values rather than guess — the TARGET we
+    // resolved, the full pair, and whether an explicit voiceCode override was in
+    // play. If this logs voiceCode="en" but TTS sounds Spanish, the cause is in the
+    // resolver/host below (see npcVoice's per-decision logs); if it logs anything
+    // other than the expected target, the pair/override upstream is the cause.
+    console.info(
+      `${LOG} open NPC "${args.npcRole.id}": voiceCode="${voiceCode}" ` +
+        `(target="${args.learnerPair.target}", native="${args.learnerPair.native}"` +
+        `${args.voiceCode ? `, OVERRIDE="${args.voiceCode}"` : ""}).`,
+    )
 
     const strings: RuntimeStrings = { ...DEFAULT_RUNTIME_STRINGS, ...(args.strings ?? {}) }
 
@@ -284,13 +308,25 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
     const visit = nextVisit(args.npcRole.id)
     const mood = selectMood(args.npcRole.id, visit)
 
+    /**
+     * The intro/segue line for the CURRENT offer, shown as the Play chip's caption
+     * (NOT a chat bubble, NOT spoken). Set when an offer is presented; consumed by
+     * `showPlayOffer`. Cleared once the chip is dismissed/launched.
+     */
+    let pendingSegue: string | null = null
+
     /** Surface the standing deterministic Play chip (no-op if no offerable tool,
-     *  or while a challenge is live). */
+     *  or while a challenge is live). The challenge intro line rides ALONG as the
+     *  chip's caption — by the button, not in the dialog log. */
     function showPlayOffer(): void {
       if (closed || challengeLive) return
       currentOffer ??= resolveStandingOffer(offerTurn)
       // The Play-chip label is TARGET-LANGUAGE (from the offer), not English.
-      ui.setPlayOffer(currentOffer != null, currentOffer?.chipLabel ?? strings.playChip)
+      ui.setPlayOffer(
+        currentOffer != null,
+        currentOffer?.chipLabel ?? strings.playChip,
+        pendingSegue ?? undefined,
+      )
     }
 
     /**
@@ -312,19 +348,20 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
      * once after the NPC's opening line so the offer appears promptly + reliably,
      * never depending on the model emitting a tool-call.
      *
-     * The challenge intro is now ALWAYS a deterministic, hardcoded TARGET-LANGUAGE
-     * segue spoken by the runtime — on BOTH the model and no-LLM paths, because the
-     * model is no longer told about challenges and never weaves an invite (CHANGE
-     * 1). No English bubble, no model involvement; then the Play chip appears.
+     * The challenge intro is a deterministic, hardcoded TARGET-LANGUAGE segue — on
+     * BOTH the model and no-LLM paths, because the model is no longer told about
+     * challenges and never weaves an invite (CHANGE 1). It is NOT a chat bubble and
+     * NOT spoken: it rides as the Play chip's CAPTION, by the activate button, so
+     * the challenge invite lives with its button and never clutters the dialog log
+     * (owner ask — recurring). The model's own conversational line still streams
+     * into the log + is voiced; only this meta-invite moves to the button.
      */
     let offerPresented = false
     function presentOffer(): void {
       if (offerPresented || closed || challengeLive) return
       if (!currentOffer) return // NPC has no offerable tool → no broken offer
       offerPresented = true
-      const segue = segueForOffer(currentOffer)
-      ui.endNpcTurn(segue)
-      void speak(segue)
+      pendingSegue = segueForOffer(currentOffer)
       showPlayOffer()
     }
 
@@ -337,6 +374,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       challengeLive = true
       // No prompt recompose needed (CHANGE 1): the system prompt never mentions
       // challenges, so launching one doesn't change what the model is told.
+      pendingSegue = null // consumed — don't let a stale caption reappear
       ui.setPlayOffer(false)
       ui.showToolCard(tool)
       // Fire the existing onIntent→runChallenge→reward path (game.ts owns it).
@@ -393,13 +431,11 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       // game (the actual reward toast/HUD is game.ts's job).
       ui.addNote(strings.congrats)
       if (currentOffer) {
-        ui.addNote(strings.playAnother)
-        // "Play another" re-uses the deterministic, hardcoded TARGET-LANGUAGE
-        // segue (new `offerTurn` → a fresh phrase), spoken by the runtime — never
-        // the model, never English (CHANGE 1).
-        const segue = segueForOffer(currentOffer)
-        ui.endNpcTurn(segue)
-        void speak(segue)
+        // The "play another" RE-OFFER framing also lives by the button (NOT a
+        // bubble, not spoken): the deterministic target-language segue (new
+        // `offerTurn` → a fresh phrase) IS the caption. Every line that frames a
+        // challenge belongs at the launch button, never in the dialog log.
+        pendingSegue = segueForOffer(currentOffer)
         showPlayOffer()
       }
     }
@@ -411,9 +447,10 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         // STICKY per-NPC voice (CHANGE 2): route through the resolver so EVERY line
         // of THIS conversation uses the SAME deterministic voice for this NPC (the
         // resolver caches + persists per-NPC, so it never rotates mid-conversation).
-        // `voiceCode` is the TTS language code (npcSkin voiceHint → target). When
-        // the host can't pin a voice (host gap), the resolver degrades to the
-        // language-only speak path.
+        // `voiceCode` is the TTS language code = `learnerPair.target` (the language
+        // being LEARNED), so the resolver enumerates + speaks from the TARGET
+        // language's voices (R2-2). When the host can't pin a voice (host gap), the
+        // resolver degrades to the language-only speak path — still TARGET language.
         await voiceResolver.speak(args.npcRole.id, voiceCode, clean)
       } catch (e) {
         // Loud, never silent (project rule). TTS failing must not break chat.

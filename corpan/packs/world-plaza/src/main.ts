@@ -45,10 +45,35 @@ registry[GAME_ID] = {
   },
 }
 
+/**
+ * Dev-only host stub so standalone (`:5174`) can exercise a NON-English NATIVE +
+ * RTL. `?stack=ar` → native Arabic (RTL chrome); `?stack=es,ja` → native Spanish
+ * studying Japanese (the multi-target chooser, both localized). Order matches the
+ * Corpán stack: `languages[0]` = native, `[1..]` = targets. Absent → no host
+ * (native falls back to "en"), exactly as before. Returns only `getStackConfig`;
+ * the challenge/NPC paths still see no host and use their mocks.
+ */
+function devHostFromUrl(): unknown {
+  try {
+    const raw = new URLSearchParams(location.search).get("stack")
+    if (!raw) return undefined
+    const languages = raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s.length >= 2)
+    if (languages.length === 0) return undefined
+    console.info("[world-plaza:dev] mock stack →", languages)
+    return { getStackConfig: () => ({ activeStackId: "dev", languages }) }
+  } catch (err) {
+    console.error("[world-plaza:dev] bad ?stack= param:", err)
+    return undefined
+  }
+}
+
 // Standalone dev mount (vite dev server / plain browser).
 const devRoot = document.getElementById("corpan-game-root")
 if (devRoot) {
-  startGame(devRoot)
+  startGame(devRoot, devHostFromUrl())
   // Dev-only: expose the live Babylon scene so a headless harness (Playwright)
   // can orbit the camera to verify prop depth. No effect when packaged.
   void import("@babylonjs/core/Engines/engineStore").then(({ EngineStore }) => {

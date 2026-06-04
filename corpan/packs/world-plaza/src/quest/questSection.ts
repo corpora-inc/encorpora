@@ -66,6 +66,13 @@ export interface QuestSectionOptions {
   accent?: string
   /** Localized copy. */
   strings?: Partial<QuestSectionStrings>
+  /**
+   * Optional controls rendered at the TOP of the section, above the quest title
+   * (e.g. the immersion toggle). The orchestrator owns the control; the section
+   * just gives it a slot. Rendered once on mount (the section re-renders its quest
+   * body on engine changes, but the controls host persists).
+   */
+  controls?: (host: HTMLElement) => void
 }
 
 /**
@@ -79,6 +86,19 @@ export function createQuestSection(opts: QuestSectionOptions): MenuSectionView {
 function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => void {
   const strings: QuestSectionStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
   const anchorName = opts.anchorName ?? ((a: string) => prettyAnchor(a))
+
+  // Controls slot (e.g. the immersion toggle) — a SIBLING above the quest body so
+  // the body's `replaceChildren()` re-render on engine changes never wipes it.
+  if (opts.controls) {
+    const controlsHost = document.createElement("div")
+    controlsHost.className = "wp-quest-controls"
+    body.appendChild(controlsHost)
+    try {
+      opts.controls(controlsHost)
+    } catch (err) {
+      console.error("[wp/questSection] controls render threw:", err)
+    }
+  }
 
   const root = document.createElement("div")
   root.className = "wp-quest"

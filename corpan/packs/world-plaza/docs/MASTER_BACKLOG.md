@@ -10,6 +10,31 @@
 
 ---
 
+## ✅ Round Log
+- **Round 1 — committed `b05a8d13`** (baseline `e745879f`). Four domains built in parallel + integrated into `game.ts`, verified end-to-end (entry → Begin → challenge → advance → complete → interlude → pick → re-point; 230/230 tests, zero console errors):
+  - **A1 Stack/Entry** → DONE. `learnerPair` from the live stack; multi-target chooser; rebinds on flip.
+  - **A2 Quest loop** → DONE. Deterministic Begin/challenge/advance; completion interlude + 2–3 next-quest picker; active-quest model.
+  - **G FAB/Chrome/Map** → DONE. FAB_POLISH P0+P1; minimap chrome-coherence; road arrow wired.
+  - **C World detail** → DONE. Fountain (+collider), harbor water, proximity population; no perf regression (~125 MB).
+- **Follow-up flagged (→ B/A2 next round):** quest-switch re-points HUD/markers/arrow but does NOT re-station the *crowd*; the shared spawn-`plaza` objective NPC covers the beginner arc, but switching to an arbitrary anchor needs a **crowd re-station API**.
+- Pre-existing headless-only WebGL `glDrawElementsInstanced` warnings (thin-instanced props) — verify on a real device; not introduced this round.
+
+---
+
+## 🔴 ROUND 2 — owner feedback (the i18n / RTL / render / voice correctness overhaul)
+
+> Core principle: **`learnerPair = { target, native }`. ALL UI/chrome/instructions render in NATIVE (the language the player KNOWS) + correctly ORIENTED (RTL for Arabic etc.). All NPC speech, system prompts, and TTS render in TARGET (the language being learned).** Today both are wrong in places.
+
+### R2-CRIT — bugs / regressions (fix first)
+- **R2-1 WORLD RENDER REGRESSION (blocking):** territory is all GRAY with **no roads**, and most objects/trees/scenery are **invisible / not rendered**. "Something in the preload must not have worked." Regression from this session's Stage-3 shared-tileable-ground + OffscreenCanvas façade-worker + population rework. MUST verify in the REAL embedded app. → domain **world-fix** (URGENT).
+- **R2-2 TTS + NPC-PROMPT LANGUAGE CORRECTNESS:** with ES→EN, NPCs speak EN text through a *Spanish* voice (confused); Arabic is worse — the Arabic NPC's system prompt appears to be in English, producing English-in-Latin-chars babble. RULE: learning **AR from EN** → NPC system prompt in **Arabic**, speaks Arabic, picks from **Arabic TTS voices**. Learning **EN from AR** → EN system prompt, speaks EN, **EN voices**. "Not complicated but must always be correct." (Ties to B2 sticky-voice — voice must come from the TARGET language's voice set, not the native's.) → domain **npc-lang**.
+- **R2-3 NPC POP-IN:** NPCs "appear out of nowhere in view," killing the illusion. Spawn/stream them OUT of the view frustum (or fade them in), never popping into existence in front of the player. → domain **world-fix**.
+
+### R2-BIG — overhauls
+- **R2-4 i18n UI OVERHAUL (dedicated, ongoing):** EVERY UI string (onboarding, the "Good morning, Warm Koala" welcome [currently EN, must be ES for an ES native], capsule, menus, quest text, interlude, choosers, toasts…) must render in the **native language**, across all ~50 langs, **kept constantly up to date**. Needs a DEDICATED i18n domain that owns the string catalog + the `t()` seam + a freshness process. → domain **i18n-rtl**.
+- **R2-5 RTL / ORIENTATION OVERHAUL:** full RTL layout + mirroring when the native is RTL (Arabic, Hebrew, Farsi, Urdu…) — "everything properly oriented." → domain **i18n-rtl**.
+- **R2-6 PER-PAIR IDENTITY (design first):** each language pair should invite a **different character** — potentially different name, wardrobe, inventory. "Let's have an expert agent think about it." → **pair-identity** (DESIGN doc first, then build).
+
 ## A. FOUNDATIONAL / BLOCKING
 
 | # | Item | Status | Notes |

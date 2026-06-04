@@ -220,26 +220,47 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
     // guaranteed even on a tight frame.
     do {
       const key = queue[0]
-      let b = building.get(key)
-      if (!b) {
-        const c = chunkByKey.get(key)
-        if (!c) {
-          queue.shift()
-          continue
+      // RESILIENT BUILD STEP. A single chunk's build sub-step must NEVER throw out
+      // of the per-frame `update` — that would kill the whole streaming loop and
+      // leave the city blank (gray ground, no roads, no scenery: the §3 cascade).
+      // We isolate each step: any throw is logged LOUDLY (repo rule — never
+      // silent) and the offending chunk is dropped from the queue so the rest of
+      // the city still builds. One bad chunk can't blank the world.
+      try {
+        let b = building.get(key)
+        if (!b) {
+          const c = chunkByKey.get(key)
+          if (!c) {
+            queue.shift()
+            continue
+          }
+          b = beginChunkMesh(scene, c, { cache, lib, palette, baseSurface: layout.baseSurfaceByZone[c.zone] })
+          building.set(key, b)
         }
-        b = beginChunkMesh(scene, c, { cache, lib, palette, baseSurface: layout.baseSurfaceByZone[c.zone] })
-        building.set(key, b)
-      }
-      const done = b.step()
-      if (done) {
+        const done = b.step()
+        if (done) {
+          queue.shift()
+          building.delete(key)
+          const mesh = b.result()
+          // NEW chunks start DISABLED; the next pass enables them if they're near.
+          // (A newly-built far chunk should not render until it's in the NEAR set.)
+          mesh.setVisible(false)
+          built.set(key, mesh)
+          completed = true
+        }
+      } catch (e) {
+        console.error(`[world-plaza/city] chunk ${key} build step threw → dropping it (city keeps building)`, e)
+        // drop the doomed chunk + dispose whatever half-built it left behind.
         queue.shift()
-        building.delete(key)
-        const mesh = b.result()
-        // NEW chunks start DISABLED; the next pass enables them if they're near.
-        // (A newly-built far chunk should not render until it's in the NEAR set.)
-        mesh.setVisible(false)
-        built.set(key, mesh)
-        completed = true
+        const half = building.get(key)
+        if (half) {
+          building.delete(key)
+          try {
+            half.dispose()
+          } catch (de) {
+            console.error(`[world-plaza/city] chunk ${key} half-build dispose threw`, de)
+          }
+        }
       }
     } while (queue.length && performance.now() < deadline)
 

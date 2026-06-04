@@ -126,11 +126,17 @@ export function createRoadArrow(scene: Scene, opts: RoadArrowOptions): RoadArrow
     if (!plane.isEnabled()) plane.setEnabled(true)
 
     const bearing = Math.atan2(dxw, dzw) // world yaw toward the objective (+z forward)
-    // sit a few steps ahead of the player ALONG the bearing — the hint leads you.
-    plane.position.x = pl.x + Math.sin(bearing) * AHEAD
-    plane.position.z = pl.z + Math.cos(bearing) * AHEAD
-    // the painted arrow points toward canvas -Y; with the plane lying flat that is
-    // world +z, so rotate.y by the bearing to aim it at the objective.
+    // Sit a few steps ahead of the player's FACING (not along the bearing). The
+    // follow-camera tracks the heading, so "ahead of facing" is always on-screen —
+    // whereas "ahead along the bearing" slides BEHIND the camera the moment you walk
+    // the wrong way, which is exactly the "arrow invisible in the foreground" bug.
+    // Forward vector = (-sin,-cos)·facing (see movement/controller.ts onMove).
+    plane.position.x = pl.x - Math.sin(pl.facing) * AHEAD
+    plane.position.z = pl.z - Math.cos(pl.facing) * AHEAD
+    // The arrow ROTATES to point at the objective (painted arrow → canvas -Y → world
+    // +z at y=0, so rotation.y = bearing aims it). When you face the wrong way the
+    // marker stays in view but visibly points BACK at you — an always-visible
+    // "turn this way" cue rather than a hint that vanishes when you need it most.
     plane.rotation.y = bearing
 
     // gentle breathing so it reads as "alive" without flashing; static if reduced.

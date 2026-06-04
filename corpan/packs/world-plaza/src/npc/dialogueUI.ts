@@ -74,8 +74,12 @@ export interface DialogueUIHandle {
   /** Replace the suggested-reply chips (empty array clears them). */
   setChips(chips: string[]): void
   /** Show (or, with null, hide) the prominent deterministic "Play a game" chip.
-   *  Tapping it fires `onPlay`. An optional label overrides the default. */
-  setPlayOffer(show: boolean, label?: string): void
+   *  Tapping it fires `onPlay`. An optional label overrides the default. The
+   *  optional `caption` is a small intro line ("let's see how fast you are")
+   *  rendered ABOVE the button as part of the play-row chrome — NOT a chat
+   *  bubble, so the challenge invite lives by its activate button, not in the
+   *  NPC dialog log. */
+  setPlayOffer(show: boolean, label?: string, caption?: string): void
   /** Enable/disable the composer (e.g. while a turn streams). */
   setInputEnabled(on: boolean): void
   /** Focus the text field. */
@@ -298,13 +302,24 @@ export function createDialogueUI(
       }
     },
 
-    setPlayOffer(show: boolean, label?: string) {
+    setPlayOffer(show: boolean, label?: string, caption?: string) {
       $playrow.innerHTML = ""
       if (!show) {
         $playrow.hidden = true
         return
       }
       $playrow.hidden = false
+      // The challenge intro line ("let's see how fast you are") lives HERE, as a
+      // small caption above the activate button — NOT in the chat log. Quiet
+      // secondary register so it reads as the button's own label, never a spoken
+      // NPC bubble.
+      if (caption) {
+        const cap = document.createElement("div")
+        cap.className = "wp-npc-play-caption"
+        cap.dir = "auto"
+        cap.textContent = caption
+        $playrow.appendChild(cap)
+      }
       const btn = document.createElement("button")
       btn.className = "wp-npc-chip wp-npc-chip-play"
       btn.dir = "auto"

@@ -195,6 +195,7 @@ function makeResult(
     completedAt: Date.now(),
     offline: true,
     rewards: reward,
+    outcome: "completed",
   }
 }
 
@@ -209,6 +210,7 @@ function emptyResult(toolId: ChallengeToolId): ChallengeResultPlus {
     completedAt: Date.now(),
     offline: true,
     rewards: { xp: 0, coins: 0, items: [] },
+    outcome: "aborted",
   }
 }
 

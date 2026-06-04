@@ -585,7 +585,12 @@ export const createHostApi = (packId?: string): HostApi => {
       const matched = base
         ? all.filter((v) => (v.language ?? "").toLowerCase().split("-")[0] === base)
         : all
-      const list = matched.length > 0 ? matched : all
+      // Contract: listVoices(uiCode) returns ONLY uiCode-language voices — an empty
+      // result is correct (the caller degrades to a language-only speak), and we must
+      // NEVER substitute a wrong-language list. (`matched` is already `all` when no
+      // uiCode is passed.) The old `matched.length>0 ? matched : all` returned e.g.
+      // Spanish voices for `listVoices("en")` on a device with no EN voice installed.
+      const list = matched
       return list.map((v) => ({
         id: v.id,
         name: v.name ?? undefined,

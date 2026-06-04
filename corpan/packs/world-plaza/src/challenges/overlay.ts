@@ -33,8 +33,20 @@ export type FeedbackKind = "good" | "bad"
 export interface OverlayApi {
   /** The card body element — the tool renders all of its UI here. */
   readonly body: HTMLElement
-  /** Set the big centered prompt above the tool UI (optional helper). */
+  /**
+   * Set the big centered prompt above the tool UI — RESERVED for actual STIMULUS
+   * content (the phrase to read, the word to unscramble), NOT meta-instructions.
+   * `sub` is the small caption beneath it (e.g. a romanization / meaning hint).
+   */
   setPrompt: (text: string, sub?: string) => void
+  /**
+   * Set the small, SECONDARY instruction line ("Which is it? Listen carefully.")
+   * — a quiet caption that is part of the challenge widget's chrome, never a big
+   * NPC-style bubble and NEVER spoken by TTS. Use this for the meta-instruction;
+   * use {@link setPrompt} only for the stimulus the player must act on. Passing an
+   * empty string clears it.
+   */
+  setInstruction: (text: string) => void
   /** Show the timer bar and count down `seconds`; calls `onExpire` once at 0. */
   startTimer: (seconds: number, onExpire: () => void) => void
   /** Stop + hide the timer (e.g. on the last correct answer). */
@@ -205,7 +217,11 @@ export function mountChallengeOverlay(
     let prompt = body.querySelector<HTMLElement>(".wp-ch-prompt")
     if (!prompt) {
       prompt = el("div", "wp-ch-prompt")
-      body.insertBefore(prompt, body.firstChild)
+      // Sit BELOW any instruction caption (which owns the top of the body) but
+      // above the tool UI.
+      const instr = body.querySelector<HTMLElement>(".wp-ch-instruction")
+      if (instr) instr.after(prompt)
+      else body.insertBefore(prompt, body.firstChild)
     }
     prompt.textContent = text
     let subEl = body.querySelector<HTMLElement>(".wp-ch-sub")
@@ -218,6 +234,21 @@ export function mountChallengeOverlay(
     } else if (subEl) {
       subEl.remove()
     }
+  }
+
+  function setInstruction(text: string) {
+    let instr = body.querySelector<HTMLElement>(".wp-ch-instruction")
+    if (!text) {
+      instr?.remove()
+      return
+    }
+    if (!instr) {
+      instr = el("div", "wp-ch-instruction")
+      // The instruction is the quiet caption at the very TOP of the body — above
+      // the prompt + tool UI — so it reads as the widget's own small label.
+      body.insertBefore(instr, body.firstChild)
+    }
+    instr.textContent = text
   }
 
   function focusSafely(target: HTMLElement) {
@@ -348,6 +379,7 @@ export function mountChallengeOverlay(
   const api: OverlayApi = {
     body,
     setPrompt,
+    setInstruction,
     startTimer,
     stopTimer,
     setScore,

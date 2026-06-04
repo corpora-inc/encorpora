@@ -57,6 +57,15 @@ export type ChallengeReward = z.infer<typeof ChallengeReward>
  */
 export const ChallengeResultPlus = ChallengeResult.extend({
   rewards: ChallengeReward,
+  /**
+   * How the run ENDED. "completed" = the player finished it (a real score —
+   * even a low one — celebrates + may advance the quest). "aborted" = the
+   * player BAILED (X / ESC / backdrop tap) — NOT a win: no reward reveal, no
+   * win juice, no `markStepBeaten`. Additive + optional so existing consumers
+   * (server reconciliation) are unaffected; absent ⇒ treat as "completed" for
+   * back-compat. `runChallenge` always sets it.
+   */
+  outcome: z.enum(["completed", "aborted"]).optional(),
 })
 export type ChallengeResultPlus = z.infer<typeof ChallengeResultPlus>
 

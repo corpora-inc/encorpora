@@ -153,7 +153,7 @@ export const pictureMatch: ToolImpl = {
         }
         const ok = await new Promise<boolean>((resolve) => {
           clear(overlay.body)
-          overlay.setPrompt(
+          overlay.setInstruction(
             glyph ? S.pictureMatchHint : S.pictureMatchWordHint(p.native),
           )
           if (glyph) {
@@ -223,7 +223,7 @@ export const memoryPairs: ToolImpl = {
       const deck = shuffle(cards, rnd)
 
       clear(overlay.body)
-      overlay.setPrompt(S.memoryFind)
+      overlay.setInstruction(S.memoryFind)
       const grid = h("div", "wp-ch-grid wp-ch-grid--3")
       overlay.body.appendChild(grid)
       // A quiet "tap to continue" affordance, only shown while a mismatch is
@@ -362,7 +362,7 @@ export const categorySort: ToolImpl = {
       )
 
       clear(overlay.body)
-      overlay.setPrompt(S.sortPrompt)
+      overlay.setInstruction(S.sortPrompt)
       const current = h("div", "wp-ch-prompt")
       current.style.fontSize = "26px"
       overlay.body.appendChild(current)
@@ -424,7 +424,7 @@ export const countdownRecall: ToolImpl = {
       // fallback so it can't dead-end. Words speak staggered (not all at once)
       // so the TTS is intelligible, and rows fade in in sequence.
       clear(overlay.body)
-      overlay.setPrompt(S.memorizeTitle, S.memorizeSub)
+      overlay.setInstruction(`${S.memorizeTitle} · ${S.memorizeSub}`)
       const list = h("div", "wp-ch-grid")
       ps.forEach((p, i) => {
         const row = h("div", "wp-ch-tile wp-ch-recall-row", `${p.target} — ${p.native}`)
@@ -466,7 +466,7 @@ export const countdownRecall: ToolImpl = {
         const opts = shuffle([p.target, ...distractors], rnd)
         const ok = await new Promise<boolean>((resolve) => {
           clear(overlay.body)
-          overlay.setPrompt(S.whichMeant(p.native))
+          overlay.setInstruction(S.whichMeant(p.native))
           const grid = h("div", "wp-ch-grid wp-ch-grid--2")
           let answered = false
           opts.forEach((opt) => {
@@ -560,7 +560,7 @@ export const wordSearch: ToolImpl = {
           if (!grid[r][c]) grid[r][c] = alpha[Math.floor(rnd() * 26)]
 
       clear(overlay.body)
-      overlay.setPrompt(S.findHidden)
+      overlay.setInstruction(S.findHidden)
       const wordList = h("div", "wp-ch-grid wp-ch-grid--row")
       const chips = new Map<string, HTMLElement>()
       placements.forEach((p) => {

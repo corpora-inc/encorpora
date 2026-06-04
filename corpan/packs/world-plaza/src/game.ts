@@ -29,6 +29,21 @@ import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/qu
 import { getQuest, entryQuestId, nextQuests, firstStep } from "./quest/questCatalog"
 import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
 import { resolveEntry, bindStackReactivity, samePair } from "./entry"
+import { readStack } from "./entry/stackAdapter"
+import { createImmersionResolver, immersionToggleApplies, type Immersion } from "./immersion/immersion"
+import { immersionStore } from "./immersion/store"
+import { mountImmersionToggle } from "./immersion/immersionToggle"
+import {
+  t as translate,
+  bindT,
+  applyDir,
+  ALL_KEYS,
+  makeMenuStrings,
+  makeTrackerStrings,
+  makeSectionStrings,
+  makeInterludeStrings,
+  type I18nKey,
+} from "./i18n"
 import { createSpecialNpcResolver } from "./quest/specialNpc"
 import { resolveStepContent, challengeSatisfiesStep } from "./quest/questContent"
 import { mountQuestTracker } from "./quest/questTracker"
@@ -53,6 +68,8 @@ import {
 } from "./vignettes"
 import { createPortalAffordance } from "./world/portalAffordance"
 import { createRoadArrow } from "./wayfinding/roadArrow"
+import { createObjectiveBeacon } from "./wayfinding/objectiveBeacon"
+import { locateObjective } from "./quest/objectiveLocator"
 import { buildFountain } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
 import { createPopulation } from "./city/population"
@@ -103,13 +120,27 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
     ? createChallengeHost(host as CorpanChallengeHostApi)
     : mockChallengeHost()
 
+  // The learner's NATIVE language (stack `languages[0]`) — the language ALL UI
+  // chrome renders in (R2-4) and the axis that decides RTL orientation (R2-5).
+  // It's known up front (before onboarding / target choice); read it live so the
+  // onboarding + welcome already speak the user's language. Defaults to "en"
+  // (standalone dev / a host that predates `getStackConfig`).
+  const nativeLocale = (): string => readStack(host)?.languages?.[0] ?? "en"
+
   // Build (or REBUILD) the world for a given pair. Tearing down + rebuilding is
   // safe because all per-Track state keys on the pair; this is the reactive path.
+  // The IMMERSION level is read fresh from the per-Track store at build time, and
+  // flipping the toggle rebuilds the world (`rebuild`) so EVERY surface re-resolves
+  // its UI locale (native vs target) + RTL `dir` against the new resolver. A full
+  // rebuild is the same proven path as a stack flip — no per-surface live wiring.
   const buildFor = (identity: OnboardingResult, learnerPair: LearnerPair) => {
     if (disposed) return
     teardownWorld?.()
     currentPair = learnerPair
-    teardownWorld = buildWorld(container, npcHost, chHost, identity, learnerPair)
+    const immersion = immersionStore.get(learnerPair)
+    teardownWorld = buildWorld(container, npcHost, chHost, identity, learnerPair, immersion, {
+      rebuild: () => buildFor(identity, learnerPair),
+    })
   }
 
   const begin = async (identity: OnboardingResult) => {
@@ -126,6 +157,7 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
         accent: "#e8b54a",
         playerName: identity.name.displayName,
         place: "Corpan City",
+        native: nativeLocale(),
       })
       learnerPair = res.learnerPair
     } catch (err) {
@@ -152,7 +184,7 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
   if (saved) {
     void begin(saved)
   } else {
-    runOnboarding(container, { playerId: "player-local" })
+    runOnboarding(container, { playerId: "player-local", native: nativeLocale() })
       .then((res) => {
         saveIdentity(res)
         return begin(res)
@@ -183,7 +215,18 @@ function buildWorld(
   chHost: ChallengeRuntimeHost,
   identity: OnboardingResult,
   learnerPair: LearnerPair,
+  immersionLevel: Immersion,
+  hooks: { rebuild: () => void },
 ): () => void {
+  // The immersion resolver for this Track (IMMERSION_TOGGLE §3): it decides which
+  // locale every UI surface renders in — `uiLocale()` is the learner's NATIVE by
+  // default, and the TARGET when immersion hides native ("immersion ON = target
+  // EVERYWHERE"). A single-language Track is forced "on". Every `learnerPair.native`
+  // that drives UI COPY or the RTL `dir` now reads `uiLocale` instead; the corpus
+  // native gloss reads `resolver.challengeNativeLanguage()`.
+  const resolver = createImmersionResolver({ level: immersionLevel, learnerPair })
+  const uiLocale = resolver.uiLocale()
+
   // Validate the data-driven content against the frozen contracts (fail loud).
   // The topology is no longer a hand-authored plaza JSON — it's SYNTHESIZED from
   // the procedurally generated Corpan City below (one big streaming map).
@@ -231,6 +274,15 @@ function buildWorld(
   rootEl.appendChild(vignette)
   rootEl.appendChild(overlay)
   container.appendChild(rootEl)
+
+  // R2-5 RTL: orient the WHOLE pack root for a right-to-left NATIVE (Arabic,
+  // Hebrew, Farsi, Urdu). The chrome's logical CSS properties (margin-inline,
+  // inset-inline, text-align:start) mirror off this single `dir`. The 3D world is
+  // direction-neutral; only the DOM chrome flips.
+  applyDir(rootEl, uiLocale)
+  // The host's `.wp-overlay` may sit above our root in some embeddings — orient it
+  // too so a fullscreen surface mounted straight into it inherits the direction.
+  applyDir(overlay, uiLocale)
 
   // TOP HUD (consolidated, TOP_HUD §0): ONE coherent warm-Antigua theme of TWO
   // anchors — the LEFT Status Capsule (quest + glances, expandable) and the RIGHT
@@ -405,6 +457,15 @@ function buildWorld(
     obstacles,
     palette: scene.palette,
     reducedMotion,
+    // The active content Scene flavours each stroller's lazily-built persona so an
+    // engaged ambient figure talks in-world (absent → neutral, still talkable).
+    scene: activeScene,
+    // Forward vector of the follow-camera so strollers never WAKE inside the
+    // view cone (world-fix §5 anti-pop-in; combined with the wake fade-in).
+    getForward: () => {
+      const d = world.camera.getForwardRay().direction
+      return { x: d.x, z: d.z }
+    },
   })
 
   // ── Economy + Badges HUD ──────────────────────────────────────────────────
@@ -418,7 +479,7 @@ function buildWorld(
     overlay,
     store: inventory(),
     sceneKeys: [scene.setting.place, scene.setting.era],
-    locale: learnerPair.native,
+    locale: uiLocale,
     suppressReadout: true,
   })
   // XP fills per-target-language BADGES. The Badge Case is a real menu section;
@@ -427,7 +488,7 @@ function buildWorld(
   // late-bound to `shell` (below).
   const badges = createBadgesRuntime({
     trackKey: `${learnerPair.native}:${learnerPair.target}`,
-    lang: learnerPair.native,
+    lang: uiLocale,
     trackLabel: learnerPair.target,
     accent: scene.palette?.accent,
     openCase: () => shell.openSection("badges"),
@@ -520,7 +581,7 @@ function buildWorld(
     getRemotePositions: () => [],
     getQuestMarkers: () => questEngine.getQuestMarkers(),
   }
-  const mapOpts = { view: mapView, accent: scene.palette?.accent, lang: learnerPair.native }
+  const mapOpts = { view: mapView, accent: scene.palette?.accent, lang: uiLocale }
 
   // Proximity NPC engagement → open a real (or scripted-fallback) Qwen3 chat.
   const npcRuntime = createNpcRuntime(npcHost)
@@ -566,8 +627,11 @@ function buildWorld(
   const anchorName = (anchorId: string): string =>
     specialNpc.anchorName(anchorId, quest.id, undefined, learnerPair.target) ?? prettyAnchorId(anchorId)
 
-  // Focus locks onto the nearest WANDERING crowd agent (live position each frame).
-  const focus = createNpcFocus(world, overlay, crowd.focusables, (it) => {
+  // Focus locks onto the nearest figure (live position each frame) — the wandering
+  // crowd AND the now-talkable ambient strollers/stall-keepers (lazy-promoted: a
+  // persona is built only on engage, so an un-talked-to extra costs ~nothing). No
+  // visible person is un-interactive (world-fix Route 1 / the no-ghost ruling).
+  const focus = createNpcFocus(world, overlay, [...crowd.focusables, ...population.focusables], (it) => {
     if (openDialogue) return // hard guard: never stack a second conversation
     const role = (it as CrowdFocusHandle).role
     if (!role) return // every wanderer has a persona now; defensive only
@@ -577,6 +641,7 @@ function buildWorld(
     // while engagedId is set).
     engagedId = it.anchorId
     crowd.setHeld(engagedId)
+    population.setHeld(engagedId) // freeze an engaged stroller too (no-op for crowd ids)
     setWorldActive(false)
     // If this is a SPECIAL quest NPC (boatman/gatekeeper/clue-giver stationed at a
     // quest anchor), pass the quest engine + `isSpecial` so npcRuntime activates the
@@ -617,7 +682,9 @@ function buildWorld(
         const stepContent = resolveStepContent(quest, questEngine.currentStep())
         const ctx: ChallengeContext = {
           language: learnerPair.target,
-          nativeLanguage: learnerPair.native,
+          // Immersion drops the native gloss → challenges collapse to target-only
+          // (the proven single-language path); `off` keeps the bilingual native.
+          nativeLanguage: resolver.challengeNativeLanguage(),
           mode: "solo",
           domain: stepContent.domain,
           entryIds: stepContent.entryIds.length ? stepContent.entryIds : undefined,
@@ -631,6 +698,9 @@ function buildWorld(
           partialSpec: intent.spec,
         })
           .then((res) => {
+            // Bailing (X/ESC/backdrop) is NOT a win: skip reward reveal, badges,
+            // AND markStepBeaten/advance. Only a real completion celebrates.
+            if (res.outcome === "aborted") return
             const granted = inventory().applyReward(res.rewards)
             // The smorgasbord reveal (stacks of bills/coins/ingots) replaces the
             // old "+🪙" toast; route the win's XP into the per-language badges.
@@ -675,6 +745,7 @@ function buildWorld(
     // close this fires again to re-hold (if still near) or release (you left).
     if (engagedId) return
     crowd.setHeld(target ? target.anchorId : null)
+    population.setHeld(target ? target.anchorId : null) // mirror for strollers
     // Talk button shown/hidden → the pack dims (`focused`) or restores (`world`).
     refreshChrome()
   })
@@ -686,19 +757,21 @@ function buildWorld(
   // vignette reuses every shipped system (Qwen3 NPCs, challenges, the wallet,
   // TTS, the icon renderer) without importing the orchestrator or a sibling slice.
 
-  // No immersion resolver is wired in this world yet, so the UI locale is the
-  // Track's NATIVE (the language the learner reads). The vignette `t` resolves a
-  // key in that locale; there is no LOCALE table in standalone/dev, so it returns
-  // the key and EACH vignette applies its own inline English fallback (the
-  // badgeStrings convention — never a raw key on screen).
-  const uiLocale = learnerPair.native
-  // There is no concrete pack `t` (no LOCALE table wired); resolve in `uiLocale`
-  // and return the key unchanged so each vignette applies its inline fallback. The
-  // locale is threaded so wiring a real resolver later is a one-line change.
-  const vt = (key: string, _params?: Record<string, string | number>): string => {
-    void uiLocale
-    return key
-  }
+  // The UI locale is the immersion resolver's `uiLocale()` (computed at the top of
+  // buildWorld): NATIVE by default, TARGET under immersion. The chrome i18n catalog
+  // (`src/i18n`) backs this seam: for a key the catalog knows, `vt` resolves it into
+  // `uiLocale`; for an UNKNOWN key (the taxi/vignette dynamic keys not in the chrome
+  // catalog) it returns the key UNCHANGED, preserving the long-standing "key
+  // unchanged ⇒ caller applies its inline English fallback" contract the
+  // vignette/taxi callers below rely on (their `=== key` checks).
+  const KNOWN_KEYS = new Set<string>(ALL_KEYS)
+  const vt = (key: string, params?: Record<string, string | number>): string =>
+    KNOWN_KEYS.has(key) ? translate(key as I18nKey, uiLocale, params) : key
+  // The `Translate` (3-arg) shape some surfaces want (placeTag): resolve known
+  // catalog keys into the requested `lang`, else return the key for the inline
+  // English fallback. Same key-unchanged contract as `vt`.
+  const chromeT = (key: string, lang: string, params?: Record<string, string | number>): string =>
+    KNOWN_KEYS.has(key) ? translate(key as I18nKey, lang, params) : key
 
   // ── Quest completion interlude (A2) ─────────────────────────────────────────
   // On the engine's `complete` event we PAUSE the world and run the standalone
@@ -739,8 +812,9 @@ function buildWorld(
         options: buildNextOptions(completed.id),
         accent: scene.palette?.accent,
         iconRenderer,
-        locale: learnerPair.native,
+        locale: uiLocale,
         t: (key, params) => vt(key, params),
+        strings: makeInterludeStrings(uiLocale),
       })
       const picked = await interlude.show()
       if (picked) {
@@ -783,7 +857,9 @@ function buildWorld(
       learnerPair,
       container: args.container,
       npcName: args.npcName,
-      voiceCode: args.voiceCode,
+      // default to the TARGET language if a vignette didn't specify one (R2-2):
+      // never let a stale scene voiceHint pick the voice.
+      voiceCode: args.voiceCode ?? learnerPair.target,
       starterChips: args.starterChips,
       onClose: args.onClose,
     })
@@ -901,6 +977,8 @@ function buildWorld(
   const shell = createShell({
     overlay,
     accent: scene.palette?.accent,
+    // Menu chrome (title, Resume, Leave, tabs, "coming soon") in the NATIVE language.
+    strings: { menu: makeMenuStrings(uiLocale) },
     sections: {
       badges: badges.section,
       map: createMapSection(mapOpts),
@@ -910,7 +988,7 @@ function buildWorld(
       inventory: createInventorySection({
         store: inventory(),
         accent: scene.palette?.accent,
-        locale: learnerPair.native,
+        locale: uiLocale,
         renderer: iconRenderer,
         masteredCount: () => badges.store.masteredCount(),
         openBadges: () => shell.openSection("badges"),
@@ -920,6 +998,23 @@ function buildWorld(
         inventory: inventory(),
         anchorName,
         accent: scene.palette?.accent,
+        strings: makeSectionStrings(uiLocale),
+        // The immersion toggle lives at the top of the Quest section (§8). Hidden
+        // for a single-language Track (no native to hide). Flipping it persists the
+        // per-Track level + rebuilds the world so every surface re-resolves locale.
+        controls: immersionToggleApplies(learnerPair)
+          ? (host) => {
+              mountImmersionToggle(host, {
+                level: resolver.level(),
+                accent: scene.palette?.accent,
+                t: bindT(uiLocale),
+                onChange: (next) => {
+                  immersionStore.set(learnerPair, next)
+                  hooks.rebuild()
+                },
+              })
+            }
+          : undefined,
       }),
     },
     isDialogueOpen: () => openDialogue !== null,
@@ -958,6 +1053,10 @@ function buildWorld(
     accent: scene.palette?.accent,
     anchorName,
     place: capsulePlace(),
+    // Status-capsule copy (quest label, hints, progress, immersion line, deep-link
+    // labels) in the UI locale (native, or target under immersion).
+    strings: makeTrackerStrings(uiLocale),
+    lang: uiLocale,
     // The capsule deep-links by the contract's section ids; "wallet" lives inside
     // the Inventory section here, so route it there.
     openSection: (section) =>
@@ -976,7 +1075,8 @@ function buildWorld(
     overlay,
     setting: { place: scene.setting.place, era: scene.setting.era },
     accent: scene.palette?.accent,
-    lang: learnerPair.native,
+    lang: uiLocale,
+    t: chromeT,
     presenceCount: () => mapView.getRemotePositions().length,
   })
 
@@ -994,19 +1094,34 @@ function buildWorld(
   if (packButton) chrome.register({ el: packButton, role: "pack" })
   else console.warn("[world-plaza] pack button (.wp-menu-button) not found — chrome won't govern it")
 
-  // ── On-road wayfinding arrow (G) ────────────────────────────────────────────
-  // A subtle floor marker a few steps ahead of the player pointing at the current
-  // objective's anchor. Pure consumer: it reads the live player pose + the active
-  // objective marker (resolved to a world point via the city anchor), and is
-  // ticked in the frame loop + disposed on teardown.
+  // ── Objective wayfinding (G + quest-flow) ───────────────────────────────────
+  // ONE source of truth for WHERE the current objective is: the stationed helper
+  // NPC's LIVE position if present, else the static city anchor. The road arrow,
+  // the over-rooftop beacon, and the map star all resolve through this so they
+  // can never disagree (the "I stood on the star and nothing was there" bug was a
+  // landmark/anchor mismatch — objective at `plaza`, player drawn to the fountain).
+  const objectivePoint = (): { x: number; z: number } | null => {
+    const obj = questEngine.getQuestMarkers().find((m) => m.kind === "objective")
+    return locateObjective(obj?.anchorId, crowd.focusables, (id) => {
+      const a = city.getAnchor(id)
+      return a ? { x: a.x, z: a.z } : null
+    })
+  }
+
+  // A subtle floor marker a few steps ahead of the player pointing at the objective.
   const roadArrow = createRoadArrow(world.scene, {
     getPlayer: () => ({ ...player.getPos(), facing: player.getFacing() }),
-    getTarget: () => {
-      const obj = questEngine.getQuestMarkers().find((m) => m.kind === "objective")
-      if (!obj) return null
-      const a = city.getAnchor(obj.anchorId)
-      return a ? { x: a.x, z: a.z } : null
-    },
+    getTarget: objectivePoint,
+    accent: scene.palette?.accent,
+  })
+
+  // The UNMISSABLE beacon over the objective helper ("talk to THIS one"): a light
+  // shaft visible over rooftops + a bobbing chevron + a ground halo, drawn through
+  // the world. Suppressed while a conversation / challenge / vignette owns the
+  // screen so it never shouts over a modal surface.
+  const objectiveBeacon = createObjectiveBeacon(world.scene, {
+    getTarget: objectivePoint,
+    isSuppressed: () => !!openDialogue || challengeDepth > 0 || vignetteHost.isActive(),
     accent: scene.palette?.accent,
   })
 
@@ -1053,6 +1168,7 @@ function buildWorld(
     harborWater?.update(dt)
     population.update(dt, p)
     roadArrow.update(dt)
+    objectiveBeacon.update(dt)
   })
 
   function teardown() {
@@ -1080,6 +1196,7 @@ function buildWorld(
     crowd.dispose()
     // World detail (C) + wayfinding (G) layers.
     roadArrow.dispose()
+    objectiveBeacon.dispose()
     population.dispose()
     harborWater?.dispose()
     fountain.dispose()

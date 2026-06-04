@@ -1,6 +1,33 @@
 [
   {
     "anchorId": "plaza",
+    "questId": "es-cafe-travel",
+    "role": "clerk",
+    "name": "the café host",
+    "nameKey": "special.cafe.plaza.name",
+    "duty": "deliver",
+    "stepIds": ["order-coffee"]
+  },
+  {
+    "anchorId": "market",
+    "questId": "es-market-haggle",
+    "role": "clerk",
+    "name": "the market vendor",
+    "nameKey": "special.market.market.name",
+    "duty": "deliver",
+    "stepIds": ["haggle"]
+  },
+  {
+    "anchorId": "fountain",
+    "questId": "es-directions",
+    "role": "traveler",
+    "name": "a helpful local",
+    "nameKey": "special.directions.fountain.name",
+    "duty": "deliver",
+    "stepIds": ["ask-way"]
+  },
+  {
+    "anchorId": "plaza",
     "questId": "es-guadalajara-route",
     "role": "traveler",
     "name": "a friendly traveler",

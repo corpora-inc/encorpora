@@ -26,6 +26,7 @@ import {
   type ChallengeToolId,
 } from "@world-plaza/contracts"
 import { segueChipLabel, resolveSegue } from "./challengeSegues"
+import { targetLanguageDirective } from "./promptLocale"
 
 /**
  * The optional persona-enrichment a `GeneratedPersona` (from personaGen) carries
@@ -331,31 +332,35 @@ export function composeSystemPrompt(args: ComposeArgs): string {
   // SPECIAL-NPC FACTS (M1): deterministic branchy block; empty for a normal NPC.
   const questFactsBlock = args.questFacts ? questFactsSection(args.questFacts) : ""
 
-  // Language discipline (single-language stack aware). Reply in {target} ONLY —
-  // NO parentheticals, NO translations. The model's `(native)` gloss was
-  // unreliable (it emitted wrong words AND wrong language — e.g. "(ferry)" after
-  // "muelle"); native help now comes from the UI / suggested replies, never the
-  // model. (de-gloss, NPC-prompt-craft pass.)
+  // LANGUAGE + RAILS directive, composed IN THE TARGET LANGUAGE (R2-2). A 4B model
+  // writes the language its instructions are in: an English "reply in Arabic" rail
+  // produced Latin-letter babble, not Arabic. The decisive directive — speak ONLY
+  // in {target} (its own script), at most 2 short sentences, stay in character, no
+  // translation/parenthetical, never reveal being an AI — is now rendered in the
+  // target language so the model is primed to continue IN that language/script.
+  // (Replaces the old English `languageDiscipline` + `rails`; native help still
+  // comes from the UI / suggested replies, never a model gloss.) Single-language
+  // stacks get the immersion variant ("rephrase, don't translate").
   const single = learnerPair.target === learnerPair.native
-  const languageDiscipline = single
-    ? `Reply in ${target} ONLY — immersion; rephrase, don't translate. No parentheses.`
-    : `Reply in ${target} ONLY — never translate, never add a parenthetical or ${native} gloss.`
+  const targetDirective = targetLanguageDirective(learnerPair.target, single)
 
-  // HARD RAILS (anti-ramble, ~35 tokens) — the leash that keeps the 4B model
-  // short, in character, and on-task.
-  const rails =
-    "RULES: at most 2 short sentences · stay in character · never explain the game " +
-    "or break character · never say you are an AI · do not list or ramble."
+  // A terse ENGLISH anti-ramble belt (instruction the model reads ABOUT itself, not
+  // text to echo) — kept short so it doesn't dilute the in-language directive.
+  const antiRamble =
+    "Do not list or ramble; never explain the game or break character."
 
   return [
     filled,
     moodLine,
-    languageDiscipline,
     SCAFFOLD_RULES[pp.scaffold],
     topicLine,
-    rails,
+    antiRamble,
     clueLean,
     questFactsBlock,
+    "",
+    // The in-language language+behaviour directive comes LAST so it is the freshest
+    // instruction in context before the model speaks — maximizing the priming.
+    targetDirective,
     "",
     toolSpec,
   ]

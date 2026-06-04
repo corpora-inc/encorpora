@@ -241,6 +241,13 @@ export function drawFacade(ctx: Ctx2D, W: number, H: number, s: FacadeSpec) {
   const winW = (W / cols) * 0.46
 
   // ---- the DOOR is a real, character-scaled opening at the facade base ----
+  // Compute the door's painted footprint up front so the window grid can carve a
+  // CLEAR KEEP-OUT around it (the old code skipped one hard-coded centre cell,
+  // which broke for even `cols` — the door is centred on the WALL, not a column —
+  // and for tall doors that rise into the row above; windows then crowded / over-
+  // painted the doorway). We skip ANY window whose cell overlaps the door box +
+  // margin, across ALL rows, so no pane ever lands on or beside the door.
+  let doorBox: { x0: number; x1: number; y0: number } | null = null
   if (s.hasDoor) {
     const bodyWorldH = s.bodyWorldH ?? H_P * 2.5
     const targetDoorWorldH = H_P * 1.2 // a person visibly fits through
@@ -250,16 +257,37 @@ export function drawFacade(ctx: Ctx2D, W: number, H: number, s: FacadeSpec) {
     // sit the door on the plinth band (bottom of the wall) — base at H*0.985.
     const doorY = H * 0.985 - doorH
     drawDoor(ctx, doorX, doorY, doorW, doorH, s.trim, s.arched)
+    // drawDoor's STONE SURROUND paints out to [x - 0.12w, x + 1.12w] horizontally
+    // and starts at y - 0.04h; the door leaf adds nothing wider. Add a comfortable
+    // clear margin (a fraction of a cell) so windows don't even crowd the surround.
+    const clear = (W / cols) * 0.28
+    doorBox = {
+      x0: doorX - doorW * 0.12 - clear,
+      x1: doorX + doorW * 1.12 + clear,
+      y0: doorY - doorH * 0.04, // anything whose cell dips below this is over the door
+    }
   }
 
-  // ---- windows: a tidy grid, but never overlapping the central door bay ----
-  const doorCol = Math.floor(cols / 2)
+  // ---- windows: a tidy grid that never overlaps (or crowds) the door bay ----
   for (let row = 0; row < rows; row++) {
     const cy = topPad + rowSpan * row + (rowSpan - winH) / 2
     for (let col = 0; col < cols; col++) {
       const cellX = (W / cols) * col + (W / cols - winW) / 2
-      // skip the ground-row centre cell where the door now lives.
-      if (s.hasDoor && row === rows - 1 && col === doorCol) continue
+      // KEEP-OUT: skip a window if its painted span overlaps the door box
+      // horizontally AND the window's bottom reaches into the door's vertical
+      // extent. This carves the door clear on EVERY building width (even cols →
+      // door between two columns) and height (tall door → upper rows too).
+      // The window's TRUE painted span is wider than [cellX, cellX+winW]: drawWindow
+      // flanks it with shutters out to ~[cellX - 0.18·winW, cellX + 1.08·winW], so
+      // we test that fuller span — a shutter must not graze the door either.
+      if (doorBox) {
+        const winLeft = cellX - winW * 0.18
+        const winRight = cellX + winW * 1.08
+        const winBottom = cy + winH
+        const overlapsX = winRight > doorBox.x0 && winLeft < doorBox.x1
+        const reachesDoorY = winBottom > doorBox.y0
+        if (overlapsX && reachesDoorY) continue
+      }
       drawWindow(ctx, cellX, cy, winW, winH, s.trim, glass, !s.noFlowers && row < rows - 1)
     }
   }

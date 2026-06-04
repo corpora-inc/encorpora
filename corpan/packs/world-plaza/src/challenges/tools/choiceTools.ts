@@ -48,7 +48,9 @@ function renderChoiceRound(
 ): Promise<boolean> {
   return new Promise((resolve) => {
     clear(overlay.body)
-    overlay.setPrompt(round.prompt, round.promptSub)
+    // The choice prompt is a META-INSTRUCTION ("Which is it?") → render it as the
+    // quiet secondary caption, not a big bold bubble. `promptSub` is folded in.
+    overlay.setInstruction(round.promptSub ? `${round.prompt} · ${round.promptSub}` : round.prompt)
     const grid = h("div", `wp-ch-grid ${cols === 1 ? "wp-ch-grid--row" : cols === 3 ? "wp-ch-grid--3" : "wp-ch-grid--2"}`)
     let answered = false
     round.options.forEach((opt, i) => {
@@ -262,7 +264,8 @@ async function runSeriesWithReplay(
       speaker.addEventListener("click", () => round.speak && void overlay.speak(round.speak))
       overlay.body.appendChild(speaker)
       if (round.speak) void overlay.speak(round.speak)
-      overlay.setPrompt(round.prompt, round.promptSub)
+      // Meta-instruction → quiet caption (the speaker button IS the stimulus here).
+      overlay.setInstruction(round.promptSub ? `${round.prompt} · ${round.promptSub}` : round.prompt)
       const grid = h("div", "wp-ch-grid wp-ch-grid--2")
       let answered = false
       round.options.forEach((opt, i) => {

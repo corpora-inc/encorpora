@@ -8,13 +8,20 @@
  * THE DESIGN:
  *   - DETERMINISTIC: an NPC's voice is a hash of its id over the available voices
  *     for the target language. Same NPC → same voice, forever (no model, no RNG).
+ *   - TARGET-LANGUAGE ONLY (R2-2): the candidate set is STRICTLY the voices whose
+ *     own `.language` matches the TARGET (what the player is learning). We NEVER
+ *     pin a wrong-language voice — if the host returns zero matching voices we pin
+ *     nothing and speak language-only, so the NPC's target-language text is never
+ *     spoken through a non-target voice (the ES-voice-on-EN-text bug).
  *   - GENDER SPLIT (best effort): when the platform exposes `gender`, we hash the
  *     NPC into the male/female sub-list it falls in, so two NPCs of opposite
  *     "feel" don't collide on one voice. A language with a single voice (common on
  *     iOS) degrades to that one voice — never a crash.
- *   - PERSISTED: the resolved `{ npcId → voiceId }` is cached in localStorage
- *     (`wp:npc:voice:v1`, tiny — one short string per NPC) so returning to the same
- *     NPC reuses the same voice even before the (async) voice list resolves.
+ *   - PERSISTED: the resolved `{ "npcId|target" → {id,language} }` is cached in
+ *     localStorage (`wp:npc:voice:v2`, tiny) so returning to the same NPC reuses
+ *     the same voice. The key is SCOPED TO THE TARGET so a voice pinned for "en" is
+ *     never reused for "es"; a cached pin whose language no longer matches is
+ *     discarded.
  *   - NEVER ROTATES MID-CONVERSATION: the runtime resolves the voice ONCE at open
  *     and reuses it for every line of that conversation (see `npcRuntime`).
  *
@@ -45,7 +52,13 @@
 import type { HostApi, HostVoiceInfo } from "./hostTypes"
 
 const LOG = "[wp/npcVoice]"
-const STORE_KEY = "wp:npc:voice:v1"
+// v2 (R2-2 voice-language fix): the cache key now includes the TARGET language
+// (`npcId|target`) so an NPC's voice for "en" can never be reused for "es" (or
+// vice versa), and entries store the voice's `.language` so the pin site can
+// REFUSE a wrong-language voice. The old v1 map (keyed by npcId only, value = bare
+// id) could hold a wrong-language pin from the buggy "keep the full list" path, so
+// we deliberately do NOT migrate it — a fresh key drops the poison.
+const STORE_KEY = "wp:npc:voice:v2"
 
 /** Tiny stable hash (FNV-1a) → 32-bit. Same seed → same index, forever. */
 function hashStr(s: string): number {
@@ -65,12 +78,31 @@ function mod(n: number, m: number): number {
 
 /* --------------------------------------------------------------- persistence */
 
-type VoiceMap = Record<string, string>
+/** A persisted sticky-voice pin: the chosen voice id + the voice's OWN BCP-47
+ *  language, so the pin site can verify the voice still matches the target. */
+type VoicePin = { id: string; language: string }
+type VoiceMap = Record<string, VoicePin>
+
+/** The cache key — npcId scoped to the TARGET language, so a voice pinned for one
+ *  target is never reused for another (the cross-language leak). */
+function pinKey(npcId: string, target: string): string {
+  return `${npcId}|${target.toLowerCase()}`
+}
 
 function readMap(): VoiceMap {
   try {
     const raw = localStorage.getItem(STORE_KEY)
-    return raw ? (JSON.parse(raw) as VoiceMap) : {}
+    if (!raw) return {}
+    const parsed = JSON.parse(raw) as Record<string, unknown>
+    // Defensive: keep only well-formed { id, language } entries (drops any
+    // legacy/partial value rather than trusting a bare-string id).
+    const out: VoiceMap = {}
+    for (const [k, v] of Object.entries(parsed)) {
+      if (v && typeof v === "object" && typeof (v as VoicePin).id === "string") {
+        out[k] = { id: (v as VoicePin).id, language: String((v as VoicePin).language ?? "") }
+      }
+    }
+    return out
   } catch (e) {
     console.warn(`${LOG} voice-map storage unavailable, using memory:`, e)
     return {}
@@ -96,13 +128,21 @@ function langMatches(voiceLang: string | undefined, target: string): boolean {
 }
 
 /**
- * Choose a voice id DETERMINISTICALLY for an NPC from a list of candidate voices.
+ * Choose a voice DETERMINISTICALLY for an NPC from a list of candidate voices.
  * Prefers a male/female split when gender is exposed: the NPC id hashes to a
  * gender bucket AND to an index within it, so two NPCs spread across genders +
  * voices. Falls back to the whole list when gender is "unspecified"/absent (e.g.
  * Android). Returns null only for an empty list.
+ *
+ * Returns the WHOLE `HostVoiceInfo` (not just the id) so the caller keeps the
+ * voice's `.language` — needed to (a) persist it and (b) refuse to pin a
+ * wrong-language voice at the TTS layer. The candidate list MUST already be
+ * filtered to the target language by the caller (see `voicesFor`).
  */
-export function pickVoiceId(npcId: string, voices: readonly HostVoiceInfo[]): string | null {
+export function pickVoice(
+  npcId: string,
+  voices: readonly HostVoiceInfo[],
+): HostVoiceInfo | null {
   if (voices.length === 0) return null
   const h = hashStr(`voice|${npcId}`)
 
@@ -115,11 +155,19 @@ export function pickVoiceId(npcId: string, voices: readonly HostVoiceInfo[]): st
     const primary = preferMale ? males : females
     const fallback = preferMale ? females : males
     const bucket = primary.length > 0 ? primary : fallback.length > 0 ? fallback : gendered
-    return bucket[mod(h, bucket.length)].id
+    return bucket[mod(h, bucket.length)]
   }
 
   // No gender info → deterministic over the whole candidate list.
-  return voices[mod(h, voices.length)].id
+  return voices[mod(h, voices.length)]
+}
+
+/**
+ * Back-compat shim: the id-only form. Kept because tests + any external caller
+ * use it. Prefer `pickVoice` internally (it preserves `.language`).
+ */
+export function pickVoiceId(npcId: string, voices: readonly HostVoiceInfo[]): string | null {
+  return pickVoice(npcId, voices)?.id ?? null
 }
 
 /**
@@ -172,9 +220,30 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
         try {
           const all = await hostApi.listVoices(target)
           const matched = all.filter((v) => langMatches(v.language, target))
-          // If nothing matched the language (host returned all voices), keep the
-          // full list so we still pick deterministically rather than nothing.
-          return matched.length > 0 ? matched : all
+          // R2-2 VOICE-LANGUAGE FIX: ONLY voices whose own language matches the
+          // TARGET are candidates. The old code kept the FULL list when nothing
+          // matched ("so we still pick deterministically") — but that pinned a
+          // WRONG-LANGUAGE voice (e.g. a Spanish voice for an English NPC on an
+          // ES-locale device, or when the host returns an unfiltered/ES-heavy set),
+          // so the NPC spoke English text in a Spanish voice. We now return ONLY
+          // matched voices; an empty result → no pin → language-only speak(target),
+          // which at least asks the host for the right LANGUAGE.
+          // DIAGNOSTIC (noisy, not silent): show what the host returned so we can
+          // see on-device whether listVoices honors the language.
+          console.info(
+            `${LOG} listVoices("${target}") → ${all.length} voices, ${matched.length} match ` +
+              `lang "${target}". returned langs: [${[...new Set(all.map((v) => v.language))]
+                .slice(0, 12)
+                .join(", ")}]`,
+          )
+          if (matched.length === 0 && all.length > 0) {
+            console.warn(
+              `${LOG} HOST RETURNED 0 voices matching "${target}" out of ${all.length} — ` +
+                `NOT pinning a wrong-language voice; falling back to language-only speak. ` +
+                `If this persists, the host's listVoices("${target}") is not language-filtering.`,
+            )
+          }
+          return matched
         } catch (e) {
           console.error(`${LOG} listVoices failed:`, e)
           return []
@@ -185,17 +254,43 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
     return p
   }
 
-  async function voiceIdFor(npcId: string, target: string): Promise<string | null> {
-    const cached = map[npcId]
-    if (cached) return cached
-    const voices = await voicesFor(target)
-    const chosen = pickVoiceId(npcId, voices)
-    if (chosen) {
-      map[npcId] = chosen
+  /**
+   * Resolve the sticky voice PIN ({id, language}) for an NPC + target. Cache is
+   * keyed by `npcId|target` so a voice pinned for one target is never reused for
+   * another. A cached pin whose language no longer matches the target is DISCARDED
+   * (defense for any stale/legacy poison). Returns null when no target-language
+   * voice is available (then the runtime speaks language-only).
+   */
+  async function pinFor(npcId: string, target: string): Promise<VoicePin | null> {
+    const key = pinKey(npcId, target)
+    const cached = map[key]
+    if (cached) {
+      if (langMatches(cached.language, target)) return cached
+      // Stale/wrong-language pin (e.g. left by the old buggy path): drop it.
+      console.warn(
+        `${LOG} dropping cached voice "${cached.id}" (lang "${cached.language}") for NPC ` +
+          `"${npcId}" — does NOT match target "${target}"; re-resolving.`,
+      )
+      delete map[key]
       writeMap(map)
-      console.info(`${LOG} assigned sticky voice "${chosen}" to NPC "${npcId}" (${target}).`)
     }
-    return chosen
+    const voices = await voicesFor(target)
+    const chosen = pickVoice(npcId, voices)
+    if (chosen) {
+      const pin: VoicePin = { id: chosen.id, language: chosen.language }
+      map[key] = pin
+      writeMap(map)
+      console.info(
+        `${LOG} pinned voice "${chosen.id}" (lang "${chosen.language}") to NPC "${npcId}" ` +
+          `for target "${target}".`,
+      )
+      return pin
+    }
+    return null
+  }
+
+  async function voiceIdFor(npcId: string, target: string): Promise<string | null> {
+    return (await pinFor(npcId, target))?.id ?? null
   }
 
   function canPin(): boolean {
@@ -207,15 +302,26 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
     if (!clean) return
     // Pin the sticky voice when the host can; otherwise language-only speak.
     if (hostApi.speakVoice) {
-      const voiceId = await voiceIdFor(npcId, target)
-      if (voiceId) {
-        await hostApi.speakVoice(target, clean, voiceId)
+      const pin = await pinFor(npcId, target)
+      // PIN-SITE LANGUAGE GUARD: only pin a voice whose own language matches the
+      // target. `pinFor` already filters, but this is belt-and-braces so NO path
+      // can ever speak the target's text through a wrong-language voice.
+      if (pin && langMatches(pin.language, target)) {
+        console.info(
+          `${LOG} speakVoice(lang="${target}", voice="${pin.id}" lang="${pin.language}").`,
+        )
+        await hostApi.speakVoice(target, clean, pin.id)
         return
       }
+      // No target-language voice → language-only speak (right LANGUAGE, host picks
+      // the voice). Never pin the wrong language.
+      console.info(
+        `${LOG} no target-language voice to pin for "${target}" → language-only speak.`,
+      )
     } else {
       // Still resolve+persist the deterministic choice so the seam is warm and the
       // gap is visible, even though we cannot pin it.
-      void voiceIdFor(npcId, target)
+      void pinFor(npcId, target)
       logGapOnce()
     }
     await hostApi.speak(target, clean)

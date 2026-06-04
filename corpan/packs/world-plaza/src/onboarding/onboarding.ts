@@ -7,6 +7,7 @@ import {
 } from "@world-plaza/contracts"
 import namesJson from "../../content/identity/names.json"
 import starterJson from "../../content/cosmetics/starter.json"
+import { bindT, applyDir, type BoundT } from "../i18n"
 import "./onboarding.css"
 
 /**
@@ -33,6 +34,13 @@ export interface OnboardingOptions {
   playerId?: string
   /** start at a given step (dev) */
   startStep?: 0 | 1 | 2
+  /**
+   * The learner's NATIVE language (stack `languages[0]`). All onboarding copy
+   * renders in it, and the card orients RTL when it is a right-to-left script.
+   * Onboarding runs before the target is chosen, but the native is known up
+   * front. Defaults to "en".
+   */
+  native?: string
 }
 
 export interface OnboardingResult {
@@ -46,8 +54,22 @@ interface Word {
   id: string
   label: string
 }
-const ADJECTIVES = (namesJson as { adjectives: Word[] }).adjectives
-const NOUNS = (namesJson as { nouns: Word[] }).nouns
+// names.json is now MULTI-POOL (R2-6 Pair Identity): `{ pools: { "pool-universal":
+// { adjectives, nouns }, … } }`. Onboarding's global default reads the universal
+// pool; pair-themed pools are selected by the entry/Track layer (see
+// docs/PAIR_IDENTITY.md). Back-compat: a legacy flat `{ adjectives, nouns }`
+// names.json still resolves (the universal pool === those lists).
+const _names = namesJson as {
+  pools?: Record<string, { adjectives: Word[]; nouns: Word[] }>
+  adjectives?: Word[]
+  nouns?: Word[]
+}
+const _universalPool = _names.pools?.["pool-universal"] ?? {
+  adjectives: _names.adjectives ?? [],
+  nouns: _names.nouns ?? [],
+}
+const ADJECTIVES = _universalPool.adjectives
+const NOUNS = _universalPool.nouns
 
 interface StarterItem {
   id: string
@@ -58,7 +80,15 @@ interface StarterItem {
   unlock: { kind: string; value?: number }
   tints?: string[]
 }
-const STARTER = (starterJson as { items: StarterItem[] }).items
+// starter.json is now MULTI-KIT (R2-6 Pair Identity): `{ kits: { "kit-traveler":
+// { items }, … } }`. Onboarding's global default wears the traveler kit; pair-
+// themed kits are selected by the entry/Track layer (see docs/PAIR_IDENTITY.md).
+// Back-compat: a legacy flat `{ items }` starter.json still resolves.
+const _starter = starterJson as {
+  kits?: Record<string, { items: StarterItem[] }>
+  items?: StarterItem[]
+}
+const STARTER = _starter.kits?.["kit-traveler"]?.items ?? _starter.items ?? []
 // Validate the starter kit against the contract once at module load (fail loud
 // in dev if someone edits the JSON into an invalid shape).
 for (const it of STARTER) CosmeticItem.parse(it)
@@ -270,12 +300,15 @@ export function runOnboarding(
   opts: OnboardingOptions = {},
 ): Promise<OnboardingResult> {
   currentPlayerId = opts.playerId ?? "player-local"
+  const t: BoundT = bindT(opts.native ?? "en")
 
   return new Promise<OnboardingResult>((resolve) => {
     const dress = defaultDress()
     let nameState = rollName()
 
     const root = el("div", "wp-onb")
+    // Orient the onboarding card for an RTL native (Arabic, Hebrew, Farsi, Urdu).
+    applyDir(root, opts.native ?? "en")
     const card = el("div", "wp-onb-card")
     root.appendChild(card)
     container.appendChild(root)
@@ -300,8 +333,8 @@ export function runOnboarding(
     }
 
     // Skip button (always present)
-    const skip = el("button", "wp-onb-skip", "Skip")
-    skip.setAttribute("aria-label", "Skip setup and enter the plaza")
+    const skip = el("button", "wp-onb-skip", t("onb.skip"))
+    skip.setAttribute("aria-label", t("onb.skipAria"))
     skip.onclick = () => finish() // resolves with the current (sensible) defaults
     card.appendChild(skip)
 
@@ -339,25 +372,17 @@ export function runOnboarding(
       hero.appendChild(cv)
       host.appendChild(hero)
 
-      host.appendChild(el("h1", "wp-onb-title", "Welcome to the Plaza"))
-      host.appendChild(
-        el(
-          "p", "wp-onb-sub",
-          "A warm little square where neighbors trade hellos in new languages. " +
-            "Pick a name, dress your paper self, and step into the morning light.",
-        ),
-      )
-      const go = el("button", "wp-onb-btn wp-onb-btn--primary", "Begin")
+      host.appendChild(el("h1", "wp-onb-title", t("onb.welcome.title")))
+      host.appendChild(el("p", "wp-onb-sub", t("onb.welcome.sub")))
+      const go = el("button", "wp-onb-btn wp-onb-btn--primary", t("onb.welcome.begin"))
       go.onclick = () => setStep(1)
       host.appendChild(go)
     }
 
     /* ---- step 1: name roller ---- */
     const renderName = () => {
-      host.appendChild(el("h2", "wp-onb-title", "Choose a Plaza name"))
-      host.appendChild(
-        el("p", "wp-onb-sub", "Friendly and made-up — never your real name. Reroll until one feels right."),
-      )
+      host.appendChild(el("h2", "wp-onb-title", t("onb.name.title")))
+      host.appendChild(el("p", "wp-onb-sub", t("onb.name.sub")))
 
       const roller = el("div", "wp-onb-roller")
       const nameLabel = el("div", "wp-onb-name", nameState.display)
@@ -374,7 +399,7 @@ export function runOnboarding(
       }
 
       const row = el("div", "wp-onb-row")
-      const reroll = el("button", "wp-onb-btn wp-onb-btn--ghost", "↻ Reroll")
+      const reroll = el("button", "wp-onb-btn wp-onb-btn--ghost", t("onb.name.reroll"))
       reroll.onclick = () => {
         // brief spin: cycle a few teaser names then settle
         let n = 0
@@ -387,7 +412,7 @@ export function runOnboarding(
         }
         spin()
       }
-      const use = el("button", "wp-onb-btn wp-onb-btn--primary", "Use this name")
+      const use = el("button", "wp-onb-btn wp-onb-btn--primary", t("onb.name.use"))
       use.onclick = () => setStep(2)
       row.appendChild(reroll)
       row.appendChild(use)
@@ -396,8 +421,8 @@ export function runOnboarding(
 
     /* ---- step 2: dress-up ---- */
     const renderDress = () => {
-      host.appendChild(el("h2", "wp-onb-title", "Dress your paper self"))
-      host.appendChild(el("p", "wp-onb-sub", `You'll enter as ${nameState.display}.`))
+      host.appendChild(el("h2", "wp-onb-title", t("onb.dress.title")))
+      host.appendChild(el("p", "wp-onb-sub", t("onb.dress.subNamed", { name: nameState.display })))
 
       const stage = el("div", "wp-onb-stage")
       const cv = el("canvas", "wp-onb-doll") as HTMLCanvasElement
@@ -479,13 +504,13 @@ export function runOnboarding(
 
       // TOP slot + its tint
       const topTints = tintRow(
-        "Color",
-        () => TOPS.find((t) => t.id === dress.topId)?.tints,
+        t("onb.dress.color"),
+        () => TOPS.find((top) => top.id === dress.topId)?.tints,
         () => dress.topTint,
         (c) => (dress.topTint = c),
       )
       wardrobe.appendChild(
-        swatchRow("Outfit", TOPS, () => dress.topId, (it) => {
+        swatchRow(t("onb.dress.outfit"), TOPS, () => dress.topId, (it) => {
           dress.topId = it.id
           dress.topTint = it.tints?.[0] ?? dress.topTint
           topTints.build()
@@ -495,13 +520,13 @@ export function runOnboarding(
 
       // HAT slot + its tint
       const hatTints = tintRow(
-        "Hat color",
+        t("onb.dress.hatColor"),
         () => HATS.find((h) => h.id === dress.hatId)?.tints,
         () => dress.hatTint,
         (c) => (dress.hatTint = c),
       )
       wardrobe.appendChild(
-        swatchRow("Hat", HATS, () => dress.hatId, (it) => {
+        swatchRow(t("onb.dress.hat"), HATS, () => dress.hatId, (it) => {
           dress.hatId = it.id
           dress.hatTint = it.tints?.[0]
           hatTints.build()
@@ -511,13 +536,13 @@ export function runOnboarding(
 
       // ACCESSORY slot + its tint
       const accTints = tintRow(
-        "Accessory color",
+        t("onb.dress.accessoryColor"),
         () => ACCS.find((a) => a.id === dress.accId)?.tints,
         () => dress.accTint,
         (c) => (dress.accTint = c),
       )
       wardrobe.appendChild(
-        swatchRow("Accessory", ACCS, () => dress.accId, (it) => {
+        swatchRow(t("onb.dress.accessory"), ACCS, () => dress.accId, (it) => {
           dress.accId = it.id
           dress.accTint = it.tints?.[0]
           accTints.build()
@@ -527,7 +552,7 @@ export function runOnboarding(
 
       // SKIN tones
       const skinGroup = el("div", "wp-onb-group")
-      skinGroup.appendChild(el("div", "wp-onb-group-label", "Skin"))
+      skinGroup.appendChild(el("div", "wp-onb-group-label", t("onb.dress.skin")))
       const skinChips = el("div", "wp-onb-chips")
       SKINS.forEach((c) => {
         const sw = el("button", "wp-onb-tint")
@@ -548,7 +573,7 @@ export function runOnboarding(
 
       host.appendChild(wardrobe)
 
-      const enter = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", "Enter the Plaza")
+      const enter = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", t("onb.dress.enter"))
       enter.onclick = () => finish()
       host.appendChild(enter)
     }

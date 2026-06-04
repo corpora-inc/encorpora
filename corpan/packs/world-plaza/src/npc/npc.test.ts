@@ -23,6 +23,7 @@ import {
   seguePhraseCount,
 } from "./challengeSegues"
 import { pickVoiceId } from "./npcVoice"
+import { targetLanguageDirective, promptLocaleFor } from "./promptLocale"
 import type { HostVoiceInfo } from "./hostTypes"
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -93,11 +94,17 @@ describe("system prompt composition", () => {
     // Mood beat present and verbatim from the rotation.
     expect(prompt).toContain(mood)
     expect(MOOD_BEATS).toContain(mood)
-    // Hard rails: target-only + ≤2 sentences + anti-ramble + stay-in-character.
-    expect(prompt).toContain("Reply in Spanish ONLY")
-    expect(prompt).toContain("at most 2 short sentences")
-    expect(prompt).toContain("do not list or ramble")
-    expect(prompt).toContain("stay in character")
+    // R2-2: the decisive language+behaviour directive is composed IN THE TARGET
+    // LANGUAGE (Spanish here), and ENDS the prompt so it primes target-language
+    // output. It must be the verbatim es directive (not English) and must name the
+    // target's own endonym ("español").
+    const directive = targetLanguageDirective("es", false)
+    expect(prompt).toContain(directive)
+    expect(directive).toContain("Habla SOLO en español")
+    // The English "reply in {target} ONLY" rail is GONE (it primed English output).
+    expect(prompt).not.toContain("Reply in Spanish ONLY")
+    // The terse English anti-ramble belt remains (instruction about self, not echoed).
+    expect(prompt).toContain("Do not list or ramble")
     // A generic NPC injects NO quest-facts block.
     expect(prompt).not.toContain("QUEST CONTEXT")
   })
@@ -121,7 +128,7 @@ describe("system prompt composition", () => {
     expect(prompt).not.toContain(segueTag("word-scramble", "es"))
   })
 
-  it("single-language stack → immersion discipline", () => {
+  it("single-language stack → immersion discipline (IN the target language)", () => {
     const { roles, quest, scene } = load()
     const prompt = composeSystemPrompt({
       npcRole: roles[0],
@@ -129,7 +136,39 @@ describe("system prompt composition", () => {
       quest,
       learnerPair: { target: "es", native: "es" },
     })
-    expect(prompt.toLowerCase()).toContain("immersion")
+    // The immersion directive is the es immersion variant, composed in Spanish
+    // ("inmersión total") — not an English "immersion" string.
+    const immersion = targetLanguageDirective("es", true)
+    expect(prompt).toContain(immersion)
+    expect(immersion).toContain("inmersión total")
+  })
+
+  it("R2-2: prompt directive language = TARGET; AR target → Arabic directive (native script)", () => {
+    const { roles, quest, scene } = load()
+    // Learning AR from EN → the decisive directive must be Arabic, in Arabic script,
+    // naming the target's endonym ("العربية"), so a small model is primed to write
+    // Arabic instead of Latin-character babble.
+    const arPrompt = composeSystemPrompt({
+      npcRole: roles[0],
+      scene,
+      quest,
+      learnerPair: { target: "ar", native: "en" },
+    })
+    const arDirective = targetLanguageDirective("ar", false)
+    expect(arPrompt).toContain(arDirective)
+    expect(arDirective).toContain(promptLocaleFor("ar").endonym) // العربية
+    expect(arDirective).toMatch(/[؀-ۿ]/) // contains Arabic script
+    expect(arPrompt).not.toContain("Reply in")
+
+    // Learning EN from AR → the directive is English ("Speak ONLY in English").
+    const enPrompt = composeSystemPrompt({
+      npcRole: roles[0],
+      scene,
+      quest,
+      learnerPair: { target: "en", native: "ar" },
+    })
+    expect(enPrompt).toContain(targetLanguageDirective("en", false))
+    expect(enPrompt).toContain("Speak ONLY in English")
   })
 })
 
@@ -295,8 +334,9 @@ describe("sticky per-NPC voice (CHANGE 2)", () => {
     expect(first).not.toBeNull()
     // Same NPC, again → identical (sticky, no rotation).
     expect(await r.voiceIdFor("crowd:boatman:1", "es")).toBe(first)
-    // Persisted under the tiny key.
-    expect(backing.has("wp:npc:voice:v1")).toBe(true)
+    // Persisted under the v2 key, scoped to the target language ("npcId|target").
+    expect(backing.has("wp:npc:voice:v2")).toBe(true)
+    expect(JSON.parse(backing.get("wp:npc:voice:v2")!)).toHaveProperty("crowd:boatman:1|es")
     // A FRESH resolver reuses the persisted choice (survives reload).
     const r2 = createNpcVoiceResolver(host as never)
     expect(await r2.voiceIdFor("crowd:boatman:1", "es")).toBe(first)
@@ -323,6 +363,183 @@ describe("sticky per-NPC voice (CHANGE 2)", () => {
     expect(await r.voiceIdFor("npc", "es")).toBeNull()
     await r.speak("npc", "es", "Hola")
     expect(spoke).toBe("Hola")
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  it("R2-2: voice is enumerated + spoken from the TARGET language code passed", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    // Voices for several languages; the resolver must pick from the language code
+    // it is given (the TARGET) — proving an EN-learning NPC gets an EN voice, never
+    // a Spanish one (the ES→EN bug). `listVoices(target)` here returns ALL voices;
+    // the resolver filters by the requested language.
+    const all = [
+      { id: "es-ES-1", language: "es-ES", gender: "male" as const },
+      { id: "en-US-1", language: "en-US", gender: "male" as const },
+      { id: "en-GB-2", language: "en-GB", gender: "female" as const },
+    ]
+    let listedWith = ""
+    let spokeWith = ""
+    const host = {
+      speak: async (lang: string) => void (spokeWith = lang),
+      speakVoice: async (lang: string) => void (spokeWith = lang),
+      listVoices: async (code?: string) => {
+        listedWith = code ?? ""
+        return all
+      },
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // Learning EN → voice must be an EN voice (the resolver matched on "en").
+    const v = await r.voiceIdFor("boatman", "en")
+    expect(listedWith).toBe("en")
+    expect(v).toMatch(/^en-/)
+    await r.speak("boatman", "en", "Hello")
+    expect(spokeWith).toBe("en") // spoken in the TARGET language, not "es"
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  // The ACTIVE on-device bug: host returns voices for listVoices("en") but NONE
+  // are English (ES-locale device / unfiltered host). The OLD code kept the full
+  // list and pinned a Spanish voiceId → ES voice speaking EN text. Now: no pin,
+  // language-only speak — never a wrong-language voice.
+  it("R2-2: host returns ZERO target-language voices → NO pin, language-only speak (no wrong-lang voice)", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    // listVoices("en") returns ONLY Spanish voices (the device-locale failure mode).
+    const esOnly = [
+      { id: "es-ES-1", language: "es-ES", gender: "male" as const },
+      { id: "es-MX-2", language: "es-MX", gender: "female" as const },
+    ]
+    const calls: Array<{ fn: string; lang: string; voice?: string }> = []
+    const host = {
+      speak: async (lang: string) => void calls.push({ fn: "speak", lang }),
+      speakVoice: async (lang: string, _t: string, voice: string) =>
+        void calls.push({ fn: "speakVoice", lang, voice }),
+      listVoices: async () => esOnly,
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // No English voice exists → resolve to null (never pin a Spanish voice for EN).
+    expect(await r.voiceIdFor("boatman", "en")).toBeNull()
+    await r.speak("boatman", "en", "Hello")
+    // MUST have used language-only speak("en", …), NOT speakVoice with an es voice.
+    expect(calls.some((c) => c.fn === "speakVoice")).toBe(false)
+    expect(calls).toEqual([{ fn: "speak", lang: "en" }])
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  it("R2-2: pin cache is scoped to TARGET — an 'en' voice is never reused for 'es'", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    const all = [
+      { id: "en-US-1", language: "en-US", gender: "male" as const },
+      { id: "es-ES-1", language: "es-ES", gender: "male" as const },
+    ]
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async () => all,
+    }
+    const r = createNpcVoiceResolver(host as never)
+    const en = await r.voiceIdFor("npc-1", "en")
+    const es = await r.voiceIdFor("npc-1", "es")
+    expect(en).toMatch(/^en-/)
+    expect(es).toMatch(/^es-/) // NOT the cached en voice — different target → own pin.
+    expect(en).not.toBe(es)
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  it("R2-2: a stale wrong-language cached pin is DISCARDED, not reused", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    // Seed a poisoned pin: NPC "boatman" learning "en" wrongly pinned to a Spanish
+    // voice (what the old buggy path could persist). Under the v2 key shape.
+    backing.set(
+      "wp:npc:voice:v2",
+      JSON.stringify({ "boatman|en": { id: "es-ES-9", language: "es-ES" } }),
+    )
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async () => [{ id: "en-US-1", language: "en-US", gender: "male" as const }],
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // The stale es pin must be dropped and a real EN voice resolved instead.
+    expect(await r.voiceIdFor("boatman", "en")).toBe("en-US-1")
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  // THE on-device symptom, reproduced as a regression: the player FIRST lives in
+  // an es-target context (immersion, or a prior ES-target stack) so the NPC's
+  // voice is pinned to a Spanish voice; THEN they switch to learn EN. The same NPC
+  // id must NOT reuse the Spanish pin for the English visit. This is the exact
+  // sequence behind "EN text, ES voice". VERIFIED red against the pre-fix code
+  // (`map[npcId]` cache, no target in the key → returns the es voice for "en") and
+  // green after the fix (cache keyed by `npcId|target` + language guard).
+  it("R2-2 REGRESSION: live in es THEN learn en → the en visit gets an en voice, never the es one", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    // A correctly language-FILTERED host (the owner says the host is fine): it
+    // returns only the voices for the requested language code.
+    const all = [
+      { id: "es-ES-Monica", language: "es-ES", gender: "female" as const },
+      { id: "en-US-Samantha", language: "en-US", gender: "female" as const },
+    ]
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async (uiCode?: string) => {
+        const base = (uiCode ?? "").toLowerCase().split("-")[0]
+        return base ? all.filter((v) => v.language.toLowerCase().split("-")[0] === base) : all
+      },
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // 1) Player lives in es → boatman pinned to the (only) Spanish voice.
+    expect(await r.voiceIdFor("boatman", "es")).toBe("es-ES-Monica")
+    // 2) Player switches the stack to learn EN. SAME npc id, target now "en".
+    const enVoice = await r.voiceIdFor("boatman", "en")
+    // MUST be an English voice — the bug returned "es-ES-Monica" here.
+    expect(enVoice).toBe("en-US-Samantha")
+    expect(enVoice!.toLowerCase().split("-")[0]).toBe("en")
     delete (globalThis as { localStorage?: unknown }).localStorage
   })
 })

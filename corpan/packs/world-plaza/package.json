@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
+    "check-translations": "python3 tools/check_translations.py",
+    "check-translations:fix": "python3 tools/check_translations.py --fix",
     "dev:corpan": "node scripts/dev-corpan.mjs",
     "preview": "vite preview",
     "server": "npm --prefix server run server",

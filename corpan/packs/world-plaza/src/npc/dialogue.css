@@ -293,9 +293,20 @@
 /* ---- the deterministic "Play a game" offer (its own prominent row) ---- */
 .wp-npc-playrow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   padding: 2px 16px 10px;
+}
+/* The challenge intro/segue line — a quiet secondary caption sitting just ABOVE
+   the Play button (its own chrome, NOT a chat bubble, never spoken). Soft + small
+   so the eye lands on the button it labels. */
+.wp-npc-play-caption {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--wp-npc-ink, #4a3a28);
+  opacity: 0.72;
 }
 /* a filled, primary CTA — distinct from the outline suggested-reply chips so it
    reads as THE thing to tap. A soft pulse draws the eye on first appearance. */

@@ -2,6 +2,10 @@ import type { Scene as BabylonScene } from "@babylonjs/core/scene"
 import { createGroundedCutout, type GroundedCutout } from "../render/cutout"
 import { CHAR_TEX, characterDraw } from "../character/characterArt"
 import { generateCharacter, ANTIGUA_1770, type WardrobeTheme } from "../character/characterGen"
+import type { CharacterSpec } from "../character/characterSpec"
+import { generatePersona } from "../npc/personaGen"
+import type { CrowdFocusHandle } from "../world/crowd"
+import type { Scene as ContentScene } from "@world-plaza/contracts"
 import type { ObstacleField } from "../world/collision"
 import type { CityLayout, CityAnchor } from "./layout"
 
@@ -9,35 +13,34 @@ import type { CityLayout, CityAnchor } from "./layout"
  * city/population.ts — PROXIMITY-STREAMED AMBIENT LIFE for Corpan City
  * (MASTER_BACKLOG C6).
  *
- * The spawn area read sparse. `world/crowd.ts` already gives ~28 fully-voiced,
- * talkable, generated townsfolk — but it runs at a FLAT global count across a
- * city far bigger than what's on screen, so near the player it still feels thin,
- * and bumping its count up taxes every frame everywhere.
+ * The spawn area read sparse. `world/crowd.ts` gives ~28 fully-voiced talkable
+ * townsfolk, but at a FLAT global count across a city far bigger than what's on
+ * screen, so near the player it still feels thin and bumping its count taxes
+ * every frame everywhere. This lighter layer adds populated-town density right
+ * where the player is — and only there.
  *
- * This is a SEPARATE, lighter layer that adds the *feeling* of a populated town
- * right where you are — and only there:
+ * EVERY VISIBLE PERSON IS WALK-UP TALKABLE (owner ruling — "I don't want NPCs I
+ * can't interact with"). The ambient strollers are NOT mute background extras:
+ * each exposes a `CrowdFocusHandle` (`focusables`) that game.ts merges into the
+ * SAME `npcFocus` list as the crowd, so approaching one shows the Talk button and
+ * opens a real conversation. The expensive `generatePersona` is LAZY — built +
+ * cached the first time a stroller's `role` is read (i.e. on engage), so density
+ * stays cheap until you actually talk to someone. Stall-keepers are talkable too.
  *
- *   • a small RECYCLED POOL of ambient strollers (non-talkable background extras).
- *     The pool size is fixed and small; figures that drift past `sleepRadius` are
- *     PARKED (disabled) and RESPAWNED at a fresh point inside `wakeRadius` around
- *     the player. So a constant, lively density follows you, the count never
- *     grows, and far-away streets cost nothing (their figures are simply asleep).
- *   • STALL-KEEPERS: a figure that wakes at each VENDOR anchor near the player and
- *     gently works the stall (a soft bob), sleeping when you leave that market.
- *
- * WHY a pool, not "more crowd": the crowd is the gameplay surface (focus/dialogue
- * read every agent's live position each frame, personas + animators are heavy).
- * Ambient extras need none of that — they are immutable single-frame billboards
- * with a tiny stroll/bob, so a dozen of them near you is far cheaper than a dozen
- * more crowd agents, and they never clutter the talk affordance.
+ *   • a small RECYCLED POOL of ambient strollers. Figures past `sleepRadius` are
+ *     PARKED (disabled) and RESPAWNED inside `wakeRadius` around the player, so a
+ *     constant lively density follows you and far streets cost nothing.
+ *   • STALL-KEEPERS: a pooled figure that wakes at each near VENDOR anchor and
+ *     gently works the stall, sleeping when you leave that market.
  *
  * PERF (must not regress the 123 MB / no-hitch streaming baseline):
  *   • pool is bounded (≤ `maxStrollers` + `maxStalls`). Textures are IMMUTABLE
- *     (`animatable:false`) and drawn ONCE on wake from a SHARED small set of
- *     pre-baked figure specs — texture memory is O(figureSpecs), not O(pool).
- *   • per frame: O(pool) cheap position lerps + a single sine for the bob. No
- *     persona gen, no animator repaints, no separation N², no obstacle resolve
- *     beyond a one-shot blocked() test when picking a new target.
+ *     (`animatable:false`, no per-frame animator) and drawn ONCE on wake from a
+ *     SHARED small set of pre-baked figure specs — texture memory is
+ *     O(figureSpecs), not O(pool). Talkability adds NO per-frame cost: the persona
+ *     is generated lazily on first engage and cached, never per frame.
+ *   • per frame: O(pool) cheap position lerps + a single sine bob + a one-frame
+ *     soft player-yield. No animator repaints, no separation N².
  *   • all motion gates on reduced-motion (figures stand still, just present).
  */
 
@@ -46,6 +49,25 @@ import type { CityLayout, CityAnchor } from "./layout"
 export interface Population {
   /** advance ambient life; pass the live player position. drive from onFrame. */
   update: (dt: number, player: { x: number; z: number }) => void
+  /**
+   * Focus-compatible handles for EVERY ambient figure (strollers + stall-keepers),
+   * so game.ts can merge them into the SAME `npcFocus` list as the crowd — every
+   * visible person is walk-up talkable (owner ruling). Each handle's `role` is a
+   * LAZY getter: the persona is generated + cached on first read (i.e. on engage),
+   * so this costs nothing until the player actually talks to one. Stable for the
+   * population's lifetime (the underlying pooled cutout is recycled, but each slot
+   * keeps a stable id + persona so a re-woken figure stays the same person).
+   */
+  focusables: CrowdFocusHandle[]
+  /**
+   * Freeze ONE ambient figure in place by its handle `anchorId` (the npcId) — the
+   * focus/dialogue layer calls this when its Talk button is up or a conversation
+   * is open, so a talkable stroller STOPS and waits instead of wandering off mid-
+   * chat. Pass `null` to release. Mirrors `crowd.setHeld` so game.ts can route a
+   * focus/engage to whichever layer owns the id (an unknown id is a harmless no-op,
+   * so game.ts can safely call BOTH `crowd.setHeld` and `population.setHeld`).
+   */
+  setHeld: (npcId: string | null) => void
   dispose: () => void
 }
 
@@ -54,9 +76,24 @@ export interface PopulationOptions {
   obstacles: ObstacleField
   theme?: WardrobeTheme
   palette?: Record<string, string>
+  /**
+   * The active content Scene — used to generate each ambient figure's persona
+   * (lazily, on first engage) so strollers are talkable like the crowd. Optional
+   * so test callers compile; without it the figures fall back to a neutral persona
+   * seed (still talkable, just scene-neutral flavour).
+   */
+  scene?: ContentScene
   /** honour prefers-reduced-motion (present but still — no stroll/bob). */
   reducedMotion?: boolean
-  /** max concurrent visible strollers near the player. default 12. */
+  /**
+   * The camera's ground-plane forward heading (unit-ish XZ), read each frame. When
+   * provided, freshly-woken strollers spawn in the player's REAR/SIDE arc (outside
+   * the forward view cone) so nothing materializes in front of you (§5 pop-in).
+   * Absent → spawn anywhere in the ring (the fade-in still hides the appearance).
+   */
+  getForward?: () => { x: number; z: number }
+  /** max concurrent visible strollers near the player. default 8 (kept below the
+   *  talkable crowd count so ambient extras complement, not dominate). */
   maxStrollers?: number
   /** how many DISTINCT pre-baked figure textures to cycle (texture budget). default 6. */
   figureVariety?: number
@@ -83,6 +120,10 @@ interface Stroller {
   awake: boolean
   variety: number
   bobPhase: number
+  /** fade-in clock: counts up 0→FADE_IN on wake so the figure ramps in (§5). */
+  fadeT: number
+  /** the focus-compatible handle (live pos + lazy persona) game.ts engages on. */
+  handle: CrowdFocusHandle
 }
 
 interface StallKeeper {
@@ -90,15 +131,34 @@ interface StallKeeper {
   /** the vendor anchor this pooled keeper is currently bound to (null = free). */
   anchor: CityAnchor | null
   bobPhase: number
+  /** fade-in clock: 0→FADE_IN on bind so a keeper eases in, never pops (§5). */
+  fadeT: number
+  /** the focus-compatible handle (live pos + lazy persona) game.ts engages on. */
+  handle: CrowdFocusHandle
 }
 
 const AGENT_R = 0.45
 const STROLL_SPEED = 1.7 // u/s — a relaxed amble, slower than the crowd's stroll
 const ARRIVE = 1.0
+const FADE_IN = 0.5 // seconds a woken stroller ramps from invisible → full (§5)
+// Half-angle (radians) of the player's forward view cone that wake-spawns avoid.
+// ~70° each side ≈ a 140° front arc kept clear, wider than the follow-cam FOV so a
+// figure never appears on-screen. Spawns land in the rear/side 220°.
+const VIEW_CONE_HALF = 1.22
+// SOFT BODY GAP — a stroller keeps ≥ this from the player so you never phase
+// straight THROUGH an ambient figure (kills the "crowd of ghosts" feel). It's a
+// gentle YIELD: the stroller steps aside, reading as a present, solid body without
+// a hard wall (these movers aren't in the static obstacle field). Mirrors
+// crowd.ts BODY_GAP so ambient + talkable extras feel the same to walk among.
+const PLAYER_BODY_GAP = 1.0
 
 export function createPopulation(scene: BabylonScene, opts: PopulationOptions): Population {
   const theme = opts.theme ?? ANTIGUA_1770
-  const maxStrollers = opts.maxStrollers ?? 12
+  // Default ambient density tuned DOWN from 12 → 8 so the near-field isn't
+  // dominated by non-talkable extras (the "I keep trying to talk to NPCs that
+  // can't respond" complaint). They COMPLEMENT the ~28 talkable crowd agents
+  // (crowd.ts), not outnumber them. Callers can still override.
+  const maxStrollers = opts.maxStrollers ?? 8
   const maxStalls = opts.maxStalls ?? 4
   const variety = Math.max(1, opts.figureVariety ?? 6)
   const wakeR = opts.wakeRadius ?? 26
@@ -113,15 +173,45 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   const clampX = (x: number) => Math.max(bounds.minX + margin, Math.min(bounds.maxX - margin, x))
   const clampZ = (z: number) => Math.max(bounds.minZ + margin, Math.min(bounds.maxZ - margin, z))
 
+  // Persona scene: the active content Scene flavours each figure's lazily-built
+  // persona; a neutral fallback keeps figures talkable even when none is passed.
+  const personaScene: ContentScene = opts.scene ?? NEUTRAL_PERSONA_SCENE
+
   // ── shared pre-baked figure DRAW fns — the texture budget cap ──────────────
-  // We generate `variety` distinct townsperson specs ONCE; every stroller in the
-  // pool reuses one of these draws. The cutout still owns its own (immutable)
-  // texture instance, but they're painted from a small shared set so the look is
-  // varied without unbounded unique art. (Cheap: gen is pure + deterministic.)
+  // We generate `variety` distinct townsperson SPECS ONCE; every figure reuses
+  // one. The cutout owns its own (immutable) texture, but they're painted from
+  // this small shared set so the look is varied without unbounded unique art. We
+  // KEEP the `spec` per variety so a figure's lazy persona is generated from the
+  // SAME face/demeanor the player sees (face ↔ persona coherence). (Pure + cheap.)
   const figureDraws = Array.from({ length: variety }, (_, i) => {
     const spec = generateCharacter("crowd", `ambient:${opts.layout.seed}:${i}`, theme)
-    return { draw: characterDraw(spec), shadowR: spec.build === "child" ? 0.5 : 0.6 }
+    return { draw: characterDraw(spec), shadowR: spec.build === "child" ? 0.5 : 0.6, spec }
   })
+
+  // Build the focus-compatible handle for one pooled figure. `role` is a LAZY,
+  // cached getter: the (expensive) persona is generated only the first time it's
+  // read — i.e. when game.ts engages this figure — so an un-talked-to figure costs
+  // nothing beyond its billboard. `npcId` is stable for the slot's lifetime so a
+  // recycled figure stays the SAME person + routes dialogue consistently.
+  const makeHandle = (cut: GroundedCutout, npcId: string, spec: CharacterSpec): CrowdFocusHandle => {
+    let persona: ReturnType<typeof generatePersona> | null = null
+    return {
+      anchorId: npcId,
+      kind: "npc",
+      billboard: {
+        // live position the focus layer reads each frame (the SAME Vector3 the
+        // billboard renders at — setGroundPos mutates it in place, no offset/lag).
+        root: { position: cut.root.position },
+        setScale: (s) => cut.setScale(s),
+      },
+      get role() {
+        if (!persona) {
+          persona = generatePersona(npcId, { scene: personaScene, spec })
+        }
+        return persona
+      },
+    }
+  }
 
   // Ambient extras render at HALF the crowd's texture resolution. `drawCharacter`
   // is fully proportional to (w,h), so the silhouette is identical at distance —
@@ -130,25 +220,50 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   // from across the plaza, never inspected up close, so the half-res reads clean.
   const TEX_W = Math.round(CHAR_TEX.w / 2)
   const TEX_H = Math.round(CHAR_TEX.h / 2)
-  const makeCutout = (variety: number): GroundedCutout => {
+  // Make a pooled figure's cutout. It is a REAL talk target now (owner ruling:
+  // every visible person is interactive), so it carries an `npc:` pick tag and a
+  // pickable plane just like a crowd agent — `npcId` routes both the focus handle
+  // and any tap-pick to the same figure. The texture stays immutable (no animator)
+  // and the persona is lazy, so talkability adds no per-frame / no upfront cost.
+  const makeCutout = (variety: number, npcId: string): GroundedCutout => {
     const f = figureDraws[variety % figureDraws.length]
     return createGroundedCutout(scene, {
       w: TEX_W,
       h: TEX_H,
       draw: (ctx, w, h) => f.draw(ctx, w, h),
       shadowRadius: f.shadowR,
-      // immutable texture (no per-frame repaints) + non-pickable: these are
-      // background extras, never a talk target. The pick layer ignores them
-      // because they carry no `npc:` tag.
+      // immutable texture (no per-frame repaints): no animator, just a billboard.
       animatable: false,
-      pickTag: undefined,
+      pickTag: `npc:${npcId}`,
     })
   }
 
-  /** A free walkable point inside the ring [near,far] around the player. */
-  const pickNear = (px: number, pz: number, near: number, far: number): { x: number; z: number } => {
+  /** A free walkable point inside the ring [near,far] around the player. When
+   *  `avoidFwd` is set, the sampled bearing is kept OUT of the player's forward
+   *  view cone (so wake-spawns land behind/beside you, not on-screen — §5). */
+  const pickNear = (
+    px: number,
+    pz: number,
+    near: number,
+    far: number,
+    avoidFwd?: { x: number; z: number },
+  ): { x: number; z: number } => {
+    // the camera-forward bearing to avoid (only when we have a non-degenerate dir).
+    const fwdLen = avoidFwd ? Math.hypot(avoidFwd.x, avoidFwd.z) : 0
+    const fwdAng = fwdLen > 1e-3 ? Math.atan2(avoidFwd!.z, avoidFwd!.x) : null
     for (let i = 0; i < 16; i++) {
-      const a = Math.random() * Math.PI * 2
+      let a = Math.random() * Math.PI * 2
+      if (fwdAng !== null) {
+        // if the bearing falls inside the forward cone, reflect it to the rear arc.
+        let d = a - fwdAng
+        while (d > Math.PI) d -= Math.PI * 2
+        while (d < -Math.PI) d += Math.PI * 2
+        if (Math.abs(d) < VIEW_CONE_HALF) {
+          // push to the nearest cone edge, then out into the rear hemisphere.
+          const sign = d >= 0 ? 1 : -1
+          a = fwdAng + sign * (VIEW_CONE_HALF + Math.random() * (Math.PI - VIEW_CONE_HALF))
+        }
+      }
       const r = near + Math.random() * (far - near)
       const x = clampX(px + Math.cos(a) * r)
       const z = clampZ(pz + Math.sin(a) * r)
@@ -158,14 +273,20 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   }
 
   // ── stroller pool — start ASLEEP; first update() wakes them near the player ─
+  // Each slot has a STABLE npc id (so a recycled figure stays the same person +
+  // routes dialogue consistently) and a focus handle game.ts merges into npcFocus.
   const strollers: Stroller[] = []
   for (let i = 0; i < maxStrollers; i++) {
     const v = i % variety
-    const cut = makeCutout(v)
+    const npcId = `ambient:${opts.layout.seed}:stroller:${i}`
+    const cut = makeCutout(v, npcId)
     cut.root.setEnabled(false)
+    cut.setGroundPos(1e6, 1e6) // park focus far off until first wake (see FAR_AWAY)
     strollers.push({
       cut, x: 0, z: 0, tx: 0, tz: 0, speed: 0,
       idleT: 0, awake: false, variety: v, bobPhase: Math.random() * Math.PI * 2,
+      fadeT: FADE_IN,
+      handle: makeHandle(cut, npcId, figureDraws[v % figureDraws.length].spec),
     })
   }
 
@@ -176,13 +297,30 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   // pooled keepers to the nearest unmanned in-range vendors and release far ones.
   const vendorAnchors = opts.layout.anchors.filter((a) => a.kind === "vendor")
   const stalls: StallKeeper[] = Array.from({ length: maxStalls }, (_, i) => {
-    const cut = makeCutout((i + 3) % variety) // offset variety so keeper ≠ adjacent stroller
+    const v = (i + 3) % variety // offset variety so keeper ≠ adjacent stroller
+    const npcId = `ambient:${opts.layout.seed}:keeper:${i}`
+    const cut = makeCutout(v, npcId)
     cut.root.setEnabled(false)
-    return { cut, anchor: null, bobPhase: Math.random() * Math.PI * 2 }
+    cut.setGroundPos(1e6, 1e6) // park focus far off until bound (see FAR_AWAY)
+    return {
+      cut, anchor: null, bobPhase: Math.random() * Math.PI * 2, fadeT: FADE_IN,
+      handle: makeHandle(cut, npcId, figureDraws[v % figureDraws.length].spec),
+    }
   })
 
+  // Park a disabled figure's focus position FAR off-map so it is never the
+  // nearest-in-range target while asleep/unbound (npcFocus reads the live handle
+  // position every frame; a disabled cutout still carries its last position, and
+  // an unbound keeper would otherwise sit focusable at its init point near spawn).
+  // 1e6 ≫ the 4u focus range, so the handle is effectively absent until enabled.
+  const FAR_AWAY = 1e6
+  const parkFocusAway = (cut: GroundedCutout) => cut.setGroundPos(FAR_AWAY, FAR_AWAY)
+
   const wake = (s: Stroller, px: number, pz: number) => {
-    const p = pickNear(px, pz, wakeR * 0.4, wakeR)
+    // spawn OUTSIDE the forward view cone (rear/side arc) so it never pops in
+    // front of the player (§5); fade it in regardless as a belt-and-braces.
+    const fwd = opts.getForward?.()
+    const p = pickNear(px, pz, wakeR * 0.4, wakeR, fwd)
     s.x = p.x
     s.z = p.z
     const t = pickNear(px, pz, 2, wakeR)
@@ -190,13 +328,20 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
     s.tz = t.z
     s.idleT = Math.random() * 1.5
     s.awake = true
+    s.fadeT = 0
+    s.cut.pickMesh.visibility = 0 // start invisible; ramp up over FADE_IN
     s.cut.setGroundPos(s.x, s.z)
     s.cut.root.setEnabled(true)
   }
   const sleep = (s: Stroller) => {
     s.awake = false
     s.cut.root.setEnabled(false)
+    parkFocusAway(s.cut) // not a focus target while asleep
   }
+
+  // The held figure (engaged/focused) freezes in place so it waits for you instead
+  // of wandering off mid-conversation. At most one at a time (mirrors crowd).
+  let heldId: string | null = null
 
   let primed = false
   const update: Population["update"] = (dt, player) => {
@@ -212,11 +357,40 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
         wake(s, player.x, player.z)
         continue
       }
+      // HELD (talking to you): freeze — no recycle, no amble, no yield. It stays
+      // put + visible where you engaged it until the conversation releases it.
+      if (heldId !== null && s.handle.anchorId === heldId) {
+        s.cut.pickMesh.visibility = 1 // ensure fully shown while held
+        continue
+      }
       const pd = Math.hypot(s.x - player.x, s.z - player.z)
       // too far → park + respawn near the player (density follows you).
       if (pd > sleepR) {
         sleep(s)
         continue
+      }
+
+      // fade-in ramp: a freshly-woken stroller climbs from invisible → full over
+      // FADE_IN seconds, so even a spawn that lands at the edge of view eases in
+      // rather than popping (§5).
+      if (s.fadeT < FADE_IN) {
+        s.fadeT = Math.min(FADE_IN, s.fadeT + dt)
+        s.cut.pickMesh.visibility = s.fadeT / FADE_IN
+      }
+
+      // SOFT PLAYER YIELD — push the stroller out of the player's body gap every
+      // frame so you can never phase straight THROUGH an ambient figure ("crowd of
+      // ghosts" fix). Applies whether the stroller is moving, idling, or in
+      // reduced-motion (it's a position correction, not an animation), so even a
+      // planted figure steps aside when you walk into it. The push is clamped to a
+      // gentle per-frame slide so a body reads as solid, not magnetically repelled.
+      if (pd > 1e-3 && pd < PLAYER_BODY_GAP) {
+        const yield_ = (PLAYER_BODY_GAP - pd) / PLAYER_BODY_GAP
+        const yx = ((s.x - player.x) / pd) * yield_ * STROLL_SPEED * dt * 2
+        const yz = ((s.z - player.z) / pd) * yield_ * STROLL_SPEED * dt * 2
+        s.x = clampX(s.x + yx)
+        s.z = clampZ(s.z + yz)
+        s.cut.setGroundPos(s.x, s.z)
       }
 
       if (reduce) {
@@ -275,10 +449,13 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
     const managed = new Set<string>()
     for (const k of stalls) {
       if (k.anchor) {
+        const held = heldId !== null && k.handle.anchorId === heldId
         const pd = Math.hypot(k.anchor.x - player.x, k.anchor.z - player.z)
-        if (pd > stallWakeR) {
+        // never release a keeper you're talking to (it would vanish mid-chat).
+        if (pd > stallWakeR && !held) {
           k.anchor = null
           k.cut.root.setEnabled(false)
+          parkFocusAway(k.cut) // not a focus target while unbound
         } else {
           managed.add(k.anchor.id)
         }
@@ -305,25 +482,58 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
       const oz = best.z + Math.sin(best.facing ?? 0) * 0.9
       const free = field.pushOut(clampX(ox), clampZ(oz), AGENT_R)
       k.cut.setGroundPos(free.x, free.z)
+      k.fadeT = 0
+      k.cut.pickMesh.visibility = 0 // ease in (§5)
       k.cut.root.setEnabled(true)
     }
-    // 3) the gentle "working the stall" bob for the bound keepers.
-    if (!reduce) {
-      for (const k of stalls) {
-        if (!k.anchor) continue
+    // 3) fade-in ramp + the gentle "working the stall" bob for the bound keepers.
+    for (const k of stalls) {
+      if (!k.anchor) continue
+      if (k.fadeT < FADE_IN) {
+        k.fadeT = Math.min(FADE_IN, k.fadeT + dt)
+        k.cut.pickMesh.visibility = k.fadeT / FADE_IN
+      }
+      if (!reduce) {
         k.bobPhase += dt * 2.4
         k.cut.hop(Math.abs(Math.sin(k.bobPhase)) * 0.06)
       }
     }
   }
 
+  // EVERY ambient figure's handle — strollers + stall-keepers — for game.ts to
+  // merge into the shared npcFocus list (every visible person is talkable). A
+  // disabled figure is parked FAR_AWAY so it's never the nearest-in-range target
+  // until it's enabled, so a stable array is safe to hand over once.
+  const focusables: CrowdFocusHandle[] = [
+    ...strollers.map((s) => s.handle),
+    ...stalls.map((k) => k.handle),
+  ]
+
   return {
     update,
+    focusables,
+    setHeld: (npcId) => {
+      heldId = npcId
+    },
     dispose: () => {
       for (const s of strollers) s.cut.dispose()
       for (const k of stalls) k.cut.dispose()
       strollers.length = 0
       stalls.length = 0
+      focusables.length = 0
     },
   }
+}
+
+/* A neutral content Scene for persona generation when the caller passes none —
+ * keeps ambient figures talkable (scene-neutral flavour) instead of mute. Mirrors
+ * crowd.ts NEUTRAL_DATA_SCENE so both layers fall back identically. */
+const NEUTRAL_PERSONA_SCENE: ContentScene = {
+  id: "neutral",
+  topologyId: "neutral" as ContentScene["topologyId"],
+  setting: { place: "the plaza", era: "a market town", mood: "lively" },
+  themeId: "paper",
+  narrativeBlurb: "",
+  anchorSkins: {},
+  npcSkins: {},
 }

@@ -104,7 +104,7 @@ const CSS = `
   display: flex;
   align-items: center;
   gap: 12px;
-  text-align: left;
+  text-align: start;
   padding: 12px 14px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.62);
@@ -157,7 +157,7 @@ const CSS = `
   appearance: none;
   cursor: pointer;
   font: inherit;
-  text-align: left;
+  text-align: start;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -196,7 +196,10 @@ const CSS = `
   text-overflow: ellipsis;
 }
 .wp-entry-lang__en { font-size: 12.5px; color: #6a5840; }
-.wp-entry-lang__chev { margin-left: auto; color: rgba(106, 88, 64, 0.5); font-size: 22px; }
+.wp-entry-lang__chev { margin-inline-start: auto; color: rgba(106, 88, 64, 0.5); font-size: 22px; }
+/* The › chevron is a text glyph (CSS can't auto-mirror it) — flip it under RTL so
+   it points toward the trailing edge in both directions. */
+[dir="rtl"] .wp-entry-lang__chev { transform: scaleX(-1); }
 
 @media (prefers-reduced-motion: reduce) {
   .wp-entry-root { transition: opacity 0.2s ease; transform: none; }

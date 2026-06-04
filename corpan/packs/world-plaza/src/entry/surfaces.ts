@@ -21,6 +21,7 @@ import type { LearnerPair } from "@world-plaza/contracts"
 import { ensureEntryStyles } from "./styles"
 import { bilabel, langTag, nativeName, englishName } from "./languageNames"
 import { isImmersion } from "./stackAdapter"
+import { bindT, applyDir, type BoundT } from "../i18n"
 
 const el = <K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -40,17 +41,26 @@ export interface SurfaceOptions {
   playerName?: string
   /** The place name to anchor the welcome ("Corpan City"). */
   place?: string
+  /**
+   * The learner's NATIVE language (`learnerPair.native` / stack `languages[0]`).
+   * ALL chrome copy renders in this language, and the surface orients RTL when it
+   * is a right-to-left script. Defaults to "en" when absent (standalone dev).
+   */
+  native?: string
 }
 
 /** Mount the shared fullscreen root + run-in transition; returns root + a closer. */
 function mountRoot(
   container: HTMLElement,
   accent?: string,
+  native?: string,
 ): { root: HTMLElement; card: HTMLElement; close: (then: () => void) => void } {
   ensureEntryStyles()
   const root = el("div", "wp-entry-root")
   root.setAttribute("role", "dialog")
   root.setAttribute("aria-modal", "true")
+  // Orient the fullscreen surface for an RTL native (Arabic, Hebrew, Farsi, Urdu).
+  applyDir(root, native ?? "en")
   const card = el("div", "wp-entry-card")
   if (accent) card.style.setProperty("--wp-entry-accent", accent)
   root.appendChild(card)
@@ -85,18 +95,13 @@ export function showLanguageChooser(
   opts: SurfaceOptions = {},
 ): Promise<string> {
   return new Promise<string>((resolve) => {
-    const { card, close } = mountRoot(container, opts.accent)
+    const { card, close } = mountRoot(container, opts.accent, opts.native)
+    const t: BoundT = bindT(opts.native ?? "en")
 
     card.appendChild(el("div", "wp-entry-stamp", "✦"))
-    card.appendChild(el("div", "wp-entry-eyebrow", "Your languages"))
-    card.appendChild(el("h1", "wp-entry-title", "Which world today?"))
-    card.appendChild(
-      el(
-        "p",
-        "wp-entry-sub",
-        "You're studying a few languages. Pick the one to live in this visit — the whole plaza, its people, and every challenge will speak it.",
-      ),
-    )
+    card.appendChild(el("div", "wp-entry-eyebrow", t("chooser.eyebrow")))
+    card.appendChild(el("h1", "wp-entry-title", t("chooser.title")))
+    card.appendChild(el("p", "wp-entry-sub", t("chooser.sub")))
 
     const grid = el("div", "wp-entry-langs")
     let settled = false
@@ -104,7 +109,7 @@ export function showLanguageChooser(
       const btn = el("button", "wp-entry-lang")
       btn.type = "button"
       const lb = bilabel(code)
-      btn.setAttribute("aria-label", `Play in ${englishName(code)}`)
+      btn.setAttribute("aria-label", t("chooser.playIn", { lang: englishName(code) }))
       btn.appendChild(el("span", "wp-entry-lang__tag", langTag(code)))
       const body = el("div", "wp-entry-lang__body")
       body.appendChild(el("span", "wp-entry-lang__native", lb.primary))
@@ -134,53 +139,61 @@ export function showWelcome(
   opts: SurfaceOptions = {},
 ): Promise<void> {
   return new Promise<void>((resolve) => {
-    const { card, close } = mountRoot(container, opts.accent)
+    // The native locale ALL welcome copy renders in: the option overrides, else
+    // the pair's native (the language the learner knows). RTL-orients the surface.
+    const native = opts.native ?? pair.native
+    const { card, close } = mountRoot(container, opts.accent, native)
+    const t: BoundT = bindT(native)
     const place = opts.place ?? "Corpan City"
     const target = nativeName(pair.target)
     const immersion = isImmersion(pair)
+    // Bold the interpolated name/place/target inside a fact body. The fact body
+    // is built as innerHTML, so we pass the value ALREADY escaped + wrapped in
+    // <strong> as the token; t(...) interpolates it into the (trusted, code-
+    // authored) localized sentence. Word order is per-language — the emphasis
+    // lands wherever that locale places the token. Safe: the only HTML in the
+    // result is our own <strong> around an escaped value.
+    const strongValue = (key: Parameters<BoundT>[0], token: string, value: string): string =>
+      t(key, { [token]: `<strong>${escapeHtml(value)}</strong>` })
 
     card.appendChild(el("div", "wp-entry-stamp", "☼"))
-    card.appendChild(el("div", "wp-entry-eyebrow", "Welcome"))
+    card.appendChild(el("div", "wp-entry-eyebrow", t("welcome.eyebrow")))
     card.appendChild(
       el(
         "h1",
         "wp-entry-title",
-        opts.playerName ? `Good morning, ${opts.playerName}` : "Welcome to the Plaza",
+        opts.playerName
+          ? t("welcome.titleNamed", { name: opts.playerName })
+          : t("welcome.title"),
       ),
     )
-    card.appendChild(
-      el(
-        "p",
-        "wp-entry-sub",
-        "A warm little city where neighbors trade hellos in new languages. Walk up to anyone, say hello, and let the day teach you.",
-      ),
-    )
+    card.appendChild(el("p", "wp-entry-sub", t("welcome.sub")))
 
     const facts = el("div", "wp-entry-facts")
     facts.appendChild(
       fact(
         "☻",
-        "You're you",
+        t("welcome.you.title"),
         opts.playerName
-          ? `Your paper self, <strong>${escapeHtml(opts.playerName)}</strong>, is dressed and ready.`
-          : "Your paper self is dressed and ready to wander.",
+          ? strongValue("welcome.you.bodyNamed", "name", opts.playerName)
+          : t("welcome.you.body"),
       ),
     )
     facts.appendChild(
-      fact("⌂", "Where you are", `<strong>${escapeHtml(place)}</strong> — harbor, market, bridges and back-streets.`),
+      fact("⌂", t("welcome.where.title"), strongValue("welcome.where.body", "place", place)),
     )
     facts.appendChild(
       fact(
         "✎",
-        immersion ? "Today's practice" : "Today's goal",
+        immersion ? t("welcome.practice.title") : t("welcome.goal.title"),
         immersion
-          ? `Live entirely in <strong>${escapeHtml(target)}</strong> — everyone speaks it; no translations.`
-          : `Pick up <strong>${escapeHtml(target)}</strong> as you go — gentle, one exchange at a time.`,
+          ? strongValue("welcome.practice.body", "lang", target)
+          : strongValue("welcome.goal.body", "lang", target),
       ),
     )
     card.appendChild(facts)
 
-    const go = el("button", "wp-entry-btn", "Step into the morning light")
+    const go = el("button", "wp-entry-btn", t("welcome.cta"))
     go.type = "button"
     let settled = false
     go.onclick = () => {
