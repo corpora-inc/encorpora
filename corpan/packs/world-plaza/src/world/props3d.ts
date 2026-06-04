@@ -517,23 +517,48 @@ export function buildBench(scene: BabylonScene, pal: PropPalette): Mesh {
   return f.forge("wp-bench")
 }
 
-/** Water trough: a stone box with a hollowed rim + a shimmering water slab. The
- * water is the LAST colour group; caller can grab its material to shimmer. */
+/** Water trough: a stone basin with a darker lip rim + a calm water slab. Reads
+ * clearly as a trough (stone body, dark interior, blue water), not a beige box. */
 export function buildTrough(scene: BabylonScene, pal: PropPalette): { mesh: Mesh } {
   const f = new PropForge(scene)
   const W = 1.8
   const D = 0.8
   const H = 0.55
-  // outer stone shell as 4 walls + base (so there's a real basin)
   const t = 0.14
-  f.box(W, t, D, pal.stoneDk, 0, t / 2, 0) // floor
-  f.box(W, H, t, pal.stone, 0, H / 2, D / 2 - t / 2) // far wall
-  f.box(W, H, t, pal.stone, 0, H / 2, -D / 2 + t / 2) // near wall
-  f.box(t, H, D, pal.stone, W / 2 - t / 2, H / 2, 0) // right
-  f.box(t, H, D, pal.stone, -W / 2 + t / 2, H / 2, 0) // left
-  // water slab inside, near the top
-  f.box(W - 2 * t, 0.06, D - 2 * t, pal.water, 0, H - 0.1, 0)
-  return { mesh: f.forge("wp-trough") }
+  // Walls form a basin WITHOUT overlapping at the corners (overlap = coplanar
+  // faces = the z-fight flicker). Front/back walls span the full width; the side
+  // walls span only the INNER depth so they butt against — never overlap — them.
+  const innerD = D - 2 * t
+  f.box(W, t, D, pal.stoneDk, 0, t / 2, 0) // floor slab (sits on the ground)
+  f.box(W, H - t, t, pal.stone, 0, t + (H - t) / 2, D / 2 - t / 2) // far wall
+  f.box(W, H - t, t, pal.stone, 0, t + (H - t) / 2, -D / 2 + t / 2) // near wall
+  f.box(t, H - t, innerD, pal.stone, W / 2 - t / 2, t + (H - t) / 2, 0) // right
+  f.box(t, H - t, innerD, pal.stone, -W / 2 + t / 2, t + (H - t) / 2, 0) // left
+  // a DARKER stone lip ringing the top edge — gives the rim a readable shadow
+  // line (contrast against the body) and frames the water. Four thin caps, again
+  // non-overlapping at the corners (full-W front/back, inner-D sides).
+  const lip = 0.05
+  f.box(W, lip, t * 1.3, pal.stoneDk, 0, H + lip / 2, D / 2 - (t * 1.3) / 2)
+  f.box(W, lip, t * 1.3, pal.stoneDk, 0, H + lip / 2, -D / 2 + (t * 1.3) / 2)
+  f.box(t * 1.3, lip, innerD, pal.stoneDk, W / 2 - (t * 1.3) / 2, H + lip / 2, 0)
+  f.box(t * 1.3, lip, innerD, pal.stoneDk, -W / 2 + (t * 1.3) / 2, H + lip / 2, 0)
+  // dark wet interior floor so the basin reads as a hollow holding water (not a
+  // solid block) — recessed below the water, distinct from the pale outer stone.
+  f.box(W - 2 * t, 0.04, innerD, shade(pal.stone, -0.5), 0, t + 0.02, 0)
+  // water slab: a CALM, DEEPER blue-teal that reads as water. The old slab used a
+  // pale cyan (#a9dcea) + a 0.32 emissive lift, which the bright sun/hemi rig blew
+  // out to flat WHITE (the "open white top" the bug reported). We darken it well
+  // below the pale palette water AND drop emissive to ~0 so it stays a believable
+  // wet blue under full light. Sits below the rim (clear gap → no z-fight).
+  const waterDeep = shade(pal.water, -0.42) // deep enough not to saturate to white
+  const water = f.add(
+    MeshBuilder.CreateBox(nm("trough-water"), { width: W - 2.4 * t, height: 0.05, depth: innerD - 0.8 * t }, scene),
+    waterDeep,
+    0.04,
+  )
+  water.position.set(0, H - 0.14, 0)
+  const mesh = f.forge("wp-trough")
+  return { mesh }
 }
 
 /**

@@ -273,6 +273,39 @@ doorway on any building.
 - `src/city/population.ts` — §4d lazy-promote strollers to talkable (focusables +
   lazy persona + setHeld); §5 forward-cone spawn + fade-in; §4b soft player yield
 - `src/world/facadePaint.ts` — door keep-out for the window grid — §6
+- `src/city/cityGround.ts` — ground-quad winding flip (gray-ground/no-roads) — §8
+- `src/world/props3d.ts` — water-trough readability + de-flicker — §9
+
+## §8 — Gray ground / no roads = inverted ground-quad winding
+
+See `docs/GROUND_INVESTIGATION.md` for the full hunt. Short version: the streaming
+ground quads (`buildChunkGround`) were wound CW-from-above, so each quad's single
+face pointed DOWN and back-face culling hid the WHOLE ground from every above-
+ground camera → invisible ground, sky/clear-colour showing through as a flat
+"gray plane, no roads". Buildings were fine (correct winding). FIX: wind CCW-from-
+above — `indices.push(v, v+1, v+2, v, v+2, v+3)`. NOT a material/texture/PBR/fog
+issue (all ruled out; a red unlit backface-off material drew zero pixels →
+geometry-not-rendering, not gray-material). New harness `qa/cityground.{html,ts,mjs}`
+exercises the REAL streaming `mountCity` ground under webkit (≈WKWebView); the old
+`composition.mjs` used the legacy `bakeGround` path and hid it. Verified:
+`/tmp/wp-ground-roads.png` (cobblestone + roads) vs `/tmp/wp-ground-plaza.png` (gray).
+
+## §9 — Water trough: unreadable flat-beige box + rim z-fight flicker
+
+The water-trough prop (`buildTrough`) read as a featureless beige box with an
+"open white top" and FLICKERED on its base/rim edges. Two causes, both fixed:
+- **Blown-out water.** The slab used pale cyan `#a9dcea` + a 0.32 emissive lift,
+  which the sun/hemi rig saturated to flat WHITE (the "white lid"). FIX: a DEEPER
+  blue-teal (`shade(pal.water,-0.42)`) at ~0 emissive → reads as actual water. Also
+  added a darker stone LIP rim + a dark recessed interior floor so the basin reads
+  as a hollow holding water, not a solid block (stone vs stone-dark was too close).
+- **Rim/base z-fight.** The 4 wall boxes OVERLAPPED at the corners (full-W front/
+  back AND full-D sides → coplanar duplicate faces = flicker). FIX: front/back
+  walls span full width; side walls span only the INNER depth so they BUTT against,
+  never overlap. Same depth-care family as the §8 ground fix. The water slab sits
+  below the rim with a clear gap (no coplanar lid). Verified in webkit via the new
+  `qa/prop.{html,ts}` harness: `/tmp/wp-prop-trough.png` (clean, readable basin +
+  blue water, no flicker). The PLANTER was already correct — untouched.
 
 ## Build / verify notes
 
