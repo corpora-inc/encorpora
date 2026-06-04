@@ -131,6 +131,22 @@
     "primaryLanguage": "Primaire (UI) taal"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Eerst even het eerlijke verhaal",
+      "subtitle": "Dertig seconden, daarna zetten we {{lang}} voor je klaar.",
+      "tinyTeamTitle": "Twee mensen, geen groot bedrijf",
+      "tinyTeamDesc": "Geen advertenties, geen investeerders, bijna alles gratis. We steken hier onze eigen tijd en geld in.",
+      "bleedingEdgeTitle": "Gloednieuw en op het scherpst van de snede",
+      "bleedingEdgeDesc": "50 talen, van elke taal naar elke taal — niemand heeft dit eerder geprobeerd. Reken op wat ruwe randjes, een onhandige formulering, misschien een crash. We brengen elke week verbeteringen uit.",
+      "yourLangTitle": "We zijn {{lang}} zelf ook nog aan het verfijnen",
+      "yourLangDesc": "We spreken niet elke taal die we ondersteunen als moedertaal. We werken dag en nacht om {{lang}} geweldig te maken — en jouw feedback helpt ons daar te komen.",
+      "plea": "Als er iets niet klopt, laat het ons alsjeblieft weten — we lezen elk woord en lossen dingen snel op. Een stille 1-ster-beoordeling breekt echt een beetje ons hart, en we kunnen niet repareren wat we niet zien. Bevalt het? Vijf sterren betekenen enorm veel voor ons. Niet helemaal jouw ding? Ook prima — scroll gerust verder.",
+      "emailCta": "Mail ons",
+      "githubCta": "Open een GitHub-issue",
+      "join": "Wil je helpen om Corpán naar {{lang}} te brengen? We zoeken medewerkers, vertalers en lokale ambassadeurs — met echte winstdeling. Kom vooral even langs.",
+      "pact": "Door hieronder te tikken doe je mee als early adopter 🤝 — verwacht hier en daar een bug, stuur feedback in plaats van een sippe beoordeling, en groei met ons mee. (Niet juridisch bindend. Emotioneel? Zeker wel.)",
+      "cta": "Ik doe mee — kom maar op"
+    },
     "welcome": "Welkom",
     "makePrimaryLanguage": "Maak Nederlands mijn primaire taal",
     "canChangeLater": "U kunt dit op elk moment wijzigen.",

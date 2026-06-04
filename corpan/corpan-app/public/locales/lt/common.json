@@ -131,6 +131,22 @@
     "showStreakHint": "Mažas dienų skaičius antraštėje. Tik įrenginyje, jokių priminimų ar pranešimų."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Pirmiausia – atvirai",
+      "subtitle": "Trisdešimt sekundžių, ir tada paruošime jums {{lang}}.",
+      "tinyTeamTitle": "Du žmonės, ne didelė įmonė",
+      "tinyTeamDesc": "Jokių reklamų, jokių investuotojų, beveik viskas nemokama. Į tai dedame savo laiką ir savo pinigus.",
+      "bleedingEdgeTitle": "Visiškai nauja ir ant pačios ribos",
+      "bleedingEdgeDesc": "50 kalbų, iš bet kurios į bet kurią — dar niekas to nėra bandęs. Tad pasitaikys šiurkštesnių kampų, kreivoka frazė, gal net nulūžimas. Pataisas leidžiame kas savaitę.",
+      "yourLangTitle": "Su {{lang}} dar patys mokomės",
+      "yourLangDesc": "Ne visomis kalbomis, kurias palaikome, kalbame kaip gimtosiomis. Dirbame be atokvėpio, kad {{lang}} būtų puiki — ir būtent jūsų atsiliepimai padeda ją tokia paversti.",
+      "plea": "Jei kas nors negerai, labai prašome parašykite mums — perskaitome kiekvieną žodį ir taisome greitai. Tylus 1 žvaigždutės įvertinimas mums tiesiog sudaužo širdį, o pataisyti negalime to, ko nematome. Patinka? Penkios žvaigždutės mums reiškia labai daug. Ne jūsų dalykas? Irgi nieko tokio — tiesiog slinkite toliau.",
+      "emailCta": "Parašykite mums",
+      "githubCta": "Atidaryti GitHub issue",
+      "join": "Norite padėti atnešti Corpán į {{lang}}? Ieškome bendradarbių, vertėjų ir vietinių ambasadorių — su realia pajamų dalimi. Susisiekite.",
+      "pact": "Paspausdami žemiau prisijungiate kaip vieni iš pirmųjų 🤝 — tikėkitės kelių klaidų, vietoj liūdno įvertinimo atsiųskite atsiliepimą ir augkite kartu su mumis. (Teisiškai neįpareigoja. Emociškai? Labai.)",
+      "cta": "Aš prisijungiu — pirmyn"
+    },
     "welcome": "Sveiki atvykę",
     "makePrimaryLanguage": "Padaryti anglų kalbą mano pagrindine kalba",
     "canChangeLater": "Tai galite pakeisti bet kada.",

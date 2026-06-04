@@ -131,6 +131,22 @@
     "primaryLanguage": "Primärt (UI) språk"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Först, den ärliga biten",
+      "subtitle": "Ge oss trettio sekunder, så ställer vi in {{lang}} åt dig.",
+      "tinyTeamTitle": "Två personer, inget storbolag",
+      "tinyTeamDesc": "Inga annonser, inga investerare, nästan allt är gratis. Vi lägger vår egen tid och våra egna pengar på det här.",
+      "bleedingEdgeTitle": "Helt nytt och längst fram i kanten",
+      "bleedingEdgeDesc": "50 språk, från vilket som helst till vilket som helst — ingen har gjort det här förut. Räkna med lite skavanker, en klumpig formulering, kanske en krasch. Vi skickar ut förbättringar varje vecka.",
+      "yourLangTitle": "Vi håller fortfarande på att bli riktigt bra på {{lang}}",
+      "yourLangDesc": "Vi har inte alla språk vi stödjer som modersmål. Vi jobbar dygnet runt för att göra {{lang}} riktigt bra — och din feedback är det som tar oss dit.",
+      "plea": "Om något är fel, säg gärna till — vi läser varje ord och fixar snabbt. En tyst 1-stjärnig rating krossar bara våra hjärtan, och vi kan inte laga det vi inte ser. Älskar du det? Fem stjärnor betyder allt. Är det inte din grej? Ingen fara — bara scrolla vidare.",
+      "emailCta": "Mejla oss",
+      "githubCta": "Öppna ett GitHub-ärende",
+      "join": "Vill du hjälpa till att få Corpán till {{lang}}? Vi söker samarbetspartners, översättare och lokala ambassadörer — med riktig intäktsdelning. Hör av dig.",
+      "pact": "Genom att trycka här nedanför går du med som early adopter 🤝 — räkna med några buggar, skicka feedback i stället för en ledsen rating och väx tillsammans med oss. (Inte juridiskt bindande. Känslomässigt? Väldigt.)",
+      "cta": "Jag är på — nu kör vi"
+    },
     "welcome": "Välkommen",
     "makePrimaryLanguage": "Gör svenska till mitt primärspråk",
     "canChangeLater": "Du kan ändra detta när som helst.",

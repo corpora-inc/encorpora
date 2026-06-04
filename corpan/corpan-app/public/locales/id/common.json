@@ -131,6 +131,22 @@
     "primaryLanguage": "Bahasa utama (UI)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Pertama, yang jujur dulu",
+      "subtitle": "Tiga puluh detik, lalu kami siapkan {{lang}} buat kamu.",
+      "tinyTeamTitle": "Kami cuma berdua, bukan perusahaan besar",
+      "tinyTeamDesc": "Tanpa iklan, tanpa investor, hampir semuanya gratis. Kami menaruh waktu dan uang kami sendiri untuk ini.",
+      "bleedingEdgeTitle": "Masih eksperimental dan benar-benar baru",
+      "bleedingEdgeDesc": "50 bahasa, dari bahasa apa pun ke bahasa apa pun — belum ada yang pernah mencoba ini sebelumnya. Jadi, siap-siap ketemu sedikit bagian yang masih kasar, frasa yang canggung, mungkin juga sesekali crash. Perbaikannya kami rilis tiap minggu.",
+      "yourLangTitle": "Kami juga masih mematangkan {{lang}}",
+      "yourLangDesc": "Kami tidak menuturkan semua bahasa yang kami dukung sebagai bahasa ibu. Kami bekerja siang malam supaya {{lang}} jadi luar biasa — dan masukan kamu yang membantu kami sampai ke sana.",
+      "plea": "Kalau ada yang terasa salah, tolong kabari kami — kami membaca setiap kata dan bergerak cepat memperbaikinya. Diam-diam kasih bintang 1 cuma bikin hati kami remuk, dan kami tak bisa memperbaiki hal yang tak kami lihat. Suka? Lima bintang berarti besar sekali buat kami. Kalau ini bukan buat kamu, tak apa — tinggal lanjut gulir.",
+      "emailCta": "Kirim email",
+      "githubCta": "Buka issue di GitHub",
+      "join": "Mau bantu menghadirkan Corpán dalam {{lang}}? Kami sedang mencari kolaborator, penerjemah, dan duta lokal — dengan bagi hasil pendapatan sungguhan. Datang dan temui kami.",
+      "pact": "Dengan mengetuk tombol di bawah, kamu ikut bergabung sebagai early adopter 🤝 — siap-siap ketemu beberapa bug, kirim masukan alih-alih rating sedih, dan tumbuh bareng kami. (Tidak mengikat secara hukum. Secara emosional? Sangat.)",
+      "cta": "Saya ikut — ayo mulai"
+    },
     "welcome": "Selamat datang",
     "makePrimaryLanguage": "Jadikan bahasa Inggris bahasa utama saya",
     "canChangeLater": "Anda dapat mengubahnya kapan saja.",

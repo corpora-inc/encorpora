@@ -131,6 +131,22 @@
     "primaryLanguage": "Primært (brugerflade) sprog"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Først den ærlige del",
+      "subtitle": "Tredive sekunder, så sætter vi {{lang}} op til dig.",
+      "tinyTeamTitle": "To mennesker, ikke en stor virksomhed",
+      "tinyTeamDesc": "Ingen reklamer, ingen investorer, og næsten alt er gratis. Vi lægger vores egen tid og egne penge i det her.",
+      "bleedingEdgeTitle": "Helt nyt og på forkant",
+      "bleedingEdgeDesc": "50 sprog, fra hvilket som helst til hvilket som helst — ingen har prøvet det her før. Forvent et par skæve kanter, en klodset formulering, måske et crash. Vi sender rettelser ud hver uge.",
+      "yourLangTitle": "Vi er stadig ved at blive gode til {{lang}}",
+      "yourLangDesc": "Vi taler ikke alle de sprog, vi understøtter, som modersmål. Vi arbejder døgnet rundt på at gøre {{lang}} virkelig godt — og din feedback er det, der får os derhen.",
+      "plea": "Hvis noget er galt, så sig endelig til — vi læser hvert eneste ord og retter hurtigt. En tavs 1-stjernet anmeldelse knuser bare vores hjerter, og vi kan ikke rette det, vi ikke kan se. Elsker du det? Fem stjerner betyder alt. Er det ikke lige dig? Helt fair — bare scroll videre.",
+      "emailCta": "Skriv til os",
+      "githubCta": "Åbn et GitHub issue",
+      "join": "Har du lyst til at hjælpe med at bringe Corpán til {{lang}}? Vi leder efter samarbejdspartnere, oversættere og lokale ambassadører — med reel andel i omsætningen. Kom og find os.",
+      "pact": "Ved at trykke nedenfor bliver du en af de første brugere 🤝 — forvent et par fejl, send feedback i stedet for en trist anmeldelse, og voks sammen med os. (Ikke juridisk bindende. Følelsesmæssigt? Meget.)",
+      "cta": "Jeg er med — lad os komme i gang"
+    },
     "welcome": "Velkommen",
     "makePrimaryLanguage": "Gør dansk til mit primære sprog",
     "canChangeLater": "Du kan ændre dette til enhver tid.",

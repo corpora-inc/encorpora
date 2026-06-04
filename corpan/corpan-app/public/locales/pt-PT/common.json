@@ -131,6 +131,22 @@
     "showStreakHint": "Uma pequena contagem de dias no cabeçalho. Apenas no dispositivo, sem lembretes ou notificações."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Primeiro, a parte honesta",
+      "subtitle": "Trinta segundos e depois tratamos de pôr {{lang}} a funcionar para si.",
+      "tinyTeamTitle": "Somos duas pessoas, não uma grande empresa",
+      "tinyTeamDesc": "Sem anúncios, sem investidores, e quase tudo gratuito. Pomos nisto o nosso próprio tempo e dinheiro.",
+      "bleedingEdgeTitle": "Novinho em folha e na vanguarda",
+      "bleedingEdgeDesc": "50 línguas, de qualquer uma para qualquer outra — ninguém tentou isto antes. Conte com algumas arestas por limar, uma frase meio desajeitada, talvez até um crash. Lançamos correções todas as semanas.",
+      "yourLangTitle": "Ainda estamos a dominar {{lang}}",
+      "yourLangDesc": "Não somos falantes nativos de todas as línguas que apoiamos. Trabalhamos sem parar para tornar {{lang}} excelente — e o seu feedback é uma parte essencial disso.",
+      "plea": "Se alguma coisa estiver errada, diga-nos, por favor — lemos cada palavra e corrigimos depressa. Uma estrela, em silêncio, parte-nos um bocadinho o coração, e não conseguimos corrigir o que não vemos. Se adorar, cinco estrelas significam muito para nós. Se não for bem a sua praia, sem problema — siga em frente.",
+      "emailCta": "Envie-nos um email",
+      "githubCta": "Abrir uma issue no GitHub",
+      "join": "Quer ajudar a trazer o Corpán para {{lang}}? Procuramos colaboradores, tradutores e embaixadores locais — com partilha real de receitas. Venha falar connosco.",
+      "pact": "Ao tocar abaixo, junta-se a nós como early adopter 🤝 — conte com alguns bugs, envie feedback em vez de uma classificação triste e cresça connosco. (Não é juridicamente vinculativo. Emocionalmente? Muito.)",
+      "cta": "Estou dentro — vamos a isso"
+    },
     "welcome": "Bem-vindo",
     "makePrimaryLanguage": "Definir o inglês como a minha língua principal",
     "canChangeLater": "Pode mudar isto a qualquer momento.",

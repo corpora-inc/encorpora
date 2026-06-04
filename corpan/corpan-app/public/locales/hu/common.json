@@ -131,6 +131,22 @@
     "primaryLanguage": "Elsődleges (felhasználói felület) nyelv"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Először a kendőzetlen rész",
+      "subtitle": "Harminc másodperc, és beállítjuk neked ezt: {{lang}}.",
+      "tinyTeamTitle": "Ketten vagyunk, nem egy nagyvállalat",
+      "tinyTeamDesc": "Nincsenek reklámok, nincsenek befektetők, szinte minden ingyenes. A saját időnket és pénzünket tesszük bele.",
+      "bleedingEdgeTitle": "Vadonatúj, a legfrissebb technológiával",
+      "bleedingEdgeDesc": "50 nyelv, bármelyikből bármelyikbe — ilyet még senki sem próbált. Lesz itt-ott néhány döccenő, esetleg egy ügyetlen megfogalmazás, néha talán egy összeomlás is. Minden héten javítunk valamit.",
+      "yourLangTitle": "A {{lang}} nyelvet mi is még csiszoljuk",
+      "yourLangDesc": "Nem beszéljük anyanyelvi szinten az összes támogatott nyelvet. Éjjel-nappal azon dolgozunk, hogy a {{lang}} igazán jó legyen — és ebben a visszajelzésed visz minket előre.",
+      "plea": "Ha valami nem stimmel, kérlek szólj — minden egyes szót elolvasunk, és gyorsan javítunk. Egy néma 1 csillagos értékelés csak összetöri a szívünket, ráadásul azt nem tudjuk kijavítani, amit nem látunk. Ha tetszik, az 5 csillag rengeteget jelent. Ha nem neked való, semmi gond — csak görgess tovább.",
+      "emailCta": "Írj nekünk emailt",
+      "githubCta": "Nyiss egy GitHub issue-t",
+      "join": "Segítenél elhozni a Corpán-t a(z) {{lang}} nyelvre? Közreműködőket, fordítókat és helyi nagyköveteket keresünk — valódi bevételmegosztással. Találj meg minket.",
+      "pact": "Ha lent ráböksz, korai felhasználóként csatlakozol hozzánk 🤝 — számíts néhány hibára, küldj visszajelzést szomorú értékelés helyett, és fejlődj velünk együtt. (Jogilag nem kötelező érvényű. Érzelmileg? Nagyon is.)",
+      "cta": "Benne vagyok — menjünk"
+    },
     "welcome": "Üdvözöljük",
     "makePrimaryLanguage": "Állítsa be a magyart elsődleges nyelvként",
     "canChangeLater": "Később bármikor megváltoztathatja.",

@@ -131,6 +131,22 @@
     "primaryLanguage": "Primærspråk (UI)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Først den ærlige delen",
+      "subtitle": "Gi oss tretti sekunder, så setter vi opp {{lang}} for deg.",
+      "tinyTeamTitle": "To personer, ikke et stort selskap",
+      "tinyTeamDesc": "Ingen reklame, ingen investorer, nesten alt er gratis. Vi legger våre egne penger og vår egen tid i dette.",
+      "bleedingEdgeTitle": "Helt i front og splitter nytt",
+      "bleedingEdgeDesc": "50 språk, fra hvilket som helst til hvilket som helst — ingen har gjort dette før. Regn med noen skarpe kanter, en klønete formulering, kanskje en krasj. Vi ruller ut feilrettinger hver uke.",
+      "yourLangTitle": "Vi holder fortsatt på å mestre {{lang}}",
+      "yourLangDesc": "Vi har ikke alle språkene vi støtter som morsmål. Vi jobber døgnet rundt for å gjøre {{lang}} skikkelig bra — og tilbakemeldingene dine er det som får oss dit.",
+      "plea": "Hvis noe er feil, si fra — vi leser hvert eneste ord og fikser raskt. En stille 1-stjerners anmeldelse knuser bare hjertene våre, og vi får ikke rettet det vi ikke ser. Liker du det? Fem stjerner betyr alt. Er det ikke helt din greie? Helt i orden — bare scroll videre.",
+      "emailCta": "Send oss en e-post",
+      "githubCta": "Åpne en GitHub-sak",
+      "join": "Vil du hjelpe med å bringe Corpán til {{lang}}? Vi ser etter samarbeidspartnere, oversettere og lokale ambassadører — med ekte inntektsdeling. Kom og finn oss.",
+      "pact": "Trykker du nedenfor, blir du med som early adopter 🤝 — forvent noen bugs, send heller tilbakemeldinger enn en trist vurdering, og voks sammen med oss. (Ikke juridisk bindende. Følelsesmessig? Veldig.)",
+      "cta": "Jeg er med — kjør på"
+    },
     "welcome": "Velkommen",
     "makePrimaryLanguage": "Gjør norsk til mitt primærspråk",
     "canChangeLater": "Du kan endre dette når som helst.",

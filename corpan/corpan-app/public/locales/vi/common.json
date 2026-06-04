@@ -131,6 +131,22 @@
     "primaryLanguage": "Ngôn ngữ chính (giao diện)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Trước hết, nói thật với bạn",
+      "subtitle": "Cho bọn mình 30 giây, rồi sẽ thiết lập {{lang}} cho bạn.",
+      "tinyTeamTitle": "Chỉ có hai người, không phải công ty lớn",
+      "tinyTeamDesc": "Không quảng cáo, không nhà đầu tư, gần như mọi thứ đều miễn phí. Bọn mình đang tự bỏ thời gian và tiền túi vào việc này.",
+      "bleedingEdgeTitle": "Rất mới, rất thử nghiệm",
+      "bleedingEdgeDesc": "50 ngôn ngữ, dịch từ bất kỳ ngôn ngữ nào sang bất kỳ ngôn ngữ nào — chưa ai thật sự làm kiểu này trước đây. Nên sẽ có vài chỗ chưa mượt, đôi câu hơi khựng, thậm chí có thể bị văng app. Bọn mình cập nhật bản sửa lỗi hằng tuần.",
+      "yourLangTitle": "Bọn mình vẫn đang hoàn thiện {{lang}}",
+      "yourLangDesc": "Bọn mình không phải người bản ngữ của mọi ngôn ngữ mà ứng dụng hỗ trợ. Bọn mình đang làm ngày làm đêm để biến {{lang}} thành thật sự xuất sắc — và phản hồi của bạn chính là thứ giúp nó đạt tới đó.",
+      "plea": "Nếu có gì chưa ổn, xin hãy nói cho bọn mình biết — bọn mình đọc từng lời và sửa rất nhanh. Một đánh giá 1 sao im lặng thật sự làm bọn mình đau tim, mà bọn mình cũng không thể sửa những gì mình không nhìn thấy. Nếu bạn thích, 5 sao có ý nghĩa rất lớn với bọn mình. Nếu không hợp gu của bạn, cũng không sao — cứ tiếp tục nhé.",
+      "emailCta": "Gửi email cho bọn mình",
+      "githubCta": "Mở issue trên GitHub",
+      "join": "Muốn giúp đưa Corpán đến với {{lang}} không? Bọn mình đang tìm cộng tác viên, dịch giả và đại sứ bản địa — có chia sẻ doanh thu thật. Tìm bọn mình nhé.",
+      "pact": "Nhấn vào bên dưới là bạn gia nhập với tư cách người dùng tiên phong 🤝 — sẽ có vài lỗi, hãy gửi phản hồi thay vì để lại một đánh giá buồn, và cùng lớn lên với bọn mình. (Không ràng buộc pháp lý. Nhưng về mặt tình cảm thì... có đấy.)",
+      "cta": "Tôi tham gia — bắt đầu thôi"
+    },
     "welcome": "Chào mừng",
     "makePrimaryLanguage": "Đặt tiếng Việt làm ngôn ngữ chính của tôi",
     "canChangeLater": "Đừng lo, bạn có thể thay đổi điều này sau.",

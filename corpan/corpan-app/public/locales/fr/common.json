@@ -131,6 +131,22 @@
     "primaryLanguage": "Langue principale (interface)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "D’abord, en toute franchise",
+      "subtitle": "Trente secondes, et on vous prépare {{lang}}.",
+      "tinyTeamTitle": "Deux personnes, pas une grosse boîte",
+      "tinyTeamDesc": "Pas de pub, pas d’investisseurs, presque tout est gratuit. On y met notre temps et notre argent.",
+      "bleedingEdgeTitle": "Tout neuf, à la pointe",
+      "bleedingEdgeDesc": "50 langues, de n’importe laquelle vers n’importe laquelle : personne n’a encore tenté ça. Attendez-vous à quelques imperfections, une tournure maladroite, peut-être même un plantage. On publie des correctifs chaque semaine.",
+      "yourLangTitle": "On est encore en train d’apprivoiser {{lang}}",
+      "yourLangDesc": "On ne parle pas nativement toutes les langues qu’on propose. On travaille jour et nuit pour rendre {{lang}} excellent — et vos retours sont ce qui nous y amène.",
+      "plea": "Si quelque chose cloche, dites-le-nous, s’il vous plaît — on lit chaque mot et on corrige vite. Un 1 étoile silencieux, ça nous brise un peu le cœur, et on ne peut pas réparer ce qu’on ne voit pas. Vous adorez ? Cinq étoiles, ça compte énormément pour nous. Ce n’est pas votre truc ? Aucun souci — continuez simplement.",
+      "emailCta": "Écrivez-nous",
+      "githubCta": "Ouvrir une issue GitHub",
+      "join": "Envie d’aider à faire arriver Corpán en {{lang}} ? On cherche des collaborateurs, des traducteurs et des ambassadeurs locaux — avec un vrai partage des revenus. Venez nous trouver.",
+      "pact": "En appuyant ci-dessous, vous nous rejoignez comme early adopter 🤝 — attendez-vous à quelques bugs, envoyez-nous vos retours plutôt qu’une note dépitée, et grandissez avec nous. (Rien de juridiquement contraignant. Émotionnellement ? Beaucoup.)",
+      "cta": "J’en suis — on y va"
+    },
     "welcome": "Bienvenue",
     "makePrimaryLanguage": "Définir le français comme langue principale",
     "canChangeLater": "Vous pourrez le changer à tout moment.",

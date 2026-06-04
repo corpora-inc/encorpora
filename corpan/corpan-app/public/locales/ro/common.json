@@ -131,6 +131,22 @@
     "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Mai întâi, partea sinceră",
+      "subtitle": "Treizeci de secunde, apoi îți pregătim {{lang}}.",
+      "tinyTeamTitle": "Suntem doi oameni, nu o companie mare",
+      "tinyTeamDesc": "Fără reclame, fără investitori, aproape totul e gratuit. Băgăm în asta propriul nostru timp și propriii noștri bani.",
+      "bleedingEdgeTitle": "De ultimă generație și abia lansat",
+      "bleedingEdgeDesc": "50 de limbi, din oricare în oricare — nimeni n-a mai încercat asta până acum. Așteaptă-te la câteva colțuri netezite incomplet, o formulare mai stângace, poate chiar un crash. Lansăm remedieri în fiecare săptămână.",
+      "yourLangTitle": "Încă învățăm să stăpânim {{lang}}",
+      "yourLangDesc": "Nu vorbim nativ toate limbile pe care le susținem. Lucrăm non-stop ca să facem {{lang}} excelentă — iar feedbackul tău ne ajută să ajungem acolo.",
+      "plea": "Dacă ceva nu e în regulă, te rugăm să ne spui — citim fiecare cuvânt și reparăm repede. Un 1 stea lăsat în tăcere pur și simplu ne frânge inima și nici nu putem repara ce nu vedem. Îți place? Cinci stele înseamnă enorm pentru noi. Nu e pentru tine? Nicio problemă — mergi mai departe.",
+      "emailCta": "Scrie-ne pe email",
+      "githubCta": "Deschide un issue pe GitHub",
+      "join": "Vrei să ajuți să aducem Corpán în {{lang}}? Căutăm colaboratori, traducători și ambasadori locali — cu împărțire reală a veniturilor. Dă-ne de urmă.",
+      "pact": "Dacă apeși mai jos, ni te alături ca early adopter 🤝 — te poți aștepta la câteva buguri, ne trimiți feedback în loc de un rating trist și crești împreună cu noi. (Nu e obligatoriu din punct de vedere legal. Emoțional? Foarte.)",
+      "cta": "Sunt cu voi — hai să-i dăm drumul"
+    },
     "welcome": "Bine ai venit",
     "makePrimaryLanguage": "Fă din engleză limba mea principală",
     "canChangeLater": "Poți schimba asta oricând.",

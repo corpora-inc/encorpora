@@ -131,6 +131,22 @@
     "showStreakHint": "Malý počet dní v hlavičke. Len vo vašom zariadení, žiadne pripomienky ani upozornenia."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Najprv úprimne",
+      "subtitle": "Tridsať sekúnd a potom ti nastavíme {{lang}}.",
+      "tinyTeamTitle": "Dvaja ľudia, nie veľká firma",
+      "tinyTeamDesc": "Žiadne reklamy, žiadni investori, skoro všetko zadarmo. Dávame do toho vlastný čas aj peniaze.",
+      "bleedingEdgeTitle": "Úplná novinka na hrane možného",
+      "bleedingEdgeDesc": "50 jazykov, z hociktorého do hociktorého — toto ešte nikto neskúsil. Počítaj s pár muchami, neobratnou frázou, možno aj pádom aplikácie. Opravy nasadzujeme každý týždeň.",
+      "yourLangTitle": "{{lang}} sa ešte stále učíme",
+      "yourLangDesc": "Nie každý jazyk, ktorý podporujeme, ovládame na úrovni rodeného hovoriaceho. Pracujeme vo dne v noci, aby bolo {{lang}} skvelé — a práve tvoja spätná väzba nám k tomu pomáha.",
+      "plea": "Ak niečo nefunguje, prosím, daj nám vedieť — čítame každé slovo a opravujeme rýchlo. Tiché 1-hviezdičkové hodnotenie nám len zlomí srdce a to, čo nevidíme, nevieme opraviť. Páči sa ti to? Päť hviezdičiek pre nás znamená strašne veľa. Nie je to pre teba? V pohode — len pokračuj ďalej.",
+      "emailCta": "Napíš nám e-mail",
+      "githubCta": "Otvoriť issue na GitHub",
+      "join": "Chceš pomôcť priniesť Corpán do {{lang}}? Hľadáme spolupracovníkov, prekladateľov a lokálnych ambasádorov — s reálnym podielom na príjmoch. Ozvi sa nám.",
+      "pact": "Ťuknutím nižšie sa pridávaš ako early adopter 🤝 — počítaj s pár bugmi, pošli nám spätnú väzbu namiesto smutného hodnotenia a rásť môžeš spolu s nami. (Právne nezáväzné. Emočne? Veľmi.)",
+      "cta": "Som za — poďme na to"
+    },
     "welcome": "Vitajte",
     "makePrimaryLanguage": "Urobiť angličtinu mojím primárnym jazykom",
     "canChangeLater": "Toto môžete zmeniť kedykoľvek.",

@@ -131,6 +131,22 @@
     "primaryLanguage": "Lugha kuu (ya kiolesura)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Kwanza, ukweli mtupu",
+      "subtitle": "Sekunde thelathini tu, kisha tutakuwekea {{lang}} tayari.",
+      "tinyTeamTitle": "Watu wawili tu, si kampuni kubwa",
+      "tinyTeamDesc": "Hakuna matangazo, hakuna wawekezaji, na karibu kila kitu ni bure. Tunaweka muda na pesa zetu wenyewe kwenye hili.",
+      "bleedingEdgeTitle": "Mpya kabisa, tena wa kiwango cha mbele",
+      "bleedingEdgeDesc": "Lugha 50, kutoka yoyote hadi yoyote — hakuna aliyewahi kujaribu hili kabla. Tarajia mipasuko michache hapa na pale, sentensi yenye kujikwaa, au hata app kuzima ghafla. Tunatoa maboresho kila wiki.",
+      "yourLangTitle": "Bado tunaiboresha sana {{lang}}",
+      "yourLangDesc": "Hatuongei kwa asili kila lugha tunayoiunga mkono. Tunafanya kazi usiku na mchana kuifanya {{lang}} iwe bora sana — na maoni yako ndiyo yanayotufikisha hapo.",
+      "plea": "Kama kuna kitu hakiko sawa, tafadhali tuambie — tunasoma kila neno na kurekebisha haraka. Ukimya wa nyota 1 tu unaumiza moyo wetu, na hatuwezi kurekebisha tusichoweza kuona. Umeipenda? Nyota tano zina maana kubwa sana kwetu. Sio yako? Hakuna shida — endelea tu kushuka chini.",
+      "emailCta": "Tutumie barua pepe",
+      "githubCta": "Fungua issue kwenye GitHub",
+      "join": "Ungependa kusaidia kuileta Corpán kwa {{lang}}? Tunatafuta washirika, watafsiri, na mabalozi wa lugha wa maeneo mbalimbali — wenye mgawo halisi wa mapato. Njoo ututafute.",
+      "pact": "Ukigusa hapa chini, unaungana nasi kama mtumiaji wa mwanzo 🤝 — tarajia hitilafu chache, tuma maoni badala ya rating ya huzuni, na ukue pamoja nasi. (Si jambo la kisheria. Kihisia? Sana.)",
+      "cta": "Nimo — twende"
+    },
     "welcome": "Karibu",
     "makePrimaryLanguage": "Fanya Kiswahili lugha yangu kuu",
     "canChangeLater": "Unaweza kubadilisha hili wakati wowote.",

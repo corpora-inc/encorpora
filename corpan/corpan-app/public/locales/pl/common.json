@@ -131,6 +131,22 @@
     "primaryLanguage": "Główny język (interfejsu)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Najpierw szczerze",
+      "subtitle": "Trzydzieści sekund i zaraz skonfigurujemy dla Ciebie {{lang}}.",
+      "tinyTeamTitle": "Dwie osoby, nie wielka firma",
+      "tinyTeamDesc": "Bez reklam, bez inwestorów, prawie wszystko za darmo. Wkładamy w to własny czas i własne pieniądze.",
+      "bleedingEdgeTitle": "Nowiutkie i na samym froncie",
+      "bleedingEdgeDesc": "50 języków, z każdego na każdy — nikt wcześniej tego nie zrobił. Spodziewaj się paru nierówności, niezgrabnego sformułowania, może nawet crasha. Poprawki wypuszczamy co tydzień.",
+      "yourLangTitle": "Wciąż oswajamy {{lang}}",
+      "yourLangDesc": "Nie mówimy natywnie wszystkimi językami, które wspieramy. Pracujemy bez wytchnienia, żeby {{lang}} było świetne — a Twój feedback bardzo nam w tym pomaga.",
+      "plea": "Jeśli coś jest nie tak, daj nam znać — czytamy każde słowo i poprawiamy błyskawicznie. Cicha 1-gwiazdkowa ocena po prostu łamie nam serce, a nie naprawimy czegoś, czego nie widzimy. Podoba Ci się? Pięć gwiazdek znaczy dla nas bardzo dużo. To nie Twoja bajka? Spokojnie — po prostu przewiń dalej.",
+      "emailCta": "Napisz do nas",
+      "githubCta": "Otwórz issue na GitHub",
+      "join": "Chcesz pomóc wprowadzić Corpán do {{lang}}? Szukamy współpracowników, tłumaczy i lokalnych ambasadorów — z prawdziwym udziałem w przychodach. Odezwij się do nas.",
+      "pact": "Klikając poniżej, dołączasz do nas jako early adopter 🤝 — spodziewaj się paru bugów, wysyłaj feedback zamiast smutnej oceny i rozwijaj Corpán razem z nami. (Prawnie? Do niczego nie zobowiązuje. Emocjonalnie? Bardzo.)",
+      "cta": "Wchodzę w to — lecimy"
+    },
     "welcome": "Witamy",
     "makePrimaryLanguage": "Ustaw polski jako mój główny język",
     "canChangeLater": "Nie martw się, możesz to zmienić później.",

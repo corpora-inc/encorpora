@@ -131,6 +131,22 @@
     "showStreakHint": "Un petit comptador de dies a la capçalera. Només al dispositiu, sense recordatoris ni notificacions."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Primer, la part sincera",
+      "subtitle": "Trenta segons i et deixem {{lang}} a punt.",
+      "tinyTeamTitle": "Som dues persones, no una gran empresa",
+      "tinyTeamDesc": "Sense anuncis, sense inversors, i gairebé tot gratis. Hi aboquem el nostre propi temps i diners.",
+      "bleedingEdgeTitle": "Última fornada i acabat de néixer",
+      "bleedingEdgeDesc": "50 llengües, de qualsevol a qualsevol — això no ho ha provat ningú abans. És normal que hi hagi alguna aresta, alguna frase maldestra o fins i tot algun bloqueig. Publiquem correccions cada setmana.",
+      "yourLangTitle": "Encara estem afinant {{lang}}",
+      "yourLangDesc": "No parlem de manera nativa totes les llengües que oferim. Treballem sense parar perquè {{lang}} sigui excel·lent, i el teu feedback és el que ens hi porta.",
+      "plea": "Si alguna cosa falla, sisplau, digue'ns-ho — llegim cada paraula i ho arreglem de pressa. Un 1 estrella en silenci només ens trenca el cor, i no podem arreglar allò que no veiem. T'encanta? Cinc estrelles ens ajuden moltíssim. No és el teu rotllo? Cap problema — continua baixant.",
+      "emailCta": "Escriu-nos",
+      "githubCta": "Obre una incidència a GitHub",
+      "join": "Vols ajudar a portar Corpán a {{lang}}? Busquem col·laboradors, traductors i ambaixadors locals — amb repartiment real d'ingressos. Vine a trobar-nos.",
+      "pact": "Si toques aquí sota, t'hi apuntes com a early adopter 🤝 — hi haurà algun bug, ens enviaràs feedback en lloc d'una puntuació trista, i creixeràs amb nosaltres. (No és vinculant legalment. Emocionalment? I tant.)",
+      "cta": "M'hi apunto — som-hi"
+    },
     "welcome": "Benvingut",
     "makePrimaryLanguage": "Defineix l'anglès com a idioma principal",
     "canChangeLater": "Pots canviar-ho en qualsevol moment.",

@@ -131,6 +131,22 @@
     "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Ensin se rehellinen osuus",
+      "subtitle": "Kolmekymmentä sekuntia, sitten laitetaan {{lang}} valmiiksi sinulle.",
+      "tinyTeamTitle": "Kaksi ihmistä, ei mikään suuryritys",
+      "tinyTeamDesc": "Ei mainoksia, ei sijoittajia, melkein kaikki on ilmaista. Laitamme tähän omaa aikaamme ja rahaamme.",
+      "bleedingEdgeTitle": "Aivan uusinta uutta",
+      "bleedingEdgeDesc": "50 kieltä, mistä tahansa mihin tahansa — kukaan ei ole tehnyt tätä ennen. Matkaan mahtuu varmasti muutama rosoinen kohta, kömpelö ilmaus ja ehkä kaatuminenkin. Julkaisemme korjauksia joka viikko.",
+      "yourLangTitle": "Opettelemme yhä {{lang}}ia kunnolla",
+      "yourLangDesc": "Emme puhu äidinkielenämme kaikkia tukemiamme kieliä. Teemme töitä ympäri vuorokauden, jotta {{lang}} olisi erinomainen — ja sinun palautteesi auttaa meitä pääsemään siihen.",
+      "plea": "Jos jokin on pielessä, kerro meille — luemme jokaisen sanan ja korjaamme nopeasti. Hiljainen yhden tähden arvio vain särkee sydämemme, emmekä voi korjata sellaista, mitä emme näe. Jos pidät tästä, viisi tähteä merkitsee meille valtavasti. Jos tämä ei ole sinun juttusi, ei hätää — jatka vain eteenpäin.",
+      "emailCta": "Lähetä meille sähköpostia",
+      "githubCta": "Avaa issue GitHubissa",
+      "join": "Haluatko auttaa tuomaan Corpánin kielelle {{lang}}? Etsimme yhteistyökumppaneita, kääntäjiä ja paikallisia lähettiläitä — oikealla osuuksella tuotoista. Tule juttelemaan.",
+      "pact": "Napauttamalla alla liityt varhaiseksi käyttäjäksi 🤝 — bugeja voi tulla vastaan, joten lähetä mieluummin palautetta kuin surullinen arvio ja kasva meidän kanssamme. (Ei oikeudellisesti sitova. Tunteellisesti? Erittäin.)",
+      "cta": "Olen mukana — mennään"
+    },
     "welcome": "Tervetuloa",
     "makePrimaryLanguage": "Aseta suomi ensisijaiseksi kielekseni",
     "canChangeLater": "Voit muuttaa tätä milloin tahansa.",

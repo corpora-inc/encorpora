@@ -131,6 +131,22 @@
     "primaryLanguage": "Lingua principale (UI)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Prima la parte sincera",
+      "subtitle": "Trenta secondi, poi ti prepariamo {{lang}}.",
+      "tinyTeamTitle": "Siamo in due, non una grande azienda",
+      "tinyTeamDesc": "Niente pubblicità, niente investitori, quasi tutto gratis. In questo progetto ci mettiamo il nostro tempo e i nostri soldi.",
+      "bleedingEdgeTitle": "Nuovissimo e all'avanguardia",
+      "bleedingEdgeDesc": "50 lingue, da qualsiasi lingua a qualsiasi altra: nessuno ci ha mai provato prima. Aspettati qualche spigolo, una frase un po' goffa, magari persino un crash. Pubblichiamo correzioni ogni settimana.",
+      "yourLangTitle": "Stiamo ancora imparando a padroneggiare {{lang}}",
+      "yourLangDesc": "Non parliamo nativamente tutte le lingue che supportiamo. Lavoriamo senza sosta per rendere {{lang}} eccellente, e il tuo feedback è ciò che ci aiuta ad arrivarci.",
+      "plea": "Se qualcosa non va, ti preghiamo di dircelo: leggiamo ogni parola e sistemiamo tutto in fretta. Un 1 stella lasciato in silenzio ci spezza solo il cuore, e non possiamo correggere quello che non riusciamo a vedere. Ti piace? Cinque stelle per noi significano tantissimo. Non fa per te? Nessun problema, basta andare avanti.",
+      "emailCta": "Scrivici una mail",
+      "githubCta": "Apri una issue su GitHub",
+      "join": "Vuoi aiutarci a portare Corpán in {{lang}}? Cerchiamo collaboratori, traduttori e ambasciatori locali, con una vera quota dei ricavi. Vieni a trovarci.",
+      "pact": "Toccando qui sotto ti unisci come early adopter 🤝: aspettati qualche bug, mandaci feedback invece di lasciarci una recensione triste, e cresci insieme a noi. (Legalmente non vincolante. Emotivamente? Moltissimo.)",
+      "cta": "Ci sto, andiamo"
+    },
     "welcome": "Benvenuto",
     "makePrimaryLanguage": "Imposta l’italiano come lingua principale",
     "canChangeLater": "Puoi modificarlo in qualsiasi momento.",

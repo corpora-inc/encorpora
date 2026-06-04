@@ -131,6 +131,22 @@
     "primaryLanguage": "Idioma principal (interface)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Primeiro, a parte sincera",
+      "subtitle": "Trinta segundos e a gente já prepara {{lang}} para você.",
+      "tinyTeamTitle": "Duas pessoas, não uma empresa enorme",
+      "tinyTeamDesc": "Sem anúncios, sem investidores, com quase tudo grátis. A gente coloca nosso próprio tempo e dinheiro nisso.",
+      "bleedingEdgeTitle": "Novíssimo e na fronteira",
+      "bleedingEdgeDesc": "50 idiomas, de qualquer um para qualquer outro — ninguém tentou isso antes. Espere algumas arestas, uma frase meio torta, talvez até um crash. A gente lança correções toda semana.",
+      "yourLangTitle": "A gente ainda está ficando craque em {{lang}}",
+      "yourLangDesc": "A gente não fala nativamente todos os idiomas que oferece. Trabalhamos sem parar para deixar {{lang}} excelente — e é o seu feedback que ajuda a chegar lá.",
+      "plea": "Se algo estiver errado, por favor, conta pra gente — lemos cada palavra e corrigimos rápido. Um 1 estrela em silêncio só parte nosso coração, e a gente não consegue consertar o que não vê. Curtiu? Cinco estrelas significam tudo pra nós. Não é a sua praia? Sem problema — é só seguir em frente.",
+      "emailCta": "Mandar e-mail",
+      "githubCta": "Abrir uma issue no GitHub",
+      "join": "Quer ajudar a levar o Corpán para {{lang}}? Estamos procurando colaboradores, tradutores e embaixadores locais — com participação real na receita. Vem falar com a gente.",
+      "pact": "Ao tocar abaixo, você entra como early adopter 🤝 — espere alguns bugs, mande feedback em vez de uma nota triste e cresça junto com a gente. (Não é juridicamente vinculante. Emocionalmente? Muito.)",
+      "cta": "Tô dentro — vamos nessa"
+    },
     "welcome": "Bem-vindo",
     "makePrimaryLanguage": "Definir português como idioma principal",
     "canChangeLater": "Não se preocupe, você poderá alterar isso depois.",

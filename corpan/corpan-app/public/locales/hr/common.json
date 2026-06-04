@@ -131,6 +131,22 @@
     "showStreakHint": "Mali brojač dana u zaglavlju. Samo na uređaju, bez podsjetnika ili obavijesti."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Prvo, iskreno",
+      "subtitle": "Trideset sekundi pa ćemo ti postaviti {{lang}}.",
+      "tinyTeamTitle": "Dvoje ljudi, ne velika kompanija",
+      "tinyTeamDesc": "Bez oglasa, bez investitora, gotovo sve je besplatno. U ovo ulažemo vlastito vrijeme i vlastiti novac.",
+      "bleedingEdgeTitle": "Najnovije moguće i potpuno novo",
+      "bleedingEdgeDesc": "50 jezika, iz bilo kojeg u bilo koji — ovo još nitko nije pokušao. Očekuj pokoji grubi rub, nespretnu rečenicu, možda i rušenje. Ispravke izbacujemo svaki tjedan.",
+      "yourLangTitle": "Još usavršavamo {{lang}}",
+      "yourLangDesc": "Ne govorimo materinski svaki jezik koji podržavamo. Radimo danonoćno da {{lang}} bude odličan — a tvoj feedback je način da do toga dođemo.",
+      "plea": "Ako nešto ne valja, molimo te, javi nam — čitamo svaku riječ i brzo popravljamo. Tiha ocjena od 1 zvjezdice samo nam slomi srce, a ne možemo popraviti ono što ne vidimo. Sviđa ti se? Pet zvjezdica nam stvarno puno znači. Nije tvoj đir? Bez brige — samo nastavi dalje.",
+      "emailCta": "Pošalji nam e-mail",
+      "githubCta": "Otvori GitHub issue",
+      "join": "Želiš pomoći dovesti Corpán na {{lang}}? Tražimo suradnike, prevoditelje i lokalne ambasadore — uz stvarni udio u prihodu. Javi nam se.",
+      "pact": "Dodirom ispod pridružuješ nam se kao rani korisnik 🤝 — očekuj poneki bug, pošalji feedback umjesto tužne ocjene i rasti s nama. (Pravno neobvezujuće. Emotivno? Prilično.)",
+      "cta": "Tu sam — idemo"
+    },
     "welcome": "Dobrodošli",
     "makePrimaryLanguage": "Postavi engleski kao moj primarni jezik",
     "canChangeLater": "Ovo možeš promijeniti u bilo kojem trenutku.",

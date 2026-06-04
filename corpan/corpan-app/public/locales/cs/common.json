@@ -131,6 +131,22 @@
     "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Nejdřív upřímně",
+      "subtitle": "Třicet vteřin a pak pro vás nastavíme {{lang}}.",
+      "tinyTeamTitle": "Dva lidi, ne velká firma",
+      "tinyTeamDesc": "Žádné reklamy, žádní investoři, skoro všechno zdarma. Dáváme do toho vlastní čas i peníze.",
+      "bleedingEdgeTitle": "Úplná novinka, na ostří nože",
+      "bleedingEdgeDesc": "50 jazyků, z jakéhokoli do jakéhokoli — tohle tu ještě nikdo nezkusil. Počítejte s pár mušky, občas kostrbatou frází, možná i pádem aplikace. Opravy nasazujeme každý týden.",
+      "yourLangTitle": "{{lang}} ještě pilujeme",
+      "yourLangDesc": "Ne každý jazyk, který podporujeme, ovládáme jako rodilí mluvčí. Pracujeme na tom ve dne v noci, aby {{lang}} byl skvělý — a právě vaše zpětná vazba nám k tomu pomáhá.",
+      "plea": "Když něco nefunguje, prosím napište nám — čteme každé slovo a opravujeme rychle. Tichá 1hvězdičková recenze nám jen zlomí srdce a navíc nemůžeme opravit to, co nevidíme. Líbí se vám to? Pět hvězdiček pro nás znamená strašně moc. Není to pro vás? V pohodě — jen pokračujte dál.",
+      "emailCta": "Napište nám e-mail",
+      "githubCta": "Otevřít issue na GitHub",
+      "join": "Chcete pomoct přinést Corpán do {{lang}}? Hledáme spolupracovníky, překladatele i místní ambasadory — s reálným podílem na tržbách. Ozvěte se nám.",
+      "pact": "Klepnutím níže se přidáváte jako early adopter 🤝 — počítejte s pár bugy, pošlete nám radši feedback než smutné hodnocení a porostete s námi. (Právně nezávazné. Emocionálně? Velmi.)",
+      "cta": "Jdu do toho — pojďme na to"
+    },
     "welcome": "Vítejte",
     "makePrimaryLanguage": "Nastavit angličtinu jako můj primární jazyk",
     "canChangeLater": "Toto můžete změnit kdykoliv.",
