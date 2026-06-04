@@ -9,6 +9,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Added
 
+- **Full-document RTL foundation.** The UI language's direction is now mirrored
+  onto the `<html>` root (`dir`/`lang`, reactively in `LanguageSynchronizer`) AND
+  fed to a Radix `<DirectionProvider>`, so the whole shell — and every Radix
+  primitive (Select, Slider, DropdownMenu, Popover, Tabs) — flips as one unit in
+  Arabic/Hebrew/Persian/Urdu instead of relying on each component to set its own
+  `dir`. Patched the primitives that used hardcoded physical direction: the
+  `Switch` thumb (added an `rtl:` translate so it lands on the correct side
+  instead of off the edge), the `Select` check indicator (`right-3` → logical
+  `end-3`), and the `Dialog` close button (`ml-auto`/`marginRight` → logical
+  `ms-auto`/`marginInlineEnd`). Verified the switches/slider/select render
+  correctly under `dir="rtl"`.
+
 - **"Honest hello" onboarding interlude (`OnboardingWelcomePact`).** A new screen
   between the primary-language picker and the "What brings you to Corpán?" fork,
   shown once in the user's chosen language. It sets expectations and builds a
