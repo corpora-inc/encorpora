@@ -7,6 +7,75 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+
+- **"Honest hello" onboarding interlude (`OnboardingWelcomePact`).** A new screen
+  between the primary-language picker and the "What brings you to Corpán?" fork,
+  shown once in the user's chosen language. It sets expectations and builds a
+  human connection up front — tiny team, bleeding-edge/any-to-any, "we're still
+  mastering {{lang}}", everything free — then makes a heartfelt, openly-joking
+  early-adopter "pact": expect rough edges, and **please email/GitHub instead of
+  a sad rating** (routes to `team@encorpora.io` + GitHub issues), plus a
+  collaborator/ambassador recruitment line. Deliberately NOT a review gate (no
+  "you agree not to rate low" — that violates store policy); it asks, it doesn't
+  condition app use. Wired as an adapter node in the onboarding graph; localized
+  in en + ar (other ~49 locales fall back to English until the pipeline runs).
+
+### Fixed
+
+- **Arabic localization polish + RTL hardening.** After a 1-star Arabic review
+  ("غير مفهوم" — "incomprehensible"), we audited the whole Arabic surface with a
+  strong-model grader (`dja/eval/ar/`, GPT-5.x via codex). The corpus, TTS, and
+  UI text graded strong (medians 5/5), but the grader caught real defects in
+  `ar/common.json`: the TTS voice-setup steps named the wrong iOS menu
+  (`تسهيلات الاستخدام` → Apple's actual `إمكانية الوصول`, so the enable-voices
+  instructions were unfollowable); Norwegian Bokmål had Latin letters welded
+  into the Arabic word (`بوكmål` → `بوكمول`); "Visit encorpora.io" had reversed
+  word order; the brand name was inconsistently transliterated (`كوربان` →
+  `Corpán`); and "stack"/"pack" chrome was rendered three different ways.
+  Unified the terminology and localized the remaining English `Packs`/`Stacks`
+  labels. Also set `dir`/`lang` on the `<html>` root reactively
+  (`LanguageSynchronizer.tsx`) so RTL chrome flips as one unit, not piecemeal.
+
+- **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
+  content-pack installer accumulated the *entire* download into an in-memory
+  `Vec<u8>`, sha256'd that buffer, then extracted the ZIP from memory. Fine for a
+  few-MB phrase pack, fatal for the ~2.5 GB `llm-base-qwen3-4b-v1` GGUF that
+  Tutomaton `dependsOn`: buffering it in RAM tripped iOS jetsam. It now streams
+  straight to a temp file on disk, hashing incrementally as bytes arrive, and
+  extracts from that file (`BufReader<File>`, entry-by-entry) — peak memory stays
+  flat regardless of model size, matching how the STT plugin downloads
+  Parlometron's whisper models. Both install paths (`download_and_install` and
+  the module installer) were fixed. The 0.16.0 `DOWNLOAD_MAX_BYTES` guard
+  (hardcoded 1 GiB, which had also rejected these downloads outright with
+  "Download exceeded size limit") was raised to 8 GiB. None of this surfaced in
+  desktop dev, where the model loads from a local path instead of downloading.
+  (`content_packs.rs`.)
+
+- **Text-to-Speech setup: newly installed voices now appear on their own.** The
+  redesigned setup screen only refreshed its voice list on mount and on
+  `visibilitychange`, so a voice you just installed wouldn't show up until you
+  backed out of the screen and returned. The screen now lightly polls the
+  installed voices (every 3s while it's open) and refreshes the list only when
+  the voice set actually changed — so freshly installed voices surface
+  automatically, with zero re-renders in steady state.
+
+### Changed
+
+- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
+  than it needed to be on phones and fullscreen iPad: it added a flat
+  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
+  the inset on notched devices. It now uses a single shared flat clearance
+  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
+  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
+  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
+  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
+  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
+  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
+  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
+  settings header also gets the same translucent blur as the home bar
+  (`bg-background/80 backdrop-blur`).
+
 ## [0.16.2] - 2026-06-04 — Android crash diagnostics + truncated-download guard
 
 ### Added
@@ -84,47 +153,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   English default — or (2) any locale's key set differs from `en` (missing keys
   that silently fall back to English, or stale keys left after a rename).
   Dynamic `` t(`a.${x}.b`) `` keys are skipped (can't be checked statically).
-
-### Fixed
-
-- **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
-  content-pack installer accumulated the *entire* download into an in-memory
-  `Vec<u8>`, sha256'd that buffer, then extracted the ZIP from memory. Fine for a
-  few-MB phrase pack, fatal for the ~2.5 GB `llm-base-qwen3-4b-v1` GGUF that
-  Tutomaton `dependsOn`: buffering it in RAM tripped iOS jetsam. It now streams
-  straight to a temp file on disk, hashing incrementally as bytes arrive, and
-  extracts from that file (`BufReader<File>`, entry-by-entry) — peak memory stays
-  flat regardless of model size, matching how the STT plugin downloads
-  Parlometron's whisper models. Both install paths (`download_and_install` and
-  the module installer) were fixed. The 0.16.0 `DOWNLOAD_MAX_BYTES` guard
-  (hardcoded 1 GiB, which had also rejected these downloads outright with
-  "Download exceeded size limit") was raised to 8 GiB. None of this surfaced in
-  desktop dev, where the model loads from a local path instead of downloading.
-  (`content_packs.rs`.)
-
-- **Text-to-Speech setup: newly installed voices now appear on their own.** The
-  redesigned setup screen only refreshed its voice list on mount and on
-  `visibilitychange`, so a voice you just installed wouldn't show up until you
-  backed out of the screen and returned. The screen now lightly polls the
-  installed voices (every 3s while it's open) and refreshes the list only when
-  the voice set actually changed — so freshly installed voices surface
-  automatically, with zero re-renders in steady state.
-
-### Changed
-
-- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
-  than it needed to be on phones and fullscreen iPad: it added a flat
-  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
-  the inset on notched devices. It now uses a single shared flat clearance
-  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
-  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
-  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
-  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
-  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
-  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
-  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
-  settings header also gets the same translucent blur as the home bar
-  (`bg-background/80 backdrop-blur`).
 
 ## [0.16.1] - 2026-06-01 — Tutomaton id fix + catalog-driven experience metadata
 

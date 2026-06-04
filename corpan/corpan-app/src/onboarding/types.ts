@@ -11,6 +11,7 @@ export type Journey = "enjoy" | "learn" | "polyglot" | "child"
 export type ComponentKey =
   | "welcome"
   | "pickPrimary"
+  | "welcomePact"
   | "pickLearning"
   | "pickPhrasePacks"
   | "tts"

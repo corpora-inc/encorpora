@@ -221,6 +221,22 @@
       "subscribedDesc": "Thank you for keeping Corpán ad-free and growing.",
       "start": "Start exploring"
     },
+    "welcomePact": {
+      "title": "First, the honest part",
+      "subtitle": "Thirty seconds, then we'll set up {{lang}} for you.",
+      "tinyTeamTitle": "Two people, not a big company",
+      "tinyTeamDesc": "No ads, no investors, almost everything free. We pour our own time and money into this.",
+      "bleedingEdgeTitle": "Bleeding-edge and brand-new",
+      "bleedingEdgeDesc": "50 languages, any to any — nobody has tried this before. Expect a few rough edges, a clumsy phrase, maybe a crash. We ship fixes every week.",
+      "yourLangTitle": "We're still mastering {{lang}}",
+      "yourLangDesc": "We don't natively speak every language we support. We work around the clock to make {{lang}} excellent — and your feedback is how it gets there.",
+      "plea": "If something's wrong, please tell us — we read every word and fix fast. A silent 1-star just breaks our hearts, and we can't fix what we can't see. Love it? Five stars mean the world. Not your thing? No worries — just keep scrolling.",
+      "emailCta": "Email us",
+      "githubCta": "Open a GitHub issue",
+      "join": "Want to help bring Corpán to {{lang}}? We're looking for collaborators, translators, and local ambassadors — with real revenue share. Come find us.",
+      "pact": "By tapping below you join as an early adopter 🤝 — expect a few bugs, send feedback instead of a sad rating, and grow with us. (Not legally binding. Emotionally? Very.)",
+      "cta": "I'm in — let's go"
+    },
     "fork": {
       "title": "What brings you to Corpán?",
       "subtitle": "We'll set everything up for you. You can change it later.",
