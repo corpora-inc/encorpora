@@ -8,8 +8,9 @@
   "steps": [
     {
       "id": "docks",
-      "label": "Catch the ferry at the harbor",
+      "label": "Ask for the ferry at the harbor",
       "anchorId": "harbor",
+      "kind": "talk",
       "toolId": "repeat-after",
       "entryIds": [1008, 1023]
     },
@@ -17,8 +18,7 @@
       "id": "gate",
       "label": "Cross the river bridge",
       "anchorId": "bridge_n",
-      "toolId": "repeat-after",
-      "entryIds": [1009, 1010]
+      "kind": "traverse"
     }
   ],
   "promptProgram": {

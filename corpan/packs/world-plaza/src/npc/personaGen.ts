@@ -547,7 +547,7 @@ type FallbackPack = {
 const ES_FALLBACK: Record<string, FallbackPack> = {
   baker: {
     greet: ["¡Buenos días, viajero! ¿Un pan dulce?", "Bienvenido. Huele a pan recién hecho, ¿verdad?"],
-    teach: ['Esto se llama "{topic}". Repite conmigo: {topic}.', "Prueba un poco. ¿Cómo se dice en tu tierra?"],
+    teach: ['Esto, lo recién horneado, es "{topic}". ¿Lo has probado?', "¿Y en tu tierra, cómo le dicen a un buen pan?"],
     bye: ["¡Vuelve cuando quieras, con hambre!"],
   },
   fishmonger: {
@@ -575,7 +575,7 @@ const ES_FALLBACK: Record<string, FallbackPack> = {
 /** Generic, language-neutral fallback (used for non-Spanish scenes). */
 const NEUTRAL_FALLBACK: FallbackPack = {
   greet: ["Welcome, traveler! Stay a while.", "Hello there — what brings you to the plaza?"],
-  teach: ['Here, a word for you: "{topic}". Try saying it.', "Let us practice together, slowly."],
+  teach: ['Around here we call this "{topic}". Ever seen one?', "What would you call it back home?"],
   bye: ["Safe travels, friend. Come back soon."],
 }
 
@@ -614,7 +614,7 @@ function buildScriptedFallback(
 function defaultEsPack(arch: Archetype): FallbackPack {
   return {
     greet: [`¡Hola, viajero! Soy ${arch.label.replace(/^a |^an /, "")}.`, "Bienvenido a la plaza."],
-    teach: ['Aprende esta palabra: "{topic}". Repite conmigo.', "¿Cómo se dice en tu idioma?"],
+    teach: ['Por aquí a esto le decimos "{topic}". ¿Te suena?', "¿Y en tu idioma, cómo se diría?"],
     bye: ["¡Buen viaje! Nos vemos por aquí."],
   }
 }

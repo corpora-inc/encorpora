@@ -28,3 +28,4 @@ export { createStreamingCollision, chunkObstacles, type StreamingCollision } fro
 export { buildChunkMesh, beginChunkMesh, type ChunkMesh, type ChunkBuilder } from "./chunkMesh"
 export { buildChunkGround, CityGroundSurfaces, type ChunkGround } from "./cityGround"
 export { createCityCache, type CityCache } from "./cityCache"
+export { cityMapGeometry } from "./cityMapGeometry"

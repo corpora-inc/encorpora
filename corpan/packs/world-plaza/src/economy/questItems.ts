@@ -85,23 +85,15 @@ export const QUEST_ITEM_RULES: Record<string, QuestItemRules> = {
     junkTags: ["ferry", "treasure", "gem"],
   },
 
-  // Across Corpan City — the ferry token is the precious key for the harbor crossing.
+  // Across Corpan City — a DETERMINISTIC, always-completable route (#26): the
+  // `docks` step is a talk-challenge (ask for the ferry), the `gate` step is a
+  // TRAVERSE step (walk across the bridge). No item gating — the clue→token→pass
+  // chain was retired here because a fresh player couldn't complete it and got
+  // stuck at the bridge. Ferry/harbor items stay flavour (relevantTags) but gate
+  // NOTHING. (Other quests keep their item rules.)
   "es-guadalajara-route": {
     questId: "es-guadalajara-route",
-    requirements: [
-      {
-        stepId: "docks",
-        itemId: "ferry-token",
-        clue: "The ferry hand won't even look up: 'No token, no crossing. Ask around the plaza — someone always has a spare.'",
-        sourceAnchorId: "plaza",
-      },
-      {
-        stepId: "gate",
-        itemId: "city-gate-pass",
-        clue: "The bridge keeper waves you back: 'The river bridge needs a pass. The market clerk hands them out.'",
-        sourceAnchorId: "market",
-      },
-    ],
+    requirements: [],
     relevantTags: ["travel", "ferry", "harbor", "bridge", "map"],
     junkTags: ["spice", "pottery"],
   },

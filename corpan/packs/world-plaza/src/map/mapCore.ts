@@ -159,6 +159,9 @@ export const PALETTE = {
   blockerEdge: "#bda981",
   ink: "#5a4a32",
   inkSoft: "#8a785c",
+  // open water on the map (#35) — a calm slate-blue that reads as river/coast.
+  water: "#8fb8cc",
+  waterEdge: "#6f9cb4",
 } as const
 
 /* ------------------------------------------------------- marker design ----- */
@@ -418,10 +421,20 @@ export function plotMarkers(topology: RoomTopology, markers: QuestMarker[]): Plo
   return out
 }
 
-/** Heading vector (unit) from a PlayerPosition.facing (world radians, +z forward). */
+/**
+ * World forward (unit XZ) for the player's `facing` (= the controller's `yaw`).
+ *
+ * THE MAP-ARROW INVERSION FIX (#23, recurring): this MUST match the player
+ * controller's actual forward basis, which is `(-sin(yaw), -cos(yaw))` (see
+ * movement/controller.ts: `fx = -sin(yaw); fz = -cos(yaw)`). The old version
+ * returned `(sin, cos)` — the EXACT NEGATION — so the heading wedge pointed 180°
+ * backwards, i.e. where the paper character's back faces / toward the camera,
+ * never the way the player travels. Prior "fixes" tweaked the screen-projection
+ * sign in drawPlayer instead of this root basis, which is why it kept coming back.
+ * Verify by WALKING FORWARD: the wedge must point the way you move.
+ */
 export function headingVec(facing: number): { dx: number; dz: number } {
-  // facing 0 looks toward +z (south on the map), matching the topology `facing`.
-  return { dx: Math.sin(facing), dz: Math.cos(facing) }
+  return { dx: -Math.sin(facing), dz: -Math.cos(facing) }
 }
 
 /* --------------------------------------------------- scoped-inline styles --- */

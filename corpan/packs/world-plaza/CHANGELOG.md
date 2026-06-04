@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **A real waterfront promenade — premium riverwalk dressing.** The +Z water
+  edge is now lined with a hand-crafted stone BALUSTRADE (turned vase balusters
+  under a capping rail, with heavier piers at intervals), classic harbour LAMP
+  POSTS (a glowing glass lantern crowning each iron column), and mooring BOLLARDS
+  along the quay — and the water itself reads as living water: a depth gradient
+  (deep teal far → luminous near the bank), gentle ripple striations that drift
+  with the tide, and a soft foam lip lapping the shoreline (replacing the old
+  flat blue rectangle). It opens cleanly for the bridge deck and honours
+  reduced-motion (still water). One merged mesh per part, thin-instanced and
+  frozen, so the whole waterfront is a handful of draw calls.
 - **Localization stays current automatically (`check-translations`).** A
   fail-loud, CI-friendly gate (`npm run check-translations`) scans for (a) any
   catalog key missing in any of the ~46 shipped languages and (b) any user-facing
@@ -124,6 +134,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **Raw control JSON never leaks into the NPC dialog bubble (#38).** A small model
+  sometimes emits a bare `{ "kind": "reward", "xp": 10 }` WITHOUT the
+  `<<tool>…</tool>>` delimiters, and the splitter passed it straight through as
+  spoken/displayed text. `splitToolBlock` now also detects a bare control-JSON
+  object (a balanced `{…}` whose parsed `kind` is a control discriminant —
+  `say`/`callTool`/`reward`/`questStep`/`end`), strips it from the prose, and
+  routes it through the normal parse-or-drop intent path — so control JSON is never
+  shown or spoken, whether or not the delimiters are present. Streaming holds the
+  prose the moment such an object starts forming. A normal `{…}` aside in prose
+  that ISN'T a control payload is left untouched (`src/npc/promptProgram.ts`).
+- **NPC voices are session-only — no stale voice survives a restart (#21).** The
+  sticky per-NPC voice map is now IN-MEMORY for the life of one app run, not
+  localStorage-persisted. A voice is still stable WITHIN a session (an NPC keeps
+  its voice while you play) but is freshly resolved on each app start, so a
+  wrong/old pin can never carry over. Any legacy persisted pins
+  (`wp:npc:voice:v1`/`v2`) are cleared on load. Deterministic-by-`npcId|target`
+  assignment + the target-language guard are unchanged (`src/npc/npcVoice.ts`).
+- **Nobody and nothing stands on the river anymore — the water is now solid for
+  placement (#30), and the waterfront is a real promenade (#31).** NPCs, ambient
+  strollers, stall-keepers and props used to spawn and wander in the open water
+  (an NPC mid-river, a row of bollards floating on it) because the crowd/
+  population already test the collision field before spawning, but **water was
+  never in that field**. The river is now first-class layout data
+  (`CityLayout.water` + per-chunk water rects) that becomes a box obstacle, so the
+  exact predicate every spawner consults reports the river as solid: nobody lands
+  on it and the player is walled at the shoreline. The single bridge corridor is
+  carved out of the collider so it stays crossable. The waterfront itself reads as
+  a walkable **riverwalk** — a stone quay between the buildings and the water, with
+  harbor cargo and the docks/bridge anchors placed on land. Proven headlessly
+  (`src/city/waterPlacement.test.ts`) and in WebKit (`qa/cityground.mjs`:
+  open-water 1404/1404 blocked, bridge 17/17 open, riverwalk 94/94 walkable).
+- **The across-city quest is now actually completable — every step has an obvious
+  action the game can deliver (#26).** "Cross the river bridge" was a dead-end: a
+  traversal step with no completable action, so the player walked to the bridge,
+  talked to the keeper, and nothing happened (and the old ferry-token/city-gate-pass
+  inventory chain left a fresh player stuck before that). Quest steps now declare a
+  `kind` (`talk` | `traverse` | `find`): **talk** steps advance on a won challenge
+  (as before); **traverse**/**find** steps complete by WALKING to the step's anchor
+  — a per-frame proximity trigger (`src/quest/traversalTrigger.ts`) fires
+  `markStepBeaten`+`advance` on arrival, with a "✓ {label}" toast. `es-guadalajara`
+  is re-authored to a deterministic, always-completable route: step 1 = a talk
+  challenge at the harbor, step 2 = walk across the bridge; its inventory gating is
+  retired. The Status Capsule shows a "{label} →" cue for traverse/find steps.
+  Proven end-to-end in the REAL game by a webkit walkthrough (`qa/quest-loop.mjs`,
+  10/10) that drives the player through both steps to the completion interlude.
 - **ALL challenge-framing text is now out of the dialog and lives by the launch
   button.** Every line that introduces or frames a challenge — the pre-challenge
   invite/segue ("let's see how fast you are"), the "play another" re-offer, and

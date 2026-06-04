@@ -7,6 +7,7 @@ import { findAnchor } from "./layout"
 import { createStreamManager, type StreamManager } from "./stream"
 import { createStreamingCollision, type StreamingCollision } from "./collision"
 import { createCityCache, type CityCache } from "./cityCache"
+import { buildCityWall, wallSegmentsOf, type CityWall } from "../world/cityWall"
 
 /**
  * city/mountCity.ts — the PUBLIC API the orchestrator (game.ts) swaps in for the
@@ -145,6 +146,15 @@ export function mountCity(scene: Scene, opts: MountCityOptions): MountedCity {
     ...opts.stream,
   })
 
+  // CRAFTED WORLD BOUNDARY (#32): the perimeter rampart on the land edges + the
+  // sea wall behind the far bank. A city-lifetime additive layer built ONCE from
+  // the same wall segments collision uses, so the visible wall and its collider
+  // line up. Built only when the layout carries walls (older stubs may not).
+  const wallSegments = wallSegmentsOf(layout.chunks)
+  const cityWall: CityWall | null = wallSegments.length
+    ? buildCityWall(scene, { segments: wallSegments, palette })
+    : null
+
   // contract-shaped anchors (computed once — the layout's anchors are static).
   const contractAnchors: TopologyAnchor[] = layout.anchors.map((a) => ({
     id: a.id,
@@ -165,6 +175,7 @@ export function mountCity(scene: Scene, opts: MountCityOptions): MountedCity {
       // order matters: tear down streamed chunks FIRST (they reference the shared
       // cache + lib), THEN free the city-owned shared resources exactly once.
       stream.dispose()
+      cityWall?.dispose()
       cache.dispose()
       lib.dispose()
     },

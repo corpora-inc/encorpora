@@ -17,11 +17,15 @@
  *     NPC into the male/female sub-list it falls in, so two NPCs of opposite
  *     "feel" don't collide on one voice. A language with a single voice (common on
  *     iOS) degrades to that one voice — never a crash.
- *   - PERSISTED: the resolved `{ "npcId|target" → {id,language} }` is cached in
- *     localStorage (`wp:npc:voice:v2`, tiny) so returning to the same NPC reuses
- *     the same voice. The key is SCOPED TO THE TARGET so a voice pinned for "en" is
- *     never reused for "es"; a cached pin whose language no longer matches is
- *     discarded.
+ *   - SESSION-ONLY (#21): the resolved `{ "npcId|target" → {id,language} }` map is
+ *     IN-MEMORY ONLY for the life of the resolver (one app run). It is STABLE
+ *     within a session (an NPC keeps its voice while you play) but FRESHLY resolved
+ *     on each app start, so a stale/old pin can never carry across a restart — the
+ *     owner asked to stop persisting individual NPC voices. The key is still SCOPED
+ *     TO THE TARGET so a voice pinned for "en" is never reused for "es", and a pin
+ *     whose language no longer matches the target is discarded. Any legacy
+ *     localStorage pins (`wp:npc:voice:v1`/`v2`) are CLEARED on construction so
+ *     nothing from before this change survives.
  *   - NEVER ROTATES MID-CONVERSATION: the runtime resolves the voice ONCE at open
  *     and reuses it for every line of that conversation (see `npcRuntime`).
  *
@@ -52,13 +56,10 @@
 import type { HostApi, HostVoiceInfo } from "./hostTypes"
 
 const LOG = "[wp/npcVoice]"
-// v2 (R2-2 voice-language fix): the cache key now includes the TARGET language
-// (`npcId|target`) so an NPC's voice for "en" can never be reused for "es" (or
-// vice versa), and entries store the voice's `.language` so the pin site can
-// REFUSE a wrong-language voice. The old v1 map (keyed by npcId only, value = bare
-// id) could hold a wrong-language pin from the buggy "keep the full list" path, so
-// we deliberately do NOT migrate it — a fresh key drops the poison.
-const STORE_KEY = "wp:npc:voice:v2"
+// LEGACY persistence keys to CLEAR on construction (#21 — voices are now
+// session-only/in-memory and must NOT be read or written; any pin left by an older
+// build must not survive a restart). We never write these anymore.
+const LEGACY_STORE_KEYS = ["wp:npc:voice:v1", "wp:npc:voice:v2"] as const
 
 /** Tiny stable hash (FNV-1a) → 32-bit. Same seed → same index, forever. */
 function hashStr(s: string): number {
@@ -76,10 +77,10 @@ function mod(n: number, m: number): number {
   return ((n % m) + m) % m
 }
 
-/* --------------------------------------------------------------- persistence */
+/* ----------------------------------------------------------- session-only map */
 
-/** A persisted sticky-voice pin: the chosen voice id + the voice's OWN BCP-47
- *  language, so the pin site can verify the voice still matches the target. */
+/** A sticky-voice pin: the chosen voice id + the voice's OWN BCP-47 language, so
+ *  the pin site can verify the voice still matches the target. */
 type VoicePin = { id: string; language: string }
 type VoiceMap = Record<string, VoicePin>
 
@@ -89,31 +90,23 @@ function pinKey(npcId: string, target: string): string {
   return `${npcId}|${target.toLowerCase()}`
 }
 
-function readMap(): VoiceMap {
+/**
+ * #21: voices are SESSION-ONLY now. We never read or persist the pin map; it lives
+ * in memory for one app run. On construction we CLEAR any legacy localStorage pins
+ * (from older builds that persisted) so nothing stale carries across a restart.
+ * Best-effort + non-fatal (storage may be unavailable, e.g. tests/private mode).
+ */
+function clearLegacyPersistedPins(): void {
   try {
-    const raw = localStorage.getItem(STORE_KEY)
-    if (!raw) return {}
-    const parsed = JSON.parse(raw) as Record<string, unknown>
-    // Defensive: keep only well-formed { id, language } entries (drops any
-    // legacy/partial value rather than trusting a bare-string id).
-    const out: VoiceMap = {}
-    for (const [k, v] of Object.entries(parsed)) {
-      if (v && typeof v === "object" && typeof (v as VoicePin).id === "string") {
-        out[k] = { id: (v as VoicePin).id, language: String((v as VoicePin).language ?? "") }
+    if (typeof localStorage === "undefined") return
+    for (const key of LEGACY_STORE_KEYS) {
+      if (localStorage.getItem(key) != null) {
+        localStorage.removeItem(key)
+        console.info(`${LOG} cleared legacy persisted voice map "${key}" (voices are session-only now).`)
       }
     }
-    return out
   } catch (e) {
-    console.warn(`${LOG} voice-map storage unavailable, using memory:`, e)
-    return {}
-  }
-}
-
-function writeMap(map: VoiceMap): void {
-  try {
-    localStorage.setItem(STORE_KEY, JSON.stringify(map))
-  } catch (e) {
-    console.warn(`${LOG} could not persist NPC voice map (non-fatal):`, e)
+    console.warn(`${LOG} could not clear legacy voice-map storage (non-fatal):`, e)
   }
 }
 
@@ -192,7 +185,11 @@ export interface NpcVoiceResolver {
 }
 
 export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
-  const map: VoiceMap = readMap()
+  // #21: SESSION-ONLY pin map — a fresh empty object per resolver (one app run),
+  // never read from / written to localStorage. Clear any legacy persisted pins so
+  // nothing from an older (persisting) build carries across a restart.
+  clearLegacyPersistedPins()
+  const map: VoiceMap = {}
   // Per (target) cache of the enumerated voice list, so we enumerate at most once
   // per language per session (enumeration can be slow / flaky on first paint).
   const voicesByLang = new Map<string, Promise<HostVoiceInfo[]>>()
@@ -272,14 +269,13 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
           `"${npcId}" — does NOT match target "${target}"; re-resolving.`,
       )
       delete map[key]
-      writeMap(map)
     }
     const voices = await voicesFor(target)
     const chosen = pickVoice(npcId, voices)
     if (chosen) {
+      // SESSION-ONLY (#21): cache in memory for this run; never persisted.
       const pin: VoicePin = { id: chosen.id, language: chosen.language }
       map[key] = pin
-      writeMap(map)
       console.info(
         `${LOG} pinned voice "${chosen.id}" (lang "${chosen.language}") to NPC "${npcId}" ` +
           `for target "${target}".`,

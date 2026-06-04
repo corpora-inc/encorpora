@@ -8,6 +8,8 @@ import {
   type CityAnchor,
   type CitySurface,
   type CityBounds,
+  type CityBoundary,
+  type CityWallRect,
   chunkKey,
 } from "./layout"
 
@@ -70,6 +72,33 @@ const AVENUE_W = 8
 const PITCH = 48
 /** sidewalk inset inside a block before buildings start. */
 const SIDEWALK = 3.5
+
+/** width (world-Z) of the walkable RIVERWALK promenade between the buildings and
+ *  the water's edge — a real quay you can stroll, not a road bleeding into blue.
+ *  env-art DECORATES this band (railings/lamps/foliage); we own its extent. */
+const RIVERWALK_W = 16
+/** half-width of the walkable BRIDGE corridor cut through the water collider —
+ *  matches generateCity's bridge deck (AVENUE_W + 4 wide → +2 each side margin so
+ *  the deck reads as comfortably wider than the avenue). */
+const BRIDGE_HALF_W = (AVENUE_W + 4) / 2 + 1
+
+/* ------------------------------------------------- crafted boundary (#32) knobs */
+// The +Z edge is a RIVER BAND (not water-to-edge): the river is `RIVER_W` wide,
+// then a FAR-BANK district (a far promenade + a row of buildings) the bridge
+// arrives at, then a sea wall at the very edge. The other three land edges get a
+// perimeter rampart inset `WALL_INSET` from the bounds, `WALL_THICK` thick, with
+// a GATE where each cardinal avenue passes through. All relative so a later
+// world-size bump (#34) keeps a coherent edge.
+/** width (world-Z) of the open river BAND between the near and far banks. */
+const RIVER_W = 34
+/** width (world-Z) of the walkable FAR-BANK promenade (mirror of the near quay). */
+const FAR_PROM_W = 12
+/** how far the perimeter rampart sits inside the world bounds (land edges). */
+const WALL_INSET = 10
+/** thickness of the rampart box. */
+const WALL_THICK = 4
+/** half-width of a gate opening (an avenue passes through it). */
+const GATE_HALF_W = AVENUE_W / 2 + 3
 
 /** base ground surface under each zone (roads bake on top). */
 const BASE_SURFACE_BY_ZONE: Record<CityZoneId, CitySurface> = {
@@ -145,13 +174,28 @@ function boxesOverlap(a: Box, b: Box, pad: number): boolean {
  * rather than per-block noise. */
 interface ZoneField {
   zoneAt: (x: number, z: number) => CityZoneId
-  /** y-position (world Z) of the harbor waterline; everything beyond is water. */
+  /** world-Z of the NEAR water edge; [waterZ, farBankZ) is the open river band. */
   waterZ: number
+  /** world-Z where the near riverwalk promenade starts (bankZ < waterZ). The band
+   *  [bankZ, waterZ) is the walkable near quay; harbor buildings sit inland. */
+  bankZ: number
+  /** world-Z of the FAR water edge / far quay — the river ends here. */
+  farBankZ: number
+  /** world-Z where the far promenade ends and far-bank buildings start. */
+  farPromZ: number
 }
 
 function buildZoneField(half: number, r: () => number): ZoneField {
-  // Harbor sits along the +Z edge (one waterfront). Water beyond `waterZ`.
+  // Harbor sits along the +Z edge (one waterfront). The river is a BAND between
+  // the near bank (waterZ) and the far bank (farBankZ); beyond it the far-bank
+  // district faces back across the water. The near RIVERWALK promenade band
+  // [bankZ, waterZ) is solid quay you can stroll.
+  // Keep the near water edge where it was so the near city is unchanged; the band
+  // + far bank consume the old water strip out to the wall.
   const waterZ = half - 70
+  const bankZ = waterZ - RIVERWALK_W
+  const farBankZ = waterZ + RIVER_W
+  const farPromZ = farBankZ + FAR_PROM_W
   // District seeds: (x,z, zone) — nearest-seed wins (Voronoi-ish), with the
   // plaza forced at the center and harbor/industrial pinned near the water.
   const seeds: Array<{ x: number; z: number; zone: CityZoneId }> = [
@@ -161,8 +205,8 @@ function buildZoneField(half: number, r: () => number): ZoneField {
     { x: -half * 0.6, z: half * 0.2, zone: "residential" },
     { x: half * 0.62, z: half * 0.1, zone: "residential" },
     { x: half * 0.1, z: -half * 0.15, zone: "market" },
-    { x: -half * 0.15, z: waterZ - 20, zone: "harbor" },
-    { x: half * 0.45, z: waterZ - 22, zone: "industrial" },
+    { x: -half * 0.15, z: bankZ - 22, zone: "harbor" },
+    { x: half * 0.45, z: bankZ - 24, zone: "industrial" },
     { x: -half * 0.5, z: half * 0.55, zone: "park" },
     { x: half * 0.2, z: half * 0.42, zone: "station" },
     { x: -half * 0.05, z: half * 0.3, zone: "civic" },
@@ -174,7 +218,9 @@ function buildZoneField(half: number, r: () => number): ZoneField {
     s.z += (r() - 0.5) * half * 0.18
   }
   const zoneAt = (x: number, z: number): CityZoneId => {
-    if (z > waterZ) return "harbor" // the quay belongs to the harbor zone
+    // near riverwalk + open river + far-bank district all dress as harbor (stone
+    // quay surface + warehouse character) — one coherent waterfront across the river.
+    if (z >= bankZ) return "harbor"
     // plaza wins inside a generous radius so the civic heart is coherent.
     if (x * x + z * z < 60 * 60) return "plaza"
     let best = seeds[0]
@@ -188,7 +234,7 @@ function buildZoneField(half: number, r: () => number): ZoneField {
     }
     return best.zone
   }
-  return { zoneAt, waterZ }
+  return { zoneAt, waterZ, bankZ, farBankZ, farPromZ }
 }
 
 /* ------------------------------------------------------------- block infill */
@@ -289,8 +335,15 @@ function dressBlock(
 
 /* ------------------------------------------------- landmark hero footprints */
 
-/** Build a landmark's hero building(s) + anchor at a snapped block center. */
-function buildLandmark(plan: LandmarkPlan, cx: number, cz: number): { buildings: CityBuilding[]; anchor: CityAnchor; props: CityProp[] } {
+/** Build a landmark's hero building(s) + anchor at a snapped block center.
+ *  `bankZ` (the riverwalk edge) lets the harbor place its docks ON the promenade
+ *  instead of floating its anchor toward the water. */
+function buildLandmark(
+  plan: LandmarkPlan,
+  cx: number,
+  cz: number,
+  bankZ: number,
+): { buildings: CityBuilding[]; anchor: CityAnchor; props: CityProp[] } {
   const buildings: CityBuilding[] = []
   const props: CityProp[] = []
   let anchor: CityAnchor
@@ -314,13 +367,19 @@ function buildLandmark(plan: LandmarkPlan, cx: number, cz: number): { buildings:
       buildings.push({ x: cx, z: cz, w: 24, d: 18, kind: "inn", door: { x: cx, z: cz + 10 } })
       anchor = { id: "hospital", kind: "landmark", x: cx, z: cz + 12, facing: 0, label: plan.label }
       break
-    case "harbor":
-      // warehouses set back from the quay; docks anchor at the waterline.
+    case "harbor": {
+      // warehouses set back from the quay; cargo lined up on the LAND side of the
+      // riverwalk; docks anchor sits ON the promenade (a touch inland of the
+      // water's edge) so the dockmaster + cargo never float on the river (#30).
       buildings.push({ x: cx - 10, z: cz - 6, w: 12, d: 10, kind: "workshop" })
       buildings.push({ x: cx + 10, z: cz - 6, w: 12, d: 10, kind: "workshop" })
-      for (let i = -3; i <= 3; i++) props.push({ species: "barrel", x: cx + i * 3, z: cz + 8, scale: 1, shadow: 0.6 })
-      anchor = { id: "harbor", kind: "docks", x: cx, z: cz + 10, facing: Math.PI, label: plan.label }
+      // a line of cargo barrels along the quay, clamped just inland of the bank.
+      const cargoZ = Math.min(cz + 8, bankZ - 3)
+      for (let i = -3; i <= 3; i++) props.push({ species: "barrel", x: cx + i * 3, z: cargoZ, scale: 1, shadow: 0.6 })
+      const dockZ = Math.min(cz + 11, bankZ - 2) // dockmaster stands on the quay
+      anchor = { id: "harbor", kind: "docks", x: cx, z: dockZ, facing: Math.PI, label: plan.label }
       break
+    }
     default:
       buildings.push({ x: cx, z: cz, w: 16, d: 12, kind: "chapel" })
       anchor = { id: plan.id, kind: "landmark", x: cx, z: cz + 9, facing: 0, label: plan.label }
@@ -348,7 +407,7 @@ export function generateCity(seed = 20260603): CityLayout {
   // ---- landmark plans → snapped block centers (claim their blocks) ----
   const landmarkPlans: LandmarkPlan[] = [
     { id: "market", zone: "market", fx: 0.12, fz: -0.18, label: "Market Square" },
-    { id: "harbor", zone: "harbor", fx: -0.1, fz: (zoneField.waterZ - 14) / half, label: "Harbor Docks" },
+    { id: "harbor", zone: "harbor", fx: -0.1, fz: (zoneField.bankZ - 30) / half, label: "Harbor Docks" },
     { id: "station", zone: "station", fx: 0.22, fz: 0.46, label: "Central Station" },
     { id: "hospital", zone: "civic", fx: -0.06, fz: 0.32, label: "City Hospital" },
   ]
@@ -394,27 +453,68 @@ export function generateCity(seed = 20260603): CityLayout {
       }
     }
     if (!best) continue
-    const lm = buildLandmark(plan, best.x, best.z)
+    const lm = buildLandmark(plan, best.x, best.z, zoneField.bankZ)
     allBuildings.push(...lm.buildings)
     allProps.push(...lm.props)
     allAnchors.push(lm.anchor)
     claimed.push({ x: best.x, z: best.z, w: best.w + 4, d: best.d + 4 })
   }
 
-  // bridge anchors where an avenue crosses the water (north waterfront).
-  // The avenue nearest x=0 makes the main bridge; mark its deck region later.
+  // bridge anchors at BOTH ends of the crossing (#32): the near approach on the
+  // near bank, and the FAR approach on the far bank the bridge arrives at — so
+  // "cross the bridge" lands you in more city, never the map edge. The bridge
+  // STRUCTURE itself is world-fix (#29); we leave the corridor open in the river
+  // collider (makeChunks `bridgeX`) and put walkable land on the far side.
   const bridgeX = 0
-  allAnchors.push({ id: "bridge_n", kind: "landmark", x: bridgeX, z: zoneField.waterZ, facing: 0, label: "North Bridge" })
+  allAnchors.push({ id: "bridge_n", kind: "landmark", x: bridgeX, z: zoneField.bankZ, facing: 0, label: "North Bridge" })
+  allAnchors.push({ id: "bridge_s", kind: "landmark", x: bridgeX, z: zoneField.farPromZ, facing: Math.PI, label: "Far Bank" })
 
   // ---- generic block infill across the grid (skipping claimed blocks) ----
+  // A block is skipped when ANY of its footprint reaches the riverwalk band: we
+  // keep the promenade [bankZ, waterZ) clear of buildings so it reads as an open
+  // quay, and obviously never build on the water itself.
   for (const c of centers) {
     if (claimed.some((cl) => boxesOverlap({ x: c.x, z: c.z, w: c.w, d: c.d }, cl, 0))) continue
-    if (c.z > zoneField.waterZ) continue // block sits in the water → skip
+    if (c.z + c.d / 2 > zoneField.bankZ) continue // block reaches the riverwalk/water → skip
     const zone = zoneField.zoneAt(c.x, c.z)
     const buildings = fillBlock(c.x, c.z, c.w, c.d, zone, claimed, r)
     allBuildings.push(...buildings)
     allProps.push(...dressBlock(c.x, c.z, c.w, c.d, zone, buildings, r))
   }
+
+  // ---- FAR-BANK DISTRICT (#32): the city the bridge crosses TO. A row of
+  // warehouse/quarter buildings facing back across the river, set behind a far
+  // promenade, bounded by the sea wall. Kept simple + walkable: a front quay
+  // (clear), then buildings in [farPromZ, wallZ), with the bridge corridor left
+  // open so you step off the deck onto the far promenade.
+  const wallZ = half - WALL_INSET // the sea wall sits just inside the +Z edge
+  buildFarBank(zoneField, half, bridgeX, wallZ, r, allBuildings, allProps)
+
+  // DEFENSE-IN-DEPTH (#30): drop any prop that ended up IN THE RIVER band (between
+  // the near and far banks) or past the sea wall — landmark/dressing jitter can
+  // nudge a barrel/lamp off the quay. Props on either bank are kept; only the open
+  // water + the no-man's strip behind the wall are cleared.
+  const PROP_BANK_INSET = 1.5
+  const inRiver = (z: number): boolean =>
+    z > zoneField.bankZ - PROP_BANK_INSET && z < zoneField.farBankZ + PROP_BANK_INSET
+  const onLand = (p: CityProp): boolean => !inRiver(p.z) && p.z <= wallZ - PROP_BANK_INSET
+  for (let i = allProps.length - 1; i >= 0; i--) {
+    if (!onLand(allProps[i])) allProps.splice(i, 1)
+  }
+
+  // ---- WALLS (#32): the perimeter rampart on the three LAND edges (south, east,
+  // west). The +Z edge is the river/sea (no wall — the water IS the boundary).
+  // A gate where the central avenue (x=0 / z=0 line) crosses each edge.
+  const boundary: CityBoundary = {
+    inset: WALL_INSET,
+    thickness: WALL_THICK,
+    gates: [
+      { side: "south", center: 0, halfWidth: GATE_HALF_W },
+      { side: "west", center: 0, halfWidth: GATE_HALF_W },
+      { side: "east", center: 0, halfWidth: GATE_HALF_W },
+    ],
+  }
+  pushGateAnchors(boundary, half, allAnchors)
 
   // ---- partition everything into chunks (by feature CENTER) ----
   const chunks: CityChunk[] = makeChunks(bounds, CHUNK_SIZE, gridDim, zoneField, {
@@ -423,7 +523,13 @@ export function generateCity(seed = 20260603): CityLayout {
     anchors: allAnchors,
     lines,
     waterZ: zoneField.waterZ,
+    bankZ: zoneField.bankZ,
+    farBankZ: zoneField.farBankZ,
+    farPromZ: zoneField.farPromZ,
     bridgeX,
+    bridgeHalfW: BRIDGE_HALF_W,
+    boundary,
+    wallZ,
   })
 
   return {
@@ -435,9 +541,72 @@ export function generateCity(seed = 20260603): CityLayout {
     chunks,
     anchors: allAnchors,
     spawn,
+    water: {
+      waterZ: zoneField.waterZ,
+      bankZ: zoneField.bankZ,
+      farBankZ: zoneField.farBankZ,
+      farPromZ: zoneField.farPromZ,
+      bridgeX,
+      bridgeHalfW: BRIDGE_HALF_W,
+    },
+    boundary,
     baseSurfaceByZone: BASE_SURFACE_BY_ZONE,
   }
 }
+
+/* ------------------------------------------------------ far bank + gates (#32) */
+
+/**
+ * Build the FAR-BANK district the bridge crosses to: a row of warehouse-style
+ * buildings facing back across the river, set behind a clear far promenade and in
+ * front of the sea wall, with the bridge corridor kept open so you step off the
+ * deck onto walkable far ground. Deterministic; appends to the shared arrays.
+ */
+function buildFarBank(
+  zf: ZoneField,
+  half: number,
+  bridgeX: number,
+  wallZ: number,
+  r: () => number,
+  buildings: CityBuilding[],
+  props: CityProp[],
+): void {
+  const z0 = zf.farPromZ // buildings start behind the far promenade
+  const z1 = wallZ - 2 // and stop short of the sea wall
+  const depth = z1 - z0
+  if (depth < 6) return
+  const cz = (z0 + z1) / 2
+  const d = Math.min(depth, 12)
+  // a run of warehouses across the far bank, leaving the bridge mouth clear.
+  const x0 = -half + WALL_INSET + 6
+  const x1 = half - WALL_INSET - 6
+  const stepW = 26
+  for (let x = x0; x <= x1; x += stepW) {
+    // skip the building that would block the bridge mouth (keep the deck arrival open).
+    if (Math.abs(x - bridgeX) < BRIDGE_HALF_W + 10) continue
+    const w = 14 + r() * 6
+    buildings.push({ x, z: cz, w, d, kind: r() < 0.5 ? "workshop" : "market-hall", door: { x, z: z0 - 2 } })
+    // a couple of cargo props on the far quay in front of each warehouse.
+    props.push({ species: "crate", x: x - 4, z: z0 - 2.5, scale: 1, shadow: 0.6 })
+    props.push({ species: "barrel", x: x + 4, z: z0 - 2.5, scale: 1, shadow: 0.6 })
+  }
+}
+
+/** Drop a GATE anchor at each wall opening (map legend + a place to dress towers). */
+function pushGateAnchors(boundary: CityBoundary, half: number, anchors: CityAnchor[]): void {
+  const inner = half - boundary.inset
+  for (const g of boundary.gates) {
+    const pos =
+      g.side === "south"
+        ? { x: g.center, z: -inner }
+        : g.side === "west"
+          ? { x: -inner, z: g.center }
+          : { x: inner, z: g.center } // east
+    anchors.push({ id: `gate_${g.side}`, kind: "landmark", x: pos.x, z: pos.z, facing: 0, label: `${cap(g.side)} Gate` })
+  }
+}
+
+const cap = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1)
 
 /* ------------------------------------------------------- chunk partitioning */
 
@@ -447,7 +616,14 @@ interface ChunkInput {
   anchors: CityAnchor[]
   lines: number[]
   waterZ: number
+  bankZ: number
+  farBankZ: number
+  farPromZ: number
   bridgeX: number
+  bridgeHalfW: number
+  boundary: CityBoundary
+  /** world-Z of the sea wall (the +Z far edge wall). */
+  wallZ: number
 }
 
 /**
@@ -482,6 +658,8 @@ function makeChunks(
         props: [],
         ground: [],
         anchors: [],
+        water: [],
+        walls: [],
       }
     }
   }
@@ -530,28 +708,81 @@ function makeChunks(
           })
         }
       }
-      // water: any chunk that touches the waterline gets a water rect beyond it.
-      if (b.maxZ > zoneField.waterZ) {
-        const wz0 = Math.max(b.minZ, zoneField.waterZ)
-        ch.ground.push({
-          kind: "rect",
-          surface: "water",
-          cx: (b.minX + b.maxX) / 2,
-          cz: (wz0 + b.maxZ) / 2,
-          w: chunkSize,
-          d: b.maxZ - wz0,
-          metersPerTile: 6,
-        })
-        // bridge deck: a stone strip carrying the bridge avenue across the water.
-        if (inp.bridgeX >= b.minX - 6 && inp.bridgeX <= b.maxX + 6) {
+      // ── RIVERWALK promenade: a solid stone quay across the bank band
+      // [bankZ, waterZ) so the waterfront reads as a walkable promenade, not a
+      // road bleeding into blue. Baked for any chunk that overlaps the band. The
+      // band is WALKABLE land (no water collider here) and env-art dresses it.
+      if (b.maxZ > zoneField.bankZ && b.minZ < zoneField.waterZ) {
+        const rz0 = Math.max(b.minZ, zoneField.bankZ)
+        const rz1 = Math.min(b.maxZ, zoneField.waterZ)
+        if (rz1 > rz0) {
           ch.ground.push({
             kind: "rect",
             surface: "stone",
-            cx: inp.bridgeX,
-            cz: (wz0 + b.maxZ) / 2,
-            w: AVENUE_W + 4,
-            d: b.maxZ - wz0,
-            metersPerTile: 3,
+            cx: (b.minX + b.maxX) / 2,
+            cz: (rz0 + rz1) / 2,
+            w: chunkSize,
+            d: rz1 - rz0,
+            metersPerTile: 3.2,
+          })
+        }
+      }
+      // ── RIVER BAND (#30/#32): the open river occupies [waterZ, farBankZ) — a
+      // BAND, not water-to-the-edge. A chunk overlapping it paints blue river over
+      // that clipped span AND emits a non-walkable collision rect (with the bridge
+      // corridor carved out). Beyond farBankZ is the FAR BANK (land), not water.
+      if (b.maxZ > zoneField.waterZ && b.minZ < zoneField.farBankZ) {
+        const wz0 = Math.max(b.minZ, zoneField.waterZ)
+        const wz1 = Math.min(b.maxZ, zoneField.farBankZ)
+        if (wz1 > wz0) {
+          ch.ground.push({
+            kind: "rect",
+            surface: "water",
+            cx: (b.minX + b.maxX) / 2,
+            cz: (wz0 + wz1) / 2,
+            w: chunkSize,
+            d: wz1 - wz0,
+            metersPerTile: 6,
+          })
+          const crossesBridge = inp.bridgeX >= b.minX - inp.bridgeHalfW && inp.bridgeX <= b.maxX + inp.bridgeHalfW
+          ch.water.push({
+            x0: b.minX,
+            x1: b.maxX,
+            z0: wz0,
+            z1: wz1,
+            ...(crossesBridge
+              ? { bridgeGap: [inp.bridgeX - inp.bridgeHalfW, inp.bridgeX + inp.bridgeHalfW] as [number, number] }
+              : {}),
+          })
+          // bridge deck: a stone strip carrying the avenue across the river band.
+          if (crossesBridge) {
+            ch.ground.push({
+              kind: "rect",
+              surface: "stone",
+              cx: inp.bridgeX,
+              cz: (wz0 + wz1) / 2,
+              w: inp.bridgeHalfW * 2,
+              d: wz1 - wz0,
+              metersPerTile: 3,
+            })
+          }
+        }
+      }
+      // ── FAR BANK (#32): stone quay + ground across [farBankZ, wallZ) — the
+      // walkable district the bridge arrives at. One stone fill so the far-bank
+      // promenade + warehouse ground read as a coherent waterfront across the river.
+      if (b.maxZ > zoneField.farBankZ && b.minZ < inp.wallZ) {
+        const fz0 = Math.max(b.minZ, zoneField.farBankZ)
+        const fz1 = Math.min(b.maxZ, inp.wallZ)
+        if (fz1 > fz0) {
+          ch.ground.push({
+            kind: "rect",
+            surface: "stone",
+            cx: (b.minX + b.maxX) / 2,
+            cz: (fz0 + fz1) / 2,
+            w: chunkSize,
+            d: fz1 - fz0,
+            metersPerTile: 3.2,
           })
         }
       }
@@ -573,5 +804,105 @@ function makeChunks(
     }
   }
 
+  // ---- WALLS (#32): slice the four perimeter ramparts into per-chunk segments
+  // + bake a thin stone strip under each. The three LAND edges (S/E/W) get a
+  // gated rampart; the +Z edge gets a SEA WALL behind the far bank. Each segment
+  // is clipped to the chunk it lies in so the collider streams with that chunk.
+  const wallSegments = buildWallSegments(bounds, inp)
+  for (const seg of wallSegments) {
+    const cx = (seg.x0 + seg.x1) / 2
+    const cz = (seg.z0 + seg.z1) / 2
+    const ch = chunkFor(cx, cz)
+    ch.walls.push(seg)
+    // bake a stone rampart strip under the segment (the wall mesh is built by
+    // world/cityWall.ts; this is the ground footprint so it doesn't float).
+    ch.ground.push({
+      kind: "rect",
+      surface: "stone",
+      cx,
+      cz,
+      w: Math.max(seg.x1 - seg.x0, 0.5),
+      d: Math.max(seg.z1 - seg.z0, 0.5),
+      metersPerTile: 3,
+    })
+  }
+
   return chunks.flat()
+}
+
+/**
+ * Build the perimeter rampart as a list of per-chunk-clippable segments (#32).
+ * S/E/W edges sit `inset` inside the bounds with a gate opening; the +Z edge gets
+ * a SEA WALL just behind the far bank. Each full edge is split at chunk grid lines
+ * so a segment lands wholly inside one chunk (its collider streams with it), and
+ * the gate interval is recorded on whichever segment spans it.
+ */
+function buildWallSegments(bounds: CityBounds, inp: ChunkInput): CityWallRect[] {
+  const { inset, thickness } = inp.boundary
+  const half = (bounds.maxX - bounds.minX) / 2
+  const t = thickness
+  const lo = -half + inset // wall centerline on the inset edges
+  const out: CityWallRect[] = []
+  const gateFor = (side: "south" | "east" | "west") => inp.boundary.gates.find((g) => g.side === side)
+
+  // split [a,b] at every chunk boundary so each piece is inside one chunk.
+  const chunkSplits = (a: number, b: number, axisMin: number): number[] => {
+    const cs = CHUNK_SIZE
+    const pts = [a]
+    let k = Math.ceil((a - axisMin) / cs)
+    for (let edge = axisMin + k * cs; edge < b; edge += cs) if (edge > a) pts.push(edge)
+    pts.push(b)
+    return pts
+  }
+
+  // SOUTH (−Z) + the SEA WALL (+Z behind the far bank): horizontal ramparts (long
+  // axis X). South is gated; the sea wall is solid (the river is the boundary, the
+  // wall just caps the far bank — bridge arrives BEFORE it).
+  const horiz = (zc: number, side: "south", gate?: { center: number; halfWidth: number }) => {
+    const xs = chunkSplits(bounds.minX + inset, bounds.maxX - inset, bounds.minX)
+    for (let i = 0; i < xs.length - 1; i++) {
+      const x0 = xs[i]
+      const x1 = xs[i + 1]
+      const seg: CityWallRect = { x0, x1, z0: zc - t / 2, z1: zc + t / 2, side }
+      if (gate && gate.center - gate.halfWidth < x1 && gate.center + gate.halfWidth > x0) {
+        seg.gateGap = [gate.center - gate.halfWidth, gate.center + gate.halfWidth]
+      }
+      out.push(seg)
+    }
+  }
+  const seaWall = (zc: number) => {
+    const xs = chunkSplits(bounds.minX + inset, bounds.maxX - inset, bounds.minX)
+    for (let i = 0; i < xs.length - 1; i++) {
+      // a solid sea wall, but leave the bridge mouth clear so the deck reaches it.
+      const x0 = xs[i]
+      const x1 = xs[i + 1]
+      const seg: CityWallRect = { x0, x1, z0: zc - t / 2, z1: zc + t / 2, side: "north" }
+      if (inp.bridgeX - inp.bridgeHalfW < x1 && inp.bridgeX + inp.bridgeHalfW > x0) {
+        seg.gateGap = [inp.bridgeX - inp.bridgeHalfW, inp.bridgeX + inp.bridgeHalfW]
+      }
+      out.push(seg)
+    }
+  }
+
+  // EAST (+X) + WEST (−X): vertical ramparts (long axis Z), gated. They span only
+  // the LAND edge — they stop at the river so they don't wall across the water.
+  const vert = (xc: number, side: "east" | "west", gate?: { center: number; halfWidth: number }) => {
+    const zEnd = inp.waterZ // stop the side walls at the near water edge
+    const zs = chunkSplits(bounds.minZ + inset, zEnd, bounds.minZ)
+    for (let i = 0; i < zs.length - 1; i++) {
+      const z0 = zs[i]
+      const z1 = zs[i + 1]
+      const seg: CityWallRect = { x0: xc - t / 2, x1: xc + t / 2, z0, z1, side }
+      if (gate && gate.center - gate.halfWidth < z1 && gate.center + gate.halfWidth > z0) {
+        seg.gateGap = [gate.center - gate.halfWidth, gate.center + gate.halfWidth]
+      }
+      out.push(seg)
+    }
+  }
+
+  horiz(lo, "south", gateFor("south"))
+  vert(half - inset, "east", gateFor("east"))
+  vert(lo, "west", gateFor("west"))
+  seaWall(inp.wallZ)
+  return out
 }

@@ -68,6 +68,60 @@ const cstat = await page.evaluate(() => {
 })
 console.log("CLOSEUP centre — mean:", cstat.mean, " std:", cstat.std, "(textured ground → std > 8)")
 
+// ── RIVERWALK + WATER (#30/#31) ───────────────────────────────────────────
+// Park the camera at the waterfront so the river chunks build, then frame the
+// promenade over-the-shoulder + a top-down of the bank/water boundary.
+const water = await page.evaluate(() => window.__wpGround.water())
+console.log("WATER:", JSON.stringify(water))
+const bankMidZ = (water.bankZ + water.waterZ) / 2
+// stand on the riverwalk and look out across the water (low beta = horizon view).
+await page.evaluate((z) => window.__wpGround.setView(Math.PI / 2, 1.32, 40, 30, z - 22), bankMidZ)
+await page.waitForTimeout(3500) // let the waterfront chunks stream + build
+await page.evaluate((z) => window.__wpGround.setView(Math.PI / 2, 1.32, 40, 30, z - 22), bankMidZ)
+await page.waitForTimeout(1200)
+await page.screenshot({ path: "/tmp/wp-ground-riverwalk.png" })
+// top-down on the bank/water boundary: land (stone) below, blue river above.
+await page.evaluate((z) => window.__wpGround.lookDownAt(0, z, 70), water.bankZ)
+await page.waitForTimeout(1500)
+await page.screenshot({ path: "/tmp/wp-ground-bank.png" })
+
+// PLACEMENT physics (#30): is the open water blocked for spawners?
+const place = await page.evaluate(() => window.__wpGround.waterPlacement())
+const waterOk = place.waterProbes > 0 && place.waterBlocked === place.waterProbes
+const bridgeOk = place.bridgeOpen > 0
+const bankOk = place.bankProbes > 0 && place.bankWalkable / place.bankProbes > 0.7
+console.log("\n================ WATER PLACEMENT (#30) ================")
+console.log(`open-water probes blocked: ${place.waterBlocked}/${place.waterProbes}  ${waterOk ? "PASS (nobody on the river)" : "FAIL"}`)
+console.log(`bridge corridor open:      ${place.bridgeOpen}/${place.bridgeProbes}   ${bridgeOk ? "PASS (crossable)" : "FAIL"}`)
+console.log(`riverwalk band walkable:   ${place.bankWalkable}/${place.bankProbes}   ${bankOk ? "PASS (real promenade)" : "FAIL"}`)
+
+// ── CRAFTED BOUNDARY (#32): far bank + walls ──────────────────────────────
+// Look across the river toward the FAR BANK (the city the bridge arrives at),
+// standing near the bridge mouth on the near bank facing +Z (alpha = -PI/2).
+await page.evaluate((w) => window.__wpGround.setView(-Math.PI / 2, 1.28, 70, w.bridgeX, w.bankZ - 18), water)
+await page.waitForTimeout(4000) // let the river + far-bank chunks stream
+await page.evaluate((w) => window.__wpGround.setView(-Math.PI / 2, 1.28, 70, w.bridgeX, w.bankZ - 18), water)
+await page.waitForTimeout(1200)
+await page.screenshot({ path: "/tmp/wp-ground-farbank.png" })
+// top-down on the river BAND: near bank → blue river → far bank → sea wall.
+await page.evaluate((w) => window.__wpGround.lookDownAt(w.bridgeX, (w.waterZ + w.farPromZ) / 2, 120), water)
+await page.waitForTimeout(1500)
+await page.screenshot({ path: "/tmp/wp-ground-riverband.png" })
+// look along the SOUTH wall (stand inside, face -Z toward the rampart).
+await page.evaluate(() => window.__wpGround.setView(Math.PI / 2, 1.30, 60, 60, -300))
+await page.waitForTimeout(3500)
+await page.evaluate(() => window.__wpGround.setView(Math.PI / 2, 1.30, 60, 60, -300))
+await page.waitForTimeout(1200)
+await page.screenshot({ path: "/tmp/wp-ground-wall.png" })
+
+const bp = await page.evaluate(() => window.__wpGround.boundaryPlacement())
+const wallOk = bp.wallProbes > 0 && bp.wallBlocked === bp.wallProbes
+const gatesOk = bp.gates === 0 || bp.gatesOpen === bp.gates
+console.log("\n================ CRAFTED BOUNDARY (#32) ================")
+console.log(`rampart off-gate blocked:  ${bp.wallBlocked}/${bp.wallProbes}  ${wallOk ? "PASS (designed wall, not fog)" : "FAIL"}`)
+console.log(`gates walkable:            ${bp.gatesOpen}/${bp.gates}   ${gatesOk ? "PASS (passable gateways)" : "FAIL"}`)
+console.log(`bridge reaches far bank:   ${bp.farBankReachable ? "PASS (arrives at more city)" : "FAIL"}`)
+
 // top-down over the plaza/streets.
 await page.evaluate(() => window.__wpGround.setView(Math.PI / 2, 0.02, 90, 0, 0))
 await page.waitForTimeout(1200)

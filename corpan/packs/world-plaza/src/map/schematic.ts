@@ -9,7 +9,7 @@
  */
 
 import type { RoomTopology } from "@world-plaza/contracts"
-import type { MapView } from "../contracts/runtime"
+import type { MapView, MapGeometry } from "../contracts/runtime"
 import {
   PALETTE,
   type Projection,
@@ -44,6 +44,7 @@ export function drawBase(
   cssW: number,
   cssH: number,
   detail: boolean,
+  geometry?: MapGeometry,
 ): void {
   ctx.clearRect(0, 0, cssW, cssH)
 
@@ -57,6 +58,24 @@ export function drawBase(
   ctx.save()
   roundRect(ctx, x, y, w, h, detail ? 10 : 6)
   ctx.clip()
+
+  // WATER (#35): open river/coast filled UNDER the grid + blockers, so the player
+  // can read where land ends. Drawn before the grid so grid lines tint it subtly.
+  if (geometry && geometry.water.length) {
+    ctx.fillStyle = PALETTE.water
+    ctx.strokeStyle = PALETTE.waterEdge
+    ctx.lineWidth = detail ? 1.5 : 1
+    for (const wr of geometry.water) {
+      const p0 = proj.toScreen(wr.x0, wr.z0)
+      const p1 = proj.toScreen(wr.x1, wr.z1)
+      const rx = Math.min(p0.x, p1.x)
+      const ry = Math.min(p0.y, p1.y)
+      const rw = Math.abs(p1.x - p0.x)
+      const rh = Math.abs(p1.y - p0.y)
+      ctx.fillRect(rx, ry, rw, rh)
+      if (detail) ctx.strokeRect(rx, ry, rw, rh)
+    }
+  }
   ctx.strokeStyle = PALETTE.groundLine
   ctx.globalAlpha = detail ? 0.5 : 0.35
   ctx.lineWidth = 1
@@ -76,19 +95,30 @@ export function drawBase(
   }
   ctx.globalAlpha = 1
 
-  // Blockers (faint footprints).
+  // Blockers / building footprints (faint). Prefer the supplied map geometry
+  // (the city's real building footprints, #35) when present; else fall back to the
+  // contract `topology.blockers`. Both render as soft rounded rects.
   ctx.fillStyle = PALETTE.blocker
   ctx.strokeStyle = PALETTE.blockerEdge
   ctx.lineWidth = 1
-  for (const blk of topology.blockers) {
-    const c = proj.toScreen(blk.x, blk.z)
-    const bw = blk.w * proj.scale
-    const bh = blk.d * proj.scale
+  const drawBlk = (cx: number, cy: number, bw: number, bh: number) => {
     ctx.globalAlpha = 0.55
-    roundRect(ctx, c.x - bw / 2, c.y - bh / 2, bw, bh, 2)
+    roundRect(ctx, cx - bw / 2, cy - bh / 2, bw, bh, 2)
     ctx.fill()
     ctx.globalAlpha = 0.8
     ctx.stroke()
+  }
+  if (geometry && geometry.blockers.length) {
+    for (const b of geometry.blockers) {
+      const p0 = proj.toScreen(b.x0, b.z0)
+      const p1 = proj.toScreen(b.x1, b.z1)
+      drawBlk((p0.x + p1.x) / 2, (p0.y + p1.y) / 2, Math.abs(p1.x - p0.x), Math.abs(p1.y - p0.y))
+    }
+  } else {
+    for (const blk of topology.blockers) {
+      const c = proj.toScreen(blk.x, blk.z)
+      drawBlk(c.x, c.y, blk.w * proj.scale, blk.d * proj.scale)
+    }
   }
   ctx.globalAlpha = 1
   ctx.restore()

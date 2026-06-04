@@ -22,12 +22,34 @@ export const QuestObjective = z.discriminatedUnion("kind", [
 ])
 export type QuestObjective = z.infer<typeof QuestObjective>
 
+/**
+ * How a step is COMPLETED — so every step has an action the game can actually
+ * deliver (the #26 fix: a "cross the bridge" step with no completable action left
+ * the player stuck). Default "talk".
+ *   - "talk"     — walk to the objective NPC, Begin the challenge, win → advance.
+ *   - "traverse" — walk TO/ACROSS the step's anchor (a trigger volume at the
+ *                  anchor fires advance on arrival). "Cross the bridge / take the
+ *                  ferry." No challenge, no item — reaching the spot IS the action.
+ *   - "find"     — reach the marked spot to pick up the step's item, then advance
+ *                  (a pickup at the anchor). "Find the pass."
+ * `traverse`/`find` steps are satisfied by REACHING the anchor (the engine's
+ * beaten flag, set by the proximity trigger) — NOT by an inventory rule — so they
+ * are always completable by playing.
+ */
+export const QuestStepKind = z.enum(["talk", "traverse", "find"])
+export type QuestStepKind = z.infer<typeof QuestStepKind>
+
 export const QuestStep = z.object({
   id: z.string().min(1),
   label: z.string(),
   anchorId: z.string().optional(),
   toolId: ChallengeToolId.optional(),
   done: z.boolean().optional(),
+  /**
+   * How this step completes (see {@link QuestStepKind}). Optional → "talk".
+   * Additive: existing quests parse unchanged and behave as talk-challenge steps.
+   */
+  kind: QuestStepKind.optional(),
   /**
    * Corpus entry ids this step is ABOUT. Pinning them into the challenge's
    * `ChallengeSpec.entryIds` makes the micro-game drill the exact words the quest

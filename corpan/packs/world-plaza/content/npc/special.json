@@ -27,16 +27,6 @@
     "stepIds": ["ask-way"]
   },
   {
-    "anchorId": "plaza",
-    "questId": "es-guadalajara-route",
-    "role": "traveler",
-    "name": "a friendly traveler",
-    "nameKey": "special.guadalajara.fountain.name",
-    "duty": "clue",
-    "stepIds": ["docks"],
-    "gives": "ferry-token"
-  },
-  {
     "anchorId": "harbor",
     "questId": "es-guadalajara-route",
     "role": "boatman",
@@ -44,16 +34,6 @@
     "nameKey": "special.guadalajara.docks.name",
     "duty": "deliver",
     "stepIds": ["docks"]
-  },
-  {
-    "anchorId": "market",
-    "questId": "es-guadalajara-route",
-    "role": "clerk",
-    "name": "the market clerk",
-    "nameKey": "special.guadalajara.market.name",
-    "duty": "clue",
-    "stepIds": ["gate"],
-    "gives": "city-gate-pass"
   },
   {
     "anchorId": "bridge_n",

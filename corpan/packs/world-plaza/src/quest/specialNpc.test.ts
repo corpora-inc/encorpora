@@ -9,8 +9,6 @@ import guadalajaraJson from "../../content/quests/es-guadalajara.json"
 
 const QUEST = Quest.parse(guadalajaraJson)
 const QID = "es-guadalajara-route"
-const FERRY = "ferry-token"
-const GATE = "city-gate-pass"
 
 function fresh() {
   localStorage.clear()
@@ -21,28 +19,12 @@ function fresh() {
   return { engine, inventory, special }
 }
 
-/**
- * Emulate the game.ts wiring: a delivery only happens when (a) the agent at this
- * anchor is the DELIVER special for the current step AND (b) the engine's gate
- * agrees. Returns true iff the step actually advanced.
- */
-function tryDeliverAt(
-  anchorId: string,
-  engine: ReturnType<typeof createQuestEngine>,
-  special: ReturnType<typeof createSpecialNpcResolver>,
-): boolean {
-  const step = engine.currentStep()
-  if (!step) return false
-  if (!special.acceptsDelivery(anchorId, QID, step.id)) return false
-  return engine.advance(step.id)
-}
-
 describe("SpecialNpcResolver — content + lookups", () => {
   beforeEach(() => localStorage.clear())
 
-  it("marks exactly the four route anchors as special; others are generic", () => {
+  it("marks the two route anchors (harbor, bridge) as special; others are generic", () => {
     const { special } = fresh()
-    for (const a of ["plaza", "harbor", "market", "bridge_n"]) {
+    for (const a of ["harbor", "bridge_n"]) {
       expect(special.isSpecial(a, QID)).toBe(true)
     }
     // A bystander anchor / wrong quest is NOT special.
@@ -50,32 +32,29 @@ describe("SpecialNpcResolver — content + lookups", () => {
     expect(special.isSpecial("harbor", "es-cafe-travel")).toBe(false)
   })
 
-  it("forAnchor returns the bound def (name/role/duty); forQuest lists all four", () => {
+  it("forAnchor returns the bound def (name/role/duty); forQuest lists both", () => {
     const { special } = fresh()
     const boatman = special.forAnchor("harbor", QID)
     expect(boatman?.role).toBe("boatman")
     expect(boatman?.name).toBe("the ferry hand")
     expect(boatman?.duty).toBe("deliver")
-    expect(special.forQuest(QID)).toHaveLength(4)
+    expect(special.forQuest(QID)).toHaveLength(2)
     expect(special.forAnchor("nowhere", QID)).toBeNull()
   })
 
-  it("classifies deliver vs clue NPCs per step", () => {
+  it("classifies the deliver NPCs per step (the route has no clue-givers now)", () => {
     const { special } = fresh()
-    // docks step: ferry hand delivers at the harbor, the plaza traveler gives the ferry token.
+    // docks step: ferry hand is the objective NPC at the harbor.
     expect(special.deliverFor(QID, "docks")?.anchorId).toBe("harbor")
-    expect(special.cluesFor(QID, "docks").map((e) => e.anchorId)).toEqual(["plaza"])
-    expect(special.cluesFor(QID, "docks")[0].gives).toBe(FERRY)
-    // gate step: bridge keeper delivers, the market clerk gives the gate pass.
+    expect(special.cluesFor(QID, "docks")).toEqual([])
+    // gate step (traverse): bridge keeper marks the spot.
     expect(special.deliverFor(QID, "gate")?.anchorId).toBe("bridge_n")
-    expect(special.cluesFor(QID, "gate")[0].gives).toBe(GATE)
+    expect(special.cluesFor(QID, "gate")).toEqual([])
   })
 
   it("acceptsDelivery is true ONLY at the deliver special for the step", () => {
     const { special } = fresh()
     expect(special.acceptsDelivery("harbor", QID, "docks")).toBe(true)
-    // The clue-giver (plaza traveler) never accepts a delivery.
-    expect(special.acceptsDelivery("plaza", QID, "docks")).toBe(false)
     // The bridge's deliver-NPC doesn't accept the docks step.
     expect(special.acceptsDelivery("bridge_n", QID, "docks")).toBe(false)
     // A generic anchor never accepts.
@@ -112,51 +91,34 @@ describe("SpecialNpcResolver — content + lookups", () => {
   })
 })
 
-describe("Full clue → item → deliver → advance → complete walk (specials only)", () => {
+describe("Full playable walk (#26): talk-challenge → traverse → complete", () => {
   beforeEach(() => localStorage.clear())
 
-  it("only the ferry hand/bridge keeper advance the route, and only when the item is held", () => {
+  it("docks is a talk-challenge at the ferry hand; gate completes by reaching the bridge", () => {
     const { engine, inventory, special } = fresh()
 
-    // ── Step `docks`, needs-item: no ferry token yet. ────────────────────────
+    // ── Step `docks` (talk): the ferry hand is the objective NPC at the harbor.
     expect(engine.currentStep()?.id).toBe("docks")
-    expect(engine.currentStepState()).toBe("needs-item")
-    // The clue source for this step is the plaza traveler (hands the token).
-    expect(special.cluesFor(QID, "docks")[0].anchorId).toBe("plaza")
+    expect(engine.currentStepState()).toBe("needs-challenge")
+    expect(special.deliverFor(QID, "docks")?.anchorId).toBe("harbor")
 
-    // Talking to the ferry hand now must NOT advance (no token held) — the engine
-    // gate refuses even though the ferry hand IS the deliver special.
-    expect(tryDeliverAt("harbor", engine, special)).toBe(false)
-    expect(engine.currentStep()?.id).toBe("docks")
-
-    // ── Receive the ferry token (the clue-giver / shop / challenge hands it). ─
-    inventory.grant(FERRY)
-    expect(engine.currentStepState()).toBe("ready-to-deliver")
-
-    // Handing it to a NON-deliver NPC (the plaza clue-giver) does nothing.
-    expect(tryDeliverAt("plaza", engine, special)).toBe(false)
-    expect(engine.currentStep()?.id).toBe("docks")
-
-    // ── Deliver to the FERRY HAND at the harbor → step advances + token consumed. ─
-    expect(tryDeliverAt("harbor", engine, special)).toBe(true)
-    expect(inventory.has(FERRY)).toBe(false)
+    // Win the talk challenge (the game marks it beaten, then advances).
+    engine.markStepBeaten("docks")
+    expect(engine.advance("docks")).toBe(true)
     expect(engine.state().stepDone["docks"]).toBe(true)
 
-    // ── Now step `gate`, needs-item: no pass yet. ────────────────────────────
+    // ── Step `gate` (traverse): the bridge keeper marks the spot; reaching the
+    // bridge (the proximity trigger sets the beaten flag) completes it.
     expect(engine.currentStep()?.id).toBe("gate")
-    expect(engine.currentStepState()).toBe("needs-item")
-    expect(special.cluesFor(QID, "gate")[0].anchorId).toBe("market")
+    expect(engine.currentStep()?.kind).toBe("traverse")
+    expect(engine.currentStepState()).toBe("needs-challenge")
+    expect(special.anchorName("bridge_n", QID)).toBe("the bridge keeper")
 
-    // The ferry hand can't advance the gate step (wrong anchor for this step).
-    expect(special.acceptsDelivery("harbor", QID, "gate")).toBe(false)
+    engine.markStepBeaten("gate") // ← the traversal trigger does this on arrival
+    expect(engine.advance("gate")).toBe(true)
 
-    // ── Receive the gate pass, hand it to the BRIDGE KEEPER → quest completes. ───
-    inventory.grant(GATE)
-    expect(engine.currentStepState()).toBe("ready-to-deliver")
-    expect(tryDeliverAt("bridge_n", engine, special)).toBe(true)
-    expect(inventory.has(GATE)).toBe(false)
+    // Quest complete + reward granted once.
     expect(engine.state().complete).toBe(true)
-    // Quest reward (map-scrap + xp) was granted on completion.
     expect(inventory.has("map-scrap")).toBe(true)
     expect(inventory.xp()).toBeGreaterThanOrEqual(QUEST.rewards.xp)
     expect(engine.currentStep()).toBeNull()

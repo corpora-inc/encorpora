@@ -250,6 +250,26 @@ export interface RemotePresence {
   pos: PlayerPosition
 }
 
+/** An axis-aligned world rectangle (XZ), for map water + building footprints. */
+export interface MapRect {
+  x0: number
+  x1: number
+  z0: number
+  z1: number
+}
+
+/** Static world geometry the map renders so it isn't a bare grid (#35): open
+ *  WATER (rivers/coast) + building/blocker footprints. Sourced from the streaming
+ *  CityLayout (the same truth collision + placement read), so the map and the
+ *  world can never drift. Optional — non-city rooms omit it and the map falls back
+ *  to `topology.blockers`. */
+export interface MapGeometry {
+  /** open-water footprints (non-walkable river/coast) in world XZ. */
+  water: MapRect[]
+  /** building / blocker footprints in world XZ. */
+  blockers: MapRect[]
+}
+
 export interface MapView {
   /** the shared static layout (bounds, anchors, blockers). */
   topology: RoomTopology
@@ -259,6 +279,9 @@ export interface MapView {
   getRemotePositions(): RemotePresence[]
   /** quest markers: current objective anchor + unmet source hints (anchor coords). */
   getQuestMarkers(): QuestMarker[]
+  /** OPTIONAL static world geometry (water + building footprints) for the map
+   *  base layer (#35). Absent → the map uses `topology.blockers` only. */
+  getMapGeometry?(): MapGeometry
 }
 
 /* ================================================================== *

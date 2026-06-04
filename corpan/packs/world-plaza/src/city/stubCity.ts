@@ -46,6 +46,8 @@ export function stubCity(): CityLayout {
       props: fill.props ?? [],
       ground: fill.ground ?? [],
       anchors: fill.anchors ?? [],
+      water: fill.water ?? [],
+      walls: fill.walls ?? [],
     }
   }
 
@@ -77,7 +79,7 @@ export function stubCity(): CityLayout {
       buildings: [{ x: -25, z: 30, w: 14, d: 12, kind: "inn", door: { x: -25, z: 36 } }],
       props: [
         { species: "tree", x: -10, z: 25, scale: 1.1, shadow: 0.8 },
-        { species: "tree", x: -16, z: 32, scale: 1, shadow: 0.8 },
+        { species: "tree", x: -16, z: 22, scale: 1, shadow: 0.8 },
       ],
       ground: [{ kind: "disc", surface: "grass", cx: -15, cz: 25, r: 24, metersPerTile: 8 }],
       anchors: [
@@ -89,13 +91,20 @@ export function stubCity(): CityLayout {
     mk(1, 1, "harbor", {
       buildings: [{ x: 30, z: 24, w: 12, d: 10, kind: "workshop" }],
       props: [
-        { species: "barrel", x: 24, z: 40, scale: 1, shadow: 0.6 },
-        { species: "crate", x: 30, z: 42, scale: 1, shadow: 0.6 },
+        // cargo lined up on the LAND side of the bank (bankZ=28), never the river.
+        { species: "barrel", x: 24, z: 24, scale: 1, shadow: 0.6 },
+        { species: "crate", x: 30, z: 26, scale: 1, shadow: 0.6 },
       ],
-      ground: [{ kind: "rect", surface: "water", cx: 30, cz: 52, w: CHUNK, d: 16, metersPerTile: 6 }],
+      ground: [{ kind: "rect", surface: "water", cx: 30, cz: 48, w: CHUNK, d: 8, metersPerTile: 6 }],
+      // river BAND z 44..52 (not water-to-edge); bridge corridor at x=5 open. Far
+      // bank land 52..56, then a sea wall at z=56 (gate at the bridge mouth).
+      water: [{ x0: 0, x1: HALF, z0: 44, z1: 52, bridgeGap: [0, 10] }],
+      walls: [{ x0: 0, x1: HALF, z0: 55, z1: 57, side: "north", gateGap: [0, 10] }],
       anchors: [
-        { id: "harbor", kind: "docks", x: 30, z: 44, facing: Math.PI, label: "Harbor Docks" },
-        { id: "bridge_n", kind: "landmark", x: 5, z: 50, facing: 0, label: "North Bridge" },
+        // docks + bridge approach sit on the walkable bank (bankZ=28), not the river.
+        { id: "harbor", kind: "docks", x: 30, z: 26, facing: Math.PI, label: "Harbor Docks" },
+        { id: "bridge_n", kind: "landmark", x: 5, z: 28, facing: 0, label: "North Bridge" },
+        { id: "bridge_s", kind: "landmark", x: 5, z: 54, facing: Math.PI, label: "Far Bank" },
       ],
     }),
   ]
@@ -111,6 +120,16 @@ export function stubCity(): CityLayout {
     chunks,
     anchors,
     spawn: { x: 0, z: 6 },
+    water: { waterZ: 44, bankZ: 28, farBankZ: 52, farPromZ: 54, bridgeX: 5, bridgeHalfW: 5 },
+    boundary: {
+      inset: 4,
+      thickness: 2,
+      gates: [
+        { side: "south", center: 0, halfWidth: 6 },
+        { side: "west", center: 0, halfWidth: 6 },
+        { side: "east", center: 0, halfWidth: 6 },
+      ],
+    },
     baseSurfaceByZone: BASE_SURFACE_BY_ZONE,
   }
 }

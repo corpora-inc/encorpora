@@ -110,8 +110,14 @@ export function createCameraFade(
   getPlayerPos: () => { x: number; z: number },
   opts: { match?: (mesh: AbstractMesh) => boolean } = {},
 ): CameraFade {
+  // Default eligibility: building BODIES (`wp-building-*`) AND ROOFS (`wp-r-*`).
+  // Roofs were originally excluded (the body box spans the full height, so fading
+  // the body alone usually reveals the player) — but the owner reported being able
+  // to see the ROOF UNDERSIDE when the camera grazes into a roof (#25). The boom-
+  // collision in engine.ts keeps the eye out of geometry; fading roofs too is the
+  // belt-and-braces so a grazing camera never shows an opaque roof interior.
   const match =
-    opts.match ?? ((m: AbstractMesh) => m.name.startsWith("wp-building-"))
+    opts.match ?? ((m: AbstractMesh) => m.name.startsWith("wp-building-") || m.name.startsWith("wp-r-"))
 
   // Eligible meshes + their per-frame target visibility. Resynced only when the
   // scene's building population changes (scene flip), never per frame.

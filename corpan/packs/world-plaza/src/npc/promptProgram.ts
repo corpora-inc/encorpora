@@ -344,10 +344,17 @@ export function composeSystemPrompt(args: ComposeArgs): string {
   const single = learnerPair.target === learnerPair.native
   const targetDirective = targetLanguageDirective(learnerPair.target, single)
 
-  // A terse ENGLISH anti-ramble belt (instruction the model reads ABOUT itself, not
-  // text to echo) — kept short so it doesn't dilute the in-language directive.
+  // #37: LIGHT, human direction (instruction the model reads ABOUT itself, not text
+  // to echo) — kept short. The owner's note: stop OVERSPECIFYING ("repeat after
+  // me…") and let the model be a creative, warm local. So we steer for variety +
+  // coherence + naturalness, NOT a drill: be a real local, say something NEW each
+  // turn, weave useful words in naturally, never literally say "repeat after me" or
+  // run a drill, never ramble or break character.
   const antiRamble =
-    "Do not list or ramble; never explain the game or break character."
+    "You are a real, warm local — chat naturally and stay in character. Say " +
+    "something NEW every turn (never repeat your last line or drill the same phrase; " +
+    'never literally say "repeat after me"). Weave a useful word or two into real ' +
+    "talk. Keep it coherent and don't ramble."
 
   return [
     filled,
@@ -439,23 +446,23 @@ export function questFactsSection(f: QuestFacts): string {
 }
 
 const SCAFFOLD_RULES: Record<string, string> = {
-  beginner: "Beginner: very common words, present tense, lots of repetition.",
-  intermediate: "Intermediate: natural phrasing; one new useful expression per turn.",
-  advanced: "Advanced: natural + idiomatic; correct only meaningful mistakes.",
+  // #37: "lots of repetition" made a 4B model drill the same line every turn. Light
+  // direction instead — keep it easy, but stay fresh.
+  beginner: "Keep it easy: short, very common words and the present tense.",
+  intermediate: "Natural, everyday phrasing; slip in one new useful expression.",
+  advanced: "Natural and idiomatic; only correct a mistake that really matters.",
 }
 
-function describeObjective(quest: Quest): string {
-  const o = quest.objective
-  switch (o.kind) {
-    case "earnBadge":
-      return `help the learner earn the "${o.badge}" badge`
-    case "xpThreshold":
-      return `help the learner reach ${o.xp} XP`
-    case "completeDialogues":
-      return `have ${o.count} useful exchange(s) with the learner`
-    case "completeChallenges":
-      return `lead the learner through ${o.count} "${o.toolId}" challenge(s)`
-  }
+/**
+ * A SOFT, human objective for the persona template. #37: we deliberately do NOT
+ * leak the mechanical challenge `toolId` ("repeat-after") or counts into the
+ * prompt — that made a 4B model parrot "Repeat after me: X" every turn. The model
+ * does only natural conversation; the challenge is launched separately by the
+ * runtime. So every objective collapses to the same warm, human goal: help the
+ * traveler pick up a few useful phrases through real talk.
+ */
+function describeObjective(_quest: Quest): string {
+  return "help the traveler pick up a few useful, real phrases through natural conversation"
 }
 
 /** The tool-call protocol instructions appended to the system prompt. Terse on
@@ -485,27 +492,122 @@ export type SplitResult = {
   toolStarted: boolean
 }
 
+/** The `NpcIntent.kind` discriminants — a bare JSON object carrying one of these
+ *  is a CONTROL payload that must NEVER be shown/spoken (#38). Kept in sync with
+ *  the `NpcIntent` discriminated union in contracts/npc.ts. */
+const CONTROL_KINDS = new Set(["say", "callTool", "reward", "questStep", "end"])
+
+/**
+ * Find the FIRST bare control-JSON object in `text` — a balanced `{...}` that
+ * parses to an object with a control `kind` (the discriminant). Small models
+ * sometimes emit `{"kind":"reward","xp":10}` WITHOUT the `<<tool>…</tool>>`
+ * delimiters; without this it leaks into the bubble (the #38 bug).
+ *
+ * Returns the slice bounds + the raw JSON, or:
+ *  - `partial:true` when an OPEN brace has appeared but the object isn't closed
+ *    yet (streaming) — the caller should HOLD the prose from that brace.
+ *  - null when there is no control object (a normal `{…}` in prose that ISN'T a
+ *    control payload — e.g. an emoji-free aside — is left untouched).
+ */
+function findBareControl(
+  text: string,
+): { start: number; end: number; raw: string } | { partial: true; start: number } | null {
+  let searchFrom = 0
+  for (;;) {
+    const open = text.indexOf("{", searchFrom)
+    if (open === -1) return null
+    // Walk to the matching close brace (string-aware, so braces inside JSON
+    // strings don't fool the depth counter).
+    let depth = 0
+    let inStr = false
+    let esc = false
+    let end = -1
+    for (let i = open; i < text.length; i++) {
+      const c = text[i]
+      if (inStr) {
+        if (esc) esc = false
+        else if (c === "\\") esc = true
+        else if (c === '"') inStr = false
+        continue
+      }
+      if (c === '"') inStr = true
+      else if (c === "{") depth++
+      else if (c === "}") {
+        depth--
+        if (depth === 0) {
+          end = i + 1
+          break
+        }
+      }
+    }
+    if (end === -1) {
+      // Unbalanced so far. If this open brace plausibly begins a control object
+      // (we can already see a `"kind"` key forming), tell the caller it's partial
+      // so streaming holds the prose; otherwise keep scanning past this brace.
+      if (/\{\s*("kind"|"[a-z]+"\s*:)/.test(text.slice(open))) {
+        return { partial: true, start: open }
+      }
+      searchFrom = open + 1
+      continue
+    }
+    const raw = text.slice(open, end)
+    try {
+      const parsed = JSON.parse(raw) as unknown
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        typeof (parsed as { kind?: unknown }).kind === "string" &&
+        CONTROL_KINDS.has((parsed as { kind: string }).kind)
+      ) {
+        return { start: open, end, raw }
+      }
+    } catch {
+      // Not valid JSON (a normal brace in prose) — keep scanning.
+    }
+    searchFrom = end
+  }
+}
+
 /**
  * Split accumulated stream text into spoken prose + (optionally) the raw tool
  * JSON. Safe to call on every token with the running accumulator: once the
  * opener appears we stop revealing prose, and we only surface `rawTool` when the
  * matching closer has also arrived. A bare opener with no closer (e.g. the model
  * was cut off) yields `toolStarted:true` and no `rawTool`.
+ *
+ * #38: ALSO catches a BARE control-JSON object (no `<<tool>>` delimiters) — a
+ * small model emitting `{"kind":"reward",…}` as plain text. Such an object is
+ * extracted as `rawTool` (parsed-or-dropped downstream) and STRIPPED from the
+ * prose, so control JSON is never shown or spoken.
  */
 export function splitToolBlock(accumulated: string): SplitResult {
   const open = accumulated.indexOf(TOOL_OPEN)
-  if (open === -1) {
+  if (open !== -1) {
+    const prose = accumulated.slice(0, open)
+    const afterOpen = accumulated.slice(open + TOOL_OPEN.length)
+    const close = afterOpen.indexOf(TOOL_CLOSE)
+    if (close === -1) {
+      // Opener present, closer not yet (or never). Hold the prose, no tool yet.
+      return { prose, toolStarted: true }
+    }
+    const rawTool = afterOpen.slice(0, close).trim()
+    return { prose, rawTool, toolStarted: true }
+  }
+
+  // No delimiter block — check for a BARE control-JSON object (#38).
+  const bare = findBareControl(accumulated)
+  if (!bare) {
     return { prose: accumulated, toolStarted: false }
   }
-  const prose = accumulated.slice(0, open)
-  const afterOpen = accumulated.slice(open + TOOL_OPEN.length)
-  const close = afterOpen.indexOf(TOOL_CLOSE)
-  if (close === -1) {
-    // Opener present, closer not yet (or never). Hold the prose, no tool yet.
-    return { prose, toolStarted: true }
+  if ("partial" in bare) {
+    // A control object is forming but not closed yet → hold the prose before it
+    // (same as a bare `<<tool>` opener) so we never reveal a partial JSON object.
+    return { prose: accumulated.slice(0, bare.start), toolStarted: true }
   }
-  const rawTool = afterOpen.slice(0, close).trim()
-  return { prose, rawTool, toolStarted: true }
+  // Complete bare control object: strip it from prose, surface it as the tool.
+  const before = accumulated.slice(0, bare.start)
+  const after = accumulated.slice(bare.end)
+  return { prose: (before + after), rawTool: bare.raw.trim(), toolStarted: true }
 }
 
 /**

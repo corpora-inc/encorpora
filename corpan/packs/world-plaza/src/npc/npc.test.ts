@@ -103,8 +103,16 @@ describe("system prompt composition", () => {
     expect(directive).toContain("Habla SOLO en español")
     // The English "reply in {target} ONLY" rail is GONE (it primed English output).
     expect(prompt).not.toContain("Reply in Spanish ONLY")
-    // The terse English anti-ramble belt remains (instruction about self, not echoed).
-    expect(prompt).toContain("Do not list or ramble")
+    // #37: light, anti-drill direction (be a real local, say something NEW, no
+    // "repeat after me", don't ramble) — NOT a rigid drill instruction.
+    expect(prompt).toContain("real, warm local")
+    expect(prompt).toContain("something NEW every turn")
+    expect(prompt).toContain("don't ramble")
+    // #37: the OBJECTIVE the model reads is the warm, human goal — it must NOT leak
+    // the mechanical challenge toolId or a count (the source of the robotic loop).
+    expect(prompt).toContain("help the traveler pick up a few useful, real phrases")
+    expect(prompt).not.toContain('"repeat-after" challenge')
+    expect(prompt).not.toContain("lots of repetition")
     // A generic NPC injects NO quest-facts block.
     expect(prompt).not.toContain("QUEST CONTEXT")
   })
@@ -311,7 +319,7 @@ describe("sticky per-NPC voice (CHANGE 2)", () => {
     expect(pickVoiceId("npc", [])).toBeNull()
   })
 
-  it("resolver: PERSISTS the choice + never rotates per NPC across calls", async () => {
+  it("#21: STICKY within a session, SESSION-ONLY (never persisted to localStorage)", async () => {
     // Minimal localStorage shim (vitest env is node).
     const backing = new Map<string, string>()
     ;(globalThis as { localStorage?: unknown }).localStorage = {
@@ -332,15 +340,45 @@ describe("sticky per-NPC voice (CHANGE 2)", () => {
     const r = createNpcVoiceResolver(host as never)
     const first = await r.voiceIdFor("crowd:boatman:1", "es")
     expect(first).not.toBeNull()
-    // Same NPC, again → identical (sticky, no rotation).
+    // Same NPC, same resolver → identical (sticky WITHIN the session, no rotation).
     expect(await r.voiceIdFor("crowd:boatman:1", "es")).toBe(first)
-    // Persisted under the v2 key, scoped to the target language ("npcId|target").
-    expect(backing.has("wp:npc:voice:v2")).toBe(true)
-    expect(JSON.parse(backing.get("wp:npc:voice:v2")!)).toHaveProperty("crowd:boatman:1|es")
-    // A FRESH resolver reuses the persisted choice (survives reload).
-    const r2 = createNpcVoiceResolver(host as never)
-    expect(await r2.voiceIdFor("crowd:boatman:1", "es")).toBe(first)
+    // #21: NOTHING is persisted — no voice-map key is written to localStorage.
+    expect(backing.has("wp:npc:voice:v2")).toBe(false)
+    expect(backing.has("wp:npc:voice:v1")).toBe(false)
     expect(r.canPin()).toBe(true)
+    delete (globalThis as { localStorage?: unknown }).localStorage
+  })
+
+  it("#21: a fresh resolver re-resolves from scratch (NOT loaded from storage) + clears legacy pins on load", async () => {
+    const backing = new Map<string, string>()
+    ;(globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => backing.get(k) ?? null,
+      setItem: (k: string, v: string) => void backing.set(k, v),
+      removeItem: (k: string) => void backing.delete(k),
+      clear: () => backing.clear(),
+      key: () => null,
+      length: 0,
+    }
+    // Seed a STALE persisted pin from an older (persisting) build — boatman|en
+    // wrongly pinned to a Spanish voice. A fresh resolver must IGNORE it (no read)
+    // AND remove the legacy key on construction.
+    backing.set(
+      "wp:npc:voice:v2",
+      JSON.stringify({ "crowd:boatman:1|en": { id: "es-ES-stale", language: "es-ES" } }),
+    )
+    backing.set("wp:npc:voice:v1", JSON.stringify({ "crowd:boatman:1": "es-ES-older" }))
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async () => [{ id: "en-US-1", language: "en-US", gender: "male" as const }],
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // Legacy keys cleared on construction (voices are session-only now).
+    expect(backing.has("wp:npc:voice:v2")).toBe(false)
+    expect(backing.has("wp:npc:voice:v1")).toBe(false)
+    // The stale es pin is NOT reused — a real EN voice is freshly resolved.
+    expect(await r.voiceIdFor("crowd:boatman:1", "en")).toBe("en-US-1")
     delete (globalThis as { localStorage?: unknown }).localStorage
   })
 
@@ -617,5 +655,61 @@ describe("tool-block streaming split + parse", () => {
 
   it("schema-invalid block → null", () => {
     expect(parseToolBlock('{"kind":"explode"}')).toBeNull()
+  })
+
+  // ---- #38: bare control JSON (no <<tool>> delimiters) must NEVER leak ---------
+  it("#38: a BARE control object (no delimiters) is stripped from prose + parsed as intent", () => {
+    // The exact screenshot leak: a reward object emitted as plain text.
+    const full = '¡Muy bien! Lo dijiste perfecto.\n{ "kind": "reward", "xp": 10 }'
+    const { prose, intent } = extractProseAndIntent(full)
+    // The JSON is GONE from the spoken/displayed prose.
+    expect(prose).toBe("¡Muy bien! Lo dijiste perfecto.")
+    expect(prose).not.toContain("kind")
+    expect(prose).not.toContain("{")
+    // …and it parsed as the reward intent.
+    expect(intent?.kind).toBe("reward")
+    if (intent?.kind === "reward") expect(intent.xp).toBe(10)
+  })
+
+  it("#38: a bare control object mid-line is removed; the surrounding prose survives", () => {
+    const full = 'Toma esto {"kind":"questStep","stepId":"docks"} y sigue.'
+    const { prose, intent } = extractProseAndIntent(full)
+    expect(prose).not.toContain("{")
+    expect(prose).not.toContain("questStep")
+    expect(prose).toContain("Toma esto")
+    expect(prose).toContain("y sigue")
+    expect(intent?.kind).toBe("questStep")
+  })
+
+  it("#38: streaming holds prose once a bare control object STARTS forming", () => {
+    const partial = 'Bien hecho. {"kind":"reward","xp":1'
+    const r = splitToolBlock(partial)
+    expect(r.prose).toBe("Bien hecho. ")
+    expect(r.toolStarted).toBe(true)
+    expect(r.prose).not.toContain("kind")
+    expect(r.rawTool).toBeUndefined()
+  })
+
+  it("#38: a bare callTool object (no delimiters) is still routed as a tool call", () => {
+    const full = 'Vamos a practicar.\n{"kind":"callTool","tool":"repeat-after","spec":{}}'
+    const { prose, intent } = extractProseAndIntent(full)
+    expect(prose).toBe("Vamos a practicar.")
+    expect(intent?.kind).toBe("callTool")
+  })
+
+  it("#38: a NON-control JSON-looking brace in prose is LEFT ALONE (no false positive)", () => {
+    // A normal aside with braces that is NOT a control payload must stay visible.
+    const full = "El horario es {de 9 a 5}. ¿Te ayudo?"
+    const r = splitToolBlock(full)
+    expect(r.prose).toBe("El horario es {de 9 a 5}. ¿Te ayudo?")
+    expect(r.toolStarted).toBe(false)
+    expect(r.rawTool).toBeUndefined()
+  })
+
+  it("#38: a JSON object WITHOUT a control kind is not treated as control", () => {
+    const full = 'Mira: {"precio": 10, "moneda": "EUR"} es el costo.'
+    const r = splitToolBlock(full)
+    expect(r.prose).toContain('{"precio": 10, "moneda": "EUR"}')
+    expect(r.rawTool).toBeUndefined()
   })
 })

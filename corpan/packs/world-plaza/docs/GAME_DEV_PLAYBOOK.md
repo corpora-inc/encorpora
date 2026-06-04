@@ -288,6 +288,27 @@ it didn't make. **Rule: state changes are code's job; the model only narrates.**
 
 ---
 
+## §6.6 Placement physics: non-walkable zones must be IN the collision field
+
+Spawners (the crowd, ambient population, prop scatter) reject any sample where
+`field.blocked(x,z,r)` is true — that's the only gate. So "keep people/props off
+the water / the rooftops / the rail" is NOT a spawner change; it's **getting that
+zone INTO the obstacle field**. When the owner reports NPCs standing in the river
+or bollards floating on it, the bug is almost always that the zone was never
+modelled as an obstacle, not that the spawners are broken.
+
+In World Plaza the river was painted as blue ground but had no collider. Fix
+(`places`, #30): water became first-class layout data (`CityLayout.water` +
+per-chunk `CityChunk.water` rects), and `city/collision.ts :: chunkObstacles`
+emits a BOX obstacle per water rect — splitting it L/R around the bridge gap so
+the one crossing stays walkable. A box obstacle's `resolve` slides bodies along
+its OUTSIDE face, so the same collider that rejects spawns also walls the player
+at the shoreline. Prove it headlessly: union every chunk's obstacles into a field
+and assert a probe grid over the zone reads `blocked` (and the intended gap does
+not). See `src/city/waterPlacement.test.ts`. Pair it with generation-time
+defense-in-depth (drop any prop that lands past the boundary) so you never even
+seed a floating object.
+
 ## §7. Storage
 
 All packs run in the host WebView's single origin and **share one ~5 MB localStorage

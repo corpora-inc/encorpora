@@ -230,20 +230,30 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
    */
   function isStepSatisfied(stepId: string): boolean {
     if (stepDone[stepId]) return true
+    const step = stepById(stepId)
+    // TRAVERSE / FIND steps (#26): completion = REACHING the anchor (the proximity
+    // trigger sets the beaten flag), NOT an inventory rule. This makes "cross the
+    // bridge / take the ferry / find the pass" always completable by playing, and
+    // takes precedence over any legacy inventory rule on the same step.
+    if (step?.kind === "traverse" || step?.kind === "find") return challengeBeaten.has(stepId)
     const required = requiredForStep(quest.id, stepId)
     if (required.length > 0) return hasNeeded(inventory, quest.id, stepId) // inventory authoritative
-    const step = stepById(stepId)
     if (step?.toolId) return challengeBeaten.has(stepId) // challenge-gated
     return true // talk-only → satisfiable by engagement
   }
 
   function stepState(stepId: string): StepState {
     if (stepDone[stepId]) return "done"
+    const step = stepById(stepId)
+    // TRAVERSE / FIND: "needs-challenge" (read by the tracker as "go here / do
+    // this") until the proximity trigger marks it reached. Inventory is ignored.
+    if (step?.kind === "traverse" || step?.kind === "find") {
+      return challengeBeaten.has(stepId) ? "ready-to-deliver" : "needs-challenge"
+    }
     const required = requiredForStep(quest.id, stepId)
     if (required.length > 0) {
       return missingFor(inventory, quest.id, stepId).length > 0 ? "needs-item" : "ready-to-deliver"
     }
-    const step = stepById(stepId)
     if (step?.toolId && !challengeBeaten.has(stepId)) return "needs-challenge"
     return "ready-to-deliver"
   }

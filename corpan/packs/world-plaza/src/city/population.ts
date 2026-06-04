@@ -151,6 +151,12 @@ const VIEW_CONE_HALF = 1.22
 // a hard wall (these movers aren't in the static obstacle field). Mirrors
 // crowd.ts BODY_GAP so ambient + talkable extras feel the same to walk among.
 const PLAYER_BODY_GAP = 1.0
+// #24 — DON'T converge on the player. Strollers wander to targets near their OWN
+// position (local meander), and any target/spawn within this radius of the player
+// is rejected, so the ambient crowd MILLS dispersed and never paths toward you.
+const PLAYER_KEEPOUT = 7
+// How far a stroller meanders per wander leg (local — NOT recentred on the player).
+const WANDER_LEG = 9
 
 export function createPopulation(scene: BabylonScene, opts: PopulationOptions): Population {
   const theme = opts.theme ?? ANTIGUA_1770
@@ -272,6 +278,30 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
     return { x: clampX(px + rand(-far, far)), z: clampZ(pz + rand(-far, far)) }
   }
 
+  /**
+   * #24 — a LOCAL meander target from the stroller's OWN position (sx,sz), kept
+   * clear of the player's keepout so the ambient crowd disperses and never paths
+   * toward you. Unlike `pickNear`(player-centred), this picks a nearby point around
+   * the FIGURE, so strollers drift around their own neighbourhood, not your feet.
+   */
+  const pickWander = (sx: number, sz: number, player: { x: number; z: number }): { x: number; z: number } => {
+    for (let i = 0; i < 12; i++) {
+      const a = Math.random() * Math.PI * 2
+      const r = WANDER_LEG * (0.35 + Math.random() * 0.65)
+      const x = clampX(sx + Math.cos(a) * r)
+      const z = clampZ(sz + Math.sin(a) * r)
+      if (field.blocked(x, z, AGENT_R)) continue
+      // reject targets that would walk the stroller INTO the player's space.
+      if (Math.hypot(x - player.x, z - player.z) < PLAYER_KEEPOUT) continue
+      return { x, z }
+    }
+    // fallback: a small step directly AWAY from the player (never toward).
+    const ax = sx - player.x
+    const az = sz - player.z
+    const al = Math.hypot(ax, az) || 1
+    return { x: clampX(sx + (ax / al) * 4), z: clampZ(sz + (az / al) * 4) }
+  }
+
   // ── stroller pool — start ASLEEP; first update() wakes them near the player ─
   // Each slot has a STABLE npc id (so a recycled figure stays the same person +
   // routes dialogue consistently) and a focus handle game.ts merges into npcFocus.
@@ -318,12 +348,16 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
 
   const wake = (s: Stroller, px: number, pz: number) => {
     // spawn OUTSIDE the forward view cone (rear/side arc) so it never pops in
-    // front of the player (§5); fade it in regardless as a belt-and-braces.
+    // front of the player (§5); fade it in regardless as a belt-and-braces. The
+    // wake RING (≥ wakeR*0.4) already keeps spawns off your feet — density follows
+    // you without crowding you.
     const fwd = opts.getForward?.()
-    const p = pickNear(px, pz, wakeR * 0.4, wakeR, fwd)
+    const p = pickNear(px, pz, Math.max(wakeR * 0.4, PLAYER_KEEPOUT), wakeR, fwd)
     s.x = p.x
     s.z = p.z
-    const t = pickNear(px, pz, 2, wakeR)
+    // #24: first wander target is a LOCAL meander from the spawn point, kept clear
+    // of the player — strollers disperse around the neighbourhood, not toward you.
+    const t = pickWander(s.x, s.z, { x: px, z: pz })
     s.tx = t.x
     s.tz = t.z
     s.idleT = Math.random() * 1.5
@@ -409,7 +443,7 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
       let dz = s.tz - s.z
       const dist = Math.hypot(dx, dz)
       if (dist < ARRIVE) {
-        const t = pickNear(player.x, player.z, 3, wakeR)
+        const t = pickWander(s.x, s.z, player) // local meander, away from the player
         s.tx = t.x
         s.tz = t.z
         s.idleT = 0.6 + Math.random() * 1.8
@@ -425,9 +459,9 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
       const r = field.resolve(s.x, s.z, nx, nz, AGENT_R)
       nx = r.x
       nz = r.z
-      // wedged → re-target next frame.
+      // wedged → re-target next frame (local meander, away from the player).
       if (Math.abs(nx - s.x) < 1e-4 && Math.abs(nz - s.z) < 1e-4) {
-        const t = pickNear(player.x, player.z, 3, wakeR)
+        const t = pickWander(s.x, s.z, player)
         s.tx = t.x
         s.tz = t.z
       }

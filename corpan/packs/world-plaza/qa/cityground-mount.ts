@@ -14,6 +14,8 @@ import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera"
 import { createWorldEngine } from "../src/world/engine"
 import { applyAtmosphere } from "../src/world/atmosphere"
 import { generateCity, mountCity } from "../src/city"
+import { chunkObstacles } from "../src/city/collision"
+import { createObstacleField } from "../src/world/collision"
 
 // ?noatmo=1 skips the skybox+fog (used while isolating the gray-ground cause).
 const qs = new URLSearchParams(location.search)
@@ -38,8 +40,9 @@ const scene = world.scene
 if (qs.get("noatmo") !== "1") applyAtmosphere(scene, worldScene.palette, world.onFrame)
 
 let camPos = new Vector3(0, 1.5, 0)
+const layout = generateCity()
 const city = mountCity(scene, {
-  layout: generateCity(),
+  layout,
   getCameraPos: () => camPos,
   palette: worldScene.palette as Record<string, string> | undefined,
 })
@@ -75,6 +78,41 @@ interface Hooks {
   warmedMs: () => number
   groundMeshCount: () => number
   diag: () => unknown
+  /** the river/water facts (near/far banks, river band, bridge corridor). */
+  water: () => {
+    waterZ: number
+    bankZ: number
+    farBankZ: number
+    farPromZ: number
+    bridgeX: number
+    bridgeHalfW: number
+  }
+  /**
+   * Boundary check (#32): probe the perimeter ramparts (off-gate) + the gates
+   * against the live whole-city field. Pass = every off-gate rampart point reads
+   * blocked (player meets a wall, not fog) and every gate is walkable.
+   */
+  boundaryPlacement: () => {
+    wallProbes: number
+    wallBlocked: number
+    gates: number
+    gatesOpen: number
+    farBankReachable: boolean
+  }
+  /**
+   * Placement check (#30): probe a grid over the OPEN water (off-bridge) against
+   * the live streaming collision field and report how many read blocked. A pass
+   * means a spawner would reject every water point → nobody/nothing on the river.
+   * `near`/`far` describe the riverwalk-band probe (must be mostly walkable).
+   */
+  waterPlacement: () => {
+    waterProbes: number
+    waterBlocked: number
+    bridgeOpen: number
+    bridgeProbes: number
+    bankProbes: number
+    bankWalkable: number
+  }
 }
 ;(window as unknown as { __wpGround: Hooks }).__wpGround = {
   setView: (alpha, beta, radius, tx, tz) => {
@@ -149,5 +187,88 @@ interface Hooks {
       hasUV: m0?.isVerticesDataPresent?.("uv"),
       albedoColor: mat?.albedoColor,
     }
+  },
+  water: () => layout.water,
+  waterPlacement: () => {
+    // The placement truth a spawner walks against: the WHOLE-city obstacle field
+    // (every chunk's obstacles, incl. water boxes). Spawners reject `blocked`
+    // samples, so proving the water is blocked proves nobody/nothing lands on it.
+    const obstacles = layout.chunks.flatMap((c) => chunkObstacles(c))
+    const field = createObstacleField(obstacles, { cell: 8 })
+    const R = 0.45 // population/crowd AGENT_R
+    const { waterZ, bankZ, bridgeX } = layout.water
+    let waterProbes = 0
+    let waterBlocked = 0
+    // probe inside each authored water rect, off the bridge corridor.
+    for (const ch of layout.chunks) {
+      for (const w of ch.water) {
+        const x0 = Math.min(w.x0, w.x1)
+        const x1 = Math.max(w.x0, w.x1)
+        const z0 = Math.min(w.z0, w.z1)
+        const z1 = Math.max(w.z0, w.z1)
+        for (let x = x0 + 3; x <= x1 - 3; x += 6) {
+          if (Math.abs(x - bridgeX) < 14) continue
+          for (let z = z0 + 2; z <= z1 - 2; z += 6) {
+            waterProbes++
+            if (field.blocked(x, z, R)) waterBlocked++
+          }
+        }
+      }
+    }
+    // bridge corridor must stay OPEN.
+    let bridgeProbes = 0
+    let bridgeOpen = 0
+    for (let z = waterZ + 2; z <= layout.bounds.maxZ - 2; z += 4) {
+      bridgeProbes++
+      if (!field.blocked(bridgeX, z, R)) bridgeOpen++
+    }
+    // riverwalk band must stay mostly WALKABLE.
+    let bankProbes = 0
+    let bankWalkable = 0
+    const bz = (bankZ + waterZ) / 2
+    for (let x = layout.bounds.minX + 8; x <= layout.bounds.maxX - 8; x += 8) {
+      bankProbes++
+      if (!field.blocked(x, bz, R)) bankWalkable++
+    }
+    return { waterProbes, waterBlocked, bridgeOpen, bridgeProbes, bankProbes, bankWalkable }
+  },
+  boundaryPlacement: () => {
+    const obstacles = layout.chunks.flatMap((c) => chunkObstacles(c))
+    const field = createObstacleField(obstacles, { cell: 8 })
+    const R = 0.45
+    let wallProbes = 0
+    let wallBlocked = 0
+    let gates = 0
+    let gatesOpen = 0
+    for (const ch of layout.chunks) {
+      for (const w of ch.walls) {
+        const longX = w.side === "north" || w.side === "south"
+        const x0 = Math.min(w.x0, w.x1)
+        const x1 = Math.max(w.x0, w.x1)
+        const z0 = Math.min(w.z0, w.z1)
+        const z1 = Math.max(w.z0, w.z1)
+        const cx = (x0 + x1) / 2
+        const cz = (z0 + z1) / 2
+        const lo = longX ? x0 : z0
+        const hi = longX ? x1 : z1
+        for (let a = lo + 1; a <= hi - 1; a += 4) {
+          if (w.gateGap && a > w.gateGap[0] - 1 && a < w.gateGap[1] + 1) continue
+          wallProbes++
+          const px = longX ? a : cx
+          const pz = longX ? cz : a
+          if (field.blocked(px, pz, R)) wallBlocked++
+        }
+        if (w.gateGap) {
+          gates++
+          const mid = (w.gateGap[0] + w.gateGap[1]) / 2
+          const px = longX ? mid : cx
+          const pz = longX ? cz : mid
+          if (!field.blocked(px, pz, R)) gatesOpen++
+        }
+      }
+    }
+    // the bridge ARRIVES on walkable far-bank land (not the edge).
+    const farBankReachable = !field.blocked(layout.water.bridgeX, layout.water.farBankZ + 2, R)
+    return { wallProbes, wallBlocked, gates, gatesOpen, farBankReachable }
   },
 }

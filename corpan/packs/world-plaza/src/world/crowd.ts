@@ -213,7 +213,9 @@ const ACK_DURATION = 0.5 // seconds of the in-stride head-turn
 const SEEKER_STOP = 2.6 // a quest-seeker halts this close to the player
 // When picking a wander target, keep it this far from the player so the crowd
 // never AIMS at you (a passer-by can still drift near, but no one targets you).
-const PLAYER_AVOID = 5.0
+// #24: widened 5 → 8 (matches the ambient population keepout) so the talkable
+// crowd also disperses instead of milling on top of you.
+const PLAYER_AVOID = 8.0
 
 /**
  * Hand-authored persona colour for the special quest roles. The crowd's

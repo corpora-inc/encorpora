@@ -130,7 +130,7 @@ export function mountMinimap(parent: HTMLElement, opts: MinimapOptions): Minimap
       }
       const proj = centeredProjection(pp.x, pp.z, MINIMAP_HALF_SPAN, cssW, cssH, 8)
 
-      drawBase(ctx, opts.view.topology, proj, cssW, cssH, false)
+      drawBase(ctx, opts.view.topology, proj, cssW, cssH, false, opts.view.getMapGeometry?.())
       drawPois(ctx, opts.view.topology, proj, false)
 
       // Advance the pulse phase on a real clock (frame-rate independent).

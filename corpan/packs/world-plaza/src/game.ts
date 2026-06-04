@@ -1,6 +1,6 @@
 import { RoomTopology, Scene as WorldSceneSchema, NpcRole, type LearnerPair, type ChallengeContext, type ChallengeToolId, type Quest as QuestT } from "@world-plaza/contracts"
 import sceneJson from "../content/scenes/corpan-city.json"
-import { generateCity, mountCity } from "./city"
+import { generateCity, mountCity, cityMapGeometry } from "./city"
 import rolesJson from "../content/npc/roles.json"
 import specialJson from "../content/npc/special.json"
 import { createWorldEngine } from "./world/engine"
@@ -17,7 +17,7 @@ import { createNpcRuntime } from "./npc/npcRuntime"
 import { createMockHost } from "./npc/mockHost"
 import { runOnboarding, defaultIdentity, type OnboardingResult } from "./onboarding/onboarding"
 import type { HostApi as NpcHostApi } from "./npc/hostTypes"
-import { runChallenge } from "./challenges/registry"
+import { runChallenge, isCrossLanguageTool } from "./challenges/registry"
 import {
   createChallengeHost,
   mockChallengeHost,
@@ -70,8 +70,10 @@ import { createPortalAffordance } from "./world/portalAffordance"
 import { createRoadArrow } from "./wayfinding/roadArrow"
 import { createObjectiveBeacon } from "./wayfinding/objectiveBeacon"
 import { locateObjective } from "./quest/objectiveLocator"
+import { createTraversalTrigger } from "./quest/traversalTrigger"
 import { buildFountain } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
+import { buildRiverwalk } from "./world/riverwalk"
 import { createPopulation } from "./city/population"
 import { prefersReducedMotion } from "./world/reducedMotion"
 
@@ -440,17 +442,44 @@ function buildWorld(
     reducedMotion,
   })
   fountain.root.position.set(fountainAnchor?.x ?? 0, 0, fountainAnchor?.z ?? 0)
-  // The harbour water sheen along the +Z waterfront (centred on the harbor anchor).
+  // ── Riverwalk waterfront dressing (env-art, task #31): the premium stone
+  // BALUSTRADE + harbor LAMP POSTS + mooring BOLLARDS + a richer rippled WATER
+  // sheet (depth gradient + shoreline foam) along the +Z water edge, with a clean
+  // gap at the bridge. Reads the canonical water edge from `layout.water`
+  // (CityWater: waterZ/bankZ/bridgeX/bridgeHalfW) with a bridge_n-anchor fallback.
+  // Its water sheet SUPERSEDES the old flat harborWater sheen, so harborWater is
+  // only built when the riverwalk has no edge to key off (older layouts).
   const harborAnchor = city.getAnchor("harbor")
-  const harborWater = harborAnchor
-    ? buildHarborWater(world.scene, {
-        harbor: { x: harborAnchor.x, z: harborAnchor.z },
-        bounds: layout.bounds,
-        palette: scene.palette,
-        reducedMotion,
-      })
-    : null
-  if (!harborAnchor) console.warn("[world-plaza] no `harbor` anchor — harbor water disabled")
+  const bridgeAnchor = city.getAnchor("bridge_n")
+  const cityWater = (layout as unknown as {
+    water?: { waterZ: number; bridgeX: number; bridgeHalfW: number }
+  }).water
+  const waterEdgeZ = cityWater?.waterZ ?? bridgeAnchor?.z ?? null
+  const riverwalk =
+    waterEdgeZ != null
+      ? buildRiverwalk(world.scene, {
+          edgeZ: waterEdgeZ,
+          bounds: layout.bounds,
+          gap: {
+            x: cityWater?.bridgeX ?? bridgeAnchor?.x ?? 0,
+            halfWidth: cityWater?.bridgeHalfW ?? 6,
+          },
+          palette: scene.palette,
+          reducedMotion,
+        })
+      : null
+  if (!riverwalk) console.warn("[world-plaza] no water edge (layout.water / bridge_n) — riverwalk disabled")
+  // Legacy flat harbour sheen — only when the riverwalk (which owns the water
+  // sheet) is absent, so we never stack two water planes on the waterfront.
+  const harborWater =
+    !riverwalk && harborAnchor
+      ? buildHarborWater(world.scene, {
+          harbor: { x: harborAnchor.x, z: harborAnchor.z },
+          bounds: layout.bounds,
+          palette: scene.palette,
+          reducedMotion,
+        })
+      : null
   // Proximity-streamed ambient strollers + stall-keepers (density follows you).
   const population = createPopulation(world.scene, {
     layout,
@@ -580,6 +609,9 @@ function buildWorld(
     getPlayerPos: () => ({ ...player.getPos(), facing: player.getFacing() }),
     getRemotePositions: () => [],
     getQuestMarkers: () => questEngine.getQuestMarkers(),
+    // #35: water + building footprints for the map, derived from the SAME CityLayout
+    // collision/placement reads, so the map can never drift from the world.
+    getMapGeometry: () => cityMapGeometry(layout),
   }
   const mapOpts = { view: mapView, accent: scene.palette?.accent, lang: uiLocale }
 
@@ -680,11 +712,18 @@ function buildWorld(
         // vocab (entryIds) so "help me with this" teaches the exact words the quest
         // is about — the data binding that makes challenge↔quest feel cohesive.
         const stepContent = resolveStepContent(quest, questEngine.currentStep())
+        // CROSS-LANGUAGE games (translate / tap-the-meaning / match-pairs) are
+        // INHERENTLY two-language: they must ALWAYS keep the native side, even
+        // under immersion — collapsing both halves makes a tautology with no
+        // answer (#27: "where is the Arabic I'm matching TO?"). Immersion still
+        // collapses the native gloss for MONOLINGUAL drills. (A single-language
+        // Track — native === target — has no second language, so even these fall
+        // back to the resolver; the tool whitelist shouldn't offer them there.)
+        const crossLang =
+          isCrossLanguageTool(intent.tool) && learnerPair.native !== learnerPair.target
         const ctx: ChallengeContext = {
           language: learnerPair.target,
-          // Immersion drops the native gloss → challenges collapse to target-only
-          // (the proven single-language path); `off` keeps the bilingual native.
-          nativeLanguage: resolver.challengeNativeLanguage(),
+          nativeLanguage: crossLang ? learnerPair.native : resolver.challengeNativeLanguage(),
           mode: "solo",
           domain: stepContent.domain,
           entryIds: stepContent.entryIds.length ? stepContent.entryIds : undefined,
@@ -1125,6 +1164,60 @@ function buildWorld(
     accent: scene.palette?.accent,
   })
 
+  // TRAVERSE / FIND steps (#26): "Cross the river bridge" had no completable
+  // action, so the player walked to the bridge, talked, and NOTHING happened.
+  // This watches the active step: when it's a traverse/find step and the player
+  // reaches its anchor (the beacon/arrow already point there), it deterministically
+  // marks the step beaten + advances — reaching the spot IS the action. Talk steps
+  // are ignored (they advance on a won challenge).
+  const traversalTrigger = createTraversalTrigger({
+    getPlayer: () => player.getPos(),
+    currentStep: () => questEngine.currentStep(),
+    anchorPoint: (id) => {
+      const a = city.getAnchor(id)
+      return a ? { x: a.x, z: a.z } : null
+    },
+    onReach: (stepId) => {
+      const step = questEngine.currentStep()
+      if (!step || step.id !== stepId) return
+      questEngine.markStepBeaten(stepId)
+      if (questEngine.advance(stepId)) toast(`✓ ${step.label}`)
+    },
+  })
+
+  // Dev/QA quest hook (standalone only): lets a Playwright walkthrough drive the
+  // REAL game deterministically — read the active step, teleport the player to the
+  // current objective's anchor (so a traverse step's proximity trigger fires), and
+  // mark the active talk step beaten + advance (emulating a won challenge). This is
+  // how #26 is PROVEN in the real flow, not just unit tests. No-op in the host.
+  if (typeof window !== "undefined") {
+    ;(window as unknown as { __wpQuest?: unknown }).__wpQuest = {
+      state: () => {
+        const s = questEngine.currentStep()
+        return {
+          questId: questEngine.quest().id,
+          complete: questEngine.state().complete,
+          step: s ? { id: s.id, kind: s.kind ?? "talk", anchorId: s.anchorId, label: s.label } : null,
+          stepState: questEngine.currentStepState(),
+        }
+      },
+      /** Teleport the player to the current step's anchor (drives traverse steps). */
+      gotoObjective: () => {
+        const s = questEngine.currentStep()
+        const a = s?.anchorId ? city.getAnchor(s.anchorId) : null
+        if (a) player.respawnAt(a.x, a.z)
+        return !!a
+      },
+      /** Emulate winning the active talk step's challenge (beaten → advance). */
+      winCurrent: () => {
+        const s = questEngine.currentStep()
+        if (!s) return false
+        questEngine.markStepBeaten(s.id)
+        return questEngine.advance(s.id)
+      },
+    }
+  }
+
   // v1 is ONE world — Corpan City. The dev-only Antigua⇄Tokyo geometry flip is
   // retired here (the per-player Scene-divergence machinery stays in the contracts,
   // dormant, for v2). Atmosphere/vista are built once from the Corpan City scene.
@@ -1166,9 +1259,11 @@ function buildWorld(
     // World detail (C) + wayfinding (G) per-frame ticks (all cheap, RM-gated).
     fountain.update(dt)
     harborWater?.update(dt)
+    riverwalk?.update(dt)
     population.update(dt, p)
     roadArrow.update(dt)
     objectiveBeacon.update(dt)
+    traversalTrigger.update(dt) // walk-to-complete for traverse/find steps (#26)
   })
 
   function teardown() {
@@ -1199,6 +1294,7 @@ function buildWorld(
     objectiveBeacon.dispose()
     population.dispose()
     harborWater?.dispose()
+    riverwalk?.dispose()
     fountain.dispose()
     cameraFade.dispose()
     player.dispose()

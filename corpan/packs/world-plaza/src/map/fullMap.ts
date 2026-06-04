@@ -25,12 +25,15 @@ import type { Anchor } from "@world-plaza/contracts"
 import {
   ensureMapStyles,
   fitProjection,
+  centeredProjection,
+  contentExtent,
   prepCanvas,
   createMapT,
   categoryOf,
   markerStyleForCat,
   MARKER_STYLES,
   type MapT,
+  type Projection,
   type PoiCategory,
   type MarkerStyle,
 } from "./mapCore"
@@ -133,6 +136,151 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
       return named !== prettyAnchor(p.a.id)
     })
 
+  // ── ZOOM + PAN (#35) ───────────────────────────────────────────────────────
+  // zoom 1 = fit the whole city; >1 zooms in around (panX,panZ). Pinch + the +/−
+  // buttons drive `zoom`; dragging pans. The base (zoom-1) view stays the
+  // fit-to-city projection so a bigger city still opens framed.
+  const ext = contentExtent(opts.view.topology)
+  const cityCx = (ext.minX + ext.maxX) / 2
+  const cityCz = (ext.minZ + ext.maxZ) / 2
+  const cityHalf = Math.max(1, Math.max(ext.maxX - ext.minX, ext.maxZ - ext.minZ) / 2)
+  const ZOOM_MIN = 1
+  const ZOOM_MAX = 8
+  let zoom = 1
+  let panX = cityCx
+  let panZ = cityCz
+  const clampPan = () => {
+    // keep the centre inside the city so you can't pan into empty space.
+    const half = cityHalf / zoom
+    panX = Math.max(ext.minX + half * 0.4, Math.min(ext.maxX - half * 0.4, panX))
+    panZ = Math.max(ext.minZ + half * 0.4, Math.min(ext.maxZ - half * 0.4, panZ))
+  }
+  const projForFrame = (cssW: number, cssH: number): Projection => {
+    if (zoom <= 1.001) return fitProjection(opts.view.topology, cssW, cssH, 18)
+    clampPan()
+    return centeredProjection(panX, panZ, cityHalf / zoom, cssW, cssH, 18)
+  }
+  const setZoom = (z: number, focusX = panX, focusZ = panZ) => {
+    const nz = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, z))
+    if (nz === zoom) return
+    // keep the focus point stationary on screen as we zoom.
+    panX = focusX
+    panZ = focusZ
+    zoom = nz
+    if (zoom <= 1.001) {
+      panX = cityCx
+      panZ = cityCz
+    }
+    clampPan()
+  }
+
+  // +/− zoom buttons (corner of the stage). pointer-events on, so they sit above
+  // the pan surface. Styled inline to avoid a stylesheet dependency.
+  const zoomBox = document.createElement("div")
+  zoomBox.style.cssText =
+    "position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:6px;z-index:4;pointer-events:auto"
+  const mkBtn = (label: string, on: () => void) => {
+    const b = document.createElement("button")
+    b.type = "button"
+    b.textContent = label
+    b.setAttribute("aria-label", label === "+" ? "Zoom in" : "Zoom out")
+    b.style.cssText =
+      "width:34px;height:34px;border-radius:9px;border:1px solid rgba(90,74,50,.25);" +
+      "background:rgba(255,250,240,.92);color:#5a4a32;font:600 18px/1 ui-sans-serif,system-ui;" +
+      "cursor:pointer;box-shadow:0 1px 3px rgba(40,28,12,.18);touch-action:manipulation"
+    // `click` (not pointerdown) so it fires once across mouse/touch/keyboard and
+    // is robust to synthetic events; pointerdown stops the stage pan from grabbing
+    // the gesture under the button.
+    b.addEventListener("pointerdown", (e) => e.stopPropagation())
+    b.addEventListener("click", (e) => {
+      e.stopPropagation()
+      e.preventDefault()
+      on()
+    })
+    return b
+  }
+  zoomBox.appendChild(mkBtn("+", () => setZoom(zoom * 1.5)))
+  zoomBox.appendChild(mkBtn("−", () => setZoom(zoom / 1.5)))
+  stage.appendChild(zoomBox)
+
+  // Wheel zoom (desktop) + pinch zoom + drag-pan (touch/mouse) on the stage.
+  const stagePoint = (clientX: number, clientY: number) => {
+    const r = stage.getBoundingClientRect()
+    return { sx: clientX - r.left, sy: clientY - r.top }
+  }
+  // screen → world (invert the active projection so a pinch/drag keeps the point
+  // under the fingers). Rebuilt per gesture from the current frame projection.
+  const screenToWorld = (sx: number, sy: number): { x: number; z: number } => {
+    const cssW = stage.clientWidth || 600
+    const cssH = stage.clientHeight || 360
+    const proj = projForFrame(cssW, cssH)
+    // toScreen: sx = ox + (x - ax)*scale ; sy = oy + (bz - z)*scale (north-up).
+    // invert via two probe points to recover the affine mapping cheaply.
+    const o = proj.toScreen(0, 0)
+    const ux = proj.toScreen(1, 0)
+    const uz = proj.toScreen(0, 1)
+    const dxds = ux.x - o.x // screen-x per world-x
+    const dzds = uz.y - o.y // screen-y per world-z
+    const x = dxds !== 0 ? (sx - o.x) / dxds : panX
+    const z = dzds !== 0 ? (sy - o.y) / dzds : panZ
+    return { x, z }
+  }
+  const onWheel = (e: WheelEvent) => {
+    e.preventDefault()
+    const { sx, sy } = stagePoint(e.clientX, e.clientY)
+    const w = screenToWorld(sx, sy)
+    setZoom(zoom * (e.deltaY < 0 ? 1.18 : 1 / 1.18), w.x, w.z)
+  }
+  stage.addEventListener("wheel", onWheel, { passive: false })
+
+  // pointer-based pinch + drag-pan.
+  const pointers = new Map<number, { x: number; y: number }>()
+  let pinchStartDist = 0
+  let pinchStartZoom = 1
+  let dragLast: { x: number; z: number } | null = null
+  const onDown = (e: PointerEvent) => {
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    if (pointers.size === 1) {
+      const { sx, sy } = stagePoint(e.clientX, e.clientY)
+      dragLast = screenToWorld(sx, sy)
+    } else if (pointers.size === 2) {
+      const pts = [...pointers.values()]
+      pinchStartDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1
+      pinchStartZoom = zoom
+      dragLast = null
+    }
+  }
+  const onMove = (e: PointerEvent) => {
+    if (!pointers.has(e.pointerId)) return
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    if (pointers.size === 2) {
+      const pts = [...pointers.values()]
+      const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1
+      // midpoint world anchor so the pinch zooms about the fingers.
+      const mid = stagePoint((pts[0].x + pts[1].x) / 2, (pts[0].y + pts[1].y) / 2)
+      const w = screenToWorld(mid.sx, mid.sy)
+      setZoom(pinchStartZoom * (d / pinchStartDist), w.x, w.z)
+    } else if (pointers.size === 1 && dragLast && zoom > 1.001) {
+      const { sx, sy } = stagePoint(e.clientX, e.clientY)
+      const now = screenToWorld(sx, sy)
+      panX += dragLast.x - now.x
+      panZ += dragLast.z - now.z
+      clampPan()
+      // re-read under the new pan so the grabbed point tracks the finger.
+      dragLast = screenToWorld(sx, sy)
+    }
+  }
+  const onUp = (e: PointerEvent) => {
+    pointers.delete(e.pointerId)
+    if (pointers.size < 2) pinchStartDist = 0
+    if (pointers.size === 0) dragLast = null
+  }
+  stage.style.touchAction = "none"
+  stage.addEventListener("pointerdown", onDown)
+  stage.addEventListener("pointermove", onMove)
+  stage.addEventListener("pointerup", onUp)
+  stage.addEventListener("pointercancel", onUp)
+
   let raf = 0
   let phase = 0
   let lastT = typeof performance !== "undefined" ? performance.now() : Date.now()
@@ -145,8 +293,8 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
       const cssH = stage.clientHeight || 360
       const ctx = prepCanvas(canvas, cssW, cssH)
       if (ctx) {
-        const proj = fitProjection(opts.view.topology, cssW, cssH, 18)
-        drawBase(ctx, opts.view.topology, proj, cssW, cssH, true)
+        const proj = projForFrame(cssW, cssH)
+        drawBase(ctx, opts.view.topology, proj, cssW, cssH, true, opts.view.getMapGeometry?.())
         drawPois(ctx, opts.view.topology, proj, true)
 
         if (!reduced) {
@@ -198,6 +346,11 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
       if (raf) cancelAnimationFrame(raf)
       raf = 0
       try {
+        stage.removeEventListener("wheel", onWheel)
+        stage.removeEventListener("pointerdown", onDown)
+        stage.removeEventListener("pointermove", onMove)
+        stage.removeEventListener("pointerup", onUp)
+        stage.removeEventListener("pointercancel", onUp)
         wrap.remove()
       } catch (err) {
         console.error(`${LOG} dispose failed:`, err)

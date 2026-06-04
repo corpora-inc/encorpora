@@ -4,6 +4,8 @@ import { Color3, Color4, Vector3 } from "@babylonjs/core/Maths/math"
 import { UniversalCamera } from "@babylonjs/core/Cameras/universalCamera"
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight"
 import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight"
+import { Ray } from "@babylonjs/core/Culling/ray"
+import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import "@babylonjs/core/Materials/standardMaterial"
 
 /**
@@ -158,6 +160,55 @@ export function createWorldEngine(
   // turns. Seeded at the rig's look height a little ahead so frame 0 isn't a jerk.
   const aim = new Vector3(0, rig.lookHeight, 0)
 
+  // ── #25 CAMERA BOOM COLLISION (don't clip into buildings) ──────────────────
+  // Cast from the player's head toward the DESIRED eye; if a building body/roof is
+  // hit before the boom's full length, pull the eye in to just before the hit so
+  // the camera never ends up INSIDE a house seeing the roof underside. The fade
+  // system still handles a building that's merely between cam and player; this
+  // keeps the camera body physically OUT of geometry. Cheap: one ray vs the
+  // building/roof bbox set, bounding-info only, reusing scratch (no per-frame GC).
+  const boomRay = new Ray(Vector3.Zero(), Vector3.Up(), 1)
+  const boomFrom = new Vector3()
+  const boomDir = new Vector3()
+  const CAM_RADIUS = 0.45 // keep the eye this far off the wall it would hit
+  const MIN_BOOM = 0.2 // hard floor so the eye never collapses onto the player
+  // Building/roof meshes to test the boom against. Buildings are `isPickable=false`
+  // (frozen), so `scene.pickWithRay` would skip them — we test each mesh directly
+  // with `ray.intersectsMesh` (bounding-info only). Resynced only when the building
+  // count changes (scene flip), never per frame.
+  const boomMeshes: AbstractMesh[] = []
+  let boomMeshSceneCount = -1
+  const syncBoomMeshes = () => {
+    boomMeshes.length = 0
+    for (const m of scene.meshes) {
+      if (m.name.startsWith("wp-building-") || m.name.startsWith("wp-r-")) boomMeshes.push(m)
+    }
+    boomMeshSceneCount = scene.meshes.length
+  }
+  /** Shorten the boom IN PLACE on `tmpDesired` when a building occludes the eye. */
+  const collideBoom = () => {
+    if (scene.meshes.length !== boomMeshSceneCount) syncBoomMeshes()
+    if (boomMeshes.length === 0) return
+    // ray from head (lifted look point) out to the desired eye.
+    boomFrom.set(followPos.x, rig.lookHeight, followPos.z)
+    boomDir.copyFrom(tmpDesired).subtractInPlace(boomFrom)
+    const boomLen = boomDir.length()
+    if (boomLen < 1e-3) return
+    boomDir.scaleInPlace(1 / boomLen)
+    boomRay.origin.copyFrom(boomFrom)
+    boomRay.direction.copyFrom(boomDir)
+    boomRay.length = boomLen
+    let nearest = boomLen
+    for (let i = 0; i < boomMeshes.length; i++) {
+      const pick = boomRay.intersectsMesh(boomMeshes[i], true /* fastCheck */, undefined, true /* onlyBoundingInfo */)
+      if (pick.hit && pick.distance < nearest) nearest = pick.distance
+    }
+    if (nearest < boomLen) {
+      const d = Math.max(MIN_BOOM, nearest - CAM_RADIUS)
+      tmpDesired.set(boomFrom.x + boomDir.x * d, boomFrom.y + boomDir.y * d, boomFrom.z + boomDir.z * d)
+    }
+  }
+
   // ---- Perf HUD (benchmark harness seed) ----
   const hud = document.createElement("div")
   hud.className = "wp-perf-hud"
@@ -197,6 +248,9 @@ export function createWorldEngine(
       rig.height,
       followPos.z + cos * rig.distance,
     )
+    // #25: pull the desired eye in if a building/roof sits between it and the
+    // player, so the camera body never clips inside a house.
+    collideBoom()
     // Frame-rate-compensated smoothing: convert a per-60fps lerp into a true
     // exponential so the trail feels identical at 30 / 60 / 120 fps (no jerk,
     // no spring overshoot). aPos < aAim → camera body eases, gaze stays locked.

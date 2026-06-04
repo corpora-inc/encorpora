@@ -2,18 +2,12 @@
 import { describe, it, expect, beforeEach } from "vitest"
 import { Quest } from "@world-plaza/contracts"
 import { createInventory } from "../economy/inventory"
-import {
-  createQuestEngine,
-  authoredClueForStep,
-  authoredNextHint,
-} from "./questState"
+import { createQuestEngine } from "./questState"
 import { resolveStepContent, challengeSatisfiesStep, isTalkOnlyStep } from "./questContent"
 import guadalajaraJson from "../../content/quests/es-guadalajara.json"
 import cafeJson from "../../content/quests/es-cafe.json"
 
 const QUEST = Quest.parse(guadalajaraJson)
-const FERRY = "ferry-token"
-const GATE = "city-gate-pass"
 
 function freshEngine() {
   localStorage.clear()
@@ -23,100 +17,77 @@ function freshEngine() {
   return { engine, inventory }
 }
 
-describe("QuestEngine — es-guadalajara-route state machine", () => {
+describe("QuestEngine — es-guadalajara-route (#26: deterministic, always-completable)", () => {
   beforeEach(() => localStorage.clear())
 
-  it("starts on the first step, needs-item (no ferry token held)", () => {
+  it("step 1 (docks) is a talk-challenge, gated needs-challenge until beaten — NO item gate", () => {
     const { engine } = freshEngine()
     const step = engine.currentStep()
     expect(step?.id).toBe("docks")
-    expect(engine.stepState("docks")).toBe("needs-item")
-    expect(engine.currentStepState()).toBe("needs-item")
+    expect(step?.kind ?? "talk").toBe("talk")
+    expect(step?.toolId).toBe("repeat-after")
+    // No inventory rule anymore → the only gate is the challenge-beaten flag.
+    expect(engine.stepState("docks")).toBe("needs-challenge")
     expect(engine.isStepSatisfied("docks")).toBe(false)
-    expect(engine.state().complete).toBe(false)
+    expect(engine.advance("docks")).toBe(false) // refused until beaten
   })
 
-  it("flips needs-item → ready-to-deliver when the ferry token is granted", () => {
-    const { engine, inventory } = freshEngine()
-    expect(engine.stepState("docks")).toBe("needs-item")
-    inventory.grant(FERRY)
-    expect(engine.stepState("docks")).toBe("ready-to-deliver")
-    expect(engine.isStepSatisfied("docks")).toBe(true)
-  })
-
-  it("advance() is DETERMINISTICALLY GATED — refused while the item is missing", () => {
+  it("step 2 (gate) is a TRAVERSE step — completed by REACHING it, no challenge/item", () => {
     const { engine } = freshEngine()
-    // No ferry token → the gate must refuse even an explicit advance (the model
-    // can emit questStep but cannot move a gate it doesn't control).
-    expect(engine.advance("docks")).toBe(false)
-    expect(engine.currentStep()?.id).toBe("docks")
-    expect(engine.state().stepDone["docks"]).toBeUndefined()
-  })
-
-  it("clue → item → deliver → advance runs end to end (→ done)", () => {
-    const { engine, inventory } = freshEngine()
-    // 1. NEEDS-ITEM: authored clue points at the ferry token.
-    expect(engine.stepState("docks")).toBe("needs-item")
-    expect(authoredClueForStep(inventory, QUEST.id, "docks")).toContain("token")
-
-    // 2. acquire the item.
-    inventory.grant(FERRY)
-    expect(engine.stepState("docks")).toBe("ready-to-deliver")
-
-    // 3. deliver → advance: token consumed, step done, NEXT step active.
+    // Beat + advance the talk step to reach the traverse step.
+    expect(challengeSatisfiesStep(QUEST.steps[0], "repeat-after", 0.9)).toBe(true)
+    engine.markStepBeaten("docks")
     expect(engine.advance("docks")).toBe(true)
-    expect(inventory.has(FERRY)).toBe(false) // consumed on delivery
-    expect(engine.state().stepDone["docks"]).toBe(true)
-    expect(engine.currentStep()?.id).toBe("gate")
-    expect(engine.stepState("gate")).toBe("needs-item") // now needs the gate pass
 
-    // 4. second step: same chain.
-    inventory.grant(GATE)
+    const gate = engine.currentStep()
+    expect(gate?.id).toBe("gate")
+    expect(gate?.kind).toBe("traverse")
+    // A traverse step reports needs-challenge ("go here") until reached, and is
+    // NOT satisfied by inventory — the proximity trigger sets the beaten flag.
+    expect(engine.stepState("gate")).toBe("needs-challenge")
+    expect(engine.isStepSatisfied("gate")).toBe(false)
+    expect(engine.advance("gate")).toBe(false) // can't advance before arrival
+
+    // Reaching the bridge marks it beaten → satisfied → advance completes.
+    engine.markStepBeaten("gate")
     expect(engine.stepState("gate")).toBe("ready-to-deliver")
-    expect(engine.advance("gate")).toBe(true)
-    expect(inventory.has(GATE)).toBe(false)
+    expect(engine.isStepSatisfied("gate")).toBe(true)
   })
 
-  it("completing the final step marks complete + grants the quest reward once", () => {
+  it("full playthrough: talk-win → traverse-reach → COMPLETE + reward once", () => {
     const { engine, inventory } = freshEngine()
-    inventory.grant(FERRY)
-    engine.advance("docks")
-    inventory.grant(GATE)
-
     const xpBefore = inventory.xp()
     let completeFired = 0
     engine.subscribe((e) => {
       if (e.type === "complete") completeFired++
     })
-    engine.advance("gate")
+
+    // Step 1: win the talk challenge.
+    engine.markStepBeaten("docks")
+    expect(engine.advance("docks")).toBe(true)
+    expect(engine.currentStep()?.id).toBe("gate")
+
+    // Step 2: reach the bridge (traverse).
+    engine.markStepBeaten("gate")
+    expect(engine.advance("gate")).toBe(true)
 
     expect(engine.state().complete).toBe(true)
     expect(completeFired).toBe(1)
-    // Reward granted: +80 xp, +20 coins, +map-scrap.
     expect(inventory.xp()).toBe(xpBefore + 80)
     expect(inventory.coins()).toBe(20)
     expect(inventory.has("map-scrap")).toBe(true)
 
-    // Idempotent: re-advancing a done step does nothing (no double reward).
+    // Idempotent: re-advancing a done step does nothing.
     expect(engine.advance("gate")).toBe(false)
     expect(inventory.coins()).toBe(20)
   })
 
-  it("authoredNextHint surfaces the NEXT step's clue after a delivery", () => {
-    const { engine, inventory } = freshEngine()
-    const hint = authoredNextHint(inventory, QUEST, "docks")
-    expect(hint).toContain("pass") // the gate step's clue
-    // After both steps' items held, the final step has no next hint.
-    inventory.grant(FERRY)
-    engine.advance("docks")
-    expect(authoredNextHint(inventory, QUEST, "gate")).toBeUndefined()
-  })
-
-  it("getQuestMarkers points at the current objective + missing-item sources", () => {
+  it("getQuestMarkers points at the current objective anchor (harbor → bridge)", () => {
     const { engine } = freshEngine()
-    const markers = engine.getQuestMarkers()
-    expect(markers.some((m) => m.kind === "objective" && m.anchorId === "harbor")).toBe(true)
-    expect(markers.some((m) => m.kind === "source-hint" && m.itemId === FERRY)).toBe(true)
+    expect(engine.getQuestMarkers().some((m) => m.kind === "objective" && m.anchorId === "harbor")).toBe(true)
+    engine.markStepBeaten("docks")
+    engine.advance("docks")
+    expect(engine.getQuestMarkers().some((m) => m.kind === "objective" && m.anchorId === "bridge_n")).toBe(true)
   })
 
   it("persists across engine re-instantiation (same quest)", () => {
@@ -124,24 +95,13 @@ describe("QuestEngine — es-guadalajara-route state machine", () => {
     localStorage.clear()
     inventory.reset()
     const e1 = createQuestEngine({ quest: QUEST, inventory, playerId: "player-local" })
-    inventory.grant(FERRY)
+    e1.markStepBeaten("docks")
     e1.advance("docks")
     expect(e1.state().stepDone["docks"]).toBe(true)
 
-    // A fresh engine reads the persisted stepDone.
     const e2 = createQuestEngine({ quest: QUEST, inventory, playerId: "player-local" })
     expect(e2.state().stepDone["docks"]).toBe(true)
     expect(e2.currentStep()?.id).toBe("gate")
-  })
-
-  it("notifies subscribers when inventory changes (needs-item → ready flip)", () => {
-    const { engine, inventory } = freshEngine()
-    let changes = 0
-    engine.subscribe((e) => {
-      if (e.type === "change") changes++
-    })
-    inventory.grant(FERRY)
-    expect(changes).toBeGreaterThan(0)
   })
 })
 

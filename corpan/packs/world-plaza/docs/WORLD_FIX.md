@@ -275,6 +275,15 @@ doorway on any building.
 - `src/world/facadePaint.ts` — door keep-out for the window grid — §6
 - `src/city/cityGround.ts` — ground-quad winding flip (gray-ground/no-roads) — §8
 - `src/world/props3d.ts` — water-trough readability + de-flicker — §9
+- `src/map/mapCore.ts` — `headingVec` sign flip (map pointer inversion) — §10
+- `src/city/population.ts` — local-meander wander + player keepout (no crowding) — §11
+- `src/world/crowd.ts` — wider `PLAYER_AVOID` (no crowding) — §11
+- `src/world/engine.ts` — camera boom collision (no clip into buildings) — §12
+- `src/world/cameraFade.ts` — roofs fade-eligible (no roof-interior view) — §12
+- `src/contracts/runtime.ts` — `MapView.getMapGeometry?()` seam (map water/blockers) — §13
+- `src/city/cityMapGeometry.ts` (new) — derive map water+blocker rects from CityLayout — §13
+- `src/map/{mapCore,schematic,minimap}.ts` — render water + map-geometry blockers — §13
+- `src/map/fullMap.ts` — full-map zoom (pinch + wheel + ± buttons + drag-pan) — §13
 
 ## §8 — Gray ground / no roads = inverted ground-quad winding
 
@@ -306,6 +315,64 @@ The water-trough prop (`buildTrough`) read as a featureless beige box with an
   below the rim with a clear gap (no coplanar lid). Verified in webkit via the new
   `qa/prop.{html,ts}` harness: `/tmp/wp-prop-trough.png` (clean, readable basin +
   blue water, no flicker). The PLANTER was already correct — untouched.
+
+## §10 — Map heading pointer inverted (recurring; `src/map/mapCore.ts`)
+
+The minimap/map player wedge pointed where the paper character FACES (toward the
+camera), not the travel/camera-forward direction. ROOT CAUSE: `headingVec(f)`
+returned `(sin f, cos f)`, but the player controller's actual forward basis is
+`(-sin yaw, -cos yaw)` (`movement/controller.ts`: `fx=-sin; fz=-cos`) — the EXACT
+NEGATION → the wedge pointed 180° backwards. It "kept coming back" because prior
+fixes tweaked the screen-projection sign in `drawPlayer` instead of this root
+basis. FIX: `headingVec` returns `(-sin f, -cos f)`. Verified with a 6-yaw unit
+test (arrow screen-dir · travel screen-dir ≈ 1; was −1). Walk forward → the wedge
+points the way you move.
+
+## §11 — NPCs gather around the player (`src/city/population.ts`, `crowd.ts`)
+
+Ambient strollers re-picked every wander target via `pickNear(player.x, …)` —
+always recentred on the player, so they orbited you. FIX: a new `pickWander()`
+picks a LOCAL meander from the stroller's OWN position with a `PLAYER_KEEPOUT`
+(7u) that rejects any target/spawn near the player (fallback steps AWAY). The wake
+RING still keeps density-follows-you, but individuals disperse + never path toward
+you. Also widened `crowd.ts PLAYER_AVOID` 5→8. Verified in webkit (`qa/pop.{html,
+ts}`): stationary player, 10s sim → 0 strollers inside the keepout at every
+timepoint, min 8–14u, mean ~18u (dispersed).
+
+## §12 — Camera clips into buildings / sees roof underside (`engine.ts`, `cameraFade.ts`)
+
+The follow camera could end up INSIDE a house showing the roof interior. Two fixes:
+- **Boom collision (`engine.ts`).** Each frame, cast a ray from the player's head
+  toward the desired eye; if a building body (`wp-building-*`) or roof (`wp-r-*`)
+  bbox is hit, pull the eye in to just before it (`CAM_RADIUS` 0.45 standoff,
+  `MIN_BOOM` 0.2 floor). Buildings are `isPickable=false`, so we test each
+  building/roof mesh with `ray.intersectsMesh` (bbox-only), resynced only on a
+  scene flip, zero per-frame GC. Keeps the camera body physically OUT of geometry.
+- **Roofs now fade too (`cameraFade.ts`).** The default fade-eligibility was
+  body-only; roofs (`wp-r-*`) are now eligible, so a grazing camera never shows an
+  opaque roof underside (belt-and-braces over the boom).
+Verified (`qa/camboom.{html,ts}`): realistic near-building standoff → boom 8.8→1.1,
+eye OUTSIDE all building AABBs; open ground → full 8.8 boom (no false shortening).
+
+## §13 — Map: bare beige grid → water + blockers + zoom (`map/*`, `contracts/runtime.ts`)
+
+The full map showed no WATER, no blockers, and had no zoom — because `MapView` is
+fed `topology` with `blockers: []` (city collision is the streaming field) and no
+water (water lives in `CityLayout`). Fix:
+- **Seam:** `MapView.getMapGeometry?(): { water, blockers }` (rects in world XZ),
+  OPTIONAL so non-city rooms fall back to `topology.blockers` (conformance 17/17).
+- **Source of truth:** `src/city/cityMapGeometry.ts` derives it from `CityLayout`
+  (every `chunk.water` rect + every chunk building footprint) — the SAME data
+  collision/placement read, so map + world can't drift. game.ts wires one line:
+  `getMapGeometry: () => cityMapGeometry(layout)`.
+- **Render:** `schematic.ts drawBase` paints water (slate-blue, under the grid) +
+  prefers the map-geometry blockers; minimap + fullMap pass it through.
+- **Zoom (`fullMap.ts`):** pinch + mouse-wheel + ± buttons + drag-pan. zoom 1 =
+  fit-whole-city (a bigger NYC-island still opens framed); >1 zooms about the focus
+  point (`centeredProjection`), pan clamped to the city. Listeners freed on dispose.
+Verified in webkit (`qa/map.{html,ts}`): `/tmp/wp-map-fit.png` (river band + 458
+building footprints + the #23-correct "You" wedge) and `/tmp/wp-map-btnzoom.png`
+(+ button / wheel / pinch zoom in around the player).
 
 ## Build / verify notes
 

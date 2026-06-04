@@ -441,7 +441,12 @@ export function mountQuestTracker(
       const held = requiredIds.find((id) => opts.inventory.has(id))
 
       let hint = ""
-      if (st === "needs-item" && needed) {
+      if (step.kind === "traverse" || step.kind === "find") {
+        // TRAVERSE / FIND (#26): completion = WALK to the spot. The label is
+        // already an imperative cue ("Cross the river bridge") — hand-hold with it
+        // plus a directional arrow so it reads as "go here", not "talk to someone".
+        hint = `${step.label} →`
+      } else if (st === "needs-item" && needed) {
         hint = strings.findItem(itemLabel(needed))
       } else if (st === "ready-to-deliver" && held && who) {
         hint = strings.deliverItem(itemLabel(held), who)

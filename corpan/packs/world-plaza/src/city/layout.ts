@@ -92,6 +92,99 @@ export type CityGroundRegion =
   | { kind: "rect"; surface: CitySurface; cx: number; cz: number; w: number; d: number; metersPerTile: number }
   | { kind: "disc"; surface: CitySurface; cx: number; cz: number; r: number; metersPerTile: number }
 
+/* ------------------------------------------------------------------ water */
+
+/**
+ * A per-chunk WATER rectangle — the open-water footprint that falls inside one
+ * chunk. It is the COLLISION + PLACEMENT truth for "this is the river, not land":
+ * collision.ts turns each into a box obstacle (so the crowd/population/props are
+ * kept on the LAND side and the player is walled at the shoreline), and the
+ * generator paints the matching blue ground over the same rect so what you SEE
+ * lines up with what you can't walk into.
+ *
+ * `bridgeGap`, when present, is the X-interval of the bridge deck CARVED OUT of
+ * this water rect — the one corridor you CAN cross. collision.ts splits the water
+ * box around it (left box + right box) so the deck stays walkable while the rest
+ * of the river blocks. (Pure data; world coords.)
+ */
+export interface CityWaterRect {
+  x0: number
+  x1: number
+  z0: number
+  z1: number
+  /** [gx0, gx1] world-X interval of the walkable bridge deck cut through this rect. */
+  bridgeGap?: [number, number]
+}
+
+/**
+ * The city's WATER feature as a whole — the single source of truth the generator,
+ * collision, layout, and the bridge structure all read so they never drift.
+ *
+ * The river is a BAND along +Z, NOT water-to-the-edge (#32 crafted boundary):
+ *   land … `bankZ` (near riverwalk) … `waterZ` (near water edge) … RIVER …
+ *   `farBankZ` (far quay edge) … far-bank district … sea wall … world edge.
+ *
+ * So `[bankZ, waterZ)` and `[farBankZ, farPromZ)` are the walkable near/far quays;
+ * `[waterZ, farBankZ)` is the open river (non-walkable, blocked in the collider).
+ * `bridgeX ± bridgeHalfW` is the single crossing corridor left open in the
+ * collider AND the deck the bridge structure (world-fix #29) is built on, so
+ * "cross the bridge" arrives at the FAR BANK (more city), never the map edge.
+ */
+export interface CityWater {
+  /** world-Z of the NEAR water edge; [waterZ, farBankZ) is open river. */
+  waterZ: number
+  /** world-Z where the near-side riverwalk promenade starts (bankZ < waterZ). */
+  bankZ: number
+  /** world-Z of the FAR water edge; z ≥ this is far-bank land (the river ends). */
+  farBankZ: number
+  /** world-Z where the far-bank promenade ends and far-bank buildings start
+   *  (farBankZ < farPromZ). The band [farBankZ, farPromZ) is the far quay. */
+  farPromZ: number
+  /** center X of the bridge crossing corridor. */
+  bridgeX: number
+  /** half-width of the walkable bridge corridor carved through the river collider. */
+  bridgeHalfW: number
+}
+
+/* ------------------------------------------------------------------ walls */
+
+/**
+ * A per-chunk WALL segment — a stretch of the perimeter rampart that falls inside
+ * one chunk, modelled as an axis-aligned thin box. It is the COLLISION + PLACEMENT
+ * truth for "the world ends in a designed wall here, not fog" (#32): collision.ts
+ * turns each into a box obstacle so the player is stopped at the rampart (never
+ * walks off into the void) and nothing spawns on/past it, and `world/cityWall.ts`
+ * builds the matching rampart mesh from the SAME segments so collider ↔ wall line
+ * up. A `gateGap`, when present, is the interval (along the wall's long axis) of a
+ * walkable GATE opening carved out of the collider. (Pure data; world coords.)
+ */
+export interface CityWallRect {
+  x0: number
+  x1: number
+  z0: number
+  z1: number
+  /** which world edge this segment guards (for mesh facing + dressing). */
+  side: "north" | "south" | "east" | "west"
+  /** [g0, g1] interval (world coords on the wall's LONG axis) of a walkable gate. */
+  gateGap?: [number, number]
+}
+
+/**
+ * The crafted world BOUNDARY (#32). The +Z edge is the river/sea (handled by
+ * `CityWater`); the other three land edges get a perimeter RAMPART with GATES so
+ * the player meets an intentional wall, never a raw edge. `inset` is how far the
+ * wall sits inside the world bounds (leaving a thin no-man's strip the wall mesh
+ * occupies). `gates` are the walkable openings (an avenue passes through each).
+ */
+export interface CityBoundary {
+  /** distance the rampart sits inside `bounds` on each walled edge. */
+  inset: number
+  /** thickness (world units) of the rampart box. */
+  thickness: number
+  /** the gate openings, as {side, center} on each walled edge. */
+  gates: Array<{ side: "south" | "east" | "west"; center: number; halfWidth: number }>
+}
+
 /* ----------------------------------------------------------- anchors */
 
 /**
@@ -150,6 +243,20 @@ export interface CityChunk {
   ground: CityGroundRegion[]
   /** generic landmark anchors that live in this chunk. */
   anchors: CityAnchor[]
+  /**
+   * Open-water footprints inside this chunk — the non-walkable river. collision.ts
+   * turns each into box obstacle(s) (splitting around any `bridgeGap`) so people,
+   * props, and the player are kept off the water. Empty for inland chunks.
+   */
+  water: CityWaterRect[]
+  /**
+   * Perimeter rampart segments inside this chunk — the crafted world edge (#32).
+   * collision.ts turns each into a box obstacle (splitting around any `gateGap`)
+   * so the player meets a designed wall, never a raw edge, and nothing spawns
+   * past it. `world/cityWall.ts` builds the rampart mesh from the same segments.
+   * Empty for interior chunks.
+   */
+  walls: CityWallRect[]
 }
 
 /* ------------------------------------------------------------------ city */
@@ -174,6 +281,10 @@ export interface CityLayout {
   anchors: CityAnchor[]
   /** the player spawn (the plaza center). */
   spawn: { x: number; z: number }
+  /** the river/water feature (near/far banks, river band, bridge corridor). */
+  water: CityWater
+  /** the crafted world boundary (#32): perimeter rampart inset + gates. */
+  boundary: CityBoundary
   /** base ground fill per zone so a chunk bakes the right substrate under roads. */
   baseSurfaceByZone: Record<CityZoneId, CitySurface>
 }
