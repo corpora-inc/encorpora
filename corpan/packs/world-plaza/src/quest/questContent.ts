@@ -61,3 +61,15 @@ export function challengeSatisfiesStep(
   if (step.toolId !== ranToolId) return false
   return score >= threshold
 }
+
+/**
+ * A "talk-only" step has no challenge and no item gate — a pure "say hello" beat.
+ * The orchestrator advances it on ENGAGE (the deterministic gate treats it as
+ * trivially satisfiable). Recommended authoring is to give beginner steps a
+ * `toolId` instead (the 1-challenge-per-quest rule), so this is the escape hatch
+ * for the rare narrative beat. `requiredCount` is the number of inventory items
+ * the step requires (0 when none) — passed by the caller from `requiredForStep`.
+ */
+export function isTalkOnlyStep(step: QuestStep, requiredCount = 0): boolean {
+  return !step.toolId && requiredCount === 0
+}

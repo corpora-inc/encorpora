@@ -358,7 +358,42 @@ export function fitProjection(
     toScreen(x, z) {
       return {
         x: offX + (x - ext.minX) * scale,
-        y: offY + (z - ext.minZ) * scale,
+        // TRUE north-up: world +z → screen UP (top). The old `(z - minZ)` put +z
+        // at the BOTTOM, so the player's forward (+z at facing 0) and the heading
+        // wedge read BACKWARDS vs the camera. Flipping z fixes the compass.
+        y: offY + (ext.maxZ - z) * scale,
+      }
+    },
+  }
+}
+
+/**
+ * A PLAYER-CENTRED projection (north-up): a fixed world window of ±`halfSpan`
+ * units around `(cx,cz)`, mapped to the canvas with the player at the centre.
+ * The minimap uses this each tick so it FOLLOWS the player — you're always at the
+ * middle and never walk off the edge (the old fit-to-content projection showed a
+ * fixed central region of a 760u city, so you'd quickly leave it). Same +z → up
+ * convention as `fitProjection` so the heading wedge matches.
+ */
+export function centeredProjection(
+  cx: number,
+  cz: number,
+  halfSpan: number,
+  canvasW: number,
+  canvasH: number,
+  pad: number,
+): Projection {
+  const avail = Math.max(1, Math.min(canvasW, canvasH) - pad * 2)
+  const scale = avail / (Math.max(1, halfSpan) * 2)
+  const ccx = canvasW / 2
+  const ccy = canvasH / 2
+  return {
+    scale,
+    inset: { x: pad, y: pad, w: canvasW - pad * 2, h: canvasH - pad * 2 },
+    toScreen(x, z) {
+      return {
+        x: ccx + (x - cx) * scale,
+        y: ccy - (z - cz) * scale, // +z → up (north-up)
       }
     },
   }

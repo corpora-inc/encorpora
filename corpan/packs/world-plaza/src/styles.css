@@ -37,7 +37,13 @@
   --wp-z-placetag: 11; /* RIGHT place tag (reuses the old --wp-z-hud slot) */
   --wp-z-tracker: 12; /* legacy alias for the capsule's slot (kept for the CSS) */
   --wp-z-status: 12; /* LEFT Status Capsule */
-  --wp-z-status-detail: 13; /* the capsule's expanded card — just above the capsule */
+  --wp-z-status-detail: 14; /* the capsule's expanded card — bumped OFF the minimap's
+                               old z=13 (FAB_POLISH §8 P0.3): the detail card and the
+                               minimap shared z=13, an undefined paint order if they
+                               ever overlapped on a short landscape phone. */
+  --wp-z-minimap: 36; /* the corner minimap — its OWN distinct z (was 13, colliding
+                         with the status-detail card). Sits above world/HUD, below
+                         the dialogue (40) / challenge (60) / menu (70). */
   --wp-z-prompt: 15;
   --wp-z-talk: 16;
   --wp-z-perf: 30;
@@ -58,6 +64,77 @@
    * bottom-LEFT, the minimap owns bottom-RIGHT — so the two can never overlap.
    * One shared inset keeps both corners visually balanced. */
   --wp-fab-inset: 14px; /* shared inset for the bottom corner FABs */
+  --wp-fab-top: 8px; /* top-band inset */
+
+  /* ---- ONE shared design system for every floating chrome surface
+   * (FAB_POLISH §2.2 / §3): one size token, one elevation ladder, one radii
+   * scale, one blur tier set, one type ramp, one material palette. Every
+   * chip/card/panel/minimap consumes THESE — no eyeballed one-offs. ---- */
+
+  /* Sizes — the minimap is ONE square token (was a duplicated --wp-minimap-size
+   * in mapStyles.ts). Tablet/desktop grow it (overrides below). */
+  --wp-minimap-h: 132px;
+  --wp-pack-size: 44px;
+
+  /* Elevation ladder: e1 passive chip · e2 interactive chip/anchor · e3 popover
+   * · e4 modal panel. Shadow depth == conceptual depth. */
+  --wp-e1: 0 2px 9px rgba(58, 47, 37, 0.14);
+  --wp-e2: 0 4px 14px rgba(58, 47, 37, 0.2);
+  --wp-e3: 0 8px 22px rgba(58, 47, 37, 0.28);
+  --wp-e4: 0 24px 64px rgba(58, 47, 37, 0.45);
+
+  /* Radii scale — retire the one-off 11/14/16/30 values. */
+  --wp-r-chip: 12px;
+  --wp-r-card: 18px;
+  --wp-r-panel: 26px;
+  --wp-r-pill: 999px;
+
+  /* Blur tiers. */
+  --wp-blur-chip: 6px;
+  --wp-blur-card: 8px;
+  --wp-blur-scrim: 3px;
+
+  /* The "cut paper" top highlight — every surface keeps the same inset. */
+  --wp-cut: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  /* The shared hairline frame (paper edge), so no surface needs a saturated ring. */
+  --wp-hairline: rgba(120, 100, 70, 0.18);
+
+  /* Material palette — warm Antigua ink. ONE family across capsule / place-tag /
+   * minimap / pack / menu / badges (the badge grid used a blue-grey ink that did
+   * not belong — FAB_POLISH §4.4). */
+  --wp-ink: #2e261d; /* strongest text */
+  --wp-ink-2: #4a3c2e; /* body */
+  --wp-ink-3: #7a6a52; /* muted body */
+  --wp-ink-head: #9a8868; /* section headings / label-xs */
+  --wp-accent: #c46b4a; /* the ONE accent (focus ring, objective dot, primary CTA) */
+
+  /* Paper stocks (opacity differs by elevation tier; see FAB_POLISH §3.1). */
+  --wp-paper-chip: rgba(247, 239, 224, 0.88);
+  --wp-paper-quiet: rgba(244, 234, 212, 0.74); /* the place tag — quietest chip */
+  --wp-paper-card: rgba(247, 239, 224, 0.95);
+  --wp-paper-grad: linear-gradient(180deg, #f7efe0, #ece0c6);
+
+  /* Family — ONE rounded stack everywhere (badges used ui-sans-serif). */
+  --wp-font: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+}
+/* Phone — snug; coarse pointer gets the bigger pack target. */
+@media (max-width: 540px) {
+  :root {
+    --wp-minimap-h: 108px;
+    --wp-pack-size: 50px;
+  }
+}
+/* Tablet — roomier minimap. */
+@media (min-width: 700px) {
+  :root {
+    --wp-minimap-h: 152px;
+  }
+}
+/* Desktop (fine pointer) — the headline "premium on big screens" minimap. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1100px) {
+  :root {
+    --wp-minimap-h: 168px;
+  }
 }
 
 .wp-root {
@@ -265,18 +342,18 @@
   bottom: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-bottom, 0px));
   left: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-left, 0px));
   color: var(--wp-menu-accent);
-  z-index: var(--wp-z-menu-button, 65);
-  width: 44px;
-  height: 44px;
+  z-index: var(--wp-z-menu-button, 38);
+  width: var(--wp-pack-size, 44px);
+  height: var(--wp-pack-size, 44px);
   display: grid;
   place-items: center;
   padding: 0;
   border: none;
-  border-radius: 14px;
-  background: rgba(247, 239, 224, 0.82);
-  -webkit-backdrop-filter: blur(6px) saturate(1.05);
-  backdrop-filter: blur(6px) saturate(1.05);
-  box-shadow: 0 4px 14px rgba(58, 47, 37, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: var(--wp-r-chip, 12px);
+  background: var(--wp-paper-chip, rgba(247, 239, 224, 0.88));
+  -webkit-backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
+  backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
+  box-shadow: var(--wp-e2, 0 4px 14px rgba(58, 47, 37, 0.2)), var(--wp-cut, inset 0 1px 0 rgba(255, 255, 255, 0.55));
   cursor: pointer;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
@@ -311,12 +388,13 @@
 .wp-menu-button:active { transform: scale(0.92); }
 .wp-menu-button:focus-visible { outline: 2px solid var(--wp-menu-accent); outline-offset: 2px; }
 @media (hover: hover) and (pointer: fine) {
-  .wp-menu-button:hover { background: rgba(247, 239, 224, 0.96); }
+  .wp-menu-button:hover {
+    background: rgba(247, 239, 224, 0.98);
+    transform: translateY(-1px);
+  }
 }
-/* Bigger touch target on phones (no precise pointer). */
-@media (hover: none) {
-  .wp-menu-button { width: 50px; height: 50px; }
-}
+/* The pack size is driven by --wp-pack-size (50px on coarse pointers / phone via
+   the :root media queries) — no separate width override needed here. */
 @media (prefers-reduced-motion: reduce) {
   .wp-menu-button { transition: opacity 0.16s ease; transform: none; }
   .wp-menu-button--in { transform: none; }
@@ -372,8 +450,8 @@
   box-sizing: border-box;
   padding: 22px 22px 18px;
   background: linear-gradient(180deg, #f7efe0, #efe3cd);
-  border-radius: 26px;
-  box-shadow: 0 24px 64px rgba(58, 47, 37, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: var(--wp-r-panel, 26px);
+  box-shadow: var(--wp-e4, 0 24px 64px rgba(58, 47, 37, 0.45)), var(--wp-cut, inset 0 1px 0 rgba(255, 255, 255, 0.6));
   opacity: 0;
   transform: scale(0.94) translateY(10px);
   transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
@@ -417,8 +495,22 @@
   gap: 6px;
   margin-top: 16px;
   padding: 4px;
-  border-radius: 14px;
+  border-radius: var(--wp-r-chip, 12px);
   background: rgba(122, 106, 85, 0.1);
+}
+/* Four tabs (Map · Inventory · Quest · Badges) still fit ≥320px, but on the very
+   narrowest phones let the strip scroll-snap rather than crush the labels
+   (FAB_POLISH §4.1). The segmented look is preserved; it just becomes swipeable. */
+@media (max-width: 360px) {
+  .wp-menu-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .wp-menu-tabs::-webkit-scrollbar { display: none; }
+  .wp-menu-tab { flex: 0 0 auto; min-width: 84px; scroll-snap-align: start; }
 }
 .wp-menu-tab {
   flex: 1 1 0;
@@ -426,7 +518,7 @@
   border: none;
   border-radius: 11px;
   background: transparent;
-  color: #7a6a55;
+  color: var(--wp-ink-3, #7a6a55);
   font: 700 14px/1 inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -439,6 +531,7 @@
 }
 .wp-menu-tab:hover:not(.wp-menu-tab--on) { color: #5a4c3a; }
 .wp-menu-body {
+  position: relative;
   flex: 1 1 auto;
   /* min-height:0 lets this flex child shrink below its content so it (not the
    * panel) scrolls — the panel height is now fixed, so the body fills whatever
@@ -448,15 +541,87 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-.wp-menu-coming {
+/* Scroll-edge fades (FAB_POLISH §4.2): pure-CSS sticky pseudo-bands at the top +
+   bottom of the scroll region so content dissolves into the frame instead of
+   hard-clipping. No JS scroll listeners. They sit UNDER the sub-head (z:1 vs 2). */
+.wp-menu-body::before,
+.wp-menu-body::after {
+  content: "";
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 14px;
+  display: block;
+  margin: 0 -2px; /* bleed over the body's edges */
+  pointer-events: none;
+  z-index: 1;
+}
+.wp-menu-body::before {
+  top: 0;
+  margin-bottom: -14px;
+  background: linear-gradient(#f7efe0, rgba(247, 239, 224, 0));
+}
+.wp-menu-body::after {
+  bottom: 0;
+  margin-top: -14px;
+  background: linear-gradient(rgba(239, 227, 205, 0), #efe3cd);
+}
+/* A sticky, non-scrolling sub-header inside a section body (e.g. the Badges
+   filter pills, inventory group headings). It PINS while the list scrolls under
+   it (FAB_POLISH §4.2). Modules opt in by wrapping their head in .wp-menu-subhead. */
+.wp-menu-subhead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 6px 0 10px;
+  margin: -6px 0 0;
+  background: linear-gradient(180deg, #f7efe0 72%, rgba(247, 239, 224, 0));
+}
+
+/* Premium empty-state card (FAB_POLISH §4.3): a centered glyph + title + hint so
+   a short tab never reads as an unfinished void in the tall fixed frame. */
+.wp-menu-empty {
+  min-height: 100%;
   display: grid;
-  place-items: center;
-  min-height: 132px;
-  color: #9b8a72;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  color: var(--wp-ink-head, #9b8a72);
+  padding: 24px 16px;
+}
+.wp-menu-empty-glyph {
+  width: 48px;
+  height: 48px;
+  color: color-mix(in srgb, var(--wp-menu-accent, #c46b4a) 60%, #b6a489);
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
+}
+.wp-menu-empty-title {
+  font: 800 16px/1.2 var(--wp-font, ui-rounded, system-ui, sans-serif);
+  color: var(--wp-ink-2, #4a3c2e);
+}
+.wp-menu-empty-hint {
+  font: 500 13.5px/1.45 var(--wp-font, ui-rounded, system-ui, sans-serif);
+  color: var(--wp-ink-3, #7a6a52);
+  max-width: 26ch;
+}
+/* Legacy thin "coming soon" line — kept as a fallback, restyled to the empty card
+   family so it never looks unfinished. */
+.wp-menu-coming {
+  min-height: 100%;
+  display: grid;
+  place-content: center;
+  color: var(--wp-ink-head, #9b8a72);
   font-size: 15px;
   font-style: italic;
   letter-spacing: 0.01em;
+  text-align: center;
 }
+/* Tab content cross-fade (FAB_POLISH §4.5): the frame stays fixed, only the inner
+   content fades on a tab swap. Gated to reduced-motion below. */
+.wp-menu-body--swapping > * { opacity: 0; }
+.wp-menu-body > .wp-menu-fade { transition: opacity 0.14s ease; }
 .wp-menu-foot {
   display: flex;
   flex-direction: column;
@@ -493,6 +658,8 @@
 @media (prefers-reduced-motion: reduce) {
   .wp-menu-scrim, .wp-menu-panel { transition: opacity 0.18s ease; }
   .wp-menu-panel, .wp-menu.wp-menu--open .wp-menu-panel { transform: none; }
+  .wp-menu-body > .wp-menu-fade { transition: none; }
+  .wp-menu-body--swapping > * { opacity: 1; }
 }
 
 /* =====================================================================

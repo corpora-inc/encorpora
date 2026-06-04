@@ -7,8 +7,9 @@ import {
   authoredClueForStep,
   authoredNextHint,
 } from "./questState"
-import { resolveStepContent, challengeSatisfiesStep } from "./questContent"
+import { resolveStepContent, challengeSatisfiesStep, isTalkOnlyStep } from "./questContent"
 import guadalajaraJson from "../../content/quests/es-guadalajara.json"
+import cafeJson from "../../content/quests/es-cafe.json"
 
 const QUEST = Quest.parse(guadalajaraJson)
 const FERRY = "ferry-token"
@@ -141,6 +142,86 @@ describe("QuestEngine — es-guadalajara-route state machine", () => {
     })
     inventory.grant(FERRY)
     expect(changes).toBeGreaterThan(0)
+  })
+})
+
+const CAFE = Quest.parse(cafeJson)
+
+describe("QuestEngine — challenge-gated step (no inventory rule) requires markStepBeaten", () => {
+  beforeEach(() => localStorage.clear())
+
+  function cafeEngine() {
+    localStorage.clear()
+    const inventory = createInventory()
+    inventory.reset()
+    const engine = createQuestEngine({ quest: CAFE, inventory, playerId: "player-local" })
+    return { engine, inventory }
+  }
+
+  it("the entry quest is ONE challenge step, gated needs-challenge until beaten", () => {
+    const { engine } = cafeEngine()
+    expect(CAFE.steps).toHaveLength(1)
+    const step = engine.currentStep()
+    expect(step?.id).toBe("order-coffee")
+    expect(step?.toolId).toBe("repeat-after")
+    // No inventory rule for this quest's step → state is "needs-challenge".
+    expect(engine.stepState("order-coffee")).toBe("needs-challenge")
+    expect(engine.isStepSatisfied("order-coffee")).toBe(false)
+    expect(engine.isStepBeaten("order-coffee")).toBe(false)
+  })
+
+  it("advance() is REFUSED until the challenge is marked beaten", () => {
+    const { engine } = cafeEngine()
+    // The model (or a stray caller) can't move the gate without the beaten flag.
+    expect(engine.advance("order-coffee")).toBe(false)
+    expect(engine.state().complete).toBe(false)
+
+    // The deterministic challenge referee agrees → mark beaten, THEN advance.
+    expect(challengeSatisfiesStep(CAFE.steps[0], "repeat-after", 0.9)).toBe(true)
+    engine.markStepBeaten("order-coffee")
+    expect(engine.isStepBeaten("order-coffee")).toBe(true)
+    expect(engine.stepState("order-coffee")).toBe("ready-to-deliver")
+    expect(engine.isStepSatisfied("order-coffee")).toBe(true)
+
+    let completeFired = 0
+    engine.subscribe((e) => {
+      if (e.type === "complete") completeFired++
+    })
+    expect(engine.advance("order-coffee")).toBe(true)
+    expect(engine.state().complete).toBe(true)
+    expect(completeFired).toBe(1)
+  })
+
+  it("the beaten flag persists across engine re-instantiation", () => {
+    const inventory = createInventory()
+    localStorage.clear()
+    inventory.reset()
+    const e1 = createQuestEngine({ quest: CAFE, inventory, playerId: "player-local" })
+    e1.markStepBeaten("order-coffee")
+    expect(e1.isStepBeaten("order-coffee")).toBe(true)
+
+    const e2 = createQuestEngine({ quest: CAFE, inventory, playerId: "player-local" })
+    expect(e2.isStepBeaten("order-coffee")).toBe(true)
+    expect(e2.isStepSatisfied("order-coffee")).toBe(true)
+  })
+
+  it("markStepBeaten is idempotent + notifies subscribers", () => {
+    const { engine } = cafeEngine()
+    let changes = 0
+    engine.subscribe((e) => {
+      if (e.type === "change") changes++
+    })
+    engine.markStepBeaten("order-coffee")
+    engine.markStepBeaten("order-coffee") // no-op the second time
+    expect(changes).toBe(1)
+  })
+})
+
+describe("questContent — talk-only step helper", () => {
+  it("isTalkOnlyStep is true only with no toolId and no required items", () => {
+    expect(isTalkOnlyStep({ id: "x", label: "" }, 0)).toBe(true)
+    expect(isTalkOnlyStep({ id: "x", label: "", toolId: "repeat-after" }, 0)).toBe(false)
+    expect(isTalkOnlyStep({ id: "x", label: "" }, 1)).toBe(false)
   })
 })
 

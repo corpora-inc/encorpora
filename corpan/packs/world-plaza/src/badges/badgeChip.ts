@@ -154,10 +154,11 @@ function ensureStyles(): void {
 const CHIP_CSS = `
 .wp-focusbadge {
   position: relative; display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 11px 4px 6px; border: none; border-radius: 999px;
-  background: rgba(255,255,255,0.6); color: #14323f; cursor: pointer;
-  font: 700 12px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.01em;
-  backdrop-filter: blur(3px); box-shadow: 0 2px 8px rgba(20,50,63,0.14);
+  padding: 4px 11px 4px 6px; border: none; border-radius: var(--wp-r-pill, 999px);
+  background: var(--wp-paper-chip, rgba(247,239,224,0.88)); color: var(--wp-ink, #2e261d); cursor: pointer;
+  font: 700 12px/1 var(--wp-font, ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif); letter-spacing: 0.01em;
+  -webkit-backdrop-filter: blur(var(--wp-blur-chip, 6px)); backdrop-filter: blur(var(--wp-blur-chip, 6px));
+  box-shadow: var(--wp-e1, 0 2px 8px rgba(58,47,37,0.14)), var(--wp-cut, inset 0 1px 0 rgba(255,255,255,0.55));
   max-width: 180px; -webkit-tap-highlight-color: transparent;
 }
 .wp-focusbadge-medal { width: 20px; height: 20px; display: grid; place-items: center; flex: 0 0 auto; }
@@ -165,8 +166,8 @@ const CHIP_CSS = `
 .wp-focusbadge--empty { opacity: 0.7; }
 .wp-focusbadge-pip {
   position: absolute; top: -6px; right: -4px; min-width: 16px; height: 16px; padding: 0 3px;
-  border-radius: 999px; background: var(--wp-focusbadge-accent, #c79a4a); color: #1a1208;
-  font: 800 11px/16px ui-sans-serif, system-ui, sans-serif; text-align: center;
+  border-radius: var(--wp-r-pill, 999px); background: var(--wp-focusbadge-accent, var(--wp-accent, #c46b4a)); color: #fff7f0;
+  font: 800 11px/16px var(--wp-font, ui-rounded, system-ui, sans-serif); text-align: center;
   opacity: 0; transform: translateY(2px) scale(0.7); transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.2,0.9,0.3,1.4);
   pointer-events: none;
 }

@@ -1,5 +1,6 @@
 import type { Obstacle, ObstacleField } from "../world/collision"
 import { createObstacleField } from "../world/collision"
+import { FOUNTAIN_BASE_RADIUS } from "../world/fountain"
 import type { CityChunk } from "./layout"
 
 /**
@@ -55,11 +56,18 @@ export function chunkObstacles(chunk: CityChunk): Obstacle[] {
     if (base == null || base <= 0) continue
     out.push({ kind: "circle", x: p.x, z: p.z, r: base * (p.scale || 1) })
   }
-  // NOTE: no fountain collider. The plaza `fountain` anchor (at the (0,0) spawn)
-  // has NO visible fountain mesh in the city yet, so a collider there was an
-  // INVISIBLE wall the player spawned against. A collider is only added when a
-  // real fountain mesh exists to back it (a believability follow-up); never an
-  // anchor with no geometry. Anchors remain POIs for the map + quest routing.
+  // FOUNTAIN collider — RESTORED (MASTER_BACKLOG C5). The phantom collider was
+  // removed because the `fountain` anchor had NO mesh, so it was an invisible
+  // wall at spawn. Now `world/fountain.ts` builds a real stone basin there, so a
+  // matching circle collider is correct again: it tracks the basin's footprint
+  // (`FOUNTAIN_BASE_RADIUS`, the wall radius — a touch inside the lip so you can
+  // brush the rim). We add it ONLY for the chunk that actually owns the fountain
+  // anchor, so it streams in/out with that chunk exactly like the geometry.
+  for (const a of chunk.anchors) {
+    if (a.kind === "fountain") {
+      out.push({ kind: "circle", x: a.x, z: a.z, r: FOUNTAIN_BASE_RADIUS })
+    }
+  }
   return out
 }
 

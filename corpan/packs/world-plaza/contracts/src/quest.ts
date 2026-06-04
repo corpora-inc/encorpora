@@ -74,6 +74,14 @@ export const Quest = z.object({
   steps: z.array(QuestStep),
   promptProgram: QuestPromptProgram,
   rewards: QuestRewards,
+  /**
+   * The 2–3 quests the completion interlude offers as the NEXT choice (a small
+   * data-driven quest GRAPH). ADDITIVE + optional: a quest without it parses
+   * unchanged, and the catalog falls back to "every other known quest" so the
+   * next-quest picker is never empty. Ids are resolved against the quest catalog;
+   * unknown ids are noisy-skipped.
+   */
+  nextQuestIds: z.array(QuestId).optional(),
 })
 export type Quest = z.infer<typeof Quest>
 

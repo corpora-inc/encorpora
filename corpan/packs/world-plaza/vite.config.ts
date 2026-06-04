@@ -37,6 +37,13 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  // Stage 3: the façade painter Web Worker (src/world/painter.worker.ts). Emit it
+  // as a self-contained IIFE worker chunk so it loads in the packaged single-file
+  // IIFE pack too; if it ever fails to load in a host WebView, the façade painter
+  // feature-detects + falls back to a main-thread paint (see facadePainter.ts).
+  worker: {
+    format: "iife",
+  },
   plugins: [updateManifestPlugin()],
   server: {
     port: 5174,

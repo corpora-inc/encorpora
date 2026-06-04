@@ -128,7 +128,7 @@ export function mountCity(scene: Scene, opts: MountCityOptions): MountedCity {
   // old builder repainted façades / rebuilt prop masters / repainted ground on
   // EVERY chunk). Chunks now only build cheap geometry + thin-instance buffers
   // against these shared resources; they NEVER free anything in here.
-  const cache: CityCache = createCityCache(scene, palette)
+  const cache: CityCache = createCityCache(scene, lib, palette)
 
   // The stable collision facade the controller captures once.
   const collision = createStreamingCollision()

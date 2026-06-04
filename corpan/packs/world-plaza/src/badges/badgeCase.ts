@@ -73,6 +73,14 @@ function mountBadgeCase(body: HTMLElement, opts: BadgeCaseOptions, bt: BadgeT): 
   const render = () => {
     root.replaceChildren()
 
+    // Summary + filter pills live in a STICKY sub-header (FAB_POLISH §4.2): the
+    // filter PINS to the top of the scroll region while the medal grid scrolls
+    // under it (the owner's exact ask). The class `.wp-menu-subhead` is styled by
+    // styles.css; `.wp-badges-subhead` carries the badge-local layout.
+    const subhead = document.createElement("div")
+    subhead.className = "wp-menu-subhead wp-badges-subhead"
+    root.appendChild(subhead)
+
     // Summary line.
     const summary = document.createElement("div")
     summary.className = "wp-badges-summary"
@@ -80,7 +88,7 @@ function mountBadgeCase(body: HTMLElement, opts: BadgeCaseOptions, bt: BadgeT): 
       track: opts.trackLabel,
       mastered: store.masteredCount(),
     })
-    root.appendChild(summary)
+    subhead.appendChild(summary)
 
     // Filter pills.
     const filters = document.createElement("div")
@@ -99,7 +107,7 @@ function mountBadgeCase(body: HTMLElement, opts: BadgeCaseOptions, bt: BadgeT): 
     filters.appendChild(pill("inProgress", bt("badges.filter.inProgress")))
     filters.appendChild(pill("recent", bt("badges.filter.recent")))
     filters.appendChild(pill("all", bt("badges.filter.all")))
-    root.appendChild(filters)
+    subhead.appendChild(filters)
 
     // The grid.
     const grid = document.createElement("div")
@@ -108,9 +116,22 @@ function mountBadgeCase(body: HTMLElement, opts: BadgeCaseOptions, bt: BadgeT): 
 
     const badges = badgesForFilter(store, filter)
     if (badges.length === 0) {
+      // A premium empty-state card (FAB_POLISH §4.3), not a thin grey line: a soft
+      // debossed medal glyph + the localized message, centered in the grid span.
       const empty = document.createElement("div")
       empty.className = "wp-badges-empty"
-      empty.textContent = bt("badges.empty")
+      const glyph = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+      glyph.setAttribute("class", "wp-badges-empty-glyph")
+      glyph.setAttribute("viewBox", "0 0 24 24")
+      glyph.setAttribute("fill", "none")
+      glyph.setAttribute("aria-hidden", "true")
+      glyph.innerHTML =
+        '<circle cx="12" cy="9" r="5.2" stroke="currentColor" stroke-width="1.6"/>' +
+        '<path d="M8.4 13.2 7 21l5-2.4L17 21l-1.4-7.8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>'
+      const msg = document.createElement("div")
+      msg.className = "wp-badges-empty-msg"
+      msg.textContent = bt("badges.empty")
+      empty.append(glyph, msg)
       grid.appendChild(empty)
     }
     for (const badge of badges) {
@@ -294,46 +315,94 @@ function ensureStyles(): void {
   stylesInjected = true
 }
 
+/* The Badge Case now belongs to the SAME warm-Antigua dialog (FAB_POLISH §4.4):
+   the blue-grey ink palette (#243842 / #2a4651) is retired for the menu's warm ink
+   (--wp-ink* tokens, with literal fallbacks), the cells reuse the shared
+   .wp-inv-cell material + the rounded font family, the medals sit in a DEBOSSED
+   well, and the filter lives in a sticky sub-header (styled by styles.css). */
 const BADGE_CASE_CSS = `
-.wp-badges { display: flex; flex-direction: column; gap: 12px; --wp-badges-accent: #c79a4a; }
-.wp-badges-summary { font: 600 14px/1.3 ui-sans-serif, system-ui, sans-serif; color: #2a4651; opacity: 0.92; }
+.wp-badges {
+  display: flex; flex-direction: column; gap: 12px;
+  --wp-badges-accent: var(--wp-accent, #c46b4a);
+  font-family: var(--wp-font, ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif);
+}
+.wp-badges-subhead { display: flex; flex-direction: column; gap: 10px; }
+.wp-badges-summary {
+  font: 600 14px/1.3 var(--wp-font, ui-rounded, system-ui, sans-serif);
+  color: var(--wp-ink-2, #4a3c2e); opacity: 0.95;
+}
 .wp-badges-filter { display: flex; gap: 8px; flex-wrap: wrap; }
 .wp-badges-pill {
-  border: 1px solid rgba(42,70,81,0.18); background: rgba(255,255,255,0.5);
-  color: #2a4651; border-radius: 999px; padding: 7px 14px; min-height: 36px;
-  font: 600 13px/1 ui-sans-serif, system-ui, sans-serif; cursor: pointer;
+  border: 1px solid var(--wp-hairline, rgba(120,100,70,0.18)); background: rgba(255,255,255,0.5);
+  color: var(--wp-ink-3, #7a6a52); border-radius: var(--wp-r-pill, 999px); padding: 7px 14px; min-height: 36px;
+  font: 700 13px/1 var(--wp-font, ui-rounded, system-ui, sans-serif); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; transition: background 0.15s ease, color 0.15s ease;
 }
-.wp-badges-pill--on { background: var(--wp-badges-accent); color: #1a1208; border-color: transparent; }
+.wp-badges-pill--on {
+  background: color-mix(in srgb, var(--wp-badges-accent) 88%, white);
+  color: #fff7f0; border-color: transparent;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--wp-badges-accent) 40%, transparent);
+}
+.wp-badges-pill:focus-visible { outline: 2px solid var(--wp-badges-accent); outline-offset: 2px; }
 .wp-badges-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
   gap: 12px; padding: 4px 0;
 }
-.wp-badges-empty { grid-column: 1 / -1; text-align: center; color: #3a5662; opacity: 0.8; padding: 24px 8px; }
+@media (min-width: 700px) {
+  .wp-badges-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 16px; }
+}
+/* Premium empty-state card — glyph + message, not a thin grey line. */
+.wp-badges-empty {
+  grid-column: 1 / -1; min-height: 180px; display: grid; place-content: center; justify-items: center;
+  gap: 10px; text-align: center; padding: 24px 12px;
+}
+.wp-badges-empty-glyph {
+  width: 44px; height: 44px;
+  color: color-mix(in srgb, var(--wp-badges-accent) 55%, #b6a489);
+  opacity: 0.9; filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6));
+}
+.wp-badges-empty-msg {
+  font: 500 13.5px/1.45 var(--wp-font, ui-rounded, system-ui, sans-serif);
+  color: var(--wp-ink-3, #7a6a52); max-width: 26ch;
+}
 .wp-badge-cell {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(247,238,222,0.45));
-  border: 1px solid rgba(42,70,81,0.14); border-radius: 14px; padding: 10px 6px 8px;
-  cursor: pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 6px rgba(20,50,63,0.10);
-  -webkit-tap-highlight-color: transparent;
+  border: 1px solid var(--wp-hairline, rgba(120,100,70,0.14)); border-radius: var(--wp-r-chip, 14px);
+  padding: 10px 6px 8px; cursor: pointer;
+  box-shadow: var(--wp-cut, inset 0 1px 0 rgba(255,255,255,0.6)), var(--wp-e1, 0 2px 6px rgba(58,47,37,0.10));
+  -webkit-tap-highlight-color: transparent; transition: transform 0.1s ease, box-shadow 0.15s ease;
 }
+.wp-badge-cell:hover { box-shadow: var(--wp-cut, inset 0 1px 0 rgba(255,255,255,0.6)), var(--wp-e2, 0 4px 12px rgba(58,47,37,0.16)); }
+.wp-badge-cell:active { transform: scale(0.97); }
+.wp-badge-cell:focus-visible { outline: 2px solid var(--wp-badges-accent); outline-offset: 2px; }
 .wp-badge-cell--locked { opacity: 0.55; filter: grayscale(0.5); }
-.wp-badge-medal { width: 56px; height: 56px; display: grid; place-items: center; }
+/* A debossed WELL behind each medal so it reads as set into the paper. */
+.wp-badge-medal {
+  width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(58,47,37,0.18), inset 0 -1px 0 rgba(255,255,255,0.4);
+}
 .wp-badge-canvas { image-rendering: auto; }
 .wp-badge-name {
-  font: 600 11px/1.2 ui-sans-serif, system-ui, sans-serif; color: #243842;
+  font: 600 11px/1.2 var(--wp-font, ui-rounded, system-ui, sans-serif); color: var(--wp-ink, #2e261d);
   text-align: center; max-width: 92px; overflow: hidden; text-overflow: ellipsis;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
-.wp-badge-tier { font: 700 10px/1 ui-sans-serif, system-ui, sans-serif; color: #6b5a36; letter-spacing: 0.03em; }
-.wp-badge-detail {
-  background: rgba(255,255,255,0.7); border: 1px solid rgba(42,70,81,0.16); border-radius: 14px;
-  padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; transition: opacity 0.2s ease;
+.wp-badge-tier {
+  font: 700 10px/1 var(--wp-font, ui-rounded, system-ui, sans-serif);
+  color: var(--wp-ink-head, #9a8868); letter-spacing: 0.06em; text-transform: uppercase;
 }
-.wp-badge-detail-title { font: 700 15px/1.2 ui-sans-serif, system-ui, sans-serif; color: #1f343d; }
+.wp-badge-detail {
+  background: rgba(255,255,255,0.7); border: 1px solid var(--wp-hairline, rgba(120,100,70,0.16));
+  border-radius: var(--wp-r-card, 14px); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;
+  box-shadow: var(--wp-cut, inset 0 1px 0 rgba(255,255,255,0.6)), var(--wp-e1, 0 2px 6px rgba(58,47,37,0.10));
+  transition: opacity 0.2s ease;
+}
+.wp-badge-detail-title { font: 800 15px/1.2 var(--wp-font, ui-rounded, system-ui, sans-serif); color: var(--wp-ink, #2e261d); }
 .wp-badge-ladder { display: flex; gap: 8px; }
-.wp-badge-rung { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); }
-.wp-badge-detail-status { font: 600 13px/1.3 ui-sans-serif, system-ui, sans-serif; color: #2a4651; }
-.wp-badge-detail-how { font: 400 13px/1.4 ui-sans-serif, system-ui, sans-serif; color: #3a5662; }
-.wp-badge-detail-howlabel { font-weight: 700; }
-@media (prefers-reduced-motion: reduce) { .wp-badge-detail { transition: none; } }
+.wp-badge-rung { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(58,47,37,0.18); }
+.wp-badge-detail-status { font: 700 13px/1.3 var(--wp-font, ui-rounded, system-ui, sans-serif); color: var(--wp-ink-2, #4a3c2e); }
+.wp-badge-detail-how { font: 400 13px/1.4 var(--wp-font, ui-rounded, system-ui, sans-serif); color: var(--wp-ink-3, #7a6a52); }
+.wp-badge-detail-howlabel { font-weight: 700; color: var(--wp-ink-2, #4a3c2e); }
+@media (prefers-reduced-motion: reduce) { .wp-badge-detail, .wp-badge-cell { transition: none; } }
 `

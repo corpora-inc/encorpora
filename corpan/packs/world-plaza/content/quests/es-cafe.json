@@ -1,14 +1,17 @@
 {
   "id": "es-cafe-travel",
   "title": "Coffee on the Plaza",
-  "narrative": "Order your first coffee at the café on Corpan City's plaza.",
+  "narrative": "Your very first words in the city: order a coffee at the plaza café.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 2 },
+  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 1 },
   "steps": [
-    { "id": "greet", "label": "Greet the café owner", "anchorId": "plaza" },
-    { "id": "order", "label": "Order a coffee", "anchorId": "plaza", "toolId": "repeat-after" },
-    { "id": "thank", "label": "Say thank you", "anchorId": "plaza" }
+    {
+      "id": "order-coffee",
+      "label": "Order a coffee at the plaza café",
+      "anchorId": "plaza",
+      "toolId": "repeat-after"
+    }
   ],
   "promptProgram": {
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner ordering food and drink, naming common items, and being polite.",
@@ -26,5 +29,6 @@
     "coins": 10,
     "badge": "first-cup",
     "grant": ["phrase-es-cafe-basics"]
-  }
+  },
+  "nextQuestIds": ["es-market-haggle", "es-directions", "es-guadalajara-route"]
 }

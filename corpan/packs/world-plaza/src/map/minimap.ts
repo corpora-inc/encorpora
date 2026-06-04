@@ -20,11 +20,16 @@ import type { MapView } from "../contracts/runtime"
 import type { Translate } from "../contracts/runtime"
 import {
   ensureMapStyles,
-  fitProjection,
+  centeredProjection,
   prepCanvas,
   createMapT,
   type MapT,
 } from "./mapCore"
+
+/** How far (world units) the minimap window shows around the player. A ~120u
+ *  radius keeps you centred with your immediate neighbourhood + nearby landmarks
+ *  in view, scrolling as you walk (so you never run off the edge of the map). */
+const MINIMAP_HALF_SPAN = 120
 import { drawBase, drawPois, drawQuestMarkers, drawRemotes, drawPlayer } from "./schematic"
 
 const LOG = "[wp/minimap]"
@@ -80,6 +85,16 @@ export function mountMinimap(parent: HTMLElement, opts: MinimapOptions): Minimap
     '<path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/>'
   el.appendChild(expand)
 
+  // CRITICAL (FAB_POLISH §2.4 / §8 P0.4): the minimap sits in the LOOK-stick half
+  // (bottom-right). It lives inside `.wp-overlay`, whose dual-joystick input layer
+  // captures EVERY pointerdown that bubbles to it — so a tap on the minimap would
+  // ALSO fling the look camera (and could suppress the button's click). Swallow
+  // the pointer gesture here so a press opens the map instead of spawning a stick,
+  // exactly like the pack button does.
+  const swallow = (e: Event) => e.stopPropagation()
+  el.addEventListener("pointerdown", swallow)
+  el.addEventListener("pointerup", swallow)
+
   if (opts.onExpand) {
     el.addEventListener("click", () => {
       try {
@@ -104,7 +119,16 @@ export function mountMinimap(parent: HTMLElement, opts: MinimapOptions): Minimap
       const cssH = el.clientHeight || 132
       const ctx = prepCanvas(canvas, cssW, cssH)
       if (!ctx) return
-      const proj = fitProjection(opts.view.topology, cssW, cssH, 8)
+      // FOLLOW the player: a centred window that scrolls with them, so they're
+      // always at the middle of the minimap and never walk off it (the old
+      // fit-to-content projection framed a fixed central region of the big city).
+      let pp
+      try {
+        pp = opts.view.getPlayerPos()
+      } catch {
+        pp = { x: 0, z: 0, facing: 0 }
+      }
+      const proj = centeredProjection(pp.x, pp.z, MINIMAP_HALF_SPAN, cssW, cssH, 8)
 
       drawBase(ctx, opts.view.topology, proj, cssW, cssH, false)
       drawPois(ctx, opts.view.topology, proj, false)

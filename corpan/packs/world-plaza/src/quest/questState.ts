@@ -36,8 +36,17 @@ const LOG = "[wp/questState]"
 const STORE_KEY = "wp:quest:v1"
 const STORE_VERSION = 1 as const
 
-/** The per-step computed state (pure, from inventory + rules). */
-export type StepState = "needs-item" | "ready-to-deliver" | "done"
+/**
+ * The per-step computed state (pure, from inventory + rules + the beaten set).
+ *
+ * - "needs-item"        — a required item for this step isn't held yet.
+ * - "needs-challenge"   — the step is challenge-gated (`toolId`, no item rule)
+ *                         and its challenge has NOT been beaten yet. The tracker
+ *                         reads this to say "Begin the challenge with {who}".
+ * - "ready-to-deliver"  — the step's gate is satisfied; it can advance.
+ * - "done"              — the step is already marked done.
+ */
+export type StepState = "needs-item" | "needs-challenge" | "ready-to-deliver" | "done"
 
 /** A map marker the (future) minimap/full-map consumes (§4). */
 export interface QuestMarker {
@@ -71,10 +80,21 @@ export interface QuestEngine {
   currentStepState(): StepState
   /**
    * Deterministic gate: may this step advance RIGHT NOW? True when every
-   * required item is held (or the step has no item requirement). The model
-   * cannot bypass this — it is the referee, the model is the mouth.
+   * required item is held; for a challenge-gated step (a `toolId` with NO item
+   * rule) it requires the step's challenge to have been BEATEN (`markStepBeaten`).
+   * The model cannot bypass this — it is the referee, the model is the mouth.
    */
   isStepSatisfied(stepId: string): boolean
+  /**
+   * Record that THIS step's challenge was beaten (the deterministic challenge
+   * referee — `challengeSatisfiesStep` — already agreed). Does NOT auto-advance:
+   * the caller calls `markStepBeaten(stepId)` then `advance(stepId)`, keeping the
+   * gate explicit (mirrors the existing inventory deliver→advance flow). Additive
+   * + idempotent; persisted in the quest record.
+   */
+  markStepBeaten(stepId: string): void
+  /** Whether this step's challenge has been recorded beaten. */
+  isStepBeaten(stepId: string): boolean
   /**
    * Advance a step: ONLY honored when `isStepSatisfied(stepId)` agrees. Consumes
    * the step's required items, marks it done, grants the step/quest reward when
@@ -96,10 +116,13 @@ interface PersistedQuest {
   d: Record<string, boolean> // stepDone
   x: number // xp
   c: boolean // complete
+  b?: string[] // beaten step ids (ADDITIVE; absent ⇒ []) — challenge-beaten gate
 }
 
-function loadPersisted(questId: string): { stepDone: Record<string, boolean>; xp: number; complete: boolean } {
-  const empty = { stepDone: {}, xp: 0, complete: false }
+function loadPersisted(
+  questId: string,
+): { stepDone: Record<string, boolean>; xp: number; complete: boolean; beaten: string[] } {
+  const empty = { stepDone: {}, xp: 0, complete: false, beaten: [] as string[] }
   try {
     const raw = localStorage.getItem(STORE_KEY)
     if (!raw) return empty
@@ -112,6 +135,7 @@ function loadPersisted(questId: string): { stepDone: Record<string, boolean>; xp
       stepDone: { ...(p.d ?? {}) },
       xp: Math.max(0, p.x | 0),
       complete: Boolean(p.c),
+      beaten: Array.isArray(p.b) ? p.b.filter((s): s is string => typeof s === "string") : [],
     }
   } catch (err) {
     console.warn(`${LOG} could not read quest state:`, err)
@@ -119,9 +143,23 @@ function loadPersisted(questId: string): { stepDone: Record<string, boolean>; xp
   }
 }
 
-function persist(questId: string, playerId: string, stepDone: Record<string, boolean>, xp: number, complete: boolean): void {
+function persist(
+  questId: string,
+  playerId: string,
+  stepDone: Record<string, boolean>,
+  xp: number,
+  complete: boolean,
+  beaten: Set<string>,
+): void {
   void playerId
-  const p: PersistedQuest = { v: STORE_VERSION, q: questId, d: stepDone, x: xp, c: complete }
+  const p: PersistedQuest = {
+    v: STORE_VERSION,
+    q: questId,
+    d: stepDone,
+    x: xp,
+    c: complete,
+    b: [...beaten],
+  }
   try {
     localStorage.setItem(STORE_KEY, JSON.stringify(p))
   } catch (err) {
@@ -146,6 +184,11 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
   for (const s of quest.steps) if (s.done) stepDone[s.id] = true
   let xp = persisted.xp
   let complete = persisted.complete
+  // The set of steps whose CHALLENGE has been beaten (the deterministic referee
+  // already agreed). The ADDITIONAL gate for a challenge-gated step (a `toolId`
+  // with no inventory rule). Inventory-gated steps ignore it (inventory stays
+  // authoritative — keeps the es-guadalajara clue→deliver chain unchanged).
+  const challengeBeaten = new Set<string>(persisted.beaten)
 
   const listeners = new Set<(e: QuestEvent) => void>()
   const emit = (e: QuestEvent) => {
@@ -167,7 +210,7 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
     }
   }
 
-  const save = () => persist(quest.id, playerId, stepDone, xp, complete)
+  const save = () => persist(quest.id, playerId, stepDone, xp, complete, challengeBeaten)
 
   const stepById = (id: string): QuestStep | undefined => quest.steps.find((s) => s.id === id)
 
@@ -175,19 +218,45 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
     return quest.steps.find((s) => !stepDone[s.id]) ?? null
   }
 
-  /** Deterministic gate: held all required items (or no item requirement). */
+  /**
+   * Deterministic gate. Resolution order (the model never bypasses any of it):
+   *   1. already done                       → satisfied.
+   *   2. has an INVENTORY requirement        → inventory is authoritative (held
+   *      all required items? — the es-guadalajara clue→deliver rule, unchanged).
+   *   3. else has a `toolId` (challenge-gated)→ satisfied ONLY once the challenge
+   *      has been BEATEN (`markStepBeaten`).
+   *   4. else (talk-only: no item, no tool)  → trivially satisfiable (advances on
+   *      engage).
+   */
   function isStepSatisfied(stepId: string): boolean {
     if (stepDone[stepId]) return true
     const required = requiredForStep(quest.id, stepId)
-    if (required.length === 0) return true // no item gate → satisfiable by other means
-    return hasNeeded(inventory, quest.id, stepId)
+    if (required.length > 0) return hasNeeded(inventory, quest.id, stepId) // inventory authoritative
+    const step = stepById(stepId)
+    if (step?.toolId) return challengeBeaten.has(stepId) // challenge-gated
+    return true // talk-only → satisfiable by engagement
   }
 
   function stepState(stepId: string): StepState {
     if (stepDone[stepId]) return "done"
     const required = requiredForStep(quest.id, stepId)
-    if (required.length === 0) return "ready-to-deliver"
-    return missingFor(inventory, quest.id, stepId).length > 0 ? "needs-item" : "ready-to-deliver"
+    if (required.length > 0) {
+      return missingFor(inventory, quest.id, stepId).length > 0 ? "needs-item" : "ready-to-deliver"
+    }
+    const step = stepById(stepId)
+    if (step?.toolId && !challengeBeaten.has(stepId)) return "needs-challenge"
+    return "ready-to-deliver"
+  }
+
+  function markStepBeaten(stepId: string): void {
+    if (!stepById(stepId)) {
+      console.warn(`${LOG} markStepBeaten("${stepId}") — no such step in quest ${quest.id}`)
+      return
+    }
+    if (challengeBeaten.has(stepId)) return // idempotent
+    challengeBeaten.add(stepId)
+    save()
+    emit({ type: "change" })
   }
 
   function currentStepState(): StepState {
@@ -278,6 +347,8 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
     stepState,
     currentStepState,
     isStepSatisfied,
+    markStepBeaten,
+    isStepBeaten: (id) => challengeBeaten.has(id),
     advance,
     getQuestMarkers,
     subscribe(fn) {
@@ -287,6 +358,7 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
     reset() {
       for (const k of Object.keys(stepDone)) delete stepDone[k]
       for (const s of quest.steps) if (s.done) stepDone[s.id] = true
+      challengeBeaten.clear()
       xp = 0
       complete = false
       try {

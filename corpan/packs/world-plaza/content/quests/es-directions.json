@@ -1,0 +1,33 @@
+{
+  "id": "es-directions",
+  "title": "Which Way to the Fountain?",
+  "narrative": "Ask for directions at the plaza fountain and learn the way around.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "travel",
+  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 1 },
+  "steps": [
+    {
+      "id": "ask-way",
+      "label": "Ask for directions at the fountain",
+      "anchorId": "fountain",
+      "toolId": "repeat-after"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking the way, naming landmarks, and following directions.",
+    "scaffold": "beginner",
+    "ragSources": ["base-travel"],
+    "contentSelector": {
+      "levels": ["A1", "A2"],
+      "domains": ["travel"],
+      "languageCodes": ["es"]
+    },
+    "toolWhitelist": ["repeat-after", "listen-choose", "translate-fast"]
+  },
+  "rewards": {
+    "xp": 60,
+    "coins": 15,
+    "badge": "wayfinder"
+  },
+  "nextQuestIds": ["es-market-haggle", "es-guadalajara-route"]
+}

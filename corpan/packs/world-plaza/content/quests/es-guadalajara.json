@@ -37,5 +37,6 @@
     "coins": 20,
     "badge": "wayfarer",
     "grant": ["map-scrap"]
-  }
+  },
+  "nextQuestIds": ["es-cafe-travel", "es-market-haggle", "es-directions"]
 }

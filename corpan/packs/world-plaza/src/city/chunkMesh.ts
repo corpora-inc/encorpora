@@ -7,8 +7,8 @@ import { createBuildings, type Blocker } from "../world/buildings"
 import { instanceMatrix } from "../world/props3d"
 import type { SpeciesId } from "../world/composition"
 import type { MaterialLibrary } from "../render/materials"
-import { chunkGroundRequest } from "./chunkGround"
-import { stampGroundMesh, type CityCache } from "./cityCache"
+import { buildChunkGround } from "./cityGround"
+import type { CityCache } from "./cityCache"
 import type { CityChunk, CityProp, CitySurface } from "./layout"
 
 /**
@@ -20,8 +20,9 @@ import type { CityChunk, CityProp, CitySurface } from "./layout"
  * texture, built a FRESH prop master mesh per species, and painted a ground
  * DynamicTexture — ~130ms of hitch whenever a chunk crossed the horizon. Now ALL
  * that shared work lives in a CITY-LIFETIME `CityCache`:
- *   • GROUND  → fetch-or-bake a shared baked material (cityCache.groundFor); a
- *     chunk only stamps a cheap `CreateGround` mesh referencing it.
+ *   • GROUND  → SHARED tileable materials (cache.groundSurfaces); a chunk builds
+ *     cheap flat geometry (one merged mesh per surface) referencing them — no
+ *     per-chunk baked texture (Stage 3 memory fix).
  *   • BUILDINGS → the shared façade `BuildingPool` (painted once, reused), so a
  *     chunk's buildings just BUILD GEOMETRY against already-uploaded textures.
  *   • PROPS → clone the city-lifetime master mesh per species (geometry +
@@ -92,15 +93,20 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
   let tBld = 0
   let tProps = 0
 
-  // ---- phase 0: ground (shared baked material; chunk stamps a cheap mesh) ----
+  // ---- phase 0: ground (SHARED tileable materials; chunk builds cheap geometry)
+  // Stage 3: no per-chunk baked texture. The chunk partitions its area into
+  // non-overlapping cells and builds one merged flat mesh per surface, each
+  // referencing a city-shared tileable material (roads BAKED-IN as part of the
+  // one flat ground — the §2 z-fight rule). The shared materials survive; the
+  // chunk frees only its own geometry.
   const buildGround = () => {
     const t = perfEnabled() ? performance.now() : 0
-    const { request, center } = chunkGroundRequest(chunk, opts.baseSurface, opts.palette)
-    const { material, side } = cache.groundFor(request)
-    const mesh = stampGroundMesh(scene, chunk.key, center, side, material)
-    mesh.parent = root
-    disposers.push(() => mesh.dispose(false, false)) // shared material survives
-    drawCount += 1
+    // base ground density: grass tiles wider (8u) than warm street earth (6u).
+    const baseMPT = opts.baseSurface === "grass" ? 8 : 6
+    const g = buildChunkGround(scene, chunk, opts.baseSurface, baseMPT, cache.groundSurfaces)
+    g.root.parent = root
+    disposers.push(g.dispose) // shared materials survive
+    drawCount += g.meshCount
     if (perfEnabled()) tGround = performance.now() - t
   }
 

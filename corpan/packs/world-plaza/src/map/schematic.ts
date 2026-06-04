@@ -158,9 +158,11 @@ export function drawMarker(
     ctx.shadowBlur = 3
     ctx.shadowOffsetY = 1
   }
-  // A white halo gives every shape a crisp edge over busy ground.
+  // A white halo gives every shape a crisp edge over busy ground. On the small
+  // minimap (~108-168px) the markers read muddy with a thin halo, so thicken it
+  // to 1.8 for cleaner separation (FAB_POLISH §4.6 / §1.3).
   ctx.lineJoin = "round"
-  ctx.lineWidth = detail ? 2 : 1.4
+  ctx.lineWidth = detail ? 2 : 1.8
   ctx.strokeStyle = "rgba(255,255,255,0.95)"
   ctx.fillStyle = style.color
   shapePath(ctx, style.shape, x, y, size)
@@ -319,8 +321,9 @@ export function drawQuestMarkers(
         ring(ctx, p.x, p.y, baseR + ph * (detail ? 18 : 10))
         ctx.globalAlpha = 1
       }
-      // The vivid amber STAR — the unmistakable "go here".
-      drawMarker(ctx, p.x, p.y, detail ? 9 : 5, objStyle, detail)
+      // The vivid amber STAR — the unmistakable "go here". Raised to 6 on the
+      // minimap so the objective stays legible at 108-168px (FAB_POLISH §4.6).
+      drawMarker(ctx, p.x, p.y, detail ? 9 : 6, objStyle, detail)
     } else {
       // Source hint = a leaf-green DROPLET ("where to find the item").
       drawMarker(ctx, p.x, p.y, detail ? 7 : 4, hintStyle, detail)
@@ -382,10 +385,13 @@ export function drawPlayer(
   const p = proj.toScreen(pos.x, pos.z)
   const { dx, dz } = headingVec(pos.facing)
   const len = detail ? 16 : 9
+  // The projection is north-up (+z → screen UP), so a world +z heading points to
+  // screen -y: negate dz when turning the world heading into a SCREEN direction.
+  const sdz = -dz
   const tipX = p.x + dx * len
-  const tipY = p.y + dz * len
+  const tipY = p.y + sdz * len
   // Heading cone — a crisp white-haloed arrow so "you + where you face" pops.
-  const ang = Math.atan2(dz, dx)
+  const ang = Math.atan2(sdz, dx)
   const spread = 0.52
   const back = detail ? 9 : 5.5
   ctx.save()

@@ -13,23 +13,32 @@ export const MAP_CSS = `
 /* -------------------------------------------------- corner minimap -------- */
 .wp-minimap {
   position: absolute;
-  right: calc(env(safe-area-inset-right, 0px) + 14px);
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
-  z-index: var(--wp-z-minimap, 13);
-  width: var(--wp-minimap-size, 132px);
-  height: var(--wp-minimap-size, 132px);
-  border-radius: 16px;
+  right: calc(env(safe-area-inset-right, 0px) + var(--wp-fab-inset, 14px));
+  bottom: calc(env(safe-area-inset-bottom, 0px) + var(--wp-fab-inset, 14px));
+  /* Its OWN distinct z (was 13, colliding with the status-detail card). The size
+     is ONE shared token (--wp-minimap-h, defined+responsive in styles.css) — the
+     old per-module --wp-minimap-size duplicate is retired. */
+  z-index: var(--wp-z-minimap, 36);
+  width: var(--wp-minimap-h, 132px);
+  height: var(--wp-minimap-h, 132px);
+  border-radius: var(--wp-r-card, 18px);
   padding: 0;
   border: none;
   cursor: pointer;
   background: linear-gradient(180deg, #f7efe0, #ece0c6);
+  /* The saturated 3px accent ring is DROPPED (FAB_POLISH §3.1): it was the only
+     surface with a colored border, breaking the paper language. Now the shared
+     cut-paper highlight + a hairline frame match the inventory cells; the tint
+     comes from the player wedge + POIs INSIDE the canvas, not the frame. */
   box-shadow:
-    0 6px 18px rgba(40, 28, 12, 0.28),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
-    inset 0 0 0 3px var(--wp-map-accent, #c46b4a);
+    var(--wp-e2, 0 4px 14px rgba(58, 47, 37, 0.2)),
+    var(--wp-cut, inset 0 0 0 1px rgba(255, 255, 255, 0.5)),
+    inset 0 0 0 1px var(--wp-hairline, rgba(120, 100, 70, 0.18));
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  /* Governed by chromeVisibility (role: "map") — recede WITH the rest of the
+     chrome instead of staying fully lit during dialogue/challenge/menu. */
+  transition: opacity 0.22s ease, transform 0.16s ease, box-shadow 0.16s ease;
 }
 .wp-minimap:hover { transform: translateY(-1px); }
 .wp-minimap:active { transform: translateY(0); }
@@ -37,19 +46,26 @@ export const MAP_CSS = `
   outline: 2px solid var(--wp-map-accent, #c46b4a);
   outline-offset: 2px;
 }
+/* chromeVisibility recede rules (FAB_POLISH §7.1): dim WITH the band on focused,
+   hide fully on a blocking surface — the cohesive single-breath recede. */
+.wp-minimap[data-wp-chrome="dim"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.wp-minimap[data-wp-chrome="hidden"] {
+  opacity: 0;
+  pointer-events: none;
+}
 .wp-minimap-canvas { display: block; width: 100%; height: 100%; }
 .wp-minimap-expand {
   position: absolute;
-  top: 5px;
-  right: 6px;
+  top: 6px;
+  right: 7px;
   width: 18px;
   height: 18px;
-  opacity: 0.72;
+  opacity: 0.66;
   pointer-events: none;
   color: var(--wp-map-accent, #c46b4a);
-}
-@media (max-width: 540px) {
-  .wp-minimap { --wp-minimap-size: 108px; }
 }
 
 /* -------------------------------------------------- full-screen map ------- */

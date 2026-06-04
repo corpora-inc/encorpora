@@ -167,6 +167,18 @@ export type OpenArgs = {
    * celebratory English string; the orchestrator overrides per-locale.
    */
   itemReceivedLabel?: (itemLabel: string) => string
+  /**
+   * DETERMINISTIC objective trigger (A2). When THIS NPC is the objective NPC for
+   * the active quest step, the orchestrator passes the step's challenge here so a
+   * clear "Begin" affordance ALWAYS appears after the greeting — regardless of
+   * `resolveGameOffer` (which returns null when the persona∩quest whitelist is
+   * empty). It SEEDS `currentOffer` (the same standing-offer the Play chip + the
+   * dedup'd `launchChallenge` path already use), so the launch never depends on
+   * the model emitting `<<tool>>`. `chipLabel` is the localized "Begin" label.
+   * ADDITIVE — absent ⇒ behaviour is exactly as today (offer from the whitelist,
+   * may be null). Only set for the CURRENT step's objective NPC.
+   */
+  forcedOffer?: { tool: ChallengeToolId; chipLabel: string }
 }
 
 export interface NpcDialogueHandle {
@@ -240,12 +252,31 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
     // exactly one challenge launches per offer, whichever fires first.
     let offerTurn = 0
     let challengeLive = false
-    let currentOffer: GameOffer | null = resolveGameOffer(
-      args.npcRole,
-      args.quest,
-      offerTurn,
-      args.learnerPair.target,
-    )
+    /**
+     * Resolve the standing game offer for the current `offerTurn`. The
+     * DETERMINISTIC objective trigger (A2): when `args.forcedOffer` is set (this
+     * is the objective NPC for the active step), ALWAYS return a step-bound offer
+     * with the "Begin" chip label — bypassing `resolveGameOffer`'s null return on
+     * an empty persona∩quest whitelist. The segue is the same deterministic,
+     * hardcoded, target-language phrase the whitelist path uses, so the flavour is
+     * identical. Non-objective NPCs fall through to the whitelist offer (may be
+     * null → no broken offer).
+     */
+    function resolveStandingOffer(turn: number): GameOffer | null {
+      if (args.forcedOffer) {
+        return {
+          tool: args.forcedOffer.tool,
+          segue: resolveSegueForSeed(
+            args.forcedOffer.tool,
+            args.learnerPair.target,
+            `${args.npcRole.id}|begin|${turn}`,
+          ),
+          chipLabel: args.forcedOffer.chipLabel,
+        }
+      }
+      return resolveGameOffer(args.npcRole, args.quest, turn, args.learnerPair.target)
+    }
+    let currentOffer: GameOffer | null = resolveStandingOffer(offerTurn)
     let challengeObserver: MutationObserver | null = null
 
     // The rotating MOOD for THIS conversation: deterministic from npc id + a
@@ -257,7 +288,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
      *  or while a challenge is live). */
     function showPlayOffer(): void {
       if (closed || challengeLive) return
-      currentOffer ??= resolveGameOffer(args.npcRole, args.quest, offerTurn, args.learnerPair.target)
+      currentOffer ??= resolveStandingOffer(offerTurn)
       // The Play-chip label is TARGET-LANGUAGE (from the offer), not English.
       ui.setPlayOffer(currentOffer != null, currentOffer?.chipLabel ?? strings.playChip)
     }
@@ -328,8 +359,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
 
     /** Player tapped the deterministic Play chip → launch from the standing offer. */
     function onPlayChipTapped(): void {
-      const offer =
-        currentOffer ?? resolveGameOffer(args.npcRole, args.quest, offerTurn, args.learnerPair.target)
+      const offer = currentOffer ?? resolveStandingOffer(offerTurn)
       if (!offer) return
       launchChallenge(offer.tool, {})
     }
@@ -358,7 +388,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       if (closed) return
       challengeLive = false
       offerTurn += 1
-      currentOffer = resolveGameOffer(args.npcRole, args.quest, offerTurn, args.learnerPair.target)
+      currentOffer = resolveStandingOffer(offerTurn)
       // A short, in-character congrats keeps the conversation flowing around the
       // game (the actual reward toast/HUD is game.ts's job).
       ui.addNote(strings.congrats)
@@ -656,7 +686,13 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       if (!special || !args.questEngine || !args.inventory) return undefined
       const step = args.questEngine.currentStep()
       if (!step) return undefined
-      const stepState = args.questEngine.stepState(step.id)
+      // The special-NPC FACTS only distinguish needs-item / ready-to-deliver /
+      // done. A challenge-gated step ("needs-challenge", no inventory rule) maps
+      // to "ready-to-deliver" for the re-voiced beat — the deterministic "Begin"
+      // affordance (not the FACTS) drives the challenge launch.
+      const rawState = args.questEngine.stepState(step.id)
+      const stepState: "needs-item" | "ready-to-deliver" | "done" =
+        rawState === "needs-challenge" ? "ready-to-deliver" : rawState
       const authoredClue = authoredClueForStep(args.inventory, args.quest.id, step.id)
       const nextHint = authoredNextHint(args.inventory, args.quest, step.id)
       // The needed item label = first required id for the step the player lacks.

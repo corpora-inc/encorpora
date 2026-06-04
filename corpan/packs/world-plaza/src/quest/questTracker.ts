@@ -64,6 +64,8 @@ export interface QuestTrackerStrings {
   deliverItem: (item: string, who: string) => string
   /** Builds "→ talk to {who}" hint when the step has a special NPC. */
   talkTo: (who: string) => string
+  /** Builds "Begin the challenge with {who}" when the step is challenge-gated. */
+  beginChallenge: (who: string) => string
   /** Builds "step {done} of {total}". */
   progress: (done: number, total: number) => string
   /** Shown when the quest is complete (next-level affordance). */
@@ -87,6 +89,7 @@ const DEFAULT_STRINGS: QuestTrackerStrings = {
   findItem: (item) => `Find ${item}`,
   deliverItem: (item, who) => `Bring ${item} to ${who}`,
   talkTo: (who) => `→ talk to ${who}`,
+  beginChallenge: (who) => `Begin the challenge with ${who}`,
   progress: (done, total) => `Step ${done} of ${total}`,
   complete: "Quest complete — onward!",
   details: "Details",
@@ -442,6 +445,9 @@ export function mountQuestTracker(
         hint = strings.findItem(itemLabel(needed))
       } else if (st === "ready-to-deliver" && held && who) {
         hint = strings.deliverItem(itemLabel(held), who)
+      } else if (st === "needs-challenge" && who) {
+        // Challenge-gated step (no item rule) → hand-hold to the Begin affordance.
+        hint = strings.beginChallenge(who)
       } else if (who) {
         hint = strings.talkTo(who)
       }

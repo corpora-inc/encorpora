@@ -90,7 +90,10 @@ export interface MenuPanelHandle {
   dispose(): void
 }
 
-const SECTION_ORDER: MenuSectionId[] = ["map", "inventory", "quest"]
+// Map · Inventory · Quest · Badges — Badges is a real 4th tab (FAB_POLISH §4.1),
+// not a deep-link-only section. At 4 tabs the segmented control still fits ≥320px;
+// the strip scroll-snaps on the very narrowest phones (CSS, ≤360px).
+const SECTION_ORDER: MenuSectionId[] = ["map", "inventory", "quest", "badges"]
 
 export function createMenuPanel(opts: MenuPanelOptions): MenuPanelHandle {
   const s: MenuStrings = {
@@ -155,27 +158,58 @@ export function createMenuPanel(opts: MenuPanelOptions): MenuPanelHandle {
       b.classList.toggle("wp-menu-tab--on", b.getAttribute("data-wp-menu-tab") === active),
     )
 
+    // Cross-fade the inner content on a tab swap (FAB_POLISH §4.5): the FIXED
+    // frame never resizes — only the content fades 0→1 over 140ms. The fade
+    // wrapper carries `.wp-menu-fade`; reduced-motion is handled in CSS.
+    const fade = document.createElement("div")
+    fade.className = "wp-menu-fade"
+    fade.style.opacity = "0"
+    body.appendChild(fade)
+
     const factory = opts.sections?.[active]
     if (factory) {
       try {
-        const cleanup = factory(body)
+        const cleanup = factory(fade)
         if (typeof cleanup === "function") sectionCleanup = cleanup
       } catch (err) {
         console.error(`[wp/shell/menuPanel] section "${active}" view threw:`, err)
-        body.replaceChildren()
-        body.appendChild(placeholder(s.comingSoon))
+        fade.replaceChildren()
+        fade.appendChild(emptyCard(s.comingSoon))
       }
     } else {
-      // M0 placeholder — never a dead-end, never a crash.
-      body.appendChild(placeholder(s.comingSoon))
+      // No factory wired yet → a premium empty-state card, never a dead-end/crash.
+      fade.appendChild(emptyCard(s.comingSoon))
     }
+
+    // Paint at opacity 0, then rAF → 1 so the swap reads as a gentle fade.
+    requestAnimationFrame(() => {
+      fade.style.opacity = "1"
+    })
   }
 
-  function placeholder(text: string): HTMLElement {
-    const ph = document.createElement("div")
-    ph.className = "wp-menu-coming"
-    ph.textContent = text
-    return ph
+  /**
+   * A premium empty-state card (FAB_POLISH §4.3): a soft debossed glyph + a one-
+   * line message, centered in the fixed frame so a short tab never reads as an
+   * unfinished void. Used for not-yet-wired sections (and a section view that
+   * throws). A section view that has its OWN empty state renders that instead.
+   */
+  function emptyCard(text: string): HTMLElement {
+    const card = document.createElement("div")
+    card.className = "wp-menu-empty"
+    const glyph = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+    glyph.setAttribute("class", "wp-menu-empty-glyph")
+    glyph.setAttribute("viewBox", "0 0 24 24")
+    glyph.setAttribute("fill", "none")
+    glyph.setAttribute("aria-hidden", "true")
+    // A small compass/star — "nothing here yet, explore on."
+    glyph.innerHTML =
+      '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>' +
+      '<path d="M12 7.5l1.6 3.3 3.4.4-2.5 2.3.7 3.4L12 18.6l-3.7 1.3.7-3.4-2.5-2.3 3.4-.4z" fill="currentColor" opacity="0.85"/>'
+    const title = document.createElement("div")
+    title.className = "wp-menu-empty-title"
+    title.textContent = text
+    card.append(glyph, title)
+    return card
   }
 
   function build(): HTMLElement {

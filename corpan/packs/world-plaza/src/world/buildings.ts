@@ -8,6 +8,8 @@ import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import type { Material } from "@babylonjs/core/Materials/material"
 import { Color3, Vector3 } from "@babylonjs/core/Maths/math"
 import type { MaterialLibrary } from "../render/materials"
+import { drawFacade, paper, rounded, type FacadeSpec } from "./facadePaint"
+import { createFacadePainter, type FacadePainter } from "./facadePainter"
 
 /**
  * buildings.ts — PREMIUM colonial paper-cutout buildings for World Plaza.
@@ -90,13 +92,17 @@ export interface BuildingPool {
  */
 export function createBuildingPool(scene: Scene): BuildingPool {
   const mats = new MatPool(scene, "wp-bldg")
-  const texs = new TexPool(scene, "wp-bldg")
+  // ONE façade painter (OffscreenCanvas worker) for the whole city — façade paints
+  // run off the main thread when supported, else fall back to a main-thread paint.
+  const painter = createFacadePainter()
+  const texs = new TexPool(scene, "wp-bldg", painter)
   return {
     mats,
     texs,
     dispose: () => {
       mats.dispose()
       texs.dispose()
+      painter.dispose()
     },
   }
 }
@@ -384,7 +390,10 @@ class MatPool {
 /* a separate cache for facade textures, keyed independently of materials. */
 class TexPool {
   private cache = new Map<string, DynamicTexture>()
-  constructor(private scene: Scene, private tag: string) {}
+  constructor(private scene: Scene, private tag: string, private painter?: FacadePainter) {}
+
+  /** SYNCHRONOUS main-thread paint (used for the small one-off sign/awning
+   *  textures, and as the façade fallback when the worker isn't available). */
   get(key: string, w: number, h: number, draw: (c: CanvasRenderingContext2D, w: number, h: number) => void): DynamicTexture {
     const hit = this.cache.get(key)
     if (hit) return hit
@@ -396,6 +405,64 @@ class TexPool {
     this.cache.set(key, tex)
     return tex
   }
+
+  /**
+   * Get-or-paint a FAÇADE texture. Stage 3: when the OffscreenCanvas worker is
+   * available, the texture is created BLANK immediately (so the building's
+   * geometry/material flow is unchanged — it always gets a real texture back NOW)
+   * and the actual canvas2D paint runs OFF the main thread; when the worker
+   * returns the `ImageBitmap` a few frames later we blit it in + update (a cheap
+   * GPU upload, never the paint). The façade is briefly blank stucco until then —
+   * but each variant is painted ONCE for the whole city, so it's a one-time,
+   * sub-second fill on first appearance. Without worker support we paint inline
+   * exactly as before (no behaviour change).
+   */
+  getFacade(key: string, w: number, h: number, spec: FacadeSpec): DynamicTexture {
+    const hit = this.cache.get(key)
+    if (hit) return hit
+    // No worker → synchronous main-thread paint (identical to the old path).
+    if (!this.painter || !this.painter.supported) {
+      return this.get(key, w, h, (c, ww, hh) => drawFacade(c, ww, hh, spec))
+    }
+    // Worker path: blank texture now, fill on bitmap arrival.
+    const tex = new DynamicTexture(`${this.tag}-fx-${this.cache.size}`, { width: w, height: h }, this.scene, true)
+    const ctx = tex.getContext() as unknown as CanvasRenderingContext2D
+    // prime with the façade's stucco base so a not-yet-painted wall reads as wall,
+    // not a transparent hole, in the (sub-second) window before the bitmap lands.
+    ctx.fillStyle = rgbToCss(spec.stucco)
+    ctx.fillRect(0, 0, w, h)
+    tex.update()
+    this.cache.set(key, tex)
+    this.painter
+      .paintFacade(w, h, spec)
+      .then((bitmap) => {
+        if (!bitmap) {
+          // worker failed for this paint → fall back to a main-thread paint so the
+          // façade is never left as the blank prime.
+          ctx.clearRect(0, 0, w, h)
+          drawFacade(ctx, w, h, spec)
+          tex.update()
+          return
+        }
+        // cheap GPU-side upload: blit the worker's bitmap into the texture canvas.
+        try {
+          ctx.clearRect(0, 0, w, h)
+          ;(ctx as unknown as { drawImage: (b: ImageBitmap, x: number, y: number) => void }).drawImage(bitmap, 0, 0)
+          tex.update()
+        } catch (e) {
+          console.error("[world-plaza/buildings] façade bitmap upload failed", e)
+        }
+        bitmap.close?.()
+      })
+      .catch((e) => {
+        console.error("[world-plaza/buildings] façade worker paint rejected → main-thread fallback", e)
+        ctx.clearRect(0, 0, w, h)
+        drawFacade(ctx, w, h, spec)
+        tex.update()
+      })
+    return tex
+  }
+
   dispose() {
     for (const t of this.cache.values()) t.dispose()
     this.cache.clear()
@@ -403,155 +470,14 @@ class TexPool {
 }
 
 /* ----------------------------------------------------- paper-cutout drawing */
-
-/** torn-paper rounded rect outline (deterministic wobble), matches cutoutArt. */
-function tornRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number, amp = 1.6) {
-  const rr = Math.min(r, w / 2, h / 2)
-  const steps = 40
-  const cx = x + w / 2
-  const cy = y + h / 2
-  ctx.beginPath()
-  for (let i = 0; i <= steps; i++) {
-    const t = (i / steps) * Math.PI * 2
-    const ux = Math.cos(t)
-    const uy = Math.sin(t)
-    const k = 1 - rr / Math.min(w, h)
-    const sx = Math.sign(ux) * Math.pow(Math.abs(ux), 1 - k * 0.6)
-    const sy = Math.sign(uy) * Math.pow(Math.abs(uy), 1 - k * 0.6)
-    const j = Math.sin(t * 9.3 + cx * 0.7) * Math.cos(t * 5.1 + cy * 0.3) * amp
-    const px = cx + sx * (w / 2 + j)
-    const py = cy + sy * (h / 2 + j)
-    if (i === 0) ctx.moveTo(px, py)
-    else ctx.lineTo(px, py)
-  }
-  ctx.closePath()
-}
-
-function rounded(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
-  const rr = Math.min(r, w / 2, h / 2)
-  ctx.beginPath()
-  ctx.moveTo(x + rr, y)
-  ctx.arcTo(x + w, y, x + w, y + h, rr)
-  ctx.arcTo(x + w, y + h, x, y + h, rr)
-  ctx.arcTo(x, y + h, x, y, rr)
-  ctx.arcTo(x, y, x + w, y, rr)
-  ctx.closePath()
-}
-
-/** a paper piece: drop shadow + cream deckle + fill + gentle sheen. */
-function paper(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-  fill: string | CanvasGradient,
-  opts: { torn?: boolean; deckle?: number; shadow?: number } = {},
-) {
-  const deckle = opts.deckle ?? 5
-  const t = opts.torn ?? true
-  ctx.save()
-  ctx.shadowColor = "rgba(28,20,12,0.30)"
-  ctx.shadowBlur = opts.shadow ?? 7
-  ctx.shadowOffsetX = 1.5
-  ctx.shadowOffsetY = 4
-  ctx.fillStyle = "rgba(255,250,240,1)"
-  if (t) tornRect(ctx, x - deckle, y - deckle, w + deckle * 2, h + deckle * 2, r + deckle)
-  else rounded(ctx, x - deckle, y - deckle, w + deckle * 2, h + deckle * 2, r + deckle)
-  ctx.fill()
-  ctx.restore()
-
-  ctx.fillStyle = fill
-  if (t) tornRect(ctx, x, y, w, h, r, 1.1)
-  else rounded(ctx, x, y, w, h, r)
-  ctx.fill()
-
-  ctx.save()
-  if (t) tornRect(ctx, x, y, w, h, r, 1.1)
-  else rounded(ctx, x, y, w, h, r)
-  ctx.clip()
-  const sh = ctx.createLinearGradient(0, y, 0, y + h)
-  sh.addColorStop(0, "rgba(255,255,255,0.16)")
-  sh.addColorStop(0.5, "rgba(255,255,255,0)")
-  sh.addColorStop(1, "rgba(20,12,6,0.14)")
-  ctx.fillStyle = sh
-  ctx.fillRect(x - 2, y - 2, w + 4, h + 4)
-  ctx.restore()
-}
-
-/** a shuttered window painted onto the facade canvas. */
-function drawWindow(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, trim: RGB, glass: string, flowers = true) {
-  const trimCss = rgbToCss(trim)
-  // recessed frame
-  paper(ctx, x, y, w, h, w * 0.08, trimCss, { deckle: 3, shadow: 4 })
-  // glass
-  const inset = w * 0.14
-  paper(ctx, x + inset, y + inset, w - inset * 2, h - inset * 2, w * 0.04, glass, { torn: false, deckle: 0, shadow: 0 })
-  // muntins (cross bars)
-  ctx.strokeStyle = trimCss
-  ctx.lineWidth = Math.max(1.5, w * 0.045)
-  ctx.beginPath()
-  ctx.moveTo(x + w / 2, y + inset)
-  ctx.lineTo(x + w / 2, y + h - inset)
-  ctx.moveTo(x + inset, y + h * 0.5)
-  ctx.lineTo(x + w - inset, y + h * 0.5)
-  ctx.stroke()
-  // open shutters flanking it
-  const sw = w * 0.26
-  const shFill = shade(trim, 0.12)
-  paper(ctx, x - sw * 0.7, y, sw, h, w * 0.05, rgbToCss(shFill), { deckle: 2, shadow: 3 })
-  paper(ctx, x + w - sw * 0.3, y, sw, h, w * 0.05, rgbToCss(shFill), { deckle: 2, shadow: 3 })
-  // slats on shutters
-  ctx.strokeStyle = "rgba(0,0,0,0.18)"
-  ctx.lineWidth = 1.5
-  for (let i = 1; i < 4; i++) {
-    const yy = y + (h / 4) * i
-    ctx.beginPath()
-    ctx.moveTo(x - sw * 0.7, yy)
-    ctx.lineTo(x - sw * 0.7 + sw, yy)
-    ctx.moveTo(x + w - sw * 0.3, yy)
-    ctx.lineTo(x + w - sw * 0.3 + sw, yy)
-    ctx.stroke()
-  }
-  // A restrained window-box under the sill — a believable detail, not a candy
-  // toy. Muted blooms, smaller, fewer; reads as a real planted ledge.
-  if (!flowers) return
-  paper(ctx, x + w * 0.12, y + h, w * 0.76, h * 0.14, w * 0.04, rgbToCss(shade(trim, -0.12)), { deckle: 2, shadow: 2 })
-  for (const fx of [0.3, 0.7]) {
-    ctx.fillStyle = "#9e5b4e" // muted brick-rose, not fire-engine red
-    ctx.beginPath()
-    ctx.arc(x + w * fx, y + h + h * 0.03, w * 0.038, 0, Math.PI * 2)
-    ctx.fill()
-    ctx.fillStyle = "#6f7d49" // sage greenery
-    ctx.beginPath()
-    ctx.arc(x + w * fx + w * 0.05, y + h + h * 0.05, w * 0.03, 0, Math.PI * 2)
-    ctx.fill()
-  }
-}
-
-/** a framed door (street side). */
-function drawDoor(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, trim: RGB, arched: boolean) {
-  // stone surround
-  paper(ctx, x - w * 0.12, y - h * 0.04, w * 1.24, h * 1.04, w * 0.1, rgbToCss(shade(trim, 0.3)), { deckle: 3, shadow: 5 })
-  // door leaf
-  const r = arched ? w * 0.5 : w * 0.08
-  paper(ctx, x, y, w, h, r, rgbToCss(trim), { deckle: 2, shadow: 3 })
-  // planks
-  ctx.strokeStyle = "rgba(0,0,0,0.22)"
-  ctx.lineWidth = Math.max(1.5, w * 0.03)
-  for (let i = 1; i < 3; i++) {
-    ctx.beginPath()
-    ctx.moveTo(x + (w / 3) * i, y + (arched ? h * 0.12 : 0))
-    ctx.lineTo(x + (w / 3) * i, y + h)
-    ctx.stroke()
-  }
-  // knob
-  ctx.fillStyle = "#e8c54a"
-  ctx.beginPath()
-  ctx.arc(x + w * 0.82, y + h * 0.55, w * 0.06, 0, Math.PI * 2)
-  ctx.fill()
-}
+//
+// The façade painter (tornRect / rounded / paper / drawWindow / drawDoor /
+// drawFacade + FacadeSpec) now lives in the PURE `facadePaint.ts` module so it
+// can run in an OffscreenCanvas worker OR on the main thread (Stage 3 — moving
+// the paint off the main thread for the startup-spike + mobile headroom). It is
+// imported above. The small one-off `drawSign`/`drawAwning` textures below are
+// painted on the main thread (tiny, not worth a worker round-trip) and reuse the
+// shared `paper`/`rounded` helpers from the same module.
 
 /* a hanging shop sign drawn on its own little alpha plane. */
 function drawSign(ctx: CanvasRenderingContext2D, w: number, h: number, board: string, glyph: string) {
@@ -595,89 +521,7 @@ function drawAwning(ctx: CanvasRenderingContext2D, w: number, h: number, accent:
   }
 }
 
-/* ------------------------------------------------------------ facade canvas */
-
-interface FacadeSpec {
-  kind: BuildingKind
-  storeys: number
-  windowsPerRow: number
-  stucco: RGB
-  trim: RGB
-  hasDoor: boolean
-  arched: boolean
-  variant: number
-  /** glass colour — cool lit-cyan for the night city, soft blue for daylight. */
-  glass?: string
-  /** night city: skip the colonial flower-boxes (kept warm-day only). */
-  noFlowers?: boolean
-  /**
-   * the building's WORLD body height (wu). The facade canvas is stretched over
-   * this, so we size the door in canvas px FROM it — the door lands at a fixed
-   * world height (≈1.2 × H_p) on every building, tall enough to walk through,
-   * instead of scaling with the building and ending up a slit on a tower.
-   */
-  bodyWorldH?: number
-}
-
-/** paint a full wall facade (stucco base + windows + optional door). */
-function drawFacade(ctx: CanvasRenderingContext2D, W: number, H: number, s: FacadeSpec) {
-  // stucco base with a subtle painterly wash + plinth
-  const g = ctx.createLinearGradient(0, 0, 0, H)
-  g.addColorStop(0, rgbToCss(shade(s.stucco, 0.05)))
-  g.addColorStop(1, rgbToCss(shade(s.stucco, -0.08)))
-  ctx.fillStyle = g
-  ctx.fillRect(0, 0, W, H)
-  // stone plinth band along the bottom
-  ctx.fillStyle = rgbToCss(shade(s.stucco, -0.16))
-  ctx.fillRect(0, H * 0.88, W, H * 0.12)
-  // faint vertical brush streaks → aged stucco
-  ctx.strokeStyle = "rgba(120,90,60,0.06)"
-  ctx.lineWidth = 2
-  for (let i = 0; i < 9; i++) {
-    const x = (W / 9) * (i + 0.5) + Math.sin(i * 3.1) * 6
-    ctx.beginPath()
-    ctx.moveTo(x, H * 0.06)
-    ctx.lineTo(x, H * 0.84)
-    ctx.stroke()
-  }
-
-  const glass = s.glass ?? "#9fc3cf"
-  const rows = s.storeys
-  const cols = s.windowsPerRow
-  const topPad = H * (s.kind === "chapel" ? 0.14 : 0.1)
-  const botPad = H * 0.18
-  const rowSpan = (H - topPad - botPad) / rows
-  const winH = rowSpan * 0.6
-  const winW = (W / cols) * 0.46
-
-  // ---- the DOOR is a real, character-scaled opening at the facade base ----
-  // Size it in canvas px FROM the building's world height so it lands at a fixed
-  // ~1.2 × H_p in world (a person clears it) on a cottage AND a tower alike.
-  // Anchored to the plinth line so it reads as a ground-floor entrance you walk
-  // straight into, not a window that floated down into the door row.
-  if (s.hasDoor) {
-    const bodyWorldH = s.bodyWorldH ?? H_P * 2.5
-    const targetDoorWorldH = H_P * 1.2 // a person visibly fits through
-    const doorH = Math.min(rowSpan * 1.7, (targetDoorWorldH / bodyWorldH) * H)
-    const doorW = Math.min((W / cols) * 0.74, doorH * 0.62)
-    const doorX = (W - doorW) / 2
-    // sit the door on the plinth band (bottom of the wall) — base at H*0.985.
-    const doorY = H * 0.985 - doorH
-    drawDoor(ctx, doorX, doorY, doorW, doorH, s.trim, s.arched)
-  }
-
-  // ---- windows: a tidy grid, but never overlapping the central door bay ----
-  const doorCol = Math.floor(cols / 2)
-  for (let row = 0; row < rows; row++) {
-    const cy = topPad + rowSpan * row + (rowSpan - winH) / 2
-    for (let col = 0; col < cols; col++) {
-      const cellX = (W / cols) * col + (W / cols - winW) / 2
-      // skip the ground-row centre cell where the door now lives.
-      if (s.hasDoor && row === rows - 1 && col === doorCol) continue
-      drawWindow(ctx, cellX, cy, winW, winH, s.trim, glass, !s.noFlowers && row < rows - 1)
-    }
-  }
-}
+/* facade canvas (FacadeSpec + drawFacade) → moved to facadePaint.ts (worker-able). */
 
 /* ------------------------------------------------------- geometry: prisms */
 
@@ -964,12 +808,15 @@ function buildOne(
     noFlowers: style.neon,
     bodyWorldH: bodyH,
   }
-  const frontTex = texs.get(`front-${facadeKey}`, texW, texH, (c, w, h) => drawFacade(c, w, h, spec))
+  // Stage 3: route façade painting through the worker-aware pool (off-thread when
+  // supported, main-thread fallback otherwise). Geometry/material flow unchanged —
+  // `getFacade` always returns a real texture NOW.
+  const frontTex = texs.getFacade(`front-${facadeKey}`, texW, texH, spec)
   const frontMat = mats.textured(`front-${facadeKey}`, frontTex, false)
   // side facade: same but no door
   const sideWidthBucket = (front.side === "px" || front.side === "nx" ? b.w : b.d) >= 4 ? "w" : "n"
   const sideKey = `${kind}-${p.storeys}-${p.windowsPerRow}-${stucco.bucket}-${sideWidthBucket}`
-  const sideTex = texs.get(`side-${sideKey}`, texW, texH, (c, w, h) => drawFacade(c, w, h, { ...spec, hasDoor: false }))
+  const sideTex = texs.getFacade(`side-${sideKey}`, texW, texH, { ...spec, hasDoor: false })
   const sideMat = mats.textured(`side-${sideKey}`, sideTex, false)
 
   // helper to add a wall-face decal plane (proud 0.02)

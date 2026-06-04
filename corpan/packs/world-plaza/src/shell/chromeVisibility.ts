@@ -40,12 +40,19 @@ export type ChromeState =
   | "onboarding"
 
 /**
- * How a single registered surface should respond to each state. A surface is
- * either part of the "top band" (capsule + place tag) or the "pack" (the satchel
- * button), which recede on slightly different rules (the pack dims on `focused`,
- * the band does not).
+ * How a single registered surface should respond to each state:
+ *   - `band` — the top band (Status Capsule + Place Tag). Stays readable while an
+ *     NPC is `focused`, but steps BACK a touch (dim @ .7) so the Talk CTA is the
+ *     clear hero; fully recedes during dialogue/challenge/menu.
+ *   - `pack` — the bottom-left satchel button. Stays reachable while `focused`
+ *     (a crowded plaza is almost always "focused"; dimming it to pointer-none made
+ *     it permanently dead), fully recedes during a blocking surface.
+ *   - `map`  — the bottom-right minimap. Like the band, it stays VISIBLE (dim)
+ *     during `focused` (you want to orient while a Talk button shows), but recedes
+ *     fully on dialogue/challenge/menu — fixing the "minimap stays fully lit while
+ *     everything else recedes" incoherence (FAB_POLISH §7.1).
  */
-export type ChromeRole = "band" | "pack"
+export type ChromeRole = "band" | "pack" | "map"
 
 /** One registered chrome surface: its element + which receding rule it follows. */
 export interface ChromeSurface {
@@ -73,25 +80,26 @@ export interface ChromeVisibility {
  */
 type Visibility = "shown" | "dim" | "hidden"
 
-// `role` is currently uniform across states (every surface follows the same
-// recede rule); it stays in the signature so a future state can diverge bands
-// from the pack/map again without touching call sites.
-function visibilityFor(_role: ChromeRole, state: ChromeState): Visibility {
+// The recede rule now DIVERGES by role on `focused` (FAB_POLISH §7.2): the band
+// steps back (dim @ .7, still readable + interactive) so the Talk CTA is the hero;
+// the pack stays fully reachable; the minimap stays VISIBLE but dim. On any
+// blocking surface EVERY role — band, pack AND map — recedes fully, as one breath.
+function visibilityFor(role: ChromeRole, state: ChromeState): Visibility {
   switch (state) {
     case "world":
       return "shown"
     case "focused":
-      // An NPC is in range (Talk button showing). EVERYTHING stays fully shown
-      // AND interactive — in a crowded plaza you are almost always "focused", so
-      // dimming the pack to `pointer-events:none` here made it permanently dead
-      // (taps fell through to the joystick). The Talk CTA reads as the hero on
-      // its own (center-bottom); the pack/band/map stay reachable in their corners.
-      return "shown"
+      // An NPC is in range (Talk button showing). The band + minimap STEP BACK to
+      // `dim` (still readable/interactive — the CSS keeps band dim at .7, map at
+      // .4) so the Talk CTA reads as the hero; the pack stays fully reachable
+      // (dimming it to pointer-none made it dead — taps fell through to the stick).
+      if (role === "pack") return "shown"
+      return "dim"
     case "dialogue":
     case "challenge":
     case "menu":
     case "onboarding":
-      // A blocking surface owns the screen — ALL chrome recedes fully.
+      // A blocking surface owns the screen — ALL chrome recedes fully, together.
       return "hidden"
     default:
       return "shown"

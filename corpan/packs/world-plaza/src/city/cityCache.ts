@@ -1,8 +1,5 @@
 import type { Scene } from "@babylonjs/core/scene"
-import "@babylonjs/core/Meshes/Builders/groundBuilder"
-import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder"
 import type { Mesh } from "@babylonjs/core/Meshes/mesh"
-import type { Material } from "@babylonjs/core/Materials/material"
 import { createBuildingPool, type BuildingPool } from "../world/buildings"
 import {
   resolvePropPalette,
@@ -21,7 +18,7 @@ import {
   type PropPalette,
 } from "../world/props3d"
 import type { SpeciesId } from "../world/composition"
-import { MaterialLibrary } from "../render/materials"
+import type { MaterialLibrary } from "../render/materials"
 import { CityGroundSurfaces } from "./cityGround"
 
 /**
@@ -82,28 +79,6 @@ const PROP_FACTORY: Record<SpeciesId, PropFactory> = {
   trough: (scene, pal) => buildTrough(scene, pal).mesh,
 }
 
-/** A cached baked ground (texture+material shared by identical chunk grounds). */
-interface GroundEntry {
-  bake: GroundBake
-  /** world side length the bake was sized for (so the stamped mesh matches). */
-  side: number
-}
-
-/** The geometry a chunk hands the cache to fetch-or-bake its ground. */
-export interface GroundBakeRequest {
-  /** stable fingerprint key: identical fingerprints share one baked ground. */
-  key: string
-  bounds: { minX: number; maxX: number; minZ: number; maxZ: number }
-  base: { surface: SurfaceName; metersPerTile: number }
-  /** regions in chunk-LOCAL coords (centered on the chunk) so identical layouts
-   *  hash the same regardless of where in the world the chunk sits. */
-  regions: GroundRegion[]
-  /** per-chunk palette the bake consumes (already zone-tuned by the caller). */
-  palette: Record<string, string>
-  texelsPerUnit: number
-  maxEdge: number
-}
-
 export interface CityCache {
   /** the shared, city-lifetime façade material+texture pool for buildings. */
   buildingPool: BuildingPool
@@ -120,20 +95,26 @@ export interface CityCache {
    */
   propMaster: (species: SpeciesId) => Mesh
   /**
-   * Get-or-bake a chunk ground. Identical fingerprints (`req.key`) reuse one
-   * baked albedo/normal/material; the caller stamps a cheap ground mesh that
-   * references the shared material. The returned `material`/`side` are
-   * CITY-OWNED — never dispose them per chunk.
+   * The SHARED, tileable ground materials (Stage 3). A chunk builds flat geometry
+   * that references these six city-lifetime materials per non-overlapping cell —
+   * no per-chunk baked texture. The materials are CITY-OWNED (freed once on
+   * dispose); a chunk frees only its own ground geometry.
    */
-  groundFor: (req: GroundBakeRequest) => { material: Material; side: number }
+  groundSurfaces: CityGroundSurfaces
   dispose: () => void
 }
 
-export function createCityCache(scene: Scene, palette?: Record<string, string>): CityCache {
+export function createCityCache(
+  scene: Scene,
+  lib: MaterialLibrary,
+  palette?: Record<string, string>,
+): CityCache {
   const buildingPool = createBuildingPool(scene)
   const propPalette = resolvePropPalette(palette)
   const propMasters = new Map<SpeciesId, Mesh>()
-  const grounds = new Map<string, GroundEntry>()
+  // The shared, tileable ground materials (Stage 3) — six for the whole city,
+  // backed by the same MaterialLibrary the buildings use.
+  const groundSurfaces = new CityGroundSurfaces(lib)
 
   // TEMP A/B: __WP_NO_CACHE defeats every shared cache (fresh per call) so a
   // headless run can measure the OLD per-chunk-repeated cost for before/after.
@@ -157,65 +138,18 @@ export function createCityCache(scene: Scene, palette?: Record<string, string>):
     return m
   }
 
-  const groundFor = (req: GroundBakeRequest): { material: Material; side: number } => {
-    const span = Math.max(req.bounds.maxX - req.bounds.minX, req.bounds.maxZ - req.bounds.minZ)
-    if (noCache) {
-      // A/B perf only: fresh bake every call (the OLD per-chunk behavior). Stored
-      // under a unique key so city dispose still frees it (no leak); never the
-      // shipped path — gated behind `__WP_NO_CACHE`, off by default.
-      const bake = bakeGround(scene, req.palette, {
-        bounds: req.bounds,
-        base: req.base,
-        regions: req.regions,
-        texelsPerUnit: req.texelsPerUnit,
-        maxEdge: req.maxEdge,
-      })
-      grounds.set(`${req.key}#${grounds.size}`, { bake, side: span })
-      return { material: bake.material, side: span }
-    }
-    let e = grounds.get(req.key)
-    if (e) return { material: e.bake.material, side: e.side }
-    const bake = bakeGround(scene, req.palette, {
-      bounds: req.bounds,
-      base: req.base,
-      regions: req.regions,
-      texelsPerUnit: req.texelsPerUnit,
-      maxEdge: req.maxEdge,
-    })
-    e = { bake, side: span }
-    grounds.set(req.key, e)
-    return { material: bake.material, side: e.side }
-  }
-
   return {
     buildingPool,
     noCache,
     propPalette,
     propMaster,
-    groundFor,
+    groundSurfaces,
     dispose: () => {
       // free EVERYTHING city-owned, exactly once.
       buildingPool.dispose()
       for (const m of propMasters.values()) m.dispose(false, true)
       propMasters.clear()
-      for (const e of grounds.values()) e.bake.dispose()
-      grounds.clear()
+      groundSurfaces.dispose() // materials are owned by the MaterialLibrary
     },
   }
-}
-
-/** A throwaway ground mesh stamped against a SHARED baked material. */
-export function stampGroundMesh(
-  scene: Scene,
-  key: string,
-  center: { x: number; z: number },
-  side: number,
-  material: Material,
-): Mesh {
-  const mesh = MeshBuilder.CreateGround(`wp-city-ground-${key}`, { width: side, height: side }, scene)
-  mesh.position.set(center.x, 0, center.z)
-  mesh.isPickable = false
-  mesh.material = material
-  mesh.freezeWorldMatrix()
-  return mesh
 }

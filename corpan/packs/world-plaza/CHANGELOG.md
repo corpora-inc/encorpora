@@ -7,6 +7,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Deterministic, hand-held quest loop + juicy completion interlude (A2).**
+  The quest loop no longer depends on the model: every objective NPC now offers
+  its step's challenge via an always-present **"Begin" affordance** (a new
+  `forcedOffer` path in `npcRuntime`, reusing the dedup'd `launchChallenge`
+  plumbing) — no more "talked to the guy, nothing happened." The quest engine
+  learns when a **challenge was beaten** (`markStepBeaten` + a persisted
+  `challengeBeaten` set + a new `"needs-challenge"` step state); challenge-gated
+  steps now require the win to advance, while inventory rules stay authoritative
+  where present (the es-guadalajara clue→deliver chain is unchanged). Beginner
+  quests are **one challenge each**, re-authored simple, with a data-driven quest
+  graph (`nextQuestIds` on the schema + a new `questCatalog`). On completing a
+  quest's last step, a fullscreen **completion interlude**
+  (`src/vignettes/questInterlude.ts`) celebrates the reward (smorgasbord reveal +
+  fanfare) then shows a **2–3-way next-quest picker** (each card: title · where to
+  go · what to do) and resolves the chosen quest id; a dignified "Stay in the
+  plaza" opt-out (no dark pattern). A clear future-asset hook (`animationMount`)
+  is left for a dedicated completion video. Reduced-motion-safe, safe-area-aware,
+  ≥44px targets, localized, mounted in `.wp-overlay`.
+- **FAB / floating-chrome premium polish + map wayfinding (FAB_POLISH P0+P1).**
+  The corner **minimap is now governed by `chromeVisibility`** (a new `"map"`
+  role): it recedes WITH the rest of the chrome during dialogue/challenge/menu
+  instead of staying fully lit — the biggest "chrome feels incoherent" defect is
+  gone. It also DIMS (not hidden) on `focused`, alongside a new band-dim so the
+  Talk CTA is the clear hero; the pack stays reachable. The minimap now swallows
+  pointerdown/up (a tap can't also fling the look camera), its z-index is split
+  off the capsule-detail card (no undefined paint order), and its size flows from
+  ONE shared `--wp-minimap-h` token (108→132→152→168px phone→desktop). A unified
+  design system — shared **material / radii / elevation / blur / type / accent**
+  tokens in `:root` — now drives every floating surface (pack button, place tag,
+  minimap, menu panel, badge case, focus chip). **Badges is a real 4th menu tab**
+  (Map · Inventory · Quest · Badges) with a **sticky filter sub-header**,
+  scroll-edge fades, a tab cross-fade, and a **premium empty-state card**; the
+  badge grid is re-skinned to the warm-Antigua ink (retiring the blue-grey
+  palette) with debossed medal wells. Premium surfaces are **de-emoji'd** (place
+  tag pin → inline SVG; the menu satchel/expand glyphs are already SVG). The
+  on-road **wayfinding arrow** (`src/wayfinding/roadArrow.ts`) is wired into the
+  frame loop (subtle muted ground arrow pointing at the active objective). All
+  reduced-motion-gated, safe-area-aware, ≥44px targets, mounted in `.wp-overlay`.
+- **Stack/language reactivity + premium entry (front door).** World Plaza now
+  derives its `learnerPair` (target/native) from the LIVE Corpán language stack
+  (`getStackConfig` / `onStackConfigChange`) instead of the hardcoded
+  `quest.learnerPair`. Fixes the bug where switching the stack to "learn EN from
+  ES" still played the world EN→ES. A new `src/entry/*` slice adds: a stack
+  adapter honoring `SINGLE_LANGUAGE_RULE` (`languages[0]` = native, `[1..]` =
+  targets; a 1-language stack = immersion, target === native, no gloss); a
+  premium fullscreen **language-chooser** interlude for multi-target stacks (pick
+  which language to live in this visit); a warm **welcome** interlude (who you
+  are, where you are, the day's goal/practice); and live **reactivity** — exit,
+  flip the stack in Corpán, return, and the world rebinds to the new stack.
+  Scoped `<style data-wp-entry>` (no shared `styles.css` edits); reuses the
+  onboarding/vignette fullscreen-DOM lifecycle. See `src/entry/INTEGRATION.md`
+  for the `game.ts` wiring.
+
 ### Changed
 - **Smooth city streaming — shared city-lifetime caches + time-sliced builds.**
   Walking forward used to hitch (~130ms on device) every time a chunk crossed the
@@ -54,6 +108,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   texture/geometry footprint is BOUNDED (identical right after the walk and after
   a further full-warm idle — no balloon). New QA harness: `qa/jank-cold.mjs`
   records rAF frame deltas and reports max/p99/count>25ms + `__wpSceneStats()`.
+- **Slashed ground memory + moved façade painting off-thread (perf Stage 3).**
+  Two ground-rooted problems remained after Stage 2: (a) memory was dominated by
+  ~129 distinct 512² per-chunk baked ground textures (~180 MB of the 298 MB
+  total), and (b) a one-time ~3s startup spike from spawn-area ground textures
+  PAINTING on the main thread. (A) **Shared, tileable ground.** The per-chunk
+  baked composite texture is gone. There are now exactly SIX shared, tileable
+  ground materials for the WHOLE city (cobble / flagstone / dirt / stone / grass /
+  water — `grass`+`water` promoted to first-class `SurfaceName`s in
+  `render/materials.ts`, so no per-chunk recolor defeats sharing). A chunk's
+  ground is cheap GEOMETRY (`src/city/cityGround.ts`): its area is partitioned
+  into NON-OVERLAPPING cells (cut at every road/water/bridge rect edge + a uniform
+  grid so plaza/park discs read curved), each cell takes the topmost surface at
+  its center (last region wins — same painter order as the old bake), and same-
+  surface cells merge into one mesh per surface with world-tiled UVs. Roads stay
+  BAKED-IN as part of the one flat ground (the §2 z-fight rule) — all cells sit at
+  one depth and never overlap, so nothing can z-fight at any angle. (B)
+  **OffscreenCanvas worker for façade painting.** The pure façade painter
+  (`drawFacade` + helpers) moved to `src/world/facadePaint.ts` and now runs in a
+  Web Worker (`src/world/painter.worker.ts`), returning a transferred
+  `ImageBitmap` the main thread cheaply uploads — the main thread never paints.
+  Feature-detected (`facadePainter.ts`): on a WebView without OffscreenCanvas /
+  module workers (older WKWebView < iOS 16.4) it falls back to the original main-
+  thread paint, and any worker error trips a permanent fallback. The building
+  geometry/material flow is unchanged — `TexPool.getFacade` always returns a real
+  texture immediately (primed with stucco), filled in a few frames later.
+  Measured (headless cold walk, 20s): ground textures ~180 MB → effectively 0
+  (zero distinct per-chunk ground bakes; total scene textures **298 MB → 123 MB**),
+  the spawn-area ground-paint startup spike is eliminated, and per-frame jank is
+  no worse than Stage 2 (MAX 38ms → ~30ms, frames >33ms 2 → 0, frames >25ms 5 →
+  2-3). New QA harness: `qa/jank-stage3.mjs` (frame deltas split first-2s vs
+  after-2s + a broad memory sweep).
 
 ### Added
 - **Vignettes — enterable sub-experiences (the v2 scene seam).** A new
