@@ -100,6 +100,11 @@ export function createPlayerController(
   }
   let yaw = 0
   let lastSpeed = 0 // 0..1 locomotion speed, exposed for footstep audio
+  // The figure's own facing (radians), eased toward the MOVEMENT direction each
+  // frame so the body turns to walk where it's going instead of moonwalking when
+  // you strafe. Distinct from `yaw` (the camera/look heading): the figure faces
+  // its velocity, the camera faces the look. Idle keeps the last heading.
+  let figureYaw = 0
   cutout.setGroundPos(x, z)
 
   const update = (dt: number) => {
@@ -146,6 +151,19 @@ export function createPlayerController(
     // change — #40). Flat ground → 0.
     const groundY = getGroundHeight ? getGroundHeight(x, z) : walkSurfaceHeight(world.scene, x, z)
     cutout.setGroundPos(x, z, groundY)
+    // Turn the figure to face where it's MOVING (not where the camera looks), so
+    // strafing/back-pedalling no longer slides sideways. The figure's forward is
+    // -Z, so the heading that points its forward along velocity (vx,vz) is
+    // atan2(-vx,-vz). Ease toward it (shortest-arc) while moving; hold facing when
+    // idle. cutout.setHeading is a no-op on the legacy billboard cutout.
+    if (speed > 0.05) {
+      const targetHeading = Math.atan2(-vx, -vz)
+      let d = targetHeading - figureYaw
+      while (d > Math.PI) d -= Math.PI * 2
+      while (d < -Math.PI) d += Math.PI * 2
+      figureYaw += d * Math.min(1, dt * 12)
+    }
+    cutout.setHeading?.(figureYaw)
     anim.setState(speed > 0.02 ? "walk" : "idle")
     anim.setSpeed(speed)
     anim.update(dt)
@@ -171,7 +189,11 @@ export function createPlayerController(
     }
     x = nx
     z = nz
-    if (faceYaw !== undefined) yaw = faceYaw
+    if (faceYaw !== undefined) {
+      yaw = faceYaw
+      figureYaw = faceYaw
+      cutout.setHeading?.(faceYaw)
+    }
     cutout.setGroundPos(x, z)
     // Snap the follow camera onto the new spot at the (possibly new) heading.
     world.setCameraTarget(new Vector3(x, 0, z), yaw)

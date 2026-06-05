@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Characters no longer moonwalk.** The player (and wandering crowd) now TURN to
+  face the direction they're moving instead of holding a fixed forward facing —
+  so strafing or back-pedalling reads as the figure pivoting and walking that way,
+  not sliding sideways. The figure eases its heading toward its velocity each
+  frame (figure forward is −Z → `atan2(-vx,-vz)`), holding the last facing when
+  idle; the camera still follows the LOOK heading, independent of body facing.
+  (`render/cutout.ts` `setHeading`, `character/figure3d.ts`,
+  `movement/controller.ts`, `world/crowd.ts`.)
+
 ### Added
 - **The streamed city casts the sun's shadows.** Buildings no longer "float" on
   contact shadows alone — the streamed chunk buildings (+ the hero clock tower,

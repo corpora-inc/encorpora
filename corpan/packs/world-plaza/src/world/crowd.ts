@@ -208,6 +208,9 @@ interface Agent {
   idleT: number // >0 = pausing
   state: "walk" | "idle"
   speed: number
+  // figure facing (radians), eased toward the walk direction so wanderers turn to
+  // face where they're going instead of moonwalking sideways.
+  headingYaw: number
   // acknowledgment: brief in-stride wave with a cooldown so we don't spam it.
   ackCooldown: number // >0 = recently acknowledged the player; don't re-wave
   ackActive: number // >0 = mid head-turn toward player (visual only, no halt)
@@ -543,6 +546,7 @@ export function createCrowd(
       idleT: Math.random() * 2,
       state: "walk",
       speed: 0,
+      headingYaw: 0,
       ackCooldown: 0,
       ackActive: 0,
       seeker,
@@ -742,7 +746,7 @@ export function createCrowd(
     const agent: Agent = {
       spec: spec0, cutout: v0.cutout, anim: v0.anim, handle,
       x: FAR_AWAY, z: FAR_AWAY, tx: FAR_AWAY, tz: FAR_AWAY, tx0: FAR_AWAY, tz0: FAR_AWAY,
-      idleT: 0, state: "idle", speed: 0, ackCooldown: 0, ackActive: 0,
+      idleT: 0, state: "idle", speed: 0, headingYaw: 0, ackCooldown: 0, ackActive: 0,
       seeker: false, // a stationed special stays put; it never chases the player.
       station: { x: FAR_AWAY, z: FAR_AWAY },
     }
@@ -949,6 +953,16 @@ export function createCrowd(
       a.speed = Math.min(1, moved / step)
 
       a.cutout.setGroundPos(a.x, a.z, groundH(a.x, a.z))
+      // Face the walk direction (figure forward is -Z → atan2(-vx,-vz)), eased,
+      // so wanderers turn instead of moonwalking. Hold facing when barely moving.
+      if (a.speed > 0.05) {
+        const targetHeading = Math.atan2(-vx, -vz)
+        let hd = targetHeading - a.headingYaw
+        while (hd > Math.PI) hd -= Math.PI * 2
+        while (hd < -Math.PI) hd += Math.PI * 2
+        a.headingYaw += hd * Math.min(1, dt * 10)
+      }
+      a.cutout.setHeading?.(a.headingYaw)
       a.anim.setState("walk")
       a.anim.setSpeed(a.speed)
       a.anim.update(dt)

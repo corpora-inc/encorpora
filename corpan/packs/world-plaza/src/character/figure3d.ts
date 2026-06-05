@@ -490,6 +490,14 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
     faceCamera: () => {
       /* head face shell is parented (not billboarded); no-op for parity. */
     },
+    setHeading: (yaw: number) => {
+      // Turn the whole figure to face a world heading so it walks the way it's
+      // pointed instead of moonwalking/strafing sideways. The model's default
+      // forward is -Z (root.rotation.y = 0 shows the figure's back to a +Z
+      // camera); setting rotation.y here rotates that forward to `yaw`. setPose's
+      // lean/sway live on `body` (a child), so they compose on top of this.
+      root.rotation.y = yaw
+    },
     baseScale: 1,
     dispose: () => {
       faceTex.dispose()

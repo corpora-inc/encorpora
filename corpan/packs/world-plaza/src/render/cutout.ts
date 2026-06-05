@@ -143,6 +143,13 @@ export interface GroundedCutout {
   redraw: (draw: DrawFn) => void
   /** explicit billboard refresh hook (Babylon does it per-frame; here for API parity / fixed mode). */
   faceCamera: () => void
+  /**
+   * Orient the figure to face a world heading (yaw, radians) so it turns toward
+   * its movement direction instead of moonwalking. Only the 3D figure honours
+   * this (it rotates its root); the legacy yaw-billboard cutout always faces the
+   * camera, so it implements this as a no-op. Optional for source-compat.
+   */
+  setHeading?: (yaw: number) => void
 
   baseScale: number
   dispose: () => void
