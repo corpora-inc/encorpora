@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
+  separate boxes (one static structure = 131 draw calls); now merged by material
+  to ~4. Generic-building roofs — barely visible at the play camera — collapse from
+  5–8 separate slab/parapet/chimney meshes to a single flat cap (hero landmarks
+  keep their silhouettes; `localStorage['wp:fancyRoofs']='1'` restores the detail).
+  Measured ~566→465 draws/frame. (`world/bridge.ts`, `world/buildings.ts`.) Camera
+  gaze nudged a hair toward the horizon (lookHeight 2.4→2.55).
 - **Cheaper post-processing stack (fill-rate win toward 60 fps).** With the zombie
   engines gone, the remaining cost on a strong Mac is GPU fill: the per-pixel post
   passes. Three cuts that barely touch the look: **SSAO2 is now OFF by default**

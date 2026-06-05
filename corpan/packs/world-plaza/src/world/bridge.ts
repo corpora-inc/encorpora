@@ -253,6 +253,37 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
     return 0
   }
 
+  // PERF: the bridge is ~131 separate boxes (deck planks, balusters, voussoirs,
+  // piers) across 4 shared stone materials — 131 draw calls for ONE static
+  // structure. Merge by material into ~4 meshes. `root` is at identity, so the
+  // world-baked merge reparents cleanly; walkability is math-based (`heightAt`), so
+  // merging geometry doesn't touch it; the `wp-bridge` name prefix is preserved so
+  // camera occlusion still treats it as solid.
+  {
+    const byMat = new Map<StandardMaterial, Mesh[]>()
+    for (const c of root.getChildMeshes()) {
+      if (!(c instanceof Mesh) || c.getTotalVertices() === 0) continue
+      const mat = c.material as StandardMaterial | null
+      if (!mat) continue
+      const arr = byMat.get(mat) ?? []
+      arr.push(c)
+      byMat.set(mat, arr)
+    }
+    let mi = 0
+    for (const [mat, meshes] of byMat) {
+      if (meshes.length < 2) continue
+      const merged = Mesh.MergeMeshes(meshes, true, true, undefined, false, false)
+      if (merged) {
+        merged.name = `wp-bridge-merged-${mi++}`
+        merged.material = mat
+        merged.parent = root
+        merged.isPickable = false
+        merged.alwaysSelectAsActiveMesh = true
+        merged.doNotSyncBoundingInfo = true
+      }
+    }
+  }
+
   // SELF-WIRING (#40): register the height profile on the scene's walk-surface
   // registry so the player controller + crowd lift onto the deck automatically —
   // no game.ts wire required (forgetting that wire is exactly the regression). The

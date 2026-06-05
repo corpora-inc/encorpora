@@ -921,7 +921,26 @@ function buildOne(
   const roofOverhang = 0.35
   const EMBED = 0.22 // how far a roof base is sunk below bodyH (kills coplanar fight)
   const roofPieces: Mesh[] = []
-  if (p.roof === "gabled") {
+  // PERF: at the play camera you see facades, not roof tops, yet each detailed
+  // roof was 5–8 SEPARATE draw calls (slabs + parapet ring + chimney). Collapse
+  // every generic-building roof to ONE flat cap (single mesh, single material) —
+  // ~5–8 draws/building → 1. Hero landmarks build their domes/towers on a separate
+  // path, so the skyline keeps its silhouettes. Opt back into fancy roofs with
+  // `localStorage['wp:fancyRoofs'] = '1'`.
+  const fancyRoofs = (() => {
+    try {
+      return typeof window !== "undefined" && localStorage.getItem("wp:fancyRoofs") === "1"
+    } catch {
+      return false
+    }
+  })()
+  if (!fancyRoofs) {
+    const capH = 0.2
+    const cap = MeshBuilder.CreateBox(`wp-r-${guid}`, { width: b.w + roofOverhang, height: capH, depth: b.d + roofOverhang }, scene)
+    cap.position.set(0, bodyH - EMBED + capH / 2, 0)
+    cap.material = roofMat
+    roofPieces.push(cap)
+  } else if (p.roof === "gabled") {
     const ridgeAlongX = b.w >= b.d
     const len = (ridgeAlongX ? b.w : b.d) + roofOverhang * 2
     const halfBase = ((ridgeAlongX ? b.d : b.w) + roofOverhang * 2) / 2
@@ -1003,8 +1022,9 @@ function buildOne(
     roofPieces.push(cby)
   }
 
-  // ---- chimney (houses / workshops) — stone, separate ----
-  if ((kind === "house" || kind === "workshop") && r() < 0.7) {
+  // ---- chimney (houses / workshops) — stone, separate (fancy roofs only) ----
+  const wantChimney = (kind === "house" || kind === "workshop") && r() < 0.7 // keep RNG stable
+  if (fancyRoofs && wantChimney) {
     const cw = 0.4
     const ch = 0.7 + r() * 0.4
     const chim = MeshBuilder.CreateBox(`wp-ch-${guid}`, { width: cw, height: ch, depth: cw }, scene)
