@@ -11,6 +11,14 @@
  * before building the physics-backed controller; gravity is the city's down.
  */
 import HavokPhysics from "@babylonjs/havok"
+// Bundle the WASM as a Vite asset so it's served with the correct
+// `application/wasm` MIME (a bare HavokPhysics() fetch hits the SPA fallback HTML
+// → "module doesn't start with '\0asm'"). `?url` gives the hashed asset path we
+// hand to Havok via `locateFile`.
+// Relative path (not the package specifier) bypasses Havok's `exports` map, which
+// only exposes "." — Vite then resolves the file directly + emits it as a hashed
+// asset served with the right MIME.
+import havokWasmUrl from "../../node_modules/@babylonjs/havok/lib/esm/HavokPhysics.wasm?url"
 import { HavokPlugin } from "@babylonjs/core/Physics/v2/Plugins/havokPlugin"
 import { Vector3 } from "@babylonjs/core/Maths/math.vector"
 import type { Scene } from "@babylonjs/core/scene"
@@ -22,7 +30,7 @@ let initPromise: Promise<Awaited<ReturnType<typeof HavokPhysics>>> | null = null
 export async function loadHavok(): Promise<Awaited<ReturnType<typeof HavokPhysics>>> {
   if (havokInstance) return havokInstance
   if (!initPromise) {
-    initPromise = HavokPhysics().then((hk) => {
+    initPromise = HavokPhysics({ locateFile: () => havokWasmUrl }).then((hk) => {
       havokInstance = hk
       return hk
     })

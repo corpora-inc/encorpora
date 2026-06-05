@@ -338,6 +338,11 @@ function buildWorld(
   overlay.appendChild(hint)
 
   const world = createWorldEngine(canvas, overlay, { skyColor: scene.palette?.sky })
+  // NOTE: Havok physics (src/physics/havok.ts) is INSTALLED + proven to init
+  // in-game, but NOT wired here yet: a single-file pack bundle inlines the ~5MB
+  // WASM into app.js. The capsule character-controller build will wire it with
+  // proper out-of-bundle WASM packaging (separate dist asset loaded at runtime),
+  // so the default bundle stays lean. Deps + the init module are ready.
   // Scene-DEPENDENT visuals are `let` so the live Antigua⇄Tokyo flip can rebuild
   // them (atmosphere, horizon vista, world look) without disturbing gameplay.
   let activeScene = scene
