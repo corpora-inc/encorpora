@@ -46,9 +46,27 @@ export interface RadioChannel {
  * looped) replaces the default once the on-device proof-of-concept passes.
  */
 export const POC_STATIONS: RadioChannel[] = [
+  // CURATED, AD-FREE dial. SomaFM is listener-supported & commercial-free by
+  // mission (no ad spots, no station-ID breaks) — its ~30 channels give us a
+  // diverse ad-free backbone. Radio Paradise is also listener-supported/ad-free.
+  // (The open radio-browser catalog is full of ad-laden stations, so we curate
+  // rather than open-search.) TODO: add the Bangla al-Quran station once we have
+  // its stream URL (owner confirms it's ad-free / no station ID).
   { id: "groovesalad", name: "SomaFM · Groove Salad", url: "https://ice1.somafm.com/groovesalad-128-mp3" },
-  { id: "lush", name: "SomaFM · Lush", url: "https://ice1.somafm.com/lush-128-mp3" },
   { id: "dronezone", name: "SomaFM · Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3" },
+  { id: "lush", name: "SomaFM · Lush", url: "https://ice1.somafm.com/lush-128-mp3" },
+  { id: "indiepop", name: "SomaFM · Indie Pop Rocks", url: "https://ice1.somafm.com/indiepop-128-mp3" },
+  { id: "beatblender", name: "SomaFM · Beat Blender", url: "https://ice1.somafm.com/beatblender-128-mp3" },
+  { id: "secretagent", name: "SomaFM · Secret Agent", url: "https://ice1.somafm.com/secretagent-128-mp3" },
+  { id: "u80s", name: "SomaFM · Underground 80s", url: "https://ice1.somafm.com/u80s-128-mp3" },
+  { id: "bootliquor", name: "SomaFM · Boot Liquor", url: "https://ice1.somafm.com/bootliquor-128-mp3" },
+  { id: "seventies", name: "SomaFM · Left Coast 70s", url: "https://ice1.somafm.com/seventies-128-mp3" },
+  { id: "fluid", name: "SomaFM · Fluid", url: "https://ice1.somafm.com/fluid-128-mp3" },
+  { id: "poptron", name: "SomaFM · PopTron", url: "https://ice1.somafm.com/poptron-128-mp3" },
+  { id: "sonicuniverse", name: "SomaFM · Sonic Universe (jazz)", url: "https://ice1.somafm.com/sonicuniverse-128-mp3" },
+  { id: "deepspaceone", name: "SomaFM · Deep Space One", url: "https://ice1.somafm.com/deepspaceone-128-mp3" },
+  { id: "spacestation", name: "SomaFM · Space Station", url: "https://ice1.somafm.com/spacestation-128-mp3" },
+  { id: "radioparadise", name: "Radio Paradise (eclectic)", url: "https://stream.radioparadise.com/mp3-192" },
 ]
 
 export type RadioMode = "native" | "webaudio" | "unavailable"
