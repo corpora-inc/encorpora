@@ -173,7 +173,7 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   // dominated by non-talkable extras (the "I keep trying to talk to NPCs that
   // can't respond" complaint). They COMPLEMENT the ~28 talkable crowd agents
   // (crowd.ts), not outnumber them. Callers can still override.
-  const maxStrollers = opts.maxStrollers ?? 8
+  const maxStrollers = opts.maxStrollers ?? 6 // NPCs −25% (perf + declutter): was 8
   const maxStalls = opts.maxStalls ?? 4
   // #60 — the crowd read as "a wall of identical people." With only 6 distinct
   // pre-baked sprites, the ~12 near-field figures were visibly cloned (and a

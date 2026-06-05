@@ -140,7 +140,11 @@ export function createWorldEngine(
   let emaMs = 16.7
   let adaptCooldown = 60 // let the scene settle before first adjust
   const adaptResolution = (dtMs: number) => {
-    if ((window as unknown as { __wpAdaptiveRes?: boolean }).__wpAdaptiveRes === false) return
+    // OFF by default: measured draw-call bound (~860 draws ≈ 62ms at 600×484), so
+    // shrinking resolution only softened the image for zero fps — pure downside.
+    // Opt in with `window.__wpAdaptiveRes = true` only on a genuinely fill-bound
+    // device. (The real lever is fewer draws/verts, handled elsewhere.)
+    if ((window as unknown as { __wpAdaptiveRes?: boolean }).__wpAdaptiveRes !== true) return
     emaMs += (Math.min(dtMs, 100) - emaMs) * 0.1 // ~10-frame EMA, spike-clamped
     if (adaptCooldown > 0) {
       adaptCooldown--

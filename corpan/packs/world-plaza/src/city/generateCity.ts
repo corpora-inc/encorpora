@@ -608,6 +608,23 @@ export function generateCity(seed = 20260603): CityLayout {
     if (!onLand(allProps[i])) allProps.splice(i, 1)
   }
 
+  // ---- DENSITY THINNING (perf + "enough to set the flavor"): deterministically
+  // drop a fraction of the chattiest dressing species. Props are thin-instanced
+  // (1 draw/species), so this is mostly a VERTEX cut — and the curvature shader
+  // runs per vertex, so fewer instances = real per-frame GPU savings — plus it
+  // declutters the streetscape. Seeded by the same `r()` so the survivors are
+  // stable across reloads. Owner-tuned cuts:
+  const SPECIES_KEEP: Partial<Record<SpeciesId, number>> = {
+    tree: 0.5, // halve the trees
+    planter: 0.7, // flower pots −30%
+    trough: 0.7, // (the other flower-pot species) −30%
+    stall: 0.5, // the trestle "stands" −50%
+  }
+  for (let i = allProps.length - 1; i >= 0; i--) {
+    const keep = SPECIES_KEEP[allProps[i].species]
+    if (keep !== undefined && r() > keep) allProps.splice(i, 1)
+  }
+
   // ---- BOUNDARY (#34 Phase 1): the MAINLAND ISLE is ringed by open SEA on all
   // sides (the water collider is the natural edge — no land rampart needed). The
   // owner-default WEST + NORTH cliffs land as a later P1 refinement; for now `gates`

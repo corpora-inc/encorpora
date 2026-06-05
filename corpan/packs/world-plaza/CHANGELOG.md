@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Sparser scene + adaptive-res OFF (draw/vertex economy).** Measured at
+  `600×484` the frame was still ~62 ms, proving the cost is draw-calls/vertices,
+  not pixels — so adaptive resolution (which only blurred the image) is now OFF by
+  default (opt in with `window.__wpAdaptiveRes = true`). Cuts that actually help:
+  visibility radius 165→125 (fewer building chunks live per frame — the dominant
+  draw source; override `window.__wpVisRadius`), NPCs −25% (crowd 28→21,
+  strollers 8→6), and deterministic prop thinning (trees −50%, flower pots −30%,
+  trestle stalls −50%) — props are thin-instanced so this is a vertex + clutter
+  cut (the per-vertex curvature shader pays for every instance). Note for the
+  record: the draw-call FLOOR is the building/roof masses; a true 60 fps needs
+  those merged/instanced (pending the camera-occlusion decouple).
+  (`city/generateCity.ts`, `city/population.ts`, `world/engine.ts`, `game.ts`.)
 - **City cast-shadows are now OPT-IN (the big draw-call cut).** Measured with a
   real per-frame draw-call counter (Babylon 9 hid `engine.drawCalls`; the perf
   HUD now wires `SceneInstrumentation`): the scene issues ~1,400 draws/frame and

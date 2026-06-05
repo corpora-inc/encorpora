@@ -390,6 +390,17 @@ function buildWorld(
     layout,
     getCameraPos: () => world.camera.position, // streaming origin (camera follows player)
     palette: scene.palette,
+    // Draw-call economy: a tighter NEAR radius keeps fewer building chunks live
+    // each frame (the dominant draw-call source on this draw-bound WebView). The
+    // EXP2 fog + over-horizon curvature already hide the cut edge, so the world
+    // still reads big while the local scene renders sparser. Overridable via
+    // `window.__wpVisRadius`. (was the 165 default.)
+    stream: {
+      visibilityRadius:
+        (typeof window !== "undefined" &&
+          (window as unknown as { __wpVisRadius?: number }).__wpVisRadius) ||
+        125,
+    },
     // Sun shadow seam — only the player-local near chunks cast (bounded set).
     ...(cityShadowsEnabled
       ? {
@@ -458,7 +469,7 @@ function buildWorld(
   // hand it to the crowd explicitly (keeps the objective NPC out of the basin).
   const fountainAnchorForCrowd = city.getAnchor("fountain")
   const crowd = createCrowd(world.scene, topology, {
-    count: 28,
+    count: 21, // NPCs −25% (perf + declutter): was 28
     roles,
     seed: scene.id,
     scene,
