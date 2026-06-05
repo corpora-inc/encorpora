@@ -71,7 +71,7 @@ import { createRoadArrow } from "./wayfinding/roadArrow"
 import { createObjectiveBeacon } from "./wayfinding/objectiveBeacon"
 import { locateObjective } from "./quest/objectiveLocator"
 import { createTraversalTrigger } from "./quest/traversalTrigger"
-import { buildFountain } from "./world/fountain"
+import { buildFountain, FOUNTAIN_BASE_RADIUS } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
 import { buildRiverwalk } from "./world/riverwalk"
 import { buildHarborBoats } from "./world/harborBoats"
@@ -408,6 +408,10 @@ function buildWorld(
   // Autonomous wandering townsfolk — EVERY one gets a generated persona (passing
   // `scene` gives them era/place/language flavour), so all are talkable. The quest
   // specials are bound as STATIONED agents hovering at their anchors.
+  // The plaza fountain footprint — a static decorative collider the streamed field
+  // may not yet carry when the crowd stations its specials at build time, so we
+  // hand it to the crowd explicitly (keeps the objective NPC out of the basin).
+  const fountainAnchorForCrowd = city.getAnchor("fountain")
   const crowd = createCrowd(world.scene, topology, {
     count: 28,
     roles,
@@ -415,6 +419,17 @@ function buildWorld(
     scene,
     obstacles,
     specials: questSpecials,
+    avoidCircles: fountainAnchorForCrowd
+      ? // pad past the wall radius so the NPC stands clearly BESIDE the basin, not
+        // brushing the rim (the visible lip is a touch outside FOUNTAIN_BASE_RADIUS).
+        [{ x: fountainAnchorForCrowd.x, z: fountainAnchorForCrowd.z, r: FOUNTAIN_BASE_RADIUS + 1.2 }]
+      : [],
+    // Wanderers keep clear of wherever the active objective NPC stands.
+    getQuestKeepClear: () => {
+      const id = questEngine.currentStep()?.anchorId
+      const a = id ? city.getAnchor(id) : null
+      return a ? { x: a.x, z: a.z } : null
+    },
   })
   // Dev-only inspection hook: lets a headless harness read live agent positions
   // (e.g. assert the stationed specials stay near their anchors). No-op when

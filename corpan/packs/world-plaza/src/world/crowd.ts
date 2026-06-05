@@ -174,6 +174,23 @@ export interface CrowdOptions {
    * → flat (Y=0), unchanged.
    */
   getGroundHeight?: (x: number, z: number) => number
+  /**
+   * The active objective NPC's spot (the current quest anchor). Wanderers keep a
+   * clear ring around it — they never TARGET inside it and are steered out if they
+   * drift in — so the quest's special NPC is never buried in a scrum of ambient
+   * townsfolk (you can always see + reach the one you're meant to talk to). The
+   * stationed special itself is exempt (it lives there). Null → no keep-clear.
+   */
+  getQuestKeepClear?: () => { x: number; z: number } | null
+  /**
+   * STATIC decorative footprints (the plaza fountain) that agents must never stand
+   * in or path through — passed explicitly because specials are stationed at world
+   * BUILD time, BEFORE the streamed collision field has populated, so a chunk-scoped
+   * collider (the fountain's) isn't in `obstacles` yet when stationing runs. Folded
+   * into the crowd's `isBlocked`, so stationing + wandering both respect them
+   * regardless of streaming timing. World-space {x,z,r}.
+   */
+  avoidCircles?: { x: number; z: number; r: number }[]
 }
 
 /* --------------------------------------------------------------- agent */
@@ -234,6 +251,10 @@ const SEEKER_STOP = 2.6 // a quest-seeker halts this close to the player
 // #24: widened 5 → 8 (matches the ambient population keepout) so the talkable
 // crowd also disperses instead of milling on top of you.
 const PLAYER_AVOID = 8.0
+// Wanderers keep this clear of the active objective NPC so the quest-giver is
+// never buried in a scrum of ambient townsfolk — you can always see + reach the
+// one you're meant to talk to. The stationed special itself is exempt.
+const OBJECTIVE_AVOID = 6.0
 
 /**
  * Hand-authored persona colour for the special quest roles. The crowd's
@@ -320,10 +341,26 @@ export function createCrowd(
   const groundH = (x: number, z: number): number =>
     opts.getGroundHeight ? opts.getGroundHeight(x, z) : walkSurfaceHeight(bScene, x, z)
 
-  /** Is (x,z) blocked for an agent — by ANY obstacle (field) or, lacking the
-   * field, by a building box only (legacy)? */
+  // Static decorative footprints (the fountain) the streamed field may not yet
+  // carry when stationing runs at build time. Padded by AGENT_RADIUS.
+  const avoidCircles = opts.avoidCircles ?? []
+  const inAvoidCircle = (x: number, z: number): boolean => {
+    for (const c of avoidCircles) {
+      const dx = x - c.x
+      const dz = z - c.z
+      const rr = c.r + AGENT_RADIUS
+      if (dx * dx + dz * dz < rr * rr) return true
+    }
+    return false
+  }
+  /** Is (x,z) blocked for an agent — by a static decorative footprint, ANY streamed
+   * obstacle (field), or, lacking the field, by a building box only (legacy)? */
   const isBlocked = (x: number, z: number): boolean =>
-    field ? field.blocked(x, z, AGENT_RADIUS) : blockedAt(x, z, blockers)
+    inAvoidCircle(x, z) || (field ? field.blocked(x, z, AGENT_RADIUS) : blockedAt(x, z, blockers))
+
+  // The active objective NPC's spot — refreshed each frame from the orchestrator.
+  // Wanderers keep OBJECTIVE_AVOID clear of it (target-avoid + steer-out below).
+  let questKeepClear: { x: number; z: number } | null = null
   // The data Scene used for persona generation. Optional in the API (so test
   // callers compile) but personas NEED one — synthesize a neutral fallback.
   const dataScene: Scene = opts.scene ?? NEUTRAL_DATA_SCENE
@@ -369,6 +406,11 @@ export function createCrowd(
       if (player) {
         const pd = Math.hypot(x - player.x, z - player.z)
         if (pd < PLAYER_AVOID) continue
+      }
+      // and never wander into the active objective NPC's keep-clear ring.
+      if (questKeepClear) {
+        const od = Math.hypot(x - questKeepClear.x, z - questKeepClear.z)
+        if (od < OBJECTIVE_AVOID) continue
       }
       return { x, z }
     }
@@ -736,9 +778,27 @@ export function createCrowd(
   // Talk button is up, or you're mid-conversation). null = nobody held.
   let heldId: string | null = null
   const update: Crowd["update"] = (dt, player) => {
+    questKeepClear = opts.getQuestKeepClear?.() ?? null
     for (let i = 0; i < agents.length; i++) {
       const a = agents[i]
       const tend = { x: a.tx0, z: a.tz0 }
+
+      // ── OBJECTIVE KEEP-CLEAR: a wandering (non-stationed) townsperson that drifts
+      // into the active objective NPC's ring is steered radially OUT, so the
+      // quest-giver is never mobbed. Stationed specials (incl. the objective NPC
+      // itself) are exempt — they belong at their anchor.
+      if (questKeepClear && !a.station && a.handle.anchorId !== heldId) {
+        const ox = a.x - questKeepClear.x
+        const oz = a.z - questKeepClear.z
+        const od = Math.hypot(ox, oz)
+        if (od < OBJECTIVE_AVOID) {
+          const ux = od > 1e-3 ? ox / od : 1
+          const uz = od > 1e-3 ? oz / od : 0
+          a.tx = questKeepClear.x + ux * (OBJECTIVE_AVOID + 1.5)
+          a.tz = questKeepClear.z + uz * (OBJECTIVE_AVOID + 1.5)
+          a.state = "walk"
+        }
+      }
 
       const pdx = player.x - a.x
       const pdz = player.z - a.z
