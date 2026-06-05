@@ -9,6 +9,8 @@ import {
   isOffLeash,
   pickStationTarget,
 } from "./stationing"
+import { pushOutCircle } from "./collision"
+import { FOUNTAIN_BASE_RADIUS } from "./fountain"
 
 const FREE = () => false
 const docks = { x: 0, z: 55, facing: Math.PI / 2 } // matches plaza-grand `docks`
@@ -95,5 +97,41 @@ describe("stationing — the geometry behind a stationed special's hover", () =>
     expect(Math.hypot(p.x - player.x, p.z - player.z)).toBeGreaterThanOrEqual(0)
     // the chosen point is within the ring regardless.
     expect(distFromStation(p, station)).toBeLessThanOrEqual(STATION_STEP + 1e-9)
+  })
+})
+
+describe("stationing — a special anchored ON the fountain never embeds (the bug)", () => {
+  // Mirror crowd.ts `stationFor`: the fountain is a STATIC `avoidCircle` (padded
+  // past the basin wall) that the streamed field may not yet carry at build time,
+  // so stationing must clear it via `isBlocked` + a belt-and-braces pushOut. The
+  // fountain anchor is at (0,0) with NO facing — the literal screenshot case.
+  const FOUNTAIN = { x: 0, z: 0, r: FOUNTAIN_BASE_RADIUS + 1.2 } // matches game.ts pad
+  const AGENT_RADIUS = 0.5
+  const inFountain = (x: number, z: number): boolean =>
+    Math.hypot(x - FOUNTAIN.x, z - FOUNTAIN.z) < FOUNTAIN.r + AGENT_RADIUS
+
+  it("stationPoint walks a fountain-anchored special OUT of the basin", () => {
+    const fountainAnchor = { x: 0, z: 0 } // no facing → defaults to +z
+    const p = stationPoint(fountainAnchor, inFountain)
+    expect(inFountain(p.x, p.z)).toBe(false)
+  })
+
+  it("the full stationFor path lands ≥ collider radius + agent radius from centre", () => {
+    // stationPoint (spiral) → pushOutCircle (belt+braces, resolves dead-centre).
+    const sp = stationPoint({ x: 0, z: 0 }, inFountain)
+    const free = pushOutCircle(sp.x, sp.z, AGENT_RADIUS, FOUNTAIN.x, FOUNTAIN.z, FOUNTAIN.r)
+    expect(inFountain(free.x, free.z)).toBe(false)
+    // clears the padded basin AND the agent's own radius — never embedded.
+    expect(distFromStation(free, FOUNTAIN)).toBeGreaterThanOrEqual(FOUNTAIN.r + AGENT_RADIUS)
+  })
+
+  it("even a DEGENERATE all-blocked spiral (bare anchor at 0,0) is ejected by pushOut", () => {
+    // worst case: stationPoint falls back to the bare anchor (0,0) — dead-centre.
+    // pushOutCircle MUST still eject it (the old 0/0 NaN left it embedded).
+    const bare = { x: 0, z: 0 }
+    const free = pushOutCircle(bare.x, bare.z, AGENT_RADIUS, FOUNTAIN.x, FOUNTAIN.z, FOUNTAIN.r)
+    expect(Number.isFinite(free.x)).toBe(true)
+    expect(inFountain(free.x, free.z)).toBe(false)
+    expect(distFromStation(free, FOUNTAIN)).toBeGreaterThanOrEqual(FOUNTAIN.r + AGENT_RADIUS)
   })
 })

@@ -198,6 +198,84 @@ class Grid {
   }
 }
 
+/* --------------------------------------------------- degenerate-centre push */
+
+/**
+ * DETERMINISTIC default push direction for ejecting a point that sits at (or
+ * vanishingly close to) the EXACT centre of a circular collider, where the
+ * radial push vector `(p − centre)` is the zero vector and so carries no usable
+ * direction. Without a defined default, a body spawned/stationed dead-on a
+ * circle's centre (the classic case: a special anchored at the fountain's (0,0))
+ * has `d ≈ 0`, `dx/d` is `0/0 = NaN`, and the push silently does NOTHING — the
+ * body is left embedded inside the collider. THAT was the fountain bug.
+ *
+ * +X is intentional, not random: identical inputs must always settle to the
+ * identical point so the crowd/props place reproducibly across frames, reloads
+ * and re-stations (the whole field is otherwise pure + deterministic, and tests
+ * assert that). +X is a safe ray in this town — the plaza opens to the east of
+ * the fountain — and callers that know a better direction (toward the nearest
+ * open bound) can pass one via `pushDir`'s `prefer` argument.
+ */
+export const DEFAULT_PUSH_DX = 1
+export const DEFAULT_PUSH_DZ = 0
+/** Radial offset below which a point counts as "dead-centre" (push undefined). */
+const CENTRE_EPS = 1e-4
+
+/**
+ * Resolve the unit push direction for ejecting (x,z) from the circle (cx,cz):
+ * normally the outward radial `(p − centre)/|p − centre|`, but when the point is
+ * within `CENTRE_EPS` of the centre that vector is undefined, so fall back to a
+ * deterministic default (`prefer` if given + itself non-degenerate, else +X).
+ * NEVER returns a zero/NaN vector, so a push ALWAYS moves the point out. Exported
+ * so the degenerate-centre case can be unit-tested in isolation.
+ */
+export function pushDir(
+  x: number,
+  z: number,
+  cx: number,
+  cz: number,
+  prefer?: { dx: number; dz: number },
+): { dx: number; dz: number } {
+  const dx = x - cx
+  const dz = z - cz
+  const d = Math.hypot(dx, dz)
+  if (d >= CENTRE_EPS) return { dx: dx / d, dz: dz / d }
+  // dead-centre → deterministic default. Honour a caller's preference (e.g.
+  // "toward the nearest open bound") when it is itself non-degenerate.
+  if (prefer) {
+    const pl = Math.hypot(prefer.dx, prefer.dz)
+    if (pl >= CENTRE_EPS) return { dx: prefer.dx / pl, dz: prefer.dz / pl }
+  }
+  return { dx: DEFAULT_PUSH_DX, dz: DEFAULT_PUSH_DZ }
+}
+
+/**
+ * Eject a body of radius `r` at (x,z) out of a SINGLE circle (cx,cz,cr) to just
+ * outside it (clear by `+1e-3`). A no-op when already outside. Uses `pushDir`, so
+ * the dead-centre case is handled deterministically rather than left embedded.
+ * Pure + standalone so callers (e.g. the crowd's static `avoidCircles`, which are
+ * NOT in the streamed field) can settle a point against a footprint without an
+ * ObstacleField. `prefer` lets the caller bias the dead-centre default.
+ */
+export function pushOutCircle(
+  x: number,
+  z: number,
+  r: number,
+  cx: number,
+  cz: number,
+  cr: number,
+  prefer?: { dx: number; dz: number },
+): { x: number; z: number } {
+  const dx = x - cx
+  const dz = z - cz
+  const need = r + cr
+  if (dx * dx + dz * dz >= need * need) return { x, z } // already clear
+  const dir = pushDir(x, z, cx, cz, prefer)
+  // push from the CENTRE out to the required separation (works even dead-centre,
+  // where there is no current radius to extend from).
+  return { x: cx + dir.dx * (need + 1e-3), z: cz + dir.dz * (need + 1e-3) }
+}
+
 /* -------------------------------------------------- precise overlap helpers */
 
 function overlapsCircle(x: number, z: number, r: number, c: CircleObstacle): boolean {
@@ -311,20 +389,17 @@ export function createObstacleField(
       let moved = false
       for (const o of grid.query(ox, oz, r)) {
         if (o.kind === "circle") {
-          let dx = ox - o.x
-          let dz = oz - o.z
-          let d = Math.hypot(dx, dz)
+          const dx = ox - o.x
+          const dz = oz - o.z
           const need = r + o.r
-          if (d < need) {
-            if (d < 1e-4) {
-              // dead-centre: pick a deterministic direction.
-              dx = 1
-              dz = 0
-              d = 1
-            }
-            const push = (need - d) + 1e-3
-            ox += (dx / d) * push
-            oz += (dz / d) * push
+          if (dx * dx + dz * dz < need * need) {
+            // `pushDir` gives a unit outward ray AND a deterministic default at
+            // the dead-centre singularity (where `(p − centre)` is the zero
+            // vector), so a point AT a circle's centre is ejected rather than
+            // left embedded — the generalized fix for the fountain bug.
+            const dir = pushDir(ox, oz, o.x, o.z)
+            ox = o.x + dir.dx * (need + 1e-3)
+            oz = o.z + dir.dz * (need + 1e-3)
             moved = true
           }
         } else {

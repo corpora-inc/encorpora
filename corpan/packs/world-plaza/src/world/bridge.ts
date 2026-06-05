@@ -209,6 +209,45 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
     box("spandrel", pierW * 0.9, Math.max(0.1, deckUnder - (springY + radius) + 0.1), (zb - za) * 0.5, x, (springY + radius + deckUnder) / 2, cz, matStoneDk)
   }
 
+  // ---- SPANDREL SIDE WALLS: solid stone faces down BOTH long sides, filling the
+  //      gap between the deck underside and the waterline so the bridge reads as a
+  //      SOLID masonry causeway/arch you go OVER — not an open trestle you could
+  //      walk UNDER (#40 follow-up). True volumetric under-walking needs Havok
+  //      (out of scope); the pragmatic fix is to CLOSE the visual invitation: no
+  //      open gap under the deck means nothing says "pass beneath me".
+  //
+  //      Each side is a run of stone slabs at x = ±hw spanning [nearZ, farZ]; each
+  //      slab fills from the waterline up to the (cambered) deck underside at its z.
+  //      The river-facing arch RINGS (above) still read as masonry relief in front
+  //      of these faces, so the side reads as an arched stone bridge, solid below.
+  //      Thin in x, so it's flush with the deck edge and doesn't widen the deck.
+  const SIDE_THICK = 0.32
+  const SIDEN = Math.max(10, Math.round(span / 3))
+  for (const side of [-1, 1]) {
+    const sx = x + side * (hw - SIDE_THICK / 2 + 0.02) // flush just inside the edge
+    for (let i = 0; i < SIDEN; i++) {
+      const z0 = nearZ + (span * i) / SIDEN
+      const z1 = nearZ + (span * (i + 1)) / SIDEN
+      const cz = (z0 + z1) / 2
+      const deckUnder = deckTopAt(cz) - DECK_THICK
+      const wallH = deckUnder - waterY
+      if (wallH <= 0.1) continue
+      // alternate the shade band slab-to-slab so the long face reads as coursed
+      // masonry (not one flat panel) under the grazing cruise camera.
+      const m = i % 2 === 0 ? matStone : matStoneDk
+      box("sidewall", SIDE_THICK, wallH, z1 - z0 + 0.04, sx, waterY + wallH / 2, cz, m)
+    }
+    // a stone STRINGCOURSE band capping the side wall just under the deck lip, so
+    // the join between the solid spandrel face and the deck reads as a crisp ledge.
+    for (let i = 0; i < SIDEN; i++) {
+      const z0 = nearZ + (span * i) / SIDEN
+      const z1 = nearZ + (span * (i + 1)) / SIDEN
+      const cz = (z0 + z1) / 2
+      const deckUnder = deckTopAt(cz) - DECK_THICK
+      box("stringcourse", SIDE_THICK + 0.22, 0.28, z1 - z0 + 0.04, sx, deckUnder - 0.1, cz, matStoneLt)
+    }
+  }
+
   // ---- APPROACH RAMPS: short wedges from each bank up to the deck ends, so you
   //      walk UP onto the bridge instead of stepping into a floating slab. Built as
   //      a few stacked slabs that rise from ground (y≈0) to the deck end height.

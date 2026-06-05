@@ -109,6 +109,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `movement/controller.ts`, `world/crowd.ts`, `net/remoteAvatar.ts`.)
 
 ### Fixed
+- **NPCs/props can no longer embed inside the fountain (or any circular collider).**
+  A special stationed at the fountain anchor (its (0,0) centre) could render INSIDE
+  the basin because the obstacle field's centre-push had no defined direction at a
+  circle's EXACT centre (`(p − centre)` is the zero vector → `0/0` NaN → the push
+  silently did nothing). The push now resolves the dead-centre singularity to a
+  deterministic default (`pushDir`/`pushOutCircle` in `world/collision.ts`), and the
+  crowd settles EVERY spawned/stationed body out of all solid footprints — the
+  streamed field AND the static fountain `avoidCircles` (which aren't in the field
+  yet at world-build time) — via a unified `settleFree`, re-checked after the
+  bridge-foot walk-back and on every hover step. (`world/collision.ts`,
+  `world/crowd.ts`; tests in `world/collision.test.ts`, `world/stationing.test.ts`.)
+- **The bridge reads as a solid causeway, not an open trestle.** Players approached
+  the side, saw open space under the deck, and tried to walk under — but the deck
+  lifts you ON top (true under-walking needs Havok, out of scope). Solid stone
+  spandrel SIDE WALLS now fill both long sides from the waterline up to the deck
+  underside (with a stringcourse ledge under the lip), closing the visual "walk
+  under me" invitation so the crossing reads as an arched stone bridge you go OVER.
+  Merged into the existing per-material bridge meshes; walk-surface math unchanged.
+  (`world/bridge.ts`.)
 - **Engaged 3D NPCs now turn to face you.** A special NPC is 3D (no billboard),
   so when held in conversation / on quest-seeker arrival it used to keep its last
   wander heading and stare off awkwardly. It now eases to face the player while

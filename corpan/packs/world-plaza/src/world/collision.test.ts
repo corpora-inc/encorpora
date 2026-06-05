@@ -6,6 +6,10 @@ import {
   topologyObstacles,
   propFootprints,
   buildPlazaObstacleField,
+  pushDir,
+  pushOutCircle,
+  DEFAULT_PUSH_DX,
+  DEFAULT_PUSH_DZ,
   FOUNTAIN_RADIUS,
   type Obstacle,
 } from "./collision"
@@ -107,5 +111,66 @@ describe("collision: field queries", () => {
     const b = createObstacleField(obs)
     expect(a.blocked(5, 5, 0.3)).toBe(b.blocked(5, 5, 0.3))
     expect(a.resolve(0, 5, 5, 5, 0.3)).toEqual(b.resolve(0, 5, 5, 5, 0.3))
+  })
+})
+
+describe("collision: degenerate-centre push (the fountain-bug root cause)", () => {
+  it("pushDir returns the deterministic default at the EXACT centre", () => {
+    // p == centre → radial vector is (0,0); must NOT be NaN, must be the default.
+    const d = pushDir(0, 0, 0, 0)
+    expect(Number.isFinite(d.dx)).toBe(true)
+    expect(Number.isFinite(d.dz)).toBe(true)
+    expect(d.dx).toBe(DEFAULT_PUSH_DX)
+    expect(d.dz).toBe(DEFAULT_PUSH_DZ)
+    expect(Math.hypot(d.dx, d.dz)).toBeCloseTo(1, 9) // unit
+  })
+
+  it("pushDir uses a caller-preferred direction at the centre, normalized", () => {
+    const d = pushDir(0, 0, 0, 0, { dx: 0, dz: 5 })
+    expect(d.dx).toBeCloseTo(0, 9)
+    expect(d.dz).toBeCloseTo(1, 9) // normalized toward +z
+  })
+
+  it("pushDir returns the true outward radial OFF the centre (normal case)", () => {
+    const d = pushDir(3, 0, 0, 0)
+    expect(d.dx).toBeCloseTo(1, 9)
+    expect(d.dz).toBeCloseTo(0, 9)
+  })
+
+  it("pushOutCircle ejects a point at the EXACT centre to just outside the ring", () => {
+    // the generalized fountain case: a body radius 0.5 dead-centre of a r=2.55
+    // circle. Old code (0/0) left it embedded; now it ejects ≥ r + cr away.
+    const r = 0.5
+    const cr = 2.55
+    const out = pushOutCircle(0, 0, r, 0, 0, cr)
+    expect(Math.hypot(out.x, out.z)).toBeGreaterThanOrEqual(r + cr)
+    expect(out.x).toBeGreaterThan(0) // along the +X default
+    expect(out.z).toBeCloseTo(0, 9)
+  })
+
+  it("pushOutCircle is a no-op when already clear", () => {
+    const out = pushOutCircle(10, 10, 0.5, 0, 0, 2.55)
+    expect(out).toEqual({ x: 10, z: 10 })
+  })
+
+  it("field.pushOut ejects a body STATIONED at a circle's exact centre", () => {
+    // degenerate centre INSIDE the obstacle field (not just the bare helper).
+    const r = 0.5
+    const field = createObstacleField([{ kind: "circle", x: 0, z: 0, r: 2.55 }])
+    expect(field.blocked(0, 0, r)).toBe(true)
+    const out = field.pushOut(0, 0, r)
+    expect(Number.isFinite(out.x)).toBe(true)
+    expect(Number.isFinite(out.z)).toBe(true)
+    expect(field.blocked(out.x, out.z, r)).toBe(false) // genuinely out
+    expect(Math.hypot(out.x, out.z)).toBeGreaterThanOrEqual(2.55 + r)
+  })
+
+  it("field.pushOut at the FOUNTAIN centre lands ≥ collider + agent radius away", () => {
+    // the literal screenshot bug: a special stationed at the plaza fountain (0,0).
+    const r = 0.5 // AGENT_RADIUS
+    const field = buildPlazaObstacleField(topology, { caps: FULL_CAPS, seed: DRESSING_DEFAULT_SEED })
+    const out = field.pushOut(0, 0, r)
+    expect(field.blocked(out.x, out.z, r)).toBe(false)
+    expect(Math.hypot(out.x, out.z)).toBeGreaterThanOrEqual(FOUNTAIN_RADIUS + r)
   })
 })

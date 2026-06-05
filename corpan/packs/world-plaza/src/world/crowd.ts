@@ -7,6 +7,7 @@ import { generateCharacter, ANTIGUA_1770, type WardrobeTheme } from "../characte
 import type { CharacterSpec } from "../character/characterSpec"
 import { generatePersona, type GeneratedPersona } from "../npc/personaGen"
 import type { ObstacleField } from "./collision"
+import { pushOutCircle } from "./collision"
 import { walkSurfaceHeight } from "./walkSurface"
 import {
   stationPoint,
@@ -365,6 +366,44 @@ export function createCrowd(
     }
     return false
   }
+  /**
+   * Settle (x,z) OUT of every solid footprint to a free standing point — both the
+   * streamed `field` (buildings/water/bridge piers/props) AND the static
+   * `avoidCircles` (the fountain), the latter because a special is stationed at
+   * world-BUILD time, before the chunk-scoped fountain collider has streamed into
+   * `field`, so `field.pushOut` alone can leave an NPC embedded in the basin.
+   *
+   * A few relaxation passes interleave the two ejectors so a point wedged between
+   * a streamed obstacle and the fountain isn't bounced straight back into the
+   * other. `pushOutCircle` resolves the dead-centre singularity deterministically
+   * (a special anchored EXACTLY at the fountain's (0,0) ejects along +X instead of
+   * staying put). Idempotent once clear of everything.
+   */
+  const settleFree = (x: number, z: number): { x: number; z: number } => {
+    let ox = x
+    let oz = z
+    for (let pass = 0; pass < 6; pass++) {
+      let moved = false
+      if (field) {
+        const f = field.pushOut(ox, oz, AGENT_RADIUS)
+        if (f.x !== ox || f.z !== oz) {
+          ox = f.x
+          oz = f.z
+          moved = true
+        }
+      }
+      for (const c of avoidCircles) {
+        const p = pushOutCircle(ox, oz, AGENT_RADIUS, c.x, c.z, c.r)
+        if (p.x !== ox || p.z !== oz) {
+          ox = p.x
+          oz = p.z
+          moved = true
+        }
+      }
+      if (!moved) break
+    }
+    return { x: ox, z: oz }
+  }
   /** Is (x,z) blocked for an agent — by a static decorative footprint, ANY streamed
    * obstacle (field), or, lacking the field, by a building box only (legacy)? */
   const isBlocked = (x: number, z: number): boolean =>
@@ -534,12 +573,12 @@ export function createCrowd(
     const tend = tendPointFor(i)
     // spawn at a free point, then a first target — both away from the centre.
     const start = pickTarget(tend)
-    // settle out of any obstacle the sampled point still grazes (belt + braces).
-    if (field) {
-      const free = field.pushOut(start.x, start.z, AGENT_RADIUS)
-      start.x = free.x
-      start.z = free.z
-    }
+    // settle out of EVERY footprint the sampled point still grazes — streamed
+    // obstacles AND the static fountain (belt + braces; `pickTarget` already
+    // rejects blocked points, but a grazing sample at the edge is cleared here).
+    const free = settleFree(start.x, start.z)
+    start.x = free.x
+    start.z = free.z
     cutout.setGroundPos(start.x, start.z, groundH(start.x, start.z))
 
     const handle: CrowdFocusHandle = {
@@ -614,15 +653,16 @@ export function createCrowd(
   const stationFor = (sp: CrowdSpecial): { anchor: RoomTopology["anchors"][number]; x: number; z: number } | null => {
     const anchor = anchorById.get(sp.anchorId)
     if (!anchor) return null
+    // `stationPoint` already spirals outward off the anchor using `isBlocked`
+    // (which folds in the fountain `avoidCircles`), so a special anchored ON the
+    // fountain is walked off the basin here. `settleFree` is the belt-and-braces
+    // guarantee: it ejects from EVERY footprint — streamed obstacles AND the
+    // static fountain (whose chunk collider may not have streamed into `field`
+    // yet at build time) — and resolves the dead-centre singularity, so the NPC
+    // can never be left embedded in the basin.
     const sp0 = stationPoint(anchor, isBlocked)
-    let stx = sp0.x
-    let stz = sp0.z
-    if (field) {
-      const free = field.pushOut(stx, stz, AGENT_RADIUS)
-      stx = free.x
-      stz = free.z
-    }
-    let c = clampToBounds(stx, stz)
+    const free = settleFree(sp0.x, sp0.z)
+    let c = clampToBounds(free.x, free.z)
     // INVARIANT: a stationed special stands on flat GROUND, never on a raised
     // walk-surface (the bridge deck). An anchor that sits on a ramp/deck (bridge_n)
     // would otherwise float the NPC up the bridge — beacon offscreen, body clipping
@@ -640,7 +680,10 @@ export function createCrowd(
         gx += ux
         gz += uz
       }
-      c = clampToBounds(gx, gz)
+      // the walk-back marched toward the city interior (≈ the fountain) and may
+      // have stepped INTO a footprint — settle clear again before clamping.
+      const reFree = settleFree(gx, gz)
+      c = clampToBounds(reFree.x, reFree.z)
     }
     return { anchor, x: c.x, z: c.z }
   }
@@ -977,6 +1020,17 @@ export function createCrowd(
         // legacy: axis-separated slide against building boxes only.
         if (blockedAt(nx, a.z, blockers)) nx = a.x
         if (blockedAt(a.x, nz, blockers)) nz = a.z
+      }
+      // The static fountain `avoidCircles` are NOT in `field` until the fountain
+      // chunk streams in (specials are placed before that), so the field's slide
+      // can't keep a hovering special out of the basin. Eject from them every
+      // step too, so nobody can walk INTO the fountain regardless of streaming.
+      if (avoidCircles.length) {
+        for (const c of avoidCircles) {
+          const p = pushOutCircle(nx, nz, AGENT_RADIUS, c.x, c.z, c.r)
+          nx = p.x
+          nz = p.z
+        }
       }
       // if fully wedged (corner / pinned against a prop), pick a fresh target so
       // nobody gets stuck grinding into an obstacle.
