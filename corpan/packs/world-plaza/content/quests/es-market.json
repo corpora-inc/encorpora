@@ -4,13 +4,13 @@
   "narrative": "Practice your numbers and prices with the market clerk.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 1 },
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
   "steps": [
     {
       "id": "haggle",
       "label": "Ask the price at the market",
       "anchorId": "market",
-      "toolId": "repeat-after"
+      "toolId": "translate-fast"
     }
   ],
   "promptProgram": {

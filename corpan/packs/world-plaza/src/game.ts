@@ -123,7 +123,21 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
   const npcHost = (host as NpcHostApi | undefined) ?? createMockHost()
   // Corpus/TTS/STT-backed host for challenges (real corpan host, else a mock
   // with a built-in EN↔ES corpus so challenges run standalone in the browser).
-  const chHost: ChallengeRuntimeHost = host
+  // A challenge is USELESS without a corpus: if the host can't supply entries
+  // (`getRandomEntry`), createChallengeHost's getRandomEntries throws → the tool
+  // builds 0 rounds → the gate challenge instant-"fails" → the quest can never be
+  // won (a silent dead-end). So require the corpus method before trusting the host;
+  // otherwise fall back to the built-in EN↔ES mock so challenges always run. This
+  // also makes the standalone `?stack=` dev stub (which only provides
+  // getStackConfig) faithfully playable instead of dead-ending every challenge.
+  const hostHasCorpus =
+    !!host && typeof (host as { getRandomEntry?: unknown }).getRandomEntry === "function"
+  if (host && !hostHasCorpus) {
+    console.warn(
+      "[world-plaza] host has no getRandomEntry — challenges fall back to the built-in mock corpus",
+    )
+  }
+  const chHost: ChallengeRuntimeHost = hostHasCorpus
     ? createChallengeHost(host as CorpanChallengeHostApi)
     : mockChallengeHost()
 

@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **THE CORE LOOP: you can now finish a beginner quest with your thumb, no mic
+  required.** Root cause of "I walk to the star, talk to the guy, and there's no
+  way to win": every beginner quest's gating challenge was `repeat-after` — a
+  SPEAK/STT challenge. In QA it always "passed" because the standalone mock host
+  reports `sttAvailable: true` with a generous 0.86 auto-score; on a real device
+  with no working target-language STT (e.g. Arabic), the same gate is unwinnable —
+  you get a mic you can't satisfy, so the quest never advances. The harnesses that
+  claimed it was fixed used a bypass hook (`__wpQuest.winCurrent`) or stopped at the
+  "Begin" chip, so none of them ever actually played a challenge to a win on the
+  real path. Fix: the gating challenge for the four beginner quests (cafe / market /
+  directions / guadalajara-docks) is now `translate-fast` — a tappable, mic-free,
+  always-winnable challenge. Speak challenges remain available as optional NPC
+  flavor; they return as gates once native on-device STT lands (#64). Proven by a
+  new `qa/play-to-win.mjs` (27/27) that drives the REAL UI — Talk → Begin chip →
+  challenge → tap the correct tiles → Claim reward → step advances → quest COMPLETES
+  — with `sttAvailable` forced true and NO bypass hook.
+- **Challenges no longer silently dead-end when the host can't supply a corpus.** A
+  challenge with zero rounds instant-"fails" (you can never beat the gate). The
+  standalone `?stack=` dev stub provided only `getStackConfig`, so
+  `createChallengeHost` threw on `getRandomEntries` → 0 rounds → dead gate (and the
+  bug hid because no harness had played a challenge in that mode). `game.ts` now
+  requires the host's corpus method (`getRandomEntry`) before trusting it and falls
+  back to the built-in EN↔ES mock corpus otherwise (noisily logged), so challenges
+  always run — in the standalone dev stub and as a resilience guard on device.
+
 ### Added
 - **Quests are conversation-driven — you finish steps by TALKING to people, not
   tripping a silent wire (#55).** A traversal step used to auto-complete the instant

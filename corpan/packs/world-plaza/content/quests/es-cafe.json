@@ -4,13 +4,13 @@
   "narrative": "Your very first words in the city: order a coffee at the plaza café.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 1 },
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
   "steps": [
     {
       "id": "order-coffee",
       "label": "Order a coffee at the plaza café",
       "anchorId": "plaza",
-      "toolId": "repeat-after"
+      "toolId": "translate-fast"
     }
   ],
   "promptProgram": {

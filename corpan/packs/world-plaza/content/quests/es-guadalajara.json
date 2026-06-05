@@ -4,14 +4,14 @@
   "narrative": "Find your way across Corpan City — from the harbor to the river bridge.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 2 },
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
   "steps": [
     {
       "id": "docks",
       "label": "Ask for the ferry at the harbor",
       "anchorId": "harbor",
       "kind": "talk",
-      "toolId": "repeat-after",
+      "toolId": "translate-fast",
       "entryIds": [1008, 1023]
     },
     {

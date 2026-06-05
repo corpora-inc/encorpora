@@ -25,7 +25,7 @@ describe("QuestEngine — es-guadalajara-route (#26: deterministic, always-compl
     const step = engine.currentStep()
     expect(step?.id).toBe("docks")
     expect(step?.kind ?? "talk").toBe("talk")
-    expect(step?.toolId).toBe("repeat-after")
+    expect(step?.toolId).toBe("translate-fast") // mic-free gate — winnable without STT
     // No inventory rule anymore → the only gate is the challenge-beaten flag.
     expect(engine.stepState("docks")).toBe("needs-challenge")
     expect(engine.isStepSatisfied("docks")).toBe(false)
@@ -35,7 +35,7 @@ describe("QuestEngine — es-guadalajara-route (#26: deterministic, always-compl
   it("step 2 (gate) is a TRAVERSE step — completed by REACHING it, no challenge/item", () => {
     const { engine } = freshEngine()
     // Beat + advance the talk step to reach the traverse step.
-    expect(challengeSatisfiesStep(QUEST.steps[0], "repeat-after", 0.9)).toBe(true)
+    expect(challengeSatisfiesStep(QUEST.steps[0], "translate-fast", 0.9)).toBe(true)
     engine.markStepBeaten("docks")
     expect(engine.advance("docks")).toBe(true)
 
@@ -123,7 +123,7 @@ describe("QuestEngine — challenge-gated step (no inventory rule) requires mark
     expect(CAFE.steps).toHaveLength(1)
     const step = engine.currentStep()
     expect(step?.id).toBe("order-coffee")
-    expect(step?.toolId).toBe("repeat-after")
+    expect(step?.toolId).toBe("translate-fast") // mic-free gate — winnable without STT
     // No inventory rule for this quest's step → state is "needs-challenge".
     expect(engine.stepState("order-coffee")).toBe("needs-challenge")
     expect(engine.isStepSatisfied("order-coffee")).toBe(false)
@@ -137,7 +137,7 @@ describe("QuestEngine — challenge-gated step (no inventory rule) requires mark
     expect(engine.state().complete).toBe(false)
 
     // The deterministic challenge referee agrees → mark beaten, THEN advance.
-    expect(challengeSatisfiesStep(CAFE.steps[0], "repeat-after", 0.9)).toBe(true)
+    expect(challengeSatisfiesStep(CAFE.steps[0], "translate-fast", 0.9)).toBe(true)
     engine.markStepBeaten("order-coffee")
     expect(engine.isStepBeaten("order-coffee")).toBe(true)
     expect(engine.stepState("order-coffee")).toBe("ready-to-deliver")
@@ -202,10 +202,10 @@ describe("questContent — step → challenge binding", () => {
   })
 
   it("challengeSatisfiesStep gates on matching tool + score threshold", () => {
-    const step = QUEST.steps[0] // toolId: repeat-after
-    expect(challengeSatisfiesStep(step, "repeat-after", 0.9)).toBe(true)
-    expect(challengeSatisfiesStep(step, "repeat-after", 0.3)).toBe(false) // below threshold
-    expect(challengeSatisfiesStep(step, "listen-choose", 0.9)).toBe(false) // wrong tool
+    const step = QUEST.steps[0] // toolId: translate-fast (mic-free gate)
+    expect(challengeSatisfiesStep(step, "translate-fast", 0.9)).toBe(true)
+    expect(challengeSatisfiesStep(step, "translate-fast", 0.3)).toBe(false) // below threshold
+    expect(challengeSatisfiesStep(step, "repeat-after", 0.9)).toBe(false) // wrong tool
   })
 })
 

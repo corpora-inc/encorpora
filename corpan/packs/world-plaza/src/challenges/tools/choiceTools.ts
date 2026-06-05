@@ -55,6 +55,17 @@ function renderChoiceRound(
     let answered = false
     round.options.forEach((opt, i) => {
       const btn = h("button", "wp-ch-tile wp-ch-tile--lg", opt)
+      // QA-only seam (gated by window.__wpChallengeAuto, off in production): mark the
+      // correct tile so a Playwright walkthrough can drive the REAL challenge to a
+      // REAL win — real tap → real scoring → real complete() → real quest advance.
+      // Same philosophy as the __wpQuest dev hook; invisible + inert without the flag.
+      if (
+        i === round.correct &&
+        typeof window !== "undefined" &&
+        (window as unknown as { __wpChallengeAuto?: boolean }).__wpChallengeAuto
+      ) {
+        btn.dataset.correct = "1"
+      }
       btn.addEventListener("click", () => {
         if (answered) return
         answered = true

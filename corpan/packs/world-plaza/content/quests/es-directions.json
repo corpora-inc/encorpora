@@ -4,13 +4,13 @@
   "narrative": "Ask for directions at the plaza fountain and learn the way around.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "repeat-after", "count": 1 },
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
   "steps": [
     {
       "id": "ask-way",
       "label": "Ask for directions at the fountain",
       "anchorId": "fountain",
-      "toolId": "repeat-after"
+      "toolId": "translate-fast"
     }
   ],
   "promptProgram": {
