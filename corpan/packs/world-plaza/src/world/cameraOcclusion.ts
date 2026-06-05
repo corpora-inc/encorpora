@@ -113,6 +113,10 @@ export function isFadeEligible(mesh: AbstractMesh): boolean {
   if (!mesh.isEnabled()) return false // NOTE: NOT gated on visibility — the fade owns it
   if (mesh.getTotalVertices?.() === 0) return false
   const name = mesh.name
+  // The BRIDGE is a structure you TRAVERSE, not a building that hides you — and it
+  // merged into ~4 big meshes, so fading it dissolves the WHOLE span the instant a
+  // railing/arch passes between camera and player while you cross. Never fade it.
+  if (name.startsWith("wp-bridge")) return false
   for (const p of NON_OCCLUDER_PREFIXES) if (name.startsWith(p)) return false
   const bb = mesh.getBoundingInfo?.()?.boundingBox
   if (bb) {
