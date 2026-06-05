@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Real commerce + dress-up loop (economy).** Earn currency from
+  quests/challenges → spend it at shops/NPCs → dress up. All in-game soft
+  currency (no real-money IAP, no dark patterns):
+  - **NPC offers** — dedicated/special NPCs now make REAL, deterministic,
+    inventory-affecting buy/sell/trade offers (a "Make a deal" chip → a juicy
+    in-pack confirm sheet; applies atomically to the live wallet/bag, gated so you
+    can never overdraw or double-own). Rides the existing `forcedOffer.onConfirm`
+    NPC seam. (`economy/npcOffer.ts`.)
+  - **Indoor shops** — enterable shop interiors (outfitter / general store /
+    market stall) via the vignette pattern: walk to a shopfront, enter a cozy
+    interior with a real Qwen3 shopkeeper, browse/buy, exit to town. City portals
+    at `plaza` / `market` / `harbor`. (`economy/shopVignette.ts`.)
+  - **Wardrobe re-entry** — re-open the avatar customizer in-game (from the
+    outfitter AND a "Change your look" control in the Inventory panel) to change
+    outfit + equip bought bling; the live player figure re-dresses IN PLACE (no
+    world reload) and persists per-profile. (`economy/wardrobe.ts`,
+    `movement/controller.ts` `redress`.)
+  - **Player-to-player selling** — consumes the multiplayer trade transport via a
+    feature-detected provider seam; validates value/ownership (anti-cheat) and
+    applies only OUR side. Works solo (local stub) without the net.
+    (`economy/p2pTrade.ts`.)
+  - One `initEconomy(...)` wiring call in `game.ts`; the inventory store stays a
+    clean read API the phone shell embeds. (`economy/initEconomy.ts`.)
+
 ### Performance
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material

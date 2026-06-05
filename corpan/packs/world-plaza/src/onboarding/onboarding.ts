@@ -121,7 +121,13 @@ let currentPlayerId = "player-local"
 
 /* ---------------------------------------------------- avatar composition */
 
-interface DressState {
+/**
+ * The dress-up state the paper-doll preview + `dressToAvatar` operate on. EXPORTED
+ * so the in-game WARDROBE (`economy/wardrobe.ts`) reuses the exact same model,
+ * preview, and avatar builder — one dress vocabulary, no drift between onboarding
+ * and re-dress.
+ */
+export interface DressState {
   topId: string
   topTint: string
   hatId: string
@@ -131,7 +137,8 @@ interface DressState {
   skin: string
 }
 
-function defaultDress(): DressState {
+/** A sensible default dress (the free starter look). Exported for the wardrobe. */
+export function defaultDress(): DressState {
   return {
     topId: "top-tunic",
     topTint: TOPS[0]?.tints?.[0] ?? "#3f7fae",
@@ -141,9 +148,10 @@ function defaultDress(): DressState {
   }
 }
 
-const SKINS = ["#f4d6b0", "#f0c79a", "#e3ad79", "#c98a55", "#a06a3c", "#7a4a26"]
+/** The curated skin tones the dress-up + wardrobe offer. */
+export const SKINS = ["#f4d6b0", "#f0c79a", "#e3ad79", "#c98a55", "#a06a3c", "#7a4a26"]
 
-function dressToAvatar(d: DressState): AvatarSpec {
+export function dressToAvatar(d: DressState): AvatarSpec {
   const layers: AvatarLayer[] = []
   // face/skin is the base tone; we record it as a face layer tint
   layers.push({ slot: "face", itemId: "face-base", tint: d.skin })
@@ -155,6 +163,47 @@ function dressToAvatar(d: DressState): AvatarSpec {
     layers.push({ slot: "accessory", itemId: d.accId, ...(d.accTint ? { tint: d.accTint } : {}) })
   return AvatarSpec.parse({ base: "paper-doll-a", layers, palette: { skin: d.skin } })
 }
+
+/**
+ * Reverse of `dressToAvatar`: recover a `DressState` from a stored `AvatarSpec` so
+ * the wardrobe re-opens showing the player's CURRENT look (not a reset). Unknown
+ * layer ids collapse to the slot's "none" so a catalog cosmetic the doll can't
+ * draw still leaves a clean base (the wardrobe surfaces those separately).
+ */
+export function dressFromAvatar(avatar: AvatarSpec): DressState {
+  const d = defaultDress()
+  const known = (ids: string[], id?: string) => (id && ids.includes(id) ? id : undefined)
+  const topIds = ["top-none", ...TOPS.map((t) => t.id)]
+  const hatIds = ["hat-none", ...HATS.map((h) => h.id)]
+  const accIds = ["acc-none", ...ACCS.map((a) => a.id)]
+  for (const l of avatar.layers ?? []) {
+    if (l.slot === "face") d.skin = l.tint ?? d.skin
+    else if (l.slot === "top") {
+      d.topId = known(topIds, l.itemId) ?? d.topId
+      if (l.tint) d.topTint = l.tint
+    } else if (l.slot === "hat") {
+      d.hatId = known(hatIds, l.itemId) ?? "hat-none"
+      d.hatTint = l.tint
+    } else if (l.slot === "accessory") {
+      d.accId = known(accIds, l.itemId) ?? "acc-none"
+      d.accTint = l.tint
+    }
+  }
+  return d
+}
+
+/**
+ * The catalog of starter dress options per slot, EXPORTED so the wardrobe can
+ * offer the same base wardrobe the onboarding did (plus the player's bought
+ * catalog cosmetics, which it layers on top).
+ */
+export const STARTER_DRESS = {
+  tops: TOPS as ReadonlyArray<StarterItem>,
+  hats: HATS as ReadonlyArray<StarterItem>,
+  accessories: ACCS as ReadonlyArray<StarterItem>,
+  skins: SKINS as ReadonlyArray<string>,
+}
+export type DressOption = StarterItem
 
 /* ------------- 2D paper-doll preview (same art language as cutoutArt) ----- */
 
@@ -197,7 +246,14 @@ function paperPiece(
   ctx.restore()
 }
 
-function drawDoll(ctx: CanvasRenderingContext2D, W: number, H: number, d: DressState) {
+/**
+ * Draw the layered paper-doll for a {@link DressState}. EXPORTED so the wardrobe
+ * renders the IDENTICAL preview as onboarding (one art path). It draws the
+ * STARTER dress vocabulary (tunic/vest, cap/baker/sun hats, scarf/satchel); a
+ * bought CATALOG cosmetic the doll doesn't know is surfaced by the wardrobe as a
+ * worn-bling badge layered over this base.
+ */
+export function drawDoll(ctx: CanvasRenderingContext2D, W: number, H: number, d: DressState) {
   ctx.clearRect(0, 0, W, H)
   const cx = W / 2
 
