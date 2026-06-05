@@ -780,6 +780,17 @@ export function createCrowd(
   let heldId: string | null = null
   const update: Crowd["update"] = (dt, player) => {
     questKeepClear = opts.getQuestKeepClear?.() ?? null
+    // Turn an agent to FACE the player, eased. 3D specials don't billboard, so
+    // when engaged/arrived they must actively orient toward you or they stare off
+    // awkwardly. Figure forward is +Z → heading = atan2(dx,dz) toward the player.
+    const facePlayer = (a: Agent) => {
+      const fy = Math.atan2(player.x - a.x, player.z - a.z)
+      let d = fy - a.headingYaw
+      while (d > Math.PI) d -= Math.PI * 2
+      while (d < -Math.PI) d += Math.PI * 2
+      a.headingYaw += d * Math.min(1, dt * 8)
+      a.cutout.setHeading?.(a.headingYaw)
+    }
     for (let i = 0; i < agents.length; i++) {
       const a = agents[i]
       const tend = { x: a.tx0, z: a.tz0 }
@@ -818,6 +829,7 @@ export function createCrowd(
         a.anim.setState("idle")
         a.anim.setSpeed(0)
         a.anim.update(dt)
+        facePlayer(a) // engaged → turn to look at you (3D NPCs don't billboard)
         continue
       }
 
@@ -833,6 +845,7 @@ export function createCrowd(
           a.anim.setState("idle")
           a.anim.setSpeed(0)
           a.anim.update(dt)
+          facePlayer(a) // arrived → face you instead of holding its walk heading
           continue
         }
         // steer straight at the player (with separation so seekers don't stack)

@@ -5,6 +5,7 @@ import { UniversalCamera } from "@babylonjs/core/Cameras/universalCamera"
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight"
 import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight"
 import { Ray } from "@babylonjs/core/Culling/ray"
+import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { isBoomBlocker } from "./cameraOcclusion"
 import "@babylonjs/core/Materials/standardMaterial"
@@ -164,6 +165,30 @@ export function createWorldEngine(
   scene.skipPointerMovePicking = true // we only need pick on tap
   scene.autoClear = true
 
+  // Real per-frame DRAW-CALL + active-mesh counters (Babylon 9 dropped
+  // engine.drawCalls). The perf HUD reads these; a draw-call count near the mesh
+  // count means we're draw-call bound (each mesh = its own GPU submission), which
+  // adaptive resolution can't fix — only fewer/merged meshes can.
+  const inst = new SceneInstrumentation(scene)
+  inst.captureActiveMeshesEvaluationTime = true
+  ;(window as unknown as { __wpDraws?: () => number }).__wpDraws = () =>
+    inst.drawCallsCounter.current
+  // Active-mesh breakdown by name prefix — pinpoints which subsystem owns the
+  // draw calls (characters vs buildings vs props) so cuts are targeted.
+  ;(window as unknown as { __wpActive?: () => unknown }).__wpActive = () => {
+    const am = scene.getActiveMeshes()
+    const by: Record<string, number> = {}
+    for (let i = 0; i < am.length; i++) {
+      const nm = am.data[i]?.name ?? "?"
+      const k = nm.replace(/[-_][a-z0-9]+$/i, "").replace(/[-_]\d+.*$/, "").slice(0, 16)
+      by[k] = (by[k] ?? 0) + 1
+    }
+    return {
+      activeTotal: am.length,
+      top: Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 16),
+    }
+  }
+
   // Merge the camera rig (named tunables; legacy camDistance/camHeight honored).
   const rig: CameraRig = {
     ...DEFAULT_RIG,
@@ -318,10 +343,9 @@ export function createWorldEngine(
     hudTimer += dtMs
     if (hudTimer < 250) return
     hudTimer = 0
-    const e = engine as unknown as { drawCalls?: number }
     hud.textContent =
       `fps ${Math.round(engine.getFps())}  frame ${dtMs.toFixed(1)}ms\n` +
-      `draws ${e.drawCalls ?? "n/a"}  meshes ${scene.getActiveMeshes().length}/${scene.meshes.length}\n` +
+      `draws ${inst.drawCallsCounter.current}  meshes ${scene.getActiveMeshes().length}/${scene.meshes.length}\n` +
       `verts ${scene.getTotalVertices()}  tex ${scene.textures.length}\n` +
       `renderScale ${curScale.toFixed(2)} (native ${nativeScale.toFixed(2)})  px ${Math.round(engine.getRenderWidth())}×${Math.round(engine.getRenderHeight())}`
   }

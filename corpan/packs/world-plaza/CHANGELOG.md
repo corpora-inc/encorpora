@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **City cast-shadows are now OPT-IN (the big draw-call cut).** Measured with a
+  real per-frame draw-call counter (Babylon 9 hid `engine.drawCalls`; the perf
+  HUD now wires `SceneInstrumentation`): the scene issues ~1,400 draws/frame and
+  the shadow-map pass alone is **~490 of them (1418→928 measured)** — the dominant
+  cost on a draw-call-bound WebView. The premium golden-hour BUILDING shadows are
+  disabled by default and gated behind `?shadows` / `window.__wpCityShadows=true`
+  for machines that can afford them; characters/props keep their cheap contact
+  shadows. (Re-enables by default once the static city is merged/instanced — which
+  needs the camera boom decoupled from render meshes first.) (`game.ts`.)
 - **Adaptive render resolution holds the frame budget.** The dominant GPU cost
   was fill rate — at 2× retina the bloom + shadow + fog + curvature stack shades
   4× the pixels of 1×, dragging a strong retina Mac toward ~12 fps. The engine
@@ -33,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `movement/controller.ts`, `world/crowd.ts`, `net/remoteAvatar.ts`.)
 
 ### Fixed
+- **Engaged 3D NPCs now turn to face you.** A special NPC is 3D (no billboard),
+  so when held in conversation / on quest-seeker arrival it used to keep its last
+  wander heading and stare off awkwardly. It now eases to face the player while
+  engaged. (`world/crowd.ts`.)
 - **3D characters no longer moonwalk.** The player / special NPCs / real players
   now TURN to face the direction they're moving instead of holding a fixed facing
   — so strafing or back-pedalling reads as the figure pivoting and walking that

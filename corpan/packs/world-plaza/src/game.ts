@@ -366,20 +366,25 @@ function buildWorld(
   // shadow map so they throw real golden-hour shadows onto the plaza, instead of
   // floating on contact shadows alone. Bounded to the PLAYER-LOCAL near chunk set
   // (far chunks opt out) so the auto-fit shadow box + map resolution stay tight.
-  // KILL SWITCH (defaults ON): set `?noshadows` in the URL or
-  // `window.__wpCityShadows = false` BEFORE boot to disable instantly if it tanks
-  // on a device. When off, the city ships exactly as before (props/characters keep
-  // their contact shadows; buildings simply don't cast).
+  // NOW OPT-IN (perf): city cast-shadows are the single most expensive thing in
+  // the frame — the shadow-map pass re-draws the building masses every frame, ~490
+  // extra draw calls (1418→928 measured). On a draw-call-bound WebView that's the
+  // difference between ~12 and ~20+ fps, so the premium golden-hour building
+  // shadows are DISABLED by default and gated behind an explicit opt-in for
+  // machines that can afford them. Characters/props keep their cheap contact
+  // shadows regardless. Enable with `?shadows` or `window.__wpCityShadows = true`
+  // BEFORE boot. (Once the static city is merged/instanced — pending a camera-
+  // occlusion decouple — the caster set collapses and this can default back on.)
   const cityShadowsEnabled = (() => {
-    if (typeof window === "undefined") return true
+    if (typeof window === "undefined") return false
     const w = window as unknown as { __wpCityShadows?: boolean }
-    if (w.__wpCityShadows === false) return false
+    if (w.__wpCityShadows === true) return true
     try {
-      if (new URLSearchParams(window.location.search).has("noshadows")) return false
+      if (new URLSearchParams(window.location.search).has("shadows")) return true
     } catch {
-      /* no-op: malformed search string → keep shadows on */
+      /* no-op: malformed search string → keep shadows off */
     }
-    return true
+    return false
   })()
   const city = mountCity(world.scene, {
     layout,
