@@ -27,6 +27,7 @@ import {
 } from "@world-plaza/contracts"
 import { segueChipLabel, resolveSegue } from "./challengeSegues"
 import { targetLanguageDirective } from "./promptLocale"
+import { isCrossLanguageTool } from "../challenges/registry"
 
 /**
  * The optional persona-enrichment a `GeneratedPersona` (from personaGen) carries
@@ -246,10 +247,24 @@ export type GameOffer = {
   chipLabel: string
 }
 
-/** Resolve THIS NPC's offerable tools (persona ∩ quest), persona-preferred. */
-export function offerableTools(npcRole: NpcRole, quest: Quest): ChallengeToolId[] {
+/**
+ * Resolve THIS NPC's offerable tools (persona ∩ quest), persona-preferred.
+ *
+ * `singleLanguage` (a Track whose native === target) FILTERS OUT cross-language
+ * tools (translate / tap-the-meaning / match-pairs): a one-language learner can't
+ * do a translation game — it's a tautology with no answer (#27 stopgap). The full
+ * single-language-immersion redesign of those games is a separate backlog item
+ * (SINGLE_LANGUAGE_RULE). With a 2-language Track this is a no-op.
+ */
+export function offerableTools(
+  npcRole: NpcRole,
+  quest: Quest,
+  opts?: { singleLanguage?: boolean },
+): ChallengeToolId[] {
   const e = enrichmentOf(npcRole)
-  return resolveToolWhitelist(e.challengeTools, quest.promptProgram.toolWhitelist)
+  const tools = resolveToolWhitelist(e.challengeTools, quest.promptProgram.toolWhitelist)
+  if (!opts?.singleLanguage) return tools
+  return tools.filter((id) => !isCrossLanguageTool(id))
 }
 
 /**

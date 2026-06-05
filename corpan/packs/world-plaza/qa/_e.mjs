@@ -8,18 +8,21 @@ await sleep(2800)
 const browser = await webkit.launch()
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } })
 page.on("pageerror", (e) => console.log("ERR", String(e)))
-// noatmo to isolate the skyline from the sky dome
-await page.goto(`${BASE}/qa/edge.html?noatmo=1`, { waitUntil: "load" })
+await page.goto(`${BASE}/qa/edge.html`, { waitUntil: "load" })
 await page.waitForTimeout(5000)
-const info = await page.evaluate(() => {
-  const scene = window.__wpScene
-  const sl = scene.meshes.filter(m=>m.name.includes("wp-skyline"))
-  return sl.map(m=>({name:m.name, enabled:m.isEnabled(), vis:m.visibility, infD:m.infiniteDistance, rg:m.renderingGroupId, verts:m.getTotalVertices(), matAlpha: m.material&&m.material.alpha, hasOpac: !!(m.material&&m.material.opacityTexture)}))
-})
-console.log("SKYLINE", JSON.stringify(info,null,1))
 const w = await page.evaluate(() => window.__wpEdge.water())
-await page.evaluate((w) => window.__wpEdge.setView(-Math.PI/2, 1.4, 30, 0, w.farPromZ), w)
+// camera AT the near quay (z just below waterZ), low + looking ACROSS the river
+// toward +Z (the far bank + skyline). alpha=PI/2 puts cam at -Z of target looking +Z.
+await page.evaluate((w) => {
+  // target out on the far side so the cam sits at the near quay looking across
+  window.__wpEdge.setView(Math.PI/2, 1.5, 60, 0, w.farPromZ+20)
+}, w)
+await page.waitForTimeout(1200)
+await page.screenshot({ path: "/tmp/wp-sky-across.png" })
+// also a wider, slightly elevated framing of the whole far side
+await page.evaluate((w) => window.__wpEdge.setView(Math.PI/2, 1.3, 90, 0, w.farPromZ+40), w)
 await page.waitForTimeout(1000)
-await page.screenshot({ path: "/tmp/wp-sky-noatmo.png" })
+await page.screenshot({ path: "/tmp/wp-sky-wide.png" })
+console.log("done", JSON.stringify(w))
 await browser.close()
 process.exit(0)

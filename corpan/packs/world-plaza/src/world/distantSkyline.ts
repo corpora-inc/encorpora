@@ -70,75 +70,76 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
   let s = (opts.seed ?? 1234) >>> 0
   const rnd = () => ((s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff)
 
-  /** Paint one skyline layer onto a wide DynamicTexture: a run of rectangular
-   *  towers of varied width/height along U, the silhouette colour below the
-   *  rooflines and TRANSPARENT above, with a haze gradient lifting from the base
-   *  so the feet dissolve. `baseFrac`/`maxFrac` set how tall the band of towers is
-   *  within the texture (0 = top of texture/sky, 1 = bottom/horizon). */
-  const paintLayer = (
-    name: string,
-    color: Color3,
-    density: number,
-    baseFrac: number,
-    maxFrac: number,
-  ): DynamicTexture => {
+  /** Paint one skyline layer onto a wide DynamicTexture. The HORIZON line is the
+   *  texture's vertical MIDDLE (V=0.5): towers rise ABOVE it (toward V=0, the sky)
+   *  and a soft haze band sits just below it, everything else transparent. Mapped
+   *  1:1 onto the cylinder this lands the towers' feet exactly at the horizon. The
+   *  top of each tower fades toward the sky; the base dissolves into haze so it
+   *  never reads as a cardboard cut-out. `riseFrac` = max tower height as a
+   *  fraction of the half-texture above the horizon. */
+  const paintLayer = (name: string, color: Color3, density: number, riseFrac: number): DynamicTexture => {
     const W = 2048
-    const H = 256
+    const H = 512
+    const horizon = H * 0.5
     const tex = new DynamicTexture(`${tag}-${name}`, { width: W, height: H }, scene, false)
     const ctx = tex.getContext() as unknown as CanvasRenderingContext2D
     ctx.clearRect(0, 0, W, H)
-    // towers: walk along U, each a rectangle from the horizon (bottom) up to a
-    // random roofline. Widths/heights vary; occasional taller "landmark" towers.
+    ctx.fillStyle = css(color)
+    // towers: each a rectangle from the horizon UP to a random roofline.
     let x = 0
-    const fill = css(color)
-    ctx.fillStyle = fill
     while (x < W) {
-      const w = 12 + rnd() * 46 * density
-      const tall = rnd() < 0.12
-      const hFrac = baseFrac + rnd() * (maxFrac - baseFrac) * (tall ? 1 : 0.66)
-      const topY = H * (1 - hFrac)
-      ctx.fillRect(x, topY, w + 1, H - topY) // +1 to avoid hairline gaps
-      // a few towers get a stepped/peaked cap for variety.
+      const w = 14 + rnd() * 52 * density
+      const tall = rnd() < 0.14
+      const rise = horizon * riseFrac * (0.4 + rnd() * 0.6) * (tall ? 1.4 : 1)
+      const topY = horizon - rise
+      ctx.fillRect(x, topY, w + 1, horizon - topY + 2) // up to (just past) the horizon
+      // a few towers get a peaked/stepped cap for variety.
       if (tall && rnd() < 0.6) {
         ctx.beginPath()
         ctx.moveTo(x, topY)
-        ctx.lineTo(x + w / 2, topY - H * 0.06)
+        ctx.lineTo(x + w / 2, topY - horizon * 0.12)
         ctx.lineTo(x + w, topY)
         ctx.closePath()
         ctx.fill()
       }
-      x += w + rnd() * 8
+      x += w + rnd() * 10
     }
-    // haze gradient at the base → the silhouette's feet melt into the fog band.
-    const g = ctx.createLinearGradient(0, H * 0.7, 0, H)
-    g.addColorStop(0, css(haze, 0))
-    g.addColorStop(1, css(haze, 0.55))
+    // soft haze band just BELOW the horizon so the silhouette's feet melt into the
+    // distance fog (then transparent further down). Above the towers stays clear.
+    const g = ctx.createLinearGradient(0, horizon - 4, 0, horizon + H * 0.16)
+    g.addColorStop(0, css(haze, 0.5))
+    g.addColorStop(1, css(haze, 0))
     ctx.fillStyle = g
-    ctx.fillRect(0, H * 0.7, W, H * 0.3)
+    ctx.fillRect(0, horizon - 4, W, H * 0.16 + 4)
     tex.update(false)
     tex.hasAlpha = true
     tex.wrapU = 1 // tile seamlessly around the ring
     return tex
   }
 
-  /** Build one infinite-distance cylinder band wearing a painted skyline texture.
-   *  Open-ended, single-sided facing INWARD (we see its inner wall), no fog, sky
-   *  rendering group so it sits behind the world. */
-  const band = (name: string, tex: DynamicTexture, diameter: number, height: number, yOff: number) => {
+  /** Build a large skyline-band cylinder at a real, far world RADIUS (beyond the
+   *  buildable world but inside the camera far plane). It is RE-CENTERED on the
+   *  camera in X/Z every frame so it has no edge and always sits at the horizon,
+   *  but keeps real depth — so it draws OVER the (infinite-distance) sky dome yet
+   *  is correctly occluded by nearer buildings. Open-ended, inward-facing, fog OFF
+   *  (the painted haze does the blending). The tower band is mapped so the towers'
+   *  feet land at the camera's eye height (the horizon). */
+  const band = (name: string, tex: DynamicTexture, radius: number, height: number, eyeY: number) => {
     const cyl = MeshBuilder.CreateCylinder(
       `${tag}-${name}`,
-      { diameter, height, tessellation: 48, sideOrientation: Mesh.BACKSIDE, cap: 0 as 0 },
+      { diameter: radius * 2, height, tessellation: 80, sideOrientation: Mesh.BACKSIDE, cap: 0 as 0 },
       scene,
     )
-    cyl.position.y = yOff
-    cyl.infiniteDistance = true // rides with the camera → pinned to the horizon
+    // centre the cylinder vertically on the eye so the texture's horizon (V=0.5)
+    // sits at eye level → the towers rise from the horizon.
+    cyl.position.y = eyeY
     cyl.applyFog = false
     cyl.isPickable = false
-    cyl.renderingGroupId = 0 // with the sky dome, behind the world
+    cyl.renderingGroupId = 0
     const mat = new StandardMaterial(`${tag}-${name}-mat`, scene)
     mat.diffuseTexture = tex
-    mat.opacityTexture = tex // alpha from the painted texture
-    mat.emissiveTexture = tex // flat-lit silhouette (no shading on a backdrop)
+    mat.opacityTexture = tex
+    mat.emissiveTexture = tex
     mat.emissiveColor = new Color3(1, 1, 1)
     mat.diffuseColor = new Color3(0, 0, 0)
     mat.specularColor = new Color3(0, 0, 0)
@@ -146,21 +147,40 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
     mat.backFaceCulling = false
     cyl.material = mat
     cyl.parent = root
-    cyl.freezeWorldMatrix()
     return { cyl, mat }
   }
 
-  // FAR layer first (drawn behind), then NEAR layer slightly smaller radius so it
-  // overlaps in front. Heights/offsets place the rooflines right at the horizon
-  // line of the infinite-distance projection.
-  const farTex = paintLayer("far", farTowers, 1.0, 0.22, 0.5)
-  const nearTex = paintLayer("near", nearTowers, 1.35, 0.3, 0.66)
-  const far = band("far", farTex, 1800, 420, 40)
-  const near = band("near", nearTex, 1500, 360, 26)
+  // FAR layer (bigger radius, behind) + NEAR layer (smaller radius, in front, a
+  // touch taller/darker). Radii sit beyond the ~540u world but inside the camera
+  // far plane (~1400). The tower band height is generous so the city reads big.
+  const EYE = 1.6 // approximate player eye height; the band centres here
+  const farTex = paintLayer("far", farTowers, 1.0, 0.66)
+  const nearTex = paintLayer("near", nearTowers, 1.4, 0.86)
+  const far = band("far", farTex, 760, 900, EYE)
+  const near = band("near", nearTex, 640, 820, EYE)
+  // draw the near band after the far band.
+  near.cyl.alphaIndex = 1
+  far.cyl.alphaIndex = 0
+
+  // ── camera-follow: recenter the bands on the camera in X/Z every frame so the
+  // skyline has no edge and always rings the horizon. Y stays fixed (eye height)
+  // so the horizon line never bobs. Cheap: two position writes per frame. ──
+  let cb: (() => void) | null = () => {
+    const cam = scene.activeCamera
+    if (!cam) return
+    const p = cam.position
+    far.cyl.position.set(p.x, EYE, p.z)
+    near.cyl.position.set(p.x, EYE, p.z)
+  }
+  scene.registerBeforeRender(cb!)
 
   return {
     root,
     dispose: () => {
+      if (cb) {
+        scene.unregisterBeforeRender(cb)
+        cb = null
+      }
       far.cyl.dispose()
       near.cyl.dispose()
       far.mat.dispose()
