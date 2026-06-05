@@ -197,7 +197,10 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
 
   const parts: InstancedMesh[] = []
   const instance = (master: Mesh, name: string, color: Color4, parent: TransformNode = body) => {
-    const inst = master.createInstance(`${id}-${name}`)
+    // `wp-fig-` prefix so every body-part instance is excluded from the camera
+    // occluder/boom deny-list (isCameraOccluder) — characters must never pull or
+    // fade the camera. Without it, walking limbs registered as walls → camera pulse.
+    const inst = master.createInstance(`wp-fig-${id}-${name}`)
     inst.instancedBuffers.color = color
     inst.parent = parent
     inst.isPickable = false

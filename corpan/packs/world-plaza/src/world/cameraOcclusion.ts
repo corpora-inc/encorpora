@@ -31,6 +31,11 @@ const NON_OCCLUDER_PREFIXES = [
   // or "hitting" them would shove the camera around for nothing, and they don't
   // hide the player (they ARE characters). The contact shadows likewise.
   "wp-cut-", // createGroundedCutout planes/roots/shadows
+  "wp-fig-", // 3D character figures (player + NPCs) — they ARE characters, never
+  // occlude/pull the camera. Without this every walking figure registered as a
+  // solid wall and its swinging limbs yanked the boom in → camera pulsed with the
+  // walk. (The old paper billboards were excluded via wp-cut-; the 3D figures need
+  // the same.)
   // sky + atmosphere + the distant vista silhouette.
   "wp-atmo",
   "wp-dome-",
@@ -39,6 +44,8 @@ const NON_OCCLUDER_PREFIXES = [
   // HUD-ish overlays that already render depth-write-off above the world.
   "wp-roadarrow",
   "wp-beacon",
+  "wp-obj-", // objective beacon (halo/pin/glow) — a floating HUD marker, never a
+  // wall. Its bounding box clipped the boom ray as you walked → the camera pulsed.
   "wp-glow",
   // perf HUD / misc non-geometry.
   "wp-perf",
