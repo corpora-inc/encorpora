@@ -213,15 +213,19 @@ function isLeanTier(): boolean {
   return small || dpr < 2
 }
 
-/** SSAO is OFF unless explicitly opted in (`?ssao` or `window.__wpSSAO = true`). */
+/** SSAO is OFF unless opted in. Persists across reload via localStorage
+ *  (`localStorage['wp:ssao'] = '1'`) or the `?ssao` URL flag — a `window.__wpSSAO`
+ *  set in the console does NOT survive a reload, so the persistent forms are the
+ *  ones that work for an A/B. */
 function ssaoOptIn(): boolean {
   if (typeof window === "undefined") return false
-  if ((window as unknown as { __wpSSAO?: boolean }).__wpSSAO === true) return true
   try {
-    return new URLSearchParams(window.location.search).has("ssao")
+    if (localStorage.getItem("wp:ssao") === "1") return true
+    if (new URLSearchParams(window.location.search).has("ssao")) return true
   } catch {
-    return false
+    /* ignore */
   }
+  return (window as unknown as { __wpSSAO?: boolean }).__wpSSAO === true
 }
 
 /**
