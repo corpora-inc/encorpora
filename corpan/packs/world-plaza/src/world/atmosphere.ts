@@ -200,7 +200,11 @@ export function applyAtmosphere(
     // long sightlines (the landmark stays visible) yet still haze the far edge.
     // `scene.sky.fog` (0..1) scales the baseline; 1 ≈ baseline, lower = clearer.
     const fogScale = skyLook?.fog ?? 1
-    scene.fogDensity = (lean ? 0.0075 : 0.009) * fogScale
+    // Deeper EXP2 haze (was 0.0075/0.009): the chunk load boundary (~107u, stream.ts
+    // visibilityRadius 165) now sits at ~85% fog, so streamed geometry EMERGES from
+    // atmospheric depth instead of hard-popping into clear view — premium distance,
+    // not a snap. Long landmark sightlines survive (EXP2 falls off gently up close).
+    scene.fogDensity = (lean ? 0.011 : 0.013) * fogScale
     disposers.push(() => {
       scene.fogMode = prevMode ?? Scene.FOGMODE_NONE
       if (prevColor) scene.fogColor = prevColor

@@ -101,7 +101,10 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
     // ≈ 1.6 chunks of city around you, enough to cover what's on screen at the
     // follow-cam's depth while keeping the collision rebuild lean. `activeRadius`
     // is the back-compat alias.
-    visibilityRadius = opts.activeRadius ?? 150,
+    // 165 (was 150): push the load boundary OUT so a chunk's near edge appears at
+    // ~107u — deep enough in the atmospheric fog (below) that it EMERGES from haze
+    // instead of hard-popping into clear view. ~1.2× resident chunks; still lean.
+    visibilityRadius = opts.activeRadius ?? 165,
     // ~5ms/frame for chunk building leaves the rest of a 16.6ms frame for render +
     // game logic. With the per-building fine-grained builder each step is sub-5ms,
     // so the budget spreads a cold chunk over several frames and never spikes.
