@@ -76,28 +76,33 @@ s = await qstate()
 assert("step 2 is the bridge TRAVERSE step", s.step?.id === "gate" && s.step?.kind === "traverse", JSON.stringify(s.step))
 assert("step 2 anchor is the river bridge", s.step?.anchorId === "bridge_n", s.step?.anchorId)
 
-// ── Step 2: "Cross the river bridge" — a TRAVERSE step (#55 conversation-driven).
-// Walk to the bridge (teleport), then TALK to the keeper to finish — the silent
-// proximity auto-advance was removed (#55: it felt hollow). `winCurrent()`
-// emulates the keeper's "Done" confirm (markStepBeaten + advance).
+// ── Step 2: "Cross the river bridge" — a TRAVERSE step (#55 + #40).
+// The keeper at bridge_n (near foot) is the MISSION-GIVER, not the finisher: the
+// step completes only when the player reaches the deck's FAR end — you genuinely
+// CROSS (world-fix: completing at the near foot fired "too early"). The crossing
+// step's completion point is the deck far end, distinct from its anchor.
+const farPt = await page.evaluate(() => (window).__wpQuest.completionPoint())
+assert("crossing completion point exists + differs from the near anchor (#40)", !!farPt, JSON.stringify(farPt))
+
+// Standing at the near anchor (the keeper) does NOT complete the crossing.
 const gotoOk = await page.evaluate(() => (window).__wpQuest.gotoObjective())
-assert("teleported to the bridge objective", gotoOk === true)
+assert("teleported to the bridge's NEAR foot (keeper)", gotoOk === true)
 await page.waitForTimeout(600)
-// Arriving does NOT auto-complete now — you must talk to the keeper.
-const stillActive = await page.evaluate(() => (window).__wpQuest.state().step?.id === "gate")
-assert("arriving does NOT auto-complete — must talk to the keeper (#55)", stillActive === true)
+const stillAtFoot = await page.evaluate(() => (window).__wpQuest.state().step?.id === "gate")
+assert("at the NEAR foot the crossing is NOT yet done — must actually cross (#40)", stillAtFoot === true)
 await page.screenshot({ path: "/tmp/wp-quest-2-bridge.png" })
 
-// Talk-to-the-keeper confirm completes the crossing.
-const confirmed = await page.evaluate(() => (window).__wpQuest.winCurrent())
-assert("talking to the keeper completes the crossing", confirmed === true)
+// Walk to the deck's FAR end → the REAL proximity trigger fires (not a forced
+// advance) → the crossing completes. This proves you finish only by crossing.
+const crossed = await page.evaluate(() => (window).__wpQuest.crossBridge())
+assert("walked to the deck's FAR end (drives the real trigger)", crossed === true)
 
-// ── Assert the quest COMPLETED. ─────────────────────────────────────────────
+// ── Assert the quest COMPLETED (the per-frame trigger advances after arrival). ──
 const final = await page.waitForFunction(
   () => (window).__wpQuest.state().complete === true,
   { timeout: 4000 },
 ).then(() => true).catch(() => false)
-assert("the across-city quest COMPLETES (NPC-driven, no dead-end)", final)
+assert("the across-city quest COMPLETES by actually crossing (no dead-end)", final)
 s = await qstate()
 assert("engine reports complete + no active step", s.complete === true && s.step === null, JSON.stringify({ complete: s.complete, step: s.step }))
 await page.screenshot({ path: "/tmp/wp-quest-3-complete.png" })

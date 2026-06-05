@@ -16,7 +16,8 @@
     "server": "npm --prefix server run server",
     "server:install": "npm --prefix server install",
     "server:typecheck": "npm --prefix server run typecheck",
-    "qa:mp": "node qa/mp-presence.mjs"
+    "qa:mp": "node qa/mp-presence.mjs",
+    "qa:restation": "node qa/restation.mjs"
   },
   "dependencies": {
     "@babylonjs/core": "^6.48.0",

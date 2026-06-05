@@ -413,6 +413,10 @@ function buildWorld(
         x: f.billboard.root.position.x,
         z: f.billboard.root.position.z,
       }))
+    // #58 dev hook: drive a runtime RE-STATION (what setActiveQuest will call) so a
+    // headless harness can prove the objective NPCs move/rename to a new anchor set.
+    ;(window as unknown as { __wpRestation?: (s: unknown) => void }).__wpRestation = (s) =>
+      crowd.restationSpecials(s as Parameters<typeof crowd.restationSpecials>[0])
     // Dev memory probe: live scene texture/mesh/vertex footprint (for sizing the
     // pre-warm-the-whole-city option). Reads Babylon's scene stats directly.
     ;(window as unknown as { __wpSceneStats?: () => unknown }).__wpSceneStats = () => {
@@ -612,6 +616,12 @@ function buildWorld(
         palette: scene.palette,
       })
     : null
+  // A "cross the bridge" traverse step (anchor bridge_n) completes at the deck's FAR
+  // end — read straight off `layout.water.deck` (deckSpan), never hardcoded — so the
+  // keeper + beacon stay at the NEAR foot while completion means "actually crossed"
+  // (world-fix #40/#55). Returns null for any other step (→ completes at its anchor).
+  const crossingCompletion = (step: { anchorId?: string }): { x: number; z: number } | null =>
+    step.anchorId === "bridge_n" && deckSpan ? { x: deckSpan.x, z: deckSpan.z1 } : null
   // Proximity-streamed ambient strollers + stall-keepers (density follows you).
   const population = createPopulation(world.scene, {
     layout,
@@ -820,22 +830,34 @@ function buildWorld(
     // ones. (`repeat-after` is the safe default tool for steps without a `toolId`.)
     const curStep = questEngine.currentStep()
     const isObjectiveNpc = !!curStep?.anchorId && it.anchorId === curStep.anchorId
-    // #55 — conversation-driven completion: a TRAVERSE/FIND objective step
-    // completes by TALKING to the NPC here (the keeper greets you, you confirm),
-    // NOT a silent proximity trigger. Its Begin chip is a CONFIRM that advances on
-    // tap. A TALK step's Begin still launches the step's challenge (the win advances).
+    // #55 + #40 — conversation-driven completion, with a "must actually cross" seam:
+    //   • TALK step → the Begin chip launches the step's challenge (the win advances).
+    //   • A CROSSING step (a traverse whose completion is the deck's FAR end, not its
+    //     anchor) → the keeper is the MISSION-GIVER, not the finisher: its chip is an
+    //     "On my way" acknowledgement that sends you off; the step completes when you
+    //     reach the far end (the traversalTrigger), so you genuinely cross (world-fix).
+    //   • A REACH-THE-SPOT traverse/find (anchor === completion) → keep the #55
+    //     talk-to-finish: the chip's confirm completes it on the spot.
     const isTraversalObjective =
       isObjectiveNpc && (curStep?.kind === "traverse" || curStep?.kind === "find")
+    const isCrossingObjective = isTraversalObjective && !!curStep && !!crossingCompletion(curStep)
     const beginLabel = vt("quest.begin") === "quest.begin" ? "Begin" : vt("quest.begin")
     const doneLabel = vt("quest.confirm") === "quest.confirm" ? "Done" : vt("quest.confirm")
+    const onwardLabel = vt("quest.onward") === "quest.onward" ? "On my way" : vt("quest.onward")
     const forcedOffer = isObjectiveNpc
       ? {
           tool: (curStep?.toolId ?? "repeat-after") as ChallengeToolId,
-          chipLabel: isTraversalObjective ? doneLabel : beginLabel,
+          chipLabel: isCrossingObjective ? onwardLabel : isTraversalObjective ? doneLabel : beginLabel,
           ...(isTraversalObjective && curStep
             ? {
                 onConfirm: () => {
-                  // Talking to the NPC completes the traverse/find step.
+                  // A crossing step is NOT finished by talking — the keeper just sends
+                  // you off; reaching the far end completes it. Only a reach-the-spot
+                  // traverse/find completes here (you're already standing on the spot).
+                  if (isCrossingObjective) {
+                    toast(`${curStep.label} — cross to the far bank`)
+                    return
+                  }
                   questEngine.markStepBeaten(curStep.id)
                   if (questEngine.advance(curStep.id)) toast(`✓ ${curStep.label}`)
                 },
@@ -1371,13 +1393,21 @@ function buildWorld(
     accent: scene.palette?.accent,
   })
 
-  // TRAVERSE / FIND steps (#26 + #55): "Cross the river bridge" had no completable
-  // action; #26 first wired a silent proximity AUTO-ADVANCE, but the owner found it
-  // HOLLOW ("it played a sound and moved on without me talking to the NPC"). Now it
-  // is CONVERSATION-DRIVEN: this trigger no longer advances — when the player
-  // arrives at the anchor it just NUDGES them to talk to the NPC there (the keeper),
-  // who offers a "Done" confirm that completes the step (the `onConfirm` forcedOffer
-  // above). The NPC is woven into the step; reaching the spot only prompts the talk.
+  // TRAVERSE / FIND steps (#26 + #55 + #40): "Cross the river bridge" had no
+  // completable action; #26 first wired a silent proximity AUTO-ADVANCE, the owner
+  // found it HOLLOW ("moved on without me talking to the NPC"), so #55 made the
+  // keeper's confirm complete it — but world-fix flagged that completing at the
+  // keeper's NEAR foot fires "too early" (you never actually CROSSED). Final model:
+  //   • The keeper (at bridge_n, near foot — beacon + focus stay here) GIVES the
+  //     mission: Talk → an "On my way" acknowledgement that sends you off, but does
+  //     NOT itself complete a CROSSING step (see `crossingStep` below). The NPC is
+  //     still woven in (no silent auto-advance), satisfying #55.
+  //   • The CROSSING completes when the player reaches the deck's FAR end — you walk
+  //     UP the ramp, OVER the water, DOWN the far side. `completionPoint` returns
+  //     that far point (read straight off `layout.water.deck`, never hardcoded), so
+  //     bridge_n keeps its near anchor while completion is "actually crossed".
+  //   • A plain "find the spot" traverse (no far completion point) still completes
+  //     AT its anchor (anchor === completion), keeping the simple reach-the-spot case.
   const traversalTrigger = createTraversalTrigger({
     getPlayer: () => player.getPos(),
     currentStep: () => questEngine.currentStep(),
@@ -1385,13 +1415,18 @@ function buildWorld(
       const a = city.getAnchor(id)
       return a ? { x: a.x, z: a.z } : null
     },
-    // Fired ONCE per traverse/find step on arrival (the trigger latches per id) —
-    // nudge the player to talk to the NPC there; the talk completes the step.
+    completionPoint: (step) => crossingCompletion(step),
+    // Fired ONCE per traverse/find step when the player reaches its completion point
+    // (the far deck end for a crossing; the anchor for a reach-the-spot step). This
+    // is the deterministic referee — mark beaten THEN advance (never the model).
     onReach: (stepId) => {
       const step = questEngine.currentStep()
       if (!step || step.id !== stepId) return
-      const who = step.anchorId ? anchorName(step.anchorId) : null
-      toast(who ? `You're here — talk to ${who}` : `You're here — talk to finish`)
+      questEngine.markStepBeaten(step.id)
+      if (questEngine.advance(step.id)) {
+        const crossed = !!crossingCompletion(step)
+        toast(crossed ? `✓ Crossed — ${step.label}` : `✓ ${step.label}`)
+      }
     },
   })
 
@@ -1417,6 +1452,28 @@ function buildWorld(
         const a = s?.anchorId ? city.getAnchor(s.anchorId) : null
         if (a) player.respawnAt(a.x, a.z)
         return !!a
+      },
+      /**
+       * The current crossing step's FAR completion point (deck far end), or null
+       * when the active step completes at its anchor. Lets a harness PROVE the
+       * "actually crossed" semantics (anchor ≠ completion) — #40.
+       */
+      completionPoint: () => {
+        const s = questEngine.currentStep()
+        return s ? crossingCompletion(s) : null
+      },
+      /**
+       * Walk the player to the active CROSSING step's FAR end so the REAL proximity
+       * trigger fires (not a forced advance) — proves you complete only by actually
+       * crossing. Returns false for a non-crossing step. The frame loop's
+       * `traversalTrigger.update` then advances on the next tick.
+       */
+      crossBridge: () => {
+        const s = questEngine.currentStep()
+        const far = s ? crossingCompletion(s) : null
+        if (!far) return false
+        player.respawnAt(far.x, far.z)
+        return true
       },
       /** Emulate winning the active talk step's challenge (beaten → advance). */
       winCurrent: () => {

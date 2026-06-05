@@ -57,6 +57,48 @@ describe("traversalTrigger — walk-to-complete for traverse/find steps (#26)", 
     expect(trig.isActive()).toBe(false)
   })
 
+  it("completionPoint OVERRIDES the anchor — a crossing completes at the FAR end, not the near foot (#40)", () => {
+    // bridge_n anchor (keeper/beacon) at the NEAR foot (0,0); far deck end at (0,344).
+    let player = { x: 0, z: 0 } // standing AT the near anchor
+    const reached: string[] = []
+    const trig = createTraversalTrigger({
+      getPlayer: () => player,
+      currentStep: () => traverseStep,
+      anchorPoint: (id) => (id === "bridge_n" ? { x: 0, z: 0 } : null),
+      completionPoint: (s) => (s.anchorId === "bridge_n" ? { x: 0, z: 344 } : null),
+      onReach: (id) => reached.push(id),
+      radius: 4,
+    })
+
+    // At the near foot (the anchor) → does NOT fire: you haven't crossed yet.
+    trig.update(0.016)
+    expect(reached).toEqual([])
+
+    // Walk to the FAR deck end → fires.
+    player = { x: 0, z: 343 }
+    trig.update(0.016)
+    expect(reached).toEqual(["gate"])
+  })
+
+  it("completionPoint returning null falls back to the anchor (reach-the-spot find step)", () => {
+    let player = { x: 100, z: 100 }
+    const reached: string[] = []
+    const findStep: QuestStep = { id: "pass", label: "Find the pass", anchorId: "fountain", kind: "find" }
+    const trig = createTraversalTrigger({
+      getPlayer: () => player,
+      currentStep: () => findStep,
+      anchorPoint: (id) => (id === "fountain" ? { x: 0, z: 0 } : null),
+      completionPoint: () => null, // no far completion → use the anchor
+      onReach: (id) => reached.push(id),
+      radius: 4,
+    })
+    trig.update(0.016)
+    expect(reached).toEqual([])
+    player = { x: 1, z: 1 } // at the anchor
+    trig.update(0.016)
+    expect(reached).toEqual(["pass"])
+  })
+
   it("no anchor point → never fires (degrades safely)", () => {
     const reached: string[] = []
     const trig = createTraversalTrigger({

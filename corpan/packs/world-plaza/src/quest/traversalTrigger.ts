@@ -26,9 +26,19 @@ export interface TraversalTriggerOptions {
   /** The world point of a step's anchor, or null when unknown. */
   anchorPoint: (anchorId: string) => { x: number; z: number } | null
   /**
-   * The player reached a traverse/find step's anchor. The orchestrator marks it
-   * beaten + advances (and plays a juicy "✓ crossed!" beat). Fired AT MOST ONCE
-   * per step id (the trigger latches until the active step changes).
+   * OPTIONAL per-step COMPLETION point, distinct from the step's anchor. When it
+   * returns a point, the proximity check fires there instead of at `anchorId`.
+   * This is the "actually crossed" seam: a "Cross the bridge" traverse keeps its
+   * anchor at the NEAR foot (keeper + beacon + focus live there — you talk to the
+   * keeper to get the mission), but only COMPLETES when the player reaches the FAR
+   * end of the deck. Returning null falls back to the anchor point (the default —
+   * a "find the spot" step completes AT the spot). Additive + optional.
+   */
+  completionPoint?: (step: QuestStep) => { x: number; z: number } | null
+  /**
+   * The player reached a traverse/find step's completion point. The orchestrator
+   * marks it beaten + advances (and plays a juicy "✓ crossed!" beat). Fired AT
+   * MOST ONCE per step id (the trigger latches until the active step changes).
    */
   onReach: (stepId: string) => void
   /** Arrival radius in world units. Default 4 (a comfortable "you're here"). */
@@ -60,7 +70,10 @@ export function createTraversalTrigger(opts: TraversalTriggerOptions): Traversal
     const step = opts.currentStep()
     if (!isTraversalStep(step) || !step.anchorId) return
     if (fired.has(step.id)) return
-    const target = opts.anchorPoint(step.anchorId)
+    // Prefer an explicit per-step completion point (e.g. the bridge's FAR end) so
+    // "cross the bridge" finishes only once you've actually crossed; otherwise the
+    // anchor doubles as the completion point ("reach the spot").
+    const target = opts.completionPoint?.(step) ?? opts.anchorPoint(step.anchorId)
     if (!target) return
     const p = opts.getPlayer()
     const dx = p.x - target.x

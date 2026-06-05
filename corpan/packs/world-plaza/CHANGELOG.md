@@ -9,18 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Quests are conversation-driven — you finish steps by TALKING to people, not
-  tripping a silent wire (#55).** A "cross the bridge"-style traversal step used to
-  auto-complete the instant you walked onto the anchor (a sound + advance), which
-  felt hollow ("it moved on without me talking to the NPC"). Now reaching the spot
-  only NUDGES you ("You're here — talk to {the keeper}"); you complete the step by
-  talking to the NPC there, who offers a "Done" confirm chip that advances the
-  quest. The NPC is woven into the start (they hand you the offer), the step (you
-  talk + do the challenge), and the close (the keeper greets you to finish the
-  crossing). Built on a new `forcedOffer.onConfirm` in `npcRuntime` (the Begin chip
-  becomes a CONFIRM that fires a callback instead of launching a challenge); talk
-  steps still launch their challenge as before. Proven end-to-end in the real game
-  (`qa/quest-loop.mjs`, 12/12: arriving does NOT auto-complete → talking to the
-  keeper does).
+  tripping a silent wire (#55).** A traversal step used to auto-complete the instant
+  you walked onto the anchor (a sound + advance), which felt hollow ("it moved on
+  without me talking to the NPC"). Now the objective NPC is woven into the start
+  (they hand you the offer), the step (you talk + do the challenge), and the close.
+  Built on a new `forcedOffer.onConfirm` in `npcRuntime` (the Begin chip becomes a
+  CONFIRM that fires a callback instead of launching a challenge); talk steps still
+  launch their challenge as before. Proven end-to-end in the real game
+  (`qa/quest-loop.mjs`).
+- **"Cross the bridge" now means ACTUALLY crossing — completion is on the FAR bank,
+  not the keeper's near foot (#40/#55).** Completing a crossing the moment you
+  reached the keeper fired "too early" (you never crossed). The bridge keeper at
+  `bridge_n` (near foot — where the beacon + focus live) is now the MISSION-GIVER:
+  Talk → an "On my way" chip sends you off, but does NOT finish the step. The
+  crossing completes only when you reach the deck's FAR end — you walk UP the ramp,
+  OVER the water, DOWN the far side. Implemented as an optional per-step
+  `completionPoint` on `traversalTrigger` (the bridge's far end, read straight off
+  `layout.water.deck`, never hardcoded) distinct from the step's anchor; a plain
+  reach-the-spot traverse/find still completes AT its anchor. Proven in the real
+  game (`qa/quest-loop.mjs`, 13/13: at the near foot the crossing is NOT done →
+  walking to the far end completes it) via new `__wpQuest.{completionPoint,crossBridge}`
+  hooks driving the REAL proximity trigger.
 - **Each language pair has its OWN quest journey (#42).** Switching target (e.g.
   EN→ES) no longer leaves you mid-way through the other pair's quest: the active
   quest (`wp:activeQuest:v1:<native:target>`) AND the quest progress (the
@@ -189,6 +198,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **Objective NPCs RE-STATION on a quest change, so the beacon is never empty (#58).**
+  The stationed quest NPCs were placed ONCE at buildWorld for the initial quest;
+  switching/advancing the quest re-pointed the beacon to a new anchor but no NPC
+  moved there, so the fountain/market/bridge beacon stood over an empty spot and no
+  quest could be finished (and #55's "talk to the keeper to cross" had no keeper to
+  talk to). `crowd` now keeps a fixed POOL of special agents (all their handles in
+  `focusables` from the start, so the focus layer's one-time snapshot already knows
+  them) and exposes `restationSpecials(newSpecials)`: it re-binds the pool to a new
+  anchor/persona set IN PLACE — each objective NPC walks to (stands precisely at) its
+  new anchor under the beacon, repainted to the new persona/name, with the pool's
+  handles mutated so dialogue/map/focus re-route automatically; dropped anchors are
+  parked off-map (no ghost NPCs). Idempotent; `game.ts` calls it on every active-quest
+  change (recomputing the new quest's specials). An unknown anchor is logged + parked,
+  never silent. Verified in the real app (`qa/restation.mjs`, `npm run qa:restation`):
+  re-stationing to `[market, bridge_n]` renamed moves both NPCs to their anchors with
+  the new names and unstaffs plaza/fountain/harbor.
 - **The NPC no longer says "Nicely done!" when you DISMISS a minigame (#62, the #9
   gap).** The earlier abort-guard stopped the reward reveal + quest advance on a
   bail, but the NPC's post-challenge reaction in the chat was a SEPARATE path that
