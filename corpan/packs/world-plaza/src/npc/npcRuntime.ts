@@ -591,11 +591,38 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         ]
         await new Promise<void>((resolve) => {
           let settled = false
+          let watchdog: ReturnType<typeof setTimeout> | null = null
           const finish = () => {
             if (settled) return
             settled = true
+            if (watchdog) {
+              clearTimeout(watchdog)
+              watchdog = null
+            }
             resolve()
           }
+          // WATCHDOG: the host's llm.chat streams tokens via per-session Tauri
+          // events whose listeners attach AFTER the chat invoke resolves — so a
+          // dropped/early event (or a stalled native inference) leaves the promise
+          // unsettled and the bubble stuck on "…" forever. If NOT A SINGLE token,
+          // done, or error arrives within the window, give up loudly and speak a
+          // scripted line so the NPC ALWAYS responds. Cleared the moment the first
+          // token lands (a real response is streaming → never cut it off).
+          watchdog = setTimeout(() => {
+            if (settled) return
+            console.error(
+              `${LOG} llm.chat watchdog: no token/done/error in 15s — host LLM hung or the token stream was dropped. Falling back to scripted.`,
+            )
+            ui.setThinking(false)
+            try {
+              void activeStream?.cancel?.()
+            } catch (e) {
+              console.error(`${LOG} watchdog cancel threw:`, e)
+            }
+            if (!bubble) scriptedTurn()
+            else ui.endNpcTurn(proseShown)
+            finish()
+          }, 15000)
           void hostApi
             .llm!.chat(
               {
@@ -613,6 +640,12 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
                   const { prose, toolStarted } = splitToolBlock(accumulated)
                   // Only reveal NEW prose, and stop revealing once the tool
                   // block opener appears (we never show/speak control JSON).
+                  // First real content → the stream is alive; cancel the watchdog
+                  // so a long response is never truncated.
+                  if (watchdog) {
+                    clearTimeout(watchdog)
+                    watchdog = null
+                  }
                   if (!toolStarted && prose.length > proseShown.length) {
                     if (!bubble) {
                       ui.setThinking(false)

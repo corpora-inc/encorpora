@@ -31,7 +31,7 @@ export type InProcessLargeModel = "llm" | "whisper" | "none"
 export type LlmReadyState = {
   ready: boolean
   /** Why it isn't ready (for telemetry/UX). Undefined when ready. */
-  reason?: "no-host-llm" | "not-installed" | "load-failed" | "memory" | "busy"
+  reason?: "no-host-llm" | "not-installed" | "load-failed" | "memory" | "busy" | "load-timeout"
   backend?: string | null
 }
 
@@ -128,6 +128,38 @@ export function createModelBroker(hostApi: HostApi): ModelBroker {
     }
   }
 
+  /**
+   * Race a promise against a timeout, resolving to `fallback` if it doesn't settle
+   * in time. Guards against a stuck native invoke (`llm.load`/`status`) hanging the
+   * coalesced `loadPromise` FOREVER — which would make every NPC's "…" never clear.
+   */
+  function withTimeout<T>(p: Promise<T>, ms: number, fallback: T, label: string): Promise<T> {
+    return new Promise<T>((resolve) => {
+      let done = false
+      const t = setTimeout(() => {
+        if (done) return
+        done = true
+        console.error(`${LOG} ${label} timed out after ${ms}ms → ${JSON.stringify(fallback)}`)
+        resolve(fallback)
+      }, ms)
+      p.then(
+        (v) => {
+          if (done) return
+          done = true
+          clearTimeout(t)
+          resolve(v)
+        },
+        (e) => {
+          if (done) return
+          done = true
+          clearTimeout(t)
+          console.error(`${LOG} ${label} rejected:`, e)
+          resolve(fallback)
+        },
+      )
+    })
+  }
+
   async function doEnsure(): Promise<LlmReadyState> {
     if (!llm) {
       return { ready: false, reason: "no-host-llm" }
@@ -178,7 +210,16 @@ export function createModelBroker(hostApi: HostApi): ModelBroker {
       // Coalesce concurrent callers onto one in-flight load.
       if (loadPromise) return loadPromise
       busy = true
-      loadPromise = doEnsure().finally(() => {
+      // Hard ceiling on the cold load so a stuck native invoke can't wedge every
+      // future NPC turn on a never-settling coalesced promise. 30s is generous for a
+      // real multi-GB mmap; past that it's hung → degrade to scripted (and the next
+      // open retries, since loadPromise is cleared below).
+      loadPromise = withTimeout(
+        doEnsure(),
+        30000,
+        { ready: false, reason: "load-timeout" },
+        "ensureLLM",
+      ).finally(() => {
         busy = false
         loadPromise = null
       })
