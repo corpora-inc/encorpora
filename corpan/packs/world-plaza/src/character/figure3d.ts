@@ -204,10 +204,14 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
     inst.instancedBuffers.color = color
     inst.parent = parent
     inst.isPickable = false
-    // Limbs animate by ROTATING their parent pivot, never by changing local verts,
-    // so the per-part local bounding box is constant — skip per-frame bbox sync
-    // (perf2: cuts active-mesh CPU, the measured dominant frame phase).
-    inst.doNotSyncBoundingInfo = true
+    // A character is a SMALL cluster of parts that's basically always on screen
+    // (the camera follows the player; crowd stays near). Per-PART frustum culling
+    // is therefore both pointless and BUGGY here: `doNotSyncBoundingInfo` froze each
+    // part's WORLD bbox at spawn, so once the figure walked away its stale box left
+    // the frustum and the part vanished — the character dissolving piece by piece.
+    // `alwaysSelectAsActiveMesh` skips frustum culling AND the per-frame bbox sync
+    // (the same active-mesh CPU win we wanted), and the part can never disappear.
+    inst.alwaysSelectAsActiveMesh = true
     parts.push(inst)
     return inst
   }
@@ -313,7 +317,7 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   const shell = MeshBuilder.CreatePlane(`${id}-faceshell`, { size: 1 }, scene)
   shell.material = faceMat
   shell.isPickable = false
-  shell.doNotSyncBoundingInfo = true // constant local bbox (parented to headPivot)
+  shell.alwaysSelectAsActiveMesh = true // never per-part frustum-cull (see instances)
   shell.parent = headPivot
   const faceW = headR * 1.42
   const faceH = headR * 1.66
@@ -376,7 +380,7 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   shadow.rotation.x = Math.PI / 2
   shadow.position.y = 0.02
   shadow.isPickable = false
-  shadow.doNotSyncBoundingInfo = true // constant local bbox
+  shadow.alwaysSelectAsActiveMesh = true // never per-part frustum-cull (see instances)
   shadow.billboardMode = Mesh.BILLBOARDMODE_NONE
   shadow.parent = root
   shadow.material = shared.material
