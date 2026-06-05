@@ -204,14 +204,20 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
     inst.instancedBuffers.color = color
     inst.parent = parent
     inst.isPickable = false
-    // A character is a SMALL cluster of parts that's basically always on screen
-    // (the camera follows the player; crowd stays near). Per-PART frustum culling
-    // is therefore both pointless and BUGGY here: `doNotSyncBoundingInfo` froze each
-    // part's WORLD bbox at spawn, so once the figure walked away its stale box left
-    // the frustum and the part vanished — the character dissolving piece by piece.
-    // `alwaysSelectAsActiveMesh` skips frustum culling AND the per-frame bbox sync
-    // (the same active-mesh CPU win we wanted), and the part can never disappear.
-    inst.alwaysSelectAsActiveMesh = true
+    // CULLING — per-instance frustum culling is ON (the default), but with the
+    // bounding info SYNCED each frame so it can never go stale. History: the old
+    // dissolve bug was `doNotSyncBoundingInfo`, which FROZE each part's world bbox
+    // at spawn — once the figure walked away the stale box left the frustum and the
+    // part vanished (the character "dissolving piece by piece"). The earlier fix
+    // over-corrected with `alwaysSelectAsActiveMesh = true`, which forces EVERY
+    // part of EVERY figure (player + ~28 crowd × ~10 parts ≈ 290 instances) into
+    // the active set EVERY frame regardless of where the camera looks — so a figure
+    // directly BEHIND you still batched into the instanced draw. We instead let
+    // Babylon cull each instance normally against a FRESH bbox: parts whose figure
+    // is off-screen drop out of the instanced batch (fewer rendered instances +
+    // fewer active-mesh evals), and because the bbox is never frozen, an on-screen
+    // figure can never dissolve. (The figure is a tight cluster, so all its parts
+    // cull together — no piecemeal popping at the silhouette.)
     parts.push(inst)
     return inst
   }
@@ -317,7 +323,9 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   const shell = MeshBuilder.CreatePlane(`${id}-faceshell`, { size: 1 }, scene)
   shell.material = faceMat
   shell.isPickable = false
-  shell.alwaysSelectAsActiveMesh = true // never per-part frustum-cull (see instances)
+  // The face shell is a UNIQUE-texture mesh (one draw per figure that can't batch),
+  // so culling it when the figure is off-screen is a real per-frame draw saving.
+  // Its bbox syncs each frame (no freeze) so it never goes stale → no dissolve.
   shell.parent = headPivot
   const faceW = headR * 1.42
   const faceH = headR * 1.66
@@ -380,7 +388,9 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   shadow.rotation.x = Math.PI / 2
   shadow.position.y = 0.02
   shadow.isPickable = false
-  shadow.alwaysSelectAsActiveMesh = true // never per-part frustum-cull (see instances)
+  // The contact shadow is a separate (non-instanced) mesh = one draw per figure;
+  // let it cull with its figure (synced bbox → never stale). When the figure is
+  // off-screen its shadow isn't drawn.
   shadow.billboardMode = Mesh.BILLBOARDMODE_NONE
   shadow.parent = root
   shadow.material = shared.material

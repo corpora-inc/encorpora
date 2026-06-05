@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Chunk-level building-detail MERGE + figure culling (city scale headroom).**
+  Three cuts that slash the per-frame *active-mesh evaluation* — the cost the docs
+  flagged as the biggest frame phase, which scales with TOTAL resident meshes, not
+  visible ones:
+  - The streamed city built one `createBuildings` call PER BUILDING, each making
+    an empty-geometry root **Mesh** — hundreds of pointless active meshes the
+    renderer re-evaluated every frame. Root is now a `TransformNode` (invisible to
+    the active-mesh pass). (`world/buildings.ts`.)
+  - A chunk now runs a **merge pass** after its buildings: every same-material
+    roof cap (`wp-r-`), door step (`wp-st-`), and contact shadow (`wp-sh-`) across
+    the whole chunk folds into ONE combined mesh each — ~3·N detail draws →
+    ~3/chunk. Prefixes the shadow/occlusion systems key off are preserved (the
+    combined roof stays a `wp-r-` caster). (`city/chunkMesh.ts`, +`meshes` on the
+    buildings handle.)
+  - 3D figures no longer force `alwaysSelectAsActiveMesh` on every part/face/shadow
+    — they cull normally against a FRESH (never-frozen) bbox, so a figure behind
+    the camera drops out of the instanced batch + its unique face/shadow draws,
+    with no dissolve regression. (`character/figure3d.ts`.)
+  - Measured at the spawn neighbourhood (9 near chunks): meshesActive 457→186
+    (−59%), resident meshesTotal 1978→1043 (−47%), in-frustum draws 470→436; the
+    draw win compounds as districts multiply. Profile with `qa/measure-perf.mjs`.
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material
   to ~4. Generic-building roofs — barely visible at the play camera — collapse from
