@@ -4,6 +4,7 @@ import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { Ray } from "@babylonjs/core/Culling/ray"
 import { Vector3 } from "@babylonjs/core/Maths/math"
 import { isCameraOccluder } from "./cameraOcclusion"
+import { walkSurfaceHeight } from "./walkSurface"
 
 /**
  * cameraFade.ts — premium 3rd-person CAMERA-OCCLUSION FADE for World Plaza.
@@ -146,7 +147,12 @@ export function createCameraFade(
     if (tracked.length === 0) return
 
     const p = getPlayerPos()
-    head.set(p.x, HEAD_HEIGHT, p.z)
+    // The sight-ray endpoint rides the player's ELEVATION (the walk-surface they
+    // stand on). An absolute head height sent the ray from the camera DOWN through
+    // the bridge deck to a ground-level "head" — fading the very deck you're
+    // standing on. Sampling the deck height keeps the ray above the deck, so the
+    // floor under you never dissolves. General: any raised walk-surface.
+    head.set(p.x, walkSurfaceHeight(scene, p.x, p.z) + HEAD_HEIGHT, p.z)
     camPos.copyFrom(camera.globalPosition)
 
     // sight segment camera→head
