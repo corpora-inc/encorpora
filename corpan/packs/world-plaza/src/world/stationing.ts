@@ -29,10 +29,19 @@ export interface Vec2 {
   z: number
 }
 
+/** Farthest a station may be pushed off its anchor to clear a prop (a big
+ *  fountain can be several units across; never push so far the NPC leaves the
+ *  landmark it belongs to). */
+export const STATION_MAX_PUSH = 7
+
 /**
- * The station point for an anchor: the anchor nudged STATION_OFFSET along its
- * `facing` (or +z when it has none). `isBlocked` lets the caller try the opposite
- * side and then fall back to the bare anchor when a prop sits on the offset point.
+ * The station point for an anchor: the nearest CLEAR walkable spot to the anchor,
+ * preferring the anchor's `facing` side (where the player approaches). Invariant:
+ * a stationed agent never stands inside a prop. We sweep OUTWARD in expanding
+ * rings (so a prop of ANY size sitting on the anchor — a 1u post or a 5u fountain
+ * basin — is cleared, not just a fixed nudge), and at each radius fan out from the
+ * facing direction so the first clear hit is the one most in front of the anchor.
+ * Falls back to the bare anchor only if the whole neighbourhood is blocked.
  * Pure: no GL, no randomness.
  */
 export function stationPoint(
@@ -40,10 +49,22 @@ export function stationPoint(
   isBlocked: (x: number, z: number) => boolean,
 ): Vec2 {
   const face = anchor.facing ?? Math.PI / 2
-  const fwd: Vec2 = { x: anchor.x + Math.cos(face) * STATION_OFFSET, z: anchor.z + Math.sin(face) * STATION_OFFSET }
-  if (!isBlocked(fwd.x, fwd.z)) return fwd
-  const back: Vec2 = { x: anchor.x - Math.cos(face) * STATION_OFFSET, z: anchor.z - Math.sin(face) * STATION_OFFSET }
-  if (!isBlocked(back.x, back.z)) return back
+  // Spiral outward from STATION_OFFSET, fanning ± from the facing direction at each
+  // radius, and return the first CLEAR point. Standing a touch off the anchor (not
+  // exactly on it) keeps the NPC clear of a marker/plinth that sits on the anchor;
+  // expanding the radius clears a prop of ANY size (a 5u fountain basin, not just a
+  // 1u post). Falls back to the bare anchor only when the whole neighbourhood is
+  // blocked (degenerate map).
+  const RING = 0.5
+  for (let r = STATION_OFFSET; r <= STATION_MAX_PUSH; r += RING) {
+    for (let k = 0; k <= 12; k++) {
+      const da = (k % 2 === 0 ? 1 : -1) * Math.ceil(k / 2) * (Math.PI / 6)
+      const a = face + da
+      const x = anchor.x + Math.cos(a) * r
+      const z = anchor.z + Math.sin(a) * r
+      if (!isBlocked(x, z)) return { x, z }
+    }
+  }
   return { x: anchor.x, z: anchor.z }
 }
 

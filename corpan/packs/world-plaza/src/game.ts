@@ -725,11 +725,56 @@ function buildWorld(
     reset: () => activeEngine.reset(),
   }
 
+  // INVARIANT: the player begins a short, FRAMED walk from their current
+  // objective — never on top of the objective NPC, never jammed in a prop, always
+  // facing the goal so the first frame reads "there's where I'm going." General:
+  // works for whatever the active quest's first anchor is. Places the player a
+  // framing distance off the objective anchor toward open ground (the city's
+  // default spawn side), on a clear walkable spot, looking at the objective.
+  const framePlayerOnObjective = () => {
+    const step = activeEngine.currentStep()
+    const anchor = step?.anchorId ? city.getAnchor(step.anchorId) : null
+    if (!anchor) return
+    const FRAMING = 12 // a few steps away — both the player and the beacon in frame
+    const home = city.getSpawn()
+    // Direction from the objective toward open ground (the default plaza spawn).
+    let dx = home.x - anchor.x
+    let dz = home.z - anchor.z
+    const len = Math.hypot(dx, dz)
+    if (len < 1) {
+      dx = 0
+      dz = 1
+    } else {
+      dx /= len
+      dz /= len
+    }
+    // Walk outward from the objective until we find clear ground for the player
+    // (a big landmark/prop on the anchor must not trap the framing point either).
+    let sx = anchor.x + dx * FRAMING
+    let sz = anchor.z + dz * FRAMING
+    for (let r = FRAMING; r >= 4; r -= 1) {
+      const cx = anchor.x + dx * r
+      const cz = anchor.z + dz * r
+      if (!obstacles.blocked(cx, cz, 0.6)) {
+        sx = cx
+        sz = cz
+        break
+      }
+    }
+    // Face the objective: forward = (-sin yaw, -cos yaw) should point anchor-ward.
+    const faceYaw = Math.atan2(-(anchor.x - sx), -(anchor.z - sz))
+    player.respawnAt(sx, sz, faceYaw)
+  }
+  framePlayerOnObjective()
+
   // Swap the world's ACTIVE quest (the completion-interlude pick). Rebuilds the
   // inner engine, re-points `quest` (so `anchorName`/markers/content follow it),
   // persists the choice, re-subscribes the proxy, and fires `change` so the
   // capsule + quest section + map markers re-render against the new objective.
   const setActiveQuest = (next: QuestT) => {
+    // Starting a new quest ends the current conversation — you don't keep standing
+    // in the old NPC's chat after you've accepted somewhere new to be.
+    openDialogue?.close()
     saveActiveQuestId(next.id)
     quest = next
     unsubActive?.()

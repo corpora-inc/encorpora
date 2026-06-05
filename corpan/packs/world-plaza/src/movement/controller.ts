@@ -34,7 +34,7 @@ export interface PlayerController {
    * land embedded in a building/prop. The camera target updates immediately so
    * there is no one-frame lerp from the old spot.
    */
-  respawnAt: (x: number, z: number) => void
+  respawnAt: (x: number, z: number, faceYaw?: number) => void
   update: (dt: number) => void
   dispose: () => void
 }
@@ -159,7 +159,7 @@ export function createPlayerController(
     }
   }
 
-  const respawnAt = (tx: number, tz: number) => {
+  const respawnAt = (tx: number, tz: number, faceYaw?: number) => {
     const m = PLAYER_RADIUS
     let nx = Math.max(topology.bounds.minX + m, Math.min(topology.bounds.maxX - m, tx))
     let nz = Math.max(topology.bounds.minZ + m, Math.min(topology.bounds.maxZ - m, tz))
@@ -170,8 +170,9 @@ export function createPlayerController(
     }
     x = nx
     z = nz
+    if (faceYaw !== undefined) yaw = faceYaw
     cutout.setGroundPos(x, z)
-    // Snap the follow camera onto the new spot at the CURRENT heading (no lerp).
+    // Snap the follow camera onto the new spot at the (possibly new) heading.
     world.setCameraTarget(new Vector3(x, 0, z), yaw)
   }
 

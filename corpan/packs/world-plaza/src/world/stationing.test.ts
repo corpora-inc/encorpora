@@ -3,6 +3,7 @@ import {
   STATION_RADIUS,
   STATION_STEP,
   STATION_OFFSET,
+  STATION_MAX_PUSH,
   stationPoint,
   distFromStation,
   isOffLeash,
@@ -21,14 +22,25 @@ describe("stationing — the geometry behind a stationed special's hover", () =>
     expect(distFromStation(p, { x: docks.x, z: docks.z })).toBeCloseTo(STATION_OFFSET, 6)
   })
 
-  it("stationPoint tries the opposite side when the forward offset is blocked", () => {
-    // block only the forward (+z) side.
+  it("stationPoint returns a CLEAR point near the anchor when the facing side is blocked", () => {
+    // block only the forward (+z) side; the spiral fans to a clear side/back point.
     const blockFwd = (_x: number, z: number) => z > 55
     const p = stationPoint(docks, blockFwd)
-    expect(p.z).toBeCloseTo(55 - STATION_OFFSET, 6)
+    expect(blockFwd(p.x, p.z)).toBe(false) // never returns a blocked point
+    expect(distFromStation(p, { x: docks.x, z: docks.z })).toBeLessThanOrEqual(STATION_OFFSET + 1e-6)
   })
 
-  it("stationPoint falls back to the bare anchor when both sides are blocked", () => {
+  it("stationPoint clears a BIG prop on the anchor by pushing outward (general, any size)", () => {
+    // a 4u-radius blob centred on the anchor (e.g. a fountain basin) — far bigger
+    // than STATION_OFFSET. The old fixed-nudge would land inside it; the spiral must
+    // walk out past it to clear ground.
+    const blob = (x: number, z: number) => Math.hypot(x - docks.x, z - docks.z) < 4
+    const p = stationPoint(docks, blob)
+    expect(blob(p.x, p.z)).toBe(false) // genuinely OUT of the prop
+    expect(distFromStation(p, { x: docks.x, z: docks.z })).toBeLessThanOrEqual(STATION_MAX_PUSH + 1e-6)
+  })
+
+  it("stationPoint falls back to the bare anchor when the whole neighbourhood is blocked", () => {
     const p = stationPoint(docks, () => true)
     expect(p).toEqual({ x: docks.x, z: docks.z })
   })
