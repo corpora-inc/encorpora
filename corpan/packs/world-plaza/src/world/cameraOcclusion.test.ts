@@ -138,11 +138,14 @@ describe("createCameraFade — dissolves whatever blocks the shot (#59 failing s
     expect(wall.visibility).toBe(1) // restored on teardown
   })
 
-  it("fades a THIN-INSTANCED MARKET STALL cluster between camera and player", () => {
-    // the exact owner case: a row of thin-instanced stalls (one mesh, a whole
-    // species) standing between the trailing camera and the player. The fade is
-    // per-OBJECT, so the whole canopy species dissolves — the boom can't reliably
-    // climb out of the union AABB, but the fade guarantees the player shows.
+  it("does NOT fade thin-instanced props (a whole species shares one union AABB)", () => {
+    // A thin-instanced species (stalls/trees/planters) is ONE mesh with a single
+    // UNION bounding box spanning every instance across the chunk. The per-object
+    // fade can only dissolve the WHOLE species at once, so a ray grazing that box
+    // ghosted entire groves beside the player ("objects disappear in front of me").
+    // So the fade now excludes thin-instanced meshes (isBoomBlocker) — only solid
+    // one-off occluders dissolve. A narrow prop briefly clipping the player reads
+    // far better than the grove vanishing.
     const stall = MeshBuilder.CreateBox("wp-city-prop-stall-0,0", { width: 2.4, height: 3, depth: 2.4 }, scene)
     stall.setEnabled(true)
     const spots: Array<[number, number]> = [
@@ -162,7 +165,7 @@ describe("createCameraFade — dissolves whatever blocks the shot (#59 failing s
     const cam = camLookingAtOrigin(18)
     const fade = createCameraFade(scene, cam, () => ({ x: 0, z: 0 }))
     settle(fade)
-    expect(stall.visibility).toBeLessThan(0.25)
+    expect(stall.visibility).toBe(1) // thin-instanced species never ghost-fades
   })
 
   it("fades a building the camera is INSIDE (camera drove into the roof)", () => {

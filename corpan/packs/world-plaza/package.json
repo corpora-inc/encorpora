@@ -20,10 +20,12 @@
     "qa:restation": "node qa/restation.mjs"
   },
   "dependencies": {
-    "@babylonjs/core": "^6.48.0",
-    "@babylonjs/gui": "^6.48.0",
-    "@babylonjs/loaders": "^6.48.0",
+    "@babylonjs/core": "^9.11.0",
+    "@babylonjs/gui": "^9.11.0",
+    "@babylonjs/havok": "^1.3.12",
+    "@babylonjs/loaders": "^9.11.0",
     "colyseus.js": "^0.16.22",
+    "recast-detour": "^1.6.4",
     "zod": "^3.24.1",
     "zustand": "^5.0.4"
   },
