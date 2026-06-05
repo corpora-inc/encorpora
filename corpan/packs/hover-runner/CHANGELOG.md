@@ -10,6 +10,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- Upgraded Babylon.js **6.48 → 9.11** (latest stable). Modular import
+  paths held with no source changes; 16/16 tests green, build clean.
+
 ## [0.3.0] - 2026-05-19 — Motion permission overlay + safer state plumbing
 
 ### Added

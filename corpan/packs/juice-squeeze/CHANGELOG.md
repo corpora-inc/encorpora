@@ -9,6 +9,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- Upgraded Babylon.js **6.48 → 9.11** (latest stable). No source changes
+  required; typecheck + build clean.
+
 ## [0.1.3] - 2025-12 — CJK row fix, ghost preview, layout (#175)
 ### Added
 - Ghost preview during drag.

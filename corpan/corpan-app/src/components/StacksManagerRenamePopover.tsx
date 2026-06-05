@@ -16,7 +16,7 @@ export default function StacksManagerRenamePopover({
     setOpen: (b: boolean) => void;
     nameDraft: string;
     onChange: (next: string) => void;
-    inputRef: React.RefObject<HTMLInputElement>;
+    inputRef: React.RefObject<HTMLInputElement | null>;
 }) {
     const { t } = useTranslation();
     const triggerWrapRef = useRef<HTMLSpanElement>(null);

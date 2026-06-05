@@ -1014,7 +1014,7 @@ export function createStargateReader(
         prefs.waveformConfig.reversed = rev
       } else {
         waveformStream?.configure({ [key]: value })
-        ;(prefs.waveformConfig as Record<string, number>)[key] = value
+        ;(prefs.waveformConfig as unknown as Record<string, number>)[key] = value
         // Link maxRadius to pulse ring
         if (key === "maxRadius") {
           pulseRing?.configure({ maxRadius: value })

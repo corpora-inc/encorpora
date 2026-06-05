@@ -21,7 +21,9 @@
       "@shared/audio": ["../shared/audio/index.ts"],
       "@shared/state": ["../shared/state/index.ts"],
       "@shared/ui": ["../shared/ui/index.ts"],
-      "@shared/analytics": ["../shared/analytics/index.ts"]
+      "@shared/analytics": ["../shared/analytics/index.ts"],
+      "zustand": ["./node_modules/zustand/index.d.ts"],
+      "zustand/*": ["./node_modules/zustand/*"]
     }
   },
   "include": ["src", "../shared"]

@@ -1,3 +1,4 @@
+/// <reference types="node" />
 // src/util/storage/__harness__/run.ts
 //
 // Self-contained verification harness for the storage + analytics foundation.

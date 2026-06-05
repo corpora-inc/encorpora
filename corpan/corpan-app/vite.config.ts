@@ -100,11 +100,15 @@ export default defineConfig(async () => ({
     minify: "esbuild", // Fast minification (default, no extra deps needed)
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split vendor code for better caching on updates
-          vendor: ["react", "react-dom", "zustand"],
-          i18n: ["i18next", "react-i18next", "i18next-http-backend"],
-          ui: ["@radix-ui/react-dialog", "@radix-ui/react-select", "@radix-ui/react-slider"],
+        // Split vendor code for better caching on updates. Vite 8 / Rolldown
+        // only accepts the function form of manualChunks (the object form was
+        // removed); match on node_modules/<pkg>/ boundaries so "react" doesn't
+        // also capture "react-i18next".
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return
+          if (/[\\/]node_modules[\\/](i18next|react-i18next|i18next-http-backend)[\\/]/.test(id)) return "i18n"
+          if (/[\\/]node_modules[\\/]@radix-ui[\\/]/.test(id)) return "ui"
+          if (/[\\/]node_modules[\\/](react|react-dom|zustand)[\\/]/.test(id)) return "vendor"
         },
       },
     },

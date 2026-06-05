@@ -15,18 +15,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@babylonjs/core": "^6.48.0",
-    "@babylonjs/loaders": "^6.48.0",
+    "@babylonjs/core": "^9.11.0",
+    "@babylonjs/loaders": "^9.11.0",
     "zustand": "^5.0.4"
   },
   "devDependencies": {
-    "@types/node": "^25.0.3",
-    "@vitest/ui": "^4.0.16",
-    "baseline-browser-mapping": "^2.9.11",
-    "happy-dom": "^20.0.11",
-    "typescript": "^5.4.0",
-    "vite": "^6.0.3",
-    "vitest": "^4.0.16"
+    "@types/node": "^25.9.0",
+    "@vitest/ui": "^4.1.0",
+    "baseline-browser-mapping": "^2.10.0",
+    "happy-dom": "^20.10.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
   }
 }
-

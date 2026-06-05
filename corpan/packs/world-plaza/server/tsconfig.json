@@ -13,7 +13,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "paths": {
       "@world-plaza/contracts": ["../contracts/src/index.ts"],
       "@world-plaza/contracts/*": ["../contracts/src/*"]

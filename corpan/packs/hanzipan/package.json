@@ -12,6 +12,6 @@
     "pack:all": "npm run build && node scripts/pack.mjs"
   },
   "devDependencies": {
-    "vite": "^6.0.3"
+    "vite": "^8.0.0"
   }
 }

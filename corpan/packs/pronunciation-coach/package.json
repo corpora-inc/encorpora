@@ -8,7 +8,7 @@
     "dev:corpan": "node scripts/dev-corpan.mjs"
   },
   "devDependencies": {
-    "typescript": "^5.4.5",
-    "vite": "^6.0.3"
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0"
   }
 }

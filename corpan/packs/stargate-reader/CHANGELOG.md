@@ -10,6 +10,9 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 ### Changed
+- Upgraded Babylon.js **6.48 → 9.11** (latest stable). No source changes
+  required; build clean. (Pre-existing `WaveformConfig` type-cast warnings
+  in `game.ts`/`settingsPanel.ts` are unrelated and untouched.)
 - Dated periodicals in the catalog (e.g. "AI This Week") now list
   newest-first. The shared catalog grouping (`@shared/catalog`
   `groupByBook`) sorts books by `publishedAt` descending when present,
