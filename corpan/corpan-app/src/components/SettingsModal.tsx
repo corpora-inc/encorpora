@@ -140,7 +140,7 @@ export function SettingsModal({
         className="
           !w-[100vw] !max-w-[100vw]
           !h-[100dvh] !max-h-[100dvh]
-          overflow-y-auto rounded-none bg-background pb-6
+          overflow-y-auto rounded-none border-0 bg-background pb-6
           px-4 md:px-8
           flex flex-col
           [&>div:first-child]:hidden
@@ -157,21 +157,21 @@ export function SettingsModal({
 
         {/* Sticky header: title + close (tabs removed with the Packs tab). */}
         <div
-          className="sticky top-0 z-[1001] border-b border-border -mx-4 md:-mx-8 px-4 md:px-8 pb-2 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          className="sticky top-0 z-[1001] -mx-4 md:-mx-8 px-4 md:px-8 pb-2 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
           style={{ paddingTop: getTopBarPaddingTop() }}
         >
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-base font-semibold" dir={dir()}>
               {t("settings.settings")}
             </h2>
-            <DialogClose aria-label="Close settings" className="inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
+            <DialogClose aria-label="Close settings" className="inline-flex h-10 md:h-12 w-12 items-center justify-center rounded-md border border-border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
               <XIcon className="h-5 w-5" />
               <span className="sr-only">Close</span>
             </DialogClose>
           </div>
         </div>
 
-        <div className="space-y-4 mt-8 pb-16">
+        <div className="space-y-4 mt-3 pb-16">
           <ThemeToggle />
 
           <DismissableTip

@@ -380,6 +380,39 @@ a herbalist). The real two:
   predicate in a canvas-free unit test (`src/city/population.test.ts` — DynamicTexture
   needs a canvas, so test the LOGIC, not the mounted billboards).
 
+## §6.9 Empty quest beacons: pre-station everywhere + priority-anchor focus (#58)
+
+The game was unfinishable because objective NPCs were stationed ONCE at buildWorld
+for the initial quest; a quest switch/progression re-pointed the beacon to a new
+anchor but no NPC moved there, so every beacon stood over an empty spot (and the
+"talk to the keeper to cross" step had no keeper). TWO ways to solve it; we shipped
+the first, built but did not wire the second:
+
+1. **SHIPPED — pre-station at EVERY catalog anchor + a priority-anchor focus.** The
+   objective anchors are few (~5: plaza/market/fountain/harbor/bridge_n), so station
+   ONE body at each at build time and never move them. The authored NAME/persona for
+   the *active* quest is resolved at ENGAGE time (`specialNpc.forAnchor(anchorId,
+   quest.id)`), not at station time. To make sure you Talk to the QUEST's NPC and not
+   a closer wanderer, `createNpcFocus` takes an optional `getPriorityAnchor()` — the
+   special at the active step's anchor WINS focus when in range even if someone else
+   is marginally nearer. No runtime re-station needed; nothing to keep in sync.
+2. **BUILT, UNWIRED — `crowd.restationSpecials(newSpecials)`.** Re-binds a fixed POOL
+   of special agents to a new anchor/persona set at runtime. The reusable lesson
+   here (worth more than the API): the focus layer SNAPSHOTS the focusable list once
+   (`createNpcFocus(..., [...crowd.focusables, ...])`), so adding/removing agents
+   later is invisible. To change what a snapshotted handle points at, keep a fixed
+   POOL whose handles are ALL in `focusables` from construction and **MUTATE the
+   existing handle objects in place** (`handle.anchorId`/`role`/`billboard.root`) —
+   the focus layer reads them live per-frame, so the beacon/map/dialogue re-route
+   with no array surgery. Park unused slots off-map with a DEAD sentinel anchorId +
+   a non-null placeholder `role` (a probe reading `handle.role.name` crashes on
+   undefined). (See `restationSpecials` + `qa/restation.mjs`.)
+
+GENERAL RULES: (a) if the set of targets is SMALL and static, pre-instantiate all of
+them + select per-state — simpler than runtime mutation. (b) When a long-lived
+consumer snapshots a list of handles, make the handles STABLE and mutate them in
+place; don't swap the array out from under the consumer.
+
 ## §7. Storage
 
 All packs run in the host WebView's single origin and **share one ~5 MB localStorage

@@ -14,7 +14,7 @@ export function ThemeToggle() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full flex justify-end">
+    <div className="w-full flex justify-start">
       <div className="inline-flex rounded-md border border-border p-1 gap-1">
         {OPTIONS.map(({ value, Icon, labelKey }) => {
           const active = theme === value;

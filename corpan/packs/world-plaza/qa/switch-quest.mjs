@@ -6,10 +6,14 @@ const errs=[]; page.on("pageerror", e=>errs.push(String(e).slice(0,140)))
 const results=[]; const assert=(n,ok,d="")=>{results.push({n,ok});console.log(`${ok?"PASS":"FAIL"}  ${n}${d?"  — "+d:""}`)}
 await page.addInitScript(() => {
   localStorage.setItem("wp:identity:v1", JSON.stringify({ name: { playerId: "p", displayName: "Otter", nameSeed: { adjId: "brave", nounId: "otter" } }, avatar: { base: "body-1", layers: [] } }))
-  // simulate the STUCK owner: active quest = the across-city one (#42 per-pair key)
+  // simulate the STUCK owner: active quest = the across-city one (#42 per-pair key).
+  // The seed key MUST match the pair we BOOT with (?stack=en,es → trackId en:es);
+  // the dev default with no ?stack is es:es, so seeding en:es while booting es:es
+  // would silently miss the key (the seed is read under the boot pair's key).
   localStorage.setItem("wp:activeQuest:v1:en:es", "es-guadalajara-route"); localStorage.removeItem("wp:quest:v1:en:es")
 })
-await page.goto(url, { waitUntil: "load" })
+// ?stack=en,es → boot the en:es pair so the seeded wp:activeQuest:v1:en:es key is honored.
+await page.goto(`${url}/?stack=en,es`, { waitUntil: "load" })
 for (let i=0;i<8;i++){ const gone=await page.evaluate(()=>!document.querySelector(".wp-entry-root")); if(gone)break; const b=await page.$(".wp-entry-btn"); if(b)await b.click().catch(()=>{}); await page.waitForTimeout(600) }
 await page.waitForFunction(()=>!!window.__wpQuest,{timeout:20000}); await page.waitForTimeout(1500)
 let st = await page.evaluate(()=>window.__wpQuest.state())

@@ -7,6 +7,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+
+- **Toolchain & framework to latest stable.** React **18.3 → 19.2**, Vite **6 →
+  8** (Rolldown bundler — production build ~3× faster), TypeScript **5.6 → 6.0**,
+  `@vitejs/plugin-react` 4 → 6, `@types/react`/`react-dom` → 19, Tailwind v4 →
+  4.3. No app code changes beyond two type fixes (a React-19 `RefObject<T|null>`
+  prop type in `StacksManagerRenamePopover`, a `node` types reference for the
+  storage harness) and a Vite-8 config change (`build.rollupOptions.output.
+  manualChunks` object → function form; added explicit `esbuild` dep). All key
+  libs (Radix, framer-motion, dnd-kit, vaul, lucide) already declared React 19
+  peer support. typecheck + production build green.
+
 ### Added
 
 - **Full-document RTL foundation.** The UI language's direction is now mirrored
@@ -34,6 +46,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   in en + ar (other ~49 locales fall back to English until the pipeline runs).
 
 ### Fixed
+
+- **Settings header matches the Home header.** The close-X now grows to `md:h-12`
+  like the Home gear (it was fixed at `h-10`, so on tablet/desktop the gear was a
+  48×48 square while the X stayed a 40×48 rectangle) — both are now identical at
+  every breakpoint and sit in the same spot. Also dropped the settings header's
+  `border-b` and the full-screen dialog's base `border`, so the header is clean
+  like Home instead of bracketed by top/bottom hairlines.
 
 - **Arabic localization polish + RTL hardening.** After a 1-star Arabic review
   ("غير مفهوم" — "incomprehensible"), we audited the whole Arabic surface with a
