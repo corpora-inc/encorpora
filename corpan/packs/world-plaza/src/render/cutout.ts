@@ -223,6 +223,7 @@ export function createGroundedCutout(scene: Scene, opts: CutoutOptions): Grounde
   shadow.rotation.x = Math.PI / 2 // lie flat on the ground
   shadow.position.y = 0.02 // hover just above the floor to avoid z-fight
   shadow.isPickable = false
+  shadow.doNotSyncBoundingInfo = true // constant local bbox (perf2)
   shadow.billboardMode = Mesh.BILLBOARDMODE_NONE
   shadow.parent = root // owned by the contact point — welded by construction
   // Per-cutout material instance is avoidable: share the material, vary alpha

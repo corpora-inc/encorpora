@@ -482,7 +482,7 @@ function buildWorld(
   // hand it to the crowd explicitly (keeps the objective NPC out of the basin).
   const fountainAnchorForCrowd = city.getAnchor("fountain")
   const crowd = createCrowd(world.scene, topology, {
-    count: 21, // NPCs −25% (perf + declutter): was 28
+    count: 14, // fewer + clustered near player + far ones culled (perf2): was 21/28
     roles,
     seed: scene.id,
     scene,

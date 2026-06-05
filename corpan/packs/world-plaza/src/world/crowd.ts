@@ -258,6 +258,15 @@ const PLAYER_AVOID = 8.0
 // never buried in a scrum of ambient townsfolk — you can always see + reach the
 // one you're meant to talk to. The stationed special itself is exempt.
 const OBJECTIVE_AVOID = 6.0
+// PERF: a wanderer farther than this from the player is disabled + skipped — no
+// draw, no steering, out of the O(N²) separation. Stationed specials, active
+// seekers, and the engaged NPC are exempt. ~matches the camera's useful depth so
+// the cull is unseen (distant streets read empty, which is fine in a dense city).
+const FAR_CULL = 80
+// With a smaller crowd, bias wander targets into an annulus around the player so
+// the population stays lively WHERE YOU ARE (inside FAR_CULL) and far ones recycle
+// back near you instead of scattering across an empty map.
+const CLUSTER_RADIUS = 50
 
 /**
  * Hand-authored persona colour for the special quest roles. The crowd's
@@ -397,8 +406,16 @@ export function createCrowd(
         // wide loiter ring around the tend anchor — gravitates, never glued
         x = tend.x + randIn(-5.5, 5.5)
         z = tend.z + randIn(-5.5, 5.5)
+      } else if (player) {
+        // cluster near the player (annulus outside PLAYER_AVOID, within CLUSTER_
+        // RADIUS) so the reduced crowd stays alive where you are + far ones recycle
+        // back close instead of scattering across the map.
+        const ang = Math.random() * Math.PI * 2
+        const rad = randIn(PLAYER_AVOID + 2, CLUSTER_RADIUS)
+        x = player.x + Math.cos(ang) * rad
+        z = player.z + Math.sin(ang) * rad
       } else {
-        // truly spread across the whole walkable extent
+        // no player ref (initial spawn) → spread across the whole walkable extent
         x = randIn(bounds.minX + margin, bounds.maxX - margin)
         z = randIn(bounds.minZ + margin, bounds.maxZ - margin)
       }
@@ -815,6 +832,16 @@ export function createCrowd(
       const pdx = player.x - a.x
       const pdz = player.z - a.z
       const pdist = Math.hypot(pdx, pdz)
+
+      // ── PERF CULL: a wanderer the player can't see costs a draw + full steering
+      // + the O(N²) separation below. Disable + skip far ones. Stationed specials,
+      // active seekers, and the engaged/held NPC are gameplay-critical → never cull.
+      const cullable = a.station == null && !a.seeker && a.handle.anchorId !== heldId
+      if (cullable && pdist > FAR_CULL) {
+        if (a.cutout.root.isEnabled()) a.cutout.root.setEnabled(false)
+        continue
+      }
+      if (!a.cutout.root.isEnabled()) a.cutout.root.setEnabled(true)
 
       // ---- timers ----
       if (a.ackCooldown > 0) a.ackCooldown -= dt

@@ -204,6 +204,10 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
     inst.instancedBuffers.color = color
     inst.parent = parent
     inst.isPickable = false
+    // Limbs animate by ROTATING their parent pivot, never by changing local verts,
+    // so the per-part local bounding box is constant — skip per-frame bbox sync
+    // (perf2: cuts active-mesh CPU, the measured dominant frame phase).
+    inst.doNotSyncBoundingInfo = true
     parts.push(inst)
     return inst
   }
@@ -309,6 +313,7 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   const shell = MeshBuilder.CreatePlane(`${id}-faceshell`, { size: 1 }, scene)
   shell.material = faceMat
   shell.isPickable = false
+  shell.doNotSyncBoundingInfo = true // constant local bbox (parented to headPivot)
   shell.parent = headPivot
   const faceW = headR * 1.42
   const faceH = headR * 1.66
@@ -371,6 +376,7 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
   shadow.rotation.x = Math.PI / 2
   shadow.position.y = 0.02
   shadow.isPickable = false
+  shadow.doNotSyncBoundingInfo = true // constant local bbox
   shadow.billboardMode = Mesh.BILLBOARDMODE_NONE
   shadow.parent = root
   shadow.material = shared.material
