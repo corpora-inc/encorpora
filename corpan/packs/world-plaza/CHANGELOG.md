@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Quests at scale — a much larger, pair-agnostic, keyed quest catalog.** The
+  6-quest demo grows to 16 quests spanning every scene + domain: plaza (greetings,
+  café, business), market (numbers, groceries), fountain (directions, meetup),
+  harbor (ferry, fishmonger, grand route), station (departures), civic (City Hall,
+  clinic), and a bridge crossing. The new quests are **pair-agnostic + keyed**:
+  no hardcoded English/ES — copy resolves through `src/i18n/quests.ts` (literal
+  fallback, ready for `gen_i18n.py`), and target vocab comes from the corpus by
+  **domain + CEFR level** (no pinned `entryIds`), so a quest works for any language
+  pair and any single-language (immersion) stack. (`content/quests/*.json`,
+  `quest/questCatalog.ts`, `i18n/quests.ts`.)
+- **Quest variety engine (replay freshness).** The completion interlude's
+  next-quest branch now honours the authored fork first, then backfills from the
+  catalog — shuffled by a per-pair seed with recently-played quests pushed to the
+  back — so you rarely see the same cards twice in a row. A per-pair, persisted
+  recent-history ring + play counter rotates the branch between replays.
+  (`quest/questVariety.ts`, `quest/questRuntime.ts`.)
+- **Keyed quest localization now flows to the UI.** The Status Capsule, Quest
+  section, and completion interlude render quest titles/step labels through the
+  keyed catalog in the live UI locale (native, or target under immersion), re-
+  pointing in place on an immersion flip. (`quest/questLocalize.ts`,
+  `quest/questTracker.ts`, `quest/questSection.ts`.)
+- Beginner quests stay **winnable by tapping** (mic-free gates); a speak gate
+  appears only as the capstone of an explicitly-advanced quest, never as a quest's
+  first step — guarded by a catalog-integrity test so the unwinnable-mic-gate bug
+  can't return. (+30 quest tests; `npm run test:run` 431 green.)
+
 ### Performance
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material

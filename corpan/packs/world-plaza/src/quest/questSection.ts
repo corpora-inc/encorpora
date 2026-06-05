@@ -24,6 +24,7 @@ import type { QuestEngine, StepState } from "./questState"
 import type { InventoryStore } from "../economy/inventory"
 import { requiredForStep } from "../economy/questItems"
 import { getItemDef } from "../economy/inventory"
+import { type QuestLocalizer, literalQuestLocalizer } from "./questLocalize"
 
 const LOG = "[wp/questSection]"
 
@@ -90,6 +91,12 @@ export interface QuestSectionOptions {
    */
   strings?: Partial<QuestSectionStrings> | (() => Partial<QuestSectionStrings>)
   /**
+   * The keyed-quest localizer for the quest TITLE / NARRATIVE / STEP LABELS
+   * (QUESTS-AT-SCALE). A static value OR a getter evaluated each mount (so it picks
+   * up an immersion/locale flip, mirroring `strings`). Optional ⇒ literals.
+   */
+  localizeQuest?: QuestLocalizer | (() => QuestLocalizer)
+  /**
    * Optional controls rendered at the TOP of the section, above the quest title
    * (e.g. the immersion toggle). The orchestrator owns the control; the section
    * just gives it a slot. Rendered once on mount (the section re-renders its quest
@@ -130,6 +137,9 @@ export function createQuestSection(opts: QuestSectionOptions): MenuSectionView {
 function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => void {
   const resolvedStrings = typeof opts.strings === "function" ? opts.strings() : opts.strings
   const strings: QuestSectionStrings = { ...DEFAULT_STRINGS, ...(resolvedStrings ?? {}) }
+  const localizeQuest: QuestLocalizer =
+    (typeof opts.localizeQuest === "function" ? opts.localizeQuest() : opts.localizeQuest) ??
+    literalQuestLocalizer
   const anchorName = opts.anchorName ?? ((a: string) => prettyAnchor(a))
 
   // Controls slot (e.g. the immersion toggle) — a SIBLING above the quest body so
@@ -165,9 +175,9 @@ function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => 
       // Title + narrative.
       const title = document.createElement("div")
       title.className = "wp-quest-title"
-      title.textContent = quest.title
+      title.textContent = localizeQuest.title(quest)
       root.appendChild(title)
-      const narrative = (quest as { narrative?: string }).narrative
+      const narrative = localizeQuest.narrative(quest)
       if (narrative) {
         const n = document.createElement("div")
         n.className = "wp-quest-narrative"
@@ -192,7 +202,7 @@ function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => 
         const step = opts.engine.currentStep()
         const objective = document.createElement("div")
         objective.className = "wp-quest-objective"
-        objective.textContent = step ? step.label || step.id : ""
+        objective.textContent = step ? localizeQuest.stepLabel(quest, step) : ""
         objBlock.appendChild(objective)
 
         if (step) {
@@ -247,7 +257,7 @@ function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => 
         li.className =
           "wp-quest-step" +
           (isDone ? " wp-quest-step--done" : isActive ? " wp-quest-step--active" : "")
-        li.textContent = s.label || s.id
+        li.textContent = localizeQuest.stepLabel(quest, s)
         list.appendChild(li)
       }
       stepsBlock.appendChild(list)

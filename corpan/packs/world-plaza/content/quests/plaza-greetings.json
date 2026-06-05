@@ -1,0 +1,26 @@
+{
+  "id": "plaza-greetings",
+  "title": "First Hellos",
+  "narrative": "Trade greetings with the crowd on the plaza — your first warm words.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "greetings",
+  "objective": { "kind": "completeChallenges", "toolId": "fast-translate", "count": 1 },
+  "steps": [
+    {
+      "id": "say-hello",
+      "label": "Greet a stranger on the plaza",
+      "anchorId": "plaza",
+      "kind": "talk",
+      "toolId": "fast-translate"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner greeting people, introducing themselves, and being polite.",
+    "scaffold": "beginner",
+    "ragSources": ["base-greetings"],
+    "contentSelector": { "levels": ["A1"], "domains": ["greetings", "social"], "languageCodes": ["es"] },
+    "toolWhitelist": ["fast-translate", "listen-choose-pic", "picture-match"]
+  },
+  "rewards": { "xp": 110, "coins": 130, "badge": "warm-welcome" },
+  "nextQuestIds": ["plaza-cafe-order", "market-numbers", "fountain-directions"]
+}

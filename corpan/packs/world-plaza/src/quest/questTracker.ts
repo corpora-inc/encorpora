@@ -43,6 +43,7 @@ import type { QuestEngine, StepState } from "./questState"
 import type { InventoryStore } from "../economy/inventory"
 import { requiredForStep } from "../economy/questItems"
 import { getItemDef } from "../economy/inventory"
+import { type QuestLocalizer, literalQuestLocalizer } from "./questLocalize"
 import type {
   HudGlances,
   ImmersionResolver,
@@ -144,6 +145,13 @@ export interface QuestTrackerOptions {
   t?: Translate
   /** Locale for `t(key, lang)` when no resolver is given. */
   lang?: string
+  /**
+   * The keyed-quest localizer (QUESTS-AT-SCALE): renders the quest TITLE + STEP
+   * LABELS in the UI locale via the `src/i18n/quests.ts` catalog, falling back to
+   * the authored literal. Optional ⇒ literals (English source-of-truth). Swap it on
+   * an immersion/locale flip via `relocalizeQuest`.
+   */
+  localizeQuest?: QuestLocalizer
   /** Location/era for the expanded lore block (the demoted Place Tag's detail). */
   place?: CapsulePlace
 }
@@ -161,6 +169,12 @@ export interface QuestTrackerHandle {
    * its position/expansion/subscriptions are untouched.
    */
   relocalize(strings: Partial<QuestTrackerStrings>): void
+  /**
+   * Swap the keyed-quest localizer IN PLACE (immersion/locale flip → quest TITLE +
+   * STEP LABELS re-resolve into the new UI locale) and re-render. Same in-place
+   * discipline as `relocalize`; no teardown.
+   */
+  relocalizeQuest(localizer: QuestLocalizer): void
   /** Programmatically collapse the expanded card (e.g. when chrome recedes). */
   collapse(): void
   dispose(): void
@@ -178,6 +192,9 @@ export function mountQuestTracker(
   // `let` (not const) so `relocalize` can swap the localized copy in place when the
   // immersion toggle flips the UI locale without a world rebuild (IMMERSION_TOGGLE).
   let strings: QuestTrackerStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
+  // The keyed-quest localizer (title/step label). `let` so `relocalizeQuest` can swap
+  // it in place on an immersion/locale flip (same discipline as `strings`).
+  let localizeQuest: QuestLocalizer = opts.localizeQuest ?? literalQuestLocalizer
   const anchorName = opts.anchorName ?? ((a: string) => prettyAnchor(a))
   const reduced =
     typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -419,7 +436,7 @@ export function mountQuestTracker(
       const doneCount = steps.filter((s) => state.stepDone[s.id]).length
 
       renderLozenge()
-      titleEl.textContent = quest.title
+      titleEl.textContent = localizeQuest.title(quest)
 
       if (state.complete) {
         objectiveEl.textContent = strings.complete
@@ -440,7 +457,8 @@ export function mountQuestTracker(
         return
       }
 
-      objectiveEl.textContent = step.label || step.id
+      const stepLabel = localizeQuest.stepLabel(quest, step)
+      objectiveEl.textContent = stepLabel
 
       const st: StepState = opts.engine.stepState(step.id)
       const who = step.anchorId ? anchorName(step.anchorId) : null
@@ -453,7 +471,7 @@ export function mountQuestTracker(
         // TRAVERSE / FIND (#26): completion = WALK to the spot. The label is
         // already an imperative cue ("Cross the river bridge") — hand-hold with it
         // plus a directional arrow so it reads as "go here", not "talk to someone".
-        hint = `${step.label} →`
+        hint = `${stepLabel} →`
       } else if (st === "needs-item" && needed) {
         hint = strings.findItem(itemLabel(needed))
       } else if (st === "ready-to-deliver" && held && who) {
@@ -495,7 +513,7 @@ export function mountQuestTracker(
       }
 
       // Quest detail.
-      questTitle.textContent = quest.title
+      questTitle.textContent = localizeQuest.title(quest)
       progressRow.textContent = strings.progress(doneCount, steps.length)
       const pct = steps.length ? Math.round((doneCount / steps.length) * 100) : 0
       progressFill.style.width = `${pct}%`
@@ -507,7 +525,7 @@ export function mountQuestTracker(
         li.className =
           "wp-status-step" +
           (done ? " wp-status-step--done" : active ? " wp-status-step--active" : "")
-        li.textContent = s.label || s.id
+        li.textContent = localizeQuest.stepLabel(quest, s)
         stepList.appendChild(li)
       }
 
@@ -562,6 +580,11 @@ export function mountQuestTracker(
     },
     relocalize(next: Partial<QuestTrackerStrings>): void {
       strings = { ...DEFAULT_STRINGS, ...next }
+      render()
+      if (expanded) renderDetail()
+    },
+    relocalizeQuest(next: QuestLocalizer): void {
+      localizeQuest = next
       render()
       if (expanded) renderDetail()
     },

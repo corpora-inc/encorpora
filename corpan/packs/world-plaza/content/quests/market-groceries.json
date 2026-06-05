@@ -1,0 +1,26 @@
+{
+  "id": "market-groceries",
+  "title": "The Grocer's Round",
+  "narrative": "Fill your basket: name the fruit, the bread, the spices, all in the market tongue.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "market",
+  "objective": { "kind": "completeChallenges", "toolId": "picture-match", "count": 1 },
+  "steps": [
+    {
+      "id": "name-goods",
+      "label": "Name the goods on the grocer's table",
+      "anchorId": "market",
+      "kind": "talk",
+      "toolId": "picture-match"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner naming food, fruit, and everyday groceries.",
+    "scaffold": "beginner",
+    "ragSources": ["base-market", "base-food"],
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "food", "shopping"], "languageCodes": ["es"] },
+    "toolWhitelist": ["picture-match", "listen-choose-pic", "fast-translate"]
+  },
+  "rewards": { "xp": 150, "coins": 190, "badge": "full-basket", "grant": ["fruit-basket"] },
+  "nextQuestIds": ["plaza-cafe-order", "harbor-fishmonger", "station-departures"]
+}

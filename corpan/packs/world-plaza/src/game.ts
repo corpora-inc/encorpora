@@ -28,7 +28,7 @@ import {
 } from "./challenges/host"
 import { inventory, createInventory, bindInventory } from "./economy/inventory"
 import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/questState"
-import { getQuest, entryQuestId, nextQuests, firstStep, allQuests, objectiveAnchorIds } from "./quest/questCatalog"
+import { getQuest, entryQuestId, firstStep, allQuests, objectiveAnchorIds } from "./quest/questCatalog"
 import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
 import { resolveEntry, bindStackReactivity, samePair } from "./entry"
 import { readStack } from "./entry/stackAdapter"
@@ -50,6 +50,7 @@ import { createSpecialNpcResolver } from "./quest/specialNpc"
 import { resolveStepContent, challengeSatisfiesStep } from "./quest/questContent"
 import { mountQuestTracker } from "./quest/questTracker"
 import { createQuestSection } from "./quest/questSection"
+import { createQuestRuntime } from "./quest/questRuntime"
 import { createInventorySection } from "./inventory/inventoryPanel"
 import { mountPlaceTag } from "./shell/placeTag"
 import { createChromeVisibility, type ChromeState } from "./shell/chromeVisibility"
@@ -300,6 +301,14 @@ function buildWorld(
   let quest: QuestT = getQuest(loadActiveQuestId()) ?? getQuest(entryQuestId)!
   if (!quest) throw new Error("[world-plaza] no quests in catalog")
   saveActiveQuestId(quest.id)
+
+  // QUESTS-AT-SCALE seam: the keyed-quest LOCALIZER (quest copy renders in the UI
+  // locale, not raw English) + the per-pair REPLAY-VARIETY state (the completion
+  // interlude's next-quest branch rotates away from repeats). One object the
+  // tracker / quest section / interlude all read; re-localized on the immersion
+  // flip; per-pair (scoped on `trackId`) like the quest engine + economy.
+  const questRuntime = createQuestRuntime({ trackId, uiLocale })
+  questRuntime.recordStarted(quest.id)
 
   // ---- DOM: canvas + overlay (joysticks, dialogue, toasts, title) ----
   const rootEl = document.createElement("div")
@@ -929,6 +938,9 @@ function buildWorld(
     // in the old NPC's chat after you've accepted somewhere new to be.
     openDialogue?.close()
     saveActiveQuestId(next.id)
+    // Record the (re)start so the variety engine's recent-ring + play counter
+    // reflect the real journey (rotates the NEXT fork away from repeats).
+    questRuntime.recordStarted(next.id)
     quest = next
     unsubActive?.()
     activeEngine = createQuestEngine({
@@ -1210,17 +1222,22 @@ function buildWorld(
   // inner engine each time `setActiveQuest` swaps it.
   let unsubComplete: (() => void) | null = null
   let interludeOpen = false
-  const buildNextOptions = (questId: string): NextQuestOption[] =>
-    nextQuests(questId).map((q) => {
+  const buildNextOptions = (questId: string): NextQuestOption[] => {
+    // The ROTATED next-quest branch (variety engine: authored fork first, backfill
+    // biased away from recently-played quests + rotated per replay). Titles/labels
+    // render through the keyed-quest localizer so the picker is localized too.
+    const loc = questRuntime.localizer()
+    return questRuntime.nextOptions(questId).map((q) => {
       const fs = firstStep(q)
       return {
         id: q.id,
-        title: q.title,
-        whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : q.title,
-        whatToDo: fs?.label ?? q.narrative,
+        title: loc.title(q),
+        whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : loc.title(q),
+        whatToDo: fs ? loc.stepLabel(q, fs) : loc.narrative(q),
         motif: fs?.anchorId,
       }
     })
+  }
   const onComplete = async (completed: QuestT) => {
     if (interludeOpen) return
     interludeOpen = true
@@ -1231,7 +1248,7 @@ function buildWorld(
     try {
       const interlude = createQuestInterlude({
         overlay,
-        completedQuestTitle: completed.title,
+        completedQuestTitle: questRuntime.localizer().title(completed),
         reward: {
           xp: completed.rewards.xp,
           coins: completed.rewards.coins,
@@ -1433,18 +1450,22 @@ function buildWorld(
         // the LIVE locale here means re-opening after an immersion flip shows the new
         // language without a world rebuild.
         strings: () => makeSectionStrings(currentUiLocale()),
+        // Keyed-quest localizer (title/narrative/step labels). Lazy ⇒ re-opening
+        // after an immersion flip renders quest copy in the new UI locale.
+        localizeQuest: () => questRuntime.localizer(),
         // The switch-quest escape hatch (#41): list every quest (active marked,
         // completed flagged) so the player is NEVER trapped on one they can't or
         // don't want to finish. Picking one re-points the world via setActiveQuest.
         questChoices: () => {
           const activeId = questEngine.quest().id
           const activeComplete = questEngine.state().complete
+          const loc = questRuntime.localizer()
           return allQuests().map((q) => {
             const fs = firstStep(q)
             const isActive = q.id === activeId
             return {
               id: q.id,
-              title: q.title,
+              title: loc.title(q),
               whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : undefined,
               isActive,
               // Only the ACTIVE quest's progress is tracked live (the engine store
@@ -1517,6 +1538,9 @@ function buildWorld(
     // labels) in the UI locale (native, or target under immersion).
     strings: makeTrackerStrings(uiLocale),
     lang: uiLocale,
+    // Keyed-quest localizer: the capsule's quest TITLE + STEP LABELS render in the
+    // UI locale (re-pointed on an immersion flip via `tracker.relocalizeQuest`).
+    localizeQuest: questRuntime.localizer(),
     // The capsule deep-links by the contract's section ids; "wallet" lives inside
     // the Inventory section here, so route it there.
     openSection: (section) =>
@@ -1567,8 +1591,12 @@ function buildWorld(
     // RTL: a target like Arabic flips the whole chrome; a Latin target flips back.
     applyDir(rootEl, uiLocale)
     applyDir(overlay, uiLocale)
+    // Re-point the keyed-quest localizer so quest copy re-resolves into the new UI
+    // locale (the capsule re-renders now; the section/interlude read it lazily).
+    questRuntime.setLocale(uiLocale)
     try {
       tracker.relocalize(makeTrackerStrings(uiLocale))
+      tracker.relocalizeQuest(questRuntime.localizer())
       placeTag.relocalize(uiLocale)
       shell.relocalizeMenu(makeMenuStrings(uiLocale))
     } catch (err) {

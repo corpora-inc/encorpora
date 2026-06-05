@@ -18,15 +18,67 @@
  */
 
 import { Quest } from "@world-plaza/contracts"
+import { pickNextQuests, hashSeed } from "./questVariety"
+// ── Legacy ES-pair quests (kept for back-compat: special.json + item rules + QA
+//    harnesses reference these ids; the entry quest stays `es-cafe-travel`). ──────
 import cafeJson from "../../content/quests/es-cafe.json"
 import marketJson from "../../content/quests/es-market.json"
 import directionsJson from "../../content/quests/es-directions.json"
 import guadalajaraJson from "../../content/quests/es-guadalajara.json"
+// ── Pair-agnostic, keyed quest catalog (QUESTS-AT-SCALE). Each declares a domain
+//    + CEFR levels (the phrase resolver consumes them) and NO hardcoded entryIds,
+//    so target vocab comes from the corpus for whatever language pair is live. ────
+import plazaGreetingsJson from "../../content/quests/plaza-greetings.json"
+import plazaCafeOrderJson from "../../content/quests/plaza-cafe-order.json"
+import plazaBusinessJson from "../../content/quests/plaza-business.json"
+import marketNumbersJson from "../../content/quests/market-numbers.json"
+import marketGroceriesJson from "../../content/quests/market-groceries.json"
+import fountainDirectionsJson from "../../content/quests/fountain-directions.json"
+import fountainMeetupJson from "../../content/quests/fountain-meetup.json"
+import harborFerryRideJson from "../../content/quests/harbor-ferry-ride.json"
+import harborFishmongerJson from "../../content/quests/harbor-fishmonger.json"
+import harborRouteMasterJson from "../../content/quests/harbor-route-master.json"
+import stationDeparturesJson from "../../content/quests/station-departures.json"
+import civicCityHallJson from "../../content/quests/civic-cityhall.json"
+import civicClinicJson from "../../content/quests/civic-clinic.json"
+import bridgeCrossingJson from "../../content/quests/bridge-crossing.json"
 
 const LOG = "[wp/questCatalog]"
 
-/** The raw authored quest JSONs, in the canonical authoring order. */
-const RAW_QUESTS: unknown[] = [cafeJson, marketJson, directionsJson, guadalajaraJson]
+/**
+ * The raw authored quest JSONs, in the canonical authoring order. The legacy ES
+ * quests lead (so `entryQuestId` = `es-cafe-travel` and the QA harnesses that name
+ * the legacy ids keep working); the pair-agnostic catalog follows, giving the city
+ * a broad, branching journey across every scene + domain.
+ */
+const RAW_QUESTS: unknown[] = [
+  // legacy ES set (entry quest + the inventory-gated Guadalajara chain)
+  cafeJson,
+  marketJson,
+  directionsJson,
+  guadalajaraJson,
+  // pair-agnostic catalog — plaza
+  plazaGreetingsJson,
+  plazaCafeOrderJson,
+  plazaBusinessJson,
+  // market
+  marketNumbersJson,
+  marketGroceriesJson,
+  // fountain
+  fountainDirectionsJson,
+  fountainMeetupJson,
+  // harbor
+  harborFerryRideJson,
+  harborFishmongerJson,
+  harborRouteMasterJson,
+  // station
+  stationDeparturesJson,
+  // civic (City Hall + clinic, stationed at the hospital anchor)
+  civicCityHallJson,
+  civicClinicJson,
+  // bridge (a traverse journey)
+  bridgeCrossingJson,
+]
 
 /** Max follow-ups the picker shows (the design's 2–3-way picker). */
 const MAX_NEXT = 3
@@ -63,31 +115,48 @@ export function getQuest(id: string): Quest | undefined {
   return BY_ID.get(id)
 }
 
+/** Replay-variety inputs for the next-quest picker (all optional). */
+export interface NextQuestVariety {
+  /**
+   * Recently-played quest ids (most-recent-first). The catalog BACKFILL is biased
+   * away from these so a replay rarely re-offers the same cards; the authored
+   * `nextQuestIds` fork is NOT suppressed (the designer's branch always shows).
+   */
+  recent?: readonly string[]
+  /**
+   * A varying seed (e.g. a per-pair play counter) so the BACKFILL rotates between
+   * replays. Omitted ⇒ a stable seed derived from the quest id (deterministic, but
+   * then identical across replays — pass a counter for true rotation).
+   */
+  seed?: number
+}
+
 /**
- * The 2–3 follow-up quests offered after completing `questId`. Resolves the
- * quest's `nextQuestIds` to live quests (noisy-skipping unknown ids), capped at
- * {@link MAX_NEXT}. When the quest declares none, OR none resolve, falls back to
- * "every OTHER known quest" (capped) so the picker is never empty.
+ * The 2–3 follow-up quests offered after completing `questId`. The authored
+ * `nextQuestIds` fork leads; the rest of the catalog BACKFILLS — shuffled by the
+ * variety `seed`, with recently-played quests pushed to the back — so the picker is
+ * never empty AND replays surface fresh cards (the variety engine,
+ * `questVariety.pickNextQuests`). Back-compat: called with no `variety` it behaves
+ * exactly as before (authored fork, then catalog order) — existing callers + tests
+ * are unchanged.
  */
-export function nextQuests(questId: string): Quest[] {
+export function nextQuests(questId: string, variety?: NextQuestVariety): Quest[] {
   const quest = BY_ID.get(questId)
-  const ids = quest?.nextQuestIds ?? []
-  const resolved: Quest[] = []
-  const seen = new Set<string>([questId])
-  for (const id of ids) {
-    if (resolved.length >= MAX_NEXT) break
-    if (seen.has(id)) continue
-    const q = BY_ID.get(id)
-    if (!q) {
-      console.warn(`${LOG} quest "${questId}" → unknown nextQuestId "${id}" (skipped)`)
-      continue
-    }
-    seen.add(id)
-    resolved.push(q)
+  const preferredIds = quest?.nextQuestIds ?? []
+  for (const id of preferredIds) {
+    if (!BY_ID.has(id)) console.warn(`${LOG} quest "${questId}" → unknown nextQuestId "${id}" (skipped)`)
   }
-  if (resolved.length > 0) return resolved
-  // Fallback: any other known quest, so the loop always continues.
-  return QUESTS.filter((q) => q.id !== questId).slice(0, MAX_NEXT)
+  const ids = pickNextQuests({
+    completedId: questId,
+    preferredIds,
+    allIds: QUESTS.map((q) => q.id),
+    recent: variety?.recent,
+    // No seed ⇒ derive a stable one from the quest id (deterministic; matches the
+    // legacy "catalog order" feel for callers that don't rotate).
+    seed: variety?.seed ?? hashSeed(questId),
+    max: MAX_NEXT,
+  })
+  return ids.map((id) => BY_ID.get(id)).filter((q): q is Quest => Boolean(q))
 }
 
 /** The first step of a quest (where the picker says "go here / do this"), or null. */
