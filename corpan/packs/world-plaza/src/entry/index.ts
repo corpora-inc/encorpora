@@ -109,14 +109,23 @@ export function bindStackReactivity(
   onChange: (next: LearnerPair, stack: StackConfig) => void,
 ): () => void {
   return subscribeStack(host, (stack) => {
-    const next = defaultPairFor(stack)
-    if (!samePair(next, getCurrentPair())) {
-      console.info(
-        "[wp/entry] stack changed → rebinding world",
-        getCurrentPair(),
-        "→",
-        next,
-      )
+    const current = getCurrentPair()
+    const targets = targetsOf(stack)
+    // PRESERVE the player's CHOSEN target across stack notifications. The real
+    // host (corpan-app `onStackConfigChange`) fires this listener IMMEDIATELY on
+    // subscribe — and again on unrelated settings changes. Rebinding to
+    // `defaultPairFor` (the stack's FIRST target) here silently switched a chosen
+    // non-first target to the first one the instant the world mounted: EN native
+    // learning [AR, ES], pick ES → the world rebuilt in AR (the first target).
+    // Keep the chosen target whenever it is STILL in the stack (only the native
+    // follows a primary change); rebind to a default target ONLY when the chosen
+    // target was actually removed from the stack.
+    const target = targets.includes(current.target)
+      ? current.target
+      : targets[0] ?? current.target
+    const next = pairFor(stack, target)
+    if (!samePair(next, current)) {
+      console.info("[wp/entry] stack changed → rebinding world", current, "→", next)
       onChange(next, stack)
     }
   })
