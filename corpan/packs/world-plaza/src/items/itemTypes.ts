@@ -79,7 +79,7 @@ export const Item = z
   .superRefine((it, ctx) => {
     if (it.kind === "cosmetic" && !it.slot) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         message: `cosmetic item "${it.id}" must declare a slot`,
         path: ["slot"],
       })

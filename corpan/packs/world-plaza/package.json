@@ -26,15 +26,15 @@
     "@babylonjs/loaders": "^9.11.0",
     "colyseus.js": "^0.16.22",
     "recast-detour": "^1.6.4",
-    "zod": "^3.24.1",
+    "zod": "^4.4.3",
     "zustand": "^5.0.4"
   },
   "devDependencies": {
-    "@types/node": "^25.0.3",
-    "happy-dom": "^20.0.11",
+    "@types/node": "^25.9.0",
+    "happy-dom": "^20.10.0",
     "playwright": "^1.60.0",
-    "typescript": "^5.4.0",
-    "vite": "^6.0.3",
-    "vitest": "^4.0.16"
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
   }
 }
