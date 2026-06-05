@@ -58,35 +58,17 @@ function resolveTool(id: ChallengeToolId): ToolImpl | undefined {
 }
 
 /**
- * CROSS-LANGUAGE (two-language) tools (#27): these render one side in the TARGET
- * and the other in the NATIVE and require matching/translating BETWEEN them — so
- * they are a TAUTOLOGY with no answer if both sides collapse to one language.
- * They must ALWAYS keep the native side, even under immersion (immersion only
- * collapses CHROME/instructional copy, never the two halves of a translation
- * exercise). Monolingual drills (say-it-back, read-aloud, unscramble, odd-one-out,
- * rhyme-match, dialogue-fill, …) are NOT here — they honour immersion.
- *
- * Resolved against the canonical (post-alias) tool id, so `translate-fast` /
- * `listen-choose` map onto their new ids.
- */
-const CROSS_LANGUAGE_TOOLS = new Set<ChallengeToolId>([
-  "fast-translate", // prompt target → tap the native meaning (and reverse)
-  "tap-translation", // prompt native → tap the target
-  "listen-choose-pic", // hear target → tap the native meaning
-  "memory-pairs", // match target cards to native cards
-  "true-false", // judge a target↔native translation claim
-  "category-sort", // sorts "target — native" rows
-  "picture-match", // picture/word match (word fallback needs native)
-])
-
-/**
  * Does this tool inherently need BOTH languages (so the native side must survive
- * immersion)? Resolves legacy aliases first. The orchestrator uses this to keep
- * `ChallengeContext.nativeLanguage` set for these tools regardless of immersion.
+ * immersion)? — #27/#57. Reads the tool's OWN declared `isCrossLanguage` property
+ * (resolving legacy aliases first), NOT a hand-maintained whitelist: a tool whose
+ * prompt + correct answer are in different languages CANNOT silently tautologize
+ * unless its author explicitly mis-flags it, and adding a tool forces the decision.
+ * The orchestrator uses this to keep `ChallengeContext.nativeLanguage` set for
+ * these tools regardless of immersion, and to exclude them from a single-language
+ * Track's offer.
  */
 export function isCrossLanguageTool(id: ChallengeToolId): boolean {
-  const canonical = LEGACY_ALIAS[id] ?? id
-  return CROSS_LANGUAGE_TOOLS.has(canonical)
+  return resolveTool(id)?.isCrossLanguage === true
 }
 
 /** All tool ids that can actually be run (implemented + aliased legacy). */

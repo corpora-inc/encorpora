@@ -6,8 +6,8 @@ const errs=[]; page.on("pageerror", e=>errs.push(String(e).slice(0,140)))
 const results=[]; const assert=(n,ok,d="")=>{results.push({n,ok});console.log(`${ok?"PASS":"FAIL"}  ${n}${d?"  — "+d:""}`)}
 await page.addInitScript(() => {
   localStorage.setItem("wp:identity:v1", JSON.stringify({ name: { playerId: "p", displayName: "Otter", nameSeed: { adjId: "brave", nounId: "otter" } }, avatar: { base: "body-1", layers: [] } }))
-  // simulate the STUCK owner: active quest = the across-city one
-  localStorage.setItem("wp:activeQuest:v1", "es-guadalajara-route"); localStorage.removeItem("wp:quest:v1")
+  // simulate the STUCK owner: active quest = the across-city one (#42 per-pair key)
+  localStorage.setItem("wp:activeQuest:v1:en:es", "es-guadalajara-route"); localStorage.removeItem("wp:quest:v1:en:es")
 })
 await page.goto(url, { waitUntil: "load" })
 for (let i=0;i<8;i++){ const gone=await page.evaluate(()=>!document.querySelector(".wp-entry-root")); if(gone)break; const b=await page.$(".wp-entry-btn"); if(b)await b.click().catch(()=>{}); await page.waitForTimeout(600) }

@@ -27,6 +27,19 @@ export interface ToolImpl {
   title: string
   /** Default difficulty weight 1..3 used for reward sizing if a tool omits it. */
   difficulty?: 1 | 2 | 3
+  /**
+   * CROSS-LANGUAGE (#27/#57): true iff this tool's PROMPT and its CORRECT ANSWER
+   * are inherently in DIFFERENT languages (translate / "which line meant X" /
+   * match native↔target / tap-the-meaning / listen→meaning). Such a tool is a
+   * TAUTOLOGY with no answer if both sides collapse to one language, so:
+   *   - the orchestrator keeps `ChallengeContext.nativeLanguage` set for it even
+   *     under immersion (the prompt/answer stay two-language), and
+   *   - a single-language Track (native===target) is NOT offered it at all.
+   * DECLARED here (not a hand-maintained whitelist) so a new tool can't silently
+   * tautologize — the author MUST decide. Set HONESTLY: a monolingual drill
+   * (read-aloud, unscramble, odd-one-out, …) is false. Default (absent) = false.
+   */
+  isCrossLanguage?: boolean
   buildSpec: (ctx: ChallengeContext) => Promise<ChallengeSpec>
   /** Render + run; resolve when the overlay completes/cancels. */
   run: (overlay: OverlayApi, spec: ChallengeSpec, host: ChallengeRuntimeHost) => void

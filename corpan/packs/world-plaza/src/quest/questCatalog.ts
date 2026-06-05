@@ -94,3 +94,23 @@ export function nextQuests(questId: string): Quest[] {
 export function firstStep(quest: Quest): Quest["steps"][number] | null {
   return quest.steps[0] ?? null
 }
+
+/**
+ * Every distinct step ANCHOR across the WHOLE catalog (#58). The orchestrator
+ * stations a talkable objective NPC at each, so whichever quest the player
+ * switches to, its objective always has a person under the beacon — the crowd is
+ * built once but covers them all. Pure + deterministic (catalog order).
+ */
+export function objectiveAnchorIds(): string[] {
+  const ids: string[] = []
+  const seen = new Set<string>()
+  for (const q of QUESTS) {
+    for (const s of q.steps) {
+      if (s.anchorId && !seen.has(s.anchorId)) {
+        seen.add(s.anchorId)
+        ids.push(s.anchorId)
+      }
+    }
+  }
+  return ids
+}

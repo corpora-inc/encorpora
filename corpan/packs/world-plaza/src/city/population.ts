@@ -166,7 +166,15 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
   // (crowd.ts), not outnumber them. Callers can still override.
   const maxStrollers = opts.maxStrollers ?? 8
   const maxStalls = opts.maxStalls ?? 4
-  const variety = Math.max(1, opts.figureVariety ?? 6)
+  // #60 — the crowd read as "a wall of identical people." With only 6 distinct
+  // pre-baked sprites, the ~12 near-field figures were visibly cloned (and a
+  // market's stall-keepers, drawn from the same tiny set, doubled down on it).
+  // Bumping to 16 distinct townsperson looks — strollers index `i%variety`,
+  // keepers `(i+3)%variety` — gives a believably MIXED populace. Each look is a
+  // half-res billboard (a few KB), so 16 stays well inside the texture budget. The
+  // PERSONA archetype (baker/scribe/herbalist/…) is already varied per figure; this
+  // makes the variety VISIBLE, not just in the engage text.
+  const variety = Math.max(1, opts.figureVariety ?? 16)
   const wakeR = opts.wakeRadius ?? 26
   const sleepR = opts.sleepRadius ?? 40
   const stallWakeR = opts.stallWakeRadius ?? 34

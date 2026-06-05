@@ -24,9 +24,9 @@ import {
   type ChallengeRuntimeHost,
   type CorpanChallengeHostApi,
 } from "./challenges/host"
-import { inventory } from "./economy/inventory"
+import { inventory, createInventory, bindInventory } from "./economy/inventory"
 import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/questState"
-import { getQuest, entryQuestId, nextQuests, firstStep, allQuests } from "./quest/questCatalog"
+import { getQuest, entryQuestId, nextQuests, firstStep, allQuests, objectiveAnchorIds } from "./quest/questCatalog"
 import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
 import { resolveEntry, bindStackReactivity, samePair } from "./entry"
 import { readStack } from "./entry/stackAdapter"
@@ -250,6 +250,13 @@ function buildWorld(
   // EN→ES no longer inherits the other pair's active quest or step state).
   const trackId = `${learnerPair.native}:${learnerPair.target}`
 
+  // PER-PAIR wallet + inventory (#42): bind the process-wide `inventory()`
+  // singleton to a localStorage store namespaced on the Track id, BEFORE any
+  // consumer reads it, so each language pair has its OWN economy (a pair switch is
+  // fully independent — quest + wallet + inventory). A rebuild for a new pair
+  // re-binds to that pair's store.
+  bindInventory(createInventory({ namespace: trackId }))
+
   // ── ACTIVE QUEST model (A2) ────────────────────────────────────────────────
   // The world is no longer pinned to ONE hardcoded quest JSON. The quest catalog
   // owns the graph; the orchestrator owns which quest is ACTIVE and persists that
@@ -366,26 +373,24 @@ function buildWorld(
   // crowd so the player finds each where its map marker points. (The resolver also
   // drives the M2 dialogue marking + the engine's delivery routing elsewhere.)
   const specialNpc = createSpecialNpcResolver(specialJson)
-  // Station the active quest's special NPCs at their anchors…
-  const specialEntries = specialNpc.forQuest(quest.id).map((s) => ({
-    anchorId: s.anchorId,
-    name: s.name,
-    role: s.role,
-  }))
-  // …PLUS a generic OBJECTIVE NPC at every step anchor the active quest points at
-  // that has no authored special (e.g. the entry quest `es-cafe-travel` → `plaza`).
-  // This guarantees the deterministic Begin chip is always reachable: an NPC stands
-  // where the objective marker points, and the forced-offer path keys off the step
-  // anchor matching the engaged anchor. (The crowd is built once for the world's
-  // INITIAL active quest; the interlude's later quest pick re-points the markers +
-  // capsule, and shares the spawn-`plaza` objective NPC across the beginner arc.)
-  const specialAnchors = new Set(specialEntries.map((s) => s.anchorId))
-  const objectiveStations = quest.steps
-    .map((st) => st.anchorId)
-    .filter((id): id is string => !!id && !specialAnchors.has(id))
-    .filter((id, i, arr) => arr.indexOf(id) === i)
-    .map((anchorId) => ({ anchorId, name: "a local", role: "townsperson" }))
-  const questSpecials = [...specialEntries, ...objectiveStations]
+  // #58 — GUARANTEE a talkable objective NPC under every beacon, for ANY quest the
+  // player switches to (the interlude/switch picker re-points the active quest, but
+  // the crowd is built ONCE). So we station ONE objective NPC at EVERY step anchor
+  // across the WHOLE catalog (plaza/market/fountain/harbor/bridge_n — only ~5), not
+  // just the initial quest's. An authored special.json name (per active quest) is
+  // resolved at ENGAGE time via `specialNpc.forAnchor`; here we only need a body
+  // standing at each anchor. (Cheap: 5 extra stationed agents.)
+  const objectiveAnchors = new Set<string>(objectiveAnchorIds())
+  // Also include any special.json anchors (for quests authored with bespoke specials).
+  for (const e of specialNpc.forQuest(quest.id)) objectiveAnchors.add(e.anchorId)
+  const questSpecials = [...objectiveAnchors].map((anchorId) => {
+    // Prefer the AUTHORED special for the active quest (its name/role); else a
+    // generic local. Either way an NPC stands at the anchor under the beacon.
+    const sp = specialNpc.forAnchor(anchorId, quest.id)
+    return sp
+      ? { anchorId, name: sp.name, role: sp.role }
+      : { anchorId, name: "a local", role: "townsperson" }
+  })
   // Autonomous wandering townsfolk — EVERY one gets a generated persona (passing
   // `scene` gives them era/place/language flavour), so all are talkable. The quest
   // specials are bound as STATIONED agents hovering at their anchors.
@@ -815,10 +820,27 @@ function buildWorld(
     // ones. (`repeat-after` is the safe default tool for steps without a `toolId`.)
     const curStep = questEngine.currentStep()
     const isObjectiveNpc = !!curStep?.anchorId && it.anchorId === curStep.anchorId
+    // #55 — conversation-driven completion: a TRAVERSE/FIND objective step
+    // completes by TALKING to the NPC here (the keeper greets you, you confirm),
+    // NOT a silent proximity trigger. Its Begin chip is a CONFIRM that advances on
+    // tap. A TALK step's Begin still launches the step's challenge (the win advances).
+    const isTraversalObjective =
+      isObjectiveNpc && (curStep?.kind === "traverse" || curStep?.kind === "find")
+    const beginLabel = vt("quest.begin") === "quest.begin" ? "Begin" : vt("quest.begin")
+    const doneLabel = vt("quest.confirm") === "quest.confirm" ? "Done" : vt("quest.confirm")
     const forcedOffer = isObjectiveNpc
       ? {
           tool: (curStep?.toolId ?? "repeat-after") as ChallengeToolId,
-          chipLabel: vt("quest.begin") === "quest.begin" ? "Begin" : vt("quest.begin"),
+          chipLabel: isTraversalObjective ? doneLabel : beginLabel,
+          ...(isTraversalObjective && curStep
+            ? {
+                onConfirm: () => {
+                  // Talking to the NPC completes the traverse/find step.
+                  questEngine.markStepBeaten(curStep.id)
+                  if (questEngine.advance(curStep.id)) toast(`✓ ${curStep.label}`)
+                },
+              }
+            : {}),
         }
       : undefined
     openDialogue = npcRuntime.open({
@@ -1346,12 +1368,13 @@ function buildWorld(
     accent: scene.palette?.accent,
   })
 
-  // TRAVERSE / FIND steps (#26): "Cross the river bridge" had no completable
-  // action, so the player walked to the bridge, talked, and NOTHING happened.
-  // This watches the active step: when it's a traverse/find step and the player
-  // reaches its anchor (the beacon/arrow already point there), it deterministically
-  // marks the step beaten + advances — reaching the spot IS the action. Talk steps
-  // are ignored (they advance on a won challenge).
+  // TRAVERSE / FIND steps (#26 + #55): "Cross the river bridge" had no completable
+  // action; #26 first wired a silent proximity AUTO-ADVANCE, but the owner found it
+  // HOLLOW ("it played a sound and moved on without me talking to the NPC"). Now it
+  // is CONVERSATION-DRIVEN: this trigger no longer advances — when the player
+  // arrives at the anchor it just NUDGES them to talk to the NPC there (the keeper),
+  // who offers a "Done" confirm that completes the step (the `onConfirm` forcedOffer
+  // above). The NPC is woven into the step; reaching the spot only prompts the talk.
   const traversalTrigger = createTraversalTrigger({
     getPlayer: () => player.getPos(),
     currentStep: () => questEngine.currentStep(),
@@ -1359,11 +1382,13 @@ function buildWorld(
       const a = city.getAnchor(id)
       return a ? { x: a.x, z: a.z } : null
     },
+    // Fired ONCE per traverse/find step on arrival (the trigger latches per id) —
+    // nudge the player to talk to the NPC there; the talk completes the step.
     onReach: (stepId) => {
       const step = questEngine.currentStep()
       if (!step || step.id !== stepId) return
-      questEngine.markStepBeaten(stepId)
-      if (questEngine.advance(stepId)) toast(`✓ ${step.label}`)
+      const who = step.anchorId ? anchorName(step.anchorId) : null
+      toast(who ? `You're here — talk to ${who}` : `You're here — talk to finish`)
     },
   })
 
@@ -1396,6 +1421,27 @@ function buildWorld(
         if (!s) return false
         questEngine.markStepBeaten(s.id)
         return questEngine.advance(s.id)
+      },
+      /** Switch the active quest (the switch-quest picker / interlude path). */
+      switchQuest: (id: string) => {
+        const next = getQuest(id)
+        if (next) setActiveQuest(next)
+        return !!next
+      },
+      /** The stationed objective NPC + its resolved dialogue NAME at the active
+       *  step's anchor (proves a talkable named NPC stands under the beacon). */
+      objectiveNpc: () => {
+        const s = questEngine.currentStep()
+        if (!s?.anchorId) return null
+        const f = crowd.focusables.find((h) => h.anchorId === s.anchorId)
+        if (!f) return null
+        const sp = specialNpc.forAnchor(s.anchorId, quest.id)
+        return {
+          anchorId: s.anchorId,
+          name: sp ? specialNpc.displayName(sp, undefined, learnerPair.target) : (f.role as { name?: string }).name ?? null,
+          x: f.billboard.root.position.x,
+          z: f.billboard.root.position.z,
+        }
       },
     }
   }

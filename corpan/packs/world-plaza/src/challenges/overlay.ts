@@ -16,6 +16,63 @@
 
 import "./challenge.css"
 import type { ChallengeReward } from "@world-plaza/contracts"
+import {
+  moodForScore,
+  renderResultCrest,
+  renderXpIcon,
+  renderCoinIcon,
+  renderItemIcon,
+} from "./resultArt"
+
+/** Procedural mark glyphs (NO emoji) for the small chrome bits — drawn as inline
+ *  SVG so they inherit `currentColor` and stay crisp at any size. */
+function svgMark(kind: "close" | "check" | "cross" | "flame"): SVGSVGElement {
+  const ns = "http://www.w3.org/2000/svg"
+  const svg = document.createElementNS(ns, "svg")
+  svg.setAttribute("viewBox", "0 0 24 24")
+  svg.setAttribute("width", "1em")
+  svg.setAttribute("height", "1em")
+  svg.setAttribute("aria-hidden", "true")
+  svg.style.display = "block"
+  const path = document.createElementNS(ns, "path")
+  path.setAttribute("fill", "none")
+  path.setAttribute("stroke", "currentColor")
+  path.setAttribute("stroke-width", "2.4")
+  path.setAttribute("stroke-linecap", "round")
+  path.setAttribute("stroke-linejoin", "round")
+  const d = {
+    close: "M6 6 L18 18 M18 6 L6 18",
+    check: "M5 13 L10 18 L19 6",
+    cross: "M6 6 L18 18 M18 6 L6 18",
+    flame: "M12 3 C9 7 14 8 12 12 C10 9 7 11 8 15 A4.5 4.5 0 0 0 16 15 C17 11 14 10 14 7 C13.4 8 12.6 8 12 3 Z",
+  }[kind]
+  path.setAttribute("d", d)
+  if (kind === "flame") path.setAttribute("fill", "currentColor")
+  svg.appendChild(path)
+  return svg
+}
+
+/** A neutral procedural bust (head + shoulders) for an avatar tile with no glyph. */
+function neutralBust(): SVGSVGElement {
+  const ns = "http://www.w3.org/2000/svg"
+  const svg = document.createElementNS(ns, "svg")
+  svg.setAttribute("viewBox", "0 0 24 24")
+  svg.setAttribute("width", "1.1em")
+  svg.setAttribute("height", "1.1em")
+  svg.setAttribute("aria-hidden", "true")
+  svg.style.display = "block"
+  const head = document.createElementNS(ns, "circle")
+  head.setAttribute("cx", "12")
+  head.setAttribute("cy", "9")
+  head.setAttribute("r", "4")
+  head.setAttribute("fill", "currentColor")
+  const body = document.createElementNS(ns, "path")
+  body.setAttribute("d", "M4 21 a8 8 0 0 1 16 0 Z")
+  body.setAttribute("fill", "currentColor")
+  svg.appendChild(head)
+  svg.appendChild(body)
+  return svg
+}
 
 export interface OverlayPretext {
   /** NPC display name shown in the ribbon. */
@@ -115,14 +172,20 @@ export function mountChallengeOverlay(
   scrim.appendChild(card)
 
   // ---- close button ----
-  const closeBtn = el("button", "wp-ch-close", "✕")
+  const closeBtn = el("button", "wp-ch-close")
+  closeBtn.appendChild(svgMark("close"))
   closeBtn.setAttribute("aria-label", "Leave challenge")
   closeBtn.addEventListener("click", () => doCancel())
   card.appendChild(closeBtn)
 
   // ---- pretext ribbon ----
   const ribbon = el("div", "wp-ch-pretext")
-  const avatar = el("div", "wp-ch-avatar", pretext.avatar || "🧑")
+  // The avatar tile renders whatever glyph the NPC supplies; when none is given
+  // we draw a neutral procedural bust (NO emoji fallback) so the ribbon is never
+  // a bare placeholder face.
+  const avatar = el("div", "wp-ch-avatar")
+  if (pretext.avatar) avatar.textContent = pretext.avatar
+  else avatar.appendChild(neutralBust())
   const ptext = el("div", "wp-ch-pretext-text")
   ptext.appendChild(el("div", "wp-ch-npc-name", pretext.npcName))
   ptext.appendChild(el("div", "wp-ch-pretext-line", pretext.line))
@@ -186,8 +249,9 @@ export function mountChallengeOverlay(
     const splash = el(
       "div",
       `wp-ch-splash wp-ch-splash--${kind === "good" ? "good" : "bad"}`,
-      label ?? (kind === "good" ? "✓" : "✗"),
     )
+    if (label) splash.textContent = label
+    else splash.appendChild(svgMark(kind === "good" ? "check" : "cross"))
     card.appendChild(splash)
     requestAnimationFrame(() => splash.classList.add("wp-ch-splash--go"))
     setTimeout(() => splash.remove(), 760)
@@ -207,7 +271,11 @@ export function mountChallengeOverlay(
       return
     }
     streakChip.style.display = ""
-    streakChip.textContent = `🔥 ${n}`
+    streakChip.replaceChildren()
+    const flame = svgMark("flame")
+    flame.style.marginRight = "3px"
+    streakChip.appendChild(flame)
+    streakChip.appendChild(document.createTextNode(String(n)))
     streakChip.classList.remove("wp-ch-chip__pulse")
     void streakChip.offsetWidth
     streakChip.classList.add("wp-ch-chip__pulse")
@@ -263,36 +331,56 @@ export function mountChallengeOverlay(
 
   /* ---------------- reward reveal ---------------- */
   function showReward(score01: number, reward: ChallengeReward, grade?: string) {
-    const panel = el("div", "wp-ch-reward")
+    const mood = moodForScore(score01)
+    const panel = el("div", `wp-ch-reward wp-ch-reward--${mood.tier}`)
+    // The whole panel's MOOD tiers with the score: a miss gets a calm, neutral
+    // surface (no gold, no confetti, no celebratory glyph); a win gets the warm
+    // paper + crest + confetti. Never congratulate a 0%.
+    panel.style.background = mood.panelBg
     // Inner column carries the content + `margin:auto` so it centers when the
     // card has room and scrolls (top-anchored) when the viewport is short.
     const inner = el("div", "wp-ch-reward__inner")
     panel.appendChild(inner)
     const pct = Math.round(score01 * 100)
-    const burstGlyph = score01 >= 0.85 ? "🌟" : score01 >= 0.5 ? "✨" : "💪"
-    inner.appendChild(el("div", "wp-ch-reward__burst", burstGlyph))
-    inner.appendChild(
-      el("div", "wp-ch-reward__grade", grade ?? gradeFor(score01)),
-    )
-    inner.appendChild(
-      el(
-        "div",
-        "wp-ch-reward__title",
-        score01 >= 0.85 ? "Magnificent!" : score01 >= 0.5 ? "Well done!" : "Nice try!",
-      ),
-    )
+
+    // Procedural tiered crest (NO emoji) — star/check/ring/retry by tier.
+    const crest = el("div", "wp-ch-reward__burst")
+    crest.appendChild(renderResultCrest(mood.tier, 72))
+    inner.appendChild(crest)
+
+    const gradeEl = el("div", "wp-ch-reward__grade", grade ?? gradeFor(score01))
+    gradeEl.style.color = mood.titleColor
+    inner.appendChild(gradeEl)
+    const titleEl = el("div", "wp-ch-reward__title", RESULT_TITLE[mood.titleKey])
+    titleEl.style.color = mood.titleColor
+    inner.appendChild(titleEl)
 
     const rows = el("div", "wp-ch-reward__rows")
-    const mkRow = (label: string, amt: string, delay: number) => {
+    const mkRow = (
+      icon: HTMLCanvasElement | null,
+      label: string,
+      amt: string,
+      delay: number,
+      amtColor?: string,
+    ) => {
       const row = el("div", "wp-ch-reward__row")
       row.style.animationDelay = `${delay}ms`
-      row.appendChild(el("span", undefined, label))
-      row.appendChild(el("span", "wp-ch-reward__amt", amt))
+      const labelWrap = el("span", "wp-ch-reward__label")
+      if (icon) {
+        icon.classList.add("wp-ch-reward__glyph")
+        labelWrap.appendChild(icon)
+      }
+      labelWrap.appendChild(document.createTextNode(label))
+      row.appendChild(labelWrap)
+      const amtEl = el("span", "wp-ch-reward__amt", amt)
+      if (amtColor) amtEl.style.color = amtColor
+      row.appendChild(amtEl)
       return row
     }
-    rows.appendChild(mkRow("Score", `${pct}%`, 60))
-    rows.appendChild(mkRow("⭐ XP", `+${reward.xp}`, 160))
-    rows.appendChild(mkRow("🪙 Coins", `+${reward.coins}`, 260))
+    // Score row: amount color follows the mood (muted on a miss, not green).
+    rows.appendChild(mkRow(null, "Score", `${pct}%`, 60, mood.amountColor))
+    rows.appendChild(mkRow(renderXpIcon(22), "XP", `+${reward.xp}`, 160, mood.amountColor))
+    rows.appendChild(mkRow(renderCoinIcon(22), "Coins", `+${reward.coins}`, 260, mood.amountColor))
     if (reward.items.length) {
       const itemRow = el("div", "wp-ch-reward__row")
       itemRow.style.animationDelay = "360ms"
@@ -302,7 +390,10 @@ export function mountChallengeOverlay(
           "span",
           `wp-ch-reward__item${rare ? " wp-ch-reward__item--rare" : ""}`,
         )
-        chip.textContent = `${rare ? "🎁" : "📦"} ${prettyItem(id)}`
+        const ic = renderItemIcon(id, 20)
+        ic.classList.add("wp-ch-reward__glyph")
+        chip.appendChild(ic)
+        chip.appendChild(document.createTextNode(prettyItem(id)))
         itemRow.appendChild(chip)
       }
       rows.appendChild(itemRow)
@@ -323,9 +414,9 @@ export function mountChallengeOverlay(
     // where there's room; the crown is never clipped). The reward is in-flow.
     card.classList.add("wp-ch-card--rewarding")
     card.appendChild(panel)
-    // Confetti rides the card (overflow:hidden) so it isn't clipped by the
-    // reward's own scroll region and never expands the scrollable area.
-    if (score01 >= 0.5) confetti(card)
+    // Confetti ONLY on an actual win (mood.celebrate) — never on a miss. It rides
+    // the card (overflow:hidden) so it isn't clipped by the reward's scroll region.
+    if (mood.celebrate) confetti(card)
     requestAnimationFrame(() => panel.classList.add("wp-ch-reward--in"))
     focusSafely(cont)
   }
@@ -398,6 +489,23 @@ export function mountChallengeOverlay(
       close()
     },
   }
+}
+
+/**
+ * Score-tiered headline (English source). The tone tiers WITH the score: a 0%
+ * gets an encouraging-but-honest "Not this time", never a celebration.
+ * TODO(i18n): these map 1:1 to keys `result.fail|low|mid|high|perfect` — route
+ * through `t()` when the i18n slice keys them (owned by the i18n agent).
+ */
+const RESULT_TITLE: Record<
+  "result.fail" | "result.low" | "result.mid" | "result.high" | "result.perfect",
+  string
+> = {
+  "result.fail": "Not this time",
+  "result.low": "Keep at it",
+  "result.mid": "Well done!",
+  "result.high": "Great work!",
+  "result.perfect": "Magnificent!",
 }
 
 function gradeFor(score01: number): string {

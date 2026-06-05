@@ -8,15 +8,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Quests are conversation-driven — you finish steps by TALKING to people, not
+  tripping a silent wire (#55).** A "cross the bridge"-style traversal step used to
+  auto-complete the instant you walked onto the anchor (a sound + advance), which
+  felt hollow ("it moved on without me talking to the NPC"). Now reaching the spot
+  only NUDGES you ("You're here — talk to {the keeper}"); you complete the step by
+  talking to the NPC there, who offers a "Done" confirm chip that advances the
+  quest. The NPC is woven into the start (they hand you the offer), the step (you
+  talk + do the challenge), and the close (the keeper greets you to finish the
+  crossing). Built on a new `forcedOffer.onConfirm` in `npcRuntime` (the Begin chip
+  becomes a CONFIRM that fires a callback instead of launching a challenge); talk
+  steps still launch their challenge as before. Proven end-to-end in the real game
+  (`qa/quest-loop.mjs`, 12/12: arriving does NOT auto-complete → talking to the
+  keeper does).
 - **Each language pair has its OWN quest journey (#42).** Switching target (e.g.
   EN→ES) no longer leaves you mid-way through the other pair's quest: the active
   quest (`wp:activeQuest:v1:<native:target>`) AND the quest progress (the
   `wp:quest:v1` store, now keyed `:<native:target>` via `createQuestEngine`'s new
-  `trackId`) are both scoped to the Track. A fresh pair starts on the dead-simple
-  café quest; an existing pair resumes exactly where it was. No-trackId callers
-  (tests / single-pair back-compat) keep the legacy global key. Verified in the
-  real game (boot `?stack=en,es` with a seeded quest, then `?stack=en,fr` → the
-  French pair is fresh, not inherited) + unit-tested for cross-pair isolation.
+  `trackId`) are both scoped to the Track. The WALLET + INVENTORY are too — the
+  process-wide `inventory()` is bound per build to `createInventory({ namespace:
+  trackId })`, so coins/items earned in one pair don't bleed into another. A fresh
+  pair starts on the dead-simple café quest with an empty wallet; an existing pair
+  resumes exactly where it was. No-trackId/namespace callers (tests / single-pair
+  back-compat) keep the legacy global keys. Verified in the real game (boot
+  `?stack=en,es` with a seeded quest, then `?stack=en,fr` → the French pair is
+  fresh, not inherited) + unit-tested for cross-pair quest + wallet isolation.
 - **A "Try a different journey" escape hatch — never trapped on a quest (#41).**
   The Quest section now lists every quest (the active one marked "Current") with a
   calm, dignified picker ("Every quest is yours to pick — switch any time, no
@@ -173,6 +189,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **Every quest objective always has a named, talkable NPC under the beacon — even
+  after switching quests (#58).** A quest you switched to (via the interlude /
+  switch-quest picker) could point its beacon at an EMPTY market stall: the crowd's
+  special NPCs were stationed ONCE for the world's INITIAL active quest, so a later
+  quest's objective NPC (e.g. the market vendor) was never spawned, leaving the
+  quest uncompletable. Now an objective NPC is stationed at EVERY step anchor across
+  the WHOLE quest catalog at build time (`objectiveAnchorIds()` — only ~5 anchors:
+  plaza/market/fountain/harbor/bridge_n), so whichever quest becomes active, its
+  objective always has a person there; the dialogue header resolves the active
+  quest's authored name (e.g. "the market vendor") at engage time. Proven in the
+  real game (`qa/objective-npc.mjs`, 8/8 + screenshot `/tmp/wp-market-vendor.png`):
+  boot the café quest → switch to the market quest → a named vendor stands under
+  the beacon, Talk button up.
+- **The camera never sits inside opaque geometry near the MARKET again (#59,
+  residual of #25).** The owner kept landing the follow-camera inside a market
+  awning/stall — the view filled with opaque brown, the player gone. Root cause:
+  the boom-collision + occlusion fade keyed off a hard-coded name WHITELIST
+  (`wp-building-*`/`wp-r-*`) that never covered the market stalls, awnings, the
+  bridge, or walls, so those surfaces neither pushed the camera out nor faded. Now
+  a single deny-list predicate (`src/world/cameraOcclusion.ts`,
+  `isCameraOccluder`) treats EVERY solid, visible, real-volume world mesh as an
+  occluder — buildings, roofs, stalls/awnings, the bridge, walls, fountain,
+  present and future — and only ground/water/character-billboards/sky/HUD-overlays
+  are exempt. The boom casts player→desired-eye against all of them and pulls the
+  eye out (with a generous `MIN_BOOM` standoff so the player stays FRAMED, not
+  jammed onto the lens), and the fade dissolves ANYTHING the camera→player ray
+  actually hits (detected by ray, never a tag). Thin-instanced airy props (the
+  market stalls — one mesh = a whole chunk, with a giant phantom union AABB) are
+  excluded from the BOOM (`isBoomBlocker`, so the camera doesn't collapse onto the
+  player the instant it nears a stall row) but still FADE per-object, so a canopy
+  between camera and player goes translucent and never hides you. Proven headlessly
+  (`src/world/cameraOcclusion.test.ts`, 9 tests: a solid building, a thin-instanced
+  stall cluster, and a camera-inside-the-roof case all fade; a clear shot stays
+  solid; faded meshes recover) and visually in the FAILING scenario — a WebKit
+  screenshot of the camera tucked into the market with the player clearly visible
+  and the stalls dissolved to a faint ghost (`qa/cammarket.html`).
 - **The objective beacon is a premium warm marker now — and the root-cause render
   bug is fixed (#22).** The beacon over the objective NPC had rendered as a gray
   slab → a transparent white pillar → a black box across rounds; the cause was a
@@ -191,11 +243,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   tautology with no answer ("where is the Arabic I'm matching TO?"). Now the
   orchestrator keeps `ChallengeContext.nativeLanguage = learnerPair.native` for
   cross-language tools REGARDLESS of the immersion toggle (immersion still
-  collapses chrome + the native gloss of monolingual drills). The cross-language
-  tool set is declared in `src/challenges/registry.ts` (`isCrossLanguageTool`):
-  fast-translate, tap-translation, listen-choose-pic, memory-pairs, true-false,
-  category-sort, picture-match (+ legacy aliases). Guarded by
-  `src/challenges/crossLanguage.test.ts`. Additionally, a single-language Track
+  collapses chrome + the native gloss of monolingual drills). **Made airtight
+  (#57):** cross-language is now a DECLARED `isCrossLanguage` property on each
+  `ToolImpl` (not a hand-maintained whitelist), so a tool can't silently
+  tautologize — this caught `countdown-recall` ("Which line meant 'Close the
+  window'?" with the answer ALSO "Close the window"), which had slipped the old
+  list; flagged tools = fast-translate, tap-translation, listen-choose-pic,
+  memory-pairs, true-false, picture-match, countdown-recall (category-sort is NOT
+  cross-language — it sorts target words by TOPIC). `isCrossLanguageTool(id)` reads
+  the property; a test iterates EVERY tool asserting the registry matches the flag
+  and that each cross-language tool's prompt ≠ answer language under immersion.
+  Additionally, a single-language Track
   (native === target) can't host a cross-language game at all — those tools are now
   filtered out of the NPC's offer (`offerableTools({ singleLanguage })` +
   `resolveGameOffer(..., native)`), so a monolingual learner is never offered a

@@ -183,8 +183,15 @@ export type OpenArgs = {
    * the model emitting `<<tool>>`. `chipLabel` is the localized "Begin" label.
    * ADDITIVE — absent ⇒ behaviour is exactly as today (offer from the whitelist,
    * may be null). Only set for the CURRENT step's objective NPC.
+   *
+   * `onConfirm` (#55, conversation-driven completion): when set, the Begin chip is
+   * a CONFIRM, not a challenge launch — tapping it greets you and calls
+   * `onConfirm()` (the orchestrator marks the step beaten + advances), then closes
+   * the dialogue. Used for TRAVERSE/FIND steps so "cross the bridge" completes by
+   * TALKING to the keeper (not a silent proximity trigger) — the NPC is woven into
+   * the step. Absent ⇒ the Begin chip launches `tool` as a challenge (talk steps).
    */
-  forcedOffer?: { tool: ChallengeToolId; chipLabel: string }
+  forcedOffer?: { tool: ChallengeToolId; chipLabel: string; onConfirm?: () => void }
 }
 
 export interface NpcDialogueHandle {
@@ -290,11 +297,16 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       if (args.forcedOffer) {
         return {
           tool: args.forcedOffer.tool,
-          segue: resolveSegueForSeed(
-            args.forcedOffer.tool,
-            args.learnerPair.target,
-            `${args.npcRole.id}|begin|${turn}`,
-          ),
+          // A CONFIRM offer (#55, traverse/find completion) carries NO challenge
+          // segue — the chip is "Done", not "repeat after me"; the keeper's own
+          // greeting is the flavour. A challenge forced-offer keeps its segue.
+          segue: args.forcedOffer.onConfirm
+            ? ""
+            : resolveSegueForSeed(
+                args.forcedOffer.tool,
+                args.learnerPair.target,
+                `${args.npcRole.id}|begin|${turn}`,
+              ),
           chipLabel: args.forcedOffer.chipLabel,
         }
       }
@@ -342,6 +354,9 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
      * seed, so it VARIES across NPCs/visits/"play another" yet is stable on reload.
      */
     function segueForOffer(offer: GameOffer): string {
+      // A CONFIRM forced-offer (#55) has NO challenge segue — its chip is "Done";
+      // the keeper's greeting carries the moment, no "repeat after me" caption.
+      if (args.forcedOffer?.onConfirm) return ""
       return resolveSegueForSeed(
         offer.tool,
         args.learnerPair.target,
@@ -401,8 +416,23 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       }
     }
 
-    /** Player tapped the deterministic Play chip → launch from the standing offer. */
+    /** Player tapped the deterministic Play chip. For a CONFIRM-style forced offer
+     *  (#55: traverse/find steps), this completes the step via `onConfirm` + closes
+     *  the dialogue — talking to the NPC IS the completion, no challenge. Otherwise
+     *  it launches the offer's tool as a challenge (the normal talk-step path). */
     function onPlayChipTapped(): void {
+      const confirm = args.forcedOffer?.onConfirm
+      if (confirm) {
+        ui.setPlayOffer(false)
+        try {
+          confirm()
+        } catch (e) {
+          console.error(`${LOG} forcedOffer.onConfirm threw:`, e)
+        }
+        // The step is done — close out the conversation so the loop flows on.
+        handle.close()
+        return
+      }
       const offer = currentOffer ?? resolveStandingOffer(offerTurn)
       if (!offer) return
       launchChallenge(offer.tool, {})

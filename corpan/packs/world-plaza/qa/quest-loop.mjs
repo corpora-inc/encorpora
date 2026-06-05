@@ -35,11 +35,13 @@ await page.addInitScript(() => {
       avatar: { base: "body-1", layers: [] },
     }),
   )
-  localStorage.setItem("wp:activeQuest:v1", "es-guadalajara-route")
-  localStorage.removeItem("wp:quest:v1") // fresh quest progress
+  // #42: active quest + progress are keyed per-pair (dev defaults to en:es).
+  localStorage.setItem("wp:activeQuest:v1:en:es", "es-guadalajara-route")
+  localStorage.removeItem("wp:quest:v1:en:es") // fresh quest progress for this pair
 })
 
-await page.goto(url, { waitUntil: "load" })
+// ?stack=en,es → the en:es pair (es-guadalajara's learnerPair); dev default is es:es.
+await page.goto(`${url}/?stack=en,es`, { waitUntil: "load" })
 
 // The welcome/entry card gates the world build — click "Step into the morning
 // light" to enter, then wait for the world + the dev quest hook to come up.
@@ -74,21 +76,28 @@ s = await qstate()
 assert("step 2 is the bridge TRAVERSE step", s.step?.id === "gate" && s.step?.kind === "traverse", JSON.stringify(s.step))
 assert("step 2 anchor is the river bridge", s.step?.anchorId === "bridge_n", s.step?.anchorId)
 
-// ── Step 2: "Cross the river bridge" — a TRAVERSE step. Walk there. ──────────
-// Teleport to the bridge anchor; the per-frame traversal trigger fires on arrival
-// (markStepBeaten + advance) — proving "cross the bridge" is completable by going.
+// ── Step 2: "Cross the river bridge" — a TRAVERSE step (#55 conversation-driven).
+// Walk to the bridge (teleport), then TALK to the keeper to finish — the silent
+// proximity auto-advance was removed (#55: it felt hollow). `winCurrent()`
+// emulates the keeper's "Done" confirm (markStepBeaten + advance).
 const gotoOk = await page.evaluate(() => (window).__wpQuest.gotoObjective())
 assert("teleported to the bridge objective", gotoOk === true)
-// Give the frame loop a moment to run the proximity check.
-await page.waitForTimeout(800)
+await page.waitForTimeout(600)
+// Arriving does NOT auto-complete now — you must talk to the keeper.
+const stillActive = await page.evaluate(() => (window).__wpQuest.state().step?.id === "gate")
+assert("arriving does NOT auto-complete — must talk to the keeper (#55)", stillActive === true)
 await page.screenshot({ path: "/tmp/wp-quest-2-bridge.png" })
 
-// ── Assert the quest COMPLETED by reaching the bridge. ──────────────────────
+// Talk-to-the-keeper confirm completes the crossing.
+const confirmed = await page.evaluate(() => (window).__wpQuest.winCurrent())
+assert("talking to the keeper completes the crossing", confirmed === true)
+
+// ── Assert the quest COMPLETED. ─────────────────────────────────────────────
 const final = await page.waitForFunction(
   () => (window).__wpQuest.state().complete === true,
   { timeout: 4000 },
 ).then(() => true).catch(() => false)
-assert("reaching the bridge COMPLETES the quest (no item/gate dead-end)", final)
+assert("the across-city quest COMPLETES (NPC-driven, no dead-end)", final)
 s = await qstate()
 assert("engine reports complete + no active step", s.complete === true && s.step === null, JSON.stringify({ complete: s.complete, step: s.step }))
 await page.screenshot({ path: "/tmp/wp-quest-3-complete.png" })

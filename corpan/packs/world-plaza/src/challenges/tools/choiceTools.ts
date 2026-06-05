@@ -158,6 +158,7 @@ export const fastTranslate: ToolImpl = {
   id: "fast-translate",
   title: "Fast Translate",
   difficulty: 1,
+  isCrossLanguage: true, // prompt (target) vs answer (native) — two languages
   buildSpec: (ctx: ChallengeContext) =>
     Promise.resolve(baseSpec("fast-translate", ctx, { rounds: 5 })),
   run: (overlay, spec, host) => {
@@ -192,6 +193,7 @@ export const tapTranslation: ToolImpl = {
   id: "tap-translation",
   title: "Tap the Translation",
   difficulty: 1,
+  isCrossLanguage: true, // prompt (native) vs answer (target) — two languages
   buildSpec: (ctx) => Promise.resolve(baseSpec("tap-translation", ctx, { rounds: 5 })),
   run: (overlay, spec, host) => {
     const S = challengeStrings(spec.nativeLanguage ?? spec.language)
@@ -223,6 +225,7 @@ export const listenChoose: ToolImpl = {
   id: "listen-choose-pic",
   title: "Listen & Choose",
   difficulty: 2,
+  isCrossLanguage: true, // hear target → tap the native meaning — two languages
   buildSpec: (ctx) => Promise.resolve(baseSpec("listen-choose-pic", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
     const S = challengeStrings(spec.nativeLanguage ?? spec.language)
@@ -306,6 +309,7 @@ async function runSeriesWithReplay(
 export const trueFalse: ToolImpl = {
   id: "true-false",
   title: "True or False",
+  isCrossLanguage: true, // judge a target↔native translation claim — two languages
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("true-false", ctx, { rounds: 6 })),
   run: (overlay, spec, host) => {

@@ -612,8 +612,31 @@
   transform: scale(1);
 }
 .wp-ch-reward__burst {
-  font-size: clamp(46px, 12vw, 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: wp-ch-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.5);
+}
+.wp-ch-reward__burst > canvas {
+  display: block;
+  width: clamp(56px, 14vw, 72px);
+  height: auto;
+}
+/* row label + its small procedural glyph */
+.wp-ch-reward__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.wp-ch-reward__glyph {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+.wp-ch-reward__item .wp-ch-reward__glyph {
+  width: 20px;
+  height: 20px;
 }
 .wp-ch-reward__title {
   font-size: clamp(22px, 6vw, 30px);

@@ -131,6 +131,24 @@ describe("wallet (integer-only, no drift)", () => {
     expect(inv.balance("gold-real")).toBe(600)
     expect(inv.walletEntries().map((e) => e.currencyId)).toEqual(["gold-real", "jpy-yen"])
   })
+  it("#42 — the `namespace` keys the wallet PER PAIR (independent stores)", () => {
+    // Pair A (en:es): earn coins.
+    const a = createInventory({ namespace: "en:es" })
+    a.addCoins(700)
+    expect(a.coins()).toBe(700)
+
+    // Pair B (en:fr): a FRESH wallet — pair A's coins must NOT leak in.
+    const b = createInventory({ namespace: "en:fr" })
+    expect(b.coins()).toBe(0)
+
+    // Reopening pair A reads its OWN persisted store (separate localStorage key).
+    const a2 = createInventory({ namespace: "en:es" })
+    expect(a2.coins()).toBe(700)
+
+    // The no-namespace (legacy/global) store is distinct from any pair store.
+    const legacy = createInventory()
+    expect(legacy.coins()).toBe(0)
+  })
   it("coins()/addCoins/spendCoins map to the default currency (back-compat)", () => {
     const inv = createInventory()
     inv.addCoins(500)

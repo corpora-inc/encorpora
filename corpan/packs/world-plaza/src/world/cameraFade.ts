@@ -3,6 +3,7 @@ import type { Camera } from "@babylonjs/core/Cameras/camera"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { Ray } from "@babylonjs/core/Culling/ray"
 import { Vector3 } from "@babylonjs/core/Maths/math"
+import { isCameraOccluder } from "./cameraOcclusion"
 
 /**
  * cameraFade.ts — premium 3rd-person CAMERA-OCCLUSION FADE for World Plaza.
@@ -110,14 +111,13 @@ export function createCameraFade(
   getPlayerPos: () => { x: number; z: number },
   opts: { match?: (mesh: AbstractMesh) => boolean } = {},
 ): CameraFade {
-  // Default eligibility: building BODIES (`wp-building-*`) AND ROOFS (`wp-r-*`).
-  // Roofs were originally excluded (the body box spans the full height, so fading
-  // the body alone usually reveals the player) — but the owner reported being able
-  // to see the ROOF UNDERSIDE when the camera grazes into a roof (#25). The boom-
-  // collision in engine.ts keeps the eye out of geometry; fading roofs too is the
-  // belt-and-braces so a grazing camera never shows an opaque roof interior.
-  const match =
-    opts.match ?? ((m: AbstractMesh) => m.name.startsWith("wp-building-") || m.name.startsWith("wp-r-"))
+  // #59: fade ANY solid occluder between the camera and the player — buildings,
+  // roofs, market STALLS/AWNINGS, the bridge, walls, fountain — via the shared
+  // `isCameraOccluder` deny-list, NOT a fragile name whitelist (the whitelist
+  // missed the market stalls, which is exactly how the camera-in-the-roof bug
+  // survived). The boom-collision in engine.ts keeps the eye OUT of geometry; this
+  // fade is the belt-and-braces so a mesh merely BETWEEN cam + player never hides it.
+  const match = opts.match ?? isCameraOccluder
 
   // Eligible meshes + their per-frame target visibility. Resynced only when the
   // scene's building population changes (scene flip), never per frame.
@@ -160,9 +160,19 @@ export function createCameraFade(
       ray.length = segLen
     }
 
+    // a mesh further than the cam→player segment (+ its own radius) can't be
+    // between them — skip it so this stays O(near meshes) in the big streamed city.
+    const reachSq = (segLen + 6) * (segLen + 6)
     for (let i = 0; i < tracked.length; i++) {
       const t = tracked[i]
       const mesh = t.mesh
+      const sc = mesh.getBoundingInfo().boundingSphere.centerWorld
+      const cdx = sc.x - camPos.x
+      const cdz = sc.z - camPos.z
+      if (cdx * cdx + cdz * cdz > reachSq) {
+        if (mesh.visibility !== 1) t.target = 1 // let a now-far faded mesh restore
+        continue
+      }
       let occluding = false
 
       // (1) camera INSIDE / grazing this building's world AABB → fade it so you

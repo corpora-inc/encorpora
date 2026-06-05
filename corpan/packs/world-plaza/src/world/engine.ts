@@ -6,6 +6,7 @@ import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight"
 import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight"
 import { Ray } from "@babylonjs/core/Culling/ray"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
+import { isBoomBlocker } from "./cameraOcclusion"
 import "@babylonjs/core/Materials/standardMaterial"
 
 /**
@@ -171,17 +172,31 @@ export function createWorldEngine(
   const boomFrom = new Vector3()
   const boomDir = new Vector3()
   const CAM_RADIUS = 0.45 // keep the eye this far off the wall it would hit
-  const MIN_BOOM = 0.2 // hard floor so the eye never collapses onto the player
+  // hard floor on the boomed eye-distance. Big enough that the player stays
+  // FRAMED even when the boom is forced short against a wall/awning (at a tiny
+  // standoff the near-flat lens drops the player off the bottom of the screen —
+  // the #59 "I can't see myself in the market" report). The faded occluder
+  // (cameraFade) guarantees we still see THROUGH whatever we're tucked against,
+  // so a generous floor here trades a hair of wall-poke (dissolved anyway) for a
+  // always-readable shot of the player.
+  const MIN_BOOM = 2.4
   // Building/roof meshes to test the boom against. Buildings are `isPickable=false`
   // (frozen), so `scene.pickWithRay` would skip them — we test each mesh directly
   // with `ray.intersectsMesh` (bounding-info only). Resynced only when the building
   // count changes (scene flip), never per frame.
+  // #59: SOLID one-off world meshes block the boom — building bodies, roofs, the
+  // bridge, walls, fountain — via `isBoomBlocker` (a deny-list, not a fragile name
+  // whitelist). THIN-INSTANCED airy props (market stalls/awnings) are deliberately
+  // EXCLUDED: their single union AABB spans the whole chunk and would collapse the
+  // camera onto the player the instant it nears a market row; the per-object FADE
+  // keeps those from ever hiding the player instead. Resynced when the scene mesh
+  // set changes (streaming / scene flip), never recomputed per frame.
   const boomMeshes: AbstractMesh[] = []
   let boomMeshSceneCount = -1
   const syncBoomMeshes = () => {
     boomMeshes.length = 0
     for (const m of scene.meshes) {
-      if (m.name.startsWith("wp-building-") || m.name.startsWith("wp-r-")) boomMeshes.push(m)
+      if (isBoomBlocker(m)) boomMeshes.push(m)
     }
     boomMeshSceneCount = scene.meshes.length
   }
@@ -198,9 +213,18 @@ export function createWorldEngine(
     boomRay.origin.copyFrom(boomFrom)
     boomRay.direction.copyFrom(boomDir)
     boomRay.length = boomLen
+    // only test occluders NEAR the boom (it's short, ~rig.distance) — a cheap
+    // squared-distance reject keeps this O(near meshes), not O(all city meshes),
+    // so it scales to the big streamed city.
+    const NEAR_SQ = (rig.distance + 6) * (rig.distance + 6)
     let nearest = boomLen
     for (let i = 0; i < boomMeshes.length; i++) {
-      const pick = boomRay.intersectsMesh(boomMeshes[i], true /* fastCheck */, undefined, true /* onlyBoundingInfo */)
+      const m = boomMeshes[i]
+      const c = m.getBoundingInfo().boundingSphere.centerWorld
+      const ddx = c.x - boomFrom.x
+      const ddz = c.z - boomFrom.z
+      if (ddx * ddx + ddz * ddz > NEAR_SQ) continue
+      const pick = boomRay.intersectsMesh(m, true /* fastCheck */, undefined, true /* onlyBoundingInfo */)
       if (pick.hit && pick.distance < nearest) nearest = pick.distance
     }
     if (nearest < boomLen) {

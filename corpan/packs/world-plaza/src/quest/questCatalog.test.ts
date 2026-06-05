@@ -6,6 +6,7 @@ import {
   nextQuests,
   firstStep,
   entryQuestId,
+  objectiveAnchorIds,
 } from "./questCatalog"
 
 describe("questCatalog — the data-driven quest graph", () => {
@@ -46,6 +47,24 @@ describe("questCatalog — the data-driven quest graph", () => {
       expect(s).not.toBeNull()
       expect(typeof s!.label).toBe("string")
       expect(s!.anchorId).toBeTruthy()
+    }
+  })
+
+  it("#58 — objectiveAnchorIds covers EVERY step anchor across the whole catalog", () => {
+    const ids = objectiveAnchorIds()
+    // Distinct (no dupes) and non-empty.
+    expect(new Set(ids).size).toBe(ids.length)
+    expect(ids.length).toBeGreaterThan(0)
+    // Every quest's every step anchor is present — so a stationed objective NPC
+    // exists for whichever quest the player switches to.
+    for (const q of allQuests()) {
+      for (const s of q.steps) {
+        if (s.anchorId) expect(ids, `${q.id}/${s.id}`).toContain(s.anchorId)
+      }
+    }
+    // The known beginner-arc anchors are all there.
+    for (const a of ["plaza", "market", "fountain", "harbor", "bridge_n"]) {
+      expect(ids).toContain(a)
     }
   })
 })

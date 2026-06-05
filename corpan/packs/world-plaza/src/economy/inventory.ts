@@ -278,12 +278,23 @@ export interface InventoryOptions {
   binding?: TrackStoreBinding
   /** the Track's default currency (from its Scene). Omit → catalog default. */
   defaultCurrency?: CurrencyId
+  /**
+   * PER-PAIR sync-store namespace (#42) — e.g. the Track id `native:target`. When
+   * given (and no async `binding`), the legacy localStorage store keys on
+   * `wp:economy:v1:${namespace}`, so each language pair has its OWN wallet +
+   * inventory. Omit → the global `wp:economy:v1` key (back-compat / tests).
+   */
+  namespace?: string
 }
 
 export function createInventory(opts: InventoryOptions = {}): InventoryStore {
   const defaultCurrency: CurrencyId = opts.defaultCurrency ?? DEFAULT_CURRENCY_ID
   const binding = opts.binding
-  const key = binding ? `${binding.namespace}:economy` : LEGACY_KEY
+  const key = binding
+    ? `${binding.namespace}:economy`
+    : opts.namespace
+      ? `${LEGACY_KEY}:${opts.namespace}`
+      : LEGACY_KEY
   const asyncStore: TrackStore | null = binding?.store ?? null
 
   // Initial load: legacy/sync path can read synchronously; the async per-Track

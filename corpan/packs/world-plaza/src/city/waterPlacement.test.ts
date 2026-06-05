@@ -193,7 +193,9 @@ describe("world boundary (#34 Phase 1) — generated city: sea-ringed island", (
     for (let x = minX + inset; x <= maxX - inset; x += layout.chunkSize) {
       probe(x, minZ + inset) // south edge (open sea)
     }
-    for (let z = minZ + inset; z <= maxZ(layout) - inset; z += layout.chunkSize) {
+    // W/E edges: stop short of the river/far-bank band at +Z (that's the walkable
+    // waterfront, not the sea boundary — covered by the water/deck tests).
+    for (let z = minZ + inset; z < layout.water.waterZ - layout.chunkSize; z += layout.chunkSize) {
       probe(minX + inset, z) // west edge (open sea)
       probe(maxX - inset, z) // east edge (open sea)
     }

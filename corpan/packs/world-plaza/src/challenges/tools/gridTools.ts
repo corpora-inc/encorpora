@@ -103,6 +103,7 @@ export const pictureMatch: ToolImpl = {
   id: "picture-match",
   title: "Picture Match",
   difficulty: 1,
+  isCrossLanguage: true, // word↔picture; the word-fallback contrasts native↔target
   buildSpec: (ctx) => Promise.resolve(baseSpec("picture-match", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
     const S = challengeStrings(spec.nativeLanguage ?? spec.language)
@@ -206,6 +207,7 @@ export const memoryPairs: ToolImpl = {
   id: "memory-pairs",
   title: "Memory Pairs",
   difficulty: 2,
+  isCrossLanguage: true, // match target cards to their native cards — two languages
   buildSpec: (ctx) => Promise.resolve(baseSpec("memory-pairs", ctx, { pairs: 4 })),
   run: (overlay, spec, host) => {
     const S = challengeStrings(spec.nativeLanguage ?? spec.language)
@@ -413,6 +415,10 @@ export const countdownRecall: ToolImpl = {
   id: "countdown-recall",
   title: "Countdown Recall",
   difficulty: 3,
+  // #57 culprit: "Which line meant '{native}'?" (prompt NATIVE) with TARGET line
+  // choices — inherently two-language. Under immersion the native prompt collapsed
+  // to target → a tautology. Flag it so the native side is kept.
+  isCrossLanguage: true,
   buildSpec: (ctx) => Promise.resolve(baseSpec("countdown-recall", ctx, { count: 4 })),
   run: (overlay, spec, host) => {
     const S = challengeStrings(spec.nativeLanguage ?? spec.language)
