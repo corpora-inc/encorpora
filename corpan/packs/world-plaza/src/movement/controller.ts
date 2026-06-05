@@ -35,6 +35,8 @@ export interface PlayerController {
    * there is no one-frame lerp from the old spot.
    */
   respawnAt: (x: number, z: number, faceYaw?: number) => void
+  /** Normalized 0..1 locomotion speed this frame — drives footstep audio. */
+  getSpeed: () => number
   update: (dt: number) => void
   dispose: () => void
 }
@@ -97,6 +99,7 @@ export function createPlayerController(
     z = free.z
   }
   let yaw = 0
+  let lastSpeed = 0 // 0..1 locomotion speed, exposed for footstep audio
   cutout.setGroundPos(x, z)
 
   const update = (dt: number) => {
@@ -115,6 +118,7 @@ export function createPlayerController(
       vz /= len
     }
     const speed = Math.min(len, 1)
+    lastSpeed = speed
 
     let nx = x + vx * MOVE_SPEED * dt
     let nz = z + vz * MOVE_SPEED * dt
@@ -177,6 +181,7 @@ export function createPlayerController(
     cutout,
     getPos: () => ({ x, z }),
     getFacing: () => yaw,
+    getSpeed: () => lastSpeed,
     respawnAt,
     update,
     dispose: () => {

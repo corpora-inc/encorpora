@@ -4,6 +4,7 @@ import { generateCity, mountCity, cityMapGeometry } from "./city"
 import rolesJson from "../content/npc/roles.json"
 import specialJson from "../content/npc/special.json"
 import { createWorldEngine } from "./world/engine"
+import { createSoundscape } from "./audio/soundscape"
 import { applyAtmosphere } from "./world/atmosphere"
 import { createVista } from "./world/vista"
 import { createInput } from "./movement/input"
@@ -382,6 +383,11 @@ function buildWorld(
   const obstacles = city.getCollision()
   // The player IS their dressed avatar (grounded cutout, self-animated).
   const player = createPlayerController(world, topology, input, identity.avatar, obstacles)
+  // SOUND & VOICE: a subtle WebAudio soundscape (warm ambient bed + footsteps +
+  // juice SFX) so the plaza feels inhabited the instant it loads, plus the NPC
+  // greeting you in the TARGET LANGUAGE via host TTS. Lazy AudioContext (resumed on
+  // the first tap — autoplay is blocked); every call is a safe no-op until then.
+  const soundscape = createSoundscape()
   // Camera occlusion fade: any building between the camera and the player (or one
   // the camera clips into) smoothly fades transparent so you never lose sight of
   // your character, then restores. Ticked in the frame loop; disposed on teardown.
@@ -901,6 +907,7 @@ function buildWorld(
     engagedId = it.anchorId
     crowd.setHeld(engagedId)
     population.setHeld(engagedId) // freeze an engaged stroller too (no-op for crowd ids)
+    soundscape.playSfx("engage") // a soft chime as you start a conversation
     setWorldActive(false)
     // If this is a SPECIAL quest NPC (boatman/gatekeeper/clue-giver stationed at a
     // quest anchor), pass the quest engine + `isSpecial` so npcRuntime activates the
@@ -997,6 +1004,7 @@ function buildWorld(
             // AND markStepBeaten/advance. Only a real completion celebrates.
             if (res.outcome === "aborted") return
             const granted = inventory().applyReward(res.rewards)
+            soundscape.playSfx("reward") // a warm flourish as the reward reveals
             // The smorgasbord reveal (stacks of bills/coins/ingots) replaces the
             // old "+🪙" toast; route the win's XP into the per-language badges.
             econHud.revealReward(res.rewards, granted)
@@ -1610,13 +1618,23 @@ function buildWorld(
   }
   document.addEventListener("visibilitychange", onVisibility)
 
+  let ambientStarted = false
   const unFrame = world.onFrame((dt) => {
     player.update(dt)
+    soundscape.onLocomotion(player.getSpeed(), dt) // footsteps scale with walk speed
     city.update(dt) // stream city chunks in/out by camera proximity
     const p = player.getPos()
     crowd.update(dt, p) // wander + greet-on-approach
     juice.update(dt)
     const tap = input.consumeTap()
+    if (tap) {
+      // First user gesture unlocks audio (autoplay-blocked); start the ambient bed.
+      soundscape.resume()
+      if (!ambientStarted) {
+        ambientStarted = true
+        soundscape.startAmbient()
+      }
+    }
     focus.update(dt, p, tap)
     // The taxi-rank portal: surface its Enter affordance by proximity to `station`.
     // While a dialogue OR a vignette owns the screen, keep it suppressed so nothing
@@ -1647,6 +1665,7 @@ function buildWorld(
     minimap.dispose()
     fullMapModal.dispose()
     unFrame()
+    soundscape.dispose()
     openDialogue?.close()
     portal?.dispose()
     vignetteHost.dispose() // force-exit any running vignette + release the model
