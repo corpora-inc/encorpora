@@ -14,6 +14,7 @@ import {
   h,
   clear,
   mulberry32,
+  randomEntries,
   sample,
   seedOf,
   shuffle,
@@ -26,10 +27,18 @@ async function pickPairs(
   spec: ChallengeSpec,
   n: number,
 ): Promise<Array<{ target: string; native: string; romanization: string; entry: ChallengeEntry }>> {
-  const entries =
-    spec.entryIds && spec.entryIds.length
-      ? await host.getEntriesByIds(spec.entryIds)
-      : await host.getRandomEntries(n + 6)
+  // Pinned CORE (step ids) blended with a THEMED + LEVEL-SCALED random fill so the
+  // drill stays on the quest's vocab yet draws fresh, relevant phrases each play.
+  const core =
+    spec.entryIds && spec.entryIds.length ? await host.getEntriesByIds(spec.entryIds) : []
+  const fill = core.length >= n + 6 ? [] : await randomEntries(host, spec, n + 6 - core.length)
+  const seen = new Set<number>()
+  const entries: ChallengeEntry[] = []
+  for (const e of [...core, ...fill]) {
+    if (seen.has(e.entry_id)) continue
+    seen.add(e.entry_id)
+    entries.push(e)
+  }
   const out: Array<{ target: string; native: string; romanization: string; entry: ChallengeEntry }> = []
   for (const e of entries) {
     const p = entryPair(e, spec.language, spec.nativeLanguage)

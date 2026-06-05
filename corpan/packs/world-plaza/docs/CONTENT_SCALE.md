@@ -656,3 +656,78 @@ self-certified); 60fps on a phone; localized in ~50 langs; single-language-stack
 safe; quota-safe (generated content is derived, not stored); **no placeholders, no
 Duolingo dark patterns** — scaled in every direction toward thousands of tasteful,
 distinct instances.
+
+---
+
+## 11. Minigame Content Resolution — drawing the FULL corpus, bound to NPC × quest × level
+
+**The problem this closes (the corpus was wasted).** The challenge launch used to
+pass ONLY the quest step's pinned `entryIds` (a tiny fixed set) or, lacking those,
+a fully RANDOM draw. So a café host and a dock keeper drilled the same six generic
+phrases and the ~10k-phrase-per-language corpus's richness never showed. The
+binding felt disconnected + repetitive.
+
+**The fix — a clean content-resolution layer** (`src/quest/minigameContent.ts`,
+`resolveMinigameContent(npc, quest, step)`) that blends THREE relevance axes into
+one filter the minigames draw their variety from:
+
+1. **Relevant to the NPC** — each persona `archetype` (from `personaGen.ts`) maps
+   to a set of **real corpus domain codes** via `ARCHETYPE_DOMAIN_AFFINITY`. The
+   13 real codes (mirroring `dja/cor/fixtures/domains.json`) are `everyday, travel,
+   business, health, education, social, housing, environment, emergency, civic,
+   numbers, technology, culture`. Examples:
+   - `baker → everyday, numbers, social` (food + prices)
+   - `fishmonger / water-seller → everyday, numbers, …`
+   - `sailor / dockhand / smuggler → travel …`
+   - `merchant → business, numbers, travel`
+   - `scribe → business, civic, education` (paperwork)
+   - `friar / elder → social, culture …`; `herbalist → health, environment …`
+   - `musician → culture, social …`; `child → everyday, education …`
+2. **Relevant to the quest** — the quest's `promptProgram.contentSelector`
+   (`domains`/`levels`/`languageCodes`) + the step's authored `entryIds`. The quest
+   theme leads the domain blend; the NPC's trade is unioned on for relevant variety.
+   *(Quest files may carry friendly labels like `food`/`market`/`shopping` that are
+   NOT corpus domains — those are intersected away, and the NPC's archetype domains
+   supply the matching real-corpus theme.)*
+3. **Scaled to the player** — the quest's CEFR `levels` (the author scales these
+   per quest; a beginner quest pins `A1/A2`). That is the player-level signal the
+   data already carries; it's threaded straight through as the difficulty filter.
+
+**Variety without losing cohesion.** The step's authored `entryIds` stay pinned as
+a small **CORE** (the game still drills the exact quest vocab), and the rest of each
+round is filled from the THEMED + LEVEL-SCALED draw — which returns DIFFERENT
+matching rows across repeat plays. On-topic AND bottomless, never the same six.
+
+**Data flow end-to-end.**
+```
+game.ts onIntent(callTool)
+  → resolveMinigameContent(role, quest, currentStep)        # NPC archetype ∪ quest theme + levels
+  → ChallengeContext { entryIds: core, domains, levels, languageCodes }
+  → tool.buildSpec → baseSpec stashes the filter in ChallengeSpec.params.contentFilter
+  → tool.run → randomEntries(host, spec, n)                 # the one shared draw seam
+  → host.getRandomEntries({ count, domains, levels, languageCodes })
+  → (real)  CorpanChallengeHostApi → corpan-app hostApi.getRandomEntries(options form)
+            → invoke("get_random_entries_with_translations", { levels, domains, languageCodes })
+            → SQLite INNER JOIN cor_entry_domains, with a relaxation ladder
+              (drop levels → drop domains → all) so a strict filter never starves
+     (mock) in-memory domain/level filter with the SAME relaxation
+```
+
+**Fallback / degradation (core loop never dead-ends).**
+- A host with NO batch sampler → repeated single `getRandomEntry()` draws (filter
+  ignored, content still flows).
+- A host that predates the options form → ignores the extra keys, samples by count.
+- A strict filter that would starve → the command's relaxation ladder (and the
+  mock's mirror of it) relaxes to a broader/unfiltered pool rather than returning
+  empty.
+- A hand-authored special role with no `archetype`, or an unknown archetype →
+  `npcDomains` returns `[]`, and the quest's own domains carry the theme.
+
+**Single-language-stack safe.** `languageCodes` is the TARGET code(s) the quest
+pins — never a SECOND/native gate. A one-language immersion stack resolves content
+exactly the same way (cross-language tools are separately excluded upstream).
+
+**Tests:** `src/quest/minigameContent.test.ts` (archetype→domain map covers every
+archetype + only-real-codes; the NPC×quest×level blend, de-dup, fallbacks) and
+`src/challenges/contentFilter.test.ts` (the filter round-trips through the spec; the
+real adapter forwards it / degrades; the mock filters + relaxes + varies).

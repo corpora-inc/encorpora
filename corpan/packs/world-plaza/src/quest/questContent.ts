@@ -24,6 +24,14 @@ export interface StepChallengeContent {
   entryIds: number[]
   /** Domain to theme the challenge ("travel"), from the quest. */
   domain: string
+  /**
+   * The quest's `contentSelector.domains` (plural) — the themed domain SET used to
+   * draw varied corpus rows. May be empty (no selector domains) or carry friendly/
+   * legacy labels the corpus can't match; the minigame-content resolver intersects
+   * these with the real corpus domain codes. Distinct from `domain` (the single
+   * label used to TAG the challenge).
+   */
+  domains: string[]
   /** CEFR levels the quest targets (first one used as the spec `level` hint). */
   levels: string[]
   /** Target language codes the quest constrains content to. */
@@ -39,6 +47,7 @@ export function resolveStepContent(quest: Quest, step: QuestStep | null): StepCh
   return {
     entryIds: step?.entryIds ?? [],
     domain: quest.domain,
+    domains: sel.domains ?? [],
     levels: sel.levels ?? [],
     languageCodes: sel.languageCodes ?? [],
   }

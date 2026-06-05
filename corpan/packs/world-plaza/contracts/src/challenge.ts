@@ -83,6 +83,19 @@ export interface ChallengeContext {
   mode: ChallengeMode
   /** corpus entry ids pre-selected by the Quest, if any */
   entryIds?: number[]
+  /**
+   * THEMED + LEVEL-SCALED content filter for the VARIETY draw — the corpus domains
+   * (e.g. ["travel","everyday"], blended from the NPC's trade + the quest theme)
+   * and CEFR levels (e.g. ["A1","A2"], scaled to the player) the minigame's random
+   * fill should be drawn from, so the phrases match WHO the player is talking to
+   * and WHAT the quest is about. ADDITIVE + optional: absent ⇒ an unfiltered draw
+   * (today's behaviour). Tools thread it through `ChallengeSpec.params.contentFilter`
+   * into `host.getRandomEntries({ domains, levels, ... })`. Single-language safe —
+   * `languageCodes` is the TARGET code(s), never a native gate.
+   */
+  domains?: string[]
+  levels?: string[]
+  languageCodes?: string[]
 }
 
 /** Callbacks a mounted challenge uses to report back to the world. */

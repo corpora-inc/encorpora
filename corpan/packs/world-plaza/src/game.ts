@@ -47,7 +47,8 @@ import {
   type I18nKey,
 } from "./i18n"
 import { createSpecialNpcResolver } from "./quest/specialNpc"
-import { resolveStepContent, challengeSatisfiesStep } from "./quest/questContent"
+import { challengeSatisfiesStep } from "./quest/questContent"
+import { resolveMinigameContent } from "./quest/minigameContent"
 import { mountQuestTracker } from "./quest/questTracker"
 import { createQuestSection } from "./quest/questSection"
 import { createInventorySection } from "./inventory/inventoryPanel"
@@ -1097,7 +1098,15 @@ function buildWorld(
         // Bind the challenge to the player's CURRENT quest step: drill THAT step's
         // vocab (entryIds) so "help me with this" teaches the exact words the quest
         // is about — the data binding that makes challenge↔quest feel cohesive.
-        const stepContent = resolveStepContent(quest, questEngine.currentStep())
+        // CONTENT RESOLUTION (the feature that makes learning feel bottomless):
+        // blend WHO you're talking to (the NPC's trade → corpus domains), WHAT the
+        // quest is about (its theme domains + the step's authored ids), and the
+        // PLAYER's level (the quest's CEFR levels) into one resolved set. The
+        // step's pinned ids stay a cohesive CORE; the rest of each round is filled
+        // from a THEMED + LEVEL-SCALED draw that VARIES across plays — so a café
+        // host and a dock keeper drill DIFFERENT, on-topic phrases, never the same
+        // six. `role` is structurally a GeneratedPersona carrying `archetype`.
+        const content = resolveMinigameContent(role, quest, questEngine.currentStep())
         // CROSS-LANGUAGE games (translate / tap-the-meaning / match-pairs) are
         // INHERENTLY two-language: they must ALWAYS keep the native side, even
         // under immersion — collapsing both halves makes a tautology with no
@@ -1111,8 +1120,13 @@ function buildWorld(
           language: learnerPair.target,
           nativeLanguage: crossLang ? learnerPair.native : resolver.challengeNativeLanguage(),
           mode: "solo",
-          domain: stepContent.domain,
-          entryIds: stepContent.entryIds.length ? stepContent.entryIds : undefined,
+          domain: content.questDomain,
+          entryIds: content.coreEntryIds.length ? content.coreEntryIds : undefined,
+          // THEMED + LEVEL-SCALED variety filter (NPC trade ∪ quest theme; quest
+          // CEFR levels). Single-language safe: `languageCodes` is the TARGET.
+          domains: content.filter.domains,
+          levels: content.filter.levels,
+          languageCodes: content.filter.languageCodes,
         }
         // A centered challenge is launching → recede the chrome for its duration.
         challengeDepth++

@@ -660,9 +660,39 @@ export const createHostApi = (packId?: string): HostApi => {
         exclude: useHistoryStore.getState().getRecentTuples(10),
       })
     },
-    getRandomEntries: async (count: number) => {
+    getRandomEntries: async (q) => {
       const { levels, phrasePackIds, baseCorpusEnabled } =
         useSettingsStore.getState()
+      // Two call shapes. A bare number = the historical path (user-global `levels`,
+      // domains NOT forwarded — phrase packs supersede the domain axis in 0.15.1+).
+      // An options object = a pack asking for a THEMED + LEVEL-SCALED draw: forward
+      // its `domains`/`levels`/`languageCodes` to the bundled-corpus command, which
+      // INNER-JOINs on `cor_entry_domains` and relaxes (drop levels → drop domains
+      // → all) so a strict filter never starves. A pack-supplied `levels` overrides
+      // the user-global one (the pack is scaling difficulty to the quest);
+      // `languageCodes` constrains to the TARGET translation. When a pack passes a
+      // filter we sample from the BASE corpus (the filterable, domain-tagged
+      // corpus) rather than weaving in the user's phrase packs, so the requested
+      // theme is honored faithfully.
+      if (typeof q === "object") {
+        const hasFilter =
+          (q.domains?.length ?? 0) > 0 ||
+          (q.levels?.length ?? 0) > 0 ||
+          (q.languageCodes?.length ?? 0) > 0
+        if (hasFilter) {
+          return invoke("get_random_entries_with_translations", {
+            count: q.count,
+            levels: q.levels && q.levels.length ? q.levels : levels,
+            domains: q.domains,
+            languageCodes: q.languageCodes,
+            // Filtered themed draws sample the domain-tagged BASE corpus; the
+            // command falls back to base when no packs are supplied.
+            baseCorpusEnabled: true,
+            exclude: useHistoryStore.getState().getRecentTuples(10),
+          })
+        }
+      }
+      const count = typeof q === "number" ? q : q.count
       return invoke("get_random_entries_with_translations", {
         count,
         levels,

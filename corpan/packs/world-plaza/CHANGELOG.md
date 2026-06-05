@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Minigames now draw rich, varied, relevant phrases from the full corpus,
+  bound to WHO you're talking to and WHAT the quest is about.** A new
+  content-resolution layer (`resolveMinigameContent`) blends each NPC's trade →
+  real corpus domains (baker→food/everyday, boatman→travel, scribe→business/civic…)
+  with the quest's theme + the player's CEFR level, then fills each round from a
+  THEMED + LEVEL-SCALED draw that VARIES across plays while keeping the quest
+  step's authored vocab as a cohesive core. A café host and a dock keeper now
+  drill different, on-topic phrases instead of the same six. Degrades gracefully
+  (unfiltered draw) on hosts without filtered queries; single-language-stack safe.
+  (`quest/minigameContent.ts`, `challenges/host.ts`, `challenges/tools/_shared.ts`,
+  `game.ts`; corpan-app `contentPacks/hostApi.ts` forwards `domains`/`levels`.)
+
 ### Performance
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material

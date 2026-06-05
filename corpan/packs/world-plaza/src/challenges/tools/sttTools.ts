@@ -6,6 +6,7 @@
  * credit so the encounter never dead-ends.
  */
 
+import type { ChallengeSpec } from "@world-plaza/contracts"
 import type { OverlayApi } from "../overlay"
 import type { ChallengeRuntimeHost, ChallengeEntry } from "../host"
 import { entryPair } from "../host"
@@ -15,6 +16,7 @@ import {
   h,
   clear,
   mulberry32,
+  randomEntries,
   seedOf,
   type ToolImpl,
 } from "./_shared"
@@ -22,12 +24,14 @@ import { challengeStrings, type ChallengeStrings } from "./strings"
 
 async function firstSpeakable(
   host: ChallengeRuntimeHost,
-  spec: { entryIds?: number[]; language: string; nativeLanguage?: string },
+  spec: ChallengeSpec,
 ): Promise<{ target: string; native: string; romanization: string } | null> {
+  // Pinned CORE first (drill the exact step word), else a THEMED + LEVEL-SCALED
+  // draw so the spoken phrase fits the NPC + quest at the player's level.
   const entries: ChallengeEntry[] =
     spec.entryIds && spec.entryIds.length
       ? await host.getEntriesByIds(spec.entryIds)
-      : await host.getRandomEntries(6)
+      : await randomEntries(host, spec, 6)
   for (const e of entries) {
     const p = entryPair(e, spec.language, spec.nativeLanguage)
     if (p && p.target) return p

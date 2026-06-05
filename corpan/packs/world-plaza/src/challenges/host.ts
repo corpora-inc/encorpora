@@ -41,13 +41,45 @@ export interface ChallengeSttResult {
 }
 
 /**
+ * A CONTENT FILTER for a random-entry draw — the seam that makes a café host
+ * drill food/café phrases and a dock keeper drill travel/directions phrases,
+ * scaled to the player's level. Every field is OPTIONAL and best-effort: a host
+ * that can't filter (or whose strict filter would starve) MUST relax toward an
+ * unfiltered draw rather than return nothing (the real Corpán command has a
+ * built-in relaxation ladder; the mock filters in-memory and relaxes the same
+ * way). So the core loop never dead-ends on an over-specific filter.
+ */
+export interface EntryFilter {
+  /** Corpus domain codes to bias toward (e.g. ["travel"], ["everyday","numbers"]). */
+  domains?: string[]
+  /** CEFR levels to scale difficulty to the player (e.g. ["A1","A2"]). */
+  levels?: string[]
+  /** Restrict to entries that have a translation in these languages. */
+  languageCodes?: string[]
+}
+
+/** The options form of a random-entry draw: a count plus an optional filter. */
+export interface RandomEntriesQuery extends EntryFilter {
+  count: number
+}
+
+/**
  * The capability host. Every method is async + best-effort: a tool must degrade
  * gracefully (the mock host always satisfies it, but a real device may have TTS
  * muted or STT unavailable). `sttAvailable` lets a tool feature-detect up front.
  */
 export interface ChallengeRuntimeHost {
-  /** Pull `n` random entries from the corpus (base + active phrase packs). */
-  getRandomEntries: (n: number) => Promise<ChallengeEntry[]>
+  /**
+   * Pull random entries from the corpus (base + active phrase packs).
+   *
+   * Two call shapes:
+   *   - `getRandomEntries(8)` — the legacy unfiltered draw (back-compat).
+   *   - `getRandomEntries({ count: 8, domains: ["travel"], levels: ["A1","A2"] })`
+   *     — a THEMED + LEVEL-SCALED draw, so a minigame's variety phrases match the
+   *     NPC's trade and the quest's theme at the player's level. A host that lacks
+   *     filtering (or whose strict filter starves) degrades to the unfiltered draw.
+   */
+  getRandomEntries: (q: number | RandomEntriesQuery) => Promise<ChallengeEntry[]>
   /** Full-text search for entries (used to build distractors / themed sets). */
   searchEntries: (
     text: string,
@@ -110,7 +142,16 @@ interface CorpanSttApi {
 /** The minimal Corpán host slice the challenge library consumes. */
 export interface CorpanChallengeHostApi {
   speak: (uiCode: string, text: string) => Promise<void>
-  getRandomEntries?: (count: number) => Promise<CorpanEntryOut[]>
+  /**
+   * Sample N random entries. The host accepts EITHER the legacy numeric `count`
+   * OR an options object carrying a content filter (domains/levels/languageCodes)
+   * — newer Corpán hosts forward the filter to the bundled corpus command; older
+   * ones ignore the object's extra keys (or only the `count` form exists), so the
+   * pack must tolerate both and degrade to an unfiltered draw.
+   */
+  getRandomEntries?: (
+    q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<CorpanEntryOut[]>
   getRandomEntry: () => Promise<CorpanEntryOut>
   getEntryById: (entryId: number, source?: string) => Promise<CorpanEntryOut>
   searchEntriesByText?: (opts: {
@@ -134,11 +175,26 @@ const nextSttId = () => `wp-ch-stt-${Date.now()}-${++sttCounter}`
 export function createChallengeHost(
   api: CorpanChallengeHostApi,
 ): ChallengeRuntimeHost {
-  const getRandomEntries = async (n: number): Promise<ChallengeEntry[]> => {
+  const getRandomEntries: ChallengeRuntimeHost["getRandomEntries"] = async (q) => {
+    const query: RandomEntriesQuery =
+      typeof q === "number" ? { count: q } : { ...q }
+    const count = Math.max(1, query.count)
+    const hasFilter =
+      (query.domains?.length ?? 0) > 0 ||
+      (query.levels?.length ?? 0) > 0 ||
+      (query.languageCodes?.length ?? 0) > 0
     try {
-      if (api.getRandomEntries) return await api.getRandomEntries(Math.max(1, n))
+      if (api.getRandomEntries) {
+        // Forward the filter when present. The Corpán command honors
+        // domains/levels/languageCodes (with its own relaxation ladder when a
+        // strict filter starves); a host that predates the options form simply
+        // ignores the extra keys and samples by count — still valid content, just
+        // unfiltered. Either way we ALWAYS get entries, never a dead-end.
+        return await api.getRandomEntries(hasFilter ? { ...query, count } : count)
+      }
+      // No batch sampler at all (oldest hosts): fall back to repeated single draws.
       const out: ChallengeEntry[] = []
-      for (let i = 0; i < n; i++) out.push(await api.getRandomEntry())
+      for (let i = 0; i < count; i++) out.push(await api.getRandomEntry())
       return out
     } catch (err) {
       console.error("[wp-challenge] getRandomEntries failed:", err)
@@ -348,18 +404,36 @@ export function mockChallengeHost(
   const sttScore = opts.sttScore ?? 0.86
   let pick = opts.seed ?? 7
 
-  const getRandomEntries = async (n: number): Promise<ChallengeEntry[]> => {
-    // Deterministic but well-distributed: Fisher–Yates the full index list with
-    // the running LCG, then take the first `n`. This GUARANTEES min(n, corpus)
+  const getRandomEntries: ChallengeRuntimeHost["getRandomEntries"] = async (q) => {
+    const query: RandomEntriesQuery =
+      typeof q === "number" ? { count: q } : { ...q }
+    const n = Math.max(1, query.count)
+    // Deterministic but well-distributed: Fisher–Yates the candidate index list
+    // with the running LCG, then take the first `n`. This GUARANTEES min(n, pool)
     // distinct entries (the old modulo-collision loop could starve at ~3 because
-    // the LCG's low bits cycle poorly mod the corpus size — that broke any tool
-    // needing 4+ distinct pairs, e.g. dialogue-fill). For n > corpus we wrap to
-    // a second shuffled pass with fresh ids so callers always get `n` back.
+    // the LCG's low bits cycle poorly mod the corpus size). For n > pool we wrap
+    // to a second shuffled pass with fresh ids so callers always get `n` back.
     const next = () => {
       pick = (pick * 1103515245 + 12345) & 0x7fffffff
       return pick / 0x80000000
     }
-    const order = MOCK_CORPUS.map((_, i) => i)
+    // THEMED draw (mock parity with the real command): when a domain/level filter
+    // is given, restrict the candidate pool to matching rows; if that pool is too
+    // thin to fill the draw, RELAX to the full corpus (never starve) — mirroring
+    // the Corpán command's relaxation ladder so the mock faithfully exercises the
+    // same content-resolution code path standalone.
+    const wantDomains = new Set((query.domains ?? []).map((d) => d.toLowerCase()))
+    const wantLevels = new Set((query.levels ?? []).map((l) => l.toUpperCase()))
+    const matches = (i: number): boolean => {
+      const row = MOCK_CORPUS[i]
+      if (wantDomains.size && !row.domains.some((d) => wantDomains.has(d.toLowerCase()))) return false
+      if (wantLevels.size && !wantLevels.has(row.level.toUpperCase())) return false
+      return true
+    }
+    const all = MOCK_CORPUS.map((_, i) => i)
+    const filtered = all.filter(matches)
+    // Relax to the full pool if the filtered pool can't satisfy the draw.
+    const order = filtered.length >= Math.min(n, all.length) ? filtered : all
     for (let i = order.length - 1; i > 0; i--) {
       const j = Math.floor(next() * (i + 1))
       ;[order[i], order[j]] = [order[j], order[i]]

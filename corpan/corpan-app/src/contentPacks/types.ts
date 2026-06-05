@@ -413,7 +413,20 @@ export type HostApi = {
   /** Installed phrase-pack registry (for source chips + enable/disable). */
   phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
-  getRandomEntries?: (count: number) => Promise<EntryOut[]>
+  /**
+   * Sample N random entries. Accepts EITHER the legacy numeric `count` OR an
+   * options object carrying a CONTENT FILTER (`domains`/`levels`/`languageCodes`).
+   * The numeric form preserves the historical behaviour (user-global `levels`
+   * from settings, domains intentionally NOT forwarded). The options form lets a
+   * pack request a THEMED + LEVEL-SCALED draw — e.g. World Plaza binds a café NPC
+   * to food/everyday phrases and a dock keeper to travel phrases at the player's
+   * level — by forwarding the filter to `get_random_entries_with_translations`,
+   * whose relaxation ladder degrades a starved filter rather than returning empty.
+   * ADDITIVE + back-compatible: existing callers pass a number unchanged.
+   */
+  getRandomEntries?: (
+    q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<EntryOut[]>
   /**
    * Resolve an entry by id. `source` defaults to `"base"` (bundled corpus).
    * For phrase-pack entries, pass the pack id you stored alongside the

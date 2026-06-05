@@ -12,6 +12,7 @@ import {
   h,
   clear,
   mulberry32,
+  randomEntries,
   sample,
   seedOf,
   shuffle,
@@ -84,12 +85,16 @@ async function pairs(
   spec: ChallengeSpec,
   n: number,
 ): Promise<Array<{ target: string; native: string; entry: ChallengeEntry }>> {
-  const entries =
-    spec.entryIds && spec.entryIds.length
-      ? await host.getEntriesByIds(spec.entryIds)
-      : await host.getRandomEntries(n + 4)
+  // Pinned CORE (step ids) blended with a THEMED + LEVEL-SCALED random fill: the
+  // grid stays on the quest's vocab yet draws fresh, relevant phrases each play.
+  const core =
+    spec.entryIds && spec.entryIds.length ? await host.getEntriesByIds(spec.entryIds) : []
+  const fill = core.length >= n + 4 ? [] : await randomEntries(host, spec, n + 4 - core.length)
+  const seen = new Set<number>()
   const out: Array<{ target: string; native: string; entry: ChallengeEntry }> = []
-  for (const e of entries) {
+  for (const e of [...core, ...fill]) {
+    if (seen.has(e.entry_id)) continue
+    seen.add(e.entry_id)
     const p = entryPair(e, spec.language, spec.nativeLanguage)
     if (p) out.push({ target: p.target, native: p.native, entry: e })
   }

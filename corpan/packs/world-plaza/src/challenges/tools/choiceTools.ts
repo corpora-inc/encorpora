@@ -17,6 +17,7 @@ import {
   h,
   clear,
   mulberry32,
+  randomEntries,
   sample,
   seedOf,
   shuffle,
@@ -153,11 +154,29 @@ async function pickEntries(
   spec: ChallengeSpec,
   n: number,
 ): Promise<ChallengeEntry[]> {
+  // The COHESIVE CORE: the step's authored ids (drilled exactly). When they alone
+  // can fill the draw we use them; otherwise we BLEND — keep the core ids and top
+  // up with a THEMED + LEVEL-SCALED random draw (varies across plays), so the game
+  // stays on-topic AND feels bottomless instead of the same six phrases.
   if (spec.entryIds && spec.entryIds.length) {
-    const got = await host.getEntriesByIds(spec.entryIds)
-    if (got.length >= n) return got.slice(0, n)
+    const core = await host.getEntriesByIds(spec.entryIds)
+    if (core.length >= n) return core.slice(0, n)
+    const fill = await randomEntries(host, spec, n - core.length + 4)
+    return dedupeEntries([...core, ...fill]).slice(0, n)
   }
-  return host.getRandomEntries(n)
+  return randomEntries(host, spec, n)
+}
+
+/** De-dup entries by id, preserving order (core first, then themed fill). */
+function dedupeEntries(entries: ChallengeEntry[]): ChallengeEntry[] {
+  const seen = new Set<number>()
+  const out: ChallengeEntry[] = []
+  for (const e of entries) {
+    if (seen.has(e.entry_id)) continue
+    seen.add(e.entry_id)
+    out.push(e)
+  }
+  return out
 }
 
 function pairsOf(

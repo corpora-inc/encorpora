@@ -7,6 +7,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+
+- **`hostApi.getRandomEntries` accepts an optional content filter.** In addition
+  to the legacy `getRandomEntries(count)`, packs may now call
+  `getRandomEntries({ count, domains, levels, languageCodes })` to request a
+  themed + level-scaled draw; the filter is forwarded to
+  `get_random_entries_with_translations` (which already supports
+  `levels`/`domains`/`language_codes` with a relaxation ladder). Additive +
+  backward-compatible — existing numeric callers are unchanged. Used by World
+  Plaza to bind each minigame's phrases to the NPC + quest at the player's level.
+
 ### Changed
 
 - **Toolchain & framework to latest stable.** React **18.3 → 19.2**, Vite **6 →

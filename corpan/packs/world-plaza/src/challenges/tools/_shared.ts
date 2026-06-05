@@ -11,7 +11,7 @@ import type {
   ChallengeToolId,
 } from "@world-plaza/contracts"
 import type { OverlayApi } from "../overlay"
-import type { ChallengeRuntimeHost } from "../host"
+import type { ChallengeRuntimeHost, ChallengeEntry, EntryFilter } from "../host"
 
 /* ------------------------------------------------------------------ *
  * Tool implementation shape.
@@ -210,6 +210,45 @@ export function difficultyFromLevel(level?: string): 1 | 2 | 3 {
   return 1
 }
 
+/**
+ * The THEMED + LEVEL-SCALED content filter stashed in `ChallengeSpec.params` under
+ * this key. Every tool's random fill routes through {@link randomEntries}, which
+ * reads it back off the spec and forwards it to the host's filtered draw — so a
+ * café host's variety phrases lean food/everyday and a dock keeper's lean travel,
+ * at the player's level. Absent ⇒ an unfiltered draw (back-compat).
+ */
+export const CONTENT_FILTER_PARAM = "contentFilter"
+
+/** Read the content filter a `baseSpec` stashed (domains/levels/languageCodes). */
+export function specContentFilter(spec: ChallengeSpec): EntryFilter | undefined {
+  const f = spec.params?.[CONTENT_FILTER_PARAM]
+  if (!f || typeof f !== "object") return undefined
+  const o = f as Record<string, unknown>
+  const out: EntryFilter = {}
+  if (Array.isArray(o.domains) && o.domains.length) out.domains = o.domains as string[]
+  if (Array.isArray(o.levels) && o.levels.length) out.levels = o.levels as string[]
+  if (Array.isArray(o.languageCodes) && o.languageCodes.length)
+    out.languageCodes = o.languageCodes as string[]
+  return out.domains || out.levels || out.languageCodes ? out : undefined
+}
+
+/**
+ * The SINGLE random-draw seam every tool's VARIETY fill uses. It threads the
+ * spec's stashed content filter into the host's filtered draw, so the unpinned
+ * remainder of a minigame is THEMED to the NPC's trade + the quest at the player's
+ * level — and VARIED across plays (the host returns different matching rows each
+ * time). The host degrades to an unfiltered draw when it can't filter (or a strict
+ * filter starves), so this NEVER dead-ends the core loop.
+ */
+export function randomEntries(
+  host: ChallengeRuntimeHost,
+  spec: ChallengeSpec,
+  n: number,
+): Promise<ChallengeEntry[]> {
+  const filter = specContentFilter(spec)
+  return host.getRandomEntries(filter ? { count: n, ...filter } : n)
+}
+
 /** Build the standard data-only spec for a tool. */
 export function baseSpec(
   toolId: ChallengeToolId,
@@ -217,6 +256,17 @@ export function baseSpec(
   params: Record<string, unknown>,
   entryIds?: number[],
 ): ChallengeSpec {
+  // Carry the THEMED + LEVEL-SCALED filter from the context into params so the
+  // tool's random fill can draw matching corpus rows. Only stamp it when at least
+  // one axis is set, to keep specs clean + back-compatible.
+  const filter: Record<string, unknown> = {}
+  if (ctx.domains?.length) filter.domains = ctx.domains
+  if (ctx.levels?.length) filter.levels = ctx.levels
+  if (ctx.languageCodes?.length) filter.languageCodes = ctx.languageCodes
+  const mergedParams =
+    Object.keys(filter).length > 0
+      ? { ...params, [CONTENT_FILTER_PARAM]: filter }
+      : params
   return {
     toolId,
     challengeId: `${toolId}-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`,
@@ -224,7 +274,7 @@ export function baseSpec(
     nativeLanguage: ctx.nativeLanguage,
     level: ctx.level,
     entryIds,
-    params,
+    params: mergedParams,
     mode: ctx.mode,
   }
 }
