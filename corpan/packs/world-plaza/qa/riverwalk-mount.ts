@@ -55,10 +55,11 @@ try {
   } as unknown as Layout
 }
 
-const water = (layout as unknown as { water?: { waterZ: number; bankZ: number; bridgeX: number; bridgeHalfW: number } }).water
+const water = (layout as unknown as { water?: { waterZ: number; bankZ: number; farBankZ?: number; bridgeX: number; bridgeHalfW: number } }).water
 const bridge = layout.anchors.find((a) => a.id === "bridge_n")
 const harbor = layout.anchors.find((a) => a.id === "harbor")
 const edgeZ = water?.waterZ ?? bridge?.z ?? layout.bounds.maxZ - 70
+const farEdgeZ = water?.farBankZ
 const gapX = water?.bridgeX ?? bridge?.x ?? 0
 const gapHalf = water?.bridgeHalfW ?? 6
 
@@ -108,6 +109,7 @@ world.onFrame((dt: number) => {
 // the riverwalk dressing along the +Z edge (the thing under test).
 const riverwalk = buildRiverwalk(scene, {
   edgeZ,
+  ...(farEdgeZ != null ? { farEdgeZ } : {}),
   bounds: layout.bounds,
   gap: { x: gapX, halfWidth: gapHalf },
   palette,

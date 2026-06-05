@@ -123,6 +123,23 @@ describe.each([
     expect(bs).toBeTruthy()
     expect(bs!.z).toBeGreaterThanOrEqual(farBankZ)
   })
+
+  it("water.deck spans bank→far-bank and BOTH ends land on walkable ground", () => {
+    const deck = layout.water.deck
+    expect(deck).toBeTruthy()
+    // x/halfW agree with the collider corridor.
+    expect(deck!.x).toBe(bridgeX)
+    expect(deck!.halfW).toBe(layout.water.bridgeHalfW)
+    // near end on the near quay, far end where the far bank's land starts — never
+    // at the open-water edge (a ramp there would land in the river, world-fix's
+    // correction). So z0 ≤ waterZ (near land) and z1 ≥ farBankZ (far land).
+    expect(deck!.z0).toBeLessThanOrEqual(waterZ)
+    expect(deck!.z1).toBeGreaterThanOrEqual(farBankZ)
+    // and both deck endpoints are walkable in the field (solid promenade).
+    const field = fullField(layout)
+    expect(field.blocked(deck!.x, deck!.z0, AGENT_R)).toBe(false)
+    expect(field.blocked(deck!.x, deck!.z1, AGENT_R)).toBe(false)
+  })
 })
 
 describe.each([

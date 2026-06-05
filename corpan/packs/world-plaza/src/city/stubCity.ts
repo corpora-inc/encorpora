@@ -120,7 +120,10 @@ export function stubCity(): CityLayout {
     chunks,
     anchors,
     spawn: { x: 0, z: 6 },
-    water: { waterZ: 44, bankZ: 28, farBankZ: 52, farPromZ: 54, bridgeX: 5, bridgeHalfW: 5 },
+    water: {
+      waterZ: 44, bankZ: 28, farBankZ: 52, farPromZ: 54, bridgeX: 5, bridgeHalfW: 5,
+      deck: { z0: 28, z1: 52, x: 5, halfW: 5 }, // bankZ → farBankZ at the bridge corridor
+    },
     boundary: {
       inset: 4,
       thickness: 2,

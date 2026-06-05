@@ -32,7 +32,8 @@ applyAtmosphere(scene, worldScene.palette, world.onFrame)
 
 // Real river heights from generateCity: bankZ=294, waterZ=310, farBankZ=344, farPromZ=356.
 const nearZ = 294
-const farZ = 356
+// deck span = layout.water.deck = [bankZ, farBankZ] (places' committed truth).
+const farZ = 344 // farBankZ — deck ends where far-bank LAND starts (not farPromZ)
 const waterZ = 310
 const farBankZ = 344
 

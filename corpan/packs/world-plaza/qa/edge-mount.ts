@@ -21,6 +21,7 @@ import { generateCity, mountCity } from "../src/city"
 import { buildHarborBoats } from "../src/world/harborBoats"
 import { buildDistantSkyline } from "../src/world/distantSkyline"
 import { buildGateDressing } from "../src/world/gateDressing"
+import { buildSpecialPlaces } from "../src/world/specialPlaces"
 
 const qs = new URLSearchParams(location.search)
 const worldScene = WorldSceneSchema.parse(sceneJson)
@@ -100,6 +101,21 @@ const gateDress = boundary
   ? buildGateDressing(scene, { boundary, bounds: layout.bounds, palette, reducedMotion: qs.get("reduce") === "1" })
   : null
 if (gateDress) world.onFrame((dt) => gateDress.update(dt))
+
+// curated SPECIAL-PLACES dressing (plaza flower-bed ring + market bunting). Reads
+// the fountain/market anchor positions from the layout.
+const fountainA = layout.anchors.find((a) => a.id === "fountain")
+const marketA = layout.anchors.find((a) => a.id === "market")
+const special = buildSpecialPlaces(scene, {
+  plaza: fountainA ? { x: fountainA.x, z: fountainA.z } : { x: 0, z: 0 },
+  market: marketA ? { x: marketA.x, z: marketA.z } : undefined,
+  palette,
+})
+void special
+;(window as unknown as { __wpPlaces: unknown }).__wpPlaces = {
+  plaza: fountainA ? { x: Math.round(fountainA.x), z: Math.round(fountainA.z) } : null,
+  market: marketA ? { x: Math.round(marketA.x), z: Math.round(marketA.z) } : null,
+}
 
 const cam = new ArcRotateCamera("wp-edge-cam", -Math.PI / 2, 1.0, 24, new Vector3(0, 0, water.waterZ), scene)
 cam.fov = 0.7

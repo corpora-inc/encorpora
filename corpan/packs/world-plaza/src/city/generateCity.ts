@@ -548,6 +548,10 @@ export function generateCity(seed = 20260603): CityLayout {
       farPromZ: zoneField.farPromZ,
       bridgeX,
       bridgeHalfW: BRIDGE_HALF_W,
+      // The deck spans near promenade → where far-bank LAND begins (z1 = farBankZ),
+      // ramping onto walkable ground at both ends; water passes under [waterZ,
+      // farBankZ]. Single source of truth so the bridge mesh + collider gap agree.
+      deck: { z0: zoneField.bankZ, z1: zoneField.farBankZ, x: bridgeX, halfW: BRIDGE_HALF_W },
     },
     boundary,
     baseSurfaceByZone: BASE_SURFACE_BY_ZONE,

@@ -470,6 +470,9 @@ function buildWorld(
       farPromZ?: number
       bridgeX: number
       bridgeHalfW: number
+      // precomputed bridge deck span (single source of truth shared with the
+      // collider corridor); optional during the transition.
+      deck?: { z0: number; z1: number; x: number; halfW: number }
     }
   }).water
   const waterEdgeZ = cityWater?.waterZ ?? bridgeAnchor?.z ?? null
@@ -477,6 +480,9 @@ function buildWorld(
     waterEdgeZ != null
       ? buildRiverwalk(world.scene, {
           edgeZ: waterEdgeZ,
+          // The river is a BAND (#32): cap the water sheet at the far bank so it
+          // never paints over the far quay + sea wall, and lap both shorelines.
+          ...(cityWater?.farBankZ != null ? { farEdgeZ: cityWater.farBankZ } : {}),
           bounds: layout.bounds,
           gap: {
             x: cityWater?.bridgeX ?? bridgeAnchor?.x ?? 0,
@@ -541,17 +547,26 @@ function buildWorld(
       })
     : null
   // The real 3D stone ARCH bridge (#29) — raised deck + parapets + arches on piers
-  // in the river, water passing UNDERNEATH. Spans bankZ→farPromZ at the bridge gap;
-  // purely visual (places' collider already opens the corridor, quest-flow's traverse
-  // keys off bridge_n), so it's a static mesh built once + disposed with the world.
-  const bridge = cityWater
-    ? buildBridge(world.scene, {
+  // in the river, water passing UNDERNEATH. The deck RAMPS DOWN onto walkable land
+  // at both ends; purely visual (places' collider already opens the corridor,
+  // quest-flow's traverse keys off bridge_n), so it's a static mesh built once +
+  // disposed with the world. SINGLE SOURCE OF TRUTH = `layout.water.deck` (places),
+  // so the visible deck and the collider corridor can't drift; the `??` chain keeps
+  // a legacy water-to-edge layout (no deck/far-band) from passing undefined.
+  const deckSpan = cityWater
+    ? cityWater.deck ?? {
+        z0: cityWater.bankZ,
+        z1: cityWater.farBankZ ?? cityWater.waterZ + 38,
         x: cityWater.bridgeX,
-        nearZ: cityWater.bankZ,
-        // far end of the deck: the far promenade if present (river-band model,
-        // #32/#34), else the world edge for a legacy water-to-edge layout.
-        farZ: cityWater.farPromZ ?? layout.bounds.maxZ,
-        halfWidth: cityWater.bridgeHalfW,
+        halfW: cityWater.bridgeHalfW,
+      }
+    : null
+  const bridge = deckSpan
+    ? buildBridge(world.scene, {
+        x: deckSpan.x,
+        nearZ: deckSpan.z0,
+        farZ: deckSpan.z1,
+        halfWidth: deckSpan.halfW,
         waterY: 0.07,
         palette: scene.palette,
       })

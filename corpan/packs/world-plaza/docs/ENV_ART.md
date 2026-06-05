@@ -29,6 +29,13 @@ pattern as `fountain.ts` / `harborWater.ts`) that dresses the +Z water edge:
   drift sideways with the tide (a per-frame U-scroll), and a soft FOAM lip lapping
   the shoreline. Replaces the old flat-blue `harborWater` sheen (which is now only
   built when the riverwalk has no edge to key off).
+  - **River BAND (#32, `farEdgeZ`):** when `CityWater.farBankZ` is passed, the
+    water sheet spans only `[edgeZ, farEdgeZ]` (the open river) instead of running
+    to the world edge over the far bank + sea wall, the depth gradient is SYMMETRIC
+    (shallow+luminous at both banks, deep mid-channel), and the foam laps BOTH
+    shorelines — so it reads as a crossing, not an endless sea. Verified top-down:
+    `/tmp/wp-river-bandtop.png` (water capped at both banks). TODO (places offered):
+    dress the symmetric FAR quay with a balustrade run too.
 
 ### The edge seam (coordinate with world-fix / places)
 The module takes plain numbers — `edgeZ` (water line), `bounds`, and a bridge

@@ -150,6 +150,20 @@ export interface CityWater {
   bridgeX: number
   /** half-width of the walkable bridge corridor carved through the river collider. */
   bridgeHalfW: number
+  /**
+   * The bridge DECK span — the single precomputed source of truth the bridge
+   * STRUCTURE (world-fix #29) reads, so the visible deck and the collider corridor
+   * can't drift. `z0..z1` is the deck's full Z extent (from the near promenade,
+   * OVER the river band, to where far-bank LAND begins), `x ± halfW` its width.
+   * The deck RAMPS DOWN onto walkable ground at BOTH ends, so `z0`/`z1` must each
+   * sit on solid promenade: `z0 = bankZ` (near quay), `z1 = farBankZ` (where the
+   * far bank's land starts) — never the open-water edge, or a ramp lands in the
+   * river. Water passes UNDER the deck across [waterZ, farBankZ].
+   *
+   * OPTIONAL during the #32/#34 transition (legacy water-to-edge layouts omit it);
+   * a consumer falls back to deriving the span from bankZ/farBankZ/world bounds.
+   */
+  deck?: { z0: number; z1: number; x: number; halfW: number }
 }
 
 /* ------------------------------------------------------------------ walls */

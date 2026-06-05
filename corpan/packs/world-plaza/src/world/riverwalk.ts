@@ -377,8 +377,13 @@ export function buildRiverwalk(scene: BabylonScene, opts: RiverwalkOptions): Riv
   // soft SHORELINE FOAM band at the edge. It breathes (emissive + a gentle UV
   // scroll for the foam) so the harbour reads as living water, not flat blue.
   // ONE quad, ONE material — the whole atmosphere half for ~free.
-  const z0 = opts.edgeZ - 1.5 // overlap the bank a touch so the foam laps the kerb
-  const z1 = opts.bounds.maxZ + 30
+  // The river is a BAND `[edgeZ, farEdgeZ]` when the far edge is known (#32): the
+  // sheet spans only the open water + a hair onto each bank (so foam laps both
+  // shorelines) and NEVER runs to the world edge over the far bank / sea wall.
+  // Legacy (no farEdgeZ): the old water-to-edge behaviour.
+  const band = opts.farEdgeZ != null
+  const z0 = opts.edgeZ - 1.5 // overlap the near bank a touch
+  const z1 = band ? opts.farEdgeZ! + 1.5 : opts.bounds.maxZ + 30 // far bank, or world edge
   const wWidth = opts.bounds.maxX - opts.bounds.minX + 40
   const wDepth = z1 - z0
   const wcx = (opts.bounds.minX + opts.bounds.maxX) / 2
@@ -396,10 +401,20 @@ export function buildRiverwalk(scene: BabylonScene, opts: RiverwalkOptions): Riv
   const css = (c: Color3, a = 1) =>
     `rgba(${Math.round(c.r * 255)},${Math.round(c.g * 255)},${Math.round(c.b * 255)},${a})`
   const grad = wctx.createLinearGradient(0, 0, 0, TEX_H)
-  // row 0 = far edge (deep); row H = near the bank (shallow + foam).
-  grad.addColorStop(0, css(deep))
-  grad.addColorStop(0.55, css(shade(waterC, -0.18)))
-  grad.addColorStop(0.86, css(shallow))
+  if (band) {
+    // a RIVER band: shallow+luminous at BOTH banks (row 0 = far, row H = near),
+    // deepest in the mid-channel — so the water reads as a crossing, not a sea.
+    grad.addColorStop(0, css(shallow))
+    grad.addColorStop(0.18, css(shade(waterC, -0.18)))
+    grad.addColorStop(0.5, css(deep))
+    grad.addColorStop(0.82, css(shade(waterC, -0.18)))
+    grad.addColorStop(1, css(shallow))
+  } else {
+    // legacy harbour: row 0 = far edge (deep); row H = near bank (shallow + foam).
+    grad.addColorStop(0, css(deep))
+    grad.addColorStop(0.55, css(shade(waterC, -0.18)))
+    grad.addColorStop(0.86, css(shallow))
+  }
   wctx.fillStyle = grad
   wctx.fillRect(0, 0, TEX_W, TEX_H)
   // RIPPLE striations: faint wavy horizontal bands of light/dark across the bay,
@@ -422,23 +437,36 @@ export function buildRiverwalk(scene: BabylonScene, opts: RiverwalkOptions): Riv
     }
     wctx.stroke()
   }
-  // soft foam band hugging the bank (bottom rows), with a wavy lapping lip.
+  // soft foam band hugging the NEAR bank (bottom rows), with a wavy lapping lip.
   const foam = wctx.createLinearGradient(0, TEX_H * 0.84, 0, TEX_H)
   foam.addColorStop(0, "rgba(255,255,255,0)")
   foam.addColorStop(0.6, "rgba(244,250,252,0.45)")
   foam.addColorStop(1, "rgba(255,255,255,0.8)")
   wctx.fillStyle = foam
   wctx.fillRect(0, TEX_H * 0.84, TEX_W, TEX_H * 0.16)
-  // a brighter scalloped foam lip right at the waterline.
-  wctx.strokeStyle = "rgba(255,255,255,0.9)"
-  wctx.lineWidth = 2
-  wctx.beginPath()
-  for (let x = 0; x <= TEX_W; x += 3) {
-    const y = TEX_H - 6 + Math.sin((x / TEX_W) * Math.PI * 10) * 3
-    if (x === 0) wctx.moveTo(x, y)
-    else wctx.lineTo(x, y)
+  // a brighter scalloped foam lip right at the (near) waterline.
+  const foamLip = (yBase: number, dir: 1 | -1) => {
+    wctx.strokeStyle = "rgba(255,255,255,0.9)"
+    wctx.lineWidth = 2
+    wctx.beginPath()
+    for (let x = 0; x <= TEX_W; x += 3) {
+      const y = yBase + dir * (Math.sin((x / TEX_W) * Math.PI * 10) * 3 + 3)
+      if (x === 0) wctx.moveTo(x, y)
+      else wctx.lineTo(x, y)
+    }
+    wctx.stroke()
   }
-  wctx.stroke()
+  foamLip(TEX_H - 3, -1)
+  if (band) {
+    // a river band laps the FAR bank too (top rows) — mirror the foam there.
+    const foamTop = wctx.createLinearGradient(0, TEX_H * 0.16, 0, 0)
+    foamTop.addColorStop(0, "rgba(255,255,255,0)")
+    foamTop.addColorStop(0.6, "rgba(244,250,252,0.45)")
+    foamTop.addColorStop(1, "rgba(255,255,255,0.8)")
+    wctx.fillStyle = foamTop
+    wctx.fillRect(0, 0, TEX_W, TEX_H * 0.16)
+    foamLip(3, 1)
+  }
   wtex.update(false)
   wtex.wrapU = 1 // WRAP_ADDRESSMODE so the gentle U scroll tiles the ripple
   wtex.wrapV = 1

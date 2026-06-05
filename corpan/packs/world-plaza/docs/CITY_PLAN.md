@@ -120,10 +120,40 @@ chunks and just toggles visibility. At 324 chunks (or even ~180 built ones) that
 4. **Curvature reveal (#33/#36 already spiked)** hides the far-chunk pop-in at the
    horizon, so dispose/rebuild at distance is invisible.
 
-**My ask of world-fix:** confirm a target resident-chunk budget (e.g. "≤ ~80
-built chunks resident at once on a phone") so I can size the KEEP radius + district
-extents to fit. The layout will expose whatever the streamer needs (district tags,
-a `landKind` per chunk: `land`/`sea`/`park-water`/`cliff`).
+**BUDGET (confirmed by world-fix, 2026-06-04):** design to **~96 BUILT LAND
+chunks max resident** (call it 90–100). Reasoning grounded in the current
+streamer: the heavy work is already shared city-lifetime (façade pool, prop
+masters, 6 tileable ground materials) and does NOT grow with chunk count; what
+grows per built chunk is *geometry* — ground + merged buildings + prop clones
+(each clone now carries its OWN geometry after the thin-instance-clobber fix, so
+prop vertex memory is ~linear in built chunks). ~96 built ≈ tens of MB geometry;
+that's a **RAM ceiling, not a draw ceiling** (only the near ring renders; far-but-
+resident chunks are `setEnabled(false)` — ~free to skip but still hold RAM). The
+naive 8× "build everything" (~180 land chunks) is ~2× over → build-once won't hold
+on a phone. **Confirmed: we need dispose.**
+
+**Approach (world-fix owns the impl, green-lit):** revive **dispose-with-
+hysteresis** (proven infra still present: the `built` map + per-chunk `dispose()`
++ the deprecated `disposeRadius`/`disposesPerTick`). `keepRadius > disposeRadius`
+with a gap so the bay boundary never thrashes; dispose ≤N/frame (amortized, no
+hitch); **NEVER dispose** a chunk tagged `landKind ∈ {sea, park-water, cliff}`
+(cheap → keep resident as the far silhouette, satisfying the LOD ask) or a
+bridge-adjacent chunk. Net: the island you're on + its bridges stay resident; the
+island across the bay is disposed and rebuilt on approach (build-once *within a
+visit*, dispose *across the water gap*). Prefer this over impostors/merged-far-LOD
+for v1 (lowest risk, reuses proven infra); impostors are later polish.
+
+**LAYOUT TAGS I'll add (so the streamer can do the above):** per-chunk
+`district` id + `landKind` (`land`/`sea`/`park-water`/`cliff`). world-fix warms by
+same-district + bridge-adjacent, keeps cheap landKinds always-resident, and counts
+**only LAND chunks** against the ~96 budget (sea/cliff/park-water are near-free).
+
+**SIZING RULE this imposes on me:** size each district + its immediate neighbours
+so **no more than ~96 LAND built chunks fall within `keepRadius` at once**. A
+contiguous land mass bigger than that needs internal sub-streaming (dispose within
+the district) — fine, just don't make one solid borough require >96 near
+simultaneously. This is why the city is an ARCHIPELAGO (water gaps between
+boroughs = natural dispose seams) rather than one giant land slab.
 
 ---
 
@@ -222,16 +252,22 @@ is a portal pair (no deck) for variety + to prove the "boat crossing" quest step
 ## 8. Data-model deltas (additive; keeps current contract valid)
 
 1. `CityZoneId` += `uptown | financial | airport | cliff`.
-2. **Generalize water to a LIST.** Today `CityLayout.water: CityWater` (one band).
-   Proposed `CityLayout.waters: CityWaterBody[]` where each body is a rect/region
-   with its own banks + crossings; keep `water` as the primary river for back-compat
-   (or migrate readers). Per-chunk `water: CityWaterRect[]` already supports many
-   rects — only the top-level summary needs to become plural.
-3. **`CityLayout.districts: District[]`** — id, label, bounds/centroid, island id.
-   Drives streaming priority + the map legend + "you are in X" UX.
+2. **Generalize water to a LIST.** Today `CityLayout.water: CityWater` (one band,
+   already carrying `bankZ/waterZ/farBankZ/farPromZ` + a precomputed `deck`
+   `{z0,z1,x,halfW}` the bridge reads — landed in the #32 work). Proposed
+   `CityLayout.waters: CityWaterBody[]` where each body is a rect/region with its
+   own banks + crossing/`deck`; **keep `water` as the primary river for back-compat**
+   so env-art's riverwalk/boats + world-fix's bridge don't break (they'll iterate
+   `waters` once it's real). Per-chunk `water: CityWaterRect[]` already supports
+   many rects — only the top-level summary becomes plural.
+3. **`CityLayout.districts: District[]`** — id, label, bounds/centroid, island id —
+   AND a per-chunk `district` id tag. Drives streaming warm-priority (same-district
+   + bridge-adjacent), the map legend, and "you are in X" UX.
 4. **`CityLayout.islands: Island[]`** — id, bounds, the bridges that reach it.
-5. **`landKind` per chunk** (`land|sea|park-water|cliff`) so the streamer can keep
-   cheap chunks resident + dispose expensive ones, and collision knows water/cliff.
+5. **`landKind` per chunk** (`land | sea | park-water | cliff`) — the streaming +
+   collision discriminator: world-fix keeps cheap landKinds always-resident (far
+   silhouette) and counts ONLY `land` against the ~96 budget (§3); collision/
+   placement already knows water/cliff are non-walkable.
 6. New landmark cases in `buildLandmark`; new `LandmarkPlan`s positioned per §1.
 
 All additive — existing `generateCity()` output stays a valid (degenerate, single-
