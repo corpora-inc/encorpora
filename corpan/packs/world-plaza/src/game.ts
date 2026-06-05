@@ -607,6 +607,10 @@ function buildWorld(
   const stationAnchorSP = city.getAnchor("station")
   const specialPlaces = buildSpecialPlaces(world.scene, {
     plaza: fountainAnchor ? { x: fountainAnchor.x, z: fountainAnchor.z } : { x: 0, z: 0 },
+    // HERO clock tower just off the plaza corner — the town's memorable skyline
+    // landmark, visible on every plaza/market sightline. Sits outside the plaza
+    // dressing rings (café arc ≈ r22) in open square, so it never buries a prop.
+    clockTower: { x: -25, z: -21 },
     ...(marketAnchor ? { market: { x: marketAnchor.x, z: marketAnchor.z } } : {}),
     ...(stationAnchorSP
       ? { station: { x: stationAnchorSP.x, z: stationAnchorSP.z, facing: stationAnchorSP.facing } }

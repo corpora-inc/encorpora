@@ -7,7 +7,76 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Cinematic rendering (flat prototype → premium golden-hour look).** A new
+  rendering pipeline (`src/render/pipeline.ts`) layers real lighting + post over
+  the scene: a warm directional KEY sun casting soft, contact-hardening PCF
+  shadows; a cool hemispheric FILL so shadows stay luminous; a tiny procedural
+  IBL environment cube for believable PBR ambient + reflections; and a
+  `DefaultRenderingPipeline` with ACES tone-mapping, gentle exposure/contrast, a
+  warm vignette, tasteful bloom, and FXAA/MSAA. Data-driven `TimeOfDay` moods
+  (golden / dawn / day / dusk) — default is golden hour. Optional SSAO2 gated
+  behind a perf tier. The engine exposes `registerShadowCaster(mesh)` /
+  `getShadowGenerator()` / `setTimeOfDay()` so the city + characters opt meshes
+  into shadows (the lead wires per-streamed-chunk registration in game.ts).
+  Also removed the atmosphere back-rim light, which was silently breaking the
+  sun's shadows by forcing a shadow-less material recompile.
+- **A soul of sound (WebAudio, no assets).** The silent plaza now has a tasteful,
+  subtle ambient bed — a warm low pad that breathes, a faint distant-town murmur,
+  and sparse soft birdsong — plus locomotion-driven footstep taps (cadence scales
+  with walk speed; silent at rest) and gentle juice SFX (tap/engage/correct/
+  reward/error). Default ON but quiet (master volume 0.55), opt-out via mute, both
+  persisted to `localStorage` (`wp:audio:*`); honours prefers-reduced-motion
+  (calmer bed, no birdsong). Everything is synthesized live — no licensed/heavy
+  files. New self-contained module `src/audio/{soundscape,sfx,cadence}.ts`;
+  `createSoundscape()` exposes `resume/startAmbient/stopAmbient/onLocomotion/
+  playSfx/setMuted/setVolume/dispose`. Also a `speakNpcGreeting(host, targetLang,
+  text)` helper so the NPC SPEAKS the target language via host TTS at the moment
+  of engage. (Wiring into game.ts/npcRuntime owned by the lead.)
+
 ### Changed
+- **Characters you like looking at (3D figure craft).** The 3D "bubble person"
+  is now genuinely charming, not just 3D. (1) **The floating white collar/seam is
+  gone** — the old look welded a billboarded face *card* (a cropped slice of the
+  paper-doll texture, cream rim and all) onto a skin sphere, showing a hard white
+  band across every neck. The head is now ONE cohesive skin form: a features-only
+  face (eyes/brows/nose/mouth/cheeks, transparent everywhere else) sits on a small
+  plane tucked against the head front, so the gaps reveal the head's own skin and
+  the face reads as part of the head from front, 3/4, grazing, and back angles;
+  a hair cap covers the crown + back so no sphere seam shows. (2) **Charming
+  proportions** — slightly oversized head, soft rounded torso, short planted legs
+  with feet, stubby arms with rounded hands/shoulders (a friendly chibi
+  silhouette), and a short neck so the head never floats. (3) **Expressive
+  animation** — arms + legs counter-swing on a real gait, a forward lean into the
+  walk, an idle weight-shift sway and occasional head look-around, a talk head-bob
+  + open mouth, blink, and the wave gesture — all driven from a new richer
+  `FigurePose` the animator feeds via an additive `setPose()` hook (the flat
+  cutout ignores it, so the fallback is unchanged). (4) **Warmer face paint** —
+  bright eyes with iris colour + catchlights, soft friendly brows (no worried
+  peak), rosy cheeks, a sweet smile. Still cheap: shared geometry + per-instance
+  colour, one small face texture each — verified 60fps at 38 agents.
+- **The world is a LIVING, crafted place — not an empty tile plain.** Density,
+  variety, and a landmark replace the "vast sea of cobble with a few boxes" read:
+  (1) **Building hue variety** — the town was monotone cream (both stucco families
+  were near-identical `#e7d4ad`/`#dcc59a`); buildings now draw from a curated
+  colonial palette (washed terracotta, ochre, sage, dusty rose, sea-blue, mustard,
+  mauve, adobe…) weighted toward warm earths, so a street reads as a real painted
+  town. (2) **Density** — block gaps pulled down + dressing pushed up across every
+  zone, a tighter building gutter packs fuller terraces, and the plaza claim/empty
+  void shrank. (3) **Furnished plaza** — the civic square (a void you stood in) now
+  has a tiered terrace ringing the fountain: benches+lamps facing the water, a ring
+  of potted trees+planters, an outer café/market arc of tables+stalls, and a market
+  knot. (4) **HERO clock tower** — a tall tapered stone tower with a belfry, four
+  clock faces, a pyramidal terracotta cap + gilt finial rises above the rooflines
+  as the memorable skyline landmark on every plaza/market sightline. (5) **Paving
+  variety** — each district gets a base surface that reads as a different place
+  (formal flagstone civic core, cobbled downtown, warm-earth residential, worn
+  stone market/harbor) instead of one flat dirt plain. All thin-instanced /
+  chunk-streamed / shared-material (phone budget unchanged). Files: `world/
+  buildings.ts` (stucco family), `city/generateCity.ts` (density + plaza dressing +
+  paving), `world/specialPlaces.ts` (+ `game.ts`, the clock tower). Verified in the
+  real streaming city via `qa/living-world.mjs` (wide plaza, market walk-through,
+  landmark sightline, street, tower, aerial — unfriendly angles).
 - **Characters are now REAL 3D "bubble people," not flat paper billboards.** The
   marquee visual upgrade: the player + crowd NPCs + remote players render as
   genuine 3D rounded meshes (head sphere + bubble torso + stubby arms/legs/feet),

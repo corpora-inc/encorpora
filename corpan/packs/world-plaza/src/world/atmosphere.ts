@@ -4,9 +4,7 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh"
 import { DynamicTexture } from "@babylonjs/core/Materials/Textures/dynamicTexture"
 import { Texture } from "@babylonjs/core/Materials/Textures/texture"
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
-import { Color3, Vector3 } from "@babylonjs/core/Maths/math"
-import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight"
-import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight"
+import { Color3 } from "@babylonjs/core/Maths/math"
 
 /**
  * applyAtmosphere — the "premium air" layer for World Plaza.
@@ -83,9 +81,7 @@ export function applyAtmosphere(
 
   const night = skyLook?.timeOfDay === "night"
 
-  const sky = hex(palette?.sky, "#bfe0e8")
   const accent = hex(palette?.accent, "#c46b4a")
-  const ground = hex(palette?.ground, "#d9c7a3")
 
   // ZENITH (top of sky) + HORIZON (haze band) drive a tall vertical gradient so
   // long sightlines read with real depth. Defaults: a deep warm-Antigua-day
@@ -213,47 +209,17 @@ export function applyAtmosphere(
   }
 
   // ---------------------------------------------------------------- light rig
-  {
-    const hemi = scene.getLightByName("hemi") as HemisphericLight | null
-    const sun = scene.getLightByName("sun") as DirectionalLight | null
-
-    const restore: Array<() => void> = []
-    if (hemi) {
-      const pI = hemi.intensity
-      const pD = hemi.diffuse.clone()
-      const pG = hemi.groundColor.clone()
-      hemi.intensity = 0.82
-      hemi.diffuse = lighten(warm, 0.45) // warm sky fill
-      hemi.groundColor = mix(ground, warm, 0.3) // warm bounce off cobbles
-      restore.push(() => {
-        hemi.intensity = pI
-        hemi.diffuse = pD
-        hemi.groundColor = pG
-      })
-    }
-    if (sun) {
-      const pI = sun.intensity
-      const pD = sun.diffuse.clone()
-      sun.intensity = 0.62
-      sun.diffuse = lighten(warm, 0.2) // golden key
-      restore.push(() => {
-        sun.intensity = pI
-        sun.diffuse = pD
-      })
-    }
-
-    // Soft cool RIM from behind/above — gives paper cutouts a luminous edge
-    // that separates them from the warm backdrop (the "premium" tell).
-    const rim = new DirectionalLight(`${tag}-rim`, new Vector3(0.5, -0.45, -0.7), scene)
-    rim.intensity = 0.35
-    rim.diffuse = lighten(mix(sky, new Color3(0.7, 0.85, 1), 0.5), 0.1)
-    rim.specular = new Color3(0, 0, 0)
-
-    disposers.push(() => {
-      restore.forEach((r) => r())
-      rim.dispose()
-    })
-  }
+  // ALL lighting now lives in the CINEMATIC PIPELINE (render/pipeline.ts): the
+  // warm KEY sun (the shadow source), the cool sky FILL, and the IBL ambient.
+  // Atmosphere owns ONLY the sky-dome + fog mood (above).
+  //
+  // The old back-RIM DirectionalLight that lived here is REMOVED — not just for
+  // tidiness: a third directional light added AFTER the cinematic ShadowGenerator
+  // forced a material recompile that DROPPED the shadow sampler from receivers,
+  // so the sun's contact shadows silently stopped landing on the ground (verified
+  // by bisection: removing the rim restores shadows). The cinematic key + cool
+  // hemispheric fill + IBL already give cutouts their luminous edge, so the rim
+  // is redundant as well as harmful. Do NOT re-add a stray light here.
 
   // Dust motes REMOVED (2026-06-03): the additive sparkle volume over the plaza
   // read as gimmicky/distracting and "didn't add to the scene" (owner). HD-2D

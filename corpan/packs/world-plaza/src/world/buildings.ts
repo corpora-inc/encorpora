@@ -308,14 +308,49 @@ function resolvePalette(p: Record<string, string> | undefined, style: BuildingSt
   }
 }
 
-/* per-building stucco hue, bucketed so similar buildings share a material. */
+/**
+ * A curated family of warm colonial / Mediterranean WALL HUES. The old town read
+ * MONOTONE because both stucco families were near-identical cream (#e7d4ad /
+ * #dcc59a). A real painted town mixes washed terracotta, ochre, sage, dusty rose,
+ * pale sky-blue, and cream — so the skyline has VARIETY without ever going candy.
+ * Each is a believable lime-washed pigment in the warm "Antigua 1770" key; the
+ * scene's `building` cream is kept as the most common so the palette still reads
+ * as one place. Stable, ordered list → the index IS the cache bucket (material
+ * sharing preserved: same index → same material).
+ */
+const STUCCO_FAMILY: RGB[] = [
+  hexToRgb("#e7d4ad"), // 0 warm cream (scene base)
+  hexToRgb("#e0bf86"), // 1 ochre (deeper)
+  hexToRgb("#cf8d5c"), // 2 washed terracotta
+  hexToRgb("#cbb27e"), // 3 sand
+  hexToRgb("#aab98c"), // 4 dusty sage (deeper)
+  hexToRgb("#d49580"), // 5 dusty rose / faded coral
+  hexToRgb("#93b0b6"), // 6 pale sea-blue (deeper)
+  hexToRgb("#ead9b4"), // 7 light limewash
+  hexToRgb("#bd8c66"), // 8 weathered adobe
+  hexToRgb("#b0a47e"), // 9 olive stone
+  hexToRgb("#d9b85e"), // 10 mustard / saffron
+  hexToRgb("#c7a3ac"), // 11 mauve
+]
+/** weighting: a believable painted town is MOSTLY warm earths with bolder hues as
+ *  punctuation — but the old build was monotone, so the colours get real presence
+ *  here. (Indices into STUCCO_FAMILY, repeated = weighted.) */
+const STUCCO_WEIGHTS = [0, 0, 1, 1, 3, 3, 7, 2, 4, 5, 6, 8, 9, 10, 11, 2, 5, 4]
+
+/* per-building stucco hue, bucketed so similar buildings share a material. The
+ * hue is drawn from the curated colonial family (variety) then given a faint
+ * per-building warmth/shade nudge folded INTO the bucket key (so two buildings of
+ * the same hue+nudge still share one material — material count stays bounded). */
 function stuccoFor(pal: Palette, r: () => number): { rgb: RGB; bucket: number } {
-  // pick between the two wall families, then nudge warmth within a few buckets
-  const family = r() < 0.5 ? pal.stucco : pal.stuccoAlt
-  const bucket = Math.floor(r() * 4) // 0..3
-  const warmth = (bucket - 1.5) * 0.06
-  const rgb = shade(mixRgb(family, { r: 0.96, g: 0.82, b: 0.58 }, Math.max(0, warmth)), warmth * 0.4)
-  const key = (family === pal.stucco ? 0 : 1) * 4 + bucket
+  void pal // family is curated below, independent of the (near-identical) scene pair
+  const idx = STUCCO_WEIGHTS[Math.floor(r() * STUCCO_WEIGHTS.length)]
+  const base = STUCCO_FAMILY[idx]
+  // a small light/dark nudge in 3 steps so a row of same-hue houses still varies a
+  // touch without exploding the material cache (3 nudges × 10 hues = 30 max mats).
+  const nudgeStep = Math.floor(r() * 3) // 0,1,2
+  const t = (nudgeStep - 1) * 0.07
+  const rgb = shade(base, t)
+  const key = idx * 3 + nudgeStep
   return { rgb, bucket: key }
 }
 

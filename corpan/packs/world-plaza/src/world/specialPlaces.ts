@@ -63,6 +63,12 @@ export interface SpecialPlacesOptions {
   palette?: Record<string, string>
   /** clear radius the plaza ring must stay OUTSIDE (the fountain basin). default 4. */
   fountainRadius?: number
+  /**
+   * A HERO clock tower — the town's memorable landmark on every sightline. Placed
+   * at this world position (usually just off the plaza). It rises well above the
+   * rooflines so it reads as a singular silhouette wherever you stand. Omit to skip.
+   */
+  clockTower?: PlaceAnchor
 }
 
 let spuid = 0
@@ -297,6 +303,122 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
       }
     }
     return mergeByMat(parts, `${tag}-urn`)
+  }
+
+  /* ---- a HERO CLOCK TOWER: a tall tapered stone shaft on a stepped base, a
+   * darker belfry band with arched openings + a clock face on each side, a railed
+   * gallery, then a steep pyramidal cap topped with a finial. ~18u tall — it clears
+   * the 2–4-storey town so it's the landmark on every sightline. ONE merged mesh
+   * (NOT instanced — there is exactly one). Built around local origin, feet at 0. */
+  const buildClockTower = (): Mesh => {
+    const stone = propMat(scene, pal.stone, { emissive: 0.3 })
+    const stoneDk = propMat(scene, { r: pal.stone.r * 0.74, g: pal.stone.g * 0.74, b: pal.stone.b * 0.74 }, { emissive: 0.26 })
+    const roof = propMat(scene, pal.terracotta, { emissive: 0.3 })
+    const roofDk = propMat(scene, pal.terracottaDk, { emissive: 0.26 })
+    const trim = propMat(scene, pal.iron, { emissive: 0.3 })
+    const face = propMat(scene, { r: 0.96, g: 0.92, b: 0.82 }, { emissive: 0.5 }) // pale clock dial
+    const gold = propMat(scene, pal.flame, { emissive: 0.7 })
+    const parts: Array<{ m: Mesh; mat: StandardMaterial }> = []
+    const W = 4.2 // shaft side
+    // stepped base
+    const base0 = MeshBuilder.CreateBox(`${tag}-ct0`, { width: W + 2.2, height: 0.7, depth: W + 2.2 }, scene)
+    base0.position.y = 0.35
+    parts.push({ m: base0, mat: stoneDk })
+    const base1 = MeshBuilder.CreateBox(`${tag}-ct1`, { width: W + 1.0, height: 0.6, depth: W + 1.0 }, scene)
+    base1.position.y = 1.0
+    parts.push({ m: base1, mat: stone })
+    // main shaft (slightly tapered via a top cornice), ~11u tall
+    const shaftH = 11
+    const shaft = MeshBuilder.CreateBox(`${tag}-cts`, { width: W, height: shaftH, depth: W }, scene)
+    shaft.position.y = 1.3 + shaftH / 2
+    parts.push({ m: shaft, mat: stone })
+    // vertical quoin bands at the corners (darker) for a built-up stone read
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+      const q = MeshBuilder.CreateBox(`${tag}-ctq`, { width: 0.5, height: shaftH, depth: 0.5 }, scene)
+      q.position.set(sx * (W / 2), 1.3 + shaftH / 2, sz * (W / 2))
+      parts.push({ m: q, mat: stoneDk })
+    }
+    const topShaft = 1.3 + shaftH
+    // cornice band
+    const cornice = MeshBuilder.CreateBox(`${tag}-ctc`, { width: W + 0.6, height: 0.5, depth: W + 0.6 }, scene)
+    cornice.position.y = topShaft + 0.25
+    parts.push({ m: cornice, mat: stoneDk })
+    // belfry: a slightly inset darker band with a CLOCK FACE on all four sides
+    const belfryH = 2.6
+    const belfryY = topShaft + 0.5 + belfryH / 2
+    const belfry = MeshBuilder.CreateBox(`${tag}-ctb`, { width: W - 0.3, height: belfryH, depth: W - 0.3 }, scene)
+    belfry.position.y = belfryY
+    parts.push({ m: belfry, mat: stoneDk })
+    // four clock faces (a pale disc + a darker ring + hands) on each wall
+    for (let s = 0; s < 4; s++) {
+      const a = (s / 4) * Math.PI * 2
+      const nx = Math.sin(a)
+      const nz = Math.cos(a)
+      const r = (W - 0.3) / 2 + 0.06
+      const ring = MeshBuilder.CreateCylinder(`${tag}-ctfr`, { diameter: 1.7, height: 0.12, tessellation: 16 }, scene)
+      ring.rotation.x = Math.PI / 2
+      ring.rotation.y = a
+      ring.position.set(nx * r, belfryY, nz * r)
+      parts.push({ m: ring, mat: stone })
+      const dial = MeshBuilder.CreateCylinder(`${tag}-ctfd`, { diameter: 1.45, height: 0.14, tessellation: 16 }, scene)
+      dial.rotation.x = Math.PI / 2
+      dial.rotation.y = a
+      dial.position.set(nx * (r + 0.02), belfryY, nz * (r + 0.02))
+      parts.push({ m: dial, mat: face })
+      // hour + minute hands: thin boxes lying flat on the dial. The dial plane has
+      // a vertical UP axis (world Y) and a horizontal RIGHT axis (tangent = (nz,-nx)).
+      // A hand of length `len` at clock-angle `ang` (0 = up) ends at up*cos + right*sin.
+      const dz = r + 0.12 // a hair proud of the dial
+      const hand = (len: number, ang: number, wide: number) => {
+        const ex = Math.sin(ang) * len * 0.5 // along RIGHT
+        const ey = Math.cos(ang) * len * 0.5 // along UP
+        const h = MeshBuilder.CreateBox(`${tag}-cth`, { width: wide, height: len, depth: 0.06 }, scene)
+        // rotate the height axis to point along (right*sin + up*cos) within the face
+        h.rotation.z = -ang
+        h.rotation.y = a
+        h.bakeCurrentTransformIntoVertices()
+        h.position.set(nx * dz + nz * ex, belfryY + ey, nz * dz - nx * ex)
+        parts.push({ m: h, mat: trim })
+      }
+      hand(0.62, Math.PI * 0.33, 0.08) // minute hand
+      hand(0.42, Math.PI * 1.15, 0.1) // hour hand
+    }
+    // railed gallery band above the belfry
+    const gallY = belfryY + belfryH / 2 + 0.2
+    const gall = MeshBuilder.CreateBox(`${tag}-ctg`, { width: W + 0.5, height: 0.4, depth: W + 0.5 }, scene)
+    gall.position.y = gallY
+    parts.push({ m: gall, mat: stone })
+    // steep pyramidal CAP (4-sided cone) + finial
+    const capBase = gallY + 0.2
+    const capH = 3.4
+    const cap = MeshBuilder.CreateCylinder(`${tag}-ctcap`, { diameterBottom: (W + 0.5) * Math.SQRT2 * 0.72, diameterTop: 0, height: capH, tessellation: 4 }, scene)
+    cap.rotation.y = Math.PI / 4
+    cap.position.y = capBase + capH / 2
+    parts.push({ m: cap, mat: roof })
+    // a darker ridge collar at the cap base
+    const collar = MeshBuilder.CreateCylinder(`${tag}-ctcol`, { diameter: (W + 0.5) * 1.02, height: 0.3, tessellation: 4 }, scene)
+    collar.rotation.y = Math.PI / 4
+    collar.position.y = capBase + 0.15
+    parts.push({ m: collar, mat: roofDk })
+    // finial: a small ball + spike
+    const ball = MeshBuilder.CreateSphere(`${tag}-ctfb`, { diameter: 0.5, segments: 8 }, scene)
+    ball.position.y = capBase + capH + 0.2
+    parts.push({ m: ball, mat: gold })
+    const spike = MeshBuilder.CreateCylinder(`${tag}-ctsp`, { diameterBottom: 0.12, diameterTop: 0, height: 0.9, tessellation: 6 }, scene)
+    spike.position.y = capBase + capH + 0.75
+    parts.push({ m: spike, mat: gold })
+    return mergeByMat(parts, `${tag}-clocktower`)
+  }
+
+  /* ====================== HERO CLOCK TOWER ====================== */
+  if (opts.clockTower) {
+    const tower = buildClockTower()
+    tower.parent = root
+    tower.position.set(opts.clockTower.x, 0, opts.clockTower.z)
+    tower.isPickable = false
+    tower.alwaysSelectAsActiveMesh = true
+    tower.freezeWorldMatrix()
+    instMeshes.push(tower)
   }
 
   /* ============================ PLAZA RING ============================ */

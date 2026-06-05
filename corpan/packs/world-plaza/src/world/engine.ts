@@ -8,6 +8,12 @@ import { Ray } from "@babylonjs/core/Culling/ray"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { isBoomBlocker } from "./cameraOcclusion"
 import "@babylonjs/core/Materials/standardMaterial"
+import {
+  createCinematicPipeline,
+  type CinematicPipeline,
+  type TimeOfDayName,
+} from "../render/pipeline"
+import type { ShadowGenerator } from "@babylonjs/core/Lights/Shadows/shadowGenerator"
 
 /**
  * Clean-room Babylon foundation for World Plaza. Built from first principles
@@ -29,6 +35,18 @@ export interface WorldEngine {
   setCameraTarget: (pos: Vector3, yaw: number) => void
   start: () => void
   setPerfHudVisible: (v: boolean) => void
+  /**
+   * Opt a mesh into the sun's contact-hardening shadows (it becomes a caster +
+   * receiver). City + character systems call this as their meshes stream in.
+   * Safe to call repeatedly with the same mesh (deduped).
+   */
+  registerShadowCaster: (mesh: AbstractMesh) => void
+  /** the sun's shadow generator (advanced: bulk caster lists, receiver flags). */
+  getShadowGenerator: () => ShadowGenerator
+  /** swap the cinematic time-of-day mood (lights + post + IBL). */
+  setTimeOfDay: (name: TimeOfDayName) => void
+  /** the full cinematic rendering rig (lights / shadows / post / IBL). */
+  cinematic: CinematicPipeline
   dispose: () => void
 }
 
@@ -80,6 +98,8 @@ export interface EngineOptions {
   camDistance?: number
   /** @deprecated use rig.height */
   camHeight?: number
+  /** starting cinematic time-of-day mood; defaults to the premium golden hour. */
+  timeOfDay?: TimeOfDayName
 }
 
 const hexToColor4 = (hex: string, alpha = 1): Color4 => {
@@ -142,6 +162,15 @@ export function createWorldEngine(
   const sun = new DirectionalLight("sun", new Vector3(-0.4, -1, 0.3), scene)
   sun.intensity = 0.5
   sun.position = new Vector3(20, 40, -20)
+
+  // ── CINEMATIC RENDERING RIG ────────────────────────────────────────────────
+  // The single biggest lever from "flat prototype" to "premium game": a real
+  // warm KEY sun casting contact-hardening shadows, a cool sky FILL, IBL ambient,
+  // and a tone-mapped/bloomed/graded post pipeline. It OWNS its own premium
+  // lights and softens the basic "hemi"/"sun" above so we don't double-light.
+  // `update(playerPos)` (driven from the render loop) keeps the tight shadow
+  // frustum on the player so a single modest shadow map covers the streamed city.
+  const cinematic = createCinematicPipeline(scene, camera, { timeOfDay: opts.timeOfDay })
 
   const frameCbs = new Set<(dt: number) => void>()
   const onFrame = (cb: (dt: number) => void) => {
@@ -295,6 +324,10 @@ export function createWorldEngine(
     aim.y += (followPos.y + rig.lookHeight - aim.y) * aAim
     camera.setTarget(aim)
 
+    // Re-center the tight sun-shadow frustum on the player so the streamed city
+    // keeps crisp contact shadows without paying for a city-wide shadow map.
+    cinematic.update(followPos)
+
     updateHud(dtMs)
     scene.render()
   }
@@ -313,10 +346,15 @@ export function createWorldEngine(
       hudVisible = v
       hud.style.display = v ? "block" : "none"
     },
+    registerShadowCaster: cinematic.registerShadowCaster,
+    getShadowGenerator: cinematic.getShadowGenerator,
+    setTimeOfDay: cinematic.setTimeOfDay,
+    cinematic,
     dispose: () => {
       window.removeEventListener("resize", onResize)
       frameCbs.clear()
       hud.remove()
+      cinematic.dispose()
       scene.dispose()
       engine.dispose()
     },

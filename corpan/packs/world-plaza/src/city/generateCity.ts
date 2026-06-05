@@ -113,17 +113,23 @@ const WALL_THICK = 4
 const GATE_HALF_W = AVENUE_W / 2 + 3
 
 /** base ground surface under each zone (roads bake on top). */
+// PAVING VARIETY (living-world): the old map was an endless flat-dirt plain under
+// every district. We give each district a base surface that reads as a DIFFERENT
+// kind of place — formal flagstone at the civic core, cobbled downtown streets,
+// warm earth/garden-path in the leafy residential quarters, working stone at the
+// harbor — so the ground tells you where you are. (Surfaces are the 6 the shared
+// MaterialLibrary bakes; no new materials, so the phone budget is unchanged.)
 const BASE_SURFACE_BY_ZONE: Record<CityZoneId, CitySurface> = {
   plaza: "flagstone",
-  downtown: "dirt",
-  residential: "dirt",
-  market: "dirt",
+  downtown: "cobble", // paved high-street, not bare dirt
+  residential: "dirt", // warm earth + garden feel under the townhouses
+  market: "stone", // worn market-square stone underfoot
   harbor: "stone",
   park: "grass",
   station: "stone",
-  civic: "dirt",
+  civic: "flagstone", // civic quarter shares the formal flagstone
   industrial: "stone",
-  uptown: "dirt", // #34 upscale residential — same warm earth as residential
+  uptown: "dirt", // #34 upscale residential — warm earth, leafier
   financial: "flagstone", // #34 the towers stand on civic flagstone
   airport: "stone", // #34 apron/forecourt stone
   cliff: "stone", // #34 boundary band (clifftop walk reads as stone)
@@ -146,22 +152,27 @@ const ZONE_SPECS: Record<CityZoneId, ZoneSpec> = {
   // are unchanged — sizes below are left as-is). Weights tuned for believable
   // districts: downtown leans to mid-rise shops/inns/arcades, residential to
   // townhouses, the park stays green with the occasional chapel/lodge.
-  plaza: { kinds: ["inn", "market-hall", "shop", "chapel"], size: [7, 11], gap: 0.45, dressing: 1.2 },
-  downtown: { kinds: ["shop", "shop", "shop", "inn", "inn", "market-hall", "house"], size: [8, 13], gap: 0.08, dressing: 0.9 },
-  residential: { kinds: ["house", "house", "house", "shop"], size: [6, 9], gap: 0.4, dressing: 1.1 },
-  market: { kinds: ["market-hall", "shop", "shop", "workshop"], size: [6, 10], gap: 0.25, dressing: 1.6 },
-  harbor: { kinds: ["workshop", "workshop", "market-hall", "inn"], size: [8, 12], gap: 0.3, dressing: 1.1 },
-  park: { kinds: ["house", "chapel"], size: [6, 8], gap: 0.86, dressing: 2.3 },
-  station: { kinds: ["market-hall", "inn", "shop", "shop"], size: [9, 14], gap: 0.18, dressing: 1.1 },
-  civic: { kinds: ["market-hall", "inn", "chapel"], size: [10, 16], gap: 0.35, dressing: 0.8 },
-  industrial: { kinds: ["workshop", "workshop", "market-hall"], size: [8, 12], gap: 0.2, dressing: 0.7 },
+  // DENSITY PASS (living-world): the town read as a near-empty plain — gaps were
+  // far too high and dressing too thin, so blocks were mostly void with the odd
+  // box. Gaps pulled DOWN (fuller streets) and dressing pushed UP across the board
+  // so the mid-ground has THINGS. The park stays the green breather (high gap, lots
+  // of trees), but everywhere else now reads built + furnished.
+  plaza: { kinds: ["inn", "market-hall", "shop", "chapel"], size: [7, 11], gap: 0.3, dressing: 2.2 },
+  downtown: { kinds: ["shop", "shop", "shop", "inn", "inn", "market-hall", "house"], size: [8, 13], gap: 0.05, dressing: 1.5 },
+  residential: { kinds: ["house", "house", "house", "shop"], size: [6, 9], gap: 0.26, dressing: 2.0 },
+  market: { kinds: ["market-hall", "shop", "shop", "workshop"], size: [6, 10], gap: 0.16, dressing: 2.8 },
+  harbor: { kinds: ["workshop", "workshop", "market-hall", "inn"], size: [8, 12], gap: 0.22, dressing: 1.8 },
+  park: { kinds: ["house", "chapel"], size: [6, 8], gap: 0.84, dressing: 3.4 },
+  station: { kinds: ["market-hall", "inn", "shop", "shop"], size: [9, 14], gap: 0.12, dressing: 1.8 },
+  civic: { kinds: ["market-hall", "inn", "chapel"], size: [10, 16], gap: 0.24, dressing: 1.5 },
+  industrial: { kinds: ["workshop", "workshop", "market-hall"], size: [8, 12], gap: 0.16, dressing: 1.3 },
   // #34 districts. uptown = upscale townhouses (lower/greener than downtown);
   // financial = tallest, densest towers (least gap, biggest footprints); airport =
   // sparse big sheds; cliff = decor-only (boundary band, kept clear for the walk).
-  uptown: { kinds: ["house", "house", "inn", "shop"], size: [7, 10], gap: 0.45, dressing: 1.4 },
-  financial: { kinds: ["inn", "inn", "market-hall", "shop", "shop"], size: [11, 16], gap: 0.05, dressing: 0.8 },
-  airport: { kinds: ["market-hall", "workshop"], size: [12, 18], gap: 0.5, dressing: 0.5 },
-  cliff: { kinds: ["house"], size: [6, 8], gap: 0.92, dressing: 1.6 },
+  uptown: { kinds: ["house", "house", "inn", "shop"], size: [7, 10], gap: 0.3, dressing: 2.2 },
+  financial: { kinds: ["inn", "inn", "market-hall", "shop", "shop"], size: [11, 16], gap: 0.04, dressing: 1.3 },
+  airport: { kinds: ["market-hall", "workshop"], size: [12, 18], gap: 0.45, dressing: 0.8 },
+  cliff: { kinds: ["house"], size: [6, 8], gap: 0.9, dressing: 2.0 },
 }
 
 /* ----------------------------------------------------------- landmark plan */
@@ -282,8 +293,10 @@ function fillBlock(
   // so an active chunk stays inside the draw-call budget (buildings don't
   // instance across each other — each merged building is its own draw).
   const cell = spec.size[0] + r() * (spec.size[1] - spec.size[0])
-  const cols = Math.max(1, Math.floor(innerW / (cell + 5)))
-  const rows = Math.max(1, Math.floor(innerD / (cell + 5)))
+  // tighter gutter (was cell+5) so a block packs a fuller terrace of buildings —
+  // the old generous gutter left a handful of boxes adrift in a big empty block.
+  const cols = Math.max(1, Math.floor(innerW / (cell + 2.5)))
+  const rows = Math.max(1, Math.floor(innerD / (cell + 2.5)))
   const cw = innerW / cols
   const cd = innerD / rows
   for (let cI = 0; cI < cols; cI++) {
@@ -322,12 +335,12 @@ function dressBlock(
 ): CityProp[] {
   const out: CityProp[] = []
   const spec = ZONE_SPECS[zone]
-  const n = Math.round((4 + r() * 4) * spec.dressing)
+  const n = Math.round((6 + r() * 5) * spec.dressing)
   const innerW = bw - SIDEWALK
   const innerD = bd - SIDEWALK
   const freeAt = (x: number, z: number): boolean =>
     !buildings.some(
-      (b) => Math.abs(x - b.x) < b.w / 2 + 1.2 && Math.abs(z - b.z) < b.d / 2 + 1.2,
+      (b) => Math.abs(x - b.x) < b.w / 2 + 1.0 && Math.abs(z - b.z) < b.d / 2 + 1.0,
     )
   // species menu per zone (visual only). Tuned for a grounded streetscape:
   // lamps line the avenues, benches + planters + the odd signpost give the
@@ -354,6 +367,63 @@ function dressBlock(
     out.push({ species, x, z, scale: 0.9 + r() * 0.3, shadow: 0.6 })
   }
   return out
+}
+
+/* ---------------------------------------------------------- plaza dressing */
+
+/**
+ * Furnish the central plaza disc with a tiered terrace around the fountain so the
+ * civic heart reads as a place people gather, not an empty floor. Rings (clear of
+ * the fountain at origin and the spawn at (0,12)):
+ *   • inner ring (r≈9): benches facing the fountain + lamps between them
+ *   • mid ring   (r≈15): potted trees alternating with flower planters
+ *   • outer arc  (r≈22): a café terrace — tables (carts) + the odd stall + signpost
+ * Deterministic; placements yaw to face the fountain so benches/tables read right.
+ */
+function dressPlaza(out: CityProp[], r: () => number): void {
+  const clear = (x: number, z: number): boolean => {
+    if (x * x + z * z < 5 * 5) return false // fountain footprint
+    if (Math.abs(x) < 3 && Math.abs(z - 12) < 3) return false // spawn standing-room
+    if (Math.abs(x) < 3.5 && z > 0) return false // keep the fountain→spawn path open
+    return true
+  }
+  const push = (species: CityProp["species"], x: number, z: number, scale: number, faceCenter = true) => {
+    if (!clear(x, z)) return
+    // yaw so the prop's front faces the fountain (atan2 toward origin).
+    const yaw = faceCenter ? Math.atan2(-x, -z) : r() * Math.PI * 2
+    out.push({ species, x, z, scale, yaw, shadow: 0.7 })
+  }
+  // inner ring: benches + lamps, evenly spaced.
+  const inner = 9
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2 + 0.2
+    const x = Math.cos(a) * inner
+    const z = Math.sin(a) * inner
+    push(i % 2 === 0 ? "bench" : "lamp", x, z, 1.0)
+  }
+  // mid ring: potted trees + planters.
+  const mid = 15
+  for (let i = 0; i < 12; i++) {
+    const a = (i / 12) * Math.PI * 2
+    const x = Math.cos(a) * mid + (r() - 0.5) * 1.5
+    const z = Math.sin(a) * mid + (r() - 0.5) * 1.5
+    push(i % 3 === 0 ? "tree" : i % 3 === 1 ? "planter" : "trough", x, z, 0.95 + r() * 0.2, false)
+  }
+  // outer café/market arc: tables (carts), a few stalls, signposts + lamps.
+  const outer = 22
+  for (let i = 0; i < 14; i++) {
+    const a = (i / 14) * Math.PI * 2 + 0.15
+    const x = Math.cos(a) * (outer + (r() - 0.5) * 3)
+    const z = Math.sin(a) * (outer + (r() - 0.5) * 3)
+    const pick = i % 4
+    push(pick === 0 ? "cart" : pick === 1 ? "stall" : pick === 2 ? "lamp" : "tree", x, z, 0.95 + r() * 0.25, pick === 0)
+  }
+  // a loose knot of market crates/barrels off to one side for life.
+  for (let i = 0; i < 6; i++) {
+    const x = -18 + r() * 6
+    const z = -10 + r() * 8
+    push(r() < 0.5 ? "crate" : "barrel", x, z, 0.9 + r() * 0.2, false)
+  }
 }
 
 /* ------------------------------------------------- landmark hero footprints */
@@ -450,8 +520,15 @@ export function generateCity(seed = 20260603): CityLayout {
   const spawn = { x: 0, z: 12 }
   allAnchors.push({ id: "plaza", kind: "spawn", x: 0, z: 12, facing: 0, label: "Grand Plaza" })
   allAnchors.push({ id: "fountain", kind: "fountain", x: 0, z: 0, facing: 0, label: "Plaza Fountain" })
-  // keep the plaza disc clear of generic infill.
-  claimed.push({ x: 0, z: 0, w: 70, d: 70 })
+  // keep the plaza disc clear of generic INFILL (buildings)... a touch tighter
+  // (was 70×70) so buildings ring the square closer and it doesn't read as a void.
+  claimed.push({ x: 0, z: 0, w: 58, d: 58 })
+  // ...but DRESS it: the plaza was a void you stood in. Ring the fountain with a
+  // tiered terrace — an inner ring of benches + lamps facing the water, a mid ring
+  // of planters + potted trees, and an outer arc of café tables (carts) + a small
+  // market knot — so the civic heart reads as a LIVED-IN square, not a parking lot.
+  // All placed clear of the fountain (r≈3.5) and the spawn point (0,12).
+  dressPlaza(allProps, r)
 
   // place landmarks: snap each target to the nearest block center, drop hero.
   const blockCenters = (): Array<{ x: number; z: number; w: number; d: number }> => {

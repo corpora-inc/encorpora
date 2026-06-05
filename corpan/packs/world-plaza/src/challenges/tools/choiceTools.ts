@@ -197,6 +197,10 @@ export const fastTranslate: ToolImpl = {
         return {
           prompt: p.target,
           promptSub: p.romanization || undefined,
+          // VOICE the target phrase (host TTS) on each round — you HEAR the language
+          // you're learning, not just read it. Leans on our on-device TTS strength;
+          // the city/scene becomes audible. runSeries speaks `round.speak` on mount.
+          speak: p.target,
           options: opts,
           correct: opts.indexOf(p.native),
         }

@@ -70,13 +70,14 @@ describe("QuestEngine — es-guadalajara-route (#26: deterministic, always-compl
 
     expect(engine.state().complete).toBe(true)
     expect(completeFired).toBe(1)
-    expect(inventory.xp()).toBe(xpBefore + 80)
-    expect(inventory.coins()).toBe(20)
+    // Reward values mirror content/quests/es-guadalajara.json (xp 240, coins 360).
+    expect(inventory.xp()).toBe(xpBefore + 240)
+    expect(inventory.coins()).toBe(360)
     expect(inventory.has("map-scrap")).toBe(true)
 
     // Idempotent: re-advancing a done step does nothing.
     expect(engine.advance("gate")).toBe(false)
-    expect(inventory.coins()).toBe(20)
+    expect(inventory.coins()).toBe(360)
   })
 
   it("getQuestMarkers points at the current objective anchor (harbor → bridge)", () => {

@@ -1,6 +1,19 @@
 import type { GroundedCutout } from "../render/cutout"
 import type { CharacterSpec, Expression } from "./characterSpec"
 import { characterDraw, moodToEmotion, type Pose } from "./characterArt"
+import type { FigurePose } from "./figurePose"
+
+/**
+ * A figure that can consume the richer per-frame {@link FigurePose} for real 3D
+ * limb + head motion (the `create3DFigure` look). The flat cutout does NOT
+ * implement this; we feature-detect it so animation stays additive.
+ */
+interface PosableFigure {
+  setPose: (pose: FigurePose) => void
+}
+function isPosable(c: GroundedCutout): c is GroundedCutout & PosableFigure {
+  return typeof (c as Partial<PosableFigure>).setPose === "function"
+}
 
 /**
  * animator — cheap, state-driven cutout animation channels.
@@ -88,6 +101,7 @@ export interface Animator {
 const quant = (v: number, steps: number) => Math.round(v * steps) / steps
 
 export function createAnimator(cutout: GroundedCutout, spec: CharacterSpec): Animator {
+  const posable = isPosable(cutout) ? cutout : null
   let state: AnimState = "idle"
   let speed = 0
   let bobPhase = Math.random() * Math.PI * 2 // desync the crowd
@@ -95,6 +109,15 @@ export function createAnimator(cutout: GroundedCutout, spec: CharacterSpec): Ani
   let blinkTimer = 1 + Math.random() * 4
   let blinkT = 0 // >0 = mid-blink
   let waveT = 0 // >0 = mid-wave one-shot
+
+  // ── idle "life" channels (3D-figure only): a slow weight-shift sway and an
+  // occasional head look-around so a standing person never reads as frozen. ──
+  let swayPhase = Math.random() * Math.PI * 2
+  let lookTimer = 2 + Math.random() * 5 // until the next idle glance
+  let lookYaw = 0 // current eased head yaw target
+  let lookYawCur = 0 // eased value we feed
+  // the richer pose we feed a posable (3D) figure each frame.
+  const fpose: FigurePose = {}
 
   // --- talk-mouth channels ---
   // Procedural cadence: a couple of detuned oscillators + a slow "syllable gate"
@@ -239,8 +262,48 @@ export function createAnimator(cutout: GroundedCutout, spec: CharacterSpec): Ani
       pose.rightArm = 0
     }
 
+    // ---- IDLE LIFE (posable 3D figure only): sway + occasional look-around ----
+    swayPhase += dt * (state === "walk" ? 0 : 1.1)
+    const walking = state === "walk" && speed > 0.02
+    // weight-shift sway only when idle/talking (not mid-stride)
+    const sway = walking ? 0 : Math.sin(swayPhase) * 0.035
+    // idle glances: every few seconds pick a new gentle head yaw, then ease back.
+    if (!walking) {
+      lookTimer -= dt
+      if (lookTimer <= 0) {
+        lookYaw = (Math.random() - 0.5) * 0.7 // up to ~±20°
+        lookTimer = 2.5 + Math.random() * 5
+        // schedule a return-to-centre shortly after
+        setTimeout(() => { lookYaw = 0 }, 900 + Math.random() * 800)
+      }
+    } else {
+      lookYaw = 0
+    }
+    lookYawCur += (lookYaw - lookYawCur) * Math.min(1, dt * 4)
+
+    if (posable) {
+      fpose.stride = pose.stride
+      fpose.lean = walking ? 0.06 + speed * 0.05 : 0 // lean into the walk
+      fpose.sway = sway
+      fpose.rightArm = pose.rightArm
+      fpose.leftArm = pose.leftArm
+      fpose.headYaw = lookYawCur
+      fpose.headTilt = pose.headTilt
+      // a gentle nod on talk for liveliness
+      fpose.headNod = state === "talk" ? Math.sin(talkPhase * 0.5) * 0.04 : 0
+      fpose.mouth = pose.mouth
+      fpose.blink = pose.blink
+      fpose.emotion = pose.emotion
+      fpose.emotionAmt = pose.emotionAmt
+      // brow lifts a touch with mouth open (talk emphasis) + on surprise emotion.
+      fpose.browRaise = Math.min(1, (pose.mouth ?? 0) * 0.5)
+      posable.setPose(fpose)
+    }
+
     // Throttle canvas repaints to ~24fps max per character; dirty-checked so a
-    // resting NPC never repaints. Crowd stays well within budget.
+    // resting NPC never repaints. Crowd stays well within budget. (The 3D figure
+    // repaints its own face inside setPose with the same dirty-check, so this
+    // path is the flat-cutout repaint — harmless when 3D.)
     repaintAccum += dt
     if (repaintAccum >= 0.04) {
       repaintAccum = 0
