@@ -2,6 +2,8 @@ import type { Scene } from "@babylonjs/core/scene"
 import "@babylonjs/core/Meshes/thinInstanceMesh"
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode"
 import type { Mesh } from "@babylonjs/core/Meshes/mesh"
+import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
+import { Constants } from "@babylonjs/core/Engines/constants"
 import type { Matrix } from "@babylonjs/core/Maths/math"
 import { createBuildings, type Blocker } from "../world/buildings"
 import { instanceMatrix } from "../world/props3d"
@@ -44,6 +46,22 @@ import type { CityChunk, CityProp, CitySurface } from "./layout"
  * façade pool, or the prop masters — those are city-owned (cache.dispose()).
  */
 
+/**
+ * The minimal shadow seam a chunk needs to opt its meshes into the sun's
+ * directional shadow map. The engine (engine.ts / pipeline.ts) supplies this: a
+ * `registerShadowCaster` (the lazy generator + receiver-flag path) and direct
+ * access to the `ShadowGenerator` so a chunk can DE-register on stream-out
+ * (keeping the auto-fit shadow box player-local + bounded). We type the
+ * generator loosely (only the two methods we touch) so chunkMesh.ts stays free
+ * of a hard Babylon ShadowGenerator import.
+ */
+export interface ChunkShadowApi {
+  registerShadowCaster: (mesh: AbstractMesh) => void
+  getShadowGenerator: () => {
+    removeShadowCaster: (mesh: AbstractMesh, includeDescendants?: boolean) => unknown
+  }
+}
+
 export interface ChunkMesh {
   /** total draw-contributing meshes (ground + buildings + prop species). */
   drawCount: number
@@ -55,6 +73,17 @@ export interface ChunkMesh {
    * `mountCity` teardown ever calls `dispose`.
    */
   setVisible: (v: boolean) => void
+  /**
+   * Opt this chunk's BUILDING meshes in as sun shadow CASTERS and flag its GROUND
+   * meshes as RECEIVERS (so buildings throw real directional shadows onto the
+   * plaza). Called by the stream manager when the chunk ENTERS the near set, and
+   * `setShadows(api, false)` when it LEAVES — so the auto-fit shadow box stays
+   * player-local + bounded (registering the whole 1520-wide map would be perf
+   * death). Idempotent + safe before/after the shadow generator exists. Props are
+   * deliberately NOT registered (airy thin-instanced scatter; casting from them is
+   * costly + low-value — their existing contact shadows read fine).
+   */
+  setShadows: (api: ChunkShadowApi, on: boolean) => void
   dispose: () => void
 }
 
@@ -86,6 +115,11 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
   const root = new TransformNode(`wp-city-chunk-${chunk.key}`, scene)
   const disposers: Array<() => void> = []
   let drawCount = 0
+  // Shadow seam (track per chunk so the streamer can opt this chunk's buildings in
+  // as casters / its ground in as receivers when it's NEAR, and pull them back out
+  // when it's far — keeping the auto-fit shadow box player-local + bounded).
+  const buildingMeshes: AbstractMesh[] = [] // sun shadow CASTERS (solid bodies + roofs)
+  const groundMeshes: AbstractMesh[] = [] // sun shadow RECEIVERS (the flagstone/cobble)
   // Per-phase WORK time (excludes the idle frames BETWEEN time-sliced steps). The
   // reported TOTAL is the sum of actual build work for this chunk — the real
   // per-chunk cost — NOT the wall-clock span from enqueue to completion.
@@ -107,6 +141,8 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
     g.root.parent = root
     disposers.push(g.dispose) // shared materials survive
     drawCount += g.meshCount
+    // The flat ground surfaces are the shadow RECEIVERS (buildings throw onto them).
+    for (const m of g.root.getChildMeshes()) groundMeshes.push(m)
     if (perfEnabled()) tGround = performance.now() - t
   }
 
@@ -148,6 +184,19 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
     })
     handle.root.parent = root
     disposers.push(handle.dispose) // frees only THIS building's meshes
+    // Collect ONLY the building's BIG SILHOUETTE pieces as shadow casters: the
+    // merged opaque body (`wp-building-…`, which already folds in the walls +
+    // windows) and the main roof masses (`wp-r-`, `wp-r2-`). We deliberately do
+    // NOT register the swarm of small details (parapet caps, entry steps, chimneys,
+    // balcony rails, dome finials, awning/sign alpha planes): each is a separate
+    // mesh, and a building has ~8 of them, so registering them all would balloon
+    // the per-frame shadow-map draw count ~8× for shadows too tiny to read. Casting
+    // the body + roof gives the long golden-hour silhouette at ~1–3 casters/building
+    // instead of ~8 — the difference between a phone-friendly map and perf death.
+    // (registerShadowCaster also flags each as a receiver — walls catch each other.)
+    for (const m of handle.root.getChildMeshes()) {
+      if (isBigCaster(m.name)) buildingMeshes.push(m)
+    }
     drawCount += 1
     bIndex++
     if (perfEnabled()) tBld += performance.now() - t
@@ -213,6 +262,7 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
   }
 
   let disposed = false
+  let shadowsOn = false // tracks whether this chunk is currently in the caster set
 
   const finishLog = () => {
     if (!perfEnabled()) return
@@ -234,6 +284,29 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
       // render + frustum culling at ~zero cost, and re-enabling restores it
       // instantly (no rebuild). The meshes stay resident (build-once).
       root.setEnabled(v)
+    },
+    setShadows: (api: ChunkShadowApi, on: boolean) => {
+      if (disposed) return
+      if (on === shadowsOn) return // idempotent
+      shadowsOn = on
+      if (on) {
+        // Buildings become casters (registerShadowCaster also flags each as a
+        // receiver — walls catch each other's shadows). Ground meshes are flagged
+        // receivers directly + marked dirty so their material recompiles WITH the
+        // shadow sampler (a material that already compiled before becoming a
+        // receiver would render shadowless).
+        for (const m of buildingMeshes) api.registerShadowCaster(m)
+        for (const m of groundMeshes) {
+          m.receiveShadows = true
+          m.material?.markAsDirty(Constants.MATERIAL_LightDirtyFlag)
+        }
+      } else {
+        // Far chunk: drop its buildings from the caster set so the auto-fit shadow
+        // box stays player-local + bounded. We leave receiveShadows ON (cheap; the
+        // sampler is already compiled and a far chunk is disabled in render anyway).
+        const sg = api.getShadowGenerator()
+        for (const m of buildingMeshes) sg.removeShadowCaster(m, false)
+      }
     },
     dispose: () => {
       if (disposed) return
@@ -297,6 +370,19 @@ export function buildChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
 
 function perfEnabled(): boolean {
   return !!(globalThis as { __WP_CITY_PERF?: boolean }).__WP_CITY_PERF
+}
+
+/**
+ * The BIG silhouette pieces of a building that are worth casting the sun's
+ * shadow: the merged opaque body (`wp-building-…`) and the main roof masses
+ * (`wp-r-` low/base roof, `wp-r2-` upper roof). Everything else — parapet caps
+ * (`wp-pp-`), entry steps (`wp-st-`/`wp-sh-`), chimneys (`wp-ch-`), balcony
+ * floor/rail (`wp-bf-`/`wp-br-`), dome finials (`wp-cx-`/`wp-cy-`), awnings
+ * (`wp-aw-`) and signs (`wp-sg-`) — casts a shadow too small to read, so we keep
+ * it OUT of the per-frame shadow-map render to stay phone-friendly.
+ */
+function isBigCaster(name: string): boolean {
+  return name.startsWith("wp-building-") || name.startsWith("wp-r-") || name.startsWith("wp-r2-")
 }
 
 /* small stable string hash for per-chunk seeds. */

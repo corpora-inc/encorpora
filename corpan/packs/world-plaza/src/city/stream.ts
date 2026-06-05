@@ -1,7 +1,7 @@
 import type { Scene } from "@babylonjs/core/scene"
 import type { Vector3 } from "@babylonjs/core/Maths/math"
 import type { MaterialLibrary } from "../render/materials"
-import { beginChunkMesh, type ChunkBuilder, type ChunkMesh } from "./chunkMesh"
+import { beginChunkMesh, type ChunkBuilder, type ChunkMesh, type ChunkShadowApi } from "./chunkMesh"
 import type { CityCache } from "./cityCache"
 import { type CityChunk, type CityLayout, distSqToBounds } from "./layout"
 
@@ -76,6 +76,23 @@ export interface StreamOptions {
   frameBudgetMs?: number
   /** seconds between coarse proximity passes (re-sort queue + retoggle vis). */
   passInterval?: number
+  /**
+   * Sun shadow seam. When supplied, each chunk's buildings opt in as directional
+   * shadow CASTERS (and its ground as a RECEIVER) the moment the chunk ENTERS the
+   * near set, and opt OUT the moment it leaves — so the auto-fit shadow box stays
+   * PLAYER-LOCAL + BOUNDED (only the near chunks cast). Omitted → no city shadows
+   * (the `?noshadows` / `window.__wpCityShadows=false` kill switch in game.ts).
+   */
+  shadowApi?: ChunkShadowApi
+  /**
+   * Half-distance of the TIGHTER shadow-caster gate. Shadows only read on the
+   * ground close to the player (the sun's auto-fit ortho box is player-local), so
+   * we cast from a SMALLER radius than the render `visibilityRadius` — only the
+   * nearest few chunks cast. Default 80u (~2-4 chunks) keeps the per-frame
+   * shadow-map draw count bounded while every shadow visible on the near ground is
+   * still cast. Always clamped ≤ `visibilityRadius`.
+   */
+  shadowRadius?: number
 }
 
 export interface StreamManager {
@@ -110,6 +127,11 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
     // so the budget spreads a cold chunk over several frames and never spikes.
     frameBudgetMs = 5,
     passInterval = 0.12,
+    shadowApi,
+    // Cast shadows from a TIGHTER radius than render visibility — shadows only
+    // read close to the player, so only the nearest chunks need to cast. Clamped
+    // to the visibility radius (never cast from a chunk that isn't even rendered).
+    shadowRadius = 80,
   } = opts
 
   // EVERY built chunk's meshes (kept for the session — build-once, never disposed
@@ -130,10 +152,15 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
   for (const c of layout.chunks) queue.push(c.key)
 
   const visRSq = visibilityRadius * visibilityRadius
+  // shadow gate is tighter than (or equal to) the render radius — only the nearest
+  // chunks cast, keeping the shadow-map draw count bounded.
+  const shadowRSq = Math.min(shadowRadius, visibilityRadius) ** 2
   let sinceLastPass = passInterval // run immediately on the first update
 
   // which built chunks are currently ENABLED (near). Drives the NEAR-set notify.
   const enabled = new Set<string>()
+  // which built chunks currently CAST shadows (a tighter subset of `enabled`).
+  const shadowed = new Set<string>()
 
   // tracked so we only log/notify when the NEAR set or draw count actually changes.
   let lastSig = ""
@@ -196,7 +223,8 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
     let changed = false
     for (const [key, mesh] of built) {
       const c = chunkByKey.get(key)
-      const near = !!c && distSqToBounds(c.bounds, cx, cz) <= visRSq
+      const dSq = c ? distSqToBounds(c.bounds, cx, cz) : Infinity
+      const near = !!c && dSq <= visRSq
       const wasEnabled = enabled.has(key)
       if (near && !wasEnabled) {
         mesh.setVisible(true)
@@ -206,6 +234,20 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
         mesh.setVisible(false)
         enabled.delete(key)
         changed = true
+      }
+      // Shadow gate is INDEPENDENT + tighter: a chunk casts only when within the
+      // (smaller) shadow radius, so the per-frame shadow-map draw count stays
+      // bounded to the few chunks whose shadows actually land on the near ground.
+      if (shadowApi) {
+        const shadowNear = !!c && dSq <= shadowRSq
+        const wasShadowed = shadowed.has(key)
+        if (shadowNear && !wasShadowed) {
+          mesh.setShadows(shadowApi, true)
+          shadowed.add(key)
+        } else if (!shadowNear && wasShadowed) {
+          mesh.setShadows(shadowApi, false)
+          shadowed.delete(key)
+        }
       }
     }
 
@@ -296,6 +338,7 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
       for (const b of building.values()) b.dispose()
       building.clear()
       enabled.clear()
+      shadowed.clear()
       queue.length = 0
     },
   }

@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **The streamed city casts the sun's shadows.** Buildings no longer "float" on
+  contact shadows alone — the streamed chunk buildings (+ the hero clock tower,
+  fountain, and bridge) now cast the golden-hour sun's directional shadows, and
+  the chunk ground receives them. Casters are opted in/out per chunk as the
+  player moves, bounded to a tight player-local shadow radius (smaller than the
+  render radius) so the per-frame shadow-map draw count stays phone-friendly:
+  only each building's big silhouette (body + roof) casts, not the swarm of
+  small details (parapets, steps, awnings, signs, bridge balusters/voussoirs).
+  Gated behind a kill switch (`?noshadows` URL param or
+  `window.__wpCityShadows = false`), defaulting ON. (`src/city/{mountCity,stream,
+  chunkMesh}.ts` + game.ts wiring.)
 - **Cinematic rendering (flat prototype → premium golden-hour look).** A new
   rendering pipeline (`src/render/pipeline.ts`) layers real lighting + post over
   the scene: a warm directional KEY sun casting soft, contact-hardening PCF

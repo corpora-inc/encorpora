@@ -7,6 +7,7 @@ import { findAnchor } from "./layout"
 import { createStreamManager, type StreamManager } from "./stream"
 import { createStreamingCollision, type StreamingCollision } from "./collision"
 import { createCityCache, type CityCache } from "./cityCache"
+import type { ChunkShadowApi } from "./chunkMesh"
 import { buildCityWall, wallSegmentsOf, type CityWall } from "../world/cityWall"
 
 /**
@@ -51,6 +52,15 @@ export interface MountCityOptions {
     frameBudgetMs?: number
     passInterval?: number
   }
+  /**
+   * Sun shadow seam (engine.ts: `registerShadowCaster` + `getShadowGenerator`).
+   * When supplied, the streamed NEAR chunks' buildings cast the sun's directional
+   * shadows + their ground receives them — bounded to the player-local near set so
+   * the auto-fit shadow box (and shadow-map resolution) stays tight. Omit to ship
+   * the city WITHOUT cast shadows (the `?noshadows` / `window.__wpCityShadows`
+   * kill switch).
+   */
+  shadowApi?: ChunkShadowApi
 }
 
 export interface MountedCity {
@@ -143,6 +153,8 @@ export function mountCity(scene: Scene, opts: MountCityOptions): MountedCity {
     palette,
     // every time the active chunk set changes, rebuild collision from it.
     onActiveChange: (active) => collision.setActiveChunks(active),
+    // sun shadow seam: near chunks cast/receive, far chunks opt out (player-local).
+    ...(opts.shadowApi ? { shadowApi: opts.shadowApi } : {}),
     ...opts.stream,
   })
 

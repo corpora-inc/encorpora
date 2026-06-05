@@ -361,10 +361,39 @@ function buildWorld(
   // deterministic per scene yet swappable later.
   const citySeed = Array.from(scene.id).reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7)
   const layout = generateCity(citySeed)
+  // ── CITY CAST-SHADOWS FLAG ──────────────────────────────────────────────────
+  // Wire the streamed buildings (+ static landmarks) into the sun's directional
+  // shadow map so they throw real golden-hour shadows onto the plaza, instead of
+  // floating on contact shadows alone. Bounded to the PLAYER-LOCAL near chunk set
+  // (far chunks opt out) so the auto-fit shadow box + map resolution stay tight.
+  // KILL SWITCH (defaults ON): set `?noshadows` in the URL or
+  // `window.__wpCityShadows = false` BEFORE boot to disable instantly if it tanks
+  // on a device. When off, the city ships exactly as before (props/characters keep
+  // their contact shadows; buildings simply don't cast).
+  const cityShadowsEnabled = (() => {
+    if (typeof window === "undefined") return true
+    const w = window as unknown as { __wpCityShadows?: boolean }
+    if (w.__wpCityShadows === false) return false
+    try {
+      if (new URLSearchParams(window.location.search).has("noshadows")) return false
+    } catch {
+      /* no-op: malformed search string → keep shadows on */
+    }
+    return true
+  })()
   const city = mountCity(world.scene, {
     layout,
     getCameraPos: () => world.camera.position, // streaming origin (camera follows player)
     palette: scene.palette,
+    // Sun shadow seam — only the player-local near chunks cast (bounded set).
+    ...(cityShadowsEnabled
+      ? {
+          shadowApi: {
+            registerShadowCaster: world.registerShadowCaster,
+            getShadowGenerator: world.getShadowGenerator,
+          },
+        }
+      : {}),
   })
   // Synthesize a RoomTopology for the consumers that still expect one (player
   // controller bounds, crowd placement, the MapView). Collision now comes from the
@@ -478,6 +507,32 @@ function buildWorld(
         vertices: s.getTotalVertices(),
         texSizeHistogram: sizes,
       }
+    }
+    // Dev-only shadow probe (QA): is the city-shadow wiring on, does the sun's
+    // shadow generator exist, and how many casters are currently registered? Lets
+    // a harness PROVE the bounded player-local caster set (not just read pixels).
+    ;(window as unknown as { __wpCityShadowStats?: () => unknown }).__wpCityShadowStats = () => {
+      let casters = -1
+      let mapSize = 0
+      const byPrefix: Record<string, number> = {}
+      if (cityShadowsEnabled) {
+        try {
+          const sg = world.getShadowGenerator() as unknown as {
+            getShadowMap?: () => { renderList?: Array<{ name: string }>; getSize?: () => { width: number } } | null
+          }
+          const map = sg.getShadowMap?.()
+          const rl = map?.renderList ?? []
+          casters = rl.length
+          mapSize = map?.getSize?.()?.width ?? 0
+          for (const m of rl) {
+            const pfx = (m.name || "?").replace(/-[a-z0-9]+$/i, "").slice(0, 14)
+            byPrefix[pfx] = (byPrefix[pfx] ?? 0) + 1
+          }
+        } catch {
+          casters = -2 // generator not yet created (no caster registered)
+        }
+      }
+      return { enabled: cityShadowsEnabled, casters, mapSize, byPrefix }
     }
   }
 
@@ -660,6 +715,45 @@ function buildWorld(
         palette: scene.palette,
       })
     : null
+  // ── STATIC LANDMARKS cast the sun's shadows (the hero silhouettes) ──────────
+  // The HERO clock tower, the fountain, and the bridge are the town's memorable
+  // landmarks at/near the plaza spawn — always player-local, so registering them
+  // ONCE as casters keeps the bounded-set guarantee (they never stream out). The
+  // streamed chunks register/de-register dynamically (mountCity shadowApi); these
+  // are a tiny fixed addition. Gated by the same kill switch.
+  //
+  // IMPORTANT (bounded set): we deliberately do NOT register the whole
+  // `specialPlaces.root` — that subtree holds ALL the decorative dressing for
+  // every hero anchor (flower beds, ornamental tree rings, bunting, banner arches,
+  // promenade planters): hundreds of low meshes whose tiny ground-hugging shadows
+  // aren't worth the shadow-map fill + caster cost. We register ONLY the singular
+  // clock-tower mesh (selected by its stable name suffix). The fountain + bridge
+  // roots ARE small enough to register wholesale.
+  if (cityShadowsEnabled) {
+    const registerSubtree = (node: { getChildMeshes: () => unknown[] } | null | undefined) => {
+      if (!node) return
+      for (const m of node.getChildMeshes() as Parameters<typeof world.registerShadowCaster>[0][]) {
+        world.registerShadowCaster(m)
+      }
+    }
+    // The hero clock tower only — find the merged tower mesh(es) by name suffix
+    // (buildSpecialPlaces names it `wp-special-<n>-clocktower`).
+    for (const m of world.scene.meshes) {
+      if (m.name.endsWith("-clocktower")) world.registerShadowCaster(m)
+    }
+    registerSubtree(fountain.root) // the central fountain volume (small)
+    // The stone bridge: register ONLY its big masses — the deck slabs and the
+    // pier columns (the silhouette you read crossing the river). We SKIP the
+    // swarm of small parts: ~36 arch voussoirs, ~120 balusters, footings, and
+    // approach-ramp wedges. Each is a separate mesh; casting them all would dwarf
+    // the entire near-chunk caster set for shadows that fall on the water nobody
+    // sees from the bank. Bridge meshes are named `wp-bridge-<part>`.
+    for (const m of bridge?.root.getChildMeshes() ?? []) {
+      if (m.name.startsWith("wp-bridge-deck") || m.name.startsWith("wp-bridge-pier")) {
+        world.registerShadowCaster(m)
+      }
+    }
+  }
   // A "cross the bridge" traverse step (anchor bridge_n) completes at the deck's FAR
   // end — read straight off `layout.water.deck` (deckSpan), never hardcoded — so the
   // keeper + beacon stay at the NEAR foot while completion means "actually crossed"
@@ -1543,6 +1637,12 @@ function buildWorld(
         const a = s?.anchorId ? city.getAnchor(s.anchorId) : null
         if (a) player.respawnAt(a.x, a.z)
         return !!a
+      },
+      /** QA: teleport the player to an arbitrary world (x,z) — used to frame the
+       *  camera near a landmark/building so a harness can READ its cast shadow. */
+      goto: (x: number, z: number) => {
+        player.respawnAt(x, z)
+        return true
       },
       /**
        * The current crossing step's FAR completion point (deck far end), or null

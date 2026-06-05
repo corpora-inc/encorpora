@@ -24,13 +24,28 @@ until it's truly great." See docs/NORTH_STAR.md for the vision.
 5. Earlier tonight: cinematic quest-completion, mic-free winnable core loop,
    atmospheric pop-in, placement invariants, the EN→ES language-pick fix.
 
+## DONE since the list below
+- **Cast shadows on the city** ✅ — the streamed buildings now cast the SUN's
+  directional shadows + the chunk ground receives them (the float is gone). Wired
+  per-chunk register/deregister into the streaming spine: `mountCity` takes a
+  `shadowApi` seam; `stream.ts` opts each chunk's BIG silhouette (body + roof) in
+  as casters on a TIGHTER `shadowRadius` (default 80u, ≤ the render radius) and
+  out as it leaves — so the auto-fit shadow box + per-frame shadow-map draw count
+  stay player-local + bounded (~160–330 casters, verified stable across walking,
+  not the whole 169-chunk map). `chunkMesh.ts` collects the caster/receiver mesh
+  refs + flags ground `receiveShadows` + markAsDirty. The static landmarks (hero
+  clock tower, fountain, bridge deck/piers) register once. Small details
+  (parapets, steps, awnings, signs, bridge balusters/voussoirs) are deliberately
+  EXCLUDED to keep the map cheap. KILL SWITCH `?noshadows` / `window.__wpCityShadows
+  = false` (default ON). Verified: typecheck/build/tests green, play-to-win 27/27,
+  no pageerrors, A/B screenshots (`/tmp/wp-dram-{ON,OFF}.png`) show the cast
+  shadow appear, mechanism probe confirms generator+renderList+receiveShadows.
+  Harness: `qa/city-shadows.mjs`. REMAINING RISK: on-device (phone) the shadow
+  map renders ~160–330 low-poly casters/frame at 1024² — needs a real-device perf
+  check; if it tanks, flip `?noshadows` or drop `shadowRadius`. (headless webkit
+  fps is not representative.)
+
 ## HONEST: still NOT great (the next passes)
-- **Cast shadows on the city**: only characters/props cast contact shadows; the
-  streamed buildings don't cast the SUN's directional shadows yet (props "float"
-  slightly). The rendering rig is built (`world.registerShadowCaster`); wiring it
-  needs per-chunk register/deregister in the city-streaming spine (mountCity/
-  stream.ts onActiveChange → resident chunk MESHES, not data). Deferred as risky
-  unattended; HIGH value next.
 - **Physics capsule controller (Havok)**: the bridge-side "jump", walk-under-deck,
   rail clip-through all trace to the hand-rolled walkSurface height registry. The
   Havok capsule retires them. Needs: out-of-bundle WASM packaging (single-file
