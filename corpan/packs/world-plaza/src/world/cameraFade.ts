@@ -3,7 +3,7 @@ import type { Camera } from "@babylonjs/core/Cameras/camera"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { Ray } from "@babylonjs/core/Culling/ray"
 import { Vector3 } from "@babylonjs/core/Maths/math"
-import { isCameraOccluder } from "./cameraOcclusion"
+import { isBoomBlocker } from "./cameraOcclusion"
 import { walkSurfaceHeight } from "./walkSurface"
 
 /**
@@ -118,7 +118,13 @@ export function createCameraFade(
   // missed the market stalls, which is exactly how the camera-in-the-roof bug
   // survived). The boom-collision in engine.ts keeps the eye OUT of geometry; this
   // fade is the belt-and-braces so a mesh merely BETWEEN cam + player never hides it.
-  const match = opts.match ?? isCameraOccluder
+  // Fade ONLY solid one-off occluders (buildings, roofs, walls, bridge, fountain).
+  // Thin-instanced scatter (trees, planters, lamps, stalls) is EXCLUDED: a whole
+  // species shares one UNION bounding box spanning the chunk, so a ray grazing it
+  // ghosted EVERY tree/planter at once — "objects disappear in front of me". A
+  // narrow prop briefly clipping the player reads far better than the whole grove
+  // dissolving. Same solid-one-off set the boom uses (isBoomBlocker).
+  const match = opts.match ?? isBoomBlocker
 
   // Eligible meshes + their per-frame target visibility. Resynced only when the
   // scene's building population changes (scene flip), never per frame.
