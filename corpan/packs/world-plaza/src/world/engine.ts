@@ -83,8 +83,13 @@ export interface CameraRig {
 const DEFAULT_RIG: CameraRig = {
   fov: 0.62, // ~35.5° — a touch longer than the old 0.7 for a premium cruise lens
   distance: 8.8, // midpoint between the old wide rig (11) and the close cruise cam (6.6)
-  height: 5.5, // midpoint between old (8) and low (3) — looks out with a touch more overview
-  lookHeight: 2.6, // gaze still lifts toward the horizon from the slightly higher eye
+  // Raised eye + LOWER gaze lift = a slightly steeper HD-2D pitch (~28° vs the old
+  // ~18°). This drops the far horizon haze out of frame, so the world can render a
+  // SMALLER radius without feeling like you see less forward — fewer objects, same
+  // sense of distance. Live-tunable via `window.__wpCam = { height, lookHeight,
+  // distance, fov }` (read each frame) so the balance can be dialled on-device.
+  height: 6.8, // was 5.5 — eye up a notch for more downward overview
+  lookHeight: 1.9, // was 2.6 — gaze drops off the horizon toward the near ground
   followLerp: 0.12, // smooth, juicy trail (fps-compensated below)
   aimLerp: 0.2,
 }
@@ -378,6 +383,16 @@ export function createWorldEngine(
     const dtMs = engine.getDeltaTime()
     const dt = Math.min(dtMs / 1000, 0.05) // cap to avoid post-stall overshoot
     for (const cb of frameCbs) cb(dt)
+
+    // Live camera-rig override (dial the HD-2D pitch on-device without a rebuild):
+    // `window.__wpCam = { height, lookHeight, distance, fov }`. Any subset applies.
+    const camOv = (window as unknown as { __wpCam?: Partial<CameraRig> }).__wpCam
+    if (camOv) {
+      if (typeof camOv.height === "number") rig.height = camOv.height
+      if (typeof camOv.lookHeight === "number") rig.lookHeight = camOv.lookHeight
+      if (typeof camOv.distance === "number") rig.distance = camOv.distance
+      if (typeof camOv.fov === "number" && camera.fov !== camOv.fov) camera.fov = camOv.fov
+    }
 
     // Desired eye: LOW + CLOSE behind the player along its yaw. The low height
     // + lifted look target give a flat, look-OUT-to-the-horizon pitch while the

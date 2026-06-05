@@ -228,7 +228,10 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
   const voiceResolver: NpcVoiceResolver = createNpcVoiceResolver(hostApi)
 
   function open(args: OpenArgs): NpcDialogueHandle {
-    const npcName = args.npcName ?? prettyRole(args.npcRole.id)
+    // Header name: an explicit one wins; else the persona's generated name; else a
+    // stable made-up short name hashed from the role id — so an NPC NEVER shows its
+    // raw seed id ("Crowd:Baker:Ambient:4173071802…") in the UI.
+    const npcName = args.npcName ?? npcDisplayName(args.npcRole as { id: string; name?: string })
     // R2-2 — the TTS VOICE language must be the TARGET language (what the player is
     // LEARNING), so the spoken voice matches the spoken text. We deliberately do
     // NOT fall back to `scene.npcSkins[id].voiceHint`: that hint is SCENE-derived
@@ -971,6 +974,30 @@ function prettyRole(id: string): string {
     .replace(/[_-]+/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase())
     .trim()
+}
+
+/** A pool of short, neutral, era-agnostic given names for ambient NPCs that lack a
+ *  generated persona name. Kept small + diverse; the id-hash spreads picks. */
+const NPC_NAMES = [
+  "Mara", "Tomas", "Lena", "Iker", "Sora", "Nia", "Ben", "Cleo", "Rafe", "Yara",
+  "Otto", "Mira", "Dax", "Suki", "Pavel", "Nora", "Emil", "Lux", "Tariq", "Vera",
+  "Hugo", "Ines", "Kofi", "Mei", "Bruno", "Alba", "Niko", "Saba", "Elio", "Wren",
+  "Goro", "Lila", "Per", "Anka", "Remy", "Tova", "Cyrus", "Juno", "Bo", "Faye",
+]
+
+/** A clean, stable display name for an NPC. Prefers the persona's generated name;
+ *  falls back to a made-up name deterministically hashed from the role id (so the
+ *  same NPC always shows the same name) — never the raw seed id. */
+export function npcDisplayName(role: { id?: string; name?: string }): string {
+  // a persona name is fine UNLESS it's itself a seed-like token (has :/_ or digits).
+  if (role.name && !/[:_]/.test(role.name) && !/\d{3,}/.test(role.name)) return role.name
+  const id = role.id ?? "npc"
+  let h = 2166136261 >>> 0
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return NPC_NAMES[(h >>> 0) % NPC_NAMES.length]
 }
 
 export type { DialogueUIHandle }

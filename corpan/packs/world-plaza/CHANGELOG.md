@@ -58,6 +58,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   crowd is now cheap paper billboards instead of multi-mesh 3D figures).
 
 ### Changed
+- **Steeper HD-2D camera pitch → smaller render radius.** The flat, low camera
+  looked straight out to the horizon, forcing a big view radius (and putting the
+  fog/pop edge in frame). The eye is raised + the gaze dropped off the horizon
+  (rig height 5.5→6.8, lookHeight 2.6→1.9, ~18°→~28° pitch), so the far distance
+  falls out of frame and the view radius drops 125→105 with no felt loss of
+  forward sight — measured ~653→456 draws/frame. Both are live-tunable on-device:
+  `window.__wpCam = { height, lookHeight, distance, fov }` and
+  `window.__wpVisRadius`. (`world/engine.ts`, `game.ts`.)
+- **Every NPC shows a short made-up name, never its seed id.** Ambient NPCs were
+  rendering their raw role id (e.g. `Crowd:Baker:Ambient:4173071802…`) in the
+  dialogue header + challenge pretext. `npcDisplayName()` now prefers the
+  persona's generated name and otherwise hashes the id to a stable short name from
+  a neutral pool — so an NPC always has a clean, consistent name. (`npc/npcRuntime.ts`,
+  `game.ts`.)
 - **Character look is now chosen by ROLE, not at random.** The plaza previously
   ran two unreconciled crowd systems — `world/crowd.ts` (3D) and
   `city/population.ts` (paper) — so 3D and paper people mixed with no intent. Now

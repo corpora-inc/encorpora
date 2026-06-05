@@ -14,7 +14,7 @@ import { createNpcFocus } from "./world/npcFocus"
 import { createCrowd, type CrowdFocusHandle } from "./world/crowd"
 import { createCameraFade } from "./world/cameraFade"
 import { createShell } from "./shell"
-import { createNpcRuntime } from "./npc/npcRuntime"
+import { createNpcRuntime, npcDisplayName } from "./npc/npcRuntime"
 import { createMockHost } from "./npc/mockHost"
 import { runOnboarding, defaultIdentity, type OnboardingResult } from "./onboarding/onboarding"
 import type { HostApi as NpcHostApi } from "./npc/hostTypes"
@@ -399,7 +399,9 @@ function buildWorld(
       visibilityRadius:
         (typeof window !== "undefined" &&
           (window as unknown as { __wpVisRadius?: number }).__wpVisRadius) ||
-        125,
+        105, // steeper HD-2D pitch drops the far horizon out of frame, so a smaller
+      // radius renders fewer chunks without feeling closer-in. (was 125; tune live
+      // with window.__wpVisRadius alongside window.__wpCam.)
     },
     // Sun shadow seam — only the player-local near chunks cast (bounded set).
     ...(cityShadowsEnabled
@@ -1106,7 +1108,7 @@ function buildWorld(
         refreshChrome()
         runChallenge(intent.tool, ctx, chHost, {
           container: overlay,
-          npc: { name: (role as { name?: string }).name ?? "A townsperson", avatar: "🧑" },
+          npc: { name: npcDisplayName(role as { id?: string; name?: string }), avatar: "🧑" },
           partialSpec: intent.spec,
         })
           .then((res) => {
