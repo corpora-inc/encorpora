@@ -122,6 +122,43 @@ export function createWorldEngine(
   })
   engine.setHardwareScalingLevel(1 / dpr)
 
+  // ── Adaptive resolution ──────────────────────────────────────────────────
+  // The single biggest GPU cost here is FILL RATE: at 2× retina the bloom +
+  // shadow + fog stack shades 4× the pixels of 1×, which is what drags a strong
+  // retina Mac to ~12 fps while a headless 1× box looks fine. So instead of
+  // pinning the render scale, we trade RESOLUTION to hold the frame budget: the
+  // native (sharpest) scale is 1/dpr; under sustained load we RAISE
+  // hardwareScalingLevel (shade fewer pixels) up to a floor, and relax back
+  // toward native when there's headroom. Self-tuning: a capable machine stays
+  // crisp, a struggling one softens just enough to stay smooth. Geometry/draw
+  // calls are untouched, so nothing in the WORLD is removed — only pixel density
+  // flexes. Disable with `window.__wpAdaptiveRes = false`.
+  const nativeScale = 1 / dpr
+  const MAX_SCALE = 2.0 // worst case: half-res per axis (¼ the pixels)
+  let curScale = nativeScale
+  let emaMs = 16.7
+  let adaptCooldown = 60 // let the scene settle before first adjust
+  const adaptResolution = (dtMs: number) => {
+    if ((window as unknown as { __wpAdaptiveRes?: boolean }).__wpAdaptiveRes === false) return
+    emaMs += (Math.min(dtMs, 100) - emaMs) * 0.1 // ~10-frame EMA, spike-clamped
+    if (adaptCooldown > 0) {
+      adaptCooldown--
+      return
+    }
+    const HI = 20 // >50 fps-equivalent budget exceeded → drop resolution
+    const LO = 13 // comfortably under 60 fps → restore resolution
+    if (emaMs > HI && curScale < MAX_SCALE) {
+      curScale = Math.min(MAX_SCALE, curScale + 0.15)
+      engine.setHardwareScalingLevel(curScale)
+      adaptCooldown = 30 // ~0.5s settle before the next step (RT resize isn't free)
+    } else if (emaMs < LO && curScale > nativeScale) {
+      curScale = Math.max(nativeScale, curScale - 0.1)
+      engine.setHardwareScalingLevel(curScale)
+      adaptCooldown = 45
+    }
+  }
+  ;(window as unknown as { __wpRenderScale?: () => number }).__wpRenderScale = () => curScale
+
   const scene = new Scene(engine)
   scene.clearColor = hexToColor4(opts.skyColor ?? "#bfe0e8")
   scene.skipPointerMovePicking = true // we only need pick on tap
@@ -285,7 +322,8 @@ export function createWorldEngine(
     hud.textContent =
       `fps ${Math.round(engine.getFps())}  frame ${dtMs.toFixed(1)}ms\n` +
       `draws ${e.drawCalls ?? "n/a"}  meshes ${scene.getActiveMeshes().length}/${scene.meshes.length}\n` +
-      `verts ${scene.getTotalVertices()}  tex ${scene.textures.length}`
+      `verts ${scene.getTotalVertices()}  tex ${scene.textures.length}\n` +
+      `renderScale ${curScale.toFixed(2)} (native ${nativeScale.toFixed(2)})  px ${Math.round(engine.getRenderWidth())}×${Math.round(engine.getRenderHeight())}`
   }
 
   const renderLoop = () => {
@@ -328,6 +366,7 @@ export function createWorldEngine(
     // keeps crisp contact shadows without paying for a city-wide shadow map.
     cinematic.update(followPos)
 
+    adaptResolution(dtMs)
     updateHud(dtMs)
     scene.render()
   }

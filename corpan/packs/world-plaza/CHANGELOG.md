@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Performance
+- **Adaptive render resolution holds the frame budget.** The dominant GPU cost
+  was fill rate — at 2× retina the bloom + shadow + fog + curvature stack shades
+  4× the pixels of 1×, dragging a strong retina Mac toward ~12 fps. The engine
+  now trades RESOLUTION (not world content) to stay smooth: it tracks a ~10-frame
+  EMA of frame time and raises `hardwareScalingLevel` under sustained load (down
+  to ¼-pixel floor), relaxing back toward native-sharp when there's headroom.
+  Self-tuning — capable machines stay crisp, struggling ones soften just enough.
+  No geometry, NPCs, shadows, or effects are removed. Kill switch
+  `window.__wpAdaptiveRes = false`; the perf HUD (`p`) shows live `renderScale`
+  + pixel dims. (`world/engine.ts`.)
+- **Fewer 3D bodies per frame** via the role-based look split below (ambient
+  crowd is now cheap paper billboards instead of multi-mesh 3D figures).
+
 ### Changed
 - **Character look is now chosen by ROLE, not at random.** The plaza previously
   ran two unreconciled crowd systems — `world/crowd.ts` (3D) and
