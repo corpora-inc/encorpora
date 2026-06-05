@@ -43,6 +43,13 @@ export function createNpcFocus(
   /** Fires whenever the focused target changes (incl. → null). Lets the caller
    *  freeze the focused NPC in place so it waits for you instead of wandering. */
   onFocusChange?: (it: FocusTarget | null) => void,
+  /**
+   * The active quest OBJECTIVE's anchor id (#58). When the player is in range of
+   * the NPC stationed at this anchor, it WINS focus over any closer wandering
+   * townsfolk — so the beacon's objective NPC is always the one you Talk to, never
+   * an ambient passer-by who happened to drift nearer. Optional → plain nearest.
+   */
+  getPriorityAnchor?: () => string | null | undefined,
 ): NpcFocus {
   const prompt = document.createElement("div")
   prompt.className = "wp-prompt"
@@ -110,16 +117,26 @@ export function createNpcFocus(
 
     let best: FocusTarget | null = null
     let bestD = RANGE * RANGE
+    // #58: the active objective NPC (the special stationed at the priority anchor)
+    // WINS focus when in range, even if a wandering townsperson is marginally
+    // closer — so you always Talk to the quest's NPC under the beacon.
+    const priorityAnchor = getPriorityAnchor?.() ?? null
+    let priority: FocusTarget | null = null
+    let priorityD = RANGE * RANGE
     for (const it of npcs) {
       const dx = it.billboard.root.position.x - player.x
       const dz = it.billboard.root.position.z - player.z
       const d = dx * dx + dz * dz
+      if (priorityAnchor && it.anchorId === priorityAnchor && d < priorityD) {
+        priorityD = d
+        priority = it
+      }
       if (d < bestD) {
         bestD = d
         best = it
       }
     }
-    setFocus(best)
+    setFocus(priority ?? best)
 
     if (focused) {
       pulseT += dt

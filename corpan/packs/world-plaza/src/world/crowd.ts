@@ -101,6 +101,15 @@ export interface Crowd {
    * `null` to release (resume wandering). At most one agent is held at a time.
    */
   setHeld: (anchorId: string | null) => void
+  /**
+   * #58 — re-station the pool of special quest NPCs to a NEW anchor/persona set at
+   * runtime (call on every active-quest change). Each entry's NPC is placed
+   * PRECISELY at its anchor (under the beacon) and held there; pool slots beyond
+   * `newSpecials.length` are parked off-map. The focus/dialogue/map layers route to
+   * the new objective NPC automatically (the pool's handles are already in
+   * `focusables`; this mutates them in place). Idempotent.
+   */
+  restationSpecials: (newSpecials: CrowdSpecial[]) => void
   dispose: () => void
 }
 
@@ -508,26 +517,60 @@ export function createCrowd(
   // wander the map, so the player finds the boatman at the docks, the gatekeeper
   // at the city gate, etc. A special whose anchor isn't in the topology is
   // logged + skipped (noisy, never silent).
-  const specials = opts.specials ?? []
+  //
+  // #58 — specials are RE-STATIONABLE at runtime. Objective NPCs used to be
+  // stationed ONCE at buildWorld for the initial quest; on a quest SWITCH/progression
+  // the beacon re-pointed to a NEW anchor but no NPC moved there, so every beacon
+  // stood over an empty spot and no quest could be finished. We now keep a fixed
+  // POOL of special agents whose handles are ALL in `focusables` from the start (so
+  // the focus layer's snapshot already knows them), and `restationSpecials()`
+  // re-binds the pool to a new anchor/persona set in place — the objective NPC
+  // walks to (stands at) the new active anchor, exactly under the beacon.
   const anchorById = new Map(topology.anchors.map((a) => [a.id, a]))
-  for (const sp of specials) {
-    const anchor = anchorById.get(sp.anchorId)
-    if (!anchor) {
-      console.warn(
-        `[wp/crowd] special "${sp.name}" has no anchor "${sp.anchorId}" in topology — skipping placement.`,
-      )
-      continue
-    }
 
+  // A parked, unbound pool slot sits FAR off-map + disabled so it is never the
+  // nearest focus target and never the priority-anchor match (its anchorId is a
+  // dead sentinel no quest anchor equals).
+  const FAR_AWAY = 1e6
+  const DEAD_ANCHOR = "__wp_unbound_special__"
+
+  /** A safe, never-focusable placeholder role for a PARKED pool slot, so any
+   *  consumer that reads `handle.role.*` (e.g. the dev __wpCrowd probe) never hits
+   *  an undefined role. A parked slot is off-map + dead-anchored, so it is never the
+   *  nearest/priority focus target — this is purely a non-null guard. */
+  const parkedRole = (): NpcRole & { name?: string } => ({
+    id: DEAD_ANCHOR,
+    anchorId: DEAD_ANCHOR,
+    name: "",
+    basePersona: { tone: "", quirks: [] },
+    scriptedFallback: [],
+  })
+
+  /** Resolve a special's STATION point: the anchor nudged off along its facing,
+   *  pushed clear of obstacles, clamped into bounds. null if the anchor is unknown
+   *  (logged by the caller). */
+  const stationFor = (sp: CrowdSpecial): { anchor: RoomTopology["anchors"][number]; x: number; z: number } | null => {
+    const anchor = anchorById.get(sp.anchorId)
+    if (!anchor) return null
+    const sp0 = stationPoint(anchor, isBlocked)
+    let stx = sp0.x
+    let stz = sp0.z
+    if (field) {
+      const free = field.pushOut(stx, stz, AGENT_RADIUS)
+      stx = free.x
+      stz = free.z
+    }
+    const c = clampToBounds(stx, stz)
+    return { anchor, x: c.x, z: c.z }
+  }
+
+  /** Build the persona ROLE for a special (generated enrichment + authored override). */
+  const specialRole = (sp: CrowdSpecial): { role: NpcRole & { name?: string }; spec: CharacterSpec; seed: string } => {
     const colour = SPECIAL_PERSONA[sp.role] ?? SPECIAL_PERSONA_DEFAULT
-    // Stable seed: quest anchor + role + name, so the same special always rebuilds
-    // the same face/voice across frames + reloads.
+    // Stable seed: quest anchor + role, so the same special always rebuilds the
+    // same face/voice across frames + reloads + re-stations.
     const seed = `${baseSeed}:special:${sp.anchorId}:${sp.role}`
     const spec = generateCharacter(sp.anchorId, seed, theme)
-    // Generate the enrichment (archetype tools/voice/topics) biased toward the
-    // role's natural trade, then OVERRIDE id/anchor/basePersona/name with the
-    // authored special so dialogue + map key off the quest anchor and read the
-    // hand-authored tone.
     const generated: GeneratedPersona = generatePersona(seed, {
       scene: dataScene,
       spec,
@@ -541,7 +584,19 @@ export function createCrowd(
       name: sp.name,
       basePersona: { tone: colour.tone, quirks: colour.quirks.slice() },
     }
+    return { role, spec, seed }
+  }
 
+  /** A special pool slot — the Agent plus the live `name` it currently shows (so
+   *  unbinding/rebinding can mutate everything the focus + dialogue layers read). */
+  interface SpecialSlot {
+    agent: Agent
+    bound: boolean
+  }
+
+  /** Create a fresh cutout+animator for a special slot from a spec, positioned at
+   *  the station. Caller owns disposing any previous cutout. */
+  const makeSpecialVisual = (spec: CharacterSpec, seed: string, x: number, z: number) => {
     const cutout = createGroundedCutout(bScene, {
       w: CHAR_TEX.w,
       h: CHAR_TEX.h,
@@ -550,48 +605,111 @@ export function createCrowd(
       pickTag: `npc:${seed}`,
     })
     const anim = createAnimator(cutout, spec)
+    cutout.setGroundPos(x, z, groundH(x, z))
+    return { cutout, anim }
+  }
 
-    // Station point = the anchor, nudged a small offset along its facing (or +z)
-    // so the NPC stands JUST off the anchor (clear of a prop sitting exactly on
-    // it), then pushed out of any obstacle it still grazes + clamped into bounds.
-    const sp0 = stationPoint(anchor, isBlocked)
-    let stx = sp0.x
-    let stz = sp0.z
-    if (field) {
-      const free = field.pushOut(stx, stz, AGENT_RADIUS)
-      stx = free.x
-      stz = free.z
+  /** Re-bind (or, with sp=null, PARK) a pool slot in place: swap its cutout/anim to
+   *  the new persona, move it to the new station, and MUTATE its handle (anchorId +
+   *  role + billboard root) so the focus layer — which holds the handle by reference
+   *  — routes the beacon, map, and dialogue to the new objective NPC with no array
+   *  surgery. */
+  const bindSlot = (slot: SpecialSlot, sp: CrowdSpecial | null) => {
+    const a = slot.agent
+    // drop the old visual (also releases its animator's node refs).
+    a.cutout.dispose()
+    if (!sp) {
+      // PARK: a fresh tiny invisible cutout far away, dead anchor, disabled.
+      const v = makeSpecialVisual(a.spec, `${baseSeed}:special:parked:${a.handle.anchorId}`, FAR_AWAY, FAR_AWAY)
+      a.cutout = v.cutout
+      a.anim = v.anim
+      a.cutout.root.setEnabled(false)
+      a.x = FAR_AWAY; a.z = FAR_AWAY
+      a.tx = FAR_AWAY; a.tz = FAR_AWAY
+      a.tx0 = FAR_AWAY; a.tz0 = FAR_AWAY
+      a.station = { x: FAR_AWAY, z: FAR_AWAY }
+      a.handle.anchorId = DEAD_ANCHOR
+      a.handle.role = parkedRole()
+      a.handle.billboard.root = { position: a.cutout.root.position }
+      a.handle.billboard.setScale = (s) => a.cutout.setScale(s)
+      slot.bound = false
+      return
     }
-    // clamp the station into bounds (anchors like the docks sit out past the wall)
-    const stClamped = clampToBounds(stx, stz)
-    stx = stClamped.x
-    stz = stClamped.z
+    const st = stationFor(sp)
+    if (!st) {
+      console.warn(
+        `[wp/crowd] special "${sp.name}" has no anchor "${sp.anchorId}" in topology — parking the slot.`,
+      )
+      bindSlot(slot, null)
+      return
+    }
+    const { role, spec, seed } = specialRole(sp)
+    const v = makeSpecialVisual(spec, seed, st.x, st.z)
+    a.spec = spec
+    a.cutout = v.cutout
+    a.anim = v.anim
+    a.cutout.root.setEnabled(true)
+    a.x = st.x; a.z = st.z
+    a.tx = st.x; a.tz = st.z
+    a.tx0 = st.x; a.tz0 = st.z
+    a.station = { x: st.x, z: st.z }
+    a.state = "idle"
+    a.idleT = Math.random() * 1.5
+    a.speed = 0
+    // MUTATE the handle so the focus layer's existing snapshot re-routes live.
+    a.handle.anchorId = sp.anchorId
+    a.handle.role = role
+    a.handle.billboard.root = { position: a.cutout.root.position }
+    a.handle.billboard.setScale = (s) => a.cutout.setScale(s)
+    slot.bound = true
+  }
 
-    cutout.setGroundPos(stx, stz, groundH(stx, stz))
-
+  // Build the pool. Size it to comfortably cover any single quest's specials; the
+  // initial set binds the first slots, the rest park (ready for a re-station to a
+  // quest with more anchors). All pool handles are emitted in `focusables`.
+  const initialSpecials = opts.specials ?? []
+  const SPECIAL_POOL = Math.max(4, initialSpecials.length)
+  const specialSlots: SpecialSlot[] = []
+  for (let s = 0; s < SPECIAL_POOL; s++) {
+    // a placeholder agent; bindSlot() (below) fills in the real visual + handle.
+    const spec0 = generateCharacter("npc_station", `${baseSeed}:special:pool:${s}`, theme)
+    const v0 = makeSpecialVisual(spec0, `${baseSeed}:special:pool:${s}`, FAR_AWAY, FAR_AWAY)
+    v0.cutout.root.setEnabled(false)
     const handle: CrowdFocusHandle = {
-      anchorId: role.anchorId,
+      anchorId: DEAD_ANCHOR,
       kind: "npc",
-      role,
+      role: parkedRole(), // replaced on bind; a parked slot is never focusable (dead anchor + far away)
       billboard: {
-        root: { position: cutout.root.position },
-        setScale: (s) => cutout.setScale(s),
+        root: { position: v0.cutout.root.position },
+        setScale: (sc) => v0.cutout.setScale(sc),
       },
     }
-
-    agents.push({
-      spec, cutout, anim, handle,
-      x: stx, z: stz,
-      tx: stx, tz: stz,
-      tx0: stx, tz0: stz,
-      idleT: Math.random() * 1.5,
-      state: "idle",
-      speed: 0,
-      ackCooldown: 0,
-      ackActive: 0,
+    const agent: Agent = {
+      spec: spec0, cutout: v0.cutout, anim: v0.anim, handle,
+      x: FAR_AWAY, z: FAR_AWAY, tx: FAR_AWAY, tz: FAR_AWAY, tx0: FAR_AWAY, tz0: FAR_AWAY,
+      idleT: 0, state: "idle", speed: 0, ackCooldown: 0, ackActive: 0,
       seeker: false, // a stationed special stays put; it never chases the player.
-      station: { x: stx, z: stz },
-    })
+      station: { x: FAR_AWAY, z: FAR_AWAY },
+    }
+    agents.push(agent)
+    const slot: SpecialSlot = { agent, bound: false }
+    specialSlots.push(slot)
+    if (s < initialSpecials.length) bindSlot(slot, initialSpecials[s])
+  }
+
+  /** #58 — re-station the special pool to a NEW anchor/persona set at runtime.
+   *  Binds the first `newSpecials.length` slots to the new objectives (each placed
+   *  PRECISELY at its anchor, held in place by the stationing leash) and parks the
+   *  rest. Idempotent + safe to call on every active-quest change. */
+  const restationSpecials = (newSpecials: CrowdSpecial[]) => {
+    for (let s = 0; s < specialSlots.length; s++) {
+      bindSlot(specialSlots[s], s < newSpecials.length ? newSpecials[s] : null)
+    }
+    if (newSpecials.length > specialSlots.length) {
+      console.warn(
+        `[wp/crowd] restationSpecials got ${newSpecials.length} specials but the pool is ${specialSlots.length} — extra anchors get no NPC. Raise SPECIAL_POOL.`,
+      )
+    }
   }
 
   // ---- simulation ----
@@ -770,6 +888,7 @@ export function createCrowd(
     setHeld: (anchorId) => {
       heldId = anchorId
     },
+    restationSpecials,
     dispose: () => {
       for (const a of agents) a.cutout.dispose()
       agents.length = 0

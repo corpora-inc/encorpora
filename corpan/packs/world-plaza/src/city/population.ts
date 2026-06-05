@@ -95,7 +95,8 @@ export interface PopulationOptions {
   /** max concurrent visible strollers near the player. default 8 (kept below the
    *  talkable crowd count so ambient extras complement, not dominate). */
   maxStrollers?: number
-  /** how many DISTINCT pre-baked figure textures to cycle (texture budget). default 6. */
+  /** how many DISTINCT pre-baked figure textures to cycle (texture budget). default 16
+   *  — enough that the near-field crowd reads as a mixed populace, not clones (#60). */
   figureVariety?: number
   /** strollers spawn within this ring of the player. default 26. */
   wakeRadius?: number
@@ -155,6 +156,14 @@ const PLAYER_BODY_GAP = 1.0
 // position (local meander), and any target/spawn within this radius of the player
 // is rejected, so the ambient crowd MILLS dispersed and never paths toward you.
 const PLAYER_KEEPOUT = 7
+// #60 — a STALL-KEEPER must not stand on top of you either. The owner stands AT a
+// market to do the quest, where vendor anchors cluster, so without this every
+// keeper bound to a near anchor and mobbed the player. A keeper whose anchor is
+// within this radius of the player is NOT bound (we leave that stall un-staffed
+// until you step back), and a bound keeper is nudged to sit at least this far out.
+// Slightly tighter than the stroller keepout: a keeper legitimately tends a fixed
+// post, so it may read a touch closer than a free wanderer — but never in your lap.
+const KEEPER_KEEPOUT = 5.5
 // How far a stroller meanders per wander leg (local — NOT recentred on the player).
 const WANDER_LEG = 9
 
@@ -511,6 +520,9 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
       for (const a of vendorAnchors) {
         if (managed.has(a.id)) continue
         const d = (a.x - player.x) ** 2 + (a.z - player.z) ** 2
+        // #60 — never staff a stall the player is standing right on; that keeper
+        // would mob you. Leave it empty until you step back out of its keepout.
+        if (d < KEEPER_KEEPOUT * KEEPER_KEEPOUT) continue
         if (d <= bd) {
           bd = d
           best = a
@@ -519,9 +531,18 @@ export function createPopulation(scene: BabylonScene, opts: PopulationOptions): 
       if (!best) break // no more in-range markets to staff
       managed.add(best.id)
       k.anchor = best
-      // stand JUST off the stall anchor so the keeper reads as tending it.
-      const ox = best.x + Math.cos(best.facing ?? 0) * 0.9
-      const oz = best.z + Math.sin(best.facing ?? 0) * 0.9
+      // stand JUST off the stall anchor so the keeper reads as tending it — but
+      // bias the 0.9u step toward the side AWAY from the player when the anchor's
+      // own facing would tuck the keeper toward you (#60: never close the gap to
+      // the player by standing on the near side of the stall).
+      let offAng = best.facing ?? 0
+      const toPlayer = Math.atan2(player.z - best.z, player.x - best.x)
+      let rel = offAng - toPlayer
+      while (rel > Math.PI) rel -= Math.PI * 2
+      while (rel < -Math.PI) rel += Math.PI * 2
+      if (Math.abs(rel) < Math.PI / 2) offAng = toPlayer + Math.PI // flip to far side
+      const ox = best.x + Math.cos(offAng) * 0.9
+      const oz = best.z + Math.sin(offAng) * 0.9
       const free = field.pushOut(clampX(ox), clampZ(oz), AGENT_R)
       k.cut.setGroundPos(free.x, free.z)
       k.fadeT = 0

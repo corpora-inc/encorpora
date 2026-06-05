@@ -33,13 +33,32 @@ const pop = createPopulation(scene, {
   layout,
   obstacles: city.getCollision(),
   palette: worldScene.palette as Record<string, string>,
+  scene: worldScene,
 })
 
-// drive the sim with a fixed dt; player stays at origin.
+// #60 — the FAILING scenario is the player standing AT a market (a cluster of
+// vendor anchors), where stall-keepers used to mob you. Expose the vendor cluster
+// so a probe can teleport the player into the densest market and measure crowding
+// + persona variety there, not just at the bare origin.
+const vendors = layout.anchors.filter((a) => a.kind === "vendor")
+function densestVendor(): { x: number; z: number } {
+  let best = vendors[0] ?? { x: 0, z: 0 }
+  let bestN = -1
+  for (const v of vendors) {
+    const n = vendors.filter((o) => Math.hypot(o.x - v.x, o.z - v.z) < 12).length
+    if (n > bestN) { bestN = n; best = v }
+  }
+  return { x: best.x, z: best.z }
+}
+
+// drive the sim with a fixed dt; the follow-camera tracks the player so a
+// screenshot frames whatever spot the probe teleports the player to (#60 market).
 let warm = 0
+let camYaw = 0
 world.onFrame((dt: number) => {
   city.update(dt)
   pop.update(dt, PLAYER)
+  world.setCameraTarget(new Vector3(PLAYER.x, 0, PLAYER.z), camYaw)
   warm += dt
 })
 world.start()
@@ -47,9 +66,31 @@ world.start()
 interface Hooks {
   warmedMs: () => number
   spread: () => { count: number; insideKeepout: number; min: number; mean: number }
+  gotoMarket: () => { x: number; z: number }
+  setPlayer: (x: number, z: number) => void
+  personaVariety: () => { figures: number; archetypes: number; names: number; sample: string[] }
 }
 ;(window as unknown as { __wpPop: Hooks }).__wpPop = {
   warmedMs: () => Math.round(warm * 1000),
+  // teleport the player into the densest market cluster (the #60 failing spot).
+  gotoMarket: () => { const m = densestVendor(); PLAYER.x = m.x; PLAYER.z = m.z; return m },
+  setPlayer: (x: number, z: number) => { PLAYER.x = x; PLAYER.z = z },
+  // override the follow-cam yaw so a screenshot can sweep to where the dispersed
+  // crowd actually stands (strollers wake in the rear/side arc, out of the lens).
+  setCamYaw: (yaw: number) => { camYaw = yaw },
+  // read every ENABLED ambient figure's lazily-built persona (engaging the `role`
+  // getter) and count distinct archetypes/names — proves a MIXED populace, not clones.
+  personaVariety: () => {
+    const fs = pop.focusables.filter((f) => Math.abs(f.billboard.root.position.x) < 1e5)
+    const archs = new Set<string>(); const names = new Set<string>(); const sample: string[] = []
+    for (const f of fs) {
+      const r = f.role as { archetype?: string; name?: string }
+      if (r.archetype) archs.add(r.archetype)
+      if (r.name) names.add(r.name)
+      if (sample.length < 14) sample.push(`${r.archetype ?? "?"}:${r.name ?? "?"}`)
+    }
+    return { figures: fs.length, archetypes: archs.size, names: names.size, sample }
+  },
   spread: () => {
     // read every enabled ambient cutout's ground position via the focus handles.
     const fs = pop.focusables.filter((f) => Math.abs(f.billboard.root.position.x) < 1e5)

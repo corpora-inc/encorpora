@@ -938,7 +938,10 @@ function buildWorld(
     population.setHeld(target ? target.anchorId : null) // mirror for strollers
     // Talk button shown/hidden → the pack dims (`focused`) or restores (`world`).
     refreshChrome()
-  })
+  },
+  // #58 — the active step's objective NPC wins focus over wandering townsfolk near
+  // the same spot, so you always Talk to the quest's NPC under the beacon.
+  () => questEngine.currentStep()?.anchorId ?? null)
 
   // ── Vignettes: enterable sub-experiences (the taxi back-seat) ──────────────
   // The host owns the full enter/exit lifecycle (pause world + free the LLM,

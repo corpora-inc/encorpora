@@ -189,6 +189,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **The NPC no longer says "Nicely done!" when you DISMISS a minigame (#62, the #9
+  gap).** The earlier abort-guard stopped the reward reveal + quest advance on a
+  bail, but the NPC's post-challenge reaction in the chat was a SEPARATE path that
+  congratulated regardless of outcome. Now the challenge overlay stamps its scrim
+  with `data-wp-ch-outcome` (completed | aborted) on close, and the chat's
+  lifecycle observer (`npcRuntime.onChallengeEnded`) branches on it: a real finish
+  gets the congratulation, a dismiss gets a calm neutral line ("No worries — maybe
+  later."), never a celebration. Guarded by `src/npc/challengeOutcome.test.ts`
+  (dismiss → no "Nicely done"; complete → congrats; no-stamp → completed back-compat).
 - **Every quest objective always has a named, talkable NPC under the beacon — even
   after switching quests (#58).** A quest you switched to (via the interlude /
   switch-quest picker) could point its beacon at an EMPTY market stall: the crowd's
@@ -198,10 +207,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the WHOLE quest catalog at build time (`objectiveAnchorIds()` — only ~5 anchors:
   plaza/market/fountain/harbor/bridge_n), so whichever quest becomes active, its
   objective always has a person there; the dialogue header resolves the active
-  quest's authored name (e.g. "the market vendor") at engage time. Proven in the
-  real game (`qa/objective-npc.mjs`, 8/8 + screenshot `/tmp/wp-market-vendor.png`):
-  boot the café quest → switch to the market quest → a named vendor stands under
-  the beacon, Talk button up.
+  quest's authored name (e.g. "the market vendor") at engage time. AND the active
+  objective NPC now WINS focus over wandering townsfolk near the same spot
+  (`npcFocus` gains a `getPriorityAnchor` → the step's anchor), so the Talk button
+  + dialogue + Begin always target the quest's NPC, never an ambient passer-by who
+  drifted closer (the real gap: at the market a wanderer out-competed the vendor
+  for focus). Proven END-TO-END in the real game via the REAL stationing + focus +
+  Talk + dialogue + Begin path (NOT the dev teleport/advance hooks) for café,
+  market, AND directions + a quest switch (`qa/objective-realflow.mjs`, 15/15 +
+  screenshots `/tmp/wp-objnpc-{cafe,market,directions}.png`): walk to the beacon →
+  the named objective NPC is focusable → Talk → its dialogue opens → Begin chip.
+- **The market crowd is a varied, dispersed populace — not a wall of identical
+  people mobbing you (#60).** The owner stood at a market and was "surrounded by
+  758,323 herbalists": the ambient figures read as clones and the stall-keepers
+  bunched on the player. Two fixes in `src/city/population.ts`: (1) VARIETY —
+  `figureVariety` default 6→16, so the near-field crowd shows ~16 distinct
+  townsperson LOOKS instead of a handful of repeated sprites (each figure's PERSONA
+  — baker/scribe/sailor/merchant/… with its own name — was already varied; this
+  makes the variety visible, not just in the engage text). (2) NO CROWDING — the
+  player-keepout now covers STALL-KEEPERS too: a keeper never binds to a vendor
+  anchor within `KEEPER_KEEPOUT` (5.5u) of the player (the stall you're standing on
+  stays un-staffed until you step back), and a bound keeper stands on the side of
+  its stall AWAY from you. Strollers already kept their distance (#24); now the
+  whole ambient population — strollers AND keepers — disperses. Proven: a market
+  warm-up (`qa/pop.mjs`) measures 0 figures inside the keeper keepout (min 9.4u,
+  mean ~18u) and 6 distinct archetypes / 7 names across the visible figures, a
+  canvas-free regression (`src/city/population.test.ts`: 16 distinct sprite specs,
+  many archetypes/names, the keeper-bind predicate rejecting the on-player anchor),
+  and a WebKit market screenshot showing a varied figure tending a stall at a
+  comfortable distance — nobody in your lap.
 - **The camera never sits inside opaque geometry near the MARKET again (#59,
   residual of #25).** The owner kept landing the follow-camera inside a market
   awning/stall — the view filled with opaque brown, the player gone. Root cause:

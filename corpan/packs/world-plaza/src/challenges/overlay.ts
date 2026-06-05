@@ -437,6 +437,10 @@ export function mountChallengeOverlay(
     if (finished) return
     finished = true
     clearTimer()
+    // #62 — record the OUTCOME on the scrim so the NPC chat (which watches the
+    // overlay's lifecycle, not the result) congratulates ONLY on a real finish,
+    // never on a bail. The observer reads this from the (detached) scrim node.
+    scrim.dataset.wpChOutcome = "completed"
     showReward(Math.max(0, Math.min(1, score01)), reward, grade)
   }
   function doCancel() {
@@ -445,6 +449,7 @@ export function mountChallengeOverlay(
       return
     }
     finished = true
+    scrim.dataset.wpChOutcome = "aborted" // #62 — a bail, never congratulated
     cb.onCancel()
     close()
   }

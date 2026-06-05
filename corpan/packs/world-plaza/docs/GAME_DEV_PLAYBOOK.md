@@ -320,6 +320,66 @@ from the SAME segments (`world/cityWall.ts`, a city-lifetime additive layer in
 `mountCity`) so collider ↔ wall are one truth. Keep every boundary knob relative
 to `bounds`/`half` so a later world-size bump keeps a coherent edge for free.
 
+## §6.7 Third-person camera occlusion: deny-list + ray, never a tag whitelist (#59)
+
+The follow camera must NEVER end up inside opaque geometry that hides the player,
+and ANYTHING between camera and player must fade. We shipped this twice wrong
+before getting it right — both failures were a hard-coded NAME WHITELIST
+(`wp-building-*`/`wp-r-*`) for "what occludes," which silently missed the market
+stalls/awnings, the bridge, and walls, so the camera buried in a market roof and
+the player vanished. **Rule: occluders are a DENY-list, not an allow-list** —
+`src/world/cameraOcclusion.ts :: isCameraOccluder` treats every solid, visible,
+real-volume mesh as an occluder and exempts only ground/water/character-billboards/
+sky/HUD-overlays (by prefix) + sub-0.25u-tall ground stamps. New world geometry is
+covered automatically. The boom (eye pull-in, `engine.ts`) AND the fade
+(`cameraFade.ts`) both use it; the fade detects occlusion by RAY (camera→player
+hit before the head) or camera-inside-AABB — never by a tag.
+
+TWO traps that cost time here:
+- **Thin-instanced props carry ONE union AABB over every instance.** A market
+  stall is `wp-city-prop-stall-…` thin-instanced — its bounding box spans the
+  whole chunk, mostly air. A boom ray-test against that union sees a giant phantom
+  slab and COLLAPSES the camera onto the player the instant you near a stall row
+  (player drops off the bottom of frame). Fix: exclude thin-instanced meshes from
+  the BOOM (`isBoomBlocker`), but still FADE them per-object (the fade is per-mesh,
+  so the whole canopy species dissolves cleanly). The fade — not the boom — is the
+  guarantee for airy thin-instanced geometry.
+- **`MIN_BOOM` is a FRAMING floor, not just an anti-clip floor.** Too small (0.2)
+  and a boom forced short against a wall jams the eye onto the player at a near-flat
+  pitch → the player falls off-screen. A generous floor (2.4) keeps the player
+  framed; the fade covers the bit of wall you're now tucked against.
+
+Verify HEADLESSLY + deterministically: `src/world/cameraOcclusion.test.ts` poses a
+camera (NullEngine) inside/behind a solid building AND a thin-instanced stall
+cluster and asserts visibility drops — far more reliable than fighting the real
+follow-rig in a screenshot harness. (The rig is hard to pose; a unit test on the
+occlusion logic + ONE confirming screenshot in the FAILING scenario beats a dozen
+rig-wrangling captures.)
+
+## §6.8 Ambient crowd: keep-out covers EVERY figure; variety is the SPRITE count (#60)
+
+"Surrounded by 758,323 herbalists" decomposed into two separate bugs, and the
+literal complaint ("all herbalists") was a red herring — the persona generator was
+already varied (dump it before assuming; ours gave baker/scribe/sailor/… , 1 of 22
+a herbalist). The real two:
+- **Visible clones = the pre-baked SPRITE set, not the persona.** Ambient figures
+  reuse one of `figureVariety` pre-baked billboards; persona TEXT varies per slot
+  regardless, but the LOOK is variety-bound. 6 sprites over ~12 near-field figures
+  reads as a wall of clones. Bump `figureVariety` (→16; each is a few-KB half-res
+  billboard). When the owner says "everyone looks the same," check the sprite-pool
+  size, not the persona generator.
+- **A player keep-out applied to STROLLERS must also apply to STATIONED figures.**
+  Strollers had a keep-out (#24) but stall-keepers bind to vendor anchors — which
+  cluster exactly where the player stands to do a market quest — so every keeper
+  mobbed the player. Add a keeper keep-out: don't bind a keeper to an anchor within
+  N of the player (leave that stall unstaffed until you step back) and place a bound
+  keeper on the side of its stall AWAY from you. **Any "don't crowd the player" rule
+  must enumerate ALL figure sources (wanderers AND anchor-stationed), or the one you
+  forgot is the mob.** Prove it: warm the sim at the densest vendor cluster and
+  assert 0 figures inside the keep-out (`qa/pop.mjs`); lock variety + the bind
+  predicate in a canvas-free unit test (`src/city/population.test.ts` — DynamicTexture
+  needs a canvas, so test the LOGIC, not the mounted billboards).
+
 ## §7. Storage
 
 All packs run in the host WebView's single origin and **share one ~5 MB localStorage

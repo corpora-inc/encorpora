@@ -60,8 +60,11 @@ const HISTORY_WINDOW = 8
 export type RuntimeStrings = {
   /** Chip label for the deterministic "Play a game" offer. */
   playChip: string
-  /** Short congratulatory line after a challenge resolves. */
+  /** Short congratulatory line after a challenge is COMPLETED (a win). */
   congrats: string
+  /** Calm, no-pressure line when a challenge is DISMISSED/bailed (#62) — never a
+   *  congratulation. */
+  challengeSkipped: string
   /** Invite to play another after a win. */
   playAnother: string
   /**
@@ -77,6 +80,7 @@ export type RuntimeStrings = {
 const DEFAULT_RUNTIME_STRINGS: RuntimeStrings = {
   playChip: "🎮 Play",
   congrats: "Nicely done! 🎉",
+  challengeSkipped: "No worries — maybe later.",
   playAnother: "Want to try another?",
   antiRepeat: "(Ya dijiste: {lines}. No te repitas — di algo NUEVO y avanza la conversación.)",
 }
@@ -439,33 +443,42 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
     }
 
     /** Observe the container for the challenge overlay (`.wp-ch-scrim`) lifecycle
-     *  so we can flow the conversation around the game without editing game.ts. */
+     *  so we can flow the conversation around the game without editing game.ts.
+     *  Caches the live scrim node so that when it disappears we can read the
+     *  `data-wp-ch-outcome` it stamped on close (#62 — congratulate only on a win,
+     *  never on a bail). */
     function watchForChallengeEnd(): void {
       challengeObserver?.disconnect()
-      let seen = false
+      let scrimEl: HTMLElement | null = null
       const obs = new MutationObserver(() => {
-        const present = !!args.container.querySelector(".wp-ch-scrim")
-        if (present) seen = true
-        else if (seen) {
+        const present = args.container.querySelector<HTMLElement>(".wp-ch-scrim")
+        if (present) scrimEl = present
+        else if (scrimEl) {
           // overlay appeared then went away → the challenge resolved/cancelled.
           obs.disconnect()
           challengeObserver = null
-          onChallengeEnded()
+          // The scrim is detached now but keeps the dataset it stamped on close;
+          // absent ⇒ treat as completed (back-compat, e.g. an external unmount).
+          const outcome = scrimEl.dataset.wpChOutcome === "aborted" ? "aborted" : "completed"
+          onChallengeEnded(outcome)
         }
       })
       obs.observe(args.container, { childList: true, subtree: true })
       challengeObserver = obs
     }
 
-    /** After the centered challenge closes: NPC reacts + re-offers. */
-    function onChallengeEnded(): void {
+    /** After the centered challenge closes: the NPC reacts + re-offers. On a WIN it
+     *  congratulates; on a BAIL (`outcome:"aborted"`) it says a neutral line and
+     *  still offers another — NEVER "Nicely done" (#62). */
+    function onChallengeEnded(outcome: "completed" | "aborted"): void {
       if (closed) return
       challengeLive = false
       offerTurn += 1
       currentOffer = resolveStandingOffer(offerTurn)
-      // A short, in-character congrats keeps the conversation flowing around the
-      // game (the actual reward toast/HUD is game.ts's job).
-      ui.addNote(strings.congrats)
+      // A short, in-character reaction keeps the conversation flowing (the reward
+      // toast/HUD is game.ts's job). Congratulate ONLY on a real finish; a bail
+      // gets a calm, no-pressure line.
+      ui.addNote(outcome === "completed" ? strings.congrats : strings.challengeSkipped)
       if (currentOffer) {
         // The "play another" RE-OFFER framing also lives by the button (NOT a
         // bubble, not spoken): the deterministic target-language segue (new
