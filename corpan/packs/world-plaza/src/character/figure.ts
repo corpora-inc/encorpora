@@ -30,10 +30,24 @@ export interface CharacterFigureOptions {
   pickTag?: string
   /** keep the (face) texture mutable for animator redraws. default true. */
   animatable?: boolean
+  /**
+   * Per-character look, chosen by ROLE so the look MEANS something: 3D
+   * (`bubble3d`) is reserved for characters that matter — the player, quest /
+   * special NPCs, and real remote players — while ambient townsfolk + strollers
+   * render as paper HD-2D people (`cutout`). A global QA override
+   * (`window.__wpCharacterLook` / `?look=`) still wins over this for rollback;
+   * absent both, falls back to the shipping default (`bubble3d`).
+   */
+  look?: CharacterLook
 }
 
-/** Resolve the active look once, cheaply. 3D is the default. */
-function activeLook(): CharacterLook {
+/**
+ * A GLOBAL look override for QA / rollback: `window.__wpCharacterLook` or the
+ * `?look=` URL flag force EVERY character to one look, winning over the per-role
+ * choice. Returns null when no override is set (the normal case), so the
+ * per-character `opts.look` (else the default) decides.
+ */
+function forcedLook(): CharacterLook | null {
   if (typeof window !== "undefined") {
     const forced = (window as unknown as { __wpCharacterLook?: CharacterLook }).__wpCharacterLook
     if (forced === "cutout" || forced === "bubble3d") return forced
@@ -42,10 +56,10 @@ function activeLook(): CharacterLook {
       if (q === "cutout") return "cutout"
       if (q === "3d" || q === "bubble3d") return "bubble3d"
     } catch {
-      /* no location (SSR/test) — fall through to default */
+      /* no location (SSR/test) — fall through */
     }
   }
-  return "bubble3d"
+  return null
 }
 
 /**
@@ -57,7 +71,9 @@ export function createCharacterFigure(
   spec: CharacterSpec,
   opts: CharacterFigureOptions = {},
 ): GroundedCutout {
-  if (activeLook() === "cutout") {
+  // QA override wins; else the per-role choice; else the shipping default (3D).
+  const look: CharacterLook = forcedLook() ?? opts.look ?? "bubble3d"
+  if (look === "cutout") {
     return createGroundedCutout(scene, {
       w: CHAR_TEX.w,
       h: CHAR_TEX.h,

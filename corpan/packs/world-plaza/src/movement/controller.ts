@@ -85,6 +85,7 @@ export function createPlayerController(
   const cutout = createCharacterFigure(world.scene, spec, {
     shadowRadius: 0.62,
     pickTag: "player",
+    look: "bubble3d", // the player matters — always 3D.
   })
   const anim: Animator = createAnimator(cutout, spec)
 
@@ -104,8 +105,11 @@ export function createPlayerController(
   // frame so the body turns to walk where it's going instead of moonwalking when
   // you strafe. Distinct from `yaw` (the camera/look heading): the figure faces
   // its velocity, the camera faces the look. Idle keeps the last heading.
-  let figureYaw = 0
+  // Seed it to PI (figure forward is +Z) so at rest the player stands BACK to the
+  // +Z camera, facing the world/objective ahead — not turned around facing us.
+  let figureYaw = Math.PI
   cutout.setGroundPos(x, z)
+  cutout.setHeading?.(figureYaw)
 
   const update = (dt: number) => {
     const inp = input.sample()
@@ -153,11 +157,11 @@ export function createPlayerController(
     cutout.setGroundPos(x, z, groundY)
     // Turn the figure to face where it's MOVING (not where the camera looks), so
     // strafing/back-pedalling no longer slides sideways. The figure's forward is
-    // -Z, so the heading that points its forward along velocity (vx,vz) is
-    // atan2(-vx,-vz). Ease toward it (shortest-arc) while moving; hold facing when
-    // idle. cutout.setHeading is a no-op on the legacy billboard cutout.
+    // +Z (it faces the +Z camera at rest), so the heading that points its forward
+    // along velocity (vx,vz) is atan2(vx,vz). Ease toward it (shortest-arc) while
+    // moving; hold facing when idle. setHeading no-ops on the billboard cutout.
     if (speed > 0.05) {
-      const targetHeading = Math.atan2(-vx, -vz)
+      const targetHeading = Math.atan2(vx, vz)
       let d = targetHeading - figureYaw
       while (d > Math.PI) d -= Math.PI * 2
       while (d < -Math.PI) d += Math.PI * 2

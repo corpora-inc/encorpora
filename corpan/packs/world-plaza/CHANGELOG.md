@@ -7,14 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Character look is now chosen by ROLE, not at random.** The plaza previously
+  ran two unreconciled crowd systems — `world/crowd.ts` (3D) and
+  `city/population.ts` (paper) — so 3D and paper people mixed with no intent. Now
+  3D (`bubble3d`) is RESERVED for characters that matter: the player, quest /
+  special NPCs, and real remote players. All ambient townsfolk + strollers render
+  as paper HD-2D people (`cutout`). `createCharacterFigure` takes an explicit
+  per-role `look`; the global `?look=` / `__wpCharacterLook` QA override still
+  wins. Bonus: far fewer 3D bodies per frame. (`character/figure.ts`,
+  `movement/controller.ts`, `world/crowd.ts`, `net/remoteAvatar.ts`.)
+
 ### Fixed
-- **Characters no longer moonwalk.** The player (and wandering crowd) now TURN to
-  face the direction they're moving instead of holding a fixed forward facing —
-  so strafing or back-pedalling reads as the figure pivoting and walking that way,
-  not sliding sideways. The figure eases its heading toward its velocity each
-  frame (figure forward is −Z → `atan2(-vx,-vz)`), holding the last facing when
-  idle; the camera still follows the LOOK heading, independent of body facing.
-  (`render/cutout.ts` `setHeading`, `character/figure3d.ts`,
+- **3D characters no longer moonwalk.** The player / special NPCs / real players
+  now TURN to face the direction they're moving instead of holding a fixed facing
+  — so strafing or back-pedalling reads as the figure pivoting and walking that
+  way, not sliding sideways or facing the camera while walking away. The figure
+  eases its heading toward its velocity each frame (the model's forward is +Z, so
+  heading = `atan2(vx,vz)`), seeded to face the world ahead at rest, holding the
+  last facing when idle; the camera still follows the LOOK heading, independent of
+  body facing. (Paper crowd billboards face the camera by design and never
+  moonwalk.) (`render/cutout.ts` `setHeading`, `character/figure3d.ts`,
   `movement/controller.ts`, `world/crowd.ts`.)
 
 ### Added

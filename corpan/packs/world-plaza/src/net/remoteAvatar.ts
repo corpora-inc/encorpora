@@ -81,6 +81,7 @@ export function createRemoteAvatar(
   const cutout: GroundedCutout = createCharacterFigure(scene, spec, {
     shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
     pickTag: `remote:${opts.playerId}`,
+    look: "bubble3d", // a real human player — always 3D.
   })
   const anim: Animator = createAnimator(cutout, spec)
 

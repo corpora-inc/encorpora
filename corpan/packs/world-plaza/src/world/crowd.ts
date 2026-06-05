@@ -509,6 +509,8 @@ export function createCrowd(
     const cutout = createCharacterFigure(bScene, spec, {
       shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
       pickTag: `npc:${seed}`,
+      look: "cutout", // ambient townsfolk are paper HD-2D people (3D is reserved
+      // for the player / quest specials / real players). Far cheaper, too.
     })
     const anim = createAnimator(cutout, spec)
 
@@ -662,6 +664,7 @@ export function createCrowd(
     const cutout = createCharacterFigure(bScene, spec, {
       shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
       pickTag: `npc:${seed}`,
+      look: "bubble3d", // quest / special NPCs matter — render them in 3D.
     })
     const anim = createAnimator(cutout, spec)
     cutout.setGroundPos(x, z, groundH(x, z))
@@ -953,10 +956,10 @@ export function createCrowd(
       a.speed = Math.min(1, moved / step)
 
       a.cutout.setGroundPos(a.x, a.z, groundH(a.x, a.z))
-      // Face the walk direction (figure forward is -Z → atan2(-vx,-vz)), eased,
+      // Face the walk direction (figure forward is +Z → atan2(vx,vz)), eased,
       // so wanderers turn instead of moonwalking. Hold facing when barely moving.
       if (a.speed > 0.05) {
-        const targetHeading = Math.atan2(-vx, -vz)
+        const targetHeading = Math.atan2(vx, vz)
         let hd = targetHeading - a.headingYaw
         while (hd > Math.PI) hd -= Math.PI * 2
         while (hd < -Math.PI) hd += Math.PI * 2
