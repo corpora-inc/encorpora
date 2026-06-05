@@ -245,7 +245,11 @@ export function createWorldEngine(
   // distant vista is retired and chunks dispose beyond ~175u (nothing renders
   // past that), the far plane drops from 600 → 380 (well past all live geometry).
   // New ratio ≈ 475:1 — ~13× more mid-distance precision, ZERO perf cost.
-  camera.minZ = 0.8
+  // BUT 3D ("bubble") characters are deliberately NOT faded/boom-blocked, so a
+  // figure crossing the lens has real depth that straddled the 0.8 near plane and
+  // popped out ("NPCs disappear in front of you"). 0.3 keeps a healthy ~1267:1
+  // ratio while letting a character sit right at the lens without clipping.
+  camera.minZ = 0.3
   camera.maxZ = opts.maxZ ?? 380
   camera.inputs.clear()
 

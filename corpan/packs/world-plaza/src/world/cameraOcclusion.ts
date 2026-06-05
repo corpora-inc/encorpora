@@ -67,7 +67,11 @@ export function isCameraOccluder(mesh: AbstractMesh): boolean {
   const bb = mesh.getBoundingInfo?.()?.boundingBox
   if (bb) {
     const dy = bb.maximumWorld.y - bb.minimumWorld.y
-    if (dy < 0.25) return false
+    // Real ground decals/road paint are ~0u tall; the slimmest SOLID occluder is
+    // the simplified building roof cap (0.2u) — it MUST count, or roofs never fade
+    // when the camera sits behind/inside them. 0.12 guards decals without dropping
+    // the cap. (Was 0.25, which silently excluded the new flat caps.)
+    if (dy < 0.12) return false
   }
   return true
 }

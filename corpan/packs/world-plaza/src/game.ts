@@ -441,18 +441,9 @@ function buildWorld(
   // we suppress the procedural soundscape bed so you hear the radio, not both.
   // Footsteps/SFX (soundscape) stay. Ducking/phone-UI are deferred (see cityRadio.ts).
   let cityRadio: CityRadio | null = null
-  let radioBedActive = false // radio owns the ambient bed → suppress the procedural one
   void createCityRadio({ volume: 0.5 })
     .then((r) => {
-      cityRadio = r
-      // Native audio has NO autoplay restriction → start on load so it's playing
-      // before you interact (and the stream buffers while the world loads, masking
-      // start latency). The desktop <audio> path DOES need a user gesture, so that
-      // one starts on the first tap below.
-      if (r.mode() === "native") {
-        radioBedActive = true
-        void r.start()
-      }
+      cityRadio = r // started from the render loop below (race-safe), not here
     })
     .catch((e) => console.error("[wp] cityRadio init failed:", e))
   // Camera occlusion fade: any building between the camera and the player (or one
@@ -1764,26 +1755,24 @@ function buildWorld(
     const p = player.getPos()
     crowd.update(dt, p) // wander + greet-on-approach
     juice.update(dt)
+    // Start the ambient audio ONCE. Native radio needs no user gesture → start it
+    // here in the render loop on the first frame after the probe resolves (NOT in
+    // the async probe callback — that fired during the mount window, where a
+    // double-mount dispose race could tear down the very instance that just started
+    // → no music). The render loop only runs for the LIVE game, so this is race-safe.
+    if (!ambientStarted && cityRadio && cityRadio.mode() === "native") {
+      ambientStarted = true
+      void cityRadio.start()
+    }
     const tap = input.consumeTap()
     if (tap) {
-      // First user gesture unlocks audio (autoplay-blocked); start the bed/radio.
-      soundscape.resume() // unlock WebAudio for footsteps/SFX regardless
-      if (!ambientStarted) {
-        // Native radio already started on load (radioBedActive). Desktop <audio>
-        // needs THIS gesture; with no radio path, fall back to the procedural bed.
-        // If the probe hasn't resolved yet, wait for a later tap so we never start
-        // the procedural bed AND the radio together.
-        if (radioBedActive) {
-          ambientStarted = true
-        } else if (cityRadio) {
-          ambientStarted = true
-          if (cityRadio.mode() === "webaudio") {
-            radioBedActive = true
-            void cityRadio.start()
-          } else {
-            soundscape.startAmbient()
-          }
-        }
+      // First user gesture unlocks WebAudio (footsteps/SFX) + the desktop <audio>
+      // path; the procedural bed is the fallback when there's no radio at all.
+      soundscape.resume()
+      if (!ambientStarted && cityRadio) {
+        ambientStarted = true
+        if (cityRadio.mode() === "webaudio") void cityRadio.start()
+        else soundscape.startAmbient()
       }
     }
     focus.update(dt, p, tap)

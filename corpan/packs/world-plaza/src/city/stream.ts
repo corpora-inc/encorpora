@@ -159,7 +159,12 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
   const visRSq = visibilityRadius * visibilityRadius
   const buildRadius = visibilityRadius + 40
   const buildRSq = buildRadius * buildRadius
-  const disposeRadius = visibilityRadius + 120
+  // Keep disposeRadius just past buildRadius (hysteresis to avoid boundary thrash)
+  // — NOT +120, which left a thick shell of built-but-disabled chunks resident.
+  // Babylon re-evaluates EVERY resident mesh each frame for active-mesh selection,
+  // so that shell quietly cost frame budget (total scene.meshes ballooned). +50
+  // disposes far chunks promptly; the time-sliced builder rebuilds hitch-free.
+  const disposeRadius = visibilityRadius + 50
   const disposeRSq = disposeRadius * disposeRadius
   // shadow gate is tighter than (or equal to) the render radius — only the nearest
   // chunks cast, keeping the shadow-map draw count bounded.

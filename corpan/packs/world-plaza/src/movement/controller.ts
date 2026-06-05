@@ -20,6 +20,25 @@ import { walkSurfaceHeight } from "../world/walkSurface"
 
 const PLAYER_RADIUS = 0.55
 const MOVE_SPEED = 6.5 // world units / sec
+/** Max walk-surface lift (world units) you can step UP in one frame. A raised deck
+ *  (~3u) is only mountable via its ramp, which rises gradually (~0.07u/frame at
+ *  MOVE_SPEED); a bigger jump means we walked into the deck's SIDE → block it. */
+const MAX_STEP_UP = 0.6
+
+/**
+ * Pure step-climb rule (unit-tested). You can step DOWN any amount and step UP at
+ * most `maxStep`; a larger lift means walking into the side of a raised surface
+ * (the bridge deck), which is only reachable via its gradual ramp. Returns the
+ * ground Y to use and whether the horizontal move should be blocked this frame.
+ */
+export function resolveStepUp(
+  prevGroundY: number,
+  targetGroundY: number,
+  maxStep = MAX_STEP_UP,
+): { groundY: number; blocked: boolean } {
+  if (targetGroundY > prevGroundY + maxStep) return { groundY: prevGroundY, blocked: true }
+  return { groundY: targetGroundY, blocked: false }
+}
 
 export interface PlayerController {
   cutout: GroundedCutout
@@ -99,6 +118,10 @@ export function createPlayerController(
     x = free.x
     z = free.z
   }
+  // Walk-surface height we currently stand on — seeded at spawn, updated each frame.
+  // Drives the step-climb guard so you can only mount the raised bridge deck via
+  // its gradual ramp, not by walking into its side.
+  let lastGroundY = getGroundHeight ? getGroundHeight(x, z) : walkSurfaceHeight(world.scene, x, z)
   let yaw = 0
   let lastSpeed = 0 // 0..1 locomotion speed, exposed for footstep audio
   // The figure's own facing (radians), eased toward the MOVEMENT direction each
@@ -129,6 +152,8 @@ export function createPlayerController(
     const speed = Math.min(len, 1)
     lastSpeed = speed
 
+    const prevX = x
+    const prevZ = z
     let nx = x + vx * MOVE_SPEED * dt
     let nz = z + vz * MOVE_SPEED * dt
     const m = PLAYER_RADIUS
@@ -153,7 +178,17 @@ export function createPlayerController(
     // Walk-surface height: an explicit sampler wins; else the scene's walk-surface
     // registry (a bridge self-registers there, so this is wired with ZERO game.ts
     // change — #40). Flat ground → 0.
-    const groundY = getGroundHeight ? getGroundHeight(x, z) : walkSurfaceHeight(world.scene, x, z)
+    const targetGroundY = getGroundHeight ? getGroundHeight(x, z) : walkSurfaceHeight(world.scene, x, z)
+    // Step-climb guard: the raised bridge deck is only mountable via its gradual
+    // ramp. A sudden lift taller than a step means we walked into the deck's SIDE —
+    // revert this frame's horizontal move and hold our height (can't climb a wall).
+    const step = resolveStepUp(lastGroundY, targetGroundY)
+    if (step.blocked) {
+      x = prevX
+      z = prevZ
+    }
+    const groundY = step.groundY
+    lastGroundY = groundY
     cutout.setGroundPos(x, z, groundY)
     // Turn the figure to face where it's MOVING (not where the camera looks), so
     // strafing/back-pedalling no longer slides sideways. The figure's forward is
