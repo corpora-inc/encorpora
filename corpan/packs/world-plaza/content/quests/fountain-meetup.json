@@ -1,0 +1,26 @@
+{
+  "id": "fountain-meetup",
+  "title": "Meet Me at the Fountain",
+  "narrative": "A local wants to make plans. Talk times, days, and where to meet.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "social",
+  "objective": { "kind": "completeChallenges", "toolId": "dialogue-fill", "count": 1 },
+  "steps": [
+    {
+      "id": "make-plans",
+      "label": "Make plans to meet at the fountain",
+      "anchorId": "fountain",
+      "kind": "talk",
+      "toolId": "dialogue-fill"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner arranging to meet, naming days and times, and making small talk.",
+    "scaffold": "intermediate",
+    "ragSources": ["base-social", "base-greetings"],
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["social", "greetings"], "languageCodes": ["es"] },
+    "toolWhitelist": ["dialogue-fill", "fill-the-blank", "build-sentence"]
+  },
+  "rewards": { "xp": 180, "coins": 210, "badge": "good-company" },
+  "nextQuestIds": ["plaza-cafe-order", "civic-cityhall", "station-departures"]
+}

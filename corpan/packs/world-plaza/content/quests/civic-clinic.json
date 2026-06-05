@@ -1,0 +1,33 @@
+{
+  "id": "civic-clinic",
+  "title": "At the Clinic",
+  "narrative": "Not feeling well. Explain your symptoms at the clinic and ask for help.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "health",
+  "objective": { "kind": "completeChallenges", "toolId": "category-sort", "count": 1 },
+  "steps": [
+    {
+      "id": "describe",
+      "label": "Describe how you feel at the clinic",
+      "anchorId": "hospital",
+      "kind": "talk",
+      "toolId": "category-sort"
+    },
+    {
+      "id": "ask-remedy",
+      "label": "Ask for a remedy and the dose",
+      "anchorId": "hospital",
+      "kind": "talk",
+      "toolId": "listen-choose"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner naming body parts, saying how they feel, and asking for help and medicine.",
+    "scaffold": "intermediate",
+    "ragSources": ["base-civic", "base-health"],
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["health", "emergency", "civic"], "languageCodes": ["es"] },
+    "toolWhitelist": ["category-sort", "listen-choose", "fill-the-blank"]
+  },
+  "rewards": { "xp": 200, "coins": 230, "badge": "on-the-mend", "grant": ["herbal-tea"] },
+  "nextQuestIds": ["civic-cityhall", "plaza-cafe-order", "fountain-meetup"]
+}

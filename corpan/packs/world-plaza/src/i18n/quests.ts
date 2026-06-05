@@ -46,11 +46,87 @@ export const specialNameKey = (questId: string, anchorId: string): string =>
  * step (LOCALIZATION.md §4), with ZERO runtime risk (fallback covers every miss).
  */
 const en: Record<string, string> = {
-  // Authored quest/special-NPC strings go here, e.g.:
-  //   "quest.es-cafe-travel.title": "Coffee on the Plaza",
-  //   "quest.es-cafe-travel.step.order-coffee": "Order a coffee at the plaza café",
-  //   "special.es-cafe-travel.plaza.name": "the café host",
-  // (Left empty for now — the literal fallback renders until these are authored.)
+  // ── legacy ES quests (back-compat ids; literals already in the JSON, keyed here
+  //    so the catalog path is exercised + ready for `gen_i18n.py` to translate). ──
+  "quest.es-cafe-travel.title": "Coffee on the Plaza",
+  "quest.es-cafe-travel.narrative": "Your very first words in the city: order a coffee at the plaza café.",
+  "quest.es-cafe-travel.step.order-coffee": "Order a coffee at the plaza café",
+  "quest.es-market-haggle.title": "A Deal at the Market",
+  "quest.es-market-haggle.narrative": "Practice your numbers and prices with the market clerk.",
+  "quest.es-market-haggle.step.haggle": "Ask the price at the market",
+  "quest.es-directions.title": "Which Way to the Fountain?",
+  "quest.es-directions.narrative": "Ask for directions at the plaza fountain and learn the way around.",
+  "quest.es-directions.step.ask-way": "Ask for directions at the fountain",
+  "quest.es-guadalajara-route.title": "Across Corpan City",
+  "quest.es-guadalajara-route.narrative": "Find your way across Corpan City — from the harbor to the river bridge.",
+  "quest.es-guadalajara-route.step.docks": "Ask for the ferry at the harbor",
+  "quest.es-guadalajara-route.step.gate": "Meet the keeper at the river bridge",
+
+  // ── plaza ──────────────────────────────────────────────────────────────────
+  "quest.plaza-greetings.title": "First Hellos",
+  "quest.plaza-greetings.narrative": "Trade greetings with the crowd on the plaza — your first warm words.",
+  "quest.plaza-greetings.step.say-hello": "Greet a stranger on the plaza",
+  "quest.plaza-cafe-order.title": "A Table on the Square",
+  "quest.plaza-cafe-order.narrative": "Settle in at a plaza café and order something with confidence.",
+  "quest.plaza-cafe-order.step.order": "Order food and drink at the café",
+  "quest.plaza-cafe-order.step.pay": "Settle the bill and say thank you",
+  "quest.plaza-business.title": "Talking Shop",
+  "quest.plaza-business.narrative": "A merchant on the square wants to do business. Introduce yourself and your trade.",
+  "quest.plaza-business.step.introduce": "Introduce yourself to the merchant",
+  "quest.plaza-business.step.propose": "Propose a deal",
+
+  // ── market ─────────────────────────────────────────────────────────────────
+  "quest.market-numbers.title": "Counting at the Stalls",
+  "quest.market-numbers.narrative": "Learn your numbers and prices haggling through the market stalls.",
+  "quest.market-numbers.step.ask-price": "Ask the price at a market stall",
+  "quest.market-numbers.step.haggle": "Make an offer and close the deal",
+  "quest.market-groceries.title": "The Grocer's Round",
+  "quest.market-groceries.narrative": "Fill your basket: name the fruit, the bread, the spices, all in the market tongue.",
+  "quest.market-groceries.step.name-goods": "Name the goods on the grocer's table",
+
+  // ── fountain ───────────────────────────────────────────────────────────────
+  "quest.fountain-directions.title": "Which Way From the Fountain?",
+  "quest.fountain-directions.narrative": "Stand by the fountain and learn the words for left, right, and the way across town.",
+  "quest.fountain-directions.step.ask-way": "Ask the way at the fountain",
+  "quest.fountain-directions.step.follow": "Repeat the directions back",
+  "quest.fountain-meetup.title": "Meet Me at the Fountain",
+  "quest.fountain-meetup.narrative": "A local wants to make plans. Talk times, days, and where to meet.",
+  "quest.fountain-meetup.step.make-plans": "Make plans to meet at the fountain",
+
+  // ── harbor ─────────────────────────────────────────────────────────────────
+  "quest.harbor-ferry-ride.title": "Down to the Harbor",
+  "quest.harbor-ferry-ride.narrative": "Find the ferry at the harbor and learn the words for boats, fares, and the water.",
+  "quest.harbor-ferry-ride.step.find-ferry": "Ask for the ferry at the harbor",
+  "quest.harbor-ferry-ride.step.buy-fare": "Buy a fare and board",
+  "quest.harbor-fishmonger.title": "The Day's Catch",
+  "quest.harbor-fishmonger.narrative": "The fishmonger lays out the morning's catch. Name it, weigh it, buy it.",
+  "quest.harbor-fishmonger.step.name-catch": "Name the catch at the harbor stall",
+  "quest.harbor-route-master.title": "The Long Way Round",
+  "quest.harbor-route-master.narrative": "A grand tour: market to harbor to the far bank — and say your farewell aloud.",
+  "quest.harbor-route-master.step.stock-up": "Stock up at the market",
+  "quest.harbor-route-master.step.to-harbor": "Reach the harbor",
+  "quest.harbor-route-master.step.farewell": "Say your farewell aloud at the harbor",
+
+  // ── station ────────────────────────────────────────────────────────────────
+  "quest.station-departures.title": "Reading the Departures",
+  "quest.station-departures.narrative": "At the station, read the board, buy a ticket, and find your platform.",
+  "quest.station-departures.step.buy-ticket": "Buy a ticket at the station",
+  "quest.station-departures.step.find-platform": "Ask which platform and when it leaves",
+
+  // ── civic ──────────────────────────────────────────────────────────────────
+  "quest.civic-cityhall.title": "Papers, Please",
+  "quest.civic-cityhall.narrative": "A clerk at City Hall needs your details. Fill the form, in the local tongue.",
+  "quest.civic-cityhall.step.fill-form": "Answer the clerk at City Hall",
+  "quest.civic-clinic.title": "At the Clinic",
+  "quest.civic-clinic.narrative": "Not feeling well. Explain your symptoms at the clinic and ask for help.",
+  "quest.civic-clinic.step.describe": "Describe how you feel at the clinic",
+  "quest.civic-clinic.step.ask-remedy": "Ask for a remedy and the dose",
+
+  // ── bridge ─────────────────────────────────────────────────────────────────
+  "quest.bridge-crossing.title": "Across the River",
+  "quest.bridge-crossing.narrative": "Talk your way past the bridge keeper, then cross to the far bank yourself.",
+  "quest.bridge-crossing.step.greet-keeper": "Greet the keeper at the north bridge",
+  "quest.bridge-crossing.step.cross": "Cross the bridge to the far bank",
 }
 
 // GENERATED_QUEST_LOCALES_START

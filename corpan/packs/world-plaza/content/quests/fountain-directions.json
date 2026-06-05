@@ -1,0 +1,33 @@
+{
+  "id": "fountain-directions",
+  "title": "Which Way From the Fountain?",
+  "narrative": "Stand by the fountain and learn the words for left, right, and the way across town.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "directions",
+  "objective": { "kind": "completeChallenges", "toolId": "listen-choose", "count": 1 },
+  "steps": [
+    {
+      "id": "ask-way",
+      "label": "Ask the way at the fountain",
+      "anchorId": "fountain",
+      "kind": "talk",
+      "toolId": "listen-choose"
+    },
+    {
+      "id": "follow",
+      "label": "Repeat the directions back",
+      "anchorId": "fountain",
+      "kind": "talk",
+      "toolId": "build-sentence"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking the way, naming landmarks, and following directions.",
+    "scaffold": "beginner",
+    "ragSources": ["base-travel", "base-directions"],
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["directions", "travel"], "languageCodes": ["es"] },
+    "toolWhitelist": ["listen-choose", "build-sentence", "fast-translate"]
+  },
+  "rewards": { "xp": 150, "coins": 190, "badge": "wayfinder", "grant": ["map-scrap"] },
+  "nextQuestIds": ["harbor-ferry-ride", "station-departures", "bridge-crossing"]
+}

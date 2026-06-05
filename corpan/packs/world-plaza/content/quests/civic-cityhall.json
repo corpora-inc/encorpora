@@ -1,0 +1,26 @@
+{
+  "id": "civic-cityhall",
+  "title": "Papers, Please",
+  "narrative": "A clerk at City Hall needs your details. Fill the form, in the local tongue.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "civic",
+  "objective": { "kind": "completeChallenges", "toolId": "fill-the-blank", "count": 1 },
+  "steps": [
+    {
+      "id": "fill-form",
+      "label": "Answer the clerk at City Hall",
+      "anchorId": "hospital",
+      "kind": "talk",
+      "toolId": "fill-the-blank"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner stating their name, where they are from, dates, and answering official questions politely.",
+    "scaffold": "intermediate",
+    "ragSources": ["base-civic"],
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["civic", "greetings", "numbers"], "languageCodes": ["es"] },
+    "toolWhitelist": ["fill-the-blank", "dialogue-fill", "build-sentence"]
+  },
+  "rewards": { "xp": 200, "coins": 240, "badge": "in-good-standing", "grant": ["sealed-letter"] },
+  "nextQuestIds": ["civic-clinic", "station-departures", "fountain-meetup"]
+}

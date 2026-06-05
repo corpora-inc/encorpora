@@ -1,0 +1,33 @@
+{
+  "id": "market-numbers",
+  "title": "Counting at the Stalls",
+  "narrative": "Learn your numbers and prices haggling through the market stalls.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "market",
+  "objective": { "kind": "completeChallenges", "toolId": "number-drill", "count": 1 },
+  "steps": [
+    {
+      "id": "ask-price",
+      "label": "Ask the price at a market stall",
+      "anchorId": "market",
+      "kind": "talk",
+      "toolId": "number-drill"
+    },
+    {
+      "id": "haggle",
+      "label": "Make an offer and close the deal",
+      "anchorId": "market",
+      "kind": "talk",
+      "toolId": "fast-translate"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking prices, counting money, and naming goods.",
+    "scaffold": "beginner",
+    "ragSources": ["base-market", "base-numbers"],
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "numbers", "money", "shopping"], "languageCodes": ["es"] },
+    "toolWhitelist": ["number-drill", "fast-translate", "listen-choose"]
+  },
+  "rewards": { "xp": 160, "coins": 220, "badge": "sharp-haggler", "grant": ["market-list"] },
+  "nextQuestIds": ["market-groceries", "plaza-cafe-order", "fountain-directions"]
+}
