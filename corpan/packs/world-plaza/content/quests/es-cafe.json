@@ -17,7 +17,15 @@
       "id": "order-coffee",
       "label": "Order a coffee at the plaza café",
       "anchorId": "plaza",
-      "toolId": "translate-fast"
+      "toolId": "translate-fast",
+      "entryIds": [
+        878,
+        2807,
+        838,
+        846,
+        853,
+        1746
+      ]
     }
   ],
   "promptProgram": {

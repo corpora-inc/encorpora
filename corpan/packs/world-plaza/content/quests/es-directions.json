@@ -17,7 +17,15 @@
       "id": "ask-way",
       "label": "Ask for directions at the fountain",
       "anchorId": "fountain",
-      "toolId": "translate-fast"
+      "toolId": "translate-fast",
+      "entryIds": [
+        7141,
+        6180,
+        2917,
+        3524,
+        10033,
+        1693
+      ]
     }
   ],
   "promptProgram": {

@@ -17,7 +17,15 @@
       "id": "haggle",
       "label": "Ask the price at the market",
       "anchorId": "market",
-      "toolId": "translate-fast"
+      "toolId": "translate-fast",
+      "entryIds": [
+        3835,
+        4129,
+        6233,
+        7158,
+        8221,
+        7038
+      ]
     }
   ],
   "promptProgram": {
