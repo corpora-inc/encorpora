@@ -62,7 +62,19 @@ const bridge = buildBridge(scene, {
   waterY: 0.07,
   palette: worldScene.palette as Record<string, string>,
 })
-void bridge
+
+// a bright RED "player" capsule that rides the bridge.heightAt profile — proves
+// the player walks ON the deck (over the water), not under it (#40).
+const playerMat = new StandardMaterial("player", scene)
+playerMat.emissiveColor = Color3.FromHexString("#e0392b")
+playerMat.disableLighting = true
+const playerMesh = MeshBuilder.CreateCylinder("player", { height: 1.8, diameter: 0.7 }, scene)
+playerMesh.material = playerMat
+const placePlayer = (px: number, pz: number) => {
+  const y = bridge.heightAt(px, pz)
+  playerMesh.position.set(px, y + 0.9, pz) // capsule centre = surface + half height
+}
+placePlayer(0, nearZ - 6) // start on the near bank
 
 world.start()
 
@@ -81,4 +93,7 @@ scene.activeCamera = cam
     cam.target = new Vector3(0, ty, tz)
   },
   meshCount: () => scene.meshes.filter((m) => m.name.includes("wp-bridge")).length,
+  placePlayer: (px: number, pz: number) => placePlayer(px, pz),
+  // the player's world Y at a z (proof of the walk surface).
+  surfaceY: (px: number, pz: number) => bridge.heightAt(px, pz),
 }

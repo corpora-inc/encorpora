@@ -19,7 +19,7 @@ import {
   shuffle,
   type ToolImpl,
 } from "./_shared"
-import { S } from "./strings"
+import { challengeStrings } from "./strings"
 
 async function pickPairs(
   host: ChallengeRuntimeHost,
@@ -47,6 +47,7 @@ export const wordScramble: ToolImpl = {
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("word-scramble", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       // Scramble a SINGLE word (no spaces) — pick the longest meaningful token
@@ -155,6 +156,7 @@ export const buildSentence: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("build-sentence", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const pairs = (await pickPairs(host, spec, 8)).filter(
@@ -231,6 +233,8 @@ export const fillTheBlank: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("fill-the-blank", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
+    void S // #53 wip (i18n): localized strings being wired into this tool's UI
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const pairs = (await pickPairs(host, spec, 12)).filter(
@@ -299,6 +303,7 @@ export const dialogueFill: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("dialogue-fill", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const pairs = await pickPairs(host, spec, 8)
@@ -369,6 +374,7 @@ export const spotTypo: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("spot-typo", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const pairs = (await pickPairs(host, spec, 14)).filter(
@@ -453,6 +459,7 @@ export const conjugationTap: ToolImpl = {
   difficulty: 3,
   buildSpec: (ctx) => Promise.resolve(baseSpec("conjugation-tap", ctx, { rounds: 5 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       void host // built-in table; corpus not required
@@ -517,6 +524,7 @@ export const rhymeMatch: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("rhyme-match", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const pairs = (await pickPairs(host, spec, 20)).filter((p) => p.target.length >= 3)

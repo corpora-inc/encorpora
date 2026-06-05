@@ -910,6 +910,53 @@
 .wp-quest-step--active { color: #2e261d; font-weight: 700; }
 .wp-quest-step--active::before { content: "●"; color: var(--wp-quest-accent); }
 
+/* ── Switch-quest escape hatch (#41): a calm, dignified quest picker ───────── */
+.wp-quest-switch-hint {
+  font-size: 13px;
+  color: #8a7a62;
+  margin: 2px 0 10px;
+  line-height: 1.4;
+}
+.wp-quest-switch-cards { display: flex; flex-direction: column; gap: 8px; }
+.wp-quest-switch-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(120, 100, 70, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 252, 245, 0.7);
+  padding: 11px 13px;
+  font: inherit;
+  color: #2e261d;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+}
+button.wp-quest-switch-card:hover { background: #fff; border-color: var(--wp-quest-accent); }
+button.wp-quest-switch-card:active { transform: scale(0.99); }
+.wp-quest-switch-card--active {
+  cursor: default;
+  background: color-mix(in srgb, var(--wp-quest-accent) 14%, #fff);
+  border-color: var(--wp-quest-accent);
+}
+.wp-quest-switch-card--done { opacity: 0.82; }
+.wp-quest-switch-card-title { font-weight: 700; font-size: 15px; }
+.wp-quest-switch-card-where { font-size: 12.5px; color: #8a7a62; margin-top: 2px; }
+.wp-quest-switch-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--wp-quest-accent);
+}
+.wp-quest-switch-card--done .wp-quest-switch-card-title::after {
+  content: " ✓";
+  color: #5a8a4a;
+}
+
 @media (min-width: 700px) {
   .wp-quest { gap: 22px; }
   .wp-quest-title { font-size: 22px; }

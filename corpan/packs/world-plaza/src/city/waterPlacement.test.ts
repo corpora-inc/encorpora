@@ -142,75 +142,85 @@ describe.each([
   })
 })
 
-describe.each([
-  ["generated city", generateCity()],
-  ["stub city", stubCity()],
-])("world boundary (#32) — %s", (_name, layout) => {
-  it("every wall-segment chunk reads BLOCKED along the rampart (off the gate)", () => {
+describe("world boundary (#34 Phase 1) — generated city: sea-ringed island", () => {
+  const layout = generateCity()
+
+  it("any authored wall segment, where present, reads BLOCKED off the gate", () => {
+    // Phase 1 has NO land ramparts (sea is the boundary), so walls may be empty.
+    // This guards the wall path FOR IF a future producer re-adds land borders:
+    // every off-gate rampart point must block. (Vacuously true when no walls.)
     const field = fullField(layout)
     let probes = 0
     let blocked = 0
     for (const ch of layout.chunks) {
       for (const w of ch.walls ?? []) {
-        const x0 = Math.min(w.x0, w.x1)
-        const x1 = Math.max(w.x0, w.x1)
-        const z0 = Math.min(w.z0, w.z1)
-        const z1 = Math.max(w.z0, w.z1)
-        const cx = (x0 + x1) / 2
-        const cz = (z0 + z1) / 2
         const longX = w.side === "north" || w.side === "south"
-        const lo = longX ? x0 : z0
-        const hi = longX ? x1 : z1
+        const cx = (Math.min(w.x0, w.x1) + Math.max(w.x0, w.x1)) / 2
+        const cz = (Math.min(w.z0, w.z1) + Math.max(w.z0, w.z1)) / 2
+        const lo = longX ? Math.min(w.x0, w.x1) : Math.min(w.z0, w.z1)
+        const hi = longX ? Math.max(w.x0, w.x1) : Math.max(w.z0, w.z1)
         for (let a = lo + 1; a <= hi - 1; a += 4) {
-          // skip the gate interval.
           if (w.gateGap && a > w.gateGap[0] - 1 && a < w.gateGap[1] + 1) continue
           probes++
-          const px = longX ? a : cx
-          const pz = longX ? cz : a
-          if (field.blocked(px, pz, AGENT_R)) blocked++
+          if (field.blocked(longX ? a : cx, longX ? cz : a, AGENT_R)) blocked++
         }
       }
     }
-    expect(probes).toBeGreaterThan(0)
-    expect(blocked).toBe(probes)
+    expect(blocked).toBe(probes) // all-or-(vacuously)-none
   })
 
-  it("leaves each GATE walkable (you can pass through)", () => {
+  it("the ISLAND is ringed by SEA — the S/E/W perimeter reads BLOCKED, not a raw edge", () => {
     const field = fullField(layout)
-    let gates = 0
-    let open = 0
-    for (const ch of layout.chunks) {
-      for (const w of ch.walls ?? []) {
-        if (!w.gateGap) continue
-        gates++
-        const longX = w.side === "north" || w.side === "south"
-        const mid = (w.gateGap[0] + w.gateGap[1]) / 2
-        const cz = (Math.min(w.z0, w.z1) + Math.max(w.z0, w.z1)) / 2
-        const cx = (Math.min(w.x0, w.x1) + Math.max(w.x0, w.x1)) / 2
-        const px = longX ? mid : cx
-        const pz = longX ? cz : mid
-        if (!field.blocked(px, pz, AGENT_R)) open++
-      }
+    // probe a ring WELL into the sea margin (≥ half a chunk inside each world edge)
+    // on the three SEA edges — every one must block (you can't walk off the island).
+    // The NORTH edge is the river waterfront + far bank (walkable by design — the
+    // bridge crosses there), so it's covered by the water/deck tests, not here.
+    const { minX, maxX, minZ } = layout.bounds
+    const inset = layout.chunkSize * 0.5
+    const chunkAt = (x: number, z: number) =>
+      layout.chunks.find(
+        (c) => x >= c.bounds.minX && x < c.bounds.maxX && z >= c.bounds.minZ && z < c.bounds.maxZ,
+      )
+    let probes = 0
+    let blocked = 0
+    // a deep-margin point is asserted ONLY if its chunk is sea-tagged (skip the
+    // river-end straddle near +Z where the far bank reaches the W/E edge).
+    const probe = (x: number, z: number) => {
+      if (chunkAt(x, z)?.landKind !== "sea") return
+      probes++
+      if (field.blocked(x, z, AGENT_R)) blocked++
     }
-    if (gates > 0) expect(open).toBe(gates)
+    for (let x = minX + inset; x <= maxX - inset; x += layout.chunkSize) {
+      probe(x, minZ + inset) // south edge (open sea)
+    }
+    for (let z = minZ + inset; z <= maxZ(layout) - inset; z += layout.chunkSize) {
+      probe(minX + inset, z) // west edge (open sea)
+      probe(maxX - inset, z) // east edge (open sea)
+    }
+    expect(probes).toBeGreaterThan(0)
+    expect(blocked).toBe(probes) // every sea-tagged perimeter point is solid
   })
 
-})
-
-describe("world boundary (#32) — generated city full perimeter", () => {
-  const layout = generateCity()
-  it("covers all three land edges (S/E/W) + the sea wall — no raw edge", () => {
-    const sides = new Set(layout.chunks.flatMap((c) => c.walls ?? []).map((w) => w.side))
-    for (const s of ["south", "east", "west", "north"] as const) expect(sides.has(s)).toBe(true)
-  })
-  it("the sea wall leaves the bridge mouth open", () => {
-    const field = fullField(layout)
-    const { bridgeX } = layout.water
-    // the sea wall is the +Z rampart; its gate is the bridge mouth.
-    const seaWall = layout.chunks.flatMap((c) => c.walls ?? []).find((w) => w.side === "north" && w.gateGap)
-    expect(seaWall).toBeTruthy()
-    const cz = (seaWall!.z0 + seaWall!.z1) / 2
-    expect(field.blocked(bridgeX, cz, AGENT_R)).toBe(false)
+  it("the S/E/W world edges are SEA (no walkable raw edge); corners too", () => {
+    // the mid-edge chunks just inside the S/E/W world boundaries must be `sea`.
+    // (North is the river waterfront/far bank, walkable — covered by water tests.)
+    const { minX, maxX, minZ } = layout.bounds
+    const at = (x: number, z: number) =>
+      layout.chunks.find(
+        (c) => x >= c.bounds.minX && x < c.bounds.maxX && z >= c.bounds.minZ && z < c.bounds.maxZ,
+      )
+    const m = (maxX + minX) / 2
+    const edges = [
+      at(m, minZ + 1), // south
+      at(minX + 1, 0), // west
+      at(maxX - 1, 0), // east
+      at(minX + 1, minZ + 1), // SW corner
+      at(maxX - 1, minZ + 1), // SE corner
+    ]
+    for (const e of edges) {
+      expect(e).toBeTruthy()
+      expect(e!.landKind).toBe("sea")
+    }
   })
 })
 

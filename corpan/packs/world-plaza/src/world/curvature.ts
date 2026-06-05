@@ -49,24 +49,49 @@ import {
  * never see vertex Y, so the world stays FLAT for all gameplay while the picture
  * curves. No gameplay system changes.
  *
- * EXCLUSIONS. The camera-locked sky dome and the hero vista (the one landmark
- * meant to stand eternal on the far horizon) must NOT bend — `applyWorldCurvature`
- * disables the plugin on materials whose name matches `excludeMatch`.
+ * EXCLUSIONS. Things that ride the camera / live on the horizon as backdrop must
+ * NOT bend: the sky dome, the hero vista, the atmosphere meshes, AND the distant
+ * skyline bands (`wp-skyline-*`, env-art's horizon city silhouette). They stay
+ * pinned to the horizon; bending them would make them dip with the ground and
+ * tear away from the sky. `applyWorldCurvature` disables the plugin on materials
+ * whose name matches `excludeMatch`.
  *
- * SPIKE STATUS. Minimal wire-in, new module. `curvature` is a single dial
- * exposed as `DEFAULT_CURVATURE` + a live setter. Frustum-culling robustness for
- * the far ring (gotcha #4 in REVEAL_RESEARCH.md) is intentionally deferred — the
- * spike proves the LOOK; the enable-radius tuning lands with the full build.
+ * TUNABLE BY FEEL (no rebuild). The owner dials curvature by eye, so the strength
+ * is read from `localStorage["wp:curvature"]` at apply time (falling back to the
+ * passed value / `DEFAULT_CURVATURE`), and a live setter is exposed on
+ * `window.__wpCurvature` so the strength can be nudged from the console and seen
+ * instantly. `setCurvature()` also persists to localStorage so the choice sticks.
  */
 
 const PLUGIN_NAME = "WorldCurve"
 
 /**
  * Curvature strength (negative → distant geometry sinks). Tuned for our metric
- * world + low cruise cam: at ~150u out a building drops ~(150²·0.0016)≈36u, well
- * below the horizon, then crests smoothly as you close. Dial live via setCurvature.
+ * world + low cruise cam: at ~150u out a building drops ~(150²·0.0026)≈58u, well
+ * below the horizon, then crests smoothly as you close. STRONG by default per the
+ * owner ("try strong first"); dial live via setCurvature / `wp:curvature`.
+ * Usable range ≈ -0.0008 (subtle) … -0.0026 (this, a bold tiny-planet crest);
+ * past ~-0.004 a billboard BEYOND the crest can visibly float, so we clamp there.
  */
-export const DEFAULT_CURVATURE = -0.0016
+export const DEFAULT_CURVATURE = -0.0026
+
+/** localStorage key the owner can set to dial curvature without a rebuild. */
+const LS_KEY = "wp:curvature"
+
+/** Clamp to the sane visual range so a stray dial can't break grounding. */
+const clampCurvature = (c: number): number => Math.max(-0.004, Math.min(0, c))
+
+/** Read the owner's localStorage override, if any (else the passed fallback). */
+const readOverride = (fallback: number): number => {
+  try {
+    const raw = typeof localStorage !== "undefined" ? localStorage.getItem(LS_KEY) : null
+    if (raw == null || raw === "") return fallback
+    const n = Number(raw)
+    return Number.isFinite(n) ? clampCurvature(n) : fallback
+  } catch {
+    return fallback
+  }
+}
 
 // Shared live state read by every plugin instance's bind (one world, one curve).
 const state = {
@@ -147,19 +172,25 @@ export interface CurvatureOptions {
   curvature?: number
   /**
    * Material-name substrings to EXCLUDE from bending (the plugin is disabled on
-   * matching materials). Defaults exclude the sky dome + the hero vista, which
-   * must stay put on the horizon.
+   * matching materials). Defaults exclude the sky dome, the atmosphere meshes, the
+   * hero vista, and the distant skyline bands — every horizon/backdrop layer that
+   * must stay pinned to the horizon rather than dip with the ground.
    */
   excludeMatch?: string[]
 }
+
+/** Every horizon/backdrop layer that must NOT bend (rides the camera or lives on
+ *  the horizon line as a flat). Match is by material-name substring. */
+const DEFAULT_EXCLUDES = ["dome", "wp-vista", "wp-atmo", "wp-skyline"]
 
 /**
  * Register the global curvature plugin and feed it the live camera centre.
  * Mirrors `applyAtmosphere`'s shape: apply to a finished scene, return dispose().
  */
 export function applyWorldCurvature(scene: Scene, opts: CurvatureOptions): WorldCurvature {
-  state.curvature = opts.curvature ?? DEFAULT_CURVATURE
-  const exclude = opts.excludeMatch ?? ["dome", "wp-vista", "wp-atmo"]
+  // localStorage override (owner's by-feel dial) wins over the passed default.
+  state.curvature = readOverride(opts.curvature ?? DEFAULT_CURVATURE)
+  const exclude = opts.excludeMatch ?? DEFAULT_EXCLUDES
 
   // ONE registration → attaches to every PBR + Standard material on creation.
   RegisterMaterialPlugin(PLUGIN_NAME, (material) => new WorldCurvePlugin(material))
@@ -187,15 +218,32 @@ export function applyWorldCurvature(scene: Scene, opts: CurvatureOptions): World
     state.cz = p.z
   })
 
+  const setCurvature = (c: number) => {
+    state.curvature = clampCurvature(c)
+    // persist so the by-feel choice survives a reload (and the pack rebuild).
+    try {
+      if (typeof localStorage !== "undefined") localStorage.setItem(LS_KEY, String(state.curvature))
+    } catch {
+      /* private mode / no storage — in-memory dial still works this session */
+    }
+  }
+
+  // Live console dial: `__wpCurvature.set(-0.0018)` to nudge by feel and see it
+  // instantly; `.get()` to read the current value. (Exposed for the owner; a thin
+  // debug hook, not a gameplay surface.)
+  const win = globalThis as unknown as {
+    __wpCurvature?: { set: (c: number) => void; get: () => number }
+  }
+  win.__wpCurvature = { set: setCurvature, get: () => state.curvature }
+
   return {
-    setCurvature: (c: number) => {
-      state.curvature = c
-    },
+    setCurvature,
     getCurvature: () => state.curvature,
     dispose: () => {
       scene.onBeforeRenderObservable.remove(frameObs)
       scene.onNewMaterialAddedObservable.remove(addObs)
       UnregisterMaterialPlugin(PLUGIN_NAME)
+      if (win.__wpCurvature) delete win.__wpCurvature
     },
   }
 }

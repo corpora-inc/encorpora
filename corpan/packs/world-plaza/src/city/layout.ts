@@ -53,6 +53,10 @@ export type CityZoneId =
   | "station" // the transit hub — a long shed + forecourt
   | "civic" // hospital / institutional blocks (broad, calm)
   | "industrial" // workshops + warehouses near the rail/harbor
+  | "uptown" // calmer upscale residential — townhouses + gardens, the stadium (#34)
+  | "financial" // the tallest towers — bank/exchange, Lower-Manhattan-dense (#34)
+  | "airport" // the terminal + apron + hangars (Phase 3 island) (#34)
+  | "cliff" // the mountain-cliff boundary band — non-walkable backdrop (#34)
 
 /* --------------------------------------------------------------- features */
 
@@ -281,6 +285,46 @@ export interface CityChunk {
    * chunk). Will become required once every producer populates it.
    */
   walls?: CityWallRect[]
+  /**
+   * STREAMING + COLLISION discriminator (#34). What this chunk mostly IS:
+   *   • `land`       — built city (buildings/roads/props); counts against the
+   *                    resident-built-chunk budget the streamer disposes against.
+   *   • `sea`        — open water out to the boundary; cheap (ground + collider),
+   *                    KEPT resident as the far silhouette (never disposed).
+   *   • `park-water` — a park lake / inland water; cheap, kept resident.
+   *   • `cliff`      — the mountain-cliff boundary band; cheap, kept resident.
+   * The streamer warms LAND nearest-first and only counts LAND toward its budget;
+   * cheap kinds stay resident so the horizon never goes blank. OPTIONAL during the
+   * transition (absent ⇒ treat as `land`, the pre-#34 behaviour).
+   */
+  landKind?: ChunkLandKind
+  /**
+   * The DISTRICT this chunk belongs to (stable id, e.g. `plaza`, `midtown`,
+   * `central-green`, `harbor-isle`). Drives the streamer's district-coherent warm
+   * priority (same-district + bridge-adjacent first), the map legend, and the
+   * "you are in X" UX. OPTIONAL during the transition. See `CityLayout.districts`.
+   */
+  district?: string
+}
+
+/** What a chunk mostly is, for streaming residency + collision (#34). */
+export type ChunkLandKind = "land" | "sea" | "park-water" | "cliff"
+
+/**
+ * A named DISTRICT — a coherent patch of the city (a borough/neighbourhood) the
+ * streamer prioritizes as a unit, the map labels, and the "you are in X" UX reads.
+ * Purely spatial/visual; carries NO learning meaning (same rule as zones).
+ */
+export interface District {
+  /** stable id (`plaza`, `midtown`, `uptown`, `central-green`, `market`, …). */
+  id: string
+  /** human label for the map/UX (English; localized downstream). */
+  label: string
+  /** the island this district sits on (Phase 2+; `mainland` for the single isle). */
+  island: string
+  /** district center (for labels + the streamer's distance ranking). */
+  cx: number
+  cz: number
 }
 
 /* ------------------------------------------------------------------ city */
@@ -309,6 +353,12 @@ export interface CityLayout {
   water: CityWater
   /** the crafted world boundary (#32): perimeter rampart inset + gates. */
   boundary: CityBoundary
+  /**
+   * The named DISTRICTS (#34) the streamer prioritizes by, the map labels, and the
+   * "you are in X" UX reads. OPTIONAL during the transition (absent ⇒ the whole
+   * city is one implicit district). Per-chunk `district` ids reference these.
+   */
+  districts?: District[]
   /** base ground fill per zone so a chunk bakes the right substrate under roads. */
   baseSurfaceByZone: Record<CityZoneId, CitySurface>
 }

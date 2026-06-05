@@ -208,3 +208,42 @@ describe("questContent — step → challenge binding", () => {
     expect(challengeSatisfiesStep(step, "listen-choose", 0.9)).toBe(false) // wrong tool
   })
 })
+
+describe("QuestEngine — per-pair progress isolation (#42)", () => {
+  beforeEach(() => localStorage.clear())
+
+  it("each Track (native:target) keeps its OWN quest progress", () => {
+    const CAFE = Quest.parse(cafeJson)
+    // Pair A (en:es): win the café step.
+    const invA = createInventory()
+    invA.reset()
+    const a = createQuestEngine({ quest: CAFE, inventory: invA, playerId: "p", trackId: "en:es" })
+    a.markStepBeaten("order-coffee")
+    a.advance("order-coffee")
+    expect(a.state().complete).toBe(true)
+
+    // Pair B (en:fr): a FRESH journey — pair A's progress must NOT leak in.
+    const invB = createInventory()
+    invB.reset()
+    const b = createQuestEngine({ quest: CAFE, inventory: invB, playerId: "p", trackId: "en:fr" })
+    expect(b.state().complete).toBe(false)
+    expect(b.isStepBeaten("order-coffee")).toBe(false)
+
+    // Reopening pair A still sees its completed progress (separate key).
+    const a2 = createQuestEngine({ quest: CAFE, inventory: invA, playerId: "p", trackId: "en:es" })
+    expect(a2.state().complete).toBe(true)
+  })
+
+  it("the no-trackId (legacy/global) key is distinct from any pair key", () => {
+    const CAFE = Quest.parse(cafeJson)
+    const inv = createInventory()
+    inv.reset()
+    const legacy = createQuestEngine({ quest: CAFE, inventory: inv, playerId: "p" })
+    legacy.markStepBeaten("order-coffee")
+    legacy.advance("order-coffee")
+    expect(legacy.state().complete).toBe(true)
+    // A pair-keyed engine does NOT inherit the legacy global progress.
+    const paired = createQuestEngine({ quest: CAFE, inventory: createInventory(), playerId: "p", trackId: "en:es" })
+    expect(paired.state().complete).toBe(false)
+  })
+})

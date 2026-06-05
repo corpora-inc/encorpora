@@ -37,6 +37,17 @@ const STORE_KEY = "wp:quest:v1"
 const STORE_VERSION = 1 as const
 
 /**
+ * The localStorage key for a Track's quest progress (#42). PER-PAIR so each
+ * language pair (native:target) has its OWN quest journey — switching target
+ * EN→ES must NOT inherit the other pair's step progress. Falls back to the legacy
+ * GLOBAL key when no trackId is given (tests / older callers), which also lets an
+ * existing single-pair player keep their progress.
+ */
+function storeKeyFor(trackId?: string): string {
+  return trackId ? `${STORE_KEY}:${trackId}` : STORE_KEY
+}
+
+/**
  * The per-step computed state (pure, from inventory + rules + the beaten set).
  *
  * - "needs-item"        — a required item for this step isn't held yet.
@@ -121,10 +132,11 @@ interface PersistedQuest {
 
 function loadPersisted(
   questId: string,
+  storeKey: string,
 ): { stepDone: Record<string, boolean>; xp: number; complete: boolean; beaten: string[] } {
   const empty = { stepDone: {}, xp: 0, complete: false, beaten: [] as string[] }
   try {
-    const raw = localStorage.getItem(STORE_KEY)
+    const raw = localStorage.getItem(storeKey)
     if (!raw) return empty
     const p = JSON.parse(raw) as PersistedQuest
     if (p.v !== STORE_VERSION || p.q !== questId) {
@@ -150,6 +162,7 @@ function persist(
   xp: number,
   complete: boolean,
   beaten: Set<string>,
+  storeKey: string,
 ): void {
   void playerId
   const p: PersistedQuest = {
@@ -161,7 +174,7 @@ function persist(
     b: [...beaten],
   }
   try {
-    localStorage.setItem(STORE_KEY, JSON.stringify(p))
+    localStorage.setItem(storeKey, JSON.stringify(p))
   } catch (err) {
     // Noisy, never silent — but a persistence failure must not break the loop.
     console.error(`${LOG} could not persist quest state (in-memory only this session):`, err)
@@ -174,11 +187,18 @@ export interface QuestEngineOptions {
   quest: Quest
   inventory: InventoryStore
   playerId: string
+  /**
+   * The active Track id (`native:target`) — scopes quest PROGRESS to the language
+   * pair (#42), so switching target doesn't inherit the other pair's step state.
+   * Optional: omitted ⇒ the legacy global key (tests / single-pair back-compat).
+   */
+  trackId?: string
 }
 
 export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
   const { quest, inventory, playerId } = opts
-  const persisted = loadPersisted(quest.id)
+  const storeKey = storeKeyFor(opts.trackId)
+  const persisted = loadPersisted(quest.id, storeKey)
   const stepDone: Record<string, boolean> = { ...persisted.stepDone }
   // Seed any steps authored as `done:true` (designer-marked) so they aren't redone.
   for (const s of quest.steps) if (s.done) stepDone[s.id] = true
@@ -210,7 +230,7 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
     }
   }
 
-  const save = () => persist(quest.id, playerId, stepDone, xp, complete, challengeBeaten)
+  const save = () => persist(quest.id, playerId, stepDone, xp, complete, challengeBeaten, storeKey)
 
   const stepById = (id: string): QuestStep | undefined => quest.steps.find((s) => s.id === id)
 
@@ -372,7 +392,7 @@ export function createQuestEngine(opts: QuestEngineOptions): QuestEngine {
       xp = 0
       complete = false
       try {
-        localStorage.removeItem(STORE_KEY)
+        localStorage.removeItem(storeKey)
       } catch (err) {
         console.warn(`${LOG} could not clear quest store:`, err)
       }

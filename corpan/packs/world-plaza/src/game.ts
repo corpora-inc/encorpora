@@ -26,7 +26,7 @@ import {
 } from "./challenges/host"
 import { inventory } from "./economy/inventory"
 import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/questState"
-import { getQuest, entryQuestId, nextQuests, firstStep } from "./quest/questCatalog"
+import { getQuest, entryQuestId, nextQuests, firstStep, allQuests } from "./quest/questCatalog"
 import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
 import { resolveEntry, bindStackReactivity, samePair } from "./entry"
 import { readStack } from "./entry/stackAdapter"
@@ -245,15 +245,22 @@ function buildWorld(
   const scene = WorldSceneSchema.parse(sceneJson)
   const roles = NpcRole.array().parse(rolesJson)
 
+  // The active Track id (`native:target`) — quest CHOICE + PROGRESS are keyed on
+  // it (#42), so each language pair has its OWN quest journey (switching target
+  // EN→ES no longer inherits the other pair's active quest or step state).
+  const trackId = `${learnerPair.native}:${learnerPair.target}`
+
   // ── ACTIVE QUEST model (A2) ────────────────────────────────────────────────
   // The world is no longer pinned to ONE hardcoded quest JSON. The quest catalog
   // owns the graph; the orchestrator owns which quest is ACTIVE and persists that
   // choice (`wp:activeQuest:v1`). A brand-new player auto-starts `entryQuestId`
   // (the dead-simple 1-step beginner quest). These are `let` because the
   // completion interlude's next-quest pick RE-POINTS the active quest mid-session.
+  // PER-PAIR active-quest key (#42): each Track remembers its OWN active quest.
+  const activeQuestKey = `${ACTIVE_QUEST_KEY}:${trackId}`
   const loadActiveQuestId = (): string => {
     try {
-      const raw = localStorage.getItem(ACTIVE_QUEST_KEY)
+      const raw = localStorage.getItem(activeQuestKey)
       if (raw && getQuest(raw)) return raw
     } catch (err) {
       console.warn("[world-plaza] could not read active quest:", err)
@@ -262,7 +269,7 @@ function buildWorld(
   }
   const saveActiveQuestId = (id: string) => {
     try {
-      localStorage.setItem(ACTIVE_QUEST_KEY, id)
+      localStorage.setItem(activeQuestKey, id)
     } catch (err) {
       console.warn("[world-plaza] could not persist active quest:", err)
     }
@@ -452,17 +459,6 @@ function buildWorld(
     reducedMotion,
   })
   fountain.root.position.set(fountainAnchor?.x ?? 0, 0, fountainAnchor?.z ?? 0)
-  // ── Curated SPECIAL-PLACES dressing (env-art, #31 "special places stunning"):
-  // a formal flower-bed + ornamental-tree RING framing the plaza fountain, and
-  // festive BUNTING around the market square — DELIBERATE detail at the hero
-  // anchors (vs. the generic per-block scatter). Additive + frozen; reads the
-  // fountain/market anchor positions; no collision/streaming/seam coupling.
-  const marketAnchor = city.getAnchor("market")
-  const specialPlaces = buildSpecialPlaces(world.scene, {
-    plaza: fountainAnchor ? { x: fountainAnchor.x, z: fountainAnchor.z } : { x: 0, z: 0 },
-    ...(marketAnchor ? { market: { x: marketAnchor.x, z: marketAnchor.z } } : {}),
-    palette: scene.palette,
-  })
   // ── Riverwalk waterfront dressing (env-art, task #31): the premium stone
   // BALUSTRADE + harbor LAMP POSTS + mooring BOLLARDS + a richer rippled WATER
   // sheet (depth gradient + shoreline foam) along the +Z water edge, with a clean
@@ -558,6 +554,34 @@ function buildWorld(
         reducedMotion,
       })
     : null
+  // ── Curated SPECIAL-PLACES dressing (env-art, #31): DELIBERATE detail at the
+  // hero anchors (vs. the generic per-block scatter) — a formal flower-bed +
+  // ornamental-tree RING framing the plaza fountain, festive BUNTING around the
+  // market, a ceremonial banner ARCH + urn planters at the station forecourt, and
+  // a stroll of urn planters along the riverwalk promenade. Additive + frozen;
+  // reads anchor positions + the water edge; no collision/streaming/seam coupling.
+  const marketAnchor = city.getAnchor("market")
+  const stationAnchorSP = city.getAnchor("station")
+  const specialPlaces = buildSpecialPlaces(world.scene, {
+    plaza: fountainAnchor ? { x: fountainAnchor.x, z: fountainAnchor.z } : { x: 0, z: 0 },
+    ...(marketAnchor ? { market: { x: marketAnchor.x, z: marketAnchor.z } } : {}),
+    ...(stationAnchorSP
+      ? { station: { x: stationAnchorSP.x, z: stationAnchorSP.z, facing: stationAnchorSP.facing } }
+      : {}),
+    ...(waterEdgeZ != null
+      ? {
+          promenade: {
+            edgeZ: waterEdgeZ,
+            bounds: layout.bounds,
+            gap: {
+              x: cityWater?.bridgeX ?? 0,
+              halfWidth: cityWater?.bridgeHalfW ?? 7,
+            },
+          },
+        }
+      : {}),
+    palette: scene.palette,
+  })
   // The real 3D stone ARCH bridge (#29) — raised deck + parapets + arches on piers
   // in the river, water passing UNDERNEATH. The deck RAMPS DOWN onto walkable land
   // at both ends; purely visual (places' collider already opens the corridor,
@@ -637,6 +661,7 @@ function buildWorld(
     quest,
     inventory: inventory(),
     playerId: identity.name.playerId,
+    trackId, // #42: quest progress is per-pair
   })
   // A stable DELEGATING proxy every consumer (tracker, quest section, mapView,
   // the focus/challenge path) holds. On `setActiveQuest` we swap `activeEngine`
@@ -683,6 +708,7 @@ function buildWorld(
       quest: next,
       inventory: inventory(),
       playerId: identity.name.playerId,
+      trackId, // #42: quest progress is per-pair
     })
     unsubActive = activeEngine.subscribe((e) => {
       for (const fn of proxyListeners) {
@@ -1130,7 +1156,9 @@ function buildWorld(
       inventory: createInventorySection({
         store: inventory(),
         accent: scene.palette?.accent,
-        locale: uiLocale,
+        // Lazy locale: read live so an immersion flip re-localizes the wallet
+        // (currency names) instantly in place on the next open — fully in-place.
+        locale: currentUiLocale,
         renderer: iconRenderer,
         masteredCount: () => badges.store.masteredCount(),
         openBadges: () => shell.openSection("badges"),
@@ -1144,6 +1172,30 @@ function buildWorld(
         // the LIVE locale here means re-opening after an immersion flip shows the new
         // language without a world rebuild.
         strings: () => makeSectionStrings(currentUiLocale()),
+        // The switch-quest escape hatch (#41): list every quest (active marked,
+        // completed flagged) so the player is NEVER trapped on one they can't or
+        // don't want to finish. Picking one re-points the world via setActiveQuest.
+        questChoices: () => {
+          const activeId = questEngine.quest().id
+          const activeComplete = questEngine.state().complete
+          return allQuests().map((q) => {
+            const fs = firstStep(q)
+            const isActive = q.id === activeId
+            return {
+              id: q.id,
+              title: q.title,
+              whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : undefined,
+              isActive,
+              // Only the ACTIVE quest's progress is tracked live (the engine store
+              // is keyed by quest id); others show as fresh journeys to pick.
+              isComplete: isActive && activeComplete,
+            }
+          })
+        },
+        onSwitchQuest: (id) => {
+          const next = getQuest(id)
+          if (next) setActiveQuest(next)
+        },
         // The immersion toggle lives at the top of the Quest section (§8). Hidden
         // for a single-language Track (no native to hide). Flipping it persists the
         // per-Track level and re-localizes IN PLACE (no world rebuild → the player

@@ -7,6 +7,7 @@ import { generateCharacter, ANTIGUA_1770, type WardrobeTheme } from "../characte
 import type { CharacterSpec } from "../character/characterSpec"
 import { generatePersona, type GeneratedPersona } from "../npc/personaGen"
 import type { ObstacleField } from "./collision"
+import { walkSurfaceHeight } from "./walkSurface"
 import {
   stationPoint,
   isOffLeash,
@@ -156,6 +157,14 @@ export interface CrowdOptions {
    * `anchorId` isn't in the topology is logged + skipped (never silent).
    */
   specials?: CrowdSpecial[]
+  /**
+   * Walk-SURFACE height sampler (#40): (x,z) → world Y of the ground there (0 on
+   * flat ground, the deck height on a bridge). When given, every agent — wanderers
+   * AND stationed specials like the bridge-keeper — is lifted to it, so an NPC
+   * standing at a bridge anchor stands ON the deck, not under it. Optional; absent
+   * → flat (Y=0), unchanged.
+   */
+  getGroundHeight?: (x: number, z: number) => number
 }
 
 /* --------------------------------------------------------------- agent */
@@ -296,6 +305,11 @@ export function createCrowd(
   const seekerFallback = Math.max(0, opts.questSeekers ?? 0)
   const { bounds, blockers } = topology
   const field = opts.obstacles ?? null
+  // walk-surface height (#40): explicit sampler wins; else the scene's walk-surface
+  // registry (a bridge self-registers there → the keeper stands ON the deck with
+  // zero game.ts wiring). 0 on flat ground.
+  const groundH = (x: number, z: number): number =>
+    opts.getGroundHeight ? opts.getGroundHeight(x, z) : walkSurfaceHeight(bScene, x, z)
 
   /** Is (x,z) blocked for an agent — by ANY obstacle (field) or, lacking the
    * field, by a building box only (legacy)? */
@@ -456,7 +470,7 @@ export function createCrowd(
       start.x = free.x
       start.z = free.z
     }
-    cutout.setGroundPos(start.x, start.z)
+    cutout.setGroundPos(start.x, start.z, groundH(start.x, start.z))
 
     const handle: CrowdFocusHandle = {
       // Route dialogue to the persona's id (bound anchor id, or the generated
@@ -553,7 +567,7 @@ export function createCrowd(
     stx = stClamped.x
     stz = stClamped.z
 
-    cutout.setGroundPos(stx, stz)
+    cutout.setGroundPos(stx, stz, groundH(stx, stz))
 
     const handle: CrowdFocusHandle = {
       anchorId: role.anchorId,
@@ -743,7 +757,7 @@ export function createCrowd(
       a.z = nz
       a.speed = Math.min(1, moved / step)
 
-      a.cutout.setGroundPos(a.x, a.z)
+      a.cutout.setGroundPos(a.x, a.z, groundH(a.x, a.z))
       a.anim.setState("walk")
       a.anim.setSpeed(a.speed)
       a.anim.update(dt)

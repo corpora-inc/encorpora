@@ -87,6 +87,11 @@ try {
   page.on("pageerror", (e) => errs.push(`pageerror: ${e}`))
   page.on("console", (m) => { if (m.type() === "error") errs.push(`console: ${m.text()}`) })
 
+  // HMR ISOLATION: a teammate may be live-saving src/ while we run, and vite's HMR
+  // would reload our page MID-SCREENSHOT. Block the vite HMR client so file saves
+  // can't reload us; the page we captured stays frozen on the bundle it loaded.
+  await page.route("**/@vite/client", (r) => r.abort())
+
   console.log("→ loading curvature harness…")
   await page.goto(`${BASE}/qa/curvature.html`, { waitUntil: "load" })
   await page.waitForFunction(() => window.__wpCurve && window.__wpCurve.ready, { timeout: 20000 })
@@ -108,10 +113,14 @@ try {
     await call("settle", 70)
     await page.waitForTimeout(150)
     await page.screenshot({ path: `/tmp/wp-curve-${label}-flat.png` })
-    await call("setCurvature", -0.0016) // BENT — the reveal
+    await call("setCurvature", -0.0026) // BENT — the SHIPPED strong default
     await call("settle", 12)
     await page.waitForTimeout(120)
     await page.screenshot({ path: `/tmp/wp-curve-${label}-bent.png` })
+    await call("setCurvature", -0.0018) // a notch SOFTER, for the owner to compare
+    await call("settle", 12)
+    await page.waitForTimeout(120)
+    await page.screenshot({ path: `/tmp/wp-curve-${label}-soft.png` })
   }
 
   console.log("→ pair: cruising toward Mount Fuji (deep avenue)…")
@@ -134,8 +143,8 @@ try {
     await page.screenshot({ path: `/tmp/wp-curve-sweep-${tag || "0"}.png` })
   }
 
-  // DE-RISK GATE readout at default strength.
-  await call("setCurvature", -0.0016)
+  // DE-RISK GATE readout at the shipped strong default.
+  await call("setCurvature", -0.0026)
   await call("settle", 14)
   const gate = await call("gate")
   const fps = await call("fps")
@@ -151,7 +160,8 @@ try {
   console.log(`\nPERF: engine fps under the bend ≈ ${Math.round(fps)}`)
   console.log("CONSOLE/PAGE ERRORS:", errs.length ? errs : "none")
   console.log("\nSHOTS in /tmp:")
-  console.log("  before/after: wp-curve-{avenue,deep,cross}-{flat,bent}.png")
+  console.log("  before/after/softer: wp-curve-{avenue,deep,cross}-{flat,bent,soft}.png")
+  console.log("    (flat=0, bent=-0.0026 shipped strong, soft=-0.0018 a notch softer)")
   console.log("  strength sweep: wp-curve-sweep-*.png")
   console.log("========================================================\n")
 

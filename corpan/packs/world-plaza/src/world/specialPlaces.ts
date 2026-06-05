@@ -46,6 +46,20 @@ export interface SpecialPlacesOptions {
   plaza?: PlaceAnchor
   /** the market square centre (the `market` anchor). */
   market?: PlaceAnchor
+  /** the transit-station forecourt (the `station` anchor) — gets a banner ARCH
+   *  threshold + flanking planters. `facing` (radians) orients the arch across the
+   *  approach (the avenue runs along `facing`). */
+  station?: PlaceAnchor & { facing?: number }
+  /**
+   * The near riverwalk PROMENADE — a line of formal planters strolling along it.
+   * `edgeZ` is the near water edge (layout.water.waterZ); planters sit a touch
+   * shoreward. `bounds` spans the waterfront width; `gap` keeps the bridge clear.
+   */
+  promenade?: {
+    edgeZ: number
+    bounds: { minX: number; maxX: number }
+    gap?: { x: number; halfWidth: number }
+  }
   palette?: Record<string, string>
   /** clear radius the plaza ring must stay OUTSIDE (the fountain basin). default 4. */
   fountainRadius?: number
@@ -60,6 +74,28 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
 
   const disposables: Array<{ dispose: () => void }> = []
   const instMeshes: Mesh[] = []
+
+  /** group coloured parts by material, merge each group, then merge the groups into
+   *  ONE multimaterial master mesh (one submesh per colour). Materials are tracked
+   *  for disposal. The shared body of every species builder here. */
+  const mergeByMat = (parts: Array<{ m: Mesh; mat: StandardMaterial }>, name: string): Mesh => {
+    const byMat = new Map<StandardMaterial, Mesh[]>()
+    for (const p of parts) {
+      let arr = byMat.get(p.mat)
+      if (!arr) byMat.set(p.mat, (arr = []))
+      arr.push(p.m)
+    }
+    const groupMeshes: Mesh[] = []
+    for (const [mat, ms] of byMat) {
+      const merged = ms.length === 1 ? ms[0] : Mesh.MergeMeshes(ms, true, true, undefined, false, false)!
+      merged.material = mat
+      groupMeshes.push(merged)
+      disposables.push(mat)
+    }
+    const final = groupMeshes.length === 1 ? groupMeshes[0] : Mesh.MergeMeshes(groupMeshes, true, true, undefined, false, true)!
+    final.name = name
+    return final
+  }
 
   /** clone a master → unique geometry → thin-instance across placements → freeze.
    *  (The master is built disabled as a template; the live clone draws — the
@@ -130,23 +166,7 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
         bi++
       }
     }
-    // group by material, merge per group, then merge groups into one multimat mesh.
-    const byMat = new Map<StandardMaterial, Mesh[]>()
-    for (const p of parts) {
-      let arr = byMat.get(p.mat)
-      if (!arr) byMat.set(p.mat, (arr = []))
-      arr.push(p.m)
-    }
-    const groupMeshes: Mesh[] = []
-    for (const [mat, ms] of byMat) {
-      const merged = ms.length === 1 ? ms[0] : Mesh.MergeMeshes(ms, true, true, undefined, false, false)!
-      merged.material = mat
-      groupMeshes.push(merged)
-      disposables.push(mat)
-    }
-    const final = Mesh.MergeMeshes(groupMeshes, true, true, undefined, false, true)!
-    final.name = `${tag}-flowerbed`
-    return final
+    return mergeByMat(parts, `${tag}-flowerbed`)
   }
 
   /* ---- a BUNTING garland: two poles + a swag of triangular pennants strung
@@ -180,22 +200,103 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
       tri.position.set(x, y - 0.21, 0)
       parts.push({ m: tri, mat: i % 2 === 0 ? cA : cB })
     }
-    const byMat = new Map<StandardMaterial, Mesh[]>()
-    for (const p of parts) {
-      let arr = byMat.get(p.mat)
-      if (!arr) byMat.set(p.mat, (arr = []))
-      arr.push(p.m)
+    return mergeByMat(parts, `${tag}-bunting`)
+  }
+
+  /* ---- a BANNER ARCH: two stone piers spanned by a beam, with a hanging cloth
+   * valance + a centred crest banner + two flags — a ceremonial THRESHOLD over an
+   * approach. Built around local origin spanning the X axis (the caller yaws it to
+   * straddle the avenue). One merged mesh. ----------------------------------- */
+  const buildArch = (): Mesh => {
+    const stone = propMat(scene, pal.stone, { emissive: 0.3 })
+    const stoneDk = propMat(scene, { r: pal.stone.r * 0.78, g: pal.stone.g * 0.78, b: pal.stone.b * 0.78 }, { emissive: 0.26 })
+    const cloth = propMat(scene, pal.canvasA, { emissive: 0.4 })
+    const clothDk = propMat(scene, pal.bloomCols[0], { emissive: 0.4 })
+    const wood = propMat(scene, pal.woodDk, { emissive: 0.24 })
+    const span = 7.0
+    const pierH = 4.2
+    const parts: Array<{ m: Mesh; mat: StandardMaterial }> = []
+    for (const sx of [-1, 1]) {
+      const base = MeshBuilder.CreateBox(`${tag}-ab`, { width: 0.9, height: 0.4, depth: 0.9 }, scene)
+      base.position.set(sx * span * 0.5, 0.2, 0)
+      parts.push({ m: base, mat: stoneDk })
+      const pier = MeshBuilder.CreateBox(`${tag}-ap`, { width: 0.7, height: pierH, depth: 0.7 }, scene)
+      pier.position.set(sx * span * 0.5, pierH / 2 + 0.4, 0)
+      parts.push({ m: pier, mat: stone })
+      const cap = MeshBuilder.CreateBox(`${tag}-ac`, { width: 0.92, height: 0.3, depth: 0.92 }, scene)
+      cap.position.set(sx * span * 0.5, pierH + 0.55, 0)
+      parts.push({ m: cap, mat: stoneDk })
+      // a flag on each cap.
+      const pole = MeshBuilder.CreateCylinder(`${tag}-afp`, { diameter: 0.08, height: 1.2, tessellation: 6 }, scene)
+      pole.position.set(sx * span * 0.5, pierH + 1.3, 0)
+      parts.push({ m: pole, mat: wood })
+      const flag = MeshBuilder.CreateBox(`${tag}-aff`, { width: 0.6, height: 0.36, depth: 0.04 }, scene)
+      flag.position.set(sx * span * 0.5 + sx * 0.33, pierH + 1.55, 0)
+      parts.push({ m: flag, mat: sx > 0 ? cloth : clothDk })
     }
-    const groupMeshes: Mesh[] = []
-    for (const [mat, ms] of byMat) {
-      const merged = ms.length === 1 ? ms[0] : Mesh.MergeMeshes(ms, true, true, undefined, false, false)!
-      merged.material = mat
-      groupMeshes.push(merged)
-      disposables.push(mat)
+    // the lintel beam across the top.
+    const beam = MeshBuilder.CreateBox(`${tag}-albeam`, { width: span + 0.4, height: 0.5, depth: 0.5 }, scene)
+    beam.position.set(0, pierH + 0.45, 0)
+    parts.push({ m: beam, mat: stoneDk })
+    // a hanging cloth VALANCE under the beam (scalloped via alternating panels).
+    const M = 7
+    for (let i = 0; i < M; i++) {
+      const x = (i / (M - 1) - 0.5) * (span - 0.6)
+      const drop = MeshBuilder.CreateCylinder(`${tag}-alv`, { diameter: 0.7, height: 0.7, tessellation: 3 }, scene)
+      drop.rotation.x = Math.PI // point down
+      drop.position.set(x, pierH + 0.05, 0.12)
+      parts.push({ m: drop, mat: i % 2 === 0 ? cloth : clothDk })
     }
-    const final = Mesh.MergeMeshes(groupMeshes, true, true, undefined, false, true)!
-    final.name = `${tag}-bunting`
-    return final
+    // a central CREST banner draping from the beam.
+    const crest = MeshBuilder.CreateBox(`${tag}-alc`, { width: 1.1, height: 1.6, depth: 0.05 }, scene)
+    crest.position.set(0, pierH - 0.5, 0.12)
+    parts.push({ m: crest, mat: cloth })
+    const emblem = MeshBuilder.CreateBox(`${tag}-ale`, { width: 0.36, height: 1.0, depth: 0.06 }, scene)
+    emblem.position.set(0, pierH - 0.5, 0.13)
+    parts.push({ m: emblem, mat: clothDk })
+    return mergeByMat(parts, `${tag}-arch`)
+  }
+
+  /* ---- a tall formal URN PLANTER: a pedestal + a flared urn bowl + a mounded
+   * planting of greenery + blooms. Reads as a promenade ornament. One merged. -- */
+  const buildUrn = (): Mesh => {
+    const stone = propMat(scene, pal.stone, { emissive: 0.3 })
+    const stoneDk = propMat(scene, { r: pal.stone.r * 0.8, g: pal.stone.g * 0.8, b: pal.stone.b * 0.8 }, { emissive: 0.26 })
+    const leaf = propMat(scene, pal.leafDk, { emissive: 0.3 })
+    const blooms = pal.bloomCols.map((c) => propMat(scene, c, { emissive: 0.42 }))
+    const parts: Array<{ m: Mesh; mat: StandardMaterial }> = []
+    const foot = MeshBuilder.CreateBox(`${tag}-uf`, { width: 0.7, height: 0.2, depth: 0.7 }, scene)
+    foot.position.y = 0.1
+    parts.push({ m: foot, mat: stoneDk })
+    const ped = MeshBuilder.CreateCylinder(`${tag}-up`, { diameterTop: 0.42, diameterBottom: 0.56, height: 0.9, tessellation: 10 }, scene)
+    ped.position.y = 0.65
+    parts.push({ m: ped, mat: stone })
+    const bowl = MeshBuilder.CreateCylinder(`${tag}-ub`, { diameterTop: 1.0, diameterBottom: 0.44, height: 0.55, tessellation: 12 }, scene)
+    bowl.position.y = 1.2
+    parts.push({ m: bowl, mat: stone })
+    const rim = MeshBuilder.CreateCylinder(`${tag}-ur`, { diameter: 1.08, height: 0.12, tessellation: 12 }, scene)
+    rim.position.y = 1.46
+    parts.push({ m: rim, mat: stoneDk })
+    // a mound of greenery + blooms spilling over.
+    let bi = 0
+    for (let ring = 0; ring < 2; ring++) {
+      const rr = 0.16 + ring * 0.28
+      const cnt = 5 + ring * 4
+      for (let i = 0; i < cnt; i++) {
+        const a = (i / cnt) * Math.PI * 2 + ring
+        const x = Math.cos(a) * rr
+        const z = Math.sin(a) * rr
+        const y = 1.6 - ring * 0.12
+        const g = MeshBuilder.CreateSphere(`${tag}-ug`, { diameter: 0.22, segments: 5 }, scene)
+        g.position.set(x, y - 0.04, z)
+        parts.push({ m: g, mat: leaf })
+        const bl = MeshBuilder.CreateSphere(`${tag}-ubl`, { diameter: 0.2, segments: 5 }, scene)
+        bl.position.set(x, y + 0.07, z)
+        parts.push({ m: bl, mat: blooms[bi % blooms.length] })
+        bi++
+      }
+    }
+    return mergeByMat(parts, `${tag}-urn`)
   }
 
   /* ============================ PLAZA RING ============================ */
@@ -236,6 +337,48 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
       buntPlacements.push({ x, z, yaw: a + Math.PI / 2, scale: 1 })
     }
     instanceSet(buildBunting(), buntPlacements)
+  }
+
+  /* ====================== STATION FORECOURT ARCH ====================== */
+  if (opts.station) {
+    const sx = opts.station.x
+    const sz = opts.station.z
+    const facing = opts.station.facing ?? 0
+    // ONE ceremonial banner arch straddling the station approach, set a few metres
+    // out into the forecourt from the anchor, plus a pair of urn planters flanking
+    // the threshold. The arch spans across `facing` (yaw = facing) so you pass
+    // THROUGH it; it sits `out` toward the approach (−forward of the anchor facing).
+    const out = 9
+    const ax = sx - Math.sin(facing) * out
+    const az = sz - Math.cos(facing) * out
+    instanceSet(buildArch(), [{ x: ax, z: az, yaw: facing, scale: 1 }])
+    // urns just inside the arch piers (offset laterally along the arch span).
+    const lat = 4.4
+    const urnPlace = [
+      { x: ax + Math.cos(facing) * lat, z: az - Math.sin(facing) * lat, yaw: 0, scale: 1 },
+      { x: ax - Math.cos(facing) * lat, z: az + Math.sin(facing) * lat, yaw: 0, scale: 1 },
+    ]
+    instanceSet(buildUrn(), urnPlace)
+  }
+
+  /* ====================== RIVERWALK PROMENADE URNS ====================== */
+  if (opts.promenade) {
+    // a stroll of formal urn planters along the near promenade, a touch shoreward
+    // of the rail, evenly spaced and skipping the bridge gap. They punctuate the
+    // long quay between the balustrade lamp posts.
+    const pz = opts.promenade.edgeZ - 2.6 // shoreward of the rail (rail ≈ edgeZ-0.7)
+    const x0 = opts.promenade.bounds.minX + 12
+    const x1 = opts.promenade.bounds.maxX - 12
+    const gap = opts.promenade.gap
+    const SPACING = 11
+    const n = Math.max(1, Math.floor((x1 - x0) / SPACING))
+    const urnPlace: Array<{ x: number; z: number; yaw: number; scale: number }> = []
+    for (let i = 0; i <= n; i++) {
+      const x = x0 + (i / n) * (x1 - x0)
+      if (gap && Math.abs(x - gap.x) < gap.halfWidth + 3) continue // keep the deck clear
+      urnPlace.push({ x, z: pz, yaw: 0, scale: 1.05 })
+    }
+    instanceSet(buildUrn(), urnPlace)
   }
 
   return {

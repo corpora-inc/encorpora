@@ -116,8 +116,9 @@ export interface GroundedCutout {
   /** the contact-shadow ground decal (parented to root; never drifts). */
   shadow: Mesh
 
-  /** move the contact point on the ground plane (the only position setter). */
-  setGroundPos: (x: number, z: number) => void
+  /** move the contact point. `y` (default 0) lifts the whole figure onto a raised
+   *  walk surface like a bridge deck (#40); flat ground leaves it 0. */
+  setGroundPos: (x: number, z: number, y?: number) => void
   /** read the contact point. */
   getGroundPos: () => { x: number; z: number }
   /**
@@ -219,12 +220,16 @@ export function createGroundedCutout(scene: Scene, opts: CutoutOptions): Grounde
 
   const groundPos = { x: 0, z: 0 }
 
-  const setGroundPos = (x: number, z: number) => {
+  const setGroundPos = (x: number, z: number, y = 0) => {
     groundPos.x = x
     groundPos.z = z
     root.position.x = x
     root.position.z = z
-    // root.position.y stays 0 — the contact point is on the ground, always.
+    // Contact point Y is 0 on flat ground, but a RAISED WALK SURFACE (e.g. a
+    // bridge deck, #40) lifts the whole figure — root + its welded shadow — to the
+    // deck height so the character (and its contact shadow) sit ON the deck, not
+    // under it. Defaults to 0 so every existing 2-arg call is unchanged.
+    root.position.y = y
   }
 
   const hop = (dy: number) => {

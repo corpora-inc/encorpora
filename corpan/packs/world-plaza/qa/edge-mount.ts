@@ -102,19 +102,24 @@ const gateDress = boundary
   : null
 if (gateDress) world.onFrame((dt) => gateDress.update(dt))
 
-// curated SPECIAL-PLACES dressing (plaza flower-bed ring + market bunting). Reads
-// the fountain/market anchor positions from the layout.
+// curated SPECIAL-PLACES dressing (plaza ring + market bunting + station arch +
+// promenade urns). Reads the anchor positions + the water edge from the layout.
 const fountainA = layout.anchors.find((a) => a.id === "fountain")
 const marketA = layout.anchors.find((a) => a.id === "market")
+const stationA = layout.anchors.find((a) => a.id === "station")
 const special = buildSpecialPlaces(scene, {
   plaza: fountainA ? { x: fountainA.x, z: fountainA.z } : { x: 0, z: 0 },
   market: marketA ? { x: marketA.x, z: marketA.z } : undefined,
+  station: stationA ? { x: stationA.x, z: stationA.z, facing: stationA.facing } : undefined,
+  promenade: { edgeZ: water.waterZ, bounds: layout.bounds, gap: { x: water.bridgeX, halfWidth: water.bridgeHalfW } },
   palette,
 })
 void special
 ;(window as unknown as { __wpPlaces: unknown }).__wpPlaces = {
   plaza: fountainA ? { x: Math.round(fountainA.x), z: Math.round(fountainA.z) } : null,
   market: marketA ? { x: Math.round(marketA.x), z: Math.round(marketA.z) } : null,
+  station: stationA ? { x: Math.round(stationA.x), z: Math.round(stationA.z), facing: stationA.facing ?? 0 } : null,
+  waterZ: water.waterZ,
 }
 
 const cam = new ArcRotateCamera("wp-edge-cam", -Math.PI / 2, 1.0, 24, new Vector3(0, 0, water.waterZ), scene)

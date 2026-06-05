@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Each language pair has its OWN quest journey (#42).** Switching target (e.g.
+  EN→ES) no longer leaves you mid-way through the other pair's quest: the active
+  quest (`wp:activeQuest:v1:<native:target>`) AND the quest progress (the
+  `wp:quest:v1` store, now keyed `:<native:target>` via `createQuestEngine`'s new
+  `trackId`) are both scoped to the Track. A fresh pair starts on the dead-simple
+  café quest; an existing pair resumes exactly where it was. No-trackId callers
+  (tests / single-pair back-compat) keep the legacy global key. Verified in the
+  real game (boot `?stack=en,es` with a seeded quest, then `?stack=en,fr` → the
+  French pair is fresh, not inherited) + unit-tested for cross-pair isolation.
+- **A "Try a different journey" escape hatch — never trapped on a quest (#41).**
+  The Quest section now lists every quest (the active one marked "Current") with a
+  calm, dignified picker ("Every quest is yours to pick — switch any time, no
+  pressure" — NOT a Duolingo dark pattern). Tapping a quest re-points the world to
+  it in place (engine + beacon + arrow + markers) via `setActiveQuest`, so a player
+  stuck on (or just done with) one quest can always pick another — e.g. drop the
+  across-city bridge quest and land on the dead-simple café quest. The default
+  first quest remains `es-cafe-travel`. `questSection` gains `questChoices` +
+  `onSwitchQuest`; verified end-to-end in the real game (`qa/switch-quest.mjs`:
+  stuck on es-guadalajara → open Quest → pick → now on es-cafe).
 - **A crafted, living edge to the world.** The river is no longer an empty blue
   band that runs off into fog: low-poly painted fishing BOATS (cabined smacks +
   masted sloops) are moored along both quays, clearing the bridge channel, with a
@@ -25,8 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (deep teal far → luminous near the bank), gentle ripple striations that drift
   with the tide, and a soft foam lip lapping the shoreline (replacing the old
   flat blue rectangle). It opens cleanly for the bridge deck and honours
-  reduced-motion (still water). One merged mesh per part, thin-instanced and
-  frozen, so the whole waterfront is a handful of draw calls.
+  reduced-motion (still water). When the river is a crossing BAND, BOTH quays get
+  the symmetric stone balustrade and the water laps both shores. One merged mesh
+  per part, thin-instanced and frozen, so the whole waterfront is a handful of
+  draw calls.
 - **The hero places feel composed, not bare.** The civic PLAZA is now framed by a
   formal ring of stone flower-beds brimming with blooms and ornamental trees
   encircling the fountain, and the MARKET square is strung with festive bunting —

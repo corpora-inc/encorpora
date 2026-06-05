@@ -29,6 +29,10 @@ const BASE_SURFACE_BY_ZONE: Record<CityZoneId, CitySurface> = {
   station: "stone",
   civic: "dirt",
   industrial: "stone",
+  uptown: "dirt",
+  financial: "flagstone",
+  airport: "stone",
+  cliff: "stone",
 }
 
 export function stubCity(): CityLayout {

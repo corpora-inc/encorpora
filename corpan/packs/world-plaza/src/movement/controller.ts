@@ -7,6 +7,7 @@ import { avatarToCharacterSpec } from "../character/characterSpec"
 import type { Input } from "./input"
 import type { ObstacleField } from "../world/collision"
 import { Vector3 } from "@babylonjs/core/Maths/math"
+import { walkSurfaceHeight } from "../world/walkSurface"
 
 /**
  * The local player controller. The player's DRESSED AVATAR is their in-world
@@ -69,6 +70,14 @@ export function createPlayerController(
    * player still collides with the building boxes via the legacy axis-resolve.
    */
   obstacles?: ObstacleField,
+  /**
+   * Walk-SURFACE height sampler (#40): given the player's (x,z), returns the world
+   * Y of the ground they stand on — 0 on flat ground, the deck height when on a
+   * bridge (ramp → cambered deck → ramp). The controller lifts the player + the
+   * camera target to this Y each frame so you walk OVER raised structures instead
+   * of under them. Optional + last; absent → flat (Y always 0), unchanged.
+   */
+  getGroundHeight?: (x: number, z: number) => number,
 ): PlayerController {
   const spec = avatarToCharacterSpec(avatar, "player-local")
   const cutout = createGroundedCutout(world.scene, {
@@ -128,11 +137,18 @@ export function createPlayerController(
       z = nz
     }
 
-    cutout.setGroundPos(x, z)
+    // Walk-surface height (#40): 0 on flat ground, the deck height on a bridge.
+    // Lift BOTH the player figure and the camera target so you ride up + over the
+    // deck (water flows under) instead of clipping through it at ground level.
+    // Walk-surface height: an explicit sampler wins; else the scene's walk-surface
+    // registry (a bridge self-registers there, so this is wired with ZERO game.ts
+    // change — #40). Flat ground → 0.
+    const groundY = getGroundHeight ? getGroundHeight(x, z) : walkSurfaceHeight(world.scene, x, z)
+    cutout.setGroundPos(x, z, groundY)
     anim.setState(speed > 0.02 ? "walk" : "idle")
     anim.setSpeed(speed)
     anim.update(dt)
-    world.setCameraTarget(new Vector3(x, 0, z), yaw)
+    world.setCameraTarget(new Vector3(x, groundY, z), yaw)
   }
 
   // --- TEST-ONLY hook (pure observability for the Playwright harness) ---

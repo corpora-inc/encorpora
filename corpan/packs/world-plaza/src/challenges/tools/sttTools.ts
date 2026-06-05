@@ -18,7 +18,7 @@ import {
   seedOf,
   type ToolImpl,
 } from "./_shared"
-import { S } from "./strings"
+import { challengeStrings, type ChallengeStrings } from "./strings"
 
 async function firstSpeakable(
   host: ChallengeRuntimeHost,
@@ -41,6 +41,7 @@ function recordUI(
   host: ChallengeRuntimeHost,
   phrase: string,
   language: string,
+  S: ChallengeStrings,
   hint?: string,
 ): Promise<number> {
   return new Promise((resolve) => {
@@ -140,6 +141,7 @@ export const readAloud: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("read-aloud", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const p = await firstSpeakable(host, spec)
       if (!p) {
@@ -151,6 +153,7 @@ export const readAloud: ToolImpl = {
         host,
         p.target,
         spec.language,
+        S,
         p.romanization ? `${p.romanization} · “${p.native}”` : `“${p.native}”`,
       )
       setTimeout(() => overlay.complete(score, computeReward(2, score)), 360)
@@ -167,6 +170,7 @@ export const sayItBack: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("say-it-back", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       void mulberry32(seedOf(spec)) // reserved for future multi-round
       const p = await firstSpeakable(host, spec)
@@ -176,7 +180,7 @@ export const sayItBack: ToolImpl = {
       }
       // Speak it up front so "say it back" is honest.
       await overlay.speak(p.target)
-      const score = await recordUI(overlay, host, p.target, spec.language, S.sayItBack)
+      const score = await recordUI(overlay, host, p.target, spec.language, S, S.sayItBack)
       setTimeout(() => overlay.complete(score, computeReward(2, score)), 360)
     })()
   },

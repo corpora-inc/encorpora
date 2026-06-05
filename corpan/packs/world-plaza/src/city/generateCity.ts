@@ -62,10 +62,22 @@ function rng(seed: number): () => number {
 
 /* ------------------------------------------------------------- recipe knobs */
 
-/** the city is ~10× the plaza's 240u square footprint by area (≈3.2× per side). */
-const WORLD_SIZE = 760
-/** square chunk side; a 760 world / 95 chunk → 8×8 = 64 chunks. */
-const CHUNK_SIZE = 95
+/**
+ * #34 Phase 1 — the MAINLAND ISLE at ~4× the original area (1520² vs 760², 4×).
+ * The world is a square `WORLD_SIZE` on a side, but a `SEA_MARGIN` perimeter band
+ * is OPEN SEA (the archipelago boundary), so the built ISLAND in the middle stays
+ * within the streamer's ~96-resident-LAND-chunk budget while the map is much
+ * bigger. (Phase 2+ carves the other islands out of that sea.)
+ */
+const WORLD_SIZE = 1520
+/** square chunk side; 1520 / 117 ≈ 13 → 13×13 = 169 chunks (sea margin trims the
+ *  built LAND set back to ~the budget). */
+const CHUNK_SIZE = 117
+/** width (world units) of the OPEN-SEA perimeter band on the non-river land edges
+ *  — the natural island boundary that keeps the built land within budget (#34).
+ *  Sized so the built LAND chunk count stays within world-fix's ~96 resident
+ *  budget (build-once-safe BEFORE the dispose path lands). */
+const SEA_MARGIN = 205
 /** street width (matches the warm avenue feel of the plaza roads). */
 const AVENUE_W = 8
 /** block pitch — avenue centre-to-centre. Blocks are PITCH - AVENUE_W wide. */
@@ -111,6 +123,10 @@ const BASE_SURFACE_BY_ZONE: Record<CityZoneId, CitySurface> = {
   station: "stone",
   civic: "dirt",
   industrial: "stone",
+  uptown: "dirt", // #34 upscale residential — same warm earth as residential
+  financial: "flagstone", // #34 the towers stand on civic flagstone
+  airport: "stone", // #34 apron/forecourt stone
+  cliff: "stone", // #34 boundary band (clifftop walk reads as stone)
 }
 
 /* per-zone building character: kind weights + height/footprint feel. */
@@ -139,6 +155,13 @@ const ZONE_SPECS: Record<CityZoneId, ZoneSpec> = {
   station: { kinds: ["market-hall", "inn", "shop", "shop"], size: [9, 14], gap: 0.18, dressing: 1.1 },
   civic: { kinds: ["market-hall", "inn", "chapel"], size: [10, 16], gap: 0.35, dressing: 0.8 },
   industrial: { kinds: ["workshop", "workshop", "market-hall"], size: [8, 12], gap: 0.2, dressing: 0.7 },
+  // #34 districts. uptown = upscale townhouses (lower/greener than downtown);
+  // financial = tallest, densest towers (least gap, biggest footprints); airport =
+  // sparse big sheds; cliff = decor-only (boundary band, kept clear for the walk).
+  uptown: { kinds: ["house", "house", "inn", "shop"], size: [7, 10], gap: 0.45, dressing: 1.4 },
+  financial: { kinds: ["inn", "inn", "market-hall", "shop", "shop"], size: [11, 16], gap: 0.05, dressing: 0.8 },
+  airport: { kinds: ["market-hall", "workshop"], size: [12, 18], gap: 0.5, dressing: 0.5 },
+  cliff: { kinds: ["house"], size: [6, 8], gap: 0.92, dressing: 1.6 },
 }
 
 /* ----------------------------------------------------------- landmark plan */
@@ -393,12 +416,18 @@ export function generateCity(seed = 20260603): CityLayout {
   const r = rng(seed)
   const half = WORLD_SIZE / 2
   const bounds: CityBounds = { minX: -half, maxX: half, minZ: -half, maxZ: half }
-  const gridDim = Math.round(WORLD_SIZE / CHUNK_SIZE) // 8
-  const zoneField = buildZoneField(half, r)
+  const gridDim = Math.round(WORLD_SIZE / CHUNK_SIZE)
+  // The built MAINLAND ISLE is the world inset by the open-sea margin (#34). All
+  // generation (infill, dressing, landmarks) is gated to it; the perimeter band
+  // beyond is open SEA (cheap `sea` chunks) so the built land stays within budget.
+  // `buildZoneField` keys the river/banks off `islandHalf` so the waterfront sits
+  // at the island edge, not the far world edge.
+  const islandHalf = half - SEA_MARGIN
+  const zoneField = buildZoneField(islandHalf, r)
 
-  // ---- avenue centrelines (a regular grid through the whole city) ----
+  // ---- avenue centrelines (a regular grid across the ISLAND, not the sea) ----
   const lines: number[] = []
-  for (let p = 0; p <= half - AVENUE_W; p += PITCH) {
+  for (let p = 0; p <= islandHalf - AVENUE_W; p += PITCH) {
     lines.push(p)
     if (p > 0) lines.push(-p)
   }
@@ -407,7 +436,7 @@ export function generateCity(seed = 20260603): CityLayout {
   // ---- landmark plans → snapped block centers (claim their blocks) ----
   const landmarkPlans: LandmarkPlan[] = [
     { id: "market", zone: "market", fx: 0.12, fz: -0.18, label: "Market Square" },
-    { id: "harbor", zone: "harbor", fx: -0.1, fz: (zoneField.bankZ - 30) / half, label: "Harbor Docks" },
+    { id: "harbor", zone: "harbor", fx: -0.1, fz: (zoneField.bankZ - 30) / islandHalf, label: "Harbor Docks" },
     { id: "station", zone: "station", fx: 0.22, fz: 0.46, label: "Central Station" },
     { id: "hospital", zone: "civic", fx: -0.06, fz: 0.32, label: "City Hospital" },
   ]
@@ -441,8 +470,8 @@ export function generateCity(seed = 20260603): CityLayout {
   }
   const centers = blockCenters()
   for (const plan of landmarkPlans) {
-    const tx = plan.fx * half
-    const tz = plan.fz * half
+    const tx = plan.fx * islandHalf
+    const tz = plan.fz * islandHalf
     let best = centers[0]
     let bd = Infinity
     for (const c of centers) {
@@ -487,8 +516,8 @@ export function generateCity(seed = 20260603): CityLayout {
   // promenade, bounded by the sea wall. Kept simple + walkable: a front quay
   // (clear), then buildings in [farPromZ, wallZ), with the bridge corridor left
   // open so you step off the deck onto the far promenade.
-  const wallZ = half - WALL_INSET // the sea wall sits just inside the +Z edge
-  buildFarBank(zoneField, half, bridgeX, wallZ, r, allBuildings, allProps)
+  const wallZ = islandHalf - WALL_INSET // the sea wall sits just inside the ISLAND +Z edge
+  buildFarBank(zoneField, islandHalf, bridgeX, wallZ, r, allBuildings, allProps)
 
   // DEFENSE-IN-DEPTH (#30): drop any prop that ended up IN THE RIVER band (between
   // the near and far banks) or past the sea wall — landmark/dressing jitter can
@@ -502,19 +531,18 @@ export function generateCity(seed = 20260603): CityLayout {
     if (!onLand(allProps[i])) allProps.splice(i, 1)
   }
 
-  // ---- WALLS (#32): the perimeter rampart on the three LAND edges (south, east,
-  // west). The +Z edge is the river/sea (no wall — the water IS the boundary).
-  // A gate where the central avenue (x=0 / z=0 line) crosses each edge.
+  // ---- BOUNDARY (#34 Phase 1): the MAINLAND ISLE is ringed by open SEA on all
+  // sides (the water collider is the natural edge — no land rampart needed). The
+  // owner-default WEST + NORTH cliffs land as a later P1 refinement; for now `gates`
+  // is empty, which disables the rampart (buildWallSegments returns []). The knobs
+  // stay for Phase 2 land borders.
   const boundary: CityBoundary = {
     inset: WALL_INSET,
     thickness: WALL_THICK,
-    gates: [
-      { side: "south", center: 0, halfWidth: GATE_HALF_W },
-      { side: "west", center: 0, halfWidth: GATE_HALF_W },
-      { side: "east", center: 0, halfWidth: GATE_HALF_W },
-    ],
+    gates: [],
   }
-  pushGateAnchors(boundary, half, allAnchors)
+  void GATE_HALF_W // reserved for Phase 2 gated land borders
+  pushGateAnchors(boundary, islandHalf, allAnchors) // no-op while gates is empty (Phase 2 fills it)
 
   // ---- partition everything into chunks (by feature CENTER) ----
   const chunks: CityChunk[] = makeChunks(bounds, CHUNK_SIZE, gridDim, zoneField, {
@@ -530,7 +558,13 @@ export function generateCity(seed = 20260603): CityLayout {
     bridgeHalfW: BRIDGE_HALF_W,
     boundary,
     wallZ,
+    islandHalf,
   })
+
+  // ---- DISTRICTS (#34): the distinct district ids present on LAND chunks, with a
+  // centroid each (for the map legend, "you are in X" UX, + the streamer's
+  // district-coherent warm priority). Built from the per-chunk `district` tags.
+  const districts = collectDistricts(chunks)
 
   return {
     id: "corpan-city",
@@ -541,6 +575,7 @@ export function generateCity(seed = 20260603): CityLayout {
     chunks,
     anchors: allAnchors,
     spawn,
+    districts,
     water: {
       waterZ: zoneField.waterZ,
       bankZ: zoneField.bankZ,
@@ -612,6 +647,106 @@ function pushGateAnchors(boundary: CityBoundary, half: number, anchors: CityAnch
 
 const cap = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1)
 
+/* ----------------------------------------------- streaming/district tags (#34) */
+
+/**
+ * The streaming/collision residency kind for a chunk centered at (cx,cz). A chunk
+ * whose CENTER sits in the open river band [waterZ, farBankZ) is `sea` (cheap —
+ * ground + collider, kept resident as the far silhouette); everything else is
+ * built `land` (counts against the streamer's resident-built-chunk budget). Phase
+ * 2+ adds `park-water` (park lakes) + `cliff` (the boundary band) as those land.
+ */
+function landKindForChunk(
+  cx: number,
+  cz: number,
+  zf: ZoneField,
+  islandHalf: number,
+): import("./layout").ChunkLandKind {
+  // Beyond the island (the open-sea perimeter margin) → sea. Also the open river
+  // band [waterZ, farBankZ) is sea. Everything on the island is built `land`.
+  // (Phase 2+ adds park-water + cliff kinds as those features arrive.)
+  if (Math.abs(cx) > islandHalf || Math.abs(cz) > islandHalf) return "sea"
+  if (cz >= zf.waterZ && cz < zf.farBankZ) return "sea"
+  return "land"
+}
+
+/** Map a visual zone → a stable district id. Coarse 1:1 for Phase 1 (single isle);
+ *  Phase 2+ refines to per-borough ids. The map/streamer read the id, not the zone. */
+function districtForZone(zone: CityZoneId): string {
+  switch (zone) {
+    case "plaza":
+      return "plaza"
+    case "downtown":
+      return "midtown"
+    case "residential":
+    case "uptown":
+      return "uptown"
+    case "market":
+      return "market"
+    case "harbor":
+      return "harbor"
+    case "park":
+      return "central-green"
+    case "station":
+      return "rail-yards"
+    case "civic":
+      return "civic"
+    case "industrial":
+      return "industrial"
+    case "financial":
+      return "financial"
+    case "airport":
+      return "airport"
+    case "cliff":
+      return "cliff-walk"
+    default:
+      return "downtown"
+  }
+}
+
+/** Collect the distinct districts present on LAND chunks, each with a centroid
+ *  (mean of its land-chunk centers) for the map legend + streamer ranking (#34). */
+function collectDistricts(chunks: CityChunk[]): import("./layout").District[] {
+  const acc = new Map<string, { sx: number; sz: number; n: number }>()
+  for (const c of chunks) {
+    if (c.landKind && c.landKind !== "land") continue // districts are land-side
+    const id = c.district
+    if (!id) continue
+    const cx = (c.bounds.minX + c.bounds.maxX) / 2
+    const cz = (c.bounds.minZ + c.bounds.maxZ) / 2
+    const a = acc.get(id) ?? { sx: 0, sz: 0, n: 0 }
+    a.sx += cx
+    a.sz += cz
+    a.n += 1
+    acc.set(id, a)
+  }
+  const out: import("./layout").District[] = []
+  for (const [id, a] of acc) {
+    out.push({ id, label: districtLabel(id), island: "mainland", cx: a.sx / a.n, cz: a.sz / a.n })
+  }
+  return out
+}
+
+/** Human label for a district id (English; localized downstream). */
+function districtLabel(id: string): string {
+  const m: Record<string, string> = {
+    plaza: "Grand Plaza",
+    midtown: "Midtown",
+    uptown: "Uptown",
+    market: "Market Quarter",
+    harbor: "Harbor",
+    "central-green": "Central Green",
+    "rail-yards": "Rail Yards",
+    civic: "Civic Center",
+    industrial: "Industrial",
+    financial: "Financial District",
+    airport: "Airport",
+    "cliff-walk": "Cliff Walk",
+    downtown: "Downtown",
+  }
+  return m[id] ?? id
+}
+
 /* ------------------------------------------------------- chunk partitioning */
 
 interface ChunkInput {
@@ -628,6 +763,9 @@ interface ChunkInput {
   boundary: CityBoundary
   /** world-Z of the sea wall (the +Z far edge wall). */
   wallZ: number
+  /** half-extent of the built ISLAND (world inset by the sea margin). Chunks whose
+   *  center falls outside ±islandHalf are open SEA (#34). */
+  islandHalf: number
 }
 
 /**
@@ -652,18 +790,26 @@ function makeChunks(
       const cb: CityBounds = { minX, maxX: minX + chunkSize, minZ, maxZ: minZ + chunkSize }
       const cx = minX + chunkSize / 2
       const cz = minZ + chunkSize / 2
+      const zone = zoneField.zoneAt(cx, cz)
       chunks[gx][gz] = {
         gx,
         gz,
         key: chunkKey(gx, gz),
         bounds: cb,
-        zone: zoneField.zoneAt(cx, cz),
+        zone,
         buildings: [],
         props: [],
         ground: [],
         anchors: [],
         water: [],
         walls: [],
+        // #34 streaming/collision tags: a chunk in the open river band OR out in the
+        // sea margin (beyond the island) is `sea` (cheap, kept resident); everything
+        // else is built `land`. (Phase 2+ adds park-water + cliff kinds.)
+        landKind: landKindForChunk(cx, cz, zoneField, inp.islandHalf),
+        // district id: a coarse 1:1 from the visual zone for now (Phase 1 single
+        // isle). Phase 2+ refines to per-borough ids; the field is what matters.
+        district: districtForZone(zone),
       }
     }
   }
@@ -805,13 +951,33 @@ function makeChunks(
           metersPerTile: 8,
         })
       }
+
+      // ---- OPEN SEA margin (#34): every `sea` chunk that the river logic above
+      // didn't already cover gets a full water tile + a non-walkable water rect, so
+      // the player can't walk off the island into the void and nothing spawns on
+      // the sea. (Skip chunks that already carry a river water rect so we don't
+      // double-bake; this catches the S/E/W coastline, corners, AND any sea-margin
+      // chunk at the river's Z but beyond the island's X.)
+      if (ch.landKind === "sea" && ch.water.length === 0) {
+        ch.ground.push({
+          kind: "rect",
+          surface: "water",
+          cx: (b.minX + b.maxX) / 2,
+          cz: (b.minZ + b.maxZ) / 2,
+          w: chunkSize,
+          d: chunkSize,
+          metersPerTile: 6,
+        })
+        ch.water.push({ x0: b.minX, x1: b.maxX, z0: b.minZ, z1: b.maxZ })
+      }
     }
   }
 
-  // ---- WALLS (#32): slice the four perimeter ramparts into per-chunk segments
-  // + bake a thin stone strip under each. The three LAND edges (S/E/W) get a
-  // gated rampart; the +Z edge gets a SEA WALL behind the far bank. Each segment
-  // is clipped to the chunk it lies in so the collider streams with that chunk.
+  // ---- COASTLINE WALL (#34): with the sea margin as the natural boundary, the old
+  // S/E/W land ramparts are gone (the water IS the edge). buildWallSegments now
+  // rings only any LAND edge that still needs a wall — none in Phase 1's island
+  // (sea on all sides + the river), so this is empty, but the path stays for
+  // Phase 2 land borders. Each segment streams its collider with its chunk.
   const wallSegments = buildWallSegments(bounds, inp)
   for (const seg of wallSegments) {
     const cx = (seg.x0 + seg.x1) / 2
@@ -842,6 +1008,10 @@ function makeChunks(
  * the gate interval is recorded on whichever segment spans it.
  */
 function buildWallSegments(bounds: CityBounds, inp: ChunkInput): CityWallRect[] {
+  // #34: the island is ringed by SEA (the water collider is the boundary), so no
+  // land ramparts are needed in Phase 1. Disabled via an empty boundary.gates +
+  // this guard; the segment-builder stays for Phase 2 land borders / cliff gates.
+  if (inp.boundary.gates.length === 0) return []
   const { inset, thickness } = inp.boundary
   const half = (bounds.maxX - bounds.minX) / 2
   const t = thickness

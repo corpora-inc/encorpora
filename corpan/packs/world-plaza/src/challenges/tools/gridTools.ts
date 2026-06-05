@@ -17,7 +17,7 @@ import {
   shuffle,
   type ToolImpl,
 } from "./_shared"
-import { S } from "./strings"
+import { challengeStrings } from "./strings"
 
 /**
  * Emoji map for picture-match. Picture-match ONLY makes sense for picturable
@@ -105,6 +105,7 @@ export const pictureMatch: ToolImpl = {
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("picture-match", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       // Pull a generous batch, then SELECT only picturable single-noun entries:
@@ -207,6 +208,7 @@ export const memoryPairs: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("memory-pairs", ctx, { pairs: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const ps = sample(await pairs(host, spec, 8), 4, rnd)
@@ -337,6 +339,7 @@ export const categorySort: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("category-sort", ctx, {})),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const entries = await host.getRandomEntries(30)
@@ -412,6 +415,7 @@ export const countdownRecall: ToolImpl = {
   difficulty: 3,
   buildSpec: (ctx) => Promise.resolve(baseSpec("countdown-recall", ctx, { count: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const ps = sample(await pairs(host, spec, 10), 4, rnd)
@@ -514,6 +518,7 @@ export const wordSearch: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("word-search", ctx, { size: 7 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const ps = (await pairs(host, spec, 14)).filter(

@@ -4,6 +4,7 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh"
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode"
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import { Color3, Vector3 } from "@babylonjs/core/Maths/math"
+import { registerWalkSurface } from "./walkSurface"
 
 /**
  * world/bridge.ts — a REAL 3D stone ARCH BRIDGE across the river (#29).
@@ -53,6 +54,18 @@ export interface BridgeOptions {
 
 export interface Bridge {
   root: TransformNode
+  /**
+   * The WALK-SURFACE height (world Y) at (x,z): the top of the deck/ramp when the
+   * point is on the bridge footprint (approach ramp → cambered deck → far ramp),
+   * else 0 (ground). The movement controller samples this each frame so the player
+   * walks UP and OVER the deck instead of under it (#40). It is the SAME profile
+   * the mesh is built from, so the collision surface can never drift from the
+   * visual deck. A small `pad` widens the X footprint so you don't fall off the
+   * edge from numerical jitter at the rails.
+   */
+  heightAt: (x: number, z: number) => number
+  /** the deck-top Y at the near approach (z = nearZ) — where the keeper stands. */
+  nearDeckY: number
   dispose: () => void
 }
 
@@ -199,10 +212,11 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
   // ---- APPROACH RAMPS: short wedges from each bank up to the deck ends, so you
   //      walk UP onto the bridge instead of stepping into a floating slab. Built as
   //      a few stacked slabs that rise from ground (y≈0) to the deck end height.
+  const RAMP_LEN = 4.5
   const ramp = (bankZ: number, dir: number) => {
     const endTop = deckTopAt(bankZ)
     const steps = 4
-    const rampLen = 4.5
+    const rampLen = RAMP_LEN
     for (let i = 0; i < steps; i++) {
       const t0 = i / steps
       const t1 = (i + 1) / steps
@@ -218,9 +232,39 @@ export function buildBridge(scene: BabylonScene, opts: BridgeOptions): Bridge {
   // freeze everything (static).
   for (const m of root.getChildMeshes()) m.freezeWorldMatrix()
 
+  // WALK-SURFACE height profile (#40) — matches the mesh above exactly:
+  //   near ramp [nearZ-RAMP_LEN, nearZ]: 0 → deckTopAt(nearZ)
+  //   deck      [nearZ, farZ]:           deckTopAt(z) (cambered)
+  //   far ramp  [farZ, farZ+RAMP_LEN]:   deckTopAt(farZ) → 0
+  // outside the X footprint (±hw + a small pad so you don't slip off at the rail)
+  // or the Z span → 0 (ordinary ground).
+  const X_PAD = 0.6
+  const heightAt = (px: number, pz: number): number => {
+    if (Math.abs(px - x) > hw + X_PAD) return 0
+    if (pz >= nearZ && pz <= farZ) return deckTopAt(pz) // on the deck
+    if (pz < nearZ && pz >= nearZ - RAMP_LEN) {
+      const t = (pz - (nearZ - RAMP_LEN)) / RAMP_LEN // 0 at bank → 1 at deck
+      return deckTopAt(nearZ) * t
+    }
+    if (pz > farZ && pz <= farZ + RAMP_LEN) {
+      const t = (farZ + RAMP_LEN - pz) / RAMP_LEN // 1 at deck → 0 at bank
+      return deckTopAt(farZ) * t
+    }
+    return 0
+  }
+
+  // SELF-WIRING (#40): register the height profile on the scene's walk-surface
+  // registry so the player controller + crowd lift onto the deck automatically —
+  // no game.ts wire required (forgetting that wire is exactly the regression). The
+  // disposer below deregisters it so a scene teardown can't leak.
+  const unregister = registerWalkSurface(scene, heightAt)
+
   return {
     root,
+    heightAt,
+    nearDeckY: deckTopAt(nearZ),
     dispose: () => {
+      unregister()
       for (const m of root.getChildMeshes()) m.dispose(false, false)
       matDeck.dispose()
       matStone.dispose()

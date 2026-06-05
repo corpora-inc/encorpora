@@ -117,6 +117,56 @@ export type I18nKey =
   | "immersion.toggle.on"
   | "immersion.toggle.subOff"
   | "immersion.toggle.subOn"
+  // ── quest-switch picker (quest/questSection.ts) ─────────────────────────────
+  | "section.switchHeading"
+  | "section.switchHint"
+  | "section.currentBadge"
+  | "section.goTo" // "Go to {where}"
+  // ── challenge in-card instructions (challenges/tools/strings.ts) ────────────
+  // The UI strings rendered INSIDE a micro-challenge card, in the UI locale
+  // (native, or target under immersion). `{token}` for the interpolated ones.
+  | "challenge.tapToContinue"
+  | "challenge.hearIt"
+  | "challenge.replay"
+  | "challenge.tapInOrder"
+  | "challenge.tapWordsInOrder"
+  | "challenge.memoryFind"
+  | "challenge.memoryStudy"
+  | "challenge.sortPrompt"
+  | "challenge.sortHint" // "🧺 {label}"
+  | "challenge.pictureMatchHint"
+  | "challenge.pictureMatchWordHint" // "Tap the word that means “{native}”"
+  | "challenge.memorizeTitle"
+  | "challenge.memorizeSub"
+  | "challenge.ready"
+  | "challenge.whichMeant" // "Which line meant “{native}”?"
+  | "challenge.findHidden"
+  | "challenge.unscramble"
+  | "challenge.meansHint" // "as in “{native}”"
+  | "challenge.buildOrder"
+  | "challenge.whichFits"
+  | "challenge.missingLine"
+  | "challenge.chooseReply"
+  | "challenge.whichTypo"
+  | "challenge.whichRhymes" // "Which word rhymes with “{word}”?"
+  | "challenge.verbHint" // "verb: {inf}"
+  | "challenge.whichTranslation"
+  | "challenge.tapMeaning"
+  | "challenge.whichHeard"
+  | "challenge.tapSpeakerReplay"
+  | "challenge.trueLabel"
+  | "challenge.falseLabel"
+  | "challenge.oddOneOut"
+  | "challenge.tapNumber"
+  | "challenge.readItAloud"
+  | "challenge.selfRateHint"
+  | "challenge.sayItBack"
+  | "challenge.listeningStop"
+  | "challenge.scoring"
+  | "challenge.heard" // "Heard: “{transcript}”"
+  | "challenge.rateTough"
+  | "challenge.rateOkay"
+  | "challenge.rateNailed"
 
 export type Dict = Record<I18nKey, string>
 
@@ -219,6 +269,54 @@ const en: Dict = {
   "immersion.toggle.on": "On",
   "immersion.toggle.subOff": "Helpful translations stay on.",
   "immersion.toggle.subOn": "Everything in your target language — no translations.",
+  // quest-switch picker
+  "section.switchHeading": "Try a different journey",
+  "section.switchHint": "Every quest is yours to pick — switch any time, no pressure.",
+  "section.currentBadge": "Current",
+  "section.goTo": "Go to {where}",
+  // challenge in-card instructions
+  "challenge.tapToContinue": "Tap to continue",
+  "challenge.hearIt": "🔊 Hear it",
+  "challenge.replay": "Tap the speaker to replay",
+  "challenge.tapInOrder": "Tap the letters in order",
+  "challenge.tapWordsInOrder": "Tap the words in order",
+  "challenge.memoryFind": "Find the matching pairs",
+  "challenge.memoryStudy": "Not a match — tap anywhere to flip back",
+  "challenge.sortPrompt": "Sort each phrase into its basket",
+  "challenge.sortHint": "🧺 {label}",
+  "challenge.pictureMatchHint": "Tap the word for this picture",
+  "challenge.pictureMatchWordHint": "Tap the word that means “{native}”",
+  "challenge.memorizeTitle": "Memorise these",
+  "challenge.memorizeSub": "study them, then tap Ready",
+  "challenge.ready": "I'm ready →",
+  "challenge.whichMeant": "Which line meant “{native}”?",
+  "challenge.findHidden": "Find the hidden words",
+  "challenge.unscramble": "Unscramble the word",
+  "challenge.meansHint": "as in “{native}”",
+  "challenge.buildOrder": "Put the words in order",
+  "challenge.whichFits": "Which word fills the gap?",
+  "challenge.missingLine": "What's the missing line?",
+  "challenge.chooseReply": "Choose the reply",
+  "challenge.whichTypo": "Which word is misspelled?",
+  "challenge.whichRhymes": "Which word rhymes with “{word}”?",
+  "challenge.verbHint": "verb: {inf}",
+  "challenge.whichTranslation": "Tap the meaning",
+  "challenge.tapMeaning": "Tap the one that means this",
+  "challenge.whichHeard": "🔊 Which one did you hear?",
+  "challenge.tapSpeakerReplay": "Tap the speaker to replay",
+  "challenge.trueLabel": "✓ True",
+  "challenge.falseLabel": "✗ False",
+  "challenge.oddOneOut": "Which one doesn't belong?",
+  "challenge.tapNumber": "🔊 Tap the number you heard",
+  "challenge.readItAloud": "Tap the mic and read it aloud",
+  "challenge.selfRateHint": "STT unavailable — tap to self-rate",
+  "challenge.sayItBack": "Now say it back",
+  "challenge.listeningStop": "Listening… tap to stop",
+  "challenge.scoring": "Scoring…",
+  "challenge.heard": "Heard: “{transcript}”",
+  "challenge.rateTough": "Tough",
+  "challenge.rateOkay": "Okay",
+  "challenge.rateNailed": "Nailed it",
 }
 
 /* ============================================ generated locales (gen tool) == *

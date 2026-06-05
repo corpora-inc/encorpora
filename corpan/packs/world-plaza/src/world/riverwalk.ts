@@ -13,10 +13,13 @@ import "@babylonjs/core/Meshes/thinInstanceMesh"
  *
  * WHAT THIS IS. An ADDITIVE, bounded detail layer (its own create + per-frame
  * `update` + `dispose`, exactly like fountain.ts / harborWater.ts) that dresses
- * the +Z waterfront edge so the riverwalk reads as a hand-crafted Octopath quay
- * rather than a flat blue rectangle butting a flat ground. It does NOT touch the
- * city streaming spine, the engine/camera, or the bridge STRUCTURE (world-fix
- * owns the bridge, #29) — it lays decoration ALONG the existing water edge:
+ * the waterfront so the riverwalk reads as a hand-crafted Octopath quay rather
+ * than a flat blue rectangle butting a flat ground. When the river is a BAND
+ * (`farEdgeZ` set, #32/#39) it dresses BOTH symmetric quays — the near rail at
+ * `edgeZ-0.7` (water on +Z) and the far rail at `farEdgeZ+0.7` (water on -Z) —
+ * via one shared `layRun(railZ, shore)`. It does NOT touch the city streaming
+ * spine, the engine/camera, or the bridge STRUCTURE (world-fix owns the bridge,
+ * #29) — it lays decoration ALONG the existing water edge(s):
  *
  *   • a continuous STONE BALUSTRADE (capping rail + bottom rail + a run of turned
  *     balusters + heavier piers at intervals) along the quay, with a clean GAP
@@ -287,52 +290,63 @@ export function buildRiverwalk(scene: BabylonScene, opts: RiverwalkOptions): Riv
 
   const maxBal = opts.maxBalusters ?? Infinity
 
-  for (const [xa, xb] of segments) {
-    const len = xb - xa
-    if (len < 1) continue
-    const cx = (xa + xb) / 2
-    // capping rail — one long box ON TOP of the baluster row. Its depth (0.46) is
-    // a touch under the baluster belly (0.52) so the bellies bulge past it and the
-    // posts read as 3D, never a flush flat curb. A slim shadow-line lip beneath.
-    const cap = MeshBuilder.CreateBox(`${tag}-cap`, { width: len, height: 0.2, depth: 0.34 }, scene)
-    cap.position.set(cx, RAIL_TOP_Y, railZ)
-    railParts.push(cap)
-    const capLip = MeshBuilder.CreateBox(`${tag}-caplip`, { width: len, height: 0.08, depth: 0.5 }, scene)
-    capLip.position.set(cx, RAIL_TOP_Y - 0.14, railZ)
-    railParts.push(capLip)
-    // bottom kerb the balusters stand on (slimmer depth than the feet → feet sit
-    // proud of it). Raised so the baluster feet (y 0..) plant on its top.
-    const base = MeshBuilder.CreateBox(`${tag}-base`, { width: len, height: 0.28, depth: 0.56 }, scene)
-    base.position.set(cx, -0.14, railZ)
-    baseParts.push(base)
+  // Lay ONE bank's worth of rail along `bankRailZ`. `shore` is the sign pointing
+  // from the rail toward the dry PROMENADE (so bollards/lamps sit on the walkable
+  // side): the NEAR bank has water at +Z → shore = -1; the symmetric FAR bank has
+  // water at -Z → shore = +1. The rail/balusters/kerb are centred on the rail line
+  // (symmetric), so only the shoreward offsets flip — both banks read identically.
+  const layRun = (bankRailZ: number, shore: -1 | 1) => {
+    for (const [xa, xb] of segments) {
+      const len = xb - xa
+      if (len < 1) continue
+      const cx = (xa + xb) / 2
+      // capping rail — one long box ON TOP of the baluster row. Its depth (0.34) is
+      // under the baluster belly (0.62) so the bellies bulge past it and the posts
+      // read as 3D, never a flush flat curb. A slim shadow-line lip beneath.
+      const cap = MeshBuilder.CreateBox(`${tag}-cap`, { width: len, height: 0.2, depth: 0.34 }, scene)
+      cap.position.set(cx, RAIL_TOP_Y, bankRailZ)
+      railParts.push(cap)
+      const capLip = MeshBuilder.CreateBox(`${tag}-caplip`, { width: len, height: 0.08, depth: 0.5 }, scene)
+      capLip.position.set(cx, RAIL_TOP_Y - 0.14, bankRailZ)
+      railParts.push(capLip)
+      // bottom kerb the balusters stand on (slimmer depth than the feet).
+      const base = MeshBuilder.CreateBox(`${tag}-base`, { width: len, height: 0.28, depth: 0.56 }, scene)
+      base.position.set(cx, -0.14, bankRailZ)
+      baseParts.push(base)
 
-    // balusters across the bay (between the kerb and the cap).
-    const n = Math.max(2, Math.floor(len / BAL_SPACING))
-    for (let i = 0; i <= n; i++) {
-      if (balPlacements.length >= maxBal) break
-      const x = xa + (i / n) * len
-      balPlacements.push({ x, z: railZ, yaw: 0, scale: 1 })
-    }
-    // piers at the segment ends + spaced bays in between.
-    const np = Math.max(1, Math.round(len / PIER_SPACING))
-    for (let i = 0; i <= np; i++) {
-      const x = xa + (i / np) * len
-      pierPlacements.push({ x, z: railZ, yaw: 0, scale: 1 })
-    }
-    // mooring bollards on the PROMENADE side of the rail (you walk past them),
-    // between piers — staggered shoreward so they never hide behind a baluster.
-    const nb = Math.max(1, Math.round(len / (PIER_SPACING * 1.6)))
-    for (let i = 0; i < nb; i++) {
-      const x = xa + ((i + 0.5) / nb) * len
-      bollardPlacements.push({ x, z: railZ - 1.4, yaw: 0, scale: 1 })
-    }
-    // a lamp pier every ~2 bays, set just shoreward of the rail.
-    const nl = Math.max(1, Math.round(len / (PIER_SPACING * 2)))
-    for (let i = 0; i <= nl; i++) {
-      const x = xa + (i / nl) * len
-      lampPlacements.push({ x, z: railZ - 0.5, yaw: 0, scale: 1 })
+      // balusters across the bay (between the kerb and the cap).
+      const n = Math.max(2, Math.floor(len / BAL_SPACING))
+      for (let i = 0; i <= n; i++) {
+        if (balPlacements.length >= maxBal) break
+        const x = xa + (i / n) * len
+        balPlacements.push({ x, z: bankRailZ, yaw: 0, scale: 1 })
+      }
+      // piers at the segment ends + spaced bays in between.
+      const np = Math.max(1, Math.round(len / PIER_SPACING))
+      for (let i = 0; i <= np; i++) {
+        const x = xa + (i / np) * len
+        pierPlacements.push({ x, z: bankRailZ, yaw: 0, scale: 1 })
+      }
+      // mooring bollards on the PROMENADE side of the rail (you walk past them).
+      const nb = Math.max(1, Math.round(len / (PIER_SPACING * 1.6)))
+      for (let i = 0; i < nb; i++) {
+        const x = xa + ((i + 0.5) / nb) * len
+        bollardPlacements.push({ x, z: bankRailZ + shore * 1.4, yaw: 0, scale: 1 })
+      }
+      // a lamp pier every ~2 bays, set just shoreward of the rail.
+      const nl = Math.max(1, Math.round(len / (PIER_SPACING * 2)))
+      for (let i = 0; i <= nl; i++) {
+        const x = xa + (i / nl) * len
+        lampPlacements.push({ x, z: bankRailZ + shore * 0.5, yaw: 0, scale: 1 })
+      }
     }
   }
+
+  // NEAR bank: rail a touch shoreward of the near water edge, water on +Z.
+  layRun(railZ, -1)
+  // FAR bank (#32/#39): the symmetric far quay, rail a touch shoreward of the far
+  // water edge (farEdgeZ), water on -Z. Only when the river BAND is known.
+  if (opts.farEdgeZ != null) layRun(opts.farEdgeZ + 0.7, 1)
 
   // merge + place the two rails (one mesh each, frozen).
   const railMesh = railParts.length ? Mesh.MergeMeshes(railParts, true, true, undefined, false, false) : null

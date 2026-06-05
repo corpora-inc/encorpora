@@ -22,7 +22,7 @@ import {
   shuffle,
   type ToolImpl,
 } from "./_shared"
-import { S } from "./strings"
+import { challengeStrings } from "./strings"
 
 interface Round {
   prompt: string
@@ -194,6 +194,7 @@ export const tapTranslation: ToolImpl = {
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("tap-translation", ctx, { rounds: 5 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const entries = await pickEntries(host, spec, 12)
       const pairs = pairsOf(entries, spec)
@@ -224,6 +225,7 @@ export const listenChoose: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("listen-choose-pic", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const entries = await pickEntries(host, spec, 12)
       const pairs = pairsOf(entries, spec)
@@ -307,6 +309,7 @@ export const trueFalse: ToolImpl = {
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("true-false", ctx, { rounds: 6 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const entries = await pickEntries(host, spec, 12)
       const pairs = pairsOf(entries, spec)
@@ -337,6 +340,7 @@ export const oddOneOut: ToolImpl = {
   difficulty: 2,
   buildSpec: (ctx) => Promise.resolve(baseSpec("odd-one-out", ctx, { rounds: 4 })),
   run: (overlay, spec, host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const entries = await host.getRandomEntries(24)
       const rnd = mulberry32(seedOf(spec))
@@ -383,6 +387,7 @@ export const numberDrill: ToolImpl = {
   difficulty: 1,
   buildSpec: (ctx) => Promise.resolve(baseSpec("number-drill", ctx, { rounds: 5 })),
   run: (overlay, spec, _host) => {
+    const S = challengeStrings(spec.nativeLanguage ?? spec.language)
     void (async () => {
       const rnd = mulberry32(seedOf(spec))
       const numberWord = numberWords(spec.language)

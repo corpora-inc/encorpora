@@ -13,6 +13,8 @@
  * duplicated across tools.
  */
 
+import { t, type I18nKey } from "../../i18n"
+
 export interface ChallengeStrings {
   /* shared affordances */
   tapToContinue: string
@@ -121,17 +123,78 @@ const en: ChallengeStrings = {
   rateNailed: "Nailed it",
 }
 
-const STRINGS: Record<string, ChallengeStrings> = { en }
-
 /**
- * Resolve the in-card string table for a UI language. Falls back to `en`.
- * (Single-arg today; takes the language so the call sites are already correct
- * when a localized table is added.)
+ * Resolve the in-card string table for a UI language. The values now come from
+ * the pack-wide i18n catalog (`src/i18n` `challenge.*` keys), localized into ~46
+ * languages with a per-key English fallback (never blank). The shape stays the
+ * `ChallengeStrings` interface so every `S.<key>` / `challengeStrings(lang).<key>`
+ * call site is unchanged; only the SOURCE of the text moved from a hardcoded `en`
+ * const to the catalog. The function-valued keys pass their param through `t`'s
+ * `{token}` interpolation.
+ *
+ * `uiLang` is the Track's NATIVE for instructions; under immersion the caller
+ * passes the TARGET (the immersion resolver's `uiLocale()`), so the card speaks
+ * the target — consistent with the rest of the chrome.
  */
-export function challengeStrings(_uiLang?: string): ChallengeStrings {
-  const lang = _uiLang?.split("-")[0] ?? "en"
-  return STRINGS[lang] ?? STRINGS.en
+export function challengeStrings(uiLang?: string): ChallengeStrings {
+  const lang = uiLang ?? "en"
+  const tr = (key: I18nKey, params?: Record<string, string | number>): string =>
+    t(key, lang, params)
+  return {
+    tapToContinue: tr("challenge.tapToContinue"),
+    hearIt: tr("challenge.hearIt"),
+    replay: tr("challenge.replay"),
+    tapInOrder: tr("challenge.tapInOrder"),
+    tapWordsInOrder: tr("challenge.tapWordsInOrder"),
+
+    memoryFind: tr("challenge.memoryFind"),
+    memoryStudy: tr("challenge.memoryStudy"),
+    sortPrompt: tr("challenge.sortPrompt"),
+    sortHint: (label) => tr("challenge.sortHint", { label }),
+    pictureMatchHint: tr("challenge.pictureMatchHint"),
+    pictureMatchWordHint: (native) => tr("challenge.pictureMatchWordHint", { native }),
+    memorizeTitle: tr("challenge.memorizeTitle"),
+    memorizeSub: tr("challenge.memorizeSub"),
+    ready: tr("challenge.ready"),
+    whichMeant: (native) => tr("challenge.whichMeant", { native }),
+    findHidden: tr("challenge.findHidden"),
+
+    unscramble: tr("challenge.unscramble"),
+    meansHint: (native) => tr("challenge.meansHint", { native }),
+    buildOrder: tr("challenge.buildOrder"),
+    whichFits: tr("challenge.whichFits"),
+    missingLine: tr("challenge.missingLine"),
+    chooseReply: tr("challenge.chooseReply"),
+    whichTypo: tr("challenge.whichTypo"),
+    whichRhymes: (word) => tr("challenge.whichRhymes", { word }),
+    verbHint: (inf) => tr("challenge.verbHint", { inf }),
+
+    whichTranslation: tr("challenge.whichTranslation"),
+    tapMeaning: tr("challenge.tapMeaning"),
+    whichHeard: tr("challenge.whichHeard"),
+    tapSpeakerReplay: tr("challenge.tapSpeakerReplay"),
+    trueLabel: tr("challenge.trueLabel"),
+    falseLabel: tr("challenge.falseLabel"),
+    oddOneOut: tr("challenge.oddOneOut"),
+    tapNumber: tr("challenge.tapNumber"),
+
+    readItAloud: tr("challenge.readItAloud"),
+    selfRateHint: tr("challenge.selfRateHint"),
+    sayItBack: tr("challenge.sayItBack"),
+    listeningStop: tr("challenge.listeningStop"),
+    scoring: tr("challenge.scoring"),
+    heard: (transcript) => tr("challenge.heard", { transcript: transcript || "—" }),
+    rateTough: tr("challenge.rateTough"),
+    rateOkay: tr("challenge.rateOkay"),
+    rateNailed: tr("challenge.rateNailed"),
+  }
 }
 
-/** Convenience default table (en) for tools that have no UI-language in scope. */
+/**
+ * Convenience default table for tools with no UI-language in scope. This is the
+ * ENGLISH table (the hardcoded `en` source above), used only as a last-ditch
+ * fallback; tools should prefer `challengeStrings(spec.nativeLanguage ?? spec.language)`
+ * so the card localizes. Kept as `en` (not `challengeStrings(undefined)`) so a
+ * tool that hasn't been migrated still renders identical English.
+ */
 export const S: ChallengeStrings = en

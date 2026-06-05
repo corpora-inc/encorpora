@@ -45,6 +45,20 @@ export interface QuestSectionStrings {
   progress: (done: number, total: number) => string
   /** Shown when the quest is complete. */
   complete: string
+  /**
+   * Switch-quest picker copy (#41). OPTIONAL so existing `makeSectionStrings`
+   * callers compile while i18n catalogs catch up — `DEFAULT_STRINGS` supplies a
+   * shipped English fallback for each, and the section spreads provided strings
+   * over the defaults.
+   */
+  /** Heading over the "switch quest" picker (the escape hatch). */
+  switchHeading?: string
+  /** A calm, dignified hint under the switch heading (never a dark pattern). */
+  switchHint?: string
+  /** Badge on the currently-active quest card. */
+  currentBadge?: string
+  /** Builds "Go to {where}" sub-line on a quest card. */
+  goTo?: (where: string) => string
 }
 
 const DEFAULT_STRINGS: QuestSectionStrings = {
@@ -55,6 +69,10 @@ const DEFAULT_STRINGS: QuestSectionStrings = {
   talkTo: (who) => `Talk to ${who}`,
   progress: (done, total) => `Step ${done} of ${total}`,
   complete: "Quest complete — onward!",
+  switchHeading: "Try a different journey",
+  switchHint: "Every quest is yours to pick — switch any time, no pressure.",
+  currentBadge: "Current",
+  goTo: (where) => `Go to ${where}`,
 }
 
 export interface QuestSectionOptions {
@@ -78,6 +96,27 @@ export interface QuestSectionOptions {
    * body on engine changes, but the controls host persists).
    */
   controls?: (host: HTMLElement) => void
+  /**
+   * The "switch quest" escape hatch (#41): a calm safety valve so a player is
+   * NEVER trapped on a quest they can't or don't want to finish. Returns the
+   * pickable quests (active first/marked); `onSwitchQuest(id)` re-points the world
+   * to that quest. Both optional — omit to hide the picker (e.g. tutorial). NOT a
+   * dark pattern: switching is dignified, never punished.
+   */
+  questChoices?: () => QuestChoice[]
+  onSwitchQuest?: (questId: string) => void
+}
+
+/** One pickable quest in the switch-quest list. */
+export interface QuestChoice {
+  id: string
+  title: string
+  /** Where the first step sends you ("the harbor") — a friendly anchor name. */
+  whereToGo?: string
+  /** This is the quest currently active. */
+  isActive: boolean
+  /** This quest has already been completed (still replayable). */
+  isComplete: boolean
 }
 
 /**
@@ -213,6 +252,69 @@ function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => 
       }
       stepsBlock.appendChild(list)
       root.appendChild(stepsBlock)
+
+      // ── Switch-quest escape hatch (#41) ──────────────────────────────────
+      // A calm safety valve so the player is never trapped. Lists the available
+      // quests; tapping one re-points the world. Dignified, no pressure.
+      const choices = opts.questChoices?.() ?? []
+      if (opts.onSwitchQuest && choices.length > 1) {
+        // Coalesce the optional switch-strings to their shipped English defaults
+        // (i18n catalogs may not carry them yet).
+        const sw = {
+          heading: strings.switchHeading ?? DEFAULT_STRINGS.switchHeading!,
+          hint: strings.switchHint ?? DEFAULT_STRINGS.switchHint!,
+          current: strings.currentBadge ?? DEFAULT_STRINGS.currentBadge!,
+          goTo: strings.goTo ?? DEFAULT_STRINGS.goTo!,
+        }
+        const switchBlock = document.createElement("section")
+        switchBlock.className = "wp-quest-block wp-quest-switch"
+        const sHead = document.createElement("div")
+        sHead.className = "wp-quest-heading"
+        sHead.textContent = sw.heading
+        switchBlock.appendChild(sHead)
+        const sHint = document.createElement("div")
+        sHint.className = "wp-quest-switch-hint"
+        sHint.textContent = sw.hint
+        switchBlock.appendChild(sHint)
+
+        const cards = document.createElement("div")
+        cards.className = "wp-quest-switch-cards"
+        for (const c of choices) {
+          const card = document.createElement(c.isActive ? "div" : "button")
+          card.className =
+            "wp-quest-switch-card" +
+            (c.isActive ? " wp-quest-switch-card--active" : "") +
+            (c.isComplete ? " wp-quest-switch-card--done" : "")
+          const t = document.createElement("div")
+          t.className = "wp-quest-switch-card-title"
+          t.textContent = c.title
+          card.appendChild(t)
+          if (c.whereToGo) {
+            const w = document.createElement("div")
+            w.className = "wp-quest-switch-card-where"
+            w.textContent = sw.goTo(c.whereToGo)
+            card.appendChild(w)
+          }
+          if (c.isActive) {
+            const badge = document.createElement("span")
+            badge.className = "wp-quest-switch-badge"
+            badge.textContent = sw.current
+            card.appendChild(badge)
+          } else {
+            ;(card as HTMLButtonElement).type = "button"
+            card.addEventListener("click", () => {
+              try {
+                opts.onSwitchQuest?.(c.id)
+              } catch (err) {
+                console.error(`${LOG} switch quest threw:`, err)
+              }
+            })
+          }
+          cards.appendChild(card)
+        }
+        switchBlock.appendChild(cards)
+        root.appendChild(switchBlock)
+      }
     } catch (err) {
       console.error(`${LOG} render failed:`, err)
     }

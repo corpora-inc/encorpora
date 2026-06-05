@@ -23,12 +23,22 @@ props. This adds DELIBERATE, hand-placed detail at named anchors (read from
   leaving the centre open to walk. Turns the bare plaza into a civic garden court.
 - **Market** — festive BUNTING garlands (catenary swags of triangular pennants on
   poles) ringing the square so it reads as a lively marketplace.
+- **Station forecourt** — a ceremonial banner ARCH (two stone piers + lintel +
+  hanging valance + a centred crest banner + flags) straddling the approach (yawed
+  to `station.facing` so you pass THROUGH it), flanked by a pair of URN planters.
+- **Riverwalk promenade** — a stroll of formal URN planters (pedestal + flared urn
+  + a mound of greenery/blooms) along the near quay, a touch shoreward of the rail,
+  evenly spaced and skipping the bridge gap.
 
 Additive + static (create + dispose, no `update`): each species is ONE merged
 master, thin-instanced across its ring/run and FROZEN — a handful of draw calls.
-Reuses `props3d` (`resolvePropPalette`, `buildTree`, `propMat`); no collision /
-streaming / seam coupling. Wired in game.ts off the fountain + market anchors.
-Verified: `/tmp/wp-plaza-ring.png`, `/tmp/wp-plaza-pov.png`, `/tmp/wp-market-bunting.png`.
+A shared `mergeByMat(parts, name)` helper groups coloured parts → one multimaterial
+master. Reuses `props3d` (`resolvePropPalette`, `buildTree`, `propMat`); no
+collision / streaming / seam coupling. Wired in game.ts off the fountain / market /
+station anchors + `layout.water.waterZ` for the promenade — so it adapts for FREE
+when the city scales up (#49: it moved correctly to the 4× layout's anchors).
+Verified: `/tmp/wp-plaza-ring.png`, `/tmp/wp-plaza-pov.png`, `/tmp/wp-market-bunting.png`,
+`/tmp/wp-station-arch.png`, `/tmp/wp-promenade-urns.png`.
 
 ---
 
@@ -55,8 +65,13 @@ pattern as `fountain.ts` / `harborWater.ts`) that dresses the +Z water edge:
     to the world edge over the far bank + sea wall, the depth gradient is SYMMETRIC
     (shallow+luminous at both banks, deep mid-channel), and the foam laps BOTH
     shorelines — so it reads as a crossing, not an endless sea. Verified top-down:
-    `/tmp/wp-river-bandtop.png` (water capped at both banks). TODO (places offered):
-    dress the symmetric FAR quay with a balustrade run too.
+    `/tmp/wp-river-bandtop.png` (water capped at both banks).
+  - **Both quays dressed (#39 DONE):** the balustrade run is factored into one
+    shared `layRun(railZ, shore)`, called for the NEAR bank (rail `edgeZ-0.7`,
+    water +Z, `shore=-1`) AND the symmetric FAR bank (rail `farEdgeZ+0.7`, water
+    -Z, `shore=+1`). Rail/balusters/kerb are centred on the rail line; only the
+    shoreward bollard/lamp offsets flip with `shore`, so both banks read identical.
+    Verified: `/tmp/wp-river-bothbanks.png`, `/tmp/wp-river-bothtop.png`.
 
 ### The edge seam (coordinate with world-fix / places)
 The module takes plain numbers — `edgeZ` (water line), `bounds`, and a bridge

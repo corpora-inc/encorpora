@@ -78,16 +78,20 @@ export interface InventoryPanelOptions {
   store: InventoryStore
   /** Accent color (Scene.palette.accent) so the panel tints with the world. */
   accent?: string
-  /** UI locale for currency grouping ("R 18.40") + i18n. */
-  locale?: string
+  /**
+   * UI locale for currency grouping ("R 18.40") + i18n. A getter form is read
+   * LIVE on each mount, so an immersion flip re-localizes the wallet instantly in
+   * place (the section's `MenuSectionView` re-runs on each open).
+   */
+  locale?: string | (() => string)
   /** The procedural icon renderer (defaults to the active economy renderer). */
   renderer?: IconRenderer
   /** Localized copy. */
   strings?: Partial<InventoryPanelStrings>
   /** The i18n seam (currency names + labels render in `lang`). */
   t?: Translate
-  /** Locale for `t(key, lang)`. */
-  lang?: string
+  /** Locale for `t(key, lang)` — getter form is read live (see `locale`). */
+  lang?: string | (() => string)
   /** Mastered-badge count for the summary (omit → no count). */
   masteredCount?: () => number
   /** Deep-link into the full Badge Case (orchestrator: `shell.openSection("badges")`). */
@@ -105,9 +109,15 @@ export function createInventorySection(opts: InventoryPanelOptions): MenuSection
 function mountInventoryPanel(body: HTMLElement, opts: InventoryPanelOptions): () => void {
   const strings: InventoryPanelStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
   const renderer = opts.renderer ?? iconRenderer()
+  // Resolve the (possibly lazy) locale ONCE per mount — the section re-mounts on
+  // each menu open, so a getter reads the LIVE UI locale (re-localizes on an
+  // immersion flip in place).
+  const resolve = (v: string | (() => string) | undefined): string | undefined =>
+    typeof v === "function" ? v() : v
+  const locale = resolve(opts.locale)
   const tr = (key: string, fallback: string): string => {
     if (!opts.t) return fallback
-    const lang = opts.lang ?? opts.locale ?? "en"
+    const lang = resolve(opts.lang) ?? locale ?? "en"
     const out = opts.t(key, lang)
     return out && out !== key ? out : fallback
   }
@@ -173,7 +183,7 @@ function mountInventoryPanel(body: HTMLElement, opts: InventoryPanelOptions): ()
       name.textContent = tr(`wp.currency.${c.id}`, c.name)
       const amount = document.createElement("div")
       amount.className = "wp-inv-currency-amount"
-      amount.textContent = format(c, units, opts.locale)
+      amount.textContent = format(c, units, locale)
       text.append(name, amount)
       row.appendChild(text)
 

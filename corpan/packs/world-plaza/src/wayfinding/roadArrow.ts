@@ -39,7 +39,11 @@ export interface RoadArrowHandle {
 }
 
 const NEAR_FADE = 14 // within this many units of the objective, the hint fades out
-const AHEAD = 4.5 // how far ahead of the player the marker sits (world units)
+// #43: sit FURTHER ahead (was 4.5 — the player paper-doll billboard covered it in
+// the foreground) and nudge it LATERALLY off the dead-centre facing axis so the
+// billboard never sits on top of it.
+const AHEAD = 7.0 // how far ahead of the player the marker sits (world units)
+const LATERAL = 1.6 // sideways offset (right of facing) so the figure doesn't obscure it
 const SIZE = 3.2 // arrow quad size (world units)
 const BASE_ALPHA = 0.42 // muted — a floor marker, not a HUD shout
 
@@ -130,9 +134,15 @@ export function createRoadArrow(scene: Scene, opts: RoadArrowOptions): RoadArrow
     // follow-camera tracks the heading, so "ahead of facing" is always on-screen —
     // whereas "ahead along the bearing" slides BEHIND the camera the moment you walk
     // the wrong way, which is exactly the "arrow invisible in the foreground" bug.
-    // Forward vector = (-sin,-cos)·facing (see movement/controller.ts onMove).
-    plane.position.x = pl.x - Math.sin(pl.facing) * AHEAD
-    plane.position.z = pl.z - Math.cos(pl.facing) * AHEAD
+    // Forward vector = (-sin,-cos)·facing (see movement/controller.ts onMove);
+    // RIGHT vector = (-cos, +sin)·facing. Sit AHEAD along forward + a small LATERAL
+    // nudge along right so the player billboard never covers the marker (#43).
+    const fwdX = -Math.sin(pl.facing)
+    const fwdZ = -Math.cos(pl.facing)
+    const rightX = -Math.cos(pl.facing)
+    const rightZ = Math.sin(pl.facing)
+    plane.position.x = pl.x + fwdX * AHEAD + rightX * LATERAL
+    plane.position.z = pl.z + fwdZ * AHEAD + rightZ * LATERAL
     // The arrow ROTATES to point at the objective (painted arrow → canvas -Y → world
     // +z at y=0, so rotation.y = bearing aims it). When you face the wrong way the
     // marker stays in view but visibly points BACK at you — an always-visible

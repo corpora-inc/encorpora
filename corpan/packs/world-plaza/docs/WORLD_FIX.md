@@ -285,6 +285,52 @@ doorway on any building.
 - `src/map/{mapCore,schematic,minimap}.ts` — render water + map-geometry blockers — §13
 - `src/map/fullMap.ts` — full-map zoom (pinch + wheel + ± buttons + drag-pan) — §13
 - `src/world/bridge.ts` (new) — real 3D stone arch bridge, water under it — §14
+- `src/world/walkSurface.ts` (new) — per-scene raised-walk-surface registry (self-wires #40) — §15
+- `src/world/bridge.ts` + `movement/controller.ts` + `world/crowd.ts` + `render/cutout.ts` — walk-surface height profile so the player + keeper walk OVER the deck (auto-wired via the registry) — §15
+- `src/wayfinding/roadArrow.ts` — push the on-road arrow further ahead + lateral so the player billboard doesn't cover it — §16
+
+## §15 — Bridge not WALKABLE: player walked UNDER the raised deck (urgent regression on §14)
+
+§14 built a beautiful raised-deck (~y3) arch bridge, but the collision corridor is
+FLAT at ground level (the 2D XZ obstacle field has no height), so the player walked
+at y=0 UNDER the deck (clipping the arches) and the keeper NPC stood at the ground
+anchor under the bridge — the "cross the bridge" quest was unwinnable. My §14 webkit
+harness rendered the mesh but never tested player TRAVERSAL — the miss.
+
+FIX — a walk-surface HEIGHT PROFILE sampled by movement:
+- `bridge.ts` exposes `heightAt(x,z)` (+ `nearDeckY`): the deck/ramp top Y on the
+  bridge footprint (near ramp 0→deck, cambered deck, far ramp deck→0), else 0. It's
+  built from the SAME `deckTopAt`/ramp geometry as the mesh, so the collision
+  surface can NEVER drift from the visual deck.
+- `movement/controller.ts` takes an optional `getGroundHeight(x,z)`; each frame it
+  lifts the player figure AND the camera target to that Y → you ride up + over the
+  deck (water flows under) instead of clipping through it.
+- `world/crowd.ts` takes the same sampler and lifts every agent at its 3 position
+  sites → the keeper stationed at `bridge_n` now stands ON the deck, not under it.
+- `render/cutout.ts` `setGroundPos(x,z,y?)` lifts the contact point + its welded
+  shadow onto the deck (default y=0 → every existing call unchanged).
+PROVEN: 5 unit tests on `heightAt` (a full crossing is a continuous rise→hump→fall,
+never negative, peaks mid-river > deck height, ends at ground both banks) + a webkit
+shot (`/tmp/wp-bridge-player-mid.png`) of a player capsule standing ON the deck at
+midspan with water visible to either side flowing UNDER it.
+SELF-WIRING — NO game.ts CHANGE NEEDED. The bridge REGISTERS its `heightAt` on a
+per-scene walk-surface registry (`src/world/walkSurface.ts`) when built (and
+deregisters on dispose). The controller + crowd, when given no explicit
+`getGroundHeight`, fall back to `walkSurfaceHeight(scene, x, z)` — so the moment
+`buildBridge` runs (game.ts already calls it), the player + keeper lift onto the
+deck automatically. This deliberately avoids a manual game.ts wire, because
+*forgetting that wire is exactly the regression* — the fix can't be left un-applied.
+(An explicit `getGroundHeight` still overrides the registry if a caller wants it.)
+Proven end-to-end (`walkSurface` test): before build → flat 0; after `buildBridge`
+→ deck height over the span + at the keeper anchor, 0 beside/inland; after dispose
+→ flat again; second scene isolated.
+
+## §16 — On-road arrow hidden behind the player billboard
+
+`wayfinding/roadArrow.ts` sat the marker `AHEAD=4.5`u straight along the player's
+facing → the paper-doll billboard covered it from the follow-cam. FIX: `AHEAD` 4.5→7
++ a `LATERAL` 1.6u sideways nudge (along the right vector) so the figure never sits
+on top of it. (#43.)
 
 ## §14 — River bridge: real 3D arch structure, water beneath (`src/world/bridge.ts`)
 
