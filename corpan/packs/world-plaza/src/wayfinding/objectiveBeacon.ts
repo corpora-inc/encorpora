@@ -4,6 +4,7 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh"
 import { DynamicTexture } from "@babylonjs/core/Materials/Textures/dynamicTexture"
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import { Color3 } from "@babylonjs/core/Maths/math"
+import { walkSurfaceHeight } from "../world/walkSurface"
 
 /**
  * objectiveBeacon — the premium, UNMISSABLE "talk to THIS person" marker.
@@ -327,6 +328,13 @@ export function createObjectiveBeacon(
     }
     if (!pin.isEnabled()) setEnabled(true)
 
+    // Ride the NPC's ACTUAL elevation. The objective may stand on a raised walk
+    // surface — the bridge deck — several units above ground. walkSurfaceHeight is
+    // the SAME source the crowd uses to plant the NPC on the deck and the camera
+    // uses for the player's head height, so the marker hovers over the PERSON's
+    // head, not the ground spot far below them. (This is the elevated-NPC fix.)
+    const groundY = walkSurfaceHeight(scene, target.x, target.z)
+
     for (const m of parts) {
       m.position.x = target.x
       m.position.z = target.z
@@ -343,9 +351,10 @@ export function createObjectiveBeacon(
       spin = (spin + dt * 0.6) % (Math.PI * 2)
       pin.rotation.y = 0.32 * Math.sin(spin) // a gentle sway, not a full tumble
     }
-    pin.position.y = PIN_Y + lift
-    halo.position.y = PIN_Y + lift
-    chevron.position.y = HEAD_Y + 0.5 + lift
+    pin.position.y = groundY + PIN_Y + lift
+    halo.position.y = groundY + PIN_Y + lift
+    chevron.position.y = groundY + HEAD_Y + 0.5 + lift
+    ring.position.y = groundY + 0.06 // the foot-ring rides the deck too
 
     // The designed shapes stay near-opaque (so they read crisp); the glow pulses.
     pinBuilt.mat.alpha = 1

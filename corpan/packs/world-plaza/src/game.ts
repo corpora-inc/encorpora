@@ -441,9 +441,18 @@ function buildWorld(
   // we suppress the procedural soundscape bed so you hear the radio, not both.
   // Footsteps/SFX (soundscape) stay. Ducking/phone-UI are deferred (see cityRadio.ts).
   let cityRadio: CityRadio | null = null
+  let radioBedActive = false // radio owns the ambient bed → suppress the procedural one
   void createCityRadio({ volume: 0.5 })
     .then((r) => {
       cityRadio = r
+      // Native audio has NO autoplay restriction → start on load so it's playing
+      // before you interact (and the stream buffers while the world loads, masking
+      // start latency). The desktop <audio> path DOES need a user gesture, so that
+      // one starts on the first tap below.
+      if (r.mode() === "native") {
+        radioBedActive = true
+        void r.start()
+      }
     })
     .catch((e) => console.error("[wp] cityRadio init failed:", e))
   // Camera occlusion fade: any building between the camera and the player (or one
@@ -1760,13 +1769,20 @@ function buildWorld(
       // First user gesture unlocks audio (autoplay-blocked); start the bed/radio.
       soundscape.resume() // unlock WebAudio for footsteps/SFX regardless
       if (!ambientStarted) {
-        ambientStarted = true
-        // POC: prefer the radio as the ambient bed; fall back to the procedural
-        // soundscape bed only when no radio path is available (e.g. unavailable env).
-        if (cityRadio && cityRadio.mode() !== "unavailable") {
-          void cityRadio.start()
-        } else {
-          soundscape.startAmbient()
+        // Native radio already started on load (radioBedActive). Desktop <audio>
+        // needs THIS gesture; with no radio path, fall back to the procedural bed.
+        // If the probe hasn't resolved yet, wait for a later tap so we never start
+        // the procedural bed AND the radio together.
+        if (radioBedActive) {
+          ambientStarted = true
+        } else if (cityRadio) {
+          ambientStarted = true
+          if (cityRadio.mode() === "webaudio") {
+            radioBedActive = true
+            void cityRadio.start()
+          } else {
+            soundscape.startAmbient()
+          }
         }
       }
     }
