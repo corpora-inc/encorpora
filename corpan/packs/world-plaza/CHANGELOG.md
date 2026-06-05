@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   flat blue rectangle). It opens cleanly for the bridge deck and honours
   reduced-motion (still water). One merged mesh per part, thin-instanced and
   frozen, so the whole waterfront is a handful of draw calls.
+- **The hero places feel composed, not bare.** The civic PLAZA is now framed by a
+  formal ring of stone flower-beds brimming with blooms and ornamental trees
+  encircling the fountain, and the MARKET square is strung with festive bunting —
+  deliberate, hand-placed detail at the landmarks rather than the generic
+  per-block scatter, all thin-instanced and frozen.
 - **Localization stays current automatically (`check-translations`).** A
   fail-loud, CI-friendly gate (`npm run check-translations`) scans for (a) any
   catalog key missing in any of the ~46 shipped languages and (b) any user-facing

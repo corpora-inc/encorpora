@@ -77,6 +77,7 @@ import { buildRiverwalk } from "./world/riverwalk"
 import { buildHarborBoats } from "./world/harborBoats"
 import { buildDistantSkyline } from "./world/distantSkyline"
 import { buildGateDressing } from "./world/gateDressing"
+import { buildSpecialPlaces } from "./world/specialPlaces"
 import { buildBridge } from "./world/bridge"
 import { createPopulation } from "./city/population"
 import { prefersReducedMotion } from "./world/reducedMotion"
@@ -451,6 +452,17 @@ function buildWorld(
     reducedMotion,
   })
   fountain.root.position.set(fountainAnchor?.x ?? 0, 0, fountainAnchor?.z ?? 0)
+  // ── Curated SPECIAL-PLACES dressing (env-art, #31 "special places stunning"):
+  // a formal flower-bed + ornamental-tree RING framing the plaza fountain, and
+  // festive BUNTING around the market square — DELIBERATE detail at the hero
+  // anchors (vs. the generic per-block scatter). Additive + frozen; reads the
+  // fountain/market anchor positions; no collision/streaming/seam coupling.
+  const marketAnchor = city.getAnchor("market")
+  const specialPlaces = buildSpecialPlaces(world.scene, {
+    plaza: fountainAnchor ? { x: fountainAnchor.x, z: fountainAnchor.z } : { x: 0, z: 0 },
+    ...(marketAnchor ? { market: { x: marketAnchor.x, z: marketAnchor.z } } : {}),
+    palette: scene.palette,
+  })
   // ── Riverwalk waterfront dressing (env-art, task #31): the premium stone
   // BALUSTRADE + harbor LAMP POSTS + mooring BOLLARDS + a richer rippled WATER
   // sheet (depth gradient + shoreline foam) along the +Z water edge, with a clean
@@ -1418,6 +1430,7 @@ function buildWorld(
     harborBoats?.dispose()
     skyline?.dispose()
     gateDressing?.dispose()
+    specialPlaces.dispose()
     bridge?.dispose()
     fountain.dispose()
     cameraFade.dispose()

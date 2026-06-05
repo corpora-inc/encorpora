@@ -130,7 +130,11 @@ prop vertex memory is ~linear in built chunks). ~96 built ≈ tens of MB geometr
 that's a **RAM ceiling, not a draw ceiling** (only the near ring renders; far-but-
 resident chunks are `setEnabled(false)` — ~free to skip but still hold RAM). The
 naive 8× "build everything" (~180 land chunks) is ~2× over → build-once won't hold
-on a phone. **Confirmed: we need dispose.**
+on a phone. **Confirmed: we need dispose.** (The ~96 is the DESIGN ANCHOR — a
+chunk-count proxy for the real ceiling, which is resident GEOMETRY BYTES + draw
+budget. world-fix will add a runtime resident-geometry meter when wiring dispose,
+so we tune to actual on-device MB; the count stays the sizing anchor, the meter is
+the safety net.)
 
 **Approach (world-fix owns the impl, green-lit):** revive **dispose-with-
 hysteresis** (proven infra still present: the `built` map + per-chunk `dispose()`

@@ -7,7 +7,28 @@ or the bridge STRUCTURE (world-fix owns #29). I read the data those systems
 expose and lay beauty along it.
 
 This is task **#31's visual half** (riverwalk + special places: stunning, not
-Hello-World).
+Hello-World). The crafted world-EDGE visuals (#32: boats, skyline, gate banners)
+are in `docs/WORLD_EDGE.md`.
+
+---
+
+## `src/world/specialPlaces.ts` — curated hero-place dressing
+
+The city already SCATTERS generic street furniture per block (generateCity's
+`dressBlock`), but the HERO anchors read as bare flagstone with a few random
+props. This adds DELIBERATE, hand-placed detail at named anchors (read from
+`city.getAnchor`), not random scatter:
+- **Plaza** — a formal RING of raised stone FLOWER-BEDS (brimming with multi-
+  colour blooms) alternating with ornamental TREES, encircling the fountain and
+  leaving the centre open to walk. Turns the bare plaza into a civic garden court.
+- **Market** — festive BUNTING garlands (catenary swags of triangular pennants on
+  poles) ringing the square so it reads as a lively marketplace.
+
+Additive + static (create + dispose, no `update`): each species is ONE merged
+master, thin-instanced across its ring/run and FROZEN — a handful of draw calls.
+Reuses `props3d` (`resolvePropPalette`, `buildTree`, `propMat`); no collision /
+streaming / seam coupling. Wired in game.ts off the fountain + market anchors.
+Verified: `/tmp/wp-plaza-ring.png`, `/tmp/wp-plaza-pov.png`, `/tmp/wp-market-bunting.png`.
 
 ---
 
