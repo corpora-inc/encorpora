@@ -390,6 +390,7 @@ class MatPool {
 /* a separate cache for facade textures, keyed independently of materials. */
 class TexPool {
   private cache = new Map<string, DynamicTexture>()
+  private disposed = false
   constructor(private scene: Scene, private tag: string, private painter?: FacadePainter) {}
 
   /** SYNCHRONOUS main-thread paint (used for the small one-off sign/awning
@@ -436,6 +437,13 @@ class TexPool {
     this.painter
       .paintFacade(w, h, spec)
       .then((bitmap) => {
+        // The worker resolves async; the world may have been torn down (exit to
+        // Corpán home) in the meantime. Touching `tex.update()` on a disposed
+        // engine throws `_getEngine() is null`. Bail if we've been disposed.
+        if (this.disposed) {
+          bitmap?.close?.()
+          return
+        }
         if (!bitmap) {
           // worker failed for this paint → fall back to a main-thread paint so the
           // façade is never left as the blank prime.
@@ -455,6 +463,7 @@ class TexPool {
         bitmap.close?.()
       })
       .catch((e) => {
+        if (this.disposed) return
         console.error("[world-plaza/buildings] façade worker paint rejected → main-thread fallback", e)
         ctx.clearRect(0, 0, w, h)
         drawFacade(ctx, w, h, spec)
@@ -464,6 +473,7 @@ class TexPool {
   }
 
   dispose() {
+    this.disposed = true
     for (const t of this.cache.values()) t.dispose()
     this.cache.clear()
   }
