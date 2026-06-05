@@ -33,7 +33,10 @@ describe.each([
   ["generated city", generateCity()],
   ["stub city", stubCity()],
 ])("water placement — %s", (_name, layout) => {
-  const { waterZ, bankZ, farBankZ, bridgeX } = layout.water
+  const { waterZ, bankZ, bridgeX } = layout.water
+  // both producers under test populate the river-band fields (optional in the
+  // contract during the transition, but always present here).
+  const farBankZ = layout.water.farBankZ!
 
   it("every water-painted chunk carries a water collision rect", () => {
     for (const ch of layout.chunks) {
@@ -131,7 +134,7 @@ describe.each([
     let probes = 0
     let blocked = 0
     for (const ch of layout.chunks) {
-      for (const w of ch.walls) {
+      for (const w of ch.walls ?? []) {
         const x0 = Math.min(w.x0, w.x1)
         const x1 = Math.max(w.x0, w.x1)
         const z0 = Math.min(w.z0, w.z1)
@@ -160,7 +163,7 @@ describe.each([
     let gates = 0
     let open = 0
     for (const ch of layout.chunks) {
-      for (const w of ch.walls) {
+      for (const w of ch.walls ?? []) {
         if (!w.gateGap) continue
         gates++
         const longX = w.side === "north" || w.side === "south"
@@ -180,14 +183,14 @@ describe.each([
 describe("world boundary (#32) — generated city full perimeter", () => {
   const layout = generateCity()
   it("covers all three land edges (S/E/W) + the sea wall — no raw edge", () => {
-    const sides = new Set(layout.chunks.flatMap((c) => c.walls).map((w) => w.side))
+    const sides = new Set(layout.chunks.flatMap((c) => c.walls ?? []).map((w) => w.side))
     for (const s of ["south", "east", "west", "north"] as const) expect(sides.has(s)).toBe(true)
   })
   it("the sea wall leaves the bridge mouth open", () => {
     const field = fullField(layout)
     const { bridgeX } = layout.water
     // the sea wall is the +Z rampart; its gate is the bridge mouth.
-    const seaWall = layout.chunks.flatMap((c) => c.walls).find((w) => w.side === "north" && w.gateGap)
+    const seaWall = layout.chunks.flatMap((c) => c.walls ?? []).find((w) => w.side === "north" && w.gateGap)
     expect(seaWall).toBeTruthy()
     const cz = (seaWall!.z0 + seaWall!.z1) / 2
     expect(field.blocked(bridgeX, cz, AGENT_R)).toBe(false)

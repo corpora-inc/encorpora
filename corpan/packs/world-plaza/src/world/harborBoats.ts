@@ -1,6 +1,7 @@
 import type { Scene as BabylonScene } from "@babylonjs/core/scene"
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder"
 import { Mesh } from "@babylonjs/core/Meshes/mesh"
+import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData"
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode"
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import { Color3, Matrix, Quaternion, Vector3 } from "@babylonjs/core/Maths/math"
@@ -63,38 +64,42 @@ export function buildHarborBoats(scene: BabylonScene, opts: HarborBoatsOptions):
   const reduce = !!opts.reducedMotion
   const root = new TransformNode(`${tag}-root`, scene)
 
-  // ── warm boat palette: dark waterline hulls, warm wood decks, cream/red trim,
-  // off-white sails. Derived from the scene so the fleet belongs to the town. ──
-  const wood = hexC3(opts.palette?.trim, "#9a6a3c")
+  // ── boat palette: RICH, SATURATED, DARKish painted hulls (a fishing fleet's
+  // colours read best dark — they must NOT wash out under the bright sky/hemi
+  // rig, the trough §9 lesson), warm-wood decks, off-white sails. Hull colours
+  // are their OWN small family (not the pale scene trim) so the fleet pops as a
+  // crafted focal point against the water. ──
+  const wood = hexC3(undefined, "#8a5a32") // warm deck wood
   const hullCols = [
-    hexC3(opts.palette?.accent, "#b8543a"), // a warm red hull
-    shade(hexC3(opts.palette?.trim, "#3a6a78"), -0.1), // a teal hull
-    hexC3(undefined, "#3d4a52"), // a dark slate hull
+    hexC3(undefined, "#9c3a2c"), // oxblood red
+    hexC3(undefined, "#234e54"), // deep teal-green
+    hexC3(undefined, "#2d3742"), // dark slate blue
+    hexC3(undefined, "#3e6b34"), // bottle green
   ]
-  const deck = shade(wood, 0.1)
-  const trimDk = shade(wood, -0.34)
+  const deck = shade(wood, 0.08)
   const sail = hexC3(undefined, "#efe6d2")
-  const mast = shade(wood, -0.2)
+  const mast = shade(wood, -0.15)
 
-  const mat = (name: string, c: Color3, emissive = 0.3, alpha?: number) => {
+  const mat = (name: string, c: Color3, emissive = 0.22, alpha?: number) => {
     const m = new StandardMaterial(`${tag}-${name}`, scene)
     m.diffuseColor = c
-    m.emissiveColor = c.scale(emissive)
+    m.emissiveColor = c.scale(emissive) // LOW lift → painted hulls keep their hue
     m.specularColor = new Color3(0, 0, 0)
     if (alpha !== undefined) m.alpha = alpha
     m.freeze()
     return m
   }
-  const mDeck = mat("deck", deck)
-  const mTrim = mat("trim", trimDk)
-  const mMast = mat("mast", mast)
-  const mSail = mat("sail", sail, 0.42)
-  const hullMats = hullCols.map((c, i) => mat(`hull${i}`, c, 0.26))
-  const allMats = [mDeck, mTrim, mMast, mSail, ...hullMats]
+  const mDeck = mat("deck", deck, 0.26)
+  const mMast = mat("mast", mast, 0.24)
+  const mSail = mat("sail", sail, 0.4)
+  const hullMats = hullCols.map((c, i) => mat(`hull${i}`, c, 0.2))
+  const allMats = [mDeck, mMast, mSail, ...hullMats]
 
-  /* ---- a hull mesh: a boat-shaped low-poly body. Built from a box hull with a
-   * tapered bow (a wedge) + a raised gunwale rim + a small cabin, all merged with
-   * ONE hull colour. Feet at the waterline (y=0); the hull dips slightly below. */
+  /* ---- a hull mesh: a low-poly boat hull that reads from every angle. A boxy
+   * MIDSHIPS body, a triangular-prism BOW tapering to a point at +Z (lying flat,
+   * baked), a flat transom STERN, a wood gunwale rim + deck, optional cabin. The
+   * hull rides LOW: most of its height is below the waterline (y=0) so it sits IN
+   * the water, with only the freeboard + deck above. One hull colour + wood. */
   const buildHull = (len: number, beam: number, hullMat: StandardMaterial, withCabin: boolean): Mesh => {
     const hullParts: Mesh[] = []
     const woodParts: Mesh[] = []
@@ -106,27 +111,55 @@ export function buildHarborBoats(scene: BabylonScene, opts: HarborBoatsOptions):
       arr.push(m)
       return m
     }
-    const hullH = 0.7
-    // main hull body (sits with its waterline a touch below y=0).
-    box(hullParts, beam, hullH, len * 0.78, 0, -0.05, 0)
-    // tapered bow wedge at +Z end (a short box scaled to a point via a prism).
-    const bow = MeshBuilder.CreateCylinder(`${tag}-bow`, { diameter: beam, height: len * 0.34, tessellation: 3 }, scene)
-    bow.rotation.x = Math.PI / 2
-    bow.rotation.y = Math.PI / 6
-    bow.scaling.x = 1
-    bow.position.set(0, -0.05, len * 0.42)
+    const hullH = 0.6 // total hull depth
+    const freeboard = 0.22 // how much sits ABOVE the waterline
+    const cy = freeboard - hullH / 2 // hull centre Y (so its top is at +freeboard)
+    const midLen = len * 0.62
+    // midships body
+    box(hullParts, beam, hullH, midLen, 0, cy, -len * 0.04)
+    // stern transom (a short, slightly narrower block)
+    box(hullParts, beam * 0.86, hullH, len * 0.12, 0, cy, -midLen / 2 - len * 0.04)
+    // BOW: an explicit low-poly wedge so it's ALWAYS correct (rotating a 3-gon
+    // prism into place was fiddly + fragile). The wedge mates the body's front
+    // face (full beam, full hull height, at local z=0) and converges to a sharp
+    // vertical EDGE at the bow (z = bowLen), so it reads as a real prow from every
+    // angle. Flat bottom + flat deck-line on top (matches the body). Built around
+    // local origin then translated to the body's bow.
+    const bowLen = len * 0.42 // a long, graceful prow (reads as a boat at distance)
+    const hw = beam / 2
+    const top = hullH / 2
+    const bot = -hullH / 2
+    // 6 verts: 4 at the body face (z=0) + 2 at the bow edge (z=bowLen).
+    const bp = [
+      -hw, bot, 0, hw, bot, 0, hw, top, 0, -hw, top, 0, // 0..3 body face (CCW from outside −Z)
+      0, bot, bowLen, 0, top, bowLen, // 4 bow-bottom, 5 bow-top
+    ]
+    const bi = [
+      0, 1, 2, 0, 2, 3, // transom-side face (back, optional but cheap)
+      1, 4, 5, 1, 5, 2, // starboard hull side (body→bow)
+      4, 0, 3, 4, 3, 5, // port hull side
+      0, 4, 1, // bottom triangle
+      3, 2, 5, // deck triangle
+    ]
+    const bow = new Mesh(`${tag}-bow`, scene)
+    const bvd = new VertexData()
+    bvd.positions = bp
+    bvd.indices = bi
+    bvd.normals = []
+    VertexData.ComputeNormals(bp, bi, bvd.normals as number[])
+    // dummy UVs (untextured material, but MergeMeshes needs matching attributes).
+    bvd.uvs = new Array((bp.length / 3) * 2).fill(0)
+    bvd.applyToMesh(bow)
+    bow.position.set(0, cy, midLen / 2 - len * 0.04)
     hullParts.push(bow)
-    // stern cap
-    box(hullParts, beam, hullH, len * 0.1, 0, -0.05, -len * 0.42)
-    // gunwale rim (a thin wood lip around the top of the hull).
-    box(woodParts, beam + 0.12, 0.14, len * 0.82, 0, hullH * 0.5 - 0.05, 0)
-    // deck inset (wood floor just below the rim).
-    box(woodParts, beam - 0.18, 0.1, len * 0.7, 0, hullH * 0.5 - 0.18, 0)
+    // gunwale rim (a thin wood lip around the top of the hull, at the waterline+).
+    box(woodParts, beam + 0.1, 0.12, len * 0.84, 0, freeboard - 0.02, -len * 0.02)
+    // deck floor just inside the rim.
+    box(woodParts, beam - 0.18, 0.08, len * 0.7, 0, freeboard - 0.12, -len * 0.02)
     if (withCabin) {
-      // a small cabin box toward the stern.
-      box(woodParts, beam - 0.3, 0.5, len * 0.24, 0, hullH * 0.5 + 0.2, -len * 0.18)
+      // a small cabin box toward the stern, with a darker roof band.
+      box(woodParts, beam - 0.34, 0.42, len * 0.24, 0, freeboard + 0.21, -len * 0.18)
     }
-    // merge hull-colour parts and wood parts separately, then into one mesh.
     const hullMesh = Mesh.MergeMeshes(hullParts, true, true, undefined, false, false)!
     hullMesh.material = hullMat
     const woodMesh = Mesh.MergeMeshes(woodParts, true, true, undefined, false, false)!
@@ -164,7 +197,15 @@ export function buildHarborBoats(scene: BabylonScene, opts: HarborBoatsOptions):
 
   /* ---- species: a SMACK (short, fat, cabin, no sail) + a SLOOP (longer, tall
    * masted sail). Each is hull (+ optional rig merged in) → one master mesh. */
-  const buildSmack = (hullMat: StandardMaterial): Mesh => buildHull(3.4, 1.5, hullMat, true)
+  const buildSmack = (hullMat: StandardMaterial): Mesh => {
+    const hull = buildHull(3.4, 1.5, hullMat, true)
+    // a short stub mast forward gives the smack vertical interest at distance.
+    const rig = buildRig(2.6)
+    rig.position.set(0, 0.24, 0.5)
+    const merged = Mesh.MergeMeshes([hull, rig], true, true, undefined, false, true)!
+    merged.name = `${tag}-smack`
+    return merged
+  }
   const buildSloop = (hullMat: StandardMaterial): Mesh => {
     const hull = buildHull(5.2, 1.7, hullMat, false)
     const rig = buildRig(4.2)

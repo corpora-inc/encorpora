@@ -19,6 +19,7 @@ import { createWorldEngine } from "../src/world/engine"
 import { applyAtmosphere } from "../src/world/atmosphere"
 import { generateCity, mountCity } from "../src/city"
 import { buildHarborBoats } from "../src/world/harborBoats"
+import { buildDistantSkyline } from "../src/world/distantSkyline"
 
 const qs = new URLSearchParams(location.search)
 const worldScene = WorldSceneSchema.parse(sceneJson)
@@ -85,6 +86,11 @@ const boats = buildHarborBoats(scene, {
   reducedMotion: qs.get("reduce") === "1",
 })
 world.onFrame((dt) => boats.update(dt))
+
+// the distant city skyline at the horizon (the thing under test, #2). `?noskyline=1`
+// drops it to A/B the bare horizon.
+const skyline = qs.get("noskyline") === "1" ? null : buildDistantSkyline(scene, { palette, seed: 4242 })
+void skyline
 
 const cam = new ArcRotateCamera("wp-edge-cam", -Math.PI / 2, 1.0, 24, new Vector3(0, 0, water.waterZ), scene)
 cam.fov = 0.7

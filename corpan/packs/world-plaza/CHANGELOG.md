@@ -36,7 +36,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   toggle hides itself). When the target reads right-to-left (e.g. learning Arabic),
   immersion flips the whole UI to RTL too. Built on one pure resolver
   (`src/immersion/immersion.ts`) every surface consults — `uiLocale()` picks
-  native-or-target, so nothing can leak. See `docs/IMMERSION_TOGGLE.md`.
+  native-or-target, so nothing can leak. Toggling applies **in place** — the
+  language (and direction) flips without reloading the world or moving your
+  character; you stay exactly where you are. The toggle control itself always
+  stays in your **native** language, so you can always find your way back to turn
+  immersion off. See `docs/IMMERSION_TOGGLE.md`.
 - **The whole interface now speaks your language — in ~50 languages, right-to-left
   too (R2-4 / R2-5).** Every UI chrome string (the welcome, the language chooser,
   onboarding, the menu, the status capsule, quest hints/progress, the quest-
@@ -134,6 +138,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the `game.ts` wiring.
 
 ### Fixed
+- **The objective beacon is a premium warm marker now — and the root-cause render
+  bug is fixed (#22).** The beacon over the objective NPC had rendered as a gray
+  slab → a transparent white pillar → a black box across rounds; the cause was a
+  one-line texture bug — `new DynamicTexture(name, { w, h }, …)` instead of
+  `{ width, height }`, so the canvas was undefined-sized and the painted art went
+  nowhere (a garbage/opaque texture). With the correct keys the beacon renders as
+  designed: a floating warm-accent MAP PIN with a gem eye, a downward chevron
+  ("this one"), a soft glow halo, and a pulsing ground ring — clearly "your
+  objective is THIS person." Isolated proof harness added (`qa/beacon.html` +
+  `qa/beacon-mount.ts`, screenshot `qa/beacon-shot.mjs`).
 - **Translation/matching games keep BOTH languages under immersion (#27).** A
   cross-language challenge (translate, tap-the-meaning, match-the-pairs) is
   inherently two-language — it shows one side in the target and the other in the

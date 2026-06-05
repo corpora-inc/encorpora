@@ -13,14 +13,19 @@ import { Color3 } from "@babylonjs/core/Maths/math"
  * beacon points to the right PERSON, hovering over their head from across the
  * plaza. It tracks the NPC's LIVE position (they gently hover near the anchor).
  *
- * DESIGN (v2 — the v1 additive "shaft" washed out to a transparent white pillar):
- * a designed, warm-accent floating MAP PIN — a rounded teardrop with a bright gem
- * eye — bobbing + slowly turning above the head, with a downward CHEVRON beneath
- * it ("this one") and a soft pulsing ground RING at the feet. The solid shapes use
- * STANDARD alpha (so the warm accent stays warm — no white-wash), each backed by a
- * separate soft ADDITIVE halo for glow. Depth-write OFF + render-last so the
- * beacon shows THROUGH the world (a wayfinding marker you see from anywhere).
- * Gentle pulse + bob + spin (static under reduced motion).
+ * DESIGN: a designed, warm-accent floating MAP PIN — a rounded teardrop with a
+ * gem eye — bobbing + gently swaying above the head, with a downward CHEVRON
+ * beneath it ("this one"), a soft glow HALO behind the pin, and a pulsing ground
+ * RING at the feet. All warm-accent (NOT white). Depth-write OFF + render-last so
+ * the beacon shows THROUGH the world (a wayfinding marker you see from anywhere).
+ * Gentle pulse + bob + sway (static under reduced motion).
+ *
+ * THE BUG THAT COST THREE ROUNDS (gray slab → white pillar → black box): the
+ * DynamicTexture was constructed with `{ w, h }` instead of `{ width, height }`,
+ * so the canvas was undefined-sized and the paint went nowhere — leaving a
+ * garbage/opaque-black texture. With `{ width, height }` the painters' warm rgba
+ * art renders crisply. Lesson: a beacon that won't render is almost always the
+ * TEXTURE (size/paint), not the blend mode.
  *
  * Pure consumer (mirrors roadArrow): the orchestrator injects `getTarget()` (the
  * objective NPC's live world point, or null when there's no active objective /
@@ -54,22 +59,27 @@ export interface ObjectiveBeaconHandle {
 /** Head height the marker sits above (paper-people are ~2u tall). */
 const HEAD_Y = 2.35
 /** The pin floats this far above the head; the chevron sits just under it. */
-const PIN_Y = HEAD_Y + 1.35
-const PIN_SIZE = 1.5
-const HALO_SIZE = 2.7 // soft additive glow behind the pin
-const CHEVRON_SIZE = 0.95
-const RING_SIZE = 2.4
+const PIN_Y = HEAD_Y + 1.6
+const PIN_SIZE = 2.0
+const HALO_SIZE = 3.4 // soft additive glow behind the pin
+const CHEVRON_SIZE = 1.15
+const RING_SIZE = 2.6
 
 const hex = (s: string | undefined, fallback: string): Color3 =>
   Color3.FromHexString(s ?? fallback)
 
-/** Warm RGB triplets for the painter, derived from the scene accent. */
+/**
+ * Warm RGB triplets for the ADDITIVE painters, derived from the scene accent.
+ * Kept SATURATED (never near-white): additive blending already brightens, so a
+ * white core washes the whole marker out to the "transparent white pillar" the
+ * owner disliked. `hot` is only a GENTLE lift so the gem reads as a highlight.
+ */
 interface Warm {
   /** the accent itself, e.g. "230,138,60". */
   base: string
-  /** a deeper, saturated edge for the pin outline/contrast. */
+  /** a deeper, more saturated accent for body/contrast. */
   deep: string
-  /** a bright hot highlight (accent lifted toward white) for the gem + sheen. */
+  /** a gently lifted warm highlight (NOT white) for the gem + sheen. */
   hot: string
 }
 
@@ -118,9 +128,9 @@ function paintPin(ctx: CanvasRenderingContext2D, w: number, h: number, warm: War
   // the gem "eye" — a bright inset disc with a hot highlight (the focal point).
   const gemR = bulbR * 0.5
   const gem = ctx.createRadialGradient(cx - gemR * 0.3, bulbCy - gemR * 0.3, gemR * 0.1, cx, bulbCy, gemR)
-  gem.addColorStop(0, "rgba(255,255,255,0.98)")
-  gem.addColorStop(0.5, `rgba(${warm.hot},0.98)`)
-  gem.addColorStop(1, `rgba(${warm.base},0.95)`)
+  gem.addColorStop(0, `rgba(${warm.hot},1)`) // warm highlight (NOT white — additive blooms)
+  gem.addColorStop(0.55, `rgba(${warm.base},0.96)`)
+  gem.addColorStop(1, `rgba(${warm.deep},0.92)`)
   ctx.beginPath()
   ctx.arc(cx, bulbCy, gemR, 0, Math.PI * 2)
   ctx.fillStyle = gem
@@ -185,13 +195,20 @@ function paintRing(ctx: CanvasRenderingContext2D, w: number, h: number, warm: Wa
 
 /* --------------------------------------------------------------- material */
 
-const ALPHA_ADD = 1
-const ALPHA_COMBINE = 2
-
 /**
- * Self-lit, depth-write-off, render-last unlit material. `blend` picks the look:
- * COMBINE keeps the texture's warm colour (the designed solid shapes — pin,
- * chevron, ring); ADD makes a soft glow (the halo) that brightens the scene.
+ * Build a self-lit, draw-through beacon material. Two modes:
+ *
+ *  • `glow:true` (halo, ring) — ADDITIVE (`alphaMode=1`): reads as soft LIGHT.
+ *  • `glow:false` (pin, chevron) — the PROVEN CRISP-CUTOUT recipe (mirrors
+ *    `render/cutout.ts`, which renders crisp 2D art every frame): NO explicit
+ *    `alphaMode` (so `useAlphaFromDiffuseTexture` does normal alpha blending — the
+ *    COMBINE experiment that set `alphaMode=2` rendered the quad INVISIBLE), and
+ *    `mat.alpha` starts at 1. So the designed warm shape stays CRISP + keeps its
+ *    colour (no additive white-wash), while still drawing through the world.
+ *
+ * Both: `disableDepthWrite` + `renderingGroupId 3` (set by the caller) so the
+ * beacon shows over the world; self-lit (`emissiveColor` white + lighting off) so
+ * the warm colour comes straight from the texture at any time of day.
  */
 function makeMat(
   scene: Scene,
@@ -199,28 +216,36 @@ function makeMat(
   paint: (ctx: CanvasRenderingContext2D, w: number, h: number, warm: Warm) => void,
   size: { w: number; h: number },
   warm: Warm,
-  blend: typeof ALPHA_ADD | typeof ALPHA_COMBINE,
+  glow: boolean,
 ): { mat: StandardMaterial; tex: DynamicTexture } {
-  const tex = new DynamicTexture(`${name}-tex`, size, scene, true)
+  // NB: DynamicTexture wants `{ width, height }` — passing `{ w, h }` yields an
+  // undefined-sized canvas → paint goes nowhere → an opaque BLACK quad (the bug).
+  const tex = new DynamicTexture(`${name}-tex`, { width: size.w, height: size.h }, scene, true)
   tex.hasAlpha = true
   paint(tex.getContext() as unknown as CanvasRenderingContext2D, size.w, size.h, warm)
   tex.update()
   const mat = new StandardMaterial(`${name}-mat`, scene)
   mat.diffuseTexture = tex
   mat.useAlphaFromDiffuseTexture = true
-  mat.emissiveColor = new Color3(1, 1, 1) // self-lit — the warm colour is in the texture
+  mat.emissiveColor = new Color3(1, 1, 1) // self-lit — warm colour comes from the texture
   mat.disableLighting = true
   mat.specularColor = new Color3(0, 0, 0)
-  mat.alphaMode = blend
-  // MUST force ALPHABLEND transparency: with disableDepthWrite + a COMBINE blend
-  // but no transparency mode, Babylon treats the material as OPAQUE and renders
-  // the transparent texels as a BLACK box (the v2 regression). ALPHABLEND keys the
-  // texture's alpha so only the painted shape shows. (ADD is inherently blended,
-  // but setting it here too is harmless + explicit.)
-  mat.transparencyMode = StandardMaterial.MATERIAL_ALPHABLEND
   mat.backFaceCulling = false
   mat.disableDepthWrite = true // draw THROUGH the world — never z-fight
-  mat.alpha = 0
+  if (glow) {
+    mat.alphaMode = 2 // ALPHA_COMBINE — standard blend; the halo's own alpha feathers
+    mat.transparencyMode = StandardMaterial.MATERIAL_ALPHABLEND
+    mat.alpha = 0 // pulsed up in update()
+  } else {
+    // crisp shape: STANDARD alpha blend so the warm colour stays crisp + the
+    // transparent texels are TRANSPARENT (not the black box that omitting the
+    // transparencyMode produced under disableDepthWrite). Both the blend mode AND
+    // the transparency mode must be set or `useAlphaFromDiffuseTexture` renders
+    // the quad opaque-black.
+    mat.alphaMode = 2 // ALPHA_COMBINE
+    mat.transparencyMode = StandardMaterial.MATERIAL_ALPHABLEND
+    mat.alpha = 1
+  }
   return { mat, tex }
 }
 
@@ -238,12 +263,12 @@ export function createObjectiveBeacon(
   const deepen = (c: number, t: number) => Math.round(c * (1 - t))
   const warm: Warm = {
     base: `${r},${g},${b}`,
-    deep: `${deepen(r, 0.42)},${deepen(g, 0.42)},${deepen(b, 0.42)}`,
-    hot: `${lift(r, 0.6)},${lift(g, 0.6)},${lift(b, 0.6)}`,
+    deep: `${deepen(r, 0.3)},${deepen(g, 0.3)},${deepen(b, 0.3)}`,
+    hot: `${lift(r, 0.3)},${lift(g, 0.3)},${lift(b, 0.3)}`, // gentle — NOT white
   }
 
   // ── soft HALO behind the pin (additive glow) ──────────────────────────────
-  const haloBuilt = makeMat(scene, "wp-obj-halo", paintHalo, { w: 256, h: 256 }, warm, ALPHA_ADD)
+  const haloBuilt = makeMat(scene, "wp-obj-halo", paintHalo, { w: 256, h: 256 }, warm, true)
   const halo: Mesh = MeshBuilder.CreatePlane("wp-obj-halo", { size: HALO_SIZE }, scene)
   halo.material = haloBuilt.mat
   halo.billboardMode = Mesh.BILLBOARDMODE_ALL
@@ -253,7 +278,7 @@ export function createObjectiveBeacon(
   halo.setEnabled(false)
 
   // ── the designed PIN (solid warm, standard alpha so it stays warm) ────────
-  const pinBuilt = makeMat(scene, "wp-obj-pin", paintPin, { w: 256, h: 256 }, warm, ALPHA_COMBINE)
+  const pinBuilt = makeMat(scene, "wp-obj-pin", paintPin, { w: 256, h: 256 }, warm, false)
   const pin: Mesh = MeshBuilder.CreatePlane("wp-obj-pin", { size: PIN_SIZE }, scene)
   pin.material = pinBuilt.mat
   // Face the camera about Y only, so the pin keeps its upright "map-pin" pose and
@@ -265,7 +290,7 @@ export function createObjectiveBeacon(
   pin.setEnabled(false)
 
   // ── the downward CHEVRON ("this one") ─────────────────────────────────────
-  const chevBuilt = makeMat(scene, "wp-obj-chev", paintChevron, { w: 256, h: 256 }, warm, ALPHA_COMBINE)
+  const chevBuilt = makeMat(scene, "wp-obj-chev", paintChevron, { w: 256, h: 256 }, warm, false)
   const chevron: Mesh = MeshBuilder.CreatePlane("wp-obj-chev", { size: CHEVRON_SIZE }, scene)
   chevron.material = chevBuilt.mat
   chevron.billboardMode = Mesh.BILLBOARDMODE_ALL
@@ -275,7 +300,7 @@ export function createObjectiveBeacon(
   chevron.setEnabled(false)
 
   // ── the ground RING at the feet ───────────────────────────────────────────
-  const ringBuilt = makeMat(scene, "wp-obj-ring", paintRing, { w: 256, h: 256 }, warm, ALPHA_ADD)
+  const ringBuilt = makeMat(scene, "wp-obj-ring", paintRing, { w: 256, h: 256 }, warm, true)
   const ring: Mesh = MeshBuilder.CreatePlane("wp-obj-ring", { size: RING_SIZE }, scene)
   ring.material = ringBuilt.mat
   ring.rotation.x = Math.PI / 2 // lie flat on the ground

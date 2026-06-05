@@ -80,7 +80,8 @@ export function chunkObstacles(chunk: CityChunk): Obstacle[] {
   for (const w of chunk.water) out.push(...waterBoxes(w))
   // WALLS (#32) — the perimeter rampart. Each segment becomes a box obstacle
   // (split around any walkable gate) so the player meets a designed edge.
-  for (const w of chunk.walls) out.push(...wallBoxes(w))
+  // (`walls` is optional during the transition — absent ⇒ no rampart here.)
+  for (const w of chunk.walls ?? []) out.push(...wallBoxes(w))
   return out
 }
 

@@ -379,6 +379,9 @@ export function createMenuPanel(opts: MenuPanelOptions): MenuPanelHandle {
         })
         const close = root.querySelector<HTMLElement>(".wp-menu-close")
         if (close) close.setAttribute("aria-label", s.close)
+        // Re-render the OPEN section so its body (which may read a live UI locale
+        // via a lazy `strings` getter) re-localizes too — not just the chrome.
+        renderSection(root)
       }
     },
 

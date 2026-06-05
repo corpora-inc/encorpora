@@ -74,6 +74,7 @@ import { createTraversalTrigger } from "./quest/traversalTrigger"
 import { buildFountain } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
 import { buildRiverwalk } from "./world/riverwalk"
+import { buildHarborBoats } from "./world/harborBoats"
 import { buildBridge } from "./world/bridge"
 import { createPopulation } from "./city/population"
 import { prefersReducedMotion } from "./world/reducedMotion"
@@ -131,19 +132,16 @@ export function startGame(container: HTMLElement, host?: unknown): GameHandle {
   const nativeLocale = (): string => readStack(host)?.languages?.[0] ?? "en"
 
   // Build (or REBUILD) the world for a given pair. Tearing down + rebuilding is
-  // safe because all per-Track state keys on the pair; this is the reactive path.
-  // The IMMERSION level is read fresh from the per-Track store at build time, and
-  // flipping the toggle rebuilds the world (`rebuild`) so EVERY surface re-resolves
-  // its UI locale (native vs target) + RTL `dir` against the new resolver. A full
-  // rebuild is the same proven path as a stack flip — no per-surface live wiring.
+  // safe because all per-Track state keys on the pair; this is the STACK-FLIP path.
+  // The IMMERSION level is read fresh from the per-Track store at build time. NOTE:
+  // flipping immersion no longer rebuilds — `buildWorld` re-localizes IN PLACE
+  // (#20) so the player never moves; this path is only for an actual pair change.
   const buildFor = (identity: OnboardingResult, learnerPair: LearnerPair) => {
     if (disposed) return
     teardownWorld?.()
     currentPair = learnerPair
     const immersion = immersionStore.get(learnerPair)
-    teardownWorld = buildWorld(container, npcHost, chHost, identity, learnerPair, immersion, {
-      rebuild: () => buildFor(identity, learnerPair),
-    })
+    teardownWorld = buildWorld(container, npcHost, chHost, identity, learnerPair, immersion)
   }
 
   const begin = async (identity: OnboardingResult) => {
@@ -219,7 +217,6 @@ function buildWorld(
   identity: OnboardingResult,
   learnerPair: LearnerPair,
   immersionLevel: Immersion,
-  hooks: { rebuild: () => void },
 ): () => void {
   // The immersion resolver for this Track (IMMERSION_TOGGLE §3): it decides which
   // locale every UI surface renders in — `uiLocale()` is the learner's NATIVE by
@@ -465,7 +462,10 @@ function buildWorld(
     water?: {
       waterZ: number
       bankZ: number
-      farPromZ: number
+      // OPTIONAL during the #32/#34 transition (legacy water-to-edge layouts omit
+      // the river-band far edge); the bridge falls back to the world edge.
+      farBankZ?: number
+      farPromZ?: number
       bridgeX: number
       bridgeHalfW: number
     }
@@ -496,6 +496,22 @@ function buildWorld(
           reducedMotion,
         })
       : null
+  // ── Docked HARBOUR BOATS (env-art, #32 crafted edge): low-poly HD-2D fishing
+  // boats moored along the near + far quays so the river reads as a living
+  // waterfront, not an empty blue band. Needs the river BAND (farBankZ) to know
+  // where the far quay is; skipped on legacy water-to-edge layouts. Bounded +
+  // additive (its own update/dispose), thin-instanced + frozen.
+  const harborBoats =
+    cityWater && cityWater.farBankZ != null
+      ? buildHarborBoats(world.scene, {
+          waterZ: cityWater.waterZ,
+          farBankZ: cityWater.farBankZ,
+          bounds: layout.bounds,
+          bridge: { x: cityWater.bridgeX, halfWidth: cityWater.bridgeHalfW },
+          palette: scene.palette,
+          reducedMotion,
+        })
+      : null
   // The real 3D stone ARCH bridge (#29) — raised deck + parapets + arches on piers
   // in the river, water passing UNDERNEATH. Spans bankZ→farPromZ at the bridge gap;
   // purely visual (places' collider already opens the corridor, quest-flow's traverse
@@ -504,7 +520,9 @@ function buildWorld(
     ? buildBridge(world.scene, {
         x: cityWater.bridgeX,
         nearZ: cityWater.bankZ,
-        farZ: cityWater.farPromZ,
+        // far end of the deck: the far promenade if present (river-band model,
+        // #32/#34), else the world edge for a legacy water-to-edge layout.
+        farZ: cityWater.farPromZ ?? layout.bounds.maxZ,
         halfWidth: cityWater.bridgeHalfW,
         waterY: 0.07,
         palette: scene.palette,
@@ -1067,19 +1085,24 @@ function buildWorld(
         inventory: inventory(),
         anchorName,
         accent: scene.palette?.accent,
-        strings: makeSectionStrings(uiLocale),
+        // Lazy locale: the section's `MenuSectionView` runs on each open, so reading
+        // the LIVE locale here means re-opening after an immersion flip shows the new
+        // language without a world rebuild.
+        strings: () => makeSectionStrings(currentUiLocale()),
         // The immersion toggle lives at the top of the Quest section (§8). Hidden
         // for a single-language Track (no native to hide). Flipping it persists the
-        // per-Track level + rebuilds the world so every surface re-resolves locale.
+        // per-Track level and re-localizes IN PLACE (no world rebuild → the player
+        // stays exactly put). The toggle's OWN label stays NATIVE (#20b).
         controls: immersionToggleApplies(learnerPair)
           ? (host) => {
-              mountImmersionToggle(host, {
+              const tog = mountImmersionToggle(host, {
                 level: resolver.level(),
                 accent: scene.palette?.accent,
-                t: bindT(uiLocale),
+                t: bindT(nativeLocale), // #20b: always the learner's native language
                 onChange: (next) => {
                   immersionStore.set(learnerPair, next)
-                  hooks.rebuild()
+                  relocalize(next)
+                  tog.setLevel(next)
                 },
               })
             }
@@ -1162,6 +1185,28 @@ function buildWorld(
   const packButton = overlay.querySelector<HTMLElement>(".wp-menu-button")
   if (packButton) chrome.register({ el: packButton, role: "pack" })
   else console.warn("[world-plaza] pack button (.wp-menu-button) not found — chrome won't govern it")
+
+  // ── Immersion APPLIES IN PLACE (#20) ────────────────────────────────────────
+  // Flipping the immersion toggle must NOT rebuild the world or move the player —
+  // only the chrome TEXT + RTL `dir` flip. We recompute the resolver + uiLocale,
+  // re-orient `dir`, and re-localize the live chrome surfaces in place. The world
+  // (Babylon scene, player position, camera, NPCs, quest engine, inventory) is
+  // untouched. Modal surfaces (quest section, interlude, inventory) read the LIVE
+  // `currentUiLocale()` on their next open, so they pick up the flip for free.
+  function relocalize(next: Immersion): void {
+    resolver = createImmersionResolver({ level: next, learnerPair })
+    uiLocale = resolver.uiLocale()
+    // RTL: a target like Arabic flips the whole chrome; a Latin target flips back.
+    applyDir(rootEl, uiLocale)
+    applyDir(overlay, uiLocale)
+    try {
+      tracker.relocalize(makeTrackerStrings(uiLocale))
+      placeTag.relocalize(uiLocale)
+      shell.relocalizeMenu(makeMenuStrings(uiLocale))
+    } catch (err) {
+      console.error("[world-plaza] immersion relocalize failed:", err)
+    }
+  }
 
   // ── Objective wayfinding (G + quest-flow) ───────────────────────────────────
   // ONE source of truth for WHERE the current objective is: the stationed helper
@@ -1290,6 +1335,7 @@ function buildWorld(
     fountain.update(dt)
     harborWater?.update(dt)
     riverwalk?.update(dt)
+    harborBoats?.update(dt)
     population.update(dt, p)
     roadArrow.update(dt)
     objectiveBeacon.update(dt)
@@ -1325,6 +1371,7 @@ function buildWorld(
     population.dispose()
     harborWater?.dispose()
     riverwalk?.dispose()
+    harborBoats?.dispose()
     bridge?.dispose()
     fountain.dispose()
     cameraFade.dispose()

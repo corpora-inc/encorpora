@@ -135,11 +135,17 @@ export interface CityWater {
   waterZ: number
   /** world-Z where the near-side riverwalk promenade starts (bankZ < waterZ). */
   bankZ: number
-  /** world-Z of the FAR water edge; z ≥ this is far-bank land (the river ends). */
-  farBankZ: number
+  /**
+   * world-Z of the FAR water edge; z ≥ this is far-bank land (the river ends).
+   * OPTIONAL during the #32/#34 transition: a producer that hasn't adopted the
+   * river-band model yet (water-to-edge) omits it. Readers fall back to the
+   * world's far bound. Will become required once every producer populates it.
+   */
+  farBankZ?: number
   /** world-Z where the far-bank promenade ends and far-bank buildings start
-   *  (farBankZ < farPromZ). The band [farBankZ, farPromZ) is the far quay. */
-  farPromZ: number
+   *  (farBankZ < farPromZ). The band [farBankZ, farPromZ) is the far quay.
+   *  OPTIONAL during the transition (see `farBankZ`). */
+  farPromZ?: number
   /** center X of the bridge crossing corridor. */
   bridgeX: number
   /** half-width of the walkable bridge corridor carved through the river collider. */
@@ -255,8 +261,12 @@ export interface CityChunk {
    * so the player meets a designed wall, never a raw edge, and nothing spawns
    * past it. `world/cityWall.ts` builds the rampart mesh from the same segments.
    * Empty for interior chunks.
+   *
+   * OPTIONAL during the #32/#34 transition: a producer that hasn't adopted the
+   * rampart model yet omits it; readers treat absent as `[]` (no walls in that
+   * chunk). Will become required once every producer populates it.
    */
-  walls: CityWallRect[]
+  walls?: CityWallRect[]
 }
 
 /* ------------------------------------------------------------------ city */

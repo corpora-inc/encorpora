@@ -200,7 +200,8 @@ function buildPier(scene: BabylonScene, tag: string, wallH: number): Mesh {
   return merged
 }
 
-/** Pull every wall segment out of a layout's chunks (the source of truth). */
-export function wallSegmentsOf(chunks: Array<{ walls: CityWallRect[] }>): CityWallRect[] {
-  return chunks.flatMap((c) => c.walls)
+/** Pull every wall segment out of a layout's chunks (the source of truth).
+ *  `walls` is optional during the #32/#34 transition — absent ⇒ no segments. */
+export function wallSegmentsOf(chunks: Array<{ walls?: CityWallRect[] }>): CityWallRect[] {
+  return chunks.flatMap((c) => c.walls ?? [])
 }

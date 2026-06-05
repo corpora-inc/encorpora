@@ -64,8 +64,13 @@ export interface QuestSectionOptions {
   anchorName?: (anchorId: string) => string
   /** Accent color (scene palette) for the progress bar + active step. */
   accent?: string
-  /** Localized copy. */
-  strings?: Partial<QuestSectionStrings>
+  /**
+   * Localized copy — either a static object or a GETTER evaluated each time the
+   * section mounts (`MenuSectionView` runs on every menu open). The getter form
+   * lets the orchestrator re-localize in place after an immersion flip: re-opening
+   * the section reads the new UI locale with no world rebuild.
+   */
+  strings?: Partial<QuestSectionStrings> | (() => Partial<QuestSectionStrings>)
   /**
    * Optional controls rendered at the TOP of the section, above the quest title
    * (e.g. the immersion toggle). The orchestrator owns the control; the section
@@ -84,7 +89,8 @@ export function createQuestSection(opts: QuestSectionOptions): MenuSectionView {
 }
 
 function mountQuestSection(body: HTMLElement, opts: QuestSectionOptions): () => void {
-  const strings: QuestSectionStrings = { ...DEFAULT_STRINGS, ...(opts.strings ?? {}) }
+  const resolvedStrings = typeof opts.strings === "function" ? opts.strings() : opts.strings
+  const strings: QuestSectionStrings = { ...DEFAULT_STRINGS, ...(resolvedStrings ?? {}) }
   const anchorName = opts.anchorName ?? ((a: string) => prettyAnchor(a))
 
   // Controls slot (e.g. the immersion toggle) — a SIBLING above the quest body so

@@ -241,7 +241,7 @@ interface Hooks {
     let gates = 0
     let gatesOpen = 0
     for (const ch of layout.chunks) {
-      for (const w of ch.walls) {
+      for (const w of ch.walls ?? []) {
         const longX = w.side === "north" || w.side === "south"
         const x0 = Math.min(w.x0, w.x1)
         const x1 = Math.max(w.x0, w.x1)

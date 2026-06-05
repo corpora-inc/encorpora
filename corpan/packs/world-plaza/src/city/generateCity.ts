@@ -813,7 +813,7 @@ function makeChunks(
     const cx = (seg.x0 + seg.x1) / 2
     const cz = (seg.z0 + seg.z1) / 2
     const ch = chunkFor(cx, cz)
-    ch.walls.push(seg)
+    ;(ch.walls ??= []).push(seg)
     // bake a stone rampart strip under the segment (the wall mesh is built by
     // world/cityWall.ts; this is the ground footprint so it doesn't float).
     ch.ground.push({

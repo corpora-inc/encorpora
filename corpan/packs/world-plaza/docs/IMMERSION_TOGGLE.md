@@ -270,6 +270,29 @@ metadata, not the wire `ChallengeSpec`). The offer resolver
 `resolver.hideNative()`. Bilingual-only tools without a target-only variant are
 simply not offered under immersion — never sprung and then broken.
 
+#### 3.3.1 Cross-language game exception (IMPLEMENTED, #27 — owned by the challenge layer)
+A **cross-language** game (translate / tap-the-meaning / match-pairs) shows the
+prompt in one language and the answer in the OTHER. Under immersion the resolver's
+`challengeNativeLanguage()` returns `undefined` (drop native → target-only), which
+for these games would collapse BOTH sides to the target → a tautology ("tap the
+word that means 'I see the star'" where the answer is also "I see the star").
+
+The fix lives in the **challenge layer**, NOT the resolver (the cleaner seam — the
+per-tool knowledge belongs there): `isCrossLanguageTool()` in
+`src/challenges/registry.ts`, and `game.ts` OVERRIDES
+`ctx.nativeLanguage = learnerPair.native` for those tools when `native ≠ target`,
+even under immersion. The resolver stays pure and unchanged
+(`createImmersionResolver` is untouched) — monolingual drills still get
+`undefined`. **Rule recorded here:** a cross-language game must never resolve both
+prompt and answer to the same locale; one side stays the contrasting language.
+
+> **Single-language stack (`native === target`):** a cross-language game is a
+> tautology BY DEFINITION (there's no contrasting language). Such tools are
+> filtered out of the offer for 1-lang stacks (challenge-layer offer filter) — a
+> stopgap until the full single-language-mode redesign. The owner also floated
+> excluding inherently-2-language games for native-only (non-learning) stacks; same
+> filter point. The resolver records the rule; the offer layer enforces it.
+
 ### 3.4 Composition with the localization seam (the dependency)
 **Immersion ≠ localization. Immersion is "how much native to show"; localization
 is "render this string in `target` or `native`."** They compose like this:
@@ -387,6 +410,27 @@ Flipping immersion **re-renders live**, no pack reload:
 - The **next challenge** picks up `challengeNativeLanguage()` when its
   `ChallengeContext` is built — an in-flight challenge finishes in its current
   mode (don't yank the answer space out from under the player).
+
+#### 5.4.1 IMPLEMENTED — in-place re-localize (no world rebuild)
+The first cut wrongly reused the stack-flip world REBUILD on toggle, which reset
+the player to the spawn point. Fixed: flipping immersion now applies **in place**.
+`game.ts buildWorld` holds a mutable `resolver`/`uiLocale` and a `relocalize(next)`
+that: recomputes the resolver, re-applies the RTL `dir` to the pack root + overlay,
+and re-localizes the live chrome surfaces — `tracker.relocalize()`,
+`placeTag.relocalize()`, `shell.relocalizeMenu()` (which also re-renders the OPEN
+menu section). Modal surfaces (quest section, interlude, inventory) read a LIVE
+`currentUiLocale()` (the section's `strings` is a getter), so reopening shows the
+new locale. The Babylon scene, **player position, camera, NPCs, quest engine, and
+inventory are untouched** — only the chrome text + direction flip. Verified
+standalone: `?stack=en,es` and `?stack=en,ar` flips keep the player at the same
+coordinates; the UI flips to target (and to RTL for `ar`) with the menu still open.
+
+#### 5.4.2 The toggle control itself stays NATIVE (always)
+The immersion toggle's own label + On/Off render in the learner's **native**
+language regardless of immersion state (`bindT(nativeLocale)`, not `uiLocale`). If
+the toggle localized to the target under immersion, a user who flipped ON couldn't
+read the control to flip it back OFF. It is the one surface deliberately immune to
+immersion — the always-readable escape hatch.
 
 ### 5.5 Accessibility
 - The segmented control is keyboard-navigable (arrow keys), `role=radiogroup`,
