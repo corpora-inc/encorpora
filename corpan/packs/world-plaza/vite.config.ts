@@ -32,6 +32,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@world-plaza/contracts": path.resolve(__dirname, "contracts/src/index.ts"),
+      "@shared/audio": path.resolve(__dirname, "../shared/audio"),
     },
   },
   define: {

@@ -5,6 +5,7 @@ import rolesJson from "../content/npc/roles.json"
 import specialJson from "../content/npc/special.json"
 import { createWorldEngine } from "./world/engine"
 import { createSoundscape } from "./audio/soundscape"
+import { createCityRadio, type CityRadio } from "./audio/cityRadio"
 import { applyAtmosphere } from "./world/atmosphere"
 import { createVista } from "./world/vista"
 import { createInput } from "./movement/input"
@@ -434,6 +435,17 @@ function buildWorld(
   // greeting you in the TARGET LANGUAGE via host TTS. Lazy AudioContext (resumed on
   // the first tap — autoplay is blocked); every call is a safe no-op until then.
   const soundscape = createSoundscape()
+  // RADIO (POC): stream a real internet station as the ambient bed — native player
+  // on mobile, <audio> on desktop. Created async (probes the native plugin); started
+  // on the first tap (gesture unlocks both WebAudio + desktop <audio>). When it plays,
+  // we suppress the procedural soundscape bed so you hear the radio, not both.
+  // Footsteps/SFX (soundscape) stay. Ducking/phone-UI are deferred (see cityRadio.ts).
+  let cityRadio: CityRadio | null = null
+  void createCityRadio({ volume: 0.5 })
+    .then((r) => {
+      cityRadio = r
+    })
+    .catch((e) => console.error("[wp] cityRadio init failed:", e))
   // Camera occlusion fade: any building between the camera and the player (or one
   // the camera clips into) smoothly fades transparent so you never lose sight of
   // your character, then restores. Ticked in the frame loop; disposed on teardown.
@@ -1745,11 +1757,17 @@ function buildWorld(
     juice.update(dt)
     const tap = input.consumeTap()
     if (tap) {
-      // First user gesture unlocks audio (autoplay-blocked); start the ambient bed.
-      soundscape.resume()
+      // First user gesture unlocks audio (autoplay-blocked); start the bed/radio.
+      soundscape.resume() // unlock WebAudio for footsteps/SFX regardless
       if (!ambientStarted) {
         ambientStarted = true
-        soundscape.startAmbient()
+        // POC: prefer the radio as the ambient bed; fall back to the procedural
+        // soundscape bed only when no radio path is available (e.g. unavailable env).
+        if (cityRadio && cityRadio.mode() !== "unavailable") {
+          void cityRadio.start()
+        } else {
+          soundscape.startAmbient()
+        }
       }
     }
     focus.update(dt, p, tap)
@@ -1783,6 +1801,7 @@ function buildWorld(
     fullMapModal.dispose()
     unFrame()
     soundscape.dispose()
+    cityRadio?.dispose() // stop the radio + clear the single-instance slot
     openDialogue?.close()
     portal?.dispose()
     vignetteHost.dispose() // force-exit any running vignette + release the model

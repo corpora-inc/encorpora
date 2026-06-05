@@ -16,7 +16,8 @@
     "noUnusedParameters": true,
     "paths": {
       "@world-plaza/contracts": ["./contracts/src/index.ts"],
-      "@world-plaza/contracts/*": ["./contracts/src/*"]
+      "@world-plaza/contracts/*": ["./contracts/src/*"],
+      "@shared/audio/*": ["../shared/audio/*"]
     }
   },
   "include": ["src", "contracts/src"],
