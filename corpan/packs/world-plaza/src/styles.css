@@ -621,7 +621,9 @@
 /* Tab content cross-fade (FAB_POLISH §4.5): the frame stays fixed, only the inner
    content fades on a tab swap. Gated to reduced-motion below. */
 .wp-menu-body--swapping > * { opacity: 0; }
-.wp-menu-body > .wp-menu-fade { transition: opacity 0.14s ease; }
+/* Clear the 14px scroll-edge fade bands so the first row (Wallet) and the last
+   row aren't dimmed at rest — content only fades once it actually scrolls under. */
+.wp-menu-body > .wp-menu-fade { transition: opacity 0.14s ease; padding: 16px 0; }
 .wp-menu-foot {
   display: flex;
   flex-direction: column;

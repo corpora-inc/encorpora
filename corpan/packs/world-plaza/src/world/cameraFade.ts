@@ -66,8 +66,15 @@ import { walkSurfaceHeight } from "./walkSurface"
  *   • One ray vs N building AABBs + N AABB-inside tests per frame; N is ~20.
  */
 
-/** how transparent a fully-faded occluder gets (0 = invisible, 1 = solid). */
-const FADED_VISIBILITY = 0.16
+/** How transparent a fully-faded occluder gets (0 = invisible, 1 = solid).
+ * MUST be 0: a building mesh is a merge of the stucco box + four double-sided
+ * facade decal planes sitting +0.02 proud of the walls. At any PARTIAL alpha
+ * those near-coplanar double-sided layers alpha-blend in an unstable, view-
+ * dependent order (no depth pre-pass, samples=1) → a mottled "dirty screen that
+ * swims with the camera" wash. Fully dissolving (0) removes the partial-alpha
+ * layering entirely, so the cutaway reads clean. (A soft ghost would need
+ * needDepthPrePass on faded bodies — deferred; the materials are frozen.) */
+const FADED_VISIBILITY = 0
 /** per-60fps lerp toward the target visibility (fps-compensated below). */
 const FADE_LERP = 0.18
 /** snap-to-target threshold so visibility settles exactly at 1 / FADED. */
