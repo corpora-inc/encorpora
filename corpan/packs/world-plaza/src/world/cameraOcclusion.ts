@@ -97,3 +97,29 @@ export function isBoomBlocker(mesh: AbstractMesh): boolean {
   if (typeof tc === "number" && tc > 0) return false
   return true
 }
+
+/**
+ * Is this mesh a candidate for the camera-occlusion FADE? Same structural test as
+ * `isBoomBlocker` (solid one-off occluder, not a thin-instanced species) — BUT
+ * deliberately INDEPENDENT of the mesh's current `visibility`. The fade ITSELF
+ * lowers `visibility` toward 0; if eligibility were gated on visibility (as
+ * `isCameraOccluder` is, for the boom's benefit), a fully-faded building would stop
+ * matching, get dropped from the fade's tracked set, and be stranded ghost-
+ * transparent forever (its box collision still blocks you). So fade-eligibility is
+ * about WHAT a mesh is, never its momentary opacity.
+ */
+export function isFadeEligible(mesh: AbstractMesh): boolean {
+  if (!mesh) return false
+  if (!mesh.isEnabled()) return false // NOTE: NOT gated on visibility — the fade owns it
+  if (mesh.getTotalVertices?.() === 0) return false
+  const name = mesh.name
+  for (const p of NON_OCCLUDER_PREFIXES) if (name.startsWith(p)) return false
+  const bb = mesh.getBoundingInfo?.()?.boundingBox
+  if (bb) {
+    const dy = bb.maximumWorld.y - bb.minimumWorld.y
+    if (dy < 0.25) return false
+  }
+  const tc = (mesh as Mesh).thinInstanceCount
+  if (typeof tc === "number" && tc > 0) return false
+  return true
+}

@@ -3,7 +3,7 @@ import type { Camera } from "@babylonjs/core/Cameras/camera"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
 import { Ray } from "@babylonjs/core/Culling/ray"
 import { Vector3 } from "@babylonjs/core/Maths/math"
-import { isBoomBlocker } from "./cameraOcclusion"
+import { isFadeEligible } from "./cameraOcclusion"
 import { walkSurfaceHeight } from "./walkSurface"
 
 /**
@@ -130,8 +130,10 @@ export function createCameraFade(
   // species shares one UNION bounding box spanning the chunk, so a ray grazing it
   // ghosted EVERY tree/planter at once — "objects disappear in front of me". A
   // narrow prop briefly clipping the player reads far better than the whole grove
-  // dissolving. Same solid-one-off set the boom uses (isBoomBlocker).
-  const match = opts.match ?? isBoomBlocker
+  // dissolving. Same solid-one-off set the boom uses — but via `isFadeEligible`,
+  // which (unlike the boom's `isBoomBlocker`) does NOT gate on current visibility,
+  // so a mesh THIS system has faded toward 0 stays eligible and can be restored.
+  const match = opts.match ?? isFadeEligible
 
   // Eligible meshes + their per-frame target visibility. Resynced only when the
   // scene's building population changes (scene flip), never per frame.
@@ -139,9 +141,19 @@ export function createCameraFade(
   let lastSceneMeshCount = -1
 
   const syncEligible = () => {
+    const prev = tracked.slice()
     tracked.length = 0
     for (const m of scene.meshes) {
       if (match(m)) tracked.push({ mesh: m, target: 1 })
+    }
+    // SAFETY: any mesh that WAS tracked (possibly mid-fade, visibility < 1) but is
+    // no longer eligible gets restored to solid here — so a rebuild can never strand
+    // a building ghost-transparent (its box collision still blocks you otherwise).
+    const nowTracked = new Set(tracked.map((t) => t.mesh))
+    for (const t of prev) {
+      if (!nowTracked.has(t.mesh) && !t.mesh.isDisposed() && t.mesh.visibility !== 1) {
+        t.mesh.visibility = 1
+      }
     }
     lastSceneMeshCount = scene.meshes.length
   }
