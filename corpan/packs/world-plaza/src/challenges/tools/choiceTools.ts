@@ -96,6 +96,16 @@ async function runSeries(
   rounds: Round[],
   opts: SeriesOpts,
 ): Promise<void> {
+  // #67: NO rounds = missing content, not a loss. Treat 0 rounds as an ABORT (the
+  // encounter re-picks / closes with no scored fail), never `complete(0)` →
+  // instant "Try again". `cancel()` resolves with outcome "aborted", so a quest
+  // gate never counts it against the player and the NPC doesn't congratulate.
+  if (rounds.length === 0) {
+    console.warn("[wp-challenge] runSeries: 0 rounds (missing content) → abort, not a scored fail.")
+    overlay.cancel()
+    return
+  }
+
   let correct = 0
   let streak = 0
   let bestStreak = 0
@@ -270,6 +280,13 @@ async function runSeriesWithReplay(
   opts: SeriesOpts,
   _lang: string,
 ): Promise<void> {
+  // #67: 0 rounds (missing content) → ABORT, never a scored fail (same as runSeries).
+  if (rounds.length === 0) {
+    console.warn("[wp-challenge] runSeriesWithReplay: 0 rounds (missing content) → abort.")
+    overlay.cancel()
+    return
+  }
+
   let correct = 0
   let streak = 0
   for (const round of rounds) {
@@ -384,8 +401,10 @@ export const oddOneOut: ToolImpl = {
           correct: opts.indexOf(toText(intruderEntry)),
         })
       }
+      // #67: no buildable rounds (corpus lacked ≥2 domains with ≥3 items) → abort,
+      // not a scored fail. runSeries also guards this, but bail early + cleanly.
       if (!rounds.length) {
-        overlay.complete(0, computeReward(2, 0))
+        overlay.cancel()
         return
       }
       await runSeries(overlay, rounds, { difficulty: 2, cols: 2 })

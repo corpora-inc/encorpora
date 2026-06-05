@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **A speak challenge never traps the player when the mic dies (#65).** When STT
+  reported AVAILABLE but `recordAndScore` threw mid-record, `sttTools.recordUI`
+  showed a "Mic error" status but left the erroring mic in place — a dead-end.
+  Now a mic/record error falls back to the SAME self-rate buttons the
+  STT-unavailable path shows (extracted into a shared `mountSelfRate`), so the
+  challenge stays winnable. `src/challenges/tools/sttTools.ts`.
+- **A challenge with 0 buildable rounds aborts instead of scoring a fail (#67).**
+  Missing/empty content made `choiceTools.runSeries` (and `runSeriesWithReplay`,
+  `oddOneOut`, and the STT tools' no-speakable-entry path) `complete(0)` → instant
+  "Try again" — a silent dead-end that could trap a quest gate. They now
+  `overlay.cancel()` (outcome "aborted"), so missing content is never counted
+  against the player and the NPC doesn't congratulate a non-attempt.
+  `src/challenges/tools/choiceTools.ts`, `src/challenges/tools/sttTools.ts`.
 - **THE CORE LOOP: you can now finish a beginner quest with your thumb, no mic
   required.** Root cause of "I walk to the star, talk to the guy, and there's no
   way to win": every beginner quest's gating challenge was `repeat-after` — a

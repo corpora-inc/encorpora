@@ -66,9 +66,16 @@ function recordUI(
       const status = h("div", "wp-ch-sub", sttOk ? S.readItAloud : S.selfRateHint)
       overlay.body.appendChild(status)
 
-      if (!sttOk) {
-        // Self-rate fallback: 3 buttons → participation/credit.
+      /**
+       * Mount the SELF-RATE fallback (3 participation/credit buttons) in place of
+       * `swapOut`, and update the status line. Used by BOTH the STT-unavailable
+       * path AND the mic/record/score ERROR path — so a speak challenge NEVER traps
+       * the player: even if the mic dies mid-record, the self-rate UI takes over.
+       * Idempotent-safe: it only runs once because the first mount replaces the mic.
+       */
+      function mountSelfRate(swapOut: Element): void {
         clear(vu)
+        status.textContent = S.selfRateHint
         const rate = h("div", "wp-ch-actions")
         ;[
           { label: S.rateTough, v: 0.4 },
@@ -82,7 +89,12 @@ function recordUI(
           })
           rate.appendChild(b)
         })
-        mic.replaceWith(rate)
+        swapOut.replaceWith(rate)
+      }
+
+      if (!sttOk) {
+        // STT unavailable up front → self-rate immediately.
+        mountSelfRate(mic)
         return
       }
 
@@ -104,10 +116,12 @@ function recordUI(
                   vuFill.style.transform = `scaleX(${Math.max(0.04, rms)})`
                 }) ?? null
             } catch (err) {
-              console.error("[wp-challenge] record start failed:", err)
-              status.textContent = "Mic error — tap to self-rate"
+              // The mic/STT died mid-record even though it reported available. DON'T
+              // trap the player at an erroring mic — fall back to the SAME self-rate
+              // UI the unavailable path uses, so the challenge stays winnable.
+              console.error("[wp-challenge] record start failed → self-rate fallback:", err)
               recording = false
-              mic.classList.remove("wp-ch-mic--rec")
+              mountSelfRate(mic)
             }
           } else {
             recording = false
@@ -145,7 +159,8 @@ export const readAloud: ToolImpl = {
     void (async () => {
       const p = await firstSpeakable(host, spec)
       if (!p) {
-        overlay.complete(0, computeReward(2, 0))
+        // #67 sibling: no speakable entry = missing content, not a loss → abort.
+        overlay.cancel()
         return
       }
       const score = await recordUI(
@@ -175,7 +190,8 @@ export const sayItBack: ToolImpl = {
       void mulberry32(seedOf(spec)) // reserved for future multi-round
       const p = await firstSpeakable(host, spec)
       if (!p) {
-        overlay.complete(0, computeReward(2, 0))
+        // #67 sibling: no speakable entry = missing content, not a loss → abort.
+        overlay.cancel()
         return
       }
       // Speak it up front so "say it back" is honest.
