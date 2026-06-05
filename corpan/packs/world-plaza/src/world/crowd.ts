@@ -1,8 +1,8 @@
 import type { Scene as BabylonScene } from "@babylonjs/core/scene"
 import type { RoomTopology, NpcRole, Scene } from "@world-plaza/contracts"
-import { createGroundedCutout, type GroundedCutout } from "../render/cutout"
+import { type GroundedCutout } from "../render/cutout"
+import { createCharacterFigure } from "../character/figure"
 import { createAnimator, type Animator } from "../character/animator"
-import { CHAR_TEX } from "../character/characterArt"
 import { generateCharacter, ANTIGUA_1770, type WardrobeTheme } from "../character/characterGen"
 import type { CharacterSpec } from "../character/characterSpec"
 import { generatePersona, type GeneratedPersona } from "../npc/personaGen"
@@ -503,10 +503,7 @@ export function createCrowd(
       fallbackSeekersLeft--
     }
 
-    const cutout = createGroundedCutout(bScene, {
-      w: CHAR_TEX.w,
-      h: CHAR_TEX.h,
-      draw: () => {}, // animator paints immediately
+    const cutout = createCharacterFigure(bScene, spec, {
       shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
       pickTag: `npc:${seed}`,
     })
@@ -658,10 +655,7 @@ export function createCrowd(
   /** Create a fresh cutout+animator for a special slot from a spec, positioned at
    *  the station. Caller owns disposing any previous cutout. */
   const makeSpecialVisual = (spec: CharacterSpec, seed: string, x: number, z: number) => {
-    const cutout = createGroundedCutout(bScene, {
-      w: CHAR_TEX.w,
-      h: CHAR_TEX.h,
-      draw: () => {},
+    const cutout = createCharacterFigure(bScene, spec, {
       shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
       pickTag: `npc:${seed}`,
     })

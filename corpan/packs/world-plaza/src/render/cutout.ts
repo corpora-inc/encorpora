@@ -63,6 +63,15 @@ interface SharedShadow {
 }
 const SHADOW_CACHE = new WeakMap<Scene, SharedShadow>()
 
+/**
+ * The ONE shared contact-shadow blob (texture + material) for a scene. Exported
+ * so the 3D character look (`figure3d.ts`) reuses the EXACT same shadow as the
+ * paper cutout — one 128px texture for the whole population, cutout or 3D.
+ */
+export function sharedContactShadow(scene: Scene): SharedShadow {
+  return sharedShadow(scene)
+}
+
 function sharedShadow(scene: Scene): SharedShadow {
   const hit = SHADOW_CACHE.get(scene)
   if (hit) return hit

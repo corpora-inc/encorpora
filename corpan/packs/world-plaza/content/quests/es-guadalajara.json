@@ -2,9 +2,16 @@
   "id": "es-guadalajara-route",
   "title": "Across Corpan City",
   "narrative": "Find your way across Corpan City — from the harbor to the river bridge.",
-  "learnerPair": { "target": "es", "native": "en" },
+  "learnerPair": {
+    "target": "es",
+    "native": "en"
+  },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 2 },
+  "objective": {
+    "kind": "completeChallenges",
+    "toolId": "translate-fast",
+    "count": 2
+  },
   "steps": [
     {
       "id": "docks",
@@ -12,7 +19,10 @@
       "anchorId": "harbor",
       "kind": "talk",
       "toolId": "translate-fast",
-      "entryIds": [1008, 1023]
+      "entryIds": [
+        1008,
+        1023
+      ]
     },
     {
       "id": "gate",
@@ -25,19 +35,38 @@
   "promptProgram": {
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking about ferries, routes, fares, and getting from place to place across the city.",
     "scaffold": "beginner",
-    "ragSources": ["base-travel"],
+    "ragSources": [
+      "base-travel"
+    ],
     "contentSelector": {
-      "levels": ["A1", "A2"],
-      "domains": ["travel"],
-      "languageCodes": ["es"]
+      "levels": [
+        "A1",
+        "A2"
+      ],
+      "domains": [
+        "travel"
+      ],
+      "languageCodes": [
+        "es"
+      ]
     },
-    "toolWhitelist": ["repeat-after", "listen-choose", "translate-fast"]
+    "toolWhitelist": [
+      "repeat-after",
+      "listen-choose",
+      "translate-fast"
+    ]
   },
   "rewards": {
-    "xp": 80,
-    "coins": 20,
+    "xp": 240,
+    "coins": 360,
     "badge": "wayfarer",
-    "grant": ["map-scrap"]
+    "grant": [
+      "map-scrap"
+    ]
   },
-  "nextQuestIds": ["es-cafe-travel", "es-market-haggle", "es-directions"]
+  "nextQuestIds": [
+    "es-cafe-travel",
+    "es-market-haggle",
+    "es-directions"
+  ]
 }

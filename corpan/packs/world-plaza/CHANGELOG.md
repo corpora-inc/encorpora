@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Characters are now REAL 3D "bubble people," not flat paper billboards.** The
+  marquee visual upgrade: the player + crowd NPCs + remote players render as
+  genuine 3D rounded meshes (head sphere + bubble torso + stubby arms/legs/feet),
+  lit by the scene's sun/hemi so they hold their volume from EVERY camera angle —
+  including grazing/near-horizon shots where the old flat cutout collapsed to a
+  line. Identity is preserved: skin/hair/top/bottom colours from the AvatarSpec
+  map onto the mesh; the existing animator still drives idle bob, walk cycle,
+  blink, and talk-mouth via a billboarded face card welded to the 3D head (so all
+  expression/identity animation is unchanged). The new look is the DEFAULT behind
+  the designed `createGroundedCutout` seam; the legacy flat cutout stays selectable
+  as a fallback (`window.__wpCharacterLook = "cutout"` or `?look=cutout`). Cheap by
+  construction — ONE shared sphere + ONE shared capsule + ONE material for the
+  whole population, per-character colour via a per-instance "color" buffer;
+  verified 60fps with 38 agents. New `src/character/figure3d.ts` +
+  `src/character/figure.ts` (look seam); `src/render/cutout.ts` exports the shared
+  contact shadow; controller/crowd/remoteAvatar consume the seam with no call-site
+  logic change. Proven in the real game via `qa/figure3d.mjs` (multi-angle
+  screenshots, A/B against the flat cutout).
+- **Quest-completion interlude is now a SLOW, staged, rewarding cinema — not a
+  rushed flash.** The completion beat was firing everything at once and moving on.
+  It now plays a hand-paced timeline: (1) an anticipation beat — the world dims
+  under a soft scrim and hushes; (2) a slow staged reveal — a "★ Victory" eyebrow
+  blooms, then the big title scales up with a glow sweep, then the subtitle
+  settles; (3) a bespoke reward tally that COUNTS UP line-by-line (XP, then the
+  physical-currency smorgasbord, then item grants), each landing in sequence with
+  a pop + sparkle (replaces the all-at-once `showRewardReveal`); (4) a dignified
+  pause; (5) the next-quest choice cards animate in. A "Skip" affordance
+  fast-forwards repeat players straight to the picker, but the DEFAULT is the full
+  cinema. `prefers-reduced-motion` collapses to an instant-but-complete, dignified
+  layout (no flashing, no count-up). New strings `interlude.eyebrow` /
+  `interlude.skip` localized across all 46 locales (per-key English fallback).
+  `src/vignettes/questInterlude.ts`, `src/i18n/{strings,surfaceStrings}.ts`.
+  Proven in the real game via `qa/interlude-cinema.mjs` (staged screenshots).
+
 ### Fixed
 - **A speak challenge never traps the player when the mic dies (#65).** When STT
   reported AVAILABLE but `recordAndScore` threw mid-record, `sttTools.recordUI`

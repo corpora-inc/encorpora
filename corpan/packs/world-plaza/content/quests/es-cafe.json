@@ -2,9 +2,16 @@
   "id": "es-cafe-travel",
   "title": "Coffee on the Plaza",
   "narrative": "Your very first words in the city: order a coffee at the plaza café.",
-  "learnerPair": { "target": "es", "native": "en" },
+  "learnerPair": {
+    "target": "es",
+    "native": "en"
+  },
   "domain": "travel",
-  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
+  "objective": {
+    "kind": "completeChallenges",
+    "toolId": "translate-fast",
+    "count": 1
+  },
   "steps": [
     {
       "id": "order-coffee",
@@ -16,19 +23,40 @@
   "promptProgram": {
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner ordering food and drink, naming common items, and being polite.",
     "scaffold": "beginner",
-    "ragSources": ["base-travel", "base-food"],
+    "ragSources": [
+      "base-travel",
+      "base-food"
+    ],
     "contentSelector": {
-      "levels": ["A1", "A2"],
-      "domains": ["travel", "food"],
-      "languageCodes": ["es"]
+      "levels": [
+        "A1",
+        "A2"
+      ],
+      "domains": [
+        "travel",
+        "food"
+      ],
+      "languageCodes": [
+        "es"
+      ]
     },
-    "toolWhitelist": ["repeat-after", "listen-choose", "translate-fast"]
+    "toolWhitelist": [
+      "repeat-after",
+      "listen-choose",
+      "translate-fast"
+    ]
   },
   "rewards": {
-    "xp": 50,
-    "coins": 10,
+    "xp": 120,
+    "coins": 140,
     "badge": "first-cup",
-    "grant": ["phrase-es-cafe-basics"]
+    "grant": [
+      "phrase-es-cafe-basics"
+    ]
   },
-  "nextQuestIds": ["es-market-haggle", "es-directions", "es-guadalajara-route"]
+  "nextQuestIds": [
+    "es-market-haggle",
+    "es-directions",
+    "es-guadalajara-route"
+  ]
 }

@@ -78,3 +78,18 @@ files (no agent edits them; they hand me exact wiring) to avoid render-seam coll
   are persisted (`store/phrasePackCatalog.ts` + `store/catalog.ts`). Big caches /
   state / analytics → IndexedDB, quota-safe writes that never throw to callers.
   See `corpan/docs/STORAGE_ANALYTICS.md`.
+
+## Foundation: latest-stable engine + mature physics/navmesh — committed 2026-06-05
+- **Always run the LATEST STABLE major.** World Plaza was on Babylon **6.49 (a
+  2024 release) while 9.x was stable** — three majors behind. That is the root of
+  a long tail of hand-rolled-system bugs (collision, slopes, camera, crowd).
+  Upgraded to Babylon **9.11** (clean: modular import paths held, 378 tests green,
+  renders correctly). New work starts on latest stable, full stop.
+- **Use mature best-in-class libraries over hand-rolled systems.** Installed
+  **Havok** (AAA physics, `@babylonjs/havok`) and **recast-detour** (industry
+  navmesh). The player becomes a Havok capsule controller (retires the
+  walk-surface height registry + slope/clip bugs); NPCs become Recast navmesh
+  agents (retires hand-rolled wander/stationing/avoidance). A web pack in a WebView
+  does NOT force lite tech — these run in-stack.
+- **Real 3D characters** replace the paper-billboard cutouts via the `CharacterLook`
+  seam (`createGroundedCutout` → GLB/3D). Billboards were always a placeholder.

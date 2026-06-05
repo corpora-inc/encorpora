@@ -1,8 +1,8 @@
 import type { Scene as BabylonScene } from "@babylonjs/core/scene"
 import type { AvatarSpec } from "@world-plaza/contracts"
-import { createGroundedCutout, type GroundedCutout } from "../render/cutout"
+import { type GroundedCutout } from "../render/cutout"
+import { createCharacterFigure } from "../character/figure"
 import { createAnimator, type Animator } from "../character/animator"
-import { CHAR_TEX } from "../character/characterArt"
 import {
   generateCharacter,
   ANTIGUA_1770,
@@ -78,10 +78,7 @@ export function createRemoteAvatar(
     spec = generateCharacter("crowd", `remote:${opts.playerId}`, opts.theme ?? ANTIGUA_1770)
   }
 
-  const cutout: GroundedCutout = createGroundedCutout(scene, {
-    w: CHAR_TEX.w,
-    h: CHAR_TEX.h,
-    draw: () => {}, // animator paints
+  const cutout: GroundedCutout = createCharacterFigure(scene, spec, {
     shadowRadius: spec.build === "stocky" ? 0.66 : spec.build === "child" ? 0.5 : 0.6,
     pickTag: `remote:${opts.playerId}`,
   })

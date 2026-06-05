@@ -74,11 +74,13 @@ export function makeSectionStrings(native: string): QuestSectionStrings {
 export function makeInterludeStrings(native: string): QuestInterludeStrings {
   const t = bindT(native)
   return {
+    eyebrow: t("interlude.eyebrow"),
     title: t("interlude.title"),
     subtitle: (q) => t("interlude.subtitle", { quest: q }),
     pickPrompt: t("interlude.pickPrompt"),
     goTo: (where) => t("interlude.goTo", { where }),
     begin: t("interlude.begin"),
     notNow: t("interlude.notNow"),
+    skip: t("interlude.skip"),
   }
 }

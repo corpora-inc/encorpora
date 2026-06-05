@@ -1,7 +1,7 @@
 import type { RoomTopology, AvatarSpec } from "@world-plaza/contracts"
 import type { WorldEngine } from "../world/engine"
-import { createGroundedCutout, type GroundedCutout } from "../render/cutout"
-import { CHAR_TEX } from "../character/characterArt"
+import { type GroundedCutout } from "../render/cutout"
+import { createCharacterFigure } from "../character/figure"
 import { createAnimator, type Animator } from "../character/animator"
 import { avatarToCharacterSpec } from "../character/characterSpec"
 import type { Input } from "./input"
@@ -80,10 +80,7 @@ export function createPlayerController(
   getGroundHeight?: (x: number, z: number) => number,
 ): PlayerController {
   const spec = avatarToCharacterSpec(avatar, "player-local")
-  const cutout = createGroundedCutout(world.scene, {
-    w: CHAR_TEX.w,
-    h: CHAR_TEX.h,
-    draw: () => {}, // animator paints
+  const cutout = createCharacterFigure(world.scene, spec, {
     shadowRadius: 0.62,
     pickTag: "player",
   })
