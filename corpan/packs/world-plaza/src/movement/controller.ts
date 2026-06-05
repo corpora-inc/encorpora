@@ -56,6 +56,13 @@ export interface PlayerController {
   respawnAt: (x: number, z: number, faceYaw?: number) => void
   /** Normalized 0..1 locomotion speed this frame — drives footstep audio. */
   getSpeed: () => number
+  /**
+   * RE-DRESS the live player figure with a new AvatarSpec — the wardrobe seam.
+   * Rebuilds the paper-doll/3D figure IN PLACE (same position, ground height, and
+   * heading) so changing outfit / equipping bling updates the in-world body with
+   * NO world reload and no camera jump. The old cutout + animator are disposed.
+   */
+  redress: (avatar: AvatarSpec) => void
   update: (dt: number) => void
   dispose: () => void
 }
@@ -100,13 +107,18 @@ export function createPlayerController(
    */
   getGroundHeight?: (x: number, z: number) => number,
 ): PlayerController {
-  const spec = avatarToCharacterSpec(avatar, "player-local")
-  const cutout = createCharacterFigure(world.scene, spec, {
-    shadowRadius: 0.62,
-    pickTag: "player",
-    look: "bubble3d", // the player matters — always 3D.
-  })
-  const anim: Animator = createAnimator(cutout, spec)
+  const buildFigure = (av: AvatarSpec): { cutout: GroundedCutout; anim: Animator } => {
+    const spec = avatarToCharacterSpec(av, "player-local")
+    const c = createCharacterFigure(world.scene, spec, {
+      shadowRadius: 0.62,
+      pickTag: "player",
+      look: "bubble3d", // the player matters — always 3D.
+    })
+    return { cutout: c, anim: createAnimator(c, spec) }
+  }
+  // `let` so the wardrobe can REBUILD the figure in place (redress) without a
+  // world reload — the rest of the controller reads the live `cutout`/`anim`.
+  let { cutout, anim } = buildFigure(avatar)
 
   const spawn = topology.spawns[0]
   let x = spawn.x
@@ -238,12 +250,33 @@ export function createPlayerController(
     world.setCameraTarget(new Vector3(x, 0, z), yaw)
   }
 
+  const redress = (av: AvatarSpec) => {
+    // Rebuild the figure in place: capture the current ground/heading, swap the
+    // cutout + animator, restore the contact point + facing so nothing jumps.
+    const groundY = lastGroundY
+    const next = buildFigure(av)
+    try {
+      cutout.dispose()
+    } catch (e) {
+      console.error("[wp/player] redress: disposing old figure threw:", e)
+    }
+    cutout = next.cutout
+    anim = next.anim
+    cutout.setGroundPos(x, z, groundY)
+    cutout.setHeading?.(figureYaw)
+    anim.setState(lastSpeed > 0.02 ? "walk" : "idle")
+  }
+
   return {
-    cutout,
+    // a getter so callers always see the LIVE figure after a redress rebuild.
+    get cutout() {
+      return cutout
+    },
     getPos: () => ({ x, z }),
     getFacing: () => yaw,
     getSpeed: () => lastSpeed,
     respawnAt,
+    redress,
     update,
     dispose: () => {
       if (typeof window !== "undefined") {

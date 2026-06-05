@@ -59,6 +59,8 @@ export interface InventoryPanelStrings {
   openBadges: string
   /** "×{n}" quantity suffix for a stacked item. */
   qty: (n: number) => string
+  /** The "open the wardrobe / change your look" button label. */
+  openWardrobe: string
 }
 
 const DEFAULT_STRINGS: InventoryPanelStrings = {
@@ -71,6 +73,7 @@ const DEFAULT_STRINGS: InventoryPanelStrings = {
     mastered === 1 ? "1 badge mastered" : `${mastered} badges mastered`,
   openBadges: "Open the Badge Case",
   qty: (n) => `×${n}`,
+  openWardrobe: "Change your look",
 }
 
 export interface InventoryPanelOptions {
@@ -96,6 +99,12 @@ export interface InventoryPanelOptions {
   masteredCount?: () => number
   /** Deep-link into the full Badge Case (orchestrator: `shell.openSection("badges")`). */
   openBadges?: () => void
+  /**
+   * Open the in-game WARDROBE (re-dress / equip bought bling). When provided, the
+   * items block shows a "Change your look" button — the dedicated re-entry control
+   * the economy slice wires to `economy.openWardrobe`. Omit → no button.
+   */
+  openWardrobe?: () => void
 }
 
 /**
@@ -193,6 +202,23 @@ function mountInventoryPanel(body: HTMLElement, opts: InventoryPanelOptions): ()
     return block
   }
 
+  /** The dedicated WARDROBE re-entry control (re-dress / equip bought bling). */
+  function wardrobeButton(): HTMLElement | null {
+    if (!opts.openWardrobe) return null
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "wp-inv-link wp-inv-wardrobe-btn"
+    btn.textContent = `👗 ${strings.openWardrobe} ▸`
+    btn.addEventListener("click", () => {
+      try {
+        opts.openWardrobe?.()
+      } catch (err) {
+        console.error(`${LOG} openWardrobe threw:`, err)
+      }
+    })
+    return btn
+  }
+
   function renderItems(): HTMLElement {
     const block = document.createElement("section")
     block.className = "wp-inv-block wp-inv-items"
@@ -207,6 +233,8 @@ function mountInventoryPanel(body: HTMLElement, opts: InventoryPanelOptions): ()
 
     if (!bag.length) {
       block.appendChild(emptyLine(strings.itemsEmpty))
+      const wb = wardrobeButton()
+      if (wb) block.appendChild(wb)
       return block
     }
 
@@ -239,6 +267,8 @@ function mountInventoryPanel(body: HTMLElement, opts: InventoryPanelOptions): ()
       grid.appendChild(cell)
     }
     block.appendChild(grid)
+    const wb = wardrobeButton()
+    if (wb) block.appendChild(wb)
     return block
   }
 

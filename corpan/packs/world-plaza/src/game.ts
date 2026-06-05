@@ -27,6 +27,7 @@ import {
   type CorpanChallengeHostApi,
 } from "./challenges/host"
 import { inventory, createInventory, bindInventory } from "./economy/inventory"
+import { initEconomy, type EconomyHandle, type NpcOffer } from "./economy"
 import { createQuestEngine, type QuestEngine, type QuestEvent } from "./quest/questState"
 import { getQuest, entryQuestId, nextQuests, firstStep, allQuests, objectiveAnchorIds } from "./quest/questCatalog"
 import { createQuestInterlude, type NextQuestOption } from "./vignettes/questInterlude"
@@ -39,6 +40,7 @@ import {
   t as translate,
   bindT,
   applyDir,
+  dirFor,
   ALL_KEYS,
   makeMenuStrings,
   makeTrackerStrings,
@@ -431,6 +433,19 @@ function buildWorld(
   const obstacles = city.getCollision()
   // The player IS their dressed avatar (grounded cutout, self-animated).
   const player = createPlayerController(world, topology, input, identity.avatar, obstacles)
+  // The LIVE avatar (mutable): the in-game wardrobe re-dresses the figure in place
+  // and persists this per-profile (global identity store). Seeded from onboarding.
+  let currentAvatar = identity.avatar
+  const applyAvatarChange = (next: typeof currentAvatar) => {
+    currentAvatar = next
+    identity.avatar = next // keep the persisted identity object in sync
+    try {
+      player.redress(next) // rebuild the figure IN PLACE — no world reload
+    } catch (e) {
+      console.error("[world-plaza] redress failed:", e)
+    }
+    saveIdentity(identity) // persist the new look per-profile
+  }
   // SOUND & VOICE: a subtle WebAudio soundscape (warm ambient bed + footsteps +
   // juice SFX) so the plaza feels inhabited the instant it loads, plus the NPC
   // greeting you in the TARGET LANGUAGE via host TTS. Lazy AudioContext (resumed on
@@ -1079,6 +1094,43 @@ function buildWorld(
             : {}),
         }
       : undefined
+
+    // ── NPC COMMERCE OFFER (deterministic, inventory-affecting) ──────────────
+    // A SPECIAL/dedicated NPC that is NOT the current quest objective can stand
+    // behind a REAL buy/sell/trade deal. We resolve its deterministic standing
+    // offer (stable per npc × visit); if it has one, we ride the EXISTING
+    // forcedOffer.onConfirm seam to surface an offer chip whose confirm opens the
+    // juicy `presentNpcOffer` sheet (applies atomically to the live inventory).
+    // Objective NPCs keep their quest chip — commerce never overrides progress.
+    let offerForcedOffer:
+      | { tool: ChallengeToolId; chipLabel: string; onConfirm?: () => void }
+      | undefined
+    if (!forcedOffer && special) {
+      const npcName = specialNpc.displayName(special, undefined, learnerPair.target)
+      const standingOffer: NpcOffer | null = economy.resolveOffer({
+        npcId: it.anchorId,
+        npcName,
+        ...(special.gives ? { stock: [special.gives] } : {}),
+      })
+      if (standingOffer) {
+        const tradeLabel =
+          vt("economy.offer.chip") === "economy.offer.chip" ? "Make a deal" : vt("economy.offer.chip")
+        offerForcedOffer = {
+          // CONFIRM offer (no challenge): the chip just opens the offer sheet.
+          tool: "repeat-after" as ChallengeToolId,
+          chipLabel: tradeLabel,
+          onConfirm: () => {
+            economy.presentOffer(standingOffer, {
+              container: overlay,
+              onAccepted: (o) => {
+                soundscape.playSfx("reward")
+                toast(`✓ ${o.npcName}`)
+              },
+            })
+          },
+        }
+      }
+    }
     openDialogue = npcRuntime.open({
       npcRole: role,
       scene,
@@ -1086,7 +1138,8 @@ function buildWorld(
       learnerPair,
       container: overlay,
       npcName: special ? specialNpc.displayName(special, undefined, learnerPair.target) : undefined,
-      ...(forcedOffer ? { forcedOffer } : {}),
+      // The quest objective chip wins; else a dedicated NPC's commerce-offer chip.
+      ...(forcedOffer ? { forcedOffer } : offerForcedOffer ? { forcedOffer: offerForcedOffer } : {}),
       ...(special ? { questEngine, inventory: inventory(), isSpecial: true } : {}),
       // A clue-giver special NPC deterministically GRANTS its item (idempotent) +
       // fires a juicy "🎁 Received…" reveal — never the model claiming it.
@@ -1365,6 +1418,54 @@ function buildWorld(
   })
   registerBuiltinVignettes(vignetteHost, { taxi: { destinations: taxiDestinations() } })
 
+  // ── ECONOMY + COMMERCE + WARDROBE (the ONE wiring call) ────────────────────
+  // Stands up the indoor shop vignettes + their city portals, the NPC-offer
+  // presenter, the dedicated wardrobe, and the P2P trade provider seam. Everything
+  // is owned inside `src/economy/*`; game.ts keeps a single handle and threads its
+  // helpers into the NPC engage path (offers) + a menu control (wardrobe). The
+  // shop interiors reuse the SAME vignette host (pause world + free LLM + chrome).
+  const economy: EconomyHandle = initEconomy({
+    world,
+    overlay,
+    vignetteHost,
+    store: inventory(),
+    accent: scene.palette?.accent,
+    questId: quest.id,
+    playerId: identity.name.playerId,
+    getAvatar: () => currentAvatar,
+    onAvatarChange: applyAvatarChange,
+    getAnchorPos: (id) => {
+      const a = city.getAnchor(id)
+      return a ? { x: a.x, z: a.z } : null
+    },
+    setWorldActive,
+    isBusy: () => vignetteHost.isActive() || openDialogue !== null || challengeDepth > 0,
+    // Indoor shops dropped at present city anchors (filtered if absent). The
+    // OUTFITTER is the premium bling/outfit shop that also opens the wardrobe.
+    shops: [
+      {
+        anchorId: "plaza",
+        kind: "outfitter",
+        label: vt("economy.shop.outfitter.enter") === "economy.shop.outfitter.enter" ? "Enter the Outfitter" : vt("economy.shop.outfitter.enter"),
+        keeperId: "outfitter-keeper",
+      },
+      {
+        anchorId: "market",
+        kind: "market-stall",
+        label: vt("economy.shop.market.enter") === "economy.shop.market.enter" ? "Visit the stall" : vt("economy.shop.market.enter"),
+        keeperId: "market-keeper",
+      },
+      {
+        anchorId: "harbor",
+        kind: "general",
+        label: vt("economy.shop.general.enter") === "economy.shop.general.enter" ? "Enter the General Store" : vt("economy.shop.general.enter"),
+        keeperId: "general-keeper",
+      },
+    ],
+    t: (key, params) => vt(key, params),
+    dir: dirFor(uiLocale),
+  })
+
   // The `station` city anchor is the TAXI RANK: a portal that enters the taxi
   // vignette. The affordance mirrors the NPC Talk button (proximity prompt + a
   // ≥44px localized Enter button that swallows its own pointer events — the
@@ -1437,6 +1538,17 @@ function buildWorld(
         renderer: iconRenderer,
         masteredCount: () => badges.store.masteredCount(),
         openBadges: () => shell.openSection("badges"),
+        // The dedicated WARDROBE re-entry control: opens the avatar customizer so
+        // the player re-dresses + equips bought bling. Closes the menu first so the
+        // wardrobe owns the screen, then re-localizes via the live economy handle.
+        strings: {
+          openWardrobe:
+            vt("economy.wardrobe.open") === "economy.wardrobe.open" ? "Change your look" : vt("economy.wardrobe.open"),
+        },
+        openWardrobe: () => {
+          shell.resume() // close the menu so the wardrobe owns the screen
+          economy.openWardrobe(overlay)
+        },
       }),
       quest: createQuestSection({
         engine: questEngine,
@@ -1823,6 +1935,7 @@ function buildWorld(
     cityRadio?.dispose() // stop the radio + clear the single-instance slot
     openDialogue?.close()
     portal?.dispose()
+    economy.dispose() // shop portals + unregister the P2P trade provider
     vignetteHost.dispose() // force-exit any running vignette + release the model
     if (typeof window !== "undefined")
       delete (window as unknown as { __wpEnterTaxi?: () => void }).__wpEnterTaxi
