@@ -457,6 +457,7 @@ export function createWorldEngine(
       window.removeEventListener("resize", onResize)
       frameCbs.clear()
       hud.remove()
+      inst.dispose() // SceneInstrumentation hooks scene/engine observers — release them
       cinematic.dispose()
       scene.dispose()
       engine.dispose()

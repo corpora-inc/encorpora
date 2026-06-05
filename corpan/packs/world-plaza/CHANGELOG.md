@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Zombie-engine leak fixed — exactly one Babylon engine, ever.** THE cause of
+  the progressive FPS collapse (and the dying on-device LLM socket). The host
+  injects a FRESH `<script>` on every pack reopen, so the pack module
+  re-evaluates in a NEW scope each time — and the single-instance guard was a
+  module-scope `let current`, which a re-injected copy can't see. So each reopen
+  orphaned the previous instance's engine + render loop + LLM connections; they
+  kept rendering invisibly, stacking 2×/3×/4× the GPU work and exhausting LLM
+  sockets. The live instance is now tracked on a `globalThis` slot shared across
+  every injected copy (+ the standalone dev mount routed through it so vite HMR
+  can't stack engines either), and the engine now disposes its `SceneInstrumentation`.
+  Verify in console: `window.__wpEngines()` must read `1`. (`main.ts`, `world/engine.ts`.)
 - **Neighbourhood streaming — stop building/keeping the whole metropolis.** THE
   big one. The streamer warmed every chunk of the 1520² city in the background and
   never disposed any, so `scene.meshes` climbed to ~18k — and Babylon re-evaluates

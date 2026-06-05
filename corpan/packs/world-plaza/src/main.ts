@@ -20,26 +20,46 @@ interface GameModule {
 const registry: Record<string, GameModule> =
   ((globalThis as unknown as { CorpanGames?: Record<string, GameModule> }).CorpanGames ??= {})
 
-// Single live instance. Dev (React StrictMode / re-injection) can call mount()
-// more than once without unmounting between — which spawned TWO game instances
-// (two Babylon engines, two input handlers, doubled LLM streams, ghost WASDQE).
-// Disposing any prior instance before creating a new one guarantees exactly one.
-let current: GameHandle | null = null
+// EXACTLY ONE live instance, tracked on a GLOBAL slot — NOT a module-scope `let`.
+// The host (ContentPackHost) injects a FRESH <script> on every pack (re)open, so
+// this whole module re-evaluates in a NEW scope each time. A per-module `current`
+// can therefore never see — let alone dispose — an instance created by a PREVIOUS
+// injection: its Babylon engine + render loop + on-device LLM sockets are orphaned
+// and keep running (zombie engines stacking each reopen → progressive FPS collapse
+// + exhausted LLM sockets). A global slot is shared across every injected copy, so
+// we always tear down the prior instance before (or instead of) making a new one.
+const slot: { game: GameHandle | null } =
+  ((globalThis as unknown as { __wpLiveGame?: { game: GameHandle | null } }).__wpLiveGame ??= {
+    game: null,
+  })
+
+function disposePriorGame(): void {
+  if (!slot.game) return
+  try {
+    slot.game.dispose()
+  } catch (err) {
+    console.error("[world-plaza] disposing prior game instance threw:", err)
+  }
+  slot.game = null
+}
 
 registry[GAME_ID] = {
   id: GAME_ID,
   mount(container, hostApi) {
     // Real Corpán HostApi (TTS + on-device Qwen3 LLM) when running as a pack;
     // undefined in standalone dev → the game falls back to a mock host.
-    current?.dispose()
-    current = null
+    disposePriorGame()
     container.replaceChildren() // clear any leftover DOM from a prior instance
     const game: GameHandle = startGame(container, hostApi)
-    current = game
+    slot.game = game
     return {
       unmount: () => {
-        game.dispose()
-        if (current === game) current = null
+        if (slot.game === game) slot.game = null
+        try {
+          game.dispose()
+        } catch (err) {
+          console.error("[world-plaza] unmount dispose threw:", err)
+        }
       },
     }
   },
@@ -70,15 +90,23 @@ function devHostFromUrl(): unknown {
   }
 }
 
-// Standalone dev mount (vite dev server / plain browser).
+// Standalone dev mount (vite dev server / plain browser). Also routed through the
+// global slot so a vite HMR re-eval of this module disposes the prior engine
+// instead of stacking a second one (the same zombie-engine trap, dev edition).
 const devRoot = document.getElementById("corpan-game-root")
 if (devRoot) {
-  startGame(devRoot, devHostFromUrl())
+  disposePriorGame()
+  devRoot.replaceChildren()
+  slot.game = startGame(devRoot, devHostFromUrl())
   // Dev-only: expose the live Babylon scene so a headless harness (Playwright)
   // can orbit the camera to verify prop depth. No effect when packaged.
   void import("@babylonjs/core/Engines/engineStore").then(({ EngineStore }) => {
     ;(window as unknown as { __wpScene?: () => unknown }).__wpScene = () =>
       EngineStore.LastCreatedScene
+    // Zombie-engine detector: should ALWAYS read 1. >1 means a prior instance
+    // leaked (an undisposed engine still running its render loop).
+    ;(window as unknown as { __wpEngines?: () => number }).__wpEngines = () =>
+      EngineStore.Instances.length
   })
 }
 
