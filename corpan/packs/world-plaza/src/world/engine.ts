@@ -113,7 +113,6 @@ export function createWorldEngine(
   hudHost: HTMLElement,
   opts: EngineOptions = {},
 ): WorldEngine {
-  // Cap DPR at 2 — high-DPI phones multiply GPU cost for no visible gain.
   const dpr = Math.min(window.devicePixelRatio || 1, 2)
   const engine = new Engine(canvas, true, {
     antialias: dpr >= 2,
@@ -121,7 +120,13 @@ export function createWorldEngine(
     powerPreference: "high-performance",
     stencil: false,
   })
-  engine.setHardwareScalingLevel(1 / dpr)
+  // Render at ~CSS-pixel resolution, NOT 2× retina. Supersampling a draw/CPU-bound
+  // scene to 4× the pixels (a retina fullscreen is ~7.5 MP) buys nothing but fill
+  // cost; 1 CSS px is plenty crisp with AA. `hardwareScalingLevel` 1.0 = CSS res;
+  // 0.5 would be 2× retina. Never go finer than CSS (cap fill); coarser is allowed
+  // for the opt-in adaptive path on a genuinely fill-bound device.
+  const baseScale = Math.max(1 / dpr, 1.0)
+  engine.setHardwareScalingLevel(baseScale)
 
   // ── Adaptive resolution ──────────────────────────────────────────────────
   // The single biggest GPU cost here is FILL RATE: at 2× retina the bloom +
@@ -134,7 +139,7 @@ export function createWorldEngine(
   // crisp, a struggling one softens just enough to stay smooth. Geometry/draw
   // calls are untouched, so nothing in the WORLD is removed — only pixel density
   // flexes. Disable with `window.__wpAdaptiveRes = false`.
-  const nativeScale = 1 / dpr
+  const nativeScale = baseScale
   const MAX_SCALE = 2.0 // worst case: half-res per axis (¼ the pixels)
   let curScale = nativeScale
   let emaMs = 16.7
@@ -175,8 +180,23 @@ export function createWorldEngine(
   // adaptive resolution can't fix — only fewer/merged meshes can.
   const inst = new SceneInstrumentation(scene)
   inst.captureActiveMeshesEvaluationTime = true
+  inst.captureRenderTargetsRenderTime = true
+  inst.captureFrameTime = true
+  inst.captureRenderTime = true
   ;(window as unknown as { __wpDraws?: () => number }).__wpDraws = () =>
     inst.drawCallsCounter.current
+  // Frame-PHASE breakdown (ms) — pinpoints WHERE the 75ms goes: re-evaluating all
+  // resident meshes (activeMeshEval), the render-target passes (shadow/post), the
+  // main render, vs total. `meshesTotal` exposes the resident-mesh accumulation.
+  ;(window as unknown as { __wpPhases?: () => unknown }).__wpPhases = () => ({
+    frameMs: +inst.frameTimeCounter.current.toFixed(1),
+    activeMeshEvalMs: +inst.activeMeshesEvaluationTimeCounter.current.toFixed(2),
+    renderMs: +inst.renderTimeCounter.current.toFixed(1),
+    renderTargetsMs: +inst.renderTargetsRenderTimeCounter.current.toFixed(1),
+    draws: inst.drawCallsCounter.current,
+    meshesActive: scene.getActiveMeshes().length,
+    meshesTotal: scene.meshes.length,
+  })
   // Active-mesh breakdown by name prefix — pinpoints which subsystem owns the
   // draw calls (characters vs buildings vs props) so cuts are targeted.
   ;(window as unknown as { __wpActive?: () => unknown }).__wpActive = () => {

@@ -8,6 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Neighbourhood streaming — stop building/keeping the whole metropolis.** THE
+  big one. The streamer warmed every chunk of the 1520² city in the background and
+  never disposed any, so `scene.meshes` climbed to ~18k — and Babylon re-evaluates
+  EVERY resident mesh each frame to find the ~700 visible ones, which the phase
+  profiler showed was the single biggest frame cost (and it grew the longer you
+  played). Now each pass enqueues only chunks within `buildRadius` of the player
+  and DISPOSES built chunks past `disposeRadius` (they were already disabled +
+  non-colliding, so freeing them is invisible to gameplay); the time-sliced
+  builder rebuilds hitch-free on return, with build<dispose hysteresis to avoid
+  thrash. Resident meshes now hold ~3k regardless of how far you roam (was
+  climbing past 10k). (`city/stream.ts`.)
+- **Backbuffer capped to CSS resolution (no 2× retina supersampling).** Fullscreen
+  was rendering ~7.5 MP at 2× retina for a draw/CPU-bound scene — pure fill waste.
+  `hardwareScalingLevel` now floors at 1.0 (CSS px), ~4× fewer pixels on retina,
+  still crisp with AA. (`world/engine.ts`.)
 - **Sparser scene + adaptive-res OFF (draw/vertex economy).** Measured at
   `600×484` the frame was still ~62 ms, proving the cost is draw-calls/vertices,
   not pixels — so adaptive resolution (which only blurred the image) is now OFF by

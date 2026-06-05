@@ -146,12 +146,21 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
   const chunkByKey = new Map<string, CityChunk>()
   for (const c of layout.chunks) chunkByKey.set(c.key, c)
 
-  // Seed the queue with the WHOLE city (background full-city warm). Order is set
-  // by the first pass's re-sort; create the builders lazily as they reach the
-  // head so we don't allocate 64 builders up front.
-  for (const c of layout.chunks) queue.push(c.key)
-
+  // NEIGHBOURHOOD STREAMING (perf): we do NOT warm the whole metropolis. Building
+  // + keeping every chunk resident made `scene.meshes` climb to ~18k, and Babylon
+  // re-evaluates EVERY resident mesh each frame to find the ~700 visible ones —
+  // that per-frame active-mesh eval (measured the single biggest frame phase) scales
+  // with TOTAL resident meshes, not visible ones. So each pass ENQUEUES only chunks
+  // within `buildRadius` of the player and DISPOSES built chunks that drift past
+  // `disposeRadius` (they're already disabled + non-colliding, so freeing them is
+  // invisible to gameplay — pure memory + iteration relief). The time-sliced builder
+  // rebuilds a chunk hitch-free if the player returns. Hysteresis (build < dispose)
+  // prevents boundary thrash. The first `pass()` seeds the near chunks.
   const visRSq = visibilityRadius * visibilityRadius
+  const buildRadius = visibilityRadius + 40
+  const buildRSq = buildRadius * buildRadius
+  const disposeRadius = visibilityRadius + 120
+  const disposeRSq = disposeRadius * disposeRadius
   // shadow gate is tighter than (or equal to) the render radius — only the nearest
   // chunks cast, keeping the shadow-map draw count bounded.
   const shadowRSq = Math.min(shadowRadius, visibilityRadius) ** 2
@@ -206,6 +215,30 @@ export function createStreamManager(opts: StreamOptions): StreamManager {
     const cam = getCameraPos()
     const cx = cam.x
     const cz = cam.z
+
+    // 0a) ENQUEUE near-but-unbuilt chunks (within buildRadius). The queue holds
+    //     only the neighbourhood now, not the whole city.
+    const queued = new Set(queue)
+    for (const c of layout.chunks) {
+      if (built.has(c.key) || building.has(c.key) || queued.has(c.key)) continue
+      if (distSqToBounds(c.bounds, cx, cz) <= buildRSq) queue.push(c.key)
+    }
+    // 0b) DISPOSE built chunks that drifted past disposeRadius. They're already
+    //     disabled (far → not rendered, not colliding), so this only frees their
+    //     meshes + drops them from the per-frame mesh iteration. Re-approach
+    //     rebuilds them hitch-free via the time-sliced queue.
+    let disposedAny = false
+    for (const [key, mesh] of built) {
+      const c = chunkByKey.get(key)
+      const dSq = c ? distSqToBounds(c.bounds, cx, cz) : Infinity
+      if (dSq > disposeRSq) {
+        mesh.dispose()
+        built.delete(key)
+        if (enabled.delete(key)) disposedAny = true // (shouldn't be enabled when far)
+        shadowed.delete(key)
+      }
+    }
+    if (disposedAny) notify()
 
     // 1) RE-PRIORITIZE the not-yet-built queue nearest-first so the player's
     //    vicinity always builds before the far city. 64 items — cheap.
