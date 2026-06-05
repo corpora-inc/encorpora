@@ -75,6 +75,8 @@ import { buildFountain } from "./world/fountain"
 import { buildHarborWater } from "./world/harborWater"
 import { buildRiverwalk } from "./world/riverwalk"
 import { buildHarborBoats } from "./world/harborBoats"
+import { buildDistantSkyline } from "./world/distantSkyline"
+import { buildGateDressing } from "./world/gateDressing"
 import { buildBridge } from "./world/bridge"
 import { createPopulation } from "./city/population"
 import { prefersReducedMotion } from "./world/reducedMotion"
@@ -512,6 +514,32 @@ function buildWorld(
           reducedMotion,
         })
       : null
+  // ── DISTANT CITY SKYLINE (env-art, #32 crafted edge): a layered silhouette of a
+  // far metropolis ringing the horizon (camera-followed, no edge, frozen texture)
+  // so reaching the world edge lands the eye on "the world continues", not a bare
+  // sky. Built only when the crafted boundary exists (a river band is present);
+  // pure backdrop, no collision, disposed with the world. (Reads stronger in
+  // clearer air; the atmosphere fog softens it into haze by design.)
+  const skyline =
+    cityWater && cityWater.farBankZ != null
+      ? buildDistantSkyline(world.scene, { palette: scene.palette, seed: layout.bounds.maxX | 0 })
+      : null
+  // ── GATE-TOWER DRESSING (env-art, #32 crafted edge): banners + braziers at each
+  // land-gate jamb so the rampart's gateways read as handsome thresholds you pass
+  // through, not bare gaps. Reads `layout.boundary` (the SAME data places' city
+  // wall uses to place the piers) so the dressing lands on the piers. Additive +
+  // frozen; the brazier flame flicker is the only per-frame cost (RM-gated).
+  const cityBoundary = (layout as unknown as {
+    boundary?: import("./city/layout").CityBoundary
+  }).boundary
+  const gateDressing = cityBoundary
+    ? buildGateDressing(world.scene, {
+        boundary: cityBoundary,
+        bounds: layout.bounds,
+        palette: scene.palette,
+        reducedMotion,
+      })
+    : null
   // The real 3D stone ARCH bridge (#29) — raised deck + parapets + arches on piers
   // in the river, water passing UNDERNEATH. Spans bankZ→farPromZ at the bridge gap;
   // purely visual (places' collider already opens the corridor, quest-flow's traverse
@@ -1336,6 +1364,7 @@ function buildWorld(
     harborWater?.update(dt)
     riverwalk?.update(dt)
     harborBoats?.update(dt)
+    gateDressing?.update(dt)
     population.update(dt, p)
     roadArrow.update(dt)
     objectiveBeacon.update(dt)
@@ -1372,6 +1401,8 @@ function buildWorld(
     harborWater?.dispose()
     riverwalk?.dispose()
     harborBoats?.dispose()
+    skyline?.dispose()
+    gateDressing?.dispose()
     bridge?.dispose()
     fountain.dispose()
     cameraFade.dispose()

@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **A crafted, living edge to the world.** The river is no longer an empty blue
+  band that runs off into fog: low-poly painted fishing BOATS (cabined smacks +
+  masted sloops) are moored along both quays, clearing the bridge channel, with a
+  gentle moored bob; a layered DISTANT-CITY SILHOUETTE rings the horizon so the
+  edge reads "the world continues into a great city" rather than bare sky; and the
+  land GATES through the perimeter rampart are dressed as handsome thresholds —
+  heraldic banners draped down each gate tower with a flag aloft, and warm glowing
+  braziers flanking the road. All additive, thin-instanced, and frozen — a few
+  draw calls for the whole edge, with reduced-motion honoured.
 - **A real waterfront promenade — premium riverwalk dressing.** The +Z water
   edge is now lined with a hand-crafted stone BALUSTRADE (turned vase balusters
   under a capping rail, with heavier piers at intervals), classic harbour LAMP
@@ -160,7 +169,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   tool set is declared in `src/challenges/registry.ts` (`isCrossLanguageTool`):
   fast-translate, tap-translation, listen-choose-pic, memory-pairs, true-false,
   category-sort, picture-match (+ legacy aliases). Guarded by
-  `src/challenges/crossLanguage.test.ts`.
+  `src/challenges/crossLanguage.test.ts`. Additionally, a single-language Track
+  (native === target) can't host a cross-language game at all — those tools are now
+  filtered out of the NPC's offer (`offerableTools({ singleLanguage })` +
+  `resolveGameOffer(..., native)`), so a monolingual learner is never offered a
+  tautological translate/match game.
 - **Raw control JSON never leaks into the NPC dialog bubble (#38).** A small model
   sometimes emits a bare `{ "kind": "reward", "xp": 10 }` WITHOUT the
   `<<tool>…</tool>>` delimiters, and the splitter passed it straight through as

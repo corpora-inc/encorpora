@@ -12,9 +12,11 @@ import {
   personaSeed,
   MOOD_BEATS,
   resolveGameOffer,
+  offerableTools,
   TOOL_OPEN,
   TOOL_CLOSE,
 } from "./promptProgram"
+import { isCrossLanguageTool } from "../challenges/registry"
 import {
   resolveSegue,
   resolveSegueForSeed,
@@ -273,6 +275,33 @@ describe("challenge segues (deterministic, target-language, no English) — CHAN
     expect(offer!.chipLabel.length).toBeGreaterThan(0)
     // The chip label matches the resolved tool's Spanish label.
     expect(offer!.chipLabel).toBe(segueChipLabel(offer!.tool, "es"))
+  })
+
+  it("#27 stopgap: a SINGLE-language Track's offer set excludes cross-language tools", () => {
+    const roles = NpcRole.array().parse(content("npc/roles.json"))
+    // A quest whose whitelist mixes cross-language + monolingual tools.
+    const quest = Quest.parse({
+      ...Quest.parse(content("quests/es-cafe.json")),
+      promptProgram: {
+        ...Quest.parse(content("quests/es-cafe.json")).promptProgram,
+        toolWhitelist: ["fast-translate", "tap-translation", "say-it-back", "word-scramble"],
+      },
+    })
+    const role = roles[0]
+
+    // 2-language Track (es-from-en): cross-language tools may appear.
+    const bilingual = offerableTools(role, quest, { singleLanguage: false })
+    // 1-language Track (en-from-en): NO cross-language tool survives.
+    const mono = offerableTools(role, quest, { singleLanguage: true })
+    expect(mono.length).toBeGreaterThan(0) // still has monolingual drills
+    expect(mono.some((id) => isCrossLanguageTool(id))).toBe(false)
+    expect(mono.every((id) => bilingual.includes(id))).toBe(true) // a strict subset
+
+    // resolveGameOffer with native===target never returns a cross-language tool.
+    for (let turn = 0; turn < 8; turn++) {
+      const offer = resolveGameOffer(role, quest, turn, "en", "en")
+      if (offer) expect(isCrossLanguageTool(offer.tool)).toBe(false)
+    }
   })
 })
 

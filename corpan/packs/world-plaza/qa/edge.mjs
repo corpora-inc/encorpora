@@ -33,25 +33,41 @@ const diag = await page.evaluate(() => window.__wpEdge.diag())
 console.log("DIAG:", JSON.stringify(diag, null, 2))
 const w = diag.water
 
-// HERO: over the near quay, looking out across the moored boats + river.
-await page.evaluate((w) => window.__wpEdge.setView(-Math.PI * 0.5, 1.08, 30, 30, w.waterZ - 6), w)
-await page.waitForTimeout(1400)
-await page.screenshot({ path: "/tmp/wp-edge-hero.png" })
+// pick a real near-quay boat instance to frame on (positions vary by seed).
+const boat = await page.evaluate(() => {
+  const scene = window.__wpScene
+  const bm = scene.meshes.filter((m) => m.name.includes("wp-boats") && m.thinInstanceCount > 0)
+  const pts = []
+  for (const m of bm) {
+    const mats = m.thinInstanceGetWorldMatrices ? m.thinInstanceGetWorldMatrices() : []
+    for (const x of mats) pts.push([Math.round(x.m[12]), Math.round(x.m[14])])
+  }
+  const near = pts.filter((p) => p[1] < 330)
+  near.sort((a, b) => a[0] - b[0])
+  return near[Math.floor(near.length / 2)] || [-180, 313]
+})
 
-// CLOSE: a tight three-quarter on a couple of moored boats.
-await page.evaluate((w) => window.__wpEdge.setView(-Math.PI * 0.66, 1.1, 12, 40, w.waterZ + 2), w)
+// CLOSE: a tight three-quarter on a moored boat (hull + cabin + mast + sail).
+await page.evaluate(([x, z]) => window.__wpEdge.setView(-Math.PI * 0.7, 1.02, 7, x, z), boat)
 await page.waitForTimeout(1200)
 await page.screenshot({ path: "/tmp/wp-edge-close.png" })
 
-// ACROSS: look across the whole river band — near boats → river → far boats.
-await page.evaluate((w) => window.__wpEdge.setView(-Math.PI * 0.5, 0.82, 44, 20, (w.waterZ + w.farBankZ) / 2), w)
+// CLUSTER: from the water side, a moored boat against the quay + city behind.
+await page.evaluate(([x, z]) => window.__wpEdge.setView(Math.PI * 0.5, 1.12, 22, x, z), boat)
+await page.waitForTimeout(1200)
+await page.screenshot({ path: "/tmp/wp-edge-cluster.png" })
+
+// ACROSS: from the near riverwalk, across the river at the far bank + skyline.
+await page.evaluate((w) => window.__wpEdge.setView(Math.PI / 2, 1.5, 60, 0, w.farPromZ + 20), w)
 await page.waitForTimeout(1200)
 await page.screenshot({ path: "/tmp/wp-edge-across.png" })
 
-// TOPDOWN: confirm boats line the quays + clear the bridge channel.
-await page.evaluate((w) => window.__wpEdge.setView(-Math.PI / 2, 0.02, 150, 0, (w.waterZ + w.farBankZ) / 2), w)
+// SKYLINE (clear-air proof): the distant-city silhouette without the fog dome.
+await page.goto(`${BASE}/qa/edge.html?noatmo=1`, { waitUntil: "load" })
+await page.waitForTimeout(5000)
+await page.evaluate((w) => window.__wpEdge.setView(Math.PI / 2, 1.5, 70, 0, w.farPromZ + 30), w)
 await page.waitForTimeout(1200)
-await page.screenshot({ path: "/tmp/wp-edge-topdown.png" })
+await page.screenshot({ path: "/tmp/wp-edge-skyline.png" })
 
 console.log("\n================ WORLD-EDGE (boats) ================")
 console.log("river band z:", w.waterZ, "→", w.farBankZ, " bridgeX:", w.bridgeX)
@@ -59,7 +75,8 @@ console.log("boat meshes:", diag.boatMeshes, " thin counts:", JSON.stringify(dia
   " total base verts:", diag.totalVerts)
 console.log("page errors:", errors.filter((e) => !e.includes("WebSocket")).length
   ? errors.filter((e) => !e.includes("WebSocket")) : "none (WebSocket HMR noise ignored)")
-console.log("shots: /tmp/wp-edge-{hero,close,across,topdown}.png")
+console.log("framed boat at:", JSON.stringify(boat))
+console.log("shots: /tmp/wp-edge-{close,cluster,across,skyline}.png")
 
 await browser.close()
 cleanup()

@@ -298,7 +298,13 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
           chipLabel: args.forcedOffer.chipLabel,
         }
       }
-      return resolveGameOffer(args.npcRole, args.quest, turn, args.learnerPair.target)
+      return resolveGameOffer(
+        args.npcRole,
+        args.quest,
+        turn,
+        args.learnerPair.target,
+        args.learnerPair.native,
+      )
     }
     let currentOffer: GameOffer | null = resolveStandingOffer(offerTurn)
     let challengeObserver: MutationObserver | null = null

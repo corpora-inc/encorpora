@@ -103,6 +103,7 @@
 | H2 | Per-Track **total-immersion toggle**. | DESIGNED | |
 | H3 | Anon **analytics pulse** (pair × country × duration; respect global opt-out; offline-safe). | DESIGNED | |
 | H4 | Content variety scale-out (per-pair generation). | QUEUED | |
+| H5 | **Single-language-mode redesign of the inherently-2-language games** (translate-fast / tap-translation / listen-choose-pic / memory-pairs / true-false / category-sort / picture-match). A native-only (target===native) Track can't contrast two languages, so today they're FILTERED OUT of the offer (`offerableTools({singleLanguage})` + `resolveGameOffer(native)` — the #27 stopgap). The real fix is a 1-language variant of each (e.g. word↔picture, definition-match, cloze) so a monolingual learner still gets these game shapes. Ties into SINGLE_LANGUAGE_RULE. | QUEUED | Stopgap (exclude) shipped with #27; redesign pending. |
 
 ## I. SHIP / INFRA
 

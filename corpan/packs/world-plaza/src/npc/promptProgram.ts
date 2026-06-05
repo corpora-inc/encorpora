@@ -278,8 +278,13 @@ export function resolveGameOffer(
   quest: Quest,
   turn = 0,
   target = "en",
+  native?: string,
 ): GameOffer | null {
-  const tools = offerableTools(npcRole, quest)
+  // A single-language Track (native === target) can't host a cross-language game
+  // (translate/match would be a tautology), so filter those out of the offer
+  // (#27 stopgap). When `native` is omitted (older callers) the filter is off.
+  const singleLanguage = native != null && native === target
+  const tools = offerableTools(npcRole, quest, { singleLanguage })
   if (tools.length === 0) return null
   const base = hashStr(npcRole.id)
   const tool = tools[(base + turn) % tools.length]

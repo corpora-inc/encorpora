@@ -63,8 +63,11 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
   // warmer so the two depths separate without colour clashing with the town.
   const sky = hexC3(opts.palette?.sky, "#cfe6ea")
   const haze = mix(sky, new Color3(1, 1, 1), 0.18)
-  const farTowers = mix(sky, hexC3(undefined, "#6f7e93"), 0.62) // pale, distant
-  const nearTowers = mix(sky, hexC3(undefined, "#54637a"), 0.78) // a hair darker/closer
+  // The towers must PUNCH THROUGH the warm distance-haze, so they lean well toward
+  // a cool, saturated slate — a pale wash would vanish into the fog band. Far is
+  // softer (more sky mixed in), near is markedly darker so the two depths read.
+  const farTowers = mix(sky, hexC3(undefined, "#566377"), 0.74) // muted far ridge
+  const nearTowers = mix(sky, hexC3(undefined, "#3c4759"), 0.92) // dark near ridge
 
   // deterministic PRNG so the skyline is varied but stable.
   let s = (opts.seed ?? 1234) >>> 0
@@ -117,25 +120,23 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
     return tex
   }
 
-  /** Build a large skyline-band cylinder at a real, far world RADIUS (beyond the
-   *  buildable world but inside the camera far plane). It is RE-CENTERED on the
-   *  camera in X/Z every frame so it has no edge and always sits at the horizon,
-   *  but keeps real depth — so it draws OVER the (infinite-distance) sky dome yet
-   *  is correctly occluded by nearer buildings. Open-ended, inward-facing, fog OFF
-   *  (the painted haze does the blending). The tower band is mapped so the towers'
-   *  feet land at the camera's eye height (the horizon). */
-  const band = (name: string, tex: DynamicTexture, radius: number, height: number, eyeY: number) => {
+  /** Build one skyline-band cylinder at a real far RADIUS (just inside the camera
+   *  far-clip, beyond the buildable world). It is RE-CENTERED on the camera in X/Z
+   *  every frame so it never shows an edge and always rings the horizon, while
+   *  keeping REAL depth — so it draws OVER the (infinite-distance) sky dome and is
+   *  correctly OCCLUDED by nearer buildings. Open-ended, inward-facing, fog OFF
+   *  (the painted haze blends the feet). The texture is V-flipped so the towers
+   *  rise ABOVE the cylinder's vertical centre (= the camera's eye level). */
+  const band = (name: string, tex: DynamicTexture, radius: number, height: number, alphaIndex: number) => {
     const cyl = MeshBuilder.CreateCylinder(
       `${tag}-${name}`,
       { diameter: radius * 2, height, tessellation: 80, sideOrientation: Mesh.BACKSIDE, cap: 0 as 0 },
       scene,
     )
-    // centre the cylinder vertically on the eye so the texture's horizon (V=0.5)
-    // sits at eye level → the towers rise from the horizon.
-    cyl.position.y = eyeY
     cyl.applyFog = false
     cyl.isPickable = false
     cyl.renderingGroupId = 0
+    cyl.alphaIndex = alphaIndex // far band before near band
     const mat = new StandardMaterial(`${tag}-${name}-mat`, scene)
     mat.diffuseTexture = tex
     mat.opacityTexture = tex
@@ -145,26 +146,32 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
     mat.specularColor = new Color3(0, 0, 0)
     mat.disableLighting = true
     mat.backFaceCulling = false
+    // Babylon cylinder V=0 at the BOTTOM. Our texture paints towers in the upper
+    // rows (above the horizon at row H/2). Empirically the unflipped mapping lands
+    // the towers BELOW the horizon, so FLIP V → towers rise above eye level.
+    tex.vScale = -1
+    tex.vOffset = 1
     cyl.material = mat
     cyl.parent = root
     return { cyl, mat }
   }
 
-  // FAR layer (bigger radius, behind) + NEAR layer (smaller radius, in front, a
-  // touch taller/darker). Radii sit beyond the ~540u world but inside the camera
-  // far plane (~1400). The tower band height is generous so the city reads big.
-  const EYE = 1.6 // approximate player eye height; the band centres here
+  // FAR layer (bigger, behind) + NEAR layer (smaller, in front, taller/darker).
+  // Radii sit just inside the engine far-clip (game maxZ≈380) but beyond the world
+  // footprint, so the bands clear the buildings yet never get clipped away.
+  // The cylinder spans a modest vertical band so the texture maps compactly
+  // around the horizon (a tall cylinder spreads the towers over a huge range).
+  // At radius ~365 and height ~150, the towers subtend a believable far-city
+  // height. Centre Y is set per-band so the texture's horizon lands at EYE.
+  const EYE = 1.6
   const farTex = paintLayer("far", farTowers, 1.0, 0.66)
   const nearTex = paintLayer("near", nearTowers, 1.4, 0.86)
-  const far = band("far", farTex, 760, 900, EYE)
-  const near = band("near", nearTex, 640, 820, EYE)
-  // draw the near band after the far band.
-  near.cyl.alphaIndex = 1
-  far.cyl.alphaIndex = 0
+  const far = band("far", farTex, 372, 150, 0)
+  const near = band("near", nearTex, 360, 140, 1)
 
-  // ── camera-follow: recenter the bands on the camera in X/Z every frame so the
-  // skyline has no edge and always rings the horizon. Y stays fixed (eye height)
-  // so the horizon line never bobs. Cheap: two position writes per frame. ──
+  // ── camera-follow: recentre the bands on the camera in X/Z each frame so the
+  // skyline has no edge and always rings the horizon; Y stays fixed (eye height)
+  // so the horizon never bobs. Two cheap position writes per frame. ──
   let cb: (() => void) | null = () => {
     const cam = scene.activeCamera
     if (!cam) return
@@ -172,7 +179,7 @@ export function buildDistantSkyline(scene: BabylonScene, opts: DistantSkylineOpt
     far.cyl.position.set(p.x, EYE, p.z)
     near.cyl.position.set(p.x, EYE, p.z)
   }
-  scene.registerBeforeRender(cb!)
+  scene.registerBeforeRender(cb)
 
   return {
     root,

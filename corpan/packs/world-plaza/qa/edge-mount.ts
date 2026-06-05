@@ -20,6 +20,7 @@ import { applyAtmosphere } from "../src/world/atmosphere"
 import { generateCity, mountCity } from "../src/city"
 import { buildHarborBoats } from "../src/world/harborBoats"
 import { buildDistantSkyline } from "../src/world/distantSkyline"
+import { buildGateDressing } from "../src/world/gateDressing"
 
 const qs = new URLSearchParams(location.search)
 const worldScene = WorldSceneSchema.parse(sceneJson)
@@ -91,6 +92,14 @@ world.onFrame((dt) => boats.update(dt))
 // drops it to A/B the bare horizon.
 const skyline = qs.get("noskyline") === "1" ? null : buildDistantSkyline(scene, { palette, seed: 4242 })
 void skyline
+
+// gate-tower dressing on the rampart (banners + braziers at each gate jamb). Reads
+// layout.boundary; absent on legacy layouts.
+const boundary = (layout as unknown as { boundary?: import("../src/city/layout").CityBoundary }).boundary
+const gateDress = boundary
+  ? buildGateDressing(scene, { boundary, bounds: layout.bounds, palette, reducedMotion: qs.get("reduce") === "1" })
+  : null
+if (gateDress) world.onFrame((dt) => gateDress.update(dt))
 
 const cam = new ArcRotateCamera("wp-edge-cam", -Math.PI / 2, 1.0, 24, new Vector3(0, 0, water.waterZ), scene)
 cam.fov = 0.7

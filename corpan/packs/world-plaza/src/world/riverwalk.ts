@@ -55,8 +55,15 @@ export interface Riverwalk {
 }
 
 export interface RiverwalkOptions {
-  /** world Z of the water edge; the quay (walkable) is at z < edgeZ, water beyond. */
+  /** world Z of the NEAR water edge; the near quay (walkable) is at z < edgeZ. */
   edgeZ: number
+  /**
+   * world Z of the FAR water edge (CityWater.farBankZ). When set, the river is a
+   * BAND `[edgeZ, farEdgeZ]`: the water sheet is capped at `farEdgeZ` (it does NOT
+   * run to the world edge, which would paint over the far bank + sea wall), and
+   * the foam laps BOTH shorelines. Absent → legacy water-to-edge behaviour.
+   */
+  farEdgeZ?: number
   /** full-city world bounds (the balustrade spans the waterfront width). */
   bounds: { minX: number; maxX: number; minZ: number; maxZ: number }
   /** bridge opening so the balustrade leaves the deck clear (centre x + half-width). */
