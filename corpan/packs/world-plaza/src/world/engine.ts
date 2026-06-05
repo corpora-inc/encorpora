@@ -83,13 +83,14 @@ export interface CameraRig {
 const DEFAULT_RIG: CameraRig = {
   fov: 0.62, // ~35.5° — a touch longer than the old 0.7 for a premium cruise lens
   distance: 8.8, // midpoint between the old wide rig (11) and the close cruise cam (6.6)
-  // Raised eye + LOWER gaze lift = a slightly steeper HD-2D pitch (~28° vs the old
-  // ~18°). This drops the far horizon haze out of frame, so the world can render a
-  // SMALLER radius without feeling like you see less forward — fewer objects, same
-  // sense of distance. Live-tunable via `window.__wpCam = { height, lookHeight,
-  // distance, fov }` (read each frame) so the balance can be dialled on-device.
-  height: 6.8, // was 5.5 — eye up a notch for more downward overview
-  lookHeight: 1.9, // was 2.6 — gaze drops off the horizon toward the near ground
+  // A GENTLE pitch lift over the old flat rig — just enough to ease the far horizon
+  // haze without flooding the screen with near ground. (A steeper 6.8/1.9 pitch was
+  // both too top-down AND slower on real GPUs: looking down fills the frame with the
+  // curved, post-processed cobblestone, which costs per-fragment even with fewer
+  // draws. So we keep the eye low and the gaze fairly far out.) Live-tunable via
+  // `window.__wpCam = { height, lookHeight, distance, fov }` (read each frame).
+  height: 6.0, // was 5.5 — eye up just a touch
+  lookHeight: 2.4, // was 2.6 — gaze eases off the horizon only slightly
   followLerp: 0.12, // smooth, juicy trail (fps-compensated below)
   aimLerp: 0.2,
 }

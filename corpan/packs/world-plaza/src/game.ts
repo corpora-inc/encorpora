@@ -399,9 +399,8 @@ function buildWorld(
       visibilityRadius:
         (typeof window !== "undefined" &&
           (window as unknown as { __wpVisRadius?: number }).__wpVisRadius) ||
-        105, // steeper HD-2D pitch drops the far horizon out of frame, so a smaller
-      // radius renders fewer chunks without feeling closer-in. (was 125; tune live
-      // with window.__wpVisRadius alongside window.__wpCam.)
+        120, // see comfortably forward; the gentle camera pitch eases horizon haze.
+      // (back up from an over-aggressive 105; tune live with window.__wpVisRadius.)
     },
     // Sun shadow seam — only the player-local near chunks cast (bounded set).
     ...(cityShadowsEnabled
