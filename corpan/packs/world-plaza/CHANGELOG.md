@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Three transit HERO landmarks + boarding vignettes (the city scales out).**
+  The metropolis gains a **Union Rail Station**, a **Central Bus Terminal**, and a
+  **City Airport** — each a real anchored landmark (distinct hero footprint: rail
+  head-house + clock block, bus terminal with departure bays, airport terminal +
+  control tower) in its own quadrant, with a ceremonial forecourt ARCH you walk
+  THROUGH to board. (`city/generateCity.ts`, `world/specialPlaces.ts`.)
+- **Transit is now reachable in normal play.** Each station landmark is a literal
+  ENTRY POINT: walk up → a localized Enter affordance → the matching **boarding
+  vignette** (a paper-person clerk who talks in the TARGET language via the real
+  Qwen3 runtime, a departures board, a say-it-back challenge that EARNS the trip,
+  a fare paid from your wallet) → you ARRIVE at the chosen landmark (`travelTo`
+  re-spawn). One shared boarding vignette, three mode skins (bus / train / flight);
+  the taxi rank stays as-is. (`vignettes/boarding.ts`, `vignettes/index.ts`,
+  surgical wiring behind `addTransitPortal` in `game.ts`.) Every string is keyed
+  with an English fallback (the taxi convention) — ready for the ~50-lang fill.
+
 ### Performance
 - **Chunk-level building-detail MERGE + figure culling (city scale headroom).**
   Three cuts that slash the per-frame *active-mesh evaluation* — the cost the docs

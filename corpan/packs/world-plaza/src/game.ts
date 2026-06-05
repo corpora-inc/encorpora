@@ -67,8 +67,9 @@ import {
   type OpenNpcArgs,
   type VignetteNpcHandle,
   type TaxiDestination,
+  type BoardingDestination,
 } from "./vignettes"
-import { createPortalAffordance } from "./world/portalAffordance"
+import { createPortalAffordance, type PortalAffordance } from "./world/portalAffordance"
 import { createRoadArrow } from "./wayfinding/roadArrow"
 import { createObjectiveBeacon } from "./wayfinding/objectiveBeacon"
 import { locateObjective } from "./quest/objectiveLocator"
@@ -705,6 +706,12 @@ function buildWorld(
     ...(stationAnchorSP
       ? { station: { x: stationAnchorSP.x, z: stationAnchorSP.z, facing: stationAnchorSP.facing } }
       : {}),
+    // #34 transit heroes: dress each boarding landmark's forecourt with the same
+    // ceremonial arch threshold (only the ones that exist on this layout).
+    transitStations: (["bus_station", "rail_station", "airport"] as const)
+      .map((id) => city.getAnchor(id))
+      .filter((a): a is NonNullable<typeof a> => !!a)
+      .map((a) => ({ x: a.x, z: a.z, facing: a.facing })),
     ...(waterEdgeZ != null
       ? {
           promenade: {
@@ -1349,54 +1356,137 @@ function buildWorld(
       t: (key, params) => vt(key, params),
     },
   })
-  registerBuiltinVignettes(vignetteHost, { taxi: { destinations: taxiDestinations() } })
-
-  // The `station` city anchor is the TAXI RANK: a portal that enters the taxi
-  // vignette. The affordance mirrors the NPC Talk button (proximity prompt + a
-  // ≥44px localized Enter button that swallows its own pointer events — the
-  // joystick-steals-taps rule). On enter we run the vignette; a transit result
-  // re-spawns the player at the destination anchor, exactly as if they had walked.
-  const stationAnchor = city.getAnchor("station")
-  const enterTaxi = async (anchorId: string): Promise<void> => {
-    if (vignetteHost.isActive() || openDialogue) return
-    // Suppress world focus + the portal itself while the vignette owns the screen
-    // (the host already pauses the sim; this just stops re-triggering on exit).
-    portal?.setEnabled(false)
-    try {
-      const result = await vignetteHost.enter(VIGNETTE_IDS.taxi, { anchorId })
-      if (result?.travelTo) {
-        const a = city.getAnchor(result.travelTo)
-        if (a) player.respawnAt(a.x, a.z)
-      }
-      if (result?.questStep) questEngine.advance(result.questStep)
-      // Rewards were already granted inside the vignette (HUD reveal fired there).
-    } catch (e) {
-      console.error("[world-plaza] taxi vignette failed:", e)
-    } finally {
-      portal?.setEnabled(true)
-    }
-  }
-  const portal = stationAnchor
-    ? createPortalAffordance(world, overlay, {
-        anchorId: "station",
-        pos: { x: stationAnchor.x, z: stationAnchor.z },
-        // Localized "Take a taxi" — inline English fallback (no LOCALE table yet).
+  // TRANSIT destinations for the bus/train/flight boarding halls: the OTHER real
+  // city landmarks (never the station you're standing in), mapped to localized
+  // labels + fares in the Track's default currency. Each `anchorId` is a REAL
+  // anchor the player re-spawns at on arrival. We keep only present anchors so a
+  // degenerate/stub layout never offers a dead destination. Fares scale with the
+  // mode (a flight costs more than a coach) — flavour, not a paywall.
+  const boardingDestinations = (
+    selfAnchor: string,
+    fareScale: number,
+  ): BoardingDestination[] => {
+    const ride: Array<{ anchorId: string; label: string; fare: number; motif: string }> = [
+      { anchorId: "rail_station", label: "the rail station", fare: 220, motif: "train" },
+      { anchorId: "bus_station", label: "the bus terminal", fare: 180, motif: "bus" },
+      { anchorId: "airport", label: "the airport", fare: 320, motif: "plane" },
+      { anchorId: "harbor", label: "the harbor", fare: 260, motif: "harbor" },
+      { anchorId: "market", label: "the market", fare: 160, motif: "market" },
+      { anchorId: "station", label: "central station", fare: 140, motif: "station" },
+      { anchorId: "fountain", label: "the central plaza", fare: 120, motif: "fountain" },
+    ]
+    return ride
+      .filter((d) => d.anchorId !== selfAnchor && city.getAnchor(d.anchorId))
+      .map((d) => ({
+        anchorId: d.anchorId,
         label:
-          vt("vignette.taxi.enter") === "vignette.taxi.enter"
-            ? "Take a taxi"
-            : vt("vignette.taxi.enter"),
-        onEnter: (id) => void enterTaxi(id),
-      })
-    : null
-  if (!stationAnchor)
-    console.warn("[world-plaza] no `station` anchor — taxi rank portal disabled")
+          vt(`vignette.board.dest.${d.anchorId}`) === `vignette.board.dest.${d.anchorId}`
+            ? d.label
+            : vt(`vignette.board.dest.${d.anchorId}`),
+        fare: Math.round(d.fare * fareScale),
+        motif: d.motif,
+      }))
+  }
+  registerBuiltinVignettes(vignetteHost, {
+    taxi: { destinations: taxiDestinations() },
+    bus: { destinations: boardingDestinations("bus_station", 1.0) },
+    train: { destinations: boardingDestinations("rail_station", 1.1) },
+    flight: { destinations: boardingDestinations("airport", 1.6) },
+  })
 
-  // DEV-ONLY hook: lets the headless harness trigger the taxi without walking to
-  // the rank (the proximity path is exercised by the portal button at runtime).
+  // ── TRANSIT PORTALS: walk INTO a station landmark to board ──────────────────
+  // Each transit-hero anchor (the taxi rank + the three station landmarks) gets a
+  // proximity Enter affordance that runs its bound vignette. The affordance mirrors
+  // the NPC Talk button (a localized ≥44px button that swallows its own pointer
+  // events — the joystick-steals-taps rule). On a transit result we re-spawn the
+  // player at the destination anchor, exactly as if they had walked there.
+  // (Generalized from the single taxi rank so a bigger city scales to many
+  // boarding points without N copies of the enter/exit plumbing.)
+  interface TransitPortal {
+    anchorId: string
+    vignetteId: string
+    label: string
+    affordance: PortalAffordance
+  }
+  const transitPortals: TransitPortal[] = []
+  // Build a portal for one transit hero. `labelKey`/`labelFallback` localizes the
+  // Enter button; `anchorId` is the city anchor the portal sits on AND the vignette
+  // entry tag; `vignetteId` is which boarding/taxi flow it runs.
+  const addTransitPortal = (
+    anchorId: string,
+    vignetteId: string,
+    labelKey: string,
+    labelFallback: string,
+  ): void => {
+    const anchor = city.getAnchor(anchorId)
+    if (!anchor) {
+      console.warn(`[world-plaza] no \`${anchorId}\` anchor — ${vignetteId} portal disabled`)
+      return
+    }
+    const enter = async (id: string): Promise<void> => {
+      if (vignetteHost.isActive() || openDialogue) return
+      // suppress EVERY transit portal while the vignette owns the screen so none
+      // re-triggers on exit (the host already paused the sim).
+      for (const p of transitPortals) p.affordance.setEnabled(false)
+      try {
+        const result = await vignetteHost.enter(vignetteId, { anchorId: id })
+        if (result?.travelTo) {
+          const a = city.getAnchor(result.travelTo)
+          if (a) player.respawnAt(a.x, a.z)
+        }
+        if (result?.questStep) questEngine.advance(result.questStep)
+        // Rewards were already granted inside the vignette (HUD reveal fired there).
+      } catch (e) {
+        console.error(`[world-plaza] ${vignetteId} vignette failed:`, e)
+      } finally {
+        for (const p of transitPortals) p.affordance.setEnabled(true)
+      }
+    }
+    const affordance = createPortalAffordance(world, overlay, {
+      anchorId,
+      pos: { x: anchor.x, z: anchor.z },
+      label: vt(labelKey) === labelKey ? labelFallback : vt(labelKey),
+      onEnter: (id) => void enter(id),
+    })
+    transitPortals.push({ anchorId, vignetteId, label: labelFallback, affordance })
+  }
+  // The taxi rank (kept at `station` for back-compat) + the three NEW station
+  // landmarks, each its own boarding mode. Order: rank first, then bus/train/flight.
+  addTransitPortal("station", VIGNETTE_IDS.taxi, "vignette.taxi.enter", "Take a taxi")
+  addTransitPortal("bus_station", VIGNETTE_IDS.bus, "vignette.board.bus.enter", "Catch the coach")
+  addTransitPortal("rail_station", VIGNETTE_IDS.train, "vignette.board.train.enter", "Board the train")
+  addTransitPortal("airport", VIGNETTE_IDS.flight, "vignette.board.flight.enter", "Check in to fly")
+
+  // DEV-ONLY hook: lets the headless harness trigger any transit flow without
+  // walking to the landmark (the proximity path is exercised by the button at
+  // runtime). Pass a vignette id ("taxi"|"bus"|"train"|"flight"); defaults to taxi.
   const isDevBuild = (import.meta as unknown as { env?: { DEV?: boolean } }).env?.DEV
   if (typeof window !== "undefined" && isDevBuild) {
-    ;(window as unknown as { __wpEnterTaxi?: () => void }).__wpEnterTaxi = () =>
-      void enterTaxi("station")
+    const W = window as unknown as { __wpEnterTaxi?: () => void; __wpEnterTransit?: (id?: string) => void }
+    const fire = (vid: string, anchorId: string) => {
+      void vignetteHost
+        .enter(vid, { anchorId })
+        .then((r) => {
+          if (r?.travelTo) {
+            const a = city.getAnchor(r.travelTo)
+            if (a) player.respawnAt(a.x, a.z)
+          }
+        })
+        .catch((e) => console.error("[world-plaza] dev transit enter failed:", e))
+    }
+    W.__wpEnterTaxi = () => fire(VIGNETTE_IDS.taxi, "station")
+    W.__wpEnterTransit = (id) => {
+      const vid = id ?? VIGNETTE_IDS.taxi
+      const anchorId =
+        vid === VIGNETTE_IDS.bus
+          ? "bus_station"
+          : vid === VIGNETTE_IDS.train
+            ? "rail_station"
+            : vid === VIGNETTE_IDS.flight
+              ? "airport"
+              : "station"
+      fire(vid, anchorId)
+    }
   }
 
   // App shell: ESC → close dialogue / menu / "Leave the Plaza?" → exit to host.
@@ -1776,12 +1866,14 @@ function buildWorld(
       }
     }
     focus.update(dt, p, tap)
-    // The taxi-rank portal: surface its Enter affordance by proximity to `station`.
-    // While a dialogue OR a vignette owns the screen, keep it suppressed so nothing
-    // re-triggers (the vignette host already paused the sim).
-    if (portal) {
-      portal.setEnabled(!openDialogue && !vignetteHost.isActive())
-      portal.update(p, tap)
+    // The transit portals (taxi rank + bus/train/airport): surface each Enter
+    // affordance by proximity to its landmark. While a dialogue OR a vignette owns
+    // the screen, keep them all suppressed so nothing re-triggers (the vignette
+    // host already paused the sim). A `tap` only ever lands on the nearest one.
+    const portalsLive = !openDialogue && !vignetteHost.isActive()
+    for (const tp of transitPortals) {
+      tp.affordance.setEnabled(portalsLive)
+      tp.affordance.update(p, tap)
     }
     cameraFade.update(dt)
     minimap.tick()
@@ -1808,7 +1900,7 @@ function buildWorld(
     soundscape.dispose()
     cityRadio?.dispose() // stop the radio + clear the single-instance slot
     openDialogue?.close()
-    portal?.dispose()
+    for (const tp of transitPortals) tp.affordance.dispose()
     vignetteHost.dispose() // force-exit any running vignette + release the model
     if (typeof window !== "undefined")
       delete (window as unknown as { __wpEnterTaxi?: () => void }).__wpEnterTaxi

@@ -51,6 +51,12 @@ export interface SpecialPlacesOptions {
    *  approach (the avenue runs along `facing`). */
   station?: PlaceAnchor & { facing?: number }
   /**
+   * Additional transit-station forecourts (the #34 bus / train / airport boarding
+   * heroes). Each gets the SAME ceremonial banner arch + flanking urn planters as
+   * the central `station`, so every boarding landmark reads as a real threshold you
+   * walk THROUGH to board. Empty/absent ⇒ none (the single-station pre-#34 case). */
+  transitStations?: Array<PlaceAnchor & { facing?: number }>
+  /**
    * The near riverwalk PROMENADE — a line of formal planters strolling along it.
    * `edgeZ` is the near water edge (layout.water.waterZ); planters sit a touch
    * shoreward. `bounds` spans the waterfront width; `gap` keeps the bridge clear.
@@ -461,27 +467,27 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
     instanceSet(buildBunting(), buntPlacements)
   }
 
-  /* ====================== STATION FORECOURT ARCH ====================== */
-  if (opts.station) {
-    const sx = opts.station.x
-    const sz = opts.station.z
-    const facing = opts.station.facing ?? 0
-    // ONE ceremonial banner arch straddling the station approach, set a few metres
-    // out into the forecourt from the anchor, plus a pair of urn planters flanking
-    // the threshold. The arch spans across `facing` (yaw = facing) so you pass
-    // THROUGH it; it sits `out` toward the approach (−forward of the anchor facing).
+  /* ====================== STATION FORECOURT ARCHES ====================== */
+  // A ceremonial banner arch + flanking urn planters mark each transit forecourt —
+  // the central station AND the new bus/train/airport boarding heroes (#34). The
+  // arch straddles the approach so you walk THROUGH it INTO the boarding hall, which
+  // is exactly the transit ENTRY affordance. One builder, applied per forecourt.
+  const dressStationForecourt = (sx: number, sz: number, facing: number): void => {
+    // The arch spans across `facing` (yaw = facing) so you pass THROUGH it; it sits
+    // `out` toward the approach (−forward of the anchor facing).
     const out = 9
     const ax = sx - Math.sin(facing) * out
     const az = sz - Math.cos(facing) * out
     instanceSet(buildArch(), [{ x: ax, z: az, yaw: facing, scale: 1 }])
     // urns just inside the arch piers (offset laterally along the arch span).
     const lat = 4.4
-    const urnPlace = [
+    instanceSet(buildUrn(), [
       { x: ax + Math.cos(facing) * lat, z: az - Math.sin(facing) * lat, yaw: 0, scale: 1 },
       { x: ax - Math.cos(facing) * lat, z: az + Math.sin(facing) * lat, yaw: 0, scale: 1 },
-    ]
-    instanceSet(buildUrn(), urnPlace)
+    ])
   }
+  if (opts.station) dressStationForecourt(opts.station.x, opts.station.z, opts.station.facing ?? 0)
+  for (const s of opts.transitStations ?? []) dressStationForecourt(s.x, s.z, s.facing ?? 0)
 
   /* ====================== RIVERWALK PROMENADE URNS ====================== */
   if (opts.promenade) {
