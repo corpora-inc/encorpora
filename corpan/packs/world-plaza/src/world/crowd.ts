@@ -560,7 +560,26 @@ export function createCrowd(
       stx = free.x
       stz = free.z
     }
-    const c = clampToBounds(stx, stz)
+    let c = clampToBounds(stx, stz)
+    // INVARIANT: a stationed special stands on flat GROUND, never on a raised
+    // walk-surface (the bridge deck). An anchor that sits on a ramp/deck (bridge_n)
+    // would otherwise float the NPC up the bridge — beacon offscreen, body clipping
+    // the parapets. Walk back toward the city interior along the ground until we're
+    // off the raised surface, so the keeper waits at the bridge FOOT on solid earth.
+    if (groundH(c.x, c.z) > 0.3) {
+      let gx = c.x
+      let gz = c.z
+      const dx = cx - gx
+      const dz = cz - gz
+      const len = Math.hypot(dx, dz) || 1
+      const ux = dx / len
+      const uz = dz / len
+      for (let s = 0; s < 60 && groundH(gx, gz) > 0.3; s++) {
+        gx += ux
+        gz += uz
+      }
+      c = clampToBounds(gx, gz)
+    }
     return { anchor, x: c.x, z: c.z }
   }
 

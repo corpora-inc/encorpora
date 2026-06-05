@@ -47,7 +47,7 @@ describe("SpecialNpcResolver — content + lookups", () => {
     // docks step: ferry hand is the objective NPC at the harbor.
     expect(special.deliverFor(QID, "docks")?.anchorId).toBe("harbor")
     expect(special.cluesFor(QID, "docks")).toEqual([])
-    // gate step (traverse): bridge keeper marks the spot.
+    // gate step (talk): bridge keeper on the ground.
     expect(special.deliverFor(QID, "gate")?.anchorId).toBe("bridge_n")
     expect(special.cluesFor(QID, "gate")).toEqual([])
   })
@@ -91,10 +91,10 @@ describe("SpecialNpcResolver — content + lookups", () => {
   })
 })
 
-describe("Full playable walk (#26): talk-challenge → traverse → complete", () => {
+describe("Full playable walk (#26): talk-challenge → keeper talk → complete", () => {
   beforeEach(() => localStorage.clear())
 
-  it("docks is a talk-challenge at the ferry hand; gate completes by reaching the bridge", () => {
+  it("docks is a talk-challenge at the ferry hand; gate completes by talking to the keeper", () => {
     const { engine, inventory, special } = fresh()
 
     // ── Step `docks` (talk): the ferry hand is the objective NPC at the harbor.
@@ -107,14 +107,14 @@ describe("Full playable walk (#26): talk-challenge → traverse → complete", (
     expect(engine.advance("docks")).toBe(true)
     expect(engine.state().stepDone["docks"]).toBe(true)
 
-    // ── Step `gate` (traverse): the bridge keeper marks the spot; reaching the
-    // bridge (the proximity trigger sets the beaten flag) completes it.
+    // ── Step `gate` (talk): the bridge keeper stands on the GROUND at the bridge
+    // foot; talking + winning the keeper's challenge completes it (no deck-walk).
     expect(engine.currentStep()?.id).toBe("gate")
-    expect(engine.currentStep()?.kind).toBe("traverse")
+    expect(engine.currentStep()?.kind ?? "talk").toBe("talk")
     expect(engine.currentStepState()).toBe("needs-challenge")
     expect(special.anchorName("bridge_n", QID)).toBe("the bridge keeper")
 
-    engine.markStepBeaten("gate") // ← the traversal trigger does this on arrival
+    engine.markStepBeaten("gate") // ← the keeper's challenge win
     expect(engine.advance("gate")).toBe(true)
 
     // Quest complete + reward granted once.

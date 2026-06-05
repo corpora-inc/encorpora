@@ -32,25 +32,22 @@ describe("QuestEngine — es-guadalajara-route (#26: deterministic, always-compl
     expect(engine.advance("docks")).toBe(false) // refused until beaten
   })
 
-  it("step 2 (gate) is a TRAVERSE step — completed by REACHING it, no challenge/item", () => {
+  it("step 2 (gate) is a ground TALK-challenge at the bridge keeper (no fragile deck-walk)", () => {
     const { engine } = freshEngine()
-    // Beat + advance the talk step to reach the traverse step.
+    // Beat + advance the first talk step to reach the bridge keeper step.
     expect(challengeSatisfiesStep(QUEST.steps[0], "translate-fast", 0.9)).toBe(true)
     engine.markStepBeaten("docks")
     expect(engine.advance("docks")).toBe(true)
 
     const gate = engine.currentStep()
     expect(gate?.id).toBe("gate")
-    expect(gate?.kind).toBe("traverse")
-    // A traverse step reports needs-challenge ("go here") until reached, and is
-    // NOT satisfied by inventory — the proximity trigger sets the beaten flag.
+    expect(gate?.kind ?? "talk").toBe("talk") // talk to the keeper on the GROUND
+    expect(gate?.toolId).toBe("translate-fast") // mic-free, like every gate
+    // Gated needs-challenge until the keeper's challenge is beaten.
     expect(engine.stepState("gate")).toBe("needs-challenge")
-    expect(engine.isStepSatisfied("gate")).toBe(false)
-    expect(engine.advance("gate")).toBe(false) // can't advance before arrival
-
-    // Reaching the bridge marks it beaten → satisfied → advance completes.
+    expect(engine.advance("gate")).toBe(false) // refused until beaten
+    expect(challengeSatisfiesStep(gate!, "translate-fast", 0.9)).toBe(true)
     engine.markStepBeaten("gate")
-    expect(engine.stepState("gate")).toBe("ready-to-deliver")
     expect(engine.isStepSatisfied("gate")).toBe(true)
   })
 

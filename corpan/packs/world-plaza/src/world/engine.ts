@@ -204,8 +204,10 @@ export function createWorldEngine(
   const collideBoom = () => {
     if (scene.meshes.length !== boomMeshSceneCount) syncBoomMeshes()
     if (boomMeshes.length === 0) return
-    // ray from head (lifted look point) out to the desired eye.
-    boomFrom.set(followPos.x, rig.lookHeight, followPos.z)
+    // ray from head (lifted look point, riding the player's elevation) out to the
+    // desired eye — so on the bridge deck the boom samples from the real head, not
+    // a ground-level point under the deck.
+    boomFrom.set(followPos.x, followPos.y + rig.lookHeight, followPos.z)
     boomDir.copyFrom(tmpDesired).subtractInPlace(boomFrom)
     const boomLen = boomDir.length()
     if (boomLen < 1e-3) return
@@ -267,9 +269,14 @@ export function createWorldEngine(
     // close distance keeps the paper-doll player large and fully readable.
     const sin = Math.sin(followYaw)
     const cos = Math.cos(followYaw)
+    // The eye rides the player's ELEVATION (followPos.y), not an absolute height —
+    // so on a raised surface (the bridge deck) the camera climbs WITH the player
+    // and keeps the same framing. Using an absolute height made the eye stay at
+    // ground level while the aim rose onto the deck → a steep up-crane that jammed
+    // the boom into the deck and zoomed the player's head. General: any elevation.
     tmpDesired.set(
       followPos.x + sin * rig.distance,
-      rig.height,
+      followPos.y + rig.height,
       followPos.z + cos * rig.distance,
     )
     // #25: pull the desired eye in if a building/roof sits between it and the
