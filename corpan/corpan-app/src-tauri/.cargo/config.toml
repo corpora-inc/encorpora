@@ -12,6 +12,14 @@
 linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+    # Put APPLE clang's compiler-rt dir on the link search path so `-lclang_rt.osx`
+    # always resolves. A build script (llama-cpp-sys-2) still does a bare `clang`
+    # lookup → finds the NDK 26.1 clang first on $PATH → stamps the NDK's (wrong,
+    # nonexistent) clang_rt path + `-lclang_rt.osx` into the link. This -L makes the
+    # linker find the REAL Apple libclang_rt.osx.a anyway. Versioned by Xcode's clang
+    # major (`clang/21` today) — bump if Xcode updates it. Fixes `ld: library
+    # 'clang_rt.osx' not found` (the 3rd NDK-on-PATH desktop-build failure mode).
+    "-C", "link-arg=-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin",
 ]
 
 [target.aarch64-apple-darwin]
@@ -19,6 +27,8 @@ rustflags = [
 linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+    # Apple clang_rt.osx on the search path (see x86_64 note above).
+    "-C", "link-arg=-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin",
 ]
 
 # Force NDK linkers + 16 KB page size for ALL Android ABIs.
