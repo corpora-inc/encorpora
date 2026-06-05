@@ -90,6 +90,16 @@ function devHostFromUrl(): unknown {
   }
 }
 
+// Diagnostics — exposed ALWAYS (real app + standalone), not just the dev mount, so
+// the engine-leak check works on-device. `__wpEngines()` must read 1; >1 means a
+// prior instance leaked (an undisposed engine still running its render loop).
+void import("@babylonjs/core/Engines/engineStore").then(({ EngineStore }) => {
+  ;(window as unknown as { __wpScene?: () => unknown }).__wpScene = () =>
+    EngineStore.LastCreatedScene
+  ;(window as unknown as { __wpEngines?: () => number }).__wpEngines = () =>
+    EngineStore.Instances.length
+})
+
 // Standalone dev mount (vite dev server / plain browser). Also routed through the
 // global slot so a vite HMR re-eval of this module disposes the prior engine
 // instead of stacking a second one (the same zombie-engine trap, dev edition).
@@ -98,16 +108,6 @@ if (devRoot) {
   disposePriorGame()
   devRoot.replaceChildren()
   slot.game = startGame(devRoot, devHostFromUrl())
-  // Dev-only: expose the live Babylon scene so a headless harness (Playwright)
-  // can orbit the camera to verify prop depth. No effect when packaged.
-  void import("@babylonjs/core/Engines/engineStore").then(({ EngineStore }) => {
-    ;(window as unknown as { __wpScene?: () => unknown }).__wpScene = () =>
-      EngineStore.LastCreatedScene
-    // Zombie-engine detector: should ALWAYS read 1. >1 means a prior instance
-    // leaked (an undisposed engine still running its render loop).
-    ;(window as unknown as { __wpEngines?: () => number }).__wpEngines = () =>
-      EngineStore.Instances.length
-  })
 }
 
 export {}

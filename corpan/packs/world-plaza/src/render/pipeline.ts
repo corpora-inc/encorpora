@@ -213,6 +213,17 @@ function isLeanTier(): boolean {
   return small || dpr < 2
 }
 
+/** SSAO is OFF unless explicitly opted in (`?ssao` or `window.__wpSSAO = true`). */
+function ssaoOptIn(): boolean {
+  if (typeof window === "undefined") return false
+  if ((window as unknown as { __wpSSAO?: boolean }).__wpSSAO === true) return true
+  try {
+    return new URLSearchParams(window.location.search).has("ssao")
+  } catch {
+    return false
+  }
+}
+
 /**
  * Build a tiny procedural gradient environment cube (zenith→horizon→nadir) so
  * PBR materials get believable ambient + a soft sky reflection with ZERO asset
@@ -350,7 +361,10 @@ export function createCinematicPipeline(
   // ── POST PIPELINE (tone-map + grade + bloom + AA) ───────────────────────────
   const rendering = new DefaultRenderingPipeline("wp-cine", true, scene, [camera])
   rendering.fxaaEnabled = true
-  rendering.samples = lean ? 1 : 4 // MSAA on desktop; FXAA carries phones
+  // FXAA already does the edge AA; 4× MSAA on top was a redundant per-frame resolve
+  // (expensive at the backbuffer res). FXAA alone — 1 sample — is plenty for this
+  // stylized look and a real fill win toward 60 fps.
+  rendering.samples = 1
 
   // Image processing: ACES tone-map, warm exposure, gentle contrast + vignette.
   rendering.imageProcessingEnabled = true
@@ -373,12 +387,15 @@ export function createCinematicPipeline(
   rendering.bloomEnabled = true
   rendering.bloomThreshold = mood.bloomThreshold
   rendering.bloomWeight = mood.bloomWeight
-  rendering.bloomKernel = lean ? 32 : 64
+  rendering.bloomKernel = 32 // smaller blur kernel — cheaper, still a soft glow
   rendering.bloomScale = 0.5
 
   // ── SSAO (perf-gated) ───────────────────────────────────────────────────────
   let ssao: SSAO2RenderingPipeline | null = null
-  const wantSsao = opts.ssao ?? !lean
+  // SSAO2 (16 samples + blur, full-screen) is the single most expensive post pass —
+  // 5–15 ms at desktop res for a subtle crevice darkening this stylized world barely
+  // needs. OFF by default now; opt in with `?ssao` or `window.__wpSSAO = true`.
+  const wantSsao = opts.ssao ?? ssaoOptIn()
   if (wantSsao) {
     try {
       ssao = new SSAO2RenderingPipeline("wp-ssao", scene, { ssaoRatio: 0.5, blurRatio: 1 }, [camera])

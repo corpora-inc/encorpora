@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Performance
+- **Cheaper post-processing stack (fill-rate win toward 60 fps).** With the zombie
+  engines gone, the remaining cost on a strong Mac is GPU fill: the per-pixel post
+  passes. Three cuts that barely touch the look: **SSAO2 is now OFF by default**
+  (16-sample full-screen ambient occlusion was the single most expensive pass,
+  ~5–15 ms, for a subtle crevice darkening this stylized world hardly needs —
+  opt in with `?ssao` / `window.__wpSSAO=true`); **4× MSAA dropped to 1** (FXAA
+  already does the edge AA — the MSAA resolve was redundant); **bloom kernel
+  64→32**. (`render/pipeline.ts`.)
 - **Zombie-engine leak fixed — exactly one Babylon engine, ever.** THE cause of
   the progressive FPS collapse (and the dying on-device LLM socket). The host
   injects a FRESH `<script>` on every pack reopen, so the pack module
