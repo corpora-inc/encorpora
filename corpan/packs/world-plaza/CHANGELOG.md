@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **NPC TTS voice now always matches the CURRENT target language — voice stickiness
+  CLEARS on world entry / stack change.** An ES→EN learner heard the NPC's correct
+  English text spoken through a leftover Spanish voice: the sticky-voice resolver
+  (`npcVoice.ts`) pinned voices + cached the per-language voice list for the life of
+  the resolver, with no way to clear them. Added `NpcVoiceResolver.reset()` (drops
+  every pin + the `voicesByLang` cache) exposed as `NpcRuntime.resetVoices()`, and
+  game.ts calls it on every world entry (`buildWorld`), which also covers exit→re-enter
+  and a stack/target change (that path tears down + rebuilds). So the voices always
+  re-resolve in the live `learnerPair.target`. The existing guards are preserved:
+  WITHIN one conversation the voice stays stable (resolved once, reused — never
+  per-round), a candidate set filtered strictly to the target language, and a
+  base-lang≠target voice is never pinned or spoken. ("Entering the world clears the
+  voice stickiness.")
+
 ### Changed
 - **The scene SETTING is now modern "Corpan City", not colonial "Antigua-1770" —
   the last colonial thread.** Text/identity only: `setting.{place,era,mood}` +

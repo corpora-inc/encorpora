@@ -1054,6 +1054,14 @@ function buildWorld(
 
   // Proximity NPC engagement → open a real (or scripted-fallback) Qwen3 chat.
   const npcRuntime = createNpcRuntime(npcHost)
+  // #115 — CLEAR NPC voice stickiness on WORLD ENTRY. buildWorld runs on first
+  // entry, on exit→re-enter, AND on a stack/target change (buildFor tears down +
+  // rebuilds), so resetting here guarantees the NPC voices re-resolve in the
+  // CURRENT learnerPair.target every time — an ES→EN learner never keeps the old
+  // Spanish voices. (Belt-and-braces: the runtime is fresh per buildWorld today,
+  // but this makes the "entering the world clears the stickiness" invariant
+  // explicit + robust to any future runtime reuse.)
+  npcRuntime.resetVoices()
 
   // ── Multiplayer (ADDITIVE, feature-detected) ──────────────────────────────
   // The ONE wiring call for the entire player-to-player layer: presence, safe

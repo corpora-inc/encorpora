@@ -233,6 +233,14 @@ export interface NpcRuntime {
   open(args: OpenArgs): NpcDialogueHandle
   /** Forward app lifecycle so the broker can reclaim the model. */
   onBackground(): void
+  /**
+   * CLEAR all NPC voice stickiness (#115): drop every pinned NPC→voice + the
+   * per-language voice cache so the next conversation re-resolves in the CURRENT
+   * target. game.ts calls this on world ENTRY (mount) and on any stack/target
+   * change, so an ES→EN learner never keeps the old Spanish voices. Within a single
+   * conversation the voice is resolved once + reused, so this is safe between visits.
+   */
+  resetVoices(): void
   /** Shared broker (exposed for tests / external lifecycle wiring). */
   broker: ModelBroker
   dispose(): Promise<void>
@@ -1046,6 +1054,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
   return {
     open,
     onBackground: () => broker.onBackground(),
+    resetVoices: () => voiceResolver.reset(),
     broker,
     dispose: () => broker.dispose(),
   }
