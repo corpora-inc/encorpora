@@ -36,11 +36,11 @@ const validScene = {
   themeId: "paper",
   narrativeBlurb: "Cobblestones still wet with dew; a café opens its shutters.",
   anchorSkins: {
-    cafe_counter: { spriteRef: { url: "corpan-pack://localhost/world_plaza/scenes/antigua/cafe.webp" } },
-    fountain: { spriteRef: { url: "corpan-pack://localhost/world_plaza/scenes/antigua/fountain.webp" } },
+    cafe_counter: { spriteRef: { url: "corpan-pack://localhost/corpan_city/scenes/antigua/cafe.webp" } },
+    fountain: { spriteRef: { url: "corpan-pack://localhost/corpan_city/scenes/antigua/fountain.webp" } },
   },
   npcSkins: {
-    baker: { spriteRef: { url: "corpan-pack://localhost/world_plaza/scenes/antigua/baker.webp" }, voiceHint: "es-ES" },
+    baker: { spriteRef: { url: "corpan-pack://localhost/corpan_city/scenes/antigua/baker.webp" }, voiceHint: "es-ES" },
   },
 }
 

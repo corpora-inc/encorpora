@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url"
 /**
  * Dev harness: builds the pack in watch mode and serves the packs/ dir over
  * http://localhost:8989 so the running Corpán app can dev-load
- * world_plaza from http://localhost:8989/world-plaza/manifest.json.
+ * corpan_city from http://localhost:8989/world-plaza/manifest.json.
  * Bumps manifest.devRevision on each dist change to trigger a host reload.
  */
 const __dirname = path.dirname(fileURLToPath(import.meta.url))

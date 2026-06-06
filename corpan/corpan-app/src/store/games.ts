@@ -45,10 +45,10 @@ const devGames: InstalledGame[] = import.meta.env.DEV
         installedAt: Date.now(),
       },
       {
-        id: "world_plaza",
-        name: "World Plaza (local)",
+        id: "corpan_city",
+        name: "Corpan City (local)",
         manifestUrl: "/packs/world-plaza/manifest.json",
-        version: "0.0.1",
+        version: "0.1.0",
         installedAt: Date.now(),
       },
     ]

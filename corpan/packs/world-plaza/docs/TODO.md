@@ -5,7 +5,7 @@ Live QA findings (2026-06-03), with owner. "[ME]" = orchestrator does it inline
 
 ## Correctness / input (root cause: dev double-mount) — [ME]
 - [ ] **Dev double-mount**: the pack mounts TWICE in dev (console shows two
-      `Loading pack world_plaza` + two Babylon boots) → two game instances →
+      `Loading pack corpan_city` + two Babylon boots) → two game instances →
       **doubled LLM streams, leaked input (WASDQE still acts while a chat is
       open — it's the 2nd instance's handler), doubled `e`.** Make `mount`
       idempotent (dispose any prior instance before creating a new one).
