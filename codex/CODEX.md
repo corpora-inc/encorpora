@@ -1,6 +1,6 @@
 # The Corpán Codex
 
-_Concatenated book edition. Generated 2026-05-29.  All 36 numbered sections plus 5 appendices, in reading order._
+_Concatenated book edition. Generated 2026-06-06. All 36 numbered sections plus 5 appendices, in reading order._
 
 ---
 
@@ -5253,8 +5253,8 @@ class diagram could:
 Layout:
    Top row:    book title
                chapter title           [elapsed / total]
-   Scrub:    [═══════════●═══════════════════════════════════]
-   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]
+   Scrub:    [===========o===================================]
+   Bottom:   [|<]  [-30]  [play/pause]  [+30]  [>|]
 
 The book prefix and chapter sit in separate spans inside one flex
 column so they stack vertically on the left; each truncates its
@@ -5646,7 +5646,7 @@ Sample row layouts:
 ```
 Entry:        (42,  "I would like a cup of coffee.",  "A1")
 Translation:  (193, 42, 7 [es], "Quisiera una taza de café.", "")
-Translation:  (194, 42, 11 [ko], "커피 한 잔 주세요.", "keopi han jan juseyo")
+Translation:  (194, 42, 11 [ko], "keopi han jan juseyo.", "")
 ```
 
 The corpus has tens of thousands of entries, dozens of
@@ -7532,7 +7532,9 @@ sttApi.startSession({
   whisperParams: {
     temperature: 0.0,
     no_speech_thold: 0.5,
-    initial_prompt: "ਪੰਜਾਬੀ ਦੀ ਲਿਖਾਈ",  // bias the decoder to Gurmukhi script
+    // A short phrase in the expected script; biases the decoder
+    // against collapsing to a wrong-script attractor.
+    initial_prompt: "<a few words in the target script>",
   },
 })
 ```
@@ -11054,11 +11056,11 @@ trusts or distrusts. The practices that pay off:
   look right.
 
 The Codex's own session shows the pattern: every section
-ended with the agent verifying hygiene
-(`grep -c '—'`, `grep -c '§'`, `wc -l`) and then committing
-with a descriptive message. The pattern is small and
-mechanical; it is also the difference between trusting the
-agent's claim and verifying it.
+ended with the agent verifying hygiene (running line-count
+and forbidden-character checks against the file) and then
+committing with a descriptive message. The pattern is small
+and mechanical; it is also the difference between trusting
+the agent's claim and verifying it.
 
 ## Common operations
 
@@ -12022,7 +12024,8 @@ tense.
   entry points / How it works / Common operations / Why we
   built it this way / To go deeper.
 - No em dashes anywhere. Periods or colons instead.
-- No `§` symbols. "Section N" or just `N` in prose.
+- No section-sign symbols in prose. Use "Section N" or just
+  `N` instead.
 - No fullwidth colons or pipes in titles.
 - Code samples are honest snippets from the actual files;
   paths and line numbers cited when useful.

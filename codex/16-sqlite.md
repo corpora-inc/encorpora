@@ -159,7 +159,7 @@ Sample row layouts:
 ```
 Entry:        (42,  "I would like a cup of coffee.",  "A1")
 Translation:  (193, 42, 7 [es], "Quisiera una taza de café.", "")
-Translation:  (194, 42, 11 [ko], "커피 한 잔 주세요.", "keopi han jan juseyo")
+Translation:  (194, 42, 11 [ko], "keopi han jan juseyo.", "")
 ```
 
 The corpus has tens of thousands of entries, dozens of

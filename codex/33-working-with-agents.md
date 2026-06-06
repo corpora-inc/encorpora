@@ -187,11 +187,11 @@ trusts or distrusts. The practices that pay off:
   look right.
 
 The Codex's own session shows the pattern: every section
-ended with the agent verifying hygiene
-(`grep -c '—'`, `grep -c '§'`, `wc -l`) and then committing
-with a descriptive message. The pattern is small and
-mechanical; it is also the difference between trusting the
-agent's claim and verifying it.
+ended with the agent verifying hygiene (running line-count
+and forbidden-character checks against the file) and then
+committing with a descriptive message. The pattern is small
+and mechanical; it is also the difference between trusting
+the agent's claim and verifying it.
 
 ## Common operations
 

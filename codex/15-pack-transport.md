@@ -128,8 +128,8 @@ class diagram could:
 Layout:
    Top row:    book title
                chapter title           [elapsed / total]
-   Scrub:    [═══════════●═══════════════════════════════════]
-   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]
+   Scrub:    [===========o===================================]
+   Bottom:   [|<]  [-30]  [play/pause]  [+30]  [>|]
 
 The book prefix and chapter sit in separate spans inside one flex
 column so they stack vertically on the left; each truncates its

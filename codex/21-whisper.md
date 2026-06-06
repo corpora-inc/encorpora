@@ -196,7 +196,9 @@ sttApi.startSession({
   whisperParams: {
     temperature: 0.0,
     no_speech_thold: 0.5,
-    initial_prompt: "ਪੰਜਾਬੀ ਦੀ ਲਿਖਾਈ",  // bias the decoder to Gurmukhi script
+    // A short phrase in the expected script; biases the decoder
+    // against collapsing to a wrong-script attractor.
+    initial_prompt: "<a few words in the target script>",
   },
 })
 ```

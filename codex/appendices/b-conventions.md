@@ -99,7 +99,8 @@ tense.
   entry points / How it works / Common operations / Why we
   built it this way / To go deeper.
 - No em dashes anywhere. Periods or colons instead.
-- No `§` symbols. "Section N" or just `N` in prose.
+- No section-sign symbols in prose. Use "Section N" or just
+  `N` instead.
 - No fullwidth colons or pipes in titles.
 - Code samples are honest snippets from the actual files;
   paths and line numbers cited when useful.
